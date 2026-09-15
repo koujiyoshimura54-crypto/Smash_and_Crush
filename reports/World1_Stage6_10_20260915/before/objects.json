@@ -1,0 +1,1469 @@
+[
+  {
+    "attrs": {
+      "StageNumber": 1,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "ysqAMPcgysqA",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        65.14999389648438
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        1.0750036239624023
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": [],
+        "name": "BallerinaCappuccinaRig",
+        "scale": 6,
+        "class": "Model",
+        "pivot": [
+          146.4337921142578,
+          85.29281616210938,
+          -32.38321304321289,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "size": "24, 21.79007911682129, 12"
+      }
+    ],
+    "stage": 1,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "StageNumber": "1.4",
+          "SectionType": "Wall",
+          "WallIndex": 4,
+          "_lemonadeUniqueId": "Rua5Nse8Rua5"
+        },
+        "wallattrs": {
+          "MaxGauge": 80,
+          "WallIndex": 4,
+          "_lemonadeUniqueId": "EbHtjRs6EbHt"
+        },
+        "name": "Stage1.4",
+        "position": "27.920000076293945, 15.5, 10.499996185302734"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "StageNumber": "1.1",
+          "SectionType": "Wall",
+          "WallIndex": 1,
+          "_lemonadeUniqueId": "PjXZqgUGPjXZ"
+        },
+        "wallattrs": {
+          "MaxGauge": 20,
+          "WallIndex": 1,
+          "_lemonadeUniqueId": "NnvyPunlNnvy"
+        },
+        "name": "Stage1.1",
+        "position": "27.920000076293945, 15.5, -19.499996185302734"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "StageNumber": "1.3",
+          "SectionType": "Wall",
+          "WallIndex": 3,
+          "_lemonadeUniqueId": "bcM5u2RvbcM5"
+        },
+        "wallattrs": {
+          "MaxGauge": 60,
+          "WallIndex": 3,
+          "_lemonadeUniqueId": "AdTCtSyYAdTC"
+        },
+        "name": "Stage1.3",
+        "position": "27.920000076293945, 15.5, 0.5"
+      },
+      {
+        "attrs": {
+          "SectionType": "MiniBoss",
+          "_lemonadeUniqueId": "afqAfEYEafqA",
+          "StageNumber": "1.5"
+        },
+        "name": "Stage1.5"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "StageNumber": "1.2",
+          "SectionType": "Wall",
+          "WallIndex": 2,
+          "_lemonadeUniqueId": "vKWLEqvlvKWL"
+        },
+        "wallattrs": {
+          "MaxGauge": 40,
+          "WallIndex": 2,
+          "_lemonadeUniqueId": "FVnh9UIuFVnh"
+        },
+        "name": "Stage1.2",
+        "position": "27.920000076293945, 15.5, -9.5"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 2,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "hmyhRgFjhmyh",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        63.540000915527344
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        65.41999816894531
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": [],
+        "name": "TralaleroTralalaRig",
+        "scale": 2.5,
+        "class": "Model",
+        "pivot": [
+          197.97235107421875,
+          85.1109390258789,
+          -12.51828670501709,
+          -0.8660253286361694,
+          0,
+          -0.5000000596046448,
+          0,
+          1,
+          0,
+          0.5000000596046448,
+          0,
+          -0.8660253286361694
+        ],
+        "size": "22.733055114746094, 15.349691390991211, 28.597946166992188"
+      }
+    ],
+    "stage": 2,
+    "walls": [
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 2,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "5DpsFySS5Dps",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage2.5"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "MoIo9G0IMoIo",
+          "StageNumber": "1.1",
+          "MajorStage": 2,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 2,
+          "_lemonadeUniqueId": "w0v6AWBbw0v6",
+          "WallIndex": 1,
+          "MaxGauge": 30
+        },
+        "name": "Stage2.1",
+        "position": "27.920000076293945, 15.5, 43.150001525878906"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "8pCyVUu88pCy",
+          "StageNumber": "1.3",
+          "MajorStage": 2,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 2,
+          "_lemonadeUniqueId": "lyjZRGLJlyjZ",
+          "WallIndex": 3,
+          "MaxGauge": 90
+        },
+        "name": "Stage2.3",
+        "position": "27.920000076293945, 15.5, 63.149993896484375"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "bZqACnm2bZqA",
+          "StageNumber": "1.2",
+          "MajorStage": 2,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 2,
+          "_lemonadeUniqueId": "Fj1bdN3zFj1b",
+          "WallIndex": 2,
+          "MaxGauge": 60
+        },
+        "name": "Stage2.2",
+        "position": "27.920000076293945, 15.5, 53.150001525878906"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "JWrWyyNNJWrW",
+          "StageNumber": "1.4",
+          "MajorStage": 2,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 2,
+          "_lemonadeUniqueId": "47DNQmwg47DN",
+          "WallIndex": 4,
+          "MaxGauge": 120
+        },
+        "name": "Stage2.4",
+        "position": "27.920000076293945, 15.5, 73.1500015258789"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 3,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "DnV8UfxNDnV8",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        64.5
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        129.44000244140625
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": {
+          "RBX_AutoSetupInputAsset": "rbxassetid://79396212053194",
+          "RBX_AutoSetup_OriginalScale": 8.681209180652237,
+          "RBX_AutoSetupped": true,
+          "RBX_AvatarPreviewer_equippedItems": "[{\"palette\":\"Movement\",\"item\":{\"source\":\"builtin\",\"builtinItem\":16562317918}},{\"palette\":\"Emotions\",\"item\":{\"source\":\"builtin\",\"builtinItem\":13965064041}}]",
+          "RBX_AvatarPreviewer_textured": true,
+          "RBX_AvatarPreviewer_AutoSetupValidationResultReported": true,
+          "RBX_AvatarPreviewer_stage": "CheckBody",
+          "RBX_AvatarPreviewer_initialImportComplete": true,
+          "RBX_AvatarPreviewer_completedAutoSetupSurvey": false,
+          "RBX_AutoSetup_ScaleErrorList": "[\"NoValidScaleError\"]"
+        },
+        "name": "TungTungSahurRig",
+        "scale": 3.5,
+        "class": "Model",
+        "pivot": [
+          160.71388244628906,
+          85.39431762695312,
+          -1.714218258857727,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "size": "7.923063278198242, 16.058504104614258, 5.733063697814941"
+      }
+    ],
+    "stage": 3,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "C1Ndf8KuC1Nd",
+          "StageNumber": "1.1",
+          "MajorStage": 3,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 3,
+          "_lemonadeUniqueId": "PIIR9IiKPIIR",
+          "WallIndex": 1,
+          "MaxGauge": 45
+        },
+        "name": "Stage3.1",
+        "position": "27.920000076293945, 15.5, 106.69000244140625"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "D1Uk9KSUD1Uk",
+          "StageNumber": "1.3",
+          "MajorStage": 3,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 3,
+          "_lemonadeUniqueId": "RJEYGV0uRJEY",
+          "WallIndex": 3,
+          "MaxGauge": 135
+        },
+        "name": "Stage3.3",
+        "position": "27.920000076293945, 15.5, 126.69000244140625"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "mkY0m06imkY0",
+          "StageNumber": "1.4",
+          "MajorStage": 3,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 3,
+          "_lemonadeUniqueId": "kr2lIxCAkr2l",
+          "WallIndex": 4,
+          "MaxGauge": 180
+        },
+        "name": "Stage3.4",
+        "position": "27.920000076293945, 15.5, 136.69000244140625"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "8jImjEbn8jIm",
+          "StageNumber": "1.2",
+          "MajorStage": 3,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 3,
+          "_lemonadeUniqueId": "a3nADa95a3nA",
+          "WallIndex": 2,
+          "MaxGauge": 90
+        },
+        "name": "Stage3.2",
+        "position": "27.920000076293945, 15.5, 116.69000244140625"
+      },
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 3,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "4eAg9lDX4eAg",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage3.5"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 4,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "Na0MRpdTNa0M",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        65.75
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        194.56500244140625
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": [],
+        "name": "BombardiroCrocodiloRig",
+        "scale": 5,
+        "class": "Model",
+        "pivot": [
+          186.1300048828125,
+          120.98799896240234,
+          12.081999778747559,
+          -1,
+          0,
+          -1.5099580252808664e-7,
+          0,
+          1,
+          0,
+          1.5099580252808664e-7,
+          0,
+          -1
+        ],
+        "size": "25.978382110595703, 11.018754959106445, 30.296066284179688"
+      }
+    ],
+    "stage": 4,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "A8zPlfrlA8zP",
+          "StageNumber": "1.3",
+          "MajorStage": 4,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 4,
+          "_lemonadeUniqueId": "0MxlXq6k0Mxl",
+          "WallIndex": 3,
+          "MaxGauge": 180
+        },
+        "name": "Stage4.3",
+        "position": "27.920000076293945, 15.5, 191.1899871826172"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "IDehslXlIDeh",
+          "StageNumber": "1.2",
+          "MajorStage": 4,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 4,
+          "_lemonadeUniqueId": "24GrZHjF24Gr",
+          "WallIndex": 2,
+          "MaxGauge": 120
+        },
+        "name": "Stage4.2",
+        "position": "27.920000076293945, 15.5, 181.1899871826172"
+      },
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 4,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "8ju7i7t98ju7",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage4.5"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "RyaiVedFRyai",
+          "StageNumber": "1.1",
+          "MajorStage": 4,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 4,
+          "_lemonadeUniqueId": "uaG3l81puaG3",
+          "WallIndex": 1,
+          "MaxGauge": 60
+        },
+        "name": "Stage4.1",
+        "position": "27.920000076293945, 15.5, 171.1899871826172"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "Wys1s8ZLWys1",
+          "StageNumber": "1.4",
+          "MajorStage": 4,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 4,
+          "_lemonadeUniqueId": "Om1QlNaaOm1Q",
+          "WallIndex": 4,
+          "MaxGauge": 240
+        },
+        "name": "Stage4.4",
+        "position": "27.920000076293945, 15.5, 201.1899871826172"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 5,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "8XWBQsEG8XWB",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        67
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        260.94000244140625
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": [],
+        "name": "67Rig",
+        "scale": 3,
+        "class": "Model",
+        "pivot": [
+          61.17039489746094,
+          40.44763946533203,
+          -53.234230041503906,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "size": "37.50141906738281, 22.012283325195312, 6.651074409484863"
+      }
+    ],
+    "stage": 5,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "a56z4MFRa56z",
+          "StageNumber": "1.2",
+          "MajorStage": 5,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 5,
+          "_lemonadeUniqueId": "De3LIasKDe3L",
+          "WallIndex": 2,
+          "MaxGauge": 150
+        },
+        "name": "Stage5.2",
+        "position": "27.920000076293945, 15.5, 246.9399871826172"
+      },
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 5,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "kFaBr49JkFaB",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage5.5"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "mwklmEIMmwkl",
+          "StageNumber": "1.3",
+          "MajorStage": 5,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 5,
+          "_lemonadeUniqueId": "r9Q5mF9rr9Q5",
+          "WallIndex": 3,
+          "MaxGauge": 225
+        },
+        "name": "Stage5.3",
+        "position": "27.920000076293945, 15.5, 256.94000244140625"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "Mqk1tYn1Mqk1",
+          "StageNumber": "1.1",
+          "MajorStage": 5,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 5,
+          "_lemonadeUniqueId": "U0tLtaEQU0tL",
+          "WallIndex": 1,
+          "MaxGauge": 75
+        },
+        "name": "Stage5.1",
+        "position": "27.920000076293945, 15.5, 236.9399871826172"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "VZZq3m2qVZZq",
+          "StageNumber": "1.4",
+          "MajorStage": 5,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 5,
+          "_lemonadeUniqueId": "MAjZ0ISCMAjZ",
+          "WallIndex": 4,
+          "MaxGauge": 300
+        },
+        "name": "Stage5.4",
+        "position": "27.920000076293945, 15.5, 266.94000244140625"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 6,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "1d3Nijv51d3N",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        94.09999084472656
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        341.4900207519531
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": {
+          "DisplayHeight": 36,
+          "StaticEnemyVisual": true,
+          "SourceModelPath": "Workspace.Italian Brainrot.Pipi_Kiwi"
+        },
+        "name": "Pipi_Kiwi",
+        "scale": 4,
+        "class": "Model",
+        "pivot": [
+          162.99737548828125,
+          85.3066635131836,
+          -97.03004455566406,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "size": "8.349028587341309, 15.198465347290039, 15.961418151855469"
+      },
+      {
+        "cf": [
+          0,
+          13,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "name": "CollisionReference",
+        "attrs": [],
+        "collide": false,
+        "class": "Part",
+        "anchored": false,
+        "size": "18, 34, 36"
+      }
+    ],
+    "stage": 6,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "HODnayM0HODn",
+          "StageNumber": "1.1",
+          "MajorStage": 6,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 6,
+          "_lemonadeUniqueId": "NXuEqBSyNXuE",
+          "WallIndex": 1,
+          "MaxGauge": 90
+        },
+        "name": "Stage6.1",
+        "position": "27.920000076293945, 15.5, 303.94000244140625"
+      },
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 6,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "N9MPIJsKN9MP",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage6.5"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "sHDZWb6UsHDZ",
+          "StageNumber": "1.3",
+          "MajorStage": 6,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 6,
+          "_lemonadeUniqueId": "90TJUn6I90TJ",
+          "WallIndex": 3,
+          "MaxGauge": 270
+        },
+        "name": "Stage6.3",
+        "position": "27.920000076293945, 15.5, 323.94000244140625"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "AT5Ry3YCAT5R",
+          "StageNumber": "1.2",
+          "MajorStage": 6,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 6,
+          "_lemonadeUniqueId": "2D6AaZWY2D6A",
+          "WallIndex": 2,
+          "MaxGauge": 180
+        },
+        "name": "Stage6.2",
+        "position": "27.920000076293945, 15.5, 313.94000244140625"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "Gt4PzclPGt4P",
+          "StageNumber": "1.4",
+          "MajorStage": 6,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 6,
+          "_lemonadeUniqueId": "wzzZh6l3wzzZ",
+          "WallIndex": 4,
+          "MaxGauge": 360
+        },
+        "name": "Stage6.4",
+        "position": "27.920000076293945, 15.5, 333.94000244140625"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 7,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "BrEkVNVxBrEk",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        102.0999755859375
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        439.5899963378906
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": {
+          "DisplayHeight": 48,
+          "StaticEnemyVisual": true,
+          "SourceModelPath": "Workspace.Italian Brainrot.Trippi Troppi"
+        },
+        "name": "Trippi Troppi",
+        "scale": 3.5999999046325684,
+        "class": "Model",
+        "pivot": [
+          172.50588989257812,
+          86.0301284790039,
+          -103.16193389892578,
+          -0.8660253882408142,
+          0,
+          -0.5,
+          0,
+          1,
+          0,
+          0.5,
+          0,
+          -0.8660253882408142
+        ],
+        "size": "16.070764541625977, 17.247840881347656, 17.377647399902344"
+      },
+      {
+        "cf": [
+          0,
+          15,
+          2,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "name": "CollisionReference",
+        "attrs": [],
+        "collide": false,
+        "class": "Part",
+        "anchored": false,
+        "size": "24, 38, 36"
+      }
+    ],
+    "stage": 7,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "HBcf8rjDHBcf",
+          "StageNumber": "1.1",
+          "MajorStage": 7,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 7,
+          "_lemonadeUniqueId": "hOVCtRkMhOVC",
+          "WallIndex": 1,
+          "MaxGauge": 105
+        },
+        "name": "Stage7.1",
+        "position": "27.920000076293945, 15.5, 398.03997802734375"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "cWJbHQ0ScWJb",
+          "StageNumber": "1.2",
+          "MajorStage": 7,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 7,
+          "_lemonadeUniqueId": "PlioEV4UPlio",
+          "WallIndex": 2,
+          "MaxGauge": 210
+        },
+        "name": "Stage7.2",
+        "position": "27.920000076293945, 15.5, 408.03997802734375"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "tMx2bmhltMx2",
+          "StageNumber": "1.3",
+          "MajorStage": 7,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 7,
+          "_lemonadeUniqueId": "syiyDNmisyiy",
+          "WallIndex": 3,
+          "MaxGauge": 315
+        },
+        "name": "Stage7.3",
+        "position": "27.920000076293945, 15.5, 418.03997802734375"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "or4dX8fror4d",
+          "StageNumber": "1.4",
+          "MajorStage": 7,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 7,
+          "_lemonadeUniqueId": "pMfjTMXJpMfj",
+          "WallIndex": 4,
+          "MaxGauge": 420
+        },
+        "name": "Stage7.4",
+        "position": "27.920000076293945, 15.5, 428.03997802734375"
+      },
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 7,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "wYWZwFv3wYWZ",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage7.5"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 8,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "bGabL28IbGab",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        84.0999984741211
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        532.68994140625
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": {
+          "DisplayHeight": 44,
+          "StaticEnemyVisual": true,
+          "SourceModelPath": "Workspace.Italian Brainrot.Chimpanzini Bananini"
+        },
+        "name": "Chimpanzini Bananini",
+        "scale": 5,
+        "class": "Model",
+        "pivot": [
+          188.37310791015625,
+          85.81083679199219,
+          -42.024085998535156,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "size": "20, 21.880035400390625, 15.425315856933594"
+      },
+      {
+        "cf": [
+          0,
+          1.5,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "name": "CollisionReference",
+        "attrs": [],
+        "collide": false,
+        "class": "Part",
+        "anchored": false,
+        "size": "5, 7.5, 4"
+      }
+    ],
+    "stage": 8,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "PxwtdGmgPxwt",
+          "StageNumber": "1.1",
+          "MajorStage": 8,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 8,
+          "_lemonadeUniqueId": "YCOp4DmqYCOp",
+          "WallIndex": 1,
+          "MaxGauge": 120
+        },
+        "name": "Stage8.1",
+        "position": "27.920000076293945, 15.5, 500.13995361328125"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "PQ9uwEGsPQ9u",
+          "StageNumber": "1.4",
+          "MajorStage": 8,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 8,
+          "_lemonadeUniqueId": "egS9s60segS9",
+          "WallIndex": 4,
+          "MaxGauge": 480
+        },
+        "name": "Stage8.4",
+        "position": "27.920000076293945, 15.5, 530.1399536132812"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "SnwoelWSSnwo",
+          "StageNumber": "1.3",
+          "MajorStage": 8,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 8,
+          "_lemonadeUniqueId": "kNn7D6wSkNn7",
+          "WallIndex": 3,
+          "MaxGauge": 360
+        },
+        "name": "Stage8.3",
+        "position": "27.920000076293945, 15.5, 520.1399536132812"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "gUyjkstFgUyj",
+          "StageNumber": "1.2",
+          "MajorStage": 8,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 8,
+          "_lemonadeUniqueId": "wpanRBTlwpan",
+          "WallIndex": 2,
+          "MaxGauge": 240
+        },
+        "name": "Stage8.2",
+        "position": "27.920000076293945, 15.5, 510.13995361328125"
+      },
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 8,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "gPfvX2TrgPfv",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage8.5"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 9,
+      "StageWidth": 20,
+      "IsBossStage": false,
+      "_lemonadeUniqueId": "CySjndYqCySj",
+      "StageLength": 28
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        72.0999984741211
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        610.7899780273438
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": {
+          "DisplayHeight": 56,
+          "StaticEnemyVisual": true,
+          "SourceModelPath": "Workspace.Italian Brainrot.Trippa Troppa Tralala Lirilì Rilà TungTung Sahur Boneca TungTung Tralalelo TrippiTroppa Crocodina"
+        },
+        "name": "Trippa Troppa Tralala Lirilì Rilà TungTung Sahur Boneca TungTung Tralalelo TrippiTroppa Crocodina",
+        "scale": 5,
+        "class": "Model",
+        "pivot": [
+          128.2001495361328,
+          85.21485900878906,
+          -14.008864402770996,
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "size": "14.917207717895508, 24.034263610839844, 7.275893211364746"
+      },
+      {
+        "cf": [
+          0,
+          1.5,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "name": "CollisionReference",
+        "attrs": [],
+        "collide": false,
+        "class": "Part",
+        "anchored": false,
+        "size": "5, 7.5, 4"
+      }
+    ],
+    "stage": 9,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "FOFO0KbpFOFO",
+          "StageNumber": "1.1",
+          "MajorStage": 9,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 9,
+          "_lemonadeUniqueId": "LYec3lj7LYec",
+          "WallIndex": 1,
+          "MaxGauge": 135
+        },
+        "name": "Stage9.1",
+        "position": "27.920000076293945, 15.5, 584.239990234375"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "8AjtnE3V8Ajt",
+          "StageNumber": "1.2",
+          "MajorStage": 9,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 9,
+          "_lemonadeUniqueId": "T3P9IU4mT3P9",
+          "WallIndex": 2,
+          "MaxGauge": 270
+        },
+        "name": "Stage9.2",
+        "position": "27.920000076293945, 15.5, 594.239990234375"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "Gg1agORTGg1a",
+          "StageNumber": "1.4",
+          "MajorStage": 9,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 9,
+          "_lemonadeUniqueId": "LriZk846LriZ",
+          "WallIndex": 4,
+          "MaxGauge": 540
+        },
+        "name": "Stage9.4",
+        "position": "27.920000076293945, 15.5, 614.239990234375"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "ntb9vyblntb9",
+          "StageNumber": "1.3",
+          "MajorStage": 9,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 9,
+          "_lemonadeUniqueId": "TXonJHMcTXon",
+          "WallIndex": 3,
+          "MaxGauge": 405
+        },
+        "name": "Stage9.3",
+        "position": "27.920000076293945, 15.5, 604.239990234375"
+      },
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 9,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "srT0ErNDsrT0",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage9.5"
+      }
+    ]
+  },
+  {
+    "attrs": {
+      "StageNumber": 10,
+      "StageWidth": 30,
+      "IsBossStage": true,
+      "_lemonadeUniqueId": "CWCnRFQoCWCn",
+      "StageLength": 36
+    },
+    "floor": {
+      "size": [
+        90,
+        2,
+        96.09996795654297
+      ],
+      "position": [
+        27.920000076293945,
+        1,
+        694.8899536132812
+      ]
+    },
+    "templateattrs": [],
+    "children": [
+      {
+        "attrs": {
+          "DisplayHeight": 52,
+          "StaticEnemyVisual": true,
+          "SourceModelPath": "Workspace.Italian Brainrot.Dragon Cannelloni"
+        },
+        "name": "Dragon Cannelloni",
+        "scale": 5,
+        "class": "Model",
+        "pivot": [
+          208.42633056640625,
+          85.3216323852539,
+          -20.600248336791992,
+          -0.8660253882408142,
+          0,
+          -0.5,
+          0,
+          1,
+          0,
+          0.5,
+          0,
+          -0.8660253882408142
+        ],
+        "size": "63.345367431640625, 58.71015548706055, 58.16456604003906"
+      },
+      {
+        "cf": [
+          0,
+          1.5,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "name": "CollisionReference",
+        "attrs": [],
+        "collide": false,
+        "class": "Part",
+        "anchored": false,
+        "size": "5, 7.5, 4"
+      }
+    ],
+    "stage": 10,
+    "walls": [
+      {
+        "attrs": {
+          "MaxGauge": 60,
+          "_lemonadeUniqueId": "UYMnMDfLUYMn",
+          "StageNumber": "1.3",
+          "MajorStage": 10,
+          "SubStageIndex": 3,
+          "WallIndex": 3,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 10,
+          "_lemonadeUniqueId": "hYfdcmSqhYfd",
+          "WallIndex": 3,
+          "MaxGauge": 450
+        },
+        "name": "Stage10.3",
+        "position": "27.920000076293945, 15.5, 676.3399658203125"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 40,
+          "_lemonadeUniqueId": "X10xRzWgX10x",
+          "StageNumber": "1.2",
+          "MajorStage": 10,
+          "SubStageIndex": 2,
+          "WallIndex": 2,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 10,
+          "_lemonadeUniqueId": "VlVXjS5DVlVX",
+          "WallIndex": 2,
+          "MaxGauge": 300
+        },
+        "name": "Stage10.2",
+        "position": "27.920000076293945, 15.5, 666.3399658203125"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 80,
+          "_lemonadeUniqueId": "rC8y7PCkrC8y",
+          "StageNumber": "1.4",
+          "MajorStage": 10,
+          "SubStageIndex": 4,
+          "WallIndex": 4,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 10,
+          "_lemonadeUniqueId": "B7ifWHxhB7if",
+          "WallIndex": 4,
+          "MaxGauge": 600
+        },
+        "name": "Stage10.4",
+        "position": "27.920000076293945, 15.5, 686.3399658203125"
+      },
+      {
+        "attrs": {
+          "StageNumber": "1.5",
+          "MajorStage": 10,
+          "SubStageIndex": 5,
+          "_lemonadeUniqueId": "46RpNT6C46Rp",
+          "SectionType": "MiniBoss"
+        },
+        "name": "Stage10.5"
+      },
+      {
+        "attrs": {
+          "MaxGauge": 20,
+          "_lemonadeUniqueId": "Xk2RnP31Xk2R",
+          "StageNumber": "1.1",
+          "MajorStage": 10,
+          "SubStageIndex": 1,
+          "WallIndex": 1,
+          "SectionType": "Wall"
+        },
+        "wallattrs": {
+          "MajorStage": 10,
+          "_lemonadeUniqueId": "Baj58mBpBaj5",
+          "WallIndex": 1,
+          "MaxGauge": 150
+        },
+        "name": "Stage10.1",
+        "position": "27.920000076293945, 15.5, 656.3399658203125"
+      }
+    ]
+  }
+]

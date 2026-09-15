@@ -1,0 +1,102 @@
+{
+  "unitTests": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Results\":\"{\\\"checks\\\":30049,\\\"results\\\":[{\\\"name\\\":\\\"Requirement boundaries and carry for every level\\\",\\\"pass\\\":true},{\\\"name\\\":\\\"Zero-cost Lv1 and max-level are bounded\\\",\\\"pass\\\":true},{\\\"name\\\":\\\"Legacy and explicit Level migration, unrelated data preserved\\\",\\\"pass\\\":true},{\\\"name\\\":\\\"Malformed/future progress rejects load without overwrite\\\",\\\"pass\\\":true},{\\\"name\\\":\\\"Final walk/training bonuses reach Strength AND progress once\\\",\\\"pass\\\":true},{\\\"name\\\":\\\"Multi-level gain and absolute Strength independence\\\",\\\"pass\\\":true},{\\\"name\\\":\\\"Save concurrent gain stays dirty; re-load restores exact state\\\",\\\"pass\\\":true},{\\\"name\\\":\\\"Time Strength durable claim + ambiguous retry + concurrent gain\\\",\\\"pass\\\":true},{\\\"name\\\":\\\"Rebirth cycle reset preserves Win/items/world and saves\\\",\\\"pass\\\":true}]}\",\"Done\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "actualRejoin": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Ready\":true,\"Results\":\"{\\\"Loaded\\\":{\\\"Win\\\":77,\\\"HighestUnlockedWorld\\\":2,\\\"LevelProgress\\\":1224123,\\\"Level\\\":62,\\\"Strength\\\":10575123,\\\"RebirthCount\\\":0}}\"}"
+      }
+    ],
+    "isError": false
+  },
+  "singleLevelGain": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Command\":\"Gain2_5M\",\"Ready\":true,\"Results\":\"{\\\"Command\\\":\\\"Gain2_5M\\\",\\\"Pass\\\":true,\\\"Result\\\":{\\\"Before\\\":{\\\"Win\\\":77,\\\"HighestUnlockedWorld\\\":2,\\\"LevelProgress\\\":500000,\\\"Level\\\":60,\\\"Strength\\\":3500000,\\\"RebirthCount\\\":0},\\\"After\\\":{\\\"Win\\\":77,\\\"HighestUnlockedWorld\\\":2,\\\"LevelProgress\\\":0,\\\"Level\\\":61,\\\"Strength\\\":6000000,\\\"RebirthCount\\\":0},\\\"Saved\\\":true}}\"}"
+      }
+    ],
+    "isError": false
+  },
+  "multipleLevelGain": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Command\":\"MultiLevel\",\"Ready\":true,\"Results\":\"{\\\"Command\\\":\\\"MultiLevel\\\",\\\"Pass\\\":true,\\\"Result\\\":{\\\"Before\\\":{\\\"Win\\\":77,\\\"HighestUnlockedWorld\\\":2,\\\"LevelProgress\\\":0,\\\"Level\\\":61,\\\"Strength\\\":6000000,\\\"RebirthCount\\\":0},\\\"After\\\":{\\\"Win\\\":77,\\\"HighestUnlockedWorld\\\":2,\\\"LevelProgress\\\":123,\\\"Level\\\":63,\\\"Strength\\\":13075123,\\\"RebirthCount\\\":0},\\\"Saved\\\":true}}\"}"
+      }
+    ],
+    "isError": false
+  },
+  "rebirthViaUI": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"lower\":\"0 / 0\",\"rebirth\":1,\"win\":77,\"upper\":\"0 Strength\",\"progress\":0,\"level\":1,\"strength\":0,\"world\":2}"
+      }
+    ],
+    "isError": false
+  },
+  "walk": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"position\":\"28.25143814086914, 4.998024940490723, -40.76695251464844\",\"upper\":\"4.5 Strength\",\"progress\":4.5,\"level\":2,\"strength\":4.5,\"lower\":\"4.5 / 20\"}"
+      }
+    ],
+    "isError": false
+  },
+  "training": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"before\":{\"progress\":32.5,\"level\":3,\"strength\":52.5},\"after\":{\"training\":true,\"upper\":\"57 Strength\",\"progress\":37,\"level\":3,\"strength\":57,\"lower\":\"37 / 40\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "requirements": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"temporaryTests\":false,\"comparedRequirements\":10000,\"temporaryRunner\":false,\"allEqual\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "sourceChanges": {
+    "changed": [
+      "ReplicatedStorage.Modules.LevelProgression",
+      "ServerScriptService.Systems.Controllers.StrengthController",
+      "ServerScriptService.World.BossCombatService",
+      "ServerScriptService.Systems.Debug.StudioDebugService",
+      "ServerScriptService.Services.PlayerDataService",
+      "ServerScriptService.Services.StrengthManager",
+      "ServerScriptService.Systems.Controllers.RebirthService",
+      "ReplicatedStorage.Config.LevelRequirements",
+      "StarterGui.StrengthGui.StrengthDisplay"
+    ],
+    "removed": []
+  },
+  "finalNormalPlay": {
+    "seconds": 156,
+    "errors": 0,
+    "warnings": 0,
+    "infiniteYield": 0,
+    "temporaryTestsRemoved": true,
+    "storeOverrideRemoved": true
+  },
+  "limitations": [
+    "Synthetic legacy fixture in dedicated Studio DataStore; Production records not migrated by test.",
+    "No production purchase/multi-server tests.",
+    "No device emulator retest; layout/style modules unchanged.",
+    "Test tooling capability restrictions and early test-command timing corrected; final gameplay logs clean."
+  ]
+}

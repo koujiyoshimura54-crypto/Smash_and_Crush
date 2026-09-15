@@ -1,0 +1,200 @@
+{
+  "ok": true,
+  "checks": 70335,
+  "anchors": [
+    {
+      "strength": 250000,
+      "level": 50
+    },
+    {
+      "strength": 3000000,
+      "level": 60
+    },
+    {
+      "strength": 10000000,
+      "level": 75
+    },
+    {
+      "strength": 20000000,
+      "level": 90
+    },
+    {
+      "strength": 50000000,
+      "level": 105
+    },
+    {
+      "strength": 100000000,
+      "level": 120
+    },
+    {
+      "strength": 200000000,
+      "level": 140
+    },
+    {
+      "strength": 500000000,
+      "level": 155
+    },
+    {
+      "strength": 1000000000,
+      "level": 170
+    },
+    {
+      "strength": 2000000000,
+      "level": 185
+    },
+    {
+      "strength": 5000000000,
+      "level": 200
+    }
+  ],
+  "samples": [
+    {
+      "nextStrength": 319000,
+      "level": 50,
+      "strength": 250000,
+      "formatted": "250K"
+    },
+    {
+      "nextStrength": 463000,
+      "level": 51,
+      "strength": 319000,
+      "formatted": "319K"
+    },
+    {
+      "nextStrength": 3351000,
+      "level": 60,
+      "strength": 3000000,
+      "formatted": "3M"
+    },
+    {
+      "nextStrength": 10543000,
+      "level": 75,
+      "strength": 10000000,
+      "formatted": "10M"
+    },
+    {
+      "nextStrength": 21098000,
+      "level": 90,
+      "strength": 20000000,
+      "formatted": "20M"
+    },
+    {
+      "nextStrength": 52568000,
+      "level": 105,
+      "strength": 50000000,
+      "formatted": "50M"
+    },
+    {
+      "nextStrength": 103910000,
+      "level": 120,
+      "strength": 100000000,
+      "formatted": "100M"
+    },
+    {
+      "nextStrength": 209441000,
+      "level": 140,
+      "strength": 200000000,
+      "formatted": "200M"
+    },
+    {
+      "nextStrength": 525383000,
+      "level": 155,
+      "strength": 500000000,
+      "formatted": "500M"
+    },
+    {
+      "nextStrength": 1045235000,
+      "level": 170,
+      "strength": 1000000000,
+      "formatted": "1B"
+    },
+    {
+      "nextStrength": 2109778000,
+      "level": 185,
+      "strength": 2000000000,
+      "formatted": "2B"
+    },
+    {
+      "nextStrength": 5000000000,
+      "level": 199,
+      "strength": 4750222000,
+      "formatted": "4.8B"
+    },
+    {
+      "nextStrength": 5250000000,
+      "level": 200,
+      "strength": 5000000000,
+      "formatted": "5B"
+    },
+    {
+      "nextStrength": 5500000000,
+      "level": 201,
+      "strength": 5250000000,
+      "formatted": "5.2B"
+    },
+    {
+      "nextStrength": 2455000000000,
+      "level": 9999,
+      "strength": 2454750000000,
+      "formatted": "2.5T"
+    },
+    {
+      "nextStrength": 2455000000000,
+      "level": 10000,
+      "strength": 2455000000000,
+      "formatted": "2.5T"
+    }
+  ],
+  "world2": [
+    {
+      "Level": 60,
+      "Stage": 1,
+      "Strength": 3000000
+    },
+    {
+      "Level": 75,
+      "Stage": 2,
+      "Strength": 10000000
+    },
+    {
+      "Level": 90,
+      "Stage": 3,
+      "Strength": 20000000
+    },
+    {
+      "Level": 105,
+      "Stage": 4,
+      "Strength": 50000000
+    },
+    {
+      "Level": 120,
+      "Stage": 5,
+      "Strength": 100000000
+    },
+    {
+      "Level": 140,
+      "Stage": 6,
+      "Strength": 200000000
+    },
+    {
+      "Level": 155,
+      "Stage": 7,
+      "Strength": 500000000
+    },
+    {
+      "Level": 170,
+      "Stage": 8,
+      "Strength": 1000000000
+    },
+    {
+      "Level": 185,
+      "Stage": 9,
+      "Strength": 2000000000
+    },
+    {
+      "Level": 200,
+      "Stage": 10,
+      "Strength": 5000000000
+    }
+  ]
+}

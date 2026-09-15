@@ -1,0 +1,37 @@
+# Windows / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Roblox Studio local/session files
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+*.lock
+
+# Codex / tool caches and temporary output
+.codex/
+.cache/
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+
+# Python / Node generated caches (source files remain tracked)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+
+# Keep docs, Luau sources, reports, backups, screenshots, CSV and JSON tracked.

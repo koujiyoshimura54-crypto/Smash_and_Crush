@@ -1,0 +1,2073 @@
+{
+  "numeric": [
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": "local NumberFormat=require(RS.Modules:WaitForChild(\"NumberFormat\"))",
+      "line": 5
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": " return st and st:FindFirstChild((\"Stage%d.%d\"):format(major,index))",
+      "line": 49
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": " local map=workspace:FindFirstChild(\"GeneratedMap\"); local bc=map and map:FindFirstChild(\"BattleCorridor\"); local st=bc and bc:FindFirstChild((\"Stage%02d\"):format(major)); local m=st and st:FindFirstChild((\"Stage%d.5\"):format(major)); local floor=m and m:FindFirstChild(\"Floor\")",
+      "line": 52
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": " bar.HPLabel.Text=NumberFormat.Format(v)..\" / \"..NumberFormat.Format(max)",
+      "line": 81
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": " local hp=label(\"HPLabel\",NumberFormat.Format(v)..\" / \"..NumberFormat.Format(max),UDim2.fromOffset(16,barY+4),UDim2.new(1,-32,0,42),20,30)",
+      "line": 158
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": "  local sub=P:GetAttribute((\"Stage%dSubStage\"):format(stage)) or 1",
+      "line": 245
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": "  local f=fills[d.Stage] if f then f.Current=d.Current;f.Max=d.Max;f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current)..\" / \"..NumberFormat.Format(d.Max) end",
+      "line": 320
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": " elseif d.Type==\"Initialize\"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(gates)table.clear(defeated)for i=1,10 do gauge(i,d.Gauges[i],enemy(i):GetAttribute(\"BossMaxHP\") or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else gate(i)visible(i,true)end end refreshGaugeVisibility() elseif d.Type==\"Gauge\"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current)..\" / \"..NumberFormat.Format(d.Max) end",
+      "line": 339
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "text": " local major,index=model.Name:match(\"^Stage(%d+)%.([1-4])$\")",
+      "line": 354
+    },
+    {
+      "path": "StarterGui.StrengthGui.StrengthDisplay",
+      "text": "local Format=require(RS.Modules:WaitForChild(\"NumberFormat\"))",
+      "line": 4
+    },
+    {
+      "path": "StarterGui.StrengthGui.WinDisplay",
+      "text": "local Format=require(game:GetService(\"ReplicatedStorage\").Modules:WaitForChild(\"NumberFormat\"))",
+      "line": 2
+    },
+    {
+      "path": "StarterGui.StrengthGui.RebirthMenuClient",
+      "text": " progress.Text=maxed and \"WORLD 1 MAX\" or (\"REQUIRED LEVEL  Lv %s  •  Lv %d / %s\"):format(tostring(req or \"N/A\"),value,tostring(req or \"N/A\"))",
+      "line": 34
+    },
+    {
+      "path": "StarterGui.StrengthGui.PotionStatusClient",
+      "text": "  row.Remaining.Text=string.format(\"%d:%02d\",math.floor(n/60),n%60)",
+      "line": 40
+    },
+    {
+      "path": "StarterGui.StrengthGui.TimeRewardsClient",
+      "text": " return string.format(\"%d:%02d\",math.floor(seconds/60),seconds%60)",
+      "line": 20
+    },
+    {
+      "path": "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New",
+      "text": "  panel.Footer.Hint.Text=pending and \"Merging...\" or (\"Select %d identical items from your collection\"):format(MergeConfig.RequiredCount)",
+      "line": 196
+    },
+    {
+      "path": "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New",
+      "text": "local errors={NotEnoughItems=(\"You need %d identical items.\"):format(MergeConfig.RequiredCount),NotMergeable=\"This item cannot be merged.\",InvalidItemId=\"Invalid item.\",InvalidRequest=\"Invalid merge request.\",DataSaving=\"Saving inventory. Please try again.\",InventorySavePending=\"Saving inventory. Reopen after saving completes.\",RateLimited=\"Please wait a moment.\"}",
+      "line": 202
+    },
+    {
+      "path": "StarterGui.StrengthGainGui.StrengthGainClient",
+      "text": "local Format=require(RS.Modules:WaitForChild(\"NumberFormat\"))",
+      "line": 13
+    },
+    {
+      "path": "ServerScriptService.World.Stage1WallManager",
+      "text": " for major,stage in s.Stages do p:SetAttribute((\"Stage%dSubStage\"):format(major),stage.Current) end",
+      "line": 41
+    },
+    {
+      "path": "ServerScriptService.World.Stage1WallManager",
+      "text": " local map=workspace:FindFirstChild(\"GeneratedMap\"); local bc=map and map:FindFirstChild(\"BattleCorridor\"); local st=bc and bc:FindFirstChild((\"Stage%02d\"):format(major)); return st and st:FindFirstChild((\"Stage%d.%d\"):format(major,s.Current))",
+      "line": 49
+    },
+    {
+      "path": "ServerScriptService.World.Stage1WallManager",
+      "text": "  if s.Gauges[i]<=0 then s.Cleared[i]=true; cleared[#cleared+1]=i; s.Current=i+1; p:SetAttribute((\"Stage%dSubStage\"):format(major),s.Current) end",
+      "line": 57
+    },
+    {
+      "path": "ServerScriptService.Services.PlayerDataService",
+      "text": " return os.date(\"!%Y-%m-%d\", os.time()+JST_OFFSET)",
+      "line": 17
+    },
+    {
+      "path": "ServerScriptService.Services.PlayerDataService",
+      "text": "local function dailyUTC() return os.date(\"!%Y-%m-%d\",os.time()) end",
+      "line": 81
+    },
+    {
+      "path": "ServerScriptService.Services.PlayerDataService",
+      "text": " if typeof(date)~=\"string\" or (count==0 and date~=\"\") or (count>0 and not date:match(\"^%d%d%d%d%-%d%d%-%d%d$\")) then return nil,\"Invalid DailyRewards date\" end",
+      "line": 88
+    },
+    {
+      "path": "ServerScriptService.Services.PlayerDataService",
+      "text": " if typeof(date)~=\"string\" or (date~=\"\" and not date:match(\"^%d%d%d%d%-%d%d%-%d%d$\")) then return nil,\"Invalid VIP daily date\" end",
+      "line": 122
+    },
+    {
+      "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.PlayerDataService",
+      "text": " return os.date(\"!%Y-%m-%d\", os.time()+JST_OFFSET)",
+      "line": 10
+    },
+    {
+      "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.PlayerDataService",
+      "text": " return os.date(\"!%Y-%m-%d\", os.time()+JST_OFFSET)",
+      "line": 10
+    }
+  ],
+  "world2Objects": [
+    {
+      "attributes": {
+        "Role": "VisualOnly",
+        "Functionality": "PendingWorld2"
+      },
+      "path": "Workspace.World2Map.TrainingArea.Decorations.Shop"
+    },
+    {
+      "attributes": {
+        "Role": "VisualOnly",
+        "Functionality": "PendingWorld2"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill03"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill10"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill04"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill02"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill01"
+    },
+    {
+      "attributes": {
+        "EmitDelay": 0
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill01.PremiumAura.AuraEmitterPart.AuraFireSpecs1"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill08"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill09"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill06"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill05"
+    },
+    {
+      "attributes": {
+        "StrengthPerTick": 1,
+        "TickInterval": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TreadmillsPreview.Tredmill07"
+    },
+    {
+      "attributes": {
+        "Role": "VisualOnly",
+        "Functionality": "PendingWorld2"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row01.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row02.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row03.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row04.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row05.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row06.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row07.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row08.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row09.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DailyRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row10.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Role": "VisualOnly",
+        "Functionality": "PendingWorld2"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row01.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row02.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row03.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row04.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row05.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row06.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row07.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row08.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row09.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Ui-Scale-Rate": 1.5,
+        "Ui-Scale": "ImageTileScale"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.TotalRankingPreview.Main.RankingSurfaceGui.ScrollingFrame.Row10.Frame.StudPattern"
+    },
+    {
+      "attributes": {
+        "Role": "VisualOnly",
+        "Functionality": "PendingWorld2"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DoubleWinSignPreview"
+    },
+    {
+      "attributes": {
+        "SourceObject": "Workspace.GeneratedMap.Trophy"
+      },
+      "path": "Workspace.World2Map.TrainingArea.EquipmentVisuals.DoubleWinSignPreview.Trophy"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "LobbyArrivalMarker"
+      },
+      "path": "Workspace.World2Map.TrainingArea.World2LobbySpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.5"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 3,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.5.EnemyPlaceholder_Stage03"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.3"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.3.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.1"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.1.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.4"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.4.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.2"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 3,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.2.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.2"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.2.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.1"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.1.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.4"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.4.Wall"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 6
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.5"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 6,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.5.EnemyPlaceholder_Stage06"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.3"
+    },
+    {
+      "attributes": {
+        "StageIndex": 6,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.3.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.3"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.3.Wall"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 9
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.5"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 9,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.5.EnemyPlaceholder_Stage09"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.4"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.4.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.1"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.1.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.2"
+    },
+    {
+      "attributes": {
+        "StageIndex": 9,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.2.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 5
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.5"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 5,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.5.EnemyPlaceholder_Stage05"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.1"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.1.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.3"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.3.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.4"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.4.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.2"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 5,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.2.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "StageWidth": 30,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 36,
+        "IsBossStage": true
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.4"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.4.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.3"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.3.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 10
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.5"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 10,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.5.EnemyPlaceholder_Stage10"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.5.BossSpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.2"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.2.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.1"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 10,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.1.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.4"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.4.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.3"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.3.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.1"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.1.Wall"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.5"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 1,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.5.EnemyPlaceholder_Stage01"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.2"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 1,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.2.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.3"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.3.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.2"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.2.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.4"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.4.Wall"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 8
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.5"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 8,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.5.EnemyPlaceholder_Stage08"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.1"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 8,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.1.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.2"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.2.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.3"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.3.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.4"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.4.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.1"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.1.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.5"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 2,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.5.EnemyPlaceholder_Stage02"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.5"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 4,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.5.EnemyPlaceholder_Stage04"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.2"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.2.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.1"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.1.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.3"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.3.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.4"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 4,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.4.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "StageWidth": 20,
+        "WorldId": 2,
+        "IntegrationStatus": "AuthoringOnly",
+        "StageLength": 28,
+        "IsBossStage": false
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "SectionType": "Wall",
+        "SubStageIndex": 4,
+        "WallIndex": 4,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.4"
+    },
+    {
+      "attributes": {
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.4.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 4
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.4.Wall"
+    },
+    {
+      "attributes": {
+        "SectionType": "MiniBoss",
+        "SubStageIndex": 5,
+        "WorldId": 2,
+        "StageIndex": 7
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.5"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "BossAreaReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.5.BossAreaBounds"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.5.MiniBossSpawn"
+    },
+    {
+      "attributes": {
+        "RequiredStrengthStatus": "Pending",
+        "HPConfig": "ReplicatedStorage.Config.World2BossConfig",
+        "WorldId": 2,
+        "StageIndex": 7,
+        "AssetStatus": "Placeholder"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.5.EnemyPlaceholder_Stage07"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.5.EnemySpawn"
+    },
+    {
+      "attributes": {
+        "WorldId": 2,
+        "Role": "RewardPadReservation"
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.5.RewardPadSpawn"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "SectionType": "Wall",
+        "SubStageIndex": 2,
+        "WallIndex": 2,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.2"
+    },
+    {
+      "attributes": {
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.2.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.2.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "SectionType": "Wall",
+        "SubStageIndex": 3,
+        "WallIndex": 3,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.3"
+    },
+    {
+      "attributes": {
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.3.CombatZone"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 3
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.3.Wall"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "SectionType": "Wall",
+        "SubStageIndex": 1,
+        "WallIndex": 1,
+        "WorldId": 2
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.1"
+    },
+    {
+      "attributes": {
+        "StageIndex": 7,
+        "WorldId": 2,
+        "HPConfig": "ServerScriptService.Config.World2WallConfig",
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.1.Wall"
+    },
+    {
+      "attributes": {
+        "WallIndex": 1
+      },
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.1.CombatZone"
+    },
+    {
+      "attributes": {
+        "Role": "FutureWorldExpansionSpace"
+      },
+      "path": "Workspace.World2Map.NextWorldArea"
+    },
+    {
+      "attributes": {
+        "Role": "FutureConnectionMarker"
+      },
+      "path": "Workspace.World2Map.NextWorldArea.FutureConnectionBounds"
+    }
+  ],
+  "references": {
+    "ServerScriptService.World.Stage1WallManager": [
+      {
+        "text": "-- Config remains the legacy HP source used by World2WallConfig.",
+        "line": 18
+      }
+    ],
+    "ReplicatedStorage.Config.World2BossConfig": [
+      {
+        "text": "local World=require(script.Parent.World2Config)",
+        "line": 3
+      },
+      {
+        "text": " hp[stage]=assert(Base.GetMaxHP(stage))*World.World2HPScale",
+        "line": 7
+      },
+      {
+        "text": "-- Intentionally unavailable until World2 balancing is approved.",
+        "line": 11
+      }
+    ],
+    "ReplicatedStorage.Config.WorldGateConfig": [
+      {
+        "text": " GateName=\"World2Gate\",",
+        "line": 3
+      }
+    ],
+    "ServerScriptService.Config.World2WallConfig": [
+      {
+        "text": "local World=require(game.ReplicatedStorage.Config.World2Config)",
+        "line": 3
+      },
+      {
+        "text": " for index,hp in ipairs(entry.Walls) do walls[index]=hp*World.World2HPScale end",
+        "line": 7
+      }
+    ],
+    "ReplicatedStorage.Config.World1LateStageConfig": [
+      {
+        "text": "-- World2 still derives its intentionally unchanged HP from those baseline tables.",
+        "line": 2
+      },
+      {
+        "text": "local required={9000,25000,60000,130000,250000}",
+        "line": 7
+      }
+    ],
+    "ReplicatedStorage.Config.LevelRequirements": [
+      {
+        "text": "\t[35] = 25000,",
+        "line": 39
+      },
+      {
+        "text": "\t[50] = 250000,",
+        "line": 54
+      }
+    ],
+    "ReplicatedStorage.Config.World2Config": [
+      {
+        "text": "-- World2 authoring only; no travel, combat or progression is activated here.",
+        "line": 1
+      },
+      {
+        "text": " World2HPScale=25000,",
+        "line": 5
+      }
+    ],
+    "ReplicatedStorage.Config.WorldPassConfig": [
+      {
+        "text": " World2={DoubleWinPassId=nil},",
+        "line": 4
+      }
+    ]
+  }
+}

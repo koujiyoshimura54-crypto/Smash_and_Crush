@@ -1,0 +1,714 @@
+{
+  "balance": {
+    "6": {
+      "BossFinalHP": 0,
+      "BossMaxHP": 45000,
+      "BossHits": 5,
+      "WallsCleared": true,
+      "BossWon": true,
+      "ActualLevel": 30,
+      "GloveBonus": 0,
+      "BossBattleDamage": 9000,
+      "Duration": 6.133035499951802,
+      "WorldComplete": false,
+      "InitialWalls": [
+        4205,
+        8410,
+        12615,
+        16820
+      ],
+      "NextStage": 7,
+      "RecommendedLevel": 30,
+      "BossStartingHP": 42050,
+      "WallHits": 5,
+      "Stage": 6,
+      "RequiredStrength": 9000
+    },
+    "7": {
+      "BossFinalHP": 0,
+      "BossMaxHP": 125000,
+      "BossHits": 5,
+      "WallsCleared": true,
+      "BossWon": true,
+      "ActualLevel": 35,
+      "GloveBonus": 0,
+      "BossBattleDamage": 25000,
+      "Duration": 5.06648259999929,
+      "WorldComplete": false,
+      "InitialWalls": [
+        5780,
+        11560,
+        17340,
+        23120
+      ],
+      "NextStage": 8,
+      "RecommendedLevel": 35,
+      "BossStartingHP": 107800,
+      "WallHits": 3,
+      "Stage": 7,
+      "RequiredStrength": 25000
+    },
+    "8": {
+      "BossFinalHP": 0,
+      "BossMaxHP": 300000,
+      "BossHits": 5,
+      "WallsCleared": true,
+      "BossWon": true,
+      "ActualLevel": 40,
+      "GloveBonus": 0,
+      "BossBattleDamage": 60000,
+      "Duration": 4.732886099955067,
+      "WorldComplete": false,
+      "InitialWalls": [
+        7605,
+        15210,
+        22815,
+        30420
+      ],
+      "NextStage": 9,
+      "RecommendedLevel": 40,
+      "BossStartingHP": 256050,
+      "WallHits": 2,
+      "Stage": 8,
+      "RequiredStrength": 60000
+    },
+    "9": {
+      "BossFinalHP": 0,
+      "BossMaxHP": 650000,
+      "BossHits": 5,
+      "WallsCleared": true,
+      "BossWon": true,
+      "ActualLevel": 45,
+      "GloveBonus": 0,
+      "BossBattleDamage": 130000,
+      "Duration": 4.567100699990988,
+      "WorldComplete": false,
+      "InitialWalls": [
+        9680,
+        19360,
+        29040,
+        38720
+      ],
+      "NextStage": 10,
+      "RecommendedLevel": 45,
+      "BossStartingHP": 616800,
+      "WallHits": 1,
+      "Stage": 9,
+      "RequiredStrength": 130000
+    },
+    "10": {
+      "BossFinalHP": 0,
+      "BossMaxHP": 1250000,
+      "BossHits": 5,
+      "WallsCleared": true,
+      "BossWon": true,
+      "ActualLevel": 50,
+      "GloveBonus": 0,
+      "BossBattleDamage": 250000,
+      "Duration": 4.566797700012103,
+      "WorldComplete": true,
+      "InitialWalls": [
+        12005,
+        24010,
+        36015,
+        48020
+      ],
+      "NextStage": 10,
+      "RecommendedLevel": 50,
+      "BossStartingHP": 1120050,
+      "WallHits": 1,
+      "Stage": 10,
+      "RequiredStrength": 250000
+    }
+  },
+  "ProfileRestored": true,
+  "status": "completed",
+  "world2": [
+    {
+      "Walls": [
+        2500000,
+        3125000,
+        3750000,
+        5000000
+      ],
+      "Boss": 6250000
+    },
+    {
+      "Walls": [
+        7500000,
+        8125000,
+        8750000,
+        10625000
+      ],
+      "Boss": 12500000
+    },
+    {
+      "Walls": [
+        15000000,
+        18750000,
+        22500000,
+        30000000
+      ],
+      "Boss": 37500000
+    },
+    {
+      "Walls": [
+        75000000,
+        93750000,
+        112500000,
+        150000000
+      ],
+      "Boss": 187500000
+    },
+    {
+      "Walls": [
+        175000000,
+        218750000,
+        262500000,
+        350000000
+      ],
+      "Boss": 437500000
+    },
+    {
+      "Walls": [
+        105125000,
+        210250000,
+        315375000,
+        420500000
+      ],
+      "Boss": 2500000000
+    },
+    {
+      "Walls": [
+        144500000,
+        289000000,
+        433500000,
+        578000000
+      ],
+      "Boss": 8750000000
+    },
+    {
+      "Walls": [
+        190125000,
+        380250000,
+        570375000,
+        760500000
+      ],
+      "Boss": 25000000000
+    },
+    {
+      "Walls": [
+        242000000,
+        484000000,
+        726000000,
+        968000000
+      ],
+      "Boss": 75000000000
+    },
+    {
+      "Walls": [
+        300125000,
+        600250000,
+        900375000,
+        1200500000
+      ],
+      "Boss": 250000000000
+    }
+  ],
+  "colliders": {
+    "6": {
+      "Bottom": 2,
+      "Size": [
+        18,
+        34,
+        36
+      ],
+      "ZoneSize": [
+        22,
+        14,
+        40
+      ],
+      "directions": [
+        {
+          "RootToCenter": 18.558385848999023,
+          "Direction": "Front",
+          "ExitNormal": true,
+          "CenterRayRadius": 18,
+          "Attacks": 1,
+          "BossEncounter": true,
+          "MotionLast035": 0.0855567678809166,
+          "Position": [
+            27.836362838745117,
+            5.0000762939453125,
+            344.9818115234375
+          ],
+          "FootY": 2.0020508766174316,
+          "Fighting": true,
+          "ColliderLocal": [
+            -0.08363723754882812,
+            -13.999923706054688,
+            -18.558197021484375
+          ]
+        },
+        {
+          "RootToCenter": 9.85798168182373,
+          "Direction": "Left",
+          "ExitNormal": true,
+          "CenterRayRadius": 9,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.4008890390396118,
+          "Position": [
+            18.063196182250977,
+            4.985257148742676,
+            363.6924133300781
+          ],
+          "FootY": 1.987231731414795,
+          "Fighting": true,
+          "ColliderLocal": [
+            -9.856803894042969,
+            -14.014742851257324,
+            0.15240478515625
+          ]
+        },
+        {
+          "RootToCenter": 9.909294128417969,
+          "Direction": "Right",
+          "ExitNormal": true,
+          "CenterRayRadius": 9,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.44803735613822937,
+          "Position": [
+            37.82851791381836,
+            4.966747760772705,
+            363.4159851074219
+          ],
+          "FootY": 1.9687223434448242,
+          "Fighting": true,
+          "ColliderLocal": [
+            9.908517837524414,
+            -14.033252716064453,
+            -0.1240234375
+          ]
+        },
+        {
+          "RootToCenter": 18.8177490234375,
+          "Direction": "Back",
+          "ExitNormal": true,
+          "CenterRayRadius": 18,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.4157041311264038,
+          "Position": [
+            28.027172088623047,
+            4.985525131225586,
+            382.3574523925781
+          ],
+          "FootY": 1.987499713897705,
+          "Fighting": true,
+          "ColliderLocal": [
+            0.10717201232910156,
+            -14.014474868774414,
+            18.81744384765625
+          ]
+        }
+      ]
+    },
+    "7": {
+      "Bottom": 2,
+      "Size": [
+        18,
+        44,
+        44
+      ],
+      "ZoneSize": [
+        22,
+        14,
+        48
+      ],
+      "directions": [
+        {
+          "RootToCenter": 11.558405876159668,
+          "Direction": "Front",
+          "ExitNormal": true,
+          "CenterRayRadius": 17.999997854233044,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 2.260152816772461,
+          "Position": [
+            22.218154907226562,
+            4.987359523773193,
+            449.5858459472656
+          ],
+          "FootY": 1.9893341064453125,
+          "Fighting": true,
+          "ColliderLocal": [
+            9.965011596679688,
+            -19.01263999938965,
+            5.8562164306640625
+          ]
+        },
+        {
+          "RootToCenter": 10.135733604431152,
+          "Direction": "Left",
+          "ExitNormal": true,
+          "CenterRayRadius": 10.392305031936761,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.5165907740592957,
+          "Position": [
+            18.17902946472168,
+            4.998360633850098,
+            456.83880615234375
+          ],
+          "FootY": 2.000335216522217,
+          "Fighting": true,
+          "ColliderLocal": [
+            9.836516380310059,
+            -19.00164031982422,
+            -2.444594621658325
+          ]
+        },
+        {
+          "RootToCenter": 10.102079391479492,
+          "Direction": "Right",
+          "ExitNormal": true,
+          "CenterRayRadius": 10.392305031936761,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.5340762138366699,
+          "Position": [
+            37.603511810302734,
+            4.994476318359375,
+            462.51776123046875
+          ],
+          "FootY": 1.9964509010314941,
+          "Fighting": true,
+          "ColliderLocal": [
+            -9.825055122375488,
+            -19.005523681640625,
+            2.3495283126831055
+          ]
+        },
+        {
+          "RootToCenter": 11.355180740356445,
+          "Direction": "Back",
+          "ExitNormal": false,
+          "CenterRayRadius": 17.999997854233044,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 2.3088505268096924,
+          "Position": [
+            33.38089370727539,
+            4.992909908294678,
+            469.5958251953125
+          ],
+          "FootY": 1.9948844909667969,
+          "Fighting": true,
+          "ColliderLocal": [
+            -9.707193374633789,
+            -19.007089614868164,
+            -5.89156436920166
+          ]
+        }
+      ]
+    },
+    "8": {
+      "Bottom": 2,
+      "Size": [
+        32,
+        44,
+        30
+      ],
+      "ZoneSize": [
+        36,
+        14,
+        34
+      ],
+      "directions": [
+        {
+          "RootToCenter": 23.8134822845459,
+          "Direction": "Front",
+          "ExitNormal": true,
+          "CenterRayRadius": 15,
+          "BossEncounter": false,
+          "MotionLast035": 0.029827548190951347,
+          "Position": [
+            27.8251895904541,
+            4.950002193450928,
+            528.9266357421875
+          ],
+          "FootY": 1.9519767761230469,
+          "Fighting": false,
+          "ColliderLocal": [
+            -0.09481048583984375,
+            -19.049997329711914,
+            -23.81329345703125
+          ]
+        },
+        {
+          "RootToCenter": 16.908592224121094,
+          "Direction": "Left",
+          "ExitNormal": true,
+          "CenterRayRadius": 16,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.563079297542572,
+          "Position": [
+            11.013675689697266,
+            4.975301742553711,
+            553.016845703125
+          ],
+          "FootY": 1.97727632522583,
+          "Fighting": true,
+          "ColliderLocal": [
+            -16.90632438659668,
+            -19.02469825744629,
+            0.27691650390625
+          ]
+        },
+        {
+          "RootToCenter": 16.878379821777344,
+          "Direction": "Right",
+          "ExitNormal": true,
+          "CenterRayRadius": 16,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.4062236547470093,
+          "Position": [
+            44.79823684692383,
+            4.995290756225586,
+            552.6703491210938
+          ],
+          "FootY": 1.997265338897705,
+          "Fighting": true,
+          "ColliderLocal": [
+            16.878236770629883,
+            -19.004709243774414,
+            -0.069580078125
+          ]
+        },
+        {
+          "RootToCenter": 15.915966033935547,
+          "Direction": "Back",
+          "ExitNormal": true,
+          "CenterRayRadius": 15,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.4305873215198517,
+          "Position": [
+            28.08005714416504,
+            4.986800670623779,
+            568.6550903320312
+          ],
+          "FootY": 1.9887752532958984,
+          "Fighting": true,
+          "ColliderLocal": [
+            0.16005706787109375,
+            -19.013198852539062,
+            15.9151611328125
+          ]
+        }
+      ]
+    },
+    "9": {
+      "Bottom": 2,
+      "Size": [
+        28,
+        52,
+        14
+      ],
+      "ZoneSize": [
+        32,
+        14,
+        18
+      ],
+      "directions": [
+        {
+          "RootToCenter": 7.8804931640625,
+          "Direction": "Front",
+          "ExitNormal": true,
+          "CenterRayRadius": 7,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.43454909324645996,
+          "Position": [
+            27.747331619262695,
+            4.992044448852539,
+            622.9613647460938
+          ],
+          "FootY": 1.9940190315246582,
+          "Fighting": true,
+          "ColliderLocal": [
+            -0.17266845703125,
+            -23.00795555114746,
+            -7.87860107421875
+          ]
+        },
+        {
+          "RootToCenter": 14.895476341247559,
+          "Direction": "Left",
+          "ExitNormal": true,
+          "CenterRayRadius": 14,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.40678632259368896,
+          "Position": [
+            13.024883270263672,
+            4.9859819412231445,
+            630.9434814453125
+          ],
+          "FootY": 1.9879565238952637,
+          "Fighting": true,
+          "ColliderLocal": [
+            -14.895116806030273,
+            -23.014019012451172,
+            0.103515625
+          ]
+        },
+        {
+          "RootToCenter": 14.907514572143555,
+          "Direction": "Right",
+          "ExitNormal": true,
+          "CenterRayRadius": 14,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.497954785823822,
+          "Position": [
+            42.827064514160156,
+            4.9797163009643555,
+            630.7240600585938
+          ],
+          "FootY": 1.9816908836364746,
+          "Fighting": true,
+          "ColliderLocal": [
+            14.907064437866211,
+            -23.020282745361328,
+            -0.11590576171875
+          ]
+        },
+        {
+          "RootToCenter": 7.909546375274658,
+          "Direction": "Back",
+          "ExitNormal": true,
+          "CenterRayRadius": 7,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.45600226521492004,
+          "Position": [
+            28.098514556884766,
+            4.967139720916748,
+            638.7474975585938
+          ],
+          "FootY": 1.9691143035888672,
+          "Fighting": true,
+          "ColliderLocal": [
+            0.1785144805908203,
+            -23.032859802246094,
+            7.90753173828125
+          ]
+        }
+      ]
+    },
+    "10": {
+      "Bottom": 2,
+      "Size": [
+        28,
+        46,
+        32
+      ],
+      "ZoneSize": [
+        32,
+        14,
+        36
+      ],
+      "directions": [
+        {
+          "RootToCenter": 17.774349212646484,
+          "Direction": "Front",
+          "ExitNormal": true,
+          "CenterRayRadius": 18.47520894566535,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.8640570640563965,
+          "Position": [
+            31.44550132751465,
+            4.994916915893555,
+            697.5187377929688
+          ],
+          "FootY": 1.9968914985656738,
+          "Fighting": true,
+          "ColliderLocal": [
+            -5.65742826461792,
+            -20.005083084106445,
+            -16.849956512451172
+          ]
+        },
+        {
+          "RootToCenter": 15.552154541015625,
+          "Direction": "Left",
+          "ExitNormal": true,
+          "CenterRayRadius": 16.165807827457183,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.7660322785377502,
+          "Position": [
+            12.723286628723145,
+            5.005901336669922,
+            711.6339721679688
+          ],
+          "FootY": 2.007875919342041,
+          "Fighting": true,
+          "ColliderLocal": [
+            -14.813724517822266,
+            -19.994098663330078,
+            4.7353034019470215
+          ]
+        },
+        {
+          "RootToCenter": 15.361039161682129,
+          "Direction": "Right",
+          "ExitNormal": true,
+          "CenterRayRadius": 16.165807827457183,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.6595181226730347,
+          "Position": [
+            42.78286361694336,
+            4.995303153991699,
+            718.8202514648438
+          ],
+          "FootY": 1.9972777366638184,
+          "Fighting": true,
+          "ColliderLocal": [
+            14.811772346496582,
+            -20.004695892333984,
+            -4.070984840393066
+          ]
+        },
+        {
+          "RootToCenter": 17.704126358032227,
+          "Direction": "Back",
+          "ExitNormal": true,
+          "CenterRayRadius": 18.47520894566535,
+          "Attacks": 2,
+          "BossEncounter": true,
+          "MotionLast035": 0.827735424041748,
+          "Position": [
+            24.306133270263672,
+            4.998258590698242,
+            732.2713012695312
+          ],
+          "FootY": 2.0002331733703613,
+          "Fighting": true,
+          "ColliderLocal": [
+            5.535979270935059,
+            -20.001741409301758,
+            16.816329956054688
+          ]
+        }
+      ]
+    }
+  }
+}
