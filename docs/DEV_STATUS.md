@@ -128,3 +128,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 - 実装済み: World2 Lobbyの`World1ReturnGate`、共通Modal、Server検証、正式World1 Spawnへの同一Character帰還、`CurrentWorld=1`。
 - Play確認済み: World1→2→1→2、NO後の退出待ち、状態値維持。World2 Combat・Stage・Inventoryは未接続。
+## 2026-09-16 — World1 progression rebalance
+
+- Lv1〜50のRequirementを確定カーブへ更新。Lv51以降とWorld2は未変更。
+- World1 Stage6〜10の実Combat正本`World1LateStageConfig`をRequiredStrength 37,025 / 81,525 / 196,525 / 462,525 / 1,017,525へ更新し、既存倍率でWall/Boss HPを再生成。
+- Stage1〜5の前半Play Balance、Strength獲得量、戦闘ロジック、Map、課金、DataStoreは変更なし。

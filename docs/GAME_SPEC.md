@@ -189,3 +189,8 @@ PlayerData keyはPlayer_<UserId>。主な保存項目はStrength、RebirthCount�
 - `Workspace.World2Map.TrainingArea.World1ReturnGate`から、共通の確認UIを経由してWorld1 Lobbyへ帰還できる。
 - Serverは許可済みAction、`CurrentWorld==2`、Return Gate内滞在、Character生存を検証し、`Workspace.GeneratedMap.TrainingArea.SpawnLocation`へ同一Characterを移動する。
 - World1→World2は解放確認を維持し、World2→World1は自由帰還。成功時に`CurrentWorld`を2/1へ切り替える。Stage進行と永続データは変更しない。
+## 2026-09-16 — World1 cumulative Strength progression rebalance
+
+Lv1〜50のLevelRequirementsを新しい累積Strengthカーブへ更新した。各値はそのLevelから次Levelへ進むためのStrength獲得量として扱う。Strength自体は累積戦闘Strengthとして維持し、Lv51以降・World2・Level進行ロジックは変更していない。
+
+World1 Stage6〜10はRecommendedLevel到達時の理論累積StrengthをRequiredStrengthへ反映し、Stage5→6の大きな難易度上昇を意図的に維持する。

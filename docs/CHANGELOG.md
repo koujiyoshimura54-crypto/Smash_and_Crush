@@ -122,3 +122,8 @@
 - StudioDebugConfigへProductionCreatorGamePassEffectsEnabled=falseと対象一覧ProductionCreatorUserIds={[7467238848]=true}を追加。
 - 既存GamePassService.AreEffectsEnabled(player)へPlayer単位のProduction判定を集約。Studioは従来の全Player設定、Production一般Playerは常時有効、指定製作者だけ新設定へ従う。
 - Starter/Secret Pack、VIP、Double Win、Premium Speed/Treadmill、Aura、Potion再適用の既存ガードへPlayerを渡した。所有表示とDeveloper Product、DataStore Schema、/resetdataは変更なし。
+## 2026-09-16 — Rebalance World1 progression and cumulative Strength
+
+- Lv1〜50のLevelRequirementsを新しい獲得量カーブへ更新。Lv51以降は維持。
+- World1 Stage6〜10をRecommendedLevel到達時の累積Strengthへ同期し、Wall倍率2/2.5/3/4、Boss倍率5でHPを更新。
+- Stage1〜5、World2、Strength獲得速度、LevelProgress処理、DataStore、UI、Combat仕様は変更なし。
