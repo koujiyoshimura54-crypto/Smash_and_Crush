@@ -31,7 +31,13 @@ Roblox Game：Train to Smash Everything / Studio表示 +1 スマッシュ&クラ
 - Studioの接続Placeを確認する。今回の初期監査対象PlaceIdは101572058398926。複数Studioや異なるPlaceでは誤編集を防ぐ。
 - reports/Implementation_Audit_20260915/sourcesは監査時点の保存物で、自動同期ソースではない。報告のbefore/after/evidenceを後から書き換えない。新しい変更は新しい報告へ記録する。
 - 既存レポート整理では内容と関連リンクを維持する。検証用Playerデータ、個人情報、秘密情報を新規公開物へ流用しない。
-- Publish、Git Commit、削除・破壊的移行はユーザーの許可範囲を確認する。既に明確に許可された通常作業について細かな確認を繰り返さない。
+- Publish、削除・破壊的移行はユーザーの許可範囲を確認する。既に明確に許可された通常作業について細かな確認を繰り返さない。
 - Git未導入・未初期化を理由に勝手にインストール、git init、Commit、Remote作成をしない。
 - 今回の文書初期化でStudio実装は変更していない。次回作業では必要な監査を行い、SPEC v1.0を出発点として扱う。
 
+## Git運用
+
+- Git導入済みの本Projectでは、依頼された作業が正常完了し、必要な検証と差分確認が済んだら、追加確認を求めずに今回分だけをCommitし、`origin/main`へPushする。
+- Commit前に`git status`と`git diff`を確認し、今回と無関係な変更を混ぜない。他者または以前から存在する変更を勝手にCommit・破棄しない。
+- 通常のCommitと`origin/main`へのPushは完了作業の一部として扱い、都度の事前確認を不要とする。
+- Force Push、rebaseやreset等による履歴改変、Branch削除、今回と無関係な変更の破棄を行う場合だけ、実行前にユーザー確認を得る。
