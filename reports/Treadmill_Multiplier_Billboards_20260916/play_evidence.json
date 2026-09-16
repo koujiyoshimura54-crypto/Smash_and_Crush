@@ -1,0 +1,300 @@
+{
+  "near": {
+    "billboards": [
+      {
+        "enabled": true,
+        "maxDistance": 100,
+        "name": "Multiplier_3",
+        "position": [
+          -52.67681884765625,
+          14.476966857910156,
+          -92.00001525878906
+        ],
+        "cameraDistance": 51.183658599853516,
+        "text": "×3",
+        "offset": [
+          0,
+          12,
+          0
+        ],
+        "size": [
+          24,
+          15
+        ]
+      },
+      {
+        "enabled": true,
+        "maxDistance": 100,
+        "name": "Multiplier_5",
+        "position": [
+          -52.67681884765625,
+          14.476966857910156,
+          -124.00001525878906
+        ],
+        "cameraDistance": 51.18366622924805,
+        "text": "×5",
+        "offset": [
+          0,
+          12,
+          0
+        ],
+        "size": [
+          24,
+          15
+        ]
+      }
+    ],
+    "training": false,
+    "labels": [
+      {
+        "required": "5 Rebirth Required",
+        "name": "Tredmill02",
+        "strength": "×5 Strength"
+      },
+      {
+        "required": "5 Rebirth Required",
+        "name": "Tredmill03",
+        "strength": "×5 Strength"
+      },
+      {
+        "required": "3 Rebirth Required",
+        "name": "Tredmill04",
+        "strength": "×3 Strength"
+      },
+      {
+        "required": "3 Rebirth Required",
+        "name": "Tredmill05",
+        "strength": "×3 Strength"
+      }
+    ]
+  },
+  "far": {
+    "billboards": [
+      {
+        "enabled": true,
+        "maxDistance": 100,
+        "name": "Multiplier_3",
+        "position": [
+          -52.67681884765625,
+          14.476966857910156,
+          -92.00001525878906
+        ],
+        "cameraDistance": 124.34800720214844,
+        "text": "×3",
+        "offset": [
+          0,
+          12,
+          0
+        ],
+        "size": [
+          24,
+          15
+        ]
+      },
+      {
+        "enabled": true,
+        "maxDistance": 100,
+        "name": "Multiplier_5",
+        "position": [
+          -52.67681884765625,
+          14.476966857910156,
+          -124.00001525878906
+        ],
+        "cameraDistance": 124.34800720214844,
+        "text": "×5",
+        "offset": [
+          0,
+          12,
+          0
+        ],
+        "size": [
+          24,
+          15
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "required": "5 Rebirth Required",
+        "name": "Tredmill02",
+        "strength": "×5 Strength"
+      },
+      {
+        "required": "5 Rebirth Required",
+        "name": "Tredmill03",
+        "strength": "×5 Strength"
+      },
+      {
+        "required": "3 Rebirth Required",
+        "name": "Tredmill04",
+        "strength": "×3 Strength"
+      },
+      {
+        "required": "3 Rebirth Required",
+        "name": "Tredmill05",
+        "strength": "×3 Strength"
+      }
+    ]
+  },
+  "training": {
+    "billboards": [
+      {
+        "enabled": false,
+        "maxDistance": 100,
+        "name": "Multiplier_3",
+        "position": [
+          -52.67681884765625,
+          14.476966857910156,
+          -92.00001525878906
+        ],
+        "cameraDistance": 44.47159957885742,
+        "text": "×3",
+        "offset": [
+          0,
+          12,
+          0
+        ],
+        "size": [
+          24,
+          15
+        ]
+      },
+      {
+        "enabled": false,
+        "maxDistance": 100,
+        "name": "Multiplier_5",
+        "position": [
+          -52.67681884765625,
+          14.476966857910156,
+          -124.00001525878906
+        ],
+        "cameraDistance": 61.39807891845703,
+        "text": "×5",
+        "offset": [
+          0,
+          12,
+          0
+        ],
+        "size": [
+          24,
+          15
+        ]
+      }
+    ],
+    "training": true,
+    "labels": [
+      {
+        "required": "5 Rebirth Required",
+        "name": "Tredmill02",
+        "strength": "×5 Strength"
+      },
+      {
+        "required": "5 Rebirth Required",
+        "name": "Tredmill03",
+        "strength": "×5 Strength"
+      },
+      {
+        "required": "3 Rebirth Required",
+        "name": "Tredmill04",
+        "strength": "×3 Strength"
+      },
+      {
+        "required": "3 Rebirth Required",
+        "name": "Tredmill05",
+        "strength": "×3 Strength"
+      }
+    ]
+  },
+  "exit": {
+    "billboards": [
+      {
+        "enabled": true,
+        "maxDistance": 100,
+        "name": "Multiplier_3",
+        "position": [
+          -52.67681884765625,
+          14.476966857910156,
+          -92.00001525878906
+        ],
+        "cameraDistance": 44.47159957885742,
+        "text": "×3",
+        "offset": [
+          0,
+          12,
+          0
+        ],
+        "size": [
+          24,
+          15
+        ]
+      },
+      {
+        "enabled": true,
+        "maxDistance": 100,
+        "name": "Multiplier_5",
+        "position": [
+          -52.67681884765625,
+          14.476966857910156,
+          -124.00001525878906
+        ],
+        "cameraDistance": 61.39807891845703,
+        "text": "×5",
+        "offset": [
+          0,
+          12,
+          0
+        ],
+        "size": [
+          24,
+          15
+        ]
+      }
+    ],
+    "training": false,
+    "labels": [
+      {
+        "required": "5 Rebirth Required",
+        "name": "Tredmill02",
+        "strength": "×5 Strength"
+      },
+      {
+        "required": "5 Rebirth Required",
+        "name": "Tredmill03",
+        "strength": "×5 Strength"
+      },
+      {
+        "required": "3 Rebirth Required",
+        "name": "Tredmill04",
+        "strength": "×3 Strength"
+      },
+      {
+        "required": "3 Rebirth Required",
+        "name": "Tredmill05",
+        "strength": "×3 Strength"
+      }
+    ]
+  },
+  "serverIsolation": {
+    "exited": true,
+    "serverBillboards": 0
+  },
+  "scope": {
+    "changed": [
+      "ReplicatedStorage.Config.TrophyRewardConfig",
+      "ReplicatedStorage.Config.AuraConfig",
+      "ReplicatedStorage.Config.TreadmillConfig",
+      "StarterPlayer.StarterPlayerScripts.UI.TreadmillMultiplierBillboardClient"
+    ],
+    "authoredMatsUnchanged": true,
+    "trainingManagerUnchanged": true,
+    "existingUIClientUnchanged": true
+  },
+  "finalConsole": "",
+  "visualChecks": {
+    "near": "one blue ×3 and one green ×5 above pairs",
+    "far": "neither billboard rendered at 124.35 studs",
+    "angled": "both face camera",
+    "multiClientSimultaneous": "not performed"
+  },
+  "interruptedPlay": "AuraConfig was concurrently edited outside this task; one restart hit a temporary syntax error and cascading load/infinite-yield messages. Agent did not modify AuraConfig. A subsequent restart with its current Edit contents passed."
+}

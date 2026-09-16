@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-16 — Add proximity multiplier billboards to Treadmills
+
+- 青・緑の各2台へ×3/×5を1個ずつ追加。既存表示面中央を基準とし、BeltColor / MatColorを文字・輪郭へ再利用。
+- TreadmillConfig.MultiplierBillboardへ距離100、Size16×10、TextScale1.5、高さOffset12を集約。
+- Client生成とLocalPlayer.IsTraining通知で本人だけ両方非表示。距離制御はBillboardGui.MaxDistanceを使用。既存UI・Training・Balance・色・マットは変更なし。
+- Playで近遠・斜め視点・利用開始/退出を確認。最終ConsoleはError / Warning / Infinite Yield 0。[検証報告](../reports/Treadmill_Multiplier_Billboards_20260916/build_report.md)。
+
 ## 2026-09-16 — Refine Treadmill colors and group mats
 
 - +3/+5のベルト色を保持し、側面・支柱・上部横梁・操作パネル外枠を既存FrameColorへ統一。

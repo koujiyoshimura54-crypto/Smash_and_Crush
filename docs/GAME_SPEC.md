@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-16 — Treadmill group multiplier guidance
+
+青Treadmill2台の中央上部に×3、緑2台の中央上部に×5を各1個のClient専用BillboardGuiとして追加する。既存の各機器Strength / Rebirth UIは維持。TreadmillConfig.MultiplierBillboardで距離100stud、基準Size16×10stud、TextScale1.5、高さOffset12studを設定する。標準MaxDistanceで遠距離非表示にし、本人のIsTraining中は両方非表示、降車後は距離条件内で再表示する。Training / Balance / Premium / 色 / マット / DataStoreは変更しない。[検証報告](../reports/Treadmill_Multiplier_Billboards_20260916/build_report.md)。
+
 ## 2026-09-16 — Treadmill Strength reward colors
 
 World1 Treadmillの見た目は、実Trainingに使用するReplicatedStorage.Config.TreadmillConfig.TypesのMultiplierを色判定の正本として使う。StrengthColorsはMultiplierごとにBeltColor / FrameColor / MatColorを持つ。+3は明るい青ベルトRGB(55,145,255)、濃い青フレームRGB(20,65,150)、さらに濃い青マットRGB(8,25,65)。+5は明るい緑ベルトRGB(70,200,110)、濃い緑フレームRGB(20,100,55)、さらに濃い緑マットRGB(8,40,22)とする。Tredmill04〜05は+3、Tredmill02〜03は+5を使用し、側面・支柱・上部横梁・操作パネル周辺を含むフレーム全体へFrameColorを適用する。

@@ -2,11 +2,21 @@
 
 Version: 1.1 / 監査・更新日: 2026-09-15
 
+## Treadmill multiplier billboards（2026-09-16）
+
+既存の各機器Strength / Rebirth表示を維持し、青2台へ「×3」1個、緑2台へ「×5」1個の大型BillboardGuiを追加する。実Multiplierと既存Assignmentsを使用し、2台のTreadmillUIDisplayの中央から配置。文字はBeltColor、縁取りはMatColorを再利用する。
+
+`ReplicatedStorage.Config.TreadmillConfig.MultiplierBillboard`が設定正本。MaxDistance=100stud、StudsOffset=(0,12,0)をワールド座標で加算、Size=(16,10)stud × TextScale=1.5で最終Canvasは24×15stud。Config編集後はPlay再起動で反映。
+
+Client専用LocalScriptが本人のPlayerGuiとローカル透明Anchorへ生成し、標準MaxDistanceで遠距離非表示・Camera追従を行う。毎Frameの独自距離判定は持たない。LocalPlayer.IsTraining=trueなら機器種類に関係なく両方非表示、falseなら再有効化し距離条件に従う。他PlayerやServer共有Enabledは操作しない。Streamingで片方が欠ける場合はその組の表示を除去し、両方が揃うと再生成する。
+
+近距離・遠距離・斜めCamera・実Normal Training入退場をPlay確認。複数Client同時接続は未実施。[実装・検証報告](../reports/Treadmill_Multiplier_Billboards_20260916/build_report.md)。
+
 ## Treadmill reward colors（2026-09-16）
 
 TreadmillConfig.StrengthColorsがTreadmill表示色の正本。実Trainingに使う同ConfigのMultiplierを直接キーにし、各値はBeltColor / FrameColor / MatColorを分離する。Multiplier 3はBeltColor RGB(55,145,255)・FrameColor RGB(20,65,150)・MatColor RGB(8,25,65)、Multiplier 5はBeltColor RGB(70,200,110)・FrameColor RGB(20,100,55)・MatColor RGB(8,40,22)とする。別の表示用Strength値は持たない。
 
-対象Modelのベルトには明るいBeltColor、コンソール上面・外枠、側面、支柱、上部横梁、前後フレームには濃いFrameColorを適用する。各2台のマットはさらに濃いMatColorの1枚のRuntime Part（28×0.2×24stud）で表示し、旧4枚は非表示で保持する。既存×3 Strength / ×5 StrengthとRebirth必要数表示は維持し、新規UIは追加しない。Normal / Premium機器はStrengthColorsに定義がないため既存の見た目を維持する。Config編集後はPlayを再起動して反映。[共用マット検証](../reports/Treadmill_Group_Mats_20260916/build_report.md)。
+対象Modelのベルトには明るいBeltColor、コンソール上面・外枠、側面、支柱、上部横梁、前後フレームには濃いFrameColorを適用する。各2台のマットはさらに濃いMatColorの1枚のRuntime Part（28×0.2×24stud）で表示し、旧4枚は非表示で保持する。既存×3 Strength / ×5 StrengthとRebirth必要数表示は維持し、大型倍率表示は上記の独立したBillboardで追加する。Normal / Premium機器はStrengthColorsに定義がないため既存の見た目を維持する。Config編集後はPlayを再起動して反映。[共用マット検証](../reports/Treadmill_Group_Mats_20260916/build_report.md)。
 
 ## World1 normal Wall display layout（2026-09-16）
 

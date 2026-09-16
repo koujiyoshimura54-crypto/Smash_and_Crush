@@ -1,5 +1,12 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Treadmill multiplier billboards（Completed）
+
+- ConfigへMultiplierBillboardを追加。各2台中央の×3/×5を本人のClientで各1個生成。MaxDistance100、Size16×10 × TextScale1.5、高さOffset12。
+- 近距離表示、距離外非表示、斜めCamera追従、実Normal Treadmill利用中の両方非表示、退出後再表示を確認。既存Strength / Rebirth表示維持。Server側Billboardは0。
+- 最終通常PlayはRuntime Error / Warning / Infinite Yield 0。途中の別作業によるAuraConfig構文エラーと関連起動失敗は報告へ分離記録。AuraConfig / TrophyRewardConfigは今回の変更に含めない。
+- 複数Client同時接続は未検証。[実装・Play報告](../reports/Treadmill_Multiplier_Billboards_20260916/build_report.md)。
+
 ## 2026-09-16 — Treadmill frames and group mats（Completed）
 
 - +3/+5の明るいベルトを維持し、側面・支柱・上部・操作パネル外枠まで濃色で統一。MatColorをConfigへ追加し、さらに濃色の2台共用マットを各1Part生成。
