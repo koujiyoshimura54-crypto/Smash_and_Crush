@@ -114,6 +114,8 @@ Stage9の名前を短縮名へ変更しない。Stage1〜5はモデル名から�
 | Rebirth | 現在回数、次Level条件、倍率、実行またはWorld1 MAX |
 | Stage Skip | Stage2〜10選択、Win/Robux購入。サーバーがLobby・非戦闘を再検証 |
 
+Inventory通知バッジはタブ単位の既読方式とする。新しいDumbbell／Aura／Speed解放または新しい所有Itemがあるタブだけ「！」を表示し、そのタブを開いた時点で消す。購入は消去条件ではない。別タブの未確認通知は残り、親Inventoryバッジは子タブの論理和で表示する。確認済みIDはPlayerDataへ保存するため、再Joinで同じ内容を再通知しない。
+
 Panelは他の主要Panelと排他で開閉する。BUY WINの見た目上の導線はあるが、WinProducts空のため販売完成を意味しない（K10）。UIが示す課金所有状態と、StudioDebugConfigで効果が抑制されるテスト状態を区別する（K11）。
 
 ## RewardPad

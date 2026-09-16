@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-09-16 — Inventory通知を確認済み方式へ変更
+
+- Dumbbell／Aura／Speedの「！」を、未購入である限り残る方式から、新しく解放された内容を対象タブで確認するまで残る方式へ変更。
+- Itemsは新しく所有したItem IDを未確認として通知し、Itemsタブを開いた時点で確認済みにする。
+- 親Inventory通知はDumbbells／Items／Aura／Speedの未確認状態の論理和とし、タブごとの独立性を維持。
+- `InventoryNotificationSeen`をPlayerDataへ後方互換で追加。旧データは空の確認済み集合として読み込み、確認後は再Joinしても同じ通知を復活させない。
+- 購入、Win消費、Robux購入、Equip、Merge、所有状態は変更なし。
+- PlayでDumbbell／Aura／Speedの独立消去、購入なしでの消去、親通知の集約、再Join維持を確認。Runtime Error / Warning / Infinite Yieldなし（AssistantCommand由来の検証制約ログはゲーム実装外）。
+
 確認できる日付・Phaseだけを記録する。実装を観測した日を、その機能の完成日とみなさない。
 
 ## 2026-09-15 — SPEC v1.0 / 文書整理
