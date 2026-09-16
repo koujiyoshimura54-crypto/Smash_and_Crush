@@ -1,5 +1,13 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-16 — World1 Balance Config統合
+
+World1 Stage1〜10の唯一のBalance正本は `ReplicatedStorage.Config.World1BossConfig`。RequiredStrength、RecommendedLevel、Boss MaxHP、Wall HPを集約し、`GetRequiredStrength` / `GetRecommendedLevel` / `GetMaxHP` / `GetWallConfig`で取得する。`Stage1WallManager.Config`は同じWall設定を参照する互換窓口で、別の数値表を持たない。
+
+統合前の実Runtimeを維持した。Stage3〜5のRequiredStrengthは450 / 2,000 / 5,000。Stage1〜5のWall HPは固定値を保持し、Stage2は300 / 325 / 350 / 425。Stage6〜10はRequiredStrength×2 / 2.5 / 3 / 4、全Bossは×5。World2は専用Configのまま。
+
+旧後半Configは3つのRuntime参照を移行し、Play一致確認後に削除した。Lottery・Combat・Carry・Stage進行は変更していない。検証範囲と証拠：[統合報告](../reports/World1_Config_Consolidation_20260916/build_report.md)。
+
 ## 2026-09-16 — World1 Wall UI scale / persistent HP
 
 - 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。HPバーは底面から4.32stud、高さ5.13stud、Stage表示はHPの1stud上。物理Wall高さ56.25は維持。

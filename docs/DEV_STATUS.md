@@ -1,5 +1,16 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — World1 Balance Config統合（Completed）
+
+- **World1BossConfig = World1 Stage1〜10の唯一のBalance正本**。Stage1〜5のWall固定値、Stage2特殊倍率、Stage3〜5の実Runtime RequiredStrength 450 / 2,000 / 5,000を維持。
+- Stage1WallManager / BossCombatService / StudioDebugServiceの参照を移行。Wall.Configは正本データを参照する互換窓口。旧後半Configを参照ゼロ・Play合格後に削除。
+- 統合前後のPlayで520項目が一致。統合API/互換窓口92項目、実PlayerのDebug Snapshotも確認。World2全10 Stageは不変。
+- 実サービス＋独立したPlayer代替オブジェクトでLottery境界、通常/当選/不当選戦闘、Carry、再開、Skip、Stage1〜10進行を確認。全Stageの実Character移動・接触操作と複数Player同時試験は今回未実施。
+- 検証Script除去後の通常PlayでRuntime Error / Warning / Infinite YieldのConsole出力なし。変更は4 Scriptと旧Config削除のみ。履歴Snapshotは保持。
+- 同じローカルフォルダーのmainをGitHub mainへ接続。ローカル差分11件は.git内に原本保存、固有260件は残してCommit対象外とした。
+- 根拠：[統合・検証報告](../reports/World1_Config_Consolidation_20260916/build_report.md)。
+
+
 ## 2026-09-16 — World1 Wall UI scale / persistent HP
 
 - 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。HPバーは底面から4.32stud、高さ5.13stud、Stage表示はHPの1stud上。物理Wall高さ56.25は維持。
@@ -83,7 +94,7 @@ Version: 1.3 / 監査・更新日: 2026-09-15
 | World1 Stage1〜10 | 個人Wall/Boss進行、Stage Clear、Stage10 WorldCompleteの接続あり | 今回は静的監査、後半は既存Play記録あり |
 | World1 Map拡張 | Floor幅90、Stage6〜10を含む拡張配置 | 実Object確認。古い寸法属性が残る |
 | Stage6〜10 Boss差し替え | 現在の5体とDisplayHeight36/48/44/56/52 | Model/Templateとソース確認 |
-| Stage6〜10後半バランス再設定 | Lv30/35/40/45/50、RequiredStrength9000/25000/60000/130000/250000 | 現行値・最新CSV一致、Levelカーブ一致 |
+| World1 Stage1〜10 Config統合 | World1BossConfigを唯一の正本とし、後半RequiredStrength37,315/81,865/196,915/462,965/1,018,015を維持 | 今回の統合前後Playで数値・サービス挙動一致 |
 | 大型Boss Collider | Stage7〜10再調整、Stage6維持、後半専用CombatZone | 既存Playで4方向×5Stage接触・開始・離脱を確認 |
 | Boss HP UI改善 | 長いBoss名、個人Boss HP、Wall/Boss排他表示 | 現行ソースと既存Play UI観測 |
 | RewardPad黄色Pad化 | 黄色Neon Pad、本人所有、踏み込み取得 | Template/Service/Client接続確認 |
@@ -112,7 +123,7 @@ Version: 1.3 / 監査・更新日: 2026-09-15
 2. 異なるHighestUnlockedWorldを持つ複数PlayerのGate表示試験。World1共有Boss/Colliderへの相互影響も範囲を決めて確認する。
 3. Mobile/Tabletの表示・タッチ操作を実機/Emulatorで検証。無条件のUI拡大はしない。
 4. World2 Config反映は完了。次回は暫定Levelカーブの育成時間、専用Inventory/Item設計とEnemy Assetを整理したうえで、指示された限定Phaseで移動→Combat→Stage進行を接続する。今回は次機能へ進まない。
-5. Git利用方法とStudio保存形式を決定し、明示指示後にRepositoryと初回Commitを準備する。今回は未実施。
+5. Gitは既存Projectのmainをorigin/mainへ接続済み。完全なStudio保存物と自動同期の方式は今後決定する。
 
 ## Known Issues
 
@@ -121,7 +132,7 @@ Version: 1.3 / 監査・更新日: 2026-09-15
 | ID | 分類 / 優先 | 実装で確認した事実・差 | 確認すべき判断 |
 |---|---|---|---|
 | K01 | 名称 / Low | ユーザー英語名Train to Smash Everything、Studio表示+1 スマッシュ&クラッシュ、Project Smash_and_Crush | 公開タイトル・英語表記をどこまで統一するか。公開ページ未照合 |
-| K02 | Balance / High | Stage1/2/3は推奨Lv8/10/15に対しRequiredStrength50/100/300が実Lv3/5/10。推奨Lv閾値は180/280/525。早期World1とWin表にTemporaryコメント | 意図した緩和か、旧コメントだけか。Stage1〜5・Rewardを自動変更しない |
+| K02 | Balance / High | 現行Stage1〜5のRequiredStrengthは50/100/450/2,000/5,000、推奨Lvは8/10/15/20/25。Levelと累積Strengthは独立。旧Threshold比較は過去の記録 | Config統合では実Runtimeを維持。前半Wall固定値・Stage2特殊値・Rewardを自動変更しない |
 | K03 | Carry / High | Wall余剰が次WallだけでなくBossへ渡る。後半適正StrengthではBossが90%開始 | Wall4→Boss Carryを維持するか。現行挙動を仕様化するか変更するか未決 |
 | K04 | World解放 / Resolved | Stage10 Boss撃破でWorldComplete、Stage10 **Pad取得**でHighestUnlockedWorld=2 | 永続World2解放はPad取得で確定。現行仕様を維持 |
 | K05 | Map/機器属性 / Medium | StageWidth20（一部30）・StageLength28（一部36）等に対し実Floor幅90・可変長。古いPivotも残る。Treadmill TickInterval1に対し実行時0.5 | 今後の座標・数値参照元をFloor/Spawn・現行Configへ限定。今回属性修正なし |
@@ -134,13 +145,13 @@ Version: 1.3 / 監査・更新日: 2026-09-15
 | K11-P | Production製作者Game Pass試験 / Implemented | ProductionCreatorGamePassEffectsEnabled=false、対象UserId=7467238848 | 指定製作者だけ効果OFF。一般Player・所有表示・Developer Productは変更なし |
 | K12 | 多人数検証 / High | GateはLocalPlayer別表示だが同時接続試験なし。Bossモデル/Colliderは共有要素あり | LOCKED/ENTER併存、同時Boss戦・撃破再生成への相互影響を検証 |
 | K13 | Mobile / Tablet / Medium | Tablet左メニュー倍率3.0＋領域補正、端末別の最終倍率は可変 | 縦横/ノッチ/操作ボタン/長いBoss名を再検証。今後調整の可能性 |
-| K14 | バージョン管理 / Medium | Project/祖先に.gitなし。gitコマンド・一般的インストール先を確認できず | Git利用準備と完全なStudio保存物の管理方針を決定。ソース監査だけで復元可能とはしない |
+| K14 | バージョン管理 / 接続済み | このPCの既存ProjectにGitを導入し、mainをGitHub origin/mainへ接続。差分11件の原本とローカル固有260件は保全 | 通常のpull / commit / pushで管理。Studio自動同期・完全Place保存方式は未導入 |
 
 | ID | 分類 / 優先 | 今回確認した差 | 判断 |
 |---|---|---|---|
 | K16 | Levelカーブ / Resolved | Lv51〜200の明示Threshold導入によりWorld2全10アンカー完全一致。Lv1〜50維持 | 中間補間値・Lv201以降+250Mは暫定。育成時間とItemの確認後に再調整 |
 | K17 | HP表示精度 / Medium | 指定例15M/500M/1B/2.5B/25Bは正常。1.25Bは1.2B、5.25Bは5.2Bに丸められる。旧方式では現在/次閾値が同じ短縮表示になる問題もあった。新HUDはProgress/現在Requirement。小数1桁の丸め自体は維持 | World2 UI接続前に表示桁数を確認。今回Formatter変更なし |
-| K18 | 旧メタデータ / Low | World2 Placeholder 10体のRequiredStrengthStatus=Pending、およびWorld1側の旧World2依存コメントが残る。現在値の正本はWorld2Config.Stages | 今回Boss Model/World1変更禁止のため維持。Pending属性を現行Balance判定に使わない |
+| K18 | 旧メタデータ / Low | World2 PlaceholderのRequiredStrengthStatus=Pendingは既存の要確認事項。World1 Config内の旧World2依存コメントは統合時に整理。World2 Balance正本はWorld2Config.Stages | 今回World2 Modelは変更なし。Pending属性を現行Balance判定に使わない |
 
 K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差として記録した。どちらかに勝手に統一していない。
 
@@ -153,7 +164,7 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - World2Gateの本配置と移動連携。現在は暫定BackWall preview。
 - Premium Treadmill商品設定、BUY WIN付与量と商品設定。
 - 多人数試験、端末別UI調整、育成所要時間の計測。
-- Git初期化・Commit・Remote作成、Rojo等の同期導入、完全Placeの保存形式決定。
+- Rojo等の同期導入、完全Placeの保存形式決定。Git Repository接続は完了。
 - Blenderキャラクター制作は別作業。今回のゲーム監査から完成NPCとして計上しない。
 
 ## Do Not Change Without Confirmation
@@ -196,7 +207,7 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 ## 2026-09-16 — World1 progression rebalance
 
 - Lv1〜50のRequirementを確定カーブへ更新。Lv51以降とWorld2は未変更。
-- World1 Stage6〜10の実Combat正本`World1LateStageConfig`をRequiredStrength 37,025 / 81,525 / 196,525 / 462,525 / 1,017,525へ更新し、既存倍率でWall/Boss HPを再生成。
+- 当時の後半ConfigをRequiredStrength 37,025 / 81,525 / 196,525 / 462,525 / 1,017,525へ更新した履歴。現在値は下記+10調整後の値で、参照元はWorld1BossConfigへ統合済み。
 - Stage1〜5の前半Play Balance、Strength獲得量、戦闘ロジック、Map、課金、DataStoreは変更なし。
 ## 2026-09-16 — Lv1〜50 requirement floor adjustment
 

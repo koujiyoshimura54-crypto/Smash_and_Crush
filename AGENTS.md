@@ -16,7 +16,7 @@ Roblox Game：Train to Smash Everything / Studio表示 +1 スマッシュ&クラ
 5. 大きな変更は **Audit → Implementation → Play Test → Regression Test** を基本とする。文書整理・読み取り専用の依頼ではImplementationを文書作成に限定し、Studio変更やPlayを勝手に行わない。
 6. 1 Phaseの変更範囲を広げすぎない。直接依頼されていない問題は別の課題として記録する。
 7. 固定World座標よりModel / Stage / Floor / Spawn等の相対座標を優先する。旧Stage寸法属性・Pivotを信頼する前に、実Floor/Zoneと照合する。
-8. World1とWorld2のConfigを混同しない。現在World1後半はWorld1LateStageConfig / Stage1WallManager.GetStageConfigが有効値。旧World1BossConfig / Wall.ConfigはWorld2が参照するため、間接的な変更に注意する。
+8. World1とWorld2のConfigを混同しない。World1BossConfigはWorld1 Stage1〜10の唯一のBalance正本。Stage1WallManager.Config / GetStageConfigは互換窓口。World2はWorld2Config.Stagesを独立した正本とする。World1 Stage1〜5のWall固定値、特にStage2特殊倍率をConfig統合の理由で再計算しない。
 9. Balance変更時はBALANCE_SPECを確認し、Level/Strength・装備補正・Carryを含む実効値を確認する。実測回数に合わせて承認済みHPを勝手に再設定しない。
 10. UI変更時はUI_SPECを確認する。HUDLayout/ResponsivePanelsと端末別の実際の配置を調べる。Tablet左メニュー倍率をUI全体の倍率と取り違えない。
 11. 完了時、確定した仕様変更があれば該当SPECとDEV_STATUSの更新候補を報告する。文書更新も許可範囲なら反映し、CHANGELOGへ確認できる日付・Phase・証拠だけを追記する。

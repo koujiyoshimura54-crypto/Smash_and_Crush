@@ -1,14 +1,14 @@
 # BALANCE_SPEC — ゲームバランス正本
 
-Version: 1.3 / 監査・更新日: 2026-09-15
+Version: 1.4 / 監査・更新日: 2026-09-16
 
 ## 読み方・参照元
 
-現在StudioのソースとObjectを読み取った値を記録する。モジュールを実行せず、参照関係と式から導出した数値は「静的導出」。Play実測は既存の[World1後半レポート](../reports/World1_Stage6_10_20260915/build_report.md)からの引用で、今回は再実測していない。仕様不一致を修正するために数値を変更してはいけない。
+初期監査の静的導出・過去Play記録と、今回の検証を区別する。2026-09-16のConfig統合では、統合前後のPlayサーバーからWorld1/World2全Stageの数値を取得し、同一のサービス検証520項目が完全一致した。過去表を根拠に現在Runtimeの数値を変更しない。
 
-World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallManager.GetStageConfig**。古いWorld1BossConfigとStage1WallManager.Configの後半値は、旧基準として残っている。2026-09-15のWorld2専用Balance反映によりWorld2からの依存は除去済み。旧テーブルを現在World1の最終値と取り違えない。
+**World1BossConfig = World1 Stage1〜10の唯一のBalance正本**。`ReplicatedStorage.Config.World1BossConfig`のRequiredStrength / RecommendedLevels / GetMaxHP / GetWallConfigを参照する。`Stage1WallManager.Config`とGetStageConfigは同じ設定を返す互換窓口。旧後半Configは全Runtime参照移行・Play一致確認後に削除済み。World2はWorld2Config.Stagesを独立した正本とし、World1への依存はない。
 
-根拠: [ReplicatedStorage.Config.World1LateStageConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1LateStageConfig.luau)、[ReplicatedStorage.Config.World1BossConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[ServerScriptService.World.Stage1WallManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.Stage1WallManager.luau)。
+根拠: [Config統合・Play検証報告](../reports/World1_Config_Consolidation_20260916/build_report.md)、[統合後World1BossConfig](../reports/World1_Config_Consolidation_20260916/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[全Stage数値CSV](../reports/World1_Config_Consolidation_20260916/final_balance.csv)。過去reportsのSnapshotは当時の履歴として保持する。
 
 ## World1 Stage1〜10：現在の有効値
 
@@ -16,9 +16,9 @@ World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallMana
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | 1 | 8 | 50 | 100 | 125 | 150 | 200 | 250 | 1 |
 | 2 | 10 | 100 | 300 | 325 | 350 | 425 | 500 | 3 |
-| 3 | 15 | 300 | 600 | 750 | 900 | 1,200 | 1,500 | 5 |
-| 4 | 20 | 1,500 | 3,000 | 3,750 | 4,500 | 6,000 | 7,500 | 10 |
-| 5 | 25 | 3,500 | 7,000 | 8,750 | 10,500 | 14,000 | 17,500 | 30 |
+| 3 | 15 | 450 | 600 | 750 | 900 | 1,200 | 2,250 | 5 |
+| 4 | 20 | 2,000 | 3,000 | 3,750 | 4,500 | 6,000 | 10,000 | 10 |
+| 5 | 25 | 5,000 | 7,000 | 8,750 | 10,500 | 14,000 | 25,000 | 30 |
 | 6 | 30 | 37,315 | 74,630 | 93,287.5 | 111,945 | 149,260 | 186,575 | 75 |
 | 7 | 35 | 81,865 | 163,730 | 204,662.5 | 245,595 | 327,460 | 409,325 | 150 |
 | 8 | 40 | 196,915 | 393,830 | 492,287.5 | 590,745 | 787,660 | 984,575 | 300 |
@@ -27,7 +27,7 @@ World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallMana
 
 **確定設計：Stage6〜10は推奨Lv30 / 35 / 40 / 45 / 50。Stage10をLv50前後でクリアできる戦闘耐久。** RequiredStrengthちょうどではWall倍率2.0 / 2.5 / 3.0 / 4.0、Boss倍率5.0。これは個別HP設計であり、Carry込み実攻撃回数を整数倍率へ丸める設計ではない。Lv50までの育成所要時間は今回計測していない。
 
-Stage1・3・4・5のWall倍率も2 / 2.5 / 3 / 4。**Stage2のみ3 / 3.25 / 3.5 / 4.25**。全StageのBoss MaxHPはRequiredStrength×5。Stage1〜5には旧「Temporary early-World1 Play balance」、Win表には「Temporary World1 Play-debug」コメントがある。現在値として記録し、正式確定の有無は要確認（K02）。
+Stage1〜5のWallは上表の固定HPをそのまま維持する。**Stage2は3 / 3.25 / 3.5 / 4.25倍（300 / 325 / 350 / 425）**。Stage3〜5のRequiredStrengthは今回のPlayで450 / 2,000 / 5,000を確認し、ユーザー指示によりこの現行値を維持したため、Wallを一律の倍率で再生成しない。全StageのBoss MaxHPはRequiredStrength×5。旧SPECの300 / 1,500 / 3,500は現在Runtimeと異なっていたため記述だけを訂正し、Balance自体は変更していない。Win表は今回変更していない。
 
 WinはBoss撃破時の即時付与ではなく、本人が黄色RewardPadを取得した際の基本値。有効World1 DoubleWinならfloor(基本Win×2)。他のDaily/Time等のWinすべてにDoubleWinを掛ける仕様ではない。
 

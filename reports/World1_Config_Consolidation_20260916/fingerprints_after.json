@@ -1,0 +1,2760 @@
+[
+  {
+    "bytes": 1875,
+    "path": "PluginGuiService.PluginGui.Frame.MainFrame.ModelViewport.DumbbellItemMaster",
+    "adler32": 1002005036,
+    "class": "ModuleScript",
+    "djb2": 2990684018
+  },
+  {
+    "bytes": 1978,
+    "path": "ReplicatedStorage.Config.AuraConfig",
+    "adler32": 2804113556,
+    "class": "ModuleScript",
+    "djb2": 2763252570
+  },
+  {
+    "bytes": 59,
+    "path": "ReplicatedStorage.Config.CombatConfig",
+    "adler32": 2700154208,
+    "class": "ModuleScript",
+    "djb2": 185733732
+  },
+  {
+    "bytes": 424,
+    "path": "ReplicatedStorage.Config.CommunityRewardConfig",
+    "adler32": 2573699645,
+    "class": "ModuleScript",
+    "djb2": 3478946049
+  },
+  {
+    "bytes": 803,
+    "path": "ReplicatedStorage.Config.DailyRewardConfig",
+    "adler32": 2195853249,
+    "class": "ModuleScript",
+    "djb2": 1259924822
+  },
+  {
+    "bytes": 524,
+    "path": "ReplicatedStorage.Config.DeveloperProductConfig",
+    "adler32": 1219934309,
+    "class": "ModuleScript",
+    "djb2": 4129390345
+  },
+  {
+    "bytes": 1877,
+    "path": "ReplicatedStorage.Config.DumbbellItemMaster",
+    "adler32": 3636093594,
+    "class": "ModuleScript",
+    "djb2": 3960422816
+  },
+  {
+    "bytes": 2684,
+    "path": "ReplicatedStorage.Config.ItemMaster",
+    "adler32": 1370523422,
+    "class": "ModuleScript",
+    "djb2": 2453146773
+  },
+  {
+    "bytes": 39,
+    "path": "ReplicatedStorage.Config.ItemMergeConfig",
+    "adler32": 800263813,
+    "class": "ModuleScript",
+    "djb2": 1269413641
+  },
+  {
+    "bytes": 1188,
+    "path": "ReplicatedStorage.Config.ItemMultiplierConfig",
+    "adler32": 2453244883,
+    "class": "ModuleScript",
+    "djb2": 712510344
+  },
+  {
+    "bytes": 5227,
+    "path": "ReplicatedStorage.Config.LevelRequirements",
+    "adler32": 2035670957,
+    "class": "ModuleScript",
+    "djb2": 1066496981
+  },
+  {
+    "bytes": 601,
+    "path": "ReplicatedStorage.Config.RebirthConfig",
+    "adler32": 1259455531,
+    "class": "ModuleScript",
+    "djb2": 784020559
+  },
+  {
+    "bytes": 1185,
+    "path": "ReplicatedStorage.Config.RebirthMultiplierConfig",
+    "adler32": 3107614928,
+    "class": "ModuleScript",
+    "djb2": 1407090885
+  },
+  {
+    "bytes": 4390,
+    "path": "ReplicatedStorage.Config.ShopProductConfig",
+    "adler32": 1026156517,
+    "class": "ModuleScript",
+    "djb2": 668761246
+  },
+  {
+    "bytes": 490,
+    "path": "ReplicatedStorage.Config.SpeedConfig",
+    "adler32": 2979701266,
+    "class": "ModuleScript",
+    "djb2": 1731907638
+  },
+  {
+    "bytes": 1937,
+    "path": "ReplicatedStorage.Config.StageSkipConfig",
+    "adler32": 2343275535,
+    "class": "ModuleScript",
+    "djb2": 2889893749
+  },
+  {
+    "bytes": 1558,
+    "path": "ReplicatedStorage.Config.TimeRewardConfig",
+    "adler32": 3432191513,
+    "class": "ModuleScript",
+    "djb2": 1948355487
+  },
+  {
+    "bytes": 154,
+    "path": "ReplicatedStorage.Config.TrainingConfig",
+    "adler32": 1832597046,
+    "class": "ModuleScript",
+    "djb2": 2428978938
+  },
+  {
+    "bytes": 1274,
+    "path": "ReplicatedStorage.Config.TreadmillConfig",
+    "adler32": 1496888006,
+    "class": "ModuleScript",
+    "djb2": 758580763
+  },
+  {
+    "bytes": 262,
+    "path": "ReplicatedStorage.Config.TrophyRewardConfig",
+    "adler32": 1511479729,
+    "class": "ModuleScript",
+    "djb2": 4105846869
+  },
+  {
+    "bytes": 1900,
+    "path": "ReplicatedStorage.Config.World1BossConfig",
+    "adler32": 1489728653,
+    "class": "ModuleScript",
+    "djb2": 2777059859
+  },
+  {
+    "bytes": 651,
+    "path": "ReplicatedStorage.Config.World2BossConfig",
+    "adler32": 328526868,
+    "class": "ModuleScript",
+    "djb2": 2119793240
+  },
+  {
+    "bytes": 1428,
+    "path": "ReplicatedStorage.Config.World2Config",
+    "adler32": 2686052145,
+    "class": "ModuleScript",
+    "djb2": 3998094150
+  },
+  {
+    "bytes": 537,
+    "path": "ReplicatedStorage.Config.WorldGateConfig",
+    "adler32": 4233999066,
+    "class": "ModuleScript",
+    "djb2": 359748286
+  },
+  {
+    "bytes": 513,
+    "path": "ReplicatedStorage.Config.WorldPassConfig",
+    "adler32": 3072505158,
+    "class": "ModuleScript",
+    "djb2": 3364595882
+  },
+  {
+    "bytes": 492,
+    "path": "ReplicatedStorage.Modules.BadgeRenderer",
+    "adler32": 3415649889,
+    "class": "ModuleScript",
+    "djb2": 2001094949
+  },
+  {
+    "bytes": 14060,
+    "path": "ReplicatedStorage.Modules.HUDLayout",
+    "adler32": 1514969641,
+    "class": "ModuleScript",
+    "djb2": 2595059359
+  },
+  {
+    "bytes": 1440,
+    "path": "ReplicatedStorage.Modules.InventoryNotificationState",
+    "adler32": 4010013948,
+    "class": "ModuleScript",
+    "djb2": 130081841
+  },
+  {
+    "bytes": 371,
+    "path": "ReplicatedStorage.Modules.InventoryPresentation",
+    "adler32": 3755902338,
+    "class": "ModuleScript",
+    "djb2": 1359734694
+  },
+  {
+    "bytes": 2202,
+    "path": "ReplicatedStorage.Modules.LevelProgression",
+    "adler32": 2457933514,
+    "class": "ModuleScript",
+    "djb2": 2379651361
+  },
+  {
+    "bytes": 968,
+    "path": "ReplicatedStorage.Modules.MarketplacePrice",
+    "adler32": 2492158997,
+    "class": "ModuleScript",
+    "djb2": 2048368810
+  },
+  {
+    "bytes": 533,
+    "path": "ReplicatedStorage.Modules.NumberFormat",
+    "adler32": 3185355102,
+    "class": "ModuleScript",
+    "djb2": 2320538594
+  },
+  {
+    "bytes": 16667,
+    "path": "ReplicatedStorage.Modules.ResponsivePanels",
+    "adler32": 691596098,
+    "class": "ModuleScript",
+    "djb2": 2589096363
+  },
+  {
+    "bytes": 926,
+    "path": "ReplicatedStorage.Modules.RewardDisplay",
+    "adler32": 3202303445,
+    "class": "ModuleScript",
+    "djb2": 3539269994
+  },
+  {
+    "bytes": 237,
+    "path": "ServerScriptService.Config.DataStoreConfig",
+    "adler32": 53760703,
+    "class": "ModuleScript",
+    "djb2": 2942431203
+  },
+  {
+    "bytes": 1446,
+    "path": "ServerScriptService.Config.MuscleScaleConfig",
+    "adler32": 1076349851,
+    "class": "ModuleScript",
+    "djb2": 868116720
+  },
+  {
+    "bytes": 432,
+    "path": "ServerScriptService.Config.StudioDebugConfig",
+    "adler32": 2469107506,
+    "class": "ModuleScript",
+    "djb2": 150455702
+  },
+  {
+    "bytes": 402,
+    "path": "ServerScriptService.Config.World2WallConfig",
+    "adler32": 1939116026,
+    "class": "ModuleScript",
+    "djb2": 83166590
+  },
+  {
+    "bytes": 3860,
+    "path": "ServerScriptService.Services.AuraCharacterEffects",
+    "adler32": 545735736,
+    "class": "ModuleScript",
+    "djb2": 1198904721
+  },
+  {
+    "bytes": 5055,
+    "path": "ServerScriptService.Services.AuraService",
+    "adler32": 2649814174,
+    "class": "ModuleScript",
+    "djb2": 3120782440
+  },
+  {
+    "bytes": 3191,
+    "path": "ServerScriptService.Services.CommunityRewardService",
+    "adler32": 1497720317,
+    "class": "ModuleScript",
+    "djb2": 3395941381
+  },
+  {
+    "bytes": 3690,
+    "path": "ServerScriptService.Services.DailyRewardService",
+    "adler32": 3300267337,
+    "class": "ModuleScript",
+    "djb2": 1887510050
+  },
+  {
+    "bytes": 4326,
+    "path": "ServerScriptService.Services.DumbbellService",
+    "adler32": 3822902764,
+    "class": "ModuleScript",
+    "djb2": 3479201957
+  },
+  {
+    "bytes": 2733,
+    "path": "ServerScriptService.Services.EnemyDropGachaService",
+    "adler32": 460179633,
+    "class": "ModuleScript",
+    "djb2": 1923401800
+  },
+  {
+    "bytes": 2169,
+    "path": "ServerScriptService.Services.EnemyDropRoller",
+    "adler32": 3574921613,
+    "class": "ModuleScript",
+    "djb2": 538177331
+  },
+  {
+    "bytes": 7780,
+    "path": "ServerScriptService.Services.GamePassService",
+    "adler32": 2577191642,
+    "class": "ModuleScript",
+    "djb2": 1711847080
+  },
+  {
+    "bytes": 2421,
+    "path": "ServerScriptService.Services.ItemMergeService",
+    "adler32": 939484958,
+    "class": "ModuleScript",
+    "djb2": 2620795157
+  },
+  {
+    "bytes": 8714,
+    "path": "ServerScriptService.Services.ItemService",
+    "adler32": 3821936321,
+    "class": "ModuleScript",
+    "djb2": 4034815633
+  },
+  {
+    "bytes": 63276,
+    "path": "ServerScriptService.Services.PlayerDataService",
+    "adler32": 3236072803,
+    "class": "ModuleScript",
+    "djb2": 1791835022
+  },
+  {
+    "bytes": 2160,
+    "path": "ServerScriptService.Services.PotionService",
+    "adler32": 4076013208,
+    "class": "ModuleScript",
+    "djb2": 1403648879
+  },
+  {
+    "bytes": 4469,
+    "path": "ServerScriptService.Services.ShopRewardService",
+    "adler32": 297352400,
+    "class": "ModuleScript",
+    "djb2": 2939053658
+  },
+  {
+    "bytes": 1356,
+    "path": "ServerScriptService.Services.SpeedService",
+    "adler32": 268887207,
+    "class": "ModuleScript",
+    "djb2": 3989180700
+  },
+  {
+    "bytes": 6654,
+    "path": "ServerScriptService.Services.StageSkipService",
+    "adler32": 446438177,
+    "class": "ModuleScript",
+    "djb2": 1817811326
+  },
+  {
+    "bytes": 7273,
+    "path": "ServerScriptService.Services.StrengthManager",
+    "adler32": 1890857126,
+    "class": "ModuleScript",
+    "djb2": 2576032916
+  },
+  {
+    "bytes": 4748,
+    "path": "ServerScriptService.Services.TimeRewardService",
+    "adler32": 3046938795,
+    "class": "ModuleScript",
+    "djb2": 600471029
+  },
+  {
+    "bytes": 1195,
+    "path": "ServerScriptService.Services.TrainingLobbyAreaService",
+    "adler32": 69180939,
+    "class": "ModuleScript",
+    "djb2": 2736622752
+  },
+  {
+    "bytes": 9424,
+    "path": "ServerScriptService.Services.TrainingManager",
+    "adler32": 4060490201,
+    "class": "ModuleScript",
+    "djb2": 396064474
+  },
+  {
+    "bytes": 7989,
+    "path": "ServerScriptService.Services.TrophyRewardService",
+    "adler32": 1728008619,
+    "class": "ModuleScript",
+    "djb2": 2788186041
+  },
+  {
+    "bytes": 2847,
+    "path": "ServerScriptService.Systems.Controllers.AuraController",
+    "adler32": 4025219017,
+    "class": "Script",
+    "djb2": 2006589664
+  },
+  {
+    "bytes": 976,
+    "path": "ServerScriptService.Systems.Controllers.CommunityRewardController",
+    "adler32": 3900529271,
+    "class": "Script",
+    "djb2": 958906988
+  },
+  {
+    "bytes": 940,
+    "path": "ServerScriptService.Systems.Controllers.DailyRewardController",
+    "adler32": 4221127937,
+    "class": "Script",
+    "djb2": 3391214678
+  },
+  {
+    "bytes": 2437,
+    "path": "ServerScriptService.Systems.Controllers.DumbbellController",
+    "adler32": 561270696,
+    "class": "Script",
+    "djb2": 1973049855
+  },
+  {
+    "bytes": 3568,
+    "path": "ServerScriptService.Systems.Controllers.DumbbellDisplayController",
+    "adler32": 3968977510,
+    "class": "Script",
+    "djb2": 2314021742
+  },
+  {
+    "bytes": 720,
+    "path": "ServerScriptService.Systems.Controllers.GamePassController",
+    "adler32": 1169228966,
+    "class": "Script",
+    "djb2": 1215968475
+  },
+  {
+    "bytes": 1397,
+    "path": "ServerScriptService.Systems.Controllers.InitialSpawnFacing",
+    "adler32": 4012828457,
+    "class": "Script",
+    "djb2": 858041086
+  },
+  {
+    "bytes": 777,
+    "path": "ServerScriptService.Systems.Controllers.InventoryNotificationController",
+    "adler32": 3776649435,
+    "class": "Script",
+    "djb2": 928700880
+  },
+  {
+    "bytes": 3396,
+    "path": "ServerScriptService.Systems.Controllers.ItemController",
+    "adler32": 3436954320,
+    "class": "Script",
+    "djb2": 891696024
+  },
+  {
+    "bytes": 1111,
+    "path": "ServerScriptService.Systems.Controllers.ItemMergeController",
+    "adler32": 2167835843,
+    "class": "Script",
+    "djb2": 1766452632
+  },
+  {
+    "bytes": 3224,
+    "path": "ServerScriptService.Systems.Controllers.MuscleCharacterService",
+    "adler32": 1937007690,
+    "class": "Script",
+    "djb2": 2205719954
+  },
+  {
+    "bytes": 2650,
+    "path": "ServerScriptService.Systems.Controllers.PlayerDataController",
+    "adler32": 997166841,
+    "class": "Script",
+    "djb2": 992899632
+  },
+  {
+    "bytes": 4640,
+    "path": "ServerScriptService.Systems.Controllers.RankingBoardController",
+    "adler32": 475411320,
+    "class": "Script",
+    "djb2": 2932527842
+  },
+  {
+    "bytes": 1784,
+    "path": "ServerScriptService.Systems.Controllers.RebirthService",
+    "adler32": 153519754,
+    "class": "Script",
+    "djb2": 3924637840
+  },
+  {
+    "bytes": 3382,
+    "path": "ServerScriptService.Systems.Controllers.ShopRewardController",
+    "adler32": 1562224787,
+    "class": "Script",
+    "djb2": 63132667
+  },
+  {
+    "bytes": 2914,
+    "path": "ServerScriptService.Systems.Controllers.SpeedController",
+    "adler32": 4045477653,
+    "class": "Script",
+    "djb2": 282052381
+  },
+  {
+    "bytes": 4142,
+    "path": "ServerScriptService.Systems.Controllers.StageProgressController",
+    "adler32": 3592002384,
+    "class": "Script",
+    "djb2": 2897267465
+  },
+  {
+    "bytes": 673,
+    "path": "ServerScriptService.Systems.Controllers.StageSkipController",
+    "adler32": 381744510,
+    "class": "Script",
+    "djb2": 260963298
+  },
+  {
+    "bytes": 639,
+    "path": "ServerScriptService.Systems.Controllers.StrengthController",
+    "adler32": 484764093,
+    "class": "Script",
+    "djb2": 225468417
+  },
+  {
+    "bytes": 937,
+    "path": "ServerScriptService.Systems.Controllers.TimeRewardController",
+    "adler32": 3215084501,
+    "class": "Script",
+    "djb2": 2128957386
+  },
+  {
+    "bytes": 3504,
+    "path": "ServerScriptService.Systems.Controllers.TrainingController",
+    "adler32": 2770590296,
+    "class": "Script",
+    "djb2": 3962203584
+  },
+  {
+    "bytes": 977,
+    "path": "ServerScriptService.Systems.Debug.StudioDebugController",
+    "adler32": 242636278,
+    "class": "Script",
+    "djb2": 2993580075
+  },
+  {
+    "bytes": 9765,
+    "path": "ServerScriptService.Systems.Debug.StudioDebugService",
+    "adler32": 3810364303,
+    "class": "ModuleScript",
+    "djb2": 3141093488
+  },
+  {
+    "bytes": 7698,
+    "path": "ServerScriptService.Systems.Purchases.ItemPurchaseService",
+    "adler32": 2626272316,
+    "class": "ModuleScript",
+    "djb2": 2927976714
+  },
+  {
+    "bytes": 7047,
+    "path": "ServerScriptService.Systems.Purchases.ReceiptService",
+    "adler32": 1351465170,
+    "class": "ModuleScript",
+    "djb2": 3822013007
+  },
+  {
+    "bytes": 3895,
+    "path": "ServerScriptService.World.BossCombatService",
+    "adler32": 639131673,
+    "class": "ModuleScript",
+    "djb2": 3078025714
+  },
+  {
+    "bytes": 37599,
+    "path": "ServerScriptService.World.EnemyManager",
+    "adler32": 1356358381,
+    "class": "ModuleScript",
+    "djb2": 30316771
+  },
+  {
+    "bytes": 3274,
+    "path": "ServerScriptService.World.Stage1WallManager",
+    "adler32": 3556867966,
+    "class": "ModuleScript",
+    "djb2": 3556151398
+  },
+  {
+    "bytes": 2157,
+    "path": "ServerScriptService.World.StageManager",
+    "adler32": 489816925,
+    "class": "ModuleScript",
+    "djb2": 2102903444
+  },
+  {
+    "bytes": 24084,
+    "path": "ServerStorage.Backup.EnemyManager_BeforeColliderRespawnTrigger",
+    "adler32": 3328258375,
+    "class": "ModuleScript",
+    "djb2": 2058004171
+  },
+  {
+    "bytes": 2225,
+    "path": "ServerStorage.Backup.GamePassService_BeforeStudioForceNoDoubleWin",
+    "adler32": 1178597995,
+    "class": "ModuleScript",
+    "djb2": 1893410353
+  },
+  {
+    "bytes": 1251,
+    "path": "ServerStorage.Backup.InventoryNotificationClient_BeforeDumbbellGuide",
+    "adler32": 1195163880,
+    "class": "LocalScript",
+    "djb2": 48952125
+  },
+  {
+    "bytes": 6562,
+    "path": "ServerStorage.Backup.InventoryTabsBackup_20260910.InventoryPanelClient",
+    "adler32": 383697857,
+    "class": "LocalScript",
+    "djb2": 3012282253
+  },
+  {
+    "bytes": 9313,
+    "path": "ServerStorage.Backup.InventoryTabsBackup_20260910.MergePanel_New.MergePanelClient_New",
+    "adler32": 2055989425,
+    "class": "LocalScript",
+    "djb2": 748771041
+  },
+  {
+    "bytes": 9149,
+    "path": "ServerStorage.Backup.ItemInventoryTabClient_BeforeEquipStatus",
+    "adler32": 392044329,
+    "class": "LocalScript",
+    "djb2": 100271321
+  },
+  {
+    "bytes": 8427,
+    "path": "ServerStorage.Backup.ItemInventoryTabClient_BeforeEquippedIcons",
+    "adler32": 2862754635,
+    "class": "LocalScript",
+    "djb2": 100171434
+  },
+  {
+    "bytes": 9937,
+    "path": "ServerStorage.Backup.ItemInventoryTabClient_BeforeOwnershipButtons",
+    "adler32": 1366497337,
+    "class": "LocalScript",
+    "djb2": 2442679034
+  },
+  {
+    "bytes": 4695,
+    "path": "ServerStorage.Backup.ItemInventoryTabClient_BeforeReference",
+    "adler32": 1990018404,
+    "class": "LocalScript",
+    "djb2": 1370746926
+  },
+  {
+    "bytes": 8832,
+    "path": "ServerStorage.Backup.RebirthMenuClient_BeforePermanentGui",
+    "adler32": 1694162484,
+    "class": "LocalScript",
+    "djb2": 1092228435
+  },
+  {
+    "bytes": 6556,
+    "path": "ServerStorage.Backup.StageSkipClient_BeforeStarterGui",
+    "adler32": 4131575980,
+    "class": "LocalScript",
+    "djb2": 3875912152
+  },
+  {
+    "bytes": 4155,
+    "path": "ServerStorage.Backup.StageSkipClient_BeforeWorld1Scroll",
+    "adler32": 4278491235,
+    "class": "LocalScript",
+    "djb2": 310209628
+  },
+  {
+    "bytes": 6558,
+    "path": "ServerStorage.Backup.TrophyRewardService_BeforeDumbbellGuide",
+    "adler32": 2860737588,
+    "class": "ModuleScript",
+    "djb2": 530236288
+  },
+  {
+    "bytes": 5813,
+    "path": "ServerStorage.Backup.TutorialGuideClient_BeforeFloorNavigation",
+    "adler32": 920250804,
+    "class": "LocalScript",
+    "djb2": 171920815
+  },
+  {
+    "bytes": 975,
+    "path": "ServerStorage.EnemyTemplates.Cas_Roblox.EmbeddedWalkPlayer",
+    "adler32": 2764855305,
+    "class": "Script",
+    "djb2": 1874002750
+  },
+  {
+    "bytes": 28802,
+    "path": "ServerStorage.EnemyTemplates.Shisa_Stand.AnimateScript",
+    "adler32": 461847317,
+    "class": "LocalScript",
+    "djb2": 3780544750
+  },
+  {
+    "bytes": 438,
+    "path": "ServerStorage.EnemyTemplates.Shisa_Stand.FightingIdleController",
+    "adler32": 2670763429,
+    "class": "Script",
+    "djb2": 1577506857
+  },
+  {
+    "bytes": 28802,
+    "path": "ServerStorage.EnemyTemplates.Stage10_Boss_Roblox15K_autosetup.AnimateScript",
+    "adler32": 461847317,
+    "class": "LocalScript",
+    "djb2": 3780544750
+  },
+  {
+    "bytes": 399,
+    "path": "ServerStorage.Legacy.Modules.AuraShopUIConfig",
+    "adler32": 1435667010,
+    "class": "ModuleScript",
+    "djb2": 1141550758
+  },
+  {
+    "bytes": 2880,
+    "path": "ServerStorage.Legacy.Modules.BossItemDropService",
+    "adler32": 3365597297,
+    "class": "ModuleScript",
+    "djb2": 3709676296
+  },
+  {
+    "bytes": 4967,
+    "path": "ServerStorage.Legacy.Modules.BossWorldDropService",
+    "adler32": 1030275224,
+    "class": "ModuleScript",
+    "djb2": 498228610
+  },
+  {
+    "bytes": 2852,
+    "path": "ServerStorage.Legacy.Scripts.BossDropFlashClient",
+    "adler32": 3906718713,
+    "class": "LocalScript",
+    "djb2": 2021323920
+  },
+  {
+    "bytes": 18032,
+    "path": "ServerStorage.Legacy.Scripts.MergePanelClient",
+    "adler32": 4034445272,
+    "class": "LocalScript",
+    "djb2": 957065172
+  },
+  {
+    "bytes": 22950,
+    "path": "ServerStorage.Legacy.Scripts.Phase11_GenerateGrayboxMap",
+    "adler32": 1136494051,
+    "class": "Script",
+    "djb2": 694324227
+  },
+  {
+    "bytes": 10678,
+    "path": "ServerStorage.Legacy.Scripts.ShopPanelClient",
+    "adler32": 319915873,
+    "class": "LocalScript",
+    "djb2": 4108590643
+  },
+  {
+    "bytes": 2456,
+    "path": "ServerStorage.MapTemplates.LEGO_ConvexPlacement",
+    "adler32": 3556060567,
+    "class": "ModuleScript",
+    "djb2": 965832654
+  },
+  {
+    "bytes": 1774,
+    "path": "ServerStorage.Preview.EssentialUI_Preview.PreviewController",
+    "adler32": 3152763155,
+    "class": "LocalScript",
+    "djb2": 4060875897
+  },
+  {
+    "bytes": 12441,
+    "path": "ServerStorage.Tests.AuraFeatureTests",
+    "adler32": 1819063577,
+    "class": "ModuleScript",
+    "djb2": 95126989
+  },
+  {
+    "bytes": 12091,
+    "path": "ServerStorage.Tests.BestEquipTests",
+    "adler32": 2995268777,
+    "class": "ModuleScript",
+    "djb2": 1367191165
+  },
+  {
+    "bytes": 8614,
+    "path": "ServerStorage.Tests.EarlyWorld1BalanceTests",
+    "adler32": 2238741350,
+    "class": "ModuleScript",
+    "djb2": 237830501
+  },
+  {
+    "bytes": 7534,
+    "path": "ServerStorage.Tests.LevelCombatIntegrationTests",
+    "adler32": 738340422,
+    "class": "ModuleScript",
+    "djb2": 3304822836
+  },
+  {
+    "bytes": 6148,
+    "path": "ServerStorage.Tests.LevelCombatTests",
+    "adler32": 1335549504,
+    "class": "ModuleScript",
+    "djb2": 1151355899
+  },
+  {
+    "bytes": 4693,
+    "path": "ServerStorage.Tests.MuscleVisualTest",
+    "adler32": 977861038,
+    "class": "LocalScript",
+    "djb2": 795109255
+  },
+  {
+    "bytes": 6997,
+    "path": "ServerStorage.Tests.Phase2DataSafetyTests",
+    "adler32": 2211339305,
+    "class": "ModuleScript",
+    "djb2": 2344305190
+  },
+  {
+    "bytes": 2647,
+    "path": "ServerStorage.Tests.Phase3PresentationTests",
+    "adler32": 2035783411,
+    "class": "ModuleScript",
+    "djb2": 3182581130
+  },
+  {
+    "bytes": 6370,
+    "path": "ServerStorage.Tests.Phase3RegressionTests",
+    "adler32": 246448763,
+    "class": "ModuleScript",
+    "djb2": 3429823207
+  },
+  {
+    "bytes": 11380,
+    "path": "ServerStorage.Tests.Phase721Tests",
+    "adler32": 2562565440,
+    "class": "ModuleScript",
+    "djb2": 2111694866
+  },
+  {
+    "bytes": 18035,
+    "path": "ServerStorage.Tests.Phase722Tests",
+    "adler32": 1168172207,
+    "class": "ModuleScript",
+    "djb2": 3182878362
+  },
+  {
+    "bytes": 5639,
+    "path": "ServerStorage.Tests.Phase733ShopTests",
+    "adler32": 267222539,
+    "class": "ModuleScript",
+    "djb2": 1691438566
+  },
+  {
+    "bytes": 27394,
+    "path": "ServerStorage.Tests.Phase733Tests",
+    "adler32": 3279296229,
+    "class": "ModuleScript",
+    "djb2": 1375126957
+  },
+  {
+    "bytes": 8185,
+    "path": "ServerStorage.Tests.Phase734ShopTests",
+    "adler32": 3756060697,
+    "class": "ModuleScript",
+    "djb2": 4145256807
+  },
+  {
+    "bytes": 17133,
+    "path": "ServerStorage.Tests.Phase734Tests",
+    "adler32": 3564746092,
+    "class": "ModuleScript",
+    "djb2": 3187259302
+  },
+  {
+    "bytes": 1345,
+    "path": "ServerStorage.Tests.Phase741AllTests",
+    "adler32": 4246000663,
+    "class": "ModuleScript",
+    "djb2": 3706592780
+  },
+  {
+    "bytes": 27672,
+    "path": "ServerStorage.Tests.Phase741MovementTests",
+    "adler32": 3365500942,
+    "class": "ModuleScript",
+    "djb2": 4032890838
+  },
+  {
+    "bytes": 8698,
+    "path": "ServerStorage.Tests.Phase741ShopTests",
+    "adler32": 3540354442,
+    "class": "ModuleScript",
+    "djb2": 515040809
+  },
+  {
+    "bytes": 28402,
+    "path": "ServerStorage.Tests.Phase741Tests",
+    "adler32": 1894861403,
+    "class": "ModuleScript",
+    "djb2": 210559636
+  },
+  {
+    "bytes": 420,
+    "path": "ServerStorage.Tests.Phase742AllTests",
+    "adler32": 3297874100,
+    "class": "ModuleScript",
+    "djb2": 669440568
+  },
+  {
+    "bytes": 13092,
+    "path": "ServerStorage.Tests.Phase742Tests",
+    "adler32": 3153705516,
+    "class": "ModuleScript",
+    "djb2": 1250423761
+  },
+  {
+    "bytes": 218,
+    "path": "ServerStorage.Tests.Phase742UITests",
+    "adler32": 1885227576,
+    "class": "ModuleScript",
+    "djb2": 500400892
+  },
+  {
+    "bytes": 7797,
+    "path": "ServerStorage.Tests.Phase743UITests",
+    "adler32": 2490716980,
+    "class": "ModuleScript",
+    "djb2": 786274274
+  },
+  {
+    "bytes": 12249,
+    "path": "ServerStorage.Tests.Phase751Tests",
+    "adler32": 1493068076,
+    "class": "ModuleScript",
+    "djb2": 858301920
+  },
+  {
+    "bytes": 13418,
+    "path": "ServerStorage.Tests.Phase752Tests",
+    "adler32": 3499293362,
+    "class": "ModuleScript",
+    "djb2": 2007485655
+  },
+  {
+    "bytes": 12194,
+    "path": "ServerStorage.Tests.Phase753Tests",
+    "adler32": 2675669211,
+    "class": "ModuleScript",
+    "djb2": 3341097135
+  },
+  {
+    "bytes": 4654,
+    "path": "ServerStorage.Tests.Phase762Tests",
+    "adler32": 904809779,
+    "class": "ModuleScript",
+    "djb2": 1737741277
+  },
+  {
+    "bytes": 4929,
+    "path": "ServerStorage.Tests.PinkAuraEffectTests",
+    "adler32": 1934076946,
+    "class": "ModuleScript",
+    "djb2": 269095164
+  },
+  {
+    "bytes": 1199,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.DumbbellItemMaster",
+    "adler32": 3771894123,
+    "class": "ModuleScript",
+    "djb2": 2343678112
+  },
+  {
+    "bytes": 1199,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.DumbbellItemMaster",
+    "adler32": 3771894123,
+    "class": "ModuleScript",
+    "djb2": 2343678112
+  },
+  {
+    "bytes": 4445,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.DumbbellService",
+    "adler32": 70978569,
+    "class": "ModuleScript",
+    "djb2": 1536558323
+  },
+  {
+    "bytes": 4445,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.DumbbellService",
+    "adler32": 70978569,
+    "class": "ModuleScript",
+    "djb2": 1536558323
+  },
+  {
+    "bytes": 19439,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.PlayerDataService",
+    "adler32": 3414863586,
+    "class": "ModuleScript",
+    "djb2": 1398285984
+  },
+  {
+    "bytes": 19439,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.PlayerDataService",
+    "adler32": 3414863586,
+    "class": "ModuleScript",
+    "djb2": 1398285984
+  },
+  {
+    "bytes": 2123,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.Runtime",
+    "adler32": 2839405560,
+    "class": "ModuleScript",
+    "djb2": 631062238
+  },
+  {
+    "bytes": 2123,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.Runtime",
+    "adler32": 2839405560,
+    "class": "ModuleScript",
+    "djb2": 631062238
+  },
+  {
+    "bytes": 5101,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.StrengthManager",
+    "adler32": 155129234,
+    "class": "ModuleScript",
+    "djb2": 1531900877
+  },
+  {
+    "bytes": 5101,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.StrengthManager",
+    "adler32": 155129234,
+    "class": "ModuleScript",
+    "djb2": 1531900877
+  },
+  {
+    "bytes": 3247,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.TrainingController",
+    "adler32": 3156638552,
+    "class": "ModuleScript",
+    "djb2": 947776352
+  },
+  {
+    "bytes": 3247,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.TrainingController",
+    "adler32": 3156638552,
+    "class": "ModuleScript",
+    "djb2": 947776352
+  },
+  {
+    "bytes": 7290,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.TrainingManager",
+    "adler32": 4219412016,
+    "class": "ModuleScript",
+    "djb2": 711870334
+  },
+  {
+    "bytes": 7290,
+    "path": "ServerStorage.Tests.Sandboxes.Phase722TestSandbox.TrainingManager",
+    "adler32": 4219412016,
+    "class": "ModuleScript",
+    "djb2": 711870334
+  },
+  {
+    "bytes": 12360,
+    "path": "ServerStorage.Tests.ShopBenefitTests",
+    "adler32": 1287964342,
+    "class": "ModuleScript",
+    "djb2": 3580001194
+  },
+  {
+    "bytes": 13154,
+    "path": "ServerStorage.Tests.SpeedFeatureTests",
+    "adler32": 1743013902,
+    "class": "ModuleScript",
+    "djb2": 830113060
+  },
+  {
+    "bytes": 7387,
+    "path": "ServerStorage.Tests.StudioDebugTests",
+    "adler32": 3579177505,
+    "class": "ModuleScript",
+    "djb2": 1933862782
+  },
+  {
+    "bytes": 32570,
+    "path": "ServerStorage.Tests.V5RegressionTests",
+    "adler32": 2371889758,
+    "class": "ModuleScript",
+    "djb2": 30782734
+  },
+  {
+    "bytes": 2519,
+    "path": "StarterGui.LevelUpGui.LevelUpEffectClient",
+    "adler32": 2556916413,
+    "class": "LocalScript",
+    "djb2": 3323642356
+  },
+  {
+    "bytes": 4932,
+    "path": "StarterGui.StrengthGainGui.StrengthGainClient",
+    "adler32": 420189839,
+    "class": "LocalScript",
+    "djb2": 215658009
+  },
+  {
+    "bytes": 6000,
+    "path": "StarterGui.StrengthGui.AuraInventoryClient",
+    "adler32": 2866428345,
+    "class": "LocalScript",
+    "djb2": 4099346181
+  },
+  {
+    "bytes": 1772,
+    "path": "StarterGui.StrengthGui.AuraPurchaseNotifications",
+    "adler32": 2222418919,
+    "class": "ModuleScript",
+    "djb2": 2576066221
+  },
+  {
+    "bytes": 3968,
+    "path": "StarterGui.StrengthGui.CommunityRewardsClient",
+    "adler32": 1392867729,
+    "class": "LocalScript",
+    "djb2": 2489203242
+  },
+  {
+    "bytes": 4283,
+    "path": "StarterGui.StrengthGui.DailyRewardsClient",
+    "adler32": 1554964360,
+    "class": "LocalScript",
+    "djb2": 1956540801
+  },
+  {
+    "bytes": 8481,
+    "path": "StarterGui.StrengthGui.EssentialStudShopClient",
+    "adler32": 2450103170,
+    "class": "LocalScript",
+    "djb2": 3784391425
+  },
+  {
+    "bytes": 9154,
+    "path": "StarterGui.StrengthGui.InventoryNotificationClient",
+    "adler32": 1355848968,
+    "class": "LocalScript",
+    "djb2": 96797272
+  },
+  {
+    "bytes": 8956,
+    "path": "StarterGui.StrengthGui.InventoryPanelClient",
+    "adler32": 567937574,
+    "class": "LocalScript",
+    "djb2": 2973550902
+  },
+  {
+    "bytes": 2330,
+    "path": "StarterGui.StrengthGui.InventoryTabsClient",
+    "adler32": 1111177376,
+    "class": "LocalScript",
+    "djb2": 1877168535
+  },
+  {
+    "bytes": 15540,
+    "path": "StarterGui.StrengthGui.ItemInventoryTabClient",
+    "adler32": 2396228257,
+    "class": "LocalScript",
+    "djb2": 1280888185
+  },
+  {
+    "bytes": 1171,
+    "path": "StarterGui.StrengthGui.LeftMenuClient",
+    "adler32": 2367199572,
+    "class": "LocalScript",
+    "djb2": 556301129
+  },
+  {
+    "bytes": 3368,
+    "path": "StarterGui.StrengthGui.PotionStatusClient",
+    "adler32": 1244373789,
+    "class": "LocalScript",
+    "djb2": 2713800229
+  },
+  {
+    "bytes": 2698,
+    "path": "StarterGui.StrengthGui.RebirthMenuClient",
+    "adler32": 2680598645,
+    "class": "LocalScript",
+    "djb2": 3168398156
+  },
+  {
+    "bytes": 107,
+    "path": "StarterGui.StrengthGui.ResponsiveUIClient",
+    "adler32": 2156144415,
+    "class": "LocalScript",
+    "djb2": 3256671075
+  },
+  {
+    "bytes": 9779,
+    "path": "StarterGui.StrengthGui.ShopBenefitsClient",
+    "adler32": 3189990547,
+    "class": "LocalScript",
+    "djb2": 722976244
+  },
+  {
+    "bytes": 7887,
+    "path": "StarterGui.StrengthGui.SpeedInventoryClient",
+    "adler32": 1216337095,
+    "class": "LocalScript",
+    "djb2": 4103002005
+  },
+  {
+    "bytes": 1600,
+    "path": "StarterGui.StrengthGui.StrengthDisplay",
+    "adler32": 2751610127,
+    "class": "LocalScript",
+    "djb2": 3771268149
+  },
+  {
+    "bytes": 4637,
+    "path": "StarterGui.StrengthGui.TimeRewardsClient",
+    "adler32": 3144571279,
+    "class": "LocalScript",
+    "djb2": 1624223385
+  },
+  {
+    "bytes": 374,
+    "path": "StarterGui.StrengthGui.WinDisplay",
+    "adler32": 2004583564,
+    "class": "LocalScript",
+    "djb2": 1802023632
+  },
+  {
+    "bytes": 9144,
+    "path": "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New",
+    "adler32": 3016997021,
+    "class": "LocalScript",
+    "djb2": 4069990733
+  },
+  {
+    "bytes": 915,
+    "path": "StarterGui.World1DoubleWinGui.DoubleWinClient",
+    "adler32": 2768520189,
+    "class": "LocalScript",
+    "djb2": 4090094642
+  },
+  {
+    "bytes": 21575,
+    "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+    "adler32": 1579037041,
+    "class": "LocalScript",
+    "djb2": 1441830754
+  },
+  {
+    "bytes": 1948,
+    "path": "StarterPlayer.StarterPlayerScripts.Combat.Stage03AttackVisual",
+    "adler32": 2001383757,
+    "class": "ModuleScript",
+    "djb2": 3650750291
+  },
+  {
+    "bytes": 2954,
+    "path": "StarterPlayer.StarterPlayerScripts.Combat.StageWallDisplayClient",
+    "adler32": 445319679,
+    "class": "LocalScript",
+    "djb2": 3835242567
+  },
+  {
+    "bytes": 536,
+    "path": "StarterPlayer.StarterPlayerScripts.Debug.StudioDebugClient",
+    "adler32": 59293634,
+    "class": "LocalScript",
+    "djb2": 2053309702
+  },
+  {
+    "bytes": 8521,
+    "path": "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient",
+    "adler32": 3702959569,
+    "class": "LocalScript",
+    "djb2": 2541103696
+  },
+  {
+    "bytes": 4050,
+    "path": "StarterPlayer.StarterPlayerScripts.UI.EnemyDropGachaClient",
+    "adler32": 1251841931,
+    "class": "LocalScript",
+    "djb2": 3879060932
+  },
+  {
+    "bytes": 2464,
+    "path": "StarterPlayer.StarterPlayerScripts.UI.StageSkipClient",
+    "adler32": 2332388328,
+    "class": "LocalScript",
+    "djb2": 3575913119
+  },
+  {
+    "bytes": 1026,
+    "path": "StarterPlayer.StarterPlayerScripts.UI.TouchControlZoneClient",
+    "adler32": 1450931090,
+    "class": "LocalScript",
+    "djb2": 3136864327
+  },
+  {
+    "bytes": 1335,
+    "path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient",
+    "adler32": 1576259183,
+    "class": "LocalScript",
+    "djb2": 1167189988
+  },
+  {
+    "bytes": 2136,
+    "path": "StarterPlayer.StarterPlayerScripts.World.MovementSoundClient",
+    "adler32": 1024586709,
+    "class": "LocalScript",
+    "djb2": 1333658075
+  },
+  {
+    "bytes": 1920,
+    "path": "StarterPlayer.StarterPlayerScripts.World.SpawnFacingCameraClient",
+    "adler32": 186755470,
+    "class": "LocalScript",
+    "djb2": 395584020
+  },
+  {
+    "bytes": 2638,
+    "path": "StarterPlayer.StarterPlayerScripts.World.Stage01AppearanceClient",
+    "adler32": 2219612341,
+    "class": "LocalScript",
+    "djb2": 2958600556
+  },
+  {
+    "bytes": 3852,
+    "path": "StarterPlayer.StarterPlayerScripts.World.Stage02AppearanceClient",
+    "adler32": 2655731834,
+    "class": "LocalScript",
+    "djb2": 1568609171
+  },
+  {
+    "bytes": 2016,
+    "path": "StarterPlayer.StarterPlayerScripts.World.Stage03IdleClient",
+    "adler32": 3429876890,
+    "class": "LocalScript",
+    "djb2": 693429376
+  },
+  {
+    "bytes": 2557,
+    "path": "StarterPlayer.StarterPlayerScripts.World.Stage04AppearanceClient",
+    "adler32": 658014578,
+    "class": "LocalScript",
+    "djb2": 500428777
+  },
+  {
+    "bytes": 2514,
+    "path": "StarterPlayer.StarterPlayerScripts.World.Stage05AppearanceClient",
+    "adler32": 1516465950,
+    "class": "LocalScript",
+    "djb2": 2039622037
+  },
+  {
+    "bytes": 1833,
+    "path": "StarterPlayer.StarterPlayerScripts.World.TreadmillRunClient",
+    "adler32": 629241795,
+    "class": "LocalScript",
+    "djb2": 1075030793
+  },
+  {
+    "bytes": 4820,
+    "path": "StarterPlayer.StarterPlayerScripts.World.WorldGateClient",
+    "adler32": 282114642,
+    "class": "LocalScript",
+    "djb2": 3067568924
+  },
+  {
+    "bytes": 1783,
+    "path": "Workspace.EssentialUI_V1.05.READ ME",
+    "adler32": 2258597234,
+    "class": "ModuleScript",
+    "djb2": 3576271608
+  },
+  {
+    "bytes": 3811,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedFirst.LoadingScreen",
+    "adler32": 679187752,
+    "class": "LocalScript",
+    "djb2": 4233201520
+  },
+  {
+    "bytes": 621,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Configuration.DailyRewards",
+    "adler32": 1883347445,
+    "class": "ModuleScript",
+    "djb2": 156572249
+  },
+  {
+    "bytes": 262,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Configuration.General",
+    "adler32": 109923493,
+    "class": "ModuleScript",
+    "djb2": 1278139625
+  },
+  {
+    "bytes": 205,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Configuration.Packs",
+    "adler32": 3615899186,
+    "class": "ModuleScript",
+    "djb2": 2366320470
+  },
+  {
+    "bytes": 542,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Configuration.Passes",
+    "adler32": 1265935454,
+    "class": "ModuleScript",
+    "djb2": 777760962
+  },
+  {
+    "bytes": 1147,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Configuration.PlaytimeRewards",
+    "adler32": 3602726431,
+    "class": "ModuleScript",
+    "djb2": 4010451284
+  },
+  {
+    "bytes": 1053,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Configuration.Products",
+    "adler32": 1962950641,
+    "class": "ModuleScript",
+    "djb2": 500422502
+  },
+  {
+    "bytes": 667,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Configuration.Promotion",
+    "adler32": 3781148734,
+    "class": "ModuleScript",
+    "djb2": 378155650
+  },
+  {
+    "bytes": 917,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Configuration.WheelSpin",
+    "adler32": 3676305565,
+    "class": "ModuleScript",
+    "djb2": 1777888257
+  },
+  {
+    "bytes": 3106,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Classe",
+    "adler32": 1349311129,
+    "class": "ModuleScript",
+    "djb2": 355449328
+  },
+  {
+    "bytes": 2882,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Classe.Types",
+    "adler32": 2708911515,
+    "class": "ModuleScript",
+    "djb2": 1118673202
+  },
+  {
+    "bytes": 37854,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon",
+    "adler32": 4227040650,
+    "class": "ModuleScript",
+    "djb2": 4197977440
+  },
+  {
+    "bytes": 1240,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Attribute",
+    "adler32": 3703679249,
+    "class": "ModuleScript",
+    "djb2": 1033529094
+  },
+  {
+    "bytes": 10665,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Elements.Caption",
+    "adler32": 1128780013,
+    "class": "ModuleScript",
+    "djb2": 2964189486
+  },
+  {
+    "bytes": 7439,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Elements.Container",
+    "adler32": 12110238,
+    "class": "ModuleScript",
+    "djb2": 3419391803
+  },
+  {
+    "bytes": 11046,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Elements.Dropdown",
+    "adler32": 1007586915,
+    "class": "ModuleScript",
+    "djb2": 525569653
+  },
+  {
+    "bytes": 3225,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Elements.Indicator",
+    "adler32": 1254830684,
+    "class": "ModuleScript",
+    "djb2": 164607652
+  },
+  {
+    "bytes": 6070,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Elements.Menu",
+    "adler32": 721732917,
+    "class": "ModuleScript",
+    "djb2": 2191030224
+  },
+  {
+    "bytes": 3314,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Elements.Notice",
+    "adler32": 493045646,
+    "class": "ModuleScript",
+    "djb2": 2494762646
+  },
+  {
+    "bytes": 1560,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Elements.Selection",
+    "adler32": 643304650,
+    "class": "ModuleScript",
+    "djb2": 518056496
+  },
+  {
+    "bytes": 16371,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Elements.Widget",
+    "adler32": 1262311502,
+    "class": "ModuleScript",
+    "djb2": 2274286135
+  },
+  {
+    "bytes": 7285,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Features.Gamepad",
+    "adler32": 1331727435,
+    "class": "ModuleScript",
+    "djb2": 2321871208
+  },
+  {
+    "bytes": 12690,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Features.Overflow",
+    "adler32": 3155620411,
+    "class": "ModuleScript",
+    "djb2": 2578328047
+  },
+  {
+    "bytes": 12244,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Features.Themes",
+    "adler32": 3877255295,
+    "class": "ModuleScript",
+    "djb2": 681397491
+  },
+  {
+    "bytes": 1155,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Features.Themes.Classic",
+    "adler32": 443509950,
+    "class": "ModuleScript",
+    "djb2": 3083528883
+  },
+  {
+    "bytes": 4031,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Features.Themes.Default",
+    "adler32": 1506675858,
+    "class": "ModuleScript",
+    "djb2": 2292049963
+  },
+  {
+    "bytes": 6629,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Packages.GoodSignal",
+    "adler32": 1094772998,
+    "class": "ModuleScript",
+    "djb2": 2716144513
+  },
+  {
+    "bytes": 8379,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Packages.Janitor",
+    "adler32": 2894115972,
+    "class": "ModuleScript",
+    "djb2": 2433100818
+  },
+  {
+    "bytes": 1018,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Reference",
+    "adler32": 2309382954,
+    "class": "ModuleScript",
+    "djb2": 2882575935
+  },
+  {
+    "bytes": 12456,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Types",
+    "adler32": 166491927,
+    "class": "ModuleScript",
+    "djb2": 1860934202
+  },
+  {
+    "bytes": 16170,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.Utility",
+    "adler32": 4249436505,
+    "class": "ModuleScript",
+    "djb2": 1354880674
+  },
+  {
+    "bytes": 1153,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Icon.VERSION",
+    "adler32": 1786608317,
+    "class": "ModuleScript",
+    "djb2": 3777702994
+  },
+  {
+    "bytes": 24682,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Janitor",
+    "adler32": 3568723877,
+    "class": "ModuleScript",
+    "djb2": 1157736568
+  },
+  {
+    "bytes": 72,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Janitor.Packages.Promise",
+    "adler32": 3841202628,
+    "class": "ModuleScript",
+    "djb2": 3980820296
+  },
+  {
+    "bytes": 60896,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Janitor.Packages._Index.evaera_promise@4.0.0.promise",
+    "adler32": 1739553803,
+    "class": "ModuleScript",
+    "djb2": 636494414
+  },
+  {
+    "bytes": 5560,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Janitor.Promise",
+    "adler32": 3546470519,
+    "class": "ModuleScript",
+    "djb2": 3141824545
+  },
+  {
+    "bytes": 5582,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.LemonSignal",
+    "adler32": 3841704420,
+    "class": "ModuleScript",
+    "djb2": 2604618510
+  },
+  {
+    "bytes": 14090,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet",
+    "adler32": 1294152873,
+    "class": "ModuleScript",
+    "djb2": 939416479
+  },
+  {
+    "bytes": 2556,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet.Signal",
+    "adler32": 1884306212,
+    "class": "ModuleScript",
+    "djb2": 3945334587
+  },
+  {
+    "bytes": 948,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet.Task",
+    "adler32": 3579651318,
+    "class": "ModuleScript",
+    "djb2": 3474928107
+  },
+  {
+    "bytes": 30012,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet.Types",
+    "adler32": 1023128357,
+    "class": "ModuleScript",
+    "djb2": 3114948350
+  },
+  {
+    "bytes": 409,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet.Types.Characters",
+    "adler32": 2522108357,
+    "class": "ModuleScript",
+    "djb2": 2579554281
+  },
+  {
+    "bytes": 194,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet.Types.Enums",
+    "adler32": 3545841367,
+    "class": "ModuleScript",
+    "djb2": 3937734171
+  },
+  {
+    "bytes": 162,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet.Types.Static1",
+    "adler32": 3010670847,
+    "class": "ModuleScript",
+    "djb2": 3314412931
+  },
+  {
+    "bytes": 162,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet.Types.Static2",
+    "adler32": 3010670847,
+    "class": "ModuleScript",
+    "djb2": 3314412931
+  },
+  {
+    "bytes": 162,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Packages.Packet.Types.Static3",
+    "adler32": 3010670847,
+    "class": "ModuleScript",
+    "djb2": 3314412931
+  },
+  {
+    "bytes": 1609,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Utils.GlobalFunctions",
+    "adler32": 2700996826,
+    "class": "ModuleScript",
+    "djb2": 1876489487
+  },
+  {
+    "bytes": 1359,
+    "path": "Workspace.EssentialUI_V1.05.ReplicatedStorage.Utils.Packets",
+    "adler32": 4214665879,
+    "class": "ModuleScript",
+    "djb2": 3899153196
+  },
+  {
+    "bytes": 2413,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Classes.Replication",
+    "adler32": 737953572,
+    "class": "ModuleScript",
+    "djb2": 2370352731
+  },
+  {
+    "bytes": 296,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Commands.GiveCash",
+    "adler32": 1796101170,
+    "class": "ModuleScript",
+    "djb2": 477016854
+  },
+  {
+    "bytes": 363,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Commands.GiveCashServer",
+    "adler32": 3536682923,
+    "class": "ModuleScript",
+    "djb2": 890351599
+  },
+  {
+    "bytes": 312,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Commands.GivePack",
+    "adler32": 3826801046,
+    "class": "ModuleScript",
+    "djb2": 2849821658
+  },
+  {
+    "bytes": 499,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Commands.GivePackServer",
+    "adler32": 1109832223,
+    "class": "ModuleScript",
+    "djb2": 4126609315
+  },
+  {
+    "bytes": 320,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Commands.GivePass",
+    "adler32": 2305318218,
+    "class": "ModuleScript",
+    "djb2": 809181070
+  },
+  {
+    "bytes": 603,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Commands.GivePassServer",
+    "adler32": 3045185476,
+    "class": "ModuleScript",
+    "djb2": 406491656
+  },
+  {
+    "bytes": 327,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Commands.GiveProduct",
+    "adler32": 3339346041,
+    "class": "ModuleScript",
+    "djb2": 3366455037
+  },
+  {
+    "bytes": 420,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Commands.GiveProductServer",
+    "adler32": 4177631070,
+    "class": "ModuleScript",
+    "djb2": 2545851522
+  },
+  {
+    "bytes": 452,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Hooks.Permissions",
+    "adler32": 1419156560,
+    "class": "ModuleScript",
+    "djb2": 378075572
+  },
+  {
+    "bytes": 300,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Types.packName",
+    "adler32": 4083116506,
+    "class": "ModuleScript",
+    "djb2": 4222826302
+  },
+  {
+    "bytes": 306,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Types.passName",
+    "adler32": 4151602376,
+    "class": "ModuleScript",
+    "djb2": 2960039020
+  },
+  {
+    "bytes": 318,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Cmdr.Types.productName",
+    "adler32": 3802165798,
+    "class": "ModuleScript",
+    "djb2": 730026570
+  },
+  {
+    "bytes": 1025,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr",
+    "adler32": 2456569509,
+    "class": "ModuleScript",
+    "djb2": 1802174650
+  },
+  {
+    "bytes": 241,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.announce",
+    "adler32": 447104437,
+    "class": "ModuleScript",
+    "djb2": 3262311865
+  },
+  {
+    "bytes": 574,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.announceServer",
+    "adler32": 3931358491,
+    "class": "ModuleScript",
+    "djb2": 1523974143
+  },
+  {
+    "bytes": 816,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.gotoPlace",
+    "adler32": 3049717064,
+    "class": "ModuleScript",
+    "djb2": 3854057132
+  },
+  {
+    "bytes": 541,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.gotoPlaceServer",
+    "adler32": 1457499691,
+    "class": "ModuleScript",
+    "djb2": 36004271
+  },
+  {
+    "bytes": 242,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.kick",
+    "adler32": 4186457403,
+    "class": "ModuleScript",
+    "djb2": 2372845343
+  },
+  {
+    "bytes": 162,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.kickServer",
+    "adler32": 3643814858,
+    "class": "ModuleScript",
+    "djb2": 893850798
+  },
+  {
+    "bytes": 242,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.kill",
+    "adler32": 228738397,
+    "class": "ModuleScript",
+    "djb2": 3416253537
+  },
+  {
+    "bytes": 197,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.killServer",
+    "adler32": 4104535840,
+    "class": "ModuleScript",
+    "djb2": 1049892484
+  },
+  {
+    "bytes": 434,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.respawn",
+    "adler32": 1592756362,
+    "class": "ModuleScript",
+    "djb2": 1341928014
+  },
+  {
+    "bytes": 191,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.respawnServer",
+    "adler32": 2603564362,
+    "class": "ModuleScript",
+    "djb2": 290074478
+  },
+  {
+    "bytes": 665,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.teleport",
+    "adler32": 1870648042,
+    "class": "ModuleScript",
+    "djb2": 722407566
+  },
+  {
+    "bytes": 669,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Admin.teleportServer",
+    "adler32": 1176166065,
+    "class": "ModuleScript",
+    "djb2": 1082174037
+  },
+  {
+    "bytes": 545,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.blink",
+    "adler32": 2294328611,
+    "class": "ModuleScript",
+    "djb2": 1367472551
+  },
+  {
+    "bytes": 223,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.fetch",
+    "adler32": 1893088657,
+    "class": "ModuleScript",
+    "djb2": 571188821
+  },
+  {
+    "bytes": 118,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.fetchServer",
+    "adler32": 2058758211,
+    "class": "ModuleScript",
+    "djb2": 3820729831
+  },
+  {
+    "bytes": 675,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.getPlayerPlaceInstance",
+    "adler32": 9031582,
+    "class": "ModuleScript",
+    "djb2": 1668124386
+  },
+  {
+    "bytes": 693,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.getPlayerPlaceInstanceServer",
+    "adler32": 4245280200,
+    "class": "ModuleScript",
+    "djb2": 2924949196
+  },
+  {
+    "bytes": 682,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.position",
+    "adler32": 2440943657,
+    "class": "ModuleScript",
+    "djb2": 1780230893
+  },
+  {
+    "bytes": 928,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.thru",
+    "adler32": 3177981365,
+    "class": "ModuleScript",
+    "djb2": 3238640266
+  },
+  {
+    "bytes": 160,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.uptime",
+    "adler32": 293024430,
+    "class": "ModuleScript",
+    "djb2": 587238130
+  },
+  {
+    "bytes": 274,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.uptimeServer",
+    "adler32": 534400398,
+    "class": "ModuleScript",
+    "djb2": 737643186
+  },
+  {
+    "bytes": 216,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Debug.version",
+    "adler32": 2290631570,
+    "class": "ModuleScript",
+    "djb2": 1121271542
+  },
+  {
+    "bytes": 731,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.alias",
+    "adler32": 2661867595,
+    "class": "ModuleScript",
+    "djb2": 2912356943
+  },
+  {
+    "bytes": 1827,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.bind",
+    "adler32": 1656631829,
+    "class": "ModuleScript",
+    "djb2": 1365870587
+  },
+  {
+    "bytes": 583,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.clear",
+    "adler32": 152285233,
+    "class": "ModuleScript",
+    "djb2": 2402721077
+  },
+  {
+    "bytes": 474,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.convertTimestamp",
+    "adler32": 1213960933,
+    "class": "ModuleScript",
+    "djb2": 217626825
+  },
+  {
+    "bytes": 267,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.echo",
+    "adler32": 3655813699,
+    "class": "ModuleScript",
+    "djb2": 3725289543
+  },
+  {
+    "bytes": 1942,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.edit",
+    "adler32": 3069658350,
+    "class": "ModuleScript",
+    "djb2": 296496212
+  },
+  {
+    "bytes": 774,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.history",
+    "adler32": 2704405227,
+    "class": "ModuleScript",
+    "djb2": 260197615
+  },
+  {
+    "bytes": 462,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.hover",
+    "adler32": 3821900065,
+    "class": "ModuleScript",
+    "djb2": 17722181
+  },
+  {
+    "bytes": 394,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.jsonArrayDecode",
+    "adler32": 1380413550,
+    "class": "ModuleScript",
+    "djb2": 3063026386
+  },
+  {
+    "bytes": 399,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.jsonArrayEncode",
+    "adler32": 3005642815,
+    "class": "ModuleScript",
+    "djb2": 4195719619
+  },
+  {
+    "bytes": 305,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.len",
+    "adler32": 3872806835,
+    "class": "ModuleScript",
+    "djb2": 758845015
+  },
+  {
+    "bytes": 1028,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.math",
+    "adler32": 1626422480,
+    "class": "ModuleScript",
+    "djb2": 1128550501
+  },
+  {
+    "bytes": 444,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.pick",
+    "adler32": 1498972062,
+    "class": "ModuleScript",
+    "djb2": 2453935106
+  },
+  {
+    "bytes": 606,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.rand",
+    "adler32": 2640230824,
+    "class": "ModuleScript",
+    "djb2": 458035212
+  },
+  {
+    "bytes": 895,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.replace",
+    "adler32": 1423052873,
+    "class": "ModuleScript",
+    "djb2": 1519354366
+  },
+  {
+    "bytes": 792,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.resolve",
+    "adler32": 2826956338,
+    "class": "ModuleScript",
+    "djb2": 83399670
+  },
+  {
+    "bytes": 505,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.run",
+    "adler32": 336239849,
+    "class": "ModuleScript",
+    "djb2": 2978729389
+  },
+  {
+    "bytes": 814,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.runLines",
+    "adler32": 2088890397,
+    "class": "ModuleScript",
+    "djb2": 2691470177
+  },
+  {
+    "bytes": 1268,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.runif",
+    "adler32": 1526761011,
+    "class": "ModuleScript",
+    "djb2": 2305518824
+  },
+  {
+    "bytes": 584,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.unbind",
+    "adler32": 3066868940,
+    "class": "ModuleScript",
+    "djb2": 3583186864
+  },
+  {
+    "bytes": 670,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.var",
+    "adler32": 1845549663,
+    "class": "ModuleScript",
+    "djb2": 3446674499
+  },
+  {
+    "bytes": 1374,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.varServer",
+    "adler32": 285780325,
+    "class": "ModuleScript",
+    "djb2": 1722481754
+  },
+  {
+    "bytes": 575,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.varSet",
+    "adler32": 630696787,
+    "class": "ModuleScript",
+    "djb2": 3677848215
+  },
+  {
+    "bytes": 1362,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.Utility.varSetServer",
+    "adler32": 2924061902,
+    "class": "ModuleScript",
+    "djb2": 1742176291
+  },
+  {
+    "bytes": 1853,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInCommands.help",
+    "adler32": 1795045615,
+    "class": "ModuleScript",
+    "djb2": 881127893
+  },
+  {
+    "bytes": 140,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.BindableResource",
+    "adler32": 792867164,
+    "class": "ModuleScript",
+    "djb2": 279776000
+  },
+  {
+    "bytes": 4615,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.BrickColor",
+    "adler32": 3592526022,
+    "class": "ModuleScript",
+    "djb2": 2897220511
+  },
+  {
+    "bytes": 1415,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.Color3",
+    "adler32": 805484613,
+    "class": "ModuleScript",
+    "djb2": 64438106
+  },
+  {
+    "bytes": 612,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.Command",
+    "adler32": 708494303,
+    "class": "ModuleScript",
+    "djb2": 418523107
+  },
+  {
+    "bytes": 148,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.ConditionFunction",
+    "adler32": 4193334593,
+    "class": "ModuleScript",
+    "djb2": 1719114309
+  },
+  {
+    "bytes": 4202,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.Duration",
+    "adler32": 3406563634,
+    "class": "ModuleScript",
+    "djb2": 510810699
+  },
+  {
+    "bytes": 297,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.JSON",
+    "adler32": 878731195,
+    "class": "ModuleScript",
+    "djb2": 2517899583
+  },
+  {
+    "bytes": 621,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.MathOperator",
+    "adler32": 43752023,
+    "class": "ModuleScript",
+    "djb2": 1782088699
+  },
+  {
+    "bytes": 839,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.Player",
+    "adler32": 903153530,
+    "class": "ModuleScript",
+    "djb2": 2240252591
+  },
+  {
+    "bytes": 1337,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.PlayerId",
+    "adler32": 2056300278,
+    "class": "ModuleScript",
+    "djb2": 2529474283
+  },
+  {
+    "bytes": 3410,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.Primitives",
+    "adler32": 3824108839,
+    "class": "ModuleScript",
+    "djb2": 3723855951
+  },
+  {
+    "bytes": 891,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.StoredKey",
+    "adler32": 27268495,
+    "class": "ModuleScript",
+    "djb2": 3249372068
+  },
+  {
+    "bytes": 1207,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.Team",
+    "adler32": 300124693,
+    "class": "ModuleScript",
+    "djb2": 3060927754
+  },
+  {
+    "bytes": 591,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.Type",
+    "adler32": 2221587476,
+    "class": "ModuleScript",
+    "djb2": 707421400
+  },
+  {
+    "bytes": 433,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.URL",
+    "adler32": 1136298648,
+    "class": "ModuleScript",
+    "djb2": 3665826076
+  },
+  {
+    "bytes": 722,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.UserInput",
+    "adler32": 1464724989,
+    "class": "ModuleScript",
+    "djb2": 2385648737
+  },
+  {
+    "bytes": 802,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.BuiltInTypes.Vector",
+    "adler32": 2487093938,
+    "class": "ModuleScript",
+    "djb2": 1641027143
+  },
+  {
+    "bytes": 3400,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.CmdrClient",
+    "adler32": 1574589875,
+    "class": "ModuleScript",
+    "djb2": 3213281659
+  },
+  {
+    "bytes": 4576,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.CmdrClient.CmdrInterface",
+    "adler32": 148933869,
+    "class": "ModuleScript",
+    "djb2": 347068198
+  },
+  {
+    "bytes": 6563,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.CmdrClient.CmdrInterface.AutoComplete",
+    "adler32": 2751272819,
+    "class": "ModuleScript",
+    "djb2": 221666239
+  },
+  {
+    "bytes": 9460,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.CmdrClient.CmdrInterface.Window",
+    "adler32": 3529760853,
+    "class": "ModuleScript",
+    "djb2": 3633449076
+  },
+  {
+    "bytes": 413,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.CmdrClient.DefaultEventHandlers",
+    "adler32": 2880798963,
+    "class": "ModuleScript",
+    "djb2": 2676368023
+  },
+  {
+    "bytes": 7628,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.CreateGui",
+    "adler32": 3784659845,
+    "class": "ModuleScript",
+    "djb2": 1449687394
+  },
+  {
+    "bytes": 1135,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.Initialize",
+    "adler32": 397048321,
+    "class": "ModuleScript",
+    "djb2": 3122686390
+  },
+  {
+    "bytes": 7371,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.Shared.Argument",
+    "adler32": 138169070,
+    "class": "ModuleScript",
+    "djb2": 391789387
+  },
+  {
+    "bytes": 7932,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.Shared.Command",
+    "adler32": 3984607601,
+    "class": "ModuleScript",
+    "djb2": 2095562879
+  },
+  {
+    "bytes": 6031,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.Shared.Dispatcher",
+    "adler32": 4048211665,
+    "class": "ModuleScript",
+    "djb2": 195487596
+  },
+  {
+    "bytes": 9038,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.Shared.Registry",
+    "adler32": 947107732,
+    "class": "ModuleScript",
+    "djb2": 3061640755
+  },
+  {
+    "bytes": 14633,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.Cmdr.Shared.Util",
+    "adler32": 35327009,
+    "class": "ModuleScript",
+    "djb2": 100532663
+  },
+  {
+    "bytes": 64517,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Packages.ProfileStore",
+    "adler32": 1486856193,
+    "class": "ModuleScript",
+    "djb2": 3792910967
+  },
+  {
+    "bytes": 959,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Server",
+    "adler32": 872823843,
+    "class": "Script",
+    "djb2": 2419629208
+  },
+  {
+    "bytes": 471,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.Cmdr",
+    "adler32": 1448716038,
+    "class": "ModuleScript",
+    "djb2": 3816993642
+  },
+  {
+    "bytes": 3015,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.CodesService",
+    "adler32": 2491998301,
+    "class": "ModuleScript",
+    "djb2": 1382983540
+  },
+  {
+    "bytes": 1001,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.CodesService.Codes",
+    "adler32": 187381503,
+    "class": "ModuleScript",
+    "djb2": 255972820
+  },
+  {
+    "bytes": 2015,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.DailyRewardsService",
+    "adler32": 3174937659,
+    "class": "ModuleScript",
+    "djb2": 547141281
+  },
+  {
+    "bytes": 402,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.DailyRewardsService.RewardFunctions",
+    "adler32": 2942336131,
+    "class": "ModuleScript",
+    "djb2": 1378996871
+  },
+  {
+    "bytes": 11749,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.DataService",
+    "adler32": 468240100,
+    "class": "ModuleScript",
+    "djb2": 3338022567
+  },
+  {
+    "bytes": 697,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.DataService.Template",
+    "adler32": 1849284745,
+    "class": "ModuleScript",
+    "djb2": 1003797101
+  },
+  {
+    "bytes": 2243,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.FriendService",
+    "adler32": 2312048763,
+    "class": "ModuleScript",
+    "djb2": 690107154
+  },
+  {
+    "bytes": 2500,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.GroupRewardService",
+    "adler32": 3754315427,
+    "class": "ModuleScript",
+    "djb2": 807845978
+  },
+  {
+    "bytes": 2967,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.LeaderboardService",
+    "adler32": 2435763255,
+    "class": "ModuleScript",
+    "djb2": 3863387630
+  },
+  {
+    "bytes": 1342,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.LeaderstatsService",
+    "adler32": 1023594598,
+    "class": "ModuleScript",
+    "djb2": 1417165435
+  },
+  {
+    "bytes": 12913,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.MarketplaceService",
+    "adler32": 3219802446,
+    "class": "ModuleScript",
+    "djb2": 1803225651
+  },
+  {
+    "bytes": 159,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.MarketplaceService.PacksRewards",
+    "adler32": 1293431605,
+    "class": "ModuleScript",
+    "djb2": 2323300921
+  },
+  {
+    "bytes": 350,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.MarketplaceService.PassesRewards",
+    "adler32": 641428695,
+    "class": "ModuleScript",
+    "djb2": 37885147
+  },
+  {
+    "bytes": 796,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.MarketplaceService.ProductsRewards",
+    "adler32": 522452445,
+    "class": "ModuleScript",
+    "djb2": 2508349985
+  },
+  {
+    "bytes": 4207,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.PlaytimeRewardsService",
+    "adler32": 2674504080,
+    "class": "ModuleScript",
+    "djb2": 3043724041
+  },
+  {
+    "bytes": 856,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.PlaytimeRewardsService.RewardFunctions",
+    "adler32": 2135427000,
+    "class": "ModuleScript",
+    "djb2": 1377285645
+  },
+  {
+    "bytes": 1374,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.ReplicationService",
+    "adler32": 3229672765,
+    "class": "ModuleScript",
+    "djb2": 460811826
+  },
+  {
+    "bytes": 1067,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.SettingsService",
+    "adler32": 1465548322,
+    "class": "ModuleScript",
+    "djb2": 3542651479
+  },
+  {
+    "bytes": 3751,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.WheelSpinService",
+    "adler32": 4180609926,
+    "class": "ModuleScript",
+    "djb2": 151339455
+  },
+  {
+    "bytes": 496,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Services.WheelSpinService.RewardFunctions",
+    "adler32": 4287798845,
+    "class": "ModuleScript",
+    "djb2": 2709844897
+  },
+  {
+    "bytes": 51,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Utils.GlobalFunctions",
+    "adler32": 3831042707,
+    "class": "ModuleScript",
+    "djb2": 3710995479
+  },
+  {
+    "bytes": 512,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Utils.GlobalSignals",
+    "adler32": 728542173,
+    "class": "ModuleScript",
+    "djb2": 3423456961
+  },
+  {
+    "bytes": 527,
+    "path": "Workspace.EssentialUI_V1.05.ServerScriptService.Utils.SafePlayerAdded",
+    "adler32": 769111893,
+    "class": "ModuleScript",
+    "djb2": 2775907257
+  },
+  {
+    "bytes": 1161,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Client",
+    "adler32": 2958526140,
+    "class": "LocalScript",
+    "djb2": 1228757041
+  },
+  {
+    "bytes": 912,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.AmbientMusicController",
+    "adler32": 59323073,
+    "class": "ModuleScript",
+    "djb2": 3968533750
+  },
+  {
+    "bytes": 428,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.Cmdr",
+    "adler32": 1625592543,
+    "class": "ModuleScript",
+    "djb2": 2269632035
+  },
+  {
+    "bytes": 1303,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.CodesController",
+    "adler32": 1286847694,
+    "class": "ModuleScript",
+    "djb2": 1753575715
+  },
+  {
+    "bytes": 782,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.ConffetiController",
+    "adler32": 3904572939,
+    "class": "ModuleScript",
+    "djb2": 2479561696
+  },
+  {
+    "bytes": 2500,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.DailyRewardsController",
+    "adler32": 2265007629,
+    "class": "ModuleScript",
+    "djb2": 3227070436
+  },
+  {
+    "bytes": 1312,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.GroupRewardController",
+    "adler32": 1616431886,
+    "class": "ModuleScript",
+    "djb2": 2280300739
+  },
+  {
+    "bytes": 10631,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.MarketplaceController",
+    "adler32": 3093320072,
+    "class": "ModuleScript",
+    "djb2": 2354442650
+  },
+  {
+    "bytes": 3129,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.NotificationController",
+    "adler32": 2664567484,
+    "class": "ModuleScript",
+    "djb2": 1752229188
+  },
+  {
+    "bytes": 2580,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.PlaytimeRewardsController",
+    "adler32": 3714153590,
+    "class": "ModuleScript",
+    "djb2": 3294564973
+  },
+  {
+    "bytes": 4220,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.PromotionController",
+    "adler32": 1284273684,
+    "class": "ModuleScript",
+    "djb2": 4060886477
+  },
+  {
+    "bytes": 1793,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.ReplicationController",
+    "adler32": 2263838801,
+    "class": "ModuleScript",
+    "djb2": 3704167447
+  },
+  {
+    "bytes": 2395,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.SettingsController",
+    "adler32": 1761688590,
+    "class": "ModuleScript",
+    "djb2": 4032810405
+  },
+  {
+    "bytes": 391,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.TopbarController",
+    "adler32": 1986232106,
+    "class": "ModuleScript",
+    "djb2": 3739146094
+  },
+  {
+    "bytes": 14982,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.UiController",
+    "adler32": 3242330390,
+    "class": "ModuleScript",
+    "djb2": 1629522333
+  },
+  {
+    "bytes": 482,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.UiController.Frames",
+    "adler32": 2096734390,
+    "class": "ModuleScript",
+    "djb2": 149042266
+  },
+  {
+    "bytes": 4548,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Controllers.WheelSpinController",
+    "adler32": 3012693675,
+    "class": "ModuleScript",
+    "djb2": 4128806773
+  },
+  {
+    "bytes": 238,
+    "path": "Workspace.EssentialUI_V1.05.StarterPlayer>StarterPlayerScripts.Utils.GlobalSignals",
+    "adler32": 1411207312,
+    "class": "ModuleScript",
+    "djb2": 1084243732
+  },
+  {
+    "bytes": 1837,
+    "path": "Workspace.GeneratedMap.TrainingArea.Decorations.Shop.ThreeDTextObject.Door.ShopDoorInteract",
+    "adler32": 4109203849,
+    "class": "Script",
+    "djb2": 1222572463
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill01.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill02.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill03.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill04.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill05.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill06.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill07.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill08.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill09.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  },
+  {
+    "bytes": 87,
+    "path": "Workspace.Treadmill.Tredmill10.Part.Script",
+    "adler32": 1506811408,
+    "class": "Script",
+    "djb2": 2249360724
+  }
+]

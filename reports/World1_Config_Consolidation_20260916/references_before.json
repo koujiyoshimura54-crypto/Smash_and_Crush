@@ -1,0 +1,374 @@
+{
+  "scriptCount": 395,
+  "matches": [
+    {
+      "lines": [
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 20,
+          "text": " local required=Requirements.GetRequiredStrength(level)"
+        }
+      ],
+      "path": "StarterGui.StrengthGui.StrengthDisplay"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 27,
+          "text": "  local required=Requirements.GetRequiredStrength(level)"
+        }
+      ],
+      "path": "ReplicatedStorage.Modules.LevelProgression"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 219,
+          "text": "function LevelRequirements.GetRequiredStrength(level)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 236,
+          "text": "  if value >= LevelRequirements.GetRequiredStrength(middle) then"
+        }
+      ],
+      "path": "ReplicatedStorage.Config.LevelRequirements"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 19,
+          "text": "function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end"
+        },
+        {
+          "terms": [
+            "GetMaxHP"
+          ],
+          "line": 20,
+          "text": "function C.GetMaxHP(stage)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 21,
+          "text": " local strength=C.GetRequiredStrength(stage)"
+        },
+        {
+          "terms": [
+            "GetRecommendedLevel"
+          ],
+          "line": 24,
+          "text": "function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end"
+        }
+      ],
+      "path": "ReplicatedStorage.Config.World1BossConfig"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "GetMaxHP"
+          ],
+          "line": 7,
+          "text": "function C.GetMaxHP(stage) return C.MaxHP[stage] end"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 8,
+          "text": "function C.GetRequiredStrength(stage)"
+        },
+        {
+          "terms": [
+            "GetRecommendedLevel"
+          ],
+          "line": 12,
+          "text": "function C.GetRecommendedLevel(stage)"
+        }
+      ],
+      "path": "ReplicatedStorage.Config.World2BossConfig"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "World1BossConfig"
+          ],
+          "line": 1,
+          "text": "-- World1 Stage6-10 override. Keep legacy World1BossConfig and Wall.Config intact:"
+        },
+        {
+          "terms": [
+            "World1BossConfig"
+          ],
+          "line": 3,
+          "text": "local Base=require(script.Parent.World1BossConfig)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 15,
+          "text": "function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end"
+        },
+        {
+          "terms": [
+            "GetRecommendedLevel"
+          ],
+          "line": 16,
+          "text": "function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end"
+        },
+        {
+          "terms": [
+            "GetMaxHP"
+          ],
+          "line": 17,
+          "text": "function C.GetMaxHP(stage)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 18,
+          "text": " local strength=C.GetRequiredStrength(stage)"
+        },
+        {
+          "terms": [
+            "GetWallConfig"
+          ],
+          "line": 21,
+          "text": "function C.GetWallConfig(stage) return walls[stage] end"
+        }
+      ],
+      "path": "ReplicatedStorage.Config.World1LateStageConfig"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "World1BossConfig"
+          ],
+          "line": 16,
+          "text": "local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)"
+        },
+        {
+          "terms": [
+            "GetMaxHP"
+          ],
+          "line": 17,
+          "text": "for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end"
+        },
+        {
+          "terms": [
+            "World1LateStageConfig"
+          ],
+          "line": 19,
+          "text": "local LateStageConfig=require(game.ReplicatedStorage.Config.World1LateStageConfig)"
+        },
+        {
+          "terms": [
+            "GetWallConfig"
+          ],
+          "line": 21,
+          "text": " return LateStageConfig.GetWallConfig(major) or M.Config[major] or M.Config[1]"
+        }
+      ],
+      "path": "ServerScriptService.World.Stage1WallManager"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "World1LateStageConfig"
+          ],
+          "line": 4,
+          "text": "local BossConfig=require(game:GetService(\"ReplicatedStorage\").Config:WaitForChild(\"World1LateStageConfig\"))"
+        },
+        {
+          "terms": [
+            "GetRecommendedLevel"
+          ],
+          "line": 12,
+          "text": "\tlocal level=BossConfig.GetRecommendedLevel(stage)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 13,
+          "text": "\tlocal required=assert(BossConfig.GetRequiredStrength(stage),\"Missing World1 Boss strength\")"
+        },
+        {
+          "terms": [
+            "GetMaxHP"
+          ],
+          "line": 18,
+          "text": "\t\tMaxHP=BossConfig.GetMaxHP(stage)"
+        }
+      ],
+      "path": "ServerScriptService.World.BossCombatService"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "World1LateStageConfig"
+          ],
+          "line": 73,
+          "text": " local BossConfig=require(RS.Config.World1LateStageConfig)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 81,
+          "text": " local required=BossConfig.GetRequiredStrength(stage)"
+        },
+        {
+          "terms": [
+            "GetMaxHP"
+          ],
+          "line": 94,
+          "text": "  Win=player:GetAttribute(\"Win\"),BossMaxHP=BossConfig.GetMaxHP(stage),"
+        }
+      ],
+      "path": "ServerScriptService.Systems.Debug.StudioDebugService"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "GetMaxHP"
+          ],
+          "line": 8,
+          "text": "function C.GetMaxHP(stage,index)"
+        }
+      ],
+      "path": "ServerScriptService.Config.World2WallConfig"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 19,
+          "text": "   local c=b.GetStageConfig(stage);assert(c.RecommendedLevel==stage*5 and c.RequiredStrength==require(game.ReplicatedStorage.Config.LevelRequirements).GetRequiredStrength(stage*5) and c.MaxHP==hp[stage])"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 30,
+          "text": "   local level=10-gap;local strength=require(game.ReplicatedStorage.Config.LevelRequirements).GetRequiredStrength(level)"
+        }
+      ],
+      "path": "ServerStorage.Tests.LevelCombatTests"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "World1BossConfig"
+          ],
+          "line": 35,
+          "text": " local cfg=require(game.ReplicatedStorage.Config.World1BossConfig)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength",
+            "GetMaxHP"
+          ],
+          "line": 47,
+          "text": "  assert(cfg.GetRequiredStrength(stage)==required and cfg.GetMaxHP(stage)==required*5)"
+        },
+        {
+          "terms": [
+            "World1BossConfig"
+          ],
+          "line": 335,
+          "text": " local C=require(game.ReplicatedStorage.Config.World1BossConfig)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength"
+          ],
+          "line": 358,
+          "text": "  p.Bonus=.5;p:SetAttribute(\"Strength\",C.GetRequiredStrength(n))"
+        },
+        {
+          "terms": [
+            "GetMaxHP"
+          ],
+          "line": 359,
+          "text": "  B.QueueDamage(p,boss,n,C.GetMaxHP(n),10)"
+        }
+      ],
+      "path": "ServerStorage.Tests.V5RegressionTests"
+    },
+    {
+      "lines": [
+        {
+          "terms": [
+            "World1BossConfig"
+          ],
+          "line": 35,
+          "text": " local cfg=require(game.ReplicatedStorage.Config.World1BossConfig)"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength",
+            "GetMaxHP"
+          ],
+          "line": 47,
+          "text": "  assert(cfg.GetRequiredStrength(stage)==required and cfg.GetMaxHP(stage)==required*5)"
+        },
+        {
+          "terms": [
+            "World1BossConfig"
+          ],
+          "line": 70,
+          "text": " local C=require(game.ReplicatedStorage.Config.World1BossConfig)"
+        },
+        {
+          "terms": [
+            "World1BossConfig"
+          ],
+          "line": 74,
+          "text": " source=replace(source,'require(game:GetService(\"ReplicatedStorage\").Config:WaitForChild(\"World1BossConfig\"))','Deps.Config')"
+        },
+        {
+          "terms": [
+            "GetRecommendedLevel"
+          ],
+          "line": 77,
+          "text": " local variant=table.clone(C);variant.GetRecommendedLevel=function() return 99 end"
+        },
+        {
+          "terms": [
+            "GetRequiredStrength",
+            "GetMaxHP"
+          ],
+          "line": 90,
+          "text": "  assert(C.GetRequiredStrength(stage)==v and C.GetMaxHP(stage)==v*5)"
+        }
+      ],
+      "path": "ServerStorage.Tests.EarlyWorld1BalanceTests"
+    }
+  ]
+}

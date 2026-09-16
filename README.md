@@ -30,11 +30,11 @@ World1 Stage1〜10の進行、後半Balance、大型Boss Collider、HP UIを実�
 
 reports内のsourcesは特定時点の監査証拠。Studioへ自動同期する開発用ソースではなく、これだけで完全なPlaceを復元できる構成でもない。現行実装と矛盾した場合はSPECへ差を記録し、勝手に統一しない。
 
-## バージョン管理の準備
+## このPCのGit作業Repository
 
-2026-09-15確認：このフォルダーと祖先に.gitはなく、既存Repositoryではない。gitコマンドはPATH上で利用できず、一般的なインストール先にも見つからなかった。PC上の全領域で未導入を証明したわけではない。インストール・git init・Commit・Remote作成は今回行っていない。
+2026-09-16：Git for Windowsを導入し、既存の`C:\Users\kouji\Smash_and_Crush`自体を正式な作業RepositoryとしてGitHub `koujiyoshimura54-crypto/Smash_and_Crush`の`origin/main`へ接続した。今後も同じフォルダーの`main`でpull → 作業 → commit → pushを行う。新しいclone先は作成していない。
 
-[.gitignore.example](.gitignore.example)は**未適用の候補**。採用時に管理対象を決めて.gitignoreへ反映する。
+[.gitignore](.gitignore)を適用済み。接続前の差分11件の原本は`.git/local-pre-main-backup`に保持し、ローカル固有260件も元の場所に残している。後者はこのPCだけの`.git/info/exclude`でCommit対象外とし、共有Repositoryへ混ぜない。これらのローカル保存物はPushされない。
 
 | データ | 推奨 |
 |---|---|
@@ -49,4 +49,4 @@ reports内のsourcesは特定時点の監査証拠。Studioへ自動同期する
 
 .rbxl/.rbxlxやreports全体を一括除外する候補にはしていない。今回Studioから新しいPlaceファイルの保存・Exportは行っていない。
 
-最終更新：2026-09-15 / SPEC v1.0
+最終更新：2026-09-16。World1 Stage1〜10のBalance正本はWorld1BossConfigへ統合済み。[統合報告](reports/World1_Config_Consolidation_20260916/build_report.md)。

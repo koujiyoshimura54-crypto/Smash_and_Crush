@@ -1,0 +1,300 @@
+.\AGENTS.md:19:8. World1とWorld2のConfigを混同しない。現在World1後半はWorld1LateStageConfig / Stage1WallManager.GetStageConfigが有効値。旧World1BossConfig / Wall.ConfigはWorld2が参照するため、間接的な変更に注意する。
+.\Smash_and_Crush_updated_20260915\AGENTS.md:19:8. World1とWorld2のConfigを混同しない。現在World1後半はWorld1LateStageConfig / Stage1WallManager.GetStageConfigが有効値。旧World1BossConfig / Wall.ConfigはWorld2が参照するため、間接的な変更に注意する。
+.\docs\UI_SPEC.md:75:上段StrengthLevelHUD.Strengthはサーバーの累積StrengthをNumberFormatで短縮表示する。下段Levelは保存Level Attribute、数値ラベルは **LevelProgress / GetRequiredStrength(Level)**、バーは同じ比率を0〜1へclampして表示する。StrengthからLevelを逆算しない。
+.\Smash_and_Crush_updated_20260915\docs\CHANGELOG.md:23:- World1LateStageConfigとWallの有効値取得経路を追加。World2参照中の旧基準値は維持。
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:19:  eq(B.GetRecommendedLevel(s),e.RecommendedLevel,"boss level")
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:20:  eq(B.GetRequiredStrength(s),e.RequiredStrength,"boss strength")
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:21:  eq(B.GetMaxHP(s),e.BossHP,"boss HP")
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:23:  for i=1,4 do eq(Walls.GetMaxHP(s,i),e.Walls[i],"wall HP");eq(c.Walls[i],e.Walls[i],"authority wall") end
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:37:  e.StrengthAtRecommendedLevel=L.GetRequiredStrength(e.RecommendedLevel)
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:45: local W1=require(RS.Config.World1LateStageConfig)
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:47: for s=1,10 do table.insert(result.world1,{Stage=s,RecommendedLevel=W1.GetRecommendedLevel(s),RequiredStrength=W1.GetRequiredStrength(s),BossHP=W1.GetMaxHP(s),Walls=W1Wall.GetStageConfig(s).Walls}) end
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:48: eq(Walls.GetMaxHP(0,1),nil,"invalid stage")
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\evidence\server_probe.luau:49: eq(B.GetMaxHP(11),nil,"invalid boss stage")
+.\docs\DEV_STATUS.md:199:- World1 Stage6〜10の実Combat正本`World1LateStageConfig`をRequiredStrength 37,025 / 81,525 / 196,525 / 462,525 / 1,017,525へ更新し、既存倍率でWall/Boss HPを再生成。
+.\Smash_and_Crush_updated_20260915\docs\BALANCE_SPEC.md:9:World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallManager.GetStageConfig**。古いWorld1BossConfigとStage1WallManager.Configの後半値は、旧基準として残っている。2026-09-15のWorld2専用Balance反映によりWorld2からの依存は除去済み。旧テーブルを現在World1の最終値と取り違えない。
+.\Smash_and_Crush_updated_20260915\docs\BALANCE_SPEC.md:11:根拠: [ReplicatedStorage.Config.World1LateStageConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1LateStageConfig.luau)、[ReplicatedStorage.Config.World1BossConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[ServerScriptService.World.Stage1WallManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.Stage1WallManager.luau)。
+.\Smash_and_Crush_updated_20260915\docs\BALANCE_SPEC.md:119:- GetRequiredStrengthはLevel引数を1〜10,000へ制限するため、上限を超える問い合わせはLv10,000の閾値を返す。HUDは上限時のみ進捗1を表示し、ゼロ除算を避ける。
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\build_report.md:23:- `ReplicatedStorage.Config.World2BossConfig`: World2ConfigのBoss HP / RequiredStrength / RecommendedLevelを取得する参照用Config。既存MaxHP表・GetMaxHP・GetRequiredStrengthの入口を維持し、GetRecommendedLevelを追加。
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\build_report.md:24:- `ServerScriptService.Config.World2WallConfig`: World2ConfigのWallsを参照。既存の数値Stage索引/Walls/GetMaxHPの入口を維持。
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\build_report.md:25:- 旧World2HPScaleは削除。383本のSourceを検索し、利用はBoss/Wall Configの2箇所のみだった。両方を置換後、最終検索で残るのは削除理由のコメントだけ。World1BossConfigとStage1WallManagerへのWorld2側requireを除去。
+.\docs\BALANCE_SPEC.md:9:World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallManager.GetStageConfig**。古いWorld1BossConfigとStage1WallManager.Configの後半値は、旧基準として残っている。2026-09-15のWorld2専用Balance反映によりWorld2からの依存は除去済み。旧テーブルを現在World1の最終値と取り違えない。
+.\docs\BALANCE_SPEC.md:11:根拠: [ReplicatedStorage.Config.World1LateStageConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1LateStageConfig.luau)、[ReplicatedStorage.Config.World1BossConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[ServerScriptService.World.Stage1WallManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.Stage1WallManager.luau)。
+.\docs\BALANCE_SPEC.md:119:- GetRequiredStrengthの値・clamp・暫定式は変更していない。通常HUDはLevelProgress / GetRequiredStrength(Level)を表示する。Lv1の0 Requirementは除算せず0%表示し、最初の正の獲得時に次Levelへ進む。
+.\docs\CHANGELOG.md:93:- World1LateStageConfigとWallの有効値取得経路を追加。World2参照中の旧基準値は維持。
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:12: for s=1,50 do eq(L.GetRequiredStrength(s),old[tostring(s)],"World1 threshold unchanged") end
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:16:  eq(L.GetRequiredStrength(level),threshold,"required threshold")
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:25:   local nextT=L.GetRequiredStrength(level+1)
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:31:  eq(L.GetRequiredStrength(pair[1]),pair[2],"anchor")
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:36:  eq(L.GetRequiredStrength(c.RecommendedLevel),c.RequiredStrength,"World2 anchor")
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:44: eq(L.GetRequiredStrength(10001),2455000000000,"cap getter")
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:45: eq(L.GetRequiredStrength(201),5250000000,"201 bridge")
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:46: eq(L.GetRequiredStrength(10000),2455000000000,"10000 threshold")
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\server_probe.luau:49:  local t=L.GetRequiredStrength(level) local n=L.GetRequiredStrength(level+1)
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:19:  eq(B.GetRecommendedLevel(s),e.RecommendedLevel,"boss level")
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:20:  eq(B.GetRequiredStrength(s),e.RequiredStrength,"boss strength")
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:21:  eq(B.GetMaxHP(s),e.BossHP,"boss HP")
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:23:  for i=1,4 do eq(Walls.GetMaxHP(s,i),e.Walls[i],"wall HP");eq(c.Walls[i],e.Walls[i],"authority wall") end
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:37:  e.StrengthAtRecommendedLevel=L.GetRequiredStrength(e.RecommendedLevel)
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:45: local W1=require(RS.Config.World1LateStageConfig)
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:47: for s=1,10 do table.insert(result.world1,{Stage=s,RecommendedLevel=W1.GetRecommendedLevel(s),RequiredStrength=W1.GetRequiredStrength(s),BossHP=W1.GetMaxHP(s),Walls=W1Wall.GetStageConfig(s).Walls}) end
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:48: eq(Walls.GetMaxHP(0,1),nil,"invalid stage")
+.\reports\World2_Balance_20260915\evidence\server_probe.luau:49: eq(B.GetMaxHP(11),nil,"invalid boss stage")
+.\reports\World2_Balance_20260915\build_report.md:23:- `ReplicatedStorage.Config.World2BossConfig`: World2ConfigのBoss HP / RequiredStrength / RecommendedLevelを取得する参照用Config。既存MaxHP表・GetMaxHP・GetRequiredStrengthの入口を維持し、GetRecommendedLevelを追加。
+.\reports\World2_Balance_20260915\build_report.md:24:- `ServerScriptService.Config.World2WallConfig`: World2ConfigのWallsを参照。既存の数値Stage索引/Walls/GetMaxHPの入口を維持。
+.\reports\World2_Balance_20260915\build_report.md:25:- 旧World2HPScaleは削除。383本のSourceを検索し、利用はBoss/Wall Configの2箇所のみだった。両方を置換後、最終検索で残るのは削除理由のコメントだけ。World1BossConfigとStage1WallManagerへのWorld2側requireを除去。
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\evidence\client_probe.luau:16:   local t=L.GetRequiredStrength(level) local n=L.GetRequiredStrength(level+1)
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\after\ServerScriptService.Config.World2WallConfig.luau:8:function C.GetMaxHP(stage,index)
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\build_report.md:104:GetRequiredStrengthのLevel引数は1〜10,000に制限し、10001以上を問い合わせた場合もLv10,000のThresholdを返す。HUD上限時は進捗100%とし、同じ閾値によるゼロ除算を避ける。
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:12: for s=1,50 do eq(L.GetRequiredStrength(s),old[tostring(s)],"World1 threshold unchanged") end
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:16:  eq(L.GetRequiredStrength(level),threshold,"required threshold")
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:25:   local nextT=L.GetRequiredStrength(level+1)
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:31:  eq(L.GetRequiredStrength(pair[1]),pair[2],"anchor")
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:36:  eq(L.GetRequiredStrength(c.RecommendedLevel),c.RequiredStrength,"World2 anchor")
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:44: eq(L.GetRequiredStrength(10001),2455000000000,"cap getter")
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:45: eq(L.GetRequiredStrength(201),5250000000,"201 bridge")
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:46: eq(L.GetRequiredStrength(10000),2455000000000,"10000 threshold")
+.\reports\Level_Curve_20260915\evidence\server_probe.luau:49:  local t=L.GetRequiredStrength(level) local n=L.GetRequiredStrength(level+1)
+.\reports\Level_Curve_20260915\evidence\client_probe.luau:16:   local t=L.GetRequiredStrength(level) local n=L.GetRequiredStrength(level+1)
+.\reports\Level_Curve_20260915\build_report.md:104:GetRequiredStrengthのLevel引数は1〜10,000に制限し、10001以上を問い合わせた場合もLv10,000のThresholdを返す。HUD上限時は進捗100%とし、同じ閾値によるゼロ除算を避ける。
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.LevelRequirements.luau:60:function LevelRequirements.GetRequiredStrength(level)
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.LevelRequirements.luau:86:	while value >= LevelRequirements.GetRequiredStrength(level + 1) do
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\after\ReplicatedStorage.Config.World2BossConfig.luau:7:function C.GetMaxHP(stage) return C.MaxHP[stage] end
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\after\ReplicatedStorage.Config.World2BossConfig.luau:8:function C.GetRequiredStrength(stage)
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\after\ReplicatedStorage.Config.World2BossConfig.luau:12:function C.GetRecommendedLevel(stage)
+.\reports\Level_Progress_20260915\tests\LiveVerification.luau:46:   local gain=R.GetRequiredStrength(61)+R.GetRequiredStrength(62)+123
+.\reports\Level_Progress_20260915\tests\LevelProgressTests.luau:44:   local req=R.GetRequiredStrength(level)
+.\reports\Level_Progress_20260915\tests\LevelProgressTests.luau:88:  local amount=200000+R.GetRequiredStrength(61)+R.GetRequiredStrength(62)+123
+.\reports\World2_Balance_20260915\before\specs\docs\CHANGELOG.md:23:- World1LateStageConfigとWallの有効値取得経路を追加。World2参照中の旧基準値は維持。
+.\reports\World2_Balance_20260915\before\specs\docs\BALANCE_SPEC.md:9:World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallManager.GetStageConfig**。古いWorld1BossConfigとStage1WallManager.Configの後半値は、World2が依存する旧基準として残っている。旧テーブルを現在World1の最終値と取り違えない。
+.\reports\World2_Balance_20260915\before\specs\docs\BALANCE_SPEC.md:11:根拠: [ReplicatedStorage.Config.World1LateStageConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1LateStageConfig.luau)、[ReplicatedStorage.Config.World1BossConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[ServerScriptService.World.Stage1WallManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.Stage1WallManager.luau)。
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.LevelRequirements.luau:60:function LevelRequirements.GetRequiredStrength(level)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.LevelRequirements.luau:86:	while value >= LevelRequirements.GetRequiredStrength(level + 1) do
+.\reports\World2_Balance_20260915\after\ServerScriptService.Config.World2WallConfig.luau:8:function C.GetMaxHP(stage,index)
+.\reports\World2_Balance_20260915\after\ReplicatedStorage.Config.World2BossConfig.luau:7:function C.GetMaxHP(stage) return C.MaxHP[stage] end
+.\reports\World2_Balance_20260915\after\ReplicatedStorage.Config.World2BossConfig.luau:8:function C.GetRequiredStrength(stage)
+.\reports\World2_Balance_20260915\after\ReplicatedStorage.Config.World2BossConfig.luau:12:function C.GetRecommendedLevel(stage)
+.\reports\World1_Progress_RequirementPlus10_20260916\build_report.md:3:Updated the live Studio modules `ReplicatedStorage.Config.LevelRequirements` and `ReplicatedStorage.Config.World1LateStageConfig`. Every Lv1–50 requirement increased by 10; Lv51–200 and Lv201+ were left unchanged. Stage1–5 and World2 balance were left unchanged.
+.\reports\World1_Progress_Rebalance_20260916\build_report.md:10:- `ReplicatedStorage.Config.World1LateStageConfig` — Stage6–10 RequiredStrength, wall multipliers, and Boss HP consumed by `BossCombatService` and `Stage1WallManager.GetStageConfig`.
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\before\specs\docs\CHANGELOG.md:23:- World1LateStageConfigとWallの有効値取得経路を追加。World2参照中の旧基準値は維持。
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\before\specs\docs\BALANCE_SPEC.md:9:World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallManager.GetStageConfig**。古いWorld1BossConfigとStage1WallManager.Configの後半値は、World2が依存する旧基準として残っている。旧テーブルを現在World1の最終値と取り違えない。
+.\Smash_and_Crush_updated_20260915\reports\World2_Balance_20260915\before\specs\docs\BALANCE_SPEC.md:11:根拠: [ReplicatedStorage.Config.World1LateStageConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1LateStageConfig.luau)、[ReplicatedStorage.Config.World1BossConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[ServerScriptService.World.Stage1WallManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.Stage1WallManager.luau)。
+.\reports\Level_Curve_20260915\before\docs\BALANCE_SPEC.md:9:World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallManager.GetStageConfig**。古いWorld1BossConfigとStage1WallManager.Configの後半値は、旧基準として残っている。2026-09-15のWorld2専用Balance反映によりWorld2からの依存は除去済み。旧テーブルを現在World1の最終値と取り違えない。
+.\reports\Level_Curve_20260915\before\docs\BALANCE_SPEC.md:11:根拠: [ReplicatedStorage.Config.World1LateStageConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1LateStageConfig.luau)、[ReplicatedStorage.Config.World1BossConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[ServerScriptService.World.Stage1WallManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.Stage1WallManager.luau)。
+.\reports\Level_Curve_20260915\before\docs\CHANGELOG.md:23:- World1LateStageConfigとWallの有効値取得経路を追加。World2参照中の旧基準値は維持。
+.\reports\Level_Progress_20260915\before\StarterGui.StrengthGui.StrengthDisplay.luau:19: local start=Requirements.GetRequiredStrength(level)
+.\reports\Level_Progress_20260915\before\StarterGui.StrengthGui.StrengthDisplay.luau:20: local nextValue=Requirements.GetRequiredStrength(level+1)
+.\reports\Level_Curve_20260915\after\StarterGui.StrengthGui.StrengthDisplay.luau:19: local start=Requirements.GetRequiredStrength(level)
+.\reports\Level_Curve_20260915\after\StarterGui.StrengthGui.StrengthDisplay.luau:20: local nextValue=Requirements.GetRequiredStrength(level+1)
+.\reports\Level_Progress_20260915\before\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1LateStageConfig"))
+.\reports\Level_Progress_20260915\before\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\reports\Level_Progress_20260915\before\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\reports\Level_Progress_20260915\before\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\reports\Level_Curve_20260915\after\ReplicatedStorage.Config.LevelRequirements.luau:217:function LevelRequirements.GetRequiredStrength(level)
+.\reports\Level_Curve_20260915\after\ReplicatedStorage.Config.LevelRequirements.luau:233:  if value >= LevelRequirements.GetRequiredStrength(middle) then
+.\reports\Level_Progress_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:73: local BossConfig=require(RS.Config.World1LateStageConfig)
+.\reports\Level_Progress_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:81: local required=BossConfig.GetRequiredStrength(stage)
+.\reports\Level_Progress_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:94:  Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
+.\reports\Level_Progress_20260915\before\ReplicatedStorage.Config.LevelRequirements.luau:217:function LevelRequirements.GetRequiredStrength(level)
+.\reports\Level_Progress_20260915\before\ReplicatedStorage.Config.LevelRequirements.luau:233:  if value >= LevelRequirements.GetRequiredStrength(middle) then
+.\reports\World1_Stage6_10_Spacing_20260915\before_sources\ServerScriptService.World.Stage1WallManager.luau:16:local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\reports\World1_Stage6_10_Spacing_20260915\before_sources\ServerScriptService.World.Stage1WallManager.luau:17:for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end
+.\reports\World1_Stage6_10_Spacing_20260915\before_sources\ServerScriptService.World.Stage1WallManager.luau:19:local LateStageConfig=require(game.ReplicatedStorage.Config.World1LateStageConfig)
+.\reports\World1_Stage6_10_Spacing_20260915\before_sources\ServerScriptService.World.Stage1WallManager.luau:21: return LateStageConfig.GetWallConfig(major) or M.Config[major] or M.Config[1]
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\before\docs\CHANGELOG.md:23:- World1LateStageConfigとWallの有効値取得経路を追加。World2参照中の旧基準値は維持。
+.\reports\World1_Wall_UI_Scale_20260916\before\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1LateStageConfig"))
+.\reports\World1_Wall_UI_Scale_20260916\before\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\reports\World1_Wall_UI_Scale_20260916\before\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\reports\World1_Wall_UI_Scale_20260916\before\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\before\docs\BALANCE_SPEC.md:9:World1 Stage6〜10の有効値は **World1LateStageConfig** と **Stage1WallManager.GetStageConfig**。古いWorld1BossConfigとStage1WallManager.Configの後半値は、旧基準として残っている。2026-09-15のWorld2専用Balance反映によりWorld2からの依存は除去済み。旧テーブルを現在World1の最終値と取り違えない。
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\before\docs\BALANCE_SPEC.md:11:根拠: [ReplicatedStorage.Config.World1LateStageConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1LateStageConfig.luau)、[ReplicatedStorage.Config.World1BossConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[ServerScriptService.World.Stage1WallManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.Stage1WallManager.luau)。
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World2BossConfig.luau:2:local Base=require(script.Parent.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World2BossConfig.luau:7: hp[stage]=assert(Base.GetMaxHP(stage))*World.World2HPScale
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World2BossConfig.luau:10:function C.GetMaxHP(stage) return C.MaxHP[stage] end
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World2BossConfig.luau:12:function C.GetRequiredStrength(stage) return nil end
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:1:-- World1 Stage6-10 override. Keep legacy World1BossConfig and Wall.Config intact:
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:3:local Base=require(script.Parent.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:15:function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:16:function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:17:function C.GetMaxHP(stage)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:18: local strength=C.GetRequiredStrength(stage)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:21:function C.GetWallConfig(stage) return walls[stage] end
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1BossConfig.luau:19:function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1BossConfig.luau:20:function C.GetMaxHP(stage)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1BossConfig.luau:21: local strength=C.GetRequiredStrength(stage)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1BossConfig.luau:24:function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end
+.\reports\Level_Progress_20260915\after\StarterGui.StrengthGui.StrengthDisplay.luau:20: local required=Requirements.GetRequiredStrength(level)
+.\reports\Level_Progress_20260915\after\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1LateStageConfig"))
+.\reports\Level_Progress_20260915\after\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\reports\Level_Progress_20260915\after\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\reports\Level_Progress_20260915\after\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\reports\World1_Stage6_10_20260915\fingerprint.luau:52:result.world2HP={};for i=1,10 do local row={boss=w2.GetMaxHP(i),walls={}} for j=1,4 do row.walls[j]=walls.GetMaxHP(i,j) end result.world2HP[i]=row end
+.\reports\World1_Stage6_10_20260915\fingerprint.luau:53:local base=require(game.ReplicatedStorage.Config.World1BossConfig);local w=require(game.ServerScriptService.World.Stage1WallManager)
+.\reports\World1_Stage6_10_20260915\fingerprint.luau:54:result.earlyBalance={};for i=1,5 do result.earlyBalance[i]={required=base.GetRequiredStrength(i),level=base.GetRecommendedLevel(i),boss=base.GetMaxHP(i),walls=w.Config[i].Walls} end
+.\reports\Level_Progress_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:73: local BossConfig=require(RS.Config.World1LateStageConfig)
+.\reports\Level_Progress_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:81: local required=BossConfig.GetRequiredStrength(stage)
+.\reports\Level_Progress_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:94:  Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\after\StarterGui.StrengthGui.StrengthDisplay.luau:19: local start=Requirements.GetRequiredStrength(level)
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\after\StarterGui.StrengthGui.StrengthDisplay.luau:20: local nextValue=Requirements.GetRequiredStrength(level+1)
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World2BossConfig.luau:2:local Base=require(script.Parent.World1BossConfig)
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World2BossConfig.luau:7: hp[stage]=assert(Base.GetMaxHP(stage))*World.World2HPScale
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World2BossConfig.luau:10:function C.GetMaxHP(stage) return C.MaxHP[stage] end
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World2BossConfig.luau:12:function C.GetRequiredStrength(stage) return nil end
+.\reports\Level_Progress_20260915\after\ReplicatedStorage.Modules.LevelProgression.luau:27:  local required=Requirements.GetRequiredStrength(level)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_Spacing_20260915\before_sources\ServerScriptService.World.Stage1WallManager.luau:16:local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_Spacing_20260915\before_sources\ServerScriptService.World.Stage1WallManager.luau:17:for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_Spacing_20260915\before_sources\ServerScriptService.World.Stage1WallManager.luau:19:local LateStageConfig=require(game.ReplicatedStorage.Config.World1LateStageConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_Spacing_20260915\before_sources\ServerScriptService.World.Stage1WallManager.luau:21: return LateStageConfig.GetWallConfig(major) or M.Config[major] or M.Config[1]
+.\reports\World1_Stage6_10_20260915\evidence\play_probe.luau:62: for n=1,10 do report.world2[n]={Boss=W2B.GetMaxHP(n),Walls={W2W.GetMaxHP(n,1),W2W.GetMaxHP(n,2),W2W.GetMaxHP(n,3),W2W.GetMaxHP(n,4)}} end
+.\reports\Level_Progress_20260915\after\ReplicatedStorage.Config.LevelRequirements.luau:219:function LevelRequirements.GetRequiredStrength(level)
+.\reports\Level_Progress_20260915\after\ReplicatedStorage.Config.LevelRequirements.luau:236:  if value >= LevelRequirements.GetRequiredStrength(middle) then
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:1:-- World1 Stage6-10 override. Keep legacy World1BossConfig and Wall.Config intact:
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:3:local Base=require(script.Parent.World1BossConfig)
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:15:function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:16:function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:17:function C.GetMaxHP(stage)
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:18: local strength=C.GetRequiredStrength(stage)
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1LateStageConfig.luau:21:function C.GetWallConfig(stage) return walls[stage] end
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\after\ReplicatedStorage.Config.LevelRequirements.luau:217:function LevelRequirements.GetRequiredStrength(level)
+.\Smash_and_Crush_updated_20260915\reports\Level_Curve_20260915\after\ReplicatedStorage.Config.LevelRequirements.luau:233:  if value >= LevelRequirements.GetRequiredStrength(middle) then
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1BossConfig.luau:19:function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1BossConfig.luau:20:function C.GetMaxHP(stage)
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1BossConfig.luau:21: local strength=C.GetRequiredStrength(stage)
+.\reports\Implementation_Audit_20260915\sources\ReplicatedStorage.Config.World1BossConfig.luau:24:function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end
+.\reports\World1_Stage6_10_20260915\evidence\final_play_probe.luau:62: for n=1,10 do report.world2[n]={Boss=W2B.GetMaxHP(n),Walls={W2W.GetMaxHP(n,1),W2W.GetMaxHP(n,2),W2W.GetMaxHP(n,3),W2W.GetMaxHP(n,4)}} end
+.\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:1:-- World1 Stage6-10 override. Keep legacy World1BossConfig and Wall.Config intact:
+.\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:3:local Base=require(script.Parent.World1BossConfig)
+.\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:15:function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end
+.\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:16:function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end
+.\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:17:function C.GetMaxHP(stage)
+.\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:18: local strength=C.GetRequiredStrength(stage)
+.\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:21:function C.GetWallConfig(stage) return walls[stage] end
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:73: local BossConfig=require(RS.Config.World1LateStageConfig)
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:81: local required=BossConfig.GetRequiredStrength(stage)
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:94:  Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1LateStageConfig"))
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\reports\World1_Stage6_10_20260915\build_report.md:84:World2BossConfigはWorld1BossConfigのHPを、World2WallConfigはStage1WallManager.ConfigのWall HPを参照して倍率を掛けています。そこで両方の基準テーブルをそのまま残し、World1の実戦だけWorld1LateStageConfig / Stage1WallManager.GetStageConfigを経由させました。
+.\reports\World1_Stage6_10_20260915\build_report.md:86:今後World1 Stage6〜10の設定を確認・調整するときは、World1LateStageConfigとGetStageConfigを参照してください。旧World1BossConfigおよびWall.Configの後半値を直接変更するとWorld2にも波及するため、今回それらの値は変更していません。
+.\reports\World1_Stage6_10_20260915\build_report.md:102:| ReplicatedStorage.Config.World1LateStageConfig（追加） | Stage6〜10のStrength・推奨Level・Boss HP・Wall HP。Stage1〜5は既存設定を引き継ぐ |
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.Config.World2WallConfig.luau:10:function C.GetMaxHP(stage,index)
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World2BossConfig.luau:2:local Base=require(script.Parent.World1BossConfig)
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World2BossConfig.luau:7: hp[stage]=assert(Base.GetMaxHP(stage))*World.World2HPScale
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World2BossConfig.luau:10:function C.GetMaxHP(stage) return C.MaxHP[stage] end
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World2BossConfig.luau:12:function C.GetRequiredStrength(stage) return nil end
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.Stage1WallManager.luau:16:local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.Stage1WallManager.luau:17:for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.Stage1WallManager.luau:19:local LateStageConfig=require(game.ReplicatedStorage.Config.World1LateStageConfig)
+.\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.Stage1WallManager.luau:21: return LateStageConfig.GetWallConfig(major) or M.Config[major] or M.Config[1]
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World1BossConfig.luau:19:function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World1BossConfig.luau:20:function C.GetMaxHP(stage)
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World1BossConfig.luau:21: local strength=C.GetRequiredStrength(stage)
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World1BossConfig.luau:24:function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.LevelRequirements.luau:60:function LevelRequirements.GetRequiredStrength(level)
+.\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.LevelRequirements.luau:86:	while value >= LevelRequirements.GetRequiredStrength(level + 1) do
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.Config.World2WallConfig.luau:10:function C.GetMaxHP(stage,index)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\fingerprint.luau:52:result.world2HP={};for i=1,10 do local row={boss=w2.GetMaxHP(i),walls={}} for j=1,4 do row.walls[j]=walls.GetMaxHP(i,j) end result.world2HP[i]=row end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\fingerprint.luau:53:local base=require(game.ReplicatedStorage.Config.World1BossConfig);local w=require(game.ServerScriptService.World.Stage1WallManager)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\fingerprint.luau:54:result.earlyBalance={};for i=1,5 do result.earlyBalance[i]={required=base.GetRequiredStrength(i),level=base.GetRecommendedLevel(i),boss=base.GetMaxHP(i),walls=w.Config[i].Walls} end
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:73: local BossConfig=require(RS.Config.World1BossConfig)
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:81: local required=BossConfig.GetRequiredStrength(stage)
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:94:  Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.Config.World2WallConfig.luau:10:function C.GetMaxHP(stage,index)
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1BossConfig"))
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:35: local cfg=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:47:  assert(cfg.GetRequiredStrength(stage)==required and cfg.GetMaxHP(stage)==required*5)
+.\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:70: local C=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:74: source=replace(source,'require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1BossConfig"))','Deps.Config')
+.\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:77: local variant=table.clone(C);variant.GetRecommendedLevel=function() return 99 end
+.\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:90:  assert(C.GetRequiredStrength(stage)==v and C.GetMaxHP(stage)==v*5)
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.Stage1WallManager.luau:16:local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.Stage1WallManager.luau:17:for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\build_report.md:84:World2BossConfigはWorld1BossConfigのHPを、World2WallConfigはStage1WallManager.ConfigのWall HPを参照して倍率を掛けています。そこで両方の基準テーブルをそのまま残し、World1の実戦だけWorld1LateStageConfig / Stage1WallManager.GetStageConfigを経由させました。
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\build_report.md:86:今後World1 Stage6〜10の設定を確認・調整するときは、World1LateStageConfigとGetStageConfigを参照してください。旧World1BossConfigおよびWall.Configの後半値を直接変更するとWorld2にも波及するため、今回それらの値は変更していません。
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\build_report.md:102:| ReplicatedStorage.Config.World1LateStageConfig（追加） | Stage6〜10のStrength・推奨Level・Boss HP・Wall HP。Stage1〜5は既存設定を引き継ぐ |
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\evidence\play_probe.luau:62: for n=1,10 do report.world2[n]={Boss=W2B.GetMaxHP(n),Walls={W2W.GetMaxHP(n,1),W2W.GetMaxHP(n,2),W2W.GetMaxHP(n,3),W2W.GetMaxHP(n,4)}} end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\evidence\final_play_probe.luau:62: for n=1,10 do report.world2[n]={Boss=W2B.GetMaxHP(n),Walls={W2W.GetMaxHP(n,1),W2W.GetMaxHP(n,2),W2W.GetMaxHP(n,3),W2W.GetMaxHP(n,4)}} end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:73: local BossConfig=require(RS.Config.World1LateStageConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:81: local required=BossConfig.GetRequiredStrength(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.Systems.Debug.StudioDebugService.luau:94:  Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1LateStageConfig"))
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:1:-- World1 Stage6-10 override. Keep legacy World1BossConfig and Wall.Config intact:
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:3:local Base=require(script.Parent.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:15:function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:16:function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:17:function C.GetMaxHP(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:18: local strength=C.GetRequiredStrength(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ReplicatedStorage.Config.World1LateStageConfig.luau:21:function C.GetWallConfig(stage) return walls[stage] end
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.Systems.Debug.StudioDebugService.luau:73: local BossConfig=require(RS.Config.World1LateStageConfig)
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.Systems.Debug.StudioDebugService.luau:81: local required=BossConfig.GetRequiredStrength(stage)
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.Systems.Debug.StudioDebugService.luau:94:  Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World1BossConfig.luau:19:function C.GetRequiredStrength(stage) return C.RequiredStrength[stage] end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World1BossConfig.luau:20:function C.GetMaxHP(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World1BossConfig.luau:21: local strength=C.GetRequiredStrength(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World1BossConfig.luau:24:function C.GetRecommendedLevel(stage) return C.RecommendedLevels[stage] end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.Stage1WallManager.luau:16:local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.Stage1WallManager.luau:17:for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.Stage1WallManager.luau:19:local LateStageConfig=require(game.ReplicatedStorage.Config.World1LateStageConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\after\ServerScriptService.World.Stage1WallManager.luau:21: return LateStageConfig.GetWallConfig(major) or M.Config[major] or M.Config[1]
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.LevelRequirements.luau:60:function LevelRequirements.GetRequiredStrength(level)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.LevelRequirements.luau:86:	while value >= LevelRequirements.GetRequiredStrength(level + 1) do
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World2BossConfig.luau:2:local Base=require(script.Parent.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World2BossConfig.luau:7: hp[stage]=assert(Base.GetMaxHP(stage))*World.World2HPScale
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World2BossConfig.luau:10:function C.GetMaxHP(stage) return C.MaxHP[stage] end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ReplicatedStorage.Config.World2BossConfig.luau:12:function C.GetRequiredStrength(stage) return nil end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.Config.World2WallConfig.luau:10:function C.GetMaxHP(stage,index)
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1LateStageConfig"))
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:73: local BossConfig=require(RS.Config.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:81: local required=BossConfig.GetRequiredStrength(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.Systems.Debug.StudioDebugService.luau:94:  Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.Stage1WallManager.luau:16:local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.Stage1WallManager.luau:17:for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.Stage1WallManager.luau:19:local LateStageConfig=require(game.ReplicatedStorage.Config.World1LateStageConfig)
+.\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.Stage1WallManager.luau:21: return LateStageConfig.GetWallConfig(major) or M.Config[major] or M.Config[1]
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1BossConfig"))
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.Stage1WallManager.luau:16:local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerScriptService.World.Stage1WallManager.luau:17:for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:35: local cfg=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:47:  assert(cfg.GetRequiredStrength(stage)==required and cfg.GetMaxHP(stage)==required*5)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:70: local C=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:74: source=replace(source,'require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1BossConfig"))','Deps.Config')
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:77: local variant=table.clone(C);variant.GetRecommendedLevel=function() return 99 end
+.\Smash_and_Crush_updated_20260915\reports\World1_Stage6_10_20260915\before\ServerStorage.Tests.EarlyWorld1BalanceTests.luau:90:  assert(C.GetRequiredStrength(stage)==v and C.GetMaxHP(stage)==v*5)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.Systems.Debug.StudioDebugService.luau:73: local BossConfig=require(RS.Config.World1LateStageConfig)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.Systems.Debug.StudioDebugService.luau:81: local required=BossConfig.GetRequiredStrength(stage)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.Systems.Debug.StudioDebugService.luau:94:  Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.BossCombatService.luau:4:local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1LateStageConfig"))
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.BossCombatService.luau:12:	local level=BossConfig.GetRecommendedLevel(stage)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.BossCombatService.luau:13:	local required=assert(BossConfig.GetRequiredStrength(stage),"Missing World1 Boss strength")
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.BossCombatService.luau:18:		MaxHP=BossConfig.GetMaxHP(stage)
+.\reports\Implementation_Audit_20260915\sources\StarterGui.StrengthGui.StrengthDisplay.luau:19: local start=Requirements.GetRequiredStrength(level)
+.\reports\Implementation_Audit_20260915\sources\StarterGui.StrengthGui.StrengthDisplay.luau:20: local nextValue=Requirements.GetRequiredStrength(level+1)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.Stage1WallManager.luau:16:local BossConfig=require(game.ReplicatedStorage.Config.World1BossConfig)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.Stage1WallManager.luau:17:for stage,entry in pairs(M.Config) do entry.BossMaxHP=BossConfig.GetMaxHP(stage) end
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.Stage1WallManager.luau:19:local LateStageConfig=require(game.ReplicatedStorage.Config.World1LateStageConfig)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\ServerScriptService.World.Stage1WallManager.luau:21: return LateStageConfig.GetWallConfig(major) or M.Config[major] or M.Config[1]
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\StarterGui.StrengthGui.StrengthDisplay.luau:19: local start=Requirements.GetRequiredStrength(level)
+.\Smash_and_Crush_updated_20260915\reports\Implementation_Audit_20260915\sources\StarterGui.StrengthGui.StrengthDisplay.luau:20: local nextValue=Requirements.GetRequiredStrength(level+1)
+
+362 matches
+291 matched lines
+100 files contained matches
+445 files searched
+56718 bytes printed
+2988240 bytes searched
+0.011017 seconds spent searching
+0.008254 seconds total

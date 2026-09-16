@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-09-16 — Consolidate World1 balance config
+
+- World1BossConfigをWorld1 Stage1〜10の唯一のBalance正本へ統合。旧後半のRequiredStrengthとGetWallConfigを移し、前半Wall固定値も集約。
+- 実Runtimeを維持：Stage3〜5は450 / 2,000 / 5,000、Stage6〜10は37,315 / 81,865 / 196,915 / 462,965 / 1,018,015。Stage2 Wall特殊値、Lottery、Combat、Carry、Stage進行、World2 Balanceは変更なし。
+- Stage1WallManager / BossCombatService / StudioDebugServiceを移行し、参照ゼロ・Play合格後にWorld1LateStageConfigを削除。過去reportsと本CHANGELOGの既存記録は保持。
+- 統合前後Playの520項目が一致。API互換性92項目と実Player Snapshotも合格。検証Script除去後の通常PlayでConsoleのError / Warning / Infinite Yieldなし。
+- GAME_SPEC / BALANCE_SPEC / DEV_STATUSとAGENTSの正本記述を更新。Stage3〜5の古いSPEC値は実Runtimeへ訂正したが、ゲーム数値自体は変更していない。
+- 証拠：[統合・検証報告](../reports/World1_Config_Consolidation_20260916/build_report.md)。
+
+
 ## 2026-09-16 — World1 Wall UI scale / persistent HP
 
 - 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。HPバーは底面から4.32stud、高さ5.13stud、Stage表示はHPの1stud上。物理Wall高さ56.25は維持。
