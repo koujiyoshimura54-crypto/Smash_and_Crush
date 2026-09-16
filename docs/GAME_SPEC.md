@@ -95,7 +95,7 @@ Wallの攻撃力は攻撃時のStrength。Glove補正はWallには加えない�
 
 自動戦闘はPlayer前方のWallCombatTriggerとWall/CombatZoneの接触で開始。CombatTypeは実装上「Wall」または「MiniBoss」。Boss CombatZoneは戦闘開始判定、MiniBossColliderは物理衝突であり、役割を分ける。
 
-World1の進行順は各Stage共通で`Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`を維持する。現在StageのMiniBoss戦中は次Stage .1のStage表示とWall HPを隠し、そのWallの既存StageSurfaceと同じ壁面上部領域に現在のMiniBoss Gauge一式を個人表示する。MiniBoss撃破通知を受けた時点でBoss Gaugeを消し、同じ壁面の次Stage .1 Stage表示と満タンWall HPをWall接触前から表示する。Stage10は次Stage .1が存在しないため従来のBoss追従表示を使用する。
+World1の進行順は各Stage共通で`Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`を維持する。Wall .4撃破時点で接触前からBoss Gauge一式を個人表示する。Stage1〜9の表示先は次Stage .1壁面、Stage10は既存Stage10BoundaryWall。位置は保存した既存Wall HP領域を基準とし、名前・Stage表示はHPの少し上へ配置する。Wall上端には追従しない。Boss撃破通知でGaugeを消し、Stage1〜9では次Stage .1のStage表示と満タンWall HPを接触前から即表示する。Combat順序、進行条件、WorldComplete / Gate処理は変更しない。
 
 Bossは戦闘開始時のStrength・Glove・RequiredStrength比率を固定する。比率1以上は通常ダメージ、1未満は抽選ルート。抽選と回数制限はBALANCE_SPEC。離脱時は現在戦闘を終了し、同じBossのHP・抽選結果は同Run内で保持する。Boss再生成やRunリセットとの境界はEnemyManager/BossCombatServiceに従う。
 

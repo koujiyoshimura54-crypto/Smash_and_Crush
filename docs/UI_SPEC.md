@@ -84,19 +84,20 @@ RebirthでStrength=0・Level=1・LevelProgress=0となり、上段0 Strength／�
 
 | 戦闘状態 | Boss HP UI | Wall HP UI |
 |---|---|---|
-| CombatType=MiniBoss | 対象Bossのみ表示 | 非表示 |
+| 現在StageのWall .4撃破後、Boss未撃破 | 接触前から満タン表示、接触後はサーバーHPを表示 | 非表示 |
 | CombatType=Wall | 非表示 | 対象WallのHPだけ表示 |
-| 非戦闘・離脱・Run初期化等 | 条件に従い解除 | 条件に従い解除 |
+| Boss離脱 | 現在HPで表示を維持 | 非表示 |
+| Boss結果・Run初期化 | 解除・状態再評価 | 次Stage .1は接触前から表示 |
 
 Bossの共有Humanoid Healthを個人HPの正本として表示しない。Wallも古いConfigのMaxHPをクライアント側で推測せず、有効設定に基づくサーバーPacketを使用する。CharacterAdded、Stage変更、Boss結果、初期化で古い表示を解除・再評価する。
 
 ### Boss表示の形状
 
-PersonalGaugeをPlayerごとに生成する。World1 Stage1〜9のMiniBoss戦中は次Stage .1の既存`StageSurface`と同じWall表面・Face・CanvasSizeを使う個人`SurfaceGui`へ、Boss名、`STAGE N`、HP Bar、Current / Max HPの既存Gauge一式を表示する。壁上端より上の空中や画面上部固定には配置しない。この間、次Stage .1の通常StageSurfaceとWall HPは隠す。MiniBoss撃破直後にPersonalGaugeを消し、同じ壁面の次Stage .1 StageSurfaceと満タンWall HPを攻撃開始前から表示する。Stage10は次Stage Wallがないため、実BBoxとBone.WorldPositionを考慮した従来のBoss追従BillboardGuiを使用する。
+PersonalGaugeをPlayerごとに生成する。World1 Stage1〜9では次Stage .1の既存StageSurfaceと同じWall表面・Face・CanvasSizeを使い、既存Wall HPの表示領域へBoss Gauge一式を配置する。Wall .4撃破通知で接触前から表示し、Boss名、STAGE N、HP Bar、Current / Max HPを維持する。この間、次Stage .1の通常StageSurfaceとWall HPは隠す。Boss撃破直後に次Stage .1のStage表示と満タンWall HPへ切り替える。Stage10は既存Stage10BoundaryWallを表示先とし、Stage10 .4のHP基準を再利用する。WorldComplete / Gate処理は変更しない。
 
-敵Wallの高さが変わっても、通常`StageSurface`とMiniBoss用`SurfaceGui`はいずれもWall Part表面を基準にするため、壁面表示位置へ追従する。固定World座標や旧Wall高さをUI位置の基準にしない。
+StageSurfaceのHPGaugeBottomStuds / HPGaugeHeightStudsに既存HPゲージの底面からの距離と高さを保存する。壁の高さが変わっても、このHP領域を底面基準で維持する。StageNumber下端はHPバー上端の1stud上、HeadingはStageNumberの0.4stud上。BossのSTAGE Nもバー上端の1stud上、Boss名はその0.4stud上。Wall上端を配置基準にしない。
 
-表示幅はviewport幅-32をもとに280〜通常480px、Stage9だけ最大620px。高さは通常160px、Stage9は216px。Boss名領域は通常60px、Stage9は116px、TextSize制約20〜32、折り返しあり。Stage表示と緑のHPバーを含む。
+壁面Canvasを再利用し、Boss名領域は通常6stud、長文のStage9は12stud、STAGE Nは3.5stud。名前の全文、折り返し、既存Font / 色 / TextSize制約、緑のHPバーを維持する。
 
 | Stage | Boss Name |
 |---|---|

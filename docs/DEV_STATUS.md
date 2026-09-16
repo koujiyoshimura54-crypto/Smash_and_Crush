@@ -2,6 +2,14 @@
 
 Version: 1.3 / 監査・更新日: 2026-09-15
 
+## 2026-09-16 — World1 Wall / Boss UI positioning（Completed）
+
+- Stage表示とBoss Gaugeを既存Wall HP領域基準へ配置し、Wall高さ変更で上昇しないUI基準を保存。
+- Wall .4撃破からBoss接触前の250 / 250表示、接触後のHP更新、撃破後のStage2 .1と300 / 300即時表示を実Combatで確認。
+- Stage1〜10の共通クライアント処理。全40枚でStage表示下端とHP上端の間隔1stud。Stage10は既存境界壁を表示先に使用。
+- 最終PlayのError / Warning / Infinite Yieldなし。複数Client同時Playは未実施。
+- 根拠: [実装・検証報告](../reports/World1_Wall_Boss_UI_20260916/build_report.md)。
+
 ## 2026-09-16 — Mobile / Tablet HUD regression fix（Completed）
 - 標準Dynamic Thumbstickの大きなCapture領域をHUD障害物として扱っていたため縮小したSmartphone LeftMenuを、表示部品基準の通常倍率へ復元。
 - Strength HUDをMobile共通でViewport全幅の中央Anchorへ変更。iPhone 17 Pro / Fire HD 10相当で中心差0pxを実測。

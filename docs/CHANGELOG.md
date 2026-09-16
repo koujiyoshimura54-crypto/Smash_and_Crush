@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-16 — Fix World1 wall and boss UI positioning
+
+- 既存Wall HP位置を底面からの距離として保存し、Stage表示・Boss名をHPバーの少し上へ配置。高い壁の上端基準を撤回。
+- Wall .4撃破直後からBoss Gauge一式を表示し、接触後は既存サーバーHP通知で更新。撃破後の次Stage .1即時表示を維持。
+- Stage10は既存境界壁へ同じHP基準で表示。Map、Combat、Balance、WorldComplete / Gate処理は変更なし。
+- Stage1通しPlayと全40枚の1stud間隔を確認。最終Runtime Error / Warning / Infinite Yieldなし。
+
 ## 2026-09-16 — Fix smartphone LeftMenu and mobile Strength HUD centering
 
 - 標準Dynamic ThumbstickのCapture領域をHUD障害物から除外し、Smartphone LeftMenuの不意な縮小を解消。
