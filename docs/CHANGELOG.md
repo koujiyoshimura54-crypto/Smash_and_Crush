@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-09-16 — MiniBossから次Stage Wall .1へのUI切替改善
+
+- World1 Stage1〜9のMiniBoss HPを、次Stage .1 Wall上部の個人Billboardとして表示。
+- MiniBoss生存中は次Stage .1のStageSurfaceとWall HPを非表示にし、撃破通知時にBoss HPを消してStageSurfaceと満タンWall HPを即表示する。
+- Wall .1のHPは次Stage開始後、接触やDamageを待たず表示する。Wall .2〜.4の既存表示条件は維持。
+- Stage10は次Stage Wallがないため従来のBoss上端表示を維持。
+- `Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`のCombat順序、HP、Damage、Balance、Stage進行条件は変更なし。
+- Playで初期Stage .1表示、将来Stage .1非表示、Bossゲージの次Wall Adornee、撃破後の次Stage .1即時表示を確認。Runtime Error / Warning / Infinite Yieldなし。
+
 ## 2026-09-16 — Inventory通知を確認済み方式へ変更
 
 - Dumbbell／Aura／Speedの「！」を、未購入である限り残る方式から、新しく解放された内容を対象タブで確認するまで残る方式へ変更。

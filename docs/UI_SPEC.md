@@ -83,7 +83,7 @@ Bossの共有Humanoid Healthを個人HPの正本として表示しない。Wall�
 
 ### Boss表示の形状
 
-PersonalGaugeというBillboardGuiをBoss Rootへ付け、実BBoxとBone.WorldPositionを考慮した上端へ配置する。高さに応じた余白は4〜8stud。AlwaysOnTop=false、MaxDistance200、LightInfluence0。
+PersonalGaugeというBillboardGuiをPlayerごとに生成する。World1 Stage1〜9のMiniBoss戦中は次Stage .1 WallをAdorneeとして壁上端+4studへ配置し、次Stage .1のStageSurfaceとWall HPは隠す。MiniBoss撃破直後にPersonalGaugeを消し、次Stage .1のStageSurfaceと満タンWall HPを攻撃開始前から表示する。Stage10は次Stage Wallがないため、実BBoxとBone.WorldPositionを考慮した従来のBoss上端配置を使用する。AlwaysOnTop=false、MaxDistance200、LightInfluence0。
 
 表示幅はviewport幅-32をもとに280〜通常480px、Stage9だけ最大620px。高さは通常160px、Stage9は216px。Boss名領域は通常60px、Stage9は116px、TextSize制約20〜32、折り返しあり。Stage表示と緑のHPバーを含む。
 

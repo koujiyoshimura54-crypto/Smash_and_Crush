@@ -6,6 +6,8 @@ Version: 1.3 / 監査・更新日: 2026-09-15
 
 ## Completed
 
+- 2026-09-16：World1 Stage遷移UIを改善。Stage1〜9のMiniBoss戦中は次Stage .1のStage/Wall HPを隠して同じ壁上部へMiniBoss HPを表示し、撃破直後に次Stage .1のStage/満タンHPへ切替。Combat順序とBalanceは変更なし。[検証報告](../reports/World1_Miniboss_Wall1_UI_20260916/build_report.md)。
+
 - 2026-09-16：Inventoryの「！」を購入可能／未購入ベースからタブ単位の未確認ベースへ変更。Dumbbells／Items／Aura／Speedを個別に確認済みにでき、親Inventoryは未確認タブの論理和で表示する。`InventoryNotificationSeen`を後方互換でPlayerDataへ追加し、同じ内容が再Joinで復活しないことをPlay確認。[検証報告](../reports/Inventory_Seen_Notifications_20260916/build_report.md)。
 
 - 2026-09-15：Levelを累積Threshold方式から保存Level/LevelProgress方式へ変更。Requirement全数値・暫定式・戦闘バランスを維持。旧データは従来Levelを維持してProgress=0へ移行。共通付与、Carry、複数Level Up、Save中の獲得、Reward再試行、実PlayerのHUD/歩行/Training/Rebirth/専用Store再Joinを検証。[報告](../reports/Level_Progress_20260915/build_report.md)。
