@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-16 — Configurable World1 Wall UI layout
+
+World1 Stage1〜10の通常Wall .1〜.4は、`ReplicatedStorage.Config.WallDisplayConfig.WallUI`を共通表示設定の正本とする。初期値は`Scale=0.8`、`StageGap=0.4`。ScaleはStage表示、HP Gauge、HP数値と関連装飾へ一括適用し、StageGapはStageNumber下端とHP Gauge上端の見た目上の実隙間をstud単位で指定する。
+
+UI寸法とGapはWall高さへ比例させない。Wall高さはSurfaceGui座標変換にだけ使用し、物理Wall高さ56.25stud、Wall HP、Current HP、Carry、Combat、Stage進行、Balance、Mapは維持する。Boss UIはBossDisplayConfig / BossDisplaySurfaceの独立経路を使用し、WallDisplayConfigを適用しない。[実装・検証報告](../reports/World1_Wall_Display_Config_20260916/build_report.md)。
+
 ## 2026-09-16 — Configurable Boss display surfaces
 
 World1のBoss UIはClient専用の半透明BossDisplaySurfaceをRuntime生成して表示する。Stage1〜9は次Stage .1 Wall、Stage10はStage10BoundaryWallを基準とし、Mapの恒久配置は増やさない。Boss実Modelから生成時に測った高さでUI位置を決め、BossDisplayConfigで透明度・前方間隔・高さ比率・上下補正を調整できる。既存CombatStateの表示タイミングと実HP、NumberFormat、Combat / Carry / Balance / WorldComplete / Gateは維持する。[実装・検証報告](../reports/World1_Boss_Display_Surface_20260916/build_report.md)。
@@ -14,7 +20,7 @@ World1 Stage1〜10の唯一のBalance正本は `ReplicatedStorage.Config.World1B
 
 ## 2026-09-16 — World1 Wall UI scale / persistent HP
 
-- 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。HPバーは底面から4.32stud、高さ5.13stud、Stage表示はHPの1stud上。物理Wall高さ56.25は維持。
+- 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。現在の通常WallはHPバー基準高さ5.13studとStage表示へScale=0.8を適用し、Stage表示はHP上端からStageGap=0.4stud上。物理Wall高さ56.25は維持。
 - Wall .1〜.4は現在攻略対象になった瞬間からStage/実HPを表示し、撃破済み・未来Wallは非表示。
 - WallClearedへ既存のCarry適用後Snapshotを添付し、一括反映。MaxHPによる仮表示を行わない。
 - Boss解放直後はサーバーの実HPを表示。Boss Carryは既存どおり予約後、接触時Beginで適用する。UI側で先行消費・再計算しない。

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-09-16 — Add configurable World1 wall UI layout
+
+- `ReplicatedStorage.Config.WallDisplayConfig`を追加し、通常Wall UIの`Scale=0.8`と`StageGap=0.4`を正本化。
+- Stage1〜10のWall .1〜.4へ共通適用。HP Gauge、HP数値、Stage表示、関連Strokeを80%へ縮小し、StageNumber下端とHP Gauge上端の実隙間を0.4studへ変更。
+- Wall高さは座標変換だけに使用し、UI寸法とGapは固定stud値として独立。56.25studの物理Wall、HP、Carry、Combat、Stage進行、Mapは変更なし。
+- Config差し替え、全40面、Stage1実HP・Carry、Stage6、Stage10、Boss分離をPlay確認。最終通常PlayのRuntime Error / Warning / Infinite Yieldは0。
+- 証拠：[実装・Play報告](../reports/World1_Wall_Display_Config_20260916/build_report.md)。
+
 ## 2026-09-16 — Restore Dumbbell buy button seen notifications
 
 - 現行のタブ単位seen-based通知を維持し、購入可能Dumbbellの各Buyボタンへ個別「！」を復元。

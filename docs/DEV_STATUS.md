@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Configurable World1 wall UI layout（Completed）
+
+- `WallDisplayConfig.WallUI`へ`Scale=0.8`、`StageGap=0.4`を集約。StageWallDisplayClientの単一経路でWorld1 Stage1〜10のWall .1〜.4へ適用。
+- ScaleはHP Gauge、内包HP数値、StageNumber、Heading、UIStrokeへ適用。StageGapはStageNumber下端からHP Gauge上端までの実隙間として計算。
+- 80studへの一時変更でもGauge 4.104stud、Stage 5.4stud、Gap 0.4studを維持し、最終Wall高さ56.25studへ復元。
+- Stage1で75/100更新とCarry後100/125、Stage6で74.6K、Stage10で2Mを確認。BossDisplaySurface 250/250、Transparency 0.5、Offset 0.5を維持。
+- QA Script撤去後の通常PlayでRuntime Error / Warning / Infinite Yieldなし。Combat / Balance / Map / DataStoreは変更なし。
+- 根拠：[実装・Play報告](../reports/World1_Wall_Display_Config_20260916/build_report.md)。
+
 ## 2026-09-16 — Dumbbell Buy button seen notifications（Completed）
 
 - 現行seen-based通知を維持し、Dumbbellタブ用DumbbellsとBuyボタン用DumbbellBuyの既読集合を分離。
@@ -31,7 +40,7 @@
 
 ## 2026-09-16 — World1 Wall UI scale / persistent HP
 
-- 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。HPバーは底面から4.32stud、高さ5.13stud、Stage表示はHPの1stud上。物理Wall高さ56.25は維持。
+- 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。現在の通常WallはHPバー基準高さ5.13studとStage表示へScale=0.8を適用し、Stage表示はHP上端からStageGap=0.4stud上。物理Wall高さ56.25は維持。
 - Wall .1〜.4は現在攻略対象になった瞬間からStage/実HPを表示し、撃破済み・未来Wallは非表示。
 - WallClearedへ既存のCarry適用後Snapshotを添付し、一括反映。MaxHPによる仮表示を行わない。
 - Boss解放直後はサーバーの実HPを表示。Boss Carryは既存どおり予約後、接触時Beginで適用する。UI側で先行消費・再計算しない。
@@ -44,7 +53,7 @@ Version: 1.3 / 監査・更新日: 2026-09-15
 
 - Stage表示とBoss Gaugeを既存Wall HP領域基準へ配置し、Wall高さ変更で上昇しないUI基準を保存。
 - Wall .4撃破からBoss接触前の250 / 250表示、接触後のHP更新、撃破後のStage2 .1と300 / 300即時表示を実Combatで確認。
-- Stage1〜10の共通クライアント処理。全40枚でStage表示下端とHP上端の間隔1stud。Stage10は既存境界壁を表示先に使用。
+- Stage1〜10の共通クライアント処理。通常Wall全40枚はWallDisplayConfigによりStage表示下端とHP上端の間隔0.4stud。Stage10 Boss UIは独立した既存境界壁経路を使用。
 - 最終PlayのError / Warning / Infinite Yieldなし。複数Client同時Playは未実施。
 - 根拠: [実装・検証報告](../reports/World1_Wall_Boss_UI_20260916/build_report.md)。
 

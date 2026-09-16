@@ -1,0 +1,175 @@
+{
+  "finalConfig": {
+    "Scale": 0.8,
+    "StageGap": 0.4
+  },
+  "finalMetrics": {
+    "stage1": [
+      {
+        "enabled": true,
+        "index": 1,
+        "stageWidth": 0.6399999856948853,
+        "barHeight": 4.103999817743897,
+        "gap": 0.39999866858124733,
+        "stroke": 2.4000000953674316,
+        "hp": "100 / 100",
+        "barBottom": 4.320000624284148,
+        "stageHeight": 5.400000046938658,
+        "height": 56.25,
+        "barWidth": 0.6079999804496765,
+        "stage": 1,
+        "canvasY": 562.5
+      },
+      {
+        "enabled": false,
+        "index": 2,
+        "stageWidth": 0.6399999856948853,
+        "barHeight": 4.103999817743897,
+        "gap": 0.39999866858124733,
+        "stroke": 2.4000000953674316,
+        "hp": "125 / 125",
+        "barBottom": 4.320000624284148,
+        "stageHeight": 5.400000046938658,
+        "height": 56.25,
+        "barWidth": 0.6079999804496765,
+        "stage": 1,
+        "canvasY": 562.5
+      },
+      {
+        "enabled": false,
+        "index": 3,
+        "stageWidth": 0.6399999856948853,
+        "barHeight": 4.103999817743897,
+        "gap": 0.39999866858124733,
+        "stroke": 2.4000000953674316,
+        "hp": "150 / 150",
+        "barBottom": 4.320000624284148,
+        "stageHeight": 5.400000046938658,
+        "height": 56.25,
+        "barWidth": 0.6079999804496765,
+        "stage": 1,
+        "canvasY": 562.5
+      },
+      {
+        "enabled": false,
+        "index": 4,
+        "stageWidth": 0.6399999856948853,
+        "barHeight": 4.103999817743897,
+        "gap": 0.39999866858124733,
+        "stroke": 2.4000000953674316,
+        "hp": "200 / 200",
+        "barBottom": 4.320000624284148,
+        "stageHeight": 5.400000046938658,
+        "height": 56.25,
+        "barWidth": 0.6079999804496765,
+        "stage": 1,
+        "canvasY": 562.5
+      }
+    ],
+    "stage6_1": {
+      "enabled": false,
+      "index": 1,
+      "stageWidth": 0.6399999856948853,
+      "barHeight": 4.103999817743897,
+      "gap": 0.39999866858124733,
+      "stroke": 2.4000000953674316,
+      "hp": "74.6K / 74.6K",
+      "barBottom": 4.320000624284148,
+      "stageHeight": 5.400000046938658,
+      "height": 56.25,
+      "barWidth": 0.6079999804496765,
+      "stage": 6,
+      "canvasY": 562.5
+    },
+    "stage10_1": {
+      "enabled": false,
+      "index": 1,
+      "stageWidth": 0.6399999856948853,
+      "barHeight": 4.103999817743897,
+      "gap": 0.39999866858124733,
+      "stroke": 2.4000000953674316,
+      "hp": "2M / 2M",
+      "barBottom": 4.320000624284148,
+      "stageHeight": 5.400000046938658,
+      "height": 56.25,
+      "barWidth": 0.6079999804496765,
+      "stage": 10,
+      "canvasY": 562.5
+    }
+  },
+  "configOverrideChecks": {
+    "stageGap_1_4": {
+      "stageHeight": 5.400000046938658,
+      "stageWidth": 0.6399999856948853,
+      "stroke": 2.4000000953674316,
+      "barHeight": 4.103999817743897,
+      "gap": 1.39999995008111,
+      "barWidth": 0.6079999804496765
+    },
+    "scale_1_0": {
+      "stageHeight": 6.749999849125743,
+      "stageWidth": 0.800000011920929,
+      "stroke": 3,
+      "barHeight": 5.130000086501241,
+      "gap": 0.40000160224735737,
+      "barWidth": 0.7599999904632568
+    }
+  },
+  "currentHp": {
+    "server": "{\"ok\":true,\"action\":\"damage1\",\"result\":{\"snapshot\":{\"Current\":1,\"Skipped\":false,\"Maxes\":[100,125,150,200],\"MajorStage\":1,\"BossMaxHP\":250,\"Gauges\":[75,125,150,200],\"Cleared\":[]},\"nextIndex\":1,\"cleared\":[]}}",
+    "client": "{\"enabled\":true,\"fill\":0.75,\"label\":\"75 / 100\"}"
+  },
+  "carry": {
+    "server": "{\"ok\":true,\"action\":\"carry1\",\"result\":{\"snapshot\":{\"Current\":2,\"Skipped\":false,\"Maxes\":[100,125,150,200],\"MajorStage\":1,\"BossMaxHP\":250,\"Gauges\":[0,100,150,200],\"Cleared\":[true]},\"nextIndex\":2,\"cleared\":[1]}}",
+    "client": "{\"wall2Enabled\":true,\"label\":\"100 / 125\",\"wall1Enabled\":false,\"fill\":0.800000011920929}"
+  },
+  "stage6": {
+    "server": "{\"ok\":true,\"action\":\"stage6\",\"result\":{\"stage\":6,\"snapshot\":{\"Current\":1,\"Skipped\":false,\"Maxes\":[74630,93287.5,111945,149260],\"MajorStage\":6,\"BossMaxHP\":186575,\"Gauges\":[74630,93287.5,111945,149260],\"Cleared\":[]}}}",
+    "client": "{\"enabled\":true,\"stageHeight\":5.400000046938658,\"label\":\"74.6K / 74.6K\",\"barHeight\":4.103999817743897,\"stage\":\"6-1\",\"gap\":0.39999866858124735}"
+  },
+  "stage10": {
+    "server": "{\"ok\":true,\"action\":\"stage10\",\"result\":{\"stage\":10,\"snapshot\":{\"Current\":1,\"Skipped\":false,\"Maxes\":[2036030,2545037.5,3054045,4072060],\"MajorStage\":10,\"BossMaxHP\":5090075,\"Gauges\":[2036030,2545037.5,3054045,4072060],\"Cleared\":[]}}}",
+    "client": "{\"enabled\":true,\"wallHeight\":56.25,\"label\":\"2M / 2M\",\"stageHeight\":5.400000046938658,\"barHeight\":4.103999817743897,\"gap\":0.39999866858124735,\"stage\":\"10-1\"}"
+  },
+  "boss": {
+    "server": "{\"ok\":true,\"action\":\"boss1\",\"result\":{\"snapshot\":{\"Current\":5,\"Skipped\":false,\"Maxes\":[100,125,150,200],\"MajorStage\":1,\"BossMaxHP\":250,\"Gauges\":[0,0,0,0],\"Cleared\":[true,true,true,true]},\"bossCurrent\":250,\"bossMax\":250}}",
+    "client": "{\"offset\":0.5,\"surface\":true,\"canQuery\":false,\"canCollide\":false,\"hp\":\"250 / 250\",\"transparency\":0.5,\"bossName\":\"Ballerina Cappuccina\",\"canTouch\":false,\"guiEnabled\":true}"
+  },
+  "wallHeightIndependence": {
+    "before": {
+      "stageHeight": 5.400000046938658,
+      "wallHeight": 56.25,
+      "barHeight": 4.103999817743897,
+      "gap": 0.39999866858124733,
+      "canvasY": 562.5
+    },
+    "changed": {
+      "stageHeight": 5.400000214576721,
+      "wallHeight": 80,
+      "barHeight": 4.10400003194809,
+      "gap": 0.3999990224838257,
+      "canvasY": 800
+    },
+    "restored": {
+      "stageHeight": 5.400000046938658,
+      "wallHeight": 56.25,
+      "barHeight": 4.103999817743897,
+      "gap": 0.39999866858124733,
+      "canvasY": 562.5
+    }
+  },
+  "finalNormalPlay": {
+    "state": [
+      "- Current Studio Mode: Play\n- Available DataModels: Client, Server\n- Focused DataModel in the viewport: Client"
+    ],
+    "console": [
+      ""
+    ],
+    "client": "{\"enabled\":true,\"wallHeight\":56.25,\"stageWidth\":0.6399999856948853,\"barHeight\":4.103999817743897,\"gap\":0.39999866858124735,\"stageHeight\":5.400000046938658,\"qaExists\":false,\"hp\":\"100 / 100\",\"barWidth\":0.6079999804496765}"
+  },
+  "runtimeConsole": {
+    "errors": 0,
+    "warnings": 0,
+    "infiniteYield": 0
+  }
+}

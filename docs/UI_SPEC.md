@@ -2,6 +2,14 @@
 
 Version: 1.1 / 監査・更新日: 2026-09-15
 
+## World1 normal Wall display layout（2026-09-16）
+
+`ReplicatedStorage.Config.WallDisplayConfig.WallUI`がWorld1 Stage1〜10の通常Wall .1〜.4に対する共通表示設定の正本。初期値は`Scale=0.8`、`StageGap=0.4`。Stage別の個別値は持たない。
+
+Scaleは基準レイアウトに対して、HP Gaugeの幅・高さ、内包するFill / HP数値、StageNumber / Headingの幅・高さ・内部間隔、関連UIStrokeを一括縮小する。HP Gauge下端は床から4.32studを維持する。StageGapは`StageNumber下端 - HP Gauge上端`の実距離として計算し、中心間距離には使用しない。
+
+寸法とGapは固定stud値であり、Wall高さは`CanvasSize.Y = Wall.Size.Y × 10`の座標変換にだけ使う。Wall高さ変更でScale後のGauge高さ、Stage高さ、StageGapを変えない。Boss UIはBossDisplayConfig / BossDisplaySurfaceの独立経路であり、本Configの対象外。検証：[World1 Wall表示Config報告](../reports/World1_Wall_Display_Config_20260916/build_report.md)。
+
 ## Mobile / Tablet landscape controls（2026-09-16）
 - Smartphone / Tabletの正式対応方向はLandscape。`StarterGui.ScreenOrientation=LandscapeSensor`に加え、Client起動時に既存`TouchControlZoneClient`が`PlayerGui.ScreenOrientation=LandscapeSensor`を明示設定し、LandscapeLeft / LandscapeRightへ端末センサーで追従する。Portrait専用HUDや回転警告UIは持たない。
 - 移動方式と入力範囲はRoblox標準PlayerModuleのDynamic Thumbstickを使用する。ゲーム独自の端末別サイズ、最大Clamp、Safe Area、LeftMenu / Jump境界による縮小・移動は行わない。
@@ -105,7 +113,7 @@ Boss高さはEnemyManagerの生成処理で、Scaleと床合わせ完了後の�
 
 ConfigはEditで調整して次回Playへ反映する。Play中はClientでrequire済みConfigの値を調整すると、既存0.5秒の表示保守処理で反映される。VerticalOffsetはUIだけを上下し、Surfaceや実Wall、CombatZoneを移動しない。StreamingでBoss Partや基準Wallが遅れて到着する場合も、受信済み実HPを保持して表示生成を再試行する。
 
-27stud時の580x270 Canvasを基準に、SurfaceGuiのCanvasSizeを580 x (表示面.Size.Y x 10)とする。壁高56.25でも1 Canvas pixelの縦寸法を0.1studに維持し、テキストの縦伸びを防ぐ。通常WallのHP領域は底面から4.32stud、高さ5.13studを維持する。Boss HPバーも高さ5.13studを維持するが、中心位置は上記Boss実寸式で決める。旧HPGaugeBottomStuds / HPGaugeHeightStuds属性は使用しない。StageNumber下端はHPバー上端の1stud上、HeadingはStageNumberの0.4stud上。BossのSTAGE Nもバー上端の1stud上、Boss名はその0.4stud上。Wall上端を配置基準にしない。
+27stud時の580x270 Canvasを基準に、SurfaceGuiのCanvasSizeを580 x (表示面.Size.Y x 10)とする。壁高56.25でも1 Canvas pixelの縦寸法を0.1studに維持し、テキストの縦伸びを防ぐ。通常WallのHP領域は底面から4.32studを維持し、基準高さ5.13studへWallDisplayConfigのScaleを適用する。StageNumber下端はHPバー上端からStageGap上、Headingの高さとStageNumberからの0.4stud基準間隔にもScaleを適用する。Boss HPバーは独立して高さ5.13studを維持し、中心位置は上記Boss実寸式で決める。BossのSTAGE Nはバー上端の1stud上、Boss名はその0.4stud上。旧HPGaugeBottomStuds / HPGaugeHeightStuds属性は使用せず、Wall上端を配置基準にしない。
 
 現在攻略対象になった時点からStage/HPを表示する。撃破済み・未来Wallは非表示。Current HPはCarry適用後の実CombatStateを正本とし、WallClearedに既存GetSnapshotForStageの全状態を添付して一括反映する。次WallをMaxHPで仮表示しない。BossRecommendationにもサーバーのCurrentを添付し、クライアントでMaxをCurrentへ代入しない。
 
