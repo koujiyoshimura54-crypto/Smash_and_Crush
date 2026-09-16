@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-09-16 — Add configurable Boss display surfaces
+
+- World1 Boss UIの表示先を、実WallからClient専用の半透明BossDisplaySurfaceへ変更。Stage1〜9は次Stage .1、Stage10はStage10BoundaryWall基準でRuntime生成する。
+- BossDisplayConfigを追加。透明度0.5、間隔0.5stud、厚さ0.05stud、HeightRatio=0.6、VerticalOffset=0、必要StageだけのOverrideに対応。
+- Boss生成時の見た目Model実寸からUI高さを計算し、サイズ変更は次回生成時に追従。毎FrameのBounds再計測は行わない。StreamingでPart到着が遅れる場合も実HPを保持する。
+- UIデザイン・NumberFormat・CombatState・Carry適用時点・Combat / Balance / Stage進行・World2 / DataStore Schemaは維持。Mapへの恒久Part追加なし。
+- Stage1→2実Combat、全10Stage表示Fixture、Config変更、Wall高さ非依存、Raycast、サイズ変更後の再生成をPlay確認。複数Client同時試験は未実施。
+- GAME_SPEC / UI_SPEC / DEV_STATUSを更新。詳細と検証上の制限：[実装・検証報告](../reports/World1_Boss_Display_Surface_20260916/build_report.md)。
+
 ## 2026-09-16 — Consolidate World1 balance config
 
 - World1BossConfigをWorld1 Stage1〜10の唯一のBalance正本へ統合。旧後半のRequiredStrengthとGetWallConfigを移し、前半Wall固定値も集約。

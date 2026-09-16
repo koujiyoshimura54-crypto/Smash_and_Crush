@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Configurable Boss display surfaces（Completed）
+
+- CombatClientがPlayer別BossDisplaySurfaceをRuntime生成。Stage1〜9は次Stage .1、Stage10は境界壁基準。同じ幅・高さ、厚さ0.05、透明度0.5、Wall表面との間隔0.5stud。
+- BossDisplayConfigへHeightRatio=0.6 / VerticalOffset=0とStageOverridesを集約。EnemyManagerはBoss生成時に見た目Modelの実寸を一度計測し、UI専用属性へ記録する。Combat / Balance / Map / DataStore Schemaは変更なし。
+- Stage1→2実Combatで、接触前250/250、Carry適用後198/250、141→84→27→0、撃破後Stage2 Wall 300/300を確認。
+- 全10Stageの表示Fixture、4設定とStage Override、Wall高さ非依存、Raycast非干渉、Boss1.25倍後の再生成追従を確認。Streaming時は実HPを保持して表示生成を再試行する。
+- 複数Client同時接続とStage10実Combat完走は未実施。Client専用生成とサーバー上のSurface不在を確認。
+- 検証用保存先でランキング保存Warningを1件観測。検証コード除去・通常設定復元後の145秒PlayではRuntime Error / Warning / Infinite Yieldなし。詳細は[報告](../reports/World1_Boss_Display_Surface_20260916/build_report.md)に分離記録する。
+
 ## 2026-09-16 — World1 Balance Config統合（Completed）
 
 - **World1BossConfig = World1 Stage1〜10の唯一のBalance正本**。Stage1〜5のWall固定値、Stage2特殊倍率、Stage3〜5の実Runtime RequiredStrength 450 / 2,000 / 5,000を維持。

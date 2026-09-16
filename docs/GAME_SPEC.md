@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-16 — Configurable Boss display surfaces
+
+World1のBoss UIはClient専用の半透明BossDisplaySurfaceをRuntime生成して表示する。Stage1〜9は次Stage .1 Wall、Stage10はStage10BoundaryWallを基準とし、Mapの恒久配置は増やさない。Boss実Modelから生成時に測った高さでUI位置を決め、BossDisplayConfigで透明度・前方間隔・高さ比率・上下補正を調整できる。既存CombatStateの表示タイミングと実HP、NumberFormat、Combat / Carry / Balance / WorldComplete / Gateは維持する。[実装・検証報告](../reports/World1_Boss_Display_Surface_20260916/build_report.md)。
+
 ## 2026-09-16 — World1 Balance Config統合
 
 World1 Stage1〜10の唯一のBalance正本は `ReplicatedStorage.Config.World1BossConfig`。RequiredStrength、RecommendedLevel、Boss MaxHP、Wall HPを集約し、`GetRequiredStrength` / `GetRecommendedLevel` / `GetMaxHP` / `GetWallConfig`で取得する。`Stage1WallManager.Config`は同じWall設定を参照する互換窓口で、別の数値表を持たない。
@@ -112,7 +116,7 @@ Wallの攻撃力は攻撃時のStrength。Glove補正はWallには加えない�
 
 自動戦闘はPlayer前方のWallCombatTriggerとWall/CombatZoneの接触で開始。CombatTypeは実装上「Wall」または「MiniBoss」。Boss CombatZoneは戦闘開始判定、MiniBossColliderは物理衝突であり、役割を分ける。
 
-World1の進行順は各Stage共通で`Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`を維持する。Wall .4撃破時点で接触前からBoss Gauge一式を個人表示する。Stage1〜9の表示先は次Stage .1壁面、Stage10は既存Stage10BoundaryWall。位置は27stud壁時のWall HP領域を基準とし、名前・Stage表示はHPの少し上へ配置する。Wall上端には追従しない。Boss撃破通知でGaugeを消し、Stage1〜9では次Stage .1のStage表示と実Current / Max Wall HPを接触前から即表示する。Combat順序、進行条件、WorldComplete / Gate処理は変更しない。
+World1の進行順は各Stage共通で`Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`を維持する。Wall .4撃破時点で接触前からBossDisplaySurfaceとBoss Gauge一式を個人表示する。Stage1〜9は次Stage .1 Wall、Stage10は既存Stage10BoundaryWallのPlayer側0.5stud手前に専用面をRuntime生成する。UI中心はBossの実寸高さ×0.6＋上下補正をBoss底面から加算し、名前・Stage表示はHPの少し上へ配置する。Wall高さでUI位置を決めない。Boss撃破通知でSurfaceとGaugeを隠し、Stage1〜9では次Stage .1のStage表示と実Current / Max Wall HPを接触前から即表示する。Combat順序、進行条件、WorldComplete / Gate処理は変更しない。
 
 Bossは戦闘開始時のStrength・Glove・RequiredStrength比率を固定する。比率1以上は通常ダメージ、1未満は抽選ルート。抽選と回数制限はBALANCE_SPEC。離脱時は現在戦闘を終了し、同じBossのHP・抽選結果は同Run内で保持する。Boss再生成やRunリセットとの境界はEnemyManager/BossCombatServiceに従う。
 

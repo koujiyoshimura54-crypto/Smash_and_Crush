@@ -1,0 +1,322 @@
+{
+  "guis": [],
+  "events": "[{\"enabled\":false,\"type\":\"WallCleared\",\"uiHP\":\"250 / 250\",\"surfaceTransparency\":1,\"nextWallEnabled\":false,\"stage\":1},{\"enabled\":false,\"type\":\"WallCleared\",\"uiHP\":\"250 / 250\",\"surfaceTransparency\":1,\"nextWallEnabled\":false,\"stage\":1},{\"enabled\":false,\"type\":\"WallCleared\",\"uiHP\":\"250 / 250\",\"surfaceTransparency\":1,\"nextWallEnabled\":false,\"stage\":1},{\"enabled\":true,\"type\":\"WallCleared\",\"uiHP\":\"250 / 250\",\"surfaceTransparency\":0.5,\"nextWallEnabled\":false,\"stage\":1},{\"enabled\":true,\"type\":\"BossRecommendation\",\"uiHP\":\"250 / 250\",\"surfaceTransparency\":0.5,\"max\":250,\"nextWallEnabled\":false,\"stage\":1,\"current\":250},{\"enabled\":true,\"type\":\"BossInitialize\",\"uiHP\":\"198 / 250\",\"surfaceTransparency\":0.5,\"max\":250,\"nextWallEnabled\":false,\"stage\":1,\"current\":198},{\"enabled\":true,\"type\":\"BossGauge\",\"uiHP\":\"141 / 250\",\"surfaceTransparency\":0.5,\"max\":250,\"nextWallEnabled\":false,\"stage\":1,\"current\":141},{\"enabled\":true,\"type\":\"BossGauge\",\"uiHP\":\"84 / 250\",\"surfaceTransparency\":0.5,\"max\":250,\"nextWallEnabled\":false,\"stage\":1,\"current\":84},{\"enabled\":true,\"type\":\"BossGauge\",\"uiHP\":\"27 / 250\",\"surfaceTransparency\":0.5,\"max\":250,\"nextWallEnabled\":false,\"stage\":1,\"current\":27},{\"enabled\":false,\"type\":\"BossGauge\",\"uiHP\":\"0 / 250\",\"surfaceTransparency\":1,\"max\":250,\"nextWallEnabled\":true,\"stage\":1,\"current\":0},{\"enabled\":false,\"type\":\"EnemyDefeated\",\"uiHP\":\"0 / 250\",\"surfaceTransparency\":1,\"nextWallEnabled\":true,\"stage\":1},{\"enabled\":false,\"type\":\"StageCleared\",\"uiHP\":\"0 / 250\",\"surfaceTransparency\":1,\"nextWallEnabled\":true,\"stage\":1}]",
+  "surfaces": [
+    {
+      "bossHeight": 23.934675216674805,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        43.150001525878906
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        42.025001525878906
+      ],
+      "bossBase": 1.9999980926513672,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 1,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 16.20931601524353,
+      "stageText": "STAGE 2",
+      "bossName": "Tralalero Tralala",
+      "hp": "500 / 500",
+      "nameTopScale": 0.6207957863807678,
+      "uiCenterY": 9.865235744975507,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        106.69000244140625
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        105.56500244140625
+      ],
+      "bossBase": 0.1396467685699463,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 2,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 16.05850386619568,
+      "stageText": "STAGE 3",
+      "bossName": "Tung Tung Sahur",
+      "hp": "2.2K / 2.2K",
+      "nameTopScale": 0.5893316864967346,
+      "uiCenterY": 11.635094716213644,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        171.1899871826172
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        170.0649871826172
+      ],
+      "bossBase": 1.9999926090240479,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 3,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 8.471755027770996,
+      "stageText": "STAGE 4",
+      "bossName": "Bombardiro Crocodilo",
+      "hp": "10K / 10K",
+      "nameTopScale": 0.565413773059845,
+      "uiCenterY": 12.980473994277418,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        236.9399871826172
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        235.8149871826172
+      ],
+      "bossBase": 7.897421836853027,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 4,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 18.96284770965576,
+      "stageText": "STAGE 5",
+      "bossName": "67",
+      "hp": "25K / 25K",
+      "nameTopScale": 0.5583519339561462,
+      "uiCenterY": 13.37770579662174,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        303.94000244140625
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        302.81500244140625
+      ],
+      "bossBase": 1.9999971389770508,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 5,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 36.0000057220459,
+      "stageText": "STAGE 6",
+      "bossName": "Pipi_Kiwi",
+      "hp": "187K / 187K",
+      "nameTopScale": 0.37662217020988464,
+      "uiCenterY": 23.60000333096832,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        398.03997802734375
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        396.91497802734375
+      ],
+      "bossBase": 1.9999980926513672,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 6,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 48.000001430511475,
+      "stageText": "STAGE 7",
+      "bossName": "Trippi Troppi",
+      "hp": "409K / 409K",
+      "nameTopScale": 0.24862223863601685,
+      "uiCenterY": 30.799999481998384,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        500.13995361328125
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        499.01495361328125
+      ],
+      "bossBase": 1.9999985694885254,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 7,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 44.00000560283661,
+      "stageText": "STAGE 8",
+      "bossName": "Chimpanzini Bananini",
+      "hp": "985K / 985K",
+      "nameTopScale": 0.2912888526916504,
+      "uiCenterY": 28.400000764988363,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        584.239990234375
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        583.114990234375
+      ],
+      "bossBase": 1.9999982118606567,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 8,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 56.000003814697266,
+      "stageText": "STAGE 9",
+      "bossName": "Trippa Troppa Tralala Lirilì Rilà TungTung Sahur Boneca TungTung Tralalelo TrippiTroppa Crocodina",
+      "hp": "2.3M / 2.3M",
+      "nameTopScale": 0.05662211403250694,
+      "uiCenterY": 35.6000052979216,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        656.3399658203125
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        655.2149658203125
+      ],
+      "bossBase": 2.0000038146972656,
+      "wallSize": [
+        88,
+        56.25,
+        1.2000000476837158
+      ],
+      "stage": 9,
+      "size": [
+        88,
+        56.25,
+        0.05000000074505806
+      ]
+    },
+    {
+      "enabled": false,
+      "bossHeight": 52,
+      "stageText": "STAGE 10",
+      "bossName": "Dragon Cannelloni",
+      "hp": "5.1M / 5.1M",
+      "nameTopScale": 0.20595553517341614,
+      "uiCenterY": 33.200001551769674,
+      "transparency": 1,
+      "wallPosition": [
+        27.920000076293945,
+        30.125,
+        741.93994140625
+      ],
+      "position": [
+        27.920000076293945,
+        30.125,
+        740.4149169921875
+      ],
+      "bossBase": 2,
+      "wallSize": [
+        90,
+        56.25,
+        2
+      ],
+      "stage": 10,
+      "size": [
+        90,
+        56.25,
+        0.05000000074505806
+      ]
+    }
+  ],
+  "visibleCount": 0,
+  "fighting": false
+}

@@ -1,0 +1,29 @@
+{
+  "spawn": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ratio\":1.2499999402326767,\"afterRespawnHeight\":29.91834259033203,\"beforeHeight\":23.934675216674806,\"templateRestored\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "ui": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"height\":29.91834259033203,\"centerY\":19.951005554199218,\"stableDuringAnimation\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "nextWall": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"enabled\":true,\"hp\":\"300 / 300\",\"wallTransparency\":0,\"stage\":2,\"bar\":true}"
+      }
+    ],
+    "isError": false
+  }
+}

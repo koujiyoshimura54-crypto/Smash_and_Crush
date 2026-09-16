@@ -93,15 +93,25 @@ Bossの共有Humanoid Healthを個人HPの正本として表示しない。Wall�
 
 ### Boss表示の形状
 
-PersonalGaugeをPlayerごとに生成する。World1 Stage1〜9では次Stage .1の既存StageSurfaceと同じWall表面・Face・CanvasSizeを使い、既存Wall HPの表示領域へBoss Gauge一式を配置する。Wall .4撃破通知で接触前から表示し、Boss名、STAGE N、HP Bar、Current / Max HPを維持する。この間、次Stage .1の通常StageSurfaceとWall HPは隠す。Boss撃破直後に次Stage .1のStage表示とサーバーの実Current / Max Wall HPへ切り替える。Stage10は既存Stage10BoundaryWallを表示先とし、Stage10 .4のHP基準を再利用する。WorldComplete / Gate処理は変更しない。
+PersonalGaugeと専用Part `BossDisplaySurface`をClientごとにRuntime生成する。Stage1〜9は次Stage .1 Wall、Stage10は既存Stage10BoundaryWallを基準とする。WallのSize / CFrameと既存StageSurfaceのPlayer側Faceから、同じ幅・高さの薄い面を手前へ配置する。現在の寸法はStage1〜9が88×56.25×0.05stud、Stage10が90×56.25×0.05stud。Mapへの恒久Part配置は行わない。
 
-27stud時の580x270 Canvasを基準に、SurfaceGuiのCanvasSizeを580 x (Wall.Size.Y x 10)へ変更する。壁高56.25でも1 Canvas pixelの縦寸法を0.1studに維持し、テキストの縦伸びを防ぐ。HP領域は底面から4.32stud、高さ5.13studに固定する。旧HPGaugeBottomStuds / HPGaugeHeightStuds属性は使用しない。StageNumber下端はHPバー上端の1stud上、HeadingはStageNumberの0.4stud上。BossのSTAGE Nもバー上端の1stud上、Boss名はその0.4stud上。Wall上端を配置基準にしない。
+`ReplicatedStorage.Config.BossDisplayConfig`が表示設定の正本。初期値はTransparency=0.5、SurfaceOffset=0.5stud（Wall表面とSurface裏面の間隔）、Thickness=0.05stud、HeightRatio=0.6、VerticalOffset=0。StageOverridesは必要なStageの項目だけ上書き可能で、現在は空。薄いSmoothPlastic面を半透明表示し、奥の実Wallを透かす。BlurEffect等は追加しない。
+
+SurfaceはAnchored=true、CanCollide / CanTouch / CanQuery=false、CastShadow=false。Visual専用で、Damage・Combat・Gate・Progress・Reward・Trigger・入力受付の責務を持たない。SurfaceGuiはActive=false。サーバー共有WorkspaceへSurfaceを生成せず、LocalPlayerの既存CombatStateだけで表示を切り替える。
+
+Wall .4撃破通知で接触前からSurfaceとBoss名 / STAGE N / HP Bar / Current HP / Max HPを即表示する。この間、次Stage .1の通常StageSurfaceとWall HPは隠す。Boss撃破時はそのPlayerのSurfaceをTransparency=1、GUIをEnabled=falseにし、次Stage .1のStage表示とサーバーの実HPへ切り替える。非表示中もCanQuery / CanTouch / CanCollide=false。Run初期化ではローカル面を再生成する。Stage10もSurfaceGuiで統一し、WorldComplete / World2 Gate処理は変更しない。
+
+Boss高さはEnemyManagerの生成処理で、Scaleと床合わせ完了後の見た目Modelから一度だけ測定する。既存staticBoundsで可視BasePartの8頂点とBone位置を集計し、透明な外側Collider / CombatZoneを除外してBossDisplayHeight / BossDisplayBaseYを記録する。HPバー中心のワールドYは `BossDisplayBaseY + BossDisplayHeight × HeightRatio + VerticalOffset`。名前・STAGEは既存の間隔でその上へ配置する。Bossサイズ変更は次回生成時に再測定され、アニメーション中は高さを再測定しない。Wall高さはCanvas座標への変換にのみ使用する。
+
+ConfigはEditで調整して次回Playへ反映する。Play中はClientでrequire済みConfigの値を調整すると、既存0.5秒の表示保守処理で反映される。VerticalOffsetはUIだけを上下し、Surfaceや実Wall、CombatZoneを移動しない。StreamingでBoss Partや基準Wallが遅れて到着する場合も、受信済み実HPを保持して表示生成を再試行する。
+
+27stud時の580x270 Canvasを基準に、SurfaceGuiのCanvasSizeを580 x (表示面.Size.Y x 10)とする。壁高56.25でも1 Canvas pixelの縦寸法を0.1studに維持し、テキストの縦伸びを防ぐ。通常WallのHP領域は底面から4.32stud、高さ5.13studを維持する。Boss HPバーも高さ5.13studを維持するが、中心位置は上記Boss実寸式で決める。旧HPGaugeBottomStuds / HPGaugeHeightStuds属性は使用しない。StageNumber下端はHPバー上端の1stud上、HeadingはStageNumberの0.4stud上。BossのSTAGE Nもバー上端の1stud上、Boss名はその0.4stud上。Wall上端を配置基準にしない。
 
 現在攻略対象になった時点からStage/HPを表示する。撃破済み・未来Wallは非表示。Current HPはCarry適用後の実CombatStateを正本とし、WallClearedに既存GetSnapshotForStageの全状態を添付して一括反映する。次WallをMaxHPで仮表示しない。BossRecommendationにもサーバーのCurrentを添付し、クライアントでMaxをCurrentへ代入しない。
 
 Boss Carryの現行仕様はQueueDamageで予約し、接触時のBoss.Beginで初めて適用する。解放直後に満タンなのは未適用の実状態であり、UIで先行減算しない。接触時にはCarry適用後のBossInitialize、その後BossGaugeを表示する。抽選ルートやCarry適用時点は変更しない。
 
-壁面Canvasを再利用し、Boss名領域は通常6stud、長文のStage9は12stud、STAGE Nは3.5stud。名前の全文、折り返し、既存Font / 色 / TextSize制約、緑のHPバーを維持する。
+専用Surface上でも既存Canvas尺度を再利用し、Boss名領域は通常6stud、長文のStage9は12stud、STAGE Nは3.5stud。名前の全文、折り返し、既存Font / 色 / TextSize制約、緑のHPバー、NumberFormatを維持する。共通HeightRatio=0.6で全10Stageの名前領域が表示面内に収まる。
 
 | Stage | Boss Name |
 |---|---|
@@ -113,7 +123,7 @@ Boss Carryの現行仕様はQueueDamageで予約し、接触時のBoss.Beginで�
 
 Stage9の名前を短縮名へ変更しない。Stage1〜5はモデル名から末尾Rigを除き、camelcase境界等を整えて表示する経路。後半の名前は現在の指定表記を使用する。
 
-根拠となる実装ファイルは[ソース一覧](../reports/Implementation_Audit_20260915/source_manifest.json)中のCombatClient、StageWallDisplayClientおよびEnemyManager。前回PlayではWall攻撃60回でWallのみ、Boss攻撃25回でBossのみの表示を確認済み。[既存レポート](../reports/World1_Stage6_10_20260915/build_report.md)を参照。今回UIを変更・再Playしていない。
+最新の実装・検証は[BossDisplaySurface報告](../reports/World1_Boss_Display_Surface_20260916/build_report.md)。Stage1→2の実Combat、全10Stageの表示Fixture、Config各項目、Bossサイズ変更後の再生成をPlay確認した。複数Client同時接続とStage10の実Combat完走は未実施。過去の戦闘実測は[既存レポート](../reports/World1_Stage6_10_20260915/build_report.md)に保持する。
 
 ## Rewards / Daily / Shop / Inventory / Rebirth
 
