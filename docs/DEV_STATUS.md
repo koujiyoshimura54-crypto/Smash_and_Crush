@@ -2,6 +2,14 @@
 
 Version: 1.3 / 監査・更新日: 2026-09-15
 
+## 2026-09-16 — World1 Enemy Wall height alignment（Completed）
+
+- World1 Stage1〜10の敵Wall .1〜.4、計40枚だけを高さ27から56.25へ変更。
+- 底面Y=2を維持して上端Y=58.25へ延長し、既存の左右側面Wall上端と一致。幅・厚さ・回転・CombatZoneは維持。
+- 最大Muscle段階のJumpで未到達Wallを越えられないこと、StageSurface / Wall HP / MiniBoss SurfaceGuiの追従を確認。
+- 側面Wall、Stage10BoundaryWall、Gate、World2、Combat、Balanceは変更なし。Runtime Error / Warning / Infinite Yieldなし。
+- 根拠: [実装・Play報告](../reports/World1_Enemy_Wall_Height_20260916/build_report.md)。
+
 ## 2026-09-16 — Runtime PlayerGui LandscapeSensor（Completed）
 
 - `TouchControlZoneClient`がPlayerGui取得直後に`PlayerGui.ScreenOrientation=LandscapeSensor`を設定。

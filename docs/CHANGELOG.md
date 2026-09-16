@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-16 — Match World1 enemy wall height to side walls
+
+- World1 Stage1〜10の敵Wall .1〜.4だけを高さ56.25へ延長し、底面を維持したまま側面Wall上端Y=58.25へ統一。
+- 幅、厚さ、回転、CombatZone、側面Wall、境界Wall、Gate、World2、Combat、Balanceは変更なし。
+- StageSurface、Wall HP、次Stage .1のMiniBoss SurfaceGuiが新しい壁面へ追従することを確認。
+
 ## 2026-09-16 — Apply LandscapeSensor to PlayerGui at runtime
 
 - Client起動時、既存`TouchControlZoneClient`から`PlayerGui.ScreenOrientation=LandscapeSensor`を明示設定。

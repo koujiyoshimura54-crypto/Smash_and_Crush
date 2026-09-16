@@ -42,6 +42,8 @@ LobbyでTrainingまたは歩行によってStrengthを増やす → 自分の現
 |---|---|---|
 | World1 | 実装済み | Workspace.GeneratedMap。TrainingArea、LobbyCorridorConnector、BattleCorridor、NextWorldArea |
 | World1 Stage1〜10 | 実装済み | BattleCorridor.Stage01〜Stage10。各StageにWall .1〜.4、Boss区画 .5 |
+
+World1の破壊対象Wall .1〜.4は全StageでSize `88 x 56.25 x 1.2`、底面Y=2、上端Y=58.25とし、各Stageの左右側面Wallと上端を揃える。高さ調整は敵Wallだけに適用し、側面Wall、Stage10BoundaryWall、Gate、CombatZoneには適用しない。
 | World1 Map拡張 | 実装済み | 各Stage Floor幅90stud。全体配置は監査Object記録参照 |
 | Lobby | 実装済み | GeneratedMap.TrainingArea。SpawnLocation、育成・購入UIへの導線 |
 | Training機器 | 実装済み | Workspace.Treadmill.Tredmill01〜10。World2Map内の複製とは別 |

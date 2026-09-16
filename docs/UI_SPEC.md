@@ -95,6 +95,8 @@ Bossの共有Humanoid Healthを個人HPの正本として表示しない。Wall�
 
 PersonalGaugeをPlayerごとに生成する。World1 Stage1〜9のMiniBoss戦中は次Stage .1の既存`StageSurface`と同じWall表面・Face・CanvasSizeを使う個人`SurfaceGui`へ、Boss名、`STAGE N`、HP Bar、Current / Max HPの既存Gauge一式を表示する。壁上端より上の空中や画面上部固定には配置しない。この間、次Stage .1の通常StageSurfaceとWall HPは隠す。MiniBoss撃破直後にPersonalGaugeを消し、同じ壁面の次Stage .1 StageSurfaceと満タンWall HPを攻撃開始前から表示する。Stage10は次Stage Wallがないため、実BBoxとBone.WorldPositionを考慮した従来のBoss追従BillboardGuiを使用する。
 
+敵Wallの高さが変わっても、通常`StageSurface`とMiniBoss用`SurfaceGui`はいずれもWall Part表面を基準にするため、壁面表示位置へ追従する。固定World座標や旧Wall高さをUI位置の基準にしない。
+
 表示幅はviewport幅-32をもとに280〜通常480px、Stage9だけ最大620px。高さは通常160px、Stage9は216px。Boss名領域は通常60px、Stage9は116px、TextSize制約20〜32、折り返しあり。Stage表示と緑のHPバーを含む。
 
 | Stage | Boss Name |
