@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-16 — Refine Treadmill colors and group mats
+
+- +3/+5のベルト色を保持し、側面・支柱・上部横梁・操作パネル外枠を既存FrameColorへ統一。
+- MatColorを追加。青RGB(8,25,65)、緑RGB(8,40,22)。各2台に共用の28×0.2×24studマットをRuntime生成し、旧マットは非表示で保持。
+- Premium、Training / Strength / Rebirth / Interval / DataStoreは変更なし。Playで表示と既存実付与を確認。
+- Runtime Error / Infinite Yield 0。最終通常Playで既存ランキング保存Warning 1件を記録。[検証報告](../reports/Treadmill_Group_Mats_20260916/build_report.md)。
+
 ## 2026-09-16 — Refine Treadmill frame colors
 
 - TreadmillConfig.StrengthColorsをBeltColor / FrameColorへ分離し、既存の明るい青・緑ベルト色を維持。

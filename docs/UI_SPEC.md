@@ -4,9 +4,9 @@ Version: 1.1 / 監査・更新日: 2026-09-15
 
 ## Treadmill reward colors（2026-09-16）
 
-TreadmillConfig.StrengthColorsがTreadmill表示色の正本。実Trainingに使う同ConfigのMultiplierを直接キーにし、各値はBeltColor / FrameColorを分離する。Multiplier 3はBeltColor RGB(55,145,255)・FrameColor RGB(20,65,150)、Multiplier 5はBeltColor RGB(70,200,110)・FrameColor RGB(20,100,55)とする。別の表示用Strength値は持たない。
+TreadmillConfig.StrengthColorsがTreadmill表示色の正本。実Trainingに使う同ConfigのMultiplierを直接キーにし、各値はBeltColor / FrameColor / MatColorを分離する。Multiplier 3はBeltColor RGB(55,145,255)・FrameColor RGB(20,65,150)・MatColor RGB(8,25,65)、Multiplier 5はBeltColor RGB(70,200,110)・FrameColor RGB(20,100,55)・MatColor RGB(8,40,22)とする。別の表示用Strength値は持たない。
 
-対象Modelのベルトには明るいBeltColor、コンソール上面と前後フレームアクセントには濃いFrameColorを適用し、残りの金属・灰色フレームは維持する。既存×3 Strength / ×5 StrengthとRebirth必要数表示は維持し、新規UIは追加しない。Normal / Premium機器はStrengthColorsに定義がないため既存色を維持する。[初回色分け報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md) / [2トーン調整報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
+対象Modelのベルトには明るいBeltColor、コンソール上面・外枠、側面、支柱、上部横梁、前後フレームには濃いFrameColorを適用する。各2台のマットはさらに濃いMatColorの1枚のRuntime Part（28×0.2×24stud）で表示し、旧4枚は非表示で保持する。既存×3 Strength / ×5 StrengthとRebirth必要数表示は維持し、新規UIは追加しない。Normal / Premium機器はStrengthColorsに定義がないため既存の見た目を維持する。Config編集後はPlayを再起動して反映。[共用マット検証](../reports/Treadmill_Group_Mats_20260916/build_report.md)。
 
 ## World1 normal Wall display layout（2026-09-16）
 

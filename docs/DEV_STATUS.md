@@ -1,5 +1,12 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Treadmill frames and group mats（Completed）
+
+- +3/+5の明るいベルトを維持し、側面・支柱・上部・操作パネル外枠まで濃色で統一。MatColorをConfigへ追加し、さらに濃色の2台共用マットを各1Part生成。
+- マットは28×0.2×24stud。元の4枚はRuntime非表示・物理設定保持。Premium / Normal、Training、Rebirth、付与式、Interval、DataStoreは変更なし。
+- 実Trainingで倍率3/5とRebirth補正込み実付与7.5/17.5を確認。QA撤去・保存先復旧済み。最終PlayはError 0 / Infinite Yield 0、既存ランキング保存Warning 1件を観測。
+- [実装・Play報告](../reports/Treadmill_Group_Mats_20260916/build_report.md)。
+
 ## 2026-09-16 — Treadmill two-tone frame colors（Completed）
 
 - TreadmillConfig.StrengthColorsをBeltColor / FrameColorへ分離。既存ベルト色を維持し、+3へ濃い青RGB(20,65,150)、+5へ濃い緑RGB(20,100,55)のフレーム色を追加。

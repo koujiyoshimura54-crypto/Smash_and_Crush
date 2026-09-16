@@ -2,7 +2,9 @@
 
 ## 2026-09-16 — Treadmill Strength reward colors
 
-World1 Treadmillの見た目は、実Trainingに使用するReplicatedStorage.Config.TreadmillConfig.TypesのMultiplierを色判定の正本として使う。StrengthColorsはMultiplierごとにBeltColor / FrameColorを持つ。+3は明るい青ベルトRGB(55,145,255)と濃い青フレームRGB(20,65,150)、+5は明るい緑ベルトRGB(70,200,110)と濃い緑フレームRGB(20,100,55)とする。Tredmill04〜05は+3、Tredmill02〜03は+5を使用し、ConsoleAccentと前後FrameAccentにはFrameColorを適用する。
+World1 Treadmillの見た目は、実Trainingに使用するReplicatedStorage.Config.TreadmillConfig.TypesのMultiplierを色判定の正本として使う。StrengthColorsはMultiplierごとにBeltColor / FrameColor / MatColorを持つ。+3は明るい青ベルトRGB(55,145,255)、濃い青フレームRGB(20,65,150)、さらに濃い青マットRGB(8,25,65)。+5は明るい緑ベルトRGB(70,200,110)、濃い緑フレームRGB(20,100,55)、さらに濃い緑マットRGB(8,40,22)とする。Tredmill04〜05は+3、Tredmill02〜03は+5を使用し、側面・支柱・上部横梁・操作パネル周辺を含むフレーム全体へFrameColorを適用する。
+
+各2台の既存マット外周からRuntimeで共用マットを1Partずつ生成する。横幅28、前後24、厚さ0.2stud。元の4枚はRuntime中だけ非表示にして物理設定を保持し、新しい2枚は表示専用（Collision / Touch / Queryなし）。Premium / Normalは対象外。色変更は次回Play初期化で反映。[共用マット検証](../reports/Treadmill_Group_Mats_20260916/build_report.md)。
 
 既存の×3 Strength / ×5 Strength表示を維持する。最終加算量は従来どおりBaseGain、Dumbbell / Aura / Protein、Rebirth、Treadmill Multiplier、Belt / Training Potion、Strength Potion、VIPから計算する。今回Multiplier、TrainingInterval、利用条件、Collision、Level、Rebirth、Balance、DataStoreは変更しない。[初回色分け報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md) / [2トーン調整報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
 
