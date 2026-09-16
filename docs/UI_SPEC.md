@@ -1,5 +1,31 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-17 — Aura Visual追加手順
+
+1. ReplicatedStorage.AuraVisualTemplates内のModelをDuplicateし、Template名を設定する。
+2. Root / その他透明carrier Part配下のAttachment・ParticleEmitter・Light等をStudioで編集する。PartのSizeは発生範囲、Rootとの相対配置はAura全体の配置。Rig・Scriptは入れない。
+3. ModelのPrimaryPartをRoot、AttachTo属性を装着先（標準UpperTorso）にする。
+4. ReplicatedStorage.Config.AuraConfigの該当Aura定義へVisualTemplate="Template名"を指定する。Price / StrengthBonusとは独立。
+5. PlayでEquip / Unequip / 再Equip / Respawnを確認する。Git保存を更新するときはAuraVisualTemplatesを標準の.rbxm Modelファイルとしてassets/AuraVisualTemplates.rbxmへ書き出す。
+
+TemplateはModel単位でCloneされる。EmitterのSize / Rate等をScript側で補正しない。元Workspace素材は比較用として残す。TemplateごとのSourcePath属性でコピー元を確認できる。
+
+| Template | Attachment | ParticleEmitter | Beam | Trail | Light |
+|---|---:|---:|---:|---:|---:|
+| Pink_Aura1 | 0 | 1 | 0 | 0 | 0 |
+| Pink_Aura2 | 0 | 1 | 0 | 0 | 0 |
+| Pink_Aura3 | 0 | 14 | 0 | 0 | 0 |
+| Pink_Aura4 | 5 | 23 | 0 | 0 | 0 |
+| Red_Aura1 | 2 | 22 | 0 | 0 | 1 |
+| Hyper_Aura1 | 2 | 7 | 0 | 0 | 1 |
+| Green_Aura1 | 6 | 15 | 0 | 0 | 0 |
+| Purple_Aura1 | 6 | 15 | 0 | 0 | 0 |
+
+Redには追加でHighlight1個を保持。Pink_Aura3は元noob.Torso直下の14EmitterをRoot（2×2×1stud）へ保持するため、Particle用Attachmentは0個。
+
+命名差：WorkspaceにPink_Aura1 / Pink_Aura2は存在しなかったため、既存vfx pack.VFX.PinkAura / PinkAura2を対応元素材と仮定してTemplate化した。確認質問は作業時点で未回答。Greenと紫はVFX Auras配下。紫の実名はPurple_Aura1で、Puple_Aura1は見つからなかった。元Objectのrenameはしていない。
+
+
 ## 2026-09-16 — Auto Tap toggle / manual input
 
 - StarterPlayerScripts.UI.AutoTapClientがPlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.AutoTapButtonを生成。ボタンは1つで「Auto Tap」「ON / OFF」の2行表示。ONは金色、OFFは灰紫色の縦グラデーション。既存LevelPanelのUICorner / Outlineと文字Font / TextOutlineを再利用する。1回のActivatedでServerへToggleを要求し、保存状態のAttribute通知で表示更新する。

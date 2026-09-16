@@ -1,5 +1,15 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-17 — Reusable Aura visual templates
+
+- Visual正本はReplicatedStorage.AuraVisualTemplatesの8個のModel。ParticleEmitterの設定をLuaで再生成せず、Studioで編集したInstanceをCloneする。
+- AuraConfig.Auras.Pink.VisualTemplate="Pink_Aura3"。AuraCharacterEffectsが既存AuraServiceの所有・装備判定後にTemplateを取得し、Character.AuraEffects.EquippedAuraVisualへ1組だけ装着する。
+- ModelのRootをAttachTo属性（初期UpperTorso、R6 Torso / HumanoidRootPartへfallback）へ合わせ、各透明carrier PartのRoot相対CFrame・SizeとAttachment / Particle / Light設定を保持する。衝突・Touch・Queryは無効。元Workspace素材・マネキン・Map配置は変更しない。
+- Unequip / 装備変更 / 死亡でVisualを削除し、Respawn時は既存保存装備から再適用。Pinkの旧0.67倍Size補正は廃止し、Pink_Aura3の14Emitterをそのまま使用する。
+- 所有、Price、StrengthBonus、購入、通知、保存、GamePass条件に変更なし。今回のStudio上のPinkはPrice=250 / StrengthBonus=50で、旧BALANCE_SPECの表値へ戻していない。
+- Template本体はassets/AuraVisualTemplates.rbxm（Roblox標準SerializationServiceによる保存）、変更Scriptはsrc/。自動Studio同期・Publishは行っていない。
+
+
 ## 2026-09-16 — Auto Tap / Manual Training / Manual Combat
 
 - Auto Tapボタンは画面下部のLevel / Strength Progress Gaugeのすぐ右隣へ配置。既存ゲージを親とするコンパクトな2段表示とし、位置・サイズはHUDに追従する。配置・装飾変更のみで下記の設定保存・入力・Training / Combat仕様は変更しない。

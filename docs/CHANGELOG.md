@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-09-17 — Add reusable Aura visual templates
+
+- 8つのStudio素材をReplicatedStorage.AuraVisualTemplatesへ整理。Emitter / Attachment / LightをInstanceとして保持し、元Workspace素材は維持。
+- AuraCharacterEffectsをAuraConfig.VisualTemplate共通参照へ変更。PinkはPink_Aura3、R15 UpperTorsoへ装着。旧Size倍率補正を撤去。
+- 所有・Price・StrengthBonus・通知・Save・Balanceは変更なし。8Templateの構造表と短い手動追加手順をUI_SPECへ記載。
+- R15実Play32チェック、全98Emitterの主要property照合、native .rbxm復元確認、QA撤去後の通常PlayでError / Warning / Infinite Yieldなし。
+
+
 ## 2026-09-16 — Move Auto Tap button beside Strength HUD
 
 - AutoTap.pngを参考に、Auto TapをLevelPanel右隣・下端揃えへ移動。HUDの実サイズと座標系へ追従し、上部の独立配置を廃止。

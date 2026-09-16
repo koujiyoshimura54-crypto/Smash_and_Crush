@@ -1,5 +1,15 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-17 — Aura templates / Pink visual
+
+- ReplicatedStorage.AuraVisualTemplatesへ8Templateを追加し、Pink装備VisualをPink_Aura3へ変更。共通VisualTemplate参照で装着し、他Auraの性能・購入・保存は変更なし。
+- 全98Emitter×32主要property=3,136項目、carrier Size / Root相対変換、Attachment配置を照合。LightはInstance Cloneで保持。不要なRig / ScriptはTemplateに含めない。
+- 隔離Studio Storeで実AuraServiceを使用したEquip / Unequip / 再Equip / Purple切替 / 重複防止 / 死亡 / 通常Respawnの32チェック合格。R15 UpperTorsoへの装着とClient描画を確認。
+- QA Scriptを撤去し、DataStoreConfigを原文へ復元。最終通常PlayのError / Warning / Infinite Yieldなし。Editで停止。Production Reset / Publishなし。
+- Template保存はRoblox標準.rbxmを使用し、Serialize→Deserializeで8ModelとRoot参照の復元を確認。元Workspace素材は保持。
+- Pink1/2の名前対応はUI_SPEC記載の仮定。Puple_Aura1ではなく実物のPurple_Aura1を採用。R6 fallbackはコード上のみ、実PlayはR15。
+
+
 ## 2026-09-16 — Auto Tap beside Strength HUD
 
 - AutoTap.pngを確認し、独立した上部ボタンをLevelPanel右隣へ移動。既存HUDのCorner / Outline / Fontを再利用し、ON金色 / OFF灰紫色のコンパクトな2段表示へ変更。

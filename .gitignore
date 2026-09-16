@@ -11,6 +11,8 @@ desktop.ini
 *.rbxlx
 *.rbxm
 *.rbxmx
+# Authored reusable Aura Instances (native Studio serialization).
+!assets/AuraVisualTemplates.rbxm
 *.lock
 
 # Codex / tool caches and temporary output
