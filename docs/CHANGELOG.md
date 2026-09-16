@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-09-16 — Color-code Treadmills by Strength reward
+
+- TreadmillConfigへ既存MultiplierをキーとするStrengthColorsを追加。Multiplier 3はBlue RGB(55,145,255)、Multiplier 5はGreen RGB(70,200,110)。
+- Tredmill04〜05とTredmill02〜03のベルト、コンソールアクセント、前後フレームアクセントを起動時に共通処理で色分け。
+- ×3 Strength / ×5 Strength表示、Multiplier、TrainingInterval、利用条件、Rebirth・装備・Potion・VIPを含む既存計算式は変更なし。
+- Config色差し替え、実Training、Collision維持、QA撤去後の通常Playを確認。Runtime Error / Warning / Infinite Yieldは0。
+- 証拠：[実装・Play報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md)。
+
 ## 2026-09-16 — Add configurable World1 wall UI layout
 
 - `ReplicatedStorage.Config.WallDisplayConfig`を追加し、通常Wall UIの`Scale=0.8`と`StageGap=0.4`を正本化。

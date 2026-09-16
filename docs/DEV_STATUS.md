@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Treadmill Strength reward colors（Completed）
+
+- TreadmillConfig.Typesの実Multiplierを表示色のキーとして再利用。3はBlue、5はGreen。見た目専用Strength値は追加していない。
+- Tredmill04〜05 / 02〜03のBelt、ConsoleAccent、FrameAccent×2をTrainingManager初期化時に着色。残すべき灰色フレームとNormal / Premium機器は維持。
+- 数字表示は×3 Strength / ×5 Strengthのまま。選択PartのSize / CFrame / Material / Transparency / CanCollide / CanTouch / CanQueryは変更なし。
+- 隔離Storeで利用判定中のIsTraining=trueと既存式による実加算を確認。Multiplier、Interval、装備・Rebirth・Potion・VIP計算は未変更。
+- Config差し替え反映と最終通常Playを確認。Runtime Error / Warning / Infinite Yieldなし。
+- 根拠：[実装・Play報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md)。
+
 ## 2026-09-16 — Configurable World1 wall UI layout（Completed）
 
 - `WallDisplayConfig.WallUI`へ`Scale=0.8`、`StageGap=0.4`を集約。StageWallDisplayClientの単一経路でWorld1 Stage1〜10のWall .1〜.4へ適用。

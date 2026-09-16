@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-16 — Treadmill Strength reward colors
+
+World1 Treadmillの見た目は、実Trainingに使用するReplicatedStorage.Config.TreadmillConfig.TypesのMultiplierを色判定の正本として使う。StrengthColors[3]はBlue RGB(55,145,255)、StrengthColors[5]はGreen RGB(70,200,110)。Tredmill04〜05は青、Tredmill02〜03は緑とし、ベルト・コンソールアクセント・前後フレームアクセントへ共通適用する。
+
+既存の×3 Strength / ×5 Strength表示を維持する。最終加算量は従来どおりBaseGain、Dumbbell / Aura / Protein、Rebirth、Treadmill Multiplier、Belt / Training Potion、Strength Potion、VIPから計算する。今回Multiplier、TrainingInterval、利用条件、Collision、Level、Rebirth、Balance、DataStoreは変更しない。[実装・検証報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md)。
+
 ## 2026-09-16 — Configurable World1 Wall UI layout
 
 World1 Stage1〜10の通常Wall .1〜.4は、`ReplicatedStorage.Config.WallDisplayConfig.WallUI`を共通表示設定の正本とする。初期値は`Scale=0.8`、`StageGap=0.4`。ScaleはStage表示、HP Gauge、HP数値と関連装飾へ一括適用し、StageGapはStageNumber下端とHP Gauge上端の見た目上の実隙間をstud単位で指定する。

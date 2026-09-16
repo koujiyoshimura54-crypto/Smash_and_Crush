@@ -2,6 +2,12 @@
 
 Version: 1.1 / 監査・更新日: 2026-09-15
 
+## Treadmill reward colors（2026-09-16）
+
+TreadmillConfig.StrengthColorsがTreadmill表示色の正本。実Trainingに使う同ConfigのMultiplierを直接キーにし、Multiplier 3はBlue RGB(55,145,255)、Multiplier 5はGreen RGB(70,200,110)とする。別の表示用Strength値は持たない。
+
+対象Modelのベルト、コンソール上面、前後フレームアクセントを着色し、残りの金属・灰色フレームは維持する。既存×3 Strength / ×5 StrengthとRebirth必要数表示は維持し、新規UIは追加しない。Normal / Premium機器はStrengthColorsに定義がないため既存色を維持する。[Treadmill色分け報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md)。
+
 ## World1 normal Wall display layout（2026-09-16）
 
 `ReplicatedStorage.Config.WallDisplayConfig.WallUI`がWorld1 Stage1〜10の通常Wall .1〜.4に対する共通表示設定の正本。初期値は`Scale=0.8`、`StageGap=0.4`。Stage別の個別値は持たない。
