@@ -1,0 +1,266 @@
+{
+  "A_before_open": {
+    "panel": false,
+    "badges": {
+      "NORMAL_07": false,
+      "NORMAL_02": true,
+      "NORMAL_06": false,
+      "NORMAL_05": true,
+      "NORMAL_03": true,
+      "NORMAL_04": true,
+      "NORMAL_01": true
+    },
+    "inventory": true,
+    "positions": {
+      "NORMAL_07": [
+        448.39752197265625,
+        1085.5455322265625,
+        161.84848022460938,
+        40.09090805053711
+      ],
+      "NORMAL_02": [
+        636.973388671875,
+        368.3636474609375,
+        161.84848022460938,
+        40.09090805053711
+      ],
+      "NORMAL_06": [
+        636.973388671875,
+        846.48486328125,
+        161.84848022460938,
+        40.09090805053711
+      ],
+      "NORMAL_05": [
+        448.39752197265625,
+        846.48486328125,
+        161.84848022460938,
+        40.09090805053711
+      ],
+      "NORMAL_03": [
+        448.39752197265625,
+        607.4241943359375,
+        161.84848022460938,
+        40.09090805053711
+      ],
+      "NORMAL_04": [
+        636.973388671875,
+        607.4241943359375,
+        161.84848022460938,
+        40.09090805053711
+      ],
+      "NORMAL_01": [
+        448.39752197265625,
+        368.3636474609375,
+        161.84848022460938,
+        40.09090805053711
+      ]
+    },
+    "tab": true
+  },
+  "B_open_top": {
+    "tab": false,
+    "canvas": [
+      0,
+      0
+    ],
+    "badges": {
+      "NORMAL_07": {
+        "visible": false,
+        "buttonY": 1085.5455322265625
+      },
+      "NORMAL_02": {
+        "visible": false,
+        "buttonY": 368.3636474609375
+      },
+      "NORMAL_06": {
+        "visible": false,
+        "buttonY": 846.48486328125
+      },
+      "NORMAL_05": {
+        "visible": true,
+        "buttonY": 846.48486328125
+      },
+      "NORMAL_03": {
+        "visible": true,
+        "buttonY": 607.4241943359375
+      },
+      "NORMAL_04": {
+        "visible": true,
+        "buttonY": 607.4241943359375
+      },
+      "NORMAL_01": {
+        "visible": false,
+        "buttonY": 368.3636474609375
+      }
+    },
+    "viewport": [
+      436.518798828125,
+      184.24241638183594,
+      377.3296813964844,
+      291.0303039550781
+    ],
+    "inventory": true
+  },
+  "C_after_scroll": {
+    "canvas": [
+      0,
+      450
+    ],
+    "badges": {
+      "NORMAL_07": {
+        "visible": false,
+        "y": 635.54541015625
+      },
+      "NORMAL_02": {
+        "visible": false,
+        "y": -81.63636779785156
+      },
+      "NORMAL_06": {
+        "visible": false,
+        "y": 396.4848327636719
+      },
+      "NORMAL_05": {
+        "visible": false,
+        "y": 396.4848327636719
+      },
+      "NORMAL_03": {
+        "visible": false,
+        "y": 157.42422485351562
+      },
+      "NORMAL_04": {
+        "visible": false,
+        "y": 157.42422485351562
+      },
+      "NORMAL_01": {
+        "visible": false,
+        "y": -81.63636779785156
+      }
+    }
+  },
+  "E_rejoin": {
+    "server": {
+      "Success": true,
+      "Action": "snapshot",
+      "Detail": {
+        "Owned": [],
+        "Win": 500,
+        "Seen": {
+          "Dumbbells": {
+            "NORMAL_02": true,
+            "NORMAL_05": true,
+            "NORMAL_03": true,
+            "NORMAL_04": true,
+            "NORMAL_01": true
+          },
+          "DumbbellBuy": {
+            "NORMAL_02": true,
+            "NORMAL_05": true,
+            "NORMAL_03": true,
+            "NORMAL_04": true,
+            "NORMAL_01": true
+          },
+          "Aura": [],
+          "Speed": [],
+          "Items": []
+        }
+      }
+    },
+    "client": {
+      "panel": false,
+      "tab": false,
+      "badges": {
+        "NORMAL_07": false,
+        "NORMAL_02": false,
+        "NORMAL_06": false,
+        "NORMAL_05": false,
+        "NORMAL_03": false,
+        "NORMAL_04": false,
+        "NORMAL_01": false
+      }
+    }
+  },
+  "F_next_unlock": {
+    "tab": true,
+    "inventory": true,
+    "badges": {
+      "NORMAL_07": false,
+      "NORMAL_02": false,
+      "NORMAL_06": true,
+      "NORMAL_05": false,
+      "NORMAL_03": false,
+      "NORMAL_04": false,
+      "NORMAL_01": false
+    }
+  },
+  "G_owned": {
+    "server": {
+      "Success": true,
+      "Action": "snapshot",
+      "Detail": {
+        "Owned": {
+          "NORMAL_06": true
+        },
+        "Win": 0,
+        "Seen": {
+          "Dumbbells": {
+            "NORMAL_02": true,
+            "NORMAL_05": true,
+            "NORMAL_03": true,
+            "NORMAL_04": true,
+            "NORMAL_01": true
+          },
+          "DumbbellBuy": {
+            "NORMAL_02": true,
+            "NORMAL_05": true,
+            "NORMAL_03": true,
+            "NORMAL_04": true,
+            "NORMAL_01": true
+          },
+          "Aura": [],
+          "Speed": [],
+          "Items": []
+        }
+      }
+    },
+    "client": {
+      "tab": false,
+      "win": 0,
+      "buy6": false
+    }
+  },
+  "FinalNormalPlay": {
+    "ObservedSeconds": 52.658336084801704,
+    "PanelVisible": false,
+    "Win": 0,
+    "InventoryBadge": false,
+    "Console": {
+      "RuntimeError": 0,
+      "Warning": 0,
+      "InfiniteYield": 0
+    }
+  },
+  "Notes": {
+    "BServerSeenAfterOpen": {
+      "Dumbbells": [
+        "NORMAL_01",
+        "NORMAL_02",
+        "NORMAL_03",
+        "NORMAL_04",
+        "NORMAL_05"
+      ],
+      "DumbbellBuy": [
+        "NORMAL_01",
+        "NORMAL_02"
+      ]
+    },
+    "CAfterScrollServerSeen": {
+      "DumbbellBuy": [
+        "NORMAL_01",
+        "NORMAL_02",
+        "NORMAL_03",
+        "NORMAL_04",
+        "NORMAL_05"
+      ]
+    }
+  }
+}

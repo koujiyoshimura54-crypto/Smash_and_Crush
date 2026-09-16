@@ -142,6 +142,10 @@ Stage9の名前を短縮名へ変更しない。Stage1〜5はモデル名から�
 
 Inventory通知バッジはタブ単位の既読方式とする。新しいDumbbell／Aura／Speed解放または新しい所有Itemがあるタブだけ「！」を表示し、そのタブを開いた時点で消す。購入は消去条件ではない。別タブの未確認通知は残り、親Inventoryバッジは子タブの論理和で表示する。確認済みIDはPlayerDataへ保存するため、再Joinで同じ内容を再通知しない。
 
+Dumbbellだけはタブ通知に加え、現在購入可能で未確認の各Buyボタンにも「！」を表示する。タブを開いてもBuy通知は一括既読にしない。DumbbellsのScrollingFrame表示領域とBuyボタンのAbsolutePosition / AbsoluteSizeが実際に交差した時点で、そのItemIdのBuy通知だけを既読にする。購入操作は不要。画面外のカードは未確認を維持し、スクロールして表示された直後にBadgeを消す。購入可能判定はDumbbellServiceの購入検証を共通利用し、所有済み・Win不足・無効定義・保存中は対象外。
+
+InventoryNotificationSeen.Dumbbellsはタブ既読、InventoryNotificationSeen.DumbbellBuyはBuyボタン既読として分離する。どちらもItemId単位で保存し、旧データでDumbbellBuyが欠ける場合は空集合として後方互換読込する。新しいDumbbellが購入可能になれば、既読済みの過去Itemと独立してタブと該当Buyボタンへ再通知する。Aura／Speed／Itemsの既読条件は変更しない。検証：[Dumbbell Buy通知報告](../reports/Dumbbell_Buy_Seen_Notifications_20260916/build_report.md)。
+
 Panelは他の主要Panelと排他で開閉する。BUY WINの見た目上の導線はあるが、WinProducts空のため販売完成を意味しない（K10）。UIが示す課金所有状態と、StudioDebugConfigで効果が抑制されるテスト状態を区別する（K11）。
 
 ## RewardPad

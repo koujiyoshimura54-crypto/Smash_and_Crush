@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-09-16 — Restore Dumbbell buy button seen notifications
+
+- 現行のタブ単位seen-based通知を維持し、購入可能Dumbbellの各Buyボタンへ個別「！」を復元。
+- タブ既読DumbbellsとBuy既読DumbbellBuyを分離。タブOpenでは画面外Buyを既読にせず、ScrollingFrame表示領域へ入ったItemだけを購入なしで既読化・保存する。
+- DumbbellServiceの購入検証を共通化し、通知側の別判定を廃止。所有済み・Win不足・無効定義・保存中は通知対象外。
+- 旧PlayerDataはDumbbellBuy空集合として後方互換読込。確認済み通知は再Joinで復活せず、次の購入可能Itemは新規通知する。
+- Aura／Speed／Items、購入・Equip処理、価格、Balance、DataStore名は変更なし。A〜G分岐と最終通常Playを確認。
+- 証拠：[実装・Play報告](../reports/Dumbbell_Buy_Seen_Notifications_20260916/build_report.md)。
+
 ## 2026-09-16 — Add configurable Boss display surfaces
 
 - World1 Boss UIの表示先を、実WallからClient専用の半透明BossDisplaySurfaceへ変更。Stage1〜9は次Stage .1、Stage10はStage10BoundaryWall基準でRuntime生成する。

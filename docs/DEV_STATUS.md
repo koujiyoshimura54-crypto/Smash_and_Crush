@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Dumbbell Buy button seen notifications（Completed）
+
+- 現行seen-based通知を維持し、Dumbbellタブ用DumbbellsとBuyボタン用DumbbellBuyの既読集合を分離。
+- タブはDumbbellページを開くと現在購入可能Itemを既読化。Buy通知はScrollingFrameとButtonの実表示矩形が交差したItemだけを既読化し、購入を条件にしない。
+- DumbbellServiceへ購入処理と通知Stateが共有する購入可能判定を集約。所有・Win・Category・Price・保存状態を同じ経路で検証。
+- 隔離StoreのPlayでA〜Gを確認。画面外NORMAL_03〜05はタブOpen後もBuy未既読、スクロール後に消去・保存、再Join非復活。次のNORMAL_06解放で再通知、所有後は対象外。
+- Aura／Speed／Itemsと購入Remoteの処理は変更なし。検証コード撤去・通常Store復元後の52秒PlayでRuntime Error / Warning / Infinite Yieldなし。
+- 根拠：[実装・Play報告](../reports/Dumbbell_Buy_Seen_Notifications_20260916/build_report.md)。
+
 ## 2026-09-16 — Configurable Boss display surfaces（Completed）
 
 - CombatClientがPlayer別BossDisplaySurfaceをRuntime生成。Stage1〜9は次Stage .1、Stage10は境界壁基準。同じ幅・高さ、厚さ0.05、透明度0.5、Wall表面との間隔0.5stud。
