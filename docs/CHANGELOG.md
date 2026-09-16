@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-16 — Move Auto Tap button beside Strength HUD
+
+- AutoTap.pngを参考に、Auto TapをLevelPanel右隣・下端揃えへ移動。HUDの実サイズと座標系へ追従し、上部の独立配置を廃止。
+- 幅59〜73px / 高さ44〜54pxの2段ボタン。既存の角丸・黒縁・Fontを再利用し、ON金色 / OFF灰紫色のグラデーションを使用。画像Asset追加なし。
+- PC / Phone / Tablet Simulatorで配置とON/OFF往復を確認。Runtime Error / Warning / Infinite Yieldなし。入力・保存・Training / Combat・Balanceは変更なし。
+
 ## 2026-09-16 — Add manual tap training and combat
 
 - AutoTapEnabledを後方互換で保存（default ON）。単一Auto Tap ON/OFFボタンを追加。

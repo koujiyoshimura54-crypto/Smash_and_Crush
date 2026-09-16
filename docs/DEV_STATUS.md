@@ -1,5 +1,12 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Auto Tap beside Strength HUD
+
+- AutoTap.pngを確認し、独立した上部ボタンをLevelPanel右隣へ移動。既存HUDのCorner / Outline / Fontを再利用し、ON金色 / OFF灰紫色のコンパクトな2段表示へ変更。
+- AutoTapClientの表示部分のみ変更。LevelPanel基準の右8px / 下端揃え、HUDLayout.GetLocalSizeによる高さ44〜54px / 幅1.35倍。HUD本体・入力・Remote・保存・Config・Combat・Balanceは変更なし。
+- Play：PC70×52px、Phone / Tablet59×44px。全端末で右隙間8px、下端差0px。Phone / Tabletで可視Buttonとの重なり0。ON→OFF→ONの往復を各端末で確認。
+- Runtime Error / Warning / Infinite Yieldなし。Device Simulatorを通常Viewportへ戻し、Editで停止。実機スマホの見た目評価は未実施。旧フォルダへ新規ファイルは作らず、既存ソース・SPECだけ更新。
+
 ## 2026-09-16 — Auto Tap / Manual input implemented
 
 - 保存Boolean AutoTapEnabled（旧データdefault ON）、1ボタン切替、通常Manual Training、接触対象へのManual Combatを追加。

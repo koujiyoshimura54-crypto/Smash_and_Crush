@@ -2,6 +2,7 @@
 
 ## 2026-09-16 — Auto Tap / Manual Training / Manual Combat
 
+- Auto Tapボタンは画面下部のLevel / Strength Progress Gaugeのすぐ右隣へ配置。既存ゲージを親とするコンパクトな2段表示とし、位置・サイズはHUDに追従する。配置・装飾変更のみで下記の設定保存・入力・Training / Combat仕様は変更しない。
 - PlayerData.AutoTapEnabled（Boolean）を追加。未保存の旧データはtrue。既存Load/normalize/Save経路で保存し、Player Attributeは表示用の鏡とする。通常のResetでは他の初期値と同様trueへ戻る。
 - ON：通常・BattleCorridor非Combatでは従来の地上歩行条件で0.5秒ごとにStrengthを付与。停止中に新しい自動付与は追加しない。Combatは従来のAttackInterval=0.8秒、Wall命中遅延0.18秒 / Boss命中遅延0.5秒を維持。
 - OFF：通常・BattleCorridor非Combatの自動付与を停止。画面Tap / 左クリックで通常のStrength計算を1回実行（最小0.25秒）。歩行計算と同じくDumbbell加算なし。既存Aura / Protein / Rebirth / Potion / VIPの扱いを変えない。

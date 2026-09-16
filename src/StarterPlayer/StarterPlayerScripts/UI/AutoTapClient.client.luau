@@ -6,40 +6,63 @@ local player=Players.LocalPlayer
 local playerGui=player:WaitForChild("PlayerGui")
 local remote=RS:WaitForChild("Remotes"):WaitForChild("AutoTapRequest")
 local config=require(RS:WaitForChild("Config"):WaitForChild("AutoTapConfig"))
-local gui=Instance.new("ScreenGui")
-gui.Name="AutoTapGui"
-gui.ResetOnSpawn=false
-gui.DisplayOrder=11
-gui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
-gui.Parent=playerGui
+local HUDLayout=require(RS:WaitForChild("Modules"):WaitForChild("HUDLayout"))
+local strengthGui=playerGui:WaitForChild("StrengthGui")
+local hud=strengthGui:WaitForChild("StrengthLevelHUD")
+local bar=hud:WaitForChild("LevelPanel")
 local button=Instance.new("TextButton")
-button.Name="Toggle"
-button.AnchorPoint=Vector2.new(0.5,0)
-button.Font=Enum.Font.GothamBold
-button.TextSize=18
-button.TextColor3=Color3.new(1,1,1)
+button.Name="AutoTapButton"
+button.AnchorPoint=Vector2.new(0,1)
+button.Text=""
+button.BackgroundColor3=Color3.new(1,1,1)
 button.AutoButtonColor=true
-button.Parent=gui
-local corner=Instance.new("UICorner")
-corner.CornerRadius=UDim.new(0,10)
+button.ZIndex=bar.ZIndex+1
+button.Parent=bar
+local corner=bar:WaitForChild("Corner"):Clone()
 corner.Parent=button
-local stroke=Instance.new("UIStroke")
-stroke.Color=Color3.fromRGB(28,40,55)
-stroke.Thickness=2
+local stroke=bar:WaitForChild("Outline"):Clone()
 stroke.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
 stroke.Parent=button
+local gradient=Instance.new("UIGradient")
+gradient.Rotation=90
+gradient.Parent=button
+local function label(name,text)
+ local x=Instance.new("TextLabel")
+ x.Name=name
+ x.BackgroundTransparency=1
+ x.Text=text
+ x.Font=bar.Level.Font
+ x.TextColor3=Color3.new(1,1,1)
+ x.ZIndex=button.ZIndex+1
+ x.Parent=button
+ local outline=bar.Level:WaitForChild("TextOutline"):Clone()
+ outline.Parent=x
+ return x
+end
+local title=label("Title","Auto Tap")
+local state=label("State","")
+title.Position=UDim2.fromScale(0,0.06)
+title.Size=UDim2.fromScale(1,0.38)
+state.Position=UDim2.fromScale(0,0.43)
+state.Size=UDim2.fromScale(1,0.51)
 local function layout()
- button.Size=UDim2.fromOffset(UIS.TouchEnabled and 112 or 128,UIS.TouchEnabled and 52 or 58)
- button.Position=UDim2.new(0.70,0,0,UIS.TouchEnabled and 5 or 10)
+ -- Inherit the HUD's coordinate space/UIScale instead of reconstructing safe-area positions.
+ local height=math.clamp(HUDLayout.GetLocalSize(bar).Y,44,54)
+ button.Size=UDim2.fromOffset(math.round(height*1.35),height)
+ button.Position=UDim2.new(1,8,1,0)
+ title.TextSize=math.clamp(height*0.30,13,16)
+ state.TextSize=math.clamp(height*0.44,19,24)
 end
 local function refresh()
  local enabled=player:GetAttribute("AutoTapEnabled")~=false
- button.Text="Auto Tap\n"..(enabled and "ON" or "OFF")
- button.BackgroundColor3=enabled and Color3.fromRGB(45,151,90) or Color3.fromRGB(110,116,128)
+ state.Text=enabled and "ON" or "OFF"
+ gradient.Color=enabled
+  and ColorSequence.new(Color3.fromRGB(255,231,75),Color3.fromRGB(255,151,34))
+  or ColorSequence.new(Color3.fromRGB(169,162,180),Color3.fromRGB(91,79,108))
 end
 layout()
 refresh()
-UIS:GetPropertyChangedSignal("TouchEnabled"):Connect(layout)
+bar:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
 player:GetAttributeChangedSignal("AutoTapEnabled"):Connect(refresh)
 button.Activated:Connect(function() remote:FireServer("Toggle") end)
 local function interactiveAt(position)

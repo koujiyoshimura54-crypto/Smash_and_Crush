@@ -2,12 +2,12 @@
 
 ## 2026-09-16 — Auto Tap toggle / manual input
 
-- StarterPlayerScripts.UI.AutoTapClientがPlayerGui.AutoTapGui.Toggleを生成。ボタンは1つで「Auto Tap」「ON / OFF」の2行表示。ONは緑、OFFは灰色。1回のActivatedでServerへToggleを要求し、保存状態のAttribute通知で表示更新する。
-- 安全領域内の上部、横70%位置。Desktopは128×58px / 上10px、Touchは112×52px / 上5px。既存HUD・LeftMenu・Touch Zone・LandscapeSensorを変更しない。
+- StarterPlayerScripts.UI.AutoTapClientがPlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.AutoTapButtonを生成。ボタンは1つで「Auto Tap」「ON / OFF」の2行表示。ONは金色、OFFは灰紫色の縦グラデーション。既存LevelPanelのUICorner / Outlineと文字Font / TextOutlineを再利用する。1回のActivatedでServerへToggleを要求し、保存状態のAttribute通知で表示更新する。
+- AutoTap.pngをレイアウト参考とし、LevelPanelの右端から8ローカルpx空けて下端を揃える。AnchorPoint=(0,1)、Position=(1,8,1,0)。LevelPanelの子としてHUDの座標系・UIScaleを継承し、AbsoluteSize変更時にHUDLayout.GetLocalSizeを再利用する。高さ=clamp(ゲージのローカル高さ,44,54)、幅=round(高さ×1.35)。独立した画面上部配置へ戻さない。既存HUD・LeftMenu・Touch Zone・LandscapeSensorは変更しない。
 - OFF時の左クリックとTouchTapInWorldを受付。処理済み入力、Robloxメニュー、TextBoxフォーカス、位置に重なるGuiButton / TextBox / ScrollingFrame / ActiveなGuiObjectとその子孫を除外。ドラッグやThumbstick移動をTraining Tapにしない。
 - ReplicatedStorage.Remotes.AutoTapRequestの要求はToggle / Tapのみ。Clientは入力頻度を抑え、Serverが最終的なTraining / Combat / Treadmill分岐とRate Limitを決定する。
 - Manual Attackは既存左右Punch AnimationをSpeed=2.0で停止・再スタートする。DamageはAnimation終了を待たない。Punch SEは既存1個のSoundを停止・再生し、Soundを連打ごとに増殖させない。ON時の演出は維持。
-- Desktop、iPhone 17 Pro Landscape、iPad Pro M5 13-inch LandscapeのSimulatorで表示・切替を確認。実機Touch、聴感評価、複数Client同時試験は未実施。
+- 配置変更後のPlay実測：Desktop1365×768で70×52px、iPhone 17 Pro Landscape749×361で59×44px、iPad Pro M5 13-inch Landscape1374×1031で59×44px。各端末でゲージ右端との間隔8px・下端差0px。Phone / Tabletで他の可視GuiButtonとの重なり0、3端末でON→OFF→ONを確認。実機スマホの最終的な見た目評価はユーザーが行う。
 
 ## 2026-09-16 — Tutorial Guide floor-only arrows（Completed）
 
