@@ -2,6 +2,10 @@
 
 Version: 1.2 / 監査・更新日: 2026-09-15 / プロジェクト: Smash_and_Crush
 
+## 対応画面方向（2026-09-16）
+
+Smartphone / TabletはLandscapeを正式対応とし、Robloxの`LandscapeSensor`でLandscapeLeft / LandscapeRightへ追従する。Portraitでのゲームプレイは対応対象外。移動入力はRoblox標準Dynamic Thumbstickを維持し、端末別に入力領域の最大サイズとInteractive UIとの境界だけを制御する。Desktop操作は従来どおり。
+
 ## 適用と情報の優先順位
 
 本書・[BALANCE_SPEC](BALANCE_SPEC.md)・[UI_SPEC](UI_SPEC.md)・[DEV_STATUS](DEV_STATUS.md)を今後の開発の正本とする。これは現在の実装を記録する初期版であり、暫定実装をすべて最終承認したという意味ではない。

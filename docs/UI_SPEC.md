@@ -2,9 +2,19 @@
 
 Version: 1.1 / 監査・更新日: 2026-09-15
 
+## Mobile / Tablet landscape controls（2026-09-16）
+
+- Smartphone / Tabletの正式対応方向はLandscape。`StarterGui.ScreenOrientation=LandscapeSensor`を使用し、LandscapeLeft / LandscapeRightへ端末センサーで追従する。Portrait専用HUDや回転警告UIは持たない。
+- 移動方式はRoblox標準PlayerModuleのDynamic Thumbstickを維持する。`TouchControlZoneClient`は標準`DynamicThumbstickFrame`の入力矩形だけをLandscape端末向けに制限する。
+- Smartphone: `W=clamp(viewportW*0.40,220,300)`, `H=clamp(viewportH*0.58,190,260)`。
+- Tablet（短辺500px以上）: `W=clamp(viewportW*0.26,240,320)`, `H=clamp(viewportH*0.38,220,300)`。大画面に比例してZoneが巨大化しない。
+- Zoneの左端は表示中の左側LeftMenu操作ボタン右端+8px、右端はJumpButton左端-8px以内とする。LeftMenu、Jump、Modal、Shop、Inventory等のInteractive UIをタップした際は移動Zoneと競合させない。
+- Potion効果時間、Player HP、Strength / Level等の表示HUDは操作Zone用Safe Areaから除外し、見た目上の重なりを許容する。
+- DesktopはTouchGuiを生成しないため、この処理によるMouse / Keyboardおよび既存配置の変更はない。
+
 ## 対象と根拠
 
-現在のStarterGui、HUDLayout、各LocalScriptとサーバー通知経路を基準とする。過去のUI案や古いObject位置だけを採用しない。今回の確認はEdit状態のソース・プロパティ監査で、PC/Smartphone/Tabletの新しい画面実測は実施していない。
+現在のStarterGui、HUDLayout、各LocalScriptとサーバー通知経路を基準とする。過去のUI案や古いObject位置だけを採用しない。初期監査はEdit状態のソース・プロパティ確認であり、2026-09-16のMobile Landscape変更では端末シミュレーターによるPC/Smartphone/TabletのPlay実測を追加した。
 
 根拠: [ReplicatedStorage.Modules.HUDLayout](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Modules.HUDLayout.luau)、[ReplicatedStorage.Modules.ResponsivePanels](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Modules.ResponsivePanels.luau)、[UI Object記録](../reports/Implementation_Audit_20260915/scene_objects.json)。仕様不一致は[DEV_STATUS](DEV_STATUS.md)へ集約する。
 

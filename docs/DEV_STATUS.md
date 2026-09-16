@@ -2,6 +2,15 @@
 
 Version: 1.3 / 監査・更新日: 2026-09-15
 
+## 2026-09-16 — Mobile Landscape / Touch Zone（Completed）
+
+- `StarterGui.ScreenOrientation=LandscapeSensor`へ変更。Portrait用UIは追加していない。
+- 標準Dynamic Thumbstickを維持し、Smartphone / Tablet別の入力Zone計算とTablet最大320x300px Clampを追加。
+- 入力Zoneを左側LeftMenu右端とJumpButton左端の間へ制限。Fire HD 10相当で表示中Interactive UIとの重なり0を確認。
+- 表示専用Potion / HP / Strength HUDはZone回避計算から除外。DesktopはTouchGuiなしで従来動作を確認。
+- iPhone 17 Pro相当、Fire HD 10相当、iPad Pro 13相当、DesktopをPlay確認し、Error / Warning / Infinite Yieldなし。
+- 根拠: [実装・検証報告](../reports/Mobile_Landscape_TouchZone_20260916/build_report.md)。
+
 正本：[GAME_SPEC](GAME_SPEC.md) / [BALANCE_SPEC](BALANCE_SPEC.md) / [UI_SPEC](UI_SPEC.md)。実装済みとPlay検証済みは別に記録する。初期版は読み取り専用監査で作成し、その後の許可された変更は日付と証拠を添えて追記する。Publish・Git初期化/Commitは未実施。
 
 ## Completed

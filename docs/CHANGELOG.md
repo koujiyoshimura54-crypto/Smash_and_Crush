@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-16 — Mobile landscape orientation and touch zone
+
+- Mobile / Tabletの画面方向を`LandscapeSensor`へ固定し、左右Landscapeへのセンサー追従を有効化。
+- Roblox標準Dynamic Thumbstickの入力領域をSmartphone / Tablet別に制御し、Tabletは最大320x300pxへClamp。
+- LeftMenuとJumpのInteractive UIを入力Zone外へ分離。Potion / HP等の表示HUDは重なりを許容。
+- Desktop、Combat、Balance、Stage、Inventory、Shop、DataStore、Game Pass、Mapは変更なし。
+
 ## 2026-09-16 — MiniBossから次Stage Wall .1へのUI切替改善
 
 - World1 Stage1〜9のMiniBoss HPを、次Stage .1 Wall上部の個人Billboardとして表示。
