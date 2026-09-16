@@ -4,7 +4,7 @@ Version: 1.2 / 監査・更新日: 2026-09-15 / プロジェクト: Smash_and_Cr
 
 ## 対応画面方向（2026-09-16）
 
-Smartphone / TabletはLandscapeを正式対応とし、Robloxの`LandscapeSensor`でLandscapeLeft / LandscapeRightへ追従する。Portraitでのゲームプレイは対応対象外。移動入力はRoblox標準Dynamic Thumbstickを維持し、端末別に入力領域の最大サイズとInteractive UIとの境界だけを制御する。Desktop操作は従来どおり。
+Smartphone / TabletはLandscapeを正式対応とし、`StarterGui`と実行時`PlayerGui`の双方へRobloxの`LandscapeSensor`を設定してLandscapeLeft / LandscapeRightへ追従する。Portraitでのゲームプレイは対応対象外。移動入力はRoblox標準Dynamic Thumbstickを維持し、端末別に入力領域の最大サイズとInteractive UIとの境界だけを制御する。Desktop操作は従来どおり。
 
 ## 適用と情報の優先順位
 

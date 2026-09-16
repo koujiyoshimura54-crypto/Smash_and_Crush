@@ -2,6 +2,13 @@
 
 Version: 1.3 / 監査・更新日: 2026-09-15
 
+## 2026-09-16 — Runtime PlayerGui LandscapeSensor（Completed）
+
+- `TouchControlZoneClient`がPlayerGui取得直後に`PlayerGui.ScreenOrientation=LandscapeSensor`を設定。
+- StarterGui側のLandscapeSensor、既存Touch Zone、Clamp、HUDLayoutは変更なし。
+- iPhone 17 Pro / Fire HD 10相当でStarterGui・PlayerGui両方の実行時値と既存Zone寸法を確認。DesktopはTouchGuiなし。
+- Runtime Error / Warning / Infinite Yieldなし。根拠: [Play報告](../reports/PlayerGui_LandscapeSensor_20260916/build_report.md)。
+
 ## 2026-09-16 — MiniBoss UI Wall Surface placement（Completed）
 
 - Stage1〜9のMiniBoss Gaugeを次Stage .1 Wall上空のBillboardから、既存StageSurfaceと同じ壁面のSurfaceGuiへ修正。

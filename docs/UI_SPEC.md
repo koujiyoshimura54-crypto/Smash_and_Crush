@@ -4,7 +4,7 @@ Version: 1.1 / 監査・更新日: 2026-09-15
 
 ## Mobile / Tablet landscape controls（2026-09-16）
 
-- Smartphone / Tabletの正式対応方向はLandscape。`StarterGui.ScreenOrientation=LandscapeSensor`を使用し、LandscapeLeft / LandscapeRightへ端末センサーで追従する。Portrait専用HUDや回転警告UIは持たない。
+- Smartphone / Tabletの正式対応方向はLandscape。`StarterGui.ScreenOrientation=LandscapeSensor`に加え、Client起動時に既存`TouchControlZoneClient`が`PlayerGui.ScreenOrientation=LandscapeSensor`を明示設定し、LandscapeLeft / LandscapeRightへ端末センサーで追従する。Portrait専用HUDや回転警告UIは持たない。
 - 移動方式はRoblox標準PlayerModuleのDynamic Thumbstickを維持する。`TouchControlZoneClient`は標準`DynamicThumbstickFrame`の入力矩形だけをLandscape端末向けに制限する。
 - Smartphone: `W=clamp(viewportW*0.40,220,300)`, `H=clamp(viewportH*0.58,190,260)`。
 - Tablet（短辺500px以上）: `W=clamp(viewportW*0.26,240,320)`, `H=clamp(viewportH*0.38,220,300)`。大画面に比例してZoneが巨大化しない。
