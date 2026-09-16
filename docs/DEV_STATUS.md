@@ -133,3 +133,7 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Lv1〜50のRequirementを確定カーブへ更新。Lv51以降とWorld2は未変更。
 - World1 Stage6〜10の実Combat正本`World1LateStageConfig`をRequiredStrength 37,025 / 81,525 / 196,525 / 462,525 / 1,017,525へ更新し、既存倍率でWall/Boss HPを再生成。
 - Stage1〜5の前半Play Balance、Strength獲得量、戦闘ロジック、Map、課金、DataStoreは変更なし。
+## 2026-09-16 — Lv1〜50 requirement floor adjustment
+
+- Lv1〜50のRequirementを一律+10。Lv1→Lv2=10 Strength。
+- Stage6〜10の実Combat RequiredStrengthを37,315 / 81,865 / 196,915 / 462,965 / 1,018,015へ同期。Stage1〜5、Lv51以降、World2は未変更。

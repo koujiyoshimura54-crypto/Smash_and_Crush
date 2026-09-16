@@ -127,3 +127,8 @@
 - Lv1〜50のLevelRequirementsを新しい獲得量カーブへ更新。Lv51以降は維持。
 - World1 Stage6〜10をRecommendedLevel到達時の累積Strengthへ同期し、Wall倍率2/2.5/3/4、Boss倍率5でHPを更新。
 - Stage1〜5、World2、Strength獲得速度、LevelProgress処理、DataStore、UI、Combat仕様は変更なし。
+## 2026-09-16 — Adjust Lv1-50 Strength requirements by 10
+
+- Lv1〜50のRequirementを一律+10し、Lv1→Lv2に10 Strengthを要求。
+- 新しい累積StrengthへWorld1 Stage6〜10を同期し、Wall/Boss倍率からHPを再計算。
+- Lv51以降、Stage1〜5、World2、Strength獲得量、LevelProgress、DataStore、課金仕様は変更なし。

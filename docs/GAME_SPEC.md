@@ -194,3 +194,6 @@ PlayerData keyはPlayer_<UserId>。主な保存項目はStrength、RebirthCount�
 Lv1〜50のLevelRequirementsを新しい累積Strengthカーブへ更新した。各値はそのLevelから次Levelへ進むためのStrength獲得量として扱う。Strength自体は累積戦闘Strengthとして維持し、Lv51以降・World2・Level進行ロジックは変更していない。
 
 World1 Stage6〜10はRecommendedLevel到達時の理論累積StrengthをRequiredStrengthへ反映し、Stage5→6の大きな難易度上昇を意図的に維持する。
+## 2026-09-16 — Lv1 requirement floor adjustment
+
+Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 Strengthが必要になり、初回Strength獲得時の即時Level Upを防ぐ。Lv51以降、LevelProgress仕様、戦闘・World2仕様は変更していない。
