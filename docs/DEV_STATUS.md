@@ -2,6 +2,14 @@
 
 Version: 1.3 / 監査・更新日: 2026-09-15
 
+## 2026-09-16 — MiniBoss UI Wall Surface placement（Completed）
+
+- Stage1〜9のMiniBoss Gaugeを次Stage .1 Wall上空のBillboardから、既存StageSurfaceと同じ壁面のSurfaceGuiへ修正。
+- Boss名、STAGE、HP Bar、Current / Max HPとリアルタイム更新を維持。撃破直後は同じ壁面で次Stage .1通常表示と満タンHPへ即時切替。
+- Stage1→2をPlay確認。Stage2〜9は共通経路、Stage10は従来Boss追従Billboardを維持。
+- Stage進行、Combat、HP、Balance、Map、DataStoreは変更なし。Runtime Error / Warning / Infinite Yieldなし。
+- 根拠: [実装・Play報告](../reports/Miniboss_UI_Wall_Surface_20260916/build_report.md)。
+
 ## 2026-09-16 — Mobile Landscape / Touch Zone（Completed）
 
 - `StarterGui.ScreenOrientation=LandscapeSensor`へ変更。Portrait用UIは追加していない。

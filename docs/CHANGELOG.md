@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-16 — Fix MiniBoss UI placement on next Wall .1
+
+- Stage1〜9のMiniBoss Gauge一式を、次Stage .1 Wall上空から既存StageSurfaceと同じ壁面上部領域へ移動。
+- 次WallのFace / CanvasSize等を再利用し、撃破時の次Stage .1 Stage表示・満タンHPへの即時切替を維持。
+- Stage10表示とStage進行・Combat・HP・Balanceは変更なし。
+
 ## 2026-09-16 — Mobile landscape orientation and touch zone
 
 - Mobile / Tabletの画面方向を`LandscapeSensor`へ固定し、左右Landscapeへのセンサー追従を有効化。
