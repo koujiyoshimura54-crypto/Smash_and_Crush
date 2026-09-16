@@ -1,0 +1,125 @@
+{
+  "probes": {
+    "1": {
+      "name": "open floor before",
+      "shown": true,
+      "expected": true,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.TrainingArea.Floor"
+    },
+    "2": {
+      "name": "Tredmill01",
+      "shown": false,
+      "expected": false,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.TrainingArea.Floor"
+    },
+    "3": {
+      "name": "Tredmill02",
+      "shown": false,
+      "expected": false,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.TrainingArea.Floor"
+    },
+    "4": {
+      "name": "Tredmill04",
+      "shown": false,
+      "expected": false,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.TrainingArea.Floor"
+    },
+    "5": {
+      "name": "TreadmillGroupMat_3",
+      "shown": false,
+      "expected": false,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.TrainingArea.Floor"
+    },
+    "6": {
+      "name": "TreadmillGroupMat_5",
+      "shown": false,
+      "expected": false,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.TrainingArea.Floor"
+    },
+    "7": {
+      "name": "Wall",
+      "shown": false,
+      "expected": false,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.BattleCorridor.Stage01.Floor"
+    },
+    "8": {
+      "name": "Character",
+      "shown": false,
+      "expected": false,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.TrainingArea.Floor"
+    },
+    "9": {
+      "name": "Enemy",
+      "shown": false,
+      "expected": false,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.5.Floor"
+    },
+    "10": {
+      "name": "open floor after",
+      "shown": true,
+      "expected": true,
+      "pass": true,
+      "floor": "Workspace.GeneratedMap.TrainingArea.Floor"
+    }
+  },
+  "route": {
+    "mismatches": [],
+    "panels": {
+      "1": {
+        "shown": false,
+        "size": "9.999999046325684, 1.3799992799758911, 1.2000001668930054"
+      },
+      "2": {
+        "shown": false,
+        "size": "4, 0.10000000149011612, 2.8000004291534424"
+      },
+      "3": {
+        "shown": false,
+        "size": "9.999999046325684, 1.3799992799758911, 2.8000004291534424"
+      }
+    },
+    "validationMs": 26.34740003850311,
+    "statuses": {
+      "1": "hidden",
+      "2": "hidden",
+      "3": "hidden",
+      "4": "floor",
+      "5": "floor",
+      "6": "floor",
+      "7": "floor",
+      "8": "floor",
+      "9": "floor",
+      "10": "floor",
+      "11": "floor",
+      "12": "floor",
+      "13": "floor",
+      "14": "hidden",
+      "15": "hidden",
+      "16": "hidden",
+      "17": "hidden",
+      "18": "hidden",
+      "19": "floor",
+      "20": "hidden",
+      "21": "hidden",
+      "22": "hidden",
+      "23": "floor",
+      "24": "floor",
+      "25": "hidden",
+      "26": "floor",
+      "27": "hidden",
+      "28": "hidden"
+    }
+  },
+  "visibleArmY": 2.055,
+  "floorHeightErrors": 0,
+  "console": "empty"
+}
