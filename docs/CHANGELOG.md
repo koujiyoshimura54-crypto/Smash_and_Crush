@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-09-16 — Add manual tap training and combat
+
+- AutoTapEnabledを後方互換で保存（default ON）。単一Auto Tap ON/OFFボタンを追加。
+- OFF時は入力で通常Strengthまたは接触Combat攻撃を実行し、Serverで各0.25秒に制限。同じ入力による二重付与なし。
+- Treadmillは設定に関係なく既存の自動Training。自動Combat・既存計算式・Carry・Balanceは維持。
+- Manual Punchは既存AnimationをSpeed2.0で再生。UI操作とTouchドラッグを入力から除外。
+- 隔離Storeで実Play・Remote連打・保存/再読込、Desktop/Phone/Tablet Simulatorを確認。QA撤去後の通常PlayにRuntime Error / Warning / Infinite Yieldなし。隔離QAの既存ランキング保存Warningと実機未検証はDEV_STATUSへ記録。
+- src/は今回変更したStudio Script / Configの復元用ソース。プロジェクト全体の自動同期設定は追加していない。
+
 ## 2026-09-16 — Tutorial Guide floor-only arrows（Completed）
 
 - TutorialGuideClientの床候補をGeneratedMap内の正規Floor / ConnectorFloorへ限定。TrainingZone、Terrain、Asset内の同名Floorを候補にしない。

@@ -1,5 +1,15 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Auto Tap / Manual input implemented
+
+- 保存Boolean AutoTapEnabled（旧データdefault ON）、1ボタン切替、通常Manual Training、接触対象へのManual Combatを追加。
+- 通常ONは従来地上歩行0.5秒、OFFは入力時0.25秒。Treadmillは独立0.5秒でTap加算なし。Manual Combatも0.25秒をServerで制限し、既存Damage / Carry / Boss抽選経路を再利用。
+- Play：OFF無入力でStrength / Wall / Boss HP変化なし。20連続のService要求と50連続の実Client Remote要求を1回へ制限。Wall / Boss受付直後のDamageとStrength加算0を確認。Wall Carry後HP105/125を確認。
+- 歩行ON1.6秒で3回分、OFF同時間で増加0。非CombatのBattleCorridorもTapで1回分。Treadmillは両設定とも約1秒に2回、追加Tap0。Manual Punchの実AnimationTrack.Speed=2を確認。
+- 専用QA StoreへのOFF保存、キャッシュ無効Read-back、次PlayでのOFF復元を確認。通常PlayerData / ProductionのResetは未実施。QA Scriptを撤去、DataStoreConfigを完全復元。
+- Desktop / iPhone / iPad Simulatorを確認。実機の操作感・音の聴感・複数Client同時接続は未検証。隔離QAで既存ランキングmirror保存Warningを記録。通常設定でのPlayはError / Warning / Infinite Yieldなし。
+- 変更ソースはsrc/配下の8 Script / Config。検証報告は指定の親Project reports/AutoTap_20260916/build_report.md（Gitリポジトリ外）へ保存。
+
 ## 2026-09-16 — Tutorial Guide floor-only arrows（Completed）
 
 - TutorialGuideClientの床候補をGeneratedMap内の正規Floor / ConnectorFloorへ限定。TrainingZone、Terrain、Asset内の同名Floorを候補にしない。

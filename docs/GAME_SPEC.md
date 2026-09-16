@@ -1,5 +1,16 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-16 — Auto Tap / Manual Training / Manual Combat
+
+- PlayerData.AutoTapEnabled（Boolean）を追加。未保存の旧データはtrue。既存Load/normalize/Save経路で保存し、Player Attributeは表示用の鏡とする。通常のResetでは他の初期値と同様trueへ戻る。
+- ON：通常・BattleCorridor非Combatでは従来の地上歩行条件で0.5秒ごとにStrengthを付与。停止中に新しい自動付与は追加しない。Combatは従来のAttackInterval=0.8秒、Wall命中遅延0.18秒 / Boss命中遅延0.5秒を維持。
+- OFF：通常・BattleCorridor非Combatの自動付与を停止。画面Tap / 左クリックで通常のStrength計算を1回実行（最小0.25秒）。歩行計算と同じくDumbbell加算なし。既存Aura / Protein / Rebirth / Potion / VIPの扱いを変えない。
+- OFFかつ接触Combat中：自動攻撃を開始せず、入力時に現在のWall / BossへManual Attack。最小0.25秒をServerで再確認し、受付時に既存Damage関数を実行。Strengthは加算しない。ON中に受付済みの遅延命中は既存どおり完了する。
+- Treadmillの占有を最優先し、ON/OFFを問わず既存0.5秒Training。Tapは追加StrengthもAttackも発生させない。倍率・利用条件・付与量は変更なし。
+- ServerのAutoTapServiceが保存状態・生存・Treadmill占有を確認し、EnemyManagerが既存接触対象・Pending・攻撃Cooldownを確認する。Clientから対象・座標・Damage・獲得量は受け取らない。
+- 設定正本：ReplicatedStorage.Config.AutoTapConfig。AutoInterval=0.5、ManualTapCooldown=0.25、ManualAttackCooldown=0.25、ManualAttackAnimationSpeed=2.0。自動CombatとTreadmillの周期は従来Configのまま独立。
+- 変更Scriptの現行ソースはsrc/に保存。過去reportsのソースは更新しない。Balance、Carry、Stage順序、Reward、Map、World2は変更なし。
+
 ## 2026-09-16 — Tutorial Guide floor-only arrows（Completed）
 
 - TutorialGuideClientの床候補をGeneratedMap内の正規Floor / ConnectorFloorへ限定。TrainingZone、Terrain、Asset内の同名Floorを候補にしない。

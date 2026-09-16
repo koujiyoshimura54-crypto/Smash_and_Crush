@@ -1,5 +1,14 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-16 — Auto Tap toggle / manual input
+
+- StarterPlayerScripts.UI.AutoTapClientがPlayerGui.AutoTapGui.Toggleを生成。ボタンは1つで「Auto Tap」「ON / OFF」の2行表示。ONは緑、OFFは灰色。1回のActivatedでServerへToggleを要求し、保存状態のAttribute通知で表示更新する。
+- 安全領域内の上部、横70%位置。Desktopは128×58px / 上10px、Touchは112×52px / 上5px。既存HUD・LeftMenu・Touch Zone・LandscapeSensorを変更しない。
+- OFF時の左クリックとTouchTapInWorldを受付。処理済み入力、Robloxメニュー、TextBoxフォーカス、位置に重なるGuiButton / TextBox / ScrollingFrame / ActiveなGuiObjectとその子孫を除外。ドラッグやThumbstick移動をTraining Tapにしない。
+- ReplicatedStorage.Remotes.AutoTapRequestの要求はToggle / Tapのみ。Clientは入力頻度を抑え、Serverが最終的なTraining / Combat / Treadmill分岐とRate Limitを決定する。
+- Manual Attackは既存左右Punch AnimationをSpeed=2.0で停止・再スタートする。DamageはAnimation終了を待たない。Punch SEは既存1個のSoundを停止・再生し、Soundを連打ごとに増殖させない。ON時の演出は維持。
+- Desktop、iPhone 17 Pro Landscape、iPad Pro M5 13-inch LandscapeのSimulatorで表示・切替を確認。実機Touch、聴感評価、複数Client同時試験は未実施。
+
 ## 2026-09-16 — Tutorial Guide floor-only arrows（Completed）
 
 - TutorialGuideClientの床候補をGeneratedMap内の正規Floor / ConnectorFloorへ限定。TrainingZone、Terrain、Asset内の同名Floorを候補にしない。
