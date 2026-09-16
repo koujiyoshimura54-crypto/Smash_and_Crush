@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-16 — Refine Treadmill frame colors
+
+- TreadmillConfig.StrengthColorsをBeltColor / FrameColorへ分離し、既存の明るい青・緑ベルト色を維持。
+- +3のConsole / Frameアクセントを濃い青RGB(20,65,150)、+5を濃い緑RGB(20,100,55)へ変更。
+- Premium / Normal、Strength獲得量、Rebirth条件、Training判定、Collision、Balance、DataStoreは変更なし。
+- Config差し替えと最終Playを確認。Runtime Error / Warning / Infinite Yieldは0。[検証報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
+
 ## 2026-09-16 — Color-code Treadmills by Strength reward
 
 - TreadmillConfigへ既存MultiplierをキーとするStrengthColorsを追加。Multiplier 3はBlue RGB(55,145,255)、Multiplier 5はGreen RGB(70,200,110)。

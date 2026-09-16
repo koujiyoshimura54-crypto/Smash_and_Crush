@@ -2,9 +2,9 @@
 
 ## 2026-09-16 — Treadmill Strength reward colors
 
-World1 Treadmillの見た目は、実Trainingに使用するReplicatedStorage.Config.TreadmillConfig.TypesのMultiplierを色判定の正本として使う。StrengthColors[3]はBlue RGB(55,145,255)、StrengthColors[5]はGreen RGB(70,200,110)。Tredmill04〜05は青、Tredmill02〜03は緑とし、ベルト・コンソールアクセント・前後フレームアクセントへ共通適用する。
+World1 Treadmillの見た目は、実Trainingに使用するReplicatedStorage.Config.TreadmillConfig.TypesのMultiplierを色判定の正本として使う。StrengthColorsはMultiplierごとにBeltColor / FrameColorを持つ。+3は明るい青ベルトRGB(55,145,255)と濃い青フレームRGB(20,65,150)、+5は明るい緑ベルトRGB(70,200,110)と濃い緑フレームRGB(20,100,55)とする。Tredmill04〜05は+3、Tredmill02〜03は+5を使用し、ConsoleAccentと前後FrameAccentにはFrameColorを適用する。
 
-既存の×3 Strength / ×5 Strength表示を維持する。最終加算量は従来どおりBaseGain、Dumbbell / Aura / Protein、Rebirth、Treadmill Multiplier、Belt / Training Potion、Strength Potion、VIPから計算する。今回Multiplier、TrainingInterval、利用条件、Collision、Level、Rebirth、Balance、DataStoreは変更しない。[実装・検証報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md)。
+既存の×3 Strength / ×5 Strength表示を維持する。最終加算量は従来どおりBaseGain、Dumbbell / Aura / Protein、Rebirth、Treadmill Multiplier、Belt / Training Potion、Strength Potion、VIPから計算する。今回Multiplier、TrainingInterval、利用条件、Collision、Level、Rebirth、Balance、DataStoreは変更しない。[初回色分け報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md) / [2トーン調整報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
 
 ## 2026-09-16 — Configurable World1 Wall UI layout
 

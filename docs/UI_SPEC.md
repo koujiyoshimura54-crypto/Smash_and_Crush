@@ -4,9 +4,9 @@ Version: 1.1 / 監査・更新日: 2026-09-15
 
 ## Treadmill reward colors（2026-09-16）
 
-TreadmillConfig.StrengthColorsがTreadmill表示色の正本。実Trainingに使う同ConfigのMultiplierを直接キーにし、Multiplier 3はBlue RGB(55,145,255)、Multiplier 5はGreen RGB(70,200,110)とする。別の表示用Strength値は持たない。
+TreadmillConfig.StrengthColorsがTreadmill表示色の正本。実Trainingに使う同ConfigのMultiplierを直接キーにし、各値はBeltColor / FrameColorを分離する。Multiplier 3はBeltColor RGB(55,145,255)・FrameColor RGB(20,65,150)、Multiplier 5はBeltColor RGB(70,200,110)・FrameColor RGB(20,100,55)とする。別の表示用Strength値は持たない。
 
-対象Modelのベルト、コンソール上面、前後フレームアクセントを着色し、残りの金属・灰色フレームは維持する。既存×3 Strength / ×5 StrengthとRebirth必要数表示は維持し、新規UIは追加しない。Normal / Premium機器はStrengthColorsに定義がないため既存色を維持する。[Treadmill色分け報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md)。
+対象Modelのベルトには明るいBeltColor、コンソール上面と前後フレームアクセントには濃いFrameColorを適用し、残りの金属・灰色フレームは維持する。既存×3 Strength / ×5 StrengthとRebirth必要数表示は維持し、新規UIは追加しない。Normal / Premium機器はStrengthColorsに定義がないため既存色を維持する。[初回色分け報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md) / [2トーン調整報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
 
 ## World1 normal Wall display layout（2026-09-16）
 

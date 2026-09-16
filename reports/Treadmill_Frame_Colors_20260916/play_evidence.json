@@ -1,0 +1,269 @@
+{
+  "finalPlay": {
+    "Tredmill03": {
+      "labels": [
+        "×5 Strength"
+      ],
+      "roleParts": [
+        {
+          "role": "FrameAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            100,
+            55
+          ]
+        },
+        {
+          "role": "Belt",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            70,
+            200,
+            110
+          ]
+        },
+        {
+          "role": "ConsoleAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "SmoothPlastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            100,
+            55
+          ]
+        },
+        {
+          "role": "FrameAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            100,
+            55
+          ]
+        }
+      ],
+      "model": "Tredmill03"
+    },
+    "Tredmill04": {
+      "labels": [
+        "×3 Strength"
+      ],
+      "roleParts": [
+        {
+          "role": "ConsoleAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "SmoothPlastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            65,
+            150
+          ]
+        },
+        {
+          "role": "Belt",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            55,
+            145,
+            255
+          ]
+        },
+        {
+          "role": "FrameAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            65,
+            150
+          ]
+        },
+        {
+          "role": "FrameAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            65,
+            150
+          ]
+        }
+      ],
+      "model": "Tredmill04"
+    },
+    "Tredmill05": {
+      "labels": [
+        "×3 Strength"
+      ],
+      "roleParts": [
+        {
+          "role": "Belt",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            55,
+            145,
+            255
+          ]
+        },
+        {
+          "role": "ConsoleAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "SmoothPlastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            65,
+            150
+          ]
+        },
+        {
+          "role": "FrameAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            65,
+            150
+          ]
+        },
+        {
+          "role": "FrameAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            65,
+            150
+          ]
+        }
+      ],
+      "model": "Tredmill05"
+    },
+    "Tredmill02": {
+      "labels": [
+        "×5 Strength"
+      ],
+      "roleParts": [
+        {
+          "role": "Belt",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            70,
+            200,
+            110
+          ]
+        },
+        {
+          "role": "FrameAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            100,
+            55
+          ]
+        },
+        {
+          "role": "FrameAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "Plastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            100,
+            55
+          ]
+        },
+        {
+          "role": "ConsoleAccent",
+          "canQuery": true,
+          "canCollide": true,
+          "material": "SmoothPlastic",
+          "canTouch": true,
+          "rgb": [
+            20,
+            100,
+            55
+          ]
+        }
+      ],
+      "model": "Tredmill02"
+    },
+    "Tredmill06": {
+      "labels": [],
+      "roleParts": [],
+      "model": "Tredmill06"
+    },
+    "Tredmill01": {
+      "labels": [
+        "×20 Strength"
+      ],
+      "roleParts": [],
+      "model": "Tredmill01"
+    }
+  },
+  "configOverrideCheck": {
+    "temporaryFrameColor": [
+      90,
+      20,
+      150
+    ],
+    "observedBeltColor": [
+      55,
+      145,
+      255
+    ],
+    "observedFrameAndConsoleColor": [
+      90,
+      20,
+      150
+    ],
+    "result": "BeltColor remained unchanged while only FrameColor consumers changed; final config restored."
+  },
+  "runtimeConsole": {
+    "errors": 0,
+    "warnings": 0,
+    "infiniteYield": 0,
+    "output": ""
+  },
+  "notes": [
+    "Tredmill02/03 use Multiplier 5; Tredmill04/05 use Multiplier 3.",
+    "Tredmill01 Premium and Tredmill06 Normal had no TreadmillVisualRole color application.",
+    "Selected parts retained CanCollide, CanTouch, CanQuery and Material."
+  ]
+}

@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Treadmill two-tone frame colors（Completed）
+
+- TreadmillConfig.StrengthColorsをBeltColor / FrameColorへ分離。既存ベルト色を維持し、+3へ濃い青RGB(20,65,150)、+5へ濃い緑RGB(20,100,55)のフレーム色を追加。
+- BeltはBeltColor、ConsoleAccentとFrameAccent×2はFrameColorを使用。Premium / Normalと残すべき灰色・金属部品は変更なし。
+- Config差し替えPlayでFrameColorだけが反映されBeltColorが維持されることを確認。最終PlayはRuntime Error / Warning / Infinite Yield 0。[実装・Play報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
+
 ## 2026-09-16 — Treadmill Strength reward colors（Completed）
 
 - TreadmillConfig.Typesの実Multiplierを表示色のキーとして再利用。3はBlue、5はGreen。見た目専用Strength値は追加していない。
