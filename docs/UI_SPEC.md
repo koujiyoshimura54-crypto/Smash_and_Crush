@@ -7,6 +7,8 @@ Version: 1.1 / 監査・更新日: 2026-09-15
 - 移動方式と入力範囲はRoblox標準PlayerModuleのDynamic Thumbstickを使用する。ゲーム独自の端末別サイズ、最大Clamp、Safe Area、LeftMenu / Jump境界による縮小・移動は行わない。
 - Touch操作ZoneはLeftMenu、Potion、Player HP、Strength HUD、その他UIとの重なりを許容し、操作しやすい標準範囲を優先する。
 - 通常時は`DynamicThumbstickFrame`の背景だけを透明化する。指を置いた際のThumbstick、Knob、Drag中の標準操作表示と入力判定は変更しない。
+- SmartphoneのLeftMenu倍率計算では大きな入力Capture領域を障害物として扱わず、表示されるThumbstick部品とJumpだけを参照する。Tablet LeftMenuの専用倍率・位置は維持する。
+- Smartphone / TabletのStrength HUDは`AnchorPoint.X=0.5`、`Position.X.Scale=0.5`でViewport全幅の物理中心へ配置し、Touch Zone、LeftMenu、Safe Area、Jump位置による横移動を行わない。
 - DesktopはTouchGuiを生成しないため、この処理によるMouse / Keyboardおよび既存配置の変更はない。
 
 ## 対象と根拠

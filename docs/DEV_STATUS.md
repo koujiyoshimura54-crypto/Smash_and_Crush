@@ -2,6 +2,12 @@
 
 Version: 1.3 / 監査・更新日: 2026-09-15
 
+## 2026-09-16 — Mobile / Tablet HUD regression fix（Completed）
+- 標準Dynamic Thumbstickの大きなCapture領域をHUD障害物として扱っていたため縮小したSmartphone LeftMenuを、表示部品基準の通常倍率へ復元。
+- Strength HUDをMobile共通でViewport全幅の中央Anchorへ変更。iPhone 17 Pro / Fire HD 10相当で中心差0pxを実測。
+- Tablet LeftMenuは倍率0.423224、位置19,105、サイズ127.814x194.683pxで変更前後同一。Touch Zone、LandscapeSensor、Desktop非Touch分岐は維持。
+- Runtime Error / Warning / Infinite Yieldなし。根拠: [実装・検証報告](../reports/Mobile_HUD_Regression_20260916/build_report.md)。
+
 ## 2026-09-16 — Mobile Touch Zone restoration（Completed）
 - `b50eee5`で追加したSmartphone / Tablet別サイズ、最大Clamp、LeftMenu / Jump境界、Safe Area計算を撤回し、PlayerModule標準Dynamic Thumbstick範囲へ復元。
 - `DynamicThumbstickFrame`の背景だけを常時透明化し、Thumbstick / Knob / Drag表示と入力判定は維持。

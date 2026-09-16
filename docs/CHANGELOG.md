@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-16 — Fix smartphone LeftMenu and mobile Strength HUD centering
+
+- 標準Dynamic ThumbstickのCapture領域をHUD障害物から除外し、Smartphone LeftMenuの不意な縮小を解消。
+- Smartphone / TabletのStrength HUDをViewport全幅の中央Anchorへ変更し、両端末で中心差0pxを確認。
+- Tablet LeftMenu、Touch Zone、背景透明化、LandscapeSensor、Desktop UIは変更なし。
+
 ## 2026-09-16 — Restore mobile touch zone and hide zone background
 
 - Smartphone / TabletのDynamic Thumbstick入力範囲をPlayerModule標準へ戻し、端末別Clamp、LeftMenu / Jump境界、Safe Areaによる縮小・移動を撤回。
