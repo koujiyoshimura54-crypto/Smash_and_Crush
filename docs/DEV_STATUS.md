@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-17 — Studio Win commands verified
+
+- /addwinと/setwinを既存Debugの登録・Server Executeへ追加。PlayerDataService.SetWinを再利用し、Production側は既存の二重Studio gateで拒否。
+- Play中の実TextChatCommand経由で0→10,000→50,000を確認。Shop表示中のHUDは10K→50K、Dumbbell残高表示は10,000→50,000へ即時反映。負数入力は拒否し50,000を維持。
+- 非数・無限大文字列・負数・小数・追加引数・上限超過・加算overflow・不正Player・保存中/Item mutation中を拒否。0への設定も確認。
+- IsStudio=falseへ差し替えた隔離検証で、Serviceは両コマンドをStudioOnlyとして拒否し、ControllerはCommandを登録しないことを確認。公開環境での実行試験やPublishはしていない。
+- 検証用Studio Winは開始前の0へ復元。QA Script/Moduleは撤去。DataStoreConfig、PlayerDataService、/resetdata、Balanceは変更なし。
+- QA撤去後の通常Playで両Commandの登録とWin=0を再確認。Runtime Error / Warning / Infinite Yieldなし。Editで停止。
+
 ## 2026-09-17 — Aura templates / Pink visual
 
 - ReplicatedStorage.AuraVisualTemplatesへ8Templateを追加し、Pink装備VisualをPink_Aura3へ変更。共通VisualTemplate参照で装着し、他Auraの性能・購入・保存は変更なし。

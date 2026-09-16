@@ -1,5 +1,12 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-17 — Studio Win debug commands
+
+- Studioのチャットで/addwin 数値は本人のWinへ加算、/setwin 数値は本人のWinを設定する。0〜9,007,199,254,740,991の十進整数のみ受理し、負数・小数・NaN / Inf・不正文字列・引数過不足・加算overflowを拒否する。
+- 既存StudioDebugController / StudioDebugService経由。IsStudioと接続中Player本人の検証、DebugBusy / DataNotLoaded / DataBusyを共用する。現行Debugには追加のUserId許可リストは存在しない。ProductionではCommand未登録かつExecuteはStudioOnlyを返す。
+- session.Data.Winを正本としてPlayerDataService.SetWinを使用する。AttributeとDirtyが更新され、通常のautosave / 退出保存でPlayerData_v1_Studioへ保存される。セッション限定で自動復元する機能ではない。必要なら/setwinで元の値へ戻す。
+- 新規WinコマンドはStore名がPlayerData_v1_Studioであることも確認する。Production Reset経路・OrderedDataStoreは呼ばない。/resetdataの既存仕様、価格、Reward、Balance、保存Schemaは変更なし。
+
 ## 2026-09-17 — Reusable Aura visual templates
 
 - Visual正本はReplicatedStorage.AuraVisualTemplatesの8個のModel。ParticleEmitterの設定をLuaで再生成せず、Studioで編集したInstanceをCloneする。

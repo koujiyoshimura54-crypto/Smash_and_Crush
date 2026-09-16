@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-17 — Add Studio Win debug commands
+
+- 既存StudioDebugController / StudioDebugServiceへ/addwin 数値と/setwin 数値を追加。
+- Serverの正規SetWinとStudio用保存を使用。整数検証、加算overflow、既存Session lock、Studio Store確認を適用。
+- 実チャット経由の加算/設定/拒否とShop表示中HUD・Dumbbell残高更新をPlay確認。Production相当では未登録・実行拒否。
+- 価格・報酬・Balance・Production DataStore・/resetdata仕様は変更なし。
+
 ## 2026-09-17 — Add reusable Aura visual templates
 
 - 8つのStudio素材をReplicatedStorage.AuraVisualTemplatesへ整理。Emitter / Attachment / LightをInstanceとして保持し、元Workspace素材は維持。
