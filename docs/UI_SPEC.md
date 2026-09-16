@@ -84,8 +84,8 @@ RebirthでStrength=0・Level=1・LevelProgress=0となり、上段0 Strength／�
 
 | 戦闘状態 | Boss HP UI | Wall HP UI |
 |---|---|---|
-| 現在StageのWall .4撃破後、Boss未撃破 | 接触前から満タン表示、接触後はサーバーHPを表示 | 非表示 |
-| CombatType=Wall | 非表示 | 対象WallのHPだけ表示 |
+| 現在StageのWall .4撃破後、Boss未撃破 | 接触前からサーバーの実Current HPを表示 | 非表示 |
+| 現在攻略対象がWall .1〜.4 | 非表示 | 接触・Combat開始を待たず対象WallのStage / 実HPを表示 |
 | Boss離脱 | 現在HPで表示を維持 | 非表示 |
 | Boss結果・Run初期化 | 解除・状態再評価 | 次Stage .1は接触前から表示 |
 
@@ -93,9 +93,13 @@ Bossの共有Humanoid Healthを個人HPの正本として表示しない。Wall�
 
 ### Boss表示の形状
 
-PersonalGaugeをPlayerごとに生成する。World1 Stage1〜9では次Stage .1の既存StageSurfaceと同じWall表面・Face・CanvasSizeを使い、既存Wall HPの表示領域へBoss Gauge一式を配置する。Wall .4撃破通知で接触前から表示し、Boss名、STAGE N、HP Bar、Current / Max HPを維持する。この間、次Stage .1の通常StageSurfaceとWall HPは隠す。Boss撃破直後に次Stage .1のStage表示と満タンWall HPへ切り替える。Stage10は既存Stage10BoundaryWallを表示先とし、Stage10 .4のHP基準を再利用する。WorldComplete / Gate処理は変更しない。
+PersonalGaugeをPlayerごとに生成する。World1 Stage1〜9では次Stage .1の既存StageSurfaceと同じWall表面・Face・CanvasSizeを使い、既存Wall HPの表示領域へBoss Gauge一式を配置する。Wall .4撃破通知で接触前から表示し、Boss名、STAGE N、HP Bar、Current / Max HPを維持する。この間、次Stage .1の通常StageSurfaceとWall HPは隠す。Boss撃破直後に次Stage .1のStage表示とサーバーの実Current / Max Wall HPへ切り替える。Stage10は既存Stage10BoundaryWallを表示先とし、Stage10 .4のHP基準を再利用する。WorldComplete / Gate処理は変更しない。
 
-StageSurfaceのHPGaugeBottomStuds / HPGaugeHeightStudsに既存HPゲージの底面からの距離と高さを保存する。壁の高さが変わっても、このHP領域を底面基準で維持する。StageNumber下端はHPバー上端の1stud上、HeadingはStageNumberの0.4stud上。BossのSTAGE Nもバー上端の1stud上、Boss名はその0.4stud上。Wall上端を配置基準にしない。
+27stud時の580x270 Canvasを基準に、SurfaceGuiのCanvasSizeを580 x (Wall.Size.Y x 10)へ変更する。壁高56.25でも1 Canvas pixelの縦寸法を0.1studに維持し、テキストの縦伸びを防ぐ。HP領域は底面から4.32stud、高さ5.13studに固定する。旧HPGaugeBottomStuds / HPGaugeHeightStuds属性は使用しない。StageNumber下端はHPバー上端の1stud上、HeadingはStageNumberの0.4stud上。BossのSTAGE Nもバー上端の1stud上、Boss名はその0.4stud上。Wall上端を配置基準にしない。
+
+現在攻略対象になった時点からStage/HPを表示する。撃破済み・未来Wallは非表示。Current HPはCarry適用後の実CombatStateを正本とし、WallClearedに既存GetSnapshotForStageの全状態を添付して一括反映する。次WallをMaxHPで仮表示しない。BossRecommendationにもサーバーのCurrentを添付し、クライアントでMaxをCurrentへ代入しない。
+
+Boss Carryの現行仕様はQueueDamageで予約し、接触時のBoss.Beginで初めて適用する。解放直後に満タンなのは未適用の実状態であり、UIで先行減算しない。接触時にはCarry適用後のBossInitialize、その後BossGaugeを表示する。抽選ルートやCarry適用時点は変更しない。
 
 壁面Canvasを再利用し、Boss名領域は通常6stud、長文のStage9は12stud、STAGE Nは3.5stud。名前の全文、折り返し、既存Font / 色 / TextSize制約、緑のHPバーを維持する。
 

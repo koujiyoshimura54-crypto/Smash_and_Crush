@@ -1,5 +1,14 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-16 — World1 Wall UI scale / persistent HP
+
+- 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。HPバーは底面から4.32stud、高さ5.13stud、Stage表示はHPの1stud上。物理Wall高さ56.25は維持。
+- Wall .1〜.4は現在攻略対象になった瞬間からStage/実HPを表示し、撃破済み・未来Wallは非表示。
+- WallClearedへ既存のCarry適用後Snapshotを添付し、一括反映。MaxHPによる仮表示を行わない。
+- Boss解放直後はサーバーの実HPを表示。Boss Carryは既存どおり予約後、接触時Beginで適用する。UI側で先行消費・再計算しない。
+- Stage1〜9のBossは次Stage .1壁面、Stage10は既存境界壁。個人表示、Combat / Carry / HP / Balance / Map / DataStoreは維持。
+- 検証範囲と結果は[報告](../reports/World1_Wall_UI_Scale_20260916/build_report.md)を参照。
+
 Version: 1.2 / 監査・更新日: 2026-09-15 / プロジェクト: Smash_and_Crush
 
 ## 対応画面方向（2026-09-16）
@@ -95,7 +104,7 @@ Wallの攻撃力は攻撃時のStrength。Glove補正はWallには加えない�
 
 自動戦闘はPlayer前方のWallCombatTriggerとWall/CombatZoneの接触で開始。CombatTypeは実装上「Wall」または「MiniBoss」。Boss CombatZoneは戦闘開始判定、MiniBossColliderは物理衝突であり、役割を分ける。
 
-World1の進行順は各Stage共通で`Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`を維持する。Wall .4撃破時点で接触前からBoss Gauge一式を個人表示する。Stage1〜9の表示先は次Stage .1壁面、Stage10は既存Stage10BoundaryWall。位置は保存した既存Wall HP領域を基準とし、名前・Stage表示はHPの少し上へ配置する。Wall上端には追従しない。Boss撃破通知でGaugeを消し、Stage1〜9では次Stage .1のStage表示と満タンWall HPを接触前から即表示する。Combat順序、進行条件、WorldComplete / Gate処理は変更しない。
+World1の進行順は各Stage共通で`Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`を維持する。Wall .4撃破時点で接触前からBoss Gauge一式を個人表示する。Stage1〜9の表示先は次Stage .1壁面、Stage10は既存Stage10BoundaryWall。位置は27stud壁時のWall HP領域を基準とし、名前・Stage表示はHPの少し上へ配置する。Wall上端には追従しない。Boss撃破通知でGaugeを消し、Stage1〜9では次Stage .1のStage表示と実Current / Max Wall HPを接触前から即表示する。Combat順序、進行条件、WorldComplete / Gate処理は変更しない。
 
 Bossは戦闘開始時のStrength・Glove・RequiredStrength比率を固定する。比率1以上は通常ダメージ、1未満は抽選ルート。抽選と回数制限はBALANCE_SPEC。離脱時は現在戦闘を終了し、同じBossのHP・抽選結果は同Run内で保持する。Boss再生成やRunリセットとの境界はEnemyManager/BossCombatServiceに従う。
 

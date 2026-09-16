@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — World1 Wall UI scale / persistent HP
+
+- 27stud Wall時の580x270 Canvasを基準に、Canvas高さをWall高さ×10へ変更。HPバーは底面から4.32stud、高さ5.13stud、Stage表示はHPの1stud上。物理Wall高さ56.25は維持。
+- Wall .1〜.4は現在攻略対象になった瞬間からStage/実HPを表示し、撃破済み・未来Wallは非表示。
+- WallClearedへ既存のCarry適用後Snapshotを添付し、一括反映。MaxHPによる仮表示を行わない。
+- Boss解放直後はサーバーの実HPを表示。Boss Carryは既存どおり予約後、接触時Beginで適用する。UI側で先行消費・再計算しない。
+- Stage1〜9のBossは次Stage .1壁面、Stage10は既存境界壁。個人表示、Combat / Carry / HP / Balance / Map / DataStoreは維持。
+- 検証範囲と結果は[報告](../reports/World1_Wall_UI_Scale_20260916/build_report.md)を参照。
+
 Version: 1.3 / 監査・更新日: 2026-09-15
 
 ## 2026-09-16 — World1 Wall / Boss UI positioning（Completed）
