@@ -8,9 +8,17 @@ Version: 1.1 / 監査・更新日: 2026-09-15
 
 `ReplicatedStorage.Config.TreadmillConfig.MultiplierBillboard`が設定正本。MaxDistance=100stud、StudsOffset=(0,12,0)をワールド座標で加算、Size=(16,10)stud × TextScale=1.5で最終Canvasは24×15stud。Config編集後はPlay再起動で反映。
 
-Client専用LocalScriptが本人のPlayerGuiとローカル透明Anchorへ生成し、標準MaxDistanceで遠距離非表示・Camera追従を行う。毎Frameの独自距離判定は持たない。LocalPlayer.IsTraining=trueなら機器種類に関係なく両方非表示、falseなら再有効化し距離条件に従う。他PlayerやServer共有Enabledは操作しない。Streamingで片方が欠ける場合はその組の表示を除去し、両方が揃うと再生成する。
+Client専用LocalScriptが本人のPlayerGuiとローカル透明Anchorへ生成し、標準MaxDistanceで遠距離非表示・Camera追従を行う。毎Frameの独自距離判定は持たない。Serverが受理したTrainingTreadmill名を本人へ通知し、Configの実Multiplierが3なら×3だけ、5なら×5だけを非表示にする。未利用・通常・Premium利用中は両方を有効にし、100studの距離条件に従う。他PlayerやServer共有Enabledは操作しない。Streamingで片方が欠ける場合はその組の表示を除去し、両方が揃うと再生成する。
 
-近距離・遠距離・斜めCamera・実Normal Training入退場をPlay確認。複数Client同時接続は未実施。[実装・検証報告](../reports/Treadmill_Multiplier_Billboards_20260916/build_report.md)。
+初回の近距離・遠距離・斜めCamera確認は[初回報告](../reports/Treadmill_Multiplier_Billboards_20260916/build_report.md)。利用機種別の分岐と遠距離非表示を再確認済み。複数Client同時接続は未実施。[今回の検証](../reports/Treadmill_Availability_Guides_20260916/build_report.md)。
+
+## Treadmill availability guides（2026-09-16）
+
+TreadmillガイドはPlayerが使用可能なTreadmillだけ表示され、使用可能な間は常時流れる。乗車の有無は条件にしない。TrainingManager.CanUseTreadmillの結果を既存0.2秒Zone走査でPlayerのTreadmillAvailable_<Model名>属性へ反映し、本人のClientのみ表示する。通常は表示、+3はRebirth3以上、+5は5以上、Premiumは既存GamePass所有・効果有効判定に従う。表示側に利用条件を複製しない。利用不可ではSurfaceGuiを完全非表示にしてTweenを停止する。
+
+TreadmillGuideClientが実ベルト上にローカル表示専用面とSurfaceGuiを生成する。TutorialGuideClientと同じ2本の線によるChevron形状を採用し、クリップ内の固定個数のFrameをLinearの繰返しTweenで流す。GUI下方向を既存ベルトのLookVectorへ揃える。毎Frameの生成・破棄はなく、表示面はCanCollide/CanTouch/CanQuery=false。既存機器UI、色、マット、物理設定は変更しない。
+
+`ReplicatedStorage.Config.TreadmillConfig.Guide`でEnabled=true、Speed=4stud/秒、Transparency=0.15、Size=(4,1.6)stud、Spacing=4stud、Thickness=0.25studを設定。NormalColor / BlueColor / GreenColor / PremiumColorも同Configへ集約。変更後はPlay再起動で反映する。利用可否と利用機器属性は表示用の一時状態であり、DataStoreへ保存しない。
 
 ## Treadmill reward colors（2026-09-16）
 

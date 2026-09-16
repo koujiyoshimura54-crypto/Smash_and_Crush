@@ -1,5 +1,12 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-16 — Treadmill availability guides（Completed）
+
+- 使用可能なベルトだけにClient専用Chevronを表示し、常時Tweenで流す。正規CanUseTreadmillの結果を通知し、表示専用のRebirth/GamePass判定は追加していない。
+- Billboardは受理済み利用機種から青なら×3のみ、緑なら×5のみ非表示。通常・Premium・退出後は両方表示可能。MaxDistance100、既存デザイン・位置を維持。下記の初回実装時の全機種両方非表示を置換した。
+- Rebirth2/3/4/5、通常・青・緑の実利用、Premiumの所有/未所有/効果無効を隔離fixtureで確認。最終通常PlayはError / Warning / Infinite Yieldなし。隔離QA中は既存ランキング保存経路の警告1件を記録。
+- Premium実購入と複数Client同時接続は未検証。PassId0等の本設定は変更なし。[検証報告](../reports/Treadmill_Availability_Guides_20260916/build_report.md)。
+
 ## 2026-09-16 — Treadmill multiplier billboards（Completed）
 
 - ConfigへMultiplierBillboardを追加。各2台中央の×3/×5を本人のClientで各1個生成。MaxDistance100、Size16×10 × TextScale1.5、高さOffset12。

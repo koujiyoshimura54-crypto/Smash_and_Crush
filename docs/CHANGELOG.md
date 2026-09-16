@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-16 — Add availability guides to Treadmills
+
+- 既存の正規利用可否をPlayer個別に通知し、使用可能なベルトに常時流れるChevronを追加。Guideの速度・サイズ・間隔・透明度・色をTreadmillConfigへ集約。
+- ×3/×5は全Training中の一括非表示から、利用グループだけ非表示へ変更。MaxDistance100、既存表示・配色・マット・Balanceは維持。
+- Rebirth境界、実Trainingの機種別分岐、Premium隔離fixture、Tween移動、距離外表示をPlay確認。最終通常PlayはError / Warning / Infinite Yieldなし。隔離QAではランキング保存警告1件。実Premium購入・複数Client同時接続は未検証。[検証報告](../reports/Treadmill_Availability_Guides_20260916/build_report.md)。
+
 ## 2026-09-16 — Add proximity multiplier billboards to Treadmills
 
 - 青・緑の各2台へ×3/×5を1個ずつ追加。既存表示面中央を基準とし、BeltColor / MatColorを文字・輪郭へ再利用。

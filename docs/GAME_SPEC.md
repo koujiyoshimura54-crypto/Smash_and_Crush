@@ -2,7 +2,9 @@
 
 ## 2026-09-16 — Treadmill group multiplier guidance
 
-青Treadmill2台の中央上部に×3、緑2台の中央上部に×5を各1個のClient専用BillboardGuiとして追加する。既存の各機器Strength / Rebirth UIは維持。TreadmillConfig.MultiplierBillboardで距離100stud、基準Size16×10stud、TextScale1.5、高さOffset12studを設定する。標準MaxDistanceで遠距離非表示にし、本人のIsTraining中は両方非表示、降車後は距離条件内で再表示する。Training / Balance / Premium / 色 / マット / DataStoreは変更しない。[検証報告](../reports/Treadmill_Multiplier_Billboards_20260916/build_report.md)。
+青Treadmill2台の中央上部に×3、緑2台の中央上部に×5を各1個のClient専用BillboardGuiとして追加する。既存の各機器Strength / Rebirth UIは維持。TreadmillConfig.MultiplierBillboardで距離100stud、基準Size16×10stud、TextScale1.5、高さOffset12studを設定する。標準MaxDistanceで遠距離非表示にし、本人が青利用中なら×3だけ、緑利用中なら×5だけを非表示にする。未利用・通常・Premium利用中は両方が距離条件に従う。判定はServerの受理済みTrainingTreadmillと既存Configの実Multiplierを使用する。
+
+ベルト上のChevronガイドはPlayerが使用可能なTreadmillだけ表示され、使用可能な間は常時流れる。TrainingManager.CanUseTreadmillの結果をPlayer個別属性として通知し、ClientのSurfaceGuiとTweenで描画する。ガイド側でRebirthやGamePass条件を重複実装しない。設定はTreadmillConfig.Guideへ集約。利用可否・報酬計算・Interval・Balance・Premium条件・既存色・マット・DataStoreは変更しない。[実装・検証報告](../reports/Treadmill_Availability_Guides_20260916/build_report.md)。
 
 ## 2026-09-16 — Treadmill Strength reward colors
 
