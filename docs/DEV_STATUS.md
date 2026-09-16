@@ -2,6 +2,12 @@
 
 Version: 1.3 / 監査・更新日: 2026-09-15
 
+## 2026-09-16 — Mobile Touch Zone restoration（Completed）
+- `b50eee5`で追加したSmartphone / Tablet別サイズ、最大Clamp、LeftMenu / Jump境界、Safe Area計算を撤回し、PlayerModule標準Dynamic Thumbstick範囲へ復元。
+- `DynamicThumbstickFrame`の背景だけを常時透明化し、Thumbstick / Knob / Drag表示と入力判定は維持。
+- iPhone 17 Pro相当で399.6x302px、Fire HD 10相当で483.6x460.7pxの標準範囲を実測。両端末でStarterGui / PlayerGuiのLandscapeSensorを維持。
+- DesktopはTouchGuiなし。Runtime Error / Warning / Infinite Yieldなし。根拠: [実装・検証報告](../reports/Mobile_Touch_Zone_Restore_20260916/build_report.md)。
+
 ## 2026-09-16 — World1 Enemy Wall height alignment（Completed）
 
 - World1 Stage1〜10の敵Wall .1〜.4、計40枚だけを高さ27から56.25へ変更。

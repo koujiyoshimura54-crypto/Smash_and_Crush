@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-16 — Restore mobile touch zone and hide zone background
+
+- Smartphone / TabletのDynamic Thumbstick入力範囲をPlayerModule標準へ戻し、端末別Clamp、LeftMenu / Jump境界、Safe Areaによる縮小・移動を撤回。
+- `DynamicThumbstickFrame`の背景のみ透明化。指を置いた際のThumbstick / Knob / Drag表示と入力は維持。
+- StarterGui / PlayerGuiの`LandscapeSensor`とDesktop操作は変更なし。
+
 ## 2026-09-16 — Match World1 enemy wall height to side walls
 
 - World1 Stage1〜10の敵Wall .1〜.4だけを高さ56.25へ延長し、底面を維持したまま側面Wall上端Y=58.25へ統一。
