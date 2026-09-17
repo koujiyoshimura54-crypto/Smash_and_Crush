@@ -1,5 +1,15 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-17 — Equipped Item Effect HUD
+
+- origin/main=85127a5をfetchし、最新SPEC・ItemMaster・ItemMultiplierConfig・ItemService・StrengthManager・TrainingManager・BossCombatService・EnemyManager・装備Remote・StrengthDisplay / HUDLayoutを監査。追加はItemEffectHUDClient、既存変更はEnemyManagerの演出通知だけ。
+- 隔離Studio Storeで実ItemEquipRequestを使用し、3種類×5Rarityの全15効果値を確認。Rare→Legendary、順次Unequip、全未装備非表示、Best Equip、Rareへの再装備を確認。
+- 実Boss接触：Manual即時・Auto遅延0.5秒の命中通知でGloveApplied=true、Strength50 / Rare GloveのHP減少60、Icon -5pxを確認。Glove未装備はHP減少50 / false / 0px。固定5回勝利は隔離fixtureでRouteを指定し、false / 0pxを確認。戦闘終了は0px。抽選確率・戦闘計算は変更していない。
+- 実Tredmill06でTraining中0〜-4px、Unequipで非表示 / 0px、退出・通常歩行でIsTraining=false / 0px。Training中死亡と通常Respawnでも表示・Tween状態を確認。
+- Studio Device Simulator：PC1280×720相当、iPhone17 Pro / iPhone7 Landscape、Fire HD10 / iPad Pro Landscape。Icon28〜32px、Text18〜20px、全TextFits=true、中央配置、Gauge上8px。Level / Auto Tap / 可視左右Buttonとの重なりなし。透明なDynamicThumbstick入力領域は可視UIの衝突判定から除外。実機検証は未実施。
+- QA用Server / Client Scriptを撤去しDataStoreConfigを原文へ復元。ItemMaster / ItemMultiplierConfig / ItemService / StrengthManager / TrainingManager / BossCombatService / 既存Inventory・HUDソースの不変を照合。最終通常PlayでRuntime Error / Warning / Infinite Yieldなし。DeviceをPCへ戻しEditで停止。不要なreport / Snapshot生成、Publishなし。
+
+
 ## 2026-09-17 — Merge UI redesign
 
 - 3STEP、固定Element順、基準Itemの単一選択、素材自動セット、0〜3個のSocket表示、戻る、空一覧を実装。変更ScriptはMergePanelClient_NewとItemMergeControllerの2本。

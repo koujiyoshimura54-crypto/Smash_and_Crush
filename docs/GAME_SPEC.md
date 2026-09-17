@@ -1,5 +1,14 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-17 — Equipped Item Effect HUD
+
+- Level / Strength Gauge上部に装備中Protein / Glove / TrainingBeltの効果を横並び表示する。未装備は非表示。Item名ではなく専用miniiconと「+N STR / +N% DMG / +N Tier」を使用。
+- 値の正本は実計算と共通のItemMultiplierConfig.GetProteinBonus / GetGloveBossDamageBonus / GetBeltTreadmillBonus。既存ItemInventoryStateと装備・購入・Merge応答のStateから、所有中かつ種類が一致する装備ItemのRarityを読む。Element別の数値定義やUI用Balance表は追加しない。
+- Gloveは既存World1 BossCombatServiceが戦闘開始時に保持したGloveBonusを実際に使い、Boss HPが減少した命中でだけ演出する。EnemyManagerの既存BossGauge通知へAttackId / GloveAppliedを追加。Manual / Auto共通。LOTTERY_WIN・Wall・補正なし・無効攻撃は対象外。World2の現行CombatはこのGlove計算を呼んでおらず、新たな補正を追加しない。
+- BeltはServerの受理済みIsTraining / TrainingTreadmillと生存・装備状態で演出する。Proteinは静止。装備変更・死亡・Respawnで表示とTweenを更新・解除する。
+- 効果、Strength / Damage / Treadmill計算、Merge、Item保存、Balanceは変更しない。
+
+
 ## 2026-09-17 — Merge selection flow
 
 - Mergeは開始→基準Itemを1つ選択→自動素材セットと実行の3STEP。所持数1以上でItemMergeService.GetMergeResultが受理する通常Itemを選択可能とし、素材不足でも基準Itemとして選べる。Legendary / 無効定義 / 未所有Itemは一覧から除外。

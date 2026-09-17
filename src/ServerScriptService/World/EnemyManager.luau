@@ -799,10 +799,13 @@ local function updateCombat(p,manualRequest)
         s.Pending-=1
         if p.Parent~=Players or sessions[p]~=s or Stage.GetCurrentStageNumber(p)~=n or state(p)~=ps or p.Character~=ch or not hum or hum.Health<=0 then return end
         if s.CombatType~="MiniBoss" or s.Instance~=e or enemies[n]~=e or not e.Parent or ps.Defeated[n] or Boss.Get(p)~=bs or bs.Completed then return end
+        local hpBefore=bs.HP
         local status,hitState=Boss.Attack(p)
         if hitState~=bs or status=="Inactive" or status=="Complete" then return end
         ps.Gauges[n]=bs.HP
-        send(p,{Type="BossGauge",Stage=n,Current=bs.HP,Max=bs.MaxHP,Attack=bs.Attacks})
+        -- Presentation evidence from the accepted hit; damage math remains in Boss.Attack.
+        send(p,{Type="BossGauge",Stage=n,Current=bs.HP,Max=bs.MaxHP,Attack=bs.Attacks,
+         AttackId=attackId,GloveApplied=bs.Route~="LOTTERY_WIN" and bs.GloveBonus>0 and bs.HP<hpBefore})
         if status=="Win" then
          send(p,{Type="BossResult",Result="WIN"})
          defeat(p,n)

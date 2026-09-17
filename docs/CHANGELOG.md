@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-17 — Add equipped item effect HUD
+
+- Level / Strength Gauge上に装備中Protein / Glove / BeltのminiiconとConfig由来の効果値を追加。未装備非表示、装備変更への即時追従、端末別サイズと中央配置に対応。
+- GloveはServerが補正を使ったBoss命中だけBounce、Beltは受理済みTraining中だけFloat。停止・死亡・Respawn時に解除。
+- 全15効果値、実Equip系Remote、Manual / Auto命中、Training、PC / Smartphone / Tablet Simulatorを検証。Balance・計算・Merge・保存は変更なし。詳細はDEV_STATUSの同日項目。
+
+
 ## 2026-09-17 — Redesign Merge item selection flow
 
 - Mergeを開始・Item選択・自動3 Socketと実行の3画面へ変更。大きなButton / Text / Card、戻る、空一覧、不足表示を追加。

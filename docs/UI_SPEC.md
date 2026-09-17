@@ -1,5 +1,15 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-17 — Item Effect HUD
+
+- ItemEffectHUDClientがStrengthLevelHUDの直上8pxに表示専用の横一列を生成。Protein→Glove→TrainingBeltの順に装備中だけを中央配置。既存Level表示のFontFace・白文字・暗色TextStrokeを使用する。既存PotionStatusが同じ位置を占める場合はその上へ避ける。
+- Asset：Protein_miniicon=rbxassetid://105488661849761、Glove_miniicon=rbxassetid://108415780326588、Belt_miniicon=rbxassetid://111026808967442。新画像Assetなし。
+- Smartphone LandscapeはIcon28px / Text18px、PC・TabletはIcon32px / Text20px。内容の実測幅を使い、未装備分の空白を残さない。Level Gauge / Auto Tap / 左右HUDの既存配置は変更しない。
+- Protein「+N STR」は静止。Glove「+N% DMG」はServerのGloveApplied=trueの実命中時にIconだけ5px上へ0.09秒、0.16秒で戻す。戦闘終了・装備変更・死亡で停止して原位置へ戻す。
+- TrainingBelt「+N Tier」は装備・生存・受理済みTraining中だけIconを4px、片道0.55秒で往復。退出・Unequip・死亡で停止・原位置復帰。Textと行の配置は動かさない。
+- InventoryのEquip / Unequip / Best Equip / Rarity変更応答で即時更新。初回・Respawnで状態取得し、未ロード時は再試行。取得中に新しい装備応答が届いた場合は古い取得結果で上書きしない。
+
+
 ## 2026-09-17 — Merge 3STEP UI
 
 - Merge Tabを開くたびSTEP 1。中央に大きな「アイテムを選択する」、短い説明のみ。Xは既存Inventoryの閉じる操作を維持。
