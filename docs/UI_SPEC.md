@@ -1,5 +1,22 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-17 — Studio最新版ライブラリの保存
+
+- AuraVisualTemplates（17）：Blue_Aura1/2/3/4、Green_Aura1/2、Hyper_Aura1、Pink_Aura1/2/3/4、Purple_Aura1、Red_Aura1、Secret_Aura1、Vip_Aura1、Yellow_Aura1/2。
+- TreadmillVisualTemplates（10）：Blue_Aura1/2/3/4、Green_Aura2、Premium_Fire、Secret_Aura1、Vip_Aura1、Yellow_Aura1/2。
+- assets内の同名rbxmはFolder全体の保存物。Importする場合は同名Folderを重複配置しない。Player用とTreadmill用は独立Instance。Template編集→Config.VisualTemplateへ名前指定→Playの既存手順を使用する。
+
+## 2026-09-17 — Treadmill Effectの手動追加
+
+1. ReplicatedStorage.TreadmillVisualTemplates.Premium_Fire等のModelをDuplicateし、名前を変更。
+2. Rootを基準にEmitter用Part / Attachment / ParticleEmitterをStudioで編集。Rootは透明な配置基準、PrimaryPart=Rootを維持。Scriptは入れない。
+3. TreadmillConfig.Types.Normal / Rebirth3 / Rebirth7 / PremiumのVisualTemplateへTemplate名を指定。
+4. Play確認。空文字ならEffectなし。倍率・価格・利用条件は変更しない。
+
+配置は各TreadmillのTrainingZone.VisualRoot（未作成時は共通処理でAttachmentを追加）を基準とする。Template内のPart位置・Attachment.Positionを編集すると相対位置がそのまま反映される。Particleの広がりは元のcarrier PartサイズとEmitter設定で調整し、Luaへ設定値を転記しない。
+
+Premium_FireはRootとAuraEmitterPartを持ち、Attachment=0 / ParticleEmitter=3 / Beam=0 / Trail=0 / Light=0 / Highlight=0。元のEmitter発生範囲22×0.7×10studと配置・設定を保持する。Runtimeの表示先はTredmill01.PremiumAuraで、既存PremiumAuraを置換するため二重表示しない。青・緑・通常用の新デザインは作成していない。
+
 ## 2026-09-17 — Aura Visual追加手順
 
 1. ReplicatedStorage.AuraVisualTemplates内のModelをDuplicateし、Template名を設定する。

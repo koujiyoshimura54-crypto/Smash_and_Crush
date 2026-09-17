@@ -1,5 +1,17 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-17 — Latest visual template asset export
+
+- 現在StudioからAura 17個 / Treadmill 10個を正式Repositoryのassetsへ保存。保存済みバイト列を再読込し、Deserializeしたライブラリの名前・階層・主要Visual設定・Beam/Trail参照・PrimaryPartをStudioと照合。Aura 260 Instance / Treadmill 113 Instance。AuraのCFrameに最大4.11e-10未満の標準シリアライズ誤差、その他検査項目は一致。
+- 今回はasset保存と関連SPEC整理のみ。Studioライブラリ・Config・Scriptは変更せず、Play再試験は行っていない。親フォルダassetsとWorld1 Balance Auditは変更・Commit対象外。
+
+## 2026-09-17 — Treadmill visual templates (prior Studio verification)
+
+- Premiumの既存3 ParticleEmitterをPremium_FireへTemplate化。通常・青・緑はEffect追加なし。TrainingZone.VisualRoot基準の共通適用で位置とParticle設定を維持。
+- Playで適用・差し替え・空指定・5回再適用・通常Training・Respawnを確認。最終通常PlayはParticle 3、Guide 10、倍率Billboard 2、Output Error / Warning / Infinite Yieldなし。検証Scriptは撤去。
+- 既存問題：Respawn後にGuide / Billboardフォルダが消える。今回の変更前Config / TrainingManagerへ戻した比較Playでも再現。対象外のGuide処理は変更していない。
+- 最新ユーザー指定によりSmash_and_Crush_updated_20260915を今回の正式Git保存先として使用。今回の保存範囲は2つのTemplate assetと関連SPEC。Treadmill装着Scriptのソース書き出しは今回のCommitに含めない。
+
 ## 2026-09-17 — Studio Win commands verified
 
 - /addwinと/setwinを既存Debugの登録・Server Executeへ追加。PlayerDataService.SetWinを再利用し、Production側は既存の二重Studio gateで拒否。

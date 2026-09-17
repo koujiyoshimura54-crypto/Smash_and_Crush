@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-09-17 — Save latest Aura and Treadmill visual templates
+
+- Studio最新版をAura 17個 / Treadmill 10個の標準rbxmとして保存。ディスク再読込で名前・Visual構造・主要設定を照合。2つのassetだけをrbxm除外規則の例外とする。
+- 既存Treadmill Template関連の未Commit SPECを含め、保存状況を更新。Studio側やBalance、親フォルダの保存物は変更なし。
+
+## 2026-09-17 — Treadmill visual templates (Studio implementation)
+
+- TreadmillVisualTemplates.Premium_Fireと共通TreadmillVisualServiceを追加。既存PremiumAuraの3Emitterを再利用し、Config.VisualTemplateで選択。通常・青・緑は空指定。
+- 相対位置・Particle設定・配色・Training・利用条件を維持。Effect重複を防止し、空指定で削除。手動追加手順をUI_SPECへ記録。
+- 導入時にPlay確認済み。既存のRespawn後Guide/Billboard消失は変更前にも再現し、修正対象外。今回のasset exportは上記記録を参照。
+
 ## 2026-09-17 — Add Studio Win debug commands
 
 - 既存StudioDebugController / StudioDebugServiceへ/addwin 数値と/setwin 数値を追加。

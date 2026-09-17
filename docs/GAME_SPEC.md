@@ -1,5 +1,14 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-17 — Treadmill visual templates
+
+- ReplicatedStorage.TreadmillVisualTemplatesはTreadmill本体専用。Player用AuraVisualTemplatesと装着処理を共有しない。
+- 初回導入のPremium_FireはWorkspace.Treadmill.Tredmill01.PremiumAuraの3 ParticleEmitterをInstance Cloneで保持。現在のStudioライブラリはAura 17個、Treadmill 10個へ拡張済み。正式保存物はassets/AuraVisualTemplates.rbxmとassets/TreadmillVisualTemplates.rbxm。Visualの正本はStudio Instanceとし、LuaへParticle設定を転記しない。
+- TreadmillConfig.Types.<種別>.VisualTemplateで指定する。通常 / Rebirth3 / Rebirth7は空文字、PremiumはPremium_Fire。倍率・利用条件とは独立。PremiumのVisualInstanceName=PremiumAuraは既存Effectを置換するための表示Object名であり、性能設定ではない。
+- TrainingManager.Initializeから共通TreadmillVisualService.Applyを呼ぶ。TrainingZone.VisualRoot Attachmentを装着基準とし、Template.RootからのPart / Attachment相対配置・Particle設定を維持する。
+- 同名Template再適用は既存Objectを再使用。別Templateへ変更時は旧Effectを置換。空指定はEffectなし。利用可否によるParticle制御やPlayerイベントでのCloneは行わない。
+- 配色、Mat、Guide、倍率Billboard、Strength / Rebirth表示、Training間隔・倍率・条件、Player Aura、DataStoreは変更しない。
+
 ## 2026-09-17 — Studio Win debug commands
 
 - Studioのチャットで/addwin 数値は本人のWinへ加算、/setwin 数値は本人のWinを設定する。0〜9,007,199,254,740,991の十進整数のみ受理し、負数・小数・NaN / Inf・不正文字列・引数過不足・加算overflowを拒否する。
