@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-09-18 — Enable Administrator Treadmill game pass
+
+- Premium ×20 TreadmillへAdministrator Treadmill Game Pass（1982996954）を設定。
+- 既存TrainingZoneへの入場で1回だけ購入Promptを表示し、Cancel後は退出まで抑止。購入後のServer再所有確認が完了すればZone内のままTraining開始。
+- 未所有Training防止、所有済み、Cancel / 再入場、Normal回帰、PC / Smartphone / Tablet Simulatorを確認。Balance・周期・Strength式・Visual・Mapは変更なし。
+
 ## 2026-09-18 — Auto prompt Double Win purchase on entry
 
 - World1 LobbyのWin ×2購入スポットをE / Tap操作からServerのエリア入場検知へ変更。入場ごとに最大1回、退出後に再試行可能。

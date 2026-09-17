@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-18 — Administrator Treadmill purchase entry
+
+- Tredmill01の既存TrainingZoneを購入Triggerとして再利用。未所有Playerは乗るだけでRoblox Game Pass購入Promptへ進み、Eキー / Tap用Interact Buttonは表示しない。
+- 1回の入場につき最大1Prompt。Cancel後のZone内滞在では再表示せず、完全退出後の再入場で未所有なら再表示する。Character変更も新しい入場として扱うが、スポット外Respawnでは表示しない。
+- Premium購入専用ProximityPromptは現行Treadmill群に存在しないためObject削除なし。他Shop / Aura Prompt、Treadmillの見た目・案内・VisualRoot / VisualTemplateは変更しない。
+
 ## 2026-09-18 — Double Win spot interaction
 
 - World1DoubleWinShopのPedestal購入エリアへ入ると、未所有Playerに既存Roblox Game Pass購入Promptを表示。PC / Smartphone / Tablet共通でE / Tap不要。

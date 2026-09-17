@@ -1,5 +1,13 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-18 — Administrator Treadmill Game Pass
+
+- TreadmillConfigのPremiumTreadmillPassIdを0から1982996954へ正式設定。実Marketplace商品はAdministrator Treadmill / 450 Robux（検証時点）。価格はコードへ複製していない。
+- TrainingManagerの既存TrainingZone / 0.2秒scanへPlayer・Character・Treadmill単位の入場ラッチを追加。GamePassServiceへ同期所有確認、Prompt、購入完了後最大5回の再確認、HasPremiumTreadmill属性mirrorを追加。
+- 隔離Marketplace応答で、入場0→1、Cancel滞在1、退出再入場2、未所有中Training=false / Strength変化なし、購入成功後Zone内Training=true、所有済み再入場Prompt増加なしを確認。Normal Tredmill06は従来どおりTraining=true。
+- PC / iPhone17 Pro Landscape / Fire HD10 Landscape SimulatorでPassId 1982996954、入力不要、Cancel滞在中の再Promptなしを確認。Treadmill配下のProximityPromptは変更前から0。実未所有アカウントのNative購入画面・実課金完了は未検証。
+- QA adapterを撤去しGamePassService / StudioDebugConfigを正式ソースへ復元。Premiumは×20、TrainingInterval=0.5、StartTraining以降のStrength計算コード、Visual / Map / 他Treadmillは不変。通常Marketplace接続で実所有=true、既存StudioDebugの効果OFFによりTraining=falseを確認。最終通常PlayのRuntime Error / Warning / Infinite Yieldなし。DeviceをPCへ戻しEditで停止。Publish・実課金なし。
+
 ## 2026-09-18 — Auto prompt Double Win purchase on entry
 
 - 最新origin/main=aa7c2d9・SPEC・WorldPassConfig・GamePassController / Service・DoubleWinClient・StudioDebugConfigを監査。PurchasePromptを参照していたScriptはGamePassControllerのみ。変更Scriptは同Controllerだけで、現行ソースをsrcへ保存。
@@ -287,7 +295,7 @@ Version: 1.3 / 監査・更新日: 2026-09-15
 | K07 | Merge / Medium | Dumbbell定義Mergeable=true、実際のItemMergeServiceは通常Itemのみ | Dumbbell Mergeを将来作るか、メタデータを整理するか |
 | K08 | Reward確率 / Medium | Daily/Time/CommunityのItemRollは受取時CurrentStageでRarity制限。最高Stageではない | Lobbyへ戻ってStage1で受け取った場合の制限を維持するか |
 | K09 | World2 / Config反映済み・機能未接続 | 独自Balanceを3 Configへ反映し旧×25,000方式を除去。Inventory設計は到達時解放・World1 Item性能維持のまま | World2 Item/Enemy、移動、Combat、Stage進行は別途指示後に実装 |
-| K10 | 商品設定 / Medium | PremiumTreadmillPassId0、WinProducts空、未使用Win商品IDあり。FallbackPriceは実売価格保証ではない | 商品のID・付与量・販売意図を確認するまで有効化しない |
+| K10 | 商品設定 / Medium | Premium TreadmillはAdministrator Treadmill（1982996954）として設定済み。WinProducts空・未使用Win商品IDは継続 | Premium TreadmillはClosed。BUY WIN商品は引き続き要確認 |
 | K11 | テスト設定 / Medium | Studio GamePassEffectsEnabled=false、ForceSpeedPremiumUnowned=false | 所有確認と効果テストを分離。本番/Studioの試験条件を明記する |
 | K11-P | Production製作者Game Pass試験 / Implemented | ProductionCreatorGamePassEffectsEnabled=false、対象UserId=7467238848 | 指定製作者だけ効果OFF。一般Player・所有表示・Developer Productは変更なし |
 | K12 | 多人数検証 / High | GateはLocalPlayer別表示だが同時接続試験なし。Bossモデル/Colliderは共有要素あり | LOCKED/ENTER併存、同時Boss戦・撃破再生成への相互影響を検証 |
@@ -309,7 +317,7 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - 暫定Levelカーブの育成時間・Lv201以降の本バランス調整。Level Threshold実装とWorld2 Balance Config反映は完了。
 - World2専用Item/Inventory実装、Enemy Asset選定、移動、Combat、Stage進行。
 - World2Gateの本配置と移動連携。現在は暫定BackWall preview。
-- Premium Treadmill商品設定、BUY WIN付与量と商品設定。
+- BUY WIN付与量と商品設定。
 - 多人数試験、端末別UI調整、育成所要時間の計測。
 - Rojo等の同期導入、完全Placeの保存形式決定。Git Repository接続は完了。
 - Blenderキャラクター制作は別作業。今回のゲーム監査から完成NPCとして計上しない。

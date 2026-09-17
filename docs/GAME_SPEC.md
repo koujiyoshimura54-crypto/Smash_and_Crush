@@ -1,5 +1,12 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-18 — Administrator Treadmill Game Pass
+
+- World1 Premium ×20 Treadmill（Tredmill01）はAdministrator Treadmill Game Pass、GamePassId=1982996954を使用する。TreadmillConfig.PremiumTreadmillPassIdが正本。
+- 未所有Playerが既存TrainingZoneへ入ると、操作不要で既存MarketplaceService:PromptGamePassPurchaseを1入場1回だけ呼ぶ。Cancel後はZone退出まで再表示せず、退出・再入場で再試行可能。
+- ServerのUserOwnsGamePassAsync確認が成功するまでTrainingを開始しない。購入完了後もServerで最大5回再確認し、Zone内なら既存0.2秒scanからそのままTrainingを開始する。Clientの完了通知だけを所有根拠にしない。
+- Premium倍率20、TrainingInterval 0.5秒、Strength計算、VisualTemplate、Map、他Treadmill、StudioDebugの効果制御は変更なし。Premium購入用ProximityPromptは現行Modelに存在しない。
+
 ## 2026-09-18 — World1 Double Win purchase entry
 
 - LobbyのWorld1DoubleWinShopは購入エリアへの入場で既存GamePassService.Promptを呼ぶ。E / TapによるProximityPrompt操作を廃止。右HUDの既存購入Buttonは変更しない。
@@ -260,7 +267,7 @@ World2到達時にWorld2専用Inventoryを解放する。World2専用Item群はW
 
 - 実装済み: Starter Pack、Secret Pack、VIP、Premium Speed、World1 DoubleWin、Red Aura、通常ItemのRobux購入、Stage Skip。
 - 商品IDと効果はBALANCE_SPEC。表示価格はMarketplace取得を優先し、ConfigのFallbackPriceを確定販売価格と呼ばない。
-- Premium Treadmillは機器・倍率定義のみあり、専用PassId=0で利用不可。
+- Premium TreadmillはAdministrator Treadmill Game Pass（1982996954）所有者が利用可能。倍率は×20。
 - BUY WINの導線はあるがWinProductsが空。未確定IDを使ったWin販売は未実装。
 - Game Pass所有はサーバー確認。StudioではGamePassEffectsEnabled=falseにより所有状態と効果適用を分離する。
 - ProductionではStudio設定と分離し、StudioDebugConfig.ProductionCreatorUserIdsに明示した製作者だけをProductionCreatorGamePassEffectsEnabledで手動ON/OFFする。一般Playerは常に通常効果。所有表示とDeveloper Productは対象外。

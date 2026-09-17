@@ -167,7 +167,7 @@ Time Rewardの「通常Training15秒分」は `(1+Dumbbell+Aura+Protein)×Rebirt
 
 | 機器 | Type名 | 必要Rebirth / 権利 | Tier倍率 | 状態 |
 |---|---|---|---:|---|
-| Tredmill01 | Premium | 専用Pass、PassId=0 | 20 | 未設定のため通常利用不可 |
+| Tredmill01 | Premium | Administrator Treadmill、GamePassId=1982996954 | 20 | Server所有確認済みのみ利用可 |
 | Tredmill02〜03 | Rebirth7 | **5** | 5 | 実装済み、Type名と条件が不一致 |
 | Tredmill04〜05 | Rebirth3 | 3 | 3 | 実装済み |
 | Tredmill06〜10 | Normal | 0 | 1 | 実装済み |
@@ -351,7 +351,7 @@ Community：GroupId787332211、加入確認後に一度だけ3 Win＋ItemRoll1�
 | VIP | 1977128286 | 歩行・Training×1.1、VIP Aura/Tag、UTC日次1 Win |
 | Premium Speed | 1979583273 | WalkSpeed40、Fallback100 Robux |
 | Red Aura | 1975173075 | 装備時基礎Strength+1,000、Fallback100 Robux |
-| Premium Treadmill | 0 | 未設定。Tier20は定義のみ |
+| Premium Treadmill | 1982996954 | Administrator Treadmill。Tier20 |
 
 Secret PackはEpic:Legendary=2:1、各Rarity内9 Item均等、MISSなし。PolicyServiceのPaidRandomAllowed判定経路を持つ。
 
