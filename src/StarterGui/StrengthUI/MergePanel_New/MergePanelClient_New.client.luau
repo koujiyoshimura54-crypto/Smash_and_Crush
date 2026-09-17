@@ -81,12 +81,12 @@ local function rect(x,a,b,w,h)
  x.Position=UDim2.fromOffset(a,b)
  x.Size=UDim2.fromOffset(math.max(1,w),math.max(1,h))
 end
-local back=button("Back",root,"‹ 戻る")
-local title=label("StepTitle",root,"MERGE",24)
+local back=button("Back",root,"BACK")
+local title=label("StepTitle",root,"SELECT 1 ITEM",24)
 local start=make("Frame","Start",root)
-local choose=button("ChooseItem",start,"アイテムを選択する")
+local choose=button("ChooseItem",start,"SELECT ITEM")
 choose.BackgroundColor3=Color3.fromRGB(232,171,35)
-local intro=label("Instruction",start,"同じアイテムをまとめてアップグレード",20)
+local intro=label("Instruction",start,"Merge 3 identical items to upgrade",20)
 local selection=make("ScrollingFrame","Selection",root)
 selection.ScrollBarThickness=6
 selection.ScrollingDirection=Enum.ScrollingDirection.Y
@@ -112,10 +112,10 @@ local merge=button("Merge",footer,"MERGE")
 local hint=label("Status",root,"",18)
 
 local errors={
- NotEnoughItems="同じアイテムが不足しています",DataSaving="保存中です。少しお待ちください",
- DataNotLoaded="読み込み中…",CountOverflow="結果アイテムの所持上限です",
- InventorySavePending="保存の完了をお待ちください",RateLimited="少しお待ちください",
- NotMergeable="このアイテムはMergeできません",InvalidItemId="アイテムを選び直してください",
+ NotEnoughItems="Not enough identical items",DataSaving="Saving. Please wait.",
+ DataNotLoaded="Loading…",CountOverflow="Result item limit reached",
+ InventorySavePending="Waiting for save…",RateLimited="Please wait…",
+ NotMergeable="This item cannot be merged",InvalidItemId="Select another item",
 }
 local function visible() return inventory.Visible and page.Visible end
 local function less(a,b)
@@ -148,7 +148,7 @@ local function rebuildCards()
    if corner then corner:Clone().Parent=picture end
    label("ItemName",card,names[item.ItemType] or item.ItemType,21)
    label("Identity",card,(icons[item.Element] or "").." "..item.Element.." · "..item.Rarity,17)
-   label("Owned",card,"所持数: "..tostring(recipe.Count),17)
+   label("Owned",card,"Owned: "..tostring(recipe.Count),17)
    card.Activated:Connect(function()
     selectedId=recipe.ItemId
     step=3
@@ -187,11 +187,11 @@ layout=function()
  local compact=h<330
  rect(back,0,0,100,44)
  rect(title,110,0,w-110,44)
- rect(start,0,48,w,h-48)
+ rect(start,0,0,w,h)
  local bw=math.min(w-16,520)
- rect(choose,(w-bw)/2,math.max(8,(h-48)/2-50),bw,64)
+ rect(choose,(w-bw)/2,math.max(8,(h-120)/2),bw,64)
  choose.TextSize=w<400 and 24 or 32
- rect(intro,8,math.max(8,(h-48)/2-50)+72,w-16,48)
+ rect(intro,8,math.max(8,(h-120)/2)+72,w-16,48)
  rect(selection,2,52,w-4,h-54)
  rect(empty,8,60,w-16,h-68)
  local cols=math.max(1,math.floor((w+10)/240))
@@ -250,13 +250,13 @@ render=function()
  start.Visible=step==1
  selection.Visible=step==2 and loaded and #cards>0
  empty.Visible=step==2 and (not loaded or #cards==0)
- empty.Text=loaded and "Mergeできるアイテムがありません" or "読み込み中…"
+ empty.Text=loaded and "NO ITEMS AVAILABLE" or "Loading…"
  if not fresh and status~="" then empty.Text=status end
  execute.Visible=step==3
  footer.Visible=step==3
  hint.Visible=step==3
  back.Visible=step>1
- title.Text=step==1 and "MERGE" or step==2 and "アイテムを1つ選択" or "MERGE"
+ title.Visible=step==2
  root:SetAttribute("Step",step)
  local recipe=byId[selectedId]
  local item=selectedId and Master.Get(selectedId)
@@ -280,7 +280,7 @@ render=function()
  merge.AutoButtonColor=enabled
  merge.BackgroundColor3=enabled and Color3.fromRGB(37,99,255) or Color3.fromRGB(75,69,67)
  merge.Text=pending and "MERGING…" or "MERGE"
- hint.Text=pending and "Merge中…" or status~="" and status or recipe and (errors[recipe.Code] or resultText.Text) or "アイテムを選び直してください"
+ hint.Text=pending and "Merging…" or status~="" and status or recipe and (errors[recipe.Code] or resultText.Text) or "Select another item"
  layout()
 end
 
@@ -306,9 +306,9 @@ refresh=function()
    selection:SetAttribute("InventorySignature",signature)
    rebuildCards()
   end
-  if status=="接続を確認しています…" then status="" end
+  if status=="Checking connection…" then status="" end
  else
-  status="接続を確認しています…"
+  status="Checking connection…"
  end
  render()
 end
@@ -333,7 +333,7 @@ mergeRemote.OnClientEvent:Connect(function(result)
   status=item and ("Merged "..(names[item.ItemType] or item.ItemType).." "..item.Rarity) or "Merge complete."
  else
   status=typeof(result)=="table" and errors[result.Code] or nil
-  status=status or "Mergeできませんでした。再確認してください"
+  status=status or "Merge failed. Please try again."
  end
  render()
  task.spawn(refresh)

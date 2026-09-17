@@ -12,11 +12,11 @@
 
 ## 2026-09-17 — Merge 3STEP UI
 
-- Merge Tabを開くたびSTEP 1。中央に大きな「アイテムを選択する」、短い説明のみ。Xは既存Inventoryの閉じる操作を維持。
-- STEP 2はItemIdごとに1枚の大きなカード。画像・Item名・Element名・Rarity名・所持数を表示。Serverが返した有効レシピのうち所持数1以上を表示し、空なら「Mergeできるアイテムがありません」。
+- Merge Tabを開くたびSTEP 1。中央に大きな「SELECT ITEM」と「Merge 3 identical items to upgrade」。重複MERGE見出しは表示せず、Buttonと説明を中央配置。Xは既存Inventoryの閉じる操作を維持。
+- STEP 2は「SELECT 1 ITEM」とItemIdごとに1枚の大きなカード。画像・Item名・Element名・Rarity名・Owned数を表示。Serverが返した有効レシピのうち所持数1以上を表示し、空なら「NO ITEMS AVAILABLE」。
 - Sort Buttonと手動3素材選択を廃止。明示Element Priority Fire=1 / Ice=2 / Electric=3、Master.RarityRank昇順、Master.Kinds順（Protein / Glove / TrainingBelt）、ItemId順で安定整列。Legendaryは正規レシピがないため一覧に出ない。
 - STEP 3は選択Item、3 Socket、充足数、MERGEを表示。基準ItemのServer数量から最大RequiredCount枠を自動表示し、不足枠は「?」。CanMerge=trueかつ最新状態取得済み・未送信中のみ実行可能。保存中等のServer拒否理由も表示。成功文言を維持し、同じ基準Itemの最新数量を再取得する。
-- 戻るはSTEP 3→2→1。Tab再表示はSTEP 1に戻る。表示中は2秒ごとにもServer状態を再取得し、Drop / Reward / Save lockを反映する。取得失敗時は実行無効。
+- BACKはSTEP 3→2→1。STEP 3の重複MERGE見出しも表示せず、最終実行MERGE Buttonは維持。新Merge UI内の状態・エラー文言も英語に統一。元の日本語は生成Scriptの直接定義であり、ゲーム全体のLocalizationは変更しない。Tab再表示はSTEP 1に戻る。表示中は2秒ごとにもServer状態を再取得し、Drop / Reward / Save lockを反映する。取得失敗時は実行無効。
 - MergeFlowだけで親Fit倍率を打ち消し、文字・操作領域を画面pxで確保。開始Button高64、戻る44、カード高150、名前18〜24、Element / Rarity16〜20、充足数26。小画面は選択ItemとSocketを横配置し、MERGE高48。PC / 大Tabletは選択Itemを上、Socketを下に配置する。
 - 既存TemplateのFrame / UICorner / UIStroke、InventoryのFont / TextStroke / Gradient、Element色、既存Item画像を再利用。参考MergeUI01.png / MergeUI02.pngは閲覧のみでAsset追加なし。
 - 既存MergePanelは非表示の互換レイアウトノードとして保持し、ResponsivePanels・Inventory shell・他Tabを変更しない。[端末別実測・検証](../reports/Merge_UI_20260917.md)。
