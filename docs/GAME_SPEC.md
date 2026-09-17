@@ -1,5 +1,13 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-18 — World1 Double Win purchase entry
+
+- LobbyのWorld1DoubleWinShopは購入エリアへの入場で既存GamePassService.Promptを呼ぶ。E / TapによるProximityPrompt操作を廃止。右HUDの既存購入Buttonは変更しない。
+- ServerがPedestalの相対座標で生存CharacterのHumanoidRootPartを0.1秒間隔で確認。8×8studの台座から左右前後2studまで（12×12）、台座上面の1stud下から高さ10studを購入エリアとする。外側0.75studを退出判定の余裕として境界の揺れを防ぐ。
+- Playerごとの入場状態を所有確認前に記録。購入 / Cancel後も退出まで再Promptしない。所有確認中に退出・Character変更した場合は古い入場要求を破棄する。スポット外のRespawnではPromptしない。
+- GamePassService.HasWorld1DoubleWin / Promptを再利用。Pass ID=1970515086、Config倍率2、Roblox側価格、UserOwnsGamePassAsync・Cache・購入完了後の再所有確認・World適用範囲・StudioDebugの効果抑制は変更なし。
+
+
 ## 2026-09-17 — Equipped Item Effect HUD
 
 - Level / Strength Gauge上部に装備中Protein / Glove / TrainingBeltの効果を横並び表示する。未装備は非表示。Item名ではなく専用miniiconと「+N STR / +N% DMG / +N Tier」を使用。

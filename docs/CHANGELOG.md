@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-09-18 — Auto prompt Double Win purchase on entry
+
+- World1 LobbyのWin ×2購入スポットをE / Tap操作からServerのエリア入場検知へ変更。入場ごとに最大1回、退出後に再試行可能。
+- 既存所有判定・Game Pass購入処理を再利用し、対象ProximityPromptだけ無効化。価格・ID・効果・Debug・他購入導線・見た目は維持。
+- 入場 / Cancel / 再入場 / 所有済み / Respawn / 3端末Simulatorを確認。模擬購入応答と実所有済み確認の検証範囲はDEV_STATUSに記録。
+
+
 ## 2026-09-17 — Add equipped item effect HUD
 
 - Level / Strength Gauge上に装備中Protein / Glove / BeltのminiiconとConfig由来の効果値を追加。未装備非表示、装備変更への即時追従、端末別サイズと中央配置に対応。

@@ -1,5 +1,12 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-18 — Double Win spot interaction
+
+- World1DoubleWinShopのPedestal購入エリアへ入ると、未所有Playerに既存Roblox Game Pass購入Promptを表示。PC / Smartphone / Tablet共通でE / Tap不要。
+- Trophy.Handle.PurchasePromptだけをGamePassController起動時に無効化する。従来の距離12studのTriggered接続を入場検知へ置換。Model / Pedestal / Trophy / 看板の位置・見た目は維持。
+- 1入場につき最大1Prompt。Cancel後その場に留まっても再表示せず、退出・再入場した未所有Playerだけ再試行できる。他のShop / Aura等のProximityPrompt、右HUD購入Button、Shop UIは変更しない。
+
+
 ## 2026-09-17 — Item Effect HUD
 
 - ItemEffectHUDClientがStrengthLevelHUDの直上8pxに表示専用の横一列を生成。Protein→Glove→TrainingBeltの順に装備中だけを中央配置。既存Level表示のFontFace・白文字・暗色TextStrokeを使用する。既存PotionStatusが同じ位置を占める場合はその上へ避ける。

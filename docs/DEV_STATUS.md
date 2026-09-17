@@ -1,5 +1,15 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-18 — Auto prompt Double Win purchase on entry
+
+- 最新origin/main=aa7c2d9・SPEC・WorldPassConfig・GamePassController / Service・DoubleWinClient・StudioDebugConfigを監査。PurchasePromptを参照していたScriptはGamePassControllerのみ。変更Scriptは同Controllerだけで、現行ソースをsrcへ保存。
+- 既存Pedestal基準のServer入場検知、入場ラッチ、退出余裕0.75stud、所有確認後のCharacter / 入場再検証を実装。ゲームの可視Object変更なし。
+- 通常接続アカウントは実所有済み。実APIの商品照会はID1970515086 / PriceInRobux72を返した（取得時点）。所有済みで入場してPromptなし。価格をコードに新定義していない。
+- 未所有・購入 / Cancelは一時Marketplace応答adapterで検証。GamePassService自体のPrompt・所有Cache・完了後再確認を通し、初期0→入場1→Cancel滞在1→退出再入場2→購入成功・所有済み再入場2→スポット外Respawn2を確認。成功時HasWorld1DoubleWin=true。StudioのGamePassEffectsEnabled=falseに従い倍率1 / 基本Win10の報酬10を維持。
+- PC / iPhone17 Pro Landscape / Fire HD10 Landscape Simulatorで入場時に正しいPass IDのPrompt API呼び出しを確認。E表示なし。境界6.3↔5.9studで呼出数不変、7stud退出後の再入場で+1。実機・未所有実アカウントのNative購入画面・実課金完了は未検証。
+- QA adapter / Scriptを撤去しGamePassServiceを原文に復元。WorldPassConfig / StudioDebugConfig不変を照合。他のShopDoorPrompt / Aura ProximityPromptは有効のまま。最終通常PlayのRuntime Error / Warning / Infinite Yieldなし。DeviceをPCへ戻しEditで停止。Publish・実課金なし。
+
+
 ## 2026-09-17 — Equipped Item Effect HUD
 
 - origin/main=85127a5をfetchし、最新SPEC・ItemMaster・ItemMultiplierConfig・ItemService・StrengthManager・TrainingManager・BossCombatService・EnemyManager・装備Remote・StrengthDisplay / HUDLayoutを監査。追加はItemEffectHUDClient、既存変更はEnemyManagerの演出通知だけ。
