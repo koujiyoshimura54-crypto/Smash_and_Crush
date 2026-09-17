@@ -1,5 +1,14 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-17 — Merge selection flow
+
+- Mergeは開始→基準Itemを1つ選択→自動素材セットと実行の3STEP。所持数1以上でItemMergeService.GetMergeResultが受理する通常Itemを選択可能とし、素材不足でも基準Itemとして選べる。Legendary / 無効定義 / 未所有Itemは一覧から除外。
+- ItemMergeControllerの読み取り専用ItemMergeStateがGetMergeResult / CanMerge / ItemService.GetItemCountを直接呼び、結果ItemId・所持数・実行可否・拒否理由を返す。UI専用のMerge互換性・実行可否判定は追加しない。
+- 同一ItemId×RequiredCount（現行3）→同Type・同Elementの次Rarity×1を維持。InventoryはItemId別数量で個体IDなし。基準Itemの数量を先頭Socketから必要数だけ表示する。装備中Itemを別扱いで除外する新ルールは追加しない。
+- MERGE押下だけが既存ItemMergeRequestを送信。Serverの再検証、RunItemTransaction、RemoveItem / AddItem、ChangeItemCounts / ResolveItemMutationの永続化経路は不変。成功後はServer状態を再取得し、同じ基準Itemの充足または0〜2個の不足状態を表示。
+- 他Inventoryタブ、通知Seen、Balance、Item定義、保存Schemaは変更なし。[監査・検証](../reports/Merge_UI_20260917.md)。
+
+
 ## 2026-09-17 — Treadmill visual templates
 
 - ReplicatedStorage.TreadmillVisualTemplatesはTreadmill本体専用。Player用AuraVisualTemplatesと装着処理を共有しない。

@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-17 — Merge UI redesign
+
+- 3STEP、固定Element順、基準Itemの単一選択、素材自動セット、0〜3個のSocket表示、戻る、空一覧を実装。変更ScriptはMergePanelClient_NewとItemMergeControllerの2本。
+- GitHub origin/mainをfetchして5bc8399と現行SPEC・Studioを監査。正規ItemMergeService / ItemService / PlayerDataService、Merge必要数・結果は変更していない。
+- 隔離Studio Storeで実Remote経由の3個消費・1個生成・再Merge・不足・0個を確認。再Playで保存数量の復元、素材不足 / Legendary / 不正ID / 保存中の拒否を確認。
+- PC、iPhone 17 Pro / iPhone 7 Landscape、iPad Pro 13 / Fire HD 10 Landscapeで実寸と表示を確認。最長のTraining Belt / Electric / Uncommonも収まる。入力検証はStudioのMouse / KeyboardによるActivated経路。実機タッチの操作感は未検証。
+- 隔離QAでは既存ランキングmirror保存Warning、監査ツール操作では権限・入力試験エラーを観測し、ゲームRuntimeと分離記録。QA Script撤去・通常Store設定復元済み。最終通常Play結果は[検証記録](../reports/Merge_UI_20260917.md)を参照。
+
+
 ## 2026-09-17 — Latest visual template asset export
 
 - 現在StudioからAura 17個 / Treadmill 10個を正式Repositoryのassetsへ保存。保存済みバイト列を再読込し、Deserializeしたライブラリの名前・階層・主要Visual設定・Beam/Trail参照・PrimaryPartをStudioと照合。Aura 260 Instance / Treadmill 113 Instance。AuraのCFrameに最大4.11e-10未満の標準シリアライズ誤差、その他検査項目は一致。

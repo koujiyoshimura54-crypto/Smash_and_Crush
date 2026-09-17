@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-09-17 — Redesign Merge item selection flow
+
+- Mergeを開始・Item選択・自動3 Socketと実行の3画面へ変更。大きなButton / Text / Card、戻る、空一覧、不足表示を追加。
+- Rarity降順だけだった手動Sortを廃止し、Fire→Ice→Electric、Rarity昇順、Type順、ItemId順へ固定。
+- 既存Server Merge判定の読み取り専用Stateを追加。消費・結果・保存・Balance・他Tab / 通知のコードは変更なし。
+- 隔離StoreでMergeと再Join保存、PC / Smartphone / Tablet表示を確認。新画像Assetなし。[監査・検証](../reports/Merge_UI_20260917.md)。
+
+
 ## 2026-09-17 — Save latest Aura and Treadmill visual templates
 
 - Studio最新版をAura 17個 / Treadmill 10個の標準rbxmとして保存。ディスク再読込で名前・Visual構造・主要設定を照合。2つのassetだけをrbxm除外規則の例外とする。
