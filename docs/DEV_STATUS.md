@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-19 — Merge card visual polish
+
+- fetch後のorigin/main=`a98b70e`とStudioソースを照合し、MergeInventory.pngを閲覧。STEP 2の表示のみ改修し、ItemMaster / Server eligibility / Sort / Merge / Save / Balanceは変更なし。
+- Cardと画像・5 Star・×Nを大型化し、内側四角背景を除去。StarのGold Glow、Lavender未到達Star、Element Border / Soft Glow、Server CanMergeによる軽い強調、選択時1.04倍とGold外周を実装。FredokaOneを維持。
+- PC / iPhone 17 Pro Landscape / Fire HD 10 LandscapeのStudio Simulatorで3列・Scroll・明るさ・画像・所有数・5 Slot・BACK / Titleを実表示確認。短いLandscapeの選択パネルだけを安全領域へ拡張し、Card全体を表示できる高さを確保。実機タッチは未検証。
+- 隔離Store fixtureでCommon / Uncommon / Rare / Epic、×1 / ×2 / ×3 / ×4、Protein / Glove / TrainingBelt、Fire / Ice / Electricを確認。3個所持でもServerのSaving gate中はCanMerge=falseで強調解除、解除後は復帰。通常・Merge可能・選択中の状態を確認。
+- 実Activatedで選択Scale最大1.04、Gold Border、約0.20秒のFeedbackを測定。スマホの選択時に外周GlowがScroll領域内に収まり、隣Cardとの重なりなし。STEP 3の完成画像、素材★4→完成★5、3 Socket、3/3、MERGE有効と、1/3不足を確認。BACK 3→2→1で元配置へ復帰。
+- QA用Script / 一時観測LocalScriptを撤去し、DataStoreConfigを原文へ復元。QA隔離Storeでは既存ランキングmirror保存Warningを観測。一時fixtureの構文・監査コマンドエラーは修正・撤去後の通常Playと分離。最終通常Store PlayのError / Warning / Infinite Yieldはなし。
+
 ## 2026-09-18 — Merge STEP 2 rarity-star cards (completed)
 
 - Fast-forwarded the clean tracked tree to `origin/main` at `e4e91da`, then used the current Bright Merge palette and FredokaOne implementation as the baseline. Reviewed `MergeInventory.png` for card information hierarchy and brightness only; it was not imported as an asset.

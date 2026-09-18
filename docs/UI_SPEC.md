@@ -1,5 +1,16 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-19 — Merge STEP 2 card visual polish
+
+- Cardは固定5 Star / Item画像 / `×N`を維持し、最低幅を優先して最大4列・中央配置・20px間隔へ変更。少数Cardも中央へ配置する。Scrollは維持。
+- 短いLandscapeではSTEP 2の選択パネルだけをInventory Tabs下の画面安全領域へ広げる。STEP 1 / STEP 3へ戻ると元のサイズ・位置へ復帰し、Inventory shellや他Tabの配置は変更しない。
+- Item画像の内側四角背景は透明化。Cardは旧Bright Purpleを最低明度とする明るいグラデーション。FireはCoral、IceはCyan、ElectricはGoldのBorder / 薄い外周Glow / ごく弱い画像背面光を使う。
+- Starは引き続き`ItemMaster.RarityRank`が正本。固定5 Slotを均等配置し、有効StarはGold本体・Dark Gold輪郭・上側Highlight・薄いYellow Glow、未到達StarはLavender。追加画像AssetやFontは使用しない。
+- 所有数はFredokaOneの白文字とDark Purple Stroke、通常30px / 短いLandscape28px。Card名・Element名・Rarity名・Owned:は表示しない。
+- Merge可能の軽い強調は、既存Server応答`recipe.CanMerge`と既存のfresh / pending状態からBorder明度・太さ・Element Glowを更新する。Countによる別のMerge判定を追加しない。Starと所有数の色は変えない。
+- Activated後はGold Border 4px / Soft Gold Glow / SurfaceのUIScale 1.04で約0.18秒Feedbackを表示してSTEP 3へ進む。Gridの実寸は変更せず、連打・BACK・再表示で遅延遷移を二重実行しない。
+- Studio実測はPC 230×224 / 画像146px、iPhone 17 Pro Landscape 211×143 / 画像95px、Fire HD 10 Landscape 194×224 / 画像146px、各3列。Star領域は通常40px高 / 短いLandscape34px高。並び順・Recipe・Server処理・STEP 3 Previewの正本は従来どおり。
+
 ## 2026-09-18 — Merge STEP 2 item cards
 
 - STEP 2 cards show only five fixed rarity-star slots, the item image, and `×N` owned count. Item type, element name, rarity name, and the `Owned:` prefix are hidden.

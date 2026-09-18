@@ -1,6 +1,7 @@
 -- Merge presentation only. Recipes and eligibility come from ItemMergeService.
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
+local TweenService=game:GetService("TweenService")
 local player=Players.LocalPlayer
 local Master=require(RS.Config:WaitForChild("ItemMaster"))
 local HUD=require(RS.Modules:WaitForChild("HUDLayout"))
@@ -29,6 +30,7 @@ local loaded,fresh,pending,fetching=false,false,false,false
 local revision=0
 local status=""
 local render,refresh,layout
+local selecting=nil
 
 local function make(class,name,parent)
  local x=Instance.new(class)
@@ -105,14 +107,39 @@ local function makeStarSockets(parent,item)
  list.VerticalAlignment=Enum.VerticalAlignment.Center
  list.Padding=UDim.new(0,1)
  for i=1,5 do
-  local star=label("Star"..i,row,"★",24)
-  star.LayoutOrder=i
-  star.Size=UDim2.new(.2,-1,1,0)
+  local slot=make("Frame","Slot"..i,row)
+  slot.LayoutOrder=i
+  slot.Size=UDim2.new(.2,-1,1,0)
+  if i<=rank then
+   local glow=label("Glow",slot,"★",32)
+   for _,child in ipairs(glow:GetChildren()) do if child:IsA("UIStroke") then child:Destroy() end end
+   glow.Size=UDim2.new(1,6,1,6)
+   glow.Position=UDim2.fromOffset(-3,-3)
+   glow.TextScaled=true
+   glow.TextColor3=Color3.fromRGB(255,239,142)
+   glow.TextTransparency=.68
+   glow.TextStrokeTransparency=1
+   local halo=Instance.new("UIStroke",glow)
+   halo.Color=glow.TextColor3
+   halo.Thickness=3
+   halo.Transparency=.84
+  end
+  local star=label("Star",slot,"★",32)
+  for _,child in ipairs(star:GetChildren()) do if child:IsA("UIStroke") then child:Destroy() end end
+  star.Size=UDim2.fromScale(1,1)
   star.TextScaled=true
   star.TextWrapped=false
-  star.TextColor3=i<=rank and palette.Gold or Color3.fromRGB(205,175,236)
-  star.TextStrokeColor3=i<=rank and palette.Ink or Color3.fromRGB(111,63,161)
-  star.TextStrokeTransparency=i<=rank and .1 or .35
+  star.TextColor3=i<=rank and Color3.new(1,1,1) or Color3.fromRGB(218,188,247)
+  star.TextStrokeTransparency=1
+  local outline=Instance.new("UIStroke",star)
+  outline.Color=i<=rank and Color3.fromRGB(193,114,24) or Color3.fromRGB(140,93,183)
+  outline.Thickness=1.4
+  outline.Transparency=i<=rank and .05 or .25
+  if i<=rank then
+   local light=Instance.new("UIGradient",star)
+   light.Rotation=90
+   light.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(255,255,210)),ColorSequenceKeypoint.new(.45,palette.Gold),ColorSequenceKeypoint.new(1,Color3.fromRGB(255,177,42))})
+  end
  end
  return row
 end
@@ -161,7 +188,13 @@ selection.AutomaticCanvasSize=Enum.AutomaticSize.Y
 selection.CanvasSize=UDim2.new()
 local grid=Instance.new("UIGridLayout",selection)
 grid.SortOrder=Enum.SortOrder.LayoutOrder
-grid.CellPadding=UDim2.fromOffset(10,10)
+grid.CellPadding=UDim2.fromOffset(20,20)
+grid.HorizontalAlignment=Enum.HorizontalAlignment.Center
+local listPadding=Instance.new("UIPadding",selection)
+listPadding.PaddingTop=UDim.new(0,10)
+listPadding.PaddingBottom=UDim.new(0,10)
+listPadding.PaddingLeft=UDim.new(0,12)
+listPadding.PaddingRight=UDim.new(0,12)
 local empty=label("Empty",root,"",22)
 local execute=make("Frame","Execute",root)
 local source=make("Frame","SelectedItem",execute)
@@ -210,6 +243,22 @@ local function less(a,b)
  if at~=bt then return at<bt end
  return a.ItemId<b.ItemId
 end
+local function cardVisual(card,selected)
+ local recipe=byId[card.Name]
+ -- Presentation of the same authoritative flag used by the MERGE button.
+ local ready=fresh and recipe~=nil and recipe.CanMerge==true and not pending
+ local surface=card.Surface
+ if not selected then surface.SelectionScale.Scale=1 end
+ local element=colors[Master.Get(card.Name).Element] or palette.SocketEdge
+ local edge=selected and palette.Gold or (ready and element:Lerp(Color3.new(1,1,1),.24) or element)
+ surface.Edge.Color=edge
+ surface.Edge.Thickness=selected and 4 or (ready and 3 or 2)
+ surface.Halo.UIStroke.Color=edge
+ surface.Halo.UIStroke.Transparency=selected and .55 or (ready and .7 or .84)
+ surface.ItemGlow.BackgroundTransparency=ready and .9 or .95
+ card:SetAttribute("MergeReady",ready)
+ card:SetAttribute("Selected",selected)
+end
 local function rebuildCards()
  for _,card in ipairs(cards) do card:Destroy() end
  cards={}
@@ -217,34 +266,57 @@ local function rebuildCards()
   if recipe.Count>0 then
    local item=Master.Get(recipe.ItemId)
    local card=make("TextButton",recipe.ItemId,selection)
-   decorate(card,template)
-   paint(card,palette.Card,palette.CardBottom,palette.SocketEdge)
    card.Text=""
+   card.AutoButtonColor=false
    card.LayoutOrder=#cards+1
    card:SetAttribute("ItemId",recipe.ItemId)
-   local picture=make("ImageLabel","ItemImage",card)
+   local surface=make("Frame","Surface",card)
+   surface.AnchorPoint=Vector2.new(.5,.5)
+   surface.Position=UDim2.fromScale(.5,.5)
+   surface.Size=UDim2.fromScale(1,1)
+   decorate(surface,template)
+   -- Keep every point of the card at least as bright as the previous flat fill.
+   paint(surface,palette.Card:Lerp(Color3.new(1,1,1),.1),palette.Card,colors[item.Element])
+   for _,child in ipairs(surface:GetChildren()) do
+    if child:IsA("UIStroke") and child.ApplyStrokeMode==Enum.ApplyStrokeMode.Border then child.Name="Edge" end
+   end
+   local visualScale=Instance.new("UIScale",surface)
+   visualScale.Name="SelectionScale"
+   local halo=make("Frame","Halo",surface)
+   halo.Size=UDim2.fromScale(1,1)
+   surface:FindFirstChildOfClass("UICorner"):Clone().Parent=halo
+   local softEdge=Instance.new("UIStroke",halo)
+   softEdge.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+   softEdge.Thickness=7
+   local itemGlow=make("Frame","ItemGlow",surface)
+   itemGlow.BackgroundColor3=colors[item.Element]
+   local round=Instance.new("UICorner",itemGlow)
+   round.CornerRadius=UDim.new(1,0)
+   local fade=Instance.new("UIGradient",itemGlow)
+   fade.Rotation=90
+   fade.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.5,.15),NumberSequenceKeypoint.new(1,1)})
+   local picture=make("ImageLabel","ItemImage",surface)
    picture.Image=item.Image
    picture.ScaleType=Enum.ScaleType.Fit
-   picture.BackgroundTransparency=0
-   picture.BackgroundColor3=colors[item.Element]
-   local corner=template.ItemImage:FindFirstChildOfClass("UICorner")
-   if corner then corner:Clone().Parent=picture end
-   makeStarSockets(card,item)
-   local owned=label("Owned",card,"×"..tostring(recipe.Count),22)
+   makeStarSockets(surface,item)
+   local owned=label("Owned",surface,"×"..tostring(recipe.Count),30)
    owned.TextWrapped=false
-   card.MouseButton1Down:Connect(function()
-    paint(card,palette.Card,palette.CardBottom,palette.Gold)
-   end)
-   card.MouseButton1Up:Connect(function()
-    if step==2 then paint(card,palette.Card,palette.CardBottom,palette.SocketEdge) end
-   end)
    card.Activated:Connect(function()
-    paint(card,palette.Card,palette.CardBottom,palette.Gold)
-    selectedId=recipe.ItemId
-    step=3
-    status=""
-    render()
-    task.spawn(refresh)
+    if selecting or step~=2 then return end
+    selecting=card
+    cardVisual(card,true)
+    TweenService:Create(visualScale,TweenInfo.new(.1,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Scale=1.04}):Play()
+    task.delay(.18,function()
+     if selecting~=card then return end
+     selecting=nil
+     if card.Parent then visualScale.Scale=1;cardVisual(card,false) end
+     if not card.Parent or step~=2 or not visible() then return end
+     selectedId=recipe.ItemId
+     step=3
+     status=""
+     render()
+     task.spawn(refresh)
+    end)
    end)
    table.insert(cards,card)
   end
@@ -273,6 +345,17 @@ layout=function()
  local s=HUD.GetScale(page)
  scale.Scale=1/math.max(s,.01)
  local w,h=page.AbsoluteSize.X,page.AbsoluteSize.Y
+ local shortSelection=step==2 and h<260
+ root.Position=UDim2.new()
+ if shortSelection then
+  -- A short landscape selection sheet uses the safe GUI width below the tabs.
+  -- Only this step expands; the authored Inventory and other steps stay intact.
+  local guiSize=inventory.Parent.AbsoluteSize
+  local top=inventory.Tabs.AbsolutePosition.Y+inventory.Tabs.AbsoluteSize.Y+4
+  w=math.max(w,guiSize.X-32)
+  h=math.max(h,guiSize.Y-top-6)
+  root.Position=UDim2.fromOffset(((guiSize.X-w)/2-page.AbsolutePosition.X)/s,(top-page.AbsolutePosition.Y)/s)
+ end
  root.Size=UDim2.fromOffset(w,h)
  local compact=h<340
  rect(back,10,8,100,40)
@@ -294,18 +377,26 @@ layout=function()
  rect(intro,12,startTop+222*factor,w-24,40*factor)
  intro.TextSize=math.max(16,20*factor)
  rect(selection,10,58,w-20,h-68)
+ if shortSelection then
+  rect(back,10,2,100,40)
+  rect(title,120,2,w-132,40)
+  rect(selection,10,48,w-20,h-54)
+ end
  rect(empty,12,60,w-24,h-72)
- local cols=math.max(1,math.floor((w+8)/158))
- local cw=(w-30-(cols-1)*10)/cols
+ local cols=math.clamp(math.floor((w-24)/210),1,4)
+ cols=math.min(cols,math.max(1,#cards))
+ local cw=math.min(230,(w-44-(cols-1)*20)/cols)
  grid.FillDirectionMaxCells=cols
- local cardHeight=compact and 138 or 158
+ local cardHeight=shortSelection and math.min(164,h-74) or (compact and 204 or 224)
  grid.CellSize=UDim2.fromOffset(cw,cardHeight)
  for _,card in ipairs(cards) do
-  rect(card.RarityStars,10,6,cw-20,28)
-  local imageSize=math.min(cw-24,cardHeight-62)
-  rect(card.ItemImage,(cw-imageSize)/2,34,imageSize,imageSize)
-  rect(card.Owned,8,cardHeight-30,cw-16,26)
-  card.Owned.TextSize=compact and 20 or 22
+  local surface=card.Surface
+  rect(surface.RarityStars,12,shortSelection and 2 or 6,cw-24,shortSelection and 34 or 40)
+  local imageSize=math.min(cw-20,cardHeight-(shortSelection and 48 or 78))
+  rect(surface.ItemImage,(cw-imageSize)/2,shortSelection and 26 or 44,imageSize,imageSize)
+  rect(surface.ItemGlow,6,38,cw-12,cardHeight-70)
+  rect(surface.Owned,8,cardHeight-(shortSelection and 28 or 36),cw-16,shortSelection and 28 or 34)
+  surface.Owned.TextSize=shortSelection and 28 or 30
  end
  rect(execute,0,0,w,h)
  local side,areaX,areaW,socketY,socketH
@@ -379,6 +470,7 @@ render=function()
  empty.Text=loaded and "NO ITEMS AVAILABLE" or "Loading…"
  if step==2 and not fresh and status~="" then empty.Text=status end
  root:SetAttribute("Step",step)
+ for _,card in ipairs(cards) do cardVisual(card,selecting==card) end
  local recipe=byId[selectedId]
  local item=selectedId and Master.Get(selectedId)
  local result=recipe and Master.Get(recipe.ResultItemId)
@@ -445,7 +537,7 @@ refresh=function()
  render()
 end
 choose.Activated:Connect(function() step=2;status="";render();task.spawn(refresh) end)
-back.Activated:Connect(function() step=math.max(1,step-1);status="";render() end)
+back.Activated:Connect(function() selecting=nil;step=math.max(1,step-1);status="";render() end)
 merge.Activated:Connect(function()
  if not merge.Interactable or pending then return end
  pending=true
@@ -473,6 +565,7 @@ local wasVisible=false
 local function opened()
  local now=visible()
  if now and not wasVisible then
+  selecting=nil
   step=1
   selectedId=nil
   status=""

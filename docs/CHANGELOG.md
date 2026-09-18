@@ -10,6 +10,12 @@
 
 # CHANGELOG
 
+## 2026-09-19 — Polish Merge item card visuals
+
+- Merge STEP 2のCard / 画像 / 固定5 Star / ×Nを大型化。明るいCard背景を維持し、内側のElement色四角を透明化。
+- Gold Starの輪郭・Highlight・Glow、Lavender未到達Star、Element Border / Soft Glowを追加。Server CanMergeに応じた軽い強調と、選択時Gold Border / 1.04倍Feedbackを実装。
+- 短いLandscapeではSTEP 2だけ選択パネルを安全領域へ拡張。PC / iPhone 17 Pro / Fire HD 10表示、Scroll、STEP 3回帰を確認。Merge判定・並び順・Balance・保存・他Tabは変更なし。
+
 ## 2026-09-18 — Simplify Merge item cards with rarity stars
 
 - Simplified Merge STEP 2 cards to five fixed rarity-star slots, a larger item image, and `×N` owned count.
