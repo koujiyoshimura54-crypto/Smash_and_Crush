@@ -1,5 +1,10 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-19 — Total Strength ranking display correction
+
+- Production `TotalStrengthRanking_v1` raw top values were verified as descending. The observed `15M` row was raw `150,444,109`, ahead of raw `142,065,423` as expected.
+- Fixed only `RankingBoardController.shortNumber`: fractional zeroes are trimmed only when a decimal point exists. OrderedDataStore writes/reads, player-name binding, Daily ranking behavior, and balance remain unchanged.
+
 ## 2026-09-19 — Merge card visual polish
 
 - fetch後のorigin/main=`a98b70e`とStudioソースを照合し、MergeInventory.pngを閲覧。STEP 2の表示のみ改修し、ItemMaster / Server eligibility / Sort / Merge / Save / Balanceは変更なし。

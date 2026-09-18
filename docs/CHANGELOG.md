@@ -1,3 +1,8 @@
+# 2026-09-19 — Total Strength ranking display correction
+
+- Preserved the descending OrderedDataStore ranking and corrected compact-number formatting so integer trailing zeroes are not removed (`150M` no longer renders as `15M`).
+- No ranking data, player saves, balance, or ordering rules were changed.
+
 # 2026-09-18 — Achievement Badge 5種類を実装
 
 - First Smash、First Rebirth、First Legendary、World 1 Complete、Into World 2を正規Serverイベントへ接続。
