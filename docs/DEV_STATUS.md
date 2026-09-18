@@ -384,3 +384,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - MergeFlow now resets all step roots to hidden on every render and enables only STEP 1, STEP 2, or STEP 3 content. STEP 1 gained `0/3 ITEMS` and three guidance sockets; STEP 3 no longer duplicates result text in the status line.
 - Common through Rare purchase buttons now use the live Win HUD Trophy image and numeric price; Epic and Legendary retain the standard Robux logo and Marketplace price.
 - Server merge validation, item transactions, persistence, badges, pricing, and balance remain unchanged.
+## 2026-09-18 — Item notification seen timing
+
+- Removed Items-open and acquisition-time bulk acknowledgement. Added per-Item viewport exposure tracking and deferred acknowledgement on Items exit/Inventory close.
+- Inventory and Items-tab acknowledgement are independently persisted per Item within the existing notification set; old plain Seen IDs remain backward compatible.
+- Merge cards are excluded. Item acquisition, purchase, equip, merge, balance, and saved-data schema remain unchanged.

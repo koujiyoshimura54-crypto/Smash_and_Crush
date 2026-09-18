@@ -357,3 +357,8 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 - Merge uses three mutually exclusive client views: STEP 1 start guidance, STEP 2 owned mergeable Item selection, and STEP 3 selected-Item execution. Selection accepts owned counts from one upward; material sufficiency is shown only in STEP 3 and remains server-authoritative.
 - STEP 3 caps its visual material count at the required three. Counts one and two show `Not enough identical items` and keep MERGE disabled; counts of three or more show `3/3 ITEMS` and use the existing server `CanMerge` result.
 - Stars 1–3 Item purchase buttons display the existing Win HUD Trophy image plus the numeric Win price. Stars 4–5 retain the standard Robux logo plus live Marketplace price.
+## 2026-09-18 — Item notification acknowledgement
+
+- New regular-Item guidance progresses independently through Inventory, Items tab, and individual Item levels. Each upper level is acknowledged after it was displayed and the player leaves that surface.
+- Individual Item guidance is acknowledged only after the normal Items card/guide button was recognizably inside the ScrollingFrame viewport and the player subsequently leaves Items. Offscreen and never-viewed Items remain Unseen independently.
+- Seen persistence continues to use `InventoryNotificationSeen.Items`; no DataStore schema or Item acquisition/equip/merge rule changed.

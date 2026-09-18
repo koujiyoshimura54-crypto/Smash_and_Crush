@@ -324,3 +324,10 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 - STEP 2 exclusively shows BACK, `SELECT 1 ITEM`, and the existing Item-card presentation for every owned mergeable regular Item, including counts of one or two.
 - STEP 3 exclusively shows BACK, the selected Item, three material sockets, capped `N/3 ITEMS`, result preview, shortage status, and MERGE. The selection list is hidden; MERGE is enabled only from the current server projection when three materials are available.
 - Each render first hides every step-specific root and the legacy MergePanel, then enables only the current step. BACK transitions are STEP 3 to 2 and STEP 2 to 1.
+## 2026-09-18 — Staged Item notification seen timing
+
+- Item notifications have independent Inventory, Items-tab, and individual-Item stages. Opening a surface records that the upper stage was shown; it remains visible until the player closes Inventory or leaves Items.
+- An individual Item is only a Seen candidate when its normal Items-tab card/guide button intersects the ScrollingFrame and screen by a recognizable amount: at least 35% of each dimension, capped at 32px width and 24px height. `Visible=true` alone is insufficient.
+- Entering the viewport keeps `!` visible. Only leaving the normal Items view marks the individually recorded Items Seen. Items never shown remain Unseen, including cards below the canvas viewport.
+- Inventory and Items-tab stages use per-Item namespaced entries in the existing `InventoryNotificationSeen.Items` set. Existing plain Item IDs remain the persistent individual Seen source, preserving old saves without a schema change.
+- Merge STEP 2 cards do not participate in Items notification exposure. A successful Equip may immediately resolve the corresponding individual notification under the existing notification-condition rule.

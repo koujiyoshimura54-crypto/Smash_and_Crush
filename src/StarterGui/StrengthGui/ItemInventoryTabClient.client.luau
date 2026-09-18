@@ -251,7 +251,6 @@ for n=1,5 do
  rarityBadges[n]=badge
  b.Activated:Connect(function()
   rarityIndex=n
-  page:SetAttribute("UnseenRarity_"..rarities[n],nil)
   list.CanvasPosition=Vector2.zero
   render()
  end)
@@ -276,7 +275,6 @@ end)
 local function opened()
  if shell.Visible and page.Visible then
   rarityIndex=1
-  page:SetAttribute("UnseenRarity_"..rarities[rarityIndex],nil)
   list.CanvasPosition=Vector2.zero
   refresh()
  end

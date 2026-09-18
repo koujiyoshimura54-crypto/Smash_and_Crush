@@ -369,3 +369,8 @@
 - Made all three Merge views explicitly exclusive and added the missing STEP 1 count/socket guidance.
 - Kept one- and two-copy Items selectable, while STEP 3 alone shows shortages and controls MERGE availability from server state.
 - Changed stars 1–3 Item buttons to Trophy plus numeric Win price; stars 4–5 retain Robux logo plus Marketplace price.
+## 2026-09-18 — Fix item notification seen timing
+
+- Item `!` badges now remain visible when first entering the Items viewport and become Seen only after leaving the Items view.
+- Offscreen cards remain Unseen; Inventory and Items-tab badges acknowledge independently after their respective surfaces are left.
+- Reused existing notification persistence without a DataStore schema change.
