@@ -9,6 +9,7 @@ local Boss=require(game.ServerScriptService.World.BossCombatService)
 local Trophy=require(game.ServerScriptService.Services.TrophyRewardService)
 local ItemDrops=require(game.ServerScriptService.Services.EnemyDropGachaService)
 local PlayerData=require(game.ServerScriptService.Services.PlayerDataService)
+local Badges=require(game.ServerScriptService.Services.BadgeAwardService)
 local watched=setmetatable({}, {__mode="k"})
 local lossRespawns=setmetatable({}, {__mode="k"})
 local M={} local map,folder,remote,remoteConnection local enemies={} local states=setmetatable({},{__mode="k"}) local sessions=setmetatable({},{__mode="k"}) local token=0
@@ -691,7 +692,9 @@ local function defeat(p,n)
   if p.Parent==Players and state(p)==ps and ps.Defeated[n] then
    local cleared=Stage.ClearStage(p,n)
    if cleared then
+    Badges.Award(p,"FirstSmash")
     local st=Stage.GetState(p)
+    if st.WorldComplete then Badges.Award(p,"World1Complete") end
     send(p,{Type="StageCleared",Stage=n,CurrentStage=st.CurrentStage,WorldComplete=st.WorldComplete})
    end
   end

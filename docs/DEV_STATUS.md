@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-18 — Achievement Badge（Completed）
+
+- BadgeConfigへ5 Badge IDを集約し、BadgeAwardServiceがRoblox BadgeServiceの所有確認・付与・Session重複抑止・失敗隔離を担当。
+- First Smash、First Rebirth、First Legendary、World 1 Complete、Into World 2を各正規Server成立地点へ接続。Join時遡及、独自UI、Badge用DataStore、Balance変更なし。
+- Legendary通常ItemはBoss Drop、Daily / Time / Community Reward、Secret Pack、Win Shop、Developer Product、Mergeの成立後に共通判定。Debug / QA直接付与は対象外。
+
 ## 2026-09-18 — Administrator Treadmill Game Pass
 
 - TreadmillConfigのPremiumTreadmillPassIdを0から1982996954へ正式設定。実Marketplace商品はAdministrator Treadmill / 450 Robux（検証時点）。価格はコードへ複製していない。

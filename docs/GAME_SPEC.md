@@ -2,19 +2,21 @@
 
 ## 2026-09-18 — Achievement Badge
 
-以下の5種類を初期Achievement Badge Collectionとする。Roblox Creator Dashboardでは作成済み・Activeだが、ゲーム内の付与処理は未実装。並びは代表的な進行イメージであり、取得必須順序ではない。BadgeはBalance効果を持たず、Strength / Win / Item性能へ影響しない。
+以下の5種類を初期Achievement Badge Collectionとする。Roblox Creator Dashboardで作成済み・Activeで、Serverの正規成立経路から付与する。並びは代表的な進行イメージであり、取得必須順序ではない。BadgeはBalance効果を持たず、Strength / Win / Item性能へ影響しない。
 
 | Badge Name | Badge ID | 正式取得条件 | 実装状態 |
 |---|---:|---|---|
-| First Smash | 133584961163786 | Playerが初めてBossを1体正規撃破した時。Smash & Crushでの最初のBoss撃破達成を記念する。 | Badge作成済み / 付与未実装 |
-| First Rebirth | 550217286582115 | Server側でRebirthが正常成立し、RebirthCountが初めて1になった時。Button押下だけでは成立しない。 | Badge作成済み / 付与未実装 |
-| First Legendary | 4387545691338666 | PlayerがLegendary Rarityの通常Itemを初めて正規取得した時。装備時ではない。Boss Dropに限定せず、Daily Reward、Time Reward、Community等のItem Reward、Secret Pack、Shop / Developer Product、今後追加される正規Item付与経路をすべて対象とする。Debug / QA / 開発用直接付与は対象外。 | Badge作成済み / 付与未実装 |
-| World 1 Complete | 2118618041135837 | World1 Stage10 Bossを正規撃破し、既存のWorldComplete正規判定でWorld1 Completeが成立した時。Stage10到達だけでは成立しない。 | Badge作成済み / 付与未実装 |
-| Into World 2 | 3295862437341420 | World2 Unlockだけではなく、Gate解放後にPlayerが初めてWorld2へ実際に移動・進入し、初回進入が成立した時。 | Badge作成済み / World2完成時に付与実装予定 |
+| First Smash | 133584961163786 | Playerが初めてBossを1体正規撃破した時。Smash & Crushでの最初のBoss撃破達成を記念する。 | Badge作成済み / 付与実装済み |
+| First Rebirth | 550217286582115 | Server側でRebirthが正常成立し、RebirthCountが初めて1になった時。Button押下だけでは成立しない。 | Badge作成済み / 付与実装済み |
+| First Legendary | 4387545691338666 | PlayerがLegendary Rarityの通常Itemを初めて正規取得した時。装備時ではない。Boss Dropに限定せず、Daily Reward、Time Reward、Community等のItem Reward、Secret Pack、Shop / Developer Product、今後追加される正規Item付与経路をすべて対象とする。Debug / QA / 開発用直接付与は対象外。 | Badge作成済み / 付与実装済み |
+| World 1 Complete | 2118618041135837 | World1 Stage10 Bossを正規撃破し、既存のWorldComplete正規判定でWorld1 Completeが成立した時。Stage10到達だけでは成立しない。 | Badge作成済み / 付与実装済み |
+| Into World 2 | 3295862437341420 | World2 Unlockだけではなく、Gate解放後にPlayerが初めてWorld2へ実際に移動・進入し、初回進入が成立した時。 | Badge作成済み / 付与実装済み |
 
 代表的な進行イメージは First Smash → First Rebirth → First Legendary → World 1 Complete → Into World 2。各Badgeは独立した条件成立時に取得でき、たとえばRebirth前にLegendary Itemを正規取得した場合もFirst Legendaryの条件を満たす。
 
-今回決定したのはIDと取得条件のみ。BadgeService、AwardBadge、BadgeConfig、Boss撃破 / Rebirth / Item取得 / WorldComplete / World2への接続、Badge通知・UI、DataStore変更は未実装。
+Badge IDはReplicatedStorage.Config.BadgeConfig、所有確認と付与はServerScriptService.Services.BadgeAwardServiceを正本とする。Roblox BadgeServiceの所有状態を使用し、Badge用DataStoreは持たない。付与失敗は警告だけに留め、元のゲーム処理を停止しない。独自通知・UIは追加せずRoblox標準Badge通知を使用する。
+
+接続点は、First SmashがEnemyManagerの正規Boss撃破後、First RebirthがRebirthCount 0→1のServer成功後、World 1 CompleteがStage.ClearStage後の既存WorldComplete成立時。First LegendaryはItemMaster.RarityがLegendaryの通常Itemについて、Boss Drop、Daily / Time / Community Reward、Secret Pack、Win Shop、Developer Product、Mergeの正規付与成立後に共通判定する。Debug / QAの直接付与は通知経路を呼ばない。Into World 2は同一Place内でServerがWorld2LobbySpawnへのPivotToを完了し、CurrentWorld=2を設定した後に判定する。Unlock、Gate接触、移動Requestだけでは付与しない。Join時の遡及付与は行わない。
 
 ## 2026-09-18 — Administrator Treadmill Game Pass
 

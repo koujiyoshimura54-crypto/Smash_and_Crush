@@ -1,3 +1,8 @@
+# 2026-09-18 — Achievement Badge 5種類を実装
+
+- First Smash、First Rebirth、First Legendary、World 1 Complete、Into World 2を正規Serverイベントへ接続。
+- Badge IDと共通Award処理を一元化。Badge用DataStore・独自UI・Balance変更なし。
+
 # 2026-09-18 — Treadmill表示色キーを現行倍率へ整合
 
 - TreadmillConfig.StrengthColorsを現行実倍率へ合わせ、Multiplier 2をBlue、Multiplier 3をGreenとして参照するよう修正。
