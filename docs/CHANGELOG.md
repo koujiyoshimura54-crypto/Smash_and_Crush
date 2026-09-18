@@ -380,3 +380,9 @@
 - Brightened all three Merge steps with purple panels/cards, outlined sockets, blue navigation, and gold primary actions.
 - Replaced STEP 3 Item/Element/rarity-name text with a larger Item image, rarity stars, and a star-to-star upgrade preview.
 - Kept exclusive step visibility, server eligibility, Merge transactions, saving, and balance unchanged.
+
+## 2026-09-18 — Fix inventory notification seen timing
+
+- Dumbbells／Auraの個別通知を実Viewport表示後、対象Tab離脱時に既読化。画面外Cardは未読を維持し、Inventory入口とTab通知も離脱時に独立して既読化。
+- Speedは既存Tab通知のみ修正。Itemsの正常動作とViewport判定を共通化し、並行Seen応答による既読の巻き戻りを防止。
+- 隔離Play・再Play保存復元・PC／Smartphone／Tablet横画面・Items回帰・購入後通知解消を確認。通知発生条件、Balance、購入、Equip、DataStore Schemaは変更なし。

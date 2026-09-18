@@ -396,3 +396,12 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Preserved exclusive step visibility and existing server state/request handling. No Server, Item, Balance, Save, or Badge changes.
 - Normal Play navigation and visual checks cover PC, iPhone 17 Pro Landscape, and Fire HD 10 Landscape in Studio Simulator. Client-only presentation fixtures supplement 1/2/3+ material states and ★4→★5 without changing Player inventory or sending Merge requests; actual Merge transactions are outside this visual-only regression.
 - Removed the temporary presentation fixture and repeated normal Play: STEP 1/2/3 exclusive Visible states, 1/3 disabled state, removed STEP 3 name/identity/result labels, and an empty Runtime console confirmed. Phone ★5 fits at 17px; checked execution controls have no rectangle overlaps. Device Simulator was returned to the normal viewport. Physical devices were not tested.
+
+## 2026-09-18 — Inventory notification exposure and acknowledgement
+
+- DumbbellsのTab Open一括Seen／Buy交差即Seen、AuraのTab Open一括Seen、SpeedのTab Open即Seenを修正。Items 7403ef9と同じ「表示中は維持、離脱時Seen」へ統一。
+- 共通Viewport判定は各方向35%、上限32px／24px。Dumbbells／Auraは実表示したIDのみ、Speedは既存Tab通知のみ。入口通知と下位通知は独立。保存は既存集合内のキーを利用しSchema変更なし。
+- 隔離Storeの通常Play操作で表示直後維持、Tab／Merge／Close離脱、複数IDのSeen／Unseen分離、再Play復元を確認。PC・iPhone 17 Pro横・Fire HD10横のStudio Simulatorで画面外判定を確認。Items回帰では表示6件だけSeen、未表示3件はUnseen。
+- 隔離データでAura／Dumbbell購入・自動Equip・通知条件解消を確認。購入・性能・価格・Equip・Merge・Badge・Server保存処理は変更なし。最初の隔離起動は検証用Store名長超過で失敗し、短い名前へ訂正後のPlayはError／Warning／Infinite Yieldなし。
+- 2026-09-16のOpen／交差即Seen記録は旧動作の履歴。現行仕様は上記とGAME_SPEC／UI_SPECを正本とする。
+- 検証Script撤去・通常Store復元後の最終Playで各Tab／Merge／Closeを操作し、Runtime consoleが空であることを確認。Editへ戻し変更6ソースの一致確認後、StudioへCtrl+Sを実行。端末確認はSimulatorであり実機検証ではない。

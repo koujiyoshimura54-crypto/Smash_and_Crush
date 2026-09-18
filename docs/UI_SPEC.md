@@ -266,11 +266,13 @@ Stage9の名前を短縮名へ変更しない。Stage1〜5はモデル名から�
 | Rebirth | 現在回数、次Level条件、倍率、実行またはWorld1 MAX |
 | Stage Skip | Stage2〜10選択、Win/Robux購入。サーバーがLobby・非戦闘を再検証 |
 
-Inventory通知バッジはタブ単位の既読方式とする。新しいDumbbell／Aura／Speed解放または新しい所有Itemがあるタブだけ「！」を表示し、そのタブを開いた時点で消す。購入は消去条件ではない。別タブの未確認通知は残り、親Inventoryバッジは子タブの論理和で表示する。確認済みIDはPlayerDataへ保存するため、再Joinで同じ内容を再通知しない。
+Inventory通知は入口・Tab・個別Cardの段階を分離する。通知発生条件は従来のまま、Inventory／Tabを開いても即消去せず、表示後にClose／別Tab／Mergeへ離れた時にその段階を既読にする。入口の既読は下位へ伝播しない。既存Seen保存により再Joinでも確認済みIDを復元する。
 
-Dumbbellだけはタブ通知に加え、現在購入可能で未確認の各Buyボタンにも「！」を表示する。タブを開いてもBuy通知は一括既読にしない。DumbbellsのScrollingFrame表示領域とBuyボタンのAbsolutePosition / AbsoluteSizeが実際に交差した時点で、そのItemIdのBuy通知だけを既読にする。購入操作は不要。画面外のカードは未確認を維持し、スクロールして表示された直後にBadgeを消す。購入可能判定はDumbbellServiceの購入検証を共通利用し、所有済み・Win不足・無効定義・保存中は対象外。
+Dumbbells／Auraの既存Buyボタン「！」は、通常Tab内で対象が実Viewportへ入ったIDだけをShown候補として記録する。表示直後は「！」を残し、一覧を離れた時に候補IDだけSeenにする。スクロール下の未表示Cardは未読を維持する。購入は既読の必要条件ではなく、購入・Equip等による従来の通知条件解消は優先する。
 
-InventoryNotificationSeen.Dumbbellsはタブ既読、InventoryNotificationSeen.DumbbellBuyはBuyボタン既読として分離する。どちらもItemId単位で保存し、旧データでDumbbellBuyが欠ける場合は空集合として後方互換読込する。新しいDumbbellが購入可能になれば、既読済みの過去Itemと独立してタブと該当Buyボタンへ再通知する。Aura／Speed／Itemsの既読条件は変更しない。検証：[Dumbbell Buy通知報告](../reports/Dumbbell_Buy_Seen_Notifications_20260916/build_report.md)。
+InventoryNotificationExposureがItemsと同じAbsolutePosition／AbsoluteSizeの交差判定を共通提供する。画面・ScrollingFrame・Clipする祖先の範囲を使い、各方向35%（上限：幅32px／高さ24px）以上を必要とする。Visibleだけ・1px交差ではShownにしない。MergeのCardは対象外。Speedは既存Tab通知だけに離脱時Seenを適用し、Card通知は追加しない。
+
+既存InventoryNotificationSeen.Dumbbells／DumbbellBuy／Aura／Speedを再利用し、入口は各集合のInventory:ID、Aura TabはTab:ID、その他の既存ID用途は維持する。旧保存IDは既読として継承する。Itemsの段階的保存は変更なし。並行Seen応答が古くても、既読集合を未読へ巻き戻さない。旧実装の履歴：[Dumbbell Buy通知報告](../reports/Dumbbell_Buy_Seen_Notifications_20260916/build_report.md)。
 
 Panelは他の主要Panelと排他で開閉する。BUY WINの見た目上の導線はあるが、WinProducts空のため販売完成を意味しない（K10）。UIが示す課金所有状態と、StudioDebugConfigで効果が抑制されるテスト状態を区別する（K11）。
 

@@ -3,6 +3,7 @@ local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
 local Badges=require(RS.Modules:WaitForChild("BadgeRenderer"))
 local NotificationState=require(RS.Modules:WaitForChild("InventoryNotificationState"))
+local Exposure=require(RS.Modules:WaitForChild("InventoryNotificationExposure"))
 local player=Players.LocalPlayer
 local gui=script.Parent
 local badge=gui:WaitForChild("LeftMenu"):WaitForChild("InventoryButton"):WaitForChild("NotificationBadge")
@@ -41,7 +42,7 @@ local itemTabShown={}
 local actuallyShownItems={}
 local inventoryWasVisible=false
 local itemsWereVisible=false
-local checkVisibleBuyNotifications
+local dumbbellExposure=Exposure.new({Gui=gui,Panel=panel,Page=dumbbellPage,List=dumbbellList,Category="Dumbbells",CardCategory="DumbbellBuy"})
 local checkVisibleItemNotifications
 local function inventorySeenKey(id) return "Inventory:"..id end
 local function itemTabSeenKey(id) return "ItemsTab:"..id end
@@ -66,12 +67,12 @@ local itemTabBadge=guideBadge(itemTab)
 local dumbbellTabBadge=guideBadge(panel.Tabs:WaitForChild("Dumbbells"))
 
 local function render()
- local hasNew=false
+ local targets={}
+ for id,b in pairs(badges) do targets[id]=b.Parent end
+ dumbbellExposure:Update(affordable,targets)
+ local hasNew=dumbbellExposure:HasTab()
  for _,id in ids do
-  local canPurchase=affordable[id]==true
-  local tabNew=canPurchase and not NotificationState.IsSeen("Dumbbells",id)
-  local buyNew=canPurchase and not NotificationState.IsSeen("DumbbellBuy",id)
-  hasNew=hasNew or tabNew
+  local buyNew=dumbbellExposure:CardUnseen(id)
   local b=badges[id]
   if b then Badges.SetVisible(b,buyNew) end
  end
@@ -96,12 +97,11 @@ local function render()
   local value=rarityUnseen[rarity] and true or nil
   if itemPage:GetAttribute("UnseenRarity_"..rarity)~=value then itemPage:SetAttribute("UnseenRarity_"..rarity,value) end
  end
- badge.Parent:SetAttribute("DumbbellNewAvailable",hasNew)
+ badge.Parent:SetAttribute("DumbbellNewAvailable",dumbbellExposure:HasInventory())
  badge.Parent:SetAttribute("ItemNewAvailable",inventoryItemUnseen)
- badge.Visible=hasNew or inventoryItemUnseen or badge.Parent:GetAttribute("AuraPurchaseAvailable")==true or badge.Parent:GetAttribute("SpeedPurchaseAvailable")==true
+ badge.Visible=dumbbellExposure:HasInventory() or inventoryItemUnseen or badge.Parent:GetAttribute("AuraPurchaseAvailable")==true or badge.Parent:GetAttribute("SpeedPurchaseAvailable")==true
  Badges.SetVisible(itemTabBadge,itemTabUnseen)
  Badges.SetVisible(dumbbellTabBadge,hasNew)
- if checkVisibleBuyNotifications then task.defer(checkVisibleBuyNotifications) end
  if checkVisibleItemNotifications then task.defer(checkVisibleItemNotifications) end
 end
 table.insert(connections,badge.Parent:GetAttributeChangedSignal("AuraPurchaseAvailable"):Connect(render))
@@ -143,26 +143,9 @@ local function currentItemIds()
  for id,count in pairs(itemOwned) do if count>0 then table.insert(out,id) end end
  return out
 end
-local function currentDumbbellIds()
- local out={}
- for _,id in ipairs(ids) do if affordable[id] then table.insert(out,id) end end
- return out
-end
 local itemList=itemPage:WaitForChild("OwnedItems")
 local function recognizablyVisible(target)
- if not panel.Visible or not itemPage.Visible or not itemList.Visible or not target or not target.Visible then return false end
- local p,s=target.AbsolutePosition,target.AbsoluteSize
- local vp,vs=itemList.AbsolutePosition,itemList.AbsoluteSize
- local screen=gui.AbsoluteSize
- local left=math.max(p.X,vp.X,0)
- local right=math.min(p.X+s.X,vp.X+vs.X,screen.X)
- local top=math.max(p.Y,vp.Y,0)
- local bottom=math.min(p.Y+s.Y,vp.Y+vs.Y,screen.Y)
- local visibleWidth=math.max(0,right-left)
- local visibleHeight=math.max(0,bottom-top)
- return s.X>0 and s.Y>0
-  and visibleWidth>=math.min(32,s.X*.35)
-  and visibleHeight>=math.min(24,s.Y*.35)
+ return Exposure.IsVisible(gui,panel,itemPage,itemList,target)
 end
 checkVisibleItemNotifications=function()
  if not panel.Visible or not itemPage.Visible then return end
@@ -243,8 +226,6 @@ end))
 local function opened()
  if panel.Visible then
   task.spawn(refresh)
-  local dumbbellsPage=panel.Content:FindFirstChild("Dumbbells")
-  if dumbbellsPage and dumbbellsPage.Visible then NotificationState.MarkSeen("Dumbbells",currentDumbbellIds()) end
  end
  render()
 end
@@ -313,37 +294,7 @@ task.spawn(function()
  text.ZIndex=buyBadge.ZIndex+1  badges[id]=buyBadge
   render()
  end
- local function intersectsViewport(button)
-  if not panel.Visible or not dumbbellPage.Visible or not dumbbellList.Visible or not button.Visible then return false end
-  local p,s=button.AbsolutePosition,button.AbsoluteSize
-  local vp,vs=dumbbellList.AbsolutePosition,dumbbellList.AbsoluteSize
-  local screen=gui.AbsoluteSize
-  return s.X>0 and s.Y>0
-   and p.X<vp.X+vs.X and p.X+s.X>vp.X and p.Y<vp.Y+vs.Y and p.Y+s.Y>vp.Y
-   and p.X<screen.X and p.X+s.X>0 and p.Y<screen.Y and p.Y+s.Y>0
- end
- checkVisibleBuyNotifications=function()
-  local visible={}
-  for _,id in ids do
-   local b=badges[id]
-   local buy=b and b.Parent
-   if affordable[id]==true and not NotificationState.IsSeen("DumbbellBuy",id)
-    and buy and intersectsViewport(buy) then table.insert(visible,id) end
-  end
-  if #visible>0 then NotificationState.MarkSeen("DumbbellBuy",visible) end
- end
- local function queueVisibleCheck() task.defer(checkVisibleBuyNotifications) end
- table.insert(connections,dumbbellList:GetPropertyChangedSignal("CanvasPosition"):Connect(queueVisibleCheck))
- table.insert(connections,dumbbellList:GetPropertyChangedSignal("AbsolutePosition"):Connect(queueVisibleCheck))
- table.insert(connections,dumbbellList:GetPropertyChangedSignal("AbsoluteSize"):Connect(queueVisibleCheck))
- table.insert(connections,dumbbellPage:GetPropertyChangedSignal("Visible"):Connect(queueVisibleCheck))
- table.insert(connections,panel:GetPropertyChangedSignal("Visible"):Connect(queueVisibleCheck))
- for _,id in ids do
-  local buy=dumbbellList[id].BuyButton
-  table.insert(connections,buy:GetPropertyChangedSignal("AbsolutePosition"):Connect(queueVisibleCheck))
-  table.insert(connections,buy:GetPropertyChangedSignal("AbsoluteSize"):Connect(queueVisibleCheck))
- end
- queueVisibleCheck()
+ dumbbellExposure:Check()
 end)
 task.spawn(function()
  while alive do
