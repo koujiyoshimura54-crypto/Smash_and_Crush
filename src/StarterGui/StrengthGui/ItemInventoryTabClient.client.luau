@@ -13,6 +13,7 @@ local equipRemote=RS.Remotes:WaitForChild("ItemEquipRequest")
 local winRemote=RS.Remotes:WaitForChild("ItemPurchaseRequest")
 local robuxRemote=RS.Remotes:WaitForChild("ItemRobuxPurchaseRequest")
 local shell=script.Parent:WaitForChild("InventoryPanel")
+local trophyImage=script.Parent:WaitForChild("WinLabel"):WaitForChild("TrophyIcon").Image
 local page=shell.Content.Items
 local list=page.OwnedItems
 local owned,equipped={},{}
@@ -220,8 +221,8 @@ render=function()
     end)
    end
   elseif rarityIndex<=3 then
-   local winText=tostring(item.WinPrice):reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,","").." Win"
-   priceButton(c,"WinPurchase",winText,nil,UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(235,184,36),winRemote,id)
+   local winText=tostring(item.WinPrice):reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,","")
+   priceButton(c,"WinPurchase",winText,trophyImage,UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(235,184,36),winRemote,id)
   else
    priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(30,160,226),robuxRemote,id)
   end

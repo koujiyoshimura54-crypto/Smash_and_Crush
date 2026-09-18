@@ -314,6 +314,13 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 - YES/NO、中央Modal、PC/Phone/Tablet向けSize制約は共通。NO後は現在のGateを退出するまで再表示しない。
 ## 2026-09-18 — Item purchase currency and Dumbbell feedback
 
-- Item cards for Common, Uncommon, and Rare use one full-width purchase button showing `100 Win`, `300 Win`, or `1,000 Win`. They do not show a Robux or Win icon.
+- Item cards for Common, Uncommon, and Rare use one full-width purchase button showing the existing Win HUD Trophy icon beside `100`, `300`, or `1,000`. The button does not add a `Win` text suffix.
 - Epic and Legendary item cards show Roblox's standard Robux logo (`rbxasset://textures/ui/common/robux.png`) beside the live Marketplace product price. The previously referenced `rbxassetid://77577420970893` resolves to a Trophy image and must not be used for Robux currency. `DeveloperProductConfig` fallback prices are used only when Marketplace lookup fails.
 - A failed Dumbbell purchase uses the Inventory status presentation for a short English message. `NotEnoughWin` includes the selected Dumbbell's current `DumbbellItemMaster.PriceWin`; `DataSaving` and `AlreadyOwned` have explicit player-facing messages.
+
+## 2026-09-18 — Exclusive Merge steps
+
+- STEP 1 exclusively shows `SELECT ITEM`, `0/3 ITEMS`, three empty sockets, and the short merge explanation. The Item list and execution controls are hidden.
+- STEP 2 exclusively shows BACK, `SELECT 1 ITEM`, and the existing Item-card presentation for every owned mergeable regular Item, including counts of one or two.
+- STEP 3 exclusively shows BACK, the selected Item, three material sockets, capped `N/3 ITEMS`, result preview, shortage status, and MERGE. The selection list is hidden; MERGE is enabled only from the current server projection when three materials are available.
+- Each render first hides every step-specific root and the legacy MergePanel, then enables only the current step. BACK transitions are STEP 3 to 2 and STEP 2 to 1.

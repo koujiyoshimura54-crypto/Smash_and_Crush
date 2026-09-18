@@ -364,3 +364,8 @@
 - Simplified stars 1–3 Item purchase buttons to `Price + Win`; stars 4–5 now clearly pair the existing Robux logo with the live Marketplace price.
 - Added short Inventory status messages for failed Dumbbell purchases, including the current required Win amount.
 - Purchase logic, balance values, and DataStore schema are unchanged.
+## 2026-09-18 — Fix Merge step visibility and item currency icons
+
+- Made all three Merge views explicitly exclusive and added the missing STEP 1 count/socket guidance.
+- Kept one- and two-copy Items selectable, while STEP 3 alone shows shortages and controls MERGE availability from server state.
+- Changed stars 1–3 Item buttons to Trophy plus numeric Win price; stars 4–5 retain Robux logo plus Marketplace price.

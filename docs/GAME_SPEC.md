@@ -351,3 +351,9 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 - Common / Uncommon / Rare items remain Win purchases and display `Price + Win` on their purchase button.
 - Epic / Legendary items remain Developer Product purchases. Their buttons display the Robux logo and the current Marketplace price, falling back to the configured 25 / 50 Robux values only when lookup fails.
 - This presentation does not change Item or Dumbbell prices, purchase processing, rewards, or saved-data schema.
+
+## 2026-09-18 — Merge step visibility and Item currency icons
+
+- Merge uses three mutually exclusive client views: STEP 1 start guidance, STEP 2 owned mergeable Item selection, and STEP 3 selected-Item execution. Selection accepts owned counts from one upward; material sufficiency is shown only in STEP 3 and remains server-authoritative.
+- STEP 3 caps its visual material count at the required three. Counts one and two show `Not enough identical items` and keep MERGE disabled; counts of three or more show `3/3 ITEMS` and use the existing server `CanMerge` result.
+- Stars 1–3 Item purchase buttons display the existing Win HUD Trophy image plus the numeric Win price. Stars 4–5 retain the standard Robux logo plus live Marketplace price.

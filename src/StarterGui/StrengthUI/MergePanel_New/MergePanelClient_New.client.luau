@@ -86,6 +86,18 @@ local title=label("StepTitle",root,"SELECT 1 ITEM",24)
 local start=make("Frame","Start",root)
 local choose=button("ChooseItem",start,"SELECT ITEM")
 choose.BackgroundColor3=Color3.fromRGB(232,171,35)
+local startCount=label("Count",start,"0/3 ITEMS",24)
+local startSocketArea=make("Frame","Sockets",start)
+local startSockets={}
+for i=1,3 do
+ local socket=make("Frame","Socket"..i,startSocketArea)
+ decorate(socket,old.MergeRecipe.Slots.Material1.Slot)
+ local corner=socket:FindFirstChildOfClass("UICorner")
+ if corner then corner.CornerRadius=UDim.new(1,0) end
+ local missing=label("Missing",socket,"?",30)
+ missing.Size=UDim2.fromScale(1,1)
+ table.insert(startSockets,socket)
+end
 local intro=label("Instruction",start,"Merge 3 identical items to upgrade",20)
 local selection=make("ScrollingFrame","Selection",root)
 selection.ScrollBarThickness=6
@@ -189,9 +201,15 @@ layout=function()
  rect(title,110,0,w-110,44)
  rect(start,0,0,w,h)
  local bw=math.min(w-16,520)
- rect(choose,(w-bw)/2,math.max(8,(h-120)/2),bw,64)
+ local startTop=math.max(8,(h-250)/2)
+ rect(choose,(w-bw)/2,startTop,bw,64)
  choose.TextSize=w<400 and 24 or 32
- rect(intro,8,math.max(8,(h-120)/2)+72,w-16,48)
+ rect(startCount,8,startTop+72,w-16,30)
+ rect(startSocketArea,8,startTop+106,w-16,72)
+ local startSide=math.min(64,startSocketArea.Size.Y.Offset)
+ local startTotal=startSide*3+20
+ for i,socket in ipairs(startSockets) do rect(socket,(startSocketArea.Size.X.Offset-startTotal)/2+(i-1)*(startSide+10),4,startSide,startSide) end
+ rect(intro,8,startTop+182,w-16,42)
  rect(selection,2,52,w-4,h-54)
  rect(empty,8,60,w-16,h-68)
  local cols=math.max(1,math.floor((w+10)/240))
@@ -247,21 +265,30 @@ layout=function()
 end
 
 render=function()
- start.Visible=step==1
- selection.Visible=step==2 and loaded and #cards>0
- empty.Visible=step==2 and (not loaded or #cards==0)
+ -- Every render starts from a fully hidden state, then enables only the active step.
+ -- This prevents stale UI from a previous step or the legacy panel from overlapping.
+ old.Visible=false
+ for _,object in ipairs({start,selection,empty,execute,footer,hint,back,title}) do object.Visible=false end
+ if step==1 then
+  start.Visible=true
+ elseif step==2 then
+  back.Visible=true
+  title.Visible=true
+  selection.Visible=loaded and #cards>0
+  empty.Visible=not loaded or #cards==0
+ elseif step==3 then
+  back.Visible=true
+  execute.Visible=true
+  footer.Visible=true
+  hint.Visible=true
+ end
  empty.Text=loaded and "NO ITEMS AVAILABLE" or "Loading…"
- if not fresh and status~="" then empty.Text=status end
- execute.Visible=step==3
- footer.Visible=step==3
- hint.Visible=step==3
- back.Visible=step>1
- title.Visible=step==2
+ if step==2 and not fresh and status~="" then empty.Text=status end
  root:SetAttribute("Step",step)
  local recipe=byId[selectedId]
  local item=selectedId and Master.Get(selectedId)
  local n=recipe and math.min(required,recipe.Count) or 0
- count.Text=("%d / %d ITEMS"):format(n,required)
+ count.Text=("%d/%d ITEMS"):format(n,required)
  sourceImage.Image=item and item.Image or ""
  sourceName.Text=item and (names[item.ItemType] or item.ItemType) or ""
  sourceMeta.Text=item and ((icons[item.Element] or "").." "..item.Element.." · "..item.Rarity) or ""
@@ -280,7 +307,15 @@ render=function()
  merge.AutoButtonColor=enabled
  merge.BackgroundColor3=enabled and Color3.fromRGB(37,99,255) or Color3.fromRGB(75,69,67)
  merge.Text=pending and "MERGING…" or "MERGE"
- hint.Text=pending and "Merging…" or status~="" and status or recipe and (errors[recipe.Code] or resultText.Text) or "Select another item"
+ if pending then
+  hint.Text="Merging…"
+ elseif status~="" then
+  hint.Text=status
+ elseif recipe and n<required then
+  hint.Text=errors.NotEnoughItems
+ else
+  hint.Text=""
+ end
  layout()
 end
 

@@ -379,3 +379,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Implemented currency-specific Item buttons: Win text for stars 1–3 and Robux logo plus live Marketplace price for stars 4–5.
 - Dumbbell purchase rejection codes now surface through the Inventory status area; insufficient funds include the authoritative item price.
 - Verified Studio purchase of `NORMAL_01`: Win deduction, ownership, automatic equip, card/HUD refresh, and ownership restoration after rejoin. Debug Win was restored to 0.
+## 2026-09-18 — Exclusive Merge flow and Item currency icons
+
+- MergeFlow now resets all step roots to hidden on every render and enables only STEP 1, STEP 2, or STEP 3 content. STEP 1 gained `0/3 ITEMS` and three guidance sockets; STEP 3 no longer duplicates result text in the status line.
+- Common through Rare purchase buttons now use the live Win HUD Trophy image and numeric price; Epic and Legendary retain the standard Robux logo and Marketplace price.
+- Server merge validation, item transactions, persistence, badges, pricing, and balance remain unchanged.
