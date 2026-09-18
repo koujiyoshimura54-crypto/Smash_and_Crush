@@ -223,7 +223,7 @@ render=function()
    local winText=tostring(item.WinPrice):reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,","").." Win"
    priceButton(c,"WinPurchase",winText,nil,UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(235,184,36),winRemote,id)
   else
-   priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxassetid://77577420970893",UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(30,160,226),robuxRemote,id)
+   priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(30,160,226),robuxRemote,id)
   end
  end
 end
