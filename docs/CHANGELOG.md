@@ -10,6 +10,12 @@
 
 # CHANGELOG
 
+## 2026-09-18 — Simplify Merge item cards with rarity stars
+
+- Simplified Merge STEP 2 cards to five fixed rarity-star slots, a larger item image, and `×N` owned count.
+- Filled stars now read `ItemMaster.RarityRank`; inactive slots use the existing bright lavender palette. Removed item type, element, rarity, and `Owned:` text from cards.
+- Preserved FredokaOne, the Bright Merge palette, stable item ordering, merge eligibility and server logic, and the completed STEP 3 preview.
+
 ## 2026-09-18 — Enable Administrator Treadmill game pass
 
 - Premium ×20 TreadmillへAdministrator Treadmill Game Pass（1982996954）を設定。

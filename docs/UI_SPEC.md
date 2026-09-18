@@ -1,5 +1,13 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-18 — Merge STEP 2 item cards
+
+- STEP 2 cards show only five fixed rarity-star slots, the item image, and `×N` owned count. Item type, element name, rarity name, and the `Owned:` prefix are hidden.
+- All five star positions remain fixed. Active stars use the Bright Merge gold and inactive stars use a visible lavender. The filled count reads `ItemMaster.RarityRank` directly; no UI-only rarity table is defined.
+- The item image is enlarged and keeps the existing bright Fire, Ice, and Electric image backgrounds. Cards retain the bright purple/lavender palette and use a gold edge for press/selection feedback.
+- The existing Fire → Ice → Electric, rarity, type, and ItemId ordering and the server-provided merge recipe eligibility remain unchanged. STEP 1 and STEP 3 layouts remain unchanged.
+- Responsive verification: PC cards are 150×158 with 96px images; iPhone 17 Pro landscape cards are 160×138 with 76px images and scroll; Fire HD 10 landscape cards are 151×158 with 96px images. Five stars fit without overlap, and `BACK` does not overlap `SELECT 1 ITEM`.
+
 ## 2026-09-18 — Administrator Treadmill purchase entry
 
 - Tredmill01の既存TrainingZoneを購入Triggerとして再利用。未所有Playerは乗るだけでRoblox Game Pass購入Promptへ進み、Eキー / Tap用Interact Buttonは表示しない。

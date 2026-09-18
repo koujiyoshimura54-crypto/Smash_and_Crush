@@ -21,9 +21,7 @@ local scale=Instance.new("UIScale",root)
 local elementOrder={Fire=1,Ice=2,Electric=3}
 local typeOrder={}
 for i,kind in ipairs(Master.Kinds) do typeOrder[kind]=i end
-local icons={Fire="🔥",Ice="❄️",Electric="⚡"}
 local colors={Fire=Color3.fromRGB(242,103,114),Ice=Color3.fromRGB(77,190,240),Electric=Color3.fromRGB(255,194,62)}
-local names={Protein="Protein",Glove="Glove",TrainingBelt="Training Belt"}
 local step,selectedId=1,nil
 local recipes,byId,cards={},{},{}
 local required=0
@@ -85,7 +83,6 @@ root.ZIndex=209
 local function stars(item)
  return item and string.rep("★",Master.RarityRank[item.Rarity] or 0) or ""
 end
-
 local function label(name,parent,text,size)
  local x=make("TextLabel",name,parent)
  x.Font=Enum.Font.FredokaOne
@@ -98,6 +95,26 @@ local function label(name,parent,text,size)
  local outline=inventory.Tabs.Merge.Label:FindFirstChildOfClass("UIStroke")
  if outline then outline:Clone().Parent=x end
  return x
+end
+local function makeStarSockets(parent,item)
+ local row=make("Frame","RarityStars",parent)
+ local rank=math.clamp(Master.RarityRank[item.Rarity] or 0,0,5)
+ local list=Instance.new("UIListLayout",row)
+ list.FillDirection=Enum.FillDirection.Horizontal
+ list.HorizontalAlignment=Enum.HorizontalAlignment.Center
+ list.VerticalAlignment=Enum.VerticalAlignment.Center
+ list.Padding=UDim.new(0,1)
+ for i=1,5 do
+  local star=label("Star"..i,row,"★",24)
+  star.LayoutOrder=i
+  star.Size=UDim2.new(.2,-1,1,0)
+  star.TextScaled=true
+  star.TextWrapped=false
+  star.TextColor3=i<=rank and palette.Gold or Color3.fromRGB(205,175,236)
+  star.TextStrokeColor3=i<=rank and palette.Ink or Color3.fromRGB(111,63,161)
+  star.TextStrokeTransparency=i<=rank and .1 or .35
+ end
+ return row
 end
 local function button(name,parent,text)
  local x=make("TextButton",name,parent)
@@ -212,10 +229,17 @@ local function rebuildCards()
    picture.BackgroundColor3=colors[item.Element]
    local corner=template.ItemImage:FindFirstChildOfClass("UICorner")
    if corner then corner:Clone().Parent=picture end
-   label("ItemName",card,names[item.ItemType] or item.ItemType,21)
-   label("Identity",card,(icons[item.Element] or "").." "..item.Element.." · "..item.Rarity,17)
-   label("Owned",card,"Owned: "..tostring(recipe.Count),17)
+   makeStarSockets(card,item)
+   local owned=label("Owned",card,"×"..tostring(recipe.Count),22)
+   owned.TextWrapped=false
+   card.MouseButton1Down:Connect(function()
+    paint(card,palette.Card,palette.CardBottom,palette.Gold)
+   end)
+   card.MouseButton1Up:Connect(function()
+    if step==2 then paint(card,palette.Card,palette.CardBottom,palette.SocketEdge) end
+   end)
    card.Activated:Connect(function()
+    paint(card,palette.Card,palette.CardBottom,palette.Gold)
     selectedId=recipe.ItemId
     step=3
     status=""
@@ -271,15 +295,17 @@ layout=function()
  intro.TextSize=math.max(16,20*factor)
  rect(selection,10,58,w-20,h-68)
  rect(empty,12,60,w-24,h-72)
- local cols=math.max(1,math.floor((w-10)/240))
+ local cols=math.max(1,math.floor((w+8)/158))
  local cw=(w-30-(cols-1)*10)/cols
  grid.FillDirectionMaxCells=cols
- grid.CellSize=UDim2.fromOffset(cw,150)
+ local cardHeight=compact and 138 or 158
+ grid.CellSize=UDim2.fromOffset(cw,cardHeight)
  for _,card in ipairs(cards) do
-  rect(card.ItemImage,8,8,70,80)
-  rect(card.ItemName,86,8,cw-94,48)
-  rect(card.Identity,8,94,cw-16,24)
-  rect(card.Owned,8,120,cw-16,22)
+  rect(card.RarityStars,10,6,cw-20,28)
+  local imageSize=math.min(cw-24,cardHeight-62)
+  rect(card.ItemImage,(cw-imageSize)/2,34,imageSize,imageSize)
+  rect(card.Owned,8,cardHeight-30,cw-16,26)
+  card.Owned.TextSize=compact and 20 or 22
  end
  rect(execute,0,0,w,h)
  local side,areaX,areaW,socketY,socketH

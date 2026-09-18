@@ -1,5 +1,13 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-18 — Merge STEP 2 rarity-star cards (completed)
+
+- Fast-forwarded the clean tracked tree to `origin/main` at `e4e91da`, then used the current Bright Merge palette and FredokaOne implementation as the baseline. Reviewed `MergeInventory.png` for card information hierarchy and brightness only; it was not imported as an asset.
+- Replaced STEP 2 card labels with five fixed star slots, a larger item image, and `×N`. Runtime fixtures confirmed Common `★☆☆☆☆`, Uncommon `★★☆☆☆`, Rare `★★★☆☆`, Epic `★★★★☆`, and counts `×1`, `×2`, `×3`, and `×4`. The implementation supports Legendary through rank 5 without adding it to the eligible recipe list.
+- Verified Fire Protein, Fire Glove, Ice TrainingBelt, and Electric Glove images. Fire → Ice → Electric and within-element stable ordering remained intact. Merge recipe filtering, selection, server execution, balance, and save paths were not changed.
+- Verified PC, iPhone 17 Pro landscape, and Fire HD 10 landscape. Cards, five stars, item images, counts, scrolling, title, and back button fit without overlap. The existing bright panel/card/element colors remain unchanged and inactive stars are lavender rather than black.
+- STEP 3 regression passed with result image, material/result rarity stars, three sockets, item count, and final MERGE button intact. Temporary QA data and scripts were removed and the normal DataStore configuration was restored.
+
 ## 2026-09-18 — Achievement Badge（Completed）
 
 - BadgeConfigへ5 Badge IDを集約し、BadgeAwardServiceがRoblox BadgeServiceの所有確認・付与・Session重複抑止・失敗隔離を担当。
