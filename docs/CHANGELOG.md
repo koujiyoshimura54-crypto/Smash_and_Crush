@@ -386,3 +386,9 @@
 - Dumbbells／Auraの個別通知を実Viewport表示後、対象Tab離脱時に既読化。画面外Cardは未読を維持し、Inventory入口とTab通知も離脱時に独立して既読化。
 - Speedは既存Tab通知のみ修正。Itemsの正常動作とViewport判定を共通化し、並行Seen応答による既読の巻き戻りを防止。
 - 隔離Play・再Play保存復元・PC／Smartphone／Tablet横画面・Items回帰・購入後通知解消を確認。通知発生条件、Balance、購入、Equip、DataStore Schemaは変更なし。
+
+## 2026-09-18 — Preview merged item and apply FredokaOne UI font
+
+- Merge STEP 3 HeroをServer投影の完成Item画像・完成Rarity星へ変更し、素材Socketと素材→完成の星Previewを維持。
+- Inventory Window内の既存・Runtime生成TextをFredokaOneへ統一し、スマホで必要なTextScaled最小値だけ調整。
+- PC／Smartphone／Tablet、★1〜5、日本語fallbackを確認。Merge Server、Balance、Save、Localization、通貨Iconは変更なし。

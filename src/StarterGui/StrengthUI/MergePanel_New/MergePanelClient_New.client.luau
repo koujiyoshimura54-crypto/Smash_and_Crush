@@ -88,7 +88,7 @@ end
 
 local function label(name,parent,text,size)
  local x=make("TextLabel",name,parent)
- x.FontFace=template.ItemName.FontFace
+ x.Font=Enum.Font.FredokaOne
  x.TextColor3=Color3.new(1,1,1)
  x.TextStrokeColor3=palette.Ink
  x.TextStrokeTransparency=.15
@@ -102,7 +102,7 @@ end
 local function button(name,parent,text)
  local x=make("TextButton",name,parent)
  paint(x,palette.Gold,palette.Orange)
- x.FontFace=old.Footer.MergeButton.FontFace
+ x.Font=Enum.Font.FredokaOne
  x.TextColor3=Color3.new(1,1,1)
  x.TextStrokeTransparency=old.Footer.MergeButton.TextStrokeTransparency
  x.TextStrokeColor3=old.Footer.MergeButton.TextStrokeColor3
@@ -355,17 +355,19 @@ render=function()
  root:SetAttribute("Step",step)
  local recipe=byId[selectedId]
  local item=selectedId and Master.Get(selectedId)
+ local result=recipe and Master.Get(recipe.ResultItemId)
  local n=recipe and math.min(required,recipe.Count) or 0
  count.Text=("%d/%d ITEMS"):format(n,required)
- sourceImage.Image=item and item.Image or ""
- sourceStars.Text=stars(item)
+ -- Hero is the authoritative completed Item returned by ItemMergeState.
+ -- Material sockets below continue to show the selected source Item.
+ sourceImage.Image=result and result.Image or ""
+ sourceStars.Text=stars(result)
  for i,socket in ipairs(sockets) do
   socket.Item.Image=item and item.Image or ""
   socket.Item.Visible=i<=n
   socket.Missing.Visible=i>n
   paint(socket,i<=n and palette.Card or palette.Socket,palette.CardBottom,i<=n and palette.Gold or palette.SocketEdge,UDim.new(1,0))
  end
- local result=recipe and Master.Get(recipe.ResultItemId)
  fromStars.Text=stars(item)
  toStars.Text=stars(result)
  local enabled=fresh and recipe~=nil and recipe.CanMerge==true and not pending

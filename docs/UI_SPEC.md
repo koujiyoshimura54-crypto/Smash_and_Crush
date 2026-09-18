@@ -342,3 +342,10 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 - STEP 3 shows a large Item image and current rarity stars, followed by a current-star → result-star preview. Stars come from ItemMaster.RarityRank and the server's ResultItemId. Item type/name, Element name, rarity names, and the old result-name/×1 text are not displayed. Success status is simply `Merge complete.`
 - Filled sockets have gold borders and Item images; empty sockets have pale-purple borders and a large question mark. Count remains capped at 3/3. Shortage status is secondary and appears only when needed.
 - MERGE is gray-purple when disabled and bright gold when the existing server projection permits execution. Server eligibility, recipes, consumption, result, saving, and Badge behavior are unchanged.
+
+## 2026-09-18 — Completed-Item preview and Inventory font
+
+- Merge STEP 3の上部Heroは、選択素材ではなくItemMergeStateが返すResultItemIdの実Item画像と完成Rarity星を表示する。Client独自のRarity推測は持たない。
+- 3 Socketは消費する素材Item、Upgradeは素材Rarity星 → 完成Rarity星を維持し、Hero・右側星・Server結果ItemIdを一致させる。
+- Inventory Window配下の英数字Textは、既存・Runtime生成を含めEnum.Font.FredokaOneへ統一する。★もFredokaOneで正常表示する。非対応言語はRoblox標準Font fallbackを許容し、Localization設定やSource Languageは変更しない。
+- FredokaOneの文字幅に合わせ、TextScaled要素は既存UITextSizeConstraintの最小値だけ必要時6pxまで縮小可能とする。レイアウト、明るい3STEP Visual、通貨Icon、購入・Merge機能は変更しない。

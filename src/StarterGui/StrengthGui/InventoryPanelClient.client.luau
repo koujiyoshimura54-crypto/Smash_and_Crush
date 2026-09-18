@@ -11,6 +11,21 @@ local stateRemote=RS.Remotes:WaitForChild("DumbbellInventoryState")
 local gui=script.Parent
 local menu=gui:WaitForChild("LeftMenu")
 local shell=gui:WaitForChild("InventoryPanel")
+local function applyInventoryFont(object)
+ if object:IsA("TextLabel") or object:IsA("TextButton") or object:IsA("TextBox") then
+  object.Font=Enum.Font.FredokaOne
+  local limit=object:FindFirstChildOfClass("UITextSizeConstraint")
+  if object.TextScaled and limit then limit.MinTextSize=math.min(limit.MinTextSize,6) end
+ end
+end
+for _,object in ipairs(shell:GetDescendants()) do applyInventoryFont(object) end
+shell.DescendantAdded:Connect(function(object)
+ -- Runtime-created Cards and Merge controls may finish assigning their
+ -- authored font after parenting. Apply the Inventory font after that work.
+ task.defer(function()
+  if object:IsDescendantOf(shell) then applyInventoryFont(object) end
+ end)
+end)
 local panel=shell:WaitForChild("Content"):WaitForChild("Dumbbells")
 local list=panel:WaitForChild("Items")
 local grid=list:WaitForChild("UIGridLayout")

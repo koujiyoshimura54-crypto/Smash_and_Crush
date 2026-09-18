@@ -405,3 +405,10 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - 隔離データでAura／Dumbbell購入・自動Equip・通知条件解消を確認。購入・性能・価格・Equip・Merge・Badge・Server保存処理は変更なし。最初の隔離起動は検証用Store名長超過で失敗し、短い名前へ訂正後のPlayはError／Warning／Infinite Yieldなし。
 - 2026-09-16のOpen／交差即Seen記録は旧動作の履歴。現行仕様は上記とGAME_SPEC／UI_SPECを正本とする。
 - 検証Script撤去・通常Store復元後の最終Playで各Tab／Merge／Closeを操作し、Runtime consoleが空であることを確認。Editへ戻し変更6ソースの一致確認後、StudioへCtrl+Sを実行。端末確認はSimulatorであり実機検証ではない。
+
+## 2026-09-18 — Merge completed-Item preview / FredokaOne
+
+- STEP 3 HeroをItemMergeStateのResultItemId参照へ変更。Common→Uncommon、Uncommon→Rare、Rare→Epic、Epic→LegendaryでHero星と右側星がServer結果に一致し、Socketは素材を維持。
+- InventoryPanel配下の既存・Runtime生成TextをFredokaOneへ統一。PC・iPhone 17 Pro横・Fire HD10横でHeader、Tab、Card、価格、Merge操作、★1〜5を確認。
+- 一時日本語Text「アイテムを選択　マージ　購入　戻る」がStudio Playで欠落せず表示されるRoblox fallbackを確認後、テストObjectを撤去。Localization設定は変更なし。
+- Merge／購入／Save／Balance、明るい3STEP、Trophy／Robux Iconは変更なし。検証は隔離Studio Storeと表示用seedを使用し、Productionデータへ接続していない。
