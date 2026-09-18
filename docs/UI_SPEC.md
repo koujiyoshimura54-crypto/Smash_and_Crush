@@ -30,7 +30,7 @@
 - Sort Buttonと手動3素材選択を廃止。明示Element Priority Fire=1 / Ice=2 / Electric=3、Master.RarityRank昇順、Master.Kinds順（Protein / Glove / TrainingBelt）、ItemId順で安定整列。Legendaryは正規レシピがないため一覧に出ない。
 - STEP 3は選択Item、3 Socket、充足数、MERGEを表示。基準ItemのServer数量から最大RequiredCount枠を自動表示し、不足枠は「?」。CanMerge=trueかつ最新状態取得済み・未送信中のみ実行可能。保存中等のServer拒否理由も表示。成功文言を維持し、同じ基準Itemの最新数量を再取得する。
 - BACKはSTEP 3→2→1。STEP 3の重複MERGE見出しも表示せず、最終実行MERGE Buttonは維持。新Merge UI内の状態・エラー文言も英語に統一。元の日本語は生成Scriptの直接定義であり、ゲーム全体のLocalizationは変更しない。Tab再表示はSTEP 1に戻る。表示中は2秒ごとにもServer状態を再取得し、Drop / Reward / Save lockを反映する。取得失敗時は実行無効。
-- MergeFlowだけで親Fit倍率を打ち消し、文字・操作領域を画面pxで確保。開始Button高64、戻る44、カード高150、名前18〜24、Element / Rarity16〜20、充足数26。小画面は選択ItemとSocketを横配置し、MERGE高48。PC / 大Tabletは選択Itemを上、Socketを下に配置する。
+- MergeFlowだけで親Fit倍率を打ち消し、文字・操作領域を画面pxで確保。カード高150を維持。高さ340px未満のLandscapeでは画像とSocketを横配置し、★UpgradeをBACK横へ置く。通常の高さでは画像→★Upgrade→Socket→充足数→Status→MERGEを中央に縦配置する。
 - 既存TemplateのFrame / UICorner / UIStroke、InventoryのFont / TextStroke / Gradient、Element色、既存Item画像を再利用。参考MergeUI01.png / MergeUI02.pngは閲覧のみでAsset追加なし。
 - 既存MergePanelは非表示の互換レイアウトノードとして保持し、ResponsivePanels・Inventory shell・他Tabを変更しない。[端末別実測・検証](../reports/Merge_UI_20260917.md)。
 
@@ -331,3 +331,12 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 - Entering the viewport keeps `!` visible. Only leaving the normal Items view marks the individually recorded Items Seen. Items never shown remain Unseen, including cards below the canvas viewport.
 - Inventory and Items-tab stages use per-Item namespaced entries in the existing `InventoryNotificationSeen.Items` set. Existing plain Item IDs remain the persistent individual Seen source, preserving old saves without a schema change.
 - Merge STEP 2 cards do not participate in Items notification exposure. A successful Equip may immediately resolve the corresponding individual notification under the existing notification-condition rule.
+
+## 2026-09-18 — Bright, simplified Merge presentation
+
+- All three exclusive steps use a brighter purple Merge-only panel, white text with dark outlines, and clear rounded borders. Inventory Header, Close, Tabs, and other pages retain their existing presentation.
+- STEP 1 retains SELECT ITEM, 0/3 ITEMS, three empty sockets, and the short explanation. SELECT ITEM is gold; count and sockets use brighter purple with pale borders. BACK uses a secondary blue color.
+- STEP 2 retains the existing Item-card information and one-or-more-copy selection rule. Cards and element-image backgrounds are brighter; Item name, Element, Rarity, and Owned count remain readable.
+- STEP 3 shows a large Item image and current rarity stars, followed by a current-star → result-star preview. Stars come from ItemMaster.RarityRank and the server's ResultItemId. Item type/name, Element name, rarity names, and the old result-name/×1 text are not displayed. Success status is simply `Merge complete.`
+- Filled sockets have gold borders and Item images; empty sockets have pale-purple borders and a large question mark. Count remains capped at 3/3. Shortage status is secondary and appears only when needed.
+- MERGE is gray-purple when disabled and bright gold when the existing server projection permits execution. Server eligibility, recipes, consumption, result, saving, and Badge behavior are unchanged.

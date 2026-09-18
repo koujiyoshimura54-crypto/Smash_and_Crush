@@ -389,3 +389,10 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Removed Items-open and acquisition-time bulk acknowledgement. Added per-Item viewport exposure tracking and deferred acknowledgement on Items exit/Inventory close.
 - Inventory and Items-tab acknowledgement are independently persisted per Item within the existing notification set; old plain Seen IDs remain backward compatible.
 - Merge cards are excluded. Item acquisition, purchase, equip, merge, balance, and saved-data schema remain unchanged.
+
+## 2026-09-18 — Brighten and simplify Merge UI
+
+- Changed only MergePanelClient_New presentation: brighter purple panels/cards/sockets, gold primary buttons, blue BACK, and a simplified image-and-stars STEP 3.
+- Preserved exclusive step visibility and existing server state/request handling. No Server, Item, Balance, Save, or Badge changes.
+- Normal Play navigation and visual checks cover PC, iPhone 17 Pro Landscape, and Fire HD 10 Landscape in Studio Simulator. Client-only presentation fixtures supplement 1/2/3+ material states and ★4→★5 without changing Player inventory or sending Merge requests; actual Merge transactions are outside this visual-only regression.
+- Removed the temporary presentation fixture and repeated normal Play: STEP 1/2/3 exclusive Visible states, 1/3 disabled state, removed STEP 3 name/identity/result labels, and an empty Runtime console confirmed. Phone ★5 fits at 17px; checked execution controls have no rectangle overlaps. Device Simulator was returned to the normal viewport. Physical devices were not tested.

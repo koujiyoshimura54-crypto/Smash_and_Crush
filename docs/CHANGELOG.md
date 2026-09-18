@@ -374,3 +374,9 @@
 - Item `!` badges now remain visible when first entering the Items viewport and become Seen only after leaving the Items view.
 - Offscreen cards remain Unseen; Inventory and Items-tab badges acknowledge independently after their respective surfaces are left.
 - Reused existing notification persistence without a DataStore schema change.
+
+## 2026-09-18 — Brighten and simplify Merge UI
+
+- Brightened all three Merge steps with purple panels/cards, outlined sockets, blue navigation, and gold primary actions.
+- Replaced STEP 3 Item/Element/rarity-name text with a larger Item image, rarity stars, and a star-to-star upgrade preview.
+- Kept exclusive step visibility, server eligibility, Merge transactions, saving, and balance unchanged.

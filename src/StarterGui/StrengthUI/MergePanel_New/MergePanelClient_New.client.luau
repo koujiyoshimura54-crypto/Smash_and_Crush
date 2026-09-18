@@ -22,7 +22,7 @@ local elementOrder={Fire=1,Ice=2,Electric=3}
 local typeOrder={}
 for i,kind in ipairs(Master.Kinds) do typeOrder[kind]=i end
 local icons={Fire="🔥",Ice="❄️",Electric="⚡"}
-local colors={Fire=Color3.fromRGB(122,38,56),Ice=Color3.fromRGB(40,106,166),Electric=Color3.fromRGB(167,122,22)}
+local colors={Fire=Color3.fromRGB(242,103,114),Ice=Color3.fromRGB(77,190,240),Electric=Color3.fromRGB(255,194,62)}
 local names={Protein="Protein",Glove="Glove",TrainingBelt="Training Belt"}
 local step,selectedId=1,nil
 local recipes,byId,cards={},{},{}
@@ -48,12 +48,50 @@ local function decorate(x,source)
  x.BackgroundColor3=source.BackgroundColor3
  x.BackgroundTransparency=source.BackgroundTransparency
 end
+-- Merge-only palette: no changes to the Inventory shell or other tabs.
+local palette={
+ Background=Color3.fromRGB(168,78,226), BackgroundBottom=Color3.fromRGB(131,52,199),
+ Card=Color3.fromRGB(182,108,242), CardBottom=Color3.fromRGB(132,64,210),
+ Gold=Color3.fromRGB(255,211,64), Orange=Color3.fromRGB(255,146,35),
+ Back=Color3.fromRGB(105,148,255), BackBottom=Color3.fromRGB(75,92,219),
+ Socket=Color3.fromRGB(184,109,244), SocketEdge=Color3.fromRGB(231,190,255),
+ Disabled=Color3.fromRGB(115,105,139), DisabledBottom=Color3.fromRGB(83,76,105),
+ Ink=Color3.fromRGB(46,20,72),
+}
+local function paint(x,top,bottom,edge,radius)
+ x.BackgroundTransparency=0
+ x.BackgroundColor3=Color3.new(1,1,1)
+ local gradient=x:FindFirstChildOfClass("UIGradient") or Instance.new("UIGradient",x)
+ gradient.Color=ColorSequence.new(top,bottom or top)
+ gradient.Rotation=90
+ if x:IsA("TextLabel") or x:IsA("TextButton") then
+  gradient.Enabled=false
+  x.BackgroundColor3=top
+ end
+ local stroke
+ for _,child in ipairs(x:GetChildren()) do
+  if child:IsA("UIStroke") and child.ApplyStrokeMode==Enum.ApplyStrokeMode.Border then stroke=child;break end
+ end
+ if not stroke then stroke=Instance.new("UIStroke",x) end
+ stroke.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+ stroke.Color=edge or palette.Ink
+ stroke.Thickness=2
+ stroke.Transparency=0
+ local corner=x:FindFirstChildOfClass("UICorner") or Instance.new("UICorner",x)
+ corner.CornerRadius=radius or UDim.new(0,14)
+end
+paint(root,palette.Background,palette.BackgroundBottom,palette.SocketEdge)
+root.ZIndex=209
+local function stars(item)
+ return item and string.rep("★",Master.RarityRank[item.Rarity] or 0) or ""
+end
+
 local function label(name,parent,text,size)
  local x=make("TextLabel",name,parent)
  x.FontFace=template.ItemName.FontFace
  x.TextColor3=Color3.new(1,1,1)
- x.TextStrokeColor3=template.ItemName.TextStrokeColor3
- x.TextStrokeTransparency=template.ItemName.TextStrokeTransparency
+ x.TextStrokeColor3=palette.Ink
+ x.TextStrokeTransparency=.15
  x.TextSize=size
  x.Text=text
  x.TextWrapped=true
@@ -63,9 +101,7 @@ local function label(name,parent,text,size)
 end
 local function button(name,parent,text)
  local x=make("TextButton",name,parent)
- decorate(x,old.Footer.MergeButton)
- local gradient=inventory.Tabs.Merge:FindFirstChildOfClass("UIGradient")
- if gradient then gradient:Clone().Parent=x end
+ paint(x,palette.Gold,palette.Orange)
  x.FontFace=old.Footer.MergeButton.FontFace
  x.TextColor3=Color3.new(1,1,1)
  x.TextStrokeTransparency=old.Footer.MergeButton.TextStrokeTransparency
@@ -82,16 +118,18 @@ local function rect(x,a,b,w,h)
  x.Size=UDim2.fromOffset(math.max(1,w),math.max(1,h))
 end
 local back=button("Back",root,"BACK")
+paint(back,palette.Back,palette.BackBottom)
 local title=label("StepTitle",root,"SELECT 1 ITEM",24)
 local start=make("Frame","Start",root)
 local choose=button("ChooseItem",start,"SELECT ITEM")
-choose.BackgroundColor3=Color3.fromRGB(232,171,35)
+choose.TextSize=32
 local startCount=label("Count",start,"0/3 ITEMS",24)
+paint(startCount,palette.Card,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
 local startSocketArea=make("Frame","Sockets",start)
 local startSockets={}
 for i=1,3 do
  local socket=make("Frame","Socket"..i,startSocketArea)
- decorate(socket,old.MergeRecipe.Slots.Material1.Slot)
+ paint(socket,palette.Socket,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
  local corner=socket:FindFirstChildOfClass("UICorner")
  if corner then corner.CornerRadius=UDim.new(1,0) end
  local missing=label("Missing",socket,"?",30)
@@ -110,16 +148,31 @@ grid.CellPadding=UDim2.fromOffset(10,10)
 local empty=label("Empty",root,"",22)
 local execute=make("Frame","Execute",root)
 local source=make("Frame","SelectedItem",execute)
-decorate(source,template)
+paint(source,palette.Gold,palette.Orange,palette.Gold)
 local sourceImage=make("ImageLabel","ItemImage",source)
 sourceImage.ScaleType=Enum.ScaleType.Fit
-local sourceName=label("ItemName",source,"",22)
-local sourceMeta=label("Identity",source,"",18)
+local sourceStars=label("RarityStars",source,"",26)
+sourceStars.TextColor3=palette.Gold
+sourceStars.TextScaled=true
+sourceStars.TextWrapped=false
 local socketArea=make("Frame","Sockets",execute)
 local sockets={}
-local resultText=label("Result",execute,"",18)
+local upgrade=make("Frame","Upgrade",execute)
+local fromStars=label("FromStars",upgrade,"",26)
+local arrow=label("Arrow",upgrade,"→",32)
+local toStars=label("ToStars",upgrade,"",26)
+for _,x in ipairs({fromStars,toStars}) do
+ paint(x,palette.Card,palette.CardBottom,palette.Gold)
+ x.TextColor3=palette.Gold
+ x.TextScaled=false
+ x.TextWrapped=false
+ local padding=Instance.new("UIPadding",x)
+ padding.PaddingLeft=UDim.new(0,3)
+ padding.PaddingRight=UDim.new(0,3)
+end
 local footer=make("Frame","Footer",root)
 local count=label("Count",footer,"",26)
+paint(count,palette.Card,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
 local merge=button("Merge",footer,"MERGE")
 local hint=label("Status",root,"",18)
 
@@ -148,6 +201,7 @@ local function rebuildCards()
    local item=Master.Get(recipe.ItemId)
    local card=make("TextButton",recipe.ItemId,selection)
    decorate(card,template)
+   paint(card,palette.Card,palette.CardBottom,palette.SocketEdge)
    card.Text=""
    card.LayoutOrder=#cards+1
    card:SetAttribute("ItemId",recipe.ItemId)
@@ -177,7 +231,7 @@ local function rebuildSockets()
  sockets={}
  for i=1,required do
   local socket=make("Frame","Socket"..i,socketArea)
-  decorate(socket,old.MergeRecipe.Slots.Material1.Slot)
+  paint(socket,palette.Socket,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
   local c=socket:FindFirstChildOfClass("UICorner")
   if c then c.CornerRadius=UDim.new(1,0) end
   local pic=make("ImageLabel","Item",socket)
@@ -196,24 +250,29 @@ layout=function()
  scale.Scale=1/math.max(s,.01)
  local w,h=page.AbsoluteSize.X,page.AbsoluteSize.Y
  root.Size=UDim2.fromOffset(w,h)
- local compact=h<330
- rect(back,0,0,100,44)
- rect(title,110,0,w-110,44)
+ local compact=h<340
+ rect(back,10,8,100,40)
+ rect(title,120,8,w-132,40)
  rect(start,0,0,w,h)
- local bw=math.min(w-16,520)
- local startTop=math.max(8,(h-250)/2)
- rect(choose,(w-bw)/2,startTop,bw,64)
- choose.TextSize=w<400 and 24 or 32
- rect(startCount,8,startTop+72,w-16,30)
- rect(startSocketArea,8,startTop+106,w-16,72)
- local startSide=math.min(64,startSocketArea.Size.Y.Offset)
- local startTotal=startSide*3+20
- for i,socket in ipairs(startSockets) do rect(socket,(startSocketArea.Size.X.Offset-startTotal)/2+(i-1)*(startSide+10),4,startSide,startSide) end
- rect(intro,8,startTop+182,w-16,42)
- rect(selection,2,52,w-4,h-54)
- rect(empty,8,60,w-16,h-68)
- local cols=math.max(1,math.floor((w+10)/240))
- local cw=(w-14-(cols-1)*10)/cols
+ local factor=math.min(1,h/300)
+ local bw=math.min(w-32,480)
+ local startTop=math.max(10,(h-274*factor)/2)
+ rect(choose,(w-bw)/2,startTop,bw,64*factor)
+ choose.TextSize=math.max(22,32*factor)
+ rect(startCount,(w-210)/2,startTop+78*factor,210,34*factor)
+ startCount.TextSize=math.max(16,24*factor)
+ rect(startSocketArea,8,startTop+126*factor,w-16,80*factor)
+ local startSide=72*factor
+ local startTotal=startSide*3+24
+ for i,socket in ipairs(startSockets) do
+  rect(socket,(w-16-startTotal)/2+(i-1)*(startSide+12),0,startSide,startSide)
+ end
+ rect(intro,12,startTop+222*factor,w-24,40*factor)
+ intro.TextSize=math.max(16,20*factor)
+ rect(selection,10,58,w-20,h-68)
+ rect(empty,12,60,w-24,h-72)
+ local cols=math.max(1,math.floor((w-10)/240))
+ local cw=(w-30-(cols-1)*10)/cols
  grid.FillDirectionMaxCells=cols
  grid.CellSize=UDim2.fromOffset(cw,150)
  for _,card in ipairs(cards) do
@@ -222,46 +281,55 @@ layout=function()
   rect(card.Identity,8,94,cw-16,24)
   rect(card.Owned,8,120,cw-16,22)
  end
- local footerHeight=compact and 50 or 66
- local hintHeight=compact and 24 or 36
- rect(footer,0,h-footerHeight,w,footerHeight)
- rect(count,0,0,w*.45,footerHeight)
- rect(merge,w*.46,0,w*.54,footerHeight-2)
- rect(hint,0,h-footerHeight-hintHeight,w,hintHeight)
- rect(execute,0,48,w,math.max(1,h-48-footerHeight-hintHeight-4))
- local eh=execute.Size.Y.Offset
- resultText.Visible=not compact
+ rect(execute,0,0,w,h)
+ local side,areaX,areaW,socketY,socketH
  if compact then
-  local left=w*.43
-  rect(source,0,0,left,eh)
-  rect(sourceImage,4,28,32,math.min(36,eh-28))
-  rect(sourceName,4,0,left-8,24)
-  sourceName.TextSize=18
-  rect(sourceMeta,40,25,left-44,eh-25)
-  sourceMeta.TextSize=16
-  local item=selectedId and Master.Get(selectedId)
-  if item then sourceMeta.Text=(icons[item.Element] or "").." "..item.Element.."\n"..item.Rarity end
-  rect(socketArea,left+8,0,w-left-8,eh)
-  rect(resultText,left+4,eh-24,w-left-4,24)
-  resultText.TextSize=16
+  -- Short landscape view: preserve readable controls beside the hero image.
+  local hero=math.min(140,h-64,w*.36)
+  local leftW=w*.42
+  rect(source,(leftW-hero)/2,54,hero,hero)
+  rect(upgrade,122,10,w-134,34)
+  areaX,areaW=leftW+4,w-leftW-16
+  socketY,socketH=56,math.max(32,h-174)
+  rect(footer,areaX,h-106,areaW,98)
+  rect(count,(areaW-math.min(190,areaW))/2,0,math.min(190,areaW),30)
+  rect(merge,0,56,areaW,42)
+  rect(hint,areaX,h-74,areaW,18)
+  hint.TextSize=14
+  merge.TextSize=26
  else
-  local sw=math.min(w*.7,480)
-  rect(source,(w-sw)/2,0,sw,80)
-  rect(sourceImage,8,4,72,72)
-  rect(sourceName,88,4,sw-96,36)
-  rect(sourceMeta,88,40,sw-96,34)
-  sourceName.TextSize=24
-  sourceMeta.TextSize=20
-  local item=selectedId and Master.Get(selectedId)
-  if item then sourceMeta.Text=(icons[item.Element] or "").." "..item.Element.." · "..item.Rarity end
-  rect(socketArea,0,92,w,math.max(1,eh-124))
-  rect(resultText,0,eh-28,w,28)
-  resultText.TextSize=20
+  local hero=math.min(154,h*.28)
+  rect(source,(w-hero)/2,10,hero,hero)
+  local upgradeW=math.min(350,w-40)
+  rect(upgrade,(w-upgradeW)/2,20+hero,upgradeW,36)
+  areaX,areaW=12,w-24
+  socketY=66+hero
+  socketH=math.max(40,h-socketY-142)
+  local footerW=math.min(480,w-32)
+  rect(footer,(w-footerW)/2,h-130,footerW,120)
+  rect(count,(footerW-220)/2,0,220,32)
+  rect(merge,0,64,footerW,56)
+  rect(hint,12,h-94,w-24,24)
+  hint.TextSize=17
+  merge.TextSize=32
  end
- local aw,ah=socketArea.Size.X.Offset,socketArea.Size.Y.Offset
- local side=math.min(112,ah,(aw-math.max(0,required-1)*10)/math.max(1,required))
- local total=side*required+math.max(0,required-1)*10
- for i,socket in ipairs(sockets) do rect(socket,(aw-total)/2+(i-1)*(side+10),(ah-side)/2,side,side) end
+ local heroW,heroH=source.Size.X.Offset,source.Size.Y.Offset
+ rect(sourceImage,6,4,heroW-12,heroH*.73)
+ rect(sourceStars,8,heroH*.74,heroW-16,heroH*.23)
+ local uw,uh=upgrade.Size.X.Offset,upgrade.Size.Y.Offset
+ rect(fromStars,0,0,uw*.43,uh)
+ rect(arrow,uw*.43,0,uw*.14,uh)
+ rect(toStars,uw*.57,0,uw*.43,uh)
+ for _,x in ipairs({fromStars,toStars}) do
+  x.TextSize=math.floor(math.min(26,uh*.68,(uw*.43-10)/math.max(1,utf8.len(x.Text))))
+ end
+ rect(socketArea,areaX,socketY,areaW,socketH)
+ side=math.min(88,socketH-4,(areaW-math.max(0,required-1)*14)/math.max(1,required))
+ local total=side*required+math.max(0,required-1)*14
+ for i,socket in ipairs(sockets) do
+  rect(socket,(areaW-total)/2+(i-1)*(side+14),(socketH-side)/2,side,side)
+  socket.Missing.TextSize=math.max(26,side*.6)
+ end
 end
 
 render=function()
@@ -290,22 +358,22 @@ render=function()
  local n=recipe and math.min(required,recipe.Count) or 0
  count.Text=("%d/%d ITEMS"):format(n,required)
  sourceImage.Image=item and item.Image or ""
- sourceName.Text=item and (names[item.ItemType] or item.ItemType) or ""
- sourceMeta.Text=item and ((icons[item.Element] or "").." "..item.Element.." · "..item.Rarity) or ""
- source.BackgroundColor3=item and colors[item.Element] or template.BackgroundColor3
+ sourceStars.Text=stars(item)
  for i,socket in ipairs(sockets) do
   socket.Item.Image=item and item.Image or ""
   socket.Item.Visible=i<=n
   socket.Missing.Visible=i>n
-  socket.BackgroundTransparency=i<=n and 0 or .5
+  paint(socket,i<=n and palette.Card or palette.Socket,palette.CardBottom,i<=n and palette.Gold or palette.SocketEdge,UDim.new(1,0))
  end
  local result=recipe and Master.Get(recipe.ResultItemId)
- resultText.Text=result and ("→ "..result.Rarity.." ×1") or ""
+ fromStars.Text=stars(item)
+ toStars.Text=stars(result)
  local enabled=fresh and recipe~=nil and recipe.CanMerge==true and not pending
  merge.Active=enabled
  merge.Interactable=enabled
  merge.AutoButtonColor=enabled
- merge.BackgroundColor3=enabled and Color3.fromRGB(37,99,255) or Color3.fromRGB(75,69,67)
+ paint(merge,enabled and palette.Gold or palette.Disabled,enabled and palette.Orange or palette.DisabledBottom)
+ merge.TextColor3=enabled and Color3.new(1,1,1) or Color3.fromRGB(219,209,234)
  merge.Text=pending and "MERGING…" or "MERGE"
  if pending then
   hint.Text="Merging…"
@@ -316,6 +384,7 @@ render=function()
  else
   hint.Text=""
  end
+ hint.Visible=step==3 and hint.Text~=""
  layout()
 end
 
@@ -364,8 +433,7 @@ mergeRemote.OnClientEvent:Connect(function(result)
  fresh=false
  revision+=1
  if typeof(result)=="table" and result.Success then
-  local item=Master.Get(result.ResultItemId)
-  status=item and ("Merged "..(names[item.ItemType] or item.ItemType).." "..item.Rarity) or "Merge complete."
+  status="Merge complete."
  else
   status=typeof(result)=="table" and errors[result.Code] or nil
   status=status or "Merge failed. Please try again."
