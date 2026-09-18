@@ -95,13 +95,13 @@
 ## 2026-09-16 — Treadmill availability guides（Completed）
 
 - 使用可能なベルトだけにClient専用Chevronを表示し、常時Tweenで流す。正規CanUseTreadmillの結果を通知し、表示専用のRebirth/GamePass判定は追加していない。
-- Billboardは受理済み利用機種から青なら×3のみ、緑なら×5のみ非表示。通常・Premium・退出後は両方表示可能。MaxDistance100、既存デザイン・位置を維持。下記の初回実装時の全機種両方非表示を置換した。
+- Billboardは受理済み利用機種から青なら×2のみ、緑なら×3のみ非表示。通常・Premium・退出後は両方表示可能。MaxDistance100、既存デザイン・位置を維持。下記の初回実装時の全機種両方非表示を置換した。
 - Rebirth2/3/4/5、通常・青・緑の実利用、Premiumの所有/未所有/効果無効を隔離fixtureで確認。最終通常PlayはError / Warning / Infinite Yieldなし。隔離QA中は既存ランキング保存経路の警告1件を記録。
 - Premium実購入と複数Client同時接続は未検証。PassId0等の本設定は変更なし。[検証報告](../reports/Treadmill_Availability_Guides_20260916/build_report.md)。
 
 ## 2026-09-16 — Treadmill multiplier billboards（Completed）
 
-- ConfigへMultiplierBillboardを追加。各2台中央の×3/×5を本人のClientで各1個生成。MaxDistance100、Size16×10 × TextScale1.5、高さOffset12。
+- ConfigへMultiplierBillboardを追加。各2台中央の×2/×3を本人のClientで各1個生成。MaxDistance100、Size16×10 × TextScale1.5、高さOffset12。
 - 近距離表示、距離外非表示、斜めCamera追従、実Normal Treadmill利用中の両方非表示、退出後再表示を確認。既存Strength / Rebirth表示維持。Server側Billboardは0。
 - 最終通常PlayはRuntime Error / Warning / Infinite Yield 0。途中の別作業によるAuraConfig構文エラーと関連起動失敗は報告へ分離記録。AuraConfig / TrophyRewardConfigは今回の変更に含めない。
 - 複数Client同時接続は未検証。[実装・Play報告](../reports/Treadmill_Multiplier_Billboards_20260916/build_report.md)。
@@ -115,15 +115,15 @@
 
 ## 2026-09-16 — Treadmill two-tone frame colors（Completed）
 
-- TreadmillConfig.StrengthColorsをBeltColor / FrameColorへ分離。既存ベルト色を維持し、+3へ濃い青RGB(20,65,150)、+5へ濃い緑RGB(20,100,55)のフレーム色を追加。
+- TreadmillConfig.StrengthColorsをBeltColor / FrameColorへ分離。既存ベルト色を維持し、+2へ濃い青RGB(20,65,150)、+3へ濃い緑RGB(20,100,55)のフレーム色を追加。
 - BeltはBeltColor、ConsoleAccentとFrameAccent×2はFrameColorを使用。Premium / Normalと残すべき灰色・金属部品は変更なし。
 - Config差し替えPlayでFrameColorだけが反映されBeltColorが維持されることを確認。最終PlayはRuntime Error / Warning / Infinite Yield 0。[実装・Play報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
 
 ## 2026-09-16 — Treadmill Strength reward colors（Completed）
 
-- TreadmillConfig.Typesの実Multiplierを表示色のキーとして再利用。3はBlue、5はGreen。見た目専用Strength値は追加していない。
+- TreadmillConfig.Typesの実Multiplierを表示色のキーとして再利用。2はBlue、3はGreen。見た目専用Strength値は追加していない。
 - Tredmill04〜05 / 02〜03のBelt、ConsoleAccent、FrameAccent×2をTrainingManager初期化時に着色。残すべき灰色フレームとNormal / Premium機器は維持。
-- 数字表示は×3 Strength / ×5 Strengthのまま。選択PartのSize / CFrame / Material / Transparency / CanCollide / CanTouch / CanQueryは変更なし。
+- 数字表示は×2 Strength / ×3 Strengthのまま。選択PartのSize / CFrame / Material / Transparency / CanCollide / CanTouch / CanQueryは変更なし。
 - 隔離Storeで利用判定中のIsTraining=trueと既存式による実加算を確認。Multiplier、Interval、装備・Rebirth・Potion・VIP計算は未変更。
 - Config差し替え反映と最終通常Playを確認。Runtime Error / Warning / Infinite Yieldなし。
 - 根拠：[実装・Play報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md)。
@@ -291,7 +291,7 @@ Version: 1.3 / 監査・更新日: 2026-09-15
 | K03 | Carry / High | Wall余剰が次WallだけでなくBossへ渡る。後半適正StrengthではBossが90%開始 | Wall4→Boss Carryを維持するか。現行挙動を仕様化するか変更するか未決 |
 | K04 | World解放 / Resolved | Stage10 Boss撃破でWorldComplete、Stage10 **Pad取得**でHighestUnlockedWorld=2 | 永続World2解放はPad取得で確定。現行仕様を維持 |
 | K05 | Map/機器属性 / Medium | StageWidth20（一部30）・StageLength28（一部36）等に対し実Floor幅90・可変長。古いPivotも残る。Treadmill TickInterval1に対し実行時0.5 | 今後の座標・数値参照元をFloor/Spawn・現行Configへ限定。今回属性修正なし |
-| K06 | 命名 / Low | Treadmill Type Rebirth7はRequiredRebirth5 / Tier5 | 名前だけ旧式か。表示はConfigからRebirth5を生成している |
+| K06 | 命名 / Low | Treadmill Type Rebirth7はRequiredRebirth5 / Tier3 | 名前だけ旧式か。表示はConfigからRebirth5を生成している |
 | K07 | Merge / Medium | Dumbbell定義Mergeable=true、実際のItemMergeServiceは通常Itemのみ | Dumbbell Mergeを将来作るか、メタデータを整理するか |
 | K08 | Reward確率 / Medium | Daily/Time/CommunityのItemRollは受取時CurrentStageでRarity制限。最高Stageではない | Lobbyへ戻ってStage1で受け取った場合の制限を維持するか |
 | K09 | World2 / Config反映済み・機能未接続 | 独自Balanceを3 Configへ反映し旧×25,000方式を除去。Inventory設計は到達時解放・World1 Item性能維持のまま | World2 Item/Enemy、移動、Combat、Stage進行は別途指示後に実装 |

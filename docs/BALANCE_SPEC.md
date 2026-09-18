@@ -168,8 +168,8 @@ Time Rewardの「通常Training15秒分」は `(1+Dumbbell+Aura+Protein)×Rebirt
 | 機器 | Type名 | 必要Rebirth / 権利 | Tier倍率 | 状態 |
 |---|---|---|---:|---|
 | Tredmill01 | Premium | Administrator Treadmill、GamePassId=1982996954 | 20 | Server所有確認済みのみ利用可 |
-| Tredmill02〜03 | Rebirth7 | **5** | 5 | 実装済み、Type名と条件が不一致 |
-| Tredmill04〜05 | Rebirth3 | 3 | 3 | 実装済み |
+| Tredmill02〜03 | Rebirth7 | **5** | 3 | 実装済み、Type名と条件が不一致 |
+| Tredmill04〜05 | Rebirth3 | 3 | 2 | 実装済み |
 | Tredmill06〜10 | Normal | 0 | 1 | 実装済み |
 
 Zone監視は0.2秒。Objectに残るTickInterval=1 / StrengthPerTick=1は現行tickの参照元ではない。上記TrainingConfigが実行時の値（K05）。Rebirth7という名前から必要回数7を推定しない（K06）。

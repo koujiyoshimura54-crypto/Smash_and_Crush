@@ -1,3 +1,8 @@
+# 2026-09-18 — Treadmill表示色キーを現行倍率へ整合
+
+- TreadmillConfig.StrengthColorsを現行実倍率へ合わせ、Multiplier 2をBlue、Multiplier 3をGreenとして参照するよう修正。
+- RGB、RequiredRebirth、Training倍率、SurfaceGui、Premium / Normalの仕様は変更なし。
+
 # CHANGELOG
 
 ## 2026-09-18 — Enable Administrator Treadmill game pass

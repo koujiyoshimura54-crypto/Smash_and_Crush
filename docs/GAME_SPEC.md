@@ -80,17 +80,17 @@
 
 ## 2026-09-16 — Treadmill group multiplier guidance
 
-青Treadmill2台の中央上部に×3、緑2台の中央上部に×5を各1個のClient専用BillboardGuiとして追加する。既存の各機器Strength / Rebirth UIは維持。TreadmillConfig.MultiplierBillboardで距離100stud、基準Size16×10stud、TextScale1.5、高さOffset12studを設定する。標準MaxDistanceで遠距離非表示にし、本人が青利用中なら×3だけ、緑利用中なら×5だけを非表示にする。未利用・通常・Premium利用中は両方が距離条件に従う。判定はServerの受理済みTrainingTreadmillと既存Configの実Multiplierを使用する。
+青Treadmill2台の中央上部に×2、緑2台の中央上部に×3を各1個のClient専用BillboardGuiとして追加する。既存の各機器Strength / Rebirth UIは維持。TreadmillConfig.MultiplierBillboardで距離100stud、基準Size16×10stud、TextScale1.5、高さOffset12studを設定する。標準MaxDistanceで遠距離非表示にし、本人が青利用中なら×2だけ、緑利用中なら×3だけを非表示にする。未利用・通常・Premium利用中は両方が距離条件に従う。判定はServerの受理済みTrainingTreadmillと既存Configの実Multiplierを使用する。
 
 ベルト上のChevronガイドはPlayerが使用可能なTreadmillだけ表示され、使用可能な間は常時流れる。TrainingManager.CanUseTreadmillの結果をPlayer個別属性として通知し、ClientのSurfaceGuiとTweenで描画する。ガイド側でRebirthやGamePass条件を重複実装しない。設定はTreadmillConfig.Guideへ集約。利用可否・報酬計算・Interval・Balance・Premium条件・既存色・マット・DataStoreは変更しない。[実装・検証報告](../reports/Treadmill_Availability_Guides_20260916/build_report.md)。
 
 ## 2026-09-16 — Treadmill Strength reward colors
 
-World1 Treadmillの見た目は、実Trainingに使用するReplicatedStorage.Config.TreadmillConfig.TypesのMultiplierを色判定の正本として使う。StrengthColorsはMultiplierごとにBeltColor / FrameColor / MatColorを持つ。+3は明るい青ベルトRGB(55,145,255)、濃い青フレームRGB(20,65,150)、さらに濃い青マットRGB(8,25,65)。+5は明るい緑ベルトRGB(70,200,110)、濃い緑フレームRGB(20,100,55)、さらに濃い緑マットRGB(8,40,22)とする。Tredmill04〜05は+3、Tredmill02〜03は+5を使用し、側面・支柱・上部横梁・操作パネル周辺を含むフレーム全体へFrameColorを適用する。
+World1 Treadmillの見た目は、実Trainingに使用するReplicatedStorage.Config.TreadmillConfig.TypesのMultiplierを色判定の正本として使う。StrengthColorsはMultiplierごとにBeltColor / FrameColor / MatColorを持つ。+2は明るい青ベルトRGB(55,145,255)、濃い青フレームRGB(20,65,150)、さらに濃い青マットRGB(8,25,65)。+3は明るい緑ベルトRGB(70,200,110)、濃い緑フレームRGB(20,100,55)、さらに濃い緑マットRGB(8,40,22)とする。Tredmill04〜05は+2、Tredmill02〜03は+3を使用し、側面・支柱・上部横梁・操作パネル周辺を含むフレーム全体へFrameColorを適用する。
 
 各2台の既存マット外周からRuntimeで共用マットを1Partずつ生成する。横幅28、前後24、厚さ0.2stud。元の4枚はRuntime中だけ非表示にして物理設定を保持し、新しい2枚は表示専用（Collision / Touch / Queryなし）。Premium / Normalは対象外。色変更は次回Play初期化で反映。[共用マット検証](../reports/Treadmill_Group_Mats_20260916/build_report.md)。
 
-既存の×3 Strength / ×5 Strength表示を維持する。最終加算量は従来どおりBaseGain、Dumbbell / Aura / Protein、Rebirth、Treadmill Multiplier、Belt / Training Potion、Strength Potion、VIPから計算する。今回Multiplier、TrainingInterval、利用条件、Collision、Level、Rebirth、Balance、DataStoreは変更しない。[初回色分け報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md) / [2トーン調整報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
+既存の×2 Strength / ×3 Strength表示を維持する。最終加算量は従来どおりBaseGain、Dumbbell / Aura / Protein、Rebirth、Treadmill Multiplier、Belt / Training Potion、Strength Potion、VIPから計算する。今回Multiplier、TrainingInterval、利用条件、Collision、Level、Rebirth、Balance、DataStoreは変更しない。[初回色分け報告](../reports/Treadmill_Strength_Colors_20260916/build_report.md) / [2トーン調整報告](../reports/Treadmill_Frame_Colors_20260916/build_report.md)。
 
 ## 2026-09-16 — Configurable World1 Wall UI layout
 

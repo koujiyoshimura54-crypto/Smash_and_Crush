@@ -3,8 +3,8 @@ local Config = {}
 Config.PremiumTreadmillPassId = 1982996954 -- Administrator Treadmill
 Config.Types = {
  Normal = {Multiplier=1, RequiredRebirth=0, VisualTemplate=""},
-	Rebirth3 = {Multiplier=3, RequiredRebirth=3, VisualTemplate="Blue_Aura4"},
-	Rebirth7 = {Multiplier=5, RequiredRebirth=5, VisualTemplate="Green_Aura2"},
+	Rebirth3 = {Multiplier=2, RequiredRebirth=3, VisualTemplate="Blue_Aura4"},
+	Rebirth7 = {Multiplier=3, RequiredRebirth=5, VisualTemplate="Green_Aura2"},
  Premium = {Multiplier=20, RequiresPremium=true, VisualTemplate="Premium_Fire", VisualInstanceName="PremiumAura"},
 }
 -- Viewed from the Spawn side toward -X: back row left-to-right is 05,04,03,02,01.
@@ -16,12 +16,12 @@ Config.Assignments = {
 }
 -- Presentation uses the same authoritative Multiplier that TrainingManager awards.
 Config.StrengthColors = {
- [3] = {
+ [2] = {
   BeltColor = Color3.fromRGB(55, 145, 255),
   FrameColor = Color3.fromRGB(20, 65, 150),
   MatColor = Color3.fromRGB(8, 25, 65),
  },
- [5] = {
+ [3] = {
   BeltColor = Color3.fromRGB(70, 200, 110),
   FrameColor = Color3.fromRGB(20, 100, 55),
   MatColor = Color3.fromRGB(8, 40, 22),
