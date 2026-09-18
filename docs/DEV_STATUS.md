@@ -374,3 +374,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 - Lv1〜50のRequirementを一律+10。Lv1→Lv2=10 Strength。
 - Stage6〜10の実Combat RequiredStrengthを37,315 / 81,865 / 196,915 / 462,965 / 1,018,015へ同期。Stage1〜5、Lv51以降、World2は未変更。
+## 2026-09-18 — Item currency buttons and Dumbbell purchase feedback
+
+- Implemented currency-specific Item buttons: Win text for stars 1–3 and Robux logo plus live Marketplace price for stars 4–5.
+- Dumbbell purchase rejection codes now surface through the Inventory status area; insufficient funds include the authoritative item price.
+- Verified Studio purchase of `NORMAL_01`: Win deduction, ownership, automatic equip, card/HUD refresh, and ownership restoration after rejoin. Debug Win was restored to 0.

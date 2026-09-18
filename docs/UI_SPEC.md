@@ -312,3 +312,8 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 
 - 既存`WorldTravelGui`を往復で共有する。World2行きは`WORLD 2` / `Travel to World 2?`、World1帰還は`WORLD 1` / `Return to World 1?`。
 - YES/NO、中央Modal、PC/Phone/Tablet向けSize制約は共通。NO後は現在のGateを退出するまで再表示しない。
+## 2026-09-18 — Item purchase currency and Dumbbell feedback
+
+- Item cards for Common, Uncommon, and Rare use one full-width purchase button showing `100 Win`, `300 Win`, or `1,000 Win`. They do not show a Robux or Win icon.
+- Epic and Legendary item cards show the existing Robux logo (`rbxassetid://77577420970893`) beside the live Marketplace product price. `DeveloperProductConfig` fallback prices are used only when Marketplace lookup fails.
+- A failed Dumbbell purchase uses the Inventory status presentation for a short English message. `NotEnoughWin` includes the selected Dumbbell's current `DumbbellItemMaster.PriceWin`; `DataSaving` and `AlreadyOwned` have explicit player-facing messages.

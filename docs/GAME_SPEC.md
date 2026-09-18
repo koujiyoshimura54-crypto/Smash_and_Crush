@@ -346,3 +346,8 @@ World1 Stage6〜10はRecommendedLevel到達時の理論累積StrengthをRequired
 ## 2026-09-16 — Lv1 requirement floor adjustment
 
 Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 Strengthが必要になり、初回Strength獲得時の即時Level Upを防ぐ。Lv51以降、LevelProgress仕様、戦闘・World2仕様は変更していない。
+## 2026-09-18 — Item shop purchase presentation
+
+- Common / Uncommon / Rare items remain Win purchases and display `Price + Win` on their purchase button.
+- Epic / Legendary items remain Developer Product purchases. Their buttons display the Robux logo and the current Marketplace price, falling back to the configured 25 / 50 Robux values only when lookup fails.
+- This presentation does not change Item or Dumbbell prices, purchase processing, rewards, or saved-data schema.

@@ -359,3 +359,8 @@
 - Lv1〜50のRequirementを一律+10し、Lv1→Lv2に10 Strengthを要求。
 - 新しい累積StrengthへWorld1 Stage6〜10を同期し、Wall/Boss倍率からHPを再計算。
 - Lv51以降、Stage1〜5、World2、Strength獲得量、LevelProgress、DataStore、課金仕様は変更なし。
+## 2026-09-18 — Clarify item purchase currency and dumbbell feedback
+
+- Simplified stars 1–3 Item purchase buttons to `Price + Win`; stars 4–5 now clearly pair the existing Robux logo with the live Marketplace price.
+- Added short Inventory status messages for failed Dumbbell purchases, including the current required Win amount.
+- Purchase logic, balance values, and DataStore schema are unchanged.
