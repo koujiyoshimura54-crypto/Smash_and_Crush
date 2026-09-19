@@ -455,3 +455,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 - Added a Player-specific RewardPad Billboard using the existing Trophy icon and the final server-calculated Win reward, including active Double Win.
 - Added confirmed-collection-only Win HUD Pop／Shake and reusable local Coin Collect audio. Reward calculation, collection validation, saving, stage progress, and balance are unchanged.
+
+## 2026-09-19 — Treadmill movement animation conflict
+
+- Changed the Client-owned Treadmill animation to Run `913376220` and retained one dedicated Track per Character.
+- While the accepted Training state is active, only standard Animate walk／run tracks are weight-suppressed; exit restores their weights and normal Idle／Walk／Run behavior. Standard Animate and all Training gameplay remain enabled and unchanged.

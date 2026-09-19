@@ -19,6 +19,11 @@
 - Added a nearby-only Trophy Icon／Win Billboard to each Player's personal RewardPad, using the authoritative post-Double-Win reward.
 - Added a reset-safe Win HUD Pop／Shake and one reusable Player-local Coin Collect sound after confirmed collection. Gameplay rewards and persistence are unchanged.
 
+## 2026-09-19 — Prevent movement animation conflicts on treadmills
+
+- Switched the Client-owned Treadmill Track to Run `913376220` and suppressed only standard Animate walk／run weights during Training, preventing W／A／S／D transitions from replacing the Treadmill Run.
+- Restored standard locomotion weights on exit and retained the existing Character-scoped Track cleanup. Training detection, rewards, multipliers, and Server authority are unchanged.
+
 # 2026-09-19 — Total Strength ranking display correction
 
 - Preserved the descending OrderedDataStore ranking and corrected compact-number formatting so integer trailing zeroes are not removed (`150M` no longer renders as `15M`).

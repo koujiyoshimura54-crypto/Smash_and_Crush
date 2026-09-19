@@ -208,7 +208,7 @@ EnemyManagerのStatic Boss表示倍率は、移動するRootではなく既存St
 - Stepは現行実装では「地上歩行時間に応じた0.5秒tick」。一定移動距離ごとの歩数ではなく、独立した保存Step通貨・StepCount・Step Levelは確認されない。
 - 歩行中、HumanoidがRunning/RunningNoPhysicsで入力方向または水平速度条件を満たすとStrengthを得る。Training中・戦闘中・Treadmill占有中には歩行分を付与しない。
 - TreadmillのTrainingZoneに入ると、自動で使用条件を判定して0.5秒ごとにTraining。退出・死亡・機器消失で停止。固定席数の予約ロックは確認されず、Player単位のTraining状態を持つ。
-- Treadmill中のPlayer Animationは本人Clientの`TreadmillRunClient`がServer正本の`IsTraining`／`TrainingTreadmill`を監視して管理する。標準Animateは維持し、ServerのTrainingManagerはAnimationTrackをLoad／Play／Stopしない。Treadmill用Walk TrackはCharacterごとに1回Loadして再利用し、退出時にStop、死亡・CharacterRemoving時にDestroyする。
+- Treadmill中のPlayer Animationは本人Clientの`TreadmillRunClient`がServer正本の`IsTraining`／`TrainingTreadmill`を監視して管理する。専用Run `913376220`をCharacterごとに1回Loadして再利用し、Training中だけ標準Animate由来walk／runのWeightを0へ抑えて入力時の競合を防ぐ。標準Animate自体は維持し、退出時に標準Weightを復帰、専用RunをStop、死亡・CharacterRemoving時にDestroyする。ServerのTrainingManagerはAnimationTrackを操作しない。
 - 歩行ではDumbbell加算なし。TrainingはDumbbell/Aura/Proteinを基礎値に加算し、Rebirth・Treadmill・Potion・VIPを計算する。正確な式はBALANCE_SPEC。
 - **Strength＝現在の成長サイクルで保持する累積戦闘力**。Level Upで消費せず、Boss/Wallは引き続きこの値を使用する。生涯ランキング用TotalStrengthEarnedとは別。
 - **LevelProgress＝現在Levelで獲得したStrength進捗**。現在Requirementを消費した後の余剰を保持する。
