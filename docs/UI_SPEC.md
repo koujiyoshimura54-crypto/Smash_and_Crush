@@ -368,3 +368,8 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 - 3 Socketは消費する素材Item、Upgradeは素材Rarity星 → 完成Rarity星を維持し、Hero・右側星・Server結果ItemIdを一致させる。
 - Inventory Window配下の英数字Textは、既存・Runtime生成を含めEnum.Font.FredokaOneへ統一する。★もFredokaOneで正常表示する。非対応言語はRoblox標準Font fallbackを許容し、Localization設定やSource Languageは変更しない。
 - FredokaOneの文字幅に合わせ、TextScaled要素は既存UITextSizeConstraintの最小値だけ必要時6pxまで縮小可能とする。レイアウト、明るい3STEP Visual、通貨Icon、購入・Merge機能は変更しない。
+# Localization source management
+
+- Player-facing source language is English. Japanese and other target languages are managed through the Roblox Localization Table.
+- The Git source of truth for manual localization imports is `localization/GameLocalizationTable.csv`; committing this file does not upload it to the Roblox cloud table.
+- Dynamic entries retain Roblox placeholders such as `{number1}`, `{number2}`, `{number3}`, and `{time1}` in both Source and translated text.

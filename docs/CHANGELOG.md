@@ -1,3 +1,9 @@
+# 2026-09-19 — Localization source table and English Sources
+
+- Added the validated 192-entry Japanese localization CSV at `localization/GameLocalizationTable.csv` for version control.
+- Replaced four player-facing Japanese Sources with `×2 WINS`, `Rebirth resets Strength and Level`, and parameterized `Recommended Lv. {number1}` Sources.
+- No gameplay, balance, save, or UI layout behavior changed.
+
 # 2026-09-19 — Total Strength ranking display correction
 
 - Preserved the descending OrderedDataStore ranking and corrected compact-number formatting so integer trailing zeroes are not removed (`150M` no longer renders as `15M`).

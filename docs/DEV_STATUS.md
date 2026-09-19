@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-19 — Localization CSV source of truth
+
+- `GameLocalizationTable_Complete_JA.csv`（192 Entry）を検証し、`localization/GameLocalizationTable.csv`へGit正本として保存。UTF-8 BOM、5列、Source重複・空欄・Placeholder不一致なし。
+- Cloud Translatorはja-jp訳を返す一方、AutoLocalize UIは英語のまま。Script再代入ではなく、このStudio PlayでPlayer Emulatorのgame localeが未適用（`ForcePlayModeGameLocaleId`が空）であることを確認。Creator DashboardのUse translated content設定はAPIから確認できないため、実機確認前に併せて確認が必要。CSVのGit保存とCloud uploadは別工程。
+- Player向け日本語Source 4箇所を、CSVに存在するEnglish Sourceへ変更。Gameplay、Balance、UI Layoutは変更なし。
+
 ## 2026-09-19 — Total Strength ranking display correction
 
 - Production `TotalStrengthRanking_v1` raw top values were verified as descending. The observed `15M` row was raw `150,444,109`, ahead of raw `142,065,423` as expected.

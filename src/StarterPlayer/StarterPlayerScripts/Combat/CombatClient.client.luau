@@ -106,7 +106,7 @@ local function showBossRecommendation(major,v)
  if not floor then return end
  if recommendationGui then recommendationGui:Destroy() end
  local g=Instance.new("BillboardGui"); g.Name="BossRecommendedLevel"; g.Adornee=floor; g.Size=UDim2.fromOffset(112,32); g.StudsOffset=Vector3.new(-14,3,0); g.AlwaysOnTop=true; g.Parent=floor
- local l=Instance.new("TextLabel"); l.Size=UDim2.fromOffset(112,32); l.BackgroundTransparency=1; l.Text="推奨 Lv."..tostring(v); l.TextColor3=Color3.fromRGB(255,235,170); l.TextScaled=true; l.Font=Enum.Font.GothamBold; l.Parent=g
+ local l=Instance.new("TextLabel"); l.Size=UDim2.fromOffset(112,32); l.BackgroundTransparency=1; l.Text=("Recommended Lv. %d"):format(v); l.TextColor3=Color3.fromRGB(255,235,170); l.TextScaled=true; l.Font=Enum.Font.GothamBold; l.Parent=g
  recommendationGui=g
 end
 local function hideBossRecommendation() if recommendationGui then recommendationGui:Destroy(); recommendationGui=nil end end
