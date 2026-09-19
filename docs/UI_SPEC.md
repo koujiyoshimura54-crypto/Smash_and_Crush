@@ -218,6 +218,8 @@ Item一覧は3列。Touch対象には親領域内で約40px以上を目指す透
 ## Strength / Level HUD
 
 上段StrengthLevelHUD.Strengthはサーバーの累積StrengthをNumberFormatで短縮表示する。下段Levelは保存Level Attribute、数値ラベルは **LevelProgress / GetRequiredStrength(Level)**、バーは同じ比率を0〜1へclampして表示する。StrengthからLevelを逆算しない。
+
+上段の表示内部は`StrengthValueContainer`内の数値`Strength`と固定単位`StrengthUnit`をHorizontal `UIListLayout`で中央配置する。数値LabelだけをRuntime更新し、`StrengthUnit.Text = "Strength"`／`AutoLocalize = true`で既存Localization Entry（日本語`強さ`）を使用する。桁数やLocaleが変わっても数値と単位を1行中央表示する。
 Strength・Level・LevelProgressのAttribute変更で更新する。Lv1 Requirement=0では0除算を避けバー0%、上限Lv10,000は従来どおりバー100%。例：累積3.5M Strength／Lv.60／500K / 3M。
 UI Object、位置、サイズ、HUDLayout、Formatterの丸めは変更していない。
 

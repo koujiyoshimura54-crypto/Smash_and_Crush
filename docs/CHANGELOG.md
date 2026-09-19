@@ -1,3 +1,8 @@
+# 2026-09-19 — Fix Strength HUD localization
+
+- Separated the changing compact Strength value from the fixed localized `Strength` unit and centered both with a horizontal layout.
+- Japanese now renders values such as `18.8K 強さ` through the existing Localization entry without per-number Sources.
+
 # 2026-09-19 — Localization source table and English Sources
 
 - Added the validated 192-entry Japanese localization CSV at `localization/GameLocalizationTable.csv` for version control.
