@@ -445,3 +445,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 - Japanese terminology was standardized while preserving every existing English Source and placeholder. Runtime-required `EQUIPPED` and `Normal Dumbbell {number1}` entries were added.
 - CSV header, UTF-8 BOM, case-sensitive Source uniqueness, nonblank values, and placeholder parity were verified. Cloud Localization upload remains a separate manual operation.
+
+## 2026-09-19 — Treadmill animation authority
+
+- Removed Server-side Player walk-track control from TrainingManager. The existing TreadmillRunClient now owns one reusable Movement-priority Walk track per Character and follows the accepted `IsTraining`／`TrainingTreadmill` state.
+- Standard Animate, Training eligibility, rewards, intervals, multipliers, Premium checks, and save behavior are unchanged.

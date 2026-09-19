@@ -10,7 +10,6 @@ local TrainingConfig=require(game.ReplicatedStorage.Config:WaitForChild("Trainin
 local TreadmillVisuals=require(game.ServerScriptService.Services:WaitForChild("TreadmillVisualService"))
 local TrainingManager={}
 local activeSessions={}
-local animationTracks=setmetatable({}, {__mode='k'})
 local currentTreadmills={}
 local premiumEntries=setmetatable({}, {__mode="k"})
 
@@ -23,25 +22,6 @@ local function setFlag(player,value,treadmill)
   player:SetAttribute("TrainingTreadmill",value and treadmill and treadmill.Name or nil)
   player:SetAttribute("IsTraining",value)
  end
-end
-local function startTrainingAnimation(player)
- local c=player.Character
- local h=c and c:FindFirstChildOfClass("Humanoid")
- local anim=c and c:FindFirstChild("Animate")
- local walk=anim and anim:FindFirstChild("walk")
- local asset=walk and walk:FindFirstChild("WalkAnim")
- if not h or not asset or not asset:IsA("Animation") then return end
- local animator=h:FindFirstChildOfClass("Animator") or Instance.new("Animator")
- animator.Parent=h
- local track=animator:LoadAnimation(asset)
- track.Priority=Enum.AnimationPriority.Movement
- track.Looped=true
- track:Play(0.15,1,1)
- animationTracks[player]=track
-end
-local function stopTrainingAnimation(player)
- local track=animationTracks[player]
- if track then track:Stop(0.15); animationTracks[player]=nil end
 end
 
 local function makePart(parent,name,size,cframe,color,transparency,collide)
@@ -163,7 +143,7 @@ function TrainingManager.StopTraining(player)
   if s.TreadmillConnection then s.TreadmillConnection:Disconnect() end
   activeSessions[player]=nil
  end
- stopTrainingAnimation(player) setFlag(player,false)
+ setFlag(player,false)
  return s~=nil
 end
 
@@ -202,7 +182,7 @@ function TrainingManager.StartTraining(player,treadmill)
  local interval=TrainingConfig.TrainingInterval
  if not finitePositive(gain) or not finitePositive(interval) then return false,"Invalid treadmill attributes" end
  local s={Active=true,Treadmill=treadmill}
- activeSessions[player]=s setFlag(player,true,treadmill) startTrainingAnimation(player)
+ activeSessions[player]=s setFlag(player,true,treadmill)
  s.DeathConnection=humanoid.Died:Connect(function() TrainingManager.StopTraining(player) end)
  s.TreadmillConnection=treadmill.AncestryChanged:Connect(function()
   if not treadmill:IsDescendantOf(Workspace) then TrainingManager.StopTraining(player) end

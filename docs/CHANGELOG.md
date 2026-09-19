@@ -9,6 +9,11 @@
 - Unified Japanese terminology for Strength, Rebirth, Normal Dumbbell, Aura, and related ranking and potion text without changing existing English Sources.
 - Added missing `EQUIPPED` and parameterized Normal Dumbbell entries. Gameplay, UI layout, visuals, balance, and saves are unchanged.
 
+## 2026-09-19 — Fix treadmill animation replication
+
+- Moved Treadmill Walk playback authority from TrainingManager Server to the existing local TreadmillRunClient and changed it to the current Walk animation.
+- Reused one Track per Character, stopped it on Training exit, and destroyed it on death, Character removal, or script teardown. Training gameplay and standard Animate are unchanged.
+
 # 2026-09-19 — Total Strength ranking display correction
 
 - Preserved the descending OrderedDataStore ranking and corrected compact-number formatting so integer trailing zeroes are not removed (`150M` no longer renders as `15M`).
