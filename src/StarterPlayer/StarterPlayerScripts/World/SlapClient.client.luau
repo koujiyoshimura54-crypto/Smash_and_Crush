@@ -5,6 +5,8 @@ local player = Players.LocalPlayer
 local Config = require(ReplicatedStorage.Config:WaitForChild("SlapPassConfig"))
 local request = ReplicatedStorage.Remotes:WaitForChild("GameRemotes"):WaitForChild("SlapRequest")
 local connections = setmetatable({}, { __mode = "k" })
+local tracks = setmetatable({}, { __mode = "k" })
+local swingLocked = false
 
 local function aliveRoot(other)
 	local character = other.Character
@@ -39,13 +41,37 @@ end
 local function connectTool(tool)
 	if not tool:IsA("Tool") or tool.Name ~= Config.ToolName or connections[tool] then return end
 	connections[tool] = tool.Activated:Connect(function()
-		local target = findTarget()
-		if target then request:FireServer(target) end
+		if swingLocked then return end
+		swingLocked = true
+		task.delay(Config.SwingLockout, function() swingLocked = false end)
+		if Config.AnimationPlaybackEnabled then
+			local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+			local animator = humanoid and humanoid:FindFirstChildOfClass("Animator")
+			local animation = humanoid and tool:FindFirstChild(humanoid.RigType == Enum.HumanoidRigType.R15 and "SwingR15" or "SwingR6")
+			if animator and animation and animation:IsA("Animation") then
+				local track = tracks[tool]
+				if not track then
+					track = animator:LoadAnimation(animation)
+					track.Priority = Enum.AnimationPriority.Action
+					track.Looped = false
+					tracks[tool] = track
+				end
+				track:Play(0.05)
+			end
+		end
+		task.delay(Config.HitDelay, function()
+			if tool.Parent ~= player.Character then return end
+			local target = findTarget()
+			if target then request:FireServer(target) end
+		end)
 	end)
 	tool.Destroying:Connect(function()
 		local connection = connections[tool]
 		if connection then connection:Disconnect() end
 		connections[tool] = nil
+		local track = tracks[tool]
+		if track then track:Stop(0); track:Destroy() end
+		tracks[tool] = nil
 	end)
 end
 

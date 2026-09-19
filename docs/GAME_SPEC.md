@@ -26,6 +26,8 @@ Badge IDはReplicatedStorage.Config.BadgeConfig、所有確認と付与はServer
 
 ## 2026-09-19 — Player Collision / Slap Pass
 
+- Slap HandはToolboxから追加した`ServerStorage.SlapToolTemplate`を安全化してCloneする。StoreのHandle Mesh、stick、Grip、R15/R6 Animation Object、Smack Soundを保持し、付属Gameplay Script／RemoteはTemplateとCloneの双方で使用しない。
+- Store R15 Animation `102083458174016`はExperienceへの利用権限がなくRuntimeでLength 0となるため、別Assetへ差し替えずConfigで再生を停止する。権限共有後は同じAnimation ObjectをAction Priority／非Loopで再利用できる。Slap判定要求はActivationから0.20秒後に送る。
 - Player CharacterとAccessoryの全BasePartは`PlayerCharacters` CollisionGroupへ所属し、同Group間だけ非衝突とする。Floor、Stage Wall、PersonalBossCollider、Treadmill、Trophy等のWorld Collisionは従来どおり維持する。
 - Slap Pass（GamePassId `1987256653`）所有者へ`Slap Hand` ToolをSession中とRespawn後に1個だけ付与する。標準ToolのActivatedによりPCクリック／Mobileタップを共通入力とする。
 - SlapはServerが所有権、Tool装備、生存、別Player、8stud以内、正面範囲、5秒Cooldownを検証する。成功時だけ対象へ水平60／上方向20相当のImpulseを加え、Cooldownを開始する。対象なし・距離外・未所有・不正要求はCooldownを消費しない。

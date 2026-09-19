@@ -18,6 +18,9 @@
 
 ## 2026-09-19 — Player Collision / Slap Pass（Implemented）
 
+- StarterPackへ追加されたStore Tool `Slap`を監査。外部require／HttpService／DataStore／Marketplace／Admin処理はなかったが、全Workspace Humanoid走査、Force 140、Ragdollを行う付属Scriptを削除し、`ServerStorage.SlapToolTemplate`へ移動した。
+- Handle Mesh `32054761`、R15 Animation `102083458174016`、R6 Animation `243827693`、Smack Sound `7195270254`、Gripと補助stickを維持。Clone時にもScript／Remoteを除去する防御を追加。
+- R15 AnimationはAsset権限エラーでロード不能のため再生を無効化。代替Animationは追加せず、0.20秒Hit Delayのみ正規Client→Server要求へ統合した。
 - `PlayerCharacters` CollisionGroupを追加し、CharacterAddedとDescendantAddedでCharacter／Accessoryを同Groupへ設定。同Group間のみ非衝突でWorld Collisionは維持。
 - Slap Pass `1987256653`の独立したServer所有権キャッシュ、購入Prompt、購入完了後再確認、Respawn対応Tool付与を追加。
 - Slap成功判定と5秒CooldownをServer Authority化。8stud以内の別Playerへ水平60／上20のImpulseを成功時だけ適用し、未所有・空振り・距離外・Cooldown中を拒否する。

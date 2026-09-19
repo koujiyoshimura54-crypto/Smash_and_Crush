@@ -2,6 +2,7 @@ local MarketplaceService = game:GetService("MarketplaceService")
 local PhysicsService = game:GetService("PhysicsService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ServerStorage = game:GetService("ServerStorage")
 
 local Config = require(ReplicatedStorage.Config:WaitForChild("SlapPassConfig"))
 local GamePassService = require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
@@ -54,12 +55,25 @@ local function grantSlapTool(player)
 	if player.Parent ~= Players or not GamePassService.CanUseSlapPass(player) or hasSlapTool(player) then return end
 	local backpack = player:FindFirstChildOfClass("Backpack") or player:WaitForChild("Backpack", 5)
 	if not backpack or hasSlapTool(player) then return end
-	local tool = Instance.new("Tool")
+	local template = ServerStorage:FindFirstChild(Config.ToolTemplateName)
+	if not template or not template:IsA("Tool") then
+		warn("Slap Tool template is missing: ServerStorage." .. Config.ToolTemplateName)
+		return
+	end
+	local tool = template:Clone()
 	tool.Name = Config.ToolName
-	tool.ToolTip = "Slap nearby players"
-	tool.RequiresHandle = false
 	tool.CanBeDropped = false
 	tool:SetAttribute("SlapPassTool", true)
+	for _, descendant in ipairs(tool:GetDescendants()) do
+		if descendant:IsA("LuaSourceContainer") or descendant:IsA("RemoteEvent") or descendant:IsA("RemoteFunction") then
+			descendant:Destroy()
+		elseif descendant:IsA("BasePart") then
+			descendant.CanCollide = false
+			descendant.CanTouch = false
+			descendant.CanQuery = false
+			descendant.Massless = true
+		end
+	end
 	tool.Parent = backpack
 end
 
@@ -93,6 +107,9 @@ local function attemptSlap(attacker, target)
 	if previous and now - previous < Config.Cooldown then return end
 	lastSuccessfulSlap[attacker] = now
 	targetRoot:ApplyImpulse((direction * Config.HorizontalKnockback + Vector3.yAxis * Config.UpwardKnockback) * targetRoot.AssemblyMass)
+	local tool = attacker.Character and attacker.Character:FindFirstChild(Config.ToolName)
+	local sound = tool and tool:FindFirstChild("Smack", true)
+	if sound and sound:IsA("Sound") then sound.TimePosition = 0; sound:Play() end
 end
 
 local function initializePlayer(player)

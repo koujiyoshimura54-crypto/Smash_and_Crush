@@ -30,6 +30,8 @@
 
 ## 2026-09-19 — Add Slap Pass player interaction
 
+- Store版Slap ToolのHandle Mesh／Grip／Animation Object／Smack Soundを安全化したServerStorage Templateへ統合。Workspace全Humanoidへ作用する付属Scriptは削除し、既存のServer Authority判定だけを使用する。
+- Store R15 AnimationはExperience権限不足のため代替せず再生停止。Hit要求をActivationから0.20秒遅延し、権限共有後に同じAnimationを有効化できるConfigを追加。
 - Player Character同士を専用CollisionGroupで常時非衝突化し、Worldとの衝突を維持。
 - Slap Pass（1987256653）所有者へPC／Mobile共通のSlap Handを付与。Server検証済みの近距離Playerだけへ水平60／上20のKnockbackを加え、成功後のみ5秒Cooldownを開始。
 - 未所有Playerが他Playerへ接近すると購入Promptを表示し、Cancelを含む30秒の再Prompt抑止と、購入直後の所有権再確認／Tool付与に対応。
