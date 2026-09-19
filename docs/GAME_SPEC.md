@@ -246,6 +246,7 @@ Boss撃破で個人のStageが進む。Stage10撃破でWorldComplete=true。敗�
 - Boss撃破時にWinを直接付与しない。本人用の黄色PadがBoss区画左側に出現する。
 - Pad踏み込みをサーバーが所有者・Boss撃破済み・身体との実重なりで検証。取得ロックにより二重付与を防ぐ。
 - 取得でStage別Win×有効DoubleWin倍率を加算し、全Padを消し、回復してLobbyへ戻りRunをStage1へリセットする。
+- RewardPadのPlayer個別Billboardは、既存Stage Rewardと有効Double WinからServerが算出した実獲得WinをTrophy Icon付きで表示する。正式取得・Win更新後だけ本人Clientへ成功通知し、Win HUDのPop／ShakeとCoin Collect SEを再生する。Reward値・倍率・取得判定は変更しない。
 - 途中StageのPadを取らず、次Stageへ進むことも可能。PadとBoss進行は独立している。
 - Item DropはPadと別。各Player/Run/StageのBoss撃破につき1回の抽選。ITEMなら所有Inventoryへ付与し、本人へ結果通知。現在は20% ITEM／80% MISS。
 - Winは非負整数。Pad以外にDaily/Time/Community/Packから獲得する。通常Item・Dumbbell・Aura・Speed・Stage Skipに消費する。

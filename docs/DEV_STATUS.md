@@ -450,3 +450,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 - Removed Server-side Player walk-track control from TrainingManager. The existing TreadmillRunClient now owns one reusable Movement-priority Walk track per Character and follows the accepted `IsTraining`／`TrainingTreadmill` state.
 - Standard Animate, Training eligibility, rewards, intervals, multipliers, Premium checks, and save behavior are unchanged.
+
+## 2026-09-19 — Trophy reward feedback
+
+- Added a Player-specific RewardPad Billboard using the existing Trophy icon and the final server-calculated Win reward, including active Double Win.
+- Added confirmed-collection-only Win HUD Pop／Shake and reusable local Coin Collect audio. Reward calculation, collection validation, saving, stage progress, and balance are unchanged.

@@ -299,6 +299,10 @@ Panelは他の主要Panelと排他で開閉する。BUY WINの見た目上の導
 
 実装は黄色Neon Pad。TrophyRewardTemplate.Handleは8×0.3×5stud、RGB255,221,0。旧Trophy像へ戻す予定は確定していない。
 
+- Player個別のRewardPad上には、既存Win HUDのTrophy Iconと実獲得値を`+N Win`で表示するBillboardGuiをRuntime生成する。Handle実寸から上方向へ2.75stud加算し、MaxDistance 30stud、220×64px、FredokaOneとする。
+- 取得成功後はWin AttributeとHUD数値の更新を確認してから、WinLabel全体を1.17倍へPopし、Rotationを小さく4回揺らして約0.5秒で基準状態へ戻す。連続取得時は進行中TweenをCancelして基準状態から再開する。
+- 同時に本人だけへ共通`UISoundConfig.CoinCollect`を再生する。失敗・二重接触・既取得ではFeedbackを出さない。
+
 Boss区画Floorの左側へ相対配置し、実接触用HitboxはHandleに高さ0.6studを加え、中心を上へ0.3studずらす。OwnerUserId付きで本人用表示・取得判定。Winの加算は表示を見た時点ではなくサーバーのPad取得成功時。詳細は[GAME_SPEC](GAME_SPEC.md)。
 
 ## World2Gate Sign / PortalSurface / Player別表示

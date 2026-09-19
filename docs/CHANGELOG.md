@@ -14,6 +14,11 @@
 - Moved Treadmill Walk playback authority from TrainingManager Server to the existing local TreadmillRunClient and changed it to the current Walk animation.
 - Reused one Track per Character, stopped it on Training exit, and destroyed it on death, Character removal, or script teardown. Training gameplay and standard Animate are unchanged.
 
+## 2026-09-19 — Improve trophy reward feedback
+
+- Added a nearby-only Trophy Icon／Win Billboard to each Player's personal RewardPad, using the authoritative post-Double-Win reward.
+- Added a reset-safe Win HUD Pop／Shake and one reusable Player-local Coin Collect sound after confirmed collection. Gameplay rewards and persistence are unchanged.
+
 # 2026-09-19 — Total Strength ranking display correction
 
 - Preserved the descending OrderedDataStore ranking and corrected compact-number formatting so integer trailing zeroes are not removed (`150M` no longer renders as `15M`).
