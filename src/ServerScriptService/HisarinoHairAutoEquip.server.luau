@@ -1,0 +1,61 @@
+local Players = game:GetService("Players")
+local ServerStorage = game:GetService("ServerStorage")
+
+local ACCESSORY_NAME = "Hisarino_hair"
+local WAIT_TIMEOUT = 10
+local accessoryTemplate = ServerStorage:WaitForChild(ACCESSORY_NAME)
+local attaching = setmetatable({}, { __mode = "k" })
+
+local function attachHisarinoHair(character)
+	if attaching[character] then return end
+	attaching[character] = true
+
+	local head = character:WaitForChild("Head", WAIT_TIMEOUT)
+	local headAttachment = head and head:WaitForChild("HairAttachment", WAIT_TIMEOUT)
+	if not head or not headAttachment or not headAttachment:IsA("Attachment") then
+		attaching[character] = nil
+		return
+	end
+
+	local existing = character:FindFirstChild(ACCESSORY_NAME)
+	if existing then existing:Destroy() end
+
+	local accessory = accessoryTemplate:Clone()
+	local handle = accessory:FindFirstChild("Handle")
+	local accessoryAttachment = handle and handle:FindFirstChild("HairAttachment")
+	if not handle or not handle:IsA("BasePart")
+		or not accessoryAttachment or not accessoryAttachment:IsA("Attachment") then
+		accessory:Destroy()
+		attaching[character] = nil
+		return
+	end
+
+	accessory.Parent = character
+	handle.Anchored = false
+	handle.CanCollide = false
+	handle.Massless = true
+	handle.CFrame = head.CFrame * headAttachment.CFrame * accessoryAttachment.CFrame:Inverse()
+
+	local oldWeld = handle:FindFirstChild("AccessoryWeld")
+	if oldWeld then oldWeld:Destroy() end
+
+	local weld = Instance.new("Weld")
+	weld.Name = "AccessoryWeld"
+	weld.Part0 = handle
+	weld.Part1 = head
+	weld.C0 = accessoryAttachment.CFrame
+	weld.C1 = headAttachment.CFrame
+	weld.Parent = handle
+
+	attaching[character] = nil
+end
+
+local function setupPlayer(player)
+	player.CharacterAdded:Connect(function(character)
+		task.spawn(attachHisarinoHair, character)
+	end)
+	if player.Character then task.spawn(attachHisarinoHair, player.Character) end
+end
+
+Players.PlayerAdded:Connect(setupPlayer)
+for _, player in ipairs(Players:GetPlayers()) do setupPlayer(player) end
