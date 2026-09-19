@@ -534,9 +534,11 @@ local function createMiniBossCollider(e)
  local root=e:FindFirstChild("HumanoidRootPart")
  if not root then return end
  if e:GetAttribute("StaticAppearance") then
-  local reference=SS.EnemyTemplates[("Stage%02dBoss"):format(e:GetAttribute("StageNumber"))].CollisionReference
-  local collider=reference:Clone()
-  collider.Name="MiniBossCollider";collider.CFrame=root.CFrame*reference.CFrame;collider.Parent=e
+ local reference=SS.EnemyTemplates[("Stage%02dBoss"):format(e:GetAttribute("StageNumber"))].CollisionReference
+ local collider=reference:Clone()
+  collider.Name="MiniBossCollider";collider.CFrame=root.CFrame*reference.CFrame
+  collider.CanCollide=false;collider.CanTouch=false;collider.CanQuery=false
+  collider.Parent=e
   local weld=Instance.new("WeldConstraint")
   weld.Name="MiniBossColliderWeld";weld.Part0=root;weld.Part1=collider;weld.Parent=collider
   return
@@ -583,11 +585,6 @@ local function refreshMiniBossCollider(e)
   local _,size=visualModel:GetBoundingBox()
   local padding=(e:GetAttribute("StageNumber")==6) and Vector3.new(4,4,4) or Vector3.new(1,0.5,1) collider.Size=size+padding
  end
-end
-
-local function setMiniBossColliderEnabled(e,enabled)
- local collider=e and e:FindFirstChild("MiniBossCollider")
- if collider then collider.CanCollide=enabled end
 end
 
 local enemyGeneration={}
@@ -657,9 +654,7 @@ local function spawnEnemy(i)
  task.delay(.5,function()
   if e.Parent and enemies[i]==e then
    refreshMiniBossCollider(e)
-   for _,d in e:GetDescendants() do
-    if d:IsA("BasePart") and d~=e:FindFirstChild("MiniBossCollider") then d.CanCollide=false end
-   end
+   for _,d in e:GetDescendants() do if d:IsA("BasePart") then d.CanCollide=false end end
   end
  end)
  e.Humanoid.DisplayDistanceType=Enum.HumanoidDisplayDistanceType.None
@@ -842,7 +837,6 @@ local function updateCombat(p,manualRequest)
        if nextIndex<=4 then
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=nextIndex,Current=Wall.GetGaugeForStage(attackPlayer,attackStage,nextIndex),Max=Wall.GetStageConfig(attackStage).Walls[nextIndex]})
        elseif Wall.IsBossUnlockedForStage(attackPlayer,attackStage) then
-        setMiniBossColliderEnabled(enemies[attackStage],true)
         send(attackPlayer,{Type="Stage1BossUnlocked",MajorStage=attackStage})
         local bossMax=Boss.GetStageConfig(attackStage).MaxHP
         send(attackPlayer,{Type="BossRecommendation",Stage=attackStage,Current=state(attackPlayer).Gauges[attackStage],Max=bossMax,RecommendedLevel=Boss.GetStageConfig(attackStage).RecommendedLevel})

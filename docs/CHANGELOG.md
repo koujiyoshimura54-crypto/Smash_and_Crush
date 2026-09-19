@@ -1,3 +1,8 @@
+# 2026-09-19 — Fix per-player boss collision gates
+
+- Keep shared Boss `MiniBossCollider` parts non-colliding and remove progression-based Server/Client collision writes.
+- Restore Client-only Personal Gates using current Stage geometry so one Player's defeat or Boss replacement cannot change another Player's passage state.
+
 # 2026-09-19 — Gray out claimed reward buttons
 
 - Gray out only claimed Time Reward and Daily Reward buttons while preserving each card and every unclaimed/ready button visual.
