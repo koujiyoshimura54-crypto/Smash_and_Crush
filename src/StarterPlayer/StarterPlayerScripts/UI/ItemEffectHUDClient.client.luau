@@ -63,6 +63,7 @@ setBadge.TextColor3 = Color3.new(1,1,1)
 setBadge.TextStrokeColor3 = Color3.fromRGB(24,21,35)
 setBadge.TextStrokeTransparency = .1
 setBadge.TextScaled = false
+setBadge.AutomaticSize = Enum.AutomaticSize.X
 setBadge.AutoLocalize = true
 setBadge.Visible = false
 setBadge.ZIndex = row.ZIndex + 1
@@ -74,6 +75,10 @@ local setStroke = Instance.new("UIStroke")
 setStroke.Color = Color3.fromRGB(43,13,65)
 setStroke.Thickness = 2
 setStroke.Parent = setBadge
+local setPadding = Instance.new("UIPadding")
+setPadding.PaddingLeft = UDim.new(0, 10)
+setPadding.PaddingRight = UDim.new(0, 10)
+setPadding.Parent = setBadge
 local elementColors = {
  Fire = Color3.fromRGB(242,103,114),
  Ice = Color3.fromRGB(77,190,240),
@@ -175,9 +180,8 @@ local function layout()
  row.Position = UDim2.new(.5, 0, 0, top + badgeHeight + badgeGap + height - hud.AbsolutePosition.Y)
  if setBadge.Visible then
   local textSize = compact and 17 or 19
-  local badgeWidth = math.ceil(TextService:GetTextSize(setBadge.Text,textSize,setBadge.Font,Vector2.new(1000,badgeHeight)).X)+20
   setBadge.TextSize = textSize
-  setBadge.Size = UDim2.fromOffset(badgeWidth,badgeHeight)
+  setBadge.Size = UDim2.fromOffset(0,badgeHeight)
   setBadge.AnchorPoint = Vector2.new(.5,0)
   setBadge.Position = UDim2.new(.5,0,0,top-hud.AbsolutePosition.Y)
  end

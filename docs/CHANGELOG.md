@@ -1,3 +1,8 @@
+# 2026-09-19 — Fix element set badge text rendering
+
+- Size the Element Set Badge from its localized rendered text and preserve its horizontal padding so Fire, Ice, and Electric labels do not clip.
+- Element Set eligibility and the Strength ×1.5 calculation are unchanged.
+
 # 2026-09-19 — Rebalance World1 upgrade economy
 
 - Rebalanced Dumbbell Grade 1–7 and Win-purchasable Aura bonuses and prices for the World1 V1 progression target.

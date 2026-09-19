@@ -1,5 +1,10 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-19 — Element Set Badge localized width
+
+- Element Set Badgeの幅を英語Sourceの手計算から、Localization後の実描画文字列へ追従するAutomaticSizeへ変更。左右10px Paddingを維持し、Fire / Ice / Electricと英語 / 日本語で末尾が欠けない構造にした。
+- Element Set判定とStrength ×1.5計算、Item Effect Icon、HUD位置・色・文字サイズは変更なし。
+
 ## 2026-09-19 — World1 upgrade economy V1
 
 - Dumbbell Grade 1～7をBonus 2 / 4 / 8 / 25 / 60 / 150 / 300、Price 5 / 15 / 40 / 100 / 250 / 600 / 1500へ更新。
