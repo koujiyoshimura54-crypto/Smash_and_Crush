@@ -1,3 +1,8 @@
+# 2026-09-19 — Gray out claimed reward buttons
+
+- Gray out only claimed Time Reward and Daily Reward buttons while preserving each card and every unclaimed/ready button visual.
+- Reapply claimed styling from the existing server snapshot whenever either reward panel renders or reopens.
+
 # 2026-09-19 — Fix Strength HUD localization
 
 - Separated the changing compact Strength value from the fixed localized `Strength` unit and centered both with a horizontal layout.

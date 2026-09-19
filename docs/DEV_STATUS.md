@@ -466,3 +466,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 - Split the Strength HUD into one formatted numeric label and one AutoLocalize unit label while preserving the existing single-line centered appearance.
 - Reused the existing `Strength → 強さ` Localization entry; Strength, Level, progress, and balance calculations are unchanged.
+
+## 2026-09-19 — Claimed reward button visuals
+
+- Time Rewards and Daily Rewards now render claimed buttons with the same gray-lavender gradient and neutral strokes.
+- Locked and ready visuals, claim eligibility, reward contents, persistence, and Localization Sources are unchanged.

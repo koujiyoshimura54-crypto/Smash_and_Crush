@@ -376,6 +376,10 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 - FredokaOneの文字幅に合わせ、TextScaled要素は既存UITextSizeConstraintの最小値だけ必要時6pxまで縮小可能とする。レイアウト、明るい3STEP Visual、通貨Icon、購入・Merge機能は変更しない。
 # Localization source management
 
+## Claimed reward buttons
+
+Time Rewards and Daily Rewards retain their existing visuals while locked or ready. A claimed reward keeps its card, icon, and reward presentation unchanged; only its disabled `CLAIMED` button uses the shared gray-lavender gradient and neutral strokes. Reopening or rebuilding either panel reapplies the claimed visual from the existing server state.
+
 - Player-facing source language is English. Japanese and other target languages are managed through the Roblox Localization Table.
 - The Git source of truth for manual localization imports is `localization/GameLocalizationTable.csv`; committing this file does not upload it to the Roblox cloud table.
 - Dynamic entries retain Roblox placeholders such as `{number1}`, `{number2}`, `{number3}`, and `{time1}` in both Source and translated text.
