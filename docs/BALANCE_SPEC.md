@@ -1,5 +1,31 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-09-19 — World1 upgrade economy V1
+
+World1の新規無課金Player向けに、購入判断を残しつつ序盤からUpgradeへ到達できる価格帯へ変更した。設計目標は完全最適30～32分、標準40～45分、非最適50～55分であり、実Play計測前の目標値である。
+
+| Dumbbell Grade | Training Strength Bonus | Win Price |
+|---:|---:|---:|
+| 1 | 2 | 5 |
+| 2 | 4 | 15 |
+| 3 | 8 | 40 |
+| 4 | 25 | 100 |
+| 5 | 60 | 250 |
+| 6 | 150 | 600 |
+| 7 | 300 | 1,500 |
+
+| Aura | Strength Bonus | Win Price |
+|---|---:|---:|
+| Pink | 10 | 25 |
+| Purple | 20 | 75 |
+| Yellow | 40 | 200 |
+| Green | 150 | 500 |
+| Blue | 350 | 1,250 |
+
+通常ItemのWin価格はCommon 75、Uncommon 200、Rare 600。Epic / LegendaryはRobux購入を維持する。Studio正本のItem効果値（Protein 1 / 15 / 30 / 50 / 150、Glove 5% / 10% / 20% / 35% / 50%、Belt 0.25 / 0.5 / 1 / 1.5 / 2）は変更しない。Red Aura +1000、VIP / Secret Aura、Rebirth、Treadmill、World1 Stage値、Boss Drop 20%、Time Rewards、Element Set ×1.5も変更しない。
+
+15分Time Rewardは引き続き新しいDumbbell / Aura値を正本として、通常Training 15秒相当の式を使う。45分RewardはItem Roll ×10を維持する。
+
 Version: 1.4 / 監査・更新日: 2026-09-16
 
 ## 読み方・参照元

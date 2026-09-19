@@ -341,7 +341,7 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 - YES/NO、中央Modal、PC/Phone/Tablet向けSize制約は共通。NO後は現在のGateを退出するまで再表示しない。
 ## 2026-09-18 — Item purchase currency and Dumbbell feedback
 
-- Item cards for Common, Uncommon, and Rare use one full-width purchase button showing the existing Win HUD Trophy icon beside `100`, `300`, or `1,000`. The button does not add a `Win` text suffix.
+- Item cards for Common, Uncommon, and Rare use one full-width purchase button showing the existing Win HUD Trophy icon beside `75`, `200`, or `600`. The button does not add a `Win` text suffix.
 - Epic and Legendary item cards show Roblox's standard Robux logo (`rbxasset://textures/ui/common/robux.png`) beside the live Marketplace product price. The previously referenced `rbxassetid://77577420970893` resolves to a Trophy image and must not be used for Robux currency. `DeveloperProductConfig` fallback prices are used only when Marketplace lookup fails.
 - A failed Dumbbell purchase uses the Inventory status presentation for a short English message. `NotEnoughWin` includes the selected Dumbbell's current `DumbbellItemMaster.PriceWin`; `DataSaving` and `AlreadyOwned` have explicit player-facing messages.
 

@@ -1,3 +1,8 @@
+# 2026-09-19 — Rebalance World1 upgrade economy
+
+- Rebalanced Dumbbell Grade 1–7 and Win-purchasable Aura bonuses and prices for the World1 V1 progression target.
+- Changed regular Item Win prices to 75 / 200 / 600 for Common / Uncommon / Rare. Kept Item effects, Robux tiers, Rebirth, Treadmills, Stage balance, drops, rewards, Element Set, saves, and Localization unchanged.
+
 # 2026-09-19 — Fix per-player boss collision gates
 
 - Keep shared Boss `MiniBossCollider` parts non-colliding and remove progression-based Server/Client collision writes.

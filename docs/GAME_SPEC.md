@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-19 — World1 upgrade economy V1
+
+- Dumbbell Grade 1～7とWin購入Aura Pink～BlueのStrength加算・価格、および通常Item Common / Uncommon / RareのWin価格をBALANCE_SPECのV1表へ更新した。
+- Purchase、Equip、Save Schema、Item効果、Element Set、Rebirth、Treadmill、Stage、Boss Drop、Time / Daily Rewardの処理仕様は変更しない。
+- 15分Time RewardはConfig変更後のDumbbell / Auraを既存の通常Training基準式から参照し、45分RewardはItem Roll ×10を維持する。
+
 ## 2026-09-18 — Achievement Badge
 
 以下の5種類を初期Achievement Badge Collectionとする。Roblox Creator Dashboardで作成済み・Activeで、Serverの正規成立経路から付与する。並びは代表的な進行イメージであり、取得必須順序ではない。BadgeはBalance効果を持たず、Strength / Win / Item性能へ影響しない。

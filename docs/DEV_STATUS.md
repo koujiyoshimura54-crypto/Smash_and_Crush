@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-19 — World1 upgrade economy V1
+
+- Dumbbell Grade 1～7をBonus 2 / 4 / 8 / 25 / 60 / 150 / 300、Price 5 / 15 / 40 / 100 / 250 / 600 / 1500へ更新。
+- Aura Pink～BlueをBonus 10 / 20 / 40 / 150 / 350、Price 25 / 75 / 200 / 500 / 1250へ更新。
+- 通常Item Win価格をCommon 75、Uncommon 200、Rare 600へ更新。UIと購入判定は共通Config参照を継続し、Save SchemaとLocalization Sourceは変更なし。
+
 ## 2026-09-19 — Localization CSV source of truth
 
 - `GameLocalizationTable_Complete_JA.csv`（192 Entry）を検証し、`localization/GameLocalizationTable.csv`へGit正本として保存。UTF-8 BOM、5列、Source重複・空欄・Placeholder不一致なし。
