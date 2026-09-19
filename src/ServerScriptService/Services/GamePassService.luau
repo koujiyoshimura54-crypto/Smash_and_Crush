@@ -222,6 +222,38 @@ MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,id,pur
 end)
 Players.PlayerRemoving:Connect(function(player) speedCache[player]=nil;speedBusy[player]=nil end)
 
+-- Slap entitlement is verified independently. The mirrored Attribute drives presentation only.
+local SlapConfig=require(game.ReplicatedStorage.Config:WaitForChild("SlapPassConfig"))
+local slapCache=setmetatable({}, {__mode="k"})
+local slapBusy=setmetatable({}, {__mode="k"})
+function M.HasSlapPass(player)
+ return slapCache[player]==true
+end
+function M.CanUseSlapPass(player)
+ return M.AreEffectsEnabled(player) and M.HasSlapPass(player)
+end
+function M.RefreshSlapPass(player)
+ if slapBusy[player] then return M.HasSlapPass(player),"Pending" end
+ slapBusy[player]=true
+ local ok,owned=pcall(function()
+  return MarketplaceService:UserOwnsGamePassAsync(player.UserId,SlapConfig.GamePassId)
+ end)
+ slapBusy[player]=nil
+ if player.Parent~=Players then return false,"PlayerUnavailable" end
+ if not ok then return M.HasSlapPass(player),"OwnershipUnavailable" end
+ slapCache[player]=owned==true
+ player:SetAttribute("HasSlapPass",owned==true)
+ return owned==true,"Verified"
+end
+function M.PromptSlapPass(player)
+ if M.HasSlapPass(player) then return false,"AlreadyOwned" end
+ local ok=pcall(function()
+  MarketplaceService:PromptGamePassPurchase(player,SlapConfig.GamePassId)
+ end)
+ return ok,ok and "Prompted" or "PromptUnavailable"
+end
+Players.PlayerRemoving:Connect(function(player) slapCache[player]=nil;slapBusy[player]=nil end)
+
 -- Verified Shop entitlements. Attribute mirrors never authorize a benefit.
 local ShopConfig=require(game.ReplicatedStorage.Config.ShopProductConfig)
 local shopCache=setmetatable({}, {__mode="k"})

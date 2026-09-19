@@ -28,6 +28,12 @@
 - Separated the changing compact Strength value from the fixed localized `Strength` unit and centered both with a horizontal layout.
 - Japanese now renders values such as `18.8K 強さ` through the existing Localization entry without per-number Sources.
 
+## 2026-09-19 — Add Slap Pass player interaction
+
+- Player Character同士を専用CollisionGroupで常時非衝突化し、Worldとの衝突を維持。
+- Slap Pass（1987256653）所有者へPC／Mobile共通のSlap Handを付与。Server検証済みの近距離Playerだけへ水平60／上20のKnockbackを加え、成功後のみ5秒Cooldownを開始。
+- 未所有Playerが他Playerへ接近すると購入Promptを表示し、Cancelを含む30秒の再Prompt抑止と、購入直後の所有権再確認／Tool付与に対応。
+
 # 2026-09-19 — Localization source table and English Sources
 
 - Added the validated 192-entry Japanese localization CSV at `localization/GameLocalizationTable.csv` for version control.

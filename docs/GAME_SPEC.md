@@ -24,6 +24,13 @@ Badge IDはReplicatedStorage.Config.BadgeConfig、所有確認と付与はServer
 
 接続点は、First SmashがEnemyManagerの正規Boss撃破後、First RebirthがRebirthCount 0→1のServer成功後、World 1 CompleteがStage.ClearStage後の既存WorldComplete成立時。First LegendaryはItemMaster.RarityがLegendaryの通常Itemについて、Boss Drop、Daily / Time / Community Reward、Secret Pack、Win Shop、Developer Product、Mergeの正規付与成立後に共通判定する。Debug / QAの直接付与は通知経路を呼ばない。Into World 2は同一Place内でServerがWorld2LobbySpawnへのPivotToを完了し、CurrentWorld=2を設定した後に判定する。Unlock、Gate接触、移動Requestだけでは付与しない。Join時の遡及付与は行わない。
 
+## 2026-09-19 — Player Collision / Slap Pass
+
+- Player CharacterとAccessoryの全BasePartは`PlayerCharacters` CollisionGroupへ所属し、同Group間だけ非衝突とする。Floor、Stage Wall、PersonalBossCollider、Treadmill、Trophy等のWorld Collisionは従来どおり維持する。
+- Slap Pass（GamePassId `1987256653`）所有者へ`Slap Hand` ToolをSession中とRespawn後に1個だけ付与する。標準ToolのActivatedによりPCクリック／Mobileタップを共通入力とする。
+- SlapはServerが所有権、Tool装備、生存、別Player、8stud以内、正面範囲、5秒Cooldownを検証する。成功時だけ対象へ水平60／上方向20相当のImpulseを加え、Cooldownを開始する。対象なし・距離外・未所有・不正要求はCooldownを消費しない。
+- 未所有Playerが生存中の別Playerから8stud以内へ入るとGame Pass購入Promptを表示する。Prompt後はCancelを含め30秒間再表示せず、購入完了後はServerで所有権を再確認してRejoinなしでToolを付与する。
+
 ## 2026-09-18 — Administrator Treadmill Game Pass
 
 - World1 Premium ×20 Treadmill（Tredmill01）はAdministrator Treadmill Game Pass、GamePassId=1982996954を使用する。TreadmillConfig.PremiumTreadmillPassIdが正本。

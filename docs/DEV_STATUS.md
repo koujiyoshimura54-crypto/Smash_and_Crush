@@ -16,6 +16,13 @@
 - Aura Pink～BlueをBonus 10 / 20 / 40 / 150 / 350、Price 25 / 75 / 200 / 500 / 1250へ更新。
 - 通常Item Win価格をCommon 75、Uncommon 200、Rare 600へ更新。UIと購入判定は共通Config参照を継続し、Save SchemaとLocalization Sourceは変更なし。
 
+## 2026-09-19 — Player Collision / Slap Pass（Implemented）
+
+- `PlayerCharacters` CollisionGroupを追加し、CharacterAddedとDescendantAddedでCharacter／Accessoryを同Groupへ設定。同Group間のみ非衝突でWorld Collisionは維持。
+- Slap Pass `1987256653`の独立したServer所有権キャッシュ、購入Prompt、購入完了後再確認、Respawn対応Tool付与を追加。
+- Slap成功判定と5秒CooldownをServer Authority化。8stud以内の別Playerへ水平60／上20のImpulseを成功時だけ適用し、未所有・空振り・距離外・Cooldown中を拒否する。
+- 未所有Playerの近距離検出はCharacter同士の距離で行い、Touchedへ依存せず、PromptはPlayer単位で30秒抑止する。
+
 ## 2026-09-19 — Localization CSV source of truth
 
 - `GameLocalizationTable_Complete_JA.csv`（192 Entry）を検証し、`localization/GameLocalizationTable.csv`へGit正本として保存。UTF-8 BOM、5列、Source重複・空欄・Placeholder不一致なし。
