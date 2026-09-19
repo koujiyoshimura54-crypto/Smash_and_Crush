@@ -18,9 +18,9 @@ row.AnchorPoint = Vector2.new(.5, 1)
 row.Visible = false
 row.Parent = hud
 local definitions = {
- {Kind = "Protein", Asset = "rbxassetid://105488661849761", Get = effects.GetProteinBonus, Suffix = " STR"},
- {Kind = "Glove", Asset = "rbxassetid://108415780326588", Get = effects.GetGloveBossDamageBonus, Factor = 100, Suffix = "% DMG"},
- {Kind = "TrainingBelt", Asset = "rbxassetid://111026808967442", Get = effects.GetBeltTreadmillBonus, Suffix = " Tier"},
+ {Kind = "Protein", Asset = master.Get("PROTEIN_COMMON_FIRE").Image, Get = effects.GetProteinBonus, Suffix = " STR"},
+ {Kind = "Glove", Asset = master.Get("GLOVE_COMMON_FIRE").Image, Get = effects.GetGloveBossDamageBonus, Factor = 100, Suffix = "% DMG"},
+ {Kind = "TrainingBelt", Asset = master.Get("TRAININGBELT_COMMON_FIRE").Image, Get = effects.GetBeltTreadmillBonus, Suffix = " Tier"},
 }
 local entries = {}
 for _, definition in ipairs(definitions) do
@@ -36,6 +36,8 @@ for _, definition in ipairs(definitions) do
  local icon = Instance.new("ImageLabel")
  icon.Name = "Icon"
  icon.BackgroundTransparency = 1
+ icon.BorderSizePixel = 0
+ icon.ImageTransparency = 0
  icon.Image = definition.Asset
  icon.ScaleType = Enum.ScaleType.Fit
  icon.Size = UDim2.fromScale(1, 1)
