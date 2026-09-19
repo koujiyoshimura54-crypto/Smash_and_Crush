@@ -490,8 +490,9 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 ## 2026-09-19 — Per-player boss collision gates
 
-- Shared `MiniBossCollider` instances remain non-colliding through wall unlock, defeat, replacement, and streaming; Server/Client `CanCollide` contention was removed.
-- Each Client derives a red `PersonalGate_StageXX` from the current Stage wall dimensions, Boss collider bounds, progression direction, and next blocker. Uncleared stages keep their local gate; the cleared Player alone disables and removes it.
+- Shared `MiniBossCollider` instances remain non-colliding through wall unlock, defeat, replacement, and streaming; Server/Client `CanCollide` contention remains removed.
+- Each Client clones the current Generation's MiniBossCollider geometry into an invisible `PersonalBossCollider_StageXX` only after that Player unlocks an uncleared Boss. Instance / SpawnGeneration changes and periodic streaming retries rebuild it; `EnemyDefeated` disables and destroys it immediately.
+- Boss visual-rig BaseParts are forced non-colliding on the Client so Humanoid-managed Torso collision cannot remain behind an invisible defeated Boss. The former 88 x 56.25 Stage-wide PersonalGate is no longer used.
 - Boss combat, HP, drops, Trophy feedback, Stage balance, save schema, and DataStore behavior are unchanged.
 # 2026-09-19 — Matching Element Set Bonus
 

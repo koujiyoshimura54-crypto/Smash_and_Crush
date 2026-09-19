@@ -50,7 +50,7 @@ local LEFT_PUNCH_ANIMATION_ID  = "rbxassetid://87608603137173"
 local PUNCH_SOUND_ID="rbxassetid://139897497838184"
 local DEFEAT_SOUND_ID="rbxassetid://128974899749995"
 local folder=Instance.new("Folder")folder.Name="PersonalCombatVisuals"folder.Parent=workspace
-local fills,gates,defeated={},{},{} local track,sound local currentStage=P:GetAttribute("CurrentStage") or 1
+local fills,personalBossColliders,defeated={},{},{} local track,sound local currentStage=P:GetAttribute("CurrentStage") or 1
 local wallGauges,wallState={},{ }
 local wallParts={}
 local activeCombatType,activeCombatStage,activeWallIndex
@@ -293,88 +293,61 @@ local function gauge(n,v,max)
  fills[n]={Fill=f,HP=hp,Max=max,Current=v,Gui=g}
  updateGaugeLayout(e,n,g)
 end
-local function projectedRadius(part,direction)
- local half=part.Size/2
- return math.abs(direction:Dot(part.CFrame.RightVector))*half.X
-  +math.abs(direction:Dot(part.CFrame.UpVector))*half.Y
-  +math.abs(direction:Dot(part.CFrame.LookVector))*half.Z
+local function bossUnlocked(n)
+ local state=wallState[n]
+ return state~=nil and not state.Skipped and state.Current>=5
 end
-local function gateDirection(stage,bossArea)
- local floor=stage and stage:FindFirstChild("Floor")
- local spawn=bossArea and (bossArea:FindFirstChild("EnemySpawn") or bossArea:FindFirstChild("BossSpawn") or bossArea:FindFirstChild("MiniBossSpawn"))
- if not floor or not spawn then return nil end
- local offset=Vector3.new(spawn.Position.X-floor.Position.X,0,spawn.Position.Z-floor.Position.Z)
- return offset.Magnitude>.01 and offset.Unit or nil
-end
-local function nextBossBlocker(corridor,n)
- if n==10 then
-  local stage=corridor and corridor:FindFirstChild("Stage10")
-  return stage and stage:FindFirstChild("Stage10BoundaryWall")
+local function removePersonalBossCollider(n)
+ local record=personalBossColliders[n]
+ if not record then return end
+ if record.Part then
+  record.Part.CanCollide=false
+  record.Part:Destroy()
  end
- local nextStage=corridor and corridor:FindFirstChild(("Stage%02d"):format(n+1))
- local firstWall=nextStage and nextStage:FindFirstChild(("Stage%d.1"):format(n+1))
- return firstWall and firstWall:FindFirstChild("Wall")
+ personalBossColliders[n]=nil
 end
-local function gate(n)
- local existing=gates[n]
- if existing and existing.Parent then return existing end
- local map=workspace:FindFirstChild("GeneratedMap")
- local corridor=map and map:FindFirstChild("BattleCorridor")
- local stage=corridor and corridor:FindFirstChild(("Stage%02d"):format(n))
- local bossArea=stage and stage:FindFirstChild(("Stage%d.5"):format(n))
- local referenceModel=stage and stage:FindFirstChild(("Stage%d.4"):format(n))
- local reference=referenceModel and referenceModel:FindFirstChild("Wall")
+local function syncPersonalBossCollider(n)
+ if defeated[n] or not bossUnlocked(n) then
+  removePersonalBossCollider(n)
+  return
+ end
  local enemies=workspace:FindFirstChild("Enemies")
  local boss=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
- local collider=boss and boss:FindFirstChild("MiniBossCollider")
- local direction=gateDirection(stage,bossArea)
- if not reference or not collider or not direction then return nil end
- local referenceThickness=2*projectedRadius(reference,direction)
- local bossEdge=collider.Position:Dot(direction)+projectedRadius(collider,direction)
- local blocker=nextBossBlocker(corridor,n)
- local blockerEdge=blocker and blocker.Position:Dot(direction)-projectedRadius(blocker,direction) or math.huge
- local available=blockerEdge-bossEdge
- local gap=math.min(.5,math.max(.1,(available-.2)/2))
- local thickness=math.min(referenceThickness,math.max(.2,available-2*gap))
- local center=bossEdge+gap+thickness/2
- local position=collider.Position+direction*(center-collider.Position:Dot(direction))
- local g=reference:Clone()
- g:ClearAllChildren()
- g.Name=("PersonalGate_Stage%02d"):format(n)
- if math.abs(direction:Dot(reference.CFrame.RightVector))>math.abs(direction:Dot(reference.CFrame.LookVector)) then
-  g.Size=Vector3.new(thickness,g.Size.Y,g.Size.Z)
- else
-  g.Size=Vector3.new(g.Size.X,g.Size.Y,thickness)
+ local source=boss and boss:FindFirstChild("MiniBossCollider")
+ local root=boss and boss:FindFirstChild("HumanoidRootPart")
+ if not boss or not source or not source:IsA("BasePart") or not root or not root:IsA("BasePart") then
+  removePersonalBossCollider(n)
+  return
  end
- g.CFrame=CFrame.fromMatrix(Vector3.new(position.X,reference.Position.Y,position.Z),reference.CFrame.RightVector,reference.CFrame.UpVector,reference.CFrame.LookVector)
- g.Transparency=0
- g.Color=Color3.fromRGB(155,55,45)
- g.Anchored=true
- g.CanCollide=true
- g.CanTouch=false
- g.CanQuery=false
- g:SetAttribute("PersonalBossGate",true)
- g:SetAttribute("BossStage",n)
- g.Parent=folder
- gates[n]=g
- return g
-end
-local function removeGate(n)
- local g=gates[n]
- if not g then return end
- g.CanCollide=false
- T:Create(g,TweenInfo.new(.45),{Size=Vector3.new(g.Size.X,.2,g.Size.Z),Transparency=1}):Play()
- task.delay(.5,function()if g.Parent then g:Destroy()end end)
- gates[n]=nil
-end
-local function refreshPersonalGates()
- for n=1,10 do
- if defeated[n] then
-   removeGate(n)
-  else
-   gate(n)
-  end
+ local generation=boss:GetAttribute("SpawnGeneration")
+ local record=personalBossColliders[n]
+ if record and (record.Enemy~=boss or record.Source~=source or record.Generation~=generation or not record.Part.Parent) then
+  removePersonalBossCollider(n)
+  record=nil
  end
+ if not record then
+  local part=source:Clone()
+  part:ClearAllChildren()
+  part.Name=("PersonalBossCollider_Stage%02d"):format(n)
+  part.Transparency=1
+  part.Anchored=true
+  part.CanCollide=true
+  part.CanTouch=false
+  part.CanQuery=false
+  part.CastShadow=false
+  part:SetAttribute("PersonalBossCollider",true)
+  part:SetAttribute("BossStage",n)
+  part:SetAttribute("SpawnGeneration",generation)
+  part.Parent=folder
+  record={Part=part,Enemy=boss,Source=source,Root=root,Generation=generation,RelativeCFrame=root.CFrame:ToObjectSpace(source.CFrame)}
+  personalBossColliders[n]=record
+ end
+ record.Part.Size=source.Size
+ record.Part.CFrame=root.CFrame*record.RelativeCFrame
+ record.Part.CanCollide=true
+end
+local function refreshPersonalBossColliders()
+ for n=1,10 do syncPersonalBossCollider(n) end
 end
 local function staticVFX(e,on)
  if not e:GetAttribute("StaticAppearance") then return end
@@ -474,7 +447,7 @@ end
 P.CharacterAdded:Connect(function()
  activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil
  refreshGaugeVisibility()
- refreshPersonalGates()
+ refreshPersonalBossColliders()
 end)
 P:GetAttributeChangedSignal("CurrentStage"):Connect(function()
  local nextStage=P:GetAttribute("CurrentStage")
@@ -485,7 +458,7 @@ P:GetAttributeChangedSignal("CurrentStage"):Connect(function()
   hideBossRecommendation()
   -- Never reconstruct HP from the Major/SubStage number.
   for major in wallState do renderWallStage(major) end
-  refreshPersonalGates()
+  refreshPersonalBossColliders()
  end
 end)
 RunService.PreSimulation:Connect(function()
@@ -497,6 +470,24 @@ RunService.PreSimulation:Connect(function()
    if part.CanCollide~=closed then part.CanCollide=closed end
    local transparency=closed and 0 or 1
    if part.LocalTransparencyModifier~=transparency then part.LocalTransparencyModifier=transparency end
+  end
+ end
+ local enemies=workspace:FindFirstChild("Enemies")
+ if enemies then
+  for _,boss in enemies:GetChildren() do
+   if boss:IsA("Model") then
+    for _,part in boss:GetDescendants() do
+     if part:IsA("BasePart") and part.CanCollide then part.CanCollide=false end
+    end
+   end
+  end
+ end
+ for stage,record in personalBossColliders do
+  if record.Part and record.Part.Parent and record.Root and record.Root.Parent and record.Source and record.Source.Parent then
+   record.Part.Size=record.Source.Size
+   record.Part.CFrame=record.Root.CFrame*record.RelativeCFrame
+  else
+   task.defer(syncPersonalBossCollider,stage)
   end
  end
  for stage in defeated do
@@ -520,9 +511,10 @@ R.OnClientEvent:Connect(function(d)
  elseif d.Type=="TrophyRemoved" then
   clearTrophy(d.Id)
  elseif d.Type=="WallInitialize" then
-  local major=d.State.MajorStage or 1
-  wallState[major]=d.State
-  refreshGaugeVisibility()
+ local major=d.State.MajorStage or 1
+ wallState[major]=d.State
+ refreshGaugeVisibility()
+  syncPersonalBossCollider(major)
  elseif d.Type=="WallGauge" then
   local major=d.MajorStage or 1
   local state=wallState[major]
@@ -562,13 +554,16 @@ R.OnClientEvent:Connect(function(d)
    state.Current=d.Next
    if d.Next<=4 and d.NextMax then state.Maxes[d.Next]=d.NextMax end
    refreshGaugeVisibility()
+   syncPersonalBossCollider(major)
   end
  elseif d.Type=="Stage1BossUnlocked" then
-  visible(d.MajorStage or 1,true)
+  local stage=d.MajorStage or 1
+  visible(stage,true)
   refreshGaugeVisibility()
- elseif d.Type=="Initialize"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(gates)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],enemy(i):GetAttribute("BossMaxHP") or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else gate(i)visible(i,true)end end refreshGaugeVisibility() refreshPersonalGates() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
-	elseif d.Type=="EnemyDefeated"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil hideBossRecommendation() defeated[d.Stage]=true if d.Stage<10 then currentStage=d.Stage+1 end refreshGaugeVisibility() fight(false) playDefeatSound() local e=enemy(d.Stage)for _,x in e:GetDescendants()do if x:IsA("BasePart")then T:Create(x,TweenInfo.new(.25),{LocalTransparencyModifier=1}):Play()end end
- elseif d.Type=="StageCleared"then currentStage=d.CurrentStage refreshGaugeVisibility() for major in wallState do renderWallStage(major) end removeGate(d.Stage)
+  syncPersonalBossCollider(stage)
+ elseif d.Type=="Initialize"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],enemy(i):GetAttribute("BossMaxHP") or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
+	elseif d.Type=="EnemyDefeated"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil hideBossRecommendation() defeated[d.Stage]=true removePersonalBossCollider(d.Stage) if d.Stage<10 then currentStage=d.Stage+1 end refreshGaugeVisibility() fight(false) playDefeatSound() local e=enemy(d.Stage)for _,x in e:GetDescendants()do if x:IsA("BasePart")then x.CanCollide=false T:Create(x,TweenInfo.new(.25),{LocalTransparencyModifier=1}):Play()end end
+ elseif d.Type=="StageCleared"then currentStage=d.CurrentStage refreshGaugeVisibility() for major in wallState do renderWallStage(major) end removePersonalBossCollider(d.Stage)
  elseif d.Type=="Fighting"then
   activeCombatType=d.Active and d.CombatType or nil
   activeCombatStage=d.Active and d.Stage or nil
@@ -580,7 +575,7 @@ end)
 workspace.DescendantAdded:Connect(function(part)
  if part:IsA("BasePart") and part.Name=="MiniBossCollider" then
   local stage=part.Parent and part.Parent:GetAttribute("StageNumber")
-  if typeof(stage)=="number" and not defeated[stage] then task.defer(gate,stage) end
+  if typeof(stage)=="number" then task.defer(syncPersonalBossCollider,stage) end
  end
  if not part:IsA("BasePart") or part.Name~="Wall" then return end
  local model=part.Parent
@@ -589,7 +584,7 @@ workspace.DescendantAdded:Connect(function(part)
  major,index=tonumber(major),tonumber(index)
  if not major or major<1 or major>10 then return end
  task.defer(function()
-  if wallModel(major,index)==model then renderWallStage(major);gate(major) end
+  if wallModel(major,index)==model then renderWallStage(major);syncPersonalBossCollider(major) end
  end)
 end)
 task.defer(function()
@@ -600,6 +595,7 @@ end)
 task.spawn(function()
  while script.Parent do
   task.wait(.5)
+  refreshPersonalBossColliders()
   for n,record in fills do
    local enemies=workspace:FindFirstChild("Enemies")
    local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
@@ -615,5 +611,9 @@ task.spawn(function()
    end
   end
  end
+end)
+script.Destroying:Connect(function()
+ for stage in personalBossColliders do removePersonalBossCollider(stage) end
+ if folder.Parent then folder:Destroy() end
 end)
 R:FireServer({Type="RequestState"})

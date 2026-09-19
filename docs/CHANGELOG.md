@@ -474,3 +474,7 @@
 
 - Matching Fire, Ice, or Electric Protein/Glove/Training Belt sets now grant 1.5× training Strength and display an Element-colored set badge near the existing Item Effect HUD.
 - Set state is derived from equipment. Glove damage, Belt tier, Item rarity, fixed rewards, and saved-data schema are unchanged.
+# 2026-09-19 — Fix per-player boss collider lifecycle
+
+- Replaced the Stage-wide PersonalGate with a Client-only PersonalBossCollider derived from the current Boss Generation's shared MiniBossCollider geometry.
+- Rebind on Boss replacement and streaming recovery, remove collision immediately on EnemyDefeated, and keep every Boss visual-rig BasePart non-colliding on the Client.

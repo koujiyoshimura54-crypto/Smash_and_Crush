@@ -237,7 +237,7 @@ EnemyManagerのStatic Boss表示倍率は、移動するRootではなく既存St
 
 Wallの攻撃力は攻撃時のStrength。Glove補正はWallには加えない。余剰は同Stageの次WallへCarryし、同一攻撃で複数枚を突破する場合がある。Wall4後の余剰はBossへもQueueされる。**Boss Carryは現在実装済みだが、今後維持するかは要検討**（K03）。
 
-自動戦闘はPlayer前方のWallCombatTriggerとWall/CombatZoneの接触で開始。CombatTypeは実装上「Wall」または「MiniBoss」。Boss CombatZoneは戦闘開始判定に使用し、共有MiniBossColliderはBoss寸法・CombatZone配置の参照として維持するが物理衝突には使用せず`CanCollide=false`固定とする。Boss奥への通行制御は、Server同期済みのPlayer個別Cleared / Skipped状態から各Clientだけに生成するPersonalGateが担当する。未撃破ではGateあり、本人のStageCleared確定時に先に非衝突化して縮小・削除する。他Playerの進行、Boss再生成、Streamingで本人の通行状態を変更しない。
+自動戦闘はPlayer前方のWallCombatTriggerとWall/CombatZoneの接触で開始。CombatTypeは実装上「Wall」または「MiniBoss」。Boss CombatZoneは戦闘開始判定に使用し、共有MiniBossColliderはBoss寸法・CombatZone配置の参照として維持するが物理衝突には使用せず`CanCollide=false`固定とする。Boss解放後の物理衝突は、現在Generationの共有MiniBossColliderからSize / CFrame / Rotationを取得して各Clientだけに生成するPersonalBossColliderが担当する。未撃破Playerだけが衝突し、本人のEnemyDefeated受信時に即時解除する。Boss再生成・StreamingではInstance / SpawnGenerationを照合して再生成し、他Playerの進行は本人の衝突状態へ影響しない。Boss Visualリグ自体はClientを含め常時非衝突とする。
 
 World1の進行順は各Stage共通で`Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`を維持する。Wall .4撃破時点で接触前からBossDisplaySurfaceとBoss Gauge一式を個人表示する。Stage1〜9は次Stage .1 Wall、Stage10は既存Stage10BoundaryWallのPlayer側0.5stud手前に専用面をRuntime生成する。UI中心はBossの実寸高さ×0.6＋上下補正をBoss底面から加算し、名前・Stage表示はHPの少し上へ配置する。Wall高さでUI位置を決めない。Boss撃破通知でSurfaceとGaugeを隠し、Stage1〜9では次Stage .1のStage表示と実Current / Max Wall HPを接触前から即表示する。Combat順序、進行条件、WorldComplete / Gate処理は変更しない。
 
