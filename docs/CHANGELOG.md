@@ -1,3 +1,8 @@
+# 2026-09-19 — Replace element set text with icon
+
+- Replaced FIRE / ICE / ELECTRIC SET text with the matching existing Element image and a compact `×1.5` label.
+- Kept Element Set eligibility, Strength calculation, HUD position, and existing localization rows unchanged.
+
 # 2026-09-19 — Fix element set badge text rendering
 
 - Size the Element Set Badge from its localized rendered text and preserve its horizontal padding so Fire, Ice, and Electric labels do not clip.

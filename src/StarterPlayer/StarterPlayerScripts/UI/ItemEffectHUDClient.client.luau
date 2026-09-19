@@ -54,20 +54,36 @@ for _, definition in ipairs(definitions) do
  label.Parent = frame
  entries[definition.Kind] = {Frame = frame, Holder = holder, Icon = icon, Label = label}
 end
-local setBadge = Instance.new("TextLabel")
+local setBadge = Instance.new("Frame")
 setBadge.Name = "ElementSetBonus"
 setBadge.BackgroundTransparency = .12
 setBadge.BackgroundColor3 = Color3.fromRGB(242,103,114)
-setBadge.FontFace = hud.LevelPanel.Level.FontFace
-setBadge.TextColor3 = Color3.new(1,1,1)
-setBadge.TextStrokeColor3 = Color3.fromRGB(24,21,35)
-setBadge.TextStrokeTransparency = .1
-setBadge.TextScaled = false
 setBadge.AutomaticSize = Enum.AutomaticSize.X
-setBadge.AutoLocalize = true
 setBadge.Visible = false
 setBadge.ZIndex = row.ZIndex + 1
 setBadge.Parent = hud
+local setIcon = Instance.new("ImageLabel")
+setIcon.Name = "ElementIcon"
+setIcon.BackgroundTransparency = 1
+setIcon.BorderSizePixel = 0
+setIcon.ScaleType = Enum.ScaleType.Fit
+setIcon.LayoutOrder = 1
+setIcon.ZIndex = setBadge.ZIndex + 1
+setIcon.Parent = setBadge
+local setMultiplier = Instance.new("TextLabel")
+setMultiplier.Name = "Multiplier"
+setMultiplier.BackgroundTransparency = 1
+setMultiplier.FontFace = hud.LevelPanel.Level.FontFace
+setMultiplier.Text = "×1.5"
+setMultiplier.TextColor3 = Color3.new(1,1,1)
+setMultiplier.TextStrokeColor3 = Color3.fromRGB(24,21,35)
+setMultiplier.TextStrokeTransparency = .1
+setMultiplier.TextScaled = false
+setMultiplier.AutomaticSize = Enum.AutomaticSize.X
+setMultiplier.AutoLocalize = false
+setMultiplier.LayoutOrder = 2
+setMultiplier.ZIndex = setBadge.ZIndex + 1
+setMultiplier.Parent = setBadge
 local setCorner = Instance.new("UICorner")
 setCorner.CornerRadius = UDim.new(0,8)
 setCorner.Parent = setBadge
@@ -76,15 +92,26 @@ setStroke.Color = Color3.fromRGB(43,13,65)
 setStroke.Thickness = 2
 setStroke.Parent = setBadge
 local setPadding = Instance.new("UIPadding")
-setPadding.PaddingLeft = UDim.new(0, 10)
-setPadding.PaddingRight = UDim.new(0, 10)
+setPadding.PaddingLeft = UDim.new(0, 8)
+setPadding.PaddingRight = UDim.new(0, 8)
 setPadding.Parent = setBadge
+local setLayout = Instance.new("UIListLayout")
+setLayout.FillDirection = Enum.FillDirection.Horizontal
+setLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+setLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+setLayout.Padding = UDim.new(0, 4)
+setLayout.SortOrder = Enum.SortOrder.LayoutOrder
+setLayout.Parent = setBadge
 local elementColors = {
  Fire = Color3.fromRGB(242,103,114),
  Ice = Color3.fromRGB(77,190,240),
  Electric = Color3.fromRGB(255,194,62),
 }
-local elementLabels = {Fire="FIRE SET ×1.5",Ice="ICE SET ×1.5",Electric="ELECTRIC SET ×1.5"}
+local elementIcons = {
+ Fire = master.Get("PROTEIN_COMMON_FIRE").Image,
+ Ice = master.Get("PROTEIN_COMMON_ICE").Image,
+ Electric = master.Get("PROTEIN_COMMON_ELECTRIC").Image,
+}
 
 local gloveTween, gloveReturn, beltTween
 local gloveGeneration = 0
@@ -180,7 +207,10 @@ local function layout()
  row.Position = UDim2.new(.5, 0, 0, top + badgeHeight + badgeGap + height - hud.AbsolutePosition.Y)
  if setBadge.Visible then
   local textSize = compact and 17 or 19
-  setBadge.TextSize = textSize
+  local iconSize = compact and 18 or 21
+  setMultiplier.TextSize = textSize
+  setMultiplier.Size = UDim2.fromOffset(0,badgeHeight)
+  setIcon.Size = UDim2.fromOffset(iconSize,iconSize)
   setBadge.Size = UDim2.fromOffset(0,badgeHeight)
   setBadge.AnchorPoint = Vector2.new(.5,0)
   setBadge.Position = UDim2.new(.5,0,0,top-hud.AbsolutePosition.Y)
@@ -215,7 +245,7 @@ local function applyState(state)
  local element = elementSetBonus.GetMatchingElement(state.OwnedItems,state.EquippedItems)
  setBadge.Visible = element ~= nil
  if element then
-  setBadge.Text = elementLabels[element]
+  setIcon.Image = elementIcons[element]
   setBadge.BackgroundColor3 = elementColors[element]
  end
  row.Visible = count > 0

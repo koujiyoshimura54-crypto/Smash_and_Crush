@@ -1,5 +1,10 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-19 — Element Set icon badge
+
+- Element Set表示をElement名＋SETのTextから、ItemMasterの既存Element別Protein画像＋固定 `×1.5` へ変更。
+- Badge位置・Element色・成立判定・Strength倍率は維持。旧Localization Sourceは削除せずOLD_CANDIDATEとして保持。
+
 ## 2026-09-19 — Element Set Badge localized width
 
 - Element Set Badgeの幅を英語Sourceの手計算から、Localization後の実描画文字列へ追従するAutomaticSizeへ変更。左右10px Paddingを維持し、Fire / Ice / Electricと英語 / 日本語で末尾が欠けない構造にした。
