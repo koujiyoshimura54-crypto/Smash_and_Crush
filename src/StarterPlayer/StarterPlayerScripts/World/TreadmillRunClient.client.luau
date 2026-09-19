@@ -2,6 +2,7 @@ local Players = game:GetService("Players")
 
 local player = Players.LocalPlayer
 local TREADMILL_RUN_ID = "rbxassetid://913376220"
+local SUPPRESSED_LOCOMOTION_WEIGHT = 0.0001
 
 local treadmillTrack
 local currentCharacter
@@ -65,9 +66,13 @@ local function suppressStandardTrack(track)
 	local animation = track.Animation
 	local id = animation and normalizedAnimationId(animation.AnimationId)
 	if not id or not locomotionIds[id] then return end
-	local targetWeight = math.max(track.WeightTarget, track.WeightCurrent)
-	if targetWeight > 0 then suppressedTracks[track] = targetWeight end
-	track:AdjustWeight(0, 0)
+	if suppressedTracks[track] == nil then
+		local targetWeight = math.max(track.WeightTarget, track.WeightCurrent)
+		suppressedTracks[track] = targetWeight > SUPPRESSED_LOCOMOTION_WEIGHT and targetWeight or 1
+	end
+	-- Keep the standard Track alive so Animate can resume it immediately on exit.
+	-- A true zero can leave Animate's internal locomotion state pointing at a stopped Track.
+	track:AdjustWeight(SUPPRESSED_LOCOMOTION_WEIGHT, 0)
 end
 
 local function suppressPlayingLocomotion()

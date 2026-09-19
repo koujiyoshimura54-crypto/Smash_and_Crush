@@ -24,6 +24,11 @@
 - Switched the Client-owned Treadmill Track to Run `913376220` and suppressed only standard Animate walk／run weights during Training, preventing W／A／S／D transitions from replacing the Treadmill Run.
 - Restored standard locomotion weights on exit and retained the existing Character-scoped Track cleanup. Training detection, rewards, multipliers, and Server authority are unchanged.
 
+## 2026-09-19 — Fix treadmill exit animation recovery
+
+- Kept standard Animate walk／run Tracks alive at an imperceptible Weight during Training, then restored their original blend on exit.
+- Moving exits now transition directly from the dedicated Treadmill Run to standard locomotion without an Idle-slide interval or independent standard Track playback.
+
 # 2026-09-19 — Total Strength ranking display correction
 
 - Preserved the descending OrderedDataStore ranking and corrected compact-number formatting so integer trailing zeroes are not removed (`150M` no longer renders as `15M`).
