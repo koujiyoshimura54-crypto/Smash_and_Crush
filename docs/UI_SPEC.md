@@ -385,3 +385,7 @@ Time Rewards and Daily Rewards retain their existing visuals while locked or rea
 - Dynamic entries retain Roblox placeholders such as `{number1}`, `{number2}`, `{number3}`, and `{time1}` in both Source and translated text.
 - Japanese terminology uses `強さ` for Strength, `再生` for Rebirth, `通常ダンベル` for Normal Dumbbell, and `オーラ` for Aura. STR, DMG, HP, VIP, Win, Robux, and Lv. remain unchanged.
 - Runtime Sources are case-sensitive, so required variants such as `Equipped` and `EQUIPPED` remain separate entries. Source and translated placeholders must match exactly.
+
+## Element Set Bonus HUD
+
+When equipped Protein, Glove, and Training Belt Items share an Element, the Item Effect HUD displays `FIRE SET ×1.5`, `ICE SET ×1.5`, or `ELECTRIC SET ×1.5` in the existing Fire coral, Ice cyan, or Electric gold palette. The badge is centered immediately above the three existing Item effects and is hidden for incomplete or mixed sets.

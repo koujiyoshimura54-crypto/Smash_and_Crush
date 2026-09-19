@@ -366,3 +366,8 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 - New regular-Item guidance progresses independently through Inventory, Items tab, and individual Item levels. Each upper level is acknowledged after it was displayed and the player leaves that surface.
 - Individual Item guidance is acknowledged only after the normal Items card/guide button was recognizably inside the ScrollingFrame viewport and the player subsequently leaves Items. Offscreen and never-viewed Items remain Unseen independently.
 - Seen persistence continues to use `InventoryNotificationSeen.Items`; no DataStore schema or Item acquisition/equip/merge rule changed.
+## 2026-09-19 — Matching Element Set Bonus
+
+- Protein, Glove, and Training Belt form a set only when all three equipped Items have the same valid Element: Fire, Ice, or Electric. Rarity does not participate in the set check.
+- A matching set multiplies server-authoritative training Strength gain by 1.5 after the existing Rebirth, source, Potion, and VIP multipliers. Fixed rewards remain outside training multipliers.
+- The set is derived from owned/equipped Item data and is never stored separately. Glove Boss Damage and Training Belt tier effects are unchanged.

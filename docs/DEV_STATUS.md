@@ -477,3 +477,7 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Shared `MiniBossCollider` instances remain non-colliding through wall unlock, defeat, replacement, and streaming; Server/Client `CanCollide` contention was removed.
 - Each Client derives a red `PersonalGate_StageXX` from the current Stage wall dimensions, Boss collider bounds, progression direction, and next blocker. Uncleared stages keep their local gate; the cleared Player alone disables and removes it.
 - Boss combat, HP, drops, Trophy feedback, Stage balance, save schema, and DataStore behavior are unchanged.
+# 2026-09-19 — Matching Element Set Bonus
+
+- Added one shared ItemMaster-based set predicate for Server Strength calculation and the Item Effect HUD. Matching owned/equipped Protein, Glove, and Training Belt Elements apply a single 1.5 multiplier; no set state or schema is stored.
+- Added localized Element Set HUD Sources and retained all Item effects, Best Equip, Merge, reward, and save behavior.

@@ -455,3 +455,7 @@
 - Merge STEP 3 HeroをServer投影の完成Item画像・完成Rarity星へ変更し、素材Socketと素材→完成の星Previewを維持。
 - Inventory Window内の既存・Runtime生成TextをFredokaOneへ統一し、スマホで必要なTextScaled最小値だけ調整。
 - PC／Smartphone／Tablet、★1〜5、日本語fallbackを確認。Merge Server、Balance、Save、Localization、通貨Iconは変更なし。
+# 2026-09-19 — Add matching element strength multiplier
+
+- Matching Fire, Ice, or Electric Protein/Glove/Training Belt sets now grant 1.5× training Strength and display an Element-colored set badge near the existing Item Effect HUD.
+- Set state is derived from equipment. Glove damage, Belt tier, Item rarity, fixed rewards, and saved-data schema are unchanged.

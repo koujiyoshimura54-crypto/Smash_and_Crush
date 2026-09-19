@@ -455,3 +455,6 @@ Lv1〜50の全Requirementへ一律+10を適用した。Lv1=10となり、Lv1→L
 変更後の主要な累積StrengthはLv8=530、Lv10=955、Lv15=2,840、Lv20=7,215、Lv25=17,265、Lv30=37,315、Lv35=81,865、Lv40=196,915、Lv45=462,965、Lv50=1,018,015。
 
 World1 Stage6〜10はRequiredStrengthを37,315 / 81,865 / 196,915 / 462,965 / 1,018,015へ同期し、既存倍率でWall/Boss HPを再計算した。Stage1〜5とWorld2は変更していない。
+## 2026-09-19 — Element Set Strength multiplier
+
+Equipping owned Protein, Glove, and Training Belt Items with one identical Element (Fire, Ice, or Electric) applies `Strength gain ×1.5`. The check ignores Rarity. It applies once to normal walking, Auto Tap, Manual Tap, and Treadmill Strength through `StrengthManager.AddStrength`; fixed reward Strength, Protein's base bonus, Glove Boss Damage, and Training Belt tier values are unchanged.

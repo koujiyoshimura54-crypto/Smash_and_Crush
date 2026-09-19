@@ -3,6 +3,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ItemMaster = require(ReplicatedStorage.Config:WaitForChild("ItemMaster"))
 local ItemMultiplierConfig = require(ReplicatedStorage.Config:WaitForChild("ItemMultiplierConfig"))
+local ElementSetBonus = require(ReplicatedStorage.Modules:WaitForChild("ElementSetBonus"))
 local Data = require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
 local Badges = require(game.ServerScriptService.Services:WaitForChild("BadgeAwardService"))
 local ItemService = {}
@@ -206,6 +207,16 @@ function ItemService.GetGloveBossDamageBonus(player)
 end
 function ItemService.GetBeltTreadmillBonus(player)
  return ItemMultiplierConfig.GetBeltTreadmillBonus(getEquippedRarity(player,"TrainingBelt"))
+end
+function ItemService.GetEquippedElementSet(player)
+ local s=equipmentSession(player)
+ if not s then return nil end
+ return ElementSetBonus.GetMatchingElement(s.Data.OwnedItems,s.Data.EquippedItems)
+end
+function ItemService.GetElementSetMultiplier(player)
+ local s=equipmentSession(player)
+ if not s then return 1 end
+ return ElementSetBonus.GetMultiplier(s.Data.OwnedItems,s.Data.EquippedItems)
 end
 
 return ItemService

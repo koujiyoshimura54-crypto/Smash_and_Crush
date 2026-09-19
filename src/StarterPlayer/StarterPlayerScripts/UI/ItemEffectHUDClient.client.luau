@@ -8,6 +8,7 @@ local player = Players.LocalPlayer
 local remotes = RS:WaitForChild("Remotes")
 local master = require(RS.Config:WaitForChild("ItemMaster"))
 local effects = require(RS.Config:WaitForChild("ItemMultiplierConfig"))
+local elementSetBonus = require(RS.Modules:WaitForChild("ElementSetBonus"))
 local gui = player:WaitForChild("PlayerGui"):WaitForChild("StrengthGui")
 local hud = gui:WaitForChild("StrengthLevelHUD")
 local row = Instance.new("Frame")
@@ -51,6 +52,32 @@ for _, definition in ipairs(definitions) do
  label.Parent = frame
  entries[definition.Kind] = {Frame = frame, Holder = holder, Icon = icon, Label = label}
 end
+local setBadge = Instance.new("TextLabel")
+setBadge.Name = "ElementSetBonus"
+setBadge.BackgroundTransparency = .12
+setBadge.BackgroundColor3 = Color3.fromRGB(242,103,114)
+setBadge.FontFace = hud.LevelPanel.Level.FontFace
+setBadge.TextColor3 = Color3.new(1,1,1)
+setBadge.TextStrokeColor3 = Color3.fromRGB(24,21,35)
+setBadge.TextStrokeTransparency = .1
+setBadge.TextScaled = false
+setBadge.AutoLocalize = true
+setBadge.Visible = false
+setBadge.ZIndex = row.ZIndex + 1
+setBadge.Parent = hud
+local setCorner = Instance.new("UICorner")
+setCorner.CornerRadius = UDim.new(0,8)
+setCorner.Parent = setBadge
+local setStroke = Instance.new("UIStroke")
+setStroke.Color = Color3.fromRGB(43,13,65)
+setStroke.Thickness = 2
+setStroke.Parent = setBadge
+local elementColors = {
+ Fire = Color3.fromRGB(242,103,114),
+ Ice = Color3.fromRGB(77,190,240),
+ Electric = Color3.fromRGB(255,194,62),
+}
+local elementLabels = {Fire="FIRE SET ×1.5",Ice="ICE SET ×1.5",Electric="ELECTRIC SET ×1.5"}
 
 local gloveTween, gloveReturn, beltTween
 local gloveGeneration = 0
@@ -132,16 +159,26 @@ local function layout()
  end
  row.Size = UDim2.fromOffset(width, height)
  -- Keep the row above the gauge and any active potion status occupying that lane.
- local top = hud.AbsolutePosition.Y - height - 8
+ local badgeHeight = setBadge.Visible and (compact and 24 or 28) or 0
+ local badgeGap = setBadge.Visible and 5 or 0
+ local top = hud.AbsolutePosition.Y - height - badgeHeight - badgeGap - 8
  local left = hud.AbsolutePosition.X + (hud.AbsoluteSize.X - width) / 2
  local potion = gui:FindFirstChild("PotionStatus")
  if potion and potion.Visible then
   local p, s = potion.AbsolutePosition, potion.AbsoluteSize
-  if intersects({X=left,Y=top-5,W=width,H=height+5}, {X=p.X,Y=p.Y,W=s.X,H=s.Y}) then
-   top = p.Y - height - 8
+  if intersects({X=left,Y=top-5,W=width,H=height+badgeHeight+badgeGap+5}, {X=p.X,Y=p.Y,W=s.X,H=s.Y}) then
+   top = p.Y - height - badgeHeight - badgeGap - 8
   end
  end
- row.Position = UDim2.new(.5, 0, 0, top + height - hud.AbsolutePosition.Y)
+ row.Position = UDim2.new(.5, 0, 0, top + badgeHeight + badgeGap + height - hud.AbsolutePosition.Y)
+ if setBadge.Visible then
+  local textSize = compact and 17 or 19
+  local badgeWidth = math.ceil(TextService:GetTextSize(setBadge.Text,textSize,setBadge.Font,Vector2.new(1000,badgeHeight)).X)+20
+  setBadge.TextSize = textSize
+  setBadge.Size = UDim2.fromOffset(badgeWidth,badgeHeight)
+  setBadge.AnchorPoint = Vector2.new(.5,0)
+  setBadge.Position = UDim2.new(.5,0,0,top-hud.AbsolutePosition.Y)
+ end
 end
 local revision = 0
 local loaded = false
@@ -168,6 +205,12 @@ local function applyState(state)
    entry.Label.Text = "+" .. string.format("%.2f", value):gsub("0+$", ""):gsub("%.$", "") .. definition.Suffix
    count += 1
   end
+ end
+ local element = elementSetBonus.GetMatchingElement(state.OwnedItems,state.EquippedItems)
+ setBadge.Visible = element ~= nil
+ if element then
+  setBadge.Text = elementLabels[element]
+  setBadge.BackgroundColor3 = elementColors[element]
  end
  row.Visible = count > 0
  updateTraining()
@@ -237,5 +280,6 @@ local layoutConnection = RunService.RenderStepped:Connect(layout)
 script.Destroying:Connect(function()
  resetCharacter()
  layoutConnection:Disconnect()
+ setBadge:Destroy()
  row:Destroy()
 end)
