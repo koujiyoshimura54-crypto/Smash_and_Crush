@@ -373,3 +373,5 @@ PC、Smartphone縦/横、Tablet縦/横を実際のViewportとTouchGuiで検証�
 - Player-facing source language is English. Japanese and other target languages are managed through the Roblox Localization Table.
 - The Git source of truth for manual localization imports is `localization/GameLocalizationTable.csv`; committing this file does not upload it to the Roblox cloud table.
 - Dynamic entries retain Roblox placeholders such as `{number1}`, `{number2}`, `{number3}`, and `{time1}` in both Source and translated text.
+- Japanese terminology uses `強さ` for Strength, `再生` for Rebirth, `通常ダンベル` for Normal Dumbbell, and `オーラ` for Aura. STR, DMG, HP, VIP, Win, Robux, and Lv. remain unchanged.
+- Runtime Sources are case-sensitive, so required variants such as `Equipped` and `EQUIPPED` remain separate entries. Source and translated placeholders must match exactly.

@@ -4,6 +4,11 @@
 - Replaced four player-facing Japanese Sources with `×2 WINS`, `Rebirth resets Strength and Level`, and parameterized `Recommended Lv. {number1}` Sources.
 - No gameplay, balance, save, or UI layout behavior changed.
 
+## 2026-09-19 — Standardize Japanese localization terminology
+
+- Unified Japanese terminology for Strength, Rebirth, Normal Dumbbell, Aura, and related ranking and potion text without changing existing English Sources.
+- Added missing `EQUIPPED` and parameterized Normal Dumbbell entries. Gameplay, UI layout, visuals, balance, and saves are unchanged.
+
 # 2026-09-19 — Total Strength ranking display correction
 
 - Preserved the descending OrderedDataStore ranking and corrected compact-number formatting so integer trailing zeroes are not removed (`150M` no longer renders as `15M`).

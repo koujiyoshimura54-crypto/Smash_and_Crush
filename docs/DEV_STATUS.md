@@ -440,3 +440,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - InventoryPanel配下の既存・Runtime生成TextをFredokaOneへ統一。PC・iPhone 17 Pro横・Fire HD10横でHeader、Tab、Card、価格、Merge操作、★1〜5を確認。
 - 一時日本語Text「アイテムを選択　マージ　購入　戻る」がStudio Playで欠落せず表示されるRoblox fallbackを確認後、テストObjectを撤去。Localization設定は変更なし。
 - Merge／購入／Save／Balance、明るい3STEP、Trophy／Robux Iconは変更なし。検証は隔離Studio Storeと表示用seedを使用し、Productionデータへ接続していない。
+
+## 2026-09-19 — Japanese localization terminology quality pass
+
+- Japanese terminology was standardized while preserving every existing English Source and placeholder. Runtime-required `EQUIPPED` and `Normal Dumbbell {number1}` entries were added.
+- CSV header, UTF-8 BOM, case-sensitive Source uniqueness, nonblank values, and placeholder parity were verified. Cloud Localization upload remains a separate manual operation.

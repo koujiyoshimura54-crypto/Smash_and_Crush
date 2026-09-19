@@ -1,7 +1,7 @@
 ﻿Key,Context,Example,Source,ja
 ,,,+{number1} STR,+{number1} STR
 ,,,+{number1} Tier,+{number1} ティア
-,,,+{number1}% DMG,+{number1}% ダメージ
+,,,+{number1}% DMG,+{number1}% DMG
 ,,,Auto Tap,自動タップ
 ,,,BACK,戻る
 ,,,CLAIMED,受け取り済み
@@ -36,22 +36,22 @@
 ,,,❄️ Ice · Common,❄️ 氷・普通 
 ,,, {number1}, {number1}
 ,,,+1M Cash,Cash +100万
-,,,+{number1} Strength,+{number1} Strength
-,,,+{number1}% Strength,+{number1}% Strength
+,,,+{number1} Strength,強さ +{number1}
+,,,+{number1}% Strength,強さ +{number1}%
 ,,,- DUMBBELLS -,- ダンベル -
 ,,,- GAMEPASSES -,- ゲームパス -
 ,,,- Gamepasses -,- ゲームパス -
 ,,,- ITEMS -,- アイテム -
 ,,,"100 Win • Strength Potion ×1 • Training Potion ×1
-Potions activate immediately (180s / 180s)","100 Win • Strengthポーション ×1 • トレーニングポーション ×1
+Potions activate immediately (180s / 180s)","100 Win • 強さポーション ×1 • トレーニングポーション ×1
 ポーションはすぐに発動（180秒 / 180秒）"
 ,,,2× Win,Win 2倍
 ,,,40 WalkSpeed,歩行速度 40
 ,,,"500 Win • Secret Aura • Epic+ Item ×1
 No MISS • View item odds before purchase","500 Win • シークレットオーラ • Epic以上のアイテム ×1
 ハズレなし • 購入前に確率を確認できます"
-,,,6.4K Strength,6.4K Strength
-,,,Already owned,所有済みです
+,,,6.4K Strength,強さ 6.4K
+,,,Already owned,所有済み
 ,,,ALREADY OWNED,所有済み
 ,,,Aura,オーラ
 ,,,BEST EQUIP,ベスト装備
@@ -68,7 +68,7 @@ No MISS • View item odds before purchase","500 Win • シークレットオ�
 ,,,COMING SOON,近日公開
 ,,,Daily,デイリー
 ,,,Daily Rewards,デイリー報酬
-,,,DAILY STRENGTH RANKING,デイリーStrengthランキング
+,,,DAILY STRENGTH RANKING,デイリー 強さランキング
 ,,,Day {number1},{number1}日目
 ,,,Day {number1} • READY,{number1}日目 • 準備OK
 ,,,Dumbbells,ダンベル
@@ -148,10 +148,10 @@ Inventory is loading","お待ちください...
 ,,,Purchase Win with Robux,RobuxでWinを購入
 ,,,Rank,順位
 ,,,READY,準備OK
-,,,REBIRTH,リバース
-,,,Rebirth,リバース
-,,,Rebirth resets Strength and Level,リバースするとStrengthとLevelがリセットされます
-,,,REBIRTH!,リバース！
+,,,REBIRTH,再生
+,,,Rebirth,再生
+,,,Rebirth resets Strength and Level,再生すると強さとレベルがリセットされます
+,,,REBIRTH!,再生！
 ,,,Recommended Lv. {number1},推奨 Lv.{number1}
 ,,,REDEEM,受け取る
 ,,,Result item limit reached,完成アイテムの所持上限です
@@ -172,13 +172,13 @@ Inventory is loading","お待ちください...
 ,,,STAGE,ステージ
 ,,,STAGE {number1},ステージ {number1}
 ,,,Stage {number1},ステージ {number1}
-,,,Strength,Strength
-,,,Strength Potion ({number1} sec),Strengthポーション（{number1}秒）
-,,,Strength ×{number1},Strength ×{number1}
+,,,Strength,強さ
+,,,Strength Potion ({number1} sec),強さポーション（{number1}秒）
+,,,Strength ×{number1},強さ ×{number1}
 ,,,Teleporter,テレポーター
 ,,,This item cannot be merged,このアイテムはマージできません
 ,,,Time Rewards,時間報酬
-,,,TOTAL STRENGTH RANKING,TOTAL STRENGTH ランキング
+,,,TOTAL STRENGTH RANKING,総合 強さランキング
 ,,,Training Potion ({number1} sec),トレーニングポーション（{number1}秒）
 ,,,Training ×{number1},トレーニング ×{number1}
 ,,,Training: {number1} seconds,トレーニング：{number1}秒
@@ -201,8 +201,22 @@ Inventory is loading","お待ちください...
 ,,,WORLD 2,ワールド2
 ,,,x2 Win,Win 2倍
 ,,,YES,はい
-,,,{number1} Rebirth Required,リバース{number1}回必要
+,,,{number1} Rebirth Required,再生{number1}回必要
+,,,Rebirth {number1} Required,再生{number1}回必要
 ,,,{number1} Robux,{number1} Robux
 ,,,{number1} Win,{number1} Win
 ,,,×2 WINS,Win ×2
-,,,×{number1} Strength,Strength ×{number1}
+,,,×{number1} Strength,強さ ×{number1}
+,,,EQUIPPED,装備中
+,,,Normal Dumbbell {number1},通常ダンベル {number1}
+,,,Pink Aura,ピンクオーラ
+,,,Purple Aura,パープルオーラ
+,,,Yellow Aura,イエローオーラ
+,,,Green Aura,グリーンオーラ
+,,,Blue Aura,ブルーオーラ
+,,,Red Aura,レッドオーラ
+,,,VIP Aura,VIPオーラ
+,,,Secret Aura,シークレットオーラ
+,,,Protein,プロテイン
+,,,Glove,グローブ
+,,,Belt,トレーニングベルト
