@@ -242,13 +242,13 @@ Bossの共有Humanoid Healthを個人HPの正本として表示しない。Wall�
 
 PersonalGaugeと専用Part `BossDisplaySurface`をClientごとにRuntime生成する。Stage1〜9は次Stage .1 Wall、Stage10は既存Stage10BoundaryWallを基準とする。WallのSize / CFrameと既存StageSurfaceのPlayer側Faceから、同じ幅・高さの薄い面を手前へ配置する。現在の寸法はStage1〜9が88×56.25×0.05stud、Stage10が90×56.25×0.05stud。Mapへの恒久Part配置は行わない。
 
-`ReplicatedStorage.Config.BossDisplayConfig`が表示設定の正本。初期値はTransparency=0.5、SurfaceOffset=0.5stud（Wall表面とSurface裏面の間隔）、Thickness=0.05stud、HeightRatio=0.6、VerticalOffset=0。StageOverridesは必要なStageの項目だけ上書き可能で、現在は空。薄いSmoothPlastic面を半透明表示し、奥の実Wallを透かす。BlurEffect等は追加しない。
+`ReplicatedStorage.Config.BossDisplayConfig`が表示設定の正本。初期値はTransparency=0.5、SurfaceOffset=0.5stud（Wall表面とSurface裏面の間隔）、Thickness=0.05stud、VerticalOffset=2。StageOverridesは現在空。薄いSmoothPlastic面を半透明表示し、奥の実Wallを透かす。BlurEffect等は追加しない。
 
 SurfaceはAnchored=true、CanCollide / CanTouch / CanQuery=false、CastShadow=false。Visual専用で、Damage・Combat・Gate・Progress・Reward・Trigger・入力受付の責務を持たない。SurfaceGuiはActive=false。サーバー共有WorkspaceへSurfaceを生成せず、LocalPlayerの既存CombatStateだけで表示を切り替える。
 
 Wall .4撃破通知で接触前からSurfaceとBoss名 / STAGE N / HP Bar / Current HP / Max HPを即表示する。この間、次Stage .1の通常StageSurfaceとWall HPは隠す。Boss撃破時はそのPlayerのSurfaceをTransparency=1、GUIをEnabled=falseにし、次Stage .1のStage表示とサーバーの実HPへ切り替える。非表示中もCanQuery / CanTouch / CanCollide=false。Run初期化ではローカル面を再生成する。Stage10もSurfaceGuiで統一し、WorldComplete / World2 Gate処理は変更しない。
 
-Boss高さはEnemyManagerの生成処理で、Scaleと床合わせ完了後の見た目Modelから一度だけ測定する。既存staticBoundsで可視BasePartの8頂点とBone位置を集計し、透明な外側Collider / CombatZoneを除外してBossDisplayHeight / BossDisplayBaseYを記録する。HPバー中心のワールドYは `BossDisplayBaseY + BossDisplayHeight × HeightRatio + VerticalOffset`。名前・STAGEは既存の間隔でその上へ配置する。Bossサイズ変更は次回生成時に再測定され、アニメーション中は高さを再測定しない。Wall高さはCanvas座標への変換にのみ使用する。
+Boss高さはEnemyManagerの生成処理で、Scaleと床合わせ完了後の見た目Modelから一度だけ測定する。UI専用boundsは実際に表示されるBasePartの8頂点だけを集計し、Bone、透明Part、Root、Collider、CombatZone等を除外してBossDisplayBottomY / BossDisplayTopY / BossDisplayHeightを記録する。HPバー中心のワールドYは `BossDisplayTopY + VerticalOffset`。名前・STAGEは既存の間隔でその上へ配置する。Bossサイズ変更は次回生成時に再測定され、アニメーション中は高さを再測定しない。Wall高さはCanvas座標への変換にのみ使用する。
 
 ConfigはEditで調整して次回Playへ反映する。Play中はClientでrequire済みConfigの値を調整すると、既存0.5秒の表示保守処理で反映される。VerticalOffsetはUIだけを上下し、Surfaceや実Wall、CombatZoneを移動しない。StreamingでBoss Partや基準Wallが遅れて到着する場合も、受信済み実HPを保持して表示生成を再試行する。
 

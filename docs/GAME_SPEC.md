@@ -390,3 +390,6 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 
 - Every World1 Boss CombatZone is derived from the current MiniBossCollider with a five-stud horizontal shell. Boss contact accepts the existing forward combat trigger or the character root, so approach direction does not prevent combat before the PersonalBossCollider stops the character.
 - Boss encounter HP is keyed by player and stage for the current run. Replacing the shared visual Boss and incrementing SpawnGeneration rebinds active sessions without resetting another player's HP. Respawn, run reset, skip initialization, and a new run continue to use the existing BossCombatService reset path.
+# Boss HP visual-top alignment
+
+- World1 Boss HP UI uses the final rendered visual bounds for every Stage. The bar center is the visible Boss top plus the shared BossDisplayConfig VerticalOffset; Boss scale methods, Wall HP UI, combat, and balance are unchanged.

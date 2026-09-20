@@ -491,3 +491,7 @@
 - Made World1 Boss combat contact reachable from every approach direction using a collider-derived CombatZone and character-root overlap.
 - Preserved each player's stage Boss HP when another player replaces the shared Boss generation, including authoritative gauge resynchronization and stale-generation filtering.
 - Restored the exact Stage 9 UTF-8 visual-template lookup without changing its model, collision reference, balance, rewards, or progression.
+# 2026-09-20 — Align boss HP UI to visual bounds
+
+- Measure Boss UI bounds from rendered BaseParts after final scaling and floor placement, excluding bones, roots, transparent helpers, colliders, and combat zones.
+- Place every Stage 1–10 Boss HP bar center at the visible visual top plus the shared two-stud VerticalOffset; Boss and Wall UI sizes are unchanged.

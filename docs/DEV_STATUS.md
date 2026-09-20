@@ -513,3 +513,7 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Derived all Stage 1–10 Boss CombatZones from MiniBossCollider geometry and added direction-independent character-root contact while retaining the existing forward trigger.
 - Changed World1 per-player Boss encounter identity from Boss Instance to Stage and rebind active sessions across shared SpawnGeneration replacement. Boss events carry SpawnGeneration and the client rejects older-generation HP events.
 - Restored the exact UTF-8 Stage 9 visual name `Lirilì Rilà`; the existing Stage09Boss template and CollisionReference remain authoritative.
+# 2026-09-20 — Boss HP visual-top alignment
+
+- Added UI-only visible BasePart bounds for all Stage 1–10 Bosses after final scale and floor placement. Helper roots, bones, transparent geometry, collision references, MiniBossCollider, and CombatZone do not affect HP placement.
+- Replaced HeightRatio placement with BossDisplayTopY plus the common two-stud VerticalOffset. Boss/Wall UI size, Boss scale, combat, generation continuity, and balance remain unchanged.

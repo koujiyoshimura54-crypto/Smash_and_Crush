@@ -310,6 +310,27 @@ local function staticBounds(visual)
  end
  return low,high
 end
+local displayBoundsExcluded={
+ HumanoidRootPart=true,FakeRootPart=true,RootPart=true,CollisionReference=true,
+ MiniBossCollider=true,CombatZone=true,
+}
+local function visibleVisualBounds(visual)
+ local low=Vector3.new(math.huge,math.huge,math.huge)
+ local high=Vector3.new(-math.huge,-math.huge,-math.huge)
+ local count=0
+ for _,part in visual:GetDescendants() do
+  if part:IsA("BasePart") and part.Transparency<1 and not displayBoundsExcluded[part.Name]
+   and not part:GetAttribute("VisualOnly") then
+   count+=1
+   for _,x in {-1,1} do for _,y in {-1,1} do for _,z in {-1,1} do
+    local point=part.CFrame:PointToWorldSpace(part.Size*Vector3.new(x,y,z)/2)
+    low=low:Min(point);high=high:Max(point)
+   end end end
+  end
+ end
+ if count==0 then return nil,nil end
+ return low,high
+end
 local function attachStaticStageVisual(e)
  local n=e:GetAttribute("StageNumber")
  local name=staticVisualNames[n]
@@ -622,13 +643,16 @@ local function spawnEnemy(i)
  attachStaticStageVisual(e)
  attachStage06Shisa(e)
  attachStage07BossVisual(e)
- -- Snapshot visual bounds once after scaling/floor placement, before combat animation.
- -- Recomputed on every spawn; never use the outer encounter Collider/CombatZone.
+ -- Snapshot rendered visual bounds after all scaling and floor placement. UI bounds
+ -- exclude bones, roots, colliders, zones and transparent helper geometry.
  local displayVisual=e:FindFirstChildOfClass("Model")
  if displayVisual then
-  local low,high=staticBounds(displayVisual)
-  if high.Y>low.Y then
+  local low,high=visibleVisualBounds(displayVisual)
+  if low and high and high.Y>low.Y then
+   e:SetAttribute("BossDisplayBottomY",low.Y)
+   e:SetAttribute("BossDisplayTopY",high.Y)
    e:SetAttribute("BossDisplayHeight",high.Y-low.Y)
+   -- Retain the old attribute for compatibility with existing diagnostics.
    e:SetAttribute("BossDisplayBaseY",low.Y)
   end
  end

@@ -221,8 +221,9 @@ end
 local function updateGaugeLayout(e,n,g)
  local wall,reference=bossWall(n)
  local bossHeight=e:GetAttribute("BossDisplayHeight")
- local bossBase=e:GetAttribute("BossDisplayBaseY")
- if not wall or not reference or not bossHeight or not bossBase then return false end
+ local bossBottom=e:GetAttribute("BossDisplayBottomY")
+ local bossTop=e:GetAttribute("BossDisplayTopY")
+ if not wall or not reference or not bossHeight or not bossBottom or not bossTop then return false end
  local settings=BossDisplayConfig.Get(n)
  local surface=bossSurfaces[n]
  if not surface or not surface:IsDescendantOf(folder) then
@@ -256,8 +257,10 @@ local function updateGaugeLayout(e,n,g)
  surface:SetAttribute("SurfaceOffset",settings.SurfaceOffset)
  g.Adornee=surface
  g:SetAttribute("WallAnchored",false)
+ g:SetAttribute("BossDisplayBottomY",bossBottom)
+ g:SetAttribute("BossDisplayTopY",bossTop)
  g:SetAttribute("BossDisplayHeight",bossHeight)
- g:SetAttribute("BossDisplayCenterY",bossBase+bossHeight*settings.HeightRatio+settings.VerticalOffset)
+ g:SetAttribute("BossDisplayCenterY",bossTop+settings.VerticalOffset)
  g.Face=Enum.NormalId.Front
  g.Active=false
  for _,property in ipairs({"SizingMode","CanvasSize","PixelsPerStud","LightInfluence","AlwaysOnTop","MaxDistance","ZOffset"}) do
