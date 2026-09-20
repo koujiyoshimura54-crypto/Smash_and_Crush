@@ -73,9 +73,34 @@ local function equipHisarinoBody(character)
 	humanoid:AddAccessory(body)
 end
 
+local hiddenBodyParts = {
+	"LeftUpperArm",
+	"LeftLowerArm",
+	"LeftHand",
+	"RightUpperArm",
+	"RightLowerArm",
+	"RightHand",
+	"LeftUpperLeg",
+	"LeftLowerLeg",
+	"LeftFoot",
+	"RightUpperLeg",
+	"RightLowerLeg",
+	"RightFoot",
+}
+
+local function hideArmsAndLegs(character)
+	for _, partName in ipairs(hiddenBodyParts) do
+		local part = character:FindFirstChild(partName)
+		if part and part:IsA("BasePart") then
+			part.Transparency = 1
+		end
+	end
+end
+
 local function equipCharacter(character)
 	attachHisarinoHair(character)
 	equipHisarinoBody(character)
+	hideArmsAndLegs(character)
 end
 
 local function setupPlayer(player)
