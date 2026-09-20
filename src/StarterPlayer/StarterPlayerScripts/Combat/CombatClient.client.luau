@@ -189,6 +189,15 @@ local function renderWallStage(major)
  end
 end
 local function enemy(n)return workspace:WaitForChild("Enemies"):WaitForChild(("Stage%02d_Enemy"):format(n))end
+local function acceptsBossGeneration(stage,generation)
+ if typeof(generation)~="number" then return true end
+ local enemies=workspace:FindFirstChild("Enemies")
+ local current=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
+ local currentGeneration=current and current:GetAttribute("SpawnGeneration")
+ -- Accept a new generation even if its model has not replicated yet, but never
+ -- let a delayed event from an older generation overwrite the current gauge.
+ return typeof(currentGeneration)~="number" or generation>=currentGeneration
+end
 local function bossName(e)
  local visual=e:FindFirstChildOfClass("Model")
  if not visual then return e.Name end
@@ -528,12 +537,14 @@ R.OnClientEvent:Connect(function(d)
   if typeof(d.Current)=="number" then gauge(d.Stage,d.Current,d.Max) end
   refreshGaugeVisibility()
  elseif d.Type=="BossInitialize" then
+  if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
   if d.Stage==3 then Stage03AttackVisual.Prepare() end
   currentStage=d.Stage
   gauge(d.Stage,d.Current,d.Max)
   showBossRecommendation(d.Stage,d.RecommendedLevel)
   refreshGaugeVisibility()
  elseif d.Type=="BossGauge" then
+  if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
   local f=fills[d.Stage] if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
  elseif d.Type=="BossResult" then
   bossSuppressed[currentStage]=true

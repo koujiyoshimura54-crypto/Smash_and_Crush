@@ -486,3 +486,8 @@
 
 - Replaced the Stage-wide PersonalGate with a Client-only PersonalBossCollider derived from the current Boss Generation's shared MiniBossCollider geometry.
 - Rebind on Boss replacement and streaming recovery, remove collision immediately on EnemyDefeated, and keep every Boss visual-rig BasePart non-colliding on the Client.
+# 2026-09-20 — Fix boss combat multiplayer state
+
+- Made World1 Boss combat contact reachable from every approach direction using a collider-derived CombatZone and character-root overlap.
+- Preserved each player's stage Boss HP when another player replaces the shared Boss generation, including authoritative gauge resynchronization and stale-generation filtering.
+- Restored the exact Stage 9 UTF-8 visual-template lookup without changing its model, collision reference, balance, rewards, or progression.

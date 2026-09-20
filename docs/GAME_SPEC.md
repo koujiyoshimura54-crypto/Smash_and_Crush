@@ -386,3 +386,7 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 - Protein, Glove, and Training Belt form a set only when all three equipped Items have the same valid Element: Fire, Ice, or Electric. Rarity does not participate in the set check.
 - A matching set multiplies server-authoritative training Strength gain by 1.5 after the existing Rebirth, source, Potion, and VIP multipliers. Fixed rewards remain outside training multipliers.
 - The set is derived from owned/equipped Item data and is never stored separately. Glove Boss Damage and Training Belt tier effects are unchanged.
+# Boss contact and per-player generation continuity
+
+- Every World1 Boss CombatZone is derived from the current MiniBossCollider with a five-stud horizontal shell. Boss contact accepts the existing forward combat trigger or the character root, so approach direction does not prevent combat before the PersonalBossCollider stops the character.
+- Boss encounter HP is keyed by player and stage for the current run. Replacing the shared visual Boss and incrementing SpawnGeneration rebinds active sessions without resetting another player's HP. Respawn, run reset, skip initialization, and a new run continue to use the existing BossCombatService reset path.

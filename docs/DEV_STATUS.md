@@ -508,3 +508,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 - Added one shared ItemMaster-based set predicate for Server Strength calculation and the Item Effect HUD. Matching owned/equipped Protein, Glove, and Training Belt Elements apply a single 1.5 multiplier; no set state or schema is stored.
 - Added localized Element Set HUD Sources and retained all Item effects, Best Equip, Merge, reward, and save behavior.
+# 2026-09-20 — Boss contact, generation continuity, and Stage 9 visual
+
+- Derived all Stage 1–10 Boss CombatZones from MiniBossCollider geometry and added direction-independent character-root contact while retaining the existing forward trigger.
+- Changed World1 per-player Boss encounter identity from Boss Instance to Stage and rebind active sessions across shared SpawnGeneration replacement. Boss events carry SpawnGeneration and the client rejects older-generation HP events.
+- Restored the exact UTF-8 Stage 9 visual name `Lirilì Rilà`; the existing Stage09Boss template and CollisionReference remain authoritative.

@@ -20,6 +20,7 @@ local WALL_TRIGGER_SIZE=Vector3.new(4.5,5.5,4)
 local WALL_TRIGGER_FORWARD_OFFSET=3
 local WALL_DAMAGE_DELAY=0.18
 local MINIBOSS_DAMAGE_DELAY=0.50
+local BOSS_COMBAT_ZONE_MARGIN=5
 
 local function ensureWallCombatTrigger(character)
  local root=character:WaitForChild("HumanoidRootPart",10)
@@ -632,15 +633,18 @@ local function spawnEnemy(i)
   end
  end
  createMiniBossCollider(e)
- -- Large late-World1 bosses need a reachable combat trigger on every side.
- -- Preserve Stage1-5 zones. This zone has no physical collision.
- if i>=6 and i<=10 then
-  local collider=e:FindFirstChild("MiniBossCollider")
-  if collider then
-   z.Size=Vector3.new(collider.Size.X+4,14,collider.Size.Z+4)
-   local floorTop=collider.Position.Y-collider.Size.Y/2
-   z.CFrame=CFrame.new(collider.Position.X,floorTop+z.Size.Y/2,collider.Position.Z)*collider.CFrame.Rotation
-  end
+ -- Derive the non-physical combat shell from the authoritative collider for every boss.
+ -- The margin lets the character root enter from any direction before its body reaches
+ -- the client-only PersonalBossCollider.
+ local collider=e:FindFirstChild("MiniBossCollider")
+ if collider then
+  z.Size=Vector3.new(
+   collider.Size.X+BOSS_COMBAT_ZONE_MARGIN*2,
+   math.max(14,collider.Size.Y),
+   collider.Size.Z+BOSS_COMBAT_ZONE_MARGIN*2
+  )
+  local floorTop=collider.Position.Y-collider.Size.Y/2
+  z.CFrame=CFrame.new(collider.Position.X,floorTop+z.Size.Y/2,collider.Position.Z)*collider.CFrame.Rotation
  end
  if i==1 then
   local v=e:FindFirstChild("BallerinaCappuccinaRig")
@@ -659,6 +663,22 @@ local function spawnEnemy(i)
  end)
  e.Humanoid.DisplayDistanceType=Enum.HumanoidDisplayDistanceType.None
  enemies[i]=e
+ -- A shared visual replacement must not reset another player's logical encounter.
+ -- Rebind active sessions to this generation and resend the same authoritative HP.
+ for player,session in sessions do
+  if session.CombatType=="MiniBoss" and session.Stage==i and player.Parent==Players then
+   local ps=state(player)
+   if not ps.Defeated[i] then
+    session.Instance=e
+    local bossState=Boss.Rebind(player,e,i)
+    if bossState then
+     ps.Gauges[i]=bossState.HP
+     send(player,{Type="BossInitialize",Stage=i,Current=bossState.HP,Max=bossState.MaxHP,
+      RecommendedLevel=bossState.RecommendedLevel,SpawnGeneration=enemyGeneration[i]})
+    end
+   end
+  end
+ end
  return e
 end
 local function spawnAll()
@@ -726,8 +746,9 @@ local function updateCombat(p,manualRequest)
    local e=not st.WorldComplete and not state(p).Defeated[n] and enemies[n]
    local bossUnlocked=(not Wall.Config[n]) or Wall.IsBossUnlockedForStage(p,n)
    local enemyTrigger=ch and ch:FindFirstChild("WallCombatTrigger")
-   local enemyHit=bossUnlocked and e and hum and hum.Health>0 and enemyTrigger
-    and e:FindFirstChild("CombatZone") and boxesOverlap(enemyTrigger,e.CombatZone)
+   local combatZone=e and e:FindFirstChild("CombatZone")
+   local enemyHit=bossUnlocked and e and hum and hum.Health>0 and combatZone
+    and ((enemyTrigger and boxesOverlap(enemyTrigger,combatZone)) or (root and boxesOverlap(root,combatZone)))
    -- The existing session owns the combat type until contact and pending hits end.
    local active=sessions[p]
    if active and (active.Stage~=n or active.Character~=ch or not hum or hum.Health<=0 or st.WorldComplete) then
@@ -770,7 +791,8 @@ local function updateCombat(p,manualRequest)
       local maxHP=Boss.GetStageConfig(n).MaxHP
       local bs=Boss.Begin(p,e,n,maxHP)
       state(p).Gauges[n]=bs.HP
-      send(p,{Type="BossInitialize",Stage=n,Current=bs.HP,Max=bs.MaxHP,RecommendedLevel=bs.RecommendedLevel})
+      send(p,{Type="BossInitialize",Stage=n,Current=bs.HP,Max=bs.MaxHP,RecommendedLevel=bs.RecommendedLevel,
+       SpawnGeneration=e:GetAttribute("SpawnGeneration")})
      end
     end
     s=sessions[p]
@@ -803,7 +825,8 @@ local function updateCombat(p,manualRequest)
         ps.Gauges[n]=bs.HP
         -- Presentation evidence from the accepted hit; damage math remains in Boss.Attack.
         send(p,{Type="BossGauge",Stage=n,Current=bs.HP,Max=bs.MaxHP,Attack=bs.Attacks,
-         AttackId=attackId,GloveApplied=bs.Route~="LOTTERY_WIN" and bs.GloveBonus>0 and bs.HP<hpBefore})
+         AttackId=attackId,GloveApplied=bs.Route~="LOTTERY_WIN" and bs.GloveBonus>0 and bs.HP<hpBefore,
+         SpawnGeneration=e:GetAttribute("SpawnGeneration")})
         if status=="Win" then
          send(p,{Type="BossResult",Result="WIN"})
          defeat(p,n)
