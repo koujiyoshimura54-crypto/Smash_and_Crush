@@ -437,7 +437,7 @@ Lv201以降は**暫定実装**としてLv200=5Bを起点に毎Level+250M、上�
 
 ## その他の数値と変更時の注意
 
-MuscleScaleConfigのStrength閾値：30 / 70 / 130 / 250 / 490 / 970 / 1930 / 3850 / 7690 / 15370。対応HeightScale：1.2 / 1.35 / 1.5 / 1.7 / 1.9 / 2.15 / 2.4 / 2.7 / 3 / 3.5。体格の変更はBoss接触・Zone到達にも影響する。形状計算の詳細は[ServerScriptService.Config.MuscleScaleConfig](../reports/Implementation_Audit_20260915/sources/ServerScriptService.Config.MuscleScaleConfig.luau)を参照する。
+MuscleScaleConfigの累積Strength閾値：40 / 250 / 955 / 2,840 / 7,215 / 17,265 / 37,315 / 81,865 / 196,915 / 462,965。対応HeightScale：1.2 / 1.35 / 1.5 / 1.7 / 1.9 / 2.15 / 2.4 / 2.7 / 3 / 3.3。体格の変更はBoss接触・Zone到達にも影響する。形状計算の正本は `src/ServerScriptService/Config/MuscleScaleConfig.luau` とする。
 
 保存・課金の永続仕様は[GAME_SPEC](GAME_SPEC.md)、表示倍率は[UI_SPEC](UI_SPEC.md)、未確定事項は[DEV_STATUS](DEV_STATUS.md)。Balance変更時は有効参照元とWorld2への依存を監査し、実装変更・Play実測・回帰結果を区別して本書を更新する。
 
@@ -484,3 +484,6 @@ World1 Stage6〜10はRequiredStrengthを37,315 / 81,865 / 196,915 / 462,965 / 1,
 ## 2026-09-19 — Element Set Strength multiplier
 
 Equipping owned Protein, Glove, and Training Belt Items with one identical Element (Fire, Ice, or Electric) applies `Strength gain ×1.5`. The check ignores Rarity. It applies once to normal walking, Auto Tap, Manual Tap, and Treadmill Strength through `StrengthManager.AddStrength`; fixed reward Strength, Protein's base bonus, Glove Boss Damage, and Training Belt tier values are unchanged.
+# 2026-09-20 — World1 muscle progression
+
+World1 muscle stages use cumulative Strength consumed by `LevelProgression.Advance`, reaching stages at Lv3 / 6 / 10 / 15 / 20 / 25 / 30 / 35 / 40 / 45. The authoritative cumulative thresholds are 40 / 250 / 955 / 2,840 / 7,215 / 17,265 / 37,315 / 81,865 / 196,915 / 462,965. Growth factors are 4 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 13 / 14, and Height scales are 1.20 / 1.35 / 1.50 / 1.70 / 1.90 / 2.15 / 2.40 / 2.70 / 3.00 / 3.30. Stage10 therefore uses UpperTorso X/Y/Z 2.68 / 3.30 / 2.40 and UpperArm X/Y/Z 3.10 / 3.30 / 3.10.

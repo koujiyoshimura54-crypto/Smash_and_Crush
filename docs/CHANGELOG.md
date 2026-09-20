@@ -498,3 +498,7 @@
 # 2026-09-20 — Restrict developer avatar to Yossy945
 
 - Apply the existing custom Hisarino head and jacket only to developer UserId `7467238848` on spawn and respawn. Other players retain their own Roblox avatar.
+# 2026-09-20 — Rebalance World1 muscle progression
+
+- Moved the ten muscle stages to cumulative Strength thresholds corresponding to Lv3 through Lv45.
+- Reduced the final growth factor from 16 to 14 and Stage10 Height from 3.50 to 3.30 while preserving the existing growth implementation and per-part growth rates.
