@@ -517,3 +517,6 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 
 - Added UI-only visible BasePart bounds for all Stage 1–10 Bosses after final scale and floor placement. Helper roots, bones, transparent geometry, collision references, MiniBossCollider, and CombatZone do not affect HP placement.
 - Replaced HeightRatio placement with BossDisplayTopY plus the common two-stud VerticalOffset. Boss/Wall UI size, Boss scale, combat, generation continuity, and balance remain unchanged.
+# 2026-09-20 — Developer-only custom avatar
+
+- Restricted the existing Hisarino head and layered body jacket auto-equip path to developer UserId `7467238848`. Non-developer CharacterAdded events are not subscribed by this script and their Roblox avatars remain untouched.

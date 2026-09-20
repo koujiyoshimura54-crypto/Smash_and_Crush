@@ -495,3 +495,6 @@
 
 - Measure Boss UI bounds from rendered BaseParts after final scaling and floor placement, excluding bones, roots, transparent helpers, colliders, and combat zones.
 - Place every Stage 1–10 Boss HP bar center at the visible visual top plus the shared two-stud VerticalOffset; Boss and Wall UI sizes are unchanged.
+# 2026-09-20 — Restrict developer avatar to Yossy945
+
+- Apply the existing custom Hisarino head and jacket only to developer UserId `7467238848` on spawn and respawn. Other players retain their own Roblox avatar.

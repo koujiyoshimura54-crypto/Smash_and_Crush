@@ -393,3 +393,6 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 # Boss HP visual-top alignment
 
 - World1 Boss HP UI uses the final rendered visual bounds for every Stage. The bar center is the visible Boss top plus the shared BossDisplayConfig VerticalOffset; Boss scale methods, Wall HP UI, combat, and balance are unchanged.
+# Developer avatar
+
+- The existing `Hisarino_hair` head accessory and `Hisarino_Body` layered jacket are applied on spawn and respawn only when `Player.UserId == 7467238848`. Every other player keeps the Roblox avatar loaded for that account without avatar replacement or accessory removal.
