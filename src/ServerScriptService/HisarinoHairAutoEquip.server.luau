@@ -9,22 +9,12 @@ local hairTemplate = ServerStorage:WaitForChild(HAIR_ACCESSORY_NAME)
 local applying = setmetatable({}, { __mode = "k" })
 
 local function removeOriginalAvatarAppearance(character)
-	local humanoid = character:FindFirstChildOfClass("Humanoid")
-	if humanoid then
-		for _, accessory in ipairs(humanoid:GetAccessories()) do
-			-- Reading AccessoryType keeps cleanup scoped to Humanoid-equipped avatar
-			-- accessories, including Unknown and layered clothing; Tools are untouched.
-			local accessoryType = accessory.AccessoryType
-			local isCustomAccessory = accessory.Name == HAIR_ACCESSORY_NAME
-				or accessory.Name == BODY_ACCESSORY_NAME
-			if typeof(accessoryType) == "EnumItem" and not isCustomAccessory then
-				accessory:Destroy()
-			end
-		end
-	end
-
 	for _, child in ipairs(character:GetChildren()) do
-		if child:IsA("Shirt") or child:IsA("Pants") or child:IsA("ShirtGraphic") then
+		local isAllowedAccessory = child.Name == HAIR_ACCESSORY_NAME
+			or child.Name == BODY_ACCESSORY_NAME
+		if child:IsA("Accessory") and not isAllowedAccessory then
+			child:Destroy()
+		elseif child:IsA("Shirt") or child:IsA("Pants") or child:IsA("ShirtGraphic") then
 			child:Destroy()
 		end
 	end

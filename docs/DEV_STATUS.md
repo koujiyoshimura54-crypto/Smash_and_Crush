@@ -520,7 +520,8 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 # 2026-09-20 — Developer-only custom avatar
 
 - Restricted the existing Hisarino head and layered body jacket auto-equip path to developer UserId `7467238848`. Non-developer CharacterAdded events are not subscribed by this script and their Roblox avatars remain untouched.
-- Developer cleanup now runs after `CharacterAppearanceLoaded`, removes only Humanoid-equipped original avatar accessories plus Classic Clothing, preserves the Dynamic Head `FaceControls`, and normalizes `Hisarino_hair` / `Hisarino_Body` to one instance each on spawn and respawn.
+- Developer cleanup now runs after `CharacterAppearanceLoaded`, removes Classic Clothing, preserves the Dynamic Head `FaceControls`, and normalizes `Hisarino_hair` / `Hisarino_Body` to one instance each on spawn and respawn.
+- Accessory cleanup uses an explicit Character-child name allowlist: only `Hisarino_hair` and `Hisarino_Body` survive, regardless of AccessoryType.
 # 2026-09-20 — World1 muscle progression rebalance
 
 - Muscle stages now reach Lv3 / 6 / 10 / 15 / 20 / 25 / 30 / 35 / 40 / 45 using cumulative `LevelProgression.Advance` Strength.
