@@ -2,32 +2,53 @@ local Players = game:GetService("Players")
 local ServerStorage = game:GetService("ServerStorage")
 
 local DEVELOPER_USER_ID = 7467238848
-local ACCESSORY_NAME = "Hisarino_hair"
+local HAIR_ACCESSORY_NAME = "Hisarino_hair"
+local BODY_ACCESSORY_NAME = "Hisarino_Body"
 local WAIT_TIMEOUT = 10
-local accessoryTemplate = ServerStorage:WaitForChild(ACCESSORY_NAME)
-local attaching = setmetatable({}, { __mode = "k" })
+local hairTemplate = ServerStorage:WaitForChild(HAIR_ACCESSORY_NAME)
+local applying = setmetatable({}, { __mode = "k" })
+
+local function removeOriginalAvatarAppearance(character)
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if humanoid then
+		for _, accessory in ipairs(humanoid:GetAccessories()) do
+			-- Reading AccessoryType keeps cleanup scoped to Humanoid-equipped avatar
+			-- accessories, including Unknown and layered clothing; Tools are untouched.
+			local accessoryType = accessory.AccessoryType
+			local isCustomAccessory = accessory.Name == HAIR_ACCESSORY_NAME
+				or accessory.Name == BODY_ACCESSORY_NAME
+			if typeof(accessoryType) == "EnumItem" and not isCustomAccessory then
+				accessory:Destroy()
+			end
+		end
+	end
+
+	for _, child in ipairs(character:GetChildren()) do
+		if child:IsA("Shirt") or child:IsA("Pants") or child:IsA("ShirtGraphic") then
+			child:Destroy()
+		end
+	end
+end
 
 local function attachHisarinoHair(character)
-	if attaching[character] then return end
-	attaching[character] = true
-
 	local head = character:WaitForChild("Head", WAIT_TIMEOUT)
 	local headAttachment = head and head:WaitForChild("HairAttachment", WAIT_TIMEOUT)
 	if not head or not headAttachment or not headAttachment:IsA("Attachment") then
-		attaching[character] = nil
 		return
 	end
 
-	local existing = character:FindFirstChild(ACCESSORY_NAME)
-	if existing then existing:Destroy() end
+	for _, child in ipairs(character:GetChildren()) do
+		if child:IsA("Accessory") and child.Name == HAIR_ACCESSORY_NAME then
+			child:Destroy()
+		end
+	end
 
-	local accessory = accessoryTemplate:Clone()
+	local accessory = hairTemplate:Clone()
 	local handle = accessory:FindFirstChild("Handle")
 	local accessoryAttachment = handle and handle:FindFirstChild("HairAttachment")
 	if not handle or not handle:IsA("BasePart")
 		or not accessoryAttachment or not accessoryAttachment:IsA("Attachment") then
 		accessory:Destroy()
-		attaching[character] = nil
 		return
 	end
 
@@ -48,7 +69,6 @@ local function attachHisarinoHair(character)
 	weld.C1 = headAttachment.CFrame
 	weld.Parent = handle
 
-	attaching[character] = nil
 end
 
 local function equipHisarinoBody(character)
@@ -58,7 +78,7 @@ local function equipHisarinoBody(character)
 		return
 	end
 
-	local bodyTemplate = ServerStorage:FindFirstChild("Hisarino_Body")
+	local bodyTemplate = ServerStorage:FindFirstChild(BODY_ACCESSORY_NAME)
 	local handle = bodyTemplate and bodyTemplate:FindFirstChild("Handle")
 	if not bodyTemplate or not bodyTemplate:IsA("Accessory")
 		or not handle or not handle:IsA("MeshPart")
@@ -67,7 +87,9 @@ local function equipHisarinoBody(character)
 	end
 
 	for _, child in ipairs(character:GetChildren()) do
-		if child.Name == "Hisarino_Body" then child:Destroy() end
+		if child:IsA("Accessory") and child.Name == BODY_ACCESSORY_NAME then
+			child:Destroy()
+		end
 	end
 	local body = bodyTemplate:Clone()
 	humanoid:AddAccessory(body)
@@ -98,17 +120,30 @@ local function hideArmsAndLegs(character)
 end
 
 local function equipCharacter(character)
+	if applying[character] or not character.Parent then return end
+	applying[character] = true
+
+	removeOriginalAvatarAppearance(character)
 	attachHisarinoHair(character)
 	equipHisarinoBody(character)
 	hideArmsAndLegs(character)
+
+	applying[character] = nil
 end
 
 local function setupPlayer(player)
 	if player.UserId ~= DEVELOPER_USER_ID then return end
-	player.CharacterAdded:Connect(function(character)
-		task.spawn(equipCharacter, character)
+
+	player.CharacterAppearanceLoaded:Connect(function(character)
+		if character == player.Character then
+			task.spawn(equipCharacter, character)
+		end
 	end)
-	if player.Character then task.spawn(equipCharacter, player.Character) end
+
+	local character = player.Character
+	if character and player:HasAppearanceLoaded() then
+		task.spawn(equipCharacter, character)
+	end
 end
 
 Players.PlayerAdded:Connect(setupPlayer)
