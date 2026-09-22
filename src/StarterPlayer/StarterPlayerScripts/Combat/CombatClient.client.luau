@@ -157,6 +157,7 @@ local function wallGauge(a,b,c,d)
  local state=wallState[major]
  bar.Visible=major==currentStage and state~=nil and not state.Skipped and state.Current==index and not state.Cleared[index]
  bar.Fill.Size=UDim2.fromScale(max>0 and math.clamp(v/max,0,1) or 0,1)
+ bar.HPLabel.AutoLocalize=false
  bar.HPLabel.Text=NumberFormat.Format(v).." / "..NumberFormat.Format(max)
  wallGauges[tostring(major).."."..tostring(index)]={Fill=bar.Fill,HP=bar.HPLabel,Max=max}
 end
@@ -301,6 +302,7 @@ local function gauge(n,v,max)
  local outline=Instance.new("UIStroke");outline.Thickness=3;outline.Color=Color3.fromRGB(15,18,22);outline.Parent=b
  local f=Instance.new("Frame");f.Name="Fill";f.Size=UDim2.fromScale(max>0 and math.clamp(v/max,0,1) or 0,1);f.BackgroundColor3=Color3.fromRGB(80,225,65);f.BorderSizePixel=0;f.Parent=b
  local hp=label("HPLabel",NumberFormat.Format(v).." / "..NumberFormat.Format(max),UDim2.fromOffset(16,barY+4),UDim2.new(1,-32,0,42),20,30)
+ hp.AutoLocalize=false
  hp.ZIndex=3
  fills[n]={Fill=f,HP=hp,Max=max,Current=v,Gui=g}
  updateGaugeLayout(e,n,g)

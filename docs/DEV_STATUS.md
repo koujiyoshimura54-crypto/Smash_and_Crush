@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-22 — Abbreviated number localization exclusion
+
+- Marked NumberFormat-driven Strength, Level progress, Win, Strength gain, Boss HP, Wall HP, and reward amount labels as non-localized while retaining the separate AutoLocalized `StrengthUnit` label.
+- Removed obsolete dynamic Sources `+1M Cash` and `6.4K Strength` from the CSV; K/M/B/T runtime output is locale-invariant and fixed text remains explicitly managed.
+- Localization CSV remains UTF-8 BOM with unique, nonblank Sources and matching placeholders.
+
 ## 2026-09-19 — Element Set icon badge
 
 - Element Set表示をElement名＋SETのTextから、ItemMasterの既存Element別Protein画像＋固定 `×1.5` へ変更。

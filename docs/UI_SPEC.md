@@ -385,6 +385,8 @@ Time Rewards and Daily Rewards retain their existing visuals while locked or rea
 - Dynamic entries retain Roblox placeholders such as `{number1}`, `{number2}`, `{number3}`, and `{time1}` in both Source and translated text.
 - Japanese terminology uses `強さ` for Strength, `再生` for Rebirth, `通常ダンベル` for Normal Dumbbell, and `オーラ` for Aura. STR, DMG, HP, VIP, Win, Robux, and Lv. remain unchanged.
 - Runtime Sources are case-sensitive, so required variants such as `Equipped` and `EQUIPPED` remain separate entries. Source and translated placeholders must match exactly.
+- NumberFormat abbreviations (`K`, `M`, `B`, `T` and higher suffixes) are runtime values, not Localization Sources. Numeric TextLabels use `AutoLocalize = false`; mixed displays keep formatted numbers separate from AutoLocalized fixed labels such as `StrengthUnit`.
+- Playtest text capture is not the source of truth: fixed player-facing text is managed explicitly in the CSV, while dynamic numbers, asset/internal IDs, and other runtime values remain outside the Localization Table.
 
 ## Element Set Bonus HUD
 

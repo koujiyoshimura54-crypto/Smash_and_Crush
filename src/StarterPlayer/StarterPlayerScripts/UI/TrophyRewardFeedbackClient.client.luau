@@ -9,6 +9,7 @@ local sounds = require(ReplicatedStorage.Config:WaitForChild("UISoundConfig"))
 local format = require(ReplicatedStorage.Modules:WaitForChild("NumberFormat"))
 local winLabel = player:WaitForChild("PlayerGui"):WaitForChild("StrengthGui"):WaitForChild("WinLabel")
 local amountLabel = winLabel:WaitForChild("Amount")
+amountLabel.AutoLocalize = false
 
 local scale = winLabel:FindFirstChild("RewardFeedbackScale")
 if not scale then

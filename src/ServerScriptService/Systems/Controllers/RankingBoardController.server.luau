@@ -82,11 +82,12 @@ local function writeRow(frame,index,name,value)
  local row,rank,user,amount=rowObjects(frame,index)
  if not row then return end
  if row:IsA("TextLabel") then
+  row.AutoLocalize=false
   row.Text=string.format("#%-2d  %-20s  %s",index,name,value)
  else
-  if rank then rank.Text="#"..tostring(index) end
-  if user then user.Text=name end
-  if amount then amount.Text=value end
+  if rank then rank.AutoLocalize=false;rank.Text="#"..tostring(index) end
+  if user then user.AutoLocalize=false;user.Text=name end
+  if amount then amount.AutoLocalize=false;amount.Text=value end
  end
 end
 
