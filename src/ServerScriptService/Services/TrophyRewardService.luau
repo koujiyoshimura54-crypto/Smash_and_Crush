@@ -1,3 +1,7 @@
+local contexts={}
+local function forWorld(worldId)
+ assert(worldId==1 or worldId==2,"Unsupported world")
+ if contexts[worldId] then return contexts[worldId] end
 -- Phase 6.6: server-owned reward records; only the owner receives the visual.
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
@@ -24,7 +28,7 @@ local sequence = 0
 local template = RS.UI.Templates:WaitForChild("TrophyRewardTemplate")
 
 local hitboxes = Instance.new("Folder")
-hitboxes.Name = "PersonalTrophyHitboxes"
+hitboxes.Name = worldId==2 and "World2PersonalTrophyHitboxes" or "PersonalTrophyHitboxes"
 hitboxes.Parent = workspace
 
 function M.InitializePlayer(player)
@@ -35,8 +39,8 @@ end
 
 function M.GetLobbySpawn()
 	local area = map and map:FindFirstChild("TrainingArea")
-	local spawn = area and area:FindFirstChild("SpawnLocation")
-	return spawn and spawn:IsA("SpawnLocation") and spawn or nil
+	local spawn = area and area:FindFirstChild(worldId==2 and "World2LobbySpawn" or "SpawnLocation")
+	return spawn and spawn:IsA("BasePart") and spawn or nil
 end
 
 function M.Clear(player)
@@ -198,6 +202,8 @@ local function collect(player, record, part)
 end
 
 function M.Spawn(player, major)
+ -- World2 rewards are explicitly unconfigured; never issue a World1 reward.
+ if worldId==2 then return false,"World2RewardUnconfigured" end
 	if (records[player] and records[player][major])
 		or not isDefeated(player, major) then
 		return false
@@ -336,4 +342,9 @@ end)
 
 Players.PlayerRemoving:Connect(M.Clear)
 
-return M
+
+ contexts[worldId]=M
+ M.ForWorld=forWorld
+ return M
+end
+return forWorld(1)

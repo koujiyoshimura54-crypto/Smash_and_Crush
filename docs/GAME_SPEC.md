@@ -396,3 +396,10 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 # Developer avatar
 
 - After `CharacterAppearanceLoaded`, UserId `7467238848` keeps only the `Hisarino_hair` and `Hisarino_Body` Accessory name allowlist; every other Character Accessory plus Classic Shirt/Pants/T-Shirt is removed. The original Head and its Dynamic Head `FaceControls` remain, and the existing 12 arm/hand/leg/foot parts stay transparent. Every other player keeps the Roblox avatar loaded for that account without avatar replacement or accessory removal.
+
+# 2026-09-24 — World2 SCP bosses
+
+- World2 Stage1–10 use SCP-096 / 023 / 035 / 058 / 049 / 173 / 939 / 106 / 682 / 323 respectively, via the explicit `World2BossVisualConfig` allowlist and shared world-scoped combat/progression modules.
+- SCP-131 is not a boss candidate. Source models, its reserved display, and the retired stage placeholders remain preserved in ServerStorage.
+- Existing World2 balance is unchanged; Trophy/Win rewards remain explicitly unconfigured. Personal defeat hides only that client's cosmetic visual, without replacing the shared boss or changing SpawnGeneration.
+- Details and verification limits: [World2 SCP report](../reports/World2_SCP_Bosses_20260924/README.md).

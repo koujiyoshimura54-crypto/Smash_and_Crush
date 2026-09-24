@@ -1,15 +1,21 @@
+-- Shared implementation; each World owns its runtime state and map references.
+local contexts={}
+local function forWorld(worldId)
+ assert(worldId==1 or worldId==2,"Unsupported world")
+ if contexts[worldId] then return contexts[worldId] end
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
 local SS=game:GetService("ServerStorage")
 local W=game:GetService("Workspace")
-local Stage=require(game.ServerScriptService.World.StageManager)
+local Stage=require(game.ServerScriptService.World.StageManager).ForWorld(worldId)
 local Strength=require(game.ServerScriptService.Services.StrengthManager)
-local Wall=require(game.ServerScriptService.World.Stage1WallManager)
-local Boss=require(game.ServerScriptService.World.BossCombatService)
-local Trophy=require(game.ServerScriptService.Services.TrophyRewardService)
+local Wall=require(game.ServerScriptService.World.Stage1WallManager).ForWorld(worldId)
+local Boss=require(game.ServerScriptService.World.BossCombatService).ForWorld(worldId)
+local Trophy=require(game.ServerScriptService.Services.TrophyRewardService).ForWorld(worldId)
 local ItemDrops=require(game.ServerScriptService.Services.EnemyDropGachaService)
 local PlayerData=require(game.ServerScriptService.Services.PlayerDataService)
 local Badges=require(game.ServerScriptService.Services.BadgeAwardService)
+local function inWorld(p) return (p:GetAttribute("CurrentWorld") or 1)==worldId end
 local watched=setmetatable({}, {__mode="k"})
 local lossRespawns=setmetatable({}, {__mode="k"})
 local M={} local map,folder,remote,remoteConnection local enemies={} local states=setmetatable({},{__mode="k"}) local sessions=setmetatable({},{__mode="k"}) local token=0
@@ -22,9 +28,69 @@ local WALL_DAMAGE_DELAY=0.18
 local MINIBOSS_DAMAGE_DELAY=0.50
 local BOSS_COMBAT_ZONE_MARGIN=5
 
+local RUNTIME_TRIGGER_FOLDER_NAME="RuntimeCombatTriggers"
+local WALL_TRIGGER_REF_NAME="WallCombatTriggerRef"
+
+local function getRuntimeCombatTriggerFolder()
+ local runtimeFolder=W:FindFirstChild(RUNTIME_TRIGGER_FOLDER_NAME)
+ if runtimeFolder and not runtimeFolder:IsA("Folder") then
+  warn(RUNTIME_TRIGGER_FOLDER_NAME.." exists but is not a Folder")
+  return nil
+ end
+ if not runtimeFolder then
+  runtimeFolder=Instance.new("Folder")
+  runtimeFolder.Name=RUNTIME_TRIGGER_FOLDER_NAME
+  runtimeFolder.Parent=W
+ end
+ return runtimeFolder
+end
+
+local function getWallCombatTrigger(character)
+ local ref=character and character:FindFirstChild(WALL_TRIGGER_REF_NAME)
+ local trigger=ref and ref:IsA("ObjectValue") and ref.Value
+ if trigger and trigger:IsA("BasePart") and trigger.Parent==W:FindFirstChild(RUNTIME_TRIGGER_FOLDER_NAME) then
+  return trigger
+ end
+ return nil
+end
+
+local function cleanupWallCombatTrigger(character)
+ if not character then return end
+ local ref=character:FindFirstChild(WALL_TRIGGER_REF_NAME)
+ if ref and ref:IsA("ObjectValue") then
+  local trigger=ref.Value
+  ref.Value=nil
+  if trigger then trigger:Destroy() end
+  ref:Destroy()
+ end
+end
+
+local function cleanupPlayerWallCombatTriggers(player)
+ if player.Character then cleanupWallCombatTrigger(player.Character) end
+ local runtimeFolder=W:FindFirstChild(RUNTIME_TRIGGER_FOLDER_NAME)
+ if not runtimeFolder then return end
+ for _,trigger in runtimeFolder:GetChildren() do
+  if trigger:GetAttribute("OwnerUserId")==player.UserId then trigger:Destroy() end
+ end
+end
+
 local function ensureWallCombatTrigger(character)
  local root=character:WaitForChild("HumanoidRootPart",10)
- if not root or character:FindFirstChild("WallCombatTrigger") then return end
+ if not root or character.Parent==nil then return nil end
+ local current=getWallCombatTrigger(character)
+ if current then return current end
+ cleanupWallCombatTrigger(character)
+ local player=Players:GetPlayerFromCharacter(character)
+ local runtimeFolder=getRuntimeCombatTriggerFolder()
+ if not runtimeFolder then return nil end
+ if player then
+  for _,oldTrigger in runtimeFolder:GetChildren() do
+   if oldTrigger:GetAttribute("OwnerUserId")==player.UserId then oldTrigger:Destroy() end
+  end
+ end
+ local ref=Instance.new("ObjectValue")
+ ref.Name=WALL_TRIGGER_REF_NAME
+ ref.Parent=character
  local trigger=Instance.new("Part")
  trigger.Name="WallCombatTrigger"
  trigger.Size=WALL_TRIGGER_SIZE
@@ -35,12 +101,15 @@ local function ensureWallCombatTrigger(character)
  trigger.CanTouch=false
  trigger.CanQuery=false
  trigger.Massless=true
- trigger.Parent=character
+ trigger:SetAttribute("OwnerUserId",player and player.UserId or 0)
+ trigger.Parent=runtimeFolder
  local weld=Instance.new("WeldConstraint")
  weld.Name="WallCombatTriggerWeld"
  weld.Part0=root
  weld.Part1=trigger
  weld.Parent=trigger
+ ref.Value=trigger
+ return trigger
 end
 
 local function boxesOverlap(a,b)
@@ -76,10 +145,19 @@ function M.InitializePlayer(p,targetStage)
  p:SetAttribute("IsFighting",false)
  send(p,{Type="Fighting",Active=false})
  M.SendState(p)
- p.RespawnLocation=Trophy.GetLobbySpawn()
+ local lobby=Trophy.GetLobbySpawn()
+ if lobby and lobby:IsA("SpawnLocation") then p.RespawnLocation=lobby end
  if not watched[p] then
   watched[p]=true
   local function characterAdded(character,reset)
+   if not inWorld(p) then return end
+   if worldId==2 and reset~=false then
+    task.defer(function()
+     local root=character:WaitForChild("HumanoidRootPart",10)
+     local lobby=Trophy.GetLobbySpawn()
+     if root and lobby and p.Character==character and inWorld(p) then character:PivotTo(lobby.CFrame*CFrame.new(0,5,0)) end
+    end)
+   end
    if lossRespawns[p] then
     -- Keep the planned-loss guard through the old character reset. It is
     -- cleared only by the CharacterAdded raised by our explicit LoadCharacter.
@@ -92,12 +170,16 @@ function M.InitializePlayer(p,targetStage)
     local hum=character:WaitForChild("Humanoid",10)
     if hum and p.Character==character then
      hum.Died:Once(function()
-     if p.Character==character and not lossRespawns[p] then M.InitializePlayer(p) end
-    end)
+      cleanupWallCombatTrigger(character)
+      if inWorld(p) and p.Character==character and not lossRespawns[p] then M.InitializePlayer(p) end
+     end)
     end
    end)
   end
   p.CharacterAdded:Connect(characterAdded)
+  p.CharacterRemoving:Connect(function(character)
+   cleanupWallCombatTrigger(character)
+  end)
   if p.Character then characterAdded(p.Character,false) end
  end
 end
@@ -611,6 +693,22 @@ end
 
 local enemyGeneration={}
 local function spawnEnemy(i)
+ if worldId==2 then
+  local previous=enemies[i]
+  if previous and previous.Parent then return previous end
+  enemyGeneration[i]=(enemyGeneration[i] or 0)+1
+  local e=require(script.Parent.BossVisualPlacement).Build(map,i,enemyGeneration[i])
+  e.Parent=folder;enemies[i]=e
+  -- Reset engine-initialized Humanoid torso collisions after Workspace parenting.
+  task.delay(.5,function()
+   if e.Parent and enemies[i]==e then
+    for _,part in e:GetDescendants() do
+     if part:IsA("BasePart") then part.CanCollide=false end
+    end
+   end
+  end)
+  return e
+ end
  local previous=enemies[i]
  if previous and previous.Parent then previous:Destroy() end
  local e=SS.EnemyTemplates.DummyEnemy:Clone()
@@ -706,8 +804,8 @@ local function spawnEnemy(i)
  return e
 end
 local function spawnAll()
- folder=W:FindFirstChild("Enemies") or Instance.new("Folder")
- folder.Name="Enemies" folder.Parent=W
+ folder=W:FindFirstChild(worldId==2 and "World2Enemies" or "Enemies") or Instance.new("Folder")
+ folder.Name=worldId==2 and "World2Enemies" or "Enemies" folder.Parent=W
  for _,x in folder:GetChildren() do if x:GetAttribute("ManagedBy")=="EnemyManager" then x:Destroy() end end
  table.clear(enemies)
  table.clear(enemyGeneration)
@@ -715,7 +813,6 @@ local function spawnAll()
 end
 local function inside(root,z)local p=z.CFrame:PointToObjectSpace(root.Position)local h=z.Size/2 return math.abs(p.X)<=h.X and math.abs(p.Y)<=h.Y and math.abs(p.Z)<=h.Z end
 local function defeat(p,n)
- local defeatedEnemy=enemies[n]
  local ps=state(p)
  if ps.Defeated[n] then return end
  ps.Gauges[n]=0
@@ -733,7 +830,7 @@ local function defeat(p,n)
    if cleared then
     Badges.Award(p,"FirstSmash")
     local st=Stage.GetState(p)
-    if st.WorldComplete then Badges.Award(p,"World1Complete") end
+    if worldId==1 and st.WorldComplete then Badges.Award(p,"World1Complete") end
     send(p,{Type="StageCleared",Stage=n,CurrentStage=st.CurrentStage,WorldComplete=st.WorldComplete})
    end
   end
@@ -748,12 +845,14 @@ local function defeat(p,n)
  end)
  -- One server-owned reward per confirmed enemy defeat.
  ItemDrops.OnEnemyDefeated(p,n,ps)
- -- Every replacement uses the same full spawn path, including a fresh collider.
- task.delay(.6,function()
-  if map and defeatedEnemy and enemies[n]==defeatedEnemy then spawnEnemy(n) end
- end)
+ -- Per-player defeat must not replace the shared enemy. The same instance and
+ -- SpawnGeneration remain visible for players who have not defeated this stage.
 end
 local function updateCombat(p,manualRequest)
+ if not inWorld(p) then
+  if sessions[p] then Boss.Cancel(p);sessions[p]=nil end
+  return false,"InactiveWorld"
+ end
  local now=W:GetServerTimeNow()
  local auto=PlayerData.IsAutoTapEnabled(p)
  if manualRequest and auto then return false,"AutoEnabled" end
@@ -765,11 +864,11 @@ local function updateCombat(p,manualRequest)
    local majorWall=Wall.Config[n] and n
    local wall=majorWall and Wall.GetCurrentWallForStage(p,majorWall)
    local wallPart=wall and wall:FindFirstChild("Wall")
-   local wallTrigger=ch and ch:FindFirstChild("WallCombatTrigger")
+   local wallTrigger=getWallCombatTrigger(ch)
    local wallHit=wallPart and wallTrigger and hum and hum.Health>0 and boxesOverlap(wallTrigger,wallPart)
    local e=not st.WorldComplete and not state(p).Defeated[n] and enemies[n]
    local bossUnlocked=(not Wall.Config[n]) or Wall.IsBossUnlockedForStage(p,n)
-   local enemyTrigger=ch and ch:FindFirstChild("WallCombatTrigger")
+   local enemyTrigger=getWallCombatTrigger(ch)
    local combatZone=e and e:FindFirstChild("CombatZone")
    local enemyHit=bossUnlocked and e and hum and hum.Health>0 and combatZone
     and ((enemyTrigger and boxesOverlap(enemyTrigger,combatZone)) or (root and boxesOverlap(root,combatZone)))
@@ -834,14 +933,14 @@ local function updateCombat(p,manualRequest)
        ps.AttackSequence=(ps.AttackSequence or 0)+1
        -- Auto retains its existing hit delay; manual applies the accepted hit immediately.
        local attackId=ps.AttackSequence
-       if n==2 and p:GetAttribute("TutorialCompleted")==false then
+       if worldId==1 and n==2 and p:GetAttribute("TutorialCompleted")==false then
         PlayerData.CompleteTutorial(p)
        end
        send(p,{Type="CombatAttack",Id=attackId,Stage=n,Attack=bs.Attacks+1,Duration=Boss.AttackDuration,HitDelay=manualRequest and 0 or MINIBOSS_DAMAGE_DELAY,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
        s.Pending+=1
        local function applyBossHit()
         s.Pending-=1
-        if p.Parent~=Players or sessions[p]~=s or Stage.GetCurrentStageNumber(p)~=n or state(p)~=ps or p.Character~=ch or not hum or hum.Health<=0 then return end
+        if not inWorld(p) or p.Parent~=Players or sessions[p]~=s or Stage.GetCurrentStageNumber(p)~=n or state(p)~=ps or p.Character~=ch or not hum or hum.Health<=0 then return end
         if s.CombatType~="MiniBoss" or s.Instance~=e or enemies[n]~=e or not e.Parent or ps.Defeated[n] or Boss.Get(p)~=bs or bs.Completed then return end
         local hpBefore=bs.HP
         local status,hitState=Boss.Attack(p)
@@ -875,7 +974,7 @@ local function updateCombat(p,manualRequest)
       s.Pending+=1
       local function applyWallHit()
        s.Pending-=1
-       if attackPlayer.Parent~=Players or sessions[attackPlayer]~=s or Stage.GetCurrentStageNumber(attackPlayer)~=attackStage or attackPlayer.Character~=ch or not hum or hum.Health<=0 then return end
+       if not inWorld(attackPlayer) or attackPlayer.Parent~=Players or sessions[attackPlayer]~=s or Stage.GetCurrentStageNumber(attackPlayer)~=attackStage or attackPlayer.Character~=ch or not hum or hum.Health<=0 then return end
        local cleared,nextIndex,remaining=Wall.ApplyDamageForStage(attackPlayer,attackStage,attackPower)
        for _,index in ipairs(cleared) do
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=index,Current=0,Max=Wall.GetStageConfig(attackStage).Walls[index]})
@@ -924,12 +1023,23 @@ local function monitor()
   task.wait(.1)
  end end)
 end
-function M.Initialize(newMap)map=newMap or W:FindFirstChild("GeneratedMap")assert(map)local rf=RS.Remotes:FindFirstChild("GameRemotes")or Instance.new("Folder")rf.Name="GameRemotes"rf.Parent=RS.Remotes remote=rf:FindFirstChild("CombatState")or Instance.new("RemoteEvent")remote.Name="CombatState"remote.Parent=rf
- remote.OnServerEvent:Connect(function(p,d) if typeof(d)=="table" and d.Type=="RequestState" then M.SendState(p) Trophy.SendState(p) end end)
+function M.Initialize(newMap)map=newMap or W:FindFirstChild(worldId==2 and "World2Map" or "GeneratedMap")assert(map)local rf=RS.Remotes:FindFirstChild("GameRemotes")or Instance.new("Folder")rf.Name="GameRemotes"rf.Parent=RS.Remotes local remoteName=worldId==2 and "World2CombatState" or "CombatState"
+ remote=rf:FindFirstChild(remoteName)or Instance.new("RemoteEvent")remote.Name=remoteName remote.Parent=rf
+ remote.OnServerEvent:Connect(function(p,d) if inWorld(p) and typeof(d)=="table" and d.Type=="RequestState" then M.SendState(p) Trophy.SendState(p) end end)
  Trophy.Initialize(map,remote,function(p) M.InitializePlayer(p) end,function(p,n)
  return state(p).Defeated[n]==true
 end)
- Stage.Initialize(map)spawnAll()for _,p in Players:GetPlayers()do M.InitializePlayer(p)end monitor()return enemies end
+ Stage.Initialize(map)spawnAll()for _,p in Players:GetPlayers()do if inWorld(p) then M.InitializePlayer(p) end end monitor()return enemies end
+function M.Activate(p)
+ if not states[p] then M.InitializePlayer(p) else
+  p:SetAttribute("IsFighting",false)
+  M.SendState(p)
+ end
+end
+function M.Deactivate(p)
+ Boss.Cancel(p);sessions[p]=nil
+ send(p,{Type="Fighting",Active=false})
+end
 function M.IsReady()return map~=nil and remote~=nil and enemies[10]~=nil end
 function M.StartRun(p,targetStage)
  assert(M.IsReady(),"Combat is not initialized")
@@ -939,5 +1049,18 @@ function M.GetEnemy(n)return enemies[n]end
 function M.GetGauge(p,n)return state(p).Gauges[n]end
 function M.GetPlayerState(p)return state(p)end
 function M.ResetPlayer(p)M.InitializePlayer(p)end
-Players.PlayerRemoving:Connect(function(p)states[p]=nil sessions[p]=nil end)
-return M
+Players.PlayerRemoving:Connect(function(p) cleanupPlayerWallCombatTriggers(p) states[p]=nil sessions[p]=nil watched[p]=nil lossRespawns[p]=nil lastManualAttack[p]=nil end)
+
+ contexts[worldId]=M
+ return M
+end
+local default=forWorld(1)
+local API={ForWorld=forWorld}
+setmetatable(API,{__index=default})
+-- Existing player-facing callers select the active world; World1-only data APIs stay compatible.
+for _,name in {"TryManualAttack","SendState","InitializePlayer","ResetPlayer","GetPlayerState","GetGauge"} do
+ API[name]=function(player,...)
+  return forWorld(player:GetAttribute("CurrentWorld")==2 and 2 or 1)[name](player,...)
+ end
+end
+return API

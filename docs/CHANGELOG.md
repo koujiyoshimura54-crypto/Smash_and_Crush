@@ -502,3 +502,9 @@
 
 - Moved the ten muscle stages to cumulative Strength thresholds corresponding to Lv3 through Lv45.
 - Reduced the final growth factor from 16 to 14 and Stage10 Height from 3.50 to 3.30 while preserving the existing growth implementation and per-part growth rates.
+
+# 2026-09-24 — World2 SCP bosses
+
+- Added the approved ten-stage SCP mapping and cosmetic placement adapter; reused shared combat, personal visibility/collider and progression paths with per-world state.
+- Preserved SCP-131 and original assets, archived overlapping placeholders, and left existing balance/reward probabilities unchanged. World2 Trophy/Win amounts remain unconfigured.
+- Evidence and test limits: [World2 SCP report](../reports/World2_SCP_Bosses_20260924/README.md).

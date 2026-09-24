@@ -533,3 +533,9 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Muscle stages now reach Lv3 / 6 / 10 / 15 / 20 / 25 / 30 / 35 / 40 / 45 using cumulative `LevelProgression.Advance` Strength.
 - Stage10 is capped at Height 3.30, UpperTorso X/Z 2.68/2.40, and UpperArm X/Z 3.10/3.10 so the developer Layered Clothing remains inside the verified rendering range.
 - Strength, Level progression, Rebirth, combat, training, Items, and avatar assets are unchanged.
+
+# 2026-09-24 — World2 SCP boss integration
+
+- Implemented the ten confirmed SCP placements using existing EnemySpawn/Floor anchors and shared world-scoped combat/rendering. SCP-131 is excluded and preserved; overlapping placeholders are archived intact.
+- Verified all ten World2 stage advances, matching HP displays, floor contact, no shared boss replacement, respawn, gate round trips, and World1 Stage1 regression. Final clean normal Play had no Error/Warning/Infinite Yield.
+- Two-client rendering remains unverified (two-participant combat-state isolation passed). World2 Trophy/Win rewards remain unconfigured. See [report](../reports/World2_SCP_Bosses_20260924/README.md).

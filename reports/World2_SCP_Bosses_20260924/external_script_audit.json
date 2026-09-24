@@ -1,0 +1,969 @@
+[
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-023.Health",
+    "disabled": true,
+    "hits": [
+      "\twhile true do\r",
+      "while true do\r",
+      "\tlocal health = Humanoid.Health\r",
+      "\tif health > 0 and health < Humanoid.MaxHealth then\r",
+      "\t\thealth = health + 0.08 * s * Humanoid.MaxHealth\r",
+      "\t\tif health * 1.05 < Humanoid.MaxHealth then\r",
+      "\t\t\tHumanoid.Health = health\r",
+      "\t\t\tHumanoid.Health = Humanoid.MaxHealth\r"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-023.Follow",
+    "disabled": true,
+    "hits": [
+      "\t\t\tif (temp ~= nil) and (human ~= nil) and (human.Health > 0) then\r",
+      "while true do\r"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-023.Animate",
+    "disabled": true,
+    "hits": [
+      "\t\t--[[if Creator and Creator.Value and Creator.Value:IsA(\"Player\") and Creator.Value.Character then"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-023.Torso.DamageScript",
+    "disabled": true,
+    "hits": [
+      "\t\thumanoid.Health = humanoid.Health-7"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-035..SoundScript",
+    "disabled": true,
+    "hits": [
+      "while true do",
+      "\tmoan:Play()",
+      "\tmoan2:Play()",
+      "\tmoan3:Play()",
+      "\tmoan4:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-035..Script",
+    "disabled": true,
+    "hits": [
+      "\t\t\tif (temp ~= nil) and (human ~= nil) and (human.Health > 0) then",
+      "while true do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-035..Respawn",
+    "disabled": true,
+    "hits": [
+      "backup = z:clone()",
+      "while true do",
+      "\tif z.Zombie.Health == 0 then"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-035..Health",
+    "disabled": true,
+    "hits": [
+      "--Responsible for regening a player's humanoid's health",
+      "function regenHealth()",
+      "\twhile Humanoid.Health < Humanoid.MaxHealth do",
+      "\t\tlocal health = Humanoid.Health",
+      "\t\tif health > 0 and health < Humanoid.MaxHealth then",
+      "\t\t\tlocal newHealthDelta = 0.01 * s * Humanoid.MaxHealth",
+      "\t\t\thealth = health + newHealthDelta",
+      "\t\t\tHumanoid.Health = math.min(health,Humanoid.MaxHealth)",
+      "\tif Humanoid.Health > Humanoid.MaxHealth then",
+      "\t\tHumanoid.Health = Humanoid.MaxHealth",
+      "Humanoid.HealthChanged:connect(regenHealth)"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-035..Animate",
+    "disabled": true,
+    "hits": [
+      "\twhile true do",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766666\", weight = 1 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766951\", weight = 1 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766388\", weight = 9 }",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777826\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507767714\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507784897\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507785072\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507765000\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507767968\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507765644\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768133\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770239\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770453\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771019\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771955\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507772104\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776043\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776720\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776879\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777268\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777451\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777623\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770818\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770677\", weight = 10 } ",
+      "--\t\t\t\tprint(name .. \" [\" .. idx .. \"] \" .. animTable[name][idx].anim.AnimationId .. \" (\" .. animTable[name][idx].weight .. \")\")",
+      "\t\t\tanimTable[name][idx].anim.AnimationId = anim.id",
+      "\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\tcurrentAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\tcurrentAnimTrack:Play(transitionTime)",
+      "\t\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\t\ttoolAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\t\ttoolAnimTrack:Play(transitionTime)",
+      "while Figure.Parent~=nil do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-035..UpperTorso.Damage Script",
+    "disabled": true,
+    "hits": [
+      "                human.Health = human.Health - 5 -- Change the amount to change the damage."
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-035..LowerTorso.Damage Script",
+    "disabled": true,
+    "hits": [
+      "                human.Health = human.Health - 5 -- Change the amount to change the damage."
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.Sound",
+    "disabled": true,
+    "hits": [
+      "\tTo modify this script, copy it to your \"StarterPlayer/StarterCharacterScripts\" folder keeping the same script name (\"Sound\").",
+      "\t\t\t\t\t\t\t--\t\t\tif PlayerHumanoid.Health > 0 then",
+      "\t\t\t\t\t\t\t--\t\t\t\twhile (script.Parent.HumanoidRootPart.Position - w.Position).magnitude > 4 and allow < 30--[[ and victimhumanoid.Health > 0--]] do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.Sound.LocalSound",
+    "disabled": true,
+    "hits": [
+      "\tThis script runs locally for the player of the given humanoid.",
+      "\timmediately for the player and is replicated to all other players.",
+      "\twhile not Humanoid do",
+      "\t-- required for proper handling of Landed event",
+      "\twhile true do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.Animate",
+    "disabled": true,
+    "hits": [
+      "\twhile true do",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507785072\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768133\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770239\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770453\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771019\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771955\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507772104\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776043\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776720\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776879\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777268\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777451\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777623\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770818\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770677\", weight = 10 } ",
+      "--\t\t\t\tprint(name .. \" [\" .. idx .. \"] \" .. animTable[name][idx].anim.AnimationId .. \" (\" .. animTable[name][idx].weight .. \")\")",
+      "\t\t\tanimTable[name][idx].anim.AnimationId = anim.id",
+      "\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\tcurrentAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\tcurrentAnimTrack:Play(transitionTime)",
+      "\t\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\t\ttoolAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\t\ttoolAnimTrack:Play(transitionTime)",
+      "\tif tool and (tool.RequiresHandle or tool:FindFirstChild(\"Handle\")) then",
+      "--Game.Players.LocalPlayer.Chatted:connect(function(msg)",
+      "while Figure.Parent~=nil do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.AI",
+    "disabled": true,
+    "hits": [
+      "local Arm = script.Parent.Humanoid:LoadAnimation(script.Parent.ArmOut)",
+      "\tlocal playerhumanoid = nil",
+      "\tlocal playerhumanoidrootpart = nil",
+      "\tlocal Players = game:GetService(\"Players\")",
+      "\t\t\tlocal PlayerHumanoid = Child:FindFirstChildWhichIsA(\"Humanoid\")",
+      "\t\t\tlocal PlayerHumanoidRootPart = Child:FindFirstChild(\"HumanoidRootPart\")",
+      "\t\t\tif  PlayerHumanoid  and PlayerHumanoidRootPart   and PlayerHumanoid.Health > 0 and (script.Parent.HumanoidRootPart.Position - PlayerHumanoidRootPart.Position).Magnitude <= SearchDistance then",
+      "\t\t\t\tplayerhumanoidrootpart = PlayerHumanoidRootPart",
+      "\t\t\t\tplayerhumanoid = PlayerHumanoid",
+      "\t\t\t\tSearchDistance = (script.Parent.HumanoidRootPart.Position - PlayerHumanoidRootPart.Position).Magnitude",
+      "\treturn Character, playerhumanoid,playerhumanoidrootpart",
+      "\twhile wait(0) do",
+      "\t\t\tlocal GetTarget, PlayerHumanoid, PlayerHumanoidRootPart = FindClosestTarget()",
+      "\t\t\tscript.Parent.HumanoidRootPart[\"Wander\" .. math.random(1,2)]:Play()",
+      "\t\tscript.Parent.UpperTorso[\"Notice\" .. math.random(1,6)]:Play()",
+      "\t\tscript.Parent.HumanoidRootPart.DeathTalk1:Play()",
+      "while wait(0) do",
+      "\tlocal GetTarget, PlayerHumanoid, PlayerHumanoidRootPart = FindClosestTarget()",
+      "if GetTarget   and script.Parent.Humanoid.Health > 0 then",
+      "\t\tlocal PlayerHumanoidRootPart = GetTarget:FindFirstChild(\"HumanoidRootPart\")",
+      "\t\t\t\t\tscript.Parent.HumanoidRootPart.DeathTalk1:Play()",
+      "\t\t\t\tscript.Parent.HumanoidRootPart.Kill:Play()",
+      "\t\t\t\tlocal zombie = GetTarget:Clone()",
+      "\t\t\t\tlocal AI = script.Parent.ZombieAI:Clone()",
+      "\t\t\t\tNewFace.Texture = \"http://www.roblox.com/asset/?id=133667125\"",
+      "\t\t\t\tTargetHumanoid:TakeDamage(TargetHumanoid.Health)",
+      "\t\t\t\tlocal  breth = script.Parent.Breathing:Clone()",
+      "\t\t\t\tbreth:Play()",
+      "\t\t\t\tlocal hit1 =   script.Parent.Hit1:Clone()",
+      "\t\t\t\tlocal hit2 =   script.Parent.Hit2:Clone()",
+      "\t\t\t\t\tlocal anim = script.Parent.R15Animate:Clone()",
+      "\t\t\t\t\tlocal anim = script.Parent.R6Animate:Clone()",
+      "\t\t\t\tif mag < 29 and TargetHumanoid.PlatformStand == false and TargetHumanoid.Health > 0 then",
+      "\t\t\tif Arm.IsPlaying == false then Arm:Play()  end",
+      "\t\tpath = pfs:FindPathAsync(HumanoidRootPart.Position, PlayerHumanoidRootPart.Position)",
+      "\t\t\t\t\tscript.Parent.UpperTorso[\"Notice\"..math.random(1,6)]:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.R15Animate",
+    "disabled": true,
+    "hits": [
+      "\twhile true do",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766666\", weight = 1 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766951\", weight = 1 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766388\", weight = 9 }",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777826\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507767714\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507784897\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507785072\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507765000\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507767968\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507765644\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768133\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770239\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770453\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771019\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771955\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507772104\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776043\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776720\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776879\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777268\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777451\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777623\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770818\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770677\", weight = 10 } ",
+      "--\t\t\t\tprint(name .. \" [\" .. idx .. \"] \" .. animTable[name][idx].anim.AnimationId .. \" (\" .. animTable[name][idx].weight .. \")\")",
+      "\t\t\tanimTable[name][idx].anim.AnimationId = anim.id",
+      "\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\tcurrentAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\tcurrentAnimTrack:Play(transitionTime)",
+      "\t\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\t\ttoolAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\t\ttoolAnimTrack:Play(transitionTime)",
+      "while Figure.Parent~=nil do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.R6Animate",
+    "disabled": true,
+    "hits": [
+      "\twhile true do",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=125750544\", weight = 9 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=125750618\", weight = 1 }",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=125749145\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=125750702\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=125750759\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=125750800\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=125750867\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=129967390\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=129967478\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=128777973\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=128853357\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=130018893\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=132546839\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=132546884\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=160934142\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=160934298\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=160934376\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=160934458\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=160934530\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=160934593\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=129423131\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=129423030\", weight = 10 } ",
+      "\t--\t\t\tprint(name .. \" [\" .. idx .. \"] \" .. animTable[name][idx].anim.AnimationId .. \" (\" .. animTable[name][idx].weight .. \")\")",
+      "\t\t\tanimTable[name][idx].anim.AnimationId = anim.id",
+      "\t\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\tcurrentAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\tcurrentAnimTrack:Play(transitionTime)",
+      "\t\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\ttoolAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\ttoolAnimTrack:Play(transitionTime)",
+      "while Figure.Parent~=nil do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.ZombieAI",
+    "disabled": true,
+    "hits": [
+      "\tlocal playerhumanoid = nil",
+      "\tlocal playerhumanoidrootpart = nil",
+      "\tlocal Players = game:GetService(\"Players\")",
+      "\t\t\tlocal PlayerHumanoid = Child:FindFirstChildWhichIsA(\"Humanoid\")",
+      "\t\t\tlocal PlayerHumanoidRootPart = Child:FindFirstChild(\"HumanoidRootPart\")",
+      "\t\t\tif  PlayerHumanoid  and PlayerHumanoidRootPart   and PlayerHumanoid.Health > 0 and (script.Parent.HumanoidRootPart.Position - PlayerHumanoidRootPart.Position).Magnitude <= SearchDistance then",
+      "\t\t\t\tplayerhumanoidrootpart = PlayerHumanoidRootPart",
+      "\t\t\t\tplayerhumanoid = PlayerHumanoid",
+      "\t\t\t\tSearchDistance = (script.Parent.HumanoidRootPart.Position - PlayerHumanoidRootPart.Position).Magnitude",
+      "\treturn Character, playerhumanoid,playerhumanoidrootpart",
+      "while wait(0) do",
+      "\tlocal GetTarget, PlayerHumanoid, PlayerHumanoidRootPart = FindClosestTarget()",
+      "if GetTarget   and script.Parent:FindFirstChildWhichIsA(\"Humanoid\").Health > 0 then",
+      "\t\tlocal PlayerHumanoidRootPart = GetTarget:FindFirstChild(\"HumanoidRootPart\")",
+      "\t\t\tTargetHumanoid:TakeDamage(25)",
+      "\t\t\tscript.Parent.HumanoidRootPart.Hit1:Play()",
+      "\t\t\tlocal hit,pos=raycast(script.Parent.HumanoidRootPart.Position,(PlayerHumanoidRootPart.Position-script.Parent.HumanoidRootPart.Position).unit,500)",
+      "script.Parent:FindFirstChildWhichIsA(\"Humanoid\"):MoveTo(PlayerHumanoidRootPart.Position+(PlayerHumanoidRootPart.Position-script.Parent.HumanoidRootPart.Position).unit*2,game:GetService(\"Workspace\"):FindFirstChild(\"Terrain\"));",
+      "local RenderedPath=game:GetService(\"PathfindingService\"):ComputeRawPathAsync(script.Parent.HumanoidRootPart.Position,PlayerHumanoidRootPart.Position,500);"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.WanderTalking",
+    "disabled": true,
+    "hits": [
+      "while wait(0) do",
+      "\t\t\tscript.Parent.HumanoidRootPart[\"Wander\"..math.random(1,2)]:Play()",
+      "\t\t\tscript.Parent.UpperTorso[\"Taunt\"..math.random(1,9)]:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.TalkManger",
+    "disabled": true,
+    "hits": [
+      "while wait(0) do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049.Talking.Script",
+    "disabled": true,
+    "hits": []
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-058.Targeter.Script",
+    "disabled": true,
+    "hits": [
+      "\tWill follow near players in a X range",
+      "local Players \t\t\t\t\t\t= \tgame:GetService(\"Players\")",
+      "\t\t\t\tlocal f_head = Head:clone()",
+      "\tfhum.MaxHealth = 100",
+      "\tfhum.Health = 1",
+      "\tCharacter.Humanoid.Health=1",
+      "while true do",
+      "\tfor i,v in pairs(game.Players:GetChildren()) do\t",
+      "\t\tif (Range and v:DistanceFromCharacter(Body.Main.Position) <= Range) and v.Character:FindFirstChild(\"Head\") and v.Character.Humanoid.Health > 0 then"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-096.Main",
+    "disabled": true,
+    "hits": [
+      "local FreeSCP096Kill=FreeSCP096Head:FindFirstChild(\"Damage5\");",
+      "if TargetPart and FoundHumanoid and FoundHumanoid.Health>0 and(TargetPart.Position-pos).magnitude<NoticeDistance then",
+      "if not Noticed and TargetPart and FoundHumanoid and FoundHumanoid.Health>0 and(TargetPart.Position-pos).magnitude<20 then",
+      "FreeSCP096Panic:Play()",
+      "if TargetPart and FoundHumanoid and FoundHumanoid.Health>0 and(TargetPart.Position-pos).magnitude<6 then",
+      "FreeSCP096Kill:Play()",
+      "FoundHumanoid:TakeDamage(99999e99999)",
+      "while Wait(0)do",
+      "FreeSCP096Humanoid.MaxHealth=99999e99999",
+      "FreeSCP096Humanoid.Health=99999e99999",
+      "FreeSCP096Scream:Play()",
+      "FreeSCP096Idle:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-096.MainAnimation",
+    "disabled": true,
+    "hits": [
+      "while Wait(0)do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-106.Main",
+    "disabled": true,
+    "hits": [
+      "while true do",
+      "if (v.HumanoidRootPart.Position - script.Parent.HumanoidRootPart.Position).magnitude <= mindist and v.Humanoid.Health > 0 then",
+      "if game.Players:findFirstChild(\"\"..v.Name) == nil and script.Parent.HostileToPlayers.Value == false or script.Parent.HostileToPlayers.Value == true then"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-106.Respawn",
+    "disabled": true,
+    "hits": [
+      "robo=script.Parent:clone()",
+      "while true do",
+      "\tif script.Parent.Humanoid.Health<1 then",
+      "\t\trobot=robo:clone()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-106.Teleportation",
+    "disabled": true,
+    "hits": [
+      "while true do",
+      "if (v.HumanoidRootPart.Position - script.Parent.HumanoidRootPart.Position).magnitude <= 50 and v.Humanoid.Health > 0 then",
+      "if game.Players:findFirstChild(\"\"..v.Name) == nil and script.Parent.HostileToPlayers.Value == false or script.Parent.HostileToPlayers.Value == true then"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-106.DetectScript",
+    "disabled": true,
+    "hits": [
+      "while true do",
+      "if (v.HumanoidRootPart.Position - script.Parent.HumanoidRootPart.Position).magnitude <= mindist and v.Humanoid.Health > 0 then",
+      "if game.Players:findFirstChild(\"\"..v.Name) == nil and script.Parent.HostileToPlayers.Value == false or script.Parent.HostileToPlayers.Value == true then",
+      "particledecal.Texture = \"http://www.roblox.com/asset/?id=129418678\"",
+      "decay:Play()",
+      "voice:Play()",
+      "voice:Play()",
+      "music:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-106.KillScript",
+    "disabled": true,
+    "hits": [
+      "while script.Parent.Humanoid.Health > 0 do",
+      "if (v.HumanoidRootPart.Position - script.Parent.HumanoidRootPart.Position).magnitude <= 5 and v.Humanoid.Health > 0 then",
+      "if script.Parent.Humanoid.Health > 0 and script.Parent.Humanoid.WalkSpeed > 0 then",
+      "v.Humanoid:TakeDamage(v.Humanoid.Health)",
+      "if v.Humanoid.Health == 0 then",
+      "kill:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-131.Model.Script",
+    "disabled": true,
+    "hits": [
+      "while true do",
+      "\tsayings[math.random(1,#sayings)]:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-131.Model.Union.AimScript",
+    "disabled": true,
+    "hits": [
+      "\tlocal spawnPos = bin.Position\r",
+      "\tlocal pos = spawnPos + (dir * 1)\r",
+      "\t\t\tif (temp ~= nil) and (human ~= nil) and (human.Health > 0) then\r",
+      "\tlocal spawnPos = bin.Position\r",
+      "\tlocal pos = spawnPos + (dir * 1)\r",
+      "while true do\r"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-131.Model.Union.AimScript",
+    "disabled": true,
+    "hits": [
+      "\tlocal spawnPos = bin.Position\r",
+      "\tlocal pos = spawnPos + (dir * 1)\r",
+      "\t\t\tif (temp ~= nil) and (human ~= nil) and (human.Health > 0) then\r",
+      "\tlocal spawnPos = bin.Position\r",
+      "\tlocal pos = spawnPos + (dir * 1)\r",
+      "while true do\r"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-131.Model.Script",
+    "disabled": true,
+    "hits": [
+      "while true do",
+      "\tsayings[math.random(1,#sayings)]:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-131.Model.Union.AimScript",
+    "disabled": true,
+    "hits": [
+      "\tlocal spawnPos = bin.Position\r",
+      "\tlocal pos = spawnPos + (dir * 1)\r",
+      "\t\t\tif (temp ~= nil) and (human ~= nil) and (human.Health > 0) then\r",
+      "\tlocal spawnPos = bin.Position\r",
+      "\tlocal pos = spawnPos + (dir * 1)\r",
+      "while true do\r"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-131.Model.Union.AimScript",
+    "disabled": true,
+    "hits": [
+      "\tlocal spawnPos = bin.Position\r",
+      "\tlocal pos = spawnPos + (dir * 1)\r",
+      "\t\t\tif (temp ~= nil) and (human ~= nil) and (human.Health > 0) then\r",
+      "\tlocal spawnPos = bin.Position\r",
+      "\tlocal pos = spawnPos + (dir * 1)\r",
+      "while true do\r"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.Animate",
+    "disabled": true,
+    "hits": [
+      "\twhile true do",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766666\", weight = 1 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766951\", weight = 1 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766388\", weight = 9 }",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777826\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507767714\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507784897\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507785072\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507765000\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507767968\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507765644\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768133\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770239\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770453\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771019\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771955\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507772104\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776043\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776720\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776879\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777268\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777451\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777623\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770818\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770677\", weight = 10 } ",
+      "--\t\t\t\tprint(name .. \" [\" .. idx .. \"] \" .. animTable[name][idx].anim.AnimationId .. \" (\" .. animTable[name][idx].weight .. \")\")",
+      "\t\t\tanimTable[name][idx].anim.AnimationId = anim.id",
+      "\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\tcurrentAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\tcurrentAnimTrack:Play(transitionTime)",
+      "\t\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\t\ttoolAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\t\ttoolAnimTrack:Play(transitionTime)",
+      "while Figure.Parent~=nil do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.PiggyBotScript",
+    "disabled": true,
+    "hits": [
+      "local players = game:GetService('Players')",
+      "\t\t\tif chaseRoot ~= nil and chaseHuman ~= nil and chaseHuman.Health > 0 and not chaseHuman:FindFirstChild(\"Enemy\") and not chasePlr:FindFirstChild(\"Helper\") then",
+      "function GetPlayersBodyParts(t)",
+      "spawn(function()",
+      "\twhile vars.Wandering.Value == false and human.Health > 0 do\t",
+      "while wait() do",
+      "\tif nrstt ~= nil and human.Health > 0 then -- if player detected\t"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.StunnedScript",
+    "disabled": true,
+    "hits": [
+      "local anim = Bot.Humanoid:LoadAnimation(Bot.Stunned)",
+      "Bot.HumanoidRootPart.PlayerKill.Disabled = true",
+      "anim:Play()",
+      "Bot.HumanoidRootPart.PlayerKill.Disabled = false"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.Respawn",
+    "disabled": true,
+    "hits": [
+      "robo=script.Parent:clone()\r",
+      "while true do\r",
+      "\tif script.Parent.Humanoid.Health<1 then\r",
+      "\t\trobot=robo:clone()\r"
+    ]
+  },
+  {
+    "class": "LocalScript",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.Knife.FirstPersonArms",
+    "disabled": true,
+    "hits": [
+      "local player=game.Players.LocalPlayer",
+      "local char=player.Character",
+      "\t\tchange_color=false, --Changes the colo(u)r of the arms, If false, Will set them as the Players arm colo(u)r",
+      "\t\t\tlocal Shirt=player.Character:FindFirstChild(\"Shirt\")",
+      "\t\t\t\t\tShirt:clone().Parent=anim_arms",
+      "\t\t\tlocal r,l = char:FindFirstChild(\"Right Arm\"):clone(), char:FindFirstChild(\"Left Arm\"):clone()",
+      "\t\t\twhile equipped do"
+    ]
+  },
+  {
+    "class": "LocalScript",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.Knife.Module",
+    "disabled": true,
+    "hits": [
+      "local player=game.Players.LocalPlayer",
+      "local char=player.Character",
+      "local mouse=player:GetMouse()",
+      "local Damage=110",
+      "\thitplayer={\"153647516\",\"153647519\",\"153647522\",\"153647526\"},",
+      "\t\tmesh_id=\"http://www.roblox.com/asset/?id=121944778\",",
+      "\t\ttexture_id=\"http://www.roblox.com/asset/?id=121944805     \",",
+      "function DamageObject(hit)",
+      "\tif char and char~=player.Character and char.Name~=\"Arms_Model\" and hit.Name~=\"Handle\" then",
+      "\t\tif h and h.Health > 0 then",
+      "\t\t\th:TakeDamage(Damage)",
+      "\t\t\tif h.Health == 0 then",
+      "\t\ttool.Handle.Sound:Play()",
+      "\t\ttool.Handle.Sound:Play()",
+      "\t\ttool.Handle.Sound:Play()",
+      "\t\ttool.Handle.Sound:Play()",
+      "\t\tlocal NewSound=tool.Handle.Sound:clone()",
+      "\t\tNewSound.SoundId = \"rbxassetid://\" .. SOUNDS.hitplayer[math.random(1,#SOUNDS.hitplayer)]",
+      "\t\tNewSound:Play()",
+      "\t\tlocal NewSound=tool.Handle.Sound:clone()",
+      "\t\tNewSound:Play()",
+      "\t\tNewSound:Play()",
+      "\t\tlocal throwingHandle = tool.Handle:Clone()",
+      "\t\tif player.Character and player.Character.Humanoid then",
+      "\t\t\tthrowingHandle.Velocity = (player.Character.Humanoid.TargetPoint - throwingHandle.CFrame.p).unit * 150",
+      "\t\t\t\tthrowingHandle.Velocity = (player.Character.Humanoid.TargetPoint - throwingHandle.CFrame.p).unit * 9999",
+      "\t\t\ttargetpos=player.Character.Humanoid.TargetPoint",
+      "\t\t\tspawnPos=player.Character.PrimaryPart.Position",
+      "\t\t\tspawnPos = spawnPos + dPos*5",
+      "\t        Hit.Parent.Humanoid:TakeDamage(110)",
+      "\t\t\t\tif char and char~=player.Character and char.Name~=\"Arms_Model\" and hit.Name~=\"Handle\" and hit.Name~=\"RayPart\" then",
+      "\t\t\t\t\tif h and h.Health > 0 then",
+      "\t\t\t\t\t\th:TakeDamage(Damage)",
+      "\t\t\t\t\t\tif h.Health == 0 then",
+      "\t\t\t\t\t\th:TakeDamage(Damage * 2)",
+      "\t\t\t\t\t\tsound:Play()",
+      "\t\t\t\t\t\tif h.Health == 0 then",
+      "\t\t\t\t\t\tsound:Play()",
+      "\t\t\t\t\t\tlocal newknife=tool.Handle:clone()",
+      "\t\t\t\t\t\tnewknife.CFrame = CFrame.new(spawnPos, spawnPos + dPos) * CFrame.Angles(math.pi/-2, 0, 0)",
+      "\t\t\tmouse.Icon=\"http://www.roblox.com/asset/?id=54019936\"",
+      "\t\tDamageObject(hit)",
+      "\twhile gettingknife do",
+      "\t\tplayer.Character[\"Right Arm\"].RightGrip.C1 = CFrame.new(0, -0.800000012, 0.05, 1, 0, 0, 0, 1, 0, 0, 0, 1) * CFrame.Angles((-i * (math.pi / 150)),0,0)",
+      "\t\t\tlocal targetPos = player.Character.Humanoid.TargetPoint",
+      "\t\t\tlocal lookAt = (targetPos - player.Character.PrimaryPart.Position).unit",
+      "\t\t\tmouse.Icon=\"http://www.roblox.com/asset/?id=54020165\"",
+      "\t\t\tplayer.Character[\"Right Arm\"].RightGrip.C1 = CFrame.new(0, -0.800000012, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)",
+      "\t\t\tmouse.Icon=\"http://www.roblox.com/asset/?id=54019936\""
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.HumanoidRootPart.Jumpscare Box.S2",
+    "disabled": true,
+    "hits": [
+      "local plyr = game.Players:FindFirstChild(h.Parent.Name)",
+      "local c = Popup:clone()",
+      "c.Parent = plyr.PlayerGui",
+      "h.Health=0"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.HumanoidRootPart.Jumpscare Box.Popup.BackGround.Image.Script",
+    "disabled": true,
+    "hits": [
+      "while wait() do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.HumanoidRootPart.Jumpscare Box.Popup.BackGround.Image.IntroGUI Script [READ]",
+    "disabled": true,
+    "hits": [
+      "while true do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.HumanoidRootPart.Jumpscare Box.Popup.BackGround.Image.StuffScript",
+    "disabled": true,
+    "hits": [
+      "script.Sound:play()",
+      "script.Parent.Parent.Scream2:play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.HumanoidRootPart.Jumpscare Box.Popup.BackGround.Static.IntroGUI Script [READ]",
+    "disabled": true,
+    "hits": [
+      "while true do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.HumanoidRootPart.Jumpscare Box.Popup.BackGround.Static.Script",
+    "disabled": true,
+    "hits": [
+      "while wait() do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.UpperTorso.ShieldScript",
+    "disabled": true,
+    "hits": []
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.UpperTorso.Hurting",
+    "disabled": true,
+    "hits": [
+      "\t\thumanoid.Health = humanoid.Health - 25"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.UpperTorso.Sound",
+    "disabled": true,
+    "hits": [
+      "\tscript.Parent.RAH:play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.UpperTorso.Popup By quicksuper.ScaryScript",
+    "disabled": true,
+    "hits": [
+      "local plyr = game.Players:FindFirstChild(h.Parent.Name)\r",
+      "local c = Popup:clone()\r",
+      "c.Parent = plyr.PlayerGui\r",
+      "script.Parent.Scream:play()\r"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323.Wendigo R15.UpperTorso.Popup By quicksuper.Read dis.",
+    "disabled": true,
+    "hits": []
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-682. .SCP049AnimationScript",
+    "disabled": true,
+    "hits": [
+      "local SCP049WalkAnimation = SCP049Humanoid:LoadAnimation(SCP049.WalkAnim);",
+      "SCP049WalkAnimation:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-682. .SCP049HeadSoundScript",
+    "disabled": true,
+    "hits": [
+      "while true do",
+      "SelectedHurtSound:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-682. .SCP049AttackScript",
+    "disabled": true,
+    "hits": [
+      "local NeckSnapAnimation = SCP049Humanoid:LoadAnimation(SCP049.ArmOutAnim);",
+      "local PlayerList = Game.Workspace:children();",
+      "for Check = 1, #PlayerList do",
+      "TargetModel = PlayerList[Check]",
+      "if (TempTargetModel ~= nil) and (TargetHumanoid ~= nil) and (TargetHumanoid.Health > 0) then",
+      "while true do",
+      "local SCP049Damage = 70",
+      "SelectedAttackSound:Play()",
+      "SCP049ChosenTarget.Parent.Humanoid:TakeDamage(SCP049Damage)",
+      "NeckSnapAnimation:Play()"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-682. .SCP049TargetScript",
+    "disabled": true,
+    "hits": [
+      "for SCP049HealthCheck = 1,5 do",
+      "SCP049Humanoid.Health = SCP049Humanoid.MaxHealth",
+      "local SpawnForceField = Instance.new(\"ForceField\")",
+      "SpawnForceField.Name = \"SpawnForceField\"",
+      "SpawnForceField.Parent = SCP049",
+      "local PlayerList = Game.Workspace:children();",
+      "for Check = 1, #PlayerList do",
+      "TargetModel = PlayerList[Check]",
+      "if (TempTargetModel ~= nil) and (TargetHumanoid ~= nil) and (TargetHumanoid.Health > 0) then",
+      "for SCP049HealthCheck = 1,5 do",
+      "SCP049Humanoid.Health = SCP049Humanoid.MaxHealth",
+      "SpawnForceField:Destroy()",
+      "while true do",
+      "if SCP049Humanoid.Health == 0 or SCP049Humanoid.Health < 0 then"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-682. .Weld",
+    "disabled": true,
+    "hits": []
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-682. .Weld Script",
+    "disabled": true,
+    "hits": []
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-939.AI",
+    "disabled": true,
+    "hits": [
+      "local SearchDistance = \t100 \t-- How far a player can be before it detects you",
+      "local ZombieDamage = \t25\t\t-- How much damage the Zombie inficts towards the player",
+      "local DamageWait = \t\t2\t\t-- How many seconds to wait before it can damage the player again",
+      "local players = game:GetService('Players')",
+      "\t\t\tif chaseRoot ~= nil and chaseHuman ~= nil and chaseHuman.Health > 0 and chaseHuman.Name ~= \"Zombie\" then",
+      "function GetPlayersBodyParts(t)",
+      "local damagetime",
+      "local damagedb = false",
+      "\tif zambieparts:IsA'Part' and human.Health > 0 then",
+      "\t\t\tif p.Parent.Name == chaseName and p.Parent.Name ~= zombie.Name and not damagedb then -- damage",
+      "\t\t\t\tdamagedb = true",
+      "\t\t\t\tdamagetime = time()",
+      "\t\t\t\tenemyhuman:TakeDamage(ZombieDamage)",
+      "\t\t\t\twhile wait() do",
+      "\t\t\t\t\tif damagetime ~= nil and time() >= (damagetime + DamageWait) then",
+      "\t\t\t\t\t\tdamagedb = false",
+      "\t\t\t\t\t\tdamagetime = nil",
+      "spawn(function()",
+      "\twhile vars.Wandering.Value == false and human.Health > 0 do\t",
+      "while wait() do",
+      "\tif nrstt ~= nil and human.Health > 0 then -- if player detected\t",
+      "\t\t\t\tlocal bodypartnames = GetPlayersBodyParts(nrstt)",
+      "\telseif nrstt == nil then -- if player not detected"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-939.Animate",
+    "disabled": true,
+    "hits": [
+      "\twhile true do",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766666\", weight = 1 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766951\", weight = 1 },",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507766388\", weight = 9 }",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=4607522177\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=4607522177\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507784897\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507785072\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507765000\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507767968\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507765644\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768133\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770239\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770453\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771019\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507771955\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507772104\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776043\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776720\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507776879\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777268\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777451\", weight = 10 }, ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507777623\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770818\", weight = 10 } ",
+      "\t\t\t\t{ id = \"http://www.roblox.com/asset/?id=507770677\", weight = 10 } ",
+      "--\t\t\t\tprint(name .. \" [\" .. idx .. \"] \" .. animTable[name][idx].anim.AnimationId .. \" (\" .. animTable[name][idx].weight .. \")\")",
+      "\t\t\tanimTable[name][idx].anim.AnimationId = anim.id",
+      "\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\tcurrentAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\tcurrentAnimTrack:Play(transitionTime)",
+      "\t\twhile (roll > animTable[animName][idx].weight) do",
+      "\t\t\ttoolAnimTrack = humanoid:LoadAnimation(anim)",
+      "\t\t\ttoolAnimTrack:Play(transitionTime)",
+      "while Figure.Parent~=nil do"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-939.Health",
+    "disabled": true,
+    "hits": [
+      "--Responsible for regening a player's humanoid's health",
+      "function regenHealth()",
+      "\twhile Humanoid.Health < Humanoid.MaxHealth do",
+      "\t\tlocal health = Humanoid.Health",
+      "\t\tif health > 0 and health < Humanoid.MaxHealth then",
+      "\t\t\tlocal newHealthDelta = 0.01 * s * Humanoid.MaxHealth",
+      "\t\t\thealth = health + newHealthDelta",
+      "\t\t\tHumanoid.Health = math.min(health,Humanoid.MaxHealth)",
+      "\tif Humanoid.Health > Humanoid.MaxHealth then",
+      "\t\tHumanoid.Health = Humanoid.MaxHealth",
+      "Humanoid.HealthChanged:connect(regenHealth)"
+    ]
+  },
+  {
+    "class": "Script",
+    "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-939.Respawn",
+    "disabled": true,
+    "hits": [
+      "backup = z:clone()",
+      "while true do",
+      "\tif z.Zombie.Health == 0 then"
+    ]
+  }
+]

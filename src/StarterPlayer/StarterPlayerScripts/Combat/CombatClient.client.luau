@@ -1,7 +1,14 @@
-local Stage03AttackVisual=require(script.Parent:WaitForChild("Stage03AttackVisual"))
+-- Both worlds share the renderer; tables, colliders and event streams are isolated.
+local function mount(worldId)
+local Stage03AttackVisual=worldId==1 and require(script.Parent:WaitForChild("Stage03AttackVisual"))
+ or {Stop=function() end,Play=function() end,Prepare=function() end,Reset=function() end}
+local mapName=worldId==2 and "World2Map" or "GeneratedMap"
+local enemiesName=worldId==2 and "World2Enemies" or "Enemies"
+local stageAttribute=worldId==2 and "World2CurrentStage" or "CurrentStage"
+local stageSurfaceName=worldId==2 and "World2StageSurface" or "StageSurface"
 local P=game:GetService("Players").LocalPlayer
 local RS=game:GetService("ReplicatedStorage")local T=game:GetService("TweenService")local RunService=game:GetService("RunService")
-local R=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild("CombatState")
+local R=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild(worldId==2 and "World2CombatState" or "CombatState")
 local NumberFormat=require(RS.Modules:WaitForChild("NumberFormat"))
 -- Fixed world-space UI metrics from the original 27-stud Wall, 580x270 canvas.
 -- Resize the canvas with the physical wall: text pixels and bar height no longer stretch.
@@ -49,8 +56,8 @@ local RIGHT_PUNCH_ANIMATION_ID = "rbxassetid://121823319369216"
 local LEFT_PUNCH_ANIMATION_ID  = "rbxassetid://87608603137173"
 local PUNCH_SOUND_ID="rbxassetid://139897497838184"
 local DEFEAT_SOUND_ID="rbxassetid://128974899749995"
-local folder=Instance.new("Folder")folder.Name="PersonalCombatVisuals"folder.Parent=workspace
-local fills,personalBossColliders,defeated={},{},{} local track,sound local currentStage=P:GetAttribute("CurrentStage") or 1
+local folder=Instance.new("Folder")folder.Name=worldId==2 and "World2PersonalCombatVisuals" or "PersonalCombatVisuals"folder.Parent=workspace
+local fills,personalBossColliders,defeated={},{},{} local track,sound local currentStage=P:GetAttribute(stageAttribute) or 1
 local wallGauges,wallState={},{ }
 local wallParts={}
 local activeCombatType,activeCombatStage,activeWallIndex
@@ -112,13 +119,13 @@ local function showTrophy(d)
 end
 local function wallModel(a,b)
  local major,index=1,a; if b~=nil then major,index=a,b end
- local map=workspace:FindFirstChild("GeneratedMap") local bc=map and map:FindFirstChild("BattleCorridor") local st=bc and bc:FindFirstChild(("Stage%02d"):format(major))
+ local map=workspace:FindFirstChild(mapName) local bc=map and map:FindFirstChild("BattleCorridor") local st=bc and bc:FindFirstChild(("Stage%02d"):format(major))
  return st and st:FindFirstChild(("Stage%d.%d"):format(major,index))
 end
 local function wallSurface(major,index)
  local m=wallModel(major,index)
  local wall=m and m:FindFirstChild("Wall")
- return wall,wall and wall:FindFirstChild("StageSurface")
+ return wall,wall and wall:FindFirstChild(stageSurfaceName)
 end
 local function setWallStageDisplay(major,index,on)
  local wall,surface=wallSurface(major,index)
@@ -128,7 +135,7 @@ local function setWallStageDisplay(major,index,on)
  end
 end
 local function showBossRecommendation(major,v)
- local map=workspace:FindFirstChild("GeneratedMap"); local bc=map and map:FindFirstChild("BattleCorridor"); local st=bc and bc:FindFirstChild(("Stage%02d"):format(major)); local m=st and st:FindFirstChild(("Stage%d.5"):format(major)); local floor=m and m:FindFirstChild("Floor")
+ local map=workspace:FindFirstChild(mapName); local bc=map and map:FindFirstChild("BattleCorridor"); local st=bc and bc:FindFirstChild(("Stage%02d"):format(major)); local m=st and st:FindFirstChild(("Stage%d.5"):format(major)); local floor=m and m:FindFirstChild("Floor")
  if not floor then return end
  if recommendationGui then recommendationGui:Destroy() end
  local g=Instance.new("BillboardGui"); g.Name="BossRecommendedLevel"; g.Adornee=floor; g.Size=UDim2.fromOffset(112,32); g.StudsOffset=Vector3.new(-14,3,0); g.AlwaysOnTop=true; g.Parent=floor
@@ -170,7 +177,7 @@ end
 local function clearWallGauge(major,index)
  local m=wallModel(major,index)
  local wall=m and m:FindFirstChild("Wall")
- local surface=wall and wall:FindFirstChild("StageSurface")
+ local surface=wall and wall:FindFirstChild(stageSurfaceName)
  local panel=surface and surface:FindFirstChild("Panel")
  local bar=panel and panel:FindFirstChild("HPBar")
  if bar then bar.Visible=false end
@@ -189,10 +196,10 @@ local function renderWallStage(major)
   end
  end
 end
-local function enemy(n)return workspace:WaitForChild("Enemies"):WaitForChild(("Stage%02d_Enemy"):format(n))end
+local function enemy(n)return workspace:WaitForChild(enemiesName):WaitForChild(("Stage%02d_Enemy"):format(n))end
 local function acceptsBossGeneration(stage,generation)
  if typeof(generation)~="number" then return true end
- local enemies=workspace:FindFirstChild("Enemies")
+ local enemies=workspace:FindFirstChild(enemiesName)
  local current=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
  local currentGeneration=current and current:GetAttribute("SpawnGeneration")
  -- Accept a new generation even if its model has not replicated yet, but never
@@ -212,6 +219,13 @@ local function bossWall(n)
  local m=wallModel(10,4)
  local stage=m and m.Parent
  local _,reference=wallSurface(10,4)
+ if worldId==2 then
+  local map=workspace:FindFirstChild(mapName)
+  local nextArea=map and map:FindFirstChild("NextWorldArea")
+  -- World2 has no Stage10BoundaryWall. Use its authored terminal bounds;
+  -- the shared renderer only reads this anchor and never changes its geometry.
+  return nextArea and nextArea:FindFirstChild("FutureConnectionBounds"),reference
+ end
  return stage and stage:FindFirstChild("Stage10BoundaryWall"),reference
 end
 local function bossDisplayEnabled(n)
@@ -325,7 +339,7 @@ local function syncPersonalBossCollider(n)
   removePersonalBossCollider(n)
   return
  end
- local enemies=workspace:FindFirstChild("Enemies")
+ local enemies=workspace:FindFirstChild(enemiesName)
  local boss=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
  local source=boss and boss:FindFirstChild("MiniBossCollider")
  local root=boss and boss:FindFirstChild("HumanoidRootPart")
@@ -374,7 +388,34 @@ local function staticVFX(e,on)
   end
  end
 end
-local function visible(n,on)local e=enemy(n)staticVFX(e,on)for _,d in e:GetDescendants()do if d:IsA("BasePart")then d.LocalTransparencyModifier=on and 0 or 1 end end end
+local bossVisualTransparency=setmetatable({},{__mode="k"})
+local function isBossVisualPart(e,part)
+ if part.Name=="HumanoidRootPart" or part.Name=="CombatZone" or part.Name=="MiniBossCollider" then return false end
+ if part:GetAttribute("PersonalBossCollider") then return false end
+ local ancestor=part.Parent
+ while ancestor and ancestor~=e do
+  if ancestor:IsA("Model") then return true end
+  ancestor=ancestor.Parent
+ end
+ return false
+end
+local function setBossVisualVisible(e,on)
+ for _,part in e:GetDescendants() do
+  if part:IsA("BasePart") and isBossVisualPart(e,part) then
+   local original=bossVisualTransparency[part]
+   if original==nil then
+    original=part.LocalTransparencyModifier
+    bossVisualTransparency[part]=original
+   end
+   part.LocalTransparencyModifier=on and original or 1
+  end
+ end
+end
+local function visible(n,on)
+ local e=enemy(n)
+ staticVFX(e,on)
+ setBossVisualVisible(e,on)
+end
 local rightTrack,leftTrack
 local animationCharacter
 local lastAttackId=0
@@ -443,7 +484,7 @@ local function playDefeatSound()
 end
 local function refreshGaugeVisibility()
  for stage=1,10 do
-  local enemies=workspace:FindFirstChild("Enemies")
+  local enemies=workspace:FindFirstChild(enemiesName)
   local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
   local gui=e and e:FindFirstChild("PersonalGauge",true)
   local sub=P:GetAttribute(("Stage%dSubStage"):format(stage)) or 1
@@ -463,8 +504,8 @@ P.CharacterAdded:Connect(function()
  refreshGaugeVisibility()
  refreshPersonalBossColliders()
 end)
-P:GetAttributeChangedSignal("CurrentStage"):Connect(function()
- local nextStage=P:GetAttribute("CurrentStage")
+P:GetAttributeChangedSignal(stageAttribute):Connect(function()
+ local nextStage=P:GetAttribute(stageAttribute)
  if typeof(nextStage)=="number" then
   if nextStage~=3 then Stage03AttackVisual.Stop() end
   currentStage=nextStage
@@ -486,7 +527,7 @@ RunService.PreSimulation:Connect(function()
    if part.LocalTransparencyModifier~=transparency then part.LocalTransparencyModifier=transparency end
   end
  end
- local enemies=workspace:FindFirstChild("Enemies")
+ local enemies=workspace:FindFirstChild(enemiesName)
  if enemies then
   for _,boss in enemies:GetChildren() do
    if boss:IsA("Model") then
@@ -505,14 +546,10 @@ RunService.PreSimulation:Connect(function()
   end
  end
  for stage in defeated do
-  local e=workspace:FindFirstChild("Enemies") and workspace.Enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
+  local e=workspace:FindFirstChild(enemiesName) and workspace[enemiesName]:FindFirstChild(("Stage%02d_Enemy"):format(stage))
   if e then
    staticVFX(e,false)
-   for _,part in e:GetDescendants() do
-    if part:IsA("BasePart") then
-     part.LocalTransparencyModifier=1
-    end
-   end
+   setBossVisualVisible(e,false)
   end
  end
 end)
@@ -578,7 +615,7 @@ R.OnClientEvent:Connect(function(d)
   refreshGaugeVisibility()
   syncPersonalBossCollider(stage)
  elseif d.Type=="Initialize"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],enemy(i):GetAttribute("BossMaxHP") or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
-	elseif d.Type=="EnemyDefeated"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil hideBossRecommendation() defeated[d.Stage]=true removePersonalBossCollider(d.Stage) if d.Stage<10 then currentStage=d.Stage+1 end refreshGaugeVisibility() fight(false) playDefeatSound() local e=enemy(d.Stage)for _,x in e:GetDescendants()do if x:IsA("BasePart")then x.CanCollide=false T:Create(x,TweenInfo.new(.25),{LocalTransparencyModifier=1}):Play()end end
+	elseif d.Type=="EnemyDefeated"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil hideBossRecommendation() defeated[d.Stage]=true removePersonalBossCollider(d.Stage) if d.Stage<10 then currentStage=d.Stage+1 end refreshGaugeVisibility() fight(false) playDefeatSound() setBossVisualVisible(enemy(d.Stage),false)
  elseif d.Type=="StageCleared"then currentStage=d.CurrentStage refreshGaugeVisibility() for major in wallState do renderWallStage(major) end removePersonalBossCollider(d.Stage)
  elseif d.Type=="Fighting"then
   activeCombatType=d.Active and d.CombatType or nil
@@ -613,7 +650,7 @@ task.spawn(function()
   task.wait(.5)
   refreshPersonalBossColliders()
   for n,record in fills do
-   local enemies=workspace:FindFirstChild("Enemies")
+   local enemies=workspace:FindFirstChild(enemiesName)
    local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
    if e and not defeated[n] then
     if not record.Gui or not record.Gui:IsDescendantOf(e) then
@@ -633,3 +670,8 @@ script.Destroying:Connect(function()
  if folder.Parent then folder:Destroy() end
 end)
 R:FireServer({Type="RequestState"})
+
+
+end
+task.spawn(mount,1)
+task.spawn(mount,2)

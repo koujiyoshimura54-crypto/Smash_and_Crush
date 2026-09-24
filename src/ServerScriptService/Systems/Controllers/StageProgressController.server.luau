@@ -13,6 +13,8 @@ local function tryInit(m)
  local ok,err=pcall(function() E.Initialize(m) end)
  initializing=false
  if ok then
+  local world2=W:FindFirstChild("World2Map")
+  if world2 then E.ForWorld(2).Initialize(world2) end
   current=m
   return true
  end
@@ -98,7 +100,10 @@ do
    for _,part in character:GetDescendants() do
     if part:IsA("BasePart") then part.AssemblyLinearVelocity=Vector3.zero;part.AssemblyAngularVelocity=Vector3.zero end
    end
+   local previousWorld=player:GetAttribute("CurrentWorld")==2 and 2 or 1
+   E.ForWorld(previousWorld).Deactivate(player)
    player:SetAttribute("CurrentWorld",targetWorld)
+   E.ForWorld(targetWorld).Activate(player)
    if targetWorld==2 then Badges.Award(player,"IntoWorld2") end
   end)
   if not ok then warn("[WorldTravel] Request failed for "..player.Name..": "..tostring(err)) end
