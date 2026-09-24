@@ -539,3 +539,10 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Implemented the ten confirmed SCP placements using existing EnemySpawn/Floor anchors and shared world-scoped combat/rendering. SCP-131 is excluded and preserved; overlapping placeholders are archived intact.
 - Verified all ten World2 stage advances, matching HP displays, floor contact, no shared boss replacement, respawn, gate round trips, and World1 Stage1 regression. Final clean normal Play had no Error/Warning/Infinite Yield.
 - Two-client rendering remains unverified (two-participant combat-state isolation passed). World2 Trophy/Win rewards remain unconfigured. See [report](../reports/World2_SCP_Bosses_20260924/README.md).
+
+# 2026-09-25 - Boss result suppression race
+
+- Controlled delayed processing reproduced next-stage HP-display suppression; natural ordering did not reproduce it, and full boss-model disappearance was not reproduced.
+- Added explicit result Stage/generation and world-local undefeated recovery guards. Final-version World1 Stage1-3 and World2 Stage1-2 fixture-assisted Play passed; LOSE/respawn and an earlier ten-stage pass are documented with their limits.
+- Clean final normal Play: 264 seconds, no console errors/warnings, temporary QA removed, Edit restored and Ctrl+S dispatched. Durable save acknowledgment and two-client testing are unavailable.
+- Evidence: [audit and regression report](../reports/Boss_Result_Stage_Race_20260925/README.md).

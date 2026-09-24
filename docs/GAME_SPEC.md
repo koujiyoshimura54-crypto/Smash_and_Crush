@@ -403,3 +403,8 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 - SCP-131 is not a boss candidate. Source models, its reserved display, and the retired stage placeholders remain preserved in ServerStorage.
 - Existing World2 balance is unchanged; Trophy/Win rewards remain explicitly unconfigured. Personal defeat hides only that client's cosmetic visual, without replacing the shared boss or changing SpawnGeneration.
 - Details and verification limits: [World2 SCP report](../reports/World2_SCP_Bosses_20260924/README.md).
+
+# 2026-09-25 - Boss result stage identity
+
+- WIN and LOSE BossResult carry the encounter Stage and SpawnGeneration. Clients validate the Stage and generation; they never infer the result target from a mutable current-stage value.
+- Within each world mount, a valid BossInitialize or Stage1BossUnlocked clears stale suppression only for an undefeated target stage. Neither event clears genuine defeated state or recreates shared bosses.

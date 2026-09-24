@@ -1,0 +1,1125 @@
+[
+  {
+    "Type": "StageAttribute",
+    "Suppressed": [],
+    "Phase": "changed",
+    "Defeated": [],
+    "Time": 1790263250.198315,
+    "Bosses": [
+      {
+        "Visible": 0,
+        "Total": 0,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 1
+      },
+      {
+        "Visible": 0,
+        "Total": 0,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 2
+  },
+  {
+    "Type": "WallCleared",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790263250.480563,
+    "MajorStage": 1,
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 15000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 1
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 2
+  },
+  {
+    "Type": "WallCleared",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790263251.412657,
+    "MajorStage": 1,
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 15000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 1,
+        "Gauge": false
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 2
+  },
+  {
+    "Type": "WallCleared",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790263252.413722,
+    "MajorStage": 1,
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 15000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 1,
+        "Gauge": false
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 2
+  },
+  {
+    "Type": "WallCleared",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790263253.4294,
+    "MajorStage": 1,
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 15000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 1,
+        "Gauge": true
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 2
+  },
+  {
+    "Type": "Stage1BossUnlocked",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790263253.431045,
+    "MajorStage": 1,
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 15000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 1,
+        "Gauge": true
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 2
+  },
+  {
+    "Type": "BossRecommendation",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790263253.433437,
+    "Stage": 1,
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 15000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 1,
+        "Gauge": true
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 2
+  },
+  {
+    "Type": "BossInitialize",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "World": 2,
+    "Stage": 1,
+    "Time": 1790263254.282805,
+    "Suppressed": [],
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 15000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 1,
+        "Gauge": true
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "BossResult",
+    "Active": 1,
+    "Phase": "before",
+    "Defeated": [],
+    "World": 2,
+    "Stage": 1,
+    "Suppressed": [],
+    "Time": 1790263258.347228,
+    "Result": "WIN",
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 1,
+        "Gauge": true
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "BossResult",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "after",
+    "Defeated": [],
+    "World": 2,
+    "Stage": 1,
+    "Time": 1790263258.348943,
+    "Current": 1,
+    "Bosses": [
+      {
+        "Visible": 9,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 15000000,
+        "HP": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 1,
+        "Gauge": false
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      }
+    ],
+    "Result": "WIN",
+    "Attribute": 1,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "EnemyDefeated",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790263258.352459,
+    "Current": 2,
+    "Bosses": [
+      {
+        "Visible": 0,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 9,
+        "Max": 15000000,
+        "HP": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 1,
+        "Gauge": false
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Stage": 1,
+    "Attribute": 1,
+    "World": 2
+  },
+  {
+    "Type": "StageAttribute",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "changed",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790263258.430467,
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "StageCleared",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790263258.433905,
+    "Current": 2,
+    "Bosses": [
+      {
+        "Visible": 0,
+        "Total": 9,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 9,
+        "Max": 15000000,
+        "HP": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 1,
+        "Gauge": false
+      },
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Stage": 1,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "WallCleared",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790263259.699474,
+    "MajorStage": 2,
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "WallCleared",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790263260.616204,
+    "MajorStage": 2,
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "WallCleared",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790263261.63189,
+    "MajorStage": 2,
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "WallCleared",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790263262.765412,
+    "MajorStage": 2,
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 2,
+        "Gauge": true
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "Stage1BossUnlocked",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790263262.766897,
+    "MajorStage": 2,
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 2,
+        "Gauge": true
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "BossRecommendation",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790263262.769883,
+    "Stage": 2,
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 2,
+        "Gauge": true
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "BossInitialize",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "World": 2,
+    "Stage": 2,
+    "Time": 1790263263.485942,
+    "Suppressed": [
+      1
+    ],
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 50000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 2,
+        "Gauge": true
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "BossResult",
+    "Active": 2,
+    "Phase": "before",
+    "Defeated": [
+      1
+    ],
+    "World": 2,
+    "Stage": 2,
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790263267.543905,
+    "Result": "WIN",
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 2,
+        "Gauge": true
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "BossResult",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "World": 2,
+    "Stage": 2,
+    "Time": 1790263267.545436,
+    "Current": 2,
+    "Bosses": [
+      {
+        "Visible": 7,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": true,
+        "Hidden": 0,
+        "Max": 50000000,
+        "HP": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "ColliderLTM": 0,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      }
+    ],
+    "Result": "WIN",
+    "Attribute": 2,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "EnemyDefeated",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1,
+      2
+    ],
+    "Time": 1790263267.548626,
+    "Current": 3,
+    "Bosses": [
+      {
+        "Visible": 0,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 7,
+        "Max": 50000000,
+        "HP": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      },
+      {
+        "Visible": 48,
+        "Total": 48,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 250000000,
+        "HP": 250000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 4,
+        "Gauge": false
+      }
+    ],
+    "Stage": 2,
+    "Attribute": 2,
+    "World": 2
+  },
+  {
+    "Type": "StageAttribute",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "changed",
+    "Defeated": [
+      1,
+      2
+    ],
+    "Time": 1790263267.593768,
+    "Bosses": [
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      },
+      {
+        "Visible": 48,
+        "Total": 48,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 250000000,
+        "HP": 250000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 4,
+        "Gauge": false
+      }
+    ],
+    "Current": 3,
+    "Attribute": 3,
+    "World": 2
+  },
+  {
+    "Type": "StageCleared",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1,
+      2
+    ],
+    "Time": 1790263267.596991,
+    "Current": 3,
+    "Bosses": [
+      {
+        "Visible": 0,
+        "Total": 7,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 7,
+        "Max": 50000000,
+        "HP": 0,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 2,
+        "Gauge": false
+      },
+      {
+        "Visible": 16,
+        "Total": 16,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 100000000,
+        "HP": 100000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 3,
+        "Gauge": false
+      },
+      {
+        "Visible": 48,
+        "Total": 48,
+        "OriginalGeneration": 1,
+        "Collider": false,
+        "Hidden": 0,
+        "Max": 250000000,
+        "HP": 250000000,
+        "Generation": 1,
+        "SameInstance": true,
+        "Stage": 4,
+        "Gauge": false
+      }
+    ],
+    "Stage": 2,
+    "Attribute": 3,
+    "World": 2
+  }
+]

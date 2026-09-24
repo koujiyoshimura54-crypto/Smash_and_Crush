@@ -951,10 +951,10 @@ local function updateCombat(p,manualRequest)
          AttackId=attackId,GloveApplied=bs.Route~="LOTTERY_WIN" and bs.GloveBonus>0 and bs.HP<hpBefore,
          SpawnGeneration=e:GetAttribute("SpawnGeneration")})
         if status=="Win" then
-         send(p,{Type="BossResult",Result="WIN"})
+         send(p,{Type="BossResult",Result="WIN",Stage=n,SpawnGeneration=e:GetAttribute("SpawnGeneration")})
          defeat(p,n)
         elseif status=="Lose" then
-         send(p,{Type="BossResult",Result="LOSE"})
+         send(p,{Type="BossResult",Result="LOSE",Stage=n,SpawnGeneration=e:GetAttribute("SpawnGeneration")})
          Boss.End(p)
          sessions[p]=nil
          p:SetAttribute("IsFighting",false)

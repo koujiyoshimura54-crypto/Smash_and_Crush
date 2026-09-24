@@ -197,6 +197,9 @@ local function renderWallStage(major)
  end
 end
 local function enemy(n)return workspace:WaitForChild(enemiesName):WaitForChild(("Stage%02d_Enemy"):format(n))end
+local function isBossStage(stage)
+ return typeof(stage)=="number" and stage%1==0 and stage>=1 and stage<=10
+end
 local function acceptsBossGeneration(stage,generation)
  if typeof(generation)~="number" then return true end
  local enemies=workspace:FindFirstChild(enemiesName)
@@ -579,7 +582,11 @@ R.OnClientEvent:Connect(function(d)
   if typeof(d.Current)=="number" then gauge(d.Stage,d.Current,d.Max) end
   refreshGaugeVisibility()
  elseif d.Type=="BossInitialize" then
+  if not isBossStage(d.Stage) then return end
   if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
+  if defeated[d.Stage] then return end
+  bossSuppressed[d.Stage]=nil
+  visible(d.Stage,true)
   if d.Stage==3 then Stage03AttackVisual.Prepare() end
   currentStage=d.Stage
   gauge(d.Stage,d.Current,d.Max)
@@ -589,7 +596,13 @@ R.OnClientEvent:Connect(function(d)
   if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
   local f=fills[d.Stage] if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
  elseif d.Type=="BossResult" then
-  bossSuppressed[currentStage]=true
+  local stage=d.Stage
+  if not isBossStage(stage) then
+   warn("Invalid BossResult Stage")
+   return
+  end
+  if not acceptsBossGeneration(stage,d.SpawnGeneration) then return end
+  bossSuppressed[stage]=true
   activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil
   refreshGaugeVisibility()
   hideBossRecommendation()
@@ -610,7 +623,9 @@ R.OnClientEvent:Connect(function(d)
    syncPersonalBossCollider(major)
   end
  elseif d.Type=="Stage1BossUnlocked" then
-  local stage=d.MajorStage or 1
+  local stage=d.MajorStage
+  if not isBossStage(stage) or defeated[stage] then return end
+  bossSuppressed[stage]=nil
   visible(stage,true)
   refreshGaugeVisibility()
   syncPersonalBossCollider(stage)

@@ -508,3 +508,9 @@
 - Added the approved ten-stage SCP mapping and cosmetic placement adapter; reused shared combat, personal visibility/collider and progression paths with per-world state.
 - Preserved SCP-131 and original assets, archived overlapping placeholders, and left existing balance/reward probabilities unchanged. World2 Trophy/Win amounts remain unconfigured.
 - Evidence and test limits: [World2 SCP report](../reports/World2_SCP_Bosses_20260924/README.md).
+
+# 2026-09-25 - Scope boss suppression to result stage
+
+- BossResult now identifies the encounter Stage/generation for WIN and LOSE; clients reject missing/invalid stages instead of falling back to currentStage.
+- Valid initialization/unlock restores undefeated-stage display state without reviving defeated bosses or changing shared instances.
+- Controlled timing reproduced HP-display suppression, not full model disappearance. See [measurement and test limits](../reports/Boss_Result_Stage_Race_20260925/README.md).

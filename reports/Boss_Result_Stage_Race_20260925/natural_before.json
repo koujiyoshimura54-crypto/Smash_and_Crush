@@ -1,0 +1,3460 @@
+[
+  {
+    "Type": "Stage1BossUnlocked",
+    "Active": 1,
+    "Phase": "before",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790262555.204238,
+    "MajorStage": 1,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": true,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 375,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 1
+  },
+  {
+    "Type": "Stage1BossUnlocked",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790262555.206819,
+    "MajorStage": 1,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": true,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 375,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 1
+  },
+  {
+    "Type": "BossInitialize",
+    "Active": 1,
+    "Phase": "before",
+    "Defeated": [],
+    "World": 1,
+    "Stage": 1,
+    "Time": 1790262556.182614,
+    "Suppressed": [],
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": true,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 375,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "BossInitialize",
+    "Active": 1,
+    "Phase": "after",
+    "Defeated": [],
+    "World": 1,
+    "Stage": 1,
+    "Time": 1790262556.185238,
+    "Suppressed": [],
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": true,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 375,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "BossResult",
+    "Active": 1,
+    "Phase": "before",
+    "Defeated": [],
+    "Suppressed": [],
+    "Time": 1790262560.144199,
+    "Result": "WIN",
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": true,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 1,
+    "Attribute": 1,
+    "World": 1
+  },
+  {
+    "Type": "BossResult",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "after",
+    "Defeated": [],
+    "Time": 1790262560.146146,
+    "Current": 1,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": true,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Result": "WIN",
+    "Attribute": 1,
+    "World": 1
+  },
+  {
+    "Type": "EnemyDefeated",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "before",
+    "Defeated": [],
+    "Time": 1790262560.315651,
+    "Current": 1,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": true,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Stage": 1,
+    "Attribute": 1,
+    "World": 1
+  },
+  {
+    "Type": "EnemyDefeated",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790262560.317956,
+    "Current": 2,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Stage": 1,
+    "Attribute": 1,
+    "World": 1
+  },
+  {
+    "Type": "StageAttribute",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "changed",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790262560.39139,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "StageCleared",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "before",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790262560.446953,
+    "Current": 2,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Stage": 1,
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "StageCleared",
+    "Suppressed": [
+      1
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790262560.448991,
+    "Current": 2,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Stage": 1,
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "Stage1BossUnlocked",
+    "Active": 2,
+    "Phase": "before",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790262580.009981,
+    "MajorStage": 2,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": true,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "Stage1BossUnlocked",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790262580.011431,
+    "MajorStage": 2,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": true,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "BossInitialize",
+    "Active": 2,
+    "Phase": "before",
+    "Defeated": [
+      1
+    ],
+    "World": 1,
+    "Stage": 2,
+    "Time": 1790262580.017988,
+    "Suppressed": [
+      1
+    ],
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": true,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "BossInitialize",
+    "Active": 2,
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "World": 1,
+    "Stage": 2,
+    "Time": 1790262580.020635,
+    "Suppressed": [
+      1
+    ],
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": true,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 2250,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "EventGeneration": 1
+  },
+  {
+    "Type": "BossResult",
+    "Active": 2,
+    "Phase": "before",
+    "Defeated": [
+      1
+    ],
+    "Suppressed": [
+      1
+    ],
+    "Time": 1790262583.972086,
+    "Result": "WIN",
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": true,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": true,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 2,
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "BossResult",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790262583.973731,
+    "Current": 2,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": true,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Result": "WIN",
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "EnemyDefeated",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "before",
+    "Defeated": [
+      1
+    ],
+    "Time": 1790262583.976261,
+    "Current": 2,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": true,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "ColliderLTM": 0,
+        "ColliderCollidable": true,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Stage": 2,
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "EnemyDefeated",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1,
+      2
+    ],
+    "Time": 1790262583.977709,
+    "Current": 3,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Stage": 2,
+    "Attribute": 2,
+    "World": 1
+  },
+  {
+    "Type": "StageAttribute",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "changed",
+    "Defeated": [
+      1,
+      2
+    ],
+    "Time": 1790262584.038931,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Current": 3,
+    "Attribute": 3,
+    "World": 1
+  },
+  {
+    "Type": "StageCleared",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "before",
+    "Defeated": [
+      1,
+      2
+    ],
+    "Time": 1790262584.041284,
+    "Current": 3,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Stage": 2,
+    "Attribute": 3,
+    "World": 1
+  },
+  {
+    "Type": "StageCleared",
+    "Suppressed": [
+      1,
+      2
+    ],
+    "Phase": "after",
+    "Defeated": [
+      1,
+      2
+    ],
+    "Time": 1790262584.04296,
+    "Current": 3,
+    "Bosses": [
+      {
+        "Instance": "Workspace.Enemies.Stage01_Enemy",
+        "Collider": false,
+        "Max": 375,
+        "Stage": 1,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Cube.001",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.002",
+            "Original": 1
+          },
+          {
+            "LTM": 1,
+            "Name": "Cube.016",
+            "Original": 1
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage02_Enemy",
+        "Collider": false,
+        "Max": 2250,
+        "Stage": 2,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 0,
+        "Parts": [
+          {
+            "LTM": 1,
+            "Name": "Tralalelo Tralala.001",
+            "Original": 0
+          },
+          {
+            "LTM": 1,
+            "Name": "Tralalelo Tralala",
+            "Original": 0
+          }
+        ]
+      },
+      {
+        "Instance": "Workspace.Enemies.Stage03_Enemy",
+        "Collider": false,
+        "Max": 12500,
+        "Stage": 3,
+        "OriginalGeneration": 1,
+        "Generation": 1,
+        "SameInstance": true,
+        "Gauge": false,
+        "HP": 12500,
+        "Parts": [
+          {
+            "LTM": 0,
+            "Name": "LeftUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LowerTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "UpperTorso",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightUpperLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerLeg",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftUpperArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftLowerArm",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightFoot",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "Head",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "RightHand",
+            "Original": 0
+          },
+          {
+            "LTM": 0,
+            "Name": "LeftHand",
+            "Original": 0
+          }
+        ]
+      }
+    ],
+    "Stage": 2,
+    "Attribute": 3,
+    "World": 1
+  }
+]
