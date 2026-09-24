@@ -546,3 +546,9 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Added explicit result Stage/generation and world-local undefeated recovery guards. Final-version World1 Stage1-3 and World2 Stage1-2 fixture-assisted Play passed; LOSE/respawn and an earlier ten-stage pass are documented with their limits.
 - Clean final normal Play: 264 seconds, no console errors/warnings, temporary QA removed, Edit restored and Ctrl+S dispatched. Durable save acknowledgment and two-client testing are unavailable.
 - Evidence: [audit and regression report](../reports/Boss_Result_Stage_Race_20260925/README.md).
+
+# 2026-09-25 - Repeated-run Boss visibility
+
+- Reproduced Stage1 retry with empty defeated/suppressed tables but all visual-part LTM values stuck at 1. The weak original-transparency cache had lost its baseline while the shared Boss Instance remained generation 1.
+- Replaced only that cache with a strong table and made valid BossInitialize reset its Stage-local attempt state. Stage1 two Trophy loops, Stage2 retry, World1 1->2, LOSE/respawn and World2 Stage1 retry passed.
+- Two-client test remains unavailable. Temporary QA was removed; clean 30-second Play had empty console output. See [report](../reports/Boss_Round_Visibility_20260925/README.md).

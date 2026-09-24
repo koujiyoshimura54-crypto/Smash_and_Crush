@@ -391,7 +391,7 @@ local function staticVFX(e,on)
   end
  end
 end
-local bossVisualTransparency=setmetatable({},{__mode="k"})
+local bossVisualTransparency={}
 local function isBossVisualPart(e,part)
  if part.Name=="HumanoidRootPart" or part.Name=="CombatZone" or part.Name=="MiniBossCollider" then return false end
  if part:GetAttribute("PersonalBossCollider") then return false end
@@ -584,7 +584,7 @@ R.OnClientEvent:Connect(function(d)
  elseif d.Type=="BossInitialize" then
   if not isBossStage(d.Stage) then return end
   if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
-  if defeated[d.Stage] then return end
+  defeated[d.Stage]=nil
   bossSuppressed[d.Stage]=nil
   visible(d.Stage,true)
   if d.Stage==3 then Stage03AttackVisual.Prepare() end

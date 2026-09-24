@@ -408,3 +408,8 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 
 - WIN and LOSE BossResult carry the encounter Stage and SpawnGeneration. Clients validate the Stage and generation; they never infer the result target from a mutable current-stage value.
 - Within each world mount, a valid BossInitialize or Stage1BossUnlocked clears stale suppression only for an undefeated target stage. Neither event clears genuine defeated state or recreates shared bosses.
+
+# 2026-09-25 - Repeated Boss run visibility
+
+- Boss visual transparency baselines remain strongly retained for the lifetime of the persistent shared Boss Instances. Repeated personal defeat/lobby/retry cycles restore the authored local transparency instead of learning the hidden value as a new baseline.
+- A valid generation-accepted BossInitialize starts a new client attempt for that Stage and clears only its transient defeated/suppressed presentation state before restoring VFX and visuals.

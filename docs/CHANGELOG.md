@@ -514,3 +514,8 @@
 - BossResult now identifies the encounter Stage/generation for WIN and LOSE; clients reject missing/invalid stages instead of falling back to currentStage.
 - Valid initialization/unlock restores undefeated-stage display state without reviving defeated bosses or changing shared instances.
 - Controlled timing reproduced HP-display suppression, not full model disappearance. See [measurement and test limits](../reports/Boss_Result_Stage_Race_20260925/README.md).
+
+# 2026-09-25 - Restore persistent Boss visuals between runs
+
+- Retained Boss-part transparency baselines for the persistent shared Instance lifetime and reset Stage-local presentation state on valid BossInitialize.
+- Fixed repeated defeat/Trophy/lobby/retry Boss visuals without recreating shared bosses or changing SpawnGeneration. See [runtime report](../reports/Boss_Round_Visibility_20260925/README.md).
