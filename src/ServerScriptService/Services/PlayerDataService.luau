@@ -1,4 +1,5 @@
 local DSS=game:GetService("DataStoreService")
+local Players=game:GetService("Players")
 local RunService=game:GetService("RunService")
 local HttpService=game:GetService("HttpService")
 local DumbbellItemMaster=require(game:GetService("ReplicatedStorage").Config:WaitForChild("DumbbellItemMaster"))
@@ -854,6 +855,30 @@ function PlayerDataService.UnlockWorld(player,world)
  return true,"Unlocked"
 end
 
+local ITEM_MUTATION_RETRY_DELAYS={1,2,4,8}
+
+local function scheduleItemMutationRetry(player,session,operation)
+ if operation.RetryScheduled or operation.RetryExhausted then return nil,nil end
+ local nextAttempt=(operation.RetryCount or 0)+1
+ local delaySeconds=ITEM_MUTATION_RETRY_DELAYS[nextAttempt]
+ if not delaySeconds then
+  operation.RetryExhausted=true
+  return nil,nil
+ end
+ operation.RetryScheduled=true
+ task.delay(delaySeconds,function()
+  if player.Parent~=Players or sessions[player]~=session or session.PendingItemMutation~=operation then
+   operation.RetryScheduled=false
+   return
+  end
+  operation.RetryScheduled=false
+  if operation.Resolving then return end
+  operation.RetryCount=nextAttempt
+  PlayerDataService.ResolveItemMutation(player)
+ end)
+ return delaySeconds,nextAttempt
+end
+
 -- All regular-item quantity mutations are durable before reporting success.
 -- A failed/ambiguous write keeps its operation ID and local Win reservation;
 -- Save retries the same operation rather than refunding a possibly committed purchase.
@@ -985,8 +1010,25 @@ function PlayerDataService.ResolveItemMutation(player)
   s.Saving=false
   return false,rejection
  end
- if not ok or not info or info:GetMetadata().ItemMutationId~=op.Id then
+ local actualMutationId
+ local metadataReadable=false
+ if info then
+  local metadataOK,returnedMetadata=pcall(function() return info:GetMetadata() end)
+  if metadataOK and typeof(returnedMetadata)=="table" then
+   metadataReadable=true
+   actualMutationId=returnedMetadata.ItemMutationId
+  end
+ end
+ if not ok or not info or not metadataReadable or actualMutationId~=op.Id then
   op.Resolving=false
+  s.Saving=false
+  local retryDelay,retryAttempt=scheduleItemMutationRetry(player,s,op)
+  warn(string.format(
+   "Item mutation save unconfirmed: Player=%s UserId=%d OperationId=%s RetryCount=%d Error=%s MissingInfo=%s ExpectedItemMutationId=%s ActualItemMutationId=%s NextRetrySeconds=%s",
+   player.Name,player.UserId,tostring(op.Id),op.RetryCount or 0,
+   not ok and tostring(saved) or "none",tostring(info==nil),tostring(op.Id),tostring(actualMutationId),
+   retryDelay and tostring(retryDelay) or "none"
+  ))
   return false,"InventorySavePending"
  end
  s.Data.OwnedItems=assert(normalizeItems(saved.OwnedItems))

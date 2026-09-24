@@ -83,3 +83,4 @@ end
 watch(player:WaitForChild("Backpack"))
 player.CharacterAdded:Connect(watch)
 if player.Character then watch(player.Character) end
+

@@ -84,7 +84,6 @@ local function equipHisarinoBody(character)
 	local body = bodyTemplate:Clone()
 	humanoid:AddAccessory(body)
 end
-
 local hiddenBodyParts = {
 	"LeftUpperArm",
 	"LeftLowerArm",
@@ -92,6 +91,7 @@ local hiddenBodyParts = {
 	"RightUpperArm",
 	"RightLowerArm",
 	"RightHand",
+
 	"LeftUpperLeg",
 	"LeftLowerLeg",
 	"LeftFoot",

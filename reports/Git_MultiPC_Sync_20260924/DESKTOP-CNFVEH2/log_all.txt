@@ -1,0 +1,75 @@
+* e77ecab  (HEAD -> sync/DESKTOP-CNFVEH2-20260924-2203, origin/main, origin/backup/world2-scp-e77eca-20260924, origin/HEAD, main) Integrate World2 SCP bosses with shared combat
+* 9f34bca  Exclude abbreviated numbers from localization
+* e6380fd  Whitelist developer avatar accessories
+* 1dd4fb7  Clean developer avatar appearance
+* 3c66df3  Rebalance World1 muscle progression
+* eff6425  Hide developer avatar arms and legs
+* c0385e7  Restrict developer avatar to Yossy945
+* 00f7c6e  Align boss HP UI to visual bounds
+* 596a76b  Fix boss combat multiplayer state
+* fc2e0d7  Auto equip Hisarino hair
+* 9d3190f  Integrate Slap Pass tool and animation
+* bb27d4b  Add Slap Pass player interaction
+* f649a8e  Fix per-player boss collider lifecycle
+* 3aaeb5e  Replace element set text with icon
+* a0705af  Fix element set badge text rendering
+* d5a6109  Rebalance World1 upgrade economy
+* 8f51356  Fix item effect icon transparency
+* 33a0971  Add matching element strength multiplier
+* 0ebd6ae  Fix per-player boss collision gates
+* ff161ea  Gray out claimed reward buttons
+* 3fc1f2d  Fix Strength HUD localization
+* f595890  Fix treadmill exit animation recovery
+* 5016cc6  Prevent movement animation conflicts on treadmills
+* 9e96682  Improve trophy reward feedback
+* 9b90509  Fix treadmill animation replication
+* a4cafa1  Standardize Japanese localization terminology
+* 94f6fad  Add localization source table and verify Japanese UI
+* 0fc09e2  Fix Total Strength ranking display
+* bb6a083  Polish Merge item card visuals
+* a98b70e  Simplify Merge item cards with rarity stars
+* e4e91da  Preview merged item and apply FredokaOne UI font
+* 96e5937  Fix inventory notification seen timing
+* 7786414  Brighten and simplify Merge UI
+* 7403ef9  Fix item notification seen timing
+* 6837164  Fix Merge step visibility and item currency icons
+* 199a0e9  Fix Robux icons on item purchase buttons
+* 13f9475  Clarify item purchase currency and dumbbell feedback
+* bef7929  Implement achievement badges
+* 8c47a4a  Document achievement badge specifications
+* 05f3987  Align treadmill colors with current multipliers
+* 484ffa6  Enable Administrator Treadmill game pass
+* 75ca8c7  Auto prompt Double Win purchase on entry
+* aa7c2d9  Fix Merge UI labels
+* 777a354  Add equipped item effect HUD
+* 85127a5  Redesign Merge item selection flow
+* 5bc8399  Save latest Aura and Treadmill visual templates
+* 538653e  Add Studio Win debug commands
+* acbd1f9  Add reusable Aura visual templates
+* 4a2578f  Move Auto Tap button beside Strength HUD
+* 515e040  Add manual tap training and combat
+* c512f06  Hide tutorial arrows outside floor surfaces
+* 8dfeed4  Add availability guides to Treadmills
+* c1b905f  Add proximity multiplier billboards to Treadmills
+* 464e341  Refine Treadmill colors and group mats
+* 93982fc  Refine Treadmill frame colors
+* 60db044  Color-code Treadmills by Strength reward
+* 494d6ae  Add configurable World1 wall UI layout
+* f65f8a1  Restore Dumbbell buy button seen notifications
+* 6a52d4d  Add configurable Boss display surfaces
+* dc4e435  Consolidate World1 balance config
+* dc4c510  Fix World1 wall UI scale and persistent HP display
+* 34fd3cb  Fix World1 wall and boss UI positioning
+* 1117688  Fix smartphone LeftMenu and mobile Strength HUD centering
+* 43ed160  Restore mobile touch zone and hide zone background
+* 28bc4f1  Match World1 enemy wall height to side walls
+* fcc1018  Apply LandscapeSensor to PlayerGui at runtime
+* 5313ee6  Fix miniboss UI placement on next Wall .1
+* b50eee5  Improve mobile landscape touch controls
+* 1a2cfd5  Improve miniboss and Wall .1 UI transition
+* a12d8ff  Add Git workflow rules
+* 04e9c50  Change item badges to seen-based notifications
+* 2de951f  Adjust Lv1-50 Strength requirements by 10
+* 7003fcf  Rebalance World1 progression and cumulative Strength
+* e716b4e  Initial project snapshot
+

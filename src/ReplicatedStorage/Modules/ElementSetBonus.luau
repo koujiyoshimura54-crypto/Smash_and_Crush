@@ -26,3 +26,4 @@ function ElementSetBonus.GetMultiplier(ownedItems, equippedItems)
 end
 
 return table.freeze(ElementSetBonus)
+

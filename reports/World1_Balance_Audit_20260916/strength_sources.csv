@@ -1,0 +1,12 @@
+Source,BaseOrConfig,FormulaOrEffect,AppliesTo,PotentialDoubleApplication
+Walk,TrainingConfig.BaseGain=1 every 0.5s,"(1 + AuraBonus + ProteinBonus) x Rebirth x StrengthPotion x VIP",Strength gain only,No observed duplicate
+Normal Training,BaseGain=1 every 0.5s,"(1 + DumbbellBonus + AuraBonus + ProteinBonus) x Rebirth x (TreadmillTier + BeltBonus + TrainingPotionBonus) x StrengthPotion x VIP",Strength gain only,Shared StrengthManager path
+Dumbbell,StrengthBonus 3..300,"additive inside Training base",Training only,Not applied to walking
+Aura,Pink..Blue 50..500,"additive inside walk/training base",Strength gain only,GamePass/Entitlement aura guarded
+Protein item,Common..Legendary 1..250,"additive inside walk/training base",Strength gain only,Shared ItemService
+Training Belt,0.25..2,"added to Treadmill tier",Training only,Not independent multiplier
+Training Potion,configured bonus,"added to Treadmill tier",Training only,Not independent multiplier
+Strength Potion,configured multiplier,"multiplicative in StrengthManager",Strength gain only,One common path
+VIP,1.10,"multiplicative in StrengthManager",Strength gain only,One common path
+Rebirth,1.0..3.5 for R0..R5,"multiplicative",Strength gain only,One common path
+Glove item,0.05..0.50 by rarity,"boss damage multiplier only",Combat damage,Separate from Strength gain

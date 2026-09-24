@@ -177,3 +177,4 @@ task.spawn(function()
 		task.wait(Config.PromptScanInterval)
 	end
 end)
+

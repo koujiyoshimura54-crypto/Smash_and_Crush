@@ -37,4 +37,3 @@ player.CharacterAdded:Connect(update)
 gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
 panel:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
 update()
-

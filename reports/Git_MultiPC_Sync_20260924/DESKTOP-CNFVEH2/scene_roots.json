@@ -1,0 +1,422 @@
+{
+  "placeId": 101572058398926,
+  "world2": [
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-023",
+      "name": "SCP-023",
+      "descendants": 24
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-035",
+      "name": "SCP-035",
+      "descendants": 172
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-049",
+      "name": "SCP-049",
+      "descendants": 382
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-058",
+      "name": "SCP-058",
+      "descendants": 129
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-096",
+      "name": "SCP-096",
+      "descendants": 43
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-106",
+      "name": "SCP-106",
+      "descendants": 40
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-131",
+      "name": "SCP-131",
+      "descendants": 36
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-173",
+      "name": "SCP-173",
+      "descendants": 54
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-323",
+      "name": "SCP-323",
+      "descendants": 506
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-682",
+      "name": "SCP-682",
+      "descendants": 113
+    },
+    {
+      "path": "ServerStorage.World2SCPAssets.SourceModels.SCP-939",
+      "name": "SCP-939",
+      "descendants": 205
+    }
+  ],
+  "services": {
+    "StarterPlayer": [
+      {
+        "name": "StarterPlayerScripts",
+        "class": "StarterPlayerScripts"
+      },
+      {
+        "name": "StarterCharacterScripts",
+        "class": "StarterCharacterScripts"
+      }
+    ],
+    "Lighting": [
+      {
+        "name": "Sky",
+        "class": "Sky"
+      },
+      {
+        "name": "SunRays",
+        "class": "SunRaysEffect"
+      },
+      {
+        "name": "Atmosphere",
+        "class": "Atmosphere"
+      },
+      {
+        "name": "Bloom",
+        "class": "BloomEffect"
+      },
+      {
+        "name": "DepthOfField",
+        "class": "DepthOfFieldEffect"
+      }
+    ],
+    "SoundService": [],
+    "ServerStorage": [
+      {
+        "name": "EnemyTemplates",
+        "class": "Folder"
+      },
+      {
+        "name": "RBX_ANIMSAVES",
+        "class": "Model"
+      },
+      {
+        "name": "MapTemplates",
+        "class": "Folder"
+      },
+      {
+        "name": "Preview",
+        "class": "Folder"
+      },
+      {
+        "name": "Legacy",
+        "class": "Folder"
+      },
+      {
+        "name": "Tests",
+        "class": "Folder"
+      },
+      {
+        "name": "Backup",
+        "class": "Folder"
+      },
+      {
+        "name": "Templates",
+        "class": "Folder"
+      },
+      {
+        "name": "SlapToolTemplate",
+        "class": "Tool"
+      },
+      {
+        "name": "Hisarino_hair",
+        "class": "Accessory"
+      },
+      {
+        "name": "Hisarino_Body",
+        "class": "Accessory"
+      },
+      {
+        "name": "World2SCPAssets",
+        "class": "Folder"
+      }
+    ],
+    "Workspace": [
+      {
+        "name": "MeshPart",
+        "class": "MeshPart"
+      },
+      {
+        "name": "Creamy Keyboard Typing Free",
+        "class": "Sound"
+      },
+      {
+        "name": "[Block Tales] Defeated Enemy",
+        "class": "Sound"
+      },
+      {
+        "name": "Day of defeat source ice footstep 3",
+        "class": "Sound"
+      },
+      {
+        "name": "Sound",
+        "class": "Sound"
+      },
+      {
+        "name": "Level_up",
+        "class": "Sound"
+      },
+      {
+        "name": "coin collect",
+        "class": "Sound"
+      },
+      {
+        "name": "Rewards",
+        "class": "Sound"
+      },
+      {
+        "name": "Treadmill",
+        "class": "Folder"
+      },
+      {
+        "name": "Italian Brainrot",
+        "class": "Folder"
+      },
+      {
+        "name": "EssentialUI_V1.05",
+        "class": "Folder"
+      },
+      {
+        "name": "R15 Criminality Fist Equip",
+        "class": "KeyframeSequence"
+      },
+      {
+        "name": "VFX Auras",
+        "class": "Folder"
+      },
+      {
+        "name": "Hyper_Aura1",
+        "class": "Folder"
+      },
+      {
+        "name": "Hisarino_Body_Setup",
+        "class": "Folder"
+      },
+      {
+        "name": "Terrain",
+        "class": "Terrain"
+      },
+      {
+        "name": "GeneratedMap",
+        "class": "Model"
+      },
+      {
+        "name": "Particle Storage",
+        "class": "Model"
+      },
+      {
+        "name": "Aura Pack Premium By Sanzzzzz",
+        "class": "Model"
+      },
+      {
+        "name": "World2Map",
+        "class": "Model"
+      },
+      {
+        "name": "World2Gate",
+        "class": "Model"
+      },
+      {
+        "name": "Pink_Aura3",
+        "class": "Model"
+      },
+      {
+        "name": "vfx pack",
+        "class": "Model"
+      },
+      {
+        "name": "Auras",
+        "class": "Model"
+      },
+      {
+        "name": "DailyStrengthRankingBoard",
+        "class": "Model"
+      },
+      {
+        "name": "Anime",
+        "class": "Model"
+      },
+      {
+        "name": "HaisarinoChurarino_R15_NPC",
+        "class": "Model"
+      },
+      {
+        "name": "Red_Aura1",
+        "class": "Model"
+      },
+      {
+        "name": "Heads",
+        "class": "Model"
+      },
+      {
+        "name": "R15 Criminality",
+        "class": "Model"
+      },
+      {
+        "name": "tripo_convert_d3a522f7-83d5-409f-8249-23ecbd1b13bb",
+        "class": "Model"
+      },
+      {
+        "name": "TotalStrengthRankingBoard",
+        "class": "Model"
+      },
+      {
+        "name": "Big",
+        "class": "Model"
+      },
+      {
+        "name": "LEGO_Floor_PBR_V3_Preview",
+        "class": "Part"
+      },
+      {
+        "name": "Shisa_Simple",
+        "class": "Model"
+      },
+      {
+        "name": "Shisa_Female",
+        "class": "Model"
+      },
+      {
+        "name": "World1DoubleWinShop",
+        "class": "Model"
+      },
+      {
+        "name": "Beams",
+        "class": "Model"
+      },
+      {
+        "name": "Pink_Aura4",
+        "class": "Model"
+      },
+      {
+        "name": "SpawnLocation",
+        "class": "SpawnLocation"
+      },
+      {
+        "name": "LEGO_Floor_PBR_V2_Preview",
+        "class": "Part"
+      },
+      {
+        "name": "Baseplate",
+        "class": "Part"
+      },
+      {
+        "name": "LEGO_Floor_PBR_Gray_V3_Preview",
+        "class": "Part"
+      },
+      {
+        "name": "HisarinoLow",
+        "class": "Model"
+      },
+      {
+        "name": "Camera",
+        "class": "Camera"
+      },
+      {
+        "name": "World2Enemies",
+        "class": "Folder"
+      }
+    ],
+    "StarterGui": [
+      {
+        "name": "StrengthGui",
+        "class": "ScreenGui"
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "class": "ScreenGui"
+      },
+      {
+        "name": "StrengthUI",
+        "class": "Folder"
+      },
+      {
+        "name": "StageSkipGui",
+        "class": "ScreenGui"
+      },
+      {
+        "name": "LevelUpGui",
+        "class": "ScreenGui"
+      },
+      {
+        "name": "StrengthGainGui",
+        "class": "ScreenGui"
+      },
+      {
+        "name": "WorldTravelGui",
+        "class": "ScreenGui"
+      }
+    ],
+    "LocalizationService": [],
+    "ServerScriptService": [
+      {
+        "name": "HisarinoHairAutoEquip",
+        "class": "Script"
+      },
+      {
+        "name": "World",
+        "class": "Folder"
+      },
+      {
+        "name": "Systems",
+        "class": "Folder"
+      },
+      {
+        "name": "Services",
+        "class": "Folder"
+      },
+      {
+        "name": "Config",
+        "class": "Folder"
+      }
+    ],
+    "ReplicatedStorage": [
+      {
+        "name": "Remotes",
+        "class": "Folder"
+      },
+      {
+        "name": "Assets",
+        "class": "Folder"
+      },
+      {
+        "name": "Modules",
+        "class": "Folder"
+      },
+      {
+        "name": "UI",
+        "class": "Folder"
+      },
+      {
+        "name": "Config",
+        "class": "Folder"
+      },
+      {
+        "name": "VFX",
+        "class": "Folder"
+      },
+      {
+        "name": "AuraVisualTemplates",
+        "class": "Folder"
+      },
+      {
+        "name": "TreadmillVisualTemplates",
+        "class": "Folder"
+      },
+      {
+        "name": "LayeredClothingEditorPreview",
+        "class": "Folder"
+      }
+    ]
+  }
+}

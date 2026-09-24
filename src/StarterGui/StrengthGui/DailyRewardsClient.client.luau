@@ -32,7 +32,7 @@ end
 local function render()
  local state=snapshot and snapshot.States and snapshot.States.VIP or "Locked"
  vip.RewardText.Text=RewardDisplay.GetText(ShopConfig.Get("VIP").DailyBonus)
- vip.DayText.Text="VIP • Daily bonus"
+ vip.DayText.Text="VIP 窶｢ Daily bonus"
  vip.Locked.Visible=state=="Locked"
  vip.Locked.TextLabel.Text="VIP ONLY"
  vip.Redeem.Visible=not vip.Locked.Visible
@@ -46,7 +46,7 @@ local function render()
   local state=snapshot and snapshot.States and snapshot.States["Day"..day] or "Locked"
   local ready=snapshot and snapshot.Loaded and state=="Ready"
   card.RewardText.Text=RewardDisplay.GetText(reward)
-  card.DayText.Text="Day "..day..(ready and " • READY" or "")
+  card.DayText.Text="Day "..day..(ready and " 窶｢ READY" or "")
   card.Locked.Visible=state=="Locked" or state=="Failed"
   card.Redeem.Visible=not card.Locked.Visible
   card.Redeem.Active=ready==true and pending==nil
@@ -105,3 +105,4 @@ panel:GetPropertyChangedSignal("Visible"):Connect(order)
 gui.TimeRewardsPanel:GetPropertyChangedSignal("Visible"):Connect(order)
 gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
 layout() order() render() task.spawn(refresh)
+

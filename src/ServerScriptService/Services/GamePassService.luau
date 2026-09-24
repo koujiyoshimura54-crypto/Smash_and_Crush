@@ -282,3 +282,4 @@ end
 Players.PlayerRemoving:Connect(function(player) shopCache[player]=nil;shopBusy[player]=nil end)
 
 return M
+

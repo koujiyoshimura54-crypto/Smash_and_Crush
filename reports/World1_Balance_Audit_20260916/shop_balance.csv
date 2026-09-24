@@ -1,0 +1,16 @@
+Category,TierOrName,PriceWin,StrengthBonus,PriceMultiplierFromPrevious,BonusMultiplierFromPrevious,BonusPerWin,PurchaseType,Notes
+Dumbbell,Normal Dumbbell 1,3,3,,,1.000,Earned,Current first tier
+Dumbbell,Normal Dumbbell 2,10,7,3.333,2.333,0.700,Earned,
+Dumbbell,Normal Dumbbell 3,30,15,3.000,2.143,0.500,Earned,
+Dumbbell,Normal Dumbbell 4,150,50,5.000,3.333,0.333,Earned,largest price jump
+Dumbbell,Normal Dumbbell 5,500,75,3.333,1.500,0.150,Earned,bonus growth slows
+Dumbbell,Normal Dumbbell 6,2000,100,4.000,1.333,0.050,Earned,bonus growth slows
+Dumbbell,Normal Dumbbell 7,5000,300,2.500,3.000,0.060,Earned,bonus jump but low efficiency
+Aura,Pink Aura,250,50,,,0.200,Win,
+Aura,Purple Aura,750,100,3.000,2.000,0.133,Win,
+Aura,Yellow Aura,1500,150,2.000,1.500,0.100,Win,
+Aura,Green Aura,5000,300,3.333,2.000,0.060,Win,
+Aura,Blue Aura,7500,500,1.500,1.667,0.067,Win,
+Aura,Red Aura,,1000,,, ,GamePass,Not Win-purchasable
+Aura,VIP Aura,,0,,, ,Entitlement,Strength bonus defined 0
+Aura,Secret Aura,,0,,, ,Entitlement,Strength bonus defined 0

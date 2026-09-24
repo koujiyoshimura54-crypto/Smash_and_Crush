@@ -115,3 +115,4 @@ gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
 layout()
 task.spawn(refresh)
 task.spawn(function() while gui.Parent do task.wait(.25) if panel.Visible then render() end end end)
+

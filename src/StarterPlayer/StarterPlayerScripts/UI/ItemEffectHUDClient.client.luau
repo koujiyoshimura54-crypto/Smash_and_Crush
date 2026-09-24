@@ -108,9 +108,9 @@ local elementColors = {
  Electric = Color3.fromRGB(255,194,62),
 }
 local elementIcons = {
- Fire = master.Get("PROTEIN_COMMON_FIRE").Image,
- Ice = master.Get("PROTEIN_COMMON_ICE").Image,
- Electric = master.Get("PROTEIN_COMMON_ELECTRIC").Image,
+	Fire = "rbxassetid://123468572441838",
+	Ice = "rbxassetid://90857153952000",
+	Electric = "rbxassetid://95738063615255",
 }
 
 local gloveTween, gloveReturn, beltTween
@@ -319,3 +319,4 @@ script.Destroying:Connect(function()
  setBadge:Destroy()
  row:Destroy()
 end)
+

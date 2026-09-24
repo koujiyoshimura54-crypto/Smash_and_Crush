@@ -39,3 +39,4 @@ function M.GetPartScale(partName,stage)
  return Vector3.new(1+growth.X*factor,M.GetHeightScale(stage),1+growth.Z*factor)
 end
 return M
+
