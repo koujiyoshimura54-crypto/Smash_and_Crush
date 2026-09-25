@@ -575,6 +575,16 @@ function PlayerDataService.SetCurrentStrength(player,value)
  s.Dirty=true
  return true
 end
+function PlayerDataService.ApplyStudioStartLevel(player,strength,level)
+ if not RunService:IsStudio() then return false,"StudioOnly" end
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.Saving then return false,"DataNotLoaded" end
+ if not finite(strength) or strength<0 or not finite(level) or level%1~=0 then return false,"InvalidRequest" end
+ if not s.StudioStartOverride then local d=s.Data;s.StudioStartOverride={Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate} end
+ s.Data.Strength=strength;s.Data.Level=level;s.Data.LevelProgress=0
+ player:SetAttribute("Strength",strength);player:SetAttribute("Level",level);player:SetAttribute("LevelProgress",0)
+ return true
+end
 -- Output mirrors only; saved progression never reads client-facing attributes.
 function PlayerDataService.GetLevelState(player)
  local s=sessions[player]
@@ -665,7 +675,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  s.Saving=true
  local d=s.Data
  local saveToken=d.ResetToken
- d.Strength=math.max(0,tonumber(player:GetAttribute("Strength")) or d.Strength)
+ if not s.StudioStartOverride then d.Strength=math.max(0,tonumber(player:GetAttribute("Strength")) or d.Strength) end
  d.RebirthCount=math.max(0,math.floor(tonumber(player:GetAttribute("RebirthCount")) or d.RebirthCount))
  d.Win=math.max(0,math.floor(tonumber(player:GetAttribute("Win")) or d.Win))
  local now=today()
@@ -673,6 +683,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   d.DailyDate=now
   d.DailyStrengthEarned=0
  end
+ local persisted=s.StudioStartOverride
  local payload={
   AutoTapEnabled=d.AutoTapEnabled~=false,
   SelectedSizeTier=d.SelectedSizeTier,
@@ -682,14 +693,14 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   TimeRewards=assert(normalizeTimeRewards(d.TimeRewards)),
   DailyRewards=assert(normalizeDailyRewards(d.DailyRewards)),
   TutorialCompleted=d.TutorialCompleted==true,
-  Strength=d.Strength,
-  Level=d.Level,
-  LevelProgress=d.LevelProgress,
+  Strength=persisted and persisted.Strength or d.Strength,
+  Level=persisted and persisted.Level or d.Level,
+  LevelProgress=persisted and persisted.LevelProgress or d.LevelProgress,
   LevelProgressVersion=LevelProgression.Version,
   RebirthCount=d.RebirthCount,
-  TotalStrengthEarned=d.TotalStrengthEarned,
-  DailyStrengthEarned=d.DailyStrengthEarned,
-  DailyDate=d.DailyDate,
+  TotalStrengthEarned=persisted and persisted.TotalStrengthEarned or d.TotalStrengthEarned,
+  DailyStrengthEarned=persisted and persisted.DailyStrengthEarned or d.DailyStrengthEarned,
+  DailyDate=persisted and persisted.DailyDate or d.DailyDate,
   Win=d.Win,
   OwnedSpeeds=table.clone(d.OwnedSpeeds),
   OwnedDumbbells=table.clone(d.OwnedDumbbells),
