@@ -50,11 +50,38 @@ local function attachHisarinoHair(character)
 	attaching[character] = nil
 end
 
+local function equipHisarinoBody(character)
+	local humanoid = character:WaitForChild("Humanoid", WAIT_TIMEOUT)
+	if not humanoid or not humanoid:IsA("Humanoid")
+		or humanoid.RigType ~= Enum.HumanoidRigType.R15 or not character.Parent then
+		return
+	end
+
+	local bodyTemplate = ServerStorage:FindFirstChild("Hisarino_Body")
+	local handle = bodyTemplate and bodyTemplate:FindFirstChild("Handle")
+	if not bodyTemplate or not bodyTemplate:IsA("Accessory")
+		or not handle or not handle:IsA("MeshPart")
+		or not handle:FindFirstChildWhichIsA("WrapLayer") then
+		return
+	end
+
+	for _, child in ipairs(character:GetChildren()) do
+		if child.Name == "Hisarino_Body" then child:Destroy() end
+	end
+	local body = bodyTemplate:Clone()
+	humanoid:AddAccessory(body)
+end
+
+local function equipCharacter(character)
+	attachHisarinoHair(character)
+	equipHisarinoBody(character)
+end
+
 local function setupPlayer(player)
 	player.CharacterAdded:Connect(function(character)
-		task.spawn(attachHisarinoHair, character)
+		task.spawn(equipCharacter, character)
 	end)
-	if player.Character then task.spawn(attachHisarinoHair, player.Character) end
+	if player.Character then task.spawn(equipCharacter, player.Character) end
 end
 
 Players.PlayerAdded:Connect(setupPlayer)
