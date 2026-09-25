@@ -174,7 +174,7 @@ local function normalizeUnlockedWorld(value)
  return value
 end
 local function defaults()
- return {AutoTapEnabled=true,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -188,6 +188,8 @@ local function normalize(raw)
  if typeof(raw)=="table" then
   if raw.AutoTapEnabled~=nil and typeof(raw.AutoTapEnabled)~="boolean" then return nil,"Invalid AutoTapEnabled" end
   d.AutoTapEnabled=raw.AutoTapEnabled~=false
+  if raw.SelectedSizeTier~=nil and (not finite(raw.SelectedSizeTier) or raw.SelectedSizeTier%1~=0 or raw.SelectedSizeTier<0 or raw.SelectedSizeTier>10) then return nil,"Invalid SelectedSizeTier" end
+  d.SelectedSizeTier=raw.SelectedSizeTier or 0
   local world,worldError=normalizeUnlockedWorld(raw.HighestUnlockedWorld)
   if not world then return nil,worldError end
   d.HighestUnlockedWorld=world
@@ -267,6 +269,7 @@ local function normalize(raw)
 end
 local function applyAttributes(player,d)
  player:SetAttribute("AutoTapEnabled",d.AutoTapEnabled~=false)
+ player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
  player:SetAttribute("TutorialCompleted",d.TutorialCompleted==true)
  player:SetAttribute("Strength",d.Strength)
@@ -672,6 +675,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  end
  local payload={
   AutoTapEnabled=d.AutoTapEnabled~=false,
+  SelectedSizeTier=d.SelectedSizeTier,
   HighestUnlockedWorld=d.HighestUnlockedWorld,
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
   CommunityRewards=assert(normalizeCommunity(d.CommunityRewards)),
@@ -716,6 +720,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.DailyRewards=mergeDailyRewards(old.DailyRewards,payload.DailyRewards)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
    merged.AutoTapEnabled=payload.AutoTapEnabled
+   merged.SelectedSizeTier=payload.SelectedSizeTier
    merged.Strength=payload.Strength
    merged.Level=payload.Level
    merged.LevelProgress=payload.LevelProgress
@@ -1308,6 +1313,43 @@ function PlayerDataService.GetDailyStrengthTop(limit,date)
 end
 function PlayerDataService.Release(player)
  sessions[player]=nil
+end
+
+-- Atomically persist a consumable size selection and its Win debit before publishing either.
+function PlayerDataService.ChangeSelectedSize(player,tier,config)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
+ if s.Saving or s.PendingItemMutation then return false,"DataSaving" end
+ if typeof(tier)~="number" or tier%1~=0 or tier<0 or tier>10 then return false,"InvalidRequest" end
+ if s.Data.RebirthCount<(config.RequiredRebirth or 5) then return false,"Locked" end
+ local current=s.Data.SelectedSizeTier or 0
+ if current==tier then return true,"SameSize",current,s.Data.Win end
+ if config.PaymentMode~="WIN" then
+  if config.PaymentMode=="DEVELOPER_PRODUCT" and (config.DeveloperProductId or 0)<=0 then return false,"ProductNotConfigured" end
+  return false,"PaymentUnavailable"
+ end
+ local price=tier==0 and 0 or config.WinPrice
+ local win=s.Data.Win
+ if not finite(win) or win%1~=0 or win<price then return false,"NotEnoughWin",current,win end
+ local token=s.Data.ResetToken;s.Saving=true
+ local rejected
+ local ok,saved=pcall(function() return store:UpdateAsync(key(player),function(old,info)
+  rejected=nil
+  if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
+  if resetToken(old)~=token then rejected="SaveSupersededByReset";return nil end
+  local oldTier=old and old.SelectedSizeTier or 0
+  if not finite(oldTier) or oldTier%1~=0 or oldTier<0 or oldTier>10 then error("Invalid SelectedSizeTier") end
+  local nextData=old and table.clone(old) or defaults()
+  nextData.SelectedSizeTier=tier;nextData.Win=win-price
+  local users,meta=metadata(info);return nextData,users,meta
+ end) end)
+ s.Saving=false
+ if not ok or not saved or rejected then return false,rejected or "SaveFailed",current,win end
+ if sessions[player]~=s then return false,"DataNotLoaded",current,win end
+ local earned=(tonumber(player:GetAttribute("Win")) or win)-win
+ s.Data.SelectedSizeTier=tier;s.Data.Win=math.max(0,saved.Win+earned);s.Dirty=earned~=0
+ player:SetAttribute("Win",s.Data.Win);player:SetAttribute("SelectedSizeTier",tier)
+ return true,"Success",tier,s.Data.Win
 end
 
 -- Atomically persist the Win debit and permanent entitlement before publishing either.
