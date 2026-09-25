@@ -71,21 +71,21 @@ local function addTrophyRewardBillboard(visual,reward)
  gui.Adornee=handle
  gui.AlwaysOnTop=true
  gui.LightInfluence=0
- gui.MaxDistance=30
- gui.Size=UDim2.fromOffset(220,64)
- gui.StudsOffsetWorldSpace=Vector3.new(0,handle.Size.Y/2+2.75,0)
+ gui.MaxDistance=60
+ gui.Size=UDim2.fromOffset(176,51)
+ gui.StudsOffsetWorldSpace=Vector3.new(0,handle.Size.Y/2+12,0)
  gui.Parent=handle
  local panel=Instance.new("Frame")
  panel.Name="Panel";panel.Size=UDim2.fromScale(1,1);panel.BackgroundColor3=Color3.fromRGB(255,224,112);panel.BackgroundTransparency=.18;panel.BorderSizePixel=0;panel.Parent=gui
  local corner=Instance.new("UICorner");corner.CornerRadius=UDim.new(0,14);corner.Parent=panel
  local stroke=Instance.new("UIStroke");stroke.Color=Color3.fromRGB(83,49,12);stroke.Thickness=3;stroke.Parent=panel
  local icon=Instance.new("ImageLabel")
- icon.Name="TrophyIcon";icon.BackgroundTransparency=1;icon.Position=UDim2.fromOffset(10,7);icon.Size=UDim2.fromOffset(50,50);icon.ScaleType=Enum.ScaleType.Fit
+ icon.Name="TrophyIcon";icon.BackgroundTransparency=1;icon.Position=UDim2.fromOffset(8,6);icon.Size=UDim2.fromOffset(40,40);icon.ScaleType=Enum.ScaleType.Fit
  icon.Image=P:WaitForChild("PlayerGui"):WaitForChild("StrengthGui"):WaitForChild("WinLabel"):WaitForChild("TrophyIcon").Image;icon.Parent=panel
  local amount=Instance.new("TextLabel")
- amount.Name="Amount";amount.BackgroundTransparency=1;amount.Position=UDim2.fromOffset(65,4);amount.Size=UDim2.new(1,-73,1,-8);amount.Font=Enum.Font.FredokaOne;amount.TextScaled=true
+ amount.Name="Amount";amount.BackgroundTransparency=1;amount.Position=UDim2.fromOffset(52,3);amount.Size=UDim2.new(1,-58,1,-6);amount.Font=Enum.Font.FredokaOne;amount.TextScaled=true
  amount.TextColor3=Color3.fromRGB(255,255,255);amount.TextStrokeColor3=Color3.fromRGB(67,38,7);amount.TextStrokeTransparency=0;amount.Text="+"..tostring(reward).." Win";amount.Parent=panel
- local constraint=Instance.new("UITextSizeConstraint");constraint.MinTextSize=18;constraint.MaxTextSize=34;constraint.Parent=amount
+ local constraint=Instance.new("UITextSizeConstraint");constraint.MinTextSize=14;constraint.MaxTextSize=27;constraint.Parent=amount
 end
 local function clearTrophy(id)
  if id~=nil then
