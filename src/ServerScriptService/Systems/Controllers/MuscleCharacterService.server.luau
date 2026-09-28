@@ -36,6 +36,7 @@ local function apply(player)
   for attachment,position in pairs(data.Attachments) do if attachment.Parent==data.Part then attachment.Position=position*scale end end
  end
  for motor,data in pairs(base.Motors) do if motor.Parent then motor.C0=scalePosition(data.C0,Config.GetPartScale(data.Part0Name,stage));motor.C1=scalePosition(data.C1,Config.GetPartScale(data.Part1Name,stage)) end end
+ character:SetAttribute("MuscleHeightScale",scaleHeight)
 end
 local function setup(player)
  local function onCharacter(character) task.spawn(function() prepare(player,character);if player.Character==character then apply(player) end end) end
