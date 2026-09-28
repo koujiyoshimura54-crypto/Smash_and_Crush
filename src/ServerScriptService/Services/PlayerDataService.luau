@@ -580,9 +580,24 @@ function PlayerDataService.ApplyStudioStartLevel(player,strength,level)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data or s.Saving then return false,"DataNotLoaded" end
  if not finite(strength) or strength<0 or not finite(level) or level%1~=0 then return false,"InvalidRequest" end
- if not s.StudioStartOverride then local d=s.Data;s.StudioStartOverride={Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate} end
+ if not s.StudioStartOverride then local d=s.Data;s.StudioStartOverride={Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate,Win=d.Win,RebirthCount=d.RebirthCount} end
  s.Data.Strength=strength;s.Data.Level=level;s.Data.LevelProgress=0
  player:SetAttribute("Strength",strength);player:SetAttribute("Level",level);player:SetAttribute("LevelProgress",0)
+ return true
+end
+function PlayerDataService.RestoreStudioStartOverride(player)
+ if not RunService:IsStudio() then return false,"StudioOnly" end
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.Saving then return false,"DataNotLoaded" end
+ local original=s.StudioStartOverride
+ if not original then return true,"NoOverride" end
+ local d=s.Data
+ d.Strength=original.Strength;d.Level=original.Level;d.LevelProgress=original.LevelProgress
+ d.TotalStrengthEarned=original.TotalStrengthEarned;d.DailyStrengthEarned=original.DailyStrengthEarned;d.DailyDate=original.DailyDate
+ d.Win=original.Win;d.RebirthCount=original.RebirthCount
+ s.StudioStartOverride=nil
+ player:SetAttribute("Strength",d.Strength);player:SetAttribute("Level",d.Level);player:SetAttribute("LevelProgress",d.LevelProgress)
+ player:SetAttribute("Win",d.Win);player:SetAttribute("RebirthCount",d.RebirthCount)
  return true
 end
 -- Output mirrors only; saved progression never reads client-facing attributes.
@@ -663,6 +678,7 @@ end
 
 function PlayerDataService.Save(player,equipAuraOnSuccess)
  local s=sessions[player]
+ if RunService:IsStudio() and s and s.StudioStartOverride then return true,"StudioRuntimeOverride" end
  PlayerDataService.GetTimeRewards(player)
  if s and s.PendingItemMutation then
   local resolved,reason=PlayerDataService.ResolveItemMutation(player)

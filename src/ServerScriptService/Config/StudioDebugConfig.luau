@@ -4,5 +4,5 @@ return {
  ForceSpeedPremiumUnowned=false,
  ProductionCreatorGamePassEffectsEnabled=false,
  ProductionCreatorUserIds={[7467238848]=true},
- Start={Enabled=true,StartLevel=45,StartWorld=2,StartStage=1},
+ Start={Enabled=true,AutoApplyOnPlay=false,ChatCommandsEnabled=true,Defaults={Level=45,World=2,Stage=1},StartLevel=45,StartWorld=2,StartStage=1},
 }
