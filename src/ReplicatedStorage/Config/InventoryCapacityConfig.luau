@@ -3,7 +3,13 @@
 local M = {
 	DefaultCapacity = 5,
 	Upgrades = {
-		[5] = {NextCapacity = 6, PriceWin = 100},
+		[5] = {NextCapacity = 6, PriceWin = 5},
+		[6] = {NextCapacity = 7, PriceWin = 15},
+		[7] = {NextCapacity = 8, PriceWin = 30},
+		[8] = {NextCapacity = 9, PriceWin = 75},
+		[9] = {NextCapacity = 10, PriceWin = 150},
+		[10] = {NextCapacity = 11, PriceWin = 1000},
+		[11] = {NextCapacity = 12, PriceWin = 4500},
 	},
 }
 function M.Normalize(value)

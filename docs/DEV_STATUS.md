@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-10-01 — Inventory Capacity tiers 5→12
+
+- 実装差分はInventoryCapacityConfigのみ。5→12の7価格を追加し、5→6は100から5 Winへ変更。
+- 1回のPlayで実Buttonから5→6（20→15 Win）、6→7（15→0 Win）を購入。次UIは7 >>> 8 / トロフィー＋30、Win文字なし。12のMAX/無効化はClient Attributeだけを一時変更して確認後7へ復元（12までの実購入は未実施）。検証用20 Winは全額購入に使用。
+- 既存保存失敗・連打・再Join・Ownershipの再検証は行わず。Place/GUI未保存、Play停止・Edit復帰。前Phaseの分離テストは当時の単一Tier/100 Win前提の記録であり、今回再実行していない。
+
 ## 2026-09-30 — Inventory Capacity purchase (Phase 5G)
 
 - 5→6 / 100 Win実装済み。PlayerData defaults / normalize、Ownership付き購入保存、現在RunのCapacity同期、既存Update UIへのRemote接続を追加。前Phaseの未Commit preview UIも今回へ含める。

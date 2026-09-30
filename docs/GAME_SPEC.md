@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-10-01 — Inventory Capacity tiers 5→12
+
+- 既存InventoryCapacityConfigの7段階を使用し最大12へ拡張。価格はBALANCE_SPECの2026-10-01表を正本とする。購入後は既存Update UIが次段階を表示し、12でMAXとなる。購入処理・Transaction・Ownership・Remote・Run・HUD・UIデザインは未変更。
+
 ## 2026-09-30 — Inventory Capacity purchase (Phase 5G)
 
 - `PlayerData_v1`の既存Playerキーへ`InventoryCapacity`を永続化。未保存値は5。正本はPlayerDataServiceで、RunInventoryServiceはこの値を参照して現在Runにも反映する。Count / Items / RunIdは購入で変更しない。

@@ -1,3 +1,8 @@
+# 2026-10-01 — Inventory Capacity tiers 5→12
+
+- Expanded only the upgrade catalogue to seven tiers priced at 5 / 15 / 30 / 75 / 150 / 1,000 / 4,500 Win; capacity 12 uses the existing MAX presentation.
+- One Play verified actual 5→6 and 6→7 purchases, the next 7→8 / 30 price and trophy icon, plus client-only capacity-12 MAX presentation. Existing purchase/save/UI code unchanged; Place/GUI unsaved, Play stopped in Edit.
+
 # 2026-09-30 — Inventory Capacity purchase Phase 5G
 
 - Added persistent InventoryCapacity (legacy default 5), one configurable 5→6 tier at 100 Win, server validation and an atomic fenced debit/capacity/receipt write. Ambiguous saves retain the operation ID behind the existing save gate and never refund or charge twice.

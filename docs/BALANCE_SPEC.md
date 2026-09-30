@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-10-01 — Inventory Capacity tiers 5→12
+
+- InventoryCapacityConfigのUpgradesを拡張。5→6: 5 Win、6→7: 15 Win、7→8: 30 Win、8→9: 75 Win、9→10: 150 Win、10→11: 1,000 Win、11→12: 4,500 Win。12の次段階は未設定でMAX。下記Phase 5Gの100 Win設定を置き換える。
+
 ## 2026-09-30 — Inventory Capacity (Phase 5G)
 
 - 初期Capacity 5 → 購入後6、仮価格100 Win。正本は`ReplicatedStorage.Config.InventoryCapacityConfig`のDefaultCapacity / Upgrades。6→7以降は未設定。Boss Drop / Rarity / その他の購入価格は未変更。
