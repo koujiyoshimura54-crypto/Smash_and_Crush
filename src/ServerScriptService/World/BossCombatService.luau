@@ -2,14 +2,16 @@ local contexts={}
 local function forWorld(worldId)
  assert(worldId==1 or worldId==2,"Unsupported world")
  if contexts[worldId] then return contexts[worldId] end
--- World1 Boss-config encounters. Each boss decision survives leaving its zone.
+-- World1 uses real Strength damage. World2 retains its existing encounter rules.
+-- Encounter HP and the battle-start damage snapshot survive leaving the zone.
 local Strength=require(game.ServerScriptService.Services.StrengthManager)
 local ItemService=require(game.ServerScriptService.Services.ItemService)
 local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1BossConfig"))
 local WorldBalance=worldId==2 and require(game.ReplicatedStorage.Config.World2BossConfig) or BossConfig
 local M={}
 local CombatConfig=require(game.ReplicatedStorage.Config:WaitForChild("CombatConfig"))
-M.MaxAttackCount=CombatConfig.MaxAttackCount
+-- The legacy attack limit belongs to World2 only.
+M.MaxAttackCount=worldId==2 and CombatConfig.MaxAttackCount or nil
 M.AttackInterval=CombatConfig.AttackInterval
 M.AttackDuration=0.6
 M.StageConfig={}
@@ -27,15 +29,17 @@ table.freeze(M.StageConfig)
 local active=setmetatable({}, {__mode="k"})
 local encounters=setmetatable({}, {__mode="k"})
 local pending=setmetatable({}, {__mode="k"})
-local rng=Random.new()
+local rng=worldId==2 and Random.new() or nil
 function M.GetStageConfig(stage) return M.StageConfig[stage] end
 -- Legacy helper retained for archived LevelCombatTests only; not used by encounters.
 function M.GetWinChance(level,recommended)
  return math.clamp(1-(recommended-level)*0.2,0,1)
 end
--- Ratio is based on raw BattleStartStrength, before Glove and wall carryover.
-function M.GetStrengthRatioWinChance(ratio)
- return BossConfig.GetLotteryWinChance(ratio)
+-- Compatibility for World2 only; World1 never draws or plans a result.
+if worldId==2 then
+ function M.GetStrengthRatioWinChance(ratio)
+  return BossConfig.GetLotteryWinChance(ratio)
+ end
 end
 function M.Begin(player,boss,stage)
  local config=assert(M.StageConfig[stage],"Invalid combat stage")
@@ -48,16 +52,16 @@ function M.Begin(player,boss,stage)
  local battleDamage=damage*(1+gloveBonus)
  local level=Strength.GetLevel(player)
  local ratio=damage/config.RequiredStrength
- local chance=M.GetStrengthRatioWinChance(ratio)
- local roll
- local route
- if ratio>=1 then
-  route="LEVEL_DAMAGE" -- A: no lottery, ordinary damage, no five-hit clamp.
- else
-  route="LOTTERY_MISS" -- C: ordinary damage with a five-attack limit.
-  if chance>0 then
-   roll=rng:NextNumber()
-   if roll<chance then route="LOTTERY_WIN" end -- B only: fixed five attacks.
+ local chance,roll
+ local route=worldId==1 and "STRENGTH_DAMAGE" or "LEVEL_DAMAGE"
+ if worldId==2 then
+  chance=M.GetStrengthRatioWinChance(ratio)
+  if ratio<1 then
+   route="LOTTERY_MISS"
+   if chance>0 then
+    roll=rng:NextNumber()
+    if roll<chance then route="LOTTERY_WIN" end
+   end
   end
  end
  s={Boss=boss,Stage=stage,MaxHP=config.MaxHP,HP=config.MaxHP,Strength=damage,
@@ -69,7 +73,9 @@ function M.Begin(player,boss,stage)
   s.HP=math.max(route=="LOTTERY_WIN" and 1 or 0,s.HP-carry.Damage)
   pending[player]=nil
  end
- s.LossPlanned=s.Route=="LOTTERY_MISS" and s.HP-s.BattleDamage*M.MaxAttackCount>0
+ if worldId==2 then
+  s.LossPlanned=s.Route=="LOTTERY_MISS" and s.HP-s.BattleDamage*M.MaxAttackCount>0
+ end
  saved[stage]=s;active[player]=s
  return s
 end
@@ -87,13 +93,13 @@ function M.Attack(player)
  if not s then return "Inactive",nil end
  if s.Completed then return "Complete",s end
  s.Attacks+=1
- if s.Route=="LOTTERY_WIN" then
+ if worldId==2 and s.Route=="LOTTERY_WIN" then
   s.HP=s.Attacks>=M.MaxAttackCount and 0 or math.max(1,s.HP-s.Strength)
  else
   s.HP=math.max(0,s.HP-s.BattleDamage)
  end
  if s.HP<=0 then s.Completed=true;return "Win",s end
- if s.Route=="LOTTERY_MISS" and s.Attacks>=M.MaxAttackCount then
+ if worldId==2 and s.Route=="LOTTERY_MISS" and s.Attacks>=M.MaxAttackCount then
   s.Completed=true;return "Lose",s
  end
  return "Active",s

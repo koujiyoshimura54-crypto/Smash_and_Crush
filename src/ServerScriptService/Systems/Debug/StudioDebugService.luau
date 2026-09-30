@@ -92,9 +92,9 @@ function M.GetBalanceSnapshot(player)
   TreadmillMultiplier=tier and tier.Multiplier or 1,
   Speed=Speed.GetState(player),AppliedWalkSpeed=h and h.WalkSpeed,
   Win=player:GetAttribute("Win"),BossMaxHP=BossConfig.GetMaxHP(stage),
-  BossRequiredStrength=required,LotteryRatio=required and strength/required,
-  LotteryChancePercent=required and strength<required and BossConfig.GetLotteryWinChance(strength/required)*100 or 0,
-  LotteryRoute=required and strength>=required and "LEVEL_DAMAGE" or "LOTTERY",
+  BossRequiredStrength=required,StrengthRatio=required and strength/required,
+  BossDamage=strength*(1+Item.GetGloveBossDamageBonus(player)),
+  BossDamageRoute="STRENGTH_DAMAGE",
   TrophyCollections=Trophy.GetStudioCollectionCounts(player),
  }
 end

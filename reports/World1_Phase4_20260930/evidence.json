@@ -1,0 +1,1513 @@
+{
+  "date": "2026-09-30",
+  "placeId": 101572058398926,
+  "reports": [
+    {
+      "isFighting": false,
+      "maxHP": 375,
+      "carry": 0,
+      "initialHP": 375,
+      "activeAfterFive": false,
+      "playerHP": 100,
+      "chaseState": "Idle",
+      "result": "WIN",
+      "hits": [
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": -4.0531158447265625e-06,
+          "hp": 300,
+          "n": 1
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 0.5085570812225342,
+          "hp": 225,
+          "n": 2
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.0239739418029785,
+          "hp": 150,
+          "n": 3
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.5419390201568604,
+          "hp": 75,
+          "n": 4
+        },
+        {
+          "completed": true,
+          "playerHP": 100,
+          "t": 2.0579261779785156,
+          "hp": 0,
+          "n": 5
+        }
+      ],
+      "bossAttackStopped": true,
+      "route": "STRENGTH_DAMAGE",
+      "label": "A_100_manual",
+      "strength": 75,
+      "glove": 0,
+      "totalHits": 5,
+      "auto": false,
+      "health": [
+        {
+          "hp": 75,
+          "t": 1.0090100765228271
+        },
+        {
+          "hp": 50,
+          "t": 2.007991075515747
+        }
+      ],
+      "elapsed": 2.0581910610198975,
+      "currentStage": 2,
+      "gauge": 0,
+      "bossAttacks": [
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 1.008958101272583,
+          "hp": 75,
+          "n": 1
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 2.0079710483551025,
+          "hp": 50,
+          "n": 2
+        }
+      ],
+      "damage": 75
+    },
+    {
+      "isFighting": false,
+      "maxHP": 375,
+      "carry": 0,
+      "initialHP": 375,
+      "activeAfterFive": true,
+      "playerHP": 100,
+      "chaseState": "Idle",
+      "result": "WIN",
+      "hits": [
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": -2.86102294921875e-06,
+          "hp": 315,
+          "n": 1
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 0.5086121559143066,
+          "hp": 255,
+          "n": 2
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.0254650115966797,
+          "hp": 195,
+          "n": 3
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.5418992042541504,
+          "hp": 135,
+          "n": 4
+        },
+        {
+          "completed": false,
+          "playerHP": 50,
+          "t": 2.058488130569458,
+          "hp": 75,
+          "n": 5
+        },
+        {
+          "completed": false,
+          "playerHP": 50,
+          "t": 2.574679136276245,
+          "hp": 15,
+          "n": 6
+        },
+        {
+          "completed": true,
+          "playerHP": 100,
+          "t": 3.091776132583618,
+          "hp": 0,
+          "n": 7
+        }
+      ],
+      "bossAttackStopped": true,
+      "route": "STRENGTH_DAMAGE",
+      "label": "B_80_manual",
+      "strength": 60,
+      "glove": 0,
+      "totalHits": 7,
+      "auto": false,
+      "health": [
+        {
+          "hp": 75,
+          "t": 1.010462999343872
+        },
+        {
+          "hp": 50,
+          "t": 2.0096960067749023
+        },
+        {
+          "hp": 25,
+          "t": 3.0101191997528076
+        }
+      ],
+      "elapsed": 3.0921339988708496,
+      "currentStage": 2,
+      "gauge": 0,
+      "bossAttacks": [
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 1.010430097579956,
+          "hp": 75,
+          "n": 1
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 2.0096781253814697,
+          "hp": 50,
+          "n": 2
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 3.010099172592163,
+          "hp": 25,
+          "n": 3
+        }
+      ],
+      "damage": 60
+    },
+    {
+      "isFighting": false,
+      "maxHP": 375,
+      "carry": 0,
+      "initialHP": 375,
+      "activeAfterFive": true,
+      "playerHP": 100,
+      "chaseState": "Returning",
+      "result": "WIN",
+      "hits": [
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": -2.86102294921875e-06,
+          "hp": 330,
+          "n": 1
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 0.5110199451446533,
+          "hp": 285,
+          "n": 2
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 1.0262651443481445,
+          "hp": 240,
+          "n": 3
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 1.5437309741973877,
+          "hp": 195,
+          "n": 4
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 2.059354066848755,
+          "hp": 150,
+          "n": 5
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 2.5764031410217285,
+          "hp": 105,
+          "n": 6
+        },
+        {
+          "completed": false,
+          "playerHP": 50,
+          "t": 3.0926661491394043,
+          "hp": 60,
+          "n": 7
+        },
+        {
+          "completed": false,
+          "playerHP": 50,
+          "t": 3.6099259853363037,
+          "hp": 15,
+          "n": 8
+        },
+        {
+          "completed": true,
+          "playerHP": 100,
+          "t": 4.127474069595337,
+          "hp": 0,
+          "n": 9
+        }
+      ],
+      "bossAttackStopped": true,
+      "route": "STRENGTH_DAMAGE",
+      "label": "C_60_manual_MISS",
+      "strength": 45,
+      "glove": 0,
+      "totalHits": 9,
+      "auto": false,
+      "health": [
+        {
+          "hp": 75,
+          "t": 2.01102614402771
+        },
+        {
+          "hp": 50,
+          "t": 3.0102710723876953
+        },
+        {
+          "hp": 25,
+          "t": 4.009907960891724
+        }
+      ],
+      "elapsed": 4.1277289390563965,
+      "currentStage": 2,
+      "gauge": 0,
+      "bossAttacks": [
+        {
+          "reach": 9,
+          "hit": false,
+          "distance": 37.21951961517334,
+          "t": 1.0102009773254395,
+          "hp": 100,
+          "n": 1
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 2.011000156402588,
+          "hp": 75,
+          "n": 2
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 3.010251998901367,
+          "hp": 50,
+          "n": 3
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 4.009891033172607,
+          "hp": 25,
+          "n": 4
+        }
+      ],
+      "damage": 45
+    },
+    {
+      "isFighting": false,
+      "maxHP": 375,
+      "carry": 0,
+      "initialHP": 375,
+      "playerHP": 100,
+      "chaseState": "Idle",
+      "result": "WIN",
+      "hits": [
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": -2.86102294921875e-06,
+          "hp": 262.5,
+          "n": 1
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 0.5199069976806641,
+          "hp": 150,
+          "n": 2
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.0361740589141846,
+          "hp": 37.5,
+          "n": 3
+        },
+        {
+          "completed": true,
+          "playerHP": 100,
+          "t": 1.5530180931091309,
+          "hp": 0,
+          "n": 4
+        }
+      ],
+      "bossAttackStopped": true,
+      "route": "STRENGTH_DAMAGE",
+      "auto": false,
+      "strength": 112.5,
+      "glove": 0,
+      "totalHits": 4,
+      "damage": 112.5,
+      "health": [
+        {
+          "hp": 75,
+          "t": 1.003986120223999
+        }
+      ],
+      "elapsed": 1.553253173828125,
+      "currentStage": 2,
+      "gauge": 0,
+      "label": "D_150_manual",
+      "bossAttacks": [
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 1.003965139389038,
+          "hp": 75,
+          "n": 1
+        }
+      ]
+    },
+    {
+      "isFighting": false,
+      "maxHP": 375,
+      "carry": 0,
+      "initialHP": 375,
+      "activeAfterFive": false,
+      "playerHP": 100,
+      "chaseState": "Idle",
+      "result": "WIN",
+      "hits": [
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 0.5180470943450928,
+          "hp": 300,
+          "n": 1
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.3181569576263428,
+          "hp": 225,
+          "n": 2
+        },
+        {
+          "completed": false,
+          "playerHP": 50,
+          "t": 2.200160026550293,
+          "hp": 150,
+          "n": 3
+        },
+        {
+          "completed": false,
+          "playerHP": 25,
+          "t": 3.1011950969696045,
+          "hp": 75,
+          "n": 4
+        },
+        {
+          "completed": true,
+          "playerHP": 100,
+          "t": 3.9668750762939453,
+          "hp": 0,
+          "n": 5
+        }
+      ],
+      "bossAttackStopped": true,
+      "route": "STRENGTH_DAMAGE",
+      "label": "A_100_auto",
+      "strength": 75,
+      "glove": 0,
+      "totalHits": 5,
+      "auto": true,
+      "health": [
+        {
+          "hp": 75,
+          "t": 1.018320083618164
+        },
+        {
+          "hp": 50,
+          "t": 2.0005838871002197
+        },
+        {
+          "hp": 25,
+          "t": 3.000962018966675
+        }
+      ],
+      "elapsed": 3.966878890991211,
+      "currentStage": 2,
+      "gauge": 0,
+      "bossAttacks": [
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 1.0182991027832031,
+          "hp": 75,
+          "n": 1
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 2.0005650520324707,
+          "hp": 50,
+          "n": 2
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 3.000938892364502,
+          "hp": 25,
+          "n": 3
+        }
+      ],
+      "damage": 75
+    },
+    {
+      "isFighting": false,
+      "maxHP": 375,
+      "carry": 0,
+      "initialHP": 375,
+      "activeAfterFive": true,
+      "playerHP": 0,
+      "chaseState": "Idle",
+      "result": "DEATH",
+      "hits": [
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": -3.0994415283203125e-06,
+          "hp": 330,
+          "n": 1
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 0.5110909938812256,
+          "hp": 285,
+          "n": 2
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.026444911956787,
+          "hp": 240,
+          "n": 3
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.5439648628234863,
+          "hp": 195,
+          "n": 4
+        },
+        {
+          "completed": false,
+          "playerHP": 50,
+          "t": 2.060067892074585,
+          "hp": 150,
+          "n": 5
+        },
+        {
+          "completed": false,
+          "playerHP": 50,
+          "t": 2.5762100219726562,
+          "hp": 105,
+          "n": 6
+        },
+        {
+          "completed": false,
+          "playerHP": 25,
+          "t": 3.0927300453186035,
+          "hp": 60,
+          "n": 7
+        },
+        {
+          "completed": false,
+          "playerHP": 25,
+          "t": 3.6092588901519775,
+          "hp": 15,
+          "n": 8
+        }
+      ],
+      "bossAttackStopped": true,
+      "route": "STRENGTH_DAMAGE",
+      "label": "C_60_manual_close_death",
+      "strength": 45,
+      "glove": 0,
+      "totalHits": 8,
+      "auto": false,
+      "health": [
+        {
+          "hp": 75,
+          "t": 1.0108909606933594
+        },
+        {
+          "hp": 50,
+          "t": 2.0103049278259277
+        },
+        {
+          "hp": 25,
+          "t": 3.010603904724121
+        },
+        {
+          "hp": 0,
+          "t": 4.009938955307007
+        }
+      ],
+      "elapsed": 4.02790093421936,
+      "currentStage": 1,
+      "gauge": 375,
+      "bossAttacks": [
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 1.0108709335327148,
+          "hp": 75,
+          "n": 1
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 2.010284900665283,
+          "hp": 50,
+          "n": 2
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 3.0105838775634766,
+          "hp": 25,
+          "n": 3
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 4.009929895401001,
+          "hp": 0,
+          "n": 4
+        }
+      ],
+      "damage": 45
+    },
+    {
+      "totalHits": 6,
+      "label": "carry_80_actual_walls",
+      "carry": 25,
+      "beforeCombatHP": 375,
+      "strength": 60,
+      "walls": [
+        {
+          "next": 1,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 1
+        },
+        {
+          "next": 2,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 2
+        },
+        {
+          "next": 2,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 3
+        },
+        {
+          "next": 3,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 4
+        },
+        {
+          "next": 3,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 5
+        },
+        {
+          "next": 3,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 6
+        },
+        {
+          "next": 4,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 7
+        },
+        {
+          "next": 4,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 8
+        },
+        {
+          "next": 4,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 9
+        },
+        {
+          "next": 5,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 10
+        }
+      ],
+      "hpMax": 375,
+      "unlocked": true,
+      "playerHP": 100,
+      "hits": [
+        {
+          "hp": 290,
+          "n": 1
+        },
+        {
+          "hp": 230,
+          "n": 2
+        },
+        {
+          "hp": 170,
+          "n": 3
+        },
+        {
+          "hp": 110,
+          "n": 4
+        },
+        {
+          "hp": 50,
+          "n": 5
+        },
+        {
+          "hp": 0,
+          "n": 6
+        }
+      ],
+      "currentStage": 2,
+      "initialHP": 350,
+      "result": "WIN",
+      "damage": 60
+    },
+    {
+      "totalHits": 1,
+      "label": "carry_high_actual_walls",
+      "carry": 375,
+      "beforeCombatHP": 375,
+      "strength": 1000,
+      "walls": [
+        {
+          "next": 5,
+          "reason": "Combat",
+          "accepted": true,
+          "hit": 1
+        }
+      ],
+      "hpMax": 375,
+      "unlocked": true,
+      "playerHP": 100,
+      "hits": [
+        {
+          "hp": 0,
+          "n": 1
+        }
+      ],
+      "currentStage": 2,
+      "initialHP": 0,
+      "result": "WIN",
+      "damage": 1000
+    },
+    {
+      "isFighting": false,
+      "maxHP": 375,
+      "carry": 0,
+      "initialHP": 375,
+      "activeAfterFive": true,
+      "playerHP": 0,
+      "chaseState": "Returning",
+      "result": "DEATH",
+      "hits": [
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 0.5123448371887207,
+          "hp": 315,
+          "n": 1
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 1.396103858947754,
+          "hp": 255,
+          "n": 2
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 2.297264814376831,
+          "hp": 195,
+          "n": 3
+        },
+        {
+          "completed": false,
+          "playerHP": 50,
+          "t": 3.17879581451416,
+          "hp": 135,
+          "n": 4
+        },
+        {
+          "completed": false,
+          "playerHP": 25,
+          "t": 4.0797858238220215,
+          "hp": 75,
+          "n": 5
+        },
+        {
+          "completed": false,
+          "playerHP": 25,
+          "t": 4.978734970092773,
+          "hp": 15,
+          "n": 6
+        }
+      ],
+      "bossAttackStopped": true,
+      "route": "STRENGTH_DAMAGE",
+      "label": "B_80_auto_moving_death",
+      "strength": 60,
+      "glove": 0,
+      "totalHits": 6,
+      "auto": true,
+      "health": [
+        {
+          "hp": 75,
+          "t": 2.013363838195801
+        },
+        {
+          "hp": 50,
+          "t": 3.013706922531128
+        },
+        {
+          "hp": 25,
+          "t": 4.013377904891968
+        },
+        {
+          "hp": 0,
+          "t": 5.013495922088623
+        }
+      ],
+      "elapsed": 5.031599044799805,
+      "currentStage": 1,
+      "gauge": 375,
+      "bossAttacks": [
+        {
+          "reach": 9,
+          "hit": false,
+          "distance": 15.797236442565918,
+          "t": 1.0136449337005615,
+          "hp": 100,
+          "n": 1
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 1.800002098083496,
+          "t": 2.013340950012207,
+          "hp": 75,
+          "n": 2
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 1.7999982833862305,
+          "t": 3.0136919021606445,
+          "hp": 50,
+          "n": 3
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 1.7999982833862305,
+          "t": 4.013362884521484,
+          "hp": 25,
+          "n": 4
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 1.7999982833862305,
+          "t": 5.013485908508301,
+          "hp": 0,
+          "n": 5
+        }
+      ],
+      "damage": 60
+    },
+    {
+      "attackStopped": true,
+      "label": "death_return_and_respawn",
+      "chase": "Idle",
+      "alive": 100,
+      "respawn": "Workspace.GeneratedMap.TrainingArea.SpawnLocation",
+      "fighting": false,
+      "gauge": 375,
+      "stage": 1,
+      "homeError": 0
+    },
+    {
+      "isFighting": false,
+      "maxHP": 375,
+      "carry": 0,
+      "initialHP": 375,
+      "activeAfterFive": false,
+      "playerHP": 100,
+      "chaseState": "Idle",
+      "result": "WIN",
+      "hits": [
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": -2.86102294921875e-06,
+          "hp": 296.25,
+          "n": 1
+        },
+        {
+          "completed": false,
+          "playerHP": 100,
+          "t": 0.5120739936828613,
+          "hp": 217.5,
+          "n": 2
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.0285420417785645,
+          "hp": 138.75,
+          "n": 3
+        },
+        {
+          "completed": false,
+          "playerHP": 75,
+          "t": 1.5462400913238525,
+          "hp": 60,
+          "n": 4
+        },
+        {
+          "completed": true,
+          "playerHP": 100,
+          "t": 2.0614280700683594,
+          "hp": 0,
+          "n": 5
+        }
+      ],
+      "bossAttackStopped": true,
+      "route": "STRENGTH_DAMAGE",
+      "label": "actual_glove_100",
+      "strength": 75,
+      "glove": 0.05,
+      "totalHits": 5,
+      "auto": false,
+      "health": [
+        {
+          "hp": 75,
+          "t": 1.0122220516204834
+        },
+        {
+          "hp": 50,
+          "t": 2.0130741596221924
+        }
+      ],
+      "elapsed": 2.0615501403808594,
+      "currentStage": 2,
+      "gauge": 0,
+      "bossAttacks": [
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 1.0122029781341553,
+          "hp": 75,
+          "n": 1
+        },
+        {
+          "reach": 9,
+          "hit": true,
+          "distance": 0,
+          "t": 2.0130560398101807,
+          "hp": 50,
+          "n": 2
+        }
+      ],
+      "damage": 78.75
+    },
+    {
+      "world2": [
+        {
+          "ratio": 0,
+          "route": "LOTTERY_MISS",
+          "result": "Complete"
+        },
+        {
+          "ratio": 0.5,
+          "route": "LOTTERY_MISS",
+          "result": "Complete"
+        },
+        {
+          "ratio": 1,
+          "route": "LEVEL_DAMAGE",
+          "result": "Complete"
+        },
+        {
+          "ratio": 1.5,
+          "route": "LEVEL_DAMAGE",
+          "result": "Complete"
+        }
+      ],
+      "world1": [
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 1,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 1,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 1,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 1,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 1,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 1,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 2,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 2,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 2,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 2,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 2,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 2,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 3,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 3,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 3,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 3,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 3,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 3,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 4,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 4,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 4,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 4,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 4,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 4,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 5,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 5,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 5,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 5,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 5,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 5,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 6,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 6,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 6,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 6,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 6,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 6,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 7,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 7,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 7,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 7,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 7,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 7,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 8,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 8,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 8,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 8,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 8,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 8,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 9,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 9,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 9,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 9,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 9,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 9,
+          "hits": 4
+        },
+        {
+          "result": "Active",
+          "ratio": 0,
+          "stage": 10,
+          "hits": 12
+        },
+        {
+          "result": "Win",
+          "ratio": 0.5,
+          "stage": 10,
+          "hits": 10
+        },
+        {
+          "result": "Win",
+          "ratio": 0.6,
+          "stage": 10,
+          "hits": 9
+        },
+        {
+          "result": "Win",
+          "ratio": 0.8,
+          "stage": 10,
+          "hits": 7
+        },
+        {
+          "result": "Win",
+          "ratio": 1,
+          "stage": 10,
+          "hits": 5
+        },
+        {
+          "result": "Win",
+          "ratio": 1.5,
+          "stage": 10,
+          "hits": 4
+        }
+      ],
+      "world1Cases": 60,
+      "label": "service_regression"
+    }
+  ],
+  "restored": {
+    "badgesRestored": true,
+    "dropsRestored": true,
+    "overrideRestored": true,
+    "anchored": false,
+    "dataRestored": true,
+    "fighting": false,
+    "gloveRestored": true,
+    "stage": 1,
+    "attackStopped": true
+  },
+  "events": [
+    {
+      "type": "BossResult",
+      "result": "WIN",
+      "stage": 1
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1
+    },
+    {
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2
+    },
+    {
+      "type": "BossResult",
+      "result": "WIN",
+      "stage": 1
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1
+    },
+    {
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2
+    },
+    {
+      "type": "BossResult",
+      "result": "WIN",
+      "stage": 1
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1
+    },
+    {
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2
+    },
+    {
+      "type": "BossResult",
+      "result": "WIN",
+      "stage": 1
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1
+    },
+    {
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2
+    },
+    {
+      "type": "BossResult",
+      "result": "WIN",
+      "stage": 1
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1
+    },
+    {
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2
+    },
+    {
+      "type": "BossResult",
+      "result": "WIN",
+      "stage": 1
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1
+    },
+    {
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2
+    },
+    {
+      "type": "BossResult",
+      "result": "WIN",
+      "stage": 1
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1
+    },
+    {
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2
+    },
+    {
+      "type": "BossResult",
+      "result": "WIN",
+      "stage": 1
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1
+    },
+    {
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2
+    }
+  ],
+  "audit": {
+    "baselineScripts": 510,
+    "changed": [
+      "ServerScriptService.World.EnemyManager",
+      "ServerScriptService.World.BossCombatService",
+      "ServerScriptService.Systems.Debug.StudioDebugService"
+    ],
+    "temporaryRunner": false,
+    "temporaryModule": false,
+    "combatConfig": "return table.freeze({MaxAttackCount=5,AttackInterval=0.8})\n",
+    "compileErrors": [],
+    "attackUnchanged": true,
+    "autoConfig": "-- Input cadence only; Strength multipliers and automatic combat timing are unchanged.\nreturn table.freeze({\n AutoInterval=0.5,\n ManualTapCooldown=0.25,\n ManualAttackCooldown=0.5,\n ManualAttackAnimationSpeed=2.0,\n})\n",
+    "chaseUnchanged": true
+  }
+}

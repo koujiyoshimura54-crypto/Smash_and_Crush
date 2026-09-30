@@ -250,7 +250,9 @@ Wallの攻撃力は攻撃時のStrength。Glove補正はWallには加えない�
 
 World1の進行順は各Stage共通で`Wall .1 → .2 → .3 → .4 → MiniBoss → 次Stage`を維持する。Wall .4撃破時点で接触前からBossDisplaySurfaceとBoss Gauge一式を個人表示する。Stage1〜9は次Stage .1 Wall、Stage10は既存Stage10BoundaryWallのPlayer側0.5stud手前に専用面をRuntime生成する。UI中心はBossの実寸高さ×0.6＋上下補正をBoss底面から加算し、名前・Stage表示はHPの少し上へ配置する。Wall高さでUI位置を決めない。Boss撃破通知でSurfaceとGaugeを隠し、Stage1〜9では次Stage .1のStage表示と実Current / Max Wall HPを接触前から即表示する。Combat順序、進行条件、WorldComplete / Gate処理は変更しない。
 
-Bossは戦闘開始時のStrength・Glove・RequiredStrength比率を固定する。比率1以上は通常ダメージ、1未満は抽選ルート。抽選と回数制限はBALANCE_SPEC。離脱時は現在戦闘を終了し、同じBossのHP・抽選結果は同Run内で保持する。Boss再生成やRunリセットとの境界はEnemyManager/BossCombatServiceに従う。
+2026-09-30 Phase 4：World1 Bossは戦闘開始時のStrength・Gloveを保持し、全Strength帯で実DamageだけをHPから引く。Strength不足時の抽選・5Hit強制勝利・5Hit強制敗北は使用しない。RequiredStrengthは補正・Carryなしで約5Hit撃破する推奨値。Boss HP<=0なら通常勝利、5Hit後も生存していれば戦闘継続。同Run内の遭遇Strength・HP保持、死亡・Runリセットの境界は既存EnemyManager/BossCombatServiceに従う。World2は今回変更していない。詳細はBALANCE_SPECと[Phase 4検証](../reports/World1_Phase4_20260930/README.md)。
+
+Phase 2〜3の現在実装：.4 Wall破壊でChaseと個人GaugeのBoss頭上追従を開始するが、正式CombatまではBoss攻撃・Player自動攻撃を開始しない。Chase速度28、Arena内PivotTo移動を維持。正式Combat後はHumanoid HP100へBossが25 Damageを1秒間隔で与え、範囲外はMISS。正常戦闘終了時はPlayer HP全回復、Player死亡時はBoss HP全回復・初期位置復帰・Stage1/Lobbyへリセットする。上記の壁面固定Gauge説明はPhase 2.1以前の履歴であり、現在の追従方式ではない。
 
 Boss撃破で個人のStageが進む。Stage10撃破でWorldComplete=true。敗北では死亡演出後にLobbyへ再SpawnしRunをリセットする。Stage6〜10のBoss差し替え、大型Collider、HP UIは実装済み。過去のシーサー用分岐や名前だけのコメントを現在のBoss仕様と混同しない。
 

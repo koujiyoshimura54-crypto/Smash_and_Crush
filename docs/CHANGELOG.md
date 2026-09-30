@@ -1,3 +1,11 @@
+# 2026-09-30 — World1 Boss Phase 4: Strength damage combat
+
+- Removed World1 encounter lottery and forced five-hit outcomes; retained damage snapshots, Glove bonus, wall carry and World2 legacy behavior.
+- Updated the Studio balance snapshot to report real Boss damage rather than obsolete World1 lottery odds.
+- Verified Stage01 Strength bands, low-Strength victory with a Boss MISS, normal death/reset, carry, Glove application and progression; checked all ten Stage configurations through the live service.
+- Chase, Boss attacks, HP, automatic 0.8s / manual 0.5s timing and the known toggle-hit issue remain unchanged. Studio returned to Edit without saving the Place.
+- Evidence: [Phase 4 report](../reports/World1_Phase4_20260930/README.md).
+
 # 2026-09-19 — Replace element set text with icon
 
 - Replaced FIRE / ICE / ELECTRIC SET text with the matching existing Element image and a compact `×1.5` label.

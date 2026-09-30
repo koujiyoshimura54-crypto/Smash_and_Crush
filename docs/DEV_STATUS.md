@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-30 — World1 Boss Phase 4
+
+- World1の勝率抽選、5Hit強制勝利・敗北を撤廃。既存Strength×Glove補正で実HPを削り、RequiredStrengthは推奨値として維持。World2互換の抽選経路は維持。
+- Stage01の実Combat：100% / 80% / 60% / 150%で5 / 7 / 9 / 4Hit勝利。60%は位置制御でBoss初撃MISS、近距離ではBoss4撃で死亡。低Strength WIN / EnemyDefeated / StageCleared、Stage02進行、死亡後のStage1・Lobby・再戦を確認。
+- Stage01実壁Carryは60 Strengthで25、Boss開始HP350、6Hit撃破。Strength1000では余剰425により開始HP0となり、次の受付攻撃でWIN。従来Carryを維持した結果であり、追加上限は未導入。
+- 全10Stage×6Strength帯の実サービス検証60件、World2の決定的経路4件を旧実装と比較。Chase / BossAttackService / 攻撃周期設定は変更なし。
+- 一時検証条件を復元しStop→Edit。Place未保存。保管モデルの参照エラー・Infinite Yieldは対象外として未修正。旧Lottery前提のServerStorage.Testsは過去仕様の検証であり、今回の合格証拠には使用しない。
+- 詳細・検証範囲：[報告](../reports/World1_Phase4_20260930/README.md)、[実測](../reports/World1_Phase4_20260930/evidence.json)。
+
 ## 2026-09-22 — Abbreviated number localization exclusion
 
 - Marked NumberFormat-driven Strength, Level progress, Win, Strength gain, Boss HP, Wall HP, and reward amount labels as non-localized while retaining the separate AutoLocalized `StrengthUnit` label.

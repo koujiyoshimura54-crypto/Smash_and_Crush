@@ -270,22 +270,15 @@ Speed：Default WalkSpeed24、通常購入500 Winで32、Premium Passで40。速
 
 ## Boss Combat / Hit設計 / Carry
 
-攻撃間隔0.8秒、攻撃アニメーション時間0.6秒、Wall hit適用遅延0.18秒、Boss hit遅延0.5秒、接触監視0.1秒。
+2026-09-30 Phase 4：World1のStrength不足時の抽選・5Hit強制決着を撤廃。World2の既存ルールは変更していない。旧Lottery表/APIはWorld2互換用として残るが、World1 Begin/Attackは使用しない。
 
-Wallダメージは現在Strength（Gloveなし）。Boss通常ダメージは遭遇開始時Strength×(1+Glove加算率)。Bossの適正判定比率は **補正前Strength / RequiredStrength** で、GloveやCarryを必要Strengthの代わりに使わない。
+自動攻撃間隔0.8秒、手動Boss攻撃Cooldown 0.5秒、攻撃アニメーション時間0.6秒、Wall自動hit適用遅延0.18秒、Boss自動hit遅延0.5秒、手動hitは受付時に即適用、接触監視0.1秒。予約済み自動Hit直後に手動Hitが成立する既知の約0.017秒問題は未修正。
 
-| 比率 | ルート / 勝利抽選率 |
-|---|---|
-| 1以上 | LEVEL_DAMAGE。抽選なし、HPによる決着、固定5回制限なし |
-| 0.6未満 | 抽選0% |
-| 0.6以上0.7未満 | 25% |
-| 0.7以上0.8未満 | 50% |
-| 0.8以上0.85未満 | 80% |
-| 0.85以上0.9未満 | 85% |
-| 0.9以上0.95未満 | 90% |
-| 0.95以上1未満 | 95% |
+Wallダメージは現在Strength（Gloveなし）。World1 Bossは全Strength帯で遭遇開始時Strength×(1+既存Glove加算率)をHPから引く。Gloveは一度だけ適用し、RequiredStrengthへのDamage Clampや新しい上限は追加しない。RequiredStrengthはGlove・Carryなしで約5Hit撃破する推奨値であり、参加制限ではない。MaxHP=RequiredStrength×5を維持する。
 
-比率1未満のLOTTERY_WINは5回で撃破するルート（途中HPを最低1に保ち、5回目で0）。LOTTERY_MISSはGlove込み通常ダメージでHP0なら勝利、5回までに倒せなければ敗北。旧Level差によるGetWinChanceヘルパーを現行比率抽選と混同しない。離脱しても同Runの遭遇Strength・HP・抽選結果を維持する。
+World1はHP<=0で勝利。5Hit後もBossが生存していれば6Hit以降へ継続し、事前に勝敗を計画しない。同Run内の遭遇Strength・Glove・HP保持は従来どおり。Player死亡時はPhase 3のリセットを維持する。
+
+Phase 3のBoss攻撃25 Damage / 1秒間隔、Player HP100、戦闘終了時全回復は未変更。Stage01の今回PlayではGlove・Carryなしで、Strength 75 / 60 / 45 / 112.5に対しDamage同値、MaxHP375、撃破5 / 7 / 9 / 4Hit。60%の9Hit勝利は位置を制御してBoss初撃をMISSさせた条件。近距離では8Hit後、Boss4撃目で死亡した。詳細：[Phase 4検証](../reports/World1_Phase4_20260930/README.md)。
 
 **Wall余剰は次WallへCarryし、Wall4からBossへもCarryする。現在実装済みだがBossへのCarryを今後維持するかは要検討（K03）。** Bossを常に満タンから開始する仕様ではない。
 

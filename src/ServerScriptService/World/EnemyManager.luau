@@ -980,7 +980,7 @@ local function updateCombat(p,manualRequest)
         if status=="Win" then
          send(p,{Type="BossResult",Result="WIN",Stage=n,SpawnGeneration=e:GetAttribute("SpawnGeneration")})
          defeat(p,n)
-        elseif status=="Lose" then
+        elseif worldId==2 and status=="Lose" then
          if BossAttack then BossAttack.Stop(p,false) end
          send(p,{Type="BossResult",Result="LOSE",Stage=n,SpawnGeneration=e:GetAttribute("SpawnGeneration")})
          Boss.End(p)
