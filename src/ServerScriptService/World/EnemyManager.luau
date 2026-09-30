@@ -1014,12 +1014,12 @@ local function updateCombat(p,manualRequest)
        send(p,{Type="CombatAttack",Id=ps.AttackSequence,Stage=n,Duration=Boss.AttackDuration,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
       end
       local attackPlayer,attackStage,attackPower=p,n,power
-      local attackTargetKey,attackEnemy=targetKey,e
       s.Pending+=1
       local function applyWallHit()
        s.Pending-=1
        if not inWorld(attackPlayer) or attackPlayer.Parent~=Players or sessions[attackPlayer]~=s or Stage.GetCurrentStageNumber(attackPlayer)~=attackStage or attackPlayer.Character~=ch or not hum or hum.Health<=0 then return end
-       local cleared,nextIndex,remaining=Wall.ApplyDamageForStage(attackPlayer,attackStage,attackPower)
+       -- Carry remains inside Walls 1-4; any remainder after Wall4 is discarded.
+       local cleared,nextIndex=Wall.ApplyDamageForStage(attackPlayer,attackStage,attackPower)
        for _,index in ipairs(cleared) do
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=index,Current=0,Max=Wall.GetStageConfig(attackStage).Walls[index]})
         send(attackPlayer,{Type="WallCleared",MajorStage=attackStage,Index=index,Next=nextIndex,State=Wall.GetSnapshotForStage(attackPlayer,attackStage),NextMax=(nextIndex<=4 and Wall.GetStageConfig(attackStage).Walls[nextIndex] or nil)})
@@ -1027,18 +1027,6 @@ local function updateCombat(p,manualRequest)
        if nextIndex<=4 then
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=nextIndex,Current=Wall.GetGaugeForStage(attackPlayer,attackStage,nextIndex),Max=Wall.GetStageConfig(attackStage).Walls[nextIndex]})
        elseif Wall.IsBossUnlockedForStage(attackPlayer,attackStage) then
-        if remaining>0 then
-         local carryBossMax=Boss.GetStageConfig(attackStage).MaxHP
-         local carryHP=Boss.QueueDamage(attackPlayer,attackEnemy,attackStage,carryBossMax,remaining)
-         if worldId==1 then
-          state(attackPlayer).Gauges[attackStage]=carryHP
-          if carryHP<=0 then
-           -- Finish in this wall hit, before recognition, Boss attacks or another input.
-           defeat(attackPlayer,attackStage)
-           return
-          end
-         end
-        end
         if Chase and table.find(cleared,4) then
          recognizedPlayers[attackPlayer]={Stage=attackStage,Character=ch,CombatStarted=false}
         end
