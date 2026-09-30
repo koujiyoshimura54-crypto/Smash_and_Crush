@@ -1,5 +1,13 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-30 — Run Return durable transaction (Phase 5F)
+
+- PlayerDataの同じキーへSessionOwnerTokenとRunReturnJournalを追加。Load時に一意Ownerを条件付きUpdateAsyncで取得し、PendingをCancelしてからLoadedにする。既存Grantedは維持。所有権取得の応答不明時も同じ試行を使い、別Ownerから取り戻さない。
+- Journalは戻る開始分だけを対象とし、TransactionId / OwnerToken / Sequence / RunId / ItemDelta / CreatedAt / Stateを保持。通常Run全体は永続化しない。Current JournalとOwner内の連番により、古いPrepare・Grant・Cancelを拒否する。
+- Pending保存の確認後に別UpdateAsyncでGrantする。OwnedItems加算とGrantedへの遷移は同じ書込で1回だけ。Grantedは永久確定とし、死亡・退出・応答消失・移動失敗でも取消しない。これはPhase 5Dの保存応答前rollback方針を置き換える。
+- Cancelは一致するPendingのみ。別ID／Owner／連番ならOwnedItems・metadataとも無変更。旧Sessionの通常Save、Item Mutation、Return、購入保存等は保存先Owner不一致で拒否する。管理者の明示Resetは特権操作として旧世代を失効させる。
+- Run Capacity、Drop、HUD、World2固有処理、装備・各Rewardの仕様は未変更。共通PlayerData保存へOwner検査が適用される。[検証記録](../reports/World1_RunReturn_Phase5F_20260930/README.md)。
+
 ## 2026-09-30 — World1 Return / bank Run Items (Phase 5D)
 
 - World1の「戻る」はServer検証後、現Runを凍結してSnapshotを既存ItemService一括Transactionへ渡す。同じPlayerData keyへのUpdateAsync成功とTransaction IDを確認した後にだけRunを空にし、旧RunIdを無効化してLobbyへ帰還する。0個でも帰還可能。Win報酬は発生しない。

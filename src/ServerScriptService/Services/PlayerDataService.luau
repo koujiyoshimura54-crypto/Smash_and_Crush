@@ -10,6 +10,7 @@ local CommunityConfig=require(game.ReplicatedStorage.Config:WaitForChild("Commun
 local ShopConfig=require(game.ReplicatedStorage.Config:WaitForChild("ShopProductConfig"))
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
 local PlayerDataService={}
+local Ownership=require(script.Parent.PlayerDataOwnership)
 local StoreConfig=require(game.ServerScriptService.Config:WaitForChild("DataStoreConfig"))
 local store=DSS:GetDataStore(StoreConfig.GetName("PlayerData_v1"))
 -- Explicit production handle used only by the Studio-authorized UserId reset path.
@@ -286,6 +287,11 @@ local function applyAttributes(player,d)
 end
 local function keyForUserId(userId) return "Player_"..tostring(userId) end
 local function key(player) return keyForUserId(player.UserId) end
+local function ownedUpdate(player,session,transform)
+ return Ownership.Update(store,key(player),session,transform,function()
+  return sessions[player]==session and not session.OwnershipLost
+ end)
+end
 
 function PlayerDataService.Get(player)
  local s=sessions[player]
@@ -380,19 +386,30 @@ local function freshResetData()
  return fresh
 end
 
-local function writeFreshReset(userId,fresh,targetStore)
+local function writeFreshReset(userId,fresh,targetStore,ownerSession,ownerPlayer)
  local saved
  local destination=targetStore or store
+ local resetOwner=ownerSession and ownerSession.OwnerToken or HttpService:GenerateGUID(false)
  local ok,err=pcall(function()
-  saved=destination:UpdateAsync(keyForUserId(userId),function(old,info)
+  local function transform(old,info)
    local users,meta=metadata(info)
    local merged=typeof(old)=="table" and table.clone(old) or {}
    for field,value in pairs(fresh) do
     merged[field]=typeof(value)=="table" and table.clone(value) or value
    end
    merged.ResetToken=fresh.ResetToken
+   merged.SessionOwnerToken=resetOwner
+   merged.RunReturnJournal=nil
+   meta.RunReturnId=nil;meta.RunReturnState=nil;meta.ItemMutationId=nil
    return merged,users,meta
-  end)
+  end
+  if ownerSession then
+   saved=Ownership.Update(destination,keyForUserId(userId),ownerSession,transform,
+    function() return sessions[ownerPlayer]==ownerSession end)
+  else
+   -- Explicit administrative reset revokes any former session, as ResetToken did.
+   saved=destination:UpdateAsync(keyForUserId(userId),transform)
+  end
  end)
  if not ok then return false,tostring(err) end
  return true,saved
@@ -408,7 +425,7 @@ function PlayerDataService.Reset(player)
  local fresh=freshResetData()
  s.Saving=true
  s.Loaded=false
- local ok,saved=writeFreshReset(userId,fresh)
+ local ok,saved=writeFreshReset(userId,fresh,nil,s,player)
  if not ok then
   s.Loaded=true
   s.Saving=false
@@ -509,24 +526,30 @@ function PlayerDataService.ResetProductionByUserId(userId,allowedStudioPlayer)
 end
 
 function PlayerDataService.Load(player)
- local existing=sessions[player]
- if existing and existing.Loaded then return true,existing.Data end
- if existing and existing.Loading then return false,"DataLoading" end
- local loadId=HttpService:GenerateGUID(false)
- sessions[player]={Loaded=false,Data=nil,Saving=false,Loading=true,LoadId=loadId}
- local ok,raw=pcall(function() return store:GetAsync(key(player)) end)
- local current=sessions[player]
- if not current or current.LoadId~=loadId then return false,"LoadSuperseded" end
+ local s=sessions[player]
+ if s and s.OwnershipLost then return false,"SessionOwnershipLost" end
+ if s and s.Loaded then return true,s.Data end
+ if s and s.Loading then return false,"DataLoading" end
+ if not s then
+  local token=HttpService:GenerateGUID(false)
+  s={Loaded=false,Data=nil,Saving=false,OwnerToken=token,ReturnSequence=0,
+   AcquireAttempt={Token=token}}
+  sessions[player]=s
+ end
+ s.Loading=true
+ -- The same acquisition attempt survives an ambiguous response. It may not
+ -- steal ownership back if a different server acquired this key meanwhile.
+ local ok,raw=pcall(Ownership.Acquire,store,key(player),s.AcquireAttempt,defaults,normalize,
+  function() return sessions[player]==s end)
+ if sessions[player]~=s then return false,"LoadSuperseded" end
+ s.Loading=false
  if not ok then
-  sessions[player]={Loaded=false,Data=nil,Saving=false}
+  if tostring(raw)=="SessionOwnershipLost" then s.OwnershipLost=true end
   return false,"DataStore load failed: "..tostring(raw)
  end
  local d,validationError=normalize(raw)
- if not d then
-  sessions[player]={Loaded=false,Data=nil,Saving=false}
-  return false,validationError
- end
- sessions[player]={Loaded=true,Data=d,Dirty=true,Saving=false,LastSave=nil,Loading=false,TimeRewardClock=os.clock()}
+ if not d then return false,validationError end
+ s.Loaded=true;s.Data=d;s.Dirty=true;s.LastSave=nil;s.TimeRewardClock=os.clock()
  applyAttributes(player,d)
  return true,d
 end
@@ -734,7 +757,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  local saved
  local superseded=false
  local ok,err=pcall(function()
-  saved=store:UpdateAsync(key(player),function(old,info)
+  saved=ownedUpdate(player,s,function(old,info)
    local users,meta=metadata(info)
    if old==nil then return payload,users,meta end
    if typeof(old)~="table" then error("Invalid saved PlayerData") end
@@ -920,8 +943,8 @@ function PlayerDataService.ResolveItemMutation(player)
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
  if op.RunReturn then
   return require(script.Parent.RunReturnPersistence).Resolve(player,s,op,{
-   Update=function(transform) return store:UpdateAsync(key(player),transform) end,
-   Current=function() return sessions[player]==s and s.Loaded and s.Data.ResetToken==op.ResetToken end,
+   Update=function(transform) return ownedUpdate(player,s,transform) end,
+   Current=function() return sessions[player]==s and s.Loaded and not s.OwnershipLost and s.Data.ResetToken==op.ResetToken end,
    Items=normalizeItems,Defaults=defaults,Metadata=metadata,ResetToken=resetToken,
   })
  end
@@ -933,7 +956,7 @@ function PlayerDataService.ResolveItemMutation(player)
  local deltas=op.Deltas or {[op.ItemId]=op.Delta}
  local rejection
  local ok,saved,info=pcall(function()
-  return store:UpdateAsync(key(player),function(old,keyInfo)
+  return ownedUpdate(player,s,function(old,keyInfo)
    rejection=nil
    if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
    local merged=old and table.clone(old) or defaults()
@@ -1249,7 +1272,9 @@ function PlayerDataService.ChangeItemCounts(player,deltas,timeReward)
   local context=timeReward.RunReturn
   if typeof(context.Id)~="string" or typeof(context.Validate)~="function" or not context.Validate() then return false,"StaleRun" end
   for _,delta in pairs(changes) do if delta<=0 then return false,"InvalidRewardItems" end end
-  op={Id=context.Id,WinPrice=0,ResetToken=s.Data.ResetToken,RunReturn=context}
+  s.ReturnSequence+=1
+  op={Id=context.Id,WinPrice=0,ResetToken=s.Data.ResetToken,RunReturn=context,
+   OwnerToken=s.OwnerToken,Sequence=s.ReturnSequence,RunId=context.RunId,CreatedAt=os.time()}
   context.Operation=op
  elseif timeReward and timeReward.CommunityReward then
   local reason
@@ -1296,7 +1321,7 @@ function PlayerDataService.GrantPurchasedItem(player,itemId,purchaseId,quantityV
  if not finite(intentSequence) or intentSequence<1 or intentSequence%1~=0 then return false,"InvalidIntentSequence" end
  s.Saving=true
  local ok,saved,info=pcall(function()
-  return store:UpdateAsync(key(player),function(old,keyInfo)
+  return ownedUpdate(player,s,function(old,keyInfo)
    if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
    local merged=old and table.clone(old) or defaults()
    local owned=assert(normalizeItems(merged.OwnedItems))
@@ -1373,7 +1398,7 @@ function PlayerDataService.ChangeSelectedSize(player,tier,config)
  if not finite(win) or win%1~=0 or win<price then return false,"NotEnoughWin",current,win end
  local token=s.Data.ResetToken;s.Saving=true
  local rejected
- local ok,saved=pcall(function() return store:UpdateAsync(key(player),function(old,info)
+ local ok,saved=pcall(function() return ownedUpdate(player,s,function(old,info)
   rejected=nil
   if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
   if resetToken(old)~=token then rejected="SaveSupersededByReset";return nil end
@@ -1408,7 +1433,7 @@ function PlayerDataService.PurchaseSpeed(player,id)
  local rejected
  local already=false
  local ok,saved=pcall(function()
-  return store:UpdateAsync(key(player),function(old,info)
+  return ownedUpdate(player,s,function(old,info)
    rejected=nil;already=false
    if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
    if resetToken(old)~=token then rejected="SaveSupersededByReset";return nil end

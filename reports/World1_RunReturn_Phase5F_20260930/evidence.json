@@ -1,0 +1,163 @@
+{
+  "integration": {
+    "total": 14,
+    "passed": 14,
+    "results": [
+      {
+        "name": "PDS 1 and 5; ordinary Save retains latest journal/count/equipment",
+        "passed": true
+      },
+      {
+        "name": "PDS T Granted / old cancel / U retry stays 16",
+        "passed": true
+      },
+      {
+        "name": "PDS Pending crash Recovery cancels; U produces 11",
+        "passed": true
+      },
+      {
+        "name": "PDS no grant after Pending save fails; retry works",
+        "passed": true
+      },
+      {
+        "name": "PDS AutoSave / BindToClose-equivalent cannot grant Pending",
+        "passed": true
+      },
+      {
+        "name": "PDS PlayerRemoving-equivalent Pending cancellation",
+        "passed": true
+      },
+      {
+        "name": "PDS PlayerRemoving-equivalent Granted response loss preserves items",
+        "passed": true
+      },
+      {
+        "name": "PDS old normal item mutation, Save and Reset rejected after handoff",
+        "passed": true
+      },
+      {
+        "name": "PDS normal current-owner Reset clears journal without losing owner",
+        "passed": true
+      },
+      {
+        "name": "PDS same callback replay / failure retry remains idempotent",
+        "passed": true
+      },
+      {
+        "name": "PDS ownership response failure cannot reclaim after B Load",
+        "passed": true
+      },
+      {
+        "name": "PDS first-ever Join initializes owner before normal Return",
+        "passed": true
+      },
+      {
+        "name": "PDS legacy boolean ownership and 5D marker migrate without loss",
+        "passed": true
+      },
+      {
+        "name": "PDS malformed journal fails Load without overwriting saved data",
+        "passed": true
+      }
+    ]
+  },
+  "unit": {
+    "total": 18,
+    "passed": 18,
+    "results": [
+      {
+        "name": "normal 1 / separate Pending and Grant",
+        "passed": true
+      },
+      {
+        "name": "normal 5 / response retry and callback replay",
+        "passed": true
+      },
+      {
+        "name": "Pending write failure cannot grant",
+        "passed": true
+      },
+      {
+        "name": "Pending response loss / retry uses same journal",
+        "passed": true
+      },
+      {
+        "name": "Pending crash -> acquire cancels before exposing inventory",
+        "passed": true
+      },
+      {
+        "name": "Granted crash -> acquire preserves; Cancel never rolls back",
+        "passed": true
+      },
+      {
+        "name": "5E: T Granted -> Cancel -> U Granted -> old Cancel -> U retry = 16",
+        "passed": true
+      },
+      {
+        "name": "5E: T Pending -> Cancel -> U Granted -> old Cancel -> U retry = 11",
+        "passed": true
+      },
+      {
+        "name": "same-owner old Cancel and Prepare do not overwrite successor",
+        "passed": true
+      },
+      {
+        "name": "death/leave before Grant cancels Pending only",
+        "passed": true
+      },
+      {
+        "name": "death/leave after Grant write preserves terminal grant",
+        "passed": true
+      },
+      {
+        "name": "autosave/shutdown cannot retry an unconfirmed grant",
+        "passed": true
+      },
+      {
+        "name": "ownership transfer fences generic mutation and stale autosave",
+        "passed": true
+      },
+      {
+        "name": "response-lost ownership acquisition cannot steal owner back",
+        "passed": true
+      },
+      {
+        "name": "response-lost ownership acquisition retries same token",
+        "passed": true
+      },
+      {
+        "name": "owner changes during UpdateAsync callback retry",
+        "passed": true
+      },
+      {
+        "name": "changed delta or reused ID/sequence is rejected",
+        "passed": true
+      },
+      {
+        "name": "Released session cannot write",
+        "passed": true
+      }
+    ]
+  },
+  "environment": {
+    "mode": "Studio Play",
+    "storage": "in-memory adapter for deterministic failure/race tests; real Studio store for normal Return smoke",
+    "twoServerSimulation": "two independent PlayerDataService copies sharing one isolated store; not two live production servers"
+  },
+  "realStore": {
+    "oneDelta": 1,
+    "fiveDelta": 5,
+    "loadCharacterPreserved": true,
+    "originalOwnedRestored": true,
+    "equippedUnchanged": true,
+    "autosave90SecondsObserved": true,
+    "exitUnconfirmedFiveNotSaved": true,
+    "rejoin": {
+      "runCount": 0,
+      "newOwnerSinceReturn": true,
+      "ownerMatches": true,
+      "ownedMatches": true,
+      "granted": true
+    }
+  }
+}

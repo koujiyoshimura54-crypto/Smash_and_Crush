@@ -1,5 +1,14 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-30 — Run Return transaction safety (Phase 5F)
+
+- PlayerDataOwnershipを追加し、PlayerDataService / RunReturnPersistence / RunReturnServiceを更新。既存キー内のOwner Tokenと永続Return Journalで旧Serverを拒否し、Grantedの減算rollbackを廃止。
+- Play内の実Luauによる状態遷移18件＋独立PlayerDataService Sessionの結合14件が成功。Phase 5Eの旧Cancel／新Return競合は16個、Pending取消経路は11個。旧ID／旧Ownerが後続metadataを変更しないこと、新規／旧形式プロフィールのLoadを確認。
+- 実Studio DataStoreで1個／5個Return、LoadCharacter、90秒AutoSave、未確定5個の実退出、次Playの新Owner取得／Granted維持を確認。検証追加6個だけを既存ItemServiceで除去し、元のOwnedItemsとEquippedItemsの一致を確認。
+- BindToClose近接・Crash・別Server競合は故障注入Adapterと独立Sessionによる相当試験。実プロセス強制終了や本番2Server試験とは区別する。再実行用testsと結果JSONを収録。
+- 既存504 Scriptのうち対象3個だけ変更、追加1個。一時テストInstanceは除去。RunInventoryService、HUD、World2固有処理、ItemMaster、各Reward等のSourceは一致。Stop→Edit、Place/GUI未保存。
+- 公開時はOwner検査のない5D以前のServerと混在させない切替が必要（今回Publish／Server再起動は未実施）。[詳細](../reports/World1_RunReturn_Phase5F_20260930/README.md)。
+
 ## 2026-09-30 — World1 Run Return (Phase 5D)
 
 - World1「戻る」→既存Item Transactionで保存確認→Run消去／Inactive化→戦闘解除・回復・Lobby帰還を実装。新規4 Script、既存3 Scriptを変更。

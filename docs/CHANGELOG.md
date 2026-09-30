@@ -1,3 +1,10 @@
+# 2026-09-30 — World1 Run Return durable transaction Phase 5F
+
+- Added per-session ownership fencing to normal PlayerData writes and a durable Return journal on the existing key. Confirm Pending before Grant; commit quantity and Granted state atomically. Granted is never rolled back.
+- Cancel only a matching Pending transaction. Resolve abandoned Pending journals during atomic Load ownership acquisition; preserve Granted items and reject stale owners/operation sequences.
+- Passed 32 deterministic Luau/integration cases, including Phase 5E's 16/11 quantity outcomes and new/legacy profile loading; verified real Studio-store 1/5 returns, autosave, exit and rejoin. Test-added items restored; Play stopped in Edit, Place/GUI unsaved.
+- Evidence and rollout limits: [Phase 5F report](../reports/World1_RunReturn_Phase5F_20260930/README.md).
+
 # 2026-09-30 — World1 Run Return Phase 5D
 
 - Added a server-validated World1 Return button and idempotent bank transaction through the existing ItemService/PlayerData store. Clear Run only after confirmed save; cancel pre-confirmation death races and preserve confirmed ownership.
