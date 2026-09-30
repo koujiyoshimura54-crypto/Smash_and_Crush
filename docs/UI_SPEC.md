@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-30 — Run Return Boss-unlock visibility
+
+- Supersedes the visibility rule in the revision below; upper-center placement/red styling are unchanged. RunReturnClient shows Return only for an active World1 Run outside Lobby, with the current Boss unlocked/undefeated and a living Humanoid. Return pending/busy also hides it; a failed request releases the existing lock for retry.
+- Unlock is read exclusively from existing CombatState `WallInitialize` / `WallCleared` snapshots (`Current >= 5`, not Skipped) and `Stage1BossUnlocked`. Initialize/RunId changes clear cached unlocks. HealthChanged/CharacterRemoving hide the button on death. The existing Lobby footprint check is retained only for Lobby visibility, never for Boss unlock.
+- One Play: Stage1 and Stage2 wall .1–.4 progression hidden, .4 completion visible, Stage1 BossInitialize visible, Stage2 actual Chasing visible; real Stage1 defeat/TrophySpawn/Stage2 entry hidden. Death and Respawn/Lobby hidden. World2 UI condition only checked; travel not tested. Return server/persistence and HUDLayout unchanged, Place/GUI unsaved, Stop/Edit.
+
 ## 2026-09-30 — Run Return UI revision
 
 - Supersedes the Phase 5D button placement/visibility below. `RunReturnClient` creates a red `StrengthGui.HUD.RunReturnButton`; HUDLayout alone places it at the upper center (desktop 144×48, compact 120×44 below Win/Inventory). The sixth left-menu slot is removed.

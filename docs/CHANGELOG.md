@@ -1,3 +1,8 @@
+# 2026-09-30 — Run Return Boss-unlock visibility
+
+- RunReturnClient now requires current Boss unlock from existing wall/combat synchronization, undefeated state and living Humanoid; hides during Return request. Placement and all server Return/Run/persistence/combat scripts retained.
+- One Play verified actual Stage1 defeat, Stage2 unlock and Chase, wall/Trophy/death/Lobby visibility. World2 condition only checked; no world travel test. Place/GUI unsaved, Stop/Edit.
+
 # 2026-09-30 — Run Return UI revision
 
 - Updated RunReturnClient and HUDLayout only: red upper-center Return button, hidden after current Boss defeat and in Lobby/World2, shown for the next undefeated Stage. Existing Return request/lock and transaction logic retained.

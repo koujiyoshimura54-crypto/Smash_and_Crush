@@ -1,5 +1,10 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-30 — Run Return Boss-unlock visibility
+
+- RunReturnClient only: existing wall snapshots/unlock notification plus living Humanoid gate Return visibility. Same red upper-center layout; server Return and transaction logic unchanged.
+- One Play verified Stage1/Stage2 wall progression hidden and Boss unlock visible, Stage1 Combat and Stage2 Chasing visible, actual Stage1 defeat/Trophy hidden, death/Respawn/Lobby hidden. World2 condition only checked. Place/GUI unsaved; Stop/Edit. [UI details](UI_SPEC.md).
+
 ## 2026-09-30 — Run Return UI revision
 
 - Red Return button moved to the upper center, with placement owned by HUDLayout. Visibility uses active World1 Run, current Boss defeat snapshots and the existing Lobby floor footprint; Return/persistence scripts remain unchanged.

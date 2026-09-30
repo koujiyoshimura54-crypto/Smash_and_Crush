@@ -33,14 +33,17 @@ if outline then outline:Clone().Parent = button end
 button.Visible = false
 button.Parent = hud
 local pending, failed = nil, false
-local defeated = {}
+local defeated, unlocked = {}, {}
+local humanoid, healthConnection
 local initialized, waitingForProgress, inLobby = false, false, true
 local function render()
+	local busy = pending ~= nil or player:GetAttribute("RunReturnBusy") == true
 	local visible = (player:GetAttribute("CurrentWorld") or 1) == 1
 		and player:GetAttribute("RunInventoryActive") == true
 		and initialized and not inLobby and not waitingForProgress
+		and unlocked[player:GetAttribute("CurrentStage") or 1] == true
 		and not defeated[player:GetAttribute("CurrentStage") or 1]
-	local busy = pending ~= nil or player:GetAttribute("RunReturnBusy") == true
+		and humanoid ~= nil and humanoid.Health > 0 and not busy
 	button.Visible = visible
 	button.Active = not busy
 	button.AutoButtonColor = not busy
@@ -65,15 +68,20 @@ for _, attribute in {"CurrentWorld", "CurrentStage", "RunInventoryActive", "RunR
 	player:GetAttributeChangedSignal(attribute):Connect(render)
 end
 player:GetAttributeChangedSignal("RunInventoryId"):Connect(function()
+	initialized = false
+	table.clear(unlocked)
 	pending = nil
 	failed = false
 	render()
+	-- Reconcile after a new RunId even if attributes and remotes arrive separately.
+	combat:FireServer({Type = "RequestState"})
 end)
 -- Read the existing combat snapshot; no ownership or Return state is mutated.
 combat.OnClientEvent:Connect(function(data)
 	if typeof(data) ~= "table" then return end
 	if data.Type == "Initialize" then
 		table.clear(defeated)
+		table.clear(unlocked)
 		for stage, cleared in data.Cleared or {} do
 			if cleared then defeated[stage] = true end
 		end
@@ -81,6 +89,13 @@ combat.OnClientEvent:Connect(function(data)
 			if skipped then defeated[stage] = true end
 		end
 		initialized, waitingForProgress = true, false
+	elseif data.Type == "WallInitialize" or data.Type == "WallCleared" then
+		local state = data.State
+		if typeof(state) ~= "table" or typeof(state.MajorStage) ~= "number" then return end
+		unlocked[state.MajorStage] = state.Skipped ~= true and (state.Current or 1) >= 5
+	elseif data.Type == "Stage1BossUnlocked" then
+		if typeof(data.MajorStage) ~= "number" then return end
+		unlocked[data.MajorStage] = true
 	elseif data.Type == "EnemyDefeated" then
 		defeated[data.Stage] = true
 		waitingForProgress = true
@@ -91,6 +106,26 @@ combat.OnClientEvent:Connect(function(data)
 	end
 	render()
 end)
+-- Character health gates presentation immediately, including death before respawn.
+local function bindCharacter(character)
+	if healthConnection then healthConnection:Disconnect(); healthConnection = nil end
+	humanoid = nil
+	render()
+	local hum = character:WaitForChild("Humanoid", 10)
+	if player.Character ~= character or not hum then return end
+	humanoid = hum
+	healthConnection = hum.HealthChanged:Connect(render)
+	render()
+end
+player.CharacterAdded:Connect(bindCharacter)
+player.CharacterRemoving:Connect(function()
+	if healthConnection then healthConnection:Disconnect(); healthConnection = nil end
+	humanoid = nil
+	initialized = false
+	table.clear(unlocked)
+	render()
+end)
+if player.Character then task.spawn(bindCharacter, player.Character) end
 -- RunActive also covers the training lobby. Check its existing floor footprint
 -- only for presentation, without adding server state or changing Run logic.
 local elapsed = 0
@@ -110,7 +145,10 @@ local connection = RunService.Heartbeat:Connect(function(dt)
 	end
 	if lobby ~= inLobby then inLobby = lobby; render() end
 end)
-script.Destroying:Once(function() connection:Disconnect() end)
+script.Destroying:Once(function()
+	connection:Disconnect()
+	if healthConnection then healthConnection:Disconnect() end
+end)
 render()
 HUDLayout.Mount(gui).Refresh()
 combat:FireServer({Type = "RequestState"})
