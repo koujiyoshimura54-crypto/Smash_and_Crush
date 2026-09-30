@@ -1,5 +1,17 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-30 — Inventory Capacity purchase (Phase 5G)
+
+- 下記previewの外観・ShopStallTemplate前トリガーを維持し、実購入へ接続。1商品、`Update`タイトル、`5 >>> 6`、トロフィー＋`100`を表示。購入価格はInventoryCapacityConfigだけに定義し、PreviewConfigは配置のみを保持する。
+- `PurchaseInventoryCapacity` Remoteへ現在Capacityを送り、価格・所持Win・保存・OwnershipはServerが検証。ClientはWin / Capacityを書き換えない。保存中は連打を抑止し、Win不足は`Not enough Win`。確認待ちは再試行可能。
+- 購入後は現在値6とMAXを表示してButton無効化。将来Configに次段階を足すと次価格を表示する。RunInventoryCapacity Attributeの更新で既存HUDも自動更新する。
+
+## 2026-09-30 — Inventory Capacity upgrade preview
+
+- `InventoryCapacityUpgradeClient` creates `StrengthGui.InventoryCapacityUpgradePanel` at runtime: existing Shop header/X, title `Update` without its left icon, one Inventory Capacity card, existing bag/trophy assets, large `+current >>> +next` values and trophy + numeric price only. Preview price/increment/design/trigger dimensions are isolated in `InventoryCapacityPreviewConfig` (100 / +1 initially).
+- A client-only transparent `Workspace.ShopStallTemplate.InventoryCapacityTrigger` uses the stall pivot offset `(0, 3.5, -12)` and size `(20, 9, 9)` on its front side. Enter opens, leave closes; X stays dismissed until exit/reentry. World1/living-player only, and entry while an existing panel is open does not replace that panel.
+- Purchase fires the panel-local `PurchaseRequested` BindableEvent and shows `Coming soon`; no remote, Win deduction or capacity mutation. Play verified entry, X dismissal, reentry, leaving, purchase feedback and unchanged Win/Capacity. Existing Shop still opens normally. Place/GUI unsaved; stopped in Edit. No Push.
+
 ## 2026-09-30 — Run Return Boss-unlock visibility
 
 - Supersedes the visibility rule in the revision below; upper-center placement/red styling are unchanged. RunReturnClient shows Return only for an active World1 Run outside Lobby, with the current Boss unlocked/undefeated and a living Humanoid. Return pending/busy also hides it; a failed request releases the existing lock for retry.

@@ -1,14 +1,14 @@
--- World1 provisional boss loot. Never reads or writes PlayerData/Backpack/Tools.
+-- World1 provisional boss loot. Only capacity is read from permanent PlayerData.
 local Players=game:GetService("Players")
 local HttpService=game:GetService("HttpService")
 local Master=require(game.ReplicatedStorage.Config.ItemMaster)
-local DEFAULT_CAPACITY=5
+local Data=require(script.Parent.PlayerDataService)
 local states={}
 local M={}
 
--- Future purchased capacity resolves here; no client attribute is authoritative.
-function M.GetCapacity(_player)
- return DEFAULT_CAPACITY
+-- Server PlayerData is authoritative; attributes are output mirrors only.
+function M.GetCapacity(player)
+ return Data.GetInventoryCapacity(player)
 end
 local function validPlayer(player)
  return typeof(player)=="Instance" and player:IsA("Player") and player.Parent==Players
@@ -18,6 +18,7 @@ local function alive(player)
  return hum~=nil and hum.Health>0
 end
 local function sync(player,s)
+ s.Capacity=M.GetCapacity(player)
  player:SetAttribute("RunInventoryCount",s.Count)
  player:SetAttribute("RunInventoryCapacity",s.Capacity)
  player:SetAttribute("RunInventoryWorldId",s.WorldId)
@@ -46,6 +47,11 @@ function M.IsCurrent(player,runId)
  local s=states[player]
  return validPlayer(player) and s~=nil and s.RunId==runId and s.Active and not s.ReturnToken
   and (player:GetAttribute("CurrentWorld") or 1)==1 and alive(player)
+end
+function M.RefreshCapacity(player)
+ local s=states[player]
+ if s then s.Capacity=M.GetCapacity(player) end
+ player:SetAttribute("RunInventoryCapacity",M.GetCapacity(player))
 end
 -- Freeze the existing generation while its immutable snapshot is being banked.
 -- A failed/unconfirmed write keeps this token, so retry cannot include new drops.
@@ -87,6 +93,7 @@ function M.TryAddDrop(player,runId,dropId,itemId)
  if not Master.Get(itemId) then return false,"InvalidItemId" end
  local s=states[player]
  if s.ProcessedDrops[dropId] then return false,"AlreadyProcessed" end
+ s.Capacity=M.GetCapacity(player)
  s.ProcessedDrops[dropId]=true
  if s.Count>=s.Capacity then return false,"InventoryFull" end
  s.Items[itemId]=(s.Items[itemId] or 0)+1
@@ -94,5 +101,17 @@ function M.TryAddDrop(player,runId,dropId,itemId)
  sync(player,s)
  return true,"Added"
 end
-Players.PlayerRemoving:Connect(function(player) states[player]=nil end)
+local capacityConnections={}
+local function watchCapacity(player)
+ capacityConnections[player]=player:GetAttributeChangedSignal("InventoryCapacity"):Connect(function()
+  M.RefreshCapacity(player)
+ end)
+ M.RefreshCapacity(player)
+end
+Players.PlayerAdded:Connect(watchCapacity)
+for _,player in Players:GetPlayers() do watchCapacity(player) end
+Players.PlayerRemoving:Connect(function(player)
+ states[player]=nil
+ if capacityConnections[player] then capacityConnections[player]:Disconnect();capacityConnections[player]=nil end
+end)
 return M

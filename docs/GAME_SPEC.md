@@ -1,5 +1,12 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-30 — Inventory Capacity purchase (Phase 5G)
+
+- `PlayerData_v1`の既存Playerキーへ`InventoryCapacity`を永続化。未保存値は5。正本はPlayerDataServiceで、RunInventoryServiceはこの値を参照して現在Runにも反映する。Count / Items / RunIdは購入で変更しない。
+- `InventoryCapacityConfig.Upgrades[5]`の1段階だけ購入可能（6へ、100 Win）。Win減算とCapacity更新、購入IDを同一のOwnership付きUpdateAsyncで保存し、成功確認後にSession / Attributesを更新する。
+- 保存応答が不明な場合は既存PendingItemMutationゲートで同じ購入IDを保持・再試行し、AutoSave / 退出保存が古いWinを書き戻さない。確認まで別のWin消費を拒否し、加算報酬は維持する。既に保存済みの同じIDは再課金しない。
+- Return Journal / Ownership実装、Run未確定Itemのロスト・確定仕様、Drop、装備、World2固有処理は未変更。
+
 ## 2026-09-30 — Run Return durable transaction (Phase 5F)
 
 - PlayerDataの同じキーへSessionOwnerTokenとRunReturnJournalを追加。Load時に一意Ownerを条件付きUpdateAsyncで取得し、PendingをCancelしてからLoadedにする。既存Grantedは維持。所有権取得の応答不明時も同じ試行を使い、別Ownerから取り戻さない。

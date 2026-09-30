@@ -1,5 +1,18 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-30 — Inventory Capacity purchase (Phase 5G)
+
+- 5→6 / 100 Win実装済み。PlayerData defaults / normalize、Ownership付き購入保存、現在RunのCapacity同期、既存Update UIへのRemote接続を追加。前Phaseの未Commit preview UIも今回へ含める。
+- Playで不足Win 2の購入拒否、検証用100 Win加算後の実Button購入（102→2）、HUD `3 / 5`→`3 / 6`、RunId / Count維持、MAX無効化、連打とRemote再送を確認。保存先をキャッシュなしで読み、Win 2 / Capacity 6 / 購入IDを確認。Permanent / Equippedは前後一致。
+- Stop→再PlayでCapacity 6、Win 2、HUD `0 / 6`を確認。購入済みCapacity 6は検証Playerに保持。検証用Run Itemは通常退出で消失し、Permanentへ加算していない。
+- `InventoryCapacityPhase5G.spec.luau`の分離10件通過：新規/旧データ、Win不足時の書込ゼロ、100回再要求、callback retry、保存前失敗、応答消失、AutoSave/退出保存、再Join、Owner交代、保存中のWin加算・二重消費防止。`InventoryCapacityPhase5GStudioRunner.luau`から実PlayerDataServiceの保存先のみMemoryStoreへ差し替えて実行。
+- 今回コードのRuntime Error / Infinite Yieldなし。既存Unused_Assets/BossAnimationReferences由来のChattedエラー・待機Warningは対象外。World2 / Boss / Returnの再回帰は行わず。Place/GUI未保存、StopしてEdit復帰。
+
+## 2026-09-30 — Inventory Capacity upgrade preview
+
+- Added InventoryCapacityUpgradeClient and InventoryCapacityPreviewConfig. Runtime-only single-product UI opens at the ShopStallTemplate front trigger; existing Shop header/bag/trophy visuals reused. Purchase remains a local preview with no data changes.
+- Play opening/closing/reentry, mock purchase and existing Shop opening passed. Place/GUI unsaved, Edit restored; local Git changes only, no Commit/Push. [UI details](UI_SPEC.md).
+
 ## 2026-09-30 — Run Return Boss-unlock visibility
 
 - RunReturnClient only: existing wall snapshots/unlock notification plus living Humanoid gate Return visibility. Same red upper-center layout; server Return and transaction logic unchanged.

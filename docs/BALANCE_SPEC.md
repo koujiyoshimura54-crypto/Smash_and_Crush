@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-09-30 — Inventory Capacity (Phase 5G)
+
+- 初期Capacity 5 → 購入後6、仮価格100 Win。正本は`ReplicatedStorage.Config.InventoryCapacityConfig`のDefaultCapacity / Upgrades。6→7以降は未設定。Boss Drop / Rarity / その他の購入価格は未変更。
+
 ## 2026-09-19 — World1 upgrade economy V1
 
 World1の新規無課金Player向けに、購入判断を残しつつ序盤からUpgradeへ到達できる価格帯へ変更した。設計目標は完全最適30～32分、標準40～45分、非最適50～55分であり、実Play計測前の目標値である。

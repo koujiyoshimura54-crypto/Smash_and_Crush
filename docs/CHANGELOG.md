@@ -1,3 +1,14 @@
+# 2026-09-30 — Inventory Capacity purchase Phase 5G
+
+- Added persistent InventoryCapacity (legacy default 5), one configurable 5→6 tier at 100 Win, server validation and an atomic fenced debit/capacity/receipt write. Ambiguous saves retain the operation ID behind the existing save gate and never refund or charge twice.
+- Wired the existing Update preview UI to purchase; retained layout, trophy-only numeric price, trigger and close button. Capacity updates the active Run/HUD without resetting items; configured maximum disables purchase.
+- Passed 10 isolated production-service tests and real Play purchase/insufficient funds/duplicate requests/count preservation. Stop/rejoin retained Capacity 6 and original Win balance after the 100-Win test credit was spent. Permanent/Equipped unchanged; Place/GUI unsaved and Edit restored.
+
+# 2026-09-30 — Inventory Capacity upgrade preview
+
+- Added a dedicated `Update` UI with one bag/capacity upgrade card and trophy + numeric price, triggered at the front of ShopStallTemplate. Reuses existing Shop styling and inventory assets; configurable preview price and increment.
+- Play entry/X/exit/reentry and local purchase feedback passed; Win/Capacity unchanged. Existing Shop opening verified. Place/GUI unsaved, Edit restored; no Commit/Push.
+
 # 2026-09-30 — Run Return Boss-unlock visibility
 
 - RunReturnClient now requires current Boss unlock from existing wall/combat synchronization, undefeated state and living Humanoid; hides during Return request. Placement and all server Return/Run/persistence/combat scripts retained.

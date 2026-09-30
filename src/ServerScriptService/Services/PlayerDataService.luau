@@ -8,6 +8,7 @@ local TimeRewardConfig=require(game.ReplicatedStorage.Config:WaitForChild("TimeR
 local DailyRewardConfig=require(game.ReplicatedStorage.Config:WaitForChild("DailyRewardConfig"))
 local CommunityConfig=require(game.ReplicatedStorage.Config:WaitForChild("CommunityRewardConfig"))
 local ShopConfig=require(game.ReplicatedStorage.Config:WaitForChild("ShopProductConfig"))
+local CapacityConfig=require(game.ReplicatedStorage.Config:WaitForChild("InventoryCapacityConfig"))
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
 local PlayerDataService={}
 local Ownership=require(script.Parent.PlayerDataOwnership)
@@ -175,7 +176,7 @@ local function normalizeUnlockedWorld(value)
  return value
 end
 local function defaults()
- return {AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -191,6 +192,9 @@ local function normalize(raw)
   d.AutoTapEnabled=raw.AutoTapEnabled~=false
   if raw.SelectedSizeTier~=nil and (not finite(raw.SelectedSizeTier) or raw.SelectedSizeTier%1~=0 or raw.SelectedSizeTier<0 or raw.SelectedSizeTier>10) then return nil,"Invalid SelectedSizeTier" end
   d.SelectedSizeTier=raw.SelectedSizeTier or 0
+  local capacity,capacityError=CapacityConfig.Normalize(raw.InventoryCapacity)
+  if not capacity then return nil,capacityError end
+  d.InventoryCapacity=capacity
   local world,worldError=normalizeUnlockedWorld(raw.HighestUnlockedWorld)
   if not world then return nil,worldError end
   d.HighestUnlockedWorld=world
@@ -271,6 +275,7 @@ end
 local function applyAttributes(player,d)
  player:SetAttribute("AutoTapEnabled",d.AutoTapEnabled~=false)
  player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
+ player:SetAttribute("InventoryCapacity",d.InventoryCapacity)
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
  player:SetAttribute("TutorialCompleted",d.TutorialCompleted==true)
  player:SetAttribute("Strength",d.Strength)
@@ -668,6 +673,10 @@ function PlayerDataService.SetWin(player,value)
  if not s or not s.Loaded then return false end
  local n=tonumber(value)
  if not finite(n) then return false end
+ -- A capacity write may have committed even if its response was lost. Do not
+ -- spend the same balance elsewhere while its receipt is unresolved; rewards
+ -- can still increase Win and are retained when the purchase is acknowledged.
+ if s.PendingItemMutation and s.PendingItemMutation.CapacityUpgrade and n<s.Data.Win then return false end
  s.Data.Win=math.max(0,math.floor(n))
  player:SetAttribute("Win",s.Data.Win)
  s.Dirty=true
@@ -726,6 +735,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  local payload={
   AutoTapEnabled=d.AutoTapEnabled~=false,
   SelectedSizeTier=d.SelectedSizeTier,
+  InventoryCapacity=d.InventoryCapacity,
   HighestUnlockedWorld=d.HighestUnlockedWorld,
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
   CommunityRewards=assert(normalizeCommunity(d.CommunityRewards)),
@@ -771,6 +781,8 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
    merged.AutoTapEnabled=payload.AutoTapEnabled
    merged.SelectedSizeTier=payload.SelectedSizeTier
+   -- Purchases own this field; ordinary saves preserve the durable value.
+   merged.InventoryCapacity=assert(CapacityConfig.Normalize(old.InventoryCapacity))
    merged.Strength=payload.Strength
    merged.Level=payload.Level
    merged.LevelProgress=payload.LevelProgress
@@ -934,6 +946,79 @@ local function scheduleItemMutationRetry(player,session,operation)
  return delaySeconds,nextAttempt
 end
 
+-- Capacity purchases share the existing per-player durable-write gate. This
+-- makes AutoSave/exit retry an ambiguous purchase before saving an old balance.
+local function resolveCapacityPurchase(player,s,op)
+ if op.Resolving then return false,"InventorySavePending" end
+ op.Resolving=true;s.Saving=true
+ local rejection
+ local ok,saved=pcall(function()
+  return ownedUpdate(player,s,function(old,info)
+   rejection=nil
+   if resetToken(old)~=op.ResetToken then rejection="SaveSupersededByReset";return nil end
+   local capacity=assert(CapacityConfig.Normalize(old.InventoryCapacity))
+   local users,meta=metadata(info)
+   if old.InventoryCapacityPurchaseId==op.Id and capacity==op.NextCapacity then
+    return old,users,meta -- response-loss / UpdateAsync retry: already charged
+   end
+   if capacity~=op.CurrentCapacity then rejection="CapacityChanged";return nil end
+   local merged=table.clone(old)
+   merged.Win=op.WinBefore-op.PriceWin
+   merged.InventoryCapacity=op.NextCapacity
+   merged.InventoryCapacityPurchaseId=op.Id
+   return merged,users,meta
+  end)
+ end)
+ op.Resolving=false;s.Saving=false
+ if sessions[player]~=s or s.PendingItemMutation~=op then return false,"SaveSuperseded" end
+ if not ok or not saved or saved.InventoryCapacityPurchaseId~=op.Id then
+  if rejection or s.OwnershipLost then
+   s.PendingItemMutation=nil
+   player:SetAttribute("InventoryCapacityPurchasePending",false)
+   return false,rejection or "SessionOwnershipLost"
+  end
+  -- Neither local field is changed on an unconfirmed save. The operation ID
+  -- stays locked for retry; never compensate a possibly committed debit.
+  scheduleItemMutationRetry(player,s,op)
+  return false,"InventorySavePending"
+ end
+ s.PendingItemMutation=nil
+ s.Data.InventoryCapacity=saved.InventoryCapacity
+ -- Retain rewards earned during the yielding write, deduct this price once.
+ PlayerDataService.SetWin(player,s.Data.Win-op.PriceWin)
+ player:SetAttribute("InventoryCapacity",s.Data.InventoryCapacity)
+ player:SetAttribute("InventoryCapacityPurchasePending",false)
+ s.Dirty=true
+ return true,"Purchased"
+end
+
+function PlayerDataService.GetInventoryCapacity(player)
+ local s=sessions[player]
+ return s and s.Loaded and s.Data.InventoryCapacity or CapacityConfig.DefaultCapacity
+end
+
+function PlayerDataService.PurchaseInventoryCapacity(player,currentCapacity)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
+ if s.OwnershipLost then return false,"SessionOwnershipLost" end
+ local pending=s.PendingItemMutation
+ if pending and pending.CapacityUpgrade and pending.CurrentCapacity==currentCapacity then
+  return PlayerDataService.ResolveItemMutation(player)
+ end
+ if s.Saving or pending then return false,"DataSaving" end
+ if currentCapacity~=s.Data.InventoryCapacity then return false,"CapacityChanged" end
+ local tier=CapacityConfig.Upgrades[currentCapacity]
+ if not tier then return false,"MaxCapacity" end
+ local win=s.Data.Win
+ if not finite(win) or win%1~=0 or win<0 then return false,"InvalidWin" end
+ if win<tier.PriceWin then return false,"NotEnoughWin" end
+ s.PendingItemMutation={CapacityUpgrade=true,Id=HttpService:GenerateGUID(false),
+  CurrentCapacity=currentCapacity,NextCapacity=tier.NextCapacity,PriceWin=tier.PriceWin,
+  WinBefore=win,ResetToken=s.Data.ResetToken}
+ player:SetAttribute("InventoryCapacityPurchasePending",true)
+ return PlayerDataService.ResolveItemMutation(player)
+end
+
 -- All regular-item quantity mutations are durable before reporting success.
 -- A failed/ambiguous write keeps its operation ID and local Win reservation;
 -- Save retries the same operation rather than refunding a possibly committed purchase.
@@ -941,6 +1026,7 @@ function PlayerDataService.ResolveItemMutation(player)
  local s=sessions[player]
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
+ if op.CapacityUpgrade then return resolveCapacityPurchase(player,s,op) end
  if op.RunReturn then
   return require(script.Parent.RunReturnPersistence).Resolve(player,s,op,{
    Update=function(transform) return ownedUpdate(player,s,transform) end,
