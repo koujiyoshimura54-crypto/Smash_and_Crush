@@ -1,3 +1,10 @@
+# 2026-09-30 — World1 Run Inventory HUD Phase 5C
+
+- Added a read-only Run Inventory counter using server AttributeChanged notifications and placement centralized in HUDLayout.
+- Verified 0→5, full rejection/presentation, death/respawn/LoadCharacter/new-run reset, inactive visibility, future capacity notifications and desktop/tablet/phone layouts in Play.
+- Preserved server/permanent/World2 behavior and existing FULL visuals. Stopped in Edit without saving Place or GUI.
+- Evidence: [Phase 5C report](../reports/World1_RunInventory_Phase5C_20260930.md).
+
 # 2026-09-30 — World1 Run Inventory Phase 5B
 
 - Added server-authoritative, generation-scoped provisional World1 boss loot with capacity 5, atomic capacity/deduplication checks and death/reset invalidation.

@@ -1,5 +1,12 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-30 — World1 Run Inventory HUD Phase 5C
+
+- Added RunInventoryHUDClient and a small HUDLayout placement block. Server count/capacity are rendered through AttributeChanged signals; no gameplay, inventory mutation or save changes.
+- Play verified initial 0/5, all five real random-drop acceptance updates, sixth rejection with 5/5 plus existing FULL, death/respawn/LoadCharacter/new-run resets, inactive visibility and server capacity notification 3/7 and 3/10. Permanent ownership/equipment remained equal.
+- PC, iPad Pro, Fire HD 10 and two iPhones passed Simulator text-fit/screen-HUD overlap checks. Original Studio sources other than HUDLayout retained matching fingerprints. Existing unused-reference-model errors/waits remain; full combat/World2/save-flow replay was outside this UI phase.
+- Place/GUI not saved; Stop→Edit and normal viewport restored. [Report](../reports/World1_RunInventory_Phase5C_20260930.md).
+
 ## 2026-09-30 — World1 Boss HP0即撃破
 
 - BossCombatService.QueueDamageがWorld1の壁余剰適用後HPを返し、EnemyManagerが同じ壁hit内で致死判定する。通常Attack・Combat開始時HP0も既存defeatへ合流。WIN通知をDefeatedガード内へ集約。

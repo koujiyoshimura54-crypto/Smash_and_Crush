@@ -197,6 +197,16 @@ function M.Mount(gui)
    follow(slot,slot.Name=="DoubleWinButton" and boost and boost:FindFirstChild("DoubleWinButton") or menu:FindFirstChild(slot.Name),rs)
   end end
   local strength=gui:FindFirstChild("StrengthLevelHUD")
+  -- Independent of TopHUD's Win scale; keep this readout legible on phones.
+  local inventory=hud:FindFirstChild("RunInventoryLabel")
+  if inventory then
+   local small=compact and w>h
+   local ix=small and leftX+leftWidth*leftScale+12 or edge
+   local iy=small and winY+64*winScale+10 or 12
+   inventory.Position=UDim2.fromOffset(ix,iy)
+   inventory.Size=UDim2.fromOffset(small and 180 or 220,28)
+   inventory.TextSize=small and 18 or 22
+  end
   local potion=gui:FindFirstChild("PotionStatus")
   local statusBlocks
   if strength then

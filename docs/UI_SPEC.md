@@ -1,5 +1,12 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-30 — World1 Run Inventory HUD (Phase 5C)
+
+- `StarterGui.StrengthGui.RunInventoryHUDClient` creates a display-only `HUD.RunInventoryLabel` beside the TopHUD region. Text is exactly `Inventory <RunInventoryCount> / <RunInventoryCapacity>`; both server AttributeChanged signals update it, with no client quantity/capacity calculation or remote request.
+- The label stays visible for inactive runs. Missing initial attributes use `-` until replication; capacity is never hardcoded in the UI. Existing ResetOnSpawn=false preserves the HUD across respawn; lifecycle resets come from the server.
+- HUDLayout alone owns placement and text size: desktop/tablet above Win with safe-area padding, compact landscape beside LeftHUD below the Win row. Transparent TextLabel, existing Level FontFace/TextOutline, 22px desktop/tablet and 18px compact landscape. No input action or full-state decoration.
+- PC, iPad Pro, Fire HD 10, iPhone 17 Pro and iPhone 7 landscape were checked in Play. Existing FULL presentation, other HUD positions and World2 behavior remain unchanged. [Evidence and limits](../reports/World1_RunInventory_Phase5C_20260930.md).
+
 ## 2026-09-19 — Merge STEP 2 card visual polish
 
 - Cardは固定5 Star / Item画像 / `×N`を維持し、最低幅を優先して最大4列・中央配置・20px間隔へ変更。少数Cardも中央へ配置する。Scrollは維持。

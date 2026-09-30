@@ -1,5 +1,10 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-30 — Run Inventory display (Phase 5C)
+
+- Added a persistent, noninteractive `Inventory <count> / <capacity>` HUD reading only server Run Inventory attributes. Client AttributeChanged events reflect grants, death/reset and future capacity notifications; inactive runs remain visible.
+- Phase 5B server logic, permanent inventory, equipment, saves and World2 are unchanged. Return/banking, capacity purchase and detailed Run Inventory remain deferred. [Play verification](../reports/World1_RunInventory_Phase5C_20260930.md).
+
 ## 2026-09-19 — World1 upgrade economy V1
 
 - Dumbbell Grade 1～7とWin購入Aura Pink～BlueのStrength加算・価格、および通常Item Common / Uncommon / RareのWin価格をBALANCE_SPECのV1表へ更新した。
