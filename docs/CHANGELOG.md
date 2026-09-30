@@ -1,3 +1,10 @@
+# 2026-09-30 — World1 Run Return Phase 5D
+
+- Added a server-validated World1 Return button and idempotent bank transaction through the existing ItemService/PlayerData store. Clear Run only after confirmed save; cancel pre-confirmation death races and preserve confirmed ownership.
+- Reused World1 combat reset and Lobby spawn without Trophy rewards or character death. Added the sixth left-menu slot to existing HUDLayout collision handling.
+- Verified real Studio-store 0/1/5 returns, restored only test-added quantities, plus isolated save-failure/death races, spam, old drops, exit persistence and responsive layouts. Stopped in Edit without Place/GUI saving.
+- Evidence and limits: [Phase 5D report](../reports/World1_RunReturn_Phase5D_20260930.md).
+
 # 2026-09-30 — World1 Run Inventory HUD Phase 5C
 
 - Added a read-only Run Inventory counter using server AttributeChanged notifications and placement centralized in HUDLayout.

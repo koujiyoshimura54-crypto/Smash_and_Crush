@@ -108,6 +108,8 @@ function M.Mount(gui)
    else leftBottom=math.min(leftBottom,r.P.Y-10);thumbEnd=math.max(thumbEnd,r.P.X+r.S.X+12) end
   end
   local columns=2 -- Original two-column LeftMenu, including on phones.
+  local returnButton=menu:FindFirstChild("RunReturnButton")
+  local lastLeftButton=returnButton and returnButton.Visible and 5 or 4
   local rows=math.ceil(5/columns)
   local leftWidth=(columns*144+(columns-1)*14)
   local leftHeight=(rows*144+(rows-1)*14)
@@ -170,7 +172,7 @@ function M.Mount(gui)
      leftScale=math.min(leftScale,math.max(1,rightX-leftX-12)/leftWidth)
     end
    end
-   for _,r in ipairs(physicalControls) do for i=0,4 do
+   for _,r in ipairs(physicalControls) do for i=0,lastLeftButton do
     local bottom=math.floor(i/columns)*158+144
     local button={X=leftX+(i%columns)*158*leftScale,Y=leftY+(bottom-144)*leftScale,W=144*leftScale,H=144*leftScale}
     if overlaps(button,r,10) then
@@ -232,8 +234,8 @@ function M.Mount(gui)
     local blocks={}
     table.insert(blocks,{X=rightX,Y=rightY,W=211*rs,H=476*rs})
     table.insert(blocks,{X=winX,Y=winY,W=280*winScale,H=64*winScale})
-    -- Keep the empty sixth slot available; the five actual buttons are obstacles.
-    for i=0,4 do table.insert(blocks,{X=leftX+(i%columns)*158*leftScale,
+    -- Reserve the sixth slot only while the World1 Return button is visible.
+    for i=0,lastLeftButton do table.insert(blocks,{X=leftX+(i%columns)*158*leftScale,
      Y=leftY+math.floor(i/columns)*158*leftScale,W=144*leftScale,H=144*leftScale}) end
     local slot=hud.Overlay.RouletteSlot
     if slot.Visible then table.insert(blocks,{X=slot.Position.X.Offset,Y=slot.Position.Y.Offset,W=slot.Size.X.Offset,H=slot.Size.Y.Offset}) end

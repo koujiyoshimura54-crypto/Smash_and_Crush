@@ -1,5 +1,13 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-30 — World1 Run Return (Phase 5D)
+
+- World1「戻る」→既存Item Transactionで保存確認→Run消去／Inactive化→戦闘解除・回復・Lobby帰還を実装。新規4 Script、既存3 Scriptを変更。
+- Play: 0/1/5個、実ボタン、Remote20連送、保存前／応答後の失敗・再試行、UpdateAsync callback再実行、死亡の前後、旧Run Drop、LoadCharacterを確認。障害注入は一時メモリAdapter、通常保存は既存Studio DataStoreの実書込とcache無効の再読込で確認。追加した検証品は差分のみ取り除き、元のOwnedItems/EquippedItems一致を確認。
+- 未確定5個で通常Saveと退出を実行し、OwnedItemsに混入しないことを再読込で確認。Boss/Attack状態の解除、HP25→100、同一Characterも確認。PC/Tablet/Phone横画面の配置確認済み。
+- 一時Adapter/Probe除去。既存500 Scriptのうち変更対象3個以外のSource一致、追加4個だけを確認。World2/戦闘式/VFX等はSource比較で回帰確認し、全ゲームプレイを再走査したものではない。既存Unused_AssetsのError/Infinite Yieldは未変更。
+- Stop→Edit、標準viewportへ復帰。Place/GUI未保存。[証拠・障害検証の限界](../reports/World1_RunReturn_Phase5D_20260930.md)。
+
 ## 2026-09-30 — World1 Run Inventory HUD Phase 5C
 
 - Added RunInventoryHUDClient and a small HUDLayout placement block. Server count/capacity are rendered through AttributeChanged signals; no gameplay, inventory mutation or save changes.

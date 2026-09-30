@@ -918,6 +918,13 @@ function PlayerDataService.ResolveItemMutation(player)
  local s=sessions[player]
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
+ if op.RunReturn then
+  return require(script.Parent.RunReturnPersistence).Resolve(player,s,op,{
+   Update=function(transform) return store:UpdateAsync(key(player),transform) end,
+   Current=function() return sessions[player]==s and s.Loaded and s.Data.ResetToken==op.ResetToken end,
+   Items=normalizeItems,Defaults=defaults,Metadata=metadata,ResetToken=resetToken,
+  })
+ end
  -- PendingItemMutation serializes the player; the operation retains its reward ID
  -- and lock across every yielding write. Retries reuse this exact operation.
  if op.Resolving then return false,"InventorySavePending" end
@@ -1238,7 +1245,13 @@ function PlayerDataService.ChangeItemCounts(player,deltas,timeReward)
   changes[id]=delta
  end
  local op
- if timeReward and timeReward.CommunityReward then
+ if timeReward and timeReward.RunReturn then
+  local context=timeReward.RunReturn
+  if typeof(context.Id)~="string" or typeof(context.Validate)~="function" or not context.Validate() then return false,"StaleRun" end
+  for _,delta in pairs(changes) do if delta<=0 then return false,"InvalidRewardItems" end end
+  op={Id=context.Id,WinPrice=0,ResetToken=s.Data.ResetToken,RunReturn=context}
+  context.Operation=op
+ elseif timeReward and timeReward.CommunityReward then
   local reason
   op,reason=prepareCommunityReward(player,timeReward)
   if not op then return false,reason end

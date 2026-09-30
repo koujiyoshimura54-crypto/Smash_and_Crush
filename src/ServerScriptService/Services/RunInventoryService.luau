@@ -44,8 +44,35 @@ function M.SetActive(player,runId,active)
 end
 function M.IsCurrent(player,runId)
  local s=states[player]
- return validPlayer(player) and s~=nil and s.RunId==runId and s.Active
+ return validPlayer(player) and s~=nil and s.RunId==runId and s.Active and not s.ReturnToken
   and (player:GetAttribute("CurrentWorld") or 1)==1 and alive(player)
+end
+-- Freeze the existing generation while its immutable snapshot is being banked.
+-- A failed/unconfirmed write keeps this token, so retry cannot include new drops.
+function M.BeginReturn(player,runId)
+ local s=states[player]
+ if not validPlayer(player) or not s or s.RunId~=runId or not s.Active
+  or (player:GetAttribute("CurrentWorld") or 1)~=1 or not alive(player) then return nil,"StaleRun" end
+ if not s.ReturnToken then
+  s.ReturnToken={Id=HttpService:GenerateGUID(false),RunId=runId,Character=player.Character,
+   Items=table.clone(s.Items),Count=s.Count}
+ end
+ return s.ReturnToken
+end
+function M.CanReturn(player,token)
+ local s=states[player]
+ return validPlayer(player) and s~=nil and s.ReturnToken==token and s.RunId==token.RunId
+  and s.Active and player.Character==token.Character and alive(player)
+  and (player:GetAttribute("CurrentWorld") or 1)==1
+end
+function M.ReleaseReturn(player,token)
+ local s=states[player]
+ if s and s.ReturnToken==token then s.ReturnToken=nil end
+end
+function M.CompleteReturn(player,token)
+ if not M.CanReturn(player,token) then return false end
+ M.Invalidate(player)
+ return true
 end
 function M.GetSnapshot(player)
  local s=states[player]

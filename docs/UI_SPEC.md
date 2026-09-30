@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-30 — World1 Return button (Phase 5D)
+
+- `RunReturnClient` creates `StrengthGui.LeftMenu.RunReturnButton`, with a matching `HUD.LeftHUD` slot (order 6, existing two-column menu's third-row right). HUDLayout alone controls placement and scaling and includes this visible slot in touch/status collision checks.
+- World1 + RunInventoryActiveで表示。「戻る」からRunIdだけをServerへ送信する。確認ダイアログなし。処理中は「保存中…」で無効化し、失敗時は「失敗／再試行」で再操作できる。帰還成功後はInactiveとなり非表示。Inventoryカウンターは独立した表示専用のまま。
+- Average Laptop、iPad Pro M5 13in、iPhone 17 Pro、iPhone 7横画面で文字収まりと既存ボタン／実表示Touch controlsとの非重複を確認。Place/GUI未保存。[検証記録](../reports/World1_RunReturn_Phase5D_20260930.md)。
+
 ## 2026-09-30 — World1 Run Inventory HUD (Phase 5C)
 
 - `StarterGui.StrengthGui.RunInventoryHUDClient` creates a display-only `HUD.RunInventoryLabel` beside the TopHUD region. Text is exactly `Inventory <RunInventoryCount> / <RunInventoryCapacity>`; both server AttributeChanged signals update it, with no client quantity/capacity calculation or remote request.

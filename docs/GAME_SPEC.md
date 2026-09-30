@@ -1,5 +1,13 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-09-30 — World1 Return / bank Run Items (Phase 5D)
+
+- World1の「戻る」はServer検証後、現Runを凍結してSnapshotを既存ItemService一括Transactionへ渡す。同じPlayerData keyへのUpdateAsync成功とTransaction IDを確認した後にだけRunを空にし、旧RunIdを無効化してLobbyへ帰還する。0個でも帰還可能。Win報酬は発生しない。
+- 未確認の保存はRun Items・Count・RunIdを維持し、手動再試行で同じTransactionを使う。処理中Lockを解除して再操作を許可するが、保存結果が確定するまで追加Dropは受け付けない。通常Save・退出・BindToCloseは未確定品を新規付与しない。
+- 保存確認前の死亡は取消を優先する。書込済み・応答未確認の競合は同じTransactionの差分だけを取り消す。確認後は確定品を保持する。既存保存先のmetadataにTransaction ID/stateを記録し、別DataStoreやOwnedItems以外の所有正本は作らない。
+- 帰還は既存World1戦闘初期化を再利用し、攻撃・戦闘・Chase対象を解除、同じ生存Characterを回復してLobby Spawnへ配置する。帰還後RunはInactive、HUDは0 / Capacity。次のStartRunで再開する。
+- World2・抽選率・Capacity・装備・各Reward/Shop/Mergeは未変更。障害時の限界を含む[検証記録](../reports/World1_RunReturn_Phase5D_20260930.md)を参照。
+
 ## 2026-09-30 — Run Inventory display (Phase 5C)
 
 - Added a persistent, noninteractive `Inventory <count> / <capacity>` HUD reading only server Run Inventory attributes. Client AttributeChanged events reflect grants, death/reset and future capacity notifications; inactive runs remain visible.
