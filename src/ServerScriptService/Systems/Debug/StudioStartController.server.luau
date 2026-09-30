@@ -31,7 +31,7 @@ local function move(p,w,s,ch)
  for _,part in ch:GetDescendants() do if part:IsA("BasePart") then part.AssemblyLinearVelocity=Vector3.zero;part.AssemblyAngularVelocity=Vector3.zero end end
  Enemy.ForWorld(w).Activate(p);return true
 end
-local function apply(p,level,world,stage)
+local function apply(p,level,world,stage,levelOnly)
  if not RunService:IsStudio() then return false,"TEST ERROR: Studio only" end
  if not Data.IsLoaded(p) then return false,"TEST ERROR: Player data is not ready" end
  local st=states[p] or {};states[p]=st
@@ -43,7 +43,9 @@ local function apply(p,level,world,stage)
   if not st.Active then st.Original={World=currentWorld,Stage=stageOf(p,currentWorld)} end
   local w=world or currentWorld;local s=stage or stageOf(p,currentWorld)
   if level then local changed,why=Data.ApplyStudioStartLevel(p,strengthFor(level),level);if not changed then return false,"TEST ERROR: "..tostring(why) end end
-  local moved,why=move(p,w,s,ch);if not moved then return false,why end
+  if not levelOnly then
+   local moved,why=move(p,w,s,ch);if not moved then return false,why end
+  end
   st.Active=true;st.World=w;st.Stage=s
   return true,("TEST OK: Level=%d World=%d Stage=%d"):format(p:GetAttribute("Level") or 1,w,s)
  end)
@@ -65,7 +67,7 @@ local function execute(p,message)
  local level,world,stage,err
  if sub=="default" then local d=Config.Defaults or {};level,world,stage=d.Level,d.World,d.Stage
  elseif sub=="start" then level,err=integer(w[2],1,Requirements.MaxLevel,"Level");if not level then return false,err end;world,err=integer(w[3],1,2,"World");if not world then return false,err end;stage,err=integer(w[4],1,10,"Stage");if not stage then return false,err end
- elseif sub=="level" then level,err=integer(w[2],1,Requirements.MaxLevel,"Level");if not level then return false,err end
+ elseif sub=="level" then level,err=integer(w[2],1,Requirements.MaxLevel,"Level");if not level then return false,err end;return apply(p,level,nil,nil,true)
  elseif sub=="world" then world,err=integer(w[2],1,2,"World");if not world then return false,err end
  elseif sub=="stage" then stage,err=integer(w[2],1,10,"Stage");if not stage then return false,err end
  else return false,"TEST ERROR: Unknown command; use /test help" end
