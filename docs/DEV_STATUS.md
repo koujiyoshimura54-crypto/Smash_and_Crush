@@ -1,5 +1,10 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-30 — Run Return UI revision
+
+- Red Return button moved to the upper center, with placement owned by HUDLayout. Visibility uses active World1 Run, current Boss defeat snapshots and the existing Lobby floor footprint; Return/persistence scripts remain unchanged.
+- Actual Stage1 defeat → hidden; Stage2 → visible; desktop click → Returned / Run 0 / hidden in Lobby. PC and iPhone 17 Pro landscape checked. World2 attribute condition checked, travel and Tablet not retested. Stop/Edit, default viewport restored; Place/GUI unsaved. [UI details](UI_SPEC.md).
+
 ## 2026-09-30 — Run Return transaction safety (Phase 5F)
 
 - PlayerDataOwnershipを追加し、PlayerDataService / RunReturnPersistence / RunReturnServiceを更新。既存キー内のOwner Tokenと永続Return Journalで旧Serverを拒否し、Grantedの減算rollbackを廃止。

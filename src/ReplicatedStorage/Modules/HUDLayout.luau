@@ -108,8 +108,7 @@ function M.Mount(gui)
    else leftBottom=math.min(leftBottom,r.P.Y-10);thumbEnd=math.max(thumbEnd,r.P.X+r.S.X+12) end
   end
   local columns=2 -- Original two-column LeftMenu, including on phones.
-  local returnButton=menu:FindFirstChild("RunReturnButton")
-  local lastLeftButton=returnButton and returnButton.Visible and 5 or 4
+  local lastLeftButton=4
   local rows=math.ceil(5/columns)
   local leftWidth=(columns*144+(columns-1)*14)
   local leftHeight=(rows*144+(rows-1)*14)
@@ -209,6 +208,19 @@ function M.Mount(gui)
    inventory.Size=UDim2.fromOffset(small and 180 or 220,28)
    inventory.TextSize=small and 18 or 22
   end
+  local returnButton=hud:FindFirstChild("RunReturnButton")
+  if returnButton then
+   local bw,bh=compact and 120 or 144,compact and 44 or 48
+   local by=12
+   if compact then
+    by=winY+64*winScale+12
+    if inventory then by=math.max(by,inventory.Position.Y.Offset+inventory.Size.Y.Offset+10) end
+   end
+   returnButton.AnchorPoint=Vector2.new(.5,0)
+   returnButton.Position=UDim2.new(.5,0,0,by)
+   returnButton.Size=UDim2.fromOffset(bw,bh)
+   returnButton.TextSize=compact and 22 or 26
+  end
   local potion=gui:FindFirstChild("PotionStatus")
   local statusBlocks
   if strength then
@@ -234,7 +246,7 @@ function M.Mount(gui)
     local blocks={}
     table.insert(blocks,{X=rightX,Y=rightY,W=211*rs,H=476*rs})
     table.insert(blocks,{X=winX,Y=winY,W=280*winScale,H=64*winScale})
-    -- Reserve the sixth slot only while the World1 Return button is visible.
+    -- Only the five existing menu buttons occupy the left grid.
     for i=0,lastLeftButton do table.insert(blocks,{X=leftX+(i%columns)*158*leftScale,
      Y=leftY+math.floor(i/columns)*158*leftScale,W=144*leftScale,H=144*leftScale}) end
     local slot=hud.Overlay.RouletteSlot

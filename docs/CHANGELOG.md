@@ -1,3 +1,8 @@
+# 2026-09-30 — Run Return UI revision
+
+- Updated RunReturnClient and HUDLayout only: red upper-center Return button, hidden after current Boss defeat and in Lobby/World2, shown for the next undefeated Stage. Existing Return request/lock and transaction logic retained.
+- Verified actual Stage1 defeat, Stage2 redisplay and desktop button Return success; PC and iPhone 17 Pro landscape layout checked. World2 visibility condition tested via runtime attribute only. Place/GUI unsaved, Play stopped and default viewport restored.
+
 # 2026-09-30 — World1 Run Return durable transaction Phase 5F
 
 - Added per-session ownership fencing to normal PlayerData writes and a durable Return journal on the existing key. Confirm Pending before Grant; commit quantity and Granted state atomically. Granted is never rolled back.

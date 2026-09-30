@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-09-30 — Run Return UI revision
+
+- Supersedes the Phase 5D button placement/visibility below. `RunReturnClient` creates a red `StrengthGui.HUD.RunReturnButton`; HUDLayout alone places it at the upper center (desktop 144×48, compact 120×44 below Win/Inventory). The sixth left-menu slot is removed.
+- Visible only for an active World1 Run outside the existing TrainingArea floor footprint, with the current Boss undefeated. Existing CombatState Initialize snapshots supply cleared/skipped state; EnemyDefeated hides immediately and StageCleared permits the next undefeated Stage to show it. Lobby footprint is sampled every 0.2 seconds for presentation only. RunId requests, pending lock, server Return and persistence are unchanged.
+- Play: actual Stage1 defeat hid the button, Stage2 progression showed it again, desktop button click returned successfully with Run Count 0 and hid it in Lobby. PC 1348×639 and iPhone 17 Pro landscape 749×361 were visually checked; World2 hiding was checked by setting the runtime CurrentWorld attribute to 2 (travel itself not tested). Tablet not retested. Place/GUI unsaved; Stop/Edit and default viewport restored.
+
 ## 2026-09-30 — World1 Return button (Phase 5D)
 
 - `RunReturnClient` creates `StrengthGui.LeftMenu.RunReturnButton`, with a matching `HUD.LeftHUD` slot (order 6, existing two-column menu's third-row right). HUDLayout alone controls placement and scaling and includes this visible slot in touch/status collision checks.
