@@ -1,0 +1,1033 @@
+{
+  "date": "2026-09-30",
+  "placeId": 101572058398926,
+  "reports": [
+    {
+      "isFighting": false,
+      "startStarts": 0,
+      "label": "A_manual_normal",
+      "trophyCalls": 1,
+      "chase": "Idle",
+      "playerHP": 100,
+      "rewardCalls": 1,
+      "startHits": 0,
+      "hpAtFinalReturn": 0,
+      "hits": 5,
+      "finished": 1790752845.398792,
+      "attackStopped": true,
+      "bossStarts": 1,
+      "currentStage": 2,
+      "strength": 75,
+      "defeatedAtFinalReturn": true,
+      "defeated": true,
+      "worldComplete": false,
+      "startTrophies": 0,
+      "afterWinRequests": [
+        {
+          "ok": true,
+          "why": "NoCombat"
+        },
+        {
+          "ok": true,
+          "why": "NoCombat"
+        },
+        {
+          "ok": true,
+          "why": "NoCombat"
+        }
+      ],
+      "start": 1790752842.063696,
+      "gauge": 0,
+      "stage": 1,
+      "startRewards": 0
+    },
+    {
+      "isFighting": false,
+      "startStarts": 1,
+      "label": "B_lethal_wall_no_next_attack",
+      "wallIndex": 5,
+      "chase": "Idle",
+      "attackStopped": true,
+      "playerHP": 100,
+      "rewardCalls": 1,
+      "startRewards": 1,
+      "defeatedAtWallReturn": true,
+      "healedAtWallReturn": 100,
+      "hits": 0,
+      "settlementDelay": 2.5987625122070312e-05,
+      "carryHP": 0,
+      "currentStage": 2,
+      "startHits": 5,
+      "defeated": true,
+      "trophyCalls": 1,
+      "strength": 1000,
+      "bossStarts": 0,
+      "wallCallSeconds": 0.0001571178436279297,
+      "worldComplete": false,
+      "finished": 1790752872.178889,
+      "startTrophies": 1,
+      "start": 1790752870.962532,
+      "gauge": 0,
+      "stage": 1,
+      "hpAtWallReturn": 0
+    },
+    {
+      "isFighting": false,
+      "startStarts": 1,
+      "label": "C_wall_residual_50",
+      "trophyCalls": 1,
+      "defeatedAfterWall": false,
+      "startsAfterWall": 0,
+      "playerHP": 100,
+      "rewardCalls": 1,
+      "startRewards": 2,
+      "hits": 1,
+      "chase": "Idle",
+      "finished": 1790752893.844856,
+      "attackStopped": true,
+      "defeatedAtAttackReturn": true,
+      "worldComplete": false,
+      "currentStage": 2,
+      "strength": 900,
+      "startTrophies": 2,
+      "defeated": true,
+      "gaugeAfterWall": 50,
+      "bossStarts": 1,
+      "combatInitialHP": 50,
+      "start": 1790752891.945796,
+      "gauge": 0,
+      "stage": 1,
+      "startHits": 5
+    },
+    {
+      "isFighting": false,
+      "startStarts": 2,
+      "label": "D_low_strength_continues",
+      "trophyCalls": 1,
+      "chase": "Idle",
+      "afterFive": {
+        "completed": false,
+        "playerHP": 50,
+        "hp": 75,
+        "fighting": true
+      },
+      "rewardCalls": 1,
+      "startHits": 6,
+      "hits": 7,
+      "finished": 1790752913.328547,
+      "attackStopped": true,
+      "playerHP": 100,
+      "strength": 60,
+      "startRewards": 3,
+      "currentStage": 2,
+      "worldComplete": false,
+      "defeated": true,
+      "bossStarts": 1,
+      "start": 1790752908.910808,
+      "gauge": 0,
+      "stage": 1,
+      "startTrophies": 3
+    },
+    {
+      "isFighting": false,
+      "startStarts": 3,
+      "label": "E_kill_before_boss_deadline",
+      "trophyCalls": 1,
+      "untilScheduledAttack": 0.033869028091430664,
+      "playerHP": 100,
+      "rewardCalls": 1,
+      "startRewards": 4,
+      "chase": "Idle",
+      "attackStopped": true,
+      "hits": 5,
+      "lastBossHit": {
+        "HealthAfter": 50,
+        "HealthBefore": 75,
+        "Index": 2,
+        "Hit": true,
+        "ActualAt": 1790752937.9608,
+        "ScheduledAt": 1790752937.943937,
+        "Reach": 9,
+        "Distance": 0
+      },
+      "finished": 1790752940.576771,
+      "startTrophies": 4,
+      "currentStage": 2,
+      "startHits": 13,
+      "defeated": true,
+      "strength": 75,
+      "bossStarts": 1,
+      "hpAfterDeadlines": 100,
+      "worldComplete": false,
+      "healthEvents": [
+        {
+          "hp": 75,
+          "t": 1790752936.961485
+        },
+        {
+          "hp": 50,
+          "t": 1790752937.960805
+        },
+        {
+          "hp": 100,
+          "t": 1790752938.910124
+        }
+      ],
+      "lastAttackBefore": 50,
+      "start": 1790752935.943688,
+      "gauge": 0,
+      "stage": 1,
+      "defeatTime": 1790752938.910068
+    },
+    {
+      "isFighting": false,
+      "startStarts": 4,
+      "label": "A_auto_normal",
+      "trophyCalls": 1,
+      "chase": "Idle",
+      "playerHP": 100,
+      "rewardCalls": 1,
+      "startHits": 18,
+      "hits": 4,
+      "finished": 1790752957.093962,
+      "attackStopped": true,
+      "strength": 112.5,
+      "startRewards": 5,
+      "currentStage": 2,
+      "worldComplete": false,
+      "defeated": true,
+      "bossStarts": 1,
+      "start": 1790752952.609974,
+      "gauge": 0,
+      "stage": 1,
+      "startTrophies": 5
+    },
+    {
+      "isFighting": false,
+      "startStarts": 5,
+      "label": "B_stage10_lethal_wall",
+      "trophyCalls": 1,
+      "chase": "Idle",
+      "playerHP": 100,
+      "rewardCalls": 1,
+      "startRewards": 6,
+      "hits": 0,
+      "carryHP": 0,
+      "attackStopped": true,
+      "bossStarts": 0,
+      "currentStage": 10,
+      "startHits": 22,
+      "strength": 20360300,
+      "defeated": true,
+      "defeatedAtWallReturn": true,
+      "worldComplete": true,
+      "startTrophies": 6,
+      "finished": 1790752989.258997,
+      "start": 1790752988.058465,
+      "gauge": 0,
+      "stage": 10,
+      "hpAtWallReturn": 0
+    },
+    {
+      "isFighting": false,
+      "startStarts": 5,
+      "label": "B_auto_wall_exact_zero",
+      "trophyCalls": 1,
+      "chase": "Idle",
+      "playerHP": 100,
+      "rewardCalls": 1,
+      "startHits": 22,
+      "hits": 0,
+      "finished": 1790753012.874498,
+      "attackStopped": true,
+      "carryHP": 0,
+      "strength": 950,
+      "currentStage": 2,
+      "startRewards": 7,
+      "worldComplete": false,
+      "defeated": true,
+      "bossStarts": 0,
+      "start": 1790753011.342244,
+      "gauge": 0,
+      "stage": 1,
+      "startTrophies": 7
+    },
+    {
+      "isFighting": false,
+      "startStarts": 5,
+      "label": "Begin_zero_fallback",
+      "trophyCalls": 1,
+      "chase": "Idle",
+      "playerHP": 100,
+      "rewardCalls": 1,
+      "startHits": 22,
+      "hits": 0,
+      "finished": 1790753043.839964,
+      "attackStopped": true,
+      "strength": 75,
+      "startRewards": 8,
+      "currentStage": 2,
+      "worldComplete": false,
+      "defeated": true,
+      "bossStarts": 0,
+      "start": 1790753042.606115,
+      "gauge": 0,
+      "stage": 1,
+      "startTrophies": 8
+    }
+  ],
+  "carries": [
+    {
+      "t": 1790752870.962818,
+      "hp": 0,
+      "label": "B_lethal_wall_no_next_attack"
+    },
+    {
+      "t": 1790752891.946037,
+      "hp": 50,
+      "label": "C_wall_residual_50"
+    },
+    {
+      "t": 1790752988.058741,
+      "hp": 0,
+      "label": "B_stage10_lethal_wall"
+    },
+    {
+      "t": 1790753011.640717,
+      "hp": 0,
+      "label": "B_auto_wall_exact_zero"
+    },
+    {
+      "t": 1790753042.606287,
+      "hp": 0,
+      "label": "Begin_zero_fallback"
+    }
+  ],
+  "starts": [
+    {
+      "t": 1790752842.064064,
+      "label": "A_manual_normal"
+    },
+    {
+      "t": 1790752892.529025,
+      "label": "C_wall_residual_50"
+    },
+    {
+      "t": 1790752908.91113,
+      "label": "D_low_strength_continues"
+    },
+    {
+      "t": 1790752935.944014,
+      "label": "E_kill_before_boss_deadline"
+    },
+    {
+      "t": 1790752952.725688,
+      "label": "A_auto_normal"
+    }
+  ],
+  "restored": {
+    "badge": true,
+    "override": true,
+    "anchored": false,
+    "data": true,
+    "queue": true,
+    "isFighting": false,
+    "drop": true,
+    "trophy": true,
+    "bossStart": true,
+    "stage": 1,
+    "attack": true
+  },
+  "rewards": [
+    {
+      "defeated": true,
+      "t": 1790752844.197873,
+      "stage": 1,
+      "label": "A_manual_normal"
+    },
+    {
+      "defeated": true,
+      "t": 1790752870.962844,
+      "stage": 1,
+      "label": "B_lethal_wall_no_next_attack"
+    },
+    {
+      "defeated": true,
+      "t": 1790752892.627934,
+      "stage": 1,
+      "label": "C_wall_residual_50"
+    },
+    {
+      "defeated": true,
+      "t": 1790752912.111269,
+      "stage": 1,
+      "label": "D_low_strength_continues"
+    },
+    {
+      "defeated": true,
+      "t": 1790752938.910066,
+      "stage": 1,
+      "label": "E_kill_before_boss_deadline"
+    },
+    {
+      "defeated": true,
+      "t": 1790752955.877087,
+      "stage": 1,
+      "label": "A_auto_normal"
+    },
+    {
+      "defeated": true,
+      "t": 1790752988.058767,
+      "stage": 10,
+      "label": "B_stage10_lethal_wall"
+    },
+    {
+      "defeated": true,
+      "t": 1790753011.640745,
+      "stage": 1,
+      "label": "B_auto_wall_exact_zero"
+    },
+    {
+      "defeated": true,
+      "t": 1790753042.606501,
+      "stage": 1,
+      "label": "Begin_zero_fallback"
+    }
+  ],
+  "trophies": [
+    {
+      "t": 1790752844.498631,
+      "label": "A_manual_normal"
+    },
+    {
+      "t": 1790752871.263795,
+      "label": "B_lethal_wall_no_next_attack"
+    },
+    {
+      "t": 1790752892.945985,
+      "label": "C_wall_residual_50"
+    },
+    {
+      "t": 1790752912.411879,
+      "label": "D_low_strength_continues"
+    },
+    {
+      "t": 1790752939.210206,
+      "label": "E_kill_before_boss_deadline"
+    },
+    {
+      "t": 1790752956.192671,
+      "label": "A_auto_normal"
+    },
+    {
+      "t": 1790752988.374911,
+      "label": "B_stage10_lethal_wall"
+    },
+    {
+      "t": 1790753011.941572,
+      "label": "B_auto_wall_exact_zero"
+    },
+    {
+      "t": 1790753042.922154,
+      "label": "Begin_zero_fallback"
+    }
+  ],
+  "hits": [
+    {
+      "label": "A_manual_normal",
+      "status": "Active",
+      "t": 1790752842.064082,
+      "hp": 300,
+      "n": 1
+    },
+    {
+      "label": "A_manual_normal",
+      "status": "Active",
+      "t": 1790752842.598806,
+      "hp": 225,
+      "n": 2
+    },
+    {
+      "label": "A_manual_normal",
+      "status": "Active",
+      "t": 1790752843.130325,
+      "hp": 150,
+      "n": 3
+    },
+    {
+      "label": "A_manual_normal",
+      "status": "Active",
+      "t": 1790752843.663188,
+      "hp": 75,
+      "n": 4
+    },
+    {
+      "label": "A_manual_normal",
+      "status": "Win",
+      "t": 1790752844.197689,
+      "hp": 0,
+      "n": 5
+    },
+    {
+      "label": "C_wall_residual_50",
+      "status": "Win",
+      "t": 1790752892.627842,
+      "hp": 0,
+      "n": 1
+    },
+    {
+      "label": "D_low_strength_continues",
+      "status": "Active",
+      "t": 1790752908.911144,
+      "hp": 315,
+      "n": 1
+    },
+    {
+      "label": "D_low_strength_continues",
+      "status": "Active",
+      "t": 1790752909.44387,
+      "hp": 255,
+      "n": 2
+    },
+    {
+      "label": "D_low_strength_continues",
+      "status": "Active",
+      "t": 1790752909.977338,
+      "hp": 195,
+      "n": 3
+    },
+    {
+      "label": "D_low_strength_continues",
+      "status": "Active",
+      "t": 1790752910.511499,
+      "hp": 135,
+      "n": 4
+    },
+    {
+      "label": "D_low_strength_continues",
+      "status": "Active",
+      "t": 1790752911.043845,
+      "hp": 75,
+      "n": 5
+    },
+    {
+      "label": "D_low_strength_continues",
+      "status": "Active",
+      "t": 1790752911.577773,
+      "hp": 15,
+      "n": 6
+    },
+    {
+      "label": "D_low_strength_continues",
+      "status": "Win",
+      "t": 1790752912.111067,
+      "hp": 0,
+      "n": 7
+    },
+    {
+      "label": "E_kill_before_boss_deadline",
+      "status": "Active",
+      "t": 1790752935.944028,
+      "hp": 300,
+      "n": 1
+    },
+    {
+      "label": "E_kill_before_boss_deadline",
+      "status": "Active",
+      "t": 1790752936.476781,
+      "hp": 225,
+      "n": 2
+    },
+    {
+      "label": "E_kill_before_boss_deadline",
+      "status": "Active",
+      "t": 1790752937.010008,
+      "hp": 150,
+      "n": 3
+    },
+    {
+      "label": "E_kill_before_boss_deadline",
+      "status": "Active",
+      "t": 1790752937.543846,
+      "hp": 75,
+      "n": 4
+    },
+    {
+      "label": "E_kill_before_boss_deadline",
+      "status": "Win",
+      "t": 1790752938.909837,
+      "hp": 0,
+      "n": 5
+    },
+    {
+      "label": "A_auto_normal",
+      "status": "Active",
+      "t": 1790752953.226864,
+      "hp": 262.5,
+      "n": 1
+    },
+    {
+      "label": "A_auto_normal",
+      "status": "Active",
+      "t": 1790752954.093825,
+      "hp": 150,
+      "n": 2
+    },
+    {
+      "label": "A_auto_normal",
+      "status": "Active",
+      "t": 1790752954.993127,
+      "hp": 37.5,
+      "n": 3
+    },
+    {
+      "label": "A_auto_normal",
+      "status": "Win",
+      "t": 1790752955.876891,
+      "hp": 0,
+      "n": 4
+    }
+  ],
+  "counts": [
+    {
+      "label": "A_manual_normal",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    },
+    {
+      "label": "B_lethal_wall_no_next_attack",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    },
+    {
+      "label": "C_wall_residual_50",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    },
+    {
+      "label": "D_low_strength_continues",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    },
+    {
+      "label": "E_kill_before_boss_deadline",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    },
+    {
+      "label": "A_auto_normal",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    },
+    {
+      "label": "B_stage10_lethal_wall",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    },
+    {
+      "label": "B_auto_wall_exact_zero",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    },
+    {
+      "label": "Begin_zero_fallback",
+      "win": 1,
+      "defeated": 1,
+      "cleared": 1,
+      "rewards": 1,
+      "trophies": 1
+    }
+  ],
+  "clientEvents": [
+    {
+      "type": "BossInitialize",
+      "stage": 1,
+      "hp": 375,
+      "t": 1790752842.110452
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752842.111957,
+      "attack": 1
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752842.63042,
+      "attack": 2
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752843.151168,
+      "attack": 3
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752843.685135,
+      "attack": 4
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752844.235592,
+      "attack": 5
+    },
+    {
+      "type": "BossResult",
+      "stage": 1,
+      "t": 1790752844.235744,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1,
+      "t": 1790752844.237236
+    },
+    {
+      "complete": false,
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2,
+      "t": 1790752844.285392
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752870.998647
+    },
+    {
+      "type": "BossResult",
+      "stage": 1,
+      "t": 1790752871.001808,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1,
+      "t": 1790752871.002801
+    },
+    {
+      "complete": false,
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2,
+      "t": 1790752871.04876
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752891.985011
+    },
+    {
+      "type": "Stage1BossUnlocked",
+      "stage": 1,
+      "t": 1790752891.988347
+    },
+    {
+      "type": "BossRecommendation",
+      "stage": 1,
+      "hp": 50,
+      "t": 1790752891.989172
+    },
+    {
+      "type": "BossInitialize",
+      "stage": 1,
+      "hp": 50,
+      "t": 1790752892.568647
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752892.666122,
+      "attack": 1
+    },
+    {
+      "type": "BossResult",
+      "stage": 1,
+      "t": 1790752892.666285,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1,
+      "t": 1790752892.668271
+    },
+    {
+      "complete": false,
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2,
+      "t": 1790752892.700947
+    },
+    {
+      "type": "BossInitialize",
+      "stage": 1,
+      "hp": 375,
+      "t": 1790752908.963901
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752908.966004,
+      "attack": 1
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752909.483258,
+      "attack": 2
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752910.015481,
+      "attack": 3
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752910.548452,
+      "attack": 4
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752911.083324,
+      "attack": 5
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752911.61553,
+      "attack": 6
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752912.148959,
+      "attack": 7
+    },
+    {
+      "type": "BossResult",
+      "stage": 1,
+      "t": 1790752912.149147,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1,
+      "t": 1790752912.150633
+    },
+    {
+      "complete": false,
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2,
+      "t": 1790752912.184587
+    },
+    {
+      "type": "BossInitialize",
+      "stage": 1,
+      "hp": 375,
+      "t": 1790752935.994721
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752935.996144,
+      "attack": 1
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752936.512446,
+      "attack": 2
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752937.030036,
+      "attack": 3
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752937.579448,
+      "attack": 4
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752938.946441,
+      "attack": 5
+    },
+    {
+      "type": "BossResult",
+      "stage": 1,
+      "t": 1790752938.94659,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1,
+      "t": 1790752938.948612
+    },
+    {
+      "complete": false,
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2,
+      "t": 1790752938.997827
+    },
+    {
+      "type": "BossInitialize",
+      "stage": 1,
+      "hp": 375,
+      "t": 1790752952.762374
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752952.764169,
+      "attack": 1
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752953.630984,
+      "attack": 2
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752954.53031,
+      "attack": 3
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790752955.397088,
+      "attack": 4
+    },
+    {
+      "type": "BossResult",
+      "stage": 1,
+      "t": 1790752955.91477,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1,
+      "t": 1790752955.916247
+    },
+    {
+      "complete": false,
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2,
+      "t": 1790752955.981188
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 10,
+      "t": 1790752988.093086
+    },
+    {
+      "type": "BossResult",
+      "stage": 10,
+      "t": 1790752988.095574,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 10,
+      "t": 1790752988.096244
+    },
+    {
+      "complete": true,
+      "type": "StageCleared",
+      "stage": 10,
+      "current": 10,
+      "t": 1790752988.166604
+    },
+    {
+      "type": "CombatAttack",
+      "stage": 1,
+      "t": 1790753011.493589
+    },
+    {
+      "type": "BossResult",
+      "stage": 1,
+      "t": 1790753011.683185,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1,
+      "t": 1790753011.684091
+    },
+    {
+      "complete": false,
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2,
+      "t": 1790753011.743804
+    },
+    {
+      "type": "BossResult",
+      "stage": 1,
+      "t": 1790753042.653946,
+      "result": "WIN"
+    },
+    {
+      "type": "EnemyDefeated",
+      "stage": 1,
+      "t": 1790753042.654941
+    },
+    {
+      "complete": false,
+      "type": "StageCleared",
+      "stage": 1,
+      "current": 2,
+      "t": 1790753042.691082
+    }
+  ],
+  "audit": {
+    "baselineCount": 510,
+    "compileErrors": [],
+    "attackUnchanged": true,
+    "changed": [
+      "ServerScriptService.World.EnemyManager",
+      "ServerScriptService.World.BossCombatService"
+    ],
+    "temporaryRunner": false,
+    "chaseUnchanged": true
+  }
+}

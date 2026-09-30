@@ -278,6 +278,8 @@ Wallダメージは現在Strength（Gloveなし）。World1 Bossは全Strength�
 
 World1はHP<=0で勝利。5Hit後もBossが生存していれば6Hit以降へ継続し、事前に勝敗を計画しない。同Run内の遭遇Strength・Glove・HP保持は従来どおり。Player死亡時はPhase 3のリセットを維持する。
 
+2026-09-30追加修正：壁余剰でBoss HP<=0になる場合は壁Damage処理内で即撃破し、次のPlayer Attackを待たない。HPが残る場合だけ従来のCombatへ進む。通常Attack・壁余剰・Combat開始時のHP0検知は同じDefeatedガード付き撃破処理を使用し、正式Combat前の撃破でも生存Playerは全回復する。[即撃破検証](../reports/World1_Immediate_Boss_Defeat_20260930/README.md)。
+
 Phase 3のBoss攻撃25 Damage / 1秒間隔、Player HP100、戦闘終了時全回復は未変更。Stage01の今回PlayではGlove・Carryなしで、Strength 75 / 60 / 45 / 112.5に対しDamage同値、MaxHP375、撃破5 / 7 / 9 / 4Hit。60%の9Hit勝利は位置を制御してBoss初撃をMISSさせた条件。近距離では8Hit後、Boss4撃目で死亡した。詳細：[Phase 4検証](../reports/World1_Phase4_20260930/README.md)。
 
 **Wall余剰は次WallへCarryし、Wall4からBossへもCarryする。現在実装済みだがBossへのCarryを今後維持するかは要検討（K03）。** Bossを常に満タンから開始する仕様ではない。

@@ -1,3 +1,10 @@
+# 2026-09-30 — Resolve zero-HP World1 bosses immediately
+
+- Resolve lethal wall carry through the existing guarded defeat routine before Chase recognition or Boss attack startup; do not require an extra Player hit.
+- Keep positive carry, damage formulas, attack timing and Chase unchanged. Centralize WIN under the existing per-player Defeated guard and heal living pre-combat winners.
+- Nine Play cases passed, including exact-zero carry, the attack deadline boundary and Stage10 WorldComplete. Test fixtures restored; Place unsaved in Edit.
+- Evidence: [immediate-defeat report](../reports/World1_Immediate_Boss_Defeat_20260930/README.md).
+
 # 2026-09-30 — World1 Boss Phase 4: Strength damage combat
 
 - Removed World1 encounter lottery and forced five-hit outcomes; retained damage snapshots, Glove bonus, wall carry and World2 legacy behavior.

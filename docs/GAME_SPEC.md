@@ -256,6 +256,8 @@ Phase 2〜3の現在実装：.4 Wall破壊でChaseと個人GaugeのBoss頭上追
 
 Boss撃破で個人のStageが進む。Stage10撃破でWorldComplete=true。敗北では死亡演出後にLobbyへ再SpawnしRunをリセットする。Stage6〜10のBoss差し替え、大型Collider、HP UIは実装済み。過去のシーサー用分岐や名前だけのコメントを現在のBoss仕様と混同しない。
 
+World1のHP0撃破はDamage原因によらず同じEnemyManager.defeatを通る。壁余剰の致死分は.4 Wall突破の処理中に確定し、Boss Chase登録・Boss攻撃開始・追加Attack入力を経由しない。Defeatedを先に確定してからWIN・EnemyDefeated・StageClear・Rewardへ進むため、再入による二重通知を防ぐ。2026-09-30に通常/自動Attack、壁余剰、攻撃予定時刻直前、Stage10完了をPlay確認：[検証報告](../reports/World1_Immediate_Boss_Defeat_20260930/README.md)。
+
 根拠: [ServerScriptService.World.EnemyManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.EnemyManager.luau)、[ServerScriptService.World.BossCombatService](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.BossCombatService.luau)、[ServerScriptService.World.StageManager](../reports/Implementation_Audit_20260915/sources/ServerScriptService.World.StageManager.luau)。
 
 ## RewardPad / Win / Item Drop

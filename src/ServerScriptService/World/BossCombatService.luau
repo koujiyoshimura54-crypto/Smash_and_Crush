@@ -106,6 +106,10 @@ function M.Attack(player)
 end
 function M.QueueDamage(player,boss,stage,maxHP,damage)
  pending[player]={Boss=boss,Stage=stage,Damage=math.max(0,tonumber(damage) or 0)}
+ if worldId==1 then
+  -- Expose the carry result immediately without taking an early combat/Glove snapshot.
+  return math.max(0,M.StageConfig[stage].MaxHP-pending[player].Damage)
+ end
 end
 function M.Cancel(player) active[player]=nil end
 function M.End(player) active[player]=nil;pending[player]=nil end

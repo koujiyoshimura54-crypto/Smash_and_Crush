@@ -830,7 +830,15 @@ local function defeat(p,n)
  if ps.Defeated[n] then return end
  ps.Gauges[n]=0
  ps.Defeated[n]=true
- if BossAttack then BossAttack.Stop(p,true) end
+ -- Claim defeat before any result/reward notification; all damage paths share this guard.
+ local enemy=enemies[n]
+ send(p,{Type="BossResult",Result="WIN",Stage=n,SpawnGeneration=enemy and enemy:GetAttribute("SpawnGeneration")})
+ if BossAttack then
+  BossAttack.Stop(p,true)
+  -- Lethal wall carry can win before a BossAttack session exists.
+  local hum=p.Character and p.Character:FindFirstChildOfClass("Humanoid")
+  if hum and hum.Health>0 then hum.Health=hum.MaxHealth end
+ end
  recognizedPlayers[p]=nil
  sessions[p]=nil
  Boss.End(p) -- Discard carry at the boundary; keep this run\'s encounter decisions.
@@ -939,6 +947,11 @@ local function updateCombat(p,manualRequest)
       startedEnemy=true
       local maxHP=Boss.GetStageConfig(n).MaxHP
       local bs=Boss.Begin(p,e,n,maxHP)
+      if worldId==1 and bs.HP<=0 then
+       bs.Completed=true
+       defeat(p,n)
+       return true,"Defeated"
+      end
       if BossAttack then BossAttack.Start(p,e,n,now) end
       state(p).Gauges[n]=bs.HP
       send(p,{Type="BossInitialize",Stage=n,Current=bs.HP,Max=bs.MaxHP,RecommendedLevel=bs.RecommendedLevel,
@@ -978,7 +991,6 @@ local function updateCombat(p,manualRequest)
          AttackId=attackId,GloveApplied=bs.Route~="LOTTERY_WIN" and bs.GloveBonus>0 and bs.HP<hpBefore,
          SpawnGeneration=e:GetAttribute("SpawnGeneration")})
         if status=="Win" then
-         send(p,{Type="BossResult",Result="WIN",Stage=n,SpawnGeneration=e:GetAttribute("SpawnGeneration")})
          defeat(p,n)
         elseif worldId==2 and status=="Lose" then
          if BossAttack then BossAttack.Stop(p,false) end
@@ -1011,17 +1023,24 @@ local function updateCombat(p,manualRequest)
        if nextIndex<=4 then
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=nextIndex,Current=Wall.GetGaugeForStage(attackPlayer,attackStage,nextIndex),Max=Wall.GetStageConfig(attackStage).Walls[nextIndex]})
        elseif Wall.IsBossUnlockedForStage(attackPlayer,attackStage) then
+        if remaining>0 then
+         local carryBossMax=Boss.GetStageConfig(attackStage).MaxHP
+         local carryHP=Boss.QueueDamage(attackPlayer,attackEnemy,attackStage,carryBossMax,remaining)
+         if worldId==1 then
+          state(attackPlayer).Gauges[attackStage]=carryHP
+          if carryHP<=0 then
+           -- Finish in this wall hit, before recognition, Boss attacks or another input.
+           defeat(attackPlayer,attackStage)
+           return
+          end
+         end
+        end
         if Chase and table.find(cleared,4) then
          recognizedPlayers[attackPlayer]={Stage=attackStage,Character=ch,CombatStarted=false}
         end
         send(attackPlayer,{Type="Stage1BossUnlocked",MajorStage=attackStage})
         local bossMax=Boss.GetStageConfig(attackStage).MaxHP
         send(attackPlayer,{Type="BossRecommendation",Stage=attackStage,Current=state(attackPlayer).Gauges[attackStage],Max=bossMax,RecommendedLevel=Boss.GetStageConfig(attackStage).RecommendedLevel})
-        if remaining>0 then
-         local boss=attackEnemy
-         local carryBossMax=Boss.GetStageConfig(attackStage).MaxHP
-         Boss.QueueDamage(attackPlayer,boss,attackStage,carryBossMax,remaining)
-        end
        end
        if #cleared>0 then
         local active=sessions[attackPlayer]

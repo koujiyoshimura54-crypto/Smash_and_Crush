@@ -1,5 +1,12 @@
 # DEV_STATUS — 開発状況
 
+## 2026-09-30 — World1 Boss HP0即撃破
+
+- BossCombatService.QueueDamageがWorld1の壁余剰適用後HPを返し、EnemyManagerが同じ壁hit内で致死判定する。通常Attack・Combat開始時HP0も既存defeatへ合流。WIN通知をDefeatedガード内へ集約。
+- Play 9ケース：通常Manual/Auto、壁余剰致死（過剰・ちょうど0）、残HP50、低Strength7Hit、Boss予定攻撃の約34ms前撃破、Stage10余剰撃破→WorldComplete、開始時HP0フォールバック。全件WIN / EnemyDefeated / StageCleared / Reward呼び出し / Trophy生成が各1回。
+- Strength1000のStage01壁突破はBoss Attack入力0回・BossAttack.Start 0回で即撃破。正常撃破後のPlayer HP100、攻撃停止、Stage進行を確認。Chase / BossAttackService / 攻撃周期 / Damage式は未変更。
+- 検証条件復元後Stop→Edit、Place未保存。保管モデルの既存エラー・参照待機警告は未変更。詳細：[即撃破報告](../reports/World1_Immediate_Boss_Defeat_20260930/README.md)。
+
 ## 2026-09-30 — World1 Boss Phase 4
 
 - World1の勝率抽選、5Hit強制勝利・敗北を撤廃。既存Strength×Glove補正で実HPを削り、RequiredStrengthは推奨値として維持。World2互換の抽選経路は維持。
