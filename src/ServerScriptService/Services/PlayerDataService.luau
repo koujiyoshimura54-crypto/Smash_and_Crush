@@ -1,4 +1,5 @@
 local DSS=game:GetService("DataStoreService")
+local Players=game:GetService("Players")
 local RunService=game:GetService("RunService")
 local HttpService=game:GetService("HttpService")
 local DumbbellItemMaster=require(game:GetService("ReplicatedStorage").Config:WaitForChild("DumbbellItemMaster"))
@@ -173,7 +174,7 @@ local function normalizeUnlockedWorld(value)
  return value
 end
 local function defaults()
- return {AutoTapEnabled=true,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -187,6 +188,8 @@ local function normalize(raw)
  if typeof(raw)=="table" then
   if raw.AutoTapEnabled~=nil and typeof(raw.AutoTapEnabled)~="boolean" then return nil,"Invalid AutoTapEnabled" end
   d.AutoTapEnabled=raw.AutoTapEnabled~=false
+  if raw.SelectedSizeTier~=nil and (not finite(raw.SelectedSizeTier) or raw.SelectedSizeTier%1~=0 or raw.SelectedSizeTier<0 or raw.SelectedSizeTier>10) then return nil,"Invalid SelectedSizeTier" end
+  d.SelectedSizeTier=raw.SelectedSizeTier or 0
   local world,worldError=normalizeUnlockedWorld(raw.HighestUnlockedWorld)
   if not world then return nil,worldError end
   d.HighestUnlockedWorld=world
@@ -266,6 +269,7 @@ local function normalize(raw)
 end
 local function applyAttributes(player,d)
  player:SetAttribute("AutoTapEnabled",d.AutoTapEnabled~=false)
+ player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
  player:SetAttribute("TutorialCompleted",d.TutorialCompleted==true)
  player:SetAttribute("Strength",d.Strength)
@@ -571,6 +575,31 @@ function PlayerDataService.SetCurrentStrength(player,value)
  s.Dirty=true
  return true
 end
+function PlayerDataService.ApplyStudioStartLevel(player,strength,level)
+ if not RunService:IsStudio() then return false,"StudioOnly" end
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.Saving then return false,"DataNotLoaded" end
+ if not finite(strength) or strength<0 or not finite(level) or level%1~=0 then return false,"InvalidRequest" end
+ if not s.StudioStartOverride then local d=s.Data;s.StudioStartOverride={Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate,Win=d.Win,RebirthCount=d.RebirthCount} end
+ s.Data.Strength=strength;s.Data.Level=level;s.Data.LevelProgress=0
+ player:SetAttribute("Strength",strength);player:SetAttribute("Level",level);player:SetAttribute("LevelProgress",0)
+ return true
+end
+function PlayerDataService.RestoreStudioStartOverride(player)
+ if not RunService:IsStudio() then return false,"StudioOnly" end
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.Saving then return false,"DataNotLoaded" end
+ local original=s.StudioStartOverride
+ if not original then return true,"NoOverride" end
+ local d=s.Data
+ d.Strength=original.Strength;d.Level=original.Level;d.LevelProgress=original.LevelProgress
+ d.TotalStrengthEarned=original.TotalStrengthEarned;d.DailyStrengthEarned=original.DailyStrengthEarned;d.DailyDate=original.DailyDate
+ d.Win=original.Win;d.RebirthCount=original.RebirthCount
+ s.StudioStartOverride=nil
+ player:SetAttribute("Strength",d.Strength);player:SetAttribute("Level",d.Level);player:SetAttribute("LevelProgress",d.LevelProgress)
+ player:SetAttribute("Win",d.Win);player:SetAttribute("RebirthCount",d.RebirthCount)
+ return true
+end
 -- Output mirrors only; saved progression never reads client-facing attributes.
 function PlayerDataService.GetLevelState(player)
  local s=sessions[player]
@@ -649,6 +678,7 @@ end
 
 function PlayerDataService.Save(player,equipAuraOnSuccess)
  local s=sessions[player]
+ if RunService:IsStudio() and s and s.StudioStartOverride then return true,"StudioRuntimeOverride" end
  PlayerDataService.GetTimeRewards(player)
  if s and s.PendingItemMutation then
   local resolved,reason=PlayerDataService.ResolveItemMutation(player)
@@ -661,7 +691,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  s.Saving=true
  local d=s.Data
  local saveToken=d.ResetToken
- d.Strength=math.max(0,tonumber(player:GetAttribute("Strength")) or d.Strength)
+ if not s.StudioStartOverride then d.Strength=math.max(0,tonumber(player:GetAttribute("Strength")) or d.Strength) end
  d.RebirthCount=math.max(0,math.floor(tonumber(player:GetAttribute("RebirthCount")) or d.RebirthCount))
  d.Win=math.max(0,math.floor(tonumber(player:GetAttribute("Win")) or d.Win))
  local now=today()
@@ -669,22 +699,24 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   d.DailyDate=now
   d.DailyStrengthEarned=0
  end
+ local persisted=s.StudioStartOverride
  local payload={
   AutoTapEnabled=d.AutoTapEnabled~=false,
+  SelectedSizeTier=d.SelectedSizeTier,
   HighestUnlockedWorld=d.HighestUnlockedWorld,
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
   CommunityRewards=assert(normalizeCommunity(d.CommunityRewards)),
   TimeRewards=assert(normalizeTimeRewards(d.TimeRewards)),
   DailyRewards=assert(normalizeDailyRewards(d.DailyRewards)),
   TutorialCompleted=d.TutorialCompleted==true,
-  Strength=d.Strength,
-  Level=d.Level,
-  LevelProgress=d.LevelProgress,
+  Strength=persisted and persisted.Strength or d.Strength,
+  Level=persisted and persisted.Level or d.Level,
+  LevelProgress=persisted and persisted.LevelProgress or d.LevelProgress,
   LevelProgressVersion=LevelProgression.Version,
   RebirthCount=d.RebirthCount,
-  TotalStrengthEarned=d.TotalStrengthEarned,
-  DailyStrengthEarned=d.DailyStrengthEarned,
-  DailyDate=d.DailyDate,
+  TotalStrengthEarned=persisted and persisted.TotalStrengthEarned or d.TotalStrengthEarned,
+  DailyStrengthEarned=persisted and persisted.DailyStrengthEarned or d.DailyStrengthEarned,
+  DailyDate=persisted and persisted.DailyDate or d.DailyDate,
   Win=d.Win,
   OwnedSpeeds=table.clone(d.OwnedSpeeds),
   OwnedDumbbells=table.clone(d.OwnedDumbbells),
@@ -715,6 +747,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.DailyRewards=mergeDailyRewards(old.DailyRewards,payload.DailyRewards)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
    merged.AutoTapEnabled=payload.AutoTapEnabled
+   merged.SelectedSizeTier=payload.SelectedSizeTier
    merged.Strength=payload.Strength
    merged.Level=payload.Level
    merged.LevelProgress=payload.LevelProgress
@@ -854,6 +887,30 @@ function PlayerDataService.UnlockWorld(player,world)
  return true,"Unlocked"
 end
 
+local ITEM_MUTATION_RETRY_DELAYS={1,2,4,8}
+
+local function scheduleItemMutationRetry(player,session,operation)
+ if operation.RetryScheduled or operation.RetryExhausted then return nil,nil end
+ local nextAttempt=(operation.RetryCount or 0)+1
+ local delaySeconds=ITEM_MUTATION_RETRY_DELAYS[nextAttempt]
+ if not delaySeconds then
+  operation.RetryExhausted=true
+  return nil,nil
+ end
+ operation.RetryScheduled=true
+ task.delay(delaySeconds,function()
+  if player.Parent~=Players or sessions[player]~=session or session.PendingItemMutation~=operation then
+   operation.RetryScheduled=false
+   return
+  end
+  operation.RetryScheduled=false
+  if operation.Resolving then return end
+  operation.RetryCount=nextAttempt
+  PlayerDataService.ResolveItemMutation(player)
+ end)
+ return delaySeconds,nextAttempt
+end
+
 -- All regular-item quantity mutations are durable before reporting success.
 -- A failed/ambiguous write keeps its operation ID and local Win reservation;
 -- Save retries the same operation rather than refunding a possibly committed purchase.
@@ -985,8 +1042,25 @@ function PlayerDataService.ResolveItemMutation(player)
   s.Saving=false
   return false,rejection
  end
- if not ok or not info or info:GetMetadata().ItemMutationId~=op.Id then
+ local actualMutationId
+ local metadataReadable=false
+ if info then
+  local metadataOK,returnedMetadata=pcall(function() return info:GetMetadata() end)
+  if metadataOK and typeof(returnedMetadata)=="table" then
+   metadataReadable=true
+   actualMutationId=returnedMetadata.ItemMutationId
+  end
+ end
+ if not ok or not info or not metadataReadable or actualMutationId~=op.Id then
   op.Resolving=false
+  s.Saving=false
+  local retryDelay,retryAttempt=scheduleItemMutationRetry(player,s,op)
+  warn(string.format(
+   "Item mutation save unconfirmed: Player=%s UserId=%d OperationId=%s RetryCount=%d Error=%s MissingInfo=%s ExpectedItemMutationId=%s ActualItemMutationId=%s NextRetrySeconds=%s",
+   player.Name,player.UserId,tostring(op.Id),op.RetryCount or 0,
+   not ok and tostring(saved) or "none",tostring(info==nil),tostring(op.Id),tostring(actualMutationId),
+   retryDelay and tostring(retryDelay) or "none"
+  ))
   return false,"InventorySavePending"
  end
  s.Data.OwnedItems=assert(normalizeItems(saved.OwnedItems))
@@ -1266,6 +1340,43 @@ function PlayerDataService.GetDailyStrengthTop(limit,date)
 end
 function PlayerDataService.Release(player)
  sessions[player]=nil
+end
+
+-- Atomically persist a consumable size selection and its Win debit before publishing either.
+function PlayerDataService.ChangeSelectedSize(player,tier,config)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
+ if s.Saving or s.PendingItemMutation then return false,"DataSaving" end
+ if typeof(tier)~="number" or tier%1~=0 or tier<0 or tier>10 then return false,"InvalidRequest" end
+ if s.Data.RebirthCount<(config.RequiredRebirth or 5) then return false,"Locked" end
+ local current=s.Data.SelectedSizeTier or 0
+ if current==tier then return true,"SameSize",current,s.Data.Win end
+ if config.PaymentMode~="WIN" then
+  if config.PaymentMode=="DEVELOPER_PRODUCT" and (config.DeveloperProductId or 0)<=0 then return false,"ProductNotConfigured" end
+  return false,"PaymentUnavailable"
+ end
+ local price=tier==0 and 0 or config.WinPrice
+ local win=s.Data.Win
+ if not finite(win) or win%1~=0 or win<price then return false,"NotEnoughWin",current,win end
+ local token=s.Data.ResetToken;s.Saving=true
+ local rejected
+ local ok,saved=pcall(function() return store:UpdateAsync(key(player),function(old,info)
+  rejected=nil
+  if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
+  if resetToken(old)~=token then rejected="SaveSupersededByReset";return nil end
+  local oldTier=old and old.SelectedSizeTier or 0
+  if not finite(oldTier) or oldTier%1~=0 or oldTier<0 or oldTier>10 then error("Invalid SelectedSizeTier") end
+  local nextData=old and table.clone(old) or defaults()
+  nextData.SelectedSizeTier=tier;nextData.Win=win-price
+  local users,meta=metadata(info);return nextData,users,meta
+ end) end)
+ s.Saving=false
+ if not ok or not saved or rejected then return false,rejected or "SaveFailed",current,win end
+ if sessions[player]~=s then return false,"DataNotLoaded",current,win end
+ local earned=(tonumber(player:GetAttribute("Win")) or win)-win
+ s.Data.SelectedSizeTier=tier;s.Data.Win=math.max(0,saved.Win+earned);s.Dirty=earned~=0
+ player:SetAttribute("Win",s.Data.Win);player:SetAttribute("SelectedSizeTier",tier)
+ return true,"Success",tier,s.Data.Win
 end
 
 -- Atomically persist the Win debit and permanent entitlement before publishing either.

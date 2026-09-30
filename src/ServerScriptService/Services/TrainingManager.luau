@@ -1,11 +1,13 @@
 local Players=game:GetService("Players")
 local Workspace=game:GetService("Workspace")
+local CollectionService=game:GetService("CollectionService")
 local StrengthManager=require(game.ServerScriptService.Services:WaitForChild("StrengthManager"))
 local TreadmillConfig=require(game.ReplicatedStorage.Config:WaitForChild("TreadmillConfig"))
 local GamePass=require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
 local ItemService=require(game.ServerScriptService.Services:WaitForChild("ItemService"))
 local PotionService=require(game.ServerScriptService.Services:WaitForChild("PotionService"))
 local treadmillFolder=Workspace:WaitForChild("Treadmill")
+local TREADMILL_TAG="TrainingTreadmill"
 local TrainingConfig=require(game.ReplicatedStorage.Config:WaitForChild("TrainingConfig"))
 local TreadmillVisuals=require(game.ServerScriptService.Services:WaitForChild("TreadmillVisualService"))
 local TrainingManager={}
@@ -148,7 +150,7 @@ function TrainingManager.StopTraining(player)
 end
 
 function TrainingManager.CanUseTreadmill(player,treadmill)
- if not treadmill or treadmill.Parent~=treadmillFolder then return false end
+ if not treadmill or not CollectionService:HasTag(treadmill,TREADMILL_TAG) or not treadmill:IsDescendantOf(Workspace) then return false end
  local config=TreadmillConfig.Get(treadmill.Name)
  if not config or not finitePositive(config.Multiplier) then return false end
  if config.RequiresPremium then return GamePass.AreEffectsEnabled(player) and GamePass.HasPremiumTreadmill(player),config end
@@ -245,11 +247,12 @@ end
 
 function TrainingManager.Initialize()
  local treadmills={}
- for index=1,10 do
-  local name=("Tredmill%02d"):format(index)
-  local treadmill=assert(treadmillFolder:FindFirstChild(name),"Workspace.Treadmill."..name.." missing")
-  assert(treadmill:IsA("Model"),"Workspace.Treadmill."..name.." must be a Model")
-  assert(treadmill:FindFirstChild("TrainingZone"),"Workspace.Treadmill."..name..".TrainingZone missing")
+ local world1Treadmills={}
+ for _,treadmill in ipairs(CollectionService:GetTagged(TREADMILL_TAG)) do
+  if treadmill:IsDescendantOf(Workspace) then
+  local name=treadmill.Name
+  assert(treadmill:IsA("Model"),treadmill:GetFullName().." must be a Model")
+  assert(treadmill:FindFirstChild("TrainingZone"),treadmill:GetFullName()..".TrainingZone missing")
   -- StrengthPerTick/TickInterval and VirtualStep* Attributes are legacy, not inputs.
   assert(finitePositive(TrainingConfig.BaseGain),"Invalid TrainingConfig.BaseGain")
   assert(finitePositive(TrainingConfig.TrainingInterval),"Invalid TrainingConfig.TrainingInterval")
@@ -261,8 +264,12 @@ function TrainingManager.Initialize()
   local label=sign and sign:FindFirstChild("Info")
   if label then label.Text=TreadmillConfig.GetDisplayText(name) end
   table.insert(treadmills,treadmill)
+  if treadmill.Parent==treadmillFolder then table.insert(world1Treadmills,treadmill) end
+  end
  end
- applyGroupMats(treadmills)
+ table.sort(treadmills,function(a,b) return a:GetFullName()<b:GetFullName() end)
+ assert(#treadmills>0,"No tagged treadmills found")
+ applyGroupMats(world1Treadmills)
  local list={} for player in activeSessions do table.insert(list,player) end
  for _,player in list do TrainingManager.StopTraining(player) end
  for _,player in Players:GetPlayers() do setFlag(player,false) end

@@ -1,9 +1,10 @@
-local treadmillFolder=workspace:WaitForChild("Treadmill")
+local CollectionService=game:GetService("CollectionService")
 local Players=game:GetService("Players")
 local RunService=game:GetService("RunService")
 local Workspace=game:GetService("Workspace")
 local TrainingManager=require(game.ServerScriptService.Services:WaitForChild("TrainingManager"))
-local watchedTreadmill,initializing=nil,false
+local initializing,registryDirty=false,true
+local TREADMILL_TAG="TrainingTreadmill"
 local elapsed=0
 
 
@@ -37,14 +38,13 @@ local function updateWalkingSteps(dt)
 end
 local function initialize()
  if initializing then return end
- local treadmill=treadmillFolder:FindFirstChild("Tredmill01")
- if not treadmill or not treadmill:FindFirstChild("TrainingZone") then return end
+ if #CollectionService:GetTagged(TREADMILL_TAG)==0 then return end
  initializing=true
  local ok,err=pcall(TrainingManager.Initialize)
  initializing=false
  script:SetAttribute("Initialized",ok)
  script:SetAttribute("LastInitializeError",ok and "" or tostring(err))
- if ok then watchedTreadmill=treadmill else warn("Training initialization failed: "..tostring(err)) end
+ if ok then registryDirty=false else warn("Training initialization failed: "..tostring(err)) end
 end
 local function setup(p)
  p:SetAttribute("IsTraining",false)
@@ -53,7 +53,9 @@ local function setup(p)
 end
 Players.PlayerAdded:Connect(setup)
 for _,p in Players:GetPlayers() do setup(p) end
-Players.PlayerRemoving:Connect(function(p) TrainingManager.StopTraining(p); walkState[p]=nil end)treadmillFolder.ChildAdded:Connect(function(c) if c.Name:match("^Tredmill%d%d$") then watchedTreadmill=nil end end)
+Players.PlayerRemoving:Connect(function(p) TrainingManager.StopTraining(p); walkState[p]=nil end)
+CollectionService:GetInstanceAddedSignal(TREADMILL_TAG):Connect(function() registryDirty=true end)
+CollectionService:GetInstanceRemovedSignal(TREADMILL_TAG):Connect(function() registryDirty=true end)
 script:SetAttribute("Initialized",false)
 script:SetAttribute("ZoneScanCount",0)
 RunService.Heartbeat:Connect(function(dt)
@@ -65,14 +67,10 @@ RunService.Heartbeat:Connect(function(dt)
 	end
 	elapsed %= 0.2
 
-	local targetTreadmill = treadmillFolder:FindFirstChild("Tredmill01")
 	local treadmill = TrainingManager.GetTreadmill()
 
-	if targetTreadmill and (
-		targetTreadmill ~= watchedTreadmill
-			or treadmill ~= targetTreadmill
-			or not treadmill:IsDescendantOf(Workspace)
-		) then
+	if registryDirty or #TrainingManager.GetTreadmills()~=#CollectionService:GetTagged(TREADMILL_TAG)
+		or (treadmill and not treadmill:IsDescendantOf(Workspace)) then
 		initialize()
 	end
 

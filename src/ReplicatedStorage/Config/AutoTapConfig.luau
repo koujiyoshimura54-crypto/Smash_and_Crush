@@ -2,6 +2,6 @@
 return table.freeze({
  AutoInterval=0.5,
  ManualTapCooldown=0.25,
- ManualAttackCooldown=0.25,
+ ManualAttackCooldown=0.5,
  ManualAttackAnimationSpeed=2.0,
 })

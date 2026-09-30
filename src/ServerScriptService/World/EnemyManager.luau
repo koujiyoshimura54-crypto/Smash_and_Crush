@@ -21,12 +21,16 @@ local lossRespawns=setmetatable({}, {__mode="k"})
 local M={} local map,folder,remote,remoteConnection local enemies={} local states=setmetatable({},{__mode="k"}) local sessions=setmetatable({},{__mode="k"}) local token=0
 local AutoTapConfig=require(RS.Config:WaitForChild("AutoTapConfig"))
 local lastManualAttack=setmetatable({}, {__mode="k"})
+-- Recognition is separate from combat: only the final wall hit arms pre-combat pursuit.
+local recognizedPlayers=setmetatable({}, {__mode="k"})
 local LOSS_DEATH_DISPLAY_DURATION=0.8
 local WALL_TRIGGER_SIZE=Vector3.new(4.5,5.5,4)
 local WALL_TRIGGER_FORWARD_OFFSET=3
 local WALL_DAMAGE_DELAY=0.18
 local MINIBOSS_DAMAGE_DELAY=0.50
 local BOSS_COMBAT_ZONE_MARGIN=5
+local Chase=worldId==1 and require(script.Parent:WaitForChild("BossChaseService"))
+local BossAttack=worldId==1 and require(script.Parent:WaitForChild("BossAttackService"))
 
 local RUNTIME_TRIGGER_FOLDER_NAME="RuntimeCombatTriggers"
 local WALL_TRIGGER_REF_NAME="WallCombatTriggerRef"
@@ -131,11 +135,13 @@ local function state(p)local s=states[p]if not s then s={Gauges={},Defeated={}}f
 local function send(p,d)remote:FireClient(p,d)end
 function M.SendState(p)local st=Stage.GetState(p)local ps=state(p)local g={}for i=1,10 do g[i]=ps.Gauges[i]end send(p,{Type="Initialize",CurrentStage=st.CurrentStage,Cleared=ps.Defeated,Skipped=ps.Skipped,WorldComplete=st.WorldComplete,Gauges=g}) for major in pairs(Wall.Config) do send(p,{Type="WallInitialize",State=Wall.GetSnapshotForStage(p,major)}) end end
 function M.InitializePlayer(p,targetStage)
+ if BossAttack then BossAttack.Stop(p,true) end
  targetStage=targetStage or 1
  Trophy.Clear(p)
  Trophy.InitializePlayer(p)
  Boss.Reset(p)
  sessions[p]=nil
+ recognizedPlayers[p]=nil
  Stage.InitializePlayer(p,targetStage)
  Wall.InitializePlayer(p,targetStage)
  states[p]=nil
@@ -178,6 +184,7 @@ function M.InitializePlayer(p,targetStage)
   end
   p.CharacterAdded:Connect(characterAdded)
   p.CharacterRemoving:Connect(function(character)
+   if BossAttack then BossAttack.Stop(p,false) end
    cleanupWallCombatTrigger(character)
   end)
   if p.Character then characterAdded(p.Character,false) end
@@ -282,7 +289,8 @@ local function attachEarlyStageVisual(e)
   end
  end
  local floorTop=floor.Position.Y+floor.Size.Y/2
- visual:PivotTo(visual:GetPivot()+Vector3.new(0,floorTop-bottom,0))
+ local stage02YOffset=stageNumber==2 and 2.7 or 0
+ visual:PivotTo(visual:GetPivot()+Vector3.new(0,floorTop-bottom+stage02YOffset,0))
  local weld=Instance.new("Weld")
  weld.Name=("Stage%02dVisualRootWeld"):format(stageNumber)
  weld.Part0=root
@@ -450,7 +458,10 @@ local function attachStaticStageVisual(e)
  low,high=staticBounds(visual)
  local center=(low+high)/2
  local floorTop=floor.Position.Y+floor.Size.Y/2
- visual:PivotTo(visual:GetPivot()+Vector3.new(root.Position.X-center.X,floorTop-low.Y,root.Position.Z-center.Z))
+ -- Stage07 skinned feet extend below the static bounds used for floor fitting.
+ local stage07YOffset = n == 7 and 5.0 or 0
+ local stage08YOffset = n == 8 and 3.0 or 0 -- clearance for the skinned banana at the -2 stud float trough
+ visual:PivotTo(visual:GetPivot()+Vector3.new(root.Position.X-center.X,floorTop-low.Y+stage07YOffset+stage08YOffset,root.Position.Z-center.Z))
  for _,part in visual:GetDescendants() do
   if part:IsA("BasePart") then
    part.Anchored=false;part.CanCollide=false;part.CanTouch=false;part.CanQuery=false;part.Massless=true
@@ -784,6 +795,7 @@ local function spawnEnemy(i)
   end
  end)
  e.Humanoid.DisplayDistanceType=Enum.HumanoidDisplayDistanceType.None
+ if Chase then Chase.Register(e,i,map.BattleCorridor[("Stage%02d"):format(i)]) end
  enemies[i]=e
  -- A shared visual replacement must not reset another player's logical encounter.
  -- Rebind active sessions to this generation and resend the same authoritative HP.
@@ -792,6 +804,7 @@ local function spawnEnemy(i)
    local ps=state(player)
    if not ps.Defeated[i] then
     session.Instance=e
+    if BossAttack then BossAttack.Rebind(player,e) end
     local bossState=Boss.Rebind(player,e,i)
     if bossState then
      ps.Gauges[i]=bossState.HP
@@ -817,6 +830,8 @@ local function defeat(p,n)
  if ps.Defeated[n] then return end
  ps.Gauges[n]=0
  ps.Defeated[n]=true
+ if BossAttack then BossAttack.Stop(p,true) end
+ recognizedPlayers[p]=nil
  sessions[p]=nil
  Boss.End(p) -- Discard carry at the boundary; keep this run\'s encounter decisions.
  p:SetAttribute("IsFighting",false)
@@ -850,6 +865,7 @@ local function defeat(p,n)
 end
 local function updateCombat(p,manualRequest)
  if not inWorld(p) then
+  if BossAttack then BossAttack.Stop(p,true) end
   if sessions[p] then Boss.Cancel(p);sessions[p]=nil end
   return false,"InactiveWorld"
  end
@@ -872,9 +888,19 @@ local function updateCombat(p,manualRequest)
    local combatZone=e and e:FindFirstChild("CombatZone")
    local enemyHit=bossUnlocked and e and hum and hum.Health>0 and combatZone
     and ((enemyTrigger and boxesOverlap(enemyTrigger,combatZone)) or (root and boxesOverlap(root,combatZone)))
+   -- World1 chase keeps an established encounter while the living player stays
+   -- in this Stage; moving out of the mobile shell must not cancel pursuit.
+   if Chase and root then
+    local ongoing=sessions[p]
+    local retained=ongoing and ongoing.CombatType=="MiniBoss" and ongoing.Stage==n
+     and ongoing.Character==ch and ongoing.Instance==e and p:GetAttribute("IsFighting")==true
+    enemyHit=bossUnlocked and e and hum and hum.Health>0 and Chase.ContainsPlayer(e,root.Position)
+     and (enemyHit or retained)
+   end
    -- The existing session owns the combat type until contact and pending hits end.
    local active=sessions[p]
    if active and (active.Stage~=n or active.Character~=ch or not hum or hum.Health<=0 or st.WorldComplete) then
+    if BossAttack then BossAttack.Stop(p,true) end
     Boss.Cancel(p)
     sessions[p]=nil
     p:SetAttribute("IsFighting",false)
@@ -913,6 +939,7 @@ local function updateCombat(p,manualRequest)
       startedEnemy=true
       local maxHP=Boss.GetStageConfig(n).MaxHP
       local bs=Boss.Begin(p,e,n,maxHP)
+      if BossAttack then BossAttack.Start(p,e,n,now) end
       state(p).Gauges[n]=bs.HP
       send(p,{Type="BossInitialize",Stage=n,Current=bs.HP,Max=bs.MaxHP,RecommendedLevel=bs.RecommendedLevel,
        SpawnGeneration=e:GetAttribute("SpawnGeneration")})
@@ -951,10 +978,11 @@ local function updateCombat(p,manualRequest)
          AttackId=attackId,GloveApplied=bs.Route~="LOTTERY_WIN" and bs.GloveBonus>0 and bs.HP<hpBefore,
          SpawnGeneration=e:GetAttribute("SpawnGeneration")})
         if status=="Win" then
-         send(p,{Type="BossResult",Result="WIN"})
+         send(p,{Type="BossResult",Result="WIN",Stage=n,SpawnGeneration=e:GetAttribute("SpawnGeneration")})
          defeat(p,n)
         elseif status=="Lose" then
-         send(p,{Type="BossResult",Result="LOSE"})
+         if BossAttack then BossAttack.Stop(p,false) end
+         send(p,{Type="BossResult",Result="LOSE",Stage=n,SpawnGeneration=e:GetAttribute("SpawnGeneration")})
          Boss.End(p)
          sessions[p]=nil
          p:SetAttribute("IsFighting",false)
@@ -983,6 +1011,9 @@ local function updateCombat(p,manualRequest)
        if nextIndex<=4 then
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=nextIndex,Current=Wall.GetGaugeForStage(attackPlayer,attackStage,nextIndex),Max=Wall.GetStageConfig(attackStage).Walls[nextIndex]})
        elseif Wall.IsBossUnlockedForStage(attackPlayer,attackStage) then
+        if Chase and table.find(cleared,4) then
+         recognizedPlayers[attackPlayer]={Stage=attackStage,Character=ch,CombatStarted=false}
+        end
         send(attackPlayer,{Type="Stage1BossUnlocked",MajorStage=attackStage})
         local bossMax=Boss.GetStageConfig(attackStage).MaxHP
         send(attackPlayer,{Type="BossRecommendation",Stage=attackStage,Current=state(attackPlayer).Gauges[attackStage],Max=bossMax,RecommendedLevel=Boss.GetStageConfig(attackStage).RecommendedLevel})
@@ -1005,6 +1036,7 @@ local function updateCombat(p,manualRequest)
      end
     end
    elseif sessions[p] and sessions[p].Pending==0 then
+    if BossAttack then BossAttack.Stop(p,true) end
     Boss.Cancel(p)
     sessions[p]=nil
     p:SetAttribute("IsFighting",false)
@@ -1029,7 +1061,47 @@ function M.Initialize(newMap)map=newMap or W:FindFirstChild(worldId==2 and "Worl
  Trophy.Initialize(map,remote,function(p) M.InitializePlayer(p) end,function(p,n)
  return state(p).Defeated[n]==true
 end)
- Stage.Initialize(map)spawnAll()for _,p in Players:GetPlayers()do if inWorld(p) then M.InitializePlayer(p) end end monitor()return enemies end
+ Stage.Initialize(map)spawnAll()
+ if BossAttack then
+  BossAttack.SetSessionValidator(function(p,enemy,n,character)
+   local s=sessions[p]
+   local root=character:FindFirstChild("HumanoidRootPart")
+   return inWorld(p) and p:GetAttribute("IsFighting")==true and s
+    and s.CombatType=="MiniBoss" and s.Stage==n and s.Instance==enemy and s.Character==character
+    and Stage.GetCurrentStageNumber(p)==n and not Stage.GetState(p).WorldComplete
+    and not state(p).Defeated[n] and root and Chase.ContainsPlayer(enemy,root.Position)
+  end)
+ end
+ if Chase then
+  Chase.SetTargetProvider(function(n,enemy)
+   local targets={}
+   for _,p in Players:GetPlayers() do
+    local ch=p.Character
+    local hum=ch and ch:FindFirstChildOfClass("Humanoid")
+    local root=ch and ch:FindFirstChild("HumanoidRootPart")
+    local s=sessions[p]
+    local fighting=p:GetAttribute("IsFighting")==true and s
+     and s.CombatType=="MiniBoss" and s.Stage==n and s.Instance==enemy and s.Character==ch
+    local recognized=recognizedPlayers[p]
+    if recognized and recognized.Stage~=n then recognized=nil end
+    local eligible=inWorld(p) and Stage.GetCurrentStageNumber(p)==n
+     and not Stage.GetState(p).WorldComplete and not state(p).Defeated[n]
+     and hum and hum.Health>0 and root and Chase.ContainsPlayer(enemy,root.Position)
+    if recognized then
+     if not eligible or recognized.Character~=ch or not Wall.IsBossUnlockedForStage(p,n)
+      or (recognized.CombatStarted and not fighting) then
+      recognizedPlayers[p]=nil
+      recognized=nil
+     elseif fighting then
+      recognized.CombatStarted=true
+     end
+    end
+    if eligible and (fighting or recognized) then table.insert(targets,p) end
+   end
+   return targets
+  end)
+ end
+ for _,p in Players:GetPlayers()do if inWorld(p) then M.InitializePlayer(p) end end monitor()return enemies end
 function M.Activate(p)
  if not states[p] then M.InitializePlayer(p) else
   p:SetAttribute("IsFighting",false)
@@ -1037,6 +1109,8 @@ function M.Activate(p)
  end
 end
 function M.Deactivate(p)
+ if BossAttack then BossAttack.Stop(p,true) end
+ recognizedPlayers[p]=nil
  Boss.Cancel(p);sessions[p]=nil
  send(p,{Type="Fighting",Active=false})
 end
@@ -1049,7 +1123,7 @@ function M.GetEnemy(n)return enemies[n]end
 function M.GetGauge(p,n)return state(p).Gauges[n]end
 function M.GetPlayerState(p)return state(p)end
 function M.ResetPlayer(p)M.InitializePlayer(p)end
-Players.PlayerRemoving:Connect(function(p) cleanupPlayerWallCombatTriggers(p) states[p]=nil sessions[p]=nil watched[p]=nil lossRespawns[p]=nil lastManualAttack[p]=nil end)
+Players.PlayerRemoving:Connect(function(p) cleanupPlayerWallCombatTriggers(p) states[p]=nil sessions[p]=nil recognizedPlayers[p]=nil watched[p]=nil lossRespawns[p]=nil lastManualAttack[p]=nil end)
 
  contexts[worldId]=M
  return M

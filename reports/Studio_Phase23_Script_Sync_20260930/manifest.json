@@ -1,0 +1,317 @@
+{
+  "placeId": 101572058398926,
+  "originMainBefore": "e77ecaba566ba099c7fda02957bfdb247c60af99",
+  "source": "Current Studio Edit scripts; UTF-8 with LF and one terminal newline",
+  "scripts": [
+    {
+      "path": "src/ReplicatedStorage/Config/AuraConfig.luau",
+      "sha256": "71c5dca82f0ac879dc8df69858b14636616ae197b5cc08a3fc53463620498692",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "different"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/AutoTapConfig.luau",
+      "sha256": "b3d2050d8c317ff3ecbb14f893c0371beb13f6c08ef3186df0adf4cdfc026023",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "different"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/CombatConfig.luau",
+      "sha256": "4c8ca3651c0ed73b9cf305cedd0fde03bde55a56266b248e52fac7f76d162d0a",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/DumbbellItemMaster.luau",
+      "sha256": "6a1c72caf423ef83c13e09b3893e213a0a7c250bb41ac69478ca948dd03874e4",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/ItemMaster.luau",
+      "sha256": "d2882176766f849097dd7f3fa5239f5f5191fd40d5ad0a0ecf16747c07bd4226",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/ItemMultiplierConfig.luau",
+      "sha256": "4863f510151dda1e06981c7adbee1c77881c990e0af901e20e36b64a607cd418",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/LevelRequirements.luau",
+      "sha256": "e0ac94ed75a969ec7fb9885cb2e39a6961c3aeafb9d24dd95bf600b8bbd83e46",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/ShopProductConfig.luau",
+      "sha256": "d9c16f34e4cba1835330ab7e11502a1b3c2f0efd52781fc811ad84552fdc45ab",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/SizeChangeConfig.luau",
+      "sha256": "19c17b7d1374c6c5cd354c50d8b359bff0577b8ecc7d7257aa67b28be523ef74",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/SpeedConfig.luau",
+      "sha256": "12b4e1e164b5c4edb69fe9d7a0443c984876c74c0dc65b9a98ec3a17610b4627",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/StageSkipConfig.luau",
+      "sha256": "43dc5d72acedc84b557eca7fd9af06e68ebcbd4f2ade3824977c7055bc71c2cb",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/TrophyRewardConfig.luau",
+      "sha256": "b19fd699e4b4ad8a6c5558d34be8cfe7e5e0a4ef2c723d01df6be73899da6d6c",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ReplicatedStorage/Config/World1BossConfig.luau",
+      "sha256": "fafe7cd9869df3eadc912e01502c0427b632ca75aadd788858a7b5ff382ea10d",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ServerScriptService/Config/StudioDebugConfig.luau",
+      "sha256": "3181cd1d894be1766829afa5fabd221e8565a8314ffa8963e80e625e6fbd9840",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/ServerScriptService/Services/AuraService.luau",
+      "sha256": "abdd983e9bccfd1c6a4f80539fdfaccc3d4558b3b106c7322ba36f41689bf5e7",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ServerScriptService/Services/DumbbellService.luau",
+      "sha256": "295a71a82f171c1ec1fdae6bc62304cfae9e21dd5649e091df06d1c4eb3ba42b",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/ServerScriptService/Services/PlayerDataService.luau",
+      "sha256": "a876ca1e83c382871557b28309fb8fc535ab6a348971ee83f7356db7797cff53",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/ServerScriptService/Services/SpeedService.luau",
+      "sha256": "9ec12388c68fb1324e980a768c6148e84dbbadfa449ed2cdc471f571e359a435",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ServerScriptService/Services/TrainingManager.luau",
+      "sha256": "f0a34cc589cee45fe22952881174089e2df69d68c7a3e2a3dbcd8931769504fe",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/ServerScriptService/Services/TreadmillVisualService.luau",
+      "sha256": "40845c1b525ee23fe5ea5499b20070ec818c59f9c0478e14ceedbf2635f9587d",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ServerScriptService/Systems/Controllers/MuscleCharacterService.server.luau",
+      "sha256": "5c8c409f895fd4b63a8f15728b9ce029cd047ba2c56ef384d5584f513a0af6dd",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "different"
+    },
+    {
+      "path": "src/ServerScriptService/Systems/Controllers/SizeChangeController.server.luau",
+      "sha256": "2aeeb15d5a09c09091439c9c3eadd0756d589b86a3ec76d6ad69c5d6003817ac",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/ServerScriptService/Systems/Controllers/TrainingController.server.luau",
+      "sha256": "97208ff790a06a0959a227dc1706cc6e39dbe26ebf7b7316143c1d4023f69790",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/ServerScriptService/Systems/Debug/StudioStartController.server.luau",
+      "sha256": "7639751b824d52958a91eafd72a72a695052bee45788e48587df7f424768c077",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/ServerScriptService/World/BossAttackService.luau",
+      "sha256": "728a7c7e46a26eca5702d7e94f56ef361e6fdcfa77b81c316a8f644c8869ce02",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ServerScriptService/World/BossChaseService.luau",
+      "sha256": "3311b03f5de35b09319cd028ecc72e4ae16b2f08e81ce8e1242f30e60d6d86b3",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/ServerScriptService/World/EnemyManager.luau",
+      "sha256": "de53d48e9ef827fa924a4f5e8f784e2f7356126a2e88a380c2ad58c948c2fcd2",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "different"
+    },
+    {
+      "path": "src/StarterGui/StrengthGainGui/StrengthGainClient.client.luau",
+      "sha256": "0640553652d33cf00accd1a3f7c8481f64b787d581873c501050b4be52fce340",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterGui/StrengthGui/InventoryPanelClient.client.luau",
+      "sha256": "fc559eef1db73a2b19832de71fa0e82925f1036aec83de4be7ecc906788f51fe",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/StarterGui/StrengthGui/WinDisplay.client.luau",
+      "sha256": "aafc044d43b083c47a8a28be16a503948dcb419b737139303fc83856078d9d2c",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/Combat/CombatClient.client.luau",
+      "sha256": "a4754ed076353e4be9028d03850e34aaed099f473d3982a6176175fab085d9f9",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "different"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/StudioTestCommandClient.client.luau",
+      "sha256": "5ef4e0e73ad67bbc5d993cb65e59d9d3c3c3a1105c798f46015b13835be5db2f",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/Tutorial/TutorialGuideClient.client.luau",
+      "sha256": "31dc5b850c16c490930ab3b279456a34448582bd2d16aacc09aa10b8fe61acf3",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/UI/EnemyDropGachaClient.client.luau",
+      "sha256": "39f10df48a9185c0eff8d771533b69a900267250013e8f904e72070021fb8aed",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/UI/ItemEffectHUDClient.client.luau",
+      "sha256": "a107a0c13787fe59f6c56598f368f07ed09f6d8fe17f6b1fa134ca0f4d34c801",
+      "originMainComparison": "different",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/UI/SizeChangeClient.client.luau",
+      "sha256": "0263b4a739137959e931c821a2b65cc59bc7cecfb9d23b2829412abfd988567b",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/UI/TouchControlZoneClient.client.luau",
+      "sha256": "94f1378972dba12a83c6105a39bb2ac9398f3fcfe69371f759d1b66761d80703",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/UI/TreadmillGuideClient.client.luau",
+      "sha256": "94161f9d8fa5331ba0ce8ca49f055fbb865e91c5fbf3afe625504e05086184ff",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "same"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/UI/TreadmillUIClient.client.luau",
+      "sha256": "8bd0e1eb6fb48035be2234efeb2cc4d09e3290f320d4582abb90660814850d88",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/SpawnFacingCameraClient.client.luau",
+      "sha256": "ba4867eeffe8186b1d2636317de3714bea87816816bee81f96dab020ae416c4b",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "different"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage01AppearanceClient.client.luau",
+      "sha256": "557b9240137de662b43f669072b70c088f0a40e636f35259edc49e6f82802a40",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage02AppearanceClient.client.luau",
+      "sha256": "237bdd831de3b768b2e4b62cc647f27d38ba36fe459a20cb678ec9270ba5cf05",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage03IdleClient.client.luau",
+      "sha256": "41e00a33ac3a79f5924bb537dfba6d5a1c580d0204ca3203bf5ec8d1f8ee9f5f",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage04AppearanceClient.client.luau",
+      "sha256": "9a5f1ec4c42227fb0299be08351e5233a15ae37610a83971332ece49601ebad3",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage05AppearanceClient.client.luau",
+      "sha256": "615f0a6f29edb44816b3fabebc01ca900de7758fd553887b561a085d2a94d2e5",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage06AppearanceClient.client.luau",
+      "sha256": "5713b402a646ef89a3b29ab469fc9717b3ce82f30da68095d34792ce70db2fd1",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage07AppearanceClient.client.luau",
+      "sha256": "353a920c90d449a6640db84f02712ddb24524e1e9c0e71f23ff5968776507252",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage08AppearanceClient.client.luau",
+      "sha256": "21e2963ffc8e49149d4c1c5c5631950eb1c94c0e2769e8f00aceddaa08eb368c",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage09AppearanceClient.client.luau",
+      "sha256": "1463fc154f209a118ad60d42fe9dcd1d13179d454951db712f0d78693e1c0a22",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/Stage10AppearanceClient.client.luau",
+      "sha256": "c097569a219ab929f40cb2c2cafa014c8bccd35bfb7ae69d0511297a53992746",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    },
+    {
+      "path": "src/StarterPlayer/StarterPlayerScripts/World/WorldGateClient.client.luau",
+      "sha256": "efab32aa2955751abfe12a220e3235d7ecd793c32f61d03e150a929328588192",
+      "originMainComparison": "absent",
+      "bossWorktreeComparison": "absent"
+    }
+  ],
+  "excluded": {
+    "src/ServerScriptService/HisarinoHairAutoEquip.server.luau": "Studio differs only in blank lines; original main worktree has unrelated protected edits.",
+    "src/StarterGui/StrengthGui/DailyRewardsClient.client.luau": "Studio has mojibake replacing bullet characters; preserve local snapshot without publishing this unrelated regression."
+  }
+}

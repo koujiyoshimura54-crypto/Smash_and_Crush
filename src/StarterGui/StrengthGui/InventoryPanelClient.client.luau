@@ -110,6 +110,7 @@ local function purchaseFailureText(code,itemId)
  local item=Master.Get(itemId)
  if code=="NotEnoughWin" then return "NOT ENOUGH WIN!\nNeed "..formatWin(item and item.PriceWin).." Win" end
  if code=="DataSaving" then return "PLEASE WAIT...\nData is saving" end
+ if code=="InventorySavePending" then return "PLEASE WAIT...\nSaving previous reward" end
  if code=="AlreadyOwned" then return "ALREADY OWNED" end
  if code=="DataNotLoaded" then return "PLEASE WAIT...\nInventory is loading" end
  return code and ("PURCHASE FAILED\n"..tostring(code)) or "PURCHASE FAILED"

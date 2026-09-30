@@ -71,21 +71,21 @@ local function addTrophyRewardBillboard(visual,reward)
  gui.Adornee=handle
  gui.AlwaysOnTop=true
  gui.LightInfluence=0
- gui.MaxDistance=30
- gui.Size=UDim2.fromOffset(220,64)
- gui.StudsOffsetWorldSpace=Vector3.new(0,handle.Size.Y/2+2.75,0)
+ gui.MaxDistance=60
+ gui.Size=UDim2.fromOffset(176,51)
+ gui.StudsOffsetWorldSpace=Vector3.new(0,handle.Size.Y/2+12,0)
  gui.Parent=handle
  local panel=Instance.new("Frame")
  panel.Name="Panel";panel.Size=UDim2.fromScale(1,1);panel.BackgroundColor3=Color3.fromRGB(255,224,112);panel.BackgroundTransparency=.18;panel.BorderSizePixel=0;panel.Parent=gui
  local corner=Instance.new("UICorner");corner.CornerRadius=UDim.new(0,14);corner.Parent=panel
  local stroke=Instance.new("UIStroke");stroke.Color=Color3.fromRGB(83,49,12);stroke.Thickness=3;stroke.Parent=panel
  local icon=Instance.new("ImageLabel")
- icon.Name="TrophyIcon";icon.BackgroundTransparency=1;icon.Position=UDim2.fromOffset(10,7);icon.Size=UDim2.fromOffset(50,50);icon.ScaleType=Enum.ScaleType.Fit
+ icon.Name="TrophyIcon";icon.BackgroundTransparency=1;icon.Position=UDim2.fromOffset(8,6);icon.Size=UDim2.fromOffset(40,40);icon.ScaleType=Enum.ScaleType.Fit
  icon.Image=P:WaitForChild("PlayerGui"):WaitForChild("StrengthGui"):WaitForChild("WinLabel"):WaitForChild("TrophyIcon").Image;icon.Parent=panel
  local amount=Instance.new("TextLabel")
- amount.Name="Amount";amount.BackgroundTransparency=1;amount.Position=UDim2.fromOffset(65,4);amount.Size=UDim2.new(1,-73,1,-8);amount.Font=Enum.Font.FredokaOne;amount.TextScaled=true
+ amount.Name="Amount";amount.BackgroundTransparency=1;amount.Position=UDim2.fromOffset(52,3);amount.Size=UDim2.new(1,-58,1,-6);amount.Font=Enum.Font.FredokaOne;amount.TextScaled=true
  amount.TextColor3=Color3.fromRGB(255,255,255);amount.TextStrokeColor3=Color3.fromRGB(67,38,7);amount.TextStrokeTransparency=0;amount.Text="+"..tostring(reward).." Win";amount.Parent=panel
- local constraint=Instance.new("UITextSizeConstraint");constraint.MinTextSize=18;constraint.MaxTextSize=34;constraint.Parent=amount
+ local constraint=Instance.new("UITextSizeConstraint");constraint.MinTextSize=14;constraint.MaxTextSize=27;constraint.Parent=amount
 end
 local function clearTrophy(id)
  if id~=nil then
@@ -197,6 +197,9 @@ local function renderWallStage(major)
  end
 end
 local function enemy(n)return workspace:WaitForChild(enemiesName):WaitForChild(("Stage%02d_Enemy"):format(n))end
+local function isBossStage(stage)
+ return typeof(stage)=="number" and stage%1==0 and stage>=1 and stage<=10
+end
 local function acceptsBossGeneration(stage,generation)
  if typeof(generation)~="number" then return true end
  local enemies=workspace:FindFirstChild(enemiesName)
@@ -233,7 +236,123 @@ local function bossDisplayEnabled(n)
  return n==currentStage and not defeated[n] and not bossSuppressed[n]
   and state~=nil and not state.Skipped and state.Current>=5
 end
+-- World1 uses the existing personal SurfaceGui/HP records as a camera-facing
+-- overhead panel. No server instances or combat state are shared by this UI.
+local overheadParts=setmetatable({}, {__mode="k"})
+local overheadConnection
+local function overheadBounds(e)
+ local visual=e:FindFirstChildOfClass("Model")
+ if not visual then return nil end
+ local cached=overheadParts[e]
+ if not cached or cached.Visual~=visual or os.clock()-cached.Time>0.5 then
+  cached={Visual=visual,Time=os.clock(),Parts={}}
+  for _,part in visual:GetDescendants() do
+   if part:IsA("BasePart") and part.Transparency<1 then
+    local helper=false
+    local a=part
+    while a and a~=visual do
+     local name=a.Name:lower()
+     if name:find("vfx",1,true) or name:find("particle",1,true) then helper=true;break end
+     a=a.Parent
+    end
+    if not helper then table.insert(cached.Parts,part) end
+   end
+  end
+  overheadParts[e]=cached
+ end
+ local low=Vector3.new(math.huge,math.huge,math.huge)
+ local high=-low
+ for _,part in cached.Parts do
+  if part.Parent and part.Transparency<1 and part.LocalTransparencyModifier<0.99 then
+   local cf=part.CFrame
+   local half=part.Size/2
+   local r,u,b=cf.RightVector,cf.UpVector,cf.LookVector
+   local extent=Vector3.new(
+    math.abs(r.X)*half.X+math.abs(u.X)*half.Y+math.abs(b.X)*half.Z,
+    math.abs(r.Y)*half.X+math.abs(u.Y)*half.Y+math.abs(b.Y)*half.Z,
+    math.abs(r.Z)*half.X+math.abs(u.Z)*half.Y+math.abs(b.Z)*half.Z)
+   low=low:Min(cf.Position-extent);high=high:Max(cf.Position+extent)
+  end
+ end
+ if low.Y==math.huge then return nil end
+ return low,high
+end
+local function placeOverhead(e,n,g,surface)
+ local low,high=overheadBounds(e)
+ local camera=workspace.CurrentCamera
+ if not low or not camera then g.Enabled=false;return false end
+ local height=high.Y-low.Y
+ local referenceHeight=e:GetAttribute("BossDisplayHeight") or height
+ local width=math.clamp(referenceHeight*0.85,16,24)
+ local canvasHeight=n==9 and 230 or 160
+ local panelHeight=width*canvasHeight/580
+ local gap=math.clamp(height*0.08,1.2,3)
+ local anchor=Vector3.new((low.X+high.X)/2,high.Y+gap+panelHeight/2,(low.Z+high.Z)/2)
+ local screen=camera:WorldToViewportPoint(anchor)
+ local viewport=camera.ViewportSize
+ local edgeAdjusted=false
+ if screen.Z>0.5 and viewport.X>64 and viewport.Y>64 then
+  local focal=viewport.Y/(2*math.tan(math.rad(camera.FieldOfView)/2))
+  -- Keep the panel readable and compact at very close camera distances.
+  local maxPixels=math.min(360,viewport.X*0.42)
+  local scale=math.min(1,maxPixels*screen.Z/(focal*width))
+  width*=scale;panelHeight*=scale
+  anchor=Vector3.new(anchor.X,high.Y+gap+panelHeight/2,anchor.Z)
+  screen=camera:WorldToViewportPoint(anchor)
+  if screen.Z>0.5 then
+   local halfX=width*focal/(2*screen.Z)
+   local halfY=panelHeight*focal/(2*screen.Z)
+   local margin=16
+   local sx=math.clamp(screen.X,margin+halfX,math.max(margin+halfX,viewport.X-margin-halfX))
+   local sy=math.clamp(screen.Y,margin+halfY,math.max(margin+halfY,viewport.Y-margin-halfY))
+   if math.abs(sx-screen.X)>0.01 or math.abs(sy-screen.Y)>0.01 then
+    local ray=camera:ViewportPointToRay(sx,sy)
+    local look=camera.CFrame.LookVector
+    local depth=(anchor-ray.Origin):Dot(look)
+    anchor=ray.Origin+ray.Direction*(depth/ray.Direction:Dot(look))
+    edgeAdjusted=true
+   end
+  end
+ end
+ surface.Size=Vector3.new(width,panelHeight,0.05)
+ surface.CFrame=CFrame.lookAt(anchor,anchor-camera.CFrame.LookVector,camera.CFrame.UpVector)
+ surface.Transparency=1
+ surface:SetAttribute("BossTopY",high.Y)
+ surface:SetAttribute("OverheadGap",gap)
+ surface:SetAttribute("ScreenEdgeAdjusted",edgeAdjusted)
+ g.Enabled=true
+ return true
+end
+local function layoutOverhead(e,n,g)
+ local surface=bossSurfaces[n]
+ if not surface or not surface:IsDescendantOf(folder) then
+  surface=Instance.new("Part")
+  surface.Name="BossDisplaySurface"
+  surface.Anchored=true;surface.CanCollide=false;surface.CanTouch=false;surface.CanQuery=false
+  surface.CastShadow=false;surface.Transparency=1
+  surface:SetAttribute("VisualOnly",true);surface:SetAttribute("BossStage",n)
+  surface.Parent=folder;bossSurfaces[n]=surface
+ end
+ g.Adornee=surface;g.Face=Enum.NormalId.Front;g.Active=false
+ g.SizingMode=Enum.SurfaceGuiSizingMode.FixedSize
+ g.CanvasSize=Vector2.new(580,n==9 and 230 or 160)
+ g.AlwaysOnTop=false;g.LightInfluence=0;g.MaxDistance=200
+ g:SetAttribute("BossFollowing",true)
+ local nameHeight=n==9 and 110 or 44
+ local name=g:FindFirstChild("BossName")
+ local stage=g:FindFirstChild("StageNumber")
+ local bar=g:FindFirstChild("HPBar")
+ local hp=g:FindFirstChild("HPLabel")
+ local barY=nameHeight+32
+ if name then name.Position=UDim2.fromOffset(8,2);name.Size=UDim2.new(1,-16,0,nameHeight) end
+ if stage then stage.Position=UDim2.fromOffset(8,nameHeight+4);stage.Size=UDim2.new(1,-16,0,24) end
+ if bar then bar.Position=UDim2.fromOffset(10,barY);bar.Size=UDim2.new(1,-20,0,56) end
+ if hp then hp.Position=UDim2.fromOffset(16,barY+4);hp.Size=UDim2.new(1,-32,0,48) end
+ if g.Enabled then placeOverhead(e,n,g,surface) end
+ return true
+end
 local function updateGaugeLayout(e,n,g)
+ if worldId==1 then return layoutOverhead(e,n,g) end
  local wall,reference=bossWall(n)
  local bossHeight=e:GetAttribute("BossDisplayHeight")
  local bossBottom=e:GetAttribute("BossDisplayBottomY")
@@ -388,7 +507,7 @@ local function staticVFX(e,on)
   end
  end
 end
-local bossVisualTransparency=setmetatable({},{__mode="k"})
+local bossVisualTransparency={}
 local function isBossVisualPart(e,part)
  if part.Name=="HumanoidRootPart" or part.Name=="CombatZone" or part.Name=="MiniBossCollider" then return false end
  if part:GetAttribute("PersonalBossCollider") then return false end
@@ -494,7 +613,7 @@ local function refreshGaugeVisibility()
   end
   local surface=bossSurfaces[stage]
   if surface and surface.Parent then
-   surface.Transparency=gui and gui.Enabled and BossDisplayConfig.Get(stage).Transparency or 1
+   surface.Transparency=worldId==1 and 1 or (gui and gui.Enabled and BossDisplayConfig.Get(stage).Transparency or 1)
   end
   renderWallStage(stage)
  end
@@ -579,7 +698,11 @@ R.OnClientEvent:Connect(function(d)
   if typeof(d.Current)=="number" then gauge(d.Stage,d.Current,d.Max) end
   refreshGaugeVisibility()
  elseif d.Type=="BossInitialize" then
+  if not isBossStage(d.Stage) then return end
   if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
+  defeated[d.Stage]=nil
+  bossSuppressed[d.Stage]=nil
+  visible(d.Stage,true)
   if d.Stage==3 then Stage03AttackVisual.Prepare() end
   currentStage=d.Stage
   gauge(d.Stage,d.Current,d.Max)
@@ -589,7 +712,13 @@ R.OnClientEvent:Connect(function(d)
   if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
   local f=fills[d.Stage] if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
  elseif d.Type=="BossResult" then
-  bossSuppressed[currentStage]=true
+  local stage=d.Stage
+  if not isBossStage(stage) then
+   warn("Invalid BossResult Stage")
+   return
+  end
+  if not acceptsBossGeneration(stage,d.SpawnGeneration) then return end
+  bossSuppressed[stage]=true
   activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil
   refreshGaugeVisibility()
   hideBossRecommendation()
@@ -610,7 +739,9 @@ R.OnClientEvent:Connect(function(d)
    syncPersonalBossCollider(major)
   end
  elseif d.Type=="Stage1BossUnlocked" then
-  local stage=d.MajorStage or 1
+  local stage=d.MajorStage
+  if not isBossStage(stage) or defeated[stage] then return end
+  bossSuppressed[stage]=nil
   visible(stage,true)
   refreshGaugeVisibility()
   syncPersonalBossCollider(stage)
@@ -665,7 +796,23 @@ task.spawn(function()
   end
  end
 end)
+if worldId==1 then
+ overheadConnection=RunService.RenderStepped:Connect(function()
+  local enemies=workspace:FindFirstChild(enemiesName)
+  for n,record in fills do
+   local gui=record.Gui
+   local surface=bossSurfaces[n]
+   if gui and gui.Parent then
+    local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
+    if e and surface and surface.Parent and (P:GetAttribute("CurrentWorld") or 1)==1 and bossDisplayEnabled(n) then
+     placeOverhead(e,n,gui,surface)
+    else gui.Enabled=false end
+   end
+  end
+ end)
+end
 script.Destroying:Connect(function()
+ if overheadConnection then overheadConnection:Disconnect() end
  for stage in personalBossColliders do removePersonalBossCollider(stage) end
  if folder.Parent then folder:Destroy() end
 end)
