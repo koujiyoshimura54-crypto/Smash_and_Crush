@@ -407,3 +407,11 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 - SCP-131 is not a boss candidate. Source models, its reserved display, and the retired stage placeholders remain preserved in ServerStorage.
 - Existing World2 balance is unchanged; Trophy/Win rewards remain explicitly unconfigured. Personal defeat hides only that client's cosmetic visual, without replacing the shared boss or changing SpawnGeneration.
 - Details and verification limits: [World2 SCP report](../reports/World2_SCP_Bosses_20260924/README.md).
+
+## 2026-09-30 — World1 Run Inventory Phase 5B
+
+- World1 Boss Dropの通常Itemだけをサーバー専用RunInventoryServiceへ未確定保持する。初期Capacity=5はGetCapacityへ集約し、数量合計で数える。既存OwnedItems／EquippedItemsは枠に含めず、取得時のPlayerData保存は行わない。
+- RunIdとDrop IDで旧Run混入・二重付与を拒否。満杯の当選Itemは追加せず、既存Drop演出にRUN INVENTORY FULLを表示する。抽選率・Rarity率は維持。
+- 死亡・Character再生成・Run初期化で未確定品を消去。退出時は保存せず破棄。World移動はWorld1取得受付を一時停止／再開する。既存Trophy帰還もRun初期化のため、このPhaseでは持ち帰りにならない。
+- Daily／Time／Community／Shop／MergeとWorld2は従来のPermanent付与を維持。戻る・持ち帰り確定・HUDカウンター・Capacity購入は未実装。
+- 検証範囲と既存Console問題は[Phase 5B report](../reports/World1_RunInventory_Phase5B_20260930.md)を参照。Place未保存。

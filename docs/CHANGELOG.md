@@ -1,3 +1,10 @@
+# 2026-09-30 — World1 Run Inventory Phase 5B
+
+- Added server-authoritative, generation-scoped provisional World1 boss loot with capacity 5, atomic capacity/deduplication checks and death/reset invalidation.
+- Kept permanent ownership, saves, non-boss grants and World2 behavior separate; published server count/capacity attributes and reused the drop result label for full capacity.
+- Verified capacity, real random drop routing, death/respawn, stale generations, duplicate grants, ordinary-save isolation, World2 grant restoration and client notification in Play. Studio returned to Edit without Place saving.
+- Evidence: [Phase 5B report](../reports/World1_RunInventory_Phase5B_20260930.md).
+
 # 2026-09-30 — Resolve zero-HP World1 bosses immediately
 
 - Resolve lethal wall carry through the existing guarded defeat routine before Chase recognition or Boss attack startup; do not require an extra Player hit.

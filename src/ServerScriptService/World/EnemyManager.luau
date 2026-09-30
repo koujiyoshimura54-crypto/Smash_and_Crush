@@ -13,6 +13,7 @@ local Wall=require(game.ServerScriptService.World.Stage1WallManager).ForWorld(wo
 local Boss=require(game.ServerScriptService.World.BossCombatService).ForWorld(worldId)
 local Trophy=require(game.ServerScriptService.Services.TrophyRewardService).ForWorld(worldId)
 local ItemDrops=require(game.ServerScriptService.Services.EnemyDropGachaService)
+local RunInventory=worldId==1 and require(game.ServerScriptService.Services.RunInventoryService)
 local PlayerData=require(game.ServerScriptService.Services.PlayerDataService)
 local Badges=require(game.ServerScriptService.Services.BadgeAwardService)
 local function inWorld(p) return (p:GetAttribute("CurrentWorld") or 1)==worldId end
@@ -146,6 +147,7 @@ function M.InitializePlayer(p,targetStage)
  Wall.InitializePlayer(p,targetStage)
  states[p]=nil
  local ps=state(p)
+ if RunInventory then ps.RunInventoryId=RunInventory.Reset(p,true) end
  ps.Skipped={}
  for major=1,targetStage-1 do ps.Skipped[major]=true end
  p:SetAttribute("IsFighting",false)
@@ -176,6 +178,7 @@ function M.InitializePlayer(p,targetStage)
     local hum=character:WaitForChild("Humanoid",10)
     if hum and p.Character==character then
      hum.Died:Once(function()
+      if RunInventory and p.Character==character then RunInventory.Invalidate(p) end
       cleanupWallCombatTrigger(character)
       if inWorld(p) and p.Character==character and not lossRespawns[p] then M.InitializePlayer(p) end
      end)
@@ -184,6 +187,7 @@ function M.InitializePlayer(p,targetStage)
   end
   p.CharacterAdded:Connect(characterAdded)
   p.CharacterRemoving:Connect(function(character)
+   if RunInventory then RunInventory.Invalidate(p) end
    if BossAttack then BossAttack.Stop(p,false) end
    cleanupWallCombatTrigger(character)
   end)
@@ -867,7 +871,7 @@ local function defeat(p,n)
   end
  end)
  -- One server-owned reward per confirmed enemy defeat.
- ItemDrops.OnEnemyDefeated(p,n,ps)
+ ItemDrops.OnEnemyDefeated(p,n,ps,worldId)
  -- Per-player defeat must not replace the shared enemy. The same instance and
  -- SpawnGeneration remain visible for players who have not defeated this stage.
 end
@@ -1122,12 +1126,19 @@ end)
  end
  for _,p in Players:GetPlayers()do if inWorld(p) then M.InitializePlayer(p) end end monitor()return enemies end
 function M.Activate(p)
+ if RunInventory and states[p] then
+  local ps=states[p]
+  if not RunInventory.SetActive(p,ps.RunInventoryId,true) then
+   ps.RunInventoryId=RunInventory.Reset(p,true)
+  end
+ end
  if not states[p] then M.InitializePlayer(p) else
   p:SetAttribute("IsFighting",false)
   M.SendState(p)
  end
 end
 function M.Deactivate(p)
+ if RunInventory and states[p] then RunInventory.SetActive(p,states[p].RunInventoryId,false) end
  if BossAttack then BossAttack.Stop(p,true) end
  recognizedPlayers[p]=nil
  Boss.Cancel(p);sessions[p]=nil

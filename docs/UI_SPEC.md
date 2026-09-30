@@ -391,3 +391,8 @@ Time Rewards and Daily Rewards retain their existing visuals while locked or rea
 ## Element Set Bonus HUD
 
 When equipped Protein, Glove, and Training Belt Items share an Element, the Item Effect HUD displays the matching existing Element image beside `×1.5` in the Fire coral, Ice cyan, or Electric gold palette. The compact badge is centered immediately above the three existing Item effects and is hidden for incomplete or mixed sets. The former FIRE / ICE / ELECTRIC SET localization Sources remain as old candidates.
+
+## 2026-09-30 — Run Inventory Phase 5B notification only
+
+- Existing EnemyDropGachaClient rejects stale World1 RunId presentations. A successful item draw rejected by Run capacity uses the existing result label with RUN INVENTORY FULL; no reward card is shown for the ungranted item.
+- No Inventory count HUD, Return button or capacity purchase UI was added. Server attributes are ready for a later UI phase; World2 result presentation remains compatible.

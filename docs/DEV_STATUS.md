@@ -555,3 +555,11 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - Implemented the ten confirmed SCP placements using existing EnemySpawn/Floor anchors and shared world-scoped combat/rendering. SCP-131 is excluded and preserved; overlapping placeholders are archived intact.
 - Verified all ten World2 stage advances, matching HP displays, floor contact, no shared boss replacement, respawn, gate round trips, and World1 Stage1 regression. Final clean normal Play had no Error/Warning/Infinite Yield.
 - Two-client rendering remains unverified (two-participant combat-state isolation passed). World2 Trophy/Win rewards remain unconfigured. See [report](../reports/World2_SCP_Bosses_20260924/README.md).
+
+## 2026-09-30 — World1 Run Inventory Phase 5B
+
+- World1 Boss Dropの通常Itemだけをサーバー専用RunInventoryServiceへ未確定保持する。初期Capacity=5はGetCapacityへ集約し、数量合計で数える。既存OwnedItems／EquippedItemsは枠に含めず、取得時のPlayerData保存は行わない。
+- RunIdとDrop IDで旧Run混入・二重付与を拒否。満杯の当選Itemは追加せず、既存Drop演出にRUN INVENTORY FULLを表示する。抽選率・Rarity率は維持。
+- 死亡・Character再生成・Run初期化で未確定品を消去。退出時は保存せず破棄。World移動はWorld1取得受付を一時停止／再開する。既存Trophy帰還もRun初期化のため、このPhaseでは持ち帰りにならない。
+- Daily／Time／Community／Shop／MergeとWorld2は従来のPermanent付与を維持。戻る・持ち帰り確定・HUDカウンター・Capacity購入は未実装。
+- 検証範囲と既存Console問題は[Phase 5B report](../reports/World1_RunInventory_Phase5B_20260930.md)を参照。Place未保存。

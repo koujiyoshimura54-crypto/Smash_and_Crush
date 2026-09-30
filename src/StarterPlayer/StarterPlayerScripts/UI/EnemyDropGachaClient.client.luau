@@ -26,7 +26,12 @@ local function cleanup()
  if pointerTween then pointerTween:Cancel();pointerTween=nil end
  if activeGui then activeGui:Destroy();activeGui=nil end
 end
+local function currentRun(result)
+ return result.WorldId~=1 or (result.RunId==player:GetAttribute("RunInventoryId")
+  and player:GetAttribute("RunInventoryActive")==true)
+end
 local function show(result)
+ if not currentRun(result) then return end
  local gui=template:Clone()
  disableTokenLocalization(gui)
  activeGui=gui
@@ -63,13 +68,13 @@ local function show(result)
  activeTween:Play()
  local playback=activeTween.Completed:Wait()
  if tickConnection then tickConnection:Disconnect();tickConnection=nil end
- if playback~=Enum.PlaybackState.Completed or not gui.Parent then return end
+ if playback~=Enum.PlaybackState.Completed or not gui.Parent or not currentRun(result) then return end
  gui:SetAttribute("SpinElapsed",os.clock()-started)
  gui:SetAttribute("Stopped",true)
  if pointerTween then pointerTween:Cancel();pointerTween=nil end
  pointer.Rotation=0
  if result.Outcome=="MISS" then
-  holder.Result.Text="MISS";holder.Result.Visible=true
+  holder.Result.Text=result.Reason=="InventoryFull" and "RUN INVENTORY FULL" or "MISS";holder.Result.Visible=true
   task.wait(.45)
  else
   local item=Master.Get(result.ItemId)
@@ -87,6 +92,7 @@ local function show(result)
 end
 remote.OnClientEvent:Connect(function(result)
  if typeof(result)~="table" or result.OwnerUserId~=player.UserId or typeof(result.Id)~="string" or seen[result.Id] then return end
+ if not currentRun(result) then return end
  local segment=result.Segment
  if typeof(segment)~="number" or segment%1~=0 or segment<1 or segment>5 then return end
  if result.Outcome~="MISS" and result.Outcome~="ITEM" then return end
