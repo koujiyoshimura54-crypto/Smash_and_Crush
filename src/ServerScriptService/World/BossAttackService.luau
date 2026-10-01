@@ -10,6 +10,7 @@ local BOSS_ATTACK_INTERVAL = 1
 local PLAYER_MAX_HEALTH = 100
 local active = {}
 local validateSession
+local healHandler
 
 local function getSettings(player)
  local id=player and Speed.GetEquippedSpeedItemId(player) or "NONE"
@@ -119,6 +120,7 @@ function M.Stop(player, heal)
  local hum=r.Humanoid
  if heal and hum.Parent and hum.Health>0 and player.Character==r.Character then
   hum.Health=hum.MaxHealth
+  if healHandler then healHandler(player,r.Enemy,r.Stage,r.Character) end
  end
 end
 
@@ -149,6 +151,7 @@ function M.Rebind(player, enemy)
  local r=active[player]
  if r then r.Enemy=enemy end
 end
+function M.SetHealHandler(callback) healHandler=callback end
 function M.SetSessionValidator(callback) validateSession=callback end
 function M.GetState(player) return active[player] end
 

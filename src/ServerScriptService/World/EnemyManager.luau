@@ -893,16 +893,12 @@ local function endCombatOnArenaExit(p)
   or st.CurrentStage~=n or st.WorldComplete or ps.Defeated[n]
   or s.Instance~=enemies[n] or not s.Instance.Parent
   or Chase.ContainsPlayer(s.Instance,root.Position) then return false end
- local maxHP=Boss.ResetEncounterOnArenaExit(p,n)
- if not maxHP then return false end
  if BossAttack then BossAttack.Stop(p,true) end
- ps.Gauges[n]=maxHP
+ Boss.Cancel(p)
  sessions[p]=nil
  recognizedPlayers[p]=nil
  p:SetAttribute("IsFighting",false)
  send(p,{Type="Fighting",Active=false})
- send(p,{Type="BossGauge",Stage=n,Current=maxHP,Max=maxHP,Attack=0,
-  SpawnGeneration=s.Instance:GetAttribute("SpawnGeneration")})
  return true
 end
 local function updateCombat(p,manualRequest)
@@ -1117,6 +1113,15 @@ function M.Initialize(newMap)map=newMap or W:FindFirstChild(worldId==2 and "Worl
 end)
  Stage.Initialize(map)spawnAll()
  if BossAttack then
+  BossAttack.SetHealHandler(function(p,enemy,n,character)
+   -- Stop's Player-heal if is the sole recovery decision; only guard defeated state here.
+   if state(p).Defeated[n] then return end
+   local maxHP=Boss.ResetEncounterForHeal(p,n)
+   if not maxHP then return end
+   state(p).Gauges[n]=maxHP
+   send(p,{Type="BossGauge",Stage=n,Current=maxHP,Max=maxHP,Attack=0,
+    SpawnGeneration=enemy:GetAttribute("SpawnGeneration")})
+  end)
   BossAttack.SetSessionValidator(function(p,enemy,n,character)
    if endCombatOnArenaExit(p) then return false end
    local s=sessions[p]
