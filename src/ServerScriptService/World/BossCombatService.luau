@@ -3,7 +3,7 @@ local function forWorld(worldId)
  assert(worldId==1 or worldId==2,"Unsupported world")
  if contexts[worldId] then return contexts[worldId] end
 -- World1 uses real Strength damage. World2 retains its existing encounter rules.
--- Encounter HP and the battle-start damage snapshot survive leaving the zone.
+-- Ordinary Cancel retains snapshots; World1 arena exit explicitly retires its encounter.
 local Strength=require(game.ServerScriptService.Services.StrengthManager)
 local ItemService=require(game.ServerScriptService.Services.ItemService)
 local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1BossConfig"))
@@ -110,6 +110,16 @@ function M.QueueDamage(player,boss,stage,maxHP,damage)
   -- Expose the carry result immediately without taking an early combat/Glove snapshot.
   return math.max(0,M.StageConfig[stage].MaxHP-pending[player].Damage)
  end
+end
+-- Only the World1 arena-exit caller may retire a living, unfinished encounter.
+function M.ResetEncounterOnArenaExit(player,stage)
+ if worldId~=1 then return nil end
+ local saved=encounters[player]
+ local s=saved and saved[stage]
+ if not s or active[player]~=s or s.Completed or s.HP<=0 then return nil end
+ active[player]=nil
+ saved[stage]=nil -- Begin must take a fresh Strength/Glove snapshot next time.
+ return s.MaxHP
 end
 function M.Cancel(player) active[player]=nil end
 function M.End(player) active[player]=nil;pending[player]=nil end

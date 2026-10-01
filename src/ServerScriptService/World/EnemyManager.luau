@@ -878,12 +878,40 @@ local function defeat(p,n)
  -- Per-player defeat must not replace the shared enemy. The same instance and
  -- SpawnGeneration remain visible for players who have not defeated this stage.
 end
+-- Distinguish arena exit from every other Stop/Cancel/reset reason.
+local function endCombatOnArenaExit(p)
+ if not Chase or not inWorld(p) or p:GetAttribute("IsFighting")~=true then return false end
+ local s=sessions[p]
+ if not s or s.CombatType~="MiniBoss" then return false end
+ local n=s.Stage
+ local ch=p.Character
+ local hum=ch and ch:FindFirstChildOfClass("Humanoid")
+ local root=ch and ch:FindFirstChild("HumanoidRootPart")
+ local st=Stage.GetState(p)
+ local ps=state(p)
+ if s.Character~=ch or not hum or hum.Health<=0 or not root
+  or st.CurrentStage~=n or st.WorldComplete or ps.Defeated[n]
+  or s.Instance~=enemies[n] or not s.Instance.Parent
+  or Chase.ContainsPlayer(s.Instance,root.Position) then return false end
+ local maxHP=Boss.ResetEncounterOnArenaExit(p,n)
+ if not maxHP then return false end
+ if BossAttack then BossAttack.Stop(p,true) end
+ ps.Gauges[n]=maxHP
+ sessions[p]=nil
+ recognizedPlayers[p]=nil
+ p:SetAttribute("IsFighting",false)
+ send(p,{Type="Fighting",Active=false})
+ send(p,{Type="BossGauge",Stage=n,Current=maxHP,Max=maxHP,Attack=0,
+  SpawnGeneration=s.Instance:GetAttribute("SpawnGeneration")})
+ return true
+end
 local function updateCombat(p,manualRequest)
  if not inWorld(p) then
   if BossAttack then BossAttack.Stop(p,true) end
   if sessions[p] then Boss.Cancel(p);sessions[p]=nil end
   return false,"InactiveWorld"
  end
+ if endCombatOnArenaExit(p) then return false,"ArenaExit" end
  local now=W:GetServerTimeNow()
  local auto=PlayerData.IsAutoTapEnabled(p)
  if manualRequest and auto then return false,"AutoEnabled" end
@@ -1090,6 +1118,7 @@ end)
  Stage.Initialize(map)spawnAll()
  if BossAttack then
   BossAttack.SetSessionValidator(function(p,enemy,n,character)
+   if endCombatOnArenaExit(p) then return false end
    local s=sessions[p]
    local root=character:FindFirstChild("HumanoidRootPart")
    return inWorld(p) and p:GetAttribute("IsFighting")==true and s
