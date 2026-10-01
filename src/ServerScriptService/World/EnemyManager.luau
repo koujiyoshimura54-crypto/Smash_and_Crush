@@ -15,6 +15,7 @@ local Trophy=require(game.ServerScriptService.Services.TrophyRewardService).ForW
 local ItemDrops=require(game.ServerScriptService.Services.EnemyDropGachaService)
 local RunInventory=worldId==1 and require(game.ServerScriptService.Services.RunInventoryService)
 local PlayerData=require(game.ServerScriptService.Services.PlayerDataService)
+local Speed=require(game.ServerScriptService.Services.SpeedService)
 local Badges=require(game.ServerScriptService.Services.BadgeAwardService)
 local function inWorld(p) return (p:GetAttribute("CurrentWorld") or 1)==worldId end
 local watched=setmetatable({}, {__mode="k"})
@@ -136,6 +137,7 @@ local function state(p)local s=states[p]if not s then s={Gauges={},Defeated={}}f
 local function send(p,d)remote:FireClient(p,d)end
 function M.SendState(p)local st=Stage.GetState(p)local ps=state(p)local g={}for i=1,10 do g[i]=ps.Gauges[i]end send(p,{Type="Initialize",CurrentStage=st.CurrentStage,Cleared=ps.Defeated,Skipped=ps.Skipped,WorldComplete=st.WorldComplete,Gauges=g}) for major in pairs(Wall.Config) do send(p,{Type="WallInitialize",State=Wall.GetSnapshotForStage(p,major)}) end end
 function M.InitializePlayer(p,targetStage)
+ Speed.ClearTransitionBoost(p,worldId)
  if BossAttack then BossAttack.Stop(p,true) end
  targetStage=targetStage or 1
  Trophy.Clear(p)
@@ -834,6 +836,7 @@ local function defeat(p,n)
  if ps.Defeated[n] then return end
  ps.Gauges[n]=0
  ps.Defeated[n]=true
+ Speed.BeginTransitionBoost(p,worldId,n)
  -- Claim defeat before any result/reward notification; all damage paths share this guard.
  local enemy=enemies[n]
  send(p,{Type="BossResult",Result="WIN",Stage=n,SpawnGeneration=enemy and enemy:GetAttribute("SpawnGeneration")})
@@ -889,6 +892,17 @@ local function updateCombat(p,manualRequest)
    local ch=p.Character
    local hum=ch and ch:FindFirstChildOfClass("Humanoid")
    local root=ch and ch:FindFirstChild("HumanoidRootPart")
+   -- Walking back into the existing lobby footprint also ends this transition.
+   if root and Speed.GetTransitionBoost(p) then
+    local training=map and map:FindFirstChild("TrainingArea")
+    local floor=training and training:FindFirstChild("Floor")
+    if floor and floor:IsA("BasePart") then
+     local pos=floor.CFrame:PointToObjectSpace(root.Position)
+     if math.abs(pos.X)<=floor.Size.X/2 and math.abs(pos.Z)<=floor.Size.Z/2 and pos.Y>=-5 and pos.Y<=50 then
+      Speed.ClearTransitionBoost(p,worldId)
+     end
+    end
+   end
    local majorWall=Wall.Config[n] and n
    local wall=majorWall and Wall.GetCurrentWallForStage(p,majorWall)
    local wallPart=wall and wall:FindFirstChild("Wall")
@@ -930,6 +944,7 @@ local function updateCombat(p,manualRequest)
    end
    local target=wallHit and wall or (enemyHit and e)
    if target then
+    if wallHit then Speed.OnWallCombatContact(p,worldId,n,Wall.GetCurrentIndexForStage(p,n)) end
     local s=sessions[p]
     local targetKey=wallHit and ("Wall"..n.."."..Wall.GetCurrentIndexForStage(p,n)) or ("Enemy"..n)
     local startedWall=false
@@ -1126,6 +1141,7 @@ function M.Activate(p)
  end
 end
 function M.Deactivate(p)
+ Speed.ClearTransitionBoost(p,worldId)
  if RunInventory and states[p] then RunInventory.SetActive(p,states[p].RunInventoryId,false) end
  if BossAttack then BossAttack.Stop(p,true) end
  recognizedPlayers[p]=nil
