@@ -1,9 +1,11 @@
 local Players=game:GetService("Players")
+local RunService=game:GetService("RunService")
 local Config=require(game.ReplicatedStorage.Config:WaitForChild("SpeedConfig"))
 local Data=require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
 local Pass=require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
 local M={}
 local TRANSITION_BOOST_MULTIPLIER=2
+local TRANSITION_BOOST_DURATION=0.5
 local boosts={}
 local bindings={}
 local function activeBoost(player)
@@ -11,7 +13,8 @@ local function activeBoost(player)
  local character=player.Character
  local hum=character and character:FindFirstChildOfClass("Humanoid")
  if boost and boost.Character==character and boost.WorldId==(player:GetAttribute("CurrentWorld") or 1)
-  and hum and hum.Health>0 then return boost end
+  and hum and hum.Health>0 and M.GetEquippedSpeedItemId(player)=="NONE"
+  and workspace:GetServerTimeNow()<boost.ExpiresAt then return boost end
  return nil
 end
 function M.GetState(player)
@@ -36,7 +39,9 @@ function M.Apply(player)
  local state=M.GetState(player)
  local character=player.Character
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
- if humanoid then humanoid.WalkSpeed=state.WalkSpeed*(activeBoost(player) and TRANSITION_BOOST_MULTIPLIER or 1) end
+ local boost=activeBoost(player)
+ if not boost then boosts[player]=nil end
+ if humanoid then humanoid.WalkSpeed=state.WalkSpeed*(boost and TRANSITION_BOOST_MULTIPLIER or 1) end
  return state
 end
 function M.ClearTransitionBoost(player,worldId)
@@ -45,22 +50,26 @@ function M.ClearTransitionBoost(player,worldId)
  boosts[player]=nil
  M.Apply(player)
 end
-function M.BeginTransitionBoost(player,worldId,defeatedStage)
+function M.BeginTimedBoost(player,worldId,reason)
  if (worldId~=1 and worldId~=2) or (player:GetAttribute("CurrentWorld") or 1)~=worldId then return end
- M.ClearTransitionBoost(player)
- if defeatedStage<1 or defeatedStage>=10 then return end
+ if M.GetEquippedSpeedItemId(player)~="NONE" then M.ClearTransitionBoost(player);return end
  local character=player.Character
  local hum=character and character:FindFirstChildOfClass("Humanoid")
  if not hum or hum.Health<=0 then return end
- boosts[player]={Active=true,WorldId=worldId,DefeatedStage=defeatedStage,TargetStage=defeatedStage+1,Character=character}
+ local boost={Active=true,WorldId=worldId,Reason=reason,Character=character,
+  ExpiresAt=workspace:GetServerTimeNow()+TRANSITION_BOOST_DURATION}
+ boosts[player]=boost
  M.Apply(player)
+ task.delay(TRANSITION_BOOST_DURATION,function()
+  if boosts[player]==boost then M.ClearTransitionBoost(player) end
+ end)
 end
-function M.OnWallCombatContact(player,worldId,stage,index)
- local boost=activeBoost(player)
- if boost and boost.WorldId==worldId and boost.TargetStage==stage and index==1 then
-  M.ClearTransitionBoost(player,worldId)
+-- Observe equipment changes only while boosted; never derive identity from WalkSpeed.
+RunService.Heartbeat:Connect(function()
+ for player in boosts do
+  if not activeBoost(player) then M.Apply(player) end
  end
-end
+end)
 function M.GetTransitionBoost(player)
  local boost=activeBoost(player)
  return boost and table.clone(boost) or nil

@@ -836,7 +836,7 @@ local function defeat(p,n)
  if ps.Defeated[n] then return end
  ps.Gauges[n]=0
  ps.Defeated[n]=true
- Speed.BeginTransitionBoost(p,worldId,n)
+ if n>=1 and n<10 then Speed.BeginTimedBoost(p,worldId,"BossDefeat") end
  -- Claim defeat before any result/reward notification; all damage paths share this guard.
  local enemy=enemies[n]
  send(p,{Type="BossResult",Result="WIN",Stage=n,SpawnGeneration=enemy and enemy:GetAttribute("SpawnGeneration")})
@@ -968,7 +968,6 @@ local function updateCombat(p,manualRequest)
    end
    local target=wallHit and wall or (enemyHit and e)
    if target then
-    if wallHit then Speed.OnWallCombatContact(p,worldId,n,Wall.GetCurrentIndexForStage(p,n)) end
     local s=sessions[p]
     local targetKey=wallHit and ("Wall"..n.."."..Wall.GetCurrentIndexForStage(p,n)) or ("Enemy"..n)
     local startedWall=false
@@ -1058,7 +1057,12 @@ local function updateCombat(p,manualRequest)
        s.Pending-=1
        if not inWorld(attackPlayer) or attackPlayer.Parent~=Players or sessions[attackPlayer]~=s or Stage.GetCurrentStageNumber(attackPlayer)~=attackStage or attackPlayer.Character~=ch or not hum or hum.Health<=0 then return end
        -- Carry remains inside Walls 1-4; any remainder after Wall4 is discarded.
+       local firstIndex=Wall.GetCurrentIndexForStage(attackPlayer,attackStage)
        local cleared,nextIndex=Wall.ApplyDamageForStage(attackPlayer,attackStage,attackPower)
+       if firstIndex==1 and table.find(cleared,1) and table.find(cleared,2)
+        and table.find(cleared,3) and table.find(cleared,4) then
+        Speed.BeginTimedBoost(attackPlayer,worldId,"WallSweep")
+       end
        for _,index in ipairs(cleared) do
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=index,Current=0,Max=Wall.GetStageConfig(attackStage).Walls[index]})
         send(attackPlayer,{Type="WallCleared",MajorStage=attackStage,Index=index,Next=nextIndex,State=Wall.GetSnapshotForStage(attackPlayer,attackStage),NextMax=(nextIndex<=4 and Wall.GetStageConfig(attackStage).Walls[nextIndex] or nil)})
