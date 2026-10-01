@@ -8,14 +8,22 @@ local M = {}
 local BOSS_DAMAGE = 25
 local BOSS_ATTACK_INTERVAL = 1
 local PLAYER_MAX_HEALTH = 100
-local REACH_SCALE = 0.25
-local MIN_REACH = 8
-local MAX_REACH = 14
-local ATTACK_ANGLE = 104
-local ATTACK_HEIGHT = 3.5
-local VERTICAL_PADDING = 1
 local active = {}
 local validateSession
+
+local function getSettings(player)
+ local id=player and Speed.GetEquippedSpeedItemId(player) or "NONE"
+ local settings=typeof(id)=="string" and SpeedAttackConfig[id] or nil
+ if typeof(settings)~="table" then return "NONE",SpeedAttackConfig.NONE end
+ for _,key in {"ReachScale","MinReach","MaxReach","AttackAngle","AttackHeight","VerticalPadding"} do
+  local value=settings[key]
+  if typeof(value)~="number" or value~=value or math.abs(value)==math.huge or value<0 then
+   return "NONE",SpeedAttackConfig.NONE
+  end
+ end
+ if settings.MinReach>settings.MaxReach then return "NONE",SpeedAttackConfig.NONE end
+ return id,settings
+end
 
 function M.GetAttackBounds(enemy, stage, player)
  local pivot = enemy:GetPivot()
@@ -46,11 +54,8 @@ function M.GetAttackBounds(enemy, stage, player)
  if collider and collider:IsA("BasePart") then include(collider) end
  if low.X==math.huge then return nil end
  local size=high-low
- local baseReach=math.clamp(math.max(size.X,size.Z)*REACH_SCALE,MIN_REACH,MAX_REACH)
- local activeId=player and Speed.GetActiveSpeedItemId(player) or "NONE"
- local itemConfig=SpeedAttackConfig[activeId] or SpeedAttackConfig.NONE
- local multiplier=itemConfig.BossAttackReachMultiplier
- local reach=baseReach*multiplier
+ local itemId,settings=getSettings(player)
+ local reach=math.clamp(math.max(size.X,size.Z)*settings.ReachScale,settings.MinReach,settings.MaxReach)
  local map=Workspace:FindFirstChild("GeneratedMap")
  local corridor=map and map:FindFirstChild("BattleCorridor")
  local arena=corridor and corridor:FindFirstChild(("Stage%02d"):format(stage))
@@ -60,7 +65,9 @@ function M.GetAttackBounds(enemy, stage, player)
   local floorY=pivot:PointToObjectSpace(floor.Position+Vector3.new(0,floor.Size.Y/2,0)).Y
   low=Vector3.new(low.X,math.min(low.Y,floorY),low.Z)
  end
- return {Pivot=pivot,Low=low,High=high,Reach=reach,BaseReach=baseReach,ActiveSpeedItemId=activeId,ReachMultiplier=multiplier}
+ -- Cap the existing vertical overlap volume; no jumping-state special case.
+ local attackTop=math.min(high.Y,low.Y+settings.AttackHeight)
+ return {Pivot=pivot,Low=low,High=high,AttackTop=attackTop,Reach=reach,BaseReach=reach,EquippedSpeedItemId=itemId,Settings=settings}
 end
 
 function M.IsInRange(enemy, stage, humanoid, root)
@@ -77,8 +84,8 @@ function M.IsInRange(enemy, stage, humanoid, root)
 	local bottom=point.Y-humanoid.HipHeight-root.Size.Y/2
 	local top=point.Y+root.Size.Y/2
 	local vertical=
-		top>=bounds.Low.Y-VERTICAL_PADDING
-		and bottom<=bounds.High.Y+VERTICAL_PADDING
+		top>=bounds.Low.Y-bounds.Settings.VerticalPadding
+		and bottom<=bounds.AttackTop+bounds.Settings.VerticalPadding
 
 	-- Boss正面を中心とした攻撃角度。
 	-- 270°なら真後ろ90°だけが攻撃範囲外になる。
@@ -90,7 +97,7 @@ function M.IsInRange(enemy, stage, humanoid, root)
 	local angleOK=true
 	if flatToPlayer.Magnitude>0.001 and flatForward.Magnitude>0.001 then
 		local dot=flatForward.Unit:Dot(flatToPlayer.Unit)
-		local threshold=math.cos(math.rad(ATTACK_ANGLE/2))
+		local threshold=math.cos(math.rad(bounds.Settings.AttackAngle/2))
 		angleOK=dot>=threshold
 	end
 

@@ -27,6 +27,11 @@ end
 function M.GetActiveSpeedItemId(player)
  return M.GetState(player).ActiveSpeedItemId
 end
+-- Canonical item identity; legacy shop/source IDs and ownership are unchanged.
+function M.GetEquippedSpeedItemId(player)
+ local id=M.GetActiveSpeedItemId(player)
+ return id=="Speed1" and "SPEED_BOOST" or (id=="Premium" and "SPEED_PREMIUM" or "NONE")
+end
 function M.Apply(player)
  local state=M.GetState(player)
  local character=player.Character
