@@ -210,11 +210,28 @@ function TrainingManager.IsPlayerInsideZone(player,zone)
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
  local root=character and character:FindFirstChild("HumanoidRootPart")
  if not humanoid or humanoid.Health<=0 or not root then return false end
- local footPosition=root.Position-Vector3.new(0,humanoid.HipHeight+root.Size.Y/2,0)
  local rootLocal=zone.CFrame:PointToObjectSpace(root.Position)
- local footLocal=zone.CFrame:PointToObjectSpace(footPosition)
  local h=zone.Size/2
- return math.abs(rootLocal.X)<=h.X and math.abs(footLocal.Y)<=h.Y and math.abs(rootLocal.Z)<=h.Z
+ if math.abs(rootLocal.X)>h.X or math.abs(rootLocal.Z)>h.Z then return false end
+ if humanoid.RigType==Enum.HumanoidRigType.R15 then
+  local foundFoot=false
+  for _,name in {"LeftFoot","RightFoot"} do
+   local foot=character:FindFirstChild(name)
+   if foot and foot:IsA("BasePart") then
+    foundFoot=true
+    -- Actual lowest foot surface in Zone space, including foot/Zone rotation.
+    local cf=zone.CFrame:ToObjectSpace(foot.CFrame)
+    local halfY=(math.abs(cf.RightVector.Y)*foot.Size.X
+     +math.abs(cf.UpVector.Y)*foot.Size.Y+math.abs(cf.LookVector.Y)*foot.Size.Z)/2
+    if math.abs(cf.Position.Y-halfY)<=h.Y then return true end
+   end
+  end
+  if foundFoot then return false end
+ end
+ -- R6 or unavailable R15 feet retain the previous Root/HipHeight fallback.
+ local footPosition=root.Position-Vector3.new(0,humanoid.HipHeight+root.Size.Y/2,0)
+ local footLocal=zone.CFrame:PointToObjectSpace(footPosition)
+ return math.abs(footLocal.Y)<=h.Y
 end
 
 function TrainingManager.UpdateZoneOccupants()
