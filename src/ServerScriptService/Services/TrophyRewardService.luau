@@ -9,6 +9,9 @@ local RunService = game:GetService("RunService")
 local GamePass = require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
 local PlayerData = require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
 
+local Bank = worldId==1 and require(game.ServerScriptService.Services.RunItemBankService)
+local Run = worldId==1 and require(game.ServerScriptService.Services.RunInventoryService)
+
 local M = {}
 
 local RewardConfig=require(RS.Config:WaitForChild("TrophyRewardConfig"))
@@ -128,10 +131,26 @@ local function collect(player, record, part)
 		return
 	end
 
-	-- No yield between locking, crediting, consuming, moving and resetting.
+	-- Lock before the potentially yielding durable bank. Back uses the same lock/journal.
 	record.Claiming = true
-
 	local winReward = GamePass.GetWinReward(player, baseReward)
+	if Bank then
+		local snapshot = Run.GetSnapshot(player)
+		local committed = snapshot and Bank.Commit(player, snapshot.RunId)
+		if not committed then
+			record.Claiming = false
+			return
+		end
+		-- Death/reset/another completion may have invalidated this pickup during I/O.
+		if not records[player] or records[player][record.Stage] ~= record
+			or player.Character ~= character or humanoid.Health <= 0
+			or (player:GetAttribute("CurrentWorld") or 1) ~= worldId then
+			record.Claiming = false
+			return
+		end
+		win = player:GetAttribute("Win")
+	end
+	-- No yields after confirmed banking: credit once, consume, move and reset.
 	local updatedWin = win + winReward
 	player:SetAttribute("Win", updatedWin)
 
