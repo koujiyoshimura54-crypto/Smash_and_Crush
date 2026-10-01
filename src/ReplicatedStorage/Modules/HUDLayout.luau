@@ -68,6 +68,57 @@ local function freePosition(x,y,width,height,blocks,w,h,edge,minY,fixedX)
  return bestX,bestY
 end
 
+-- Only painted, visible screen UI blocks Back; transparent layout/input frames do not.
+local function placeReturnButton(gui,button,w,h,y,edge)
+ local width,height=button.AbsoluteSize.X,button.AbsoluteSize.Y
+ local origin=button.Parent.AbsolutePosition
+ local blocks={}
+ for _,x in ipairs(gui.Parent:GetDescendants()) do
+  if x:IsA("GuiObject") and x~=button and not x:IsDescendantOf(button) and shown(x) then
+   local painted=x.BackgroundTransparency<1
+    or (x:IsA("TextLabel") or x:IsA("TextButton") or x:IsA("TextBox")) and x.Text~="" and x.TextTransparency<1
+    or (x:IsA("ImageLabel") or x:IsA("ImageButton")) and x.Image~="" and x.ImageTransparency<1
+   local p,s=x.AbsolutePosition,x.AbsoluteSize
+   -- Full-screen containers/backdrops are not individual HUD controls.
+   if painted and s.X>0 and s.Y>0 and not (s.X>=w*.95 and s.Y>=h*.95) then
+    local left,top,right,bottom=p.X,p.Y,p.X+s.X,p.Y+s.Y
+    local ancestor=x.Parent
+    while ancestor and not ancestor:IsA("ScreenGui") do
+     if ancestor:IsA("CanvasGroup") and ancestor.GroupTransparency>=1 then right=left end
+     if ancestor:IsA("GuiObject") and ancestor.ClipsDescendants then
+      local ap,az=ancestor.AbsolutePosition,ancestor.AbsoluteSize
+      left=math.max(left,ap.X);top=math.max(top,ap.Y)
+      right=math.min(right,ap.X+az.X);bottom=math.min(bottom,ap.Y+az.Y)
+     end
+     ancestor=ancestor.Parent
+    end
+    if right>left and bottom>top then
+     table.insert(blocks,{X=left-origin.X,Y=top-origin.Y,W=right-left,H=bottom-top})
+    end
+   end
+  end
+ end
+ local preferred=w/3
+ local xs={preferred}
+ for step=1,8 do
+  table.insert(xs,preferred-w*.02*step)
+  table.insert(xs,preferred+w*.02*step)
+ end
+ -- Exhaust horizontal candidates first; adjust Y only when that row is blocked.
+ local ys={y}
+ for step=1,8 do table.insert(ys,y-8*step);table.insert(ys,y+8*step) end
+ for _,cy in ipairs(ys) do for _,cx in ipairs(xs) do
+  if cx>=w*.18 and cx<=w*.43 and cx-width/2>=edge and cx+width/2<=w-edge
+   and cy>=4 and cy+height<=h-edge then
+   local rect={X=cx-width/2,Y=cy,W=width,H=height}
+   local clear=true
+   for _,block in ipairs(blocks) do if overlaps(rect,block,4) then clear=false;break end end
+   if clear then button.Position=UDim2.fromOffset(cx,cy);return end
+  end
+ end end
+ button.Position=UDim2.fromOffset(math.clamp(preferred,edge+width/2,w-edge-width/2),y)
+end
+
 function M.Mount(gui)
  if mounted[gui] then return mounted[gui] end
  local hud=gui:WaitForChild("HUD");local menu=gui:WaitForChild("LeftMenu")
@@ -209,16 +260,14 @@ function M.Mount(gui)
    inventory.TextSize=small and 18 or 22
   end
   local returnButton=hud:FindFirstChild("RunReturnButton")
+  local returnY=12
   if returnButton then
-   local bw,bh=compact and 120 or 144,compact and 44 or 48
-   local by=12
    if compact then
-    by=winY+64*winScale+12
-    if inventory then by=math.max(by,inventory.Position.Y.Offset+inventory.Size.Y.Offset+10) end
+    returnY=winY+64*winScale+12
+    if inventory then returnY=math.max(returnY,inventory.Position.Y.Offset+inventory.Size.Y.Offset+10) end
    end
    returnButton.AnchorPoint=Vector2.new(.5,0)
-   returnButton.Position=UDim2.new(.5,0,0,by)
-   returnButton.Size=UDim2.fromOffset(bw,bh)
+   returnButton.Size=UDim2.fromOffset(0,compact and 44 or 48)
    returnButton.TextSize=compact and 22 or 26
   end
   local potion=gui:FindFirstChild("PotionStatus")
@@ -306,6 +355,7 @@ function M.Mount(gui)
     potion.Position=UDim2.fromOffset(px,py)
    end
   end
+  if returnButton then placeReturnButton(gui,returnButton,w,h,returnY,edge) end
  end
  local conn=RunService.RenderStepped:Connect(layout)
  local handle={Refresh=layout}

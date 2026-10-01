@@ -16,10 +16,15 @@ button.BorderSizePixel = 0
 button.FontFace = style.FontFace
 button.TextColor3 = style.TextColor3
 button.TextSize = 32
-button.TextWrapped = true
+button.TextWrapped = false
+button.AutomaticSize = Enum.AutomaticSize.X
+local padding = Instance.new("UIPadding")
+padding.PaddingLeft = UDim.new(0, 4)
+padding.PaddingRight = UDim.new(0, 4)
+padding.Parent = button
 button.AutoLocalize = false
 button.ZIndex = menu.InventoryButton.ZIndex
-button.Text = "戻る"
+button.Text = "Back"
 local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0, 16)
 corner.Parent = button
@@ -47,7 +52,7 @@ local function render()
 	button.Visible = visible
 	button.Active = not busy
 	button.AutoButtonColor = not busy
-	button.Text = busy and "保存中…" or (failed and "失敗\n再試行" or "戻る")
+	button.Text = busy and "保存中…" or (failed and "失敗\n再試行" or "Back")
 end
 button.Activated:Connect(function()
 	if not button.Visible or pending or player:GetAttribute("RunReturnBusy") then return end
