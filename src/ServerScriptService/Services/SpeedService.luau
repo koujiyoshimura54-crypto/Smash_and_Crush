@@ -19,8 +19,13 @@ function M.GetState(player)
  local loaded=s~=nil and s.Loaded==true and s.Data~=nil
  local owned=loaded and s.Data.OwnedSpeeds.Speed1==true or false
  local premium=Pass.HasPremiumSpeed(player)
- local speed=premium and Pass.AreEffectsEnabled(player) and Config.Premium.WalkSpeed or (owned and Config.Speed1.WalkSpeed or Config.DefaultSpeed)
- return {Loaded=loaded,OwnedSpeeds={Speed1=owned},PremiumOwned=premium,WalkSpeed=speed,Win=player:GetAttribute("Win") or 0}
+ local activeId=premium and Pass.AreEffectsEnabled(player) and "Premium" or (owned and "Speed1" or "NONE")
+ local speed=activeId=="NONE" and Config.DefaultSpeed or Config[activeId].WalkSpeed
+ return {Loaded=loaded,OwnedSpeeds={Speed1=owned},PremiumOwned=premium,ActiveSpeedItemId=activeId,WalkSpeed=speed,Win=player:GetAttribute("Win") or 0}
+end
+-- Equipment/source identity is independent of applied WalkSpeed and transition boosts.
+function M.GetActiveSpeedItemId(player)
+ return M.GetState(player).ActiveSpeedItemId
 end
 function M.Apply(player)
  local state=M.GetState(player)

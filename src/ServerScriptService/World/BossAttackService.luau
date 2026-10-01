@@ -2,6 +2,8 @@
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
+local Speed = require(game.ServerScriptService.Services:WaitForChild("SpeedService"))
+local SpeedAttackConfig = require(game.ReplicatedStorage.Config:WaitForChild("SpeedBossAttackConfig"))
 local M = {}
 local BOSS_DAMAGE = 25
 local BOSS_ATTACK_INTERVAL = 1
@@ -9,10 +11,13 @@ local PLAYER_MAX_HEALTH = 100
 local REACH_SCALE = 0.25
 local MIN_REACH = 8
 local MAX_REACH = 14
+local ATTACK_ANGLE = 104
+local ATTACK_HEIGHT = 3.5
+local VERTICAL_PADDING = 1
 local active = {}
 local validateSession
 
-function M.GetAttackBounds(enemy, stage)
+function M.GetAttackBounds(enemy, stage, player)
  local pivot = enemy:GetPivot()
  local low = Vector3.new(math.huge, math.huge, math.huge)
  local high = -low
@@ -41,7 +46,11 @@ function M.GetAttackBounds(enemy, stage)
  if collider and collider:IsA("BasePart") then include(collider) end
  if low.X==math.huge then return nil end
  local size=high-low
- local reach=math.clamp(math.max(size.X,size.Z)*REACH_SCALE,MIN_REACH,MAX_REACH)
+ local baseReach=math.clamp(math.max(size.X,size.Z)*REACH_SCALE,MIN_REACH,MAX_REACH)
+ local activeId=player and Speed.GetActiveSpeedItemId(player) or "NONE"
+ local itemConfig=SpeedAttackConfig[activeId] or SpeedAttackConfig.NONE
+ local multiplier=itemConfig.BossAttackReachMultiplier
+ local reach=baseReach*multiplier
  local map=Workspace:FindFirstChild("GeneratedMap")
  local corridor=map and map:FindFirstChild("BattleCorridor")
  local arena=corridor and corridor:FindFirstChild(("Stage%02d"):format(stage))
@@ -51,22 +60,43 @@ function M.GetAttackBounds(enemy, stage)
   local floorY=pivot:PointToObjectSpace(floor.Position+Vector3.new(0,floor.Size.Y/2,0)).Y
   low=Vector3.new(low.X,math.min(low.Y,floorY),low.Z)
  end
- return {Pivot=pivot,Low=low,High=high,Reach=reach}
+ return {Pivot=pivot,Low=low,High=high,Reach=reach,BaseReach=baseReach,ActiveSpeedItemId=activeId,ReachMultiplier=multiplier}
 end
 
 function M.IsInRange(enemy, stage, humanoid, root)
- local bounds=M.GetAttackBounds(enemy,stage)
- if not bounds then return false,math.huge,0 end
- local point=bounds.Pivot:PointToObjectSpace(root.Position)
- local dx=math.max(bounds.Low.X-point.X,0,point.X-bounds.High.X)
- local dz=math.max(bounds.Low.Z-point.Z,0,point.Z-bounds.High.Z)
- local distance=math.sqrt(dx*dx+dz*dz)
- local playerRadius=math.max(root.Size.X,root.Size.Z)/2
- local bottom=point.Y-humanoid.HipHeight-root.Size.Y/2
- local top=point.Y+root.Size.Y/2
- local vertical=top>=bounds.Low.Y-2 and bottom<=bounds.High.Y+bounds.Reach
- -- No facing cone or raycast: destroyed server walls must not create safe spots.
- return vertical and distance<=bounds.Reach+playerRadius,distance,bounds.Reach+playerRadius
+	local player=Players:GetPlayerFromCharacter(humanoid.Parent)
+	local bounds=M.GetAttackBounds(enemy,stage,player)
+	if not bounds then return false,math.huge,0 end
+
+	local point=bounds.Pivot:PointToObjectSpace(root.Position)
+	local dx=math.max(bounds.Low.X-point.X,0,point.X-bounds.High.X)
+	local dz=math.max(bounds.Low.Z-point.Z,0,point.Z-bounds.High.Z)
+	local distance=math.sqrt(dx*dx+dz*dz)
+
+	local playerRadius=math.max(root.Size.X,root.Size.Z)/2
+	local bottom=point.Y-humanoid.HipHeight-root.Size.Y/2
+	local top=point.Y+root.Size.Y/2
+	local vertical=
+		top>=bounds.Low.Y-VERTICAL_PADDING
+		and bottom<=bounds.High.Y+VERTICAL_PADDING
+
+	-- Boss正面を中心とした攻撃角度。
+	-- 270°なら真後ろ90°だけが攻撃範囲外になる。
+	local toPlayer=root.Position-bounds.Pivot.Position
+	local flatToPlayer=Vector3.new(toPlayer.X,0,toPlayer.Z)
+	local forward=bounds.Pivot.LookVector
+	local flatForward=Vector3.new(forward.X,0,forward.Z)
+
+	local angleOK=true
+	if flatToPlayer.Magnitude>0.001 and flatForward.Magnitude>0.001 then
+		local dot=flatForward.Unit:Dot(flatToPlayer.Unit)
+		local threshold=math.cos(math.rad(ATTACK_ANGLE/2))
+		angleOK=dot>=threshold
+	end
+
+	local inDistance=distance<=bounds.Reach+playerRadius
+
+	return vertical and inDistance and angleOK,distance,bounds.Reach+playerRadius
 end
 
 function M.Stop(player, heal)
