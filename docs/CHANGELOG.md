@@ -588,3 +588,9 @@
 
 - Relocated one existing purchased mailbox to (304,7.2132015,30), beside current TrainingArea Spawn, with floor contact and orientation toward Spawn. No duplication or Source changes; existing isolated Feedback startup and Prompt filter now reach equipment physically located in the active Lobby.
 - CurrentCloud directly written and reDecoded; syntax checks passed and UniqueIds remain unique. Edit screenshot, floor raycast and collision bounds verified. Cloud reflection and published-app dialog behavior remain unverified. See [placement evidence](DEV_STATUS.md#2026-10-06---y02-feedback-placed-in-current-world1-lobby).
+
+## 2026-10-06 - World1 purchased Trophy / legacy Win Pass tiers
+
+- Moved purchased Workspace.Trophy to entrance right at (269,9.063096,72), preserving all physical assets. Connected its Prompt and per-player Marketplace-priced sign to the existing legacy GamePassService/Win reward path. Official IDs:1970515086(2x),2005353724(3x); highest owned wins, with tiered offers and no6x stacking. Existing Win entrances share the same ownership/prompt authority. Purchased Main/Data/WinServer remain inactive; no new reward grant.
+- Added necessary current Source mirrors under src; no historical audit overwrite. Added CurrentCloud's established World1 Place ID to the legacy pass registry. Verified syntax, fresh reDecode, unique IDs, Edit placement/ground contact/clearance and pure tier functions. Cloud/runtime purchase and reward behavior unverified. [Detailed evidence](DEV_STATUS.md#2026-10-06---y02-purchased-trophy-connected-to-legacy-win-pass-system).
+- Codex verification Studio20920 terminated; preexisting user Studio14856 still owns the lock and was preserved.

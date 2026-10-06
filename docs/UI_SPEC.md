@@ -433,3 +433,7 @@ When equipped Protein, Glove, and Training Belt Items share an Element, the Item
 
 - Existing EnemyDropGachaClient rejects stale World1 RunId presentations. A successful item draw rejected by Run capacity uses the existing result label with RUN INVENTORY FULL; no reward card is shown for the ungranted item.
 - No Inventory count HUD, Return button or capacity purchase UI was added. Server attributes are ready for a later UI phase; World2 result presentation remains compatible.
+
+## 2026-10-06 - Purchased Trophy Win Pass presentation
+
+Retain purchased Trophy geometry/Prompt/Billboard. Client presentation follows verified owner state: x2 Wins / x3 Wins / Owned;3x owners see no purchase Prompt. Fetch price from Marketplace with no fixed24 fallback; use ... during lookup and Price unavailable on failure. No custom UI. Equipment Edit placement checked; published-app interaction remains unverified.

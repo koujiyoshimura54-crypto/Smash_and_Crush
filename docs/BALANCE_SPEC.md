@@ -490,3 +490,7 @@ Equipping owned Protein, Glove, and Training Belt Items with one identical Eleme
 # 2026-09-20 — World1 muscle progression
 
 World1 muscle stages use cumulative Strength consumed by `LevelProgression.Advance`, reaching stages at Lv3 / 6 / 10 / 15 / 20 / 25 / 30 / 35 / 40 / 45. The authoritative cumulative thresholds are 40 / 250 / 955 / 2,840 / 7,215 / 17,265 / 37,315 / 81,865 / 196,915 / 462,965. Growth factors are 4 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 13 / 14, and Height scales are 1.20 / 1.35 / 1.50 / 1.70 / 1.90 / 2.15 / 2.40 / 2.70 / 3.00 / 3.30. Stage10 therefore uses UpperTorso X/Y/Z 2.68 / 3.30 / 2.40 and UpperArm X/Y/Z 3.10 / 3.30 / 3.10.
+
+## 2026-10-06 - World1 Win Pass multiplier3
+
+Legacy GamePassService.GetWinReward floors baseWin multiplied by the highest verified owned Win pass:1/2/3 for none/2x/3x. Both passes remain3x. Existing AreEffectsEnabled gates can suppress application to1x. Base stage Win amounts and fixed/time rewards are unchanged. Formal IDs1970515086/2005353724; live Marketplace price and live reward verification remain pending.

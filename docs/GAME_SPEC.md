@@ -447,3 +447,7 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 - 死亡・Character再生成・Run初期化で未確定品を消去。退出時は保存せず破棄。World移動はWorld1取得受付を一時停止／再開する。既存Trophy帰還もRun初期化のため、このPhaseでは持ち帰りにならない。
 - Daily／Time／Community／Shop／MergeとWorld2は従来のPermanent付与を維持。戻る・持ち帰り確定・HUDカウンター・Capacity購入は未実装。
 - 検証範囲と既存Console問題は[Phase 5B report](../reports/World1_RunInventory_Phase5B_20260930.md)を参照。Place未保存。
+
+## 2026-10-06 - CurrentCloud World1 Win Pass tiers
+
+Purchased Workspace.Trophy is a legacy GamePassService purchase entrance. Official passes1970515086(2x) and2005353724(3x) use verified ownership and the highest multiplier. Unowned ->2x offer; only2x ->3x; any3x ->Owned/no offer. CurrentCloud file implementation is statically checked, not published/runtime verified. Existing reward/return/storage processing and effect debug gates remain unchanged.

@@ -2,10 +2,33 @@ local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
 local Pass=require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
 local remote=RS.Remotes:WaitForChild("World1DoubleWinPrompt")
-Players.PlayerAdded:Connect(function(player) task.spawn(Pass.Refresh,player) end)
-for _,player in ipairs(Players:GetPlayers()) do task.spawn(Pass.Refresh,player) end
+local function refreshOwnership(player)
+ while player.Parent==Players do
+  local _,status=Pass.Refresh(player)
+  if status=="Verified" or status=="UnavailableWorld" then return end
+  task.wait(15)
+ end
+end
+Players.PlayerAdded:Connect(function(player) task.spawn(refreshOwnership,player) end)
+for _,player in ipairs(Players:GetPlayers()) do task.spawn(refreshOwnership,player) end
 remote.OnServerEvent:Connect(function(player,action)
- if action=="Prompt" then Pass.Prompt(player) end
+ if action~="Prompt" and action~="TrophyPrompt" then return end
+ if action=="TrophyPrompt" then
+  local trophy=workspace:FindFirstChild("Trophy")
+  local buy=trophy and trophy:FindFirstChild("Buy")
+  local prompt=buy and buy:FindFirstChildWhichIsA("ProximityPrompt")
+  local character=player.Character
+  local root=character and character:FindFirstChild("HumanoidRootPart")
+  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
+  if not buy or not buy:IsA("BasePart") or not prompt or not prompt.Enabled
+   or not root or not humanoid or humanoid.Health<=0
+   or (root.Position-buy.Position).Magnitude>prompt.MaxActivationDistance+3 then
+   remote:FireClient(player,"WinPassPromptResult",false,"OutOfRange")
+   return
+  end
+ end
+ local ok,reason=Pass.Prompt(player)
+ remote:FireClient(player,"WinPassPromptResult",ok,reason)
 end)
 
 -- Lobby entry replaces only this shop's E / Tap interaction.
@@ -42,7 +65,7 @@ task.spawn(function()
     entry={Character=character}
     entered[player]=entry -- Latch before the ownership lookup can yield.
     task.spawn(function()
-     if Pass.HasWorld1DoubleWin(player) then return end
+     if not Pass.GetNextWinPassId(player) then return end
      -- Do not prompt a player who left or respawned during ownership lookup.
      if player.Parent~=Players or entered[player]~=entry
       or player.Character~=character or not isInside(character,.75) then return end

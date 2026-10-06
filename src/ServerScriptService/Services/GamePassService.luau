@@ -20,103 +20,141 @@ function M.AreEffectsEnabled(player)
  return true
 end
 local cache=setmetatable({}, {__mode="k"})
-
+local winRefreshBusy=setmetatable({}, {__mode="k"})
+local winPromptLocks=setmetatable({}, {__mode="k"})
+local winLastRequest=setmetatable({}, {__mode="k"})
+local winRecovery=setmetatable({}, {__mode="k"})
 local function currentWorld()
-	return Config.GetWorld(game.PlaceId)
+ return Config.GetWorld(game.PlaceId)
 end
-
-function M.GetWorld()
-	return currentWorld()
+function M.GetWorld() return currentWorld() end
+function M.IsWorld1() return currentWorld()=="World1" end
+local function mirrorWinPasses(player,entry)
+ player:SetAttribute("HasWorld1DoubleWin",entry.Double or entry.Triple)
+ player:SetAttribute("HasWorld1TripleWin",entry.Triple)
+ player:SetAttribute("World1WinMultiplier",Config.GetOwnedWinMultiplier(currentWorld(),entry.Double,entry.Triple))
+ player:SetAttribute("WinPassOwnershipVerified",entry.Verified)
 end
-
-function M.IsWorld1()
-	return currentWorld()=="World1"
-end
-
 function M.Refresh(player)
-	local passId=Config.GetDoubleWinPassId(currentWorld())
-	local owned=false
-
-	if passId then
-		local ok,result=pcall(function()
-			return MarketplaceService:UserOwnsGamePassAsync(player.UserId,passId)
-		end)
-
-		if ok then
-			owned=(result==true)
-		else
-			warn("Game Pass ownership check failed for "..player.Name)
-		end
-	end
-
-	cache[player]=owned
-	player:SetAttribute("HasWorld1DoubleWin",owned)
-
-	return owned
+ local previous=cache[player] or {Double=false,Triple=false,Verified=false}
+ if winRefreshBusy[player] then return previous.Double or previous.Triple,"Pending" end
+ if not M.IsWorld1() then
+  cache[player]={Double=false,Triple=false,Verified=false}
+  mirrorWinPasses(player,cache[player])
+  return false,"UnavailableWorld"
+ end
+ winRefreshBusy[player]=true
+ local entry={Double=previous.Double,Triple=previous.Triple,Verified=true}
+ for _,tier in ipairs({{Key="Double",Id=Config.GetDoubleWinPassId("World1")},{Key="Triple",Id=Config.GetTripleWinPassId("World1")}}) do
+  local ok,owned=pcall(function() return MarketplaceService:UserOwnsGamePassAsync(player.UserId,tier.Id) end)
+  if ok then entry[tier.Key]=owned==true else entry.Verified=false end
+ end
+ winRefreshBusy[player]=nil
+ if player.Parent~=Players then return false,"PlayerUnavailable" end
+ cache[player]=entry
+ mirrorWinPasses(player,entry)
+ return entry.Double or entry.Triple,entry.Verified and "Verified" or "OwnershipUnavailable"
 end
-
+local function scheduleWinOwnershipRefresh(player,expectedPassId)
+ local existing=winRecovery[player]
+ if existing then
+  if expectedPassId then existing.PassId=expectedPassId end
+  return
+ end
+ local retry={PassId=expectedPassId}
+ winRecovery[player]=retry
+ task.spawn(function()
+  while player.Parent==Players do
+   task.wait(15)
+   local _,status=M.Refresh(player)
+   local entry=cache[player]
+   local owned=entry and (retry.PassId==Config.GetTripleWinPassId("World1") and entry.Triple or retry.PassId==Config.GetDoubleWinPassId("World1") and entry.Double)
+   if status=="UnavailableWorld" or (status=="Verified" and (not retry.PassId or owned)) then break end
+  end
+  if winRecovery[player]==retry then winRecovery[player]=nil end
+ end)
+end
 function M.HasWorld1DoubleWin(player)
-	if currentWorld()~="World1" then
-		return false
-	end
-
-	if cache[player]==nil then
-		M.Refresh(player)
-	end
-
-	return cache[player]==true
+ if not M.IsWorld1() then return false end
+ if not cache[player] then M.Refresh(player) end
+ local entry=cache[player]
+ return entry~=nil and (entry.Double or entry.Triple)==true
 end
-
+function M.GetNextWinPassId(player)
+ if not M.IsWorld1() then return nil end
+ if not cache[player] then M.Refresh(player) end
+ local entry=cache[player]
+ if not entry or not entry.Verified then return nil end
+ return Config.GetNextWinPassId(currentWorld(),entry.Double,entry.Triple)
+end
 function M.GetWinMultiplier(player)
-	return M.AreEffectsEnabled(player) and M.HasWorld1DoubleWin(player) and Config.GetWinMultiplier(currentWorld()) or 1
+ if not M.IsWorld1() or not M.AreEffectsEnabled(player) then return 1 end
+ if not cache[player] then M.Refresh(player) end
+ local entry=cache[player]
+ return entry and Config.GetOwnedWinMultiplier(currentWorld(),entry.Double,entry.Triple) or 1
 end
-
 function M.GetWinReward(player,baseReward)
-	return math.floor((tonumber(baseReward) or 0)*M.GetWinMultiplier(player))
+ return math.floor((tonumber(baseReward) or 0)*M.GetWinMultiplier(player))
 end
-
+local function releaseWinPrompt(player,lock)
+ if winPromptLocks[player]~=lock then return end
+ winPromptLocks[player]=nil
+ if player.Parent==Players then player:SetAttribute("WinPassPromptBusy",false) end
+end
 function M.Prompt(player)
-	if not M.IsWorld1() then
-		return false,"Unavailable in this World"
-	end
-
-	if M.HasWorld1DoubleWin(player) then
-		return false,"Already owned"
-	end
-
-	local passId=Config.GetDoubleWinPassId("World1")
-
-	if not passId then
-		return false,"Unavailable"
-	end
-
-	local ok=pcall(function()
-		MarketplaceService:PromptGamePassPurchase(player,passId)
-	end)
-
-	return ok,ok and "Prompted" or "Purchase prompt unavailable"
+ if not M.IsWorld1() then return false,"UnavailableWorld" end
+ if winPromptLocks[player] then return false,"Pending" end
+ local now=os.clock()
+ if winLastRequest[player] and now-winLastRequest[player]<1 then return false,"Cooldown" end
+ winLastRequest[player]=now
+ local lock={}
+ winPromptLocks[player]=lock
+ player:SetAttribute("WinPassPromptBusy",true)
+ local _,status=M.Refresh(player)
+ if status~="Verified" then
+  releaseWinPrompt(player,lock)
+  if status=="OwnershipUnavailable" then
+   scheduleWinOwnershipRefresh(player)
+  end
+  return false,status
+ end
+ local passId=M.GetNextWinPassId(player)
+ if not passId then releaseWinPrompt(player,lock);return false,"AlreadyOwned" end
+ lock.PassId=passId
+ local ok=pcall(function() MarketplaceService:PromptGamePassPurchase(player,passId) end)
+ if not ok then releaseWinPrompt(player,lock);return false,"PromptUnavailable" end
+ -- Recovery only if Roblox never sends the close event.
+ task.delay(120,function() releaseWinPrompt(player,lock) end)
+ return true,"Prompted"
 end
-
 MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,passId,purchased)
-	local world=currentWorld()
-
-	if world=="World1"
-		and passId==Config.GetDoubleWinPassId("World1")
-		and purchased then
-
-		local ok,owned=pcall(function()
-			return MarketplaceService:UserOwnsGamePassAsync(player.UserId,passId)
-		end)
-
-		if ok and owned then
-			cache[player]=true
-			player:SetAttribute("HasWorld1DoubleWin",true)
-		end
-	end
+ if passId~=Config.GetDoubleWinPassId("World1") and passId~=Config.GetTripleWinPassId("World1") then return end
+ local lock=winPromptLocks[player]
+ if lock and lock.PassId~=passId then lock=nil end
+ if not purchased then
+  if lock then releaseWinPrompt(player,lock) end
+  return
+ end
+ task.spawn(function()
+  -- A client completion is never sufficient to authorize a multiplier.
+  for attempt=1,5 do
+   if player.Parent~=Players then break end
+   local _,status=M.Refresh(player)
+   local entry=cache[player]
+   local owned=entry and (passId==Config.GetTripleWinPassId("World1") and entry.Triple or passId==Config.GetDoubleWinPassId("World1") and entry.Double)
+   if status=="Verified" and owned then break end
+   if attempt<5 then task.wait(attempt) end
+  end
+  if player.Parent==Players then
+   local entry=cache[player]
+   local owned=entry and (passId==Config.GetTripleWinPassId("World1") and entry.Triple or passId==Config.GetDoubleWinPassId("World1") and entry.Double)
+   if not entry or not entry.Verified or not owned then scheduleWinOwnershipRefresh(player,passId) end
+  end
+  if lock then releaseWinPrompt(player,lock) end
+ end)
 end)
-
 Players.PlayerRemoving:Connect(function(player)
-	cache[player]=nil
+ cache[player]=nil;winRefreshBusy[player]=nil;winPromptLocks[player]=nil;winLastRequest[player]=nil;winRecovery[player]=nil
 end)
 
 -- Dedicated treadmill entitlement; independent of the existing Double Win cache.
