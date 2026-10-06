@@ -577,3 +577,9 @@
 - Added the approved ten-stage SCP mapping and cosmetic placement adapter; reused shared combat, personal visibility/collider and progression paths with per-world state.
 - Preserved SCP-131 and original assets, archived overlapping placeholders, and left existing balance/reward probabilities unchanged. World2 Trophy/Win amounts remain unconfigured.
 - Evidence and test limits: [World2 SCP report](../reports/World2_SCP_Bosses_20260924/README.md).
+
+## 2026-10-06 - Y02 Feedback / stale Studio evidence
+
+- Limited verification found the designated CurrentCloud disk file already has the isolated purchased Feedback bootstrap and guarded PromptTriggered handler. One same-named Edit Studio matches; another still contains the pre-restoration Sources and cannot start Feedback with Main disabled. No unnecessary Source/rbxl edit was made.
+- Exact current Sources, equipment positions, startup/filter/lock evidence, syntax/reDecode/UniqueId checks, repository mapping limitation and remaining Cloud/application checks are in [DEV_STATUS](DEV_STATUS.md#2026-10-06--y02--currentcloud-purchased-feedback-limited-verification). Only records are committed; no Place or unrelated local changes.
+- Static checks passed. Cloud reflection, which Studio the user operated, runtime Lobby reachability and real dialog operation are unconfirmed. No Play, submission, Save or Publish.

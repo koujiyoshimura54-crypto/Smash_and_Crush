@@ -616,3 +616,96 @@ K02/K05/K06/K07は現在実装と推奨値・旧コメント・属性の差と�
 - 死亡・Character再生成・Run初期化で未確定品を消去。退出時は保存せず破棄。World移動はWorld1取得受付を一時停止／再開する。既存Trophy帰還もRun初期化のため、このPhaseでは持ち帰りにならない。
 - Daily／Time／Community／Shop／MergeとWorld2は従来のPermanent付与を維持。戻る・持ち帰り確定・HUDカウンター・Capacity購入は未実装。
 - 検証範囲と既存Console問題は[Phase 5B report](../reports/World1_RunInventory_Phase5B_20260930.md)を参照。Place未保存。
+
+## 2026-10-06 - Y02 / CurrentCloud purchased Feedback limited verification
+
+- Target: `C:\Users\kouji\MergeToForge_CurrentCloud.rbxl`. SHA-256 before/after: `9489e05420e6c071c8bea860d19c85d80f44688ffce52406466e9304e2392b60`. No rbxl modification or rewrite: the requested startup and prompt connection already exist in this disk file. No new instance, folder, backup or other rbxl.
+- Confirmed discrepancy: two Edit Studios both named MergeToForge_CurrentCloud.rbxl. Studio `6aaa480e-8eaa-4a16-9c9e-f9105f39e818` matches both disk Sources; Studio `960b0bbd-746d-4792-bcfe-0c0dbf7e615d` (PlaceId 0) has no Feedback startup in LeftMenuClient and the original PromptShown-based FeedbackClient. Thus the latter loaded model cannot start purchased Feedback with purchased Main disabled. This is an observed stale loaded-model discrepancy; which window the user operated and the published game version remain unconfirmed. Neither Studio was edited or saved.
+- Checked Full Paths: `StarterGui.StrengthGui.LeftMenuClient`, `StarterPlayer.StarterPlayerScripts.Services.FeedbackClient`, and the three same-named `Workspace.Mailboxes.Feedback.Part.ProximityPrompt` instances. LeftMenuClient Disabled=false; StrengthGui Enabled=true. The task.spawn bootstrap precedes HUD waits and requires only FeedbackClient.start().
+- Current physical equipment: all three Feedback models are directly under Workspace.Mailboxes, with enabled default-style Give Feedback! prompts and Feedback=true on the actual prompt-parent Part. Prompt-parent positions: (-57.886,9.218,50.028), (61.446,9.218,53.297), (5.271,9.218,1.506). No additional Feedback models found under Workspace in the matching Edit model. Multiple children are named Part; first-name lookup is not sufficient to identify a prompt parent. Filter uses the actual event prompt.Parent and matches all three. These are Edit positions; runtime Lobby/player reachability is not verified.
+- PromptTriggered passes the prompt and player; one global subscription and started guard prevent duplicate connections. The local-player/identity/attribute checks precede the yielding SocialService:PromptFeedbackSubmissionAsync() pcall. prompting remains true during the dialog and resets after normal return/cancellation/timeout/error. This is static control-flow verification, not runtime cancellation testing. No rewards, remotes, claims, new UI or saves.
+- ServerScriptService.Main Disabled=true, StarterPlayer.StarterPlayerScripts.Main Disabled=true, StarterGui.ScreenGui Enabled=false remain unchanged. Other purchased systems are not started.
+- Checks: both exact disk Sources compiled with existing Luau compiler --null; fresh disk reDecode passed (87,068 instances); all UniqueIds unique; lossless encode equals disk bytes. No Play, actual submission, Studio Save/Publish. Cloud reflection and application execution are unverified.
+- Roblox official API: https://create.roblox.com/docs/reference/engine/classes/SocialService#PromptFeedbackSubmissionAsync and https://create.roblox.com/docs/reference/engine/classes/ProximityPromptService#PromptTriggered . Standard Feedback requires the published game in the Roblox application.
+- Repository mapping: no corresponding current LeftMenuClient/FeedbackClient file exists in tracked src. The only tracked LeftMenuClient is the immutable 2026-09-15 audit snapshot; TrophyRewardFeedbackClient is unrelated legacy Smash reward presentation. To preserve these boundaries and the no-new-folder constraint, the exact verified current Sources are recorded below in this existing work record, rather than overwriting unrelated/historical files. No implementation Source changed this task.
+- Next task: read this section and the target's two related Sources first. Do not repeat the purchased Lobby or reward audit unless evidence changes. Remaining: reopen/reload the designated disk file in the stale Studio without saving over it; separately apply to Cloud through the authorized workflow; then check all three equipments and normal completion/cancel/error retries in the published Roblox application. Those operations were not performed here.
+
+### Verified Source: `StarterGui.StrengthGui.LeftMenuClient`
+
+```lua
+-- Start only the purchased Feedback module from this existing active client.
+task.spawn(function()
+ local playerScripts=game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts")
+ local feedback=playerScripts:WaitForChild("Services"):WaitForChild("FeedbackClient")
+ local ok,err=pcall(function() require(feedback).start() end)
+ if not ok then warn("[FeedbackClient] Start failed: "..tostring(err)) end
+end)
+
+-- Phase 7.2.3.1: shared menu presentation only.
+-- Skip and Rebirth are bound by their existing client scripts.
+local TweenService=game:GetService("TweenService")
+local gui=script.Parent
+local menu=gui:WaitForChild("LeftMenu")
+local layout=require(game.ReplicatedStorage.Modules:WaitForChild("HUDLayout")).Mount(gui).Refresh
+for _,name in ipairs({"SkipButton","InventoryButton","RebirthButton","ShopButton","MergeButton"}) do
+ local button=menu:WaitForChild(name)
+ local tween
+ local function highlight(on)
+  if tween then tween:Cancel() end
+  tween=TweenService:Create(button,TweenInfo.new(0.12),{
+   BackgroundColor3=on and Color3.fromRGB(53,65,89) or Color3.fromRGB(29,35,49),
+  })
+  tween:Play()
+ end
+ button.MouseEnter:Connect(function() highlight(button.Active) end)
+ button.MouseLeave:Connect(function() highlight(false) end)
+ button.SelectionGained:Connect(function() highlight(button.Active) end)
+ button.SelectionLost:Connect(function() highlight(false) end)
+end
+-- Inventory interaction is handled by InventoryPanelClient.
+
+
+gui.Parent.ChildAdded:Connect(function(child) if child.Name=="World1DoubleWinGui" then task.defer(layout) end end)
+task.defer(layout)
+```
+
+### Verified Source: `StarterPlayer.StarterPlayerScripts.Services.FeedbackClient`
+
+```lua
+local Players = game:GetService("Players")
+local ProximityPromptService = game:GetService("ProximityPromptService")
+local SocialService = game:GetService("SocialService")
+local Player = Players.LocalPlayer
+
+local FeedbackClient = {}
+local started = false
+local prompting = false
+
+function FeedbackClient.start()
+ if started then return end
+
+ -- One client-wide connection covers the three purchased mailboxes.
+ ProximityPromptService.PromptTriggered:Connect(function(prompt, playerWhoTriggered)
+  if playerWhoTriggered ~= Player or prompting then return end
+  local part = prompt.Parent
+  local model = part and part.Parent
+  local mailboxes = workspace:FindFirstChild("Mailboxes")
+  if not mailboxes or not model or model.Parent ~= mailboxes
+   or model.Name ~= "Feedback" or part:GetAttribute("Feedback") ~= true then return end
+
+  -- The yielding call owns the lock until it returns, including cancellation.
+  prompting = true
+  local ok, err = pcall(function()
+   SocialService:PromptFeedbackSubmissionAsync()
+  end)
+  prompting = false
+  if not ok then
+   warn("[FeedbackClient] Feedback prompt failed: " .. tostring(err))
+  end
+ end)
+
+ started = true
+end
+
+return FeedbackClient
+```
