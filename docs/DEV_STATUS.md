@@ -740,3 +740,129 @@ mailbox:PivotTo(CFrame.new(304, 7.213201522827148, 30) * CFrame.Angles(0, math.r
 - Result: LOCK RELEASED. Read existing Feedback/lock records first, then checked fresh lock owner PID 10736 and current target-file processes. PID 10736 (created 13:53:36) was the Codex-launched placement-verification Studio; its latest undo record was Assistant 5 and mailbox placement matched the already-written target file. PID 29020 (created 13:46:55) was the other Codex launch; MCP confirmed no Place was open, so it held no unsaved Place work. Old recorded PIDs were not reused.
 - Tried CloseMainWindow for each identified Codex process; both returned false. Force-terminated only these confirmed Codex processes. A later target-file PID 32096 had already exited and was not terminated; no unknown-user-work Studio was closed. After verifying no target-file Studio process remained and lock owner 10736 no longer existed, deleted only C:\Users\kouji\MergeToForge_CurrentCloud.rbxl.lock.
 - rbxl unchanged: before/after SHA-256 41d18bcc27ea6da50b3f6231c3b38f5f4cec354564b62d8a24a796e904f42063. No reopening Studio, Save/Publish, Play, Source edit, backup or other rbxl. Only this record is committed; unrelated local file retained.
+
+## 2026-10-06 - Y02 purchased Stage1-area Trophy read-only investigation
+
+- Read prior DEV_STATUS first; no previous record identified this purchased Trophy. Decoded only the designated CurrentCloud and followed this equipment's related purchase modules. No Studio opened, no Studio changes, and no Play/purchase/Save/Publish/backup/export. rbxl SHA-256 remains 41d18bcc27ea6da50b3f6231c3b38f5f4cec354564b62d8a24a796e904f42063.
+- Identity by hierarchy AND position: the only decoded Model named Trophy is Workspace.Trophy, referent 21180. ReplicatedStorage.Assets.Icons.Trophy is a Decal, not this equipment. Main geometry Workspace.Trophy.PartMain is (-28.6839,7.3077,111.6828); interaction part Workspace.Trophy.Buy is (-28.6847,10.9482,111.6849). Purchased original Stage01 Environment.Floor is centered (-12.2,0,106.3), confirming this equipment is beside that original Stage1 geometry. Current GeneratedMap Stage01 walkable floor is (287.8,0,106.3), with walls at Z=97,107,117,127: the Trophy is NOT relocated into that current corridor. No inference of a legacy Smash reward connection.
+- Display: Workspace.Trophy.BillboardGui.Text = x2 Wins; .Price = ONLY [Robux glyph U+E002]24!; both Visible=true and BillboardGui Enabled=true. A Part.SurfaceGui.TextLabel reads 1. Empty AttributesSerialize on model/parts/prompt; no Trophy-local Script or Remote. All equipment BaseParts have CanTouch=false and CanCollide=false. No equipment touch-collection handler found.
+- Interaction: Workspace.Trophy.Buy.ProximityPrompt, Enabled=true, ActionText=x2 Wins, ObjectText=Buy, HoldDuration=0.25, MaxActivationDistance approximately18.693, RequiresLineOfSight=true. CheapClient validates prompt.Parent against the configured Trophy.Buy, then calls buy(wins). It is a Robux Game Pass multiplier purchase entrance, NOT a free Win gift, direct Win currency grant, Stage-clear trophy pickup, or decoration-only implementation. Purchased Main currently being disabled makes it a visible but disconnected purchase entrance in this file.
+- Related Client: StarterPlayer.StarterPlayerScripts.Services.CheapClient and .PurchaseClient. Server: ServerScriptService.Services.CheapServer; .PurchaseServer only performs general Game Pass spending accounting. Config: ReplicatedStorage.Modules.Config (Cheap.Trophy and Cheap.Tiles.wins), .ProductIDs, .Pass, .Data. Bootstrap: respective disabled Main scripts call ReplicatedStorage.Modules.Loader.load(Services). No other explicit CheapClient/CheapServer bootstrap reference found. Source presence is not runtime evidence.
+- Exact offer: wins tier field wins multiplier2 GamePassId1965960556; next unowned tier wins3 multiplier3 GamePassId1975934298. Config selects the first unowned tier; after both owned no tier is sellable and client disables the Prompt. Ownership fields passes.wins and passes.wins3 exist in purchased Data defaults. No repeat reward/claim cooldown/daily receipt logic belongs to this equipment.
+- PurchaseClient.promptGamePass calls MarketplaceService:PromptGamePassPurchase(Player,passId). CheapServer checks UserOwnsGamePassAsync on join and writes passes[field]=true; successful PromptGamePassPurchaseFinished also writes the corresponding pass flag. There is NO fixed Win grant on Trophy interaction or purchase. Downstream purchased WinServer.reward multiplies ordinary Win rewards by Pass.payout(playerData,wins), which picks highest owned tier (otherwise1). This does not establish integration with the active legacy Smash reward system.
+- Remote: Trophy purchase path uses Roblox MarketplaceService methods/events directly, no Trophy-specific custom Remote. The downstream purchased WinServer reward path separately sends QuickNet.WonWins; that is not a Trophy pickup/request Remote.
+- Price24 is the saved sign text, NOT a verified live Roblox price. CheapServer.priceTrophy would query GetProductInfo for the FIRST wins tier and update the Billboard price if started; Client also fetches tier prices for purchased GUI. No external price query or actual purchase was performed.
+- Current file state: ServerScriptService.Main.Disabled=true; StarterPlayer.StarterPlayerScripts.Main.Disabled=true; StarterGui.ScreenGui.Enabled=false. Thus purchased CheapClient/CheapServer/WinServer purchase and multiplier processing are not bootstrapped by Main. Prompt.Enabled=true alone does not mean the handler is running. No WinsGift/time reward or legacy TrophyRewardService linkage inferred.
+- Unconfirmed: published Cloud version, runtime purchase screen, current Marketplace prices/availability, successful pass grant/persistence and effective live Win multiplier. Existing purchased Data defaults contain pass flags, but full save lifecycle was not re-audited. Static file investigation only.
+
+Short Source evidence:
+
+`ReplicatedStorage.Modules.Config`
+
+```lua
+	Trophy = {
+		tile = "wins",
+
+		model = "Trophy",
+		press = "Buy",
+		board = "BillboardGui",
+
+		adornee = "PartMain",
+	},
+```
+
+`ReplicatedStorage.Modules.ProductIDs`
+
+```lua
+		wins = 1965960556,
+		wins3 = 1975934298,
+```
+
+`StarterPlayer.StarterPlayerScripts.Services.CheapClient`
+
+```lua
+end
+
+local function buy(name: string)
+	local tier = Pass.selling(playerData, name)
+	if not tier then return end
+
+	local id = ProductIDs.Gamepasses.Cheap[tier.field]
+	if type(id) ~= "number" then
+		warn(`[CheapClient] no gamepass id for "{tier.field}"`)
+		return
+	end
+
+	PurchaseClient.promptGamePass(id)
+end
+
+```
+
+`StarterPlayer.StarterPlayerScripts.Services.CheapClient`
+
+```lua
+	ProximityPromptService.PromptTriggered:Connect(function(prompt: ProximityPrompt, player: Player)
+		if player ~= Player then return end
+		if not isTrophy(prompt) then return end
+
+		buy(Config.Cheap.Trophy.tile)
+	end)
+```
+
+`StarterPlayer.StarterPlayerScripts.Services.PurchaseClient`
+
+```lua
+function PurchaseClient.promptGamePass(passId: number)
+	Raised[passId] = os.clock() + WINDOW_SECONDS
+
+	MarketplaceService:PromptGamePassPurchase(Player, passId)
+end
+```
+
+`ServerScriptService.Services.CheapServer`
+
+```lua
+
+	passes[field](true)
+end
+
+local function unlock(player: Player)
+	Data.Service:waitForData(player)
+
+	local playerData = Data[player]
+	if not playerData then return end
+
+	for _, tier in ipairs(rungs()) do
+		if Pass.owned(playerData, tier.field) then continue end
+
+		local id = idFor(tier.field)
+		if not id then
+			warn(`[CheapServer] no gamepass id for "{tier.field}"`)
+			continue
+		end
+
+		local ok, owns = pcall(MarketplaceService.UserOwnsGamePassAsync, MarketplaceService, player.UserId, id)
+		if not ok then
+			warn(`[CheapServer] could not read pass {id} for {player.Name}: {owns}`)
+			continue
+		end
+		if not owns then continue end
+
+		grant(playerData, tier.field)
+	end
+```
+
+`ServerScriptService.Services.WinServer`
+
+```lua
+local function reward(player: Player, playerData: any, amount: number): number
+	local paid = amount * Boost.payout(playerData, WIN_BOOST) * Pass.payout(playerData, WIN_PASS) * Bonus.timePayout(player) * Weather.winsPayout()
+
+	playerData.wins(function(wins: number): number
+		return wins + paid
+	end)
+
+	return paid
+end
+
+```
