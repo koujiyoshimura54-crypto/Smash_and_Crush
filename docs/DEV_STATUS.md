@@ -734,3 +734,9 @@ Placement reproduction (existing purchased model only; for documentation, not a 
 -- Same retained geometry, with original pivot yaw -45 degrees rotated +90 degrees.
 mailbox:PivotTo(CFrame.new(304, 7.213201522827148, 30) * CFrame.Angles(0, math.rad(45), 0))
 ```
+
+## 2026-10-06 - Y02 Codex verification Studio lock released
+
+- Result: LOCK RELEASED. Read existing Feedback/lock records first, then checked fresh lock owner PID 10736 and current target-file processes. PID 10736 (created 13:53:36) was the Codex-launched placement-verification Studio; its latest undo record was Assistant 5 and mailbox placement matched the already-written target file. PID 29020 (created 13:46:55) was the other Codex launch; MCP confirmed no Place was open, so it held no unsaved Place work. Old recorded PIDs were not reused.
+- Tried CloseMainWindow for each identified Codex process; both returned false. Force-terminated only these confirmed Codex processes. A later target-file PID 32096 had already exited and was not terminated; no unknown-user-work Studio was closed. After verifying no target-file Studio process remained and lock owner 10736 no longer existed, deleted only C:\Users\kouji\MergeToForge_CurrentCloud.rbxl.lock.
+- rbxl unchanged: before/after SHA-256 41d18bcc27ea6da50b3f6231c3b38f5f4cec354564b62d8a24a796e904f42063. No reopening Studio, Save/Publish, Play, Source edit, backup or other rbxl. Only this record is committed; unrelated local file retained.
