@@ -583,3 +583,8 @@
 - Limited verification found the designated CurrentCloud disk file already has the isolated purchased Feedback bootstrap and guarded PromptTriggered handler. One same-named Edit Studio matches; another still contains the pre-restoration Sources and cannot start Feedback with Main disabled. No unnecessary Source/rbxl edit was made.
 - Exact current Sources, equipment positions, startup/filter/lock evidence, syntax/reDecode/UniqueId checks, repository mapping limitation and remaining Cloud/application checks are in [DEV_STATUS](DEV_STATUS.md#2026-10-06--y02--currentcloud-purchased-feedback-limited-verification). Only records are committed; no Place or unrelated local changes.
 - Static checks passed. Cloud reflection, which Studio the user operated, runtime Lobby reachability and real dialog operation are unconfirmed. No Play, submission, Save or Publish.
+
+## 2026-10-06 - Purchased Feedback World1 Lobby placement
+
+- Relocated one existing purchased mailbox to (304,7.2132015,30), beside current TrainingArea Spawn, with floor contact and orientation toward Spawn. No duplication or Source changes; existing isolated Feedback startup and Prompt filter now reach equipment physically located in the active Lobby.
+- CurrentCloud directly written and reDecoded; syntax checks passed and UniqueIds remain unique. Edit screenshot, floor raycast and collision bounds verified. Cloud reflection and published-app dialog behavior remain unverified. See [placement evidence](DEV_STATUS.md#2026-10-06---y02-feedback-placed-in-current-world1-lobby).
