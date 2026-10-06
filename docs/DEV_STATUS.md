@@ -709,3 +709,9 @@ end
 
 return FeedbackClient
 ```
+
+## 2026-10-06 - Y02 CurrentCloud active file lock
+
+- Limited check: C:\Users\kouji\MergeToForge_CurrentCloud.rbxl.lock (77 bytes) names PID 10708, RobloxStudioBeta, host DESKTOP-59IA67A; current hostname matches. PID 10708 exists as RobloxStudioBeta.exe with the exact target rbxl command-line argument. PID 29332 also exists with -ide and the same target. Both reported an empty MainWindowTitle; this does not prove absence of unsaved work.
+- Result: active owner, not a stale orphan lock. Lock was not deleted and neither process was terminated because unsaved work is unconfirmed. Target was not reopened, since unlock was not achieved; normal editable opening remains unverified. No rbxl/Source/Map change, Save/Publish, Play, backup or new file.
+- Remaining blocker: owning Studio PID 10708 must release its active lock through a safe exit after its unsaved-work state is established. This task did not repeat reopen attempts or inspect unrelated processes.
