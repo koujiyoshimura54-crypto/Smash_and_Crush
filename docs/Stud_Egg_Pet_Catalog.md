@@ -1,5 +1,7 @@
 # Stud Egg & Pet 実物一覧 — Phase 1
 
+[Pet画像一覧の閲覧ページ（20体×9ページ）](Stud_Pet_Photo_Catalog.html)。2026-10-08撮影試行: 個体と画像の対応を確実に確認できず、取得済み0件／未取得180件。画像付き一覧は未完成です。番号・モデル名・座標と各未取得理由を掲載し、曖昧な画像や生成画像は採用していません。Cameraは開始時へ復元しました。
+
 [Egg全192件の対応表](Stud_Egg_Catalog.csv) · [Pet全180件の対応表](Stud_Pet_Catalog.csv)
 
 2026-10-08、既存StudioのEditを読み取り。PlaceId: 126576845524886。対象: Workspace.Stud Egg & Pet。モデル名順でEgg-001〜192／Pet-001〜180を採番。番号は本一覧の識別子で、能力・レアリティ順ではありません。

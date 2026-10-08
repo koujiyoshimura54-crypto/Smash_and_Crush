@@ -620,3 +620,7 @@
 
 - Extended existing Pet catalog with180 static rig/connectivity rows and guide with12 Animation IDs/paths plus7 saved sequence records. Recorded four missing Animators and one missing Motor endpoint without editing models. Existing following moves the whole model; Rig playback and permissions remain unverified. [Guide](Stud_Egg_Pet_Catalog.md).
 - Read-only Studio investigation; documentation only.
+
+## 2026-10-08 - Pet photo capture attempted (incomplete)
+
+- Trial framing could not establish correct individual image/model correspondence; no ambiguous images adopted. Added9-page180-entry pending photo catalog and per-row capture failure reason while preserving prior IDs/Rig/design fields. Camera restored; game untouched. [Pending catalog](Stud_Pet_Photo_Catalog.html).
