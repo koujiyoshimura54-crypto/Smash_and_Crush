@@ -595,6 +595,12 @@
 - Added necessary current Source mirrors under src; no historical audit overwrite. Added CurrentCloud's established World1 Place ID to the legacy pass registry. Verified syntax, fresh reDecode, unique IDs, Edit placement/ground contact/clearance and pure tier functions. Cloud/runtime purchase and reward behavior unverified. [Detailed evidence](DEV_STATUS.md#2026-10-06---y02-purchased-trophy-connected-to-legacy-win-pass-system).
 - Codex verification Studio20920 terminated; preexisting user Studio14856 still owns the lock and was preserved.
 
+# 2026-10-07 Restore missing Studio debug command entry points in CurrentCloud
+
+- Restored the missing StudioDebugController, StudioDebugService and StudioDebugClient plus their two Debug folders in the designated CurrentCloud file. Reused existing Sources and added the restored Client to permanent src; existing Config, PlayerDataService, validation and save/reset behavior are unchanged.
+- ReDecode verified exactly five added instances, all original properties/Sources retained and matching src; five related Sources compiled. Isolated registration confirmed six Studio aliases, zero public-game registrations and the attribute-based client response connection, without executing any command.
+- Missing registration is distinct from PlaceId=0 / DataNotLoaded. No suitable already-corrected Cloud was available, so actual /balance and startup remain unverified. No local Play, data-changing commands, Save/Publish, backup, other rbxl or new Studio. Existing user Studio/lock retained; the open stale model needs reloading from the repaired disk file. Details: [DEV_STATUS](DEV_STATUS.md#2026-10-07-currentcloud-studio-debug-command-restoration).
+
 ## 2026-10-08 - Restore Y02 Studio debug startup and preserve data errors
 
 - Actual Y02 CurrentCloud still lacked Debug Controller/Service/folders and Client despite the preceding GitHub record. Restored the current Sources and latest attribute-based StudioDebugClient. Controller now registers six aliases independently of DataStore-dependent Service loading, reports protected execution errors and prevents duplicate registration. Existing guards/data/argument/save behavior unchanged; no added debug Remote.
