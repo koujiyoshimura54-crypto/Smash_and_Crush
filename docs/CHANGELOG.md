@@ -615,3 +615,8 @@
 
 - Added372-row Egg/Pet catalogs with live positions, duplicate-name distinction and blank design fields. Pet merge scope recorded, no balance decision or implementation. Individual images unavailable without an established non-mutating batch capture; image catalog explicitly incomplete. [Catalog](Stud_Egg_Pet_Catalog.md).
 - Documentation only; CurrentCloud and existing user Studio unchanged.
+
+## 2026-10-08 - Stud Egg and Pet Rig/Animation inspection
+
+- Extended existing Pet catalog with180 static rig/connectivity rows and guide with12 Animation IDs/paths plus7 saved sequence records. Recorded four missing Animators and one missing Motor endpoint without editing models. Existing following moves the whole model; Rig playback and permissions remain unverified. [Guide](Stud_Egg_Pet_Catalog.md).
+- Read-only Studio investigation; documentation only.
