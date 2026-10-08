@@ -624,3 +624,8 @@
 ## 2026-10-08 - Pet photo capture attempted (incomplete)
 
 - Trial framing could not establish correct individual image/model correspondence; no ambiguous images adopted. Added9-page180-entry pending photo catalog and per-row capture failure reason while preserving prior IDs/Rig/design fields. Camera restored; game untouched. [Pending catalog](Stud_Pet_Photo_Catalog.html).
+
+## 2026-10-08 - Stud Pet real photo catalog
+
+- Added175 real Edit photographs linked to existing Pet model names/numbers, in20-entry x9-page HTML. Five models explicitly unavailable with concrete rendering/tiny-geometry reasons; no blank/substitute bitmap accepted.
+- Connected CSV image references without changing Rig/design information; updated viewing guide and capture/restore evidence in DEV_STATUS. Camera, Selection and22486 temporary visibility properties restored (failed0). No game/rbxl edits, Play or Save/Publish; existing user Studio retained.
