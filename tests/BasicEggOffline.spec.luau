@@ -1,0 +1,145 @@
+-- Injected production functions by BasicEggOffline.py; no live Roblox services.
+local assertions=0
+local function equal(a,b,label)
+ assertions+=1
+ assert(a==b,(label or "value")..": expected "..tostring(b)..", got "..tostring(a))
+end
+local function copy(value)
+ if type(value)~="table" then return value end
+ local out={};for k,v in pairs(value) do out[k]=copy(v) end;return out
+end
+local function guid(n) return string.format("00000000-0000-0000-0000-%012d",n) end
+local odds={Dog=40,["Grey Cat"]=25,["Pink Bunny"]=15,Sheep=10,Bear=7,Camel=3}
+local modules={Config={Pets={},Egg={reach=15}},Egg={pets=function() return odds end}}
+local RS={Modules={Config="Config",Egg="Egg",Pet="Pet"}}
+local Players={}
+local game={ReplicatedStorage=RS}
+function game:GetService(name)
+ if name=="Players" then return Players end
+ if name=="ReplicatedStorage" then return RS end
+ if name=="HttpService" then return {GenerateGUID=function() error("Unexpected roll") end} end
+ error(name)
+end
+local function require(name) return assert(modules[name],name) end
+-- INSERT PET
+modules.Pet=Pet
+local attrs={}
+local player={Parent=Players,SetAttribute=function(_,k,v) attrs[k]=v end,GetAttribute=function(_,k) return attrs[k] end}
+local sessions={}
+local PlayerDataService={}
+local function finite(v) return type(v)=="number" and v==v and math.abs(v)<math.huge end
+local function resetToken(d) return d.ResetToken end
+local function normalizeShop(d) return copy(d) end
+local function mergeShop(a,b) return {WinGrantedTotal=math.max(a.WinGrantedTotal,b.WinGrantedTotal)} end
+local function metadata() return {},{} end
+local retries=0
+local function scheduleItemMutationRetry() retries+=1 end
+local durable,mode,hook,writes
+local function ownedUpdate(_,s,transform)
+ if s.OwnershipLost then return nil end
+ if mode=="before" then error("offline before commit") end
+ if hook then local f=hook;hook=nil;f() end
+ local nextValue=transform(copy(durable),{})
+ -- Emulate UpdateAsync evaluating a transform again before committing.
+ local repeated=transform(copy(durable),{})
+ if nextValue then equal(nextValue.Pets.Revision,repeated.Pets.Revision,"callback retry revision") end
+ if nextValue then durable=copy(nextValue);writes+=1 end
+ if mode=="after" then error("lost reply after commit") end
+ return nextValue
+end
+-- INSERT TRANSACTIONS
+function PlayerDataService.ResolveItemMutation(p)
+ local s=sessions[p]
+ if not s or not s.PendingItemMutation then return false,"NoPendingMutation" end
+ return resolvePetMutation(p,s,s.PendingItemMutation)
+end
+function PlayerDataService.Get(p) return sessions[p] end
+function PlayerDataService.IsLoaded(p) return sessions[p] and sessions[p].Loaded==true end
+local function reset(win)
+ attrs={};mode=nil;hook=nil;writes=0;retries=0
+ durable={Pets=assert(Pet.NormalizeState(nil)),Win=win or 1000,ShopRewards={WinGrantedTotal=0},ResetToken="test"}
+ sessions[player]={Loaded=true,Data=copy(durable)}
+ return sessions[player]
+end
+local function results(n,offset)
+ local out={}
+ for i=1,n do out[i]={id=guid((offset or 0)+i),pet="Dog",percent=40,duplicate=false,bonus=0} end
+ return out
+end
+local function hatch(id,rev,n,offset)
+ return PlayerDataService.MutatePets(player,guid(id),rev,"Hatch",{Count=n,PriceWin=100*n,Results=results(n,offset)})
+end
+local s=reset()
+equal(hatch(101,0,3),true,"3 hatch")
+equal(s.Data.Win,700);equal(durable.Win,700);equal(s.Data.Pets.Revision,1)
+equal(s.Data.Pets.Owned[guid(1)],"Dog");equal(s.Data.Pets.Owned[guid(2)],"Dog")
+equal(hatch(101,0,3),true,"receipt replay");equal(s.Data.Win,700);equal(durable.Win,700)
+equal(select(2,hatch(102,0,1,10)),"PetStateChanged","stale replay")
+equal(PlayerDataService.MutatePets(player,guid(103),1,"Equip",guid(1)),true)
+equal(PlayerDataService.MutatePets(player,guid(104),2,"Equip",guid(2)),true)
+equal(attrs.Pet,"Dog");equal(attrs.Pet2,"Dog","same species two copies")
+equal(PlayerDataService.MutatePets(player,guid(105),3,"Equip",guid(3)),true)
+equal(s.Data.Pets.Equipped[1],guid(2));equal(s.Data.Pets.Equipped[2],guid(3))
+equal(PlayerDataService.MutatePets(player,guid(106),4,"Equip",guid(2)),true)
+equal(attrs.Pet,"");equal(attrs.Pet2,"Dog")
+local loaded=assert(Pet.NormalizeState(copy(durable.Pets)))
+equal(loaded.Equipped[2],guid(3),"reload individual equipment");equal(loaded.Owned[guid(1)],"Dog")
+equal(s.Data.Win,700,"equip costs zero")
+equal(select(2,PlayerDataService.MutatePets(player,guid(107),5,"Equip",guid(999))),"PetNotOwned")
+equal(Pet.payout(nil),1,"no ability")
+
+s=reset();mode="after"
+equal(select(2,hatch(201,0,8)),"InventorySavePending","ambiguous commit")
+equal(durable.Win,200);equal(s.Data.Win,1000);equal(attrs.PetSavePending,true)
+equal(select(2,hatch(202,0,1,20)),"DataSaving","concurrent request")
+equal(PlayerDataService.SetWin(player,900),false,"reserve pending balance")
+equal(PlayerDataService.SetWin(player,1010),true,"reward during pending")
+equal(retries,1);mode=nil
+equal(hatch(201,0,8),true,"same receipt confirmation")
+equal(durable.Win,200);equal(s.Data.Win,210,"retain live reward")
+equal(s.Data.Pets.Revision,1);equal(#s.Data.Pets.LastResults,8);equal(attrs.PetSavePending,false)
+
+s=reset();mode="before"
+equal(select(2,hatch(301,0,1)),"InventorySavePending");equal(durable.Win,1000)
+mode=nil;equal(hatch(301,0,1),true);equal(durable.Win,900)
+s=reset();hook=function()
+ equal(select(2,hatch(402,0,1,20)),"DataSaving","concurrent during yielding write")
+ equal(select(2,hatch(401,0,1)),"InventorySavePending","same request while resolving")
+ durable.ShopRewards.WinGrantedTotal=50;durable.Win+=50
+end
+equal(hatch(401,0,1),true);equal(durable.Win,950);equal(s.Data.Win,950)
+s=reset(99);equal(select(2,hatch(501,0,1)),"NotEnoughWin");equal(writes,0)
+s=reset();s.Loaded=false;equal(select(2,hatch(502,0,1)),"DataNotLoaded");equal(writes,0)
+s=reset();s.OwnershipLost=true;equal(select(2,hatch(503,0,1)),"SessionOwnershipLost");equal(writes,0)
+s=reset();s.StudioStartOverride={};equal(select(2,hatch(504,0,1)),"StudioOverrideActive");equal(writes,0)
+s=reset();durable.ResetToken="new";equal(select(2,hatch(505,0,1)),"SaveSupersededByReset");equal(writes,0)
+s=reset();durable.Pets={Version=99};equal(select(2,hatch(506,0,1)),"InvalidPetsVersion");equal(writes,0)
+s=reset();equal(select(2,hatch(507,0,2)),"InvalidPetHatch");equal(writes,0)
+s=reset();equal(select(2,PlayerDataService.MutatePets(player,guid(508),0,"Hatch",{Count=1,PriceWin=100,Results={{id=guid(1),pet="Dog",percent=3}}})),"InvalidPetResult")
+equal(writes,0)
+
+-- Exact server request path with deliberately limited fixture geometry.
+local script={Parent={PlayerDataService="Data",PetServer="Pets"}}
+modules.Data=PlayerDataService
+modules.Pets={state=PlayerDataService.GetPetState,equip=function(p,id,r,rev) return PlayerDataService.MutatePets(p,r,rev,"Equip",id) end}
+modules.Egg.count=function(button) return ({Open1=1,Open3=3,Open8=8})[button] end
+modules.Egg.FolderName="Eggs"
+local distance=99
+local position=setmetatable({}, {__sub=function() return {Magnitude=distance} end})
+local anchor={Position=position,IsA=function(_,c) return c=="BasePart" end}
+local workspace={FindFirstChild=function() return {FindFirstChild=function() return anchor end} end}
+player.Character={FindFirstChild=function() return {Position=position} end,FindFirstChildOfClass=function() return {Health=100} end}
+-- INSERT EGG SERVER
+local function request(action,a,b)
+ -- A new fixture player identity avoids the production per-player throttle.
+ local fresh=table.clone(player);sessions[fresh]=sessions[player]
+ return EggServer.request(fresh,action,guid(900),0,a,b)
+end
+s=reset();equal(request("OpenEgg","Rare","Open1").reason,"EggUnavailable")
+equal(request("OpenEgg","Basic","Open2").reason,"InvalidOpenCount")
+equal(request("OpenEgg","Basic","Open1").reason,"TooFarFromEgg")
+distance=0;modules.Egg.price=function() return 100 end
+s=reset(99);equal(request("OpenEgg","Basic","Open1").reason,"NotEnoughWin")
+s=reset();s.Loaded=false;equal(request("OpenEgg","Basic","Open1").reason,"DataNotLoaded")
+equal(writes,0,"rejected requests never write")
+print("BASIC_EGG_OFFLINE_PASS",assertions)

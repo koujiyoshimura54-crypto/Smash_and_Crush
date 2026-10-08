@@ -1,3 +1,10 @@
+-- Only Basic Egg/Pet presentation; never start the purchased Main loader.
+task.spawn(function()
+ local services=game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("Services")
+ local ok,err=pcall(function() require(services:WaitForChild("PetClient")).bootstrap() end)
+ if not ok then warn("[BasicEgg] Client startup failed: "..tostring(err)) end
+end)
+
 -- Start only the purchased Feedback module from this existing active client.
 task.spawn(function()
  local playerScripts=game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts")

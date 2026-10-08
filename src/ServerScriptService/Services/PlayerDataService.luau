@@ -11,6 +11,7 @@ local ShopConfig=require(game.ReplicatedStorage.Config:WaitForChild("ShopProduct
 local CapacityConfig=require(game.ReplicatedStorage.Config:WaitForChild("InventoryCapacityConfig"))
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
 local PlayerDataService={}
+local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local Ownership=require(script.Parent.PlayerDataOwnership)
 local StoreConfig=require(game.ServerScriptService.Config:WaitForChild("DataStoreConfig"))
 local store=DSS:GetDataStore(StoreConfig.GetName("PlayerData_v1"))
@@ -176,7 +177,7 @@ local function normalizeUnlockedWorld(value)
  return value
 end
 local function defaults()
- return {InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -195,6 +196,9 @@ local function normalize(raw)
   local capacity,capacityError=CapacityConfig.Normalize(raw.InventoryCapacity)
   if not capacity then return nil,capacityError end
   d.InventoryCapacity=capacity
+  local pets,petError=Pet.NormalizeState(raw.Pets)
+  if not pets then return nil,petError end
+  d.Pets=pets
   local world,worldError=normalizeUnlockedWorld(raw.HighestUnlockedWorld)
   if not world then return nil,worldError end
   d.HighestUnlockedWorld=world
@@ -273,6 +277,8 @@ local function normalize(raw)
  return d
 end
 local function applyAttributes(player,d)
+ Pet.Publish(player,d.Pets)
+ player:SetAttribute("PetSavePending",false)
  player:SetAttribute("AutoTapEnabled",d.AutoTapEnabled~=false)
  player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
  player:SetAttribute("InventoryCapacity",d.InventoryCapacity)
@@ -673,10 +679,10 @@ function PlayerDataService.SetWin(player,value)
  if not s or not s.Loaded then return false end
  local n=tonumber(value)
  if not finite(n) then return false end
- -- A capacity write may have committed even if its response was lost. Do not
+ -- A capacity/Pet write may have committed even if its response was lost. Do not
  -- spend the same balance elsewhere while its receipt is unresolved; rewards
  -- can still increase Win and are retained when the purchase is acknowledged.
- if s.PendingItemMutation and s.PendingItemMutation.CapacityUpgrade and n<s.Data.Win then return false end
+ if s.PendingItemMutation and (s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.PetMutation) and n<s.Data.Win then return false end
  s.Data.Win=math.max(0,math.floor(n))
  player:SetAttribute("Win",s.Data.Win)
  s.Dirty=true
@@ -736,6 +742,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   AutoTapEnabled=d.AutoTapEnabled~=false,
   SelectedSizeTier=d.SelectedSizeTier,
   InventoryCapacity=d.InventoryCapacity,
+  Pets=assert(Pet.NormalizeState(d.Pets)),
   HighestUnlockedWorld=d.HighestUnlockedWorld,
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
   CommunityRewards=assert(normalizeCommunity(d.CommunityRewards)),
@@ -783,6 +790,8 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.SelectedSizeTier=payload.SelectedSizeTier
    -- Purchases own this field; ordinary saves preserve the durable value.
    merged.InventoryCapacity=assert(CapacityConfig.Normalize(old.InventoryCapacity))
+   -- Pet transactions own their durable inventory and equipment.
+   merged.Pets=assert(Pet.NormalizeState(old.Pets))
    merged.Strength=payload.Strength
    merged.Level=payload.Level
    merged.LevelProgress=payload.LevelProgress
@@ -1022,11 +1031,101 @@ end
 -- All regular-item quantity mutations are durable before reporting success.
 -- A failed/ambiguous write keeps its operation ID and local Win reservation;
 -- Save retries the same operation rather than refunding a possibly committed purchase.
+
+-- Shares the existing pending-mutation gate, owner fencing and autosave retry.
+local function resolvePetMutation(player,s,op)
+ if op.Resolving then return false,"InventorySavePending" end
+ op.Resolving=true;s.Saving=true
+ local rejection
+ local ok,saved=pcall(function()
+  return ownedUpdate(player,s,function(old,info)
+   rejection=nil
+   if resetToken(old)~=op.ResetToken then rejection="SaveSupersededByReset";return nil end
+   local state,reason=Pet.ApplyOperation(old.Pets,op)
+   if not state then rejection=reason;return nil end
+   local users,meta=metadata(info)
+   if reason=="AlreadyApplied" then return old,users,meta end
+   local merged=table.clone(old)
+   merged.Pets=state
+   -- Includes any paid credit committed after this operation's live snapshot.
+   local shop=assert(normalizeShop(old.ShopRewards))
+   merged.Win=op.WinBefore-op.PriceWin+math.max(0,shop.WinGrantedTotal-op.ShopWinBefore)
+   return merged,users,meta
+  end)
+ end)
+ op.Resolving=false;s.Saving=false
+ if sessions[player]~=s or s.PendingItemMutation~=op then return false,"SaveSuperseded" end
+ if not ok or not saved or not saved.Pets or saved.Pets.LastRequestId~=op.Id then
+  if rejection or s.OwnershipLost then
+   s.PendingItemMutation=nil
+   player:SetAttribute("PetSavePending",false)
+   return false,rejection or "SessionOwnershipLost"
+  end
+  scheduleItemMutationRetry(player,s,op)
+  return false,"InventorySavePending"
+ end
+ s.PendingItemMutation=nil
+ s.Data.Pets=assert(Pet.NormalizeState(saved.Pets))
+ local credited=math.max(0,assert(normalizeShop(saved.ShopRewards)).WinGrantedTotal-s.Data.ShopRewards.WinGrantedTotal)
+ s.Data.ShopRewards=mergeShop(s.Data.ShopRewards,saved.ShopRewards)
+ PlayerDataService.SetWin(player,s.Data.Win-op.PriceWin+credited)
+ s.Dirty=true
+ Pet.Publish(player,s.Data.Pets)
+ player:SetAttribute("PetSavePending",false)
+ return true,"PetSaved"
+end
+
+function PlayerDataService.GetPetState(player)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return nil,"DataNotLoaded" end
+ if s.OwnershipLost then return nil,"SessionOwnershipLost" end
+ return Pet.NormalizeState(s.Data.Pets)
+end
+
+function PlayerDataService.MutatePets(player,requestId,revision,action,payload)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
+ if s.OwnershipLost then return false,"SessionOwnershipLost" end
+ if s.StudioStartOverride then return false,"StudioOverrideActive" end
+ if type(requestId)~="string" or #requestId~=36 or not requestId:match("^[%x%-]+$")
+  or not finite(revision) or revision<0 or revision%1~=0 then return false,"InvalidPetRequest" end
+ local pending=s.PendingItemMutation
+ if pending then
+  if pending.PetMutation and pending.Id==requestId then return PlayerDataService.ResolveItemMutation(player) end
+  return false,"DataSaving"
+ end
+ if s.Data.Pets.LastRequestId==requestId then return true,"AlreadyApplied" end
+ if s.Saving then return false,"DataSaving" end
+ if s.Data.Pets.Revision~=revision then return false,"PetStateChanged" end
+ local op={PetMutation=true,Id=requestId,Revision=revision,Action=action,
+  ResetToken=s.Data.ResetToken,PriceWin=0,WinBefore=s.Data.Win,
+  ShopWinBefore=s.Data.ShopRewards.WinGrantedTotal}
+ if action=="Hatch" then
+  if type(payload)~="table" or type(payload.Results)~="table"
+   or (payload.Count~=1 and payload.Count~=3 and payload.Count~=8)
+   or #payload.Results~=payload.Count or payload.PriceWin~=100*payload.Count then return false,"InvalidPetHatch" end
+  op.PriceWin=payload.PriceWin;op.Results=payload.Results
+  local allowed=require(game.ReplicatedStorage.Modules.Egg).pets("Basic")
+  for _,result in ipairs(op.Results) do
+   if type(result)~="table" or type(result.id)~="string" or #result.id~=36
+    or type(result.pet)~="string" or allowed[result.pet]==nil or allowed[result.pet]~=result.percent then return false,"InvalidPetResult" end
+  end
+ elseif action=="Equip" then
+  if type(payload)~="string" or not s.Data.Pets.Owned[payload] then return false,"PetNotOwned" end
+  op.PetId=payload
+ else return false,"InvalidPetAction" end
+ if not finite(op.WinBefore) or op.WinBefore<op.PriceWin then return false,"NotEnoughWin" end
+ s.PendingItemMutation=op
+ player:SetAttribute("PetSavePending",true)
+ return PlayerDataService.ResolveItemMutation(player)
+end
+
 function PlayerDataService.ResolveItemMutation(player)
  local s=sessions[player]
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
  if op.CapacityUpgrade then return resolveCapacityPurchase(player,s,op) end
+ if op.PetMutation then return resolvePetMutation(player,s,op) end
  if op.RunReturn then
   return require(script.Parent.RunReturnPersistence).Resolve(player,s,op,{
    Update=function(transform) return ownedUpdate(player,s,transform) end,

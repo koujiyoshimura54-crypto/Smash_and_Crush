@@ -629,3 +629,9 @@
 
 - Added175 real Edit photographs linked to existing Pet model names/numbers, in20-entry x9-page HTML. Five models explicitly unavailable with concrete rendering/tiny-geometry reasons; no blank/substitute bitmap accepted.
 - Connected CSV image references without changing Rig/design information; updated viewing guide and capture/restore evidence in DEV_STATUS. Camera, Selection and22486 temporary visibility properties restored (failed0). No game/rbxl edits, Play or Save/Publish; existing user Studio retained.
+
+## 2026-10-08 - Restore purchased Basic Egg and original Pet inventory
+
+- Moved actual Basic and its seven-part purchased stand to World1 Lobby (314,11.736531,56), preserving appearance. Isolated original Egg/OpenEgg/Hatch/Inventory/two-slot following startup; both purchased Main scripts remain disabled.
+- Kept100 Win/roll, original six Pets/40-25-15-10-7-3 odds and1/3/8 openings. Added per-copy legacy PlayerData persistence and server-owned debit/grant/equip with request receipts, revision and pending-write guards. No purchased Data/product handlers, duplicate Speed compensation, ability multipliers, Stud substitutions or merge.
+- Synced10 Sources; reDecode/compilation/reference/UniqueId checks passed,79 offline Luau assertions passed. CurrentCloud directly written; no Play, live data access, Save/Publish or verification Studio. Cloud/UI/real save-rejoin remain unverified. Full paths, geometry, schema, hashes and limits recorded in DEV_STATUS. Only this task committed; unrelated work preserved.
