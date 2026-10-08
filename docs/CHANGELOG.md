@@ -610,3 +610,8 @@
 
 - Confirmed inserted models are saved in current disk; live Edit had a small unresolved hierarchy difference before disconnecting. Audited Egg/Pet name/path, UI/render, data, duplicate and two-slot contracts; recorded minimal legacy-data integration proposal without choosing balance or implementing. [Evidence](DEV_STATUS.md#2026-10-08---stud-egg-and-pet-compatibility-investigation-read-only).
 - Documentation only; no game edit/Play/Save/Publish/purchase or new Studio.
+
+## 2026-10-08 - Stud Egg and Pet Phase 1 catalog
+
+- Added372-row Egg/Pet catalogs with live positions, duplicate-name distinction and blank design fields. Pet merge scope recorded, no balance decision or implementation. Individual images unavailable without an established non-mutating batch capture; image catalog explicitly incomplete. [Catalog](Stud_Egg_Pet_Catalog.md).
+- Documentation only; CurrentCloud and existing user Studio unchanged.
