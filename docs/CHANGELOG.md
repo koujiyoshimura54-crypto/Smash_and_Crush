@@ -605,3 +605,8 @@
 
 - Actual Y02 CurrentCloud still lacked Debug Controller/Service/folders and Client despite the preceding GitHub record. Restored the current Sources and latest attribute-based StudioDebugClient. Controller now registers six aliases independently of DataStore-dependent Service loading, reports protected execution errors and prevents duplicate registration. Existing guards/data/argument/save behavior unchanged; no added debug Remote.
 - ReDecode/syntax/UniqueId checks and read-only Edit instance verification passed. Final attribute client is statically checked. Runtime startup and /balance unverified; no Play or data command. Confirmation Studio closed; target holders0 and .lock absent. [Evidence](DEV_STATUS.md#2026-10-08---y02-studio-debug-command-registration-restored).
+
+## 2026-10-08 - Stud Egg and Pet read-only compatibility investigation
+
+- Confirmed inserted models are saved in current disk; live Edit had a small unresolved hierarchy difference before disconnecting. Audited Egg/Pet name/path, UI/render, data, duplicate and two-slot contracts; recorded minimal legacy-data integration proposal without choosing balance or implementing. [Evidence](DEV_STATUS.md#2026-10-08---stud-egg-and-pet-compatibility-investigation-read-only).
+- Documentation only; no game edit/Play/Save/Publish/purchase or new Studio.
