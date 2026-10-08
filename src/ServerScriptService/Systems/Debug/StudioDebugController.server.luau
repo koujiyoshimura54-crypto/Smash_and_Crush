@@ -2,7 +2,15 @@ local RunService=game:GetService("RunService")
 if not RunService:IsStudio() then return end
 local Players=game:GetService("Players")
 local Chat=game:GetService("TextChatService")
-local Debug=require(game.ServerScriptService.Systems.Debug.StudioDebugService)
+-- Register independently of PlayerData/DataStore initialization.
+if Chat:GetAttribute("StudioDebugCommandsRegistered")==true then return end
+local function execute(player,message)
+ local loaded,Debug=pcall(require,script.Parent:WaitForChild("StudioDebugService"))
+ if not loaded then
+  return false,"DebugUnavailable (PlaceId="..tostring(game.PlaceId).."): "..tostring(Debug)
+ end
+ return Debug.Execute(player,message)
+end
 local count=0
 for _,alias in ipairs({"/resetdata","/setstrength","/setstage","/balance","/addwin","/setwin"}) do
  local command=Instance.new("TextChatCommand")
@@ -12,7 +20,8 @@ for _,alias in ipairs({"/resetdata","/setstrength","/setstage","/balance","/addw
   if not RunService:IsStudio() or not source then return end
   local player=Players:GetPlayerByUserId(source.UserId)
   if not player then return end
-  local ok,result=Debug.Execute(player,message)
+  local executed,ok,result=pcall(execute,player,message)
+  if not executed then result=ok;ok=false end
   count+=1
   local text="[StudioDebug] "..(ok and "OK: " or "ERROR: ")..tostring(result)
   player:SetAttribute("StudioDebugMessage",text)
@@ -21,3 +30,4 @@ for _,alias in ipairs({"/resetdata","/setstrength","/setstage","/balance","/addw
  end)
  command.Parent=Chat
 end
+Chat:SetAttribute("StudioDebugCommandsRegistered",true)
