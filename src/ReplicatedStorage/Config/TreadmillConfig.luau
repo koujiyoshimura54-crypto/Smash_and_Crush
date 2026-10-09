@@ -75,8 +75,7 @@ function Config.GetGainDisplayText(modelName,localeId)
  local training=require(script.Parent:WaitForChild("TrainingConfig"))
  local amount=training.BaseGain*entry.Multiplier
  local japanese=string.sub(string.lower(localeId or ""),1,2)=="ja"
- return string.format(japanese and "+%g \u{7B4B}\u{529B} / %g\u{79D2}" or "+%g Strength / %gs",
-  amount,training.TrainingInterval)
+ return string.format(japanese and "+%g \u{7B4B}\u{529B}" or "+%g Strength",amount)
 end
 
 return Config

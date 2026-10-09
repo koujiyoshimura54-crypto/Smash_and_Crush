@@ -677,3 +677,9 @@
 - Limited equipment/following to one individual Pet copy. Another copy replaces it; clicking the equipped copy unequips. Legacy two-slot records retain the first valid owned copy without deleting any inventory, using existing load/save/receipt paths.
 - Purchased Pet UI shows Equipped (0/1) or (1/1); retired Pet2 is cleared and its follower removed. Original purchased UI/follow animation, Egg/Hatch/payment/odds and Basic glow preserved.
 - 131 in-memory offline assertions and all3 Source compilations pass. Direct CurrentCloud write/reDecode, reference/SharedString checks and UniqueId duplicates0 passed; only3 Sources and2 label properties changed. No Studio/Play/DataStore/Save/Publish test; Cloud runtime and rendered UI remain unverified. No target lock.
+
+
+## 2026-10-09 - Remove treadmill duration suffix
+
+- Seven purchased captions: +N Strength / 0.5s -> +N Strength (N=1/2/3/20). Removed Japanese seconds suffix from the shared display helper too; numbers, layout, artwork and gameplay unchanged.
+- CurrentCloud reDecode and Source compile passed; exact diff limited to seven Text values and one Source. No Studio/Play/Save/Publish; existing user session/lock untouched, Cloud display unverified. Preserved Pet equipment and Basic glow changes.
