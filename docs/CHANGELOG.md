@@ -655,3 +655,8 @@
 
 - CurrentCloud retains the repaired file hash and passes serialization checks. Available V2 HatchClient/EggClient/Config match CurrentCloud exactly and already include integration changes; an independent purchased-original Hatch baseline was not identified.
 - Recorded exact asset/Source paths and current effect behavior in DEV_STATUS. Requested original Source/asset location; no guessed visual changes or game-file writes. Runtime presentation remains unverified.
+
+## 2026-10-09 - Locate purchased permanent Egg glow (no implementation yet)
+
+- Located actual yellow Shine2/Sparkles under Workspace.Eggs.Rare.Particles; distinguished permanent Egg glow from Hatch and from other Egg palettes. Checked the isolated Basic startup/float path and separate VFX candidates.
+- Basic-original mapping remains unproven; asked whether to use that purchased Rare assembly unchanged. Latest user-saved CurrentCloud preserved, no effects/Source changed. Evidence and remaining verification recorded in DEV_STATUS.
