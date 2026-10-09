@@ -2,7 +2,7 @@
   "date": "2026-10-09",
   "target": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
   "beforeSha256": "54db9e433479781b3a1e39ef116b01e016694dc84e1d2730c905238618a0ec77",
-  "afterSha256": "dd9c2c562ac7cc167f640b9b21db58aa2e2a5a90643a77a933405d57b5283d16",
+  "afterSha256": "0df0b835ae4c8479194646d072921a874ba19fb19939c95abf19e41514d05698",
   "roots": [
     "StarterGui.StrengthGui.InventoryPanel",
     "StarterGui.StageSkipGui"
@@ -805,6 +805,113 @@
     "engineEditDescendants": {
       "Inventory": 502,
       "Skip": 450
+    },
+    "instanceReferentsDenseAndInRange": true,
+    "instPrntReferenceConsistency": true,
+    "sharedStringIndexesInRange": true,
+    "actualTargetFileStudioLoad": "PASS; Edit only, no Play or Save/Publish"
+  },
+  "serializationRepair": {
+    "beforeSha256": "dd9c2c562ac7cc167f640b9b21db58aa2e2a5a90643a77a933405d57b5283d16",
+    "afterSha256": "0df0b835ae4c8479194646d072921a874ba19fb19939c95abf19e41514d05698",
+    "instances": 167409,
+    "referentRemap": [
+      {
+        "old": 167409,
+        "new": 167312,
+        "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.UIStrokeInner"
+      },
+      {
+        "old": 167410,
+        "new": 167340,
+        "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.UIStrokeInner.UIGradient"
+      }
+    ],
+    "changedChunks": [
+      {
+        "chunk": 141,
+        "type": "INST",
+        "class": "UIGradient"
+      },
+      {
+        "chunk": 147,
+        "type": "INST",
+        "class": "UIStroke"
+      },
+      {
+        "chunk": 3233,
+        "type": "PRNT",
+        "class": null
+      }
+    ],
+    "referentRange": [
+      0,
+      167408
+    ],
+    "referencePropertyValuesChecked": 75674,
+    "propertyChunksUnchanged": false,
+    "sourcesUnchanged": true,
+    "uniqueIdDuplicates": 0,
+    "reDecode": true,
+    "sharedStringRepair": {
+      "intermediateSha256": "ffbc02ffb84ad8c2e7fe5f52eb19d74d70e8ce19f90a9ce51140373b712d645b",
+      "dictionaryEntries": 351,
+      "changedChunks": [
+        {
+          "chunk": 962,
+          "class": "Frame",
+          "property": "Tags",
+          "preservedOriginalRows": 1599,
+          "donorCloneRows": 2
+        },
+        {
+          "chunk": 1191,
+          "class": "ImageLabel",
+          "property": "Tags",
+          "preservedOriginalRows": 1091,
+          "donorCloneRows": 23
+        },
+        {
+          "chunk": 2624,
+          "class": "TextButton",
+          "property": "Tags",
+          "preservedOriginalRows": 267,
+          "donorCloneRows": 2
+        },
+        {
+          "chunk": 2702,
+          "class": "TextLabel",
+          "property": "Tags",
+          "preservedOriginalRows": 2136,
+          "donorCloneRows": 6
+        }
+      ],
+      "allIndexesInRange": true,
+      "originalRowsRecoveredFromUnchangedOriginalBytePrefix": true,
+      "clonesMatchActualDonors": true
+    },
+    "propertyChanges": "Only four Tags SharedString index arrays reinterleaved; original values preserved and clones use their actual donor Tags. All other property chunks, Sources, UI colors/artwork, IDs and gameplay unchanged.",
+    "studioLoad": {
+      "result": "PASS",
+      "file": "C:/Users/kouji/MergeToForge_CurrentCloud.rbxl",
+      "studioId": "6d7e80e6-8d9c-4f9f-b1ec-03f2346fca02",
+      "verificationPid": 9292,
+      "mode": "Edit",
+      "placeId": 0,
+      "inventoryDescendants": 502,
+      "skipDescendants": 450,
+      "bothPanelGradientTop": [
+        229,
+        163,
+        255
+      ],
+      "repairedCloseGradientPresent": true,
+      "firstAttemptAfterReferentFix": "Revealed invalid SharedString Tags index; repaired and retried in the same Studio",
+      "play": false,
+      "savePublish": false,
+      "verificationProcessRemaining": false,
+      "targetLockRemaining": false,
+      "finalDiskHashUnchangedAfterStudio": true
     }
   }
 }

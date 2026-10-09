@@ -645,3 +645,8 @@
 
 - Reused actual Shop header/close/Stud/border/font components in InventoryPanel and StageSkipGui, with bright purple/pink backgrounds and distinct selected/equipped colors. All Inventory tabs, generated cards/sockets/Merge flow and Stage rows use the same purchased skin; Win/Robux purchase artwork and gameplay/translation paths preserved.
 - Updated6 existing rendering Sources and cloned142 actual visual instances. CurrentCloud reDecode and Luau syntax passed; UniqueId duplicates0. Detached actual-UI Edit checks passed for rebind, generated cards, state colors, title synchronization and18 preserved Skip buttons. Screen/device/language layout and gameplay remain unverified; no Play/Save/Publish. See Inventory_Skip_Shop_UI.json for exact donor/copy paths.
+
+## 2026-10-09 - Fix CurrentCloud Studio deserialization after UI update
+
+- Fixed two out-of-range clone referents and four incorrectly interleaved Tags SharedString arrays introduced by6b3c38e. Retained142 purchased UI clones, bright gradients and every Source/gameplay property; no rollback.
+- Header/INST/PRNT/reference/SharedString validation and fresh reDecode passed, UniqueId duplicates0. Actually opened repaired CurrentCloud in dedicated Studio Edit and read both UI roots successfully. Verification process and.lock absent afterward; no Play/Save/Publish. Full evidence and corrected limits are in DEV_STATUS and Inventory_Skip_Shop_UI.json.
