@@ -7,12 +7,12 @@ Config.Types = {
 	Rebirth7 = {Multiplier=3, RequiredRebirth=5, VisualTemplate="Green_Aura2"},
  Premium = {Multiplier=20, RequiresPremium=true, VisualTemplate="Premium_Fire", VisualInstanceName="PremiumAura"},
 }
--- Viewed from the Spawn side toward -X: back row left-to-right is 05,04,03,02,01.
+-- Purchased visual names map to the existing authoritative strength tiers.
 Config.Assignments = {
- Tredmill01="Premium", Tredmill02="Rebirth7", Tredmill03="Rebirth7",
- Tredmill04="Rebirth3", Tredmill05="Rebirth3",
- Tredmill06="Normal", Tredmill07="Normal", Tredmill08="Normal",
- Tredmill09="Normal", Tredmill10="Normal",
+ Normal01="Normal", Normal02="Normal",
+ Iron01="Rebirth3", Iron02="Rebirth3",
+ Gold01="Rebirth7", Gold02="Rebirth7",
+ Diamond01="Premium",
 }
 -- Presentation uses the same authoritative Multiplier that TrainingManager awards.
 Config.StrengthColors = {
@@ -67,4 +67,16 @@ function Config.GetDisplayText(modelName)
   and ("\nRebirth "..entry.RequiredRebirth.." Required") or ""
  return title.."\n×"..tostring(entry.Multiplier)..requirement
 end
+
+-- Display-only base gain; the award/access configuration above is unchanged.
+function Config.GetGainDisplayText(modelName,localeId)
+ local entry=Config.Get(modelName)
+ if not entry then return nil end
+ local training=require(script.Parent:WaitForChild("TrainingConfig"))
+ local amount=training.BaseGain*entry.Multiplier
+ local japanese=string.sub(string.lower(localeId or ""),1,2)=="ja"
+ return string.format(japanese and "+%g \u{7B4B}\u{529B} / %g\u{79D2}" or "+%g Strength / %gs",
+  amount,training.TrainingInterval)
+end
+
 return Config

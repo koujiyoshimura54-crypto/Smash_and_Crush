@@ -665,3 +665,8 @@
 
 - Per confirmed specification, cloned the actual Rare.Particles Attachment with Shine2/Sparkles once under Basic, retaining all authored effect settings. Native parenting/LockedToPart follows existing Egg float; no new runtime generator or Source changes. Rare, gameplay and placement unchanged.
 - CurrentCloud reDecode/reference/SharedString checks and UniqueId duplicates0 passed. Actual Studio Edit load,33 effect-property comparisons per emitter and visible yellow glow/sparkles passed; screenshot Basic_Egg_Glow_Edit.jpg. Verification Studio/lock cleared, no Play/Save/Publish. Cloud/runtime float-following remains unverified.
+
+## 2026-10-09 - Seven purchased treadmill signs use Strength
+
+- Replaced old Speed multipliers with base Strength gains per0.5s: Normal1, Iron2, Gold3, Diamond20. Retained purchased sign artwork/layout. Existing LeftMenuClient now maintains only these captions and explicit Japanese wording using the authoritative configuration; old presentation/Speed gameplay stays disabled.
+- CurrentCloud reDecode, two-Source syntax, reference/SharedString and UniqueId checks passed. Actual Studio Edit load and English/Japanese label checks passed; overwrite/locale/lifecycle guards tested on detached engine labels. Basic Egg glow, gameplay/animation and placement preserved. Verification Studio/lock cleared; no Play/Save/Publish. Cloud/device/runtime checks remain unverified.

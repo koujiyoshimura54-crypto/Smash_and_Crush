@@ -1,0 +1,104 @@
+{
+  "beforeSha256": "e12ea16f73f95817f5e97377839b69c023fd694e5afb01f7ae71f46ab2157026",
+  "afterSha256": "212a615b2f0a60c4d3fac4b3108534235f24fa19f7a5579b1677e8624bcb0626",
+  "sources": {
+    "ReplicatedStorage.Config.TreadmillConfig": "src/ReplicatedStorage/Config/TreadmillConfig.luau",
+    "StarterGui.StrengthGui.LeftMenuClient": "src/StarterGui/StrengthGui/LeftMenuClient.client.luau"
+  },
+  "labels": [
+    {
+      "path": "Workspace.Treadmills.Normal01.BillboardGui.Multiplier",
+      "before": "x1 Speed",
+      "after": "+1 Strength / 0.5s",
+      "baseGain": 1,
+      "interval": 0.5,
+      "japanese": "+1 \u7b4b\u529b / 0.5\u79d2"
+    },
+    {
+      "path": "Workspace.Treadmills.Normal02.BillboardGui.Multiplier",
+      "before": "x1 Speed",
+      "after": "+1 Strength / 0.5s",
+      "baseGain": 1,
+      "interval": 0.5,
+      "japanese": "+1 \u7b4b\u529b / 0.5\u79d2"
+    },
+    {
+      "path": "Workspace.Treadmills.Iron01.BillboardGui.Multiplier",
+      "before": "x3 Speed",
+      "after": "+2 Strength / 0.5s",
+      "baseGain": 2,
+      "interval": 0.5,
+      "japanese": "+2 \u7b4b\u529b / 0.5\u79d2"
+    },
+    {
+      "path": "Workspace.Treadmills.Iron02.BillboardGui.Multiplier",
+      "before": "x3 Speed",
+      "after": "+2 Strength / 0.5s",
+      "baseGain": 2,
+      "interval": 0.5,
+      "japanese": "+2 \u7b4b\u529b / 0.5\u79d2"
+    },
+    {
+      "path": "Workspace.Treadmills.Gold01.BillboardGui.Multiplier",
+      "before": "x10 Speed",
+      "after": "+3 Strength / 0.5s",
+      "baseGain": 3,
+      "interval": 0.5,
+      "japanese": "+3 \u7b4b\u529b / 0.5\u79d2"
+    },
+    {
+      "path": "Workspace.Treadmills.Gold02.BillboardGui.Multiplier",
+      "before": "x10 Speed",
+      "after": "+3 Strength / 0.5s",
+      "baseGain": 3,
+      "interval": 0.5,
+      "japanese": "+3 \u7b4b\u529b / 0.5\u79d2"
+    },
+    {
+      "path": "Workspace.Treadmills.Diamond01.BillboardGui.Multiplier",
+      "before": "x25 Speed",
+      "after": "+20 Strength / 0.5s",
+      "baseGain": 20,
+      "interval": 0.5,
+      "japanese": "+20 \u7b4b\u529b / 0.5\u79d2"
+    }
+  ],
+  "instances": 180249,
+  "uniqueIdDuplicates": 0,
+  "referencesChecked": 76129,
+  "sharedStrings": 381,
+  "allOtherPropertyChunksUnchanged": true,
+  "sourceScope": "Two existing UI/config Sources only; original gameplay fields/functions retained",
+  "startup": "Existing enabled LeftMenuClient binds only seven captions; all three legacy presentation scripts remain Disabled",
+  "translation": "Only seven captions disable automatic translation; ja LocaleId uses explicit Japanese strength/seconds, other locales use English; LocaleId/Text/AutoLocalize change signals refresh without polling.",
+  "cloudReflection": "not performed",
+  "verification": {
+    "sourceCompile": 2,
+    "actualStudioFileOpen": "PASS: MergeToForge_CurrentCloud.rbxl, Edit",
+    "studioId": "75d64d89-0d3d-4486-be23-fc3a1205bdda",
+    "allSevenEnglishLabelsReadBack": true,
+    "japaneseFormatting": true,
+    "detachedEngineChecks": [
+      "seven English and Japanese captions",
+      "old Speed overwrite repaired",
+      "automatic localization kept disabled for these labels",
+      "dynamic shadow bound",
+      "removed labels and destroyed lifetime disconnected",
+      "unrelated Speed label unchanged"
+    ],
+    "editVisual": "Seven purchased signs inspected in English and Japanese; original artwork/size/font/positions retained",
+    "previewRestored": "Temporary screen-overlay visibility and Japanese text restored; no save",
+    "oldPresentationDisabled": 3,
+    "purchasedMainDisabled": true,
+    "basicEggGlowRetained": true,
+    "verificationPid": 15952,
+    "ownVerificationProcessEnded": true,
+    "lockRemaining": false,
+    "diskUnchangedAfterStudio": true,
+    "notVerified": [
+      "published-client startup and gameplay",
+      "device-specific billboard readability/overlap"
+    ],
+    "cloudReflection": "not performed"
+  }
+}
