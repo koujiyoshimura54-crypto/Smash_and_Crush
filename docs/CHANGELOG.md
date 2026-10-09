@@ -650,3 +650,8 @@
 
 - Fixed two out-of-range clone referents and four incorrectly interleaved Tags SharedString arrays introduced by6b3c38e. Retained142 purchased UI clones, bright gradients and every Source/gameplay property; no rollback.
 - Header/INST/PRNT/reference/SharedString validation and fresh reDecode passed, UniqueId duplicates0. Actually opened repaired CurrentCloud in dedicated Studio Edit and read both UI roots successfully. Verification process and.lock absent afterward; no Play/Save/Publish. Full evidence and corrected limits are in DEV_STATUS and Inventory_Skip_Shop_UI.json.
+
+## 2026-10-09 - Basic Egg Hatch original-source check (no implementation)
+
+- CurrentCloud retains the repaired file hash and passes serialization checks. Available V2 HatchClient/EggClient/Config match CurrentCloud exactly and already include integration changes; an independent purchased-original Hatch baseline was not identified.
+- Recorded exact asset/Source paths and current effect behavior in DEV_STATUS. Requested original Source/asset location; no guessed visual changes or game-file writes. Runtime presentation remains unverified.
