@@ -252,6 +252,8 @@ end
 
 local function refreshChecks()
 	local Equipped = if playerData then playerData.Equipped else {}
+	local count = if Equipped[1] and Equipped[1] ~= "" then 1 else 0
+	setText(infoLabel, `Equipped ({count}/{Pet.MaxEquipped})`)
 
 	for name, tile in Tiles do
 		local main = tile:FindFirstChild(MAIN_NAME)
@@ -382,6 +384,7 @@ local function bind(gui: ScreenGui)
 	if info and info:IsA("GuiObject") then
 		infoLabel = info
 		info.Visible = shown
+		info.AutoLocalize = false -- Do not translate using the retired two-pet caption.
 	else
 		warn(`[PetClient] could not find {root:GetFullName()}.{table.concat(INFO_PATH, ".")}`)
 	end

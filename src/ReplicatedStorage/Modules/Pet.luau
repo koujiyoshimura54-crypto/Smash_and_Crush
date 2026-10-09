@@ -17,9 +17,10 @@ Pet.InventoryField = "inventory"
 Pet.PetsField = "pets"
 Pet.None = NONE
 
-Pet.Slots = { "current", "second" }
+Pet.MaxEquipped = 1
+Pet.Slots = { "current" }
 
-Pet.Attributes = { "Pet", "Pet2" }
+Pet.Attributes = { "Pet" }
 
 function Pet.container(playerData: any): any
 	if not playerData then return nil end
@@ -235,7 +236,7 @@ end
 
 -- Legacy Smash persistence. Each copy has an immutable ID; names only select visuals.
 function Pet.NormalizeState(raw)
- local out={Version=1,Revision=0,Owned={},Equipped={"",""},LastRequestId="",LastResults={}}
+ local out={Version=1,Revision=0,Owned={},Equipped={""},LastRequestId="",LastResults={}}
  if raw==nil then return out end
  if type(raw)~="table" or raw.Version~=1 then return nil,"InvalidPetsVersion" end
  if type(raw.Revision)~="number" or raw.Revision<0 or raw.Revision%1~=0 or raw.Revision>9007199254740991 then return nil,"InvalidPetsRevision" end
@@ -246,10 +247,16 @@ function Pet.NormalizeState(raw)
   out.Owned[id]=name
  end
  for slot,id in pairs(raw.Equipped) do
-  if (slot~=1 and slot~=2) or type(id)~="string" or (id~="" and not out.Owned[id]) then return nil,"InvalidPetEquip" end
-  out.Equipped[slot]=id
+  if (slot~=1 and slot~=2) or type(id)~="string" then return nil,"InvalidPetEquip" end
  end
- if out.Equipped[1]~="" and out.Equipped[1]==out.Equipped[2] then return nil,"DuplicatePetEquipId" end
+ -- Read legacy two-slot data in order; only equipment changes, never ownership.
+ for slot=1,2 do
+  local id=raw.Equipped[slot]
+  if id and id~="" and out.Owned[id] then
+   out.Equipped[1]=id
+   break
+  end
+ end
  if type(raw.LastRequestId)~="string" or #raw.LastRequestId>128 or type(raw.LastResults)~="table" or #raw.LastResults>8 then return nil,"InvalidPetReceipt" end
  out.LastRequestId=raw.LastRequestId
  for index in pairs(raw.LastResults) do
@@ -278,11 +285,7 @@ function Pet.ApplyOperation(raw,op)
   end
  elseif op.Action=="Equip" then
   if not state.Owned[op.PetId] then return nil,"PetNotOwned" end
-  local slot=table.find(state.Equipped,op.PetId)
-  if slot then state.Equipped[slot]=""
-  elseif state.Equipped[1]=="" then state.Equipped[1]=op.PetId
-  elseif state.Equipped[2]=="" then state.Equipped[2]=op.PetId
-  else state.Equipped[1]=state.Equipped[2];state.Equipped[2]=op.PetId end
+  state.Equipped[1]=if state.Equipped[1]==op.PetId then "" else op.PetId
  else return nil,"InvalidPetAction" end
  state.Revision+=1
  state.LastRequestId=op.Id
@@ -294,6 +297,7 @@ function Pet.Publish(player,state)
  for slot,attribute in ipairs(Pet.Attributes) do
   player:SetAttribute(attribute,state.Owned[state.Equipped[slot]] or Pet.None)
  end
+ player:SetAttribute("Pet2",Pet.None) -- Clear the retired follower mirror on load/reset/update.
  player:SetAttribute("PetInventoryRevision",state.Revision)
 end
 

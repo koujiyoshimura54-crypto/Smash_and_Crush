@@ -77,16 +77,99 @@ equal(hatch(101,0,3),true,"receipt replay");equal(s.Data.Win,700);equal(durable.
 equal(select(2,hatch(102,0,1,10)),"PetStateChanged","stale replay")
 equal(PlayerDataService.MutatePets(player,guid(103),1,"Equip",guid(1)),true)
 equal(PlayerDataService.MutatePets(player,guid(104),2,"Equip",guid(2)),true)
-equal(attrs.Pet,"Dog");equal(attrs.Pet2,"Dog","same species two copies")
+equal(attrs.Pet,"Dog");equal(attrs.Pet2,"","retired mirror cleared")
+equal(s.Data.Pets.Equipped[1],guid(2),"same species copy replaces by ID")
 equal(PlayerDataService.MutatePets(player,guid(105),3,"Equip",guid(3)),true)
-equal(s.Data.Pets.Equipped[1],guid(2));equal(s.Data.Pets.Equipped[2],guid(3))
+equal(s.Data.Pets.Equipped[1],guid(3));equal(s.Data.Pets.Equipped[2],nil)
 equal(PlayerDataService.MutatePets(player,guid(106),4,"Equip",guid(2)),true)
-equal(attrs.Pet,"");equal(attrs.Pet2,"Dog")
+equal(attrs.Pet,"Dog");equal(attrs.Pet2,"")
 local loaded=assert(Pet.NormalizeState(copy(durable.Pets)))
-equal(loaded.Equipped[2],guid(3),"reload individual equipment");equal(loaded.Owned[guid(1)],"Dog")
+equal(loaded.Equipped[1],guid(2),"reload individual equipment");equal(loaded.Equipped[2],nil)
+equal(loaded.Owned[guid(1)],"Dog");equal(loaded.Owned[guid(3)],"Dog","replacement retains owned copies")
 equal(s.Data.Win,700,"equip costs zero")
 equal(select(2,PlayerDataService.MutatePets(player,guid(107),5,"Equip",guid(999))),"PetNotOwned")
+equal(PlayerDataService.MutatePets(player,guid(108),5,"Equip",guid(2)),true,"toggle equipped copy off")
+equal(attrs.Pet,"");equal(attrs.Pet2,"");equal(durable.Pets.Equipped[1],"")
+equal(PlayerDataService.MutatePets(player,guid(108),5,"Equip",guid(2)),true,"equip receipt retry does not retoggle")
+equal(durable.Pets.Equipped[1],"");equal(durable.Pets.Revision,6)
 equal(Pet.payout(nil),1,"no ability")
+
+-- Legacy two-slot migration is ordered and does not remove or mutate owned copies.
+do
+ local raw=copy(loaded);raw.Equipped={guid(3),guid(1)}
+ local migrated=assert(Pet.NormalizeState(raw))
+ equal(migrated.Equipped[1],guid(3),"first valid, not sorted ID")
+ equal(#migrated.Equipped,1);equal(migrated.Owned[guid(1)],"Dog")
+ equal(raw.Equipped[2],guid(1),"normalization leaves input untouched")
+ equal(migrated.Revision,raw.Revision);equal(migrated.LastRequestId,raw.LastRequestId)
+ for _,first in ipairs({"",guid(999),guid(1)}) do
+  raw.Equipped={first,guid(1)}
+  equal(assert(Pet.NormalizeState(raw)).Equipped[1],guid(1),"empty/stale/duplicate first")
+ end
+ raw.Equipped={[2]=guid(1)}
+ equal(assert(Pet.NormalizeState(raw)).Equipped[1],guid(1),"sparse legacy second")
+ raw.Equipped={guid(999),guid(998)}
+ equal(assert(Pet.NormalizeState(raw)).Equipped[1],"","no valid equipment")
+ raw.Equipped={guid(1),guid(2),guid(3)}
+ equal(select(2,Pet.NormalizeState(raw)),"InvalidPetEquip","reject extra slots")
+ raw.Equipped={42,guid(1)}
+ equal(select(2,Pet.NormalizeState(raw)),"InvalidPetEquip","reject malformed slot type")
+ s=reset();durable.Pets=copy(loaded);durable.Pets.Equipped={guid(1),guid(2)};s.Data.Pets=copy(durable.Pets)
+ attrs.Pet2="Dog"
+ local read=assert(PlayerDataService.GetPetState(player))
+ equal(read.Equipped[1],guid(1));equal(read.Equipped[2],nil);equal(writes,0,"migration read never writes store")
+ Pet.Publish(player,read);equal(attrs.Pet2,"")
+ equal(PlayerDataService.MutatePets(player,guid(109),read.Revision,"Equip",guid(3)),true,"commit normalized legacy equipment")
+ equal(#durable.Pets.Equipped,1);equal(durable.Pets.Equipped[1],guid(3))
+ equal(durable.Pets.Owned[guid(1)],"Dog");equal(durable.Pets.Owned[guid(2)],"Dog")
+ equal(assert(Pet.NormalizeState(copy(durable.Pets))).Equipped[1],guid(3),"reload single slot")
+end
+
+-- Exact purchased UI check/count updater; no Roblox UI or rendering required.
+do
+ local MAIN_NAME,CHECK_NAME="Main","Checkmark"
+ local checks={}
+ local Tiles={}
+ for i=1,3 do
+  local check={Visible=true,IsA=function() return true end};checks[i]=check
+  local main={FindFirstChild=function() return check end}
+  Tiles[guid(i)]={FindFirstChild=function() return main end}
+ end
+ local infoLabel={Text="You can equip 2 pets"}
+ local function setText(label,text) label.Text=text end
+ local playerData=assert(Pet.NormalizeState(loaded))
+ -- INSERT PET UI CHECKS
+ refreshChecks();equal(infoLabel.Text,"Equipped (1/1)")
+ equal(checks[1].Visible,false);equal(checks[2].Visible,true);equal(checks[3].Visible,false)
+ playerData.Equipped={guid(3)};refreshChecks()
+ equal(checks[2].Visible,false);equal(checks[3].Visible,true)
+ playerData.Equipped={""};refreshChecks();equal(infoLabel.Text,"Equipped (0/1)")
+ equal(checks[3].Visible,false)
+end
+
+-- Exact follower refresh/despawn; cosmetic movement is unchanged and not simulated.
+do
+ local PET_INDEX="pet"
+ local clones,removed=0,0
+ local models={pet2={}}
+ local janitor={Remove=function(_,key) if models[key] then removed+=1;models[key]=nil end end,
+  Add=function(_,model,_,key) models[key]=model;return model end}
+ local Followers={[player]={[2]={name="Dog"}}}
+ local Watched={[player]=janitor}
+ local function decorate() end
+ local function dress() end
+ local function resize() end
+ local originalModel=Pet.model
+ Pet.model=function() return {Clone=function() clones+=1;return {} end} end
+ -- INSERT FOLLOW REFRESH
+ attrs.Pet="Dog";attrs.Pet2="Dog"
+ refresh(player);equal(Followers[player][2],nil);equal(models.pet2,nil,"stale second follower destroyed")
+ equal(clones,1);refresh(player);equal(clones,1,"repeat refresh creates no duplicate")
+ attrs.Pet="Bear";refresh(player);equal(clones,2);equal(Followers[player][1].name,"Bear")
+ attrs.Pet="";refresh(player);equal(Followers[player][1],nil);equal(models.pet1,nil)
+ equal(removed,3,"retired/replaced/unequipped models cleaned")
+ Pet.model=originalModel
+end
 
 s=reset();mode="after"
 equal(select(2,hatch(201,0,8)),"InventorySavePending","ambiguous commit")

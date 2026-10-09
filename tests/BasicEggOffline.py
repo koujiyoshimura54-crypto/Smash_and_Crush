@@ -12,6 +12,8 @@ root = Path(__file__).resolve().parents[1]
 pet = (root / 'src/ReplicatedStorage/Modules/Pet.luau').read_text(encoding='utf-8')
 pds = (root / 'src/ServerScriptService/Services/PlayerDataService.luau').read_text(encoding='utf-8')
 egg = (root / 'src/ServerScriptService/Services/EggServer.luau').read_text(encoding='utf-8')
+client = (root / 'src/StarterPlayer/StarterPlayerScripts/Services/PetClient.luau').read_text(encoding='utf-8')
+follow = (root / 'src/StarterPlayer/StarterPlayerScripts/Services/PetFollowClient.luau').read_text(encoding='utf-8')
 
 def between(source, start, end):
     return source[source.index(start):source.index(end, source.index(start))]
@@ -19,9 +21,11 @@ def between(source, start, end):
 functions = between(pds, 'local function resolvePetMutation(', 'function PlayerDataService.ResolveItemMutation(')
 set_win = between(pds, 'function PlayerDataService.SetWin(', 'function PlayerDataService.RecordStrengthGain(')
 fixture = (root / 'tests/BasicEggOffline.spec.luau').read_text(encoding='utf-8')
-fixture = fixture.replace('-- INSERT PET', 'local Pet=(function()\n' + pet + '\nend)()')
+fixture = fixture.replace('-- INSERT PET\n', 'local Pet=(function()\n' + pet + '\nend)()\n')
 fixture = fixture.replace('-- INSERT TRANSACTIONS', set_win + '\n' + functions)
 fixture = fixture.replace('-- INSERT EGG SERVER', 'local EggServer=(function()\n' + egg + '\nend)()')
+fixture = fixture.replace('-- INSERT PET UI CHECKS', between(client, 'local function refreshChecks()', 'local function buildTile('))
+fixture = fixture.replace('-- INSERT FOLLOW REFRESH', between(follow, 'local function indexOf(', 'local function update('))
 command = 'assert(loadstring(' + json.dumps(fixture) + ', "BasicEggOffline"))()\n'
 result = subprocess.run([sys.argv[1]], input=command, text=True, capture_output=True)
 print(result.stdout)

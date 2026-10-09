@@ -670,3 +670,10 @@
 
 - Replaced old Speed multipliers with base Strength gains per0.5s: Normal1, Iron2, Gold3, Diamond20. Retained purchased sign artwork/layout. Existing LeftMenuClient now maintains only these captions and explicit Japanese wording using the authoritative configuration; old presentation/Speed gameplay stays disabled.
 - CurrentCloud reDecode, two-Source syntax, reference/SharedString and UniqueId checks passed. Actual Studio Edit load and English/Japanese label checks passed; overwrite/locale/lifecycle guards tested on detached engine labels. Basic Egg glow, gameplay/animation and placement preserved. Verification Studio/lock cleared; no Play/Save/Publish. Cloud/device/runtime checks remain unverified.
+
+
+## 2026-10-09 - One equipped Pet with replacement and legacy migration
+
+- Limited equipment/following to one individual Pet copy. Another copy replaces it; clicking the equipped copy unequips. Legacy two-slot records retain the first valid owned copy without deleting any inventory, using existing load/save/receipt paths.
+- Purchased Pet UI shows Equipped (0/1) or (1/1); retired Pet2 is cleared and its follower removed. Original purchased UI/follow animation, Egg/Hatch/payment/odds and Basic glow preserved.
+- 131 in-memory offline assertions and all3 Source compilations pass. Direct CurrentCloud write/reDecode, reference/SharedString checks and UniqueId duplicates0 passed; only3 Sources and2 label properties changed. No Studio/Play/DataStore/Save/Publish test; Cloud runtime and rendered UI remain unverified. No target lock.
