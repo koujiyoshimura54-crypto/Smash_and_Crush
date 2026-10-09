@@ -79,6 +79,7 @@ local function paint(x,top,bottom,edge,radius)
  stroke.Transparency=0
  local corner=x:FindFirstChildOfClass("UICorner") or Instance.new("UICorner",x)
  corner.CornerRadius=radius or UDim.new(0,14)
+ require(RS.Modules.InventoryPresentation).ApplyPurchasedSurface(x)
 end
 paint(root,palette.Background,palette.BackgroundBottom,palette.SocketEdge)
 root.ZIndex=209

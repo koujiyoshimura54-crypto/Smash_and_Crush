@@ -1,3 +1,4 @@
+local PurchaseHUD=require(game:GetService("ReplicatedStorage").Modules.HUDLayout)
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
 local Badges=require(RS.Modules:WaitForChild("BadgeRenderer"))
@@ -128,6 +129,7 @@ local function priceButton(card,name,price,imageId,pos,size,color,remote,itemId)
  else
   label(b,"Price",tostring(price),UDim2.new(.08,0,.08,0),UDim2.new(.84,0,.84,0),36)
  end
+ PurchaseHUD.BindPurchaseButton(b,name=="WinPurchase" and "Win" or "Robux",b.Price)
  if not remote then
   b.Active=false b.Interactable=false b.AutoButtonColor=false
   b.BackgroundColor3=Color3.fromRGB(70,53,87)
@@ -151,6 +153,7 @@ render=function()
   s.none.Text=item and "Equipped" or "None"
   s.none.TextColor3=item and Color3.new(1,1,1) or Color3.fromRGB(214,214,222)
   s.none.BackgroundColor3=item and Color3.fromRGB(43,180,123) or Color3.fromRGB(99,99,112)
+  Presentation.SetEquipped(s.none,item~=nil)
   s.image.ImageColor3=Color3.new(1,1,1)
   s.image.ImageTransparency=0
   s.socket.BackgroundColor3=Color3.fromRGB(81,34,123)
@@ -160,8 +163,7 @@ render=function()
   s.image.Size=item and UDim2.new(.42,-12,.71,-6) or UDim2.new(.42,-12,1,-16)
  end
  for n,t in ipairs(tabs) do
-  t.BackgroundColor3=n==rarityIndex and Color3.fromRGB(177,72,250) or Color3.fromRGB(83,26,133)
-  t.UIStroke.Color=n==rarityIndex and Color3.new(1,1,1) or Color3.fromRGB(43,13,65)
+  Presentation.SetSelected(t,n==rarityIndex)
   rarityBadges[n].Visible=page:GetAttribute("UnseenRarity_"..rarities[n])==true
  end
  local ids={}
@@ -178,7 +180,7 @@ render=function()
   local c=Instance.new("TextButton") c.Name=id c.Text="" c.AutoButtonColor=false
   c.LayoutOrder=order c.ZIndex=32 c.Parent=list c:SetAttribute("InventoryItemCard",true)
   local stroke=style(c,Color3.fromRGB(103,32,160),12)
-  stroke.Color=selectedId==id and Color3.new(1,1,1) or Color3.fromRGB(193,85,249) stroke.Thickness=3
+  Presentation.SetSelected(c,selectedId==id)
   icon(c,"Icon",item.Image,UDim2.fromOffset(6,6),UDim2.new(1,-12,1,-66),33)
   local multiplier=label(c,"StrengthMultiplier",ItemMultiplierConfig.GetEffectText(item.ItemType,item.Rarity),UDim2.new(0,4,1,-59),UDim2.new(1,-8,0,20),34)
   multiplier.BackgroundTransparency=.12 multiplier.BackgroundColor3=Color3.fromRGB(72,24,111)

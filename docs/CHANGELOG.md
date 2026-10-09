@@ -640,3 +640,8 @@
 
 - Restored purchased Basic/pedestal and original red egg-display carpet to source layout +300X, joining the existing World1 Lobby right carpet path. Original sizes, appearance, relative heights/rotation and hierarchy retained; other Eggs, Training, manual World2Gate and hatch/save/equip/follow Sources unchanged.
 - Direct CurrentCloud rewrite/reDecode checked:10 part positions /2 pivots, only3 transform chunks changed, UniqueId duplicates0. Exact correspondence recorded in Basic_Egg_Placement.json. Edit screenshot unavailable because verification Studio stayed at login; only that process ended, target lock absent. No Play/Save/Publish; Cloud/rendered navigation still unverified.
+
+## 2026-10-09 - Purchased Shop look for Inventory and Stage Skip
+
+- Reused actual Shop header/close/Stud/border/font components in InventoryPanel and StageSkipGui, with bright purple/pink backgrounds and distinct selected/equipped colors. All Inventory tabs, generated cards/sockets/Merge flow and Stage rows use the same purchased skin; Win/Robux purchase artwork and gameplay/translation paths preserved.
+- Updated6 existing rendering Sources and cloned142 actual visual instances. CurrentCloud reDecode and Luau syntax passed; UniqueId duplicates0. Detached actual-UI Edit checks passed for rebind, generated cards, state colors, title synchronization and18 preserved Skip buttons. Screen/device/language layout and gameplay remain unverified; no Play/Save/Publish. See Inventory_Skip_Shop_UI.json for exact donor/copy paths.

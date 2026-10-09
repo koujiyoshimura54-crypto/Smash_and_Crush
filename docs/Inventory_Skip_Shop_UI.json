@@ -1,0 +1,810 @@
+{
+  "date": "2026-10-09",
+  "target": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "beforeSha256": "54db9e433479781b3a1e39ef116b01e016694dc84e1d2730c905238618a0ec77",
+  "afterSha256": "dd9c2c562ac7cc167f640b9b21db58aa2e2a5a90643a77a933405d57b5283d16",
+  "roots": [
+    "StarterGui.StrengthGui.InventoryPanel",
+    "StarterGui.StageSkipGui"
+  ],
+  "donors": [
+    "StarterGui.StrengthGui.ShopPanel.Top",
+    "StarterGui.StrengthGui.ShopPanel.Top.Close",
+    "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack"
+  ],
+  "palette": {
+    "bodyTop": [
+      229,
+      163,
+      255
+    ],
+    "bodyBottom": [
+      255,
+      190,
+      221
+    ],
+    "cardTop": [
+      246,
+      190,
+      255
+    ],
+    "cardBottom": [
+      255,
+      151,
+      207
+    ],
+    "selectedTop": [
+      255,
+      234,
+      134
+    ],
+    "selectedBottom": [
+      255,
+      159,
+      215
+    ],
+    "headerTop": [
+      239,
+      153,
+      255
+    ],
+    "headerBottom": [
+      255,
+      139,
+      193
+    ],
+    "equippedTop": [
+      143,
+      245,
+      195
+    ],
+    "equippedBottom": [
+      56,
+      189,
+      138
+    ]
+  },
+  "sources": {
+    "ReplicatedStorage.Modules.InventoryPresentation": "src/ReplicatedStorage/Modules/InventoryPresentation.luau",
+    "StarterGui.StrengthGui.InventoryPanelClient": "src/StarterGui/StrengthGui/InventoryPanelClient.client.luau",
+    "StarterGui.StrengthGui.InventoryTabsClient": "src/StarterGui/StrengthGui/InventoryTabsClient.client.luau",
+    "StarterGui.StrengthGui.ItemInventoryTabClient": "src/StarterGui/StrengthGui/ItemInventoryTabClient.client.luau",
+    "StarterPlayer.StarterPlayerScripts.UI.StageSkipClient": "src/StarterPlayer/StarterPlayerScripts/UI/StageSkipClient.client.luau",
+    "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New": "src/StarterGui/StrengthUI/MergePanel_New/MergePanelClient_New.client.luau"
+  },
+  "purchasedVisualClones": 142,
+  "existingVisualPropertyChanges": 285,
+  "instances": 167409,
+  "uniqueIdDuplicates": 0,
+  "clones": [
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.UIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.PurchasedInnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader",
+      "class": "Frame",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText1",
+      "class": "TextLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.ShopText1"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText1.TextUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.ShopText1.TextUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText2",
+      "class": "TextLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.ShopText2"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText2.TextUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.ShopText2.TextUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.OuterUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.InnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose",
+      "class": "TextButton",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.StudPattern"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.TextLabel",
+      "class": "TextLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.TextLabel.OuterUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.TextLabel.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.UICorner",
+      "class": "UICorner",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.UICorner"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.OuterUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.UIStrokeInner",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.UIStrokeInner"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.UIStrokeInner.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.UIStrokeInner.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader",
+      "class": "Frame",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.StudPattern"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText1",
+      "class": "TextLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.ShopText1"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText1.TextUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.ShopText1.TextUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText2",
+      "class": "TextLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.ShopText2"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText2.TextUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.ShopText2.TextUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.OuterUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.InnerUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.InnerUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose",
+      "class": "TextButton",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.StudPattern",
+      "class": "ImageLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.StudPattern"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.TextLabel",
+      "class": "TextLabel",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.TextLabel.OuterUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.TextLabel.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.UICorner",
+      "class": "UICorner",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.UICorner"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.OuterUIStroke",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.OuterUIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.UIStrokeInner",
+      "class": "UIStroke",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.UIStrokeInner"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.UIStrokeInner.UIGradient",
+      "class": "UIGradient",
+      "source": "StarterGui.StrengthGui.ShopPanel.Top.Close.UIStrokeInner.UIGradient"
+    }
+  ],
+  "checks": {
+    "reDecode": true,
+    "sixSourcesCompile": true,
+    "requestExpressionsUnchanged": true,
+    "existingPurchaseButtonSubtreesUnchanged": true,
+    "otherScreensExistingPropertiesUnchanged": true,
+    "serverConfigMapSourcesUnchanged": true,
+    "engineEditTest": "Unparented actual-UI clones only: duplicate binding, runtime card creation, selected color after old background assignment, equipped color, translated title sync, 18 Skip purchase buttons unchanged; all clones destroyed",
+    "visualScreenAndPlay": "UNVERIFIED",
+    "cloudReflection": "not performed",
+    "newStudio": "not launched",
+    "userStudio": "retained; original objects not edited",
+    "fileLock": "absent",
+    "gridAndListChildCountsUnchanged": true,
+    "engineEditDescendants": {
+      "Inventory": 502,
+      "Skip": 450
+    }
+  }
+}

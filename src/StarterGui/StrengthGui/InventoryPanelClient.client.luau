@@ -1,3 +1,4 @@
+local PurchaseHUD=require(game:GetService("ReplicatedStorage").Modules.HUDLayout)
 local Responsive=require(game.ReplicatedStorage.Modules.ResponsivePanels)
 -- Phase 7.2.3.3: Inventory UI backed by authoritative dumbbell server state.
 local Players=game:GetService("Players")
@@ -12,8 +13,9 @@ local gui=script.Parent
 local menu=gui:WaitForChild("LeftMenu")
 local shell=gui:WaitForChild("InventoryPanel")
 local function applyInventoryFont(object)
+ if object:FindFirstAncestor("PurchasedButtonVisual") then return end
  if object:IsA("TextLabel") or object:IsA("TextButton") or object:IsA("TextBox") then
-  object.Font=Enum.Font.FredokaOne
+  Presentation.ApplyPurchasedText(object)
   local limit=object:FindFirstChildOfClass("UITextSizeConstraint")
   if object.TextScaled and limit then limit.MinTextSize=math.min(limit.MinTextSize,6) end
  end
@@ -72,6 +74,7 @@ local function updateButtons()
    Presentation.SetButtonEnabled(button,not isEquipped and not requestPending)
    button.BackgroundColor3=isEquipped and Color3.fromRGB(70,76,88)
     or (isOwned and Color3.fromRGB(47,91,151) or Color3.fromRGB(43,121,88))
+   PurchaseHUD.PurchaseButton(button,"Win",(isOwned or isEquipped) and button.Text or button.Price.Text)
   end
  end
 local item=Master.Get(equipped)
@@ -120,9 +123,7 @@ local function selectCard(itemId)
  panel:SetAttribute("SelectedItemId",itemId)
  for id,card in pairs(cards) do
   local selected=id==selectedId
-  card.UIStroke.Color=selected and Color3.fromRGB(65,220,255) or Color3.fromRGB(49,19,66)
-  card.UIStroke.Thickness=selected and 3 or 2
-  card.BackgroundColor3=selected and Color3.fromRGB(145,77,189) or Color3.fromRGB(113,54,156)
+  Presentation.SetSelected(card,selected)
  end
 end
 local sortedItems=Master.GetSorted()
