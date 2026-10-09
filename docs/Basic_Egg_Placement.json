@@ -349,5 +349,63 @@
     "editVisual": "UNVERIFIED: verification Studio stopped at login before place opened; no screenshot acquired",
     "play": "not performed",
     "cloudReflection": "not performed"
+  },
+  "purchasedRareGlowApplication": {
+    "beforeSha256": "f272a081c63b1313ab86601565a8e82f2322b3c5363cc8f78528edd2519bd0a3",
+    "afterSha256": "e12ea16f73f95817f5e97377839b69c023fd694e5afb01f7ae71f46ab2157026",
+    "beforeInstances": 180246,
+    "afterInstances": 180249,
+    "newInstances": [
+      {
+        "source": "Workspace.Eggs.Rare.Particles",
+        "destination": "Workspace.Eggs.Basic.Particles",
+        "referent": 180246
+      },
+      {
+        "source": "Workspace.Eggs.Rare.Particles.Shine2",
+        "destination": "Workspace.Eggs.Basic.Particles.Shine2",
+        "referent": 180247
+      },
+      {
+        "source": "Workspace.Eggs.Rare.Particles.Sparkles",
+        "destination": "Workspace.Eggs.Basic.Particles.Sparkles",
+        "referent": 180248
+      }
+    ],
+    "existingPropertiesUnchanged": true,
+    "allSourcesUnchanged": true,
+    "clonePropertiesMatchDonorExceptUniqueIdAndHistoryId": true,
+    "uniqueIdDuplicates": 0,
+    "referencePropertyValuesChecked": 76129,
+    "sharedStringCount": 381,
+    "sharedStringIndexesValid": true,
+    "instPrntReferentsValid": true,
+    "duplicateGuard": "Persist exactly one Particles Attachment; installer aborts if it already exists; no runtime generator",
+    "follow": "Attachment parented to Basic; both authored ParticleEmitters LockedToPart=true; existing EggClient bob is unchanged",
+    "studioVerification": {
+      "fileName": "MergeToForge_CurrentCloud.rbxl",
+      "studioId": "274b2a43-31a8-4a85-84bc-40188e9e7faf",
+      "mode": "Edit",
+      "load": "PASS",
+      "oneAttachmentTwoEmitters": true,
+      "eachEmitterMatchesDonorProperties": 33,
+      "attachmentCFrameMatches": true,
+      "basicPosition": [
+        342.6244201660156,
+        12.111495018005371,
+        -7.353715419769287
+      ],
+      "particleWorldPositionEqualsBasic": true,
+      "visual": "Yellow surrounding glow and sparkles visible in Edit capture",
+      "image": "Basic_Egg_Glow_Edit.jpg",
+      "cloudReflection": "not performed",
+      "gameplayAndLiveBobbing": "UNVERIFIED; no Play",
+      "verificationPid": 8792,
+      "normalCloseRequested": false,
+      "guardedForceCloseOwnProcess": true,
+      "processRemaining": false,
+      "lockRemaining": false,
+      "diskShaUnchangedAfterStudio": true
+    }
   }
 }

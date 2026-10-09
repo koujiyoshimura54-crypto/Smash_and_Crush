@@ -660,3 +660,8 @@
 
 - Located actual yellow Shine2/Sparkles under Workspace.Eggs.Rare.Particles; distinguished permanent Egg glow from Hatch and from other Egg palettes. Checked the isolated Basic startup/float path and separate VFX candidates.
 - Basic-original mapping remains unproven; asked whether to use that purchased Rare assembly unchanged. Latest user-saved CurrentCloud preserved, no effects/Source changed. Evidence and remaining verification recorded in DEV_STATUS.
+
+## 2026-10-09 - Purchased Rare yellow glow applied to Basic
+
+- Per confirmed specification, cloned the actual Rare.Particles Attachment with Shine2/Sparkles once under Basic, retaining all authored effect settings. Native parenting/LockedToPart follows existing Egg float; no new runtime generator or Source changes. Rare, gameplay and placement unchanged.
+- CurrentCloud reDecode/reference/SharedString checks and UniqueId duplicates0 passed. Actual Studio Edit load,33 effect-property comparisons per emitter and visible yellow glow/sparkles passed; screenshot Basic_Egg_Glow_Edit.jpg. Verification Studio/lock cleared, no Play/Save/Publish. Cloud/runtime float-following remains unverified.
