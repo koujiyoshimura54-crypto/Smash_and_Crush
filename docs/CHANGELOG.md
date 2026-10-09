@@ -635,3 +635,8 @@
 - Moved actual Basic and its seven-part purchased stand to World1 Lobby (314,11.736531,56), preserving appearance. Isolated original Egg/OpenEgg/Hatch/Inventory/two-slot following startup; both purchased Main scripts remain disabled.
 - Kept100 Win/roll, original six Pets/40-25-15-10-7-3 odds and1/3/8 openings. Added per-copy legacy PlayerData persistence and server-owned debit/grant/equip with request receipts, revision and pending-write guards. No purchased Data/product handlers, duplicate Speed compensation, ability multipliers, Stud substitutions or merge.
 - Synced10 Sources; reDecode/compilation/reference/UniqueId checks passed,79 offline Luau assertions passed. CurrentCloud directly written; no Play, live data access, Save/Publish or verification Studio. Cloud/UI/real save-rejoin remain unverified. Full paths, geometry, schema, hashes and limits recorded in DEV_STATUS. Only this task committed; unrelated work preserved.
+
+## 2026-10-09 - Basic Egg original purchased lobby layout
+
+- Restored purchased Basic/pedestal and original red egg-display carpet to source layout +300X, joining the existing World1 Lobby right carpet path. Original sizes, appearance, relative heights/rotation and hierarchy retained; other Eggs, Training, manual World2Gate and hatch/save/equip/follow Sources unchanged.
+- Direct CurrentCloud rewrite/reDecode checked:10 part positions /2 pivots, only3 transform chunks changed, UniqueId duplicates0. Exact correspondence recorded in Basic_Egg_Placement.json. Edit screenshot unavailable because verification Studio stayed at login; only that process ended, target lock absent. No Play/Save/Publish; Cloud/rendered navigation still unverified.
