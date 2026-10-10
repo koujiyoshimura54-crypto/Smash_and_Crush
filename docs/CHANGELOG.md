@@ -729,3 +729,9 @@
 - Reused Chill Octopus, purchased OpenEgg/Robux/close UI and seven exact catalog Pets for a seven-candidate3D display; added matching Pet Inventory3D support. Retired station GamePass/equip action replaced with View Pets. Octopus geometry/location and regular Egg gameplay preserved.
 - Product3717610547, base149, one Pet, exact100% odds. Purchase stays disabled; no receipt/roll/grant/save/Hatch/follow integration. Marketplace lookup returned135; live lookup takes precedence over149 fallback.
 - Fixed Phase 1 mojibake in English. [Purchased provenance, actual Edit screenshots, validation and Phase 3 limits](Stud_Egg_Pet_Catalog.md#permanent-robux-egg-phase-2---facility-and-display-2026-10-10). Final reDecode/reference/SharedString/UniqueId0, five Source compilations and actual Studio loading passed. Disposable previews cleaned, own sessions/lock released; Cloud gameplay unverified.
+
+
+## 2026-10-10 - Limited Egg 01 active Lobby placement
+
+- Moved existing Workspace.Chill Octopus to (315,8.665255,40), facing the active World1 Spawn. The prior retained position was in the original purchased map, outside the active Lobby.
+- One CFrame property only; Source/UI/appearance/size/gameplay unchanged. Actual Edit load, floor contact, clear footprint and unobstructed Spawn view verified; [placement image](LimitedEgg01_World1_Placement.jpg). ReDecode/reference/SharedString/UniqueId0 passed. Own Studio/lock released; Cloud interaction unverified.

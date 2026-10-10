@@ -184,3 +184,10 @@ The regular OpenEgg template, EggClient/EggServer, four Win Eggs, six candidates
 - Connect actual purchase Prompt, receipt/roll/grant/save, existing Hatch + RGBEgg and whole-model-safe follow only in the authorized next phase. Current button is noninteractive and has no purchase callback. The seven display templates are outside Assets.Pets; they cannot be treated as already integrated with ownership/Hatch/follow.
 - Cloud has not been reflected/published. Live E/touch input, published-client bootstrap, real inventory refresh/ownership, responsive phone/touch rendering, purchase/Hatch/follow/persistence/policy/retry behavior remain unverified. This phase proves Edit rendering and scoped static integrity, not paid gameplay.
 - No local Play, purchase, DataStore mutation, Save/Publish, backup, alternate rbxl or work folder. Only task Sources, these images and English documentation are committed; unrelated local report preserved.
+
+
+## Limited Egg 01 active Lobby relocation (2026-10-10)
+
+After the user reported the missing facility and explicitly authorized movement, `Workspace.Chill Octopus` was moved from the original purchased map to the active World1 Lobby. Its saved primary `Workspace.Chill Octopus.PetMesh` now has position **(315,8.665255,40)** and yaw+45 degrees toward Spawn. The original hierarchy, appearance, size, Prompt, UI and Phase 2 behavior are unchanged; the earlier keep-original-position instruction is superseded.
+
+[Actual Edit view from the Spawn side](LimitedEgg01_World1_Placement.jpg). Ground contactY4, zero other parts overlapping the footprint with2 studs of X/Z padding, unobstructed Spawn-eye ray, distance38.58 studs. This corrects the earlier verification gap: the initial station screenshot proved only visibility in the original purchased map. Only one CFrame property changed. Cloud/live interaction still requires user reflection; purchase remains disabled. Verification Studio exited and target.lock cleared; no further Studio launch.
