@@ -86,7 +86,8 @@ local function decorate(model: Model, name: string)
 	part.Parent = model
 end
 
-local function resize(model: Model)
+local function resize(model: Model,name: string)
+	if Pet.prepareLimited(model,name,Config.PetFollow.height,true) then return end
 	local primary = model.PrimaryPart
 	if primary then
 		primary.CFrame = CFrame.new(primary.Position)
@@ -154,7 +155,7 @@ local function refresh(player: Player)
 		decorate(model, name)
 
 		dress(model)
-		resize(model)
+		resize(model, name)
 
 		Slots[slot] = {
 			name = name,
@@ -197,7 +198,9 @@ local function update(delta: number)
 			local ground = body.Position.Y - body.Size.Y / 2 - humanoid.HipHeight
 			local side = settings.side * (settings.Sides[slot] or 0)
 			local behind = body.CFrame * Vector3.new(side, 0, settings.back)
-			local target = Vector3.new(behind.X, ground + settings.up, behind.Z)
+			-- Offset only the new grounded models by the existing bob amplitude.
+			local lift = if Pet.isLimited(follower.name) then settings.bob else 0
+			local target = Vector3.new(behind.X, ground + settings.up + lift, behind.Z)
 
 			local position = follower.position or target
 			local offset = target - position

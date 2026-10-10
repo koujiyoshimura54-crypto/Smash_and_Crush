@@ -65,6 +65,7 @@ local Janitor = require(ReplicatedStorage.Packages.Janitor)
 local Config = require(ReplicatedStorage.Modules.Config)
 local Egg = require(ReplicatedStorage.Modules.Egg)
 local Pet = require(ReplicatedStorage.Modules.Pet)
+local Limited = require(ReplicatedStorage.Config.LimitedEggConfig)
 local MenuClient = require(script.Parent.MenuClient)
 -- Foreign purchase UI/IDs are not loaded.
 
@@ -117,6 +118,8 @@ local TEXT_INFO = TweenInfo.new(Config.Hatch.Pop.seconds, Enum.EasingStyle.Back,
 local HatchClient = {}
 
 local Pending: {Show} = {}
+local playVerified: ({Result}, string?) -> boolean
+local shownLimited: {[string]: boolean} = {} -- Session-only visual deduplication, never a save/grant marker.
 
 local Slots: {Slot} = {}
 local Cameras: {Spin} = {}
@@ -262,13 +265,18 @@ local function mount(viewport: ViewportFrame, template: Instance, zoom: number, 
 		part.CanCollide = false
 	end
 
-	local primary = model.PrimaryPart
-	if primary then
-		primary.CFrame = CFrame.new(primary.Position)
+	local limitedSize = Pet.prepareLimited(model,template.Name,nil,false)
+	local size: Vector3
+	if limitedSize then
+		size=limitedSize
+	else
+		-- Preserve the original path for the existing purchased Pets and Eggs.
+		local primary = model.PrimaryPart
+		if primary then primary.CFrame = CFrame.new(primary.Position) end
+		local box
+		box,size = model:GetBoundingBox()
+		model:PivotTo(model:GetPivot() - box.Position)
 	end
-
-	local box, size = model:GetBoundingBox()
-	model:PivotTo(model:GetPivot() - box.Position)
 
 	local settings = Config.Hatch
 
@@ -279,6 +287,10 @@ local function mount(viewport: ViewportFrame, template: Instance, zoom: number, 
 
 	local fit = math.tan(math.rad(settings.fieldOfView / 2)) * math.min(aspect, 1)
 	local distance = reach / fit * zoom
+	if limitedSize then
+		-- A bounding sphere also fits the existing rotating camera, at every angle.
+		distance=(size.Magnitude/2)/math.sin(math.atan(fit))*math.max(zoom,1)
+	end
 	local base = CFrame.lookAt(Vector3.new(0, 0, distance), Vector3.zero)
 
 	camera.CFrame = base
@@ -705,7 +717,7 @@ local function finish()
 	local queued = table.remove(Pending, 1)
 	if not queued then return end
 
-	HatchClient.play(queued.Rolls, queued.egg)
+	playVerified(queued.Rolls, queued.egg)
 end
 
 local function pressed()
@@ -938,8 +950,8 @@ function HatchClient.shown(): number
 	return shows
 end
 
-function HatchClient.play(Results: {Result}, eggName: string?)
-	if type(Results) ~= "table" then return end
+playVerified = function(Results: {Result}, eggName: string?): boolean
+	if type(Results) ~= "table" then return false end
 
 	local egg = if type(eggName) == "string" and eggName ~= "" then eggName else nil
 
@@ -957,11 +969,11 @@ function HatchClient.play(Results: {Result}, eggName: string?)
 		})
 	end
 
-	if #Rolls == 0 then return end
+	if #Rolls == 0 then return false end
 
 	if stage then
 		table.insert(Pending, { Rolls = Rolls, egg = egg })
-		return
+		return true
 	end
 
 	playToken += 1
@@ -970,13 +982,53 @@ function HatchClient.play(Results: {Result}, eggName: string?)
 
 	MenuClient.shroud(true)
 
-	if build(Rolls, egg) then return end
+	if build(Rolls, egg) then return true end
 
 	clear()
 
 	shows += 1
 
 	MenuClient.shroud(false)
+	return false
+end
+
+function HatchClient.play(Results: {Result}, eggName: string?)
+ -- Regular Win-Egg acknowledgements must not start a paid limited reveal.
+ if type(Results)~="table" then return false end
+ for _,result in Results do
+  if type(result)=="table" and Pet.isLimited(result.pet) then return false end
+ end
+ return playVerified(Results,eggName)
+end
+
+-- Reserved consumer for a FUTURE trusted server post-save notification.
+-- Phase 3 has no sender/Remote yet. No purchase callback or state refresh calls this.
+-- This checks the notification contract; it does not prove/save/grant a receipt.
+function HatchClient.playCommittedLimited(notice)
+ if type(notice)~="table" or notice.Saved~=true or notice.Status~="Granted" then
+  return false,"NotCommitted"
+ end
+ local purchaseId=notice.PurchaseId
+ if notice.ProductId~=Limited.ProductId or type(purchaseId)~="string" or #purchaseId==0 or #purchaseId>128 then
+  return false,"InvalidReceipt"
+ end
+ local result=notice.Result
+ if type(result)~="table" or type(result.pet)~="string" or type(result.id)~="string" or #result.id==0 then
+  return false,"InvalidResult"
+ end
+ local entry=Limited.ByName[result.pet]
+ if not entry or result.percent~=entry.Percent or not Pet.model(result.pet) then return false,"InvalidResult" end
+ local state=Pet.NormalizeState(notice.State)
+ if not state or state.Owned[result.id]~=result.pet then return false,"ResultNotOwned" end
+ if shownLimited[purchaseId] then return false,"AlreadyShown" end
+ shownLimited[purchaseId]=true -- Claim before building/queueing so repeats cannot race.
+ local ok,accepted=pcall(playVerified,{{pet=result.pet,percent=entry.Percent,duplicate=false,bonus=0}},nil)
+ if not ok or not accepted then
+  shownLimited[purchaseId]=nil
+  if not ok then clear();MenuClient.shroud(false);warn("[HatchClient] Limited display failed: "..tostring(accepted)) end
+  return false,"PresentationUnavailable"
+ end
+ return true,"Queued"
 end
 
 function HatchClient.start()

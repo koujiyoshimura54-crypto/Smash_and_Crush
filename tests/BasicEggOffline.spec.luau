@@ -22,7 +22,8 @@ local modules={Config={Pets={},Egg={reach=15}},Egg={
  isEgg=function(name) return eggEntries[name]~=nil end,
 }}
 local generated=10000
-local RS={Modules={Config="Config",Egg="Egg",Pet="Pet"}}
+local RS={Modules={Config="Config",Egg="Egg",Pet="Pet"},Config={LimitedEggConfig="Limited"}}
+-- INSERT LIMITED CONFIG
 local Players={}
 local game={ReplicatedStorage=RS}
 function game:GetService(name)
@@ -34,6 +35,7 @@ end
 local function require(name) return assert(modules[name],name) end
 -- INSERT PET
 modules.Pet=Pet
+local productionPetModel=Pet.model
 local attrs={}
 local player={Parent=Players,SetAttribute=function(_,k,v) attrs[k]=v end,GetAttribute=function(_,k) return attrs[k] end}
 local sessions={}
@@ -286,4 +288,73 @@ equal(request("OpenEgg","Rare","Open1").reason,"InventorySavePending")
 equal(durable.Win,0);mode=nil;distance=999
 equal(request("OpenEgg","Rare","Open1").ok,true,"lost reply confirms away from Egg")
 equal(durable.Win,0);equal(durable.Pets.Revision,1);distance=0
+-- Limited Phase 4: exact model lookup / server ownership / existing persistence.
+do
+ local templates={}
+ for _,entry in modules.Limited.Entries do
+  templates[entry.Name]={Name=entry.Name,IsA=function(_,kind) return kind=="Model" end}
+ end
+ local folder={FindFirstChild=function(_,name) return templates[name] end}
+ local assets={FindFirstChild=function(_,name) if name==modules.Limited.ModelsFolder then return folder end end}
+ function RS:FindFirstChild(name) return name=="Assets" and assets or nil end
+ Pet.model=productionPetModel
+ for _,entry in modules.Limited.Entries do equal(Pet.model(entry.Name),templates[entry.Name],"exact registered model") end
+ local total=0;for _,entry in modules.Limited.Entries do total+=entry.Percent end
+ equal(total,100);equal(modules.Limited.ByName.Pet_024.Percent,3);equal(modules.Limited.ByName.Pet_135.Percent,0.5)
+ equal(modules.Limited.PurchaseEnabled,false,"purchase remains disabled")
+ -- Synthetic in-memory ownership only; not a live grant or paid receipt.
+ s=reset(500)
+ for i,entry in modules.Limited.Entries do durable.Pets.Owned[guid(7000+i)]=entry.Name end
+ durable.Pets.Owned[guid(7008)]="Pet_042"
+ s.Data.Pets=copy(durable.Pets)
+ -- INSERT LIMITED SERVER
+ for i,entry in modules.Limited.Entries do
+  local id=guid(7000+i)
+  equal(limitedServer.equip(player,id,guid(7100+i),s.Data.Pets.Revision),true,"equip limited "..entry.Name)
+  equal(s.Data.Pets.Equipped[1],id);equal(s.Data.Pets.Equipped[2],nil);equal(attrs.Pet,entry.Name)
+ end
+ local writeCount=writes
+ equal(select(2,limitedServer.equip(player,guid(7999),guid(7200),s.Data.Pets.Revision)),"PetNotOwned")
+ equal(writes,writeCount,"unowned equip never persists")
+ equal(limitedServer.equip(player,guid(7007),guid(7201),s.Data.Pets.Revision),true)
+ equal(s.Data.Pets.Equipped[1],"","select equipped copy to remove")
+ equal(attrs.Pet,"");equal(attrs.Pet2,"")
+ equal(limitedServer.equip(player,guid(7001),guid(7202),s.Data.Pets.Revision),true)
+ equal(limitedServer.equip(player,guid(7008),guid(7203),s.Data.Pets.Revision),true)
+ equal(s.Data.Pets.Equipped[1],guid(7008),"same species switches by copy ID")
+ equal(s.Data.Pets.Owned[guid(7001)],"Pet_042","prior copy retained")
+ equal(durable.Win,500,"limited equip has no payment")
+ local count=0;for _ in pairs(durable.Pets.Owned) do count+=1 end;equal(count,8)
+ local old=copy(durable.Pets);old.Equipped={guid(7004),guid(7001)}
+ local migrated=assert(Pet.NormalizeState(old));equal(migrated.Equipped[1],guid(7004));equal(migrated.Equipped[2],nil)
+
+ -- Exact future notification consumer with a queue spy; no animation/UI/Remote.
+ local HatchClient={};local Limited=modules.Limited;local shownLimited={}
+ local calls=0;local last;local fail=false
+ local playVerified=function(results,egg)
+  if fail then return false end
+  calls+=1;last={results=results,egg=egg};return true
+ end
+ local function clear() end
+ local MenuClient={shroud=function() end}
+ local function warn() end
+ -- INSERT LIMITED HATCH GATE
+ local notice={ProductId=Limited.ProductId,PurchaseId="offline-receipt-1",Saved=true,Status="Granted",
+  Result={id=guid(7001),pet="Pet_042",percent=25},State=copy(durable.Pets)}
+ local bad=copy(notice);bad.Saved=false;equal(select(2,HatchClient.playCommittedLimited(bad)),"NotCommitted")
+ bad=copy(notice);bad.Status="Cancelled";equal(HatchClient.playCommittedLimited(bad),false)
+ bad=copy(notice);bad.ProductId=1;equal(HatchClient.playCommittedLimited(bad),false)
+ bad=copy(notice);bad.Result.id=guid(7999);equal(select(2,HatchClient.playCommittedLimited(bad)),"ResultNotOwned")
+ bad=copy(notice);bad.Result.percent=1;equal(HatchClient.playCommittedLimited(bad),false)
+ equal(calls,0,"cancel/unconfirmed/invalid notifications produce no reveal")
+ equal(HatchClient.play({{pet="Pet_042",percent=25}},nil),false,"generic Win route rejects limited result")
+ equal(HatchClient.playCommittedLimited(notice),true);equal(calls,1);equal(last.egg,nil,"RGBEgg fallback selected")
+ equal(last.results[1].pet,"Pet_042");equal(last.results[1].bonus,0);equal(#last.results,1)
+ equal(select(2,HatchClient.playCommittedLimited(notice)),"AlreadyShown");equal(calls,1)
+ local second=copy(notice);second.PurchaseId="offline-receipt-2";second.Result.id=guid(7008)
+ fail=true;equal(HatchClient.playCommittedLimited(second),false);fail=false
+ equal(HatchClient.playCommittedLimited(second),true);equal(calls,2)
+ equal(HatchClient.playCommittedLimited(notice),false,"older notification still deduplicated");equal(calls,2)
+end
+
 print("BASIC_EGG_OFFLINE_PASS",assertions)

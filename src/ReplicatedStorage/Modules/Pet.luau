@@ -1,6 +1,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage.Modules.Config)
+local Limited = require(ReplicatedStorage.Config.LimitedEggConfig)
 
 type Colors = {Color3}
 
@@ -32,6 +33,12 @@ function Pet.container(playerData: any): any
 end
 
 function Pet.model(name: string): Model?
+	if Limited.ByName[name] then
+		local assets=ReplicatedStorage:FindFirstChild("Assets")
+		local limited=assets and assets:FindFirstChild(Limited.ModelsFolder)
+		local model=limited and limited:FindFirstChild(name)
+		return if model and model:IsA("Model") then model else nil
+	end
 	local folder: Instance? = ReplicatedStorage
 	for _, step in ipairs(MODELS_PATH) do
 		if not folder then return nil end
@@ -49,6 +56,46 @@ function Pet.model(name: string): Model?
 	end
 
 	return nil
+end
+
+-- Prepare display/follower clones only. Never edits the purchased templates.
+function Pet.isLimited(name: string): boolean
+ return Limited.ByName[name]~=nil
+end
+
+local function visibleBounds(model: Model): (Vector3,Vector3)
+ local low=Vector3.new(math.huge,math.huge,math.huge)
+ local high=-low
+ for _,part in model:GetDescendants() do
+  if part:IsA("BasePart") and part.Transparency<1 then
+   for x=-1,1,2 do for y=-1,1,2 do for z=-1,1,2 do
+    local point=part.CFrame:PointToWorldSpace(part.Size*Vector3.new(x,y,z)/2)
+    low=low:Min(point);high=high:Max(point)
+   end end end
+  end
+ end
+ assert(low.X<math.huge,"Limited Pet has no visible geometry")
+ return low,high
+end
+
+function Pet.prepareLimited(model: Model,name: string,height: number?,grounded: boolean?): Vector3?
+ local entry=Limited.ByName[name]
+ if not entry then return nil end
+ assert(model.PrimaryPart,"Limited Pet PrimaryPart missing")
+ -- Pivot the entire rig; assigning only primary.CFrame breaks multipart layouts.
+ model:PivotTo(CFrame.Angles(0,math.rad(entry.Yaw),0))
+ local low,high=visibleBounds(model)
+ if height then
+  assert(height>0 and high.Y>low.Y,"Invalid limited Pet height")
+  model:ScaleTo(model:GetScale()*height/(high.Y-low.Y))
+  low,high=visibleBounds(model)
+ end
+ local center=(low+high)/2
+ local anchor=if grounded then Vector3.new(center.X,low.Y,center.Z) else center
+ local primary=model.PrimaryPart :: BasePart
+ primary.PivotOffset=primary.CFrame:ToObjectSpace(CFrame.new(anchor))
+ model:PivotTo(CFrame.identity)
+ return high-low
 end
 
 local function snapshot(playerData: any): {[string]: any}?

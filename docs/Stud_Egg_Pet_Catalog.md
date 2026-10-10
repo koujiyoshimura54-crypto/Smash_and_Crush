@@ -191,3 +191,37 @@ The regular OpenEgg template, EggClient/EggServer, four Win Eggs, six candidates
 After the user reported the missing facility and explicitly authorized movement, `Workspace.Chill Octopus` was moved from the original purchased map to the active World1 Lobby. Its saved primary `Workspace.Chill Octopus.PetMesh` now has position **(315,8.665255,40)** and yaw+45 degrees toward Spawn. The original hierarchy, appearance, size, Prompt, UI and Phase 2 behavior are unchanged; the earlier keep-original-position instruction is superseded.
 
 [Actual Edit view from the Spawn side](LimitedEgg01_World1_Placement.jpg). Ground contactY4, zero other parts overlapping the footprint with2 studs of X/Z padding, unobstructed Spawn-eye ray, distance38.58 studs. This corrects the earlier verification gap: the initial station screenshot proved only visibility in the original purchased map. Only one CFrame property changed. Cloud/live interaction still requires user reflection; purchase remains disabled. Verification Studio exited and target.lock cleared; no further Studio launch.
+
+
+## Limited Egg 01 Phase 4 - Hatch models, equipment and follow (2026-10-10)
+
+**Phase 3 is still absent.** Latest origin/main1d12daf and CurrentCloud had only the display Product ID, no limited receipt/roll/grant/save route. PurchaseEnabled remains false and the green button remains disabled. This phase prepares presentation and connects the seven model names to existing owned-copy equipment/follow; it does not enable paid gameplay.
+
+The current user instruction supersedes the earlier024/135 odds assignment: Pet_042/064/081 each25%,08615%,0946.5%,**0243%,1350.5%**, total100%. Product3717610547 / Limited Egg 01 and the Chill Octopus facility remain.
+
+### Changed Full Paths
+
+| Full Path | Change |
+|---|---|
+| `ReplicatedStorage.Config.LimitedEggConfig` | Align024=3% and135=0.5% with the latest instruction; keep purchase disabled. |
+| `ReplicatedStorage.Modules.Pet` | Resolve only the seven registered names from existing Assets.LimitedEgg01Pets, making the existing server ownership/equip checks and follower/Hatch lookup accept their actual purchased models. Add clone-only whole-model orientation, visible-bounds scaling and center/bottom pivot preparation. Do not add abilities, rarity, merge, a grant or a save schema. |
+| `StarterPlayer.StarterPlayerScripts.Services.PetFollowClient` | Use whole-model preparation only for limited names; visible height uses existing Config.PetFollow.height=3. Bottom pivot plus existing bob amplitude avoids embedding the multipart body in the floor. Existing movement, yaw smoothing, hop, sway and cleanup retained; normal Pet branch unchanged. |
+| `StarterPlayer.StarterPlayerScripts.Services.HatchClient` | Mount limited models together instead of resetting the root alone. Fit their visible bounding sphere during the existing rotating-camera display. Keep existing RGBEgg/animation/SFX/result-name flow. Add a guarded, currently unbound post-save result consumer and session visual deduplication. |
+
+No server Source, receipt routing, PlayerData save function, Remote, purchased UI artwork, normal Egg config, facility transform or template instance was changed by this implementation.
+
+### Deferred post-save notification contract
+
+`HatchClient.playCommittedLimited(notice)` is reserved for a **future trusted server notification sent only after durable save success**. Required fields are ProductId, PurchaseId, Saved=true, Status="Granted", Result={id,pet,percent} and State containing that owned copy. Wrong product/odds, unowned/mismatched copy, cancellation/unconfirmed status are rejected. Claim the PurchaseId before queueing; repeats are rejected even after a different receipt. Failed presentation setup releases that visual claim for retry. This cache is session-only and is not a durable receipt or grant marker.
+
+The ordinary Win-Egg Hatch entry rejects the seven paid names; a state refresh alone never starts their reveal. The prepared consumer reuses RGBEgg and the existing Hatch queue. **There is no limited notification sender/listener yet**, because no Phase 3 durable receipt exists. The consumer validates a future notification contract; it does not establish persistence authority by itself. Phase 3 still must validate payment/policy, atomically save/deduplicate the award, then wire this entry from its server-confirmed result. No purchase Prompt/completion event has been connected.
+
+### Verification and limits
+
+- Extended existing BasicEggOffline.py/spec: **545 assertions passed**, including all regular Egg1/3/8 price/pool/save-retry tests, seven registered model names, exact server PetServer.equip path with synthetic in-memory ownership, unowned refusal/no write, swap/toggle-off, same-species copy IDs, legacy two-equipped normalization and unchanged Win. Also tested exact limited notification consumer with a presentation spy: cancelled/unconfirmed/invalid inputs do not reveal, correct result selects RGBEgg fallback, duplicate/older notifications do not replay, setup failure can retry. No real player/store/Remote or purchased grant.
+- Four production Sources compiled. Same-file write initially changed only those Source values; reDecode179515,76082 references,366 SharedStrings/205757 indexes, UniqueId duplicates0. Agent output SHA2561fc67a98c2269969013dc1e5a84e46d9e04684f7f37611d7ecd2ad7283464e8a.
+- One actual Studio Edit load, PlaceId0, PID11620. Disposable copies exercised the exact follower refresh/update code against local mock player tables, not Players or real character data: each model visible height3, max relative-part error0.00000236 studs, movement13.9222 studs, one-slot/idempotent refresh and unequip cleanup passed. No Rig Animation played.
+- Exact existing Hatch.mount displayed all seven purchased models. Checked visible bounds at16 camera orbit angles per model: all fit, worst normalized viewport ratio0.819. RGBEgg fallback identity and current percentages verified. [Actual Edit geometry montage](LimitedEgg01_Phase4_HatchModels.jpg) uses disposable candidate cells to inspect Hatch mounting; it is **not a capture of the full timed Hatch sequence or a purchased result**.
+- Removed all preview modules/UI and restored original ScreenGui states. During shutdown, PID11620 had already exited before the close command executed. No Studio process or target.lock remained; no lock deletion was needed. Earlier Codex verification sessions were also absent. No new Studio was opened for the final check.
+- A separate file write at19:39:07 occurred after the display checks; no agent Save/Publish was issued. Preserved that newest file instead of restoring the earlier output. Final SHA256**c5d080bcd0f0adc97c5fa85cd4b8bd7bb6cdd1e8628dfdb4b6e44d419419399b**,179534 instances: all four task Sources still match, no task preview instances,366 SharedStrings/205776 indexes,76112 references,UniqueId duplicates0. Purchased Main remains disabled; saved StrengthGui/StageSkipGui enabled and purchased ScreenGui disabled. This newest external version was reDecoded, not reopened after cleanup.
+- Cloud has not been reflected or played. Full timed Hatch/SFX, real replicated equip/follow, actual receipt dispatch, purchase/cancel/save-uncertain behavior on a server, mobile devices and cross-session receipt handling remain unverified. Phase 3 must precede an end-to-end purchase test. No local Play, purchase, real grant, DataStore change, Save/Publish, backup, alternate rbxl or work folder.

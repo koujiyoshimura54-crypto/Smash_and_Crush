@@ -735,3 +735,11 @@
 
 - Moved existing Workspace.Chill Octopus to (315,8.665255,40), facing the active World1 Spawn. The prior retained position was in the original purchased map, outside the active Lobby.
 - One CFrame property only; Source/UI/appearance/size/gameplay unchanged. Actual Edit load, floor contact, clear footprint and unobstructed Spawn view verified; [placement image](LimitedEgg01_World1_Placement.jpg). ReDecode/reference/SharedString/UniqueId0 passed. Own Studio/lock released; Cloud interaction unverified.
+
+
+## 2026-10-10 - Limited Egg Phase 4 model, Hatch and follower support
+
+- Registered seven purchased multipart Pets with existing owned-copy equipment/follow and whole-model geometry handling; max1 and unowned refusal preserved. Current requested odds0243%/1350.5% applied; other five odds unchanged.
+- Existing Hatch/RGBEgg mounting prepared, with a guarded future post-save notification consumer and session visual deduplication. Phase 3 remains absent, consumer unbound, purchase button disabled; no payment/roll/save implementation.
+- 545 offline assertions, four Source compilations, real Studio Edit load, seven-model relative geometry/follow simulation and16-angle Hatch viewport fit passed. [Actual image, precise scope and unverified live behavior](Stud_Egg_Pet_Catalog.md#limited-egg-01-phase-4---hatch-models-equipment-and-follow-2026-10-10).
+- Preserved a separately updated newest file after verification; task Sources/no-preview/final reDecode/reference/SharedString/UniqueId0 checked. Studio process and target.lock absent; no final reopen or agent Save/Publish.
