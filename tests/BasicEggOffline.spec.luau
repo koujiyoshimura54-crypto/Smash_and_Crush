@@ -10,14 +10,25 @@ local function copy(value)
 end
 local function guid(n) return string.format("00000000-0000-0000-0000-%012d",n) end
 local odds={Dog=40,["Grey Cat"]=25,["Pink Bunny"]=15,Sheep=10,Bear=7,Camel=3}
-local modules={Config={Pets={},Egg={reach=15}},Egg={pets=function() return odds end}}
+local eggEntries={
+ Basic={wins=100,Pets=odds},
+ Rare={wins=10000,Pets={Cow=40,Giraffe=25,Lion=15,Lizard=10,Spider=7,Bat=3}},
+ Legendary={wins=100000,Pets={Elephant=40,Mammoth=25,Penguin=15,Crocodile=10,Octopus=7,Shark=3}},
+ Mythic={wins=1000000,Pets={Turtle=40,Alien=25,Anglerfish=15,Dino=10,Scorpion=7,["Evil Dragon"]=3}},
+}
+local modules={Config={Pets={},Egg={reach=15}},Egg={
+ pets=function(name) return eggEntries[name] and eggEntries[name].Pets end,
+ price=function(name) return eggEntries[name] and eggEntries[name].wins or 0 end,
+ isEgg=function(name) return eggEntries[name]~=nil end,
+}}
+local generated=10000
 local RS={Modules={Config="Config",Egg="Egg",Pet="Pet"}}
 local Players={}
 local game={ReplicatedStorage=RS}
 function game:GetService(name)
  if name=="Players" then return Players end
  if name=="ReplicatedStorage" then return RS end
- if name=="HttpService" then return {GenerateGUID=function() error("Unexpected roll") end} end
+ if name=="HttpService" then return {GenerateGUID=function() generated+=1;return guid(generated) end} end
  error(name)
 end
 local function require(name) return assert(modules[name],name) end
@@ -67,7 +78,7 @@ local function results(n,offset)
  return out
 end
 local function hatch(id,rev,n,offset)
- return PlayerDataService.MutatePets(player,guid(id),rev,"Hatch",{Count=n,PriceWin=100*n,Results=results(n,offset)})
+ return PlayerDataService.MutatePets(player,guid(id),rev,"Hatch",{EggName="Basic",Count=n,PriceWin=100*n,Results=results(n,offset)})
 end
 local s=reset()
 equal(hatch(101,0,3),true,"3 hatch")
@@ -198,7 +209,7 @@ s=reset();s.StudioStartOverride={};equal(select(2,hatch(504,0,1)),"StudioOverrid
 s=reset();durable.ResetToken="new";equal(select(2,hatch(505,0,1)),"SaveSupersededByReset");equal(writes,0)
 s=reset();durable.Pets={Version=99};equal(select(2,hatch(506,0,1)),"InvalidPetsVersion");equal(writes,0)
 s=reset();equal(select(2,hatch(507,0,2)),"InvalidPetHatch");equal(writes,0)
-s=reset();equal(select(2,PlayerDataService.MutatePets(player,guid(508),0,"Hatch",{Count=1,PriceWin=100,Results={{id=guid(1),pet="Dog",percent=3}}})),"InvalidPetResult")
+s=reset();equal(select(2,PlayerDataService.MutatePets(player,guid(508),0,"Hatch",{EggName="Basic",Count=1,PriceWin=100,Results={{id=guid(1),pet="Dog",percent=3}}})),"InvalidPetResult")
 equal(writes,0)
 
 -- Exact server request path with deliberately limited fixture geometry.
@@ -210,7 +221,7 @@ modules.Egg.FolderName="Eggs"
 local distance=99
 local position=setmetatable({}, {__sub=function() return {Magnitude=distance} end})
 local anchor={Position=position,IsA=function(_,c) return c=="BasePart" end}
-local workspace={FindFirstChild=function() return {FindFirstChild=function() return anchor end} end}
+local workspace={FindFirstChild=function() return {FindFirstChild=function(_,name) return eggEntries[name] and anchor end} end}
 player.Character={FindFirstChild=function() return {Position=position} end,FindFirstChildOfClass=function() return {Health=100} end}
 -- INSERT EGG SERVER
 local function request(action,a,b)
@@ -218,11 +229,61 @@ local function request(action,a,b)
  local fresh=table.clone(player);sessions[fresh]=sessions[player]
  return EggServer.request(fresh,action,guid(900),0,a,b)
 end
-s=reset();equal(request("OpenEgg","Rare","Open1").reason,"EggUnavailable")
+s=reset();equal(request("OpenEgg","Unknown","Open1").reason,"EggUnavailable")
 equal(request("OpenEgg","Basic","Open2").reason,"InvalidOpenCount")
 equal(request("OpenEgg","Basic","Open1").reason,"TooFarFromEgg")
-distance=0;modules.Egg.price=function() return 100 end
+distance=0
 s=reset(99);equal(request("OpenEgg","Basic","Open1").reason,"NotEnoughWin")
 s=reset();s.Loaded=false;equal(request("OpenEgg","Basic","Open1").reason,"DataNotLoaded")
 equal(writes,0,"rejected requests never write")
+
+-- All purchased Egg groups/counts use their own server-selected price and pool.
+modules.Egg.ranked=function(pool)
+ local list={};for pet,percent in pairs(pool) do table.insert(list,{pet=pet,percent=percent}) end
+ table.sort(list,function(a,b) return a.percent>b.percent end)
+ return list
+end
+local picked=0
+modules.Egg.pick=function(list) picked+=1;local item=list[(picked-1)%#list+1];return item.pet,item.percent end
+Pet.model=function(name)
+ for _,entry in pairs(eggEntries) do if entry.Pets[name] then return {} end end
+ return nil
+end
+for name,entry in pairs(eggEntries) do
+ for _,count in ipairs({1,3,8}) do
+  s=reset(entry.wins*count+7);picked=0
+  local response=request("OpenEgg",name,"Open"..count)
+  equal(response.ok,true,name.." hatch "..count)
+  equal(durable.Win,7,name.." exact count price")
+  equal(#durable.Pets.LastResults,count)
+  local owned=0;for id,pet in pairs(durable.Pets.Owned) do owned+=1;equal(entry.Pets[pet]~=nil,true,name.." pool") end
+  equal(owned,count,"individual copy IDs")
+  for _,result in ipairs(durable.Pets.LastResults) do equal(result.percent,entry.Pets[result.pet]);equal(result.bonus,0) end
+  equal(request("OpenEgg",name,"Open"..count).ok,true,"receipt replay across counts")
+  equal(durable.Win,7);equal(durable.Pets.Revision,1)
+  local loaded=assert(Pet.NormalizeState(copy(durable.Pets)))
+  local id=loaded.LastResults[1].id
+  equal(PlayerDataService.MutatePets(player,guid(901),1,"Equip",id),true)
+  equal(attrs.Pet,loaded.Owned[id]);equal(attrs.Pet2,"")
+  equal(#durable.Pets.Equipped,1)
+ end
+ s=reset(entry.wins-1);equal(request("OpenEgg",name,"Open1").reason,"NotEnoughWin");equal(writes,0)
+ s=reset(entry.wins);distance=16;equal(request("OpenEgg",name,"Open1").reason,"TooFarFromEgg");equal(writes,0);distance=0
+end
+-- Cross-Egg or reduced-price payloads cannot bypass the persistence validator.
+s=reset(10000000)
+for _,payload in ipairs({
+ {EggName="Rare",Count=1,PriceWin=100,Results={{id=guid(1),pet="Cow",percent=40}}},
+ {EggName="Unknown",Count=1,PriceWin=100,Results=results(1)},
+ {EggName="Rare",Count=1,PriceWin=10000,Results=results(1)},
+ {EggName="Mythic",Count=1,PriceWin=1000000,Results={{id=guid(1),pet="Turtle",percent=3}}},
+}) do
+ equal(PlayerDataService.MutatePets(player,guid(999),0,"Hatch",payload),false)
+ equal(writes,0)
+end
+s=reset(10000);mode="after"
+equal(request("OpenEgg","Rare","Open1").reason,"InventorySavePending")
+equal(durable.Win,0);mode=nil;distance=999
+equal(request("OpenEgg","Rare","Open1").ok,true,"lost reply confirms away from Egg")
+equal(durable.Win,0);equal(durable.Pets.Revision,1);distance=0
 print("BASIC_EGG_OFFLINE_PASS",assertions)

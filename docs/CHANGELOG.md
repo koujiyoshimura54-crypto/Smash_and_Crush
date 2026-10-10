@@ -683,3 +683,10 @@
 
 - Seven purchased captions: +N Strength / 0.5s -> +N Strength (N=1/2/3/20). Removed Japanese seconds suffix from the shared display helper too; numbers, layout, artwork and gameplay unchanged.
 - CurrentCloud reDecode and Source compile passed; exact diff limited to seven Text values and one Source. No Studio/Play/Save/Publish; existing user session/lock untouched, Cloud display unverified. Preserved Pet equipment and Basic glow changes.
+
+
+## 2026-10-10 - Purchased Rare, Legendary and Mythic Eggs
+
+- Reused the actual three Eggs,21 stand parts and original glow at the purchased relative layout beside unchanged Basic/shared carpet. Configured prices10000/100000/1000000 Win and original six-Pet pools/probabilities retained; Open1/3/8 costs scale by count.
+- Extended only Basic-fixed server/save/client routing; reused purchased probability UI, Hatch, per-copy inventory and single equipped follower. No abilities, Speed compensation, extra datastore or Main activation.
+- Four-Source syntax,462 offline assertions, reDecode/reference/SharedString/UniqueId checks passed. Exact CurrentCloud opened in Studio Edit; four facilities/glow/carpet/approach checked and screenshot recorded. Own verification Studio/lock cleared. Cloud gameplay remains unverified; no Play/purchase/DataStore write test/Save/Publish.

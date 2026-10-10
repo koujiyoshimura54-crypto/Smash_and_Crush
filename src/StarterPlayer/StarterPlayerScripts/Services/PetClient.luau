@@ -464,7 +464,7 @@ function PetClient.notify(reason)
 	local messages={
 		NotEnoughWin="Not enough Win.",DataNotLoaded="Player data is not ready.",
 		DataSaving="Saving. Please wait.",InventorySavePending="Saving pets. Please wait.",
-		TooFarFromEgg="Move closer to the Basic Egg.",PetStateChanged="Pet inventory refreshed. Please try again.",
+		TooFarFromEgg="Move closer to the Egg.",PetStateChanged="Pet inventory refreshed. Please try again.",
 		StudioOverrideActive="Pet purchases are unavailable during a Studio data override.",
 		PetRequestFailed="Unable to confirm the request. Please wait.",PleaseWait="Please wait.",
 	}
@@ -486,7 +486,7 @@ function PetClient.request(action,a,b)
 			if response.ok then
 				-- Receipt identity prevents an unrelated refresh/retry from replaying Hatch.
 				if action=="OpenEgg" and playerData and playerData.LastRequestId==id then
-					require(script.Parent.HatchClient).play(playerData.LastResults,"Basic")
+					require(script.Parent.HatchClient).play(playerData.LastResults,a)
 				end
 				pending=false
 				return

@@ -1,4 +1,4 @@
--- Basic only. The purchased Main/Data/Quest/Shop pipelines stay disabled.
+-- Purchased configured Eggs only. Main/Data/Quest/Shop pipelines stay disabled.
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
 local Http=game:GetService("HttpService")
@@ -15,11 +15,11 @@ local function reply(player,ok,reason)
  return {ok=ok,reason=reason,state=state,pending=player:GetAttribute("PetSavePending")==true}
 end
 local function open(player,name,button,id,revision)
- if name~="Basic" then return false,"EggUnavailable" end
+ if not Egg.isEgg(name) then return false,"EggUnavailable" end
  local count=Egg.count(button)
  if count~=1 and count~=3 and count~=8 then return false,"InvalidOpenCount" end
  local folder=workspace:FindFirstChild(Egg.FolderName)
- local part=folder and folder:FindFirstChild("Basic")
+ local part=folder and folder:FindFirstChild(name)
  local character=player.Character
  local root=character and character:FindFirstChild("HumanoidRootPart")
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
@@ -31,11 +31,12 @@ local function open(player,name,button,id,revision)
  local session=Data.Get(player)
  if session.Saving or session.PendingItemMutation then return false,"DataSaving" end
  if state.Revision~=revision then return false,"PetStateChanged" end
- local price=Egg.price("Basic")*count
- if price~=100*count then return false,"EggPriceUnavailable" end
+ local unitPrice=Egg.price(name)
+ if unitPrice<=0 or unitPrice%1~=0 or unitPrice>9007199254740991/count then return false,"EggPriceUnavailable" end
+ local price=unitPrice*count
  if session.Data.Win<price then return false,"NotEnoughWin" end
- local list=Egg.ranked(Egg.pets("Basic"))
- if #list~=6 then return false,"EggUnavailable" end
+ local list=Egg.ranked(Egg.pets(name))
+ if #list==0 then return false,"EggUnavailable" end
  for _,slot in ipairs(list) do
   if not Pet.model(slot.pet) then return false,"PetModelUnavailable" end
  end
@@ -45,7 +46,7 @@ local function open(player,name,button,id,revision)
   if not pet then return false,"EggUnavailable" end
   table.insert(results,{id=Http:GenerateGUID(false),pet=pet,percent=percent,duplicate=false,bonus=0})
  end
- return Data.MutatePets(player,id,revision,"Hatch",{Count=count,PriceWin=price,Results=results})
+ return Data.MutatePets(player,id,revision,"Hatch",{EggName=name,Count=count,PriceWin=price,Results=results})
 end
 function M.request(player,action,id,revision,a,b)
  if player.Parent~=Players then return {ok=false,reason="InvalidPlayer"} end
@@ -79,12 +80,15 @@ function M.request(player,action,id,revision,a,b)
 end
 function M.init()
  local folder=workspace:FindFirstChild(Egg.FolderName)
- local basic=folder and folder:FindFirstChild("Basic")
- local prize=basic and basic:FindFirstChild("Prize")
- if prize then
-  for _,name in ipairs({"Info","InfoShadow"}) do
-   local label=prize:FindFirstChild(name)
-   if label and label:IsA("TextLabel") then label.Text=tostring(Egg.price("Basic")) end
+ if not folder then return end
+ for _,part in ipairs(folder:GetChildren()) do
+  if not part:IsA("BasePart") or not Egg.isEgg(part.Name) then continue end
+  local prize=part:FindFirstChild("Prize")
+  if prize then
+   for _,name in ipairs({"Info","InfoShadow"}) do
+    local label=prize:FindFirstChild(name)
+    if label and label:IsA("TextLabel") then label.Text=tostring(Egg.price(part.Name)) end
+   end
   end
  end
 end
@@ -99,7 +103,7 @@ function M.start()
  remote.OnServerInvoke=function(player,...)
   local ok,result=pcall(M.request,player,...)
   if ok then return result end
-  warn("[BasicEgg] Request failed: "..tostring(result))
+  warn("[EggServer] Request failed: "..tostring(result))
   return reply(player,false,"PetRequestFailed")
  end
 end

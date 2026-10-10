@@ -468,7 +468,7 @@ local function fit(egg: Sheet, camera: Camera, delta: number, wanted: boolean)
 end
 
 function EggClient.start()
-	-- Basic-only startup; no purchased Data profile is loaded.
+	-- All purchased configured Eggs; no purchased Data profile is loaded.
 
 	local found = findPath(ReplicatedStorage, TEMPLATE_PATH)
 	if found and found:IsA("BillboardGui") then
@@ -489,13 +489,13 @@ function EggClient.start()
 	end
 
 	for _, child in ipairs(folder:GetChildren()) do
-		if not child:IsA("BasePart") or child.Name ~= "Basic" then continue end
+		if not child:IsA("BasePart") or not Egg.isEgg(child.Name) then continue end
 
 		register(child)
 	end
 
 	folder.ChildAdded:Connect(function(child)
-		if not child:IsA("BasePart") or child.Name ~= "Basic" then return end
+		if not child:IsA("BasePart") or not Egg.isEgg(child.Name) then return end
 
 		register(child)
 	end)

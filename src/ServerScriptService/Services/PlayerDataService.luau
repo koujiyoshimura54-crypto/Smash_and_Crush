@@ -1101,11 +1101,18 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload)
   ResetToken=s.Data.ResetToken,PriceWin=0,WinBefore=s.Data.Win,
   ShopWinBefore=s.Data.ShopRewards.WinGrantedTotal}
  if action=="Hatch" then
+  local egg=require(game.ReplicatedStorage.Modules.Egg)
   if type(payload)~="table" or type(payload.Results)~="table"
+   or type(payload.EggName)~="string" or not egg.isEgg(payload.EggName)
    or (payload.Count~=1 and payload.Count~=3 and payload.Count~=8)
-   or #payload.Results~=payload.Count or payload.PriceWin~=100*payload.Count then return false,"InvalidPetHatch" end
+   or #payload.Results~=payload.Count then return false,"InvalidPetHatch" end
+  local unitPrice=egg.price(payload.EggName)
+  if not finite(unitPrice) or unitPrice<=0 or unitPrice%1~=0
+   or unitPrice>9007199254740991/payload.Count
+   or payload.PriceWin~=unitPrice*payload.Count then return false,"InvalidPetHatch" end
   op.PriceWin=payload.PriceWin;op.Results=payload.Results
-  local allowed=require(game.ReplicatedStorage.Modules.Egg).pets("Basic")
+  local allowed=egg.pets(payload.EggName)
+  if type(allowed)~="table" then return false,"InvalidPetHatch" end
   for _,result in ipairs(op.Results) do
    if type(result)~="table" or type(result.id)~="string" or #result.id~=36
     or type(result.pet)~="string" or allowed[result.pet]==nil or allowed[result.pet]~=result.percent then return false,"InvalidPetResult" end

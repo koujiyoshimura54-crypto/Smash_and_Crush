@@ -1,0 +1,658 @@
+{
+  "date": "2026-10-10",
+  "beforeSha256": "9d732273f9c104073ca653008273dddf17e8ca4ed3c902c40afaead1c4fa910f",
+  "afterSha256": "672fd776d39b16ab60551ceeeb8b17886ea5fcef8f5ba60e26559dc80d4c947a",
+  "sources": {
+    "ServerScriptService.Services.EggServer": "src/ServerScriptService/Services/EggServer.luau",
+    "ServerScriptService.Services.PlayerDataService": "src/ServerScriptService/Services/PlayerDataService.luau",
+    "StarterPlayer.StarterPlayerScripts.Services.EggClient": "src/StarterPlayer/StarterPlayerScripts/Services/EggClient.luau",
+    "StarterPlayer.StarterPlayerScripts.Services.PetClient": "src/StarterPlayer/StarterPlayerScripts/Services/PetClient.luau"
+  },
+  "geometry": [
+    {
+      "ref": 3568,
+      "path": "Workspace.Eggs.Rare",
+      "property": "CFrame",
+      "before": [
+        42.95859909057617,
+        12.258779525756836,
+        6.6668291091918945
+      ],
+      "after": [
+        342.9585990905762,
+        12.258779525756836,
+        6.6668291091918945
+      ]
+    },
+    {
+      "ref": 116708,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.RareStand.Part",
+      "property": "CFrame",
+      "before": [
+        42.7467155456543,
+        5.1376543045043945,
+        6.624468803405762
+      ],
+      "after": [
+        342.7467155456543,
+        5.1376543045043945,
+        6.624468803405762
+      ]
+    },
+    {
+      "ref": 116709,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.RareStand.Part",
+      "property": "CFrame",
+      "before": [
+        46.687255859375,
+        4.58683443069458,
+        8.404036521911621
+      ],
+      "after": [
+        346.687255859375,
+        4.58683443069458,
+        8.404036521911621
+      ]
+    },
+    {
+      "ref": 116710,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.RareStand.Part",
+      "property": "CFrame",
+      "before": [
+        44.90768814086914,
+        4.883437633514404,
+        10.05652141571045
+      ],
+      "after": [
+        344.90768814086914,
+        4.883437633514404,
+        10.05652141571045
+      ]
+    },
+    {
+      "ref": 116711,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.RareStand.Part",
+      "property": "CFrame",
+      "before": [
+        39.568878173828125,
+        4.84105110168457,
+        3.44663143157959
+      ],
+      "after": [
+        339.5688781738281,
+        4.84105110168457,
+        3.44663143157959
+      ]
+    },
+    {
+      "ref": 116712,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.RareStand.Part",
+      "property": "CFrame",
+      "before": [
+        44.017852783203125,
+        4.756303787231445,
+        6.6668291091918945
+      ],
+      "after": [
+        344.0178527832031,
+        4.756303787231445,
+        6.6668291091918945
+      ]
+    },
+    {
+      "ref": 116713,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.RareStand.Part",
+      "property": "CFrame",
+      "before": [
+        42.7467155456543,
+        4.713943004608154,
+        6.624468803405762
+      ],
+      "after": [
+        342.7467155456543,
+        4.713943004608154,
+        6.624468803405762
+      ]
+    },
+    {
+      "ref": 116714,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.RareStand.Part",
+      "property": "CFrame",
+      "before": [
+        39.229942321777344,
+        4.84105110168457,
+        9.548089027404785
+      ],
+      "after": [
+        339.22994232177734,
+        4.84105110168457,
+        9.548089027404785
+      ]
+    },
+    {
+      "ref": 116707,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.RareStand",
+      "property": "WorldPivotData",
+      "before": [
+        42.95857238769531,
+        5.180016040802002,
+        6.6668291091918945
+      ],
+      "after": [
+        342.9585723876953,
+        5.180016040802002,
+        6.6668291091918945
+      ]
+    },
+    {
+      "ref": 3534,
+      "path": "Workspace.Eggs.Legendary",
+      "property": "CFrame",
+      "before": [
+        42.96541976928711,
+        12.430872917175293,
+        20.474342346191406
+      ],
+      "after": [
+        342.9654197692871,
+        12.430872917175293,
+        20.474342346191406
+      ]
+    },
+    {
+      "ref": 116716,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        46.5531120300293,
+        4.58683443069458,
+        22.404033660888672
+      ],
+      "after": [
+        346.5531120300293,
+        4.58683443069458,
+        22.404033660888672
+      ]
+    },
+    {
+      "ref": 116717,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        44.77354431152344,
+        4.883437633514404,
+        24.056522369384766
+      ],
+      "after": [
+        344.77354431152344,
+        4.883437633514404,
+        24.056522369384766
+      ]
+    },
+    {
+      "ref": 116718,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        39.43473434448242,
+        4.84105110168457,
+        17.446632385253906
+      ],
+      "after": [
+        339.4347343444824,
+        4.84105110168457,
+        17.446632385253906
+      ]
+    },
+    {
+      "ref": 116719,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        39.09579849243164,
+        4.84105110168457,
+        23.54808807373047
+      ],
+      "after": [
+        339.09579849243164,
+        4.84105110168457,
+        23.54808807373047
+      ]
+    },
+    {
+      "ref": 116720,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        42.612571716308594,
+        4.713943004608154,
+        20.624469757080078
+      ],
+      "after": [
+        342.6125717163086,
+        4.713943004608154,
+        20.624469757080078
+      ]
+    },
+    {
+      "ref": 116721,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        42.612571716308594,
+        5.1376543045043945,
+        20.624469757080078
+      ],
+      "after": [
+        342.6125717163086,
+        5.1376543045043945,
+        20.624469757080078
+      ]
+    },
+    {
+      "ref": 116722,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        43.88370895385742,
+        4.756303787231445,
+        20.666828155517578
+      ],
+      "after": [
+        343.8837089538574,
+        4.756303787231445,
+        20.666828155517578
+      ]
+    },
+    {
+      "ref": 116715,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd",
+      "property": "WorldPivotData",
+      "before": [
+        42.82442855834961,
+        5.180016040802002,
+        20.666828155517578
+      ],
+      "after": [
+        342.8244285583496,
+        5.180016040802002,
+        20.666828155517578
+      ]
+    },
+    {
+      "ref": 3551,
+      "path": "Workspace.Eggs.Mythic",
+      "property": "CFrame",
+      "before": [
+        42.96500015258789,
+        12.770164489746094,
+        34.47475051879883
+      ],
+      "after": [
+        342.9650001525879,
+        12.770164489746094,
+        34.47475051879883
+      ]
+    },
+    {
+      "ref": 116732,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        39.43473434448242,
+        4.84105110168457,
+        31.44662857055664
+      ],
+      "after": [
+        339.4347343444824,
+        4.84105110168457,
+        31.44662857055664
+      ]
+    },
+    {
+      "ref": 116733,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        46.5531120300293,
+        4.58683443069458,
+        36.404029846191406
+      ],
+      "after": [
+        346.5531120300293,
+        4.58683443069458,
+        36.404029846191406
+      ]
+    },
+    {
+      "ref": 116734,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        42.612571716308594,
+        5.1376543045043945,
+        34.62446212768555
+      ],
+      "after": [
+        342.6125717163086,
+        5.1376543045043945,
+        34.62446212768555
+      ]
+    },
+    {
+      "ref": 116735,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        44.77354431152344,
+        4.883437633514404,
+        38.0565185546875
+      ],
+      "after": [
+        344.77354431152344,
+        4.883437633514404,
+        38.0565185546875
+      ]
+    },
+    {
+      "ref": 116736,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        39.09579849243164,
+        4.84105110168457,
+        37.5480842590332
+      ],
+      "after": [
+        339.09579849243164,
+        4.84105110168457,
+        37.5480842590332
+      ]
+    },
+    {
+      "ref": 116737,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        43.88370895385742,
+        4.756303787231445,
+        34.66682434082031
+      ],
+      "after": [
+        343.8837089538574,
+        4.756303787231445,
+        34.66682434082031
+      ]
+    },
+    {
+      "ref": 116738,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd.Part",
+      "property": "CFrame",
+      "before": [
+        42.612571716308594,
+        4.713943004608154,
+        34.62446212768555
+      ],
+      "after": [
+        342.6125717163086,
+        4.713943004608154,
+        34.62446212768555
+      ]
+    },
+    {
+      "ref": 116731,
+      "path": "Workspace.Map.Spawn.PathToEggs.Stands.Standd",
+      "property": "WorldPivotData",
+      "before": [
+        42.82442855834961,
+        5.180016040802002,
+        34.66682434082031
+      ],
+      "after": [
+        342.8244285583496,
+        5.180016040802002,
+        34.66682434082031
+      ]
+    },
+    {
+      "ref": 3578,
+      "path": "Workspace.Eggs.Billboard",
+      "property": "CFrame",
+      "before": [
+        42.693756103515625,
+        29.440624237060547,
+        13.345491409301758
+      ],
+      "after": [
+        342.6937561035156,
+        29.440624237060547,
+        13.345491409301758
+      ]
+    }
+  ],
+  "standModels": {
+    "Rare": 116707,
+    "Legendary": 116715,
+    "Mythic": 116731
+  },
+  "priceLabels": [
+    {
+      "path": "Workspace.Eggs.Rare.Prize.Info",
+      "before": "0",
+      "after": "10000"
+    },
+    {
+      "path": "Workspace.Eggs.Legendary.Prize.Info",
+      "before": "0",
+      "after": "100000"
+    },
+    {
+      "path": "Workspace.Eggs.Mythic.Prize.Info",
+      "before": "0",
+      "after": "1000000"
+    }
+  ],
+  "catalog": {
+    "Basic": {
+      "priceWin": 100,
+      "pricesByCount": {
+        "1": 100,
+        "3": 300,
+        "8": 800
+      },
+      "pets": [
+        {
+          "pet": "Dog",
+          "percent": 40,
+          "model": "ReplicatedStorage.Assets.Pets.Egg1.Dog",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Dog"
+        },
+        {
+          "pet": "Grey Cat",
+          "percent": 25,
+          "model": "ReplicatedStorage.Assets.Pets.Egg1.Grey Cat",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Grey Cat"
+        },
+        {
+          "pet": "Pink Bunny",
+          "percent": 15,
+          "model": "ReplicatedStorage.Assets.Pets.Egg1.Pink Bunny",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Pink Bunny"
+        },
+        {
+          "pet": "Sheep",
+          "percent": 10,
+          "model": "ReplicatedStorage.Assets.Pets.Egg1.Sheep",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Sheep"
+        },
+        {
+          "pet": "Bear",
+          "percent": 7,
+          "model": "ReplicatedStorage.Assets.Pets.Egg1.Bear",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Bear"
+        },
+        {
+          "pet": "Camel",
+          "percent": 3,
+          "model": "ReplicatedStorage.Assets.Pets.Egg1.Camel",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Camel"
+        }
+      ]
+    },
+    "Rare": {
+      "priceWin": 10000,
+      "pricesByCount": {
+        "1": 10000,
+        "3": 30000,
+        "8": 80000
+      },
+      "pets": [
+        {
+          "pet": "Cow",
+          "percent": 40,
+          "model": "ReplicatedStorage.Assets.Pets.Egg2.Cow",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Cow"
+        },
+        {
+          "pet": "Giraffe",
+          "percent": 25,
+          "model": "ReplicatedStorage.Assets.Pets.Egg2.Giraffe",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Giraffe"
+        },
+        {
+          "pet": "Lion",
+          "percent": 15,
+          "model": "ReplicatedStorage.Assets.Pets.Egg2.Lion",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Lion"
+        },
+        {
+          "pet": "Lizard",
+          "percent": 10,
+          "model": "ReplicatedStorage.Assets.Pets.Egg2.Lizard",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Lizard"
+        },
+        {
+          "pet": "Spider",
+          "percent": 7,
+          "model": "ReplicatedStorage.Assets.Pets.Egg2.Spider",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Spider"
+        },
+        {
+          "pet": "Bat",
+          "percent": 3,
+          "model": "ReplicatedStorage.Assets.Pets.Egg2.Bat",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Bat"
+        }
+      ]
+    },
+    "Legendary": {
+      "priceWin": 100000,
+      "pricesByCount": {
+        "1": 100000,
+        "3": 300000,
+        "8": 800000
+      },
+      "pets": [
+        {
+          "pet": "Elephant",
+          "percent": 40,
+          "model": "ReplicatedStorage.Assets.Pets.Egg3.Elephant",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Elephant"
+        },
+        {
+          "pet": "Mammoth",
+          "percent": 25,
+          "model": "ReplicatedStorage.Assets.Pets.Egg3.Mammoth",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Mammoth"
+        },
+        {
+          "pet": "Penguin",
+          "percent": 15,
+          "model": "ReplicatedStorage.Assets.Pets.Egg3.Penguin",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Penguin"
+        },
+        {
+          "pet": "Crocodile",
+          "percent": 10,
+          "model": "ReplicatedStorage.Assets.Pets.Egg3.Crocodile",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Crocodile"
+        },
+        {
+          "pet": "Octopus",
+          "percent": 7,
+          "model": "ReplicatedStorage.Assets.Pets.Egg3.Octopus",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Octopus"
+        },
+        {
+          "pet": "Shark",
+          "percent": 3,
+          "model": "ReplicatedStorage.Assets.Pets.Egg3.Shark",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Shark"
+        }
+      ]
+    },
+    "Mythic": {
+      "priceWin": 1000000,
+      "pricesByCount": {
+        "1": 1000000,
+        "3": 3000000,
+        "8": 8000000
+      },
+      "pets": [
+        {
+          "pet": "Turtle",
+          "percent": 40,
+          "model": "ReplicatedStorage.Assets.Pets.Egg4.Turtle",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Turtle"
+        },
+        {
+          "pet": "Alien",
+          "percent": 25,
+          "model": "ReplicatedStorage.Assets.Pets.Egg4.Alien",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Alien"
+        },
+        {
+          "pet": "Anglerfish",
+          "percent": 15,
+          "model": "ReplicatedStorage.Assets.Pets.Egg4.Anglerfish",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Anglerfish"
+        },
+        {
+          "pet": "Dino",
+          "percent": 10,
+          "model": "ReplicatedStorage.Assets.Pets.Egg4.Dino",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Dino"
+        },
+        {
+          "pet": "Scorpion",
+          "percent": 7,
+          "model": "ReplicatedStorage.Assets.Pets.Egg4.Scorpion",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Scorpion"
+        },
+        {
+          "pet": "Evil Dragon",
+          "percent": 3,
+          "model": "ReplicatedStorage.Assets.Pets.Egg4.Evil Dragon",
+          "icon": "ReplicatedStorage.Assets.Icons.Pets.Evil Dragon"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "instances": 180249,
+    "references": 76129,
+    "sharedStrings": 381,
+    "uniqueIdDuplicates": 0,
+    "onlyExpectedChanges": true,
+    "sourceCompile": 4,
+    "offlineAssertions": 462,
+    "actualStudioFileOpen": "PASS: exact CurrentCloud, PlaceId0, Edit; Studio 8ad5b56d-4e15-470d-95cc-78a352617667",
+    "editScreenshot": "Purchased_Eggs_Edit.jpg",
+    "appearance": "All four purchased Eggs, authored stands, shared carpet, yellow/purple effects and unit-price signs visible",
+    "approach": "Each x333,y8,zEgg box8x6x10 has0 foreign collidable parts; each approach ray meets purchased carpet at y4.405015",
+    "basicSavedPriceNote": "Basic saved Prize.Info remains its prior0; existing EggServer.init sets100 at runtime. New three signs are saved with their configured prices. No gameplay was run for screenshot.",
+    "mainDisabled": true,
+    "cloudRuntime": "UNVERIFIED; no Publish/Play/purchase/DataStore write test",
+    "cleanup": "Only dedicated PID20576 (start2026-10-10 09:19:52) terminated after CloseMainWindow=false; its20576 lock removed; process/lock absent; final rbxl hash unchanged"
+  }
+}
