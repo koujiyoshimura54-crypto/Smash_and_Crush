@@ -122,13 +122,22 @@ function M.BindPurchasedPanel(panel)
  local palette=isSkip(panel) and colors.blue or colors.purple
  header.UIGradient.Color=palette;header.InnerUIStroke.Color=palette.Keypoints[1].Value
  tile(header,header.StudPattern,top.StudPattern)
- for _,name in {"InventoryTitleIcon","Divider"} do local x=panel:FindFirstChild(name) if x then x.Visible=false end end
+ local divider=panel:FindFirstChild("Divider") if divider then divider.Visible=false end
  for _,x in header:GetDescendants() do if x:IsA("GuiObject") then x.ZIndex=header.ZIndex+x.ZIndex-top.ZIndex;x.Active=false end end
+ local titleIcon=panel:FindFirstChild("InventoryTitleIcon") or panel:FindFirstChild("SkipTitleIcon")
+ if not titleIcon and isSkip(panel) then
+  titleIcon=decoration(game.StarterGui.StrengthGui.LeftMenu.SkipButton.Icon,panel,"SkipTitleIcon")
+ end
+ if titleIcon then
+  titleIcon:SetAttribute("PurchasedShopDecoration",true)
+  titleIcon.Visible=true;titleIcon.Active=false;titleIcon.AnchorPoint=Vector2.new(0,.5)
+  titleIcon.Size=UDim2.fromOffset(40,40);titleIcon.ZIndex=header.ZIndex+4
+ end
  local function heading()
   for _,name in {"ShopText1","ShopText2"} do
    local x=header[name];x.Text=title.Text;x.AutoLocalize=title.AutoLocalize;x.RootLocalizationTable=title.RootLocalizationTable
-   x.AnchorPoint=Vector2.new(0,.5);x.Position=UDim2.new(0,20,.5,name=="ShopText2" and 2 or 0)
-   x.Size=UDim2.new(1,-92,.8,0);x.TextXAlignment=Enum.TextXAlignment.Left
+   x.AnchorPoint=Vector2.new(0,.5);x.Position=UDim2.new(0,titleIcon and 68 or 20,.5,name=="ShopText2" and 2 or 0)
+   x.Size=UDim2.new(1,titleIcon and -140 or -92,.8,0);x.TextXAlignment=Enum.TextXAlignment.Left
   end
  end
  heading();connect(title:GetPropertyChangedSignal("Text"),heading)
@@ -203,6 +212,7 @@ function M.BindPurchasedPanel(panel)
     end
    end
   end
+  if titleIcon then titleIcon.Position=UDim2.fromOffset(16,header.Size.Y.Offset/2);titleIcon.Visible=true end
   tile(header,header.StudPattern,top.StudPattern)
   for _,x in panel:GetDescendants() do
    if x.Name=="StudPattern" and x:IsA("ImageLabel") and x.Visible and not x:FindFirstAncestor("PurchasedButtonVisual") and not x:FindFirstAncestor("PurchasedShopClose") then tile(x.Parent,x,top.StudPattern) end

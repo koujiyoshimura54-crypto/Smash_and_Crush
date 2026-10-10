@@ -710,3 +710,9 @@
 - Replaced pastel opaque panes with purchased Shop's independent header, dark50%-transparent body and individual cards. Inventory purple, Skip blue;90px donor stud scale and same-role typography retained. Compact equipment plus3-column Inventory and aligned scrollable Skip rows; existing Win/Robux controls and gameplay unchanged.
 - All tabs/state/reopen/scroll endpoints and Japanese landscape width samples checked in actual Studio Edit. [Comparison images and limits](Inventory_Skip_Shop_Alignment.md). Three Source compilations and binary/reference/SharedString/UniqueId0 checks passed; final file actually reopened successfully.
 - Detected an independent mid-task file save before stale write; removed only positively identified temporary preview UI and preserved latest out-of-scope changes. No rollback or agent Save/Publish. Cloud/live transactions/localization/portrait/touch remain unverified. Verification sessions/lock cleaned; task-only commit.
+
+
+## 2026-10-10 - Restore Inventory / Skip title icons
+
+- Restored the original Inventory image and reused the original Skip entry image beside titles; removed the runtime hide and reserved a12px text gap. Existing palette/layout/gameplay retained.
+- Same-file decode/reference/SharedString/UniqueId0 and Source compile passed. Actual Studio Edit title captures: [Inventory](Inventory_Title_Icon_Restored.jpg), [Skip](Skip_Title_Icon_Restored.jpg). Reopen/duplicate-bind checks passed on disposable previews. No Play or Cloud runtime claim; preview state restored, own Studio and lock cleared, file hash unchanged after inspection.
