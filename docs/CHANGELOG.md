@@ -757,3 +757,10 @@
 - Connected Product3717610547 to the existing single receipt router and session-owned PlayerData save path. Immutable receipt roll/copy ID/pool v1 and atomic Pet+marker prevent retry/parallel double grants. Existing products/normal Eggs/equip1 remain unchanged.
 - Enabled purchased Robux control only after valid Marketplace price, same-experience product verification and fresh server Policy eligibility. Cancellation/errors unlock; purchase-finished never grants. Saved-only notices use the prepared Phase 4 Hatch/RGBEgg consumer; presentation failures cannot remove ownership.
 - Six Sources compile and match final rbxl;2693 memory-only offline assertions pass. ReDecode/reference/SharedString integrity and UniqueId0 pass,179538 instances unchanged. No Play/purchase/store mutation/Save/Publish; no Studio process/lock. Actual Studio loading and Cloud purchase/Hatch remain unverified. See DEV_STATUS and catalog Phase 3 entry for limits and owner preparation.
+
+
+## 2026-10-10 - Limited Egg Cloud Studio prompt gate and button diagnostics
+
+- Fixed blanket Studio purchase-offer refusal for the approved Cloud place while preserving local Studio refusal, Policy/price/product/session/distance checks and no Studio receipt grants.
+- Existing purchased button now explains unavailable clicks; added bounded Marketplace/RPC waits, startup-remote wait, clear existing-label errors and minimal click -> server -> decision -> Prompt logs. No audio substitution, receipt/pool/save/UI artwork changes.
+-2697 offline assertions and two Source compilations pass; exact two-Source rbxl scope, reDecode/reference/SharedString/UniqueId0 verified. No Studio connected, actual Prompt unverified, no Play/Save/Publish. No process/lock remained.

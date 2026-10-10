@@ -149,6 +149,10 @@ do
  -- Real models are mocked by exact registered names; existing lookup remains tested above.
  Pet.model=function(name)return LimitedEgg.ByName[name] and {} or nil end
  equal(request("Offer").ok,true,"eligible priced offer")
+ studio=true;game.PlaceId=126576845524886
+ equal(request("Offer").ok,true,"Cloud Studio prompt eligibility is not blanket disabled")
+ game.PlaceId=0;equal(request("Offer").reason,"LocalStudioUnsupported")
+ studio=false;game.PlaceId=126576845524886
  restricted=true;equal(request("Offer").reason,"PaidRandomRestricted");equal(request("Purchase",1).ok,false);restricted=false
  policyError=true;equal(request("Offer").reason,"PolicyUnavailable");policyError=false
  malformedPolicy=true;equal(request("Offer").reason,"PolicyUnavailable");malformedPolicy=false
@@ -293,6 +297,8 @@ do
  -- Exact client prompt guard and completion unlock, with an in-memory RPC spy.
  do
   local M={};local active={};local Config=LimitedEgg;local started=true
+  local tick=0;local os={clock=function()return tick end}
+  local task={spawn=function(f)f()end,wait=function(dt)tick+=dt or 1 end};local warn=function()end
   local Marketplace={PromptProductPurchaseFinished=signal()}
   local lifetime={Add=function()end}
   local oldLocal=Players.LocalPlayer;Players.LocalPlayer=player
@@ -305,7 +311,11 @@ do
    if deny then return {ok=false,reason=deny}end
    return {ok=true}
   end}
-  buyControl={};availability={}
+  local originalSpawn=task.spawn;task.spawn=function()end
+  local timed,value=boundedCall(function()return true end)
+  equal(timed,false,"unresponsive RPC is bounded");equal(value,"RequestTimeout")
+  task.spawn=originalSpawn
+  buyControl={SetAttribute=function(self,k,v)self[k]=v end};availability={}
   equal(M.purchase(),false,"no fetched offer, no purchase");equal(calls,0)
   priceReady=true;offeredVersion=1
   equal(M.purchase(),false);equal(purchaseBusy,false,"RPC error releases client lock")
@@ -316,7 +326,7 @@ do
   equal(M.purchase(),true)
   for _,f in Marketplace.PromptProductPurchaseFinished.Callbacks do f(101,Config.ProductId,true)end
   equal(purchaseBusy,false,"success event only unlocks")
-  deny="PaidRandomRestricted";equal(M.purchase(),false);equal(priceReady,false);equal(buyControl.Active,false)
+  deny="PaidRandomRestricted";equal(M.purchase(),false);equal(priceReady,false);equal(buyControl.PurchaseAllowed,false)
   Players.LocalPlayer=oldLocal
  end
  print("LIMITED_EGG_RECEIPT_OFFLINE_PASS")

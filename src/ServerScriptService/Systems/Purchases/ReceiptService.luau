@@ -138,7 +138,9 @@ processLimitedReceipt=function(r)
  return decision
 end
 local function productInfo()
- if not Limited.PurchaseEnabled or RunService:IsStudio() then return nil,"PurchasesUnavailable" end
+ if not Limited.PurchaseEnabled then return nil,"PurchasesUnavailable" end
+ -- Cloud Studio can inspect a prompt; receipt grants remain disabled in Studio.
+ if RunService:IsStudio() and game.PlaceId~=126576845524886 then return nil,"LocalStudioUnsupported" end
  if game.GameId~=Limited.UniverseId then return nil,"WrongExperience" end
  local ok,info=pcall(function() return Marketplace:GetProductInfoAsync(Limited.ProductId,Enum.InfoType.Product) end)
  if not ok or type(info)~="table" or info.ProductId~=Limited.ProductId or info.IsForSale~=true
@@ -188,6 +190,7 @@ local function nearEntrance(player)
   and (root.Position-part.Position).Magnitude<=24
 end
 function M.LimitedRequest(player,action,value)
+ if action=="Offer" or action=="Purchase" then print("[LimitedEgg01] request",action,player and player.UserId,game.PlaceId) end
  if not player or player.Parent~=Players then return {ok=false,reason="InvalidPlayer"} end
  if action=="Ready" then
   ready[player]=true
@@ -219,12 +222,14 @@ function M.LimitedRequest(player,action,value)
   if action=="Offer" then return {ok=true,ProductId=Limited.ProductId,Price=info.PriceInRobux,TableVersion=Limited.RollVersion} end
   if value~=Limited.RollVersion or not nearEntrance(player) then return {ok=false,reason="OfferChanged"} end
   promptBusy[player]=true
+  print("[LimitedEgg01] prompting",player.UserId,Limited.ProductId)
   local prompted,err=pcall(function() Marketplace:PromptProductPurchase(player,Limited.ProductId) end)
   if not prompted then promptBusy[player]=nil;warn("Limited Egg prompt failed: "..tostring(err));return {ok=false,reason="PromptFailed"} end
   return {ok=true}
  end)
  requestBusy[player]=nil
  if not ok then promptBusy[player]=nil;warn("Limited Egg request failed: "..tostring(response));return {ok=false,reason="PurchaseUnavailable"} end
+ if action=="Offer" or action=="Purchase" then print("[LimitedEgg01] response",action,response.ok,response.reason or "Allowed") end
  return response
 end
 function M.InitializeLimited()
@@ -238,6 +243,7 @@ function M.InitializeLimited()
  local request=remote("LimitedEggPurchase","RemoteFunction")
  committedEvent=remote("LimitedEggCommitted","RemoteEvent")
  request.OnServerInvoke=M.LimitedRequest
+ print("[LimitedEgg01] server ready",game.PlaceId,Limited.ProductId)
  Marketplace.PromptProductPurchaseFinished:Connect(function(userId,productId)
   if productId~=Limited.ProductId then return end
   local player=Players:GetPlayerByUserId(userId)

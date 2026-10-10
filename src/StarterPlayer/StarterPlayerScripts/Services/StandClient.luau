@@ -17,6 +17,17 @@ local generation=0
 local promptConnection=nil
 local boundPrompt=nil
 local requestRemote
+local function boundedCall(callback)
+ local done,ok,value=false,false,nil
+ task.spawn(function()
+  local success,result=pcall(callback)
+  if not done then ok=success;value=result;done=true end
+ end)
+ local deadline=os.clock()+15
+ while not done and os.clock()<deadline do task.wait(.05) end
+ if not done then done=true;return false,"RequestTimeout" end
+ return ok,value
+end
 local purchaseBusy=false
 local priceReady=false
 local offeredVersion
@@ -24,6 +35,9 @@ local buyControl,availability
 local unavailableReason="Loading price and eligibility..."
 local transientMessage
 local messages={
+ LocalStudioUnsupported="Open the published Cloud place to check purchases",
+ ServerUnavailable="Purchase server unavailable. Reopen to retry.",RequestTimeout="Purchase request timed out. Reopen to retry.",
+ SessionOwnershipLost="Player session unavailable. Rejoin to retry.",PetModelUnavailable="Pet display unavailable",OfferChanged="Offer changed. Reopen to retry.",
  PaidRandomRestricted="Unavailable in your region",PolicyUnavailable="Eligibility unavailable. Reopen to retry.",
  PriceUnavailable="Price unavailable. Reopen to retry.",WrongExperience="Unavailable in this experience",
  ProductAssociationUnavailable="Product unavailable",DataNotLoaded="Player data is loading",
@@ -34,16 +48,23 @@ local messages={
 local function updatePurchaseUI()
  if not buyControl or not availability then return end
  local enabled=priceReady and not purchaseBusy and offeredVersion==Config.RollVersion
- buyControl.Active=enabled;buyControl.Interactable=enabled;buyControl.Selectable=enabled;buyControl.AutoButtonColor=enabled
+ -- Keep input connected so a denied click can explain its reason; M.purchase gates prompting.
+ buyControl.Active=true;buyControl.Interactable=true;buyControl.Selectable=true;buyControl.AutoButtonColor=enabled
+ buyControl:SetAttribute("PurchaseAllowed",enabled)
  availability.Text=purchaseBusy and "Waiting for purchase confirmation..." or (priceReady and (transientMessage or "1 Pet") or unavailableReason)
 end
 function M.purchase()
- if purchaseBusy or not priceReady or not active or not requestRemote then return false,"Unavailable" end
+ print("[LimitedEgg01] click",priceReady,purchaseBusy,requestRemote~=nil)
+ if purchaseBusy or not priceReady or not active or not requestRemote then
+  updatePurchaseUI();warn("[LimitedEgg01] blocked: "..(purchaseBusy and "PurchaseBusy" or unavailableReason))
+  return false,"Unavailable"
+ end
  purchaseBusy=true;updatePurchaseUI()
- local ok,response=pcall(function() return requestRemote:InvokeServer("Purchase",offeredVersion) end)
+ local ok,response=boundedCall(function() return requestRemote:InvokeServer("Purchase",offeredVersion) end)
  if not ok or type(response)~="table" or not response.ok then
   purchaseBusy=false
-  local reason=ok and type(response)=="table" and response.reason or "PromptFailed"
+  local reason=ok and type(response)=="table" and response.reason or (response=="RequestTimeout" and "RequestTimeout" or "PromptFailed")
+  warn("[LimitedEgg01] purchase rejected: "..tostring(reason))
   unavailableReason=messages[reason] or "Purchase unavailable. Reopen to retry."
   local blocked=reason=="PolicyUnavailable" or reason=="PaidRandomRestricted" or reason=="PriceUnavailable"
    or reason=="WrongExperience" or reason=="ProductAssociationUnavailable" or reason=="PurchasesUnavailable"
@@ -52,12 +73,13 @@ function M.purchase()
   -- Failure/cancellation never awards a Pet or starts a Hatch.
   return false,reason
  end
+ print("[LimitedEgg01] prompt request accepted")
  return true
 end
 local function acknowledge(id)
  for _=1,5 do
   if not started or not requestRemote or not Players.LocalPlayer or not Players.LocalPlayer.Parent then return end
-  local ok,response=pcall(function() return requestRemote:InvokeServer("Acknowledge",id) end)
+  local ok,response=boundedCall(function() return requestRemote:InvokeServer("Acknowledge",id) end)
   if ok and type(response)=="table" and response.ok then return end
   task.wait(1)
  end
@@ -148,7 +170,9 @@ function M.show(parent,fetchPrice)
   end
   buyControl=buy.Button
   availability=label(nameDonor,opens,"Availability","Loading price and eligibility...",UDim2.fromOffset(75,58),UDim2.fromOffset(550,22))
+  buyControl.Visible=true;buyControl.ZIndex=200
   sheet:Add(buyControl.Activated:Connect(M.purchase))
+  print("[LimitedEgg01] button connected",buyControl:GetFullName())
   local close=purchased.Inventory.Exit:Clone();close.Name="Close";stripScripts(close)
   close.AnchorPoint=Vector2.zero;close.Position=UDim2.new(1,-56,0,14);close.Size=UDim2.fromOffset(42,42);close.Parent=panel
   sheet:Add(close.Button.Activated:Connect(M.close))
@@ -170,9 +194,11 @@ function M.show(parent,fetchPrice)
   sheet:Add(gui.Destroying:Connect(function() if active==gui then task.defer(M.close) end end))
   priceReady=false;offeredVersion=nil;unavailableReason="Loading price and eligibility...";updatePurchaseUI()
   if fetchPrice~=false then task.spawn(function()
-   local success,product=pcall(function() return Marketplace:GetProductInfoAsync(Config.ProductId,Enum.InfoType.Product) end)
-   local offered,offer=pcall(function()
-    if not requestRemote then return {ok=false,reason="PurchasesUnavailable"} end
+   local success,product=boundedCall(function() return Marketplace:GetProductInfoAsync(Config.ProductId,Enum.InfoType.Product) end)
+   local offered,offer=boundedCall(function()
+    local deadline=os.clock()+10
+    while not requestRemote and started and active==gui and os.clock()<deadline do task.wait(.05) end
+    if not requestRemote then return {ok=false,reason="ServerUnavailable"} end
     return requestRemote:InvokeServer("Offer")
    end)
    if active~=gui or not gui.Parent then return end
@@ -189,6 +215,7 @@ function M.show(parent,fetchPrice)
     local reason=not valid and "PriceUnavailable" or (offered and type(offer)=="table" and offer.reason or "PurchasesUnavailable")
     unavailableReason=messages[reason] or "Purchase unavailable. Reopen to retry."
    end
+   print("[LimitedEgg01] offer",priceReady,priceReady and "Allowed" or unavailableReason)
    updatePurchaseUI()
   end) else
    unavailableReason="Purchases unavailable";updatePurchaseUI()
@@ -230,7 +257,11 @@ function M.start()
   local folder=remotes and remotes:WaitForChild("GameRemotes",10)
   local request=folder and folder:WaitForChild("LimitedEggPurchase",10)
   local notice=folder and folder:WaitForChild("LimitedEggCommitted",10)
-  if not started or generation~=currentGeneration or not request or not notice then return end
+  if not started or generation~=currentGeneration then return end
+  if not request or not request:IsA("RemoteFunction") or not notice or not notice:IsA("RemoteEvent") then
+   unavailableReason=messages.ServerUnavailable;updatePurchaseUI();warn("[LimitedEgg01] remotes unavailable");return
+  end
+  print("[LimitedEgg01] client remotes ready",game.PlaceId)
   requestRemote=request
   lifetime:Add(notice.OnClientEvent:Connect(function(result)
    local ok,accepted,reason=pcall(function()
@@ -242,7 +273,7 @@ function M.start()
    if ok and (accepted or reason=="AlreadyShown") then task.spawn(acknowledge,result.PurchaseId)
    elseif not ok then warn("Limited Egg presentation failed; saved Pet retained: "..tostring(accepted)) end
   end))
-  pcall(function() request:InvokeServer("Ready") end)
+  boundedCall(function() return request:InvokeServer("Ready") end)
  end)
  local function consider(x)
   if x:IsA("ProximityPrompt") and x.Parent and x.Parent.Name==Config.Entrance and x.Parent.Parent==workspace then bind(x) end
