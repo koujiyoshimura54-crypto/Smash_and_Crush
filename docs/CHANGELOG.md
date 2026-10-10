@@ -690,3 +690,10 @@
 - Reused the actual three Eggs,21 stand parts and original glow at the purchased relative layout beside unchanged Basic/shared carpet. Configured prices10000/100000/1000000 Win and original six-Pet pools/probabilities retained; Open1/3/8 costs scale by count.
 - Extended only Basic-fixed server/save/client routing; reused purchased probability UI, Hatch, per-copy inventory and single equipped follower. No abilities, Speed compensation, extra datastore or Main activation.
 - Four-Source syntax,462 offline assertions, reDecode/reference/SharedString/UniqueId checks passed. Exact CurrentCloud opened in Studio Edit; four facilities/glow/carpet/approach checked and screenshot recorded. Own verification Studio/lock cleared. Cloud gameplay remains unverified; no Play/purchase/DataStore write test/Save/Publish.
+
+
+## 2026-10-10 - Dance Girl supplied dance playback
+
+- Fixed Workspace.Dance Girl.EmoteScript referencing a missing Animation child and ignoring its original15122972413 ID. Existing Animator now plays that dance in a guarded single loop, with cleanup and diagnostics. Rig/placement/appearance and other gameplay unchanged.
+- One-Source compile/reDecode/property-reference checks passed. In fresh Studio Edit, the actual repaired Source loaded a3.375s track, moved all15 R15 joints, avoided duplicate tracks and looped across the end. This was manual Edit playback, not local Play or proof of automatic published startup.
+- Verification Studios/locks cleared. Cloud not reflected; user Save/Publish and published-game automatic playback confirmation remain. No replacement animation, backup or alternate rbxl.
