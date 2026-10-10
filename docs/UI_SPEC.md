@@ -437,3 +437,8 @@ When equipped Protein, Glove, and Training Belt Items share an Element, the Item
 ## 2026-10-06 - Purchased Trophy Win Pass presentation
 
 Retain purchased Trophy geometry/Prompt/Billboard. Client presentation follows verified owner state: x2 Wins / x3 Wins / Owned;3x owners see no purchase Prompt. Fetch price from Marketplace with no fixed24 fallback; use ... during lookup and Price unavailable on failure. No custom UI. Equipment Edit placement checked; published-app interaction remains unverified.
+
+
+## 2026-10-10 - Inventory / Skip purchased Shop presentation
+
+InventoryPanel and StageSkipGui.Panel reuse StrengthGui.ShopPanel artwork with light purple/pink surfaces, black borders and retained yellow Win/green Robux controls. Inventory uses a900x410 design only for landscape viewports below500px high (otherwise900x660), retaining the equipped pane; compact cards and sockets fit below the header. This changes presentation only. See [actual Edit review and remaining checks](Inventory_Skip_Visual_Review.md); Cloud/live translation/touch validation is not complete.

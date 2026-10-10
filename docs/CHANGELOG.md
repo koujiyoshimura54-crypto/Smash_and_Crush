@@ -697,3 +697,9 @@
 - Fixed Workspace.Dance Girl.EmoteScript referencing a missing Animation child and ignoring its original15122972413 ID. Existing Animator now plays that dance in a guarded single loop, with cleanup and diagnostics. Rig/placement/appearance and other gameplay unchanged.
 - One-Source compile/reDecode/property-reference checks passed. In fresh Studio Edit, the actual repaired Source loaded a3.375s track, moved all15 R15 joints, avoided duplicate tracks and looped across the end. This was manual Edit playback, not local Play or proof of automatic published startup.
 - Verification Studios/locks cleared. Cloud not reflected; user Save/Publish and published-game automatic playback confirmation remain. No replacement animation, backup or alternate rbxl.
+
+
+## 2026-10-10 - Inventory and Skip visual refinement
+
+- Matched purchased Shop borders/header/close/cards, removed oversized/yellow/red legacy framing and title overlap; retained light purple/pink and purchased Win/Robux buttons. Fixed short-landscape Inventory spacing/card heights while preserving equipment and all gameplay.
+- Final CurrentCloud reDecode/references/SharedStrings/UniqueId0 and3 Source compilations passed; actual final Studio Edit load and display fixtures checked. [Nine real screenshots and detailed limits](Inventory_Skip_Visual_Review.md). Cloud, real transactions, merge completion, translation delivery and portrait/touch remain unverified. An unexpected transient Play-mode tool response was excluded; agent did not start Play. Verification Studios/lock cleared.

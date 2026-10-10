@@ -180,36 +180,37 @@ end
 player:GetAttributeChangedSignal("Win"):Connect(updateWin)
 updateWin()
 local function layout()
- local compact=false -- Keep the original equipped preview and two-column card layout.
- panel.Equipped.Visible=not compact
- panel.Owned.Position=compact and UDim2.new() or UDim2.new(.38,0,0,0)
- panel.Owned.Size=compact and UDim2.fromScale(1,1) or UDim2.fromScale(.62,1)
- list.Position=compact and UDim2.fromOffset(10,58) or UDim2.new(.38,10,0,58)
- list.Size=compact and UDim2.new(1,-20,1,-70) or UDim2.new(.62,-20,1,-70)
+ local compact=shell.Size.Y.Scale==0 and shell.Size.Y.Offset<500
+ panel.Equipped.Visible=true
+ panel.Owned.Position=UDim2.new(.38,0,0,0)
+ panel.Owned.Size=UDim2.fromScale(.62,1)
+ list.Position=UDim2.new(.38,10,0,58)
+ list.Size=UDim2.new(.62,-20,1,-70)
  local scale=math.max(shell.ResponsiveScale.Scale,.01)
  local width=list.AbsoluteSize.X/scale
  local padding=list:FindFirstChildOfClass("UIPadding")
  if padding then width-=padding.PaddingLeft.Offset+padding.PaddingRight.Offset end
  local cellWidth=math.floor((width-20)/2)
  if cellWidth<=0 then return end
- local height=compact and 480 or 310
+ local height=compact and 196 or 310
  grid.FillDirectionMaxCells=2
  grid.CellSize=UDim2.fromOffset(cellWidth,height)
  for _,card in pairs(cards) do
   card.Icon.Position=UDim2.fromOffset(12,10)
-  card.Icon.Size=UDim2.new(1,-24,0,compact and 272 or 192)
+  card.Icon.Size=UDim2.new(1,-24,0,compact and 92 or 192)
   local strength=card.Multiplier
-  strength.Position=UDim2.new(0,8,0,compact and 286 or 204)
-  strength.Size=UDim2.new(1,-16,0,compact and 64 or 40)
-  strength.TextSize=compact and 40 or 26
+  strength.Position=UDim2.new(0,8,0,compact and 104 or 204)
+  strength.Size=UDim2.new(1,-16,0,compact and 28 or 40)
+  strength.TextSize=compact and 22 or 26
+  strength.TextScaled=compact
   strength.TextStrokeColor3=Color3.new();strength.TextStrokeTransparency=0
   local button=card.BuyButton
-  local bh=compact and 112 or 54
+  local bh=compact and 44 or 54
   button.Position=UDim2.new(0,12,1,-bh-12)
   button.Size=UDim2.new(1,-24,0,bh)
-  button.TextSize=compact and 38 or 25
-  button.Price.TextSize=compact and 48 or 30
-  button.WinIcon.Size=UDim2.fromOffset(compact and 64 or 36,compact and 64 or 36)
+  button.TextSize=compact and 22 or 25
+  button.Price.TextSize=compact and 24 or 30
+  button.WinIcon.Size=UDim2.fromOffset(compact and 32 or 36,compact and 32 or 36)
  end
 end
 list:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)

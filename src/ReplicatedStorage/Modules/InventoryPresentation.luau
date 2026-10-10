@@ -31,7 +31,7 @@ local function protected(object)
 end
 local function templates()
  local shop=game:GetService("StarterGui").StrengthGui.ShopPanel
- return shop,shop.Top,shop.MainScrollingFrame.Holder.Card02_StarterPack
+ return shop,shop.Top,shop.MainScrollingFrame.Holder.Card01_SecretPack
 end
 local function copyProperties(target,source,properties)
  for _,key in ipairs(properties) do target[key]=source[key] end
@@ -74,12 +74,22 @@ function M.SetEquipped(object,equipped)
 end
 function M.ApplyPurchasedSurface(object)
  if protected(object) or not object:IsA("GuiObject") then return end
- local _,top,card=templates()
+ local shop,top,card=templates()
  local source=object:GetAttribute("PurchasedShopPanel") and top or card
- object.BackgroundColor3=Color3.new(1,1,1)
  object.BorderSizePixel=0
- stroke(object,source.OuterUIStroke,"UIStroke")
- stroke(object,source.InnerUIStroke,"PurchasedInnerUIStroke")
+ local outer=stroke(object,object:GetAttribute("PurchasedShopPanel") and shop.UIStroke or card.OuterUIStroke,"UIStroke")
+ -- Header-relative strokes cannot be scaled by the entire panel/pane height.
+ -- Keep the Shop artwork, with a consistent border width in design pixels.
+ outer.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+ outer.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+ outer.Thickness=object:GetAttribute("PurchasedShopPanel") and 5 or 3
+ local inner=stroke(object,top.Close.UIStrokeInner,"PurchasedInnerUIStroke")
+ inner.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+ inner.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+ inner.Thickness=1
+ inner.Transparency=.55
+ local corner=object:FindFirstChildOfClass("UICorner")
+ if corner then corner.CornerRadius=top.Close.UICorner.CornerRadius end
  local gradient=object:FindFirstChildOfClass("UIGradient")
  if not gradient then gradient=decoration(source.UIGradient,object,"UIGradient") end
  copyProperties(gradient,source.UIGradient,{"Rotation","Offset","Transparency","Scale","TileMode","Type","Enabled"})
@@ -88,6 +98,13 @@ function M.ApplyPurchasedSurface(object)
   or object.Name=="EquipButton" and palette.action
   or object:GetAttribute("PurchasedShopSelected") and palette.selected
   or object:GetAttribute("PurchasedShopPanel") and palette.body or palette.card
+ -- UIGradient on a TextButton also tints its glyphs. Keep white Shop lettering
+ -- readable on action/tab/card buttons, while frames retain the full gradient.
+ local textSurface=(object:IsA("TextButton") or object:IsA("TextLabel")) and object.Text~=""
+ gradient.Enabled=not textSurface
+ local fill=textSurface and gradient.Color.Keypoints[1].Value or Color3.new(1,1,1)
+ object:SetAttribute("PurchasedShopSurfaceColor",fill)
+ object.BackgroundColor3=fill
  -- A GuiObject background would become an extra card in a list/grid layout.
  -- Keep the purchased gradient/borders here; individual cards retain the studs.
  if object:FindFirstChildWhichIsA("UIGridStyleLayout") then return end
@@ -101,6 +118,10 @@ function M.ApplyPurchasedSurface(object)
  pattern.BackgroundTransparency=1
  pattern.ZIndex=object.ZIndex
  pattern.Active=false
+ -- The Shop body is quiet; reserve its purchased studs for headers and cards.
+ pattern.Visible=not object:GetAttribute("PurchasedShopPanel") and object.Name~="Equipped" and object.Name~="Owned" and object.Name~="MergeFlow"
+ local patternCorner=pattern:FindFirstChildOfClass("UICorner")
+ if patternCorner then patternCorner.CornerRadius=top.Close.UICorner.CornerRadius end
 end
 function M.BindPurchasedPanel(panel)
  if bindings[panel] then return end
@@ -123,9 +144,21 @@ function M.BindPurchasedPanel(panel)
  if shopIcon then shopIcon:Destroy() end
  header.AnchorPoint=Vector2.zero
  header.Position=UDim2.fromOffset(0,0)
- header.Size=UDim2.new(1,0,0,58)
+ header.Size=UDim2.new(1,0,0,68)
  header.ZIndex=panel.ZIndex+1
  header.UIGradient.Color=palette.header
+ header.InnerUIStroke.Color=palette.header.Keypoints[1].Value
+ local legacyIcon=panel:FindFirstChild("InventoryTitleIcon")
+ if legacyIcon then legacyIcon.Visible=false end
+ if panel.Name=="InventoryPanel" then
+  panel.Tabs.Position=UDim2.fromOffset(16,82)
+  panel.Tabs.Size=UDim2.new(1,-32,0,62)
+  panel.Content.Position=UDim2.fromOffset(16,158)
+  panel.Content.Size=UDim2.new(1,-32,1,-174)
+ else
+  panel.Stages.Position=UDim2.fromOffset(16,82)
+  panel.Stages.Size=UDim2.new(1,-32,1,-132)
+ end
  for _,object in ipairs(header:GetDescendants()) do
   if object:IsA("GuiObject") then object.ZIndex=header.ZIndex+object.ZIndex-top.ZIndex;object.Active=false end
  end
@@ -153,8 +186,8 @@ function M.BindPurchasedPanel(panel)
  closeVisual.Position=UDim2.fromScale(0,0)
  closeVisual.Size=UDim2.fromScale(1,1)
  closeVisual.Active=false;closeVisual.Interactable=false;closeVisual.Selectable=false
- close.Position=UDim2.new(1,-53,0,7)
- close.AnchorPoint=Vector2.zero;close.Size=UDim2.fromOffset(44,44)
+ close.Position=UDim2.new(1,-57,0,10)
+ close.AnchorPoint=Vector2.zero;close.Size=UDim2.fromOffset(48,48)
  close.ZIndex=panel.ZIndex+8
  close.BackgroundTransparency=1;close.TextTransparency=1;close.TextStrokeTransparency=1
  for _,v in ipairs(close:GetChildren()) do if v:IsA("UIStroke") then v.Transparency=1 end end
@@ -174,12 +207,37 @@ function M.BindPurchasedPanel(panel)
     installed[object]=true
     -- Existing state renderers may assign their old dark BackgroundColor3.
     connect(object:GetPropertyChangedSignal("BackgroundColor3"),function()
-     if object.BackgroundColor3~=Color3.new(1,1,1) then M.ApplyPurchasedSurface(object) end
+     if object.BackgroundColor3~=object:GetAttribute("PurchasedShopSurfaceColor") then M.ApplyPurchasedSurface(object) end
     end)
    end
   end
  end
  for _,object in ipairs(panel:GetDescendants()) do apply(object) end
+ if panel.Name=="InventoryPanel" then
+  local function layout()
+   local compact=panel.Size.Y.Scale==0 and panel.Size.Y.Offset<500
+   header.Size=UDim2.new(1,0,0,compact and 54 or 68)
+   panel.Tabs.Position=UDim2.fromOffset(16,compact and 66 or 82)
+   panel.Tabs.Size=UDim2.new(1,-32,0,compact and 46 or 62)
+   panel.Content.Position=UDim2.fromOffset(16,compact and 124 or 158)
+   panel.Content.Size=UDim2.new(1,-32,1,compact and -138 or -174)
+   close.Size=UDim2.fromOffset(compact and 40 or 48,compact and 40 or 48)
+   close.Position=UDim2.new(1,compact and -49 or -57,0,compact and 7 or 10)
+   local equipped=panel.Content.Items.Equipped
+   for i,name in ipairs({"ProteinSocket","GloveSocket","TrainingBeltSocket"}) do
+    local socket=equipped:FindFirstChild(name)
+    if socket then
+     socket.Position=compact and UDim2.new(0,12,(i-1)/3,60-(i-1)*70/3) or UDim2.new(0,12,.14+(i-1)*.28,0)
+     socket.Size=compact and UDim2.new(1,-24,1/3,-70/3-8) or UDim2.new(1,-24,.26,0)
+    end
+   end
+  end
+  connect(panel:GetPropertyChangedSignal("Size"),layout)
+  connect(panel.DescendantAdded,function(object)
+   if object.Name=="ProteinSocket" or object.Name=="GloveSocket" or object.Name=="TrainingBeltSocket" then task.defer(layout) end
+  end)
+  layout()
+ end
  connect(panel.DescendantAdded,function(object)
   task.defer(function() apply(object) end)
  end)
