@@ -716,3 +716,9 @@
 
 - Restored the original Inventory image and reused the original Skip entry image beside titles; removed the runtime hide and reserved a12px text gap. Existing palette/layout/gameplay retained.
 - Same-file decode/reference/SharedString/UniqueId0 and Source compile passed. Actual Studio Edit title captures: [Inventory](Inventory_Title_Icon_Restored.jpg), [Skip](Skip_Title_Icon_Restored.jpg). Reopen/duplicate-bind checks passed on disposable previews. No Play or Cloud runtime claim; preview state restored, own Studio and lock cleared, file hash unchanged after inspection.
+
+
+## 2026-10-10 - Permanent Robux Egg Phase 1 mapping only
+
+- Recorded user-confirmed149 Robux/one-Pet offer and seven-model100% pool, Chill Octopus's inactive legacy GamePass connection, two unselected purchased Egg candidates, and exact Phase 2 UI/receipt/save/model paths in the [existing catalog guide](Stud_Egg_Pet_Catalog.md#??robux??egg-phase-1--????2026-10-10).
+- Identified6?7 purchased UI slot and Viewport changes, missing target model registration/Product ID, and durable receipt deduplication requirements. Official numerical-odds/PolicyService requirements documented. No implementation, placement, Source or rbxl change; live behavior unverified.
