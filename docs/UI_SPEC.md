@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-10-10 - ShopStall capacity title
+
+- Capacity purchase header is now exactly `UpGrade` in both existing text layers, superseding the historical `Update` labels below. Color, decoration, layout and purchase behavior are unchanged.
+- `Workspace.ShopStallTemplate.UpGradeBillboard` reuses the purchased Feedback BillboardGui and its font/black stroke, with vivid lime RGB(170,255,0),10x3-stud size and center1.5+half-height studs above the roof. No model movement or duplicate label.
+
+
 ## 2026-09-30 — Inventory Capacity purchase (Phase 5G)
 
 - 下記previewの外観・ShopStallTemplate前トリガーを維持し、実購入へ接続。1商品、`Update`タイトル、`5 >>> 6`、トロフィー＋`100`を表示。購入価格はInventoryCapacityConfigだけに定義し、PreviewConfigは配置のみを保持する。

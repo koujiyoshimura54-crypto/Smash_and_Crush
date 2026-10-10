@@ -743,3 +743,10 @@
 - Existing Hatch/RGBEgg mounting prepared, with a guarded future post-save notification consumer and session visual deduplication. Phase 3 remains absent, consumer unbound, purchase button disabled; no payment/roll/save implementation.
 - 545 offline assertions, four Source compilations, real Studio Edit load, seven-model relative geometry/follow simulation and16-angle Hatch viewport fit passed. [Actual image, precise scope and unverified live behavior](Stud_Egg_Pet_Catalog.md#limited-egg-01-phase-4---hatch-models-equipment-and-follow-2026-10-10).
 - Preserved a separately updated newest file after verification; task Sources/no-preview/final reDecode/reference/SharedString/UniqueId0 checked. Studio process and target.lock absent; no final reopen or agent Save/Publish.
+
+
+## 2026-10-10 - ShopStall UpGrade presentation
+
+- Capacity panel runtime header Update -> UpGrade; authored header appearance/layout unchanged.
+- Copied one purchased Feedback BillboardGui onto Workspace.ShopStallTemplate as UpGradeBillboard: lime RGB(170,255,0), original font/black stroke, positioned above the roof. Existing facility geometry and all purchase/capacity behavior preserved.
+- ReDecode, original-property scope comparison, Source compile, reference/SharedString integrity and UniqueId0 passed. Actual Studio Edit loading and both title displays checked; runtime/Cloud purchase untested. Disposable UI removed; own Studio residue terminated and target.lock removed. No Save/Publish/Play/backup.

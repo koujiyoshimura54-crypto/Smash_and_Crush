@@ -70,7 +70,7 @@ for _,d in top:GetDescendants() do
 end
 for _,name in {"ShopText1", "ShopText2"} do
 	local text = top[name]
-	text.Text = "Update"; text.AutoLocalize = false; text.TextScaled = true
+	text.Text = "UpGrade"; text.AutoLocalize = false; text.TextScaled = true
 	text.AnchorPoint = Vector2.zero; text.Position = UDim2.fromOffset(28, name == "ShopText1" and 12 or 15)
 	text.Size = UDim2.new(1, -144, 0, 76); text.TextXAlignment = Enum.TextXAlignment.Left
 end
