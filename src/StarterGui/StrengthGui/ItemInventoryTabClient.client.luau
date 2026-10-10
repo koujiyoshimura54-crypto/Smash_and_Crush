@@ -46,17 +46,17 @@ local function icon(parent,name,id,pos,size,z)
  local i=Instance.new("ImageLabel") i.Name=name i.Image=id i.Position=pos i.Size=size
  i.BackgroundTransparency=1 i.ScaleType=Enum.ScaleType.Fit i.ZIndex=z or 35 i.Parent=parent return i
 end
-page.Equipped.Size=UDim2.new(.44,0,1,0)
-page.Owned.Position=UDim2.fromScale(.455,0) page.Owned.Size=UDim2.fromScale(.545,1)
+page.Equipped.Size=UDim2.new(.29,-10,1,0)
+page.Owned.Position=UDim2.fromScale(.30,0) page.Owned.Size=UDim2.fromScale(.70,1)
 page.Owned.Title.Text="Items"
 page.Equipped.Hint.Visible=false
 page.Equipped.Title.Text="Equip"
 -- Header action, separate from the equipment sockets and item cards.
-page.Equipped.Title.Size=UDim2.new(.34,-12,0,36)
+page.Equipped.Title.Size=UDim2.new(1,-24,0,28)
 local bestButton=Instance.new("TextButton")
 bestButton.Name="BestEquipButton" bestButton.Text="BEST EQUIP"
-bestButton.Position=UDim2.new(.36,0,0,12)
-bestButton.Size=UDim2.new(.64,-12,0,36)
+bestButton.Position=UDim2.new(0,8,0,46)
+bestButton.Size=UDim2.new(1,-16,0,32)
 bestButton.Font=Enum.Font.GothamBlack bestButton.TextScaled=true
 bestButton.TextColor3=Color3.new(1,1,1)
 bestButton.TextStrokeColor3=Color3.new(0,0,0) bestButton.TextStrokeTransparency=.25
@@ -74,7 +74,7 @@ bestButton.Activated:Connect(function()
 end)
 
 page.Empty.Visible=false
-page.Status.Position=UDim2.new(.455,8,1,-22) page.Status.Size=UDim2.new(.545,-16,0,20)
+page.Status.Position=UDim2.new(.30,8,1,-22) page.Status.Size=UDim2.new(.70,-16,0,20)
 page.Status.TextScaled=true
 for n,kind in ipairs(kinds) do
  page.Equipped[kind].Visible=false
@@ -102,8 +102,8 @@ for n,kind in ipairs(kinds) do
  end)
 end
 local tabbar=Instance.new("Frame") tabbar.Name="RarityTabs" tabbar.BackgroundTransparency=1
-tabbar.Position=UDim2.new(.455,10,0,52) tabbar.Size=UDim2.new(.545,-24,0,34) tabbar.ZIndex=35 tabbar.Parent=page
-list.Position=UDim2.new(.455,10,0,96) list.Size=UDim2.new(.545,-24,1,-124)
+tabbar.Position=UDim2.new(.30,10,0,52) tabbar.Size=UDim2.new(.70,-24,0,34) tabbar.ZIndex=35 tabbar.Parent=page
+list.Position=UDim2.new(.30,10,0,96) list.Size=UDim2.new(.70,-24,1,-124)
 list.ScrollingDirection=Enum.ScrollingDirection.Y list.AutomaticCanvasSize=Enum.AutomaticSize.Y
 list.CanvasSize=UDim2.new() list.ScrollBarThickness=6 list.ScrollBarImageColor3=Color3.fromRGB(233,157,255)
 local grid=list:FindFirstChildOfClass("UIGridLayout")

@@ -1,0 +1,6885 @@
+{
+  "baseSha256": "a2f7ec57940b48a08b46433c4c92c8c0fe69a153cec3e7ef2bcac3d4da3cf26a",
+  "donor": "StarterGui.StrengthGui.ShopPanel",
+  "properties": [
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel",
+      "properties": {
+        "BackgroundTransparency": 0.5,
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.UIStroke",
+      "properties": {
+        "Thickness": 4
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Title.UIStroke",
+      "properties": {
+        "Enabled": false
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.UIStroke",
+      "properties": {
+        "Enabled": false
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.StudPattern",
+      "properties": {
+        "ZIndex": 106
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.TextLabel",
+      "properties": {
+        "ZIndex": 109
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs",
+      "properties": {
+        "Position": [
+          0,
+          16,
+          0,
+          80
+        ],
+        "Size": [
+          1,
+          -32,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextScaled": true,
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.Label",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.Label.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextScaled": true,
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.Label",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.Label.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextScaled": true,
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.8745098114013672,
+            0,
+            1
+          ],
+          [
+            1,
+            0.501960813999176,
+            0,
+            1
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.Label",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.Label.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextScaled": true,
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.Label",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.Label.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextScaled": true,
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.Label",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.Label.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content",
+      "properties": {
+        "Position": [
+          0,
+          16,
+          0,
+          138
+        ],
+        "Size": [
+          1,
+          -32,
+          1,
+          -152
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped",
+      "properties": {
+        "BackgroundTransparency": 1,
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ],
+        "Size": [
+          0.28999999165534973,
+          -10,
+          1,
+          0
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.UIStroke",
+      "properties": {
+        "Enabled": false,
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Title",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Title.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Preview",
+      "properties": {
+        "Image": "rbxassetid://131314372434925",
+        "Position": [
+          0,
+          16,
+          0,
+          48
+        ],
+        "Size": [
+          1,
+          -32,
+          0,
+          150
+        ]
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.ItemName",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          8,
+          0,
+          210
+        ],
+        "Size": [
+          1,
+          -16,
+          0,
+          40
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.ItemName.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Multiplier",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          8,
+          0,
+          256
+        ],
+        "Size": [
+          1,
+          -16,
+          0,
+          30
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Multiplier.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Hint",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Hint.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.PurchasedInnerUIStroke",
+      "properties": {
+        "Enabled": false,
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned",
+      "properties": {
+        "BackgroundTransparency": 1,
+        "Position": [
+          0.30000001192092896,
+          0,
+          0,
+          0
+        ],
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ],
+        "Size": [
+          0.699999988079071,
+          0,
+          1,
+          0
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.UIStroke",
+      "properties": {
+        "Enabled": false,
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.Title",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.Title.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.PurchasedInnerUIStroke",
+      "properties": {
+        "Enabled": false,
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Items",
+      "properties": {
+        "Position": [
+          0.30000001192092896,
+          8,
+          0,
+          48
+        ],
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ],
+        "Size": [
+          0.699999988079071,
+          -16,
+          1,
+          -56
+        ]
+      },
+      "class": "ScrollingFrame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.WinLabel",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped",
+      "properties": {
+        "BackgroundTransparency": 1,
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ],
+        "Size": [
+          0.28999999165534973,
+          -10,
+          1,
+          0
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.UIStroke",
+      "properties": {
+        "Enabled": false,
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Title",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Size": [
+          1,
+          -24,
+          0,
+          28
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Title.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Hint",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Hint.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Protein",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Protein.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Glove",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Glove.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.TrainingBelt",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.TrainingBelt.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.PurchasedInnerUIStroke",
+      "properties": {
+        "Enabled": false,
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned",
+      "properties": {
+        "BackgroundTransparency": 1,
+        "Position": [
+          0.30000001192092896,
+          0,
+          0,
+          0
+        ],
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ],
+        "Size": [
+          0.699999988079071,
+          0,
+          1,
+          0
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.UIStroke",
+      "properties": {
+        "Enabled": false,
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.Title",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.Title.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.PurchasedInnerUIStroke",
+      "properties": {
+        "Enabled": false,
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.OwnedItems",
+      "properties": {
+        "Position": [
+          0.30000001192092896,
+          10,
+          0,
+          96
+        ],
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ],
+        "Size": [
+          0.699999988079071,
+          -24,
+          1,
+          -124
+        ]
+      },
+      "class": "ScrollingFrame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Empty",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Empty.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Status",
+      "properties": {
+        "TextScaled": true,
+        "TextStrokeTransparency": 0.550000011920929,
+        "Position": [
+          0.30000001192092896,
+          8,
+          1,
+          -22
+        ],
+        "Size": [
+          0.699999988079071,
+          -16,
+          0,
+          20
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Status.UIStroke",
+      "properties": {
+        "Enabled": false
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.Title",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.Subtitle",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1,
+        "BackgroundColor3": [
+          0.46666666865348816,
+          0,
+          0.8823529481887817
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.StudPattern",
+      "properties": {
+        "Visible": false
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe",
+      "properties": {
+        "BackgroundTransparency": 0
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.SectionTitle",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.ElementIndicator",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.RemoveButton",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.SlotName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Plus1",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.ElementIndicator",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.RemoveButton",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.SlotName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Plus2",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.ElementIndicator",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.RemoveButton",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.SlotName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Arrow",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.ElementIndicator",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.SlotName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SectionTitle",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.ItemCount",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1,
+        "BackgroundColor3": [
+          0.46666666865348816,
+          0,
+          0.8823529481887817
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.StudPattern",
+      "properties": {
+        "Visible": false
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll",
+      "properties": {
+        "BackgroundTransparency": 1,
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ]
+      },
+      "class": "ScrollingFrame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon",
+      "properties": {
+        "BackgroundTransparency": 0
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "BackgroundTransparency": 0,
+        "BackgroundColor3": [
+          0.46666666865348816,
+          0,
+          0.8823529481887817
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.StudPattern",
+      "properties": {
+        "Visible": false
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.UIStroke",
+      "properties": {
+        "Enabled": false,
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.PurchasedInnerUIStroke",
+      "properties": {
+        "Enabled": false,
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.Hint",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "BackgroundColor3": [
+          0.46666666865348816,
+          0,
+          0.8823529481887817
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.StudPattern",
+      "properties": {
+        "Visible": false
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList",
+      "properties": {
+        "BackgroundTransparency": 1,
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ]
+      },
+      "class": "ScrollingFrame"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.AuraName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.AuraName.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.StrengthBonus",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.StrengthBonus.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.Price",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.Price.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.Price.Amount",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.Price.Amount.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1,
+        "BackgroundTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.UIStroke",
+      "properties": {
+        "Transparency": 1
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.Label",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.AuraName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.AuraName.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.StrengthBonus",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.StrengthBonus.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.Price",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.Price.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.Price.Amount",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.Price.Amount.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1,
+        "BackgroundTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton.UIStroke",
+      "properties": {
+        "Transparency": 1
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton.Label",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.AuraName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.AuraName.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.StrengthBonus",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.StrengthBonus.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.Price",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.Price.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.Price.Amount",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.Price.Amount.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1,
+        "BackgroundTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton.UIStroke",
+      "properties": {
+        "Transparency": 1
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton.Label",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.AuraName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.AuraName.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.StrengthBonus",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.StrengthBonus.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price.Amount",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price.Amount.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1,
+        "BackgroundTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton.UIStroke",
+      "properties": {
+        "Transparency": 1
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton.Label",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.AuraName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.AuraName.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.StrengthBonus",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.StrengthBonus.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price.Amount",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price.Amount.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1,
+        "BackgroundTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton.UIStroke",
+      "properties": {
+        "Transparency": 1
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton.Label",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.AuraIcon",
+      "properties": {
+        "Image": "rbxassetid://86956843606297"
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.AuraName",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.AuraName.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.StrengthBonus",
+      "properties": {
+        "TextColor3": [
+          1,
+          1,
+          1
+        ],
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.StrengthBonus.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.Price",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.Price.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.Price.Amount",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.Price.Amount.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1,
+        "BackgroundTransparency": 1
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton.UIStroke",
+      "properties": {
+        "Transparency": 1
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton.Label",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "TextTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "properties": {
+        "MinTextSize": 6
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.UIStroke",
+      "properties": {
+        "Enabled": false,
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurchasedInnerUIStroke",
+      "properties": {
+        "Enabled": false,
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.Title",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.Title.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.ComingSoon",
+      "properties": {
+        "TextStrokeTransparency": 1
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.ComingSoon.UIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.46666666865348816,
+            0,
+            0.8823529481887817
+          ],
+          [
+            1,
+            0.1882352977991104,
+            0,
+            0.4941176474094391
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedInnerUIStroke",
+      "properties": {
+        "Enabled": false,
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.StudPattern",
+      "properties": {
+        "ZIndex": 91
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText1",
+      "properties": {
+        "ZIndex": 94
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText2",
+      "properties": {
+        "ZIndex": 93
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0.7450980544090271,
+            0,
+            1
+          ],
+          [
+            1,
+            0.3333333432674408,
+            0,
+            0.9607843160629272
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.InnerUIStroke",
+      "properties": {
+        "Color": [
+          0.7450980544090271,
+          0,
+          1
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel",
+      "properties": {
+        "BackgroundTransparency": 0.5,
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.UIStroke",
+      "properties": {
+        "Thickness": 4
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.UIStroke",
+      "properties": {
+        "Enabled": false
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.StudPattern",
+      "properties": {
+        "ZIndex": 19
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.TextLabel",
+      "properties": {
+        "ZIndex": 22
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages",
+      "properties": {
+        "BackgroundColor3": [
+          0.027450982481241226,
+          0.027450982481241226,
+          0.0470588281750679
+        ],
+        "Size": [
+          1,
+          -32,
+          1,
+          -126
+        ]
+      },
+      "class": "ScrollingFrame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10",
+      "properties": {
+        "Size": [
+          1,
+          -10,
+          0,
+          76
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.UIStroke",
+      "properties": {
+        "Thickness": 2
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.StageLabel",
+      "properties": {
+        "TextStrokeTransparency": 1,
+        "Position": [
+          0,
+          14,
+          0,
+          16
+        ],
+        "Size": [
+          0.33000001311302185,
+          -22,
+          0,
+          44
+        ]
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.StageLabel.UITextSizeConstraint",
+      "properties": {
+        "MaxTextSize": 26
+      },
+      "class": "UITextSizeConstraint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.WinButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.33000001311302185,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.WinButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.RobuxButton",
+      "properties": {
+        "AnchorPoint": [
+          0,
+          0.5
+        ],
+        "Position": [
+          0.6650000214576721,
+          0,
+          0.5,
+          0
+        ],
+        "Size": [
+          0.33500000834465027,
+          -12,
+          0,
+          46
+        ]
+      },
+      "class": "TextButton"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.RobuxButton.PurchasedButtonVisual",
+      "properties": {
+        "Size": [
+          0,
+          176,
+          0,
+          46
+        ]
+      },
+      "class": "Frame"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.PurchasedInnerUIStroke",
+      "properties": {
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Status",
+      "properties": {
+        "TextStrokeTransparency": 0.550000011920929
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedInnerUIStroke",
+      "properties": {
+        "Enabled": false,
+        "Transparency": 0,
+        "Color": [
+          0.4549019932746887,
+          0.4549019932746887,
+          0.4549019932746887
+        ]
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.UIGradient",
+      "properties": {
+        "Enabled": false,
+        "Color": [
+          [
+            0,
+            0,
+            0.5372549295425415,
+            0.9607843160629272
+          ],
+          [
+            1,
+            0,
+            0.18039216101169586,
+            0.5215686559677124
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.StudPattern",
+      "properties": {
+        "ZIndex": 4
+      },
+      "class": "ImageLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText1",
+      "properties": {
+        "ZIndex": 7
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText2",
+      "properties": {
+        "ZIndex": 6
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.UIGradient",
+      "properties": {
+        "Color": [
+          [
+            0,
+            0,
+            0.8235294222831726,
+            1
+          ],
+          [
+            1,
+            0,
+            0.2549019753932953,
+            1
+          ]
+        ]
+      },
+      "class": "UIGradient"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.InnerUIStroke",
+      "properties": {
+        "Color": [
+          0,
+          0.8235294222831726,
+          1
+        ]
+      },
+      "class": "UIStroke"
+    }
+  ],
+  "changedProperties": [
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Title.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.StudPattern",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.TextLabel",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells",
+      "property": "TextScaled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.Label.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Dumbbells.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items",
+      "property": "TextScaled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.Label.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge",
+      "property": "TextScaled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.Label.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Merge.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura",
+      "property": "TextScaled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.Label.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Aura.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed",
+      "property": "TextScaled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.Label.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Speed.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Title",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Title.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Preview",
+      "property": "Image"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Preview",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Preview",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.ItemName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.ItemName",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.ItemName",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.ItemName.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Multiplier",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Multiplier",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Multiplier",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Multiplier.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Hint",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.Hint.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.PurchasedInnerUIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.Title",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.Title.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.PurchasedInnerUIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Items",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Items",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Items",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.WinLabel",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.WinLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Title",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Title",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Title.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Hint",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Hint.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Protein",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Protein.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Glove",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Glove.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.TrainingBelt",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.TrainingBelt.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.PurchasedInnerUIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.Title",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.Title.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.PurchasedInnerUIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.OwnedItems",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.OwnedItems",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.OwnedItems",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Empty",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Empty.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Status",
+      "property": "TextScaled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Status",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Status",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Status",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Items.Status.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.Title",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.Subtitle",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.StudPattern",
+      "property": "Visible"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.SectionTitle",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.ElementIndicator",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.RemoveButton",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.RemoveButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.Slot.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material1.SlotName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Plus1",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.ElementIndicator",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.RemoveButton",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.RemoveButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.Slot.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material2.SlotName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Plus2",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.ElementIndicator",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.RemoveButton",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.RemoveButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.Slot.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Material3.SlotName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Arrow",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.ElementIndicator",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.Slot.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.Slots.Result.SlotName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.MergeRecipe.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SectionTitle",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.ItemCount",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.StudPattern",
+      "property": "Visible"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PlaceholderIcon.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.StudPattern",
+      "property": "Visible"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.PurchasedInnerUIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.Hint",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.StudPattern",
+      "property": "Visible"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Backdrop.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.AuraName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.AuraName.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.StrengthBonus",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.StrengthBonus",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.StrengthBonus.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.Price",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.Price.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.Price.Amount",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.Price.Amount.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.UIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.Label",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.AuraName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.AuraName.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.StrengthBonus",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.StrengthBonus",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.StrengthBonus.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.Price",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.Price.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.Price.Amount",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.Price.Amount.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton.UIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton.Label",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurpleAuraCard.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.AuraName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.AuraName.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.StrengthBonus",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.StrengthBonus",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.StrengthBonus.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.Price",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.Price.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.Price.Amount",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.Price.Amount.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton.UIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton.Label",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.YellowAuraCard.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.AuraName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.AuraName.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.StrengthBonus",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.StrengthBonus",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.StrengthBonus.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price.Amount",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price.Amount.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton.UIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton.Label",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.AuraName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.AuraName.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.StrengthBonus",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.StrengthBonus",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.StrengthBonus.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price.Amount",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price.Amount.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton.UIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton.Label",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.AuraIcon",
+      "property": "Image"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.AuraName",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.AuraName.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.StrengthBonus",
+      "property": "TextColor3"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.StrengthBonus",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.StrengthBonus.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.Price",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.Price.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.Price.Amount",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.Price.Amount.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton.UIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton.Label",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton.Label",
+      "property": "TextTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.BuyButton.Label.UITextSizeConstraint",
+      "property": "MinTextSize"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.RedAuraCard.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurchasedInnerUIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.Title",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.Title.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.ComingSoon",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.ComingSoon.UIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.Content.Speed.Placeholder.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedInnerUIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.StudPattern",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText1",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText2",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.InnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel",
+      "property": "BackgroundTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.UIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.StudPattern",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.TextLabel",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages",
+      "property": "BackgroundColor3"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage2.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage3.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage4.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage5.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage6.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage7.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage8.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage9.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.UIStroke",
+      "property": "Thickness"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.StageLabel",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.StageLabel",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.StageLabel",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.StageLabel.UITextSizeConstraint",
+      "property": "MaxTextSize"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.WinButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.WinButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.WinButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.WinButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.RobuxButton",
+      "property": "AnchorPoint"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.RobuxButton",
+      "property": "Position"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.RobuxButton",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.RobuxButton.PurchasedButtonVisual",
+      "property": "Size"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Stages.Stage10.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.Status",
+      "property": "TextStrokeTransparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedInnerUIStroke",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedInnerUIStroke",
+      "property": "Transparency"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedInnerUIStroke",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.UIGradient",
+      "property": "Enabled"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.StudPattern",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText1",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText2",
+      "property": "ZIndex"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.UIGradient",
+      "property": "Color"
+    },
+    {
+      "path": "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.InnerUIStroke",
+      "property": "Color"
+    }
+  ],
+  "verification": {
+    "instances": 180266,
+    "referenceValues": 76155,
+    "sharedStrings": 381,
+    "sharedStringIndexes": 206364,
+    "uniqueIdDuplicates": 0
+  },
+  "finalSha256": "6b514fa62b336bfc9d4e0969d6d2cc6dd6fa8d5978ea67ed278b9f8c21cfe7b5",
+  "changedSources": {
+    "ReplicatedStorage.Modules.InventoryPresentation": "src/ReplicatedStorage/Modules/InventoryPresentation.luau",
+    "StarterGui.StrengthGui.InventoryPanelClient": "src/StarterGui/StrengthGui/InventoryPanelClient.client.luau",
+    "StarterGui.StrengthGui.ItemInventoryTabClient": "src/StarterGui/StrengthGui/ItemInventoryTabClient.client.luau"
+  },
+  "externalSaveObserved": {
+    "sha256": "7eab2a32e647ed0385c1345278e7f801b0a13e436817a7f7585794e7fc777d30",
+    "instances": 181684,
+    "at": "2026-10-10 12:20:57",
+    "saveCaller": "unknown; no agent Save/Publish call"
+  },
+  "previewCleanup": {
+    "removed": 1418,
+    "sessionUniqueIdSuffix": "2cccece64c253bc8",
+    "scope": [
+      "StarterGui.StrengthGui.InventoryPanel",
+      "StarterGui.StageSkipGui.Panel"
+    ],
+    "externalInstancesPreserved": true,
+    "referenceTargetsCleared": 0,
+    "restoredProperties": [
+      [
+        "StarterGui.StrengthGui.InventoryPanel",
+        "Position"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.StudPattern",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.CloseButton.PurchasedShopClose.TextLabel",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Equipped.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Owned.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Title",
+        "Position"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Items.Equipped.Title",
+        "Size"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Items.Owned.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Header.CloseButton.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.SortButton.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.OwnedItemsArea.OwnedItemsScroll.ItemCard_01.ItemImage.ElementIndicator.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.Content.Merge.MergePanel.Footer.MergeButton.StudPattern",
+        "TileSize"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.StudPattern",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText1",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel.PurchasedShopHeader.ShopText2",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel",
+        "Size"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.StudPattern",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.CloseButton.PurchasedShopClose.TextLabel",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.StudPattern",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText1",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText2",
+        "ZIndex"
+      ],
+      [
+        "StarterGui.StageSkipGui",
+        "Enabled"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel",
+        "Visible"
+      ],
+      [
+        "StarterGui.StrengthGui.InventoryPanel",
+        "Visible"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Title",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText1",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.PurchasedShopHeader.ShopText2",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage2.StageLabel",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage3.StageLabel",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage4.StageLabel",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage5.StageLabel",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage6.StageLabel",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage7.StageLabel",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage8.StageLabel",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage9.StageLabel",
+        "Text"
+      ],
+      [
+        "StarterGui.StageSkipGui.Panel.Stages.Stage10.StageLabel",
+        "Text"
+      ]
+    ],
+    "restoreVisibilityAfterPreviewSave": [
+      {
+        "path": "StarterGui.StrengthGui.HUD",
+        "property": "Visible",
+        "value": true
+      },
+      {
+        "path": "StarterGui.StrengthGui.LeftMenu",
+        "property": "Visible",
+        "value": true
+      },
+      {
+        "path": "StarterGui.StrengthGui.StrengthLevelHUD",
+        "property": "Visible",
+        "value": true
+      },
+      {
+        "path": "StarterGui.LevelUpGui",
+        "property": "Enabled",
+        "value": true
+      },
+      {
+        "path": "StarterGui.StrengthGainGui",
+        "property": "Enabled",
+        "value": true
+      },
+      {
+        "path": "StarterGui.WorldTravelGui",
+        "property": "Enabled",
+        "value": true
+      },
+      {
+        "path": "StarterGui.World1DoubleWinGui",
+        "property": "Enabled",
+        "value": true
+      }
+    ]
+  }
+}

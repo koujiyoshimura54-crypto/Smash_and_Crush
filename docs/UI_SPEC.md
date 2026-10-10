@@ -442,3 +442,8 @@ Retain purchased Trophy geometry/Prompt/Billboard. Client presentation follows v
 ## 2026-10-10 - Inventory / Skip purchased Shop presentation
 
 InventoryPanel and StageSkipGui.Panel reuse StrengthGui.ShopPanel artwork with light purple/pink surfaces, black borders and retained yellow Win/green Robux controls. Inventory uses a900x410 design only for landscape viewports below500px high (otherwise900x660), retaining the equipped pane; compact cards and sockets fit below the header. This changes presentation only. See [actual Edit review and remaining checks](Inventory_Skip_Visual_Review.md); Cloud/live translation/touch validation is not complete.
+
+
+## 2026-10-10 - Superseding Inventory / Skip palette and structure
+
+The earlier light purple/pink direction is revoked. Inventory uses saturated purple; Skip uses saturated blue. Reuse purchased Shop header/close/card artwork, its dark RGB7,7,12 body at50% transparency, same-role typography and90px stud tiles. Studs belong on header/cards, not the full body. Equipment/list wrappers stay transparent; Inventory retains a compact left equipment pane and3-column right list. Skip aligns Stage/Win/Robux with a scrollable last row. See [actual comparison](Inventory_Skip_Shop_Alignment.md) for the confirmed Edit views and remaining Cloud/device checks.

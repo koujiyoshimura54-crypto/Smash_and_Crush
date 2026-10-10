@@ -5,11 +5,17 @@ assert(game.PlaceId==0,"Use only the disposable local verification session")
 local RS=game.ReplicatedStorage
 local event=Instance.new("BindableEvent")
 local P=require(RS.Modules.InventoryPresentation)
+P.BindPurchasedPanel(game.StarterGui.StrengthGui.InventoryPanel)
+P.BindPurchasedPanel(game.StarterGui.StageSkipGui.Panel)
 _G.UiPresentation=P
 _G.UIReviewState={Loaded=true,Win=12345,OwnedDumbbells={NORMAL_01=true},EquippedDumbbell="NORMAL_01",OwnedItems={},EquippedItems={Protein="PROTEIN_COMMON_FIRE"},OwnedAuras={},EquippedAura="",OwnedSpeeds={},PremiumOwned=false,Recipes={},RequiredCount=3}
 local master=require(RS.Config.ItemMaster)
 for id,item in master.GetAll() do
  if item.Rarity==master.Rarities[1] then _G.UIReviewState.OwnedItems[id]=3 end
+end
+-- Display-only recipes: render owned cards without claiming live merge eligibility.
+for id,n in _G.UIReviewState.OwnedItems do
+ table.insert(_G.UIReviewState.Recipes,{ItemId=id,Count=n,CanMerge=false})
 end
 local remotes=setmetatable({},{__index=function(t,k)
  local remote={OnClientEvent=event.Event,InvokeServer=function()return _G.UIReviewState end,FireServer=function()error("Remote writes forbidden in Edit preview: "..k)end}

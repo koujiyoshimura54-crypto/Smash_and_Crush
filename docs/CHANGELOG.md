@@ -703,3 +703,10 @@
 
 - Matched purchased Shop borders/header/close/cards, removed oversized/yellow/red legacy framing and title overlap; retained light purple/pink and purchased Win/Robux buttons. Fixed short-landscape Inventory spacing/card heights while preserving equipment and all gameplay.
 - Final CurrentCloud reDecode/references/SharedStrings/UniqueId0 and3 Source compilations passed; actual final Studio Edit load and display fixtures checked. [Nine real screenshots and detailed limits](Inventory_Skip_Visual_Review.md). Cloud, real transactions, merge completion, translation delivery and portrait/touch remain unverified. An unexpected transient Play-mode tool response was excluded; agent did not start Play. Verification Studios/lock cleared.
+
+
+## 2026-10-10 - Saturated Shop-aligned Inventory / Skip
+
+- Replaced pastel opaque panes with purchased Shop's independent header, dark50%-transparent body and individual cards. Inventory purple, Skip blue;90px donor stud scale and same-role typography retained. Compact equipment plus3-column Inventory and aligned scrollable Skip rows; existing Win/Robux controls and gameplay unchanged.
+- All tabs/state/reopen/scroll endpoints and Japanese landscape width samples checked in actual Studio Edit. [Comparison images and limits](Inventory_Skip_Shop_Alignment.md). Three Source compilations and binary/reference/SharedString/UniqueId0 checks passed; final file actually reopened successfully.
+- Detected an independent mid-task file save before stale write; removed only positively identified temporary preview UI and preserved latest out-of-scope changes. No rollback or agent Save/Publish. Cloud/live transactions/localization/portrait/touch remain unverified. Verification sessions/lock cleaned; task-only commit.

@@ -1,249 +1,219 @@
--- Rendering only: callers own purchase, ownership and equip decisions.
+-- Presentation only. All purchase/equip/merge/Skip decisions remain in callers.
 local M={}
-function M.SetIdentity(nameLabel,imageLabel,name,image)
- if nameLabel then nameLabel.Text=name end
- if imageLabel then imageLabel.Image=image end
-end
-function M.SetButtonEnabled(button,enabled)
- button.Active=enabled==true
- button.AutoButtonColor=button.Active
-end
--- Visuals only. Templates come from the purchased Shop already used in-game.
--- Existing controls, data labels, localization and input connections stay in place.
-local palette={
- body=ColorSequence.new(Color3.fromRGB(229,163,255),Color3.fromRGB(255,190,221)),
- card=ColorSequence.new(Color3.fromRGB(246,190,255),Color3.fromRGB(255,151,207)),
- selected=ColorSequence.new(Color3.fromRGB(255,234,134),Color3.fromRGB(255,159,215)),
- header=ColorSequence.new(Color3.fromRGB(239,153,255),Color3.fromRGB(255,139,193)),
- equipped=ColorSequence.new(Color3.fromRGB(143,245,195),Color3.fromRGB(56,189,138)),
- action=ColorSequence.new(Color3.fromRGB(144,224,255),Color3.fromRGB(96,165,242)),
-}
 local bindings=setmetatable({},{__mode="k"})
-local purchaseNames={BuyButton=true,WinButton=true,RobuxButton=true,WinPurchase=true,RobuxPurchase=true,Purchase=true,PurchasedButtonVisual=true}
-local function protected(object)
- local current=object
- while current do
-  if purchaseNames[current.Name] or current.Name=="PurchasedShopHeader" or current.Name=="PurchasedShopClose" or current:GetAttribute("PurchasedShopDecoration")
-   or current.Name:find("Badge") or current.Name:find("Notification") then return true end
-  current=current.Parent
+local function templates()
+ local shop=game.StarterGui.StrengthGui.ShopPanel
+ return shop,shop.Top,shop.MainScrollingFrame.Holder.Card01_SecretPack
+end
+local colors={
+ purple=ColorSequence.new(Color3.fromRGB(190,0,255),Color3.fromRGB(85,0,245)),
+ blue=ColorSequence.new(Color3.fromRGB(0,210,255),Color3.fromRGB(0,65,255)),
+ card=ColorSequence.new(Color3.fromRGB(119,0,225),Color3.fromRGB(48,0,126)),
+ blueCard=ColorSequence.new(Color3.fromRGB(0,137,245),Color3.fromRGB(0,46,133)),
+ selected=ColorSequence.new(Color3.fromRGB(223,0,255),Color3.fromRGB(128,0,255)),
+ equipped=ColorSequence.new(Color3.fromRGB(38,215,75),Color3.fromRGB(0,112,50)),
+ action=ColorSequence.new(Color3.fromRGB(0,190,255),Color3.fromRGB(0,84,238)),
+}
+local purchase={BuyButton=true,WinButton=true,RobuxButton=true,WinPurchase=true,RobuxPurchase=true,Purchase=true,PurchasedButtonVisual=true}
+local function protected(x)
+ while x do
+  if purchase[x.Name] or x.Name=="PurchasedShopHeader" or x.Name=="PurchasedShopClose"
+   or x:GetAttribute("PurchasedShopDecoration") or x.Name:find("Badge") or x.Name:find("Notification") then return true end
+  x=x.Parent
  end
  return false
 end
-local function templates()
- local shop=game:GetService("StarterGui").StrengthGui.ShopPanel
- return shop,shop.Top,shop.MainScrollingFrame.Holder.Card01_SecretPack
-end
-local function copyProperties(target,source,properties)
- for _,key in ipairs(properties) do target[key]=source[key] end
-end
-local function decoration(source,parent,name)
- local old=parent:FindFirstChild(name)
- if old then old:SetAttribute("PurchasedShopDecoration",true);return old end
- local object=source:Clone()
- object.Name=name
- object:SetAttribute("PurchasedShopDecoration",true)
- for _,child in ipairs(object:GetDescendants()) do
-  if child:IsA("LuaSourceContainer") then child:Destroy() end
+local function copy(x,donor,keys) for _,k in keys do x[k]=donor[k] end end
+local function decoration(donor,parent,name)
+ local x=parent:FindFirstChild(name)
+ if not x then
+  x=donor:Clone();x.Name=name
+  for _,c in x:GetDescendants() do if c:IsA("LuaSourceContainer") then c:Destroy() end end
+  x.Parent=parent
  end
- object.Parent=parent
- return object
+ x:SetAttribute("PurchasedShopDecoration",true)
+ return x
 end
-local strokeProperties={"ApplyStrokeMode","Color","Thickness","Transparency","LineJoinMode","StrokeSizingMode","BorderStrokePosition","BorderOffset","ZIndex","Enabled"}
-local function stroke(parent,source,name)
- local object=parent:FindFirstChild(name)
- if not object then object=decoration(source,parent,name) end
- copyProperties(object,source,strokeProperties)
- return object
+local strokeKeys={"ApplyStrokeMode","Color","Thickness","Transparency","LineJoinMode","StrokeSizingMode","BorderStrokePosition","BorderOffset","ZIndex","Enabled"}
+local function stroke(parent,donor,name)
+ local x=decoration(donor,parent,name);copy(x,donor,strokeKeys);return x
 end
-function M.ApplyPurchasedText(object)
- if protected(object) then return end
- if object:IsA("TextLabel") or object:IsA("TextButton") or object:IsA("TextBox") then
-  local _,top=templates()
-  object.FontFace=top.ShopText1.FontFace
-  object.TextStrokeColor3=Color3.new(0,0,0)
-  object.TextStrokeTransparency=0
+local function isBody(x)
+ return x:GetAttribute("PurchasedShopPanel") or x.Name=="Equipped" or x.Name=="Owned" or x.Name=="MergeFlow" or x:IsA("ScrollingFrame")
+end
+local function isSkip(x) return x:FindFirstAncestor("StageSkipGui")~=nil end
+local function tile(x,pattern,donor)
+ local scale=1
+ while x and not x:IsA("ScreenGui") do
+  local s=x:FindFirstChildOfClass("UIScale") if s then scale*=s.Scale end
+  x=x.Parent
+ end
+ copy(pattern,donor,{"Image","ImageColor3","ImageTransparency","ScaleType"})
+ -- Shop's ninety-pixel tiles stay ninety pixels after responsive scaling.
+ pattern.TileSize=UDim2.fromOffset(donor.TileSize.X.Offset/math.max(scale,.01),donor.TileSize.Y.Offset/math.max(scale,.01))
+end
+function M.SetIdentity(label,image,name,asset) if label then label.Text=name end if image then image.Image=asset end end
+function M.SetButtonEnabled(button,enabled) button.Active=enabled==true;button.AutoButtonColor=button.Active end
+function M.ApplyPurchasedText(x)
+ if protected(x) or not (x:IsA("TextLabel") or x:IsA("TextButton") or x:IsA("TextBox")) then return end
+ local _,top,card=templates()
+ local description=x.Name:find("Description") or x.Name:find("Instruction") or x.Name=="Status" or x.Name=="Benefits"
+ local donor=description and card.Benefits or (x.Name=="EquippedStatus" or x.Name=="EquipButton") and card.Owned.PriceTag or card:FindFirstChild("Title")
+ if x.Parent and x.Parent.Name=="Tabs" then donor=top.ShopText1 end
+ copy(x,donor,{"FontFace","TextColor3","TextStrokeColor3","TextStrokeTransparency"})
+ local ink=donor:FindFirstChildWhichIsA("UIStroke")
+ if ink then
+  local existing=x:FindFirstChild("PurchasedTextUIStroke")
+  if not existing and x.BackgroundTransparency>=.95 then
+   for _,v in x:GetChildren() do if v:IsA("UIStroke") and v.ApplyStrokeMode==Enum.ApplyStrokeMode.Contextual then existing=v;break end end
+  end
+  for _,v in x:GetChildren() do
+   if v:IsA("UIStroke") and v.ApplyStrokeMode==Enum.ApplyStrokeMode.Contextual and v~=existing then v:Destroy() end
+  end
+  if existing then copy(existing,ink,strokeKeys);ink=existing else ink=stroke(x,ink,"PurchasedTextUIStroke") end
+  ink.ApplyStrokeMode=Enum.ApplyStrokeMode.Contextual
+  ink.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+  ink.Thickness=description and 1 or 2;ink.Enabled=true
  end
 end
-function M.SetSelected(object,selected)
- object:SetAttribute("PurchasedShopSelected",selected==true)
- M.ApplyPurchasedSurface(object)
-end
-function M.SetEquipped(object,equipped)
- object:SetAttribute("PurchasedShopEquipped",equipped==true)
- M.ApplyPurchasedSurface(object)
-end
-function M.ApplyPurchasedSurface(object)
- if protected(object) or not object:IsA("GuiObject") then return end
+function M.ApplyPurchasedSurface(x)
+ if protected(x) or not x:IsA("GuiObject") then return end
  local shop,top,card=templates()
- local source=object:GetAttribute("PurchasedShopPanel") and top or card
- object.BorderSizePixel=0
- local outer=stroke(object,object:GetAttribute("PurchasedShopPanel") and shop.UIStroke or card.OuterUIStroke,"UIStroke")
- -- Header-relative strokes cannot be scaled by the entire panel/pane height.
- -- Keep the Shop artwork, with a consistent border width in design pixels.
- outer.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
- outer.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
- outer.Thickness=object:GetAttribute("PurchasedShopPanel") and 5 or 3
- local inner=stroke(object,top.Close.UIStrokeInner,"PurchasedInnerUIStroke")
- inner.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
- inner.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
- inner.Thickness=1
- inner.Transparency=.55
- local corner=object:FindFirstChildOfClass("UICorner")
- if corner then corner.CornerRadius=top.Close.UICorner.CornerRadius end
- local gradient=object:FindFirstChildOfClass("UIGradient")
- if not gradient then gradient=decoration(source.UIGradient,object,"UIGradient") end
- copyProperties(gradient,source.UIGradient,{"Rotation","Offset","Transparency","Scale","TileMode","Type","Enabled"})
- gradient.Color=object:GetAttribute("PurchasedShopEquipped") and palette.equipped
-  or object.Name=="EquippedStatus" and palette.equipped
-  or object.Name=="EquipButton" and palette.action
-  or object:GetAttribute("PurchasedShopSelected") and palette.selected
-  or object:GetAttribute("PurchasedShopPanel") and palette.body or palette.card
- -- UIGradient on a TextButton also tints its glyphs. Keep white Shop lettering
- -- readable on action/tab/card buttons, while frames retain the full gradient.
- local textSurface=(object:IsA("TextButton") or object:IsA("TextLabel")) and object.Text~=""
- gradient.Enabled=not textSurface
- local fill=textSurface and gradient.Color.Keypoints[1].Value or Color3.new(1,1,1)
- object:SetAttribute("PurchasedShopSurfaceColor",fill)
- object.BackgroundColor3=fill
- -- A GuiObject background would become an extra card in a list/grid layout.
- -- Keep the purchased gradient/borders here; individual cards retain the studs.
- if object:FindFirstChildWhichIsA("UIGridStyleLayout") then return end
- local pattern=object:FindFirstChild("StudPattern")
- if not pattern then pattern=decoration(source.StudPattern,object,"StudPattern") end
- copyProperties(pattern,source.StudPattern,{"Image","ImageColor3","ImageTransparency","ScaleType","TileSize"})
- pattern:SetAttribute("PurchasedShopDecoration",true)
- pattern.AnchorPoint=Vector2.zero
- pattern.Position=UDim2.fromScale(0,0)
- pattern.Size=UDim2.fromScale(1,1)
- pattern.BackgroundTransparency=1
- pattern.ZIndex=object.ZIndex
- pattern.Active=false
- -- The Shop body is quiet; reserve its purchased studs for headers and cards.
- pattern.Visible=not object:GetAttribute("PurchasedShopPanel") and object.Name~="Equipped" and object.Name~="Owned" and object.Name~="MergeFlow"
- local patternCorner=pattern:FindFirstChildOfClass("UICorner")
- if patternCorner then patternCorner.CornerRadius=top.Close.UICorner.CornerRadius end
+ local root=x:GetAttribute("PurchasedShopPanel")
+ local body=isBody(x)
+ x.BorderSizePixel=0
+ local outer=stroke(x,root and shop.UIStroke or card.OuterUIStroke,"UIStroke")
+ outer.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize;outer.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+ outer.Thickness=root and 4 or 2;outer.Enabled=root or not body
+ local inner=stroke(x,card.InnerUIStroke,"PurchasedInnerUIStroke")
+ inner.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize;inner.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+ inner.Thickness=1;inner.Enabled=not body
+ local corner=x:FindFirstChildOfClass("UICorner") if corner then corner.CornerRadius=top.Close.UICorner.CornerRadius end
+ local gradient=x:FindFirstChildOfClass("UIGradient") or decoration(card.UIGradient,x,"UIGradient")
+ copy(gradient,card.UIGradient,{"Rotation","Offset","Transparency","Scale","TileMode","Type"})
+ local textSurface=(x:IsA("TextButton") or x:IsA("TextLabel")) and x.Text~=""
+ gradient.Color=x:GetAttribute("PurchasedShopEquipped") and colors.equipped or x.Name=="EquippedStatus" and colors.equipped
+  or x.Name=="EquipButton" and colors.action or x:GetAttribute("PurchasedShopSelected") and colors.selected or isSkip(x) and colors.blueCard or colors.card
+ gradient.Enabled=not body and not textSurface
+ local fill=body and shop.BackgroundColor3 or textSurface and gradient.Color.Keypoints[1].Value or Color3.new(1,1,1)
+ x:SetAttribute("PurchasedShopSurfaceColor",fill)
+ x.BackgroundColor3=fill;x.BackgroundTransparency=root and shop.BackgroundTransparency or body and 1 or 0
+ local pattern=x:FindFirstChild("StudPattern")
+ if not pattern and not body and not x:FindFirstChildWhichIsA("UIGridStyleLayout") then pattern=decoration(card.StudPattern,x,"StudPattern") end
+ if pattern then
+  tile(x,pattern,card.StudPattern);pattern:SetAttribute("PurchasedShopDecoration",true)
+  pattern.AnchorPoint=Vector2.zero;pattern.Position=UDim2.fromScale(0,0);pattern.Size=UDim2.fromScale(1,1)
+  pattern.BackgroundTransparency=1;pattern.ZIndex=x.ZIndex;pattern.Active=false;pattern.Visible=not body and not textSurface
+ end
 end
+function M.SetSelected(x,value) x:SetAttribute("PurchasedShopSelected",value==true);M.ApplyPurchasedSurface(x) end
+function M.SetEquipped(x,value) x:SetAttribute("PurchasedShopEquipped",value==true);M.ApplyPurchasedSurface(x) end
 function M.BindPurchasedPanel(panel)
  if bindings[panel] then return end
  assert(panel.Name=="InventoryPanel" or (panel.Name=="Panel" and panel.Parent.Name=="StageSkipGui"),"Purchased skin scope")
  local _,top=templates()
- local connections={}
- bindings[panel]=connections
- local function connect(signal,callback)
-  table.insert(connections,signal:Connect(callback))
- end
- panel:SetAttribute("PurchasedShopPanel",true)
- M.ApplyPurchasedSurface(panel)
-
- local title=panel:WaitForChild("Title")
- local close=panel:WaitForChild("CloseButton")
+ local connections={};bindings[panel]=connections
+ local function connect(signal,fn) table.insert(connections,signal:Connect(fn)) end
+ panel:SetAttribute("PurchasedShopPanel",true);M.ApplyPurchasedSurface(panel)
+ local title,close=panel.Title,panel.CloseButton
  local header=decoration(top,panel,"PurchasedShopHeader")
- local duplicateClose=header:FindFirstChild("Close")
- if duplicateClose then duplicateClose:Destroy() end
- local shopIcon=header:FindFirstChild("MainShopIcon")
- if shopIcon then shopIcon:Destroy() end
- header.AnchorPoint=Vector2.zero
- header.Position=UDim2.fromOffset(0,0)
- header.Size=UDim2.new(1,0,0,68)
- header.ZIndex=panel.ZIndex+1
- header.UIGradient.Color=palette.header
- header.InnerUIStroke.Color=palette.header.Keypoints[1].Value
- local legacyIcon=panel:FindFirstChild("InventoryTitleIcon")
- if legacyIcon then legacyIcon.Visible=false end
- if panel.Name=="InventoryPanel" then
-  panel.Tabs.Position=UDim2.fromOffset(16,82)
-  panel.Tabs.Size=UDim2.new(1,-32,0,62)
-  panel.Content.Position=UDim2.fromOffset(16,158)
-  panel.Content.Size=UDim2.new(1,-32,1,-174)
- else
-  panel.Stages.Position=UDim2.fromOffset(16,82)
-  panel.Stages.Size=UDim2.new(1,-32,1,-132)
- end
- for _,object in ipairs(header:GetDescendants()) do
-  if object:IsA("GuiObject") then object.ZIndex=header.ZIndex+object.ZIndex-top.ZIndex;object.Active=false end
- end
+ for _,name in {"Close","MainShopIcon"} do local x=header:FindFirstChild(name) if x then x:Destroy() end end
+ header.AnchorPoint=Vector2.zero;header.Position=UDim2.fromOffset(0,0);header.Size=UDim2.new(1,0,0,68);header.ZIndex=panel.ZIndex+1
+ local palette=isSkip(panel) and colors.blue or colors.purple
+ header.UIGradient.Color=palette;header.InnerUIStroke.Color=palette.Keypoints[1].Value
+ tile(header,header.StudPattern,top.StudPattern)
+ for _,name in {"InventoryTitleIcon","Divider"} do local x=panel:FindFirstChild(name) if x then x.Visible=false end end
+ for _,x in header:GetDescendants() do if x:IsA("GuiObject") then x.ZIndex=header.ZIndex+x.ZIndex-top.ZIndex;x.Active=false end end
  local function heading()
-  for _,name in ipairs({"ShopText1","ShopText2"}) do
-   local text=header[name]
-   text.Text=title.Text
-   text.AutoLocalize=title.AutoLocalize
-   text.RootLocalizationTable=title.RootLocalizationTable
-   text.AnchorPoint=Vector2.new(0,.5)
-   text.Position=UDim2.new(0,20,.5,name=="ShopText2" and 2 or 0)
-   text.Size=UDim2.new(1,-92,.8,0)
-   text.TextXAlignment=Enum.TextXAlignment.Left
+  for _,name in {"ShopText1","ShopText2"} do
+   local x=header[name];x.Text=title.Text;x.AutoLocalize=title.AutoLocalize;x.RootLocalizationTable=title.RootLocalizationTable
+   x.AnchorPoint=Vector2.new(0,.5);x.Position=UDim2.new(0,20,.5,name=="ShopText2" and 2 or 0)
+   x.Size=UDim2.new(1,-92,.8,0);x.TextXAlignment=Enum.TextXAlignment.Left
   end
  end
  heading();connect(title:GetPropertyChangedSignal("Text"),heading)
- -- Keep original title and close paths for translations and existing callbacks.
- title:SetAttribute("PurchasedShopDecoration",true)
- close:SetAttribute("PurchasedShopDecoration",true)
+ title:SetAttribute("PurchasedShopDecoration",true);close:SetAttribute("PurchasedShopDecoration",true)
  title.TextTransparency=1;title.TextStrokeTransparency=1
- for _,v in ipairs(title:GetChildren()) do if v:IsA("UIStroke") then v.Transparency=1 end end
- local closeVisual=decoration(top.Close,close,"PurchasedShopClose")
- closeVisual.Text=""
- closeVisual.AnchorPoint=Vector2.zero
- closeVisual.Position=UDim2.fromScale(0,0)
- closeVisual.Size=UDim2.fromScale(1,1)
- closeVisual.Active=false;closeVisual.Interactable=false;closeVisual.Selectable=false
- close.Position=UDim2.new(1,-57,0,10)
- close.AnchorPoint=Vector2.zero;close.Size=UDim2.fromOffset(48,48)
- close.ZIndex=panel.ZIndex+8
- close.BackgroundTransparency=1;close.TextTransparency=1;close.TextStrokeTransparency=1
- for _,v in ipairs(close:GetChildren()) do if v:IsA("UIStroke") then v.Transparency=1 end end
- closeVisual.ZIndex=close.ZIndex
- for _,v in ipairs(closeVisual:GetDescendants()) do
-  if v:IsA("GuiObject") then v.ZIndex=close.ZIndex+v.ZIndex-top.Close.ZIndex;v.Active=false end
- end
+ for _,x in title:GetChildren() do if x:IsA("UIStroke") then x.Enabled=false end end
+ local visual=decoration(top.Close,close,"PurchasedShopClose")
+ visual.Text="";visual.AnchorPoint=Vector2.zero;visual.Position=UDim2.fromScale(0,0);visual.Size=UDim2.fromScale(1,1)
+ visual.Active=false;visual.Interactable=false;visual.Selectable=false
+ close.AnchorPoint=Vector2.zero;close.Position=UDim2.new(1,-57,0,10);close.Size=UDim2.fromOffset(48,48);close.ZIndex=panel.ZIndex+8
+ close.BackgroundTransparency=1;close.TextTransparency=1;close.TextStrokeTransparency=1;visual.ZIndex=close.ZIndex
+ for _,x in close:GetChildren() do if x:IsA("UIStroke") then x.Enabled=false end end
+ for _,x in visual:GetDescendants() do if x:IsA("GuiObject") then x.ZIndex=close.ZIndex+x.ZIndex-top.Close.ZIndex;x.Active=false end end
  local installed=setmetatable({},{__mode="k"})
- local function apply(object)
-  if not object:IsDescendantOf(panel) or protected(object) or object==title or object==close then return end
-  M.ApplyPurchasedText(object)
-  local surface=(object:IsA("Frame") or object:IsA("ScrollingFrame") or object:IsA("TextButton") or object:IsA("TextLabel"))
-   and object.BackgroundTransparency<.95 and object.Name~="Divider"
+ local function apply(x)
+  if not x:IsDescendantOf(panel) or protected(x) then return end
+  M.ApplyPurchasedText(x)
+  local surface=(x:IsA("Frame") or x:IsA("ScrollingFrame") or x:IsA("TextButton") or x:IsA("TextLabel"))
+   and (x.BackgroundTransparency<.95 or isBody(x)) and x.Name~="Divider"
   if surface then
-   M.ApplyPurchasedSurface(object)
-   if not installed[object] then
-    installed[object]=true
-    -- Existing state renderers may assign their old dark BackgroundColor3.
-    connect(object:GetPropertyChangedSignal("BackgroundColor3"),function()
-     if object.BackgroundColor3~=object:GetAttribute("PurchasedShopSurfaceColor") then M.ApplyPurchasedSurface(object) end
+   M.ApplyPurchasedSurface(x)
+   if not installed[x] then
+    installed[x]=true
+    connect(x:GetPropertyChangedSignal("BackgroundColor3"),function()
+     if x.BackgroundColor3~=x:GetAttribute("PurchasedShopSurfaceColor") then M.ApplyPurchasedSurface(x) end
     end)
    end
   end
  end
- for _,object in ipairs(panel:GetDescendants()) do apply(object) end
- if panel.Name=="InventoryPanel" then
-  local function layout()
-   local compact=panel.Size.Y.Scale==0 and panel.Size.Y.Offset<500
+ for _,x in panel:GetDescendants() do apply(x) end
+ local function layout()
+  local compact=panel.Size.Y.Scale==0 and panel.Size.Y.Offset<500
+  if panel.Name=="InventoryPanel" then
    header.Size=UDim2.new(1,0,0,compact and 54 or 68)
-   panel.Tabs.Position=UDim2.fromOffset(16,compact and 66 or 82)
-   panel.Tabs.Size=UDim2.new(1,-32,0,compact and 46 or 62)
-   panel.Content.Position=UDim2.fromOffset(16,compact and 124 or 158)
-   panel.Content.Size=UDim2.new(1,-32,1,compact and -138 or -174)
-   close.Size=UDim2.fromOffset(compact and 40 or 48,compact and 40 or 48)
-   close.Position=UDim2.new(1,compact and -49 or -57,0,compact and 7 or 10)
-   local equipped=panel.Content.Items.Equipped
-   for i,name in ipairs({"ProteinSocket","GloveSocket","TrainingBeltSocket"}) do
-    local socket=equipped:FindFirstChild(name)
+   panel.Tabs.Position=UDim2.fromOffset(16,compact and 64 or 80);panel.Tabs.Size=UDim2.new(1,-32,0,compact and 42 or 46)
+   panel.Content.Position=UDim2.fromOffset(16,compact and 118 or 138);panel.Content.Size=UDim2.new(1,-32,1,compact and -132 or -152)
+   close.Size=UDim2.fromOffset(compact and 40 or 48,compact and 40 or 48);close.Position=UDim2.new(1,compact and -49 or -57,0,compact and 7 or 10)
+   local d=panel.Content.Dumbbells.Equipped
+   d.Size=UDim2.new(.29,-10,1,0)
+   d.Preview.Position=UDim2.new(0,16,0,48);d.Preview.Size=UDim2.new(1,-32,0,compact and 84 or 150)
+   d.ItemName.Position=UDim2.new(0,8,0,compact and 140 or 210);d.ItemName.Size=UDim2.new(1,-16,0,40)
+   d.Multiplier.Position=UDim2.new(0,8,0,compact and 184 or 256);d.Multiplier.Size=UDim2.new(1,-16,0,30)
+   for _,tab in panel.Tabs:GetChildren() do
+    if tab:IsA("TextButton") then tab.TextScaled=true local limit=tab:FindFirstChildOfClass("UITextSizeConstraint") if limit then limit.MaxTextSize=23 end end
+   end
+   local equipment=panel.Content.Items.Equipped
+   equipment.Title.Position=UDim2.fromOffset(8,compact and 4 or 12)
+   equipment.Title.Size=UDim2.new(1,-16,0,compact and 22 or 28)
+   local best=equipment:FindFirstChild("BestEquipButton")
+   if best then best.Position=UDim2.fromOffset(8,compact and 32 or 46);best.Size=UDim2.new(1,-16,0,compact and 24 or 32) end
+   for i,name in {"ProteinSocket","GloveSocket","TrainingBeltSocket"} do
+    local socket=panel.Content.Items.Equipped:FindFirstChild(name)
     if socket then
-     socket.Position=compact and UDim2.new(0,12,(i-1)/3,60-(i-1)*70/3) or UDim2.new(0,12,.14+(i-1)*.28,0)
-     socket.Size=compact and UDim2.new(1,-24,1/3,-70/3-8) or UDim2.new(1,-24,.26,0)
+     socket.Position=compact and UDim2.new(0,8,(i-1)/3,62-(i-1)*70/3) or UDim2.fromOffset(8,92+(i-1)*108)
+     socket.Size=compact and UDim2.new(1,-16,1/3,-70/3-8) or UDim2.new(1,-16,0,98)
+    end
+   end
+  else
+   panel.Stages.Position=UDim2.fromOffset(16,82);panel.Stages.Size=UDim2.new(1,-32,1,-126)
+   panel.Stages.AutomaticCanvasSize=Enum.AutomaticSize.Y;panel.Stages.CanvasSize=UDim2.new()
+   local list=panel.Stages:FindFirstChildOfClass("UIListLayout") if list then list.Padding=UDim.new(0,12) end
+   for _,row in panel.Stages:GetChildren() do
+    if row:IsA("Frame") and row:FindFirstChild("StageLabel") then
+     row.Size=UDim2.new(1,-10,0,76)
+     local label=row.StageLabel;label.Position=UDim2.new(0,14,0,16);label.Size=UDim2.new(.33,-22,0,44)
+     label.TextScaled=true;label.TextXAlignment=Enum.TextXAlignment.Left
+     local limit=label:FindFirstChildOfClass("UITextSizeConstraint") if limit then limit.MinTextSize=10;limit.MaxTextSize=26 end
+     for i,name in {"WinButton","RobuxButton"} do
+      local button=row[name];button.AnchorPoint=Vector2.new(0,.5)
+      button.Position=UDim2.new(.33+(i-1)*.335,0,.5,0);button.Size=UDim2.new(.335,-12,0,46)
+     end
     end
    end
   end
-  connect(panel:GetPropertyChangedSignal("Size"),layout)
-  connect(panel.DescendantAdded,function(object)
-   if object.Name=="ProteinSocket" or object.Name=="GloveSocket" or object.Name=="TrainingBeltSocket" then task.defer(layout) end
-  end)
-  layout()
+  tile(header,header.StudPattern,top.StudPattern)
+  for _,x in panel:GetDescendants() do
+   if x.Name=="StudPattern" and x:IsA("ImageLabel") and x.Visible and not x:FindFirstAncestor("PurchasedButtonVisual") and not x:FindFirstAncestor("PurchasedShopClose") then tile(x.Parent,x,top.StudPattern) end
+  end
  end
- connect(panel.DescendantAdded,function(object)
-  task.defer(function() apply(object) end)
- end)
- connect(panel.Destroying,function()
-  for _,connection in ipairs(connections) do connection:Disconnect() end
-  bindings[panel]=nil
- end)
+ layout();connect(panel:GetPropertyChangedSignal("Size"),layout)
+ local scale=panel:FindFirstChildOfClass("UIScale") if scale then connect(scale:GetPropertyChangedSignal("Scale"),layout) end
+ connect(panel.DescendantAdded,function(x) task.defer(function()
+  apply(x)
+  if x.Name=="ProteinSocket" or x.Name=="GloveSocket" or x.Name=="TrainingBeltSocket" then layout() end
+ end) end)
+ connect(panel.Destroying,function() for _,c in connections do c:Disconnect() end bindings[panel]=nil end)
 end
 return table.freeze(M)
