@@ -750,3 +750,10 @@
 - Capacity panel runtime header Update -> UpGrade; authored header appearance/layout unchanged.
 - Copied one purchased Feedback BillboardGui onto Workspace.ShopStallTemplate as UpGradeBillboard: lime RGB(170,255,0), original font/black stroke, positioned above the roof. Existing facility geometry and all purchase/capacity behavior preserved.
 - ReDecode, original-property scope comparison, Source compile, reference/SharedString integrity and UniqueId0 passed. Actual Studio Edit loading and both title displays checked; runtime/Cloud purchase untested. Disposable UI removed; own Studio residue terminated and target.lock removed. No Save/Publish/Play/backup.
+
+
+## 2026-10-10 - Limited Egg 01 Phase 3 purchase / durable receipt / saved Hatch
+
+- Connected Product3717610547 to the existing single receipt router and session-owned PlayerData save path. Immutable receipt roll/copy ID/pool v1 and atomic Pet+marker prevent retry/parallel double grants. Existing products/normal Eggs/equip1 remain unchanged.
+- Enabled purchased Robux control only after valid Marketplace price, same-experience product verification and fresh server Policy eligibility. Cancellation/errors unlock; purchase-finished never grants. Saved-only notices use the prepared Phase 4 Hatch/RGBEgg consumer; presentation failures cannot remove ownership.
+- Six Sources compile and match final rbxl;2693 memory-only offline assertions pass. ReDecode/reference/SharedString integrity and UniqueId0 pass,179538 instances unchanged. No Play/purchase/store mutation/Save/Publish; no Studio process/lock. Actual Studio loading and Cloud purchase/Hatch remain unverified. See DEV_STATUS and catalog Phase 3 entry for limits and owner preparation.

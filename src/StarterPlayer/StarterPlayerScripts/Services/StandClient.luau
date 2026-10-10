@@ -1,5 +1,5 @@
--- Purchased Chill Octopus entrance, Phase 2 display only.
--- No purchased Data, GamePass prompt, equip Remote, receipt or reward path.
+-- Purchased Chill Octopus entry; server-authorized Developer Product prompts only.
+-- Purchase completion only unlocks. Saved receipt notices invoke the existing Hatch.
 local RS=game:GetService("ReplicatedStorage")
 local Players=game:GetService("Players")
 local Marketplace=game:GetService("MarketplaceService")
@@ -13,8 +13,55 @@ local lifetime=Janitor.new()
 local sheet=Janitor.new()
 local active=nil
 local started=false
+local generation=0
 local promptConnection=nil
 local boundPrompt=nil
+local requestRemote
+local purchaseBusy=false
+local priceReady=false
+local offeredVersion
+local buyControl,availability
+local unavailableReason="Loading price and eligibility..."
+local transientMessage
+local messages={
+ PaidRandomRestricted="Unavailable in your region",PolicyUnavailable="Eligibility unavailable. Reopen to retry.",
+ PriceUnavailable="Price unavailable. Reopen to retry.",WrongExperience="Unavailable in this experience",
+ ProductAssociationUnavailable="Product unavailable",DataNotLoaded="Player data is loading",
+ DataSaving="Saving pets. Please wait.",PurchaseBusy="Purchase prompt already open",
+ PromptFailed="Purchase prompt failed. Please try again.",TooFarFromEgg="Move closer to Limited Egg 01",
+ PleaseWait="Please wait, then try again.",PurchasesUnavailable="Purchases unavailable",
+}
+local function updatePurchaseUI()
+ if not buyControl or not availability then return end
+ local enabled=priceReady and not purchaseBusy and offeredVersion==Config.RollVersion
+ buyControl.Active=enabled;buyControl.Interactable=enabled;buyControl.Selectable=enabled;buyControl.AutoButtonColor=enabled
+ availability.Text=purchaseBusy and "Waiting for purchase confirmation..." or (priceReady and (transientMessage or "1 Pet") or unavailableReason)
+end
+function M.purchase()
+ if purchaseBusy or not priceReady or not active or not requestRemote then return false,"Unavailable" end
+ purchaseBusy=true;updatePurchaseUI()
+ local ok,response=pcall(function() return requestRemote:InvokeServer("Purchase",offeredVersion) end)
+ if not ok or type(response)~="table" or not response.ok then
+  purchaseBusy=false
+  local reason=ok and type(response)=="table" and response.reason or "PromptFailed"
+  unavailableReason=messages[reason] or "Purchase unavailable. Reopen to retry."
+  local blocked=reason=="PolicyUnavailable" or reason=="PaidRandomRestricted" or reason=="PriceUnavailable"
+   or reason=="WrongExperience" or reason=="ProductAssociationUnavailable" or reason=="PurchasesUnavailable"
+  if blocked then priceReady=false end
+  transientMessage=unavailableReason;updatePurchaseUI()
+  -- Failure/cancellation never awards a Pet or starts a Hatch.
+  return false,reason
+ end
+ return true
+end
+local function acknowledge(id)
+ for _=1,5 do
+  if not started or not requestRemote or not Players.LocalPlayer or not Players.LocalPlayer.Parent then return end
+  local ok,response=pcall(function() return requestRemote:InvokeServer("Acknowledge",id) end)
+  if ok and type(response)=="table" and response.ok then return end
+  task.wait(1)
+ end
+end
 
 local function stripScripts(root)
  for _,x in root:GetDescendants() do if x:IsA("LuaSourceContainer") then x:Destroy() end end
@@ -34,11 +81,12 @@ local function setBoard(price)
   local title=board:FindFirstChild("AlwaysBetter")
   if title then title.Text=Config.Name;title.AutoLocalize=false end
   local amount=board:FindFirstChild("Price")
-  if amount then amount.Text=string.format("%g Robux / 1 Pet",price);amount.AutoLocalize=false end
+  if amount then amount.Text=price and string.format("%g Robux / 1 Pet",price) or "Unavailable / 1 Pet";amount.AutoLocalize=false end
  end
 end
 function M.close()
  active=nil
+ buyControl=nil;availability=nil;priceReady=false;offeredVersion=nil;transientMessage=nil
  sheet:Cleanup()
 end
 
@@ -94,12 +142,13 @@ function M.show(parent,fetchPrice)
   local buy=purchased.RestockShop.Main.Common.BuyRobux:Clone()
   buy.Name="Open1";stripScripts(buy);buy.AnchorPoint=Vector2.new(.5,0)
   buy.Position=UDim2.new(.5,0,0,0);buy.Size=UDim2.fromOffset(230,48);buy.Parent=opens
-  buy.Main.Amount.Text=string.format("\u{E002} %g",Config.BasePrice);buy.Main.Amount.AutoLocalize=false
+  buy.Main.Amount.Text="--";buy.Main.Amount.AutoLocalize=false
   for _,x in buy:GetDescendants() do
    if x:IsA("GuiButton") then x.Active=false;x.Interactable=false;x.Selectable=false;x.AutoButtonColor=false end
   end
-  -- Intentionally no Activated handler and no purchase API in this module.
-  label(nameDonor,opens,"Availability","1 Pet - Purchases unavailable",UDim2.fromOffset(75,58),UDim2.fromOffset(550,22))
+  buyControl=buy.Button
+  availability=label(nameDonor,opens,"Availability","Loading price and eligibility...",UDim2.fromOffset(75,58),UDim2.fromOffset(550,22))
+  sheet:Add(buyControl.Activated:Connect(M.purchase))
   local close=purchased.Inventory.Exit:Clone();close.Name="Close";stripScripts(close)
   close.AnchorPoint=Vector2.zero;close.Position=UDim2.new(1,-56,0,14);close.Size=UDim2.fromOffset(42,42);close.Parent=panel
   sheet:Add(close.Button.Activated:Connect(M.close))
@@ -119,14 +168,31 @@ function M.show(parent,fetchPrice)
  end))
   end
   sheet:Add(gui.Destroying:Connect(function() if active==gui then task.defer(M.close) end end))
+  priceReady=false;offeredVersion=nil;unavailableReason="Loading price and eligibility...";updatePurchaseUI()
   if fetchPrice~=false then task.spawn(function()
    local success,product=pcall(function() return Marketplace:GetProductInfoAsync(Config.ProductId,Enum.InfoType.Product) end)
+   local offered,offer=pcall(function()
+    if not requestRemote then return {ok=false,reason="PurchasesUnavailable"} end
+    return requestRemote:InvokeServer("Offer")
+   end)
    if active~=gui or not gui.Parent then return end
-   if success and type(product)=="table" and type(product.PriceInRobux)=="number" then
+   local valid=success and type(product)=="table" and product.ProductId==Config.ProductId and product.IsForSale==true
+    and type(product.PriceInRobux)=="number" and product.PriceInRobux>0 and product.PriceInRobux<math.huge
+   if valid then
     buy.Main.Amount.Text=string.format("\u{E002} %g",product.PriceInRobux)
     gui:SetAttribute("PriceSource","Marketplace");setBoard(product.PriceInRobux)
-   else gui:SetAttribute("PriceSource","BasePrice") end
-  end) end
+   else gui:SetAttribute("PriceSource","Unavailable");setBoard(nil) end
+   if valid and offered and type(offer)=="table" and offer.ok and offer.ProductId==Config.ProductId
+    and offer.TableVersion==Config.RollVersion then
+    priceReady=true;offeredVersion=offer.TableVersion
+   else
+    local reason=not valid and "PriceUnavailable" or (offered and type(offer)=="table" and offer.reason or "PurchasesUnavailable")
+    unavailableReason=messages[reason] or "Purchase unavailable. Reopen to retry."
+   end
+   updatePurchaseUI()
+  end) else
+   unavailableReason="Purchases unavailable";updatePurchaseUI()
+  end
  end,debug.traceback)
  if not ok then M.close();error(err) end
  return gui
@@ -137,7 +203,7 @@ local function bind(prompt)
  if promptConnection then promptConnection:Disconnect() end
  boundPrompt=prompt
  prompt.ActionText="View Pets";prompt.ObjectText=Config.Name
- prompt.AutoLocalize=false;setBoard(Config.BasePrice)
+ prompt.AutoLocalize=false;setBoard(nil)
  promptConnection=prompt.Triggered:Connect(function(player)
   local localPlayer=Players.LocalPlayer
   if not localPlayer or (player and player~=localPlayer) then return end
@@ -147,10 +213,37 @@ end
 function M.stop()
  M.close();lifetime:Cleanup()
  if promptConnection then promptConnection:Disconnect();promptConnection=nil end
- boundPrompt=nil;started=false
+ boundPrompt=nil;started=false;generation+=1;requestRemote=nil
 end
 function M.start()
- if started then return end started=true
+ if started then return end started=true;generation+=1
+ local currentGeneration=generation
+ lifetime:Add(Marketplace.PromptProductPurchaseFinished:Connect(function(userId,productId)
+  local player=Players.LocalPlayer
+  if player and userId==player.UserId and productId==Config.ProductId then
+   purchaseBusy=false;transientMessage=nil;updatePurchaseUI()
+  end
+ end))
+ task.spawn(function()
+  if not Players.LocalPlayer then return end
+  local remotes=RS:WaitForChild("Remotes",10)
+  local folder=remotes and remotes:WaitForChild("GameRemotes",10)
+  local request=folder and folder:WaitForChild("LimitedEggPurchase",10)
+  local notice=folder and folder:WaitForChild("LimitedEggCommitted",10)
+  if not started or generation~=currentGeneration or not request or not notice then return end
+  requestRemote=request
+  lifetime:Add(notice.OnClientEvent:Connect(function(result)
+   local ok,accepted,reason=pcall(function()
+    if type(result)~="table" or result.Saved~=true or result.Status~="Granted" then return false,"NotCommitted" end
+    M.close()
+    return require(script.Parent.HatchClient).playCommittedLimited(result)
+   end)
+   task.spawn(function() require(script.Parent.PetClient).refresh() end)
+   if ok and (accepted or reason=="AlreadyShown") then task.spawn(acknowledge,result.PurchaseId)
+   elseif not ok then warn("Limited Egg presentation failed; saved Pet retained: "..tostring(accepted)) end
+  end))
+  pcall(function() request:InvokeServer("Ready") end)
+ end)
  local function consider(x)
   if x:IsA("ProximityPrompt") and x.Parent and x.Parent.Name==Config.Entrance and x.Parent.Parent==workspace then bind(x) end
  end

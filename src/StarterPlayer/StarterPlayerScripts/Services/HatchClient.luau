@@ -1002,8 +1002,8 @@ function HatchClient.play(Results: {Result}, eggName: string?)
 end
 
 -- Reserved consumer for a FUTURE trusted server post-save notification.
--- Phase 3 has no sender/Remote yet. No purchase callback or state refresh calls this.
--- This checks the notification contract; it does not prove/save/grant a receipt.
+-- Only ReceiptService's server-confirmed LimitedEggCommitted notification calls this.
+-- The purchase-finished event and inventory refresh never grant or reveal a receipt.
 function HatchClient.playCommittedLimited(notice)
  if type(notice)~="table" or notice.Saved~=true or notice.Status~="Granted" then
   return false,"NotCommitted"

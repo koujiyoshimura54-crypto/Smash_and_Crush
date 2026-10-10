@@ -12,6 +12,7 @@ local CapacityConfig=require(game.ReplicatedStorage.Config:WaitForChild("Invento
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
 local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
+local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
 local Ownership=require(script.Parent.PlayerDataOwnership)
 local StoreConfig=require(game.ServerScriptService.Config:WaitForChild("DataStoreConfig"))
 local store=DSS:GetDataStore(StoreConfig.GetName("PlayerData_v1"))
@@ -176,8 +177,28 @@ local function normalizeUnlockedWorld(value)
  end
  return value
 end
+-- Durable paid receipt markers survive ordinary saves independently of the
+-- latest Win-Egg operation. A malformed marker must never be silently discarded.
+local function normalizeLimitedReceipts(raw)
+ if raw==nil then return {} end
+ if typeof(raw)~="table" then return nil,"InvalidLimitedReceipts" end
+ local out={}
+ for id,record in pairs(raw) do
+  if type(id)~="string" or id=="" or #id>100 or type(record)~="table"
+   or record.ProductId~=LimitedEgg.ProductId or not LimitedEgg.ValidateResult(record.Result,record.TableVersion) then
+   return nil,"InvalidLimitedReceipt"
+  end
+  out[id]={ProductId=record.ProductId,TableVersion=record.TableVersion,Result=table.clone(record.Result)}
+ end
+ return out
+end
+local function sameLimitedReceipt(a,b)
+ return a and b and a.ProductId==b.ProductId and a.TableVersion==b.TableVersion
+  and a.Result.id==b.Result.id and a.Result.pet==b.Result.pet and a.Result.percent==b.Result.percent
+end
+
 local function defaults()
- return {Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -199,6 +220,9 @@ local function normalize(raw)
   local pets,petError=Pet.NormalizeState(raw.Pets)
   if not pets then return nil,petError end
   d.Pets=pets
+  local receipts,receiptError=normalizeLimitedReceipts(raw.LimitedEggReceipts)
+  if not receipts then return nil,receiptError end
+  d.LimitedEggReceipts=receipts
   local world,worldError=normalizeUnlockedWorld(raw.HighestUnlockedWorld)
   if not world then return nil,worldError end
   d.HighestUnlockedWorld=world
@@ -1033,6 +1057,79 @@ end
 -- Save retries the same operation rather than refunding a possibly committed purchase.
 
 -- Shares the existing pending-mutation gate, owner fencing and autosave retry.
+-- Only ReceiptService calls this path. No client payload can award a paid Pet.
+local function resolveLimitedEggGrant(player,s,op)
+ if op.Resolving then return false,"InventorySavePending" end
+ op.Resolving=true;s.Saving=true
+ local rejection
+ local ok,saved=pcall(function()
+  return ownedUpdate(player,s,function(old,info)
+   rejection=nil
+   if resetToken(old)~=op.ResetToken then rejection="SaveSupersededByReset";return nil end
+   local receipts,why=normalizeLimitedReceipts(old.LimitedEggReceipts)
+   if not receipts then rejection=why;return nil end
+   local existing=receipts[op.Id]
+   if existing then
+    if not sameLimitedReceipt(existing,op.Record) then rejection="LimitedReceiptConflict";return nil end
+    local users,meta=metadata(info);return old,users,meta
+   end
+   local pets,reason=Pet.NormalizeState(old.Pets)
+   if not pets then rejection=reason;return nil end
+   local result=op.Record.Result
+   if pets.Owned[result.id] then rejection="PetIdConflict";return nil end
+   if pets.Revision>=9007199254740991 then rejection="PetRevisionLimit";return nil end
+   pets.Owned[result.id]=result.pet;pets.Revision+=1
+   -- Keep equipment, Win and the ordinary Hatch operation's receipt unchanged.
+   receipts[op.Id]=op.Record
+   local merged=table.clone(old);merged.Pets=pets;merged.LimitedEggReceipts=receipts
+   local users,meta=metadata(info);return merged,users,meta
+  end)
+ end)
+ op.Resolving=false;s.Saving=false
+ if sessions[player]~=s or s.PendingItemMutation~=op then return false,"SaveSuperseded" end
+ local record=saved and saved.LimitedEggReceipts and saved.LimitedEggReceipts[op.Id]
+ if not ok or not sameLimitedReceipt(record,op.Record) or not saved.Pets or saved.Pets.Owned[op.Record.Result.id]~=op.Record.Result.pet then
+  if rejection or s.OwnershipLost then
+   s.PendingItemMutation=nil;player:SetAttribute("PetSavePending",false)
+   return false,rejection or "SessionOwnershipLost"
+  end
+  scheduleItemMutationRetry(player,s,op)
+  return false,"InventorySavePending"
+ end
+ s.Data.Pets=assert(Pet.NormalizeState(saved.Pets))
+ s.Data.LimitedEggReceipts=assert(normalizeLimitedReceipts(saved.LimitedEggReceipts))
+ s.PendingItemMutation=nil;s.Dirty=true
+ Pet.Publish(player,s.Data.Pets);player:SetAttribute("PetSavePending",false)
+ return true,"LimitedPetSaved"
+end
+function PlayerDataService.GrantLimitedEgg(player,purchaseId,record)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
+ if s.OwnershipLost then return false,"SessionOwnershipLost" end
+ if s.StudioStartOverride then return false,"StudioOverrideActive" end
+ if type(purchaseId)~="string" or purchaseId=="" or #purchaseId>100 or type(record)~="table"
+  or record.PlayerId~=player.UserId or record.ProductId~=LimitedEgg.ProductId
+  or not LimitedEgg.ValidateResult(record.Result,record.TableVersion) then return false,"InvalidLimitedReceipt" end
+ local pending=s.PendingItemMutation
+ if pending then
+  if pending.LimitedEggGrant and pending.Id==purchaseId then
+   if not sameLimitedReceipt(pending.Record,record) then return false,"LimitedReceiptConflict" end
+   return PlayerDataService.ResolveItemMutation(player)
+  end
+  return false,"DataSaving"
+ end
+ local previous=s.Data.LimitedEggReceipts and s.Data.LimitedEggReceipts[purchaseId]
+ if previous then
+  return sameLimitedReceipt(previous,record) and s.Data.Pets.Owned[record.Result.id]==record.Result.pet,
+   "AlreadyGranted"
+ end
+ if s.Saving then return false,"DataSaving" end
+ s.PendingItemMutation={LimitedEggGrant=true,Id=purchaseId,ResetToken=s.Data.ResetToken,
+  Record={ProductId=record.ProductId,TableVersion=record.TableVersion,Result=table.clone(record.Result)}}
+ player:SetAttribute("PetSavePending",true)
+ return PlayerDataService.ResolveItemMutation(player)
+end
+
 local function resolvePetMutation(player,s,op)
  if op.Resolving then return false,"InventorySavePending" end
  op.Resolving=true;s.Saving=true
@@ -1131,6 +1228,7 @@ function PlayerDataService.ResolveItemMutation(player)
  local s=sessions[player]
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
+ if op.LimitedEggGrant then return resolveLimitedEggGrant(player,s,op) end
  if op.CapacityUpgrade then return resolveCapacityPurchase(player,s,op) end
  if op.PetMutation then return resolvePetMutation(player,s,op) end
  if op.RunReturn then

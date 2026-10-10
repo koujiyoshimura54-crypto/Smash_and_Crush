@@ -37,7 +37,7 @@ local function require(name) return assert(modules[name],name) end
 modules.Pet=Pet
 local productionPetModel=Pet.model
 local attrs={}
-local player={Parent=Players,SetAttribute=function(_,k,v) attrs[k]=v end,GetAttribute=function(_,k) return attrs[k] end}
+local player={UserId=101,Parent=Players,SetAttribute=function(_,k,v) attrs[k]=v end,GetAttribute=function(_,k) return attrs[k] end}
 local sessions={}
 local PlayerDataService={}
 local function finite(v) return type(v)=="number" and v==v and math.abs(v)<math.huge end
@@ -47,6 +47,8 @@ local function mergeShop(a,b) return {WinGrantedTotal=math.max(a.WinGrantedTotal
 local function metadata() return {},{} end
 local retries=0
 local function scheduleItemMutationRetry() retries+=1 end
+local LimitedEgg=modules.Limited
+-- INSERT LIMITED RECEIPT HELPERS
 local durable,mode,hook,writes
 local function ownedUpdate(_,s,transform)
  if s.OwnershipLost then return nil end
@@ -64,6 +66,7 @@ end
 function PlayerDataService.ResolveItemMutation(p)
  local s=sessions[p]
  if not s or not s.PendingItemMutation then return false,"NoPendingMutation" end
+ if s.PendingItemMutation.LimitedEggGrant then return resolveLimitedEggGrant(p,s,s.PendingItemMutation) end
  return resolvePetMutation(p,s,s.PendingItemMutation)
 end
 function PlayerDataService.Get(p) return sessions[p] end
@@ -301,7 +304,7 @@ do
  for _,entry in modules.Limited.Entries do equal(Pet.model(entry.Name),templates[entry.Name],"exact registered model") end
  local total=0;for _,entry in modules.Limited.Entries do total+=entry.Percent end
  equal(total,100);equal(modules.Limited.ByName.Pet_024.Percent,3);equal(modules.Limited.ByName.Pet_135.Percent,0.5)
- equal(modules.Limited.PurchaseEnabled,false,"purchase remains disabled")
+ equal(modules.Limited.PurchaseEnabled,true,"purchase enabled only behind server eligibility")
  -- Synthetic in-memory ownership only; not a live grant or paid receipt.
  s=reset(500)
  for i,entry in modules.Limited.Entries do durable.Pets.Owned[guid(7000+i)]=entry.Name end
@@ -357,4 +360,5 @@ do
  equal(HatchClient.playCommittedLimited(notice),false,"older notification still deduplicated");equal(calls,2)
 end
 
+-- INSERT LIMITED RECEIPT TESTS
 print("BASIC_EGG_OFFLINE_PASS",assertions)

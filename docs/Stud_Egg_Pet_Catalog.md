@@ -225,3 +225,26 @@ The ordinary Win-Egg Hatch entry rejects the seven paid names; a state refresh a
 - Removed all preview modules/UI and restored original ScreenGui states. During shutdown, PID11620 had already exited before the close command executed. No Studio process or target.lock remained; no lock deletion was needed. Earlier Codex verification sessions were also absent. No new Studio was opened for the final check.
 - A separate file write at19:39:07 occurred after the display checks; no agent Save/Publish was issued. Preserved that newest file instead of restoring the earlier output. Final SHA256**c5d080bcd0f0adc97c5fa85cd4b8bd7bb6cdd1e8628dfdb4b6e44d419419399b**,179534 instances: all four task Sources still match, no task preview instances,366 SharedStrings/205776 indexes,76112 references,UniqueId duplicates0. Purchased Main remains disabled; saved StrengthGui/StageSkipGui enabled and purchased ScreenGui disabled. This newest external version was reDecoded, not reopened after cleanup.
 - Cloud has not been reflected or played. Full timed Hatch/SFX, real replicated equip/follow, actual receipt dispatch, purchase/cancel/save-uncertain behavior on a server, mobile devices and cross-session receipt handling remain unverified. Phase 3 must precede an end-to-end purchase test. No local Play, purchase, real grant, DataStore change, Save/Publish, backup, alternate rbxl or work folder.
+
+
+## Limited Egg 01 Phase 3 - purchase, immutable roll and atomic save (2026-10-10)
+
+Phase 3 is now connected locally, superseding the previous deferred sender/persistence statements. Phase 4 models, equipment/follow and purchased Hatch are reused without reimplementation.
+
+| Full Path | Phase 3 responsibility |
+|---|---|
+| ReplicatedStorage.Config.LimitedEggConfig | Product3717610547, universe10765181857, validated pool version1 and exact seven odds; purchase allowed only through live eligibility gates. |
+| ServerScriptService.Systems.Purchases.ReceiptService | Existing single receipt router/journal; policy/price/experience checks, immutable reservation, lease retries, post-save notices and presentation acknowledgement. |
+| ServerScriptService.Services.PlayerDataService | Existing session-owned atomic Pet plus LimitedEggReceipts PurchaseId marker; pending/uncertain save retries, no auto-equip. |
+| ServerScriptService.Systems.Controllers.StageSkipController | Existing ProcessReceipt assignment retained; initialize limited remotes once. |
+| StarterPlayer.StarterPlayerScripts.Services.StandClient | Existing purchased seven-candidate UI/Robux button; price gates, server purchase request, cancel/error unlock, saved-only Hatch dispatch. |
+| StarterPlayer.StarterPlayerScripts.Services.HatchClient | Existing Phase 4 consumer retained; obsolete deferred-binding comments updated. |
+| ReplicatedStorage.Remotes.GameRemotes.LimitedEggPurchase / LimitedEggCommitted | Idempotently created runtime RPC / saved result notice; no serialized instance additions. |
+
+Pool v1: Pet_04225%, Pet_06425%, Pet_08125%, Pet_08615%, Pet_0946.5%, Pet_0243%, Pet_1350.5%; total100%. Individual copies allow repeated species and preserve maximum one equipped Pet. Future pool revisions must retain validation for already reserved v1 receipts.
+
+Receipt journal stores PlayerId/ProductId/Kind/TableVersion/Result{id,pet,percent}/Status/Owner/LeaseUntil. PlayerData stores the matching LimitedEggReceipts marker in the same atomic update as Pets.Owned. Grant is confirmed before PurchaseGranted and presentation. Saved=true/Granted notices contain the exact result and owned State required by playCommittedLimited. Presentation acknowledgement means accepted/queued; a crash before acknowledgement is not proof of completed rendering. Visual errors never roll back saved ownership.
+
+Official product details match the target Experience and current149 base price. Runtime client Marketplace price is displayed; no fallback enables purchase. Server fresh PolicyService rejects restricted accounts and lookup errors. All seven numeric odds remain visible before spending. [Official paid-random requirements](https://create.roblox.com/docs/production/monetization/paid-random-items) and [receipt semantics](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService) checked2026-10-10. External Store sale status is unconfirmed (StorePageEnabled null); owner must verify it is disabled because that route cannot enforce this in-game disclosure/policy gate.
+
+Verification:2693 offline mock assertions, six Source compilations, exact final decoded Source match,179538 instances,76121 refs,366 SharedStrings/205780 indexes and UniqueId0. No Studio launched, local Play, real purchase/grant/DataStore mutation or Save/Publish. Cloud not reflected; actual Studio loading, real personalized prices/Policy, receipt callbacks/save/rejoin and full timed Hatch/follow remain for published-game verification. Studio processes and target.lock absent at final inspection. See latest DEV_STATUS for final hash and detailed failure/retry tests.
