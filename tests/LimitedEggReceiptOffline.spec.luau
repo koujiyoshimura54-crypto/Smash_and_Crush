@@ -110,7 +110,9 @@ do
   ApplyLocked=function()skipGrants+=1;return true end,NotifyReceipt=function()end,Unlock=function()end}
  modules.ShopReward={ProcessWinReceipt=function(r)if r.ProductId==20 then winRoutes+=1;return "Granted"end end}
  modules.PlayerDataService=PlayerDataService
- game.ServerScriptService={Services={StageSkipService="Skip",PlayerDataService="PlayerDataService",ShopRewardService="ShopReward"},Systems={Purchases={ItemPurchaseService="ItemPurchases"}}}
+ modules.StoreConfig={GetName=function(name)return name end}
+ modules.StudioDebugConfig={ProductionCreatorUserIds={[101]=true}}
+ game.ServerScriptService={Config={DataStoreConfig="StoreConfig",StudioDebugConfig="StudioDebugConfig"},Services={StageSkipService="Skip",PlayerDataService="PlayerDataService",ShopRewardService="ShopReward"},Systems={Purchases={ItemPurchaseService="ItemPurchases"}}}
  game.GameId=LimitedEgg.UniverseId;game.JobId="offline-A"
  Players.PlayerRemoving=removeSignal
  function Players:GetPlayerByUserId(id)return id==player.UserId and player.Parent==Players and player or nil end
@@ -119,6 +121,7 @@ do
  player.Character={FindFirstChild=function()return fakeRoot end,FindFirstChildOfClass=function()return {Health=100}end}
  local workspace={FindFirstChild=function()return {PrimaryPart={Position=position(0)}}end}
  local studio=false
+ modules.StoreConfig.GetName=function(name)return name..(studio and "_Studio" or "")end
  local queued={}
  local advanceTime=false
  local task={spawn=function(f,...)table.insert(queued,{f=f,args={...}})end,wait=function(seconds)if advanceTime then now+=seconds or 0 end end}
@@ -151,7 +154,7 @@ do
  equal(request("Offer").ok,true,"eligible priced offer")
  studio=true;game.PlaceId=126576845524886
  equal(request("Offer").ok,true,"Cloud Studio prompt eligibility is not blanket disabled")
- game.PlaceId=0;equal(request("Offer").reason,"LocalStudioUnsupported")
+ game.PlaceId=0;equal(request("Offer").reason,"StudioDeveloperRequired")
  studio=false;game.PlaceId=126576845524886
  restricted=true;equal(request("Offer").reason,"PaidRandomRestricted");equal(request("Purchase",1).ok,false);restricted=false
  policyError=true;equal(request("Offer").reason,"PolicyUnavailable");policyError=false
@@ -233,7 +236,16 @@ do
  s=reset(700);s.OwnershipLost=true
  equal(receipts.ProcessReceipt(paid("ownership")),"Pending");equal(countOwned(),0)
  s.OwnershipLost=false;equal(receipts.ProcessReceipt(paid("ownership")),"Granted");equal(countOwned(),1)
- studio=true;equal(receipts.ProcessReceipt(paid("studio")),"Pending");equal(journalEntries.studio,nil);studio=false
+ studio=true;game.PlaceId=0;equal(receipts.ProcessReceipt(paid("studio")),"Pending");equal(journalEntries.studio,nil)
+ game.PlaceId=126576845524886;modules.StudioDebugConfig.ProductionCreatorUserIds[101]=nil
+ equal(request("Offer").reason,"StudioDeveloperRequired");equal(receipts.ProcessReceipt(paid("studio-denied")),"Pending")
+ modules.StudioDebugConfig.ProductionCreatorUserIds[101]=true;s=reset(700)
+ equal(receipts.ProcessReceipt(paid("studio-authorized")),"Granted");equal(countOwned(),1)
+ equal(receipts.ProcessReceipt(paid("studio-authorized")),"Granted");equal(countOwned(),1,"same Studio receipt one copy")
+ equal(receipts.ProcessReceipt(paid("studio-repeat")),"Granted");equal(countOwned(),2,"new Studio receipt new copy")
+ equal(request("Acknowledge","studio-authorized").ok,true)
+ equal(journalEntries["studio-authorized"].Presented,true)
+ studio=false
  local malformed=paid("bad");malformed.PlayerId=0/0;equal(receipts.ProcessReceipt(malformed),"Pending")
  malformed=paid("bad");malformed.PurchaseId="";equal(receipts.ProcessReceipt(malformed),"Pending")
  local collision=paid("receipt-1");collision.PlayerId=102;equal(receipts.ProcessReceipt(collision),"Pending")
@@ -241,7 +253,7 @@ do
  equal(receipts.ProcessReceipt({ProductId=20,PlayerId=101,PurchaseId="old-win"}),"Granted");equal(winRoutes,1)
  equal(receipts.ProcessReceipt({ProductId=21,PlayerId=101,PurchaseId="old-item"}),"Granted");equal(itemGrants,1)
  equal(receipts.ProcessReceipt({ProductId=22,PlayerId=101,PurchaseId="old-stage"}),"Granted");equal(skipGrants,1)
- for _,name in storeNames do equal(name,"DeveloperProductReceipts_v1","existing shared journal only")end
+ for _,name in storeNames do equal(name=="DeveloperProductReceipts_v1" or name=="DeveloperProductReceipts_v1_Studio",true,"only configured journal stores")end
  equal(receipts.ProcessReceipt({ProductId=999,PlayerId=101,PurchaseId="unknown"}),"Pending")
  -- The exact server draw covers all 200 equally likely tickets (half-percent units).
  s=reset(700)

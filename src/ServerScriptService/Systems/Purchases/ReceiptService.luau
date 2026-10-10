@@ -34,6 +34,25 @@ end
 -- Limited Egg: new prompts are policy/price gated; already-paid receipts are
 -- fulfilled independently so a later policy/API outage cannot erase a purchase.
 local Limited=require(game.ReplicatedStorage.Config.LimitedEggConfig)
+local StoreConfig=require(game.ServerScriptService.Config.DataStoreConfig)
+local StudioDebugConfig=require(game.ServerScriptService.Config.StudioDebugConfig)
+local limitedStore
+local function studioAuthorized(player)
+ return RunService:IsStudio() and game.PlaceId==126576845524886 and game.GameId==10765181857
+  and player and player.Parent==Players
+  and type(StudioDebugConfig.ProductionCreatorUserIds)=="table"
+  and StudioDebugConfig.ProductionCreatorUserIds[player.UserId]==true
+  and StoreConfig.GetName("PlayerData_v1")=="PlayerData_v1_Studio"
+  and StoreConfig.GetName("DeveloperProductReceipts_v1")=="DeveloperProductReceipts_v1_Studio"
+end
+local function getLimitedStore()
+ if not RunService:IsStudio() then return getStore() end
+ if not limitedStore then
+  assert(StoreConfig.GetName("DeveloperProductReceipts_v1")=="DeveloperProductReceipts_v1_Studio","Studio journal required")
+  limitedStore=game:GetService("DataStoreService"):GetDataStore(StoreConfig.GetName("DeveloperProductReceipts_v1"))
+ end
+ return limitedStore
+end
 local Data=require(game.ServerScriptService.Services.PlayerDataService)
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local Marketplace=game:GetService("MarketplaceService")
@@ -87,10 +106,10 @@ local function scheduleReceiptRetry(r)
  end)
 end
 processLimitedReceipt=function(r)
- if RunService:IsStudio() then return pending end -- never route test purchases to real PlayerData
  local key=r.PurchaseId
  local player=Players:GetPlayerByUserId(r.PlayerId)
  if not player or inFlight[key] then return pending end
+ if RunService:IsStudio() and not studioAuthorized(player) then warn("[LimitedEgg01] Studio receipt denied");return pending end
  inFlight[key]=true
  local ok,decision=pcall(function()
   local rejected=false
@@ -108,10 +127,10 @@ processLimitedReceipt=function(r)
     Result=proposed,Status="Reserved",Owner=owner,LeaseUntil=os.time()+180}
   end
   -- Recover the existing immutable outcome before generating any new proposal.
-  local record=getStore():UpdateAsync(key,function(old) return reserve(old,nil) end)
+  local record=getLimitedStore():UpdateAsync(key,function(old) return reserve(old,nil) end)
   if not record and not rejected then
    local proposed=outcome()
-   record=getStore():UpdateAsync(key,function(old) return reserve(old,proposed) end)
+   record=getLimitedStore():UpdateAsync(key,function(old) return reserve(old,proposed) end)
   end
   if not receiptMatches(record,r) then return pending end
   if record.Status=="Granted" then
@@ -121,7 +140,7 @@ processLimitedReceipt=function(r)
   -- Pet and immutable PurchaseId marker are one fenced PlayerData write.
   local success=Data.GrantLimitedEgg(player,key,record)
   if not success then return pending end
-  local saved=getStore():UpdateAsync(key,function(old)
+  local saved=getLimitedStore():UpdateAsync(key,function(old)
    if not receiptMatches(old,r) or old.Result.id~=record.Result.id then return nil end
    if old.Status=="Granted" then return old end
    if old.Owner~=owner then return nil end
@@ -130,6 +149,7 @@ processLimitedReceipt=function(r)
   end)
   if not receiptMatches(saved,r) or saved.Status~="Granted" then return pending end
   completed[key]=saved
+  print("[LimitedEgg01] saved receipt",key,saved.Result.id,saved.Result.pet,RunService:IsStudio() and "Studio" or "Production")
   pcall(deliver,player,r,saved)
   return granted
  end)
@@ -163,6 +183,7 @@ local function productInfo()
  return info
 end
 local function eligibility(player)
+ if RunService:IsStudio() and not studioAuthorized(player) then return nil,"StudioDeveloperRequired" end
  local session=Data.Get(player)
  if not session or not session.Loaded or not session.Data then return nil,"DataNotLoaded" end
  if session.OwnershipLost then return nil,"SessionOwnershipLost" end
@@ -206,7 +227,8 @@ function M.LimitedRequest(player,action,value)
  local ok,response=pcall(function()
   if action=="Acknowledge" then
    if type(value)~="string" or value=="" or #value>100 then return {ok=false,reason="InvalidReceipt"} end
-   local saved=getStore():UpdateAsync(value,function(old)
+   if RunService:IsStudio() and not studioAuthorized(player) then return {ok=false,reason="StudioDeveloperRequired"} end
+   local saved=getLimitedStore():UpdateAsync(value,function(old)
     if not old or old.PlayerId~=player.UserId or old.ProductId~=Limited.ProductId or old.Kind~="LimitedEgg"
      or old.Status~="Granted" then return nil end
     local final=table.clone(old);final.Presented=true;return final
@@ -335,7 +357,7 @@ function M.ProcessReceipt(r)
   if type(r.PurchaseId)~="string" or r.PurchaseId=="" or #r.PurchaseId>100
    or type(r.PlayerId)~="number" or r.PlayerId~=r.PlayerId or r.PlayerId<=0 or r.PlayerId%1~=0 or r.PlayerId==math.huge then return pending end
   local decision=processLimitedReceipt(r)
-  if decision==pending and not RunService:IsStudio() then scheduleReceiptRetry(r) end
+  if decision==pending and (not RunService:IsStudio() or studioAuthorized(Players:GetPlayerByUserId(r.PlayerId))) then scheduleReceiptRetry(r) end
   return decision
  end
  local shopDecision=require(game.ServerScriptService.Services.ShopRewardService).ProcessWinReceipt(r)

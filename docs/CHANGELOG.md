@@ -764,3 +764,10 @@
 - Fixed blanket Studio purchase-offer refusal for the approved Cloud place while preserving local Studio refusal, Policy/price/product/session/distance checks and no Studio receipt grants.
 - Existing purchased button now explains unavailable clicks; added bounded Marketplace/RPC waits, startup-remote wait, clear existing-label errors and minimal click -> server -> decision -> Prompt logs. No audio substitution, receipt/pool/save/UI artwork changes.
 -2697 offline assertions and two Source compilations pass; exact two-Source rbxl scope, reDecode/reference/SharedString/UniqueId0 verified. No Studio connected, actual Prompt unverified, no Play/Save/Publish. No process/lock remained.
+
+
+## 2026-10-10 - Limited Egg isolated developer Studio receipts
+
+- Allow Limited Egg3717610547 test receipts only in approved Cloud Studio and existing developer allowlist. Persist limited journal and presentation acknowledgements to DeveloperProductReceipts_v1_Studio; atomic Pet/markers stay in PlayerData_v1_Studio. Production, local refusal, Policy and shared receipt safeguards retained.
+- Actual platform test purchase1 succeeded: Pet_081, unique copy, owned9->10, persistent Studio marker/journal readback and actual same-receipt replay10->10. Existing RGBEgg Hatch started.2729 offline assertions and compilation pass.
+- Full two-purchase/cancel/Hatch completion/equipment/follow live checks remain incomplete due MCP CoreGui input rejection. Returned to Edit; user Studio/lock retained. Cloud Source remains unsaved/unpublished, local rbxl untouched. See DEV_STATUS for evidence and limits.
