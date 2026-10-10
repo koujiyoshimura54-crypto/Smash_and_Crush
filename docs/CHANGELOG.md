@@ -720,5 +720,12 @@
 
 ## 2026-10-10 - Permanent Robux Egg Phase 1 mapping only
 
-- Recorded user-confirmed149 Robux/one-Pet offer and seven-model100% pool, Chill Octopus's inactive legacy GamePass connection, two unselected purchased Egg candidates, and exact Phase 2 UI/receipt/save/model paths in the [existing catalog guide](Stud_Egg_Pet_Catalog.md#??robux??egg-phase-1--????2026-10-10).
-- Identified6?7 purchased UI slot and Viewport changes, missing target model registration/Product ID, and durable receipt deduplication requirements. Official numerical-odds/PolicyService requirements documented. No implementation, placement, Source or rbxl change; live behavior unverified.
+- Recorded user-confirmed149 Robux/one-Pet offer and seven-model100% pool, Chill Octopus's inactive legacy GamePass connection, two unselected purchased Egg candidates, and exact Phase 2 UI/receipt/save/model paths in the [existing catalog guide](Stud_Egg_Pet_Catalog.md#permanent-robux-egg-phase-1---mapping-2026-10-10).
+- Identified 6-to-7 purchased UI slot and Viewport changes, missing target model registration/Product ID, and durable receipt deduplication requirements. Official numerical-odds/PolicyService requirements documented. No implementation, placement, Source or rbxl change; live behavior unverified.
+
+
+## 2026-10-10 - Limited Egg 01 display (Phase 2)
+
+- Reused Chill Octopus, purchased OpenEgg/Robux/close UI and seven exact catalog Pets for a seven-candidate3D display; added matching Pet Inventory3D support. Retired station GamePass/equip action replaced with View Pets. Octopus geometry/location and regular Egg gameplay preserved.
+- Product3717610547, base149, one Pet, exact100% odds. Purchase stays disabled; no receipt/roll/grant/save/Hatch/follow integration. Marketplace lookup returned135; live lookup takes precedence over149 fallback.
+- Fixed Phase 1 mojibake in English. [Purchased provenance, actual Edit screenshots, validation and Phase 3 limits](Stud_Egg_Pet_Catalog.md#permanent-robux-egg-phase-2---facility-and-display-2026-10-10). Final reDecode/reference/SharedString/UniqueId0, five Source compilations and actual Studio loading passed. Disposable previews cleaned, own sessions/lock released; Cloud gameplay unverified.

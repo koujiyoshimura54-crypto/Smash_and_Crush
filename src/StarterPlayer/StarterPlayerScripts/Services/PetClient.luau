@@ -9,6 +9,7 @@ local Janitor = require(ReplicatedStorage.Packages.Janitor)
 local HttpService = game:GetService("HttpService")
 local Config = require(ReplicatedStorage.Modules.Config)
 local Pet = require(ReplicatedStorage.Modules.Pet)
+local LimitedViewport = require(ReplicatedStorage.Modules.LimitedPetViewport)
 
 local GUI_NAME = "ScreenGui"
 local MENU_PATH = { "Menus", "Inventory" }
@@ -211,6 +212,11 @@ function PetClient.showCard(name: string, root: GuiObject)
 		end
 	end
 
+	if LimitedViewport.supports(name) then
+		for _,key in {RARITY_NAME,RARITY_NAME..SHADOW_SUFFIX} do
+			local old=card:FindFirstChild(key) if old and old:IsA("GuiObject") then old.Visible=false end
+		end
+	end
 	local description = card:FindFirstChild(DESCRIPTION_NAME)
 	if description then
 		setPair(description, TEXT_NAME, "Cosmetic pet")
@@ -283,7 +289,9 @@ local function buildTile(id: string, name: string, order: number): GuiObject?
 	if main then
 		local icon = main:FindFirstChild(ICON_NAME)
 		local decal = if icons then icons:FindFirstChild(name) else nil
-		if icon and icon:IsA("ImageLabel") and decal and decal:IsA("Decal") then
+		if icon and icon:IsA("ImageLabel") and LimitedViewport.supports(name) then
+			janitor:Add(LimitedViewport.bind(icon,name),true)
+		elseif icon and icon:IsA("ImageLabel") and decal and decal:IsA("Decal") then
 			icon.Image = decal.Texture
 		else
 			warn(`[PetClient] could not find {table.concat(ICONS_PATH, ".")}.{name}`)
@@ -549,6 +557,7 @@ function PetClient.bootstrap()
 	PetClient.start()
 	require(script.Parent.PetFollowClient).start()
 	require(script.Parent.EggClient).start()
+	require(script.Parent.StandClient).start()
 	gui.Enabled=true
 end
 

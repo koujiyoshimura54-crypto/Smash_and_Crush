@@ -447,3 +447,10 @@ InventoryPanel and StageSkipGui.Panel reuse StrengthGui.ShopPanel artwork with l
 ## 2026-10-10 - Superseding Inventory / Skip palette and structure
 
 The earlier light purple/pink direction is revoked. Inventory uses saturated purple; Skip uses saturated blue. Reuse purchased Shop header/close/card artwork, its dark RGB7,7,12 body at50% transparency, same-role typography and90px stud tiles. Studs belong on header/cards, not the full body. Equipment/list wrappers stay transparent; Inventory retains a compact left equipment pane and3-column right list. Skip aligns Stage/Win/Robux with a scrollable last row. See [actual comparison](Inventory_Skip_Shop_Alignment.md) for the confirmed Edit views and remaining Cloud/device checks.
+
+
+## 2026-10-10 - Limited Egg 01 Phase 2 display
+
+Workspace.Chill Octopus opens a purchased OpenEgg panel clone with seven static Pet Viewports, exact numerical odds, purchased close control and one disabled green Robux button. Normal Eggs keep their six-slot UI/Win1/3/8 controls. Pet Inventory uses the original purchased tiles and inner3D display for the seven registered names, with the title band reserved. No ownership, abilities or rarity is inferred from display registration.
+
+Product3717610547 uses Marketplace price when available and base149 otherwise. Purchase is deliberately disconnected until Phase 3. See [model mappings, screenshots and verification limits](Stud_Egg_Pet_Catalog.md#permanent-robux-egg-phase-2---facility-and-display-2026-10-10). No temporary UI or display-only Pet IDs are saved in CurrentCloud.
