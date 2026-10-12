@@ -456,3 +456,8 @@ Purchased Workspace.Trophy is a legacy GamePassService purchase entrance. Offici
 ## 2026-10-12 - Normal Pet Merge preview (local, incomplete seven-Pet pools)
 
 Normal Pet Merge is selection/preview only and remains execution-disabled. Only mapped normal species may be UI materials; seven Limited Egg01 species are excluded while Inventory/equipment remain unchanged. Minimum2 copies, variable count/mixed normal Eggs/flying tiers allowed; equipped copies are UI-ineligible at this phase. No material consumption or completed-Egg persistence/opening is connected. Normal seven-Pet pools are pending owner approval and remain six species live.
+
+
+## 2026-10-12 - Approved normal seven-Pet pools
+
+All four normal Egg pools are approved/enabled locally with seven distinct purchased Pets; Slime/Shroom/Ninja/Chimpanzini Bananini occupy Basic/Rare/Legendary/Mythic slot7. Existing owned-copy IDs and maximum1 equipment/Hatch/follow paths retained. This supersedes pending-seven status; Cloud reflection and actual runtime verification are still pending. Pet Merge remains execution-disabled.

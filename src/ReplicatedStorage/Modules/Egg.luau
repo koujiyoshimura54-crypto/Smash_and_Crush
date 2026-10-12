@@ -12,8 +12,7 @@ local Egg = {}
 
 Egg.FolderName = "Eggs"
 
--- Shared NORMAL-Pet merge metadata. Seventh species require owner approval.
--- The live six-species purchased pools remain in Config until a complete pool is approved.
+-- Owner-approved normal pools: one definition for server rolls, UI and merge metadata.
 Egg.NormalSlots = {
 	{Percent=25, Rank="E"}, {Percent=25, Rank="E"}, {Percent=25, Rank="E"},
 	{Percent=15, Rank="D"}, {Percent=6.5, Rank="C"}, {Percent=3, Rank="B"}, {Percent=.5, Rank="A"},
@@ -21,14 +20,14 @@ Egg.NormalSlots = {
 Egg.RankPoints = {E=10, D=20, C=30, B=40, A=50}
 Egg.NormalOrder = {"Basic", "Rare", "Legendary", "Mythic"}
 Egg.NormalPools = {
-	Basic={Coefficient=1, Approved=false, Icon="", ModelPath="Workspace.Eggs.Basic",
-		Species={"Dog", "Grey Cat", "Pink Bunny", "Sheep", "Bear", "Camel"}},
-	Rare={Coefficient=5, Approved=false, Icon="", ModelPath="Workspace.Eggs.Rare",
-		Species={"Cow", "Giraffe", "Lion", "Lizard", "Spider", "Bat"}},
-	Legendary={Coefficient=25, Approved=false, Icon="", ModelPath="Workspace.Eggs.Legendary",
-		Species={"Elephant", "Mammoth", "Penguin", "Crocodile", "Octopus", "Shark"}},
-	Mythic={Coefficient=125, Approved=false, Icon="", ModelPath="Workspace.Eggs.Mythic",
-		Species={"Turtle", "Alien", "Anglerfish", "Dino", "Scorpion", "Evil Dragon"}},
+	Basic={Coefficient=1, Approved=true, Icon="", ModelPath="Workspace.Eggs.Basic",
+		Species={"Dog", "Grey Cat", "Pink Bunny", "Sheep", "Bear", "Camel", "Slime"}},
+	Rare={Coefficient=5, Approved=true, Icon="", ModelPath="Workspace.Eggs.Rare",
+		Species={"Cow", "Giraffe", "Lion", "Lizard", "Spider", "Bat", "Shroom"}},
+	Legendary={Coefficient=25, Approved=true, Icon="", ModelPath="Workspace.Eggs.Legendary",
+		Species={"Elephant", "Mammoth", "Penguin", "Crocodile", "Octopus", "Shark", "Ninja"}},
+	Mythic={Coefficient=125, Approved=true, Icon="", ModelPath="Workspace.Eggs.Mythic",
+		Species={"Turtle", "Alien", "Anglerfish", "Dino", "Scorpion", "Evil Dragon", "Chimpanzini Bananini"}},
 }
 Egg.MergeThresholds = {
 	{Points=20, Odds={60,40,0,0}}, {Points=30, Odds={40,60,0,0}},
@@ -185,7 +184,10 @@ end
 function Egg.pets(name: string): {[string]: number}?
 	local entry = Config.Eggs.Eggs[name]
 	if not entry then return nil end
-	if Egg.validateNormalPool(name) then
+	local normal=Egg.NormalPools[name]
+	if normal and normal.Approved then
+		-- An approved but broken pool must never quietly revert to the old six-species odds.
+		if not Egg.validateNormalPool(name) then return nil end
 		local pool={}
 		for index,pet in ipairs(Egg.NormalPools[name].Species) do pool[pet]=Egg.NormalSlots[index].Percent end
 		return pool

@@ -330,3 +330,53 @@ Action/tab donor: StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Car
 Merge header title layers/action labels and Workspace.RestockShop.BillboardGui.Info disable AutoLocalize only for literal Merge displays. Item execution/recipes/remote/service remain unchanged; its button changes only display text/localization. Pet Merge remains disabled with NO execution callback.
 
 Verification:8162 actual shared-module offline assertions and100 actual presentation/builder mock assertions pass. The latter mock Viewport mounting; they are NOT proof of rendered Egg appearances/capabilities. Existing Basic/Limited purchase/Pet regression suite2729 memory-only assertions passes. Five Sources compile, direct current-file reDecode/reference/SharedString/dense INST/header/PRNT/UniqueId0 and exact canonical Source matching pass. CurrentCloud input69eb5ef8... -> cbafe5bb...; five Source changes plus only sign AutoLocalize. Manual facility positions and ALL other properties/Sources remain unchanged. No Studio connected/opened: real Edit layout/images/viewport clipping/reopening, actual clone capability and Cloud runtime remain UNVERIFIED. No saved preview objects, gameplay-data operations, Play, Save/Publish, backup or alternate rbxl. Seventh-Pet approval/live seven-unique validation remains pending.
+
+
+## 2026-10-12 - Approved normal seven-Pet pools enabled locally
+
+Supersedes the preceding pending-approval status. Owner explicitly approved Slime/Shroom/Ninja/Chimpanzini Bananini as slot7 for Basic/Rare/Legendary/Mythic respectively. All four complete pools are enabled in current local CurrentCloud; original six relative orders retained. Each pool has seven distinct names and totals100%; all28 names also distinct across pools. Shared ReplicatedStorage.Modules.Egg.NormalPools/NormalSlots is authoritative for EggServer draws, PlayerDataService result validation, EggClient candidates and Merge rank/points.
+
+| Egg | Slot | Pet | Chance | Merge rank | Points | Purchased Model Full Path | Existing icon / image ID |
+|---|---:|---|---:|---|---:|---|---|
+| Basic | 1 | Dog | 25% | E | 10 | ReplicatedStorage.Assets.Pets.Egg1.Dog | ReplicatedStorage.Assets.Icons.Pets.Dog / rbxassetid://105828778488847 |
+| Basic | 2 | Grey Cat | 25% | E | 10 | ReplicatedStorage.Assets.Pets.Egg1.Grey Cat | ReplicatedStorage.Assets.Icons.Pets.Grey Cat / rbxassetid://85629003230143 |
+| Basic | 3 | Pink Bunny | 25% | E | 10 | ReplicatedStorage.Assets.Pets.Egg1.Pink Bunny | ReplicatedStorage.Assets.Icons.Pets.Pink Bunny / rbxassetid://125339761416231 |
+| Basic | 4 | Sheep | 15% | D | 20 | ReplicatedStorage.Assets.Pets.Egg1.Sheep | ReplicatedStorage.Assets.Icons.Pets.Sheep / rbxassetid://98955856751139 |
+| Basic | 5 | Bear | 6.5% | C | 30 | ReplicatedStorage.Assets.Pets.Egg1.Bear | ReplicatedStorage.Assets.Icons.Pets.Bear / rbxassetid://117916941085535 |
+| Basic | 6 | Camel | 3% | B | 40 | ReplicatedStorage.Assets.Pets.Egg1.Camel | ReplicatedStorage.Assets.Icons.Pets.Camel / rbxassetid://106545141563176 |
+| Basic | 7 | Slime | 0.5% | A | 50 | ReplicatedStorage.Assets.Pets.10MinutesReward.Slime | ReplicatedStorage.Assets.Icons.Pets.Slime / rbxassetid://111386797390291 |
+| Rare | 1 | Cow | 25% | E | 50 | ReplicatedStorage.Assets.Pets.Egg2.Cow | ReplicatedStorage.Assets.Icons.Pets.Cow / rbxassetid://108675986288246 |
+| Rare | 2 | Giraffe | 25% | E | 50 | ReplicatedStorage.Assets.Pets.Egg2.Giraffe | ReplicatedStorage.Assets.Icons.Pets.Giraffe / rbxassetid://128769673835364 |
+| Rare | 3 | Lion | 25% | E | 50 | ReplicatedStorage.Assets.Pets.Egg2.Lion | ReplicatedStorage.Assets.Icons.Pets.Lion / rbxassetid://113932717890536 |
+| Rare | 4 | Lizard | 15% | D | 100 | ReplicatedStorage.Assets.Pets.Egg2.Lizard | ReplicatedStorage.Assets.Icons.Pets.Lizard / rbxassetid://130235789910117 |
+| Rare | 5 | Spider | 6.5% | C | 150 | ReplicatedStorage.Assets.Pets.Egg2.Spider | ReplicatedStorage.Assets.Icons.Pets.Spider / rbxassetid://110711725679397 |
+| Rare | 6 | Bat | 3% | B | 200 | ReplicatedStorage.Assets.Pets.Egg2.Bat | ReplicatedStorage.Assets.Icons.Pets.Bat / rbxassetid://86063284560749 |
+| Rare | 7 | Shroom | 0.5% | A | 250 | ReplicatedStorage.Assets.Pets.Playtime.Shroom | ReplicatedStorage.Assets.Icons.Pets.Shroom / rbxassetid://125790077111182 |
+| Legendary | 1 | Elephant | 25% | E | 250 | ReplicatedStorage.Assets.Pets.Egg3.Elephant | ReplicatedStorage.Assets.Icons.Pets.Elephant / rbxassetid://131446489915059 |
+| Legendary | 2 | Mammoth | 25% | E | 250 | ReplicatedStorage.Assets.Pets.Egg3.Mammoth | ReplicatedStorage.Assets.Icons.Pets.Mammoth / rbxassetid://81800477916866 |
+| Legendary | 3 | Penguin | 25% | E | 250 | ReplicatedStorage.Assets.Pets.Egg3.Penguin | ReplicatedStorage.Assets.Icons.Pets.Penguin / rbxassetid://85680246045387 |
+| Legendary | 4 | Crocodile | 15% | D | 500 | ReplicatedStorage.Assets.Pets.Egg3.Crocodile | ReplicatedStorage.Assets.Icons.Pets.Crocodile / rbxassetid://74480952006633 |
+| Legendary | 5 | Octopus | 6.5% | C | 750 | ReplicatedStorage.Assets.Pets.Egg3.Octopus | ReplicatedStorage.Assets.Icons.Pets.Octopus / rbxassetid://81255864461765 |
+| Legendary | 6 | Shark | 3% | B | 1000 | ReplicatedStorage.Assets.Pets.Egg3.Shark | ReplicatedStorage.Assets.Icons.Pets.Shark / rbxassetid://120292089424616 |
+| Legendary | 7 | Ninja | 0.5% | A | 1250 | ReplicatedStorage.Assets.Pets.Playtime.Ninja | ReplicatedStorage.Assets.Icons.Pets.Ninja / rbxassetid://76864923788335 |
+| Mythic | 1 | Turtle | 25% | E | 1250 | ReplicatedStorage.Assets.Pets.Egg4.Turtle | ReplicatedStorage.Assets.Icons.Pets.Turtle / rbxassetid://84303167290294 |
+| Mythic | 2 | Alien | 25% | E | 1250 | ReplicatedStorage.Assets.Pets.Egg4.Alien | ReplicatedStorage.Assets.Icons.Pets.Alien / rbxassetid://133687322163913 |
+| Mythic | 3 | Anglerfish | 25% | E | 1250 | ReplicatedStorage.Assets.Pets.Egg4.Anglerfish | ReplicatedStorage.Assets.Icons.Pets.Anglerfish / rbxassetid://123207216914591 |
+| Mythic | 4 | Dino | 15% | D | 2500 | ReplicatedStorage.Assets.Pets.Egg4.Dino | ReplicatedStorage.Assets.Icons.Pets.Dino / rbxassetid://88765495032425 |
+| Mythic | 5 | Scorpion | 6.5% | C | 3750 | ReplicatedStorage.Assets.Pets.Egg4.Scorpion | ReplicatedStorage.Assets.Icons.Pets.Scorpion / rbxassetid://79343424146820 |
+| Mythic | 6 | Evil Dragon | 3% | B | 5000 | ReplicatedStorage.Assets.Pets.Egg4.Evil Dragon | ReplicatedStorage.Assets.Icons.Pets.Evil Dragon / rbxassetid://95358209219898 |
+| Mythic | 7 | Chimpanzini Bananini | 0.5% | A | 6250 | ReplicatedStorage.Assets.Pets.Daily.Chimpanzini Bananini | ReplicatedStorage.Assets.Icons.Pets.Chimpanzini Bananini / rbxassetid://111527153225105 |
+
+All existing purchased models/icons were present and unambiguous. Slime's3-part Model has no PrimaryPart; the existing Hatch bounding-box/PivotTo and whole-Model follower ScaleTo/PivotTo paths support it without moving/adding a PrimaryPart or breaking relative geometry. Shroom/Ninja/Chimpanzini Bananini have an existing PetMesh PrimaryPart. Their folders are the authored10MinutesReward/Playtime/Daily reward collections, not a conflicting paid-product-only model registry; those original reward/main/data paths are not enabled. Config.Pets entries and Rainbow visual metadata already exist for all four. Retain existing visual rarity/trails; this change adds no Speed/Strength multiplier or ability. No templates cloned/renamed/reparented on disk. All icons above are existing named Decals, so no missing-image substitute/Viewport fallback is needed for these Pets.
+
+Approved but structurally invalid pools fail closed (Egg.pets returns nil), preventing silent fallback to old six-species chances. Legacy Config six-species declarations remain dormant for the approved pools; all ACTIVE normal draw/display/validator consumers use the same Egg.pets definition. Existing1/3/8 controls and Win prices100/10000/100000/1000000 unchanged.
+
+EggClient clones the actual sixth purchased candidate frame as name7 once, then sizes all seven to13% and uses six1.5%-scale gaps (100% one-row width), disabling wrap only for this seven-card layout. Existing numeric %g%% text/black outline/buttons/icon controls remain. Restamp/reopen does not clone a second seventh frame. Actual engine pixel fit/rendering is UNVERIFIED; mock width/layout checks are not a screenshot.
+
+The new names already resolve through generic Pet.model in Hatch, Inventory and follower; existing owner-only server Equip/PDS validation and maximum1 behavior require no change. No saved IDs/owned-copy data deleted, migrated or rerolled. Shared rankA points for the additions: Slime50/Shroom250/Ninja1250/Chimpanzini Bananini6250. Existing raised Merge odds/Egg MeshPart Viewports/optional image settings, material Limited exclusions, and disabled Pet Merge stay unchanged; no consume/roll/completed-Egg persistence/opening added.
+
+Verification:9087 shared-helper offline assertions (28 metadata mappings, four exact weighted200-ticket coverages, stable order/totals, broken/duplicate/paid fail-closed, previous Merge preview math),200 actual EggClient stamping/mock assertions (all four7-card/icon/percentage/order/100% width/restamp/reopen paths),100 existing Merge presentation assertions pass. Two Sources compile. These tests do not exercise Roblox services, real player data, animation or actual image loading.
+
+Initial connected user Cloud Studio confirmed PlaceId126576845524886/UniverseId10765181857 in Edit and returned actual four added Model paths/sizes/PrimaryParts and exact icon IDs. It disconnected before temporary UI construction; no preview/camera/source/selection changes made, no user Studio closed and no new Studio launched. Actual seven-card Edit rendering and Cloud hatch/equipment/follow remain UNVERIFIED. Only local CurrentCloud updated; no Cloud Source edit, Play/purchase/store operation/Save/Publish/backup/alternate rbxl.
+
+Final same-file output SHA256bbe9f1a46eab9a368d5f3f4aa7e0f1eec0daa8d6491c4a5f062cf8f465e94066. ReDecode179538 Instances/161classes,76121 refs,366 SharedStrings/205780 indexes, dense INST/header/PRNT and UniqueId duplicates0. Only Modules.Egg and Services.EggClient Source changed; all other Sources/non-Source chunks exactly preserved, including manual Merge Shop location, preview/icon code and restored ReceiptService. No serialized Instance additions. Final target.lock absent; no own verification Studio process to terminate.

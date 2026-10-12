@@ -465,3 +465,8 @@ Product3717610547 uses Marketplace price when available and base149 otherwise. P
 ## 2026-10-12 - Normal Pet Merge preview (local, incomplete seven-Pet pools)
 
 Merge Pet cards reuse purchased PetInventory titles/checks/images/Viewports with rank/point labels; candidate frames/percent labels reuse OpenEgg.Background.Pets.1. Actual Basic/Rare/Legendary/Mythic MeshParts display through existing static Viewport fit, unless a per-Egg image URI is configured. Hide0%/invalid-minimum candidates, show rounded100% totals/surplus notice, clean display resources on close/tab/destroy. Only Merge labels bypass translation; execution remains disabled. Real Edit/device appearance is unverified.
+
+
+## 2026-10-12 - Approved normal seven-Pet pools
+
+Normal Egg candidate sheets reuse seven actual purchased OpenEgg frames with13%-scale width and six1.5% gaps, no wrap. Correct named Decals and %g%% numeric probabilities come from the shared normal pool, preserving1/3/8 actions. Reopen/restamp mock verified without duplicate seventh. Actual Edit rendering/image access/device fit remain unverified because MCP disconnected before preview. Existing Merge completed-Egg MeshPart Viewports and rank labels retained.

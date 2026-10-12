@@ -499,3 +499,8 @@ Legacy GamePassService.GetWinReward floors baseWin multiplied by the highest ver
 ## 2026-10-12 - Normal Pet Merge preview (local, incomplete seven-Pet pools)
 
 Shared normal rank slots E/E/E/D/C/B/A use10/10/10/20/30/40/50 points, multiplied by Basic1/Rare5/Legendary25/Mythic125. Existing normal draw chances/prices remain unchanged until seventh-species approval. The latest completed-Egg preview probability table (40/60/80% promotion, same50/250/1250 certainty thresholds, adjacent-row linear interpolation/cap1250) is recorded in [the catalog](Stud_Egg_Pet_Catalog.md#completed-egg-probability-preview-not-a-pet-draw--no-merge-execution). It does not change Pet draw odds, Win rewards or combat balance.
+
+
+## 2026-10-12 - Approved normal seven-Pet pools
+
+Normal Pet draw odds are25/25/25/15/6.5/3/0.5% in preserved original six order plus approved seventh. Corresponding merge ranks E/E/E/D/C/B/A and points10/10/10/20/30/40/50 times Basic1/Rare5/Legendary25/Mythic125 are active from shared Modules.Egg. Seventh-Pet points50/250/1250/6250. Egg Win prices, Limited odds/products, raised completed-Egg Merge preview table and all combat/reward balance unchanged. See latest approved28-Pet table in Stud_Egg_Pet_Catalog.

@@ -123,7 +123,11 @@ local function stampSheet(name: string, open: BillboardGui)
 		local seventh=Frames[6]:Clone()
 		seventh.Name="7";seventh.Parent=folder
 		table.insert(Frames,seventh)
+	end
+	if #List==7 and #Frames==7 then
 		for _,frame in ipairs(Frames) do frame.Size=UDim2.new(.13,0,.13,0) end
+		-- Seven purchased cards + six gaps occupy 100% of the same candidate area.
+		if layout then layout.Padding=UDim.new(.015,0);layout.Wraps=false end
 	end
 
 	for index, frame in ipairs(Frames) do

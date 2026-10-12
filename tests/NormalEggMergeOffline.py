@@ -12,10 +12,10 @@ local checks=0
 local function eq(a,b,msg) checks+=1;assert(a==b,(msg or "")..": "..tostring(a).." ~= "..tostring(b)) end
 local function near(a,b) checks+=1;assert(math.abs(a-b)<1e-8,tostring(a).." ~= "..tostring(b)) end
 local names={
- Basic={"Dog","Grey Cat","Pink Bunny","Sheep","Bear","Camel"},
- Rare={"Cow","Giraffe","Lion","Lizard","Spider","Bat"},
- Legendary={"Elephant","Mammoth","Penguin","Crocodile","Octopus","Shark"},
- Mythic={"Turtle","Alien","Anglerfish","Dino","Scorpion","Evil Dragon"},
+ Basic={"Dog","Grey Cat","Pink Bunny","Sheep","Bear","Camel","Slime"},
+ Rare={"Cow","Giraffe","Lion","Lizard","Spider","Bat","Shroom"},
+ Legendary={"Elephant","Mammoth","Penguin","Crocodile","Octopus","Shark","Ninja"},
+ Mythic={"Turtle","Alien","Anglerfish","Dino","Scorpion","Evil Dragon","Chimpanzini Bananini"},
 }
 local legacy={Eggs={Eggs={},Buttons={Open1=1,Open3=3,Open8=8}}}
 local odds={40,25,15,10,7,3}
@@ -28,7 +28,7 @@ local paid={ByName={}}
 for _,name in ipairs({"Pet_042","Pet_064","Pet_081","Pet_086","Pet_094","Pet_024","Pet_135"})do paid.ByName[name]={}end
 local configToken,limitedToken={},{}
 local rs={Modules={Config=configToken},Config={LimitedEggConfig=limitedToken}}
-local environment=setmetatable({game={GetService=function()return rs end},require=function(token)return token==configToken and legacy or paid end},{__index=getfenv()})
+local environment=setmetatable({math=table.clone(math),game={GetService=function()return rs end},require=function(token)return token==configToken and legacy or paid end},{__index=getfenv()})
 local loadEgg=assert(loadstring(-- SOURCE JSON
 ))
 setfenv(loadEgg,environment)
@@ -36,28 +36,45 @@ local Egg=loadEgg()
 local ranks={"E","E","E","D","C","B","A"}
 local targetOdds={25,25,25,15,6.5,3,.5}
 local points={10,10,10,20,30,40,50}
+local allNames={}
 for _,egg in ipairs(Egg.NormalOrder) do
- eq(Egg.validateNormalPool(egg),false,"unapproved incomplete pool never live")
+ eq(Egg.validateNormalPool(egg),true,"owner-approved complete pool live")
  eq(Egg.price(egg),prices[egg])
- local total=0
+ local total=0;local ordered=Egg.ranked(Egg.pets(egg))
+ eq(#ordered,7)
  for index,name in ipairs(names[egg]) do
-  eq(Egg.pets(egg)[name],odds[index],"legacy chances remain active")
+  eq(Egg.pets(egg)[name],targetOdds[index],"shared draw odds replace legacy six")
+  eq(ordered[index].pet,name,"original six order and seventh at end")
+  eq(allNames[name],nil,"28 distinct names");allNames[name]=true
   total+=Egg.pets(egg)[name]
   local meta=Egg.mergePet(name)
   eq(meta.Egg,egg);eq(meta.Slot,index);eq(meta.Rank,ranks[index])
   eq(meta.TargetPercent,targetOdds[index]);eq(meta.Points,points[index]*Egg.NormalPools[egg].Coefficient)
-  eq(meta.Percent,odds[index]);eq(meta.PoolApproved,false)
+  eq(meta.Percent,targetOdds[index]);eq(meta.PoolApproved,true)
  end
  eq(total,100)
+ local draws={}
+ for ticket=1,200 do
+  environment.math.random=function()return (ticket-.5)/200 end
+  local name,percent=Egg.pick(ordered)
+  eq(percent,Egg.pets(egg)[name]);draws[name]=(draws[name] or 0)+1
+ end
+ for i,name in ipairs(names[egg])do eq(draws[name],targetOdds[i]*2,"exact weighted interval coverage")end
 end
 for name in pairs(paid.ByName)do eq(Egg.mergePet(name),nil,"paid materials excluded")end
 eq(Egg.mergePet("UnknownPet"),nil)
-eq(Egg.mergePet("Slime"),nil,"unapproved proposed Pet not registered")
+eq(Egg.mergePet("Slime").Points,50)
+eq(Egg.mergePet("Shroom").Points,250)
+eq(Egg.mergePet("Ninja").Points,1250)
+eq(Egg.mergePet("Chimpanzini Bananini").Points,6250)
 eq(Egg.count("Open1"),1);eq(Egg.count("Open3"),3);eq(Egg.count("Open8"),8)
 -- Validation tests mutate this isolated helper instance only, never the game/file.
 local pool=Egg.NormalPools.Basic
-pool.Approved=true;eq(Egg.validateNormalPool("Basic"),false,"six still refused")
+local originalSpecies=table.clone(pool.Species)
+pool.Species[7]=nil;eq(Egg.validateNormalPool("Basic"),false,"six still refused")
+eq(Egg.pets("Basic"),nil,"broken approved pool fails closed, no mixed old odds")
 pool.Species[7]="Dog";eq(Egg.validateNormalPool("Basic"),false,"duplicate refused")
+eq(Egg.pets("Basic"),nil)
 pool.Species[7]="Pet_042";eq(Egg.validateNormalPool("Basic"),false,"paid refused")
 pool.Species[7]="Slime";eq(Egg.validateNormalPool("Basic"),true,"complete approved test pool")
 local ordered=Egg.ranked(Egg.pets("Basic"))
@@ -68,7 +85,7 @@ for i,slot in ipairs(ordered)do
  local meta=Egg.mergePet(slot.pet);eq(meta.Rank,ranks[i]);eq(meta.Points,points[i])
 end
 eq(sum,100);eq(#ordered,7)
-pool.Species[7]=nil;pool.Approved=false
+pool.Species=originalSpecies;pool.Approved=true
 local rows={
  {20,60,40,0,0},{30,40,60,0,0},{40,20,80,0,0},{50,0,100,0,0},
  {100,0,60,40,0},{150,0,40,60,0},{200,0,20,80,0},{250,0,0,100,0},
