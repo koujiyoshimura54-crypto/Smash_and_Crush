@@ -6,7 +6,8 @@ Presentation.BindPurchasedPanel(panel)
 local menu=gui:WaitForChild("LeftMenu")
 local tabs=panel:WaitForChild("Tabs")
 local content=panel:WaitForChild("Content")
-local names={"Dumbbells","Items","Merge","Aura","Speed"}
+local names={"Dumbbells","Items","Aura","Speed"}
+content.Merge.Visible=false;tabs.Merge.Visible=false
 local function selectTab(name)
  panel:SetAttribute("SelectedTab",name)
  for _,tabName in ipairs(names) do
@@ -34,7 +35,8 @@ menu.InventoryButton.Activated:Connect(function()
  if panel.Visible then panel.Visible=false else openInventory("Dumbbells") end
 end)
 -- Compatibility entry point; the legacy menu button is retired after Play verification.
-menu.MergeButton.Activated:Connect(function() openInventory("Merge") end)
+-- Merge is now proximity-only at the purchased World1 stall.
+menu.MergeButton.Visible=false
 Responsive.ConnectActivation(panel.CloseButton,function() panel.Visible=false end)
 for _,name in ipairs({"ShopButton","RebirthButton","SkipButton"}) do
  menu[name].Activated:Connect(function() panel.Visible=false end)

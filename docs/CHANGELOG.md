@@ -784,3 +784,10 @@
 
 - Applied only10 missing095221f->5a11053 ReceiptService change blocks to current rbxl. Authorized Cloud Studio receipts use the isolated persistent journal; atomic Studio PlayerData markers, duplicate safety and saved-only Hatch remain.
 - Exactly one Source changed; all other Sources and non-Source chunks unchanged. Compilation, reDecode/reference/SharedString/UniqueId0 and2729 memory-only assertions pass. No Play/purchase/DataStore/Studio/lock operations; Cloud runtime not checked. Canonical Source already matched5a11053, so only English records committed. Final rbxl SHA9ae19aac...; see DEV_STATUS for complete hash/scope.
+
+
+## 2026-10-12 - Merge Shop Phase1-2 presentation and provisional placement
+
+- Moved existing RestockShop into World1 Lobby (Model pivot241.907883,11.499997,50.067154), including Area/sign; sign Merge. Floor contact and obvious collidable-part overlap checked statically, without long placement study.
+- Runtime shell uses actual Essential ShopPanel header/body/close and Card01_SecretPack.Owned artwork for Item/Pet tabs. Existing Item MergeFlow mounts once; Pet body is empty. Proximity/open/close/exit/reentry and moved-Area handling added; old Inventory Merge entry retired while Item list/equip preserved. No stock/purchases/Pet merge/points/roll/server changes.
+- Two Sources compile;29 mock control-flow assertions, reDecode/refs/SharedStrings/UniqueId0 pass. No saved Instance clones; prior test-receipt restoration retained. MCP disconnected: Edit/live UI and copy capability unverified. No Play/Save/Publish/backup; no Studio process/target.lock or user-session changes. See latest DEV_STATUS for exact donors, scope and final hash.

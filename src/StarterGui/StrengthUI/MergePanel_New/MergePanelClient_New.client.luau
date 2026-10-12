@@ -7,9 +7,90 @@ local Master=require(RS.Config:WaitForChild("ItemMaster"))
 local HUD=require(RS.Modules:WaitForChild("HUDLayout"))
 local mergeRemote=RS.Remotes:WaitForChild("ItemMergeRequest")
 local stateRemote=RS.Remotes:WaitForChild("ItemMergeState")
-local inventory=player:WaitForChild("PlayerGui"):WaitForChild("StrengthGui"):WaitForChild("InventoryPanel")
-local page=inventory.Content:WaitForChild("Merge")
+local gui=player:WaitForChild("PlayerGui"):WaitForChild("StrengthGui")
+local inventory=gui:WaitForChild("InventoryPanel")
+if gui:GetAttribute("MergeShopMounted") then return end
+gui:SetAttribute("MergeShopMounted",true)
+-- Actual Essential Stud Shop shell and authored button artwork; no purchase handlers.
+local shop=gui:WaitForChild("ShopPanel"):Clone()
+shop.Name="MergeShopPanel";shop.Visible=false
+for _,x in shop:GetDescendants() do
+ if x:IsA("LuaSourceContainer") then x:Destroy() end
+end
+shop.Top.ShopText1.Text="Merge";shop.Top.ShopText2.Text="Merge"
+local body=shop:WaitForChild("MainScrollingFrame")
+for _,child in body:GetChildren() do child:Destroy() end
+body.CanvasSize=UDim2.new();body.AutomaticCanvasSize=Enum.AutomaticSize.None
+body.ScrollingEnabled=false;body.ScrollBarThickness=0
+local tabs=Instance.new("Folder");tabs.Name="Tabs";tabs.Parent=body
+local donor=gui.ShopPanel.MainScrollingFrame.Holder.Card01_SecretPack.Owned
+local tabButtons={}
+for index,name in ipairs({"Item","Pet"}) do
+ local button=donor:Clone();button.Name=name
+ button.Text="";button.Visible=true;button.Active=true;button.Interactable=true
+ button.AnchorPoint=Vector2.new(.5,0);button.Position=UDim2.new(.35+(index-1)*.30,0,0,8)
+ button.Size=UDim2.new(.26,0,0,42);button.ZIndex=230
+ button.PriceTag.Text=name;button.PriceTag.AutoLocalize=false
+ for _,x in button:GetDescendants() do
+  if x:IsA("LuaSourceContainer") then x:Destroy()
+  elseif x:IsA("GuiObject") then x.ZIndex=231 end
+ end
+ button.Parent=tabs;tabButtons[name]=button
+end
+-- Reuse the existing Item page's layout/donors; the sole existing MergeFlow below mounts here.
+local originalPage=inventory.Content:WaitForChild("Merge")
+originalPage.Visible=false
+local page=originalPage:Clone();page.Name="Item";page.Visible=true
+page.Position=UDim2.fromOffset(0,60);page.Size=UDim2.new(1,0,1,-60)
+page.Parent=body
 local old=page:WaitForChild("MergePanel")
+shop.Parent=gui
+local function selectShopTab(name)
+ shop:SetAttribute("SelectedTab",name)
+ page.Visible=name=="Item"
+ -- Pet intentionally has no page/cards/text/buttons beyond its tab.
+end
+for name,button in pairs(tabButtons) do button.Activated:Connect(function() selectShopTab(name) end) end
+selectShopTab("Item")
+local Responsive=require(RS.Modules.ResponsivePanels)
+local function fitShop() Responsive.Fit(shop,gui) end
+gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(fitShop);fitShop()
+local inside=false
+local function closeShop() shop.Visible=false end
+shop.Top.Close.Activated:Connect(closeShop)
+local function openShop()
+ selectShopTab("Item");fitShop()
+ for _,name in ipairs({"InventoryPanel","ShopPanel","RebirthPanel"}) do
+  local panel=gui:FindFirstChild(name);if panel then panel.Visible=false end
+ end
+ local skip=gui.Parent:FindFirstChild("StageSkipGui")
+ if skip and skip:FindFirstChild("Panel") then skip.Panel.Visible=false end
+ shop.Visible=true
+end
+local elapsed=0
+game:GetService("RunService").Heartbeat:Connect(function(dt)
+ elapsed+=dt;if elapsed<.1 then return end;elapsed=0
+ -- Fetch the current descendant Area every time: moving the Model moves its trigger.
+ local model=workspace:FindFirstChild("RestockShop")
+ local area=model and model:FindFirstChild("Area")
+ local character=player.Character
+ local root=character and character:FindFirstChild("HumanoidRootPart")
+ local now=false
+ if area and area:IsA("BasePart") and root and (player:GetAttribute("CurrentWorld") or 1)==1 then
+  local point=area.CFrame:PointToObjectSpace(root.Position);local half=area.Size/2
+  if area:IsA("Part") and area.Shape==Enum.PartType.Cylinder then
+   local radius=math.min(half.Y,half.Z)
+   now=math.abs(point.X)<=half.X and point.Y*point.Y+point.Z*point.Z<=radius*radius
+  else
+   now=math.abs(point.X)<=half.X and math.abs(point.Y)<=half.Y and math.abs(point.Z)<=half.Z
+  end
+ end
+ if now~=inside then inside=now;if now then openShop() else closeShop() end end
+end)
+for _,name in ipairs({"InventoryPanel","ShopPanel","RebirthPanel"}) do
+ local panel=gui:FindFirstChild(name)
+ if panel then panel:GetPropertyChangedSignal("Visible"):Connect(function() if panel.Visible then closeShop() end end) end
+end
 local template=script.Parent:WaitForChild("ItemCardTemplate")
 old.Visible=false
 -- Keep the legacy layout nodes for ResponsivePanels; the new flow owns only its sibling.
@@ -233,7 +314,7 @@ local errors={
  InventorySavePending="Waiting for save…",RateLimited="Please wait…",
  NotMergeable="This item cannot be merged",InvalidItemId="Select another item",
 }
-local function visible() return inventory.Visible and page.Visible end
+local function visible() return shop.Visible and page.Visible end
 local function less(a,b)
  local aa,bb=Master.Get(a.ItemId),Master.Get(b.ItemId)
  local ae,be=elementOrder[aa.Element] or 99,elementOrder[bb.Element] or 99
@@ -351,11 +432,11 @@ layout=function()
  if shortSelection then
   -- A short landscape selection sheet uses the safe GUI width below the tabs.
   -- Only this step expands; the authored Inventory and other steps stay intact.
-  local guiSize=inventory.Parent.AbsoluteSize
-  local top=inventory.Tabs.AbsolutePosition.Y+inventory.Tabs.AbsoluteSize.Y+4
+  local guiSize=body.AbsoluteSize
+  local top=tabButtons.Item.AbsolutePosition.Y+tabButtons.Item.AbsoluteSize.Y+4
   w=math.max(w,guiSize.X-32)
-  h=math.max(h,guiSize.Y-top-6)
-  root.Position=UDim2.fromOffset(((guiSize.X-w)/2-page.AbsolutePosition.X)/s,(top-page.AbsolutePosition.Y)/s)
+  h=math.max(h,body.AbsolutePosition.Y+guiSize.Y-top-6)
+  root.Position=UDim2.fromOffset((body.AbsolutePosition.X+(guiSize.X-w)/2-page.AbsolutePosition.X)/s,(top-page.AbsolutePosition.Y)/s)
  end
  root.Size=UDim2.fromOffset(w,h)
  local compact=h<340
@@ -578,7 +659,7 @@ local function opened()
  wasVisible=now
 end
 page:GetPropertyChangedSignal("Visible"):Connect(opened)
-inventory:GetPropertyChangedSignal("Visible"):Connect(opened)
+shop:GetPropertyChangedSignal("Visible"):Connect(opened)
 page:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
 for _,name in ipairs({"ItemPurchaseRequest","ItemRobuxPurchaseRequest","ItemEquipRequest"}) do
  RS.Remotes:WaitForChild(name).OnClientEvent:Connect(function()
