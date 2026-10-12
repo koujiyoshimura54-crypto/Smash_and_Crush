@@ -45,10 +45,146 @@ page.Position=UDim2.fromOffset(0,60);page.Size=UDim2.new(1,0,1,-60)
 page.Parent=body
 local old=page:WaitForChild("MergePanel")
 shop.Parent=gui
+
+-- Pet tab: read-only owned-copy selection, no merge/equipment transaction.
+local PetClient=require(player:WaitForChild("PlayerScripts"):WaitForChild("Services"):WaitForChild("PetClient"))
+local petPage=page:Clone();petPage.Name="Pet";petPage.Visible=false
+for _,child in petPage:GetChildren() do child:Destroy() end
+petPage.Parent=body
+local purchasedInventory=game.StarterGui.ScreenGui.Menus.Inventory.Main
+local materialList=purchasedInventory.Items:Clone();materialList.Name="Materials"
+for _,child in materialList:GetChildren() do
+ if child:IsA("GuiObject") or child:IsA("LuaSourceContainer") then child:Destroy() end
+end
+materialList.AnchorPoint=Vector2.zero
+materialList.Position=UDim2.fromOffset(8,32);materialList.Size=UDim2.new(1,-16,1,-108)
+materialList.AutomaticCanvasSize=Enum.AutomaticSize.Y;materialList.CanvasSize=UDim2.new()
+materialList.ScrollingEnabled=true;materialList.ScrollingDirection=Enum.ScrollingDirection.Y
+local listLayout=materialList:FindFirstChildOfClass("UIListLayout")
+if listLayout then listLayout.VerticalAlignment=Enum.VerticalAlignment.Top;listLayout.SortOrder=Enum.SortOrder.LayoutOrder end
+materialList.Parent=petPage
+local function materialLabel(name,position,size)
+ local label=purchasedInventory["2PetsEquipInfo"]:Clone();label.Name=name
+ label.AnchorPoint=Vector2.zero;label.Position=position;label.Size=size
+ label.Visible=true;label.AutoLocalize=false;label.TextScaled=true
+ label.Parent=petPage
+ return label
+end
+local emptyLabel=materialLabel("Empty",UDim2.fromOffset(8,0),UDim2.new(1,-16,0,28))
+local selectedLabel=materialLabel("SelectedCount",UDim2.new(0,8,1,-70),UDim2.new(1,-16,0,24))
+local function materialAction(name,text,x)
+ local button=donor:Clone();button.Name=name;button.Text=""
+ button.AnchorPoint=Vector2.new(.5,1);button.Position=UDim2.new(x,0,1,-4)
+ button.Size=UDim2.new(.42,0,0,38);button.Visible=true
+ button.PriceTag.Text=text;button.PriceTag.AutoLocalize=false
+ button.Parent=petPage;return button
+end
+local clearMaterials=materialAction("ClearSelection","Clear Selection",.27)
+local mergeMaterials=materialAction("Merge","Merge",.73)
+mergeMaterials.Active=false;mergeMaterials.Interactable=false
+mergeMaterials.Selectable=false;mergeMaterials.AutoButtonColor=false
+mergeMaterials:SetAttribute("ExecutionEnabled",false)
+-- Deliberately NO Activated callback for Merge.
+local selectedMaterials,materialTiles,materialCleanups={},{},{}
+local materialSignature
+local materialUnavailable=false
+local syncMaterials
+local function releaseMaterialTiles()
+ for _,cleanup in pairs(materialCleanups) do cleanup() end
+ materialTiles={};materialCleanups={};materialSignature=nil
+end
+local function countSelected()
+ local n=0;for _ in pairs(selectedMaterials) do n+=1 end;return n
+end
+local function pruneMaterials(state)
+ local worn={}
+ for _,id in ipairs(state and state.Equipped or {}) do if id~="" then worn[id]=true end end
+ for id in pairs(selectedMaterials) do
+  if not state or not state.Owned[id] or worn[id] then selectedMaterials[id]=nil end
+ end
+ return worn
+end
+local function updateMaterialChecks(state,worn)
+ for id,tile in pairs(materialTiles) do
+  local name=state and state.Owned[id]
+  if name then PetClient.setMaterialSelection(tile,name,selectedMaterials[id]==true,worn[id]==true) end
+ end
+ local n=countSelected()
+ selectedLabel.Text=string.format("Selected: %d (minimum 2)",n)
+ selectedLabel:SetAttribute("SelectedCount",n)
+ clearMaterials.Active=n>0;clearMaterials.Interactable=n>0;clearMaterials.Selectable=n>0
+ mergeMaterials.Active=false;mergeMaterials.Interactable=false;mergeMaterials.Selectable=false
+end
+local function toggleMaterial(id)
+ local state=PetClient.state()
+ if not state or not state.Owned[id] or table.find(state.Equipped,id) then return end
+ selectedMaterials[id]=not selectedMaterials[id] or nil
+ syncMaterials()
+end
+syncMaterials=function()
+ local state=PetClient.state()
+ local worn=pruneMaterials(state)
+ if not state then
+  releaseMaterialTiles();emptyLabel.Text="Pet inventory is loading.";emptyLabel.Visible=true
+  updateMaterialChecks(nil,worn);return
+ end
+ local ids={}
+ for id in pairs(state.Owned) do table.insert(ids,id) end
+ table.sort(ids,function(a,b) local x,y=state.Owned[a],state.Owned[b];return x==y and a<b or x<y end)
+ local signature={}
+ for _,id in ipairs(ids) do table.insert(signature,id..":"..state.Owned[id]) end
+ signature=table.concat(signature,"|")
+ if signature~=materialSignature then
+  releaseMaterialTiles()
+  materialUnavailable=false
+  for order,id in ipairs(ids) do
+   local tile,cleanup=PetClient.createMaterialTile(id,state.Owned[id],order,materialList,toggleMaterial)
+   if tile then
+    tile.Size=UDim2.fromOffset(144,144)
+    tile:SetAttribute("OwnedCopyId",id)
+    materialTiles[id]=tile;materialCleanups[id]=cleanup
+   else materialUnavailable=true;selectedMaterials[id]=nil end
+  end
+  materialSignature=signature
+ end
+ emptyLabel.Text=materialUnavailable and "Purchased Pet UI unavailable." or (#ids==0 and "No owned Pets." or "")
+ emptyLabel.Visible=materialUnavailable or #ids==0
+ updateMaterialChecks(state,worn)
+end
+clearMaterials.Activated:Connect(function() selectedMaterials={};syncMaterials() end)
+local materialRefreshing=false
+local function showMaterials()
+ syncMaterials()
+ if materialRefreshing then return end
+ materialRefreshing=true
+ -- Read-only refresh through the existing Pet client; no new Remote or save call.
+ task.spawn(function()
+  local ok,err=pcall(PetClient.refresh)
+  materialRefreshing=false
+  if shop.Parent and shop.Visible and petPage.Visible and petPage.Parent then syncMaterials() end
+  if not ok then warn("[MergeShop] Pet state refresh failed: "..tostring(err)) end
+ end)
+end
+shop:GetPropertyChangedSignal("Visible"):Connect(function()
+ if not shop.Visible then
+  selectedMaterials={};releaseMaterialTiles()
+  selectedLabel.Text="Selected: 0 (minimum 2)";selectedLabel:SetAttribute("SelectedCount",0)
+ elseif petPage.Visible then showMaterials() end
+end)
+local petPoll=0
+local materialPollConnection=game:GetService("RunService").Heartbeat:Connect(function(dt)
+ petPoll+=dt
+ if petPoll<.5 then return end;petPoll=0
+ if shop.Visible then
+  if petPage.Visible then syncMaterials() else pruneMaterials(PetClient.state()) end
+ end
+end)
+shop.Destroying:Connect(function() materialPollConnection:Disconnect();releaseMaterialTiles();selectedMaterials={} end)
 local function selectShopTab(name)
  shop:SetAttribute("SelectedTab",name)
  page.Visible=name=="Item"
- -- Pet intentionally has no page/cards/text/buttons beyond its tab.
+ petPage.Visible=name=="Pet"
+ if name=="Pet" then showMaterials() else releaseMaterialTiles() end
 end
 for name,button in pairs(tabButtons) do button.Activated:Connect(function() selectShopTab(name) end) end
 selectShopTab("Item")

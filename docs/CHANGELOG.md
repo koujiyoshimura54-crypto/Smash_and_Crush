@@ -791,3 +791,10 @@
 - Moved existing RestockShop into World1 Lobby (Model pivot241.907883,11.499997,50.067154), including Area/sign; sign Merge. Floor contact and obvious collidable-part overlap checked statically, without long placement study.
 - Runtime shell uses actual Essential ShopPanel header/body/close and Card01_SecretPack.Owned artwork for Item/Pet tabs. Existing Item MergeFlow mounts once; Pet body is empty. Proximity/open/close/exit/reentry and moved-Area handling added; old Inventory Merge entry retired while Item list/equip preserved. No stock/purchases/Pet merge/points/roll/server changes.
 - Two Sources compile;29 mock control-flow assertions, reDecode/refs/SharedStrings/UniqueId0 pass. No saved Instance clones; prior test-receipt restoration retained. MCP disconnected: Edit/live UI and copy capability unverified. No Play/Save/Publish/backup; no Studio process/target.lock or user-session changes. See latest DEV_STATUS for exact donors, scope and final hash.
+
+
+## 2026-10-12 - Merge Shop Pet selection presentation
+
+- Add per-owned-copy Pet cards using existing PetClient/template/icon/Viewport/check code. Same species select independently; variable count/minimum2, no upper slot cap. Equipped copies visibly excluded for this UI phase only.
+- Purchased list/counter/buttons reused; clear/tab/reopen/state-refresh cleanup supported. Merge always disabled without an execution handler; no point/odds/consume/roll/save/server or Item-flow change.
+- Saved manual relocation verified/preserved. Two-Source-only CurrentCloud write; compile/reDecode/reference/SharedString/UniqueId0 and70 presentation /2729 existing offline assertions pass. Studio disconnected: real display/runtime unverified. Local file updated, Cloud unreflected; no Play/Save/Publish/DataStore/user-session/lock actions. Detailed paths and final hash in DEV_STATUS.

@@ -273,13 +273,15 @@ local function refreshChecks()
 	end
 end
 
-local function buildTile(id: string, name: string, order: number): GuiObject?
-	local template = itemTemplate
+local function buildTile(id: string, name: string, order: number, options: any?): GuiObject?
+	options = options or {}
+	local owner = options.owner or janitor
+	local template = itemTemplate or findPath(ReplicatedStorage, ITEM_TEMPLATE_PATH)
 	if not template then return nil end
 
-	local tile = janitor:Add(template:Clone())
+	local tile = owner:Add(template:Clone())
 	tile.Name = id
-	tile.Visible = shown
+	tile.Visible = options.visible == true or shown
 
 	tile.LayoutOrder = order
 
@@ -288,9 +290,10 @@ local function buildTile(id: string, name: string, order: number): GuiObject?
 	local main = tile:FindFirstChild(MAIN_NAME)
 	if main then
 		local icon = main:FindFirstChild(ICON_NAME)
-		local decal = if icons then icons:FindFirstChild(name) else nil
+		local sourceIcons = icons or findPath(ReplicatedStorage, ICONS_PATH)
+		local decal = if sourceIcons then sourceIcons:FindFirstChild(name) else nil
 		if icon and icon:IsA("ImageLabel") and LimitedViewport.supports(name) then
-			janitor:Add(LimitedViewport.bind(icon,name),true)
+			owner:Add(LimitedViewport.bind(icon,name),true)
 		elseif icon and icon:IsA("ImageLabel") and decal and decal:IsA("Decal") then
 			icon.Image = decal.Texture
 		else
@@ -306,21 +309,46 @@ local function buildTile(id: string, name: string, order: number): GuiObject?
 		return tile
 	end
 
-	janitor:Add(button.Activated:Connect(function()
-		task.spawn(PetClient.request, "Equip", id)
+	owner:Add(button.Activated:Connect(function()
+		if options.activate then options.activate(id) else task.spawn(PetClient.request, "Equip", id) end
 	end))
 
-	janitor:Add(button.MouseEnter:Connect(function()
+	if not options.activate then
+	owner:Add(button.MouseEnter:Connect(function()
 		local root = menu
 		if not root then return end
 
 		PetClient.showCard(name, root)
 	end))
 
-	janitor:Add(button.MouseMoved:Connect(PetClient.moveCard))
-	janitor:Add(button.MouseLeave:Connect(PetClient.hideCard))
+	owner:Add(button.MouseMoved:Connect(PetClient.moveCard))
+	owner:Add(button.MouseLeave:Connect(PetClient.hideCard))
+	end
 
 	return tile
+end
+
+
+-- Material selection shares purchased tiles/icons/Viewports, but not Inventory's cleanup/equip callbacks.
+function PetClient.createMaterialTile(id: string, name: string, order: number, parent: Instance, activate: (string) -> ())
+ local owner=Janitor.new()
+ local ok,tile=pcall(buildTile,id,name,order,{owner=owner,activate=activate,visible=true})
+ if not ok then owner:Destroy();warn("[PetClient] Purchased material tile unavailable: "..tostring(tile));return nil end
+ if not tile then owner:Destroy();return nil end
+ tile.Parent=parent
+ return tile,function() owner:Destroy() end
+end
+function PetClient.setMaterialSelection(tile: GuiObject, name: string, selected: boolean, equipped: boolean)
+ local main=tile:FindFirstChild(MAIN_NAME)
+ local check=main and main:FindFirstChild(CHECK_NAME)
+ if check and check:IsA("GuiObject") then check.Visible=selected and not equipped end
+ setPair(tile,TITLE_NAME,name..(equipped and " (Equipped)" or ""))
+ local button=tile:FindFirstChild(BUTTON_NAME)
+ if button and button:IsA("GuiButton") then
+  button.Active=not equipped;button.Interactable=not equipped;button.Selectable=not equipped
+ end
+ tile:SetAttribute("MaterialSelected",selected and not equipped)
+ tile:SetAttribute("MaterialEquipped",equipped)
 end
 
 function PetClient.setShown(on: boolean)
