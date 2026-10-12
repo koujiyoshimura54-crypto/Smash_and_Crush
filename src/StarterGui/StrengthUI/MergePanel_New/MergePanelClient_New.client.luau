@@ -1,891 +1,730 @@
--- Merge presentation only. Recipes and eligibility come from ItemMergeService.
+-- Purchased Merge Shop presentation. No Pet merge transaction or new recipe authority.
+-- Reference coordinate system: Item image panel (150,63)-(1522,886), 1372 x 823.
+-- BEGIN MERGE VIEW: the same factory is used by Edit-only previews with read-only adapters.
+local function buildMergeShop(ctx)
+ local gui,RS,PetClient,Egg,Master=ctx.gui,ctx.RS,ctx.PetClient,ctx.Egg,ctx.Master
+ local UIS=ctx.Input
+ local connections,cardCleanups,candidateCleanups={},{},{}
+ local destroyed=false
+ local function connect(signal,fn)
+  local c=signal:Connect(fn);table.insert(connections,c);return c
+ end
+ local function clone(source,name,parent)
+  local x=source:Clone();x.Name=name
+  for _,d in x:GetDescendants() do
+   if d:IsA("LuaSourceContainer") then d:Destroy()
+   elseif d:IsA("GuiObject") then d.AutoLocalize=false end
+  end
+  if x:IsA("GuiObject") then x.AutoLocalize=false end
+  x.Parent=parent
+  return x
+ end
+ local function rect(x,a,b,w,h)
+  x.AnchorPoint=Vector2.zero;x.Position=UDim2.fromOffset(a,b);x.Size=UDim2.fromOffset(w,h)
+ end
+ local function layer(x,z)
+  if x:IsA("GuiObject") then x.ZIndex=z end
+  for _,d in x:GetDescendants() do
+   if d:IsA("GuiObject") then
+    d.ZIndex=z+(d:IsA("TextLabel") and 3 or d.Name=="StudPattern" and 1 or 2)
+   end
+  end
+ end
+ local function clearLayout(x)
+  for _,d in x:GetChildren() do
+   if d:IsA("UIGridStyleLayout") or d:IsA("UIAspectRatioConstraint") or d:IsA("UISizeConstraint") or d:IsA("UIScale") or d:IsA("UIPadding") then d:Destroy() end
+  end
+ end
+ local shopSource=gui:WaitForChild("ShopPanel")
+ local buttonSource=shopSource.MainScrollingFrame.Holder.Card01_SecretPack.Owned
+ local labelSource=shopSource.Top.ShopText1
+ local panelSource=ctx.PurchasedInventory.Parent.Parent.RestockShop.Main.Background
+ local shop=clone(shopSource,"MergeShopPanel",gui)
+ shop.Visible=false;shop.ClipsDescendants=false;shop.ZIndex=210
+ shop.BackgroundColor3=Color3.fromRGB(10,24,32);shop.BackgroundTransparency=.12
+ if not shop:FindFirstChildOfClass("UICorner") then panelSource.UICorner:Clone().Parent=shop end
+ shop:FindFirstChildOfClass("UICorner").CornerRadius=UDim.new(0,20)
+ clearLayout(shop)
+ for _,child in shop:GetChildren() do
+  if child:IsA("GuiObject") and child.Name~="Top" and child.Name~="MainScrollingFrame" then child:Destroy() end
+ end
+ shop:SetAttribute("ReferenceDesignSize",Vector2.new(1372,823))
+ shop:SetAttribute("ResponsiveDesignSize",nil)
+ local scale=Instance.new("UIScale");scale.Name="MergeFit";scale.Parent=shop
+ local body=shop.MainScrollingFrame
+ for _,child in body:GetChildren() do child:Destroy() end
+ body.BackgroundTransparency=1;body.CanvasSize=UDim2.new();body.AutomaticCanvasSize=Enum.AutomaticSize.None
+ body.ScrollingEnabled=false;body.ScrollBarThickness=0;body.ClipsDescendants=false;body.ZIndex=211
+ local top=shop.Top;clearLayout(top);layer(top,220)
+ if not top:FindFirstChildOfClass("UICorner") then panelSource.UICorner:Clone().Parent=top end
+ top:FindFirstChildOfClass("UICorner").CornerRadius=UDim.new(0,18)
+ top.UIGradient.Color=ColorSequence.new(Color3.fromRGB(255,208,0),Color3.fromRGB(255,245,0))
+ top.StudPattern.TileSize=UDim2.fromOffset(180,180)
+ -- Bold face already used by the purchased HatchClient result labels (TEXT_FONT).
+ local purchasedBold=Font.fromEnum(Enum.Font.GothamBlack)
+ top.ShopText1.Text="Merge";top.ShopText2.Text="Merge"
+ for _,name in {"ShopText1","ShopText2"} do
+  top[name].TextXAlignment=Enum.TextXAlignment.Left
+  top[name].TextWrapped=true;top[name].TextScaled=true;top[name].FontFace=purchasedBold
+ end
+ top.ShopText1.ZIndex=226;top.ShopText2.ZIndex=224
+ top.Close.Text="";top.Close.TextLabel.Text="×"
+ local function text(name,parent,value)
+  local x=clone(labelSource,name,parent)
+  clearLayout(x);x.Text=value;x.TextWrapped=true;x.TextScaled=true;x.FontFace=purchasedBold
+  x.BackgroundTransparency=1;x.Visible=true;x.ZIndex=240;x.TextXAlignment=Enum.TextXAlignment.Center
+  local limit=Instance.new("UITextSizeConstraint");limit.MinTextSize=12;limit.MaxTextSize=46;limit.Parent=x
+  return x
+ end
+ local function panel(name,parent)
+  local x=clone(panelSource,name,parent);clearLayout(x)
+  for _,d in x:GetChildren() do if d:IsA("GuiObject") then d:Destroy() end end
+  x.Visible=true;x.BackgroundColor3=Color3.fromRGB(13,28,38);x.BackgroundTransparency=.24
+  x.UICorner.CornerRadius=UDim.new(0,18)
+  x.ClipsDescendants=false;x.ZIndex=214
+  local stroke=x:FindFirstChildOfClass("UIStroke")
+  if stroke then
+   stroke.Color=Color3.fromRGB(71,112,135);stroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+   stroke.Thickness=2;stroke.Transparency=.2
+  end
+  return x
+ end
+ local function action(name,parent,value,red)
+  local x=clone(buttonSource,name,parent);clearLayout(x)
+  x.Text="";x.Visible=true;layer(x,240)
+  x.PriceTag.Text=value;x.PriceTag.TextColor3=Color3.new(1,1,1)
+  x.PriceTag.FontFace=purchasedBold;x.PriceTag.TextWrapped=true;x.PriceTag.TextScaled=true
+  for _,s in x.PriceTag:GetChildren() do if s:IsA("UIStroke") then s.Color=Color3.new(0,0,0);s.Thickness=.07 end end
+  x.StudPattern.TileSize=UDim2.fromOffset(180,180)
+  x.UICorner.CornerRadius=UDim.new(0,14)
+  x.PriceTag.TextXAlignment=Enum.TextXAlignment.Center
+  x.PriceTag.Size=UDim2.fromScale(.91,.78);x.PriceTag.Position=UDim2.fromScale(.5,.5);x.PriceTag.AnchorPoint=Vector2.new(.5,.5)
+  if red then
+   -- Use the purchased red close-control gradient, not an invented button image.
+   x.UIGradient.Color=ColorSequence.new(Color3.fromRGB(255,30,47),Color3.fromRGB(255,93,100))
+   x.UIGradient.Rotation=shopSource.Top.Close.UIGradient.Rotation
+  end
+  return x
+ end
+ local tabs={Item=action("Item",body,"Item"),Pet=action("Pet",body,"Pet")}
+ local listTitle=text("ListTitle",body,"Your Items");listTitle.TextXAlignment=Enum.TextXAlignment.Left
+ local list=clone(ctx.PurchasedInventory.Items,"Materials",body);clearLayout(list)
+ for _,d in list:GetChildren() do if d:IsA("GuiObject") then d:Destroy() end end
+ list.BackgroundTransparency=1;list.Visible=true;list.ZIndex=220
+ list.ClipsDescendants=true;list.ScrollingEnabled=true;list.ScrollingDirection=Enum.ScrollingDirection.Y
+ list.AutomaticCanvasSize=Enum.AutomaticSize.None;list.CanvasSize=UDim2.new();list.ScrollBarThickness=10
+ local empty=text("Empty",body,"");empty.TextWrapped=true
+ local result=panel("Result",body)
+ local resultTitle=text("ResultTitle",result,"Merge Result");resultTitle.TextXAlignment=Enum.TextXAlignment.Left
+ local resultHint=text("ResultHint",result,"");resultHint.TextWrapped=true
+ local drop=panel("DropArea",body)
+ local dropStroke=drop:FindFirstChildOfClass("UIStroke")
+ if dropStroke then dropStroke.Thickness=4;dropStroke.Transparency=0;dropStroke.Enabled=false end
+ -- Dashed outline: resize repeated copies of the purchased rounded Stroke surface.
+ -- No drawn/imported texture or replacement artwork.
+ local dashes={}
+ local function dash(index,x,y,w,h)
+  local d=dashes[index]
+  if not d then
+   d=clone(RS.Assets.Templates.PetInventory.Stroke,"Dash"..index,drop)
+   for _,c in d:GetChildren() do if not c:IsA("UICorner") then c:Destroy() end end
+   d.UICorner.CornerRadius=UDim.new(1,0);d.ZIndex=216;d.Visible=true;d.Active=false
+   dashes[index]=d
+  end
+  rect(d,x,y,w,h);d.BackgroundColor3=dropStroke and dropStroke.Color or Color3.fromRGB(0,218,242)
+ end
+ -- Reuse the actual purchased Stud surface. The donor border remains a real solid UIStroke.
+ local dropStud=clone(buttonSource.StudPattern,"StudPattern",drop)
+ dropStud.AnchorPoint=Vector2.zero;dropStud.Position=UDim2.new();dropStud.Size=UDim2.fromScale(1,1)
+ dropStud.ImageTransparency=.9;dropStud.ZIndex=215;dropStud.Active=false
+ local dropTitle=text("Added",drop,"Drag Items Here")
+ local dropHint=text("DropHint",drop,"3 matching Items required")
+ local selectedLabel=text("Selected",body,"Selected: 0 / 3");selectedLabel.TextXAlignment=Enum.TextXAlignment.Left
+ local clear=action("Clear",body,"Clear",true)
+ local merge=action("Merge",body,"Merge")
+ local creates=text("Creates",body,"Creates 1 Item")
+ local status=text("Status",body,"");status.TextWrapped=true
+ local tab="Item"
+ local petState,itemState=nil,nil
+ local petSelected,itemSelected={},{ }
+ local itemId=nil
+ local itemFresh,itemPending=false,false
+ local items,tiles={},{}
+ local listKey=""
+ local candidateKey=""
+ local candidates={}
+ local cell=150
+ local itemRequired=3
+ local drag=nil
+ local blockedActivation={}
+ local render,refreshList,layout
+ local view={Root=shop,Drop=drop,Tabs=tabs,List=list,Merge=merge,ClearButton=clear}
+ local function selectedCount()
+  local n=0;for _ in pairs(tab=="Pet" and petSelected or itemSelected) do n+=1 end;return n
+ end
+ local function recipeFor(id)
+  for _,r in ipairs(itemState and itemState.Recipes or {}) do if r.ItemId==id then return r end end
+ end
+ local function worn(id) return petState and table.find(petState.Equipped or {},id)~=nil end
+ local function selectable(entry)
+  if tab=="Pet" then
+   return petState and petState.Owned[entry.Id]==entry.Name and not worn(entry.Id) and Egg.mergePet(entry.Name)~=nil
+  end
+  local r=recipeFor(entry.ItemId)
+  return not itemPending and r and r.Count>=entry.Unit
+ end
+ local function selected(entry)
+  return (tab=="Pet" and petSelected[entry.Id] or tab=="Item" and itemId==entry.ItemId and itemSelected[entry.Unit])==true
+ end
+ local function releaseCandidates()
+  for _,fn in candidateCleanups do fn() end;table.clear(candidateCleanups)
+  for _,x in candidates do x:Destroy() end;table.clear(candidates);candidateKey=""
+ end
+ local function endDrag()
+  local old=drag;drag=nil
+  if not old then return end
+  if old.Ghost then old.Ghost:Destroy() end
+  for object,props in pairs(old.Faded or {}) do
+   if object.Parent then for key,value in pairs(props) do object[key]=value end end
+  end
+  if list.Parent then list.ScrollingEnabled=true end
+  dropTitle.Visible=true;dropHint.Visible=true
+ end
+ local function releaseCards()
+  endDrag()
+  for _,fn in pairs(cardCleanups) do fn() end
+  table.clear(cardCleanups);table.clear(tiles)
+ end
+ local function choose(entry,addOnly)
+  if not selectable(entry) then return end
+  if tab=="Pet" then
+   if addOnly then petSelected[entry.Id]=true else petSelected[entry.Id]=not petSelected[entry.Id] or nil end
+  else
+   if itemId and itemId~=entry.ItemId and selectedCount()>0 then
+    status.Text="Select the same type, element and rarity.";return
+   end
+   itemId=entry.ItemId
+   if not addOnly and itemSelected[entry.Unit] then itemSelected[entry.Unit]=nil
+   elseif selectedCount()<itemRequired then itemSelected[entry.Unit]=true end
+   if selectedCount()==0 then itemId=nil end
+  end
+  status.Text="";render()
+ end
+ local function point(input)
+  local v=Vector2.new(input.Position.X,input.Position.Y)
+  local root=shop:FindFirstAncestorWhichIsA("ScreenGui")
+  if root and not root.IgnoreGuiInset then v-=ctx.GuiService:GetGuiInset() end
+  return v
+ end
+ local function inside(p,x)
+  local a,s=x.AbsolutePosition,x.AbsoluteSize
+  return p.X>=a.X and p.X<=a.X+s.X and p.Y>=a.Y and p.Y<=a.Y+s.Y
+ end
+ local function updateGhost(p)
+  if not drag or not drag.Ghost then return end
+  local v=(p-shop.AbsolutePosition)/math.max(scale.Scale,.01)
+  drag.Ghost.Position=UDim2.fromOffset(v.X,v.Y)
+  if dropStroke then dropStroke.Color=inside(p,drop) and Color3.fromRGB(0,229,255) or Color3.fromRGB(85,255,0) end
+  for _,d in dashes do d.BackgroundColor3=dropStroke.Color end
+ end
+ local function startGhost()
+  if not drag or not selectable(drag.Entry) then endDrag();return end
+  drag.Active=true;list.ScrollingEnabled=false
+  local tile=drag.Tile
+  local ghost=clone(tile,"DraggingMaterial",shop)
+  clearLayout(ghost);ghost.AnchorPoint=Vector2.new(.5,.5);ghost.Size=UDim2.fromOffset(cell,cell)
+  layer(ghost,280);ghost.Rotation=-8;ghost.Active=false
+  for _,d in ghost:GetDescendants() do
+   if d:IsA("GuiButton") then d.Visible=false;d.Interactable=false end
+   if d.Name=="Checkmark" or d.Name=="Title" or d.Name=="StackCount" then d.Visible=false end
+  end
+  -- Explicit image order retains the material-only Sibling -> Global correction.
+  ghost.Main.ZIndex=282;ghost.Main.Icon.ZIndex=284
+  drag.Ghost=ghost;drag.Faded={}
+  dropTitle.Visible=false;dropHint.Visible=false
+  for _,d in tile:GetDescendants() do
+   if d:IsA("GuiObject") then
+    local values={BackgroundTransparency=d.BackgroundTransparency}
+    if d:IsA("ImageLabel") then values.ImageTransparency=d.ImageTransparency;d.ImageTransparency=math.max(.65,d.ImageTransparency) end
+    if d:IsA("TextLabel") then values.TextTransparency=d.TextTransparency;d.TextTransparency=math.max(.65,d.TextTransparency) end
+    drag.Faded[d]=values;d.BackgroundTransparency=math.max(.65,d.BackgroundTransparency)
+   end
+  end
+  updateGhost(drag.Last)
+ end
+ local function attach(tile,entry)
+  local localConnections={}
+  table.insert(localConnections,tile.Button.InputBegan:Connect(function(input)
+   local touch=input.UserInputType==Enum.UserInputType.Touch
+   if not touch and input.UserInputType~=Enum.UserInputType.MouseButton1 then return end
+   view:PressMaterial(entry.Key,point(input),touch,input)
+  end))
+  return function() for _,c in localConnections do c:Disconnect() end end
+ end
+ function view:PressMaterial(key,p,touch,input)
+  if drag or not shop.Visible then return end
+  local entry
+  for _,candidate in items do if candidate.Key==key then entry=candidate;break end end
+  if not entry or not tiles[key] or not selectable(entry) then return end
+  drag={Input=input,Touch=touch,Start=p,Last=p,Tile=tiles[key],Entry=entry,Time=os.clock(),Active=false}
+  -- Touch: movement before the hold remains native list scrolling, not a drop.
+  if touch then
+   local token=drag
+   task.delay(.24,function() if drag==token and not token.Scrolling and (token.Last-token.Start).Magnitude<10 then startGhost() end end)
+  end
+ end
+ function view:MovePointer(p)
+  if not drag then return end
+  drag.Last=p
+  local delta=p-drag.Start
+  if not drag.Active then
+   if drag.Touch and not drag.Scrolling and delta.Magnitude>=10 then
+    drag.Scrolling=true;blockedActivation[drag.Entry.Key]=os.clock()+.6
+   elseif not drag.Touch and delta.Magnitude>=6 then startGhost() end
+  end
+  if drag and drag.Active then updateGhost(p) end
+ end
+ function view:ReleasePointer(p)
+  if not drag then return end
+  local old=drag
+  if old.Active or old.Scrolling then blockedActivation[old.Entry.Key]=os.clock()+.4 end
+  local commit=old.Active and inside(p,drop) and shop.Visible
+  endDrag()
+  if commit then choose(old.Entry,true) end
+  render()
+ end
+ if UIS then
+  connect(UIS.InputChanged,function(input)
+   if not drag then return end
+   if drag.Touch and input~=drag.Input then return end
+   if not drag.Touch and input.UserInputType~=Enum.UserInputType.MouseMovement then return end
+   view:MovePointer(point(input))
+  end)
+  connect(UIS.InputEnded,function(input)
+   if not drag then return end
+   if drag.Touch and input~=drag.Input then return end
+   if not drag.Touch and input.UserInputType~=Enum.UserInputType.MouseButton1 then return end
+   view:ReleasePointer(point(input))
+  end)
+  connect(UIS.WindowFocusReleased,function() if drag then blockedActivation[drag.Entry.Key]=os.clock()+.4;endDrag();render() end end)
+ end
+ local function clicked(entry)
+  if drag and drag.Entry.Key==entry.Key and (drag.Active or drag.Scrolling) then return end
+  if os.clock()<(blockedActivation[entry.Key] or 0) then return end
+  choose(entry,false)
+ end
+ function view:ActivateMaterial(key)
+  if not shop.Visible then return end
+  for _,entry in items do if entry.Key==key then clicked(entry);return end end
+ end
+ local function prepareTile(tile,entry)
+  clearLayout(tile);tile.ClipsDescendants=false
+  tile.Main.AnchorPoint=Vector2.zero;tile.Main.Position=UDim2.new();tile.Main.Size=UDim2.fromScale(1,1)
+  tile.Main.Icon.Size=UDim2.fromScale(.94,.94);tile.Main.Icon.Position=UDim2.fromScale(.5,.5)
+  tile.Main.Icon.AnchorPoint=Vector2.new(.5,.5);tile.Main.Icon.ScaleType=Enum.ScaleType.Fit
+  tile.Title.Visible=false
+  local check=tile.Main.Checkmark
+  check.AnchorPoint=Vector2.new(1,0);check.Position=UDim2.new(1,-2,0,2);check.Size=UDim2.fromScale(.27,.27)
+  tile.Button.Text="";tile.Button.AutoButtonColor=false
+  tile:SetAttribute("MaterialName",entry.Name)
+  if not tile.Main:FindFirstChild("StudPattern") then
+   local stud=clone(buttonSource.StudPattern,"StudPattern",tile.Main)
+   stud.AnchorPoint=Vector2.zero;stud.Position=UDim2.new();stud.Size=UDim2.fromScale(1,1)
+   stud.ZIndex=tile.Main.ZIndex;stud.ImageTransparency=.87;stud.Active=false
+  end
+  -- The selectable border is the purchased tile's own stroke; no overlay panel.
+  local edge=tile.Main:FindFirstChildOfClass("UIStroke")
+  if edge then tile:SetAttribute("OriginalEdgeColor",edge.Color) end
+ end
+ local function makeItemTile(entry,order)
+  local tile=clone(RS.Assets.Templates.PetInventory,entry.Key,list)
+  layer(tile,222);tile.Stroke.ZIndex=222;tile.Main.ZIndex=223;tile.Main.Icon.ZIndex=225
+  tile.Main.Checkmark.ZIndex=226;tile.Title.ZIndex=227;tile.Button.ZIndex=228
+  tile.Visible=true;tile.LayoutOrder=order;tile.Main.Icon.Image=Master.Get(entry.ItemId).Image
+  local palette=ctx.ItemColors[Master.Get(entry.ItemId).Rarity]
+  if palette then tile.Main.UIGradient.Color=palette end
+  local activation=tile.Button.Activated:Connect(function() view:ActivateMaterial(entry.Key) end)
+  return tile,function() activation:Disconnect();tile:Destroy() end
+ end
+ refreshList=function(force)
+  local nextItems={}
+  if tab=="Pet" then
+   for id,name in pairs(petState and petState.Owned or {}) do
+    if Egg.mergePet(name) and not worn(id) then table.insert(nextItems,{Id=id,Key=id,Name=name}) end
+   end
+   table.sort(nextItems,function(a,b) return a.Name==b.Name and a.Id<b.Id or a.Name<b.Name end)
+  else
+   local recipes={}
+   for _,r in ipairs(itemState and itemState.Recipes or {}) do if r.Count>0 then table.insert(recipes,r) end end
+   table.sort(recipes,function(a,b) return a.ItemId<b.ItemId end)
+   for _,r in recipes do
+    local info=Master.Get(r.ItemId)
+    if info then
+     -- Counts remain counts. At most the three spendable units are shown; excess stays in a stack badge.
+     for unit=1,math.min(r.Count,itemRequired) do
+      table.insert(nextItems,{ItemId=r.ItemId,Unit=unit,Key=r.ItemId..":"..unit,Name=info.Rarity.." "..info.Element.." "..info.ItemType,Extra=unit==itemRequired and r.Count-itemRequired or 0})
+     end
+    end
+   end
+  end
+  local signature={tab}
+  for _,entry in nextItems do table.insert(signature,entry.Key..":"..entry.Name..":"..tostring(entry.Extra)) end
+  local key=table.concat(signature,"|")
+  if not force and key==listKey then return end
+  releaseCards();items=nextItems;listKey=key
+  for index,entry in items do
+   local tile,cleanup
+   if tab=="Pet" then tile,cleanup=PetClient.createMaterialTile(entry.Id,entry.Name,index,list,function() view:ActivateMaterial(entry.Key) end)
+   else tile,cleanup=makeItemTile(entry,index) end
+   if tile then
+    prepareTile(tile,entry)
+    if (entry.Extra or 0)>0 then
+     local badge=text("StackCount",tile,"+"..entry.Extra.." owned")
+     badge.AnchorPoint=Vector2.new(.5,1);badge.Position=UDim2.fromScale(.5,.98);badge.Size=UDim2.fromScale(.94,.18)
+     badge.ZIndex=tile.Button.ZIndex-1
+    end
+    local unbind=attach(tile,entry)
+    tiles[entry.Key]=tile
+    cardCleanups[entry.Key]=function() unbind();cleanup() end
+   end
+  end
+  if layout then layout() end
+ end
+ local function candidate(name,image,percent,index,total,rarity)
+  local x=clone(RS.Assets.Templates.OpenEgg.Background.Pets["1"],name,result)
+  clearLayout(x);x.AnchorPoint=Vector2.new(.5,0);x.Visible=true;x.Image="";x.BackgroundTransparency=1
+  x.ZIndex=223;x.Button.Visible=false;x.Button.Active=false;x.Button.Interactable=false
+  local label=percent and action("Name",x,name) or text("Name",x,name)
+  if percent then
+   label.Active=false;label.Interactable=false;label.Selectable=false;label.AutoButtonColor=false
+   if ctx.ItemColors[name] and name~="Rare" then label.UIGradient.Color=ctx.ItemColors[name] end
+  end
+  label.AnchorPoint=Vector2.new(.5,1);label.Position=UDim2.fromScale(.5,percent and .87 or 1)
+  label.Size=UDim2.fromScale(1,.15)
+  x.Percent.AnchorPoint=Vector2.new(.5,1);x.Percent.Position=UDim2.fromScale(.5,1)
+  x.Percent.Size=UDim2.fromScale(1,.13);x.Percent.ZIndex=240;x.Percent.AutoLocalize=false
+  x.Percent.FontFace=purchasedBold;x.Percent.TextXAlignment=Enum.TextXAlignment.Center
+  x.Percent.TextWrapped=true;x.Percent.TextScaled=true
+  local percentStroke=labelSource:FindFirstChildOfClass("UIStroke")
+  if percentStroke then
+   for _,old in x.Percent:GetChildren() do if old:IsA("UIStroke") then old:Destroy() end end
+   percentStroke:Clone().Parent=x.Percent
+  end
+  x.Percent.Text=percent and string.format("%g%%",percent) or "";x.Percent.Visible=percent~=nil
+  x:SetAttribute("CandidateIndex",index);x:SetAttribute("CandidateCount",total)
+  if image~="" then
+   if rarity then
+    local card=clone(RS.Assets.Templates.PetInventory.Main,"ResultCard",x)
+    clearLayout(card)
+    for _,d in card:GetChildren() do if d:IsA("GuiObject") then d:Destroy() end end
+    card.AnchorPoint=Vector2.new(.5,0);card.Position=UDim2.fromScale(.5,0);card.Size=UDim2.fromScale(.82,.82);card.ZIndex=223
+    card.UIGradient.Color=ctx.ItemColors[rarity] or card.UIGradient.Color
+   end
+   local pic=clone(RS.Assets.Templates.PetInventory.Main.Icon,"ActualImage",x)
+   pic.Image=image;pic.ZIndex=225;pic.AnchorPoint=Vector2.zero;pic.Position=UDim2.new();pic.Size=UDim2.fromScale(1,rarity and .82 or .72)
+   pic.ScaleType=Enum.ScaleType.Fit;pic.Visible=true;pic.ImageTransparency=0
+  else
+   local ok,cleanup,viewport=pcall(ctx.EggViewport.mountEgg,x,name)
+   if ok and cleanup then
+    viewport.Position=UDim2.new();viewport.Size=UDim2.fromScale(1,.72);viewport.ZIndex=225
+    table.insert(candidateCleanups,cleanup)
+   else warn("[MergeShop] Actual Egg preview unavailable: "..name.." "..tostring(cleanup)) end
+  end
+  table.insert(candidates,x);return x
+ end
+ local function updateResults(n)
+  if not shop.Visible then releaseCandidates();return end
+  local outcomes={}
+  if tab=="Pet" then
+   local points=0
+   for id in pairs(petSelected) do local meta=petState and Egg.mergePet(petState.Owned[id]);if meta then points+=meta.Points end end
+   local preview=Egg.mergePreview(points,n)
+   -- No agreed mixed-origin "maintained Egg" exists. Keep genuine outcomes/odds, without inventing a base or redistribution.
+   if preview.Eligible then for _,o in preview.Outcomes do table.insert(outcomes,{Name=o.Egg,Percent=o.Percent,Image=Egg.NormalPools[o.Egg].Icon}) end end
+   resultTitle.Text="Possible Eggs"
+   resultHint.Text=n<2 and "Select at least 2 Pets" or ""
+   result:SetAttribute("UpgradeBaselineUnresolved",true)
+  else
+   resultTitle.Text="Merge Result"
+   local recipe=recipeFor(itemId)
+   local completed=recipe and Master.Get(recipe.ResultItemId)
+   if n==itemRequired and completed and itemFresh and recipe.CanMerge then
+    table.insert(outcomes,{Name=completed.Rarity.." "..completed.Element.." "..completed.ItemType,Image=completed.Image,Rarity=completed.Rarity})
+   end
+   resultHint.Text=#outcomes==0 and "Select 3 matching Items" or ""
+  end
+  local keys={tab};for _,o in outcomes do table.insert(keys,o.Name..":"..o.Image) end
+  local key=table.concat(keys,"|")
+  if candidateKey~=key then
+   releaseCandidates()
+   for i,o in outcomes do candidate(o.Name,o.Image,o.Percent,i,#outcomes,o.Rarity) end
+   candidateKey=key
+  end
+  for i,o in outcomes do
+   local x=candidates[i]
+   if x then x.Percent.Text=o.Percent and string.format("%g%%",o.Percent) or "";x:SetAttribute("Percent",o.Percent) end
+  end
+ end
+ local function paintButton(x,enabled)
+  x.Active=enabled;x.Interactable=enabled;x.Selectable=enabled;x.AutoButtonColor=enabled
+  x.BackgroundColor3=enabled and Color3.new(1,1,1) or Color3.fromRGB(145,145,145)
+  x.UIGradient.Enabled=enabled
+  x.PriceTag.TextColor3=enabled and Color3.new(1,1,1) or Color3.fromRGB(204,204,204)
+ end
+ render=function()
+  local n=selectedCount()
+  listTitle.Text=tab=="Pet" and "Your Pets" or "Your Items"
+  creates.Text=tab=="Pet" and "Creates 1 Egg" or "Creates 1 Item"
+  selectedLabel.Text=tab=="Pet" and string.format("Selected: %d",n) or string.format("Selected: %d / %d",n,itemRequired)
+  selectedLabel:SetAttribute("SelectedCount",n)
+  dropTitle.Text=n==0 and (tab=="Pet" and "Drag Pets Here" or "Drag Items Here") or string.format("%d %s Added",n,tab=="Pet" and "Pets" or "Items")
+  dropHint.Text=tab=="Pet" and (n>0 and "Drag more Pets here" or "") or "3 matching Items required"
+  if dropStroke and not (drag and drag.Active) then dropStroke.Color=n>0 and Color3.fromRGB(94,255,0) or Color3.fromRGB(0,218,242) end
+  drop.BackgroundColor3=n>0 and Color3.fromRGB(7,53,31) or shopSource.BackgroundColor3
+  for _,entry in items do
+   local tile=tiles[entry.Key]
+   if tile then
+    if tab=="Pet" then PetClient.setMaterialSelection(tile,entry.Name,selected(entry),false) end
+    tile.Title.Visible=false;tile.Main.Checkmark.Visible=selected(entry)
+    local edge=tile.Main:FindFirstChildOfClass("UIStroke")
+    if edge then
+     local g=edge:FindFirstChildOfClass("UIGradient");if g then g.Enabled=not selected(entry) end
+     edge.Color=selected(entry) and Color3.fromRGB(119,255,0) or tile:GetAttribute("OriginalEdgeColor")
+     edge.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize;edge.Thickness=selected(entry) and 4 or 2
+    end
+    tile.Button.Active=selectable(entry)==true;tile.Button.Interactable=tile.Button.Active
+   end
+  end
+  for name,button in pairs(tabs) do
+   button.BackgroundColor3=name==tab and Color3.new(1,1,1) or Color3.fromRGB(64,162,80)
+   button.PriceTag.TextColor3=name==tab and Color3.new(1,1,1) or Color3.fromRGB(214,235,211)
+  end
+  local recipe=recipeFor(itemId)
+  local ready=tab=="Item" and n==itemRequired and itemFresh and not itemPending and recipe~=nil and recipe.CanMerge==true
+  paintButton(merge,ready);paintButton(clear,tab=="Pet" or not itemPending)
+  merge:SetAttribute("ExecutionEnabled",ready)
+  merge.PriceTag.Text="Merge"
+  if tab=="Pet" then status.Text="Merge disabled" elseif itemPending then status.Text="Merging…" end
+  empty.Visible=#items==0
+  empty.Text=tab=="Pet" and (petState and "No available normal Pets" or "Pet inventory is loading") or (itemState and "No mergeable Items" or "Item inventory is loading")
+  updateResults(n);layout()
+ end
+ layout=function()
+  local viewport=gui.AbsoluteSize
+  local portrait=viewport.X<600 and viewport.Y>viewport.X
+  local width,height=portrait and 700 or 1372,portrait and 1190 or 823
+  local s=math.min(1,math.max(1,viewport.X-(portrait and 16 or 32))/width,math.max(1,viewport.Y-24)/height)
+  if viewport.X>=1000 then s=math.min(s,viewport.X*.82/width,viewport.Y*.875/height) end
+  scale.Scale=s;shop.Size=UDim2.fromOffset(width,height);shop.AnchorPoint=Vector2.new(.5,.5);shop.Position=UDim2.fromScale(.5,.5)
+  rect(top,0,0,width,portrait and 108 or 140)
+  rect(top.MainShopIcon,28,-6,portrait and 118 or 172,portrait and 118 or 152)
+  for _,name in {"ShopText1","ShopText2"} do rect(top[name],portrait and 154 or 214,8+(name=="ShopText2" and 4 or 0),portrait and 390 or 600,portrait and 90 or 126) end
+  rect(top.Close,width-(portrait and 94 or 124),18,portrait and 76 or 108,portrait and 76 or 108)
+  rect(body,0,0,width,height)
+  local lx,ly,lw,lh=22,312,484,480
+  local rx,ry,rw,rh=540,158,808,326
+  local dy,dh,fy=495,184,692
+  if portrait then lx,ly,lw,lh=18,248,664,390;rx,ry,rw,rh=18,654,664,218;dy,dh,fy=886,152,1056 end
+  local tabsY=portrait and 124 or 160
+  rect(tabs.Item,18,tabsY,portrait and 324 or 244,portrait and 62 or 82)
+  rect(tabs.Pet,portrait and 358 or 276,tabsY,portrait and 324 or 228,portrait and 62 or 82)
+  rect(listTitle,24,portrait and 198 or 247,lw,portrait and 44 or 56)
+  rect(list,lx,ly,lw,lh);rect(empty,lx,ly,lw,lh)
+  cell=(lw-24)/3
+  for index,entry in items do
+   local tile=tiles[entry.Key]
+   if tile then rect(tile,((index-1)%3)*(cell+8),math.floor((index-1)/3)*(cell+8),cell,cell) end
+  end
+  list.CanvasSize=UDim2.fromOffset(0,math.ceil(#items/3)*(cell+8))
+  rect(result,rx,ry,rw,rh)
+  rect(resultTitle,20,8,rw-40,portrait and 38 or 52)
+  rect(resultHint,18,rh*.5,rw-36,portrait and 34 or 44)
+  for _,x in candidates do
+   local index,total=x:GetAttribute("CandidateIndex"),x:GetAttribute("CandidateCount")
+   local h=rh-(portrait and 52 or 66)
+   local w=math.min(h,rw/math.max(1,total)-36)
+   x.AnchorPoint=Vector2.new(.5,0);x.Size=UDim2.fromOffset(w,h)
+   x.Position=UDim2.fromOffset(rw*.5+(index-(total+1)*.5)*math.min(rw/math.max(1,total),330),portrait and 50 or 64)
+   local nameplate=x:FindFirstChild("Name")
+   if nameplate and x.Percent.Visible then
+    nameplate.Size=UDim2.fromScale(1,portrait and .24 or .15)
+    nameplate.Position=UDim2.fromScale(.5,portrait and .84 or .87)
+    x.Percent.Size=UDim2.fromScale(1,portrait and .16 or .13)
+    local viewport=x:FindFirstChild("NormalEggViewport")
+    if viewport then viewport.Size=UDim2.fromScale(1,portrait and .59 or .72) end
+   end
+  end
+  rect(drop,rx,dy,rw,dh)
+  local dashIndex=0
+  for x=12,rw-24,30 do
+   dashIndex+=1;dash(dashIndex,x,0,18,5)
+   dashIndex+=1;dash(dashIndex,x,dh-5,18,5)
+  end
+  for y=14,dh-25,30 do
+   dashIndex+=1;dash(dashIndex,0,y,5,18)
+   dashIndex+=1;dash(dashIndex,rw-5,y,5,18)
+  end
+  for i,d in dashes do d.Visible=i<=dashIndex end
+  rect(dropTitle,18,dh*.23,rw-36,dh*.35)
+  rect(dropHint,18,dh*.65,rw-36,dh*.21)
+  rect(selectedLabel,rx,fy+25,rw*.295,42)
+  rect(clear,rx+rw*.31,fy+18,rw*.22,64)
+  rect(merge,rx+rw*.57,fy,rw*.43,88)
+  rect(creates,rx+rw*.57,fy+92,rw*.43,24)
+  rect(status,rx,dy+dh+3,rw*.54,portrait and 22 or 24)
+ end
+ function view:SetPetState(state)
+  petState=state
+  for id in pairs(petSelected) do
+   if not state or not state.Owned[id] or worn(id) or not Egg.mergePet(state.Owned[id]) then petSelected[id]=nil end
+  end
+  if drag and not selectable(drag.Entry) then endDrag() end
+  if tab=="Pet" then refreshList(false);render() end
+ end
+ function view:SetItemState(state,fresh,pending,message)
+  itemState=state;itemFresh=fresh==true;itemPending=pending==true
+  if state and type(state.RequiredCount)=="number" then itemRequired=state.RequiredCount end
+  local r=recipeFor(itemId)
+  for unit in pairs(itemSelected) do if not r or unit>r.Count or unit>itemRequired then itemSelected[unit]=nil end end
+  if next(itemSelected)==nil then itemId=nil end
+  if tab=="Item" then status.Text=message or "";refreshList(false);render() end
+ end
+ function view:SelectTab(name)
+  if name~="Pet" and name~="Item" then return end
+  endDrag();petSelected={};itemSelected={};itemId=nil;status.Text=""
+  releaseCandidates();tab=name;shop:SetAttribute("SelectedTab",tab)
+  list.CanvasPosition=Vector2.zero;refreshList(true);render()
+  if ctx.OnTab then ctx.OnTab(name) end
+ end
+ function view:Clear()
+  if itemPending and tab=="Item" then return end
+  endDrag();petSelected={};itemSelected={};itemId=nil;status.Text="";render()
+ end
+ function view:IsPet() return tab=="Pet" end
+ function view:Show()
+  shop.Visible=true;self:SelectTab("Item");layout()
+ end
+ function view:Hide()
+  shop.Visible=false;endDrag();petSelected={};itemSelected={};itemId=nil
+  releaseCards();releaseCandidates();listKey="";table.clear(blockedActivation)
+ end
+ function view:Destroy()
+  if destroyed then return end;destroyed=true
+  self:Hide();for _,c in connections do c:Disconnect() end;shop:Destroy()
+ end
+ connect(clear.Activated,function() if clear.Interactable then view:Clear() end end)
+ function view:SubmitItem()
+  -- The sole Item send hook. Pet is refused even if a caller forcibly enables its visual control.
+  if tab~="Item" or not merge.Interactable or itemPending then return end
+  local r=recipeFor(itemId)
+  if not itemFresh or selectedCount()~=itemRequired or not r or not r.CanMerge then return end
+  itemPending=true;itemFresh=false;render()
+  ctx.OnMerge(itemId)
+ end
+ connect(merge.Activated,function() view:SubmitItem() end)
+ connect(top.Close.Activated,function() view:Hide() end)
+ for name,button in pairs(tabs) do connect(button.Activated,function() view:SelectTab(name) end) end
+ connect(gui:GetPropertyChangedSignal("AbsoluteSize"),layout)
+ connect(shop:GetPropertyChangedSignal("Visible"),function() if not shop.Visible then endDrag();releaseCandidates() end end)
+ view:SelectTab("Item")
+ return view
+end
+-- END MERGE VIEW
+
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
-local TweenService=game:GetService("TweenService")
+local RunService=game:GetService("RunService")
 local player=Players.LocalPlayer
+local gui=player:WaitForChild("PlayerGui"):WaitForChild("StrengthGui")
+if gui:GetAttribute("MergeShopMounted") then return end
 local Master=require(RS.Config:WaitForChild("ItemMaster"))
-local HUD=require(RS.Modules:WaitForChild("HUDLayout"))
+local PetClient=require(player:WaitForChild("PlayerScripts"):WaitForChild("Services"):WaitForChild("PetClient"))
+local Egg=require(RS.Modules:WaitForChild("Egg"))
 local mergeRemote=RS.Remotes:WaitForChild("ItemMergeRequest")
 local stateRemote=RS.Remotes:WaitForChild("ItemMergeState")
-local gui=player:WaitForChild("PlayerGui"):WaitForChild("StrengthGui")
-local inventory=gui:WaitForChild("InventoryPanel")
-if gui:GetAttribute("MergeShopMounted") then return end
-gui:SetAttribute("MergeShopMounted",true)
--- Actual Essential Stud Shop shell and authored button artwork; no purchase handlers.
-local shop=gui:WaitForChild("ShopPanel"):Clone()
-shop.Name="MergeShopPanel";shop.Visible=false
-for _,x in shop:GetDescendants() do
- if x:IsA("LuaSourceContainer") then x:Destroy() end
+local state,pending,fetching,fresh=nil,false,false,false
+local revision=0
+local refresh,view
+local status=""
+local errors={NotEnoughItems="Not enough identical items",DataSaving="Saving. Please wait.",DataNotLoaded="Loading…",CountOverflow="Result item limit reached",InventorySavePending="Waiting for save…",RateLimited="Please wait…",NotMergeable="This item cannot be merged",InvalidItemId="Select another item"}
+local colors={}
+-- Rarity surfaces are the existing purchased Pet visual palettes; no new art or stats.
+local Config=require(RS.Modules.Config)
+local Pet=require(RS.Modules.Pet)
+for _,name in {"Common","Uncommon","Rare","Epic","Legendary"} do
+ local rarity=Config.Rarities and Config.Rarities[name]
+ if rarity and rarity.Colors then colors[name]=Pet.sequence(rarity.Colors) end
 end
-shop.Top.ShopText1.Text="Merge";shop.Top.ShopText2.Text="Merge"
-shop.Top.ShopText1.AutoLocalize=false;shop.Top.ShopText2.AutoLocalize=false
-local body=shop:WaitForChild("MainScrollingFrame")
-for _,child in body:GetChildren() do child:Destroy() end
-body.CanvasSize=UDim2.new();body.AutomaticCanvasSize=Enum.AutomaticSize.None
-body.ScrollingEnabled=false;body.ScrollBarThickness=0
-local tabs=Instance.new("Folder");tabs.Name="Tabs";tabs.Parent=body
-local donor=gui.ShopPanel.MainScrollingFrame.Holder.Card01_SecretPack.Owned
-local tabButtons={}
-for index,name in ipairs({"Item","Pet"}) do
- local button=donor:Clone();button.Name=name
- button.Text="";button.Visible=true;button.Active=true;button.Interactable=true
- button.AnchorPoint=Vector2.new(.5,0);button.Position=UDim2.new(.35+(index-1)*.30,0,0,8)
- button.Size=UDim2.new(.26,0,0,42);button.ZIndex=230
- button.PriceTag.Text=name;button.PriceTag.AutoLocalize=false
- for _,x in button:GetDescendants() do
-  if x:IsA("LuaSourceContainer") then x:Destroy()
-  elseif x:IsA("GuiObject") then x.ZIndex=231 end
- end
- button.Parent=tabs;tabButtons[name]=button
+local ok,built=pcall(buildMergeShop,{
+ gui=gui,RS=RS,PetClient=PetClient,Egg=Egg,Master=Master,ItemColors=colors,
+ PurchasedInventory=game.StarterGui.ScreenGui.Menus.Inventory.Main,
+ EggViewport=require(RS.Modules.LimitedPetViewport),Input=game:GetService("UserInputService"),GuiService=game:GetService("GuiService"),
+ OnMerge=function(id)
+  if pending then return end
+  pending=true;fresh=false;revision+=1;status=""
+  view:SetItemState(state,fresh,pending,status)
+  mergeRemote:FireServer(id)
+ end,
+ OnTab=function(name)
+  if not view then return end
+  if name=="Item" then task.spawn(refresh) else task.spawn(PetClient.refresh) end
+ end,
+})
+if not ok then
+ local failed=gui:FindFirstChild("MergeShopPanel");if failed then failed:Destroy() end
+ warn("[MergeShop] Purchased UI mount failed; no substitute created: "..tostring(built));return
 end
--- Reuse the existing Item page's layout/donors; the sole existing MergeFlow below mounts here.
-local originalPage=inventory.Content:WaitForChild("Merge")
-originalPage.Visible=false
-local page=originalPage:Clone();page.Name="Item";page.Visible=true
-page.Position=UDim2.fromOffset(0,60);page.Size=UDim2.new(1,0,1,-60)
-page.Parent=body
-local old=page:WaitForChild("MergePanel")
-shop.Parent=gui
-
--- Pet tab: read-only owned-copy selection, no merge/equipment transaction.
-local PetClient=require(player:WaitForChild("PlayerScripts"):WaitForChild("Services"):WaitForChild("PetClient"))
-local Egg=require(RS.Modules.Egg)
-local EggViewport=require(RS.Modules.LimitedPetViewport)
-local petPage=page:Clone();petPage.Name="Pet";petPage.Visible=false
-for _,child in petPage:GetChildren() do child:Destroy() end
-petPage.Parent=body
-local purchasedInventory=game.StarterGui.ScreenGui.Menus.Inventory.Main
-local materialList=purchasedInventory.Items:Clone();materialList.Name="Materials"
-for _,child in materialList:GetChildren() do
- if child:IsA("GuiObject") or child:IsA("LuaSourceContainer") then child:Destroy() end
+view=built;gui:SetAttribute("MergeShopMounted",true)
+local shop=view.Root
+gui.InventoryPanel.Content.Merge.Visible=false
+refresh=function()
+ if fetching then return end;fetching=true
+ local requestRevision=revision
+ local success,response=pcall(function() return stateRemote:InvokeServer() end)
+ fetching=false
+ if requestRevision~=revision then task.defer(refresh);return end
+ fresh=success and typeof(response)=="table" and response.Loaded==true
+ if fresh then state=response;if status=="Checking connection…" then status="" end else status="Checking connection…" end
+ view:SetItemState(state,fresh,pending,status)
 end
-materialList.AnchorPoint=Vector2.zero
-materialList.Position=UDim2.fromOffset(8,32);materialList.Size=UDim2.new(1,-16,1,-224)
-materialList.AutomaticCanvasSize=Enum.AutomaticSize.Y;materialList.CanvasSize=UDim2.new()
-materialList.ScrollingEnabled=true;materialList.ScrollingDirection=Enum.ScrollingDirection.Y
-local listLayout=materialList:FindFirstChildOfClass("UIListLayout")
-if listLayout then listLayout.VerticalAlignment=Enum.VerticalAlignment.Top;listLayout.SortOrder=Enum.SortOrder.LayoutOrder end
-materialList.Parent=petPage
-local function materialLabel(name,position,size)
- local label=purchasedInventory["2PetsEquipInfo"]:Clone();label.Name=name
- label.AnchorPoint=Vector2.zero;label.Position=position;label.Size=size
- label.Visible=true;label.AutoLocalize=false;label.TextScaled=true
- label.Parent=petPage
- return label
-end
-local emptyLabel=materialLabel("Empty",UDim2.fromOffset(8,0),UDim2.new(1,-16,0,28))
-local selectedLabel=materialLabel("SelectedCount",UDim2.new(0,8,1,-190),UDim2.new(1,-16,0,24))
-local previewLabel=materialLabel("MergePreviewStatus",UDim2.new(0,8,1,-166),UDim2.new(1,-16,0,24))
-local candidateTiles,candidateCleanups={},{}
-local candidateSignature
-local function releaseCandidates()
- for _,cleanup in pairs(candidateCleanups) do cleanup() end
- for _,tile in pairs(candidateTiles) do tile:Destroy() end
- candidateTiles={};candidateCleanups={};candidateSignature=nil
-end
-local function updatePreview(points,count)
- local preview=Egg.mergePreview(points,count)
- previewLabel.Text=string.format("Total: %d pt",points)
- if count<2 then previewLabel.Text..=" | Select at least 2 normal Pets." end
- if preview.Surplus>0 then previewLabel.Text..=" | Above 1250 pt: no extra effect." end
- previewLabel:SetAttribute("TotalPoints",points)
- previewLabel:SetAttribute("Eligible",preview.Eligible)
- if not preview.Eligible or not shop.Visible or not petPage.Visible then releaseCandidates();return end
- local signature={}
- for _,outcome in ipairs(preview.Outcomes) do
-  table.insert(signature,outcome.Egg..":"..Egg.NormalPools[outcome.Egg].Icon)
- end
- local key=table.concat(signature,"|")
- if key~=candidateSignature then
-  releaseCandidates()
-  local source=RS.Assets.Templates.OpenEgg.Background.Pets["1"]
-  for index,outcome in ipairs(preview.Outcomes) do
-   local ok,tile=pcall(function() return source:Clone() end)
-   if ok and tile then
-    tile.Name=outcome.Egg;tile.AnchorPoint=Vector2.new(.5,0)
-    tile.Size=UDim2.new(.24,-4,0,92)
-    tile.Position=UDim2.new(.5+(index-(#preview.Outcomes+1)/2)*.25,0,1,-140)
-    tile.Visible=true;tile.Active=false;tile.AutoLocalize=false;tile.Image=""
-    local aspect=tile:FindFirstChildOfClass("UIAspectRatioConstraint")
-    if aspect then aspect:Destroy() end
-    local button=tile:FindFirstChild("Button")
-    if button then button.Visible=false;button.Active=false;button.Interactable=false end
-    local label=purchasedInventory["2PetsEquipInfo"]:Clone()
-    label.Name="EggName";label.Text=outcome.Egg;label.AutoLocalize=false;label.TextScaled=true
-    label.AnchorPoint=Vector2.zero;label.Position=UDim2.fromOffset(0,0);label.Size=UDim2.new(1,0,0,17)
-    label.ZIndex=tile.ZIndex+3;label.Visible=true;label.Parent=tile
-    tile.Percent.AnchorPoint=Vector2.new(.5,1);tile.Percent.Position=UDim2.new(.5,0,1,0)
-    tile.Percent.Size=UDim2.new(1,0,0,17);tile.Percent.ZIndex=tile.ZIndex+3;tile.Percent.AutoLocalize=false
-    tile.Parent=petPage;candidateTiles[outcome.Egg]=tile
-    local icon=Egg.NormalPools[outcome.Egg].Icon
-    if icon~="" then
-     tile.Image=icon
-    else
-     local mounted,cleanup,view=pcall(EggViewport.mountEgg,tile,outcome.Egg)
-     if mounted and cleanup then
-      view.Position=UDim2.fromOffset(0,17);view.Size=UDim2.new(1,0,1,-34)
-      candidateCleanups[outcome.Egg]=cleanup
-     else warn("[MergeShop] Actual Egg display unavailable: "..outcome.Egg.." "..tostring(cleanup)) end
-    end
-   else warn("[MergeShop] Purchased candidate frame unavailable: "..tostring(tile)) end
-  end
-  candidateSignature=key
- end
- for _,outcome in ipairs(preview.Outcomes) do
-  local tile=candidateTiles[outcome.Egg]
-  if tile then tile.Percent.Text=string.format("%g%%",outcome.Percent);tile:SetAttribute("Percent",outcome.Percent) end
- end
-end
-local function materialAction(name,text,x)
- local button=donor:Clone();button.Name=name;button.Text=""
- button.AnchorPoint=Vector2.new(.5,1);button.Position=UDim2.new(x,0,1,-4)
- button.Size=UDim2.new(.42,0,0,38);button.Visible=true
- button.PriceTag.Text=text;button.PriceTag.AutoLocalize=false
- button.Parent=petPage;return button
-end
-local clearMaterials=materialAction("ClearSelection","Clear Selection",.27)
-local mergeMaterials=materialAction("Merge","Merge",.73)
-mergeMaterials.Active=false;mergeMaterials.Interactable=false
-mergeMaterials.Selectable=false;mergeMaterials.AutoButtonColor=false
-mergeMaterials:SetAttribute("ExecutionEnabled",false)
--- Deliberately NO Activated callback for Merge.
-local selectedMaterials,materialTiles,materialCleanups={},{},{}
-local materialSignature
-local materialUnavailable=false
-local syncMaterials
-local function releaseMaterialTiles()
- for _,cleanup in pairs(materialCleanups) do cleanup() end
- materialTiles={};materialCleanups={};materialSignature=nil
-end
-local function countSelected()
- local n=0;for _ in pairs(selectedMaterials) do n+=1 end;return n
-end
-local function pruneMaterials(state)
- local worn={}
- for _,id in ipairs(state and state.Equipped or {}) do if id~="" then worn[id]=true end end
- for id in pairs(selectedMaterials) do
-  if not state or not state.Owned[id] or worn[id] or not Egg.mergePet(state.Owned[id]) then selectedMaterials[id]=nil end
- end
- return worn
-end
-local function updateMaterialChecks(state,worn)
- for id,tile in pairs(materialTiles) do
-  local name=state and state.Owned[id]
-  if name then
-   PetClient.setMaterialSelection(tile,name,selectedMaterials[id]==true,worn[id]==true)
-   local metadata=Egg.mergePet(name)
-   if metadata then PetClient.setMaterialMetadata(tile,metadata) end
-  end
- end
- local n=countSelected()
- selectedLabel.Text=string.format("Selected: %d (minimum 2)",n)
- selectedLabel:SetAttribute("SelectedCount",n)
- local points=0
- for id in pairs(selectedMaterials) do
-  local metadata=state and Egg.mergePet(state.Owned[id])
-  if metadata then points+=metadata.Points end
- end
- updatePreview(points,n)
- clearMaterials.Active=n>0;clearMaterials.Interactable=n>0;clearMaterials.Selectable=n>0
- mergeMaterials.Active=false;mergeMaterials.Interactable=false;mergeMaterials.Selectable=false
-end
-local function toggleMaterial(id)
- local state=PetClient.state()
- if not state or not state.Owned[id] or table.find(state.Equipped,id) or not Egg.mergePet(state.Owned[id]) then return end
- selectedMaterials[id]=not selectedMaterials[id] or nil
- syncMaterials()
-end
-syncMaterials=function()
- local state=PetClient.state()
- local worn=pruneMaterials(state)
- if not state then
-  releaseMaterialTiles();emptyLabel.Text="Pet inventory is loading.";emptyLabel.Visible=true
-  updateMaterialChecks(nil,worn);return
- end
- local ids={}
- for id,name in pairs(state.Owned) do if Egg.mergePet(name) then table.insert(ids,id) end end
- table.sort(ids,function(a,b) local x,y=state.Owned[a],state.Owned[b];return x==y and a<b or x<y end)
- local signature={}
- for _,id in ipairs(ids) do table.insert(signature,id..":"..state.Owned[id]) end
- signature=table.concat(signature,"|")
- if signature~=materialSignature then
-  releaseMaterialTiles()
-  materialUnavailable=false
-  for order,id in ipairs(ids) do
-   local tile,cleanup=PetClient.createMaterialTile(id,state.Owned[id],order,materialList,toggleMaterial)
-   if tile then
-    tile.Size=UDim2.fromOffset(144,144)
-    tile:SetAttribute("OwnedCopyId",id)
-    materialTiles[id]=tile;materialCleanups[id]=cleanup
-   else materialUnavailable=true;selectedMaterials[id]=nil end
-  end
-  materialSignature=signature
- end
- emptyLabel.Text=materialUnavailable and "Purchased Pet UI unavailable." or (#ids==0 and "No owned normal Pets." or "")
- emptyLabel.Visible=materialUnavailable or #ids==0
- updateMaterialChecks(state,worn)
-end
-clearMaterials.Activated:Connect(function() selectedMaterials={};syncMaterials() end)
-local materialRefreshing=false
-local function showMaterials()
- syncMaterials()
- if materialRefreshing then return end
- materialRefreshing=true
- -- Read-only refresh through the existing Pet client; no new Remote or save call.
- task.spawn(function()
-  local ok,err=pcall(PetClient.refresh)
-  materialRefreshing=false
-  if shop.Parent and shop.Visible and petPage.Visible and petPage.Parent then syncMaterials() end
-  if not ok then warn("[MergeShop] Pet state refresh failed: "..tostring(err)) end
+mergeRemote.OnClientEvent:Connect(function(result)
+ pending=false;fresh=false;revision+=1
+ status=typeof(result)=="table" and result.Success and "Merge complete." or (typeof(result)=="table" and errors[result.Code] or "Merge failed. Please try again.")
+ if typeof(result)=="table" and result.Success then view:Clear() end
+ view:SetItemState(state,fresh,pending,status);task.spawn(refresh)
+end)
+for _,name in {"ItemPurchaseRequest","ItemRobuxPurchaseRequest","ItemEquipRequest"} do
+ RS.Remotes:WaitForChild(name).OnClientEvent:Connect(function()
+  fresh=false;revision+=1
+  if shop.Visible then view:SetItemState(state,fresh,pending,status);task.spawn(refresh) end
  end)
 end
-shop:GetPropertyChangedSignal("Visible"):Connect(function()
- if not shop.Visible then
-  selectedMaterials={};releaseMaterialTiles();releaseCandidates()
-  selectedLabel.Text="Selected: 0 (minimum 2)";selectedLabel:SetAttribute("SelectedCount",0)
-  previewLabel.Text="Select at least 2 normal Pets.";previewLabel:SetAttribute("TotalPoints",0);previewLabel:SetAttribute("Eligible",false)
- elseif petPage.Visible then showMaterials() end
-end)
-local petPoll=0
-local materialPollConnection=game:GetService("RunService").Heartbeat:Connect(function(dt)
- petPoll+=dt
- if petPoll<.5 then return end;petPoll=0
- if shop.Visible then
-  if petPage.Visible then syncMaterials() else pruneMaterials(PetClient.state()) end
- end
-end)
-shop.Destroying:Connect(function() materialPollConnection:Disconnect();releaseMaterialTiles();releaseCandidates();selectedMaterials={} end)
-local function selectShopTab(name)
- shop:SetAttribute("SelectedTab",name)
- page.Visible=name=="Item"
- petPage.Visible=name=="Pet"
- if name=="Pet" then showMaterials() else releaseMaterialTiles();releaseCandidates() end
-end
-for name,button in pairs(tabButtons) do button.Activated:Connect(function() selectShopTab(name) end) end
-selectShopTab("Item")
-local Responsive=require(RS.Modules.ResponsivePanels)
-local function fitShop() Responsive.Fit(shop,gui) end
-gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(fitShop);fitShop()
-local inside=false
-local function closeShop() shop.Visible=false end
-shop.Top.Close.Activated:Connect(closeShop)
 local function openShop()
- selectShopTab("Item");fitShop()
- for _,name in ipairs({"InventoryPanel","ShopPanel","RebirthPanel"}) do
-  local panel=gui:FindFirstChild(name);if panel then panel.Visible=false end
- end
- local skip=gui.Parent:FindFirstChild("StageSkipGui")
- if skip and skip:FindFirstChild("Panel") then skip.Panel.Visible=false end
- shop.Visible=true
+ for _,name in {"InventoryPanel","ShopPanel","RebirthPanel"} do local x=gui:FindFirstChild(name);if x then x.Visible=false end end
+ local skip=gui.Parent:FindFirstChild("StageSkipGui");if skip and skip:FindFirstChild("Panel") then skip.Panel.Visible=false end
+ view:Show();task.spawn(refresh)
 end
-local elapsed=0
-game:GetService("RunService").Heartbeat:Connect(function(dt)
- elapsed+=dt;if elapsed<.1 then return end;elapsed=0
- -- Fetch the current descendant Area every time: moving the Model moves its trigger.
+local inside=false
+local elapsed,petPoll,itemPoll=0,0,0
+local beat=RunService.Heartbeat:Connect(function(dt)
+ elapsed+=dt;petPoll+=dt;itemPoll+=dt
+ if shop.Visible and petPoll>=.5 then petPoll=0;view:SetPetState(PetClient.state()) end
+ if shop.Visible and not view:IsPet() and itemPoll>=2 and not pending then itemPoll=0;task.spawn(refresh) end
+ if elapsed<.1 then return end;elapsed=0
  local model=workspace:FindFirstChild("RestockShop")
  local area=model and model:FindFirstChild("Area")
- local character=player.Character
- local root=character and character:FindFirstChild("HumanoidRootPart")
+ local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
  local now=false
  if area and area:IsA("BasePart") and root and (player:GetAttribute("CurrentWorld") or 1)==1 then
   local point=area.CFrame:PointToObjectSpace(root.Position);local half=area.Size/2
   if area:IsA("Part") and area.Shape==Enum.PartType.Cylinder then
-   local radius=math.min(half.Y,half.Z)
-   now=math.abs(point.X)<=half.X and point.Y*point.Y+point.Z*point.Z<=radius*radius
-  else
-   now=math.abs(point.X)<=half.X and math.abs(point.Y)<=half.Y and math.abs(point.Z)<=half.Z
-  end
+   local radius=math.min(half.Y,half.Z);now=math.abs(point.X)<=half.X and point.Y*point.Y+point.Z*point.Z<=radius*radius
+  else now=math.abs(point.X)<=half.X and math.abs(point.Y)<=half.Y and math.abs(point.Z)<=half.Z end
  end
- if now~=inside then inside=now;if now then openShop() else closeShop() end end
+ if now~=inside then inside=now;if now then openShop() else view:Hide() end end
 end)
-for _,name in ipairs({"InventoryPanel","ShopPanel","RebirthPanel"}) do
- local panel=gui:FindFirstChild(name)
- if panel then panel:GetPropertyChangedSignal("Visible"):Connect(function() if panel.Visible then closeShop() end end) end
+for _,name in {"InventoryPanel","ShopPanel","RebirthPanel"} do
+ local x=gui:FindFirstChild(name)
+ if x then x:GetPropertyChangedSignal("Visible"):Connect(function() if x.Visible then view:Hide() end end) end
 end
-local template=script.Parent:WaitForChild("ItemCardTemplate")
-old.Visible=false
--- Keep the legacy layout nodes for ResponsivePanels; the new flow owns only its sibling.
-local root=Instance.new("Frame")
-root.Name="MergeFlow"
-root.BackgroundTransparency=1
-root.ClipsDescendants=true
-root.Parent=page
-local scale=Instance.new("UIScale",root)
-local elementOrder={Fire=1,Ice=2,Electric=3}
-local typeOrder={}
-for i,kind in ipairs(Master.Kinds) do typeOrder[kind]=i end
-local colors={Fire=Color3.fromRGB(242,103,114),Ice=Color3.fromRGB(77,190,240),Electric=Color3.fromRGB(255,194,62)}
-local step,selectedId=1,nil
-local recipes,byId,cards={},{},{}
-local required=0
-local loaded,fresh,pending,fetching=false,false,false,false
-local revision=0
-local status=""
-local render,refresh,layout
-local selecting=nil
-
-local function make(class,name,parent)
- local x=Instance.new(class)
- x.Name=name
- x.BorderSizePixel=0
- x.BackgroundTransparency=1
- x.ZIndex=210
- x.Parent=parent
- return x
-end
-local function decorate(x,source)
- for _,v in ipairs(source:GetChildren()) do
-  if v:IsA("UICorner") or v:IsA("UIStroke") or v:IsA("UIGradient") then v:Clone().Parent=x end
- end
- x.BackgroundColor3=source.BackgroundColor3
- x.BackgroundTransparency=source.BackgroundTransparency
-end
--- Merge-only palette: no changes to the Inventory shell or other tabs.
-local palette={
- Background=Color3.fromRGB(168,78,226), BackgroundBottom=Color3.fromRGB(131,52,199),
- Card=Color3.fromRGB(182,108,242), CardBottom=Color3.fromRGB(132,64,210),
- Gold=Color3.fromRGB(255,211,64), Orange=Color3.fromRGB(255,146,35),
- Back=Color3.fromRGB(105,148,255), BackBottom=Color3.fromRGB(75,92,219),
- Socket=Color3.fromRGB(184,109,244), SocketEdge=Color3.fromRGB(231,190,255),
- Disabled=Color3.fromRGB(115,105,139), DisabledBottom=Color3.fromRGB(83,76,105),
- Ink=Color3.fromRGB(46,20,72),
-}
-local function paint(x,top,bottom,edge,radius)
- x.BackgroundTransparency=0
- x.BackgroundColor3=Color3.new(1,1,1)
- local gradient=x:FindFirstChildOfClass("UIGradient") or Instance.new("UIGradient",x)
- gradient.Color=ColorSequence.new(top,bottom or top)
- gradient.Rotation=90
- if x:IsA("TextLabel") or x:IsA("TextButton") then
-  gradient.Enabled=false
-  x.BackgroundColor3=top
- end
- local stroke
- for _,child in ipairs(x:GetChildren()) do
-  if child:IsA("UIStroke") and child.ApplyStrokeMode==Enum.ApplyStrokeMode.Border then stroke=child;break end
- end
- if not stroke then stroke=Instance.new("UIStroke",x) end
- stroke.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
- stroke.Color=edge or palette.Ink
- stroke.Thickness=2
- stroke.Transparency=0
- local corner=x:FindFirstChildOfClass("UICorner") or Instance.new("UICorner",x)
- corner.CornerRadius=radius or UDim.new(0,14)
- require(RS.Modules.InventoryPresentation).ApplyPurchasedSurface(x)
-end
-paint(root,palette.Background,palette.BackgroundBottom,palette.SocketEdge)
-root.ZIndex=209
-local function stars(item)
- return item and string.rep("★",Master.RarityRank[item.Rarity] or 0) or ""
-end
-local function label(name,parent,text,size)
- local x=make("TextLabel",name,parent)
- x.Font=Enum.Font.FredokaOne
- x.TextColor3=Color3.new(1,1,1)
- x.TextStrokeColor3=palette.Ink
- x.TextStrokeTransparency=.15
- x.TextSize=size
- x.Text=text
- x.TextWrapped=true
- local outline=inventory.Tabs.Merge.Label:FindFirstChildOfClass("UIStroke")
- if outline then outline:Clone().Parent=x end
- return x
-end
-local function makeStarSockets(parent,item)
- local row=make("Frame","RarityStars",parent)
- local rank=math.clamp(Master.RarityRank[item.Rarity] or 0,0,5)
- local list=Instance.new("UIListLayout",row)
- list.FillDirection=Enum.FillDirection.Horizontal
- list.HorizontalAlignment=Enum.HorizontalAlignment.Center
- list.VerticalAlignment=Enum.VerticalAlignment.Center
- list.Padding=UDim.new(0,1)
- for i=1,5 do
-  local slot=make("Frame","Slot"..i,row)
-  slot.LayoutOrder=i
-  slot.Size=UDim2.new(.2,-1,1,0)
-  if i<=rank then
-   local glow=label("Glow",slot,"★",32)
-   for _,child in ipairs(glow:GetChildren()) do if child:IsA("UIStroke") then child:Destroy() end end
-   glow.Size=UDim2.new(1,6,1,6)
-   glow.Position=UDim2.fromOffset(-3,-3)
-   glow.TextScaled=true
-   glow.TextColor3=Color3.fromRGB(255,239,142)
-   glow.TextTransparency=.68
-   glow.TextStrokeTransparency=1
-   local halo=Instance.new("UIStroke",glow)
-   halo.Color=glow.TextColor3
-   halo.Thickness=3
-   halo.Transparency=.84
-  end
-  local star=label("Star",slot,"★",32)
-  for _,child in ipairs(star:GetChildren()) do if child:IsA("UIStroke") then child:Destroy() end end
-  star.Size=UDim2.fromScale(1,1)
-  star.TextScaled=true
-  star.TextWrapped=false
-  star.TextColor3=i<=rank and Color3.new(1,1,1) or Color3.fromRGB(218,188,247)
-  star.TextStrokeTransparency=1
-  local outline=Instance.new("UIStroke",star)
-  outline.Color=i<=rank and Color3.fromRGB(193,114,24) or Color3.fromRGB(140,93,183)
-  outline.Thickness=1.4
-  outline.Transparency=i<=rank and .05 or .25
-  if i<=rank then
-   local light=Instance.new("UIGradient",star)
-   light.Rotation=90
-   light.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,Color3.fromRGB(255,255,210)),ColorSequenceKeypoint.new(.45,palette.Gold),ColorSequenceKeypoint.new(1,Color3.fromRGB(255,177,42))})
-  end
- end
- return row
-end
-local function button(name,parent,text)
- local x=make("TextButton",name,parent)
- paint(x,palette.Gold,palette.Orange)
- x.Font=Enum.Font.FredokaOne
- x.TextColor3=Color3.new(1,1,1)
- x.TextStrokeTransparency=old.Footer.MergeButton.TextStrokeTransparency
- x.TextStrokeColor3=old.Footer.MergeButton.TextStrokeColor3
- x.TextSize=24
- x.Text=text
- local outline=inventory.Tabs.Merge.Label:FindFirstChildOfClass("UIStroke")
- if outline then outline:Clone().Parent=x end
- return x
-end
-local function rect(x,a,b,w,h)
- x.AnchorPoint=Vector2.zero
- x.Position=UDim2.fromOffset(a,b)
- x.Size=UDim2.fromOffset(math.max(1,w),math.max(1,h))
-end
-local back=button("Back",root,"BACK")
-paint(back,palette.Back,palette.BackBottom)
-local title=label("StepTitle",root,"SELECT 1 ITEM",24)
-local start=make("Frame","Start",root)
-local choose=button("ChooseItem",start,"SELECT ITEM")
-choose.TextSize=32
-local startCount=label("Count",start,"0/3 ITEMS",24)
-paint(startCount,palette.Card,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
-local startSocketArea=make("Frame","Sockets",start)
-local startSockets={}
-for i=1,3 do
- local socket=make("Frame","Socket"..i,startSocketArea)
- paint(socket,palette.Socket,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
- local corner=socket:FindFirstChildOfClass("UICorner")
- if corner then corner.CornerRadius=UDim.new(1,0) end
- local missing=label("Missing",socket,"?",30)
- missing.Size=UDim2.fromScale(1,1)
- table.insert(startSockets,socket)
-end
-local intro=label("Instruction",start,"Merge 3 identical items to upgrade",20)
-local selection=make("ScrollingFrame","Selection",root)
-selection.ScrollBarThickness=6
-selection.ScrollingDirection=Enum.ScrollingDirection.Y
-selection.AutomaticCanvasSize=Enum.AutomaticSize.Y
-selection.CanvasSize=UDim2.new()
-local grid=Instance.new("UIGridLayout",selection)
-grid.SortOrder=Enum.SortOrder.LayoutOrder
-grid.CellPadding=UDim2.fromOffset(20,20)
-grid.HorizontalAlignment=Enum.HorizontalAlignment.Center
-local listPadding=Instance.new("UIPadding",selection)
-listPadding.PaddingTop=UDim.new(0,10)
-listPadding.PaddingBottom=UDim.new(0,10)
-listPadding.PaddingLeft=UDim.new(0,12)
-listPadding.PaddingRight=UDim.new(0,12)
-local empty=label("Empty",root,"",22)
-local execute=make("Frame","Execute",root)
-local source=make("Frame","SelectedItem",execute)
-paint(source,palette.Gold,palette.Orange,palette.Gold)
-local sourceImage=make("ImageLabel","ItemImage",source)
-sourceImage.ScaleType=Enum.ScaleType.Fit
-local sourceStars=label("RarityStars",source,"",26)
-sourceStars.TextColor3=palette.Gold
-sourceStars.TextScaled=true
-sourceStars.TextWrapped=false
-local socketArea=make("Frame","Sockets",execute)
-local sockets={}
-local upgrade=make("Frame","Upgrade",execute)
-local fromStars=label("FromStars",upgrade,"",26)
-local arrow=label("Arrow",upgrade,"→",32)
-local toStars=label("ToStars",upgrade,"",26)
-for _,x in ipairs({fromStars,toStars}) do
- paint(x,palette.Card,palette.CardBottom,palette.Gold)
- x.TextColor3=palette.Gold
- x.TextScaled=false
- x.TextWrapped=false
- local padding=Instance.new("UIPadding",x)
- padding.PaddingLeft=UDim.new(0,3)
- padding.PaddingRight=UDim.new(0,3)
-end
-local footer=make("Frame","Footer",root)
-local count=label("Count",footer,"",26)
-paint(count,palette.Card,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
-local merge=button("Merge",footer,"Merge")
-merge.AutoLocalize=false
-local hint=label("Status",root,"",18)
-
-local errors={
- NotEnoughItems="Not enough identical items",DataSaving="Saving. Please wait.",
- DataNotLoaded="Loading…",CountOverflow="Result item limit reached",
- InventorySavePending="Waiting for save…",RateLimited="Please wait…",
- NotMergeable="This item cannot be merged",InvalidItemId="Select another item",
-}
-local function visible() return shop.Visible and page.Visible end
-local function less(a,b)
- local aa,bb=Master.Get(a.ItemId),Master.Get(b.ItemId)
- local ae,be=elementOrder[aa.Element] or 99,elementOrder[bb.Element] or 99
- if ae~=be then return ae<be end
- local ar,br=Master.RarityRank[aa.Rarity] or 99,Master.RarityRank[bb.Rarity] or 99
- if ar~=br then return ar<br end
- local at,bt=typeOrder[aa.ItemType] or 99,typeOrder[bb.ItemType] or 99
- if at~=bt then return at<bt end
- return a.ItemId<b.ItemId
-end
-local function cardVisual(card,selected)
- local recipe=byId[card.Name]
- -- Presentation of the same authoritative flag used by the MERGE button.
- local ready=fresh and recipe~=nil and recipe.CanMerge==true and not pending
- local surface=card.Surface
- if not selected then surface.SelectionScale.Scale=1 end
- local element=colors[Master.Get(card.Name).Element] or palette.SocketEdge
- local edge=selected and palette.Gold or (ready and element:Lerp(Color3.new(1,1,1),.24) or element)
- surface.Edge.Color=edge
- surface.Edge.Thickness=selected and 4 or (ready and 3 or 2)
- surface.Halo.UIStroke.Color=edge
- surface.Halo.UIStroke.Transparency=selected and .55 or (ready and .7 or .84)
- surface.ItemGlow.BackgroundTransparency=ready and .9 or .95
- card:SetAttribute("MergeReady",ready)
- card:SetAttribute("Selected",selected)
-end
-local function rebuildCards()
- for _,card in ipairs(cards) do card:Destroy() end
- cards={}
- for _,recipe in ipairs(recipes) do
-  if recipe.Count>0 then
-   local item=Master.Get(recipe.ItemId)
-   local card=make("TextButton",recipe.ItemId,selection)
-   card.Text=""
-   card.AutoButtonColor=false
-   card.LayoutOrder=#cards+1
-   card:SetAttribute("ItemId",recipe.ItemId)
-   local surface=make("Frame","Surface",card)
-   surface.AnchorPoint=Vector2.new(.5,.5)
-   surface.Position=UDim2.fromScale(.5,.5)
-   surface.Size=UDim2.fromScale(1,1)
-   decorate(surface,template)
-   -- Keep every point of the card at least as bright as the previous flat fill.
-   paint(surface,palette.Card:Lerp(Color3.new(1,1,1),.1),palette.Card,colors[item.Element])
-   for _,child in ipairs(surface:GetChildren()) do
-    if child:IsA("UIStroke") and child.ApplyStrokeMode==Enum.ApplyStrokeMode.Border then child.Name="Edge" end
-   end
-   local visualScale=Instance.new("UIScale",surface)
-   visualScale.Name="SelectionScale"
-   local halo=make("Frame","Halo",surface)
-   halo.Size=UDim2.fromScale(1,1)
-   surface:FindFirstChildOfClass("UICorner"):Clone().Parent=halo
-   local softEdge=Instance.new("UIStroke",halo)
-   softEdge.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
-   softEdge.Thickness=7
-   local itemGlow=make("Frame","ItemGlow",surface)
-   itemGlow.BackgroundColor3=colors[item.Element]
-   local round=Instance.new("UICorner",itemGlow)
-   round.CornerRadius=UDim.new(1,0)
-   local fade=Instance.new("UIGradient",itemGlow)
-   fade.Rotation=90
-   fade.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.5,.15),NumberSequenceKeypoint.new(1,1)})
-   local picture=make("ImageLabel","ItemImage",surface)
-   picture.Image=item.Image
-   picture.ScaleType=Enum.ScaleType.Fit
-   makeStarSockets(surface,item)
-   local owned=label("Owned",surface,"×"..tostring(recipe.Count),30)
-   owned.TextWrapped=false
-   card.Activated:Connect(function()
-    if selecting or step~=2 then return end
-    selecting=card
-    cardVisual(card,true)
-    TweenService:Create(visualScale,TweenInfo.new(.1,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Scale=1.04}):Play()
-    task.delay(.18,function()
-     if selecting~=card then return end
-     selecting=nil
-     if card.Parent then visualScale.Scale=1;cardVisual(card,false) end
-     if not card.Parent or step~=2 or not visible() then return end
-     selectedId=recipe.ItemId
-     step=3
-     status=""
-     render()
-     task.spawn(refresh)
-    end)
-   end)
-   table.insert(cards,card)
-  end
- end
-end
-local function rebuildSockets()
- for _,x in ipairs(sockets) do x:Destroy() end
- sockets={}
- for i=1,required do
-  local socket=make("Frame","Socket"..i,socketArea)
-  paint(socket,palette.Socket,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
-  local c=socket:FindFirstChildOfClass("UICorner")
-  if c then c.CornerRadius=UDim.new(1,0) end
-  local pic=make("ImageLabel","Item",socket)
-  pic.Size=UDim2.fromScale(.8,.8)
-  pic.Position=UDim2.fromScale(.1,.1)
-  pic.ScaleType=Enum.ScaleType.Fit
-  local missing=label("Missing",socket,"?",32)
-  missing.Size=UDim2.fromScale(1,1)
-  table.insert(sockets,socket)
- end
-end
-
-layout=function()
- -- Cancel only this flow's inherited fit scale: text/tap targets use screen pixels.
- local s=HUD.GetScale(page)
- scale.Scale=1/math.max(s,.01)
- local w,h=page.AbsoluteSize.X,page.AbsoluteSize.Y
- local shortSelection=step==2 and h<260
- root.Position=UDim2.new()
- if shortSelection then
-  -- A short landscape selection sheet uses the safe GUI width below the tabs.
-  -- Only this step expands; the authored Inventory and other steps stay intact.
-  local guiSize=body.AbsoluteSize
-  local top=tabButtons.Item.AbsolutePosition.Y+tabButtons.Item.AbsoluteSize.Y+4
-  w=math.max(w,guiSize.X-32)
-  h=math.max(h,body.AbsolutePosition.Y+guiSize.Y-top-6)
-  root.Position=UDim2.fromOffset((body.AbsolutePosition.X+(guiSize.X-w)/2-page.AbsolutePosition.X)/s,(top-page.AbsolutePosition.Y)/s)
- end
- root.Size=UDim2.fromOffset(w,h)
- local compact=h<340
- rect(back,10,8,100,40)
- rect(title,120,8,w-132,40)
- rect(start,0,0,w,h)
- local factor=math.min(1,h/300)
- local bw=math.min(w-32,480)
- local startTop=math.max(10,(h-274*factor)/2)
- rect(choose,(w-bw)/2,startTop,bw,64*factor)
- choose.TextSize=math.max(22,32*factor)
- rect(startCount,(w-210)/2,startTop+78*factor,210,34*factor)
- startCount.TextSize=math.max(16,24*factor)
- rect(startSocketArea,8,startTop+126*factor,w-16,80*factor)
- local startSide=72*factor
- local startTotal=startSide*3+24
- for i,socket in ipairs(startSockets) do
-  rect(socket,(w-16-startTotal)/2+(i-1)*(startSide+12),0,startSide,startSide)
- end
- rect(intro,12,startTop+222*factor,w-24,40*factor)
- intro.TextSize=math.max(16,20*factor)
- rect(selection,10,58,w-20,h-68)
- if shortSelection then
-  rect(back,10,2,100,40)
-  rect(title,120,2,w-132,40)
-  rect(selection,10,48,w-20,h-54)
- end
- rect(empty,12,60,w-24,h-72)
- local cols=math.clamp(math.floor((w-24)/210),1,4)
- cols=math.min(cols,math.max(1,#cards))
- local cw=math.min(230,(w-44-(cols-1)*20)/cols)
- grid.FillDirectionMaxCells=cols
- local cardHeight=shortSelection and math.min(164,h-74) or (compact and 204 or 224)
- grid.CellSize=UDim2.fromOffset(cw,cardHeight)
- for _,card in ipairs(cards) do
-  local surface=card.Surface
-  rect(surface.RarityStars,12,shortSelection and 2 or 6,cw-24,shortSelection and 34 or 40)
-  local imageSize=math.min(cw-20,cardHeight-(shortSelection and 48 or 78))
-  rect(surface.ItemImage,(cw-imageSize)/2,shortSelection and 26 or 44,imageSize,imageSize)
-  rect(surface.ItemGlow,6,38,cw-12,cardHeight-70)
-  rect(surface.Owned,8,cardHeight-(shortSelection and 28 or 36),cw-16,shortSelection and 28 or 34)
-  surface.Owned.TextSize=shortSelection and 28 or 30
- end
- rect(execute,0,0,w,h)
- local side,areaX,areaW,socketY,socketH
- if compact then
-  -- Short landscape view: preserve readable controls beside the hero image.
-  local hero=math.min(140,h-64,w*.36)
-  local leftW=w*.42
-  rect(source,(leftW-hero)/2,54,hero,hero)
-  rect(upgrade,122,10,w-134,34)
-  areaX,areaW=leftW+4,w-leftW-16
-  socketY,socketH=56,math.max(32,h-174)
-  rect(footer,areaX,h-106,areaW,98)
-  rect(count,(areaW-math.min(190,areaW))/2,0,math.min(190,areaW),30)
-  rect(merge,0,56,areaW,42)
-  rect(hint,areaX,h-74,areaW,18)
-  hint.TextSize=14
-  merge.TextSize=26
- else
-  local hero=math.min(154,h*.28)
-  rect(source,(w-hero)/2,10,hero,hero)
-  local upgradeW=math.min(350,w-40)
-  rect(upgrade,(w-upgradeW)/2,20+hero,upgradeW,36)
-  areaX,areaW=12,w-24
-  socketY=66+hero
-  socketH=math.max(40,h-socketY-142)
-  local footerW=math.min(480,w-32)
-  rect(footer,(w-footerW)/2,h-130,footerW,120)
-  rect(count,(footerW-220)/2,0,220,32)
-  rect(merge,0,64,footerW,56)
-  rect(hint,12,h-94,w-24,24)
-  hint.TextSize=17
-  merge.TextSize=32
- end
- local heroW,heroH=source.Size.X.Offset,source.Size.Y.Offset
- rect(sourceImage,6,4,heroW-12,heroH*.73)
- rect(sourceStars,8,heroH*.74,heroW-16,heroH*.23)
- local uw,uh=upgrade.Size.X.Offset,upgrade.Size.Y.Offset
- rect(fromStars,0,0,uw*.43,uh)
- rect(arrow,uw*.43,0,uw*.14,uh)
- rect(toStars,uw*.57,0,uw*.43,uh)
- for _,x in ipairs({fromStars,toStars}) do
-  x.TextSize=math.floor(math.min(26,uh*.68,(uw*.43-10)/math.max(1,utf8.len(x.Text))))
- end
- rect(socketArea,areaX,socketY,areaW,socketH)
- side=math.min(88,socketH-4,(areaW-math.max(0,required-1)*14)/math.max(1,required))
- local total=side*required+math.max(0,required-1)*14
- for i,socket in ipairs(sockets) do
-  rect(socket,(areaW-total)/2+(i-1)*(side+14),(socketH-side)/2,side,side)
-  socket.Missing.TextSize=math.max(26,side*.6)
- end
-end
-
-render=function()
- -- Every render starts from a fully hidden state, then enables only the active step.
- -- This prevents stale UI from a previous step or the legacy panel from overlapping.
- old.Visible=false
- for _,object in ipairs({start,selection,empty,execute,footer,hint,back,title}) do object.Visible=false end
- if step==1 then
-  start.Visible=true
- elseif step==2 then
-  back.Visible=true
-  title.Visible=true
-  selection.Visible=loaded and #cards>0
-  empty.Visible=not loaded or #cards==0
- elseif step==3 then
-  back.Visible=true
-  execute.Visible=true
-  footer.Visible=true
-  hint.Visible=true
- end
- empty.Text=loaded and "NO ITEMS AVAILABLE" or "Loading…"
- if step==2 and not fresh and status~="" then empty.Text=status end
- root:SetAttribute("Step",step)
- for _,card in ipairs(cards) do cardVisual(card,selecting==card) end
- local recipe=byId[selectedId]
- local item=selectedId and Master.Get(selectedId)
- local result=recipe and Master.Get(recipe.ResultItemId)
- local n=recipe and math.min(required,recipe.Count) or 0
- count.Text=("%d/%d ITEMS"):format(n,required)
- -- Hero is the authoritative completed Item returned by ItemMergeState.
- -- Material sockets below continue to show the selected source Item.
- sourceImage.Image=result and result.Image or ""
- sourceStars.Text=stars(result)
- for i,socket in ipairs(sockets) do
-  socket.Item.Image=item and item.Image or ""
-  socket.Item.Visible=i<=n
-  socket.Missing.Visible=i>n
-  paint(socket,i<=n and palette.Card or palette.Socket,palette.CardBottom,i<=n and palette.Gold or palette.SocketEdge,UDim.new(1,0))
- end
- fromStars.Text=stars(item)
- toStars.Text=stars(result)
- local enabled=fresh and recipe~=nil and recipe.CanMerge==true and not pending
- merge.Active=enabled
- merge.Interactable=enabled
- merge.AutoButtonColor=enabled
- paint(merge,enabled and palette.Gold or palette.Disabled,enabled and palette.Orange or palette.DisabledBottom)
- merge.TextColor3=enabled and Color3.new(1,1,1) or Color3.fromRGB(219,209,234)
- merge.Text="Merge"
- if pending then
-  hint.Text="Merging…"
- elseif status~="" then
-  hint.Text=status
- elseif recipe and n<required then
-  hint.Text=errors.NotEnoughItems
- else
-  hint.Text=""
- end
- hint.Visible=step==3 and hint.Text~=""
- layout()
-end
-
-refresh=function()
- if fetching then return end
- fetching=true
- local requestRevision=revision
- local ok,state=pcall(function() return stateRemote:InvokeServer() end)
- fetching=false
- if requestRevision~=revision then task.defer(refresh);return end
- fresh=ok and typeof(state)=="table" and state.Loaded==true
- if fresh then
-  loaded=true
-  recipes=state.Recipes
-  byId={}
-  for _,recipe in ipairs(recipes) do byId[recipe.ItemId]=recipe end
-  table.sort(recipes,less)
-  if required~=state.RequiredCount then required=state.RequiredCount;rebuildSockets() end
-  local signature={}
-  for _,r in ipairs(recipes) do table.insert(signature,r.ItemId..":"..r.Count) end
-  signature=table.concat(signature,"|")
-  if selection:GetAttribute("InventorySignature")~=signature then
-   selection:SetAttribute("InventorySignature",signature)
-   rebuildCards()
-  end
-  if status=="Checking connection…" then status="" end
- else
-  status="Checking connection…"
- end
- render()
-end
-choose.Activated:Connect(function() step=2;status="";render();task.spawn(refresh) end)
-back.Activated:Connect(function() selecting=nil;step=math.max(1,step-1);status="";render() end)
-merge.Activated:Connect(function()
- if not merge.Interactable or pending then return end
- pending=true
- fresh=false
- revision+=1
- status=""
- render()
- -- Only this explicit action can consume items. Server revalidates everything.
- mergeRemote:FireServer(selectedId)
-end)
-mergeRemote.OnClientEvent:Connect(function(result)
- pending=false
- fresh=false
- revision+=1
- if typeof(result)=="table" and result.Success then
-  status="Merge complete."
- else
-  status=typeof(result)=="table" and errors[result.Code] or nil
-  status=status or "Merge failed. Please try again."
- end
- render()
- task.spawn(refresh)
-end)
-local wasVisible=false
-local function opened()
- local now=visible()
- if now and not wasVisible then
-  selecting=nil
-  step=1
-  selectedId=nil
-  status=""
-  fresh=false
-  revision+=1
-  render()
-  task.spawn(refresh)
- end
- wasVisible=now
-end
-page:GetPropertyChangedSignal("Visible"):Connect(opened)
-shop:GetPropertyChangedSignal("Visible"):Connect(opened)
-page:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
-for _,name in ipairs({"ItemPurchaseRequest","ItemRobuxPurchaseRequest","ItemEquipRequest"}) do
- RS.Remotes:WaitForChild(name).OnClientEvent:Connect(function()
-  fresh=false
-  revision+=1
-  if visible() then render();task.spawn(refresh) end
- end)
-end
--- Also covers drops/rewards and temporary save locks while this tab is open.
-task.spawn(function()
- while root.Parent do
-  task.wait(2)
-  if visible() and not pending then refresh() end
- end
-end)
-render()
-opened()
+script.Destroying:Connect(function() beat:Disconnect();view:Destroy();gui:SetAttribute("MergeShopMounted",nil) end)

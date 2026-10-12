@@ -475,3 +475,12 @@ Normal Egg candidate sheets reuse seven actual purchased OpenEgg frames with13%-
 ## 2026-10-12 - Purchased Pet material cards in Global Merge GUI
 
 Keep original purchased card/image/font/layout settings. Material tiles normalize only Z layers above their destination ancestor: Stroke/Main/Icon/check/title/input, with the rank-point label above the title layer. This adapts the Sibling donor to StrengthGui Global without changing original Inventory behavior. Local Source/mock verification only; actual Pet/Egg rendering and image authorization are unverified.
+
+
+## 2026-10-12 - Merge reference-layout replacement (supersedes three-step/socket and point-label presentation)
+
+Use measured1372x823 Item reference geometry for both tabs: purchased yellow header/red basket/pink close, dark translucent body, left Item/Pet tabs/title/three columns, right result above free drop region, footer Selected/Clear/Merge/Creates. Narrow portrait stacks the list/result/drop while retaining three columns and accessible actions. Actual purchased parts/images only. English/AutoLocalize=false; no rank/point text.
+
+Click/tap and drag share the selection entry path. Mouse6px drag; touch240ms hold, earlier motion is scroll; valid drop adds once, outside drop cancels,400ms post-drop activation suppression. No dropped icons/sockets in the region. Tab/close clears and releases display resources. Pet inputs are normal owned copies, excluding Limited/equipped; Merge remains explicitly disabled. Item uses existing count-based3-identical recipe, authoritative result and sole pending-guarded submit.
+
+Upgrade-only filtering has no agreed mixed-origin baseline. Until decided, show actual positive outcomes as Possible Eggs (no chance redistribution). Rendered states/comparison links and remaining physical-input/Cloud checks are in the latest DEV_STATUS; do not claim pixel-perfect art identity or live gameplay verification.

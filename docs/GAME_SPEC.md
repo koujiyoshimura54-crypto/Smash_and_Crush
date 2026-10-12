@@ -461,3 +461,10 @@ Normal Pet Merge is selection/preview only and remains execution-disabled. Only 
 ## 2026-10-12 - Approved normal seven-Pet pools
 
 All four normal Egg pools are approved/enabled locally with seven distinct purchased Pets; Slime/Shroom/Ninja/Chimpanzini Bananini occupy Basic/Rare/Legendary/Mythic slot7. Existing owned-copy IDs and maximum1 equipment/Hatch/follow paths retained. This supersedes pending-seven status; Cloud reflection and actual runtime verification are still pending. Pet Merge remains execution-disabled.
+
+
+## 2026-10-12 - Merge Shop presentation/input replacement
+
+This supersedes the earlier three-step/socket UI description only. Item merging still consumes3 same ItemId and grants the server ResultItemId through the existing Service/transaction. UI exposes quantity-derived entries, up to3 spendable copies plus excess count badge; no persistent individual Item IDs. One fresh-state/pending-guarded request; no new recipe/save behavior.
+
+Pet merging remains selection/preview-only, disabled, with no consume/grant/save. Normal owned IDs may be selected by click/tap or valid drop; Limited/equipped copies are excluded at this UI phase. Shared points/odds remain active internally but are not printed. Mixed-origin upgrade-only display baseline is pending; the view does not invent/filter/redistribute outcomes.

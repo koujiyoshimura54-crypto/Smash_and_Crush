@@ -819,3 +819,11 @@
 - Purchased Inventory donor is Sibling-rendered, while Merge uses Global. Opaque MainZ4 hid IconZ2. Normalize only material-tile layers above the destination ancestor before parenting; preserve actual purchased images/artwork and normal Inventory behavior.
 - PetClient-only Source update,137 focused presentation mocks/compile/reDecode/reference/SharedString/UniqueId0 pass. All other Sources/properties, normal7 pools, ownership, Merge odds/disabled execution and purchase paths unchanged.
 - No connected Studio: Pet/Inventory/Egg actual appearance, image loading/authorization and screenshots unavailable. Code fixed locally, visual/runtime completion UNVERIFIED. No Play/store/save/Studio/lock operations. See DEV_STATUS for IDs/evidence/verification limits.
+
+
+## 2026-10-12 - Reference-based Merge Shop Item/Pet presentation
+
+- Replace Item three-step/sockets with measured purchased-shell three-column inventory, result, free drop area and footer; keep ItemId counts, authoritative recipes and one guarded ItemMergeRequest.
+- Add per-copy Pet drag/click selection, valid-drop commit/outside cancel/click suppression/touch-scroll separation, selected borders/checks and cleanup; hide rank/points while preserving calculations and paid/equipped exclusions. Pet Merge remains disabled.
+- Reuse purchased UI/basket/Stud/close/card/check/buttons, real Item/Pet icons and all four normal Egg Viewports. English labels; narrow portrait layout. Upgrade-only baseline unresolved: genuine outcomes shown as Possible Eggs without probability redistribution.
+- Actual Edit factory captures and63 real-Instance assertions plus66 offline tile checks; syntax/reDecode/references/SharedStrings/UniqueId0 pass. Hardware input and Cloud runtime not verified. Preview cleaned, owned Studio22484 ended, target lock removed. Only1 Source changed; all placement/pools/payments/data/gameplay preserved. See DEV_STATUS for comparisons and differences.
