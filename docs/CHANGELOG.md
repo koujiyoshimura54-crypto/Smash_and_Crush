@@ -812,3 +812,10 @@
 - Enable Basic/Rare/Legendary/Mythic slot7: Slime/Shroom/Ninja/Chimpanzini Bananini using verified purchased Model/named Decal. Shared25/25/25/15/6.5/3/.5% and E/E/E/D/C/B/A points now agree for draw/validator/UI/Merge. Original six order retained; malformed approved pools fail closed.
 - Reuse seventh purchased card, fit seven13% cards with six1.5% gaps, stable reopen. Existing generic Hatch/Inventory/equip/follow needs no edit; preserve individual ownership/max1, previous preview/icon code, prices/Limited receipts and manual placement. No Pet Merge execution or new gameplay/data.
 - Two Sources compile;9087 helper/200 stamp/100 Merge mocks pass. ReDecode/reference/SharedString/dense INST/UniqueId0 pass; exactly2 Source-only changes. Initial Cloud Edit read confirmed actual added models/icons, then MCP disconnected before preview; actual render/Hatch/follow and Cloud reflection unverified. No prohibited Play/store/save/backup/Studio/session/lock actions. Full28 correspondence in catalog.
+
+
+## 2026-10-12 - Merge Pet image layer correction
+
+- Purchased Inventory donor is Sibling-rendered, while Merge uses Global. Opaque MainZ4 hid IconZ2. Normalize only material-tile layers above the destination ancestor before parenting; preserve actual purchased images/artwork and normal Inventory behavior.
+- PetClient-only Source update,137 focused presentation mocks/compile/reDecode/reference/SharedString/UniqueId0 pass. All other Sources/properties, normal7 pools, ownership, Merge odds/disabled execution and purchase paths unchanged.
+- No connected Studio: Pet/Inventory/Egg actual appearance, image loading/authorization and screenshots unavailable. Code fixed locally, visual/runtime completion UNVERIFIED. No Play/store/save/Studio/lock operations. See DEV_STATUS for IDs/evidence/verification limits.

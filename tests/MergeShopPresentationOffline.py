@@ -61,6 +61,7 @@ end
 function methods:Clone()
  clones+=1;if self.Name=="ShopPanel" then shellClones+=1 end;local kids={}for _,child in self.children do table.insert(kids,child:Clone())end
  local n=node(self.Name,self.ClassName,kids);n.Visible=self.Visible;n.Text=self.Text;n.Image=self.Image
+ n.ZIndex=self.ZIndex;n.ImageTransparency=self.ImageTransparency;n.Size=self.Size;n.ClipsDescendants=self.ClipsDescendants
  for k,v in self.attrs do n.attrs[k]=v end return n
 end
 local own=node("Owned","TextButton",{node("PriceTag","TextLabel"),node("StudPattern","ImageLabel")})
@@ -133,10 +134,14 @@ function Janitor.new()
  return j
 end
 local janitor=Janitor.new()
-local MAIN_NAME,ICON_NAME,CHECK_NAME,TITLE_NAME,BUTTON_NAME="Main","Icon","Checkmark","Title","Button"
+local MAIN_NAME,ICON_NAME,CHECK_NAME,TITLE_NAME,BUTTON_NAME,STROKE_NAME="Main","Icon","Checkmark","Title","Button","Stroke"
 local ITEM_TEMPLATE_PATH,ICONS_PATH={},{}
 local shown=true
-local itemTemplate=node("PetInventory","Frame",{node("Main","Frame",{node("Icon","ImageLabel"),node("Checkmark","ImageLabel")}),node("Title","TextLabel"),node("Button","TextButton")})
+local itemTemplate=node("PetInventory","Frame",{node("Stroke","Frame"),node("Main","Frame",{node("Icon","ImageLabel"),node("Checkmark","ImageLabel")}),node("Title","TextLabel"),node("Button","TextButton")})
+itemTemplate.ZIndex=4;itemTemplate.Stroke.ZIndex=2;itemTemplate.Main.ZIndex=4
+itemTemplate.Main.Icon.ZIndex=2;itemTemplate.Main.Icon.Visible=true;itemTemplate.Main.Icon.ImageTransparency=0
+itemTemplate.Main.Icon.Size=UDim2.new(1,0,1,0);itemTemplate.Main.Icon.ClipsDescendants=false
+itemTemplate.Main.Checkmark.ZIndex=4;itemTemplate.Title.ZIndex=6;itemTemplate.Button.ZIndex=198
 itemTemplate.Button.MouseEnter=event();itemTemplate.Button.MouseMoved=event();itemTemplate.Button.MouseLeave=event()
 -- Fresh cloned buttons carry the same signal interface.
 local cloneMethod=methods.Clone
@@ -145,13 +150,16 @@ function methods:Clone()
  if n:IsA("GuiButton")then n.MouseEnter=event();n.MouseMoved=event();n.MouseLeave=event()end
  return n
 end
-local decal=node("Grey Cat","Decal");decal.Texture="purchased-icon"
+local decal=node("Grey Cat","Decal");decal.Texture="rbxassetid://85629003230143"
 local icons=node("Pets","Folder",{decal})
+for name,id in pairs({Dog="105828778488847",Bat="86063284560749",Bear="117916941085535"})do
+ local icon=node(name,"Decal");icon.Texture="rbxassetid://"..id;icon.Parent=icons
+end
 for _,name in ipairs({"Cow","Elephant","Turtle"})do
  local icon=node(name,"Decal");icon.Texture="purchased-icon";icon.Parent=icons
 end
 local boundViews,cleanedViews=0,0
-local LimitedViewport={supports=function(name)return name=="Dog"end,bind=function()boundViews+=1;return function()cleanedViews+=1 end end}
+local LimitedViewport={supports=function(name)return name=="Pet_081"end,bind=function()boundViews+=1;return function()cleanedViews+=1 end end}
 local setPair=function(root,name,text)root[name].Text=text end
 local tint=function(tile,name)tile:SetAttribute("OriginalTint",name)end
 local findPath=function()return nil end
@@ -212,6 +220,13 @@ eq(result.list.AutomaticCanvasSize,Enum.AutomaticSize.Y,"scrollable list")
 local tiles=result.getTiles()
 eq(tiles.id1.Name,"id1");eq(tiles.id2.Name,"id2","same species distinct copy")
 eq(tiles.id1.Title.Text,"Dog")
+eq(tiles.id1.Main.Icon.Image,"rbxassetid://105828778488847")
+eq(tiles.id2.Main.Icon.Image,tiles.id1.Main.Icon.Image,"duplicate copies share correct purchased image")
+eq(tiles.id1.Main.Icon.Visible,true);eq(tiles.id1.Main.Icon.ImageTransparency,0)
+eq(tiles.id1.Main.Icon.ZIndex,tiles.id1.Main.ZIndex+1,"Global icon is above opaque card Main")
+eq(tiles.id1.Main.Checkmark.ZIndex,tiles.id1.Main.Icon.ZIndex+1)
+eq(tiles.id1.Button.ZIndex>tiles.id1.Main.Icon.ZIndex,true)
+eq(itemTemplate.Main.Icon.ZIndex,2,"donor unchanged")
 eq(tiles.paid,nil,"Robux Limited species excluded, inventory unchanged")
 eq(materialState.Owned.paid,"Pet_081")
 eq(tiles.id1:GetAttribute("MergeRank"),"E");eq(tiles.id1:GetAttribute("MergePoints"),10)
@@ -260,6 +275,7 @@ eq(next(result.getTiles()),nil,"hidden cards cleaned")
 eq(next(result.getCandidates()),nil,"hidden Egg Viewports cleaned")
 materialState.Owned.id6=nil;beat:fire(.5)
 result.tabs.Pet.Activated:fire()
+eq(result.getTiles().id1.Main.Icon.Image,"rbxassetid://105828778488847","image survives rebuild after tab switch")
 eq(result.count:GetAttribute("SelectedCount"),4,"selection survives tabs, obsolete copies do not")
 result.shop.Visible=false;result.shop:GetPropertyChangedSignal("Visible"):fire()
 eq(result.count:GetAttribute("SelectedCount"),0,"close clears selection")
@@ -302,7 +318,22 @@ janitor:Destroy()
 eq(materialTile.destroyed,nil,"Inventory janitor does not own material cards")
 eq(equipRequests,0)
 local inventoryTile=buildTile("inventory-id","Grey Cat",1)
+eq(inventoryTile.Main.Icon.Image,"rbxassetid://85629003230143")
+eq(inventoryTile.Main.Icon.ZIndex,2,"Inventory retains original Sibling layering")
+eq(inventoryTile.Main.ZIndex,4)
 inventoryTile.Button.Activated:fire();eq(equipRequests,1,"legacy Inventory equip callback retained")
+local raised=node("RaisedList","ScrollingFrame");raised.ZIndex=120;raised.Parent=gui
+for _,name in ipairs({"Bat","Bear","Dog","Grey Cat"})do
+ local tile,cleanup=PetClient.createMaterialTile("layer-"..name,name,1,raised,function()end)
+ eq(tile.Main.Icon.Image,icons[name].Texture)
+ eq(tile.Main.ZIndex,122);eq(tile.Main.Icon.ZIndex,123)
+ PetClient.setMaterialSelection(tile,name,true,false)
+ eq(tile.Main.Icon.Image,icons[name].Texture,"selection never clears image")
+ eq(tile.Main.Icon.Visible,true)
+ cleanup();eq(tile.destroyed,true)
+end
+local limitedTile=buildTile("limited-inventory","Pet_081",1)
+janitor:Destroy();eq(cleanedViews,boundViews,"existing bound-Viewport cleanup preserved")
 result.shop:Destroy()
 eq(cleanedViews,boundViews,"destroy releases remaining Viewports")
 eq(shellClones,1)

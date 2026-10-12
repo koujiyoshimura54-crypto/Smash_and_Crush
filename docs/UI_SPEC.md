@@ -470,3 +470,8 @@ Merge Pet cards reuse purchased PetInventory titles/checks/images/Viewports with
 ## 2026-10-12 - Approved normal seven-Pet pools
 
 Normal Egg candidate sheets reuse seven actual purchased OpenEgg frames with13%-scale width and six1.5% gaps, no wrap. Correct named Decals and %g%% numeric probabilities come from the shared normal pool, preserving1/3/8 actions. Reopen/restamp mock verified without duplicate seventh. Actual Edit rendering/image access/device fit remain unverified because MCP disconnected before preview. Existing Merge completed-Egg MeshPart Viewports and rank labels retained.
+
+
+## 2026-10-12 - Purchased Pet material cards in Global Merge GUI
+
+Keep original purchased card/image/font/layout settings. Material tiles normalize only Z layers above their destination ancestor: Stroke/Main/Icon/check/title/input, with the rank-point label above the title layer. This adapts the Sibling donor to StrengthGui Global without changing original Inventory behavior. Local Source/mock verification only; actual Pet/Egg rendering and image authorization are unverified.

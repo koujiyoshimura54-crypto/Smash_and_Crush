@@ -330,11 +330,40 @@ end
 
 
 -- Material selection shares purchased tiles/icons/Viewports, but not Inventory's cleanup/equip callbacks.
+local function layerMaterialTile(tile: GuiObject, parent: Instance)
+ -- Purchased ScreenGui uses Sibling; Merge's StrengthGui uses Global.
+ -- Donor Main.ZIndex=4/Icon.ZIndex=2 hides the image under the opaque Main in Global mode.
+ local floor=0
+ local ancestor: Instance?=parent
+ while ancestor do
+  if ancestor:IsA("GuiObject") then floor=math.max(floor,(ancestor :: GuiObject).ZIndex) end
+  ancestor=ancestor.Parent
+ end
+ local base=floor+1
+ tile.ZIndex=base
+ local stroke=tile:FindFirstChild(STROKE_NAME)
+ if stroke and stroke:IsA("GuiObject") then stroke.ZIndex=base end
+ local main=tile:FindFirstChild(MAIN_NAME)
+ if main and main:IsA("GuiObject") then
+  main.ZIndex=base+1
+  local icon=main:FindFirstChild(ICON_NAME)
+  if icon and icon:IsA("GuiObject") then icon.ZIndex=base+2 end
+  local check=main:FindFirstChild(CHECK_NAME)
+  if check and check:IsA("GuiObject") then check.ZIndex=base+3 end
+ end
+ local title=tile:FindFirstChild(TITLE_NAME)
+ if title and title:IsA("GuiObject") then title.ZIndex=base+4 end
+ local button=tile:FindFirstChild(BUTTON_NAME)
+ if button and button:IsA("GuiObject") then button.ZIndex=base+5 end
+end
+
 function PetClient.createMaterialTile(id: string, name: string, order: number, parent: Instance, activate: (string) -> ())
  local owner=Janitor.new()
  local ok,tile=pcall(buildTile,id,name,order,{owner=owner,activate=activate,visible=true})
  if not ok then owner:Destroy();warn("[PetClient] Purchased material tile unavailable: "..tostring(tile));return nil end
  if not tile then owner:Destroy();return nil end
+ -- Set the image layer before parenting, so any bound Viewport mounts at the correct layer too.
+ layerMaterialTile(tile,parent)
  tile.Parent=parent
  return tile,function() owner:Destroy() end
 end
