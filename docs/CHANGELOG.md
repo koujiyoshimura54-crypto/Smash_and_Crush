@@ -771,3 +771,10 @@
 - Allow Limited Egg3717610547 test receipts only in approved Cloud Studio and existing developer allowlist. Persist limited journal and presentation acknowledgements to DeveloperProductReceipts_v1_Studio; atomic Pet/markers stay in PlayerData_v1_Studio. Production, local refusal, Policy and shared receipt safeguards retained.
 - Actual platform test purchase1 succeeded: Pet_081, unique copy, owned9->10, persistent Studio marker/journal readback and actual same-receipt replay10->10. Existing RGBEgg Hatch started.2729 offline assertions and compilation pass.
 - Full two-purchase/cancel/Hatch completion/equipment/follow live checks remain incomplete due MCP CoreGui input rejection. Returned to Edit; user Studio/lock retained. Cloud Source remains unsaved/unpublished, local rbxl untouched. See DEV_STATUS for evidence and limits.
+
+
+## 2026-10-12 - Read-only RestockShop / Merge Shop feasibility
+
+- Recorded purchased stall/proximity/menu/card/tab donors, inactive purchased Main/Restock payment dependencies and saved placement318 studs from active Spawn.
+- Identified existing deterministic Item merge mount changes, per-copy Pet selection/Inventory reuse, missing provenance and sealed-Egg storage/opening, atomic transaction/deduplication work and Hatch stop-before-open boundary.
+- Recorded tentative points/odds and unresolved mixed/paid/equipped/highest/output rules; checked official paid-random combination/indirect-purchase requirements. No implementation, models, placement or policy decisions made. Source is saved CurrentCloud SHA9336cab..., MCP disconnected; live Cloud/copy permission unverified. Detailed Full Paths and one minimum structure are in latest DEV_STATUS.
