@@ -107,6 +107,8 @@ local function buildMergeShop(ctx)
   return x
  end
  local tabs={Item=action("Item",body,"Item"),Pet=action("Pet",body,"Pet")}
+ -- Owned is an inactive purchase-state donor; navigation must accept input.
+ for _,button in pairs(tabs) do button.Active=true;button.Interactable=true end
  local listTitle=text("ListTitle",body,"Your Items");listTitle.TextXAlignment=Enum.TextXAlignment.Left
  local list=clone(ctx.PurchasedInventory.Items,"Materials",body);clearLayout(list)
  for _,d in list:GetChildren() do if d:IsA("GuiObject") then d:Destroy() end end

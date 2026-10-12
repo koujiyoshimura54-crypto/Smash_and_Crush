@@ -827,3 +827,9 @@
 - Add per-copy Pet drag/click selection, valid-drop commit/outside cancel/click suppression/touch-scroll separation, selected borders/checks and cleanup; hide rank/points while preserving calculations and paid/equipped exclusions. Pet Merge remains disabled.
 - Reuse purchased UI/basket/Stud/close/card/check/buttons, real Item/Pet icons and all four normal Egg Viewports. English labels; narrow portrait layout. Upgrade-only baseline unresolved: genuine outcomes shown as Possible Eggs without probability redistribution.
 - Actual Edit factory captures and63 real-Instance assertions plus66 offline tile checks; syntax/reDecode/references/SharedStrings/UniqueId0 pass. Hardware input and Cloud runtime not verified. Preview cleaned, owned Studio22484 ended, target lock removed. Only1 Source changed; all placement/pools/payments/data/gameplay preserved. See DEV_STATUS for comparisons and differences.
+
+
+## 2026-10-13 - Merge Shop tab click fix
+
+- Purchased Owned donor has Interactable=false. Enable Active/Interactable only for cloned Item/Pet navigation buttons; preserve visuals, callbacks, Item merging and disabled Pet Merge.
+- Source compile/reDecode/reference/SharedString/UniqueId0 checks pass. Actual Item->Pet->Item clicks and close/reopen unverified because no Studio is connected. No new Studio or lock action; local update only. See DEV_STATUS.
