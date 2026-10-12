@@ -778,3 +778,9 @@
 - Recorded purchased stall/proximity/menu/card/tab donors, inactive purchased Main/Restock payment dependencies and saved placement318 studs from active Spawn.
 - Identified existing deterministic Item merge mount changes, per-copy Pet selection/Inventory reuse, missing provenance and sealed-Egg storage/opening, atomic transaction/deduplication work and Hatch stop-before-open boundary.
 - Recorded tentative points/odds and unresolved mixed/paid/equipped/highest/output rules; checked official paid-random combination/indirect-purchase requirements. No implementation, models, placement or policy decisions made. Source is saved CurrentCloud SHA9336cab..., MCP disconnected; live Cloud/copy permission unverified. Detailed Full Paths and one minimum structure are in latest DEV_STATUS.
+
+
+## 2026-10-12 - Local CurrentCloud Limited Egg Studio receipt restoration
+
+- Applied only10 missing095221f->5a11053 ReceiptService change blocks to current rbxl. Authorized Cloud Studio receipts use the isolated persistent journal; atomic Studio PlayerData markers, duplicate safety and saved-only Hatch remain.
+- Exactly one Source changed; all other Sources and non-Source chunks unchanged. Compilation, reDecode/reference/SharedString/UniqueId0 and2729 memory-only assertions pass. No Play/purchase/DataStore/Studio/lock operations; Cloud runtime not checked. Canonical Source already matched5a11053, so only English records committed. Final rbxl SHA9ae19aac...; see DEV_STATUS for complete hash/scope.
