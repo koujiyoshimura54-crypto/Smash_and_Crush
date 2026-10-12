@@ -248,3 +248,85 @@ Receipt journal stores PlayerId/ProductId/Kind/TableVersion/Result{id,pet,percen
 Official product details match the target Experience and current149 base price. Runtime client Marketplace price is displayed; no fallback enables purchase. Server fresh PolicyService rejects restricted accounts and lookup errors. All seven numeric odds remain visible before spending. [Official paid-random requirements](https://create.roblox.com/docs/production/monetization/paid-random-items) and [receipt semantics](https://create.roblox.com/docs/reference/engine/classes/MarketplaceService) checked2026-10-10. External Store sale status is unconfirmed (StorePageEnabled null); owner must verify it is disabled because that route cannot enforce this in-game disclosure/policy gate.
 
 Verification:2693 offline mock assertions, six Source compilations, exact final decoded Source match,179538 instances,76121 refs,366 SharedStrings/205780 indexes and UniqueId0. No Studio launched, local Play, real purchase/grant/DataStore mutation or Save/Publish. Cloud not reflected; actual Studio loading, real personalized prices/Policy, receipt callbacks/save/rejoin and full timed Hatch/follow remain for published-game verification. Studio processes and target.lock absent at final inspection. See latest DEV_STATUS for final hash and detailed failure/retry tests.
+
+
+## 2026-10-12 - Normal Egg metadata and disabled Merge preview
+
+Status: common metadata/preview implemented locally; normal seven-species conversion is INCOMPLETE.
+The owner has not approved the proposed seventh species/insertion positions. No proposed model was selected, cloned, registered or added to a live pool. All four original six-species pools keep 40/25/15/10/7/3% and their existing Win prices. The subsequent request explicitly retains normal Pet draw chances while raising only the completed-Egg Merge preview odds.
+
+ReplicatedStorage.Modules.Egg is the shared normal mapping. NormalPools has per-Egg Coefficient, Species, Approved=false, Icon="" and the verified ModelPath. Existing six species keep their original most-common-first order; proposed seventh is slot7. Rank/point metadata uses the planned slot layout E/E/E/D/C/B/A, with base10/20/30/40/50 multiplied by Basic1/Rare5/Legendary25/Mythic125. Active chance and planned slot chance are separate fields (mergePet.Percent vs TargetPercent); do not describe the planned odds as live. The mapping/order must be revised if the owner chooses a different insertion position.
+validateNormalPool requires explicit approval, seven distinct non-Limited names and a100% target. Incomplete/unapproved plans fall back to the actual Config pool. Server EggServer and PlayerDataService already read Egg.pets, as does EggClient, so a later approved complete pool can share one definition. EggClient prepares the seventh candidate by cloning its real purchased sixth frame only when a complete seven-entry pool becomes live; no seventh serialized UI instance added.
+
+| Egg | Purchased Pet Full Path | Active chance | Planned slot chance | Merge rank | Points |
+|---|---|---:|---:|---|---:|
+| Basic | ReplicatedStorage.Assets.Pets.Egg1.Dog | 40% | 25% | E | 10 |
+| Basic | ReplicatedStorage.Assets.Pets.Egg1.Grey Cat | 25% | 25% | E | 10 |
+| Basic | ReplicatedStorage.Assets.Pets.Egg1.Pink Bunny | 15% | 25% | E | 10 |
+| Basic | ReplicatedStorage.Assets.Pets.Egg1.Sheep | 10% | 15% | D | 20 |
+| Basic | ReplicatedStorage.Assets.Pets.Egg1.Bear | 7% | 6.5% | C | 30 |
+| Basic | ReplicatedStorage.Assets.Pets.Egg1.Camel | 3% | 3% | B | 40 |
+| Basic (UNAPPROVED proposal only) | ReplicatedStorage.Assets.Pets.10MinutesReward.Slime | NOT registered | 0.5% (slot 7) | A (planned) | 50 (planned) |
+| Rare | ReplicatedStorage.Assets.Pets.Egg2.Cow | 40% | 25% | E | 50 |
+| Rare | ReplicatedStorage.Assets.Pets.Egg2.Giraffe | 25% | 25% | E | 50 |
+| Rare | ReplicatedStorage.Assets.Pets.Egg2.Lion | 15% | 25% | E | 50 |
+| Rare | ReplicatedStorage.Assets.Pets.Egg2.Lizard | 10% | 15% | D | 100 |
+| Rare | ReplicatedStorage.Assets.Pets.Egg2.Spider | 7% | 6.5% | C | 150 |
+| Rare | ReplicatedStorage.Assets.Pets.Egg2.Bat | 3% | 3% | B | 200 |
+| Rare (UNAPPROVED proposal only) | ReplicatedStorage.Assets.Pets.Playtime.Shroom | NOT registered | 0.5% (slot 7) | A (planned) | 250 (planned) |
+| Legendary | ReplicatedStorage.Assets.Pets.Egg3.Elephant | 40% | 25% | E | 250 |
+| Legendary | ReplicatedStorage.Assets.Pets.Egg3.Mammoth | 25% | 25% | E | 250 |
+| Legendary | ReplicatedStorage.Assets.Pets.Egg3.Penguin | 15% | 25% | E | 250 |
+| Legendary | ReplicatedStorage.Assets.Pets.Egg3.Crocodile | 10% | 15% | D | 500 |
+| Legendary | ReplicatedStorage.Assets.Pets.Egg3.Octopus | 7% | 6.5% | C | 750 |
+| Legendary | ReplicatedStorage.Assets.Pets.Egg3.Shark | 3% | 3% | B | 1000 |
+| Legendary (UNAPPROVED proposal only) | ReplicatedStorage.Assets.Pets.Playtime.Ninja | NOT registered | 0.5% (slot 7) | A (planned) | 1250 (planned) |
+| Mythic | ReplicatedStorage.Assets.Pets.Egg4.Turtle | 40% | 25% | E | 1250 |
+| Mythic | ReplicatedStorage.Assets.Pets.Egg4.Alien | 25% | 25% | E | 1250 |
+| Mythic | ReplicatedStorage.Assets.Pets.Egg4.Anglerfish | 15% | 25% | E | 1250 |
+| Mythic | ReplicatedStorage.Assets.Pets.Egg4.Dino | 10% | 15% | D | 2500 |
+| Mythic | ReplicatedStorage.Assets.Pets.Egg4.Scorpion | 7% | 6.5% | C | 3750 |
+| Mythic | ReplicatedStorage.Assets.Pets.Egg4.Evil Dragon | 3% | 3% | B | 5000 |
+| Mythic (UNAPPROVED proposal only) | ReplicatedStorage.Assets.Pets.Daily.Chimpanzini Bananini | NOT registered | 0.5% (slot 7) | A (planned) | 6250 (planned) |
+
+### Completed-Egg probability preview (not a Pet draw / no Merge execution)
+
+| Total points | Basic | Rare | Legendary | Mythic |
+|---:|---:|---:|---:|---:|
+| 20 | 60% | 40% | 0% | 0% |
+| 30 | 40% | 60% | 0% | 0% |
+| 40 | 20% | 80% | 0% | 0% |
+| 50 | 0% | 100% | 0% | 0% |
+| 100 | 0% | 60% | 40% | 0% |
+| 150 | 0% | 40% | 60% | 0% |
+| 200 | 0% | 20% | 80% | 0% |
+| 250 | 0% | 0% | 100% | 0% |
+| 500 | 0% | 0% | 60% | 40% |
+| 750 | 0% | 0% | 40% | 60% |
+| 1000 | 0% | 0% | 20% | 80% |
+| >=1250 | 0% | 0% | 0% | 100% |
+
+Linearly interpolate adjacent rows, including50-100 and250-500 intervals. Two owned, unequipped normal copies minimum; mix source Eggs without a same-Egg/one-step restriction or fixed input maximum. Cap effective points at1250 and explicitly report surplus has no effect. Largest-remainder rounding to0.01% keeps the displayed sum100%; omit rounded0% outcomes. Below minimum, hide candidate results and show the unmet condition. Raw probabilities remain available separately from display rounding; this module NEVER executes a roll/consume/grant/store operation.
+
+Merge material eligibility is a UI-only allow-list of the mapped normal names; all seven Limited Egg01 names are explicitly refused by shared metadata. Ownership/equipment are read from existing per-copy PetClient state; stale/no-longer-owned/newly-equipped selections are pruned. Existing Inventory/equipment and Limited purchase/ownership remain unchanged. Purchased PetInventory.Title is cloned for MergeRankPoints; actual titles/checks/icons/Viewports still use existing PetClient functions.
+
+### Actual Egg display mapping / donors
+
+| Candidate | Verified actual source | Class / size in studs | Display |
+|---|---|---|---|
+| Basic | Workspace.Eggs.Basic | MeshPart / 6.660817 x8.439915 x6.651468 | Existing static Viewport fitting, actual Basic clone |
+| Rare | Workspace.Eggs.Rare | MeshPart / 6.973512 x8.716889 x6.973512 | Existing static Viewport fitting, actual Rare clone |
+| Legendary | Workspace.Eggs.Legendary | MeshPart / 9.085073 x9.061073 x13.679085 | Existing static Viewport fitting, actual Legendary clone |
+| Mythic | Workspace.Eggs.Mythic | MeshPart / 8.987074 x9.680326 x8.377340 | Existing static Viewport fitting, actual Mythic clone |
+
+No matching authored2D normal-Egg decal was found in the inspected ReplicatedStorage.Assets.Icons scope. NormalPools.<Egg>.Icon is blank; owner can later set an existing image URI such as rbxassetid://<image asset ID>, which takes priority over3D. No Pet decal, RGBEgg, generated image or substitute model represents these candidates. ModelPath records actual provenance, not an alternate template.
+
+ReplicatedStorage.Modules.LimitedPetViewport reuses its purchased-derived static mounting/corner-bounds/aspect-fitting routine, now accepting a Model or BasePart. Include the root MeshPart when calculating bounds; preserve the current Egg rotation. Scripts/Billboards are removed only from disposable display clones, and physics disabled only there. Existing Limited Pet mount/bind still uses the same model folder/yaw and cleanup. Partial mount failures destroy temporary objects; close/tab/reset/destroy releases display models/Cameras/resize connections. Unchanged candidate species/image settings update only percentage labels without remounting on every poll.
+
+Candidate frame/percent donor: ReplicatedStorage.Assets.Templates.OpenEgg.Background.Pets.1.
+Name/count/status donor: StarterGui.ScreenGui.Menus.Inventory.Main.2PetsEquipInfo.
+Material card donor: ReplicatedStorage.Assets.Templates.PetInventory (Title/Main.Icon/Main.Checkmark/Button).
+Action/tab donor: StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card01_SecretPack.Owned.
+Merge header title layers/action labels and Workspace.RestockShop.BillboardGui.Info disable AutoLocalize only for literal Merge displays. Item execution/recipes/remote/service remain unchanged; its button changes only display text/localization. Pet Merge remains disabled with NO execution callback.
+
+Verification:8162 actual shared-module offline assertions and100 actual presentation/builder mock assertions pass. The latter mock Viewport mounting; they are NOT proof of rendered Egg appearances/capabilities. Existing Basic/Limited purchase/Pet regression suite2729 memory-only assertions passes. Five Sources compile, direct current-file reDecode/reference/SharedString/dense INST/header/PRNT/UniqueId0 and exact canonical Source matching pass. CurrentCloud input69eb5ef8... -> cbafe5bb...; five Source changes plus only sign AutoLocalize. Manual facility positions and ALL other properties/Sources remain unchanged. No Studio connected/opened: real Edit layout/images/viewport clipping/reopening, actual clone capability and Cloud runtime remain UNVERIFIED. No saved preview objects, gameplay-data operations, Play, Save/Publish, backup or alternate rbxl. Seventh-Pet approval/live seven-unique validation remains pending.

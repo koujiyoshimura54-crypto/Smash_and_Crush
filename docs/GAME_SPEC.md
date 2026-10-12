@@ -451,3 +451,8 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 ## 2026-10-06 - CurrentCloud World1 Win Pass tiers
 
 Purchased Workspace.Trophy is a legacy GamePassService purchase entrance. Official passes1970515086(2x) and2005353724(3x) use verified ownership and the highest multiplier. Unowned ->2x offer; only2x ->3x; any3x ->Owned/no offer. CurrentCloud file implementation is statically checked, not published/runtime verified. Existing reward/return/storage processing and effect debug gates remain unchanged.
+
+
+## 2026-10-12 - Normal Pet Merge preview (local, incomplete seven-Pet pools)
+
+Normal Pet Merge is selection/preview only and remains execution-disabled. Only mapped normal species may be UI materials; seven Limited Egg01 species are excluded while Inventory/equipment remain unchanged. Minimum2 copies, variable count/mixed normal Eggs/flying tiers allowed; equipped copies are UI-ineligible at this phase. No material consumption or completed-Egg persistence/opening is connected. Normal seven-Pet pools are pending owner approval and remain six species live.

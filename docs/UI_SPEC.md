@@ -460,3 +460,8 @@ The earlier light purple/pink direction is revoked. Inventory uses saturated pur
 Workspace.Chill Octopus opens a purchased OpenEgg panel clone with seven static Pet Viewports, exact numerical odds, purchased close control and one disabled green Robux button. Normal Eggs keep their six-slot UI/Win1/3/8 controls. Pet Inventory uses the original purchased tiles and inner3D display for the seven registered names, with the title band reserved. No ownership, abilities or rarity is inferred from display registration.
 
 Product3717610547 uses Marketplace price when available and base149 otherwise. Purchase is deliberately disconnected until Phase 3. See [model mappings, screenshots and verification limits](Stud_Egg_Pet_Catalog.md#permanent-robux-egg-phase-2---facility-and-display-2026-10-10). No temporary UI or display-only Pet IDs are saved in CurrentCloud.
+
+
+## 2026-10-12 - Normal Pet Merge preview (local, incomplete seven-Pet pools)
+
+Merge Pet cards reuse purchased PetInventory titles/checks/images/Viewports with rank/point labels; candidate frames/percent labels reuse OpenEgg.Background.Pets.1. Actual Basic/Rare/Legendary/Mythic MeshParts display through existing static Viewport fit, unless a per-Egg image URI is configured. Hide0%/invalid-minimum candidates, show rounded100% totals/surplus notice, clean display resources on close/tab/destroy. Only Merge labels bypass translation; execution remains disabled. Real Edit/device appearance is unverified.

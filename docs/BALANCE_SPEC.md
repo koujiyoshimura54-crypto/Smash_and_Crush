@@ -494,3 +494,8 @@ World1 muscle stages use cumulative Strength consumed by `LevelProgression.Advan
 ## 2026-10-06 - World1 Win Pass multiplier3
 
 Legacy GamePassService.GetWinReward floors baseWin multiplied by the highest verified owned Win pass:1/2/3 for none/2x/3x. Both passes remain3x. Existing AreEffectsEnabled gates can suppress application to1x. Base stage Win amounts and fixed/time rewards are unchanged. Formal IDs1970515086/2005353724; live Marketplace price and live reward verification remain pending.
+
+
+## 2026-10-12 - Normal Pet Merge preview (local, incomplete seven-Pet pools)
+
+Shared normal rank slots E/E/E/D/C/B/A use10/10/10/20/30/40/50 points, multiplied by Basic1/Rare5/Legendary25/Mythic125. Existing normal draw chances/prices remain unchanged until seventh-species approval. The latest completed-Egg preview probability table (40/60/80% promotion, same50/250/1250 certainty thresholds, adjacent-row linear interpolation/cap1250) is recorded in [the catalog](Stud_Egg_Pet_Catalog.md#completed-egg-probability-preview-not-a-pet-draw--no-merge-execution). It does not change Pet draw odds, Win rewards or combat balance.

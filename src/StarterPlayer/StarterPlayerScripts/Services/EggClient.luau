@@ -118,6 +118,13 @@ local function stampSheet(name: string, open: BillboardGui)
 	if layout then layout.SortOrder = Enum.SortOrder.LayoutOrder end
 
 	local List = Egg.ranked(Pets)
+	-- Clone the real purchased candidate only when an approved complete seven-Pet pool is live.
+	if #List==7 and #Frames==6 then
+		local seventh=Frames[6]:Clone()
+		seventh.Name="7";seventh.Parent=folder
+		table.insert(Frames,seventh)
+		for _,frame in ipairs(Frames) do frame.Size=UDim2.new(.13,0,.13,0) end
+	end
 
 	for index, frame in ipairs(Frames) do
 		local slot = List[index]

@@ -5,6 +5,10 @@ source=(root/'src/StarterGui/StrengthUI/MergePanel_New/MergePanelClient_New.clie
 setup=source[source.index('local gui=player:'):source.index('local template=script.Parent:')]
 client=(root/'src/StarterPlayer/StarterPlayerScripts/Services/PetClient.luau').read_text(encoding='utf-8')
 builders=client[client.index('local function buildTile('):client.index('function PetClient.setShown(')]
+egg_source=(root/'src/ReplicatedStorage/Modules/Egg.luau').read_text(encoding='utf-8')
+# Reuse the actual module fixture without running its tests or importing/writing caches.
+math_test=(root/'tests/NormalEggMergeOffline.py').read_text(encoding='utf-8')
+egg_fixture=math_test[math_test.index('local names={'):math_test.index('local ranks=')]
 fixture="""
 local checks=0
 local function eq(a,b,msg) checks+=1;assert(a==b,(msg or "")..": "..tostring(a).." ~= "..tostring(b))end
@@ -31,7 +35,7 @@ local mt={
  end
 }
 local function node(name,class,children)
- local n=setmetatable({Name=name,ClassName=class or "Frame",children={},attrs={},Activated=event(),Destroying=event(),Visible=false,Text=""},mt)
+ local n=setmetatable({Name=name,ClassName=class or "Frame",ZIndex=6,children={},attrs={},Activated=event(),Destroying=event(),Visible=false,Text=""},mt)
  for _,child in ipairs(children or {})do child.Parent=n end
  return n
 end
@@ -86,14 +90,29 @@ local counterDonor=node("2PetsEquipInfo","TextLabel")
 local listDonor=node("Items","ScrollingFrame",{node("UIListLayout","UIListLayout")})
 local starterInventory=node("Inventory","Frame",{node("Main","Frame",{counterDonor,listDonor})})
 local game={GetService=function()return {Heartbeat=beat}end,StarterGui={ScreenGui={Menus={Inventory=starterInventory}}}}
-local RS={Modules={ResponsivePanels="Responsive"}}
+local RS={Modules={ResponsivePanels="Responsive",Egg="Egg",LimitedPetViewport="EggViewport"}}
+local candidateDonor=node("1","ImageLabel",{node("Percent","TextLabel"),node("Button","TextButton"),node("UIAspectRatioConstraint","UIAspectRatioConstraint")})
+RS.Assets={Templates={OpenEgg={Background={Pets={["1"]=candidateDonor}}}}}
+local SharedEgg
+do
+-- INSERT EGG FIXTURE
+-- Local module fixture ends with local Egg; retain it outside this block.
+SharedEgg=Egg
+end
+local Egg=SharedEgg
+local eggViews,eggCleanups=0,0
+local EggViewport={mountEgg=function(host,name)
+ eggViews+=1
+ local viewport=node("NormalEggViewport","ViewportFrame");viewport.Parent=host
+ return function()eggCleanups+=1;viewport:Destroy()end,viewport
+end}
 
 local Instance={new=function(c)return node("",c)end}
 local Enum={AutomaticSize={None=0,Y=1},PartType={Cylinder=2},ScrollingDirection={Y=1},VerticalAlignment={Top=0},SortOrder={LayoutOrder=1}}
 local UDim2={new=function(...)return {...}end,fromOffset=function(...)return {...}end}
 local Vector2={zero={0,0},new=function(...)return {...}end}
 
-local materialState={Revision=1,Owned={id1="Pet_081",id2="Pet_081",id3="Grey Cat"},Equipped={"id3"}}
+local materialState={Revision=1,Owned={id1="Dog",id2="Dog",id3="Grey Cat",paid="Pet_081"},Equipped={"id3"}}
 local equipRequests,refreshRequests=0,0
 local PetClient={state=function()return materialState end,refresh=function()refreshRequests+=1 end}
 PetClient.request=function()equipRequests+=1 end
@@ -128,8 +147,11 @@ function methods:Clone()
 end
 local decal=node("Grey Cat","Decal");decal.Texture="purchased-icon"
 local icons=node("Pets","Folder",{decal})
+for _,name in ipairs({"Cow","Elephant","Turtle"})do
+ local icon=node(name,"Decal");icon.Texture="purchased-icon";icon.Parent=icons
+end
 local boundViews,cleanedViews=0,0
-local LimitedViewport={supports=function(name)return name=="Pet_081"end,bind=function()boundViews+=1;return function()cleanedViews+=1 end end}
+local LimitedViewport={supports=function(name)return name=="Dog"end,bind=function()boundViews+=1;return function()cleanedViews+=1 end end}
 local setPair=function(root,name,text)root[name].Text=text end
 local tint=function(tile,name)tile:SetAttribute("OriginalTint",name)end
 local findPath=function()return nil end
@@ -137,11 +159,15 @@ local menu=nil
 local warn=function(...)print(...)end
 local task={spawn=function(f,...)return f(...)end}
 -- INSERT MATERIAL BUILDERS
-local require=function(token)if type(token)=="table" and token.Name=="PetClient" then return PetClient end;return {Fit=function()end}end
+local require=function(token)
+ if token=="Egg"then return Egg elseif token=="EggViewport"then return EggViewport
+ elseif type(token)=="table" and token.Name=="PetClient" then return PetClient end
+ return {Fit=function()end}
+end
 
 local function mount()
 -- INSERT SETUP
- return {shop=shop,page=page,tabs=tabButtons,pet=petPage,list=materialList,clear=clearMaterials,merge=mergeMaterials,count=selectedLabel,empty=emptyLabel,getTiles=function()return materialTiles end}
+ return {shop=shop,page=page,tabs=tabButtons,pet=petPage,list=materialList,clear=clearMaterials,merge=mergeMaterials,count=selectedLabel,empty=emptyLabel,preview=previewLabel,getTiles=function()return materialTiles end,getCandidates=function()return candidateTiles end}
 end
 local result=mount()
 eq(result.shop.Name,"MergeShopPanel")
@@ -185,7 +211,11 @@ eq(result.pet.Visible,true)
 eq(result.list.AutomaticCanvasSize,Enum.AutomaticSize.Y,"scrollable list")
 local tiles=result.getTiles()
 eq(tiles.id1.Name,"id1");eq(tiles.id2.Name,"id2","same species distinct copy")
-eq(tiles.id1.Title.Text,"Pet_081")
+eq(tiles.id1.Title.Text,"Dog")
+eq(tiles.paid,nil,"Robux Limited species excluded, inventory unchanged")
+eq(materialState.Owned.paid,"Pet_081")
+eq(tiles.id1:GetAttribute("MergeRank"),"E");eq(tiles.id1:GetAttribute("MergePoints"),10)
+eq(tiles.id1.MergeRankPoints.Text,"E  |  10 pt")
 eq(tiles.id3.Title.Text,"Grey Cat (Equipped)")
 eq(tiles.id3.Button.Interactable,false)
 eq(#result.merge.Activated.callbacks,0,"Merge has no execution handler")
@@ -194,9 +224,25 @@ tiles.id3.Button.Activated:fire();eq(result.count:GetAttribute("SelectedCount"),
 tiles.id1.Button.Activated:fire();eq(result.count:GetAttribute("SelectedCount"),1)
 eq(tiles.id1.Main.Checkmark.Visible,true)
 tiles.id2.Button.Activated:fire();eq(result.count:GetAttribute("SelectedCount"),2)
+eq(result.preview:GetAttribute("TotalPoints"),20)
+eq(result.getCandidates().Basic.Percent.Text,"60%")
+eq(result.getCandidates().Rare.Percent.Text,"40%")
+eq(result.getCandidates().Legendary,nil,"zero-percent candidates absent")
+eq(result.getCandidates().Mythic,nil)
+eq(result.getCandidates().Basic.EggName.Text,"Basic")
+eq(result.shop.Top.ShopText1.AutoLocalize,false)
+eq(result.merge.PriceTag.AutoLocalize,false)
+local beforeViews=eggViews;beat:fire(.5);eq(eggViews,beforeViews,"poll does not remount Viewports")
+Egg.NormalPools.Basic.Icon="configured-image"
+beat:fire(.5)
+eq(result.getCandidates().Basic.Image,"configured-image","per-Egg configured image takes priority")
+eq(result.getCandidates().Basic.NormalEggViewport,nil)
+Egg.NormalPools.Basic.Icon="";beat:fire(.5)
+eq(result.getCandidates().Basic.NormalEggViewport.Name,"NormalEggViewport")
 eq(result.merge.Interactable,false,"minimum met still disabled")
 tiles.id1.Button.Activated:fire();eq(result.count:GetAttribute("SelectedCount"),1)
 result.clear.Activated:fire();eq(result.count:GetAttribute("SelectedCount"),0)
+eq(next(result.getCandidates()),nil,"incomplete inputs show no valid results")
 eq(equipRequests,0,"selection never calls equip")
 for i=4,10 do materialState.Owned["id"..i]="Grey Cat"end
 beat:fire(.5);tiles=result.getTiles()
@@ -211,6 +257,7 @@ eq(result.getTiles().id5.Button.Interactable,false)
 result.tabs.Item.Activated:fire()
 eq(result.page.Visible,true);eq(result.pet.Visible,false)
 eq(next(result.getTiles()),nil,"hidden cards cleaned")
+eq(next(result.getCandidates()),nil,"hidden Egg Viewports cleaned")
 materialState.Owned.id6=nil;beat:fire(.5)
 result.tabs.Pet.Activated:fire()
 eq(result.count:GetAttribute("SelectedCount"),4,"selection survives tabs, obsolete copies do not")
@@ -220,6 +267,25 @@ eq(next(result.getTiles()),nil)
 eq(cleanedViews,boundViews,"all Viewports cleaned on close")
 result.shop.Visible=true;result.tabs.Pet.Activated:fire()
 eq(result.count:GetAttribute("SelectedCount"),0)
+materialState.Owned={basic="Dog",rare="Cow",legendary="Elephant",mythic="Turtle",paid="Pet_135"};materialState.Equipped={}
+beat:fire(.5);tiles=result.getTiles()
+eq(tiles.paid,nil)
+tiles.basic.Button.Activated:fire();tiles.rare.Button.Activated:fire()
+eq(result.preview:GetAttribute("TotalPoints"),60)
+eq(result.getCandidates().Rare.Percent.Text,"92%")
+eq(result.getCandidates().Legendary.Percent.Text,"8%")
+eq(result.getCandidates().Legendary.EggName.Text,"Legendary")
+result.clear.Activated:fire()
+tiles.basic.Button.Activated:fire();tiles.legendary.Button.Activated:fire()
+eq(result.getCandidates().Mythic.EggName.Text,"Mythic")
+eq(result.getCandidates().Mythic.Percent.Text,"1.6%")
+result.clear.Activated:fire()
+tiles.basic.Button.Activated:fire();tiles.mythic.Button.Activated:fire()
+eq(result.getCandidates().Mythic.Percent.Text,"100%")
+eq(result.preview.Text,"Total: 1260 pt | Above 1250 pt: no extra effect.")
+eq(result.merge.Interactable,false)
+result.clear.Activated:fire()
+materialState={Revision=2,Owned={},Equipped={""}}
 itemTemplate.Clone=function()error("copy capability denied")end
 materialState={Revision=2,Owned={blocked="Grey Cat"},Equipped={""}};beat:fire(.5)
 eq(result.empty.Text,"Purchased Pet UI unavailable.")
@@ -227,10 +293,10 @@ eq(next(result.getTiles()),nil,"no substitute card")
 eq(result.count:GetAttribute("SelectedCount"),0)
 itemTemplate.Clone=nil
 materialState={Revision=2,Owned={},Equipped={""}};beat:fire(.5)
-eq(result.empty.Text,"No owned Pets.")
+eq(result.empty.Text,"No owned normal Pets.")
 eq(next(result.getTiles()),nil)
 materialState=nil;beat:fire(.5);eq(result.empty.Text,"Pet inventory is loading.")
-materialState={Revision=3,Owned={id1="Pet_081"},Equipped={""}};beat:fire(.5)
+materialState={Revision=3,Owned={id1="Dog"},Equipped={""}};beat:fire(.5)
 local materialTile=result.getTiles().id1
 janitor:Destroy()
 eq(materialTile.destroyed,nil,"Inventory janitor does not own material cards")
@@ -240,11 +306,13 @@ inventoryTile.Button.Activated:fire();eq(equipRequests,1,"legacy Inventory equip
 result.shop:Destroy()
 eq(cleanedViews,boundViews,"destroy releases remaining Viewports")
 eq(shellClones,1)
+eq(eggViews,eggCleanups,"all Egg Viewports cleaned")
 print("MERGE_PET_SELECTION_OFFLINE_PASS",checks)
 
 print("MERGE_SHOP_PRESENTATION_OFFLINE_PASS",checks)
 """
 fixture=fixture.replace('-- INSERT SETUP',setup).replace('-- INSERT MATERIAL BUILDERS',builders)
+fixture=fixture.replace('-- INSERT EGG FIXTURE',egg_fixture.replace('-- SOURCE JSON',json.dumps(egg_source)))
 result=subprocess.run([sys.argv[1]],input="assert(loadstring("+json.dumps(fixture)+"))()\n",text=True,capture_output=True)
 print(result.stdout)
 if result.returncode or 'MERGE_PET_SELECTION_OFFLINE_PASS' not in result.stdout:

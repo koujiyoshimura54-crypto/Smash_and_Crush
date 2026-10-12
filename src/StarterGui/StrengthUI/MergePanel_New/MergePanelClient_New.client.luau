@@ -18,6 +18,7 @@ for _,x in shop:GetDescendants() do
  if x:IsA("LuaSourceContainer") then x:Destroy() end
 end
 shop.Top.ShopText1.Text="Merge";shop.Top.ShopText2.Text="Merge"
+shop.Top.ShopText1.AutoLocalize=false;shop.Top.ShopText2.AutoLocalize=false
 local body=shop:WaitForChild("MainScrollingFrame")
 for _,child in body:GetChildren() do child:Destroy() end
 body.CanvasSize=UDim2.new();body.AutomaticCanvasSize=Enum.AutomaticSize.None
@@ -48,6 +49,8 @@ shop.Parent=gui
 
 -- Pet tab: read-only owned-copy selection, no merge/equipment transaction.
 local PetClient=require(player:WaitForChild("PlayerScripts"):WaitForChild("Services"):WaitForChild("PetClient"))
+local Egg=require(RS.Modules.Egg)
+local EggViewport=require(RS.Modules.LimitedPetViewport)
 local petPage=page:Clone();petPage.Name="Pet";petPage.Visible=false
 for _,child in petPage:GetChildren() do child:Destroy() end
 petPage.Parent=body
@@ -57,7 +60,7 @@ for _,child in materialList:GetChildren() do
  if child:IsA("GuiObject") or child:IsA("LuaSourceContainer") then child:Destroy() end
 end
 materialList.AnchorPoint=Vector2.zero
-materialList.Position=UDim2.fromOffset(8,32);materialList.Size=UDim2.new(1,-16,1,-108)
+materialList.Position=UDim2.fromOffset(8,32);materialList.Size=UDim2.new(1,-16,1,-224)
 materialList.AutomaticCanvasSize=Enum.AutomaticSize.Y;materialList.CanvasSize=UDim2.new()
 materialList.ScrollingEnabled=true;materialList.ScrollingDirection=Enum.ScrollingDirection.Y
 local listLayout=materialList:FindFirstChildOfClass("UIListLayout")
@@ -71,7 +74,68 @@ local function materialLabel(name,position,size)
  return label
 end
 local emptyLabel=materialLabel("Empty",UDim2.fromOffset(8,0),UDim2.new(1,-16,0,28))
-local selectedLabel=materialLabel("SelectedCount",UDim2.new(0,8,1,-70),UDim2.new(1,-16,0,24))
+local selectedLabel=materialLabel("SelectedCount",UDim2.new(0,8,1,-190),UDim2.new(1,-16,0,24))
+local previewLabel=materialLabel("MergePreviewStatus",UDim2.new(0,8,1,-166),UDim2.new(1,-16,0,24))
+local candidateTiles,candidateCleanups={},{}
+local candidateSignature
+local function releaseCandidates()
+ for _,cleanup in pairs(candidateCleanups) do cleanup() end
+ for _,tile in pairs(candidateTiles) do tile:Destroy() end
+ candidateTiles={};candidateCleanups={};candidateSignature=nil
+end
+local function updatePreview(points,count)
+ local preview=Egg.mergePreview(points,count)
+ previewLabel.Text=string.format("Total: %d pt",points)
+ if count<2 then previewLabel.Text..=" | Select at least 2 normal Pets." end
+ if preview.Surplus>0 then previewLabel.Text..=" | Above 1250 pt: no extra effect." end
+ previewLabel:SetAttribute("TotalPoints",points)
+ previewLabel:SetAttribute("Eligible",preview.Eligible)
+ if not preview.Eligible or not shop.Visible or not petPage.Visible then releaseCandidates();return end
+ local signature={}
+ for _,outcome in ipairs(preview.Outcomes) do
+  table.insert(signature,outcome.Egg..":"..Egg.NormalPools[outcome.Egg].Icon)
+ end
+ local key=table.concat(signature,"|")
+ if key~=candidateSignature then
+  releaseCandidates()
+  local source=RS.Assets.Templates.OpenEgg.Background.Pets["1"]
+  for index,outcome in ipairs(preview.Outcomes) do
+   local ok,tile=pcall(function() return source:Clone() end)
+   if ok and tile then
+    tile.Name=outcome.Egg;tile.AnchorPoint=Vector2.new(.5,0)
+    tile.Size=UDim2.new(.24,-4,0,92)
+    tile.Position=UDim2.new(.5+(index-(#preview.Outcomes+1)/2)*.25,0,1,-140)
+    tile.Visible=true;tile.Active=false;tile.AutoLocalize=false;tile.Image=""
+    local aspect=tile:FindFirstChildOfClass("UIAspectRatioConstraint")
+    if aspect then aspect:Destroy() end
+    local button=tile:FindFirstChild("Button")
+    if button then button.Visible=false;button.Active=false;button.Interactable=false end
+    local label=purchasedInventory["2PetsEquipInfo"]:Clone()
+    label.Name="EggName";label.Text=outcome.Egg;label.AutoLocalize=false;label.TextScaled=true
+    label.AnchorPoint=Vector2.zero;label.Position=UDim2.fromOffset(0,0);label.Size=UDim2.new(1,0,0,17)
+    label.ZIndex=tile.ZIndex+3;label.Visible=true;label.Parent=tile
+    tile.Percent.AnchorPoint=Vector2.new(.5,1);tile.Percent.Position=UDim2.new(.5,0,1,0)
+    tile.Percent.Size=UDim2.new(1,0,0,17);tile.Percent.ZIndex=tile.ZIndex+3;tile.Percent.AutoLocalize=false
+    tile.Parent=petPage;candidateTiles[outcome.Egg]=tile
+    local icon=Egg.NormalPools[outcome.Egg].Icon
+    if icon~="" then
+     tile.Image=icon
+    else
+     local mounted,cleanup,view=pcall(EggViewport.mountEgg,tile,outcome.Egg)
+     if mounted and cleanup then
+      view.Position=UDim2.fromOffset(0,17);view.Size=UDim2.new(1,0,1,-34)
+      candidateCleanups[outcome.Egg]=cleanup
+     else warn("[MergeShop] Actual Egg display unavailable: "..outcome.Egg.." "..tostring(cleanup)) end
+    end
+   else warn("[MergeShop] Purchased candidate frame unavailable: "..tostring(tile)) end
+  end
+  candidateSignature=key
+ end
+ for _,outcome in ipairs(preview.Outcomes) do
+  local tile=candidateTiles[outcome.Egg]
+  if tile then tile.Percent.Text=string.format("%g%%",outcome.Percent);tile:SetAttribute("Percent",outcome.Percent) end
+ end
+end
 local function materialAction(name,text,x)
  local button=donor:Clone();button.Name=name;button.Text=""
  button.AnchorPoint=Vector2.new(.5,1);button.Position=UDim2.new(x,0,1,-4)
@@ -100,24 +164,34 @@ local function pruneMaterials(state)
  local worn={}
  for _,id in ipairs(state and state.Equipped or {}) do if id~="" then worn[id]=true end end
  for id in pairs(selectedMaterials) do
-  if not state or not state.Owned[id] or worn[id] then selectedMaterials[id]=nil end
+  if not state or not state.Owned[id] or worn[id] or not Egg.mergePet(state.Owned[id]) then selectedMaterials[id]=nil end
  end
  return worn
 end
 local function updateMaterialChecks(state,worn)
  for id,tile in pairs(materialTiles) do
   local name=state and state.Owned[id]
-  if name then PetClient.setMaterialSelection(tile,name,selectedMaterials[id]==true,worn[id]==true) end
+  if name then
+   PetClient.setMaterialSelection(tile,name,selectedMaterials[id]==true,worn[id]==true)
+   local metadata=Egg.mergePet(name)
+   if metadata then PetClient.setMaterialMetadata(tile,metadata) end
+  end
  end
  local n=countSelected()
  selectedLabel.Text=string.format("Selected: %d (minimum 2)",n)
  selectedLabel:SetAttribute("SelectedCount",n)
+ local points=0
+ for id in pairs(selectedMaterials) do
+  local metadata=state and Egg.mergePet(state.Owned[id])
+  if metadata then points+=metadata.Points end
+ end
+ updatePreview(points,n)
  clearMaterials.Active=n>0;clearMaterials.Interactable=n>0;clearMaterials.Selectable=n>0
  mergeMaterials.Active=false;mergeMaterials.Interactable=false;mergeMaterials.Selectable=false
 end
 local function toggleMaterial(id)
  local state=PetClient.state()
- if not state or not state.Owned[id] or table.find(state.Equipped,id) then return end
+ if not state or not state.Owned[id] or table.find(state.Equipped,id) or not Egg.mergePet(state.Owned[id]) then return end
  selectedMaterials[id]=not selectedMaterials[id] or nil
  syncMaterials()
 end
@@ -129,7 +203,7 @@ syncMaterials=function()
   updateMaterialChecks(nil,worn);return
  end
  local ids={}
- for id in pairs(state.Owned) do table.insert(ids,id) end
+ for id,name in pairs(state.Owned) do if Egg.mergePet(name) then table.insert(ids,id) end end
  table.sort(ids,function(a,b) local x,y=state.Owned[a],state.Owned[b];return x==y and a<b or x<y end)
  local signature={}
  for _,id in ipairs(ids) do table.insert(signature,id..":"..state.Owned[id]) end
@@ -147,7 +221,7 @@ syncMaterials=function()
   end
   materialSignature=signature
  end
- emptyLabel.Text=materialUnavailable and "Purchased Pet UI unavailable." or (#ids==0 and "No owned Pets." or "")
+ emptyLabel.Text=materialUnavailable and "Purchased Pet UI unavailable." or (#ids==0 and "No owned normal Pets." or "")
  emptyLabel.Visible=materialUnavailable or #ids==0
  updateMaterialChecks(state,worn)
 end
@@ -167,8 +241,9 @@ local function showMaterials()
 end
 shop:GetPropertyChangedSignal("Visible"):Connect(function()
  if not shop.Visible then
-  selectedMaterials={};releaseMaterialTiles()
+  selectedMaterials={};releaseMaterialTiles();releaseCandidates()
   selectedLabel.Text="Selected: 0 (minimum 2)";selectedLabel:SetAttribute("SelectedCount",0)
+  previewLabel.Text="Select at least 2 normal Pets.";previewLabel:SetAttribute("TotalPoints",0);previewLabel:SetAttribute("Eligible",false)
  elseif petPage.Visible then showMaterials() end
 end)
 local petPoll=0
@@ -179,12 +254,12 @@ local materialPollConnection=game:GetService("RunService").Heartbeat:Connect(fun
   if petPage.Visible then syncMaterials() else pruneMaterials(PetClient.state()) end
  end
 end)
-shop.Destroying:Connect(function() materialPollConnection:Disconnect();releaseMaterialTiles();selectedMaterials={} end)
+shop.Destroying:Connect(function() materialPollConnection:Disconnect();releaseMaterialTiles();releaseCandidates();selectedMaterials={} end)
 local function selectShopTab(name)
  shop:SetAttribute("SelectedTab",name)
  page.Visible=name=="Item"
  petPage.Visible=name=="Pet"
- if name=="Pet" then showMaterials() else releaseMaterialTiles() end
+ if name=="Pet" then showMaterials() else releaseMaterialTiles();releaseCandidates() end
 end
 for name,button in pairs(tabButtons) do button.Activated:Connect(function() selectShopTab(name) end) end
 selectShopTab("Item")
@@ -441,7 +516,8 @@ end
 local footer=make("Frame","Footer",root)
 local count=label("Count",footer,"",26)
 paint(count,palette.Card,palette.CardBottom,palette.SocketEdge,UDim.new(1,0))
-local merge=button("Merge",footer,"MERGE")
+local merge=button("Merge",footer,"Merge")
+merge.AutoLocalize=false
 local hint=label("Status",root,"",18)
 
 local errors={
@@ -712,7 +788,7 @@ render=function()
  merge.AutoButtonColor=enabled
  paint(merge,enabled and palette.Gold or palette.Disabled,enabled and palette.Orange or palette.DisabledBottom)
  merge.TextColor3=enabled and Color3.new(1,1,1) or Color3.fromRGB(219,209,234)
- merge.Text=pending and "MERGING…" or "MERGE"
+ merge.Text="Merge"
  if pending then
   hint.Text="Merging…"
  elseif status~="" then

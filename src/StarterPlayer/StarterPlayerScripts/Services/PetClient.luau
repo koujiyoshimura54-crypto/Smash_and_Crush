@@ -351,6 +351,25 @@ function PetClient.setMaterialSelection(tile: GuiObject, name: string, selected:
  tile:SetAttribute("MaterialEquipped",equipped)
 end
 
+function PetClient.setMaterialMetadata(tile: GuiObject, metadata: any)
+ -- Clone the purchased title/outline, leaving Inventory tiles and their equip labels unchanged.
+ local label=tile:FindFirstChild("MergeRankPoints")
+ if not label then
+  local title=tile:FindFirstChild(TITLE_NAME)
+  if not (title and title:IsA("TextLabel")) then return end
+  label=title:Clone();label.Name="MergeRankPoints"
+  label.AnchorPoint=Vector2.new(.5,1)
+  label.Position=UDim2.new(.5,0,1,-3);label.Size=UDim2.new(.96,0,0,21)
+  label.TextScaled=true;label.AutoLocalize=false;label.ZIndex=title.ZIndex+2
+  label.Parent=tile
+ end
+ label.Visible=true
+ label.Text=string.format("%s  |  %d pt",metadata.Rank,metadata.Points)
+ tile:SetAttribute("MergeRank",metadata.Rank)
+ tile:SetAttribute("MergePoints",metadata.Points)
+ tile:SetAttribute("SourceEgg",metadata.Egg)
+end
+
 function PetClient.setShown(on: boolean)
 	shown = on
 

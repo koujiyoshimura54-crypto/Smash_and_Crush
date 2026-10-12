@@ -798,3 +798,10 @@
 - Add per-owned-copy Pet cards using existing PetClient/template/icon/Viewport/check code. Same species select independently; variable count/minimum2, no upper slot cap. Equipped copies visibly excluded for this UI phase only.
 - Purchased list/counter/buttons reused; clear/tab/reopen/state-refresh cleanup supported. Merge always disabled without an execution handler; no point/odds/consume/roll/save/server or Item-flow change.
 - Saved manual relocation verified/preserved. Two-Source-only CurrentCloud write; compile/reDecode/reference/SharedString/UniqueId0 and70 presentation /2729 existing offline assertions pass. Studio disconnected: real display/runtime unverified. Local file updated, Cloud unreflected; no Play/Save/Publish/DataStore/user-session/lock actions. Detailed paths and final hash in DEV_STATUS.
+
+
+## 2026-10-12 - Normal Pet merge metadata and raised completed-Egg preview
+
+- Add shared normal rank/point/coefficients and approved-seven-pool readiness. Owner has not approved seventh Pets, so existing six-species normal draw chances/prices are unchanged; proposed additions remain unregistered.
+- Merge Pet materials exclude Limited species, show rank/points and interpolate latest40/60/80% promotion rows with minimum2/cap1250 and100% rounded totals. Reuse purchased candidate frame/labels and existing static Viewport for each actual Workspace.Eggs MeshPart; optional per-Egg image URI takes priority. Literal Merge excluded from auto-translation. Pet Merge still disabled; no consumption/grant/save/opening. Item logic unchanged.
+- Compile/reDecode/reference/SharedString/UniqueId0 pass;8162 math +100 presentation +2729 prior memory-only regression assertions pass. Five Sources plus sign AutoLocalize only, saved manual placement/test-receipt recovery retained. MCP disconnected: actual Studio/Edit/Cloud/clone/render checks unverified. No Studio/session/lock or prohibited gameplay/save operations. Detailed table/provenance/pending approvals in Stud_Egg_Pet_Catalog and DEV_STATUS.
