@@ -504,3 +504,16 @@ Shared normal rank slots E/E/E/D/C/B/A use10/10/10/20/30/40/50 points, multiplie
 ## 2026-10-12 - Approved normal seven-Pet pools
 
 Normal Pet draw odds are25/25/25/15/6.5/3/0.5% in preserved original six order plus approved seventh. Corresponding merge ranks E/E/E/D/C/B/A and points10/10/10/20/30/40/50 times Basic1/Rare5/Legendary25/Mythic125 are active from shared Modules.Egg. Seventh-Pet points50/250/1250/6250. Egg Win prices, Limited odds/products, raised completed-Egg Merge preview table and all combat/reward balance unchanged. See latest approved28-Pet table in Stud_Egg_Pet_Catalog.
+
+
+## 2026-10-13 - Approved World1 Speed tiers
+
+| Stage | Normal upgraded speed | Next speed | Win price |
+|---|---:|---:|---:|
+| 0 |24|28|100|
+| 1 |28|32|200|
+| 2 |32|36|300|
+| 3 |36|40|400|
+| 4 |40|MAX|Disabled|
+
+Total1000 Win. Legacy600-Win Boost owners retain40 and count as stage4; Premium remains50 and disables these purchases. Apply highest eligible speed, not addition. Capacity prices, transient2x multiplier/current local0.8s duration, Training/Boss logic, Item prices, Merge and all rewards are unchanged.

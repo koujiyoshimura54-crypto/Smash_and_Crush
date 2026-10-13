@@ -8,6 +8,7 @@ local TimeRewardConfig=require(game.ReplicatedStorage.Config:WaitForChild("TimeR
 local DailyRewardConfig=require(game.ReplicatedStorage.Config:WaitForChild("DailyRewardConfig"))
 local CommunityConfig=require(game.ReplicatedStorage.Config:WaitForChild("CommunityRewardConfig"))
 local ShopConfig=require(game.ReplicatedStorage.Config:WaitForChild("ShopProductConfig"))
+local SpeedConfig=require(game.ReplicatedStorage.Config:WaitForChild("SpeedConfig"))
 local CapacityConfig=require(game.ReplicatedStorage.Config:WaitForChild("InventoryCapacityConfig"))
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
 local PlayerDataService={}
@@ -198,7 +199,7 @@ local function sameLimitedReceipt(a,b)
 end
 
 local function defaults()
- return {LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -252,6 +253,9 @@ local function normalize(raw)
   local speeds,speedError=normalizeSpeeds(raw.OwnedSpeeds)
   if not speeds then return nil,speedError end
   d.OwnedSpeeds=speeds
+  local speedStage,speedStageError=SpeedConfig.NormalizeStage(raw.SpeedUpgradeStage,speeds)
+  if speedStage==nil then return nil,speedStageError end
+  d.SpeedUpgradeStage=speedStage
   -- Missing inventory is legacy data. Never replace a malformed saved inventory.
   if raw.OwnedDumbbells~=nil then
    if typeof(raw.OwnedDumbbells)~="table" then return nil,"Invalid OwnedDumbbells" end
@@ -302,6 +306,8 @@ local function normalize(raw)
 end
 local function applyAttributes(player,d)
  Pet.Publish(player,d.Pets)
+ player:SetAttribute("SpeedUpgradeStage",d.SpeedUpgradeStage)
+ player:SetAttribute("SpeedUpgradePurchasePending",false)
  player:SetAttribute("PetSavePending",false)
  player:SetAttribute("AutoTapEnabled",d.AutoTapEnabled~=false)
  player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
@@ -706,7 +712,7 @@ function PlayerDataService.SetWin(player,value)
  -- A capacity/Pet write may have committed even if its response was lost. Do not
  -- spend the same balance elsewhere while its receipt is unresolved; rewards
  -- can still increase Win and are retained when the purchase is acknowledged.
- if s.PendingItemMutation and (s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.PetMutation) and n<s.Data.Win then return false end
+ if s.PendingItemMutation and (s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.SpeedUpgrade or s.PendingItemMutation.PetMutation) and n<s.Data.Win then return false end
  s.Data.Win=math.max(0,math.floor(n))
  player:SetAttribute("Win",s.Data.Win)
  s.Dirty=true
@@ -766,6 +772,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   AutoTapEnabled=d.AutoTapEnabled~=false,
   SelectedSizeTier=d.SelectedSizeTier,
   InventoryCapacity=d.InventoryCapacity,
+  SpeedUpgradeStage=d.SpeedUpgradeStage,
   Pets=assert(Pet.NormalizeState(d.Pets)),
   HighestUnlockedWorld=d.HighestUnlockedWorld,
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
@@ -814,6 +821,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.SelectedSizeTier=payload.SelectedSizeTier
    -- Purchases own this field; ordinary saves preserve the durable value.
    merged.InventoryCapacity=assert(CapacityConfig.Normalize(old.InventoryCapacity))
+   merged.SpeedUpgradeStage=assert(SpeedConfig.NormalizeStage(old.SpeedUpgradeStage,old.OwnedSpeeds))
    -- Pet transactions own their durable inventory and equipment.
    merged.Pets=assert(Pet.NormalizeState(old.Pets))
    merged.Strength=payload.Strength
@@ -979,8 +987,51 @@ local function scheduleItemMutationRetry(player,session,operation)
  return delaySeconds,nextAttempt
 end
 
--- Capacity purchases share the existing per-player durable-write gate. This
--- makes AutoSave/exit retry an ambiguous purchase before saving an old balance.
+-- Speed upgrades use the same session-owned atomic mutation gate as capacity.
+-- Keep the operation across an ambiguous write; a retry can never buy another tier.
+local function resolveSpeedPurchase(player,s,op)
+ if op.Resolving then return false,"InventorySavePending" end
+ op.Resolving=true;s.Saving=true
+ local rejection
+ local ok,saved=pcall(function()
+  return ownedUpdate(player,s,function(old,info)
+   rejection=nil
+   if resetToken(old)~=op.ResetToken then rejection="SaveSupersededByReset";return nil end
+   local stage=assert(SpeedConfig.NormalizeStage(old.SpeedUpgradeStage,old.OwnedSpeeds))
+   local users,meta=metadata(info)
+   if old.SpeedUpgradePurchaseId==op.Id and stage==op.NextStage then
+    return old,users,meta
+   end
+   if stage~=op.CurrentStage then rejection="SpeedStageChanged";return nil end
+   local merged=table.clone(old)
+   merged.Win=op.WinBefore-op.PriceWin
+   merged.SpeedUpgradeStage=op.NextStage
+   merged.SpeedUpgradePurchaseId=op.Id
+   return merged,users,meta
+  end)
+ end)
+ op.Resolving=false;s.Saving=false
+ if sessions[player]~=s or s.PendingItemMutation~=op then return false,"SaveSuperseded" end
+ if not ok or not saved or saved.SpeedUpgradePurchaseId~=op.Id then
+  if rejection or s.OwnershipLost then
+   s.PendingItemMutation=nil
+   player:SetAttribute("SpeedUpgradePurchasePending",false)
+   return false,rejection or "SessionOwnershipLost"
+  end
+  scheduleItemMutationRetry(player,s,op)
+  return false,"InventorySavePending"
+ end
+ s.PendingItemMutation=nil
+ s.Data.SpeedUpgradeStage=saved.SpeedUpgradeStage
+ PlayerDataService.SetWin(player,s.Data.Win-op.PriceWin)
+ s.Dirty=true
+ -- Publish only after the debit and stage have been acknowledged together.
+ player:SetAttribute("SpeedUpgradeStage",s.Data.SpeedUpgradeStage)
+ player:SetAttribute("SpeedUpgradePurchasePending",false)
+ return true,"Purchased"
+end
+
+-- Capacity purchases share the existing per-player durable-write gate.
 local function resolveCapacityPurchase(player,s,op)
  if op.Resolving then return false,"InventorySavePending" end
  op.Resolving=true;s.Saving=true
@@ -1229,6 +1280,7 @@ function PlayerDataService.ResolveItemMutation(player)
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
  if op.LimitedEggGrant then return resolveLimitedEggGrant(player,s,op) end
+ if op.SpeedUpgrade then return resolveSpeedPurchase(player,s,op) end
  if op.CapacityUpgrade then return resolveCapacityPurchase(player,s,op) end
  if op.PetMutation then return resolvePetMutation(player,s,op) end
  if op.RunReturn then
@@ -1707,48 +1759,32 @@ function PlayerDataService.ChangeSelectedSize(player,tier,config)
  return true,"Success",tier,s.Data.Win
 end
 
--- Atomically persist the Win debit and permanent entitlement before publishing either.
-function PlayerDataService.PurchaseSpeed(player,id)
- local config=require(game.ReplicatedStorage.Config.SpeedConfig)
- local item=typeof(id)=="string" and config[id]
- if id~="Speed1" or not item or item.PriceType~="Win" then return false,"InvalidRequest" end
+-- Old Speed1 / 600 Win requests are retired. The client supplies only the
+-- expected current stage; the server chooses the next stage and its price.
+function PlayerDataService.PurchaseSpeed(player,id,currentStage)
+ if id~="Upgrade" or not finite(currentStage) or currentStage%1~=0 then return false,"InvalidRequest" end
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
- if s.Saving or s.PendingItemMutation then return false,"DataSaving" end
- if s.Data.OwnedSpeeds[id] then return false,"AlreadyOwned" end
- local win=player:GetAttribute("Win")
- if not finite(win) or win%1~=0 or win<item.PriceWin then return false,"NotEnoughWin" end
- local token=s.Data.ResetToken
- s.Saving=true
- local rejected
- local already=false
- local ok,saved=pcall(function()
-  return ownedUpdate(player,s,function(old,info)
-   rejected=nil;already=false
-   if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
-   if resetToken(old)~=token then rejected="SaveSupersededByReset";return nil end
-   local owned,err=normalizeSpeeds(old and old.OwnedSpeeds)
-   if not owned then error(err) end
-   local users,meta=metadata(info)
-   if owned[id] then already=true;return old,users,meta end
-   local nextData=old and table.clone(old) or defaults()
-   owned[id]=true
-   nextData.OwnedSpeeds=owned
-   nextData.Win=win-item.PriceWin
-   return nextData,users,meta
-  end)
- end)
- s.Saving=false
- if not ok or not saved or rejected then return false,rejected or "SaveFailed" end
- if sessions[player]~=s then return false,"DataNotLoaded" end
- if not saved.OwnedSpeeds or saved.OwnedSpeeds[id]~=true then return false,"SaveFailed" end
- s.Data.OwnedSpeeds=assert(normalizeSpeeds(saved.OwnedSpeeds))
- -- Preserve Win earned while UpdateAsync was yielding.
- local earned=(tonumber(player:GetAttribute("Win")) or win)-win
- s.Data.Win=math.max(0,(already and saved.Win or win-item.PriceWin)+earned)
- s.Dirty=true
- player:SetAttribute("Win",s.Data.Win)
- return true,already and "AlreadyOwned" or "Purchased"
+ if s.OwnershipLost then return false,"SessionOwnershipLost" end
+ local pending=s.PendingItemMutation
+ if pending and pending.SpeedUpgrade and pending.CurrentStage==currentStage then
+  return PlayerDataService.ResolveItemMutation(player)
+ end
+ if s.Saving or pending then return false,"DataSaving" end
+ if require(game.ServerScriptService.Services.GamePassService).HasPremiumSpeed(player) then return false,"PremiumOwned" end
+ local stage=assert(SpeedConfig.NormalizeStage(s.Data.SpeedUpgradeStage,s.Data.OwnedSpeeds))
+ if stage>=SpeedConfig.MaxUpgradeStage then return false,"MaxSpeed" end
+ if currentStage~=stage then return false,"SpeedStageChanged" end
+ local tier=SpeedConfig.Upgrades[stage]
+ if not tier then return false,"InvalidRequest" end
+ local win=s.Data.Win
+ if not finite(win) or win%1~=0 or win<0 then return false,"InvalidWin" end
+ if win<tier.PriceWin then return false,"NotEnoughWin" end
+ s.PendingItemMutation={SpeedUpgrade=true,Id=HttpService:GenerateGUID(false),
+  CurrentStage=stage,NextStage=tier.NextStage,PriceWin=tier.PriceWin,
+  WinBefore=win,ResetToken=s.Data.ResetToken}
+ player:SetAttribute("SpeedUpgradePurchasePending",true)
+ return PlayerDataService.ResolveItemMutation(player)
 end
 
 -- Server-only entry point. Client requests choose a catalogue key, never a grant.

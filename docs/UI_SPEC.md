@@ -493,3 +493,8 @@ Use the owner's two-card Speed reference as the1130x812 design: purple purchased
 Speed has Current Speed and Premium Speed only. Current is display-only, uses the server's normal WalkSpeed/active source and existing shoe icon, and excludes temporary2x movement. Premium shows Config speed and exactly one of fetched Robux price, OWNED or ACTIVE. Preserve purchased green button artwork/font/currency glyph; no extra Robux word. Price failure/owned/pending states disable new purchase. Remove only the Inventory600-Win offer, preserving already-owned effects. No new Win upgrade UI.
 
 Actual Edit comparisons and limits are recorded in DEV_STATUS; hardware input/Cloud runtime remain unverified.
+
+
+## 2026-10-13 - UpGrade two-card layout
+
+Supersedes the previous capacity-only UpGrade geometry. Use the measured1410x800 panel with existing orange/yellow UpGrade header/close, dark translucent body and two grey Stud cards: Inventory Capacity above Speed. Reuse existing backpack/blue Speed image and purchased yellow Win button artwork. Align icons/current-arrow-next values/actions; no tabs. Portrait uses700x1000 reflow. Capacity feedback and Speed feedback/pending are independent. Speed shows server upgrade values/prices, MAX40 or Premium50/OWNED with purchase disabled; no temporary multiplier is shown. Latest Inventory layout remains unchanged, and no600-Win purchase entrance returns.

@@ -473,3 +473,8 @@ Pet merging remains selection/preview-only, disabled, with no consume/grant/save
 ## 2026-10-13 - Inventory Speed offer visibility
 
 Inventory no longer exposes the600-Win Speed Boost purchase entry. Existing OwnedSpeeds.Speed1 data/effect and all SpeedService/GamePassService/Config behavior remain intact; no UpGrade/Win upgrade connection was added. The UI displays normal server speed separately from temporary movement multipliers and keeps the existing Premium verified purchase flow. This is a client presentation change only.
+
+
+## 2026-10-13 - Sequential Speed upgrades (supersedes prior unconnected Win offer)
+
+UpGrade in World1 contains Capacity and Speed cards. Speed uses existing PlayerData.SpeedUpgradeStage (0..4), bought sequentially through the existing Speed request/receipt gate. Win debit and stage are acknowledged together; ambiguous operations reserve spending and retry the same ID. Old Speed1/600-Win requests are refused. Existing Speed1 owners are completed at40; Premium owners need no Win purchase. Normal speed takes the highest eligible upgrade/legacy/Premium value; development GamePass effect gates remain. Respawn uses existing Speed.Apply; temporary2x timing/eligibility are unchanged. Inventory retains normal Current Speed and Premium Robux only. No new World2-specific tier or DataStore.

@@ -1469,3 +1469,41 @@ Actual Edit evidence:
 - Latest Sources compile. Direct same-file write and fresh reDecode:179538 Instances/161classes, dense INST/header/complete PRNT,76121 refs,366 SharedStrings/205780 indexes, UniqueId duplicates0. Only the three listed Sources/two Source PROP chunks changed; every other Source and non-Source chunk stayed byte-identical. Final SHA256 7712bfd09e8298c31dae4ba6ad2d549a806a5b9be69b99d19db9dd16f2e078c6. No saved Instance clones. Manual Map placement, both Merge flows/last dim-overlap fixes, Item star4 Win purchase, all purchases/configs and DataStore preserved.
 - Started exactly one owned verification Studio17552 at2026-10-13 12:06:49, opened this file in Edit/Place0. Preview did not modify game Source/Camera/models. Removed the temporary host/fixtures/connections and confirmed no CodexInventory object remained. Normal CloseMainWindow returned false; verified PID/start time/target command line, then ended only that process. After process exit removed only its residual target.lock. No user Studio existed or was closed; final process/lock absent. Did not reopen after cleanup.
 - Local CurrentCloud updated after Studio cleanup; Cloud not reflected/published/tested. No local Play, real purchase/equip/merge/data operation, Studio Save/Publish, backup/alternate rbxl or V2/PreMerge write. Only task Sources, three screenshots and English records committed/pushed; unrelated untracked report preserved.
+
+
+## 2026-10-13 - UpGrade sequential World1 Speed upgrades
+
+Scope and authority:
+- Read current Git (origin/main was 13d22b0, no divergence), the existing capacity/Speed/data paths and the actual reference `Downloads/容量と速度の二段アップグレード.png` (1846x852). Edited only the latest `C:\Users\kouji\MergeToForge_CurrentCloud.rbxl`, starting SHA256 7712bfd09e8298c31dae4ba6ad2d549a806a5b9be69b99d19db9dd16f2e078c6. No old rbxl replacement.
+- CurrentCloud's existing transition boost duration was 0.8s (Git previously had 0.5s). Retained the local 0.8s and 2x multiplier; no new change to their runtime behavior. Manual placement, latest Inventory shell/Speed presentation, Item star4 purchase, Merge, Egg/Pet/Limited systems and receipt recovery remain intact.
+
+Changed Full Paths (canonical files under src):
+- `ReplicatedStorage.Config.SpeedConfig`
+- `ReplicatedStorage.Config.InventoryCapacityPreviewConfig`
+- `ServerScriptService.Services.PlayerDataService`
+- `ServerScriptService.Services.SpeedService`
+- `ServerScriptService.Systems.Controllers.SpeedController` (existing game Script, now also stored at its canonical src path)
+- `StarterGui.StrengthGui.InventoryCapacityUpgradeClient`
+- `StarterGui.StrengthGui.SpeedInventoryClient`
+
+Behavior:
+- Shared tiers: 24 -> 28 /100 Win, 28 -> 32 /200, 32 -> 36 /300, 36 -> 40 /400; total1000. Sequential expected-stage requests only. Stage4 is MAX, disabled. No World2-specific tiers.
+- Add `SpeedUpgradeStage` to existing PlayerData defaults/normalization and preserve its durable value in ordinary saves. Legacy `OwnedSpeeds.Speed1` normalizes to completed stage4/40 without a charge. Premium owners cannot buy Win upgrades; normal applied speed is the highest eligible source, never their sum. Existing GamePass effect suppression for development/creator checks remains unchanged.
+- Retire server acceptance of the old Speed1/600-Win offer. Reuse `Remotes.SpeedPurchaseRequest`, `SpeedInventoryState`, existing SpeedController and the existing session-owned PlayerData write gate. No new Remote, DataStore or alternate intake.
+- Server chooses next stage/price, verifies fresh Premium ownership (failure stays closed), stage/balance/cap/session and serializes with other mutations. Persist Win+stage+`SpeedUpgradePurchaseId` in one owned UpdateAsync. Failed/ambiguous writes retain the same operation and reserve spending; auto/explicit retry resolves it without a second debit. Stale expected-stage requests cannot skip tiers. Preserve rewards earned during a yielding write. Publish stage/speed only after acknowledgement; respawn uses the normal Speed.Apply path.
+- Capacity price/config/controller/transaction are unchanged. Capacity and Speed have separate pending state, feedback and result channels. Inventory receives the server normal-speed state while its Premium prompt state is not reset by an UpGrade response. Existing Inventory current-speed/Premium cards remain intact.
+
+UI and purchased donors:
+- Measured reference panel1410x800, header132, cards1342x300, 24px card gap, 256x230 icon boxes and414x96 Win buttons. Portrait reflows the same two cards in700x1000 design space. No tabs.
+- Retain existing UpGrade construction and purchased `StarterGui.StrengthGui.ShopPanel.Top` header/close, `ShopPanel.MainScrollingFrame.Holder.CardWin.StudPattern`, `StrengthGui.LeftMenu.InventoryButton.Icon`, SpeedConfig.Speed1 image130304640405359, and actual yellow `StarterGui.ScreenGui.Menus.RestockShop.Main.Common.Buy` with its gradient/stroke/font/trophy.
+- The Edit camera can report1x1: the previous HUD aspect helper squeezed a button into a vertical strip. UpGrade now clones the actual yellow button into the measured rectangle directly, preserving artwork and input routes without changing the shared HUD helper.
+- [Reference LEFT / actual Edit RIGHT](Upgrade_Speed_Reference.png); [390px normal / legacy MAX / Premium owned](Upgrade_Speed_States.png). Original purchased blue shoe/button typography intentionally differ from illustrative red shoe/art. Small typography/pattern differences remain; no pixel-perfect claim.
+
+Verification and limits:
+- Seven focused offline groups in `tests/SpeedUpgradeOffline.py` pass using actual extracted transaction/config/normal-speed functions with memory-only update/ownership/scheduling adapters: four tiers/total1000; insufficient/invalid/future-stage/retired requests; duplicate/reentrant requests and callback replay; pre-write failure; lost acknowledgement/same-operation retry/concurrent earned Win; reset/session barriers; legacy40/Premium50/no debit. Reload normalization and respawn Apply are checked as components, not live joins. Existing capacity fault-test patterns were reused; no production data access.
+- Opened the actual updated file successfully in one owned Studio11672 (2026-10-13 13:45:07), Edit/Place0. Rendered the exact final client source against purchased Instances with memory-only state/Remote adapters; every FireServer was forbidden. Confirmed normal24->28/100, capacity5->6/5, MAX40, legacy40, Premium50/OWNED, disabled terminal purchase controls, independent capacity/Speed failure text, pending retry and close/re-show state.390x690 canvas: both controls inside bounds and all visible labels TextFits. Temporary UI/state/connections removed.
+- The first screenshot request stalled while the hidden viewport was1x1; the existing verification session rendered successfully after its window became available. No additional Studio was launched.
+- Seven changed Sources compile. Final same-file reDecode:179538 Instances/161 classes, dense INST/header/complete PRNT,76121 references,366 SharedStrings/205780 indexes, UniqueId duplicates0. Only these seven Sources changed; all non-Source chunks and other Sources were preserved. Final SHA256 c6ef67863f15fc6862bcf8501ba87f3a48b8723881cee4f9efeac48ce5a25479. Final UI-only refinements were rendered as exact source in Edit before the final direct write; no temporary display instances were serialized.
+- Physical click/touch, proximity opening, real saves/rejoin, Premium API responses and Cloud runtime remain UNVERIFIED. User must Save/Publish and verify these on the updated Cloud version. No local Play, real purchase/data mutation, Studio Save/Publish, backup, other rbxl or V2/PreMerge changes.
+- Normal close requested for the owned verification Studio; it remained at the unsaved-preview confirmation. Verified PID/start time/target, ended only11672, then confirmed process absent and removed only its residual CurrentCloud.lock. Final MCP Studios list empty, process/lock absent. Did not reopen. No user Studio was present/closed.
+- Commit only task Sources, offline test, two images and English records. Preserve unrelated untracked `reports/Visual_Templates_Secret_VIP_Green_20260917.md`.

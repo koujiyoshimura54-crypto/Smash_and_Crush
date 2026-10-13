@@ -51,7 +51,8 @@ Responsive.ConnectActivation(view.BuyButton,function()
 end)
 purchase.OnClientEvent:Connect(function(result)
  if typeof(result)~="table" then return end
- if result.Success~=nil then pending=false;message=result.Success and "" or (messages[result.Code] or "Please try again.") end
+ -- Upgrade results refresh normal Speed without resetting a Premium prompt.
+ if result.Success~=nil and result.Action~="Upgrade" then pending=false;message=result.Success and "" or (messages[result.Code] or "Please try again.") end
  apply(result.State);render()
 end)
 prompt.OnClientEvent:Connect(function(result)

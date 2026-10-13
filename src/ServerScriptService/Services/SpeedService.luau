@@ -5,7 +5,7 @@ local Data=require(game.ServerScriptService.Services:WaitForChild("PlayerDataSer
 local Pass=require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
 local M={}
 local TRANSITION_BOOST_MULTIPLIER=2
-local TRANSITION_BOOST_DURATION=0.5
+local TRANSITION_BOOST_DURATION=0.8
 local boosts={}
 local bindings={}
 local function activeBoost(player)
@@ -23,8 +23,14 @@ function M.GetState(player)
  local owned=loaded and s.Data.OwnedSpeeds.Speed1==true or false
  local premium=Pass.HasPremiumSpeed(player)
  local activeId=premium and Pass.AreEffectsEnabled(player) and "Premium" or (owned and "Speed1" or "NONE")
- local speed=activeId=="NONE" and Config.DefaultSpeed or Config[activeId].WalkSpeed
- return {Loaded=loaded,OwnedSpeeds={Speed1=owned},PremiumOwned=premium,ActiveSpeedItemId=activeId,WalkSpeed=speed,Win=player:GetAttribute("Win") or 0}
+ local stage=loaded and assert(Config.NormalizeStage(s.Data.SpeedUpgradeStage,s.Data.OwnedSpeeds)) or 0
+ local upgradeSpeed=Config.UpgradeSpeed(stage)
+ local speed=math.max(upgradeSpeed,activeId=="NONE" and Config.DefaultSpeed or Config[activeId].WalkSpeed)
+ local tier=Config.Upgrades[stage]
+ return {Loaded=loaded,OwnedSpeeds={Speed1=owned},PremiumOwned=premium,ActiveSpeedItemId=activeId,
+  WalkSpeed=speed,UpgradeStage=stage,UpgradeSpeed=upgradeSpeed,
+  NextUpgradeSpeed=tier and tier.NextSpeed,UpgradePriceWin=tier and tier.PriceWin,
+  UpgradePending=player:GetAttribute("SpeedUpgradePurchasePending")==true,Win=player:GetAttribute("Win") or 0}
 end
 -- Equipment/source identity is independent of applied WalkSpeed and transition boosts.
 function M.GetActiveSpeedItemId(player)
@@ -74,10 +80,18 @@ function M.GetTransitionBoost(player)
  local boost=activeBoost(player)
  return boost and table.clone(boost) or nil
 end
-function M.Purchase(player,id)
+function M.Purchase(player,id,currentStage)
  if typeof(player)~="Instance" or not player:IsA("Player") or player.Parent~=Players then return false,"InvalidPlayer" end
- if id~="Speed1" then return false,"InvalidRequest" end
- local ok,code=Data.PurchaseSpeed(player,id)
+ if id~="Upgrade" then return false,"InvalidRequest" end
+ -- Resolve an already accepted write even if Premium ownership changed meanwhile.
+ local session=Data.Get(player)
+ local pending=session and session.PendingItemMutation
+ if not (pending and pending.SpeedUpgrade and pending.CurrentStage==currentStage) then
+  local owned,status=Pass.RefreshPremiumSpeed(player)
+  if owned then return false,"PremiumOwned" end
+  if status~="Verified" then return false,status end
+ end
+ local ok,code=Data.PurchaseSpeed(player,id,currentStage)
  if ok then M.Apply(player) end
  return ok,code
 end

@@ -847,3 +847,11 @@
 - Reuse purchased UI for the measured purple header, separate dark body, four equal tabs and cyan selection; keep other tab bodies and all gameplay intact.
 - Replace the Inventory600-Win offer with display-only Current Speed; retain existing owned Boost effects. Premium uses Config speed, actual Marketplace price, OWNED/ACTIVE and the existing verified purchase path; unavailable price remains disabled.
 - Real Edit reference comparison, all four generated tab views, narrow portrait and22 state checks; physical input/Cloud purchase/equipment unverified. Three Sources compile; same-file reDecode/ref/SharedString/UniqueId0 pass. Only owned Studio17552 ended, residual target.lock removed. See DEV_STATUS for donors, screenshots and limits.
+
+
+## 2026-10-13 - UpGrade capacity / sequential Speed cards
+
+- Add server-owned 24/28/32/36/40 Speed tiers costing100/200/300/400 Win through the existing Speed request and PlayerData atomic mutation/retry gate; retire the600-Win request.
+- Preserve legacy Boost40, Premium50, highest-source application, existing transient boost behavior and all capacity prices/save logic.
+- Match the measured two-card UpGrade layout with actual purchased icons/Win buttons; independent pending/results, MAX/OWNED and portrait reflow. Inventory's latest Current/Premium cards retained.
+- Seven scoped offline fault/state groups, compile and same-file reDecode/ref/SharedString/UniqueId0 pass. Actual Edit normal/MAX/legacy/Premium/narrow screenshots in DEV_STATUS. Physical input/real saves/Cloud runtime pending. Owned Studio ended and target.lock removed.
