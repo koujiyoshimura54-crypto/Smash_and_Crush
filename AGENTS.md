@@ -1,12 +1,13 @@
 # AGENTS.md — Smash_and_Crush 開発ルール
 
-対象プロジェクト：C:\Users\kouji\Smash_and_Crush  
-Roblox Game：Train to Smash Everything / Studio表示 +1 スマッシュ&クラッシュ
+Current game: Merge to Forge Your Strength. Cloud PlaceId: 126576845524886; UniverseId: 10765181857.
+Repository: koujiyoshimura54-crypto/Smash_and_Crush (main).
+Y02 repository: C:\Users\kouji\Smash_and_Crush\Smash_and_Crush_updated_20260915.
+Editable local place: C:\Users\kouji\MergeToForge_CurrentCloud.rbxl. A newer explicit user path takes precedence.
 
 ## 作業前の必読
 
-1. 作業開始前に必ず全文を確認する：  
-   [GAME_SPEC](docs/GAME_SPEC.md)、[BALANCE_SPEC](docs/BALANCE_SPEC.md)、[UI_SPEC](docs/UI_SPEC.md)、[DEV_STATUS](docs/DEV_STATUS.md)。
+1. Read the latest relevant entry in [DEV_STATUS](docs/DEV_STATUS.md) and only the sections of [GAME_SPEC](docs/GAME_SPEC.md), [BALANCE_SPEC](docs/BALANCE_SPEC.md), and [UI_SPEC](docs/UI_SPEC.md) needed for this task. Do not reread all specifications for every small fix.
 2. 最新ユーザー指示とSPECが矛盾する場合は最新指示を優先し、関連SPECの更新が必要なことを報告する。過去の指示・古いコメントだけで最新の許可範囲を狭めない。
 3. 不明な仕様を推測で大規模変更しない。現行Studio、最新reports、明確に確定した設計、旧コメントの順で根拠を調べ、「仕様不一致・要確認」を記録する。
 4. 正常に動いている機能を変更する前に、今回の変更へ直接関係するScript・Config・Object・呼び出し元と影響先だけを確認する。小規模な不具合でProject全体へ監査範囲を広げない。既にユーザーまたは直前Phaseで確認済みの前提は、今回の変更が触れていない限り再確認しない。
@@ -38,11 +39,11 @@ Roblox Game：Train to Smash Everything / Studio表示 +1 スマッシュ&クラ
 
 - 初期SPECの優先順位は現在Studio → 最新reports/CSV → 明確な確定設計 → 古い仕様・コメント。今後のユーザー最新指示はSPECに優先する。
 - 「現在実装済み」「暫定」「未実装」「将来予定」「要確認」を分ける。存在するConfigやUIボタンだけで機能完成を宣言しない。
-- Studioの接続Placeを確認する。今回の初期監査対象PlaceIdは101572058398926。複数Studioや異なるPlaceでは誤編集を防ぐ。
+- For Cloud edits/Play, identify the intended connected Studio by PlaceId126576845524886. Old PlaceId101572058398926 is a legacy reference, not the editing target. A user-confirmed local CurrentCloud is authoritative for that local task; do not demand additional proof of its Cloud origin.
 - reports/Implementation_Audit_20260915/sourcesは監査時点の保存物で、自動同期ソースではない。報告のbefore/after/evidenceを後から書き換えない。新しい変更は新しい報告へ記録する。
 - 既存レポート整理では内容と関連リンクを維持する。検証用Playerデータ、個人情報、秘密情報を新規公開物へ流用しない。
 - Publish、削除・破壊的移行はユーザーの許可範囲を確認する。既に明確に許可された通常作業について細かな確認を繰り返さない。
-- Git未導入・未初期化を理由に勝手にインストール、git init、Commit、Remote作成をしない。
+- For an authorized Git synchronization task, locate the existing repository first (including the Y02 nested path above). If absent, clone the specified remote into an absent/empty destination without asking again; never overwrite a nonempty directory or initialize an unrelated repository. Software installation and credential changes require separate authorization.
 - 今回の文書初期化でStudio実装は変更していない。次回作業では必要な監査を行い、SPEC v1.0を出発点として扱う。
 
 ## Git運用
@@ -51,3 +52,19 @@ Roblox Game：Train to Smash Everything / Studio表示 +1 スマッシュ&クラ
 - Commit前に`git status`と`git diff`を確認し、今回と無関係な変更を混ぜない。他者または以前から存在する変更を勝手にCommit・破棄しない。
 - 通常のCommitと`origin/main`へのPushは完了作業の一部として扱い、都度の事前確認を不要とする。
 - Force Push、rebaseやreset等による履歴改変、Branch削除、今回と無関係な変更の破棄を行う場合だけ、実行前にユーザー確認を得る。
+
+
+## Standing authorization and fewer interruptions — 2026-10-14
+
+The user explicitly authorized this update to reduce repeated permission questions. Apply these rules to the requested task, not unrelated work.
+
+- A request to implement or fix authorizes its necessary targeted reads, Source/property edits, same-file CurrentCloud writes, focused verification, English project records, and normal commit/push of that task's changes to the existing origin/main. Do not stop after diagnosis or ask "may I implement/test/commit/push?" again.
+- Reading logs, current files and Git history, inspecting the connected Studio, and checking status/diffs need no conversational confirmation. Routine reversible implementation choices within the agreed scope are delegated to the agent.
+- Cloud Play/Stop/Edit verification related to the requested implementation is authorized. Preserve the user's session and unrelated edits. Do not run local PlaceId0 Play. Do not reset player data, make real Robux purchases, or introduce unrelated data changes as a test without explicit authorization.
+- The user saves and publishes manually. Do not perform Studio GUI Save/Publish, create unsolicited backups/alternate rbxl/work or migration folders, or manufacture replacement visuals when purchased assets cannot be accessed.
+- Close only verification Studio processes started by the agent. Remove only the exact target's stale lock after confirming no process still holds it; never terminate the user's Studio or delete an active lock.
+- Preserve existing tracked/untracked changes. Commit only the task's changes. Do not discard work, force-push, rewrite history, or broaden the task merely to finish.
+- Accept a user's confirmation of the target file and established facts. Recheck only when new evidence materially conflicts with them. Do not impose new proof, backup, staging, or approval gates.
+- Ask only when a material unresolved choice cannot be inferred, the next action exceeds authorization, or a concrete risk of serious data loss/DataStore damage cannot be resolved within scope. Continue independent authorized work while resolving the blocker.
+- Conversation authorization and host/tool permissions are separate. Follow enforced sandbox, managed policy, MCP Capability and approval requirements. This file grants no bypass. If enforcement blocks an action, state the exact action and reason once; use a permitted alternative if available, otherwise request the smallest necessary user action. Do not repeatedly submit equivalent blocked attempts.
+- These standing authorizations supersede older repository wording that requires repeated conversational permission for the same ordinary task. They do not override enforced platform permissions or the explicit prohibitions above.
