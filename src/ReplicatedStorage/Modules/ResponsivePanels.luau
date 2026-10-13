@@ -41,6 +41,19 @@ function M.Fit(panel,gui)
  local reserveTop=gui:GetAttribute("PanelReserveTop") or 0
  local reserveRight=gui:GetAttribute("PanelReserveRight") or 0
  local v=Vector2.new(original.X-reserveRight,original.Y-reserveTop)
+ if panel.Name=="InventoryPanel" and panel:GetAttribute("InventoryReferenceLayout") then
+  local portrait=v.X<700 and v.X<v.Y
+  d=portrait and Vector2.new(700,900) or Vector2.new(1130,812)
+  local s=portrait and math.min((v.X-24)/d.X,(v.Y-24)/d.Y)
+   or math.min(v.X/1672,v.Y/941)
+  s=math.clamp(s,.05,1)
+  local u=panel:FindFirstChild("ResponsiveScale")
+  if not u then u=Instance.new("UIScale");u.Name="ResponsiveScale";u.Parent=panel end
+  u.Scale=s;panel.Size=UDim2.fromOffset(d.X,d.Y);panel.AnchorPoint=Vector2.new(.5,.5)
+  panel.Position=UDim2.fromOffset(v.X/2,reserveTop+v.Y/2)
+  aspect(panel,d.X,d.Y,true);panel:SetAttribute("ResponsiveCompact",portrait)
+  return
+ end
  -- Inventory keeps readable controls in a short landscape viewport.
  if panel.Name=="InventoryPanel" and v.X>v.Y and v.Y<500 then d=Vector2.new(d.X,410) end
  -- The authored design is the coordinate system. Never reshape its interior.
@@ -65,6 +78,7 @@ local function header(panel,small,s)
  end
 end
 local function inventory(panel,gui)
+ if panel:GetAttribute("InventoryReferenceLayout") then return end
  local small=false -- Preserve authored geometry at every viewport.
  ;local s=panel.ResponsiveScale.Scale
  local short=gui.AbsoluteSize.Y<500

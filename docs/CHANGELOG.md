@@ -840,3 +840,10 @@
 - Dim only selected Item units / Pet copy IDs using original purchased card/image/Viewport colors, preserving check and drag-opacity state; exact color restoration on deselect/Clear.
 - Share rotated screen-card/Drop rectangle overlap for highlight and release; accept sliver overlap, reject separated/touch-only bounds. Drop visuals/geometry, navigation, exclusions, Item processing and disabled Pet execution unchanged.
 -22 focused helper assertions, Source compile, same-file reDecode/reference/SharedString/UniqueId0 pass. Actual input/render and Cloud verification pending: no connected Studio. No Studio/lock/prohibited gameplay/save operations. Detailed hashes/scope in DEV_STATUS.
+
+
+## 2026-10-13 - Inventory shell / two-card Speed reference
+
+- Reuse purchased UI for the measured purple header, separate dark body, four equal tabs and cyan selection; keep other tab bodies and all gameplay intact.
+- Replace the Inventory600-Win offer with display-only Current Speed; retain existing owned Boost effects. Premium uses Config speed, actual Marketplace price, OWNED/ACTIVE and the existing verified purchase path; unavailable price remains disabled.
+- Real Edit reference comparison, all four generated tab views, narrow portrait and22 state checks; physical input/Cloud purchase/equipment unverified. Three Sources compile; same-file reDecode/ref/SharedString/UniqueId0 pass. Only owned Studio17552 ended, residual target.lock removed. See DEV_STATUS for donors, screenshots and limits.

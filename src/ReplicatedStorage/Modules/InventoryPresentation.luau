@@ -17,6 +17,7 @@ local colors={
 local purchase={BuyButton=true,WinButton=true,RobuxButton=true,WinPurchase=true,RobuxPurchase=true,Purchase=true,PurchasedButtonVisual=true}
 local function protected(x)
  while x do
+  if x:GetAttribute("InventoryReferenceOwned") then return true end
   if purchase[x.Name] or x.Name=="PurchasedShopHeader" or x.Name=="PurchasedShopClose"
    or x:GetAttribute("PurchasedShopDecoration") or x.Name:find("Badge") or x.Name:find("Notification") then return true end
   x=x.Parent
@@ -106,8 +107,239 @@ function M.ApplyPurchasedSurface(x)
   pattern.BackgroundTransparency=1;pattern.ZIndex=x.ZIndex;pattern.Active=false;pattern.Visible=not body and not textSurface
  end
 end
-function M.SetSelected(x,value) x:SetAttribute("PurchasedShopSelected",value==true);M.ApplyPurchasedSurface(x) end
+function M.SetSelected(x,value)
+ x:SetAttribute("PurchasedShopSelected",value==true)
+ local visual=x:FindFirstChild("InventoryTabVisual")
+ if visual then
+  visual.UIGradient.Color=value and ColorSequence.new(Color3.fromRGB(0,222,255),Color3.fromRGB(0,148,236))
+   or ColorSequence.new(Color3.fromRGB(172,0,255),Color3.fromRGB(76,0,225))
+  visual.UIGradient.Rotation=90
+  visual.InnerUIStroke.Color=value and Color3.fromRGB(86,244,255) or Color3.fromRGB(200,83,255)
+ else M.ApplyPurchasedSurface(x) end
+end
 function M.SetEquipped(x,value) x:SetAttribute("PurchasedShopEquipped",value==true);M.ApplyPurchasedSurface(x) end
+
+-- Measured from the owner's 1672x941 reference: panel (271,76), 1130x812.
+-- All painted parts below are clones of purchased Shop/Restock/Inventory parts.
+local inventoryBold=Font.fromEnum(Enum.Font.GothamBlack) -- purchased HatchClient TEXT_FONT
+local function referenceLayer(x,z,panel)
+ x.ZIndex=z+(panel.ZIndex>=200 and 200 or 0)
+ x:SetAttribute("ResponsiveOriginalZ",z)
+end
+local function referenceRect(x,a,b,w,h)
+ x.AnchorPoint=Vector2.zero;x.Position=UDim2.fromOffset(a,b);x.Size=UDim2.fromOffset(w,h)
+end
+local function referenceText(x,max)
+ x.FontFace=inventoryBold;x.TextColor3=Color3.new(1,1,1)
+ x.TextWrapped=true;x.TextScaled=true;x.TextTransparency=0;x.TextStrokeTransparency=1;x.AutoLocalize=false
+ local limit=x:FindFirstChildOfClass("UITextSizeConstraint") or Instance.new("UITextSizeConstraint")
+ limit.MinTextSize=6;limit.MaxTextSize=max;limit.Parent=x
+ for _,s in x:GetChildren() do if s:IsA("UIStroke") then
+  s.Enabled=true;s.Color=Color3.new(0,0,0);s.ApplyStrokeMode=Enum.ApplyStrokeMode.Contextual
+  s.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize;s.Thickness=4;s.Transparency=0
+ end end
+end
+local function referenceClean(x)
+ for _,c in x:GetDescendants() do if c:IsA("LuaSourceContainer") then c:Destroy() end end
+ for _,c in x:GetChildren() do
+  if c:IsA("UIGridStyleLayout") or c:IsA("UIAspectRatioConstraint") or c:IsA("UISizeConstraint") or c:IsA("UIPadding") or c:IsA("UIScale") then c:Destroy() end
+ end
+end
+local function setupInventoryReference(panel,header,titleIcon,close)
+ local shop,top,card=templates()
+ panel:SetAttribute("InventoryReferenceLayout",true)
+ panel:SetAttribute("ResponsiveDesignSize",Vector2.new(1130,812))
+ panel:SetAttribute("PurchasedShopSurfaceColor",shop.BackgroundColor3)
+ panel.BackgroundTransparency=1
+ for _,x in panel:GetChildren() do
+  if x:IsA("UIStroke") or x:IsA("UIGradient") then x.Enabled=false end
+ end
+ local body=decoration(shop,panel,"PurchasedInventoryBody")
+ body:SetAttribute("InventoryReferenceOwned",true);referenceClean(body)
+ for _,x in body:GetChildren() do if x:IsA("GuiObject") then x:Destroy() end end
+ body.Visible=true;body.BackgroundColor3=Color3.fromRGB(7,20,32);body.BackgroundTransparency=.12
+ body.ClipsDescendants=false;referenceLayer(body,30,panel)
+ local corner=body:FindFirstChildOfClass("UICorner") or panel.UICorner:Clone();corner.Parent=body;corner.CornerRadius=UDim.new(0,24)
+ body.UIStroke.Enabled=true;body.UIStroke.Color=Color3.new(0,0,0);body.UIStroke.Thickness=4
+ body.UIStroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+ header:SetAttribute("InventoryReferenceOwned",true);referenceClean(header)
+ local hc=header:FindFirstChildOfClass("UICorner") or panel.UICorner:Clone();hc.Parent=header;hc.CornerRadius=UDim.new(0,24)
+ header.UIGradient.Color=ColorSequence.new(Color3.fromRGB(194,0,255),Color3.fromRGB(81,0,239));header.UIGradient.Rotation=90
+ header.InnerUIStroke.Color=Color3.fromRGB(193,61,255)
+ header.OuterUIStroke.Thickness=4;header.OuterUIStroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+ for _,name in {"ShopText1","ShopText2"} do referenceText(header[name],112);header[name].Text="Inventory" end
+ header.ShopText2.Visible=false -- one outlined title, no legacy offset title underneath
+ header.ShopText1.TextXAlignment=Enum.TextXAlignment.Left
+ if titleIcon then titleIcon:SetAttribute("InventoryReferenceOwned",true) end
+ close:SetAttribute("InventoryReferenceOwned",true)
+ local v=close.PurchasedShopClose
+ v.UIGradient.Color=ColorSequence.new(Color3.fromRGB(255,67,188),Color3.fromRGB(234,0,130));v.UIGradient.Rotation=90
+ v.TextLabel.Text="X";referenceText(v.TextLabel,76)
+ v.TextLabel.AnchorPoint=Vector2.new(.5,.5);v.TextLabel.Position=UDim2.fromScale(.5,.5);v.TextLabel.Size=UDim2.fromScale(.88,.88)
+ for _,name in {"Dumbbells","Items","Aura","Speed"} do
+  local button=panel.Tabs[name];button:SetAttribute("InventoryReferenceOwned",true)
+  button.BackgroundTransparency=1;button.Text="";button.Active=true;button.Interactable=true
+  for _,x in button:GetChildren() do
+   if x:IsA("GuiObject") and not x.Name:find("Badge") and not x.Name:find("Notification") then x.Visible=false
+   elseif x:IsA("UIStroke") then x.Enabled=false end
+  end
+  local visual=decoration(card.Owned,button,"InventoryTabVisual");referenceClean(visual)
+  visual:SetAttribute("InventoryReferenceOwned",true)
+  visual.Text="";visual.Visible=true;visual.Active=false;visual.Interactable=false;visual.Selectable=false
+  visual.AnchorPoint=Vector2.zero;visual.Position=UDim2.new();visual.Size=UDim2.fromScale(1,1)
+  visual.UICorner.CornerRadius=UDim.new(0,18);visual.StudPattern.Visible=false
+  visual.OuterUIStroke.Color=Color3.new(0,0,0);visual.OuterUIStroke.Thickness=4;visual.OuterUIStroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+  visual.InnerUIStroke.Thickness=2;visual.InnerUIStroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+  visual.UIStrokeInner.Enabled=false
+  visual.PriceTag.Text=name;referenceText(visual.PriceTag,42)
+  visual.PriceTag.AnchorPoint=Vector2.new(.5,.5);visual.PriceTag.Position=UDim2.fromScale(.5,.5);visual.PriceTag.Size=UDim2.fromScale(.95,.78)
+  M.SetSelected(button,panel:GetAttribute("SelectedTab")==name)
+ end
+end
+local function layoutInventoryReference(panel,header,titleIcon,close)
+ local w,h=panel.Size.X.Offset,panel.Size.Y.Offset
+ local narrow=w<900;local hh=narrow and 104 or 132;local th=narrow and 64 or 74
+ referenceRect(panel.PurchasedInventoryBody,0,hh,w,h-hh)
+ referenceRect(header,0,0,w,hh);referenceLayer(header,70,panel)
+ referenceLayer(header.StudPattern,70,panel);header.StudPattern.TileSize=UDim2.fromOffset(150,150)
+ local is=narrow and 92 or 146
+ if titleIcon then referenceRect(titleIcon,26,4,is,hh-8);referenceLayer(titleIcon,74,panel) end
+ referenceRect(header.ShopText1,narrow and 128 or 196,8,w-(narrow and 240 or 320),hh-16);referenceLayer(header.ShopText1,75,panel)
+ local cs=narrow and 76 or 94
+ -- Transparent live input stays above the noninteractive purchased GuiButton artwork.
+ referenceRect(close,w-cs-14,(hh-cs)/2,cs,cs);referenceLayer(close,84,panel)
+ for _,x in close.PurchasedShopClose:GetDescendants() do if x:IsA("GuiObject") then referenceLayer(x,82,panel) end end
+ referenceLayer(close.PurchasedShopClose,81,panel)
+ referenceRect(panel.Tabs,30,hh+16,w-60,th)
+ local gap=12;local tw=(w-60-gap*3)/4
+ for i,name in {"Dumbbells","Items","Aura","Speed"} do
+  local b=panel.Tabs[name];referenceRect(b,(i-1)*(tw+gap),0,tw,th);referenceLayer(b,64,panel)
+  local v=b.InventoryTabVisual;referenceLayer(v,61,panel);referenceLayer(v.PriceTag,63,panel)
+  -- TextScaled constraints are screen-sized: share the longest tab's fit on all four.
+  local scale=panel:FindFirstChildOfClass("UIScale")
+  v.PriceTag:FindFirstChildOfClass("UITextSizeConstraint").MaxTextSize=math.max(6,math.min(42,tw*(scale and scale.Scale or 1)/5.4))
+ end
+ local y=hh+16+th+26
+ referenceRect(panel.Content,30,y,w-60,h-y-16)
+end
+
+local speedViews=setmetatable({},{__mode="k"})
+function M.BuildSpeedView(panel,config)
+ if speedViews[panel] then return speedViews[panel] end
+ M.BindPurchasedPanel(panel)
+ local HUD=require(game.ReplicatedStorage.Modules.HUDLayout)
+ local _,top,donor=templates()
+ local page=panel.Content.Speed
+ for _,x in page:GetChildren() do if x:IsA("GuiObject") then x.Visible=false end end
+ local list=panel.Content.Aura.AuraList:Clone();list.Name="SpeedList";referenceClean(list)
+ for _,x in list:GetChildren() do if x:IsA("GuiObject") then x:Destroy() end end
+ list:SetAttribute("InventoryReferenceOwned",true);list.BackgroundTransparency=1;list.BorderSizePixel=0
+ for _,x in list:GetChildren() do if x:IsA("UIStroke") or x:IsA("UIGradient") then x.Enabled=false end end
+ list.Position=UDim2.new();list.Size=UDim2.fromScale(1,1);list.Visible=true;list.Active=true
+ list.ScrollingEnabled=true;list.ScrollingDirection=Enum.ScrollingDirection.Y
+ list.AutomaticCanvasSize=Enum.AutomaticSize.None;list.CanvasSize=UDim2.new();list.ScrollBarThickness=5
+ list.Parent=page;referenceLayer(list,31,panel)
+ local function label(parent,name,text,max)
+  local x=top.ShopText1:Clone();x.Name=name;referenceClean(x);x.Text=text;x.Visible=true
+  x.BackgroundTransparency=1;x.AnchorPoint=Vector2.zero;referenceText(x,max)
+  x.TextXAlignment=Enum.TextXAlignment.Center;x.Parent=parent;referenceLayer(x,40,panel);return x
+ end
+ local rows={}
+ for i,name in {"Current","Premium"} do
+  local row=donor:Clone();row.Name=name;referenceClean(row)
+  for _,x in row:GetChildren() do if x:IsA("GuiObject") and x.Name~="StudPattern" then x:Destroy() end end
+  row:SetAttribute("InventoryReferenceOwned",true);row.Visible=true;row.BackgroundColor3=Color3.new(1,1,1);row.BackgroundTransparency=0
+  row.AnchorPoint=Vector2.zero;row.Parent=list;referenceLayer(row,32,panel)
+  local corner=panel.UICorner:Clone();corner.CornerRadius=UDim.new(0,28);corner.Parent=row
+  row.UIGradient.Color=i==1 and ColorSequence.new(Color3.fromRGB(25,85,147),Color3.fromRGB(10,43,96))
+   or ColorSequence.new(Color3.fromRGB(105,10,191),Color3.fromRGB(43,3,103));row.UIGradient.Rotation=90
+  row.OuterUIStroke.Thickness=4;row.OuterUIStroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+  row.InnerUIStroke.Color=i==1 and Color3.fromRGB(38,126,216) or Color3.fromRGB(175,24,255)
+  row.InnerUIStroke.Thickness=3;row.InnerUIStroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+  row.StudPattern.Image=top.StudPattern.Image;row.StudPattern.ScaleType=Enum.ScaleType.Tile
+  row.StudPattern.TileSize=UDim2.fromOffset(180,180);row.StudPattern.ImageTransparency=.9
+  row.StudPattern.Size=UDim2.fromScale(1,1);row.StudPattern.Position=UDim2.new();row.StudPattern.AnchorPoint=Vector2.zero
+  referenceLayer(row.StudPattern,33,panel)
+  local title=label(row,"Title",name=="Current" and "Current Speed" or "Premium Speed",58);title.TextXAlignment=Enum.TextXAlignment.Left
+  local icon=panel.Tabs.Speed.Icon:Clone();icon.Name="Icon";icon.Visible=true;icon.Parent=row;referenceLayer(icon,35,panel)
+  icon.ScaleType=Enum.ScaleType.Fit;icon.ImageTransparency=0
+  local value=label(row,"SpeedValue","...",142)
+  local unit=label(row,"Unit","Walk Speed",40)
+  local button
+  if i==1 then
+   button=donor.Owned:Clone();button.Name="ActiveStatus";referenceClean(button)
+   button.Text="";button.Visible=true;button.Active=false;button.Interactable=false;button.Selectable=false
+   button.Parent=row;referenceLayer(button,42,panel);referenceLayer(button.PriceTag,45,panel)
+   button.PriceTag.Text="ACTIVE";referenceText(button.PriceTag,52)
+   button.PriceTag.AnchorPoint=Vector2.zero;button.PriceTag.Position=UDim2.fromScale(.28,.12);button.PriceTag.Size=UDim2.fromScale(.68,.76)
+   button.StudPattern.Visible=false;button.UICorner.CornerRadius=UDim.new(0,22)
+   local check=game.ReplicatedStorage.Assets.Templates.PetInventory.Main.Checkmark:Clone()
+   check.Name="Checkmark";check.Visible=true;check.AnchorPoint=Vector2.new(.5,.5)
+   check.Position=UDim2.fromScale(.16,.5);check.Size=UDim2.fromScale(.23,.72);check.Parent=button;referenceLayer(check,45,panel)
+  else
+   button=panel.Content.Aura.AuraList.RedAuraCard.BuyButton:Clone();button.Name="BuyButton";referenceClean(button)
+   for _,x in button:GetChildren() do if x:IsA("GuiObject") then x:Destroy() end end
+   button:SetAttribute("InventoryReferenceOwned",true);button.Parent=row;button.Text="";button.Visible=true
+   referenceLayer(button,42,panel);HUD.PurchaseButton(button,"Robux","...")
+   local visual=button:FindFirstChild("PurchasedButtonVisual")
+   if visual then
+    local layers={visual};for _,x in visual:GetDescendants() do if x:IsA("GuiObject") then table.insert(layers,x) end end
+    for _,x in layers do x:SetAttribute("ResponsiveOriginalZ",x.ZIndex-(panel.ZIndex>=200 and 200 or 0)) end
+   end
+  end
+  rows[name]={Root=row,Title=title,Icon=icon,Value=value,Unit=unit,Button=button}
+ end
+ local status=label(page,"SpeedStatus","",22);status:SetAttribute("InventoryReferenceOwned",true)
+ status.TextXAlignment=Enum.TextXAlignment.Center
+ local connections={}
+ local function layout()
+  local s=HUD.GetLocalSize(page);local gap=20;local footer=status.Text~="" and 32 or 0
+  local h=math.max(240,(s.Y-footer-gap)/2)
+  list.Size=UDim2.new(1,0,1,-footer);list.CanvasSize=UDim2.fromOffset(0,2*h+gap)
+  for i,name in {"Current","Premium"} do
+   local r=rows[name];local w=math.max(s.X-4,1)
+   referenceRect(r.Root,2,(i-1)*(h+gap)+2,w-4,h-4)
+   referenceRect(r.Title,24,6,w-48,64)
+   referenceRect(r.Icon,w*.035,76,w*.33,h-84)
+   referenceRect(r.Value,w*.395,h*.32,w*.235,h*.45)
+   referenceRect(r.Unit,w*.385,h*.71,w*.255,h*.18)
+   referenceRect(r.Button,w*.685,h*.40,w*.29,h*.38)
+   if w<800 then
+    -- Keep purchased Robux aspect/readability; move the action below the value on phones.
+    referenceRect(r.Icon,w*.035,h*.24,w*.36,h*.54)
+    referenceRect(r.Value,w*.47,h*.21,w*.46,h*.30)
+    referenceRect(r.Unit,w*.42,h*.51,w*.53,h*.16)
+    referenceRect(r.Button,w*.40,h-100,w*.56,88)
+   end
+  end
+  referenceRect(status,0,s.Y-30,s.X,28)
+ end
+ table.insert(connections,page:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout))
+ local view={BuyButton=rows.Premium.Button,Rows=rows,List=list}
+ function view:SetState(state,pending,price,source,message)
+  local active=state.ActiveSpeedItemId
+  local item=active=="Premium" and config.Premium or config.Speed1
+  -- Server GetState.WalkSpeed excludes transient movement multipliers.
+  rows.Current.Value.Text=state.Loaded and typeof(state.WalkSpeed)=="number" and tostring(state.WalkSpeed) or "..."
+  rows.Current.Icon.Image="rbxassetid://"..tostring(item.ImageAssetId)
+  rows.Current.Button.Visible=state.Loaded==true
+  rows.Premium.Value.Text=tostring(config.Premium.WalkSpeed)
+  rows.Premium.Icon.Image="rbxassetid://"..tostring(config.Premium.ImageAssetId)
+  local owned=state.PremiumOwned==true
+  local shown=owned and (active=="Premium" and "ACTIVE" or "OWNED") or pending and "..." or (price~=nil and tostring(price) or "...")
+  HUD.PurchaseButton(view.BuyButton,"Robux",shown)
+  local enabled=state.Loaded==true and not owned and not pending and source=="Marketplace" and price~=nil
+  view.BuyButton.Active=enabled;view.BuyButton.Interactable=enabled;view.BuyButton.AutoButtonColor=enabled
+  view.BuyButton:SetAttribute("PriceSource",source)
+  status.Text=message or "";status.Visible=status.Text~="";layout()
+ end
+ function view:Destroy()
+  for _,c in connections do c:Disconnect() end
+  list:Destroy();status:Destroy();speedViews[panel]=nil
+ end
+ table.insert(connections,panel.Destroying:Connect(function()for _,c in connections do c:Disconnect() end;speedViews[panel]=nil end))
+ speedViews[panel]=view;layout();return view
+end
 function M.BindPurchasedPanel(panel)
  if bindings[panel] then return end
  assert(panel.Name=="InventoryPanel" or (panel.Name=="Panel" and panel.Parent.Name=="StageSkipGui"),"Purchased skin scope")
@@ -168,6 +400,7 @@ function M.BindPurchasedPanel(panel)
   end
  end
  for _,x in panel:GetDescendants() do apply(x) end
+ if panel.Name=="InventoryPanel" then setupInventoryReference(panel,header,titleIcon,close) end
  local function layout()
   local compact=panel.Size.Y.Scale==0 and panel.Size.Y.Offset<500
   if panel.Name=="InventoryPanel" then
@@ -215,8 +448,9 @@ function M.BindPurchasedPanel(panel)
   if titleIcon then titleIcon.Position=UDim2.fromOffset(16,header.Size.Y.Offset/2);titleIcon.Visible=true end
   tile(header,header.StudPattern,top.StudPattern)
   for _,x in panel:GetDescendants() do
-   if x.Name=="StudPattern" and x:IsA("ImageLabel") and x.Visible and not x:FindFirstAncestor("PurchasedButtonVisual") and not x:FindFirstAncestor("PurchasedShopClose") then tile(x.Parent,x,top.StudPattern) end
+   if x.Name=="StudPattern" and x:IsA("ImageLabel") and x.Visible and not x.Parent:GetAttribute("InventoryReferenceOwned") and not x:FindFirstAncestor("PurchasedButtonVisual") and not x:FindFirstAncestor("PurchasedShopClose") then tile(x.Parent,x,top.StudPattern) end
   end
+  if panel.Name=="InventoryPanel" then layoutInventoryReference(panel,header,titleIcon,close) end
  end
  layout();connect(panel:GetPropertyChangedSignal("Size"),layout)
  local scale=panel:FindFirstChildOfClass("UIScale") if scale then connect(scale:GetPropertyChangedSignal("Scale"),layout) end

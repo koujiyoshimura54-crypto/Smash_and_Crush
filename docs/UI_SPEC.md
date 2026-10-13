@@ -484,3 +484,12 @@ Use measured1372x823 Item reference geometry for both tabs: purchased yellow hea
 Click/tap and drag share the selection entry path. Mouse6px drag; touch240ms hold, earlier motion is scroll; valid drop adds once, outside drop cancels,400ms post-drop activation suppression. No dropped icons/sockets in the region. Tab/close clears and releases display resources. Pet inputs are normal owned copies, excluding Limited/equipped; Merge remains explicitly disabled. Item uses existing count-based3-identical recipe, authoritative result and sole pending-guarded submit.
 
 Upgrade-only filtering has no agreed mixed-origin baseline. Until decided, show actual positive outcomes as Possible Eggs (no chance redistribution). Rendered states/comparison links and remaining physical-input/Cloud checks are in the latest DEV_STATUS; do not claim pixel-perfect art identity or live gameplay verification.
+
+
+## 2026-10-13 - Inventory common shell / two-card Speed (supersedes Inventory shell geometry)
+
+Use the owner's two-card Speed reference as the1130x812 design: purple purchased Stud header, existing Inventory icon, single white outlined title and pink close; separated translucent dark body; equally spaced Dumbbells/Items/Aura/Speed tabs, cyan selected. Other page bodies retain their existing lists/equipment/purchase renderers. Portrait uses the same four tabs and vertically reflows Speed actions without replacing purchased buttons.
+
+Speed has Current Speed and Premium Speed only. Current is display-only, uses the server's normal WalkSpeed/active source and existing shoe icon, and excludes temporary2x movement. Premium shows Config speed and exactly one of fetched Robux price, OWNED or ACTIVE. Preserve purchased green button artwork/font/currency glyph; no extra Robux word. Price failure/owned/pending states disable new purchase. Remove only the Inventory600-Win offer, preserving already-owned effects. No new Win upgrade UI.
+
+Actual Edit comparisons and limits are recorded in DEV_STATUS; hardware input/Cloud runtime remain unverified.

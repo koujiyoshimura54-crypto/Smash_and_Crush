@@ -468,3 +468,8 @@ All four normal Egg pools are approved/enabled locally with seven distinct purch
 This supersedes the earlier three-step/socket UI description only. Item merging still consumes3 same ItemId and grants the server ResultItemId through the existing Service/transaction. UI exposes quantity-derived entries, up to3 spendable copies plus excess count badge; no persistent individual Item IDs. One fresh-state/pending-guarded request; no new recipe/save behavior.
 
 Pet merging remains selection/preview-only, disabled, with no consume/grant/save. Normal owned IDs may be selected by click/tap or valid drop; Limited/equipped copies are excluded at this UI phase. Shared points/odds remain active internally but are not printed. Mixed-origin upgrade-only display baseline is pending; the view does not invent/filter/redistribute outcomes.
+
+
+## 2026-10-13 - Inventory Speed offer visibility
+
+Inventory no longer exposes the600-Win Speed Boost purchase entry. Existing OwnedSpeeds.Speed1 data/effect and all SpeedService/GamePassService/Config behavior remain intact; no UpGrade/Win upgrade connection was added. The UI displays normal server speed separately from temporary movement multipliers and keeps the existing Premium verified purchase flow. This is a client presentation change only.
