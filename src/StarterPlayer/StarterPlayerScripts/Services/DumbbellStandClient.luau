@@ -7,6 +7,7 @@ local Player = Players.LocalPlayer
 local Config = require(RS.Config:WaitForChild("DumbbellStandConfig"))
 local Master = require(RS.Config:WaitForChild("DumbbellItemMaster"))
 local Notify = require(script.Parent:WaitForChild("NotifyClient"))
+local WinIcon = game:GetService("StarterGui").StrengthGui.HUD.WinAmount.Inside.Icon.Image
 local M = {}
 local started = false
 
@@ -66,8 +67,8 @@ function M.start()
    local itemId = Config.GetItemId(index)
    local item = itemId and Master.Get(itemId)
    if not item then
-    setPair(board, "Price", "Unavailable")
-    setPair(board:FindFirstChild("Amount"), "Main", "ON HOLD")
+    setPair(board, "Price", "")
+    setPair(board:FindFirstChild("Amount"), "Main", "")
     local amount = board:FindFirstChild("Amount")
     local icon = amount and amount:FindFirstChild("Icon")
     if icon and icon:IsA("ImageLabel") then icon.Visible = false end
@@ -82,13 +83,10 @@ function M.start()
    end
    local amount = board:FindFirstChild("Amount")
    -- Keep the purchased two-row board; never add a separate description panel.
-   setPair(amount, "Main", item.Name .. " (+" .. tostring(item.StrengthBonus) .. " Strength)")
+   setPair(amount, "Main", tostring(item.PriceWin))
    local icon = amount and amount:FindFirstChild("Icon")
-   if icon and icon:IsA("ImageLabel") then icon.Image = item.Image; icon.Visible = true end
-   local text = not state.Loaded and "Loading..." or (state.EquippedDumbbell == itemId and "EQUIPPED"
-    or (state.OwnedDumbbells[itemId] == true and "OWNED - Equip free" or tostring(item.PriceWin) .. " Win"))
-   if pending and pending.ItemId == itemId then text = "PLEASE WAIT..." end
-   setPair(board, "Price", text)
+   if icon and icon:IsA("ImageLabel") then icon.Image = WinIcon; icon.Visible = true end
+   setPair(board, "Price", "+" .. tostring(item.StrengthBonus))
   end
  end
  local function applyState(value)
