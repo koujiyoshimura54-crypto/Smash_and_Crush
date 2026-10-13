@@ -152,6 +152,7 @@ local function buildMergeShop(ctx)
  local itemId=nil
  local itemFresh,itemPending=false,false
  local items,tiles={},{}
+ local cardTints={}
  local listKey=""
  local candidateKey=""
  local candidates={}
@@ -195,7 +196,7 @@ local function buildMergeShop(ctx)
  local function releaseCards()
   endDrag()
   for _,fn in pairs(cardCleanups) do fn() end
-  table.clear(cardCleanups);table.clear(tiles)
+  table.clear(cardCleanups);table.clear(tiles);table.clear(cardTints)
  end
  local function choose(entry,addOnly)
   if not selectable(entry) then return end
@@ -218,15 +219,23 @@ local function buildMergeShop(ctx)
   if root and not root.IgnoreGuiInset then v-=ctx.GuiService:GetGuiInset() end
   return v
  end
- local function inside(p,x)
-  local a,s=x.AbsolutePosition,x.AbsoluteSize
-  return p.X>=a.X and p.X<=a.X+s.X and p.Y>=a.Y and p.Y<=a.Y+s.Y
+ local function overlapsDrop(p)
+  if not drag or not drag.Ghost then return false end
+  local ghost=drag.Ghost
+  local s=ghost.AbsoluteSize
+  if s.X<=0 or s.Y<=0 then s=Vector2.new(cell,cell)*scale.Scale end
+  local angle=math.rad(ghost.AbsoluteRotation)
+  local c,sine=math.abs(math.cos(angle)),math.abs(math.sin(angle))
+  local half=Vector2.new(c*s.X+sine*s.Y,sine*s.X+c*s.Y)/2
+  local a,b=drop.AbsolutePosition,drop.AbsolutePosition+drop.AbsoluteSize
+  -- p is also the ghost's rendered centre; use screen pixels after UIScale/inset.
+  return p.X+half.X>a.X and p.X-half.X<b.X and p.Y+half.Y>a.Y and p.Y-half.Y<b.Y
  end
  local function updateGhost(p)
   if not drag or not drag.Ghost then return end
   local v=(p-shop.AbsolutePosition)/math.max(scale.Scale,.01)
   drag.Ghost.Position=UDim2.fromOffset(v.X,v.Y)
-  if dropStroke then dropStroke.Color=inside(p,drop) and Color3.fromRGB(0,229,255) or Color3.fromRGB(85,255,0) end
+  if dropStroke then dropStroke.Color=overlapsDrop(p) and Color3.fromRGB(0,229,255) or Color3.fromRGB(85,255,0) end
   for _,d in dashes do d.BackgroundColor3=dropStroke.Color end
  end
  local function startGhost()
@@ -290,7 +299,8 @@ local function buildMergeShop(ctx)
   if not drag then return end
   local old=drag
   if old.Active or old.Scrolling then blockedActivation[old.Entry.Key]=os.clock()+.4 end
-  local commit=old.Active and inside(p,drop) and shop.Visible
+  if old.Active then updateGhost(p) end
+  local commit=old.Active and overlapsDrop(p) and shop.Visible
   endDrag()
   if commit then choose(old.Entry,true) end
   render()
@@ -473,6 +483,25 @@ local function buildMergeShop(ctx)
   x.UIGradient.Enabled=enabled
   x.PriceTag.TextColor3=enabled and Color3.new(1,1,1) or Color3.fromRGB(204,204,204)
  end
+ local function tintSelected(tile,on)
+  local originals=cardTints[tile]
+  if not originals then
+   originals={};cardTints[tile]=originals
+  end
+   local main=tile.Main
+   local objects={main}
+   for _,x in main:GetDescendants() do table.insert(objects,x) end
+   for _,x in objects do
+    if x~=main.Checkmark and not originals[x] then
+     if x:IsA("ImageLabel") or x:IsA("ViewportFrame") then originals[x]={"ImageColor3",x.ImageColor3}
+     elseif x==main then originals[x]={"BackgroundColor3",x.BackgroundColor3} end
+    end
+   end
+  for x,property in pairs(originals) do
+   if x.Parent then x[property[1]]=on and property[2]:Lerp(Color3.new(0,0,0),.58) or property[2] end
+  end
+  tile:SetAttribute("MaterialDimmed",on)
+ end
  render=function()
   local n=selectedCount()
   listTitle.Text=tab=="Pet" and "Your Pets" or "Your Items"
@@ -488,6 +517,7 @@ local function buildMergeShop(ctx)
    if tile then
     if tab=="Pet" then PetClient.setMaterialSelection(tile,entry.Name,selected(entry),false) end
     tile.Title.Visible=false;tile.Main.Checkmark.Visible=selected(entry)
+    tintSelected(tile,selected(entry))
     local edge=tile.Main:FindFirstChildOfClass("UIStroke")
     if edge then
      local g=edge:FindFirstChildOfClass("UIGradient");if g then g.Enabled=not selected(entry) end

@@ -833,3 +833,10 @@
 
 - Purchased Owned donor has Interactable=false. Enable Active/Interactable only for cloned Item/Pet navigation buttons; preserve visuals, callbacks, Item merging and disabled Pet Merge.
 - Source compile/reDecode/reference/SharedString/UniqueId0 checks pass. Actual Item->Pet->Item clicks and close/reopen unverified because no Studio is connected. No new Studio or lock action; local update only. See DEV_STATUS.
+
+
+## 2026-10-13 - Merge material feedback and Drop overlap
+
+- Dim only selected Item units / Pet copy IDs using original purchased card/image/Viewport colors, preserving check and drag-opacity state; exact color restoration on deselect/Clear.
+- Share rotated screen-card/Drop rectangle overlap for highlight and release; accept sliver overlap, reject separated/touch-only bounds. Drop visuals/geometry, navigation, exclusions, Item processing and disabled Pet execution unchanged.
+-22 focused helper assertions, Source compile, same-file reDecode/reference/SharedString/UniqueId0 pass. Actual input/render and Cloud verification pending: no connected Studio. No Studio/lock/prohibited gameplay/save operations. Detailed hashes/scope in DEV_STATUS.
