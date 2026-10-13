@@ -5,6 +5,8 @@ M.DisplayFolderName = "ShoesModels"
 M.Source = "DumbbellStand"
 M.PollSeconds = 0.1
 M.RequestTimeout = 10
+M.SyncWaitSeconds = 1
+M.SyncPollSeconds = 0.05
 M.StandReach = 6
 -- Three-times exhibit: 3.3-stud height, resting 0.05 above purchased Press top.
 M.DisplayOffset = CFrame.new(0, 2.38442, 0) * CFrame.Angles(0, math.pi / 2, 0)

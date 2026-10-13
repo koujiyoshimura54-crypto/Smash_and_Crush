@@ -104,6 +104,17 @@ function M.start()
    if ok then applyState(value) else warn("[DumbbellStand] State lookup failed: " .. tostring(value)) end
   end)
  end
+ local function cancelPending()
+  local operation = pending
+  if not operation or operation.CancelSent then return end
+  operation.CancelSent = true
+  local ok, err = pcall(function()
+   operation.Target:FireServer(operation.ItemId, {Source = Config.Source, Action = "Cancel",
+    StandIndex = operation.StandIndex, RequestId = operation.RequestId})
+  end)
+  if not ok then warn("[DumbbellStand] Cancel failed: " .. tostring(err)) end
+  -- Keep pending until the matching acknowledgement; a new entrance waits for lock release.
+ end
  local function response(result)
   if typeof(result) ~= "table" then return end
   applyState(result.State) -- Inventory operations update the same world billboards.
@@ -111,14 +122,15 @@ function M.start()
   if not pending or result.RequestId ~= pending.RequestId then return end
   local itemId = pending.ItemId
   pending = nil
-  if result.Success == false then notify(failure(result.Code, itemId)) end
+  if result.Success == false and result.Code ~= "StandCancelled" then notify(failure(result.Code, itemId)) end
   render()
  end
  purchase.OnClientEvent:Connect(response)
  equip.OnClientEvent:Connect(response)
  Player:GetAttributeChangedSignal("EquippedDumbbell"):Connect(refresh)
  Player:GetAttributeChangedSignal("Win"):Connect(refresh)
- Player.CharacterAdded:Connect(refresh)
+ Player.CharacterAdded:Connect(function() cancelPending(); refresh() end)
+ Player:GetAttributeChangedSignal("CurrentWorld"):Connect(cancelPending)
  refresh()
  render()
  local elapsed, retry = 0, 0
@@ -136,14 +148,18 @@ function M.start()
    and (Player:GetAttribute("CurrentWorld") or 1) == 1 then
    index = Config.GetStandingIndex(folder, root.Position)
   end
-  local entered = Config.AdvanceEntry(entry, character, index)
+  if pending and (pending.Character ~= character or pending.StandIndex ~= index) then cancelPending() end
+  Config.AdvanceEntry(entry, character, index)
   if not state.Loaded and retry >= 1 then retry = 0; refresh() end
-  if not entered or pending then return end
+  if not index or pending or entry.Consumed then return end
+  entry.Consumed = true
   local itemId = Config.GetItemId(index)
   if state.Loaded and state.EquippedDumbbell == itemId then return end
   if not state.Loaded then notify(failure("DataNotLoaded", itemId)); return end
   local requestId = HttpService:GenerateGUID(false)
-  pending = {RequestId = requestId, ItemId = itemId}
+  local target = state.OwnedDumbbells[itemId] == true and equip or purchase
+  pending = {RequestId = requestId, ItemId = itemId, StandIndex = index,
+   Character = character, Target = target}
   render()
   local press = Config.GetPress(folder, index)
   local context = {
@@ -151,7 +167,6 @@ function M.start()
    ClientRootPosition = root.Position,
    ClientRelativeToPress = press and press.CFrame:PointToObjectSpace(root.Position) or nil,
   }
-  local target = state.OwnedDumbbells[itemId] == true and equip or purchase
   local ok, err = pcall(function() target:FireServer(itemId, context) end)
   if not ok then
    pending = nil
@@ -162,6 +177,7 @@ function M.start()
   end
   task.delay(Config.RequestTimeout, function()
    if pending and pending.RequestId == requestId then
+    cancelPending()
     pending = nil
     notify(failure("RequestTimeout", itemId))
     refresh()

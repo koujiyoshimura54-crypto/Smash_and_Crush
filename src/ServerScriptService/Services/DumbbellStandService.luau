@@ -83,19 +83,54 @@ local function reject(player, context, code, detected)
  return false, code
 end
 
-function M.Validate(player, itemId, context)
+function M.CheckRequest(itemId, context)
  if typeof(context) ~= "table" or context.Source ~= Config.Source
-  or typeof(context.RequestId) ~= "string" or #context.RequestId < 1 or #context.RequestId > 64 then
+  or context.Action ~= nil or typeof(context.RequestId) ~= "string"
+  or #context.RequestId < 1 or #context.RequestId > 64 then
   return false, "InvalidStandRequest"
  end
  local index = context.StandIndex
  if Config.GetItemId(index) ~= itemId or not Master.Get(itemId) then return false, "InvalidStand" end
+ return true
+end
+
+function M.Validate(player, itemId, context)
+ local valid, code = M.CheckRequest(itemId, context)
+ if not valid then return false, code end
+ local index = context.StandIndex
  if (player:GetAttribute("CurrentWorld") or 1) ~= 1 then return reject(player, context, "WrongWorld", nil) end
  local state = snapshot(player)
  if state.Index ~= index then return reject(player, context, "StandOutOfRange", state.Index) end
  if state.Consumed then return false, "StandReentryRequired" end
  state.Consumed = true
  return true
+end
+
+-- One bounded server observation window; reported client coordinates never grant entry.
+function M.AwaitEntry(player, itemId, context, operation, isCurrent)
+ local valid, code = M.CheckRequest(itemId, context)
+ if not valid then return false, code end
+ local deadline = os.clock() + Config.SyncWaitSeconds
+ while true do
+  if operation.Cancelled or not isCurrent() or player.Parent ~= Players
+   or player.Character ~= operation.Character then return false, "StandCancelled" end
+  if (player:GetAttribute("CurrentWorld") or 1) ~= 1 then
+   return reject(player, context, "WrongWorld", nil)
+  end
+  local character = player.Character
+  local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+  local root = character and character:FindFirstChild("HumanoidRootPart")
+  if not humanoid or humanoid.Health <= 0 or not root or not root:IsA("BasePart") then
+   return false, "StandCancelled"
+  end
+  local remaining = deadline - os.clock()
+  if remaining <= 0 then return reject(player, context, "StandOutOfRange", standing(player)) end
+  -- Read live Press geometry every time; a stale position on another pad may be replication lag.
+  if Config.GetStandingIndex(workspace:FindFirstChild(Config.FolderName), root.Position) == context.StandIndex then
+   return M.Validate(player, itemId, context)
+  end
+  task.wait(math.min(Config.SyncPollSeconds, remaining))
+ end
 end
 
 function M.Start()
@@ -107,7 +142,7 @@ function M.Start()
   if elapsed < Config.PollSeconds then return end
   elapsed = 0
   for _, player in ipairs(Players:GetPlayers()) do snapshot(player) end
-  end)
+ end)
  Players.PlayerRemoving:Connect(function(player) entries[player] = nil end)
 end
 

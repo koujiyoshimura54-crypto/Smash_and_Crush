@@ -9,6 +9,7 @@ local stateRemote = RS.Remotes:WaitForChild("DumbbellInventoryState")
 local lastRequest = setmetatable({}, {__mode="k"})
 local lastEquipRequest = setmetatable({}, {__mode="k"})
 local inFlight = setmetatable({}, {__mode="k"})
+local seenRequests = setmetatable({}, {__mode="k"})
 local function getInventoryState(player)
  local owned = Service.GetOwnedDumbbells(player)
  local purchasable = Service.GetPurchasableDumbbells(player)
@@ -34,13 +35,31 @@ local function respond(target, player, itemId, context, success, code)
 end
 local function handle(target, player, itemId, context, isEquip)
  local standRequest = context ~= nil
+ -- Cancel only this player's matching waiting operation; cancellation never grants entry.
+ if typeof(context) == "table" and context.Source == "DumbbellStand" and context.Action == "Cancel" then
+  local operation = inFlight[player]
+  if operation and operation.Phase == "Waiting" and operation.RequestId == context.RequestId then
+   operation.Cancelled = true
+   if inFlight[player] == operation then inFlight[player] = nil end
+  end
+  respond(target, player, itemId, context, false, "StandCancelled")
+  return
+ end
+ if standRequest then
+  local valid, code = Stand.CheckRequest(itemId, context)
+  if not valid then respond(target, player, itemId, context, false, code); return end
+ end
  if inFlight[player] then
+  if standRequest and inFlight[player].RequestId == context.RequestId then return end
   respond(target, player, itemId, context, false, "PurchaseInProgress")
   return
  end
  if standRequest then
-  local allowed, code = Stand.Validate(player, itemId, context)
-  if not allowed then respond(target, player, itemId, context, false, code); return end
+  local seen = seenRequests[player]
+  if seen and seen[context.RequestId] then
+   respond(target, player, itemId, context, false, "StandReentryRequired")
+   return
+  end
  end
  local now = os.clock()
  local last = isEquip and lastEquipRequest or lastRequest
@@ -49,8 +68,20 @@ local function handle(target, player, itemId, context, isEquip)
   return
  end
  last[player] = now
- inFlight[player] = true
+ local operation = {RequestId = standRequest and context.RequestId or nil,
+  Character = player.Character, Phase = standRequest and "Waiting" or "Executing"}
+ inFlight[player] = operation -- Acquire before the first possible wait, including Inventory operations.
+ if standRequest then
+  local seen = seenRequests[player] or {}; seenRequests[player] = seen
+  seen[context.RequestId] = true -- Keep accepted IDs until disconnect, including cancelled/expired entries.
+ end
  local ok, success, code = pcall(function()
+  if standRequest then
+   local allowed, reason = Stand.AwaitEntry(player, itemId, context, operation,
+    function() return inFlight[player] == operation end)
+   if not allowed then return false, reason end
+  end
+  operation.Phase = "Executing"
   -- Resolve ownership again on the server, including a recent Inventory purchase.
   if standRequest and Service.GetEquippedDumbbell(player) == itemId then return true, "AlreadyEquipped" end
   if isEquip or (standRequest and Service.HasDumbbell(player, itemId)) then
@@ -62,7 +93,7 @@ local function handle(target, player, itemId, context, isEquip)
   -- Preserve the existing purchase -> single-slot automatic equip contract.
   return Service.EquipDumbbell(player, itemId)
  end)
- inFlight[player] = nil
+ if inFlight[player] == operation then inFlight[player] = nil end
  if not ok then
   warn("[DumbbellController] Request failed: " .. tostring(success))
   success, code = false, "PurchaseFailed"
@@ -80,5 +111,8 @@ end)
 Players.PlayerRemoving:Connect(function(player)
  lastRequest[player] = nil
  lastEquipRequest[player] = nil
+ local operation = inFlight[player]
+ if operation then operation.Cancelled = true end
  inFlight[player] = nil
+ seenRequests[player] = nil
 end)
