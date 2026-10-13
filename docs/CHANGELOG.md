@@ -862,3 +862,11 @@
 - Identified twelve PerStepButtons/Press stations with separately indexed ShoesModels; recorded current positions, purchased billboards and disabled startup. Original operation is standing-based fixed-product purchase/equip, not a click menu.
 - Traced current seven Win-priced Dumbbells through Inventory, existing Remotes, purchase auto-equip and PlayerData saves; identified the real DumbbellDisplayTemplate and purchased Win/Robux button donors.
 - Documented minimal explicit-input/display adapter proposal, 12-to-7 mapping/Robux decisions and untested copy/runtime limits in DEV_STATUS. Local rbxl and connected Cloud Edit were read only; no game/Studio/lock modifications.
+
+
+## 2026-10-13 - Purchased stair Dumbbell stations
+
+- Connect purchased Press stations1..7 to NORMAL_01..07 through existing Dumbbell purchase/equip/save paths, preserving Inventory and automatic equip. Keep stations8..12 disabled and purchased Main/Multiplier/Data off.
+- Reuse the actual Ramp/stairs/red carpet, twelve stations and original two-row billboards; replace shoes1..7 with scaled ordinary DumbbellDisplayTemplate copies. Add current-Press server validation, entry/pending guards and player-specific price/ownership display.
+- Preserve the user's final saved Ramp orientation and stop placement work at their request. Further assembly alignment is a manual handoff, not claimed visually complete.
+- Five Sources compile; seven offline groups and final reDecode/reference/SharedString/UniqueId0 checks pass. Physical input, final visual comparison and Cloud persistence unverified. No final rbxl rewrite; no Studio process or target lock at handoff. See DEV_STATUS for paths, coordinates and final hash.

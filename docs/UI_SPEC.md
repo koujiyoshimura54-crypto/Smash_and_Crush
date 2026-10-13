@@ -498,3 +498,8 @@ Actual Edit comparisons and limits are recorded in DEV_STATUS; hardware input/Cl
 ## 2026-10-13 - UpGrade two-card layout
 
 Supersedes the previous capacity-only UpGrade geometry. Use the measured1410x800 panel with existing orange/yellow UpGrade header/close, dark translucent body and two grey Stud cards: Inventory Capacity above Speed. Reuse existing backpack/blue Speed image and purchased yellow Win button artwork. Align icons/current-arrow-next values/actions; no tabs. Portrait uses700x1000 reflow. Capacity feedback and Speed feedback/pending are independent. Speed shows server upgrade values/prices, MAX40 or Premium50/OWNED with purchase disabled; no temporary multiplier is shown. Latest Inventory layout remains unchanged, and no600-Win purchase entrance returns.
+
+
+## 2026-10-13 - Purchased Dumbbell station display
+
+Retain the purchased four-by-three stepped equipment, Ramp/red carpet/access path, stand decorations and original two-row world billboards. Shared sign says "Dumbbells". For stands1..7 use actual normal DumbbellDisplayTemplate exhibits and Master icons/names/Strength bonuses/Win prices in existing Amount and Price fields; show owned/equipped/pending per player. Stands8..12 show ON HOLD/Unavailable, without a purchase offer. Do not add large description panels or replace purchased artwork. The user's saved Ramp rotation takes precedence; final manual assembly alignment and visual legibility remain pending.

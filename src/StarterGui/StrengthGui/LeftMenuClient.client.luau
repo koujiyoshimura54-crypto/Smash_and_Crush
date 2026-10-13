@@ -94,3 +94,11 @@ end
 
 gui.Parent.ChildAdded:Connect(function(child) if child.Name=="World1DoubleWinGui" then task.defer(layout) end end)
 task.defer(layout)
+
+-- Start only the purchased Press-to-Dumbbell bridge; Main/Multiplier/Data stay disabled.
+task.spawn(function()
+ local playerScripts=game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts")
+ local services=playerScripts:WaitForChild("Services")
+ local ok,err=pcall(function() require(services:WaitForChild("DumbbellStandClient")).start() end)
+ if not ok then warn("[DumbbellStand] Client startup failed: "..tostring(err)) end
+end)

@@ -1582,3 +1582,50 @@ Minimal proposed phases / unresolved:
 3. Route that input through the same DumbbellPurchaseRequest/DumbbellEquipRequest and consume existing results. Preserve auto-equip, single-slot ownership rules, pricing and saves. Do not enable purchased Main/Multiplier/Data, or copy the original step-purchase server. Robux controls must remain absent/inactive unless a real Dumbbell offer is separately specified.
 - Likely changed Full Paths in a later implementation: chosen `Workspace.ShoesModels.<n>`, `Workspace.PerStepButtons.<n>.BillboardGui`, a scoped client/mapping module and its `StarterGui.StrengthGui.LeftMenuClient` bootstrap. Existing Master, InventoryPanelClient, DumbbellController/Service and PlayerDataService can remain behaviorally unchanged.
 - UNVERIFIED: cloning/Capability permission (Archivable=true and successful reads are not a copy test), actual world-label rendering/input, display replacement/fit, Runtime integration and purchase/save/rejoin. No need to alter Item Inventory/Merge, Pet Merge, Capacity/Speed UpGrade or their configuration.
+
+
+## 2026-10-13 - Purchased stair assembly / step-on Dumbbell purchases
+
+Final handoff:
+- Implemented against the current local CurrentCloud, preserving subsequent user saves. The user corrected only Ramp's orientation, saved and closed Studio, then requested that further placement work stop for manual adjustment. **That saved placement is authoritative.** No final translation, rotation, rbxl rewrite, Studio Save/Publish or reopening was performed after this instruction.
+- Final local file SHA256: ffc5a509d1dd322d6acc0dca11339c85523b66312735e4aa61c1c619234bdc23 (2026-10-13 17:41:17 save). All five task Sources match the repository (LeftMenuClient differs only by CRLF/LF encoding). Cloud publication is not verified.
+
+Changed Full Paths / reused objects:
+- `ReplicatedStorage.Config.DumbbellStandConfig`: mapping, purchased oriented Press bounds and entrance latch; always reads the current Press CFrame.
+- `ServerScriptService.Services.DumbbellStandService`: World1/Lobby/Press/item validation and consumed-entry guard. Display copies follow their matching Press at runtime.
+- `ServerScriptService.Systems.Controllers.DumbbellController`: share existing purchase/equip Remotes and DumbbellService; serialize requests, return correlated authoritative state and preserve purchase auto-equip. Inventory requests retain their existing unrestricted entrance.
+- `StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient`, started only by `StarterGui.StrengthGui.LeftMenuClient`: one operation per entrance, one pending operation, response/timeout recovery, purchased notifications and per-player owned/equipped billboards.
+- Reuse `Workspace.Ramp` (purchased stair floors, red carpet and access ramp), `Workspace.PerStepButtons.1..12` including Press/decor/BillboardGui, and the existing shared `Workspace.PerStepButtons.Billboard.BillboardGui.Name` sign, now "Dumbbells".
+- Replace only `Workspace.ShoesModels.1..7` with copies of `ServerStorage.Templates.DumbbellDisplayTemplate`: original seven-part ordinary dumbbell, scaled3x to approximately6x3.3x3.3, anchored and noncolliding display copies. Original template and equipped displays are unchanged. Shoes/stands8..12 remain present and unavailable.
+- Restore the purchased BillboardGui's original two-row Amount/Main/Icon and Price structure/font/stroke/size/placement; remove added ProductName/State rows. Master supplies names, existing images, bonuses and Win prices. Runtime replaces the price row with OWNED/EQUIPPED/pending state as appropriate. No separate oversized description UI.
+- Read-only V2 reference was limited to original station coordinates and billboard/sign properties; no V2/PreMerge write or file rollback.
+
+Mapping (authoritative values remain in DumbbellItemMaster):
+
+| Stand | Item | Win | Strength bonus |
+|---|---|---:|---:|
+| 1 | NORMAL_01 | 5 | 2 |
+| 2 | NORMAL_02 | 15 | 5 |
+| 3 | NORMAL_03 | 30 | 10 |
+| 4 | NORMAL_04 | 75 | 30 |
+| 5 | NORMAL_05 | 150 | 50 |
+| 6 | NORMAL_06 | 1000 | 125 |
+| 7 | NORMAL_07 | 4500 | 300 |
+| 8..12 | On hold; no purchase/equip mapping | - | - |
+
+- Unowned: existing Win purchase then automatic equip. Owned: equip without payment. Already equipped: no action. Remaining on a Press never repeats; leaving/re-entering permits another attempt. Entry to another pad during a pending request is consumed locally and must be exited before reuse.
+- Server rechecks mapping, current Press footprint, World1/Lobby and ownership. Existing Service controls purchase/equip validity and existing PlayerData dirty/autosave lifecycle; no new durable receipt protocol, store, prices or shoe progression requirements were introduced.
+- Original purchased client/server Main remain Disabled=true; purchased ScreenGui remains Enabled=false. Multiplier/Data gameplay is not started. Capacity/Speed UpGrade, Items/Pets/Merge and unrelated manual placements remain outside the change.
+
+Saved placement handoff:
+- `Workspace.Ramp` user-saved pivot: (242.375,4.336,12.006), yaw -90 degrees. This differs from the earlier agent layout; it is deliberately retained.
+- `Workspace.PerStepButtons` saved Press centers remain a four-by-three array: X=197.929/211.390/224.850/238.311; row1 Y=7.136,Z=53.859; row2 Y=10.897,Z=34.574; row3 Y=14.438,Z=15.089. Numeric order runs left to right, then next row.
+- Ramp and pads/displays are separate workspace groups. Their final mutual alignment, passage clearance and orientation remain for the user's manual adjustment. Move the intended assembly groups together in Edit; runtime purchase zones follow each current Press and displays1..7 follow their matching Press. No hard-coded world purchase location.
+
+Verification / limits:
+- Final saved-file reDecode passes:179603 Instances/161 classes, dense INST/header/complete PRNT,76377 references,365 SharedStrings/205675 indexes, UniqueId duplicates0. All five Sources compile.
+- Seven focused memory-only groups in `tests/DumbbellStandOffline.py` pass: mappings/disabled pads/current moved or rotated bounds; purchase/debit/auto-equip; owned free equip/Inventory availability; insufficient Win/load/save gates; invalid mapping/range/world/character; stale ownership/replay/concurrent request protection; client pending-entry/exit/respawn latch. These are mocks, not physical gameplay or persistence tests.
+- Earlier agent-produced file was actually opened in Studio Edit, and real template/billboard cloning succeeded. Display-copy geometry was inspected. Final user-saved file was statically decoded only; the user inspected and corrected Ramp.
+- Final whole-assembly/reference comparison images and individual billboard legibility are **UNVERIFIED**. Physical stepping, exit/re-entry input, actual notifications, Cloud purchases, saving and rejoin remain **UNVERIFIED**. No claim of completed visual or runtime verification.
+- No local Play, real purchase/DataStore mutation, agent Studio Save/Publish, backup, alternate rbxl or work folder. At handoff no RobloxStudioBeta process and no target CurrentCloud lock remain; no user Studio was terminated. No new Studio was opened for the final check.
+- Commit only these five Sources, scoped offline test and English records/spec additions. Preserve unrelated untracked `reports/Visual_Templates_Secret_VIP_Green_20260917.md`.

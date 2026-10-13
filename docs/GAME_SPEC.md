@@ -478,3 +478,8 @@ Inventory no longer exposes the600-Win Speed Boost purchase entry. Existing Owne
 ## 2026-10-13 - Sequential Speed upgrades (supersedes prior unconnected Win offer)
 
 UpGrade in World1 contains Capacity and Speed cards. Speed uses existing PlayerData.SpeedUpgradeStage (0..4), bought sequentially through the existing Speed request/receipt gate. Win debit and stage are acknowledged together; ambiguous operations reserve spending and retry the same ID. Old Speed1/600-Win requests are refused. Existing Speed1 owners are completed at40; Premium owners need no Win purchase. Normal speed takes the highest eligible upgrade/legacy/Premium value; development GamePass effect gates remain. Respawn uses existing Speed.Apply; temporary2x timing/eligibility are unchanged. Inventory retains normal Current Speed and Premium Robux only. No new World2-specific tier or DataStore.
+
+
+## 2026-10-13 - Step-on normal Dumbbell entrance
+
+World1 purchased PerStepButtons1..7 map to NORMAL_01..07. Entering the current oriented Press bounds buys an unowned item through existing DumbbellService and auto-equips it; owned items equip free, already equipped items do nothing. Hold occupancy does not repeat; exit/re-entry enables another attempt. Server validates the tagged station mapping, World1/Lobby and current Press geometry; one in-flight operation is shared with Inventory. Inventory purchase/equip remains available independently of station distance. Stations8..12 remain unavailable. Existing prices, ownership, single equipment slot and PlayerData save lifecycle are unchanged; purchased Main/Multiplier/Data stay disabled. Runtime behavior is not yet physically tested; see DEV_STATUS.
