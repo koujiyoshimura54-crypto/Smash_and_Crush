@@ -4,15 +4,16 @@ local RunService = game:GetService("RunService")
 local RS = game:GetService("ReplicatedStorage")
 local Config = require(RS.Config:WaitForChild("DumbbellStandConfig"))
 local Master = require(RS.Config:WaitForChild("DumbbellItemMaster"))
-local Lobby = require(script.Parent:WaitForChild("TrainingLobbyAreaService"))
 local M = {}
 local entries = setmetatable({}, {__mode = "k"})
 local started = false
 
 local function standing(player)
  if (player:GetAttribute("CurrentWorld") or 1) ~= 1 then return nil end
- if not Lobby.IsInTrainingLobby(player) then return nil end
- local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+ local character = player.Character
+ local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+ if not humanoid or humanoid.Health <= 0 then return nil end
+ local root = character and character:FindFirstChild("HumanoidRootPart")
  if not root or not root:IsA("BasePart") then return nil end
  return Config.GetStandingIndex(workspace:FindFirstChild(Config.FolderName), root.Position)
 end
