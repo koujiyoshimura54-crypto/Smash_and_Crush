@@ -145,7 +145,12 @@ function M.start()
   local requestId = HttpService:GenerateGUID(false)
   pending = {RequestId = requestId, ItemId = itemId}
   render()
-  local context = {Source = Config.Source, StandIndex = index, RequestId = requestId}
+  local press = Config.GetPress(folder, index)
+  local context = {
+   Source = Config.Source, StandIndex = index, RequestId = requestId,
+   ClientRootPosition = root.Position,
+   ClientRelativeToPress = press and press.CFrame:PointToObjectSpace(root.Position) or nil,
+  }
   local target = state.OwnedDumbbells[itemId] == true and equip or purchase
   local ok, err = pcall(function() target:FireServer(itemId, context) end)
   if not ok then
