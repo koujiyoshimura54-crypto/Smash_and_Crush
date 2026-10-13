@@ -855,3 +855,10 @@
 - Preserve legacy Boost40, Premium50, highest-source application, existing transient boost behavior and all capacity prices/save logic.
 - Match the measured two-card UpGrade layout with actual purchased icons/Win buttons; independent pending/results, MAX/OWNED and portrait reflow. Inventory's latest Current/Premium cards retained.
 - Seven scoped offline fault/state groups, compile and same-file reDecode/ref/SharedString/UniqueId0 pass. Actual Edit normal/MAX/legacy/Premium/narrow screenshots in DEV_STATUS. Physical input/real saves/Cloud runtime pending. Owned Studio ended and target.lock removed.
+
+
+## 2026-10-13 - Purchased Upgrades equipment: Dumbbell reuse research only
+
+- Identified twelve PerStepButtons/Press stations with separately indexed ShoesModels; recorded current positions, purchased billboards and disabled startup. Original operation is standing-based fixed-product purchase/equip, not a click menu.
+- Traced current seven Win-priced Dumbbells through Inventory, existing Remotes, purchase auto-equip and PlayerData saves; identified the real DumbbellDisplayTemplate and purchased Win/Robux button donors.
+- Documented minimal explicit-input/display adapter proposal, 12-to-7 mapping/Robux decisions and untested copy/runtime limits in DEV_STATUS. Local rbxl and connected Cloud Edit were read only; no game/Studio/lock modifications.

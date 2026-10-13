@@ -1507,3 +1507,78 @@ Verification and limits:
 - Physical click/touch, proximity opening, real saves/rejoin, Premium API responses and Cloud runtime remain UNVERIFIED. User must Save/Publish and verify these on the updated Cloud version. No local Play, real purchase/data mutation, Studio Save/Publish, backup, other rbxl or V2/PreMerge changes.
 - Normal close requested for the owned verification Studio; it remained at the unsaved-preview confirmation. Verified PID/start time/target, ended only11672, then confirmed process absent and removed only its residual CurrentCloud.lock. Final MCP Studios list empty, process/lock absent. Did not reopen. No user Studio was present/closed.
 - Commit only task Sources, offline test, two images and English records. Preserve unrelated untracked `reports/Visual_Templates_Secret_VIP_Green_20260917.md`.
+
+
+## 2026-10-13 - Purchased Upgrades station to Dumbbell purchase: read-only assessment
+
+Authority and scope:
+- Fetched origin/main at 8a3608257984b76d398c29bb110fa4a9dee2fb7b; read current DEV_STATUS and relevant Sources. Inspected the latest local CurrentCloud directly, not an older export. SHA256: c6ef67863f15fc6862bcf8501ba87f3a48b8723881cee4f9efeac48ce5a25479.
+- Read the already connected user Studio in Edit, PlaceId126576845524886 / UniverseId10765181857. Twelve scoped Sources match local byte lengths/content fingerprints; station/shoe positions match to three decimals. This does not establish whole-place save/version parity.
+- No game/Source/Camera/placement change, clone, Play, purchase, DataStore access, Save/Publish, new Studio, backup or alternate rbxl. User Studio and its lock were left untouched. This is an implementation proposal, not a completed feature.
+
+Purchased equipment identity:
+- The "Upgrades" sign is `Workspace.PerStepButtons.Billboard.BillboardGui.Name`; sign Part position is (-87.127,33.441,12.532). There is no named `Workspace.Upgrade` Model. This is separate from `Workspace.ShopStallTemplate` and its Capacity/Speed UpGrade.
+- Twelve indexed Models: `Workspace.PerStepButtons.<n>`. Each has six same-name `Part` stand/decor pieces and one unique `Press`, all anchored. Do not identify a decorative Part by first-name match. The Model has no PrimaryPart or attributes.
+- Each `Press` is (6.996,1.369,7.300), CanCollide/CanTouch true. There is no ProximityPrompt, ClickDetector, named Area or GuiButton in these stations. The actual detection region is the oriented Press footprint, extending six studs above its half-height.
+- Shoes are separate Models `Workspace.ShoesModels.<n>`, no PrimaryPart or attributes, paired by numeric name. Their geometry is not the input detector.
+- Existing display: `Workspace.PerStepButtons.<n>.BillboardGui.Price` = "Requires 0 Wins", `.BillboardGui.Amount.Main` = "+1 / Step" in Edit; `.Amount.Icon` contains the purchased Speed image (station1:87852658984573). Enabled=true, Adornee=station Model, StudsOffset=(0,10,0). These are labels, not purchase controls.
+
+Current coordinates (X,Y,Z; first column is the unique Press center, not Model pivot):
+
+| n | Workspace.PerStepButtons.n.Press | Workspace.ShoesModels.n pivot |
+|---|---|---|
+| 1 | -67.375,7.136,32.636 | -67.474,11.336,32.634 |
+| 2 | -67.375,7.136,19.175 | -67.474,11.336,19.134 |
+| 3 | -67.375,7.136,5.714 | -67.474,11.336,5.634 |
+| 4 | -67.375,7.136,-7.746 | -67.474,11.336,-7.782 |
+| 5 | -86.661,10.897,32.636 | -86.832,15.098,32.634 |
+| 6 | -86.661,10.897,19.175 | -86.832,15.098,18.939 |
+| 7 | -86.661,10.897,5.714 | -86.832,15.098,5.673 |
+| 8 | -86.661,10.897,-7.746 | -86.832,15.098,-7.791 |
+| 9 | -106.146,14.438,32.636 | -106.244,18.638,32.634 |
+| 10 | -106.146,14.438,19.175 | -106.244,18.638,19.134 |
+| 11 | -106.146,14.438,5.714 | -106.244,18.638,5.634 |
+| 12 | -106.146,14.438,-7.746 | -106.244,18.638,-7.782 |
+
+- `Workspace.GeneratedMap.TrainingArea` pivot is (275.547,28.369,12.706): these purchased pads remain approximately343-382 studs west in X. No Lobby relocation or reachability test was performed.
+
+Original operation and current startup:
+- `ServerScriptService.Services.MultiplierServer` polls every0.2s: `if not isInside(pad, root.Position) then continue end; press(playerData, index)`. Standing on a pad buys its fixed numbered product and equips it; owned products equip without another charge. It neither opens a menu nor uses a click/purchase Remote.
+- `ReplicatedStorage.Modules.Multiplier` uses `OwnedField="perStepButtons"`, `EquippedField="multiplier"`, requires preceding upgrades, and reads `ReplicatedStorage.Modules.Config.Multipliers[index]`. This purchases step multipliers through purchased `ReplicatedStorage.Modules.Data.server`, not old-Smash Dumbbells.
+- `StarterPlayer.StarterPlayerScripts.Services.MultiplierClient` uses purchased Data.client for pad colors and prerequisite/balance notifications; it does not send the purchase. Original purchased wins/step requirements must not become Dumbbell prices or restrictions.
+- `StarterPlayer.StarterPlayerScripts.Services.FloatClient` pairs the two folders by number and moves each entire shoe Model from a cached pivot, with billboard offset following the same lift. Config.Float uses0.75 studs /2.5 seconds. Reusing only the relevant display behavior is possible; cached pivots would need refreshing after later relocation.
+- Both purchased `StarterPlayer.StarterPlayerScripts.Main` and `ServerScriptService.Main` are disabled; each would otherwise call `Loader.load(script.Parent.Services)`. `StarterGui.ScreenGui` is disabled. The active `StarterGui.StrengthGui.LeftMenuClient` does not start these Multiplier/Float modules. No other startup reference was found in the scoped reference search. Source presence is not evidence of a working station.
+
+Current Dumbbell catalogue and common processing:
+- Authoritative `ReplicatedStorage.Config.DumbbellItemMaster`:
+
+| ItemId / name | Win | Strength bonus | Existing image ID |
+|---|---:|---:|---|
+| NORMAL_01 / Normal Dumbbell 1 | 5 | 2 | 131314372434925 |
+| NORMAL_02 / Normal Dumbbell 2 | 15 | 5 | 126019719977317 |
+| NORMAL_03 / Normal Dumbbell 3 | 30 | 10 | 96428309215438 |
+| NORMAL_04 / Normal Dumbbell 4 | 75 | 30 | 77317637436768 |
+| NORMAL_05 / Normal Dumbbell 5 | 150 | 50 | 134662273184560 |
+| NORMAL_06 / Normal Dumbbell 6 | 1000 | 125 | 74657955424795 |
+| NORMAL_07 / Normal Dumbbell 7 | 4500 | 300 | 79967244610623 |
+
+- `StarterGui.StrengthGui.InventoryPanelClient` populates `StarterGui.StrengthGui.InventoryPanel.Content.Dumbbells.Items` and `.Equipped`. It uses Master name/Image/StrengthBonus/PriceWin, plus authoritative `ReplicatedStorage.Remotes.DumbbellInventoryState`: Loaded, OwnedDumbbells, PurchasableDumbbells, EquippedDumbbell and Win.
+- Unowned click fires `ReplicatedStorage.Remotes.DumbbellPurchaseRequest`; owned click uses `ReplicatedStorage.Remotes.DumbbellEquipRequest`. State/results and existing equipped/Win attribute listeners refresh UI. Keep this Inventory entrance.
+- Enabled `ServerScriptService.Systems.Controllers.DumbbellController` calls `Service.PurchaseDumbbell(player,itemId)`, then `if success then ... Service.EquipDumbbell(player,itemId)`. **A successful existing purchase auto-equips the new Dumbbell**, replacing the single equipped item. Calling PurchaseDumbbell alone would omit this behavior.
+- `ServerScriptService.Services.DumbbellService` owns validation, per-player busy protection, balance deduction and ownership; the Controller also throttles requests. No yield occurs between validation/debit/ownership mutation. It marks the existing session dirty; this is not an immediate receipt-backed durable purchase acknowledgement.
+- `ServerScriptService.Services.PlayerDataService` validates/normalizes OwnedDumbbells and EquippedDumbbell and saves them through existing session-owned autosave/exit processing. No new store or alternate grant/equip handler is needed.
+- These seven definitions are Win-only. No normal-Dumbbell Robux price/ProductId/GamePassId exists; do not reuse unrelated purchased IDs or invent an offer.
+
+Real display and UI donors:
+- `ServerStorage.Templates.DumbbellDisplayTemplate`: ordinary seven-Part dumbbell; PrimaryPart=`.Bar`, six TemplateWeld constraints, bounds approximately(2,1.1,1.1). All parts unanchored/noncolliding; no attached Scripts. Its storage pivot is(312.604,2.550,19.000), not a current Lobby placement.
+- Enabled `ServerScriptService.Systems.Controllers.DumbbellDisplayController` already uses this one template for all seven equipped normal Dumbbells. A future stationary display must retain the source/welds and secure only its display copy, not invoke character hand-weld code.
+- Since shoes and Press/stand/Billboard are separate, the shoe display can be replaced while retaining the detector and purchased equipment. Preserve numeric pairing if FloatClient behavior is reused.
+- Reusable actual purchase button Frames: `StarterGui.ScreenGui.Menus.RestockShop.Main.Common.Buy` (yellow Win) and `.BuyRobux` (green). Their `.Button` is the input and `.Main.Amount` is text. Existing `ReplicatedStorage.Modules.HUDLayout.PurchaseButton` and InventoryPanelClient provide the purchase/state presentation pattern. Do not enable Restock purchase logic.
+- No purchased Upgrade menu exists under `StarterGui.ScreenGui.Menus`. Reuse the existing world labels and purchased controls; a menu-opening action is not already provided by this equipment.
+
+Minimal proposed phases / unresolved:
+1. Decide pad-to-NORMAL_01..07 mapping (12 pads versus7 items), which pads to use, later Lobby placement, and explicit activation UX. Retain the Inventory entrance. None of these mapping/placement choices was applied.
+2. Replace only chosen shoe displays with the real dumbbell donor; bind existing billboard name/icon/bonus/price and owned/equipped status from Master + DumbbellInventoryState. Add a narrowly scoped press/click adapter through the existing active client startup. Recommended smallest interaction: an explicit purchased Win button for the mapped item, using Press proximity for availability; no automatic purchase on entry and no new menu required. This is a proposal, not a confirmed interaction specification.
+3. Route that input through the same DumbbellPurchaseRequest/DumbbellEquipRequest and consume existing results. Preserve auto-equip, single-slot ownership rules, pricing and saves. Do not enable purchased Main/Multiplier/Data, or copy the original step-purchase server. Robux controls must remain absent/inactive unless a real Dumbbell offer is separately specified.
+- Likely changed Full Paths in a later implementation: chosen `Workspace.ShoesModels.<n>`, `Workspace.PerStepButtons.<n>.BillboardGui`, a scoped client/mapping module and its `StarterGui.StrengthGui.LeftMenuClient` bootstrap. Existing Master, InventoryPanelClient, DumbbellController/Service and PlayerDataService can remain behaviorally unchanged.
+- UNVERIFIED: cloning/Capability permission (Archivable=true and successful reads are not a copy test), actual world-label rendering/input, display replacement/fit, Runtime integration and purchase/save/rejoin. No need to alter Item Inventory/Merge, Pet Merge, Capacity/Speed UpGrade or their configuration.
