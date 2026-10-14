@@ -179,9 +179,19 @@ function M.Mount(gui)
   local leftX,leftY=edge,top
   local physicalControls=tablet and tabletControls(gui.Parent) or {}
   local minLeftY=math.min(top,winY+64*winScale+6)
+  local winCounter=hud:FindFirstChild("WinAmount")
+  local rebirthCounter=hud:FindFirstChild("RebirthAmount")
+  local counterHeight,counterBodyWidth,counterInset,counterGap=94.5,252,50,14
+  local counterStack=2*(counterHeight+counterGap)
+  if winCounter and rebirthCounter then
+   local counterTop=54 -- Below the existing inventory readout.
+   leftScale=math.min(leftScale,math.max(.12,(leftBottom-counterTop)/(leftHeight+counterStack)))
+   leftY=counterTop+counterStack*leftScale
+   minLeftY=leftY
+  end
   local left=hud.LeftHUD
   left.UIGridLayout.FillDirectionMaxCells=columns
-  left.Size=UDim2.fromOffset(leftWidth,leftHeight);left.Position=UDim2.fromOffset(edge,top);left.HUDScale.Scale=leftScale
+  left.Size=UDim2.fromOffset(leftWidth,leftHeight);left.Position=UDim2.fromOffset(leftX,leftY);left.HUDScale.Scale=leftScale
   local right=hud.RightHUD
   local rightX=w-edge-211*rs
   local rightY=top
@@ -233,6 +243,15 @@ function M.Mount(gui)
    end end
    left.Position=UDim2.fromOffset(leftX,leftY);left.HUDScale.Scale=leftScale
   end
+  if winCounter and rebirthCounter then
+   local counterTop=leftY-counterStack*leftScale
+   for index,counter in ipairs({winCounter,rebirthCounter}) do
+    counter.Size=UDim2.fromOffset(counterBodyWidth*leftScale,counterHeight*leftScale)
+    counter.Position=UDim2.fromOffset(
+     leftX+(counterInset+counterBodyWidth/2)*leftScale,
+     counterTop+((index-1)*(counterHeight+counterGap)+counterHeight/2)*leftScale)
+   end
+  end
   local target=UDim2.fromOffset(rightX,rightY)
   if target~=lastRightTarget then
    if rightTween then rightTween:Cancel();rightTween=nil end
@@ -255,9 +274,17 @@ function M.Mount(gui)
    local small=compact and w>h
    local ix=small and leftX+leftWidth*leftScale+12 or edge
    local iy=small and winY+64*winScale+10 or 12
-   inventory.Position=UDim2.fromOffset(ix,iy)
-   inventory.Size=UDim2.fromOffset(small and 180 or 220,28)
-   inventory.TextSize=small and 18 or 22
+   local icon=hud:FindFirstChild("RunInventoryIcon")
+   local height=28
+   local inset=icon and height+8 or 0
+   if icon then
+    icon.Position=UDim2.fromOffset(ix,iy)
+    icon.Size=UDim2.fromOffset(height,height)
+   end
+   inventory.Position=UDim2.fromOffset(ix+inset,iy)
+   inventory.Size=UDim2.fromOffset((small and 180 or 220)-inset,height)
+   -- The purchased counter's 24px number style fits the existing 28px readout.
+   inventory.TextSize=hud.WinAmount.Main.TextSize
   end
   local returnButton=hud:FindFirstChild("RunReturnButton")
   local returnY=12
@@ -372,5 +399,145 @@ function M.Reserve(gui,root)
   if handle.OverlayRoot==root then handle.OverlayRoot=nil;handle.Refresh() end
  end
 end
-return M
 
+-- Purchased RestockShop button visuals only. Existing GuiButtons retain all
+-- purchase handlers, state, visibility and product/price ownership.
+local purchaseSkins=setmetatable({}, {__mode="k"})
+local function purchaseDonor(currency)
+ local source=game:GetService("StarterGui"):FindFirstChild("ScreenGui")
+ local menus=source and source:FindFirstChild("Menus")
+ local shop=menus and menus:FindFirstChild("RestockShop")
+ local main=shop and shop:FindFirstChild("Main")
+ local common=main and main:FindFirstChild("Common")
+ return common and common:FindFirstChild(currency=="Robux" and "BuyRobux" or "Buy")
+end
+local function purchaseRatio(donor)
+ -- Follow the purchased hierarchy's scale layout at the current viewport.
+ local chain={};local x=donor
+ while x and not x:IsA("ScreenGui") do
+  if x:IsA("GuiObject") then table.insert(chain,1,x) end
+  x=x.Parent
+ end
+ local camera=workspace.CurrentCamera
+ local v=camera and camera.ViewportSize or Vector2.new(1,1)
+ for _,object in ipairs(chain) do
+  local s=object.Size
+  v=Vector2.new(v.X*s.X.Scale+s.X.Offset,v.Y*s.Y.Scale+s.Y.Offset)
+ end
+ return v.X/math.max(v.Y,1)
+end
+function M.PurchaseButton(button,currency,value)
+ local entry=purchaseSkins[button]
+ if not entry then
+  local donor=purchaseDonor(currency)
+  if not donor then warn("Purchased button missing: "..tostring(currency));return end
+  local visual=button:FindFirstChild("PurchasedButtonVisual")
+  if visual and ((visual.Main:FindFirstChild("Icon")~=nil)~=(currency=="Win")) then visual:Destroy();visual=nil end
+  if not visual then
+   visual=donor:Clone()
+   visual.Name="PurchasedButtonVisual"
+   local input=visual:FindFirstChild("Button")
+   if input then input:Destroy() end
+   visual.Parent=button
+  end
+  visual.AnchorPoint=Vector2.new(.5,.5)
+  visual.Position=UDim2.fromScale(.5,.5)
+  visual.Visible=true
+  entry={visual=visual,currency=currency,donor=donor,connections={},hovered=false,pressed=false}
+  purchaseSkins[button]=entry
+  local function connect(signal,callback)
+   table.insert(entry.connections,signal:Connect(callback))
+  end
+  local function mute(object,property)
+   local function enforce()
+    if object[property]~=1 then object[property]=1 end
+   end
+   enforce()
+   connect(object:GetPropertyChangedSignal(property),enforce)
+  end
+  -- Preserve data labels and public paths; only suppress their old paint.
+  local function hideOld(object)
+   if object==visual or object:IsDescendantOf(visual) then return end
+   local ancestor=object
+   while ancestor~=button do
+    if ancestor.Name:find("Badge") or ancestor.Name:find("Notification") then return end
+    ancestor=ancestor.Parent
+    if not ancestor then return end
+   end
+   if object:IsA("GuiObject") then mute(object,"BackgroundTransparency") end
+   if object:IsA("TextLabel") or object:IsA("TextButton") then
+    mute(object,"TextTransparency");mute(object,"TextStrokeTransparency")
+   elseif object:IsA("ImageLabel") or object:IsA("ImageButton") then mute(object,"ImageTransparency")
+   elseif object:IsA("UIStroke") then mute(object,"Transparency") end
+  end
+  hideOld(button)
+  for _,object in ipairs(button:GetDescendants()) do hideOld(object) end
+  connect(button.DescendantAdded,hideOld)
+  local function layer()
+   visual.ZIndex=button.ZIndex
+   for _,object in ipairs(visual:GetDescendants()) do
+    if object:IsA("GuiObject") then
+     object.ZIndex=button.ZIndex+(object.Name=="Stroke" and 0 or object.Name=="Main" and 1 or 2)
+     object.Active=false
+    end
+   end
+  end
+  layer();connect(button:GetPropertyChangedSignal("ZIndex"),layer)
+  local settings=require(game:GetService("ReplicatedStorage").Modules.Config).Button
+  local info=TweenInfo.new(settings.seconds,Enum.EasingStyle.Quad,Enum.EasingDirection.Out)
+  local function resize(animate)
+   local size=M.GetLocalSize(button)
+   local ratio=purchaseRatio(donor)
+   local height=math.min(size.Y,size.X/ratio)
+   local scale=entry.pressed and settings.hoverScale*settings.pressScale
+    or entry.hovered and settings.hoverScale or 1
+   local target=UDim2.fromOffset(height*ratio*scale,height*scale)
+   if entry.tween then entry.tween:Cancel() end
+   if animate then entry.tween=TweenService:Create(visual,info,{Size=target});entry.tween:Play()
+   else visual.Size=target end
+  end
+  -- Reuse ButtonClient's hover/press sizing and Config.Button values, without
+  -- starting its global binder or any purchased gameplay service.
+  local function sound(name)
+   local ui=game:GetService("SoundService"):FindFirstChild("UI")
+   local clip=ui and ui:FindFirstChild(name)
+   if clip and clip:IsA("Sound") then clip:Play() end
+  end
+  connect(button.MouseEnter,function()entry.hovered=true;sound("Hover");resize(true)end)
+  connect(button.MouseLeave,function()entry.hovered=false;entry.pressed=false;resize(true)end)
+  connect(button.MouseButton1Down,function()entry.pressed=true;resize(true)end)
+  connect(button.MouseButton1Up,function()entry.pressed=false;resize(true)end)
+  connect(button.Activated,function()sound("Click")end)
+  connect(button:GetPropertyChangedSignal("AbsoluteSize"),function()resize(false)end)
+  connect(button.Destroying,function()
+   if entry.tween then entry.tween:Cancel() end
+   for _,c in ipairs(entry.connections) do c:Disconnect() end
+   purchaseSkins[button]=nil
+  end)
+  resize(false)
+ end
+ -- A reused template can originate from the other currency; replace just its
+ -- purchased visual, never the existing input or its purchase connections.
+ if entry.currency~=currency then
+  error("Purchase currency changed for "..button:GetFullName())
+ end
+ local text=tostring(value==nil and "..." or value)
+ text=text:gsub("%s+[Rr]obux%s*$",""):gsub("%s+[Ww]ins?%s*$","")
+ text=require(script.Parent.NumberFormat).PriceText(text)
+ local price=text:match("^%d")~=nil
+ local amount=entry.visual.Main.Amount
+ local icon=entry.visual.Main:FindFirstChild("Icon")
+ if icon then icon.Visible=price end
+ amount.Text=currency=="Robux" and price and utf8.char(0xE002).." "..text or text
+end
+function M.BindPurchaseButton(button,currency,label)
+ M.PurchaseButton(button,currency,label.Text)
+ local entry=purchaseSkins[button]
+ if not entry or entry.boundLabel==label then return end
+ entry.boundLabel=label
+ table.insert(entry.connections,label:GetPropertyChangedSignal("Text"):Connect(function()
+  M.PurchaseButton(button,currency,label.Text)
+ end))
+end
+
+return M

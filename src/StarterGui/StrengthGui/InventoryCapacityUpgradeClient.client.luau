@@ -160,7 +160,7 @@ local function refreshSpeed()
  local enabled = loaded and tier ~= nil and not premium and not speedPurchasing
  speedCurrent.Text = loaded and tostring(premium and speedState.WalkSpeed or speedState.UpgradeSpeed) or "-"
  speedNext.Text = not loaded and "-" or premium and "MAX" or tier and tostring(tier.NextSpeed) or "MAX"
- speedPrice.Text = not loaded and "..." or premium and "OWNED" or tier and tostring(tier.PriceWin) or "MAX"
+ speedPrice.Text = not loaded and "..." or premium and "OWNED" or tier and require(RS.Modules.NumberFormat).Price(tier.PriceWin) or "MAX"
  speedBuy.Active = enabled; speedBuy.Interactable = enabled; speedBuy.AutoButtonColor = enabled
  speedBuy.TrophyIcon.Visible = false -- The purchased visual owns the currency glyph.
  if speedState.UpgradePending then speedStatus.Text = speedPurchasing and "Saving..." or "Save pending. Please retry."
@@ -218,7 +218,7 @@ local function refresh()
 	local tier = Upgrades.Upgrades[capacity]
 	current.Text = typeof(capacity) == "number" and tostring(capacity) or "-"
 	nextValue.Text = tier and tostring(tier.NextCapacity) or "MAX"
-	price.Text = tier and require(RS.Modules.NumberFormat).Format(tier.PriceWin) or "MAX"
+	price.Text = tier and require(RS.Modules.NumberFormat).Price(tier.PriceWin) or "MAX"
 	purchase.TrophyIcon.Visible = false
 	purchase.Active = tier ~= nil and not purchasing
 	purchase.Interactable = purchase.Active

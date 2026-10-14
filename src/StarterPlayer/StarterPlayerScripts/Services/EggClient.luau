@@ -309,6 +309,9 @@ local function build(egg: Sheet)
 end
 
 local function register(part: BasePart)
+ local prize=part:FindFirstChild("Prize")
+ local amount=prize and prize:FindFirstChild("Info")
+ if amount and amount:IsA("TextLabel") then amount.Text=require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(part.Name)) end
 	local egg = Eggs[part.Name]
 
 	if egg then

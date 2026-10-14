@@ -95,8 +95,7 @@ local function refreshState()
  if ok then applyState(state) end
 end
 local function formatWin(value)
- local text=tostring(math.max(0,math.floor(tonumber(value) or 0)))
- return text:reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,","")
+ return require(RS.Modules.NumberFormat).Price(math.max(0,math.floor(tonumber(value) or 0)))
 end
 local function showStatus(message)
  statusToken+=1
@@ -153,7 +152,7 @@ for order,item in ipairs(sortedItems) do
   buy.BorderSizePixel=0 buy.Position=UDim2.new(0,10,1,-38) buy.Size=UDim2.new(1,-20,0,28)
   buy.ZIndex=33 buy.Parent=card round(buy,7)
   buy.TextStrokeColor3=Color3.new();buy.TextStrokeTransparency=0
-  local price=label(buy,"Price",tostring(item.PriceWin),UDim2.new(.5,0,0,0),UDim2.new(.5,-12,1,0),Color3.new(1,1,1))
+  local price=label(buy,"Price",require(RS.Modules.NumberFormat).Price(item.PriceWin),UDim2.new(.5,0,0,0),UDim2.new(.5,-12,1,0),Color3.new(1,1,1))
   price.TextXAlignment=Enum.TextXAlignment.Left;price.TextStrokeColor3=Color3.new();price.TextStrokeTransparency=0;price.ZIndex=34
   local trophy=Instance.new("ImageLabel")
   trophy.Name="WinIcon";trophy.Image=gui.WinLabel.TrophyIcon.Image

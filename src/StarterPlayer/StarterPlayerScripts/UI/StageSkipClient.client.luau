@@ -35,8 +35,8 @@ for stage=2,10 do
  row:WaitForChild("StageLabel").Text="Stage "..stage
  local win=row:WaitForChild("WinButton")
  local robux=row:WaitForChild("RobuxButton")
- win:WaitForChild("Price").Text=tostring(entry.RequiredWin)
- robux:WaitForChild("Price").Text=tostring(entry.FallbackPrice)
+ win:WaitForChild("Price").Text=require(RS.Modules.NumberFormat).Price(entry.RequiredWin)
+ robux:WaitForChild("Price").Text=require(RS.Modules.NumberFormat).Price(entry.FallbackPrice)
  PurchaseHUD.BindPurchaseButton(win,"Win",win.Price)
  PurchaseHUD.BindPurchaseButton(robux,"Robux",robux.Price)
  task.spawn(function()

@@ -6,7 +6,7 @@ local itemTypes = {
 }
 local rarities = {"Common","Uncommon","Rare","Epic","Legendary"}
 local elements = {"Fire","Ice","Electric"}
-local winPrices = {Common=75,Uncommon=200,Rare=600}
+local winPrices = {Common=75,Uncommon=200,Rare=600,Epic=4500}
 local Products=require(game.ReplicatedStorage.Config:WaitForChild("DeveloperProductConfig"))
 local images = {
  Protein = {
@@ -40,7 +40,7 @@ for _, itemType in ipairs(itemTypes) do
     WinPrice = winPrices[rarity] or 0,
     RobuxPrice = Products.GetItemProduct(rarity) and Products.GetItemProduct(rarity).FallbackPrice or 0,
     ShopPurchasable = winPrices[rarity] ~= nil,
-    Mergeable = rarity ~= "Legendary",
+    Mergeable = true,
    })
   end
  end

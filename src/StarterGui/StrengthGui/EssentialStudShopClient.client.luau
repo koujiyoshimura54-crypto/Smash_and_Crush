@@ -54,7 +54,7 @@ local function syncDumbbellCards()
   local price=card:FindFirstChild("PriceTag",true)
   if icon then icon.Image=item.Image end
   if title then title.Text="+"..tostring(item.StrengthBonus).." Strength" end
-  if price then price.Text=tostring(item.PriceWin) end
+  if price then price.Text=require(RS.Modules.NumberFormat).Price(item.PriceWin) end
  end
 end
 syncDumbbellCards()
@@ -68,7 +68,7 @@ for _,card in ipairs(holder:GetChildren()) do
   if item then
    card.Visible=item.ShopPurchasable==true
    local price=card:FindFirstChild("PriceTag",true)
-   if price then price.Text=tostring(item.WinPrice) end
+   if price then price.Text=require(RS.Modules.NumberFormat).Price(item.WinPrice) end
    local icon=card:FindFirstChild("Icon")
    if icon then icon.Image=item.Image;ItemPresentation.SetItemStars(icon,item) end
    local currency=card:FindFirstChild("CurrencyIcon",true)

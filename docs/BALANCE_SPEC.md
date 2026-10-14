@@ -550,3 +550,30 @@ Checked examples (all inputs share one Element):
 | 82 Common Gloves | 82 | star5, no extra rank benefit | Glove100% |
 
 Exact-fraction examples sum to100%. Pending approval: price, material scale, thresholds, minimum2, maximum-rank input/excess handling and single-output policy. No new values are installed in ItemMaster, ItemMergeConfig or any server/client merge calculation. Current fixed-three merge remains authoritative.
+
+## 2026-10-14 - Approved Item point lottery and Epic4500 Win (supersedes Phase1 proposal)
+
+| Rank | Material points / rarity threshold |
+|---|---:|
+| Common / star1 |1|
+| Uncommon / star2 |3|
+| Rare / star3 |9|
+| Epic / star4 |27|
+| Legendary / star5 |81|
+
+At least2 actual units; output1. Count multiplies each input's points. Between adjacent thresholds L/U, upper probability=(P-L)/(U-L), lower=1-upper. Exact thresholds100%;81+ Legendary100%. Legendary inputs are permitted. New ranks require Master definitions and shared configured points; current upper rank is inferred from the ladder.
+
+Type probability=points for that type / total; Element probability=points for that Element / total. Those two draws and rarity are independent. Each concrete candidate probability is their product; no unsubmitted type/Element enters the pool. This replaces the prior deterministic-rank/common-Element proposal.
+
+| Total points | Rarity distribution |
+|---:|---|
+|2|Common50%, Uncommon50%|
+|9|Rare100%|
+|18|Rare50%, Epic50%|
+|27|Epic100%|
+|54|Epic50%, Legendary50%|
+|81+|Legendary100%|
+
+Fire Common Glove1 + Ice Common Protein1: total2; each included type50%, each included Element50%, Common/Uncommon50%; eight actual combinations each12.5%. Fire-only inputs keep Fire100%; Glove-only inputs keep Glove100%. One Epic Glove + one Rare Belt: total36, Epic83 1/3%/Legendary16 2/3%, Glove75%/Belt25%; Element shares independently follow the submitted points. No points/odds text is added to the material cards.
+
+Approved Win prices: Common75, Uncommon200, Rare600, **Epic4500**. Existing Epic Robux and Legendary conditions unchanged. Price strings alone compact toK/M; internal spending/config/storage retains exact numbers. Normal/Limited Egg odds, normal Pet merge points/table and all combat prices/rewards remain unchanged.

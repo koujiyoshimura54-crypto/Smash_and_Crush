@@ -35,7 +35,7 @@ function M.start()
    if not board then continue end
    if press then board.Adornee = press end
    local amount = board:FindFirstChild("Amount")
-   setPair(amount, "Main", item and tostring(item.PriceWin) or "")
+   setPair(amount, "Main", item and require(RS.Modules.NumberFormat).Price(item.PriceWin) or "")
    setPair(board, "Price", item and "+" .. tostring(item.StrengthBonus) or "")
    local icon = amount and amount:FindFirstChild("Icon")
    if icon and icon:IsA("ImageLabel") then

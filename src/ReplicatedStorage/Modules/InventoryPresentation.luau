@@ -359,7 +359,7 @@ function M.BuildSpeedView(panel,config)
   rows.Premium.Value.Text=tostring(config.Premium.WalkSpeed)
   rows.Premium.Icon.Image="rbxassetid://"..tostring(config.Premium.ImageAssetId)
   local owned=state.PremiumOwned==true
-  local shown=owned and (active=="Premium" and "ACTIVE" or "OWNED") or pending and "..." or (price~=nil and tostring(price) or "...")
+  local shown=owned and (active=="Premium" and "ACTIVE" or "OWNED") or pending and "..." or (price~=nil and require(game.ReplicatedStorage.Modules.NumberFormat).Price(price) or "...")
   HUD.PurchaseButton(view.BuyButton,"Robux",shown)
   local enabled=state.Loaded==true and not owned and not pending and source=="Marketplace" and price~=nil
   view.BuyButton.Active=enabled;view.BuyButton.Interactable=enabled;view.BuyButton.AutoButtonColor=enabled

@@ -1,3 +1,4 @@
+local PurchaseHUD=require(game:GetService("ReplicatedStorage").Modules.HUDLayout)
 local Responsive=require(game.ReplicatedStorage.Modules.ResponsivePanels)
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
@@ -45,7 +46,10 @@ local function render()
   b.Label.Text=notice[id] or (isEquipped and "EQUIPPED" or owned[id] and "EQUIP" or aura.PurchaseType=="Entitlement" and "VIEW PACK" or "BUY")
   b.UIGradient.Color=isEquipped and equippedColor or owned[id] and equipColor or green
   Presentation.SetButtonEnabled(b,loaded and not pending)
-  card.Price.Amount.Text=aura.PurchaseType=="Entitlement" and (aura.Entitlement=="VIP" and "VIP" or "PACK") or tostring(aura.PurchaseType=="Win" and aura.Price or redDisplayPrice)
+  card.Price.Amount.Text=aura.PurchaseType=="Entitlement" and (aura.Entitlement=="VIP" and "VIP" or "PACK") or require(RS.Modules.NumberFormat).Price(aura.PurchaseType=="Win" and aura.Price or redDisplayPrice)
+  if aura.PurchaseType~="Entitlement" then
+   PurchaseHUD.PurchaseButton(b,aura.PurchaseType=="Win" and "Win" or "Robux",notice[id] or (owned[id] and b.Label.Text or card.Price.Amount.Text))
+  end
   card.StrengthBonus.Text=aura.PurchaseType=="Entitlement" and "Exclusive Aura" or "+"..aura.StrengthBonus.." Strength"
  end
 end

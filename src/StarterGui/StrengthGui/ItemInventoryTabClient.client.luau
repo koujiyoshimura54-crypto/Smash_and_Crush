@@ -8,6 +8,7 @@ local Master=require(RS.Config:WaitForChild("ItemMaster"))
 local ItemMultiplierConfig=require(RS.Config:WaitForChild("ItemMultiplierConfig"))
 local Products=require(RS.Config:WaitForChild("DeveloperProductConfig"))
 local MarketplacePrice=require(RS.Modules:WaitForChild("MarketplacePrice"))
+local PriceFormat=require(RS.Modules:WaitForChild("NumberFormat"))
 local robuxPrices={}
 local stateRemote=RS.Remotes:WaitForChild("ItemInventoryState")
 local equipRemote=RS.Remotes:WaitForChild("ItemEquipRequest")
@@ -125,9 +126,9 @@ local function priceButton(card,name,price,imageId,pos,size,color,remote,itemId)
  style(b,color,7)
  if imageId then
   icon(b,"Currency",imageId,UDim2.new(.16,0,.14,0),UDim2.new(.26,0,.72,0),36)
-  label(b,"Price",tostring(price),UDim2.new(.43,0,.08,0),UDim2.new(.41,0,.84,0),36)
+  label(b,"Price",PriceFormat.PriceText(price),UDim2.new(.43,0,.08,0),UDim2.new(.41,0,.84,0),36)
  else
-  label(b,"Price",tostring(price),UDim2.new(.08,0,.08,0),UDim2.new(.84,0,.84,0),36)
+  label(b,"Price",PriceFormat.PriceText(price),UDim2.new(.08,0,.08,0),UDim2.new(.84,0,.84,0),36)
  end
  PurchaseHUD.BindPurchaseButton(b,name=="WinPurchase" and "Win" or "Robux",b.Price)
  if not remote then
@@ -222,9 +223,16 @@ render=function()
      if (owned[id] or 0)>0 and equipped[item.ItemType]~=id then request(equipRemote,id) end
     end)
    end
-  elseif rarityIndex<=3 then
-   local winText=tostring(item.WinPrice):reverse():gsub("(%d%d%d)","%1,"):reverse():gsub("^,","")
-   priceButton(c,"WinPurchase",winText,trophyImage,UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(235,184,36),winRemote,id)
+  elseif item.ShopPurchasable then
+   if item.Rarity=="Epic" then
+    -- Two original purchased controls, independent currency/receipts, same card.
+    c.Icon.Size=UDim2.new(1,-12,1,-102)
+    c.StrengthMultiplier.Position=UDim2.new(0,4,1,-95)
+    priceButton(c,"WinPurchase",item.WinPrice,trophyImage,UDim2.new(0,3,1,-70),UDim2.new(1,-6,0,31),Color3.fromRGB(235,184,36),winRemote,id)
+    priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(30,160,226),robuxRemote,id)
+   else
+    priceButton(c,"WinPurchase",item.WinPrice,trophyImage,UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(235,184,36),winRemote,id)
+   end
   else
    priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(30,160,226),robuxRemote,id)
   end
@@ -293,6 +301,7 @@ for _,remote in ipairs({equipRemote,winRemote,robuxRemote}) do
   end
   if typeof(result)~="table" or not applyState(result.State) then refresh() end
   page.Status.Text=typeof(result)=="table" and (result.Success and "" or (code=="Cancelled" and "" or tostring(code))) or "Please try again"
+  if code=="NotEnoughWin" then local item=Master.Get(result.ItemId);if item then page.Status.Text="Not enough Win. Need "..PriceFormat.Price(item.WinPrice).." Win" end end
   if typeof(result)=="table" and result.Action=="BestEquip" then
    if result.Success then
     page.Status.Text=code=="AlreadyBestEquipped" and "Best items already equipped." or "Best items equipped."

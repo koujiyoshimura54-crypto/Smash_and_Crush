@@ -878,3 +878,10 @@
 - No approved Epic Win amount found: propose1800 Win and hold price-dependent implementation. Preserve Epic/Legendary Robux purchases. Correct the earlier record's unsupported assumption of an active star4 Win offer.
 - Document one unapproved Item point proposal and six verified calculation examples; current fixed-three merge is unchanged.
 - Five Sources compile; fresh reDecode/ref/SharedString/UniqueId0 and real Edit Inventory/Merge/390px presentation checks pass. Hardware input, Cloud purchases/persistence and live Shop/drop views unverified. Preview removed; owned Studio ended; target lock removed. See DEV_STATUS and BALANCE_SPEC.
+
+## 2026-10-14 - Point-based normal Item merge, Epic4500 Win, price-only K/M
+
+- Replace fixed-three/same-ID merging with shared point-based rarity/type/Element probabilities, variable mixed owned quantities (minimum2), independent server draws and one existing atomic Item transaction. Keep equipment coherence and saved retry/replay fencing; show real candidate icons/stars/odds through the purchased drag UI and virtualized material/candidate lists.
+- Approve Epic4500 Win alongside unchanged Robux; supersede the unapproved1800 proposal. Preserve75/200/600, Legendary conditions and all unrelated purchase/gameplay.
+- Add common price-only K/M presentation across active purchase surfaces without changing numeric amounts, currency/button artwork or ordinary Strength/count/reward formatting.
+- Ten focused actual-Source offline fault groups and21 Source compiles PASS; reDecode/reference/SharedString/UniqueId0 PASS. Real Edit Epic/mixed/narrow previews inspected; Cloud gameplay, physical input and live saving/purchases remain unverified. Cleaned preview and released owned Studio/target lock. Details and Full Paths: DEV_STATUS.

@@ -45,7 +45,7 @@ local function refresh()
   local amount,source=Prices.Get(passId,Enum.InfoType.GamePass,nil)
   if version~=renderVersion or not price.Parent then return end
   price:SetAttribute("PriceSource",source)
-  price.Text=amount~=nil and ("ONLY "..utf8.char(0xE002)..tostring(amount).."!") or "Price unavailable"
+  price.Text=amount~=nil and ("ONLY "..utf8.char(0xE002)..require(RS.Modules.NumberFormat).Price(amount).."!") or "Price unavailable"
  end)
 end
 function M.start()

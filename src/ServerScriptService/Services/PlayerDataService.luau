@@ -198,8 +198,19 @@ local function sameLimitedReceipt(a,b)
   and a.Result.id==b.Result.id and a.Result.pet==b.Result.pet and a.Result.percent==b.Result.percent
 end
 
+-- One durable merge sequence/last result, bounded independently of merge count.
+-- A new server session issues a new client token; earlier sequences never spend again.
+local function normalizeItemMerge(raw)
+ if raw==nil then return {Sequence=0} end
+ if typeof(raw)~="table" or not finite(raw.Sequence) or raw.Sequence<0 or raw.Sequence%1~=0 or raw.Sequence>MAX_COUNT then return nil,"Invalid ItemMergeJournal" end
+ if raw.Sequence==0 then return {Sequence=0} end
+ for _,k in ipairs({"RequestId","SessionToken","ResultItemId","Signature","Version"}) do
+  if typeof(raw[k])~="string" then return nil,"Invalid ItemMergeJournal" end
+ end
+ return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
+end
 local function defaults()
- return {LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -209,8 +220,12 @@ local function validEquipped(itemId,owned)
 end
 local function normalize(raw)
  local d=defaults()
+ d.ItemMergeJournal=assert(normalizeItemMerge(nil))
  if typeof(raw)=="table" and typeof(raw.ResetToken)=="string" then d.ResetToken=raw.ResetToken end
  if typeof(raw)=="table" then
+  local merge,mergeError=normalizeItemMerge(raw.ItemMergeJournal)
+  if not merge then return nil,mergeError end
+  d.ItemMergeJournal=merge
   if raw.AutoTapEnabled~=nil and typeof(raw.AutoTapEnabled)~="boolean" then return nil,"Invalid AutoTapEnabled" end
   d.AutoTapEnabled=raw.AutoTapEnabled~=false
   if raw.SelectedSizeTier~=nil and (not finite(raw.SelectedSizeTier) or raw.SelectedSizeTier%1~=0 or raw.SelectedSizeTier<0 or raw.SelectedSizeTier>10) then return nil,"Invalid SelectedSizeTier" end
@@ -795,6 +810,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   OwnedAuras=table.clone(d.OwnedAuras),
   EquippedAura=equipAuraOnSuccess or d.EquippedAura,
   OwnedItems=table.clone(d.OwnedItems),
+  ItemMergeJournal=assert(normalizeItemMerge(d.ItemMergeJournal)),
   EquippedItems=table.clone(d.EquippedItems),
   InventoryNotificationSeen=cloneNotificationSeen(d.InventoryNotificationSeen),
   ResetToken=saveToken
@@ -844,6 +860,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    -- Quantity changes are committed by their own UpdateAsync transaction.
    -- Never overwrite a newer count with an autosave's stale inventory snapshot.
    merged.OwnedItems=assert(normalizeItems(old.OwnedItems))
+   merged.ItemMergeJournal=assert(normalizeItemMerge(old.ItemMergeJournal))
    merged.EquippedItems=table.clone(payload.EquippedItems)
    merged.InventoryNotificationSeen=mergeNotificationSeen(old.InventoryNotificationSeen,payload.InventoryNotificationSeen)
    if old.DailyDate==payload.DailyDate then
@@ -1304,6 +1321,17 @@ function PlayerDataService.ResolveItemMutation(player)
    local merged=old and table.clone(old) or defaults()
    local owned=assert(normalizeItems(merged.OwnedItems))
    local users,meta=metadata(keyInfo)
+   if op.ItemMerge then
+    if resetToken(merged)~=op.ResetToken then rejection="SaveSupersededByReset";return nil end
+    local journal=assert(normalizeItemMerge(merged.ItemMergeJournal))
+    local context=op.ItemMerge
+    if journal.Sequence>=context.Sequence then
+     if journal.Sequence~=context.Sequence or journal.RequestId~=op.Id or journal.Signature~=context.Signature or journal.ResultItemId~=context.ResultItemId or journal.SessionToken~=context.SessionToken then rejection="MergeSequenceChanged";return nil end
+     meta.ItemMutationId=op.Id
+     return merged,users,meta
+    end
+    if journal.Sequence+1~=context.Sequence then rejection="MergeSequenceChanged";return nil end
+   end
    if op.ShopGrant then
     if resetToken(merged)~=op.ResetToken then rejection="SaveSupersededByReset";return nil end
     local shop=assert(normalizeShop(merged.ShopRewards));merged.ShopRewards=shop
@@ -1389,6 +1417,10 @@ function PlayerDataService.ResolveItemMutation(player)
      end
     end
     meta.ItemMutationId=op.Id
+    if op.ItemMerge then
+     local c=op.ItemMerge
+     merged.ItemMergeJournal={Sequence=c.Sequence,RequestId=op.Id,SessionToken=c.SessionToken,ResultItemId=c.ResultItemId,Signature=c.Signature,Version=c.Version}
+    end
    end
    merged.OwnedItems=owned
    return merged,users,meta
@@ -1414,6 +1446,7 @@ function PlayerDataService.ResolveItemMutation(player)
   s.Saving=false
   return false,rejection
  end
+ if op.ItemMerge and (sessions[player]~=s or s.PendingItemMutation~=op) then return false,"SaveSuperseded" end
  local actualMutationId
  local metadataReadable=false
  if info then
@@ -1436,6 +1469,7 @@ function PlayerDataService.ResolveItemMutation(player)
   return false,"InventorySavePending"
  end
  s.Data.OwnedItems=assert(normalizeItems(saved.OwnedItems))
+ if op.ItemMerge then s.Data.ItemMergeJournal=assert(normalizeItemMerge(saved.ItemMergeJournal)) end
  for slot,id in pairs(s.Data.EquippedItems) do
   if deltas[id] and deltas[id]<0 and not s.Data.OwnedItems[id] then s.Data.EquippedItems[slot]="" end
  end
@@ -1610,7 +1644,15 @@ function PlayerDataService.ChangeItemCounts(player,deltas,timeReward)
   changes[id]=delta
  end
  local op
- if timeReward and timeReward.RunReturn then
+ if timeReward and timeReward.ItemMerge then
+  local c=timeReward.ItemMerge
+  local journal=assert(normalizeItemMerge(s.Data.ItemMergeJournal))
+  if typeof(c.RequestId)~="string" or #c.RequestId~=36 or typeof(c.SessionToken)~="string" or #c.SessionToken~=36
+   or not finite(c.Sequence) or c.Sequence~=journal.Sequence+1 or c.Sequence>MAX_COUNT
+   or typeof(c.Signature)~="string" or not master.Get(c.ResultItemId) then return false,"InvalidMergeRequest" end
+  op={Id=c.RequestId,WinPrice=0,ResetToken=s.Data.ResetToken,ItemMerge=c}
+  c.Operation=op
+ elseif timeReward and timeReward.RunReturn then
   local context=timeReward.RunReturn
   if typeof(context.Id)~="string" or typeof(context.Validate)~="function" or not context.Validate() then return false,"StaleRun" end
   for _,delta in pairs(changes) do if delta<=0 then return false,"InvalidRewardItems" end end

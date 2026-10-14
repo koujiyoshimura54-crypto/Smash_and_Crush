@@ -508,3 +508,11 @@ Retain the purchased four-by-three stepped equipment, Ramp/red carpet/access pat
 ## 2026-10-14 - Regular Item rarity overlays
 
 Protein/Glove/TrainingBelt icon overlays read ItemMaster.RarityRank and show one through five stars. Reuse existing equipment/drop Stars, otherwise clone purchased ShopPanel.Top.ShopText1 and its black outline. Keep actual images, purchase buttons, palette and card geometry. Place card stars in the upper-left portion, away from the upper-right selection check and bottom count/equip/purchase controls; drag clones keep the overlay above their icon. Apply to Inventory, normal-Item Shop cards, Merge material/selected/drag/result cards and existing drop-result stars. Pet and Dumbbell icons are excluded. Actual Edit preview and unverified runtime limits are in DEV_STATUS.
+
+## 2026-10-14 - Point Item candidates and compact price labels
+
+Retain the purchased Merge shell, material/result cards, real icons, ItemMaster-driven star overlays, selected dim/check and card-rectangle overlap drop detection. Mixed Item unit selection is variable with minimum2, not fixed sockets/three identical copies. Virtualized list preserves independently selectable count-derived unit identities even for large holdings. Candidate scroll shows actual type/Element/rank cross-product images, stars and probability, with no additional point explanation text; use existing purchased list/card primitives. Clear/deselect/ownership updates/hide/reopen synchronize selection and release display resources.
+
+Epic Inventory card has the actual yellow4500-Win control plus its existing green Robux control, with amount-only K/M. Preserve currency images, gradients/strokes/fonts. All monetary presentation uses common NumberFormat.Price/PriceText or MarketplacePrice.Format; all non-price values and actual price sources are unchanged.
+
+Real Edit desktop Epic/mixed and390x690 candidate previews were inspected. Narrow candidate names/percentages fit and actions remain inside the panel; physical input and Cloud gameplay remain unverified. Pet Merge remains disabled and its calculation/ownership behavior is unchanged.

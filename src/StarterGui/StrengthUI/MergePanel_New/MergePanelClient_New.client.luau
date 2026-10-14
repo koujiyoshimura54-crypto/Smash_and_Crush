@@ -4,6 +4,7 @@
 local function buildMergeShop(ctx)
  local gui,RS,PetClient,Egg,Master=ctx.gui,ctx.RS,ctx.PetClient,ctx.Egg,ctx.Master
  local ItemPresentation=require(RS.Modules.InventoryPresentation)
+ local ItemMergeConfig=require(RS.Config.ItemMergeConfig)
  local UIS=ctx.Input
  local connections,cardCleanups,candidateCleanups={},{},{}
  local destroyed=false
@@ -120,6 +121,10 @@ local function buildMergeShop(ctx)
  local result=panel("Result",body)
  local resultTitle=text("ResultTitle",result,"Merge Result");resultTitle.TextXAlignment=Enum.TextXAlignment.Left
  local resultHint=text("ResultHint",result,"");resultHint.TextWrapped=true
+ local resultItems=clone(ctx.PurchasedInventory.Items,"ResultItems",result);clearLayout(resultItems)
+ for _,d in resultItems:GetChildren() do if d:IsA("GuiObject") then d:Destroy() end end
+ resultItems.BackgroundTransparency=1;resultItems.ScrollBarThickness=6;resultItems.ScrollingDirection=Enum.ScrollingDirection.Y
+ resultItems.AutomaticCanvasSize=Enum.AutomaticSize.None;resultItems.ScrollingEnabled=true;resultItems.ClipsDescendants=true;resultItems.ZIndex=222
  local drop=panel("DropArea",body)
  local dropStroke=drop:FindFirstChildOfClass("UIStroke")
  if dropStroke then dropStroke.Thickness=4;dropStroke.Transparency=0;dropStroke.Enabled=false end
@@ -141,8 +146,8 @@ local function buildMergeShop(ctx)
  dropStud.AnchorPoint=Vector2.zero;dropStud.Position=UDim2.new();dropStud.Size=UDim2.fromScale(1,1)
  dropStud.ImageTransparency=.9;dropStud.ZIndex=215;dropStud.Active=false
  local dropTitle=text("Added",drop,"Drag Items Here")
- local dropHint=text("DropHint",drop,"3 matching Items required")
- local selectedLabel=text("Selected",body,"Selected: 0 / 3");selectedLabel.TextXAlignment=Enum.TextXAlignment.Left
+ local dropHint=text("DropHint",drop,"Select at least 2 Items")
+ local selectedLabel=text("Selected",body,"Selected: 0");selectedLabel.TextXAlignment=Enum.TextXAlignment.Left
  local clear=action("Clear",body,"Clear",true)
  local merge=action("Merge",body,"Merge")
  local creates=text("Creates",body,"Creates 1 Item")
@@ -150,7 +155,7 @@ local function buildMergeShop(ctx)
  local tab="Item"
  local petState,itemState=nil,nil
  local petSelected,itemSelected={},{ }
- local itemId=nil
+ local committedItemId=nil
  local itemFresh,itemPending=false,false
  local items,tiles={},{}
  local cardTints={}
@@ -158,7 +163,9 @@ local function buildMergeShop(ctx)
  local candidateKey=""
  local candidates={}
  local cell=150
- local itemRequired=3
+ local itemMinimum=ItemMergeConfig.MinimumCount
+ local itemGroups,totalItemUnits={},0
+ local compressedCanvas,materialCanvasHeight=false,0
  local drag=nil
  local blockedActivation={}
  local render,refreshList,layout
@@ -166,19 +173,24 @@ local function buildMergeShop(ctx)
  local function selectedCount()
   local n=0;for _ in pairs(tab=="Pet" and petSelected or itemSelected) do n+=1 end;return n
  end
- local function recipeFor(id)
-  for _,r in ipairs(itemState and itemState.Recipes or {}) do if r.ItemId==id then return r end end
+ local function itemMaterials()
+  local materials={}
+  for _,entry in pairs(itemSelected) do materials[entry.ItemId]=(materials[entry.ItemId] or 0)+1 end
+  return materials
+ end
+ local function itemPreview()
+  return ItemMergeConfig.Evaluate(itemMaterials(),itemState and itemState.OwnedItems or {})
  end
  local function worn(id) return petState and table.find(petState.Equipped or {},id)~=nil end
  local function selectable(entry)
   if tab=="Pet" then
    return petState and petState.Owned[entry.Id]==entry.Name and not worn(entry.Id) and Egg.mergePet(entry.Name)~=nil
   end
-  local r=recipeFor(entry.ItemId)
-  return not itemPending and r and r.Count>=entry.Unit
+  local count=itemState and itemState.OwnedItems and itemState.OwnedItems[entry.ItemId] or 0
+  return not itemPending and ItemMergeConfig.GetPoints(Master.Get(entry.ItemId)) and count>=entry.Unit
  end
  local function selected(entry)
-  return (tab=="Pet" and petSelected[entry.Id] or tab=="Item" and itemId==entry.ItemId and itemSelected[entry.Unit])==true
+  return tab=="Pet" and petSelected[entry.Id]==true or tab=="Item" and itemSelected[entry.Key]~=nil
  end
  local function releaseCandidates()
   for _,fn in candidateCleanups do fn() end;table.clear(candidateCleanups)
@@ -204,13 +216,8 @@ local function buildMergeShop(ctx)
   if tab=="Pet" then
    if addOnly then petSelected[entry.Id]=true else petSelected[entry.Id]=not petSelected[entry.Id] or nil end
   else
-   if itemId and itemId~=entry.ItemId and selectedCount()>0 then
-    status.Text="Select the same type, element and rarity.";return
-   end
-   itemId=entry.ItemId
-   if not addOnly and itemSelected[entry.Unit] then itemSelected[entry.Unit]=nil
-   elseif selectedCount()<itemRequired then itemSelected[entry.Unit]=true end
-   if selectedCount()==0 then itemId=nil end
+   if not addOnly and itemSelected[entry.Key] then itemSelected[entry.Key]=nil else itemSelected[entry.Key]=entry end
+   committedItemId=nil
   end
   status.Text="";render()
  end
@@ -362,7 +369,18 @@ local function buildMergeShop(ctx)
   local activation=tile.Button.Activated:Connect(function() view:ActivateMaterial(entry.Key) end)
   return tile,function() activation:Disconnect();tile:Destroy() end
  end
+ local refreshingList=false
+ local function materialAt(index)
+  for _,g in ipairs(itemGroups) do
+   if index>=g.Start and index<g.Start+g.Count then
+    local unit=index-g.Start+1;local info=Master.Get(g.ItemId)
+    return {ItemId=g.ItemId,Unit=unit,Key=g.ItemId..":"..string.format("%.0f",unit),
+     Name=info.Rarity.." "..info.Element.." "..info.ItemType,VirtualIndex=index}
+   end
+  end
+ end
  refreshList=function(force)
+  if refreshingList then return end;refreshingList=true
   local nextItems={}
   if tab=="Pet" then
    for id,name in pairs(petState and petState.Owned or {}) do
@@ -370,23 +388,41 @@ local function buildMergeShop(ctx)
    end
    table.sort(nextItems,function(a,b) return a.Name==b.Name and a.Id<b.Id or a.Name<b.Name end)
   else
-   local recipes={}
-   for _,r in ipairs(itemState and itemState.Recipes or {}) do if r.Count>0 then table.insert(recipes,r) end end
-   table.sort(recipes,function(a,b) return a.ItemId<b.ItemId end)
-   for _,r in recipes do
-    local info=Master.Get(r.ItemId)
-    if info then
-     -- Counts remain counts. At most the three spendable units are shown; excess stays in a stack badge.
-     for unit=1,math.min(r.Count,itemRequired) do
-      table.insert(nextItems,{ItemId=r.ItemId,Unit=unit,Key=r.ItemId..":"..unit,Name=info.Rarity.." "..info.Element.." "..info.ItemType,Extra=unit==itemRequired and r.Count-itemRequired or 0})
-     end
-    end
+   itemGroups={};totalItemUnits=0
+   local ids={}
+   for id,count in pairs(itemState and itemState.OwnedItems or {}) do
+    if ItemMergeConfig.GetPoints(Master.Get(id)) and type(count)=="number" and count>0 and count%1==0 and count<=ItemMergeConfig.MaxInteger then table.insert(ids,id) end
+   end
+   table.sort(ids)
+   for _,id in ipairs(ids) do
+    local count=itemState.OwnedItems[id]
+    count=math.min(count,ItemMergeConfig.MaxInteger-totalItemUnits)
+    if count>0 then table.insert(itemGroups,{ItemId=id,Count=count,Start=totalItemUnits+1});totalItemUnits+=count end
+   end
+   local stride=cell+8
+   local rows=math.ceil(totalItemUnits/3)
+   materialCanvasHeight=math.min(rows*stride,1000000)
+   compressedCanvas=rows*stride>1000000
+   local localHeight=list.AbsoluteSize.Y/math.max(scale.Scale,.01)
+   local canvasY=list.CanvasPosition.Y/math.max(scale.Scale,.01)
+   local visibleRows=math.max(1,math.ceil(localHeight/stride)+2)
+   local firstRow
+   if compressedCanvas then
+    local range=math.max(1,list.AbsoluteCanvasSize.Y-list.AbsoluteSize.Y)
+    local share=list.CanvasPosition.Y>=range-1 and 1 or math.clamp(list.CanvasPosition.Y/range,0,1)
+    firstRow=math.floor(share*math.max(0,rows-visibleRows))
+   else firstRow=math.max(0,math.floor(canvasY/stride)) end
+   for index=firstRow*3+1,math.min(totalItemUnits,(firstRow+visibleRows)*3) do
+    local entry=materialAt(index)
+    if entry then entry.ViewY=compressedCanvas and canvasY+math.floor((index-firstRow*3-1)/3)*stride or math.floor((index-1)/3)*stride;table.insert(nextItems,entry) end
    end
   end
   local signature={tab}
-  for _,entry in nextItems do table.insert(signature,entry.Key..":"..entry.Name..":"..tostring(entry.Extra)) end
+  for _,entry in nextItems do table.insert(signature,entry.Key..":"..entry.Name) end
   local key=table.concat(signature,"|")
-  if not force and key==listKey then return end
+  if not force and key==listKey then
+   items=nextItems;refreshingList=false;return
+  end
   releaseCards();items=nextItems;listKey=key
   for index,entry in items do
    local tile,cleanup
@@ -394,28 +430,28 @@ local function buildMergeShop(ctx)
    else tile,cleanup=makeItemTile(entry,index) end
    if tile then
     prepareTile(tile,entry)
-    if (entry.Extra or 0)>0 then
-     local badge=text("StackCount",tile,"+"..entry.Extra.." owned")
-     badge.AnchorPoint=Vector2.new(.5,1);badge.Position=UDim2.fromScale(.5,.98);badge.Size=UDim2.fromScale(.94,.18)
-     badge.ZIndex=tile.Button.ZIndex-1
-    end
     local unbind=attach(tile,entry)
     tiles[entry.Key]=tile
     cardCleanups[entry.Key]=function() unbind();cleanup() end
    end
   end
+  refreshingList=false
   if layout then layout() end
  end
  local function candidate(name,image,percent,index,total,rarity,resultItemId)
-  local x=clone(RS.Assets.Templates.OpenEgg.Background.Pets["1"],name,result)
+  local x=clone(RS.Assets.Templates.OpenEgg.Background.Pets["1"],name,tab=="Item" and resultItems or result)
   clearLayout(x);x.AnchorPoint=Vector2.new(.5,0);x.Visible=true;x.Image="";x.BackgroundTransparency=1
   x.ZIndex=223;x.Button.Visible=false;x.Button.Active=false;x.Button.Interactable=false
-  local label=percent and action("Name",x,name) or text("Name",x,name)
-  if percent then
+  local label=percent and not rarity and action("Name",x,name) or text("Name",x,name)
+  if percent and not rarity then
    label.Active=false;label.Interactable=false;label.Selectable=false;label.AutoButtonColor=false
    if ctx.ItemColors[name] and name~="Rare" then label.UIGradient.Color=ctx.ItemColors[name] end
   end
   label.AnchorPoint=Vector2.new(.5,1);label.Position=UDim2.fromScale(.5,percent and .87 or 1)
+  if rarity then
+   x.ClipsDescendants=false
+   for _,limit in label:GetChildren() do if limit:IsA("UITextSizeConstraint") then limit.MinTextSize=6;limit.MaxTextSize=28 end end
+  end
   label.Size=UDim2.fromScale(1,.15)
   x.Percent.AnchorPoint=Vector2.new(.5,1);x.Percent.Position=UDim2.fromScale(.5,1)
   x.Percent.Size=UDim2.fromScale(1,.13);x.Percent.ZIndex=240;x.Percent.AutoLocalize=false
@@ -426,7 +462,7 @@ local function buildMergeShop(ctx)
    for _,old in x.Percent:GetChildren() do if old:IsA("UIStroke") then old:Destroy() end end
    percentStroke:Clone().Parent=x.Percent
   end
-  x.Percent.Text=percent and string.format("%g%%",percent) or "";x.Percent.Visible=percent~=nil
+  x.Percent.Text=percent and string.format("%.2f",percent):gsub("0+$",""):gsub("%.$","").."%" or "";x.Percent.Visible=percent~=nil
   x:SetAttribute("CandidateIndex",index);x:SetAttribute("CandidateCount",total)
   if image~="" then
    if rarity then
@@ -463,12 +499,17 @@ local function buildMergeShop(ctx)
    result:SetAttribute("UpgradeBaselineUnresolved",true)
   else
    resultTitle.Text="Merge Result"
-   local recipe=recipeFor(itemId)
-   local completed=recipe and Master.Get(recipe.ResultItemId)
-   if n==itemRequired and completed and itemFresh and recipe.CanMerge then
-    table.insert(outcomes,{Name=completed.Rarity.." "..completed.Element.." "..completed.ItemType,Image=completed.Image,Rarity=completed.Rarity,ItemId=completed.ItemId})
+   local preview=itemPreview()
+   if committedItemId then
+    local completed=Master.Get(committedItemId)
+    if completed then table.insert(outcomes,{Name=completed.Rarity.." "..completed.Element.." "..completed.ItemType,Image=completed.Image,Rarity=completed.Rarity,ItemId=completed.ItemId,Percent=100}) end
+   elseif preview then
+    for _,o in ipairs(preview.Outcomes) do
+     local completed=Master.Get(o.ItemId)
+     table.insert(outcomes,{Name=completed.Rarity.." "..completed.Element.." "..completed.ItemType,Image=completed.Image,Rarity=completed.Rarity,ItemId=o.ItemId,Percent=o.Percent})
+    end
    end
-   resultHint.Text=#outcomes==0 and "Select 3 matching Items" or ""
+   resultHint.Text=#outcomes==0 and ("Select at least "..itemMinimum.." Items") or ""
   end
   local keys={tab};for _,o in outcomes do table.insert(keys,o.Name..":"..o.Image) end
   local key=table.concat(keys,"|")
@@ -479,7 +520,7 @@ local function buildMergeShop(ctx)
   end
   for i,o in outcomes do
    local x=candidates[i]
-   if x then x.Percent.Text=o.Percent and string.format("%g%%",o.Percent) or "";x:SetAttribute("Percent",o.Percent) end
+   if x then x.Percent.Text=o.Percent and string.format("%.2f",o.Percent):gsub("0+$",""):gsub("%.$","").."%" or "";x:SetAttribute("Percent",o.Percent) end
   end
  end
  local function paintButton(x,enabled)
@@ -511,10 +552,10 @@ local function buildMergeShop(ctx)
   local n=selectedCount()
   listTitle.Text=tab=="Pet" and "Your Pets" or "Your Items"
   creates.Text=tab=="Pet" and "Creates 1 Egg" or "Creates 1 Item"
-  selectedLabel.Text=tab=="Pet" and string.format("Selected: %d",n) or string.format("Selected: %d / %d",n,itemRequired)
+  selectedLabel.Text=string.format("Selected: %d",n)
   selectedLabel:SetAttribute("SelectedCount",n)
   dropTitle.Text=n==0 and (tab=="Pet" and "Drag Pets Here" or "Drag Items Here") or string.format("%d %s Added",n,tab=="Pet" and "Pets" or "Items")
-  dropHint.Text=tab=="Pet" and (n>0 and "Drag more Pets here" or "") or "3 matching Items required"
+  dropHint.Text=tab=="Pet" and (n>0 and "Drag more Pets here" or "") or (n<itemMinimum and "Select at least "..itemMinimum.." Items" or "Drag more Items here")
   if dropStroke and not (drag and drag.Active) then dropStroke.Color=n>0 and Color3.fromRGB(94,255,0) or Color3.fromRGB(0,218,242) end
   drop.BackgroundColor3=n>0 and Color3.fromRGB(7,53,31) or shopSource.BackgroundColor3
   for _,entry in items do
@@ -536,8 +577,8 @@ local function buildMergeShop(ctx)
    button.BackgroundColor3=name==tab and Color3.new(1,1,1) or Color3.fromRGB(64,162,80)
    button.PriceTag.TextColor3=name==tab and Color3.new(1,1,1) or Color3.fromRGB(214,235,211)
   end
-  local recipe=recipeFor(itemId)
-  local ready=tab=="Item" and n==itemRequired and itemFresh and not itemPending and recipe~=nil and recipe.CanMerge==true
+  local preview=tab=="Item" and itemPreview()
+  local ready=tab=="Item" and preview~=nil and itemFresh and not itemPending and itemState and not itemState.SavePending
   paintButton(merge,ready);paintButton(clear,tab=="Pet" or not itemPending)
   merge:SetAttribute("ExecutionEnabled",ready)
   merge.PriceTag.Text="Merge"
@@ -570,21 +611,33 @@ local function buildMergeShop(ctx)
   cell=(lw-24)/3
   for index,entry in items do
    local tile=tiles[entry.Key]
-   if tile then rect(tile,((index-1)%3)*(cell+8),math.floor((index-1)/3)*(cell+8),cell,cell) end
+    if tile then rect(tile,((index-1)%3)*(cell+8),tab=="Item" and entry.ViewY or math.floor((index-1)/3)*(cell+8),cell,cell) end
   end
-  list.CanvasSize=UDim2.fromOffset(0,math.ceil(#items/3)*(cell+8))
+  list.CanvasSize=UDim2.fromOffset(0,tab=="Item" and materialCanvasHeight or math.ceil(#items/3)*(cell+8))
   rect(result,rx,ry,rw,rh)
   rect(resultTitle,20,8,rw-40,portrait and 38 or 52)
   rect(resultHint,18,rh*.5,rw-36,portrait and 34 or 44)
+  resultItems.Visible=tab=="Item"
+  rect(resultItems,12,portrait and 52 or 66,rw-24,rh-(portrait and 60 or 74))
+  local resultCount=#candidates;local columns=resultCount<=1 and 1 or math.min(3,resultCount)
+  local resultWidth=(rw-40)/columns;local resultHeight=portrait and math.min(178,rh-66) or 218
+  resultItems.CanvasSize=UDim2.fromOffset(0,math.ceil(resultCount/columns)*(resultHeight+10))
   for _,x in candidates do
    local index,total=x:GetAttribute("CandidateIndex"),x:GetAttribute("CandidateCount")
    local h=rh-(portrait and 52 or 66)
    local w=math.min(h,rw/math.max(1,total)-36)
    x.AnchorPoint=Vector2.new(.5,0);x.Size=UDim2.fromOffset(w,h)
    x.Position=UDim2.fromOffset(rw*.5+(index-(total+1)*.5)*math.min(rw/math.max(1,total),330),portrait and 50 or 64)
+   if tab=="Item" then
+    x.Size=UDim2.fromOffset(math.min(resultWidth-12,resultHeight),resultHeight)
+    x.Position=UDim2.fromOffset(((index-1)%columns+.5)*resultWidth,math.floor((index-1)/columns)*(resultHeight+10))
+    local pic=x:FindFirstChild("ActualImage");local surface=x:FindFirstChild("ResultCard")
+    if pic then pic.Size=UDim2.fromScale(1,portrait and .60 or .72) end
+    if surface then surface.Size=UDim2.fromScale(.82,portrait and .60 or .72) end
+   end
    local nameplate=x:FindFirstChild("Name")
    if nameplate and x.Percent.Visible then
-    nameplate.Size=UDim2.fromScale(1,portrait and .24 or .15)
+    nameplate.Size=UDim2.fromScale(tab=="Item" and (resultWidth-14)/math.max(x.Size.X.Offset,1) or 1,portrait and .24 or .15)
     nameplate.Position=UDim2.fromScale(.5,portrait and .84 or .87)
     x.Percent.Size=UDim2.fromScale(1,portrait and .16 or .13)
     local viewport=x:FindFirstChild("NormalEggViewport")
@@ -620,29 +673,27 @@ local function buildMergeShop(ctx)
  end
  function view:SetItemState(state,fresh,pending,message)
   itemState=state;itemFresh=fresh==true;itemPending=pending==true
-  if state and type(state.RequiredCount)=="number" then itemRequired=state.RequiredCount end
-  local r=recipeFor(itemId)
-  for unit in pairs(itemSelected) do if not r or unit>r.Count or unit>itemRequired then itemSelected[unit]=nil end end
-  if next(itemSelected)==nil then itemId=nil end
+  if state and type(state.MinimumCount)=="number" then itemMinimum=state.MinimumCount end
+  for key,entry in pairs(itemSelected) do if not state or not state.OwnedItems or (state.OwnedItems[entry.ItemId] or 0)<entry.Unit then itemSelected[key]=nil end end
   if tab=="Item" then status.Text=message or "";refreshList(false);render() end
  end
  function view:SelectTab(name)
   if name~="Pet" and name~="Item" then return end
-  endDrag();petSelected={};itemSelected={};itemId=nil;status.Text=""
+  endDrag();petSelected={};itemSelected={};committedItemId=nil;status.Text=""
   releaseCandidates();tab=name;shop:SetAttribute("SelectedTab",tab)
   list.CanvasPosition=Vector2.zero;refreshList(true);render()
   if ctx.OnTab then ctx.OnTab(name) end
  end
  function view:Clear()
   if itemPending and tab=="Item" then return end
-  endDrag();petSelected={};itemSelected={};itemId=nil;status.Text="";render()
+  endDrag();petSelected={};itemSelected={};committedItemId=nil;status.Text="";render()
  end
  function view:IsPet() return tab=="Pet" end
  function view:Show()
   shop.Visible=true;self:SelectTab("Item");layout()
  end
  function view:Hide()
-  shop.Visible=false;endDrag();petSelected={};itemSelected={};itemId=nil
+  shop.Visible=false;endDrag();petSelected={};itemSelected={};committedItemId=nil
   releaseCards();releaseCandidates();listKey="";table.clear(blockedActivation)
  end
  function view:Destroy()
@@ -653,15 +704,19 @@ local function buildMergeShop(ctx)
  function view:SubmitItem()
   -- The sole Item send hook. Pet is refused even if a caller forcibly enables its visual control.
   if tab~="Item" or not merge.Interactable or itemPending then return end
-  local r=recipeFor(itemId)
-  if not itemFresh or selectedCount()~=itemRequired or not r or not r.CanMerge then return end
+  if not itemFresh or not itemPreview() or itemState.SavePending then return end
   itemPending=true;itemFresh=false;render()
-  ctx.OnMerge(itemId)
+  ctx.OnMerge(itemMaterials())
+ end
+ function view:CompleteItem(id)
+  self:Clear();committedItemId=id;if tab=="Item" then render() end
  end
  connect(merge.Activated,function() view:SubmitItem() end)
  connect(top.Close.Activated,function() view:Hide() end)
  for name,button in pairs(tabs) do connect(button.Activated,function() view:SelectTab(name) end) end
  connect(gui:GetPropertyChangedSignal("AbsoluteSize"),layout)
+ connect(list:GetPropertyChangedSignal("CanvasPosition"),function()if tab=="Item" then refreshList(false);render() end end)
+ connect(list:GetPropertyChangedSignal("AbsoluteSize"),function()if tab=="Item" then refreshList(false);render() end end)
  connect(shop:GetPropertyChangedSignal("Visible"),function() if not shop.Visible then endDrag();releaseCandidates() end end)
  view:SelectTab("Item")
  return view
@@ -680,10 +735,13 @@ local Egg=require(RS.Modules:WaitForChild("Egg"))
 local mergeRemote=RS.Remotes:WaitForChild("ItemMergeRequest")
 local stateRemote=RS.Remotes:WaitForChild("ItemMergeState")
 local state,pending,fetching,fresh=nil,false,false,false
+local pendingRequest
+local deliveredResults={}
+local consumeResult
 local revision=0
 local refresh,view
 local status=""
-local errors={NotEnoughItems="Not enough identical items",DataSaving="Saving. Please wait.",DataNotLoaded="Loading…",CountOverflow="Result item limit reached",InventorySavePending="Waiting for save…",RateLimited="Please wait…",NotMergeable="This item cannot be merged",InvalidItemId="Select another item"}
+local errors={NotEnoughItems="Select at least 2 owned Items",DataSaving="Saving. Please wait.",DataNotLoaded="Loading…",CountOverflow="Item count limit reached",InventorySavePending="Waiting for save…",RateLimited="Please wait…",InvalidAmount="Invalid material amount",InvalidItemId="Select another item",MergeSessionChanged="Reopen Merge and try again",MergeSequenceChanged="Inventory changed. Please retry",InvalidReplay="Please make a new selection"}
 local colors={}
 -- Rarity surfaces are the existing purchased Pet visual palettes; no new art or stats.
 local Config=require(RS.Modules.Config)
@@ -696,11 +754,13 @@ local ok,built=pcall(buildMergeShop,{
  gui=gui,RS=RS,PetClient=PetClient,Egg=Egg,Master=Master,ItemColors=colors,
  PurchasedInventory=game.StarterGui.ScreenGui.Menus.Inventory.Main,
  EggViewport=require(RS.Modules.LimitedPetViewport),Input=game:GetService("UserInputService"),GuiService=game:GetService("GuiService"),
- OnMerge=function(id)
+ OnMerge=function(materials)
   if pending then return end
+  if not state or not state.SessionToken or not state.NextSequence then return end
+  pendingRequest={RequestId=game:GetService("HttpService"):GenerateGUID(false),SessionToken=state.SessionToken,Sequence=state.NextSequence,Materials=materials}
   pending=true;fresh=false;revision+=1;status=""
   view:SetItemState(state,fresh,pending,status)
-  mergeRemote:FireServer(id)
+  mergeRemote:FireServer(pendingRequest)
  end,
  OnTab=function(name)
   if not view then return end
@@ -722,13 +782,24 @@ refresh=function()
  if requestRevision~=revision then task.defer(refresh);return end
  fresh=success and typeof(response)=="table" and response.Loaded==true
  if fresh then state=response;if status=="Checking connection…" then status="" end else status="Checking connection…" end
+ if fresh and pendingRequest and state.LastResult and state.LastResult.RequestId==pendingRequest.RequestId then consumeResult(state.LastResult) end
  view:SetItemState(state,fresh,pending,status)
 end
+consumeResult=function(result)
+ if typeof(result)~="table" or not pendingRequest or result.RequestId~=pendingRequest.RequestId then return end
+ if result.Code=="InventorySavePending" or result.Code=="MergeInProgress" then
+  status="Waiting for save…";return
+ end
+ local id=pendingRequest.RequestId;pendingRequest=nil;pending=false;revision+=1
+ if result.MergeState and result.MergeState.Loaded then state=result.MergeState;fresh=true end
+ status=result.Success and "Merge complete." or errors[result.Code] or "Merge failed. Please retry."
+ view:SetItemState(state,fresh,pending,status)
+ if result.Success and result.ResultItemId and not deliveredResults[id] then
+  deliveredResults[id]=true;view:CompleteItem(result.ResultItemId)
+ end
+end
 mergeRemote.OnClientEvent:Connect(function(result)
- pending=false;fresh=false;revision+=1
- status=typeof(result)=="table" and result.Success and "Merge complete." or (typeof(result)=="table" and errors[result.Code] or "Merge failed. Please try again.")
- if typeof(result)=="table" and result.Success then view:Clear() end
- view:SetItemState(state,fresh,pending,status);task.spawn(refresh)
+ consumeResult(result);view:SetItemState(state,fresh,pending,status);task.spawn(refresh)
 end)
 for _,name in {"ItemPurchaseRequest","ItemRobuxPurchaseRequest","ItemEquipRequest"} do
  RS.Remotes:WaitForChild(name).OnClientEvent:Connect(function()
@@ -746,7 +817,7 @@ local elapsed,petPoll,itemPoll=0,0,0
 local beat=RunService.Heartbeat:Connect(function(dt)
  elapsed+=dt;petPoll+=dt;itemPoll+=dt
  if shop.Visible and petPoll>=.5 then petPoll=0;view:SetPetState(PetClient.state()) end
- if shop.Visible and not view:IsPet() and itemPoll>=2 and not pending then itemPoll=0;task.spawn(refresh) end
+ if shop.Visible and not view:IsPet() and itemPoll>=2 then itemPoll=0;task.spawn(refresh) end
  if elapsed<.1 then return end;elapsed=0
  local model=workspace:FindFirstChild("RestockShop")
  local area=model and model:FindFirstChild("Area")

@@ -483,3 +483,11 @@ UpGrade in World1 contains Capacity and Speed cards. Speed uses existing PlayerD
 ## 2026-10-13 - Step-on normal Dumbbell entrance
 
 World1 purchased PerStepButtons1..7 map to NORMAL_01..07. Entering the current oriented Press bounds buys an unowned item through existing DumbbellService and auto-equips it; owned items equip free, already equipped items do nothing. Hold occupancy does not repeat; exit/re-entry enables another attempt. Server validates the tagged station mapping, World1/Lobby and current Press geometry; one in-flight operation is shared with Inventory. Inventory purchase/equip remains available independently of station distance. Stations8..12 remain unavailable. Existing prices, ownership, single equipment slot and PlayerData save lifecycle are unchanged; purchased Main/Multiplier/Data stay disabled. Runtime behavior is not yet physically tested; see DEV_STATUS.
+
+## 2026-10-14 - Approved point-based normal Item merge (supersedes fixed-three and Phase1 proposals)
+
+Protein/Glove/TrainingBelt materials may mix Item type, Element and rank. Consume at least two actually owned units and create exactly one Item through the existing atomic PlayerData Item transaction; no arbitrary input-count cap. Ownership remains count-based, not migrated to persistent unit IDs.
+
+Shared ItemMergeConfig derives the rarity ladder from Master/configured points. Rarity, type and Element are independent draws: rarity interpolates by total points; type/Element each use point shares from submitted materials. Unsubmitted types/Elements have zero chance, while cross-combinations are valid. Legendary materials are accepted; the last configured rank caps output. Existing equipment cleanup, request deduplication, pending-save retry and session/reset barriers remain. The UI previews that same cross-product and enables execution only for valid state; success displays the server's saved result.
+
+Epic is purchasable for4500 Win alongside its existing Robux offer; prior1800/unapproved/disabled-Win notes are historical. Pet Merge remains disabled; Egg, Dumbbells, Capacity/Speed, combat and rewards are unchanged. Actual Cloud operations/rejoin remain pending owner verification.

@@ -103,7 +103,7 @@ local function setBoard(price)
   local title=board:FindFirstChild("AlwaysBetter")
   if title then title.Text=Config.Name;title.AutoLocalize=false end
   local amount=board:FindFirstChild("Price")
-  if amount then amount.Text=price and string.format("%g Robux / 1 Pet",price) or "Unavailable / 1 Pet";amount.AutoLocalize=false end
+  if amount then amount.Text=price and require(RS.Modules.NumberFormat).Price(price).." Robux / 1 Pet" or "Unavailable / 1 Pet";amount.AutoLocalize=false end
  end
 end
 function M.close()
@@ -205,7 +205,7 @@ function M.show(parent,fetchPrice)
    local valid=success and type(product)=="table" and product.ProductId==Config.ProductId and product.IsForSale==true
     and type(product.PriceInRobux)=="number" and product.PriceInRobux>0 and product.PriceInRobux<math.huge
    if valid then
-    buy.Main.Amount.Text=string.format("\u{E002} %g",product.PriceInRobux)
+    buy.Main.Amount.Text=utf8.char(0xE002).." "..require(RS.Modules.NumberFormat).Price(product.PriceInRobux)
     gui:SetAttribute("PriceSource","Marketplace");setBoard(product.PriceInRobux)
    else gui:SetAttribute("PriceSource","Unavailable");setBoard(nil) end
    if valid and offered and type(offer)=="table" and offer.ok and offer.ProductId==Config.ProductId
