@@ -59,6 +59,7 @@ local function syncDumbbellCards()
 end
 syncDumbbellCards()
 local ItemMaster=require(RS.Config:WaitForChild("ItemMaster"))
+local ItemPresentation=require(RS.Modules:WaitForChild("InventoryPresentation"))
 local itemOrder=20
 for _,card in ipairs(holder:GetChildren()) do
  if card:IsA("Frame") and card:GetAttribute("PurchaseKind")=="Item" then
@@ -69,7 +70,7 @@ for _,card in ipairs(holder:GetChildren()) do
    local price=card:FindFirstChild("PriceTag",true)
    if price then price.Text=tostring(item.WinPrice) end
    local icon=card:FindFirstChild("Icon")
-   if icon then icon.Image=item.Image end
+   if icon then icon.Image=item.Image;ItemPresentation.SetItemStars(icon,item) end
    local currency=card:FindFirstChild("CurrencyIcon",true)
    if currency then currency.Image=gui.WinLabel.TrophyIcon.Image end
   end

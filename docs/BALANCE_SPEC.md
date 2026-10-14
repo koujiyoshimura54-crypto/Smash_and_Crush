@@ -517,3 +517,36 @@ Normal Pet draw odds are25/25/25/15/6.5/3/0.5% in preserved original six order p
 | 4 |40|MAX|Disabled|
 
 Total1000 Win. Legacy600-Win Boost owners retain40 and count as stage4; Premium remains50 and disables these purchases. Apply highest eligible speed, not addition. Capacity prices, transient2x multiplier/current local0.8s duration, Training/Boss logic, Item prices, Merge and all rewards are unchanged.
+
+
+## 2026-10-14 - Item Phase 1 proposals (UNAPPROVED; NOT APPLIED)
+
+Four-star Win offer proposal:1800 Win, equal to three current600-Win Rare items. No approved historic amount was found. Epic Win purchasing remains disabled pending approval; its Robux offer and all Legendary conditions are unchanged.
+
+One point-based Item merge proposal:
+
+| Rarity | Material points | Minimum total for this output rank |
+|---|---:|---:|
+| Common / star1 | 1 | 1 |
+| Uncommon / star2 | 3 | 3 |
+| Rare / star3 | 9 | 9 |
+| Epic / star4 | 27 | 27 |
+| Legendary / star5 | 81 reference value | 81 |
+
+- At least two actual units, with no fixed unit cap; all inputs share one Element. Allow different regular Item types. Proposed maximum-rank handling: Legendary inputs stay unavailable, preserving their current non-mergeable status; output caps at Legendary. Totals above81 do not improve output rank; warn before accepting excess material. These choices require approval.
+- Output rank is deterministic: choose the highest threshold not exceeding total points. Thus eligible totals2 produce star1,3..8 star2,9..26 star3,27..80 star4,81+ star5. No rank lottery or hidden remainder carry. Each accepted merge produces one Item in this proposal.
+- Output type is a separate weighted lottery: sum material points for each included type, divide by the total. Only submitted types enter the lottery; same-type inputs yield that type100%. Element stays the common input Element. Do not use input unit-count proportions when point values differ.
+- This geometric point scale retains the old three-of-one-rank upgrade thresholds while allowing variable counts, mixed types and larger jumps. Two low-rank inputs can retain the same rank; this must be previewed explicitly rather than promised as an upgrade.
+
+Checked examples (all inputs share one Element):
+
+| Inputs | Total | Output rank | Type probabilities |
+|---|---:|---|---|
+| 2 Common Gloves | 2 | star1 | Glove100% |
+| 3 Rare Gloves | 27 | star4 | Glove100% |
+| 2 Uncommon Gloves + 3 Common Protein | 9 | star3 | Glove66 2/3%, Protein33 1/3%; Belt0% / excluded |
+| 1 Epic Glove + 1 Rare Belt | 36 | star4 | Glove75%, Belt25%; Protein excluded |
+| 81 Common Gloves | 81 | star5 | Glove100% |
+| 82 Common Gloves | 82 | star5, no extra rank benefit | Glove100% |
+
+Exact-fraction examples sum to100%. Pending approval: price, material scale, thresholds, minimum2, maximum-rank input/excess handling and single-output policy. No new values are installed in ItemMaster, ItemMergeConfig or any server/client merge calculation. Current fixed-three merge remains authoritative.

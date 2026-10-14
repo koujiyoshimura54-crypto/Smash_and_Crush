@@ -4,6 +4,7 @@ local TweenService=game:GetService("TweenService")
 local RunService=game:GetService("RunService")
 local player=Players.LocalPlayer
 local Master=require(RS.Config:WaitForChild("ItemMaster"))
+local ItemPresentation=require(RS.Modules:WaitForChild("InventoryPresentation"))
 local template=RS.UI.Templates:WaitForChild("EnemyDropGachaTemplate")
 local remote=RS.Remotes:WaitForChild("EnemyDropGachaResult")
 local rarities=Master.Rarities
@@ -83,7 +84,7 @@ local function show(result)
   wheel.Visible=false;pointer.Visible=false
   local card=holder.ItemCard
   card.Icon.Image=item.Image
-  card.Stars.Text=string.rep("★",assert(table.find(rarities,item.Rarity)))
+  ItemPresentation.SetItemStars(card.Icon,item,card.Stars)
   card:SetAttribute("ItemId",item.ItemId)
   card:SetAttribute("Rarity",item.Rarity)
   card.Visible=true

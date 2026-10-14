@@ -3,6 +3,7 @@
 -- BEGIN MERGE VIEW: the same factory is used by Edit-only previews with read-only adapters.
 local function buildMergeShop(ctx)
  local gui,RS,PetClient,Egg,Master=ctx.gui,ctx.RS,ctx.PetClient,ctx.Egg,ctx.Master
+ local ItemPresentation=require(RS.Modules.InventoryPresentation)
  local UIS=ctx.Input
  local connections,cardCleanups,candidateCleanups={},{},{}
  local destroyed=false
@@ -251,6 +252,8 @@ local function buildMergeShop(ctx)
   end
   -- Explicit image order retains the material-only Sibling -> Global correction.
   ghost.Main.ZIndex=282;ghost.Main.Icon.ZIndex=284
+  local stars=ghost.Main.Icon:FindFirstChild("RarityStars")
+  if stars then stars.ZIndex=286 end
   drag.Ghost=ghost;drag.Faded={}
   dropTitle.Visible=false;dropHint.Visible=false
   for _,d in tile:GetDescendants() do
@@ -353,6 +356,7 @@ local function buildMergeShop(ctx)
   layer(tile,222);tile.Stroke.ZIndex=222;tile.Main.ZIndex=223;tile.Main.Icon.ZIndex=225
   tile.Main.Checkmark.ZIndex=226;tile.Title.ZIndex=227;tile.Button.ZIndex=228
   tile.Visible=true;tile.LayoutOrder=order;tile.Main.Icon.Image=Master.Get(entry.ItemId).Image
+  ItemPresentation.SetItemStars(tile.Main.Icon,Master.Get(entry.ItemId))
   local palette=ctx.ItemColors[Master.Get(entry.ItemId).Rarity]
   if palette then tile.Main.UIGradient.Color=palette end
   local activation=tile.Button.Activated:Connect(function() view:ActivateMaterial(entry.Key) end)
@@ -402,7 +406,7 @@ local function buildMergeShop(ctx)
   end
   if layout then layout() end
  end
- local function candidate(name,image,percent,index,total,rarity)
+ local function candidate(name,image,percent,index,total,rarity,resultItemId)
   local x=clone(RS.Assets.Templates.OpenEgg.Background.Pets["1"],name,result)
   clearLayout(x);x.AnchorPoint=Vector2.new(.5,0);x.Visible=true;x.Image="";x.BackgroundTransparency=1
   x.ZIndex=223;x.Button.Visible=false;x.Button.Active=false;x.Button.Interactable=false
@@ -435,6 +439,7 @@ local function buildMergeShop(ctx)
    local pic=clone(RS.Assets.Templates.PetInventory.Main.Icon,"ActualImage",x)
    pic.Image=image;pic.ZIndex=225;pic.AnchorPoint=Vector2.zero;pic.Position=UDim2.new();pic.Size=UDim2.fromScale(1,rarity and .82 or .72)
    pic.ScaleType=Enum.ScaleType.Fit;pic.Visible=true;pic.ImageTransparency=0
+   if resultItemId then ItemPresentation.SetItemStars(pic,Master.Get(resultItemId)) end
   else
    local ok,cleanup,viewport=pcall(ctx.EggViewport.mountEgg,x,name)
    if ok and cleanup then
@@ -461,7 +466,7 @@ local function buildMergeShop(ctx)
    local recipe=recipeFor(itemId)
    local completed=recipe and Master.Get(recipe.ResultItemId)
    if n==itemRequired and completed and itemFresh and recipe.CanMerge then
-    table.insert(outcomes,{Name=completed.Rarity.." "..completed.Element.." "..completed.ItemType,Image=completed.Image,Rarity=completed.Rarity})
+    table.insert(outcomes,{Name=completed.Rarity.." "..completed.Element.." "..completed.ItemType,Image=completed.Image,Rarity=completed.Rarity,ItemId=completed.ItemId})
    end
    resultHint.Text=#outcomes==0 and "Select 3 matching Items" or ""
   end
@@ -469,7 +474,7 @@ local function buildMergeShop(ctx)
   local key=table.concat(keys,"|")
   if candidateKey~=key then
    releaseCandidates()
-   for i,o in outcomes do candidate(o.Name,o.Image,o.Percent,i,#outcomes,o.Rarity) end
+   for i,o in outcomes do candidate(o.Name,o.Image,o.Percent,i,#outcomes,o.Rarity,o.ItemId) end
    candidateKey=key
   end
   for i,o in outcomes do

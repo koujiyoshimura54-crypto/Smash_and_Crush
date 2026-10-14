@@ -157,8 +157,7 @@ render=function()
   s.image.ImageColor3=Color3.new(1,1,1)
   s.image.ImageTransparency=0
   s.socket.BackgroundColor3=Color3.fromRGB(81,34,123)
-  s.stars.Visible=item~=nil
-  s.stars.Text=item and string.rep("★",table.find(rarities,item.Rarity) or 0) or ""
+  Presentation.SetItemStars(s.image,item,s.stars)
   s.image.Position=item and UDim2.new(0,8,.29,0) or UDim2.new(0,8,0,8)
   s.image.Size=item and UDim2.new(.42,-12,.71,-6) or UDim2.new(.42,-12,1,-16)
  end
@@ -181,7 +180,8 @@ render=function()
   c.LayoutOrder=order c.ZIndex=32 c.Parent=list c:SetAttribute("InventoryItemCard",true)
   local stroke=style(c,Color3.fromRGB(103,32,160),12)
   Presentation.SetSelected(c,selectedId==id)
-  icon(c,"Icon",item.Image,UDim2.fromOffset(6,6),UDim2.new(1,-12,1,-66),33)
+  local itemIcon=icon(c,"Icon",item.Image,UDim2.fromOffset(6,6),UDim2.new(1,-12,1,-66),33)
+  Presentation.SetItemStars(itemIcon,item)
   local multiplier=label(c,"StrengthMultiplier",ItemMultiplierConfig.GetEffectText(item.ItemType,item.Rarity),UDim2.new(0,4,1,-59),UDim2.new(1,-8,0,20),34)
   multiplier.BackgroundTransparency=.12 multiplier.BackgroundColor3=Color3.fromRGB(72,24,111)
   local multiplierCorner=Instance.new("UICorner") multiplierCorner.CornerRadius=UDim.new(0,6) multiplierCorner.Parent=multiplier

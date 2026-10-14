@@ -870,3 +870,11 @@
 - Reuse the actual Ramp/stairs/red carpet, twelve stations and original two-row billboards; replace shoes1..7 with scaled ordinary DumbbellDisplayTemplate copies. Add current-Press server validation, entry/pending guards and player-specific price/ownership display.
 - Preserve the user's final saved Ramp orientation and stop placement work at their request. Further assembly alignment is a manual handoff, not claimed visually complete.
 - Five Sources compile; seven offline groups and final reDecode/reference/SharedString/UniqueId0 checks pass. Physical input, final visual comparison and Cloud persistence unverified. No final rbxl rewrite; no Studio process or target lock at handoff. See DEV_STATUS for paths, coordinates and final hash.
+
+
+## 2026-10-14 - Y01 regular Item Phase 1
+
+- Add shared ItemMaster-ranked star overlays using actual purchased text/outline; reuse existing equipped/drop labels and cover Inventory, normal-Item Shop, Merge materials/drag/result. Keep images, controls and gameplay.
+- No approved Epic Win amount found: propose1800 Win and hold price-dependent implementation. Preserve Epic/Legendary Robux purchases. Correct the earlier record's unsupported assumption of an active star4 Win offer.
+- Document one unapproved Item point proposal and six verified calculation examples; current fixed-three merge is unchanged.
+- Five Sources compile; fresh reDecode/ref/SharedString/UniqueId0 and real Edit Inventory/Merge/390px presentation checks pass. Hardware input, Cloud purchases/persistence and live Shop/drop views unverified. Preview removed; owned Studio ended; target lock removed. See DEV_STATUS and BALANCE_SPEC.

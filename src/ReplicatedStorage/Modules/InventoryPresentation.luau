@@ -54,6 +54,39 @@ local function tile(x,pattern,donor)
  pattern.TileSize=UDim2.fromOffset(donor.TileSize.X.Offset/math.max(scale,.01),donor.TileSize.Y.Offset/math.max(scale,.01))
 end
 function M.SetIdentity(label,image,name,asset) if label then label.Text=name end if image then image.Image=asset end end
+-- Regular Item overlays only. Reuse existing stars or the purchased Shop title;
+-- the authoritative rank comes from ItemMaster, never a second rarity table.
+function M.SetItemStars(icon,item,existing)
+ local master=require(game.ReplicatedStorage.Config.ItemMaster)
+ local rank=item and master.RarityRank[item.Rarity]
+ local stars=existing or icon:FindFirstChild("RarityStars")
+ if not rank or not master.TypePrefixes[item.ItemType] then
+  if stars then stars.Visible=false;stars.Text="" end
+  return stars
+ end
+ local _,top=templates()
+ local donor=top.ShopText1
+ if not stars then
+  stars=donor:Clone();stars.Name="RarityStars"
+  for _,child in stars:GetDescendants() do if child:IsA("LuaSourceContainer") then child:Destroy() end end
+  stars.AnchorPoint=Vector2.zero;stars.Position=UDim2.fromScale(.02,.02)
+  -- Leave the upper-right purchased selection check and bottom stack count clear.
+  stars.Size=UDim2.fromScale(.67,.22);stars.Parent=icon
+ end
+ stars:SetAttribute("PurchasedShopDecoration",true)
+ stars.FontFace=donor.FontFace;stars.BackgroundTransparency=1
+ stars.TextColor3=Color3.fromRGB(255,220,65);stars.TextTransparency=0
+ stars.TextStrokeColor3=Color3.new(0,0,0);stars.TextStrokeTransparency=donor.TextStrokeTransparency
+ stars.TextScaled=true;stars.TextWrapped=false;stars.AutoLocalize=false
+ stars.TextXAlignment=Enum.TextXAlignment.Center;stars.Active=false;stars.Visible=true
+ stars.Text=string.rep("★",rank);stars.ZIndex=icon.ZIndex+2
+ local ink=stars:FindFirstChildOfClass("UIStroke")
+ if not ink then local source=donor:FindFirstChildOfClass("UIStroke");if source then ink=source:Clone();ink.Parent=stars end end
+ if ink then ink.Enabled=true;ink.Color=Color3.new(0,0,0);ink.Thickness=1;ink.Transparency=0;ink.ApplyStrokeMode=Enum.ApplyStrokeMode.Contextual;ink.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize end
+ local limit=stars:FindFirstChildOfClass("UITextSizeConstraint")
+ if limit then limit.MinTextSize=6;limit.MaxTextSize=24 end
+ return stars
+end
 function M.SetButtonEnabled(button,enabled) button.Active=enabled==true;button.AutoButtonColor=button.Active end
 function M.ApplyPurchasedText(x)
  if protected(x) or not (x:IsA("TextLabel") or x:IsA("TextButton") or x:IsA("TextBox")) then return end

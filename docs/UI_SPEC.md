@@ -503,3 +503,8 @@ Supersedes the previous capacity-only UpGrade geometry. Use the measured1410x800
 ## 2026-10-13 - Purchased Dumbbell station display
 
 Retain the purchased four-by-three stepped equipment, Ramp/red carpet/access path, stand decorations and original two-row world billboards. Shared sign says "Dumbbells". For stands1..7 use actual normal DumbbellDisplayTemplate exhibits and Master icons/names/Strength bonuses/Win prices in existing Amount and Price fields; show owned/equipped/pending per player. Stands8..12 show ON HOLD/Unavailable, without a purchase offer. Do not add large description panels or replace purchased artwork. The user's saved Ramp rotation takes precedence; final manual assembly alignment and visual legibility remain pending.
+
+
+## 2026-10-14 - Regular Item rarity overlays
+
+Protein/Glove/TrainingBelt icon overlays read ItemMaster.RarityRank and show one through five stars. Reuse existing equipment/drop Stars, otherwise clone purchased ShopPanel.Top.ShopText1 and its black outline. Keep actual images, purchase buttons, palette and card geometry. Place card stars in the upper-left portion, away from the upper-right selection check and bottom count/equip/purchase controls; drag clones keep the overlay above their icon. Apply to Inventory, normal-Item Shop cards, Merge material/selected/drag/result cards and existing drop-result stars. Pet and Dumbbell icons are excluded. Actual Edit preview and unverified runtime limits are in DEV_STATUS.
