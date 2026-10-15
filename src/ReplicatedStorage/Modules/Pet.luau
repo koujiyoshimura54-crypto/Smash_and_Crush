@@ -23,6 +23,29 @@ Pet.Slots = { "current" }
 
 Pet.Attributes = { "Pet" }
 
+-- World1 ability data follows actual configured species/IDs, never display captions
+-- or the purchased Speed multiplier. Merge points remain a separate setting.
+function Pet.StrengthPercent(name: string): number?
+	local paid=Limited.ByName[name]
+	if paid then return paid.StrengthPercent end
+	local Egg=require(ReplicatedStorage.Modules.Egg)
+	for _,eggName in ipairs(Egg.NormalOrder) do
+		local pool=Egg.NormalPools[eggName]
+		for slot,species in ipairs(pool.Species) do
+			if species==name then return pool.StrengthPercents[slot] end
+		end
+	end
+	return nil
+end
+
+function Pet.StrengthMultiplier(state): number
+	if type(state)~="table" or type(state.Owned)~="table" or type(state.Equipped)~="table" then return 1 end
+	local id=state.Equipped[1]
+	local name=type(id)=="string" and state.Owned[id]
+	if type(name)~="string" then return 1 end
+	return 1+(Pet.StrengthPercent(name) or 0)/100
+end
+
 function Pet.container(playerData: any): any
 	if not playerData then return nil end
 

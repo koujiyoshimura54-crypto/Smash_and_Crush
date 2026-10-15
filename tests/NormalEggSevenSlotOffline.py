@@ -11,7 +11,7 @@ egg=(root/'src/ReplicatedStorage/Modules/Egg.luau').read_text(encoding='utf-8')
 shared=(root/'tests/NormalEggMergeOffline.py').read_text(encoding='utf-8')
 shared=shared[shared.index('local names={'):shared.index('local ranks=')]
 presentation=(root/'tests/MergeShopPresentationOffline.py').read_text(encoding='utf-8')
-nodes=presentation[presentation.index('local checks=0'):presentation.index('local own=node')]
+nodes=presentation[presentation.index('local checks=0'):presentation.index('local materialState=')]
 fixture=nodes+shared.replace('-- SOURCE JSON',json.dumps(egg))+r'''
 methods.FindFirstChildWhichIsA=methods.FindFirstChildOfClass
 local SLOTS_PATH={"Background","Pets"}

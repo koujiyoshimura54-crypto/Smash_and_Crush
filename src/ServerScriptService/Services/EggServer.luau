@@ -87,7 +87,7 @@ function M.init()
   if prize then
    for _,name in ipairs({"Info","InfoShadow"}) do
     local label=prize:FindFirstChild(name)
-    if label and label:IsA("TextLabel") then label.Text=tostring(Egg.price(part.Name)) end
+    if label and label:IsA("TextLabel") then label.Text=require(RS.Modules.NumberFormat).Price(Egg.price(part.Name)) end
    end
   end
  end

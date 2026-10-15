@@ -3,6 +3,14 @@ local Players=game:GetService("Players")
 local Data=require(script.Parent.PlayerDataService)
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local M={}
+function M.GetStrengthMultiplier(player)
+ if player.Parent~=Players or (player:GetAttribute("CurrentWorld") or 1)~=1 then return 1 end
+ local session=Data.Get(player)
+ if not session or not session.Loaded or not session.Data or session.OwnershipLost then return 1 end
+ -- Read the committed server session directly; no client mirror/cache and no
+ -- per-tick copy of the entire owned inventory. Only its owned equipped ID counts.
+ return Pet.StrengthMultiplier(session.Data.Pets)
+end
 function M.state(player)
  local state,reason=Data.GetPetState(player)
  return state,reason

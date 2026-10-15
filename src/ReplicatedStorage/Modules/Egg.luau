@@ -21,12 +21,16 @@ Egg.RankPoints = {E=10, D=20, C=30, B=40, A=50}
 Egg.NormalOrder = {"Basic", "Rare", "Legendary", "Mythic"}
 Egg.NormalPools = {
 	Basic={Coefficient=1, Approved=true, Icon="", ModelPath="Workspace.Eggs.Basic",
+		StrengthPercents={2,2,2,4,6,8,12}, -- Same species slots; independent of merge points.
 		Species={"Dog", "Grey Cat", "Pink Bunny", "Sheep", "Bear", "Camel", "Slime"}},
 	Rare={Coefficient=5, Approved=true, Icon="", ModelPath="Workspace.Eggs.Rare",
+		StrengthPercents={8,8,8,12,18,25,35},
 		Species={"Cow", "Giraffe", "Lion", "Lizard", "Spider", "Bat", "Shroom"}},
 	Legendary={Coefficient=25, Approved=true, Icon="", ModelPath="Workspace.Eggs.Legendary",
+		StrengthPercents={20,20,20,30,45,60,80},
 		Species={"Elephant", "Mammoth", "Penguin", "Crocodile", "Octopus", "Shark", "Ninja"}},
 	Mythic={Coefficient=125, Approved=true, Icon="", ModelPath="Workspace.Eggs.Mythic",
+		StrengthPercents={45,45,45,60,80,100,130},
 		Species={"Turtle", "Alien", "Anglerfish", "Dino", "Scorpion", "Evil Dragon", "Chimpanzini Bananini"}},
 }
 Egg.MergeThresholds = {

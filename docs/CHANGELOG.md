@@ -910,3 +910,9 @@
 - Replace Item Merge material/drag/candidate/completion text stars with the specified images, five equal squares and independent rows. Adjust Item card/list/result spacing; preserve images/check/dimming/probabilities and merge transactions. Keep prior Pets commitcce85f8.
 - Actual Edit screenshots, physical select/deselect and all-five-rank rendered/property checks pass. Drag/drop/completed replies use presentation adapters; native physical drag in Edit was not successful.390px mixed8-candidate/end-of-scroll and original-Pet geometry/image/percentage comparison pass. No merge submitted.
 - One Source compiles; final same-file reDecode/reference/SharedString/UniqueId0 pass,179514 Instances preserved. Shared InventoryPresentation, Inventory image stars, Pets and all other Sources/non-Source chunks unchanged. Owned Studio2352 ended and lock released; no local Play/Save/Publish/backup/other rbxl. Full evidence: DEV_STATUS.
+## 2026-10-15 - World1 Egg prices and equipped-Pet Strength
+
+- Set existing normal Egg price authority to 15/100/300/1000 Win; use its 1/3/8 totals in native UI and keep server debit/grant paths unchanged.
+- Add approved 28 normal and seven Limited species bonuses to shared configuration. Apply one owned equipped individual's multiplier after normal World1 Strength gain; retain fixed rewards, reward references, World2, IDs/save/follow/max1 and paid receipts. Pet details show Strength +X%.
+- Actual Source simulation passes 368 new assertions plus scoped existing merge/receipt/7-slot fixtures. Native Edit Instance price/description/TextFits and all35 model resolutions checked; screenshots/input/live Cloud gameplay remain unverified.
+- Nine Sources compile; same-file reDecode/reference/SharedString/UniqueId0 passes, with only nine Sources/four pedestal Text properties changed. Verification Studio22604 exited and target lock released. No local Play/Save/Publish/backup. Full evidence and owner Cloud checks: DEV_STATUS.

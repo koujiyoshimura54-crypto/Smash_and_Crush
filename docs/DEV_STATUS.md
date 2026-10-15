@@ -1901,3 +1901,33 @@ Evidence types:
 **Unverified:** Cloud/runtime native mouse/touch drag/drop, authoritative merge/draw/consume/save/rejoin and live complete-result delivery. No connected Cloud session and no local Play. Completed-result screenshots are adapter-driven. No actual Remote, item grant/consume, payment or DataStore call.
 
 Destroyed preview/comparison resources and events. Normal close returned false; matched owned PID2352/start/target and ended only that process. Confirmed exit before removing only its residual lock identifying2352. Target lock absent; user Studio untouched. No Studio Save/Publish, backup or other rbxl; owner handles Save/Publish. This follow-up commit extends already-pushed Pets commitcce85f8 without rewriting history.
+## 2026-10-15 - World1 normal Egg prices and equipped-Pet Strength
+
+Read AGENTS, specifications, latest implementation records and scoped Source/callers; fetched main at `ceb44c7f55cd7b4444cfeca7eb84e0eeba7138bb`. Preserve prior Pets slot6, Inventory/Merge image stars, manual placement and the unrelated pre-existing untracked `reports/Visual_Templates_Secret_VIP_Green_20260917.md` (excluded from commit). CurrentCloud baseline SHA256 `ff2cf3fad8dcf291ee985cf23a7cc4f10224e9f3195b7f641d8dcd25a32d3770`. StrengthManager differed from its Git mirror only in trailing blank lines; no newer executable logic was overwritten.
+
+Changed Source Full Paths:
+
+- `ReplicatedStorage.Modules.Config`
+- `ReplicatedStorage.Modules.Egg`
+- `ReplicatedStorage.Modules.Pet`
+- `ReplicatedStorage.Config.LimitedEggConfig`
+- `ServerScriptService.Services.PetServer`
+- `ServerScriptService.Services.StrengthManager`
+- `ServerScriptService.Services.EggServer`
+- `StarterPlayer.StarterPlayerScripts.Services.EggClient`
+- `StarterPlayer.StarterPlayerScripts.Services.PetClient`
+
+Config was already present in CurrentCloud but not mirrored in canonical src. Export its full existing Source; the only runtime Config changes are four normal Egg wins values: Basic15/Rare100/Legendary300/Mythic1000. NormalPools adds independent StrengthPercents; Limited entries add StrengthPercent without changing order/odds/version/product ID. Pet resolves these actual identifiers for both UI and the owned equipped server session. StrengthManager multiplies only the final existing normal gain; TrainingManager, fixed rewards, reward references, save schema/individual IDs, receipts, follow, max1, merge points/execution and World2 Config remain unchanged.
+
+Native Open1/3/8 labels now show Config-derived totals via existing NumberFormat.Price. Pet details show Strength +X%. Keep all native GUI geometry/assets and Pets left slot6. Additionally change only the saved Text properties of `Workspace.Eggs.Basic.Prize.Info`, `.Rare.Prize.Info`, `.Legendary.Prize.Info`, `.Mythic.Prize.Info` to 15/100/300/1K. Server/client runtime paths also stamp the same prices; no separate runtime price table.
+
+Evidence types:
+
+- **Memory-only execution of actual Source:** `tests/World1PetStrengthOffline.py` + `.spec.luau` pass 368 assertions. Actual Config/Egg/Pet/Limited/PetServer/StrengthManager/EggServer and extracted actual PlayerDataService purchase/debit/mutation functions run against fake players/models/store. All 12 exact-balance purchases debit the expected amount and grant the requested count once; retries are idempotent. All 12 insufficient-balance requests cause zero writes/grants/debits. Actual client stamping produces the same totals. All 35 bonuses/normal odds and Limited024=3%/135=0.5% match. Existing gain baselines, +2%/130%/200% factors, unequip/reload/owned-ID validation, duplicate non-stacking, client-mirror rejection, fixed rewards/reward references and World2 neutrality pass. This is simulation, not live datastore, movement or payment verification.
+- **Existing scoped regressions:** NormalEggMergeOffline 9,087 assertions; BasicEggOffline 2,729 assertions including paid Limited receipt recovery/deduplication, immutable individual IDs and max1; NormalEggSevenSlotOffline 200 assertions. Repair only the latter fixture's stale extraction boundary after prior unrelated presentation changes. No production merge/save/receipt Source is modified. These tests use memory adapters, not purchases or real persistence.
+- **Actual Edit Instances, no Play:** owned verification Studio PID22604/start15:37:36, PlaceId0/GameId0, RunService false. Transient isolated native UI preview checked all 12 Title values and TextFits=true: 15/45/120, 100/300/800, 300/900/2.4K, 1K/3K/8K. Representative Dog/Chimpanzini/Pet135 descriptions are Strength +2%/+130%/+200%, TextFits=true. Native FontFace, wrapping/scaling and label geometry retained. Resolve all 35 actual existing Pet models through the real resolver, including Slime's 10MinutesReward, Shroom/Ninja's Playtime and Chimpanzini's Daily paths and all seven LimitedEgg01Pets IDs. This checks identifier/model mapping, not actual ownership/follow. Screenshot acquisition was white; discard it and do not claim a visual comparison or physical click pass.
+- **Static/final file:** all nine Sources compile. Same-file writeback and fresh reDecode pass with 179514 Instances/162 classes, 76197 reference values, 365 SharedStrings/205586 indexes, complete dense referents/PRNT and UniqueId duplicates0. Exactly two property chunks change: ModuleScript.Source and TextLabel.Text. Allowed differences are the nine Sources and four pedestal Text values only; every other Source/property/raw chunk and the header remain unchanged. Final decoded Sources match canonical repository mirrors. V2/PreMerge SHA256 unchanged. Final CurrentCloud SHA256 `943a44ab129931e85bdfdf457f6e9f95f01c71ed71659f0ed6efc10718b927eb`.
+
+**Owner Save/Publish and pending Cloud checks:** no connected target Cloud and no live Play of this unpublished implementation. After owner manually saves/publishes CurrentCloud to Place126576845524886, verify real 1/3/8 Hatch totals and insufficient Win, walking/Treadmill factors1.02/2.3/3.0, fixed rewards unaffected, equip/unequip/rejoin, original individual IDs, follow and paid receipt continuity. Real clicks/touch, narrow UI appearance and actual persistence are unverified in this update. Do not charge a real purchase for testing. No Creator Hub product changes are needed for this task; Limited3717610547 remains as configured.
+
+Destroyed transient preview/events/plugin. Normal close of owned PID22604 returned true; confirmed process exit before removing only its residual lock. User Studio untouched. No local Play, Studio Save/Publish, backup, alternate rbxl or migration folder. Target lock absent after writeback. Git records Source/docs/tests; the existing local rbxl is updated in place, separately from Cloud publishing.

@@ -87,6 +87,16 @@ local function setIcon(frame: ImageLabel, petName: string)
 end
 
 local function stampSheet(name: string, open: BillboardGui)
+	local opens=open:FindFirstChild(OPENS_NAME)
+	if opens then
+		for _,frame in ipairs(opens:GetChildren()) do
+			local count=Egg.count(frame.Name)
+			if count then
+				local price=require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(name)*count)
+				setPair(frame,"Title",string.format("Open %d\n%s Win",count,price))
+			end
+		end
+	end
 	local background = open:FindFirstChild(BACKGROUND_NAME)
 	if background then
 		setPair(background, INFO_NAME, string.format(Config.Eggs.titleFormat, name))

@@ -544,3 +544,10 @@ HUDLayout alone owns placement/scale; PetClient.bootstrap no longer fixes the en
 Supersedes text-star overlays for Item Merge materials, dragging cards, possible results and completed results only. Use Inventory's gold76134658177553/grey126441080731699 assets: five equal square transparent/Fit/white-tinted ImageLabels, rank-count gold and remaining slots grey. Place stars below the actual image in their own row. Keep image checkmarks/selected dimming separate from the white-tinted stars.
 
 Item materials gain a44-unit star band and matching virtual-list stride; ghosts include that band. Candidates/completions separate image/stars/name/probability rows. Portrait Item mode grows its result/design height by82 units to fit these rows; retain scrolling/final probabilities. No fixed socket/icon is added to Drop. Pet layout/images/odds/disabled execution, InventoryPresentation's shared Shop/drop stars, Inventory image stars and prior Pets slot6 move remain. Evidence/limits: DEV_STATUS.
+## 2026-10-15 update: normal Egg totals and Pet ability text
+
+The existing native Open1/Open3/Open8 Title/TitleShadow labels show `Open N` and the corresponding `Egg.price(name) * Egg.count(buttonName)` total in Win, formatted with the existing `NumberFormat.Price` K/M policy. Keep native label dimensions, FontFace, wrapping and text scaling. World1 Egg pedestal prices also use the same getter/formatter; saved Info text is updated to 15/100/300/1K without moving any objects.
+
+The existing Pet detail Description Text/TextShadow pair displays `Strength +X%` from `Pet.StrengthPercent` for the 35 approved World1 species/IDs. Unknown species retain their prior cosmetic description. Preserve purchased GUI assets, the dedicated Pet Inventory, existing equipment/follow behavior and the shared left-menu Pets slot6. No additional Inventory tab or replacement artwork.
+
+Edit-mode native Instance checks confirmed all 12 totals and representative +2/+130/+200 descriptions with TextFits=true. Screenshot capture returned white and was discarded, so visual comparison and physical input are not verified for this update. No local Play.

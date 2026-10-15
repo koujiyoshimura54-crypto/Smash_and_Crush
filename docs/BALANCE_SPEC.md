@@ -581,3 +581,38 @@ Approved Win prices: Common75, Uncommon200, Rare600, **Epic4500**. Existing Epic
 ## 2026-10-15 - Epic Win-only individual offer
 
 Supersedes the Epic Robux condition above. Epic/star4 remains exactly4500 Win, displayed4.5K, with no new individual Robux purchase. Keep product3711755218 for already-paid receipt recovery; its fallback metadata is not an active offer. Legendary3711755280, other products/packs, all effects and Item merge probabilities remain unchanged.
+## 2026-10-15 update: World1 Egg prices and equipped-Pet Strength
+
+This approved update supersedes earlier cosmetic-only Pet descriptions and normal Egg prices. The existing `Modules.Config.Eggs.Eggs[name].wins` remains the sole price authority; server validation/debit and client labels use `Egg.price`.
+
+| World1 normal Egg | 1 | 3 | 8 |
+| --- | ---: | ---: | ---: |
+| Basic | 15 Win | 45 Win | 120 Win |
+| Rare | 100 Win | 300 Win | 800 Win |
+| Legendary | 300 Win | 900 Win | 2,400 Win |
+| Mythic | 1,000 Win | 3,000 Win | 8,000 Win |
+
+Strength percentages follow the actual species slots in `Egg.NormalPools.StrengthPercents`. Each row retains odds 25/25/25/15/6.5/3/0.5 percent. Merge points, coefficients, thresholds and execution availability remain separate and unchanged.
+
+| Egg | Actual species, in existing pool order | Strength bonuses, same order |
+| --- | --- | --- |
+| Basic | Dog; Grey Cat; Pink Bunny; Sheep; Bear; Camel; Slime | +2%; +2%; +2%; +4%; +6%; +8%; +12% |
+| Rare | Cow; Giraffe; Lion; Lizard; Spider; Bat; Shroom | +8%; +8%; +8%; +12%; +18%; +25%; +35% |
+| Legendary | Elephant; Mammoth; Penguin; Crocodile; Octopus; Shark; Ninja | +20%; +20%; +20%; +30%; +45%; +60%; +80% |
+| Mythic | Turtle; Alien; Anglerfish; Dino; Scorpion; Evil Dragon; Chimpanzini Bananini | +45%; +45%; +45%; +60%; +80%; +100%; +130% |
+
+Limited Egg 01 uses `LimitedEggConfig.Entries[*].StrengthPercent` alongside unchanged paid-pool odds:
+
+| Actual ID | Odds | Strength |
+| --- | ---: | ---: |
+| Pet_042 | 25% | +90% |
+| Pet_064 | 25% | +90% |
+| Pet_081 | 25% | +90% |
+| Pet_086 | 15% | +110% |
+| Pet_094 | 6.5% | +130% |
+| Pet_024 | 3% | +160% |
+| Pet_135 | 0.5% | +200% |
+
+For World1 normal Strength gains only, multiply the completed existing gain calculation by `1 + equippedPercent / 100`. Examples: +2% = 1.02; +130% = 2.3; +200% = 3.0. Resolve only the first owned equipped individual in authoritative saved Pet state. Unequipped, invalid, unknown or unavailable state gives 1.0; duplicate ownership adds nothing. Walking and Treadmill use this path. Fixed Strength rewards and the reward-reference `GetNormalTrainingGain` exclude Pet bonuses. Do not add bonuses to Win, Boss Damage or World2.
+
+Limited product 3717610547, Marketplace price lookup, paid receipt recovery/deduplication, one grant per purchase and Limited exclusion from Pet Merge remain unchanged. Unlisted species receive no inferred ability.

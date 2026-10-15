@@ -1,12 +1,12 @@
 -- Immutable paid pool; retain old versions when introducing a future pool.
 local entries = {
- {Name="Pet_042", Percent=25, Yaw=0},
- {Name="Pet_064", Percent=25, Yaw=0},
- {Name="Pet_081", Percent=25, Yaw=0},
- {Name="Pet_086", Percent=15, Yaw=0},
- {Name="Pet_094", Percent=6.5, Yaw=0},
- {Name="Pet_135", Percent=0.5, Yaw=0},
- {Name="Pet_024", Percent=3, Yaw=0},
+ {Name="Pet_042", Percent=25, StrengthPercent=90, Yaw=0},
+ {Name="Pet_064", Percent=25, StrengthPercent=90, Yaw=0},
+ {Name="Pet_081", Percent=25, StrengthPercent=90, Yaw=0},
+ {Name="Pet_086", Percent=15, StrengthPercent=110, Yaw=0},
+ {Name="Pet_094", Percent=6.5, StrengthPercent=130, Yaw=0},
+ {Name="Pet_135", Percent=0.5, StrengthPercent=200, Yaw=0},
+ {Name="Pet_024", Percent=3, StrengthPercent=160, Yaw=0},
 }
 local byName = {}
 for _, entry in entries do table.freeze(entry); byName[entry.Name]=entry end

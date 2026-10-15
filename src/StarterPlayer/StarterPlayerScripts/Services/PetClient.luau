@@ -219,7 +219,8 @@ function PetClient.showCard(name: string, root: GuiObject)
 	end
 	local description = card:FindFirstChild(DESCRIPTION_NAME)
 	if description then
-		setPair(description, TEXT_NAME, "Cosmetic pet")
+		local percent=Pet.StrengthPercent(name)
+		setPair(description, TEXT_NAME, percent and string.format("Strength +%g%%",percent) or "Cosmetic pet")
 		local icon = description:FindFirstChild(ICON_NAME)
 		if icon and icon:IsA("GuiObject") then icon.Visible = false end
 	end
