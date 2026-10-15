@@ -23,120 +23,169 @@ local selectedId,pending
 local rarityIndex=1
 local rarities=Master.Rarities
 local kinds=Master.Kinds
-local names={Protein="Protein",Glove="Glove",TrainingBelt="Belt"}
+-- Item-only reference presentation. Existing remotes/configs remain authoritative.
+local Responsive=require(RS.Modules.ResponsivePanels)
+local gui=script.Parent
+local donor=game.StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card01_SecretPack
+local purchaseText=game.StarterGui.ScreenGui.Menus.RestockShop.Main.Common.Buy.Main.Amount
+local checkTemplate=RS.Assets.Templates.PetInventory.Main.Checkmark
 local slots,tabs,rarityBadges={},{},{}
 local categoryImages={
  Protein=Master.Get("PROTEIN_COMMON_FIRE").Image,
  Glove=Master.Get("GLOVE_COMMON_FIRE").Image,
  TrainingBelt=Master.Get("TRAININGBELT_COMMON_FIRE").Image,
 }
-local function style(o,color,radius)
- o.BackgroundColor3=color o.BorderSizePixel=0
- local c=Instance.new("UICorner") c.CornerRadius=UDim.new(0,radius or 12) c.Parent=o
- local s=Instance.new("UIStroke") s.Color=Color3.fromRGB(43,13,65) s.Thickness=2 s.ApplyStrokeMode=Enum.ApplyStrokeMode.Border s.Parent=o
- return s
+local palettes={
+ Common={Color3.fromRGB(145,151,159),Color3.fromRGB(58,64,75),Color3.fromRGB(200,205,213)},
+ Uncommon={Color3.fromRGB(0,209,58),Color3.fromRGB(0,103,36),Color3.fromRGB(49,255,92)},
+ Rare={Color3.fromRGB(0,156,255),Color3.fromRGB(0,57,152),Color3.fromRGB(31,224,255)},
+ Epic={Color3.fromRGB(165,0,255),Color3.fromRGB(67,0,151),Color3.fromRGB(240,39,255)},
+ Legendary={Color3.fromRGB(255,217,36),Color3.fromRGB(218,130,0),Color3.fromRGB(255,245,96)},
+}
+local function layer(x,z)
+ x:SetAttribute("ResponsiveOriginalZ",z)
+ x.ZIndex=z+(shell.ZIndex>=200 and 200 or 0)
 end
-local function label(parent,name,value,pos,size,z)
- local t=Instance.new("TextLabel") t.Name=name t.Text=value t.Position=pos t.Size=size
- t.BackgroundTransparency=1 t.Font=Enum.Font.GothamBlack t.TextColor3=Color3.new(1,1,1)
- t.TextScaled=true t.ZIndex=z or 35 t.Parent=parent
- local l=Instance.new("UITextSizeConstraint") l.MaxTextSize=30 l.MinTextSize=8 l.Parent=t
+local function rect(x,a,b,w,h)
+ x.AnchorPoint=Vector2.zero;x.Position=UDim2.fromOffset(a,b);x.Size=UDim2.fromOffset(w,h)
+end
+local function label(parent,name,value,pos,size,max)
+ local t=purchaseText:Clone();t.Name=name;t.Text=value
+ for _,x in t:GetChildren() do if not x:IsA("UIStroke") then x:Destroy() end end
+ t:SetAttribute("InventoryReferenceOwned",true)
+ t.AnchorPoint=Vector2.zero;t.Position=pos;t.Size=size;t.BackgroundTransparency=1;t.AutomaticSize=Enum.AutomaticSize.None
+ t.FontFace=purchaseText.FontFace;t.TextColor3=Color3.new(1,1,1)
+ t.TextTransparency=0;t.TextStrokeColor3=Color3.new();t.TextStrokeTransparency=1
+ t.TextWrapped=false;t.TextScaled=true;t.AutoLocalize=false;t.TextXAlignment=Enum.TextXAlignment.Center
+ t.Active=false;t.Visible=true;layer(t,40);t.Parent=parent
+ local ink=t:FindFirstChildOfClass("UIStroke")
+ if ink then ink.ApplyStrokeMode=Enum.ApplyStrokeMode.Contextual;ink.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize;ink.Thickness=2;ink.Color=Color3.new();ink.Enabled=true end
+ local limit=Instance.new("UITextSizeConstraint");limit.MinTextSize=8;limit.MaxTextSize=max or 32;limit.Parent=t
  return t
 end
 local function icon(parent,name,id,pos,size,z)
- local i=Instance.new("ImageLabel") i.Name=name i.Image=id i.Position=pos i.Size=size
- i.BackgroundTransparency=1 i.ScaleType=Enum.ScaleType.Fit i.ZIndex=z or 35 i.Parent=parent return i
+ local x=Instance.new("ImageLabel");x.Name=name;x.Image=id;x.Position=pos;x.Size=size
+ x.BackgroundTransparency=1;x.ScaleType=Enum.ScaleType.Fit;x.Active=false;layer(x,z or 36);x.Parent=parent
+ return x
 end
-page.Equipped.Size=UDim2.new(.29,-10,1,0)
-page.Owned.Position=UDim2.fromScale(.30,0) page.Owned.Size=UDim2.fromScale(.70,1)
-page.Owned.Title.Text="Items"
-page.Equipped.Hint.Visible=false
-page.Equipped.Title.Text="Equip"
--- Header action, separate from the equipment sockets and item cards.
-page.Equipped.Title.Size=UDim2.new(1,-24,0,28)
-local bestButton=Instance.new("TextButton")
-bestButton.Name="BestEquipButton" bestButton.Text="BEST EQUIP"
-bestButton.Position=UDim2.new(0,8,0,46)
-bestButton.Size=UDim2.new(1,-16,0,32)
-bestButton.Font=Enum.Font.GothamBlack bestButton.TextScaled=true
-bestButton.TextColor3=Color3.new(1,1,1)
-bestButton.TextStrokeColor3=Color3.new(0,0,0) bestButton.TextStrokeTransparency=.25
-bestButton.ZIndex=35 bestButton.Parent=page.Equipped
-style(bestButton,Color3.fromRGB(40,193,111),8)
-local bestLimit=Instance.new("UITextSizeConstraint")
-bestLimit.MinTextSize=8 bestLimit.MaxTextSize=22 bestLimit.Parent=bestButton
+local function surface(x,rarity,selected)
+ local colors=palettes[rarity] or palettes.Common
+ x:SetAttribute("InventoryReferenceOwned",true);x.BorderSizePixel=0;x.BackgroundTransparency=0;x.BackgroundColor3=Color3.new(1,1,1)
+ local corner=x:FindFirstChildOfClass("UICorner") or Instance.new("UICorner");corner.CornerRadius=UDim.new(0,18);corner.Parent=x
+ for _,name in {"OuterUIStroke","InnerUIStroke","UIGradient"} do
+  if not x:FindFirstChild(name) then local part=donor[name]:Clone();part.Parent=x end
+ end
+ x.UIGradient.Color=ColorSequence.new(colors[1],colors[2]);x.UIGradient.Rotation=90;x.UIGradient.Enabled=true
+ x.OuterUIStroke.Color=Color3.new();x.OuterUIStroke.Thickness=4;x.OuterUIStroke.Enabled=true
+ x.InnerUIStroke.Color=selected and Color3.new(1,1,1) or colors[3];x.InnerUIStroke.Thickness=3;x.InnerUIStroke.Enabled=true
+ for _,s in {x.OuterUIStroke,x.InnerUIStroke} do s.ApplyStrokeMode=Enum.ApplyStrokeMode.Border;s.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize end
+ if not x:FindFirstChild("StudPattern") then
+  local stud=donor.StudPattern:Clone();stud.Name="StudPattern";stud.Active=false
+  stud.AnchorPoint=Vector2.zero;stud.Position=UDim2.new();stud.Size=UDim2.fromScale(1,1)
+  stud.ScaleType=Enum.ScaleType.Tile;stud.TileSize=UDim2.fromOffset(100,100);stud.ImageTransparency=.87
+  layer(stud,33);stud.Parent=x
+ end
+end
+local function check(parent,name)
+ local x=checkTemplate:Clone();x.Name=name;x.Visible=false;x.Active=false
+ x.AnchorPoint=Vector2.zero;x.Position=UDim2.new(1,-54,0,8);x.Size=UDim2.fromOffset(46,46)
+ layer(x,43);x.Parent=parent;return x
+end
+local function stars(parent,item,pos,size)
+ local row=parent:FindFirstChild("RarityStars")
+ if not row then
+  row=Instance.new("Frame");row.Name="RarityStars";row.BackgroundTransparency=1;row.Active=false;layer(row,39);row.Parent=parent
+  for i=1,5 do label(row,"Star"..i,"★",UDim2.fromScale((i-1)/5,0),UDim2.fromScale(.2,1),44) end
+ end
+ row.Position=pos;row.Size=size
+ local rank=item and Master.RarityRank[item.Rarity] or 0
+ for i=1,5 do row["Star"..i].TextColor3=i<=rank and Color3.fromRGB(255,218,48) or Color3.fromRGB(52,64,80) end
+ row.Visible=item~=nil
+ return row
+end
+local function effect(item)
+ if item.ItemType=="Protein" then return "Strength +"..tostring(ItemMultiplierConfig.GetProteinBonus(item.Rarity)) end
+ if item.ItemType=="Glove" then return string.format("Boss Damage +%g%%",ItemMultiplierConfig.GetGloveBossDamageBonus(item.Rarity)*100) end
+ return "Treadmill +"..tostring(ItemMultiplierConfig.GetBeltTreadmillBonus(item.Rarity)).."×"
+end
+
+-- Claim this page before the shared skin sees any new descendants.
+page:SetAttribute("InventoryReferenceOwned",true)
+page:SetAttribute("ItemReferenceLayout",true)
+for _,x in page:GetChildren() do if x:IsA("GuiObject") then x.Visible=x==page.Equipped or x==list or x==page.Status end end
+for _,x in page.Equipped:GetChildren() do
+ if x:IsA("GuiObject") then x.Visible=false elseif x:IsA("UIStroke") or x:IsA("UIGradient") then x.Enabled=false end
+end
+page.Equipped.BackgroundTransparency=1;page.Equipped.Active=false
+local equipmentHeader=Instance.new("Frame");equipmentHeader.Name="EquipmentHeader";layer(equipmentHeader,32)
+surface(equipmentHeader,"Epic");equipmentHeader.Parent=page.Equipped
+local equipmentTitle=label(equipmentHeader,"Title","Equipped",UDim2.fromScale(.02,.1),UDim2.fromScale(.48,.8),40)
+equipmentTitle.FontFace=Font.fromEnum(Enum.Font.GothamBlack)
+local bestButton=Instance.new("TextButton");bestButton.Name="BestEquipButton";bestButton.Text="Best Equip"
+bestButton.FontFace=purchaseText.FontFace;bestButton.TextScaled=true;bestButton.TextColor3=Color3.new(1,1,1)
+bestButton.TextStrokeColor3=Color3.new();bestButton.TextStrokeTransparency=0;bestButton.AutoLocalize=false
+bestButton.Position=UDim2.fromScale(.51,.14);bestButton.Size=UDim2.fromScale(.47,.72)
+surface(bestButton,"Epic");bestButton.StudPattern.Visible=false;layer(bestButton,42);bestButton.Parent=equipmentHeader
+bestButton.TextTransparency=1;bestButton.TextStrokeTransparency=1
+local bestText=label(bestButton,"Label",bestButton.Text,UDim2.fromScale(.03,.08),UDim2.fromScale(.94,.84),30)
+bestText.FontFace=Font.fromEnum(Enum.Font.GothamBlack);layer(bestText,44)
+bestButton:GetPropertyChangedSignal("Text"):Connect(function() bestText.Text=bestButton.Text end)
+local bestLimit=Instance.new("UITextSizeConstraint");bestLimit.MinTextSize=8;bestLimit.MaxTextSize=32;bestLimit.Parent=bestButton
 bestButton.Activated:Connect(function()
  if pending then return end
- pending="BestEquip"
- bestButton.Text="EQUIPPING..."
- bestButton.Interactable=false
- page.Status.Text=""
- equipRemote:FireServer(nil,"BestEquip")
+ pending="BestEquip";bestButton.Text="Equipping...";bestButton.Interactable=false
+ page.Status.Text="";equipRemote:FireServer(nil,"BestEquip")
 end)
-
-page.Empty.Visible=false
-page.Status.Position=UDim2.new(.30,8,1,-22) page.Status.Size=UDim2.new(.70,-16,0,20)
-page.Status.TextScaled=true
-for n,kind in ipairs(kinds) do
- page.Equipped[kind].Visible=false
- local s=Instance.new("TextButton") s.Text="" s.Name=kind.."Socket" s.Position=UDim2.new(0,12,.14+(n-1)*.28,0)
- s.Size=UDim2.new(1,-24,.26,0) s.ZIndex=32 s.Parent=page.Equipped style(s,Color3.fromRGB(81,34,123))
- local studs=icon(s,"StudPattern","rbxassetid://111868739606818",UDim2.new(),UDim2.fromScale(1,1),32)
- studs.ScaleType=Enum.ScaleType.Tile studs.TileSize=UDim2.fromOffset(48,48) studs.ImageTransparency=.84
- local pic=icon(s,"EquippedImage",categoryImages[kind],UDim2.new(0,8,0,8),UDim2.new(.42,-12,1,-16),34)
- local none=label(s,"None","None",UDim2.new(.44,0,.1,0),UDim2.new(.56,-10,.8,0),35)
- none.TextWrapped=true
- none.TextXAlignment=Enum.TextXAlignment.Center
- none.Position=UDim2.new(.44,0,.3,0) none.Size=UDim2.new(.56,-10,.4,0)
- none.BackgroundTransparency=0
- style(none,Color3.fromRGB(99,99,112),8)
- local padding=Instance.new("UIPadding") padding.PaddingLeft=UDim.new(0,5) padding.PaddingRight=UDim.new(0,5) padding.Parent=none
- none:FindFirstChildOfClass("UITextSizeConstraint").MaxTextSize=24
- local stars=label(s,"RarityStars","",UDim2.new(0,4,0,3),UDim2.new(.42,-4,.24,0),35)
- stars.TextColor3=Color3.fromRGB(255,220,65)
- stars:FindFirstChildOfClass("UITextSizeConstraint").MaxTextSize=24
- stars.Visible=false
- slots[kind]={image=pic,none=none,stars=stars,socket=s}
+for _,kind in ipairs(kinds) do
+ local s=Instance.new("TextButton");s.Name=kind.."Socket";s.Text="";s.AutoButtonColor=false
+ surface(s,"Common");layer(s,32);s.Parent=page.Equipped
+ local pic=icon(s,"EquippedImage",categoryImages[kind],UDim2.fromScale(.02,.07),UDim2.fromScale(.44,.86))
+ local none=label(s,"None","None",UDim2.fromScale(.46,.32),UDim2.fromScale(.52,.36),30)
+ local row=stars(s,nil,UDim2.fromScale(.44,.40),UDim2.fromScale(.54,.30))
+ local tick=check(s,"EquippedCheck");tick.Position=UDim2.fromScale(.36,.06);tick.Size=UDim2.fromScale(.14,.28)
+ slots[kind]={image=pic,none=none,stars=row,socket=s,check=tick}
  s.Activated:Connect(function()
   if pending or not Master.Get(equipped[kind]) then return end
-  pending=kind equipRemote:FireServer(kind,"Unequip")
+  pending=kind;equipRemote:FireServer(kind,"Unequip")
  end)
 end
-local tabbar=Instance.new("Frame") tabbar.Name="RarityTabs" tabbar.BackgroundTransparency=1
-tabbar.Position=UDim2.new(.30,10,0,52) tabbar.Size=UDim2.new(.70,-24,0,34) tabbar.ZIndex=35 tabbar.Parent=page
-list.Position=UDim2.new(.30,10,0,96) list.Size=UDim2.new(.70,-24,1,-124)
-list.ScrollingDirection=Enum.ScrollingDirection.Y list.AutomaticCanvasSize=Enum.AutomaticSize.Y
-list.CanvasSize=UDim2.new() list.ScrollBarThickness=6 list.ScrollBarImageColor3=Color3.fromRGB(233,157,255)
-local grid=list:FindFirstChildOfClass("UIGridLayout")
-grid.CellPadding=UDim2.fromOffset(8,8) grid.FillDirectionMaxCells=3 grid.SortOrder=Enum.SortOrder.LayoutOrder
-local function layout()
- require(RS.Modules.ResponsivePanels).LayoutItems(script.Parent,page,list,grid)
+local tabbar=Instance.new("Frame");tabbar.Name="RarityTabs";tabbar.BackgroundTransparency=1;tabbar.Active=false;layer(tabbar,35);tabbar.Parent=page
+list.BackgroundTransparency=1;list.Visible=true;list.Active=true;list.ScrollingEnabled=true
+list.ScrollingDirection=Enum.ScrollingDirection.Y;list.AutomaticCanvasSize=Enum.AutomaticSize.None
+list.CanvasSize=UDim2.new();list.ScrollBarThickness=9;list.ScrollBarImageColor3=Color3.fromRGB(191,202,223)
+list.ClipsDescendants=true;layer(list,31)
+for _,x in list:GetChildren() do
+ if x:IsA("GuiObject") then x:Destroy() elseif x:IsA("UIStroke") or x:IsA("UIGradient") then x.Enabled=false end
 end
+local padding=list:FindFirstChildOfClass("UIPadding") or Instance.new("UIPadding")
+padding.PaddingTop=UDim.new(0,5);padding.PaddingBottom=UDim.new(0,12)
+padding.PaddingLeft=UDim.new(0,5);padding.PaddingRight=UDim.new(0,16);padding.Parent=list
+local grid=list:FindFirstChildOfClass("UIGridLayout")
+grid.CellPadding=UDim2.fromOffset(14,14);grid.SortOrder=Enum.SortOrder.LayoutOrder
+local function layout() Responsive.LayoutItems(gui,page,list,grid) end
 list:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
-list.ChildAdded:Connect(function() task.defer(layout) end)
+grid:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(layout)
 shell.ResponsiveScale:GetPropertyChangedSignal("Scale"):Connect(layout)
-task.defer(layout)
+page:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
+page.Status:GetPropertyChangedSignal("Text"):Connect(layout)
+page.Status.BackgroundTransparency=1;page.Status.Active=false;page.Status.TextScaled=true
+page.Status.FontFace=purchaseText.FontFace;page.Status.TextColor3=Color3.new(1,1,1)
+page.Status.TextStrokeColor3=Color3.new();page.Status.TextStrokeTransparency=0;layer(page.Status,44)
 local render
 local function request(remote,id)
  if pending then return end
- pending=id page.Status.Text="..." remote:FireServer(id)
+ pending=id;page.Status.Text="...";remote:FireServer(id)
 end
-local function priceButton(card,name,price,imageId,pos,size,color,remote,itemId)
- local b=Instance.new("TextButton") b.Name=name b.Text="" b.Position=pos b.Size=size b.ZIndex=35 b.Parent=card
- style(b,color,7)
- if imageId then
-  icon(b,"Currency",imageId,UDim2.new(.16,0,.14,0),UDim2.new(.26,0,.72,0),36)
-  label(b,"Price",PriceFormat.PriceText(price),UDim2.new(.43,0,.08,0),UDim2.new(.41,0,.84,0),36)
- else
-  label(b,"Price",PriceFormat.PriceText(price),UDim2.new(.08,0,.08,0),UDim2.new(.84,0,.84,0),36)
- end
- PurchaseHUD.BindPurchaseButton(b,name=="WinPurchase" and "Win" or "Robux",b.Price)
- if not remote then
-  b.Active=false b.Interactable=false b.AutoButtonColor=false
-  b.BackgroundColor3=Color3.fromRGB(70,53,87)
-  if b:FindFirstChild("Currency") then b.Currency.ImageTransparency=.5 end
-  b.Price.TextTransparency=.35
-  return b
+local function priceButton(card,name,price,imageId,remote,itemId)
+ local b=Instance.new("TextButton");b.Name=name;b.Text="";b.BackgroundTransparency=1;layer(b,42);b.Parent=card
+ local amount=label(b,"Price",PriceFormat.PriceText(price),UDim2.new(),UDim2.fromScale(1,1),32)
+ if imageId then icon(b,"Currency",imageId,UDim2.new(),UDim2.fromScale(.2,1),43) end
+ -- Exact existing Win/Robux artwork, gradients, amount font and currency glyph.
+ PurchaseHUD.BindPurchaseButton(b,name=="WinPurchase" and "Win" or "Robux",amount)
+ local visual=b:FindFirstChild("PurchasedButtonVisual")
+ if visual then
+  local objects={visual};for _,x in visual:GetDescendants() do if x:IsA("GuiObject") then table.insert(objects,x) end end
+  for _,x in objects do x:SetAttribute("ResponsiveOriginalZ",x.ZIndex-(shell.ZIndex>=200 and 200 or 0)) end
  end
  b.Activated:Connect(function()
   if (owned[itemId] or 0)>0 then return end
@@ -145,48 +194,43 @@ local function priceButton(card,name,price,imageId,pos,size,color,remote,itemId)
  return b
 end
 render=function()
+ -- Keep scroll position across acknowledgements, counts, and notification refreshes.
+ local scroll=list.CanvasPosition
  for _,c in list:GetChildren() do if c:GetAttribute("InventoryItemCard") then c:Destroy() end end
  for kind,s in pairs(slots) do
   local item=Master.Get(equipped[kind])
+  if item and (item.ItemType~=kind or (owned[item.ItemId] or 0)<=0) then item=nil end
   s.image.Image=item and item.Image or categoryImages[kind]
-  s.image.Visible=true
-  s.none.Visible=true
-  s.none.Text=item and "Equipped" or "None"
-  s.none.TextColor3=item and Color3.new(1,1,1) or Color3.fromRGB(214,214,222)
-  s.none.BackgroundColor3=item and Color3.fromRGB(43,180,123) or Color3.fromRGB(99,99,112)
-  Presentation.SetEquipped(s.none,item~=nil)
-  s.image.ImageColor3=Color3.new(1,1,1)
-  s.image.ImageTransparency=0
-  s.socket.BackgroundColor3=Color3.fromRGB(81,34,123)
-  Presentation.SetItemStars(s.image,item,s.stars)
-  s.image.Position=item and UDim2.new(0,8,.29,0) or UDim2.new(0,8,0,8)
-  s.image.Size=item and UDim2.new(.42,-12,.71,-6) or UDim2.new(.42,-12,1,-16)
+  s.image.ImageColor3=Color3.new(1,1,1);s.image.ImageTransparency=item and 0 or .35
+  s.none.Visible=item==nil;s.check.Visible=item~=nil
+  surface(s.socket,item and item.Rarity or "Common")
+  stars(s.socket,item,UDim2.fromScale(.44,.40),UDim2.fromScale(.54,.30))
+  s.socket.Active=item~=nil;s.socket.Interactable=item~=nil
  end
  for n,t in ipairs(tabs) do
-  Presentation.SetSelected(t,n==rarityIndex)
+  surface(t,rarities[n],n==rarityIndex);t.StudPattern.Visible=false
   rarityBadges[n].Visible=page:GetAttribute("UnseenRarity_"..rarities[n])==true
  end
  local ids={}
  for id,item in pairs(Master.GetAll()) do if item.Rarity==rarities[rarityIndex] then table.insert(ids,id) end end
+ local typeOrder={};for i,kind in ipairs(kinds) do typeOrder[kind]=i end
  table.sort(ids,function(a,b)
   local x,y=Master.Get(a),Master.Get(b)
-  local order={}
-  for i,kind in ipairs(Master.Kinds) do order[kind]=i end
-  if x.ItemType~=y.ItemType then return (order[x.ItemType] or 99)<(order[y.ItemType] or 99) end
+  if x.ItemType~=y.ItemType then return (typeOrder[x.ItemType] or 99)<(typeOrder[y.ItemType] or 99) end
   return x.Element<y.Element
  end)
+ page:SetAttribute("ItemDualPurchase",rarities[rarityIndex]=="Epic")
  for order,id in ipairs(ids) do
   local item=Master.Get(id)
-  local c=Instance.new("TextButton") c.Name=id c.Text="" c.AutoButtonColor=false
-  c.LayoutOrder=order c.ZIndex=32 c.Parent=list c:SetAttribute("InventoryItemCard",true)
-  local stroke=style(c,Color3.fromRGB(103,32,160),12)
-  Presentation.SetSelected(c,selectedId==id)
-  local itemIcon=icon(c,"Icon",item.Image,UDim2.fromOffset(6,6),UDim2.new(1,-12,1,-66),33)
-  Presentation.SetItemStars(itemIcon,item)
-  local multiplier=label(c,"StrengthMultiplier",ItemMultiplierConfig.GetEffectText(item.ItemType,item.Rarity),UDim2.new(0,4,1,-59),UDim2.new(1,-8,0,20),34)
-  multiplier.BackgroundTransparency=.12 multiplier.BackgroundColor3=Color3.fromRGB(72,24,111)
-  local multiplierCorner=Instance.new("UICorner") multiplierCorner.CornerRadius=UDim.new(0,6) multiplierCorner.Parent=multiplier
-  multiplier:FindFirstChildOfClass("UITextSizeConstraint").MaxTextSize=17
+  local c=Instance.new("TextButton");c.Name=id;c.Text="";c.AutoButtonColor=false
+  c.LayoutOrder=order;c:SetAttribute("InventoryItemCard",true)
+  surface(c,item.Rarity,selectedId==id);layer(c,32);c.Parent=list
+  icon(c,"Icon",item.Image,UDim2.new(),UDim2.new(),36)
+  label(c,"Effect",effect(item),UDim2.new(),UDim2.new(),34)
+  stars(c,item,UDim2.new(),UDim2.new())
+  local tick=check(c,"EquippedCheck");tick.Visible=equipped[item.ItemType]==id and (owned[id] or 0)>0
+  local count=label(c,"OwnedCount","×"..tostring(owned[id] or 0),UDim2.fromOffset(8,8),UDim2.fromOffset(65,28),24)
+  count.Visible=(owned[id] or 0)>1;count.TextXAlignment=Enum.TextXAlignment.Left
   c.Activated:Connect(function()
    selectedId=id
    if (owned[id] or 0)>0 and equipped[item.ItemType]~=id and not pending then request(equipRemote,id) end
@@ -194,77 +238,48 @@ render=function()
   end)
   if (owned[id] or 0)>0 then
    local isEquipped=equipped[item.ItemType]==id
-   local b=Instance.new("TextButton")
-   b.Name=isEquipped and "EquippedStatus" or "EquipButton"
-   b.Text=isEquipped and "Equipped" or "Equip"
-   b.Position=UDim2.new(0,3,1,-34) b.Size=UDim2.new(1,-6,0,31)
-   b.Font=Enum.Font.GothamBlack b.TextColor3=Color3.new(1,1,1) b.TextScaled=true
-   b.ZIndex=35 b.Parent=c
-   style(b,isEquipped and Color3.fromRGB(45,125,112) or Color3.fromRGB(40,193,111),7)
-   local limit=Instance.new("UITextSizeConstraint") limit.MinTextSize=8 limit.MaxTextSize=22 limit.Parent=b
-   Presentation.SetButtonEnabled(b,not isEquipped) b.Interactable=not isEquipped
+   local b=Instance.new("TextButton");b.Name=isEquipped and "EquippedStatus" or "EquipButton";b.Text=""
+   surface(b,"Uncommon");b.StudPattern.Visible=false;layer(b,42);b.Parent=c
+   local text=label(b,"Label",isEquipped and "Equipped" or "Equip",UDim2.fromScale(.03,.08),UDim2.fromScale(.94,.84),34);layer(text,44)
+   b.Active=not isEquipped;b.Interactable=not isEquipped
    if not isEquipped then
     if page:GetAttribute("UnseenItem_"..id)==true then
-     local badge=Badges.GetOrClone(script.Parent.LeftMenu.InventoryButton.NotificationBadge,b,"ItemGuideBadge")
-     badge.AnchorPoint=Vector2.new(1,0)
-     badge.Position=UDim2.new(1,-2,0,2)
-     badge.Size=UDim2.fromOffset(24,24)
-     badge.BackgroundColor3=Color3.fromRGB(235,55,65)
-     badge.BackgroundTransparency=0
-     badge.ZIndex=b.ZIndex+2
-     badge.Visible=true
-     local corner=badge:FindFirstChildOfClass("UICorner")
-     if corner then corner.CornerRadius=UDim.new(.5,0) end
-     local text=badge:FindFirstChild("TextLabel")
-     if text then text.Text="!";text.TextColor3=Color3.new(1,1,1);text.ZIndex=badge.ZIndex+1 end
-     badge.Parent=b
+     local badge=Badges.GetOrClone(gui.LeftMenu.InventoryButton.NotificationBadge,b,"ItemGuideBadge")
+     badge.AnchorPoint=Vector2.new(1,0);badge.Position=UDim2.new(1,-2,0,2);badge.Size=UDim2.fromOffset(24,24)
+     badge.Visible=true;badge.Active=false;layer(badge,47)
+     for _,x in badge:GetDescendants() do if x:IsA("GuiObject") then x.Active=false;layer(x,48) end end
     end
     b.Activated:Connect(function()
      if (owned[id] or 0)>0 and equipped[item.ItemType]~=id then request(equipRemote,id) end
     end)
    end
   elseif item.ShopPurchasable then
-   if item.Rarity=="Epic" then
-    -- Two original purchased controls, independent currency/receipts, same card.
-    c.Icon.Size=UDim2.new(1,-12,1,-102)
-    c.StrengthMultiplier.Position=UDim2.new(0,4,1,-95)
-    priceButton(c,"WinPurchase",item.WinPrice,trophyImage,UDim2.new(0,3,1,-70),UDim2.new(1,-6,0,31),Color3.fromRGB(235,184,36),winRemote,id)
-    priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(30,160,226),robuxRemote,id)
-   else
-    priceButton(c,"WinPurchase",item.WinPrice,trophyImage,UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(235,184,36),winRemote,id)
-   end
+   priceButton(c,"WinPurchase",item.WinPrice,trophyImage,winRemote,id)
+   if item.Rarity=="Epic" then priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",robuxRemote,id) end
   else
-   priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",UDim2.new(0,3,1,-34),UDim2.new(1,-6,0,31),Color3.fromRGB(30,160,226),robuxRemote,id)
+   priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",robuxRemote,id)
   end
  end
+ layout();list.CanvasPosition=scroll
 end
 for n=1,5 do
- local b=Instance.new("TextButton") b.Name="Star"..n b.Text="★"..n b.Font=Enum.Font.GothamBlack
- b.TextColor3=Color3.fromRGB(255,228,82) b.TextScaled=true b.Position=UDim2.new((n-1)/5,2,0,0)
- b.Size=UDim2.new(.2,-4,1,0) b.ZIndex=36 b.Parent=tabbar style(b,Color3.fromRGB(83,26,133),8)
- local stud=icon(b,"StudPattern","rbxassetid://111868739606818",UDim2.new(),UDim2.fromScale(1,1),36)
- stud.ScaleType=Enum.ScaleType.Tile stud.TileSize=UDim2.fromOffset(32,32) stud.ImageTransparency=.9
- local badge=Badges.GetOrClone(script.Parent.LeftMenu.InventoryButton.NotificationBadge,b,"RarityGuideBadge")
- badge.AnchorPoint=Vector2.new(1,0)
- badge.Position=UDim2.new(1,-2,0,2)
- badge.Size=UDim2.fromOffset(24,24)
- badge.BackgroundColor3=Color3.fromRGB(235,55,65)
- badge.BackgroundTransparency=0
- badge.ZIndex=b.ZIndex+2
- badge.Visible=false
- local corner=badge:FindFirstChildOfClass("UICorner")
- if corner then corner.CornerRadius=UDim.new(.5,0) end
- local text=badge:FindFirstChild("TextLabel")
- if text then text.Text="!";text.TextColor3=Color3.new(1,1,1);text.ZIndex=badge.ZIndex+1 end
- badge.Parent=b
- tabs[n]=b
- rarityBadges[n]=badge
- b.Activated:Connect(function()
-  rarityIndex=n
-  list.CanvasPosition=Vector2.zero
-  render()
- end)
+ local b=Instance.new("TextButton");b.Name="Star"..n;b.Text="";b.AutoButtonColor=false
+ b.Position=UDim2.new((n-1)/5,4,0,0);b.Size=UDim2.new(.2,-8,1,0)
+ surface(b,rarities[n]);b.StudPattern.Visible=false;layer(b,36);b.Parent=tabbar
+ label(b,"Label","★"..n,UDim2.fromScale(.04,.08),UDim2.fromScale(.92,.84),40)
+ local badge=Badges.GetOrClone(gui.LeftMenu.InventoryButton.NotificationBadge,b,"RarityGuideBadge")
+ badge.AnchorPoint=Vector2.new(1,0);badge.Position=UDim2.new(1,-2,0,2);badge.Size=UDim2.fromOffset(24,24)
+ badge.Visible=false;badge.Active=false;layer(badge,47)
+ for _,x in badge:GetDescendants() do if x:IsA("GuiObject") then x.Active=false;layer(x,48) end end
+ tabs[n]=b;rarityBadges[n]=badge
+ b.Activated:Connect(function() rarityIndex=n;list.CanvasPosition=Vector2.zero;render() end)
 end
+local function fit()
+ Responsive.Fit(shell,gui);layout()
+end
+page:GetPropertyChangedSignal("Visible"):Connect(fit)
+gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(fit)
+task.defer(fit)
 local function applyState(state)
  if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedItems)~="table" then return false end
  owned=state.OwnedItems equipped=typeof(state.EquippedItems)=="table" and state.EquippedItems or {}
@@ -284,8 +299,6 @@ RS.Remotes:WaitForChild("EnemyDropGachaResult").OnClientEvent:Connect(function(r
 end)
 local function opened()
  if shell.Visible and page.Visible then
-  rarityIndex=1
-  list.CanvasPosition=Vector2.zero
   refresh()
  end
 end
@@ -296,7 +309,7 @@ for _,remote in ipairs({equipRemote,winRemote,robuxRemote}) do
   local code=typeof(result)=="table" and result.Code
   if code~="PromptOpened" and code~="AwaitingReceipt" then
    pending=nil
-   bestButton.Text="BEST EQUIP"
+   bestButton.Text="Best Equip"
    bestButton.Interactable=true
   end
   if typeof(result)~="table" or not applyState(result.State) then refresh() end

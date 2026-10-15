@@ -231,7 +231,10 @@ local function setupInventoryReference(panel,header,titleIcon,close)
 end
 local function layoutInventoryReference(panel,header,titleIcon,close)
  local w,h=panel.Size.X.Offset,panel.Size.Y.Offset
- local narrow=w<900;local hh=narrow and 104 or 132;local th=narrow and 64 or 74
+ local items=panel.Content.Items
+ local itemView=items.Visible and items:GetAttribute("ItemReferenceLayout")==true
+ local narrow=w<900;local hh=narrow and 104 or (itemView and 140 or 132);local th=narrow and 64 or 74
+ local inset=itemView and 20 or 30
  referenceRect(panel.PurchasedInventoryBody,0,hh,w,h-hh)
  referenceRect(header,0,0,w,hh);referenceLayer(header,70,panel)
  referenceLayer(header.StudPattern,70,panel);header.StudPattern.TileSize=UDim2.fromOffset(150,150)
@@ -243,8 +246,8 @@ local function layoutInventoryReference(panel,header,titleIcon,close)
  referenceRect(close,w-cs-14,(hh-cs)/2,cs,cs);referenceLayer(close,84,panel)
  for _,x in close.PurchasedShopClose:GetDescendants() do if x:IsA("GuiObject") then referenceLayer(x,82,panel) end end
  referenceLayer(close.PurchasedShopClose,81,panel)
- referenceRect(panel.Tabs,30,hh+16,w-60,th)
- local gap=12;local tw=(w-60-gap*3)/4
+ referenceRect(panel.Tabs,inset,hh+16,w-inset*2,th)
+ local gap=12;local tw=(w-inset*2-gap*3)/4
  for i,name in {"Dumbbells","Items","Aura","Speed"} do
   local b=panel.Tabs[name];referenceRect(b,(i-1)*(tw+gap),0,tw,th);referenceLayer(b,64,panel)
   local v=b.InventoryTabVisual;referenceLayer(v,61,panel);referenceLayer(v.PriceTag,63,panel)
@@ -252,8 +255,8 @@ local function layoutInventoryReference(panel,header,titleIcon,close)
   local scale=panel:FindFirstChildOfClass("UIScale")
   v.PriceTag:FindFirstChildOfClass("UITextSizeConstraint").MaxTextSize=math.max(6,math.min(42,tw*(scale and scale.Scale or 1)/5.4))
  end
- local y=hh+16+th+26
- referenceRect(panel.Content,30,y,w-60,h-y-16)
+ local y=hh+16+th+(itemView and 20 or 26)
+ referenceRect(panel.Content,inset,y,w-inset*2,h-y-16)
 end
 
 local speedViews=setmetatable({},{__mode="k"})
@@ -449,6 +452,7 @@ function M.BindPurchasedPanel(panel)
    for _,tab in panel.Tabs:GetChildren() do
     if tab:IsA("TextButton") then tab.TextScaled=true local limit=tab:FindFirstChildOfClass("UITextSizeConstraint") if limit then limit.MaxTextSize=23 end end
    end
+   if not panel.Content.Items:GetAttribute("ItemReferenceLayout") then
    local equipment=panel.Content.Items.Equipped
    equipment.Title.Position=UDim2.fromOffset(8,compact and 4 or 12)
    equipment.Title.Size=UDim2.new(1,-16,0,compact and 22 or 28)
@@ -460,6 +464,7 @@ function M.BindPurchasedPanel(panel)
      socket.Position=compact and UDim2.new(0,8,(i-1)/3,62-(i-1)*70/3) or UDim2.fromOffset(8,92+(i-1)*108)
      socket.Size=compact and UDim2.new(1,-16,1/3,-70/3-8) or UDim2.new(1,-16,0,98)
     end
+   end
    end
   else
    panel.Stages.Position=UDim2.fromOffset(16,82);panel.Stages.Size=UDim2.new(1,-32,1,-126)

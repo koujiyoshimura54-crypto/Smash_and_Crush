@@ -885,3 +885,9 @@
 - Approve Epic4500 Win alongside unchanged Robux; supersede the unapproved1800 proposal. Preserve75/200/600, Legendary conditions and all unrelated purchase/gameplay.
 - Add common price-only K/M presentation across active purchase surfaces without changing numeric amounts, currency/button artwork or ordinary Strength/count/reward formatting.
 - Ten focused actual-Source offline fault groups and21 Source compiles PASS; reDecode/reference/SharedString/UniqueId0 PASS. Real Edit Epic/mixed/narrow previews inspected; Cloud gameplay, physical input and live saving/purchases remain unverified. Cleaned preview and released owned Studio/target lock. Details and Full Paths: DEV_STATUS.
+
+## 2026-10-15 - Reference Item Inventory layout
+
+- Rebuild the Item page with fixed equipped sockets/Best Equip and rarity filters, large3/2/1-column scrolling cards, five equal gold/dark star slots, actual equipment rarity colors and short Config-derived English effects. Keep original images, purchased Win/Robux controls, compact prices and all gameplay.
+- Scope shared shell/responsive changes to Items; retain other tabs and shared Merge/Shop/drop overlays. Preserve selected rarity/scroll on refresh and update both equipment panes from existing server responses.
+- Three Source compiles and same-file reDecode/reference/SharedString/UniqueId0 pass; only three Sources change. Edit screenshots,45-card/15-socket state checks, activation adapters and responsive/end-of-list geometry checked. Later final/narrow screenshot capture stalled; physical input and Cloud gameplay remain unverified. Released owned Studio12824 and its target lock. Full evidence/limits: DEV_STATUS.

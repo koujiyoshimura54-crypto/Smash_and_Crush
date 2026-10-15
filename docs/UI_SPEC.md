@@ -516,3 +516,13 @@ Retain the purchased Merge shell, material/result cards, real icons, ItemMaster-
 Epic Inventory card has the actual yellow4500-Win control plus its existing green Robux control, with amount-only K/M. Preserve currency images, gradients/strokes/fonts. All monetary presentation uses common NumberFormat.Price/PriceText or MarketplacePrice.Format; all non-price values and actual price sources are unchanged.
 
 Real Edit desktop Epic/mixed and390x690 candidate previews were inspected. Narrow candidate names/percentages fit and actions remain inside the panel; physical input and Cloud gameplay remain unverified. Pet Merge remains disabled and its calculation/ownership behavior is unchanged.
+
+## 2026-10-15 - Item Inventory reference layout
+
+Supersedes the compact Inventory Item grid and upper-left star overlay for this page only. Follow the owner's 1672x941 effect-label reference: shared purple Stud Inventory header, existing backpack/close/four tabs, dark navy body, fixed left Equipped/Best Equip and three vertical equipment sockets, fixed right star1..5 filter, and only the right card list scrolling. Item mode uses a1368x910 design; other Inventory tabs retain their1130x812 shell. Portrait uses700x1050; available screen width reduces card columns3->2->1 without shrinking rows to fit all products.
+
+Use existing ItemMaster images in ImageLabels. Rarity surfaces are grey/green/blue/vivid purple/gold; equipment sockets read the actual equipped Item rarity. Each card has one separate five-slot star row below its icon/effect, with constant slot geometry, gold earned stars and dark remaining stars. Equipment uses the same five-slot convention. Other Shop/Merge/drop overlays remain unchanged.
+
+One short English effect line uses the existing purchase Amount FontFace, white text and black outline: Strength +N, Boss Damage +N%, Treadmill +N×. Values come from ItemMultiplierConfig getters. Do not show a duplicate type/name, rarity name, points or long description. Display owned counts only when greater than one. Keep the actual Win/Robux purchase artwork through HUDLayout.BindPurchaseButton, unchanged native gradients/currency/typography and existing compact prices; Epic keeps a second full-width Robux row below Win.
+
+Keep existing Remote/state/pending/purchase conditions. Equipment acknowledgements update both panes and checks; rank switches rebuild only cards and reset their scroll. Reopening/notifications preserve the selected rank and current scroll while refreshing authoritative state. Initial rank remains1. Empty slots show None and cannot unequip. Gameplay, save, effects, merge and price Configs are unchanged. See DEV_STATUS for separate screenshot, real-Instance geometry/state and unverified physical-input/Cloud evidence.

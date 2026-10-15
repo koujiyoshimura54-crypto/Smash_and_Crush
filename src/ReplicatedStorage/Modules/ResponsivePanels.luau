@@ -43,7 +43,10 @@ function M.Fit(panel,gui)
  local v=Vector2.new(original.X-reserveRight,original.Y-reserveTop)
  if panel.Name=="InventoryPanel" and panel:GetAttribute("InventoryReferenceLayout") then
   local portrait=v.X<700 and v.X<v.Y
-  d=portrait and Vector2.new(700,900) or Vector2.new(1130,812)
+  local items=panel.Content.Items
+  local itemView=items.Visible and items:GetAttribute("ItemReferenceLayout")==true
+  d=itemView and (portrait and Vector2.new(700,1050) or Vector2.new(1368,910))
+   or (portrait and Vector2.new(700,900) or Vector2.new(1130,812))
   local s=portrait and math.min((v.X-24)/d.X,(v.Y-24)/d.Y)
    or math.min(v.X/1672,v.Y/941)
   s=math.clamp(s,.05,1)
@@ -155,6 +158,79 @@ local itemBusy={}
 function M.LayoutItems(gui,page,list,grid)
  if not grid or itemBusy[page] then return end
  itemBusy[page]=true
+ if page:GetAttribute("ItemReferenceLayout") then
+  local size=HUD.GetLocalSize(page)
+  local scale=math.max(HUD.GetScale(page),.05)
+  local narrow=size.X<900
+  local left=math.floor(size.X*.32)
+  local gap=narrow and 14 or 18
+  local top=narrow and 68 or 76
+  local footer=page.Status.Text~="" and 28 or 0
+  local right=left+gap
+  page.Equipped.Position=UDim2.new();page.Equipped.Size=UDim2.fromOffset(left,size.Y)
+  local equipment=page.Equipped
+  equipment.EquipmentHeader.Position=UDim2.new();equipment.EquipmentHeader.Size=UDim2.fromOffset(left,top)
+  local title=equipment.EquipmentHeader.Title
+  local best=equipment.EquipmentHeader.BestEquipButton
+  if narrow then
+   title.Position=UDim2.fromScale(.02,0);title.Size=UDim2.fromScale(.96,.45)
+   best.Position=UDim2.fromScale(.06,.46);best.Size=UDim2.fromScale(.88,.50)
+  else
+   title.Position=UDim2.fromScale(.02,.1);title.Size=UDim2.fromScale(.48,.8)
+   best.Position=UDim2.fromScale(.51,.14);best.Size=UDim2.fromScale(.47,.72)
+  end
+  local socketHeight=(size.Y-top-3*12)/3
+  for i,name in {"ProteinSocket","GloveSocket","TrainingBeltSocket"} do
+   local socket=equipment[name]
+   socket.Position=UDim2.fromOffset(6,top+12+(i-1)*(socketHeight+12))
+   socket.Size=UDim2.fromOffset(left-12,socketHeight)
+   if narrow then
+    socket.EquippedImage.Position=UDim2.fromScale(.08,.04);socket.EquippedImage.Size=UDim2.fromScale(.84,.61)
+    socket.RarityStars.Position=UDim2.fromScale(.04,.70);socket.RarityStars.Size=UDim2.fromScale(.92,.21)
+    socket.None.Position=UDim2.fromScale(.05,.7);socket.None.Size=UDim2.fromScale(.9,.22)
+    socket.EquippedCheck.Position=UDim2.fromScale(.7,.03);socket.EquippedCheck.Size=UDim2.fromScale(.27,.22)
+   else
+    socket.EquippedImage.Position=UDim2.fromScale(.02,.07);socket.EquippedImage.Size=UDim2.fromScale(.44,.86)
+    socket.RarityStars.Position=UDim2.fromScale(.44,.40);socket.RarityStars.Size=UDim2.fromScale(.54,.30)
+    socket.None.Position=UDim2.fromScale(.46,.32);socket.None.Size=UDim2.fromScale(.52,.36)
+    socket.EquippedCheck.Position=UDim2.fromScale(.36,.06);socket.EquippedCheck.Size=UDim2.fromScale(.14,.28)
+   end
+  end
+  page.RarityTabs.Position=UDim2.fromOffset(right,0);page.RarityTabs.Size=UDim2.fromOffset(size.X-right,top-10)
+  list.Position=UDim2.fromOffset(right,top);list.Size=UDim2.fromOffset(size.X-right,size.Y-top-footer)
+  page.Status.Position=UDim2.fromOffset(right,size.Y-26);page.Status.Size=UDim2.fromOffset(size.X-right,24)
+  page.Status.Visible=footer>0
+  -- Minimum screen-space card width; reduce columns instead of fitting all rows.
+  local available=math.max(1,size.X-right-21)
+  local columns=math.clamp(math.floor((available*scale+14*scale)/170),1,3)
+  local width=math.floor((available-(columns-1)*14)/columns)
+  local dual=page:GetAttribute("ItemDualPurchase")==true
+  local iconHeight=math.max(154,width*.58)
+  local textHeight=math.max(38,22/scale)
+  local starsHeight=math.max(48,34/scale)
+  local buttonHeight=math.max(54,(width-16)/3.8,34/scale)
+  local extra=dual and buttonHeight+6 or 0
+  local height=12+iconHeight+textHeight+starsHeight+buttonHeight+extra+12
+  grid.FillDirectionMaxCells=columns;grid.CellSize=UDim2.fromOffset(width,height)
+  local count=0
+  for _,c in list:GetChildren() do if c:GetAttribute("InventoryItemCard") then
+   count+=1
+   c.Icon.Position=UDim2.fromOffset(10,6);c.Icon.Size=UDim2.fromOffset(width-20,iconHeight)
+   c.Effect.Position=UDim2.fromOffset(5,6+iconHeight);c.Effect.Size=UDim2.fromOffset(width-10,textHeight)
+   c.RarityStars.Position=UDim2.fromOffset(16,6+iconHeight+textHeight);c.RarityStars.Size=UDim2.fromOffset(width-32,starsHeight)
+   local y=6+iconHeight+textHeight+starsHeight
+   for _,name in {"WinPurchase","RobuxPurchase","EquipButton","EquippedStatus"} do
+    local button=c:FindFirstChild(name)
+    if button then
+     button.Position=UDim2.fromOffset(8,y+(name=="RobuxPurchase" and c:FindFirstChild("WinPurchase") and buttonHeight+6 or 0))
+     button.Size=UDim2.fromOffset(width-16,buttonHeight)
+    end
+   end
+  end end
+  list.CanvasSize=UDim2.fromOffset(0,math.ceil(count/columns)*(height+14)-14+17)
+  itemBusy[page]=nil
+  return
+ end
  -- Three original columns; divide out the ancestor scale exactly once.
  local width=math.max(48,math.floor((HUD.GetLocalSize(list).X-32)/3))
  grid.FillDirectionMaxCells=3
