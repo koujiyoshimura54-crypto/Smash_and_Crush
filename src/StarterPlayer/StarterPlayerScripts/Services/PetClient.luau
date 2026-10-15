@@ -588,6 +588,21 @@ function PetClient.request(action,a,b)
 	pending=false
 end
 
+local entryConnections=setmetatable({}, {__mode="k"})
+function PetClient.mountEntry(strengthGui,entry,menuClient)
+	local button=require(ReplicatedStorage.Modules.HUDLayout).MountPetEntry(strengthGui,entry)
+	if not entryConnections[button] then
+		entryConnections[button]=button.Activated:Connect(function()
+			if menuClient.shown()=="Inventory" then menuClient.close() else menuClient.open("Inventory") end
+		end)
+		button.Destroying:Once(function()
+			local connection=entryConnections[button]
+			if connection then connection:Disconnect();entryConnections[button]=nil end
+		end)
+	end
+	return button
+end
+
 function PetClient.bootstrap()
 	if bootstrapped then return end
 	bootstrapped=true
@@ -600,16 +615,13 @@ function PetClient.bootstrap()
 	for _,child in ipairs(left:GetChildren()) do
 		if child:IsA("GuiObject") then child.Visible=child.Name=="Inventory" end
 	end
-	left.AnchorPoint=Vector2.new(1,0.5)
-	left.Position=UDim2.new(1,-16,0.5,0)
-	left.Size=UDim2.fromOffset(72,72)
-	local aspect=left:FindFirstChildOfClass("UIAspectRatioConstraint")
-	if aspect then aspect.AspectRatio=1 end
 	local entry=left:WaitForChild("Inventory")
-	entry.AnchorPoint=Vector2.zero
-	entry.Position=UDim2.fromScale(0,0)
-	entry.Size=UDim2.fromScale(1,1)
-	setPair(entry,"Title","Pets")
+	local strengthGui=Player.PlayerGui:WaitForChild("StrengthGui")
+	local menuClient=require(script.Parent.MenuClient)
+	-- Move before MenuClient/ButtonClient scan the old row, avoiding a second
+	-- activation binding and ButtonClient size tweens fighting HUDLayout.
+	PetClient.mountEntry(strengthGui,entry,menuClient)
+	left.Visible=false
 	local menus=gui:WaitForChild("Menus")
 	for _,child in ipairs(menus:GetChildren()) do
 		if child:IsA("GuiObject") then child.Visible=false end
@@ -625,7 +637,6 @@ function PetClient.bootstrap()
 	local otherItems=main:FindFirstChild("ItemsTab")
 	if otherItems and otherItems:IsA("GuiObject") then otherItems.Visible=false end
 	-- No Trail, best-equip purchase, or other purchased inventory handlers are started.
-	local menuClient=require(script.Parent.MenuClient)
 	menuClient.init();menuClient.start()
 	require(script.Parent.ButtonClient).start()
 	require(script.Parent.NotifyClient).start()

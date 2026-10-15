@@ -159,8 +159,8 @@ function M.Mount(gui)
    else leftBottom=math.min(leftBottom,r.P.Y-10);thumbEnd=math.max(thumbEnd,r.P.X+r.S.X+12) end
   end
   local columns=2 -- Original two-column LeftMenu, including on phones.
-  local lastLeftButton=4
-  local rows=math.ceil(5/columns)
+  local lastLeftButton=hud.LeftHUD:FindFirstChild("PetsButton") and 5 or 4
+  local rows=3 -- The sixth slot fills the existing two-column/three-row budget.
   local leftWidth=(columns*144+(columns-1)*14)
   local leftHeight=(rows*144+(rows-1)*14)
   local limitW=compact and w>h and math.max(44,winX-edge-12) or math.max(144,w*.45)
@@ -322,7 +322,7 @@ function M.Mount(gui)
     local blocks={}
     table.insert(blocks,{X=rightX,Y=rightY,W=211*rs,H=476*rs})
     table.insert(blocks,{X=winX,Y=winY,W=280*winScale,H=64*winScale})
-    -- Only the five existing menu buttons occupy the left grid.
+    -- Reserve every occupied menu slot, including the purchased Pets entry.
     for i=0,lastLeftButton do table.insert(blocks,{X=leftX+(i%columns)*158*leftScale,
      Y=leftY+math.floor(i/columns)*158*leftScale,W=144*leftScale,H=144*leftScale}) end
     local slot=hud.Overlay.RouletteSlot
@@ -390,6 +390,32 @@ function M.Mount(gui)
  gui.Destroying:Connect(function()conn:Disconnect();mounted[gui]=nil end)
  layout()
  return handle
+end
+-- Move the original purchased entry; the shared slot remains its sole position owner.
+function M.MountPetEntry(gui,entry)
+ local menu=gui:WaitForChild("LeftMenu")
+ local left=gui:WaitForChild("HUD"):WaitForChild("LeftHUD")
+ local slot=left:FindFirstChild("PetsButton")
+ if not slot then
+  slot=left.CommunityRewardsButton:Clone();slot.Name="PetsButton";slot.LayoutOrder=6;slot.Parent=left
+ end
+ local donor=menu.InventoryButton
+ entry.Name="PetsButton";entry.LayoutOrder=6;entry.Visible=true;entry.Active=false
+ entry.ZIndex=donor.ZIndex
+ local title=entry:WaitForChild("Title")
+ for _,property in {"AnchorPoint","Position","Size","FontFace","TextSize","TextScaled","TextWrapped","TextColor3","TextStrokeColor3","TextStrokeTransparency","TextXAlignment","TextYAlignment","AutoLocalize"} do
+  title[property]=donor.Label[property]
+ end
+ title.Text="Pets" -- Keep the existing automatic localization pipeline.
+ for _,object in entry:GetDescendants() do if object:IsA("GuiObject") then
+  object.Active=false
+  object.ZIndex=donor.ZIndex+(object.Name=="Stroke" and 0 or object.Name=="Title" and 2 or object.Name=="Icon" and 3 or 1)
+ end end
+ local button=entry:WaitForChild("Button")
+ button.Active=true;button.Interactable=true;button.Selectable=true;button.ZIndex=donor.ZIndex+4
+ entry.Parent=menu
+ M.Mount(gui).Refresh()
+ return button
 end
 function M.Reserve(gui,root)
  local handle=M.Mount(gui)

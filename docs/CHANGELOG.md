@@ -898,3 +898,9 @@
 - Reject new Epic prompts server-side; preserve4500 Win, Legendary, packs, IDs and paid receipt recovery/deduplication.
 - Actual Edit screenshots at1280x720/900x720/640x720 and physical filter/equip/Best Equip/wheel/end-button input checked with mocked replies. Source simulation rejects9 Epic offers, permits Legendary and recovers a paid Epic receipt through journal failure/retry/restart with one grant. Cloud gameplay remains unverified.
 - Four Sources compile; same-file reDecode/reference/SharedString/UniqueId0 pass,179514 Instances preserved and only two Source chunks changed. Owned Studio13308 ended; target lock released. No Save/Publish or real purchase. Details and manual product-setting handoff: DEV_STATUS.
+
+## 2026-10-15 - Move Pets to left menu slot6
+
+- Move the original purchased Pets entry into the shared left HUD layout, bottom-right of the existing2x3 grid. Preserve the first5 slots, native icon, label style/localization and separate Pet Inventory. Remove right-center placement and competing input/size bindings.
+- Actual Edit screenshots and mouse input verify desktop/narrow placement, open/close/reopen and size-change persistence; repeated mounting does not double-toggle. Existing Pet gameplay is unchanged. Live respawn/Cloud behavior remains unverified.
+- Two Sources compile; final same-file reDecode/reference/SharedString/UniqueId0 pass with179514 Instances and one changed Source chunk. Owned Studio20504 exited and target lock released. No local Play/Save/Publish/backup/alternate rbxl. Detailed evidence/limits: DEV_STATUS.
