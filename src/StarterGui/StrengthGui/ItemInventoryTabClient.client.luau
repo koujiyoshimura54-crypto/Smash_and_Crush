@@ -28,6 +28,10 @@ local Responsive=require(RS.Modules.ResponsivePanels)
 local gui=script.Parent
 local donor=game.StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card01_SecretPack
 local purchaseText=game.StarterGui.ScreenGui.Menus.RestockShop.Main.Common.Buy.Main.Amount
+-- Existing purchased HatchClient TEXT_FONT; keep Win/Robux amount artwork intact.
+local effectFont=Font.fromEnum(Enum.Font.GothamBlack)
+local STAR_GOLD="rbxassetid://76134658177553"
+local STAR_GREY="rbxassetid://126441080731699"
 local checkTemplate=RS.Assets.Templates.PetInventory.Main.Checkmark
 local slots,tabs,rarityBadges={},{},{}
 local categoryImages={
@@ -91,15 +95,32 @@ local function check(parent,name)
  x.AnchorPoint=Vector2.zero;x.Position=UDim2.new(1,-54,0,8);x.Size=UDim2.fromOffset(46,46)
  layer(x,43);x.Parent=parent;return x
 end
+local function raritySelected(button,selected)
+ button:SetAttribute("RaritySelected",selected)
+ button.OuterUIStroke.Color=selected and Color3.new(1,1,1) or Color3.fromRGB(8,10,18)
+ button.OuterUIStroke.Thickness=selected and 6 or 3
+ button.InnerUIStroke.Color=Color3.fromRGB(255,250,210)
+ button.InnerUIStroke.Thickness=3
+ button.InnerUIStroke.Enabled=selected
+ -- No hover/press palette is used as the persistent selection indicator.
+ button.AutoButtonColor=false
+end
 local function stars(parent,item,pos,size)
  local row=parent:FindFirstChild("RarityStars")
  if not row then
   row=Instance.new("Frame");row.Name="RarityStars";row.BackgroundTransparency=1;row.Active=false;layer(row,39);row.Parent=parent
-  for i=1,5 do label(row,"Star"..i,"★",UDim2.fromScale((i-1)/5,0),UDim2.fromScale(.2,1),44) end
+  local grid=Instance.new("UIGridLayout");grid.Name="StarGrid"
+  grid.FillDirectionMaxCells=5;grid.SortOrder=Enum.SortOrder.LayoutOrder
+  grid.HorizontalAlignment=Enum.HorizontalAlignment.Center;grid.VerticalAlignment=Enum.VerticalAlignment.Center
+  grid.CellPadding=UDim2.fromOffset(3,0);grid.Parent=row
+  for i=1,5 do
+   local star=icon(row,"Star"..i,STAR_GREY,UDim2.new(),UDim2.fromOffset(44,44),40)
+   star.LayoutOrder=i;star.ImageColor3=Color3.new(1,1,1)
+  end
  end
  row.Position=pos;row.Size=size
  local rank=item and Master.RarityRank[item.Rarity] or 0
- for i=1,5 do row["Star"..i].TextColor3=i<=rank and Color3.fromRGB(255,218,48) or Color3.fromRGB(52,64,80) end
+ for i=1,5 do row["Star"..i].Image=i<=rank and STAR_GOLD or STAR_GREY end
  row.Visible=item~=nil
  return row
 end
@@ -208,7 +229,7 @@ render=function()
   s.socket.Active=item~=nil;s.socket.Interactable=item~=nil
  end
  for n,t in ipairs(tabs) do
-  surface(t,rarities[n],n==rarityIndex);t.StudPattern.Visible=false
+  surface(t,rarities[n]);raritySelected(t,n==rarityIndex);t.StudPattern.Visible=false
   rarityBadges[n].Visible=page:GetAttribute("UnseenRarity_"..rarities[n])==true
  end
  local ids={}
@@ -219,14 +240,15 @@ render=function()
   if x.ItemType~=y.ItemType then return (typeOrder[x.ItemType] or 99)<(typeOrder[y.ItemType] or 99) end
   return x.Element<y.Element
  end)
- page:SetAttribute("ItemDualPurchase",rarities[rarityIndex]=="Epic")
  for order,id in ipairs(ids) do
   local item=Master.Get(id)
   local c=Instance.new("TextButton");c.Name=id;c.Text="";c.AutoButtonColor=false
   c.LayoutOrder=order;c:SetAttribute("InventoryItemCard",true)
   surface(c,item.Rarity,selectedId==id);layer(c,32);c.Parent=list
   icon(c,"Icon",item.Image,UDim2.new(),UDim2.new(),36)
-  label(c,"Effect",effect(item),UDim2.new(),UDim2.new(),34)
+  local effectLabel=label(c,"Effect",effect(item),UDim2.new(),UDim2.new(),34)
+  effectLabel.FontFace=effectFont
+  effectLabel:FindFirstChildOfClass("UIStroke").Thickness=2.5
   stars(c,item,UDim2.new(),UDim2.new())
   local tick=check(c,"EquippedCheck");tick.Visible=equipped[item.ItemType]==id and (owned[id] or 0)>0
   local count=label(c,"OwnedCount","×"..tostring(owned[id] or 0),UDim2.fromOffset(8,8),UDim2.fromOffset(65,28),24)
@@ -255,8 +277,7 @@ render=function()
    end
   elseif item.ShopPurchasable then
    priceButton(c,"WinPurchase",item.WinPrice,trophyImage,winRemote,id)
-   if item.Rarity=="Epic" then priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",robuxRemote,id) end
-  else
+  elseif item.RobuxPurchasable then
    priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",robuxRemote,id)
   end
  end
@@ -266,7 +287,11 @@ for n=1,5 do
  local b=Instance.new("TextButton");b.Name="Star"..n;b.Text="";b.AutoButtonColor=false
  b.Position=UDim2.new((n-1)/5,4,0,0);b.Size=UDim2.new(.2,-8,1,0)
  surface(b,rarities[n]);b.StudPattern.Visible=false;layer(b,36);b.Parent=tabbar
- label(b,"Label","★"..n,UDim2.fromScale(.04,.08),UDim2.fromScale(.92,.84),40)
+ local star=icon(b,"RankStar",STAR_GOLD,UDim2.fromScale(.34,.5),UDim2.fromScale(.34,.78),40)
+ star.AnchorPoint=Vector2.new(.5,.5);star.ImageColor3=Color3.new(1,1,1)
+ local square=Instance.new("UIAspectRatioConstraint");square.AspectRatio=1;square.Parent=star
+ local number=label(b,"Label",tostring(n),UDim2.fromScale(.53,.08),UDim2.fromScale(.30,.84),40)
+ number.FontFace=effectFont
  local badge=Badges.GetOrClone(gui.LeftMenu.InventoryButton.NotificationBadge,b,"RarityGuideBadge")
  badge.AnchorPoint=Vector2.new(1,0);badge.Position=UDim2.new(1,-2,0,2);badge.Size=UDim2.fromOffset(24,24)
  badge.Visible=false;badge.Active=false;layer(badge,47)

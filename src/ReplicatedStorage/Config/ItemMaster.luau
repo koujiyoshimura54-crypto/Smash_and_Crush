@@ -40,6 +40,8 @@ for _, itemType in ipairs(itemTypes) do
     WinPrice = winPrices[rarity] or 0,
     RobuxPrice = Products.GetItemProduct(rarity) and Products.GetItemProduct(rarity).FallbackPrice or 0,
     ShopPurchasable = winPrices[rarity] ~= nil,
+    -- New individual Robux offers only; product definitions remain for paid receipts.
+    RobuxPurchasable = rarity ~= "Epic" and Products.GetItemProduct(rarity) ~= nil,
     Mergeable = true,
    })
   end

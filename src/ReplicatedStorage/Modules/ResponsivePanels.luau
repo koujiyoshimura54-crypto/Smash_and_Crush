@@ -180,6 +180,10 @@ function M.LayoutItems(gui,page,list,grid)
    best.Position=UDim2.fromScale(.51,.14);best.Size=UDim2.fromScale(.47,.72)
   end
   local socketHeight=(size.Y-top-3*12)/3
+  local function squareStars(row,width,height)
+   local side=math.max(1,math.floor(math.min((width-12)/5,height)))
+   row.StarGrid.CellSize=UDim2.fromOffset(side,side)
+  end
   for i,name in {"ProteinSocket","GloveSocket","TrainingBeltSocket"} do
    local socket=equipment[name]
    socket.Position=UDim2.fromOffset(6,top+12+(i-1)*(socketHeight+12))
@@ -195,6 +199,7 @@ function M.LayoutItems(gui,page,list,grid)
     socket.None.Position=UDim2.fromScale(.46,.32);socket.None.Size=UDim2.fromScale(.52,.36)
     socket.EquippedCheck.Position=UDim2.fromScale(.36,.06);socket.EquippedCheck.Size=UDim2.fromScale(.14,.28)
    end
+   squareStars(socket.RarityStars,(left-12)*(narrow and .92 or .54),socketHeight*(narrow and .21 or .30))
   end
   page.RarityTabs.Position=UDim2.fromOffset(right,0);page.RarityTabs.Size=UDim2.fromOffset(size.X-right,top-10)
   list.Position=UDim2.fromOffset(right,top);list.Size=UDim2.fromOffset(size.X-right,size.Y-top-footer)
@@ -204,25 +209,24 @@ function M.LayoutItems(gui,page,list,grid)
   local available=math.max(1,size.X-right-21)
   local columns=math.clamp(math.floor((available*scale+14*scale)/170),1,3)
   local width=math.floor((available-(columns-1)*14)/columns)
-  local dual=page:GetAttribute("ItemDualPurchase")==true
-  local iconHeight=math.max(154,width*.58)
-  local textHeight=math.max(38,22/scale)
-  local starsHeight=math.max(48,34/scale)
+  local iconHeight=math.max(156,width*.57)
+  local textHeight=math.max(32,22/scale)
+  local starsHeight=math.max(44,32/scale)
   local buttonHeight=math.max(54,(width-16)/3.8,34/scale)
-  local extra=dual and buttonHeight+6 or 0
-  local height=12+iconHeight+textHeight+starsHeight+buttonHeight+extra+12
+  local height=6+iconHeight+textHeight+starsHeight+buttonHeight+10
   grid.FillDirectionMaxCells=columns;grid.CellSize=UDim2.fromOffset(width,height)
   local count=0
   for _,c in list:GetChildren() do if c:GetAttribute("InventoryItemCard") then
    count+=1
    c.Icon.Position=UDim2.fromOffset(10,6);c.Icon.Size=UDim2.fromOffset(width-20,iconHeight)
    c.Effect.Position=UDim2.fromOffset(5,6+iconHeight);c.Effect.Size=UDim2.fromOffset(width-10,textHeight)
-   c.RarityStars.Position=UDim2.fromOffset(16,6+iconHeight+textHeight);c.RarityStars.Size=UDim2.fromOffset(width-32,starsHeight)
+   c.RarityStars.Position=UDim2.fromOffset(12,6+iconHeight+textHeight);c.RarityStars.Size=UDim2.fromOffset(width-24,starsHeight)
+   squareStars(c.RarityStars,width-24,starsHeight)
    local y=6+iconHeight+textHeight+starsHeight
    for _,name in {"WinPurchase","RobuxPurchase","EquipButton","EquippedStatus"} do
     local button=c:FindFirstChild(name)
     if button then
-     button.Position=UDim2.fromOffset(8,y+(name=="RobuxPurchase" and c:FindFirstChild("WinPurchase") and buttonHeight+6 or 0))
+     button.Position=UDim2.fromOffset(8,y)
      button.Size=UDim2.fromOffset(width-16,buttonHeight)
     end
    end

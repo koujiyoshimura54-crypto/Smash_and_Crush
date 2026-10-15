@@ -891,3 +891,10 @@
 - Rebuild the Item page with fixed equipped sockets/Best Equip and rarity filters, large3/2/1-column scrolling cards, five equal gold/dark star slots, actual equipment rarity colors and short Config-derived English effects. Keep original images, purchased Win/Robux controls, compact prices and all gameplay.
 - Scope shared shell/responsive changes to Items; retain other tabs and shared Merge/Shop/drop overlays. Preserve selected rarity/scroll on refresh and update both equipment panes from existing server responses.
 - Three Source compiles and same-file reDecode/reference/SharedString/UniqueId0 pass; only three Sources change. Edit screenshots,45-card/15-socket state checks, activation adapters and responsive/end-of-list geometry checked. Later final/narrow screenshot capture stalled; physical input and Cloud gameplay remain unverified. Released owned Studio12824 and its target lock. Full evidence/limits: DEV_STATUS.
+
+## 2026-10-15 - Item image stars, filter selection and Win-only Epic
+
+- Use exact owner-specified gold/grey star images, equal square slots, clear selected filters and existing purchased GothamBlack effects. Preserve native Item/purchase artwork and compact prices; remove Epic's Robux row and blank space.
+- Reject new Epic prompts server-side; preserve4500 Win, Legendary, packs, IDs and paid receipt recovery/deduplication.
+- Actual Edit screenshots at1280x720/900x720/640x720 and physical filter/equip/Best Equip/wheel/end-button input checked with mocked replies. Source simulation rejects9 Epic offers, permits Legendary and recovers a paid Epic receipt through journal failure/retry/restart with one grant. Cloud gameplay remains unverified.
+- Four Sources compile; same-file reDecode/reference/SharedString/UniqueId0 pass,179514 Instances preserved and only two Source chunks changed. Owned Studio13308 ended; target lock released. No Save/Publish or real purchase. Details and manual product-setting handoff: DEV_STATUS.

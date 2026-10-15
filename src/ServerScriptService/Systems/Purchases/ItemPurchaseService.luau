@@ -86,6 +86,9 @@ function M.Prompt(player,itemId,expectedProductId)
  if not validPlayer(player) then return false,"InvalidPlayer" end
  local item,productId=M.ValidateItem(itemId,expectedProductId)
  if not item then return false,productId end
+ -- Offer eligibility applies only before a new intent/prompt. ValidateItem is
+ -- also used by paid receipt recovery and must continue accepting Epic receipts.
+ if not item.RobuxPurchasable then return false,"NotRobuxPurchasable" end
  if not Data.IsLoaded(player) then return false,"DataNotLoaded" end
  if Data.IsSaving(player) then return false,"DataSaving" end
  if busy[player] or prompts[player] then return false,"PurchaseInProgress" end

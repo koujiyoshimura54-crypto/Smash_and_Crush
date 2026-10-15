@@ -577,3 +577,7 @@ Type probability=points for that type / total; Element probability=points for th
 Fire Common Glove1 + Ice Common Protein1: total2; each included type50%, each included Element50%, Common/Uncommon50%; eight actual combinations each12.5%. Fire-only inputs keep Fire100%; Glove-only inputs keep Glove100%. One Epic Glove + one Rare Belt: total36, Epic83 1/3%/Legendary16 2/3%, Glove75%/Belt25%; Element shares independently follow the submitted points. No points/odds text is added to the material cards.
 
 Approved Win prices: Common75, Uncommon200, Rare600, **Epic4500**. Existing Epic Robux and Legendary conditions unchanged. Price strings alone compact toK/M; internal spending/config/storage retains exact numbers. Normal/Limited Egg odds, normal Pet merge points/table and all combat prices/rewards remain unchanged.
+
+## 2026-10-15 - Epic Win-only individual offer
+
+Supersedes the Epic Robux condition above. Epic/star4 remains exactly4500 Win, displayed4.5K, with no new individual Robux purchase. Keep product3711755218 for already-paid receipt recovery; its fallback metadata is not an active offer. Legendary3711755280, other products/packs, all effects and Item merge probabilities remain unchanged.
