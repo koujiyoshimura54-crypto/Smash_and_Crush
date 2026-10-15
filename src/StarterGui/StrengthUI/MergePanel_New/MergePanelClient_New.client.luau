@@ -3,8 +3,31 @@
 -- BEGIN MERGE VIEW: the same factory is used by Edit-only previews with read-only adapters.
 local function buildMergeShop(ctx)
  local gui,RS,PetClient,Egg,Master=ctx.gui,ctx.RS,ctx.PetClient,ctx.Egg,ctx.Master
- local ItemPresentation=require(RS.Modules.InventoryPresentation)
  local ItemMergeConfig=require(RS.Config.ItemMergeConfig)
+ -- Item Merge only; Inventory and the shared Shop/drop star renderer stay intact.
+ local goldStar="rbxassetid://76134658177553"
+ local greyStar="rbxassetid://126441080731699"
+ local itemStarBand=44
+ local function itemStars(parent,item)
+  local row=Instance.new("Frame");row.Name="RarityStars";row.BackgroundTransparency=1
+  row.BorderSizePixel=0;row.Active=false;row.ZIndex=227;row.Parent=parent
+  local rank=Master.RarityRank[item.Rarity]
+  for i=1,5 do
+   local star=Instance.new("ImageLabel");star.Name="Star"..i
+   star.Image=i<=rank and goldStar or greyStar;star.ImageColor3=Color3.new(1,1,1)
+   star.BackgroundTransparency=1;star.ScaleType=Enum.ScaleType.Fit;star.Active=false
+   star.ZIndex=228;star.Parent=row
+  end
+  return row
+ end
+ local function layoutItemStars(row,width,height)
+  local side=math.floor(math.min((width-8)/5,height))
+  local x=(width-5*side-8)/2
+  for i=1,5 do
+   row["Star"..i].Position=UDim2.fromOffset(x+(i-1)*(side+2),(height-side)/2)
+   row["Star"..i].Size=UDim2.fromOffset(side,side)
+  end
+ end
  local UIS=ctx.Input
  local connections,cardCleanups,candidateCleanups={},{},{}
  local destroyed=false
@@ -251,7 +274,7 @@ local function buildMergeShop(ctx)
   drag.Active=true;list.ScrollingEnabled=false
   local tile=drag.Tile
   local ghost=clone(tile,"DraggingMaterial",shop)
-  clearLayout(ghost);ghost.AnchorPoint=Vector2.new(.5,.5);ghost.Size=UDim2.fromOffset(cell,cell)
+  clearLayout(ghost);ghost.AnchorPoint=Vector2.new(.5,.5);ghost.Size=UDim2.fromOffset(cell,cell+(tab=="Item" and itemStarBand or 0))
   layer(ghost,280);ghost.Rotation=-8;ghost.Active=false
   for _,d in ghost:GetDescendants() do
    if d:IsA("GuiButton") then d.Visible=false;d.Interactable=false end
@@ -259,8 +282,8 @@ local function buildMergeShop(ctx)
   end
   -- Explicit image order retains the material-only Sibling -> Global correction.
   ghost.Main.ZIndex=282;ghost.Main.Icon.ZIndex=284
-  local stars=ghost.Main.Icon:FindFirstChild("RarityStars")
-  if stars then stars.ZIndex=286 end
+  local stars=ghost:FindFirstChild("RarityStars")
+  if stars then layer(stars,286) end
   drag.Ghost=ghost;drag.Faded={}
   dropTitle.Visible=false;dropHint.Visible=false
   for _,d in tile:GetDescendants() do
@@ -342,6 +365,10 @@ local function buildMergeShop(ctx)
  local function prepareTile(tile,entry)
   clearLayout(tile);tile.ClipsDescendants=false
   tile.Main.AnchorPoint=Vector2.zero;tile.Main.Position=UDim2.new();tile.Main.Size=UDim2.fromScale(1,1)
+  if tab=="Item" then
+   tile.Main.Size=UDim2.new(1,0,1,-itemStarBand)
+   tile.Stroke.AnchorPoint=Vector2.zero;tile.Stroke.Position=UDim2.new();tile.Stroke.Size=UDim2.fromScale(1,1)
+  end
   tile.Main.Icon.Size=UDim2.fromScale(.94,.94);tile.Main.Icon.Position=UDim2.fromScale(.5,.5)
   tile.Main.Icon.AnchorPoint=Vector2.new(.5,.5);tile.Main.Icon.ScaleType=Enum.ScaleType.Fit
   tile.Title.Visible=false
@@ -363,7 +390,8 @@ local function buildMergeShop(ctx)
   layer(tile,222);tile.Stroke.ZIndex=222;tile.Main.ZIndex=223;tile.Main.Icon.ZIndex=225
   tile.Main.Checkmark.ZIndex=226;tile.Title.ZIndex=227;tile.Button.ZIndex=228
   tile.Visible=true;tile.LayoutOrder=order;tile.Main.Icon.Image=Master.Get(entry.ItemId).Image
-  ItemPresentation.SetItemStars(tile.Main.Icon,Master.Get(entry.ItemId))
+  local oldStars=tile.Main.Icon:FindFirstChild("RarityStars");if oldStars then oldStars:Destroy() end
+  itemStars(tile,Master.Get(entry.ItemId))
   local palette=ctx.ItemColors[Master.Get(entry.ItemId).Rarity]
   if palette then tile.Main.UIGradient.Color=palette end
   local activation=tile.Button.Activated:Connect(function() view:ActivateMaterial(entry.Key) end)
@@ -399,7 +427,7 @@ local function buildMergeShop(ctx)
     count=math.min(count,ItemMergeConfig.MaxInteger-totalItemUnits)
     if count>0 then table.insert(itemGroups,{ItemId=id,Count=count,Start=totalItemUnits+1});totalItemUnits+=count end
    end
-   local stride=cell+8
+   local stride=cell+itemStarBand+8
    local rows=math.ceil(totalItemUnits/3)
    materialCanvasHeight=math.min(rows*stride,1000000)
    compressedCanvas=rows*stride>1000000
@@ -475,7 +503,10 @@ local function buildMergeShop(ctx)
    local pic=clone(RS.Assets.Templates.PetInventory.Main.Icon,"ActualImage",x)
    pic.Image=image;pic.ZIndex=225;pic.AnchorPoint=Vector2.zero;pic.Position=UDim2.new();pic.Size=UDim2.fromScale(1,rarity and .82 or .72)
    pic.ScaleType=Enum.ScaleType.Fit;pic.Visible=true;pic.ImageTransparency=0
-   if resultItemId then ItemPresentation.SetItemStars(pic,Master.Get(resultItemId)) end
+   if resultItemId then
+    local oldStars=pic:FindFirstChild("RarityStars");if oldStars then oldStars:Destroy() end
+    itemStars(x,Master.Get(resultItemId))
+   end
   else
    local ok,cleanup,viewport=pcall(ctx.EggViewport.mountEgg,x,name)
    if ok and cleanup then
@@ -591,6 +622,7 @@ local function buildMergeShop(ctx)
   local viewport=gui.AbsoluteSize
   local portrait=viewport.X<600 and viewport.Y>viewport.X
   local width,height=portrait and 700 or 1372,portrait and 1190 or 823
+  if portrait and tab=="Item" then height+=82 end
   local s=math.min(1,math.max(1,viewport.X-(portrait and 16 or 32))/width,math.max(1,viewport.Y-24)/height)
   if viewport.X>=1000 then s=math.min(s,viewport.X*.82/width,viewport.Y*.875/height) end
   scale.Scale=s;shop.Size=UDim2.fromOffset(width,height);shop.AnchorPoint=Vector2.new(.5,.5);shop.Position=UDim2.fromScale(.5,.5)
@@ -603,6 +635,7 @@ local function buildMergeShop(ctx)
   local rx,ry,rw,rh=540,158,808,326
   local dy,dh,fy=495,184,692
   if portrait then lx,ly,lw,lh=18,248,664,390;rx,ry,rw,rh=18,654,664,218;dy,dh,fy=886,152,1056 end
+  if portrait and tab=="Item" then rh+=82;dy+=82;fy+=82 end
   local tabsY=portrait and 124 or 160
   rect(tabs.Item,18,tabsY,portrait and 324 or 244,portrait and 62 or 82)
   rect(tabs.Pet,portrait and 358 or 276,tabsY,portrait and 324 or 228,portrait and 62 or 82)
@@ -611,7 +644,11 @@ local function buildMergeShop(ctx)
   cell=(lw-24)/3
   for index,entry in items do
    local tile=tiles[entry.Key]
-    if tile then rect(tile,((index-1)%3)*(cell+8),tab=="Item" and entry.ViewY or math.floor((index-1)/3)*(cell+8),cell,cell) end
+    if tile then
+     rect(tile,((index-1)%3)*(cell+8),tab=="Item" and entry.ViewY or math.floor((index-1)/3)*(cell+8),cell,cell+(tab=="Item" and itemStarBand or 0))
+     local stars=tile:FindFirstChild("RarityStars")
+     if tab=="Item" and stars then rect(stars,6,cell+2,cell-12,itemStarBand-4);layoutItemStars(stars,cell-12,itemStarBand-4) end
+    end
   end
   list.CanvasSize=UDim2.fromOffset(0,tab=="Item" and materialCanvasHeight or math.ceil(#items/3)*(cell+8))
   rect(result,rx,ry,rw,rh)
@@ -620,7 +657,7 @@ local function buildMergeShop(ctx)
   resultItems.Visible=tab=="Item"
   rect(resultItems,12,portrait and 52 or 66,rw-24,rh-(portrait and 60 or 74))
   local resultCount=#candidates;local columns=resultCount<=1 and 1 or math.min(3,resultCount)
-  local resultWidth=(rw-40)/columns;local resultHeight=portrait and math.min(178,rh-66) or 218
+  local resultWidth=(rw-40)/columns;local resultHeight=tab=="Item" and 240 or (portrait and math.min(178,rh-66) or 218)
   resultItems.CanvasSize=UDim2.fromOffset(0,math.ceil(resultCount/columns)*(resultHeight+10))
   for _,x in candidates do
    local index,total=x:GetAttribute("CandidateIndex"),x:GetAttribute("CandidateCount")
@@ -632,8 +669,8 @@ local function buildMergeShop(ctx)
     x.Size=UDim2.fromOffset(math.min(resultWidth-12,resultHeight),resultHeight)
     x.Position=UDim2.fromOffset(((index-1)%columns+.5)*resultWidth,math.floor((index-1)/columns)*(resultHeight+10))
     local pic=x:FindFirstChild("ActualImage");local surface=x:FindFirstChild("ResultCard")
-    if pic then pic.Size=UDim2.fromScale(1,portrait and .60 or .72) end
-    if surface then surface.Size=UDim2.fromScale(.82,portrait and .60 or .72) end
+    if pic then pic.Size=UDim2.fromOffset(x.Size.X.Offset,128) end
+    if surface then surface.Size=UDim2.fromOffset(x.Size.X.Offset*.82,128) end
    end
    local nameplate=x:FindFirstChild("Name")
    if nameplate and x.Percent.Visible then
@@ -642,6 +679,13 @@ local function buildMergeShop(ctx)
     x.Percent.Size=UDim2.fromScale(1,portrait and .16 or .13)
     local viewport=x:FindFirstChild("NormalEggViewport")
     if viewport then viewport.Size=UDim2.fromScale(1,portrait and .59 or .72) end
+   end
+   if tab=="Item" then
+    local stars=x:FindFirstChild("RarityStars")
+    local starWidth=math.min(x.Size.X.Offset-8,218)
+    if stars then rect(stars,(x.Size.X.Offset-starWidth)/2,130,starWidth,42);layoutItemStars(stars,starWidth,42) end
+    if nameplate then nameplate.AnchorPoint=Vector2.new(.5,0);nameplate.Position=UDim2.new(.5,0,0,174);nameplate.Size=UDim2.fromOffset(resultWidth-14,38) end
+    x.Percent.AnchorPoint=Vector2.new(.5,0);x.Percent.Position=UDim2.new(.5,0,0,214);x.Percent.Size=UDim2.fromOffset(x.Size.X.Offset,24)
    end
   end
   rect(drop,rx,dy,rw,dh)
