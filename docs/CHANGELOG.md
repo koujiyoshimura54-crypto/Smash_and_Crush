@@ -916,3 +916,9 @@
 - Add approved 28 normal and seven Limited species bonuses to shared configuration. Apply one owned equipped individual's multiplier after normal World1 Strength gain; retain fixed rewards, reward references, World2, IDs/save/follow/max1 and paid receipts. Pet details show Strength +X%.
 - Actual Source simulation passes 368 new assertions plus scoped existing merge/receipt/7-slot fixtures. Native Edit Instance price/description/TextFits and all35 model resolutions checked; screenshots/input/live Cloud gameplay remain unverified.
 - Nine Sources compile; same-file reDecode/reference/SharedString/UniqueId0 passes, with only nine Sources/four pedestal Text properties changed. Verification Studio22604 exited and target lock released. No local Play/Save/Publish/backup. Full evidence and owner Cloud checks: DEV_STATUS.
+## 2026-10-16 - Twelve World1 normal Dumbbells
+
+- Configure NORMAL_01..12 with approved prices/additions/images, preserving first-seven IDs and slot5 artwork; corrected W1-5D belongs to slot6.
+- Extend existing stand acceptance from Master, reuse normal Shop cards, add authoritative Owned/Equipped actions and scoped Inventory/Shop scrolling/column adjustments. Save schema/Strength formula/Pet/Egg/Robux/World2 remain unchanged.
+- Five Sources compile; final same-file reDecode/reference/SharedString/UniqueId0 passes. Actual Source simulation521 assertions and existing Pet/Egg368 pass; all12 thumbnail API results Completed. Actual UI/input/Cloud persistence remain unverified. Saved exhibit8..12 model mapping is awaiting the owner's answer; existing shared held display is retained.
+- Update CurrentCloud in place, no Play/Save/Publish/backup. Full paths/table/evidence/limits: DEV_STATUS and BALANCE_SPEC.

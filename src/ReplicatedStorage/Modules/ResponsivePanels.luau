@@ -296,6 +296,8 @@ local function shop(panel,gui)
  set(scroll,{AnchorPoint=Vector2.zero,Position=UDim2.fromOffset(12/s,66/s),Size=UDim2.new(1,-24/s,1,-78/s)},small)
  local w=HUD.GetLocalSize(scroll).X
  for _,card in ipairs(holder:GetChildren()) do
+  -- Normal Dumbbells own their growing catalogue layout in EssentialStudShopClient.
+  if card:GetAttribute("PurchaseKind")=="Dumbbell" then continue end
   if card:IsA("Frame") and card:GetAttribute("PurchaseKind") then
    local wide=card.Name:find("Pack")~=nil
    local featured=card:GetAttribute("ShopFeatured")==true

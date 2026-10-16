@@ -1,4 +1,5 @@
 -- Purchased PerStep Press geometry; prices/equipment belong to DumbbellItemMaster.
+local Master = require(game:GetService("ReplicatedStorage").Config:WaitForChild("DumbbellItemMaster"))
 local M = {}
 M.FolderName = "PerStepButtons"
 M.Source = "DumbbellStand"
@@ -6,8 +7,9 @@ M.PollSeconds = 0.1
 M.StandReach = 6
 
 function M.GetItemId(index)
- if typeof(index) ~= "number" or index % 1 ~= 0 or index < 1 or index > 7 then return nil end
- return string.format("NORMAL_%02d", index)
+ if typeof(index) ~= "number" or index % 1 ~= 0 or index < 1 or index > #Master.GetSorted() then return nil end
+ local itemId = string.format("NORMAL_%02d", index)
+ return Master.Get(itemId) and itemId or nil
 end
 
 function M.GetPress(folder, index)
@@ -28,7 +30,8 @@ function M.IsInside(press, position)
 end
 
 function M.GetStandingIndex(folder, position)
- for index = 1, 7 do
+ for _, item in ipairs(Master.GetSorted()) do
+  local index = item.Grade
   if M.IsInside(M.GetPress(folder, index), position) then return index end
  end
  return nil

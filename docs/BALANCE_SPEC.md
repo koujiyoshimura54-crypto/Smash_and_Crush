@@ -616,3 +616,23 @@ Limited Egg 01 uses `LimitedEggConfig.Entries[*].StrengthPercent` alongside unch
 For World1 normal Strength gains only, multiply the completed existing gain calculation by `1 + equippedPercent / 100`. Examples: +2% = 1.02; +130% = 2.3; +200% = 3.0. Resolve only the first owned equipped individual in authoritative saved Pet state. Unequipped, invalid, unknown or unavailable state gives 1.0; duplicate ownership adds nothing. Walking and Treadmill use this path. Fixed Strength rewards and the reward-reference `GetNormalTrainingGain` exclude Pet bonuses. Do not add bonuses to Win, Boss Damage or World2.
 
 Limited product 3717610547, Marketplace price lookup, paid receipt recovery/deduplication, one grant per purchase and Limited exclusion from Pet Merge remain unchanged. Unlisted species receive no inferred ability.
+## 2026-10-16 - Approved World1 normal Dumbbells 1-12
+
+Supersedes all earlier seven-item prices/bonuses and the withdrawn slot6 W1-6D image proposal. `ReplicatedStorage.Config.DumbbellItemMaster` is the sole runtime authority for price, additive Strength and image across server/Inventory/Shop/world sale signs. Retain NORMAL_01..07 ownership/equipment IDs; add NORMAL_08..12 in the same normal-only namespace, with no product IDs or save migration.
+
+| No. | ItemId | Win | Strength addition | Image asset ID |
+| ---: | --- | ---: | ---: | --- |
+| 1 | NORMAL_01 | 5 | +3 | 131314372434925 (retained) |
+| 2 | NORMAL_02 | 15 | +5 | 126019719977317 (retained) |
+| 3 | NORMAL_03 | 40 | +9 | 96428309215438 (retained) |
+| 4 | NORMAL_04 | 100 | +15 | 77317637436768 (retained) |
+| 5 | NORMAL_05 | 200 | +25 | 134662273184560 (retained) |
+| 6 | NORMAL_06 | 400 | +45 | 98216689951421 (W1-5D) |
+| 7 | NORMAL_07 | 750 | +75 | 79967244610623 (retained) |
+| 8 | NORMAL_08 | 1,250 | +120 | 137711371845706 (W1-8D) |
+| 9 | NORMAL_09 | 2,000 | +180 | 83905550410213 (W1-9D) |
+| 10 | NORMAL_10 | 3,500 | +280 | 79276445613926 (W1-10D) |
+| 11 | NORMAL_11 | 6,000 | +450 | 111665673963075 (W1-11D) |
+| 12 | NORMAL_12 | 10,000 | +700 | 83499911643975 (W1-12D) |
+
+Every image uses `rbxassetid://` plus the listed ID. Slot5 is unchanged; W1-5D is explicitly slot6. Existing addition/multiplication order is unchanged: Dumbbell addition applies on Training's existing path, without adding it to walking. Existing Pet/Rebirth and all other factors remain where they are. Existing fixed reward/reference calculations continue reading the same equipped bonus; no new reward multiplier or formula change. World2/Boss/Pet/Egg/Item/Aura/Merge/Robux settings are unchanged.

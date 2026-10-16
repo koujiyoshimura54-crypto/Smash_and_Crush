@@ -58,6 +58,33 @@ local function syncDumbbellCards()
  end
 end
 syncDumbbellCards()
+-- Keep the purchased wrapping list and artwork; grow only the normal catalogue.
+local function layoutDumbbellShop()
+ local scale=math.max(responsiveScale.Scale,.01)
+ local width=holder.AbsoluteSize.X/scale
+ if width<=24 then return end
+ local columns=math.clamp(math.floor(width*scale/240),1,2)
+ local gap=holder.UIListLayout.Padding.Offset
+ local cw=(width-24-(columns-1)*gap)/columns
+ local ch=math.max(220,180/scale)
+ for _,card in ipairs(holder:GetChildren()) do
+  if card:IsA("Frame") and card:GetAttribute("PurchaseKind")=="Dumbbell" then
+   card.Size=UDim2.fromOffset(cw,ch)
+   local aspect=card:FindFirstChildOfClass("UIAspectRatioConstraint")
+   if aspect then aspect.AspectRatio=cw/ch end
+  end
+ end
+ holder.UIListLayout.VerticalAlignment=Enum.VerticalAlignment.Top
+ local scroll=shop.MainScrollingFrame
+ scroll.Active=true;scroll.ScrollingEnabled=true
+ scroll.ScrollingDirection=Enum.ScrollingDirection.Y
+ scroll.AutomaticCanvasSize=Enum.AutomaticSize.None
+ scroll.CanvasSize=UDim2.fromOffset(0,holder.UIListLayout.AbsoluteContentSize.Y+16)
+end
+holder:GetPropertyChangedSignal("AbsoluteSize"):Connect(layoutDumbbellShop)
+holder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(layoutDumbbellShop)
+responsiveScale:GetPropertyChangedSignal("Scale"):Connect(layoutDumbbellShop)
+task.defer(layoutDumbbellShop)
 local ItemMaster=require(RS.Config:WaitForChild("ItemMaster"))
 local ItemPresentation=require(RS.Modules:WaitForChild("InventoryPresentation"))
 local itemOrder=20
@@ -78,9 +105,38 @@ for _,card in ipairs(holder:GetChildren()) do
 end
 
 local dumbbellRemote=RS.Remotes:WaitForChild("DumbbellPurchaseRequest")
+local dumbbellEquipRemote=RS.Remotes:WaitForChild("DumbbellEquipRequest")
+local dumbbellStateRemote=RS.Remotes:WaitForChild("DumbbellInventoryState")
 local itemRemote=RS.Remotes:WaitForChild("ItemPurchaseRequest")
 local doubleWinRemote=RS.Remotes:WaitForChild("World1DoubleWinPrompt")
 local pending=false
+local dumbbellState
+local function renderDumbbellState(state)
+ if typeof(state)=="table" and state.Loaded==true then dumbbellState=state end
+ if not dumbbellState then return end
+ for _,card in ipairs(holder:GetChildren()) do
+  if card:IsA("Frame") and card:GetAttribute("PurchaseKind")=="Dumbbell" then
+   local id=card:GetAttribute("PurchaseKey")
+   local item=DumbbellMaster.Get(id)
+   local button=card:FindFirstChild("Purchase",true)
+   local price=card:FindFirstChild("PriceTag",true)
+   local isEquipped=dumbbellState.EquippedDumbbell==id
+   local isOwned=dumbbellState.OwnedDumbbells[id]==true
+   if item and button and price then
+    price.Text=isEquipped and "EQUIPPED" or isOwned and "EQUIP" or require(RS.Modules.NumberFormat).Price(item.PriceWin)
+    button.Active=not isEquipped and not pending
+    button.Interactable=button.Active
+   end
+  end
+ end
+end
+local function refreshDumbbellState()
+ local ok,state=pcall(function() return dumbbellStateRemote:InvokeServer() end)
+ if ok then renderDumbbellState(state) end
+end
+shop:GetPropertyChangedSignal("Visible"):Connect(function() if shop.Visible then refreshDumbbellState() end end)
+player:GetAttributeChangedSignal("EquippedDumbbell"):Connect(function() if shop.Visible then refreshDumbbellState() end end)
+task.defer(refreshDumbbellState)
 
 task.spawn(function()
  gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(layoutShop)
@@ -141,7 +197,9 @@ local function purchase(card)
   doubleWinRemote:FireServer("Prompt")
   task.delay(.5,function() pending=false end)
  elseif kind=="Dumbbell" then
-  dumbbellRemote:FireServer(key)
+  if dumbbellState and dumbbellState.OwnedDumbbells[key] then dumbbellEquipRemote:FireServer(key)
+  else dumbbellRemote:FireServer(key) end
+  renderDumbbellState()
  elseif kind=="Item" then
   itemRemote:FireServer(key)
  else
@@ -170,7 +228,12 @@ for _,name in ipairs({"InventoryButton","RebirthButton","SkipButton","MergeButto
  if button and button:IsA("GuiButton") then button.Activated:Connect(function() setOpen(false) end) end
 end
 
-dumbbellRemote.OnClientEvent:Connect(function() pending=false end)
+local function dumbbellReply(result)
+ pending=false
+ renderDumbbellState(typeof(result)=="table" and result.State or nil)
+end
+dumbbellRemote.OnClientEvent:Connect(dumbbellReply)
+dumbbellEquipRemote.OnClientEvent:Connect(dumbbellReply)
 itemRemote.OnClientEvent:Connect(function() pending=false end)
 MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(finishedPlayer)
  if finishedPlayer==player then pending=false end
