@@ -922,3 +922,10 @@
 - Extend existing stand acceptance from Master, reuse normal Shop cards, add authoritative Owned/Equipped actions and scoped Inventory/Shop scrolling/column adjustments. Save schema/Strength formula/Pet/Egg/Robux/World2 remain unchanged.
 - Five Sources compile; final same-file reDecode/reference/SharedString/UniqueId0 passes. Actual Source simulation521 assertions and existing Pet/Egg368 pass; all12 thumbnail API results Completed. Actual UI/input/Cloud persistence remain unverified. Saved exhibit8..12 model mapping is awaiting the owner's answer; existing shared held display is retained.
 - Update CurrentCloud in place, no Play/Save/Publish/backup. Full paths/table/evidence/limits: DEV_STATUS and BALANCE_SPEC.
+
+## 2026-10-16 - Complete World1 Dumbbell facilities1-12
+
+- Owner approved common-model reuse: replace purchased shoe exhibits8..12 with the existing exhibit7 Dumbbell, preserving all12 original station placements and the ramp/access path. Each facility/exhibit identifies its own NORMAL_01..12 item; retain the common held model.
+- Add native per-item image and authoritative Owned/Equipped rows to the existing billboards, using unchanged Master prices/effects/images and currency artwork. Keep configured Dumbbell exhibits fixed instead of floating as shoes.
+- New actual-Source/saved-geometry simulation417 assertions and existing twelve-item regression521 pass. Both Sources compile; same-file reDecode/reference/internal-weld/SharedString/UniqueId0 checks pass. Full connections/transforms/hash: reports/World1DumbbellFacilities_20261016.json.
+- Native display/input and Cloud Play remain unverified pending owner Save/Publish. No Studio launched, user Studio operation, local Play, Save/Publish or backup. CurrentCloud updated in place; unrelated untracked work retained.

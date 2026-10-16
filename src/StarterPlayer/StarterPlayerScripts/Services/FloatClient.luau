@@ -14,6 +14,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
 local Config = require(ReplicatedStorage.Modules.Config)
+local DumbbellStands = require(ReplicatedStorage.Config.DumbbellStandConfig)
 
 local SHOES_NAME = "ShoesModels"
 local PADS_NAME = "PerStepButtons"
@@ -65,9 +66,9 @@ local function advance(delta: number)
 	for _, shoe in Shoes do
 		if not shoe.model.Parent then continue end
 
-		-- Saved Dumbbell exhibits1..7 keep their authored transform.
+		-- Configured Dumbbell exhibits keep their authored station-relative transform.
 		local index = tonumber(shoe.model.Name)
-		if index and index >= 1 and index <= 7 and shoe.model:FindFirstChild("Bar") then continue end
+		if index and DumbbellStands.GetItemId(index) and shoe.model:FindFirstChild("Bar") then continue end
 		shoe.model:PivotTo(shoe.pivot + lift)
 	end
 

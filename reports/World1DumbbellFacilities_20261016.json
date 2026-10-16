@@ -1,0 +1,524 @@
+{
+  "baselineCommit": "b17d76d",
+  "baselineSha256": "906041c412dcd7dc2518440e8b61dee1efe01280b32d2abaabb30c40442037ab",
+  "resultSha256": "448b6e7b6840e88e12aa225265757d1c3f2486b6ed2f16bb2184f56b68c0cee8",
+  "instancesBefore": 179514,
+  "instancesAfter": 179484,
+  "removedShoeDescendants": 143,
+  "addedInstances": 113,
+  "validReferenceValues": 76374,
+  "validSharedStringIndexes": 205424,
+  "duplicateUniqueIds": 0,
+  "minimumHorizontalPressGap": 6.464508056640625,
+  "sources": [
+    "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+    "StarterPlayer.StarterPlayerScripts.Services.FloatClient"
+  ],
+  "exhibitReplacements": [
+    {
+      "path": "Workspace.ShoesModels.8",
+      "cloneSource": "Workspace.ShoesModels.7",
+      "translation": [
+        0.0,
+        0.0,
+        -13.4608154296875
+      ]
+    },
+    {
+      "path": "Workspace.ShoesModels.9",
+      "cloneSource": "Workspace.ShoesModels.7",
+      "translation": [
+        -19.484893798828125,
+        3.5410823822021484,
+        26.921600341796875
+      ]
+    },
+    {
+      "path": "Workspace.ShoesModels.10",
+      "cloneSource": "Workspace.ShoesModels.7",
+      "translation": [
+        -19.484893798828125,
+        3.5410823822021484,
+        13.460800170898438
+      ]
+    },
+    {
+      "path": "Workspace.ShoesModels.11",
+      "cloneSource": "Workspace.ShoesModels.7",
+      "translation": [
+        -19.484893798828125,
+        3.5410823822021484,
+        0.0
+      ]
+    },
+    {
+      "path": "Workspace.ShoesModels.12",
+      "cloneSource": "Workspace.ShoesModels.7",
+      "translation": [
+        -19.484893798828125,
+        3.5410823822021484,
+        -13.4608154296875
+      ]
+    }
+  ],
+  "facilities": [
+    {
+      "index": 1,
+      "itemId": "NORMAL_01",
+      "priceWin": 5,
+      "strengthBonus": 3,
+      "image": "rbxassetid://131314372434925",
+      "pressPosition": [
+        233.21200561523438,
+        7.1360931396484375,
+        32.42023468017578
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          231.41206657886505,
+          7.870513439178467,
+          29.42022705078125
+        ],
+        [
+          235.01212764978408,
+          11.17051362991333,
+          35.42022705078125
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.1",
+      "exhibitPath": "Workspace.ShoesModels.1",
+      "billboardPath": "Workspace.PerStepButtons.1.BillboardGui",
+      "savedPriceLabel": "5"
+    },
+    {
+      "index": 2,
+      "itemId": "NORMAL_02",
+      "priceWin": 15,
+      "strengthBonus": 5,
+      "image": "rbxassetid://126019719977317",
+      "pressPosition": [
+        233.21200561523438,
+        7.1360931396484375,
+        18.959434509277344
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          231.4120818376541,
+          7.870513439178467,
+          15.959442138671875
+        ],
+        [
+          235.01211239099501,
+          11.17051362991333,
+          21.959442138671875
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.2",
+      "exhibitPath": "Workspace.ShoesModels.2",
+      "billboardPath": "Workspace.PerStepButtons.2.BillboardGui",
+      "savedPriceLabel": "15"
+    },
+    {
+      "index": 3,
+      "itemId": "NORMAL_03",
+      "priceWin": 40,
+      "strengthBonus": 9,
+      "image": "rbxassetid://96428309215438",
+      "pressPosition": [
+        233.21200561523438,
+        7.1360931396484375,
+        5.498634338378906
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          231.41206657886505,
+          7.870513439178467,
+          2.498626708984375
+        ],
+        [
+          235.01212764978408,
+          11.17051362991333,
+          8.498626708984375
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.3",
+      "exhibitPath": "Workspace.ShoesModels.3",
+      "billboardPath": "Workspace.PerStepButtons.3.BillboardGui",
+      "savedPriceLabel": "40"
+    },
+    {
+      "index": 4,
+      "itemId": "NORMAL_04",
+      "priceWin": 100,
+      "strengthBonus": 15,
+      "image": "rbxassetid://77317637436768",
+      "pressPosition": [
+        233.21200561523438,
+        7.1360931396484375,
+        -7.962181091308594
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          231.41206657886505,
+          7.870513439178467,
+          -10.962188720703125
+        ],
+        [
+          235.01212764978408,
+          11.17051362991333,
+          -4.962188720703125
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.4",
+      "exhibitPath": "Workspace.ShoesModels.4",
+      "billboardPath": "Workspace.PerStepButtons.4.BillboardGui",
+      "savedPriceLabel": "100"
+    },
+    {
+      "index": 5,
+      "itemId": "NORMAL_05",
+      "priceWin": 200,
+      "strengthBonus": 25,
+      "image": "rbxassetid://134662273184560",
+      "pressPosition": [
+        213.92660522460938,
+        10.897381782531738,
+        32.42023468017578
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          212.12666618824005,
+          11.631802082061768,
+          29.42022705078125
+        ],
+        [
+          215.72672725915908,
+          14.93180227279663,
+          35.42022705078125
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.5",
+      "exhibitPath": "Workspace.ShoesModels.5",
+      "billboardPath": "Workspace.PerStepButtons.5.BillboardGui",
+      "savedPriceLabel": "200"
+    },
+    {
+      "index": 6,
+      "itemId": "NORMAL_06",
+      "priceWin": 400,
+      "strengthBonus": 45,
+      "image": "rbxassetid://98216689951421",
+      "pressPosition": [
+        213.92660522460938,
+        10.897381782531738,
+        18.959434509277344
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          212.1266814470291,
+          11.631802082061768,
+          15.959442138671875
+        ],
+        [
+          215.72671200037001,
+          14.93180227279663,
+          21.959442138671875
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.6",
+      "exhibitPath": "Workspace.ShoesModels.6",
+      "billboardPath": "Workspace.PerStepButtons.6.BillboardGui",
+      "savedPriceLabel": "400"
+    },
+    {
+      "index": 7,
+      "itemId": "NORMAL_07",
+      "priceWin": 750,
+      "strengthBonus": 75,
+      "image": "rbxassetid://79967244610623",
+      "pressPosition": [
+        213.92660522460938,
+        10.897381782531738,
+        5.498634338378906
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          212.12666618824005,
+          11.631802082061768,
+          2.498626708984375
+        ],
+        [
+          215.72672725915908,
+          14.93180227279663,
+          8.498626708984375
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.7",
+      "exhibitPath": "Workspace.ShoesModels.7",
+      "billboardPath": "Workspace.PerStepButtons.7.BillboardGui",
+      "savedPriceLabel": "750"
+    },
+    {
+      "index": 8,
+      "itemId": "NORMAL_08",
+      "priceWin": 1250,
+      "strengthBonus": 120,
+      "image": "rbxassetid://137711371845706",
+      "pressPosition": [
+        213.92660522460938,
+        10.897381782531738,
+        -7.962181091308594
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          212.12666618824005,
+          11.631802082061768,
+          -10.962188720703125
+        ],
+        [
+          215.72672725915908,
+          14.93180227279663,
+          -4.962188720703125
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.8",
+      "exhibitPath": "Workspace.ShoesModels.8",
+      "billboardPath": "Workspace.PerStepButtons.8.BillboardGui",
+      "savedPriceLabel": "1.25K"
+    },
+    {
+      "index": 9,
+      "itemId": "NORMAL_09",
+      "priceWin": 2000,
+      "strengthBonus": 180,
+      "image": "rbxassetid://83905550410213",
+      "pressPosition": [
+        194.44171142578125,
+        14.438464164733887,
+        32.42023468017578
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          192.64177238941193,
+          15.1728835105896,
+          29.42022705078125
+        ],
+        [
+          196.24183346033095,
+          18.472883701324463,
+          35.42022705078125
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.9",
+      "exhibitPath": "Workspace.ShoesModels.9",
+      "billboardPath": "Workspace.PerStepButtons.9.BillboardGui",
+      "savedPriceLabel": "2K"
+    },
+    {
+      "index": 10,
+      "itemId": "NORMAL_10",
+      "priceWin": 3500,
+      "strengthBonus": 280,
+      "image": "rbxassetid://79276445613926",
+      "pressPosition": [
+        194.44171142578125,
+        14.438464164733887,
+        18.959434509277344
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          192.64177238941193,
+          15.1728835105896,
+          15.959426879882812
+        ],
+        [
+          196.24183346033095,
+          18.472883701324463,
+          21.959426879882812
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.10",
+      "exhibitPath": "Workspace.ShoesModels.10",
+      "billboardPath": "Workspace.PerStepButtons.10.BillboardGui",
+      "savedPriceLabel": "3.5K"
+    },
+    {
+      "index": 11,
+      "itemId": "NORMAL_11",
+      "priceWin": 6000,
+      "strengthBonus": 450,
+      "image": "rbxassetid://111665673963075",
+      "pressPosition": [
+        194.44171142578125,
+        14.438464164733887,
+        5.498634338378906
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          192.64177238941193,
+          15.1728835105896,
+          2.498626708984375
+        ],
+        [
+          196.24183346033095,
+          18.472883701324463,
+          8.498626708984375
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.11",
+      "exhibitPath": "Workspace.ShoesModels.11",
+      "billboardPath": "Workspace.PerStepButtons.11.BillboardGui",
+      "savedPriceLabel": "6K"
+    },
+    {
+      "index": 12,
+      "itemId": "NORMAL_12",
+      "priceWin": 10000,
+      "strengthBonus": 700,
+      "image": "rbxassetid://83499911643975",
+      "pressPosition": [
+        194.44171142578125,
+        14.438464164733887,
+        -7.962181091308594
+      ],
+      "pressSize": [
+        6.9962921142578125,
+        1.3688397407531738,
+        7.300478458404541
+      ],
+      "pressRotationId": 14,
+      "displayBounds": [
+        [
+          192.64177238941193,
+          15.1728835105896,
+          -10.962188720703125
+        ],
+        [
+          196.24183346033095,
+          18.472883701324463,
+          -4.962188720703125
+        ]
+      ],
+      "stationPath": "Workspace.PerStepButtons.12",
+      "exhibitPath": "Workspace.ShoesModels.12",
+      "billboardPath": "Workspace.PerStepButtons.12.BillboardGui",
+      "savedPriceLabel": "10K"
+    }
+  ],
+  "validation": "Static decoded data only; no engine rendering, image loading, physical input or Play.",
+  "preservedReadonlySha256": {
+    "MergeToForge_CurrentCloudV2.rbxl": "5e839d555d756cb9f4c0bda73bcba9427955482f5a912c4ea974299cca2d1cfb",
+    "Smash_and_Crush_PreMerge_20261003.rbxl": "c489a0dda83056b1e455b1b1849e774e4d87c2ee143b7a30a4dd7a9b3381d463"
+  },
+  "billboardLayout": {
+    "sizeStuds": [
+      8,
+      7
+    ],
+    "studsOffset": "preserved",
+    "direction": "Vertical",
+    "order": [
+      "ItemIcon",
+      "Amount",
+      "Price",
+      "Status"
+    ],
+    "sizeScale": [
+      [
+        0.35,
+        0.4
+      ],
+      [
+        0.8,
+        0.16
+      ],
+      [
+        0.95,
+        0.14
+      ],
+      [
+        0.95,
+        0.12
+      ]
+    ],
+    "paddingScale": 0.01,
+    "itemImage": "Master.Image; Fit; white; transparent",
+    "status": "existing Price TextLabel and UIStroke cloned; updated from server state",
+    "currency": "existing Amount.Icon retained",
+    "input": "inactive presentation; existing server step detection only"
+  },
+  "geometryChecks": [
+    "12 distinct fixed numeric stations mapped to Master NORMAL_01..12",
+    "all original Press transforms, dimensions and display1..7 geometry retained",
+    "all12 seven-Part exhibits fit horizontally inside their own Press footprint",
+    "all12 PrimaryPart and six internal welds reference only their own exhibit",
+    "12 pairwise disjoint horizontal Press footprints; no entry-volume overlap",
+    "new exhibits anchored and noncolliding; no added footprint on the original access path"
+  ]
+}

@@ -4,6 +4,7 @@ local RS = game:GetService("ReplicatedStorage")
 local Player = Players.LocalPlayer
 local Config = require(RS.Config:WaitForChild("DumbbellStandConfig"))
 local Master = require(RS.Config:WaitForChild("DumbbellItemMaster"))
+local NumberFormat = require(RS.Modules.NumberFormat)
 local WinIcon = game:GetService("StarterGui").StrengthGui.HUD.WinAmount.Inside.Icon.Image
 local M = {}
 local started = false
@@ -18,15 +19,17 @@ function M.start()
  if started then return end
  started = true
  local originals = {}
+ local owned = {}
+ local loaded = false
+ local equipped = Player:GetAttribute("EquippedDumbbell") or ""
  local function render()
   local folder = workspace:FindFirstChild(Config.FolderName)
   if not folder then return end
-  local equipped = Player:GetAttribute("EquippedDumbbell") or ""
-  for index = 1, 12 do
+  for _, item in ipairs(Master.GetSorted()) do
+   local index = item.Grade
    local model = folder:FindFirstChild(tostring(index))
    local board = model and model:FindFirstChild("BillboardGui")
-   local itemId = Config.GetItemId(index)
-   local item = itemId and Master.Get(itemId)
+   local itemId = item.ItemId
    local press = Config.GetPress(folder, index)
    if press then
     if not originals[press] then originals[press] = press.Color end
@@ -35,16 +38,41 @@ function M.start()
    if not board then continue end
    if press then board.Adornee = press end
    local amount = board:FindFirstChild("Amount")
-   setPair(amount, "Main", item and require(RS.Modules.NumberFormat).Price(item.PriceWin) or "")
-   setPair(board, "Price", item and "+" .. tostring(item.StrengthBonus) or "")
+   setPair(amount, "Main", NumberFormat.Price(item.PriceWin))
+   setPair(board, "Price", "+" .. tostring(item.StrengthBonus) .. " Strength")
+   local itemIcon = board:FindFirstChild("ItemIcon")
+   if itemIcon and itemIcon:IsA("ImageLabel") then itemIcon.Image = item.Image end
+   setPair(board, "Status", equipped == itemId and "Equipped"
+    or (loaded and (owned[itemId] and "Owned" or "Step to buy") or ""))
    local icon = amount and amount:FindFirstChild("Icon")
    if icon and icon:IsA("ImageLabel") then
-    if item then icon.Image = WinIcon end
-    icon.Visible = item ~= nil and item ~= false
+    icon.Image = WinIcon
+    icon.Visible = true
    end
   end
  end
- Player:GetAttributeChangedSignal("EquippedDumbbell"):Connect(render)
+ -- Read-only state presentation; purchase/equip remains server-detected on entry.
+ local remotes = RS:WaitForChild("Remotes")
+ local stateRemote = remotes:WaitForChild("DumbbellInventoryState")
+ local revision = 0
+ local function applyState(state)
+  if typeof(state) ~= "table" or not state.Loaded then return end
+  owned = state.OwnedDumbbells or {}
+  equipped = state.EquippedDumbbell or ""
+  loaded = true
+  render()
+ end
+ local function reply(result)
+  if typeof(result) ~= "table" then return end
+  revision += 1
+  applyState(result.State)
+ end
+ remotes:WaitForChild("DumbbellPurchaseRequest").OnClientEvent:Connect(reply)
+ remotes:WaitForChild("DumbbellEquipRequest").OnClientEvent:Connect(reply)
+ Player:GetAttributeChangedSignal("EquippedDumbbell"):Connect(function()
+  equipped = Player:GetAttribute("EquippedDumbbell") or ""
+  render()
+ end)
  local function bind(folder)
   folder.DescendantAdded:Connect(render)
   render()
@@ -52,6 +80,14 @@ function M.start()
  workspace.ChildAdded:Connect(function(child) if child.Name == Config.FolderName then bind(child) end end)
  local folder = workspace:FindFirstChild(Config.FolderName)
  if folder then bind(folder) else render() end
+ task.spawn(function()
+  while Player.Parent and not loaded do
+   local before = revision
+   local ok, state = pcall(function() return stateRemote:InvokeServer() end)
+   if ok and before == revision then applyState(state) end
+   if not loaded then task.wait(1) end
+  end
+ end)
 end
 
 return M
