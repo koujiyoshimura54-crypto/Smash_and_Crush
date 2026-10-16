@@ -929,3 +929,9 @@
 - Add native per-item image and authoritative Owned/Equipped rows to the existing billboards, using unchanged Master prices/effects/images and currency artwork. Keep configured Dumbbell exhibits fixed instead of floating as shoes.
 - New actual-Source/saved-geometry simulation417 assertions and existing twelve-item regression521 pass. Both Sources compile; same-file reDecode/reference/internal-weld/SharedString/UniqueId0 checks pass. Full connections/transforms/hash: reports/World1DumbbellFacilities_20261016.json.
 - Native display/input and Cloud Play remain unverified pending owner Save/Publish. No Studio launched, user Studio operation, local Play, Save/Publish or backup. CurrentCloud updated in place; unrelated untracked work retained.
+
+## 2026-10-16 - Repair CurrentCloud native Studio load
+
+- Correct8fa05f6's sparse binary referents:143 IDs exceeded the header's179484 count after removal/addition. Preserve all Instances/content; renumber only internal IDs and their references into the available holes.
+- Add a fail-closed referent validator/repair writer and seven regression tests. All non-reference bytes, Sources, properties, item IDs and hierarchy/reference targets remain unchanged; UniqueId duplicates0.
+- Real Studio0.743.0.7431133 opened the repaired same file through EditFile, reached Edit/PlaceIdle and created the target editor window without the reported deserialization error. Closed the owned verification process without Save/Publish/Play. Full evidence and hash: DEV_STATUS and reports/CurrentCloudReferentRepair_20261016.json.

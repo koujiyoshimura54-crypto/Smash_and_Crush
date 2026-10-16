@@ -1,0 +1,74 @@
+{
+  "before": {
+    "sha256": "448b6e7b6840e88e12aa225265757d1c3f2486b6ed2f16bb2184f56b68c0cee8",
+    "instanceCount": 179484,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 179626,
+    "outOfBoundsCount": 143,
+    "missingInRangeCount": 143,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 179484,
+      "PROP.Ref": 76374,
+      "PROP.Content": 0,
+      "PRNT.Child": 179484,
+      "PRNT.Parent": 179484
+    }
+  },
+  "after": {
+    "sha256": "2d384062692feefb47b6c45621a8faec122587dd67973640825f1e6db391228d",
+    "instanceCount": 179484,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 179483,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 179484,
+      "PROP.Ref": 76374,
+      "PROP.Content": 0,
+      "PRNT.Child": 179484,
+      "PRNT.Parent": 179484
+    }
+  },
+  "renumberedInstances": 143,
+  "modifiedChunks": 31,
+  "preservedInstanceCount": true,
+  "allNonReferenceBytesUnchanged": true,
+  "hierarchyAndReferenceTargetsPreserved": true,
+  "writtenToSameFile": true,
+  "nativeStudioVerification": {
+    "result": "PASS: actual repaired file loaded in native EditFile, reached Edit/PlaceIdle, then closed normally without saving",
+    "version": "0.743.0.7431133",
+    "ownedProcessId": 14876,
+    "startJST": "2026-10-16 16:39:30",
+    "arguments": [
+      "--task",
+      "EditFile",
+      "--localPlaceFile",
+      "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl"
+    ],
+    "windowTitle": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl - Roblox Studio",
+    "windowHandle": 4591604,
+    "windowLaunchedHidden": true,
+    "logFile": "0.743.0.7431133_20261016T073930Z_Studio_49E91_last.log",
+    "evidence": [
+      "2026-10-16T07:39:35.095Z,5.095264,6bc4,6,Info [FLog::DMListenerBridge] setCurrentGameStateTypeAndDmId currentGst=StudioGameStateType_Edit, currentDmId=2",
+      "2026-10-16T07:39:35.095Z,5.095264,6bc4,6,Info [FLog::AssetDataModelManager] Setting StudioGameStateType to StudioGameStateType_Edit",
+      "2026-10-16T07:39:37.255Z,7.255658,0884,6 [telemetryLog] TaskNames: DraftsServiceHostManagerOnPlaceOpenSuccess;TestWorkflowManagerOnPlaceOpenSuccess;ResolvePlacePublishStatus;",
+      "2026-10-16T07:39:38.386Z,8.386551,7124,6 [telemetryLog] State: PlaceIdle",
+      "2026-10-16T07:41:49.445Z,139.445312,6bc4,6,Info [FLog::StudioMain] End of main. Return value 0. Has entered application scope: true"
+    ],
+    "reportedDeserializationErrorAbsent": true,
+    "normalExitCode": 0,
+    "processExitConfirmed": true,
+    "fileHashUnchangedAfterClose": true,
+    "targetLockAbsent": true,
+    "manualLockDeletion": false,
+    "PlaySavePublishPerformed": false,
+    "userStudioOperated": false,
+    "limits": "Native load/Edit check only. Unchanged legacy assets report access/not-found warnings. No gameplay/input validation."
+  }
+}
