@@ -58,6 +58,22 @@ def udim2(x, xo, y, yo):
 def decode(data, typ, n):
     if typ == 19:
         return read_refs(data, n)
+    if typ == 34:
+        types=[uni(v)for v in uninterleave(data[:4*n],n,4)]
+        p=4*n;uris=[];uri_count=u32(data,p);p+=4
+        for _ in range(uri_count):
+            start=p;_,p=string(data,p);uris.append(data[start:p])
+        count=u32(data,p);p+=4;objects=read_refs(data[p:p+4*count],count);p+=4*count
+        assert u32(data,p)==0 and p+4==len(data),'External Content refs unsupported'
+        ui=oi=0;rows=[]
+        for kind in types:
+            assert kind in (0,1,2)
+            value=None
+            if kind==1:value=uris[ui];ui+=1
+            elif kind==2:value=objects[-1-oi];oi+=1
+            rows.append((kind,value))
+        assert ui==len(uris)and oi==len(objects)
+        return rows
     if typ in (3, 4, 11, 18, 28):
         return uninterleave(data, n, 4)
     if typ in (27, 33, 31):
@@ -109,6 +125,12 @@ def decode(data, typ, n):
 def encode(rows, typ):
     if typ == 19:
         return write_refs(rows)
+    if typ == 34:
+        uris=[value for kind,value in rows if kind==1]
+        objects=[value for kind,value in rows if kind==2]
+        return (interleave([i(kind)for kind,_ in rows])+
+                struct.pack('<I',len(uris))+b''.join(uris)+
+                struct.pack('<I',len(objects))+write_refs(list(reversed(objects)))+bytes(4))
     if typ in (3, 4, 11, 18, 28, 27, 33, 31):
         return interleave(rows)
     if typ in (6, 7, 12, 13, 14, 24, 26):
@@ -133,6 +155,7 @@ class Editor:
         self.removed = set()
         self.next_ref = self.doc.count
         self.names = {}
+        self.shared_strings = None
         for ci, (kind, data, _, _) in enumerate(self.doc.chunks):
             if kind != b'PROP':
                 continue
@@ -199,6 +222,8 @@ class Editor:
                 value = copy.deepcopy(col[3][old])
                 if col[1] == 19:
                     value = mapping.get(value, value)
+                elif col[1] == 34 and value[0]==2:
+                    value=(2,mapping.get(value[1],value[1]))
                 if name in ('UniqueId', 'HistoryId'):
                     value = os.urandom(16)
                 if name in ('AttributesSerialize', 'SerializedOverrides'):
@@ -206,6 +231,73 @@ class Editor:
                 col[3][new] = value
                 self.changed.add((cid, name))
         return mapping[ref], mapping
+
+    def strings(self):
+        if self.shared_strings is None:
+            self.shared_strings=[]
+            for kind,data,_,_ in self.doc.chunks:
+                if kind!=b'SSTR':continue
+                pos=8
+                for _ in range(u32(data,4)):
+                    digest=data[pos:pos+16];value,pos=string(data,pos+16)
+                    self.shared_strings.append((digest,value))
+                assert pos==len(data)
+        return self.shared_strings
+
+    def import_visual(self, other, ref, parent):
+        """Import visual rows only, with strict schema and SharedString remapping.
+
+        Used for the owner's previous purchased models in a read-only reference.
+        Never imports Source containers, remotes, prompts, forces or controllers.
+        External Instance refs are refused rather than pointing into the place.
+        """
+        allowed={'Model','Folder','Part','MeshPart','UnionOperation','WedgePart',
+                 'Attachment','Beam','ParticleEmitter','PointLight','SpotLight',
+                 'SurfaceLight','Weld','WeldConstraint','SpecialMesh','BlockMesh',
+                 'CylinderMesh','Decal','Texture','SurfaceAppearance','BillboardGui',
+                 'SurfaceGui','Frame','TextLabel','ImageLabel','UIStroke','UIGradient',
+                 'UIListLayout','UIAspectRatioConstraint','UICorner','UIPadding'}
+        original=other.subtree(ref)
+        class_by_name={name:cid for cid,(name,_) in self.doc.classes.items()}
+        mapping={v:self.next_ref+j for j,v in enumerate(original)}
+        self.next_ref+=len(original)
+        strings=self.strings();foreign=other.strings()
+        string_map={value:j for j,(_,value) in enumerate(strings)}
+        for old,new in mapping.items():
+            ocid=other.class_of[old];name=other.doc.classes[ocid][0]
+            assert name in allowed,('Nonvisual reference descendant',other.path(old),name)
+            cid=class_by_name[name]
+            assert not {n for c,n in other.columns if c==ocid}-{n for c,n in self.columns if c==cid}
+            self.class_of[new]=cid;self.classes[cid].append(new)
+            self.parents[new]=parent if old==ref else mapping[other.parents[old]]
+            self.names[new]=other.names[old]
+            for (ccid,prop) in self.columns:
+                if ccid!=cid:continue
+                col=self.col(cid,prop)
+                if prop in ('AttributesSerialize','SerializedOverrides'):
+                    value=s(b'')
+                elif prop in ('UniqueId','HistoryId'):
+                    value=os.urandom(16)
+                elif prop=='Tags':
+                    assert strings[0][1]==b''
+                    value=bytes(4)
+                else:
+                    foreign_col=other.col(ocid,prop)
+                    assert foreign_col[1]==col[1],('Different property types',name,prop)
+                    value=copy.deepcopy(foreign_col[3][old])
+                    if col[1]==19:
+                        assert value==-1 or value in mapping,('External reference',other.path(old),prop,value)
+                        value=mapping.get(value,value)
+                    elif col[1]==34 and value[0]==2:
+                        assert value[1]==-1 or value[1]in mapping,('External Content reference',other.path(old),prop)
+                        value=(2,mapping.get(value[1],value[1]))
+                    elif col[1]==28:
+                        index=int.from_bytes(value,'big');digest,payload=foreign[index]
+                        if payload not in string_map:
+                            string_map[payload]=len(strings);strings.append((digest,payload))
+                        value=string_map[payload].to_bytes(4,'big')
+                col[3][new]=value;self.changed.add((cid,prop))
+        return mapping[ref],mapping
 
     def build(self):
         # Null references to removed exhibits, including references in other classes.
@@ -218,7 +310,9 @@ class Editor:
         alive = set(self.parents)-self.removed
         for kind, data, raw, reserved in self.doc.chunks:
             old = data
-            if kind == b'INST':
+            if kind == b'SSTR' and self.shared_strings is not None:
+                data=struct.pack('<II',0,len(self.shared_strings))+b''.join(digest+s(value) for digest,value in self.shared_strings)
+            elif kind == b'INST':
                 cid=u32(data); _, p=string(data,4); form=data[p]
                 refs=[r for r in self.classes[cid] if r in alive]
                 if refs != self.doc.classes[cid][1]:

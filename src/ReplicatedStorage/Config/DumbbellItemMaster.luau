@@ -8,7 +8,7 @@ local definitions = {
  {ItemId="NORMAL_05", Name="Normal Dumbbell 5", Grade=5, PriceWin=200, StrengthBonus=25, ImageAssetId=134662273184560},
  {ItemId="NORMAL_06", Name="Normal Dumbbell 6", Grade=6, PriceWin=400, StrengthBonus=45, ImageAssetId=92138447886967}, -- Owner's W1-5D belongs to slot 6, not slot 5.
  {ItemId="NORMAL_07", Name="Normal Dumbbell 7", Grade=7, PriceWin=750, StrengthBonus=75, ImageAssetId=79967244610623},
- {ItemId="NORMAL_08", Name="Normal Dumbbell 8", Grade=8, PriceWin=1250, StrengthBonus=120, ImageAssetId=11017141876908},
+	{ItemId="NORMAL_08", Name="Normal Dumbbell 8", Grade=8, PriceWin=1250, StrengthBonus=120, ImageAssetId=110171141876908},
  {ItemId="NORMAL_09", Name="Normal Dumbbell 9", Grade=9, PriceWin=2000, StrengthBonus=180, ImageAssetId=129522181601539},
  {ItemId="NORMAL_10", Name="Normal Dumbbell 10", Grade=10, PriceWin=3500, StrengthBonus=280, ImageAssetId=92929093922544},
  {ItemId="NORMAL_11", Name="Normal Dumbbell 11", Grade=11, PriceWin=6000, StrengthBonus=450, ImageAssetId=89748292939648},

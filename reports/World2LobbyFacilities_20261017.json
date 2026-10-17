@@ -1,0 +1,1926 @@
+{
+  "inputSha256": "d2c389d7349c0f705f79872614c727930bd029be04f028026570cfccefc34311",
+  "referencePath": "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl",
+  "referenceSha256": "b613d2c61617e004290bfbb2d153c3272739add6f7ef28b8a307d5560b25abee",
+  "equipment": [
+    {
+      "name": "Dumbbells",
+      "count": 12,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays",
+      "source": "Workspace.World2Map.TrainingArea.DumbbellDisplays (reused in place)",
+      "bounds": {
+        "min": [
+          -117.22247505187988,
+          -2.912569046020508,
+          1805.2884554862976
+        ],
+        "max": [
+          -58.77752113342285,
+          13.122884035110474,
+          1870.7114782333374
+        ],
+        "size": [
+          58.44495391845703,
+          16.03545308113098,
+          65.4230227470398
+        ],
+        "center": [
+          -87.99999809265137,
+          5.105157494544983,
+          1837.9999668598175
+        ],
+        "parts": 96
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "boundsWithEntranceSteps": {
+        "min": [
+          -117.22247505187988,
+          -2.912569046020508,
+          1805.2884554862976
+        ],
+        "max": [
+          -58.77752113342285,
+          13.122884035110474,
+          1878.5114257335663
+        ],
+        "size": [
+          58.44495391845703,
+          16.03545308113098,
+          73.22297024726868
+        ],
+        "center": [
+          -87.99999809265137,
+          5.105157494544983,
+          1841.899940609932
+        ],
+        "parts": 102
+      },
+      "finalBounds": {
+        "min": [
+          -117.22247505187988,
+          -2.912569046020508,
+          1805.2884554862976
+        ],
+        "max": [
+          -58.77752113342285,
+          13.122884035110474,
+          1878.5114257335663
+        ],
+        "size": [
+          58.44495391845703,
+          16.03545308113098,
+          73.22297024726868
+        ],
+        "center": [
+          -87.99999809265137,
+          5.105157494544983,
+          1841.899940609932
+        ],
+        "parts": 102
+      }
+    },
+    {
+      "name": "Treadmill 01",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01",
+      "source": "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill01",
+      "bounds": {
+        "min": [
+          61.055884659290314,
+          2.0,
+          1785.0382706008238
+        ],
+        "max": [
+          76.94411915540695,
+          14.300751862926703,
+          1808.9617738723755
+        ],
+        "size": [
+          15.888234496116638,
+          12.300751862926703,
+          23.92350327155168
+        ],
+        "center": [
+          69.00000190734863,
+          8.150375931463351,
+          1797.0000222365998
+        ],
+        "parts": 21
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 1,
+      "finalBounds": {
+        "min": [
+          61.055884659290314,
+          2.0,
+          1785.0382706008238
+        ],
+        "max": [
+          76.94411915540695,
+          14.300751862926703,
+          1808.9617738723755
+        ],
+        "size": [
+          15.888234496116638,
+          12.300751862926703,
+          23.92350327155168
+        ],
+        "center": [
+          69.00000190734863,
+          8.150375931463351,
+          1797.0000222365998
+        ],
+        "parts": 21
+      }
+    },
+    {
+      "name": "Treadmill 02",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02",
+      "source": "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill02",
+      "bounds": {
+        "min": [
+          94.39557194709778,
+          1.9999998807907104,
+          1782.5381994247437
+        ],
+        "max": [
+          113.60442805290222,
+          16.871620367020938,
+          1811.4617334479212
+        ],
+        "size": [
+          19.208856105804443,
+          14.871620486230228,
+          28.92353402317758
+        ],
+        "center": [
+          104.0,
+          9.435810123905824,
+          1796.9999664363324
+        ],
+        "parts": 21
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 2,
+      "finalBounds": {
+        "min": [
+          94.39557194709778,
+          1.9999998807907104,
+          1782.5381994247437
+        ],
+        "max": [
+          113.60442805290222,
+          16.871620367020938,
+          1811.4617334479212
+        ],
+        "size": [
+          19.208856105804443,
+          14.871620486230228,
+          28.92353402317758
+        ],
+        "center": [
+          104.0,
+          9.435810123905824,
+          1796.9999664363324
+        ],
+        "parts": 21
+      }
+    },
+    {
+      "name": "Treadmill 03",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03",
+      "source": "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill03",
+      "bounds": {
+        "min": [
+          124.24988550968305,
+          2.0,
+          1775.734155910378
+        ],
+        "max": [
+          153.7501157051404,
+          23.445554769906245,
+          1818.265839934349
+        ],
+        "size": [
+          29.500230195457334,
+          21.445554769906245,
+          42.53168402397114
+        ],
+        "center": [
+          139.00000060741172,
+          12.722777384953122,
+          1796.9999979223635
+        ],
+        "parts": 53
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 3,
+      "beltBounds": {
+        "min": [
+          130.12845706939697,
+          2.835420548915863,
+          1782.9681587219238
+        ],
+        "max": [
+          146.99034786224365,
+          4.63913494348526,
+          1816.2913627624512
+        ],
+        "size": [
+          16.86189079284668,
+          1.803714394569397,
+          33.323204040527344
+        ],
+        "center": [
+          138.5594024658203,
+          3.7372777462005615,
+          1799.6297607421875
+        ],
+        "parts": 1
+      },
+      "boundsWithEntranceSteps": {
+        "min": [
+          124.24988550968305,
+          2.0,
+          1775.734155910378
+        ],
+        "max": [
+          153.7501157051404,
+          23.445554769906245,
+          1826.0658690929413
+        ],
+        "size": [
+          29.500230195457334,
+          21.445554769906245,
+          50.33171318256336
+        ],
+        "center": [
+          139.00000060741172,
+          12.722777384953122,
+          1800.9000125016596
+        ],
+        "parts": 59
+      },
+      "finalBounds": {
+        "min": [
+          124.24988550968305,
+          2.0,
+          1775.734155910378
+        ],
+        "max": [
+          153.7501157051404,
+          23.445554769906245,
+          1826.0658690929413
+        ],
+        "size": [
+          29.500230195457334,
+          21.445554769906245,
+          50.33171318256336
+        ],
+        "center": [
+          139.00000060741172,
+          12.722777384953122,
+          1800.9000125016596
+        ],
+        "parts": 59
+      }
+    },
+    {
+      "name": "Treadmill 04",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04",
+      "source": "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill04",
+      "bounds": {
+        "min": [
+          159.24988550968305,
+          2.0,
+          1775.734155910378
+        ],
+        "max": [
+          188.7501157051404,
+          23.44555095520898,
+          1818.265839934349
+        ],
+        "size": [
+          29.500230195457334,
+          21.44555095520898,
+          42.53168402397114
+        ],
+        "center": [
+          174.00000060741172,
+          12.72277547760449,
+          1796.9999979223635
+        ],
+        "parts": 53
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 4,
+      "beltBounds": {
+        "min": [
+          165.12845706939697,
+          2.835417926311493,
+          1782.9681587219238
+        ],
+        "max": [
+          181.99034786224365,
+          4.63913232088089,
+          1816.2913627624512
+        ],
+        "size": [
+          16.86189079284668,
+          1.803714394569397,
+          33.323204040527344
+        ],
+        "center": [
+          173.5594024658203,
+          3.7372751235961914,
+          1799.6297607421875
+        ],
+        "parts": 1
+      },
+      "boundsWithEntranceSteps": {
+        "min": [
+          159.24988550968305,
+          1.9999999403953552,
+          1775.734155910378
+        ],
+        "max": [
+          188.7501157051404,
+          23.44555095520898,
+          1826.0658690929413
+        ],
+        "size": [
+          29.500230195457334,
+          21.445551014813624,
+          50.33171318256336
+        ],
+        "center": [
+          174.00000060741172,
+          12.722775447802167,
+          1800.9000125016596
+        ],
+        "parts": 59
+      },
+      "finalBounds": {
+        "min": [
+          159.24988550968305,
+          1.9999999403953552,
+          1775.734155910378
+        ],
+        "max": [
+          188.7501157051404,
+          23.44555095520898,
+          1826.0658690929413
+        ],
+        "size": [
+          29.500230195457334,
+          21.445551014813624,
+          50.33171318256336
+        ],
+        "center": [
+          174.00000060741172,
+          12.722775447802167,
+          1800.9000125016596
+        ],
+        "parts": 59
+      }
+    },
+    {
+      "name": "Treadmill 05",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05",
+      "source": "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill05",
+      "bounds": {
+        "min": [
+          54.249885509683054,
+          2.0,
+          1843.734155910378
+        ],
+        "max": [
+          83.75011570514039,
+          23.44555858460351,
+          1886.265839934349
+        ],
+        "size": [
+          29.500230195457334,
+          21.44555858460351,
+          42.53168402397114
+        ],
+        "center": [
+          69.00000060741172,
+          12.722779292301755,
+          1864.9999979223635
+        ],
+        "parts": 53
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 5,
+      "beltBounds": {
+        "min": [
+          60.12845706939697,
+          2.8354217410087585,
+          1850.9681587219238
+        ],
+        "max": [
+          76.99034786224365,
+          4.6391361355781555,
+          1884.2913627624512
+        ],
+        "size": [
+          16.86189079284668,
+          1.803714394569397,
+          33.323204040527344
+        ],
+        "center": [
+          68.55940246582031,
+          3.737278938293457,
+          1867.6297607421875
+        ],
+        "parts": 1
+      },
+      "boundsWithEntranceSteps": {
+        "min": [
+          54.249885509683054,
+          1.9999999105930328,
+          1843.734155910378
+        ],
+        "max": [
+          83.75011570514039,
+          23.44555858460351,
+          1894.0658690929413
+        ],
+        "size": [
+          29.500230195457334,
+          21.445558674010478,
+          50.33171318256336
+        ],
+        "center": [
+          69.00000060741172,
+          12.722779247598272,
+          1868.9000125016596
+        ],
+        "parts": 59
+      },
+      "finalBounds": {
+        "min": [
+          54.249885509683054,
+          1.9999999105930328,
+          1843.734155910378
+        ],
+        "max": [
+          83.75011570514039,
+          23.44555858460351,
+          1894.0658690929413
+        ],
+        "size": [
+          29.500230195457334,
+          21.445558674010478,
+          50.33171318256336
+        ],
+        "center": [
+          69.00000060741172,
+          12.722779247598272,
+          1868.9000125016596
+        ],
+        "parts": 59
+      }
+    },
+    {
+      "name": "Treadmill 06",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06",
+      "source": "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill06",
+      "bounds": {
+        "min": [
+          89.24988550968305,
+          2.0,
+          1843.734155910378
+        ],
+        "max": [
+          118.75011570514039,
+          23.445543325814448,
+          1886.265839934349
+        ],
+        "size": [
+          29.500230195457334,
+          21.445543325814448,
+          42.53168402397114
+        ],
+        "center": [
+          104.00000060741172,
+          12.722771662907224,
+          1864.9999979223635
+        ],
+        "parts": 53
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 6,
+      "beltBounds": {
+        "min": [
+          95.12845706939697,
+          2.835420548915863,
+          1850.9681587219238
+        ],
+        "max": [
+          111.99034786224365,
+          4.63913494348526,
+          1884.2913627624512
+        ],
+        "size": [
+          16.86189079284668,
+          1.803714394569397,
+          33.323204040527344
+        ],
+        "center": [
+          103.55940246582031,
+          3.7372777462005615,
+          1867.6297607421875
+        ],
+        "parts": 1
+      },
+      "boundsWithEntranceSteps": {
+        "min": [
+          89.24988550968305,
+          2.0,
+          1843.734155910378
+        ],
+        "max": [
+          118.75011570514039,
+          23.445543325814448,
+          1894.0658690929413
+        ],
+        "size": [
+          29.500230195457334,
+          21.445543325814448,
+          50.33171318256336
+        ],
+        "center": [
+          104.00000060741172,
+          12.722771662907224,
+          1868.9000125016596
+        ],
+        "parts": 59
+      },
+      "finalBounds": {
+        "min": [
+          89.24988550968305,
+          2.0,
+          1843.734155910378
+        ],
+        "max": [
+          118.75011570514039,
+          23.445543325814448,
+          1894.0658690929413
+        ],
+        "size": [
+          29.500230195457334,
+          21.445543325814448,
+          50.33171318256336
+        ],
+        "center": [
+          104.00000060741172,
+          12.722771662907224,
+          1868.9000125016596
+        ],
+        "parts": 59
+      }
+    },
+    {
+      "name": "Treadmill 07",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07",
+      "source": "Workspace.Treadmills.Normal01",
+      "bounds": {
+        "min": [
+          134.5,
+          2.0,
+          1858.0
+        ],
+        "max": [
+          143.5,
+          10.5,
+          1872.0
+        ],
+        "size": [
+          9.0,
+          8.5,
+          14.0
+        ],
+        "center": [
+          139.0,
+          6.25,
+          1865.0
+        ],
+        "parts": 20
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 7,
+      "finalBounds": {
+        "min": [
+          134.5,
+          2.0,
+          1858.0
+        ],
+        "max": [
+          143.5,
+          10.5,
+          1872.0
+        ],
+        "size": [
+          9.0,
+          8.5,
+          14.0
+        ],
+        "center": [
+          139.0,
+          6.25,
+          1865.0
+        ],
+        "parts": 20
+      }
+    },
+    {
+      "name": "Treadmill 08",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.08",
+      "source": "Workspace.Treadmills.Normal02",
+      "bounds": {
+        "min": [
+          169.5,
+          2.0,
+          1858.0
+        ],
+        "max": [
+          178.5,
+          10.5,
+          1872.0
+        ],
+        "size": [
+          9.0,
+          8.5,
+          14.0
+        ],
+        "center": [
+          174.0,
+          6.25,
+          1865.0
+        ],
+        "parts": 20
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 8,
+      "finalBounds": {
+        "min": [
+          169.5,
+          2.0,
+          1858.0
+        ],
+        "max": [
+          178.5,
+          10.5,
+          1872.0
+        ],
+        "size": [
+          9.0,
+          8.5,
+          14.0
+        ],
+        "center": [
+          174.0,
+          6.25,
+          1865.0
+        ],
+        "parts": 20
+      }
+    },
+    {
+      "name": "Treadmill 09",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.09",
+      "source": "Workspace.Treadmills.Iron01",
+      "bounds": {
+        "min": [
+          60.95765537857275,
+          2.0000001192092896,
+          1920.7423239946365
+        ],
+        "max": [
+          77.04234777682058,
+          12.078076004981995,
+          1939.2576200862381
+        ],
+        "size": [
+          16.084692398247824,
+          10.078075885772705,
+          18.515296091601613
+        ],
+        "center": [
+          69.00000157769666,
+          7.039038062095642,
+          1929.9999720404373
+        ],
+        "parts": 61
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 9,
+      "finalBounds": {
+        "min": [
+          60.95765537857275,
+          2.0000001192092896,
+          1920.7423239946365
+        ],
+        "max": [
+          77.04234777682058,
+          12.078076004981995,
+          1939.2576200862381
+        ],
+        "size": [
+          16.084692398247824,
+          10.078075885772705,
+          18.515296091601613
+        ],
+        "center": [
+          69.00000157769666,
+          7.039038062095642,
+          1929.9999720404373
+        ],
+        "parts": 61
+      }
+    },
+    {
+      "name": "Treadmill 10",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.10",
+      "source": "Workspace.Treadmills.Iron02",
+      "bounds": {
+        "min": [
+          95.95765537857275,
+          2.0000001192092896,
+          1920.7423239946365
+        ],
+        "max": [
+          112.04234777682058,
+          12.078076004981995,
+          1939.2576200862381
+        ],
+        "size": [
+          16.084692398247824,
+          10.078075885772705,
+          18.515296091601613
+        ],
+        "center": [
+          104.00000157769666,
+          7.039038062095642,
+          1929.9999720404373
+        ],
+        "parts": 61
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 10,
+      "finalBounds": {
+        "min": [
+          95.95765537857275,
+          2.0000001192092896,
+          1920.7423239946365
+        ],
+        "max": [
+          112.04234777682058,
+          12.078076004981995,
+          1939.2576200862381
+        ],
+        "size": [
+          16.084692398247824,
+          10.078075885772705,
+          18.515296091601613
+        ],
+        "center": [
+          104.00000157769666,
+          7.039038062095642,
+          1929.9999720404373
+        ],
+        "parts": 61
+      }
+    },
+    {
+      "name": "Treadmill 11",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.11",
+      "source": "Workspace.Treadmills.Gold01",
+      "bounds": {
+        "min": [
+          130.86233107052328,
+          2.0000000596046448,
+          1920.2455120682716
+        ],
+        "max": [
+          147.13765533829044,
+          12.500000715255737,
+          1939.7545667357233
+        ],
+        "size": [
+          16.27532426776716,
+          10.500000655651093,
+          19.509054667451664
+        ],
+        "center": [
+          138.99999320440685,
+          7.250000387430191,
+          1930.0000394019976
+        ],
+        "parts": 44
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 11,
+      "finalBounds": {
+        "min": [
+          130.86233107052328,
+          2.0000000596046448,
+          1920.2455120682716
+        ],
+        "max": [
+          147.13765533829044,
+          12.500000715255737,
+          1939.7545667357233
+        ],
+        "size": [
+          16.27532426776716,
+          10.500000655651093,
+          19.509054667451664
+        ],
+        "center": [
+          138.99999320440685,
+          7.250000387430191,
+          1930.0000394019976
+        ],
+        "parts": 44
+      }
+    },
+    {
+      "name": "Treadmill 12",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.12",
+      "source": "Workspace.Treadmills.Diamond01",
+      "bounds": {
+        "min": [
+          164.804217338562,
+          1.9999998802619672,
+          1918.8152286410332
+        ],
+        "max": [
+          183.19579040173485,
+          13.864813327789307,
+          1941.1847236271144
+        ],
+        "size": [
+          18.391573063172842,
+          11.86481344752734,
+          22.369494986081236
+        ],
+        "center": [
+          174.00000387014842,
+          7.932406604025637,
+          1929.9999761340737
+        ],
+        "parts": 31
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "stationIndex": 12,
+      "finalBounds": {
+        "min": [
+          164.804217338562,
+          1.9999998802619672,
+          1918.8152286410332
+        ],
+        "max": [
+          183.19579040173485,
+          13.864813327789307,
+          1941.1847236271144
+        ],
+        "size": [
+          18.391573063172842,
+          11.86481344752734,
+          22.369494986081236
+        ],
+        "center": [
+          174.00000387014842,
+          7.932406604025637,
+          1929.9999761340737
+        ],
+        "parts": 31
+      }
+    },
+    {
+      "name": "Normal Eggs",
+      "count": 4,
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays",
+      "source": "Workspace.Map.Spawn.PathToEggs.Stands + Workspace.Map.Spawn.PathToEggs.EggsStand + Workspace.Eggs",
+      "bounds": {
+        "min": [
+          -129.25,
+          1.983009785413742,
+          1905.0
+        ],
+        "max": [
+          -70.75,
+          15.61032772064209,
+          1931.0
+        ],
+        "size": [
+          58.5,
+          13.627317935228348,
+          26.0
+        ],
+        "center": [
+          -100.0,
+          8.796668753027916,
+          1918.0
+        ],
+        "parts": 34
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "finalBounds": {
+        "min": [
+          -129.25,
+          1.983009785413742,
+          1905.0
+        ],
+        "max": [
+          -70.75,
+          15.61032772064209,
+          1931.0
+        ],
+        "size": [
+          58.5,
+          13.627317935228348,
+          26.0
+        ],
+        "center": [
+          -100.0,
+          8.796668753027916,
+          1918.0
+        ],
+        "parts": 34
+      }
+    },
+    {
+      "name": "MergeDisplay",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.MergeDisplay",
+      "source": "Workspace.RestockShop",
+      "bounds": {
+        "min": [
+          -127.68122459649877,
+          2.000000089406967,
+          1986.054046543128
+        ],
+        "max": [
+          -110.37353997557219,
+          16.999998569488525,
+          1996.167165001785
+        ],
+        "size": [
+          17.30768462092658,
+          14.999998480081558,
+          10.113118458657027
+        ],
+        "center": [
+          -119.02738228603548,
+          9.499999329447746,
+          1991.1106057724564
+        ],
+        "parts": 35
+      },
+      "entryDirection": "-Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "finalBounds": {
+        "min": [
+          -127.68122459649877,
+          2.000000089406967,
+          1986.054046543128
+        ],
+        "max": [
+          -110.37353997557219,
+          16.999998569488525,
+          1996.167165001785
+        ],
+        "size": [
+          17.30768462092658,
+          14.999998480081558,
+          10.113118458657027
+        ],
+        "center": [
+          -119.02738228603548,
+          9.499999329447746,
+          1991.1106057724564
+        ],
+        "parts": 35
+      }
+    },
+    {
+      "name": "UpgradesDisplay",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.UpgradesDisplay",
+      "source": "Workspace.ShopStallTemplate",
+      "bounds": {
+        "min": [
+          -83.6927922964096,
+          2.0,
+          1983.4666756327986
+        ],
+        "max": [
+          -60.78325680048027,
+          16.5,
+          2000.9666676084855
+        ],
+        "size": [
+          22.90953549592934,
+          14.5,
+          17.499991975686953
+        ],
+        "center": [
+          -72.23802454844494,
+          9.25,
+          1992.216671620642
+        ],
+        "parts": 96
+      },
+      "entryDirection": "-Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "finalBounds": {
+        "min": [
+          -83.6927922964096,
+          2.0,
+          1983.4666756327986
+        ],
+        "max": [
+          -60.78325680048027,
+          16.5,
+          2000.9666676084855
+        ],
+        "size": [
+          22.90953549592934,
+          14.5,
+          17.499991975686953
+        ],
+        "center": [
+          -72.23802454844494,
+          9.25,
+          1992.216671620642
+        ],
+        "parts": 96
+      }
+    },
+    {
+      "name": "LimitedEggDisplay",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.LimitedEggDisplay",
+      "source": "Workspace.Chill Octopus",
+      "bounds": {
+        "min": [
+          -54.43301651886179,
+          2.0,
+          1908.5669834067494
+        ],
+        "max": [
+          -35.56698348113821,
+          11.3305082321167,
+          1927.4330165932506
+        ],
+        "size": [
+          18.866033037723582,
+          9.3305082321167,
+          18.866033186501227
+        ],
+        "center": [
+          -45.0,
+          6.66525411605835,
+          1918.0
+        ],
+        "parts": 1
+      },
+      "entryDirection": "+Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "finalBounds": {
+        "min": [
+          -54.43301651886179,
+          2.0,
+          1908.5669834067494
+        ],
+        "max": [
+          -35.56698348113821,
+          11.3305082321167,
+          1927.4330165932506
+        ],
+        "size": [
+          18.866033037723582,
+          9.3305082321167,
+          18.866033186501227
+        ],
+        "center": [
+          -45.0,
+          6.66525411605835,
+          1918.0
+        ],
+        "parts": 1
+      }
+    },
+    {
+      "name": "WinBoostDisplay",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.WinBoostDisplay",
+      "source": "Workspace.Trophy",
+      "bounds": {
+        "min": [
+          147.59213722073554,
+          1.9999999897485201,
+          1991.8237516756135
+        ],
+        "max": [
+          158.4078658441147,
+          12.12384742293679,
+          1998.1762483243865
+        ],
+        "size": [
+          10.815728623379158,
+          10.123847433188269,
+          6.352496648773013
+        ],
+        "center": [
+          153.00000153242513,
+          7.061923706342655,
+          1995.0
+        ],
+        "parts": 29
+      },
+      "entryDirection": "-Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "finalBounds": {
+        "min": [
+          147.59213722073554,
+          1.9999999897485201,
+          1991.8237516756135
+        ],
+        "max": [
+          158.4078658441147,
+          12.12384742293679,
+          1998.1762483243865
+        ],
+        "size": [
+          10.815728623379158,
+          10.123847433188269,
+          6.352496648773013
+        ],
+        "center": [
+          153.00000153242513,
+          7.061923706342655,
+          1995.0
+        ],
+        "parts": 29
+      }
+    },
+    {
+      "name": "TotalRankingDisplay",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.TotalRankingDisplay",
+      "source": "Workspace.TotalStrengthRankingBoard",
+      "bounds": {
+        "min": [
+          71.75000096857589,
+          2.000000089406967,
+          1991.499988302589
+        ],
+        "max": [
+          88.24999903142411,
+          23.50062721967697,
+          1998.500011697411
+        ],
+        "size": [
+          16.49999806284822,
+          21.500627130270004,
+          7.000023394822165
+        ],
+        "center": [
+          80.0,
+          12.75031365454197,
+          1995.0
+        ],
+        "parts": 33
+      },
+      "entryDirection": "-Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "finalBounds": {
+        "min": [
+          71.75000096857589,
+          2.000000089406967,
+          1991.499988302589
+        ],
+        "max": [
+          88.24999903142411,
+          23.50062721967697,
+          1998.500011697411
+        ],
+        "size": [
+          16.49999806284822,
+          21.500627130270004,
+          7.000023394822165
+        ],
+        "center": [
+          80.0,
+          12.75031365454197,
+          1995.0
+        ],
+        "parts": 33
+      }
+    },
+    {
+      "name": "DailyRankingDisplay",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.DailyRankingDisplay",
+      "source": "Workspace.DailyStrengthRankingBoard",
+      "bounds": {
+        "min": [
+          104.75000096857589,
+          2.000000089406967,
+          1991.499988302589
+        ],
+        "max": [
+          121.24999903142411,
+          23.500626266002655,
+          1998.500011697411
+        ],
+        "size": [
+          16.49999806284822,
+          21.500626176595688,
+          7.000023394822165
+        ],
+        "center": [
+          113.0,
+          12.750313177704811,
+          1995.0
+        ],
+        "parts": 33
+      },
+      "entryDirection": "-Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "finalBounds": {
+        "min": [
+          104.75000096857589,
+          2.000000089406967,
+          1991.499988302589
+        ],
+        "max": [
+          121.24999903142411,
+          23.500626266002655,
+          1998.500011697411
+        ],
+        "size": [
+          16.49999806284822,
+          21.500626176595688,
+          7.000023394822165
+        ],
+        "center": [
+          113.0,
+          12.750313177704811,
+          1995.0
+        ],
+        "parts": 33
+      }
+    },
+    {
+      "name": "Feedback",
+      "count": 1,
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.FeedbackDisplay",
+      "source": "Workspace.Mailboxes.Feedback (current Lobby, original centre X277.48)",
+      "bounds": {
+        "min": [
+          -30.35002883063948,
+          1.9999998807907104,
+          1998.64814892524
+        ],
+        "max": [
+          -27.649969783516376,
+          8.42640179293732,
+          2001.3519032726506
+        ],
+        "size": [
+          2.700059047123105,
+          6.426401912146609,
+          2.703754347410495
+        ],
+        "center": [
+          -28.99999930707793,
+          5.213200836864015,
+          2000.0000260989455
+        ],
+        "parts": 12
+      },
+      "entryDirection": "-Z",
+      "connection": "Display only; no price/effect/product/input/registration",
+      "finalBounds": {
+        "min": [
+          -30.35002883063948,
+          1.9999998807907104,
+          1998.64814892524
+        ],
+        "max": [
+          -27.649969783516376,
+          8.42640179293732,
+          2001.3519032726506
+        ],
+        "size": [
+          2.700059047123105,
+          6.426401912146609,
+          2.703754347410495
+        ],
+        "center": [
+          -28.99999930707793,
+          5.213200836864015,
+          2000.0000260989455
+        ],
+        "parts": 12
+      }
+    }
+  ],
+  "boundaries": [
+    {
+      "path": "Workspace.World2Map.TrainingArea.Borders.WestWall",
+      "bounds": {
+        "min": [
+          -188.76499938964844,
+          -14.0,
+          1752.9300537109375
+        ],
+        "max": [
+          -156.63999938964844,
+          39.375,
+          2038.8299560546875
+        ],
+        "size": [
+          32.125,
+          53.375,
+          285.89990234375
+        ],
+        "center": [
+          -172.70249938964844,
+          12.6875,
+          1895.8800048828125
+        ],
+        "parts": 70
+      }
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.Borders.EastWall",
+      "bounds": {
+        "min": [
+          212.47999572753906,
+          -14.0,
+          1752.9300537109375
+        ],
+        "max": [
+          244.60499572753906,
+          39.375,
+          2038.8299560546875
+        ],
+        "size": [
+          32.125,
+          53.375,
+          285.89990234375
+        ],
+        "center": [
+          228.54249572753906,
+          12.6875,
+          1895.8800048828125
+        ],
+        "parts": 70
+      }
+    }
+  ],
+  "sourceChanges": [],
+  "excluded": [
+    {
+      "name": "Aura",
+      "reason": "No physical Aura facility exists in the current Lobby; inventory menu/effect libraries only."
+    },
+    {
+      "name": "Rebirth",
+      "reason": "Screen menu only; no current Lobby building or stand to reuse."
+    },
+    {
+      "name": "Standalone Shop",
+      "reason": "Shop is a screen-menu entrance. Existing physical RestockShop is already the Merge facility; do not duplicate it as an invented shop."
+    },
+    {
+      "name": "Gift/WinsGift/original Leaderboards",
+      "reason": "These are outside the active GeneratedMap Lobby on the retired purchased map, not current Lobby facilities."
+    }
+  ],
+  "registrationAudit": [
+    {
+      "path": "ServerScriptService.Services.TrainingManager",
+      "sha256": "1229dead1d321cfe6d2ffa458ef3b636fb7c14902f37156869f72c23995b633b",
+      "finding": "Tag TrainingTreadmill plus direct Workspace.Treadmills parent during initialization; CanUse also requires tag and a valid Config.Get result. New clones have no tags, a nested parent, no Area and no configuration name."
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillGuideClient",
+      "sha256": "94161f9d8fa5331ba0ce8ca49f055fbb865e91c5fbf3afe625504e05086184ff",
+      "finding": "Enumerates TrainingTreadmill tags; the cloned models have none."
+    },
+    {
+      "path": "ServerScriptService.Services.TreadmillServer",
+      "sha256": "79e91f139d34b58d33fcb1e416fcff35ab0a1f26b2321e29d74a85b0959a94be",
+      "finding": "Enumerates the direct root Treadmills folder; nested numeric models are outside it."
+    },
+    {
+      "path": "ReplicatedStorage.Modules.Treadmill",
+      "sha256": "1c6aef716e620587ef67a9c1fa44856c4b07f16d79110940c89b8faad50c55b7",
+      "finding": "beneath uses only direct Workspace.Treadmills; event uses the configured root model. No matching World2 root or configured model was added."
+    },
+    {
+      "path": "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New",
+      "sha256": "bb88ed538dae48304ff86ce282ff5873acf6ce1aded222f2ebf7dbb15b25a455",
+      "finding": "Distance anchor uses workspace:FindFirstChild RestockShop. Nested MergeDisplay is not found."
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryCapacityUpgradeClient",
+      "sha256": "b9b3d5710a51832addc9579c83f74308c0ee38828c4436b1cc28c341586ac799",
+      "finding": "Distance anchor uses workspace:FindFirstChild ShopStallTemplate. Nested UpgradesDisplay is not found."
+    },
+    {
+      "path": "ServerScriptService.Services.EggServer",
+      "sha256": "e51f1a1628ca2ed96a47b5b2202b22f09c290b4eabf957acbfca01073ac0a6a0",
+      "finding": "Uses Workspace:FindFirstChild(Egg.FolderName), the original root Eggs. The copy is nested EggDisplays.Visuals and has no input prompts."
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.EggClient",
+      "sha256": "ad471d0180074bc98ed4cad800007a1e335a820ccca7edd70e257231c12f44b4",
+      "finding": "Uses Workspace:WaitForChild(Egg.FolderName), not a recursive search."
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.StandClient",
+      "sha256": "e90bf4d35ac4d9a82c487a98c5b521c11c61c7ea885d292cddcee44df2e9673b",
+      "finding": "Limited entrance lookup is a root FindFirstChild(Config.Entrance); PromptAdded checks parent name and parent.Parent==workspace. Renamed nested copy has no prompt."
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.FeedbackClient",
+      "sha256": "608b95a32a437042069b6c91644118d1a9c0effd8a41630d7150216d4cae7934",
+      "finding": "Matches original Workspace.Mailboxes descendants and Feedback metadata; the nested copy has neither prompt nor Feedback attributes."
+    },
+    {
+      "path": "ServerScriptService.Systems.Controllers.GamePassController",
+      "sha256": "92541a7a6fa6055e679d56c8f4263a718d3ca299c0b75b5865d186052e6c2083",
+      "finding": "TrophyPrompt verifies the original root Workspace.Trophy; the nested renamed copy has no prompt or purchase input."
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+      "sha256": "ff94ec7356f1fd4df7622984bf3983291cabf33b75c891d8a246e72610974c51",
+      "finding": "Enumerates only the original root Config.FolderName PerStepButtons and requires World1. The existing nested World2 displays remain inert."
+    }
+  ],
+  "carpets": {
+    "Gold": [
+      [
+        19.92,
+        35.92,
+        1790,
+        1827.5
+      ],
+      [
+        19.92,
+        194,
+        1827.5,
+        1842.5
+      ],
+      [
+        19.92,
+        35.92,
+        1842.5,
+        1894.0
+      ],
+      [
+        -96.0,
+        -80.0,
+        1878.5,
+        1933.0
+      ],
+      [
+        49.92,
+        65.92,
+        1891.73,
+        1894.0
+      ],
+      [
+        19.92,
+        65.92,
+        1894.0,
+        1897.0
+      ],
+      [
+        19.92,
+        194,
+        1897.0,
+        1913.0
+      ],
+      [
+        19.92,
+        35.92,
+        1913.0,
+        1942.0
+      ],
+      [
+        -138,
+        -29,
+        1933.0,
+        1949.0
+      ],
+      [
+        19.92,
+        194,
+        1942.0,
+        1955.4231
+      ],
+      [
+        -108.0,
+        -80.0,
+        1949.0,
+        1955.4231
+      ],
+      [
+        -138,
+        194,
+        1955.4231,
+        1971.4231
+      ],
+      [
+        -133,
+        190,
+        1971.4231,
+        1986.0
+      ],
+      [
+        19.92,
+        35.92,
+        1986.0,
+        2019.9800033569336
+      ]
+    ],
+    "Red": [
+      [
+        21.42,
+        34.42,
+        1790,
+        1829.0
+      ],
+      [
+        21.42,
+        194,
+        1829.0,
+        1841.0
+      ],
+      [
+        21.42,
+        34.42,
+        1841.0,
+        1895.5
+      ],
+      [
+        -94.5,
+        -81.5,
+        1878.5,
+        1934.5
+      ],
+      [
+        51.42,
+        64.42,
+        1891.73,
+        1895.5
+      ],
+      [
+        21.42,
+        64.42,
+        1895.5,
+        1898.5
+      ],
+      [
+        21.42,
+        194,
+        1898.5,
+        1911.5
+      ],
+      [
+        21.42,
+        34.42,
+        1911.5,
+        1943.5
+      ],
+      [
+        -138,
+        -29,
+        1934.5,
+        1947.5
+      ],
+      [
+        21.42,
+        194,
+        1943.5,
+        1956.5
+      ],
+      [
+        -106.5,
+        -81.5,
+        1947.5,
+        1956.9231
+      ],
+      [
+        21.42,
+        34.42,
+        1956.5,
+        1956.9231
+      ],
+      [
+        -138,
+        194,
+        1956.9231,
+        1969.9231
+      ],
+      [
+        21.42,
+        34.42,
+        1969.9231,
+        1971.5
+      ],
+      [
+        -133,
+        190,
+        1971.5,
+        1984.5
+      ],
+      [
+        21.42,
+        34.42,
+        1984.5,
+        2019.9800033569336
+      ]
+    ]
+  },
+  "floorBefore": {
+    "min": [
+      -64.24999809265137,
+      0.0,
+      1879.8000259399414
+    ],
+    "max": [
+      120.08999824523926,
+      2.0,
+      2019.9800033569336
+    ],
+    "size": [
+      184.33999633789062,
+      2.0,
+      140.1799774169922
+    ],
+    "center": [
+      27.920000076293945,
+      1.0,
+      1949.8900146484375
+    ],
+    "parts": 1
+  },
+  "floorAfter": {
+    "min": [
+      -160.80999565124512,
+      0.0,
+      1767.6000518798828
+    ],
+    "max": [
+      216.649995803833,
+      2.0,
+      2019.9800262451172
+    ],
+    "size": [
+      377.4599914550781,
+      2.0,
+      252.37997436523438
+    ],
+    "center": [
+      27.920000076293945,
+      1.0,
+      1893.7900390625
+    ],
+    "parts": 1
+  },
+  "lanes": [
+    {
+      "fromXZ": [
+        27.92,
+        1790
+      ],
+      "toXZ": [
+        27.92,
+        2019.9800033569336
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        -138,
+        1963.4231
+      ],
+      "toXZ": [
+        194,
+        1963.4231
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        -88,
+        1878.5
+      ],
+      "toXZ": [
+        -88,
+        1963.4231
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        -138,
+        1941
+      ],
+      "toXZ": [
+        -29,
+        1941
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        -100,
+        1941
+      ],
+      "toXZ": [
+        -100,
+        1963.4231
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        -133,
+        1978
+      ],
+      "toXZ": [
+        190,
+        1978
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        27.92,
+        1835
+      ],
+      "toXZ": [
+        194,
+        1835
+      ],
+      "width": 12
+    },
+    {
+      "fromXZ": [
+        27.92,
+        1905
+      ],
+      "toXZ": [
+        194,
+        1905
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        27.92,
+        1950
+      ],
+      "toXZ": [
+        194,
+        1950
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        27.92,
+        1902
+      ],
+      "toXZ": [
+        57.92,
+        1902
+      ],
+      "width": 13
+    },
+    {
+      "fromXZ": [
+        57.92,
+        1891.73
+      ],
+      "toXZ": [
+        57.92,
+        1902
+      ],
+      "width": 13
+    }
+  ],
+  "world1ImageCorrection": {
+    "sourceAlreadyCorrect": true,
+    "savedIconCorrected": true,
+    "image": "rbxassetid://110171141876908"
+  },
+  "outputSha256": "5f0c8b660bc52b9da58b5a30d527edac1b1198a3088cddfa323d88443005baca",
+  "addedInstances": 4140,
+  "removedInstances": 76,
+  "sharedStrings": {
+    "strings": 362,
+    "validIndexes": 210566
+  },
+  "allSourcesUnchanged": true,
+  "world1ChangedObject": "Workspace.PerStepButtons.8.BillboardGui.ItemIcon.Image",
+  "fixedBattleCorridorConnectorSpawnGate": true,
+  "binaryValidation": {
+    "final": {
+      "sha256": "5f0c8b660bc52b9da58b5a30d527edac1b1198a3088cddfa323d88443005baca",
+      "instanceCount": 183680,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 183679,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 183680,
+        "PROP.Ref": 78886,
+        "PROP.Content": 0,
+        "PRNT.Child": 183680,
+        "PRNT.Parent": 183680
+      }
+    },
+    "canonicalizationNoOp": true,
+    "constructionReferentsRenumbered": 75,
+    "constructionReferenceOnlyChunksRepaired": 12
+  },
+  "measuredFinalGeometryMatchesPlan": true,
+  "nativeNumberLabelCorrection": "All twelve reused labels are centered in visible rows with TextWrapped/TextScaled, native font/color/stroke, and world offset measured from the machine upper surface plus 3.5 studs.",
+  "nativeEvidence": "reports/World2LobbyFacilitiesNative_20261017.json",
+  "verification": {
+    "binary": "All surviving original rows roundtrip; dense INST/PRNT/PROP.Ref, UniqueId uniqueness, SharedStrings and reDecode pass; a second canonicalization is a no-op.",
+    "scope": "All original Source strings unchanged; every original object/property outside TrainingArea unchanged except W1 slot8 saved Image. This includes World1 geometry/configuration, held template, BattleCorridor/Stage01..10, connector, Spawn and Gate.",
+    "simulation": "Actual decoded Master and existing purchase/equip/state/Shop/Inventory/save-normalization consumers: 521 assertions; memory adapters only, no players/data/payment. Source remains unchanged after number-only fixes.",
+    "nativeEdit": "Exact final file re-opened in Edit. 12 treadmill models and 8 facility groups; no copied Source/input/tags/product metadata. All 13 inspected ImageLabels IsLoaded=true and fetch Success. Treadmill numbers visible, scaled, wrapped. Twelve floor-only rays hit Y2. Connector top Y2 and carpet top Y2.400014 match lobby.",
+    "notVerified": [
+      "Cloud walking",
+      "physical mounting/collision/navigation with a player",
+      "live purchase/training or data persistence",
+      "all device/camera combinations"
+    ],
+    "noPlaySavePublish": true
+  },
+  "layoutNotes": {
+    "coordinateConvention": "World coordinates in studs. Lobby front/exit is +Z; BattleCorridor remains fixed.",
+    "floorIncrease": [
+      193.12,
+      112.2
+    ],
+    "mainCarpetWidth": 13,
+    "carpetGoldWidth": 16,
+    "treadmillFrontAisleWidths": [
+      12,
+      13,
+      13
+    ],
+    "minimumTreadmillSideClearance": 5.49977,
+    "minimumTreadmillRearBoundaryClearance": 3.954,
+    "standingSpace": "Dedicated front aisles beyond the machine/added entry step bounds; central spine is separate. Eggs face the west frontage; Merge/Upgrades and boards face the opposite frontage.",
+    "dumbbell": "Rigid -90 degree yaw preserves all twelve own-Press UI links, signs, native tiers and pedestals; entry now faces +Z and connects to the center -88 carpet branch through three native red/gold steps.",
+    "floorTop": 2,
+    "redCarpetTop": 2.4,
+    "goldCarpetTop": 2.2,
+    "corridorFloorJoinError": 5e-05,
+    "exterior": "Reused native side/rear wall segments and trees/chocolate decorations follow enlarged perimeter; no global scaling."
+  }
+}

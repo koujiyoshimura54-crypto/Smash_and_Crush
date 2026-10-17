@@ -574,3 +574,13 @@ Supersedes the previous stationary 3D exhibit presentation. World1 reuses all12 
 World2 has twelve copies of the purchased station/stair assembly under World2Map.TrainingArea.DumbbellDisplays, retaining four columns/three tiers. It shows only ItemIcon(84%) and the reused numbered label01..12(12%); price/effect/purchase guidance/Owned/Equipped are hidden. WorldId/StandIndex/ImageName/DisplayImage attributes identify display content independently from products. No ItemId, purchase input, gameplay Script or Shop/Inventory entry is copied.
 
 Native final Edit screenshot/fit/placement evidence is in DEV_STATUS. All24 image URIs are configured;23 load. World1 slot8 image11017141876908 returns404 and does not render. Exact requested ID is retained pending a usable owner asset; do not claim all24 rendered. Other23 load successfully. No local Play or live Cloud/Shop/Inventory operation verified.
+
+## 2026-10-17 - Expanded World2 equipment presentation
+
+The existing twelve Dumbbell stations rotate/move as one authored assembly; each ItemIcon keeps its own Press Adornee, Fit/aspect constraint, image mapping and numbered row. Native red/gold entrance treads meet a13-stud carpet branch. No stationary3D Dumbbells return. World1 station8 now uses the corrected 110171141876908; native final Edit confirms this image and all twelve World2 images are loaded, superseding the earlier 23/24 result for that corrected asset.
+
+Reuse the purchased Treadmill number labels, with visible centered scale coordinates, TextWrapped/TextScaled, original font/color/strokes and a world offset measured above each machine. Show only 01..12. Blank old speed/multiplier/premium/owner/requirement labels and disable copied buttons; retain the equipment artwork and shared Treadmills heading. Belt motion and Training remain unconnected.
+
+Reused normal Egg displays show species names and the shared Eggs sign; Limited Egg retains its name/artwork. Merge/Upgrades booths, Win Boost, ranking-board headings and Feedback retain the purchased appearance. Hide or blank only prices, effects, requirements, saved ranking rows/avatars and inactive inputs. Keep signs/UI artwork visible. No purchase affordance should imply a free or configured offer. There is no new World2 Shop/Inventory product entry.
+
+Native Edit screenshots and IsLoaded observations are recorded separately from exact saved-property checks and memory-only simulations. Cloud walking, physical input, real transactions/training and all-device views remain unverified. Temporary inspection camera/GUI/reference-library visibility is restored; Studio Save/Publish and local Play are not performed.

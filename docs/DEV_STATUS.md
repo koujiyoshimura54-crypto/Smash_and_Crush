@@ -2079,3 +2079,106 @@ Verification:
 Actual final Edit captures: [World1 overview](World1_Dumbbell_2D_Overview.jpg), [World1 detail](World1_Dumbbell_2D_Detail.jpg), [World2 overview](World2_Dumbbell_2D_Overview.jpg), [World2 detail](World2_Dumbbell_2D_Detail.jpg), [World2 floor/path clearance](World2_Dumbbell_2D_Clearance.jpg). No screenshot was synthesized; native UI was temporarily hidden for equipment inspection, then restored. [Native observations](../reports/Dumbbell2DDisplaysNative_20261017.json) distinguish configured IDs and IsLoaded results.
 
 Same `C:\Users\kouji\MergeToForge_CurrentCloud.rbxl` written directly. Output SHA256 `34723f1c55e4656986013776968c9c5cdca83ce49b49aa1c427b302fa68668b1`. No backup, alternate rbxl, migration folder, local Play, game-data mutation, Studio Save or Publish. The initial restricted Studio launch failed before loading; only its disposable crash artifacts were removed. The successful verification sessions opened the same local file in Edit. Restored temporary ScreenGui/camera inspection state and closed only owned PIDs29540/29084 through their exact target windows, selecting the visually verified Japanese Don't Save button. Final native shutdown at12:15:37.183 UTC, verification processes absent, target lock absent and unchanged final rbxl hash verified. Studio released its own lock; none was manually deleted. The pre-existing user Studio1395d9d1-323d-4792-84dc-5194c5a58099 remains connected and untouched. Only task changes are committed; pre-existing documentation/Boss changes and all unrelated untracked work remain unstaged. Normal origin/main push result is reported at handoff.
+
+
+## 2026-10-17 - World2 lobby expansion and inert facility layout (Phase 1.1-1.4)
+
+Completed geometry/equipment presentation only. World2 prices, Strength, multipliers, unlock conditions and all purchase/Training/equip/hatch/Merge/Rebirth/reward/save connections remain **NOT IMPLEMENTED**. Blank values are not configured as zero or free. No new Master, Shop or Inventory product is added.
+
+Repository inspection: actual root is `C:\Users\kouji\Smash_and_Crush\Smash_and_Crush_updated_20260915`, branch main, origin `koujiyoshimura54-crypto/Smash_and_Crush`; starting HEAD/origin c6cebed. Read AGENTS and required current specifications/status. Retain the unrelated documentation/BossChaseService modifications, stash and untracked work. The inspected CurrentCloud input SHA256 is `d2c389d7349c0f705f79872614c727930bd029be04f028026570cfccefc34311`, newer than the previous report. Actual Object/Source is authoritative; no bulk Source replacement occurs.
+
+Measured floor and movement space (studs):
+
+| Measurement | Before | After |
+|---|---:|---:|
+| Floor width X | 184.339996 | 377.459991 |
+| Floor depth Z | 140.179977 | 252.379974 |
+| Floor top Y | 2 | 2 |
+| X bounds | -64.25 .. 120.09 | -160.81 .. 216.65 |
+| Z bounds | 1879.80003 .. 2019.98000 | 1767.60005 .. 2019.98003 |
+| Main red carpet width / gold border width | 13 / 16 | 13 / 16 |
+| Treadmill front cross-aisle widths | Not installed | 12 / 13 / 13 |
+
+The floor gains 193.12 width and 112.2 depth. Keep the BattleCorridor-facing +Z edge, `Workspace.World2Map.LobbyCorridorConnector`, all BattleCorridor Stage01..10 geometry, `TrainingArea.World2LobbySpawn` and `TrainingArea.World1ReturnGate` fixed. Connector floor top Y2 and red top Y2.400014 match the new floor/carpet to floating point precision; no new teleport target is required. The existing 90-stud exit opening stays clear.
+
+Reuse native 48.28-stud rear/exit wall patterns and 56.1-stud side patterns, with original pink material/colors, to extend the perimeter. Move/repeat existing cotton trees and chocolate decoration at authored scale. Do not scale the map/equipment as a whole. Carpet branches use disjoint native red/gold tiles: gold top 2.2, red top 2.4, avoiding coplanar intersection duplicates. The central spine, Spawn area, Gate approach, Dumbbell entrance, Egg frontage, booth/board frontage and all three Treadmill aisles connect.
+
+The old Dumbbell assembly faced +X and was separated from the central path. Rotate the existing complete assembly -90 degrees around its measured center, relocate to X-88/Z1838, and face its entrance +Z. All native tiers, stairs, platforms, sign, twelve station numbers and own-Press UI links move together. Three matching red/gold entrance treads join its first tier to the X-88 carpet branch. Keep all 12 images and Fit/aspect settings, with no new 3D display or duplicate station. This corrects equipment/route alignment rather than offsetting individual images.
+
+Treadmills are grouped east, four columns by three rows, entry+Z. Column centers are X 69/104/139/174; row centers Z 1797/1865/1930. Minimum side clearance 5.49977, rear boundary clearance 3.954; front cross-aisles remain beyond the complete machine/entry-step bounds. The large earlier models03..06 retain belt top around 4.639 and get three native entrance treads; map models retain their authored lower belts. All clones are grounded at Y2, anchored, motionless and CanTouch=false. This verifies dimensions/support and Edit appearance; player mounting/collision is not a Play pass.
+
+Actual donors and installed facilities are below. Prefix `A` means **Workspace.World2Map.TrainingArea**. Dimensions are final visible physical width x depth, including added entrance steps. Full unshortened paths, centers, min/max bounds and donor provenance are in [the final manifest](../reports/World2LobbyFacilities_20261017.json); [the initial actual-object audit](../reports/World2LobbyFacilitiesAudit_20261017.json) is retained.
+
+| Facility | Count | Actual donor | Destination | Width x depth | Entrance | Connection |
+|---|---:|---|---|---:|---|---|
+| Dumbbells | 12 | `A.DumbbellDisplays (reused in place)` | `A.DumbbellDisplays` | 58.44 x 73.22 | +Z | Display only |
+| Normal Eggs | 4 | `Workspace.Map.Spawn.PathToEggs.Stands + Workspace.Map.Spawn.PathToEggs.EggsStand + Workspace.Eggs` | `A.FacilityDisplays.EggDisplays` | 58.50 x 26.00 | +Z | Display only |
+| MergeDisplay | 1 | `Workspace.RestockShop` | `A.FacilityDisplays.MergeDisplay` | 17.31 x 10.11 | -Z | Display only |
+| UpgradesDisplay | 1 | `Workspace.ShopStallTemplate` | `A.FacilityDisplays.UpgradesDisplay` | 22.91 x 17.50 | -Z | Display only |
+| LimitedEggDisplay | 1 | `Workspace.Chill Octopus` | `A.FacilityDisplays.LimitedEggDisplay` | 18.87 x 18.87 | +Z | Display only |
+| WinBoostDisplay | 1 | `Workspace.Trophy` | `A.FacilityDisplays.WinBoostDisplay` | 10.82 x 6.35 | -Z | Display only |
+| TotalRankingDisplay | 1 | `Workspace.TotalStrengthRankingBoard` | `A.FacilityDisplays.TotalRankingDisplay` | 16.50 x 7.00 | -Z | Display only |
+| DailyRankingDisplay | 1 | `Workspace.DailyStrengthRankingBoard` | `A.FacilityDisplays.DailyRankingDisplay` | 16.50 x 7.00 | -Z | Display only |
+| Feedback | 1 | `Workspace.Mailboxes.Feedback (current Lobby, original centre X277.48)` | `A.FacilityDisplays.FeedbackDisplay` | 2.70 x 2.70 | -Z | Display only |
+
+Normal Eggs use the actual active Lobby pedestals/platforms under the old Map parent plus `Workspace.Eggs.Basic/Rare/Legendary/Mythic`; parent naming alone was not used to reject these active donors. The Feedback donor is the actual active Lobby mailbox centered at X277.48, selected among three same-named models. Existing World2 TrainingArea had no corresponding Egg/booth/board/mailbox/Treadmill facilities, so no same-use World2 facility is duplicated. The existing twelve Dumbbells are reused, not recreated. All World1 donor objects remain exact.
+
+Treadmill composition (destination prefix `A.TreadmillDisplays`; every entry is display only):
+
+| Number | Donor | Destination | Final width x depth |
+|---|---|---|---:|
+| 01 | `Read-only PreMerge :: Workspace.World2Treadmill.Treadmill01` | `A.TreadmillDisplays.01` | 15.89 x 23.92 |
+| 02 | `Read-only PreMerge :: Workspace.World2Treadmill.Treadmill02` | `A.TreadmillDisplays.02` | 19.21 x 28.92 |
+| 03 | `Read-only PreMerge :: Workspace.World2Treadmill.Treadmill03` | `A.TreadmillDisplays.03` | 29.50 x 50.33 |
+| 04 | `Read-only PreMerge :: Workspace.World2Treadmill.Treadmill04` | `A.TreadmillDisplays.04` | 29.50 x 50.33 |
+| 05 | `Read-only PreMerge :: Workspace.World2Treadmill.Treadmill05` | `A.TreadmillDisplays.05` | 29.50 x 50.33 |
+| 06 | `Read-only PreMerge :: Workspace.World2Treadmill.Treadmill06` | `A.TreadmillDisplays.06` | 29.50 x 50.33 |
+| 07 | `Workspace.Treadmills.Normal01` | `A.TreadmillDisplays.07` | 9.00 x 14.00 |
+| 08 | `Workspace.Treadmills.Normal02` | `A.TreadmillDisplays.08` | 9.00 x 14.00 |
+| 09 | `Workspace.Treadmills.Iron01` | `A.TreadmillDisplays.09` | 16.08 x 18.52 |
+| 10 | `Workspace.Treadmills.Iron02` | `A.TreadmillDisplays.10` | 16.08 x 18.52 |
+| 11 | `Workspace.Treadmills.Gold01` | `A.TreadmillDisplays.11` | 16.28 x 19.51 |
+| 12 | `Workspace.Treadmills.Diamond01` | `A.TreadmillDisplays.12` | 18.39 x 22.37 |
+
+`Workspace.World2Treadmill` does not exist in the actual CurrentCloud or V2. The six earlier purchased models were found in the existing read-only `C:\Users\kouji\Smash_and_Crush_PreMerge_20261003.rbxl`. Import only their visual descendants with strict class/property schemas, remapped SharedStrings/internal references and fresh UniqueIds; no Source or gameplay config is imported. The six current-map donors above are copied in place; original live `Workspace.Treadmills` is not changed. Both purchase families are used. Reference/V2 files remain unchanged; no alternate rbxl or backup is created.
+
+Not installed: Aura and Rebirth have screen menus/effect libraries but no physical active Lobby facility. Standalone Shop is also a screen menu; the actual RestockShop building already represents Merge, so it is not duplicated as an invented Shop. Gift/WinsGift/old Leaderboards are on the retired purchased map, outside the current active Lobby; the current two ranking boards are used instead. Missing physical donors/designs would be needed for any later new buildings.
+
+Unconnected-facility safeguards:
+
+- Remove copied Source containers, Prompts, ClickDetectors, TouchTransmitters, remotes and forces; disable/hide copied GuiButtons. Clear all copied tags, serialized overrides and gameplay attributes, including ItemId/ProductId/GamePassId/price/effect/unlock metadata. Set only WorldId=2/DisplayOnly and Treadmill StationIndex/VisualFamily. Rename proximity Areas to noncolliding/nonquery DisplayBounds; retain needed authored visual references. No incomplete product rows are added.
+- Preserve native appearance/signs/UI. Normal Eggs show species names; hide Win/price glyphs. Limited Egg keeps its heading/artwork but no Robux price/prompt. Win Boost has a name without multiplier/offer. Ranking boards retain headings/layout but blank saved names/scores/avatars. Treadmills show01..12 with original fonts/colors/strokes; blank all old x100M/3x SPEED/ADMIN/OWNER/premium/requirement text. The native visible label row is centered/scaled/wrapped and positioned 3.5 studs above each measured machine top. In native reload, all twelve labels remain visible/scaled/wrapped.
+- Audit actual Source selection, not just DisplayOnly metadata: TrainingManager initializes only tagged direct `Workspace.Treadmills` children and requires a tag/config in CanUse. TreadmillGuide/UI is tag-driven; old TreadmillServer and Modules.Treadmill use the original root folder/event name. Native final tag membership is exactly the original 7 World1 models.
+- Merge and Upgrades proximity use root `workspace:FindFirstChild("RestockShop")` and `ShopStallTemplate`. Egg Server/Client use only root `Egg.FolderName` (Eggs), while clones are nested EggDisplays.Visuals. Limited StandClient requires a configured root entrance and root-parent Prompt. FeedbackClient requires the original Mailboxes hierarchy/metadata. TrophyPrompt validates original root Trophy. The renamed nested clones cannot match these registrations. No new config entry makes them active. Exact inspected Source paths/hashes and findings are in registrationAudit of the final manifest.
+
+Actual Source changes: **none**. All existing Source strings in CurrentCloud remain exact, including the owner-edited Master whose NORMAL_08 already uses 110171141876908. The one allowed World1 Object change is **Workspace.PerStepButtons.8.BillboardGui.ItemIcon.Image** from obsolete 11017141876908 to **rbxassetid://110171141876908**. Sync only the corresponding current Master mirror and existing test expectation, preserving the owner's indentation. Master is the sole image source for station/Shop/Inventory; all prices, Strength additions and ownership IDs stay unchanged. Slot6 remains W1-5DV2 and slot 5 remains the previous image. Earlier image reports are historical and are not edited.
+
+Changed object roots: **Workspace.World2Map.TrainingArea.Floor**, **Borders**, **Decorations**, **PathToRun**, reused **DumbbellDisplays** and its new EntranceSteps; new **TreadmillDisplays** (01..12 and shared Billboard) and **FacilityDisplays** (eight groups listed above). Paths in this sentence are all relative to Workspace.World2Map.TrainingArea. Original source donors, World1 geometry/purchase/equip/save, held Dumbbells/shared template, Pet/Egg effects/prices, wall/Boss/rewards and all unrelated Source/UI/data remain unchanged.
+
+Verification and limits:
+
+- **Saved file/static:** property codecs reproduce original column bytes before edits; surviving original rows compare after encode/reDecode, including duplicate-name Parts and remapped references. Every original Source remains exact. Every original property outside TrainingArea remains exact except the allowed World1 station8 image. Added 4140/removed 76 rows include transient unsafe cloned descendants and ten replaced old carpet parts; net 4064 additional Instances. Existing repaired dense-referent canonicalization relocates 75 out-of-range referents across 12 reference-only chunks. Final 183680 Instances/162 classes, IDs 0..183679, valid 78886 PROP.Ref values, complete acyclic PRNT, zero duplicate UniqueIds, SharedString 362/210566 valid indexes. Another canonicalization is byte-identical. Source syntax for the actual Master compiles. Four independent visual-row/rotation/carpet regressions and seven referent regressions pass.
+- **Memory-only simulation:** existing twelve-item suite uses actual decoded final Master/purchase/equip/stand/Shop/Inventory/persistence-normalization Sources; 521 assertions pass. Purchase->auto-equip, owned free equip, equipped no-op, occupancy latch, state/green follow-up, World2 rejection and image/order/price/effect consistency are preserved in simulation. No real player/payment/data save or walking occurs. No gameplay Source changes follow these checks.
+- **Native Studio Edit:** exact final same-file reopen succeeds (owned PID 26300, Studio 969d0249-e7eb-494a-82b0-8103042dcdc2, local PlaceId/UniverseId 0). Native check finds twelve Treadmill models, eight other facility groups, zero copied Source/input/tags/unsafe attributes or active buttons, and zero conveyor velocity/touch. Twelve floor-only rays hit Y2. Connector floor/carpet heights match. The twelve World2 ItemIcons and corrected World1 station8 all report AssetFetchStatus.Success **and IsLoaded=true** after rendering. Each Dumbbell Adornee is its own Press. ShoesModels remains empty and the shared template retains seven Parts.
+- **Actual rendered views:** inspect overhead and player-height equipment fronts for floor/wall/carpet continuity, entrances, image presentation and numeric offers. Original captures below are native 396x222 JPEGs; use the native property/mapping observations for exact per-station checks. Screenshots do not prove physical traversal.
+- **Unverified:** Cloud walking, mounting/collision/navigation with a player, physical interaction, live purchase/Training/save/rejoin, all devices and every camera angle. No local Play, Cloud Save or Publish is performed. Static guards and memory adapters are not described as live operation passes. This task does not expand into game-balance testing.
+
+Actual confirmation images:
+
+- [Aerial whole lobby](World2_Lobby_Final_Aerial.jpg)
+- [Angled whole lobby](World2_Lobby_Final_Overview.jpg)
+- [Dumbbell front/entrance](World2_Dumbbell_Final_Front.jpg)
+- [Earlier Treadmills03/04 front](World2_Treadmill_Previous_Final_Front.jpg)
+- [Earlier Treadmills01/02 front](World2_Treadmill_Previous01_02_Final_Front.jpg)
+- [Earlier Treadmills05/06 front](World2_Treadmill_Middle_Final_Front.jpg)
+- [Purchased-map Treadmills front](World2_Treadmill_Map_Final_Front.jpg)
+- [Four normal Eggs front](World2_Eggs_Final_Front.jpg)
+- [Merge/Upgrades front](World2_Booths_Final_Front.jpg)
+- [Ranking boards/Win Boost front](World2_Ranking_Boost_Final_Front.jpg)
+- [Limited Egg front](World2_LimitedEgg_Final_Front.jpg)
+- [Feedback front](World2_Feedback_Final_Front.jpg)
+- [Return Gate/path connection](World2_Gate_Final_Connection.jpg)
+
+[Final native observations](../reports/World2LobbyFacilitiesNative_20261017.json) distinguish configured URIs, actual loaded images, model/label state and floor rays. Camera, ScreenGui and temporary overhead reference-library visibility were restored. Closed only owned audit/verification Studios without saving; user Studio 1395d9d1-323d-4792-84dc-5194c5a58099 remains untouched. Final target lock is absent and the file hash is unchanged after native inspection.
+
+Same **C:\Users\kouji\MergeToForge_CurrentCloud.rbxl** written directly; no Studio Save/Publish and no local Play. Final SHA256 **5f0c8b660bc52b9da58b5a30d527edac1b1198a3088cddfa323d88443005baca**. Related helpers: tools/world2_lobby_facilities.py, tools/rbxl_geometry.py and repaired tools/rbxl_rows.py; existing referent validation is retained. Only this task's Source mirror/test/helper/report/image/documentation changes are committed and normally pushed to origin/main; unrelated changes stay unstaged. Commit/push result is reported at handoff.

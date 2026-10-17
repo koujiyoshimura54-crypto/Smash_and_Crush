@@ -947,3 +947,10 @@
 - Reused World1's twelve ItemIcons, enlarged/repositioned their purchased billboard rows and removed only the twelve stationary3D exhibits. Updated six Master images; slot6 is W1-5DV2 and slot5 remains unchanged. Prices/effects/IDs, held template and existing purchase/equip/save logic are preserved.
 - Actual World2 had no corresponding facilities. Added twelve purchased station/stair copies in one isolated display-only group, numbered01..12, with image metadata and no ItemId/input/product/purchase or Shop/Inventory connection.
 - Same-file write/reDecode/dense INST/Ref/PRNT/SharedString/UniqueId0 and native Studio reopen pass;521 purchase/state/UI and417 presentation/empty-display simulated assertions pass. Five native Edit screenshots and clearance measurements recorded. All24 IDs configured;23 images load; World1 slot8 specified ID returns404. Live Cloud/operations remain unverified; no local Play/Save/Publish.
+
+
+# 2026-10-17 - World2 lobby expansion and visual facilities (Phase 1.1-1.4)
+
+- Expanded the actual lobby floor 184.34 x 140.18 -> 377.46 x 252.38 studs, repeated native pink perimeter/decor, connected red/gold facility approaches and kept BattleCorridor/Spawn/Gate fixed. Reoriented the existing twelve 2D Dumbbells; installed twelve inert Treadmills from both purchased families and reused current physical Egg/Merge/Upgrades/Win Boost/ranking/Feedback facilities.
+- World2 numerical design and all gameplay/transaction integration remain NOT IMPLEMENTED; no free/zero offers or copied purchase/training identities. Actual Source strings are unchanged. Corrected only saved World1 station8 Image to 110171141876908; current Master was already correct, mirrored accordingly.
+- Same-file binary/reference/SharedString/UniqueId/reDecode checks, scoped offline simulations and final native Edit inspection pass. Twelve World2 images plus the corrected World1 image load. Native screenshots and explicit unverified Cloud/input/Play boundaries are in DEV_STATUS and reports/World2LobbyFacilities*_20261017.json. No local Play or Studio Save/Publish.
