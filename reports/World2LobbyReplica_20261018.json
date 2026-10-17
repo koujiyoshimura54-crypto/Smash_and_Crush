@@ -1,0 +1,1453 @@
+{
+  "inputPath": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "448b3f16a929abcbc4db17b8d59fec570821fcbfcd2d874a29ddda4b4031aeb9",
+  "referencePath": "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl",
+  "referenceSha256": "b613d2c61617e004290bfbb2d153c3272739add6f7ef28b8a307d5560b25abee",
+  "design": "Latest owner direction: first duplicate World1 at scale 1.0",
+  "horizontalScale": 1.0,
+  "world1Anchor": [
+    287.79998779296875,
+    4.0,
+    85.0
+  ],
+  "world2Anchor": [
+    27.920000076293945,
+    2.0,
+    2019.97998046875
+  ],
+  "translation": [
+    -259.8799877166748,
+    -2.0,
+    1934.97998046875
+  ],
+  "world1Floor": {
+    "min": [
+      156.0,
+      -4.0,
+      -64.0
+    ],
+    "max": [
+      393.0,
+      4.0,
+      85.0
+    ],
+    "size": [
+      237.0,
+      8.0,
+      149.0
+    ],
+    "center": [
+      274.5,
+      0.0,
+      10.5
+    ],
+    "parts": 1
+  },
+  "world2FloorBefore": {
+    "min": [
+      -64.24999809265137,
+      0.0,
+      1879.8000259399414
+    ],
+    "max": [
+      120.08999824523926,
+      2.0,
+      2019.9800033569336
+    ],
+    "size": [
+      184.33999633789062,
+      2.0,
+      140.1799774169922
+    ],
+    "center": [
+      27.920000076293945,
+      1.0,
+      1949.8900146484375
+    ],
+    "parts": 1
+  },
+  "equipment": [
+    {
+      "name": "Dumbbells",
+      "count": 12,
+      "sources": [
+        "Workspace.Ramp",
+        "Workspace.PerStepButtons"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.DumbbellDisplays",
+      "world1Bounds": {
+        "min": [
+          183.95758390426636,
+          -0.9125690460205078,
+          -17.241518020629883
+        ],
+        "max": [
+          249.38057613372803,
+          15.122884035110474,
+          41.20339408224396
+        ],
+        "size": [
+          65.42299222946167,
+          16.03545308113098,
+          58.44491210287384
+        ],
+        "center": [
+          216.6690800189972,
+          7.105157494544983,
+          11.980938030807039
+        ],
+        "parts": 96
+      },
+      "world2Bounds": {
+        "min": [
+          -75.92240571975708,
+          -2.912569046020508,
+          1917.7384815216064
+        ],
+        "max": [
+          -10.499411582946777,
+          13.122884035110474,
+          1976.1834241420584
+        ],
+        "size": [
+          65.4229941368103,
+          16.03545308113098,
+          58.44494262045191
+        ],
+        "center": [
+          -43.21090865135193,
+          5.105157494544983,
+          1946.9609528318324
+        ],
+        "parts": 96
+      },
+      "entranceDirection": "+X",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        -71.13090777397156,
+        -73.01906196919296
+      ],
+      "world2AnchorOffset": [
+        -71.13090872764587,
+        -73.0190276369176
+      ],
+      "finalBounds": {
+        "min": [
+          -75.92240571975708,
+          -2.912569046020508,
+          1917.7384815216064
+        ],
+        "max": [
+          -10.499411582946777,
+          13.122884035110474,
+          1976.1834241420584
+        ],
+        "size": [
+          65.4229941368103,
+          16.03545308113098,
+          58.44494262045191
+        ],
+        "center": [
+          -43.21090865135193,
+          5.105157494544983,
+          1946.9609528318324
+        ],
+        "parts": 96
+      }
+    },
+    {
+      "name": "Normal Eggs",
+      "count": 4,
+      "sources": [
+        "Workspace.Map.Spawn.PathToEggs.Stands",
+        "Workspace.Map.Spawn.PathToEggs.EggsStand",
+        "Workspace.Eggs"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays",
+      "world1Bounds": {
+        "min": [
+          329.824462890625,
+          3.983009785413742,
+          -15.556922912597656
+        ],
+        "max": [
+          355.824462890625,
+          17.61032772064209,
+          42.943077087402344
+        ],
+        "size": [
+          26.0,
+          13.627317935228348,
+          58.5
+        ],
+        "center": [
+          342.824462890625,
+          10.796668753027916,
+          13.693077087402344
+        ],
+        "parts": 34
+      },
+      "world2Bounds": {
+        "min": [
+          69.94447326660156,
+          1.983009785413742,
+          1919.423095703125
+        ],
+        "max": [
+          95.94447326660156,
+          15.61032772064209,
+          1977.923095703125
+        ],
+        "size": [
+          26.0,
+          13.627317935228348,
+          58.5
+        ],
+        "center": [
+          82.94447326660156,
+          8.796668753027916,
+          1948.673095703125
+        ],
+        "parts": 34
+      },
+      "entranceDirection": "-X",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        55.02447509765625,
+        -71.30692291259766
+      ],
+      "world2AnchorOffset": [
+        55.02447319030762,
+        -71.306884765625
+      ],
+      "finalBounds": {
+        "min": [
+          69.94447326660156,
+          1.983009785413742,
+          1919.423095703125
+        ],
+        "max": [
+          95.94447326660156,
+          15.61032772064209,
+          1977.923095703125
+        ],
+        "size": [
+          26.0,
+          13.627317935228348,
+          58.5
+        ],
+        "center": [
+          82.94447326660156,
+          8.796668753027916,
+          1948.673095703125
+        ],
+        "parts": 34
+      }
+    },
+    {
+      "name": "Merge",
+      "count": 1,
+      "sources": [
+        "Workspace.RestockShop"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.FacilityDisplays.MergeDisplay",
+      "world1Bounds": {
+        "min": [
+          252.90574531121126,
+          4.000000089406967,
+          -15.536316365627156
+        ],
+        "max": [
+          271.4520626691018,
+          18.999998569488525,
+          3.915489523828529
+        ],
+        "size": [
+          18.54631735789053,
+          14.999998480081558,
+          19.451805889455684
+        ],
+        "center": [
+          262.1789039901565,
+          11.499999329447746,
+          -5.810413420899314
+        ],
+        "parts": 35
+      },
+      "world2Bounds": {
+        "min": [
+          -6.974242405463545,
+          2.000000089406967,
+          1919.443622141453
+        ],
+        "max": [
+          11.572074952426977,
+          16.999998569488525,
+          1938.8954757146244
+        ],
+        "size": [
+          18.546317357890523,
+          14.999998480081558,
+          19.45185357317132
+        ],
+        "center": [
+          2.298916273481716,
+          9.499999329447746,
+          1929.1695489280387
+        ],
+        "parts": 35
+      },
+      "entranceDirection": "preserved",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        -25.621083802812223,
+        -90.81041342089931
+      ],
+      "world2AnchorOffset": [
+        -25.62108380281223,
+        -90.8104315407113
+      ],
+      "finalBounds": {
+        "min": [
+          -6.974242405463545,
+          2.000000089406967,
+          1919.443622141453
+        ],
+        "max": [
+          11.572074952426977,
+          16.999998569488525,
+          1938.8954757146244
+        ],
+        "size": [
+          18.546317357890523,
+          14.999998480081558,
+          19.45185357317132
+        ],
+        "center": [
+          2.298916273481716,
+          9.499999329447746,
+          1929.1695489280387
+        ],
+        "parts": 35
+      }
+    },
+    {
+      "name": "Upgrades",
+      "count": 1,
+      "sources": [
+        "Workspace.ShopStallTemplate"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.FacilityDisplays.UpgradesDisplay",
+      "world1Bounds": {
+        "min": [
+          252.03245344758034,
+          3.9800262451171875,
+          24.3453933888462
+        ],
+        "max": [
+          275.0134185254574,
+          18.480026245117188,
+          50.0606555044651
+        ],
+        "size": [
+          22.980965077877045,
+          14.5,
+          25.715262115618902
+        ],
+        "center": [
+          263.52293598651886,
+          11.230026245117188,
+          37.203024446655654
+        ],
+        "parts": 96
+      },
+      "world2Bounds": {
+        "min": [
+          -7.847534269094467,
+          1.9800262451171875,
+          1959.3254043751742
+        ],
+        "max": [
+          15.133430808782578,
+          16.480026245117188,
+          1985.0406575798988
+        ],
+        "size": [
+          22.980965077877045,
+          14.5,
+          25.715253204724604
+        ],
+        "center": [
+          3.642948269844055,
+          9.230026245117188,
+          1972.1830309775364
+        ],
+        "parts": 96
+      },
+      "entranceDirection": "preserved",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        -24.27705180644989,
+        -47.796975553344346
+      ],
+      "world2AnchorOffset": [
+        -24.27705180644989,
+        -47.79694949121358
+      ],
+      "finalBounds": {
+        "min": [
+          -7.847534269094467,
+          1.9800262451171875,
+          1959.3254043751742
+        ],
+        "max": [
+          15.133430808782578,
+          16.480026245117188,
+          1985.0406575798988
+        ],
+        "size": [
+          22.980965077877045,
+          14.5,
+          25.715253204724604
+        ],
+        "center": [
+          3.642948269844055,
+          9.230026245117188,
+          1972.1830309775364
+        ],
+        "parts": 96
+      }
+    },
+    {
+      "name": "Limited Egg",
+      "count": 1,
+      "sources": [
+        "Workspace.Chill Octopus"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.FacilityDisplays.LimitedEggDisplay",
+      "world1Bounds": {
+        "min": [
+          305.5669529635601,
+          4.000000476837158,
+          30.567013924327597
+        ],
+        "max": [
+          324.43298600128367,
+          13.330508708953857,
+          49.43304711082865
+        ],
+        "size": [
+          18.866033037723582,
+          9.3305082321167,
+          18.866033186501056
+        ],
+        "center": [
+          314.9999694824219,
+          8.665254592895508,
+          40.000030517578125
+        ],
+        "parts": 1
+      },
+      "world2Bounds": {
+        "min": [
+          45.686963339536646,
+          2.000000476837158,
+          1965.5469638754994
+        ],
+        "max": [
+          64.55299637726023,
+          11.330508708953857,
+          1984.4129970620006
+        ],
+        "size": [
+          18.866033037723582,
+          9.3305082321167,
+          18.866033186501227
+        ],
+        "center": [
+          55.11997985839844,
+          6.665254592895508,
+          1974.97998046875
+        ],
+        "parts": 1
+      },
+      "entranceDirection": "preserved",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        27.199981689453125,
+        -44.999969482421875
+      ],
+      "world2AnchorOffset": [
+        27.199979782104492,
+        -45.0
+      ],
+      "finalBounds": {
+        "min": [
+          45.686963339536646,
+          2.000000476837158,
+          1965.5469638754994
+        ],
+        "max": [
+          64.55299637726023,
+          11.330508708953857,
+          1984.4129970620006
+        ],
+        "size": [
+          18.866033037723582,
+          9.3305082321167,
+          18.866033186501227
+        ],
+        "center": [
+          55.11997985839844,
+          6.665254592895508,
+          1974.97998046875
+        ],
+        "parts": 1
+      }
+    },
+    {
+      "name": "Win Boost",
+      "count": 1,
+      "sources": [
+        "Workspace.Trophy"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.FacilityDisplays.WinBoostDisplay",
+      "world1Bounds": {
+        "min": [
+          253.78499305569648,
+          3.9999997513299412,
+          72.97142623616037
+        ],
+        "max": [
+          264.6007216790756,
+          14.12384742293679,
+          79.32386184977713
+        ],
+        "size": [
+          10.81572862337913,
+          10.123847671606848,
+          6.352435613616763
+        ],
+        "center": [
+          259.19285736738607,
+          9.061923587133364,
+          76.14764404296875
+        ],
+        "parts": 29
+      },
+      "world2Bounds": {
+        "min": [
+          -6.094994660978335,
+          1.999999751329941,
+          2007.9514372224885
+        ],
+        "max": [
+          4.720733962400816,
+          12.12384742293679,
+          2014.303811800949
+        ],
+        "size": [
+          10.815728623379151,
+          10.123847671606848,
+          6.352374578460513
+        ],
+        "center": [
+          -0.6871303492887595,
+          7.061923587133365,
+          2011.1276245117188
+        ],
+        "parts": 29
+      },
+      "entranceDirection": "preserved",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        -28.60713042558268,
+        -8.85235595703125
+      ],
+      "world2AnchorOffset": [
+        -28.607130425582703,
+        -8.85235595703125
+      ],
+      "finalBounds": {
+        "min": [
+          -6.094994660978335,
+          1.999999751329941,
+          2007.9514372224885
+        ],
+        "max": [
+          4.720733962400816,
+          12.12384742293679,
+          2014.303811800949
+        ],
+        "size": [
+          10.815728623379151,
+          10.123847671606848,
+          6.352374578460513
+        ],
+        "center": [
+          -0.6871303492887595,
+          7.061923587133365,
+          2011.1276245117188
+        ],
+        "parts": 29
+      }
+    },
+    {
+      "name": "Total ranking",
+      "count": 1,
+      "sources": [
+        "Workspace.TotalStrengthRankingBoard"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.FacilityDisplays.TotalRankingDisplay",
+      "world1Bounds": {
+        "min": [
+          338.0293588787321,
+          4.200190156698227,
+          66.34152577817476
+        ],
+        "max": [
+          354.5293569415804,
+          25.70081776380539,
+          73.34156443178618
+        ],
+        "size": [
+          16.49999806284825,
+          21.500627607107162,
+          7.000038653611426
+        ],
+        "center": [
+          346.27935791015625,
+          14.950503960251808,
+          69.84154510498047
+        ],
+        "parts": 33
+      },
+      "world2Bounds": {
+        "min": [
+          78.1493692547087,
+          2.000000089406967,
+          2001.321521505714
+        ],
+        "max": [
+          94.64936731755692,
+          23.50062721967697,
+          2008.321544900536
+        ],
+        "size": [
+          16.49999806284822,
+          21.500627130270004,
+          7.000023394822165
+        ],
+        "center": [
+          86.39936828613281,
+          12.75031365454197,
+          2004.821533203125
+        ],
+        "parts": 33
+      },
+      "entranceDirection": "preserved",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        58.4793701171875,
+        -15.158454895019531
+      ],
+      "world2AnchorOffset": [
+        58.47936820983887,
+        -15.158447265625
+      ],
+      "verticalOnlyAdjustment": -0.20019015669822693,
+      "finalBounds": {
+        "min": [
+          78.1493692547087,
+          2.000000089406967,
+          2001.321521505714
+        ],
+        "max": [
+          94.64936731755692,
+          23.50062721967697,
+          2008.321544900536
+        ],
+        "size": [
+          16.49999806284822,
+          21.500627130270004,
+          7.000023394822165
+        ],
+        "center": [
+          86.39936828613281,
+          12.75031365454197,
+          2004.821533203125
+        ],
+        "parts": 33
+      }
+    },
+    {
+      "name": "Daily ranking",
+      "count": 1,
+      "sources": [
+        "Workspace.DailyStrengthRankingBoard"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.FacilityDisplays.DailyRankingDisplay",
+      "world1Bounds": {
+        "min": [
+          318.42794896662275,
+          4.2001892030239105,
+          66.34152577817476
+        ],
+        "max": [
+          334.927947029471,
+          25.700815856456757,
+          73.34156443178618
+        ],
+        "size": [
+          16.49999806284825,
+          21.500626653432846,
+          7.000038653611426
+        ],
+        "center": [
+          326.6779479980469,
+          14.950502529740334,
+          69.84154510498047
+        ],
+        "parts": 33
+      },
+      "world2Bounds": {
+        "min": [
+          58.54795934259933,
+          2.000000089406967,
+          2001.321521505714
+        ],
+        "max": [
+          75.04795740544755,
+          23.500626266002655,
+          2008.321544900536
+        ],
+        "size": [
+          16.49999806284822,
+          21.500626176595688,
+          7.000023394822165
+        ],
+        "center": [
+          66.79795837402344,
+          12.750313177704811,
+          2004.821533203125
+        ],
+        "parts": 33
+      },
+      "entranceDirection": "preserved",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        38.877960205078125,
+        -15.158454895019531
+      ],
+      "world2AnchorOffset": [
+        38.87795829772949,
+        -15.158447265625
+      ],
+      "verticalOnlyAdjustment": -0.20018920302391052,
+      "finalBounds": {
+        "min": [
+          58.54795934259933,
+          2.000000089406967,
+          2001.321521505714
+        ],
+        "max": [
+          75.04795740544755,
+          23.500626266002655,
+          2008.321544900536
+        ],
+        "size": [
+          16.49999806284822,
+          21.500626176595688,
+          7.000023394822165
+        ],
+        "center": [
+          66.79795837402344,
+          12.750313177704811,
+          2004.821533203125
+        ],
+        "parts": 33
+      }
+    },
+    {
+      "name": "Feedback",
+      "count": 1,
+      "sources": [
+        "Workspace.Mailboxes.Feedback"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.FacilityDisplays.FeedbackDisplay",
+      "world1Bounds": {
+        "min": [
+          276.08922211540545,
+          3.9999998807907104,
+          -4.889638923688459
+        ],
+        "max": [
+          278.78928116252854,
+          10.42640179293732,
+          -2.1859096755762426
+        ],
+        "size": [
+          2.7000590471230907,
+          6.426401912146609,
+          2.703729248112216
+        ],
+        "center": [
+          277.439251638967,
+          7.213200836864015,
+          -3.5377742996323507
+        ],
+        "parts": 12
+      },
+      "world2Bounds": {
+        "min": [
+          16.209234398730636,
+          1.9999998807907104,
+          1930.090287597115
+        ],
+        "max": [
+          18.90929344585374,
+          8.42640179293732,
+          1932.7940419445256
+        ],
+        "size": [
+          2.700059047123105,
+          6.426401912146609,
+          2.703754347410495
+        ],
+        "center": [
+          17.55926392229219,
+          5.213200836864015,
+          1931.4421647708205
+        ],
+        "parts": 12
+      },
+      "entranceDirection": "preserved",
+      "connection": "Display only; no configured value or gameplay input",
+      "world1AnchorOffset": [
+        -10.360736154001756,
+        -88.53777429963235
+      ],
+      "world2AnchorOffset": [
+        -10.360736154001756,
+        -88.53781569792955
+      ],
+      "finalBounds": {
+        "min": [
+          16.209234398730636,
+          1.9999998807907104,
+          1930.090287597115
+        ],
+        "max": [
+          18.90929344585374,
+          8.42640179293732,
+          1932.7940419445256
+        ],
+        "size": [
+          2.700059047123105,
+          6.426401912146609,
+          2.703754347410495
+        ],
+        "center": [
+          17.55926392229219,
+          5.213200836864015,
+          1931.4421647708205
+        ],
+        "parts": 12
+      }
+    },
+    {
+      "name": "Treadmill 01",
+      "count": 1,
+      "sources": [
+        "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill01"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01",
+      "referenceBounds": {
+        "min": [
+          -133.4825560450554,
+          0.0,
+          41.78824008324561
+        ],
+        "max": [
+          -117.59432536363602,
+          12.300751862926703,
+          65.71174335479736
+        ],
+        "size": [
+          15.888230681419373,
+          12.300751862926703,
+          23.923503271551752
+        ],
+        "center": [
+          -125.5384407043457,
+          6.150375931463351,
+          53.74999171902149
+        ],
+        "parts": 21
+      },
+      "world2Bounds": {
+        "min": [
+          -25.401159942150116,
+          2.0,
+          1876.3799454055113
+        ],
+        "max": [
+          -9.512929260730743,
+          14.300751862926703,
+          1900.303448677063
+        ],
+        "size": [
+          15.888230681419373,
+          12.300751862926703,
+          23.92350327155168
+        ],
+        "center": [
+          -17.45704460144043,
+          8.150375931463351,
+          1888.3416970412873
+        ],
+        "parts": 21
+      },
+      "entranceDirection": "+Z",
+      "sourceYawCorrection": 0,
+      "connection": "Display only",
+      "offerCategory": "Undecided",
+      "finalBounds": {
+        "min": [
+          -25.401159942150116,
+          2.0,
+          1876.3799454055113
+        ],
+        "max": [
+          -9.512929260730743,
+          14.300751862926703,
+          1900.303448677063
+        ],
+        "size": [
+          15.888230681419373,
+          12.300751862926703,
+          23.92350327155168
+        ],
+        "center": [
+          -17.45704460144043,
+          8.150375931463351,
+          1888.3416970412873
+        ],
+        "parts": 21
+      }
+    },
+    {
+      "name": "Treadmill 02",
+      "count": 1,
+      "sources": [
+        "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill02"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02",
+      "referenceBounds": {
+        "min": [
+          -57.159008741378784,
+          -1.1920928955078125e-07,
+          59.28823757171631
+        ],
+        "max": [
+          -37.95014500617981,
+          14.871620367020938,
+          88.21174870671031
+        ],
+        "size": [
+          19.208863735198975,
+          14.871620486230228,
+          28.923511134994
+        ],
+        "center": [
+          -47.5545768737793,
+          7.435810123905824,
+          73.7499931392133
+        ],
+        "parts": 21
+      },
+      "world2Bounds": {
+        "min": [
+          -3.229008913040161,
+          1.9999998807907104,
+          1876.3799413567663
+        ],
+        "max": [
+          15.979854345321655,
+          16.871620367020938,
+          1905.3034753799438
+        ],
+        "size": [
+          19.208863258361816,
+          14.871620486230228,
+          28.92353402317758
+        ],
+        "center": [
+          6.375422716140747,
+          9.435810123905824,
+          1890.841708368355
+        ],
+        "parts": 21
+      },
+      "entranceDirection": "+Z",
+      "sourceYawCorrection": 180,
+      "connection": "Display only",
+      "offerCategory": "Undecided",
+      "finalBounds": {
+        "min": [
+          -3.229008913040161,
+          1.9999998807907104,
+          1876.3799413567663
+        ],
+        "max": [
+          15.979854345321655,
+          16.871620367020938,
+          1905.3034753799438
+        ],
+        "size": [
+          19.208863258361816,
+          14.871620486230228,
+          28.92353402317758
+        ],
+        "center": [
+          6.375422716140747,
+          9.435810123905824,
+          1890.841708368355
+        ],
+        "parts": 21
+      }
+    },
+    {
+      "name": "Treadmill 03",
+      "count": 1,
+      "sources": [
+        "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill03"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03",
+      "referenceBounds": {
+        "min": [
+          -48.45067219905718,
+          6.67572021484375e-06,
+          -7.1497762032694965
+        ],
+        "max": [
+          -18.95043818890258,
+          21.445562399300776,
+          35.381898283958435
+        ],
+        "size": [
+          29.5002340101546,
+          21.44555572358056,
+          42.53167448722793
+        ],
+        "center": [
+          -33.70055519397988,
+          10.722784537510496,
+          14.11606104034447
+        ],
+        "parts": 53
+      },
+      "world2Bounds": {
+        "min": [
+          22.263774822427195,
+          2.0,
+          1876.3800299338154
+        ],
+        "max": [
+          51.764008832581794,
+          23.445554769906245,
+          1918.9117139577866
+        ],
+        "size": [
+          29.5002340101546,
+          21.445554769906245,
+          42.53168402397114
+        ],
+        "center": [
+          37.013891827504494,
+          12.722777384953122,
+          1897.645871945801
+        ],
+        "parts": 53
+      },
+      "entranceDirection": "+Z",
+      "sourceYawCorrection": 0,
+      "connection": "Display only",
+      "offerCategory": "Undecided",
+      "finalBounds": {
+        "min": [
+          22.263774822427195,
+          2.0,
+          1876.3800299338154
+        ],
+        "max": [
+          51.764008832581794,
+          23.445554769906245,
+          1918.9117139577866
+        ],
+        "size": [
+          29.5002340101546,
+          21.445554769906245,
+          42.53168402397114
+        ],
+        "center": [
+          37.013891827504494,
+          12.722777384953122,
+          1897.645871945801
+        ],
+        "parts": 53
+      }
+    },
+    {
+      "name": "Treadmill 04",
+      "count": 1,
+      "sources": [
+        "C:\\Users\\kouji\\Smash_and_Crush_PreMerge_20261003.rbxl :: Workspace.World2Treadmill.Treadmill04"
+      ],
+      "destination": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04",
+      "referenceBounds": {
+        "min": [
+          -97.80393986873491,
+          0.0,
+          -4.0132806130595355
+        ],
+        "max": [
+          -68.30370204388305,
+          21.44555095520898,
+          38.51839196681976
+        ],
+        "size": [
+          29.500237824851865,
+          21.44555095520898,
+          42.5316725798793
+        ],
+        "center": [
+          -83.05382095630898,
+          10.72277547760449,
+          17.252555676880114
+        ],
+        "parts": 53
+      },
+      "world2Bounds": {
+        "min": [
+          58.047927807046335,
+          2.0,
+          1876.3800299338154
+        ],
+        "max": [
+          87.5481656318982,
+          23.44555095520898,
+          1918.9117139577866
+        ],
+        "size": [
+          29.500237824851865,
+          21.44555095520898,
+          42.53168402397114
+        ],
+        "center": [
+          72.79804671947227,
+          12.72277547760449,
+          1897.645871945801
+        ],
+        "parts": 53
+      },
+      "entranceDirection": "+Z",
+      "sourceYawCorrection": 0,
+      "connection": "Display only",
+      "offerCategory": "Robux",
+      "finalBounds": {
+        "min": [
+          58.047927807046335,
+          2.0,
+          1876.3800299338154
+        ],
+        "max": [
+          87.5481656318982,
+          23.44555095520898,
+          1918.9117139577866
+        ],
+        "size": [
+          29.500237824851865,
+          21.44555095520898,
+          42.53168402397114
+        ],
+        "center": [
+          72.79804671947227,
+          12.72277547760449,
+          1897.645871945801
+        ],
+        "parts": 53
+      }
+    }
+  ],
+  "routes": [
+    {
+      "source": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.PathToRun",
+      "destination": "Workspace.World2Map.TrainingArea.PathToRun.PathToRun",
+      "exactTranslation": true
+    },
+    {
+      "source": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+      "destination": "Workspace.World2Map.TrainingArea.PathToRun.Upper",
+      "exactTranslation": true
+    },
+    {
+      "source": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Lower",
+      "destination": "Workspace.World2Map.TrainingArea.PathToRun.Lower",
+      "exactTranslation": true
+    },
+    {
+      "source": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Path",
+      "destination": "Workspace.World2Map.TrainingArea.PathToRun.WestBranch",
+      "exactTranslation": true
+    },
+    {
+      "source": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Path",
+      "destination": "Workspace.World2Map.TrainingArea.PathToRun.EastBranch",
+      "exactTranslation": true
+    },
+    {
+      "source": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills",
+      "destination": "Workspace.World2Map.TrainingArea.PathToTreadmills",
+      "exactTranslation": false,
+      "exception": "Only existing treadmill pad depth and connecting stem length adapt to the four approved machine depths; branch graph and section axis unchanged."
+    }
+  ],
+  "boundaryChanges": [
+    {
+      "path": "Workspace.World2Map.TrainingArea.Borders.WestWall",
+      "operation": "Translate intact pink segments; no part scaling"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.Borders.EastWall",
+      "operation": "Translate intact pink segments; no part scaling"
+    }
+  ],
+  "comparisons": {
+    "exactTranslatedSourceParts": 383,
+    "maxPositionError": 6.103515625e-05,
+    "unchangedSourcePartSizesAndRotations": true,
+    "commonHorizontalScale": 1.0,
+    "permittedExceptions": [
+      "Four approved treadmills within original one-row section; model02 entry rotation",
+      "Treadmill pad depth and stem length",
+      "Ranking-board vertical grounding only"
+    ]
+  },
+  "imageMapping": [
+    {
+      "index": 1,
+      "name": "W2-1D",
+      "uri": "rbxassetid://117636801345125",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.Press"
+    },
+    {
+      "index": 2,
+      "name": "W2-2D",
+      "uri": "rbxassetid://87392597068250",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.Press"
+    },
+    {
+      "index": 3,
+      "name": "W2-3D",
+      "uri": "rbxassetid://90484814439233",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.Press"
+    },
+    {
+      "index": 4,
+      "name": "W2-4D",
+      "uri": "rbxassetid://92409856077185",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.Press"
+    },
+    {
+      "index": 5,
+      "name": "W2-5D",
+      "uri": "rbxassetid://76660708269544",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.Press"
+    },
+    {
+      "index": 6,
+      "name": "W2-6D",
+      "uri": "rbxassetid://73514550426804",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.Press"
+    },
+    {
+      "index": 7,
+      "name": "W2-7D",
+      "uri": "rbxassetid://86006626767728",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.Press"
+    },
+    {
+      "index": 8,
+      "name": "W2-8D",
+      "uri": "rbxassetid://101543601215487",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.Press"
+    },
+    {
+      "index": 9,
+      "name": "W2-9D",
+      "uri": "rbxassetid://70465860935084",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.Press"
+    },
+    {
+      "index": 10,
+      "name": "W2-10D",
+      "uri": "rbxassetid://89190858658364",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.Press"
+    },
+    {
+      "index": 11,
+      "name": "W2-11D",
+      "uri": "rbxassetid://135716155094439",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.Press"
+    },
+    {
+      "index": 12,
+      "name": "W2-12D",
+      "uri": "rbxassetid://116813512043021",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.ItemIcon",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.Press"
+    }
+  ],
+  "world2FloorAfter": {
+    "min": [
+      -103.8799877166748,
+      0.0,
+      1870.97998046875
+    ],
+    "max": [
+      133.1200122833252,
+      2.0,
+      2019.97998046875
+    ],
+    "size": [
+      237.0,
+      2.0,
+      149.0
+    ],
+    "center": [
+      14.620012283325195,
+      1.0,
+      1945.47998046875
+    ],
+    "parts": 1
+  },
+  "treadmillSection": {
+    "world1Bounds": {
+      "min": [
+        228.19490814208984,
+        3.988009311258793,
+        -56.70000457763672
+      ],
+      "max": [
+        353.71207427978516,
+        4.400014594197273,
+        -23.70000457763672
+      ],
+      "size": [
+        125.51716613769531,
+        0.4120052829384804,
+        33.0
+      ],
+      "center": [
+        290.9534912109375,
+        4.194011952728033,
+        -40.20000457763672
+      ],
+      "parts": 2
+    },
+    "count": 4,
+    "sequence": [
+      "01",
+      "02",
+      "03",
+      "04"
+    ],
+    "direction": "+X",
+    "entranceDirection": "+Z",
+    "equalSideGaps": 6.2839199772141,
+    "rearLineInWorld1": -58.6,
+    "policy": "01-03 conditions undecided; 04 Robux category only, without price/product/multiplier"
+  },
+  "travel": {
+    "gate": "Workspace.World2Map.TrainingArea.World1ReturnGate",
+    "gateReference": "Workspace.World2Gate",
+    "gatePivot": [
+      -22.27998161315918,
+      2.0,
+      2011.079978942871
+    ],
+    "spawn": "Workspace.World2Map.TrainingArea.World2LobbySpawn",
+    "spawnReference": "Workspace.GeneratedMap.TrainingArea.SpawnLocation",
+    "spawnPosition": [
+      27.981096267700195,
+      2.5,
+      1947.9799718856812
+    ],
+    "sameInstancesAndAttributes": true,
+    "existingStageFacingServiceUnchanged": true
+  },
+  "outputSha256": "cf195c7ff1d7445b7c92f68d454a19fc6409bd61b0fd2e0d991c74b1beddd170",
+  "binaryValidation": {
+    "before": {
+      "sha256": "5c15ce7e20df72c9532acee4a7dd6c85afc46a9799f4fc0b1a4fec102e35c394",
+      "instanceCount": 181671,
+      "classCount": 161,
+      "minimumId": 0,
+      "maximumId": 181746,
+      "outOfBoundsCount": 76,
+      "missingInRangeCount": 76,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 181671,
+        "PROP.Ref": 78220,
+        "PROP.Content": 0,
+        "PRNT.Child": 181671,
+        "PRNT.Parent": 181671
+      }
+    },
+    "after": {
+      "sha256": "cf195c7ff1d7445b7c92f68d454a19fc6409bd61b0fd2e0d991c74b1beddd170",
+      "instanceCount": 181671,
+      "classCount": 161,
+      "minimumId": 0,
+      "maximumId": 181670,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 181671,
+        "PROP.Ref": 78220,
+        "PROP.Content": 0,
+        "PRNT.Child": 181671,
+        "PRNT.Parent": 181671
+      }
+    },
+    "renumberedInstances": 76,
+    "modifiedChunks": 14,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "sharedStrings": {
+    "strings": 362,
+    "validIndexes": 207919
+  },
+  "allExistingSourcesUnchanged": true,
+  "allWorld1ObjectsUnchanged": true,
+  "battleCorridorUnchanged": true,
+  "addedInstances": 2283,
+  "removedInstances": 76,
+  "writtenToSameInputFile": true
+}

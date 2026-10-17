@@ -1,0 +1,4320 @@
+{
+  "ServerScriptService.Services.MultiplierServer": [
+    {
+      "text": "local Data = require(ReplicatedStorage.Modules.Data).server",
+      "line": 7
+    },
+    {
+      "text": "",
+      "line": 8
+    },
+    {
+      "text": "local FOLDER_NAME = \"PerStepButtons\"",
+      "line": 9
+    },
+    {
+      "text": "local PRESS_NAME = \"Press\"",
+      "line": 10
+    },
+    {
+      "text": "local BOARD_NAME = \"BillboardGui\"",
+      "line": 11
+    },
+    {
+      "text": "local AMOUNT_NAME = \"Amount\"",
+      "line": 12
+    },
+    {
+      "text": "",
+      "line": 35
+    },
+    {
+      "text": "local function setPair(root: Instance, name: string, text: string)",
+      "line": 36
+    },
+    {
+      "text": "\tsetText(root:FindFirstChild(name), text)",
+      "line": 37
+    },
+    {
+      "text": "\tsetText(root:FindFirstChild(name .. SHADOW_SUFFIX), text)",
+      "line": 38
+    },
+    {
+      "text": "end",
+      "line": 39
+    },
+    {
+      "text": "",
+      "line": 40
+    },
+    {
+      "text": "local function isInside(part: BasePart, position: Vector3): boolean",
+      "line": 41
+    },
+    {
+      "text": "",
+      "line": 50
+    },
+    {
+      "text": "local function stamp(model: Model, index: number)",
+      "line": 51
+    },
+    {
+      "text": " local board = model:FindFirstChild(BOARD_NAME)",
+      "line": 52
+    },
+    {
+      "text": " if not board then return end",
+      "line": 53
+    },
+    {
+      "text": " local master = require(ReplicatedStorage.Config.DumbbellItemMaster)",
+      "line": 54
+    },
+    {
+      "text": " local item = index >= 1 and index <= 7 and master.Get(string.format(\"NORMAL_%02d\", index))",
+      "line": 55
+    },
+    {
+      "text": " local amount = board:FindFirstChild(AMOUNT_NAME)",
+      "line": 56
+    },
+    {
+      "text": " if amount then",
+      "line": 57
+    },
+    {
+      "text": "  setPair(amount, MAIN_NAME, item and tostring(item.PriceWin) or \"\")",
+      "line": 58
+    },
+    {
+      "text": "  local icon = amount:FindFirstChild(\"Icon\")",
+      "line": 59
+    },
+    {
+      "text": "  if icon and icon:IsA(\"ImageLabel\") then",
+      "line": 60
+    },
+    {
+      "text": "   icon.Image = game:GetService(\"StarterGui\").StrengthGui.HUD.WinAmount.Inside.Icon.Image",
+      "line": 61
+    },
+    {
+      "text": "   icon.Visible = item ~= nil and item ~= false",
+      "line": 62
+    },
+    {
+      "text": "",
+      "line": 117
+    },
+    {
+      "text": "\t\tlocal character = player.Character",
+      "line": 118
+    },
+    {
+      "text": "\t\tlocal root = character and character:FindFirstChild(ROOT_NAME)",
+      "line": 119
+    },
+    {
+      "text": "\t\tif not (root and root:IsA(\"BasePart\")) then continue end",
+      "line": 120
+    },
+    {
+      "text": "",
+      "line": 121
+    },
+    {
+      "text": "\t\tlocal humanoid = character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 122
+    },
+    {
+      "text": "\t\tif not humanoid then continue end",
+      "line": 123
+    },
+    {
+      "text": "\t\tif humanoid.Health <= 0 then continue end",
+      "line": 124
+    },
+    {
+      "text": "",
+      "line": 125
+    },
+    {
+      "text": "",
+      "line": 134
+    },
+    {
+      "text": "function MultiplierServer.init()",
+      "line": 135
+    },
+    {
+      "text": "\tlocal folder = workspace:FindFirstChild(FOLDER_NAME)",
+      "line": 136
+    },
+    {
+      "text": "\tif not folder then",
+      "line": 137
+    },
+    {
+      "text": "\t\twarn(`[MultiplierServer] could not find {workspace:GetFullName()}.{FOLDER_NAME}`)",
+      "line": 138
+    },
+    {
+      "text": "\t\treturn",
+      "line": 139
+    },
+    {
+      "text": "\tend",
+      "line": 140
+    },
+    {
+      "text": "",
+      "line": 141
+    },
+    {
+      "text": "\tfor _, model in ipairs(folder:GetChildren()) do",
+      "line": 142
+    },
+    {
+      "text": "\t\tif not model:IsA(\"Model\") then continue end",
+      "line": 143
+    },
+    {
+      "text": "",
+      "line": 144
+    },
+    {
+      "text": "\t\tlocal index = tonumber(model.Name)",
+      "line": 145
+    },
+    {
+      "text": "\t\tstamp(model, index)",
+      "line": 151
+    },
+    {
+      "text": "",
+      "line": 152
+    },
+    {
+      "text": "\t\tlocal pad = model:FindFirstChild(PRESS_NAME)",
+      "line": 153
+    },
+    {
+      "text": "\t\tif not (pad and pad:IsA(\"BasePart\")) then",
+      "line": 154
+    },
+    {
+      "text": "\t\t\twarn(`[MultiplierServer] could not find {model:GetFullName()}.{PRESS_NAME}`)",
+      "line": 155
+    },
+    {
+      "text": "\t\t\tcontinue",
+      "line": 156
+    }
+  ],
+  "StarterPlayer.StarterPlayerScripts.Services.CheapClient": [
+    {
+      "text": "local PromptService=game:GetService(\"ProximityPromptService\")",
+      "line": 4
+    },
+    {
+      "text": "local Marketplace=game:GetService(\"MarketplaceService\")",
+      "line": 5
+    },
+    {
+      "text": "local Config=require(RS.Config:WaitForChild(\"WorldPassConfig\"))",
+      "line": 6
+    },
+    {
+      "text": "local Prices=require(RS.Modules:WaitForChild(\"MarketplacePrice\"))",
+      "line": 7
+    },
+    {
+      "text": "local player=Players.LocalPlayer",
+      "line": 8
+    },
+    {
+      "text": "local remote=RS.Remotes:WaitForChild(\"World1DoubleWinPrompt\")",
+      "line": 9
+    },
+    {
+      "text": "local M={}",
+      "line": 10
+    },
+    {
+      "text": "local started=false",
+      "line": 11
+    },
+    {
+      "text": "local asking=false",
+      "line": 12
+    },
+    {
+      "text": "local renderVersion=0",
+      "line": 13
+    },
+    {
+      "text": "local function equipment()",
+      "line": 14
+    },
+    {
+      "text": " local model=workspace:FindFirstChild(\"Trophy\")",
+      "line": 15
+    },
+    {
+      "text": " if not model or not model:IsA(\"Model\") then return end",
+      "line": 16
+    },
+    {
+      "text": " local buy=model:FindFirstChild(\"Buy\")",
+      "line": 17
+    },
+    {
+      "text": " local prompt=buy and buy:FindFirstChildWhichIsA(\"ProximityPrompt\")",
+      "line": 18
+    },
+    {
+      "text": " return model,buy,prompt",
+      "line": 19
+    },
+    {
+      "text": "end",
+      "line": 20
+    },
+    {
+      "text": "local function refresh()",
+      "line": 21
+    },
+    {
+      "text": " prompt.ObjectText=owned and \"\" or \"Buy\"",
+      "line": 33
+    },
+    {
+      "text": " prompt.Enabled=world==\"World1\" and verified and passId~=nil and not busy",
+      "line": 34
+    },
+    {
+      "text": " local board=model:FindFirstChild(\"BillboardGui\")",
+      "line": 35
+    },
+    {
+      "text": " if not board then return end",
+      "line": 36
+    },
+    {
+      "text": " board.Adornee=model:FindFirstChild(\"PartMain\")",
+      "line": 37
+    },
+    {
+      "text": " local label=board:FindFirstChild(\"Text\")",
+      "line": 38
+    },
+    {
+      "text": " local price=board:FindFirstChild(\"Price\")",
+      "line": 39
+    },
+    {
+      "text": " if label and label:IsA(\"TextLabel\") then label.Text=title end",
+      "line": 40
+    },
+    {
+      "text": " if not price or not price:IsA(\"TextLabel\") then return end",
+      "line": 41
+    },
+    {
+      "text": " price.Text=owned and \"\" or \"...\"",
+      "line": 42
+    }
+  ],
+  "ServerScriptService.Systems.Controllers.StageProgressController": [
+    {
+      "text": "",
+      "line": 6
+    },
+    {
+      "text": "local function tryInit(m)",
+      "line": 7
+    },
+    {
+      "text": " if initializing or current==m or m~=W:FindFirstChild(\"GeneratedMap\") then return false end",
+      "line": 8
+    },
+    {
+      "text": " local bc=m:FindFirstChild(\"BattleCorridor\")",
+      "line": 9
+    },
+    {
+      "text": " local stage10=bc and bc:FindFirstChild(\"Stage10\")",
+      "line": 10
+    },
+    {
+      "text": " if not stage10 then return false end",
+      "line": 11
+    },
+    {
+      "text": " initializing=true",
+      "line": 12
+    },
+    {
+      "text": " local ok,err=pcall(function() E.Initialize(m) end)",
+      "line": 13
+    },
+    {
+      "text": " initializing=false",
+      "line": 14
+    },
+    {
+      "text": " if ok then",
+      "line": 15
+    },
+    {
+      "text": "  local world2=W:FindFirstChild(\"World2Map\")",
+      "line": 16
+    },
+    {
+      "text": "  if world2 then E.ForWorld(2).Initialize(world2) end",
+      "line": 17
+    },
+    {
+      "text": "  current=m",
+      "line": 18
+    },
+    {
+      "text": "  return true",
+      "line": 19
+    },
+    {
+      "text": "task.spawn(function()",
+      "line": 31
+    },
+    {
+      "text": " while not current do",
+      "line": 32
+    },
+    {
+      "text": "  local m=W:FindFirstChild(\"GeneratedMap\")",
+      "line": 33
+    },
+    {
+      "text": "  if m then tryInit(m) end",
+      "line": 34
+    },
+    {
+      "text": "  task.wait(0.25)",
+      "line": 35
+    },
+    {
+      "text": " end",
+      "line": 36
+    },
+    {
+      "text": "do",
+      "line": 51
+    },
+    {
+      "text": " local RS=game:GetService(\"ReplicatedStorage\")",
+      "line": 52
+    },
+    {
+      "text": " local Config=require(RS:WaitForChild(\"Config\"):WaitForChild(\"WorldGateConfig\"))",
+      "line": 53
+    },
+    {
+      "text": " local Badges=require(game.ServerScriptService.Services:WaitForChild(\"BadgeAwardService\"))",
+      "line": 54
+    },
+    {
+      "text": " local remote=RS:WaitForChild(\"Remotes\"):WaitForChild(\"WorldTravelRequest\")",
+      "line": 55
+    },
+    {
+      "text": " local travelBusy=setmetatable({}, {__mode=\"k\"})",
+      "line": 56
+    },
+    {
+      "text": "",
+      "line": 57
+    },
+    {
+      "text": " local function insideTrigger(trigger,root)",
+      "line": 58
+    },
+    {
+      "text": "   local highest=player:GetAttribute(\"HighestUnlockedWorld\")",
+      "line": 68
+    },
+    {
+      "text": "   if typeof(highest)~=\"number\" or highest<Config.RequiredWorld or player:GetAttribute(\"CurrentWorld\")==2 then return end",
+      "line": 69
+    },
+    {
+      "text": "   local gate=W:FindFirstChild(Config.GateName)",
+      "line": 70
+    },
+    {
+      "text": "   local trigger=gate and gate:FindFirstChild(\"WorldGateTrigger\")",
+      "line": 71
+    },
+    {
+      "text": "   local world2=W:FindFirstChild(\"World2Map\")",
+      "line": 72
+    },
+    {
+      "text": "   local training=world2 and world2:FindFirstChild(\"TrainingArea\")",
+      "line": 73
+    },
+    {
+      "text": "   return trigger,training and training:FindFirstChild(\"World2LobbySpawn\"),2",
+      "line": 74
+    },
+    {
+      "text": "  end",
+      "line": 75
+    },
+    {
+      "text": "  if action==\"ReturnWorld1\" then",
+      "line": 76
+    },
+    {
+      "text": "   if player:GetAttribute(\"CurrentWorld\")~=2 then return end",
+      "line": 77
+    },
+    {
+      "text": "   local world2=W:FindFirstChild(\"World2Map\")",
+      "line": 78
+    },
+    {
+      "text": "   local training2=world2 and world2:FindFirstChild(\"TrainingArea\")",
+      "line": 79
+    },
+    {
+      "text": "   local gate=training2 and training2:FindFirstChild(\"World1ReturnGate\")",
+      "line": 80
+    },
+    {
+      "text": "   local trigger=gate and gate:FindFirstChild(\"WorldGateTrigger\")",
+      "line": 81
+    },
+    {
+      "text": "   local world1=W:FindFirstChild(\"GeneratedMap\")",
+      "line": 82
+    },
+    {
+      "text": "   local training1=world1 and world1:FindFirstChild(\"TrainingArea\")",
+      "line": 83
+    },
+    {
+      "text": "   return trigger,training1 and training1:FindFirstChild(\"SpawnLocation\"),1",
+      "line": 84
+    },
+    {
+      "text": "  end",
+      "line": 85
+    },
+    {
+      "text": " end",
+      "line": 86
+    },
+    {
+      "text": "",
+      "line": 87
+    },
+    {
+      "text": "  local ok,err=pcall(function()",
+      "line": 91
+    },
+    {
+      "text": "   local character=player.Character",
+      "line": 92
+    },
+    {
+      "text": "   local root=character and character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 93
+    },
+    {
+      "text": "   local humanoid=character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 94
+    },
+    {
+      "text": "   if not root or not humanoid or humanoid.Health<=0 then return end",
+      "line": 95
+    },
+    {
+      "text": "   local trigger,spawn,targetWorld=route(action,player)",
+      "line": 96
+    },
+    {
+      "text": "   if not trigger or not trigger:IsA(\"BasePart\") or not spawn or not spawn:IsA(\"BasePart\") then return end",
+      "line": 97
+    },
+    {
+      "text": "   if not insideTrigger(trigger,root) then return end",
+      "line": 98
+    },
+    {
+      "text": "   character:PivotTo(arrivalCFrame(spawn,humanoid,root))",
+      "line": 99
+    },
+    {
+      "text": "   for _,part in character:GetDescendants() do",
+      "line": 100
+    },
+    {
+      "text": "    if part:IsA(\"BasePart\") then part.AssemblyLinearVelocity=Vector3.zero;part.AssemblyAngularVelocity=Vector3.zero end",
+      "line": 101
+    },
+    {
+      "text": "   end",
+      "line": 102
+    },
+    {
+      "text": "   local previousWorld=player:GetAttribute(\"CurrentWorld\")==2 and 2 or 1",
+      "line": 103
+    }
+  ],
+  "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New": [
+    {
+      "text": " local function clone(source,name,parent)",
+      "line": 37
+    },
+    {
+      "text": "  local x=source:Clone();x.Name=name",
+      "line": 38
+    },
+    {
+      "text": "  for _,d in x:GetDescendants() do",
+      "line": 39
+    },
+    {
+      "text": "   if d:IsA(\"LuaSourceContainer\") then d:Destroy()",
+      "line": 40
+    },
+    {
+      "text": "   elseif d:IsA(\"GuiObject\") then d.AutoLocalize=false end",
+      "line": 41
+    },
+    {
+      "text": "  end",
+      "line": 42
+    },
+    {
+      "text": " local function layer(x,z)",
+      "line": 50
+    },
+    {
+      "text": "  if x:IsA(\"GuiObject\") then x.ZIndex=z end",
+      "line": 51
+    },
+    {
+      "text": "  for _,d in x:GetDescendants() do",
+      "line": 52
+    },
+    {
+      "text": "   if d:IsA(\"GuiObject\") then",
+      "line": 53
+    },
+    {
+      "text": "    d.ZIndex=z+(d:IsA(\"TextLabel\") and 3 or d.Name==\"StudPattern\" and 1 or 2)",
+      "line": 54
+    },
+    {
+      "text": "   end",
+      "line": 55
+    },
+    {
+      "text": " end",
+      "line": 57
+    },
+    {
+      "text": " local function clearLayout(x)",
+      "line": 58
+    },
+    {
+      "text": "  for _,d in x:GetChildren() do",
+      "line": 59
+    },
+    {
+      "text": "   if d:IsA(\"UIGridStyleLayout\") or d:IsA(\"UIAspectRatioConstraint\") or d:IsA(\"UISizeConstraint\") or d:IsA(\"UIScale\") or d:IsA(\"UIPadding\") then d:Destroy() end",
+      "line": 60
+    },
+    {
+      "text": "  end",
+      "line": 61
+    },
+    {
+      "text": " end",
+      "line": 62
+    },
+    {
+      "text": " local shopSource=gui:WaitForChild(\"ShopPanel\")",
+      "line": 63
+    },
+    {
+      "text": " local buttonSource=shopSource.MainScrollingFrame.Holder.Card01_SecretPack.Owned",
+      "line": 64
+    },
+    {
+      "text": " local labelSource=shopSource.Top.ShopText1",
+      "line": 65
+    },
+    {
+      "text": " local panelSource=ctx.PurchasedInventory.Parent.Parent.RestockShop.Main.Background",
+      "line": 66
+    },
+    {
+      "text": " shop.Visible=false;shop.ClipsDescendants=false;shop.ZIndex=210",
+      "line": 68
+    },
+    {
+      "text": " shop.BackgroundColor3=Color3.fromRGB(10,24,32);shop.BackgroundTransparency=.12",
+      "line": 69
+    },
+    {
+      "text": " if not shop:FindFirstChildOfClass(\"UICorner\") then panelSource.UICorner:Clone().Parent=shop end",
+      "line": 70
+    },
+    {
+      "text": " shop:FindFirstChildOfClass(\"UICorner\").CornerRadius=UDim.new(0,20)",
+      "line": 71
+    },
+    {
+      "text": " clearLayout(shop)",
+      "line": 72
+    },
+    {
+      "text": " for _,child in shop:GetChildren() do",
+      "line": 73
+    },
+    {
+      "text": "  if child:IsA(\"GuiObject\") and child.Name~=\"Top\" and child.Name~=\"MainScrollingFrame\" then child:Destroy() end",
+      "line": 74
+    },
+    {
+      "text": " end",
+      "line": 75
+    },
+    {
+      "text": " shop:SetAttribute(\"ReferenceDesignSize\",Vector2.new(1372,823))",
+      "line": 76
+    },
+    {
+      "text": " local scale=Instance.new(\"UIScale\");scale.Name=\"MergeFit\";scale.Parent=shop",
+      "line": 78
+    },
+    {
+      "text": " local body=shop.MainScrollingFrame",
+      "line": 79
+    },
+    {
+      "text": " for _,child in body:GetChildren() do child:Destroy() end",
+      "line": 80
+    },
+    {
+      "text": " body.BackgroundTransparency=1;body.CanvasSize=UDim2.new();body.AutomaticCanvasSize=Enum.AutomaticSize.None",
+      "line": 81
+    },
+    {
+      "text": " body.ScrollingEnabled=false;body.ScrollBarThickness=0;body.ClipsDescendants=false;body.ZIndex=211",
+      "line": 82
+    },
+    {
+      "text": " local top=shop.Top;clearLayout(top);layer(top,220)",
+      "line": 83
+    },
+    {
+      "text": " if not top:FindFirstChildOfClass(\"UICorner\") then panelSource.UICorner:Clone().Parent=top end",
+      "line": 84
+    },
+    {
+      "text": " top:FindFirstChildOfClass(\"UICorner\").CornerRadius=UDim.new(0,18)",
+      "line": 85
+    },
+    {
+      "text": " top.UIGradient.Color=ColorSequence.new(Color3.fromRGB(255,208,0),Color3.fromRGB(255,245,0))",
+      "line": 86
+    },
+    {
+      "text": " top.StudPattern.TileSize=UDim2.fromOffset(180,180)",
+      "line": 87
+    },
+    {
+      "text": " -- Bold face already used by the purchased HatchClient result labels (TEXT_FONT).",
+      "line": 88
+    },
+    {
+      "text": " local function panel(name,parent)",
+      "line": 104
+    },
+    {
+      "text": "  local x=clone(panelSource,name,parent);clearLayout(x)",
+      "line": 105
+    },
+    {
+      "text": "  for _,d in x:GetChildren() do if d:IsA(\"GuiObject\") then d:Destroy() end end",
+      "line": 106
+    },
+    {
+      "text": "  x.Visible=true;x.BackgroundColor3=Color3.fromRGB(13,28,38);x.BackgroundTransparency=.24",
+      "line": 107
+    },
+    {
+      "text": "  x.UICorner.CornerRadius=UDim.new(0,18)",
+      "line": 108
+    },
+    {
+      "text": "  x.ClipsDescendants=false;x.ZIndex=214",
+      "line": 109
+    },
+    {
+      "text": "  local stroke=x:FindFirstChildOfClass(\"UIStroke\")",
+      "line": 110
+    },
+    {
+      "text": "  if stroke then",
+      "line": 111
+    },
+    {
+      "text": "   stroke.Color=Color3.fromRGB(71,112,135);stroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize",
+      "line": 112
+    },
+    {
+      "text": "   stroke.Thickness=2;stroke.Transparency=.2",
+      "line": 113
+    },
+    {
+      "text": "  x.PriceTag.Text=value;x.PriceTag.TextColor3=Color3.new(1,1,1)",
+      "line": 120
+    },
+    {
+      "text": "  x.PriceTag.FontFace=purchasedBold;x.PriceTag.TextWrapped=true;x.PriceTag.TextScaled=true",
+      "line": 121
+    },
+    {
+      "text": "  for _,s in x.PriceTag:GetChildren() do if s:IsA(\"UIStroke\") then s.Color=Color3.new(0,0,0);s.Thickness=.07 end end",
+      "line": 122
+    },
+    {
+      "text": "  x.StudPattern.TileSize=UDim2.fromOffset(180,180)",
+      "line": 123
+    },
+    {
+      "text": "  x.UICorner.CornerRadius=UDim.new(0,14)",
+      "line": 124
+    },
+    {
+      "text": "  x.PriceTag.TextXAlignment=Enum.TextXAlignment.Center",
+      "line": 125
+    },
+    {
+      "text": " local listTitle=text(\"ListTitle\",body,\"Your Items\");listTitle.TextXAlignment=Enum.TextXAlignment.Left",
+      "line": 137
+    },
+    {
+      "text": " local list=clone(ctx.PurchasedInventory.Items,\"Materials\",body);clearLayout(list)",
+      "line": 138
+    },
+    {
+      "text": " for _,d in list:GetChildren() do if d:IsA(\"GuiObject\") then d:Destroy() end end",
+      "line": 139
+    },
+    {
+      "text": " list.BackgroundTransparency=1;list.Visible=true;list.ZIndex=220",
+      "line": 140
+    },
+    {
+      "text": " list.ClipsDescendants=true;list.ScrollingEnabled=true;list.ScrollingDirection=Enum.ScrollingDirection.Y",
+      "line": 141
+    },
+    {
+      "text": " list.AutomaticCanvasSize=Enum.AutomaticSize.None;list.CanvasSize=UDim2.new();list.ScrollBarThickness=10",
+      "line": 142
+    },
+    {
+      "text": " local resultHint=text(\"ResultHint\",result,\"\");resultHint.TextWrapped=true",
+      "line": 146
+    },
+    {
+      "text": " local resultItems=clone(ctx.PurchasedInventory.Items,\"ResultItems\",result);clearLayout(resultItems)",
+      "line": 147
+    },
+    {
+      "text": " for _,d in resultItems:GetChildren() do if d:IsA(\"GuiObject\") then d:Destroy() end end",
+      "line": 148
+    },
+    {
+      "text": " resultItems.BackgroundTransparency=1;resultItems.ScrollBarThickness=6;resultItems.ScrollingDirection=Enum.ScrollingDirection.Y",
+      "line": 149
+    },
+    {
+      "text": " resultItems.AutomaticCanvasSize=Enum.AutomaticSize.None;resultItems.ScrollingEnabled=true;resultItems.ClipsDescendants=true;resultItems.ZIndex=222",
+      "line": 150
+    },
+    {
+      "text": " local drop=panel(\"DropArea\",body)",
+      "line": 151
+    },
+    {
+      "text": " local dropStroke=drop:FindFirstChildOfClass(\"UIStroke\")",
+      "line": 152
+    },
+    {
+      "text": " if dropStroke then dropStroke.Thickness=4;dropStroke.Transparency=0;dropStroke.Enabled=false end",
+      "line": 153
+    },
+    {
+      "text": " -- Dashed outline: resize repeated copies of the purchased rounded Stroke surface.",
+      "line": 154
+    },
+    {
+      "text": " -- No drawn/imported texture or replacement artwork.",
+      "line": 155
+    },
+    {
+      "text": "  if not d then",
+      "line": 159
+    },
+    {
+      "text": "   d=clone(RS.Assets.Templates.PetInventory.Stroke,\"Dash\"..index,drop)",
+      "line": 160
+    },
+    {
+      "text": "   for _,c in d:GetChildren() do if not c:IsA(\"UICorner\") then c:Destroy() end end",
+      "line": 161
+    },
+    {
+      "text": "   d.UICorner.CornerRadius=UDim.new(1,0);d.ZIndex=216;d.Visible=true;d.Active=false",
+      "line": 162
+    },
+    {
+      "text": "   dashes[index]=d",
+      "line": 163
+    },
+    {
+      "text": "  end",
+      "line": 164
+    },
+    {
+      "text": "  clearLayout(ghost);ghost.AnchorPoint=Vector2.new(.5,.5);ghost.Size=UDim2.fromOffset(cell,cell+(tab==\"Item\" and itemStarBand or 0))",
+      "line": 277
+    },
+    {
+      "text": "  layer(ghost,280);ghost.Rotation=-8;ghost.Active=false",
+      "line": 278
+    },
+    {
+      "text": "  for _,d in ghost:GetDescendants() do",
+      "line": 279
+    },
+    {
+      "text": "   if d:IsA(\"GuiButton\") then d.Visible=false;d.Interactable=false end",
+      "line": 280
+    },
+    {
+      "text": "   if d.Name==\"Checkmark\" or d.Name==\"Title\" or d.Name==\"StackCount\" then d.Visible=false end",
+      "line": 281
+    },
+    {
+      "text": "  end",
+      "line": 282
+    },
+    {
+      "text": "  -- Explicit image order retains the material-only Sibling -> Global correction.",
+      "line": 283
+    },
+    {
+      "text": "  ghost.Main.ZIndex=282;ghost.Main.Icon.ZIndex=284",
+      "line": 284
+    },
+    {
+      "text": "  local stars=ghost:FindFirstChild(\"RarityStars\")",
+      "line": 285
+    },
+    {
+      "text": "  if stars then layer(stars,286) end",
+      "line": 286
+    },
+    {
+      "text": "  drag.Ghost=ghost;drag.Faded={}",
+      "line": 287
+    },
+    {
+      "text": "  dropTitle.Visible=false;dropHint.Visible=false",
+      "line": 288
+    },
+    {
+      "text": "  for _,d in tile:GetDescendants() do",
+      "line": 289
+    },
+    {
+      "text": "   if d:IsA(\"GuiObject\") then",
+      "line": 290
+    },
+    {
+      "text": "    local values={BackgroundTransparency=d.BackgroundTransparency}",
+      "line": 291
+    },
+    {
+      "text": "    if d:IsA(\"ImageLabel\") then values.ImageTransparency=d.ImageTransparency;d.ImageTransparency=math.max(.65,d.ImageTransparency) end",
+      "line": 292
+    },
+    {
+      "text": "  tile.Button.Text=\"\";tile.Button.AutoButtonColor=false",
+      "line": 377
+    },
+    {
+      "text": "  tile:SetAttribute(\"MaterialName\",entry.Name)",
+      "line": 378
+    },
+    {
+      "text": "  if not tile.Main:FindFirstChild(\"StudPattern\") then",
+      "line": 379
+    },
+    {
+      "text": "   local stud=clone(buttonSource.StudPattern,\"StudPattern\",tile.Main)",
+      "line": 380
+    },
+    {
+      "text": "   stud.AnchorPoint=Vector2.zero;stud.Position=UDim2.new();stud.Size=UDim2.fromScale(1,1)",
+      "line": 381
+    },
+    {
+      "text": "   stud.ZIndex=tile.Main.ZIndex;stud.ImageTransparency=.87;stud.Active=false",
+      "line": 382
+    },
+    {
+      "text": "  end",
+      "line": 383
+    },
+    {
+      "text": "  -- The selectable border is the purchased tile's own stroke; no overlay panel.",
+      "line": 384
+    },
+    {
+      "text": "  local edge=tile.Main:FindFirstChildOfClass(\"UIStroke\")",
+      "line": 385
+    },
+    {
+      "text": "  if edge then tile:SetAttribute(\"OriginalEdgeColor\",edge.Color) end",
+      "line": 386
+    },
+    {
+      "text": " end",
+      "line": 387
+    },
+    {
+      "text": " local function makeItemTile(entry,order)",
+      "line": 388
+    },
+    {
+      "text": "  tile.Main.Checkmark.ZIndex=226;tile.Title.ZIndex=227;tile.Button.ZIndex=228",
+      "line": 391
+    },
+    {
+      "text": "  tile.Visible=true;tile.LayoutOrder=order;tile.Main.Icon.Image=Master.Get(entry.ItemId).Image",
+      "line": 392
+    },
+    {
+      "text": "  local oldStars=tile.Main.Icon:FindFirstChild(\"RarityStars\");if oldStars then oldStars:Destroy() end",
+      "line": 393
+    },
+    {
+      "text": "  itemStars(tile,Master.Get(entry.ItemId))",
+      "line": 394
+    },
+    {
+      "text": "  local palette=ctx.ItemColors[Master.Get(entry.ItemId).Rarity]",
+      "line": 395
+    },
+    {
+      "text": "  if palette then tile.Main.UIGradient.Color=palette end",
+      "line": 396
+    },
+    {
+      "text": "  if rarity then",
+      "line": 479
+    },
+    {
+      "text": "   x.ClipsDescendants=false",
+      "line": 480
+    },
+    {
+      "text": "   for _,limit in label:GetChildren() do if limit:IsA(\"UITextSizeConstraint\") then limit.MinTextSize=6;limit.MaxTextSize=28 end end",
+      "line": 481
+    },
+    {
+      "text": "  end",
+      "line": 482
+    },
+    {
+      "text": "  label.Size=UDim2.fromScale(1,.15)",
+      "line": 483
+    },
+    {
+      "text": "  x.Percent.AnchorPoint=Vector2.new(.5,1);x.Percent.Position=UDim2.fromScale(.5,1)",
+      "line": 484
+    },
+    {
+      "text": "  x.Percent.FontFace=purchasedBold;x.Percent.TextXAlignment=Enum.TextXAlignment.Center",
+      "line": 486
+    },
+    {
+      "text": "  x.Percent.TextWrapped=true;x.Percent.TextScaled=true",
+      "line": 487
+    },
+    {
+      "text": "  local percentStroke=labelSource:FindFirstChildOfClass(\"UIStroke\")",
+      "line": 488
+    },
+    {
+      "text": "  if percentStroke then",
+      "line": 489
+    },
+    {
+      "text": "   for _,old in x.Percent:GetChildren() do if old:IsA(\"UIStroke\") then old:Destroy() end end",
+      "line": 490
+    },
+    {
+      "text": "   percentStroke:Clone().Parent=x.Percent",
+      "line": 491
+    },
+    {
+      "text": "  end",
+      "line": 492
+    },
+    {
+      "text": "  x.Percent.Text=percent and string.format(\"%.2f\",percent):gsub(\"0+$\",\"\"):gsub(\"%.$\",\"\")..\"%\" or \"\";x.Percent.Visible=percent~=nil",
+      "line": 493
+    },
+    {
+      "text": "    local card=clone(RS.Assets.Templates.PetInventory.Main,\"ResultCard\",x)",
+      "line": 497
+    },
+    {
+      "text": "    clearLayout(card)",
+      "line": 498
+    },
+    {
+      "text": "    for _,d in card:GetChildren() do if d:IsA(\"GuiObject\") then d:Destroy() end end",
+      "line": 499
+    },
+    {
+      "text": "    card.AnchorPoint=Vector2.new(.5,0);card.Position=UDim2.fromScale(.5,0);card.Size=UDim2.fromScale(.82,.82);card.ZIndex=223",
+      "line": 500
+    },
+    {
+      "text": "    card.UIGradient.Color=ctx.ItemColors[rarity] or card.UIGradient.Color",
+      "line": 501
+    },
+    {
+      "text": "   end",
+      "line": 502
+    },
+    {
+      "text": "   pic.ScaleType=Enum.ScaleType.Fit;pic.Visible=true;pic.ImageTransparency=0",
+      "line": 505
+    },
+    {
+      "text": "   if resultItemId then",
+      "line": 506
+    },
+    {
+      "text": "    local oldStars=pic:FindFirstChild(\"RarityStars\");if oldStars then oldStars:Destroy() end",
+      "line": 507
+    },
+    {
+      "text": "    itemStars(x,Master.Get(resultItemId))",
+      "line": 508
+    },
+    {
+      "text": "   end",
+      "line": 509
+    },
+    {
+      "text": "  else",
+      "line": 510
+    },
+    {
+      "text": "   local main=tile.Main",
+      "line": 568
+    },
+    {
+      "text": "   local objects={main}",
+      "line": 569
+    },
+    {
+      "text": "   for _,x in main:GetDescendants() do table.insert(objects,x) end",
+      "line": 570
+    },
+    {
+      "text": "   for _,x in objects do",
+      "line": 571
+    },
+    {
+      "text": "    if x~=main.Checkmark and not originals[x] then",
+      "line": 572
+    },
+    {
+      "text": "     if x:IsA(\"ImageLabel\") or x:IsA(\"ViewportFrame\") then originals[x]={\"ImageColor3\",x.ImageColor3}",
+      "line": 573
+    },
+    {
+      "text": "    tile.Title.Visible=false;tile.Main.Checkmark.Visible=selected(entry)",
+      "line": 596
+    },
+    {
+      "text": "    tintSelected(tile,selected(entry))",
+      "line": 597
+    },
+    {
+      "text": "    local edge=tile.Main:FindFirstChildOfClass(\"UIStroke\")",
+      "line": 598
+    },
+    {
+      "text": "    if edge then",
+      "line": 599
+    },
+    {
+      "text": "     local g=edge:FindFirstChildOfClass(\"UIGradient\");if g then g.Enabled=not selected(entry) end",
+      "line": 600
+    },
+    {
+      "text": "     edge.Color=selected(entry) and Color3.fromRGB(119,255,0) or tile:GetAttribute(\"OriginalEdgeColor\")",
+      "line": 601
+    },
+    {
+      "text": "     edge.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize;edge.Thickness=selected(entry) and 4 or 2",
+      "line": 602
+    },
+    {
+      "text": "    end",
+      "line": 603
+    },
+    {
+      "text": "    if tile then",
+      "line": 647
+    },
+    {
+      "text": "     rect(tile,((index-1)%3)*(cell+8),tab==\"Item\" and entry.ViewY or math.floor((index-1)/3)*(cell+8),cell,cell+(tab==\"Item\" and itemStarBand or 0))",
+      "line": 648
+    },
+    {
+      "text": "     local stars=tile:FindFirstChild(\"RarityStars\")",
+      "line": 649
+    },
+    {
+      "text": "     if tab==\"Item\" and stars then rect(stars,6,cell+2,cell-12,itemStarBand-4);layoutItemStars(stars,cell-12,itemStarBand-4) end",
+      "line": 650
+    },
+    {
+      "text": "    end",
+      "line": 651
+    },
+    {
+      "text": "  end",
+      "line": 652
+    },
+    {
+      "text": "    x.Size=UDim2.fromOffset(math.min(resultWidth-12,resultHeight),resultHeight)",
+      "line": 669
+    },
+    {
+      "text": "    x.Position=UDim2.fromOffset(((index-1)%columns+.5)*resultWidth,math.floor((index-1)/columns)*(resultHeight+10))",
+      "line": 670
+    },
+    {
+      "text": "    local pic=x:FindFirstChild(\"ActualImage\");local surface=x:FindFirstChild(\"ResultCard\")",
+      "line": 671
+    },
+    {
+      "text": "    if pic then pic.Size=UDim2.fromOffset(x.Size.X.Offset,128) end",
+      "line": 672
+    },
+    {
+      "text": "    if surface then surface.Size=UDim2.fromOffset(x.Size.X.Offset*.82,128) end",
+      "line": 673
+    },
+    {
+      "text": "   end",
+      "line": 674
+    },
+    {
+      "text": "   local nameplate=x:FindFirstChild(\"Name\")",
+      "line": 675
+    },
+    {
+      "text": "   if nameplate and x.Percent.Visible then",
+      "line": 676
+    },
+    {
+      "text": "    nameplate.Size=UDim2.fromScale(tab==\"Item\" and (resultWidth-14)/math.max(x.Size.X.Offset,1) or 1,portrait and .24 or .15)",
+      "line": 677
+    },
+    {
+      "text": "    nameplate.Position=UDim2.fromScale(.5,portrait and .84 or .87)",
+      "line": 678
+    },
+    {
+      "text": "    x.Percent.Size=UDim2.fromScale(1,portrait and .16 or .13)",
+      "line": 679
+    },
+    {
+      "text": "    local viewport=x:FindFirstChild(\"NormalEggViewport\")",
+      "line": 680
+    },
+    {
+      "text": "    if viewport then viewport.Size=UDim2.fromScale(1,portrait and .59 or .72) end",
+      "line": 681
+    },
+    {
+      "text": "   end",
+      "line": 682
+    },
+    {
+      "text": "   if tab==\"Item\" then",
+      "line": 683
+    },
+    {
+      "text": "    local stars=x:FindFirstChild(\"RarityStars\")",
+      "line": 684
+    },
+    {
+      "text": "    local starWidth=math.min(x.Size.X.Offset-8,218)",
+      "line": 685
+    },
+    {
+      "text": "    if stars then rect(stars,(x.Size.X.Offset-starWidth)/2,130,starWidth,42);layoutItemStars(stars,starWidth,42) end",
+      "line": 686
+    },
+    {
+      "text": "    if nameplate then nameplate.AnchorPoint=Vector2.new(.5,0);nameplate.Position=UDim2.new(.5,0,0,174);nameplate.Size=UDim2.fromOffset(resultWidth-14,38) end",
+      "line": 687
+    },
+    {
+      "text": "local RunService=game:GetService(\"RunService\")",
+      "line": 772
+    },
+    {
+      "text": "local player=Players.LocalPlayer",
+      "line": 773
+    },
+    {
+      "text": "local gui=player:WaitForChild(\"PlayerGui\"):WaitForChild(\"StrengthGui\")",
+      "line": 774
+    },
+    {
+      "text": "if gui:GetAttribute(\"MergeShopMounted\") then return end",
+      "line": 775
+    },
+    {
+      "text": "local Master=require(RS.Config:WaitForChild(\"ItemMaster\"))",
+      "line": 776
+    },
+    {
+      "text": "local PetClient=require(player:WaitForChild(\"PlayerScripts\"):WaitForChild(\"Services\"):WaitForChild(\"PetClient\"))",
+      "line": 777
+    },
+    {
+      "text": "local Egg=require(RS.Modules:WaitForChild(\"Egg\"))",
+      "line": 778
+    },
+    {
+      "text": "local mergeRemote=RS.Remotes:WaitForChild(\"ItemMergeRequest\")",
+      "line": 779
+    },
+    {
+      "text": "local stateRemote=RS.Remotes:WaitForChild(\"ItemMergeState\")",
+      "line": 780
+    },
+    {
+      "text": "local state,pending,fetching,fresh=nil,false,false,false",
+      "line": 781
+    },
+    {
+      "text": "local pendingRequest",
+      "line": 782
+    },
+    {
+      "text": "local deliveredResults={}",
+      "line": 783
+    },
+    {
+      "text": "})",
+      "line": 813
+    },
+    {
+      "text": "if not ok then",
+      "line": 814
+    },
+    {
+      "text": " local failed=gui:FindFirstChild(\"MergeShopPanel\");if failed then failed:Destroy() end",
+      "line": 815
+    },
+    {
+      "text": " warn(\"[MergeShop] Purchased UI mount failed; no substitute created: \"..tostring(built));return",
+      "line": 816
+    },
+    {
+      "text": "end",
+      "line": 817
+    },
+    {
+      "text": "view=built;gui:SetAttribute(\"MergeShopMounted\",true)",
+      "line": 818
+    },
+    {
+      "text": "end)",
+      "line": 847
+    },
+    {
+      "text": "for _,name in {\"ItemPurchaseRequest\",\"ItemRobuxPurchaseRequest\",\"ItemEquipRequest\"} do",
+      "line": 848
+    },
+    {
+      "text": " RS.Remotes:WaitForChild(name).OnClientEvent:Connect(function()",
+      "line": 849
+    },
+    {
+      "text": "  fresh=false;revision+=1",
+      "line": 850
+    },
+    {
+      "text": "  if shop.Visible then view:SetItemState(state,fresh,pending,status);task.spawn(refresh) end",
+      "line": 851
+    },
+    {
+      "text": " end)",
+      "line": 852
+    },
+    {
+      "text": "end",
+      "line": 853
+    },
+    {
+      "text": "local function openShop()",
+      "line": 854
+    },
+    {
+      "text": " for _,name in {\"InventoryPanel\",\"ShopPanel\",\"RebirthPanel\"} do local x=gui:FindFirstChild(name);if x then x.Visible=false end end",
+      "line": 855
+    },
+    {
+      "text": " local skip=gui.Parent:FindFirstChild(\"StageSkipGui\");if skip and skip:FindFirstChild(\"Panel\") then skip.Panel.Visible=false end",
+      "line": 856
+    },
+    {
+      "text": " view:Show();task.spawn(refresh)",
+      "line": 857
+    },
+    {
+      "text": "end",
+      "line": 858
+    },
+    {
+      "text": "local inside=false",
+      "line": 859
+    },
+    {
+      "text": " if shop.Visible and not view:IsPet() and itemPoll>=2 then itemPoll=0;task.spawn(refresh) end",
+      "line": 864
+    },
+    {
+      "text": " if elapsed<.1 then return end;elapsed=0",
+      "line": 865
+    },
+    {
+      "text": " local model=workspace:FindFirstChild(\"RestockShop\")",
+      "line": 866
+    },
+    {
+      "text": " local area=model and model:FindFirstChild(\"Area\")",
+      "line": 867
+    },
+    {
+      "text": " local root=player.Character and player.Character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 868
+    },
+    {
+      "text": " local now=false",
+      "line": 869
+    },
+    {
+      "text": " if area and area:IsA(\"BasePart\") and root and (player:GetAttribute(\"CurrentWorld\") or 1)==1 then",
+      "line": 870
+    },
+    {
+      "text": "  local point=area.CFrame:PointToObjectSpace(root.Position);local half=area.Size/2",
+      "line": 871
+    },
+    {
+      "text": "end)",
+      "line": 877
+    },
+    {
+      "text": "for _,name in {\"InventoryPanel\",\"ShopPanel\",\"RebirthPanel\"} do",
+      "line": 878
+    },
+    {
+      "text": " local x=gui:FindFirstChild(name)",
+      "line": 879
+    },
+    {
+      "text": " if x then x:GetPropertyChangedSignal(\"Visible\"):Connect(function() if x.Visible then view:Hide() end end) end",
+      "line": 880
+    },
+    {
+      "text": "end",
+      "line": 881
+    },
+    {
+      "text": "script.Destroying:Connect(function() beat:Disconnect();view:Destroy();gui:SetAttribute(\"MergeShopMounted\",nil) end)",
+      "line": 882
+    }
+  ],
+  "ServerScriptService.Systems.Controllers.GamePassController": [
+    {
+      "text": "local Players=game:GetService(\"Players\")",
+      "line": 1
+    },
+    {
+      "text": "local RS=game:GetService(\"ReplicatedStorage\")",
+      "line": 2
+    },
+    {
+      "text": "local Pass=require(game.ServerScriptService.Services:WaitForChild(\"GamePassService\"))",
+      "line": 3
+    },
+    {
+      "text": "local remote=RS.Remotes:WaitForChild(\"World1DoubleWinPrompt\")",
+      "line": 4
+    },
+    {
+      "text": "local function refreshOwnership(player)",
+      "line": 5
+    },
+    {
+      "text": " while player.Parent==Players do",
+      "line": 6
+    },
+    {
+      "text": "  local _,status=Pass.Refresh(player)",
+      "line": 7
+    },
+    {
+      "text": " if action~=\"Prompt\" and action~=\"TrophyPrompt\" then return end",
+      "line": 15
+    },
+    {
+      "text": " if action==\"TrophyPrompt\" then",
+      "line": 16
+    },
+    {
+      "text": "  local trophy=workspace:FindFirstChild(\"Trophy\")",
+      "line": 17
+    },
+    {
+      "text": "  local buy=trophy and trophy:FindFirstChild(\"Buy\")",
+      "line": 18
+    },
+    {
+      "text": "  local prompt=buy and buy:FindFirstChildWhichIsA(\"ProximityPrompt\")",
+      "line": 19
+    },
+    {
+      "text": "  local character=player.Character",
+      "line": 20
+    },
+    {
+      "text": "  local root=character and character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 21
+    },
+    {
+      "text": "  local humanoid=character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 22
+    },
+    {
+      "text": "  if not buy or not buy:IsA(\"BasePart\") or not prompt or not prompt.Enabled",
+      "line": 23
+    },
+    {
+      "text": "   or not root or not humanoid or humanoid.Health<=0",
+      "line": 24
+    },
+    {
+      "text": "   or (root.Position-buy.Position).Magnitude>prompt.MaxActivationDistance+3 then",
+      "line": 25
+    },
+    {
+      "text": "   remote:FireClient(player,\"WinPassPromptResult\",false,\"OutOfRange\")",
+      "line": 26
+    },
+    {
+      "text": "   return",
+      "line": 27
+    },
+    {
+      "text": "  end",
+      "line": 28
+    },
+    {
+      "text": "",
+      "line": 33
+    },
+    {
+      "text": "-- Lobby entry replaces only this shop's E / Tap interaction.",
+      "line": 34
+    },
+    {
+      "text": "local shop=workspace:FindFirstChild(\"World1DoubleWinShop\")",
+      "line": 35
+    },
+    {
+      "text": "local prompt=shop and shop:FindFirstChild(\"PurchasePrompt\",true)",
+      "line": 36
+    },
+    {
+      "text": "if prompt then prompt.Enabled=false end",
+      "line": 37
+    },
+    {
+      "text": "local pedestal=shop and shop:FindFirstChild(\"Pedestal\")",
+      "line": 38
+    },
+    {
+      "text": "if not pedestal or not pedestal:IsA(\"BasePart\") then return end",
+      "line": 39
+    },
+    {
+      "text": "",
+      "line": 40
+    },
+    {
+      "text": "-- Existing pedestal footprint + 2 studs on each side; no visible map changes.",
+      "line": 41
+    },
+    {
+      "text": "local entered={}",
+      "line": 42
+    },
+    {
+      "text": "local function isInside(character,margin)",
+      "line": 43
+    },
+    {
+      "text": " local humanoid=character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 44
+    },
+    {
+      "text": " local root=character and character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 45
+    },
+    {
+      "text": " if not humanoid or humanoid.Health<=0 or not root then return false end",
+      "line": 46
+    },
+    {
+      "text": " local point=pedestal.CFrame:PointToObjectSpace(root.Position)",
+      "line": 47
+    },
+    {
+      "text": " local bottom=pedestal.Size.Y/2-1",
+      "line": 48
+    }
+  ],
+  "StarterPlayer.StarterPlayerScripts.Services.MultiplierClient": [
+    {
+      "text": "local NotifyClient = require(script.Parent.NotifyClient)",
+      "line": 10
+    },
+    {
+      "text": "",
+      "line": 11
+    },
+    {
+      "text": "local FOLDER_NAME = \"PerStepButtons\"",
+      "line": 12
+    },
+    {
+      "text": "local PRESS_NAME = \"Press\"",
+      "line": 13
+    },
+    {
+      "text": "local ROOT_NAME = \"HumanoidRootPart\"",
+      "line": 14
+    },
+    {
+      "text": "local WINS_FIELD = \"wins\"",
+      "line": 15
+    },
+    {
+      "text": "",
+      "line": 93
+    },
+    {
+      "text": "\tlocal character = Player.Character",
+      "line": 94
+    },
+    {
+      "text": "\tlocal root = character and character:FindFirstChild(ROOT_NAME)",
+      "line": 95
+    },
+    {
+      "text": "\tlocal humanoid = character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 96
+    },
+    {
+      "text": "",
+      "line": 97
+    },
+    {
+      "text": "\tif not (root and root:IsA(\"BasePart\") and humanoid and humanoid.Health > 0) then",
+      "line": 98
+    },
+    {
+      "text": "\t\tdenied = nil",
+      "line": 99
+    },
+    {
+      "text": "\tplayerData = require(ReplicatedStorage.Modules.Data).client",
+      "line": 141
+    },
+    {
+      "text": "",
+      "line": 142
+    },
+    {
+      "text": "\tlocal folder = workspace:WaitForChild(FOLDER_NAME, WAIT_TIMEOUT)",
+      "line": 143
+    },
+    {
+      "text": "\tif not folder then",
+      "line": 144
+    },
+    {
+      "text": "\t\twarn(`[MultiplierClient] could not find {workspace:GetFullName()}.{FOLDER_NAME}`)",
+      "line": 145
+    },
+    {
+      "text": "\t\treturn",
+      "line": 146
+    },
+    {
+      "text": "\tend",
+      "line": 147
+    },
+    {
+      "text": "",
+      "line": 148
+    },
+    {
+      "text": "\tfor _, model in ipairs(folder:GetChildren()) do",
+      "line": 149
+    },
+    {
+      "text": "\t\tlocal pad = model:FindFirstChild(PRESS_NAME)",
+      "line": 150
+    },
+    {
+      "text": "\t\tif not (pad and pad:IsA(\"BasePart\")) then continue end",
+      "line": 151
+    },
+    {
+      "text": "",
+      "line": 152
+    },
+    {
+      "text": "\t\tregister(pad)",
+      "line": 153
+    }
+  ],
+  "ServerScriptService.Services.TreadmillServer": [
+    {
+      "text": "local Data = require(ReplicatedStorage.Modules.Data).server",
+      "line": 22
+    },
+    {
+      "text": "",
+      "line": 23
+    },
+    {
+      "text": "local FOLDER_NAME = \"Treadmills\"",
+      "line": 24
+    },
+    {
+      "text": "local BOARD_NAME = \"BillboardGui\"",
+      "line": 25
+    },
+    {
+      "text": "local LABEL_NAME = \"Multiplier\"",
+      "line": 26
+    },
+    {
+      "text": "local REBIRTH_NAME = \"Rebirth\"",
+      "line": 27
+    },
+    {
+      "text": "",
+      "line": 51
+    },
+    {
+      "text": "local function setPair(root: Instance, name: string, text: string)",
+      "line": 52
+    },
+    {
+      "text": "\tsetText(root:FindFirstChild(name), text)",
+      "line": 53
+    },
+    {
+      "text": "\tsetText(root:FindFirstChild(name .. SHADOW_SUFFIX), text)",
+      "line": 54
+    },
+    {
+      "text": "end",
+      "line": 55
+    },
+    {
+      "text": "",
+      "line": 56
+    },
+    {
+      "text": "local function grant(playerData: any, name: string)",
+      "line": 57
+    },
+    {
+      "text": "\tend",
+      "line": 99
+    },
+    {
+      "text": "",
+      "line": 100
+    },
+    {
+      "text": "\tlocal board = model:FindFirstChild(BOARD_NAME)",
+      "line": 101
+    },
+    {
+      "text": "\tif not board then",
+      "line": 102
+    },
+    {
+      "text": "\t\twarn(`[TreadmillServer] could not find {model:GetFullName()}.{BOARD_NAME}`)",
+      "line": 103
+    },
+    {
+      "text": "\t\treturn",
+      "line": 104
+    },
+    {
+      "text": "\tif required <= 0 then return end",
+      "line": 110
+    },
+    {
+      "text": "",
+      "line": 111
+    },
+    {
+      "text": "\tlocal rebirth = board:FindFirstChild(REBIRTH_NAME)",
+      "line": 112
+    },
+    {
+      "text": "\tif not rebirth then",
+      "line": 113
+    },
+    {
+      "text": "\t\twarn(`[TreadmillServer] could not find {board:GetFullName()}.{REBIRTH_NAME}`)",
+      "line": 114
+    },
+    {
+      "text": "\t\treturn",
+      "line": 115
+    },
+    {
+      "text": "\tfor _, name in ipairs(Path) do",
+      "line": 123
+    },
+    {
+      "text": "\t\tif not current then return nil end",
+      "line": 124
+    },
+    {
+      "text": "\t\tcurrent = (current :: Instance):FindFirstChild(name)",
+      "line": 125
+    },
+    {
+      "text": "\tend",
+      "line": 126
+    },
+    {
+      "text": "",
+      "line": 127
+    },
+    {
+      "text": "\treturn current",
+      "line": 128
+    },
+    {
+      "text": "\tif not mover then return nil end",
+      "line": 133
+    },
+    {
+      "text": "",
+      "line": 134
+    },
+    {
+      "text": "\tlocal animate = character:FindFirstChild(ANIMATE_NAME)",
+      "line": 135
+    },
+    {
+      "text": "\tif not animate then return nil end",
+      "line": 136
+    },
+    {
+      "text": "",
+      "line": 137
+    },
+    {
+      "text": "\tlocal source = findPath(animate, RUN_PATH)",
+      "line": 138
+    },
+    {
+      "text": "\trider.trackId = nil",
+      "line": 210
+    },
+    {
+      "text": "",
+      "line": 211
+    },
+    {
+      "text": "\tlocal humanoid = character:WaitForChild(HUMANOID_NAME, WAIT_TIMEOUT)",
+      "line": 212
+    },
+    {
+      "text": "\tif not (humanoid and humanoid:IsA(\"Humanoid\")) then",
+      "line": 213
+    },
+    {
+      "text": "\t\twarn(`[TreadmillServer] could not find {character:GetFullName()}.{HUMANOID_NAME}`)",
+      "line": 214
+    },
+    {
+      "text": "\t\treturn",
+      "line": 215
+    },
+    {
+      "text": "\tend",
+      "line": 216
+    },
+    {
+      "text": "",
+      "line": 217
+    },
+    {
+      "text": "\tlocal mover = humanoid:WaitForChild(ANIMATOR_NAME, WAIT_TIMEOUT)",
+      "line": 218
+    },
+    {
+      "text": "\tif not (mover and mover:IsA(\"Animator\")) then",
+      "line": 219
+    },
+    {
+      "text": "\t\twarn(`[TreadmillServer] could not find {humanoid:GetFullName()}.{ANIMATOR_NAME}`)",
+      "line": 220
+    },
+    {
+      "text": "\t\treturn",
+      "line": 221
+    },
+    {
+      "text": "",
+      "line": 255
+    },
+    {
+      "text": "function TreadmillServer.init()",
+      "line": 256
+    },
+    {
+      "text": "\tlocal folder = workspace:FindFirstChild(FOLDER_NAME)",
+      "line": 257
+    },
+    {
+      "text": "\tif not folder then",
+      "line": 258
+    },
+    {
+      "text": "\t\twarn(`[TreadmillServer] could not find {workspace:GetFullName()}.{FOLDER_NAME}`)",
+      "line": 259
+    },
+    {
+      "text": "\t\treturn",
+      "line": 260
+    },
+    {
+      "text": "\tend",
+      "line": 261
+    },
+    {
+      "text": "",
+      "line": 262
+    },
+    {
+      "text": "\tfor _, model in ipairs(folder:GetChildren()) do",
+      "line": 263
+    },
+    {
+      "text": "\t\tif not model:IsA(\"Model\") then continue end",
+      "line": 264
+    },
+    {
+      "text": "",
+      "line": 265
+    },
+    {
+      "text": "\t\tstamp(model)",
+      "line": 266
+    }
+  ],
+  "ReplicatedStorage.Modules.Treadmill": [
+    {
+      "text": "local Rebirth = require(ReplicatedStorage.Modules.Rebirth)",
+      "line": 5
+    },
+    {
+      "text": "",
+      "line": 6
+    },
+    {
+      "text": "local FOLDER_NAME = \"Treadmills\"",
+      "line": 7
+    },
+    {
+      "text": "local ROOT_NAME = \"HumanoidRootPart\"",
+      "line": 8
+    },
+    {
+      "text": "local AREA_NAME = \"Area\"",
+      "line": 9
+    },
+    {
+      "text": "",
+      "line": 10
+    },
+    {
+      "text": "",
+      "line": 77
+    },
+    {
+      "text": "local function onEvent(character: Model): boolean",
+      "line": 78
+    },
+    {
+      "text": "\tlocal model = workspace:FindFirstChild(Config.Event.model)",
+      "line": 79
+    },
+    {
+      "text": "\tif not (model and model:IsA(\"Model\")) then return false end",
+      "line": 80
+    },
+    {
+      "text": "",
+      "line": 81
+    },
+    {
+      "text": "\tlocal root = character:FindFirstChild(ROOT_NAME)",
+      "line": 82
+    },
+    {
+      "text": "\tif not (root and root:IsA(\"BasePart\")) then return false end",
+      "line": 83
+    },
+    {
+      "text": "",
+      "line": 84
+    },
+    {
+      "text": "\tlocal area = model:FindFirstChild(AREA_NAME)",
+      "line": 85
+    },
+    {
+      "text": "\tif not (area and area:IsA(\"BasePart\")) then",
+      "line": 86
+    },
+    {
+      "text": "\t\tif IS_SERVER and not Warned[Config.Event.model] then",
+      "line": 87
+    },
+    {
+      "text": "\t\t\tWarned[Config.Event.model] = true",
+      "line": 88
+    },
+    {
+      "text": "\tif not character then return nil, 1 end",
+      "line": 100
+    },
+    {
+      "text": "",
+      "line": 101
+    },
+    {
+      "text": "\tlocal root = character:FindFirstChild(ROOT_NAME)",
+      "line": 102
+    },
+    {
+      "text": "\tif not (root and root:IsA(\"BasePart\")) then return nil, 1 end",
+      "line": 103
+    },
+    {
+      "text": "",
+      "line": 104
+    },
+    {
+      "text": "\tlocal folder = workspace:FindFirstChild(FOLDER_NAME)",
+      "line": 105
+    },
+    {
+      "text": "\tif not folder then return nil, 1 end",
+      "line": 106
+    },
+    {
+      "text": "",
+      "line": 107
+    },
+    {
+      "text": "\tlocal point = root.Position",
+      "line": 108
+    },
+    {
+      "text": "",
+      "line": 109
+    },
+    {
+      "text": "\tfor _, model in ipairs(folder:GetChildren()) do",
+      "line": 110
+    },
+    {
+      "text": "\t\tlocal entry = Config.Treadmills[model.Name]",
+      "line": 111
+    },
+    {
+      "text": "\t\tif not entry then continue end",
+      "line": 112
+    },
+    {
+      "text": "",
+      "line": 113
+    },
+    {
+      "text": "\t\tlocal area = model:FindFirstChild(AREA_NAME)",
+      "line": 114
+    },
+    {
+      "text": "\t\tif not (area and area:IsA(\"BasePart\")) then",
+      "line": 115
+    },
+    {
+      "text": "\t\t\tif IS_SERVER and not Warned[model.Name] then",
+      "line": 116
+    },
+    {
+      "text": "\t\t\t\tWarned[model.Name] = true",
+      "line": 117
+    }
+  ],
+  "ServerScriptService.Services.DumbbellStandService": [
+    {
+      "text": "local Players = game:GetService(\"Players\")",
+      "line": 2
+    },
+    {
+      "text": "local RunService = game:GetService(\"RunService\")",
+      "line": 3
+    },
+    {
+      "text": "local Config = require(game:GetService(\"ReplicatedStorage\").Config:WaitForChild(\"DumbbellStandConfig\"))",
+      "line": 4
+    },
+    {
+      "text": "local M = {}",
+      "line": 5
+    },
+    {
+      "text": "local entries = setmetatable({}, {__mode = \"k\"})",
+      "line": 6
+    },
+    {
+      "text": "local started = false",
+      "line": 7
+    },
+    {
+      "text": " if player.Parent ~= Players or (player:GetAttribute(\"CurrentWorld\") or 1) ~= 1 then return nil end",
+      "line": 10
+    },
+    {
+      "text": " local character = player.Character",
+      "line": 11
+    },
+    {
+      "text": " local humanoid = character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 12
+    },
+    {
+      "text": " local root = character and character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 13
+    },
+    {
+      "text": " if not humanoid or humanoid.Health <= 0 or not root or not root:IsA(\"BasePart\") then return nil end",
+      "line": 14
+    },
+    {
+      "text": " return Config.GetStandingIndex(workspace:FindFirstChild(Config.FolderName), root.Position)",
+      "line": 15
+    },
+    {
+      "text": "end",
+      "line": 16
+    },
+    {
+      "text": "",
+      "line": 17
+    },
+    {
+      "text": "function M.Start(onEntry)",
+      "line": 18
+    }
+  ],
+  "ServerScriptService.Services.EggServer": [
+    {
+      "text": " local count=Egg.count(button)",
+      "line": 19
+    },
+    {
+      "text": " if count~=1 and count~=3 and count~=8 then return false,\"InvalidOpenCount\" end",
+      "line": 20
+    },
+    {
+      "text": " local folder=workspace:FindFirstChild(Egg.FolderName)",
+      "line": 21
+    },
+    {
+      "text": " local part=folder and folder:FindFirstChild(name)",
+      "line": 22
+    },
+    {
+      "text": " local character=player.Character",
+      "line": 23
+    },
+    {
+      "text": " local root=character and character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 24
+    },
+    {
+      "text": " local humanoid=character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 25
+    },
+    {
+      "text": " if not part or not part:IsA(\"BasePart\") then return false,\"EggUnavailable\" end",
+      "line": 26
+    },
+    {
+      "text": " if not root or not humanoid or humanoid.Health<=0 then return false,\"CharacterNotReady\" end",
+      "line": 27
+    },
+    {
+      "text": " if (root.Position-part.Position).Magnitude>Config.Egg.reach then return false,\"TooFarFromEgg\" end",
+      "line": 28
+    },
+    {
+      "text": "end",
+      "line": 80
+    },
+    {
+      "text": "function M.init()",
+      "line": 81
+    },
+    {
+      "text": " local folder=workspace:FindFirstChild(Egg.FolderName)",
+      "line": 82
+    },
+    {
+      "text": " if not folder then return end",
+      "line": 83
+    },
+    {
+      "text": " for _,part in ipairs(folder:GetChildren()) do",
+      "line": 84
+    },
+    {
+      "text": "  if not part:IsA(\"BasePart\") or not Egg.isEgg(part.Name) then continue end",
+      "line": 85
+    },
+    {
+      "text": "  local prize=part:FindFirstChild(\"Prize\")",
+      "line": 86
+    },
+    {
+      "text": "  if prize then",
+      "line": 87
+    },
+    {
+      "text": "   for _,name in ipairs({\"Info\",\"InfoShadow\"}) do",
+      "line": 88
+    },
+    {
+      "text": "    local label=prize:FindFirstChild(name)",
+      "line": 89
+    },
+    {
+      "text": "    if label and label:IsA(\"TextLabel\") then label.Text=require(RS.Modules.NumberFormat).Price(Egg.price(part.Name)) end",
+      "line": 90
+    },
+    {
+      "text": "   end",
+      "line": 91
+    },
+    {
+      "text": "  end",
+      "line": 92
+    },
+    {
+      "text": " started=true",
+      "line": 97
+    },
+    {
+      "text": " M.init();Pets.start()",
+      "line": 98
+    },
+    {
+      "text": " local remotes=RS:WaitForChild(\"Remotes\")",
+      "line": 99
+    },
+    {
+      "text": " local remote=remotes:FindFirstChild(\"PetRequest\")",
+      "line": 100
+    },
+    {
+      "text": " if remote then assert(remote:IsA(\"RemoteFunction\"),\"PetRequest must be a RemoteFunction\")",
+      "line": 101
+    },
+    {
+      "text": " else remote=Instance.new(\"RemoteFunction\");remote.Name=\"PetRequest\";remote.Parent=remotes end",
+      "line": 102
+    },
+    {
+      "text": " remote.OnServerInvoke=function(player,...)",
+      "line": 103
+    }
+  ],
+  "StarterPlayer.StarterPlayerScripts.Services.EggClient": [
+    {
+      "text": "\tfor _, name in ipairs(path) do",
+      "line": 58
+    },
+    {
+      "text": "\t\tif not current then return nil end",
+      "line": 59
+    },
+    {
+      "text": "\t\tcurrent = (current :: Instance):FindFirstChild(name)",
+      "line": 60
+    },
+    {
+      "text": "\tend",
+      "line": 61
+    },
+    {
+      "text": "",
+      "line": 62
+    },
+    {
+      "text": "\treturn current",
+      "line": 63
+    },
+    {
+      "text": "",
+      "line": 72
+    },
+    {
+      "text": "local function setPair(root: Instance, name: string, text: string)",
+      "line": 73
+    },
+    {
+      "text": "\tsetText(root:FindFirstChild(name), text)",
+      "line": 74
+    },
+    {
+      "text": "\tsetText(root:FindFirstChild(name .. SHADOW_SUFFIX), text)",
+      "line": 75
+    },
+    {
+      "text": "end",
+      "line": 76
+    },
+    {
+      "text": "",
+      "line": 77
+    },
+    {
+      "text": "local function setIcon(frame: ImageLabel, petName: string)",
+      "line": 78
+    },
+    {
+      "text": "\tlocal decal = if icons then icons:FindFirstChild(petName) else nil",
+      "line": 79
+    },
+    {
+      "text": "\tif not (decal and decal:IsA(\"Decal\")) then",
+      "line": 80
+    },
+    {
+      "text": "\t\twarn(`[EggClient] could not find {table.concat(ICONS_PATH, \".\")}.{petName}`)",
+      "line": 81
+    },
+    {
+      "text": "\t\treturn",
+      "line": 82
+    },
+    {
+      "text": "",
+      "line": 88
+    },
+    {
+      "text": "local function stampSheet(name: string, open: BillboardGui)",
+      "line": 89
+    },
+    {
+      "text": "\tlocal opens=open:FindFirstChild(OPENS_NAME)",
+      "line": 90
+    },
+    {
+      "text": "\tif opens then",
+      "line": 91
+    },
+    {
+      "text": "\t\tfor _,frame in ipairs(opens:GetChildren()) do",
+      "line": 92
+    },
+    {
+      "text": "\t\t\tlocal count=Egg.count(frame.Name)",
+      "line": 93
+    },
+    {
+      "text": "\t\t\tif count then",
+      "line": 94
+    },
+    {
+      "text": "\t\t\t\tlocal price=require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(name)*count)",
+      "line": 95
+    },
+    {
+      "text": "\t\tend",
+      "line": 98
+    },
+    {
+      "text": "\tend",
+      "line": 99
+    },
+    {
+      "text": "\tlocal background = open:FindFirstChild(BACKGROUND_NAME)",
+      "line": 100
+    },
+    {
+      "text": "\tif background then",
+      "line": 101
+    },
+    {
+      "text": "\t\tsetPair(background, INFO_NAME, string.format(Config.Eggs.titleFormat, name))",
+      "line": 102
+    },
+    {
+      "text": "\telse",
+      "line": 103
+    },
+    {
+      "text": "",
+      "line": 115
+    },
+    {
+      "text": "\tlocal Frames: {ImageLabel} = {}",
+      "line": 116
+    },
+    {
+      "text": "\tfor _, child in ipairs(folder:GetChildren()) do",
+      "line": 117
+    },
+    {
+      "text": "\t\tif not child:IsA(\"ImageLabel\") then continue end",
+      "line": 118
+    },
+    {
+      "text": "",
+      "line": 119
+    },
+    {
+      "text": "\t\ttable.insert(Frames, child)",
+      "line": 120
+    },
+    {
+      "text": "\tend)",
+      "line": 125
+    },
+    {
+      "text": "",
+      "line": 126
+    },
+    {
+      "text": "\tlocal layout = folder:FindFirstChildWhichIsA(\"UIListLayout\")",
+      "line": 127
+    },
+    {
+      "text": "\tif layout then layout.SortOrder = Enum.SortOrder.LayoutOrder end",
+      "line": 128
+    },
+    {
+      "text": "",
+      "line": 129
+    },
+    {
+      "text": "\tlocal List = Egg.ranked(Pets)",
+      "line": 130
+    },
+    {
+      "text": "\tif not Pets then return end",
+      "line": 240
+    },
+    {
+      "text": "",
+      "line": 241
+    },
+    {
+      "text": "\tlocal found = open:FindFirstChild(BACKGROUND_NAME)",
+      "line": 242
+    },
+    {
+      "text": "\tlocal folder = if found then found:FindFirstChild(PETS_NAME) else nil",
+      "line": 243
+    },
+    {
+      "text": "\tif not folder then",
+      "line": 244
+    },
+    {
+      "text": "\t\twarn(`[EggClient] could not find {open:GetFullName()}.{BACKGROUND_NAME}.{PETS_NAME}`)",
+      "line": 245
+    },
+    {
+      "text": "\t\treturn",
+      "line": 246
+    },
+    {
+      "text": "",
+      "line": 248
+    },
+    {
+      "text": "\tfor index, slot in ipairs(Egg.ranked(Pets)) do",
+      "line": 249
+    },
+    {
+      "text": "\t\tlocal frame = folder:FindFirstChild(tostring(index))",
+      "line": 250
+    },
+    {
+      "text": "\t\tlocal button = if frame then frame:FindFirstChild(BUTTON_NAME) else nil",
+      "line": 251
+    },
+    {
+      "text": "\t\tif not (button and button:IsA(\"GuiButton\")) then continue end",
+      "line": 252
+    },
+    {
+      "text": "",
+      "line": 253
+    },
+    {
+      "text": "\t\tlocal petName = slot.pet",
+      "line": 254
+    },
+    {
+      "text": "\tend",
+      "line": 265
+    },
+    {
+      "text": "",
+      "line": 266
+    },
+    {
+      "text": "\tlocal opens = open:FindFirstChild(OPENS_NAME)",
+      "line": 267
+    },
+    {
+      "text": "\tif not opens then",
+      "line": 268
+    },
+    {
+      "text": "\t\twarn(`[EggClient] could not find {open:GetFullName()}.{OPENS_NAME}`)",
+      "line": 269
+    },
+    {
+      "text": "\t\treturn",
+      "line": 270
+    },
+    {
+      "text": "\tend",
+      "line": 271
+    },
+    {
+      "text": "",
+      "line": 272
+    },
+    {
+      "text": "\tfor _, frame in ipairs(opens:GetChildren()) do",
+      "line": 273
+    },
+    {
+      "text": "\t\tlocal count = Egg.count(frame.Name)",
+      "line": 274
+    },
+    {
+      "text": "\t\tif not count then continue end",
+      "line": 275
+    },
+    {
+      "text": "",
+      "line": 276
+    },
+    {
+      "text": "\t\tlocal button = frame:FindFirstChild(BUTTON_NAME)",
+      "line": 277
+    },
+    {
+      "text": "\t\tif not (button and button:IsA(\"GuiButton\")) then",
+      "line": 278
+    },
+    {
+      "text": "\t\t\twarn(`[EggClient] could not find {frame:GetFullName()}.{BUTTON_NAME}`)",
+      "line": 279
+    },
+    {
+      "text": "\t\t\tcontinue",
+      "line": 280
+    },
+    {
+      "text": "",
+      "line": 320
+    },
+    {
+      "text": "local function register(part: BasePart)",
+      "line": 321
+    },
+    {
+      "text": " local prize=part:FindFirstChild(\"Prize\")",
+      "line": 322
+    },
+    {
+      "text": " local amount=prize and prize:FindFirstChild(\"Info\")",
+      "line": 323
+    },
+    {
+      "text": " if amount and amount:IsA(\"TextLabel\") then amount.Text=require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(part.Name)) end",
+      "line": 324
+    },
+    {
+      "text": "\tlocal egg = Eggs[part.Name]",
+      "line": 325
+    },
+    {
+      "text": "",
+      "line": 326
+    },
+    {
+      "text": "end",
+      "line": 377
+    },
+    {
+      "text": "",
+      "line": 378
+    },
+    {
+      "text": "local function better(angle: number, distance: number, bestAngle: number, bestDistance: number): boolean",
+      "line": 379
+    },
+    {
+      "text": "\tif math.abs(angle - bestAngle) <= Config.Egg.tie then return distance < bestDistance end",
+      "line": 380
+    },
+    {
+      "text": "",
+      "line": 381
+    },
+    {
+      "text": "\treturn angle < bestAngle",
+      "line": 382
+    },
+    {
+      "text": "end",
+      "line": 383
+    },
+    {
+      "text": "local function choose(camera: Camera): Sheet?",
+      "line": 385
+    },
+    {
+      "text": "\tlocal character = Player.Character",
+      "line": 386
+    },
+    {
+      "text": "\tlocal root = if character then character:FindFirstChild(ROOT_NAME) else nil",
+      "line": 387
+    },
+    {
+      "text": "\tif not (root and root:IsA(\"BasePart\")) then return nil end",
+      "line": 388
+    },
+    {
+      "text": "",
+      "line": 389
+    },
+    {
+      "text": "\tlocal from = camera.CFrame.Position",
+      "line": 390
+    },
+    {
+      "text": "",
+      "line": 392
+    },
+    {
+      "text": "\tlocal chosen: Sheet? = nil",
+      "line": 393
+    },
+    {
+      "text": "\tlocal bestAngle, bestDistance = math.huge, math.huge",
+      "line": 394
+    },
+    {
+      "text": "",
+      "line": 395
+    },
+    {
+      "text": "\tfor _, egg in Eggs do",
+      "line": 396
+    },
+    {
+      "text": "\t\tif not egg.open then continue end",
+      "line": 397
+    },
+    {
+      "text": "\t\tlocal angle = math.acos(math.clamp(look:Dot(towards / length), -1, 1))",
+      "line": 409
+    },
+    {
+      "text": "",
+      "line": 410
+    },
+    {
+      "text": "\t\tif chosen and not better(angle, distance, bestAngle, bestDistance) then continue end",
+      "line": 411
+    },
+    {
+      "text": "",
+      "line": 412
+    },
+    {
+      "text": "\t\tchosen, bestAngle, bestDistance = egg, angle, distance",
+      "line": 413
+    },
+    {
+      "text": "\tend",
+      "line": 414
+    },
+    {
+      "text": "",
+      "line": 415
+    },
+    {
+      "text": "\treturn chosen",
+      "line": 416
+    },
+    {
+      "text": "\tend",
+      "line": 507
+    },
+    {
+      "text": "",
+      "line": 508
+    },
+    {
+      "text": "\tlocal folder = workspace:WaitForChild(Egg.FolderName, WAIT_TIMEOUT)",
+      "line": 509
+    },
+    {
+      "text": "\tif not folder then",
+      "line": 510
+    },
+    {
+      "text": "\t\twarn(`[EggClient] could not find {workspace:GetFullName()}.{Egg.FolderName}`)",
+      "line": 511
+    },
+    {
+      "text": "\t\treturn",
+      "line": 512
+    },
+    {
+      "text": "\tend",
+      "line": 513
+    },
+    {
+      "text": "",
+      "line": 514
+    },
+    {
+      "text": "\tfor _, child in ipairs(folder:GetChildren()) do",
+      "line": 515
+    },
+    {
+      "text": "\t\tif not child:IsA(\"BasePart\") or not Egg.isEgg(child.Name) then continue end",
+      "line": 516
+    },
+    {
+      "text": "",
+      "line": 517
+    },
+    {
+      "text": "\t\tregister(child)",
+      "line": 518
+    },
+    {
+      "text": "\tend)",
+      "line": 525
+    },
+    {
+      "text": "",
+      "line": 526
+    },
+    {
+      "text": "\tlocal playerGui = Player:WaitForChild(\"PlayerGui\")",
+      "line": 527
+    },
+    {
+      "text": "",
+      "line": 528
+    },
+    {
+      "text": "\tlocal gui = playerGui:WaitForChild(GUI_NAME, WAIT_TIMEOUT)",
+      "line": 529
+    },
+    {
+      "text": "\tif gui and gui:IsA(\"ScreenGui\") then",
+      "line": 530
+    },
+    {
+      "text": "\t\tbind(gui)",
+      "line": 531
+    },
+    {
+      "text": "\tend",
+      "line": 532
+    }
+  ],
+  "StarterPlayer.StarterPlayerScripts.Services.StandClient": [
+    {
+      "text": "",
+      "line": 87
+    },
+    {
+      "text": "local function stripScripts(root)",
+      "line": 88
+    },
+    {
+      "text": " for _,x in root:GetDescendants() do if x:IsA(\"LuaSourceContainer\") then x:Destroy() end end",
+      "line": 89
+    },
+    {
+      "text": "end",
+      "line": 90
+    },
+    {
+      "text": "local function label(donor,parent,name,text,position,size)",
+      "line": 91
+    },
+    {
+      "text": " local x=donor:Clone();x.Name=name;x.Parent=parent",
+      "line": 92
+    },
+    {
+      "text": "end",
+      "line": 96
+    },
+    {
+      "text": "local function setBoard(price)",
+      "line": 97
+    },
+    {
+      "text": " local model=workspace:FindFirstChild(Config.Entrance)",
+      "line": 98
+    },
+    {
+      "text": " if not model then return end",
+      "line": 99
+    },
+    {
+      "text": " local board=model:FindFirstChild(\"BillboardGui\")",
+      "line": 100
+    },
+    {
+      "text": " if board then",
+      "line": 101
+    },
+    {
+      "text": "  board.Adornee=model.PrimaryPart",
+      "line": 102
+    },
+    {
+      "text": "  local title=board:FindFirstChild(\"AlwaysBetter\")",
+      "line": 103
+    },
+    {
+      "text": "  if title then title.Text=Config.Name;title.AutoLocalize=false end",
+      "line": 104
+    },
+    {
+      "text": "  local amount=board:FindFirstChild(\"Price\")",
+      "line": 105
+    },
+    {
+      "text": "  if amount then amount.Text=price and require(RS.Modules.NumberFormat).Price(price)..\" Robux / 1 Pet\" or \"Unavailable / 1 Pet\";amount.AutoLocalize=false end",
+      "line": 106
+    },
+    {
+      "text": " end",
+      "line": 107
+    },
+    {
+      "text": "end",
+      "line": 108
+    },
+    {
+      "text": "  info.AnchorPoint=Vector2.zero;info.Position=UDim2.fromOffset(60,16);info.Size=UDim2.fromOffset(580,44)",
+      "line": 136
+    },
+    {
+      "text": "  local pets=panel.Pets",
+      "line": 137
+    },
+    {
+      "text": "  for _,x in pets:GetChildren() do if x:IsA(\"UIGridStyleLayout\") then x:Destroy() end end",
+      "line": 138
+    },
+    {
+      "text": "  local seventh=pets[\"6\"]:Clone();seventh.Name=\"7\";seventh.Parent=pets",
+      "line": 139
+    },
+    {
+      "text": "  local nameDonor=RS.Assets.Templates.PetInventory.Title",
+      "line": 140
+    },
+    {
+      "text": "  for i,entry in Config.Entries do",
+      "line": 141
+    },
+    {
+      "text": "   card.Position=UDim2.fromOffset(22+column*164+(row==1 and 82 or 0),78+row*178)",
+      "line": 145
+    },
+    {
+      "text": "   card.Size=UDim2.fromOffset(156,172);card.ClipsDescendants=true;card.ZIndex=2",
+      "line": 146
+    },
+    {
+      "text": "   local aspect=card:FindFirstChildOfClass(\"UIAspectRatioConstraint\") if aspect then aspect:Destroy() end",
+      "line": 147
+    },
+    {
+      "text": "   local button=card:FindFirstChild(\"Button\")",
+      "line": 148
+    },
+    {
+      "text": "   if button then button.Active=false;button.Interactable=false;button.Selectable=false;button.Visible=false end",
+      "line": 149
+    },
+    {
+      "text": "   local percent=card.Percent",
+      "line": 150
+    },
+    {
+      "text": "   percent.Text=string.format(\"%g%%\",entry.Percent);percent.AutoLocalize=false",
+      "line": 151
+    },
+    {
+      "text": "  end",
+      "line": 159
+    },
+    {
+      "text": "  local opens=original.Opens:Clone();opens.Name=\"Opens\";stripScripts(opens)",
+      "line": 160
+    },
+    {
+      "text": "  for _,x in opens:GetChildren() do x:Destroy() end",
+      "line": 161
+    },
+    {
+      "text": "  opens.AnchorPoint=Vector2.zero;opens.Position=UDim2.fromOffset(0,452);opens.Size=UDim2.fromOffset(700,88)",
+      "line": 162
+    },
+    {
+      "text": "  opens.Parent=panel",
+      "line": 163
+    },
+    {
+      "text": "  local buy=purchased.RestockShop.Main.Common.BuyRobux:Clone()",
+      "line": 164
+    },
+    {
+      "text": "  buy.Position=UDim2.new(.5,0,0,0);buy.Size=UDim2.fromOffset(230,48);buy.Parent=opens",
+      "line": 166
+    },
+    {
+      "text": "  buy.Main.Amount.Text=\"--\";buy.Main.Amount.AutoLocalize=false",
+      "line": 167
+    },
+    {
+      "text": "  for _,x in buy:GetDescendants() do",
+      "line": 168
+    },
+    {
+      "text": "   if x:IsA(\"GuiButton\") then x.Active=false;x.Interactable=false;x.Selectable=false;x.AutoButtonColor=false end",
+      "line": 169
+    },
+    {
+      "text": "  end",
+      "line": 170
+    },
+    {
+      "text": "  buyControl=buy.Button",
+      "line": 171
+    },
+    {
+      "text": "  if not active then return end",
+      "line": 186
+    },
+    {
+      "text": "  local player=Players.LocalPlayer;local character=player and player.Character",
+      "line": 187
+    },
+    {
+      "text": "  local root=character and character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 188
+    },
+    {
+      "text": "  local entrance=workspace:FindFirstChild(Config.Entrance)",
+      "line": 189
+    },
+    {
+      "text": "  local part=entrance and entrance.PrimaryPart",
+      "line": 190
+    },
+    {
+      "text": "  if not root or not part or (root.Position-part.Position).Magnitude>24 then M.close() end",
+      "line": 191
+    },
+    {
+      "text": " end))",
+      "line": 192
+    },
+    {
+      "text": "  local localPlayer=Players.LocalPlayer",
+      "line": 235
+    },
+    {
+      "text": "  if not localPlayer or (player and player~=localPlayer) then return end",
+      "line": 236
+    },
+    {
+      "text": "  M.show(localPlayer:WaitForChild(\"PlayerGui\"))",
+      "line": 237
+    },
+    {
+      "text": " end)",
+      "line": 238
+    },
+    {
+      "text": "end",
+      "line": 239
+    },
+    {
+      "text": "function M.stop()",
+      "line": 240
+    },
+    {
+      "text": " task.spawn(function()",
+      "line": 254
+    },
+    {
+      "text": "  if not Players.LocalPlayer then return end",
+      "line": 255
+    },
+    {
+      "text": "  local remotes=RS:WaitForChild(\"Remotes\",10)",
+      "line": 256
+    },
+    {
+      "text": "  local folder=remotes and remotes:WaitForChild(\"GameRemotes\",10)",
+      "line": 257
+    },
+    {
+      "text": "  local request=folder and folder:WaitForChild(\"LimitedEggPurchase\",10)",
+      "line": 258
+    },
+    {
+      "text": "  local notice=folder and folder:WaitForChild(\"LimitedEggCommitted\",10)",
+      "line": 259
+    },
+    {
+      "text": "  if not started or generation~=currentGeneration then return end",
+      "line": 260
+    },
+    {
+      "text": "  if not request or not request:IsA(\"RemoteFunction\") or not notice or not notice:IsA(\"RemoteEvent\") then",
+      "line": 261
+    },
+    {
+      "text": "   unavailableReason=messages.ServerUnavailable;updatePurchaseUI();warn(\"[LimitedEgg01] remotes unavailable\");return",
+      "line": 262
+    },
+    {
+      "text": " end)",
+      "line": 277
+    },
+    {
+      "text": " local function consider(x)",
+      "line": 278
+    },
+    {
+      "text": "  if x:IsA(\"ProximityPrompt\") and x.Parent and x.Parent.Name==Config.Entrance and x.Parent.Parent==workspace then bind(x) end",
+      "line": 279
+    },
+    {
+      "text": " end",
+      "line": 280
+    },
+    {
+      "text": " local model=workspace:FindFirstChild(Config.Entrance)",
+      "line": 281
+    },
+    {
+      "text": " if model then local prompt=model:FindFirstChild(\"ProximityPrompt\") if prompt then consider(prompt) end end",
+      "line": 282
+    },
+    {
+      "text": " lifetime:Add(workspace.DescendantAdded:Connect(consider))",
+      "line": 283
+    },
+    {
+      "text": " lifetime:Add(workspace.DescendantRemoving:Connect(function(x)",
+      "line": 284
+    },
+    {
+      "text": "  if x==boundPrompt then",
+      "line": 285
+    }
+  ],
+  "ServerScriptService.Systems.Controllers.RankingBoardController": [
+    {
+      "text": "local Players=game:GetService(\"Players\")",
+      "line": 1
+    },
+    {
+      "text": "local Data=require(game.ServerScriptService.Services:WaitForChild(\"PlayerDataService\"))",
+      "line": 2
+    },
+    {
+      "text": "local UPDATE_INTERVAL=60",
+      "line": 3
+    },
+    {
+      "text": "local nameCache={}",
+      "line": 4
+    },
+    {
+      "text": "local updating=false",
+      "line": 5
+    },
+    {
+      "text": "",
+      "line": 48
+    },
+    {
+      "text": "local function labels(board)",
+      "line": 49
+    },
+    {
+      "text": " local legacyGui=board:FindFirstChild(\"RankingSurfaceGui\",true)",
+      "line": 50
+    },
+    {
+      "text": " if legacyGui then",
+      "line": 51
+    },
+    {
+      "text": "  local bg=legacyGui:FindFirstChild(\"Background\")",
+      "line": 52
+    },
+    {
+      "text": "  local frame=bg and bg:FindFirstChild(\"RankingFrame\")",
+      "line": 53
+    },
+    {
+      "text": "  if frame then return bg:FindFirstChild(\"UpdatedLabel\"),frame end",
+      "line": 54
+    },
+    {
+      "text": "  local scrolling=legacyGui:FindFirstChild(\"ScrollingFrame\")",
+      "line": 55
+    },
+    {
+      "text": "  if scrolling then return legacyGui:FindFirstChild(\"UpdatedLabel\"),scrolling end",
+      "line": 56
+    },
+    {
+      "text": " end",
+      "line": 57
+    },
+    {
+      "text": " return nil,nil",
+      "line": 58
+    },
+    {
+      "text": "end",
+      "line": 59
+    },
+    {
+      "text": "",
+      "line": 60
+    },
+    {
+      "text": "local function rowObjects(frame,index)",
+      "line": 61
+    },
+    {
+      "text": " local row=frame:FindFirstChild(string.format(\"Row%02d\",index))",
+      "line": 62
+    },
+    {
+      "text": " if not row then return nil end",
+      "line": 63
+    },
+    {
+      "text": " if row:IsA(\"TextLabel\") then return row end",
+      "line": 64
+    },
+    {
+      "text": " local content=row:FindFirstChild(\"Frame\") or row",
+      "line": 65
+    },
+    {
+      "text": " return row,content:FindFirstChild(\"Rank\"),content:FindFirstChild(\"UserName\"),content:FindFirstChild(\"Amount\")",
+      "line": 66
+    },
+    {
+      "text": "end",
+      "line": 67
+    },
+    {
+      "text": "",
+      "line": 68
+    },
+    {
+      "text": "local function clearRow(frame,index)",
+      "line": 69
+    },
+    {
+      "text": " if updating then return end",
+      "line": 145
+    },
+    {
+      "text": " updating=true",
+      "line": 146
+    },
+    {
+      "text": " local daily=workspace:FindFirstChild(\"DailyStrengthRankingBoard\")",
+      "line": 147
+    },
+    {
+      "text": " local total=workspace:FindFirstChild(\"TotalStrengthRankingBoard\")",
+      "line": 148
+    },
+    {
+      "text": " local today=Data.Today()",
+      "line": 149
+    },
+    {
+      "text": " updateBoard(daily,function()",
+      "line": 150
+    },
+    {
+      "text": "  local data,err=Data.GetDailyStrengthTop(10,today)",
+      "line": 151
+    }
+  ],
+  "ServerScriptService.Services.TrophyRewardService": [
+    {
+      "text": "local RS = game:GetService(\"ReplicatedStorage\")",
+      "line": 7
+    },
+    {
+      "text": "local RunService = game:GetService(\"RunService\")",
+      "line": 8
+    },
+    {
+      "text": "local GamePass = require(game.ServerScriptService.Services:WaitForChild(\"GamePassService\"))",
+      "line": 9
+    },
+    {
+      "text": "local PlayerData = require(game.ServerScriptService.Services:WaitForChild(\"PlayerDataService\"))",
+      "line": 10
+    },
+    {
+      "text": "",
+      "line": 11
+    },
+    {
+      "text": "local Bank = worldId==1 and require(game.ServerScriptService.Services.RunItemBankService)",
+      "line": 12
+    },
+    {
+      "text": "local Run = worldId==1 and require(game.ServerScriptService.Services.RunInventoryService)",
+      "line": 13
+    },
+    {
+      "text": "local M = {}",
+      "line": 15
+    },
+    {
+      "text": "",
+      "line": 16
+    },
+    {
+      "text": "local RewardConfig=require(RS.Config:WaitForChild(\"TrophyRewardConfig\"))",
+      "line": 17
+    },
+    {
+      "text": "local WorldGateConfig=require(RS.Config:WaitForChild(\"WorldGateConfig\"))",
+      "line": 18
+    },
+    {
+      "text": "",
+      "line": 19
+    },
+    {
+      "text": "-- Studio session metrics only: never written to PlayerData or DataStore.",
+      "line": 20
+    },
+    {
+      "text": "local studioCollections=setmetatable({}, {__mode=\"k\"})",
+      "line": 21
+    },
+    {
+      "text": "local map, remote, resetRun, isDefeated",
+      "line": 29
+    },
+    {
+      "text": "local sequence = 0",
+      "line": 30
+    },
+    {
+      "text": "local template = RS.UI.Templates:WaitForChild(\"TrophyRewardTemplate\")",
+      "line": 31
+    },
+    {
+      "text": "",
+      "line": 32
+    },
+    {
+      "text": "local hitboxes = Instance.new(\"Folder\")",
+      "line": 33
+    },
+    {
+      "text": "hitboxes.Name = worldId==2 and \"World2PersonalTrophyHitboxes\" or \"PersonalTrophyHitboxes\"",
+      "line": 34
+    },
+    {
+      "text": "",
+      "line": 42
+    },
+    {
+      "text": "function M.GetLobbySpawn()",
+      "line": 43
+    },
+    {
+      "text": "\tlocal area = map and map:FindFirstChild(\"TrainingArea\")",
+      "line": 44
+    },
+    {
+      "text": "\tlocal spawn = area and area:FindFirstChild(worldId==2 and \"World2LobbySpawn\" or \"SpawnLocation\")",
+      "line": 45
+    },
+    {
+      "text": "\treturn spawn and spawn:IsA(\"BasePart\") and spawn or nil",
+      "line": 46
+    },
+    {
+      "text": "end",
+      "line": 47
+    },
+    {
+      "text": "",
+      "line": 48
+    },
+    {
+      "text": "",
+      "line": 91
+    },
+    {
+      "text": "\tlocal character = player.Character",
+      "line": 92
+    },
+    {
+      "text": "\tlocal humanoid = character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 93
+    },
+    {
+      "text": "",
+      "line": 94
+    },
+    {
+      "text": "\tif not character",
+      "line": 95
+    },
+    {
+      "text": "\t\tor not part:IsDescendantOf(character)",
+      "line": 96
+    },
+    {
+      "text": "\tlocal _, size = character:GetBoundingBox()",
+      "line": 200
+    },
+    {
+      "text": "",
+      "line": 201
+    },
+    {
+      "text": "\tcharacter:PivotTo(",
+      "line": 202
+    },
+    {
+      "text": "\t\tspawn.CFrame",
+      "line": 203
+    },
+    {
+      "text": "\t\t\t* CFrame.new(",
+      "line": 204
+    },
+    {
+      "text": "\t\t\t\t0,",
+      "line": 205
+    },
+    {
+      "text": "\t)",
+      "line": 211
+    },
+    {
+      "text": "",
+      "line": 212
+    },
+    {
+      "text": "\tfor _, item in character:GetDescendants() do",
+      "line": 213
+    },
+    {
+      "text": "\t\tif item:IsA(\"BasePart\") then",
+      "line": 214
+    },
+    {
+      "text": "\t\t\titem.AssemblyLinearVelocity = Vector3.zero",
+      "line": 215
+    },
+    {
+      "text": "\t\t\titem.AssemblyAngularVelocity = Vector3.zero",
+      "line": 216
+    },
+    {
+      "text": "\tassert(major >= 1 and major <= #RewardConfig.Rewards and major % 1 == 0)",
+      "line": 231
+    },
+    {
+      "text": "",
+      "line": 232
+    },
+    {
+      "text": "\tlocal stage = map.BattleCorridor:FindFirstChild(",
+      "line": 233
+    },
+    {
+      "text": "\t\t(\"Stage%02d\"):format(major)",
+      "line": 234
+    },
+    {
+      "text": "\t)",
+      "line": 235
+    },
+    {
+      "text": "",
+      "line": 236
+    },
+    {
+      "text": "\tlocal bossStage = stage",
+      "line": 237
+    },
+    {
+      "text": "\t\tand stage:FindFirstChild(",
+      "line": 238
+    },
+    {
+      "text": "\t\t\t(\"Stage%d.5\"):format(major)",
+      "line": 239
+    },
+    {
+      "text": "\t\t)",
+      "line": 240
+    },
+    {
+      "text": "",
+      "line": 241
+    },
+    {
+      "text": "\tlocal marker = bossStage",
+      "line": 242
+    },
+    {
+      "text": "\t\tand (",
+      "line": 243
+    },
+    {
+      "text": "\t\t\tbossStage:FindFirstChild(\"EnemySpawn\")",
+      "line": 244
+    },
+    {
+      "text": "\t\t\tor bossStage:FindFirstChild(\"MiniBossSpawn\")",
+      "line": 245
+    },
+    {
+      "text": "\t\t)",
+      "line": 246
+    },
+    {
+      "text": "",
+      "line": 247
+    },
+    {
+      "text": "\tlocal floor = bossStage",
+      "line": 248
+    },
+    {
+      "text": "\t\tand bossStage:FindFirstChild(\"Floor\")",
+      "line": 249
+    },
+    {
+      "text": "",
+      "line": 250
+    },
+    {
+      "text": "\tassert(marker and floor, \"Trophy boss spawn/floor missing\")",
+      "line": 251
+    },
+    {
+      "text": "",
+      "line": 252
+    }
+  ],
+  "StarterGui.StrengthGui.InventoryCapacityUpgradeClient": [
+    {
+      "text": "local player = Players.LocalPlayer",
+      "line": 5
+    },
+    {
+      "text": "local gui = script.Parent",
+      "line": 6
+    },
+    {
+      "text": "local Responsive = require(RS.Modules:WaitForChild(\"ResponsivePanels\"))",
+      "line": 7
+    },
+    {
+      "text": "local Config = require(RS.Config:WaitForChild(\"InventoryCapacityPreviewConfig\"))",
+      "line": 8
+    },
+    {
+      "text": "local Upgrades = require(RS.Config:WaitForChild(\"InventoryCapacityConfig\"))",
+      "line": 9
+    },
+    {
+      "text": "local SpeedConfig = require(RS.Config:WaitForChild(\"SpeedConfig\"))",
+      "line": 10
+    },
+    {
+      "text": "local speedRemote = RS:WaitForChild(\"Remotes\"):WaitForChild(\"SpeedPurchaseRequest\")",
+      "line": 11
+    },
+    {
+      "text": "local speedStateRemote = RS.Remotes:WaitForChild(\"SpeedInventoryState\")",
+      "line": 12
+    },
+    {
+      "text": "local remote = RS:WaitForChild(\"Remotes\"):WaitForChild(\"PurchaseInventoryCapacity\")",
+      "line": 13
+    },
+    {
+      "text": "local shop = gui:WaitForChild(\"ShopPanel\")",
+      "line": 14
+    },
+    {
+      "text": "local shopCard = shop.MainScrollingFrame.Holder.CardWin",
+      "line": 15
+    },
+    {
+      "text": "local font = shop.Top.ShopText1.FontFace",
+      "line": 16
+    },
+    {
+      "text": "local black = Color3.fromRGB(12, 14, 20)",
+      "line": 17
+    },
+    {
+      "text": "-- derive its aspect from CurrentCamera (Edit capture may report a 1x1 viewport).",
+      "line": 55
+    },
+    {
+      "text": "local function bindWinButton(button, priceLabel)",
+      "line": 56
+    },
+    {
+      "text": " for _,d in button:GetDescendants() do",
+      "line": 57
+    },
+    {
+      "text": "  if d:IsA(\"GuiObject\") then d.Visible=false end",
+      "line": 58
+    },
+    {
+      "text": "  if d:IsA(\"UIStroke\") then d.Enabled=false end",
+      "line": 59
+    },
+    {
+      "text": " end",
+      "line": 60
+    },
+    {
+      "text": " local visual=game:GetService(\"StarterGui\").ScreenGui.Menus.RestockShop.Main.Common.Buy:Clone()",
+      "line": 62
+    },
+    {
+      "text": " visual.Name=\"PurchasedButtonVisual\"",
+      "line": 63
+    },
+    {
+      "text": " local input=visual:FindFirstChild(\"Button\")",
+      "line": 64
+    },
+    {
+      "text": " if input then input:Destroy() end",
+      "line": 65
+    },
+    {
+      "text": " visual.AnchorPoint=Vector2.zero;visual.Position=UDim2.new()",
+      "line": 66
+    },
+    {
+      "text": " visual.Size=UDim2.fromScale(1,1);visual.Visible=true;visual.ZIndex=button.ZIndex",
+      "line": 67
+    },
+    {
+      "text": " for _,d in visual:GetDescendants() do",
+      "line": 68
+    },
+    {
+      "text": "  if d:IsA(\"LuaSourceContainer\") then d:Destroy()",
+      "line": 69
+    },
+    {
+      "text": "  elseif d:IsA(\"GuiObject\") then",
+      "line": 70
+    },
+    {
+      "text": "   d.Active=false",
+      "line": 71
+    },
+    {
+      "text": "top.AnchorPoint = Vector2.zero; top.Position = UDim2.new(); top.Size = UDim2.new(1, 0, 0, 132)",
+      "line": 91
+    },
+    {
+      "text": "top.ZIndex = 63",
+      "line": 92
+    },
+    {
+      "text": "local titleIcon = top:FindFirstChild(\"MainShopIcon\")",
+      "line": 93
+    },
+    {
+      "text": "if titleIcon then titleIcon:Destroy() end",
+      "line": 94
+    },
+    {
+      "text": "for _,d in top:GetDescendants() do",
+      "line": 95
+    },
+    {
+      "text": "\tif d:IsA(\"GuiObject\") then d.ZIndex += 60 end",
+      "line": 96
+    },
+    {
+      "text": "\tif d:IsA(\"LuaSourceContainer\") then d:Destroy() end",
+      "line": 97
+    },
+    {
+      "text": "end",
+      "line": 98
+    },
+    {
+      "text": "local trigger, stall",
+      "line": 261
+    },
+    {
+      "text": "local function attachStall()",
+      "line": 262
+    },
+    {
+      "text": "\tlocal found = workspace:FindFirstChild(\"ShopStallTemplate\")",
+      "line": 263
+    },
+    {
+      "text": "\tif found == stall and trigger and trigger.Parent then return end",
+      "line": 264
+    },
+    {
+      "text": "\tif trigger then trigger:Destroy(); trigger = nil end",
+      "line": 265
+    },
+    {
+      "text": "\tstall = found",
+      "line": 266
+    },
+    {
+      "text": "  row.Label.Position=UDim2.fromOffset(narrow and 206 or 320,18)",
+      "line": 289
+    },
+    {
+      "text": "  row.Label.Size=UDim2.new(1,narrow and -220 or -346,0,80)",
+      "line": 290
+    },
+    {
+      "text": "  local a=row:FindFirstChild(\"CurrentCapacity\") or row.CurrentSpeed",
+      "line": 291
+    },
+    {
+      "text": "  local b=row:FindFirstChild(\"NextCapacity\") or row.NextSpeed",
+      "line": 292
+    },
+    {
+      "text": "  a.Position=UDim2.fromOffset(narrow and 214 or 322,narrow and 116 or 138)",
+      "line": 293
+    },
+    {
+      "text": "  a.Size=UDim2.fromOffset(narrow and 112 or 142,narrow and 94 or 126)",
+      "line": 294
+    },
+    {
+      "text": "  row.Arrow.Position=UDim2.fromOffset(narrow and 330 or 476,narrow and 126 or 148)",
+      "line": 295
+    },
+    {
+      "text": "\tattachStall()",
+      "line": 309
+    },
+    {
+      "text": "\tlocal character = player.Character",
+      "line": 310
+    },
+    {
+      "text": "\tlocal root = character and character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 311
+    },
+    {
+      "text": "\tlocal hum = character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 312
+    },
+    {
+      "text": "\tlocal near = false",
+      "line": 313
+    },
+    {
+      "text": "\tif trigger and root and hum and hum.Health > 0 and (player:GetAttribute(\"CurrentWorld\") or 1) == 1 then",
+      "line": 314
+    },
+    {
+      "text": "\t\tlocal p = trigger.CFrame:PointToObjectSpace(root.Position)",
+      "line": 315
+    },
+    {
+      "text": "\t\tlocal otherOpen = false",
+      "line": 322
+    },
+    {
+      "text": "\t\tfor _,name in {\"ShopPanel\", \"InventoryPanel\", \"MergePanel\", \"RebirthPanel\", \"DailyRewardsPanel\", \"TimeRewardsPanel\", \"CommunityRewardsPanel\"} do",
+      "line": 323
+    },
+    {
+      "text": "\t\t\tlocal other = gui:FindFirstChild(name)",
+      "line": 324
+    },
+    {
+      "text": "\t\t\tif other and other.Visible then otherOpen = true; break end",
+      "line": 325
+    },
+    {
+      "text": "\t\tend",
+      "line": 326
+    },
+    {
+      "text": "\t\tif not otherOpen then status.Text = \"\"; speedStatus.Text = \"\"; refresh(); refreshSpeed(); requestSpeedState(); panel.Visible = true end",
+      "line": 327
+    }
+  ],
+  "StarterPlayer.StarterPlayerScripts.Services.FloatClient": [
+    {
+      "text": "\tif not index then return end",
+      "line": 47
+    },
+    {
+      "text": "",
+      "line": 48
+    },
+    {
+      "text": "\tlocal gui = model:FindFirstChild(BOARD_NAME)",
+      "line": 49
+    },
+    {
+      "text": "\tif not (gui and gui:IsA(\"BillboardGui\")) then return end",
+      "line": 50
+    },
+    {
+      "text": "",
+      "line": 51
+    },
+    {
+      "text": "\tlocal board = Boards[index]",
+      "line": 52
+    },
+    {
+      "text": "\t\t-- Configured Dumbbell exhibits keep their authored station-relative transform.",
+      "line": 69
+    },
+    {
+      "text": "\t\tlocal index = tonumber(shoe.model.Name)",
+      "line": 70
+    },
+    {
+      "text": "\t\tif index and DumbbellStands.GetItemId(index) and shoe.model:FindFirstChild(\"Bar\") then continue end",
+      "line": 71
+    },
+    {
+      "text": "\t\tshoe.model:PivotTo(shoe.pivot + lift)",
+      "line": 72
+    },
+    {
+      "text": "\tend",
+      "line": 73
+    },
+    {
+      "text": "",
+      "line": 74
+    },
+    {
+      "text": "\tfor _, board in Boards do",
+      "line": 75
+    },
+    {
+      "text": "",
+      "line": 81
+    },
+    {
+      "text": "function FloatClient.start()",
+      "line": 82
+    },
+    {
+      "text": "\tlocal shoes = workspace:WaitForChild(SHOES_NAME, WAIT_TIMEOUT)",
+      "line": 83
+    },
+    {
+      "text": "\tif not shoes then",
+      "line": 84
+    },
+    {
+      "text": "\t\twarn(`[FloatClient] could not find {workspace:GetFullName()}.{SHOES_NAME}`)",
+      "line": 85
+    },
+    {
+      "text": "\t\treturn",
+      "line": 86
+    },
+    {
+      "text": "\tend",
+      "line": 87
+    },
+    {
+      "text": "",
+      "line": 88
+    },
+    {
+      "text": "\tlocal pads = workspace:WaitForChild(PADS_NAME, WAIT_TIMEOUT)",
+      "line": 89
+    },
+    {
+      "text": "\tif not pads then",
+      "line": 90
+    },
+    {
+      "text": "\t\twarn(`[FloatClient] could not find {workspace:GetFullName()}.{PADS_NAME}`)",
+      "line": 91
+    },
+    {
+      "text": "\t\treturn",
+      "line": 92
+    },
+    {
+      "text": "\tend",
+      "line": 93
+    },
+    {
+      "text": "",
+      "line": 94
+    },
+    {
+      "text": "\tfor _, model in ipairs(shoes:GetChildren()) do",
+      "line": 95
+    },
+    {
+      "text": "\t\taddShoe(model)",
+      "line": 96
+    },
+    {
+      "text": "\tend",
+      "line": 97
+    },
+    {
+      "text": "",
+      "line": 98
+    },
+    {
+      "text": "\tfor _, model in ipairs(pads:GetChildren()) do",
+      "line": 99
+    },
+    {
+      "text": "\t\taddBoard(model)",
+      "line": 100
+    },
+    {
+      "text": "\tend",
+      "line": 101
+    },
+    {
+      "text": "",
+      "line": 102
+    }
+  ],
+  "StarterPlayer.StarterPlayerScripts.Services.TreadmillClient": [
+    {
+      "text": "\toffered = nil",
+      "line": 53
+    },
+    {
+      "text": "",
+      "line": 54
+    },
+    {
+      "text": "\tlocal human = character:WaitForChild(HUMANOID_NAME, WAIT_TIMEOUT)",
+      "line": 55
+    },
+    {
+      "text": "\tif not (human and human:IsA(\"Humanoid\")) then",
+      "line": 56
+    },
+    {
+      "text": "\t\twarn(`[TreadmillClient] could not find {character:GetFullName()}.{HUMANOID_NAME}`)",
+      "line": 57
+    },
+    {
+      "text": "\t\treturn",
+      "line": 58
+    }
+  ],
+  "ServerScriptService.Services.TrainingManager": [
+    {
+      "text": "local Workspace=game:GetService(\"Workspace\")",
+      "line": 2
+    },
+    {
+      "text": "local CollectionService=game:GetService(\"CollectionService\")",
+      "line": 3
+    },
+    {
+      "text": "local StrengthManager=require(game.ServerScriptService.Services:WaitForChild(\"StrengthManager\"))",
+      "line": 4
+    },
+    {
+      "text": "local TreadmillConfig=require(game.ReplicatedStorage.Config:WaitForChild(\"TreadmillConfig\"))",
+      "line": 5
+    },
+    {
+      "text": "local GamePass=require(game.ServerScriptService.Services:WaitForChild(\"GamePassService\"))",
+      "line": 6
+    },
+    {
+      "text": "local ItemService=require(game.ServerScriptService.Services:WaitForChild(\"ItemService\"))",
+      "line": 7
+    },
+    {
+      "text": "local PotionService=require(game.ServerScriptService.Services:WaitForChild(\"PotionService\"))",
+      "line": 8
+    },
+    {
+      "text": "local treadmillFolder=Workspace:WaitForChild(\"Treadmills\")",
+      "line": 9
+    },
+    {
+      "text": "local TREADMILL_TAG=\"TrainingTreadmill\"",
+      "line": 10
+    },
+    {
+      "text": "local TrainingConfig=require(game.ReplicatedStorage.Config:WaitForChild(\"TrainingConfig\"))",
+      "line": 11
+    },
+    {
+      "text": "local TrainingManager={}",
+      "line": 12
+    },
+    {
+      "text": "local activeSessions={}",
+      "line": 13
+    },
+    {
+      "text": "local currentTreadmills={}",
+      "line": 14
+    },
+    {
+      "text": "",
+      "line": 16
+    },
+    {
+      "text": "local function getTrainingArea(treadmill)",
+      "line": 17
+    },
+    {
+      "text": " local area=treadmill:FindFirstChild(\"Area\")",
+      "line": 18
+    },
+    {
+      "text": " return area and area:IsA(\"BasePart\") and area or nil",
+      "line": 19
+    },
+    {
+      "text": "end",
+      "line": 20
+    },
+    {
+      "text": "",
+      "line": 21
+    },
+    {
+      "text": " local colors=TreadmillConfig.StrengthColors[config.Multiplier]",
+      "line": 53
+    },
+    {
+      "text": " if not colors then return end",
+      "line": 54
+    },
+    {
+      "text": " for _,part in treadmill:GetDescendants() do",
+      "line": 55
+    },
+    {
+      "text": "  if part:IsA(\"BasePart\") then",
+      "line": 56
+    },
+    {
+      "text": "   local role=treadmillVisualRole(part)",
+      "line": 57
+    },
+    {
+      "text": "   if role then",
+      "line": 58
+    },
+    {
+      "text": "-- collision/touch/query properties remain unchanged. New mats are visual only.",
+      "line": 67
+    },
+    {
+      "text": "local function applyGroupMats(treadmills)",
+      "line": 68
+    },
+    {
+      "text": " local map=Workspace:FindFirstChild(\"GeneratedMap\")",
+      "line": 69
+    },
+    {
+      "text": " local area=map and map:FindFirstChild(\"TrainingArea\")",
+      "line": 70
+    },
+    {
+      "text": " if not area then return end",
+      "line": 71
+    },
+    {
+      "text": " local groups={}",
+      "line": 72
+    },
+    {
+      "text": " for _,treadmill in ipairs(treadmills) do",
+      "line": 73
+    },
+    {
+      "text": "  local colors=entry and TreadmillConfig.StrengthColors[entry.Multiplier]",
+      "line": 75
+    },
+    {
+      "text": "  local index=tonumber(treadmill.Name:match(\"^Tredmill(%d+)$\"))",
+      "line": 76
+    },
+    {
+      "text": "  local mat=index and area:FindFirstChild(\"TrainingSpace_1_\"..index)",
+      "line": 77
+    },
+    {
+      "text": "  if colors and colors.MatColor and mat and mat:IsA(\"BasePart\") then",
+      "line": 78
+    },
+    {
+      "text": "   local group=groups[entry.Multiplier] or {}",
+      "line": 79
+    },
+    {
+      "text": "   groups[entry.Multiplier]=group",
+      "line": 80
+    },
+    {
+      "text": "   end",
+      "line": 98
+    },
+    {
+      "text": "   local name=\"TreadmillGroupMat_\"..multiplier",
+      "line": 99
+    },
+    {
+      "text": "   local groupMat=area:FindFirstChild(name)",
+      "line": 100
+    },
+    {
+      "text": "   if not groupMat then",
+      "line": 101
+    },
+    {
+      "text": "    groupMat=Instance.new(\"Part\")",
+      "line": 102
+    },
+    {
+      "text": "    groupMat.Name=name",
+      "line": 103
+    },
+    {
+      "text": "function TrainingManager.CreateTreadmill(area)",
+      "line": 125
+    },
+    {
+      "text": " assert(area and area:IsA(\"Model\"),\"TrainingArea Model required\")",
+      "line": 126
+    },
+    {
+      "text": " local old=area:FindFirstChild(\"Treadmill01\")",
+      "line": 127
+    },
+    {
+      "text": " if old then",
+      "line": 128
+    },
+    {
+      "text": "  if old:GetAttribute(\"ManagedBy\")==\"TrainingManager\" then old:Destroy()",
+      "line": 129
+    },
+    {
+      "text": "  else error(\"Unmanaged TrainingArea.Treadmill01 already exists\") end",
+      "line": 130
+    },
+    {
+      "text": " end",
+      "line": 131
+    },
+    {
+      "text": " local floor=assert(area:FindFirstChild(\"Floor\"),\"TrainingArea.Floor missing\")",
+      "line": 132
+    },
+    {
+      "text": " local model=Instance.new(\"Model\")",
+      "line": 133
+    },
+    {
+      "text": " model.Name=\"Treadmill01\" model:SetAttribute(\"ManagedBy\",\"TrainingManager\")",
+      "line": 134
+    },
+    {
+      "text": " model.Parent=area -- Legacy gain Attributes are not read; TrainingConfig is authoritative.",
+      "line": 135
+    },
+    {
+      "text": "",
+      "line": 155
+    },
+    {
+      "text": "function TrainingManager.CanUseTreadmill(player,treadmill)",
+      "line": 156
+    },
+    {
+      "text": " if not treadmill or not CollectionService:HasTag(treadmill,TREADMILL_TAG) or not treadmill:IsDescendantOf(Workspace) then return false end",
+      "line": 157
+    },
+    {
+      "text": " local config=TreadmillConfig.Get(treadmill.Name)",
+      "line": 158
+    },
+    {
+      "text": " if not config or not finitePositive(config.Multiplier) then return false end",
+      "line": 159
+    },
+    {
+      "text": " if config.RequiresPremium then return GamePass.AreEffectsEnabled(player) and GamePass.HasPremiumTreadmill(player),config end",
+      "line": 160
+    },
+    {
+      "text": " if old and old.Active and old.Treadmill==treadmill then return true,\"Already training\" end",
+      "line": 183
+    },
+    {
+      "text": " TrainingManager.StopTraining(player)",
+      "line": 184
+    },
+    {
+      "text": " local humanoid=player.Character and player.Character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 185
+    },
+    {
+      "text": " if not humanoid or humanoid.Health<=0 then return false,\"Player has no living Character\" end",
+      "line": 186
+    },
+    {
+      "text": " local gain=TrainingConfig.BaseGain",
+      "line": 187
+    },
+    {
+      "text": " local interval=TrainingConfig.TrainingInterval",
+      "line": 188
+    },
+    {
+      "text": "function TrainingManager.IsPlayerInsideZone(player,zone)",
+      "line": 212
+    },
+    {
+      "text": " local character=player.Character",
+      "line": 213
+    },
+    {
+      "text": " local humanoid=character and character:FindFirstChildOfClass(\"Humanoid\")",
+      "line": 214
+    },
+    {
+      "text": " local root=character and character:FindFirstChild(\"HumanoidRootPart\")",
+      "line": 215
+    },
+    {
+      "text": " if not humanoid or humanoid.Health<=0 or not root then return false end",
+      "line": 216
+    },
+    {
+      "text": " local rootLocal=zone.CFrame:PointToObjectSpace(root.Position)",
+      "line": 217
+    },
+    {
+      "text": " local h=zone.Size/2",
+      "line": 218
+    },
+    {
+      "text": "  local foundFoot=false",
+      "line": 221
+    },
+    {
+      "text": "  for _,name in {\"LeftFoot\",\"RightFoot\"} do",
+      "line": 222
+    },
+    {
+      "text": "   local foot=character:FindFirstChild(name)",
+      "line": 223
+    },
+    {
+      "text": "   if foot and foot:IsA(\"BasePart\") then",
+      "line": 224
+    },
+    {
+      "text": "    foundFoot=true",
+      "line": 225
+    },
+    {
+      "text": "    -- Actual lowest foot surface in Zone space, including foot/Zone rotation.",
+      "line": 226
+    },
+    {
+      "text": "function TrainingManager.Initialize()",
+      "line": 276
+    },
+    {
+      "text": " local treadmills={}",
+      "line": 277
+    },
+    {
+      "text": " for _,treadmill in ipairs(CollectionService:GetTagged(TREADMILL_TAG)) do",
+      "line": 278
+    },
+    {
+      "text": "  if treadmill.Parent==treadmillFolder then",
+      "line": 279
+    },
+    {
+      "text": "  local name=treadmill.Name",
+      "line": 280
+    },
+    {
+      "text": "  assert(treadmill:IsA(\"Model\"),treadmill:GetFullName()..\" must be a Model\")",
+      "line": 281
+    }
+  ],
+  "StarterPlayer.StarterPlayerScripts.Services.FeedbackClient": [
+    {
+      "text": "  local part = prompt.Parent",
+      "line": 16
+    },
+    {
+      "text": "  local model = part and part.Parent",
+      "line": 17
+    },
+    {
+      "text": "  local mailboxes = workspace:FindFirstChild(\"Mailboxes\")",
+      "line": 18
+    },
+    {
+      "text": "  if not mailboxes or not model or model.Parent ~= mailboxes",
+      "line": 19
+    },
+    {
+      "text": "   or model.Name ~= \"Feedback\" or part:GetAttribute(\"Feedback\") ~= true then return end",
+      "line": 20
+    },
+    {
+      "text": "",
+      "line": 21
+    }
+  ]
+}

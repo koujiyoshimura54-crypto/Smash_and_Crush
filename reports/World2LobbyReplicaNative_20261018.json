@@ -1,0 +1,650 @@
+{
+  "labels": [
+    {
+      "text": "08",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.StationNumber"
+    },
+    {
+      "text": "05",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.StationNumber"
+    },
+    {
+      "text": "04",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.StationNumber"
+    },
+    {
+      "text": "07",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.StationNumber"
+    },
+    {
+      "text": "03",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.StationNumber"
+    },
+    {
+      "text": "11",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.StationNumber"
+    },
+    {
+      "text": "01",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.StationNumber"
+    },
+    {
+      "text": "12",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.StationNumber"
+    },
+    {
+      "text": "10",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.StationNumber"
+    },
+    {
+      "text": "02",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.StationNumber"
+    },
+    {
+      "text": "09",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.StationNumber"
+    },
+    {
+      "text": "06",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.StationNumber"
+    },
+    {
+      "text": "Dumbbells",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.Billboard.BillboardGui.Name"
+    },
+    {
+      "text": "01",
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.StationBillboard.Multiplier"
+    },
+    {
+      "text": "02",
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.StationBillboard.Multiplier"
+    },
+    {
+      "text": "03",
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.StationBillboard.Multiplier"
+    },
+    {
+      "text": "04  Robux",
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.StationBillboard.Multiplier"
+    },
+    {
+      "text": "Treadmills",
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.Billboard.BillboardGui.Name"
+    },
+    {
+      "text": "Legendary",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Legendary.Prize.Info"
+    },
+    {
+      "text": "Mythic",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Mythic.Prize.Info"
+    },
+    {
+      "text": "Rare",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Rare.Prize.Info"
+    },
+    {
+      "text": "Eggs",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Billboard.BillboardGui.Name"
+    },
+    {
+      "text": "Basic",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Basic.Prize.Info"
+    },
+    {
+      "text": "Merge",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.MergeDisplay.BillboardGui.Info"
+    },
+    {
+      "text": "UpGrade",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.UpgradesDisplay.UpGradeBillboard.Tittle"
+    },
+    {
+      "text": "Limited Egg 01",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.LimitedEggDisplay.BillboardGui.AlwaysBetter"
+    },
+    {
+      "text": "Win Boost",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.WinBoostDisplay.BillboardGui.Text"
+    },
+    {
+      "text": "Rank",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.TotalRankingDisplay.Main.RankingSurfaceGui.Top.Rank"
+    },
+    {
+      "text": "Player",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.TotalRankingDisplay.Main.RankingSurfaceGui.Top.UserName"
+    },
+    {
+      "text": "Strength",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.TotalRankingDisplay.Main.RankingSurfaceGui.Top.Amount"
+    },
+    {
+      "text": "TOTAL STRENGTH RANKING",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.TotalRankingDisplay.Main.RankingSurfaceGui.TitleLabel"
+    },
+    {
+      "text": "Rank",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.DailyRankingDisplay.Main.RankingSurfaceGui.Top.Rank"
+    },
+    {
+      "text": "Player",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.DailyRankingDisplay.Main.RankingSurfaceGui.Top.UserName"
+    },
+    {
+      "text": "Strength",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.DailyRankingDisplay.Main.RankingSurfaceGui.Top.Amount"
+    },
+    {
+      "text": "DAILY STRENGTH RANKING",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.DailyRankingDisplay.Main.RankingSurfaceGui.TitleLabel"
+    },
+    {
+      "text": "Feedback!",
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.FeedbackDisplay.BillboardGui.Tittle"
+    }
+  ],
+  "parts": 527,
+  "tagged": 0,
+  "images": [
+    {
+      "number": 1,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "01",
+      "priceVisible": false,
+      "image": "rbxassetid://117636801345125",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 2,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "02",
+      "priceVisible": false,
+      "image": "rbxassetid://87392597068250",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 3,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "03",
+      "priceVisible": false,
+      "image": "rbxassetid://90484814439233",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 4,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "04",
+      "priceVisible": false,
+      "image": "rbxassetid://92409856077185",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 5,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "05",
+      "priceVisible": false,
+      "image": "rbxassetid://76660708269544",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 6,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "06",
+      "priceVisible": false,
+      "image": "rbxassetid://73514550426804",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 7,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "07",
+      "priceVisible": false,
+      "image": "rbxassetid://86006626767728",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 8,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "08",
+      "priceVisible": false,
+      "image": "rbxassetid://101543601215487",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 9,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "09",
+      "priceVisible": false,
+      "image": "rbxassetid://70465860935084",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 10,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "10",
+      "priceVisible": false,
+      "image": "rbxassetid://89190858658364",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 11,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "11",
+      "priceVisible": false,
+      "image": "rbxassetid://135716155094439",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    },
+    {
+      "number": 12,
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.ItemIcon",
+      "isLoaded": true,
+      "numberText": "12",
+      "priceVisible": false,
+      "image": "rbxassetid://116813512043021",
+      "amountVisible": false,
+      "scaleType": "Enum.ScaleType.Fit",
+      "size": "{9, 0}, {9, 0}",
+      "offset": "0, 6.5, 0",
+      "ownAdornee": true,
+      "fetch": "Enum.AssetFetchStatus.Success"
+    }
+  ],
+  "externalAdornees": [],
+  "unsafe": [],
+  "preloaded": true,
+  "treadmills": [
+    {
+      "attrs": {
+        "VisualSource": "Previous purchase Treadmill01",
+        "DisplayOnly": true,
+        "OfferCategory": "Undecided",
+        "WorldId": 2,
+        "StationIndex": 1
+      },
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01",
+      "name": "01",
+      "label": "01",
+      "center": "-17.45704460144043, 8.150375366210938, 1888.3416748046875",
+      "size": "15.888230323791504, 12.300751686096191, 23.923503875732422"
+    },
+    {
+      "attrs": {
+        "VisualSource": "Previous purchase Treadmill02",
+        "DisplayOnly": true,
+        "OfferCategory": "Undecided",
+        "WorldId": 2,
+        "StationIndex": 2
+      },
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02",
+      "name": "02",
+      "label": "02",
+      "center": "6.375422954559326, 9.435810089111328, 1890.8416748046875",
+      "size": "19.208864212036133, 14.871620178222656, 28.923534393310547"
+    },
+    {
+      "attrs": {
+        "VisualSource": "Previous purchase Treadmill03",
+        "DisplayOnly": true,
+        "OfferCategory": "Undecided",
+        "WorldId": 2,
+        "StationIndex": 3
+      },
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03",
+      "name": "03",
+      "label": "03",
+      "center": "37.013893127441406, 12.722777366638184, 1897.6458740234375",
+      "size": "29.500232696533203, 21.445554733276367, 42.53168487548828"
+    },
+    {
+      "attrs": {
+        "VisualSource": "Previous purchase Treadmill04",
+        "DisplayOnly": true,
+        "OfferCategory": "Robux",
+        "WorldId": 2,
+        "StationIndex": 4
+      },
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04",
+      "name": "04",
+      "label": "04  Robux",
+      "center": "72.79804992675781, 12.72277545928955, 1897.6458740234375",
+      "size": "29.50023651123047, 21.4455509185791, 42.53168487548828"
+    }
+  ],
+  "studioId": "8cc0e3cb-102f-4ad8-b2b4-723e82126b4a",
+  "studioPid": 19864,
+  "mode": "Edit",
+  "localPlay": false,
+  "savePublish": false,
+  "cloudOperationsVerified": false,
+  "captures": [
+    "W1Replica_Aerial_20261018.jpg",
+    "W2Replica_Aerial_20261018.jpg",
+    "W1Replica_Overview_20261018.jpg",
+    "W2Replica_Overview_20261018.jpg",
+    "W1Replica_Dumbbells_20261018.jpg",
+    "W2Replica_Dumbbells_20261018.jpg",
+    "W1Replica_TreadmillRow_20261018.jpg",
+    "W2Replica_TreadmillRow_20261018.jpg",
+    "W1Replica_Eggs_20261018.jpg",
+    "W2Replica_Eggs_20261018.jpg",
+    "W1Replica_Booths_20261018.jpg",
+    "W2Replica_Booths_20261018.jpg",
+    "W1Replica_LimitedEgg_20261018.jpg",
+    "W2Replica_LimitedEgg_20261018.jpg",
+    "W1Replica_Rankings_20261018.jpg",
+    "W2Replica_Rankings_20261018.jpg",
+    "W1Replica_Feedback_20261018.jpg",
+    "W2Replica_Feedback_20261018.jpg",
+    "W1Replica_GateBoost_20261018.jpg",
+    "W2Replica_GateBoost_20261018.jpg",
+    "W2Replica_Treadmill01_02_20261018.jpg",
+    "W2Replica_Treadmill03_04_20261018.jpg",
+    "W2Replica_DumbbellFrontRow_20261018.jpg"
+  ],
+  "temporaryCameraAndVisualStateRestored": true,
+  "ownedVerificationStudioClosedWithoutSaving": true,
+  "userStudioUntouched": "1395d9d1-323d-4792-84dc-5194c5a58099",
+  "finalFileSha256": "cf195c7ff1d7445b7c92f68d454a19fc6409bd61b0fd2e0d991c74b1beddd170",
+  "finalFileLockAbsent": true,
+  "readOnlyReferenceUnchanged": true,
+  "comparisonCameras": [
+    {
+      "view": "Aerial",
+      "world1Camera": [
+        274.5,
+        250,
+        0
+      ],
+      "world1LookAt": [
+        274.5,
+        4,
+        10.5
+      ],
+      "world2Camera": [
+        14.620012283325195,
+        248,
+        1934.97998046875
+      ],
+      "world2LookAt": [
+        14.620012283325195,
+        2,
+        1945.47998046875
+      ]
+    },
+    {
+      "view": "Overview",
+      "world1Camera": [
+        430,
+        150,
+        170
+      ],
+      "world1LookAt": [
+        274.5,
+        5,
+        10.5
+      ],
+      "world2Camera": [
+        170.1200122833252,
+        148,
+        2104.97998046875
+      ],
+      "world2LookAt": [
+        14.620012283325195,
+        3,
+        1945.47998046875
+      ]
+    },
+    {
+      "view": "Dumbbells",
+      "world1Camera": [
+        275,
+        22,
+        12
+      ],
+      "world1LookAt": [
+        215,
+        16,
+        12
+      ],
+      "world2Camera": [
+        15.120012283325195,
+        20,
+        1946.97998046875
+      ],
+      "world2LookAt": [
+        -44.879987716674805,
+        14,
+        1946.97998046875
+      ]
+    },
+    {
+      "view": "TreadmillRow",
+      "world1Camera": [
+        290.95,
+        36,
+        50
+      ],
+      "world1LookAt": [
+        290.95,
+        10,
+        -40
+      ],
+      "world2Camera": [
+        31.070012283325184,
+        34,
+        1984.97998046875
+      ],
+      "world2LookAt": [
+        31.070012283325184,
+        8,
+        1894.97998046875
+      ]
+    },
+    {
+      "view": "Eggs",
+      "world1Camera": [
+        305,
+        10,
+        13
+      ],
+      "world1LookAt": [
+        343,
+        9,
+        13
+      ],
+      "world2Camera": [
+        45.120012283325195,
+        8,
+        1947.97998046875
+      ],
+      "world2LookAt": [
+        83.1200122833252,
+        7,
+        1947.97998046875
+      ]
+    },
+    {
+      "view": "Booths",
+      "world1Camera": [
+        287.8,
+        13,
+        14
+      ],
+      "world1LookAt": [
+        263,
+        11,
+        14
+      ],
+      "world2Camera": [
+        27.920012283325207,
+        11,
+        1948.97998046875
+      ],
+      "world2LookAt": [
+        3.1200122833251953,
+        9,
+        1948.97998046875
+      ]
+    },
+    {
+      "view": "LimitedEgg",
+      "world1Camera": [
+        300,
+        9,
+        23
+      ],
+      "world1LookAt": [
+        315,
+        9,
+        40
+      ],
+      "world2Camera": [
+        40.120012283325195,
+        7,
+        1957.97998046875
+      ],
+      "world2LookAt": [
+        55.120012283325195,
+        7,
+        1974.97998046875
+      ]
+    },
+    {
+      "view": "Rankings",
+      "world1Camera": [
+        336,
+        10,
+        42
+      ],
+      "world1LookAt": [
+        336,
+        16,
+        70
+      ],
+      "world2Camera": [
+        76.1200122833252,
+        8,
+        1976.97998046875
+      ],
+      "world2LookAt": [
+        76.1200122833252,
+        14,
+        2004.97998046875
+      ]
+    },
+    {
+      "view": "Feedback",
+      "world1Camera": [
+        285,
+        8,
+        -2
+      ],
+      "world1LookAt": [
+        277.44,
+        8,
+        -3.54
+      ],
+      "world2Camera": [
+        25.120012283325195,
+        6,
+        1932.97998046875
+      ],
+      "world2LookAt": [
+        17.560012283325193,
+        6,
+        1931.43998046875
+      ]
+    },
+    {
+      "view": "GateBoost",
+      "world1Camera": [
+        247,
+        12,
+        47
+      ],
+      "world1LookAt": [
+        247,
+        13,
+        76
+      ],
+      "world2Camera": [
+        -12.879987716674805,
+        10,
+        1981.97998046875
+      ],
+      "world2LookAt": [
+        -12.879987716674805,
+        11,
+        2010.97998046875
+      ]
+    }
+  ]
+}

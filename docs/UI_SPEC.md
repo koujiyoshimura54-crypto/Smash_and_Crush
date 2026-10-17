@@ -584,3 +584,11 @@ Reuse the purchased Treadmill number labels, with visible centered scale coordin
 Reused normal Egg displays show species names and the shared Eggs sign; Limited Egg retains its name/artwork. Merge/Upgrades booths, Win Boost, ranking-board headings and Feedback retain the purchased appearance. Hide or blank only prices, effects, requirements, saved ranking rows/avatars and inactive inputs. Keep signs/UI artwork visible. No purchase affordance should imply a free or configured offer. There is no new World2 Shop/Inventory product entry.
 
 Native Edit screenshots and IsLoaded observations are recorded separately from exact saved-property checks and memory-only simulations. Cloud walking, physical input, real transactions/training and all-device views remain unverified. Temporary inspection camera/GUI/reference-library visibility is restored; Studio Save/Publish and local Play are not performed.
+
+## 2026-10-18 — Current World2 replica display contract
+
+Supersedes the rejected expansion presentation for the newly downloaded file. World1 saved UI/Source remains unchanged in this task. World2 copies the actual World1 facility assemblies at the same relative positions/orientations. Each of twelve existing cloned ItemIcons uses the approved W2-1D..W2-12D URI, its own Press Adornee, Fit/zero crop and native aspect constraint. Board9x9, offset(0,6.5,0), image84%/number12%; price/effect/purchase/Owned/Equipped rows hidden. No3D Dumbbell exhibits are copied and no product definition is added.
+
+Only four approved earlier treadmills are shown:01,02,03 and04 Robux. Old numeric speed/owner/admin labels are blank.04 has category text only; no purchase button/amount/ID/multiplier. Other facilities retain purchased names/artwork/headings while undefined numeric fields/ranking rows and inactive inputs are blank/hidden. Display metadata does not authorize gameplay; copied tags/IDs/Sources/prompts are excluded and actual selectors checked.
+
+All12 World2 ItemIcons are both configured and actually loaded in final Studio Edit (Success/IsLoaded). Same-direction overhead/front pairs and detail views are in the [current replica report](../reports/World2LobbyReplica_20261018.md). Runtime/Cloud interaction and all-device views remain unverified. No local Play, Save or Publish.

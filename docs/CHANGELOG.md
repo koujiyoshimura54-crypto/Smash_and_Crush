@@ -954,3 +954,9 @@
 - Expanded the actual lobby floor 184.34 x 140.18 -> 377.46 x 252.38 studs, repeated native pink perimeter/decor, connected red/gold facility approaches and kept BattleCorridor/Spawn/Gate fixed. Reoriented the existing twelve 2D Dumbbells; installed twelve inert Treadmills from both purchased families and reused current physical Egg/Merge/Upgrades/Win Boost/ranking/Feedback facilities.
 - World2 numerical design and all gameplay/transaction integration remain NOT IMPLEMENTED; no free/zero offers or copied purchase/training identities. Actual Source strings are unchanged. Corrected only saved World1 station8 Image to 110171141876908; current Master was already correct, mirrored accordingly.
 - Same-file binary/reference/SharedString/UniqueId/reDecode checks, scoped offline simulations and final native Edit inspection pass. Twelve World2 images plus the corrected World1 image load. Native screenshots and explicit unverified Cloud/input/Play boundaries are in DEV_STATUS and reports/World2LobbyFacilities*_20261017.json. No local Play or Studio Save/Publish.
+
+## 2026-10-18 — World2 lobby copied from actual World1 at scale1.0
+
+- Built on the newly downloaded pre-modification CurrentCloud; rejected b06e26e layout/script was not reused. Pink floor184.34x140.18→237x149 matches actual World1; shared equipment positions/orientations and route graph retained.
+- Installed requested display-only facilities including twelve2D Dumbbells and only earlier Treadmill01..04. No World1/gameplay Source changes, numerical design or purchase/training connection.
+- Same-file repaired binary write/reDecode and native Studio Edit reopen pass;12/12 images actually loaded;23 comparison/detail captures. No local Play/Save/Publish. Cloud operation unverified. [Evidence and full paths](../reports/World2LobbyReplica_20261018.md).
