@@ -523,3 +523,9 @@ Supersedes the pending exhibit question above: the owner explicitly approved reu
 Replace only the old shoe descendants of `Workspace.ShoesModels.8..12` with the seven Parts/six internal welds from exhibit7, translated by each destination Press position relative to Press7. Retain original station roots/Press transforms, the four-column/three-tier order, ramp/carpet/access path and exhibits1..7. All new displays are anchored/noncolliding and remain within their own Press footprint. FloatClient excludes every configured Dumbbell exhibit from shoe animation. The unchanged held-display controller continues using ServerStorage.Templates.DumbbellDisplayTemplate for all twelve IDs.
 
 Master prices/additions/images, server gameplay, save/ownership IDs, Pet/Egg work, other systems and World2 remain unchanged. Facilities are written to local CurrentCloud; native rendering/input/Cloud play remain pending owner Save/Publish.
+
+## 2026-10-17 - Dumbbell facility display-only World2 phase
+
+World1 retains twelve existing server-owned stepping stations, purchase auto-equip, free owned equip, equipped no-op, occupancy latch, per-player green/state tracking and existing save/ownership rules. Only six Master image IDs change. Stationary 3D exhibits are removed; the shared template and character-held Dumbbells remain. Existing ItemIcon rows provide2D exhibits.
+
+World2 adds twelve numbered purchased-asset facilities and image displays only under Workspace.World2Map.TrainingArea.DumbbellDisplays. WorldId2/StandIndex/image attributes are display metadata, without ItemId or an active product. Prices, Strength additions and purchase/equip integration are NOT IMPLEMENTED. Do not treat these displays as free items or World1 purchases; do not add incomplete Master/Shop/Inventory products. Existing Main/Multiplier startup stays disabled. Future numbers and connection require a separate task. Other gameplay/balance/world equipment rules are unchanged.

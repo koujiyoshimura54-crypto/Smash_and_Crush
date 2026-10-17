@@ -941,3 +941,9 @@
 - Update six RequiredStrength entries in World1BossConfig and remove Stage5's fixed wall override. Keep Boss factor5 and derived wall factors2/2.5/3/4. Stage1-4, Win rewards, World2 and all other systems/placements are preserved.
 - Actual saved-Source simulation passes999 assertions covering HP, generation attributes, reset/retry, real damage, wall surplus, World2 isolation and synthetic HP gauges/formatting. Repository-source variant passes783; seven referent regression tests pass. No local/Cloud Play or real UI/input claims.
 - Same-file Source-only writeback preserves179484 Instances, dense INST/PROP.Ref/PRNT relationships and UniqueId duplicates0. Actual native Studio EditFile reaches Edit/PlaceIdle; owned verification Studio24296 closed without saving, hash unchanged and lock released. Save/Publish remains the owner's action. Evidence and limits: DEV_STATUS and reports/World1BossBalance_20261017.json.
+
+## 2026-10-17 - Two-world 2D Dumbbell facilities
+
+- Reused World1's twelve ItemIcons, enlarged/repositioned their purchased billboard rows and removed only the twelve stationary3D exhibits. Updated six Master images; slot6 is W1-5DV2 and slot5 remains unchanged. Prices/effects/IDs, held template and existing purchase/equip/save logic are preserved.
+- Actual World2 had no corresponding facilities. Added twelve purchased station/stair copies in one isolated display-only group, numbered01..12, with image metadata and no ItemId/input/product/purchase or Shop/Inventory connection.
+- Same-file write/reDecode/dense INST/Ref/PRNT/SharedString/UniqueId0 and native Studio reopen pass;521 purchase/state/UI and417 presentation/empty-display simulated assertions pass. Five native Edit screenshots and clearance measurements recorded. All24 IDs configured;23 images load; World1 slot8 specified ID returns404. Live Cloud/operations remain unverified; no local Play/Save/Publish.

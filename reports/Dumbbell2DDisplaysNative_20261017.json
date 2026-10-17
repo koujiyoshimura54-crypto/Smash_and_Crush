@@ -1,0 +1,436 @@
+{
+  "emptyShoesContainer": true,
+  "world2Bounds": {
+    "min": {
+      "1": -58.71149826049805,
+      "2": -2.912569046020508,
+      "3": 1887.777587890625
+    },
+    "max": {
+      "1": 6.711493492126465,
+      "2": 31.940624237060547,
+      "3": 1946.2225341796875
+    }
+  },
+  "floor": {
+    "top": 2,
+    "minZ": 1879.8000259399414,
+    "maxX": 120.08999824523926,
+    "maxZ": 2019.9800033569336,
+    "minX": -64.24999809265137
+  },
+  "gateGap": 45.508503913879395,
+  "spawnGap": 39.12726130641845,
+  "placeId": 0,
+  "facilities": [
+    {
+      "path": "Workspace.PerStepButtons.1",
+      "index": 1,
+      "adornee": "Workspace.PerStepButtons.1.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_01"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://131314372434925",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.2",
+      "index": 2,
+      "adornee": "Workspace.PerStepButtons.2.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_02"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://126019719977317",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.3",
+      "index": 3,
+      "adornee": "Workspace.PerStepButtons.3.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_03"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://96428309215438",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.4",
+      "index": 4,
+      "adornee": "Workspace.PerStepButtons.4.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_04"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://77317637436768",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.5",
+      "index": 5,
+      "adornee": "Workspace.PerStepButtons.5.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_05"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://134662273184560",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.6",
+      "index": 6,
+      "adornee": "Workspace.PerStepButtons.6.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_06"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://92138447886967",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.7",
+      "index": 7,
+      "adornee": "Workspace.PerStepButtons.7.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_07"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://79967244610623",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.8",
+      "index": 8,
+      "adornee": "Workspace.PerStepButtons.8.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_08"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://11017141876908",
+      "loaded": false,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.9",
+      "index": 9,
+      "adornee": "Workspace.PerStepButtons.9.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_09"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://129522181601539",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.10",
+      "index": 10,
+      "adornee": "Workspace.PerStepButtons.10.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_10"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://92929093922544",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.11",
+      "index": 11,
+      "adornee": "Workspace.PerStepButtons.11.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_11"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://89748292939648",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "path": "Workspace.PerStepButtons.12",
+      "index": 12,
+      "adornee": "Workspace.PerStepButtons.12.Press",
+      "effectVisible": true,
+      "attributes": {
+        "ItemId": "NORMAL_12"
+      },
+      "amountVisible": true,
+      "image": "rbxassetid://121194224737958",
+      "loaded": true,
+      "world": 1
+    },
+    {
+      "number": "01",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1",
+      "index": 1,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://117636801345125",
+        "DisplayOnly": true,
+        "StandIndex": 1,
+        "WorldId": 2,
+        "ImageName": "W2-1D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://117636801345125",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.Press",
+      "world": 2
+    },
+    {
+      "number": "02",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2",
+      "index": 2,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://87392597068250",
+        "DisplayOnly": true,
+        "StandIndex": 2,
+        "WorldId": 2,
+        "ImageName": "W2-2D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://87392597068250",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.Press",
+      "world": 2
+    },
+    {
+      "number": "03",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3",
+      "index": 3,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://90484814439233",
+        "DisplayOnly": true,
+        "StandIndex": 3,
+        "WorldId": 2,
+        "ImageName": "W2-3D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://90484814439233",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.Press",
+      "world": 2
+    },
+    {
+      "number": "04",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4",
+      "index": 4,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://92409856077185",
+        "DisplayOnly": true,
+        "StandIndex": 4,
+        "WorldId": 2,
+        "ImageName": "W2-4D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://92409856077185",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.Press",
+      "world": 2
+    },
+    {
+      "number": "05",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5",
+      "index": 5,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://76660708269544",
+        "DisplayOnly": true,
+        "StandIndex": 5,
+        "WorldId": 2,
+        "ImageName": "W2-5D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://76660708269544",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.Press",
+      "world": 2
+    },
+    {
+      "number": "06",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6",
+      "index": 6,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://73514550426804",
+        "DisplayOnly": true,
+        "StandIndex": 6,
+        "WorldId": 2,
+        "ImageName": "W2-6D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://73514550426804",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.Press",
+      "world": 2
+    },
+    {
+      "number": "07",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7",
+      "index": 7,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://86006626767728",
+        "DisplayOnly": true,
+        "StandIndex": 7,
+        "WorldId": 2,
+        "ImageName": "W2-7D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://86006626767728",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.Press",
+      "world": 2
+    },
+    {
+      "number": "08",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8",
+      "index": 8,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://101543601215487",
+        "DisplayOnly": true,
+        "StandIndex": 8,
+        "WorldId": 2,
+        "ImageName": "W2-8D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://101543601215487",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.Press",
+      "world": 2
+    },
+    {
+      "number": "09",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9",
+      "index": 9,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://70465860935084",
+        "DisplayOnly": true,
+        "StandIndex": 9,
+        "WorldId": 2,
+        "ImageName": "W2-9D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://70465860935084",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.Press",
+      "world": 2
+    },
+    {
+      "number": "10",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10",
+      "index": 10,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://89190858658364",
+        "DisplayOnly": true,
+        "StandIndex": 10,
+        "WorldId": 2,
+        "ImageName": "W2-10D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://89190858658364",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.Press",
+      "world": 2
+    },
+    {
+      "number": "11",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11",
+      "index": 11,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://135716155094439",
+        "DisplayOnly": true,
+        "StandIndex": 11,
+        "WorldId": 2,
+        "ImageName": "W2-11D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://135716155094439",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.Press",
+      "world": 2
+    },
+    {
+      "number": "12",
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12",
+      "index": 12,
+      "loaded": true,
+      "effectVisible": false,
+      "attributes": {
+        "DisplayImage": "rbxassetid://116813512043021",
+        "DisplayOnly": true,
+        "StandIndex": 12,
+        "WorldId": 2,
+        "ImageName": "W2-12D"
+      },
+      "amountVisible": false,
+      "image": "rbxassetid://116813512043021",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.Press",
+      "world": 2
+    }
+  ],
+  "world2GroupAttributes": {
+    "DisplayOnly": true,
+    "WorldId": 2
+  },
+  "supportIntersectsFloor": true,
+  "running": false,
+  "templateParts": 7,
+  "fetch": {
+    "rbxassetid://129522181601539": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://11017141876908": "Enum.AssetFetchStatus.Failure",
+    "rbxassetid://92138447886967": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://73514550426804": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://70465860935084": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://89748292939648": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://96428309215438": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://89190858658364": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://90484814439233": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://121194224737958": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://86006626767728": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://116813512043021": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://87392597068250": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://135716155094439": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://79967244610623": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://77317637436768": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://76660708269544": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://126019719977317": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://101543601215487": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://92409856077185": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://92929093922544": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://131314372434925": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://134662273184560": "Enum.AssetFetchStatus.Success",
+    "rbxassetid://117636801345125": "Enum.AssetFetchStatus.Success"
+  },
+  "itemIdsInWorld2": 0,
+  "scriptsInWorld2": 0,
+  "minPathGap": 8.038553270508245,
+  "oldMainDisabled": []
+}

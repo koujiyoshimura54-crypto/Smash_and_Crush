@@ -1,6 +1,7 @@
 """Validate/canonicalize binary instance referents without editing any Instances.
 
-Python 3.14 (compression.zstd). Read-only by default. --write repairs only the
+Python 3.14 (compression.zstd), or earlier with zstandard. Read-only by default.
+--write repairs only the
 specified existing file after a complete in-memory validation. No backup/place
 copy is created. Native Studio EditFile loading is still a required separate check.
 """
@@ -8,7 +9,13 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
-from compression import zstd
+try:
+    from compression import zstd
+except ImportError:  # Existing Python 3.10 workstation, with zstandard installed.
+    import zstandard
+    class zstd:
+        compress = staticmethod(lambda data: zstandard.ZstdCompressor().compress(data))
+        decompress = staticmethod(lambda data: zstandard.ZstdDecompressor().decompress(data))
 import hashlib
 import json
 import os
