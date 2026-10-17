@@ -935,3 +935,9 @@
 - Correct8fa05f6's sparse binary referents:143 IDs exceeded the header's179484 count after removal/addition. Preserve all Instances/content; renumber only internal IDs and their references into the available holes.
 - Add a fail-closed referent validator/repair writer and seven regression tests. All non-reference bytes, Sources, properties, item IDs and hierarchy/reference targets remain unchanged; UniqueId duplicates0.
 - Real Studio0.743.0.7431133 opened the repaired same file through EditFile, reached Edit/PlaceIdle and created the target editor window without the reported deserialization error. Closed the owned verification process without Save/Publish/Play. Full evidence and hash: DEV_STATUS and reports/CurrentCloudReferentRepair_20261016.json.
+
+## 2026-10-17 - Provisional World1 Stage5-10 Boss and Wall HP
+
+- Update six RequiredStrength entries in World1BossConfig and remove Stage5's fixed wall override. Keep Boss factor5 and derived wall factors2/2.5/3/4. Stage1-4, Win rewards, World2 and all other systems/placements are preserved.
+- Actual saved-Source simulation passes999 assertions covering HP, generation attributes, reset/retry, real damage, wall surplus, World2 isolation and synthetic HP gauges/formatting. Repository-source variant passes783; seven referent regression tests pass. No local/Cloud Play or real UI/input claims.
+- Same-file Source-only writeback preserves179484 Instances, dense INST/PROP.Ref/PRNT relationships and UniqueId duplicates0. Actual native Studio EditFile reaches Edit/PlaceIdle; owned verification Studio24296 closed without saving, hash unchanged and lock released. Save/Publish remains the owner's action. Evidence and limits: DEV_STATUS and reports/World1BossBalance_20261017.json.

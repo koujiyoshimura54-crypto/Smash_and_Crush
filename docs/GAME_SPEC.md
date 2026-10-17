@@ -167,7 +167,13 @@ UI寸法とGapはWall高さへ比例させない。Wall高さはSurfaceGui座標
 
 World1のBoss UIはClient専用の半透明BossDisplaySurfaceをRuntime生成して表示する。Stage1〜9は次Stage .1 Wall、Stage10はStage10BoundaryWallを基準とし、Mapの恒久配置は増やさない。Boss実Modelから生成時に測った高さでUI位置を決め、BossDisplayConfigで透明度・前方間隔・高さ比率・上下補正を調整できる。既存CombatStateの表示タイミングと実HP、NumberFormat、Combat / Carry / Balance / WorldComplete / Gateは維持する。[実装・検証報告](../reports/World1_Boss_Display_Surface_20260916/build_report.md)。
 
-## 2026-09-16 — World1 Balance Config統合
+## 2026-10-17 - Provisional World1 HP update
+
+World1BossConfig remains authoritative for Boss and wall generation, player reset/retry snapshots, enemy HP attributes and displayed current/maximum HP. The latest owner instruction changes Stage5-10 RequiredStrength to 20,000 / 100,000 / 700,000 / 3,000,000 / 15,000,000 / 50,000,000. Stage5 now uses the same derived wall factors 2 / 2.5 / 3 / 4 as Stage6-10; only Stage1-4 retain fixed walls. Boss factor remains5. See the current full table in BALANCE_SPEC; older dated tables below are historical.
+
+Only the Config Source changes. Keep real damage, Glove effects, per-player encounters, healing/reset/retry behavior, wall-to-wall surplus and no surplus into Boss. World2, Win rewards, levels/unlocks/Rebirth, other progression/purchase/save systems and authored models/transforms are unchanged. Offline simulation and native Edit loading are documented separately from unperformed Cloud gameplay and progression timing.
+
+## 2026-09-16 — World1 Balance Config統合 (historical)
 
 World1 Stage1〜10の唯一のBalance正本は `ReplicatedStorage.Config.World1BossConfig`。RequiredStrength、RecommendedLevel、Boss MaxHP、Wall HPを集約し、`GetRequiredStrength` / `GetRecommendedLevel` / `GetMaxHP` / `GetWallConfig`で取得する。`Stage1WallManager.Config`は同じWall設定を参照する互換窓口で、別の数値表を持たない。
 

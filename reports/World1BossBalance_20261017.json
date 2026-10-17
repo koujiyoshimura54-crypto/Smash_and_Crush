@@ -1,0 +1,87 @@
+{
+  "task": "World1 provisional Stage5-10 boss and wall balance, 2026-10-17",
+  "baselineCommit": "5bf7d96",
+  "path": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "changedSource": "ReplicatedStorage.Config.World1BossConfig",
+  "before": {
+    "sha256": "2d384062692feefb47b6c45621a8faec122587dd67973640825f1e6db391228d",
+    "instanceCount": 179484,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 179483,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 179484,
+      "PROP.Ref": 76374,
+      "PROP.Content": 0,
+      "PRNT.Child": 179484,
+      "PRNT.Parent": 179484
+    }
+  },
+  "after": {
+    "sha256": "3dccbab17ba6a3d78f1ac8a467b521a61eccbc2a75a8f67678f3bb9f3a42ea13",
+    "instanceCount": 179484,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 179483,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 179484,
+      "PROP.Ref": 76374,
+      "PROP.Content": 0,
+      "PRNT.Child": 179484,
+      "PRNT.Parent": 179484
+    }
+  },
+  "changedChunks": [
+    1606
+  ],
+  "allOtherSourceAndPropertyBytesPreserved": true,
+  "headerInstancesReferentsHierarchyUniqueIdsUnchanged": true,
+  "canonicalizationRequired": false,
+  "nativeStudioVerification": {
+    "version": "0.743.0.7431133",
+    "pid": 24296,
+    "startJST": "2026-10-17 12:01:05",
+    "mode": "EditFile (hidden window)",
+    "windowHandle": 1770548,
+    "windowTitle": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl - Roblox Studio",
+    "logPath": "C:\\Users\\kouji\\AppData\\Local\\Roblox\\logs\\0.743.0.7431133_20261017T030105Z_Studio_71B09_last.log",
+    "editStateObserved": true,
+    "placeOpenSuccessUTC": "2026-10-17 03:01:14.827",
+    "placeIdleUTC": "2026-10-17 03:01:15.857",
+    "invalidIdError": false,
+    "normalCloseRequestedOnlyForVerifiedOwnedWindow": true,
+    "processExited": true,
+    "normalShutdownLogged": true,
+    "fileHashUnchangedOnClose": true,
+    "targetLockAbsent": true,
+    "playSavePublishPerformed": false,
+    "runtimeUIOrInputVerified": false
+  },
+  "sameFileWritebackVerified": true,
+  "simulation": {
+    "actualSavedSourceAssertions": 999,
+    "repositorySourceAssertions": 783,
+    "referentRegressionTests": 7,
+    "renderers": "Actual purchased-wall and Boss functions with synthetic labels/bars",
+    "notLiveRoblox": true
+  },
+  "disabledLegacyEntrypoints": {
+    "StarterPlayer.StarterPlayerScripts.Main": 1,
+    "ServerScriptService.Main": 1,
+    "ServerScriptService.MergeToForge.WallBootstrap": 1,
+    "ServerScriptService.MergeToForge.Stage01BossBootstrap": 1
+  },
+  "unverified": [
+    "Runtime rendered UI/text fit",
+    "Real input/replication/spawn/heal/reset/retry",
+    "Cloud Play after owner Save/Publish",
+    "Live save/rejoin",
+    "Total progression duration"
+  ]
+}

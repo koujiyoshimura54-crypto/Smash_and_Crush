@@ -1,5 +1,26 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-10-17 - Provisional World1 Stage5-10 Boss and Wall HP
+
+This owner-approved provisional balance supersedes earlier World1 HP tables and the Stage1-5 fixed-wall rule below. `ReplicatedStorage.Config.World1BossConfig` remains the only authority. Preserve Stage1-4 exactly as found in CurrentCloud/5bf7d96; Stage5 now joins Stage6-10 in deriving four walls from RequiredStrength times 2 / 2.5 / 3 / 4. Boss HP remains RequiredStrength times 5. Future tuning should edit this Config, not duplicate HP tables in consumers.
+
+| Stage | RequiredStrength | Wall1 | Wall2 | Wall3 | Wall4 | Boss HP |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 75 | 100 | 125 | 150 | 200 | 375 |
+| 2 | 450 | 300 | 325 | 350 | 425 | 2,250 |
+| 3 | 2,500 | 600 | 750 | 900 | 1,200 | 12,500 |
+| 4 | 6,000 | 3,000 | 3,750 | 4,500 | 6,000 | 30,000 |
+| 5 | 20,000 | 40,000 | 50,000 | 60,000 | 80,000 | 100,000 |
+| 6 | 100,000 | 200,000 | 250,000 | 300,000 | 400,000 | 500,000 |
+| 7 | 700,000 | 1,400,000 | 1,750,000 | 2,100,000 | 2,800,000 | 3,500,000 |
+| 8 | 3,000,000 | 6,000,000 | 7,500,000 | 9,000,000 | 12,000,000 | 15,000,000 |
+| 9 | 15,000,000 | 30,000,000 | 37,500,000 | 45,000,000 | 60,000,000 | 75,000,000 |
+| 10 | 50,000,000 | 100,000,000 | 125,000,000 | 150,000,000 | 200,000,000 | 250,000,000 |
+
+Wall order is progression1 through4. RequiredStrength is the unmodified five-hit Boss damage benchmark, not a forced hit count. Preserve real Strength/Glove damage, wall-to-wall surplus and discarded surplus after Wall4. RecommendedLevels, unlocks, Rebirth, all Win rewards and World2 remain unchanged. Existing NumberFormat handles new labels, including 3.5M / 37.5M / 125M / 250M, with its existing rounding policy.
+
+Evidence: actual Source simulation and native Studio EditFile loading, detailed in DEV_STATUS. Cloud gameplay and total progression duration were not measured. No assertion that this balance achieves 30-60 minutes.
+
 ## 2026-10-01 — Inventory Capacity tiers 5→12
 
 - InventoryCapacityConfigのUpgradesを拡張。5→6: 5 Win、6→7: 15 Win、7→8: 30 Win、8→9: 75 Win、9→10: 150 Win、10→11: 1,000 Win、11→12: 4,500 Win。12の次段階は未設定でMAX。下記Phase 5Gの100 Win設定を置き換える。
@@ -44,7 +65,7 @@ Version: 1.4 / 監査・更新日: 2026-09-16
 
 根拠: [Config統合・Play検証報告](../reports/World1_Config_Consolidation_20260916/build_report.md)、[統合後World1BossConfig](../reports/World1_Config_Consolidation_20260916/sources/ReplicatedStorage.Config.World1BossConfig.luau)、[全Stage数値CSV](../reports/World1_Config_Consolidation_20260916/final_balance.csv)。過去reportsのSnapshotは当時の履歴として保持する。
 
-## World1 Stage1〜10：現在の有効値
+## World1 Stage1〜10：Historical 2026-09-16 values (superseded above)
 
 | Stage | 推奨Lv | RequiredStrength | Wall .1 | Wall .2 | Wall .3 | Wall .4 | Boss MaxHP | Pad基本Win |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|

@@ -1,9 +1,9 @@
--- World1 Stage1-10 balance authority. Runtime values preserved on 2026-09-16.
+-- World1 Stage1-10 balance authority. Stage5-10 provisional balance: 2026-10-17.
 -- World2 uses its independent World2Config. Shared V5 lottery retained.
 local C={}
 C.RequiredStrength={
- [1]=75,[2]=450,[3]=2500,[4]=6000,[5]=15000,
- [6]=37315,[7]=81865,[8]=196915,[9]=462965,[10]=1018015,
+ [1]=75,[2]=450,[3]=2500,[4]=6000,[5]=20000,
+ [6]=100000,[7]=700000,[8]=3000000,[9]=15000000,[10]=50000000,
 }
 C.RecommendedLevels={8,10,15,20,25,30,35,40,45,50}
 C.StageCount=#C.RecommendedLevels
@@ -30,14 +30,14 @@ function C.GetLotteryWinChance(ratio)
  end
  return 0
 end
--- Preserve the existing early-stage walls independently of Boss strength.
+-- Preserve Stage1-4 walls independently of Boss strength.
+-- Stage5-10 derive all four walls from RequiredStrength below.
 -- In particular Stage2 retains its special 3 / 3.25 / 3.5 / 4.25 multipliers.
 local walls={
  [1]={100,125,150,200},
  [2]={300,325,350,425},
  [3]={600,750,900,1200},
  [4]={3000,3750,4500,6000},
- [5]={7000,8750,10500,14000},
 }
 local wallConfigs={}
 for stage=1,C.StageCount do
