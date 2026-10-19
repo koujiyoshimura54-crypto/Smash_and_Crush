@@ -1,0 +1,74 @@
+{
+  "ReplicatedStorage.Modules.Treadmill": [
+    {
+      "text": "local FOLDER_NAME = \"Treadmills\"",
+      "line": 7
+    },
+    {
+      "text": "\tlocal model = workspace:FindFirstChild(Config.Event.model)",
+      "line": 79
+    },
+    {
+      "text": "\tlocal folder = workspace:FindFirstChild(FOLDER_NAME)",
+      "line": 105
+    }
+  ],
+  "ServerScriptService.Services.DumbbellStandService": [
+    {
+      "text": " return Config.GetStandingIndex(workspace:FindFirstChild(Config.FolderName), root.Position)",
+      "line": 15
+    }
+  ],
+  "ReplicatedStorage.Config.DumbbellStandConfig": [
+    {
+      "text": "M.FolderName = \"PerStepButtons\"",
+      "line": 4
+    }
+  ],
+  "ServerScriptService.Services.EggServer": [
+    {
+      "text": " local folder=workspace:FindFirstChild(Egg.FolderName)",
+      "line": 21
+    },
+    {
+      "text": " local folder=workspace:FindFirstChild(Egg.FolderName)",
+      "line": 82
+    }
+  ],
+  "ServerScriptService.Services.TrainingManager": [
+    {
+      "text": "local treadmillFolder=Workspace:WaitForChild(\"Treadmills\")",
+      "line": 9
+    },
+    {
+      "text": "local TREADMILL_TAG=\"TrainingTreadmill\"",
+      "line": 10
+    },
+    {
+      "text": " local map=Workspace:FindFirstChild(\"GeneratedMap\")",
+      "line": 69
+    },
+    {
+      "text": " if not treadmill or not CollectionService:HasTag(treadmill,TREADMILL_TAG) or not treadmill:IsDescendantOf(Workspace) then return false end",
+      "line": 157
+    },
+    {
+      "text": " for _,treadmill in ipairs(CollectionService:GetTagged(TREADMILL_TAG)) do",
+      "line": 278
+    }
+  ],
+  "ServerScriptService.Services.TreadmillServer": [
+    {
+      "text": "local FOLDER_NAME = \"Treadmills\"",
+      "line": 24
+    },
+    {
+      "text": "\tlocal folder = workspace:FindFirstChild(FOLDER_NAME)",
+      "line": 257
+    },
+    {
+      "text": "\t\twarn(`[TreadmillServer] could not find {workspace:GetFullName()}.{FOLDER_NAME}`)",
+      "line": 259
+    }
+  ]
+}

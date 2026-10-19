@@ -592,3 +592,9 @@ Supersedes the rejected expansion presentation for the newly downloaded file. Wo
 Only four approved earlier treadmills are shown:01,02,03 and04 Robux. Old numeric speed/owner/admin labels are blank.04 has category text only; no purchase button/amount/ID/multiplier. Other facilities retain purchased names/artwork/headings while undefined numeric fields/ranking rows and inactive inputs are blank/hidden. Display metadata does not authorize gameplay; copied tags/IDs/Sources/prompts are excluded and actual selectors checked.
 
 All12 World2 ItemIcons are both configured and actually loaded in final Studio Edit (Success/IsLoaded). Same-direction overhead/front pairs and detail views are in the [current replica report](../reports/World2LobbyReplica_20261018.md). Runtime/Cloud interaction and all-device views remain unverified. No local Play, Save or Publish.
+
+## 2026-10-19 — Seven-machine World2 labels and moving assemblies
+
+World2 now displays old treadmill type labels 01/01/02/02/03/03/04 Robux in ascending world-X row order. StationIndex 1–7, VisualType and World1Slot metadata distinguish individual models without authorizing products. Preserve the existing fonts, artwork and own-model Adornees. No price, requirement, multiplier or active purchase input is introduced.
+
+Dumbbell 12 and normal Egg 4 signs/UI move rigidly with their full assemblies. All twelve existing W2 ItemIcons retain URI/number mapping, own-Press Adornee, offset, Fit and aspect settings; native final Edit confirms all twelve actually loaded. Existing side paths extend along their actual world axes with 13/16 widths. Same-direction before/after and near-eye entrance views: [current report](../reports/World2LobbyDepth_20261019.md). No local Play/Save/Publish; runtime walking and all-device behavior remain unverified.

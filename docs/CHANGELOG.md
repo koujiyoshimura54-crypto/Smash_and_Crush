@@ -960,3 +960,9 @@
 - Built on the newly downloaded pre-modification CurrentCloud; rejected b06e26e layout/script was not reused. Pink floor184.34x140.18→237x149 matches actual World1; shared equipment positions/orientations and route graph retained.
 - Installed requested display-only facilities including twelve2D Dumbbells and only earlier Treadmill01..04. No World1/gameplay Source changes, numerical design or purchase/training connection.
 - Same-file repaired binary write/reDecode and native Studio Edit reopen pass;12/12 images actually loaded;23 comparison/detail captures. No local Play/Save/Publish. Cloud operation unverified. [Evidence and full paths](../reports/World2LobbyReplica_20261018.md).
+
+## 2026-10-19 — World2 lobby depth and seven-machine arrangement
+
+- Retained floor width 237 and Stage edge; extended only treadmill-side depth 149→169 from actual body/wall/clearance measurements.
+- Reused old 01–04 as 2/2/2/1 in one row; moved complete Dumbbell/Egg assemblies to 4-stud wall clearances and extended existing branches. Other equipment and all original Sources remain unchanged; display-only state retained.
+- Corrected rotated path-part sizing after native review. Same-file binary/reDecode and Studio Edit checks pass, including 12 loaded images; twelve comparison/detail captures. No local Play/Save/Publish; Cloud walking/operation unverified. [Evidence](../reports/World2LobbyDepth_20261019.md).
