@@ -48,6 +48,7 @@ local function initialize()
 end
 local function setup(p)
  p:SetAttribute("IsTraining",false)
+ p:GetAttributeChangedSignal("CurrentWorld"):Connect(function() TrainingManager.StopTraining(p);walkState[p]=nil end)
  p:GetAttributeChangedSignal("AutoTapEnabled"):Connect(function() walkState[p]=nil end)
  walkState[p]=nil p.CharacterAdded:Connect(function() TrainingManager.StopTraining(p) end)
 end
@@ -58,29 +59,26 @@ CollectionService:GetInstanceAddedSignal(TREADMILL_TAG):Connect(function() regis
 CollectionService:GetInstanceRemovedSignal(TREADMILL_TAG):Connect(function() registryDirty=true end)
 script:SetAttribute("Initialized",false)
 script:SetAttribute("ZoneScanCount",0)
+local zoneScanCount=0
 RunService.Heartbeat:Connect(function(dt)
-	updateWalkingSteps(dt)
+ updateWalkingSteps(dt)
+ elapsed+=dt
+ if elapsed>=0.2 then
+  elapsed%=0.2
+  local treadmill=TrainingManager.GetTreadmill()
+  if registryDirty or #TrainingManager.GetTreadmills()~=#CollectionService:GetTagged(TREADMILL_TAG)
+   or (treadmill and not treadmill:IsDescendantOf(Workspace)) then
+   initialize()
+  end
+  if script:GetAttribute("Initialized")==true then
+   TrainingManager.UpdateAvailability()
+  end
+  script:SetAttribute("ZoneScanCount",zoneScanCount)
+ end
 
-	elapsed += dt
-	if elapsed < 0.2 then
-		return
-	end
-	elapsed %= 0.2
-
-	local treadmill = TrainingManager.GetTreadmill()
-
-	if registryDirty or #TrainingManager.GetTreadmills()~=#CollectionService:GetTagged(TREADMILL_TAG)
-		or (treadmill and not treadmill:IsDescendantOf(Workspace)) then
-		initialize()
-	end
-
-	treadmill = TrainingManager.GetTreadmill()
-
-	if treadmill and treadmill:IsDescendantOf(Workspace) then
-		TrainingManager.UpdateZoneOccupants()
-		script:SetAttribute(
-			"ZoneScanCount",
-			(script:GetAttribute("ZoneScanCount") or 0) + 1
-		)
-	end
+ -- Only the cached registered treadmills are tested here, never Workspace scans.
+ if script:GetAttribute("Initialized")==true then
+  TrainingManager.UpdateZoneOccupants()
+  zoneScanCount+=1
+ end
 end)

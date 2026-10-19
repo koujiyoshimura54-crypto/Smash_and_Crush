@@ -10,6 +10,10 @@ local P=game:GetService("Players").LocalPlayer
 local RS=game:GetService("ReplicatedStorage")local T=game:GetService("TweenService")local RunService=game:GetService("RunService")
 local R=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild(worldId==2 and "World2CombatState" or "CombatState")
 local NumberFormat=require(RS.Modules:WaitForChild("NumberFormat"))
+-- Presentation only: HP and destruction still come from the legacy server.
+local PurchasedWallVisuals=worldId==1 and require(RS.MergeToForge:WaitForChild("WallBreakVisualService"))
+local PurchasedWallHealth=worldId==1 and require(RS.Modules:WaitForChild("Config")).Stages.Health
+local presentedWallBreaks={}
 -- Fixed world-space UI metrics from the original 27-stud Wall, 580x270 canvas.
 -- Resize the canvas with the physical wall: text pixels and bar height no longer stretch.
 local BossDisplayConfig=require(RS.Config:WaitForChild("BossDisplayConfig"))
@@ -102,7 +106,7 @@ local function showTrophy(d)
  visual.Name="PersonalTrophy"
  visual:SetAttribute("TrophyId",d.Id)
  visual:SetAttribute("MajorStage",d.Stage)
- local reward=typeof(d.WinReward)=="number" and d.WinReward or TrophyConfig.GetBaseReward(d.Stage)
+ local reward=typeof(d.WinReward)=="number" and d.WinReward or TrophyConfig.GetBaseReward(d.Stage,worldId)
  visual:SetAttribute("WinReward",reward)
  visual:PivotTo(d.CFrame)
  visual.Parent=workspace
@@ -129,6 +133,13 @@ local function wallSurface(major,index)
 end
 local function setWallStageDisplay(major,index,on)
  local wall,surface=wallSurface(major,index)
+ local purchased=worldId==1 and wall and wall:FindFirstChild("SurfaceGui")
+ if purchased then
+  -- Purchased walls intentionally have transparent bodies with visible textures.
+  purchased.Enabled=on==true and (P:GetAttribute("CurrentWorld") or 1)==1 and wall.LocalTransparencyModifier<.99
+  if surface then surface:SetAttribute("PersonalStageDisplayEnabled",false);surface.Enabled=false end
+  return
+ end
  if surface then
   surface:SetAttribute("PersonalStageDisplayEnabled",on==true)
   surface.Enabled=on==true and wall.LocalTransparencyModifier<.99 and wall.Transparency<.99
@@ -150,6 +161,12 @@ local function setWallVisible(a,b,c)
   if x:IsA("BasePart") and x.Name=="Wall" then
    wallParts[x]={Major=major,Index=index}
    x.LocalTransparencyModifier=on and 0 or 1
+   -- Purchased walls render through Textures even when the Part is transparent.
+   if worldId==1 then
+    for _,face in x:GetChildren() do
+     if face:IsA("Decal") then face.LocalTransparencyModifier=on and 0 or 1 end
+    end
+   end
    x.CanCollide=on
   end
  end
@@ -158,6 +175,28 @@ local function wallGauge(a,b,c,d)
  local major,index,v,max=1,a,b,c; if d~=nil then major,index,v,max=a,b,c,d end
  local m=wallModel(major,index)
  local w,gui=wallSurface(major,index)
+ local purchased=worldId==1 and w and w:FindFirstChild("SurfaceGui")
+ if purchased then
+  local health=purchased:FindFirstChild("Health")
+  local amount=health and health:FindFirstChild("Amount")
+  local separate=health and health:FindFirstChild("Separate")
+  local fill=separate and separate:FindFirstChild("Bar")
+  if not amount or not fill then return end
+  local fraction=max>0 and math.clamp(v/max,0,1) or 0
+  amount.AutoLocalize=false
+  amount.Text=string.format(PurchasedWallHealth.format,NumberFormat.Format(v),NumberFormat.Format(max))
+  fill.Size=UDim2.new(fraction,0,fill.Size.Y.Scale,fill.Size.Y.Offset)
+  local gradient=fill:FindFirstChild("UIGradient")
+  if gradient then
+   local settings=PurchasedWallHealth
+   local band=if fraction<settings.lowBelow then settings.Low elseif fraction<settings.halfBelow then settings.Half else settings.Full
+   gradient.Color=ColorSequence.new(band.from,band.to)
+  end
+  local label=purchased:FindFirstChild("Stage")
+  if label then label.AutoLocalize=false;label.Text=("Stage %d-%d"):format(major,index) end
+  wallGauges[tostring(major).."."..tostring(index)]={Fill=fill,HP=amount,Max=max}
+  return
+ end
  local panel=gui and gui:FindFirstChild("Panel")
  local bar=panel and panel:FindFirstChild("HPBar")
  if not bar then return end
@@ -178,6 +217,8 @@ local function clearWallGauge(major,index)
  local m=wallModel(major,index)
  local wall=m and m:FindFirstChild("Wall")
  local surface=wall and wall:FindFirstChild(stageSurfaceName)
+ local purchased=worldId==1 and wall and wall:FindFirstChild("SurfaceGui")
+ if purchased then purchased.Enabled=false end
  local panel=surface and surface:FindFirstChild("Panel")
  local bar=panel and panel:FindFirstChild("HPBar")
  if bar then bar.Visible=false end
@@ -681,8 +722,13 @@ R.OnClientEvent:Connect(function(d)
  elseif d.Type=="TrophyRemoved" then
   clearTrophy(d.Id)
  elseif d.Type=="WallInitialize" then
- local major=d.State.MajorStage or 1
- wallState[major]=d.State
+  local major=d.State.MajorStage or 1
+  if worldId==1 then
+   for index=1,4 do
+    if not d.State.Cleared[index] then presentedWallBreaks[tostring(major).."."..tostring(index)]=nil end
+   end
+  end
+  wallState[major]=d.State
  refreshGaugeVisibility()
   syncPersonalBossCollider(major)
  elseif d.Type=="WallGauge" then
@@ -724,8 +770,22 @@ R.OnClientEvent:Connect(function(d)
   hideBossRecommendation()
   fight(false)
  elseif d.Type=="WallCleared" then
-  playDefeatSound()
   local major=d.MajorStage or 1
+  if worldId==1 then
+   -- Each server-confirmed clear is presented once, including multiple Carry clears.
+   -- Do not infer destruction from a UI fill or a partially updated snapshot.
+   local key=tostring(major).."."..tostring(d.Index)
+   if not presentedWallBreaks[key] then
+    presentedWallBreaks[key]=true
+    local wall=wallSurface(major,d.Index)
+    if wall then
+     local ok,err=pcall(PurchasedWallVisuals.Play,wall)
+     if not ok then warn("Purchased Wall break presentation: "..tostring(err)) end
+    end
+   end
+  else
+   playDefeatSound()
+  end
   -- Snapshot was captured after the existing Carry loop finished. Install it
   -- atomically before rendering; never expose the cached pre-Carry MaxHP.
   if d.State then wallState[major]=d.State end
@@ -745,7 +805,7 @@ R.OnClientEvent:Connect(function(d)
   visible(stage,true)
   refreshGaugeVisibility()
   syncPersonalBossCollider(stage)
- elseif d.Type=="Initialize"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],enemy(i):GetAttribute("BossMaxHP") or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
+ elseif d.Type=="Initialize"then table.clear(presentedWallBreaks) activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],enemy(i):GetAttribute("BossMaxHP") or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
 	elseif d.Type=="EnemyDefeated"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil hideBossRecommendation() defeated[d.Stage]=true removePersonalBossCollider(d.Stage) if d.Stage<10 then currentStage=d.Stage+1 end refreshGaugeVisibility() fight(false) playDefeatSound() setBossVisualVisible(enemy(d.Stage),false)
  elseif d.Type=="StageCleared"then currentStage=d.CurrentStage refreshGaugeVisibility() for major in wallState do renderWallStage(major) end removePersonalBossCollider(d.Stage)
  elseif d.Type=="Fighting"then
@@ -761,7 +821,10 @@ workspace.DescendantAdded:Connect(function(part)
   local stage=part.Parent and part.Parent:GetAttribute("StageNumber")
   if typeof(stage)=="number" then task.defer(syncPersonalBossCollider,stage) end
  end
- if not part:IsA("BasePart") or part.Name~="Wall" then return end
+ if worldId==1 and part:IsA("SurfaceGui") and part.Name=="SurfaceGui" then
+  part=part.Parent
+ end
+ if not part or not part:IsA("BasePart") or part.Name~="Wall" then return end
  local model=part.Parent
  if not model then return end
  local major,index=model.Name:match("^Stage(%d+)%.([1-4])$")

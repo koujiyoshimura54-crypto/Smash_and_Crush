@@ -559,3 +559,10 @@ Move the complete Dumbbell assembly toward -X by 19.788 and normal Eggs toward +
 ## 2026-10-19 — Studio /test restoration
 
 The current local place again contains the server StudioStartController and StarterPlayerScripts StudioTestCommandClient. /test supports help, status, level, start, reset, world, stage and default only in Studio; Start.AutoApplyOnPlay stays false. Level-only calls the existing PlayerData override API without changing World/position. start/world/stage use existing initialized EnemyManager world APIs. Reset retains the existing temporary snapshot/Save-exclusion contract and restores World/Stage only when movement was requested. Refuse unloaded data; no synthetic fallback or DataStore bypass. /setstrength continues to change Strength without reverse-calculating Level. [Evidence and unverified runtime scope](../reports/StudioTestCommands_20261019.md).
+
+
+## 2026-10-20 — World2 gameplay authority (supersedes display-only restrictions)
+
+World2's existing facilities now use World2GameplayConfig generated from World2_数値一覧.xlsx, with separate W2 IDs for twelve Dumbbells, 45 regular Items, six Auras, five Egg pools and 35 Pet species. Normal purchases, ownership/equipment, Item Merge/drops and existing persistence paths are connected. Four normal Eggs are active; Limited and the paid Aura/treadmill remain unavailable without invented prices/IDs/rights. Equipment/Pet ownership carries between Worlds and only equipped slots apply. Mixed-world Item Merge is rejected; no W2 Pet Merge is introduced. StageSkip remains World1-only.
+
+Rebirth is shared: base x1, +0.5 each count; first ten required levels come from the workbook. Rebirth resets Strength/LV/progress only; ownership, Win and equipped Pets/items remain. Reference cumulative Strength is not an additional condition. Legacy counts/requirements beyond ten remain. World1 catalog values, geometry and existing combat rules are retained. See [current implementation/verification limits](../reports/World2Gameplay_20261020.md).

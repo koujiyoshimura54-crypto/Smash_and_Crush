@@ -125,9 +125,9 @@ local function stars(parent,item,pos,size)
  return row
 end
 local function effect(item)
- if item.ItemType=="Protein" then return "Strength +"..tostring(ItemMultiplierConfig.GetProteinBonus(item.Rarity)) end
- if item.ItemType=="Glove" then return string.format("Boss Damage +%g%%",ItemMultiplierConfig.GetGloveBossDamageBonus(item.Rarity)*100) end
- return "Treadmill +"..tostring(ItemMultiplierConfig.GetBeltTreadmillBonus(item.Rarity)).."×"
+ if item.ItemType=="Protein" then return "Strength +"..tostring(ItemMultiplierConfig.GetProteinBonus(item.Rarity,item.WorldId)) end
+ if item.ItemType=="Glove" then return string.format("Boss Damage +%g%%",ItemMultiplierConfig.GetGloveBossDamageBonus(item.Rarity,item.WorldId)*100) end
+ return "Treadmill +"..tostring(ItemMultiplierConfig.GetBeltTreadmillBonus(item.Rarity,item.WorldId)).."×"
 end
 
 -- Claim this page before the shared skin sees any new descendants.
@@ -238,7 +238,8 @@ render=function()
  table.sort(ids,function(a,b)
   local x,y=Master.Get(a),Master.Get(b)
   if x.ItemType~=y.ItemType then return (typeOrder[x.ItemType] or 99)<(typeOrder[y.ItemType] or 99) end
-  return x.Element<y.Element
+  if (x.WorldId or 1)~=(y.WorldId or 1) then return (x.WorldId or 1)<(y.WorldId or 1) end
+   return x.Element<y.Element
  end)
  for order,id in ipairs(ids) do
   local item=Master.Get(id)
@@ -246,7 +247,7 @@ render=function()
   c.LayoutOrder=order;c:SetAttribute("InventoryItemCard",true)
   surface(c,item.Rarity,selectedId==id);layer(c,32);c.Parent=list
   icon(c,"Icon",item.Image,UDim2.new(),UDim2.new(),36)
-  local effectLabel=label(c,"Effect",effect(item),UDim2.new(),UDim2.new(),34)
+  local effectLabel=label(c,"Effect","W"..tostring(item.WorldId or 1).." "..effect(item),UDim2.new(),UDim2.new(),34)
   effectLabel.FontFace=effectFont
   effectLabel:FindFirstChildOfClass("UIStroke").Thickness=2.5
   stars(c,item,UDim2.new(),UDim2.new())

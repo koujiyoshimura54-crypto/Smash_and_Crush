@@ -1268,7 +1268,8 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload)
  if action=="Hatch" then
   local egg=require(game.ReplicatedStorage.Modules.Egg)
   if type(payload)~="table" or type(payload.Results)~="table"
-   or type(payload.EggName)~="string" or not egg.isEgg(payload.EggName)
+   or type(payload.EggName)~="string" or not egg.isEgg(payload.EggName) or not egg.purchasable(payload.EggName)
+    or egg.world(payload.EggName)~=(player:GetAttribute("CurrentWorld") or 1)
    or (payload.Count~=1 and payload.Count~=3 and payload.Count~=8)
    or #payload.Results~=payload.Count then return false,"InvalidPetHatch" end
   local unitPrice=egg.price(payload.EggName)

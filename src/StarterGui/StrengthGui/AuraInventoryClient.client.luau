@@ -43,11 +43,11 @@ local function render()
   Presentation.SetIdentity(card.AuraName,card.AuraIcon,aura.Name,aura.Icon)
   local b=card.BuyButton
   local isEquipped=equipped==id
-  b.Label.Text=notice[id] or (isEquipped and "EQUIPPED" or owned[id] and "EQUIP" or aura.PurchaseType=="Entitlement" and "VIEW PACK" or "BUY")
+  b.Label.Text=notice[id] or (aura.PurchaseEnabled==false and "UNAVAILABLE" or isEquipped and "EQUIPPED" or owned[id] and "EQUIP" or aura.PurchaseType=="Entitlement" and "VIEW PACK" or "BUY")
   b.UIGradient.Color=isEquipped and equippedColor or owned[id] and equipColor or green
-  Presentation.SetButtonEnabled(b,loaded and not pending)
-  card.Price.Amount.Text=aura.PurchaseType=="Entitlement" and (aura.Entitlement=="VIP" and "VIP" or "PACK") or require(RS.Modules.NumberFormat).Price(aura.PurchaseType=="Win" and aura.Price or redDisplayPrice)
-  if aura.PurchaseType~="Entitlement" then
+  Presentation.SetButtonEnabled(b,loaded and not pending and aura.PurchaseEnabled~=false)
+  card.Price.Amount.Text=aura.PurchaseEnabled==false and "" or aura.PurchaseType=="Entitlement" and (aura.Entitlement=="VIP" and "VIP" or "PACK") or require(RS.Modules.NumberFormat).Price(aura.PurchaseType=="Win" and aura.Price or redDisplayPrice)
+  if aura.PurchaseType~="Entitlement" and aura.PurchaseEnabled~=false then
    PurchaseHUD.PurchaseButton(b,aura.PurchaseType=="Win" and "Win" or "Robux",notice[id] or (owned[id] and b.Label.Text or card.Price.Amount.Text))
   end
   card.StrengthBonus.Text=aura.PurchaseType=="Entitlement" and "Exclusive Aura" or "+"..aura.StrengthBonus.." Strength"
@@ -85,7 +85,7 @@ purchase.OnClientEvent:Connect(result)
 equip.OnClientEvent:Connect(result)
 for _,id in ipairs(Config.Order) do
  Responsive.ConnectActivation(list[id.."AuraCard"].BuyButton,function()
-  if not loaded or pending then return end
+  if not loaded or pending or Config.Get(id).PurchaseEnabled==false then return end
   notice[id]=nil
   if owned[id] then
    pending=true;activeId=id;render()

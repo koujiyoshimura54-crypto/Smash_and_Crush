@@ -8,12 +8,12 @@ local Training = require(Services.TrainingManager)
 local Speed = require(Services.SpeedService)
 local M = {}
 local busy = {}
-local function returnToLobby(player, character, spawn, speed)
+local function returnToLobby(player, character, spawn, speed, worldEnemy)
 	-- Reuse the normal World1 reset, never Trophy.collect or its reward path.
-	Enemy.InitializePlayer(player)
+	(worldEnemy or Enemy).InitializePlayer(player)
 	-- InitializePlayer prepares an active run for ordinary respawns. A voluntary
 	-- return ends this run; the next World1 StartRun activates a fresh generation.
-	Run.Invalidate(player)
+	if not worldEnemy then Run.Invalidate(player) end
 	Training.StopTraining(player)
 	local hum = character:FindFirstChildOfClass("Humanoid")
 	hum.Health = hum.MaxHealth
@@ -37,7 +37,25 @@ function M.Request(player, runId)
 	busy[player] = true
 	player:SetAttribute("RunReturnBusy", true)
 	local ok, success, reason = xpcall(function()
-		local spawn = Trophy.GetLobbySpawn()
+  if player:GetAttribute("CurrentWorld")==2 then
+   local Data=require(Services.PlayerDataService)
+   local session=Data.Get(player)
+   if not session or not session.Loaded or session.Saving or session.PendingItemMutation or session.OwnershipLost then return false,"DataSaving" end
+   local worldEnemy=require(game.ServerScriptService.World.EnemyManager).ForWorld(2)
+   local worldTrophy=require(Services.TrophyRewardService).ForWorld(2)
+   local wall=require(game.ServerScriptService.World.Stage1WallManager).ForWorld(2)
+   local currentStage=player:GetAttribute("World2CurrentStage") or 1
+   local ps=worldEnemy.GetPlayerState(player)
+   if not worldEnemy.IsReady() or not ps or ps.RunReturnId~=runId then return false,"StaleRun" end
+   if ps.Defeated[currentStage] or not wall.IsBossUnlockedForStage(player,currentStage) then return false,"NotReturnable" end
+   local character=player.Character;local hum=character and character:FindFirstChildOfClass("Humanoid")
+   local root=character and character:FindFirstChild("HumanoidRootPart")
+   local spawn=worldTrophy.GetLobbySpawn()
+   if not root or not hum or hum.Health<=0 or not spawn then return false,"CharacterNotReady" end
+   returnToLobby(player,character,spawn,Speed.GetState(player).WalkSpeed,worldEnemy)
+   return true,"Returned"
+  end
+  local spawn = Trophy.GetLobbySpawn()
 		if not spawn or not Enemy.IsReady() then return false, "LobbyUnavailable" end
 		-- Read the normal speed before the shared durable commit.
 		local speed = Speed.GetState(player).WalkSpeed

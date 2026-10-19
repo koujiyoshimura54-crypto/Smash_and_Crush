@@ -38,10 +38,14 @@ end
 function M.Evaluate(materials,owned)
  if typeof(materials)~="table" then return nil,"InvalidMaterials" end
  local total,count,types,elements,ids=0,0,{},{},{}
+ local worldId
  for id,n in pairs(materials) do
   local item=Master.Get(id)
   local p=M.GetPoints(item)
   if not item or not p or not Master.ElementSet[item.Element] then return nil,"InvalidItemId" end
+  local world=item.WorldId or 1
+  if worldId and worldId~=world then return nil,"MixedWorldMaterials" end
+  worldId=world
   if not integer(n) then return nil,"InvalidAmount" end
   if owned and (not integer(owned[id]) or owned[id]<n) then return nil,"NotEnoughItems" end
   if n>math.floor((M.MaxInteger-total)/p) or n>M.MaxInteger-count then return nil,"CountOverflow" end
@@ -61,7 +65,7 @@ function M.Evaluate(materials,owned)
    for _,element in ipairs(Master.Elements) do
     local a,b=types[kind] or 0,elements[element] or 0
     if a>0 and b>0 then
-     local id=Master.TypePrefixes[kind].."_"..rarity.Rarity:upper().."_"..element:upper()
+     local id=Master.Id(kind,rarity.Rarity,element,worldId)
      if not Master.Get(id) then return nil,"InvalidMergeResult" end
      local probability=rarity.Probability*(a/total)*(b/total)
      table.insert(outcomes,{ItemId=id,Probability=probability,Percent=probability*100})
@@ -69,7 +73,7 @@ function M.Evaluate(materials,owned)
    end
   end
  end
- return {Count=count,Points=total,Types=types,Elements=elements,Rarities=rarities,Outcomes=outcomes,Signature=table.concat(signature,"|")}
+ return {WorldId=worldId,Count=count,Points=total,Types=types,Elements=elements,Rarities=rarities,Outcomes=outcomes,Signature=table.concat(signature,"|")}
 end
 local function choose(rows,random)
  local p=random();local acc=0
@@ -87,6 +91,6 @@ function M.Sample(preview,random)
  end
  -- Separate draws, including cross-combinations absent from the input IDs.
  local kind=choose(types,random).Value;local element=choose(elements,random).Value
- return Master.TypePrefixes[kind].."_"..rarity:upper().."_"..element:upper()
+ return Master.Id(kind,rarity,element,preview.WorldId)
 end
 return table.freeze(M)

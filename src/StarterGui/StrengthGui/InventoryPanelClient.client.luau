@@ -145,7 +145,7 @@ for order,item in ipairs(sortedItems) do
   icon.Position=UDim2.new(0,10,0,8) icon.Size=UDim2.new(1,-20,0,128)
   icon.ZIndex=32 icon.Parent=card
 
-  label(card,"Multiplier","+"..tostring(item.StrengthBonus).." Strength",UDim2.new(0,6,0,142),UDim2.new(1,-12,0,18),Color3.fromRGB(138,227,255))
+  label(card,"Multiplier",(item.WorldId==2 and "World 2 " or "").."+"..tostring(item.StrengthBonus).." Strength",UDim2.new(0,6,0,142),UDim2.new(1,-12,0,18),Color3.fromRGB(138,227,255))
   local buy=Instance.new("TextButton")
   buy.Name="BuyButton" buy.Text="" buy.Font=Enum.Font.GothamBold buy.TextSize=15
   buy.TextColor3=Color3.new(1,1,1) buy.BackgroundColor3=Color3.fromRGB(43,121,88)

@@ -237,7 +237,7 @@ local function applyState(state)
   entry.ItemId = equipped and id or nil
   entry.Frame.Visible = equipped == true
   if equipped then
-   local value = definition.Get(item.Rarity) * (definition.Factor or 1)
+   local value = definition.Get(item.Rarity,item.WorldId) * (definition.Factor or 1)
    entry.Label.Text = "+" .. string.format("%.2f", value):gsub("0+$", ""):gsub("%.$", "") .. definition.Suffix
    count += 1
   end
@@ -272,7 +272,7 @@ for _, name in ipairs({"ItemEquipRequest", "ItemPurchaseRequest", "ItemRobuxPurc
  end)
 end
 local gameRemotes = remotes:WaitForChild("GameRemotes")
-gameRemotes:WaitForChild("CombatState").OnClientEvent:Connect(function(event)
+local function combatEvent(event)
  if typeof(event) ~= "table" then return end
  if event.Type == "Initialize" then
   lastAttackId = 0
@@ -285,7 +285,10 @@ gameRemotes:WaitForChild("CombatState").OnClientEvent:Connect(function(event)
   or event.Type == "BossResult" then
   stopGlove()
  end
-end)
+end
+gameRemotes:WaitForChild("CombatState").OnClientEvent:Connect(function(event)if player:GetAttribute("CurrentWorld")~=2 then combatEvent(event) end end)
+gameRemotes:WaitForChild("World2CombatState").OnClientEvent:Connect(function(event)if player:GetAttribute("CurrentWorld")==2 then combatEvent(event) end end)
+player:GetAttributeChangedSignal("CurrentWorld"):Connect(function()lastAttackId=0;stopGlove()end)
 player:GetAttributeChangedSignal("IsTraining"):Connect(updateTraining)
 player:GetAttributeChangedSignal("TrainingTreadmill"):Connect(updateTraining)
 local deathConnection

@@ -26,7 +26,7 @@ local lastManualAttack=setmetatable({}, {__mode="k"})
 -- Recognition is separate from combat: only the final wall hit arms pre-combat pursuit.
 local recognizedPlayers=setmetatable({}, {__mode="k"})
 local LOSS_DEATH_DISPLAY_DURATION=0.8
-local WALL_TRIGGER_SIZE=Vector3.new(4.5,5.5,4)
+local WALL_TRIGGER_SIZE=Vector3.new(7,5.5,4)
 local WALL_TRIGGER_FORWARD_OFFSET=3
 local WALL_DAMAGE_DELAY=0.18
 local MINIBOSS_DAMAGE_DELAY=0.50
@@ -149,6 +149,10 @@ function M.InitializePlayer(p,targetStage)
  Wall.InitializePlayer(p,targetStage)
  states[p]=nil
  local ps=state(p)
+ if worldId==2 then
+  ps.RunReturnId=game:GetService("HttpService"):GenerateGUID(false)
+  p:SetAttribute("World2RunId",ps.RunReturnId)
+ end
  if RunInventory then ps.RunInventoryId=RunInventory.Reset(p,true) end
  ps.Skipped={}
  for major=1,targetStage-1 do ps.Skipped[major]=true end
@@ -1151,6 +1155,12 @@ end)
     local eligible=inWorld(p) and Stage.GetCurrentStageNumber(p)==n
      and not Stage.GetState(p).WorldComplete and not state(p).Defeated[n]
      and hum and hum.Health>0 and root and Chase.ContainsPlayer(enemy,root.Position)
+    -- The compatibility Floor starts at the boss arena, after Wall4.
+    -- Acquire pursuit on entry even if wall-unlock recognition expired outside it.
+    if eligible and not recognized and not fighting and Wall.IsBossUnlockedForStage(p,n) then
+     recognized={Stage=n,Character=ch,CombatStarted=false}
+     recognizedPlayers[p]=recognized
+    end
     if recognized then
      if not eligible or recognized.Character~=ch or not Wall.IsBossUnlockedForStage(p,n)
       or (recognized.CombatStarted and not fighting) then

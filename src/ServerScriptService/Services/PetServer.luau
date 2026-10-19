@@ -4,7 +4,7 @@ local Data=require(script.Parent.PlayerDataService)
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local M={}
 function M.GetStrengthMultiplier(player)
- if player.Parent~=Players or (player:GetAttribute("CurrentWorld") or 1)~=1 then return 1 end
+ if player.Parent~=Players then return 1 end
  local session=Data.Get(player)
  if not session or not session.Loaded or not session.Data or session.OwnershipLost then return 1 end
  -- Read the committed server session directly; no client mirror/cache and no

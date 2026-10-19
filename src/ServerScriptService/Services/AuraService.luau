@@ -36,7 +36,8 @@ function M.GetOwnedAuras(player)
  if not s then return nil,code end
  local out={}
  for _,id in ipairs(Config.Order) do
-  if id=="Red" then out[id]=pass[player]~=nil and pass[player].owned==true
+  if Config.Get(id).PurchaseEnabled==false then out[id]=false
+  elseif id=="Red" then out[id]=pass[player]~=nil and pass[player].owned==true
   elseif id=="VIP" then out[id]=s.Data.OwnedAuras[id]==true and Passes.HasShopPass(player,"VIP")
   else out[id]=s.Data.OwnedAuras[id]==true end
  end

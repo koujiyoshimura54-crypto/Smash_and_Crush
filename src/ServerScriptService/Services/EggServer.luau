@@ -15,11 +15,11 @@ local function reply(player,ok,reason)
  return {ok=ok,reason=reason,state=state,pending=player:GetAttribute("PetSavePending")==true}
 end
 local function open(player,name,button,id,revision)
- if not Egg.isEgg(name) then return false,"EggUnavailable" end
+ if not Egg.isEgg(name) or not Egg.purchasable(name) then return false,"EggUnavailable" end
+ if Egg.world(name)~=(player:GetAttribute("CurrentWorld") or 1) then return false,"WrongWorld" end
  local count=Egg.count(button)
  if count~=1 and count~=3 and count~=8 then return false,"InvalidOpenCount" end
- local folder=workspace:FindFirstChild(Egg.FolderName)
- local part=folder and folder:FindFirstChild(name)
+ local part=Egg.part(name)
  local character=player.Character
  local root=character and character:FindFirstChild("HumanoidRootPart")
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
@@ -79,15 +79,14 @@ function M.request(player,action,id,revision,a,b)
  return reply(player,ok,why)
 end
 function M.init()
- local folder=workspace:FindFirstChild(Egg.FolderName)
- if not folder then return end
- for _,part in ipairs(folder:GetChildren()) do
-  if not part:IsA("BasePart") or not Egg.isEgg(part.Name) then continue end
+ for _,part in ipairs(Egg.parts()) do
+  local name=Egg.identity(part)
+  if not Egg.isEgg(name) then continue end
   local prize=part:FindFirstChild("Prize")
   if prize then
    for _,name in ipairs({"Info","InfoShadow"}) do
     local label=prize:FindFirstChild(name)
-    if label and label:IsA("TextLabel") then label.Text=require(RS.Modules.NumberFormat).Price(Egg.price(part.Name)) end
+    if label and label:IsA("TextLabel") then label.Text=Egg.purchasable(name) and require(RS.Modules.NumberFormat).Price(Egg.price(name)) or "Unavailable" end
    end
   end
  end

@@ -78,4 +78,24 @@ function Config.GetGainDisplayText(modelName,localeId)
  return string.format(japanese and "+%g \u{7B4B}\u{529B}" or "+%g Strength",amount)
 end
 
+-- Only the seven existing, exact World2 roots authorize World2 training.
+local World2=require(script.Parent.World2GameplayConfig)
+local stationTypes={1,1,2,2,3,3,4}
+function Config.WorldForModel(model)
+ if not model then return nil end
+ if model.Parent==workspace:FindFirstChild("Treadmills") and Config.Get(model.Name) then return 1 end
+ local map=workspace:FindFirstChild("World2Map")
+ local area=map and map:FindFirstChild("TrainingArea")
+ local folder=area and area:FindFirstChild("TreadmillDisplays")
+ local index=tonumber(model.Name)
+ if folder and model.Parent==folder and index and model.Name==string.format("%02d",index) and stationTypes[index] then return 2 end
+end
+function Config.GetForModel(model)
+ local world=Config.WorldForModel(model)
+ if world==1 then return Config.Get(model.Name) end
+ if world==2 then
+  local index=stationTypes[tonumber(model.Name)]
+  return World2.Treadmills[index],"World2_"..index
+ end
+end
 return Config

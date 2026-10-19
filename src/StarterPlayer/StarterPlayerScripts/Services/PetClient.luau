@@ -220,7 +220,7 @@ function PetClient.showCard(name: string, root: GuiObject)
 	local description = card:FindFirstChild(DESCRIPTION_NAME)
 	if description then
 		local percent=Pet.StrengthPercent(name)
-		setPair(description, TEXT_NAME, percent and string.format("Strength +%g%%",percent) or "Cosmetic pet")
+		setPair(description, TEXT_NAME, Pet.StrengthText(name))
 		local icon = description:FindFirstChild(ICON_NAME)
 		if icon and icon:IsA("GuiObject") then icon.Visible = false end
 	end
@@ -292,7 +292,7 @@ local function buildTile(id: string, name: string, order: number, options: any?)
 	if main then
 		local icon = main:FindFirstChild(ICON_NAME)
 		local sourceIcons = icons or findPath(ReplicatedStorage, ICONS_PATH)
-		local decal = if sourceIcons then sourceIcons:FindFirstChild(name) else nil
+		local decal = if sourceIcons then sourceIcons:FindFirstChild(Pet.VisualName(name)) else nil
 		if icon and icon:IsA("ImageLabel") and LimitedViewport.supports(name) then
 			owner:Add(LimitedViewport.bind(icon,name),true)
 		elseif icon and icon:IsA("ImageLabel") and decal and decal:IsA("Decal") then

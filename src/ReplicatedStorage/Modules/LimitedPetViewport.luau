@@ -2,9 +2,10 @@
 local RS=game:GetService("ReplicatedStorage")
 local Config=require(RS.Config.LimitedEggConfig)
 local M={}
+local Pet=require(RS.Modules.Pet)
 local bindings=setmetatable({}, {__mode="k"})
 
-function M.supports(name) return Config.ByName[name]~=nil end
+function M.supports(name) return Pet.isLimited(name) end
 
 -- Same static purchased-model display/fitting for Pet models and actual normal Egg MeshParts.
 function M.mountTemplate(host,template,yaw,viewportName,orientation)
@@ -84,6 +85,7 @@ function M.mountTemplate(host,template,yaw,viewportName,orientation)
 end
 
 function M.mount(host,name)
+ name=Pet.VisualName(name)
  local entry=Config.ByName[name]
  if not entry then return nil end
  local templates=RS.Assets:FindFirstChild(Config.ModelsFolder)
@@ -93,8 +95,7 @@ function M.mount(host,name)
 end
 
 function M.mountEgg(host,name)
- local eggs=workspace:FindFirstChild("Eggs")
- local template=eggs and eggs:FindFirstChild(name)
+ local template=require(RS.Modules.Egg).part(name)
  assert(template and template:IsA("BasePart"),"Missing actual normal Egg: "..name)
  return M.mountTemplate(host,template,0,"NormalEggViewport",template.CFrame.Rotation)
 end

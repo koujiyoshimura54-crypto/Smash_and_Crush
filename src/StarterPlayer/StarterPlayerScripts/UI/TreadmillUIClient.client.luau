@@ -13,7 +13,12 @@ local function refresh()
   local display = model and model:FindFirstChild("TreadmillUIDisplay")
   local gui = display and display:FindFirstChild("TreadmillInfo")
   local required = gui and gui:FindFirstChild("Required")
-  local entry = Config.Get(modelName)
+  local entry = Config.GetForModel(model)
+  if not entry then continue end
+  if Config.WorldForModel(model)==2 then
+   local label=model:FindFirstChild("StationBillboard") and model.StationBillboard:FindFirstChild("Multiplier")
+   if label then label.Text=tostring(entry.Multiplier).."x Strength\n"..(entry.PurchaseEnabled==false and "Robux - Unavailable" or (entry.RequiredRebirth>0 and "Rebirth "..entry.RequiredRebirth.." Required" or "Available")) end
+  end
   local strength = gui and gui:FindFirstChild("Strength")
   if strength then strength.Text = "×"..tostring(entry.Multiplier).." Strength" end
   if required and entry.RequiredRebirth then

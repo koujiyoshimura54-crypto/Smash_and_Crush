@@ -403,7 +403,7 @@ local function buildMergeShop(ctx)
    if index>=g.Start and index<g.Start+g.Count then
     local unit=index-g.Start+1;local info=Master.Get(g.ItemId)
     return {ItemId=g.ItemId,Unit=unit,Key=g.ItemId..":"..string.format("%.0f",unit),
-     Name=info.Rarity.." "..info.Element.." "..info.ItemType,VirtualIndex=index}
+     Name=Master.DisplayName(info),VirtualIndex=index}
    end
   end
  end
@@ -533,11 +533,11 @@ local function buildMergeShop(ctx)
    local preview=itemPreview()
    if committedItemId then
     local completed=Master.Get(committedItemId)
-    if completed then table.insert(outcomes,{Name=completed.Rarity.." "..completed.Element.." "..completed.ItemType,Image=completed.Image,Rarity=completed.Rarity,ItemId=completed.ItemId,Percent=100}) end
+    if completed then table.insert(outcomes,{Name=Master.DisplayName(completed),Image=completed.Image,Rarity=completed.Rarity,ItemId=completed.ItemId,Percent=100}) end
    elseif preview then
     for _,o in ipairs(preview.Outcomes) do
      local completed=Master.Get(o.ItemId)
-     table.insert(outcomes,{Name=completed.Rarity.." "..completed.Element.." "..completed.ItemType,Image=completed.Image,Rarity=completed.Rarity,ItemId=o.ItemId,Percent=o.Percent})
+     table.insert(outcomes,{Name=Master.DisplayName(completed),Image=completed.Image,Rarity=completed.Rarity,ItemId=o.ItemId,Percent=o.Percent})
     end
    end
    resultHint.Text=#outcomes==0 and ("Select at least "..itemMinimum.." Items") or ""
@@ -864,10 +864,15 @@ local beat=RunService.Heartbeat:Connect(function(dt)
  if shop.Visible and not view:IsPet() and itemPoll>=2 then itemPoll=0;task.spawn(refresh) end
  if elapsed<.1 then return end;elapsed=0
  local model=workspace:FindFirstChild("RestockShop")
+  if player:GetAttribute("CurrentWorld")==2 then
+   local map=workspace:FindFirstChild("World2Map");local lobby=map and map:FindFirstChild("TrainingArea")
+   local facilities=lobby and lobby:FindFirstChild("FacilityDisplays")
+   model=facilities and facilities:FindFirstChild("MergeDisplay")
+  end
  local area=model and model:FindFirstChild("Area")
  local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
  local now=false
- if area and area:IsA("BasePart") and root and (player:GetAttribute("CurrentWorld") or 1)==1 then
+ if area and area:IsA("BasePart") and root then
   local point=area.CFrame:PointToObjectSpace(root.Position);local half=area.Size/2
   if area:IsA("Part") and area.Shape==Enum.PartType.Cylinder then
    local radius=math.min(half.Y,half.Z);now=math.abs(point.X)<=half.X and point.Y*point.Y+point.Z*point.Z<=radius*radius

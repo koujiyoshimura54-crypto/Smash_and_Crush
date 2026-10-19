@@ -8,6 +8,10 @@ local HUDLayout = require(RS.Modules:WaitForChild("HUDLayout"))
 local menu = gui:WaitForChild("LeftMenu")
 local hud = gui:WaitForChild("HUD")
 local combat = RS.Remotes:WaitForChild("GameRemotes"):WaitForChild("CombatState")
+local combat2=RS.Remotes.GameRemotes:WaitForChild("World2CombatState")
+local function activeCombat()return player:GetAttribute("CurrentWorld")==2 and combat2 or combat end
+local function currentStage()return player:GetAttribute(player:GetAttribute("CurrentWorld")==2 and "World2CurrentStage" or "CurrentStage") or 1 end
+local function runId()return player:GetAttribute(player:GetAttribute("CurrentWorld")==2 and "World2RunId" or "RunInventoryId") end
 local style = gui.StrengthLevelHUD.LevelPanel.Level
 local button = Instance.new("TextButton")
 button.Name = "RunReturnButton"
@@ -43,20 +47,19 @@ local humanoid, healthConnection
 local initialized, waitingForProgress, inLobby = false, false, true
 local function render()
 	local busy = pending ~= nil or player:GetAttribute("RunReturnBusy") == true
-	local visible = (player:GetAttribute("CurrentWorld") or 1) == 1
-		and player:GetAttribute("RunInventoryActive") == true
+	local visible = (player:GetAttribute("CurrentWorld")==2 or player:GetAttribute("RunInventoryActive")==true)
 		and initialized and not inLobby and not waitingForProgress
-		and unlocked[player:GetAttribute("CurrentStage") or 1] == true
-		and not defeated[player:GetAttribute("CurrentStage") or 1]
+		and unlocked[currentStage()] == true
+		and not defeated[currentStage()]
 		and humanoid ~= nil and humanoid.Health > 0 and not busy
 	button.Visible = visible
 	button.Active = not busy
 	button.AutoButtonColor = not busy
-	button.Text = busy and "保存中…" or (failed and "失敗\n再試行" or "Back")
+	button.Text = busy and "Saving..." or (failed and "Retry" or "Back")
 end
 button.Activated:Connect(function()
 	if not button.Visible or pending or player:GetAttribute("RunReturnBusy") then return end
-	local id = player:GetAttribute("RunInventoryId")
+	local id = runId()
 	if typeof(id) ~= "string" then return end
 	pending = id
 	failed = false
@@ -69,7 +72,7 @@ remote.OnClientEvent:Connect(function(id, success, code)
 	failed = not success and code ~= "StaleRun"
 	render()
 end)
-for _, attribute in {"CurrentWorld", "CurrentStage", "RunInventoryActive", "RunReturnBusy"} do
+for _, attribute in {"CurrentWorld", "CurrentStage", "World2CurrentStage", "RunInventoryActive", "RunReturnBusy"} do
 	player:GetAttributeChangedSignal(attribute):Connect(render)
 end
 player:GetAttributeChangedSignal("RunInventoryId"):Connect(function()
@@ -79,10 +82,10 @@ player:GetAttributeChangedSignal("RunInventoryId"):Connect(function()
 	failed = false
 	render()
 	-- Reconcile after a new RunId even if attributes and remotes arrive separately.
-	combat:FireServer({Type = "RequestState"})
+	activeCombat():FireServer({Type = "RequestState"})
 end)
 -- Read the existing combat snapshot; no ownership or Return state is mutated.
-combat.OnClientEvent:Connect(function(data)
+local function onCombat(data)
 	if typeof(data) ~= "table" then return end
 	if data.Type == "Initialize" then
 		table.clear(defeated)
@@ -110,7 +113,16 @@ combat.OnClientEvent:Connect(function(data)
 		return
 	end
 	render()
-end)
+end
+combat.OnClientEvent:Connect(function(data)if player:GetAttribute("CurrentWorld")~=2 then onCombat(data) end end)
+combat2.OnClientEvent:Connect(function(data)if player:GetAttribute("CurrentWorld")==2 then onCombat(data) end end)
+local function reconcileWorld()
+ initialized=false;waitingForProgress=false;pending=nil;failed=false
+ table.clear(unlocked);table.clear(defeated);render()
+ activeCombat():FireServer({Type="RequestState"})
+end
+player:GetAttributeChangedSignal("CurrentWorld"):Connect(reconcileWorld)
+player:GetAttributeChangedSignal("World2RunId"):Connect(function()if player:GetAttribute("CurrentWorld")==2 then reconcileWorld() end end)
 -- Character health gates presentation immediately, including death before respawn.
 local function bindCharacter(character)
 	if healthConnection then healthConnection:Disconnect(); healthConnection = nil end
@@ -138,7 +150,7 @@ local connection = RunService.Heartbeat:Connect(function(dt)
 	elapsed += dt
 	if elapsed < .2 then return end
 	elapsed = 0
-	local map = workspace:FindFirstChild("GeneratedMap")
+	local map = workspace:FindFirstChild(player:GetAttribute("CurrentWorld")==2 and "World2Map" or "GeneratedMap")
 	local area = map and map:FindFirstChild("TrainingArea")
 	local floor = area and area:FindFirstChild("Floor")
 	local character = player.Character
@@ -156,4 +168,4 @@ script.Destroying:Once(function()
 end)
 render()
 HUDLayout.Mount(gui).Refresh()
-combat:FireServer({Type = "RequestState"})
+activeCombat():FireServer({Type = "RequestState"})

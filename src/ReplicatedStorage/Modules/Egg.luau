@@ -9,6 +9,7 @@ local Config = require(ReplicatedStorage.Modules.Config)
 local Limited = require(ReplicatedStorage.Config.LimitedEggConfig)
 
 local Egg = {}
+local World2=require(ReplicatedStorage.Config.World2GameplayConfig)
 
 Egg.FolderName = "Eggs"
 
@@ -33,6 +34,14 @@ Egg.NormalPools = {
 		StrengthPercents={45,45,45,60,80,100,130},
 		Species={"Turtle", "Alien", "Anglerfish", "Dino", "Scorpion", "Evil Dragon", "Chimpanzini Bananini"}},
 }
+-- World2 pools are not Pet Merge targets; the existing four World1 preview pools stay intact.
+for index,sources in ipairs(World2.PetSources) do
+ local species,percents={},{}
+ for slot,source in ipairs(sources) do
+  species[slot]="W2 "..source;percents[slot]=(World2.PetMultipliers[index][slot]-1)*100
+ end
+ Egg.NormalPools[World2.EggIds[index]]={Approved=true,Species=species,StrengthPercents=percents}
+end
 Egg.MergeThresholds = {
 	{Points=20, Odds={60,40,0,0}}, {Points=30, Odds={40,60,0,0}},
 	{Points=40, Odds={20,80,0,0}}, {Points=50, Odds={0,100,0,0}},
@@ -213,4 +222,42 @@ function Egg.count(button: string): number?
 	return if type(rolls) == "number" then rolls else nil
 end
 
+function Egg.world(name)
+ local row=Config.Eggs.Eggs[name]
+ return row and (row.WorldId or 1)
+end
+function Egg.purchasable(name)
+ local row=Config.Eggs.Eggs[name]
+ return row~=nil and row.PurchaseEnabled~=false and type(row.wins)=="number" and row.wins>0
+end
+function Egg.displayName(name)
+ local row=Config.Eggs.Eggs[name]
+ return row and row.Name or name
+end
+local function facilities()
+ local map=workspace:FindFirstChild("World2Map")
+ local area=map and map:FindFirstChild("TrainingArea")
+ return area and area:FindFirstChild("FacilityDisplays")
+end
+function Egg.part(name)
+ if Egg.world(name)~=2 then local folder=workspace:FindFirstChild(Egg.FolderName);return folder and folder:FindFirstChild(name) end
+ local root=facilities()
+ if not root then return nil end
+ if name=="W2_Limited" then local limited=root:FindFirstChild("LimitedEggDisplay");return limited and limited:FindFirstChild("PetMesh") end
+ local displays=root:FindFirstChild("EggDisplays")
+ local visuals=displays and displays:FindFirstChild("Visuals")
+ return visuals and visuals:FindFirstChild(name:sub(4))
+end
+function Egg.identity(part)
+ for _,id in ipairs(World2.EggIds) do if Egg.part(id)==part then return id end end
+ return part.Name
+end
+function Egg.parts()
+ local parts={}
+ for name in pairs(Config.Eggs.Eggs) do
+  local part=Egg.part(name)
+  if part and part:IsA("BasePart") then table.insert(parts,part) end
+ end
+ return parts
+end
 return Egg

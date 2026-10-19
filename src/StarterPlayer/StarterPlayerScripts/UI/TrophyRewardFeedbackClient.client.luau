@@ -72,7 +72,7 @@ local function animateReward(expectedWin)
 	end)
 end
 
-remote.OnClientEvent:Connect(function(data)
+local function rewardEvent(data)
 	if typeof(data) ~= "table" or data.Type ~= "TrophyCollected" or typeof(data.Win) ~= "number" then return end
 	local expectedWin = data.Win
 	task.spawn(function()
@@ -84,7 +84,9 @@ remote.OnClientEvent:Connect(function(data)
 			task.wait()
 		end
 	end)
-end)
+end
+remote.OnClientEvent:Connect(rewardEvent)
+ReplicatedStorage.Remotes.GameRemotes:WaitForChild("World2CombatState").OnClientEvent:Connect(rewardEvent)
 
 script.Destroying:Connect(function()
 	generation += 1

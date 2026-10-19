@@ -13,7 +13,8 @@ local function response(player,data) request:FireClient(player,data) end
 request.OnServerEvent:Connect(function(player,action)
  if action~="Request" or busy[player] then return end
  busy[player]=true
- if not PlayerData.IsLoaded(player) or PlayerData.IsSaving(player) then
+ local session=PlayerData.Get(player)
+ if not PlayerData.IsLoaded(player) or PlayerData.IsSaving(player) or (session and (session.PendingItemMutation or session.OwnershipLost)) then
   response(player,{Type="Denied",Reason="DataNotReady"})
   busy[player]=nil return
  end

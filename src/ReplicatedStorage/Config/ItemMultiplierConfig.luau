@@ -1,4 +1,5 @@
 local Config = {}
+local World2=require(script.Parent.World2GameplayConfig)
 
 -- Item effect source of truth. The existing module path is retained.
 -- Element does not change effects. Edit only these rarity tables to rebalance.
@@ -12,22 +13,25 @@ Config.BeltTreadmillBonus = {
  Common = 0.25, Uncommon = 0.5, Rare = 1, Epic = 1.5, Legendary = 2,
 }
 
-function Config.GetProteinBonus(rarity)
+function Config.GetProteinBonus(rarity,worldId)
+ if worldId==2 then local row=World2.Items[rarity];return row and row.ProteinBonus or 0 end
  return Config.ProteinBonus[rarity] or 0
 end
-function Config.GetGloveBossDamageBonus(rarity)
+function Config.GetGloveBossDamageBonus(rarity,worldId)
+ if worldId==2 then local row=World2.Items[rarity];return row and row.GloveBossDamageBonus or 0 end
  return Config.GloveBossDamageBonus[rarity] or 0
 end
-function Config.GetBeltTreadmillBonus(rarity)
+function Config.GetBeltTreadmillBonus(rarity,worldId)
+ if worldId==2 then local row=World2.Items[rarity];return row and row.BeltTreadmillBonus or 0 end
  return Config.BeltTreadmillBonus[rarity] or 0
 end
-function Config.GetEffectText(itemType, rarity)
+function Config.GetEffectText(itemType, rarity, worldId)
  if itemType == "Protein" then
-  return "+" .. tostring(Config.GetProteinBonus(rarity)) .. " Strength"
+  return "+" .. tostring(Config.GetProteinBonus(rarity,worldId)) .. " Strength"
  elseif itemType == "Glove" then
-  return string.format("Boss Damage +%g%%", Config.GetGloveBossDamageBonus(rarity) * 100)
+  return string.format("Boss Damage +%g%%", Config.GetGloveBossDamageBonus(rarity,worldId) * 100)
  elseif itemType == "TrainingBelt" then
-  return "Treadmill +" .. tostring(Config.GetBeltTreadmillBonus(rarity)) .. "x"
+  return "Treadmill +" .. tostring(Config.GetBeltTreadmillBonus(rarity,worldId)) .. "x"
  end
  return ""
 end

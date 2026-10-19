@@ -46,7 +46,7 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
  if not record then record={Player=player,Stages={}};processed[run]=record end
  if record.Player~=player then return false,"InvalidOwner" end
  if record.Stages[stage] then return false,"AlreadyProcessed" end
- local result=Roller.Roll(rng,stage)
+ local result=Roller.Roll(rng,stage,worldId)
  result.Id=game:GetService("HttpService"):GenerateGUID(false)
  result.OwnerUserId=player.UserId
  result.Stage=stage

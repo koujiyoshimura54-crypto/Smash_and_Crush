@@ -741,8 +741,7 @@ local function templateFor(name: string?): Instance?
 	if not name then return eggTemplate end
 	if not Egg.isEgg(name) then return eggTemplate end
 
-	local folder = Workspace:FindFirstChild(Egg.FolderName)
-	local model = folder and folder:FindFirstChild(name)
+	local model = Egg.part(name)
 
 	if not model then return eggTemplate end
 

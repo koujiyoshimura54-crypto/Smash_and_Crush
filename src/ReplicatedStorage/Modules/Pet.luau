@@ -13,6 +13,11 @@ local PERCENT = 100
 local MODELS_PATH = { "Assets", "Pets" }
 
 local Pet = {}
+local World2=require(ReplicatedStorage.Config.World2GameplayConfig)
+function Pet.VisualName(name)
+ local entry=World2.Pets[name]
+ return entry and entry.SourcePet or name
+end
 
 Pet.InventoryField = "inventory"
 Pet.PetsField = "pets"
@@ -26,6 +31,8 @@ Pet.Attributes = { "Pet" }
 -- World1 ability data follows actual configured species/IDs, never display captions
 -- or the purchased Speed multiplier. Merge points remain a separate setting.
 function Pet.StrengthPercent(name: string): number?
+ local entry=World2.Pets[name]
+ if entry then return (entry.Multiplier-1)*100 end
 	local paid=Limited.ByName[name]
 	if paid then return paid.StrengthPercent end
 	local Egg=require(ReplicatedStorage.Modules.Egg)
@@ -56,6 +63,7 @@ function Pet.container(playerData: any): any
 end
 
 function Pet.model(name: string): Model?
+ name=Pet.VisualName(name)
 	if Limited.ByName[name] then
 		local assets=ReplicatedStorage:FindFirstChild("Assets")
 		local limited=assets and assets:FindFirstChild(Limited.ModelsFolder)
@@ -83,7 +91,7 @@ end
 
 -- Prepare display/follower clones only. Never edits the purchased templates.
 function Pet.isLimited(name: string): boolean
- return Limited.ByName[name]~=nil
+ return Limited.ByName[Pet.VisualName(name)]~=nil
 end
 
 local function visibleBounds(model: Model): (Vector3,Vector3)
@@ -102,6 +110,7 @@ local function visibleBounds(model: Model): (Vector3,Vector3)
 end
 
 function Pet.prepareLimited(model: Model,name: string,height: number?,grounded: boolean?): Vector3?
+ name=Pet.VisualName(name)
  local entry=Limited.ByName[name]
  if not entry then return nil end
  assert(model.PrimaryPart,"Limited Pet PrimaryPart missing")
@@ -371,4 +380,10 @@ function Pet.Publish(player,state)
  player:SetAttribute("PetInventoryRevision",state.Revision)
 end
 
+function Pet.StrengthText(name)
+ local entry=World2.Pets[name]
+ if entry then return string.format("Strength x%g",entry.Multiplier) end
+ local percent=Pet.StrengthPercent(name)
+ return percent and string.format("Strength +%g%%",percent) or "Cosmetic pet"
+end
 return Pet

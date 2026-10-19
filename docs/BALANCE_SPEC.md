@@ -657,3 +657,10 @@ Supersedes all earlier seven-item prices/bonuses and the withdrawn slot6 W1-6D i
 | 12 | NORMAL_12 | 10,000 | +700 | 83499911643975 (W1-12D) |
 
 Every image uses `rbxassetid://` plus the listed ID. Slot5 is unchanged; W1-5D is explicitly slot6. Existing addition/multiplication order is unchanged: Dumbbell addition applies on Training's existing path, without adding it to walking. Existing Pet/Rebirth and all other factors remain where they are. Existing fixed reward/reference calculations continue reading the same equipped bonus; no new reward multiplier or formula change. World2/Boss/Pet/Egg/Item/Aura/Merge/Robux settings are unchanged.
+
+
+## 2026-10-20 — World2 Excel authority and shared Rebirth
+
+The numeric authority is the complete 340-cell World2_数値一覧.xlsx snapshot [recorded here](../reports/World2Workbook_20261020.json), generated into ReplicatedStorage.Config.World2GameplayConfig for server/UI consumers. Independent adjacent tables do not establish unlock relationships. World2 HP/walls/rewards, equipment, Eggs/Pets and treadmill requirements use these values without growth/time balancing. Existing encounter rules are retained; BossHP/5 is not an entry gate. No completion-time claim is validated.
+
+Shared Rebirth required LV for counts 1–10: 10/15/22/30/45/70/90/110/140/160; all ten reference cumulative Strength values match the unchanged LevelRequirements curve. Multiplier is 1+0.5*count including counts above ten. Existing later required-level entries remain. Treadmills old01/02/03/04 use x5/x7/x12/x35 and R0/R7/R9/paid-unavailable; no normal Win purchase condition. Legendary Item 405,000 Win is a three-Epic reference, not a direct purchase. Pet values are final single-equipped multipliers. Unknown paid prices/IDs remain absent. See [evidence and limits](../reports/World2Gameplay_20261020.md).

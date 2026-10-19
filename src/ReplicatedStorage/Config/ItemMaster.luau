@@ -47,6 +47,16 @@ for _, itemType in ipairs(itemTypes) do
   end
  end
 end
+local World2=require(script.Parent.World2GameplayConfig)
+local originals=table.clone(items)
+for id,item in pairs(originals) do
+ local row=assert(World2.Items[item.Rarity])
+ local worldItem=table.clone(item)
+ worldItem.ItemId="W2_"..id;worldItem.WorldId=2
+ worldItem.WinPrice=row.PriceWin;worldItem.ShopPurchasable=row.PriceWin~=nil
+ worldItem.RobuxPurchasable=false;worldItem.RobuxPrice=nil
+ items[worldItem.ItemId]=table.freeze(worldItem)
+end
 table.freeze(items)
 
 local ItemMaster = {}
@@ -74,5 +84,12 @@ function ItemMaster.Get(itemId)
 end
 function ItemMaster.GetAll()
  return items
+end
+function ItemMaster.Id(kind,rarity,element,worldId)
+ local prefix=worldId==2 and "W2_" or ""
+ return prefix..ItemMaster.TypePrefixes[kind].."_"..rarity:upper().."_"..element:upper()
+end
+function ItemMaster.DisplayName(item)
+ return "World "..tostring(item.WorldId or 1).." "..item.Rarity.." "..item.Element.." "..item.ItemType
 end
 return table.freeze(ItemMaster)

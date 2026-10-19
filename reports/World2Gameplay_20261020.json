@@ -1,0 +1,1489 @@
+{
+  "inputPath": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "7ece6d8e887ea248dca746535529977bed45c3dc3c1b4c394777992b9b6f2b8b",
+  "outputSha256": "08c9434ec97c3f705c7454744d5355eba6589bb118c88b24f9f8d1c525ee7766",
+  "workbookSha256": "c4a177e307a34fdb9abd88842f0b40b594339fff1553389d6e8d77da1ef1ea43",
+  "changedSources": [
+    "ReplicatedStorage.Config.World2Config",
+    "ReplicatedStorage.Config.TrophyRewardConfig",
+    "ReplicatedStorage.Config.RebirthConfig",
+    "ReplicatedStorage.Config.RebirthMultiplierConfig",
+    "ServerScriptService.Systems.Controllers.RebirthService",
+    "StarterGui.StrengthGui.RebirthMenuClient",
+    "ReplicatedStorage.Config.DumbbellItemMaster",
+    "ReplicatedStorage.Config.ItemMaster",
+    "ReplicatedStorage.Config.ItemMultiplierConfig",
+    "ReplicatedStorage.Config.AuraConfig",
+    "ServerScriptService.Services.ItemService",
+    "ReplicatedStorage.Config.ItemMergeConfig",
+    "ServerScriptService.Services.EnemyDropRoller",
+    "ServerScriptService.Services.EnemyDropGachaService",
+    "ServerScriptService.Services.PetServer",
+    "ServerScriptService.Services.TrophyRewardService",
+    "ReplicatedStorage.Modules.Config",
+    "ReplicatedStorage.Modules.Egg",
+    "ReplicatedStorage.Modules.Pet",
+    "ReplicatedStorage.Modules.LimitedPetViewport",
+    "StarterPlayer.StarterPlayerScripts.Services.PetClient",
+    "ServerScriptService.Services.EggServer",
+    "ServerScriptService.Services.PlayerDataService",
+    "StarterPlayer.StarterPlayerScripts.Services.EggClient",
+    "StarterPlayer.StarterPlayerScripts.Services.HatchClient",
+    "ReplicatedStorage.Config.DumbbellStandConfig",
+    "ServerScriptService.Services.DumbbellStandService",
+    "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+    "ReplicatedStorage.Config.TreadmillConfig",
+    "ServerScriptService.Services.TrainingManager",
+    "ServerScriptService.Systems.Controllers.TrainingController",
+    "StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient",
+    "StarterPlayer.StarterPlayerScripts.UI.TreadmillGuideClient",
+    "ServerScriptService.Services.GamePassService",
+    "ServerScriptService.Services.TrainingLobbyAreaService",
+    "StarterGui.StrengthGui.InventoryPanelClient",
+    "StarterGui.StrengthGui.ItemInventoryTabClient",
+    "StarterPlayer.StarterPlayerScripts.UI.ItemEffectHUDClient",
+    "StarterPlayer.StarterPlayerScripts.UI.TrophyRewardFeedbackClient",
+    "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New",
+    "StarterGui.StrengthGui.InventoryCapacityUpgradeClient",
+    "ServerScriptService.Services.AuraService",
+    "StarterGui.StrengthGui.AuraInventoryClient",
+    "StarterGui.StrengthGui.EssentialStudShopClient",
+    "ServerScriptService.World.BossCombatService",
+    "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+    "ServerScriptService.World.EnemyManager",
+    "ServerScriptService.Services.RunReturnService",
+    "StarterGui.StrengthGui.RunReturnClient",
+    "ReplicatedStorage.Config.World2GameplayConfig"
+  ],
+  "changedOriginalProperties": [
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Price",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Price",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Price",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Price",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Amount",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Amount",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Amount.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Amount.Main",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.Amount.Main",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.ItemIcon",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.ItemIcon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.StationNumber",
+      "property": "LayoutOrder"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.StationNumber",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui.StationNumber",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Legendary",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Legendary.Prize.Info",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Legendary.Prize.Info",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Legendary.Prize.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Mythic",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Mythic.Prize.Info",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Mythic.Prize.Info",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Mythic.Prize.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Rare",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Rare.Prize.Info",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Rare.Prize.Info",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Rare.Prize.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Basic",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Basic.Prize.Info",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Basic.Prize.Info",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Basic.Prize.Icon",
+      "property": "Visible"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.MergeDisplay",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.UpgradesDisplay",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01",
+      "property": "Tags"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.StationBillboard.Multiplier",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03",
+      "property": "Tags"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.StationBillboard.Multiplier",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05",
+      "property": "Tags"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.StationBillboard.Multiplier",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07",
+      "property": "Tags"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.StationBillboard.Multiplier",
+      "property": "Text"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.EggClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.PetClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.HatchClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.ItemEffectHUDClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillGuideClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.TrophyRewardFeedbackClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.AuraInventoryClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.EssentialStudShopClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryCapacityUpgradeClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanelClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.ItemInventoryTabClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.RebirthMenuClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.RunReturnClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.Pet",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.Egg",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.Config",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.LimitedPetViewport",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.AuraConfig",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.DumbbellItemMaster",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.ItemMaster",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.ItemMergeConfig",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.ItemMultiplierConfig",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.RebirthConfig",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.RebirthMultiplierConfig",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.TreadmillConfig",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.TrophyRewardConfig",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.World2Config",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.DumbbellStandConfig",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.PetServer",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.EggServer",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.AuraService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.EnemyDropGachaService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.EnemyDropRoller",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.GamePassService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.ItemService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.PlayerDataService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.RunReturnService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.TrainingLobbyAreaService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.TrainingManager",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.TrophyRewardService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Services.DumbbellStandService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.World.BossCombatService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.World.EnemyManager",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Systems.Controllers.RebirthService",
+      "property": "Source"
+    },
+    {
+      "path": "ServerScriptService.Systems.Controllers.TrainingController",
+      "property": "Source"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.StationBillboard.Multiplier",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02",
+      "property": "Tags"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.StationBillboard.Multiplier",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04",
+      "property": "Tags"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.StationBillboard.Multiplier",
+      "property": "Text"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06",
+      "property": "AttributesSerialize"
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06",
+      "property": "Tags"
+    }
+  ],
+  "addedInstances": 33,
+  "originalInstancesRemoved": 0,
+  "originalParentsUnchanged": true,
+  "allOriginalPartTransformsSizesCollisionsUnchanged": true,
+  "sourceChangesBasedOnActualFile": true,
+  "zones": [
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.Area",
+      "sourceBeltParts": [
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.Smooth Block Model"
+      ],
+      "size": [
+        8.994367599487305,
+        0.800000011920929,
+        18.5342960357666
+      ],
+      "position": [
+        -74.69155883789062,
+        3.5596890449523926,
+        1893.3585205078125
+      ],
+      "type": 1
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.Area",
+      "sourceBeltParts": [
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.Smooth Block Model"
+      ],
+      "size": [
+        8.994367599487305,
+        0.800000011920929,
+        18.5342960357666
+      ],
+      "position": [
+        -52.80332565307617,
+        3.5596890449523926,
+        1893.3585205078125
+      ],
+      "type": 1
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.Area",
+      "sourceBeltParts": [
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.Smooth Block Model"
+      ],
+      "size": [
+        10.874185562133789,
+        0.800000011920929,
+        22.407957077026367
+      ],
+      "position": [
+        -29.235595703125,
+        3.8543124198913574,
+        1891.1890869140625
+      ],
+      "type": 2
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.Area",
+      "sourceBeltParts": [
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.Smooth Block Model",
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.Smooth Block Model"
+      ],
+      "size": [
+        10.874186515808105,
+        0.800000011920929,
+        22.407957077026367
+      ],
+      "position": [
+        -4.0267333984375,
+        3.8543124198913574,
+        1891.1890869140625
+      ],
+      "type": 2
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Area",
+      "sourceBeltParts": [
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Conveyor"
+      ],
+      "size": [
+        16.86189079284668,
+        0.800000011920929,
+        33.323204040527344
+      ],
+      "position": [
+        25.77627182006836,
+        4.789134979248047,
+        1885.1024169921875
+      ],
+      "type": 3
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Area",
+      "sourceBeltParts": [
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Conveyor"
+      ],
+      "size": [
+        16.86189079284668,
+        0.800000011920929,
+        33.323204040527344
+      ],
+      "position": [
+        61.27650451660156,
+        4.789134979248047,
+        1885.1024169921875
+      ],
+      "type": 3
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.Area",
+      "sourceBeltParts": [
+        "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.Conveyor"
+      ],
+      "size": [
+        16.86189079284668,
+        0.800000011920929,
+        33.323204040527344
+      ],
+      "position": [
+        96.77674102783203,
+        4.789132118225098,
+        1885.1024169921875
+      ],
+      "type": 4
+    }
+  ],
+  "mergeArea": "Workspace.World2Map.TrainingArea.FacilityDisplays.MergeDisplay.Area",
+  "binaryValidation": {
+    "before": {
+      "sha256": "08c9434ec97c3f705c7454744d5355eba6589bb118c88b24f9f8d1c525ee7766",
+      "instanceCount": 182118,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182117,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182118,
+        "PROP.Ref": 78444,
+        "PROP.Content": 0,
+        "PRNT.Child": 182118,
+        "PRNT.Parent": 182118
+      }
+    },
+    "after": {
+      "sha256": "08c9434ec97c3f705c7454744d5355eba6589bb118c88b24f9f8d1c525ee7766",
+      "instanceCount": 182118,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182117,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182118,
+        "PROP.Ref": 78444,
+        "PROP.Content": 0,
+        "PRNT.Child": 182118,
+        "PRNT.Parent": 182118
+      }
+    },
+    "renumberedInstances": 0,
+    "modifiedChunks": 0,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "sharedStrings": {
+    "count": 362,
+    "validatedIndexes": 208438
+  },
+  "canonicalizationIdempotent": true,
+  "noPlay": true,
+  "noStudioSavePublish": true,
+  "paidOffersDisabled": [
+    "World2 Treadmill04",
+    "World2 paid Aura",
+    "World2 Limited Egg"
+  ],
+  "writtenToSameFile": true
+}

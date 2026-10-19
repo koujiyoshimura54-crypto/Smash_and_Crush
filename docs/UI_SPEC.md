@@ -602,3 +602,10 @@ Dumbbell 12 and normal Egg 4 signs/UI move rigidly with their full assemblies. A
 ## 2026-10-19 — Studio /test replies and diagnostics
 
 StudioTestCommandResult carries server replies to the restored StudioTestCommandClient, which displays them through RBXGeneral.DisplaySystemMessage and logs them in Client Output. Bind a later-created Remote once; wait for the chat channel and report unavailable/display-failure cases. Server help/status remain available before gameplay dependency initialization completes; status names readiness/failure and Output records initialization/execution errors. No new screen UI or production command enablement. Native Edit compile and memory-only response/HUD tests pass; real chat display and replicated HUD behavior remain unverified. [Repair record](../reports/StudioTestCommands_20261019.md).
+
+
+## 2026-10-20 — World2 connected existing UI
+
+Existing Shop/Inventory/Merge/Aura/Egg/treadmill/stand UI consumes the same World2 catalog definitions as server calculations, with separate W2 identity and synchronized price/owned/equipped states. Existing icons, stars/rarity numbers, element/type labels, fonts and outlines are reused. Existing stand images/Adornees remain. Normal Egg counts 1/3/8 display the actual debit. Unknown paid treadmill/Aura/Limited Egg show unavailable purchase state without 0/free pricing; no placeholder-asset disclaimer is added. Geometry remains unchanged.
+
+Native Edit confirmed configured UI references/labels and model aliases, but image requests remained unloaded and capture did not complete. Actual image rendering, runtime panel layout/state/animation and operation are unverified. [Details](../reports/World2Gameplay_20261020.md).

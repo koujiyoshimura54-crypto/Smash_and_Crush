@@ -260,7 +260,12 @@ local inside, dismissed = false, false
 Responsive.ConnectActivation(close, function() panel.Visible = false; dismissed = true end)
 local trigger, stall
 local function attachStall()
-	local found = workspace:FindFirstChild("ShopStallTemplate")
+ local found=workspace:FindFirstChild("ShopStallTemplate")
+ if player:GetAttribute("CurrentWorld")==2 then
+  local map=workspace:FindFirstChild("World2Map");local lobby=map and map:FindFirstChild("TrainingArea")
+  local facilities=lobby and lobby:FindFirstChild("FacilityDisplays")
+  found=facilities and facilities:FindFirstChild("UpgradesDisplay")
+ end
 	if found == stall and trigger and trigger.Parent then return end
 	if trigger then trigger:Destroy(); trigger = nil end
 	stall = found
@@ -311,7 +316,7 @@ connect(RunService.Heartbeat, function(dt)
 	local root = character and character:FindFirstChild("HumanoidRootPart")
 	local hum = character and character:FindFirstChildOfClass("Humanoid")
 	local near = false
-	if trigger and root and hum and hum.Health > 0 and (player:GetAttribute("CurrentWorld") or 1) == 1 then
+	if trigger and root and hum and hum.Health > 0 then
 		local p = trigger.CFrame:PointToObjectSpace(root.Position)
 		local h = trigger.Size / 2
 		near = math.abs(p.X) <= h.X and math.abs(p.Y) <= h.Y and math.abs(p.Z) <= h.Z

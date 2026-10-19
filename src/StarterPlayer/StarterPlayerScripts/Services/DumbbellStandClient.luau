@@ -22,15 +22,15 @@ function M.start()
  local owned = {}
  local loaded = false
  local equipped = Player:GetAttribute("EquippedDumbbell") or ""
- local function render()
-  local folder = workspace:FindFirstChild(Config.FolderName)
+ local function renderWorld(worldId)
+  local folder = Config.GetFolder(worldId)
   if not folder then return end
-  for _, item in ipairs(Master.GetSorted()) do
+  for _, item in ipairs(Master.GetSorted(worldId)) do
    local index = item.Grade
    local model = folder:FindFirstChild(tostring(index))
    local board = model and model:FindFirstChild("BillboardGui")
    local itemId = item.ItemId
-   local press = Config.GetPress(folder, index)
+   local press = Config.GetPress(folder, index,worldId)
    if press then
     if not originals[press] then originals[press] = press.Color end
     press.Color = equipped == itemId and Color3.fromRGB(0,200,0) or originals[press]
@@ -51,6 +51,7 @@ function M.start()
    end
   end
  end
+ local function render() renderWorld(1);renderWorld(2) end
  -- Read-only state presentation; purchase/equip remains server-detected on entry.
  local remotes = RS:WaitForChild("Remotes")
  local stateRemote = remotes:WaitForChild("DumbbellInventoryState")
@@ -78,8 +79,9 @@ function M.start()
   render()
  end
  workspace.ChildAdded:Connect(function(child) if child.Name == Config.FolderName then bind(child) end end)
- local folder = workspace:FindFirstChild(Config.FolderName)
- if folder then bind(folder) else render() end
+ for worldId=1,2 do local folder=Config.GetFolder(worldId);if folder then bind(folder) end end
+ workspace.DescendantAdded:Connect(function(child) if child==Config.GetFolder(2) then bind(child) end end)
+ render()
  task.spawn(function()
   while Player.Parent and not loaded do
    local before = revision

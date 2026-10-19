@@ -148,9 +148,13 @@ function ItemService.EquipBestItems(player)
  if s.Saving then return false,"DataSaving" end
  if s.PendingItemMutation then return false,"InventoryBusy" end
  local selected,ranks={},{}
+ local function score(item)
+  local getter=({Protein=ItemMultiplierConfig.GetProteinBonus,Glove=ItemMultiplierConfig.GetGloveBossDamageBonus,TrainingBelt=ItemMultiplierConfig.GetBeltTreadmillBonus})[item.ItemType]
+  return getter and getter(item.Rarity,item.WorldId) or 0
+ end
  for id,count in pairs(s.Data.OwnedItems) do
   local item=ItemMaster.Get(id)
-  local rank=item and rarityRank[item.Rarity]
+  local rank=item and score(item)
   if item and slots[item.ItemType] and rank and finiteInteger(count) and count>0 then
    local kind=item.ItemType
    if not ranks[kind] or rank>ranks[kind]
@@ -165,7 +169,7 @@ function ItemService.EquipBestItems(player)
   if id then
    local current=s.Data.EquippedItems[kind]
    local item=ItemMaster.Get(current)
-   if item and item.ItemType==kind and rarityRank[item.Rarity]==ranks[kind]
+   if item and item.ItemType==kind and score(item)==ranks[kind]
     and ItemService.HasItem(player,current) then
     id=current
    end
@@ -195,7 +199,7 @@ local function getEquippedRarity(player, itemType)
  local id=s.Data.EquippedItems[itemType]
  local item=ItemMaster.Get(id)
  if item and item.ItemType==itemType and ItemService.GetItemCount(player,id)>0 then
-  return item.Rarity
+  return item.Rarity,item.WorldId or 1
  end
  return nil
 end

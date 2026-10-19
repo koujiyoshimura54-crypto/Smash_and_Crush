@@ -22,6 +22,7 @@ local Janitor = require(ReplicatedStorage.Packages.Janitor)
 -- Requests are acknowledged through the legacy Pet transaction bridge.
 local Config = require(ReplicatedStorage.Modules.Config)
 local Egg = require(ReplicatedStorage.Modules.Egg)
+local Pet = require(ReplicatedStorage.Modules.Pet)
 local ButtonClient = require(script.Parent.ButtonClient)
 local NotifyClient = require(script.Parent.NotifyClient)
 local PetClient = require(script.Parent.PetClient)
@@ -76,7 +77,8 @@ local function setPair(root: Instance, name: string, text: string)
 end
 
 local function setIcon(frame: ImageLabel, petName: string)
-	local decal = if icons then icons:FindFirstChild(petName) else nil
+ if Pet.isLimited(petName) then require(ReplicatedStorage.Modules.LimitedPetViewport).bind(frame,petName);return end
+	local decal = if icons then icons:FindFirstChild(Pet.VisualName(petName)) else nil
 	if not (decal and decal:IsA("Decal")) then
 		warn(`[EggClient] could not find {table.concat(ICONS_PATH, ".")}.{petName}`)
 		return
@@ -93,13 +95,15 @@ local function stampSheet(name: string, open: BillboardGui)
 			local count=Egg.count(frame.Name)
 			if count then
 				local price=require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(name)*count)
-				setPair(frame,"Title",string.format("Open %d\n%s Win",count,price))
+                setPair(frame,"Title",Egg.purchasable(name) and string.format("Open %d\n%s Win",count,price) or "Unavailable")
+                local button=frame:FindFirstChild("Button")
+                if button and button:IsA("GuiButton") then button.Active=Egg.purchasable(name);button.Interactable=button.Active end
 			end
 		end
 	end
 	local background = open:FindFirstChild(BACKGROUND_NAME)
 	if background then
-		setPair(background, INFO_NAME, string.format(Config.Eggs.titleFormat, name))
+		setPair(background, INFO_NAME, string.format(Config.Eggs.titleFormat, Egg.displayName(name)))
 	else
 		warn(`[EggClient] {name} sheet has no {BACKGROUND_NAME}`)
 	end
@@ -161,6 +165,7 @@ local function stampSheet(name: string, open: BillboardGui)
 end
 
 local function press(name: string, button: string, count: number)
+ if not Egg.purchasable(name) or Egg.world(name)~=(Player:GetAttribute("CurrentWorld") or 1) then return end
 	local price = Egg.price(name) * count
 	if price <= 0 then return end
 
@@ -234,7 +239,7 @@ local function bindSheet(egg: Sheet, open: BillboardGui)
 
 	ButtonClient.attach(open, egg.janitor)
 
-	local name = egg.part.Name
+	local name = Egg.identity(egg.part)
 
 	local Pets = Egg.pets(name)
 	if not Pets then return end
@@ -302,11 +307,11 @@ local function build(egg: Sheet)
 
 	egg.size = open.Size
 
-	open.Name = egg.part.Name
+	open.Name = Egg.identity(egg.part)
 	open.Adornee = egg.part
 	open.Enabled = false
 
-	stampSheet(egg.part.Name, open)
+	stampSheet(Egg.identity(egg.part), open)
 	bindSheet(egg, open)
 
 	open.Parent = gui
@@ -321,8 +326,8 @@ end
 local function register(part: BasePart)
  local prize=part:FindFirstChild("Prize")
  local amount=prize and prize:FindFirstChild("Info")
- if amount and amount:IsA("TextLabel") then amount.Text=require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(part.Name)) end
-	local egg = Eggs[part.Name]
+ if amount and amount:IsA("TextLabel") then amount.Text=Egg.purchasable(Egg.identity(part)) and require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(Egg.identity(part))) or "Unavailable" end
+	local egg = Eggs[Egg.identity(part)]
 
 	if egg then
 		egg.part = part
@@ -344,7 +349,7 @@ local function register(part: BasePart)
 		janitor = Janitor.new(),
 	}
 
-	Eggs[part.Name] = made
+	Eggs[Egg.identity(part)] = made
 
 	build(made)
 end
@@ -394,7 +399,7 @@ local function choose(camera: Camera): Sheet?
 	local bestAngle, bestDistance = math.huge, math.huge
 
 	for _, egg in Eggs do
-		if not egg.open then continue end
+		if not egg.open or Egg.world(Egg.identity(egg.part))~=(Player:GetAttribute("CurrentWorld") or 1) then continue end
 		if not egg.part.Parent then continue end
 
 		local anchor = egg.base.Position
@@ -506,23 +511,10 @@ function EggClient.start()
 		warn(`[EggClient] could not find {ReplicatedStorage:GetFullName()}.{table.concat(ICONS_PATH, ".")}`)
 	end
 
-	local folder = workspace:WaitForChild(Egg.FolderName, WAIT_TIMEOUT)
-	if not folder then
-		warn(`[EggClient] could not find {workspace:GetFullName()}.{Egg.FolderName}`)
-		return
-	end
-
-	for _, child in ipairs(folder:GetChildren()) do
-		if not child:IsA("BasePart") or not Egg.isEgg(child.Name) then continue end
-
-		register(child)
-	end
-
-	folder.ChildAdded:Connect(function(child)
-		if not child:IsA("BasePart") or not Egg.isEgg(child.Name) then return end
-
-		register(child)
-	end)
+ for _,part in ipairs(Egg.parts()) do register(part) end
+ workspace.DescendantAdded:Connect(function(part)
+  if part:IsA("BasePart") and Egg.part(Egg.identity(part))==part then register(part) end
+ end)
 
 	local playerGui = Player:WaitForChild("PlayerGui")
 

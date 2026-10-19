@@ -1994,4 +1994,17 @@ Config.Admin = {
 	denyTo = Color3.fromRGB(220, 0, 0),
 }
 
+-- Distinct World2 identities reuse visuals only. No initial ownership or paid grant.
+local World2=require(game:GetService("ReplicatedStorage").Config.World2GameplayConfig)
+for name,pet in pairs(World2.Pets) do
+ local visual=Config.Pets[pet.SourcePet] or {rarity="Legendary"}
+ local entry=table.clone(visual)
+ entry.WorldId=2;entry.multiplier=pet.Multiplier;entry.percent=nil
+ Config.Pets[name]=entry
+end
+for index,id in ipairs(World2.EggIds) do
+ local row=World2.Eggs[index]
+ Config.Eggs.Eggs[id]={WorldId=2,Name=World2.EggNames[index],wins=row and row.PriceWin,
+  PurchaseEnabled=row~=nil and row.PurchaseEnabled==true}
+end
 return Config

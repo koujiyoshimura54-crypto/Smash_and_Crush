@@ -129,7 +129,7 @@ local function refresh()
    local belt=findBelt(model)
    local old=records[model]
    if old and old.belt~=belt then remove(old);records[model]=nil end
-   if belt and not records[model] then records[model]=create(model.Name,belt,Config.Get(model.Name)) end
+   if belt and not records[model] then records[model]=create(model.Name,belt,Config.GetForModel(model)) end
   end
  end
  for model,record in pairs(records) do if not present[model] then remove(record);records[model]=nil end end

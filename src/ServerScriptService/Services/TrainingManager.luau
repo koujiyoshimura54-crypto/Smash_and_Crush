@@ -6,14 +6,19 @@ local TreadmillConfig=require(game.ReplicatedStorage.Config:WaitForChild("Treadm
 local GamePass=require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
 local ItemService=require(game.ServerScriptService.Services:WaitForChild("ItemService"))
 local PotionService=require(game.ServerScriptService.Services:WaitForChild("PotionService"))
-local treadmillFolder=Workspace:WaitForChild("Treadmill")
+local treadmillFolder=Workspace:WaitForChild("Treadmills")
 local TREADMILL_TAG="TrainingTreadmill"
 local TrainingConfig=require(game.ReplicatedStorage.Config:WaitForChild("TrainingConfig"))
-local TreadmillVisuals=require(game.ServerScriptService.Services:WaitForChild("TreadmillVisualService"))
 local TrainingManager={}
+local Data=require(game.ServerScriptService.Services.PlayerDataService)
 local activeSessions={}
 local currentTreadmills={}
 local premiumEntries=setmetatable({}, {__mode="k"})
+
+local function getTrainingArea(treadmill)
+ local area=treadmill:FindFirstChild("Area")
+ return area and area:IsA("BasePart") and area or nil
+end
 
 local function finitePositive(v)
  return typeof(v)=="number" and v==v and v~=math.huge and v~=-math.huge and v>0
@@ -151,8 +156,10 @@ end
 
 function TrainingManager.CanUseTreadmill(player,treadmill)
  if not treadmill or not CollectionService:HasTag(treadmill,TREADMILL_TAG) or not treadmill:IsDescendantOf(Workspace) then return false end
- local config=TreadmillConfig.Get(treadmill.Name)
+ local config=TreadmillConfig.GetForModel(treadmill)
  if not config or not finitePositive(config.Multiplier) then return false end
+ if TreadmillConfig.WorldForModel(treadmill)~=(player:GetAttribute("CurrentWorld") or 1) or not Data.IsLoaded(player) then return false,config end
+ if config.PurchaseEnabled==false then return false,config end
  if config.RequiresPremium then return GamePass.AreEffectsEnabled(player) and GamePass.HasPremiumTreadmill(player),config end
  local count=tonumber(player:GetAttribute("RebirthCount")) or 0
  return count>=(config.RequiredRebirth or 0),config
@@ -160,7 +167,7 @@ end
 
 function TrainingManager.GetOccupiedTreadmill(player)
  for _,treadmill in ipairs(currentTreadmills) do
-  local zone=treadmill:IsDescendantOf(Workspace) and treadmill:FindFirstChild("TrainingZone")
+  local zone=treadmill:IsDescendantOf(Workspace) and getTrainingArea(treadmill)
   if zone and TrainingManager.IsPlayerInsideZone(player,zone) then return treadmill end
  end
  return nil
@@ -170,7 +177,7 @@ function TrainingManager.StartTraining(player,treadmill)
  if not player or not player:IsA("Player") then return false,"player must be a Player" end
  if not treadmill or not treadmill:IsA("Model") or not treadmill:IsDescendantOf(Workspace) then return false,"invalid treadmill" end
  local allowed=TrainingManager.CanUseTreadmill(player,treadmill)
- local zone=treadmill:FindFirstChild("TrainingZone")
+ local zone=getTrainingArea(treadmill)
  if not allowed or not zone or not TrainingManager.IsPlayerInsideZone(player,zone) then
   TrainingManager.StopTraining(player)
   return false,"TreadmillUnavailable"
@@ -234,7 +241,8 @@ function TrainingManager.IsPlayerInsideZone(player,zone)
  return math.abs(footLocal.Y)<=h.Y
 end
 
-function TrainingManager.UpdateZoneOccupants()
+-- Availability is refreshed by the controller at 0.2 seconds.
+function TrainingManager.UpdateAvailability()
  for _,player in Players:GetPlayers() do
   -- Reuse the actual permission predicate, including Premium ownership.
   for _,treadmill in ipairs(currentTreadmills) do
@@ -242,8 +250,14 @@ function TrainingManager.UpdateZoneOccupants()
    local attribute="TreadmillAvailable_"..treadmill.Name
    if player:GetAttribute(attribute)~=allowed then player:SetAttribute(attribute,allowed) end
   end
+ end
+end
+
+-- Occupancy reads only the cached registry and keeps the existing foot predicate.
+function TrainingManager.UpdateZoneOccupants()
+ for _,player in Players:GetPlayers() do
   local occupiedTreadmill=TrainingManager.GetOccupiedTreadmill(player)
-  local config=occupiedTreadmill and TreadmillConfig.Get(occupiedTreadmill.Name)
+  local config=occupiedTreadmill and TreadmillConfig.GetForModel(occupiedTreadmill)
   if occupiedTreadmill and config and config.RequiresPremium then
    local character=player.Character
    local entry=premiumEntries[player]
@@ -264,29 +278,21 @@ end
 
 function TrainingManager.Initialize()
  local treadmills={}
- local world1Treadmills={}
  for _,treadmill in ipairs(CollectionService:GetTagged(TREADMILL_TAG)) do
-  if treadmill:IsDescendantOf(Workspace) then
+  if TreadmillConfig.WorldForModel(treadmill) then
   local name=treadmill.Name
   assert(treadmill:IsA("Model"),treadmill:GetFullName().." must be a Model")
-  assert(treadmill:FindFirstChild("TrainingZone"),treadmill:GetFullName()..".TrainingZone missing")
+  assert(getTrainingArea(treadmill),treadmill:GetFullName()..".Area missing")
   -- StrengthPerTick/TickInterval and VirtualStep* Attributes are legacy, not inputs.
   assert(finitePositive(TrainingConfig.BaseGain),"Invalid TrainingConfig.BaseGain")
   assert(finitePositive(TrainingConfig.TrainingInterval),"Invalid TrainingConfig.TrainingInterval")
-  local config=assert(TreadmillConfig.Get(name),"Missing treadmill configuration: "..name)
-  applyStrengthColor(treadmill,config)
-  local visualOK,visualError=TreadmillVisuals.Apply(treadmill,config)
-  if not visualOK then warn(visualError) end
-  local sign=treadmill.TrainingZone:FindFirstChild("TreadmillInfo")
-  local label=sign and sign:FindFirstChild("Info")
-  if label then label.Text=TreadmillConfig.GetDisplayText(name) end
+  assert(TreadmillConfig.GetForModel(treadmill),"Missing treadmill configuration: "..name)
+  -- Purchased Billboard, Beam and VFX remain authored; no legacy presentation.
   table.insert(treadmills,treadmill)
-  if treadmill.Parent==treadmillFolder then table.insert(world1Treadmills,treadmill) end
   end
  end
  table.sort(treadmills,function(a,b) return a:GetFullName()<b:GetFullName() end)
  assert(#treadmills>0,"No tagged treadmills found")
- applyGroupMats(world1Treadmills)
  local list={} for player in activeSessions do table.insert(list,player) end
  for _,player in list do TrainingManager.StopTraining(player) end
  for _,player in Players:GetPlayers() do setFlag(player,false) end

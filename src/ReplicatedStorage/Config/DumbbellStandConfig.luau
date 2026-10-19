@@ -6,14 +6,14 @@ M.Source = "DumbbellStand"
 M.PollSeconds = 0.1
 M.StandReach = 6
 
-function M.GetItemId(index)
- if typeof(index) ~= "number" or index % 1 ~= 0 or index < 1 or index > #Master.GetSorted() then return nil end
- local itemId = string.format("NORMAL_%02d", index)
+function M.GetItemId(index,worldId)
+ if typeof(index) ~= "number" or index % 1 ~= 0 or index < 1 or index > #Master.GetSorted(worldId or 1) then return nil end
+ local itemId = string.format(worldId==2 and "W2_NORMAL_%02d" or "NORMAL_%02d", index)
  return Master.Get(itemId) and itemId or nil
 end
 
-function M.GetPress(folder, index)
- if not M.GetItemId(index) or not folder then return nil end
+function M.GetPress(folder, index,worldId)
+ if not M.GetItemId(index,worldId) or not folder then return nil end
  local model = folder:FindFirstChild(tostring(index))
  local press = model and model:IsA("Model") and model:FindFirstChild("Press")
  return press and press:IsA("BasePart") and press or nil
@@ -29,10 +29,10 @@ function M.IsInside(press, position)
   and offset.Y >= -half.Y and offset.Y <= half.Y + M.StandReach
 end
 
-function M.GetStandingIndex(folder, position)
- for _, item in ipairs(Master.GetSorted()) do
+function M.GetStandingIndex(folder, position,worldId)
+ for _, item in ipairs(Master.GetSorted(worldId or 1)) do
   local index = item.Grade
-  if M.IsInside(M.GetPress(folder, index), position) then return index end
+  if M.IsInside(M.GetPress(folder, index,worldId), position) then return index end
  end
  return nil
 end
@@ -48,4 +48,11 @@ function M.AdvanceEntry(state, character, index)
  return entered
 end
 
+function M.GetFolder(worldId)
+ if worldId~=2 then return workspace:FindFirstChild(M.FolderName) end
+ local map=workspace:FindFirstChild("World2Map")
+ local area=map and map:FindFirstChild("TrainingArea")
+ local displays=area and area:FindFirstChild("DumbbellDisplays")
+ return displays and displays:FindFirstChild(M.FolderName)
+end
 return table.freeze(M)

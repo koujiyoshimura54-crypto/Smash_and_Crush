@@ -94,7 +94,7 @@ function M.Attack(player)
  if s.Completed then return "Complete",s end
  s.Attacks+=1
  if worldId==2 and s.Route=="LOTTERY_WIN" then
-  s.HP=s.Attacks>=M.MaxAttackCount and 0 or math.max(1,s.HP-s.Strength)
+  s.HP=s.Attacks>=M.MaxAttackCount and 0 or math.max(1,s.HP-s.BattleDamage)
  else
   s.HP=math.max(0,s.HP-s.BattleDamage)
  end

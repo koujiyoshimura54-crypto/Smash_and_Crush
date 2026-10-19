@@ -93,7 +93,8 @@ function M.GetWinMultiplier(player)
  local entry=cache[player]
  return entry and Config.GetOwnedWinMultiplier(currentWorld(),entry.Double,entry.Triple) or 1
 end
-function M.GetWinReward(player,baseReward)
+function M.GetWinReward(player,baseReward,worldId)
+ if worldId==2 then return math.floor(tonumber(baseReward) or 0) end -- No configured World2 Win pass; never borrow World1 IDs.
  return math.floor((tonumber(baseReward) or 0)*M.GetWinMultiplier(player))
 end
 local function releaseWinPrompt(player,lock)

@@ -1,0 +1,282 @@
+{
+  "paidAura": {
+    "purchaseType": "Unavailable",
+    "enabled": false
+  },
+  "mergeArea": {
+    "shape": "Enum.PartType.Cylinder",
+    "pos": {
+      "1": 6.02763557434082,
+      "2": 9.250000953674316,
+      "3": 1932.2628173828125
+    }
+  },
+  "catalog": {
+    "items": 90,
+    "world2Pets": 35,
+    "dumbbells": 24,
+    "auras": 14
+  },
+  "images": [
+    {
+      "index": 1,
+      "effect": "+800 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.Press",
+      "status": "Step to buy",
+      "price": "3000",
+      "uri": "rbxassetid://117636801345125",
+      "amountVisible": true
+    },
+    {
+      "index": 2,
+      "effect": "+900 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.Press",
+      "status": "Step to buy",
+      "price": "6000",
+      "uri": "rbxassetid://87392597068250",
+      "amountVisible": true
+    },
+    {
+      "index": 3,
+      "effect": "+1000 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.Press",
+      "status": "Step to buy",
+      "price": "12000",
+      "uri": "rbxassetid://90484814439233",
+      "amountVisible": true
+    },
+    {
+      "index": 4,
+      "effect": "+1100 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.Press",
+      "status": "Step to buy",
+      "price": "25000",
+      "uri": "rbxassetid://92409856077185",
+      "amountVisible": true
+    },
+    {
+      "index": 5,
+      "effect": "+1250 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.Press",
+      "status": "Step to buy",
+      "price": "50000",
+      "uri": "rbxassetid://76660708269544",
+      "amountVisible": true
+    },
+    {
+      "index": 6,
+      "effect": "+1400 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.Press",
+      "status": "Step to buy",
+      "price": "100000",
+      "uri": "rbxassetid://73514550426804",
+      "amountVisible": true
+    },
+    {
+      "index": 7,
+      "effect": "+1600 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.Press",
+      "status": "Step to buy",
+      "price": "200000",
+      "uri": "rbxassetid://86006626767728",
+      "amountVisible": true
+    },
+    {
+      "index": 8,
+      "effect": "+1800 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.Press",
+      "status": "Step to buy",
+      "price": "400000",
+      "uri": "rbxassetid://101543601215487",
+      "amountVisible": true
+    },
+    {
+      "index": 9,
+      "effect": "+2000 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.Press",
+      "status": "Step to buy",
+      "price": "750000",
+      "uri": "rbxassetid://70465860935084",
+      "amountVisible": true
+    },
+    {
+      "index": 10,
+      "effect": "+2250 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.Press",
+      "status": "Step to buy",
+      "price": "1250000",
+      "uri": "rbxassetid://89190858658364",
+      "amountVisible": true
+    },
+    {
+      "index": 11,
+      "effect": "+2500 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.Press",
+      "status": "Step to buy",
+      "price": "2000000",
+      "uri": "rbxassetid://135716155094439",
+      "amountVisible": true
+    },
+    {
+      "index": 12,
+      "effect": "+3000 Strength",
+      "loaded": false,
+      "mainVisible": true,
+      "sortOrder": "Enum.SortOrder.LayoutOrder",
+      "fetch": "Enum.AssetFetchStatus.None",
+      "adornee": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.Press",
+      "status": "Step to buy",
+      "price": "3500000",
+      "uri": "rbxassetid://116813512043021",
+      "amountVisible": true
+    }
+  ],
+  "treadmills": [
+    {
+      "zoneY": 3.5596890449523926,
+      "index": 1,
+      "hitY": 3.409688949584961,
+      "displayOnly": false,
+      "label": "01 | 5x Strength\nAvailable",
+      "zoneSize": {
+        "1": 8.994367599487305,
+        "2": 0.800000011920929,
+        "3": 18.5342960357666
+      }
+    },
+    {
+      "zoneY": 3.5596890449523926,
+      "index": 2,
+      "hitY": 3.409688949584961,
+      "displayOnly": false,
+      "label": "01 | 5x Strength\nAvailable",
+      "zoneSize": {
+        "1": 8.994367599487305,
+        "2": 0.800000011920929,
+        "3": 18.5342960357666
+      }
+    },
+    {
+      "zoneY": 3.8543124198913574,
+      "index": 3,
+      "hitY": 3.704312324523926,
+      "displayOnly": false,
+      "label": "02 | 7x Strength\nRebirth 7 Required",
+      "zoneSize": {
+        "1": 10.874185562133789,
+        "2": 0.800000011920929,
+        "3": 22.407957077026367
+      }
+    },
+    {
+      "zoneY": 3.8543124198913574,
+      "index": 4,
+      "hitY": 3.704312324523926,
+      "displayOnly": false,
+      "label": "02 | 7x Strength\nRebirth 7 Required",
+      "zoneSize": {
+        "1": 10.874186515808105,
+        "2": 0.800000011920929,
+        "3": 22.407957077026367
+      }
+    },
+    {
+      "zoneY": 4.789134979248047,
+      "index": 5,
+      "hitY": 4.639134883880615,
+      "displayOnly": false,
+      "label": "03 | 12x Strength\nRebirth 9 Required",
+      "zoneSize": {
+        "1": 16.86189079284668,
+        "2": 0.800000011920929,
+        "3": 33.323204040527344
+      }
+    },
+    {
+      "zoneY": 4.789134979248047,
+      "index": 6,
+      "hitY": 4.639134883880615,
+      "displayOnly": false,
+      "label": "03 | 12x Strength\nRebirth 9 Required",
+      "zoneSize": {
+        "1": 16.86189079284668,
+        "2": 0.800000011920929,
+        "3": 33.323204040527344
+      }
+    },
+    {
+      "zoneY": 4.789132118225098,
+      "index": 7,
+      "hitY": 4.639132499694824,
+      "displayOnly": true,
+      "label": "04 | 35x Strength\nRobux - Unavailable",
+      "zoneSize": {
+        "1": 16.86189079284668,
+        "2": 0.800000011920929,
+        "3": 33.323204040527344
+      }
+    }
+  ],
+  "running": false,
+  "compiled": 50,
+  "paidEggEnabled": false,
+  "floor": {
+    "z": 169,
+    "x": 237
+  },
+  "mode": "Edit",
+  "reusedModels": 35,
+  "tagCount": 14,
+  "studioId": "1a5d927c-d5ed-482a-b9a8-494dbdeb7f2a",
+  "ownedPid": 24444,
+  "preloadAndCaptureCompleted": false,
+  "realPlayVerified": false,
+  "inspectionStateRestored": true,
+  "userStudioUntouched": "1395d9d1-323d-4792-84dc-5194c5a58099",
+  "closedWithoutSaving": true,
+  "finalHashAfterInspection": "08c9434ec97c3f705c7454744d5355eba6589bb118c88b24f9f8d1c525ee7766"
+}

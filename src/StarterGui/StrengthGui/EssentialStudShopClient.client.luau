@@ -53,7 +53,7 @@ local function syncDumbbellCards()
   local title=card:FindFirstChild("Title")
   local price=card:FindFirstChild("PriceTag",true)
   if icon then icon.Image=item.Image end
-  if title then title.Text="+"..tostring(item.StrengthBonus).." Strength" end
+  if title then title.Text=(item.WorldId==2 and "World 2 " or "").."+"..tostring(item.StrengthBonus).." Strength" end
   if price then price.Text=require(RS.Modules.NumberFormat).Price(item.PriceWin) end
  end
 end
@@ -88,6 +88,17 @@ task.defer(layoutDumbbellShop)
 local ItemMaster=require(RS.Config:WaitForChild("ItemMaster"))
 local ItemPresentation=require(RS.Modules:WaitForChild("InventoryPresentation"))
 local itemOrder=20
+for _,card in ipairs(holder:GetChildren()) do if card:GetAttribute("PurchaseKind")=="Dumbbell" then itemOrder=math.max(itemOrder,card.LayoutOrder+1) end end
+local template
+for _,card in ipairs(holder:GetChildren()) do if card:GetAttribute("PurchaseKind")=="Item" then template=card;break end end
+if template then
+ local ids={};for id,item in pairs(ItemMaster.GetAll()) do if item.WorldId==2 and item.ShopPurchasable then table.insert(ids,id) end end
+ table.sort(ids)
+ for _,id in ipairs(ids) do
+  local card=template:Clone();card.Name="Item_"..id;card:SetAttribute("PurchaseKey",id);card.Parent=holder
+  local title=card:FindFirstChild("Title");if title then title.Text=ItemMaster.DisplayName(ItemMaster.Get(id)) end
+ end
+end
 for _,card in ipairs(holder:GetChildren()) do
  if card:IsA("Frame") and card:GetAttribute("PurchaseKind")=="Item" then
   itemOrder+=1;card.LayoutOrder=itemOrder

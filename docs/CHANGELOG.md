@@ -972,3 +972,10 @@
 - Restore two missing /test Script/LocalScript Instances in the same CurrentCloud; retain all original Sources, configuration, data and lobby objects.
 - Register independently of gameplay startup, report failures and restore the result listener; preserve Studio-only/manual application and existing override/Save guards.
 - Actual saved Sources pass 158 memory-only assertions and native Edit compilation. No real chat/Play, /resetdata, DataStore operation, Save or Publish. [Evidence](../reports/StudioTestCommands_20261019.md).
+
+
+## 2026-10-20 — World2 workbook gameplay
+
+- Connected existing World2 facilities and combat to the complete Excel authority; separate product/Pet identities, shared Rebirth and cross-world equipped effects.
+- Retained geometry and World1 values; unknown paid offers remain disabled.
+- Same rbxl validated/reopened in Edit; 410 saved-file simulated assertions passed. Runtime gameplay/image rendering remain unverified; no Play/Save/Publish. [Report](../reports/World2Gameplay_20261020.md).

@@ -70,7 +70,7 @@ function M.SendState(player)
 				Type = "TrophySpawn",
 				Id = r.Id,
 				Stage = r.Stage,
-				WinReward = GamePass.GetWinReward(player, RewardConfig.GetBaseReward(r.Stage)),
+				WinReward = GamePass.GetWinReward(player, RewardConfig.GetBaseReward(r.Stage,worldId),worldId),
 				CFrame = r.CFrame
 			})
 		end
@@ -78,7 +78,7 @@ function M.SendState(player)
 end
 
 local function collect(player, record, part)
-	if not records[player]
+	if (player:GetAttribute("CurrentWorld") or 1)~=worldId or not records[player]
 		or records[player][record.Stage] ~= record
 		or record.Claiming
 		or record.Collected then
@@ -124,7 +124,7 @@ local function collect(player, record, part)
 		return
 	end
 
-	local baseReward = RewardConfig.GetBaseReward(record.Stage)
+	local baseReward = RewardConfig.GetBaseReward(record.Stage,worldId)
 
 	if typeof(baseReward) ~= "number" then
 		warn("Trophy Win reward missing for Stage " .. tostring(record.Stage))
@@ -133,7 +133,7 @@ local function collect(player, record, part)
 
 	-- Lock before the potentially yielding durable bank. Back uses the same lock/journal.
 	record.Claiming = true
-	local winReward = GamePass.GetWinReward(player, baseReward)
+	local winReward = GamePass.GetWinReward(player, baseReward,worldId)
 	if Bank then
 		local snapshot = Run.GetSnapshot(player)
 		local committed = snapshot and Bank.Commit(player, snapshot.RunId)
@@ -152,10 +152,10 @@ local function collect(player, record, part)
 	end
 	-- No yields after confirmed banking: credit once, consume, move and reset.
 	local updatedWin = win + winReward
-	player:SetAttribute("Win", updatedWin)
+	if not PlayerData.SetWin(player,updatedWin) then record.Claiming=false;return end
 
 	record.Collected = true
-	if record.Stage == WorldGateConfig.CompletionStage then
+	if worldId==1 and record.Stage == WorldGateConfig.CompletionStage then
 		PlayerData.UnlockWorld(player, WorldGateConfig.RequiredWorld)
 	end
  if RunService:IsStudio() then
@@ -173,7 +173,7 @@ local function collect(player, record, part)
 		Win = updatedWin,
 	})
  -- Presentation notification only, after Win credit and confirmed collection.
- if record.Stage == 1 then
+ if worldId==1 and record.Stage == 1 then
   local session=PlayerData.Get(player)
   local owned=session and session.Loaded and session.Data and session.Data.OwnedDumbbells
   if typeof(owned)=="table" then
@@ -188,7 +188,7 @@ local function collect(player, record, part)
 
 
 	-- Normal completion: validated Stage1 pickup. Stage2 Boss attack is the fallback.
-	if record.Stage == 1 then
+	if worldId==1 and record.Stage == 1 then
 		PlayerData.CompleteTutorial(player)
 	end
 
@@ -221,8 +221,7 @@ local function collect(player, record, part)
 end
 
 function M.Spawn(player, major)
- -- World2 rewards are explicitly unconfigured; never issue a World1 reward.
- if worldId==2 then return false,"World2RewardUnconfigured" end
+ if (player:GetAttribute("CurrentWorld") or 1)~=worldId then return false,"WrongWorld" end
 	if (records[player] and records[player][major])
 		or not isDefeated(player, major) then
 		return false
@@ -250,7 +249,7 @@ function M.Spawn(player, major)
 
 	assert(marker and floor, "Trophy boss spawn/floor missing")
 
-	local baseReward = RewardConfig.GetBaseReward(major)
+	local baseReward = RewardConfig.GetBaseReward(major,worldId)
 
 	if typeof(baseReward) ~= "number" then
 		warn("Trophy Win reward missing for Stage " .. tostring(major))
@@ -309,7 +308,7 @@ function M.Spawn(player, major)
 		Type = "TrophySpawn",
 		Id = r.Id,
 		Stage = r.Stage,
-		WinReward = GamePass.GetWinReward(player, baseReward),
+		WinReward = GamePass.GetWinReward(player, baseReward,worldId),
 		CFrame = r.CFrame
 	})
 

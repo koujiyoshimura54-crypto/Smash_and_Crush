@@ -7,12 +7,13 @@ local entries = setmetatable({}, {__mode = "k"})
 local started = false
 
 local function standing(player)
- if player.Parent ~= Players or (player:GetAttribute("CurrentWorld") or 1) ~= 1 then return nil end
+ if player.Parent ~= Players then return nil end
+ local worldId=player:GetAttribute("CurrentWorld")==2 and 2 or 1
  local character = player.Character
  local humanoid = character and character:FindFirstChildOfClass("Humanoid")
  local root = character and character:FindFirstChild("HumanoidRootPart")
  if not humanoid or humanoid.Health <= 0 or not root or not root:IsA("BasePart") then return nil end
- return Config.GetStandingIndex(workspace:FindFirstChild(Config.FolderName), root.Position)
+ return Config.GetStandingIndex(Config.GetFolder(worldId), root.Position,worldId)
 end
 
 function M.Start(onEntry)
@@ -26,10 +27,12 @@ function M.Start(onEntry)
   for _, player in ipairs(Players:GetPlayers()) do
    local state = entries[player]
    if not state then state = {}; entries[player] = state end
+   local worldId=player:GetAttribute("CurrentWorld")==2 and 2 or 1
+   if state.WorldId~=worldId then state.Index=nil;state.WorldId=worldId end
    Config.AdvanceEntry(state, player.Character, standing(player))
    if not state.Index or state.Consumed then continue end
    state.Consumed = true
-   local ok, consumed = pcall(onEntry, player, Config.GetItemId(state.Index))
+   local ok, consumed = pcall(onEntry, player, Config.GetItemId(state.Index,state.WorldId))
    -- Unloaded or temporarily busy data can become ready while still on the pad.
    if ok and consumed == false then state.Consumed = false
    elseif not ok then warn("[DumbbellStand] Entry failed: " .. tostring(consumed)) end

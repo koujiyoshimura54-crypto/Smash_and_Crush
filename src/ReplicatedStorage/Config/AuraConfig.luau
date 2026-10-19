@@ -8,6 +8,18 @@ Config.Auras={
 	["Blue"]={VisualTemplate = "Blue_Aura1","Blue_Aura2","Blue_Aura3",Id="Blue",Key="Blue",DisplayName="Blue Aura",Name="Blue Aura",Icon="rbxassetid://104827909443134",StrengthBonus=150,PurchaseType="Win",Price=1250,Order=5,Tint=Color3.new(0.2549019753932953,0.6039215922355652,0.9764705896377563)},
 	["Red"]={VisualTemplate = "Red_Aura1",Id="Red",Key="Red",DisplayName="Red Aura",Name="Red Aura",Icon="rbxassetid://86956843606297",StrengthBonus=500,PurchaseType="GamePass",GamePassId=1975173075,DisplayPriceFallback=100,Order=6,Tint=Color3.new(0.9333333373069763,0.2549019753932953,0.2980392277240753)},
 }
+local World2=require(script.Parent.World2GameplayConfig)
+local visualOrder={"Pink","Purple","Yellow","Green","Blue","Red"}
+for index,row in ipairs(World2.Auras) do
+ local aura=table.clone(Config.Auras[visualOrder[index]])
+ local id=string.format("W2_AURA_%02d",index)
+ aura.Id=id;aura.Key=id;aura.WorldId=2;aura.Name="World 2 "..aura.Name;aura.DisplayName=aura.Name
+ aura.StrengthBonus=row.StrengthBonus;aura.Order=#Config.Order+1
+ aura.PurchaseType=index==6 and "Unavailable" or "Win"
+ aura.PurchaseEnabled=row.PurchaseEnabled;aura.Price=row.PriceWin
+ aura.GamePassId=nil;aura.ProductId=nil;aura.DisplayPriceFallback=nil
+ Config.Auras[id]=aura;table.insert(Config.Order,id)
+end
 local Shop=require(script.Parent.ShopProductConfig)
 for _,id in ipairs({"VIP","Secret"}) do
  local aura=Shop.Auras[id]
