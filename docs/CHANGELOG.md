@@ -966,3 +966,9 @@
 - Retained floor width 237 and Stage edge; extended only treadmill-side depth 149→169 from actual body/wall/clearance measurements.
 - Reused old 01–04 as 2/2/2/1 in one row; moved complete Dumbbell/Egg assemblies to 4-stud wall clearances and extended existing branches. Other equipment and all original Sources remain unchanged; display-only state retained.
 - Corrected rotated path-part sizing after native review. Same-file binary/reDecode and Studio Edit checks pass, including 12 loaded images; twelve comparison/detail captures. No local Play/Save/Publish; Cloud walking/operation unverified. [Evidence](../reports/World2LobbyDepth_20261019.md).
+
+## 2026-10-19 — Restore Studio /test entrypoints
+
+- Restore two missing /test Script/LocalScript Instances in the same CurrentCloud; retain all original Sources, configuration, data and lobby objects.
+- Register independently of gameplay startup, report failures and restore the result listener; preserve Studio-only/manual application and existing override/Save guards.
+- Actual saved Sources pass 158 memory-only assertions and native Edit compilation. No real chat/Play, /resetdata, DataStore operation, Save or Publish. [Evidence](../reports/StudioTestCommands_20261019.md).

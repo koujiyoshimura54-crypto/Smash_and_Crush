@@ -1,0 +1,111 @@
+{
+  "inputPath": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "e25dc9e34a46a4021bded4ceec8405ba042c77a5c47a2791534860e52e94e650",
+  "outputSha256": "7ece6d8e887ea248dca746535529977bed45c3dc3c1b4c394777992b9b6f2b8b",
+  "cause": "Both /test server Script and result LocalScript are absent from actual input; Start flags and override/progression/world dependencies exist.",
+  "restored": [
+    {
+      "path": "ServerScriptService.Systems.Debug.StudioStartController",
+      "className": "Script",
+      "disabled": false,
+      "runContext": "Legacy",
+      "sourceMirror": "src/ServerScriptService/Systems/Debug/StudioStartController.server.luau"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.StudioTestCommandClient",
+      "className": "LocalScript",
+      "disabled": false,
+      "runContext": "Legacy",
+      "sourceMirror": "src/StarterPlayer/StarterPlayerScripts/StudioTestCommandClient.client.luau"
+    }
+  ],
+  "originalInstanceCount": 182083,
+  "finalInstanceCount": 182085,
+  "addedInstances": 2,
+  "originalInstancesRemoved": 0,
+  "originalParentsUnchanged": true,
+  "originalPropertiesUnchanged": 4714862,
+  "originalSourcesUnchanged": 417,
+  "originalWorkspaceAndGameplayUnchanged": true,
+  "playerDataServiceSourceChanged": false,
+  "startConfigSourceUnchanged": true,
+  "autoApplyOnPlay": false,
+  "runtimeGeneratedOnly": [
+    "TextChatService.StudioTestCommand",
+    "ReplicatedStorage.Remotes.StudioTestCommandResult"
+  ],
+  "binaryValidation": {
+    "before": {
+      "sha256": "7ece6d8e887ea248dca746535529977bed45c3dc3c1b4c394777992b9b6f2b8b",
+      "instanceCount": 182085,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182084,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182085,
+        "PROP.Ref": 78372,
+        "PROP.Content": 0,
+        "PRNT.Child": 182085,
+        "PRNT.Parent": 182085
+      }
+    },
+    "after": {
+      "sha256": "7ece6d8e887ea248dca746535529977bed45c3dc3c1b4c394777992b9b6f2b8b",
+      "instanceCount": 182085,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182084,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182085,
+        "PROP.Ref": 78372,
+        "PROP.Content": 0,
+        "PRNT.Child": 182085,
+        "PRNT.Parent": 182085
+      }
+    },
+    "renumberedInstances": 0,
+    "modifiedChunks": 0,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "canonicalizationIdempotent": true,
+  "sharedStrings": {
+    "count": 362,
+    "validatedIndexes": 208405
+  },
+  "localPlay": false,
+  "resetdataInvoked": false,
+  "realDataStoreOperations": false,
+  "studioSavePublish": false,
+  "realChatExecutionVerified": false,
+  "writtenToSameInputFile": true,
+  "simulation": {
+    "test": "tests/StudioTestCommandsOffline.py",
+    "assertions": 158,
+    "actualSavedSources": true,
+    "realChat": false,
+    "realDataStore": false
+  },
+  "nativeEdit": {
+    "studioId": "bf82447f-ed9d-47ba-bd42-53f33100f219",
+    "ownedPid": 27660,
+    "mode": "Edit",
+    "running": false,
+    "placeId": 0,
+    "universeId": 0,
+    "scriptClassesAndExecutionSettingsConfirmed": true,
+    "bothSourcesCompileWithoutExecuting": true,
+    "runtimeCommandAndRemoteAbsentAsExpectedInEdit": true,
+    "closedWithoutSaving": true,
+    "userStudioUntouched": "1395d9d1-323d-4792-84dc-5194c5a58099",
+    "finalHashUnchanged": true,
+    "finalLockAbsent": true
+  }
+}
