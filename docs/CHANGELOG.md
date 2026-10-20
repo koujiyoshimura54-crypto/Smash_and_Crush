@@ -998,3 +998,8 @@
 ## 2026-10-20 — Egg / Item Merge startup recovery
 
 Prevent require-time DataStore errors from blocking Egg and Item Merge Remote registration; correct Egg price labels and initialization/presentation completion markers. Real data loading and transaction protections remain required. Static file validation passed; gameplay remains user verification. See reports/EggMergeRecovery_20261020/REPORT.md.
+
+
+## 2026-10-20 — Treadmill heading wrap and icon
+
+Scoped World1/World2 treadmill titles to single-line fitting and updated the shoe URI in saved properties and runtime Source. Binary/syntax checks passed; actual display/image loading unverified. See reports/TreadmillHeading_20261020/REPORT.md.

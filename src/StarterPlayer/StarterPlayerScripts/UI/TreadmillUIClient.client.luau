@@ -19,7 +19,19 @@ local function title(folder,treadmill)
  if row then set(row,"Padding",UDim.new(.03,0));set(row,"HorizontalAlignment",Enum.HorizontalAlignment.Center);set(row,"VerticalAlignment",Enum.VerticalAlignment.Center)end
  local icon=gui:FindFirstChild("Icon");set(icon,"Size",UDim2.fromScale(.17,.9))
  local label=gui:FindFirstChild("Name")
- if label then set(label,"AutomaticSize",Enum.AutomaticSize.None);set(label,"Size",UDim2.fromScale(.76,.9));set(label,"TextScaled",true);set(label,"TextWrapped",true)end
+ if label then
+  set(label,"AutomaticSize",Enum.AutomaticSize.None);set(label,"Size",UDim2.fromScale(.76,.9));set(label,"TextScaled",true)
+  -- Fit the complete localized heading in one line; keep the row's outline margin.
+  set(label,"TextWrapped",not treadmill)
+  if treadmill then
+   set(label,"TextTruncate",Enum.TextTruncate.None)
+   local limit=label:FindFirstChildOfClass("UITextSizeConstraint")
+   if limit then set(limit,"MinTextSize",1) end
+  end
+ end
+ if treadmill then
+  set(icon,"Image","rbxassetid://106106287008236");set(icon,"ScaleType",Enum.ScaleType.Fit)
+ end
 end
 local function layout(model,gui,world)
  if not gui then return end

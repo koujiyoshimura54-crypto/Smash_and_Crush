@@ -1,0 +1,8 @@
+# Treadmill headings — 2026-10-20
+
+- CurrentCloud's live `StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient` matched its current mirror. Both authored heading labels and the runtime title updater enabled TextWrapped. This permits the text fitter to choose multiple lines; distance-specific rendering was not reproduced.
+- Only treadmill titles now use TextWrapped=false, TextScaled=true and TextTruncate=None in their explicit 76%-width area. Icon17% + gap3% + text76% leaves4% horizontal margin. Existing constraints, if present at runtime, may shrink to1px rather than forcing overflow. Both current headings have an outline stroke and no separate shadow TextLabel.
+- Both saved title rows and the runtime updater use `rbxassetid://106106287008236`, ScaleType.Fit and the existing aspect constraint. Wording, font, colors, heading world position, GUI offset/size and machine captions remain unchanged. Non-treadmill title behavior is retained.
+- Objects: `Workspace.Treadmills.Billboard.BillboardGui.Name` / `.Icon`; `Workspace.World2Map.TrainingArea.TreadmillDisplays.Billboard.BillboardGui.Name` / `.Icon`. One Source changed: `StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient`.
+- Same CurrentCloud.rbxl written and re-decoded; Source syntax, references, parents, SharedStrings and UniqueIds verified. All unrelated object/property rows are unchanged. See FileValidation.json.
+- No connected or running Studio was available. Near/far rendering and actual image IsLoaded are **unverified**; configured URI and sizing are verified separately. No Studio launch, Play, Save or Publish. Existing unrelated work retained.

@@ -619,3 +619,8 @@ Inventory: 94 UI-related Sources, 416 authored GUI roots/views, including dynami
 ### 2026-10-20 — Lobby equipment headings and shared layout
 
 The six World1/World2 Dumbbell, Egg and Treadmill headings allocate explicit icon/text width instead of combining zero-width AutomaticSize.X with TextScaled. Treadmill caption rectangles and heading UI offsets change; equipment transforms, authoritative values and physical occlusion remain. The existing TreadmillUIClient is enabled for presentation only. HUD layout and Return collision updates are separately invalidated; tracked watchers disconnect on removal/destruction. ResponsivePanels coalesces visible layouts/hitboxes and avoids equivalent writes. Shop preserves the authored card-height reference while separating it from measured CanvasSize. These changes do not establish a fix for persistent Gameplay Paused or all devices. See reports/LobbyUIFix_20261020/REPORT.md.
+
+
+## 2026-10-20 — Treadmill heading fitting
+
+Only World1/World2 treadmill title rows use explicit76% text width, TextScaled=true, TextWrapped=false and no truncation, retaining icon17%/gap3% and an outline margin. The shoe icon is rbxassetid://106106287008236, Fit with the existing aspect constraint, in both saved objects and runtime Source. Preserve words/fonts/colors/positions and machine captions. Actual near/far rendering and image delivery remain unverified.

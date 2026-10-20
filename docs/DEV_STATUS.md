@@ -2238,3 +2238,8 @@ Corrected six purchased Lobby heading rows and treadmill caption layout using cu
 ## 2026-10-20 — Egg and Merge initialization recovery
 
 Deferred real DataStore acquisition into existing protected operations so module initialization can complete; corrected Egg label ID shadowing, registered PetRequest before labels, released the hatch presentation lock on errors and delayed MergeShopMounted until wiring completes. Four live Sources were patched in the same CurrentCloud.rbxl; all objects and other properties are unchanged. Syntax/reference/re-decode checks passed. Runtime verification is delegated to the user; no Play, Studio reopen, Save or Publish. StageSkip, spawn and Boss work was explicitly withdrawn. See reports/EggMergeRecovery_20261020/REPORT.md.
+
+
+## 2026-10-20 — Treadmill title rows
+
+World1/World2 treadmill headings fit one line within their reserved text width; both saved icons and runtime updater use rbxassetid://106106287008236 with Fit/aspect preservation. Other facility titles, machine captions and gameplay remain unchanged. Same-file syntax/reference/re-decode checks passed. Near/far rendering and actual image loading remain unverified because no Studio was connected/running. See reports/TreadmillHeading_20261020/REPORT.md.
