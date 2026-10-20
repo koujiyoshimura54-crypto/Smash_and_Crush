@@ -36,6 +36,7 @@ Roblox Game：Train to Smash Everything / Studio表示 +1 スマッシュ&クラ
 
 ## 正本と証拠の扱い
 
+- Verification screenshots are temporary: inspect them, then delete them. Do not commit screenshots or attach them to completion reports unless the user explicitly asks to retain images.
 - 初期SPECの優先順位は現在Studio → 最新reports/CSV → 明確な確定設計 → 古い仕様・コメント。今後のユーザー最新指示はSPECに優先する。
 - 「現在実装済み」「暫定」「未実装」「将来予定」「要確認」を分ける。存在するConfigやUIボタンだけで機能完成を宣言しない。
 - Studioの接続Placeを確認する。今回の初期監査対象PlaceIdは101572058398926。複数Studioや異なるPlaceでは誤編集を防ぐ。

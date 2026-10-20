@@ -1028,4 +1028,9 @@ The current Config already had IsSupportedWorld; the real failure was retired St
 ## 2026-10-20 - Replace body growth with13 approved stages
 
 - Apply exact Strength/height/upper-arm table, preserving existing other-part ratios and base-derived rig scaling. Extend paid size selection/validation/persistence/UI through13; retain saved ordinals and existing access/cost.
-- Final-Source Play boundary/shape/walking/UI/lifecycle checks and actual display images recorded in [Muscle growth report](../reports/MuscleGrowth13_20261020/REPORT.md). Same-file write verified; owned Studio stopped/closed, lock removed. Existing lobby/spawn/StageSkip/Speed and unrelated work retained.
+- Final-Source Play boundary/shape/walking/UI/lifecycle observations recorded in [Muscle growth report](../reports/MuscleGrowth13_20261020/REPORT.md). Same-file write verified; owned Studio stopped/closed, lock removed. Existing lobby/spawn/StageSkip/Speed and unrelated work retained.
+
+
+## 2026-10-20 - Remove verification screenshots at user request
+
+Delete both muscle-growth verification captures and their links; retain numeric evidence. Future verification screenshots are temporary and must be deleted after inspection unless image retention is explicitly requested. Game Sources and CurrentCloud.rbxl are unchanged.
