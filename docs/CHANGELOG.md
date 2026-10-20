@@ -1017,3 +1017,9 @@ Restore TextScaled with TextWrapped enabled and extend the heading width for loc
 ## 2026-10-20 - Repair World1 StageSkip destinations
 
 The current Config already had IsSupportedWorld; the real failure was retired StageN.1 Floor/CombatZone references. Resolve the current WalkableGeometry.Floor and Wall1, use appended36595fe placement entrypoints, validate/debit authoritative Win once, and release/correlate pending UI requests. Actual keyboard UI Stage2/Stage10, insufficient Win, rapid confirmation, World2 rejection, death recovery and observer isolation checked with memory-only data. Prices/IDs/design and all original36595fe function bodies remain unchanged. See reports/StageSkip_20261020/REPORT.md.
+
+
+## 2026-10-20 - Apply current Speed after lobby return
+
+- Removed the pre-commit Speed snapshot from RunReturnService; use existing Speed.Apply after the return reset. Preserve ownership, prices, highest-source calculation and latest spawn/StageSkip Sources.
+- Controlled native Play interleave: calculated50/applied32 before,50/50 after; actual grounded W travel measured32.00 ->49.95 studs/s. Normal upgrade UI24->28, death, World round trip and Treadmill exit checked with temporary memory-only data. Limits and same-file/lock evidence: [Speed application report](../reports/SpeedApplication_20261020/REPORT.md).

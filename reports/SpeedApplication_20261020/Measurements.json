@@ -1,0 +1,38 @@
+{
+  "before": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Seconds\":1.0166724000591785,\"Move\":\"1, 0, 0\",\"Distance\":32.5328369140625,\"Frames\":62,\"VelocityMean\":32,\"Start\":\"197.9563446044922, 83.93926239013672, 20\",\"Grounded\":62,\"WalkSpeed\":32,\"Finish\":\"230.4891815185547, 83.93926239013672, 20\"}"
+      }
+    ],
+    "isError": false
+  },
+  "after": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Seconds\":1.0010454000439495,\"Move\":\"1, 0, 0\",\"Distance\":49.998779296875,\"Frames\":61,\"VelocityMean\":50,\"Start\":\"201.87506103515625, 83.93926239013672, 20\",\"Grounded\":61,\"WalkSpeed\":50,\"Finish\":\"251.87384033203125, 83.93926239013672, 20\"}"
+      }
+    ],
+    "isError": false
+  },
+  "normalUI": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Seconds\":1.0011579999700189,\"Move\":\"1, 0, 0\",\"Distance\":28.00048828125,\"Frames\":61,\"VelocityMean\":28,\"Start\":\"197.37977600097656, 83.93926239013672, 20\",\"Grounded\":61,\"WalkSpeed\":28,\"Finish\":\"225.38026428222656, 83.93926239013672, 20\"}"
+      }
+    ],
+    "isError": false
+  },
+  "postLifecycle": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Seconds\":1.016069500008598,\"Move\":\"1, 0, 0\",\"Distance\":50.62376403808594,\"Frames\":62,\"VelocityMean\":50,\"Start\":\"202.08338928222656, 83.93926239013672, 20\",\"Grounded\":62,\"WalkSpeed\":50,\"Finish\":\"252.7071533203125, 83.93926239013672, 20\"}"
+      }
+    ],
+    "isError": false
+  }
+}

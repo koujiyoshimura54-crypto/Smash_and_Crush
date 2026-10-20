@@ -9,7 +9,7 @@ local Speed = require(Services.SpeedService)
 local Placement = require(Services.LobbySpawnService)
 local M = {}
 local busy = {}
-local function returnToLobby(player, character, spawn, speed, worldEnemy)
+local function returnToLobby(player, character, spawn, worldEnemy)
 	-- Reuse the normal World1 reset, never Trophy.collect or its reward path.
 	(worldEnemy or Enemy).InitializePlayer(player)
 	-- InitializePlayer prepares an active run for ordinary respawns. A voluntary
@@ -19,7 +19,9 @@ local function returnToLobby(player, character, spawn, speed, worldEnemy)
 	local hum = character:FindFirstChildOfClass("Humanoid")
 	hum.Health = hum.MaxHealth
 	hum.Sit = false
-	hum.WalkSpeed = speed
+	-- Persistence/streaming may yield while the selected Speed changes.
+	-- Apply the current server-owned value only after the return reset.
+	Speed.Apply(player)
 	return Placement.MoveToLobby(player, character, Placement.WorldFor(player))
 end
 
@@ -48,20 +50,18 @@ function M.Request(player, runId)
    local placement=Placement.StreamLobby(player,character,2)
    if not placement or not Placement.IsCurrent(player,placement) or ps~=worldEnemy.GetPlayerState(player)
     or ps.RunReturnId~=runId or hum.Health<=0 then return false,"StaleRun" end
-   local placed,why=returnToLobby(player,character,spawn,Speed.GetState(player).WalkSpeed,worldEnemy)
+   local placed,why=returnToLobby(player,character,spawn,worldEnemy)
    if not placed then return false,why end
    return true,"Returned"
   end
   local spawn = Trophy.GetLobbySpawn()
 		if not spawn or not Enemy.IsReady() then return false, "LobbyUnavailable" end
-		-- Read the normal speed before the shared durable commit.
-		local speed = Speed.GetState(player).WalkSpeed
 		local placement = Placement.StreamLobby(player, player.Character, 1)
 		if not placement then return false, "CharacterNotReady" end
 		local committed, code, token = Bank.Commit(player, runId)
 		if not committed then return false, code end
 		if not Placement.IsCurrent(player, placement) then return false, "StaleRun" end
-		local placed, why = returnToLobby(player, token.Character, spawn, speed)
+		local placed, why = returnToLobby(player, token.Character, spawn)
 		if not placed then return false, why end
 		return true, "Returned"
 	end, debug.traceback)
