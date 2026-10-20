@@ -986,3 +986,10 @@
 - Corrected verified World1 walking-carpet arrow surfaces and replaced repeated full-blocker scans with spatial caches; preserved edge/obstacle checks and tutorial lifecycle.
 - Recorded native visible-arrow comparisons, geometry/lifecycle fixtures and source-only same-file integrity/native reopen checks.
 - Audited authored/dynamic/facility UI and shared layout; recorded HUD recurring cost and Shop startup storm. No UI fixes applied.
+
+
+## 2026-10-20 — Lobby equipment UI and shared layout
+
+- Fixed purchased heading clipping and treadmill caption geometry without moving equipment or changing values.
+- Reduced shared HUD polling/writes and fixed Shop canvas/card feedback; retained existing UI operations.
+- Recorded tested behavior and unresolved startup/narrow-device cases; stopped additional investigation at user request.

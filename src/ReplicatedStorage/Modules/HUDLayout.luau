@@ -2,6 +2,9 @@
 local RunService=game:GetService("RunService")
 local TweenService=game:GetService("TweenService")
 local M={}
+local function write(object,key,value)
+ if object[key]~=value then object[key]=value end
+end
 local mounted=setmetatable({}, {__mode="k"})
 function M.GetScale(object)
  local scale=1 local x=object
@@ -69,11 +72,12 @@ local function freePosition(x,y,width,height,blocks,w,h,edge,minY,fixedX)
 end
 
 -- Only painted, visible screen UI blocks Back; transparent layout/input frames do not.
-local function placeReturnButton(gui,button,w,h,y,edge)
+local function placeReturnButton(gui,button,w,h,y,edge,objects)
+ if not shown(button) then return end
  local width,height=button.AbsoluteSize.X,button.AbsoluteSize.Y
  local origin=button.Parent.AbsolutePosition
  local blocks={}
- for _,x in ipairs(gui.Parent:GetDescendants()) do
+ for x in pairs(objects) do
   if x:IsA("GuiObject") and x~=button and not x:IsDescendantOf(button) and shown(x) then
    local painted=x.BackgroundTransparency<1
     or (x:IsA("TextLabel") or x:IsA("TextButton") or x:IsA("TextBox")) and x.Text~="" and x.TextTransparency<1
@@ -121,23 +125,28 @@ end
 
 function M.Mount(gui)
  if mounted[gui] then return mounted[gui] end
+ local objects,watchers={},{}
+ local dirty,busy,alive=true,false,true
+ local returnDirty=true
+ local returnArgs
+ local function invalidate() if alive then dirty=true end end
  local hud=gui:WaitForChild("HUD");local menu=gui:WaitForChild("LeftMenu")
  menu.MenuScale.Scale=1;menu.Position=UDim2.new()
  local function follow(slot,button,scale)
   if not button then return end
   local ui=button:FindFirstChild("HUDScale") or button:FindFirstChild("MenuLayoutScale")
   if not ui then ui=Instance.new("UIScale");ui.Name="HUDScale";ui.Parent=button end
-  ui.Scale=scale
+  write(ui,"Scale",scale)
   local design=slot:GetAttribute("DesignSize")
-  button.Size=UDim2.fromOffset(design.X,design.Y);button.AnchorPoint=Vector2.zero
+  write(button,"Size",UDim2.fromOffset(design.X,design.Y));write(button,"AnchorPoint",Vector2.zero)
   local origin=button.Parent.AbsolutePosition
   local center=(slot.AbsoluteSize.X-design.X*scale)/2
-  button.Position=UDim2.fromOffset(slot.AbsolutePosition.X-origin.X+center,slot.AbsolutePosition.Y-origin.Y)
+  write(button,"Position",UDim2.fromOffset(slot.AbsolutePosition.X-origin.X+center,slot.AbsolutePosition.Y-origin.Y))
  end
  local function scaleOf(x,s)
   local u=x:FindFirstChild("HUDScale")
   if not u then u=Instance.new("UIScale");u.Name="HUDScale";u.Parent=x end
-  u.Scale=s
+  write(u,"Scale",s)
  end
  local lastRightTarget,rightTween,hadOverlay
  local function layout()
@@ -294,7 +303,7 @@ function M.Mount(gui)
     if inventory then returnY=math.max(returnY,inventory.Position.Y.Offset+inventory.Size.Y.Offset+10) end
    end
    returnButton.AnchorPoint=Vector2.new(.5,0)
-   returnButton.Size=UDim2.fromOffset(0,compact and 44 or 48)
+   write(returnButton,"Size",UDim2.fromOffset(0,compact and 44 or 48))
    returnButton.TextSize=compact and 22 or 26
   end
   local potion=gui:FindFirstChild("PotionStatus")
@@ -382,12 +391,52 @@ function M.Mount(gui)
     potion.Position=UDim2.fromOffset(px,py)
    end
   end
-  if returnButton then placeReturnButton(gui,returnButton,w,h,returnY,edge) end
+  returnArgs={returnButton,w,h,returnY,edge}
+  if returnButton then placeReturnButton(gui,returnButton,w,h,returnY,edge,objects) end
  end
- local conn=RunService.RenderStepped:Connect(layout)
- local handle={Refresh=layout}
+ -- One registration pass, then incremental membership. No idle full-PlayerGui scan.
+ local relevant={Visible=true,Enabled=true,AbsolutePosition=true,AbsoluteSize=true,
+  ClipsDescendants=true,GroupTransparency=true,Text=true,TextBounds=true,ContentText=true,
+  Image=true,BackgroundTransparency=true,TextTransparency=true,ImageTransparency=true,Scale=true}
+ local root=gui.Parent
+ local function add(object)
+  if watchers[object] or not (object:IsA("GuiObject") or object:IsA("ScreenGui") or object:IsA("UIScale")) then return end
+  if object:IsA("GuiObject") then objects[object]=true end
+  watchers[object]=object.Changed:Connect(function(property)
+   if not relevant[property] then return end
+   returnDirty=true
+   local overlay=hud:FindFirstChild("Overlay")
+   local touch=root and root:FindFirstChild("TouchGui")
+   if object==gui or (property=="Visible" and (object.Name=="PotionStatus" or object.Name=="RunReturnButton"))
+    or (overlay and object:IsDescendantOf(overlay))
+    or (touch and object:IsDescendantOf(touch)) then invalidate() end
+  end)
+  invalidate()
+ end
+ local function remove(object)
+  local connection=watchers[object];if connection then connection:Disconnect();watchers[object]=nil end
+  objects[object]=nil;invalidate()
+ end
+ local added=root.DescendantAdded:Connect(add)
+ local removing=root.DescendantRemoving:Connect(remove)
+ for _,object in root:GetDescendants() do add(object) end
+ local conn=RunService.RenderStepped:Connect(function()
+  if busy then return end
+  if dirty then
+   dirty=false;returnDirty=false;busy=true;layout();busy=false
+  elseif returnDirty then
+   returnDirty=false
+   if returnArgs and returnArgs[1] then
+    placeReturnButton(gui,returnArgs[1],returnArgs[2],returnArgs[3],returnArgs[4],returnArgs[5],objects)
+   end
+  end
+ end)
+ local handle={Refresh=invalidate}
  mounted[gui]=handle
- gui.Destroying:Connect(function()conn:Disconnect();mounted[gui]=nil end)
+ gui.Destroying:Connect(function()
+  alive=false;conn:Disconnect();added:Disconnect();removing:Disconnect()
+  for _,connection in watchers do connection:Disconnect() end;table.clear(watchers);table.clear(objects);mounted[gui]=nil
+ end)
  layout()
  return handle
 end
@@ -518,6 +567,8 @@ function M.PurchaseButton(button,currency,value)
    local scale=entry.pressed and settings.hoverScale*settings.pressScale
     or entry.hovered and settings.hoverScale or 1
    local target=UDim2.fromOffset(height*ratio*scale,height*scale)
+   if entry.target==target then return end
+   entry.target=target
    if entry.tween then entry.tween:Cancel() end
    if animate then entry.tween=TweenService:Create(visual,info,{Size=target});entry.tween:Play()
    else visual.Size=target end

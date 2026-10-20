@@ -2228,3 +2228,8 @@ Evidence: [implementation and limitations](../reports/World2Gameplay_20261020.md
 ## 2026-10-20 — Tutorial carpet arrows and UI audit
 
 Fixed only the actual CurrentCloud TutorialGuideClient: verified walking-carpet surfaces, cached spatial blocker filtering including CanQuery=false, and lifecycle cleanup. Native visible-arrow update mean/p95/max: 136.710/167.021/171.211ms to 1.662/1.806/1.837ms at the same Studio pose. Uncontrolled/background focus FPS is not a public-client improvement claim. All-UI inventory and temporary profiling reproduced 493 Shop startup layouts and a recurring HUDLayout full-PlayerGui scan (~10–12ms/call); UI fixes remain proposals. Same-file source-only rewrite, reference validation and native Edit reopen passed. No Save/Publish or production data changes. See reports/TutorialArrows_UIAudit_20261020/REPORT.md.
+
+
+## 2026-10-20 — Lobby equipment UI / shared layout fixes
+
+Corrected six purchased Lobby heading rows and treadmill caption layout using current authoritative values. Shared HUD layout is invalidation-driven; ResponsivePanels coalesces visible-panel work; Shop card/canvas feedback now uses a stable authored reference height and top anchor. Actual Japanese clipping, bounded Return obstacle/Tween behavior, Shop convergence, tab response and fixture respawn were checked. Further investigation stopped at the user request. Long startup/pause-modal persistence and narrow-device coverage remain unresolved/unverified. See reports/LobbyUIFix_20261020/REPORT.md and FileValidation.json for exact scope and same-file write status.

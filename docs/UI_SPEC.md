@@ -614,3 +614,8 @@ Native Edit confirmed configured UI references/labels and model aliases, but ima
 ### UI layout investigation only — 2026-10-20
 
 Inventory: 94 UI-related Sources, 416 authored GUI roots/views, including dynamic/shared/facility builders. Native temporary counters reproduced EssentialStudShopClient layoutDumbbellShop 493 startup calls and recurring HUDLayout RenderStepped full-PlayerGui obstruction scans. Prioritize event-driven/diffed HUD layout, then coalesced Shop card/canvas layout, then shared ResponsivePanels writes. No UI behavior/design implementation was changed. Resize, touch and direct connection-growth validation remain pending; do not classify every screen as affected. Detailed statuses and measured scope: reports/TutorialArrows_UIAudit_20261020/REPORT.md.
+
+
+### 2026-10-20 — Lobby equipment headings and shared layout
+
+The six World1/World2 Dumbbell, Egg and Treadmill headings allocate explicit icon/text width instead of combining zero-width AutomaticSize.X with TextScaled. Treadmill caption rectangles and heading UI offsets change; equipment transforms, authoritative values and physical occlusion remain. The existing TreadmillUIClient is enabled for presentation only. HUD layout and Return collision updates are separately invalidated; tracked watchers disconnect on removal/destruction. ResponsivePanels coalesces visible layouts/hitboxes and avoids equivalent writes. Shop preserves the authored card-height reference while separating it from measured CanvasSize. These changes do not establish a fix for persistent Gameplay Paused or all devices. See reports/LobbyUIFix_20261020/REPORT.md.

@@ -59,32 +59,61 @@ local function syncDumbbellCards()
 end
 syncDumbbellCards()
 -- Keep the purchased wrapping list and artwork; grow only the normal catalogue.
+local authoredCanvas=shop.MainScrollingFrame.CanvasSize
+local authoredHolder=holder.Size
+local lastWidth,lastScale,lastHeight
+local cardsQueued,canvasQueued=false,false
+local function updateCanvas()
+ if canvasQueued then return end;canvasQueued=true
+ task.defer(function()
+  canvasQueued=false;if not holder.Parent then return end
+  local scroll=shop.MainScrollingFrame
+  local target=UDim2.fromOffset(0,holder.UIListLayout.AbsoluteContentSize.Y/math.max(responsiveScale.Scale,.01)+16)
+  if scroll.CanvasSize~=target then scroll.CanvasSize=target end
+ end)
+end
 local function layoutDumbbellShop()
  local scale=math.max(responsiveScale.Scale,.01)
  local width=holder.AbsoluteSize.X/scale
- if width<=24 then return end
+ local viewportHeight=shop.MainScrollingFrame.AbsoluteWindowSize.Y/scale
+ if width<=24 or (lastWidth==width and lastScale==scale and lastHeight==viewportHeight) then return end
+ lastWidth,lastScale,lastHeight=width,scale,viewportHeight
+ -- Authored cards use scale heights. Anchor their reference to the original
+ -- viewport/canvas design, never to the canvas that this layout is measuring.
+ local height=(viewportHeight*authoredCanvas.Y.Scale+authoredCanvas.Y.Offset)*authoredHolder.Y.Scale+authoredHolder.Y.Offset
+ local holderSize=UDim2.new(authoredHolder.X.Scale,authoredHolder.X.Offset,0,height)
+ if holder.Size~=holderSize then holder.Size=holderSize end
+ if holder.AnchorPoint~=Vector2.new(.5,0)then holder.AnchorPoint=Vector2.new(.5,0)end
+ if holder.Position~=UDim2.fromScale(.5,0)then holder.Position=UDim2.fromScale(.5,0)end
  local columns=math.clamp(math.floor(width*scale/240),1,2)
  local gap=holder.UIListLayout.Padding.Offset
  local cw=(width-24-(columns-1)*gap)/columns
  local ch=math.max(220,180/scale)
- for _,card in ipairs(holder:GetChildren()) do
+ local target=UDim2.fromOffset(cw,ch)
+ for _,card in holder:GetChildren() do
   if card:IsA("Frame") and card:GetAttribute("PurchaseKind")=="Dumbbell" then
-   card.Size=UDim2.fromOffset(cw,ch)
+   if card.Size~=target then card.Size=target end
    local aspect=card:FindFirstChildOfClass("UIAspectRatioConstraint")
-   if aspect then aspect.AspectRatio=cw/ch end
+   if aspect and aspect.AspectRatio~=cw/ch then aspect.AspectRatio=cw/ch end
   end
  end
- holder.UIListLayout.VerticalAlignment=Enum.VerticalAlignment.Top
- local scroll=shop.MainScrollingFrame
- scroll.Active=true;scroll.ScrollingEnabled=true
- scroll.ScrollingDirection=Enum.ScrollingDirection.Y
- scroll.AutomaticCanvasSize=Enum.AutomaticSize.None
- scroll.CanvasSize=UDim2.fromOffset(0,holder.UIListLayout.AbsoluteContentSize.Y+16)
+ updateCanvas()
 end
-holder:GetPropertyChangedSignal("AbsoluteSize"):Connect(layoutDumbbellShop)
-holder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(layoutDumbbellShop)
-responsiveScale:GetPropertyChangedSignal("Scale"):Connect(layoutDumbbellShop)
-task.defer(layoutDumbbellShop)
+local function scheduleCards()
+ if cardsQueued then return end;cardsQueued=true
+ task.defer(function() cardsQueued=false;if holder.Parent then layoutDumbbellShop() end end)
+end
+holder.UIListLayout.VerticalAlignment=Enum.VerticalAlignment.Top
+local scroll=shop.MainScrollingFrame
+scroll.Active=true;scroll.ScrollingEnabled=true;scroll.ScrollingDirection=Enum.ScrollingDirection.Y
+scroll.AutomaticCanvasSize=Enum.AutomaticSize.None
+holder:GetPropertyChangedSignal("AbsoluteSize"):Connect(scheduleCards)
+holder.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateCanvas)
+responsiveScale:GetPropertyChangedSignal("Scale"):Connect(scheduleCards)
+scroll:GetPropertyChangedSignal("AbsoluteWindowSize"):Connect(scheduleCards)
+holder.ChildAdded:Connect(function() lastWidth=nil;scheduleCards() end)
+holder.ChildRemoved:Connect(function() lastWidth=nil;scheduleCards();updateCanvas() end)
+scheduleCards()
 local ItemMaster=require(RS.Config:WaitForChild("ItemMaster"))
 local ItemPresentation=require(RS.Modules:WaitForChild("InventoryPresentation"))
 local itemOrder=20

@@ -15,7 +15,8 @@ local function set(x,values,active)
  end
  for k,v in pairs(values) do
   if saved[k]==nil then saved[k]={x[k]} end
-  if active then x[k]=v else x[k]=saved[k][1] end
+  local target=v;if not active then target=saved[k][1] end
+  if x[k]~=target then x[k]=target end
  end
 end
 local function text(x,min,max)
@@ -52,8 +53,7 @@ function M.Fit(panel,gui)
   s=math.clamp(s,.05,1)
   local u=panel:FindFirstChild("ResponsiveScale")
   if not u then u=Instance.new("UIScale");u.Name="ResponsiveScale";u.Parent=panel end
-  u.Scale=s;panel.Size=UDim2.fromOffset(d.X,d.Y);panel.AnchorPoint=Vector2.new(.5,.5)
-  panel.Position=UDim2.fromOffset(v.X/2,reserveTop+v.Y/2)
+  set(u,{Scale=s},true);set(panel,{Size=UDim2.fromOffset(d.X,d.Y),AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromOffset(v.X/2,reserveTop+v.Y/2)},true)
   aspect(panel,d.X,d.Y,true);panel:SetAttribute("ResponsiveCompact",portrait)
   return
  end
@@ -64,8 +64,8 @@ function M.Fit(panel,gui)
  local w,h=d.X,d.Y
  local u=panel:FindFirstChild("ResponsiveScale")
  if not u then u=Instance.new("UIScale");u.Name="ResponsiveScale";u.Parent=panel end
- u.Scale=s
- panel.Size=UDim2.fromOffset(w,h);panel.AnchorPoint=Vector2.new(.5,.5);panel.Position=UDim2.fromOffset(v.X/2,reserveTop+v.Y/2)
+ set(u,{Scale=s},true)
+ set(panel,{Size=UDim2.fromOffset(w,h),AnchorPoint=Vector2.new(.5,.5),Position=UDim2.fromOffset(v.X/2,reserveTop+v.Y/2)},true)
  aspect(panel,w,h,true)
  panel:SetAttribute("ResponsiveCompact",M.Small(gui))
 end
@@ -356,15 +356,18 @@ end
 function M.Bind(gui)
  if bound[gui] then return bound[gui] end
  local busy=false
+ local dirty=true
+ local hitDirty=true
+ local function schedule() dirty=true end
  local function refresh()
   if busy then return end busy=true
-  for _,ref in ipairs(gui.MainPanels:GetChildren()) do local p=ref.Value if p then
+  for _,ref in ipairs(gui.MainPanels:GetChildren()) do local p=ref.Value if p and p.Visible then
    M.Fit(p,gui)
    local layers={p} for _,x in ipairs(p:GetDescendants()) do if x:IsA("GuiObject") then table.insert(layers,x) end end
    for _,x in ipairs(layers) do
     local z=x:GetAttribute("ResponsiveOriginalZ")
     if z==nil then z=x.ZIndex;x:SetAttribute("ResponsiveOriginalZ",z) end
-    x.ZIndex=200+z
+    if x.ZIndex~=200+z then x.ZIndex=200+z end
    end
    if p.Name=="InventoryPanel" then
     inventory(p,gui)
@@ -392,15 +395,39 @@ function M.Bind(gui)
   updateHitboxes(gui)
   local opened=false for _,ref in ipairs(gui.MainPanels:GetChildren()) do if ref.Value and ref.Value.Visible then opened=true end end
   gui.DisplayOrder=opened and 35 or 10
-  if not M.Small(gui) then for x,props in pairs(originals) do if x.Parent then for _,k in ipairs({"TextScaled","TextWrapped","MinTextSize","MaxTextSize"}) do if props[k] then x[k]=props[k][1] end end end end end
+  if not M.Small(gui) then for x,props in pairs(originals) do if x.Parent then for _,k in ipairs({"TextScaled","TextWrapped","MinTextSize","MaxTextSize"}) do if props[k] and x[k]~=props[k][1] then x[k]=props[k][1] end end end end end
   busy=false
  end
- local elapsed=0
- local conn=RunService.Heartbeat:Connect(function(dt) elapsed+=dt if elapsed>.15 then elapsed=0;refresh() end end)
- bound[gui]={Refresh=refresh}
- gui.Destroying:Connect(function()conn:Disconnect();bound[gui]=nil end)
- gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(refresh)
- task.defer(refresh)
+ local watchers={}
+ local relevant={Visible=true,AbsoluteSize=true,AbsolutePosition=true,Active=true,Interactable=true,Scale=true}
+ local function watch(object)
+  if watchers[object] or not (object:IsA("GuiObject") or object:IsA("UIScale") or object:IsA("ObjectValue")) then return end
+  watchers[object]=object.Changed:Connect(function(property)
+   if not relevant[property] and property~="Value" then return end
+   hitDirty=true
+   if property=="Visible" or property=="Value" or object==gui
+    or (property=="AbsoluteSize" and (object:GetAttribute("ResponsiveDesignSize")~=nil or (object.Parent and object.Parent.Name=="Content")))
+    or (property=="Scale" and object.Name=="ResponsiveScale") then schedule()end
+  end)
+  schedule()
+ end
+ local function unwatch(object)
+  if watchers[object] then watchers[object]:Disconnect();watchers[object]=nil end;schedule()
+ end
+ local added=gui.DescendantAdded:Connect(watch);local removed=gui.DescendantRemoving:Connect(unwatch)
+ for _,object in gui:GetDescendants() do watch(object) end
+ local conn=RunService.RenderStepped:Connect(function()
+  if dirty and not busy then dirty=false;hitDirty=false;refresh()
+  elseif hitDirty then hitDirty=false;updateHitboxes(gui)end
+ end)
+ bound[gui]={Refresh=schedule}
+ gui.Destroying:Connect(function()
+  conn:Disconnect();added:Disconnect();removed:Disconnect()
+  for _,connection in watchers do connection:Disconnect() end;table.clear(watchers);bound[gui]=nil
+ end)
+ local viewport=gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(schedule)
+ gui.Destroying:Once(function()viewport:Disconnect()end)
+ task.defer(schedule)
  return bound[gui]
 end
 return M

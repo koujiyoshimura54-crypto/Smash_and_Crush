@@ -1,0 +1,98 @@
+{
+  "before": {
+    "durationSeconds": 25,
+    "events": [
+      {
+        "seconds": 0.00000300002284348011,
+        "name": "ReplicatedFirst monitor"
+      },
+      {
+        "seconds": 0.579658400034532,
+        "name": "game.Loaded"
+      },
+      {
+        "seconds": 1.9214084000559524,
+        "name": "CharacterAdded"
+      },
+      {
+        "seconds": 7.361708800075576,
+        "name": "movement request"
+      },
+      {
+        "extra": {
+          "paused": "unavailable",
+          "distance": 2.277771234512329
+        },
+        "seconds": 7.465370399993844,
+        "name": "actual displacement"
+      },
+      {
+        "seconds": 7.465390600031242,
+        "name": "StrengthGui present"
+      },
+      {
+        "extra": true,
+        "seconds": 15.204874900053255,
+        "name": "Shop visibility response"
+      }
+    ],
+    "fullLayout": {
+      "maxMs": 25.33720002975315,
+      "totalMs": 11436.138097546063,
+      "calls": 953
+    },
+    "frames": 943,
+    "frameMeanMs": 22.717051166539353,
+    "frameP95Ms": 26.96000039577484,
+    "focus": "not guaranteed; do not extrapolate to retail FPS",
+    "pause": [
+      "unavailable"
+    ]
+  },
+  "after": {
+    "durationSeconds": 25,
+    "events": [
+      {
+        "seconds": 0.00000500003807246685,
+        "name": "ReplicatedFirst monitor"
+      },
+      {
+        "seconds": 0.6187264000764117,
+        "name": "game.Loaded"
+      },
+      {
+        "seconds": 2.0510771999834105,
+        "name": "CharacterAdded"
+      },
+      {
+        "seconds": 7.309777999995276,
+        "name": "movement request"
+      },
+      {
+        "extra": {
+          "paused": false,
+          "distance": 2.477935791015625
+        },
+        "seconds": 7.418932600063272,
+        "name": "actual displacement"
+      },
+      {
+        "seconds": 7.418940000003204,
+        "name": "StrengthGui present"
+      }
+    ],
+    "fullLayout": {
+      "maxMs": 1.8725999398157,
+      "totalMs": 3.978300024755299,
+      "calls": 7
+    },
+    "frames": 1122,
+    "frameMeanMs": 19.339494177666552,
+    "frameP95Ms": 20.380400121212006,
+    "focus": "not guaranteed; do not extrapolate to retail FPS",
+    "pause": [
+      true,
+      false
+    ]
+  }
+}

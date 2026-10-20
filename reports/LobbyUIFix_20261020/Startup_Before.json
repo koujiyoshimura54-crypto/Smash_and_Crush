@@ -1,0 +1,2592 @@
+{
+  "universe": 0,
+  "events": [
+    {
+      "seconds": 0.00000300002284348011,
+      "name": "ReplicatedFirst monitor"
+    },
+    {
+      "seconds": 0.579658400034532,
+      "name": "game.Loaded"
+    },
+    {
+      "seconds": 1.9214084000559524,
+      "name": "CharacterAdded"
+    },
+    {
+      "seconds": 7.361708800075576,
+      "name": "movement request"
+    },
+    {
+      "extra": {
+        "paused": "unavailable",
+        "distance": 2.277771234512329
+      },
+      "seconds": 7.465370399993844,
+      "name": "actual displacement"
+    },
+    {
+      "seconds": 7.465390600031242,
+      "name": "StrengthGui present"
+    },
+    {
+      "extra": true,
+      "seconds": 15.204874900053255,
+      "name": "Shop visibility response"
+    }
+  ],
+  "metrics": {
+    "HUD": {
+      "maxMs": 25.33720002975315,
+      "totalMs": 11436.138097546063,
+      "calls": 953
+    }
+  },
+  "fixture": "memory-only; not production DataStore timing",
+  "samples": [
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 4.544078100007027,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.241539001464844, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 5.185847699991427,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.338616371154785, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 5.474920400069095,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339227676391602, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 8,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 5.721428500022739,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339282035827637, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 38,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 5.947360899997875,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339282035827637, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 28,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 6.165954900090583,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339282035827637, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 3,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 6.3685926999896765,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339282035827637, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 2,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 6.583446600008756,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339282035827637, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 3,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 6.794347600080073,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339282035827637, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 7.0076751000015065,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339282035827637, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 7.31242570001632,
+      "paused": "unavailable",
+      "position": "294.73974609375, 7.339282035827637, 21.94475746154785",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 7.514425000059418,
+      "paused": "unavailable",
+      "position": "297.8177795410156, 7.338950157165527, 21.94488525390625",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 7.731701000011526,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 7.934716499992646,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 3,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 8.140843500033952,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 4,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 8.354771499987692,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 8.57112129998859,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 1,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 8.793700800044462,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 9.004650800023228,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 9.209081300068647,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 9.415990100009367,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 9.629556500003673,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 9.851850399980322,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 1,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 10.052594600012526,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 1,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 10.25529220001772,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 10.45737309998367,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 10.661980799981393,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 1,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 10.869504900067113,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 1,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 11.069892200059257,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 11.2747199999867,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 11.477341099991463,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 11.679786500055343,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 11.897723800037056,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 12.10690060001798,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 12.319275100016966,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 12.521381300059147,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 12.724412000039592,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 12.934099000063725,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 13.145667500095442,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 13.351915800012648,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 13.565724299987778,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 13.776637200033292,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 13.986016000038944,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 14.205928900046274,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 14.431096600019373,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 14.63660319999326,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 14.847911600023508,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 18,
+      "floor": true,
+      "ui": true,
+      "at": 15.060786599991843,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 20,
+      "floor": true,
+      "ui": true,
+      "at": 15.294232300017029,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 1,
+      "imagesTotal": 1314
+    },
+    {
+      "imagesLoaded": 20,
+      "floor": true,
+      "ui": true,
+      "at": 15.496871800045483,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 1,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 15.713103200076148,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 15.93185990001075,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 16.15143690002151,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 16.37203219998628,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 16.592005099984817,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 16.807411100016907,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 17.009650200023316,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 17.229019100079313,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 17.442753300070763,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 17.66289310005959,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 17.87845479999669,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 18.099909999989904,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 18.317174900090322,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 18.529858399997465,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 18.735748899984173,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 18.953456600080244,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 19.156296100001782,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 19.358686599996872,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 19.570939400000498,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 19.79053420003038,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 20.007376000052318,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 20.223516200087033,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 20.44896599999629,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 20.66202270006761,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 20.87663140008226,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 21.091905700042844,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 21.31420370005071,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 21.530924300081097,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 21.74947899999097,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 21.963232600013725,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 22.17299820005428,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 22.380554700037464,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 22.59023850003723,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 22.8099839000497,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 23.032048500026576,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 23.25036549998913,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 23.45237050007563,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 23.67025160009507,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 23.888684900011867,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 24.105185899999924,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 24.31031950004399,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 24.529988100053743,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 24.746363800019026,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    },
+    {
+      "imagesLoaded": 21,
+      "floor": true,
+      "ui": true,
+      "at": 24.963318700087257,
+      "paused": "unavailable",
+      "position": "298.6353454589844, 7.339282035827637, 21.943580627441406",
+      "metrics": {
+        "HUD": {
+          "maxMs": 25.33720002975315,
+          "totalMs": 11436.138097546063,
+          "calls": 953
+        }
+      },
+      "requestQueue": 0,
+      "imagesTotal": 1312
+    }
+  ],
+  "frames": [
+    16.699999570846558,
+    912.4770164489746,
+    137.3690962791443,
+    518.4655785560608,
+    302.84228920936584,
+    83.79030227661133,
+    42.61000081896782,
+    125.35090744495392,
+    35.68809852004051,
+    35.42359918355942,
+    78.00350338220596,
+    21.05559967458248,
+    50.70760101079941,
+    32.84280002117157,
+    28.01690064370632,
+    28.147399425506592,
+    20.277999341487885,
+    22.643499076366425,
+    21.84469997882843,
+    21.817399188876152,
+    21.980199962854385,
+    22.922100499272346,
+    31.474098563194275,
+    25.157399475574493,
+    20.571500062942505,
+    19.84409987926483,
+    20.270200446248055,
+    19.6445994079113,
+    19.60499957203865,
+    26.24879963696003,
+    20.48579975962639,
+    25.130899623036385,
+    20.485499873757362,
+    20.731499418616295,
+    18.773600459098816,
+    21.051200106739998,
+    25.025200098752975,
+    18.30280013382435,
+    24.178000167012215,
+    20.700300112366676,
+    20.962299779057503,
+    24.060100317001343,
+    20.433200523257256,
+    24.374499917030334,
+    18.540600314736366,
+    19.500700756907463,
+    20.825300365686417,
+    22.561000660061836,
+    18.938500434160233,
+    19.42799985408783,
+    22.47679978609085,
+    28.36179919540882,
+    19.335400313138962,
+    21.927300840616226,
+    22.095199674367905,
+    25.211399421095848,
+    24.298500269651413,
+    29.40390072762966,
+    41.61699861288071,
+    26.297099888324738,
+    22.3471000790596,
+    142.97029376029968,
+    115.7388985157013,
+    70.74540108442307,
+    17.044899985194206,
+    16.34480059146881,
+    15.729600563645363,
+    16.457300633192062,
+    16.714099794626236,
+    16.030600294470787,
+    16.6873000562191,
+    17.301499843597412,
+    24.595599621534348,
+    15.810800716280937,
+    15.53529966622591,
+    17.89890043437481,
+    15.911199152469635,
+    16.32470078766346,
+    16.33399911224842,
+    16.22309908270836,
+    16.69039949774742,
+    20.84840089082718,
+    18.946699798107147,
+    19.773300737142563,
+    23.978600278496742,
+    16.880899667739868,
+    16.67720079421997,
+    24.46259930729866,
+    21.99460007250309,
+    19.31850053369999,
+    16.430800780653954,
+    16.067299991846085,
+    17.36059971153736,
+    16.02339930832386,
+    16.507599502801895,
+    19.782600924372673,
+    15.953399240970612,
+    16.842100769281387,
+    20.362500101327896,
+    16.541600227355957,
+    16.152100637555122,
+    16.17630012333393,
+    16.74100011587143,
+    17.16889999806881,
+    16.696499660611153,
+    16.235100105404854,
+    17.033599317073822,
+    23.792799562215805,
+    17.004599794745445,
+    16.085999086499214,
+    17.169499769806862,
+    16.8124008923769,
+    15.903500840067863,
+    16.054699197411537,
+    16.051700338721275,
+    16.48860052227974,
+    22.456899285316467,
+    20.537100732326508,
+    17.139799892902374,
+    19.422000274062157,
+    16.41549915075302,
+    16.05590060353279,
+    15.843300148844719,
+    15.471399761736393,
+    15.21649956703186,
+    18.92470009624958,
+    16.41399972140789,
+    15.632100403308868,
+    15.52950032055378,
+    17.44760014116764,
+    16.71849936246872,
+    16.329199075698853,
+    20.416799932718277,
+    17.399700358510017,
+    19.629700109362602,
+    17.761699855327606,
+    16.889000311493874,
+    16.04050025343895,
+    16.549399122595787,
+    19.693100824952126,
+    17.12759956717491,
+    17.448699101805687,
+    17.854899168014526,
+    24.8090997338295,
+    20.51430009305477,
+    18.422700464725494,
+    19.4706991314888,
+    17.70539954304695,
+    16.26499928534031,
+    16.171900555491447,
+    16.068799421191216,
+    16.3113996386528,
+    21.3444996625185,
+    16.671599820256233,
+    15.695299953222275,
+    17.66829937696457,
+    19.35340091586113,
+    17.707599326968193,
+    18.290599808096886,
+    19.227199256420135,
+    18.005099147558212,
+    20.18049918115139,
+    16.446499153971672,
+    18.581299111247063,
+    16.59110002219677,
+    20.080499351024628,
+    16.55290089547634,
+    22.33720012009144,
+    17.040599137544632,
+    16.66709966957569,
+    22.34799973666668,
+    17.6256000995636,
+    17.08729937672615,
+    28.001299127936363,
+    18.633099272847176,
+    16.563700512051582,
+    17.486300319433212,
+    15.905100852251053,
+    23.93209934234619,
+    15.571500174701214,
+    16.106700524687767,
+    15.639500692486763,
+    15.6468003988266,
+    20.135000348091125,
+    17.403900623321533,
+    16.82879962027073,
+    17.017999663949013,
+    20.475799217820168,
+    17.991699278354645,
+    16.504300758242607,
+    19.56930011510849,
+    17.78789982199669,
+    16.672199591994286,
+    16.06619916856289,
+    16.334600746631622,
+    17.321700230240822,
+    25.019999593496323,
+    17.174499109387398,
+    17.39569939672947,
+    16.749799251556396,
+    18.034199252724648,
+    18.531499430537224,
+    28.25389988720417,
+    17.302799969911575,
+    19.96839977800846,
+    16.278499737381935,
+    16.02569967508316,
+    16.83570072054863,
+    16.189100220799446,
+    16.821499913930893,
+    18.131600692868233,
+    21.051600575447083,
+    18.015699461102486,
+    26.528799906373024,
+    17.573600634932518,
+    16.737699508666992,
+    17.341600731015205,
+    16.94829948246479,
+    20.093299448490143,
+    18.93419958651066,
+    23.37850071489811,
+    22.06519991159439,
+    20.659400150179863,
+    25.112399831414223,
+    17.016800120472908,
+    17.496300861239433,
+    17.704099416732788,
+    18.17449927330017,
+    17.781300470232964,
+    22.190699353814125,
+    16.411099582910538,
+    17.58980005979538,
+    18.233200535178185,
+    17.79799908399582,
+    20.72340063750744,
+    17.735499888658524,
+    16.48000068962574,
+    15.766600146889687,
+    19.70119960606098,
+    17.02209934592247,
+    16.6982002556324,
+    15.73449932038784,
+    16.262799501419067,
+    15.934299677610397,
+    15.88509976863861,
+    16.467800363898277,
+    20.570799708366394,
+    19.800199195742607,
+    17.298899590969086,
+    17.962900921702385,
+    18.245799466967583,
+    18.310999497771263,
+    17.85139925777912,
+    18.596800044178963,
+    17.503000795841217,
+    17.65649951994419,
+    23.033499717712402,
+    24.848399683833122,
+    18.142400309443474,
+    17.30779930949211,
+    17.325399443507195,
+    16.69670082628727,
+    17.2761008143425,
+    16.965700313448906,
+    22.43329957127571,
+    16.867199912667274,
+    16.21839962899685,
+    18.42530071735382,
+    19.4620992988348,
+    15.53799957036972,
+    16.067400574684143,
+    17.29689911007881,
+    17.76600070297718,
+    20.05779929459095,
+    16.459699720144272,
+    16.714299097657204,
+    15.955900773406029,
+    16.018200665712357,
+    15.99469967186451,
+    17.122400924563408,
+    19.59170028567314,
+    17.44220033288002,
+    19.404100254178047,
+    16.034400090575218,
+    16.308600082993507,
+    15.851499512791634,
+    17.21080020070076,
+    15.520099550485611,
+    15.935799106955528,
+    16.155699267983437,
+    15.548399649560452,
+    17.254499718546867,
+    22.936999797821045,
+    15.743600204586983,
+    16.210300847887993,
+    16.042299568653107,
+    16.57249964773655,
+    15.733599662780762,
+    16.060199588537216,
+    15.710800886154175,
+    16.021300107240677,
+    16.354499384760857,
+    19.313199445605278,
+    16.08089916408062,
+    19.27489973604679,
+    16.001999378204346,
+    15.978099778294563,
+    16.314199194312096,
+    15.905700623989105,
+    15.82919992506504,
+    16.43179915845394,
+    19.2198995500803,
+    16.935499384999275,
+    16.053099185228348,
+    16.420699656009674,
+    15.51750022917986,
+    17.996300011873245,
+    20.972900092601776,
+    16.22059941291809,
+    16.10499992966652,
+    21.259799599647522,
+    17.68369972705841,
+    16.55369997024536,
+    17.294300720095634,
+    16.266100108623505,
+    16.478799283504486,
+    15.608799643814564,
+    15.165699645876884,
+    19.2307997494936,
+    23.817500099539757,
+    16.761599108576775,
+    17.12680049240589,
+    16.24790020287037,
+    17.469700425863266,
+    16.10269956290722,
+    16.71149954199791,
+    16.28519967198372,
+    15.608799643814564,
+    19.042499363422394,
+    16.32850058376789,
+    20.24560049176216,
+    20.827800035476685,
+    16.755100339651108,
+    17.010899260640144,
+    15.949999913573265,
+    16.523299738764763,
+    17.82589964568615,
+    19.077999517321587,
+    15.726499259471893,
+    15.98530076444149,
+    15.827300027012825,
+    15.980200842022896,
+    16.381200402975082,
+    19.044799730181694,
+    16.502900049090385,
+    15.589100308716297,
+    19.667699933052063,
+    17.11440086364746,
+    16.368400305509567,
+    16.505399718880653,
+    15.96900075674057,
+    16.848400235176086,
+    15.693500638008118,
+    16.86069928109646,
+    16.3768008351326,
+    22.868599742650986,
+    16.29360020160675,
+    16.71529933810234,
+    16.38069935142994,
+    16.345499083399773,
+    16.746999695897102,
+    15.915699303150177,
+    16.498899087309837,
+    15.78110083937645,
+    19.16399970650673,
+    17.176000401377678,
+    19.152700901031494,
+    20.59279941022396,
+    15.804700553417206,
+    15.77959954738617,
+    16.307799145579338,
+    17.188500612974167,
+    16.78290031850338,
+    21.23350091278553,
+    16.94599911570549,
+    17.280999571084976,
+    17.15259999036789,
+    16.248099505901337,
+    18.889199942350388,
+    21.856900304555893,
+    16.73780009150505,
+    16.64070039987564,
+    19.41869966685772,
+    16.641700640320778,
+    16.75800047814846,
+    16.111500561237335,
+    15.914399176836014,
+    16.03260077536106,
+    16.60439930856228,
+    16.34890027344227,
+    18.445100635290146,
+    24.09449964761734,
+    15.689399093389511,
+    16.883300617337227,
+    16.426000744104385,
+    18.501700833439827,
+    17.566699534654617,
+    15.752099454402924,
+    16.196299344301224,
+    15.68480022251606,
+    20.403100177645683,
+    16.187099739909172,
+    19.4023996591568,
+    21.27310074865818,
+    18.408600240945816,
+    16.91720075905323,
+    17.38169975578785,
+    17.532499507069588,
+    17.509600147604942,
+    19.741499796509743,
+    16.01400040090084,
+    18.0417001247406,
+    17.320699989795685,
+    15.794999897480011,
+    16.24950021505356,
+    19.618799909949303,
+    16.4938997477293,
+    17.113199457526207,
+    20.883100107312202,
+    19.293300807476044,
+    18.977899104356766,
+    20.75430005788803,
+    16.967400908470154,
+    22.87070080637932,
+    16.735000535845757,
+    18.071100115776062,
+    26.052599772810936,
+    17.16719940304756,
+    17.925599589943886,
+    16.520800068974495,
+    16.240399330854416,
+    16.25159941613674,
+    17.329299822449684,
+    15.720099210739136,
+    15.995999798178673,
+    20.059699192643166,
+    17.0741006731987,
+    25.471599772572517,
+    20.031800493597984,
+    19.041400402784348,
+    17.901500687003136,
+    19.85579915344715,
+    18.797000870108604,
+    22.285399958491325,
+    19.291600212454796,
+    19.391000270843506,
+    21.113300696015358,
+    19.679300487041473,
+    26.312299072742462,
+    22.818300873041153,
+    22.89550006389618,
+    17.264600843191147,
+    16.927199438214302,
+    16.524700447916985,
+    16.445200890302658,
+    16.3222998380661,
+    17.467699944972992,
+    16.914699226617813,
+    18.814800307154655,
+    19.39079910516739,
+    26.341499760746956,
+    16.96920022368431,
+    16.53989963233471,
+    16.64780080318451,
+    16.908999532461166,
+    20.543700084090233,
+    15.905899927020073,
+    19.57700029015541,
+    16.944700852036476,
+    15.987399965524673,
+    16.770100221037865,
+    16.589000821113586,
+    22.19099923968315,
+    16.33100025355816,
+    19.08089965581894,
+    16.644800081849098,
+    20.394200459122658,
+    18.55820044875145,
+    18.068600445985794,
+    17.22170040011406,
+    16.349399462342262,
+    16.454000025987625,
+    15.817500650882721,
+    15.793200582265854,
+    21.322699263691902,
+    19.742999225854874,
+    15.654200688004494,
+    18.04409921169281,
+    16.833100467920303,
+    15.856200829148293,
+    16.425199806690216,
+    16.94059930741787,
+    16.968199983239174,
+    39.7816002368927,
+    31.863700598478317,
+    24.55589920282364,
+    20.582199096679688,
+    24.044999852776527,
+    20.618699491024017,
+    20.872699096798897,
+    24.500299245119095,
+    20.917199552059174,
+    24.020299315452576,
+    22.577200084924698,
+    24.51089955866337,
+    21.66290022432804,
+    20.285699516534805,
+    24.65989999473095,
+    22.433200851082802,
+    21.048499271273613,
+    20.038900896906853,
+    20.04300057888031,
+    20.416000857949257,
+    21.181300282478333,
+    28.581799939274788,
+    23.517100140452385,
+    20.715000107884407,
+    20.34270018339157,
+    20.762499421834946,
+    21.147899329662323,
+    20.447300747036934,
+    23.07789959013462,
+    20.340999588370323,
+    20.17180062830448,
+    23.591699078679085,
+    23.193199187517166,
+    21.74770087003708,
+    20.625999197363853,
+    24.579500779509544,
+    20.285600796341896,
+    20.53139917552471,
+    20.416300743818283,
+    22.236600518226624,
+    21.84169925749302,
+    24.118300527334213,
+    24.141300469636917,
+    21.78890071809292,
+    21.85319922864437,
+    20.20540088415146,
+    21.590599790215492,
+    20.936500281095505,
+    21.349700167775154,
+    23.736700415611267,
+    21.222500130534172,
+    24.63340014219284,
+    21.617699414491653,
+    20.276999101042747,
+    20.63949964940548,
+    22.748300805687904,
+    25.066200643777847,
+    21.48660086095333,
+    21.325599402189255,
+    19.88930068910122,
+    21.717000752687454,
+    24.777499958872795,
+    20.357200875878334,
+    25.654999539256096,
+    19.86059918999672,
+    20.23169957101345,
+    20.039500668644905,
+    20.913299173116684,
+    19.858699291944504,
+    20.98049968481064,
+    22.148599848151207,
+    28.60720083117485,
+    23.99509958922863,
+    20.526500418782234,
+    20.52840031683445,
+    21.123100072145462,
+    20.939599722623825,
+    20.58430016040802,
+    22.642500698566437,
+    23.724699392914772,
+    24.89680051803589,
+    21.34549990296364,
+    20.228400826454163,
+    20.63409984111786,
+    20.581500604748726,
+    24.286599829792976,
+    21.17370069026947,
+    19.7588000446558,
+    20.52840031683445,
+    26.28049999475479,
+    24.03789944946766,
+    20.61609923839569,
+    23.860199376940727,
+    20.92449925839901,
+    21.160099655389786,
+    22.032400593161583,
+    20.792199298739433,
+    19.704099744558334,
+    19.940799102187157,
+    21.414900198578835,
+    27.218300849199295,
+    20.262299105525017,
+    22.206900641322136,
+    20.534299314022064,
+    21.626999601721764,
+    20.688699558377266,
+    20.72029933333397,
+    23.890800774097443,
+    20.145000889897346,
+    22.704200819134712,
+    23.850899189710617,
+    19.958600401878357,
+    21.139299497008324,
+    20.545799285173416,
+    24.01610091328621,
+    21.449599415063858,
+    20.723100751638412,
+    21.143000572919846,
+    20.99120058119297,
+    22.41469919681549,
+    22.739000618457794,
+    24.615300819277763,
+    19.492700695991516,
+    19.53049935400486,
+    20.9903996437788,
+    20.375799387693405,
+    22.785399109125137,
+    20.958099514245987,
+    27.62730047106743,
+    21.15119993686676,
+    24.143200367689133,
+    21.675899624824524,
+    20.739400759339333,
+    20.240100100636482,
+    22.320400923490524,
+    24.747300893068314,
+    21.23050019145012,
+    20.109999924898148,
+    19.95999924838543,
+    21.563800051808357,
+    24.92690086364746,
+    22.00149931013584,
+    22.77120016515255,
+    19.888300448656082,
+    21.313300356268883,
+    19.670000299811363,
+    20.130999386310577,
+    19.83810029923916,
+    20.349400117993355,
+    22.62520045042038,
+    31.756501644849777,
+    20.4475000500679,
+    20.276999101042747,
+    20.88260091841221,
+    21.49379998445511,
+    20.494399592280388,
+    21.97680063545704,
+    26.340199634432793,
+    22.244499996304512,
+    64.47900086641312,
+    20.413199439644814,
+    21.355800330638885,
+    26.27589926123619,
+    21.61250077188015,
+    22.105399519205093,
+    20.211899653077126,
+    21.001800894737244,
+    24.955499917268753,
+    20.084699615836143,
+    27.798499912023544,
+    22.484999150037766,
+    22.984199225902557,
+    21.341299638152122,
+    20.14469914138317,
+    20.60360088944435,
+    22.406699135899544,
+    28.458699584007263,
+    20.16180008649826,
+    22.61039987206459,
+    21.504299715161324,
+    20.922699943184853,
+    21.00680023431778,
+    20.757699385285378,
+    24.381300434470177,
+    22.835100069642067,
+    23.787500336766243,
+    20.754100754857063,
+    20.78850008547306,
+    21.523600444197655,
+    20.529000088572502,
+    24.47349950671196,
+    20.245399326086044,
+    20.0887992978096,
+    19.980600103735924,
+    20.53079940378666,
+    26.274800300598145,
+    20.902199670672417,
+    26.736600324511528,
+    20.49659937620163,
+    19.82319913804531,
+    20.35599946975708,
+    21.367499604821205,
+    20.40640078485012,
+    20.988399162888527,
+    21.441200748085976,
+    28.059400618076324,
+    20.448900759220123,
+    20.60999907553196,
+    20.117800682783127,
+    21.37479931116104,
+    20.63559927046299,
+    21.044600754976273,
+    20.548900589346886,
+    23.571599274873734,
+    20.834999158978462,
+    23.579899221658707,
+    20.00639960169792,
+    19.433699548244476,
+    20.191699266433716,
+    23.45369942486286,
+    23.300299420952797,
+    21.014299243688583,
+    21.35610021650791,
+    21.10319957137108,
+    21.43700048327446,
+    25.109000504016876,
+    24.084800854325294,
+    25.4891999065876,
+    20.71099914610386,
+    20.36130055785179,
+    20.533600822091103,
+    21.74369990825653,
+    20.713699981570244,
+    19.968200474977493,
+    26.96000039577484,
+    25.165800005197525,
+    20.594799891114235,
+    19.624700769782066,
+    20.19380033016205,
+    19.886799156665802,
+    19.90780048072338,
+    24.272799491882324,
+    21.44250087440014,
+    19.75329965353012,
+    22.357700392603874,
+    25.016099214553833,
+    20.16039937734604,
+    20.594099536538124,
+    23.889299482107162,
+    20.177200436592102,
+    22.504299879074097,
+    20.7435991615057,
+    20.436400547623634,
+    20.313499495387077,
+    21.679000928997993,
+    27.23659947514534,
+    20.210599526762962,
+    21.205199882388115,
+    21.331600844860077,
+    19.933899864554405,
+    20.26440016925335,
+    22.151999175548553,
+    20.145200192928314,
+    22.593099623918533,
+    20.68929933011532,
+    23.144999518990517,
+    22.099599242210388,
+    24.39660020172596,
+    19.59720067679882,
+    19.99959908425808,
+    24.69800040125847,
+    22.20880053937435,
+    21.45100012421608,
+    22.027399390935898,
+    22.111399099230766,
+    23.584099486470222,
+    21.155700087547302,
+    23.552199825644493,
+    21.754199638962746,
+    20.440099760890007,
+    20.428700372576714,
+    20.98749950528145,
+    19.759099930524826,
+    19.818900153040886,
+    24.82829988002777,
+    28.0303992331028,
+    19.869599491357803,
+    20.399199798703194,
+    19.396699965000153,
+    19.936000928282738,
+    22.272400557994843,
+    20.391400903463364,
+    20.468199625611305,
+    24.703599512577057,
+    22.681700065732002,
+    24.598199874162674,
+    24.517100304365158,
+    22.322099655866623,
+    24.411899968981743,
+    21.050000563263893,
+    32.84899890422821,
+    21.377500146627426,
+    21.029699593782425,
+    22.402700036764145,
+    24.339599534869194,
+    21.601000800728798,
+    20.81039920449257,
+    30.562900006771088,
+    22.191699594259262,
+    19.77810077369213,
+    20.824400708079338,
+    21.61630056798458,
+    27.05099992454052,
+    26.21310018002987,
+    23.276399821043015,
+    20.52769996225834,
+    21.004900336265564,
+    22.290600463747978,
+    23.182500153779984,
+    23.016199469566345,
+    21.700799465179443,
+    26.892999187111855,
+    24.687999859452248,
+    24.769900366663933,
+    21.36779949069023,
+    22.021599113941193,
+    21.006900817155838,
+    21.182600408792496,
+    29.004499316215515,
+    22.2960002720356,
+    21.996399387717247,
+    25.66790021955967,
+    21.512100473046303,
+    22.45200052857399,
+    33.6047001183033,
+    28.94599922001362,
+    20.564600825309753,
+    22.203100845217705,
+    23.771099746227264,
+    23.2401005923748,
+    23.367300629615784,
+    20.232800394296646,
+    24.275299161672592,
+    23.690199479460716,
+    20.741600543260574,
+    21.079400554299355,
+    21.48370072245598,
+    20.520899444818497,
+    20.579999312758446,
+    25.960000231862068,
+    24.434199556708336,
+    20.513899624347687,
+    20.300699397921562,
+    20.997099578380585,
+    20.24970017373562,
+    20.676199346780777,
+    25.10650083422661,
+    24.279499426484108,
+    21.2996993213892,
+    19.45270039141178,
+    24.940399453043938,
+    25.26490017771721,
+    22.45119959115982,
+    24.68070015311241,
+    21.02690003812313,
+    19.9584998190403,
+    20.267300307750702,
+    20.724300295114517,
+    22.42480032145977,
+    25.794999673962593,
+    24.089200422167778,
+    20.601900294423103,
+    21.778399124741554,
+    20.176000893115997,
+    20.48349939286709,
+    20.503899082541466,
+    21.71969972550869,
+    19.764399155974388,
+    24.158900603652,
+    24.834800511598587,
+    22.24859967827797,
+    21.211499348282814,
+    20.626600831747055,
+    20.023899152874947,
+    19.681299105286598,
+    27.738800272345543,
+    20.760100334882736,
+    21.1069006472826,
+    20.61549946665764,
+    24.09210056066513,
+    20.1175007969141,
+    19.969899207353592,
+    24.525199085474014,
+    21.50060050189495,
+    20.659800618886948,
+    22.151099517941475,
+    20.567599684000015,
+    21.02760039269924,
+    21.14900015294552,
+    28.667200356721878,
+    20.152000710368156,
+    19.946299493312836,
+    20.894300192594528,
+    20.0532004237175,
+    22.5955992937088,
+    20.050499588251114,
+    32.2997011244297,
+    20.78470028936863,
+    23.70000071823597,
+    20.26519924402237,
+    21.037500351667404,
+    20.233899354934692,
+    20.78380063176155,
+    28.309300541877747,
+    21.152600646018982,
+    22.301599383354187,
+    20.128799602389336,
+    20.917300134897232,
+    24.85240064561367,
+    22.111499682068825,
+    24.071000516414642,
+    20.496800541877747,
+    20.205099135637283,
+    20.75899951159954,
+    19.99419927597046,
+    21.168500185012817,
+    20.90119943022728,
+    22.42879942059517,
+    27.640100568532944,
+    21.607400849461555,
+    21.307000890374184,
+    20.487699657678604,
+    19.68730054795742,
+    20.390799269080162,
+    19.677499309182167,
+    21.110599860548973,
+    24.512700736522675,
+    19.60499957203865,
+    24.917300790548325,
+    20.108599215745926
+  ],
+  "place": 0
+}
