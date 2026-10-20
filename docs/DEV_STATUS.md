@@ -2270,3 +2270,10 @@ Confirmed all nine old start resolvers returned nil because StageN.1 no longer c
 ## 2026-10-20 - Body growth thresholds adjusted only
 
 Changed only MuscleScaleConfig threshold numbers for stages6..12 to100K/3M/50M/100M/300M/1B/3B. All other Source text, all other Sources/properties, scale tables, selected-size behavior, Level/Rebirth, spawn/Speed/StageSkip and existing work are unchanged. Actual current file matched the expected previous values. Offline below/at boundary, ascending13 entries, unchanged scale/config, syntax and same-file reDecode/reference checks passed. No Studio/Play/screenshots; no new lock or alternate place. [Write/check evidence](../reports/MuscleThresholds_20261020.json).
+
+
+## 2026-10-20 - Common Rebirth configuration consolidated
+
+- Five Sources changed: common Config, old multiplier compatibility alias, removal of the World2 Rebirth block, StrengthManager getter reference and RebirthMenuClient getter reference. Shared Config is a leaf; all other World2 text and equipment RequiredRebirth values stay exact. Inactive legacy profile-framework definitions/disabled Main bootstraps remain unchanged.
+- Offline actual before/after Source comparison preserves all30 requirements/cap decisions and multiplier/lookup/reference values. Native module loading and actual UI0,5->6,9->10,10->11,30/MAX checked. Actual UI R5->6 atLV70/Strength1 reset Strength/LV/progress to0/1/0, retained Win7777 and inventory/equipment, and applied4x to a base2 gain (=8). Persistence/test state was memory-only; World2 check changed the World attribute only.
+- Corrected a guarded partial write by reconstructing the exact starting bytes in memory and validating every final Source/property before completion. Same-file output reDecode/compile preserved all other Sources/properties including latest growth thresholds/Speed/spawn/StageSkip. No post-Play behavior edits, screenshots, real save/purchase or extra rbxl. Play stopped; owned Studio28336 closed without saving; target lock absent. [Evidence/limits](../reports/RebirthConfig_20261020/REPORT.md).

@@ -697,3 +697,8 @@ Use `(upperArmScale-1)/0.15` with the existing part coefficients: UpperTorso X/Z
 ## 2026-10-20 - Body growth threshold-only revision
 
 Stages6..12 now require100000/3000000/50000000/100000000/300000000/1000000000/3000000000 Strength. The table above reflects these values; all shape multipliers and the6B cap remain unchanged. LV labels retain the prior design guides, not recalculated conditions. Level/Rebirth logic, selection/payment/access and all other gameplay are unchanged. Offline boundary/syntax/binary preservation checks passed; Studio was not started.
+
+
+## 2026-10-20 - Rebirth authority consolidation, no balance change
+
+RebirthConfig now directly owns the existing effective levels10/15/22/30/45/70/90/110/140/160, unchanged entries11..30, and the existing base1/+0.5-per-count multiplier. World2GameplayConfig no longer owns Rebirth. Cumulative Strength references moved to the common Config as information only; they are not admission conditions. Existing World2 treadmill RequiredRebirth0/7/9 and all other equipment values are unchanged.

@@ -2,7 +2,6 @@ local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
 local player=Players.LocalPlayer
 local Config=require(RS.Config:WaitForChild("RebirthConfig"))
-local MultiplierConfig=require(RS.Config:WaitForChild("RebirthMultiplierConfig"))
 local request=RS.Remotes:WaitForChild("RebirthRequest")
 local gui=script.Parent
 local menu=gui:WaitForChild("LeftMenu")
@@ -22,7 +21,7 @@ panel.Visible=false
 
 local function level() return tonumber(player:GetAttribute("Level")) or 1 end
 local function count() return math.max(0,math.floor(tonumber(player:GetAttribute("RebirthCount")) or 0)) end
-local function multiplier(n) return MultiplierConfig.GetMultiplier(n) end
+local function multiplier(n) return Config.GetMultiplier(n) end
 local function refresh()
  local value=level()
  local n=count()

@@ -629,3 +629,8 @@ Superseding the8384ce6 regression: keep TextWrapped=true and TextScaled=true tog
 ## 2026-10-20 - Thirteen-stage size selection
 
 Keep existing Size Change styling, two columns and unlock/payment behavior. Generate AUTO and SIZE1..13 from SizeChangeConfig.MinTier/MaxTier. Use a vertically scrolling220-wide panel,430 high on desktop and bounded by the available viewport height. Saved numbers0..10 keep their ordinal meaning under the new size table; do not convert old10 to13.
+
+
+## 2026-10-20 - Rebirth shared Config reference
+
+RebirthMenuClient reads both required LV and multiplier from RebirthConfig. Current completed count controls the current multiplier, current+1 controls its preview, and GetRequiredLevel(current) returns the next requirement. Layout, controls, eligibility, badges and MAX behavior are unchanged; absence of a next definition still controls MAX.

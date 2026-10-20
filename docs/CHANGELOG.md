@@ -1039,3 +1039,8 @@ Delete both muscle-growth verification captures and their links; retain numeric 
 ## 2026-10-20 - Adjust seven body-growth Strength thresholds
 
 Update stages6..12 only; retain all dimensions, stages0..13,6B cap and existing gameplay. Verified actual Source offline boundaries/syntax and exact preservation after same-file write/reDecode. Studio not started; no screenshots. [Evidence](../reports/MuscleThresholds_20261020.json).
+
+
+## 2026-10-20 - Consolidate shared Rebirth definitions
+
+Move effective required levels, multiplier and reference Strength into RebirthConfig; redirect Strength/UI and retain the old multiplier API as an alias. Remove World2 Rebirth data/dependency. Values, cap semantics, saves/reset/retention and equipment unlocks stay unchanged. Offline equivalence and focused memory-only actual UI/reset/gain Play passed; same-file write/cleanup verified. [Evidence](../reports/RebirthConfig_20261020/REPORT.md).

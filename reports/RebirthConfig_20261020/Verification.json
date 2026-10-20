@@ -1,0 +1,232 @@
+{
+  "uiBoundaryPlay": [
+    {
+      "count": 0,
+      "level": 1,
+      "server": {
+        "Win": 7777,
+        "KeepUnchanged": true,
+        "Max": false,
+        "Strength": 1,
+        "Required": 10,
+        "Count": 0,
+        "Progress": 1,
+        "BaseGain2": 2,
+        "Level": 1,
+        "Multiplier": 1,
+        "World": 1
+      },
+      "ui": {
+        "Current": "x1.0",
+        "Count": 0,
+        "Next": "x1.5",
+        "CanRebirth": false,
+        "Level": 1,
+        "RequiredText": "REQUIRED LEVEL  Lv 10  •  Lv 1 / 10",
+        "PanelVisible": true
+      }
+    },
+    {
+      "count": 5,
+      "level": 69,
+      "server": {
+        "Win": 7777,
+        "KeepUnchanged": true,
+        "Max": false,
+        "Strength": 1,
+        "Required": 70,
+        "Count": 5,
+        "Progress": 1,
+        "BaseGain2": 7,
+        "Level": 69,
+        "Multiplier": 3.5,
+        "World": 1
+      },
+      "ui": {
+        "Current": "x3.5",
+        "Count": 5,
+        "Next": "x4.0",
+        "CanRebirth": false,
+        "Level": 69,
+        "RequiredText": "REQUIRED LEVEL  Lv 70  •  Lv 69 / 70",
+        "PanelVisible": true
+      }
+    },
+    {
+      "count": 9,
+      "level": 159,
+      "server": {
+        "Win": 7777,
+        "KeepUnchanged": true,
+        "Max": false,
+        "Strength": 1,
+        "Required": 160,
+        "Count": 9,
+        "Progress": 1,
+        "BaseGain2": 11,
+        "Level": 159,
+        "Multiplier": 5.5,
+        "World": 1
+      },
+      "ui": {
+        "Current": "x5.5",
+        "Count": 9,
+        "Next": "x6.0",
+        "CanRebirth": false,
+        "Level": 159,
+        "RequiredText": "REQUIRED LEVEL  Lv 160  •  Lv 159 / 160",
+        "PanelVisible": true
+      }
+    },
+    {
+      "count": 10,
+      "level": 44,
+      "server": {
+        "Win": 7777,
+        "KeepUnchanged": true,
+        "Max": false,
+        "Strength": 1,
+        "Required": 45,
+        "Count": 10,
+        "Progress": 1,
+        "BaseGain2": 12,
+        "Level": 44,
+        "Multiplier": 6,
+        "World": 1
+      },
+      "ui": {
+        "Current": "x6.0",
+        "Count": 10,
+        "Next": "x6.5",
+        "CanRebirth": false,
+        "Level": 44,
+        "RequiredText": "REQUIRED LEVEL  Lv 45  •  Lv 44 / 45",
+        "PanelVisible": true
+      }
+    },
+    {
+      "count": 30,
+      "level": 10000,
+      "server": {
+        "Win": 7777,
+        "KeepUnchanged": true,
+        "Max": true,
+        "Multiplier": 16,
+        "Count": 30,
+        "BaseGain2": 32,
+        "Strength": 1,
+        "Level": 10000,
+        "Progress": 1,
+        "World": 1
+      },
+      "ui": {
+        "Current": "x16.0",
+        "Count": 30,
+        "Next": "MAX",
+        "CanRebirth": false,
+        "Level": 10000,
+        "RequiredText": "MAX",
+        "PanelVisible": true
+      }
+    }
+  ],
+  "uiEligiblePlay": [
+    {
+      "count": 9,
+      "level": 160,
+      "server": {
+        "Win": 7777,
+        "KeepUnchanged": true,
+        "Max": false,
+        "Strength": 1,
+        "Required": 160,
+        "Count": 9,
+        "Progress": 1,
+        "BaseGain2": 11,
+        "Level": 160,
+        "Multiplier": 5.5,
+        "World": 1
+      },
+      "ui": {
+        "Current": "x5.5",
+        "Count": 9,
+        "Next": "x6.0",
+        "CanRebirth": true,
+        "Level": 160,
+        "RequiredText": "REQUIRED LEVEL  Lv 160  •  Lv 160 / 160",
+        "PanelVisible": true
+      }
+    },
+    {
+      "count": 10,
+      "level": 45,
+      "server": {
+        "Win": 7777,
+        "KeepUnchanged": true,
+        "Max": false,
+        "Strength": 1,
+        "Required": 45,
+        "Count": 10,
+        "Progress": 1,
+        "BaseGain2": 12,
+        "Level": 45,
+        "Multiplier": 6,
+        "World": 1
+      },
+      "ui": {
+        "Current": "x6.0",
+        "Count": 10,
+        "Next": "x6.5",
+        "CanRebirth": true,
+        "Level": 45,
+        "RequiredText": "REQUIRED LEVEL  Lv 45  •  Lv 45 / 45",
+        "PanelVisible": true
+      }
+    }
+  ],
+  "actualUIRebirthResult": {
+    "Win": 7777,
+    "KeepUnchanged": true,
+    "Max": false,
+    "Strength": 0,
+    "Required": 90,
+    "Count": 6,
+    "Progress": 0,
+    "BaseGain2": 8,
+    "Level": 1,
+    "Multiplier": 4,
+    "World": 1
+  },
+  "actualStrengthGain": {
+    "Win": 7777,
+    "KeepUnchanged": true,
+    "Progress": 8,
+    "Delta": 8,
+    "Max": false,
+    "Required": 90,
+    "Multiplier": 4,
+    "Count": 6,
+    "Strength": 8,
+    "BaseGain2": 8,
+    "Level": 1,
+    "Result": 8,
+    "World": 1
+  },
+  "world2AttributeFixtureOnly": {
+    "Win": 7777,
+    "KeepUnchanged": true,
+    "Max": false,
+    "Strength": 1,
+    "Required": 45,
+    "Count": 10,
+    "Progress": 1,
+    "BaseGain2": 12,
+    "Level": 45,
+    "Multiplier": 6,
+    "World": 2
+  },
+  "persistence": "temporary memory-only adapter; no production data write",
+  "input": "actual GUI keyboard selection/Return",
+  "screenshotsTaken": false,
+  "playStopped": true
+}

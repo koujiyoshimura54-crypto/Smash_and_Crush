@@ -582,3 +582,8 @@ World2's authored Part marker and both lobby layouts remain unchanged; its runti
 ## 2026-10-20 - Thirteen Strength-based growth stages
 
 Replace the ten-stage body progression with the approved BALANCE_SPEC table: unchanged base0 plus13 growth stages, capped at6B. AUTO depends only on current Strength; World travel alone does not change size. Manual SelectedSizeTier0=AUTO and1..13 remain an explicit paid size choice, independent of Strength, including through death and Rebirth. Existing saved1..10 stay the same ordinal under the new table; no reset or automatic promotion. Rebirth5 access,500-Win change cost, free AUTO, existing persistence/placement and all gameplay economy remain unchanged.
+
+
+## 2026-10-20 - Shared Rebirth configuration authority
+
+Configuration-only consolidation: ReplicatedStorage.Config.RebirthConfig owns effective requirements, base1/+0.5 multiplier and informational Strength references for both Worlds. Preserve all30 existing level entries and the next-requirement-is-absent cap; World1MaxRebirth=5 is compatibility metadata and does not impose a new limit. Existing current-count GetRequiredLevel/IsWorld1Max APIs remain; RebirthMultiplierConfig forwards to the shared Config. Remove World2GameplayConfig.Rebirth and its override dependency. Server reset/retention, saves, purchases and equipment-specific unlocks are unchanged. See reports/RebirthConfig_20261020/REPORT.md for before/after equivalence and focused Play evidence.

@@ -1,0 +1,85 @@
+{
+  "path": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "883a08605e71b16a4973ee5d506f871778e345b221988e890aec9caf8ea2e146",
+  "outputSha256": "8e48706f979fc890e068e51de88d8608fa7cc7bad7a47d6e19b79e1847a52a83",
+  "changedSources": {
+    "ReplicatedStorage.Config.RebirthConfig": {
+      "before": "f71b1361026061f4a4c31c2ac0740a7e92395210c377df2c3f1966f2203d7968",
+      "after": "bfc76a39018d7ee49ea95c8b5b79055b0f18b299b4fb0a48c90ef5a862fd659b"
+    },
+    "ReplicatedStorage.Config.RebirthMultiplierConfig": {
+      "before": "215ffa6aae2e5b604b4f64dec95dd3b7ddb5e4b9142cbcffb96349a611d88f12",
+      "after": "fb059cdc77e89a3602b2a2772529a074afd05443e7358b32e66506f2996109eb"
+    },
+    "ReplicatedStorage.Config.World2GameplayConfig": {
+      "before": "726e1cbd3daa22890e160343a21504947777979ffd531d7233ec9cb00ec2f17e",
+      "after": "54c2eeb2f47e048922aaa2ccbfe9ed4cd08d87c764120417eb98fc32299eef6f"
+    },
+    "ServerScriptService.Services.StrengthManager": {
+      "before": "11ccdf1e6eac539b61c782f375a03bcf6a1115f65c129c56f274b65235e3b3e6",
+      "after": "8e0f160c2f4f98b761444cf5d658b86bf907098bf4dd5268ea05a432048b1410"
+    },
+    "StarterGui.StrengthGui.RebirthMenuClient": {
+      "before": "c3c5c186eb76382113390fea1a5237671918684985d2952a66739aa0ef5a92c4",
+      "after": "bdbf0b13df0a0686fb73b7cc18d34889fd2d095d844eb980ecae26b25bce0744"
+    }
+  },
+  "world2AliasDependencyFields": {
+    "ReplicatedStorage.Modules.Pet": [
+      "Pets"
+    ],
+    "ReplicatedStorage.Modules.Egg": [
+      "EggIds",
+      "PetMultipliers",
+      "PetSources"
+    ],
+    "ReplicatedStorage.Modules.Config": [
+      "EggIds",
+      "EggNames",
+      "Eggs",
+      "Pets"
+    ],
+    "ReplicatedStorage.Config.AuraConfig": [
+      "Auras"
+    ],
+    "ReplicatedStorage.Config.DumbbellItemMaster": [
+      "DumbbellImages",
+      "Dumbbells"
+    ],
+    "ReplicatedStorage.Config.ItemMaster": [
+      "Items"
+    ],
+    "ReplicatedStorage.Config.ItemMultiplierConfig": [
+      "Items"
+    ],
+    "ReplicatedStorage.Config.TreadmillConfig": [
+      "Treadmills"
+    ],
+    "ReplicatedStorage.Config.TrophyRewardConfig": [
+      "Stages"
+    ],
+    "ReplicatedStorage.Config.World2Config": [
+      "Stages",
+      "Version"
+    ]
+  },
+  "allOtherSourcesPropertiesParentsUniqueIdsSharedStringsUnchanged": true,
+  "everyFinalSourceVerifiedAgainstReDecodedOutput": true,
+  "syntaxReDecodeReferences": "passed",
+  "noRuntimeWorld2RebirthReference": true,
+  "sharedRebirthConfigIsLeafModule": true,
+  "beforeAfterEffectiveRequiredLevelsMultipliersCapEqual": "passed counts -1..150 and all30 definitions",
+  "legacyMultiplierLookupAndCompatibilityAPI": "passed",
+  "treadmillUnlockAndNonRebirthWorld2SourceExact": true,
+  "intermediateWriteDetectedAndCompletedSafely": true,
+  "exactInitialBytesReconstructedInMemoryOnly": true,
+  "StudioSavePublish": false,
+  "cleanup": {
+    "PlayStoppedAndEditVerified": true,
+    "temporaryAdaptersRemoved": true,
+    "ownedStudioPid": 28336,
+    "ownedStudioClosedWithoutSavePublish": true,
+    "lockExists": false,
+    "finalPlaceHashVerified": true
+  }
+}

@@ -42,58 +42,6 @@ local C={
    Walls={1400000000000,1750000000000,2100000000000,2800000000000},
    WinReward=3500000,
   }},
- Rebirth={
-  [1]={
-   Level=10,
-   ReferenceStrength=955,
-   Multiplier=1.5,
-  },
-  [2]={
-   Level=15,
-   ReferenceStrength=2840,
-   Multiplier=2,
-  },
-  [3]={
-   Level=22,
-   ReferenceStrength=10485,
-   Multiplier=2.5,
-  },
-  [4]={
-   Level=30,
-   ReferenceStrength=37315,
-   Multiplier=3,
-  },
-  [5]={
-   Level=45,
-   ReferenceStrength=462965,
-   Multiplier=3.5,
-  },
-  [6]={
-   Level=70,
-   ReferenceStrength=61420025,
-   Multiplier=4,
-  },
-  [7]={
-   Level=90,
-   ReferenceStrength=314953025,
-   Multiplier=4.5,
-  },
-  [8]={
-   Level=110,
-   ReferenceStrength=1073937025,
-   Multiplier=5,
-  },
-  [9]={
-   Level=140,
-   ReferenceStrength=4677580025,
-   Multiplier=5.5,
-  },
-  [10]={
-   Level=160,
-   ReferenceStrength=12226986025,
-   Multiplier=6,
-  },
- },
  Dumbbells={{
    PriceWin=3000,
    StrengthBonus=800,

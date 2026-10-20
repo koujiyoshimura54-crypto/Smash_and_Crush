@@ -6,7 +6,7 @@ local ItemService=require(game.ServerScriptService.Services:WaitForChild("ItemSe
 local AuraService=require(game.ServerScriptService.Services:WaitForChild("AuraService"))
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local LevelRequirements=require(ReplicatedStorage.Config:WaitForChild("LevelRequirements"))
-local RebirthMultiplierConfig=require(ReplicatedStorage.Config:WaitForChild("RebirthMultiplierConfig"))
+local RebirthConfig=require(ReplicatedStorage.Config:WaitForChild("RebirthConfig"))
 local PotionService=require(game.ServerScriptService.Services:WaitForChild("PotionService"))
 local ShopPasses=require(game.ServerScriptService.Services.GamePassService)
 local PetServer=require(game.ServerScriptService.Services.PetServer)
@@ -117,7 +117,7 @@ function StrengthManager.GetRebirthCount(player)
  return typeof(value)=="number" and math.max(0,math.floor(value)) or 0
 end
 function StrengthManager.GetStrengthGainMultiplier(player)
- return RebirthMultiplierConfig.GetMultiplier(StrengthManager.GetRebirthCount(player))
+ return RebirthConfig.GetMultiplier(StrengthManager.GetRebirthCount(player))
 end
 function StrengthManager.ResetGainRemainder(player)
  gainRemainder[player]=0
