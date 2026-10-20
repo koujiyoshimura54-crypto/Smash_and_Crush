@@ -1,0 +1,60 @@
+{
+  "cpu": "Intel Core i5-11600K, 6 cores / 12 logical processors",
+  "gpu": "NVIDIA GeForce RTX 5060 Ti",
+  "actualAdapter": "D3D11 NVIDIA adapter confirmed in player and owned Studio logs",
+  "driver": "32.0.15.9186",
+  "nvidiaSmiVramMiB": 8151,
+  "monitor": "1920x1080, 60 Hz",
+  "ramKiB": 33404608,
+  "freeRamKiBInitial": 18965384,
+  "cpuLoadInitialPercent": 80,
+  "cpuLoadLaterPercent": 36,
+  "cpuLoadCaveat": "Instantaneous WMI snapshots, not a sustained bottleneck measurement",
+  "powerPlan": "Razer Cortex Power Plan",
+  "battery": "No Win32_Battery record; AC line not separately measured",
+  "gpuSnapshots": [
+    {
+      "utilizationPercent": 3,
+      "vramUsedMiB": 2008,
+      "powerW": 18.52
+    },
+    {
+      "utilizationPercent": 5,
+      "vramUsedMiB": 1750,
+      "powerW": 20.91
+    }
+  ],
+  "initialProcesses": {
+    "existingStudioPid": 31604,
+    "existingPlayerPid": 31712,
+    "ownedAuditStudioPid": 27720
+  },
+  "otherProcess": "FPSRunner observed (10.59% of one core in five-second CPU sample); cap configuration/ownership not established and not changed",
+  "userConfirmation": "Client continues near 30 FPS/stutters while foreground; tutorial arrows likely contribute",
+  "settings": {
+    "playerFramerateCapRaw": -1,
+    "playerSavedQualityRaw": 0,
+    "studioFramerateCapRaw": -1,
+    "studioSavedQualityRaw": 5,
+    "studioEditQuality": "Automatic",
+    "studioRenderingQuality": "Level10",
+    "resolutionOwnPlayViewport": "1366x767",
+    "framebufferCounterCaveat": "Stats had 396x222 / 680x382 framebuffers and stale draw/triangle values; not adopted for foreground GPU attribution",
+    "effectivePlayerFpsCap": "Unmeasured; no evidence raw settings configure a 30 FPS cap"
+  },
+  "ownedStudioLaunchUtc": "2026-10-20T00:02:12.5676022Z",
+  "ownedStudioFirstEditableToolResponseUtc": "2026-10-20T00:02:37Z",
+  "targetBeforeAfterSha256": "08c9434ec97c3f705c7454744d5355eba6589bb118c88b24f9f8d1c525ee7766",
+  "restoration": {
+    "bothPlaysStopped": true,
+    "editConfirmed": true,
+    "eightEditedSourcesRestoredAndCompared": true,
+    "cameraCFrameFocusTypeRestored": true,
+    "temporaryObjectsRemaining": 0,
+    "ownedStudioClosedWithoutSaving": true,
+    "closeMethod": "WM_CLOSE requested; save dialog appeared; only verified owned PID 27720 was terminated after Stop/restoration, without selecting Save",
+    "staleOwnLockRemoved": true,
+    "autoRecovery": "Studio automatically created one file at 00:07:22Z; creation and write timestamps match owned auto-save event. Only that newly created audit file was removed. Target hash never changed. No Save/Publish command was invoked.",
+    "userStudioAndClient": "No close/termination commands were sent to their PIDs"
+  }
+}

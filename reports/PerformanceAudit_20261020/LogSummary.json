@@ -1,0 +1,180 @@
+{
+  "ownLogEvents": [
+    "2026-10-20T00:02:16.910Z,4.910206,7584,6 [telemetryLog] State: OpenPlaceInitialization",
+    "2026-10-20T00:02:16.930Z,4.930699,79b0,6 [telemetryLog] State: OpenPlaceCreateDataModel",
+    "2026-10-20T00:02:18.660Z,6.660997,6cf8,6 [telemetryLog] State: OpenPlaceLoadDataModel",
+    "2026-10-20T00:02:18.661Z,6.661994,6cf8,6 [telemetryLog] State: OpenPlaceWaitForStreaming",
+    "2026-10-20T00:02:19.707Z,7.707982,7584,6 [telemetryLog] State: OpenPlacePostLoadDataModel",
+    "2026-10-20T00:02:19.921Z,7.921529,5058,6 [telemetryLog] State: OpenPlaceEnterDataModelScope",
+    "2026-10-20T00:02:20.072Z,8.072507,538c,6 [telemetryLog] State: OpenPlacePreSuccess",
+    "2026-10-20T00:02:21.249Z,9.249318,598c,6 [telemetryLog] State: OpenPlaceSuccess",
+    "2026-10-20T00:02:21.253Z,9.253286,598c,6 [telemetryLog] State: PlaceIdle",
+    "2026-10-20T00:07:20.116Z,308.116913,31c4,6,Info [FLog::DataModelAutoSaver] Start auto-save",
+    "2026-10-20T00:07:21.921Z,309.921478,746c,6,Info [FLog::DataModelAutoSaver] Auto-saving finished in 1804 ms",
+    "2026-10-20T00:08:52.108Z,400.108307,7584,6 [telemetryLog] State: PlaySoloInit",
+    "2026-10-20T00:08:52.211Z,400.211823,7584,6 [telemetryLog] State: PlaySoloCreateDataModel",
+    "2026-10-20T00:08:54.131Z,402.131317,6cf8,6 [telemetryLog] State: PlaySoloLoadServer",
+    "2026-10-20T00:08:54.140Z,402.140350,6cf8,6 [telemetryLog] State: PlaySoloEnterDataModelScopeServer",
+    "2026-10-20T00:08:54.897Z,402.897583,79b0,6,Info [FLog::CreatorOutput] [PerfClient] ReplicatedFirst monitor 0.000004599918611347675",
+    "2026-10-20T00:08:55.602Z,403.602417,7584,6,Info [FLog::CreatorOutput] [PerfClient] game.Loaded 0.7040688999695703",
+    "2026-10-20T00:08:56.063Z,404.063812,2c14,6 [telemetryLog] State: PlaySoloRunServerAndLoadClient",
+    "2026-10-20T00:08:56.314Z,404.314575,7584,6 [telemetryLog] State: PlaySoloEnterDataModelScopeClient",
+    "2026-10-20T00:08:56.341Z,404.341736,79b0,6 [telemetryLog] State: PlaySoloSuccess",
+    "2026-10-20T00:08:56.342Z,404.342743,79b0,6 [telemetryLog] State: PlaySoloIdle",
+    "2026-10-20T00:08:57.017Z,405.017822,7584,6,Info [FLog::CreatorOutput] [PerfClient] CharacterAdded 2.119743699906394",
+    "2026-10-20T00:09:06.596Z,414.596008,3fb0,6,Error [FLog::CreatorError] Error: Exponential deferred event growth detected for Object.AbsoluteSizeChanged when calling layoutDumbbellShop on line 62 in Players.<local-player>.PlayerGui.StrengthGui.EssentialStudShopClient",
+    "2026-10-20T00:12:20.106Z,608.106140,31c4,6,Info [FLog::DataModelAutoSaver] Skipping auto-save because we are in playsolo",
+    "2026-10-20T00:17:20.185Z,908.185730,31c4,6,Info [FLog::DataModelAutoSaver] Skipping auto-save because we are in playsolo",
+    "2026-10-20T00:17:43.448Z,931.448975,3fb0,6 [telemetryLog] State: StopPlaySolo",
+    "2026-10-20T00:17:43.449Z,931.449951,3fb0,6 [telemetryLog] State: PlaceIdle",
+    "2026-10-20T00:17:58.193Z,946.193237,7584,6 [telemetryLog] State: PlaySoloInit",
+    "2026-10-20T00:17:58.256Z,946.256592,7584,6 [telemetryLog] State: PlaySoloCreateDataModel",
+    "2026-10-20T00:18:00.214Z,948.214539,7584,6 [telemetryLog] State: PlaySoloLoadServer",
+    "2026-10-20T00:18:00.222Z,948.222961,3fb0,6 [telemetryLog] State: PlaySoloEnterDataModelScopeServer",
+    "2026-10-20T00:18:00.824Z,948.824585,3fb0,6,Info [FLog::CreatorOutput] [PerfData] memory-only load ms 0.28799998108297586",
+    "2026-10-20T00:18:00.986Z,948.986938,6178,6,Info [FLog::CreatorOutput] [PerfClient] ReplicatedFirst monitor 0.000002200016751885414",
+    "2026-10-20T00:18:01.640Z,949.640564,3fb0,6,Info [FLog::CreatorOutput] [PerfClient] game.Loaded 0.6520935000153258",
+    "2026-10-20T00:18:02.179Z,950.179932,7584,6 [telemetryLog] State: PlaySoloRunServerAndLoadClient",
+    "2026-10-20T00:18:02.457Z,950.457642,0228,6 [telemetryLog] State: PlaySoloEnterDataModelScopeClient",
+    "2026-10-20T00:18:02.486Z,950.486877,538c,6 [telemetryLog] State: PlaySoloSuccess",
+    "2026-10-20T00:18:02.487Z,950.487854,538c,6 [telemetryLog] State: PlaySoloIdle",
+    "2026-10-20T00:18:03.190Z,951.190247,7584,6,Info [FLog::CreatorOutput] [PerfClient] CharacterAdded 2.203514500055462",
+    "2026-10-20T00:18:05.485Z,953.485596,79b0,6,Error [FLog::CreatorError] Error: Exponential deferred event growth detected for Object.AbsoluteSizeChanged when calling anonymous function on line 86 in Players.<local-player>.PlayerGui.StrengthGui.EssentialStudShopClient",
+    "2026-10-20T00:19:40.617Z,1048.617432,79b0,6 [telemetryLog] State: StopPlaySolo",
+    "2026-10-20T00:19:40.617Z,1048.617432,79b0,6 [telemetryLog] State: PlaceIdle"
+  ],
+  "summaries": [
+    {
+      "file": "0.743.0.7431134_20261019T232942Z_Player_ED50D_last.log",
+      "lines": 1026,
+      "asset403Count": 22,
+      "layoutCycleErrors": 0,
+      "scriptTimeoutCount": 0,
+      "infiniteYieldCount": 0,
+      "failedSoundIds": [
+        "110783070910373",
+        "117918896943222",
+        "132703558395523",
+        "137456349421517",
+        "70375637366855",
+        "75011432119943",
+        "80878570230928",
+        "92759730216628",
+        "93441624600336"
+      ]
+    },
+    {
+      "file": "0.743.0.7431133_20261020T000212Z_Studio_7C079_last.log",
+      "lines": 5066,
+      "asset403Count": 49,
+      "layoutCycleErrors": 2,
+      "scriptTimeoutCount": 0,
+      "infiniteYieldCount": 0,
+      "failedSoundIds": [
+        "110783070910373",
+        "117918896943222",
+        "132703558395523",
+        "137456349421517",
+        "70375637366855",
+        "75011432119943",
+        "80878570230928",
+        "92759730216628",
+        "93441624600336"
+      ]
+    },
+    {
+      "file": "0.743.0.7431133_20261019T235954Z_Studio_A1EEB_last.log",
+      "lines": 2581,
+      "asset403Count": 11,
+      "layoutCycleErrors": 0,
+      "scriptTimeoutCount": 0,
+      "infiniteYieldCount": 0,
+      "failedSoundIds": [
+        "110783070910373",
+        "117918896943222",
+        "132703558395523",
+        "137456349421517",
+        "70375637366855",
+        "75011432119943",
+        "80878570230928",
+        "92759730216628",
+        "93441624600336"
+      ]
+    },
+    {
+      "file": "0.743.0.7431133_20261019T235841Z_Studio_A220C_last.log",
+      "lines": 3459,
+      "asset403Count": 20,
+      "layoutCycleErrors": 0,
+      "scriptTimeoutCount": 0,
+      "infiniteYieldCount": 0,
+      "failedSoundIds": [
+        "110783070910373",
+        "117918896943222",
+        "132703558395523",
+        "137456349421517",
+        "70375637366855",
+        "75011432119943",
+        "80878570230928",
+        "92759730216628",
+        "93441624600336"
+      ]
+    },
+    {
+      "file": "0.743.0.7431133_20261019T235516Z_Studio_8EB78_last.log",
+      "lines": 4131,
+      "asset403Count": 29,
+      "layoutCycleErrors": 0,
+      "scriptTimeoutCount": 0,
+      "infiniteYieldCount": 0,
+      "failedSoundIds": [
+        "110783070910373",
+        "117918896943222",
+        "132703558395523",
+        "137456349421517",
+        "70375637366855",
+        "75011432119943",
+        "80878570230928",
+        "92759730216628",
+        "93441624600336"
+      ]
+    },
+    {
+      "file": "0.743.0.7431133_20261017T112657Z_Studio_0E647_last.log",
+      "lines": 50064,
+      "asset403Count": 38,
+      "layoutCycleErrors": 0,
+      "scriptTimeoutCount": 0,
+      "infiniteYieldCount": 0,
+      "failedSoundIds": [
+        "110783070910373",
+        "117918896943222",
+        "132703558395523",
+        "137456349421517",
+        "70375637366855",
+        "75011432119943",
+        "80878570230928",
+        "92759730216628",
+        "93441624600336"
+      ]
+    },
+    {
+      "file": "0.743.0.7431134_20261019T234543Z_Player_F5971_last.log",
+      "lines": 9,
+      "asset403Count": 0,
+      "layoutCycleErrors": 0,
+      "scriptTimeoutCount": 0,
+      "infiniteYieldCount": 0,
+      "failedSoundIds": []
+    },
+    {
+      "file": "0.743.0.7431134_20261019T232942Z_Player_0EF43_CrashHandler_last.log",
+      "lines": 7,
+      "asset403Count": 0,
+      "layoutCycleErrors": 0,
+      "scriptTimeoutCount": 0,
+      "infiniteYieldCount": 0,
+      "failedSoundIds": []
+    }
+  ]
+}

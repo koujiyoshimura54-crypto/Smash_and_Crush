@@ -1,0 +1,51 @@
+{
+  "result": [
+    {
+      "PrimitivesCount": 23633,
+      "label": "server baseline",
+      "elapsed": 6.001829899963923,
+      "InstanceCount": 202989,
+      "DataReceiveKbps": 0,
+      "PhysicsStepTimeMs": 0.20518293976783752,
+      "memory": 4941.98046875,
+      "p95ms": 122.10799753665924,
+      "DataSendKbps": 0.9551265835762024,
+      "HeartbeatTimeMs": 0.45320144295692444,
+      "awake": 0,
+      "p50ms": 16.917243599891663,
+      "MovingPrimitivesCount": 55
+    },
+    {
+      "PrimitivesCount": 23633,
+      "label": "server Ungroup anchored only",
+      "elapsed": 6.000176799949259,
+      "InstanceCount": 202989,
+      "DataReceiveKbps": 0,
+      "PhysicsStepTimeMs": 0.1317317634820938,
+      "memory": 4940.26953125,
+      "p95ms": 124.50366467237473,
+      "DataSendKbps": 1.008527398109436,
+      "HeartbeatTimeMs": 0.5607711672782898,
+      "awake": 0,
+      "p50ms": 16.90017618238926,
+      "MovingPrimitivesCount": 55
+    },
+    {
+      "PrimitivesCount": 23633,
+      "label": "server Stud Egg & Pet anchored only",
+      "elapsed": 6.016636500018649,
+      "InstanceCount": 202989,
+      "DataReceiveKbps": 0,
+      "PhysicsStepTimeMs": 0.9715814590454102,
+      "memory": 4946.7109375,
+      "p95ms": 119.28825080394745,
+      "DataSendKbps": 0.9728412628173828,
+      "HeartbeatTimeMs": 0.3127259910106659,
+      "awake": 1,
+      "p50ms": 16.895348206162453,
+      "MovingPrimitivesCount": 56
+    }
+  ],
+  "complete": true,
+  "measurementQualification": "Not accepted as a controlled isolation experiment: initial physics anchoring and visual exploratory test overlapped. Low sampled server physics times are observations only; no attributable improvement is claimed."
+}

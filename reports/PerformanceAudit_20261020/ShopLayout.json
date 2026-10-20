@@ -1,0 +1,58 @@
+{
+  "layout": {
+    "LayoutMeanMs": 0.4390421895873232,
+    "LayoutCalls": 493,
+    "SourceSHA256": "8dd9fa93af7ef6c1e7cd2ee9d9774c260ca26987f625683163bb188014f27f54",
+    "TransferClass": "C",
+    "OriginalRunContext": "Legacy",
+    "LegacyTransfer": true,
+    "WorldScope": "Shared",
+    "LayoutFirst": 950.0257213999284,
+    "SourceFile": "src/StarterGui/StrengthGui/EssentialStudShopClient.client.luau",
+    "LayoutMaxMs": 5.428500007838011,
+    "OriginalPath": "StarterGui.StrengthGui.EssentialStudShopClient"
+  },
+  "observation": [
+    {
+      "maxMs": 5.428500007838011,
+      "time": 988.6819130999502,
+      "label": "after initial startup",
+      "first": 950.0257213999284,
+      "calls": 493,
+      "meanMs": 0.4390421895873232
+    },
+    {
+      "maxMs": 5.428500007838011,
+      "time": 991.7936602999689,
+      "label": "open 1",
+      "first": 950.0257213999284,
+      "calls": 493,
+      "meanMs": 0.4390421895873232
+    },
+    {
+      "maxMs": 5.428500007838011,
+      "time": 994.8972393999575,
+      "label": "close 1",
+      "first": 950.0257213999284,
+      "calls": 493,
+      "meanMs": 0.4390421895873232
+    },
+    {
+      "maxMs": 5.428500007838011,
+      "time": 997.8985604000045,
+      "label": "open 2",
+      "first": 950.0257213999284,
+      "calls": 493,
+      "meanMs": 0.4390421895873232
+    },
+    {
+      "maxMs": 5.428500007838011,
+      "time": 1000.9480225999141,
+      "label": "close 2",
+      "first": 950.0257213999284,
+      "calls": 493,
+      "meanMs": 0.4390421895873232
+    }
+  ],
+  "complete": true
+}

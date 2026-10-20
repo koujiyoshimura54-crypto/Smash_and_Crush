@@ -1,0 +1,14 @@
+{
+  "path": "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient",
+  "mode": "Actual LocalScript runtime, temporary timing wrapper around unchanged refresh implementation",
+  "world1Snapshot": {
+    "calls": 97,
+    "meanMs": 116.7387237061852,
+    "maxMs": 209.6780000720173,
+    "lastMs": 104.01009989436716,
+    "blockers": 8673,
+    "chevrons": 24
+  },
+  "status": "Confirmed expensive in this loaded fixture; direct function wall-clock time, not GPU time",
+  "temporaryChange": "Only LocalScript runtime timing wrapper and locally bypassed tutorial route condition; server tutorial data unchanged; all discarded by Stop"
+}

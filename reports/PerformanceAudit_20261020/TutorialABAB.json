@@ -1,0 +1,62 @@
+{
+  "result": [
+    {
+      "label": "Tutorial active baseline",
+      "elapsed": 6.074543399969116,
+      "camera": "294.739746, 19.518322, 36.4199295, 1, 0, 0, 0, 0.804176152, 0.594391048, 0, -0.594391048, 0.804176152",
+      "fps": 8.231071190822478,
+      "completed": false,
+      "memory": 4936.49609375,
+      "p95ms": 195.2587068080902,
+      "heartbeatMeanMs": 17.217659721374513,
+      "viewport": "1366, 767",
+      "chevrons": 24,
+      "p50ms": 150.3639966249466,
+      "physicsMeanMs": 2.453141007423401
+    },
+    {
+      "label": "Tutorial route calculation bypass only",
+      "elapsed": 6.01582920004148,
+      "camera": "294.739746, 19.518322, 36.4199295, 1, 0, 0, 0, 0.804176152, 0.594391048, 0, -0.594391048, 0.804176152",
+      "fps": 14.960530629302195,
+      "completed": true,
+      "memory": 4937.453125,
+      "p95ms": 70.8891972899437,
+      "heartbeatMeanMs": 0.8665862381458282,
+      "viewport": "1366, 767",
+      "chevrons": 0,
+      "p50ms": 66.5619969367981,
+      "physicsMeanMs": 2.7371732817755805
+    },
+    {
+      "label": "Tutorial restored baseline",
+      "elapsed": 6.000333199976012,
+      "camera": "294.739746, 19.518322, 36.4199295, 1, 0, 0, 0, 0.804176152, 0.594391048, 0, -0.594391048, 0.804176152",
+      "fps": 8.332870303538,
+      "completed": false,
+      "memory": 4938.1484375,
+      "p95ms": 188.2845014333725,
+      "heartbeatMeanMs": 16.777856121063234,
+      "viewport": "1366, 767",
+      "chevrons": 24,
+      "p50ms": 149.3287980556488,
+      "physicsMeanMs": 2.4114941215515135
+    },
+    {
+      "label": "Tutorial route bypass repeat",
+      "elapsed": 6.000614500022493,
+      "camera": "294.739746, 19.518322, 36.4199295, 1, 0, 0, 0, 0.804176152, 0.594391048, 0, -0.594391048, 0.804176152",
+      "fps": 14.9984631574132,
+      "completed": true,
+      "memory": 4937.51171875,
+      "p95ms": 71.82379812002182,
+      "heartbeatMeanMs": 0.8271699084175957,
+      "viewport": "1366, 767",
+      "chevrons": 0,
+      "p50ms": 66.64729863405228,
+      "physicsMeanMs": 2.622419826189677
+    }
+  ],
+  "complete": true,
+  "measurementQualification": "Accepted CPU/route-causality test in background memory-only Play: same camera/viewport, six-second windows plus two-second settle, A/B/A/B, prior exploratory tests completed. FPS differences are not forecasts for foreground/client. Local tutorial completion attribute only was restored; no server progression was changed."
+}
