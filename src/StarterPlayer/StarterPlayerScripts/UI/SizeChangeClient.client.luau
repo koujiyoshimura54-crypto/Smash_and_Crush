@@ -7,7 +7,8 @@ local remote=RS.Remotes:WaitForChild("SizeChangeRequest")
 local gui=Instance.new("ScreenGui");gui.Name="SizeChangeGui";gui.ResetOnSpawn=false;gui.DisplayOrder=35;gui.IgnoreGuiInset=false;gui.Parent=player:WaitForChild("PlayerGui")
 local icon=Instance.new("ImageButton");icon.Name="SizeButton";icon.Image="rbxassetid://102391895593726";icon.BackgroundColor3=Color3.fromRGB(75,54,125);icon.Size=UDim2.fromOffset(48,48);icon.Position=UDim2.fromOffset(12,70);icon.Visible=false;icon.AutoButtonColor=true;icon.Parent=gui
 Instance.new("UICorner",icon).CornerRadius=UDim.new(.2,0)
-local panel=Instance.new("Frame");panel.Name="SizePanel";panel.BackgroundColor3=Color3.fromRGB(31,24,55);panel.Size=UDim2.fromOffset(220,330);panel.Position=UDim2.fromOffset(68,70);panel.Visible=false;panel.Parent=gui
+local panelHeight=math.ceil((config.MaxTier-config.MinTier+2)/2)*52+14
+local panel=Instance.new("ScrollingFrame");panel.Name="SizePanel";panel.BackgroundColor3=Color3.fromRGB(31,24,55);panel.Size=UDim2.fromOffset(220,panelHeight);panel.CanvasSize=UDim2.new();panel.AutomaticCanvasSize=Enum.AutomaticSize.Y;panel.ScrollingDirection=Enum.ScrollingDirection.Y;panel.ScrollBarThickness=4;panel.Position=UDim2.fromOffset(68,70);panel.Visible=false;panel.Parent=gui
 Instance.new("UICorner",panel).CornerRadius=UDim.new(0,12)
 local padding=Instance.new("UIPadding",panel);padding.PaddingTop=UDim.new(0,10);padding.PaddingBottom=UDim.new(0,10);padding.PaddingLeft=UDim.new(0,10);padding.PaddingRight=UDim.new(0,10)
 local layout=Instance.new("UIGridLayout",panel);layout.CellSize=UDim2.fromOffset(94,46);layout.CellPadding=UDim2.fromOffset(8,6);layout.SortOrder=Enum.SortOrder.LayoutOrder
@@ -18,7 +19,7 @@ local function refresh()
  local selected=tonumber(player:GetAttribute("SelectedSizeTier")) or 0
  for tier,button in pairs(buttons) do button.BackgroundColor3=tier==selected and Color3.fromRGB(255,184,54) or Color3.fromRGB(95,68,154) end
 end
-for tier=0,10 do
+for tier=config.MinTier,config.MaxTier do
  local button=Instance.new("TextButton");button.Name=tier==0 and "AUTO" or "SIZE"..tier;button.Text=tier==0 and "AUTO" or "SIZE "..tier;button.AutoLocalize=false;button.TextColor3=Color3.new(1,1,1);button.TextScaled=true;button.Font=Enum.Font.GothamBold;button.LayoutOrder=tier;button.Parent=panel;Instance.new("UICorner",button).CornerRadius=UDim.new(0,8);buttons[tier]=button
  button.Activated:Connect(function() if pending then return end;pending=true;remote:FireServer(tier) end)
 end
@@ -32,6 +33,7 @@ local strengthGui=player.PlayerGui:WaitForChild("StrengthGui")
 RunService.RenderStepped:Connect(function()
  local left=strengthGui:FindFirstChild("HUD") and strengthGui.HUD:FindFirstChild("LeftHUD")
  if not left then return end
+ panel.Size=UDim2.fromOffset(220,math.min(panelHeight,math.max(120,gui.AbsoluteSize.Y-16)))
  local p,s=left.AbsolutePosition,left.AbsoluteSize
  local x=math.clamp(p.X,8,math.max(8,gui.AbsoluteSize.X-56))
  local y=math.clamp(p.Y+s.Y+8,8,math.max(8,gui.AbsoluteSize.Y-56))

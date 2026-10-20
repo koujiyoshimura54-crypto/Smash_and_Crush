@@ -2258,3 +2258,10 @@ Actual two-client tests covered near-simultaneous and staggered joins (including
 ## 2026-10-20 - World1 StageSkip operational repair
 
 Confirmed all nine old start resolvers returned nil because StageN.1 no longer contains Floor/CombatZone. Uses current approach geometry, World1 service context, authoritative guarded Win debit and the existing spawn placement acknowledgement through appended APIs. Client pending state is correlated and bounded. Actual UI selection/Return reached Stage2 for1 Win and Stage10 for1200 Win; insufficient/spam/World2/death cases and other-player isolation passed using temporary memory persistence. No Robux or live save test. Original36595fe implementation retained exactly; see reports/StageSkip_20261020/REPORT.md for paths, final-file hash and limits.
+
+
+## 2026-10-20 - Thirteen-stage muscle growth completed locally
+
+- Replaced the current ten-stage table with approved Strength/height/upper-arm values through6B/3.55/2.80. Preserved base-derived part/Motor6D/Attachment scaling, existing HipHeight/placement, manual selection intent and payment/access. Updated five Sources only; latest spawn, StageSkip, Speed and all lobby geometry retained.
+- Actual final-Source Studio Play:13 boundaries/cap; representative0/1/5/8/13 sizes, connection/attachment consistency, repeated application and W walking; keyboard UI11/12/13/AUTO; memory-only saved13/legacy10 reload; death, both gate handlers, manual and AUTO Rebirth. Captured live-render comparisons; no post-test behavior changes.
+- Single client with test Strength/Win/Rebirth/position and memory persistence; live save/rejoin, device touch and full clothing fidelity remain unverified. Original HipHeight behavior leaves about1.2-stud sole clearance at maximum, with no floor penetration or walking failure. Play stopped; owned Studio closed without saving; target lock absent. [Evidence and images](../reports/MuscleGrowth13_20261020/REPORT.md).

@@ -577,3 +577,8 @@ World1 straight-line guidance and progression remain unchanged. Verified generat
 First join continues to default to World1; CurrentWorld is session state rather than a loaded destination. Death and Trophy return use the player's own current World. LobbySpawnService owns native character loading/ordinary respawn, waits for body readiness and destination streaming, and places above the actual collidable floor/carpet using body dimensions. The client acknowledges only the received pose and floor before the root is released. Superseded requests cannot replay an old destination; late body updates preserve the player's current X/Z.
 
 World2's authored Part marker and both lobby layouts remain unchanged; its runtime SpawnLocation supplies a valid per-player RespawnLocation. Existing normal/combat-loss delays, rewards, bank journals and saved data are retained. Implementation evidence and runtime limitations: `reports/LobbySpawn_20261020/REPORT.md`.
+
+
+## 2026-10-20 - Thirteen Strength-based growth stages
+
+Replace the ten-stage body progression with the approved BALANCE_SPEC table: unchanged base0 plus13 growth stages, capped at6B. AUTO depends only on current Strength; World travel alone does not change size. Manual SelectedSizeTier0=AUTO and1..13 remain an explicit paid size choice, independent of Strength, including through death and Rebirth. Existing saved1..10 stay the same ordinal under the new table; no reset or automatic promotion. Rebirth5 access,500-Win change cost, free AUTO, existing persistence/placement and all gameplay economy remain unchanged.

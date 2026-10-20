@@ -1,0 +1,44 @@
+{
+  "path": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "5196a2147d813c05846bbd8b85b4ca3a0c2b2510325f703413b965962da492d6",
+  "outputSha256": "6635b756f1de2952e5d03eb93018acf07a76b946df677e820211057bcaf9478d",
+  "changedSources": {
+    "ServerScriptService.Config.MuscleScaleConfig": {
+      "before": "dba0c7c35e090fe7e5f96f8d066cc24a489b6f5c4ec547b89947928e2595e66f",
+      "after": "4e7dfc8f95ed45385771d89d9cf924b71620d989da553221e2121840ba09a34a"
+    },
+    "ReplicatedStorage.Config.SizeChangeConfig": {
+      "before": "103a69106670d16e42c50ddf773cf1fe993a952f829b33dccda3bc1d349fbf7c",
+      "after": "95a9cfdd89e7d408f1e006b918ec6515583bb3647d576838d2e211c114a750e7"
+    },
+    "ServerScriptService.Systems.Controllers.MuscleCharacterService": {
+      "before": "499df42541fb1c574aaa329cdfefafaa2d1e4466e2ba27c9f57c2756aaf9ea69",
+      "after": "66603ccec89779388bf822d10e4969b2b76dfb2e875a0203f799a17563a6f5e4"
+    },
+    "ServerScriptService.Services.PlayerDataService": {
+      "before": "50082c5e9b90f79ec8d6e115a147a0d3da9008175d9d9222ba06f0959364c5e7",
+      "after": "8e2943d974bc473526388c94a07d66a1834c6a55f2b1a5cd7ce7715bf396aa59"
+    },
+    "StarterPlayer.StarterPlayerScripts.UI.SizeChangeClient": {
+      "before": "49b196f9d9cf2500aad57226bc38e82c3debcba9fc86ea55119ce423b4fba2e4",
+      "after": "3b84e6f8c048972a17dae35860bcef2ec91cbc947729ab1a094570d549ebf7f2"
+    }
+  },
+  "allOtherSourcesPropertiesParentsUniqueIdsSharedStringsUnchanged": true,
+  "treadmill_ba1186f_spawn_36595fe_stageSkip_07c2518_speed_bedf633_preserved": true,
+  "syntaxAndReferences": "passed",
+  "written": true,
+  "testedFinalSource": {
+    "bodyConfigServiceSizeConfigClientExactDuringPlay": true,
+    "playerDataSameLogicWithTemporaryMemoryOnlyPersistenceAdapter": true,
+    "noBehaviorChangesAfterVisualWalkingTests": true
+  },
+  "cleanup": {
+    "PlayStoppedAndEditVerified": true,
+    "temporaryAdaptersAndObjectsRemoved": true,
+    "ownedStudioPid": 21880,
+    "ownedStudioClosedWithoutSavePublish": true,
+    "lockExists": false,
+    "finalPlaceHashVerified": true
+  }
+}

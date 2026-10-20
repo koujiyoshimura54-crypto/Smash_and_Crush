@@ -1023,3 +1023,9 @@ The current Config already had IsSupportedWorld; the real failure was retired St
 
 - Removed the pre-commit Speed snapshot from RunReturnService; use existing Speed.Apply after the return reset. Preserve ownership, prices, highest-source calculation and latest spawn/StageSkip Sources.
 - Controlled native Play interleave: calculated50/applied32 before,50/50 after; actual grounded W travel measured32.00 ->49.95 studs/s. Normal upgrade UI24->28, death, World round trip and Treadmill exit checked with temporary memory-only data. Limits and same-file/lock evidence: [Speed application report](../reports/SpeedApplication_20261020/REPORT.md).
+
+
+## 2026-10-20 - Replace body growth with13 approved stages
+
+- Apply exact Strength/height/upper-arm table, preserving existing other-part ratios and base-derived rig scaling. Extend paid size selection/validation/persistence/UI through13; retain saved ordinals and existing access/cost.
+- Final-Source Play boundary/shape/walking/UI/lifecycle checks and actual display images recorded in [Muscle growth report](../reports/MuscleGrowth13_20261020/REPORT.md). Same-file write verified; owned Studio stopped/closed, lock removed. Existing lobby/spawn/StageSkip/Speed and unrelated work retained.

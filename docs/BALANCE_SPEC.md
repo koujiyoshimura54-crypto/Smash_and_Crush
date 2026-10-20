@@ -461,7 +461,7 @@ Lv201以降は**暫定実装**としてLv200=5Bを起点に毎Level+250M、上�
 
 ## その他の数値と変更時の注意
 
-MuscleScaleConfigの累積Strength閾値：40 / 250 / 955 / 2,840 / 7,215 / 17,265 / 37,315 / 81,865 / 196,915 / 462,965。対応HeightScale：1.2 / 1.35 / 1.5 / 1.7 / 1.9 / 2.15 / 2.4 / 2.7 / 3 / 3.3。体格の変更はBoss接触・Zone到達にも影響する。形状計算の正本は `src/ServerScriptService/Config/MuscleScaleConfig.luau` とする。
+MuscleScaleConfig now uses the approved thirteen-stage table in the2026-10-20 section below. That section supersedes the old ten-stage summary; existing part growth proportions and excluded parts are retained.
 
 保存・課金の永続仕様は[GAME_SPEC](GAME_SPEC.md)、表示倍率は[UI_SPEC](UI_SPEC.md)、未確定事項は[DEV_STATUS](DEV_STATUS.md)。Balance変更時は有効参照元とWorld2への依存を監査し、実装変更・Play実測・回帰結果を区別して本書を更新する。
 
@@ -668,3 +668,27 @@ Shared Rebirth required LV for counts 1–10: 10/15/22/30/45/70/90/110/140/160; 
 ## 2026-10-20 - Current StageSkip price clarification
 
 Read from the actual CurrentCloud Config during the StageSkip repair: stages2..10 cost1 / 5 / 15 / 50 / 75 / 150 / 300 / 750 / 1200 Win. This supersedes the older StageSkip Win table above and records existing values, not a balance change. Existing ProductIds3711531641,3711531688,3711533318,3711533363,3711533407,3711533440,3711533493,3711533535,3711533573 and fallback Robux10..90 remain exact. World1, Lobby/noncombat and stage2..10 restrictions remain. Evidence: reports/StageSkip_20261020/REPORT.md and FileValidation.json.
+
+
+## 2026-10-20 - Approved thirteen-stage body growth
+
+Supersedes all earlier muscle threshold/height/factor tables, including the2026-09-20 ten-stage progression. Stage0 is the unchanged base, followed by13 discrete growth stages. Level is explanatory only; AUTO reads current Strength, with no World/Boss gate and no interpolation. Cap at13 for6B or more.
+
+| Stage | Required Strength | Approximate LV (not a condition) | Height | Upper-arm X/Z |
+|---|---:|---:|---:|---:|
+|0|0|1|1.00|1.00|
+|1|40|3|1.10|1.30|
+|2|250|6|1.175|1.45|
+|3|955|10|1.25|1.525|
+|4|2840|15|1.35|1.60|
+|5|7215|20|1.45|1.675|
+|6|37315|30|1.70|1.825|
+|7|196915|40|2.00|1.975|
+|8|462965|45|2.15|2.05|
+|9|30000000|64|2.40|2.20|
+|10|150000000|79|2.65|2.35|
+|11|700000000|102|2.95|2.50|
+|12|2000000000|121|3.25|2.65|
+|13|6000000000|145|3.55|2.80|
+
+Use `(upperArmScale-1)/0.15` with the existing part coefficients: UpperTorso X/Z .12/.10, LowerTorso .05/.05, LowerArm .08/.08, UpperLeg UpperTorso*.75, LowerLeg UpperTorso*.60. Y uses the explicit table. Head/hands/feet/root are not newly scaled. Manual size access remains Rebirth5,500 Win per changed non-AUTO selection, free AUTO. No Strength/LV/rebirth multiplier/damage/Speed/price/reward changes.

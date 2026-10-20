@@ -9,6 +9,7 @@ local DailyRewardConfig=require(game.ReplicatedStorage.Config:WaitForChild("Dail
 local CommunityConfig=require(game.ReplicatedStorage.Config:WaitForChild("CommunityRewardConfig"))
 local ShopConfig=require(game.ReplicatedStorage.Config:WaitForChild("ShopProductConfig"))
 local SpeedConfig=require(game.ReplicatedStorage.Config:WaitForChild("SpeedConfig"))
+local SizeChangeConfig=require(game.ReplicatedStorage.Config:WaitForChild("SizeChangeConfig"))
 local CapacityConfig=require(game.ReplicatedStorage.Config:WaitForChild("InventoryCapacityConfig"))
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
 local PlayerDataService={}
@@ -243,7 +244,7 @@ local function normalize(raw)
   d.ItemMergeJournal=merge
   if raw.AutoTapEnabled~=nil and typeof(raw.AutoTapEnabled)~="boolean" then return nil,"Invalid AutoTapEnabled" end
   d.AutoTapEnabled=raw.AutoTapEnabled~=false
-  if raw.SelectedSizeTier~=nil and (not finite(raw.SelectedSizeTier) or raw.SelectedSizeTier%1~=0 or raw.SelectedSizeTier<0 or raw.SelectedSizeTier>10) then return nil,"Invalid SelectedSizeTier" end
+  if raw.SelectedSizeTier~=nil and (not finite(raw.SelectedSizeTier) or raw.SelectedSizeTier%1~=0 or raw.SelectedSizeTier<0 or raw.SelectedSizeTier>SizeChangeConfig.MaxTier) then return nil,"Invalid SelectedSizeTier" end
   d.SelectedSizeTier=raw.SelectedSizeTier or 0
   local capacity,capacityError=CapacityConfig.Normalize(raw.InventoryCapacity)
   if not capacity then return nil,capacityError end
@@ -1785,7 +1786,7 @@ function PlayerDataService.ChangeSelectedSize(player,tier,config)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
  if s.Saving or s.PendingItemMutation then return false,"DataSaving" end
- if typeof(tier)~="number" or tier%1~=0 or tier<0 or tier>10 then return false,"InvalidRequest" end
+ if typeof(tier)~="number" or tier%1~=0 or tier<config.MinTier or tier>config.MaxTier then return false,"InvalidRequest" end
  if s.Data.RebirthCount<(config.RequiredRebirth or 5) then return false,"Locked" end
  local current=s.Data.SelectedSizeTier or 0
  if current==tier then return true,"SameSize",current,s.Data.Win end
@@ -1803,7 +1804,7 @@ function PlayerDataService.ChangeSelectedSize(player,tier,config)
   if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
   if resetToken(old)~=token then rejected="SaveSupersededByReset";return nil end
   local oldTier=old and old.SelectedSizeTier or 0
-  if not finite(oldTier) or oldTier%1~=0 or oldTier<0 or oldTier>10 then error("Invalid SelectedSizeTier") end
+  if not finite(oldTier) or oldTier%1~=0 or oldTier<SizeChangeConfig.MinTier or oldTier>SizeChangeConfig.MaxTier then error("Invalid SelectedSizeTier") end
   local nextData=old and table.clone(old) or defaults()
   nextData.SelectedSizeTier=tier;nextData.Win=win-price
   local users,meta=metadata(info);return nextData,users,meta

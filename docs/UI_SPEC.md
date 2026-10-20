@@ -624,3 +624,8 @@ The six World1/World2 Dumbbell, Egg and Treadmill headings allocate explicit ico
 ## 2026-10-20 — Treadmill heading fitting
 
 Superseding the8384ce6 regression: keep TextWrapped=true and TextScaled=true together. Measure localized text and extend only the treadmill title width (English40.7976 / Japanese55.8672 studs), preserving the normal7.5-stud height,6.8-stud icon,1.2-stud gap and existing offset/font/colors/stroke. Retain rbxassetid://106106287008236 with Fit/aspect preservation. Native English/Japanese near/far rendering and actual icon loading passed in both Worlds against normal Dumbbell headings. See reports/TreadmillHeadingSizing_20261020/REPORT.md.
+
+
+## 2026-10-20 - Thirteen-stage size selection
+
+Keep existing Size Change styling, two columns and unlock/payment behavior. Generate AUTO and SIZE1..13 from SizeChangeConfig.MinTier/MaxTier. Use a vertically scrolling220-wide panel,430 high on desktop and bounded by the available viewport height. Saved numbers0..10 keep their ordinal meaning under the new size table; do not convert old10 to13.

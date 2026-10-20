@@ -46,7 +46,7 @@ local function apply(player)
  local base=character and bases[character]
  if not base then return end
  local selected=player:GetAttribute("SelectedSizeTier")
- local stage=typeof(selected)=="number" and selected>=1 and selected<=10 and selected or Config.GetMuscleStage(player:GetAttribute("Strength"))
+ local stage=typeof(selected)=="number" and selected%1==0 and selected>=1 and selected<=Config.MAX_STAGE and selected or Config.GetMuscleStage(player:GetAttribute("Strength"))
  if appliedStage[character]==stage then return end
  appliedStage[character]=stage
  local scaleHeight=Config.GetHeightScale(stage)
