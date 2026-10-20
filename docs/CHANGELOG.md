@@ -1013,3 +1013,7 @@ Restore TextScaled with TextWrapped enabled and extend the heading width for loc
 
 - Fixed World2 native respawn retaining World1's SpawnLocation, removed the deferred fixed-height move, and coordinated native load/body scaling/streaming with per-player placement generations. Trophy return now holds the destination until the owning client acknowledges its pose and collidable floor. Geometry, balance, rewards, persistence and ba1186f are preserved.
 - Actual two-client near/staggered joins, World2 isolation, repeated deaths/Trophy returns and movement were checked with temporary memory persistence and synthetic Trophy defeat prerequisites. The original initial-join wrong-Lobby symptom was not reproduced. Exact limits and same-file validation: `reports/LobbySpawn_20261020/REPORT.md`. Play ended in Edit; no Studio Save/Publish.
+
+## 2026-10-20 - Repair World1 StageSkip destinations
+
+The current Config already had IsSupportedWorld; the real failure was retired StageN.1 Floor/CombatZone references. Resolve the current WalkableGeometry.Floor and Wall1, use appended36595fe placement entrypoints, validate/debit authoritative Win once, and release/correlate pending UI requests. Actual keyboard UI Stage2/Stage10, insufficient Win, rapid confirmation, World2 rejection, death recovery and observer isolation checked with memory-only data. Prices/IDs/design and all original36595fe function bodies remain unchanged. See reports/StageSkip_20261020/REPORT.md.

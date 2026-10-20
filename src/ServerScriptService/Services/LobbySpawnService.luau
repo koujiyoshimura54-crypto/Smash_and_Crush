@@ -277,4 +277,40 @@ function M.Start()
 	for _, player in Players:GetPlayers() do bind(player) end
 end
 
+-- StageSkip extensions. The 36595fe lobby/load/return implementations above are unchanged.
+function M.GetRootClearance(player, character)
+ local root,hum=living(player,character)
+ return root and clearance(character,root,hum) or nil
+end
+function M.StreamAt(player, character, position)
+ local root=living(player,character)
+ if not root then return nil,"CharacterNotReady" end
+ local request=M.CancelPending(player)
+ request.Root,request.Anchored=root,root.Anchored
+ root.Anchored=true
+ local ok,why=pcall(function()player:RequestStreamAroundAsync(position)end)
+ if not M.IsCurrent(player,request) then return nil,"StalePlacement" end
+ root.Anchored=request.Anchored;request.Root=nil
+ if not ok then return nil,tostring(why) end
+ return request
+end
+function M.MoveToCFrame(player, character, cf)
+ local root=living(player,character)
+ if not root or not character:GetAttribute("SpawnEngineReady") or not character:GetAttribute("MuscleScaleReady") then return false,"CharacterNotReady" end
+ local request=M.CancelPending(player)
+ request.Root,request.Anchored,request.TargetWorld=root,root.Anchored,M.WorldFor(player)
+ root.Anchored=true
+ character:PivotTo(cf*root.CFrame:ToObjectSpace(character:GetPivot()))
+ for _,part in character:GetDescendants() do
+  if part:IsA("BasePart") then part.AssemblyLinearVelocity=Vector3.zero;part.AssemblyAngularVelocity=Vector3.zero end
+ end
+ character:SetAttribute("SpawnFacingDirection",cf.LookVector)
+ character:SetAttribute("SpawnFacingRevision",(character:GetAttribute("SpawnFacingRevision") or 0)+1)
+ request.Target=cf.Position
+ request.Revision=(character:GetAttribute("SpawnPlacementRevision") or 0)+1
+ character:SetAttribute("SpawnPlacementTarget",request.Target)
+ character:SetAttribute("SpawnPlacementRevision",request.Revision)
+ return true
+end
+
 return M

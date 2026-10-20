@@ -26,6 +26,10 @@ function Config.StageForProduct(productId)
  if typeof(productId) ~= "number" then return nil end
  return byProduct[productId]
 end
+-- The original products and run rewards are defined for World 1 only.
+function Config.IsSupportedWorld(player)
+ return (player:GetAttribute("CurrentWorld") or 1)==1
+end
 function Config.IsInLobby(character)
  local map = workspace:FindFirstChild("GeneratedMap")
  local area = map and map:FindFirstChild("TrainingArea")

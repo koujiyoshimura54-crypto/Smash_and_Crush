@@ -1,0 +1,25 @@
+{
+  "path": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "32e45e4f422f35a50b6abd0fc2c9958ca99ccb2dc6cbb01a2fbeab8e619e62ed",
+  "outputSha256": "262460fa3466aa0fa88203dd257e66db2778274e9279fdda3625f6703c3a5589",
+  "changedSources": {
+    "ServerScriptService.Services.StageSkipService": {
+      "before": "d86f0165c8a74d17934eff21334645dafa3d8d1df37b07a1334111b34a339e3b",
+      "after": "3905d18670983b92fb2a3d49cafbb6bcf54e9f6440c6b271c4cf1916e6b61343"
+    },
+    "ServerScriptService.Services.LobbySpawnService": {
+      "before": "a87a73884d18ae15e159745d9ab891bb412eefeacf14a3e591d54d1a6cc612ff",
+      "after": "d46c9baf5b91638ba7d62c0aabd253435aa9ff1b650f83a8cebe88938d50aee3"
+    },
+    "StarterPlayer.StarterPlayerScripts.UI.StageSkipClient": {
+      "before": "797d8c88a6295a4a86ad7849b2b27c06a44611e521e79402dd48f6fc2edd71ab",
+      "after": "a4763d60fdbbbe23dba1688cc97080c7a33e49cc6d11b4b607458c645fa2b9fc"
+    }
+  },
+  "36595feExistingFunctionBodiesUnchanged": true,
+  "allOtherSourcesPropertiesParentsUniqueIdsSharedStringsUnchanged": true,
+  "configPricesProductIdsUIDesignUnchanged": true,
+  "syntax": "passed",
+  "reDecodeReferences": "passed",
+  "written": true
+}

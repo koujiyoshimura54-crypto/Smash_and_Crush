@@ -1,0 +1,91 @@
+{
+  "scope": "Real Studio server and two clients; keyboard selection plus Return on existing UI buttons. In-memory persistence only; no Robux prompt or real payment.",
+  "cases": [
+    {
+      "case": "Mouse automation diagnostic: did not activate Stage2; old harness incorrectly used boss-floor bounds",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Geometry\":{\"1\":{\"Position\":{\"1\":287.79998779296877,\"3\":207.79998779296876,\"2\":7.110296726226807},\"Price\":1,\"Product\":3711531641,\"Stage\":2,\"Inside\":false},\"3\":{\"Position\":{\"1\":287.79998779296877,\"3\":449.32000732421877,\"2\":7.110296726226807},\"Price\":15,\"Product\":3711533318,\"Stage\":4,\"Inside\":false},\"2\":{\"Position\":{\"1\":287.79998779296877,\"3\":327.1199951171875,\"2\":7.110296726226807},\"Price\":5,\"Product\":3711531688,\"Stage\":3,\"Inside\":false},\"5\":{\"Position\":{\"1\":287.79998779296877,\"3\":704.9700317382813,\"2\":7.110296726226807},\"Price\":75,\"Product\":3711533407,\"Stage\":6,\"Inside\":false},\"4\":{\"Position\":{\"1\":287.79998779296877,\"3\":575.27001953125,\"2\":7.110296726226807},\"Price\":50,\"Product\":3711533363,\"Stage\":5,\"Inside\":false},\"7\":{\"Position\":{\"1\":287.79998779296877,\"3\":1150.969970703125,\"2\":7.110296726226807},\"Price\":300,\"Product\":3711533493,\"Stage\":8,\"Inside\":false},\"6\":{\"Position\":{\"1\":287.79998779296877,\"3\":915.9700317382813,\"2\":7.110296726226807},\"Price\":150,\"Product\":3711533440,\"Stage\":7,\"Inside\":false},\"9\":{\"Position\":{\"1\":287.79998779296877,\"3\":1476.969970703125,\"2\":7.110296726226807},\"Price\":1200,\"Product\":3711533573,\"Stage\":10,\"Inside\":false},\"8\":{\"Position\":{\"1\":287.79998779296877,\"3\":1331.969970703125,\"2\":7.110296726226807},\"Price\":750,\"Product\":3711533535,\"Stage\":9,\"Inside\":false}},\"Players\":{\"1\":{\"Win\":2000,\"Skipped\":[],\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player1\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.3388671875},\"Loaded\":true,\"Stage\":1,\"RunId\":\"ffb03a4d-9e7c-424e-8203-a4cd8875e9c1\",\"World\":1},\"2\":{\"Win\":2000,\"Skipped\":[],\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player2\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.3388671875},\"Loaded\":true,\"Stage\":1,\"RunId\":\"81fc7e3c-7991-4a1e-b40e-f45ae94c1168\",\"World\":1}}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "Actual selected Stage2 Win button + Return: one Win debit; other player unchanged",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":{\"Win\":2000,\"Skipped\":[],\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player1\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.3388671875},\"Loaded\":true,\"Stage\":1,\"RunId\":\"ffb03a4d-9e7c-424e-8203-a4cd8875e9c1\",\"World\":1},\"2\":{\"Win\":1999,\"Skipped\":{\"1\":true},\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player2\",\"Position\":{\"1\":287.7998046875,\"3\":207.7998046875,\"2\":6.939453125},\"Loaded\":true,\"Stage\":2,\"RunId\":\"ebccc534-a9f3-4d49-bdff-29dd7d7754f1\",\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "Actual Stage10 UI Return:1200 Win debit, earlier stages Skipped, no Defeated or Complete",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":{\"Win\":2000,\"Skipped\":[],\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player1\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.3388671875},\"Loaded\":true,\"Stage\":1,\"RunId\":\"ffb03a4d-9e7c-424e-8203-a4cd8875e9c1\",\"World\":1},\"2\":{\"Win\":799,\"Skipped\":{\"1\":true,\"3\":true,\"2\":true,\"5\":true,\"4\":true,\"7\":true,\"6\":true,\"9\":true,\"8\":true},\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player2\",\"Position\":{\"1\":287.80078125,\"3\":1476.96875,\"2\":6.9375},\"Loaded\":true,\"Stage\":10,\"RunId\":\"d28a0f8e-3cd5-47b0-a5de-1a2391e5b47a\",\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "Natural death restored Lobby; all2..10 actual walkable-floor/start/product consistency",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Geometry\":{\"1\":{\"ProductRoundTrip\":true,\"Stage\":2,\"Position\":{\"1\":287.79998779296877,\"3\":207.79998779296876,\"2\":7.120978355407715},\"Price\":1,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true},\"3\":{\"ProductRoundTrip\":true,\"Stage\":4,\"Position\":{\"1\":287.79998779296877,\"3\":449.32000732421877,\"2\":7.120978355407715},\"Price\":15,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true},\"2\":{\"ProductRoundTrip\":true,\"Stage\":3,\"Position\":{\"1\":287.79998779296877,\"3\":327.1199951171875,\"2\":7.120978355407715},\"Price\":5,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true},\"5\":{\"ProductRoundTrip\":true,\"Stage\":6,\"Position\":{\"1\":287.79998779296877,\"3\":704.9700317382813,\"2\":7.120978355407715},\"Price\":75,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true},\"4\":{\"ProductRoundTrip\":true,\"Stage\":5,\"Position\":{\"1\":287.79998779296877,\"3\":575.27001953125,\"2\":7.120978355407715},\"Price\":50,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true},\"7\":{\"ProductRoundTrip\":true,\"Stage\":8,\"Position\":{\"1\":287.79998779296877,\"3\":1150.969970703125,\"2\":7.120978355407715},\"Price\":300,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true},\"6\":{\"ProductRoundTrip\":true,\"Stage\":7,\"Position\":{\"1\":287.79998779296877,\"3\":915.9700317382813,\"2\":7.120978355407715},\"Price\":150,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true},\"9\":{\"ProductRoundTrip\":true,\"Stage\":10,\"Position\":{\"1\":287.79998779296877,\"3\":1476.969970703125,\"2\":7.120978355407715},\"Price\":1200,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true},\"8\":{\"ProductRoundTrip\":true,\"Stage\":9,\"Position\":{\"1\":287.79998779296877,\"3\":1331.969970703125,\"2\":7.120978355407715},\"Price\":750,\"FloorY\":4,\"BeforeWall\":true,\"Inside\":true}},\"AfterDeath\":{\"1\":{\"Win\":2000,\"Skipped\":[],\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player1\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.3388671875},\"Loaded\":true,\"Stage\":1,\"RunId\":\"ffb03a4d-9e7c-424e-8203-a4cd8875e9c1\",\"World\":1},\"2\":{\"Win\":799,\"Skipped\":[],\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player2\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.3388671875},\"Loaded\":true,\"Stage\":1,\"RunId\":\"08bfd90d-0946-4844-95bd-8593f3116f29\",\"World\":1}}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "Actual Stage10 UI insufficient Win rejection after death",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Status\":\"Not enough Win\",\"Visible\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "After actual repeated UI Return:5 to4 once, death recovery UI reusable, observer unchanged",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":{\"Win\":2000,\"Skipped\":[],\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player1\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.3388671875},\"Loaded\":true,\"Stage\":1,\"RunId\":\"ffb03a4d-9e7c-424e-8203-a4cd8875e9c1\",\"World\":1},\"2\":{\"Win\":4,\"Skipped\":{\"1\":true},\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player2\",\"Position\":{\"1\":287.7998046875,\"3\":207.7998046875,\"2\":6.939453125},\"Loaded\":true,\"Stage\":2,\"RunId\":\"6e23af29-dd15-4d40-b5d1-0365f4bd543b\",\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "Direct invalid World2 remote:4 Win unchanged, no StageSkip movement or progress, observer invariant",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":{\"Win\":2000,\"Skipped\":[],\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player1\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.3388671875},\"Loaded\":true,\"Stage\":1,\"RunId\":\"ffb03a4d-9e7c-424e-8203-a4cd8875e9c1\",\"World\":1},\"2\":{\"Win\":4,\"Skipped\":{\"1\":true},\"Anchored\":false,\"Defeated\":[],\"Complete\":false,\"Player\":\"Player2\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":5.33984375},\"Loaded\":true,\"Stage\":2,\"RunId\":\"6e23af29-dd15-4d40-b5d1-0365f4bd543b\",\"World\":2}}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "finalRelevantErrors": [],
+  "limits": "Mouse automation did not activate the Win controls; successful UI tests used selected GuiButtons and Return. The final walkable-surface ray and unexpected-initialization-error refund guards were compilation/file validated after the Play session code was loaded; observed floor probes match all tested starts at Y4. Live purchases/saves and rare failure injection remain untested."
+}

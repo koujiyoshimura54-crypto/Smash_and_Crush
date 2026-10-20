@@ -10,7 +10,6 @@ local remote=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild("StageSkip")
 local playerGui=player:WaitForChild("PlayerGui")
 local gui=playerGui:WaitForChild("StageSkipGui")
 if gui:GetAttribute("StageSkipBound") then return end
-gui:SetAttribute("StageSkipBound",true)
 local panel=gui:WaitForChild("Panel")
 require(RS.Modules:WaitForChild("InventoryPresentation")).BindPurchasedPanel(panel)
 local close=panel:WaitForChild("CloseButton")
@@ -19,6 +18,11 @@ local status=panel:WaitForChild("Status")
 local open=playerGui:WaitForChild("StrengthGui"):WaitForChild("LeftMenu"):WaitForChild("SkipButton")
 panel.Visible=false
 local pending=false
+local requestSequence=0
+local function clearPending()
+ pending=false
+ requestSequence+=1
+end
 local function canRequest()
  return Config.IsSupportedWorld(player) and Config.IsInLobby(player.Character)
   and not player:GetAttribute("IsFighting")
@@ -26,8 +30,16 @@ end
 local function request(action,stage)
  if pending or not canRequest() then return end
  pending=true
+ requestSequence+=1
+ local id=requestSequence
  status.Text="Processing..."
- remote:FireServer(action,stage)
+ remote:FireServer(action,stage,id)
+ task.delay(10,function()
+  if pending and requestSequence==id then
+   clearPending()
+   status.Text="Response delayed. Please try again."
+  end
+ end)
 end
 for stage=2,10 do
  local entry=Config.Get(stage)
@@ -54,10 +66,14 @@ open.Activated:Connect(function()
 end)
 close.Activated:Connect(function() panel.Visible=false end)
 remote.OnClientEvent:Connect(function(result)
+ if typeof(result)~="table" or (result.RequestId~=nil and result.RequestId~=requestSequence) then return end
  pending=result.Busy==true
  status.Text=result.Message or ""
  if result.Success and not result.ProductId then panel.Visible=false end
 end)
+player.CharacterRemoving:Connect(function()clearPending();panel.Visible=false end)
+player:GetAttributeChangedSignal("CurrentWorld"):Connect(function()clearPending();panel.Visible=false end)
+gui:SetAttribute("StageSkipBound",true)
 local elapsed=0
 RunService.Heartbeat:Connect(function(dt)
  elapsed+=dt
