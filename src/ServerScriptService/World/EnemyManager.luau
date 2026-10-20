@@ -21,6 +21,9 @@ local Badges=require(game.ServerScriptService.Services.BadgeAwardService)
 local function inWorld(p) return (p:GetAttribute("CurrentWorld") or 1)==worldId end
 local watched=setmetatable({}, {__mode="k"})
 local lossRespawns=setmetatable({}, {__mode="k"})
+local removeEnemy,spawnEnemy
+local runRevisions=setmetatable({}, {__mode="k"})
+local messageSequences=setmetatable({}, {__mode="k"})
 local M={} local map,folder,remote,remoteConnection local enemies={} local states=setmetatable({},{__mode="k"}) local sessions=setmetatable({},{__mode="k"}) local token=0
 local AutoTapConfig=require(RS.Config:WaitForChild("AutoTapConfig"))
 local lastManualAttack=setmetatable({}, {__mode="k"})
@@ -134,12 +137,19 @@ local function boxesOverlap(a,b)
   and math.abs(p.Y)<=targetHalf.Y+projected.Y
   and math.abs(p.Z)<=targetHalf.Z+projected.Z
 end
-local function state(p)local s=states[p]if not s then s={Gauges={},Defeated={}}for i=1,10 do s.Gauges[i]=Boss.GetStageConfig(i).MaxHP end states[p]=s end return s end
-local function send(p,d)remote:FireClient(p,d)end
+local function state(p)local s=states[p]if not s then s={Gauges={},Defeated={},RunRevision=runRevisions[p] or 0}for i=1,10 do s.Gauges[i]=Boss.GetStageConfig(i).MaxHP end states[p]=s end return s end
+local function send(p,d)
+ messageSequences[p]=(messageSequences[p] or 0)+1
+ d.OwnerUserId=p.UserId;d.WorldId=worldId
+ d.RunRevision=runRevisions[p] or 0;d.MessageSequence=messageSequences[p]
+ remote:FireClient(p,d)
+end
 function M.SendState(p)local st=Stage.GetState(p)local ps=state(p)local g={}for i=1,10 do g[i]=ps.Gauges[i]end send(p,{Type="Initialize",CurrentStage=st.CurrentStage,Cleared=ps.Defeated,Skipped=ps.Skipped,WorldComplete=st.WorldComplete,Gauges=g}) for major in pairs(Wall.Config) do send(p,{Type="WallInitialize",State=Wall.GetSnapshotForStage(p,major)}) end end
 function M.InitializePlayer(p,targetStage)
  Speed.ClearTransitionBoost(p,worldId)
  if BossAttack then BossAttack.Stop(p,true) end
+ if removeEnemy then removeEnemy(p) end
+ runRevisions[p]=(runRevisions[p] or 0)+1
  targetStage=targetStage or 1
  Trophy.Clear(p)
  Trophy.InitializePlayer(p)
@@ -189,6 +199,7 @@ function M.InitializePlayer(p,targetStage)
    if RunInventory then RunInventory.Invalidate(p) end
    if BossAttack then BossAttack.Stop(p,false) end
    cleanupWallCombatTrigger(character)
+   if removeEnemy then removeEnemy(p) end
   end)
   if p.Character then characterAdded(p.Character,false) end
  end
@@ -705,32 +716,66 @@ local function refreshMiniBossCollider(e)
  end
 end
 
-local enemyGeneration={}
-local function spawnEnemy(i)
- if worldId==2 then
-  local previous=enemies[i]
-  if previous and previous.Parent then return previous end
-  enemyGeneration[i]=(enemyGeneration[i] or 0)+1
-  local e=require(script.Parent.BossVisualPlacement).Build(map,i,enemyGeneration[i])
-  e.Parent=folder;enemies[i]=e
-  -- Reset engine-initialized Humanoid torso collisions after Workspace parenting.
-  task.delay(.5,function()
-   if e.Parent and enemies[i]==e then
-    for _,part in e:GetDescendants() do
-     if part:IsA("BasePart") then part.CanCollide=false end
-    end
-   end
-  end)
-  return e
+local enemyGeneration=setmetatable({}, {__mode="k"})
+local function ownerFolder(player)
+ local name="Owner_"..player.UserId
+ local owned=folder:FindFirstChild(name)
+ if not owned then owned=Instance.new("Folder");owned.Name=name;owned.Parent=folder end
+ return owned
+end
+removeEnemy=function(player)
+ local e=enemies[player]
+ enemies[player]=nil
+ if e then
+  if Chase then Chase.Unregister(e) end
+  e:Destroy()
  end
- local previous=enemies[i]
- if previous and previous.Parent then previous:Destroy() end
+ if folder then
+  local owned=folder:FindFirstChild("Owner_"..player.UserId)
+  if owned then owned:Destroy() end
+ end
+end
+local function finishEnemy(player,i,e)
+ e:SetAttribute("OwnerUserId",player.UserId)
+ e:SetAttribute("WorldId",worldId)
+ e:SetAttribute("RunRevision",runRevisions[player] or 0)
+ e.ModelStreamingMode=Enum.ModelStreamingMode.Atomic
+ enemies[player]=e
+ if Chase then Chase.Register(e,i,map.BattleCorridor[("Stage%02d"):format(i)]) end
+ -- Replicated actors are invisible/non-physical by default. Only their owner
+ -- restores authored appearance locally; their authoritative pose stays independent.
+ for _,d in e:GetDescendants() do
+  if d:IsA("BaseScript") then d.Enabled=false
+  elseif d:IsA("Humanoid") then d.EvaluateStateMachine=false
+  elseif d:IsA("BasePart") then
+   d:SetAttribute("BossVisualTransparency",d.Transparency)
+   d.Transparency=1;d.CanCollide=false;d.CanTouch=false;d.CanQuery=false
+  elseif d:IsA("Decal") then
+   d:SetAttribute("BossVisualTransparency",d.Transparency);d.Transparency=1
+  elseif d:IsA("ParticleEmitter") or d:IsA("Trail") or d:IsA("Beam") or d:IsA("Highlight")
+   or d:IsA("Light") then
+   d:SetAttribute("BossVisualEnabled",d.Enabled);d.Enabled=false
+  elseif d:IsA("Sound") then
+   d:SetAttribute("BossVisualVolume",d.Volume)
+   d:SetAttribute("BossVisualPlaying",d.IsPlaying)
+   d.Volume=0;d.PlayOnRemove=false;d:Stop()
+  end
+ end
+ return e
+end
+spawnEnemy=function(player,i)
+ removeEnemy(player)
+ enemyGeneration[player]=(enemyGeneration[player] or 0)+1
+ if worldId==2 then
+  local e=require(script.Parent.BossVisualPlacement).Build(map,i,enemyGeneration[player])
+  e.Parent=ownerFolder(player)
+  return finishEnemy(player,i,e)
+ end
  local e=SS.EnemyTemplates.DummyEnemy:Clone()
  e.Name=("Stage%02d_Enemy"):format(i)
  e:SetAttribute("ManagedBy","EnemyManager")
  e:SetAttribute("StageNumber",i)
- enemyGeneration[i]=(enemyGeneration[i] or 0)+1
- e:SetAttribute("SpawnGeneration",enemyGeneration[i])
+ e:SetAttribute("SpawnGeneration",enemyGeneration[player])
  e:SetAttribute("MaxGauge",Boss.GetStageConfig(i).MaxHP)
  e:SetAttribute("RecommendedLevel",Boss.GetStageConfig(i).RecommendedLevel)
  e:SetAttribute("RequiredStrength",Boss.GetStageConfig(i).RequiredStrength)
@@ -743,7 +788,7 @@ local function spawnEnemy(i)
  z.Name="CombatZone" z.Size=Vector3.new(10,14,16) z.Transparency=1
  z.CanCollide=false z.CanTouch=true z.CanQuery=false z.Anchored=true
  z.CFrame=root.CFrame*CFrame.new(0,0,-5) z.Parent=e
- e.Parent=folder
+ e.Parent=ownerFolder(player)
  local spawnPart=map.BattleCorridor[("Stage%02d"):format(i)]:FindFirstChild("EnemySpawn",true)
  assert(spawnPart and spawnPart:IsA("BasePart"),"EnemySpawn missing for Stage "..i)
  e:PivotTo(spawnPart.CFrame*CFrame.new(0,3.5,0))
@@ -792,40 +837,28 @@ local function spawnEnemy(i)
   e:SetAttribute("Stage02GaugeTopY",cf.Position.Y+size.Y/2)
  end
  task.delay(.5,function()
-  if e.Parent and enemies[i]==e then
+  if e.Parent and enemies[player]==e then
    refreshMiniBossCollider(e)
    for _,d in e:GetDescendants() do if d:IsA("BasePart") then d.CanCollide=false end end
   end
  end)
  e.Humanoid.DisplayDistanceType=Enum.HumanoidDisplayDistanceType.None
- if Chase then Chase.Register(e,i,map.BattleCorridor[("Stage%02d"):format(i)]) end
- enemies[i]=e
- -- A shared visual replacement must not reset another player's logical encounter.
- -- Rebind active sessions to this generation and resend the same authoritative HP.
- for player,session in sessions do
-  if session.CombatType=="MiniBoss" and session.Stage==i and player.Parent==Players then
-   local ps=state(player)
-   if not ps.Defeated[i] then
-    session.Instance=e
-    if BossAttack then BossAttack.Rebind(player,e) end
-    local bossState=Boss.Rebind(player,e,i)
-    if bossState then
-     ps.Gauges[i]=bossState.HP
-     send(player,{Type="BossInitialize",Stage=i,Current=bossState.HP,Max=bossState.MaxHP,
-      RecommendedLevel=bossState.RecommendedLevel,SpawnGeneration=enemyGeneration[i]})
-    end
-   end
-  end
- end
- return e
+ return finishEnemy(player,i,e)
+end
+local function getEnemy(player,n,create)
+ local e=enemies[player]
+ if e and e.Parent and e:GetAttribute("StageNumber")==n then return e end
+ if not create then return nil end
+ return spawnEnemy(player,n)
 end
 local function spawnAll()
  folder=W:FindFirstChild(worldId==2 and "World2Enemies" or "Enemies") or Instance.new("Folder")
- folder.Name=worldId==2 and "World2Enemies" or "Enemies" folder.Parent=W
- for _,x in folder:GetChildren() do if x:GetAttribute("ManagedBy")=="EnemyManager" then x:Destroy() end end
- table.clear(enemies)
- table.clear(enemyGeneration)
- for i=1,10 do spawnEnemy(i) end
+ folder.Name=worldId==2 and "World2Enemies" or "Enemies";folder.Parent=W
+ for player in enemies do removeEnemy(player) end
+ for _,x in folder:GetChildren() do
+  if x:GetAttribute("ManagedBy")=="EnemyManager" or x.Name:match("^Owner_%-?%d+$") then x:Destroy() end
+ end
+ -- Instantiate at most the living player's current Stage, never ten AI per player.
 end
 local function inside(root,z)local p=z.CFrame:PointToObjectSpace(root.Position)local h=z.Size/2 return math.abs(p.X)<=h.X and math.abs(p.Y)<=h.Y and math.abs(p.Z)<=h.Z end
 local function defeat(p,n)
@@ -835,7 +868,7 @@ local function defeat(p,n)
  ps.Defeated[n]=true
  if n>=1 and n<10 then Speed.BeginTimedBoost(p,worldId,"BossDefeat") end
  -- Claim defeat before any result/reward notification; all damage paths share this guard.
- local enemy=enemies[n]
+ local enemy=getEnemy(p,n,false)
  send(p,{Type="BossResult",Result="WIN",Stage=n,SpawnGeneration=enemy and enemy:GetAttribute("SpawnGeneration")})
  if BossAttack then
   BossAttack.Stop(p,true)
@@ -872,8 +905,7 @@ local function defeat(p,n)
  end)
  -- One server-owned reward per confirmed enemy defeat.
  ItemDrops.OnEnemyDefeated(p,n,ps,worldId)
- -- Per-player defeat must not replace the shared enemy. The same instance and
- -- SpawnGeneration remain visible for players who have not defeated this stage.
+ removeEnemy(p) -- Other players' actors and encounters remain untouched.
 end
 -- Distinguish arena exit from every other Stop/Cancel/reset reason.
 local function endCombatOnArenaExit(p)
@@ -888,7 +920,7 @@ local function endCombatOnArenaExit(p)
  local ps=state(p)
  if s.Character~=ch or not hum or hum.Health<=0 or not root
   or st.CurrentStage~=n or st.WorldComplete or ps.Defeated[n]
-  or s.Instance~=enemies[n] or not s.Instance.Parent
+  or s.Instance~=getEnemy(p,n,false) or not s.Instance.Parent
   or Chase.ContainsPlayer(s.Instance,root.Position) then return false end
  if BossAttack then BossAttack.Stop(p,true) end
  Boss.Cancel(p)
@@ -929,7 +961,7 @@ local function updateCombat(p,manualRequest)
    local wallPart=wall and wall:FindFirstChild("Wall")
    local wallTrigger=getWallCombatTrigger(ch)
    local wallHit=wallPart and wallTrigger and hum and hum.Health>0 and boxesOverlap(wallTrigger,wallPart)
-   local e=not st.WorldComplete and not state(p).Defeated[n] and enemies[n]
+   local e=not st.WorldComplete and not state(p).Defeated[n] and hum and hum.Health>0 and root and getEnemy(p,n,true)
    local bossUnlocked=(not Wall.Config[n]) or Wall.IsBossUnlockedForStage(p,n)
    local enemyTrigger=getWallCombatTrigger(ch)
    local combatZone=e and e:FindFirstChild("CombatZone")
@@ -1020,7 +1052,7 @@ local function updateCombat(p,manualRequest)
        local function applyBossHit()
         s.Pending-=1
         if not inWorld(p) or p.Parent~=Players or sessions[p]~=s or Stage.GetCurrentStageNumber(p)~=n or state(p)~=ps or p.Character~=ch or not hum or hum.Health<=0 then return end
-        if s.CombatType~="MiniBoss" or s.Instance~=e or enemies[n]~=e or not e.Parent or ps.Defeated[n] or Boss.Get(p)~=bs or bs.Completed then return end
+        if s.CombatType~="MiniBoss" or s.Instance~=e or getEnemy(p,n,false)~=e or not e.Parent or ps.Defeated[n] or Boss.Get(p)~=bs or bs.Completed then return end
         local hpBefore=bs.HP
         local status,hitState=Boss.Attack(p)
         if hitState~=bs or status=="Inactive" or status=="Complete" then return end
@@ -1136,7 +1168,8 @@ end)
  if Chase then
   Chase.SetTargetProvider(function(n,enemy)
    local targets={}
-   for _,p in Players:GetPlayers() do
+   local owner=Players:GetPlayerByUserId(enemy:GetAttribute("OwnerUserId") or 0)
+   for _,p in owner and {owner} or {} do
     local ch=p.Character
     local hum=ch and ch:FindFirstChildOfClass("Humanoid")
     local root=ch and ch:FindFirstChild("HumanoidRootPart")
@@ -1187,18 +1220,19 @@ function M.Deactivate(p)
  if BossAttack then BossAttack.Stop(p,true) end
  recognizedPlayers[p]=nil
  Boss.Cancel(p);sessions[p]=nil
+ removeEnemy(p)
  send(p,{Type="Fighting",Active=false})
 end
-function M.IsReady()return map~=nil and remote~=nil and enemies[10]~=nil end
+function M.IsReady()return map~=nil and remote~=nil and folder~=nil end
 function M.StartRun(p,targetStage)
  assert(M.IsReady(),"Combat is not initialized")
  M.InitializePlayer(p,targetStage)
 end
-function M.GetEnemy(n)return enemies[n]end
+function M.GetEnemy(n,p)return p and getEnemy(p,n,false) or nil end
 function M.GetGauge(p,n)return state(p).Gauges[n]end
 function M.GetPlayerState(p)return state(p)end
 function M.ResetPlayer(p)M.InitializePlayer(p)end
-Players.PlayerRemoving:Connect(function(p) cleanupPlayerWallCombatTriggers(p) states[p]=nil sessions[p]=nil recognizedPlayers[p]=nil watched[p]=nil lossRespawns[p]=nil lastManualAttack[p]=nil end)
+Players.PlayerRemoving:Connect(function(p) cleanupPlayerWallCombatTriggers(p) removeEnemy(p) Boss.Reset(p) enemyGeneration[p]=nil runRevisions[p]=nil messageSequences[p]=nil states[p]=nil sessions[p]=nil recognizedPlayers[p]=nil watched[p]=nil lossRespawns[p]=nil lastManualAttack[p]=nil end)
 
  contexts[worldId]=M
  return M

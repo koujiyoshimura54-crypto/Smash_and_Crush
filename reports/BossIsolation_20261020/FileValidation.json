@@ -1,0 +1,40 @@
+{
+  "path": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "b790ac43e6093e503540c5ef25ee89b4feb946dbd71916540bc5ba18596e0b5a",
+  "outputSha256": "97bb8db77963f5d5c7c050bbc93793b4e244545cbb6e11bc25679ea086d89dcd",
+  "changedSources": {
+    "ServerScriptService.World.EnemyManager": {
+      "before": "a13bfca78c263e747ee228226c6f542b8a73ffd2b16302da4bd69ad14c68ec2f",
+      "after": "7d8c27cee51f5025b9230432eb9da5f14065e46f28ed4606cbdf85f9a54b8952"
+    },
+    "ServerScriptService.World.BossAttackService": {
+      "before": "ed7534d3aede08fbdc80b9954c3e1da3f3dd5a2575709a5ded9d1cb4dbda5ff4",
+      "after": "df853d9316ec32cb195ef82a1301ab7a79250364bb610a19b779bcd085742a8f"
+    },
+    "ServerScriptService.World.BossChaseService": {
+      "before": "f88d342a9239f35b0521f608e117a8f1e2633cf36c6d5d13d59e758f8cc8a226",
+      "after": "81562cafb7e29ad787d9a22820973b180134395ca658c42b6118e0bb135f0325"
+    },
+    "StarterPlayer.StarterPlayerScripts.Combat.CombatClient": {
+      "before": "3109d02851645eb8b7c64326f3be67f34e90f43f8f0067ee7b70e7b6301fe616",
+      "after": "73124bd81357e21c9289ccb18208a2d865d429cffde0439a9d2511b8a729016c"
+    },
+    "StarterPlayer.StarterPlayerScripts.Combat.Stage03AttackVisual": {
+      "before": "54f6e8e0f5d6f32c54480d8ed62b46b1e784322dc4df26f519b19c4811ec9b38",
+      "after": "4f618f8173ee90a7ea491790ab652f70392cb37760c1ae3780b7b9ffe2423831"
+    }
+  },
+  "allOtherSourcesPropertiesParentsUniqueIdsSharedStringsUnchanged": true,
+  "actualChaseSpeed16TurnResponse4Preserved": true,
+  "syntaxReDecodeReferences": "passed",
+  "alternatePlaceCreated": false,
+  "all422SourcesRechecked": true,
+  "changedSourceCount": 5,
+  "testedFinalEditSourcesMatched": true,
+  "temporaryEditFixturesRemoved": true,
+  "playStopped": true,
+  "ownedStudio33288ClosedWithoutSave": true,
+  "testClientsClosed": true,
+  "targetLockAbsent": true,
+  "saveOrPublishPerformed": false
+}

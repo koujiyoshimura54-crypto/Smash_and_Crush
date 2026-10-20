@@ -1,0 +1,1670 @@
+{
+  "scope": "Synthetic/memory-only native Studio tests. Real movement/mouse combat and UI keyboard actions are identified; spoof/reward tests are mocks. A/B/C are anonymous test clients.",
+  "beforeSharedBoss": {
+    "1": {
+      "BossTarget": "B",
+      "Defeated": [],
+      "Win": 10000,
+      "Route": "STRENGTH_DAMAGE",
+      "BossAttacks": 0,
+      "Health": 100,
+      "Strength": 75,
+      "Complete": false,
+      "Highest": 1,
+      "Player": "A",
+      "Fighting": true,
+      "Position": {
+        "1": 277.7998046875,
+        "2": 7.134765625,
+        "3": 183.900390625
+      },
+      "BossHP": 375,
+      "BossPosition": {
+        "1": 294.0277404785156,
+        "2": 8,
+        "3": 189.5582733154297
+      },
+      "Stage": 1,
+      "World": 1
+    },
+    "2": {
+      "Highest": 1,
+      "BossAttacks": 0,
+      "Defeated": [],
+      "Complete": false,
+      "Fighting": true,
+      "World": 1,
+      "BossPosition": {
+        "1": 294.0277404785156,
+        "2": 8,
+        "3": 189.5582733154297
+      },
+      "Route": "STRENGTH_DAMAGE",
+      "Strength": 150,
+      "BossHP": 375,
+      "Player": "B",
+      "Health": 100,
+      "Position": {
+        "1": 297.7998046875,
+        "2": 7.134765625,
+        "3": 183.900390625
+      },
+      "BossTarget": "B",
+      "Win": 10000,
+      "Stage": 1,
+      "DamageSamples": 2,
+      "SampleDamage": {
+        "Before": 100,
+        "After": 75
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "World1 same stage contact, one actual mouse attack from each client",
+      "phase": "Before final World2 gauge fallback; same server actor/combat code",
+      "result": {
+        "1": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 300,
+          "Strength": 75,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 279.18603515625,
+            "2": 8,
+            "3": 157.53219604492188
+          },
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 150.875
+          },
+          "BossOwner": "A",
+          "DamageSamples": 40,
+          "SampleDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Stage": 1,
+          "Health": 100
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 1,
+          "BossTarget": "B",
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 225,
+          "Strength": 150,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 296.4136657714844,
+            "2": 8,
+            "3": 157.5322265625
+          },
+          "Player": "B",
+          "RunRevision": 3,
+          "Position": {
+            "1": 297.7998046875,
+            "2": 7.134765625,
+            "3": 150.875
+          },
+          "BossOwner": "B",
+          "DamageSamples": 40,
+          "SampleDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Stage": 1,
+          "Health": 100
+        }
+      }
+    },
+    {
+      "case": "World1 Player2 alone wins via actual mouse attacks; Player1 encounter stays at300",
+      "phase": "Before final World2 gauge fallback; same server actor/combat code",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 1,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 76,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 75,
+          "Health": 100,
+          "BossHP": 300,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 150.875
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 279.18603515625,
+            "2": 8,
+            "3": 157.53219604492188
+          },
+          "Stage": 1,
+          "Defeated": []
+        },
+        "2": {
+          "Win": 10000,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 72,
+          "World": 1,
+          "BossOwner": "B",
+          "Strength": 150,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 312.8399963378906
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 297.7998046875,
+            "2": 7.134765625,
+            "3": 150.875
+          },
+          "Highest": 1,
+          "RunRevision": 3,
+          "Stage": 2,
+          "Defeated": {
+            "1": true
+          }
+        }
+      }
+    },
+    {
+      "case": "World1 Player1 continues its own remaining four hits and wins",
+      "phase": "Before final World2 gauge fallback; same server actor/combat code",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 78,
+          "World": 1,
+          "BossOwner": "A",
+          "Strength": 75,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 312.8399963378906
+          },
+          "Player": "A",
+          "Health": 100,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 150.875
+          },
+          "Highest": 1,
+          "RunRevision": 3,
+          "Stage": 2,
+          "Defeated": {
+            "1": true
+          }
+        },
+        "2": {
+          "Win": 10000,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 72,
+          "World": 1,
+          "BossOwner": "B",
+          "Strength": 150,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 312.8399963378906
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 297.7998046875,
+            "2": 7.134765625,
+            "3": 150.875
+          },
+          "Highest": 1,
+          "RunRevision": 3,
+          "Stage": 2,
+          "Defeated": {
+            "1": true
+          }
+        }
+      }
+    },
+    {
+      "case": "World1 actual walk to own Trophy; credit/return only collector",
+      "phase": "Before final World2 gauge fallback; same server actor/combat code",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 78,
+          "World": 1,
+          "BossOwner": "A",
+          "Strength": 75,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 312.8399963378906
+          },
+          "Player": "A",
+          "Health": 100,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 150.875
+          },
+          "Highest": 1,
+          "RunRevision": 3,
+          "Stage": 2,
+          "Defeated": {
+            "1": true
+          }
+        },
+        "2": {
+          "Win": 10001,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 72,
+          "World": 1,
+          "BossOwner": "B",
+          "Strength": 150,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.53515625,
+            "3": 13
+          },
+          "Highest": 1,
+          "RunRevision": 4,
+          "Stage": 1,
+          "Defeated": []
+        }
+      }
+    },
+    {
+      "case": "FINAL World2 real mouse Player2 victory; Player1 remains140M/3 attacks",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Highest": 1,
+          "BossAttacks": 3,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Route": "LEVEL_DAMAGE",
+          "Strength": 70000000,
+          "BossHP": 140000000,
+          "Player": "A",
+          "Health": 100,
+          "Position": {
+            "1": 23.359375,
+            "2": 5.1328125,
+            "3": 2145.09375
+          },
+          "BossOwner": "A",
+          "Win": 10000,
+          "Stage": 1,
+          "RunRevision": 1
+        },
+        "2": {
+          "BossOwner": "B",
+          "Highest": 1,
+          "Win": 10000,
+          "Strength": 140000000,
+          "Defeated": {
+            "1": true
+          },
+          "Complete": false,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2271.10986328125
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 32.390625,
+            "2": 5.1328125,
+            "3": 2145.1953125
+          },
+          "Fighting": false,
+          "RunRevision": 1,
+          "Stage": 2,
+          "World": 2
+        }
+      }
+    },
+    {
+      "case": "FINAL World2 Player1 completes its own remaining hits; both victories independent",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "BossOwner": "A",
+          "Highest": 1,
+          "Win": 10000,
+          "Strength": 70000000,
+          "Defeated": {
+            "1": true
+          },
+          "Complete": false,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2271.10986328125
+          },
+          "Player": "A",
+          "Health": 100,
+          "Position": {
+            "1": 23.359375,
+            "2": 5.1328125,
+            "3": 2145.09375
+          },
+          "Fighting": false,
+          "RunRevision": 1,
+          "Stage": 2,
+          "World": 2
+        },
+        "2": {
+          "BossOwner": "B",
+          "Highest": 1,
+          "Win": 10000,
+          "Strength": 140000000,
+          "Defeated": {
+            "1": true
+          },
+          "Complete": false,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2271.10986328125
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 32.390625,
+            "2": 5.1328125,
+            "3": 2145.1953125
+          },
+          "Fighting": false,
+          "RunRevision": 1,
+          "Stage": 2,
+          "World": 2
+        }
+      }
+    },
+    {
+      "case": "FINAL World2 actual Trophy pickup: collector gets3000 and return; other stays Stage2/10000",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "BossOwner": "A",
+          "Highest": 1,
+          "Win": 10000,
+          "Strength": 70000000,
+          "Defeated": {
+            "1": true
+          },
+          "Complete": false,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2271.10986328125
+          },
+          "Player": "A",
+          "Health": 100,
+          "Position": {
+            "1": 23.359375,
+            "2": 5.1328125,
+            "3": 2145.09375
+          },
+          "Fighting": false,
+          "RunRevision": 1,
+          "Stage": 2,
+          "World": 2
+        },
+        "2": {
+          "BossOwner": "B",
+          "Highest": 1,
+          "Win": 13000,
+          "Strength": 140000000,
+          "Defeated": [],
+          "Complete": false,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 27.98046875,
+            "2": 5.53515625,
+            "3": 1947.98046875
+          },
+          "Fighting": false,
+          "RunRevision": 2,
+          "Stage": 1,
+          "World": 2
+        }
+      }
+    },
+    {
+      "case": "FINAL World2 only Player1 death, Player2 encounter unchanged",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "Highest": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Health": 0,
+          "Player": "A",
+          "Fighting": false,
+          "Position": {
+            "1": 23.921878814697266,
+            "2": 2.9774563312530518,
+            "3": 2146.6328125
+          },
+          "Strength": 70000000,
+          "RunRevision": 3,
+          "Stage": 1,
+          "World": 2
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Route": "LEVEL_DAMAGE",
+          "Strength": 140000000,
+          "BossHP": 350000000,
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 31.921875,
+            "2": 5.1328125,
+            "3": 2146.6328125
+          },
+          "BossOwner": "B",
+          "Win": 10000,
+          "Stage": 1,
+          "RunRevision": 3
+        }
+      },
+      "before": {
+        "1": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Route": "LEVEL_DAMAGE",
+          "Strength": 70000000,
+          "BossHP": 350000000,
+          "Player": "A",
+          "Health": 100,
+          "Position": {
+            "1": 23.921875,
+            "2": 5.1328125,
+            "3": 2146.6328125
+          },
+          "BossOwner": "A",
+          "Win": 10000,
+          "Stage": 1,
+          "RunRevision": 2
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Route": "LEVEL_DAMAGE",
+          "Strength": 140000000,
+          "BossHP": 350000000,
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 31.921875,
+            "2": 5.1328125,
+            "3": 2146.6328125
+          },
+          "BossOwner": "B",
+          "Win": 10000,
+          "Stage": 1,
+          "RunRevision": 3
+        }
+      }
+    },
+    {
+      "case": "FINAL World2 Back via existing real keyboard UI; only own run reset",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "BossOwner": "A",
+          "Highest": 1,
+          "Win": 10000,
+          "Strength": 70000000,
+          "Defeated": [],
+          "Complete": false,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Player": "A",
+          "Health": 100,
+          "Position": {
+            "1": 27.98046875,
+            "2": 5.53515625,
+            "3": 1947.98046875
+          },
+          "Fighting": false,
+          "RunRevision": 4,
+          "Stage": 1,
+          "World": 2
+        },
+        "2": {
+          "BossOwner": "B",
+          "Highest": 1,
+          "Win": 10000,
+          "Strength": 140000000,
+          "Defeated": [],
+          "Complete": false,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 27.98046875,
+            "2": 5.53515625,
+            "3": 1947.98046875
+          },
+          "Fighting": false,
+          "RunRevision": 4,
+          "Stage": 1,
+          "World": 2
+        }
+      }
+    },
+    {
+      "case": "FINAL mixed Worlds/Stages actual attacks after camera follow, clear floor mouse position",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 1,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 87,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 10000,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2271.10986328125
+          },
+          "Route": "LEVEL_DAMAGE",
+          "Strength": 140000000,
+          "BossHP": 560000000,
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 31.921875,
+            "2": 5.1328125,
+            "3": 2264.109375
+          },
+          "BossOwner": "B",
+          "Win": 10000,
+          "Stage": 2,
+          "RunRevision": 5
+        }
+      }
+    },
+    {
+      "case": "FINAL cc534cd manual13 Stage2 Skip via existing real UI keyboard, observer Stage3 encounter unchanged",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 1,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 103,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 10000,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "BossOwner": "B",
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 9999,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 312.8399963378906
+          },
+          "Strength": 750,
+          "Complete": false,
+          "BossTarget": "none",
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 287.7998046875,
+            "2": 11.935546875,
+            "3": 207.7998046875
+          },
+          "RunRevision": 4,
+          "Fighting": false,
+          "Stage": 2,
+          "World": 1
+        }
+      }
+    },
+    {
+      "case": "FINAL maximum13 StageSkip then test-unlocked walls, actual walking into personal Stage2 battle",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 182,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 7500,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "Win": 9999,
+          "BossAttacks": 0,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 3,
+          "World": 1,
+          "BossTarget": "B",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "B",
+          "Strength": 750,
+          "Health": 100,
+          "BossHP": 2250,
+          "Player": "B",
+          "RunRevision": 4,
+          "Position": {
+            "1": 296.6829528808594,
+            "2": 11.93470287322998,
+            "3": 274.3691711425781
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 292.3525390625,
+            "2": 8,
+            "3": 286.030517578125
+          },
+          "Stage": 2,
+          "Defeated": []
+        }
+      }
+    },
+    {
+      "case": "FINAL World1 Back via existing UI ends max-size Skip battle only; observer Stage3 remains",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 190,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 7500,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "Win": 9999,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 8,
+          "World": 1,
+          "BossOwner": "B",
+          "Strength": 750,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 12.3349609375,
+            "3": 13
+          },
+          "Highest": 1,
+          "RunRevision": 5,
+          "Stage": 1,
+          "Defeated": []
+        }
+      }
+    },
+    {
+      "case": "FINAL second max-size StageSkip/retry, real mouse battle, no old encounter reuse",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 205,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 7500,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "Win": 9998,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 10,
+          "World": 1,
+          "BossOwner": "B",
+          "Strength": 750,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 442.62701416015625
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 295.8583984375,
+            "2": 11.935546875,
+            "3": 270.1396484375
+          },
+          "Highest": 1,
+          "RunRevision": 6,
+          "Stage": 3,
+          "Defeated": {
+            "2": true
+          }
+        }
+      }
+    },
+    {
+      "case": "mock stale run, duplicate WIN sequence and foreign-owner client notifications; forged victory/damage and extra-target tap rejected",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 291,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 7500,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "Win": 9998,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 10,
+          "World": 1,
+          "BossOwner": "B",
+          "Strength": 750,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 442.62701416015625
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 295.8583984375,
+            "2": 11.935546875,
+            "3": 270.1396484375
+          },
+          "Highest": 1,
+          "RunRevision": 6,
+          "Stage": 3,
+          "Defeated": {
+            "2": true
+          }
+        }
+      }
+    },
+    {
+      "case": "World1 Stage10 actual mouse attacks and owner completion only",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 306,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 7500,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "Highest": 1,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Win": 10000,
+          "Strength": 125000000,
+          "Defeated": {
+            "10": true
+          },
+          "Complete": true,
+          "Fighting": false,
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 298.06640625,
+            "2": 7.13671875,
+            "3": 1619.24609375
+          },
+          "RunRevision": 7,
+          "DamageCount": 19,
+          "Stage": 10,
+          "World": 1
+        }
+      }
+    },
+    {
+      "case": "World1 Stage10 actual Trophy pickup: +1000 Win, HighestUnlockedWorld2 only collector, observer unchanged",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 357,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 7500,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "Win": 11000,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "DamageCount": 19,
+          "World": 1,
+          "BossOwner": "B",
+          "Strength": 125000000,
+          "BossTarget": "none",
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.53515625,
+            "3": 13
+          },
+          "Highest": 2,
+          "RunRevision": 8,
+          "Stage": 1,
+          "Defeated": []
+        }
+      }
+    },
+    {
+      "case": "World2 Stage10 actual mouse victory, only its World2Complete true, observer World1 Stage3 remains7500",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 366,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 7500,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "Highest": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Win": 10000,
+          "Strength": 1750000000000,
+          "Defeated": {
+            "10": true
+          },
+          "Complete": true,
+          "Fighting": false,
+          "Player": "B",
+          "Health": 100,
+          "Position": {
+            "1": 31.921875,
+            "2": 5.1328125,
+            "3": 3622.046875
+          },
+          "RunRevision": 6,
+          "DamageCount": 19,
+          "Stage": 10,
+          "World": 2
+        }
+      }
+    },
+    {
+      "case": "World2 Stage10 actual Trophy pickup: +3.5M Win and owner reset, no World3 grant; observer unchanged",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 2,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 462,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 2500,
+          "Health": 100,
+          "BossHP": 7500,
+          "Player": "A",
+          "RunRevision": 3,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 435.626953125
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.56268310546875,
+            "2": 8,
+            "3": 438.26104736328125
+          },
+          "Stage": 3,
+          "Defeated": []
+        },
+        "2": {
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Defeated": [],
+          "Win": 3510000,
+          "Highest": 2,
+          "Health": 100,
+          "Strength": 1750000000000,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": false,
+          "Player": "B",
+          "RunRevision": 7,
+          "Position": {
+            "1": 27.98046875,
+            "2": 5.53515625,
+            "3": 1947.98046875
+          },
+          "BossOwner": "B",
+          "DamageCount": 19,
+          "Stage": 1,
+          "World": 2
+        }
+      }
+    },
+    {
+      "case": "five short native reset/retry cycles: old actors destroyed, only one current actor per living active player",
+      "phase": "Final Source",
+      "result": {
+        "OldActorsStillParented": 0,
+        "Counts": {
+          "World2Enemies": {
+            "Models": 1,
+            "EnabledScripts": 0,
+            "Colliding": 0
+          },
+          "Enemies": {
+            "Models": 1,
+            "EnabledScripts": 0,
+            "Colliding": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "actual World2 client departure: survivor encounter/HP preserved; departed model removed",
+      "phase": "Final Source",
+      "result": {
+        "Players": 1,
+        "Counts": {
+          "Enemies": {
+            "Models": 0,
+            "EnabledScripts": 0,
+            "Colliding": 0
+          },
+          "World2Enemies": {
+            "Models": 1,
+            "EnabledScripts": 0,
+            "Colliding": 0
+          }
+        },
+        "State": {
+          "1": {
+            "Highest": 1,
+            "BossAttacks": 1,
+            "Defeated": [],
+            "Complete": false,
+            "Fighting": true,
+            "World": 2,
+            "BossPosition": {
+              "1": 27.920000076293945,
+              "2": 2.5,
+              "3": 2153.7490234375
+            },
+            "Route": "LEVEL_DAMAGE",
+            "Strength": 70000000,
+            "BossHP": 280000000,
+            "Player": "A",
+            "Health": 100,
+            "Position": {
+              "1": 23.921875,
+              "2": 5.1328125,
+              "3": 2146.6328125
+            },
+            "BossOwner": "A",
+            "Win": 10000,
+            "Stage": 1,
+            "RunRevision": 5
+          }
+        }
+      },
+      "before": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 472,
+          "World": 2,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Route": "LEVEL_DAMAGE",
+          "Strength": 70000000,
+          "BossOwner": "A",
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Player": "A",
+          "RunRevision": 5,
+          "Position": {
+            "1": 23.921875,
+            "2": 5.1328125,
+            "3": 2146.6328125
+          },
+          "BossHP": 280000000,
+          "Highest": 1,
+          "Stage": 1,
+          "Health": 100
+        },
+        "2": {
+          "Win": 10000,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 19,
+          "World": 2,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Route": "LEVEL_DAMAGE",
+          "Strength": 70000000,
+          "BossOwner": "B",
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Player": "B",
+          "RunRevision": 13,
+          "Position": {
+            "1": 31.921875,
+            "2": 5.1328125,
+            "3": 2146.6328125
+          },
+          "BossHP": 350000000,
+          "Highest": 2,
+          "Stage": 1,
+          "Health": 100
+        }
+      }
+    },
+    {
+      "case": "actual replacement client joins; World2 survivor retains280M HP and same encounter",
+      "phase": "Final Source",
+      "result": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 472,
+          "World": 2,
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2153.7490234375
+          },
+          "Route": "LEVEL_DAMAGE",
+          "Strength": 70000000,
+          "BossOwner": "A",
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Player": "A",
+          "RunRevision": 5,
+          "Position": {
+            "1": 23.921875,
+            "2": 5.1328125,
+            "3": 2146.6328125
+          },
+          "BossHP": 280000000,
+          "Highest": 1,
+          "Stage": 1,
+          "Health": 100
+        },
+        "2": {
+          "BossOwner": "C",
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": "none",
+          "Player": "C",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        }
+      }
+    },
+    {
+      "case": "FINAL World1 real client departure leaves survivor at300HP, active personal Boss targets only survivor; no departed actors",
+      "phase": "Final Source",
+      "result": {
+        "State": {
+          "1": {
+            "Highest": 1,
+            "BossAttacks": 1,
+            "Defeated": [],
+            "Complete": false,
+            "Fighting": true,
+            "World": 1,
+            "BossTarget": "C",
+            "Route": "STRENGTH_DAMAGE",
+            "Strength": 75,
+            "BossHP": 300,
+            "Win": 10000,
+            "Player": "C",
+            "Health": 100,
+            "Position": {
+              "1": 297.7998046875,
+              "2": 7.134765625,
+              "3": 183.900390625
+            },
+            "BossOwner": "C",
+            "BossPosition": {
+              "1": 294.0277099609375,
+              "2": 8,
+              "3": 189.55824279785156
+            },
+            "Stage": 1,
+            "RunRevision": 3
+          }
+        },
+        "Counts": {
+          "Enemies": {
+            "Models": 1,
+            "EnabledScripts": 0,
+            "Colliding": 0
+          },
+          "World2Enemies": {
+            "Models": 0,
+            "EnabledScripts": 0,
+            "Colliding": 0
+          }
+        },
+        "Players": 1
+      },
+      "before": {
+        "1": {
+          "Win": 10000,
+          "BossAttacks": 0,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 512,
+          "World": 1,
+          "BossTarget": "A",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "A",
+          "Strength": 150,
+          "Health": 100,
+          "BossHP": 375,
+          "Player": "A",
+          "RunRevision": 4,
+          "Position": {
+            "1": 277.7998046875,
+            "2": 7.134765625,
+            "3": 183.900390625
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 281.572021484375,
+            "2": 8,
+            "3": 189.55816650390625
+          },
+          "Stage": 1,
+          "Defeated": []
+        },
+        "2": {
+          "Win": 10000,
+          "BossAttacks": 1,
+          "LastDamage": {
+            "Before": 100,
+            "After": 75
+          },
+          "Complete": false,
+          "Fighting": true,
+          "DamageCount": 40,
+          "World": 1,
+          "BossTarget": "C",
+          "Route": "STRENGTH_DAMAGE",
+          "BossOwner": "C",
+          "Strength": 75,
+          "Health": 100,
+          "BossHP": 300,
+          "Player": "C",
+          "RunRevision": 3,
+          "Position": {
+            "1": 297.7998046875,
+            "2": 7.134765625,
+            "3": 183.900390625
+          },
+          "Highest": 1,
+          "BossPosition": {
+            "1": 294.0277099609375,
+            "2": 8,
+            "3": 189.55824279785156
+          },
+          "Stage": 1,
+          "Defeated": []
+        }
+      }
+    }
+  ]
+}

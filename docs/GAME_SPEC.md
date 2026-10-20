@@ -587,3 +587,7 @@ Replace the ten-stage body progression with the approved BALANCE_SPEC table: unc
 ## 2026-10-20 - Shared Rebirth configuration authority
 
 Configuration-only consolidation: ReplicatedStorage.Config.RebirthConfig owns effective requirements, base1/+0.5 multiplier and informational Strength references for both Worlds. Preserve all30 existing level entries and the next-requirement-is-absent cap; World1MaxRebirth=5 is compatibility metadata and does not impose a new limit. Existing current-count GetRequiredLevel/IsWorld1Max APIs remain; RebirthMultiplierConfig forwards to the shared Config. Remove World2GameplayConfig.Rebirth and its override dependency. Server reset/retention, saves, purchases and equipment-specific unlocks are unchanged. See reports/RebirthConfig_20261020/REPORT.md for before/after equivalence and focused Play evidence.
+
+## 2026-10-20 - Personal Boss actors (supersedes shared-actor notes)
+
+Players remain together and visible on the same map. Each living Player has one owned current-Stage Boss actor in the active World; only that Player sees its authored appearance/effects and personal collider. Server sessions, contact/damage/outcomes/rewards stay authoritative per Player/World/run. World1 chase targets only its owner; World2 retains its existing stationary/lottery rules. End/reset/death/World change/departure destroys only that actor, and stale/foreign/duplicate notifications cannot replace a current encounter. Numeric balance, progression/reward timing and assets are unchanged. Details: reports/BossIsolation_20261020/REPORT.md.

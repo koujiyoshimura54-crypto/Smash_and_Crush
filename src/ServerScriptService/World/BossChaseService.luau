@@ -195,4 +195,7 @@ function M.Register(enemy, stage, stageModel)
  enemy:SetAttribute("ChaseTargetUserId",0)
  enemy:SetAttribute("ChaseRecoveryCount",0)
 end
+function M.Unregister(enemy)
+ records[enemy]=nil
+end
 return M

@@ -133,10 +133,10 @@ local function wallSurface(major,index)
 end
 local function setWallStageDisplay(major,index,on)
  local wall,surface=wallSurface(major,index)
- local purchased=worldId==1 and wall and wall:FindFirstChild("SurfaceGui")
+ local purchased=wall and wall:FindFirstChild("SurfaceGui")
  if purchased then
   -- Purchased walls intentionally have transparent bodies with visible textures.
-  purchased.Enabled=on==true and (P:GetAttribute("CurrentWorld") or 1)==1 and wall.LocalTransparencyModifier<.99
+  purchased.Enabled=on==true and (P:GetAttribute("CurrentWorld") or 1)==worldId and wall.LocalTransparencyModifier<.99
   if surface then surface:SetAttribute("PersonalStageDisplayEnabled",false);surface.Enabled=false end
   return
  end
@@ -162,10 +162,8 @@ local function setWallVisible(a,b,c)
    wallParts[x]={Major=major,Index=index}
    x.LocalTransparencyModifier=on and 0 or 1
    -- Purchased walls render through Textures even when the Part is transparent.
-   if worldId==1 then
-    for _,face in x:GetChildren() do
-     if face:IsA("Decal") then face.LocalTransparencyModifier=on and 0 or 1 end
-    end
+   for _,face in x:GetChildren() do
+    if face:IsA("Decal") then face.LocalTransparencyModifier=on and 0 or 1 end
    end
    x.CanCollide=on
   end
@@ -217,7 +215,7 @@ local function clearWallGauge(major,index)
  local m=wallModel(major,index)
  local wall=m and m:FindFirstChild("Wall")
  local surface=wall and wall:FindFirstChild(stageSurfaceName)
- local purchased=worldId==1 and wall and wall:FindFirstChild("SurfaceGui")
+ local purchased=wall and wall:FindFirstChild("SurfaceGui")
  if purchased then purchased.Enabled=false end
  local panel=surface and surface:FindFirstChild("Panel")
  local bar=panel and panel:FindFirstChild("HPBar")
@@ -237,13 +235,23 @@ local function renderWallStage(major)
   end
  end
 end
-local function enemy(n)return workspace:WaitForChild(enemiesName):WaitForChild(("Stage%02d_Enemy"):format(n))end
+local runRevision,messageSequence=0,0
+local function enemyFolder()
+ local root=workspace:FindFirstChild(enemiesName)
+ return root and root:FindFirstChild("Owner_"..P.UserId)
+end
+local function enemy(n)
+ local owned=enemyFolder()
+ local e=owned and owned:FindFirstChild(("Stage%02d_Enemy"):format(n))
+ return e and e:GetAttribute("OwnerUserId")==P.UserId and e:GetAttribute("WorldId")==worldId
+  and e:GetAttribute("RunRevision")==runRevision and e or nil
+end
 local function isBossStage(stage)
  return typeof(stage)=="number" and stage%1==0 and stage>=1 and stage<=10
 end
 local function acceptsBossGeneration(stage,generation)
  if typeof(generation)~="number" then return true end
- local enemies=workspace:FindFirstChild(enemiesName)
+ local enemies=enemyFolder()
  local current=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
  local currentGeneration=current and current:GetAttribute("SpawnGeneration")
  -- Accept a new generation even if its model has not replicated yet, but never
@@ -274,7 +282,7 @@ local function bossWall(n)
 end
 local function bossDisplayEnabled(n)
  local state=wallState[n]
- return n==currentStage and not defeated[n] and not bossSuppressed[n]
+ return (P:GetAttribute("CurrentWorld") or 1)==worldId and n==currentStage and not defeated[n] and not bossSuppressed[n]
   and state~=nil and not state.Skipped and state.Current>=5
 end
 -- World1 uses the existing personal SurfaceGui/HP records as a camera-facing
@@ -395,6 +403,9 @@ end
 local function updateGaugeLayout(e,n,g)
  if worldId==1 then return layoutOverhead(e,n,g) end
  local wall,reference=bossWall(n)
+ -- Current purchased World2 walls replaced the old World2StageSurface donor.
+ -- Reuse the existing personal overhead renderer when that donor is absent.
+ if not reference then return layoutOverhead(e,n,g) end
  local bossHeight=e:GetAttribute("BossDisplayHeight")
  local bossBottom=e:GetAttribute("BossDisplayBottomY")
  local bossTop=e:GetAttribute("BossDisplayTopY")
@@ -448,11 +459,12 @@ local function gauge(n,v,max)
  -- Keep authoritative HP even when streaming has not delivered the Boss root yet.
  fills[n]={Max=max,Current=v,Gui=nil}
  local e=enemy(n)
+ if not e then return end
  local head=e:FindFirstChild("HumanoidRootPart") or e:FindFirstChildWhichIsA("BasePart")
  if not head then return end
  local old=e:FindFirstChild("PersonalGauge",true) if old then old:Destroy() end
  local nextWall=bossWall(n)
- if not nextWall then
+ if not nextWall and worldId==1 then
   fills[n]={Max=max,Current=v,Gui=nil}
   return
  end
@@ -495,11 +507,11 @@ local function removePersonalBossCollider(n)
  personalBossColliders[n]=nil
 end
 local function syncPersonalBossCollider(n)
- if defeated[n] or not bossUnlocked(n) then
+ if (P:GetAttribute("CurrentWorld") or 1)~=worldId or n~=currentStage or defeated[n] or not bossUnlocked(n) then
   removePersonalBossCollider(n)
   return
  end
- local enemies=workspace:FindFirstChild(enemiesName)
+ local enemies=enemyFolder()
  local boss=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
  local source=boss and boss:FindFirstChild("MiniBossCollider")
  local root=boss and boss:FindFirstChild("HumanoidRootPart")
@@ -538,17 +550,17 @@ local function refreshPersonalBossColliders()
  for n=1,10 do syncPersonalBossCollider(n) end
 end
 local function staticVFX(e,on)
- if not e:GetAttribute("StaticAppearance") then return end
  for _,d in e:GetDescendants() do
   if d:IsA("ParticleEmitter") or d:IsA("Trail") or d:IsA("Beam") or d:IsA("Highlight") then
-   local enabled=d:GetAttribute("StaticVFXEnabled")
+   local enabled=d:GetAttribute("BossVisualEnabled")
+   if enabled==nil then enabled=d:GetAttribute("StaticVFXEnabled") end
    if typeof(enabled)~="boolean" then enabled=d.Enabled end
    d.Enabled=on and enabled or false
    if not on and (d:IsA("ParticleEmitter") or d:IsA("Trail")) then d:Clear() end
   end
  end
 end
-local bossVisualTransparency={}
+local bossVisualTransparency=setmetatable({}, {__mode="k"})
 local function isBossVisualPart(e,part)
  if part.Name=="HumanoidRootPart" or part.Name=="CombatZone" or part.Name=="MiniBossCollider" then return false end
  if part:GetAttribute("PersonalBossCollider") then return false end
@@ -560,21 +572,29 @@ local function isBossVisualPart(e,part)
  return false
 end
 local function setBossVisualVisible(e,on)
+ if not e then return end
+ on=on and (P:GetAttribute("CurrentWorld") or 1)==worldId
+  and e:GetAttribute("OwnerUserId")==P.UserId and e:GetAttribute("RunRevision")==runRevision
  for _,part in e:GetDescendants() do
-  if part:IsA("BasePart") and isBossVisualPart(e,part) then
-   local original=bossVisualTransparency[part]
-   if original==nil then
-    original=part.LocalTransparencyModifier
-    bossVisualTransparency[part]=original
-   end
-   part.LocalTransparencyModifier=on and original or 1
+  if part:IsA("BasePart") or part:IsA("Decal") then
+   local authored=part:GetAttribute("BossVisualTransparency")
+   if typeof(authored)=="number" then part.Transparency=authored end
+   part.LocalTransparencyModifier=on and 0 or 1
+   if part:IsA("BasePart") then part.CanCollide=false end
+  elseif part:IsA("ParticleEmitter") or part:IsA("Trail") or part:IsA("Beam")
+   or part:IsA("Highlight") or part:IsA("Light") then
+   part.Enabled=on and part:GetAttribute("BossVisualEnabled")==true
+   if not on and (part:IsA("ParticleEmitter") or part:IsA("Trail")) then part:Clear() end
+  elseif part:IsA("Sound") then
+   part.Volume=on and (part:GetAttribute("BossVisualVolume") or 0) or 0
+   if not on then part:Stop()
+   elseif part:GetAttribute("BossVisualPlaying") and not part.IsPlaying then part:Play() end
   end
  end
 end
 local function visible(n,on)
  local e=enemy(n)
- staticVFX(e,on)
- setBossVisualVisible(e,on)
+ if e then staticVFX(e,on);setBossVisualVisible(e,on) end
 end
 local rightTrack,leftTrack
 local animationCharacter
@@ -644,7 +664,7 @@ local function playDefeatSound()
 end
 local function refreshGaugeVisibility()
  for stage=1,10 do
-  local enemies=workspace:FindFirstChild(enemiesName)
+  local enemies=enemyFolder()
   local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
   local gui=e and e:FindFirstChild("PersonalGauge",true)
   local sub=P:GetAttribute(("Stage%dSubStage"):format(stage)) or 1
@@ -654,11 +674,16 @@ local function refreshGaugeVisibility()
   end
   local surface=bossSurfaces[stage]
   if surface and surface.Parent then
-   surface.Transparency=worldId==1 and 1 or (gui and gui.Enabled and BossDisplayConfig.Get(stage).Transparency or 1)
+   surface.Transparency=(worldId==1 or (gui and gui:GetAttribute("BossFollowing"))) and 1 or (gui and gui.Enabled and BossDisplayConfig.Get(stage).Transparency or 1)
   end
   renderWallStage(stage)
  end
 end
+P:GetAttributeChangedSignal("CurrentWorld"):Connect(function()
+ for n=1,10 do visible(n,n==currentStage and not defeated[n]) end
+ refreshGaugeVisibility();refreshPersonalBossColliders()
+ if (P:GetAttribute("CurrentWorld") or 1)~=worldId then Stage03AttackVisual.Reset();fight(false) end
+end)
 P.CharacterAdded:Connect(function()
  activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil
  refreshGaugeVisibility()
@@ -687,16 +712,6 @@ RunService.PreSimulation:Connect(function()
    if part.LocalTransparencyModifier~=transparency then part.LocalTransparencyModifier=transparency end
   end
  end
- local enemies=workspace:FindFirstChild(enemiesName)
- if enemies then
-  for _,boss in enemies:GetChildren() do
-   if boss:IsA("Model") then
-    for _,part in boss:GetDescendants() do
-     if part:IsA("BasePart") and part.CanCollide then part.CanCollide=false end
-    end
-   end
-  end
- end
  for stage,record in personalBossColliders do
   if record.Part and record.Part.Parent and record.Root and record.Root.Parent and record.Source and record.Source.Parent then
    record.Part.Size=record.Source.Size
@@ -705,15 +720,18 @@ RunService.PreSimulation:Connect(function()
    task.defer(syncPersonalBossCollider,stage)
   end
  end
- for stage in defeated do
-  local e=workspace:FindFirstChild(enemiesName) and workspace[enemiesName]:FindFirstChild(("Stage%02d_Enemy"):format(stage))
-  if e then
-   staticVFX(e,false)
-   setBossVisualVisible(e,false)
-  end
- end
+
 end)
 R.OnClientEvent:Connect(function(d)
+ if typeof(d)~="table" or (d.OwnerUserId~=nil and d.OwnerUserId~=P.UserId)
+  or (d.WorldId~=nil and d.WorldId~=worldId) then return end
+ if d.RunRevision~=nil then
+  if d.Type=="Initialize" then
+   if d.RunRevision<runRevision then return end
+  elseif d.RunRevision~=runRevision then return end
+  if typeof(d.MessageSequence)~="number" or d.MessageSequence<=messageSequence then return end
+  runRevision=d.RunRevision;messageSequence=d.MessageSequence
+ end
  if d.Type=="CombatAttack" then
   playCombatAttack(d)
   Stage03AttackVisual.Play(d)
@@ -805,7 +823,7 @@ R.OnClientEvent:Connect(function(d)
   visible(stage,true)
   refreshGaugeVisibility()
   syncPersonalBossCollider(stage)
- elseif d.Type=="Initialize"then table.clear(presentedWallBreaks) activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],enemy(i):GetAttribute("BossMaxHP") or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
+ elseif d.Type=="Initialize"then table.clear(presentedWallBreaks) activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],(enemy(i) and enemy(i):GetAttribute("BossMaxHP")) or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
 	elseif d.Type=="EnemyDefeated"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil hideBossRecommendation() defeated[d.Stage]=true removePersonalBossCollider(d.Stage) if d.Stage<10 then currentStage=d.Stage+1 end refreshGaugeVisibility() fight(false) playDefeatSound() setBossVisualVisible(enemy(d.Stage),false)
  elseif d.Type=="StageCleared"then currentStage=d.CurrentStage refreshGaugeVisibility() for major in wallState do renderWallStage(major) end removePersonalBossCollider(d.Stage)
  elseif d.Type=="Fighting"then
@@ -819,7 +837,10 @@ end)
 workspace.DescendantAdded:Connect(function(part)
  if part:IsA("BasePart") and part.Name=="MiniBossCollider" then
   local stage=part.Parent and part.Parent:GetAttribute("StageNumber")
-  if typeof(stage)=="number" then task.defer(syncPersonalBossCollider,stage) end
+  if typeof(stage)=="number" and part.Parent:GetAttribute("OwnerUserId")==P.UserId
+   and part.Parent:GetAttribute("WorldId")==worldId then
+   task.defer(function()visible(stage,not defeated[stage]);syncPersonalBossCollider(stage)end)
+  end
  end
  if worldId==1 and part:IsA("SurfaceGui") and part.Name=="SurfaceGui" then
   part=part.Parent
@@ -844,9 +865,10 @@ task.spawn(function()
   task.wait(.5)
   refreshPersonalBossColliders()
   for n,record in fills do
-   local enemies=workspace:FindFirstChild(enemiesName)
+   local enemies=enemyFolder()
    local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
    if e and not defeated[n] then
+    visible(n,n==currentStage)
     if not record.Gui or not record.Gui:IsDescendantOf(e) then
      gauge(n,record.Current,record.Max)
      record=fills[n]
@@ -859,15 +881,15 @@ task.spawn(function()
   end
  end
 end)
-if worldId==1 then
+do
  overheadConnection=RunService.RenderStepped:Connect(function()
-  local enemies=workspace:FindFirstChild(enemiesName)
+  local enemies=enemyFolder()
   for n,record in fills do
    local gui=record.Gui
    local surface=bossSurfaces[n]
-   if gui and gui.Parent then
+   if gui and gui.Parent and gui:GetAttribute("BossFollowing") then
     local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
-    if e and surface and surface.Parent and (P:GetAttribute("CurrentWorld") or 1)==1 and bossDisplayEnabled(n) then
+    if e and surface and surface.Parent and (P:GetAttribute("CurrentWorld") or 1)==worldId and bossDisplayEnabled(n) then
      placeOverhead(e,n,gui,surface)
     else gui.Enabled=false end
    end

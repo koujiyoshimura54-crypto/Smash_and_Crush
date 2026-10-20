@@ -1048,3 +1048,7 @@ Move effective required levels, multiplier and reference Strength into RebirthCo
 ## 2026-10-20 - World1 StageSkip body-safe entry repair
 
 Fix the reproduced sideways size13 bounds rejection; use actual body dimensions, supported entry search and placement acknowledgement before a single Win debit. Retain latest growth/Speed/spawn and all prices/map/UI. Actual solo mouse0/8/13 Stage2/10 and focused failure tests passed; real two-client isolation used Remote. Same-file validation passed; verification Studio stopped/closed without saving and lock removed. See reports/StageSkipBody_20261020/REPORT.md.
+
+## 2026-10-20 - Isolate Boss actors and presentation per Player
+
+Fix reproduced shared chase pose/target while retaining personal HP/reward logic. Both Worlds use owned current-Stage actors, private presentation and guarded lifecycle; current World2 Boss HP uses the existing overhead fallback. Actual two-client combat, individual completion/return/death/departure and focused mock/cleanup checks passed. Preserve all balance/assets/latest fixes. Same-file validation and owned Studio/lock cleanup complete. See reports/BossIsolation_20261020/REPORT.md.

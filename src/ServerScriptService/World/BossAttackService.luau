@@ -39,7 +39,7 @@ function M.GetAttackBounds(enemy, stage, player)
  end
  if visual then
   for _,part in visual:GetDescendants() do
-   if part:IsA("BasePart") and part.Transparency<1 then
+   if part:IsA("BasePart") and (part:GetAttribute("BossVisualTransparency") or part.Transparency)<1 then
     local helper=false
     local node=part
     while node and node~=visual do
