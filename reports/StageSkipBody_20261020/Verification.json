@@ -1,0 +1,1060 @@
+{
+  "scope": "Native Studio Play with synthetic state and memory-only persistence; UI tests solo; two real clients isolation via Remote; injected cases identified separately",
+  "cases": [
+    {
+      "case": "two real clients: size13 Stage2 direct Remote isolation (mouse automation did not activate controls)",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 1,
+          "Win": 10000,
+          "Selected": 0,
+          "Skipped": [],
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "Speed": 24,
+          "Hip": 1.9592676162719727,
+          "Stage": 1,
+          "Ready": true
+        },
+        "2": {
+          "World": 1,
+          "Scale": 3.55,
+          "Win": 9999,
+          "Selected": 13,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.7998046875,
+            "2": 11.935546875,
+            "3": 207.7998046875
+          },
+          "Speed": 24,
+          "Hip": 6.955399990081787,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "size0 all nine geometry",
+      "result": {
+        "1": {
+          "Inside": true,
+          "Stage": 2,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 207.79998779296875
+          }
+        },
+        "2": {
+          "Inside": true,
+          "Stage": 3,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 327.1199951171875
+          }
+        },
+        "3": {
+          "Inside": true,
+          "Stage": 4,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 449.32000732421875
+          }
+        },
+        "4": {
+          "Inside": true,
+          "Stage": 5,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 575.27001953125
+          }
+        },
+        "5": {
+          "Inside": true,
+          "Stage": 6,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 704.9700317382812
+          }
+        },
+        "6": {
+          "Inside": true,
+          "Stage": 7,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 915.9700317382812
+          }
+        },
+        "7": {
+          "Inside": true,
+          "Stage": 8,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 1150.969970703125
+          }
+        },
+        "8": {
+          "Inside": true,
+          "Stage": 9,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 1331.969970703125
+          }
+        },
+        "9": {
+          "Inside": true,
+          "Stage": 10,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 7.116700649261475,
+            "3": 1476.969970703125
+          }
+        }
+      }
+    },
+    {
+      "case": "size0 Stage2 actual single-client mouse",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 1,
+          "Win": 9999,
+          "Selected": 0,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.7998046875,
+            "2": 6.939453125,
+            "3": 207.7998046875
+          },
+          "Speed": 24,
+          "Hip": 1.9592676162719727,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "size0 Stage10 actual single-client mouse with scroll",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 1,
+          "Win": 8800,
+          "Selected": 0,
+          "Skipped": {
+            "1": true,
+            "2": true,
+            "3": true,
+            "4": true,
+            "5": true,
+            "6": true,
+            "7": true,
+            "8": true,
+            "9": true
+          },
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.80078125,
+            "2": 6.9375,
+            "3": 1476.96875
+          },
+          "Speed": 24,
+          "Hip": 1.9592676162719727,
+          "Stage": 10,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "AUTO size8 all nine geometry",
+      "result": {
+        "1": {
+          "Inside": true,
+          "Stage": 2,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 207.79998779296875
+          }
+        },
+        "2": {
+          "Inside": true,
+          "Stage": 3,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 327.1199951171875
+          }
+        },
+        "3": {
+          "Inside": true,
+          "Stage": 4,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 449.32000732421875
+          }
+        },
+        "4": {
+          "Inside": true,
+          "Stage": 5,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 575.27001953125
+          }
+        },
+        "5": {
+          "Inside": true,
+          "Stage": 6,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 704.9700317382812
+          }
+        },
+        "6": {
+          "Inside": true,
+          "Stage": 7,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 915.9700317382812
+          }
+        },
+        "7": {
+          "Inside": true,
+          "Stage": 8,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 1150.969970703125
+          }
+        },
+        "8": {
+          "Inside": true,
+          "Stage": 9,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 1331.969970703125
+          }
+        },
+        "9": {
+          "Inside": true,
+          "Stage": 10,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 9.342425346374512,
+            "3": 1476.969970703125
+          }
+        }
+      }
+    },
+    {
+      "case": "AUTO size8 Stage2 actual mouse",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 2.15,
+          "Win": 9999,
+          "Selected": 0,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 50000000,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.7998046875,
+            "2": 9.1923828125,
+            "3": 207.7998046875
+          },
+          "Speed": 24,
+          "Hip": 4.212425231933594,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "AUTO size8 Stage2 walking",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 2.15,
+          "Win": 9999,
+          "Selected": 0,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 50000000,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 280.2001953125,
+            "2": 9.1923828125,
+            "3": 207.796875
+          },
+          "Speed": 24,
+          "Hip": 4.212425231933594,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "AUTO size8 Stage10 actual mouse",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 2.15,
+          "Win": 8800,
+          "Selected": 0,
+          "Skipped": {
+            "1": true,
+            "2": true,
+            "3": true,
+            "4": true,
+            "5": true,
+            "6": true,
+            "7": true,
+            "8": true,
+            "9": true
+          },
+          "Anchored": false,
+          "Strength": 50000000,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.80078125,
+            "2": 9.19140625,
+            "3": 1476.96875
+          },
+          "Speed": 24,
+          "Hip": 4.212425231933594,
+          "Stage": 10,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "manual size13 sideways with real equipped dual dumbbells plus avatar accessories: all nine geometry",
+      "result": {
+        "State": {
+          "1": {
+            "World": 1,
+            "Scale": 3.55,
+            "Win": 10000,
+            "Selected": 13,
+            "Skipped": [],
+            "Anchored": false,
+            "Strength": 0,
+            "Defeated": [],
+            "Health": 100,
+            "Position": {
+              "1": 287.861328125,
+              "2": 12.3349609375,
+              "3": 13
+            },
+            "Speed": 24,
+            "Hip": 6.955399990081787,
+            "Stage": 1,
+            "Ready": true
+          }
+        },
+        "RightDumbbell": true,
+        "Accessories": 5,
+        "Geometry": {
+          "1": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 2
+          },
+          "2": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 3
+          },
+          "3": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 4
+          },
+          "4": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 5
+          },
+          "5": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 6
+          },
+          "6": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 7
+          },
+          "7": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 8
+          },
+          "8": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 9
+          },
+          "9": {
+            "Error": "BodyDoesNotFitEntry",
+            "Stage": 10
+          }
+        },
+        "LeftDumbbell": true
+      }
+    },
+    {
+      "case": "manual size13 Stage2 actual mouse from sideways with held dumbbells and accessories",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 3.55,
+          "Win": 9999,
+          "Selected": 13,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.7998046875,
+            "2": 11.935546875,
+            "3": 207.7998046875
+          },
+          "Speed": 24,
+          "Hip": 6.955399990081787,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "manual size13 Stage2 walking",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 3.55,
+          "Win": 9999,
+          "Selected": 13,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 280.599609375,
+            "2": 11.935546875,
+            "3": 207.7978515625
+          },
+          "Speed": 24,
+          "Hip": 6.955399990081787,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "manual size13 Stage10 actual mouse with held dumbbells and accessories",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 3.55,
+          "Win": 8800,
+          "Selected": 13,
+          "Skipped": {
+            "1": true,
+            "2": true,
+            "3": true,
+            "4": true,
+            "5": true,
+            "6": true,
+            "7": true,
+            "8": true,
+            "9": true
+          },
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.80078125,
+            "2": 11.93359375,
+            "3": 1476.96875
+          },
+          "Speed": 24,
+          "Hip": 6.955399990081787,
+          "Stage": 10,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "size13 stable applied body plus real equipped dumbbells: all nine geometry",
+      "result": {
+        "1": {
+          "Inside": true,
+          "Stage": 2,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 207.79998779296875
+          }
+        },
+        "2": {
+          "Inside": true,
+          "Stage": 3,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 327.1199951171875
+          }
+        },
+        "3": {
+          "Inside": true,
+          "Stage": 4,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 449.32000732421875
+          }
+        },
+        "4": {
+          "Inside": true,
+          "Stage": 5,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 575.27001953125
+          }
+        },
+        "5": {
+          "Inside": true,
+          "Stage": 6,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 704.9700317382812
+          }
+        },
+        "6": {
+          "Inside": true,
+          "Stage": 7,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 915.9700317382812
+          }
+        },
+        "7": {
+          "Inside": true,
+          "Stage": 8,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 1150.969970703125
+          }
+        },
+        "8": {
+          "Inside": true,
+          "Stage": 9,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 1331.969970703125
+          }
+        },
+        "9": {
+          "Inside": true,
+          "Stage": 10,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 1476.969970703125
+          }
+        }
+      }
+    },
+    {
+      "case": "size13 stable sideways plus real dumbbells: all nine geometry",
+      "result": {
+        "1": {
+          "Inside": true,
+          "Stage": 2,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 207.79998779296875
+          }
+        },
+        "2": {
+          "Inside": true,
+          "Stage": 3,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 327.1199951171875
+          }
+        },
+        "3": {
+          "Inside": true,
+          "Stage": 4,
+          "BeforeWall": 5.250006079673767,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 449.32000732421875
+          }
+        },
+        "4": {
+          "Inside": true,
+          "Stage": 5,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 575.27001953125
+          }
+        },
+        "5": {
+          "Inside": true,
+          "Stage": 6,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 704.9700317382812
+          }
+        },
+        "6": {
+          "Inside": true,
+          "Stage": 7,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 915.9700317382812
+          }
+        },
+        "7": {
+          "Inside": true,
+          "Stage": 8,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 1150.969970703125
+          }
+        },
+        "8": {
+          "Inside": true,
+          "Stage": 9,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 1331.969970703125
+          }
+        },
+        "9": {
+          "Inside": true,
+          "Stage": 10,
+          "BeforeWall": 5.249975562095642,
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 12.085399627685547,
+            "3": 1476.969970703125
+          }
+        }
+      }
+    },
+    {
+      "case": "actual mouse insufficient Win",
+      "result": {
+        "Message": "Not enough Win",
+        "Win": 0,
+        "Root": "287.861083984375, 7.3392815589904785, 12.999991416931152"
+      }
+    },
+    {
+      "case": "actual mouse rapid triple click: 5 to4 Win once",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 1,
+          "Win": 4,
+          "Selected": 0,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 1,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.7998046875,
+            "2": 6.939453125,
+            "3": 207.7998046875
+          },
+          "Speed": 24,
+          "Hip": 1.9592676162719727,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "natural death respawn then actual UI mouse Stage2 retry",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 1,
+          "Win": 3,
+          "Selected": 0,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 1,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.7998046875,
+            "2": 6.939453125,
+            "3": 207.7998046875
+          },
+          "Speed": 24,
+          "Hip": 1.9592676162719727,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "native Play test injection: Obstacle",
+      "result": {
+        "Adjusted": "265.8864440917969, 7.103033542633057, 207.79998779296875",
+        "Original": "287.79998779296875, 7.103033542633057, 207.79998779296875",
+        "Reason": false
+      }
+    },
+    {
+      "case": "native Play test injection: FailedMove",
+      "result": {
+        "State": {
+          "1": {
+            "Ready": true,
+            "Skipped": [],
+            "Win": 10000,
+            "Hip": 1.9592676162719727,
+            "Scale": 1,
+            "Anchored": false,
+            "Strength": 0,
+            "Defeated": [],
+            "Health": 100,
+            "Position": {
+              "1": 287.861328125,
+              "2": 7.3388671875,
+              "3": 13
+            },
+            "Speed": 24,
+            "Selected": 0,
+            "Stage": 1,
+            "World": 1
+          }
+        },
+        "Called": true,
+        "Success": false,
+        "Win": 10000,
+        "Unlocked": true,
+        "Message": "Injected move failure"
+      }
+    },
+    {
+      "case": "native Play test injection: NoAcknowledgement",
+      "result": {
+        "State": {
+          "1": {
+            "Ready": true,
+            "Skipped": [],
+            "Win": 10000,
+            "Hip": 1.9592676162719727,
+            "Scale": 1,
+            "Anchored": false,
+            "Strength": 0,
+            "Defeated": [],
+            "Health": 100,
+            "Position": {
+              "1": 287.861328125,
+              "2": 7.3388671875,
+              "3": 13
+            },
+            "Speed": 24,
+            "Selected": 0,
+            "Stage": 1,
+            "World": 1
+          }
+        },
+        "Called": true,
+        "Success": false,
+        "Win": 10000,
+        "Unlocked": true,
+        "Message": "Injected missing acknowledgement"
+      }
+    },
+    {
+      "case": "native Play test injection: ScaleRace",
+      "result": {
+        "State": {
+          "1": {
+            "Ready": true,
+            "Skipped": [],
+            "Win": 10000,
+            "Hip": 2.1551942825317383,
+            "Scale": 1.1,
+            "Anchored": false,
+            "Strength": 0,
+            "Defeated": [],
+            "Health": 100,
+            "Position": {
+              "1": 287.861328125,
+              "2": 7.3388671875,
+              "3": 13
+            },
+            "Speed": 24,
+            "Selected": 1,
+            "Stage": 1,
+            "World": 1
+          }
+        },
+        "Called": true,
+        "Success": false,
+        "Win": 10000,
+        "Unlocked": true,
+        "Message": "Character or Stage changed; please retry"
+      }
+    },
+    {
+      "case": "native Play test injection: WorldRace",
+      "result": {
+        "State": {
+          "1": {
+            "Ready": true,
+            "Skipped": [],
+            "Win": 10000,
+            "Hip": 1.9592676162719727,
+            "Scale": 1,
+            "Anchored": false,
+            "Strength": 0,
+            "Defeated": [],
+            "Health": 100,
+            "Position": {
+              "1": 287.861328125,
+              "2": 7.3388671875,
+              "3": 13
+            },
+            "Speed": 24,
+            "Selected": 0,
+            "Stage": 1,
+            "World": 2
+          }
+        },
+        "Called": true,
+        "Success": false,
+        "Win": 10000,
+        "Unlocked": true,
+        "Message": "Travel cancelled"
+      }
+    },
+    {
+      "case": "native Play injected post-debit initialization failure refunded once, restored origin and unlocked",
+      "result": {
+        "State": {
+          "World": 1,
+          "Scale": 1,
+          "Win": 10000,
+          "Selected": 0,
+          "Skipped": [],
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "Speed": 24,
+          "Hip": 1.9592676162719727,
+          "Stage": 1,
+          "Ready": true
+        },
+        "Message": "Unable to start Stage",
+        "Unlocked": true,
+        "Ok": false
+      }
+    },
+    {
+      "case": "FINAL source: injected 0 to13 growth while awaiting placement, no debit; raised restored origin to current feet height; unlock",
+      "result": {
+        "State": {
+          "1": {
+            "Ready": true,
+            "Skipped": [],
+            "Win": 10000,
+            "Hip": 6.955399990081787,
+            "Scale": 3.55,
+            "Anchored": false,
+            "Strength": 0,
+            "Defeated": [],
+            "Health": 100,
+            "Position": {
+              "1": 287.861328125,
+              "2": 12.321233749389648,
+              "3": 13
+            },
+            "Speed": 24,
+            "Selected": 13,
+            "Stage": 1,
+            "World": 1
+          }
+        },
+        "Called": true,
+        "Success": false,
+        "Win": 10000,
+        "Unlocked": true,
+        "Message": "Character or Stage changed; please retry"
+      }
+    },
+    {
+      "case": "FINAL source after height guard: manual13 actual UI Stage2 retry",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 3.55,
+          "Win": 9999,
+          "Selected": 13,
+          "Skipped": {
+            "1": true
+          },
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.7998046875,
+            "2": 11.935546875,
+            "3": 207.7998046875
+          },
+          "Speed": 24,
+          "Hip": 6.955399990081787,
+          "Stage": 2,
+          "Ready": true
+        }
+      }
+    },
+    {
+      "case": "FINAL source after height guard: manual13 actual UI Stage10 retry",
+      "result": {
+        "1": {
+          "World": 1,
+          "Scale": 3.55,
+          "Win": 8800,
+          "Selected": 13,
+          "Skipped": {
+            "1": true,
+            "2": true,
+            "3": true,
+            "4": true,
+            "5": true,
+            "6": true,
+            "7": true,
+            "8": true,
+            "9": true
+          },
+          "Anchored": false,
+          "Strength": 0,
+          "Defeated": [],
+          "Health": 100,
+          "Position": {
+            "1": 287.80078125,
+            "2": 11.93359375,
+            "3": 1476.96875
+          },
+          "Speed": 24,
+          "Hip": 6.955399990081787,
+          "Stage": 10,
+          "Ready": true
+        }
+      }
+    }
+  ]
+}

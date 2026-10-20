@@ -310,7 +310,23 @@ function M.MoveToCFrame(player, character, cf)
  request.Revision=(character:GetAttribute("SpawnPlacementRevision") or 0)+1
  character:SetAttribute("SpawnPlacementTarget",request.Target)
  character:SetAttribute("SpawnPlacementRevision",request.Revision)
- return true
+ return true,nil,request
+end
+-- A bounded acknowledgement wait, used only by the requesting StageSkip transaction.
+-- A superseding placement retains ownership of its own anchor and position.
+function M.AwaitPlacement(player,request,validate)
+ local deadline=os.clock()+8
+ while true do
+  local root=living(player,request and request.Character)
+  if not root or not M.IsCurrent(player,request) then return false,"Travel cancelled" end
+  if validate and not validate() then return false,"Character or Stage changed; please retry" end
+  if not request.Root then
+   if root.Anchored or (root.Position-request.Target).Magnitude>0.5 then return false,"Placement not confirmed" end
+   return true
+  end
+  if os.clock()>=deadline then return false,"Placement confirmation timed out; please retry" end
+  game:GetService("RunService").Heartbeat:Wait()
+ end
 end
 
 return M

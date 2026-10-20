@@ -1044,3 +1044,7 @@ Update stages6..12 only; retain all dimensions, stages0..13,6B cap and existing 
 ## 2026-10-20 - Consolidate shared Rebirth definitions
 
 Move effective required levels, multiplier and reference Strength into RebirthConfig; redirect Strength/UI and retain the old multiplier API as an alias. Remove World2 Rebirth data/dependency. Values, cap semantics, saves/reset/retention and equipment unlocks stay unchanged. Offline equivalence and focused memory-only actual UI/reset/gain Play passed; same-file write/cleanup verified. [Evidence](../reports/RebirthConfig_20261020/REPORT.md).
+
+## 2026-10-20 - World1 StageSkip body-safe entry repair
+
+Fix the reproduced sideways size13 bounds rejection; use actual body dimensions, supported entry search and placement acknowledgement before a single Win debit. Retain latest growth/Speed/spawn and all prices/map/UI. Actual solo mouse0/8/13 Stage2/10 and focused failure tests passed; real two-client isolation used Remote. Same-file validation passed; verification Studio stopped/closed without saving and lock removed. See reports/StageSkipBody_20261020/REPORT.md.
