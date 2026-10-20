@@ -1,0 +1,4975 @@
+{
+  "sources": [
+    {
+      "path": "Workspace.AssetContents",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.MergeToForgeWallClient",
+      "class": "LocalScript",
+      "disabled": true,
+      "signals": [],
+      "functions": [
+        {
+          "key": "apply@14",
+          "line": 14,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Stage01BossClient",
+      "class": "LocalScript",
+      "disabled": true,
+      "signals": [],
+      "functions": [
+        {
+          "key": "callback@51",
+          "line": 51,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.ShopClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.MenuClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 8,
+          "code": "scale: UIScale,"
+        },
+        {
+          "line": 64,
+          "code": "local viewport = gui.AbsoluteSize"
+        },
+        {
+          "line": 68,
+          "code": "local size = frame.AbsoluteSize"
+        },
+        {
+          "line": 144,
+          "code": "local scale = child:FindFirstChildWhichIsA(\"UIScale\")"
+        },
+        {
+          "line": 146,
+          "code": "warn(`[MenuClient] {child:GetFullName()} carries no UIScale to open on`)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "MenuClient.hold@295",
+          "line": 295,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "MenuClient.init@349",
+          "line": 349,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.ButtonClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [
+        {
+          "key": "bindButton@80",
+          "line": 80,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.EggClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 131,
+          "code": "local layout = folder:FindFirstChildWhichIsA(\"UIListLayout\")"
+        },
+        {
+          "line": 195,
+          "code": "local size = open.AbsoluteSize"
+        },
+        {
+          "line": 210,
+          "code": "local size = open.AbsoluteSize"
+        },
+        {
+          "line": 536,
+          "code": "RunService.RenderStepped:Connect(function(delta: number)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "stampSheet@91",
+          "line": 91,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "setSize@365",
+          "line": 365,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Per-frame work: runtime cost/activity not established by presence"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.SpeedClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 228,
+          "code": "local layout = Instance.new(\"UIListLayout\")"
+        },
+        {
+          "line": 241,
+          "code": "local ratio = Instance.new(\"UIAspectRatioConstraint\")"
+        },
+        {
+          "line": 461,
+          "code": "local layout = card:FindFirstChildWhichIsA(\"UIListLayout\")"
+        },
+        {
+          "line": 474,
+          "code": "local rowPixels = settings.cardRow * root.AbsoluteSize.Y"
+        },
+        {
+          "line": 588,
+          "code": "RunService.Heartbeat:Connect(advance)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "refresh@147",
+          "line": 147,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "pop@198",
+          "line": 198,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "showCard@407",
+          "line": 407,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.PurchaseClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.RebirthClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [
+        {
+          "key": "refreshMenu@96",
+          "line": 96,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.LeaderboardClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.BoostClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.PetClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 170,
+          "code": "local size = root.AbsoluteSize"
+        }
+      ],
+      "functions": [
+        {
+          "key": "PetClient.moveCard@165",
+          "line": 165,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "PetClient.placeCard@233",
+          "line": 233,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "PetClient.setMaterialMetadata@384",
+          "line": 384,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.HatchClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 20,
+          "code": "eggScale: UIScale,"
+        },
+        {
+          "line": 22,
+          "code": "petScale: UIScale,"
+        },
+        {
+          "line": 132,
+          "code": "local hintScale: UIScale? = nil"
+        },
+        {
+          "line": 215,
+          "code": "local scale = Instance.new(\"UIScale\")"
+        },
+        {
+          "line": 224,
+          "code": "local scale = label:FindFirstChildOfClass(\"UIScale\")"
+        },
+        {
+          "line": 880,
+          "code": "local eggScale = Instance.new(\"UIScale\")"
+        },
+        {
+          "line": 891,
+          "code": "local petScale = Instance.new(\"UIScale\")"
+        },
+        {
+          "line": 925,
+          "code": "hintScale = label:FindFirstChildOfClass(\"UIScale\")"
+        },
+        {
+          "line": 929,
+          "code": "janitor:Add(RunService.RenderStepped:Connect(function(delta: number)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "ring@331",
+          "line": 331,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "fleck@362",
+          "line": 362,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "drift@403",
+          "line": 403,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "breathe@427",
+          "line": 427,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "stepFlecks@449",
+          "line": 449,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Per-frame work: runtime cost/activity not established by presence"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.WinClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.CheapClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.TrailClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 195,
+          "code": "local size = root.AbsoluteSize"
+        }
+      ],
+      "functions": [
+        {
+          "key": "moveCard@190",
+          "line": 190,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.StageClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [
+        {
+          "key": "draw@298",
+          "line": 298,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "emit@469",
+          "line": 469,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "pop@530",
+          "line": 530,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.NotifyClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 11,
+          "code": "scale: UIScale,"
+        },
+        {
+          "line": 227,
+          "code": "local scale = Instance.new(\"UIScale\")"
+        },
+        {
+          "line": 440,
+          "code": "local layout = Instance.new(\"UIListLayout\")"
+        }
+      ],
+      "functions": [
+        {
+          "key": "NotifyClient.start@403",
+          "line": 403,
+          "yieldingCandidate": true
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.StandClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 128,
+          "code": "local scale=Instance.new(\"UIScale\");scale.Parent=panel"
+        },
+        {
+          "line": 130,
+          "code": "local size=gui.AbsoluteSize"
+        },
+        {
+          "line": 133,
+          "code": "sheet:Add(gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(fit))"
+        },
+        {
+          "line": 147,
+          "code": "local aspect=card:FindFirstChildOfClass(\"UIAspectRatioConstraint\") if aspect then aspect:Destroy() end"
+        },
+        {
+          "line": 185,
+          "code": "sheet:Add(RunService.Heartbeat:Connect(function()"
+        }
+      ],
+      "functions": [
+        {
+          "key": "label@91",
+          "line": 91,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.show@115",
+          "line": 115,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "fit@129",
+          "line": 129,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.LimitedClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 56,
+          "code": "local function scaleTo(scale: UIScale, target: number)"
+        },
+        {
+          "line": 62,
+          "code": "local function pulse(scale: UIScale, base: number)"
+        },
+        {
+          "line": 152,
+          "code": "local scale = frame:FindFirstChildWhichIsA(\"UIScale\")"
+        },
+        {
+          "line": 154,
+          "code": "local made = Instance.new(\"UIScale\")"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.OfflineClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.DailyClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.PlaytimeClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.FreeClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.LeaveClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 357,
+          "code": "RunService.Heartbeat:Connect(step)"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.GiftClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 155,
+          "code": "RunService.Heartbeat:Connect(function(delta: number)"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.SfxClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.SlimeClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 148,
+          "code": "local function scaleTo(scale: UIScale, target: number)"
+        },
+        {
+          "line": 154,
+          "code": "local function pulse(scale: UIScale, base: number)"
+        },
+        {
+          "line": 200,
+          "code": "local scale = frame:FindFirstChildWhichIsA(\"UIScale\")"
+        },
+        {
+          "line": 202,
+          "code": "local made = Instance.new(\"UIScale\")"
+        }
+      ],
+      "functions": [
+        {
+          "key": "refresh@80",
+          "line": 80,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.FloatClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 114,
+          "code": "RunService.Heartbeat:Connect(advance)"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.EventClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 118,
+          "code": "RunService.Heartbeat:Connect(run)"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.TutorialClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 234,
+          "code": "local viewport = gui.AbsoluteSize"
+        },
+        {
+          "line": 237,
+          "code": "local size = frame.AbsoluteSize"
+        },
+        {
+          "line": 255,
+          "code": "local viewport = gui.AbsoluteSize"
+        },
+        {
+          "line": 259,
+          "code": "local size = frame.AbsoluteSize"
+        },
+        {
+          "line": 269,
+          "code": "local constraint = frame:FindFirstChildWhichIsA(\"UIAspectRatioConstraint\")"
+        },
+        {
+          "line": 281,
+          "code": "local made = Instance.new(\"UIAspectRatioConstraint\")"
+        },
+        {
+          "line": 829,
+          "code": "RunService.RenderStepped:Connect(function(delta: number)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "guiRect@230",
+          "line": 230,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "settle@250",
+          "line": 250,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "adorn@349",
+          "line": 349,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "draw@548",
+          "line": 548,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Per-frame work: runtime cost/activity not established by presence"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.QuestClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [
+        {
+          "key": "refreshRow@222",
+          "line": 222,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.AutoRunClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.CodesClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.NameClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 107,
+          "code": "stroke.Thickness = label.AbsoluteSize.Y * settings.strokeScale"
+        },
+        {
+          "line": 110,
+          "code": "janitor:Add(label:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(fitStroke), \"Disconnect\", STROKE_INDEX)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "build@63",
+          "line": 63,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "fitStroke@106",
+          "line": 106,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.WeatherClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [
+        {
+          "key": "flashInto@199",
+          "line": 199,
+          "yieldingCandidate": true
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.WinsGiftClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 422,
+          "code": "RunService.Heartbeat:Connect(function(delta: number)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "refresh@166",
+          "line": 166,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.RestockClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 424,
+          "code": "RunService.Heartbeat:Connect(function()"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.ItemClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.StreakClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 863,
+          "code": "overheadConnection=RunService.RenderStepped:Connect(function()"
+        }
+      ],
+      "functions": [
+        {
+          "key": "mount@2",
+          "line": 2,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "metrics@23",
+          "line": 23,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "WallGaugeLayout.ApplyBoss@29",
+          "line": 29,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "addTrophyRewardBillboard@70",
+          "line": 70,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "showBossRecommendation@148",
+          "line": 148,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "wallGauge@174",
+          "line": 174,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "placeOverhead@321",
+          "line": 321,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "layoutOverhead@367",
+          "line": 367,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateGaugeLayout@395",
+          "line": 395,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "gauge@447",
+          "line": 447,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "label@464",
+          "line": 464,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "syncPersonalBossCollider@497",
+          "line": 497,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@679",
+          "line": 679,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@716",
+          "line": 716,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Per-frame work: runtime cost/activity not established by presence"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Combat.StageWallDisplayClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [],
+      "functions": [
+        {
+          "key": "metrics@15",
+          "line": 15,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "WallGaugeLayout.ApplyWall@33",
+          "line": 33,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.AutoTapClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 49,
+          "code": "-- Inherit the HUD's coordinate space/UIScale instead of reconstructing safe-area positions."
+        },
+        {
+          "line": 65,
+          "code": "bar:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "layout@48",
+          "line": 48,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.ItemEffectHUDClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 61,
+          "code": "setBadge.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 82,
+          "code": "setMultiplier.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 98,
+          "code": "local setLayout = Instance.new(\"UIListLayout\")"
+        },
+        {
+          "line": 169,
+          "code": "local compact = gui.AbsoluteSize.Y < 500"
+        },
+        {
+          "line": 199,
+          "code": "local left = hud.AbsolutePosition.X + (hud.AbsoluteSize.X - width) / 2"
+        },
+        {
+          "line": 202,
+          "code": "local p, s = potion.AbsolutePosition, potion.AbsoluteSize"
+        },
+        {
+          "line": 318,
+          "code": "local layoutConnection = RunService.RenderStepped:Connect(layout)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "stopGlove@120",
+          "line": 120,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "stopBelt@126",
+          "line": 126,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "layout@167",
+          "line": 167,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Per-frame work: runtime cost/activity not established by presence"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.SizeChangeClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 13,
+          "code": "local layout=Instance.new(\"UIGridLayout\",panel);layout.CellSize=UDim2.fromOffset(94,46);layout.CellPadding=UDim2.fromOffset(8,6);layout.SortOrder=Enum.SortOrder.LayoutOrder"
+        },
+        {
+          "line": 32,
+          "code": "RunService.RenderStepped:Connect(function()"
+        },
+        {
+          "line": 35,
+          "code": "local p,s=left.AbsolutePosition,left.AbsoluteSize"
+        },
+        {
+          "line": 36,
+          "code": "local x=math.clamp(p.X,8,math.max(8,gui.AbsoluteSize.X-56))"
+        },
+        {
+          "line": 37,
+          "code": "local y=math.clamp(p.Y+s.Y+8,8,math.max(8,gui.AbsoluteSize.Y-56))"
+        },
+        {
+          "line": 39,
+          "code": "local panelX=math.clamp(x+56,8,math.max(8,gui.AbsoluteSize.X-panel.AbsoluteSize.X-8))"
+        },
+        {
+          "line": 40,
+          "code": "local panelY=math.clamp(y,8,math.max(8,gui.AbsoluteSize.Y-panel.AbsoluteSize.Y-8))"
+        }
+      ],
+      "functions": [
+        {
+          "key": "callback@32",
+          "line": 32,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Per-frame work: runtime cost/activity not established by presence"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillGuideClient",
+      "class": "LocalScript",
+      "disabled": true,
+      "signals": [],
+      "functions": [
+        {
+          "key": "create@42",
+          "line": 42,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillMultiplierBillboardClient",
+      "class": "LocalScript",
+      "disabled": true,
+      "signals": [],
+      "functions": [
+        {
+          "key": "refresh@37",
+          "line": 37,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.TrophyRewardFeedbackClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 16,
+          "code": "scale = Instance.new(\"UIScale\")"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterGui.StrengthGui.DailyRewardsClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 106,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "layout@82",
+          "line": 82,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.EssentialStudShopClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 17,
+          "code": "local responsiveScale=shop:FindFirstChild(\"ResponsiveScale\") or Instance.new(\"UIScale\")"
+        },
+        {
+          "line": 64,
+          "code": "local width=holder.AbsoluteSize.X/scale"
+        },
+        {
+          "line": 67,
+          "code": "local gap=holder.UIListLayout.Padding.Offset"
+        },
+        {
+          "line": 73,
+          "code": "local aspect=card:FindFirstChildOfClass(\"UIAspectRatioConstraint\")"
+        },
+        {
+          "line": 77,
+          "code": "holder.UIListLayout.VerticalAlignment=Enum.VerticalAlignment.Top"
+        },
+        {
+          "line": 81,
+          "code": "scroll.AutomaticCanvasSize=Enum.AutomaticSize.None"
+        },
+        {
+          "line": 82,
+          "code": "scroll.CanvasSize=UDim2.fromOffset(0,holder.UIListLayout.AbsoluteContentSize.Y+16)"
+        },
+        {
+          "line": 84,
+          "code": "holder:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layoutDumbbellShop)"
+        },
+        {
+          "line": 85,
+          "code": "holder.UIListLayout:GetPropertyChangedSignal(\"AbsoluteContentSize\"):Connect(layoutDumbbellShop)"
+        },
+        {
+          "line": 153,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layoutShop)"
+        },
+        {
+          "line": 154,
+          "code": "menu:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layoutShop)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "layoutShop@21",
+          "line": 21,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "layoutDumbbellShop@62",
+          "line": 62,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "refreshEssentialPassDisplays@254",
+          "line": 254,
+          "yieldingCandidate": true
+        }
+      ],
+      "flags": [
+        "Content-size/write feedback candidate, not automatically a reproduced cycle"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryCapacityUpgradeClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 281,
+          "code": "local scale = Instance.new(\"UIScale\"); scale.Name = \"UpgradeScale\"; scale.Parent = panel"
+        },
+        {
+          "line": 283,
+          "code": "local v = gui.AbsoluteSize"
+        },
+        {
+          "line": 310,
+          "code": "connect(gui:GetPropertyChangedSignal(\"AbsoluteSize\"),layout)"
+        },
+        {
+          "line": 312,
+          "code": "connect(RunService.Heartbeat, function(dt)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "frame@22",
+          "line": 22,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "label@35",
+          "line": 35,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "icon@47",
+          "line": 47,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "bindWinButton@56",
+          "line": 56,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "attachStall@262",
+          "line": 262,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "layout@282",
+          "line": 282,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryNotificationClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 203,
+          "code": "table.insert(connections,itemList:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(function() task.defer(checkVisibleItemNotifications) end))"
+        }
+      ],
+      "functions": [
+        {
+          "key": "guideBadge@52",
+          "line": 52,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanelClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 33,
+          "code": "local grid=list:WaitForChild(\"UIGridLayout\")"
+        },
+        {
+          "line": 189,
+          "code": "local width=list.AbsoluteSize.X/scale"
+        },
+        {
+          "line": 205,
+          "code": "list.AutomaticCanvasSize=Enum.AutomaticSize.Y"
+        },
+        {
+          "line": 225,
+          "code": "list:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        },
+        {
+          "line": 227,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "label@55",
+          "line": 55,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "layout@181",
+          "line": 181,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryTabsClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 44,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "layout@20",
+          "line": 20,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.ItemInventoryTabClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 60,
+          "code": "t.AnchorPoint=Vector2.zero;t.Position=pos;t.Size=size;t.BackgroundTransparency=1;t.AutomaticSize=Enum.AutomaticSize.None"
+        },
+        {
+          "line": 112,
+          "code": "local grid=Instance.new(\"UIGridLayout\");grid.Name=\"StarGrid\""
+        },
+        {
+          "line": 175,
+          "code": "list.ScrollingDirection=Enum.ScrollingDirection.Y;list.AutomaticCanvasSize=Enum.AutomaticSize.None"
+        },
+        {
+          "line": 184,
+          "code": "local grid=list:FindFirstChildOfClass(\"UIGridLayout\")"
+        },
+        {
+          "line": 187,
+          "code": "list:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        },
+        {
+          "line": 188,
+          "code": "grid:GetPropertyChangedSignal(\"AbsoluteContentSize\"):Connect(layout)"
+        },
+        {
+          "line": 190,
+          "code": "page:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        },
+        {
+          "line": 293,
+          "code": "local square=Instance.new(\"UIAspectRatioConstraint\");square.AspectRatio=1;square.Parent=star"
+        },
+        {
+          "line": 307,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(fit)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "rect@53",
+          "line": 53,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "label@56",
+          "line": 56,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "icon@70",
+          "line": 70,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "surface@75",
+          "line": 75,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "check@93",
+          "line": 93,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "stars@108",
+          "line": 108,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "fit@303",
+          "line": 303,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Content-size/write feedback candidate, not automatically a reproduced cycle"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.LeftMenuClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterGui.StrengthGui.PotionStatusClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 8,
+          "code": "local stack=Instance.new(\"UIListLayout\")"
+        },
+        {
+          "line": 60,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterGui.StrengthGui.RunReturnClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 24,
+          "code": "button.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 149,
+          "code": "local connection = RunService.Heartbeat:Connect(function(dt)"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "StarterGui.StrengthGui.ShopBenefitsClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 29,
+          "code": "content.Position=UDim2.fromOffset(12,60);content.Size=UDim2.new(1,-24,1,-124);content.CanvasSize=UDim2.new();content.AutomaticCanvasSize=Enum.AutomaticSize.None;content.ScrollBarThickness=5;content.ZIndex=51;content.Parent=details"
+        },
+        {
+          "line": 30,
+          "code": "local description=label(content,\"Description\",\"\",18);description.Size=UDim2.new(1,-12,0,0);description.AutomaticSize=Enum.AutomaticSize.None;description.TextYAlignment=Enum.TextYAlignment.Top;description.TextXAlignment=Enum.TextXAlignment.L"
+        },
+        {
+          "line": 168,
+          "code": "Run.Heartbeat:Connect(function(dt)"
+        },
+        {
+          "line": 183,
+          "code": "local width=math.max(1,content.AbsoluteSize.X/s-12)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "callback@168",
+          "line": 168,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.StrengthDisplay",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 58,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "update@27",
+          "line": 27,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGui.TimeRewardsClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 114,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "layout@100",
+          "line": 100,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 60,
+          "code": "if d:IsA(\"UIGridStyleLayout\") or d:IsA(\"UIAspectRatioConstraint\") or d:IsA(\"UISizeConstraint\") or d:IsA(\"UIScale\") or d:IsA(\"UIPadding\") then d:Destroy() end"
+        },
+        {
+          "line": 78,
+          "code": "local scale=Instance.new(\"UIScale\");scale.Name=\"MergeFit\";scale.Parent=shop"
+        },
+        {
+          "line": 81,
+          "code": "body.BackgroundTransparency=1;body.CanvasSize=UDim2.new();body.AutomaticCanvasSize=Enum.AutomaticSize.None"
+        },
+        {
+          "line": 142,
+          "code": "list.AutomaticCanvasSize=Enum.AutomaticSize.None;list.CanvasSize=UDim2.new();list.ScrollBarThickness=10"
+        },
+        {
+          "line": 150,
+          "code": "resultItems.AutomaticCanvasSize=Enum.AutomaticSize.None;resultItems.ScrollingEnabled=true;resultItems.ClipsDescendants=true;resultItems.ZIndex=222"
+        },
+        {
+          "line": 256,
+          "code": "local s=ghost.AbsoluteSize"
+        },
+        {
+          "line": 261,
+          "code": "local a,b=drop.AbsolutePosition,drop.AbsolutePosition+drop.AbsoluteSize"
+        },
+        {
+          "line": 262,
+          "code": "-- p is also the ghost's rendered centre; use screen pixels after UIScale/inset."
+        },
+        {
+          "line": 434,
+          "code": "local localHeight=list.AbsoluteSize.Y/math.max(scale.Scale,.01)"
+        },
+        {
+          "line": 439,
+          "code": "local range=math.max(1,list.AbsoluteCanvasSize.Y-list.AbsoluteSize.Y)"
+        },
+        {
+          "line": 622,
+          "code": "local viewport=gui.AbsoluteSize"
+        },
+        {
+          "line": 761,
+          "code": "connect(gui:GetPropertyChangedSignal(\"AbsoluteSize\"),layout)"
+        },
+        {
+          "line": 763,
+          "code": "connect(list:GetPropertyChangedSignal(\"AbsoluteSize\"),function()if tab==\"Item\" then refreshList(false);render() end end)"
+        },
+        {
+          "line": 861,
+          "code": "local beat=RunService.Heartbeat:Connect(function(dt)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "buildMergeShop@4",
+          "line": 4,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "layoutItemStars@23",
+          "line": 23,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "rect@47",
+          "line": 47,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "action@117",
+          "line": 117,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "overlapsDrop@253",
+          "line": 253,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateGhost@265",
+          "line": 265,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "startGhost@272",
+          "line": 272,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "prepareTile@365",
+          "line": 365,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "candidate@469",
+          "line": 469,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.LevelUpGui.LevelUpEffectClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 9,
+          "code": "responsive.ViewportScale.Scale=math.clamp(math.min(1,(gui.AbsoluteSize.X-24)/(d.X*1.08),(gui.AbsoluteSize.Y-24)/(d.Y*1.08)),.55,1)"
+        },
+        {
+          "line": 11,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(fit)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "fit@7",
+          "line": 7,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "show@36",
+          "line": 36,
+          "yieldingCandidate": true
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "StarterGui.StrengthGainGui.StrengthGainClient",
+      "class": "LocalScript",
+      "disabled": false,
+      "signals": [
+        {
+          "line": 38,
+          "code": "local soundConnection=RunService.Heartbeat:Connect(function()"
+        },
+        {
+          "line": 94,
+          "code": "local renderConnection=RunService.RenderStepped:Connect(function()"
+        },
+        {
+          "line": 112,
+          "code": "local half=slot.frame.AbsoluteSize*.54"
+        },
+        {
+          "line": 113,
+          "code": "x=math.clamp(x,half.X+12,math.max(half.X+12,gui.AbsoluteSize.X-half.X-12))"
+        },
+        {
+          "line": 114,
+          "code": "y=math.clamp(y,half.Y+12,math.max(half.Y+12,gui.AbsoluteSize.Y-half.Y-12))"
+        }
+      ],
+      "functions": [
+        {
+          "key": "callback@94",
+          "line": 94,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Per-frame work: runtime cost/activity not established by presence"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.ExpressivePrompts.BuildFrames",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 31,
+          "code": "Scope:New(\"UIAspectRatioConstraint\", {"
+        },
+        {
+          "line": 82,
+          "code": "Scope:New(\"UIScale\", {"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.ExpressivePrompts",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [
+        {
+          "key": "CreatePrompt@114",
+          "line": 114,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Types",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Utility",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 194,
+          "code": "if child:IsA(\"UIAspectRatioConstraint\") then"
+        },
+        {
+          "line": 250,
+          "code": "local halfSize = instance.AbsoluteSize/2"
+        },
+        {
+          "line": 252,
+          "code": "local parentSize = parentInstance.AbsoluteSize"
+        },
+        {
+          "line": 284,
+          "code": "local limitX = camera.ViewportSize.X - instance.AbsoluteSize.X - SIDE_PADDING"
+        },
+        {
+          "line": 297,
+          "code": "local guiWidth = screenGui.AbsoluteSize.X"
+        },
+        {
+          "line": 336,
+          "code": "cloneJanitor:add(screenGui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(function()"
+        },
+        {
+          "line": 358,
+          "code": "cloneJanitor:add(instance:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(function()"
+        },
+        {
+          "line": 359,
+          "code": "local absolute = instance.AbsoluteSize"
+        }
+      ],
+      "functions": [
+        {
+          "key": "Utility.clipOutside@151",
+          "line": 151,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "checkIfOutsideParentXBounds@218",
+          "line": 218,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "trackProperty@275",
+          "line": 275,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateProperty@277",
+          "line": 277,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@336",
+          "line": 336,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@358",
+          "line": 358,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Elements.Caption",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 21,
+          "code": "box.AutomaticSize = Enum.AutomaticSize.XY"
+        },
+        {
+          "line": 40,
+          "code": "header.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 47,
+          "code": "local layout = Instance.new(\"UIListLayout\")"
+        },
+        {
+          "line": 67,
+          "code": "hotkeys.AutomaticSize = Enum.AutomaticSize.Y"
+        },
+        {
+          "line": 74,
+          "code": "local layout1 = Instance.new(\"UIListLayout\")"
+        },
+        {
+          "line": 91,
+          "code": "keyTag1.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 115,
+          "code": "labelContent.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 145,
+          "code": "box:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(function()"
+        },
+        {
+          "line": 146,
+          "code": "dropShadow.Size = UDim2.new(1, 0, 0, box.AbsoluteSize.Y + 8)"
+        },
+        {
+          "line": 154,
+          "code": "captionClone.AutomaticSize = Enum.AutomaticSize.None"
+        },
+        {
+          "line": 156,
+          "code": "local absolute = caption.AbsoluteSize"
+        },
+        {
+          "line": 159,
+          "code": "captionJanitor:add(caption:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(matchSize))"
+        },
+        {
+          "line": 220,
+          "code": "caption.AutomaticSize = Enum.AutomaticSize.XY"
+        },
+        {
+          "line": 223,
+          "code": "local absolute = caption.AbsoluteSize"
+        },
+        {
+          "line": 224,
+          "code": "caption.AutomaticSize = Enum.AutomaticSize.Y"
+        },
+        {
+          "line": 231,
+          "code": "local caretX = clickRegion.AbsolutePosition.X - caption.AbsolutePosition.X + clickRegion.AbsoluteSize.X/2 - caret.AbsoluteSize.X/2"
+        },
+        {
+          "line": 251,
+          "code": "local updateCaretConnection = RunService.Heartbeat:Connect(updateCaret)"
+        },
+        {
+          "line": 258,
+          "code": "captionJanitor:add(clickRegion:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(function()"
+        }
+      ],
+      "functions": [
+        {
+          "key": "callback@145",
+          "line": 145,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "matchSize@155",
+          "line": 155,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updatePosition@201",
+          "line": 201,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "updateCaret@230",
+          "line": 230,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "callback@258",
+          "line": 258,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Elements.Container",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 173,
+          "code": "left.AutomaticCanvasSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 182,
+          "code": "local UIListLayout = Instance.new(\"UIListLayout\")"
+        },
+        {
+          "line": 184,
+          "code": "UIListLayout.Padding = UDim.new(0, startInset)"
+        },
+        {
+          "line": 186,
+          "code": "UIListLayout.FillDirection = Enum.FillDirection.Horizontal"
+        },
+        {
+          "line": 187,
+          "code": "UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder"
+        },
+        {
+          "line": 188,
+          "code": "UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom"
+        },
+        {
+          "line": 189,
+          "code": "UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left"
+        },
+        {
+          "line": 190,
+          "code": "UIListLayout.Parent = left"
+        },
+        {
+          "line": 194,
+          "code": "center.UIListLayout.Padding = UDim.new(0, startInset)"
+        },
+        {
+          "line": 197,
+          "code": "center.UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center"
+        },
+        {
+          "line": 203,
+          "code": "right.UIListLayout.Padding = UDim.new(0, startInset)"
+        },
+        {
+          "line": 205,
+          "code": "right.UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right"
+        }
+      ],
+      "functions": [
+        {
+          "key": "callback@116",
+          "line": 116,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateCenteredHoldersHeight@128",
+          "line": 128,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@162",
+          "line": 162,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Elements.Dropdown",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 9,
+          "code": "dropdown.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 39,
+          "code": "dropdownScroller.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 51,
+          "code": "dropdownScroller.AutomaticCanvasSize = Enum.AutomaticSize.Y"
+        },
+        {
+          "line": 71,
+          "code": "local dropdownList = Instance.new(\"UIListLayout\")"
+        },
+        {
+          "line": 130,
+          "code": "local height = child.AbsoluteSize.Y"
+        },
+        {
+          "line": 209,
+          "code": "RunService.Heartbeat:Wait()"
+        },
+        {
+          "line": 257,
+          "code": "local height = child.AbsoluteSize.Y"
+        },
+        {
+          "line": 306,
+          "code": "RunService.Heartbeat:Wait()"
+        }
+      ],
+      "functions": [
+        {
+          "key": "updateMaxIcons@113",
+          "line": 113,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateVisibility@159",
+          "line": 159,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateMaxIconsListener@228",
+          "line": 228,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Elements.Indicator",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 84,
+          "code": "local ySize = widget.AbsoluteSize.Y*0.96"
+        },
+        {
+          "line": 87,
+          "code": "widget:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(updateSize)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "selectionChanged@28",
+          "line": 28,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateSize@83",
+          "line": 83,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Elements.Menu",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 24,
+          "code": "local menuUIListLayout = Icon.container.TopbarStandard:FindFirstChild(\"UIListLayout\", true):Clone()"
+        },
+        {
+          "line": 25,
+          "code": "menuUIListLayout.Name = \"MenuUIListLayout\""
+        },
+        {
+          "line": 26,
+          "code": "menuUIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center"
+        },
+        {
+          "line": 27,
+          "code": "menuUIListLayout.Parent = menu"
+        },
+        {
+          "line": 147,
+          "code": "local width = child.AbsoluteSize.X + menuUIListLayout.Padding.Offset"
+        }
+      ],
+      "functions": [
+        {
+          "key": "totalChildrenChanged@39",
+          "line": 39,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "rightAlignCanvas@73",
+          "line": 73,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@120",
+          "line": 120,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@125",
+          "line": 125,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Elements.Notice",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 6,
+          "code": "notice.AutomaticSize = Enum.AutomaticSize.X"
+        },
+        {
+          "line": 25,
+          "code": "noticeLabel.AutomaticSize = Enum.AutomaticSize.X"
+        }
+      ],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Elements.Widget",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 54,
+          "code": "local menuUIListLayout = menu.MenuUIListLayout"
+        },
+        {
+          "line": 104,
+          "code": "local contentsList = Instance.new(\"UIListLayout\")"
+        },
+        {
+          "line": 233,
+          "code": "local targetWidth = item:GetAttribute(\"TargetWidth\") or item.AbsoluteSize.X"
+        },
+        {
+          "line": 257,
+          "code": "additionalWidth += getItemWidth(frame) + menuUIListLayout.Padding.Offset"
+        },
+        {
+          "line": 261,
+          "code": "widgetWidth -= (getItemWidth(iconSpot) + menuUIListLayout.Padding.Offset*2 + widgetBorderSize)"
+        },
+        {
+          "line": 276,
+          "code": "local totalMenuWidth = menuWidth and menuWidth + spotWidth + menuUIListLayout.Padding.Offset + 10"
+        },
+        {
+          "line": 290,
+          "code": "local spotWidthMax = math.max(spotWidth, getItemWidth(iconSpot), iconSpot.AbsoluteSize.X)"
+        },
+        {
+          "line": 291,
+          "code": "local widgetWidthMax = math.max(widgetWidth, getItemWidth(widget), widget.AbsoluteSize.X)"
+        },
+        {
+          "line": 367,
+          "code": "menuUIListLayout.Padding = UDim.new(0, 0)"
+        },
+        {
+          "line": 393,
+          "code": "menuUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment[newAlignment]"
+        },
+        {
+          "line": 420,
+          "code": "local UIAspectRatioConstraint = Instance.new(\"UIAspectRatioConstraint\")"
+        },
+        {
+          "line": 421,
+          "code": "UIAspectRatioConstraint.Name = \"IconImageRatio\""
+        },
+        {
+          "line": 422,
+          "code": "UIAspectRatioConstraint.AspectType = Enum.AspectType.FitWithinMaxSize"
+        },
+        {
+          "line": 423,
+          "code": "UIAspectRatioConstraint.DominantAxis = Enum.DominantAxis.Height"
+        },
+        {
+          "line": 424,
+          "code": "UIAspectRatioConstraint.Parent = iconImage"
+        }
+      ],
+      "functions": [
+        {
+          "key": "handleLabelAndImageChangesUnstaggered@195",
+          "line": 195,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "getItemWidth@232",
+          "line": 232,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateBorderSize@360",
+          "line": 360,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@416",
+          "line": 416,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus.Features.Overflow",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 59,
+          "code": "-- left or right due to incomplete UIListLayout calculations"
+        },
+        {
+          "line": 70,
+          "code": "primaryScreenGui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(function()"
+        },
+        {
+          "line": 77,
+          "code": "return widget:GetAttribute(\"TargetWidth\") or widget.AbsoluteSize.X"
+        },
+        {
+          "line": 143,
+          "code": "local holderXSize = holder.AbsoluteSize.X"
+        },
+        {
+          "line": 144,
+          "code": "local holderUIList = holder.UIListLayout"
+        },
+        {
+          "line": 170,
+          "code": "local holderUIList = holder.UIListLayout"
+        },
+        {
+          "line": 172,
+          "code": "local holderXSize = holder.AbsoluteSize.X"
+        }
+      ],
+      "functions": [
+        {
+          "key": "Overflow.start@25",
+          "line": 25,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "callback@70",
+          "line": 70,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "Overflow.getWidth@75",
+          "line": 75,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "Overflow.getRealXPositions@137",
+          "line": 137,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "Overflow.updateBoundary@166",
+          "line": 166,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Packages.Topbarplus",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 10,
+          "code": "features like UIListLayouts."
+        },
+        {
+          "line": 1142,
+          "code": "TotalSize += child.AbsoluteSize.X"
+        },
+        {
+          "line": 1146,
+          "code": "TotalSize += child.AbsoluteSize.X"
+        },
+        {
+          "line": 1161,
+          "code": "return numberSpinner.Frame.AbsoluteSize.X + label.Parent.Parent.IconImage.AbsoluteSize.X"
+        },
+        {
+          "line": 1163,
+          "code": "return nextParent.AbsoluteSize.X"
+        },
+        {
+          "line": 1167,
+          "code": "return numberSpinner.Frame.AbsoluteSize.X"
+        }
+      ],
+      "functions": [
+        {
+          "key": "Icon:convertLabelToNumberSpinner@1105",
+          "line": 1105,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "getSpinnerSizeAndDigitCount@1136",
+          "line": 1136,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "getLabelParentContainerXSize@1154",
+          "line": 1154,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "getNumberSpinnerXSize@1166",
+          "line": 1166,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.Config",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.HUDLayout",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 9,
+          "code": "local s=x:FindFirstChildOfClass(\"UIScale\") if s then scale*=s.Scale end"
+        },
+        {
+          "line": 14,
+          "code": "function M.GetLocalSize(object) return object.AbsoluteSize/M.GetScale(object) end"
+        },
+        {
+          "line": 28,
+          "code": "table.insert(a,{Name=x.Name,P=x.AbsolutePosition,S=x.AbsoluteSize})"
+        },
+        {
+          "line": 46,
+          "code": "and x:IsA(\"GuiObject\") and shown(x) and x.AbsoluteSize.X>0 and x.AbsoluteSize.Y>0 then"
+        },
+        {
+          "line": 47,
+          "code": "table.insert(out,{X=x.AbsolutePosition.X,Y=x.AbsolutePosition.Y,W=x.AbsoluteSize.X,H=x.AbsoluteSize.Y})"
+        },
+        {
+          "line": 73,
+          "code": "local width,height=button.AbsoluteSize.X,button.AbsoluteSize.Y"
+        },
+        {
+          "line": 81,
+          "code": "local p,s=x.AbsolutePosition,x.AbsoluteSize"
+        },
+        {
+          "line": 89,
+          "code": "local ap,az=ancestor.AbsolutePosition,ancestor.AbsoluteSize"
+        },
+        {
+          "line": 129,
+          "code": "if not ui then ui=Instance.new(\"UIScale\");ui.Name=\"HUDScale\";ui.Parent=button end"
+        },
+        {
+          "line": 134,
+          "code": "local center=(slot.AbsoluteSize.X-design.X*scale)/2"
+        },
+        {
+          "line": 139,
+          "code": "if not u then u=Instance.new(\"UIScale\");u.Name=\"HUDScale\";u.Parent=x end"
+        },
+        {
+          "line": 144,
+          "code": "local v=gui.AbsoluteSize if v.X<=0 or v.Y<=0 then return end"
+        },
+        {
+          "line": 193,
+          "code": "left.UIGridLayout.FillDirectionMaxCells=columns"
+        },
+        {
+          "line": 346,
+          "code": "label.Size=UDim2.new(0,0,1,0);label.AutomaticSize=Enum.AutomaticSize.X;label.TextSize=textSize;label.TextScaled=false"
+        },
+        {
+          "line": 354,
+          "code": "bar.ProgressBackground.ProgressClip.Fill.Size=UDim2.fromOffset(bar.AbsoluteSize.X,bar.AbsoluteSize.Y)"
+        },
+        {
+          "line": 387,
+          "code": "local conn=RunService.RenderStepped:Connect(layout)"
+        },
+        {
+          "line": 537,
+          "code": "connect(button:GetPropertyChangedSignal(\"AbsoluteSize\"),function()resize(false)end)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "M.GetLocalSize@14",
+          "line": 14,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.GetControls@23",
+          "line": 23,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "tabletControls@39",
+          "line": 39,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "placeReturnButton@72",
+          "line": 72,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.Mount@122",
+          "line": 122,
+          "yieldingCandidate": true
+        },
+        {
+          "key": "follow@126",
+          "line": 126,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "layout@143",
+          "line": 143,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.PurchaseButton@455",
+          "line": 455,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "resize@514",
+          "line": 514,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [
+        "Per-frame work: runtime cost/activity not established by presence"
+      ],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.InventoryNotificationExposure",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 6,
+          "code": "local p,s=target.AbsolutePosition,target.AbsoluteSize"
+        },
+        {
+          "line": 7,
+          "code": "local screen=gui.AbsoluteSize"
+        },
+        {
+          "line": 14,
+          "code": "local ap,az=ancestor.AbsolutePosition,ancestor.AbsoluteSize"
+        },
+        {
+          "line": 94,
+          "code": "for _,property in ipairs({\"CanvasPosition\",\"AbsolutePosition\",\"AbsoluteSize\"}) do"
+        }
+      ],
+      "functions": [
+        {
+          "key": "M.IsVisible@4",
+          "line": 4,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.new@25",
+          "line": 25,
+          "yieldingCandidate": true
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.InventoryPresentation",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 49,
+          "code": "local s=x:FindFirstChildOfClass(\"UIScale\") if s then scale*=s.Scale end"
+        },
+        {
+          "line": 178,
+          "code": "if c:IsA(\"UIGridStyleLayout\") or c:IsA(\"UIAspectRatioConstraint\") or c:IsA(\"UISizeConstraint\") or c:IsA(\"UIPadding\") or c:IsA(\"UIScale\") then c:Destroy() end"
+        },
+        {
+          "line": 255,
+          "code": "local scale=panel:FindFirstChildOfClass(\"UIScale\")"
+        },
+        {
+          "line": 276,
+          "code": "list.AutomaticCanvasSize=Enum.AutomaticSize.None;list.CanvasSize=UDim2.new();list.ScrollBarThickness=5"
+        },
+        {
+          "line": 353,
+          "code": "table.insert(connections,page:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(layout))"
+        },
+        {
+          "line": 471,
+          "code": "panel.Stages.AutomaticCanvasSize=Enum.AutomaticSize.Y;panel.Stages.CanvasSize=UDim2.new()"
+        },
+        {
+          "line": 472,
+          "code": "local list=panel.Stages:FindFirstChildOfClass(\"UIListLayout\") if list then list.Padding=UDim.new(0,12) end"
+        },
+        {
+          "line": 494,
+          "code": "local scale=panel:FindFirstChildOfClass(\"UIScale\") if scale then connect(scale:GetPropertyChangedSignal(\"Scale\"),layout) end"
+        }
+      ],
+      "functions": [
+        {
+          "key": "M.SetItemStars@59",
+          "line": 59,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.ApplyPurchasedSurface@113",
+          "line": 113,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "referenceRect@162",
+          "line": 162,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "setupInventoryReference@181",
+          "line": 181,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.BuildSpeedView@263",
+          "line": 263,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "layout@331",
+          "line": 331,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.BindPurchasedPanel@379",
+          "line": 379,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "heading@404",
+          "line": 404,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "layout@440",
+          "line": 440,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.ResponsivePanels",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 29,
+          "code": "local a=x:FindFirstChildOfClass(\"UIAspectRatioConstraint\")"
+        },
+        {
+          "line": 35,
+          "code": "return gui.AbsoluteSize.X<1000 or gui.AbsoluteSize.Y<650 or #HUD.GetControls(gui.Parent)>0"
+        },
+        {
+          "line": 40,
+          "code": "local original=gui.AbsoluteSize"
+        },
+        {
+          "line": 54,
+          "code": "if not u then u=Instance.new(\"UIScale\");u.Name=\"ResponsiveScale\";u.Parent=panel end"
+        },
+        {
+          "line": 66,
+          "code": "if not u then u=Instance.new(\"UIScale\");u.Name=\"ResponsiveScale\";u.Parent=panel end"
+        },
+        {
+          "line": 87,
+          "code": "local short=gui.AbsoluteSize.Y<500"
+        },
+        {
+          "line": 135,
+          "code": "local cw=(width-(columns-1)*10/s-8/s)/columns;local short=gui.AbsoluteSize.Y<500;local ch=(short and 180 or 212)/s"
+        },
+        {
+          "line": 249,
+          "code": "local short=gui.AbsoluteSize.Y<500"
+        },
+        {
+          "line": 274,
+          "code": "local grid=list:FindFirstChildOfClass(\"UIGridLayout\")"
+        },
+        {
+          "line": 341,
+          "code": "local p,size=button.AbsolutePosition,button.AbsoluteSize"
+        },
+        {
+          "line": 344,
+          "code": "local bp,bs=bounds.AbsolutePosition,bounds.AbsoluteSize"
+        },
+        {
+          "line": 373,
+          "code": "if page:FindFirstChild(\"RarityTabs\") then M.LayoutItems(gui,page,page.OwnedItems,page.OwnedItems:FindFirstChildOfClass(\"UIGridLayout\")) end"
+        },
+        {
+          "line": 384,
+          "code": "local height=math.max(44,p.AbsoluteSize.Y*.125)"
+        },
+        {
+          "line": 399,
+          "code": "local conn=RunService.Heartbeat:Connect(function(dt) elapsed+=dt if elapsed>.15 then elapsed=0;refresh() end end)"
+        },
+        {
+          "line": 402,
+          "code": "gui:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(refresh)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "M.Small@32",
+          "line": 32,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.Fit@37",
+          "line": 37,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "inventory@83",
+          "line": 83,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "rewards@123",
+          "line": 123,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.LayoutItems@158",
+          "line": 158,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "squareStars@183",
+          "line": 183,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "merge@245",
+          "line": 245,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "updateHitboxes@334",
+          "line": 334,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.Bind@356",
+          "line": 356,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "refresh@359",
+          "line": 359,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.LimitedPetViewport",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [
+        {
+          "line": 57,
+          "code": "local size=viewport.AbsoluteSize"
+        },
+        {
+          "line": 69,
+          "code": "resized=viewport:GetPropertyChangedSignal(\"AbsoluteSize\"):Connect(fit)"
+        }
+      ],
+      "functions": [
+        {
+          "key": "M.mountTemplate@11",
+          "line": 11,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "fit@56",
+          "line": 56,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "M.bind@104",
+          "line": 104,
+          "yieldingCandidate": false
+        },
+        {
+          "key": "refresh@113",
+          "line": 113,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    },
+    {
+      "path": "ServerScriptService.Services.TreadmillServer",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ServerScriptService.Services.MultiplierServer",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ServerScriptService.Services.LeaderboardServer",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ServerScriptService.Services.WinServer",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ServerScriptService.Services.CheapServer",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ServerScriptService.Services.StageServer",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ServerScriptService.Services.StandServer",
+      "class": "ModuleScript",
+      "disabled": null,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ServerScriptService.Systems.Controllers.RankingBoardController",
+      "class": "Script",
+      "disabled": false,
+      "signals": [],
+      "functions": [],
+      "flags": [],
+      "instrumentation": "Static-only: disabled, unreachable/vendor or no safe named-layout boundary"
+    },
+    {
+      "path": "ServerScriptService.Systems.Controllers.ShopRewardController",
+      "class": "Script",
+      "disabled": false,
+      "signals": [],
+      "functions": [
+        {
+          "key": "tag@29",
+          "line": 29,
+          "yieldingCandidate": false
+        }
+      ],
+      "flags": [],
+      "instrumentation": "Compiled, runtime activity to be measured"
+    }
+  ],
+  "authoredGuiInstances": [
+    {
+      "path": "Workspace.Leaderboards.Part.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Part.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Eggs.Legendary.Prize",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Eggs.Mythic.Prize",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Eggs.Rare.Prize",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Eggs.Billboard.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Eggs.Basic.Prize",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Treadmills.Gold02.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Treadmills.Gold01.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Treadmills.Iron01.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Treadmills.Diamond01.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Treadmills.Normal02.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Treadmills.Iron02.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Treadmills.Normal01.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Treadmills.Billboard.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Mailboxes.Feedback.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Mailboxes.Feedback.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Mailboxes.Feedback.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.8.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.5.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.4.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.7.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.3.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.11.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.1.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.12.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.10.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.2.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.9.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.6.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.PerStepButtons.Billboard.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Ungroup.Forsaken Characters.Killers.Jason (OLD).Skins Jason.CombatInitiation.Head.AT.RagingPace",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Ungroup.Forsaken Characters.Killers.John Doe.Skin John Does.ScriptBuilderJohnDoe.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Ungroup.Forsaken Characters.Killers.John Doe.Skin John Does.Geometry.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Ungroup.Forsaken Characters.Killers.Slasher.Slasher Skins.CombatInitiation.Head.AT.RagingPace",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Ungroup.Forsaken Characters.Killers.Noli.Skins  Noli.YAAI.Noli.Nova.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.Billboard.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Legendary.Prize",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Mythic.Prize",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Rare.Prize",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Billboard.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Basic.Prize",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.MergeDisplay.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.UpgradesDisplay.UpGradeBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.LimitedEggDisplay.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.WinBoostDisplay.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.FeedbackDisplay.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.StationBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.MultiplierBillboard",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.StationBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.TreadmillBillboard",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.StationBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.StationBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.Billboard.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_009.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_004.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_008.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_012.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_011.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_010.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_001.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_007.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_006.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_002.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_003.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_005.Data",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.RestockShop.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.ShopStallTemplate.UpGradeBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.WinsGift.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Trophy.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Chill Octopus.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Gift.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedStorage.Assets.Treadmills.Emerald.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedStorage.Assets.Treadmills.Iron.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedStorage.Assets.Treadmills.Gold.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedStorage.Assets.Treadmills.Normal.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedStorage.Assets.Treadmills.Diamond.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedStorage.Assets.Treadmills.Candy.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedStorage.Assets.Treadmills.EventTreadmil.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedStorage.Assets.Templates.OpenEgg",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.1.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.1.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.1.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.2.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.2.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.2.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.3.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.3.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.3.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.4.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.4.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.4.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.5.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.5.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.5.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.6.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.6.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.6.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.7.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.7.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.7.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.8.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.8.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.8.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.9.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.9.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.9.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.10.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.10.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.10.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.11.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.11.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.11.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.12.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.12.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.12.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.13.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.13.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.13.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.14.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.14.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.14.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.15.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.15.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.15.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.16.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.16.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.16.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.17.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.17.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.17.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.18.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.18.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.18.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.19.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.19.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.19.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.20.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.20.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.20.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.21.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.21.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.21.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.22.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.22.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.22.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.23.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.23.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.23.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.24.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.24.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.24.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.25.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.25.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.25.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.26.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.26.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.26.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.27.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.27.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.27.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.28.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.28.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.28.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.29.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.29.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.29.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.30.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.30.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.30.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.31.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.31.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.31.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.32.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.32.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.32.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.33.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.33.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.33.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.34.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.34.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.34.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.35.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.35.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.35.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.36.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.36.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.36.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.37.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.37.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.37.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.38.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.38.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.38.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.39.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.39.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.39.SkipStage.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.40.WinButton.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.WinButtons.40.WinButtonPremium.BillboardGui",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.StationBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.MultiplierBillboard",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.StationBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.TreadmillBillboard",
+      "class": "BillboardGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.StationBillboard",
+      "class": "BillboardGui",
+      "enabled": true
+    },
+    {
+      "path": "ReplicatedFirst.LoadingScreen",
+      "class": "ScreenGui",
+      "enabled": false
+    },
+    {
+      "path": "StarterGui.ScreenGui",
+      "class": "ScreenGui",
+      "enabled": false
+    },
+    {
+      "path": "StarterGui.StrengthGui",
+      "class": "ScreenGui",
+      "enabled": true
+    },
+    {
+      "path": "StarterGui.World1DoubleWinGui",
+      "class": "ScreenGui",
+      "enabled": true
+    },
+    {
+      "path": "StarterGui.StrengthUI.MergePanel_New",
+      "class": "ScreenGui",
+      "enabled": false
+    },
+    {
+      "path": "StarterGui.StageSkipGui",
+      "class": "ScreenGui",
+      "enabled": true
+    },
+    {
+      "path": "StarterGui.LevelUpGui",
+      "class": "ScreenGui",
+      "enabled": true
+    },
+    {
+      "path": "StarterGui.StrengthGainGui",
+      "class": "ScreenGui",
+      "enabled": true
+    },
+    {
+      "path": "StarterGui.WorldTravelGui",
+      "class": "ScreenGui",
+      "enabled": true
+    },
+    {
+      "path": "StarterGui.DeathGui",
+      "class": "ScreenGui",
+      "enabled": false
+    },
+    {
+      "path": "ReplicatedStorage.UI.Templates.EnemyDropGachaTemplate",
+      "class": "ScreenGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.Leaderboards.Robux.Board.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Robux.Name.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Speed.Board.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Speed.Name.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Rebirths.Board.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Rebirths.Name.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Wins.Board.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Wins.Name.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Playtime.Board.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Leaderboards.Playtime.Name.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.World1ReturnGate.Sign.SignAnchor.WorldLabel",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.WinBoostDisplay.Part.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.TotalRankingDisplay.Main.RankingSurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.FacilityDisplays.DailyRankingDisplay.Main.RankingSurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Smooth Block Model.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Texture.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Texture.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Smooth Block Model.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.Smooth Block Model.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.Smooth Block Model.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Stage3.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Stage3.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Stage3.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Stage3.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Stage4.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Stage4.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Stage4.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Stage4.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Stage10.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Stage10.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Stage10.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Stage10.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Stage8.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Stage8.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Stage8.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Stage8.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Stage7.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Stage7.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Stage7.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Stage7.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Stage6.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Stage6.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Stage6.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Stage6.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Stage5.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Stage5.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Stage5.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Stage5.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Stage9.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Stage9.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Stage9.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Stage9.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.2.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.3.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.4.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.1.Wall.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": false
+    },
+    {
+      "path": "Workspace.World2Gate.Sign.SignAnchor.WorldLabel",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.TotalStrengthRankingBoard.Main.RankingSurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.DailyStrengthRankingBoard.Main.RankingSurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage10.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage10.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage10.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage10.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage03.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage03.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage03.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage03.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage09.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage09.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage09.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage09.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage04.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage04.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage04.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage04.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage01.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage01.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage01.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage01.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage08.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage08.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage08.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage08.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage05.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage05.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage05.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage05.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage06.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage06.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage06.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage06.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage02.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage02.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage02.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage02.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage07.Walls.Wall04.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage07.Walls.Wall02.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage07.Walls.Wall03.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.MergeToForge.World1.Stage07.Walls.Wall01.Visual.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.Trophy.Part.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.1.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.2.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.3.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.4.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.5.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.6.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.7.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.8.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.9.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.10.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.11.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.12.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.13.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.14.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.15.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.16.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.17.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.18.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.19.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.20.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.21.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.22.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.23.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.24.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.25.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.26.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.27.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.28.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.29.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.30.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.31.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.32.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.33.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.40.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.39.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.38.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.37.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.36.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.35.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "ServerStorage.PurchasedCourseOriginals.Stages.34.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Smooth Block Model.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Texture.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Texture.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    },
+    {
+      "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Smooth Block Model.SurfaceGui",
+      "class": "SurfaceGui",
+      "enabled": true
+    }
+  ],
+  "compiledSources": 41,
+  "instrumentedFunctions": 132
+}

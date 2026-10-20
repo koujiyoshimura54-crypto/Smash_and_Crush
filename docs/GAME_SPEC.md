@@ -566,3 +566,8 @@ The current local place again contains the server StudioStartController and Star
 World2's existing facilities now use World2GameplayConfig generated from World2_数値一覧.xlsx, with separate W2 IDs for twelve Dumbbells, 45 regular Items, six Auras, five Egg pools and 35 Pet species. Normal purchases, ownership/equipment, Item Merge/drops and existing persistence paths are connected. Four normal Eggs are active; Limited and the paid Aura/treadmill remain unavailable without invented prices/IDs/rights. Equipment/Pet ownership carries between Worlds and only equipped slots apply. Mixed-world Item Merge is rejected; no W2 Pet Merge is introduced. StageSkip remains World1-only.
 
 Rebirth is shared: base x1, +0.5 each count; first ten required levels come from the workbook. Rebirth resets Strength/LV/progress only; ownership, Win and equipped Pets/items remain. Reference cumulative Strength is not an additional condition. Legacy counts/requirements beyond ten remain. World1 catalog values, geometry and existing combat rules are retained. See [current implementation/verification limits](../reports/World2Gameplay_20261020.md).
+
+
+### Tutorial floor-guide implementation — 2026-10-20
+
+World1 straight-line guidance and progression remain unchanged. Verified generator-owned walking carpet Upper/Lower surfaces are valid arrow supports; nested treadmill stands/equipment mats are excluded. Thirteen surface/edge probes and query-independent oriented blocker checks remain. Static spatial caches invalidate on changes/add/remove; moving parts are evaluated live. Completion/death/World2 suspend collection and reset/respawn/World1 resume it. No physical map properties or World2 tutorial were changed. Evidence: reports/TutorialArrows_UIAudit_20261020/REPORT.md.

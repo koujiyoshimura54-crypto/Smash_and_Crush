@@ -979,3 +979,10 @@
 - Connected existing World2 facilities and combat to the complete Excel authority; separate product/Pet identities, shared Rebirth and cross-world equipped effects.
 - Retained geometry and World1 values; unknown paid offers remain disabled.
 - Same rbxl validated/reopened in Edit; 410 saved-file simulated assertions passed. Runtime gameplay/image rendering remain unverified; no Play/Save/Publish. [Report](../reports/World2Gameplay_20261020.md).
+
+
+## 2026-10-20 — Tutorial carpet arrows / UI layout investigation
+
+- Corrected verified World1 walking-carpet arrow surfaces and replaced repeated full-blocker scans with spatial caches; preserved edge/obstacle checks and tutorial lifecycle.
+- Recorded native visible-arrow comparisons, geometry/lifecycle fixtures and source-only same-file integrity/native reopen checks.
+- Audited authored/dynamic/facility UI and shared layout; recorded HUD recurring cost and Shop startup storm. No UI fixes applied.

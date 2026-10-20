@@ -1,0 +1,403 @@
+{
+  "complete": true,
+  "result": {
+    "parity": [
+      {
+        "before": true,
+        "x": 235,
+        "after": true,
+        "z": -20,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": false,
+        "x": 235,
+        "after": false,
+        "z": -5,
+        "afterReason": "Blocked:Workspace.PerStepButtons.4.Press",
+        "beforeReason": "Blocked:Workspace.PerStepButtons.4.Part"
+      },
+      {
+        "before": false,
+        "x": 235,
+        "after": false,
+        "z": 10,
+        "afterReason": "Blocked:Workspace.Ramp.Stand.Part",
+        "beforeReason": "Blocked:Workspace.Ramp.Stand.Part"
+      },
+      {
+        "before": false,
+        "x": 235,
+        "after": false,
+        "z": 25,
+        "afterReason": "Blocked:Workspace.Ramp.Stand.Part",
+        "beforeReason": "Blocked:Workspace.Ramp.Stand.Part"
+      },
+      {
+        "before": false,
+        "x": 235,
+        "after": false,
+        "z": 40,
+        "afterReason": "Blocked:Workspace.Ramp.Stand.Part",
+        "beforeReason": "Blocked:Workspace.Ramp.Stand.Part"
+      },
+      {
+        "before": true,
+        "x": 235,
+        "after": true,
+        "z": 55,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 250,
+        "after": true,
+        "z": -20,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": false,
+        "x": 250,
+        "after": false,
+        "z": -5,
+        "afterReason": "Blocked:Workspace.Ramp.Upper",
+        "beforeReason": "Blocked:Workspace.Ramp.Upper"
+      },
+      {
+        "before": false,
+        "x": 250,
+        "after": false,
+        "z": 25,
+        "afterReason": "Blocked:Workspace.Ramp.Upper",
+        "beforeReason": "Blocked:Workspace.Ramp.Upper"
+      },
+      {
+        "before": false,
+        "x": 250,
+        "after": false,
+        "z": 40,
+        "afterReason": "Blocked:Workspace.Ramp.Lower",
+        "beforeReason": "Blocked:Workspace.Ramp.Lower"
+      },
+      {
+        "before": true,
+        "x": 250,
+        "after": true,
+        "z": 55,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 265,
+        "after": true,
+        "z": -20,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": false,
+        "x": 265,
+        "after": false,
+        "z": -5,
+        "afterReason": "Blocked:Workspace.RestockShop..LeftLowerArm",
+        "beforeReason": "Blocked:Workspace.RestockShop..silverthorn_antlers_bin.Handle"
+      },
+      {
+        "before": true,
+        "x": 265,
+        "after": true,
+        "z": 25,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": false,
+        "x": 265,
+        "after": false,
+        "z": 40,
+        "afterReason": "Blocked:Workspace.ShopStallTemplate.Part",
+        "beforeReason": "Blocked:Workspace.ShopStallTemplate.Kijimuna_AvatarSetup_10624_autosetup.RightLowerLeg"
+      },
+      {
+        "before": true,
+        "x": 265,
+        "after": true,
+        "z": 55,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 310,
+        "after": true,
+        "z": -20,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 310,
+        "after": true,
+        "z": -5,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 310,
+        "after": true,
+        "z": 25,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": false,
+        "x": 310,
+        "after": false,
+        "z": 40,
+        "afterReason": "Blocked:Workspace.Chill Octopus.PetMesh",
+        "beforeReason": "Blocked:Workspace.Chill Octopus.PetMesh"
+      },
+      {
+        "before": true,
+        "x": 310,
+        "after": true,
+        "z": 55,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 325,
+        "after": true,
+        "z": -20,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 325,
+        "after": true,
+        "z": -5,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 325,
+        "after": true,
+        "z": 25,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 325,
+        "after": true,
+        "z": 40,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      },
+      {
+        "before": true,
+        "x": 325,
+        "after": true,
+        "z": 55,
+        "afterReason": "Clear",
+        "beforeReason": "Clear"
+      }
+    ],
+    "probes": [
+      {
+        "before": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": true,
+          "reason": "Clear"
+        },
+        "after": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": true,
+          "reason": "Clear"
+        },
+        "name": "white floor",
+        "point": [
+          235,
+          4,
+          -20
+        ]
+      },
+      {
+        "before": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": false,
+          "reason": "Blocked:Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Lower"
+        },
+        "after": {
+          "y": 4.400014400482178,
+          "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+          "allowed": false,
+          "reason": "Blocked:Workspace.<local-character>.LeftUpperArm"
+        },
+        "name": "walking carpet plaza",
+        "point": [
+          287.79998779296875,
+          4.400000095367432,
+          13.300000190734863
+        ]
+      },
+      {
+        "before": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": false,
+          "reason": "Blocked:Workspace.GeneratedMap.TrainingArea.PathToTreadmills.Upper"
+        },
+        "after": {
+          "y": 4.400014877319336,
+          "surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.Upper",
+          "allowed": true,
+          "reason": "Clear"
+        },
+        "name": "walking carpet treadmill branch",
+        "point": [
+          287.79998779296875,
+          4.400000095367432,
+          -12
+        ]
+      },
+      {
+        "before": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": false,
+          "reason": "Blocked:Workspace.GeneratedMap.TrainingArea.EntranceCarpets.PathToRun.Upper"
+        },
+        "after": {
+          "y": 4.400014400482178,
+          "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.PathToRun.Upper",
+          "allowed": true,
+          "reason": "Clear"
+        },
+        "name": "walking carpet stage branch",
+        "point": [
+          287.79998779296875,
+          4.400000095367432,
+          55
+        ]
+      },
+      {
+        "before": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": false,
+          "reason": "Blocked:Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper"
+        },
+        "after": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": false,
+          "reason": "Blocked:Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper"
+        },
+        "name": "equipment stand excluded",
+        "point": [
+          290.8800048828125,
+          4.400000095367432,
+          -40.45000076293945
+        ]
+      },
+      {
+        "before": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": false,
+          "reason": "Blocked:Workspace.GeneratedMap.TrainingArea.PathToTreadmills.Upper"
+        },
+        "after": {
+          "y": 4.400014877319336,
+          "surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.Upper",
+          "allowed": false,
+          "reason": "EdgeSurfaceMismatch"
+        },
+        "name": "carpet step straddle",
+        "point": [
+          281.29998779296875,
+          4.400000095367432,
+          -12
+        ]
+      },
+      {
+        "before": {
+          "allowed": false,
+          "reason": "NoSurface"
+        },
+        "after": {
+          "allowed": false,
+          "reason": "NoSurface"
+        },
+        "name": "floor outside lobby",
+        "point": [
+          400,
+          4,
+          30
+        ]
+      },
+      {
+        "before": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+          "allowed": false,
+          "reason": "Blocked:Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Lower"
+        },
+        "after": {
+          "y": 4.400014400482178,
+          "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+          "allowed": false,
+          "reason": "Blocked:Workspace.<local-character>.Accessory (SST_Tracksuit_White_On_Black).Handle"
+        },
+        "name": "actual character",
+        "point": [
+          286.3259582519531,
+          4,
+          13.363448143005371
+        ]
+      },
+      {
+        "before": {
+          "y": 4,
+          "surface": "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.5.Floor",
+          "allowed": false,
+          "reason": "Blocked:Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.5.PathToRun.Upper"
+        },
+        "after": {
+          "y": 4.400014400482178,
+          "surface": "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.5.PathToRun.Upper",
+          "allowed": false,
+          "reason": "Blocked:Workspace.Enemies.Stage01_Enemy.BallerinaCappuccinaRig.Cube.016"
+        },
+        "name": "actual enemy",
+        "point": [
+          287.79998779296875,
+          8,
+          198.89999389648438
+        ]
+      }
+    ],
+    "fixtures": {
+      "removed": true,
+      "edgeOnlyBlocked": true,
+      "restoredClear": true,
+      "nonqueryAdded": true,
+      "staticMovedOut": true,
+      "movingOut": true,
+      "staticMovedBack": true,
+      "movingBlocked": true
+    }
+  }
+}

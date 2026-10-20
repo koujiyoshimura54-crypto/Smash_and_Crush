@@ -1,0 +1,4339 @@
+[
+  {
+    "label": "shopOpened",
+    "hostTime": "2026-10-20T01:06:50.610Z",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 194,
+          "totalMs": 1.2475996045395732
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.02280005719512701,
+          "calls": 1465,
+          "totalMs": 7.376900874078274
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 14924,
+          "totalMs": 82.34191872179508
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.012999982573091984,
+          "calls": 1668,
+          "totalMs": 0.669400324113667
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 2980,
+          "totalMs": 570.4219996696338
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 432,
+          "totalMs": 5.274699768051505
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 0.8505000732839108,
+          "calls": 239,
+          "totalMs": 36.016601021401584
+        },
+        "inventory@83": {
+          "maxMs": 0.017600017599761486,
+          "calls": 200,
+          "totalMs": 0.5821001250296831
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 200,
+          "totalMs": 26.590699097141623
+        },
+        "rewards@123": {
+          "maxMs": 0.22359995637089014,
+          "calls": 400,
+          "totalMs": 35.380500252358615
+        },
+        "squareStars@183": {
+          "maxMs": 0.02119992859661579,
+          "calls": 5019,
+          "totalMs": 4.224199568852782
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 1217,
+          "totalMs": 44.93910039309412
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 200,
+          "totalMs": 936.6532005369663
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 1360,
+          "totalMs": 23.430399247445166
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 200,
+          "totalMs": 21.856000763364136
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 218,
+          "totalMs": 0.3776999656111002
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 9,
+          "totalMs": 10.091299656778574
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 10,
+          "totalMs": 0.7314998656511307
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.022399937734007835,
+          "calls": 1487,
+          "totalMs": 4.286802024580538
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 1497,
+          "totalMs": 17686.864198418334
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 397,
+          "totalMs": 68.73660034034401
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 12611,
+          "totalMs": 311.0437033465132
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 13473,
+          "totalMs": 52.562691271305084
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 1494,
+          "totalMs": 17513.081301702186
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10561,
+          "totalMs": 353.9702973794192
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 3057,
+          "totalMs": 6.269198260270059
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 11,
+          "totalMs": 2.5959003251045942
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 5,
+          "totalMs": 13.028300018049777
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.2346000401303172,
+          "calls": 118,
+          "totalMs": 9.658299386501312
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 62,
+          "totalMs": 5.318599985912442
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 3,
+          "totalMs": 3.8276000414043665
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 275,
+          "totalMs": 5.3095006151124835
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 45,
+          "totalMs": 5.902200238779187
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 39,
+          "totalMs": 1.7612999072298408
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.06259989459067583,
+          "calls": 1485,
+          "totalMs": 21.71429863665253
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 1463,
+          "totalMs": 20.69949870929122
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": false,
+      "shop": true,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "label": "inventory",
+    "hostTime": "2026-10-20T01:06:54.492Z",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 219,
+          "totalMs": 1.4060999965295196
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.02280005719512701,
+          "calls": 1657,
+          "totalMs": 8.284601615741849
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 16044,
+          "totalMs": 89.65371444355696
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.012999982573091984,
+          "calls": 1808,
+          "totalMs": 0.7249002810567617
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 3370,
+          "totalMs": 643.3032001368701
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 460,
+          "totalMs": 5.35739935003221
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 0.8505000732839108,
+          "calls": 265,
+          "totalMs": 39.70830072648823
+        },
+        "inventory@83": {
+          "maxMs": 0.017600017599761486,
+          "calls": 226,
+          "totalMs": 0.6443000165745616
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 226,
+          "totalMs": 28.693099156953394
+        },
+        "rewards@123": {
+          "maxMs": 0.22359995637089014,
+          "calls": 452,
+          "totalMs": 39.95760052930564
+        },
+        "squareStars@183": {
+          "maxMs": 0.02119992859661579,
+          "calls": 5565,
+          "totalMs": 4.677999997511506
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 1373,
+          "totalMs": 47.33790108002722
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 226,
+          "totalMs": 1052.5939005892724
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 1535,
+          "totalMs": 24.056199239566922
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 226,
+          "totalMs": 24.913701345212758
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 218,
+          "totalMs": 0.3776999656111002
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 9,
+          "totalMs": 10.091299656778574
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 10,
+          "totalMs": 0.7314998656511307
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.03330002073198557,
+          "calls": 1683,
+          "totalMs": 4.877001396380365
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 1693,
+          "totalMs": 20007.914998335764
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 421,
+          "totalMs": 68.89090058393776
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 12871,
+          "totalMs": 311.8098034756258
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 15237,
+          "totalMs": 59.25789137836546
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 1690,
+          "totalMs": 19811.66210223455
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10561,
+          "totalMs": 353.9702973794192
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 3454,
+          "totalMs": 6.9815985625609756
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 11,
+          "totalMs": 2.5959003251045942
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 5,
+          "totalMs": 13.028300018049777
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.2346000401303172,
+          "calls": 118,
+          "totalMs": 9.658299386501312
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 62,
+          "totalMs": 5.318599985912442
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 3,
+          "totalMs": 3.8276000414043665
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 275,
+          "totalMs": 5.3095006151124835
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 45,
+          "totalMs": 5.902200238779187
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 39,
+          "totalMs": 1.7612999072298408
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.06259989459067583,
+          "calls": 1681,
+          "totalMs": 24.51169863343239
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 1655,
+          "totalMs": 22.27379905525595
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": true,
+      "shop": false,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "label": "itemsTab",
+    "hostTime": "2026-10-20T01:06:58.532Z",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 244,
+          "totalMs": 1.581900054588914
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.02280005719512701,
+          "calls": 1850,
+          "totalMs": 9.221401065587997
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 17324,
+          "totalMs": 97.79951209202409
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.012999982573091984,
+          "calls": 1968,
+          "totalMs": 0.7974006002768874
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 3754,
+          "totalMs": 715.2987994486466
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 492,
+          "totalMs": 5.464699468575418
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 1.181200030259788,
+          "calls": 303,
+          "totalMs": 47.46070085093379
+        },
+        "inventory@83": {
+          "maxMs": 0.017600017599761486,
+          "calls": 251,
+          "totalMs": 0.7101001683622599
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 251,
+          "totalMs": 31.902699265629053
+        },
+        "rewards@123": {
+          "maxMs": 0.22359995637089014,
+          "calls": 502,
+          "totalMs": 44.33140030596405
+        },
+        "squareStars@183": {
+          "maxMs": 0.3394999075680971,
+          "calls": 6363,
+          "totalMs": 5.830400506965816
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 1524,
+          "totalMs": 50.96380121540278
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 251,
+          "totalMs": 1168.4120005229488
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 1704,
+          "totalMs": 24.679798632860184
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 251,
+          "totalMs": 27.810201281681657
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 242,
+          "totalMs": 0.44149975292384624
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 10,
+          "totalMs": 11.352899600751698
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 11,
+          "totalMs": 0.7932998705655336
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.03330002073198557,
+          "calls": 1875,
+          "totalMs": 5.401401198469102
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 1885,
+          "totalMs": 22299.24919793848
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 439,
+          "totalMs": 79.28330020513386
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 13224,
+          "totalMs": 317.73210340179503
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 16965,
+          "totalMs": 65.64039317891002
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 1882,
+          "totalMs": 22080.582802183926
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10650,
+          "totalMs": 358.1711979350075
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 3840,
+          "totalMs": 7.676798617467284
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 12,
+          "totalMs": 2.7574002742767334
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 5,
+          "totalMs": 13.028300018049777
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.4936999175697565,
+          "calls": 172,
+          "totalMs": 14.41789953969419
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 88,
+          "totalMs": 7.329100393690169
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 4,
+          "totalMs": 5.097100045531988
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 401,
+          "totalMs": 7.893500849604607
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 66,
+          "totalMs": 8.749400149099529
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 57,
+          "totalMs": 2.5643996195867658
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.06259989459067583,
+          "calls": 1873,
+          "totalMs": 27.338598622009158
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 1848,
+          "totalMs": 23.663699044846
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": true,
+      "shop": false,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "label": "auraTab",
+    "hostTime": "2026-10-20T01:07:02.458Z",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 270,
+          "totalMs": 1.7411992885172367
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.02280005719512701,
+          "calls": 2049,
+          "totalMs": 10.260099777951837
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 18284,
+          "totalMs": 104.42941263318062
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.012999982573091984,
+          "calls": 2088,
+          "totalMs": 0.857900595292449
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 4052,
+          "totalMs": 769.0336994128302
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 516,
+          "totalMs": 5.562299396842718
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 1.181200030259788,
+          "calls": 326,
+          "totalMs": 52.07640095613897
+        },
+        "inventory@83": {
+          "maxMs": 0.02719997428357601,
+          "calls": 270,
+          "totalMs": 0.781800365075469
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 270,
+          "totalMs": 33.736699260771275
+        },
+        "rewards@123": {
+          "maxMs": 0.45469996985048056,
+          "calls": 540,
+          "totalMs": 48.00200054887682
+        },
+        "squareStars@183": {
+          "maxMs": 0.3394999075680971,
+          "calls": 6846,
+          "totalMs": 6.360100116580725
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 1639,
+          "totalMs": 52.87199968006462
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 270,
+          "totalMs": 1257.4703006539494
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 1832,
+          "totalMs": 25.134299066849053
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 270,
+          "totalMs": 29.850501217879355
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 266,
+          "totalMs": 0.49419968854635954
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 11,
+          "totalMs": 12.480999575927854
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 12,
+          "totalMs": 0.8321998175233603
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.03330002073198557,
+          "calls": 2024,
+          "totalMs": 5.825101863592863
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 2034,
+          "totalMs": 23988.67099825293
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 472,
+          "totalMs": 79.4116003671661
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 13473,
+          "totalMs": 319.7081028483808
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 18306,
+          "totalMs": 70.64969360362738
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 2031,
+          "totalMs": 23752.50430300366
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10704,
+          "totalMs": 358.7096977280453
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 4136,
+          "totalMs": 8.206398808397353
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 13,
+          "totalMs": 3.173300181515515
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 5,
+          "totalMs": 13.028300018049777
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.4936999175697565,
+          "calls": 172,
+          "totalMs": 14.41789953969419
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 88,
+          "totalMs": 7.329100393690169
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 5,
+          "totalMs": 6.221999996341765
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 401,
+          "totalMs": 7.893500849604607
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 66,
+          "totalMs": 8.749400149099529
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 57,
+          "totalMs": 2.5643996195867658
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.06259989459067583,
+          "calls": 2022,
+          "totalMs": 29.457898228429258
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 2047,
+          "totalMs": 25.00649925787002
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": true,
+      "shop": false,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "label": "speedTab",
+    "hostTime": "2026-10-20T01:07:06.649Z",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 295,
+          "totalMs": 1.9024994689971209
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.0412999652326107,
+          "calls": 2262,
+          "totalMs": 11.365098529495299
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 19884,
+          "totalMs": 114.88870775792748
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.012999982573091984,
+          "calls": 2288,
+          "totalMs": 0.93960075173527
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 4590,
+          "totalMs": 868.624200578779
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 556,
+          "totalMs": 5.718399886973202
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 1.181200030259788,
+          "calls": 358,
+          "totalMs": 57.230201084166765
+        },
+        "inventory@83": {
+          "maxMs": 0.02719997428357601,
+          "calls": 302,
+          "totalMs": 0.867000431753695
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 302,
+          "totalMs": 36.50219924747944
+        },
+        "rewards@123": {
+          "maxMs": 0.45469996985048056,
+          "calls": 604,
+          "totalMs": 53.97100024856627
+        },
+        "squareStars@183": {
+          "maxMs": 0.3394999075680971,
+          "calls": 7518,
+          "totalMs": 7.002900820225477
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 1831,
+          "totalMs": 55.99790043197572
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 302,
+          "totalMs": 1411.8229001760483
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 2048,
+          "totalMs": 25.971599970944226
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 302,
+          "totalMs": 33.532601315528154
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 279,
+          "totalMs": 0.5093996878713369
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 11,
+          "totalMs": 12.480999575927854
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 13,
+          "totalMs": 0.8654998382553458
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.03330002073198557,
+          "calls": 2292,
+          "totalMs": 6.574802449904382
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 2302,
+          "totalMs": 26766.08689862769
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 499,
+          "totalMs": 79.5698007568717
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 13794,
+          "totalMs": 320.7051034551114
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 20718,
+          "totalMs": 79.82509606517851
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 2299,
+          "totalMs": 26499.728602124378
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10704,
+          "totalMs": 358.7096977280453
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 4652,
+          "totalMs": 9.213200537487864
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 13,
+          "totalMs": 3.173300181515515
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 5,
+          "totalMs": 13.028300018049777
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.4936999175697565,
+          "calls": 172,
+          "totalMs": 14.41789953969419
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 88,
+          "totalMs": 7.329100393690169
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 5,
+          "totalMs": 6.221999996341765
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 401,
+          "totalMs": 7.893500849604607
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 66,
+          "totalMs": 8.749400149099529
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 57,
+          "totalMs": 2.5643996195867658
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.06259989459067583,
+          "calls": 2290,
+          "totalMs": 33.38599961716682
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 2261,
+          "totalMs": 26.547899702563882
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": true,
+      "shop": false,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "label": "dumbbellsTab",
+    "hostTime": "2026-10-20T01:07:10.539Z",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 320,
+          "totalMs": 2.0502995466813445
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.0412999652326107,
+          "calls": 2479,
+          "totalMs": 12.514199479483068
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 20844,
+          "totalMs": 121.52770580723882
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.012999982573091984,
+          "calls": 2408,
+          "totalMs": 0.9881008882075548
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 4914,
+          "totalMs": 930.203901254572
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 580,
+          "totalMs": 5.799299455247819
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 1.181200030259788,
+          "calls": 376,
+          "totalMs": 59.986301232129335
+        },
+        "inventory@83": {
+          "maxMs": 0.02719997428357601,
+          "calls": 320,
+          "totalMs": 0.9153005667030811
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 320,
+          "totalMs": 37.97599906101823
+        },
+        "rewards@123": {
+          "maxMs": 0.45469996985048056,
+          "calls": 640,
+          "totalMs": 56.93470034748316
+        },
+        "squareStars@183": {
+          "maxMs": 0.3394999075680971,
+          "calls": 7896,
+          "totalMs": 7.341101532801986
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 1939,
+          "totalMs": 57.57750058546662
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 320,
+          "totalMs": 1492.2158005647361
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 2171,
+          "totalMs": 26.40150091610849
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 320,
+          "totalMs": 35.36620130762458
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 279,
+          "totalMs": 0.5093996878713369
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 11,
+          "totalMs": 12.480999575927854
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 13,
+          "totalMs": 0.8654998382553458
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.03330002073198557,
+          "calls": 2454,
+          "totalMs": 7.035101996734738
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 2464,
+          "totalMs": 28404.256397741847
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 499,
+          "totalMs": 79.5698007568717
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 13974,
+          "totalMs": 321.2059042416513
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 22176,
+          "totalMs": 85.30879544559866
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 2461,
+          "totalMs": 28119.70390228089
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10704,
+          "totalMs": 358.7096977280453
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 4955,
+          "totalMs": 9.774299804121256
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 13,
+          "totalMs": 3.173300181515515
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 5,
+          "totalMs": 13.028300018049777
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.4936999175697565,
+          "calls": 172,
+          "totalMs": 14.41789953969419
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 88,
+          "totalMs": 7.329100393690169
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 5,
+          "totalMs": 6.221999996341765
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 401,
+          "totalMs": 7.893500849604607
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 66,
+          "totalMs": 8.749400149099529
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 57,
+          "totalMs": 2.5643996195867658
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.06259989459067583,
+          "calls": 2452,
+          "totalMs": 35.71519977413118
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 2479,
+          "totalMs": 27.948401286266744
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": true,
+      "shop": false,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "label": "inventoryClosed",
+    "hostTime": "2026-10-20T01:07:14.469Z",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 346,
+          "totalMs": 2.212799387052655
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.0412999652326107,
+          "calls": 2702,
+          "totalMs": 13.65219906438142
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 22124,
+          "totalMs": 129.56870917696506
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.012999982573091984,
+          "calls": 2568,
+          "totalMs": 1.0537011548876762
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 5358,
+          "totalMs": 1011.5299017634243
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 612,
+          "totalMs": 5.886099301278591
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 1.181200030259788,
+          "calls": 402,
+          "totalMs": 63.830501050688326
+        },
+        "inventory@83": {
+          "maxMs": 0.02719997428357601,
+          "calls": 346,
+          "totalMs": 0.9807008318603039
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 346,
+          "totalMs": 40.136498981155455
+        },
+        "rewards@123": {
+          "maxMs": 0.45469996985048056,
+          "calls": 692,
+          "totalMs": 61.57520064152777
+        },
+        "squareStars@183": {
+          "maxMs": 0.3394999075680971,
+          "calls": 8442,
+          "totalMs": 7.844101521186531
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 2095,
+          "totalMs": 59.85190125647932
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 346,
+          "totalMs": 1606.8051004549488
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 2346,
+          "totalMs": 27.00910111889243
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 346,
+          "totalMs": 38.09820127207786
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 279,
+          "totalMs": 0.5093996878713369
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 11,
+          "totalMs": 12.480999575927854
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 13,
+          "totalMs": 0.8654998382553458
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.03330002073198557,
+          "calls": 2676,
+          "totalMs": 7.657703012228012
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 2686,
+          "totalMs": 30564.43869881332
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 499,
+          "totalMs": 79.5698007568717
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 14234,
+          "totalMs": 321.9546037726104
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 24174,
+          "totalMs": 92.70119434222579
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 2683,
+          "totalMs": 30255.335001507774
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10704,
+          "totalMs": 358.7096977280453
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 5378,
+          "totalMs": 10.515101253986359
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 13,
+          "totalMs": 3.173300181515515
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 5,
+          "totalMs": 13.028300018049777
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.4936999175697565,
+          "calls": 172,
+          "totalMs": 14.41789953969419
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 88,
+          "totalMs": 7.329100393690169
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 5,
+          "totalMs": 6.221999996341765
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 401,
+          "totalMs": 7.893500849604607
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 66,
+          "totalMs": 8.749400149099529
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 57,
+          "totalMs": 2.5643996195867658
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.06259989459067583,
+          "calls": 2674,
+          "totalMs": 38.85569900739938
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 2702,
+          "totalMs": 29.408301692456007
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": false,
+      "shop": false,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "label": "shopReopened",
+    "hostTime": "2026-10-20T01:07:19.830Z",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 378,
+          "totalMs": 2.4017997784540057
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.0412999652326107,
+          "calls": 2936,
+          "totalMs": 14.793897978961468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 24044,
+          "totalMs": 143.7791067874059
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.012999982573091984,
+          "calls": 2808,
+          "totalMs": 1.1615012772381306
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 5930,
+          "totalMs": 1117.2390023712069
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 660,
+          "totalMs": 6.0559994308277965
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 1.181200030259788,
+          "calls": 440,
+          "totalMs": 69.5568002993241
+        },
+        "inventory@83": {
+          "maxMs": 0.02719997428357601,
+          "calls": 384,
+          "totalMs": 1.077000517398119
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 384,
+          "totalMs": 43.211698764935136
+        },
+        "rewards@123": {
+          "maxMs": 0.45469996985048056,
+          "calls": 768,
+          "totalMs": 68.25870054308325
+        },
+        "squareStars@183": {
+          "maxMs": 0.3394999075680971,
+          "calls": 9240,
+          "totalMs": 8.60280031338334
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 2324,
+          "totalMs": 63.48950113169849
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 384,
+          "totalMs": 1777.7425007661805
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 2603,
+          "totalMs": 27.98000117763877
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 384,
+          "totalMs": 42.20030130818486
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 305,
+          "totalMs": 0.5422995891422033
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 11,
+          "totalMs": 12.480999575927854
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 15,
+          "totalMs": 0.9355999063700438
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.03330002073198557,
+          "calls": 2961,
+          "totalMs": 8.403002051636577
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 2971,
+          "totalMs": 34208.10719789006
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 505,
+          "totalMs": 79.64240072760731
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 14616,
+          "totalMs": 323.10800382401794
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 26739,
+          "totalMs": 102.40189451724291
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 2968,
+          "totalMs": 33867.20110208262
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10704,
+          "totalMs": 358.7096977280453
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 5958,
+          "totalMs": 11.60300022456795
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 13,
+          "totalMs": 3.173300181515515
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 6,
+          "totalMs": 13.285799999721348
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.4936999175697565,
+          "calls": 172,
+          "totalMs": 14.41789953969419
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 88,
+          "totalMs": 7.329100393690169
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 5,
+          "totalMs": 6.221999996341765
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 401,
+          "totalMs": 7.893500849604607
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 66,
+          "totalMs": 8.749400149099529
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 57,
+          "totalMs": 2.5643996195867658
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.06259989459067583,
+          "calls": 2959,
+          "totalMs": 42.83869965001941
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 2936,
+          "totalMs": 31.146901659667492
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": false,
+      "shop": true,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "label": "additionalMenus",
+    "viewport": "1366, 767",
+    "stats": {
+      "ReplicatedStorage.Modules.InventoryNotificationExposure": {
+        "M.new@25": {
+          "maxMs": 0.031100003980100155,
+          "calls": 2,
+          "totalMs": 0.055999960750341415
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryCapacityUpgradeClient": {
+        "bindWinButton@56": {
+          "maxMs": 0.20150002092123032,
+          "calls": 2,
+          "totalMs": 0.38050010334700346
+        },
+        "layout@282": {
+          "maxMs": 3.4995999885722995,
+          "calls": 3,
+          "totalMs": 3.5663999151438475
+        },
+        "attachStall@262": {
+          "maxMs": 0.10299996938556433,
+          "calls": 563,
+          "totalMs": 3.5416990285739303
+        },
+        "icon@47": {
+          "maxMs": 0.013100099749863148,
+          "calls": 2,
+          "totalMs": 0.025300076231360435
+        },
+        "frame@22": {
+          "maxMs": 0.025499961338937283,
+          "calls": 3,
+          "totalMs": 0.04640000406652689
+        },
+        "label@35": {
+          "maxMs": 0.03550003748387098,
+          "calls": 6,
+          "totalMs": 0.1564000267535448
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryNotificationClient": {
+        "guideBadge@52": {
+          "maxMs": 0.13719999697059393,
+          "calls": 2,
+          "totalMs": 0.21309999283403158
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.AutoTapClient": {
+        "layout@48": {
+          "maxMs": 0.04379998426884413,
+          "calls": 1,
+          "totalMs": 0.04379998426884413
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGainGui.StrengthGainClient": {
+        "callback@94": {
+          "maxMs": 0.06369990296661854,
+          "calls": 4345,
+          "totalMs": 21.97239827364683
+        }
+      },
+      "LocalPlayer.PlayerScripts.Combat.CombatClient": {
+        "updateGaugeLayout@395": {
+          "maxMs": 0.09640003554522991,
+          "calls": 12,
+          "totalMs": 0.4746998893097043
+        },
+        "wallGauge@174": {
+          "maxMs": 0.21319999359548092,
+          "calls": 32844,
+          "totalMs": 200.46411117073148
+        },
+        "syncPersonalBossCollider@497": {
+          "maxMs": 0.013299984857439995,
+          "calls": 3908,
+          "totalMs": 1.6665010480210185
+        },
+        "label@464": {
+          "maxMs": 0.2994999522343278,
+          "calls": 18,
+          "totalMs": 2.8695000801235437
+        },
+        "callback@679": {
+          "maxMs": 0.9764999849721789,
+          "calls": 8646,
+          "totalMs": 1620.39990327321
+        },
+        "gauge@447": {
+          "maxMs": 0.8798000635579228,
+          "calls": 880,
+          "totalMs": 6.742298952303827
+        },
+        "mount@2": {
+          "maxMs": 0.051200040616095066,
+          "calls": 1,
+          "totalMs": 0.051200040616095066
+        },
+        "callback@716": {
+          "maxMs": 2.362700062803924,
+          "calls": 167,
+          "totalMs": 39.21680024359375
+        },
+        "layoutOverhead@367": {
+          "maxMs": 0.09490002412348986,
+          "calls": 12,
+          "totalMs": 0.4630998009815812
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryTabsClient": {
+        "layout@20": {
+          "maxMs": 1.9058000762015581,
+          "calls": 3,
+          "totalMs": 1.9631001632660627
+        }
+      },
+      "ReplicatedStorage.Modules.ResponsivePanels": {
+        "M.Bind@356": {
+          "maxMs": 0.016700010746717453,
+          "calls": 1,
+          "totalMs": 0.016700010746717453
+        },
+        "M.LayoutItems@158": {
+          "maxMs": 1.181200030259788,
+          "calls": 620,
+          "totalMs": 96.8659003265202
+        },
+        "inventory@83": {
+          "maxMs": 0.02719997428357601,
+          "calls": 564,
+          "totalMs": 1.5444007003679872
+        },
+        "merge@245": {
+          "maxMs": 5.8373999781906605,
+          "calls": 564,
+          "totalMs": 58.619699091650546
+        },
+        "rewards@123": {
+          "maxMs": 0.45469996985048056,
+          "calls": 1128,
+          "totalMs": 100.45020014513284
+        },
+        "squareStars@183": {
+          "maxMs": 0.3394999075680971,
+          "calls": 13020,
+          "totalMs": 12.429799186065793
+        },
+        "M.Fit@37": {
+          "maxMs": 9.279799996875226,
+          "calls": 3404,
+          "totalMs": 80.1055000629276
+        },
+        "refresh@359": {
+          "maxMs": 12.718399986624718,
+          "calls": 564,
+          "totalMs": 2606.0257016215473
+        },
+        "M.Small@32": {
+          "maxMs": 4.164600046351552,
+          "calls": 3817,
+          "totalMs": 32.54710149485618
+        },
+        "updateHitboxes@334": {
+          "maxMs": 0.30700000934302807,
+          "calls": 564,
+          "totalMs": 61.98550050612539
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthUI.MergePanel_New.MergePanelClient_New": {
+        "buildMergeShop@4": {
+          "maxMs": 61.517000081948936,
+          "calls": 1,
+          "totalMs": 61.517000081948936
+        },
+        "action@117": {
+          "maxMs": 0.22639997769147158,
+          "calls": 4,
+          "totalMs": 0.7396000437438488
+        },
+        "rect@47": {
+          "maxMs": 0.015400000847876072,
+          "calls": 680,
+          "totalMs": 0.5426004063338041
+        }
+      },
+      "ReplicatedStorage.Modules.InventoryPresentation": {
+        "referenceRect@162": {
+          "maxMs": 0.025999965146183968,
+          "calls": 331,
+          "totalMs": 0.5625996273010969
+        },
+        "layout@440": {
+          "maxMs": 1.4727999223396182,
+          "calls": 11,
+          "totalMs": 12.480999575927854
+        },
+        "setupInventoryReference@181": {
+          "maxMs": 23.1958000222221,
+          "calls": 1,
+          "totalMs": 23.1958000222221
+        },
+        "M.BindPurchasedPanel@379": {
+          "maxMs": 46.490699984133244,
+          "calls": 3,
+          "totalMs": 52.30800004210323
+        },
+        "M.BuildSpeedView@263": {
+          "maxMs": 9.965699980966747,
+          "calls": 1,
+          "totalMs": 9.965699980966747
+        },
+        "heading@404": {
+          "maxMs": 0.009100069291889668,
+          "calls": 2,
+          "totalMs": 0.016600009985268116
+        },
+        "M.SetItemStars@59": {
+          "maxMs": 0.33379998058080673,
+          "calls": 39,
+          "totalMs": 7.051100255921483
+        },
+        "layout@331": {
+          "maxMs": 0.1970999874174595,
+          "calls": 17,
+          "totalMs": 0.9787000017240644
+        },
+        "M.ApplyPurchasedSurface@113": {
+          "maxMs": 0.2055000513792038,
+          "calls": 77,
+          "totalMs": 6.338299601338804
+        }
+      },
+      "LocalPlayer.PlayerGui.LevelUpGui.LevelUpEffectClient": {
+        "fit@7": {
+          "maxMs": 0.004300032742321491,
+          "calls": 2,
+          "totalMs": 0.00800006091594696
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.EggClient": {
+        "stampSheet@91": {
+          "maxMs": 0.22310006897896528,
+          "calls": 5,
+          "totalMs": 0.8617000421509147
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.ItemEffectHUDClient": {
+        "stopGlove@120": {
+          "maxMs": 0.0073999399319291115,
+          "calls": 2,
+          "totalMs": 0.009299954399466515
+        },
+        "layout@167": {
+          "maxMs": 0.03330002073198557,
+          "calls": 4320,
+          "totalMs": 12.348401476629078
+        },
+        "stopBelt@126": {
+          "maxMs": 0.005399924702942371,
+          "calls": 4,
+          "totalMs": 0.010999967344105244
+        }
+      },
+      "ReplicatedStorage.Modules.HUDLayout": {
+        "layout@143": {
+          "maxMs": 25.893199956044555,
+          "calls": 4330,
+          "totalMs": 51186.856195447035
+        },
+        "M.Mount@122": {
+          "maxMs": 1.0345999617129564,
+          "calls": 9,
+          "totalMs": 1.0471000568941236
+        },
+        "M.PurchaseButton@455": {
+          "maxMs": 5.289799999445677,
+          "calls": 607,
+          "totalMs": 80.17730072606355
+        },
+        "M.GetLocalSize@14": {
+          "maxMs": 4.932600073516369,
+          "calls": 16418,
+          "totalMs": 328.2651025801897
+        },
+        "follow@126": {
+          "maxMs": 0.1976999919861555,
+          "calls": 38970,
+          "totalMs": 148.11999956145883
+        },
+        "placeReturnButton@72": {
+          "maxMs": 25.803099968470633,
+          "calls": 4327,
+          "totalMs": 50694.870200706646
+        },
+        "resize@514": {
+          "maxMs": 4.955900018103421,
+          "calls": 10704,
+          "totalMs": 358.7096977280453
+        },
+        "M.GetControls@23": {
+          "maxMs": 0.7046000100672245,
+          "calls": 8711,
+          "totalMs": 16.536402399651706
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.ButtonClient": {
+        "bindButton@80": {
+          "maxMs": 0.08929998148232698,
+          "calls": 201,
+          "totalMs": 1.5059999423101544
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.TimeRewardsClient": {
+        "layout@100": {
+          "maxMs": 1.260399934835732,
+          "calls": 3,
+          "totalMs": 2.328299800865352
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.DailyRewardsClient": {
+        "layout@82": {
+          "maxMs": 1.644299947656691,
+          "calls": 3,
+          "totalMs": 1.6911000711843371
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.StrengthDisplay": {
+        "update@27": {
+          "maxMs": 0.05549995694309473,
+          "calls": 1,
+          "totalMs": 0.05549995694309473
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.InventoryPanelClient": {
+        "layout@181": {
+          "maxMs": 0.8006000425666571,
+          "calls": 13,
+          "totalMs": 3.173300181515515
+        },
+        "label@55": {
+          "maxMs": 0.25429995730519295,
+          "calls": 48,
+          "totalMs": 5.556099931709468
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.NotifyClient": {
+        "NotifyClient.start@403": {
+          "maxMs": 0.1357999863103032,
+          "calls": 1,
+          "totalMs": 0.1357999863103032
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.EssentialStudShopClient": {
+        "layoutShop@21": {
+          "maxMs": 9.284000028856099,
+          "calls": 6,
+          "totalMs": 13.285799999721348
+        },
+        "refreshEssentialPassDisplays@254": {
+          "maxMs": 0.06519991438835859,
+          "calls": 1,
+          "totalMs": 0.06519991438835859
+        },
+        "layoutDumbbellShop@62": {
+          "maxMs": 3.9898999966681004,
+          "calls": 493,
+          "totalMs": 201.15239906590432
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ItemInventoryTabClient": {
+        "label@56": {
+          "maxMs": 0.4936999175697565,
+          "calls": 172,
+          "totalMs": 14.41789953969419
+        },
+        "surface@75": {
+          "maxMs": 0.345699954777956,
+          "calls": 88,
+          "totalMs": 7.329100393690169
+        },
+        "fit@303": {
+          "maxMs": 3.4278000239282846,
+          "calls": 5,
+          "totalMs": 6.221999996341765
+        },
+        "icon@70": {
+          "maxMs": 0.23179990239441395,
+          "calls": 401,
+          "totalMs": 7.893500849604607
+        },
+        "stars@108": {
+          "maxMs": 0.37340004928410053,
+          "calls": 66,
+          "totalMs": 8.749400149099529
+        },
+        "check@93": {
+          "maxMs": 0.12350000906735659,
+          "calls": 57,
+          "totalMs": 2.5643996195867658
+        }
+      },
+      "LocalPlayer.PlayerScripts.UI.SizeChangeClient": {
+        "callback@32": {
+          "maxMs": 0.14269992243498564,
+          "calls": 4318,
+          "totalMs": 62.7518012188375
+        }
+      },
+      "LocalPlayer.PlayerGui.StrengthGui.ShopBenefitsClient": {
+        "callback@168": {
+          "maxMs": 3.0494999373331666,
+          "calls": 4345,
+          "totalMs": 41.696501430124044
+        }
+      },
+      "LocalPlayer.PlayerScripts.Services.MenuClient": {
+        "MenuClient.init@349": {
+          "maxMs": 0.03390002530068159,
+          "calls": 1,
+          "totalMs": 0.03390002530068159
+        }
+      }
+    },
+    "panels": {
+      "inventory": false,
+      "shop": false,
+      "rebirth": false
+    },
+    "guis": [
+      {
+        "name": "SizeChangeGui",
+        "enabled": true
+      },
+      {
+        "name": "Freecam",
+        "enabled": true
+      },
+      {
+        "name": "ScreenGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGui",
+        "enabled": true
+      },
+      {
+        "name": "World1DoubleWinGui",
+        "enabled": false
+      },
+      {
+        "name": "MergePanel_New",
+        "enabled": false
+      },
+      {
+        "name": "StageSkipGui",
+        "enabled": true
+      },
+      {
+        "name": "LevelUpGui",
+        "enabled": true
+      },
+      {
+        "name": "StrengthGainGui",
+        "enabled": true
+      },
+      {
+        "name": "WorldTravelGui",
+        "enabled": true
+      },
+      {
+        "name": "DeathGui",
+        "enabled": false
+      },
+      {
+        "name": "NotifyGui",
+        "enabled": true
+      }
+    ]
+  }
+]

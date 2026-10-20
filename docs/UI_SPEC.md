@@ -609,3 +609,8 @@ StudioTestCommandResult carries server replies to the restored StudioTestCommand
 Existing Shop/Inventory/Merge/Aura/Egg/treadmill/stand UI consumes the same World2 catalog definitions as server calculations, with separate W2 identity and synchronized price/owned/equipped states. Existing icons, stars/rarity numbers, element/type labels, fonts and outlines are reused. Existing stand images/Adornees remain. Normal Egg counts 1/3/8 display the actual debit. Unknown paid treadmill/Aura/Limited Egg show unavailable purchase state without 0/free pricing; no placeholder-asset disclaimer is added. Geometry remains unchanged.
 
 Native Edit confirmed configured UI references/labels and model aliases, but image requests remained unloaded and capture did not complete. Actual image rendering, runtime panel layout/state/animation and operation are unverified. [Details](../reports/World2Gameplay_20261020.md).
+
+
+### UI layout investigation only — 2026-10-20
+
+Inventory: 94 UI-related Sources, 416 authored GUI roots/views, including dynamic/shared/facility builders. Native temporary counters reproduced EssentialStudShopClient layoutDumbbellShop 493 startup calls and recurring HUDLayout RenderStepped full-PlayerGui obstruction scans. Prioritize event-driven/diffed HUD layout, then coalesced Shop card/canvas layout, then shared ResponsivePanels writes. No UI behavior/design implementation was changed. Resize, touch and direct connection-growth validation remain pending; do not classify every screen as affected. Detailed statuses and measured scope: reports/TutorialArrows_UIAudit_20261020/REPORT.md.
