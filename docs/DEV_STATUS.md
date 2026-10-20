@@ -2243,3 +2243,8 @@ Deferred real DataStore acquisition into existing protected operations so module
 ## 2026-10-20 — Treadmill title rows
 
 World1/World2 treadmill headings fit one line within their reserved text width; both saved icons and runtime updater use rbxassetid://106106287008236 with Fit/aspect preservation. Other facility titles, machine captions and gameplay remain unchanged. Same-file syntax/reference/re-decode checks passed. Near/far rendering and actual image loading remain unverified because no Studio was connected/running. See reports/TreadmillHeading_20261020/REPORT.md.
+
+
+## 2026-10-20 — Treadmill heading scaling regression
+
+Native Edit proved TextWrapped=false disabled TextScaled, leaving14px text. Preserve both flags and measure localized width while retaining the normal7.5-stud height. Both Worlds/English/Japanese render one line; near100px, far44.55/45.44px versus normal Dumbbells100/41.88px at comparable distances. Both new icons are actually loaded. Same-file binary validation passed; no Play/Save/Publish. See reports/TreadmillHeadingSizing_20261020/REPORT.md.

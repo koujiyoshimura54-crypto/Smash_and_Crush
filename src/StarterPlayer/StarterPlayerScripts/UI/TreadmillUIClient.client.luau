@@ -9,29 +9,58 @@ local blue = Color3.fromRGB(55, 145, 255)
 -- Keep purchased artwork/fonts; reserve explicit text width instead of
 -- AutomaticSize.X + TextScaled competing inside a clipped horizontal row.
 local function set(object,key,value) if object and object[key]~=value then object[key]=value end end
+local TextService=game:GetService("TextService")
+local schedule
+local titleWatches=setmetatable({}, {__mode="k"})
+local function treadmillTitle(gui)
+ local label=gui:FindFirstChild("Name")
+ local icon=gui:FindFirstChild("Icon")
+ if not label then return end
+ -- Same world-space height/icon/gap as the normal Egg and Dumbbell headings.
+ -- Extend the row for the actual localized string instead of shrinking its font.
+ local height,iconWidth,gap,margin=7.5,6.8,1.2,1.6
+ local text=label.ContentText~="" and label.ContentText or label.Text
+ local bounds=TextService:GetTextSize(text,100,label.Font,Vector2.new(100000,1000))
+ local textWidth=math.max(30.4,bounds.X/math.max(bounds.Y,1)*(height*.9)*1.12)
+ local width=iconWidth+gap+textWidth+margin
+ set(gui,"Size",UDim2.fromScale(width,height))
+ local row=gui:FindFirstChildOfClass("UIListLayout")
+ if row then
+  set(row,"Padding",UDim.new(gap/width,0))
+  set(row,"HorizontalAlignment",Enum.HorizontalAlignment.Center)
+  set(row,"VerticalAlignment",Enum.VerticalAlignment.Center)
+ end
+ set(label,"AutomaticSize",Enum.AutomaticSize.None)
+ set(label,"Size",UDim2.fromScale(textWidth/width,.9))
+ -- Roblox disables TextScaled when TextWrapped is turned off. The measured
+ -- one-line width prevents wrapping while leaving distance scaling enabled.
+ set(label,"TextWrapped",true);set(label,"TextScaled",true);set(label,"TextTruncate",Enum.TextTruncate.None)
+ set(icon,"Size",UDim2.fromScale(iconWidth/width,.9))
+ set(icon,"Image","rbxassetid://106106287008236");set(icon,"ScaleType",Enum.ScaleType.Fit)
+ if not titleWatches[label] then
+  local connections={label:GetPropertyChangedSignal("ContentText"):Connect(function()schedule()end),
+   label:GetPropertyChangedSignal("FontFace"):Connect(function()schedule()end)}
+  titleWatches[label]=connections
+  label.Destroying:Once(function()
+   for _,connection in connections do connection:Disconnect() end
+   titleWatches[label]=nil
+  end)
+ end
+end
 local function title(folder,treadmill)
  local part=folder and folder:FindFirstChild("Billboard")
  local gui=part and part:FindFirstChildWhichIsA("BillboardGui")
  if not gui then return end
  set(gui,"Adornee",part)
- if treadmill then set(gui,"Size",UDim2.fromScale(40,9));set(gui,"StudsOffsetWorldSpace",Vector3.new(0,4,0))end
+ if treadmill then
+  set(gui,"StudsOffsetWorldSpace",Vector3.new(0,4,0));treadmillTitle(gui)
+  return
+ end
  local row=gui:FindFirstChildOfClass("UIListLayout")
  if row then set(row,"Padding",UDim.new(.03,0));set(row,"HorizontalAlignment",Enum.HorizontalAlignment.Center);set(row,"VerticalAlignment",Enum.VerticalAlignment.Center)end
  local icon=gui:FindFirstChild("Icon");set(icon,"Size",UDim2.fromScale(.17,.9))
  local label=gui:FindFirstChild("Name")
- if label then
-  set(label,"AutomaticSize",Enum.AutomaticSize.None);set(label,"Size",UDim2.fromScale(.76,.9));set(label,"TextScaled",true)
-  -- Fit the complete localized heading in one line; keep the row's outline margin.
-  set(label,"TextWrapped",not treadmill)
-  if treadmill then
-   set(label,"TextTruncate",Enum.TextTruncate.None)
-   local limit=label:FindFirstChildOfClass("UITextSizeConstraint")
-   if limit then set(limit,"MinTextSize",1) end
-  end
- end
- if treadmill then
-  set(icon,"Image","rbxassetid://106106287008236");set(icon,"ScaleType",Enum.ScaleType.Fit)
- end
+ if label then set(label,"AutomaticSize",Enum.AutomaticSize.None);set(label,"Size",UDim2.fromScale(.76,.9));set(label,"TextScaled",true);set(label,"TextWrapped",true)end
 end
 local function layout(model,gui,world)
  if not gui then return end
@@ -81,7 +110,7 @@ local function refresh()
  end
 end
 local queued=false
-local function schedule()
+schedule=function()
  if queued then return end;queued=true
  task.defer(function()queued=false;refresh()end)
 end

@@ -1003,3 +1003,8 @@ Prevent require-time DataStore errors from blocking Egg and Item Merge Remote re
 ## 2026-10-20 — Treadmill heading wrap and icon
 
 Scoped World1/World2 treadmill titles to single-line fitting and updated the shoe URI in saved properties and runtime Source. Binary/syntax checks passed; actual display/image loading unverified. See reports/TreadmillHeading_20261020/REPORT.md.
+
+
+## 2026-10-20 — Correct treadmill title shrink regression
+
+Restore TextScaled with TextWrapped enabled and extend the heading width for localized text. Native English/Japanese near/far views and normal-Dumbbell size comparison passed in both Worlds; shoe images loaded. See reports/TreadmillHeadingSizing_20261020/REPORT.md.

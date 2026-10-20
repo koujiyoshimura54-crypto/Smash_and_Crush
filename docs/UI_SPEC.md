@@ -623,4 +623,4 @@ The six World1/World2 Dumbbell, Egg and Treadmill headings allocate explicit ico
 
 ## 2026-10-20 — Treadmill heading fitting
 
-Only World1/World2 treadmill title rows use explicit76% text width, TextScaled=true, TextWrapped=false and no truncation, retaining icon17%/gap3% and an outline margin. The shoe icon is rbxassetid://106106287008236, Fit with the existing aspect constraint, in both saved objects and runtime Source. Preserve words/fonts/colors/positions and machine captions. Actual near/far rendering and image delivery remain unverified.
+Superseding the8384ce6 regression: keep TextWrapped=true and TextScaled=true together. Measure localized text and extend only the treadmill title width (English40.7976 / Japanese55.8672 studs), preserving the normal7.5-stud height,6.8-stud icon,1.2-stud gap and existing offset/font/colors/stroke. Retain rbxassetid://106106287008236 with Fit/aspect preservation. Native English/Japanese near/far rendering and actual icon loading passed in both Worlds against normal Dumbbell headings. See reports/TreadmillHeadingSizing_20261020/REPORT.md.
