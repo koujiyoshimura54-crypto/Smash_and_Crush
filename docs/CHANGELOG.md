@@ -1034,3 +1034,8 @@ The current Config already had IsSupportedWorld; the real failure was retired St
 ## 2026-10-20 - Remove verification screenshots at user request
 
 Delete both muscle-growth verification captures and their links; retain numeric evidence. Future verification screenshots are temporary and must be deleted after inspection unless image retention is explicitly requested. Game Sources and CurrentCloud.rbxl are unchanged.
+
+
+## 2026-10-20 - Adjust seven body-growth Strength thresholds
+
+Update stages6..12 only; retain all dimensions, stages0..13,6B cap and existing gameplay. Verified actual Source offline boundaries/syntax and exact preservation after same-file write/reDecode. Studio not started; no screenshots. [Evidence](../reports/MuscleThresholds_20261020.json).

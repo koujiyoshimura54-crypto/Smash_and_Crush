@@ -674,7 +674,7 @@ Read from the actual CurrentCloud Config during the StageSkip repair: stages2..1
 
 Supersedes all earlier muscle threshold/height/factor tables, including the2026-09-20 ten-stage progression. Stage0 is the unchanged base, followed by13 discrete growth stages. Level is explanatory only; AUTO reads current Strength, with no World/Boss gate and no interpolation. Cap at13 for6B or more.
 
-| Stage | Required Strength | Approximate LV (not a condition) | Height | Upper-arm X/Z |
+| Stage | Required Strength | Prior LV guide (not a condition) | Height | Upper-arm X/Z |
 |---|---:|---:|---:|---:|
 |0|0|1|1.00|1.00|
 |1|40|3|1.10|1.30|
@@ -682,13 +682,18 @@ Supersedes all earlier muscle threshold/height/factor tables, including the2026-
 |3|955|10|1.25|1.525|
 |4|2840|15|1.35|1.60|
 |5|7215|20|1.45|1.675|
-|6|37315|30|1.70|1.825|
-|7|196915|40|2.00|1.975|
-|8|462965|45|2.15|2.05|
-|9|30000000|64|2.40|2.20|
-|10|150000000|79|2.65|2.35|
-|11|700000000|102|2.95|2.50|
-|12|2000000000|121|3.25|2.65|
+|6|100000|30|1.70|1.825|
+|7|3000000|40|2.00|1.975|
+|8|50000000|45|2.15|2.05|
+|9|100000000|64|2.40|2.20|
+|10|300000000|79|2.65|2.35|
+|11|1000000000|102|2.95|2.50|
+|12|3000000000|121|3.25|2.65|
 |13|6000000000|145|3.55|2.80|
 
 Use `(upperArmScale-1)/0.15` with the existing part coefficients: UpperTorso X/Z .12/.10, LowerTorso .05/.05, LowerArm .08/.08, UpperLeg UpperTorso*.75, LowerLeg UpperTorso*.60. Y uses the explicit table. Head/hands/feet/root are not newly scaled. Manual size access remains Rebirth5,500 Win per changed non-AUTO selection, free AUTO. No Strength/LV/rebirth multiplier/damage/Speed/price/reward changes.
+
+
+## 2026-10-20 - Body growth threshold-only revision
+
+Stages6..12 now require100000/3000000/50000000/100000000/300000000/1000000000/3000000000 Strength. The table above reflects these values; all shape multipliers and the6B cap remain unchanged. LV labels retain the prior design guides, not recalculated conditions. Level/Rebirth logic, selection/payment/access and all other gameplay are unchanged. Offline boundary/syntax/binary preservation checks passed; Studio was not started.

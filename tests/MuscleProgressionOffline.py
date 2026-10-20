@@ -12,13 +12,15 @@ Vector3.one=Vector3.new(1,1,1);Vector3.zero=Vector3.new(0,0,0)
 local Config=(function()
 ''' + source + '''
 end)()
-local thresholds={40,250,955,2840,7215,37315,196915,462965,30000000,150000000,700000000,2000000000,6000000000}
+local thresholds={40,250,955,2840,7215,100000,3000000,50000000,100000000,300000000,1000000000,3000000000,6000000000}
 local heights={1.10,1.175,1.25,1.35,1.45,1.70,2,2.15,2.40,2.65,2.95,3.25,3.55}
 local arms={1.30,1.45,1.525,1.60,1.675,1.825,1.975,2.05,2.20,2.35,2.50,2.65,2.80}
 local function near(a,b)assert(math.abs(a-b)<1e-6,tostring(a)..' ~= '..tostring(b))end
 assert(Config.MAX_STAGE==13)
 assert(Config.GetMuscleStage(0)==0)
 for stage,threshold in thresholds do
+ assert(Config.MUSCLE_THRESHOLDS[stage]==threshold)
+ assert(stage==1 or Config.MUSCLE_THRESHOLDS[stage]>Config.MUSCLE_THRESHOLDS[stage-1])
  assert(Config.GetMuscleStage(threshold-1)==stage-1)
  assert(Config.GetMuscleStage(threshold)==stage)
  assert(Config.GetMuscleStage(threshold+1)==stage)
