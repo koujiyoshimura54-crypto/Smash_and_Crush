@@ -1,5 +1,16 @@
 -- Presentation only. All purchase/equip/merge/Skip decisions remain in callers.
 local M={}
+-- Native localization, scoped to equipment wording from GameLocalizationTable.csv.
+local equipmentLocalization=Instance.new("LocalizationTable")
+equipmentLocalization.Name="EquipmentStateLocalization";equipmentLocalization.SourceLocaleId="en-us"
+equipmentLocalization:SetEntries({
+ {Source="Equip",Values={ja="\u{88C5}\u{5099}"}},
+ {Source="Equipped",Values={ja="\u{88C5}\u{5099}\u{4E2D}"}},
+ {Source="Owned",Values={ja="\u{6240}\u{6709}\u{6E08}\u{307F}"}},
+})
+function M.LocalizeEquipmentLabel(label)
+ label.AutoLocalize=true;label.RootLocalizationTable=equipmentLocalization
+end
 local bindings=setmetatable({},{__mode="k"})
 local function templates()
  local shop=game.StarterGui.StrengthGui.ShopPanel
@@ -11,7 +22,7 @@ local colors={
  card=ColorSequence.new(Color3.fromRGB(119,0,225),Color3.fromRGB(48,0,126)),
  blueCard=ColorSequence.new(Color3.fromRGB(0,137,245),Color3.fromRGB(0,46,133)),
  selected=ColorSequence.new(Color3.fromRGB(223,0,255),Color3.fromRGB(128,0,255)),
- equipped=ColorSequence.new(Color3.fromRGB(38,215,75),Color3.fromRGB(0,112,50)),
+ equipped=ColorSequence.new(Color3.fromRGB(0,222,255),Color3.fromRGB(0,148,236)),
  action=ColorSequence.new(Color3.fromRGB(0,190,255),Color3.fromRGB(0,84,238)),
 }
 local purchase={BuyButton=true,WinButton=true,RobuxButton=true,WinPurchase=true,RobuxPurchase=true,Purchase=true,PurchasedButtonVisual=true}
@@ -150,7 +161,38 @@ function M.SetSelected(x,value)
   visual.InnerUIStroke.Color=value and Color3.fromRGB(86,244,255) or Color3.fromRGB(200,83,255)
  else M.ApplyPurchasedSurface(x) end
 end
-function M.SetEquipped(x,value) x:SetAttribute("PurchasedShopEquipped",value==true);M.ApplyPurchasedSurface(x) end
+-- Paint the actual visible surface, including purchased image/gradient skins.
+-- Callers supply server-confirmed state. Hover only changes scale; no GUI polling.
+M.EquippedColor=Color3.fromRGB(0,222,255)
+local equipmentPaint=setmetatable({}, {__mode="k"})
+function M.SetEquipped(x,value,surface)
+ value=value==true
+ x:SetAttribute("PurchasedShopEquipped",value)
+ local labels={x};for _,label in x:GetDescendants()do table.insert(labels,label)end
+ for _,label in labels do
+  if (label:IsA("TextLabel")or label:IsA("TextButton"))and (label.Text=="Equip"or label.Text=="Equipped"or label.Text=="Owned")then M.LocalizeEquipmentLabel(label)end
+ end
+ local root=surface or x:FindFirstChild("PurchasedButtonVisual") or x
+ local record=equipmentPaint[root]
+ if not record then record={};equipmentPaint[root]=record end
+ local targets={root}
+ local main=root:FindFirstChild("Main")
+ if main then table.insert(targets,main) end
+ for _,target in targets do
+  if target:IsA("GuiObject") then
+   local saved=record[target]
+   if not saved then
+    saved={BackgroundColor3=target.BackgroundColor3,ImageColor3=(target:IsA("ImageLabel")or target:IsA("ImageButton"))and target.ImageColor3 or nil,
+     Gradient=target:FindFirstChildOfClass("UIGradient")}
+    if saved.Gradient then saved.Color=saved.Gradient.Color;saved.Enabled=saved.Gradient.Enabled end
+    record[target]=saved
+   end
+   target.BackgroundColor3=value and (saved.Gradient and Color3.new(1,1,1)or M.EquippedColor)or saved.BackgroundColor3
+   if saved.ImageColor3 then target.ImageColor3=value and Color3.new(1,1,1)or saved.ImageColor3 end
+   if saved.Gradient then saved.Gradient.Color=value and colors.equipped or saved.Color;saved.Gradient.Enabled=value or saved.Enabled end
+  end
+ end
+end
 
 -- Measured from the owner's 1672x941 reference: panel (271,76), 1130x812.
 -- All painted parts below are clones of purchased Shop/Restock/Inventory parts.
@@ -304,9 +346,9 @@ function M.BuildSpeedView(panel,config)
   local button
   if i==1 then
    button=donor.Owned:Clone();button.Name="ActiveStatus";referenceClean(button)
-   button.Text="";button.Visible=true;button.Active=false;button.Interactable=false;button.Selectable=false
+   button.Text="";button.Visible=true;button.Active=true;button.Interactable=true;button.Selectable=true
    button.Parent=row;referenceLayer(button,42,panel);referenceLayer(button.PriceTag,45,panel)
-   button.PriceTag.Text="ACTIVE";referenceText(button.PriceTag,52)
+   button.PriceTag.Text="Equipped";referenceText(button.PriceTag,52);button.PriceTag.AutoLocalize=true
    button.PriceTag.AnchorPoint=Vector2.zero;button.PriceTag.Position=UDim2.fromScale(.28,.12);button.PriceTag.Size=UDim2.fromScale(.68,.76)
    button.StudPattern.Visible=false;button.UICorner.CornerRadius=UDim.new(0,22)
    local check=game.ReplicatedStorage.Assets.Templates.PetInventory.Main.Checkmark:Clone()
@@ -351,20 +393,27 @@ function M.BuildSpeedView(panel,config)
   referenceRect(status,0,s.Y-30,s.X,28)
  end
  table.insert(connections,page:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout))
- local view={BuyButton=rows.Premium.Button,Rows=rows,List=list}
+ local view={BuyButton=rows.Premium.Button,NormalButton=rows.Current.Button,Rows=rows,List=list}
  function view:SetState(state,pending,price,source,message)
-  local active=state.ActiveSpeedItemId
-  local item=active=="Premium" and config.Premium or config.Speed1
-  -- Server GetState.WalkSpeed excludes transient movement multipliers.
-  rows.Current.Value.Text=state.Loaded and typeof(state.WalkSpeed)=="number" and tostring(state.WalkSpeed) or "..."
-  rows.Current.Icon.Image="rbxassetid://"..tostring(item.ImageAssetId)
+  local selected=state.EquippedSpeed or "Normal"
+  rows.Current.Title.Text="Normal Speed"
+  rows.Current.Value.Text=state.Loaded and tostring(state.UpgradeSpeed)or "..."
+  rows.Current.Icon.Image="rbxassetid://"..tostring(config.Speed1.ImageAssetId)
   rows.Current.Button.Visible=state.Loaded==true
+  rows.Current.Button.PriceTag.Text=selected=="Normal" and "Equipped"or "Equip"
+  rows.Current.Button.Checkmark.Visible=selected=="Normal"
+  rows.Current.Button.Active=state.Loaded==true and not pending and selected~="Normal"
+  rows.Current.Button.Interactable=rows.Current.Button.Active
+  M.SetEquipped(rows.Current.Button,selected=="Normal")
   rows.Premium.Value.Text=tostring(config.Premium.WalkSpeed)
   rows.Premium.Icon.Image="rbxassetid://"..tostring(config.Premium.ImageAssetId)
   local owned=state.PremiumOwned==true
-  local shown=owned and (active=="Premium" and "ACTIVE" or "OWNED") or pending and "..." or (price~=nil and require(game.ReplicatedStorage.Modules.NumberFormat).Price(price) or "...")
+  local shown=owned and (selected=="Premium" and "Equipped"or "Equip")or pending and "..."or (price~=nil and require(game.ReplicatedStorage.Modules.NumberFormat).Price(price)or "...")
   HUD.PurchaseButton(view.BuyButton,"Robux",shown)
-  local enabled=state.Loaded==true and not owned and not pending and source=="Marketplace" and price~=nil
+  local visual=view.BuyButton:FindFirstChild("PurchasedButtonVisual")
+  if visual then visual.Main.Amount.AutoLocalize=owned end
+  M.SetEquipped(view.BuyButton,owned and selected=="Premium")
+  local enabled=state.Loaded==true and not pending and ((owned and selected~="Premium")or (not owned and source=="Marketplace"and price~=nil))
   view.BuyButton.Active=enabled;view.BuyButton.Interactable=enabled;view.BuyButton.AutoButtonColor=enabled
   view.BuyButton:SetAttribute("PriceSource",source)
   status.Text=message or "";status.Visible=status.Text~="";layout()

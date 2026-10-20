@@ -2285,3 +2285,7 @@ Reproduced the current-heading whole-Character bounds rejection at size13; measu
 ## 2026-10-20 - Personal Boss actors across both Worlds
 
 Reproduced shared World1 pose/target despite personal HP. Retain existing combat/loot/Trophy/progression; use one owned current-Stage actor, owner-only appearance, cleanup/deregistration and run/sequence validation. Preserve actual chase16/4 and all balances/assets/latest fixes. Two real clients verified both Worlds, independent wins/deaths/Back/departures, mixed Worlds/Stages, size13 StageSkip/retry and Stage10 rewards/gate timing; stale/duplicate/foreign requests mocked. Five reset cycles retained no old actors. Same-file five-Source write/compile/reDecode passed; Play stopped, owned Studio/clients closed without Save/Publish, lock absent. Limits/evidence: reports/BossIsolation_20261020/REPORT.md.
+
+## 2026-10-20 ? Speed ownership/equipment consistency completed
+
+CurrentCloud now separates official Premium entitlement, normal upgrade stage and saved equipment selection. Real account pass query succeeded; owned/unowned/error Play cases used fixtures. Actual32/50 speeds measured31.915/49.840 studs/s. Category switches, reset/travel/Training/return and purchase failures checked. Japanese translation used native translator simulation; production rejoin and two-player Speed checks remain unverified. See reports/SpeedEquipment_20261020/REPORT.md.

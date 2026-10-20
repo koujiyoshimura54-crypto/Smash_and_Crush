@@ -152,19 +152,17 @@ local speedPurchasing, speedRequestStage = false, nil
 local speedRefreshBusy, speedRevision = false, 0
 local function refreshSpeed()
  local loaded = speedState.Loaded == true
- local premium = speedState.PremiumOwned == true
  local stage = speedState.UpgradeStage or 0
  local tier = loaded and SpeedConfig.Upgrades[stage]
  -- After a failed acknowledgement, retry the same expected stage through the
  -- server's durable gate. Do not strand the UI after automatic retries expire.
- local enabled = loaded and tier ~= nil and not premium and not speedPurchasing
- speedCurrent.Text = loaded and tostring(premium and speedState.WalkSpeed or speedState.UpgradeSpeed) or "-"
- speedNext.Text = not loaded and "-" or premium and "MAX" or tier and tostring(tier.NextSpeed) or "MAX"
- speedPrice.Text = not loaded and "..." or premium and "OWNED" or tier and require(RS.Modules.NumberFormat).Price(tier.PriceWin) or "MAX"
+ local enabled = loaded and tier ~= nil and not speedPurchasing
+ speedCurrent.Text = loaded and tostring(speedState.UpgradeSpeed) or "-"
+ speedNext.Text = not loaded and "-" or tier and tostring(tier.NextSpeed) or "MAX"
+ speedPrice.Text = not loaded and "..." or tier and require(RS.Modules.NumberFormat).Price(tier.PriceWin) or "MAX"
  speedBuy.Active = enabled; speedBuy.Interactable = enabled; speedBuy.AutoButtonColor = enabled
  speedBuy.TrophyIcon.Visible = false -- The purchased visual owns the currency glyph.
  if speedState.UpgradePending then speedStatus.Text = speedPurchasing and "Saving..." or "Save pending. Please retry."
- elseif premium then speedStatus.Text = "Premium owned"
  elseif loaded and not tier then speedStatus.Text = "MAX" end
 end
 local function applySpeed(state)

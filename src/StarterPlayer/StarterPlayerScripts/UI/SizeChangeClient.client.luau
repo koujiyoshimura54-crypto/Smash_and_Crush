@@ -17,10 +17,10 @@ local function refresh()
  local unlocked=(tonumber(player:GetAttribute("RebirthCount")) or 0)>=config.RequiredRebirth
  icon.Visible=unlocked;if not unlocked then panel.Visible=false end
  local selected=tonumber(player:GetAttribute("SelectedSizeTier")) or 0
- for tier,button in pairs(buttons) do button.BackgroundColor3=tier==selected and Color3.fromRGB(255,184,54) or Color3.fromRGB(95,68,154) end
+ for tier,button in pairs(buttons) do require(RS.Modules.InventoryPresentation).SetEquipped(button,tier==selected) end
 end
 for tier=config.MinTier,config.MaxTier do
- local button=Instance.new("TextButton");button.Name=tier==0 and "AUTO" or "SIZE"..tier;button.Text=tier==0 and "AUTO" or "SIZE "..tier;button.AutoLocalize=false;button.TextColor3=Color3.new(1,1,1);button.TextScaled=true;button.Font=Enum.Font.GothamBold;button.LayoutOrder=tier;button.Parent=panel;Instance.new("UICorner",button).CornerRadius=UDim.new(0,8);buttons[tier]=button
+ local button=Instance.new("TextButton");button.Name=tier==0 and "AUTO" or "SIZE"..tier;button.Text=tier==0 and "AUTO" or "SIZE "..tier;button.AutoLocalize=false;button.BackgroundColor3=Color3.fromRGB(95,68,154);button.TextColor3=Color3.new(1,1,1);button.TextScaled=true;button.Font=Enum.Font.GothamBold;button.LayoutOrder=tier;button.Parent=panel;Instance.new("UICorner",button).CornerRadius=UDim.new(0,8);buttons[tier]=button
  button.Activated:Connect(function() if pending then return end;pending=true;remote:FireServer(tier) end)
 end
 local status=Instance.new("TextLabel");status.Name="Status";status.AutoLocalize=false;status.Text="";status.TextColor3=Color3.fromRGB(255,220,90);status.BackgroundTransparency=1;status.Size=UDim2.fromOffset(196,38);status.LayoutOrder=20;status.TextWrapped=true;status.TextScaled=true;status.Parent=panel

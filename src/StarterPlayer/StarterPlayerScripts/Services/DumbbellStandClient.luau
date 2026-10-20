@@ -33,7 +33,7 @@ function M.start()
    local press = Config.GetPress(folder, index,worldId)
    if press then
     if not originals[press] then originals[press] = press.Color end
-    press.Color = equipped == itemId and Color3.fromRGB(0,200,0) or originals[press]
+    press.Color = equipped == itemId and require(RS.Modules.InventoryPresentation).EquippedColor or originals[press]
    end
    if not board then continue end
    if press then board.Adornee = press end
@@ -44,6 +44,7 @@ function M.start()
    if itemIcon and itemIcon:IsA("ImageLabel") then itemIcon.Image = item.Image end
    setPair(board, "Status", equipped == itemId and "Equipped"
     or (loaded and (owned[itemId] and "Owned" or "Step to buy") or ""))
+   for _,name in {"Status","StatusShadow"}do local label=board:FindFirstChild(name);if label then require(RS.Modules.InventoryPresentation).LocalizeEquipmentLabel(label)end end
    local icon = amount and amount:FindFirstChild("Icon")
    if icon and icon:IsA("ImageLabel") then
     icon.Image = WinIcon

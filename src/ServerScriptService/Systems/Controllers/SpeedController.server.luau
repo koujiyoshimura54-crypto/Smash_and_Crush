@@ -12,6 +12,8 @@ end
 local purchase=remote("SpeedPurchaseRequest","RemoteEvent")
 local stateRemote=remote("SpeedInventoryState","RemoteFunction")
 local prompt=remote("SpeedPremiumPrompt","RemoteEvent")
+local equip=remote("SpeedEquipRequest","RemoteEvent")
+local equipBusy=setmetatable({}, {__mode="k"})
 local last=setmetatable({}, {__mode="k"})
 local bindings={}
 local function publish(player)
@@ -31,6 +33,14 @@ purchase.OnServerEvent:Connect(function(player,id,currentStage)
  if not ran then warn("Speed upgrade failed: "..tostring(ok));ok,code=false,"PurchaseFailed" end
  if player.Parent==Players then purchase:FireClient(player,{Action=id,Success=ok,Code=code,State=Speed.GetState(player)}) end
 end)
+equip.OnServerEvent:Connect(function(player,id)
+ if equipBusy[player] then equip:FireClient(player,{Success=false,Code="RequestInProgress",State=Speed.GetState(player)});return end
+ equipBusy[player]=true
+ local ran,ok,code=pcall(Speed.Equip,player,id)
+ equipBusy[player]=nil
+ if not ran then warn("Speed equip failed: "..tostring(ok));ok,code=false,"EquipFailed" end
+ if player.Parent==Players then equip:FireClient(player,{Success=ok,Code=code,State=Speed.GetState(player)}) end
+end)
 prompt.OnServerEvent:Connect(function(player,action)
  if action~="Prompt" then prompt:FireClient(player,{Success=false,Code="InvalidRequest"});return end
  if not allowed(player) then prompt:FireClient(player,{Success=false,Code="RequestInProgress"});return end
@@ -48,6 +58,8 @@ local function bind(player)
  end
  connections[#connections+1]=player.CharacterAdded:Connect(characterAdded)
  connections[#connections+1]=player:GetAttributeChangedSignal("HasPremiumSpeed"):Connect(function() publish(player) end)
+ connections[#connections+1]=player:GetAttributeChangedSignal("EquippedSpeed"):Connect(function() publish(player) end)
+ connections[#connections+1]=player:GetAttributeChangedSignal("PremiumSpeedOwnershipStatus"):Connect(function() publish(player) end)
  connections[#connections+1]=player:GetAttributeChangedSignal("SpeedUpgradeStage"):Connect(function() publish(player) end)
  connections[#connections+1]=player:GetAttributeChangedSignal("SpeedUpgradePurchasePending"):Connect(function() publish(player) end)
  if player.Character then characterAdded(player.Character) end

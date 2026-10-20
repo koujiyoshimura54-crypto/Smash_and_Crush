@@ -634,3 +634,7 @@ Keep existing Size Change styling, two columns and unlock/payment behavior. Gene
 ## 2026-10-20 - Rebirth shared Config reference
 
 RebirthMenuClient reads both required LV and multiplier from RebirthConfig. Current completed count controls the current multiplier, current+1 controls its preview, and GetRequiredLevel(current) returns the next requirement. Layout, controls, eligibility, badges and MAX behavior are unchanged; absence of a next definition still controls MAX.
+
+## 2026-10-20 ? Shared equipment state colors
+
+Speed uses Equip/Equipped instead of ACTIVE. Speed, Dumbbells, regular Item slots, individual Pets, Aura, size1?13/AUTO, Shop Dumbbell buttons and world stands use equipped cyan #00DEFF?#0094EC (solid #00DEFF where appropriate). Paint the visible purchased Main/image gradient, restore original unselected paint, preserve purchase colors/actions/hover sizing. State comes from server confirmation. Native equipment LocalizationTable uses CSV Equip/Equipped/Owned wording; layout and other Active meanings are unchanged. Evidence: reports/SpeedEquipment_20261020/REPORT.md.

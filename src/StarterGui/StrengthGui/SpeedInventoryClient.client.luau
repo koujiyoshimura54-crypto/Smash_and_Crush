@@ -13,6 +13,7 @@ local page=shell.Content:WaitForChild("Speed")
 local purchase=RS.Remotes:WaitForChild("SpeedPurchaseRequest") -- existing server state pushes only
 local stateRemote=RS.Remotes:WaitForChild("SpeedInventoryState")
 local prompt=RS.Remotes:WaitForChild("SpeedPremiumPrompt")
+local equip=RS.Remotes:WaitForChild("SpeedEquipRequest")
 local view=Presentation.BuildSpeedView(shell,Config)
 -- The retired 600-Win offer must not advertise a purchase on this surface.
 local badge=shell.Tabs.Speed:FindFirstChild("SpeedPurchaseBadge")
@@ -47,7 +48,17 @@ end
 local messages={AlreadyOwned="Already owned",DataNotLoaded="Loading player data...",RequestInProgress="Please wait.",OwnershipUnavailable="Ownership check unavailable. Please try again.",PromptUnavailable="Purchase unavailable."}
 Responsive.ConnectActivation(view.BuyButton,function()
  if not view.BuyButton.Active or not view.BuyButton.Interactable then return end
- pending=true;message="";render();prompt:FireServer("Prompt")
+ pending=true;message="";render()
+ if state.PremiumOwned then equip:FireServer("Premium")else prompt:FireServer("Prompt")end
+end)
+Responsive.ConnectActivation(view.NormalButton,function()
+ if pending or not state.Loaded or state.EquippedSpeed=="Normal"then return end
+ pending=true;message="";render();equip:FireServer("Normal")
+end)
+equip.OnClientEvent:Connect(function(result)
+ pending=false
+ if typeof(result)=="table"then apply(result.State);message=result.Success and ""or (messages[result.Code]or "Please try again.")end
+ render()
 end)
 purchase.OnClientEvent:Connect(function(result)
  if typeof(result)~="table" then return end
@@ -65,6 +76,16 @@ Marketplace.PromptGamePassPurchaseFinished:Connect(function(p,id)
   pending=false;refresh();render() -- ownership is re-read from the server, never granted here
  end
 end)
+-- Recover the input lock if a response/prompt-close notification is lost.
+local pendingVersion=0
+local function recoverPending()
+ pendingVersion+=1;local version=pendingVersion
+ task.delay(15,function()
+  if pending and version==pendingVersion and script.Parent then pending=false;message="Please try again.";refresh();render()end
+ end)
+end
+view.BuyButton.Activated:Connect(recoverPending)
+view.NormalButton.Activated:Connect(recoverPending)
 local function opened()
  if shell.Visible and page.Visible then refreshPrice();refresh() end
 end

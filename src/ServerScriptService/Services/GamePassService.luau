@@ -212,20 +212,16 @@ end)
 
 -- Speed entitlement is verified independently of other Game Passes.
 local SpeedConfig=require(game.ReplicatedStorage.Config:WaitForChild("SpeedConfig"))
-local function forceSpeedPremiumUnowned()
- return RunService:IsStudio() and StudioDebugConfig~=nil and StudioDebugConfig.ForceSpeedPremiumUnowned==true
-end
 local speedCache=setmetatable({}, {__mode="k"})
 local speedBusy=setmetatable({}, {__mode="k"})
+local speedStatus=setmetatable({}, {__mode="k"})
 function M.HasPremiumSpeed(player)
- if forceSpeedPremiumUnowned() then return false end
  return speedCache[player]==true
 end
+function M.GetPremiumSpeedOwnershipStatus(player)
+ return speedStatus[player] or "Pending"
+end
 function M.RefreshPremiumSpeed(player)
- if forceSpeedPremiumUnowned() then
-  player:SetAttribute("HasPremiumSpeed",false)
-  return false,"Verified"
- end
  if speedBusy[player] then return M.HasPremiumSpeed(player),"Pending" end
  speedBusy[player]=true
  local ok,owned=pcall(function()
@@ -233,11 +229,13 @@ function M.RefreshPremiumSpeed(player)
  end)
  speedBusy[player]=nil
  if player.Parent~=Players then return false,"PlayerUnavailable" end
- if not ok then return M.HasPremiumSpeed(player),"OwnershipUnavailable" end
- speedCache[player]=owned==true
- local effectiveOwned=M.HasPremiumSpeed(player)
- player:SetAttribute("HasPremiumSpeed",effectiveOwned)
- return effectiveOwned,"Verified"
+ -- An unavailable check never revokes an entitlement verified this session.
+ local status=ok and "Verified" or "OwnershipUnavailable"
+ speedStatus[player]=status
+ if ok then speedCache[player]=owned==true end
+ player:SetAttribute("HasPremiumSpeed",M.HasPremiumSpeed(player))
+ player:SetAttribute("PremiumSpeedOwnershipStatus",status)
+ return M.HasPremiumSpeed(player),status
 end
 function M.PromptPremiumSpeed(player)
  local owned,status=M.RefreshPremiumSpeed(player)
@@ -259,7 +257,7 @@ MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,id,pur
   end
  end)
 end)
-Players.PlayerRemoving:Connect(function(player) speedCache[player]=nil;speedBusy[player]=nil end)
+Players.PlayerRemoving:Connect(function(player) speedCache[player]=nil;speedBusy[player]=nil;speedStatus[player]=nil end)
 
 -- Slap entitlement is verified independently. The mirrored Attribute drives presentation only.
 local SlapConfig=require(game.ReplicatedStorage.Config:WaitForChild("SlapPassConfig"))

@@ -68,13 +68,15 @@ local function updateButtons()
   if button then
    local isEquipped=equipped==itemId
    local isOwned=owned[itemId]==true
-   button.Text=isEquipped and "EQUIPPED" or (isOwned and "EQUIP" or "")
+   button.Text=isEquipped and "Equipped" or (isOwned and "Equip" or "")
    button.WinIcon.Visible=not isOwned and not isEquipped
    button.Price.Visible=not isOwned and not isEquipped
    Presentation.SetButtonEnabled(button,not isEquipped and not requestPending)
    button.BackgroundColor3=isEquipped and Color3.fromRGB(70,76,88)
     or (isOwned and Color3.fromRGB(47,91,151) or Color3.fromRGB(43,121,88))
    PurchaseHUD.PurchaseButton(button,"Win",(isOwned or isEquipped) and button.Text or button.Price.Text)
+   Presentation.SetEquipped(button,isEquipped)
+   local visual=button:FindFirstChild("PurchasedButtonVisual");if visual then visual.Main.Amount.AutoLocalize=isOwned end
   end
  end
 local item=Master.Get(equipped)

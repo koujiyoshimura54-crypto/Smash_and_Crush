@@ -163,9 +163,11 @@ local function renderDumbbellState(state)
    local isEquipped=dumbbellState.EquippedDumbbell==id
    local isOwned=dumbbellState.OwnedDumbbells[id]==true
    if item and button and price then
-    price.Text=isEquipped and "EQUIPPED" or isOwned and "EQUIP" or require(RS.Modules.NumberFormat).Price(item.PriceWin)
+    price.Text=isEquipped and "Equipped" or isOwned and "Equip" or require(RS.Modules.NumberFormat).Price(item.PriceWin)
+    if isOwned then require(RS.Modules.InventoryPresentation).LocalizeEquipmentLabel(price)end
     button.Active=not isEquipped and not pending
     button.Interactable=button.Active
+    require(RS.Modules.InventoryPresentation).SetEquipped(button,isEquipped)
    end
   end
  end

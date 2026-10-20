@@ -268,6 +268,7 @@ local function refreshChecks()
 		if not (check and check:IsA("GuiObject")) then continue end
 
 		local visible = table.find(Equipped, name) ~= nil
+		require(ReplicatedStorage.Modules.InventoryPresentation).SetEquipped(tile.Button,visible,main)
 		if check.Visible == visible then continue end
 
 		check.Visible = visible
@@ -379,6 +380,7 @@ function PetClient.setMaterialSelection(tile: GuiObject, name: string, selected:
  end
  tile:SetAttribute("MaterialSelected",selected and not equipped)
  tile:SetAttribute("MaterialEquipped",equipped)
+ require(ReplicatedStorage.Modules.InventoryPresentation).SetEquipped(tile,equipped,main)
 end
 
 function PetClient.setMaterialMetadata(tile: GuiObject, metadata: any)

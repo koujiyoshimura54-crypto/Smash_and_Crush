@@ -1052,3 +1052,7 @@ Fix the reproduced sideways size13 bounds rejection; use actual body dimensions,
 ## 2026-10-20 - Isolate Boss actors and presentation per Player
 
 Fix reproduced shared chase pose/target while retaining personal HP/reward logic. Both Worlds use owned current-Stage actors, private presentation and guarded lifecycle; current World2 Boss HP uses the existing overhead fallback. Actual two-client combat, individual completion/return/death/departure and focused mock/cleanup checks passed. Preserve all balance/assets/latest fixes. Same-file validation and owned Studio/lock cleanup complete. See reports/BossIsolation_20261020/REPORT.md.
+
+## 2026-10-20 ? Speed equipment and shared equipped colors
+
+Fixed Premium-owned normal Win upgrades and server-authorized saved Normal/Premium selection; retained prices/speeds and current return behavior. Equipment cyan now covers Inventory, Shop, stands and size selection, including purchased image skins and native equipment localization. Actual desktop UI/movement and memory-only persistence checks: reports/SpeedEquipment_20261020/REPORT.md.

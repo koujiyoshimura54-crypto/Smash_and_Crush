@@ -1,0 +1,75 @@
+{
+  "path": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "97bb8db77963f5d5c7c050bbc93793b4e244545cbb6e11bc25679ea086d89dcd",
+  "outputSha256": "c66fe71741c5affec6dcbc641c7ff3042cb051c7e6903f16928f864559df51c3",
+  "changedSources": {
+    "ServerScriptService.Services.PlayerDataService": {
+      "before": "8e2943d974bc473526388c94a07d66a1834c6a55f2b1a5cd7ce7715bf396aa59",
+      "after": "b965eff73180e65ec41e8bacfa18cde24c91e7cb892f380039cad6c873cb3e9b"
+    },
+    "ServerScriptService.Services.GamePassService": {
+      "before": "fe63da38c110723e3480fe412dcc464d00b744929778bc54878b1dba13150895",
+      "after": "f6b618f8bec9abfd2fffa1dce1b8adecbae071018b7466a5d4afdc1db81dbf77"
+    },
+    "ServerScriptService.Services.SpeedService": {
+      "before": "12438a5875cdd4d3ab449191c4a38ed23a870af7dc3e25007083ea19baa7bd18",
+      "after": "a7ac5d3aa5addb93bbed2efb80decf4c36d4edef2a5caf2bccb128692b9dfd4d"
+    },
+    "ServerScriptService.Systems.Controllers.SpeedController": {
+      "before": "d873d9eb781ee025977dbee755bebdf1548af76b0036b354b40a62e851614c14",
+      "after": "3ebcf4957d991061a4c46c9640c264f17b9d1cd8fe5cb0d9bc8691fbe015eba7"
+    },
+    "ReplicatedStorage.Modules.InventoryPresentation": {
+      "before": "3d880601248d86514674640d6f0dfec06587c770f66e797135f25c7e7af1432e",
+      "after": "b53b79a86c7a759e8e590285c6cf0484277740cc0a512ff1e3739b359cb55ac0"
+    },
+    "StarterGui.StrengthGui.InventoryCapacityUpgradeClient": {
+      "before": "94d80d11bd5a541908a6e5237a0493e1cbc370b55069a77ed1f1dffe1183f2b9",
+      "after": "49b61c0343311b66d1210226f5c278d2dae9589e33d9f290540b1aba978c3fd7"
+    },
+    "StarterGui.StrengthGui.SpeedInventoryClient": {
+      "before": "a9c442033d934a3e87d1eae7f83764ed566a2cdd4fe1cc3150a6b10fefd015bc",
+      "after": "d195d428081ddfc0f92708a7cc1c8c1bb6c339dcd5c36e1b240cf0620aaf9bc1"
+    },
+    "StarterGui.StrengthGui.InventoryPanelClient": {
+      "before": "754800b34b19eee64427e8f6178aa0bb776926c59e81343ce288747ce32a848a",
+      "after": "67f238147533dec2f505b0c572f6311cdd8fb01dbba6e5200fe68acc2849a118"
+    },
+    "StarterGui.StrengthGui.ItemInventoryTabClient": {
+      "before": "61082d8a81d1d9e7bd973a3985047e0a15aa3b6f7d3e99556d57bc3be00b97af",
+      "after": "d2c0c9ebc4cb98adfc2ad228c0042619d46119189a8b7f1a1b90da0ad4f52da8"
+    },
+    "StarterGui.StrengthGui.AuraInventoryClient": {
+      "before": "a41e3f9725f13b533423a18ea49872fb1ddf8263c6401c741cad97eb0f1cdfb4",
+      "after": "af8fde39f96b845cbd05c5ddf8d757f67b390d5c0eabfa8875dc62c2adfabd55"
+    },
+    "StarterGui.StrengthGui.EssentialStudShopClient": {
+      "before": "02010afb3c9b23dfef77eb3eb56e28abbff3818f3dabc7f567eff03644903b25",
+      "after": "01ef1ed220f53beefd4fb05afe088b504380f620c792f95d7a70da1c2deff95d"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.PetClient": {
+      "before": "35153e372c83f711d8a274a486f769625afea8d38ba00668a84ed290733a46a5",
+      "after": "7ef32632ee89473c1b47fe9b4a59f8161832e85383e74fc7e2e7a95e3d9bb1e4"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient": {
+      "before": "761cfc2807c30bf0c1c53f44b35b57ae3507bfecdf32725a0edf4d7bb4d8d852",
+      "after": "556320d4de2aafc211204e46d1adf0362d7dde34ec8fd0155fd3868399025cb4"
+    },
+    "StarterPlayer.StarterPlayerScripts.UI.SizeChangeClient": {
+      "before": "3b84e6f8c048972a17dae35860bcef2ec91cbc947729ab1a094570d549ebf7f2",
+      "after": "cb340d46406e7e48ad59502e119aa3c518c1a8e10fe4da0aeba413a09230bc88"
+    }
+  },
+  "allOtherSourcesPropertiesParentsUniqueIdsSharedStringsUnchanged": true,
+  "boss_stageSkip_rebirth_growth_returnSpeed_sourcesUnchanged": true,
+  "syntaxReDecodeReferences": "passed",
+  "alternatePlaceCreated": false,
+  "all422SourcesRechecked": true,
+  "finalEditSourcesMatched": 14,
+  "temporaryDataAndOwnershipFixturesRemoved": true,
+  "playStopped": true,
+  "ownedStudio17180ClosedWithoutSave": true,
+  "targetLockAbsent": true,
+  "noUserStudioClosed": true,
+  "saveOrPublishPerformed": false
+}

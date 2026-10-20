@@ -591,3 +591,7 @@ Configuration-only consolidation: ReplicatedStorage.Config.RebirthConfig owns ef
 ## 2026-10-20 - Personal Boss actors (supersedes shared-actor notes)
 
 Players remain together and visible on the same map. Each living Player has one owned current-Stage Boss actor in the active World; only that Player sees its authored appearance/effects and personal collider. Server sessions, contact/damage/outcomes/rewards stay authoritative per Player/World/run. World1 chase targets only its owner; World2 retains its existing stationary/lottery rules. End/reset/death/World change/departure destroys only that actor, and stale/foreign/duplicate notifications cannot replace a current encounter. Numeric balance, progression/reward timing and assets are unchanged. Details: reports/BossIsolation_20261020/REPORT.md.
+
+## 2026-10-20 ? Explicit Speed equipment (supersedes highest-eligible Speed selection)
+
+Premium ownership does not block normal24/28/32/36/40 Win upgrades or force equipment. Inventory selects Normal or verified Premium50 exclusively; normal upgrades keep the selection. Optional EquippedSpeed persists through existing PlayerData saves, defaulting missing legacy selection to Normal. Premium remains an official GamePass entitlement, never granted by UI or that saved selector. Other pass benefit gates, transition boosts and existing return recalculation remain. See reports/SpeedEquipment_20261020/REPORT.md.

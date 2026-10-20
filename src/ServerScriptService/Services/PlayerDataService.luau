@@ -226,7 +226,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -287,6 +287,8 @@ local function normalize(raw)
   local speedStage,speedStageError=SpeedConfig.NormalizeStage(raw.SpeedUpgradeStage,speeds)
   if speedStage==nil then return nil,speedStageError end
   d.SpeedUpgradeStage=speedStage
+  if raw.EquippedSpeed~=nil and raw.EquippedSpeed~="Normal" and raw.EquippedSpeed~="Premium" then return nil,"Invalid EquippedSpeed" end
+  d.EquippedSpeed=raw.EquippedSpeed or "Normal"
   -- Missing inventory is legacy data. Never replace a malformed saved inventory.
   if raw.OwnedDumbbells~=nil then
    if typeof(raw.OwnedDumbbells)~="table" then return nil,"Invalid OwnedDumbbells" end
@@ -338,6 +340,7 @@ end
 local function applyAttributes(player,d)
  Pet.Publish(player,d.Pets)
  player:SetAttribute("SpeedUpgradeStage",d.SpeedUpgradeStage)
+ player:SetAttribute("EquippedSpeed",d.EquippedSpeed)
  player:SetAttribute("SpeedUpgradePurchasePending",false)
  player:SetAttribute("PetSavePending",false)
  player:SetAttribute("AutoTapEnabled",d.AutoTapEnabled~=false)
@@ -804,6 +807,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   SelectedSizeTier=d.SelectedSizeTier,
   InventoryCapacity=d.InventoryCapacity,
   SpeedUpgradeStage=d.SpeedUpgradeStage,
+  EquippedSpeed=d.EquippedSpeed,
   Pets=assert(Pet.NormalizeState(d.Pets)),
   HighestUnlockedWorld=d.HighestUnlockedWorld,
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
@@ -851,6 +855,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
    merged.AutoTapEnabled=payload.AutoTapEnabled
    merged.SelectedSizeTier=payload.SelectedSizeTier
+   merged.EquippedSpeed=payload.EquippedSpeed
    -- Purchases own this field; ordinary saves preserve the durable value.
    merged.InventoryCapacity=assert(CapacityConfig.Normalize(old.InventoryCapacity))
    merged.SpeedUpgradeStage=assert(SpeedConfig.NormalizeStage(old.SpeedUpgradeStage,old.OwnedSpeeds))
@@ -1818,6 +1823,20 @@ function PlayerDataService.ChangeSelectedSize(player,tier,config)
  return true,"Success",tier,s.Data.Win
 end
 
+-- Free equipment selection uses the existing session/dirty-save path. Entitlement
+-- authorization is performed by SpeedService; this field never grants ownership.
+function PlayerDataService.SetEquippedSpeed(player,id)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
+ if s.OwnershipLost then return false,"SessionOwnershipLost" end
+ if id~="Normal" and id~="Premium" then return false,"InvalidRequest" end
+ if s.Data.EquippedSpeed~=id then
+  s.Data.EquippedSpeed=id;s.Dirty=true
+  player:SetAttribute("EquippedSpeed",id)
+ end
+ return true,"Equipped"
+end
+
 -- Old Speed1 / 600 Win requests are retired. The client supplies only the
 -- expected current stage; the server chooses the next stage and its price.
 function PlayerDataService.PurchaseSpeed(player,id,currentStage)
@@ -1830,7 +1849,6 @@ function PlayerDataService.PurchaseSpeed(player,id,currentStage)
   return PlayerDataService.ResolveItemMutation(player)
  end
  if s.Saving or pending then return false,"DataSaving" end
- if require(game.ServerScriptService.Services.GamePassService).HasPremiumSpeed(player) then return false,"PremiumOwned" end
  local stage=assert(SpeedConfig.NormalizeStage(s.Data.SpeedUpgradeStage,s.Data.OwnedSpeeds))
  if stage>=SpeedConfig.MaxUpgradeStage then return false,"MaxSpeed" end
  if currentStage~=stage then return false,"SpeedStageChanged" end

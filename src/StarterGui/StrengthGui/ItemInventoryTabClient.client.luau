@@ -264,6 +264,8 @@ render=function()
    local b=Instance.new("TextButton");b.Name=isEquipped and "EquippedStatus" or "EquipButton";b.Text=""
    surface(b,"Uncommon");b.StudPattern.Visible=false;layer(b,42);b.Parent=c
    local text=label(b,"Label",isEquipped and "Equipped" or "Equip",UDim2.fromScale(.03,.08),UDim2.fromScale(.94,.84),34);layer(text,44)
+   Presentation.SetEquipped(b,isEquipped)
+   text.AutoLocalize=true
    b.Active=not isEquipped;b.Interactable=not isEquipped
    if not isEquipped then
     if page:GetAttribute("UnseenItem_"..id)==true then
