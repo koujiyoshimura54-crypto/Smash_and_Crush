@@ -1,6 +1,7 @@
 local Players=game:GetService("Players")
 local W=game:GetService("Workspace")
 local E=require(game.ServerScriptService.World.EnemyManager)
+local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
 local current
 local initializing=false
 
@@ -60,9 +61,6 @@ do
   local half=trigger.Size*.5
   return math.abs(p.X)<=half.X+2 and math.abs(p.Y)<=half.Y+2 and math.abs(p.Z)<=half.Z+2
  end
- local function arrivalCFrame(spawn,humanoid,root)
-  return spawn.CFrame*CFrame.new(0,spawn.Size.Y*.5+humanoid.HipHeight+root.Size.Y*.5+0.1,0)
- end
  local function route(action,player)
   if action=="ToWorld2" then
    local highest=player:GetAttribute("HighestUnlockedWorld")
@@ -96,10 +94,11 @@ do
    local trigger,spawn,targetWorld=route(action,player)
    if not trigger or not trigger:IsA("BasePart") or not spawn or not spawn:IsA("BasePart") then return end
    if not insideTrigger(trigger,root) then return end
-   character:PivotTo(arrivalCFrame(spawn,humanoid,root))
-   for _,part in character:GetDescendants() do
-    if part:IsA("BasePart") then part.AssemblyLinearVelocity=Vector3.zero;part.AssemblyAngularVelocity=Vector3.zero end
-   end
+   local placement=Placement.StreamLobby(player,character,targetWorld)
+   if not placement or not Placement.IsCurrent(player,placement) or humanoid.Health<=0 then return end
+   local latestTrigger,latestSpawn,latestWorld=route(action,player)
+   if latestTrigger~=trigger or latestSpawn~=spawn or latestWorld~=targetWorld or not insideTrigger(trigger,root) then return end
+   if not Placement.MoveToLobby(player,character,targetWorld) then return end
    local previousWorld=player:GetAttribute("CurrentWorld")==2 and 2 or 1
    E.ForWorld(previousWorld).Deactivate(player)
    player:SetAttribute("CurrentWorld",targetWorld)

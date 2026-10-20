@@ -2248,3 +2248,9 @@ World1/World2 treadmill headings fit one line within their reserved text width; 
 ## 2026-10-20 — Treadmill heading scaling regression
 
 Native Edit proved TextWrapped=false disabled TextScaled, leaving14px text. Preserve both flags and measure localized width while retaining the normal7.5-stud height. Both Worlds/English/Japanese render one line; near100px, far44.55/45.44px versus normal Dumbbells100/41.88px at comparable distances. Both new icons are actually loaded. Same-file binary validation passed; no Play/Save/Publish. See reports/TreadmillHeadingSizing_20261020/REPORT.md.
+
+## 2026-10-20 - Lobby spawn and return races
+
+Implemented one per-player owner for native loading, muscle readiness, RespawnLocation and safe floor-relative lobby placement. World2 uses a runtime SpawnLocation under its existing marker. Superseded character/stream/return requests are rejected; a matching client pose/floor acknowledgement releases each placement without recurring teleports. All original geometry/configs, reward/save rules and the latest Treadmill fix remain intact.
+
+Actual two-client tests covered near-simultaneous and staggered joins (including Player1 in World2), deaths, Trophy returns, movement and other-player state isolation. Persistence was memory-only and Trophy defeat setup synthetic; no production save/rejoin claim. Original initial-join misplacement was not reproduced. See `reports/LobbySpawn_20261020/REPORT.md` and its native/file evidence. Same CurrentCloud rewritten; final Studio Edit, no Save/Publish.

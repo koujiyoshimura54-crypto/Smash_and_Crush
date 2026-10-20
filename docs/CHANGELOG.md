@@ -1008,3 +1008,8 @@ Scoped World1/World2 treadmill titles to single-line fitting and updated the sho
 ## 2026-10-20 — Correct treadmill title shrink regression
 
 Restore TextScaled with TextWrapped enabled and extend the heading width for localized text. Native English/Japanese near/far views and normal-Dumbbell size comparison passed in both Worlds; shoe images loaded. See reports/TreadmillHeadingSizing_20261020/REPORT.md.
+
+# 2026-10-20 - Per-player lobby spawn ownership
+
+- Fixed World2 native respawn retaining World1's SpawnLocation, removed the deferred fixed-height move, and coordinated native load/body scaling/streaming with per-player placement generations. Trophy return now holds the destination until the owning client acknowledges its pose and collidable floor. Geometry, balance, rewards, persistence and ba1186f are preserved.
+- Actual two-client near/staggered joins, World2 isolation, repeated deaths/Trophy returns and movement were checked with temporary memory persistence and synthetic Trophy defeat prerequisites. The original initial-join wrong-Lobby symptom was not reproduced. Exact limits and same-file validation: `reports/LobbySpawn_20261020/REPORT.md`. Play ended in Edit; no Studio Save/Publish.

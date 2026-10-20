@@ -1,4 +1,5 @@
 local Players=game:GetService("Players")
+local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
 local Config=require(game.ServerScriptService.Config:WaitForChild("MuscleScaleConfig"))
 local bases=setmetatable({}, {__mode="k"})
 local appliedStage=setmetatable({}, {__mode="k"})
@@ -12,6 +13,7 @@ local function prepare(player,character)
  if not humanoid then return end
  if humanoid.RigType~=Enum.HumanoidRigType.R15 then
   warn("MuscleCharacterService skipped non-R15 character for "..player.Name)
+  character:SetAttribute("MuscleScaleReady",true)
   return
  end
  local partData={}
@@ -65,13 +67,33 @@ local function apply(player)
   end
  end
  character:SetAttribute("MuscleHeightScale",scaleHeight)
+ character:SetAttribute("MuscleScaleReady",true)
+ Placement.OnScaleApplied(player,character)
 end
 local function setup(player)
  local function onCharacter(character)
-  task.spawn(function()
-   prepare(player,character)
-   if player.Character==character then apply(player) end
+  local readyConnection,removedConnection
+  local function ready()
+   if not character:GetAttribute("SpawnEngineReady") or player.Character~=character then return end
+   if readyConnection then readyConnection:Disconnect();readyConnection=nil end
+   if removedConnection then removedConnection:Disconnect();removedConnection=nil end
+   task.spawn(function()
+    prepare(player,character)
+    if player.Character==character then
+     apply(player)
+     -- A missing/non-R15 rig still releases the loader using its actual dimensions.
+     character:SetAttribute("MuscleScaleReady",true)
+    end
+   end)
+  end
+  readyConnection=character:GetAttributeChangedSignal("SpawnEngineReady"):Connect(ready)
+  removedConnection=player.CharacterRemoving:Connect(function(old)
+   if old==character then
+    if readyConnection then readyConnection:Disconnect() end
+    if removedConnection then removedConnection:Disconnect() end
+   end
   end)
+  ready()
  end
  player.CharacterAdded:Connect(onCharacter)
  player:GetAttributeChangedSignal("Strength"):Connect(function() apply(player) end)

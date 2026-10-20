@@ -12,6 +12,7 @@ local Strength=require(game.ServerScriptService.Services.StrengthManager)
 local Enemy=require(game.ServerScriptService.World.EnemyManager)
 local Training=require(game.ServerScriptService.Services.TrainingManager)
 local Trophy=require(game.ServerScriptService.Services.TrophyRewardService)
+local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
 local Skip=require(game.ServerScriptService.Services.StageSkipService)
 local Purchases=require(game.ServerScriptService.Systems.Purchases.ItemPurchaseService)
 -- Enable only once the reset persistence target has been selected.
@@ -22,17 +23,14 @@ local function validNumber(value)
  return typeof(value)=="number" and value==value and value>=0 and value<math.huge and value<=9007199254740991
 end
 local function lobby(player)
- local spawn=Trophy.GetLobbySpawn()
+ local spawn=Placement.GetLobby(Placement.WorldFor(player))
  local ch=player.Character
  local hum=ch and ch:FindFirstChildOfClass("Humanoid")
  if not spawn or not ch or not hum or hum.Health<=0 then return false,"CharacterNotReady" end
  Training.StopTraining(player)
  Enemy.StartRun(player,1)
  hum.Health=hum.MaxHealth;hum.Sit=false
- local _,size=ch:GetBoundingBox()
- ch:PivotTo(spawn.CFrame*CFrame.new(0,spawn.Size.Y/2+math.max(size.Y/2,hum.HipHeight+2)+2,0))
- for _,p in ch:GetDescendants() do if p:IsA("BasePart") then p.AssemblyLinearVelocity=Vector3.zero;p.AssemblyAngularVelocity=Vector3.zero end end
- return true
+ return Placement.MoveToLobby(player,ch,Placement.WorldFor(player))
 end
 local function reset(player)
  if not RESET_SAVED_DATA then return false,"ResetPersistenceNotConfigured" end

@@ -6,6 +6,7 @@ local Enemy = require(game.ServerScriptService.World.EnemyManager).ForWorld(1)
 local Trophy = require(Services.TrophyRewardService).ForWorld(1)
 local Training = require(Services.TrainingManager)
 local Speed = require(Services.SpeedService)
+local Placement = require(Services.LobbySpawnService)
 local M = {}
 local busy = {}
 local function returnToLobby(player, character, spawn, speed, worldEnemy)
@@ -19,15 +20,7 @@ local function returnToLobby(player, character, spawn, speed, worldEnemy)
 	hum.Health = hum.MaxHealth
 	hum.Sit = false
 	hum.WalkSpeed = speed
-	local _, size = character:GetBoundingBox()
-	character:PivotTo(spawn.CFrame * CFrame.new(0,
-		spawn.Size.Y / 2 + math.max(size.Y / 2, hum.HipHeight + 2) + 2, 0))
-	for _, part in character:GetDescendants() do
-		if part:IsA("BasePart") then
-			part.AssemblyLinearVelocity = Vector3.zero
-			part.AssemblyAngularVelocity = Vector3.zero
-		end
-	end
+	return Placement.MoveToLobby(player, character, Placement.WorldFor(player))
 end
 
 function M.Request(player, runId)
@@ -52,16 +45,24 @@ function M.Request(player, runId)
    local root=character and character:FindFirstChild("HumanoidRootPart")
    local spawn=worldTrophy.GetLobbySpawn()
    if not root or not hum or hum.Health<=0 or not spawn then return false,"CharacterNotReady" end
-   returnToLobby(player,character,spawn,Speed.GetState(player).WalkSpeed,worldEnemy)
+   local placement=Placement.StreamLobby(player,character,2)
+   if not placement or not Placement.IsCurrent(player,placement) or ps~=worldEnemy.GetPlayerState(player)
+    or ps.RunReturnId~=runId or hum.Health<=0 then return false,"StaleRun" end
+   local placed,why=returnToLobby(player,character,spawn,Speed.GetState(player).WalkSpeed,worldEnemy)
+   if not placed then return false,why end
    return true,"Returned"
   end
   local spawn = Trophy.GetLobbySpawn()
 		if not spawn or not Enemy.IsReady() then return false, "LobbyUnavailable" end
 		-- Read the normal speed before the shared durable commit.
 		local speed = Speed.GetState(player).WalkSpeed
+		local placement = Placement.StreamLobby(player, player.Character, 1)
+		if not placement then return false, "CharacterNotReady" end
 		local committed, code, token = Bank.Commit(player, runId)
 		if not committed then return false, code end
-		returnToLobby(player, token.Character, spawn, speed)
+		if not Placement.IsCurrent(player, placement) then return false, "StaleRun" end
+		local placed, why = returnToLobby(player, token.Character, spawn, speed)
+		if not placed then return false, why end
 		return true, "Returned"
 	end, debug.traceback)
 	busy[player] = nil

@@ -571,3 +571,9 @@ Rebirth is shared: base x1, +0.5 each count; first ten required levels come from
 ### Tutorial floor-guide implementation — 2026-10-20
 
 World1 straight-line guidance and progression remain unchanged. Verified generator-owned walking carpet Upper/Lower surfaces are valid arrow supports; nested treadmill stands/equipment mats are excluded. Thirteen surface/edge probes and query-independent oriented blocker checks remain. Static spatial caches invalidate on changes/add/remove; moving parts are evaluated live. Completion/death/World2 suspend collection and reset/respawn/World1 resume it. No physical map properties or World2 tutorial were changed. Evidence: reports/TutorialArrows_UIAudit_20261020/REPORT.md.
+
+## 2026-10-20 - Lobby spawn lifecycle clarification
+
+First join continues to default to World1; CurrentWorld is session state rather than a loaded destination. Death and Trophy return use the player's own current World. LobbySpawnService owns native character loading/ordinary respawn, waits for body readiness and destination streaming, and places above the actual collidable floor/carpet using body dimensions. The client acknowledges only the received pose and floor before the root is released. Superseded requests cannot replay an old destination; late body updates preserve the player's current X/Z.
+
+World2's authored Part marker and both lobby layouts remain unchanged; its runtime SpawnLocation supplies a valid per-player RespawnLocation. Existing normal/combat-loss delays, rewards, bank journals and saved data are retained. Implementation evidence and runtime limitations: `reports/LobbySpawn_20261020/REPORT.md`.

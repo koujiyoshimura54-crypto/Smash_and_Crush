@@ -1,0 +1,151 @@
+{
+  "scope": "Real local Studio server with two actual client sessions. Persistence replaced temporarily with in-memory adapter; Trophy defeat prerequisite synthetic. Not a published or production DataStore test.",
+  "cases": [
+    {
+      "case": "near-simultaneous join; real 2 clients, temporary memory persistence",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":{\"Win\":1000,\"Loaded\":true,\"Anchored\":false,\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Stage\":1,\"Placed\":true,\"Player\":\"Player1\",\"Health\":100,\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":11.845703125},\"FootBottom\":5.481176882982254,\"Hip\":6.465583324432373,\"RunId\":\"d6e297f0-d5a8-4239-9813-702a3ba6d5b7\",\"World\":1},\"2\":{\"Win\":1000,\"Loaded\":true,\"Anchored\":false,\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Stage\":1,\"Placed\":true,\"Player\":\"Player2\",\"Health\":100,\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"FootBottom\":4.499155551195145,\"Hip\":2.351121187210083,\"RunId\":\"314b0cec-ab48-45cf-b801-74768d6b9edf\",\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "World2 first death and Player2 keyboard move",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":{\"Stage\":1,\"Win\":1000,\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"World2Stage\":1,\"Anchored\":false,\"FootBottom\":3.4809456169605257,\"Loaded\":true,\"Placed\":true,\"Player\":\"Player1\",\"Health\":100,\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"World2RunId\":\"72301920-a863-4c85-8389-75799e9d0634\",\"Hip\":6.465583324432373,\"RunId\":\"c29c62ad-4563-40ae-92ca-f8de579e9d82\",\"World\":2},\"2\":{\"Win\":1000,\"Loaded\":true,\"Anchored\":false,\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Stage\":1,\"Placed\":true,\"Player\":\"Player2\",\"Health\":100,\"Position\":{\"1\":276.6611328125,\"3\":12.9951171875,\"2\":7.7314453125},\"FootBottom\":4.499846011400223,\"Hip\":2.351121187210083,\"RunId\":\"314b0cec-ab48-45cf-b801-74768d6b9edf\",\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "World2 natural death x3; other player invariant",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Cycles\":{\"1\":{\"Win\":1000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"095aae58-4ffd-4ce3-99fd-8c6f217aa628\",\"Player\":\"Player1\",\"World2RunId\":\"ccdd9559-941f-4f0f-85dd-82cfaa113160\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.4796960651874544,\"Stage\":1,\"World\":2},\"3\":{\"Win\":1000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"5ecbab35-6236-4740-a98f-166629d1c08f\",\"Position\":{\"1\":27.980466842651368,\"3\":1947.9803466796876,\"2\":9.84375},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.4796960651874544,\"Stage\":1,\"World\":2},\"2\":{\"Win\":1000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"be28c70e-c341-4145-bd3f-7cb1b79e17a5\",\"Player\":\"Player1\",\"World2RunId\":\"41e34da0-aa53-49df-8ba4-fed41cbc6db3\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.4798608124256136,\"Stage\":1,\"World\":2}},\"OtherBefore\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":276.6611328125,\"3\":12.9951171875,\"2\":7.7314453125},\"Stage\":1,\"RunId\":\"314b0cec-ab48-45cf-b801-74768d6b9edf\",\"FootBottom\":4.498640090227127,\"World\":1},\"Kind\":\"Death\",\"OtherAfter\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":276.6611328125,\"3\":12.9951171875,\"2\":7.7314453125},\"Stage\":1,\"RunId\":\"314b0cec-ab48-45cf-b801-74768d6b9edf\",\"FootBottom\":4.498677283525467,\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "World1 natural death x3; other player invariant",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Cycles\":{\"1\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.729457378387451},\"Stage\":1,\"RunId\":\"ce080c61-1fa5-4c22-bd66-17d1ceed8531\",\"FootBottom\":4.496807128190994,\"World\":1},\"3\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.730489253997803},\"Stage\":1,\"RunId\":\"fd1bfd48-658f-4c03-b3f4-7d2bfde5188e\",\"FootBottom\":4.497863799333572,\"World\":1},\"2\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.723923206329346},\"Stage\":1,\"RunId\":\"7033d7f0-d3dd-4432-b78b-85862dc56567\",\"FootBottom\":4.491242438554764,\"World\":1}},\"OtherBefore\":{\"Win\":1000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"5ecbab35-6236-4740-a98f-166629d1c08f\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.4845092594623567,\"Stage\":1,\"World\":2},\"Kind\":\"Death\",\"OtherAfter\":{\"Win\":1000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"5ecbab35-6236-4740-a98f-166629d1c08f\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.4845092594623567,\"Stage\":1,\"World\":2}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "World2 physical Trophy return x3 with synthetic defeated prerequisite; memory persistence",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Cycles\":{\"1\":{\"Win\":4000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"7d17ee20-d913-4439-849d-730ba9f30de0\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":16.734859466552736},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":10.354159861803055,\"Stage\":1,\"World\":2},\"3\":{\"Win\":10000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"e9d6a9a4-e36d-49ee-baaa-6fa07c99ec09\",\"Position\":{\"1\":-6.28125,\"3\":2137.71875,\"2\":9.4453125},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.0840320885181429,\"Stage\":1,\"World\":2},\"2\":{\"Win\":7000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"32a74a6b-d6d0-457a-a6ec-e73ad533a96c\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.843750953674317},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.480232745409012,\"Stage\":1,\"World\":2}},\"OtherBefore\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Stage\":1,\"RunId\":\"fd1bfd48-658f-4c03-b3f4-7d2bfde5188e\",\"FootBottom\":4.498520880937576,\"World\":1},\"Kind\":\"Trophy\",\"OtherAfter\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Stage\":1,\"RunId\":\"fd1bfd48-658f-4c03-b3f4-7d2bfde5188e\",\"FootBottom\":4.4998312294483189,\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "diagnostic ownership probe; temporary wrapper, not final verification",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Cycles\":{\"1\":{\"Win\":13000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"a962779c-7047-4dfe-b597-99f23b4cc11b\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.4820323288440706,\"Stage\":1,\"World\":2},\"3\":{\"Win\":19000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"03e195a4-3e37-4c94-b456-3c006e7abaf1\",\"Position\":{\"1\":-6.28125,\"3\":2137.71875,\"2\":9.4453125},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.082945615053177,\"Stage\":1,\"World\":2},\"2\":{\"Win\":16000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"a6f290be-bc99-4d1e-bf24-b26239b18771\",\"Position\":{\"1\":-6.28125,\"3\":2137.71875,\"2\":9.4453125},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.0839610397815706,\"Stage\":1,\"World\":2}},\"OtherBefore\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Stage\":1,\"RunId\":\"fd1bfd48-658f-4c03-b3f4-7d2bfde5188e\",\"FootBottom\":4.499992400407791,\"World\":1},\"Kind\":\"Trophy\",\"OtherAfter\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Stage\":1,\"RunId\":\"fd1bfd48-658f-4c03-b3f4-7d2bfde5188e\",\"FootBottom\":4.498994380235672,\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "diagnostic client-owned contact vs server fixture; temporary ownership wrapper still present",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Tools.ExecuteLuauTool:116: sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Util.CommandExecution:54: SpawnClientContactCycles is not a valid member of ServerScriptService \"ServerScriptService\""
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "case": "client-owned contact diagnostic x3, temporary wrapper still present",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Cycles\":{\"1\":{\"Win\":22000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"8fe476d4-b076-45c7-8933-2920ffb69003\",\"Position\":{\"1\":-6.281249523162842,\"3\":2137.718505859375,\"2\":9.4453125},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.0806834995746614,\"Stage\":1,\"World\":2},\"3\":{\"Win\":28000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"e9464ce6-95ec-48ce-a87a-f0d0a5264987\",\"Position\":{\"1\":-6.28125,\"3\":2137.71875,\"2\":9.4453125},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.082427531480789,\"Stage\":1,\"World\":2},\"2\":{\"Win\":25000,\"World2Stage\":1,\"Anchored\":false,\"RunId\":\"e832cd5a-0c9f-45e1-b69c-c90e7fc485c5\",\"Player\":\"Player1\",\"World2RunId\":\"d4486e22-16d5-4670-b5e8-07ac40f8c947\",\"Position\":{\"1\":-6.28125,\"3\":2137.71875,\"2\":9.4453125},\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"FootBottom\":3.0800895988941194,\"Stage\":1,\"World\":2}},\"OtherBefore\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Stage\":1,\"RunId\":\"fd1bfd48-658f-4c03-b3f4-7d2bfde5188e\",\"FootBottom\":4.498621016740799,\"World\":1},\"Kind\":\"Trophy\",\"OtherAfter\":{\"Win\":1000,\"Anchored\":false,\"Player\":\"Player2\",\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Stage\":1,\"RunId\":\"fd1bfd48-658f-4c03-b3f4-7d2bfde5188e\",\"FootBottom\":4.499951869249344,\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "final handshake build: Player1 already in World2 before second client joins",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":{\"Win\":1000,\"World2Stage\":1,\"Anchored\":false,\"FootBottom\":3.479488641023636,\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"Placed\":true,\"Player\":\"Player1\",\"World2RunId\":\"138515b7-7b48-42c4-9122-47b9dc3ece32\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Loaded\":true,\"Stage\":1,\"RunId\":\"2fe168b8-85e6-4117-81db-a5846b18fa62\",\"World\":2}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "final build: staggered Player2 first spawn while Player1 in World2; World2 Trophy return, no probe",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":{\"Win\":4000,\"World2Stage\":1,\"Anchored\":false,\"FootBottom\":3.482386142015457,\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"Placed\":true,\"Player\":\"Player1\",\"World2RunId\":\"e2e1dc41-e63c-43a2-a452-6a45abd18f20\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Loaded\":true,\"Stage\":1,\"RunId\":\"2fe168b8-85e6-4117-81db-a5846b18fa62\",\"World\":2},\"2\":{\"Win\":1000,\"Loaded\":true,\"Anchored\":false,\"Placed\":true,\"Player\":\"Player2\",\"FootBottom\":4.514989405870438,\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Stage\":1,\"RunId\":\"72883f40-8ce9-4642-862c-48856b654782\",\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "final handshake build: second Trophy return in each World; Player1 keyboard movement before repeat",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"AfterW2\":{\"1\":{\"Win\":7000,\"World2Stage\":1,\"Anchored\":false,\"FootBottom\":3.474136620759964,\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"Placed\":true,\"Player\":\"Player1\",\"World2RunId\":\"02ad312a-f852-42ca-9d34-ec6ac8f1cba8\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.835744857788086},\"Loaded\":true,\"Stage\":1,\"RunId\":\"2fe168b8-85e6-4117-81db-a5846b18fa62\",\"World\":2},\"2\":{\"Win\":1001,\"Loaded\":true,\"Anchored\":false,\"Placed\":true,\"Player\":\"Player2\",\"FootBottom\":4.517741233110428,\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Stage\":1,\"RunId\":\"1b0e0a12-b87d-4c9f-862b-f392bcd73665\",\"World\":1}},\"AfterW1\":{\"1\":{\"Win\":7000,\"World2Stage\":1,\"Anchored\":false,\"FootBottom\":3.481275588274002,\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"Placed\":true,\"Player\":\"Player1\",\"World2RunId\":\"02ad312a-f852-42ca-9d34-ec6ac8f1cba8\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Loaded\":true,\"Stage\":1,\"RunId\":\"2fe168b8-85e6-4117-81db-a5846b18fa62\",\"World\":2},\"2\":{\"Win\":1002,\"Loaded\":true,\"Anchored\":false,\"Placed\":true,\"Player\":\"Player2\",\"FootBottom\":9.831917315721512,\"Position\":{\"1\":287.8603515625,\"3\":13,\"2\":13.070440292358399},\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Stage\":1,\"RunId\":\"bcd0f9de-9ba0-464a-bd77-7ce9ce865c8c\",\"World\":1}},\"Before\":{\"1\":{\"Win\":4000,\"World2Stage\":1,\"Anchored\":false,\"FootBottom\":3.482543498277664,\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"Placed\":true,\"Player\":\"Player1\",\"World2RunId\":\"e2e1dc41-e63c-43a2-a452-6a45abd18f20\",\"Position\":{\"1\":19.98046875,\"3\":1947.9765625,\"2\":9.84375},\"Loaded\":true,\"Stage\":1,\"RunId\":\"2fe168b8-85e6-4117-81db-a5846b18fa62\",\"World\":2},\"2\":{\"Win\":1001,\"Loaded\":true,\"Anchored\":false,\"Placed\":true,\"Player\":\"Player2\",\"FootBottom\":4.517860919237137,\"Position\":{\"1\":287.861328125,\"3\":13,\"2\":7.7314453125},\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Stage\":1,\"RunId\":\"1b0e0a12-b87d-4c9f-862b-f392bcd73665\",\"World\":1}}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "case": "final build: natural death in both Worlds, movable Player2, superseded request rejected",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"StaleRequest\":{\"OldRejected\":true,\"LatestAccepted\":true},\"AfterFinalDeathAndPlayer2Movement\":{\"1\":{\"Win\":7000,\"World2Stage\":1,\"Anchored\":false,\"FootBottom\":3.4806869328022005,\"Respawn\":\"Workspace.World2Map.TrainingArea.World2LobbySpawn.RuntimeRespawn\",\"Placed\":true,\"Player\":\"Player1\",\"World2RunId\":\"b146089d-1019-46a0-adb5-cae9245919f4\",\"Position\":{\"1\":27.98046875,\"3\":1947.98046875,\"2\":9.84375},\"Loaded\":true,\"Stage\":1,\"RunId\":\"b574944a-49fb-41ad-ac80-7669167c7c35\",\"World\":2},\"2\":{\"Win\":1002,\"Loaded\":true,\"Anchored\":false,\"Placed\":true,\"Player\":\"Player2\",\"FootBottom\":4.4995308220386509,\"Position\":{\"1\":279.861328125,\"3\":12.99609375,\"2\":7.7314453125},\"Respawn\":\"Workspace.GeneratedMap.TrainingArea.SpawnLocation\",\"Stage\":1,\"RunId\":\"948103de-23ff-4612-b542-687726ae4602\",\"World\":1}}}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "finalSpawnRelatedConsoleFindings": [],
+  "finalTwoGuardChanges": "Final file also avoids scheduling after placement acknowledgement and updates a pending target revision on late scaling. These guards were syntax/file validated; their late-load branch was not separately replayed in Play."
+}

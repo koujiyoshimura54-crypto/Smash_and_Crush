@@ -16,6 +16,7 @@ local ItemDrops=require(game.ServerScriptService.Services.EnemyDropGachaService)
 local RunInventory=worldId==1 and require(game.ServerScriptService.Services.RunInventoryService)
 local PlayerData=require(game.ServerScriptService.Services.PlayerDataService)
 local Speed=require(game.ServerScriptService.Services.SpeedService)
+local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
 local Badges=require(game.ServerScriptService.Services.BadgeAwardService)
 local function inWorld(p) return (p:GetAttribute("CurrentWorld") or 1)==worldId end
 local watched=setmetatable({}, {__mode="k"})
@@ -159,19 +160,11 @@ function M.InitializePlayer(p,targetStage)
  p:SetAttribute("IsFighting",false)
  send(p,{Type="Fighting",Active=false})
  M.SendState(p)
- local lobby=Trophy.GetLobbySpawn()
- if lobby and lobby:IsA("SpawnLocation") then p.RespawnLocation=lobby end
+ if inWorld(p) then Placement.ConfigureRespawn(p,worldId) end
  if not watched[p] then
   watched[p]=true
   local function characterAdded(character,reset)
    if not inWorld(p) then return end
-   if worldId==2 and reset~=false then
-    task.defer(function()
-     local root=character:WaitForChild("HumanoidRootPart",10)
-     local lobby=Trophy.GetLobbySpawn()
-     if root and lobby and p.Character==character and inWorld(p) then character:PivotTo(lobby.CFrame*CFrame.new(0,5,0)) end
-    end)
-   end
    if lossRespawns[p] then
     -- Keep the planned-loss guard through the old character reset. It is
     -- cleared only by the CharacterAdded raised by our explicit LoadCharacter.
@@ -207,10 +200,10 @@ local function returnToLobbyAfterLoss(p)
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
  if humanoid and humanoid.Health>0 then humanoid.Health=0 end
  task.delay(LOSS_DEATH_DISPLAY_DURATION,function()
-  if p.Parent~=Players then lossRespawns[p]=nil return end
+  if p.Parent~=Players or p.Character~=character or not inWorld(p) then lossRespawns[p]=nil return end
   -- Reset once, immediately before the explicit direct respawn.
   M.InitializePlayer(p)
-  local ok,err=pcall(function() p:LoadCharacter() end)
+  local ok,err=pcall(function() return Placement.LoadCharacter(p,character) end)
   if not ok then
    lossRespawns[p]=nil
    warn("Direct loss respawn failed for "..p.Name..": "..tostring(err))

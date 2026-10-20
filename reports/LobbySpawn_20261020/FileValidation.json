@@ -1,0 +1,44 @@
+{
+  "path": "C:\\Users\\kouji\\MergeToForge_CurrentCloud.rbxl",
+  "inputSha256": "b5b357adff9b7eddad1e9866b1dabb80995dbbed2760da5fa15d246b3c2e2234",
+  "outputSha256": "32e45e4f422f35a50b6abd0fc2c9958ca99ccb2dc6cbb01a2fbeab8e619e62ed",
+  "changedSources": [
+    "StarterPlayer.StarterPlayerScripts.World.LobbySpawnClient",
+    "ServerScriptService.Services.LobbySpawnService",
+    "ServerScriptService.Services.TrophyRewardService",
+    "ServerScriptService.Services.RunReturnService",
+    "ServerScriptService.Services.StageSkipService",
+    "ServerScriptService.World.EnemyManager",
+    "ServerScriptService.Systems.Controllers.InitialSpawnFacing",
+    "ServerScriptService.Systems.Controllers.MuscleCharacterService",
+    "ServerScriptService.Systems.Controllers.StageProgressController",
+    "ServerScriptService.Systems.Debug.StudioStartController",
+    "ServerScriptService.Systems.Debug.StudioDebugService"
+  ],
+  "addedInstances": [
+    "ServerScriptService.Services.LobbySpawnService",
+    "StarterPlayer.StarterPlayerScripts.World.LobbySpawnClient"
+  ],
+  "allOtherOriginalPropertiesParentsUniqueIdsUnchanged": true,
+  "geometryBalanceRewardsPersistenceTreadmillHeadingUnchanged": true,
+  "syntax": "passed",
+  "reDecodeReferencesSharedStrings": "passed",
+  "written": true,
+  "summary": {
+    "sha256": "32e45e4f422f35a50b6abd0fc2c9958ca99ccb2dc6cbb01a2fbeab8e619e62ed",
+    "instanceCount": 182120,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 182119,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 182120,
+      "PROP.Ref": 78444,
+      "PROP.Content": 0,
+      "PRNT.Child": 182120,
+      "PRNT.Parent": 182120
+    }
+  }
+}

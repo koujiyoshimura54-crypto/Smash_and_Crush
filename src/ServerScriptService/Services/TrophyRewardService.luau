@@ -6,6 +6,7 @@ local function forWorld(worldId)
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
+local Placement = require(game.ServerScriptService.Services.LobbySpawnService)
 local GamePass = require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
 local PlayerData = require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
 
@@ -133,6 +134,12 @@ local function collect(player, record, part)
 
 	-- Lock before the potentially yielding durable bank. Back uses the same lock/journal.
 	record.Claiming = true
+	local placement = Placement.StreamLobby(player, character, worldId)
+	if not placement or not records[player] or records[player][record.Stage] ~= record
+		or not Placement.IsCurrent(player, placement) or humanoid.Health <= 0 then
+		record.Claiming = false
+		return
+	end
 	local winReward = GamePass.GetWinReward(player, baseReward,worldId)
 	if Bank then
 		local snapshot = Run.GetSnapshot(player)
@@ -144,7 +151,8 @@ local function collect(player, record, part)
 		-- Death/reset/another completion may have invalidated this pickup during I/O.
 		if not records[player] or records[player][record.Stage] ~= record
 			or player.Character ~= character or humanoid.Health <= 0
-			or (player:GetAttribute("CurrentWorld") or 1) ~= worldId then
+			or (player:GetAttribute("CurrentWorld") or 1) ~= worldId
+			or not Placement.IsCurrent(player, placement) then
 			record.Claiming = false
 			return
 		end
@@ -197,25 +205,8 @@ local function collect(player, record, part)
 	humanoid.Health = humanoid.MaxHealth
 	humanoid.Sit = false
 
-	local _, size = character:GetBoundingBox()
-
-	character:PivotTo(
-		spawn.CFrame
-			* CFrame.new(
-				0,
-				spawn.Size.Y / 2
-				+ math.max(size.Y / 2, humanoid.HipHeight + 2)
-				+ 2,
-				0
-			)
-	)
-
-	for _, item in character:GetDescendants() do
-		if item:IsA("BasePart") then
-			item.AssemblyLinearVelocity = Vector3.zero
-			item.AssemblyAngularVelocity = Vector3.zero
-		end
-	end
+	local placed, why = Placement.MoveToLobby(player, character, worldId)
+	if not placed then warn("[LobbySpawn] Trophy placement rejected: " .. tostring(why)) end
 
 	resetRun(player)
 end

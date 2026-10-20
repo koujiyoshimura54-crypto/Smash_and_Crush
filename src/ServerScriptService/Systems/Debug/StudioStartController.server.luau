@@ -9,6 +9,7 @@ local Config=settings.Start
 if not Config or Config.Enabled~=true then warn("[StudioTest] Start.Enabled is not true; /test is disabled");return end
 -- Register chat/replies before requiring gameplay modules: their failures must be visible.
 local Data,Progression,Requirements,Enemy
+local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
 local dependencyState="initializing"
 local dependencyError
 local remotes=RS:FindFirstChild("Remotes") or Instance.new("Folder");remotes.Name="Remotes";remotes.Parent=RS
@@ -37,8 +38,7 @@ local function move(p,w,s,ch)
  local previous=Enemy.ForWorld(p:GetAttribute("CurrentWorld")==2 and 2 or 1);local target=Enemy.ForWorld(w)
  if not previous.IsReady() or not target.IsReady() then return false,"TEST ERROR: World combat is initializing" end
  previous.Deactivate(p);p:SetAttribute("CurrentWorld",w);target.InitializePlayer(p,s)
- ch:PivotTo(spawn.CFrame*CFrame.new(0,spawn.Size.Y*.5+hum.HipHeight+root.Size.Y*.5+.1,0))
- for _,part in ch:GetDescendants() do if part:IsA("BasePart") then part.AssemblyLinearVelocity=Vector3.zero;part.AssemblyAngularVelocity=Vector3.zero end end
+ local placed,why=Placement.MoveToLobby(p,ch,w);if not placed then return false,"TEST ERROR: "..tostring(why) end
  target.Activate(p);return true
 end
 local function apply(p,level,world,stage,levelOnly)
@@ -93,10 +93,10 @@ local function execute(p,message)
  else return false,"TEST ERROR: Unknown command; use /test help" end
  return apply(p,level,world,stage)
 end
-local function setup(p)connections[p]=p.CharacterAdded:Connect(function(ch)local st=states[p];if st and st.Active and st.Moved then task.defer(function()
+local function setup(p)connections[p]=Placement.Spawned:Connect(function(owner,ch)if owner~=p or p.Character~=ch then return end;local st=states[p];if st and st.Active and st.Moved then
  local called,ok,why=pcall(move,p,st.World,st.Stage,ch)
  if not called or not ok then response(p,"TEST ERROR: Respawn placement: "..tostring(called and why or ok)) end
-end) end end)end
+end end)end
 Players.PlayerAdded:Connect(setup);for _,p in Players:GetPlayers() do setup(p) end
 Players.PlayerRemoving:Connect(function(p)local c=connections[p];if c then c:Disconnect() end;connections[p]=nil;states[p]=nil end)
 local function auto(p)task.spawn(function()while p.Parent==Players and not Data.IsLoaded(p) do task.wait() end;if p.Parent==Players then local d=Config.Defaults or {};local ok,text=apply(p,d.Level,d.World,d.Stage);if not ok then warn(text) end end end)end
