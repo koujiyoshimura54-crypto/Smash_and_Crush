@@ -2233,3 +2233,8 @@ Fixed only the actual CurrentCloud TutorialGuideClient: verified walking-carpet 
 ## 2026-10-20 — Lobby equipment UI / shared layout fixes
 
 Corrected six purchased Lobby heading rows and treadmill caption layout using current authoritative values. Shared HUD layout is invalidation-driven; ResponsivePanels coalesces visible-panel work; Shop card/canvas feedback now uses a stable authored reference height and top anchor. Actual Japanese clipping, bounded Return obstacle/Tween behavior, Shop convergence, tab response and fixture respawn were checked. Further investigation stopped at the user request. Long startup/pause-modal persistence and narrow-device coverage remain unresolved/unverified. See reports/LobbyUIFix_20261020/REPORT.md and FileValidation.json for exact scope and same-file write status.
+
+
+## 2026-10-20 — Egg and Merge initialization recovery
+
+Deferred real DataStore acquisition into existing protected operations so module initialization can complete; corrected Egg label ID shadowing, registered PetRequest before labels, released the hatch presentation lock on errors and delayed MergeShopMounted until wiring completes. Four live Sources were patched in the same CurrentCloud.rbxl; all objects and other properties are unchanged. Syntax/reference/re-decode checks passed. Runtime verification is delegated to the user; no Play, Studio reopen, Save or Publish. StageSkip, spawn and Boss work was explicitly withdrawn. See reports/EggMergeRecovery_20261020/REPORT.md.

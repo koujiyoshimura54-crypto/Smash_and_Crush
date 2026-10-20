@@ -84,8 +84,8 @@ function M.init()
   if not Egg.isEgg(name) then continue end
   local prize=part:FindFirstChild("Prize")
   if prize then
-   for _,name in ipairs({"Info","InfoShadow"}) do
-    local label=prize:FindFirstChild(name)
+   for _,labelName in ipairs({"Info","InfoShadow"}) do
+    local label=prize:FindFirstChild(labelName)
     if label and label:IsA("TextLabel") then label.Text=Egg.purchasable(name) and require(RS.Modules.NumberFormat).Price(Egg.price(name)) or "Unavailable" end
    end
   end
@@ -93,8 +93,6 @@ function M.init()
 end
 function M.start()
  if started then return end
- started=true
- M.init();Pets.start()
  local remotes=RS:WaitForChild("Remotes")
  local remote=remotes:FindFirstChild("PetRequest")
  if remote then assert(remote:IsA("RemoteFunction"),"PetRequest must be a RemoteFunction")
@@ -105,5 +103,9 @@ function M.start()
   warn("[EggServer] Request failed: "..tostring(result))
   return reply(player,false,"PetRequestFailed")
  end
+ -- Register the core request handler before initializing optional world labels.
+ Pets.start()
+ M.init()
+ started=true
 end
 return M

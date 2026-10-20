@@ -571,7 +571,10 @@ function PetClient.request(action,a,b)
 			if response.ok then
 				-- Receipt identity prevents an unrelated refresh/retry from replaying Hatch.
 				if action=="OpenEgg" and playerData and playerData.LastRequestId==id then
-					require(script.Parent.HatchClient).play(playerData.LastResults,a)
+					local shown,why=xpcall(function()
+						require(script.Parent.HatchClient).play(playerData.LastResults,a)
+					end,debug.traceback)
+					if not shown then warn("[PetClient] Committed hatch presentation failed: "..tostring(why)) end
 				end
 				pending=false
 				return

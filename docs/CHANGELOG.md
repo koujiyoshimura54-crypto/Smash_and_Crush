@@ -993,3 +993,8 @@
 - Fixed purchased heading clipping and treadmill caption geometry without moving equipment or changing values.
 - Reduced shared HUD polling/writes and fixed Shop canvas/card feedback; retained existing UI operations.
 - Recorded tested behavior and unresolved startup/narrow-device cases; stopped additional investigation at user request.
+
+
+## 2026-10-20 — Egg / Item Merge startup recovery
+
+Prevent require-time DataStore errors from blocking Egg and Item Merge Remote registration; correct Egg price labels and initialization/presentation completion markers. Real data loading and transaction protections remain required. Static file validation passed; gameplay remains user verification. See reports/EggMergeRecovery_20261020/REPORT.md.

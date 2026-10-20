@@ -815,7 +815,7 @@ if not ok then
  local failed=gui:FindFirstChild("MergeShopPanel");if failed then failed:Destroy() end
  warn("[MergeShop] Purchased UI mount failed; no substitute created: "..tostring(built));return
 end
-view=built;gui:SetAttribute("MergeShopMounted",true)
+view=built
 local shop=view.Root
 gui.InventoryPanel.Content.Merge.Visible=false
 refresh=function()
@@ -885,3 +885,5 @@ for _,name in {"InventoryPanel","ShopPanel","RebirthPanel"} do
  if x then x:GetPropertyChangedSignal("Visible"):Connect(function() if x.Visible then view:Hide() end end) end
 end
 script.Destroying:Connect(function() beat:Disconnect();view:Destroy();gui:SetAttribute("MergeShopMounted",nil) end)
+-- Mark mounted only after state/result/proximity handlers are installed.
+gui:SetAttribute("MergeShopMounted",true)

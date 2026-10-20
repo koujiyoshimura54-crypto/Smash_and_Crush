@@ -16,9 +16,24 @@ local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
 local Ownership=require(script.Parent.PlayerDataOwnership)
 local StoreConfig=require(game.ServerScriptService.Config:WaitForChild("DataStoreConfig"))
-local store=DSS:GetDataStore(StoreConfig.GetName("PlayerData_v1"))
--- Explicit production handle used only by the Studio-authorized UserId reset path.
-local productionStore=DSS:GetDataStore("PlayerData_v1")
+-- Acquiring a DataStore can throw for an unpublished Studio file. Do it inside
+-- the existing protected read/write operation, never during module require.
+-- This is only a deferred real handle: no fallback records, alternate keys or
+-- permission bypass. Failed loads still leave Loaded=false and Data=nil.
+local function deferredStore(name)
+ local handle
+ local function call(method,...)
+  if not handle then handle=DSS:GetDataStore(name) end
+  return handle[method](handle,...)
+ end
+ local proxy={}
+ function proxy:GetAsync(...) return call("GetAsync",...) end
+ function proxy:UpdateAsync(...) return call("UpdateAsync",...) end
+ return proxy
+end
+local store=deferredStore(StoreConfig.GetName("PlayerData_v1"))
+-- Same production store, accessed only by the existing authorized reset path.
+local productionStore=deferredStore("PlayerData_v1")
 local sessions=setmetatable({}, {__mode="k"})
 local TOTAL_STORE=StoreConfig.GetName("TotalStrengthRanking_v1")
 local JST_OFFSET=9*60*60
