@@ -19,6 +19,6 @@ Used a newly opened verification Studio in Edit; no Play or data operation. Actu
 
 The far-distance size differences correspond to the small distance differences. All eight treadmill views fit one line, without clipping, and both shoe images report IsLoaded=true. Single-line rendered aspect ratios match unwrapped TextService bounds. Full measurements are in Measurements.json. Source compilation, same-file re-decode, references, SharedStrings, parents and UniqueIds pass FileValidation.json.
 
-Images: [W1 Japanese near](W1_ja_near.jpg), [far](W1_ja_far.jpg), [English near](W1_en_near.jpg), [far](W1_en_far.jpg); [W2 Japanese near](W2_ja_near.jpg), [far](W2_ja_far.jpg), [English near](W2_en_near.jpg), [far](W2_en_far.jpg). [Previous regression](W1_ja_near_before.jpg), [normal Japanese near](Reference_Dumbbells_ja_near.jpg), [far](Reference_Dumbbells_ja_far.jpg), [normal English near](Reference_Dumbbells_en_near.jpg), [far](Reference_Dumbbells_en_far.jpg).
+The thirteen comparison screenshots were removed at the user's request after verification. Measurements and validation records are retained.
 
 Temporary text, camera, selection, other ScreenGui visibility and active font watchers were restored/removed. The verification Studio remains in Edit with the final treadmill properties and Source applied in memory. No Studio Save/Publish, user-app closure, extra place or backup. Public-client gameplay/localization and other devices are untested.
