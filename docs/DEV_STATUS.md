@@ -2305,3 +2305,7 @@ Added 75 saved vertical Parts across both Worlds, with an upper Y=160 and existi
 ## 2026-10-21 - Existing wall extensions repositioned
 
 Repositioned only the 54 World1 and 21 World2 wall-extension Parts toward their outer/downstream edges; adjusted horizontal connecting lengths. Wrote the same CurrentCloud.rbxl and confirmed written bytes, preserving all other chunks and instance identities. No Studio, Play, screenshot or additional test was performed at the user's direction; the user will verify behavior. See reports/WallExtensionEdges_20261021/README.md.
+
+## 2026-10-21 - Lobby perimeter repair written; user verification pending
+
+Read the current user-approved rbxl and replaced coarse Lobby coverage with 63 World1 perimeter segments (3 reused/60 added) and 108 World2 segments (6 reused/102 added). Lower limits are two studs below each floor underside, with unchanged Y=160 tops. The same file was written and read back, preserving unrelated existing properties, Sources, parents and UniqueIds. No Studio, Play, screenshot, mock test or regression was run; the user will check behavior. Record: reports/LobbyPerimeterRepair_20261021/README.md.

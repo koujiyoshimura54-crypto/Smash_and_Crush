@@ -1,0 +1,4329 @@
+{
+  "inputSha256": "1438016210d9d38e45c65a26d618959790043ef818022ef4fe184bf5d2e26112",
+  "outputSha256": "d46942552d9d5419611db79f750f8c881ee27dd2a57f90dda70ebc0e5e3db7b4",
+  "worlds": [
+    {
+      "world": 1,
+      "floor": {
+        "min": [
+          156.0,
+          -4.0,
+          -64.0
+        ],
+        "max": [
+          393.0,
+          4.0,
+          85.0
+        ],
+        "size": [
+          237.0,
+          8.0,
+          149.0
+        ],
+        "center": [
+          274.5,
+          0.0,
+          10.5
+        ],
+        "parts": 1
+      },
+      "bottom": -6.0,
+      "top": 160,
+      "structuralFaces": 161,
+      "perimeterParts": 63,
+      "reused": 3,
+      "added": 60,
+      "entryX": [
+        263.6,
+        312.0
+      ],
+      "entryStartsZ": 85.0
+    },
+    {
+      "world": 2,
+      "floor": {
+        "min": [
+          -103.8799877166748,
+          0.0,
+          1850.97998046875
+        ],
+        "max": [
+          133.1200122833252,
+          2.0,
+          2019.97998046875
+        ],
+        "size": [
+          237.0,
+          2.0,
+          169.0
+        ],
+        "center": [
+          14.620012283325195,
+          1.0,
+          1935.47998046875
+        ],
+        "parts": 1
+      },
+      "bottom": -2.0,
+      "top": 160,
+      "structuralFaces": 224,
+      "perimeterParts": 108,
+      "reused": 6,
+      "added": 102,
+      "entryX": [
+        -17.08,
+        72.92
+      ],
+      "entryStartsZ": 2019.97998046875
+    }
+  ],
+  "allUnrelatedExistingPropertiesSourcesParentsAndUniqueIdsPreserved": true,
+  "collisionGroup": "Default; current SlapController disables only PlayerCharacters-to-itself collision",
+  "binaryWriteIntegrity": {
+    "before": {
+      "sha256": "d46942552d9d5419611db79f750f8c881ee27dd2a57f90dda70ebc0e5e3db7b4",
+      "instanceCount": 182635,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182634,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182635,
+        "PROP.Ref": 78766,
+        "PROP.Content": 0,
+        "PRNT.Child": 182635,
+        "PRNT.Parent": 182635
+      }
+    },
+    "after": {
+      "sha256": "d46942552d9d5419611db79f750f8c881ee27dd2a57f90dda70ebc0e5e3db7b4",
+      "instanceCount": 182635,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182634,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182635,
+        "PROP.Ref": 78766,
+        "PROP.Content": 0,
+        "PRNT.Child": 182635,
+        "PRNT.Parent": 182635
+      }
+    },
+    "renumberedInstances": 0,
+    "modifiedChunks": 0,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "written": true,
+  "parts": [
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Wall_1",
+      "new": false,
+      "before": {
+        "position": [
+          274.8066711425781,
+          98.4375,
+          -98.375
+        ],
+        "size": [
+          282.86163330078125,
+          123.125,
+          21.125
+        ]
+      },
+      "position": [
+        279.05,
+        77.0,
+        -86.313
+      ],
+      "size": [
+        23.200000000000024,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -85.863,
+        "sign": -1,
+        "lo": 267.5,
+        "hi": 290.6
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Wall_2",
+      "new": false,
+      "before": {
+        "position": [
+          405.625,
+          97.9375,
+          15.863693237304688
+        ],
+        "size": [
+          21.125,
+          124.125,
+          249.702392578125
+        ]
+      },
+      "position": [
+        395.562,
+        77.0,
+        21.450000000000003
+      ],
+      "size": [
+        1,
+        166.0,
+        33.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 395.112,
+        "sign": 1,
+        "lo": 4.95,
+        "hi": 37.95
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Wall_4",
+      "new": false,
+      "before": {
+        "position": [
+          143.98834228515625,
+          97.9375,
+          15.863693237304688
+        ],
+        "size": [
+          21.125,
+          124.125,
+          249.702392578125
+        ]
+      },
+      "position": [
+        155.55,
+        77.0,
+        21.0
+      ],
+      "size": [
+        1,
+        166.0,
+        23.2
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 156.0,
+        "sign": -1,
+        "lo": 9.45,
+        "hi": 32.55
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_001",
+      "new": true,
+      "before": null,
+      "position": [
+        154.05100000000002,
+        77.0,
+        -63.150000000000006
+      ],
+      "size": [
+        1,
+        166.0,
+        33.10000000000001
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 154.501,
+        "sign": -1,
+        "lo": -79.65,
+        "hi": -46.65
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_002",
+      "new": true,
+      "before": null,
+      "position": [
+        154.05100000000002,
+        77.0,
+        -7.050000000000001
+      ],
+      "size": [
+        1,
+        166.0,
+        33.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 154.501,
+        "sign": -1,
+        "lo": -23.55,
+        "hi": 9.45
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_003",
+      "new": true,
+      "before": null,
+      "position": [
+        154.05100000000002,
+        77.0,
+        49.05
+      ],
+      "size": [
+        1,
+        166.0,
+        33.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 154.501,
+        "sign": -1,
+        "lo": 32.55,
+        "hi": 65.55
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_004",
+      "new": true,
+      "before": null,
+      "position": [
+        155.55,
+        77.0,
+        -35.1
+      ],
+      "size": [
+        1,
+        166.0,
+        23.2
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 156.0,
+        "sign": -1,
+        "lo": -46.65,
+        "hi": -23.55
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_005",
+      "new": true,
+      "before": null,
+      "position": [
+        155.55,
+        77.0,
+        75.275
+      ],
+      "size": [
+        1,
+        166.0,
+        19.550000000000004
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 156.0,
+        "sign": -1,
+        "lo": 65.55,
+        "hi": 85.0
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_006",
+      "new": true,
+      "before": null,
+      "position": [
+        156.05100000000002,
+        77.0,
+        93.5805
+      ],
+      "size": [
+        1,
+        166.0,
+        17.261000000000003
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 156.501,
+        "sign": -1,
+        "lo": 85.0,
+        "hi": 102.161
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_007",
+      "new": true,
+      "before": null,
+      "position": [
+        168.05,
+        77.0,
+        -82.7565
+      ],
+      "size": [
+        1,
+        166.0,
+        6.3129999999999935
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 168.5,
+        "sign": -1,
+        "lo": -85.863,
+        "hi": -79.65
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_008",
+      "new": true,
+      "before": null,
+      "position": [
+        170.608,
+        77.0,
+        109.2935
+      ],
+      "size": [
+        1,
+        166.0,
+        14.365
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 171.058,
+        "sign": -1,
+        "lo": 102.161,
+        "hi": 116.426
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_009",
+      "new": true,
+      "before": null,
+      "position": [
+        204.713,
+        77.0,
+        115.453
+      ],
+      "size": [
+        1,
+        166.0,
+        2.045999999999998
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 204.263,
+        "sign": 1,
+        "lo": 114.48,
+        "hi": 116.426
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_010",
+      "new": true,
+      "before": null,
+      "position": [
+        205.325,
+        77.0,
+        113.87100000000001
+      ],
+      "size": [
+        1,
+        166.0,
+        1.3180000000000036
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 204.875,
+        "sign": 1,
+        "lo": 113.262,
+        "hi": 114.48
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_011",
+      "new": true,
+      "before": null,
+      "position": [
+        234.05,
+        77.0,
+        -86.863
+      ],
+      "size": [
+        1,
+        166.0,
+        2.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 234.5,
+        "sign": -1,
+        "lo": -87.863,
+        "hi": -85.863
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_012",
+      "new": true,
+      "before": null,
+      "position": [
+        235.45,
+        77.0,
+        112.262
+      ],
+      "size": [
+        1,
+        166.0,
+        2.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 235.0,
+        "sign": 1,
+        "lo": 111.262,
+        "hi": 113.262
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_013",
+      "new": true,
+      "before": null,
+      "position": [
+        263.45,
+        77.0,
+        107.162
+      ],
+      "size": [
+        1,
+        166.0,
+        8.300000000000002
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 263.0,
+        "sign": 1,
+        "lo": 103.062,
+        "hi": 111.262
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_014",
+      "new": true,
+      "before": null,
+      "position": [
+        263.95,
+        77.0,
+        94.031
+      ],
+      "size": [
+        1,
+        166.0,
+        18.162
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 263.5,
+        "sign": 1,
+        "lo": 85.0,
+        "hi": 103.062
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_015",
+      "new": true,
+      "before": null,
+      "position": [
+        267.95,
+        77.0,
+        -86.863
+      ],
+      "size": [
+        1,
+        166.0,
+        2.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 267.5,
+        "sign": 1,
+        "lo": -87.863,
+        "hi": -85.863
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_016",
+      "new": true,
+      "before": null,
+      "position": [
+        290.15000000000003,
+        77.0,
+        -86.863
+      ],
+      "size": [
+        1,
+        166.0,
+        2.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 290.6,
+        "sign": -1,
+        "lo": -87.863,
+        "hi": -85.863
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_017",
+      "new": true,
+      "before": null,
+      "position": [
+        313.75,
+        77.0,
+        103.6995
+      ],
+      "size": [
+        1,
+        166.0,
+        19.225
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 314.2,
+        "sign": -1,
+        "lo": 94.137,
+        "hi": 113.262
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_018",
+      "new": true,
+      "before": null,
+      "position": [
+        314.85,
+        77.0,
+        89.5685
+      ],
+      "size": [
+        1,
+        166.0,
+        9.237
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 315.3,
+        "sign": -1,
+        "lo": 85.0,
+        "hi": 94.137
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_019",
+      "new": true,
+      "before": null,
+      "position": [
+        324.05,
+        77.0,
+        -86.863
+      ],
+      "size": [
+        1,
+        166.0,
+        2.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 323.6,
+        "sign": 1,
+        "lo": -87.863,
+        "hi": -85.863
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_020",
+      "new": true,
+      "before": null,
+      "position": [
+        346.25,
+        77.0,
+        -86.863
+      ],
+      "size": [
+        1,
+        166.0,
+        2.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 346.7,
+        "sign": -1,
+        "lo": -87.863,
+        "hi": -85.863
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_021",
+      "new": true,
+      "before": null,
+      "position": [
+        347.65,
+        77.0,
+        112.262
+      ],
+      "size": [
+        1,
+        166.0,
+        2.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 347.2,
+        "sign": 1,
+        "lo": 111.262,
+        "hi": 113.262
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_022",
+      "new": true,
+      "before": null,
+      "position": [
+        378.65,
+        77.0,
+        102.656
+      ],
+      "size": [
+        1,
+        166.0,
+        17.312000000000005
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 378.2,
+        "sign": 1,
+        "lo": 94.05,
+        "hi": 111.262
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_023",
+      "new": true,
+      "before": null,
+      "position": [
+        380.15,
+        77.0,
+        -83.7565
+      ],
+      "size": [
+        1,
+        166.0,
+        8.312999999999994
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 379.7,
+        "sign": 1,
+        "lo": -87.863,
+        "hi": -79.65
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_024",
+      "new": true,
+      "before": null,
+      "position": [
+        385.36199999999997,
+        77.0,
+        -79.4
+      ],
+      "size": [
+        1,
+        166.0,
+        0.6
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 384.912,
+        "sign": 1,
+        "lo": -79.65,
+        "hi": -79.15
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_025",
+      "new": true,
+      "before": null,
+      "position": [
+        393.562,
+        77.0,
+        -65.15
+      ],
+      "size": [
+        1,
+        166.0,
+        28.10000000000001
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 393.112,
+        "sign": 1,
+        "lo": -79.15,
+        "hi": -51.15
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_026",
+      "new": true,
+      "before": null,
+      "position": [
+        393.562,
+        77.0,
+        -6.6
+      ],
+      "size": [
+        1,
+        166.0,
+        23.2
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 393.112,
+        "sign": 1,
+        "lo": -18.15,
+        "hi": 4.95
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_027",
+      "new": true,
+      "before": null,
+      "position": [
+        393.562,
+        77.0,
+        49.5
+      ],
+      "size": [
+        1,
+        166.0,
+        23.199999999999996
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 393.112,
+        "sign": 1,
+        "lo": 37.95,
+        "hi": 61.05
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_028",
+      "new": true,
+      "before": null,
+      "position": [
+        395.562,
+        77.0,
+        -34.65
+      ],
+      "size": [
+        1,
+        166.0,
+        33.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 395.112,
+        "sign": 1,
+        "lo": -51.15,
+        "hi": -18.15
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_029",
+      "new": true,
+      "before": null,
+      "position": [
+        395.562,
+        77.0,
+        77.55
+      ],
+      "size": [
+        1,
+        166.0,
+        33.1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 395.112,
+        "sign": 1,
+        "lo": 61.05,
+        "hi": 94.05
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_030",
+      "new": true,
+      "before": null,
+      "position": [
+        251.0,
+        77.0,
+        -88.313
+      ],
+      "size": [
+        33.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -87.863,
+        "sign": -1,
+        "lo": 234.5,
+        "hi": 267.5
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_031",
+      "new": true,
+      "before": null,
+      "position": [
+        307.1,
+        77.0,
+        -88.313
+      ],
+      "size": [
+        33.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -87.863,
+        "sign": -1,
+        "lo": 290.6,
+        "hi": 323.6
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_032",
+      "new": true,
+      "before": null,
+      "position": [
+        363.2,
+        77.0,
+        -88.313
+      ],
+      "size": [
+        33.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -87.863,
+        "sign": -1,
+        "lo": 346.7,
+        "hi": 379.7
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_033",
+      "new": true,
+      "before": null,
+      "position": [
+        201.5,
+        77.0,
+        -86.313
+      ],
+      "size": [
+        66.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -85.863,
+        "sign": -1,
+        "lo": 168.5,
+        "hi": 234.5
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_034",
+      "new": true,
+      "before": null,
+      "position": [
+        335.15,
+        77.0,
+        -86.313
+      ],
+      "size": [
+        23.199999999999967,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -85.863,
+        "sign": -1,
+        "lo": 323.6,
+        "hi": 346.7
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_035",
+      "new": true,
+      "before": null,
+      "position": [
+        161.5005,
+        77.0,
+        -80.10000000000001
+      ],
+      "size": [
+        14.098999999999995,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -79.65,
+        "sign": -1,
+        "lo": 154.501,
+        "hi": 168.5
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_036",
+      "new": true,
+      "before": null,
+      "position": [
+        382.306,
+        77.0,
+        -80.10000000000001
+      ],
+      "size": [
+        5.311999999999989,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -79.65,
+        "sign": -1,
+        "lo": 379.7,
+        "hi": 384.912
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_037",
+      "new": true,
+      "before": null,
+      "position": [
+        389.012,
+        77.0,
+        -79.60000000000001
+      ],
+      "size": [
+        8.300000000000045,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -79.15,
+        "sign": -1,
+        "lo": 384.912,
+        "hi": 393.112
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_038",
+      "new": true,
+      "before": null,
+      "position": [
+        394.112,
+        77.0,
+        -51.6
+      ],
+      "size": [
+        2.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -51.15,
+        "sign": -1,
+        "lo": 393.112,
+        "hi": 395.112
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_039",
+      "new": true,
+      "before": null,
+      "position": [
+        155.2505,
+        77.0,
+        -46.199999999999996
+      ],
+      "size": [
+        1.5989999999999953,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -46.65,
+        "sign": 1,
+        "lo": 154.501,
+        "hi": 156.0
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_040",
+      "new": true,
+      "before": null,
+      "position": [
+        155.2505,
+        77.0,
+        -24.0
+      ],
+      "size": [
+        1.5989999999999953,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -23.55,
+        "sign": -1,
+        "lo": 154.501,
+        "hi": 156.0
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_041",
+      "new": true,
+      "before": null,
+      "position": [
+        394.112,
+        77.0,
+        -17.7
+      ],
+      "size": [
+        2.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": -18.15,
+        "sign": 1,
+        "lo": 393.112,
+        "hi": 395.112
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_042",
+      "new": true,
+      "before": null,
+      "position": [
+        394.112,
+        77.0,
+        4.5
+      ],
+      "size": [
+        2.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 4.95,
+        "sign": -1,
+        "lo": 393.112,
+        "hi": 395.112
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_043",
+      "new": true,
+      "before": null,
+      "position": [
+        155.2505,
+        77.0,
+        9.899999999999999
+      ],
+      "size": [
+        1.5989999999999953,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 9.45,
+        "sign": 1,
+        "lo": 154.501,
+        "hi": 156.0
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_044",
+      "new": true,
+      "before": null,
+      "position": [
+        155.2505,
+        77.0,
+        32.099999999999994
+      ],
+      "size": [
+        1.5989999999999953,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 32.55,
+        "sign": -1,
+        "lo": 154.501,
+        "hi": 156.0
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_045",
+      "new": true,
+      "before": null,
+      "position": [
+        394.112,
+        77.0,
+        38.400000000000006
+      ],
+      "size": [
+        2.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 37.95,
+        "sign": 1,
+        "lo": 393.112,
+        "hi": 395.112
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_046",
+      "new": true,
+      "before": null,
+      "position": [
+        394.112,
+        77.0,
+        60.599999999999994
+      ],
+      "size": [
+        2.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 61.05,
+        "sign": -1,
+        "lo": 393.112,
+        "hi": 395.112
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_047",
+      "new": true,
+      "before": null,
+      "position": [
+        155.2505,
+        77.0,
+        66.0
+      ],
+      "size": [
+        1.5989999999999953,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 65.55,
+        "sign": 1,
+        "lo": 154.501,
+        "hi": 156.0
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_048",
+      "new": true,
+      "before": null,
+      "position": [
+        156.2505,
+        77.0,
+        85.45
+      ],
+      "size": [
+        0.6010000000000048,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 85.0,
+        "sign": 1,
+        "lo": 156.0,
+        "hi": 156.501
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_049",
+      "new": true,
+      "before": null,
+      "position": [
+        263.55,
+        77.0,
+        85.45
+      ],
+      "size": [
+        0.20000000000002274,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 85.0,
+        "sign": 1,
+        "lo": 263.5,
+        "hi": 263.6
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_050",
+      "new": true,
+      "before": null,
+      "position": [
+        313.65,
+        77.0,
+        85.45
+      ],
+      "size": [
+        3.4000000000000115,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 85.0,
+        "sign": 1,
+        "lo": 312.0,
+        "hi": 315.3
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_051",
+      "new": true,
+      "before": null,
+      "position": [
+        386.656,
+        77.0,
+        94.5
+      ],
+      "size": [
+        17.012000000000036,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 94.05,
+        "sign": 1,
+        "lo": 378.2,
+        "hi": 395.112
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_052",
+      "new": true,
+      "before": null,
+      "position": [
+        314.75,
+        77.0,
+        93.687
+      ],
+      "size": [
+        1.2000000000000228,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 94.137,
+        "sign": -1,
+        "lo": 314.2,
+        "hi": 315.3
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_053",
+      "new": true,
+      "before": null,
+      "position": [
+        163.77949999999998,
+        77.0,
+        102.611
+      ],
+      "size": [
+        14.656999999999988,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 102.161,
+        "sign": 1,
+        "lo": 156.501,
+        "hi": 171.058
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_054",
+      "new": true,
+      "before": null,
+      "position": [
+        263.25,
+        77.0,
+        103.512
+      ],
+      "size": [
+        0.6,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 103.062,
+        "sign": 1,
+        "lo": 263.0,
+        "hi": 263.5
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_055",
+      "new": true,
+      "before": null,
+      "position": [
+        249.0,
+        77.0,
+        111.712
+      ],
+      "size": [
+        28.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 111.262,
+        "sign": 1,
+        "lo": 235.0,
+        "hi": 263.0
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_056",
+      "new": true,
+      "before": null,
+      "position": [
+        362.7,
+        77.0,
+        111.712
+      ],
+      "size": [
+        31.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 111.262,
+        "sign": 1,
+        "lo": 347.2,
+        "hi": 378.2
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_057",
+      "new": true,
+      "before": null,
+      "position": [
+        219.9375,
+        77.0,
+        113.712
+      ],
+      "size": [
+        30.225,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 113.262,
+        "sign": 1,
+        "lo": 204.875,
+        "hi": 235.0
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_058",
+      "new": true,
+      "before": null,
+      "position": [
+        330.7,
+        77.0,
+        113.712
+      ],
+      "size": [
+        33.1,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 113.262,
+        "sign": 1,
+        "lo": 314.2,
+        "hi": 347.2
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_059",
+      "new": true,
+      "before": null,
+      "position": [
+        204.56900000000002,
+        77.0,
+        114.93
+      ],
+      "size": [
+        0.7119999999999947,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 114.48,
+        "sign": 1,
+        "lo": 204.263,
+        "hi": 204.875
+      }
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Perimeter_W1_060",
+      "new": true,
+      "before": null,
+      "position": [
+        187.6605,
+        77.0,
+        116.876
+      ],
+      "size": [
+        33.305000000000014,
+        166.0,
+        1
+      ],
+      "bottom": -6.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 116.426,
+        "sign": 1,
+        "lo": 171.058,
+        "hi": 204.263
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_EastWall",
+      "new": false,
+      "before": {
+        "position": [
+          171.58750915527344,
+          96.9375,
+          1932.0699462890625
+        ],
+        "size": [
+          21.125,
+          126.125,
+          260.320068359375
+        ]
+      },
+      "position": [
+        161.52499999999998,
+        79.0,
+        1928.317
+      ],
+      "size": [
+        1,
+        162.0,
+        33.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 161.075,
+        "sign": 1,
+        "lo": 1911.817,
+        "hi": 1944.817
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_WestWall",
+      "new": false,
+      "before": {
+        "position": [
+          -142.3474884033203,
+          96.9375,
+          1932.0699462890625
+        ],
+        "size": [
+          21.125,
+          126.125,
+          260.320068359375
+        ]
+      },
+      "position": [
+        -130.285,
+        79.0,
+        1923.3200000000002
+      ],
+      "size": [
+        1,
+        162.0,
+        14.106000000000085
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -129.835,
+        "sign": -1,
+        "lo": 1916.317,
+        "hi": 1930.323
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_RearWall",
+      "new": false,
+      "before": {
+        "position": [
+          14.620010375976562,
+          96.9375,
+          1812.5224609375
+        ],
+        "size": [
+          335.1600036621094,
+          126.125,
+          21.125
+        ]
+      },
+      "position": [
+        4.7299999999999995,
+        79.0,
+        1824.585
+      ],
+      "size": [
+        15.379999999999999,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1825.035,
+        "sign": -1,
+        "lo": -2.91,
+        "hi": 12.37
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_ExitLeft",
+      "new": false,
+      "before": {
+        "position": [
+          -84.9949722290039,
+          96.9375,
+          2051.617431640625
+        ],
+        "size": [
+          135.93003845214844,
+          126.125,
+          21.125
+        ]
+      },
+      "position": [
+        -91.16,
+        79.0,
+        2050.555
+      ],
+      "size": [
+        13.500000000000005,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2050.105,
+        "sign": 1,
+        "lo": -97.86,
+        "hi": -84.46
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_ExitRight",
+      "new": false,
+      "before": {
+        "position": [
+          127.78502655029297,
+          96.9375,
+          2051.617431640625
+        ],
+        "size": [
+          108.82997131347656,
+          126.125,
+          21.125
+        ]
+      },
+      "position": [
+        124.32,
+        79.0,
+        2052.555
+      ],
+      "size": [
+        18.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2052.105,
+        "sign": 1,
+        "lo": 115.32,
+        "hi": 133.32
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_EastExit_Junction",
+      "new": false,
+      "before": {
+        "position": [
+          170.58750915527344,
+          90.4375,
+          2041.054931640625
+        ],
+        "size": [
+          19.125,
+          139.125,
+          18.0
+        ]
+      },
+      "position": [
+        151.5125,
+        79.0,
+        2039.28
+      ],
+      "size": [
+        19.225,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2038.83,
+        "sign": 1,
+        "lo": 141.95,
+        "hi": 161.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_001",
+      "new": true,
+      "before": null,
+      "position": [
+        -132.285,
+        79.0,
+        1852.81
+      ],
+      "size": [
+        1,
+        162.0,
+        33.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -131.835,
+        "sign": -1,
+        "lo": 1836.31,
+        "hi": 1869.31
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_002",
+      "new": true,
+      "before": null,
+      "position": [
+        -132.285,
+        79.0,
+        1899.817
+      ],
+      "size": [
+        1,
+        162.0,
+        33.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -131.835,
+        "sign": -1,
+        "lo": 1883.317,
+        "hi": 1916.317
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_003",
+      "new": true,
+      "before": null,
+      "position": [
+        -132.285,
+        79.0,
+        1946.823
+      ],
+      "size": [
+        1,
+        162.0,
+        33.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -131.835,
+        "sign": -1,
+        "lo": 1930.323,
+        "hi": 1963.323
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_004",
+      "new": true,
+      "before": null,
+      "position": [
+        -132.285,
+        79.0,
+        1993.83
+      ],
+      "size": [
+        1,
+        162.0,
+        33.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -131.835,
+        "sign": -1,
+        "lo": 1977.33,
+        "hi": 2010.33
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_005",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.285,
+        79.0,
+        1876.3135
+      ],
+      "size": [
+        1,
+        162.0,
+        14.107000000000061
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -129.835,
+        "sign": -1,
+        "lo": 1869.31,
+        "hi": 1883.317
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_006",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.285,
+        79.0,
+        1970.3265000000001
+      ],
+      "size": [
+        1,
+        162.0,
+        14.106999999999834
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -129.835,
+        "sign": -1,
+        "lo": 1963.323,
+        "hi": 1977.33
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_007",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.285,
+        79.0,
+        2024.33
+      ],
+      "size": [
+        1,
+        162.0,
+        28.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -129.835,
+        "sign": -1,
+        "lo": 2010.33,
+        "hi": 2038.33
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_008",
+      "new": true,
+      "before": null,
+      "position": [
+        -127.31,
+        79.0,
+        2043.8174999999999
+      ],
+      "size": [
+        1,
+        162.0,
+        11.074999999999909
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -126.86,
+        "sign": -1,
+        "lo": 2038.33,
+        "hi": 2049.305
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_009",
+      "new": true,
+      "before": null,
+      "position": [
+        -112.25999999999999,
+        79.0,
+        1836.8600000000001
+      ],
+      "size": [
+        1,
+        162.0,
+        1.2000000000001365
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -112.71,
+        "sign": 1,
+        "lo": 1836.31,
+        "hi": 1837.41
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_010",
+      "new": true,
+      "before": null,
+      "position": [
+        -113.14,
+        79.0,
+        1835.3225
+      ],
+      "size": [
+        1,
+        162.0,
+        4.2750000000001815
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -112.69,
+        "sign": -1,
+        "lo": 1833.235,
+        "hi": 1837.41
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_011",
+      "new": true,
+      "before": null,
+      "position": [
+        -112.64,
+        79.0,
+        1829.135
+      ],
+      "size": [
+        1,
+        162.0,
+        8.299999999999818
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -112.19,
+        "sign": -1,
+        "lo": 1825.035,
+        "hi": 1833.235
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_012",
+      "new": true,
+      "before": null,
+      "position": [
+        -108.41,
+        79.0,
+        2049.205
+      ],
+      "size": [
+        1,
+        162.0,
+        0.2999999999998181
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -108.86,
+        "sign": 1,
+        "lo": 2049.105,
+        "hi": 2049.305
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_013",
+      "new": true,
+      "before": null,
+      "position": [
+        -102.25999999999999,
+        79.0,
+        2020.405
+      ],
+      "size": [
+        1,
+        162.0,
+        0.949999999999909
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -102.71,
+        "sign": 1,
+        "lo": 2019.98,
+        "hi": 2020.83
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_014",
+      "new": true,
+      "before": null,
+      "position": [
+        -102.06,
+        79.0,
+        2021.405
+      ],
+      "size": [
+        1,
+        162.0,
+        1.250000000000091
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -102.51,
+        "sign": 1,
+        "lo": 2020.83,
+        "hi": 2021.98
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_015",
+      "new": true,
+      "before": null,
+      "position": [
+        -98.81,
+        79.0,
+        2020.98
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -98.36,
+        "sign": -1,
+        "lo": 2019.98,
+        "hi": 2021.98
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_016",
+      "new": true,
+      "before": null,
+      "position": [
+        -98.31,
+        79.0,
+        2049.605
+      ],
+      "size": [
+        1,
+        162.0,
+        1.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -97.86,
+        "sign": -1,
+        "lo": 2049.105,
+        "hi": 2050.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_017",
+      "new": true,
+      "before": null,
+      "position": [
+        -84.91,
+        79.0,
+        2051.105
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -84.46,
+        "sign": -1,
+        "lo": 2050.105,
+        "hi": 2052.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_018",
+      "new": true,
+      "before": null,
+      "position": [
+        -84.64,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -84.19,
+        "sign": -1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_019",
+      "new": true,
+      "before": null,
+      "position": [
+        -66.00999999999999,
+        79.0,
+        2050.705
+      ],
+      "size": [
+        1,
+        162.0,
+        2.900000000000182
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -66.46,
+        "sign": 1,
+        "lo": 2049.305,
+        "hi": 2052.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_020",
+      "new": true,
+      "before": null,
+      "position": [
+        -64.91,
+        79.0,
+        2020.98
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -65.36,
+        "sign": 1,
+        "lo": 2019.98,
+        "hi": 2021.98
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_021",
+      "new": true,
+      "before": null,
+      "position": [
+        -60.129999999999995,
+        79.0,
+        2049.205
+      ],
+      "size": [
+        1,
+        162.0,
+        0.2999999999998181
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -60.58,
+        "sign": 1,
+        "lo": 2049.105,
+        "hi": 2049.305
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_022",
+      "new": true,
+      "before": null,
+      "position": [
+        -50.739999999999995,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -51.19,
+        "sign": 1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_023",
+      "new": true,
+      "before": null,
+      "position": [
+        -50.53,
+        79.0,
+        2020.98
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -50.08,
+        "sign": -1,
+        "lo": 2019.98,
+        "hi": 2021.98
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_024",
+      "new": true,
+      "before": null,
+      "position": [
+        -50.03,
+        79.0,
+        2049.605
+      ],
+      "size": [
+        1,
+        162.0,
+        1.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -49.58,
+        "sign": -1,
+        "lo": 2049.105,
+        "hi": 2050.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_025",
+      "new": true,
+      "before": null,
+      "position": [
+        -36.63,
+        79.0,
+        2051.105
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -36.18,
+        "sign": -1,
+        "lo": 2050.105,
+        "hi": 2052.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_026",
+      "new": true,
+      "before": null,
+      "position": [
+        -36.36,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -35.91,
+        "sign": -1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_027",
+      "new": true,
+      "before": null,
+      "position": [
+        -17.73,
+        79.0,
+        2045.605
+      ],
+      "size": [
+        1,
+        162.0,
+        13.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -18.18,
+        "sign": 1,
+        "lo": 2039.105,
+        "hi": 2052.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_028",
+      "new": true,
+      "before": null,
+      "position": [
+        -16.63,
+        79.0,
+        2029.5425
+      ],
+      "size": [
+        1,
+        162.0,
+        19.225
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -17.08,
+        "sign": 1,
+        "lo": 2019.98,
+        "hi": 2039.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_029",
+      "new": true,
+      "before": null,
+      "position": [
+        -2.46,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": -2.91,
+        "sign": 1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_030",
+      "new": true,
+      "before": null,
+      "position": [
+        11.92,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 12.37,
+        "sign": -1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_031",
+      "new": true,
+      "before": null,
+      "position": [
+        45.82,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 45.37,
+        "sign": 1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_032",
+      "new": true,
+      "before": null,
+      "position": [
+        60.199999999999996,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 60.65,
+        "sign": -1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_033",
+      "new": true,
+      "before": null,
+      "position": [
+        72.47,
+        79.0,
+        2039.7424999999998
+      ],
+      "size": [
+        1,
+        162.0,
+        19.224999999999774
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 72.92,
+        "sign": -1,
+        "lo": 2030.18,
+        "hi": 2049.305
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_034",
+      "new": true,
+      "before": null,
+      "position": [
+        72.97,
+        79.0,
+        2026.08
+      ],
+      "size": [
+        1,
+        162.0,
+        8.300000000000045
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 73.42,
+        "sign": -1,
+        "lo": 2021.98,
+        "hi": 2030.18
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_035",
+      "new": true,
+      "before": null,
+      "position": [
+        91.37,
+        79.0,
+        2049.205
+      ],
+      "size": [
+        1,
+        162.0,
+        0.2999999999998181
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 90.92,
+        "sign": 1,
+        "lo": 2049.105,
+        "hi": 2049.305
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_036",
+      "new": true,
+      "before": null,
+      "position": [
+        94.10000000000001,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 93.65,
+        "sign": 1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_037",
+      "new": true,
+      "before": null,
+      "position": [
+        100.97,
+        79.0,
+        2020.98
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 101.42,
+        "sign": -1,
+        "lo": 2019.98,
+        "hi": 2021.98
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_038",
+      "new": true,
+      "before": null,
+      "position": [
+        101.47,
+        79.0,
+        2049.605
+      ],
+      "size": [
+        1,
+        162.0,
+        1.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 101.92,
+        "sign": -1,
+        "lo": 2049.105,
+        "hi": 2050.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_039",
+      "new": true,
+      "before": null,
+      "position": [
+        108.48,
+        79.0,
+        1824.035
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 108.93,
+        "sign": -1,
+        "lo": 1823.035,
+        "hi": 1825.035
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_040",
+      "new": true,
+      "before": null,
+      "position": [
+        114.86999999999999,
+        79.0,
+        2051.105
+      ],
+      "size": [
+        1,
+        162.0,
+        2.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 115.32,
+        "sign": -1,
+        "lo": 2050.105,
+        "hi": 2052.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_041",
+      "new": true,
+      "before": null,
+      "position": [
+        133.76999999999998,
+        79.0,
+        2045.605
+      ],
+      "size": [
+        1,
+        162.0,
+        13.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 133.32,
+        "sign": 1,
+        "lo": 2039.105,
+        "hi": 2052.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_042",
+      "new": true,
+      "before": null,
+      "position": [
+        134.86999999999998,
+        79.0,
+        2038.4175
+      ],
+      "size": [
+        1,
+        162.0,
+        1.475
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 134.42,
+        "sign": 1,
+        "lo": 2037.73,
+        "hi": 2039.105
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_043",
+      "new": true,
+      "before": null,
+      "position": [
+        142.38,
+        79.0,
+        1829.6725000000001
+      ],
+      "size": [
+        1,
+        162.0,
+        13.374999999999863
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 141.93,
+        "sign": 1,
+        "lo": 1823.035,
+        "hi": 1836.31
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_044",
+      "new": true,
+      "before": null,
+      "position": [
+        141.5,
+        79.0,
+        2038.28
+      ],
+      "size": [
+        1,
+        162.0,
+        1.1999999999999091
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 141.95,
+        "sign": -1,
+        "lo": 2037.73,
+        "hi": 2038.83
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_045",
+      "new": true,
+      "before": null,
+      "position": [
+        151.325,
+        79.0,
+        1836.56
+      ],
+      "size": [
+        1,
+        162.0,
+        0.6
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 150.875,
+        "sign": 1,
+        "lo": 1836.31,
+        "hi": 1836.81
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_046",
+      "new": true,
+      "before": null,
+      "position": [
+        159.52499999999998,
+        79.0,
+        1850.81
+      ],
+      "size": [
+        1,
+        162.0,
+        28.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 159.075,
+        "sign": 1,
+        "lo": 1836.81,
+        "hi": 1864.81
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_047",
+      "new": true,
+      "before": null,
+      "position": [
+        159.52499999999998,
+        79.0,
+        1904.8135
+      ],
+      "size": [
+        1,
+        162.0,
+        14.107000000000061
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 159.075,
+        "sign": 1,
+        "lo": 1897.81,
+        "hi": 1911.817
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_048",
+      "new": true,
+      "before": null,
+      "position": [
+        159.52499999999998,
+        79.0,
+        1951.8200000000002
+      ],
+      "size": [
+        1,
+        162.0,
+        14.106000000000085
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 159.075,
+        "sign": 1,
+        "lo": 1944.817,
+        "hi": 1958.823
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_049",
+      "new": true,
+      "before": null,
+      "position": [
+        159.52499999999998,
+        79.0,
+        1998.8265000000001
+      ],
+      "size": [
+        1,
+        162.0,
+        14.106999999999834
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 159.075,
+        "sign": 1,
+        "lo": 1991.823,
+        "hi": 2005.83
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_050",
+      "new": true,
+      "before": null,
+      "position": [
+        161.52499999999998,
+        79.0,
+        1881.31
+      ],
+      "size": [
+        1,
+        162.0,
+        33.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 161.075,
+        "sign": 1,
+        "lo": 1864.81,
+        "hi": 1897.81
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_051",
+      "new": true,
+      "before": null,
+      "position": [
+        161.52499999999998,
+        79.0,
+        1975.323
+      ],
+      "size": [
+        1,
+        162.0,
+        33.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 161.075,
+        "sign": 1,
+        "lo": 1958.823,
+        "hi": 1991.823
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_052",
+      "new": true,
+      "before": null,
+      "position": [
+        161.52499999999998,
+        79.0,
+        2022.33
+      ],
+      "size": [
+        1,
+        162.0,
+        33.1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 0,
+        "line": 161.075,
+        "sign": 1,
+        "lo": 2005.83,
+        "hi": 2038.83
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_053",
+      "new": true,
+      "before": null,
+      "position": [
+        -67.69,
+        79.0,
+        1822.585
+      ],
+      "size": [
+        33.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1823.035,
+        "sign": -1,
+        "lo": -84.19,
+        "hi": -51.19
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_054",
+      "new": true,
+      "before": null,
+      "position": [
+        -19.409999999999997,
+        79.0,
+        1822.585
+      ],
+      "size": [
+        33.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1823.035,
+        "sign": -1,
+        "lo": -35.91,
+        "hi": -2.91
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_055",
+      "new": true,
+      "before": null,
+      "position": [
+        28.869999999999997,
+        79.0,
+        1822.585
+      ],
+      "size": [
+        33.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1823.035,
+        "sign": -1,
+        "lo": 12.37,
+        "hi": 45.37
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_056",
+      "new": true,
+      "before": null,
+      "position": [
+        77.15,
+        79.0,
+        1822.585
+      ],
+      "size": [
+        33.10000000000001,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1823.035,
+        "sign": -1,
+        "lo": 60.65,
+        "hi": 93.65
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_057",
+      "new": true,
+      "before": null,
+      "position": [
+        125.43,
+        79.0,
+        1822.585
+      ],
+      "size": [
+        33.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1823.035,
+        "sign": -1,
+        "lo": 108.93,
+        "hi": 141.93
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_058",
+      "new": true,
+      "before": null,
+      "position": [
+        -98.19,
+        79.0,
+        1824.585
+      ],
+      "size": [
+        28.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1825.035,
+        "sign": -1,
+        "lo": -112.19,
+        "hi": -84.19
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_059",
+      "new": true,
+      "before": null,
+      "position": [
+        -43.55,
+        79.0,
+        1824.585
+      ],
+      "size": [
+        15.38,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1825.035,
+        "sign": -1,
+        "lo": -51.19,
+        "hi": -35.91
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_060",
+      "new": true,
+      "before": null,
+      "position": [
+        53.01,
+        79.0,
+        1824.585
+      ],
+      "size": [
+        15.38,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1825.035,
+        "sign": -1,
+        "lo": 45.37,
+        "hi": 60.65
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_061",
+      "new": true,
+      "before": null,
+      "position": [
+        101.29,
+        79.0,
+        1824.585
+      ],
+      "size": [
+        15.38,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1825.035,
+        "sign": -1,
+        "lo": 93.65,
+        "hi": 108.93
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_062",
+      "new": true,
+      "before": null,
+      "position": [
+        -112.44,
+        79.0,
+        1832.7849999999999
+      ],
+      "size": [
+        0.6,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1833.235,
+        "sign": -1,
+        "lo": -112.69,
+        "hi": -112.19
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_063",
+      "new": true,
+      "before": null,
+      "position": [
+        -122.27250000000001,
+        79.0,
+        1835.86
+      ],
+      "size": [
+        19.225000000000016,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1836.31,
+        "sign": -1,
+        "lo": -131.835,
+        "hi": -112.71
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_064",
+      "new": true,
+      "before": null,
+      "position": [
+        146.4025,
+        79.0,
+        1835.86
+      ],
+      "size": [
+        9.044999999999993,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1836.31,
+        "sign": -1,
+        "lo": 141.93,
+        "hi": 150.875
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_065",
+      "new": true,
+      "before": null,
+      "position": [
+        154.975,
+        79.0,
+        1836.36
+      ],
+      "size": [
+        8.299999999999988,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1836.81,
+        "sign": -1,
+        "lo": 150.875,
+        "hi": 159.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_066",
+      "new": true,
+      "before": null,
+      "position": [
+        -112.69999999999999,
+        79.0,
+        1836.96
+      ],
+      "size": [
+        0.11999999999999603,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1837.41,
+        "sign": -1,
+        "lo": -112.71,
+        "hi": -112.69
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_067",
+      "new": true,
+      "before": null,
+      "position": [
+        160.075,
+        79.0,
+        1864.36
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1864.81,
+        "sign": -1,
+        "lo": 159.075,
+        "hi": 161.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_068",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.835,
+        79.0,
+        1869.76
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1869.31,
+        "sign": 1,
+        "lo": -131.835,
+        "hi": -129.835
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_069",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.835,
+        79.0,
+        1882.867
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1883.317,
+        "sign": -1,
+        "lo": -131.835,
+        "hi": -129.835
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_070",
+      "new": true,
+      "before": null,
+      "position": [
+        160.075,
+        79.0,
+        1898.26
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1897.81,
+        "sign": 1,
+        "lo": 159.075,
+        "hi": 161.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_071",
+      "new": true,
+      "before": null,
+      "position": [
+        160.075,
+        79.0,
+        1911.367
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1911.817,
+        "sign": -1,
+        "lo": 159.075,
+        "hi": 161.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_072",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.835,
+        79.0,
+        1916.767
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1916.317,
+        "sign": 1,
+        "lo": -131.835,
+        "hi": -129.835
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_073",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.835,
+        79.0,
+        1929.873
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1930.323,
+        "sign": -1,
+        "lo": -131.835,
+        "hi": -129.835
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_074",
+      "new": true,
+      "before": null,
+      "position": [
+        160.075,
+        79.0,
+        1945.267
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1944.817,
+        "sign": 1,
+        "lo": 159.075,
+        "hi": 161.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_075",
+      "new": true,
+      "before": null,
+      "position": [
+        160.075,
+        79.0,
+        1958.373
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1958.823,
+        "sign": -1,
+        "lo": 159.075,
+        "hi": 161.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_076",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.835,
+        79.0,
+        1963.7730000000001
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1963.323,
+        "sign": 1,
+        "lo": -131.835,
+        "hi": -129.835
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_077",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.835,
+        79.0,
+        1976.8799999999999
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1977.33,
+        "sign": -1,
+        "lo": -131.835,
+        "hi": -129.835
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_078",
+      "new": true,
+      "before": null,
+      "position": [
+        160.075,
+        79.0,
+        1992.2730000000001
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 1991.823,
+        "sign": 1,
+        "lo": 159.075,
+        "hi": 161.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_079",
+      "new": true,
+      "before": null,
+      "position": [
+        160.075,
+        79.0,
+        2005.3799999999999
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2005.83,
+        "sign": -1,
+        "lo": 159.075,
+        "hi": 161.075
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_080",
+      "new": true,
+      "before": null,
+      "position": [
+        -130.835,
+        79.0,
+        2010.78
+      ],
+      "size": [
+        2.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2010.33,
+        "sign": 1,
+        "lo": -131.835,
+        "hi": -129.835
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_081",
+      "new": true,
+      "before": null,
+      "position": [
+        -100.535,
+        79.0,
+        2020.43
+      ],
+      "size": [
+        4.449999999999994,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2019.98,
+        "sign": 1,
+        "lo": -102.71,
+        "hi": -98.36
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_082",
+      "new": true,
+      "before": null,
+      "position": [
+        -57.72,
+        79.0,
+        2020.43
+      ],
+      "size": [
+        15.38,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2019.98,
+        "sign": 1,
+        "lo": -65.36,
+        "hi": -50.08
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_083",
+      "new": true,
+      "before": null,
+      "position": [
+        87.17,
+        79.0,
+        2020.43
+      ],
+      "size": [
+        28.6,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2019.98,
+        "sign": 1,
+        "lo": 72.92,
+        "hi": 101.42
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_084",
+      "new": true,
+      "before": null,
+      "position": [
+        -102.61,
+        79.0,
+        2020.3799999999999
+      ],
+      "size": [
+        0.2999999999999886,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2020.83,
+        "sign": -1,
+        "lo": -102.71,
+        "hi": -102.51
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_085",
+      "new": true,
+      "before": null,
+      "position": [
+        -100.435,
+        79.0,
+        2021.53
+      ],
+      "size": [
+        4.250000000000005,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2021.98,
+        "sign": -1,
+        "lo": -102.51,
+        "hi": -98.36
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_086",
+      "new": true,
+      "before": null,
+      "position": [
+        -57.72,
+        79.0,
+        2021.53
+      ],
+      "size": [
+        15.38,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2021.98,
+        "sign": -1,
+        "lo": -65.36,
+        "hi": -50.08
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_087",
+      "new": true,
+      "before": null,
+      "position": [
+        87.42,
+        79.0,
+        2021.53
+      ],
+      "size": [
+        28.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2021.98,
+        "sign": -1,
+        "lo": 73.42,
+        "hi": 101.42
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_088",
+      "new": true,
+      "before": null,
+      "position": [
+        73.17,
+        79.0,
+        2029.73
+      ],
+      "size": [
+        0.6,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2030.18,
+        "sign": -1,
+        "lo": 72.92,
+        "hi": 73.42
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_089",
+      "new": true,
+      "before": null,
+      "position": [
+        138.185,
+        79.0,
+        2038.18
+      ],
+      "size": [
+        7.630000000000001,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2037.73,
+        "sign": 1,
+        "lo": 134.42,
+        "hi": 141.95
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_090",
+      "new": true,
+      "before": null,
+      "position": [
+        -128.3475,
+        79.0,
+        2038.78
+      ],
+      "size": [
+        3.0750000000000086,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2038.33,
+        "sign": 1,
+        "lo": -129.835,
+        "hi": -126.86
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_091",
+      "new": true,
+      "before": null,
+      "position": [
+        -17.63,
+        79.0,
+        2039.555
+      ],
+      "size": [
+        1.2000000000000015,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2039.105,
+        "sign": 1,
+        "lo": -18.18,
+        "hi": -17.08
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_092",
+      "new": true,
+      "before": null,
+      "position": [
+        133.87,
+        79.0,
+        2039.555
+      ],
+      "size": [
+        1.1999999999999944,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2039.105,
+        "sign": 1,
+        "lo": 133.32,
+        "hi": 134.42
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_093",
+      "new": true,
+      "before": null,
+      "position": [
+        -103.36,
+        79.0,
+        2049.555
+      ],
+      "size": [
+        11.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2049.105,
+        "sign": 1,
+        "lo": -108.86,
+        "hi": -97.86
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_094",
+      "new": true,
+      "before": null,
+      "position": [
+        -55.08,
+        79.0,
+        2049.555
+      ],
+      "size": [
+        11.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2049.105,
+        "sign": 1,
+        "lo": -60.58,
+        "hi": -49.58
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_095",
+      "new": true,
+      "before": null,
+      "position": [
+        96.42,
+        79.0,
+        2049.555
+      ],
+      "size": [
+        11.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2049.105,
+        "sign": 1,
+        "lo": 90.92,
+        "hi": 101.92
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_096",
+      "new": true,
+      "before": null,
+      "position": [
+        -117.86,
+        79.0,
+        2049.7549999999997
+      ],
+      "size": [
+        18.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2049.305,
+        "sign": 1,
+        "lo": -126.86,
+        "hi": -108.86
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_097",
+      "new": true,
+      "before": null,
+      "position": [
+        -63.519999999999996,
+        79.0,
+        2049.7549999999997
+      ],
+      "size": [
+        5.979999999999995,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2049.305,
+        "sign": 1,
+        "lo": -66.46,
+        "hi": -60.58
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_098",
+      "new": true,
+      "before": null,
+      "position": [
+        81.92,
+        79.0,
+        2049.7549999999997
+      ],
+      "size": [
+        18.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2049.305,
+        "sign": 1,
+        "lo": 72.92,
+        "hi": 90.92
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_099",
+      "new": true,
+      "before": null,
+      "position": [
+        -42.879999999999995,
+        79.0,
+        2050.555
+      ],
+      "size": [
+        13.499999999999998,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2050.105,
+        "sign": 1,
+        "lo": -49.58,
+        "hi": -36.18
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_100",
+      "new": true,
+      "before": null,
+      "position": [
+        108.62,
+        79.0,
+        2050.555
+      ],
+      "size": [
+        13.499999999999991,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2050.105,
+        "sign": 1,
+        "lo": 101.92,
+        "hi": 115.32
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_101",
+      "new": true,
+      "before": null,
+      "position": [
+        -75.46,
+        79.0,
+        2052.555
+      ],
+      "size": [
+        18.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2052.105,
+        "sign": 1,
+        "lo": -84.46,
+        "hi": -66.46
+      }
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_Perimeter_W2_102",
+      "new": true,
+      "before": null,
+      "position": [
+        -27.18,
+        79.0,
+        2052.555
+      ],
+      "size": [
+        18.1,
+        162.0,
+        1
+      ],
+      "bottom": -2.0,
+      "top": 160,
+      "boundary": {
+        "axis": 2,
+        "line": 2052.105,
+        "sign": 1,
+        "lo": -36.18,
+        "hi": -18.18
+      }
+    }
+  ]
+}

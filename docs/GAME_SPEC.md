@@ -607,3 +607,7 @@ CurrentCloud contains fixed transparent vertical wall extensions in GeneratedMap
 ## 2026-10-21 - Wall extension outside-edge placement
 
 The existing 75 transparent wall extensions now place their Map-facing surfaces at perimeter outside edges with 0.05-stud inward contact, leaving the original thickness outside the usable wall top. Stage-opening panels move to the downstream (+Z) edge; connecting spans/corners meet the moved panels. Y=160 tops, opening heights, thicknesses and flags remain unchanged. Runtime/visual verification will be performed by the user. Record: reports/WallExtensionEdges_20261021/README.md.
+
+## 2026-10-21 - Lobby perimeter from below floor to Y=160
+
+Lobby barriers follow the actual floor and individual collidable structural wall faces, including void-edge gaps. World1 uses Y=-6..160; World2 uses Y=-2..160. One-stud vertical panels project outward with 0.05-stud inward contact; collinear edges are merged. Existing entrance upper panels/opening heights and all BattleCorridor/Stage panels remain unchanged. No floor, platform or gameplay Source was added. Runtime verification is assigned to the user. Record: reports/LobbyPerimeterRepair_20261021/README.md.

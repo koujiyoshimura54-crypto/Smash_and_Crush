@@ -33,3 +33,7 @@ Final written SHA-256: `885da7ec604d93e56af033221827166880b30e06488c115d729a4cc2
 ## 2026-10-21 follow-up — move panels to outside edges
 
 The same 75 Parts were subsequently repositioned to preserve playable wall-top space. Perimeter contact faces now meet the outside edges; Stage-opening planes move toward the next Stage (+Z). Only positions and connecting horizontal lengths changed; heights, thicknesses and all flags remain unchanged. See [edge relocation record](../WallExtensionEdges_20261021/README.md) and its exact before/after manifest. The images and Play observations above describe the earlier placement, not this follow-up. No Studio or Play verification was performed for the follow-up; the user will verify it.
+
+## 2026-10-21 follow-up — Lobby floor-to-top perimeter repair
+
+Lobby perimeter panels were repaired using the current floor and individual structural wall faces. Their lower limits are now Y=-6 in World1 and Y=-2 in World2, with Y=160 tops. Missing straight/void-edge segments were added while retaining the entrance upper panels and all BattleCorridor/Stage panels. See [Lobby repair record](../LobbyPerimeterRepair_20261021/README.md). This follow-up was written to the user-approved current file; runtime/visual verification remains with the user.

@@ -1074,3 +1074,7 @@ Added two dedicated folders containing 54 World1 and 21 World2 fixed transparent
 ## 2026-10-21 - Preserve usable wall tops by moving transparent boundaries outward
 
 Moved the existing 75 panels to outside/downstream edges and joined their endpoints, changing only positions and horizontal span lengths. Preserved heights, thicknesses, flags and all unrelated place content. Same-file writeback completed; visual/runtime verification is assigned to the user. Evidence: reports/WallExtensionEdges_20261021/Writeback.json.
+
+## 2026-10-21 - Repair Lobby outer fall gaps
+
+Extended Lobby-only barriers below floor level and traced floor/structural-wall boundaries with outward thickness, retaining wall-top footprints and existing entrance heights. Reused 9 panels and added 162 missing straight segments. BattleCorridor, Stage barriers, visible geometry, Sources and gameplay were preserved. Same-file writeback completed; runtime/visual confirmation remains with the user. Evidence: reports/LobbyPerimeterRepair_20261021/Writeback.json.
