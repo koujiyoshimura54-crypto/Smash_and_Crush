@@ -2313,3 +2313,7 @@ Read the current user-approved rbxl and replaced coarse Lobby coverage with 63 W
 ## 2026-10-21 - Studio arrival-preview setting written
 
 The user confirmed prior World2 arrival, explaining the existing ??? presentation, and requested a developer setting to clear the check each Play. Added the Studio-only effective session flag to PlayerData load/save mirroring, purchase authority and normal-arrival handling, with legacy badge migration skipped in preview mode. Two existing Sources compiled and matched after same-file writeback; no other Source/object property changed. No Play or production data access was performed; user verification remains pending. See reports/StudioWorld2ArrivalPreview_20261021/README.md.
+
+## 2026-10-21 - Map surface seam writeback
+
+Completed minimal geometry-only edits to 22 saved Parts (World1: 3; World2: 19) and reread the same CurrentCloud.rbxl successfully. Exact paths, instance refs and before/after properties are recorded in reports/MapSurfaceSeams_20261021/Writeback.json. Uncertain mesh and complex wall candidates remain unchanged. No Studio, Play, screenshots or production-data changes; the user will verify appearance and gameplay.

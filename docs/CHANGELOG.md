@@ -1082,3 +1082,7 @@ Extended Lobby-only barriers below floor level and traced floor/structural-wall 
 ## 2026-10-21 - Studio-only preview of locked World2 Inventory cards
 
 Added ResetWorld2ArrivalOnStudioPlay to the existing DataStoreConfig and an unsaved effective arrival value in PlayerDataService. New Studio Plays start locked for unowned World2 products and unlock on normal arrival, while stored ownership/progression and published-server behavior remain intact. Wrote and reread the same CurrentCloud.rbxl; both changed Sources compiled. Runtime verification is assigned to the user. Evidence: reports/StudioWorld2ArrivalPreview_20261021/Writeback.json.
+
+## 2026-10-21 - Coplanar map surface seams
+
+Trimmed proven adjoining opaque-block face overlaps in the current place: 3 World1 Parts and 19 World2 Parts. Carpet ends, dumbbell stand seams and World2 treadmill 01-04 frame ends now meet at their existing seams (approximately 0.008-0.078 studs trimmed). No Sources or gameplay settings changed. See reports/MapSurfaceSeams_20261021/README.md and Writeback.json. Same-file writeback was reread; visual and runtime verification are reserved for the user.

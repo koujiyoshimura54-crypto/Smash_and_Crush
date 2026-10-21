@@ -615,3 +615,7 @@ Lobby barriers follow the actual floor and individual collidable structural wall
 ## 2026-10-21 - Developer Studio World2 arrival preview
 
 DataStoreConfig.ResetWorld2ArrivalOnStudioPlay=true enables a Studio-only, unsaved per-session arrival override. Each new Play begins with effective World2Visited=false, so unowned World2 Item/dumbbell cards use the existing lock and purchases remain restricted. Normal successful World2 arrival unlocks that Play through return/death/respawn. Saved progression and ownership are retained; published servers keep permanent arrival behavior. Set the flag false for ordinary saved-arrival testing. Record: reports/StudioWorld2ArrivalPreview_20261021/README.md.
+
+## 2026-10-21 - Authored surface seam maintenance
+
+Proven small coplanar overlaps at Lobby carpet connections, dumbbell stand seams and World2 treadmill frame ends were trimmed only within volumes covered by adjoining blocks. Existing outer geometry, traversal, collision settings, transparent barriers, Sources and gameplay remain intact. World1 has 3 adjusted Parts and World2 has 19; no Stage geometry was changed without sufficient surface evidence. Appearance and runtime behavior have not been verified by Play.
