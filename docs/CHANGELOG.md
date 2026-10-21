@@ -1066,3 +1066,7 @@ Added server-confirmed permanent World2 arrival state in existing PlayerData, ce
 - Saved the original Pets entry and sixth HUD layout slot with matching square bounds; connected the existing Pet Inventory once and removed runtime relocation.
 - Enlarged regular Egg candidate images using centered rows and independent probability bands while preserving panel design, odds and purchase behavior.
 - Wrote and reopened the same CurrentCloud.rbxl; verified actual PC/narrow menu interactions, respawn, World1/World2 Egg candidates and Limited Egg viewports with memory-only data. Evidence: reports/PetsEntryEggCandidates_20261021/README.md.
+
+## 2026-10-21 - Vertical extensions over existing World1/World2 walls
+
+Added two dedicated folders containing 54 World1 and 21 World2 fixed transparent wall Parts, with Y=160 tops and upper Stage-opening spans. Preserved existing geometry, Sources, destructible walls and gameplay. Recorded limited isolated Play observations and the user-requested stop of further verification. Wrote the same CurrentCloud.rbxl with lossless existing-row comparison and re-decode/reference validation. Evidence: reports/WallExtensions_20261021/README.md.

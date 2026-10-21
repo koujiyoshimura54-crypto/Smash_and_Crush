@@ -1,0 +1,165 @@
+{
+  "scope": "Recorded before the user stopped further verification. Real character physics with temporary starting-position fixtures; not a claim of natural climb-path coverage.",
+  "acceptedObservations": [
+    {
+      "low": [
+        325,
+        79.9659423828125,
+        169.58697509765625
+      ],
+      "name": "World1_Max_Outer_AboveWall",
+      "heightScale": 3.55,
+      "start": [
+        325,
+        80,
+        170
+      ],
+      "high": [
+        329.8222961425781,
+        87.27317810058594,
+        170.03497314453125
+      ],
+      "frames": 30,
+      "finish": [
+        327.26605224609375,
+        82.88135528564453,
+        169.55564880371094
+      ]
+    },
+    {
+      "low": [
+        287.79998779296875,
+        59.55211639404297,
+        198
+      ],
+      "name": "World1_Max_Partition_AboveWall",
+      "heightScale": 3.55,
+      "start": [
+        287.79998779296875,
+        80,
+        198
+      ],
+      "high": [
+        287.8208923339844,
+        80,
+        199.92156982421875
+      ],
+      "frames": 31,
+      "finish": [
+        287.81951904296875,
+        58.19242477416992,
+        199.93524169921875
+      ]
+    },
+    {
+      "low": [
+        78,
+        78.83013153076172,
+        2099.341064453125
+      ],
+      "name": "World2_Max_Outer_Retest",
+      "heightScale": 3.55,
+      "start": [
+        78,
+        80,
+        2100
+      ],
+      "high": [
+        82.65045928955078,
+        87.28680419921875,
+        2100.0283203125
+      ],
+      "frames": 36,
+      "finish": [
+        79.88719177246094,
+        77.84889221191406,
+        2099.3330078125
+      ]
+    },
+    {
+      "low": [
+        27.89911460876465,
+        50.155517578125,
+        2148
+      ],
+      "name": "World2_Max_Partition_Retest",
+      "heightScale": 3.55,
+      "start": [
+        27.920000076293945,
+        80,
+        2148
+      ],
+      "high": [
+        27.9251708984375,
+        80,
+        2150.451904296875
+      ],
+      "frames": 37,
+      "finish": [
+        27.898948669433594,
+        48.1019172668457,
+        2149.927734375
+      ]
+    },
+    {
+      "low": [
+        27.920000076293945,
+        9.904155731201172,
+        2142
+      ],
+      "name": "World2_Max_Opening_Retest",
+      "heightScale": 3.55,
+      "start": [
+        27.920000076293945,
+        10.5,
+        2142
+      ],
+      "high": [
+        27.920000076293945,
+        10.5,
+        2161.157958984375
+      ],
+      "frames": 49,
+      "finish": [
+        27.920000076293945,
+        9.935400009155273,
+        2161.558349609375
+      ]
+    },
+    {
+      "low": [
+        287.79998779296875,
+        11.874334335327148,
+        193
+      ],
+      "name": "World1_Max_Opening_Stable",
+      "heightScale": 3.55,
+      "start": [
+        287.79998779296875,
+        12.5,
+        193
+      ],
+      "high": [
+        287.8287353515625,
+        12.5,
+        211.89431762695312
+      ],
+      "frames": 72,
+      "finish": [
+        287.80548095703125,
+        11.904170036315918,
+        211.89915466308594
+      ]
+    }
+  ],
+  "unverified": [
+    "Normal-size climb/jump",
+    "Natural climbing route at every wall",
+    "Destruction and subsequent progression",
+    "StageSkip travel (existing runtime returned StageNotReady)",
+    "Gate/return passage",
+    "Camera occlusion and attacks",
+    "Fresh native Studio reopening after file write"
+  ],
+  "userStoppedFurtherVerification": true
+}

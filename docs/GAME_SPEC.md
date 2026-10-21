@@ -599,3 +599,7 @@ Premium ownership does not block normal24/28/32/36/40 Win upgrades or force equi
 ## 2026-10-21 — World2 first-arrival purchase unlock
 
 World2Visited is permanent progression in the existing PlayerData record. Successful server-validated normal World2 travel marks it; gate unlock/Stage10 completion alone does not. Existing server CurrentWorld=2 or the historical IntoWorld2 arrival badge can restore missing history; product ownership alone cannot. Both central Win purchase services reject unarrived World2 purchases before debit/grant. Owned equipment remains usable. No independent store, travel-condition, price, effect, Merge or drop change. See [implementation and scoped checks](../reports/World2ArrivalLocks_20261021/README.md).
+
+## 2026-10-21 - Saved vertical wall extensions
+
+CurrentCloud contains fixed transparent vertical wall extensions in GeneratedMap.WallTopExtensions (54 Parts) and World2Map.WallTopExtensions (21 Parts). They follow existing Lobby/corridor walls and connect above Stage openings to world Y=160, leaving 31.875 studs of opening height. There is no roof, runtime generator or change to destructible-wall ownership, player movement or progression. Parts are anchored, collidable, fully transparent, non-touching and shadowless in Default; CanQuery remains true for physical placement queries. Exact measured placement and verification limits are recorded in reports/WallExtensions_20261021/README.md.
