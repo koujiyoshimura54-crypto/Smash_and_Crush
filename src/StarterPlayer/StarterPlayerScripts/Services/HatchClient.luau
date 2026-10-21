@@ -153,6 +153,7 @@ local rareSound: Sound? = nil
 local shows = 0
 
 local playToken = 0
+local activeNormal = false
 
 local function waitForPath(root: Instance, path: {string}): Instance?
 	local current: Instance? = root
@@ -696,6 +697,7 @@ local function clear()
 
 	playToken += 1
 	stage = nil
+	activeNormal = false
 	hint = nil
 	hintScale = nil
 	shade = nil
@@ -977,6 +979,7 @@ playVerified = function(Results: {Result}, eggName: string?): boolean
 
 	playToken += 1
 	stage = KNOCKING
+	activeNormal = egg ~= nil
 	knocks = Config.Hatch.clicks
 
 	MenuClient.shroud(true)
@@ -989,6 +992,18 @@ playVerified = function(Results: {Result}, eggName: string?): boolean
 
 	MenuClient.shroud(false)
 	return false
+end
+
+-- Pet-view changes retire normal reveals only; paid committed notices stay intact.
+function HatchClient.cancelNormal()
+ for index=#Pending,1,-1 do
+  if Pending[index].egg~=nil then table.remove(Pending,index) end
+ end
+ if not activeNormal then return end
+ clear()
+ MenuClient.shroud(false)
+ local queued=table.remove(Pending,1)
+ if queued then playVerified(queued.Rolls,queued.egg) end
 end
 
 function HatchClient.play(Results: {Result}, eggName: string?)

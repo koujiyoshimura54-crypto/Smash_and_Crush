@@ -1,0 +1,25 @@
+{
+  "inputSha256": "4dda6dc2181bba4ef4e9b9d0a5411a80262712e9c1fa63717312ab64493e16b9",
+  "outputSha256": "5d0d6407bc505f79436d697682f4f8f02c47d698cba44b853c6d52f923823433",
+  "bytes": 6897512,
+  "changedSources": {
+    "ServerScriptService.Services.PlayerDataService": {
+      "before": "9f96f86dff4823aa439ebd68fb52dc4e212ade260a87523a98a3213dfe7d839f",
+      "after": "81b7a645d0ba1b9f74def2568d4d031756ae63938639918b355591451a67214e"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.PetClient": {
+      "before": "8e238ce9c0f8446a76aacb53fd241e46b4b61ca91a3a3c10f6afd2d4aa05ab22",
+      "after": "7e999aef8a94c5c3ce9598886bbeffc6f0933b272eee75ab58ce6d4803bc1cbb"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.HatchClient": {
+      "before": "7b116189ff5b4c144d04b12849ff2c5a60ace205174a234c315b7d295e84576d",
+      "after": "8c0f28e679b126ec3662b2d544f014b4a75707cd767bc23073045dded9195a72"
+    }
+  },
+  "verifiedExistingProperties": 4915682,
+  "allOtherSourcesPropertiesParentsAndInstancesPreserved": true,
+  "testFixturesWritten": false,
+  "studioSaveOrPublishUsed": false,
+  "writtenAndReread": true,
+  "savedFileDecodedAndAllTargetSourcesMatched": true
+}

@@ -51,6 +51,7 @@ local cardRoot: GuiObject? = nil
 local playerData: any = nil -- validated legacy Pet state, never purchased Data
 local stateGeneration = 0
 local pending = false
+local requestToken = 0
 local started = false
 local bootstrapped = false
 local remote: RemoteFunction? = nil
@@ -504,6 +505,11 @@ local function bind(gui: ScreenGui)
 	rebuild()
 end
 
+local function retirePetView()
+ requestToken+=1
+ pending=false
+ require(script.Parent.HatchClient).cancelNormal()
+end
 function PetClient.start()
 	if started then return end
 	started = true
@@ -542,6 +548,7 @@ function PetClient.start()
 		task.spawn(PetClient.refresh)
 	end)
 	Player:GetAttributeChangedSignal("PetViewGeneration"):Connect(function()
+		if (Player:GetAttribute("PetViewGeneration") or 0)>stateGeneration then retirePetView() end
 		task.spawn(PetClient.refresh)
 	end)
 	task.spawn(function()
@@ -566,7 +573,9 @@ local function accept(response)
 	if not state then return end
 	local generation=response.generation or 0
 	if type(generation)~="number" or generation<0 or generation%1~=0 then return end
+	if generation<(Player:GetAttribute("PetViewGeneration") or 0) then return end
 	if playerData and (generation<stateGeneration or generation==stateGeneration and state.Revision<playerData.Revision) then return end
+	if generation>stateGeneration then retirePetView() end
 	stateGeneration=generation
 	playerData=state
 	rebuild()
@@ -594,14 +603,20 @@ function PetClient.request(action,a,b)
 	if not playerData then PetClient.notify("DataNotLoaded");return end
 	if require(script.Parent.HatchClient).playing() then return end
 	pending=true
+	requestToken+=1
+	local token=requestToken
+	local function finish() if token==requestToken then pending=false end end
 	local id=HttpService:GenerateGUID(false)
 	local revision=playerData.Revision
 	local generation=stateGeneration
 	local reported=false
 	while Player.Parent do
+		if token~=requestToken or generation<stateGeneration or generation<(Player:GetAttribute("PetViewGeneration") or 0) then finish();return end
 		local ok,response=pcall(function() return remote:InvokeServer(action,id,revision,a,b,generation) end)
+		if token~=requestToken then return end
 		if ok and type(response)=="table" then
 			accept(response)
+			if token~=requestToken or response.generation~=generation or stateGeneration~=generation then finish();return end
 			if response.ok then
 				-- Receipt identity prevents an unrelated refresh/retry from replaying Hatch.
 				if action=="OpenEgg" and playerData and playerData.LastRequestId==id then
@@ -610,11 +625,11 @@ function PetClient.request(action,a,b)
 					end,debug.traceback)
 					if not shown then warn("[PetClient] Committed hatch presentation failed: "..tostring(why)) end
 				end
-				pending=false
+				finish()
 				return
 			end
 			if response.reason~="InventorySavePending" and response.reason~="PetRequestFailed" then
-				pending=false
+				finish()
 				PetClient.notify(response.reason)
 				return
 			end
@@ -623,7 +638,7 @@ function PetClient.request(action,a,b)
 		if not reported then PetClient.notify("InventorySavePending");reported=true end
 		task.wait(2)
 	end
-	pending=false
+	finish()
 end
 
 local entryConnections=setmetatable({}, {__mode="k"})
