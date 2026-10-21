@@ -1,0 +1,115 @@
+{
+  "method": "Actual isolated Studio Play and GUI mouse operations; no gameplay/persistence scripts enabled",
+  "bossSwitches": [
+    {
+      "Stage": 1,
+      "Models": 1,
+      "Status": "No existing animation found. MainAnimation is absent from this file's template.",
+      "Source": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP096_Display",
+      "Candidates": []
+    },
+    {
+      "Stage": 3,
+      "Models": 1,
+      "Status": "No existing animation found. Animate and its child Animation overrides are absent from this template.",
+      "Source": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP035_Display",
+      "Candidates": []
+    },
+    {
+      "Stage": 6,
+      "Models": 1,
+      "Status": "No existing animation found. No Animation, Humanoid or Motor6D exists in this static template.",
+      "Source": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display",
+      "Candidates": []
+    },
+    {
+      "Stage": 8,
+      "Models": 1,
+      "Status": "No existing animation found. Humanoid exists; no Animation or joint-animation script is present.",
+      "Source": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP106_Display",
+      "Candidates": []
+    },
+    {
+      "Stage": 10,
+      "Models": 1,
+      "Status": "No existing animation found. Animate and Stunned are absent from this file's template.",
+      "Source": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP323_Display",
+      "Candidates": []
+    },
+    {
+      "Stage": 5,
+      "Models": 1,
+      "Status": "Only the Animation objects and saved clips present in this template are listed.",
+      "Source": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP049_Display",
+      "Candidates": {
+        "1": "Animation",
+        "2": "ArmOut",
+        "3": "Automatic Save [saved pose]",
+        "4": "Idle [saved clip]",
+        "5": "Idleed [saved pose]",
+        "6": "Imported Animation Clip [saved pose]"
+      }
+    }
+  ],
+  "idleInitialObservation": {
+    "Status": "Playing Idle  |  1.0x  |  visible joints moved",
+    "HeadAngleDeltaDegrees": 6.8715250479828445,
+    "Tracks": {
+      "1": {
+        "Id": "d5aed619f9b4939abd5a2232844a84d4",
+        "Length": 3,
+        "Time": 1.1832975149154663,
+        "Speed": 1
+      }
+    },
+    "ViewSize": "668.700012, 212.049988"
+  },
+  "idleFinalObservation": {
+    "Status": "Playing Idle  |  0.5x  |  visible joints moved",
+    "HeadAngleDeltaDegrees": 42.397248385979005,
+    "Tracks": {
+      "1": {
+        "Speed": 0.5,
+        "Length": 3,
+        "Time": 0.031259775161743164
+      }
+    },
+    "Source": "Idle  |  saved KeyframeSequence\nServerStorage.EnemyTemplates.World2SCPDisplays.SCP049_Display.AnimSaves.Idle"
+  },
+  "finalStaticPose": {
+    "Status": "Saved static pose applied; no timed motion (speed has no effect).",
+    "Source": "Idleed  |  saved KeyframeSequence\nServerStorage.EnemyTemplates.World2SCPDisplays.SCP049_Display.AnimSaves.Idleed"
+  },
+  "assetLoadObservations": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Status\":\"Asset load/permission failure: rbxassetid://4651534593 (see Output)\",\"Tracks\":{\"1\":{\"Id\":\"rbxassetid://4651534593\",\"Length\":0,\"Time\":0,\"Playing\":true}},\"Source\":\"ArmOut  |  rbxassetid://4651534593\\nServerStorage.EnemyTemplates.World2SCPDisplays.SCP049_Display.ArmOut\",\"Errors\":{\"1\":\"Failed to load animation with sanitized ID rbxassetid://774242142: Animation failed to load, assetId: https://assetdelivery.roblox.com/v1/asset?id=774242142&serverplaceid=0\",\"4\":\"Failed to load animation with sanitized ID rbxassetid://4651534593: Animation failed to load, assetId: https://assetdelivery.roblox.com/v1/asset?id=4651534593&serverplaceid=0\",\"3\":\"Failed to load animation with sanitized ID rbxassetid://4651534593: Animation failed to load, assetId: https://assetdelivery.roblox.com/v1/asset?id=4651534593&serverplaceid=0\",\"2\":\"Failed to load animation with sanitized ID rbxassetid://774242142: Animation failed to load, assetId: https://assetdelivery.roblox.com/v1/asset?id=774242142&serverplaceid=0\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "close": {
+    "GameCameraSubject": "Humanoid",
+    "PreviewWorldExists": false,
+    "LauncherVisible": true,
+    "PanelVisible": false,
+    "ViewportChildren": 4
+  },
+  "serverPreviewModelsAfterClose": 0,
+  "finalScopedPreviewScriptErrors": [],
+  "speedReadbacks": [
+    1,
+    0.5,
+    1.5
+  ],
+  "stopPlayingTracks": 0,
+  "viewsOperated": [
+    "Front",
+    "Side",
+    "Back"
+  ],
+  "screenshots": "Inspected temporarily, not retained",
+  "rigScriptsEnabled": false,
+  "productionBossAnimationConnected": false
+}
