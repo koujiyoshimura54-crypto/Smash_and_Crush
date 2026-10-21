@@ -11,10 +11,10 @@ local M={}
 local started=false
 local nextRequest=setmetatable({}, {__mode="k"})
 local function reply(player,ok,reason)
- local state=Pets.state(player)
- return {ok=ok,reason=reason,state=state,pending=player:GetAttribute("PetSavePending")==true}
+ local state,_,generation=Pets.state(player)
+ return {ok=ok,reason=reason,state=state,generation=generation,pending=player:GetAttribute("PetSavePending")==true}
 end
-local function open(player,name,button,id,revision)
+local function open(player,name,button,id,revision,generation)
  if not Egg.isEgg(name) or not Egg.purchasable(name) then return false,"EggUnavailable" end
  if Egg.world(name)~=(player:GetAttribute("CurrentWorld") or 1) then return false,"WrongWorld" end
  local count=Egg.count(button)
@@ -46,13 +46,13 @@ local function open(player,name,button,id,revision)
   if not pet then return false,"EggUnavailable" end
   table.insert(results,{id=Http:GenerateGUID(false),pet=pet,percent=percent,duplicate=false,bonus=0})
  end
- return Data.MutatePets(player,id,revision,"Hatch",{EggName=name,Count=count,PriceWin=price,Results=results})
+ return Data.MutatePets(player,id,revision,"Hatch",{EggName=name,Count=count,PriceWin=price,Results=results},generation)
 end
-function M.request(player,action,id,revision,a,b)
+function M.request(player,action,id,revision,a,b,generation)
  if player.Parent~=Players then return {ok=false,reason="InvalidPlayer"} end
  if action=="GetState" then
-  local state,reason=Pets.state(player)
-  return {ok=state~=nil,reason=reason or "State",state=state,pending=player:GetAttribute("PetSavePending")==true}
+  local state,reason,currentGeneration=Pets.state(player)
+  return {ok=state~=nil,reason=reason or "State",state=state,generation=currentGeneration,pending=player:GetAttribute("PetSavePending")==true}
  end
  if action~="OpenEgg" and action~="Equip" then return reply(player,false,"InvalidAction") end
  if type(id)~="string" or #id~=36 or not id:match("^[%x%-]+$")
@@ -60,6 +60,8 @@ function M.request(player,action,id,revision,a,b)
  local state,reason=Data.GetPetState(player)
  if not state then return reply(player,false,reason) end
  local session=Data.Get(player)
+ -- Requests from an earlier preview/normal view cannot act on the next one.
+ if (generation or 0)~=(session.PetViewGeneration or 0) then return reply(player,false,"PetStateChanged") end
  -- Retrying an accepted operation only confirms its original roll/debit, even
  -- after the player leaves the Egg. It never revalidates into a new purchase.
  if state.LastRequestId==id then return reply(player,true,"AlreadyApplied") end
@@ -74,8 +76,8 @@ function M.request(player,action,id,revision,a,b)
  local ok,why
  if action=="OpenEgg" then
   if type(a)~="string" or type(b)~="string" then return reply(player,false,"InvalidEggRequest") end
-  ok,why=open(player,a,b,id,revision)
- else ok,why=Pets.equip(player,a,id,revision) end
+  ok,why=open(player,a,b,id,revision,generation)
+ else ok,why=Pets.equip(player,a,id,revision,generation) end
  return reply(player,ok,why)
 end
 function M.init()

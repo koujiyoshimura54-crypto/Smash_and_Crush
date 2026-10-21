@@ -1,0 +1,29 @@
+{
+  "inputSha256": "54cbff432b4405c8ccdc44aaef8f4c7024e60a2544d5cc31ec40c67f43c1ee57",
+  "outputSha256": "17ce9238d4db65dfb34d82e375768bada63b79b19651036c85f0a1c1650f108d",
+  "bytes": 6895294,
+  "changedSources": {
+    "ServerScriptService.Services.PlayerDataService": {
+      "before": "c779ec8924fa85a975e9f3a2fb5fac8e2fd55f20fa58d6637ce75871b4f18cee",
+      "after": "9f96f86dff4823aa439ebd68fb52dc4e212ade260a87523a98a3213dfe7d839f"
+    },
+    "ServerScriptService.Services.PetServer": {
+      "before": "b5f47c336be100c86b1d1a5c5b733a892339f96e18fc49b92654eb1c04fca462",
+      "after": "cc4042764ab0d7c131e995364d332216e6e1fc676d8bf98d5021272d3ba9a4cd"
+    },
+    "ServerScriptService.Services.EggServer": {
+      "before": "fe32e24baa08a3c2223cbcbabd1002bd0dda297c186ca1723912fdaf21a5f1cb",
+      "after": "76c006de9d0c05dd125b4f2d1a35181b1dcb5d366f80630e384524cf092dcb84"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.PetClient": {
+      "before": "84305a3ad1e98c01b50c7afb82c90e61fc1ccccf73f0a8f91752093aadd3768c",
+      "after": "8e238ce9c0f8446a76aacb53fd241e46b4b61ca91a3a3c10f6afd2d4aa05ab22"
+    }
+  },
+  "verifiedExistingProperties": 4915670,
+  "allOtherSourcesPropertiesParentsAndInstancesPreserved": true,
+  "testFixturesWritten": false,
+  "studioSaveOrPublishUsed": false,
+  "writtenAndReread": true,
+  "savedFileDecodedAndAllTargetSourcesMatched": true
+}

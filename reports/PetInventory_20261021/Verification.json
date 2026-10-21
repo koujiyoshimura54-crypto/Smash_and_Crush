@@ -1,0 +1,53 @@
+{
+  "targetSpecies": 42,
+  "resolvedTargetSpecies": 42,
+  "comparisonWorld1NormalSpecies": 1,
+  "initialOwnedCopies": 45,
+  "initialClientCopiesAndCards": 45,
+  "initialModelViewportsIncludingDuplicate": 43,
+  "afterNormalHatchAndTwoMockReceiptsOwnedCopies": 48,
+  "afterGrantClientCopiesAndCards": 48,
+  "normalClickEquipSwapUnequip": [
+    "World1 normal",
+    "World1 Limited",
+    "World2 normal",
+    "World2 Limited",
+    "duplicate World2 normal copy"
+  ],
+  "overrideActualCommand": "/test level 160",
+  "overrideClickEquipSwapUnequip": [
+    "World1 normal",
+    "World1 Limited",
+    "World2 normal",
+    "World2 Limited"
+  ],
+  "overrideDurablePetFieldsUnchanged": true,
+  "overrideStoreWritesDuringEquipmentAndSave": 0,
+  "resetRestoredOriginalEquipmentAndEffects": true,
+  "resetClientAcceptedLowerDurableRevision": true,
+  "latePreviewRequestRejected": "PetStateChanged",
+  "duplicatePreviewRequest": "AlreadyApplied",
+  "unownedAndForeignFixtureCopyRejected": "PetNotOwned",
+  "normalEggPurchaseDuringOverrideStillRejected": "StudioOverrideActive",
+  "paidPetGrantDuringOverrideStillRejected": "StudioOverrideActive",
+  "mockReceiptDuplicateCountsUnchanged": true,
+  "normalAndPreviewDeathRespawnAndWorldCommands": true,
+  "worldTravelRoute": "existing /test world 1 and /test world 2, not production portals",
+  "memorySaveReleaseLoadCount": 48,
+  "memoryReloadEquipmentRetained": true,
+  "previewSaveAndReleaseWriteDelta": 0,
+  "previewReleaseRetainedDurableEquipment": true,
+  "finalActualFollowerModel": "Pet_107",
+  "finalActualFollowerMeshSignatureMatchesTemplate": true,
+  "finalFollowerCount": 1,
+  "productionPaymentsOrWritesPerformed": false,
+  "liveRejoinVerified": false,
+  "actualTwoClientForeignOwnerTestPerformed": false,
+  "screenshots": [
+    "World1Limited.png",
+    "World2Normal.png",
+    "World2Limited.png"
+  ],
+  "temporaryAdaptersWrittenToPlace": false,
+  "studioDefaultViewportRestored": true
+}

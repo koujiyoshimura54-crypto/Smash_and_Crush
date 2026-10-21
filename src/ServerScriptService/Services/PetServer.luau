@@ -2,26 +2,26 @@
 local Players=game:GetService("Players")
 local Data=require(script.Parent.PlayerDataService)
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
+local RunService=game:GetService("RunService")
 local M={}
 function M.GetStrengthMultiplier(player)
  if player.Parent~=Players then return 1 end
  local session=Data.Get(player)
  if not session or not session.Loaded or not session.Data or session.OwnershipLost then return 1 end
- -- Read the committed server session directly; no client mirror/cache and no
- -- per-tick copy of the entire owned inventory. Only its owned equipped ID counts.
- return Pet.StrengthMultiplier(session.Data.Pets)
+ -- Read authoritative equipment without copying the inventory every training tick.
+ local preview=RunService:IsStudio() and session.StudioStartOverride and session.StudioPetPreview
+ return Pet.StrengthMultiplier(preview or session.Data.Pets)
 end
 function M.state(player)
- local state,reason=Data.GetPetState(player)
- return state,reason
+ return Data.GetPetState(player)
 end
-function M.equip(player,id,requestId,revision)
+function M.equip(player,id,requestId,revision,generation)
  if type(id)~="string" or #id>128 then return false,"InvalidPet" end
  local state,reason=M.state(player)
  if not state then return false,reason end
  if not state.Owned[id] then return false,"PetNotOwned" end
  if not Pet.model(state.Owned[id]) then return false,"PetModelUnavailable" end
- return Data.MutatePets(player,requestId,revision,"Equip",id)
+ return Data.MutatePets(player,requestId,revision,"Equip",id,generation)
 end
 function M.publish(player)
  local state=M.state(player)

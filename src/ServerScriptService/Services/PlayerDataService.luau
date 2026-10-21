@@ -705,8 +705,19 @@ function PlayerDataService.ApplyStudioStartLevel(player,strength,level)
  if not RunService:IsStudio() then return false,"StudioOnly" end
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data or s.Saving then return false,"DataNotLoaded" end
+ if s.PendingItemMutation then return false,"DataSaving" end
  if not finite(strength) or strength<0 or not finite(level) or level%1~=0 then return false,"InvalidRequest" end
- if not s.StudioStartOverride then local d=s.Data;s.StudioStartOverride={Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate,Win=d.Win,RebirthCount=d.RebirthCount} end
+ if not s.StudioStartOverride then
+  local d=s.Data
+  local preview,reason=Pet.NormalizeState(d.Pets)
+  if not preview then return false,reason end
+  -- Equipment previews never mutate the durable Pet collection or receipt state.
+  s.StudioPetPreview=preview
+  s.StudioStartOverride={Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate,Win=d.Win,RebirthCount=d.RebirthCount}
+  s.PetViewGeneration=(s.PetViewGeneration or 0)+1
+  player:SetAttribute("PetViewGeneration",s.PetViewGeneration)
+  Pet.Publish(player,preview)
+ end
  s.Data.Strength=strength;s.Data.Level=level;s.Data.LevelProgress=0
  player:SetAttribute("Strength",strength);player:SetAttribute("Level",level);player:SetAttribute("LevelProgress",0)
  return true
@@ -721,7 +732,11 @@ function PlayerDataService.RestoreStudioStartOverride(player)
  d.Strength=original.Strength;d.Level=original.Level;d.LevelProgress=original.LevelProgress
  d.TotalStrengthEarned=original.TotalStrengthEarned;d.DailyStrengthEarned=original.DailyStrengthEarned;d.DailyDate=original.DailyDate
  d.Win=original.Win;d.RebirthCount=original.RebirthCount
+ s.StudioPetPreview=nil
  s.StudioStartOverride=nil
+ s.PetViewGeneration=(s.PetViewGeneration or 0)+1
+ player:SetAttribute("PetViewGeneration",s.PetViewGeneration)
+ Pet.Publish(player,d.Pets)
  player:SetAttribute("Strength",d.Strength);player:SetAttribute("Level",d.Level);player:SetAttribute("LevelProgress",d.LevelProgress)
  player:SetAttribute("Win",d.Win);player:SetAttribute("RebirthCount",d.RebirthCount)
  return true
@@ -1324,16 +1339,30 @@ function PlayerDataService.GetPetState(player)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return nil,"DataNotLoaded" end
  if s.OwnershipLost then return nil,"SessionOwnershipLost" end
- return Pet.NormalizeState(s.Data.Pets)
+ local preview=RunService:IsStudio() and s.StudioStartOverride and s.StudioPetPreview
+ local state,reason=Pet.NormalizeState(preview or s.Data.Pets)
+ return state,reason,s.PetViewGeneration or 0
 end
 
-function PlayerDataService.MutatePets(player,requestId,revision,action,payload)
+function PlayerDataService.MutatePets(player,requestId,revision,action,payload,generation)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
  if s.OwnershipLost then return false,"SessionOwnershipLost" end
- if s.StudioStartOverride then return false,"StudioOverrideActive" end
  if type(requestId)~="string" or #requestId~=36 or not requestId:match("^[%x%-]+$")
   or not finite(revision) or revision<0 or revision%1~=0 then return false,"InvalidPetRequest" end
+ if (generation or 0)~=(s.PetViewGeneration or 0) then return false,"PetStateChanged" end
+ if s.StudioStartOverride then
+  if not RunService:IsStudio() or action~="Equip" or not s.StudioPetPreview then return false,"StudioOverrideActive" end
+  if s.Saving or s.PendingItemMutation then return false,"DataSaving" end
+  local preview=s.StudioPetPreview
+  if type(payload)~="string" or not preview.Owned[payload] then return false,"PetNotOwned" end
+  if not Pet.model(preview.Owned[payload]) then return false,"PetModelUnavailable" end
+  local state,reason=Pet.ApplyOperation(preview,{Id=requestId,Revision=revision,Action="Equip",PetId=payload})
+  if not state then return false,reason end
+  s.StudioPetPreview=state
+  Pet.Publish(player,state)
+  return true,reason=="AlreadyApplied" and reason or "StudioPetEquipped"
+ end
  local pending=s.PendingItemMutation
  if pending then
   if pending.PetMutation and pending.Id==requestId then return PlayerDataService.ResolveItemMutation(player) end

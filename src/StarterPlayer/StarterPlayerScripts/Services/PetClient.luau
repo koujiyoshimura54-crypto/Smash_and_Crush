@@ -49,6 +49,7 @@ local cardJanitor = Janitor.new()
 
 local cardRoot: GuiObject? = nil
 local playerData: any = nil -- validated legacy Pet state, never purchased Data
+local stateGeneration = 0
 local pending = false
 local started = false
 local bootstrapped = false
@@ -540,6 +541,9 @@ function PetClient.start()
 	Player:GetAttributeChangedSignal("PetInventoryRevision"):Connect(function()
 		task.spawn(PetClient.refresh)
 	end)
+	Player:GetAttributeChangedSignal("PetViewGeneration"):Connect(function()
+		task.spawn(PetClient.refresh)
+	end)
 	task.spawn(function()
 		while Player.Parent and not playerData do
 			PetClient.refresh()
@@ -560,7 +564,10 @@ local function accept(response)
 	if type(response)~="table" or type(response.state)~="table" then return end
 	local state=Pet.NormalizeState(response.state)
 	if not state then return end
-	if playerData and state.Revision<playerData.Revision then return end
+	local generation=response.generation or 0
+	if type(generation)~="number" or generation<0 or generation%1~=0 then return end
+	if playerData and (generation<stateGeneration or generation==stateGeneration and state.Revision<playerData.Revision) then return end
+	stateGeneration=generation
 	playerData=state
 	rebuild()
 end
@@ -589,9 +596,10 @@ function PetClient.request(action,a,b)
 	pending=true
 	local id=HttpService:GenerateGUID(false)
 	local revision=playerData.Revision
+	local generation=stateGeneration
 	local reported=false
 	while Player.Parent do
-		local ok,response=pcall(function() return remote:InvokeServer(action,id,revision,a,b) end)
+		local ok,response=pcall(function() return remote:InvokeServer(action,id,revision,a,b,generation) end)
 		if ok and type(response)=="table" then
 			accept(response)
 			if response.ok then
