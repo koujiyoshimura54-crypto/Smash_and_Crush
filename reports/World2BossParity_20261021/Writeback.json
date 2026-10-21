@@ -1,0 +1,44 @@
+{
+  "inputSha256": "189a0007a13fcd649cdc4bc3fc3b8e53175d94d24f1281e82cbc497d37bee3aa",
+  "outputSha256": "cc7aa254b4654ea0faf0e514e72aa842677522f58d6b14c71185abf182a6f0cb",
+  "bytes": 6353439,
+  "sources": {
+    "ReplicatedStorage.Config.World2BossVisualConfig": {
+      "before": "4041fb2232a14d4ec318dde23acf4b70c866463d52fc61ae245c1f023b74453f",
+      "after": "326f909d6636a2e93484eecab6bb2ae158950138652265fe1a4c114470f9ee03"
+    },
+    "ServerScriptService.World.BossAttackService": {
+      "before": "df853d9316ec32cb195ef82a1301ab7a79250364bb610a19b779bcd085742a8f",
+      "after": "2775536cc9dab583290eb5ca77c570b16d743dc7ef176ba9946b3dd8a3775958"
+    },
+    "ServerScriptService.World.BossChaseService": {
+      "before": "81562cafb7e29ad787d9a22820973b180134395ca658c42b6118e0bb135f0325",
+      "after": "942de6a0c4ea2a615967bff5ff08080a6c1915dac6a1f490e2caedc67a524267"
+    },
+    "ServerScriptService.World.BossCombatService": {
+      "before": "18e095286cfa4de725412df7c946a41388993e67e124a4894e9c9e56a949224d",
+      "after": "53779b55b5b7ee5e3212be7db78115f9834ca042293ab433a2e2a056b1e553a2"
+    },
+    "ServerScriptService.World.BossVisualPlacement": {
+      "before": "0a0866c3fcf14e783e84ff8b4e43c5c2beaa8825bf8c9a39928c18631048c0c0",
+      "after": "c6525b6c59af58774306b2b0cede082ea96c4d18a83d5ffd0af86e4f2b2cf495"
+    },
+    "ServerScriptService.World.EnemyManager": {
+      "before": "7d8c27cee51f5025b9230432eb9da5f14065e46f28ed4606cbdf85f9a54b8952",
+      "after": "689c5c352ea76a214b769b64d2f52a573edfece7a78116319f0458f0b2071961"
+    },
+    "StarterPlayer.StarterPlayerScripts.Combat.CombatClient": {
+      "before": "285cbde758cbb185587868d8425dec51b410216b349ba01299bbd00fd032e6cb",
+      "after": "4518408d1b9c49dc6a3fddb3a816997353bc0ae9ee94f969bcbf11f8e6b95eee"
+    }
+  },
+  "syntaxCompiled": true,
+  "writtenAndReread": true,
+  "allOtherSourcesPropertiesParentsUniqueIdsUnchanged": true,
+  "existingBossTemplatesAndNumericBalanceUnchanged": true,
+  "existing40TrophyButtonsAndPurchaseSourcesUnchanged": true,
+  "actualChaseSpeed": 16,
+  "actualTurnResponse": 4,
+  "testFixturesWritten": false,
+  "studioSaveOrPublishUsed": false
+}

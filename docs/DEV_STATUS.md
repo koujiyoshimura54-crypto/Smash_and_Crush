@@ -2325,3 +2325,8 @@ Used the saved BlockSquareX marker and current manual edits to identify correspo
 ## 2026-10-21 - Trophy receipt before return waits
 
 Both World contexts now confirm and notify an eligible owner Trophy/Win receipt before item banking or Lobby streaming. Durable item banking and existing PlayerData saving remain enabled. Per-player receipt state prevents repeat credit during return retries, and protected independent workers release transient error locks without blocking the shared overlap scan. Only TrophyRewardService changed. Same-file Source readback and syntax compilation passed; no Play or measured timing claims. The unknown persistent inability report remains unconfirmed. See reports/TrophyReceipt_20261021/README.md.
+
+
+## 2026-10-21 — World2 boss parity verification
+
+World2 Stage1-10 now reuse current World1 non-animation combat through isolated World/player contexts. All ten were visually inspected and defeated in local Play; representative maximum-body, boundary, two-client independence, death/return/exit/retry, Stage10 and mocked pass-confirmation cases were checked. Actual Marketplace checkout, production persistence and restricted audio playback remain unverified. Current-place chase values 16/4 and unrelated local mirror edits were preserved. Details: reports/World2BossParity_20261021/REPORT.md.

@@ -627,3 +627,8 @@ Used the saved BlockSquareX marker and current manual edits to identify correspo
 ## 2026-10-21 - Trophy receipt before return waits
 
 Both World contexts now confirm and notify an eligible owner Trophy/Win receipt before item banking or Lobby streaming. Durable item banking and existing PlayerData saving remain enabled. Per-player receipt state prevents repeat credit during return retries, and protected independent workers release transient error locks without blocking the shared overlap scan. Only TrophyRewardService changed. Same-file Source readback and syntax compilation passed; no Play or measured timing claims. The unknown persistent inability report remains unconfirmed. See reports/TrophyReceipt_20261021/README.md.
+
+
+## 2026-10-21 — Current World2 boss behavior
+
+World2 Stage1-10 use current World1 non-animation chase and combat behavior, including Strength × (1 + glove bonus) damage, unlimited attack count, existing timing, per-owner HP/UI and reset/return lifecycle. World2 HP, RequiredStrength, walls and rewards remain independently configured. The old World2 five-hit lottery route is no longer used. Per-template visual scales and body bounds are persisted in World2BossVisualConfig; fresh personal clones prevent cumulative scaling. Trophy collection still requires a valid defeated-stage receipt and either normal (Win x2 excluded) or double pad; existing Win x3 correction remains. World2 animation creation is deferred. See reports/World2BossParity_20261021/REPORT.md.

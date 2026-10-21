@@ -1,0 +1,3544 @@
+{
+  "method": "Actual local Studio multiplayer Play, real client mouse/keyboard/navigation; server fixtures prepare balance/stage/body/health and mock Marketplace only. Not real purchases or production persistence.",
+  "Stages": [
+    {
+      "Stage": 1,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "6.884960174560547, 15.75, 2.555859327316284",
+          "Win": 10000,
+          "Bottom": 2.1000003814697266,
+          "Scale": 2.25,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 15.75,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2152.960205078125
+          },
+          "Health": 100,
+          "Generation": 3,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "Size": "7.649955749511719, 15.75, 2.83984375"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 350000000,
+          "Strength": 70000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.94835662841797,
+            "2": 2.5,
+            "3": 2125.880859375
+          },
+          "Player": "Player2",
+          "RunRevision": 2,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2122.9609375
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 77,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570213.029088
+            }
+          },
+          "Stage": 1,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 280000000,
+          "Strength": 70000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.94835662841797,
+            "2": 2.5,
+            "3": 2125.880859375
+          },
+          "Player": "Player2",
+          "RunRevision": 2,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2122.9609375
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 79,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570215.028992
+            }
+          },
+          "Stage": 1,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 82,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570218.028608
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "1": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2264.375
+          },
+          "BossTarget": 0,
+          "Strength": 70000000,
+          "Complete": false,
+          "RunRevision": 2,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2122.9609375
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 2,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 2,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "5.475698947906494, 13.348581314086914, 15.8524169921875",
+          "Win": 10000,
+          "Bottom": 2.1000003814697266,
+          "Scale": 3.6,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 13.348581314086914,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2264.375
+          },
+          "Health": 100,
+          "Generation": 5,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 2,
+          "Size": "6.084110260009766, 13.348581314086914, 18.64990234375"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 700000000,
+          "Strength": 140000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 34.84550094604492,
+            "2": 2.5,
+            "3": 2243.601806640625
+          },
+          "Player": "Player2",
+          "RunRevision": 3,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2234.375
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 85,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570260.561609
+            }
+          },
+          "Stage": 2,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 560000000,
+          "Strength": 140000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 34.84550094604492,
+            "2": 2.5,
+            "3": 2243.601806640625
+          },
+          "Player": "Player2",
+          "RunRevision": 3,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2234.375
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 88,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570263.56144
+            }
+          },
+          "Stage": 2,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 91,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570266.578038
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "2": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2393.48095703125
+          },
+          "BossTarget": 0,
+          "Strength": 140000000,
+          "Complete": false,
+          "RunRevision": 3,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2234.375
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 3,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 3,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "10.793460845947266, 15.195345878601074, 4.354540824890137",
+          "Win": 10000,
+          "Bottom": 2.099998950958252,
+          "Scale": 3,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 15.195345878601074,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2393.48095703125
+          },
+          "Health": 100,
+          "Generation": 7,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 3,
+          "Size": "11.992734909057617, 15.195345878601074, 4.83837890625"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 1500000000,
+          "Strength": 300000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.66420364379883,
+            "2": 2.5,
+            "3": 2367.257568359375
+          },
+          "Player": "Player2",
+          "RunRevision": 4,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2363.484375
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 94,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570284.476734
+            }
+          },
+          "Stage": 3,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 1200000000,
+          "Strength": 300000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.66420364379883,
+            "2": 2.5,
+            "3": 2367.257568359375
+          },
+          "Player": "Player2",
+          "RunRevision": 4,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2363.484375
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 96,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570286.460195
+            }
+          },
+          "Stage": 3,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 99,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570289.460587
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "3": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2516.92236328125
+          },
+          "BossTarget": 0,
+          "Strength": 300000000,
+          "Complete": false,
+          "RunRevision": 4,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2363.484375
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 4,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 4,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "9.589376449584961, 10.933149337768555, 6.898998737335205",
+          "Win": 10000,
+          "Bottom": 2.1000003814697266,
+          "Scale": 3,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 12.862527847290039,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2516.92236328125
+          },
+          "Health": 100,
+          "Generation": 9,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 4,
+          "Size": "12.785835266113281, 12.862527847290039, 9.855712890625"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 3500000000,
+          "Strength": 700000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.261592864990234,
+            "2": 2.5,
+            "3": 2491.90185546875
+          },
+          "Player": "Player2",
+          "RunRevision": 5,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2486.921875
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 102,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570313.408683
+            }
+          },
+          "Stage": 4,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 2800000000,
+          "Strength": 700000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.261592864990234,
+            "2": 2.5,
+            "3": 2491.90185546875
+          },
+          "Player": "Player2",
+          "RunRevision": 5,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2486.921875
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 106,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570317.408949
+            }
+          },
+          "Stage": 4,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 108,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570319.408764
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "4": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2649.5390625
+          },
+          "BossTarget": 0,
+          "Strength": 700000000,
+          "Complete": false,
+          "RunRevision": 5,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2486.921875
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 5,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 5,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "7.381461143493652, 15.77562141418457, 3.6195554733276367",
+          "Win": 10000,
+          "Bottom": 2.1000003814697266,
+          "Scale": 2.7,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 15.77562165260315,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2649.5390625
+          },
+          "Health": 100,
+          "Generation": 11,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 5,
+          "Size": "8.201623916625977, 15.77562141418457, 4.021728515625"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 9000000000,
+          "Strength": 1800000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.780418395996094,
+            "2": 2.5,
+            "3": 2622.963623046875
+          },
+          "Player": "Player2",
+          "RunRevision": 6,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2619.5390625
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 111,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570335.408515
+            }
+          },
+          "Stage": 5,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 7200000000,
+          "Strength": 1800000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.780418395996094,
+            "2": 2.5,
+            "3": 2622.963623046875
+          },
+          "Player": "Player2",
+          "RunRevision": 6,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2619.5390625
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 114,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570338.408417
+            }
+          },
+          "Stage": 5,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 116,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570340.424474
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "5": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2858.6435546875
+          },
+          "BossTarget": 0,
+          "Strength": 1800000000,
+          "Complete": false,
+          "RunRevision": 6,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2619.5390625
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 6,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 6,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "8.819964408874512, 15.40007209777832, 7.032128810882568",
+          "Win": 10000,
+          "Bottom": 2.1000003814697266,
+          "Scale": 1.75,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 15.4000723361969,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 2858.6435546875
+          },
+          "Health": 100,
+          "Generation": 13,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 6,
+          "Size": "9.79996109008789, 15.40007209777832, 7.8134765625"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 25000000000,
+          "Strength": 5000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.24066925048828,
+            "2": 2.5,
+            "3": 2833.683837890625
+          },
+          "Player": "Player2",
+          "RunRevision": 7,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2828.640625
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 119,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570360.941168
+            }
+          },
+          "Stage": 6,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 20000000000,
+          "Strength": 5000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.24066925048828,
+            "2": 2.5,
+            "3": 2833.683837890625
+          },
+          "Player": "Player2",
+          "RunRevision": 7,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2828.640625
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 122,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570363.940503
+            }
+          },
+          "Stage": 6,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 125,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570366.92442
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "6": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 3085.554443359375
+          },
+          "BossTarget": 0,
+          "Strength": 5000000000,
+          "Complete": false,
+          "RunRevision": 7,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 2828.640625
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 7,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 7,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "16.979251861572266, 10.499823570251465, 20.393152236938477",
+          "Win": 10000,
+          "Bottom": 2.1000003814697266,
+          "Scale": 2.5,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 10.499823808670044,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 3085.554443359375
+          },
+          "Health": 100,
+          "Generation": 15,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 7,
+          "Size": "21.224063873291016, 10.499823570251465, 23.991943359375"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 75000000000,
+          "Strength": 15000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 34.12785339355469,
+            "2": 2.5,
+            "3": 3066.935791015625
+          },
+          "Player": "Player2",
+          "RunRevision": 8,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3055.5546875
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 128,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570384.02346
+            }
+          },
+          "Stage": 7,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 60000000000,
+          "Strength": 15000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 34.12785339355469,
+            "2": 2.5,
+            "3": 3066.935791015625
+          },
+          "Player": "Player2",
+          "RunRevision": 8,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3055.5546875
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 132,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570388.038868
+            }
+          },
+          "Stage": 7,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 134,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570390.040118
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "7": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 3276.8134765625
+          },
+          "BossTarget": 0,
+          "Strength": 15000000000,
+          "Complete": false,
+          "RunRevision": 8,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3055.5546875
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 8,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 8,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "10.799999237060547, 15, 3.1264891624450684",
+          "Win": 10000,
+          "Bottom": 2.1000003814697266,
+          "Scale": 3,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 15.000000476837158,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 3276.8134765625
+          },
+          "Health": 100,
+          "Generation": 17,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 8,
+          "Size": "12, 15, 3.473876953125"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 250000000000,
+          "Strength": 50000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.858367919921875,
+            "2": 2.5,
+            "3": 3250.003173828125
+          },
+          "Player": "Player2",
+          "RunRevision": 9,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3246.8125
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 137,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570415.02154
+            }
+          },
+          "Stage": 8,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 200000000000,
+          "Strength": 50000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.858367919921875,
+            "2": 2.5,
+            "3": 3250.003173828125
+          },
+          "Player": "Player2",
+          "RunRevision": 9,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3246.8125
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 139,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570417.021599
+            }
+          },
+          "Stage": 8,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 142,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570420.022097
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "8": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 3404.1005859375
+          },
+          "BossTarget": 0,
+          "Strength": 50000000000,
+          "Complete": false,
+          "RunRevision": 9,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3246.8125
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 9,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 9,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "10.912337303161621, 9.407477378845215, 21.39454460144043",
+          "Win": 10000,
+          "Bottom": 2.09999942779541,
+          "Scale": 1.4,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 9.407477140426636,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 3404.1005859375
+          },
+          "Health": 100,
+          "Generation": 19,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 9,
+          "Size": "12.838043212890625, 9.407477378845215, 38.899169921875"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 900000000000,
+          "Strength": 180000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 31.955642700195312,
+            "2": 2.5,
+            "3": 3392.665283203125
+          },
+          "Player": "Player2",
+          "RunRevision": 10,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3374.1015625
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 146,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570436.905248
+            }
+          },
+          "Stage": 9,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 720000000000,
+          "Strength": 180000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 31.955642700195312,
+            "2": 2.5,
+            "3": 3392.665283203125
+          },
+          "Player": "Player2",
+          "RunRevision": 10,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3374.1015625
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 149,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570439.905046
+            }
+          },
+          "Stage": 9,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 152,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570442.904533
+            }
+          },
+          "Highest": 1,
+          "Defeated": {
+            "9": true
+          },
+          "BossPosition": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 3629.0439453125
+          },
+          "BossTarget": 0,
+          "Strength": 180000000000,
+          "Complete": false,
+          "RunRevision": 10,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3374.1015625
+          },
+          "Fighting": false,
+          "Win": 10000,
+          "Stage": 10,
+          "World": 2
+        }
+      }
+    },
+    {
+      "Stage": 10,
+      "BeforeCombat": {
+        "Player1": {
+          "Win": 0,
+          "Body": "19, 16.842552185058594, 10",
+          "Name": "Player1",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Position": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Height": 11.821738243103027,
+          "Health": 100,
+          "Generation": 1,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 1,
+          "World": 1
+        },
+        "Player2": {
+          "World": 2,
+          "Body": "7.31390380859375, 14.266105651855469, 4.915515422821045",
+          "Win": 10000,
+          "Bottom": 2.1000003814697266,
+          "Scale": 1.8,
+          "Name": "Player2",
+          "ActorCount": 1,
+          "Chase": "Idle",
+          "Height": 15.851228952407837,
+          "Position": {
+            "1": 27.920000076293945,
+            "2": 2.5,
+            "3": 3629.0439453125
+          },
+          "Health": 100,
+          "Generation": 21,
+          "Target": 0,
+          "Look": "-0, -0, -1",
+          "Stage": 10,
+          "Size": "9.142379760742188, 15.851228713989258, 5.782958984375"
+        }
+      },
+      "During": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 3500000000000,
+          "Strength": 700000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.57489776611328,
+            "2": 2.5,
+            "3": 3603.0859375
+          },
+          "Player": "Player2",
+          "RunRevision": 11,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3599.046875
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 155,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570476.736598
+            }
+          },
+          "Stage": 10,
+          "Health": 100
+        }
+      },
+      "AfterFirstHit": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Highest": 1,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossTarget": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 2800000000000,
+          "Strength": 700000000000,
+          "Win": 10000,
+          "BossPosition": {
+            "1": 36.57489776611328,
+            "2": 2.5,
+            "3": 3603.0859375
+          },
+          "Player": "Player2",
+          "RunRevision": 11,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3599.046875
+          },
+          "BossOwner": -2,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 159,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570480.752528
+            }
+          },
+          "Stage": 10,
+          "Health": 100
+        }
+      },
+      "AfterDefeat": {
+        "1": {
+          "BossOwner": -1,
+          "Highest": 1,
+          "Defeated": [],
+          "Win": 0,
+          "BossPosition": {
+            "1": 287.79998779296875,
+            "2": 8,
+            "3": 198.89999389648438
+          },
+          "Strength": 0,
+          "Complete": false,
+          "BossTarget": 0,
+          "Player": "Player1",
+          "Health": 100,
+          "Position": {
+            "1": 287.861328125,
+            "2": 7.3388671875,
+            "3": 13
+          },
+          "RunRevision": 2,
+          "Fighting": false,
+          "Stage": 1,
+          "World": 1
+        },
+        "2": {
+          "Win": 10000,
+          "Damage": {
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            },
+            "Count": 161,
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570482.752899
+            }
+          },
+          "Strength": 700000000000,
+          "Defeated": {
+            "10": true
+          },
+          "Complete": true,
+          "Highest": 1,
+          "Player": "Player2",
+          "Health": 100,
+          "Position": {
+            "1": 37.921875,
+            "2": 5.1328125,
+            "3": 3599.046875
+          },
+          "Fighting": false,
+          "RunRevision": 11,
+          "Stage": 10,
+          "World": 2
+        }
+      }
+    }
+  ],
+  "RepresentativeCases": {
+    "p1Visibility": {
+      "Height": 3.55,
+      "Player": "Player1",
+      "Bosses": [
+        {
+          "Visible": 11,
+          "Owner": -1,
+          "Position": [
+            20.46929931640625,
+            2.5,
+            3063.195068359375
+          ]
+        },
+        {
+          "Visible": 0,
+          "Owner": -2,
+          "Position": [
+            34.12785339355469,
+            2.5,
+            3066.935791015625
+          ]
+        }
+      ]
+    },
+    "p2Visibility": {
+      "Height": 1.1,
+      "Player": "Player2",
+      "Bosses": [
+        {
+          "Visible": 0,
+          "Owner": -1,
+          "Position": [
+            20.46929931640625,
+            2.5,
+            3063.195068359375
+          ]
+        },
+        {
+          "Visible": 11,
+          "Owner": -2,
+          "Position": [
+            34.12785339355469,
+            2.5,
+            3066.935791015625
+          ]
+        }
+      ]
+    },
+    "maxRetreat": [
+      {
+        "BossOwner": -1,
+        "RunRevision": 1,
+        "Win": 10000,
+        "BossPosition": [
+          23.300125122070312,
+          2.5,
+          3029.651611328125
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": [],
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player1",
+        "Fighting": false,
+        "Position": [
+          16.8515625,
+          9.9375,
+          2850.9375
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570910.024673
+          },
+          "Count": 356,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570555.017644
+          }
+        },
+        "Strength": 15000000000,
+        "Stage": 7,
+        "World": 2
+      },
+      {
+        "Win": 10000,
+        "BossAttacks": 1,
+        "Defeated": [],
+        "Complete": false,
+        "Fighting": true,
+        "World": 2,
+        "BossOwner": -2,
+        "Route": "STRENGTH_DAMAGE",
+        "BossHP": 60000000000,
+        "Strength": 15000000000,
+        "Health": 100,
+        "BossPosition": [
+          34.12785339355469,
+          2.5,
+          3066.935791015625
+        ],
+        "Player": "Player2",
+        "RunRevision": 13,
+        "Position": [
+          37.921875,
+          5.1328125,
+          3055.5546875
+        ],
+        "BossTarget": -2,
+        "Highest": 1,
+        "Stage": 7,
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570918.141921
+          },
+          "Count": 525,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570101.950676
+          }
+        }
+      }
+    ],
+    "multiKill": [
+      {
+        "BossOwner": -1,
+        "RunRevision": 1,
+        "Win": 10000,
+        "BossPosition": [
+          27.920000076293945,
+          2.5,
+          3276.8134765625
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": {
+          "7": true
+        },
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player1",
+        "Fighting": false,
+        "Position": [
+          15.171875,
+          9.9375,
+          3001.390625
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570949.72624
+          },
+          "Count": 363,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570555.017644
+          }
+        },
+        "Strength": 15000000000,
+        "Stage": 8,
+        "World": 2
+      },
+      {
+        "Win": 10000,
+        "BossAttacks": 1,
+        "Defeated": [],
+        "Complete": false,
+        "Fighting": true,
+        "World": 2,
+        "BossOwner": -2,
+        "Route": "STRENGTH_DAMAGE",
+        "BossHP": 60000000000,
+        "Strength": 15000000000,
+        "Health": 100,
+        "BossPosition": [
+          34.12785339355469,
+          2.5,
+          3066.935791015625
+        ],
+        "Player": "Player2",
+        "RunRevision": 13,
+        "Position": [
+          37.921875,
+          5.1328125,
+          3055.5546875
+        ],
+        "BossTarget": -2,
+        "Highest": 1,
+        "Stage": 7,
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570953.142064
+          },
+          "Count": 560,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570101.950676
+          }
+        }
+      }
+    ],
+    "multiReward": [
+      {
+        "BossOwner": -1,
+        "RunRevision": 2,
+        "Win": 810000,
+        "BossPosition": [
+          27.920000076293945,
+          2.5,
+          2152.960205078125
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": [],
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player1",
+        "Fighting": false,
+        "Position": [
+          27.98046875,
+          10.359375,
+          1947.98046875
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570949.72624
+          },
+          "Count": 363,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570555.017644
+          }
+        },
+        "Strength": 15000000000,
+        "Stage": 1,
+        "World": 2
+      },
+      {
+        "Win": 10000,
+        "BossAttacks": 1,
+        "Defeated": [],
+        "Complete": false,
+        "Fighting": true,
+        "World": 2,
+        "BossOwner": -2,
+        "Route": "STRENGTH_DAMAGE",
+        "BossHP": 60000000000,
+        "Strength": 15000000000,
+        "Health": 100,
+        "BossPosition": [
+          34.12785339355469,
+          2.5,
+          3066.935791015625
+        ],
+        "Player": "Player2",
+        "RunRevision": 13,
+        "Position": [
+          37.921875,
+          5.1328125,
+          3055.5546875
+        ],
+        "BossTarget": -2,
+        "Highest": 1,
+        "Stage": 7,
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571004.144199
+          },
+          "Count": 611,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792570101.950676
+          }
+        }
+      }
+    ],
+    "mixedWorld": null,
+    "afterLeave": {
+      "State": [
+        {
+          "Win": 10000,
+          "BossAttacks": 1,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossOwner": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 60000000000,
+          "Strength": 15000000000,
+          "Health": 100,
+          "BossPosition": [
+            34.12785339355469,
+            2.5,
+            3066.935791015625
+          ],
+          "Player": "Player2",
+          "RunRevision": 13,
+          "Position": [
+            37.921875,
+            5.1328125,
+            3055.5546875
+          ],
+          "BossTarget": -2,
+          "Highest": 1,
+          "Stage": 7,
+          "Damage": {
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571156.148372
+            },
+            "Count": 763,
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792570101.950676
+            }
+          }
+        }
+      ],
+      "Counts": {
+        "Enemies": {
+          "Models": 0,
+          "EnabledScripts": 0,
+          "Colliding": 0
+        },
+        "World2Enemies": {
+          "Models": 1,
+          "EnabledScripts": 0,
+          "Colliding": 0
+        }
+      }
+    },
+    "repeatedSpawn": {
+      "OldActorsStillParented": 0,
+      "Counts": {
+        "World2Enemies": {
+          "Models": 1,
+          "EnabledScripts": 0,
+          "Colliding": 0
+        },
+        "Enemies": {
+          "Models": 1,
+          "EnabledScripts": 0,
+          "Colliding": 0
+        }
+      }
+    },
+    "finalWorld1Regression": [
+      {
+        "BossOwner": -1,
+        "RunRevision": 3,
+        "Win": 10000,
+        "BossPosition": [
+          287.79998779296875,
+          8,
+          892.0700073242188
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": {
+          "5": true
+        },
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player1",
+        "Fighting": false,
+        "Position": [
+          277.80078125,
+          7.134765625,
+          678.27734375
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571664.804802
+          },
+          "Count": 73,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571592.820043
+          }
+        },
+        "Strength": 20005,
+        "Stage": 6,
+        "World": 1
+      },
+      {
+        "Win": 10000,
+        "BossAttacks": 0,
+        "Defeated": [],
+        "Complete": false,
+        "Fighting": true,
+        "World": 2,
+        "BossOwner": -2,
+        "Route": "STRENGTH_DAMAGE",
+        "BossHP": 350000000,
+        "Strength": 350000000,
+        "Health": 100,
+        "BossPosition": [
+          36.54526901245117,
+          2.5,
+          2135.7138671875
+        ],
+        "Player": "Player2",
+        "RunRevision": 1,
+        "Position": [
+          37.921875,
+          5.1328125,
+          2132.9609375
+        ],
+        "BossTarget": -2,
+        "Highest": 1,
+        "Stage": 1,
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571679.037807
+          },
+          "Count": 87,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571593.036346
+          }
+        }
+      }
+    ],
+    "cancelPurchase": {
+      "Before": {
+        "Prompts": 2,
+        "Id": 1970515086,
+        "Win": 10000,
+        "World": 2
+      },
+      "AfterCancel": {
+        "Prompts": 2,
+        "Win": 10000,
+        "Position": "61.359375, 5.1328125, 2137.5703125"
+      }
+    },
+    "purchaseReward": {
+      "Before": {
+        "Win": 10000,
+        "Prompts": 3
+      },
+      "State": [
+        {
+          "BossOwner": -1,
+          "RunRevision": 3,
+          "Win": 10000,
+          "BossPosition": [
+            287.79998779296875,
+            8,
+            892.0700073242188
+          ],
+          "BossTarget": 0,
+          "Health": 100,
+          "Defeated": {
+            "5": true
+          },
+          "Complete": false,
+          "Highest": 1,
+          "Player": "Player1",
+          "Fighting": false,
+          "Position": [
+            277.80078125,
+            7.134765625,
+            678.27734375
+          ],
+          "Damage": {
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571664.804802
+            },
+            "Count": 73,
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571592.820043
+            }
+          },
+          "Strength": 20005,
+          "Stage": 6,
+          "World": 1
+        },
+        {
+          "BossOwner": -2,
+          "RunRevision": 2,
+          "Win": 16000,
+          "BossPosition": [
+            27.920000076293945,
+            2.5,
+            2152.960205078125
+          ],
+          "BossTarget": 0,
+          "Health": 100,
+          "Defeated": [],
+          "Complete": false,
+          "Highest": 1,
+          "Player": "Player2",
+          "Fighting": false,
+          "Position": [
+            27.981096267700195,
+            5.717721939086914,
+            1947.97998046875
+          ],
+          "Damage": {
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571680.037541
+            },
+            "Count": 88,
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571593.036346
+            }
+          },
+          "Strength": 350000000,
+          "Stage": 1,
+          "World": 2
+        }
+      ]
+    },
+    "purchaseRace": {
+      "BeforeLatePurchase": {
+        "Win": 13000,
+        "Position": "27.98046875, 5.53515625, 1947.98046875"
+      },
+      "After": {
+        "Owned": true,
+        "Win": 13000,
+        "Position": "27.98046875, 5.53515625, 1947.98046875"
+      },
+      "State": [
+        {
+          "BossOwner": -1,
+          "RunRevision": 3,
+          "Win": 10000,
+          "BossPosition": [
+            287.79998779296875,
+            8,
+            892.0700073242188
+          ],
+          "BossTarget": 0,
+          "Health": 100,
+          "Defeated": {
+            "5": true
+          },
+          "Complete": false,
+          "Highest": 1,
+          "Player": "Player1",
+          "Fighting": false,
+          "Position": [
+            277.80078125,
+            7.134765625,
+            678.27734375
+          ],
+          "Damage": {
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571664.804802
+            },
+            "Count": 73,
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571592.820043
+            }
+          },
+          "Strength": 20005,
+          "Stage": 6,
+          "World": 1
+        },
+        {
+          "BossOwner": -2,
+          "RunRevision": 4,
+          "Win": 13000,
+          "BossPosition": [
+            27.920000076293945,
+            2.5,
+            2152.960205078125
+          ],
+          "BossTarget": 0,
+          "Health": 100,
+          "Defeated": [],
+          "Complete": false,
+          "Highest": 1,
+          "Player": "Player2",
+          "Fighting": false,
+          "Position": [
+            27.98046875,
+            5.53515625,
+            1947.98046875
+          ],
+          "Damage": {
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571737.756754
+            },
+            "Count": 97,
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571593.036346
+            }
+          },
+          "Strength": 350000000,
+          "Stage": 1,
+          "World": 2
+        }
+      ]
+    },
+    "largeQuadrupedEdge": {
+      "State": [
+        {
+          "BossOwner": -1,
+          "RunRevision": 4,
+          "Win": 10000,
+          "BossPosition": [
+            287.79998779296875,
+            8,
+            698.2780151367188
+          ],
+          "BossTarget": 0,
+          "Health": 100,
+          "Defeated": [],
+          "Complete": false,
+          "Highest": 1,
+          "Player": "Player1",
+          "Fighting": false,
+          "Position": [
+            277.80078125,
+            7.134765625,
+            668.27734375
+          ],
+          "Damage": {
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571664.804802
+            },
+            "Count": 73,
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571592.820043
+            }
+          },
+          "Strength": 20000,
+          "Stage": 5,
+          "World": 1
+        },
+        {
+          "Win": 10000,
+          "BossAttacks": 0,
+          "Defeated": [],
+          "Complete": false,
+          "Fighting": true,
+          "World": 2,
+          "BossOwner": -2,
+          "Route": "STRENGTH_DAMAGE",
+          "BossHP": 900000000000,
+          "Strength": 180000000000,
+          "Health": 100,
+          "BossPosition": [
+            52.58344268798828,
+            2.5,
+            3364.263427734375
+          ],
+          "Player": "Player2",
+          "RunRevision": 5,
+          "Position": [
+            71.9375,
+            9.9375,
+            3361.890625
+          ],
+          "BossTarget": -2,
+          "Highest": 1,
+          "Stage": 9,
+          "Damage": {
+            "Last": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571797.524763
+            },
+            "Count": 129,
+            "First": {
+              "Before": 100,
+              "After": 75,
+              "Time": 1792571593.036346
+            }
+          }
+        }
+      ],
+      "Bounds": {
+        "Low": "4.577043533325195, 1.0999994277954102, 4.22509765625",
+        "Chase": "Chasing",
+        "Floor": "90, 2, 144.9998779296875",
+        "Position": "52.58344268798828, 2.5, 3364.263427734375",
+        "Recovery": 0,
+        "High": "44.749359130859375, 10.507476806640625, 21.701171875",
+        "Inside": true,
+        "Size": "12.838043212890625, 9.407477378845215, 38.899169921875"
+      }
+    },
+    "edgeRetryKill": [
+      {
+        "BossOwner": -1,
+        "RunRevision": 4,
+        "Win": 10000,
+        "BossPosition": [
+          287.79998779296875,
+          8,
+          698.2780151367188
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": [],
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player1",
+        "Fighting": false,
+        "Position": [
+          277.80078125,
+          7.134765625,
+          668.27734375
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571664.804802
+          },
+          "Count": 73,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571592.820043
+          }
+        },
+        "Strength": 20000,
+        "Stage": 5,
+        "World": 1
+      },
+      {
+        "BossOwner": -2,
+        "RunRevision": 5,
+        "Win": 10000,
+        "BossPosition": [
+          27.920000076293945,
+          2.5,
+          3629.0439453125
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": {
+          "9": true
+        },
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player2",
+        "Fighting": false,
+        "Position": [
+          57.0859375,
+          9.9375,
+          3347.7734375
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571879.360781
+          },
+          "Count": 167,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571593.036346
+          }
+        },
+        "Strength": 180000000001,
+        "Stage": 10,
+        "World": 2
+      }
+    ],
+    "sixHitLowStrength": [
+      {
+        "BossOwner": -1,
+        "RunRevision": 4,
+        "Win": 10000,
+        "BossPosition": [
+          287.79998779296875,
+          8,
+          698.2780151367188
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": [],
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player1",
+        "Fighting": false,
+        "Position": [
+          277.80078125,
+          7.134765625,
+          668.27734375
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571664.804802
+          },
+          "Count": 73,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571592.820043
+          }
+        },
+        "Strength": 20000,
+        "Stage": 5,
+        "World": 1
+      },
+      {
+        "Win": 10000,
+        "BossAttacks": 5,
+        "Defeated": [],
+        "Complete": false,
+        "Fighting": true,
+        "World": 2,
+        "BossOwner": -2,
+        "Route": "STRENGTH_DAMAGE",
+        "BossHP": 174999995,
+        "Strength": 35000001,
+        "Health": 100,
+        "BossPosition": [
+          36.545265197753906,
+          2.5,
+          2135.7138671875
+        ],
+        "Player": "Player2",
+        "RunRevision": 11,
+        "Position": [
+          37.921875,
+          5.1328125,
+          2132.9609375
+        ],
+        "BossTarget": -2,
+        "Highest": 1,
+        "Stage": 1,
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571921.093846
+          },
+          "Count": 173,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571593.036346
+          }
+        }
+      }
+    ],
+    "tenHitLowStrength": [
+      {
+        "BossOwner": -1,
+        "RunRevision": 4,
+        "Win": 10000,
+        "BossPosition": [
+          287.79998779296875,
+          8,
+          698.2780151367188
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": [],
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player1",
+        "Fighting": false,
+        "Position": [
+          277.80078125,
+          7.134765625,
+          668.27734375
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571664.804802
+          },
+          "Count": 73,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571592.820043
+          }
+        },
+        "Strength": 20000,
+        "Stage": 5,
+        "World": 1
+      },
+      {
+        "Win": 10000,
+        "BossAttacks": 9,
+        "Defeated": [],
+        "Complete": false,
+        "Fighting": true,
+        "World": 2,
+        "BossOwner": -2,
+        "Route": "STRENGTH_DAMAGE",
+        "BossHP": 34999991,
+        "Strength": 35000001,
+        "Health": 100,
+        "BossPosition": [
+          36.545265197753906,
+          2.5,
+          2135.7138671875
+        ],
+        "Player": "Player2",
+        "RunRevision": 11,
+        "Position": [
+          37.921875,
+          5.1328125,
+          2132.9609375
+        ],
+        "BossTarget": -2,
+        "Highest": 1,
+        "Stage": 1,
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571927.093612
+          },
+          "Count": 179,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571593.036346
+          }
+        }
+      }
+    ],
+    "lowStrengthDefeated": [
+      {
+        "BossOwner": -1,
+        "RunRevision": 4,
+        "Win": 10000,
+        "BossPosition": [
+          287.79998779296875,
+          8,
+          698.2780151367188
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": [],
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player1",
+        "Fighting": false,
+        "Position": [
+          277.80078125,
+          7.134765625,
+          668.27734375
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571664.804802
+          },
+          "Count": 73,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571592.820043
+          }
+        },
+        "Strength": 20000,
+        "Stage": 5,
+        "World": 1
+      },
+      {
+        "BossOwner": -2,
+        "RunRevision": 11,
+        "Win": 10000,
+        "BossPosition": [
+          27.920000076293945,
+          2.5,
+          2264.375
+        ],
+        "BossTarget": 0,
+        "Health": 100,
+        "Defeated": [
+          true
+        ],
+        "Complete": false,
+        "Highest": 1,
+        "Player": "Player2",
+        "Fighting": false,
+        "Position": [
+          37.921875,
+          5.1328125,
+          2132.9609375
+        ],
+        "Damage": {
+          "Last": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571939.077999
+          },
+          "Count": 191,
+          "First": {
+            "Before": 100,
+            "After": 75,
+            "Time": 1792571593.036346
+          }
+        },
+        "Strength": 35000001,
+        "Stage": 2,
+        "World": 2
+      }
+    ]
+  }
+}

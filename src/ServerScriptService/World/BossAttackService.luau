@@ -1,4 +1,8 @@
--- World1 Boss -> Player attacks only. Chase and Player -> Boss combat remain unchanged.
+local contexts={}
+local function forWorld(worldId)
+ assert(worldId==1 or worldId==2,"Unsupported world")
+ if contexts[worldId] then return contexts[worldId] end
+-- Shared Boss -> Player cadence; each World owns its validators and sessions.
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
@@ -37,7 +41,10 @@ function M.GetAttackBounds(enemy, stage, player)
    low=low:Min(point);high=high:Max(point)
   end end end
  end
- if visual then
+ if worldId==2 then
+  local shell=enemy:FindFirstChild("MiniBossCollider")
+  if shell then include(shell) end
+ elseif visual then
   for _,part in visual:GetDescendants() do
    if part:IsA("BasePart") and (part:GetAttribute("BossVisualTransparency") or part.Transparency)<1 then
     local helper=false
@@ -57,7 +64,7 @@ function M.GetAttackBounds(enemy, stage, player)
  local size=high-low
  local itemId,settings=getSettings(player)
  local reach=math.clamp(math.max(size.X,size.Z)*settings.ReachScale,settings.MinReach,settings.MaxReach)
- local map=Workspace:FindFirstChild("GeneratedMap")
+ local map=Workspace:FindFirstChild(worldId==2 and "World2Map" or "GeneratedMap")
  local corridor=map and map:FindFirstChild("BattleCorridor")
  local arena=corridor and corridor:FindFirstChild(("Stage%02d"):format(stage))
  local floor=arena and arena:FindFirstChild("Floor")
@@ -184,4 +191,8 @@ RunService.Heartbeat:Connect(function()
  end
 end)
 Players.PlayerRemoving:Connect(function(player) M.Stop(player,false) end)
-return M
+ contexts[worldId]=M
+ M.ForWorld=forWorld
+ return M
+end
+return forWorld(1)

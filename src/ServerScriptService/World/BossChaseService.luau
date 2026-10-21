@@ -1,4 +1,8 @@
--- World1 locomotion only. Damage, attack cadence and encounter outcomes remain in EnemyManager.
+local contexts={}
+local function forWorld(worldId)
+ assert(worldId==1 or worldId==2,"Unsupported world")
+ if contexts[worldId] then return contexts[worldId] end
+-- Shared locomotion, isolated by World. Damage and outcomes remain in EnemyManager.
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local M = {}
@@ -173,6 +177,16 @@ function M.Register(enemy, stage, stageModel)
   MinX=-floor.Size.X/2+EDGE_MARGIN,MaxX=floor.Size.X/2-EDGE_MARGIN,
   MinZ=-floor.Size.Z/2+EDGE_MARGIN,MaxZ=floor.Size.Z/2-EDGE_MARGIN,
   LastPosition=home.Position,Window=0,Commanded=0,Travel=0,Recoveries=0}
+ if worldId==2 then
+  local segment=stageModel:FindFirstChild(("Stage%d.4"):format(stage))
+  local wall=segment and segment:FindFirstChild("Wall")
+  if wall and wall:IsA("BasePart") then
+   local cf=floor.CFrame:ToObjectSpace(wall.CFrame)
+   local half=wall.Size/2
+   local zHalf=math.abs(cf.RightVector.Z)*half.X+math.abs(cf.UpVector.Z)*half.Y+math.abs(cf.LookVector.Z)*half.Z
+   r.MinZ=math.max(r.MinZ,cf.Position.Z+zHalf+EDGE_MARGIN)
+  end
+ end
  local left=stageModel:FindFirstChild("LeftWall")
  local right=stageModel:FindFirstChild("RightWall")
  if left then r.MinX=math.max(r.MinX,floor.CFrame:PointToObjectSpace(left.Position).X+left.Size.X/2+EDGE_MARGIN) end
@@ -182,7 +196,7 @@ function M.Register(enemy, stage, stageModel)
  local collider=assert(enemy:FindFirstChild("MiniBossCollider"),"Boss collider missing")
  r.ColliderLocal=home:ToObjectSpace(collider.CFrame);r.ColliderSize=collider.Size
  for _,part in enemy:GetDescendants() do
-  if part:IsA("BasePart") and (part==collider or part.Transparency<1) then
+  if part:IsA("BasePart") and (part==collider or part.Name=="BossVisualBounds" or part.Transparency<1) then
    for _,x in {-1,1} do for _,y in {-1,1} do for _,z in {-1,1} do
     table.insert(r.Footprint,home:PointToObjectSpace(part.CFrame:PointToWorldSpace(part.Size*Vector3.new(x,y,z)/2)))
    end end end
@@ -198,4 +212,8 @@ end
 function M.Unregister(enemy)
  records[enemy]=nil
 end
-return M
+ contexts[worldId]=M
+ M.ForWorld=forWorld
+ return M
+end
+return forWorld(1)

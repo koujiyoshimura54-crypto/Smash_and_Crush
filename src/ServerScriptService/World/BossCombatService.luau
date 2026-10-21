@@ -2,16 +2,15 @@ local contexts={}
 local function forWorld(worldId)
  assert(worldId==1 or worldId==2,"Unsupported world")
  if contexts[worldId] then return contexts[worldId] end
--- World1 uses real Strength damage. World2 retains its existing encounter rules.
--- Ordinary Cancel retains snapshots; World1 Stop(heal=true) explicitly retires unfinished encounters.
+-- Both Worlds use real Strength damage with independent balance tables.
+-- Ordinary Cancel retains snapshots; Stop(heal=true) retires unfinished encounters.
 local Strength=require(game.ServerScriptService.Services.StrengthManager)
 local ItemService=require(game.ServerScriptService.Services.ItemService)
 local BossConfig=require(game:GetService("ReplicatedStorage").Config:WaitForChild("World1BossConfig"))
 local WorldBalance=worldId==2 and require(game.ReplicatedStorage.Config.World2BossConfig) or BossConfig
 local M={}
 local CombatConfig=require(game.ReplicatedStorage.Config:WaitForChild("CombatConfig"))
--- The legacy attack limit belongs to World2 only.
-M.MaxAttackCount=worldId==2 and CombatConfig.MaxAttackCount or nil
+M.MaxAttackCount=nil -- Same unlimited attack count as current World1.
 M.AttackInterval=CombatConfig.AttackInterval
 M.AttackDuration=0.6
 M.StageConfig={}
@@ -29,17 +28,10 @@ table.freeze(M.StageConfig)
 local active=setmetatable({}, {__mode="k"})
 local encounters=setmetatable({}, {__mode="k"})
 local pending=setmetatable({}, {__mode="k"})
-local rng=worldId==2 and Random.new() or nil
 function M.GetStageConfig(stage) return M.StageConfig[stage] end
 -- Legacy helper retained for archived LevelCombatTests only; not used by encounters.
 function M.GetWinChance(level,recommended)
  return math.clamp(1-(recommended-level)*0.2,0,1)
-end
--- Compatibility for World2 only; World1 never draws or plans a result.
-if worldId==2 then
- function M.GetStrengthRatioWinChance(ratio)
-  return BossConfig.GetLotteryWinChance(ratio)
- end
 end
 function M.Begin(player,boss,stage)
  local config=assert(M.StageConfig[stage],"Invalid combat stage")
@@ -52,29 +44,15 @@ function M.Begin(player,boss,stage)
  local battleDamage=damage*(1+gloveBonus)
  local level=Strength.GetLevel(player)
  local ratio=damage/config.RequiredStrength
- local chance,roll
- local route=worldId==1 and "STRENGTH_DAMAGE" or "LEVEL_DAMAGE"
- if worldId==2 then
-  chance=M.GetStrengthRatioWinChance(ratio)
-  if ratio<1 then
-   route="LOTTERY_MISS"
-   if chance>0 then
-    roll=rng:NextNumber()
-    if roll<chance then route="LOTTERY_WIN" end
-   end
-  end
- end
+ local route="STRENGTH_DAMAGE"
  s={Boss=boss,Stage=stage,MaxHP=config.MaxHP,HP=config.MaxHP,Strength=damage,
   BattleStartStrength=damage,GloveBonus=gloveBonus,BattleDamage=battleDamage,
   PlayerLevel=level,RecommendedLevel=config.RecommendedLevel,RequiredStrength=config.RequiredStrength,
-  StrengthRatio=ratio,Chance=chance,Roll=roll,Route=route,Attacks=0,Completed=false}
+  StrengthRatio=ratio,Route=route,Attacks=0,Completed=false}
  local carry=pending[player]
  if carry and carry.Stage==stage then
-  s.HP=math.max(route=="LOTTERY_WIN" and 1 or 0,s.HP-carry.Damage)
+  s.HP=math.max(0,s.HP-carry.Damage)
   pending[player]=nil
- end
- if worldId==2 then
-  s.LossPlanned=s.Route=="LOTTERY_MISS" and s.HP-s.BattleDamage*M.MaxAttackCount>0
  end
  saved[stage]=s;active[player]=s
  return s
@@ -93,27 +71,17 @@ function M.Attack(player)
  if not s then return "Inactive",nil end
  if s.Completed then return "Complete",s end
  s.Attacks+=1
- if worldId==2 and s.Route=="LOTTERY_WIN" then
-  s.HP=s.Attacks>=M.MaxAttackCount and 0 or math.max(1,s.HP-s.BattleDamage)
- else
-  s.HP=math.max(0,s.HP-s.BattleDamage)
- end
+ s.HP=math.max(0,s.HP-s.BattleDamage)
  if s.HP<=0 then s.Completed=true;return "Win",s end
- if worldId==2 and s.Route=="LOTTERY_MISS" and s.Attacks>=M.MaxAttackCount then
-  s.Completed=true;return "Lose",s
- end
  return "Active",s
 end
 function M.QueueDamage(player,boss,stage,maxHP,damage)
  pending[player]={Boss=boss,Stage=stage,Damage=math.max(0,tonumber(damage) or 0)}
- if worldId==1 then
-  -- Expose the carry result immediately without taking an early combat/Glove snapshot.
-  return math.max(0,M.StageConfig[stage].MaxHP-pending[player].Damage)
- end
+ -- Expose the carry result without taking an early combat/Glove snapshot.
+ return math.max(0,M.StageConfig[stage].MaxHP-pending[player].Damage)
 end
 -- Called by the shared Player/Boss heal path; completed encounters must not revive.
 function M.ResetEncounterForHeal(player,stage)
- if worldId~=1 then return nil end
  local saved=encounters[player]
  local s=saved and saved[stage]
  if not s or s.Completed or s.HP<=0 then return nil end

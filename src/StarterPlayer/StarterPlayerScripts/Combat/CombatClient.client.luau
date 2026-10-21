@@ -410,7 +410,7 @@ local function layoutOverhead(e,n,g)
  return true
 end
 local function updateGaugeLayout(e,n,g)
- if worldId==1 then return layoutOverhead(e,n,g) end
+ if worldId==1 or worldId==2 then return layoutOverhead(e,n,g) end
  local wall,reference=bossWall(n)
  -- Current purchased World2 walls replaced the old World2StageSurface donor.
  -- Reuse the existing personal overhead renderer when that donor is absent.

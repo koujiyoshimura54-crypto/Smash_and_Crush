@@ -35,8 +35,8 @@ local WALL_TRIGGER_FORWARD_OFFSET=3
 local WALL_DAMAGE_DELAY=0.18
 local MINIBOSS_DAMAGE_DELAY=0.50
 local BOSS_COMBAT_ZONE_MARGIN=5
-local Chase=worldId==1 and require(script.Parent:WaitForChild("BossChaseService"))
-local BossAttack=worldId==1 and require(script.Parent:WaitForChild("BossAttackService"))
+local Chase=require(script.Parent:WaitForChild("BossChaseService")).ForWorld(worldId)
+local BossAttack=require(script.Parent:WaitForChild("BossAttackService")).ForWorld(worldId)
 
 local RUNTIME_TRIGGER_FOLDER_NAME="RuntimeCombatTriggers"
 local WALL_TRIGGER_REF_NAME="WallCombatTriggerRef"
@@ -1018,7 +1018,7 @@ local function updateCombat(p,manualRequest)
       startedEnemy=true
       local maxHP=Boss.GetStageConfig(n).MaxHP
       local bs=Boss.Begin(p,e,n,maxHP)
-      if worldId==1 and bs.HP<=0 then
+      if bs.HP<=0 then
        bs.Completed=true
        defeat(p,n)
        return true,"Defeated"

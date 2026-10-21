@@ -1101,3 +1101,8 @@ Both World contexts now confirm and notify an eligible owner Trophy/Win receipt 
 - Connected the existing Double Win Game Pass server confirmation to the exact pending Trophy receipt; normal omits Double, left applies it once, and the separate Triple correction is retained.
 - Preserved immediate credit/notification before durable banking and return, receipt retry protection, and unrelated map/source edits.
 - Syntax compilation and same-file writeback/readback passed. Play, real payment and visual confirmation remain with the user. See `reports/TrophyChoice_20261021/README.md` and `Writeback.json`.
+
+
+## 2026-10-21 — World2 boss parity and individual sizing
+
+Connected World2 Stage1-10 to the current World1 personal chase/attack/Strength-damage services while preserving independent balance, templates, progression and Trophy purchase/return behavior. Applied per-template visual scales and body bounds; verified all ten in local Play and representative two-client independence, death, retry, rewards and mocked purchase completion. No real purchases or production data. See reports/World2BossParity_20261021/REPORT.md for dimensions, evidence, limitations and writeback.

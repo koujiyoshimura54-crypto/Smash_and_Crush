@@ -1,4 +1,4 @@
--- World2 visual adapter for EnemyManager. No combat, progression or reward loop.
+-- World2 geometry adapter; shared World services own combat and progression.
 local SS=game:GetService("ServerStorage")
 local RS=game:GetService("ReplicatedStorage")
 local Config=require(RS.Config.World2BossVisualConfig)
@@ -9,8 +9,12 @@ local function bounds(model)
  local high=-low
  for _,part in model:GetDescendants() do
   if part:IsA("BasePart") and part.Transparency<1 and part.Name~="HumanoidRootPart" and part.Name~="DisplayRoot" then
+   local mesh=part:FindFirstChildOfClass("SpecialMesh")
+   local meshSize=mesh and Config.FileMeshSizes[mesh.MeshId]
+   local size=meshSize and meshSize*mesh.Scale or part.Size
+   local offset=meshSize and mesh.Offset or Vector3.zero
    for _,x in {-1,1} do for _,y in {-1,1} do for _,z in {-1,1} do
-    local p=part.CFrame:PointToWorldSpace(part.Size*Vector3.new(x,y,z)/2)
+    local p=part.CFrame:PointToWorldSpace(offset+size*Vector3.new(x,y,z)/2)
     low=low:Min(p);high=high:Max(p)
    end end end
   end
@@ -52,6 +56,9 @@ function M.Build(map,stageNumber,generation)
  root.CFrame=marker.CFrame;root.Parent=enemy;enemy.PrimaryPart=root
  local visual=template:Clone()
  visual.Name=entry.SCP
+ -- Absolute from the unmodified template, never from a previous live clone.
+ visual:ScaleTo(template:GetScale()*entry.VisualScale)
+ enemy:SetAttribute("VisualScale",entry.VisualScale)
  -- Audited display templates contain no executable scripts. Fail closed if one is added.
  for _,x in visual:GetDescendants() do
   if x:IsA("BaseScript") then x.Disabled=true
@@ -66,7 +73,7 @@ function M.Build(map,stageNumber,generation)
   elseif x:IsA("Humanoid") then x.DisplayDistanceType=Enum.HumanoidDisplayDistanceType.None;x.EvaluateStateMachine=false
   end
  end
- visual:PivotTo(marker.CFrame)
+ visual:PivotTo(marker.CFrame*CFrame.Angles(0,math.rad(entry.FacingYaw or 0),0))
  local low,high=bounds(visual)
  local floorTop=floor.Position.Y+floor.Size.Y/2
  local center=(low+high)/2
@@ -77,10 +84,15 @@ function M.Build(map,stageNumber,generation)
  enemy:SetAttribute("BossDisplayBaseY",low.Y)
  enemy:SetAttribute("BossDisplayTopY",high.Y)
  enemy:SetAttribute("BossDisplayHeight",high.Y-low.Y)
+ local extent=Instance.new("Part")
+ extent.Name="BossVisualBounds";extent.Size=high-low;extent.CFrame=CFrame.new((low+high)/2)
+ extent.Transparency=1;extent.Anchored=true;extent.CanCollide=false;extent.CanTouch=false;extent.CanQuery=false;extent.Parent=enemy
  local collider=Instance.new("Part")
  collider.Name="MiniBossCollider"
- collider.Size=high-low
- collider.CFrame=CFrame.new((low+high)/2)
+ local displaySize=high-low
+ collider.Size=displaySize*entry.BodyRatio
+ local bodyCenter=(low+high)/2+displaySize*(entry.BodyOffset or Vector3.zero)
+ collider.CFrame=CFrame.new(bodyCenter)
  collider.Transparency=1;collider.Anchored=true
  collider.CanCollide=false;collider.CanTouch=false;collider.CanQuery=false
  collider.Parent=enemy
@@ -88,6 +100,19 @@ function M.Build(map,stageNumber,generation)
  zone.Name="CombatZone";zone.Size=Vector3.new(collider.Size.X+10,math.max(14,collider.Size.Y),collider.Size.Z+10)
  zone.CFrame=CFrame.new(collider.Position.X,floorTop+zone.Size.Y/2,collider.Position.Z)
  zone.Transparency=1;zone.Anchored=true;zone.CanCollide=false;zone.CanTouch=true;zone.CanQuery=false;zone.Parent=enemy
+ -- Keep the complete rendered footprint inside the current floor. Markers and
+ -- map geometry stay authored; only this personal actor's home is fitted.
+ local mainFloor=stage:FindFirstChild("Floor")
+ local minX=mainFloor.Position.X-mainFloor.Size.X/2+.25
+ local maxX=mainFloor.Position.X+mainFloor.Size.X/2-.25
+ local minZ=mainFloor.Position.Z-mainFloor.Size.Z/2+.25
+ local maxZ=mainFloor.Position.Z+mainFloor.Size.Z/2-.25
+ local wall=stage:FindFirstChild(("Stage%d.4"):format(stageNumber))
+ wall=wall and wall:FindFirstChild("Wall")
+ if wall and wall:IsA("BasePart") then minZ=math.max(minZ,wall.Position.Z+wall.Size.Z/2+.25) end
+ assert(high.X-low.X<=maxX-minX and high.Z-low.Z<=maxZ-minZ,"Boss cannot fit arena")
+ local shift=Vector3.new(math.clamp(0,minX-low.X,maxX-high.X),0,math.clamp(0,minZ-low.Z,maxZ-high.Z))
+ enemy:PivotTo(enemy:GetPivot()+shift)
  return enemy
 end
 return M
