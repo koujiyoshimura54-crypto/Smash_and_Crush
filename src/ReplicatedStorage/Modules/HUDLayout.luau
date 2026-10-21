@@ -440,32 +440,6 @@ function M.Mount(gui)
  layout()
  return handle
 end
--- Move the original purchased entry; the shared slot remains its sole position owner.
-function M.MountPetEntry(gui,entry)
- local menu=gui:WaitForChild("LeftMenu")
- local left=gui:WaitForChild("HUD"):WaitForChild("LeftHUD")
- local slot=left:FindFirstChild("PetsButton")
- if not slot then
-  slot=left.CommunityRewardsButton:Clone();slot.Name="PetsButton";slot.LayoutOrder=6;slot.Parent=left
- end
- local donor=menu.InventoryButton
- entry.Name="PetsButton";entry.LayoutOrder=6;entry.Visible=true;entry.Active=false
- entry.ZIndex=donor.ZIndex
- local title=entry:WaitForChild("Title")
- for _,property in {"AnchorPoint","Position","Size","FontFace","TextSize","TextScaled","TextWrapped","TextColor3","TextStrokeColor3","TextStrokeTransparency","TextXAlignment","TextYAlignment","AutoLocalize"} do
-  title[property]=donor.Label[property]
- end
- title.Text="Pets" -- Keep the existing automatic localization pipeline.
- for _,object in entry:GetDescendants() do if object:IsA("GuiObject") then
-  object.Active=false
-  object.ZIndex=donor.ZIndex+(object.Name=="Stroke" and 0 or object.Name=="Title" and 2 or object.Name=="Icon" and 3 or 1)
- end end
- local button=entry:WaitForChild("Button")
- button.Active=true;button.Interactable=true;button.Selectable=true;button.ZIndex=donor.ZIndex+4
- entry.Parent=menu
- M.Mount(gui).Refresh()
- return button
-end
 function M.Reserve(gui,root)
  local handle=M.Mount(gui)
  handle.OverlayRoot=root

@@ -138,11 +138,16 @@ local function stampSheet(name: string, open: BillboardGui)
 		seventh.Name="7";seventh.Parent=folder
 		table.insert(Frames,seventh)
 	end
-	if #List==7 and #Frames==7 then
-		for _,frame in ipairs(Frames) do frame.Size=UDim2.new(.13,0,.13,0) end
-		-- Seven purchased cards + six gaps occupy 100% of the same candidate area.
-		if layout then layout.Padding=UDim.new(.015,0);layout.Wraps=false end
-	end
+	-- Use the existing candidate area in centered rows of up to four.
+	-- Separate the probability band from each square image; do not resize the sheet.
+	if layout then layout:Destroy() end
+	local columns=math.min(4,math.max(1,#List))
+	local rows=math.max(1,math.ceil(#List/columns))
+	local aspect=open.Size.X.Scale*background.Size.X.Scale/(open.Size.Y.Scale*background.Size.Y.Scale)
+	local cellWidth=.92/columns
+	local rowHeight=.80/rows
+	local imageHeight=math.min(rowHeight*.76,cellWidth*aspect*.90)
+	local imageWidth=imageHeight/aspect
 
 	for index, frame in ipairs(Frames) do
 		local slot = List[index]
@@ -155,6 +160,24 @@ local function stampSheet(name: string, open: BillboardGui)
 
 		if not slot then continue end
 
+		local row=math.floor((index-1)/columns)
+		local inRow=math.min(columns,#List-row*columns)
+		local column=(index-1)%columns
+		frame.AnchorPoint=Vector2.new(.5,0)
+		frame.Position=UDim2.fromScale(.5+(column-(inRow-1)/2)*cellWidth,.16+row*rowHeight)
+		frame.Size=UDim2.fromScale(imageWidth,imageHeight)
+		frame.ScaleType=Enum.ScaleType.Fit;frame.ClipsDescendants=false
+		for _,key in {PERCENT_NAME,PERCENT_NAME..SHADOW_SUFFIX} do
+			local label=frame:FindFirstChild(key)
+			if label and label:IsA("TextLabel") then
+				label.AnchorPoint=Vector2.new(.5,0)
+				label.Position=UDim2.fromScale(.5,1+.01/imageHeight)
+				label.Size=UDim2.fromScale(cellWidth*.92/imageWidth,rowHeight*.18/imageHeight)
+				label.AutomaticSize=Enum.AutomaticSize.None
+				label.TextXAlignment=Enum.TextXAlignment.Center
+				label.TextWrapped=true;label.TextScaled=true
+			end
+		end
 		setPair(frame, PERCENT_NAME, string.format(Config.Eggs.percentFormat, slot.percent))
 		setIcon(frame, slot.pet)
 	end

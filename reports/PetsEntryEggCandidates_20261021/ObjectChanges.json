@@ -1,0 +1,401 @@
+[
+  {
+    "op": "move",
+    "path": "StarterGui.ScreenGui.Left.Inventory",
+    "parent": "StarterGui.StrengthGui.LeftMenu",
+    "name": "PetsButton"
+  },
+  {
+    "op": "clone",
+    "path": "StarterGui.StrengthGui.HUD.LeftHUD.CommunityRewardsButton",
+    "parent": "StarterGui.StrengthGui.HUD.LeftHUD",
+    "name": "PetsButton",
+    "attributes": {
+      "DesignSize": {
+        "type": "Vector2",
+        "value": [
+          144,
+          144
+        ]
+      }
+    }
+  },
+  {
+    "op": "clone",
+    "path": "StarterGui.StrengthGui.LeftMenu.InventoryButton.UIAspectRatioConstraint",
+    "parent": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "name": "UIAspectRatioConstraint",
+    "attributes": {}
+  },
+  {
+    "op": "clone",
+    "path": "StarterGui.StrengthGui.HUD.LeftHUD.HUDScale",
+    "parent": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "name": "HUDScale",
+    "attributes": {}
+  },
+  {
+    "op": "move",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Inside.Icon",
+    "parent": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "name": "Icon"
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "property": "Size",
+    "type": "UDim2",
+    "value": [
+      0,
+      144,
+      0,
+      144
+    ]
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "property": "Position",
+    "type": "UDim2",
+    "value": [
+      0,
+      158,
+      0,
+      316
+    ]
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "property": "AnchorPoint",
+    "type": "Vector2",
+    "value": [
+      0,
+      0
+    ]
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "property": "LayoutOrder",
+    "type": "number",
+    "value": 6
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "property": "Visible",
+    "type": "boolean",
+    "value": true
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "property": "Active",
+    "type": "boolean",
+    "value": false
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton",
+    "property": "ZIndex",
+    "type": "number",
+    "value": 10
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.HUD.LeftHUD.PetsButton",
+    "property": "LayoutOrder",
+    "type": "number",
+    "value": 6
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.HUDScale",
+    "property": "Scale",
+    "type": "number",
+    "value": 1
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.ScreenGui.Left",
+    "property": "Visible",
+    "type": "boolean",
+    "value": false
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Stroke",
+    "property": "AnchorPoint",
+    "type": "Vector2",
+    "value": [
+      0.5,
+      0.5
+    ]
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Stroke",
+    "property": "Position",
+    "type": "UDim2",
+    "value": [
+      0.5,
+      0,
+      0.5,
+      0
+    ]
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Stroke",
+    "property": "Size",
+    "type": "UDim2",
+    "value": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Inside",
+    "property": "AnchorPoint",
+    "type": "Vector2",
+    "value": [
+      0.5,
+      0.5
+    ]
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Inside",
+    "property": "Position",
+    "type": "UDim2",
+    "value": [
+      0.5,
+      0,
+      0.5,
+      0
+    ]
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Inside",
+    "property": "Size",
+    "type": "UDim2",
+    "value": [
+      1,
+      -10,
+      1,
+      -10
+    ]
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "AnchorPoint"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "Position"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "Size"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "FontFace"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "TextSize"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "TextScaled"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "TextWrapped"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "TextColor3"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "TextStrokeColor3"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "TextStrokeTransparency"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "TextXAlignment"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "TextYAlignment"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Label",
+    "property": "AutoLocalize"
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "property": "Text",
+    "type": "string",
+    "value": "Pets"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Icon",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Icon",
+    "property": "AnchorPoint"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Icon",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Icon",
+    "property": "Position"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Icon",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Icon",
+    "property": "Size"
+  },
+  {
+    "op": "copy",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Icon",
+    "from": "StarterGui.StrengthGui.LeftMenu.InventoryButton.Icon",
+    "property": "ScaleType"
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Stroke",
+    "property": "ZIndex",
+    "type": "number",
+    "value": 10
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Inside",
+    "property": "ZIndex",
+    "type": "number",
+    "value": 11
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Inside.Main",
+    "property": "ZIndex",
+    "type": "number",
+    "value": 11
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "property": "ZIndex",
+    "type": "number",
+    "value": 12
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Icon",
+    "property": "ZIndex",
+    "type": "number",
+    "value": 13
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Button",
+    "property": "ZIndex",
+    "type": "number",
+    "value": 14
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Stroke",
+    "property": "Active",
+    "type": "boolean",
+    "value": false
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Inside",
+    "property": "Active",
+    "type": "boolean",
+    "value": false
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Inside.Main",
+    "property": "Active",
+    "type": "boolean",
+    "value": false
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Title",
+    "property": "Active",
+    "type": "boolean",
+    "value": false
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Icon",
+    "property": "Active",
+    "type": "boolean",
+    "value": false
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Button",
+    "property": "Active",
+    "type": "boolean",
+    "value": true
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Button",
+    "property": "Interactable",
+    "type": "boolean",
+    "value": true
+  },
+  {
+    "op": "set",
+    "path": "StarterGui.StrengthGui.LeftMenu.PetsButton.Button",
+    "property": "Selectable",
+    "type": "boolean",
+    "value": true
+  }
+]

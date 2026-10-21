@@ -595,8 +595,9 @@ function PetClient.request(action,a,b)
 end
 
 local entryConnections=setmetatable({}, {__mode="k"})
-function PetClient.mountEntry(strengthGui,entry,menuClient)
-	local button=require(ReplicatedStorage.Modules.HUDLayout).MountPetEntry(strengthGui,entry)
+function PetClient.bindEntry(strengthGui,menuClient)
+	local entry=strengthGui:WaitForChild("LeftMenu"):WaitForChild("PetsButton")
+	local button=entry:WaitForChild("Button")
 	if not entryConnections[button] then
 		entryConnections[button]=button.Activated:Connect(function()
 			if menuClient.shown()=="Inventory" then menuClient.close() else menuClient.open("Inventory") end
@@ -613,21 +614,12 @@ function PetClient.bootstrap()
 	if bootstrapped then return end
 	bootstrapped=true
 	local gui=Player:WaitForChild("PlayerGui"):WaitForChild(GUI_NAME)
-	-- Reuse only the purchased Pet menu and its original HUD button.
+	-- The Pets entry is authored in StrengthGui; only the existing Pet menu lives here.
 	for _,child in ipairs(gui:GetChildren()) do
-		if child:IsA("GuiObject") then child.Visible=child.Name=="Left" end
+		if child:IsA("GuiObject") then child.Visible=false end
 	end
-	local left=gui:WaitForChild("Left")
-	for _,child in ipairs(left:GetChildren()) do
-		if child:IsA("GuiObject") then child.Visible=child.Name=="Inventory" end
-	end
-	local entry=left:WaitForChild("Inventory")
 	local strengthGui=Player.PlayerGui:WaitForChild("StrengthGui")
 	local menuClient=require(script.Parent.MenuClient)
-	-- Move before MenuClient/ButtonClient scan the old row, avoiding a second
-	-- activation binding and ButtonClient size tweens fighting HUDLayout.
-	PetClient.mountEntry(strengthGui,entry,menuClient)
-	left.Visible=false
 	local menus=gui:WaitForChild("Menus")
 	for _,child in ipairs(menus:GetChildren()) do
 		if child:IsA("GuiObject") then child.Visible=false end
@@ -644,6 +636,7 @@ function PetClient.bootstrap()
 	if otherItems and otherItems:IsA("GuiObject") then otherItems.Visible=false end
 	-- No Trail, best-equip purchase, or other purchased inventory handlers are started.
 	menuClient.init();menuClient.start()
+	PetClient.bindEntry(strengthGui,menuClient)
 	require(script.Parent.ButtonClient).start()
 	require(script.Parent.NotifyClient).start()
 	require(script.Parent.HatchClient).start()

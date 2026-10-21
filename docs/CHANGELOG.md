@@ -1060,3 +1060,9 @@ Fixed Premium-owned normal Win upgrades and server-authorized saved Normal/Premi
 ## 2026-10-21 — World2 arrival locks
 
 Added server-confirmed permanent World2 arrival state in existing PlayerData, central pre-debit purchase checks, and supplied-padlock Inventory cards with immediate unlock and owned-item compatibility. Native real-tab checks used isolated memory data; canonical rbxl writeback and native reload matched all nine Sources. Preserved the prior World1 image/display/secret changes. Evidence and limits: [World2ArrivalLocks_20261021](../reports/World2ArrivalLocks_20261021/README.md).
+
+## 2026-10-21 - Persistent Pets entry and readable Egg candidates
+
+- Saved the original Pets entry and sixth HUD layout slot with matching square bounds; connected the existing Pet Inventory once and removed runtime relocation.
+- Enlarged regular Egg candidate images using centered rows and independent probability bands while preserving panel design, odds and purchase behavior.
+- Wrote and reopened the same CurrentCloud.rbxl; verified actual PC/narrow menu interactions, respawn, World1/World2 Egg candidates and Limited Egg viewports with memory-only data. Evidence: reports/PetsEntryEggCandidates_20261021/README.md.

@@ -1,0 +1,73 @@
+{
+  "inputSha256": "0d48d36f210b9562dcf61accf62da1ce9d637ccf0ac585da5dc9fd4aa8b525ed",
+  "outputSha256": "c7240c9b0fe62e56f4f573020a49cfc72fa57f22a8fc68853e69f530d1ffd654",
+  "changedSources": {
+    "ReplicatedStorage.Modules.HUDLayout": {
+      "before": "6230dba813444f14f4c267b255bcdc75f0b856acdc054f405fef9a960827ad74",
+      "after": "09d79a17d490ef9c7f8b8d2c69df894e5ee39e00430d314dfd586fc3048b05e7"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.PetClient": {
+      "before": "7ef32632ee89473c1b47fe9b4a59f8161832e85383e74fc7e2e7a95e3d9bb1e4",
+      "after": "724dc114d656e0035b1ce44c46a405604b2df01c76a53cd232c0d0197c646c2c"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.EggClient": {
+      "before": "00cefe82853bc3a400886062c32f3f0d8dd28adbfaaec345e85d5f74f79eda30",
+      "after": "d70897c50a1ecce452c4ca2990e47029e18bd58884349ea6805657993426c998"
+    },
+    "StarterGui.StrengthGui.LeftMenuClient": {
+      "before": "7f020fd3db9a29f2596c0cc4d655d0cf01232044a2f3fdb15d2c535f29e0a678",
+      "after": "8059a23629b2b24e7da895b46aef0e8b87e01c7d5d1539f44f464d51ecf1d687"
+    }
+  },
+  "addedLayoutObjects": [
+    "StarterGui.StrengthGui.HUD.LeftHUD.PetsButton",
+    "StarterGui.StrengthGui.LeftMenu.PetsButton.UIAspectRatioConstraint",
+    "StarterGui.StrengthGui.LeftMenu.PetsButton.HUDScale"
+  ],
+  "movedObjects": 2,
+  "removedInstances": 0,
+  "verifiedExistingProperties": 4724966,
+  "allUnrelatedSourcesPropertiesParentsPreserved": true,
+  "binaryValidation": {
+    "before": {
+      "sha256": "c7240c9b0fe62e56f4f573020a49cfc72fa57f22a8fc68853e69f530d1ffd654",
+      "instanceCount": 182396,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182395,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182396,
+        "PROP.Ref": 78766,
+        "PROP.Content": 0,
+        "PRNT.Child": 182396,
+        "PRNT.Parent": 182396
+      }
+    },
+    "after": {
+      "sha256": "c7240c9b0fe62e56f4f573020a49cfc72fa57f22a8fc68853e69f530d1ffd654",
+      "instanceCount": 182396,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182395,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182396,
+        "PROP.Ref": 78766,
+        "PROP.Content": 0,
+        "PRNT.Child": 182396,
+        "PRNT.Parent": 182396
+      }
+    },
+    "renumberedInstances": 0,
+    "modifiedChunks": 0,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "written": true
+}

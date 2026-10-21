@@ -648,3 +648,7 @@ Speed uses Equip/Equipped instead of ACTIVE. Speed, Dumbbells, regular Item slot
 ## 2026-10-21 — World2 arrival-locked Inventory cards
 
 Unowned World2 Item/dumbbell cards remain visible before first arrival, with the existing dark secret paint, black alpha silhouette and supplied white padlock (rbxassetid://93565525595769). Only the lock is shown: names, effects, prices, stars, purchase controls and ??? are hidden. Locked cards neither select nor send requests. After permanent server-confirmed arrival they use the existing ??? view and eligible purchase controls. Owned cards retain color/equipment regardless of arrival history. Layout, patterns, World1, other tabs and equipped colors remain unchanged. Native real-tab screenshots and isolated verification are recorded in [World2ArrivalLocks_20261021](../reports/World2ArrivalLocks_20261021/README.md).
+
+## 2026-10-21 - Saved Pets entry and Egg candidate sizing
+
+Pets is a saved sixth entry at StarterGui.StrengthGui.LeftMenu.PetsButton, with a saved HUD.LeftHUD.PetsButton slot and the common square size. PetClient binds this entry to the existing Pet Inventory without runtime relocation or entry creation. EggClient uses centered rows of at most four square Fit images inside the unchanged candidate panel, with centered probability bands below. Existing order, odds, purchase controls, hatch animation and Pet Inventory card sizes are preserved. The existing Limited Egg viewport layout remains unchanged. Evidence: reports/PetsEntryEggCandidates_20261021/README.md.

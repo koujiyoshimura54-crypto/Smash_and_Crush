@@ -2293,3 +2293,7 @@ CurrentCloud now separates official Premium entitlement, normal upgrade stage an
 ## 2026-10-21 — World2 arrival locks implemented locally
 
 The canonical CurrentCloud.rbxl now contains nine focused Source changes for permanent first-arrival purchase unlock and the specified padlock cards. Native real Inventory Item/dumbbell checks passed with memory-only persistence; the written file was reopened and all nine Sources matched. Production persistence/reconnect and full device regression were not exercised. Prior transparent image corrections, 2D facilities, Inventory secrets and unrelated local edits remain intact. See [report and screenshots](../reports/World2ArrivalLocks_20261021/README.md).
+
+## 2026-10-21 - Pets menu persistence and Egg candidates completed
+
+The existing Pets entry is saved as the sixth common HUD button; runtime mounting and old-entry waits were removed. Regular Egg candidates now use readable four-plus-three rows with separate probability bands. The same CurrentCloud.rbxl was written, decoded and natively reopened; all four changed Sources and saved object properties matched. Actual Play covered menu toggling/closing, respawn, PC and narrow layout, both Worlds regular Egg UI and a Limited Egg viewport example using memory-only test data. No production purchases/save test or physical-device test was performed. Verification Studios were stopped, cleaned and closed without Save/Publish; the user Studio remains open. Record and requested images: reports/PetsEntryEggCandidates_20261021/README.md.

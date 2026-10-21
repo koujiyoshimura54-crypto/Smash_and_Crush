@@ -74,12 +74,13 @@ local TweenService=game:GetService("TweenService")
 local gui=script.Parent
 local menu=gui:WaitForChild("LeftMenu")
 local layout=require(game.ReplicatedStorage.Modules:WaitForChild("HUDLayout")).Mount(gui).Refresh
-for _,name in ipairs({"SkipButton","InventoryButton","RebirthButton","ShopButton","MergeButton"}) do
- local button=menu:WaitForChild(name)
+for _,name in ipairs({"SkipButton","InventoryButton","RebirthButton","ShopButton","MergeButton","PetsButton"}) do
+ local surface=menu:WaitForChild(name)
+ local button=surface:IsA("GuiButton") and surface or surface:WaitForChild("Button")
  local tween
  local function highlight(on)
   if tween then tween:Cancel() end
-  tween=TweenService:Create(button,TweenInfo.new(0.12),{
+  tween=TweenService:Create(surface,TweenInfo.new(0.12),{
    BackgroundColor3=on and Color3.fromRGB(53,65,89) or Color3.fromRGB(29,35,49),
   })
   tween:Play()
