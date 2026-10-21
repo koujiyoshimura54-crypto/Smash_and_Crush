@@ -20,6 +20,11 @@ local page=shell.Content.Items
 local list=page.OwnedItems
 local owned,equipped={},{}
 local stateLoaded=false
+local function worldLocked(id)
+ local item=Master.Get(id)
+ return item and item.WorldId==2 and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id
+  and player:GetAttribute("World2Visited")~=true
+end
 local selectedId,pending
 local rarityIndex=1
 local rarities=Master.Rarities
@@ -195,6 +200,7 @@ page.Status.FontFace=purchaseText.FontFace;page.Status.TextColor3=Color3.new(1,1
 page.Status.TextStrokeColor3=Color3.new();page.Status.TextStrokeTransparency=0;layer(page.Status,44)
 local render
 local function request(remote,id)
+ if not stateLoaded or (remote~=equipRemote and worldLocked(id)) then return end
  if pending then return end
  pending=id;page.Status.Text="...";remote:FireServer(id)
 end
@@ -248,7 +254,8 @@ render=function()
   c.LayoutOrder=order;c:SetAttribute("InventoryItemCard",true)
   surface(c,item.Rarity,selectedId==id);layer(c,32);c.Parent=list
   local picture=icon(c,"Icon",item.Image,UDim2.new(),UDim2.new(),36)
-  Presentation.SetInventorySecret(c,picture,stateLoaded and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id)
+  local locked=worldLocked(id)
+  Presentation.SetInventorySecret(c,picture,locked or (stateLoaded and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id))
   local effectLabel=label(c,"Effect","W"..tostring(item.WorldId or 1).." "..effect(item),UDim2.new(),UDim2.new(),34)
   effectLabel.FontFace=effectFont
   effectLabel:FindFirstChildOfClass("UIStroke").Thickness=2.5
@@ -257,6 +264,7 @@ render=function()
   local count=label(c,"OwnedCount","×"..tostring(owned[id] or 0),UDim2.fromOffset(8,8),UDim2.fromOffset(65,28),24)
   count.Visible=(owned[id] or 0)>1;count.TextXAlignment=Enum.TextXAlignment.Left
   c.Activated:Connect(function()
+   if worldLocked(id) or not stateLoaded then return end
    selectedId=id
    if (owned[id] or 0)>0 and equipped[item.ItemType]~=id and not pending then request(equipRemote,id) end
    render()
@@ -280,11 +288,12 @@ render=function()
      if (owned[id] or 0)>0 and equipped[item.ItemType]~=id then request(equipRemote,id) end
     end)
    end
-  elseif item.ShopPurchasable then
+  elseif not locked and item.ShopPurchasable then
    priceButton(c,"WinPurchase",item.WinPrice,trophyImage,winRemote,id)
-  elseif item.RobuxPurchasable then
+  elseif not locked and item.RobuxPurchasable then
    priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",robuxRemote,id)
   end
+  Presentation.SetInventoryWorldLock(c,picture,locked)
  end
  layout();list.CanvasPosition=scroll
 end
@@ -358,6 +367,7 @@ end
 RS.Remotes:WaitForChild("ItemMergeRequest").OnClientEvent:Connect(function(result)
  if typeof(result)=="table" and shell.Visible then if not applyState(result.State) then refresh() end end
 end)
+player:GetAttributeChangedSignal("World2Visited"):Connect(function() if selectedId and worldLocked(selectedId) then selectedId=nil end;render() end)
 render()
 
 task.spawn(function()

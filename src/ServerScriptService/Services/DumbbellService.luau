@@ -34,6 +34,7 @@ local function purchaseEligibility(player, itemId)
  local owned = session.Data.OwnedDumbbells
  if typeof(owned) ~= "table" then return false, "InventoryUnavailable" end
  if owned[itemId] == true then return false, "AlreadyOwned" end
+ if item.WorldId == 2 and not Data.HasReachedWorld2(player) then return false, "WorldNotReached" end
  local price = item.PriceWin
  if not finite(price) or price <= 0 or price % 1 ~= 0 then return false, "InvalidPrice" end
  local win = player:GetAttribute("Win")

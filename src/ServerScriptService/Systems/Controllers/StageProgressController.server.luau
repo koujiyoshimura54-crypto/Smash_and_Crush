@@ -53,6 +53,7 @@ do
  local RS=game:GetService("ReplicatedStorage")
  local Config=require(RS:WaitForChild("Config"):WaitForChild("WorldGateConfig"))
  local Badges=require(game.ServerScriptService.Services:WaitForChild("BadgeAwardService"))
+ local Data=require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
  local remote=RS:WaitForChild("Remotes"):WaitForChild("WorldTravelRequest")
  local travelBusy=setmetatable({}, {__mode="k"})
 
@@ -102,6 +103,7 @@ do
    local previousWorld=player:GetAttribute("CurrentWorld")==2 and 2 or 1
    E.ForWorld(previousWorld).Deactivate(player)
    player:SetAttribute("CurrentWorld",targetWorld)
+   if targetWorld==2 then Data.MarkWorld2Reached(player) end
    E.ForWorld(targetWorld).Activate(player)
    if targetWorld==2 then Badges.Award(player,"IntoWorld2") end
   end)

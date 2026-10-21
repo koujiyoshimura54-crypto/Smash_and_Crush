@@ -219,6 +219,9 @@ function M.LayoutItems(gui,page,list,grid)
   for _,c in list:GetChildren() do if c:GetAttribute("InventoryItemCard") then
    count+=1
    c.Icon.Position=UDim2.fromOffset(10,6);c.Icon.Size=UDim2.fromOffset(width-20,iconHeight)
+   if c:GetAttribute("InventoryWorldLocked") then
+    c.Icon.Position=UDim2.fromScale(.08,.07);c.Icon.Size=UDim2.fromScale(.84,.86)
+   end
    c.Effect.Position=UDim2.fromOffset(5,6+iconHeight);c.Effect.Size=UDim2.fromOffset(width-10,textHeight)
    c.RarityStars.Position=UDim2.fromOffset(12,6+iconHeight+textHeight);c.RarityStars.Size=UDim2.fromOffset(width-24,starsHeight)
    squareStars(c.RarityStars,width-24,starsHeight)

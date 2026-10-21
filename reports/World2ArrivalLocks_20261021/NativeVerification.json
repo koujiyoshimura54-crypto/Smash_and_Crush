@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-21",
+  "scope": "Isolated native Studio Play; all DataStore and BadgeService calls replaced by temporary in-memory adapters. No production saves or badges.",
+  "asset": {
+    "id": "rbxassetid://93565525595769",
+    "sourceFile": "Downloads/透明背景の白い南京錠アイコン.png",
+    "method": "Roblox Studio upload_image of the original PNG",
+    "preload": "Success",
+    "sha256": "31c8c109c61577412e4cc64df5acc2157f035eb4d0c07fa4cd88505f5675a260",
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alphaRange": [0, 255]
+  },
+  "checks": {
+    "gateEligibleWithoutArrival": {
+      "HighestUnlockedWorld": 2,
+      "World2Visited": false
+    },
+    "legacyOwnedWithoutArrival": {
+      "normalColor": true,
+      "itemEquip": true,
+      "dumbbellEquip": true,
+      "otherProductsRemainLocked": true
+    },
+    "lockedCards": {
+      "tabs": [
+        "Items",
+        "Dumbbells"
+      ],
+      "openedByNormalMouseInput": true,
+      "blackSilhouette": true,
+      "whiteSpecifiedLock": true,
+      "hidden": [
+        "name",
+        "effect",
+        "price",
+        "stars",
+        "purchase",
+        "???"
+      ],
+      "clicksSentPurchaseRequest": false
+    },
+    "serverDenials": {
+      "item": "WorldNotReached",
+      "dumbbell": "WorldNotReached",
+      "winBefore": 1000000,
+      "winAfter": 1000000,
+      "ownershipUnchanged": true,
+      "directRemoteAlsoRejected": true
+    },
+    "normalTravel": {
+      "fixture": "Server positioned test character inside the real gate; normal WorldTravelRequest and full server validation/MoveToLobby executed",
+      "world": 2,
+      "visited": true,
+      "openInventoryUpdatedImmediately": true
+    },
+    "purchases": {
+      "dumbbell": {
+        "id": "W2_NORMAL_02",
+        "price": 6000
+      },
+      "item": {
+        "id": "W2_PROTEIN_COMMON_ICE",
+        "price": 5000
+      },
+      "normalMouseButtons": true,
+      "winAfter": 989000,
+      "normalColors": true,
+      "equipped": true
+    },
+    "legendary": {
+      "world2Cards": 9,
+      "secret": true,
+      "stars": true,
+      "purchaseButtons": false
+    },
+    "permanence": {
+      "returnWorld1": true,
+      "deathRespawn": true,
+      "rebirthDataReset": true,
+      "saveAndReleaseLoad": true,
+      "savedFlag": true
+    },
+    "migration": {
+      "missingFlagWithOwnedItemsOnly": false,
+      "IntoWorld2Badge": true,
+      "serverCurrentWorld2": true,
+      "ownedItemsPreserved": true
+    },
+    "unloadedPurchase": {
+      "item": "DataNotLoaded",
+      "dumbbell": "DataNotLoaded"
+    },
+    "repeatOpenScrollUpdate": {
+      "duplicateLocks": 0,
+      "duplicateSecrets": 0,
+      "cumulativeDarkening": false
+    }
+  },
+  "limitations": [
+    "Persistence and legacy badge responses were simulated in memory; no production DataStore/rejoin was performed.",
+    "Rebirth persistence was checked through the existing reset/setter functions, not a complete Rebirth UI flow.",
+    "Unrelated existing sound/image permission warnings were observed. Temporary diagnostic command errors were corrected; no errors originated from the nine changed production Sources.",
+    "Standalone mobile/device matrix and unchanged World1 assets/displays were not retested; lossless binary preservation covers those existing edits."
+  ],
+  "canonicalFileReload": {
+    "allNineSourcesMatch": true,
+    "lockImagePreload": "Success",
+    "temporaryInstances": 0,
+    "world1PropertiesPreserved": true
+  },
+  "cleanup": {
+    "playStopped": true,
+    "temporaryInstancesRemoved": true
+  }
+}

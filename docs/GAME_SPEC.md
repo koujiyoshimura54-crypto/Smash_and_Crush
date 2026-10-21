@@ -595,3 +595,7 @@ Players remain together and visible on the same map. Each living Player has one 
 ## 2026-10-20 ? Explicit Speed equipment (supersedes highest-eligible Speed selection)
 
 Premium ownership does not block normal24/28/32/36/40 Win upgrades or force equipment. Inventory selects Normal or verified Premium50 exclusively; normal upgrades keep the selection. Optional EquippedSpeed persists through existing PlayerData saves, defaulting missing legacy selection to Normal. Premium remains an official GamePass entitlement, never granted by UI or that saved selector. Other pass benefit gates, transition boosts and existing return recalculation remain. See reports/SpeedEquipment_20261020/REPORT.md.
+
+## 2026-10-21 — World2 first-arrival purchase unlock
+
+World2Visited is permanent progression in the existing PlayerData record. Successful server-validated normal World2 travel marks it; gate unlock/Stage10 completion alone does not. Existing server CurrentWorld=2 or the historical IntoWorld2 arrival badge can restore missing history; product ownership alone cannot. Both central Win purchase services reject unarrived World2 purchases before debit/grant. Owned equipment remains usable. No independent store, travel-condition, price, effect, Merge or drop change. See [implementation and scoped checks](../reports/World2ArrivalLocks_20261021/README.md).

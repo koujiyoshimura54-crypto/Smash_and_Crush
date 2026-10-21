@@ -1056,3 +1056,7 @@ Fix reproduced shared chase pose/target while retaining personal HP/reward logic
 ## 2026-10-20 ? Speed equipment and shared equipped colors
 
 Fixed Premium-owned normal Win upgrades and server-authorized saved Normal/Premium selection; retained prices/speeds and current return behavior. Equipment cyan now covers Inventory, Shop, stands and size selection, including purchased image skins and native equipment localization. Actual desktop UI/movement and memory-only persistence checks: reports/SpeedEquipment_20261020/REPORT.md.
+
+## 2026-10-21 — World2 arrival locks
+
+Added server-confirmed permanent World2 arrival state in existing PlayerData, central pre-debit purchase checks, and supplied-padlock Inventory cards with immediate unlock and owned-item compatibility. Native real-tab checks used isolated memory data; canonical rbxl writeback and native reload matched all nine Sources. Preserved the prior World1 image/display/secret changes. Evidence and limits: [World2ArrivalLocks_20261021](../reports/World2ArrivalLocks_20261021/README.md).

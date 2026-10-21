@@ -644,3 +644,7 @@ RebirthMenuClient reads both required LV and multiplier from RebirthConfig. Curr
 ## 2026-10-20 ? Shared equipment state colors
 
 Speed uses Equip/Equipped instead of ACTIVE. Speed, Dumbbells, regular Item slots, individual Pets, Aura, size1?13/AUTO, Shop Dumbbell buttons and world stands use equipped cyan #00DEFF?#0094EC (solid #00DEFF where appropriate). Paint the visible purchased Main/image gradient, restore original unselected paint, preserve purchase colors/actions/hover sizing. State comes from server confirmation. Native equipment LocalizationTable uses CSV Equip/Equipped/Owned wording; layout and other Active meanings are unchanged. Evidence: reports/SpeedEquipment_20261020/REPORT.md.
+
+## 2026-10-21 — World2 arrival-locked Inventory cards
+
+Unowned World2 Item/dumbbell cards remain visible before first arrival, with the existing dark secret paint, black alpha silhouette and supplied white padlock (rbxassetid://93565525595769). Only the lock is shown: names, effects, prices, stars, purchase controls and ??? are hidden. Locked cards neither select nor send requests. After permanent server-confirmed arrival they use the existing ??? view and eligible purchase controls. Owned cards retain color/equipment regardless of arrival history. Layout, patterns, World1, other tabs and equipped colors remain unchanged. Native real-tab screenshots and isolated verification are recorded in [World2ArrivalLocks_20261021](../reports/World2ArrivalLocks_20261021/README.md).

@@ -165,7 +165,8 @@ local function renderDumbbellState(state)
    if item and button and price then
     price.Text=isEquipped and "Equipped" or isOwned and "Equip" or require(RS.Modules.NumberFormat).Price(item.PriceWin)
     if isOwned then require(RS.Modules.InventoryPresentation).LocalizeEquipmentLabel(price)end
-    button.Active=not isEquipped and not pending
+    local locked=item.WorldId==2 and not isOwned and player:GetAttribute("World2Visited")~=true
+    button.Active=not locked and not isEquipped and not pending
     button.Interactable=button.Active
     require(RS.Modules.InventoryPresentation).SetEquipped(button,isEquipped)
    end
@@ -176,6 +177,19 @@ local function refreshDumbbellState()
  local ok,state=pcall(function() return dumbbellStateRemote:InvokeServer() end)
  if ok then renderDumbbellState(state) end
 end
+local function updateWorldItemButtons()
+ for _,card in holder:GetChildren() do
+  if card:GetAttribute("PurchaseKind")=="Item" then
+   local item=ItemMaster.Get(card:GetAttribute("PurchaseKey"))
+   local button=card:FindFirstChild("Purchase",true)
+   if item and item.WorldId==2 and button then
+    button.Active=player:GetAttribute("World2Visited")==true;button.Interactable=button.Active
+   end
+  end
+ end
+end
+player:GetAttributeChangedSignal("World2Visited"):Connect(function()renderDumbbellState();updateWorldItemButtons()end)
+task.defer(updateWorldItemButtons)
 shop:GetPropertyChangedSignal("Visible"):Connect(function() if shop.Visible then refreshDumbbellState() end end)
 player:GetAttributeChangedSignal("EquippedDumbbell"):Connect(function() if shop.Visible then refreshDumbbellState() end end)
 task.defer(refreshDumbbellState)
@@ -228,6 +242,10 @@ local function purchase(card)
  local kind=card:GetAttribute("PurchaseKind")
  local key=card:GetAttribute("PurchaseKey")
  if typeof(kind)~="string" or typeof(key)~="string" then return end
+ local item=kind=="Dumbbell" and DumbbellMaster.Get(key) or kind=="Item" and ItemMaster.Get(key)
+ if item and item.WorldId==2 and player:GetAttribute("World2Visited")~=true then
+  if kind~="Dumbbell" or not dumbbellState or not dumbbellState.OwnedDumbbells[key] then return end
+ end
  pending=true
  if kind=="GamePass" then
   local passId=tonumber(key)

@@ -226,7 +226,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -239,6 +239,8 @@ local function normalize(raw)
  d.ItemMergeJournal=assert(normalizeItemMerge(nil))
  if typeof(raw)=="table" and typeof(raw.ResetToken)=="string" then d.ResetToken=raw.ResetToken end
  if typeof(raw)=="table" then
+  if raw.World2Visited~=nil and typeof(raw.World2Visited)~="boolean" then return nil,"Invalid World2Visited" end
+  d.World2Visited=raw.World2Visited==true
   local merge,mergeError=normalizeItemMerge(raw.ItemMergeJournal)
   if not merge then return nil,mergeError end
   d.ItemMergeJournal=merge
@@ -347,6 +349,7 @@ local function applyAttributes(player,d)
  player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
  player:SetAttribute("InventoryCapacity",d.InventoryCapacity)
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
+ player:SetAttribute("World2Visited",d.World2Visited==true)
  player:SetAttribute("TutorialCompleted",d.TutorialCompleted==true)
  player:SetAttribute("Strength",d.Strength)
  player:SetAttribute("LevelProgress",d.LevelProgress)
@@ -626,6 +629,25 @@ function PlayerDataService.Load(player)
  if not d then return false,validationError end
  s.Loaded=true;s.Data=d;s.Dirty=true;s.LastSave=nil;s.TimeRewardClock=os.clock()
  applyAttributes(player,d)
+ -- A Gate unlock is not arrival. Existing IntoWorld2 badges were awarded only
+ -- after successful server travel; ownership alone is never migration proof.
+ if not d.World2Visited then
+  task.defer(function()
+   local function current() return sessions[player]==s and s.Data==d and s.Loaded and player.Parent==Players end
+   if not current() then return end
+   if player:GetAttribute("CurrentWorld")==2 then PlayerDataService.MarkWorld2Reached(player);return end
+   local badges=game:GetService("BadgeService")
+   local id=require(game.ReplicatedStorage.Config.BadgeConfig).GetBadgeId("IntoWorld2")
+   for attempt=1,3 do
+    if not current() or d.World2Visited then return end
+    local success,owned=pcall(badges.UserHasBadgeAsync,badges,player.UserId,id)
+    if not current() then return end
+    if success then if owned then PlayerDataService.MarkWorld2Reached(player) end;return end
+    task.wait(attempt)
+   end
+   -- Failed proof lookup never grants access or clears a successful arrival.
+  end)
+ end
  return true,d
 end
 
@@ -810,6 +832,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   EquippedSpeed=d.EquippedSpeed,
   Pets=assert(Pet.NormalizeState(d.Pets)),
   HighestUnlockedWorld=d.HighestUnlockedWorld,
+  World2Visited=d.World2Visited==true,
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
   CommunityRewards=assert(normalizeCommunity(d.CommunityRewards)),
   TimeRewards=assert(normalizeTimeRewards(d.TimeRewards)),
@@ -848,6 +871,8 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    if resetToken(old)~=saveToken then superseded=true; return old,users,meta end
    local merged=table.clone(old)
    merged.HighestUnlockedWorld=math.max(assert(normalizeUnlockedWorld(old.HighestUnlockedWorld)),payload.HighestUnlockedWorld)
+   if old.World2Visited~=nil and typeof(old.World2Visited)~="boolean" then error("Invalid World2Visited") end
+   merged.World2Visited=old.World2Visited==true or payload.World2Visited
    merged.ShopRewards=mergeShop(old.ShopRewards,payload.ShopRewards)
    merged.CommunityRewards=mergeCommunity(old.CommunityRewards,payload.CommunityRewards)
    merged.TimeRewards=mergeTimeRewards(old.TimeRewards,payload.TimeRewards)
@@ -913,6 +938,8 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  if sessions[player]~=s or s.Data~=d then s.Saving=false;return false,"SaveSuperseded" end
  d.HighestUnlockedWorld=math.max(d.HighestUnlockedWorld,assert(normalizeUnlockedWorld(saved.HighestUnlockedWorld)))
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
+ d.World2Visited=d.World2Visited==true or saved.World2Visited==true
+ player:SetAttribute("World2Visited",d.World2Visited)
  local unseenShopWin=math.max(0,saved.ShopRewards.WinGrantedTotal-d.ShopRewards.WinGrantedTotal)
  d.ShopRewards=mergeShop(d.ShopRewards,saved.ShopRewards)
  if unseenShopWin>0 then PlayerDataService.SetWin(player,(player:GetAttribute("Win") or 0)+unseenShopWin) end
@@ -964,6 +991,31 @@ function PlayerDataService.CompleteTutorial(player)
 end
 
 -- Permanent progression is server-owned; Attributes are replication mirrors only.
+function PlayerDataService.HasReachedWorld2(player)
+ local s=sessions[player]
+ return s~=nil and s.Loaded==true and s.Data~=nil and s.Data.World2Visited==true
+end
+-- Server callers: successful normal World2 travel, or verified legacy arrival.
+function PlayerDataService.MarkWorld2Reached(player)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
+ local data=s.Data
+ if data.World2Visited then return true,"AlreadyReached" end
+ data.World2Visited=true;s.Dirty=true;player:SetAttribute("World2Visited",true)
+ task.defer(function()
+  for attempt=1,3 do
+   if sessions[player]~=s or s.Data~=data or not s.Loaded then return end
+   if PlayerDataService.WaitForSave(player,30) then
+    if sessions[player]~=s or s.Data~=data or not s.Loaded then return end
+    s.Dirty=true
+    if PlayerDataService.Save(player) then return end
+   end
+   task.wait(attempt)
+  end
+  if sessions[player]==s and s.Data==data then s.Dirty=true end
+ end)
+ return true,"Reached"
+end
 -- Call only after a validated final-stage RewardPad has been credited and consumed.
 function PlayerDataService.CanAccessWorld(player,world)
  local s=sessions[player]

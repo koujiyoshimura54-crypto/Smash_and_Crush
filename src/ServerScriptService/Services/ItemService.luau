@@ -87,6 +87,7 @@ function ItemService.PurchaseItemWithWin(player,itemId)
   local session=Data.Get(player)
   if not session or not session.Loaded or not session.Data then return false,"DataNotLoaded" end
   if session.Saving then return false,"DataSaving" end
+  if item.WorldId==2 and not Data.HasReachedWorld2(player) then return false,"WorldNotReached" end
   local owned=session.Data.OwnedItems
   if typeof(owned)~="table" then return false,"InventoryUnavailable" end
   local win=player:GetAttribute("Win")

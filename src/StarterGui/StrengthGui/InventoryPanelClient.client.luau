@@ -48,6 +48,12 @@ local owned={}
 local stateLoaded=false
 local equipped=""
 local pending={}
+local layout
+local function worldLocked(itemId)
+ local item=Master.Get(itemId)
+ return item and item.WorldId==2 and owned[itemId]~=true and equipped~=itemId
+  and player:GetAttribute("World2Visited")~=true
+end
 local function round(parent,radius)
  local corner=Instance.new("UICorner")
  corner.CornerRadius=UDim.new(0,radius)
@@ -69,22 +75,27 @@ local function updateButtons()
   if button then
    local isEquipped=equipped==itemId
    local isOwned=owned[itemId]==true
-   Presentation.SetInventorySecret(card,card.Icon,stateLoaded and not isOwned and not isEquipped)
+   local locked=worldLocked(itemId)
+   Presentation.SetInventorySecret(card,card.Icon,locked or (stateLoaded and not isOwned and not isEquipped))
    button.Text=isEquipped and "Equipped" or (isOwned and "Equip" or "")
    button.WinIcon.Visible=not isOwned and not isEquipped
    button.Price.Visible=not isOwned and not isEquipped
-   Presentation.SetButtonEnabled(button,not isEquipped and not requestPending)
+   Presentation.SetButtonEnabled(button,stateLoaded and not locked and not isEquipped and not requestPending)
+   button.Interactable=button.Active
    button.BackgroundColor3=isEquipped and Color3.fromRGB(70,76,88)
     or (isOwned and Color3.fromRGB(47,91,151) or Color3.fromRGB(43,121,88))
    PurchaseHUD.PurchaseButton(button,"Win",(isOwned or isEquipped) and button.Text or button.Price.Text)
    Presentation.SetEquipped(button,isEquipped)
    local visual=button:FindFirstChild("PurchasedButtonVisual");if visual then visual.Main.Amount.AutoLocalize=isOwned end
+   Presentation.SetInventoryWorldLock(card,card.Icon,locked)
   end
  end
 local item=Master.Get(equipped)
  panel.Equipped.Preview.Image=item and item.Image or ""
  panel.Equipped.ItemName.Text=item and item.Name or "None equipped"
  panel.Equipped.Multiplier.Text=item and ("+"..tostring(item.StrengthBonus).." Strength") or ""
+ if selectedId and worldLocked(selectedId) then selectedId=nil;panel:SetAttribute("SelectedItemId",nil) end
+ if layout then layout() end
 end
 local function applyState(state)
  if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedDumbbells)~="table" then return false end
@@ -123,6 +134,7 @@ local function purchaseFailureText(code,itemId)
  return code and ("PURCHASE FAILED\n"..tostring(code)) or "PURCHASE FAILED"
 end
 local function selectCard(itemId)
+ if worldLocked(itemId) or not stateLoaded then return end
  selectedId=itemId
  panel:SetAttribute("SelectedItemId",itemId)
  for id,card in pairs(cards) do
@@ -166,6 +178,7 @@ for order,item in ipairs(sortedItems) do
   cards[itemId]=card
   card.Activated:Connect(function() selectCard(itemId) end)
   Responsive.ConnectActivation(buy,function()
+   if worldLocked(itemId) or not stateLoaded then return end
    selectCard(itemId)
    if next(pending)~=nil or equipped==itemId then return end
    pending[itemId]=true
@@ -183,7 +196,7 @@ local function updateWin()
 end
 player:GetAttributeChangedSignal("Win"):Connect(updateWin)
 updateWin()
-local function layout()
+layout=function()
  local compact=shell.Size.Y.Scale==0 and shell.Size.Y.Offset<500
  panel.Equipped.Visible=true
  panel.Owned.Position=UDim2.new(.30,0,0,0)
@@ -212,6 +225,9 @@ local function layout()
  for _,card in pairs(cards) do
   card.Icon.Position=UDim2.fromOffset(12,10)
   card.Icon.Size=UDim2.new(1,-24,0,iconHeight)
+  if card:GetAttribute("InventoryWorldLocked") then
+   card.Icon.Position=UDim2.fromScale(.08,.07);card.Icon.Size=UDim2.fromScale(.84,.86)
+  end
   local strength=card.Multiplier
   strength.Position=UDim2.new(0,8,0,10+iconHeight+8)
   strength.Size=UDim2.new(1,-16,0,effectHeight)
@@ -265,4 +281,5 @@ end)
 player:GetAttributeChangedSignal("EquippedDumbbell"):Connect(function()
  if panel.Visible then refreshState() end
 end)
+player:GetAttributeChangedSignal("World2Visited"):Connect(updateButtons)
 updateButtons()

@@ -1,0 +1,89 @@
+{
+  "inputSha256": "9222a7f50906cdd0c582862929586a96dfc99088a60f66d5675cb6ade1140bc6",
+  "outputSha256": "0d48d36f210b9562dcf61accf62da1ce9d637ccf0ac585da5dc9fd4aa8b525ed",
+  "changedSources": {
+    "ServerScriptService.Services.PlayerDataService": {
+      "before": "b965eff73180e65ec41e8bacfa18cde24c91e7cb892f380039cad6c873cb3e9b",
+      "after": "3b2225c2e55cc7e0a0a116421e38b688283fa8e1d53a24a6d8c573d2e46c59dc"
+    },
+    "ServerScriptService.Services.DumbbellService": {
+      "before": "295a71a82f171c1ec1fdae6bc62304cfae9e21dd5649e091df06d1c4eb3ba42b",
+      "after": "f4f084652dc066a9e8268799898bdc7794368adda1574659aa18584192b941b4"
+    },
+    "ServerScriptService.Services.ItemService": {
+      "before": "908597a1d0fc8b7e8c93f325ee35e78d9704a0ca87463f5cbd5c718f106a9f0c",
+      "after": "871678311d8df12722223917ae8315ca1aab6b7960e67533794a0280fe55d6ea"
+    },
+    "ServerScriptService.Systems.Controllers.StageProgressController": {
+      "before": "1c621724eeadbc02b9e7fe6d17301a338c3b451f2c4087b26398a9e052eecb8c",
+      "after": "7f89f6ac6086ae2aebd81298060ed3c95914b15be839ab8293f217ddb4183435"
+    },
+    "ReplicatedStorage.Modules.InventoryPresentation": {
+      "before": "661cf62faefd1360e79fc22e46b007ec3cfeadc4a3801a486f7f393ccb8ad44b",
+      "after": "b8c96b0c7716811a44659ef9edd6cf9081c3b7f5674d8a39a11f2a592464a59e"
+    },
+    "ReplicatedStorage.Modules.ResponsivePanels": {
+      "before": "cf14ad1dbd4a93b86f41b2efd033850d78f557dfeea06a5fb54d09880dd15df8",
+      "after": "c2fed59e188edcb60ec17d619690006bfd566d4b1c485aa147c7f4f2acbaa314"
+    },
+    "StarterGui.StrengthGui.InventoryPanelClient": {
+      "before": "141fb9db429bf7226e0c51be5c79cc3d0f526e6b2b4748a8410d91cc4dfa5391",
+      "after": "f35b4391cd53882a10c20c67fc2febf3a090f68e4e9b2e2ae9253f2a4a6e49c4"
+    },
+    "StarterGui.StrengthGui.ItemInventoryTabClient": {
+      "before": "c2e4d93d24d19c5f04397c3b283a4a7baebe547383e8d5441d6d4b59fcb0eabb",
+      "after": "b3e45702e2667c3ba1c2f29dd67ab3ea0f9afc7702612e0906f9f929cb2221e3"
+    },
+    "StarterGui.StrengthGui.EssentialStudShopClient": {
+      "before": "01ef1ed220f53beefd4fb05afe088b504380f620c792f95d7a70da1c2deff95d",
+      "after": "8ca83cf5c5e17858a5d9e0836de1ce17afbb0a0f1c49a18e455ad53b50b64fb4"
+    }
+  },
+  "changedSourceCount": 9,
+  "addedInstances": 0,
+  "removedInstances": 0,
+  "allOtherSourcesPropertiesParentsPreserved": true,
+  "verifiedProperties": 4724966,
+  "binaryValidation": {
+    "before": {
+      "sha256": "0d48d36f210b9562dcf61accf62da1ce9d637ccf0ac585da5dc9fd4aa8b525ed",
+      "instanceCount": 182393,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182392,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182393,
+        "PROP.Ref": 78760,
+        "PROP.Content": 0,
+        "PRNT.Child": 182393,
+        "PRNT.Parent": 182393
+      }
+    },
+    "after": {
+      "sha256": "0d48d36f210b9562dcf61accf62da1ce9d637ccf0ac585da5dc9fd4aa8b525ed",
+      "instanceCount": 182393,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182392,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182393,
+        "PROP.Ref": 78760,
+        "PROP.Content": 0,
+        "PRNT.Child": 182393,
+        "PRNT.Parent": 182393
+      }
+    },
+    "renumberedInstances": 0,
+    "modifiedChunks": 0,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "written": true
+}

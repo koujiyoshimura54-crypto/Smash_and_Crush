@@ -14,6 +14,7 @@ end
 local bindings=setmetatable({},{__mode="k"})
 -- Inventory card paint only; no ownership, layout, or input connections here.
 local secretCards=setmetatable({},{__mode="k"})
+M.World2LockImage="rbxassetid://93565525595769"
 local function secretTint(color) return color:Lerp(Color3.new(0,0,0),.25) end
 local function templates()
  local shop=game.StarterGui.StrengthGui.ShopPanel
@@ -218,6 +219,41 @@ function M.SetInventorySecret(card,icon,hidden)
   mark.Parent=icon
  end
  mark.Visible=saved.Hidden
+end
+-- Reuses the secret paint. Call after the card's normal visibility is rendered.
+function M.SetInventoryWorldLock(card,icon,locked)
+ locked=locked==true
+ card:SetAttribute("InventoryWorldLocked",locked)
+ card.Active=not locked;card.Interactable=not locked
+ local saved=assert(secretCards[card])
+ if locked then
+  if not saved.LockVisibility then saved.LockVisibility={} end
+  for _,name in {"Multiplier","BuyButton","Effect","RarityStars","OwnedCount","EquippedCheck"} do
+   local child=card:FindFirstChild(name)
+   if child then
+    if saved.LockVisibility[child]==nil then saved.LockVisibility[child]=child.Visible end
+    child.Visible=false
+   end
+  end
+  icon.SecretLabel.Visible=false
+ elseif saved.LockVisibility then
+  for child,visible in saved.LockVisibility do if child.Parent then child.Visible=visible end end
+  saved.LockVisibility=nil
+ end
+ local lock=card:FindFirstChild("WorldLockIcon")
+ if not lock and locked then
+  lock=Instance.new("ImageLabel");lock.Name="WorldLockIcon"
+  lock:SetAttribute("InventoryReferenceOwned",true)
+  lock.BackgroundTransparency=1;lock.Image=M.World2LockImage;lock.ImageColor3=Color3.new(1,1,1)
+  lock.ScaleType=Enum.ScaleType.Fit;lock.AnchorPoint=Vector2.new(.5,.5)
+  lock.Position=UDim2.fromScale(.5,.5);lock.Size=UDim2.fromScale(.45,.42)
+  lock.Active=false;lock.Interactable=false;lock.Selectable=false
+  lock.ZIndex=icon.ZIndex+2
+  local base=icon:GetAttribute("ResponsiveOriginalZ")
+  lock:SetAttribute("ResponsiveOriginalZ",(base or (icon.ZIndex>=200 and icon.ZIndex-200 or icon.ZIndex))+2)
+  lock.Parent=card
+ end
+ if lock then lock.Visible=locked end
 end
 -- Paint the actual visible surface, including purchased image/gradient skins.
 -- Callers supply server-confirmed state. Hover only changes scale; no GUI polling.

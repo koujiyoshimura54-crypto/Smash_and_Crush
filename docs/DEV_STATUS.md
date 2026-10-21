@@ -2289,3 +2289,7 @@ Reproduced shared World1 pose/target despite personal HP. Retain existing combat
 ## 2026-10-20 ? Speed ownership/equipment consistency completed
 
 CurrentCloud now separates official Premium entitlement, normal upgrade stage and saved equipment selection. Real account pass query succeeded; owned/unowned/error Play cases used fixtures. Actual32/50 speeds measured31.915/49.840 studs/s. Category switches, reset/travel/Training/return and purchase failures checked. Japanese translation used native translator simulation; production rejoin and two-player Speed checks remain unverified. See reports/SpeedEquipment_20261020/REPORT.md.
+
+## 2026-10-21 — World2 arrival locks implemented locally
+
+The canonical CurrentCloud.rbxl now contains nine focused Source changes for permanent first-arrival purchase unlock and the specified padlock cards. Native real Inventory Item/dumbbell checks passed with memory-only persistence; the written file was reopened and all nine Sources matched. Production persistence/reconnect and full device regression were not exercised. Prior transparent image corrections, 2D facilities, Inventory secrets and unrelated local edits remain intact. See [report and screenshots](../reports/World2ArrivalLocks_20261021/README.md).
