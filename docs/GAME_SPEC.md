@@ -611,3 +611,7 @@ The existing 75 transparent wall extensions now place their Map-facing surfaces 
 ## 2026-10-21 - Lobby perimeter from below floor to Y=160
 
 Lobby barriers follow the actual floor and individual collidable structural wall faces, including void-edge gaps. World1 uses Y=-6..160; World2 uses Y=-2..160. One-stud vertical panels project outward with 0.05-stud inward contact; collinear edges are merged. Existing entrance upper panels/opening heights and all BattleCorridor/Stage panels remain unchanged. No floor, platform or gameplay Source was added. Runtime verification is assigned to the user. Record: reports/LobbyPerimeterRepair_20261021/README.md.
+
+## 2026-10-21 - Developer Studio World2 arrival preview
+
+DataStoreConfig.ResetWorld2ArrivalOnStudioPlay=true enables a Studio-only, unsaved per-session arrival override. Each new Play begins with effective World2Visited=false, so unowned World2 Item/dumbbell cards use the existing lock and purchases remain restricted. Normal successful World2 arrival unlocks that Play through return/death/respawn. Saved progression and ownership are retained; published servers keep permanent arrival behavior. Set the flag false for ordinary saved-arrival testing. Record: reports/StudioWorld2ArrivalPreview_20261021/README.md.

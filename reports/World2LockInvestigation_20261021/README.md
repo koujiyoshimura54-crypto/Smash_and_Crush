@@ -38,3 +38,7 @@ No game Source, UI object, image, arrival state or saved rbxl byte was changed. 
 The user should open exactly `C:\Users\kouji\MergeToForge_CurrentCloud.rbxl` to check this implementation. In that file's actual Inventory, distinguish a never-arrived unowned World2 card (lock) from an arrived unowned card (???) and an owned card (normal color). The runtime player's World2Visited value can distinguish expected unlock from a display failure without changing production history. If checking the published game, first establish which Place/version is being used; only the user's manual Save/Publish can make the chosen local content the published source. No claim is made that publication is currently missing or that publishing alone will resolve the report.
 
 No current Play, new screenshot, mock UI, production-save test or display verification was performed. The user's existing Studio state was not modified or closed; all file handles were released. No additional rbxl, backup or copy was created.
+
+## Subsequent user clarification
+
+The user confirmed this was the target file's Studio Play, the unowned cards showed silhouettes plus ???, and the account had already visited World2. The user then requested a developer setting to start each Play with an unarrived check. This is implemented as a Studio-only unsaved session override; saved progression is retained. See [Studio arrival preview](../StudioWorld2ArrivalPreview_20261021/README.md). No current runtime display was observed by the agent.

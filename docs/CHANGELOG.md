@@ -1078,3 +1078,7 @@ Moved the existing 75 panels to outside/downstream edges and joined their endpoi
 ## 2026-10-21 - Repair Lobby outer fall gaps
 
 Extended Lobby-only barriers below floor level and traced floor/structural-wall boundaries with outward thickness, retaining wall-top footprints and existing entrance heights. Reused 9 panels and added 162 missing straight segments. BattleCorridor, Stage barriers, visible geometry, Sources and gameplay were preserved. Same-file writeback completed; runtime/visual confirmation remains with the user. Evidence: reports/LobbyPerimeterRepair_20261021/Writeback.json.
+
+## 2026-10-21 - Studio-only preview of locked World2 Inventory cards
+
+Added ResetWorld2ArrivalOnStudioPlay to the existing DataStoreConfig and an unsaved effective arrival value in PlayerDataService. New Studio Plays start locked for unowned World2 products and unlock on normal arrival, while stored ownership/progression and published-server behavior remain intact. Wrote and reread the same CurrentCloud.rbxl; both changed Sources compiled. Runtime verification is assigned to the user. Evidence: reports/StudioWorld2ArrivalPreview_20261021/Writeback.json.

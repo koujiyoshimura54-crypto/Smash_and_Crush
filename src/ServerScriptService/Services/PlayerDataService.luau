@@ -36,6 +36,12 @@ local store=deferredStore(StoreConfig.GetName("PlayerData_v1"))
 -- Same production store, accessed only by the existing authorized reset path.
 local productionStore=deferredStore("PlayerData_v1")
 local sessions=setmetatable({}, {__mode="k"})
+local studioArrivalPreview=RunService:IsStudio() and StoreConfig.ResetWorld2ArrivalOnStudioPlay==true
+local function world2VisitedForSession(session)
+ if not session or not session.Loaded or not session.Data then return false end
+ if studioArrivalPreview then return session.World2VisitedThisPlay==true end
+ return session.Data.World2Visited==true
+end
 local TOTAL_STORE=StoreConfig.GetName("TotalStrengthRanking_v1")
 local JST_OFFSET=9*60*60
 
@@ -349,7 +355,7 @@ local function applyAttributes(player,d)
  player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
  player:SetAttribute("InventoryCapacity",d.InventoryCapacity)
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
- player:SetAttribute("World2Visited",d.World2Visited==true)
+ player:SetAttribute("World2Visited",world2VisitedForSession(sessions[player]))
  player:SetAttribute("TutorialCompleted",d.TutorialCompleted==true)
  player:SetAttribute("Strength",d.Strength)
  player:SetAttribute("LevelProgress",d.LevelProgress)
@@ -631,7 +637,7 @@ function PlayerDataService.Load(player)
  applyAttributes(player,d)
  -- A Gate unlock is not arrival. Existing IntoWorld2 badges were awarded only
  -- after successful server travel; ownership alone is never migration proof.
- if not d.World2Visited then
+ if not studioArrivalPreview and not d.World2Visited then
   task.defer(function()
    local function current() return sessions[player]==s and s.Data==d and s.Loaded and player.Parent==Players end
    if not current() then return end
@@ -939,7 +945,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  d.HighestUnlockedWorld=math.max(d.HighestUnlockedWorld,assert(normalizeUnlockedWorld(saved.HighestUnlockedWorld)))
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
  d.World2Visited=d.World2Visited==true or saved.World2Visited==true
- player:SetAttribute("World2Visited",d.World2Visited)
+ player:SetAttribute("World2Visited",world2VisitedForSession(s))
  local unseenShopWin=math.max(0,saved.ShopRewards.WinGrantedTotal-d.ShopRewards.WinGrantedTotal)
  d.ShopRewards=mergeShop(d.ShopRewards,saved.ShopRewards)
  if unseenShopWin>0 then PlayerDataService.SetWin(player,(player:GetAttribute("Win") or 0)+unseenShopWin) end
@@ -993,14 +999,15 @@ end
 -- Permanent progression is server-owned; Attributes are replication mirrors only.
 function PlayerDataService.HasReachedWorld2(player)
  local s=sessions[player]
- return s~=nil and s.Loaded==true and s.Data~=nil and s.Data.World2Visited==true
+ return world2VisitedForSession(s)
 end
 -- Server callers: successful normal World2 travel, or verified legacy arrival.
 function PlayerDataService.MarkWorld2Reached(player)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
  local data=s.Data
- if data.World2Visited then return true,"AlreadyReached" end
+ if world2VisitedForSession(s) then return true,"AlreadyReached" end
+ if studioArrivalPreview then s.World2VisitedThisPlay=true end
  data.World2Visited=true;s.Dirty=true;player:SetAttribute("World2Visited",true)
  task.defer(function()
   for attempt=1,3 do

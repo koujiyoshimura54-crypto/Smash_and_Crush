@@ -1,0 +1,20 @@
+{
+  "inputSha256": "d46942552d9d5419611db79f750f8c881ee27dd2a57f90dda70ebc0e5e3db7b4",
+  "outputSha256": "aa1bc4ed9ce762e687b7a798e23899fa6e0ef443506c7cbe2a8b5dab3b7d1274",
+  "sources": {
+    "ServerScriptService.Config.DataStoreConfig": {
+      "before": "2cbead6c620f334bc420bd240f40bffb3c32ec90fc56faae41409c23bf9d7d5e",
+      "after": "9edf7542db3ea44e288c03dd2e2e34f93ffddd71e5aa5f54a49ba504c452a751"
+    },
+    "ServerScriptService.Services.PlayerDataService": {
+      "before": "3b2225c2e55cc7e0a0a116421e38b688283fa8e1d53a24a6d8c573d2e46c59dc",
+      "after": "434bc47ab5d3fc713d14b833ea91426fb3a178198c68afdbbe8d1eebd382c21e"
+    }
+  },
+  "allOtherSourcesPropertiesParentsUniqueIdsUnchanged": true,
+  "syntaxCompiled": true,
+  "writtenAndReread": true,
+  "runtimeTested": false,
+  "productionDataAccessed": false,
+  "studioLaunched": false
+}

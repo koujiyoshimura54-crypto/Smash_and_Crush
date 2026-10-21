@@ -2309,3 +2309,7 @@ Repositioned only the 54 World1 and 21 World2 wall-extension Parts toward their 
 ## 2026-10-21 - Lobby perimeter repair written; user verification pending
 
 Read the current user-approved rbxl and replaced coarse Lobby coverage with 63 World1 perimeter segments (3 reused/60 added) and 108 World2 segments (6 reused/102 added). Lower limits are two studs below each floor underside, with unchanged Y=160 tops. The same file was written and read back, preserving unrelated existing properties, Sources, parents and UniqueIds. No Studio, Play, screenshot, mock test or regression was run; the user will check behavior. Record: reports/LobbyPerimeterRepair_20261021/README.md.
+
+## 2026-10-21 - Studio arrival-preview setting written
+
+The user confirmed prior World2 arrival, explaining the existing ??? presentation, and requested a developer setting to clear the check each Play. Added the Studio-only effective session flag to PlayerData load/save mirroring, purchase authority and normal-arrival handling, with legacy badge migration skipped in preview mode. Two existing Sources compiled and matched after same-file writeback; no other Source/object property changed. No Play or production data access was performed; user verification remains pending. See reports/StudioWorld2ArrivalPreview_20261021/README.md.
