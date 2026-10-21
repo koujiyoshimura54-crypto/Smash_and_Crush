@@ -19,6 +19,7 @@ local trophyImage=script.Parent:WaitForChild("WinLabel"):WaitForChild("TrophyIco
 local page=shell.Content.Items
 local list=page.OwnedItems
 local owned,equipped={},{}
+local stateLoaded=false
 local selectedId,pending
 local rarityIndex=1
 local rarities=Master.Rarities
@@ -246,7 +247,8 @@ render=function()
   local c=Instance.new("TextButton");c.Name=id;c.Text="";c.AutoButtonColor=false
   c.LayoutOrder=order;c:SetAttribute("InventoryItemCard",true)
   surface(c,item.Rarity,selectedId==id);layer(c,32);c.Parent=list
-  icon(c,"Icon",item.Image,UDim2.new(),UDim2.new(),36)
+  local picture=icon(c,"Icon",item.Image,UDim2.new(),UDim2.new(),36)
+  Presentation.SetInventorySecret(c,picture,stateLoaded and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id)
   local effectLabel=label(c,"Effect","W"..tostring(item.WorldId or 1).." "..effect(item),UDim2.new(),UDim2.new(),34)
   effectLabel.FontFace=effectFont
   effectLabel:FindFirstChildOfClass("UIStroke").Thickness=2.5
@@ -311,6 +313,7 @@ task.defer(fit)
 local function applyState(state)
  if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedItems)~="table" then return false end
  owned=state.OwnedItems equipped=typeof(state.EquippedItems)=="table" and state.EquippedItems or {}
+ stateLoaded=true
  render() return true
 end
 local function refresh()

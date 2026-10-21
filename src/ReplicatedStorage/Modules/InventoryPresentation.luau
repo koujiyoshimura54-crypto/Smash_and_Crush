@@ -12,6 +12,9 @@ function M.LocalizeEquipmentLabel(label)
  label.AutoLocalize=true;label.RootLocalizationTable=equipmentLocalization
 end
 local bindings=setmetatable({},{__mode="k"})
+-- Inventory card paint only; no ownership, layout, or input connections here.
+local secretCards=setmetatable({},{__mode="k"})
+local function secretTint(color) return color:Lerp(Color3.new(0,0,0),.25) end
 local function templates()
  local shop=game.StarterGui.StrengthGui.ShopPanel
  return shop,shop.Top,shop.MainScrollingFrame.Holder.Card01_SecretPack
@@ -55,6 +58,7 @@ local function isBody(x)
 end
 local function isSkip(x) return x:FindFirstAncestor("StageSkipGui")~=nil end
 local function tile(x,pattern,donor)
+ local owner=x
  local scale=1
  while x and not x:IsA("ScreenGui") do
   local s=x:FindFirstChildOfClass("UIScale") if s then scale*=s.Scale end
@@ -63,6 +67,11 @@ local function tile(x,pattern,donor)
  copy(pattern,donor,{"Image","ImageColor3","ImageTransparency","ScaleType"})
  -- Shop's ninety-pixel tiles stay ninety pixels after responsive scaling.
  pattern.TileSize=UDim2.fromOffset(donor.TileSize.X.Offset/math.max(scale,.01),donor.TileSize.Y.Offset/math.max(scale,.01))
+ local secret=secretCards[owner]
+ if secret then
+  secret.PatternColor=pattern.ImageColor3
+  if secret.Hidden then pattern.ImageColor3=secretTint(secret.PatternColor) end
+ end
 end
 function M.SetIdentity(label,image,name,asset) if label then label.Text=name end if image then image.Image=asset end end
 -- Regular Item overlays only. Reuse existing stars or the purchased Shop title;
@@ -141,6 +150,11 @@ function M.ApplyPurchasedSurface(x)
   or x.Name=="EquipButton" and colors.action or x:GetAttribute("PurchasedShopSelected") and colors.selected or isSkip(x) and colors.blueCard or colors.card
  gradient.Enabled=not body and not textSurface
  local fill=body and shop.BackgroundColor3 or textSurface and gradient.Color.Keypoints[1].Value or Color3.new(1,1,1)
+ local secret=secretCards[x]
+ if secret then
+  secret.BackgroundColor=fill
+  if secret.Hidden then fill=secretTint(fill) end
+ end
  x:SetAttribute("PurchasedShopSurfaceColor",fill)
  x.BackgroundColor3=fill;x.BackgroundTransparency=root and shop.BackgroundTransparency or body and 1 or 0
  local pattern=x:FindFirstChild("StudPattern")
@@ -160,6 +174,50 @@ function M.SetSelected(x,value)
   visual.UIGradient.Rotation=90
   visual.InnerUIStroke.Color=value and Color3.fromRGB(86,244,255) or Color3.fromRGB(200,83,255)
  else M.ApplyPurchasedSurface(x) end
+end
+function M.SetInventorySecret(card,icon,hidden)
+ local saved=secretCards[card]
+ if not saved then
+  -- Initialize the actual purchased background before remembering its color.
+  -- Item cards already own their rank-specific surface and are left intact.
+  M.ApplyPurchasedSurface(card)
+  local pattern=card:FindFirstChild("StudPattern")
+  saved={BackgroundColor=card.BackgroundColor3,IconColor=icon.ImageColor3,
+   PatternColor=pattern and pattern.ImageColor3}
+  secretCards[card]=saved
+ end
+ saved.Hidden=hidden==true
+ card:SetAttribute("InventorySecret",saved.Hidden)
+ local fill=saved.Hidden and secretTint(saved.BackgroundColor) or saved.BackgroundColor
+ -- Keep the existing purchased-surface watcher aligned with the visible paint.
+ card:SetAttribute("PurchasedShopSurfaceColor",fill)
+ card.BackgroundColor3=fill
+ local pattern=card:FindFirstChild("StudPattern")
+ if pattern and saved.PatternColor then
+  pattern.ImageColor3=saved.Hidden and secretTint(saved.PatternColor) or saved.PatternColor
+ end
+ icon.ImageColor3=saved.Hidden and Color3.new(0,0,0) or saved.IconColor
+ local mark=icon:FindFirstChild("SecretLabel")
+ if not mark then
+  mark=Instance.new("TextLabel");mark.Name="SecretLabel"
+  mark:SetAttribute("InventoryReferenceOwned",true)
+  mark.BackgroundTransparency=1;mark.BorderSizePixel=0
+  mark.AnchorPoint=Vector2.new(.5,.5);mark.Position=UDim2.fromScale(.5,.78)
+  mark.Size=UDim2.fromScale(.36,.40)
+  mark.Font=Enum.Font.GothamBlack;mark.Text="???"
+  mark.TextColor3=Color3.new(1,1,1);mark.TextStrokeTransparency=1
+  -- Studio disables TextScaled when TextWrapped is false. The fixed short text
+  -- fits on one line inside this proportional icon rectangle.
+  mark.TextWrapped=true;mark.TextScaled=true;mark.AutoLocalize=false
+  mark.Active=false;mark.Interactable=false;mark.Selectable=false
+  mark.ZIndex=icon.ZIndex+1
+  local base=icon:GetAttribute("ResponsiveOriginalZ")
+  mark:SetAttribute("ResponsiveOriginalZ",(base or (icon.ZIndex>=200 and icon.ZIndex-200 or icon.ZIndex))+1)
+  local ink=Instance.new("UIStroke");ink.Color=Color3.new(0,0,0);ink.Thickness=2
+  ink.ApplyStrokeMode=Enum.ApplyStrokeMode.Contextual;ink.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize;ink.Parent=mark
+  mark.Parent=icon
+ end
+ mark.Visible=saved.Hidden
 end
 -- Paint the actual visible surface, including purchased image/gradient skins.
 -- Callers supply server-confirmed state. Hover only changes scale; no GUI polling.

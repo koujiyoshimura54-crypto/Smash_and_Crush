@@ -1,0 +1,489 @@
+{
+  "inputSha256": "b6875068599c0cae8a11846027987949468f398dac555ac56f972333c337777f",
+  "outputSha256": "9222a7f50906cdd0c582862929586a96dfc99088a60f66d5675cb6ade1140bc6",
+  "changedSources": {
+    "ReplicatedStorage.Modules.InventoryPresentation": {
+      "before": "b53b79a86c7a759e8e590285c6cf0484277740cc0a512ff1e3739b359cb55ac0",
+      "after": "661cf62faefd1360e79fc22e46b007ec3cfeadc4a3801a486f7f393ccb8ad44b",
+      "reusedUnchanged": true
+    },
+    "StarterGui.StrengthGui.InventoryPanelClient": {
+      "before": "67f238147533dec2f505b0c572f6311cdd8fb01dbba6e5200fe68acc2849a118",
+      "after": "141fb9db429bf7226e0c51be5c79cc3d0f526e6b2b4748a8410d91cc4dfa5391",
+      "reusedUnchanged": true
+    },
+    "StarterGui.StrengthGui.ItemInventoryTabClient": {
+      "before": "d2c0c9ebc4cb98adfc2ad228c0042619d46119189a8b7f1a1b90da0ad4f52da8",
+      "after": "c2e4d93d24d19c5f04397c3b283a4a7baebe547383e8d5441d6d4b59fcb0eabb",
+      "reusedUnchanged": true
+    },
+    "ReplicatedStorage.Config.DumbbellItemMaster": {
+      "before": "811095757fb87c61c5b1db90702e0c53b472ef35050b6d2d72f54ddeaeab14d5",
+      "after": "5e7aabdf9e939c35799ac4fdf7949523caa09400bb5b2dcb92772e7415d7190b"
+    }
+  },
+  "facilities": [
+    {
+      "path": "Workspace.PerStepButtons.1",
+      "itemId": "NORMAL_01",
+      "image": "rbxassetid://131314372434925",
+      "priceWin": 5,
+      "strengthBonus": 3
+    },
+    {
+      "path": "Workspace.PerStepButtons.2",
+      "itemId": "NORMAL_02",
+      "image": "rbxassetid://126019719977317",
+      "priceWin": 15,
+      "strengthBonus": 5
+    },
+    {
+      "path": "Workspace.PerStepButtons.3",
+      "itemId": "NORMAL_03",
+      "image": "rbxassetid://96428309215438",
+      "priceWin": 40,
+      "strengthBonus": 9
+    },
+    {
+      "path": "Workspace.PerStepButtons.4",
+      "itemId": "NORMAL_04",
+      "image": "rbxassetid://77317637436768",
+      "priceWin": 100,
+      "strengthBonus": 15
+    },
+    {
+      "path": "Workspace.PerStepButtons.5",
+      "itemId": "NORMAL_05",
+      "image": "rbxassetid://134662273184560",
+      "priceWin": 200,
+      "strengthBonus": 25
+    },
+    {
+      "path": "Workspace.PerStepButtons.6",
+      "itemId": "NORMAL_06",
+      "image": "rbxassetid://92138447886967",
+      "priceWin": 400,
+      "strengthBonus": 45
+    },
+    {
+      "path": "Workspace.PerStepButtons.7",
+      "itemId": "NORMAL_07",
+      "image": "rbxassetid://79967244610623",
+      "priceWin": 750,
+      "strengthBonus": 75
+    },
+    {
+      "path": "Workspace.PerStepButtons.8",
+      "itemId": "NORMAL_08",
+      "image": "rbxassetid://110171141876908",
+      "priceWin": 1250,
+      "strengthBonus": 120
+    },
+    {
+      "path": "Workspace.PerStepButtons.9",
+      "itemId": "NORMAL_09",
+      "image": "rbxassetid://129522181601539",
+      "priceWin": 2000,
+      "strengthBonus": 180
+    },
+    {
+      "path": "Workspace.PerStepButtons.10",
+      "itemId": "NORMAL_10",
+      "image": "rbxassetid://92929093922544",
+      "priceWin": 3500,
+      "strengthBonus": 280
+    },
+    {
+      "path": "Workspace.PerStepButtons.11",
+      "itemId": "NORMAL_11",
+      "image": "rbxassetid://89748292939648",
+      "priceWin": 6000,
+      "strengthBonus": 450
+    },
+    {
+      "path": "Workspace.PerStepButtons.12",
+      "itemId": "NORMAL_12",
+      "image": "rbxassetid://121194224737958",
+      "priceWin": 10000,
+      "strengthBonus": 700
+    }
+  ],
+  "changedProperties": [
+    {
+      "path": "ReplicatedStorage.Modules.InventoryPresentation",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanelClient",
+      "property": "Source"
+    },
+    {
+      "path": "StarterGui.StrengthGui.ItemInventoryTabClient",
+      "property": "Source"
+    },
+    {
+      "path": "ReplicatedStorage.Config.DumbbellItemMaster",
+      "property": "Source"
+    },
+    {
+      "path": "Workspace.PerStepButtons.1.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.1.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.1.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.1.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.1.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.1.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.2.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.2.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.2.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.2.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.2.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.2.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.3.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.3.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.3.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.3.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.3.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.3.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.4.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.4.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.4.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.4.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.4.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.4.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.5.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.5.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.5.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.5.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.5.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.5.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.6.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.6.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.6.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.6.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.6.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.6.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.6.BillboardGui.ItemIcon",
+      "property": "Image"
+    },
+    {
+      "path": "Workspace.PerStepButtons.7.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.7.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.7.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.7.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.7.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.7.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.8.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.8.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.8.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.8.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.8.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.8.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.8.BillboardGui.ItemIcon",
+      "property": "Image"
+    },
+    {
+      "path": "Workspace.PerStepButtons.9.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.9.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.9.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.9.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.9.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.9.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.9.BillboardGui.ItemIcon",
+      "property": "Image"
+    },
+    {
+      "path": "Workspace.PerStepButtons.10.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.10.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.10.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.10.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.10.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.10.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.10.BillboardGui.ItemIcon",
+      "property": "Image"
+    },
+    {
+      "path": "Workspace.PerStepButtons.11.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.11.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.11.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.11.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.11.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.11.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.11.BillboardGui.ItemIcon",
+      "property": "Image"
+    },
+    {
+      "path": "Workspace.PerStepButtons.12.BillboardGui",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.12.BillboardGui",
+      "property": "StudsOffset"
+    },
+    {
+      "path": "Workspace.PerStepButtons.12.BillboardGui",
+      "property": "ClipsDescendants"
+    },
+    {
+      "path": "Workspace.PerStepButtons.12.BillboardGui.ItemIcon",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.12.BillboardGui.Amount",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.12.BillboardGui.Status",
+      "property": "Size"
+    },
+    {
+      "path": "Workspace.PerStepButtons.12.BillboardGui.ItemIcon",
+      "property": "Image"
+    }
+  ],
+  "removedExhibits": 12,
+  "removedInstances": 168,
+  "addedInstances": 0,
+  "verifiedSurvivingProperties": 4724966,
+  "allOtherSourcesPropertiesParentsPreserved": true,
+  "world2AndDecorationsUnchanged": true,
+  "binaryValidation": {
+    "before": {
+      "sha256": "6df23251b6090208d628cdd317122ba04b8a0af80405e89d87f276721bb9a159",
+      "instanceCount": 182393,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182560,
+      "outOfBoundsCount": 168,
+      "missingInRangeCount": 168,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182393,
+        "PROP.Ref": 78760,
+        "PROP.Content": 0,
+        "PRNT.Child": 182393,
+        "PRNT.Parent": 182393
+      }
+    },
+    "after": {
+      "sha256": "9222a7f50906cdd0c582862929586a96dfc99088a60f66d5675cb6ade1140bc6",
+      "instanceCount": 182393,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 182392,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 182393,
+        "PROP.Ref": 78760,
+        "PROP.Content": 0,
+        "PRNT.Child": 182393,
+        "PRNT.Parent": 182393
+      }
+    },
+    "renumberedInstances": 168,
+    "modifiedChunks": 23,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "written": true
+}

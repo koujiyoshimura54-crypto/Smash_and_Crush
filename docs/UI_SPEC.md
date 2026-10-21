@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-10-21 — Restored Inventory secrets and World1 2D displays
+
+Unowned Inventory Dumbbells and Items use the existing card background darkened by25%, a black transparent icon and white outlined `???`. Current ownership restores the original colors; equipped/owned-unequipped cards stay normal. No new unlock rules, layout or purchase logic. Reused the previously tested three Sources unchanged. The six owner-supplied World1 transparent IDs are shared by Master, saved stands, Inventory and Shop; NORMAL_05 remains134662273184560.
+
+Restore only World1's twelve existing boards:9x9 studs, offset(0,6.5,0), ItemIcon58%, Strength effect14%, Win price12%, state10%. Remove exhibition models beneath ShoesModels, retain its Folder, all equipment geometry/held models and subsequent fonts/equipped colors. World2 remains unchanged. [Restoration and verification](../reports/InventoryDisplayRestore_20261021/REPORT.md).
+
 ## 2026-10-10 - ShopStall capacity title
 
 - Capacity purchase header is now exactly `UpGrade` in both existing text layers, superseding the historical `Update` labels below. Color, decoration, layout and purchase behavior are unchanged.

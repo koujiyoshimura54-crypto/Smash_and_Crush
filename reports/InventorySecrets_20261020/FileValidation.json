@@ -1,0 +1,24 @@
+{
+  "written": false,
+  "reason": "Awaiting owner decision for six opaque World1 Dumbbell images",
+  "inputSha256": "b6875068599c0cae8a11846027987949468f398dac555ac56f972333c337777f",
+  "candidateSha256": "c92323041749e32146455d7db8a3d4056fcf1e7bc5b23a8de412d438d5e22025",
+  "changedSources": {
+    "ReplicatedStorage.Modules.InventoryPresentation": {
+      "before": "b53b79a86c7a759e8e590285c6cf0484277740cc0a512ff1e3739b359cb55ac0",
+      "after": "661cf62faefd1360e79fc22e46b007ec3cfeadc4a3801a486f7f393ccb8ad44b"
+    },
+    "StarterGui.StrengthGui.InventoryPanelClient": {
+      "before": "67f238147533dec2f505b0c572f6311cdd8fb01dbba6e5200fe68acc2849a118",
+      "after": "141fb9db429bf7226e0c51be5c79cc3d0f526e6b2b4748a8410d91cc4dfa5391"
+    },
+    "StarterGui.StrengthGui.ItemInventoryTabClient": {
+      "before": "d2c0c9ebc4cb98adfc2ad228c0042619d46119189a8b7f1a1b90da0ad4f52da8",
+      "after": "c2e4d93d24d19c5f04397c3b283a4a7baebe547383e8d5441d6d4b59fcb0eabb"
+    }
+  },
+  "syntaxAndReDecode": "passed",
+  "otherPropertiesParentsAndSourcesUnchanged": true,
+  "protectedDecorationModels": 21,
+  "protectedDecorationParts": 500
+}

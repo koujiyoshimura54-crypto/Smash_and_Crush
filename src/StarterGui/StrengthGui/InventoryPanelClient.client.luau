@@ -45,6 +45,7 @@ local cards={}
 
 local selectedId
 local owned={}
+local stateLoaded=false
 local equipped=""
 local pending={}
 local function round(parent,radius)
@@ -68,6 +69,7 @@ local function updateButtons()
   if button then
    local isEquipped=equipped==itemId
    local isOwned=owned[itemId]==true
+   Presentation.SetInventorySecret(card,card.Icon,stateLoaded and not isOwned and not isEquipped)
    button.Text=isEquipped and "Equipped" or (isOwned and "Equip" or "")
    button.WinIcon.Visible=not isOwned and not isEquipped
    button.Price.Visible=not isOwned and not isEquipped
@@ -87,6 +89,7 @@ end
 local function applyState(state)
  if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedDumbbells)~="table" then return false end
  owned=state.OwnedDumbbells
+ stateLoaded=true
  equipped=typeof(state.EquippedDumbbell)=="string" and state.EquippedDumbbell or ""
  if typeof(state.Win)=="number" then panel.WinLabel.Text="Win  "..tostring(state.Win) end
  updateButtons()
