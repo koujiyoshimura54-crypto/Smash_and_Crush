@@ -1090,3 +1090,7 @@ Trimmed proven adjoining opaque-block face overlaps in the current place: 3 Worl
 ## 2026-10-21 - Marked World1 stage wall end faces
 
 Used the saved BlockSquareX marker and current manual edits to identify corresponding Environment_RightSide/Cliff01/BorderPattern walls in World1 Stage01-10. Recessed three competing Bottom end faces per Stage by 0.02-0.06 studs; green Upper Parts and all unrelated properties remain unchanged. Same-file writeback was reread successfully. Exact Full Paths and before/after transforms: reports/MarkedStageWallFaces_20261021/Writeback.json. Appearance and runtime confirmation are reserved for the user.
+
+## 2026-10-21 - Trophy receipt before return waits
+
+Both World contexts now confirm and notify an eligible owner Trophy/Win receipt before item banking or Lobby streaming. Durable item banking and existing PlayerData saving remain enabled. Per-player receipt state prevents repeat credit during return retries, and protected independent workers release transient error locks without blocking the shared overlap scan. Only TrophyRewardService changed. Same-file Source readback and syntax compilation passed; no Play or measured timing claims. The unknown persistent inability report remains unconfirmed. See reports/TrophyReceipt_20261021/README.md.

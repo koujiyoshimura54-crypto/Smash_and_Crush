@@ -27,6 +27,7 @@ function M.GetStudioCollectionCounts(player)
 end
 
 local records = {}
+local activeClaims = {}
 local map, remote, resetRun, isDefeated
 local sequence = 0
 local template = RS.UI.Templates:WaitForChild("TrophyRewardTemplate")
@@ -50,6 +51,7 @@ end
 function M.Clear(player)
 	local stages = records[player]
 	records[player] = nil
+	activeClaims[player] = nil
 
 	for _, record in stages or {} do
 		record.Connection:Disconnect()
@@ -78,11 +80,19 @@ function M.SendState(player)
 	end
 end
 
-local function collect(player, record, part)
+local function diagnose(player, record, reason)
+ record.Diagnostics = record.Diagnostics or {}
+ if record.Diagnostics[reason] then return end
+ record.Diagnostics[reason] = true
+ warn(("[TrophyReward] user=%d world=%d stage=%d id=%d credited=%s %s"):format(
+  player.UserId, worldId, record.Stage, record.Id, tostring(record.Collected), reason))
+end
+
+local function collectAttempt(player, record, part)
 	if (player:GetAttribute("CurrentWorld") or 1)~=worldId or not records[player]
 		or records[player][record.Stage] ~= record
 		or record.Claiming
-		or record.Collected then
+		or (activeClaims[player] and activeClaims[player] ~= record) then
 		return
 	end
 
@@ -100,11 +110,6 @@ local function collect(player, record, part)
 		return
 	end
 
-	local spawn = M.GetLobbySpawn()
-	if not spawn then
-		return
-	end
-
 	-- Verify physical overlap on the server, including when Touched was raised.
 	local params = OverlapParams.new()
 	params.FilterType = Enum.RaycastFilterType.Include
@@ -116,53 +121,33 @@ local function collect(player, record, part)
 
 	if not PlayerData.IsLoaded(player) then return end
 
-	local win = player:GetAttribute("Win")
-
-	if typeof(win) ~= "number"
-		or win ~= win
-		or win < 0
-		or win == math.huge then
-		return
-	end
-
-	local baseReward = RewardConfig.GetBaseReward(record.Stage,worldId)
-
-	if typeof(baseReward) ~= "number" then
-		warn("Trophy Win reward missing for Stage " .. tostring(record.Stage))
-		return
-	end
-
-	-- Lock before the potentially yielding durable bank. Back uses the same lock/journal.
+	-- Serialize this player's receipt before any possible ownership lookup yield.
+	activeClaims[player] = record
 	record.Claiming = true
-	local placement = Placement.StreamLobby(player, character, worldId)
-	if not placement or not records[player] or records[player][record.Stage] ~= record
-		or not Placement.IsCurrent(player, placement) or humanoid.Health <= 0 then
-		record.Claiming = false
-		return
+	if not record.Collected then
+	 local baseReward = RewardConfig.GetBaseReward(record.Stage, worldId)
+	 if typeof(baseReward) ~= "number" then diagnose(player, record, "MissingReward"); return end
+	 local winReward = GamePass.GetWinReward(player, baseReward, worldId)
+	 -- A cold pass lookup can yield; never use pre-yield balance or eligibility.
+	 if not records[player] or records[player][record.Stage] ~= record
+	  or player.Character ~= character or humanoid.Health <= 0
+	  or (player:GetAttribute("CurrentWorld") or 1) ~= worldId
+	  or not isDefeated(player, record.Stage) or not PlayerData.IsLoaded(player) then return end
+	 if #workspace:GetPartsInPart(record.Hitbox, params) == 0 then return end
+	 local win = player:GetAttribute("Win")
+	 if typeof(win) ~= "number" or win ~= win or win < 0 or win == math.huge then
+	  diagnose(player, record, "InvalidWin"); return
+	 end
+	 local updatedWin = win + winReward
+	 -- SetWin updates the loaded session/attribute and marks the existing save path dirty.
+	 -- No yield between credit success and consuming this receipt.
+	 if not PlayerData.SetWin(player, updatedWin) then diagnose(player, record, "CreditRejected"); return end
+	 record.Collected = true
+	 record.WinReward, record.Win = winReward, updatedWin
 	end
-	local winReward = GamePass.GetWinReward(player, baseReward,worldId)
-	if Bank then
-		local snapshot = Run.GetSnapshot(player)
-		local committed = snapshot and Bank.Commit(player, snapshot.RunId)
-		if not committed then
-			record.Claiming = false
-			return
-		end
-		-- Death/reset/another completion may have invalidated this pickup during I/O.
-		if not records[player] or records[player][record.Stage] ~= record
-			or player.Character ~= character or humanoid.Health <= 0
-			or (player:GetAttribute("CurrentWorld") or 1) ~= worldId
-			or not Placement.IsCurrent(player, placement) then
-			record.Claiming = false
-			return
-		end
-		win = player:GetAttribute("Win")
-	end
-	-- No yields after confirmed banking: credit once, consume, move and reset.
-	local updatedWin = win + winReward
-	if not PlayerData.SetWin(player,updatedWin) then record.Claiming=false;return end
-
-	record.Collected = true
+	local winReward, updatedWin = record.WinReward, record.Win
+	if not record.Notified then
+	 record.Notified = true
 	if worldId==1 and record.Stage == WorldGateConfig.CompletionStage then
 		PlayerData.UnlockWorld(player, WorldGateConfig.RequiredWorld)
 	end
@@ -200,15 +185,47 @@ local function collect(player, record, part)
 		PlayerData.CompleteTutorial(player)
 	end
 
-	M.Clear(player)
+	end -- Notify once; retries below never credit again.
 
+	local function current()
+	 return player.Parent == Players and records[player] and records[player][record.Stage] == record
+	  and player.Character == character and humanoid.Health > 0
+	  and (player:GetAttribute("CurrentWorld") or 1) == worldId
+	end
+	-- Durable item banking remains mandatory before reset, but cannot delay Win credit.
+	if Bank and not record.Banked then
+	 local snapshot = Run.GetSnapshot(player)
+	 local committed, reason = false, "MissingRun"
+	 if snapshot then committed, reason = Bank.Commit(player, snapshot.RunId) end
+	 if not committed then diagnose(player, record, "Bank:" .. tostring(reason)); return end
+	 record.Banked = true
+	end
+	if not current() then return end
+	local placement, reason = Placement.StreamLobby(player, character, worldId)
+	if not placement then diagnose(player, record, "Stream:" .. tostring(reason)); return end
+	if not current() or not Placement.IsCurrent(player, placement) then return end
 	humanoid.Health = humanoid.MaxHealth
 	humanoid.Sit = false
-
 	local placed, why = Placement.MoveToLobby(player, character, worldId)
-	if not placed then warn("[LobbySpawn] Trophy placement rejected: " .. tostring(why)) end
-
+	if not placed then diagnose(player, record, "Return:" .. tostring(why)); return end
+	-- Keep receipt/Banked until travel succeeds; failures can retry without another credit.
+	M.Clear(player)
 	resetRun(player)
+end
+
+local function collect(player, record, part)
+ if record.Processing or (record.RetryAt and os.clock() < record.RetryAt) then return end
+ record.Processing = true
+ -- Never make one player's streaming/save suspend the shared overlap scan.
+ task.spawn(function()
+  local ok, err = xpcall(function() collectAttempt(player, record, part) end, debug.traceback)
+  record.Claiming = false
+  record.Processing = false
+  if not record.Collected and activeClaims[player] == record then activeClaims[player] = nil end
+  -- Backoff is only for an already credited return retry, never initial reward acceptance.
+  if record.Collected then record.RetryAt = os.clock() + 1 end
+  if not ok then diagnose(player, record, "Exception:" .. tostring(err)) end
+ end)
 end
 
 function M.Spawn(player, major)
