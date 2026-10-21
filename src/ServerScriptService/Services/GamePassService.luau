@@ -188,52 +188,61 @@ end)
 local TreadmillConfig=require(game.ReplicatedStorage.Config:WaitForChild("TreadmillConfig"))
 local premiumCache=setmetatable({}, {__mode="k"})
 local premiumBusy=setmetatable({}, {__mode="k"})
-function M.HasPremiumTreadmill(player)
- local entry=premiumCache[player]
- return entry~=nil and entry.PassId==TreadmillConfig.PremiumTreadmillPassId and entry.Owned==true
+local premiumPrompts=setmetatable({}, {__mode="k"})
+local function treadmillAttribute(world)
+ return world==2 and "HasWorld2PremiumTreadmill" or "HasPremiumTreadmill"
 end
-function M.RefreshPremiumTreadmill(player)
- local passId=TreadmillConfig.PremiumTreadmillPassId
- if typeof(passId)~="number" or passId<=0 or passId%1~=0 or passId==math.huge then
-  player:SetAttribute("HasPremiumTreadmill",false)
-  return false,"Unavailable"
- end
- if premiumBusy[player] then return M.HasPremiumTreadmill(player),"Pending" end
- premiumBusy[player]=true
- local ok,owned=pcall(function()
-  return MarketplaceService:UserOwnsGamePassAsync(player.UserId,passId)
- end)
- premiumBusy[player]=nil
+function M.HasPremiumTreadmill(player,world)
+ local entries=premiumCache[player]
+ return entries~=nil and entries[TreadmillConfig.GetPremiumTreadmillPassId(world)]==true
+end
+function M.RefreshPremiumTreadmill(player,world)
+ local passId=TreadmillConfig.GetPremiumTreadmillPassId(world)
+ if typeof(passId)~="number" or passId<=0 or passId%1~=0 or passId==math.huge then return false,"Unavailable" end
+ local locks=premiumBusy[player] or {};premiumBusy[player]=locks
+ if locks[passId] then return M.HasPremiumTreadmill(player,world),"Pending" end
+ locks[passId]=true
+ local ok,owned=pcall(function() return MarketplaceService:UserOwnsGamePassAsync(player.UserId,passId) end)
+ locks[passId]=nil
  if player.Parent~=Players then return false,"PlayerUnavailable" end
- if not ok then return M.HasPremiumTreadmill(player),"OwnershipUnavailable" end
- premiumCache[player]={PassId=passId,Owned=owned==true}
- player:SetAttribute("HasPremiumTreadmill",owned==true)
+ -- A failed request never grants access or erases a verified entitlement.
+ if not ok then return M.HasPremiumTreadmill(player,world),"OwnershipUnavailable" end
+ local entries=premiumCache[player] or {};premiumCache[player]=entries
+ entries[passId]=owned==true
+ player:SetAttribute(treadmillAttribute(world),owned==true)
  return owned==true,"Verified"
 end
-function M.PromptPremiumTreadmill(player)
- local owned,status=M.RefreshPremiumTreadmill(player)
- if owned then return false,"AlreadyOwned" end
- if status~="Verified" then return false,status end
- local ok=pcall(function()
-  MarketplaceService:PromptGamePassPurchase(player,TreadmillConfig.PremiumTreadmillPassId)
- end)
+function M.PromptPremiumTreadmill(player,world,isCurrent)
+ if premiumPrompts[player] then return false,"Pending" end
+ local lock={PassId=TreadmillConfig.GetPremiumTreadmillPassId(world)}
+ premiumPrompts[player]=lock
+ local owned,status=M.RefreshPremiumTreadmill(player,world)
+ if owned or status~="Verified" or (isCurrent and not isCurrent()) then
+  if premiumPrompts[player]==lock then premiumPrompts[player]=nil end
+  return false,owned and "AlreadyOwned" or status~="Verified" and status or "Expired"
+ end
+ local ok=pcall(function() MarketplaceService:PromptGamePassPurchase(player,lock.PassId) end)
+ if not ok and premiumPrompts[player]==lock then premiumPrompts[player]=nil end
  return ok,ok and "Prompted" or "PromptUnavailable"
 end
 MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,passId,purchased)
- if passId~=TreadmillConfig.PremiumTreadmillPassId or not purchased then return end
- premiumCache[player]=nil
+ local world=passId==TreadmillConfig.GetPremiumTreadmillPassId(1) and 1
+  or passId==TreadmillConfig.GetPremiumTreadmillPassId(2) and 2
+ if not world then return end
+ local lock=premiumPrompts[player]
+ if lock and lock.PassId==passId then premiumPrompts[player]=nil end
+ if not purchased then return end
  task.spawn(function()
   for attempt=1,5 do
    if player.Parent~=Players then return end
-   local owned=M.RefreshPremiumTreadmill(player)
-   if owned then return end
-   task.wait(attempt)
+   local owned=M.RefreshPremiumTreadmill(player,world)
+   if owned then return end -- Existing occupancy loop starts training immediately.
+   if attempt<5 then task.wait(attempt) end -- Only retry an unconfirmed request.
   end
  end)
 end)
 Players.PlayerRemoving:Connect(function(player)
- premiumCache[player]=nil
- premiumBusy[player]=nil
+ premiumCache[player]=nil;premiumBusy[player]=nil;premiumPrompts[player]=nil
 end)
 
 -- Speed entitlement is verified independently of other Game Passes.

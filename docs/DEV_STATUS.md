@@ -2330,3 +2330,8 @@ Both World contexts now confirm and notify an eligible owner Trophy/Win receipt 
 ## 2026-10-21 — World2 boss parity verification
 
 World2 Stage1-10 now reuse current World1 non-animation combat through isolated World/player contexts. All ten were visually inspected and defeated in local Play; representative maximum-body, boundary, two-client independence, death/return/exit/retry, Stage10 and mocked pass-confirmation cases were checked. Actual Marketplace checkout, production persistence and restricted audio playback remain unverified. Current-place chase values 16/4 and unrelated local mirror edits were preserved. Details: reports/World2BossParity_20261021/REPORT.md.
+
+
+## 2026-10-21 — World2 paid facilities, partial delivery
+
+Treadmill and Aura purchase connections are implemented, syntax-checked, and exercised in an isolated local server with two real clients, temporary in-memory persistence and mocked Marketplace events. UI clicks, x35 training, explicit +1500 Aura equipment, cancellation/error handling, independent players/World1 IDs, and simulated save/reload/fresh ownership caches passed. Actual payment and actual production rejoin are unverified. Limited Egg 02 count/button remains awaiting the requested user clarification; no Egg/Receipt change is claimed. Same-file Source writeback and non-target preservation are recorded in reports/World2PaidFacilities_20261021/Writeback.json.

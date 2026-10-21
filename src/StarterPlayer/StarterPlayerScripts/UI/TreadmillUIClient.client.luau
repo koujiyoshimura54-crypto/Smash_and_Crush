@@ -3,6 +3,8 @@ local TREADMILL_TAG="TrainingTreadmill"
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Config = require(game:GetService("ReplicatedStorage").Config:WaitForChild("TreadmillConfig"))
+local MarketplacePrice=require(game.ReplicatedStorage.Modules.MarketplacePrice)
+local premiumPrice
 local red = Color3.fromRGB(255, 60, 60)
 local blue = Color3.fromRGB(55, 145, 255)
 
@@ -99,7 +101,9 @@ local function refresh()
   if not entry then continue end
   if Config.WorldForModel(model)==2 then
    local label=model:FindFirstChild("StationBillboard") and model.StationBillboard:FindFirstChild("Multiplier")
-   if label then label.Text=string.format("%02d",tonumber(kind:match("(%d+)$")) or 0).." | "..tostring(entry.Multiplier).."x Strength\n"..(entry.PurchaseEnabled==false and "Robux - Unavailable" or (entry.RequiredRebirth>0 and "Rebirth "..entry.RequiredRebirth.." Required" or "Available")) end
+   if label then label.Text=string.format("%02d",tonumber(kind:match("(%d+)$")) or 0).." | "..tostring(entry.Multiplier).."x Strength\n"..(entry.PurchaseEnabled==false and "Robux - Unavailable"
+     or entry.RequiresPremium and (player:GetAttribute("HasWorld2PremiumTreadmill")==true and "Owned" or MarketplacePrice.Format(premiumPrice," Robux"))
+     or ((entry.RequiredRebirth or 0)>0 and "Rebirth "..entry.RequiredRebirth.." Required" or "Available")) end
   end
   local strength = gui and gui:FindFirstChild("Strength")
   if strength then strength.Text = "×"..tostring(entry.Multiplier).." Strength" end
@@ -121,6 +125,12 @@ workspace.DescendantAdded:Connect(function(v)
   or (v:IsA("TextLabel")and(v.Name=="Name"or v.Name=="Multiplier"or v.Name=="Amount"))then schedule()end
 end)
 player:GetAttributeChangedSignal("RebirthCount"):Connect(schedule)
+player:GetAttributeChangedSignal("HasWorld2PremiumTreadmill"):Connect(schedule)
+task.spawn(function()
+ local price=MarketplacePrice.Get(Config.GetPremiumTreadmillPassId(2),Enum.InfoType.GamePass,nil)
+ if typeof(price)=="number" and price>0 and price<math.huge then premiumPrice=price end
+ schedule()
+end)
 CollectionService:GetInstanceAddedSignal(TREADMILL_TAG):Connect(function() task.defer(refresh) end)
 CollectionService:GetInstanceRemovedSignal(TREADMILL_TAG):Connect(function() task.defer(refresh) end)
 refresh()

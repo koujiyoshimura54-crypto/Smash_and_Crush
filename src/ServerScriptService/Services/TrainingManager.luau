@@ -160,7 +160,7 @@ function TrainingManager.CanUseTreadmill(player,treadmill)
  if not config or not finitePositive(config.Multiplier) then return false end
  if TreadmillConfig.WorldForModel(treadmill)~=(player:GetAttribute("CurrentWorld") or 1) or not Data.IsLoaded(player) then return false,config end
  if config.PurchaseEnabled==false then return false,config end
- if config.RequiresPremium then return GamePass.AreEffectsEnabled(player) and GamePass.HasPremiumTreadmill(player),config end
+ if config.RequiresPremium then return GamePass.AreEffectsEnabled(player) and GamePass.HasPremiumTreadmill(player,TreadmillConfig.WorldForModel(treadmill)),config end
  local count=tonumber(player:GetAttribute("RebirthCount")) or 0
  return count>=(config.RequiredRebirth or 0),config
 end
@@ -265,7 +265,10 @@ function TrainingManager.UpdateZoneOccupants()
     entry={Character=character,Treadmill=occupiedTreadmill}
     premiumEntries[player]=entry -- Latch before ownership verification can yield.
     task.spawn(function()
-     GamePass.PromptPremiumTreadmill(player)
+     GamePass.PromptPremiumTreadmill(player,TreadmillConfig.WorldForModel(occupiedTreadmill),function()
+      return premiumEntries[player]==entry and player.Character==character
+       and TrainingManager.GetOccupiedTreadmill(player)==occupiedTreadmill
+     end)
     end)
    end
   else

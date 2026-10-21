@@ -27,14 +27,14 @@ local owned={}
 local equipped=""
 local loaded=false
 local pending=false
-local redPurchasePending=false
+local passPurchasePending=false
 local notice={}
 local green=list.PinkAuraCard.BuyButton.UIGradient.Color
 -- Match existing inventory equip / equipped colors without rebuilding cards.
 local equipColor=ColorSequence.new(Color3.fromRGB(75,136,213),Color3.fromRGB(47,91,151))
 local equippedColor=ColorSequence.new(Color3.fromRGB(111,120,137),Color3.fromRGB(70,76,88))
 local AuraNotifications=require(gui:WaitForChild("AuraPurchaseNotifications"))
-local redDisplayPrice=Config.Get("Red").DisplayPriceFallback
+local displayPrices={Red=Config.Get("Red").DisplayPriceFallback}
 local function render()
  AuraNotifications.Render(gui,loaded,owned,player:GetAttribute("Win"))
  for _,id in ipairs(Config.Order) do
@@ -45,8 +45,13 @@ local function render()
   local isEquipped=equipped==id
   b.Label.Text=notice[id] or (aura.PurchaseEnabled==false and "UNAVAILABLE" or isEquipped and "Equipped" or owned[id] and "Equip" or aura.PurchaseType=="Entitlement" and "VIEW PACK" or "BUY")
   b.UIGradient.Color=isEquipped and equippedColor or owned[id] and equipColor or green
-  Presentation.SetButtonEnabled(b,loaded and not pending and aura.PurchaseEnabled~=false)
-  card.Price.Amount.Text=aura.PurchaseEnabled==false and "" or aura.PurchaseType=="Entitlement" and (aura.Entitlement=="VIP" and "VIP" or "PACK") or require(RS.Modules.NumberFormat).Price(aura.PurchaseType=="Win" and aura.Price or redDisplayPrice)
+  Presentation.SetButtonEnabled(b,loaded and not pending and aura.PurchaseEnabled~=false
+   and (owned[id] or aura.PurchaseType~="GamePass" or displayPrices[id]~=nil))
+  card.Price.Amount.Text=aura.PurchaseEnabled==false and "" or aura.PurchaseType=="Entitlement" and (aura.Entitlement=="VIP" and "VIP" or "PACK") or MarketplacePrice.Format(aura.PurchaseType=="Win" and aura.Price or displayPrices[id])
+  local currencyIcon=card.Price:FindFirstChild("CurrencyIcon")
+  if aura.WorldId==2 and aura.PurchaseType=="GamePass" and currencyIcon then
+   currencyIcon.Image=list.RedAuraCard.Price.CurrencyIcon.Image
+  end
   if aura.PurchaseType~="Entitlement" and aura.PurchaseEnabled~=false then
    PurchaseHUD.PurchaseButton(b,aura.PurchaseType=="Win" and "Win" or "Robux",notice[id] or (owned[id] and b.Label.Text or card.Price.Amount.Text))
   end
@@ -64,13 +69,13 @@ local function apply(state)
 end
 local function refresh()
  local ok,state=pcall(function() return remote:InvokeServer() end)
- if ok and not redPurchasePending then apply(state) end
+ if ok and not passPurchasePending then apply(state) end
 end
 local activeId
 local function result(message)
  if typeof(message)~="table" then return end
- if message.Success~=nil then redPurchasePending=false end
- if not redPurchasePending then apply(message.State) end
+ if message.Success~=nil then passPurchasePending=false end
+ if not passPurchasePending then apply(message.State) end
  if message.Success~=nil then
   pending=false
   if message.Success==false and activeId then
@@ -96,9 +101,10 @@ for _,id in ipairs(Config.Order) do
    shell.Visible=false;gui.ShopPanel.Visible=true
    gui.ShopPanel:SetAttribute("FocusProduct",Config.Get(id).Entitlement)
   elseif Config.Get(id).PurchaseType=="GamePass" then
-   pending=true;redPurchasePending=true;render()
+   if displayPrices[id]==nil then return end
+   pending=true;passPurchasePending=true;activeId=id;render()
    local ok=pcall(function() Marketplace:PromptGamePassPurchase(player,Config.Get(id).GamePassId) end)
-   if not ok then pending=false;redPurchasePending=false;render() end
+   if not ok then pending=false;passPurchasePending=false;render() end
   else
    pending=true;activeId=id;render()
    purchase:FireServer(id)
@@ -106,9 +112,9 @@ for _,id in ipairs(Config.Order) do
  end)
 end
 Marketplace.PromptGamePassPurchaseFinished:Connect(function(who,id,purchased)
- if who==player and id==Config.Get("Red").GamePassId then
-  if not purchased then pending=false;redPurchasePending=false;render();refresh() end
-  -- On success keep the current button until the server verifies, saves and replies.
+ if who==player and activeId and id==Config.Get(activeId).GamePassId then
+  if not purchased then pending=false;passPurchasePending=false;render();refresh() end
+  -- On success keep the current button until server ownership verification replies.
  end
 end)
 local function opened()
@@ -126,12 +132,15 @@ task.spawn(function()
  refresh()
 end)
 -- Display only: obtain the platform's current pass price without blocking UI.
-task.spawn(function()
- local source
- redDisplayPrice,source=MarketplacePrice.Get(Config.Get("Red").GamePassId,Enum.InfoType.GamePass,Config.Get("Red").DisplayPriceFallback)
- list.RedAuraCard.Price:SetAttribute("PriceSource",source)
- render()
-end)
+for _,id in ipairs(Config.Order) do
+ local aura=Config.Get(id)
+ if aura.PurchaseType=="GamePass" then task.spawn(function()
+  local price,source=MarketplacePrice.Get(aura.GamePassId,Enum.InfoType.GamePass,id=="Red" and aura.DisplayPriceFallback or nil)
+  if typeof(price)=="number" and price>0 and price<math.huge then displayPrices[id]=price end
+  list[id.."AuraCard"].Price:SetAttribute("PriceSource",source)
+  render()
+ end) end
+end
 -- A Win change can add or remove eligibility without opening Inventory.
 player:GetAttributeChangedSignal("Win"):Connect(function()
  AuraNotifications.Render(gui,loaded,owned,player:GetAttribute("Win"))

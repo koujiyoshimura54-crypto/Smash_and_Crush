@@ -15,9 +15,9 @@ for index,row in ipairs(World2.Auras) do
  local id=string.format("W2_AURA_%02d",index)
  aura.Id=id;aura.Key=id;aura.WorldId=2;aura.Name="World 2 "..aura.Name;aura.DisplayName=aura.Name
  aura.StrengthBonus=row.StrengthBonus;aura.Order=#Config.Order+1
- aura.PurchaseType=index==6 and "Unavailable" or "Win"
+ aura.PurchaseType=row.GamePassId and "GamePass" or "Win"
  aura.PurchaseEnabled=row.PurchaseEnabled;aura.Price=row.PriceWin
- aura.GamePassId=nil;aura.ProductId=nil;aura.DisplayPriceFallback=nil
+ aura.GamePassId=row.GamePassId;aura.ProductId=nil;aura.DisplayPriceFallback=row.BasePrice
  Config.Auras[id]=aura;table.insert(Config.Order,id)
 end
 local Shop=require(script.Parent.ShopProductConfig)

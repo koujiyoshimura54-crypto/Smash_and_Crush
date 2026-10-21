@@ -1106,3 +1106,8 @@ Both World contexts now confirm and notify an eligible owner Trophy/Win receipt 
 ## 2026-10-21 — World2 boss parity and individual sizing
 
 Connected World2 Stage1-10 to the current World1 personal chase/attack/Strength-damage services while preserving independent balance, templates, progression and Trophy purchase/return behavior. Applied per-template visual scales and body bounds; verified all ten in local Play and representative two-client independence, death, retry, rewards and mocked purchase completion. No real purchases or production data. See reports/World2BossParity_20261021/REPORT.md for dimensions, evidence, limitations and writeback.
+
+
+## 2026-10-21 — Connect World2 premium Treadmill and Aura
+
+Connected Game Passes 2044250678 and 2045204630 to existing World2 training/inventory behavior, preserving current effects and World1 entitlements. Added current-price presentation and server-confirmed immediate ownership updates; validated scoped two-client behavior with simulated billing and isolated data. Nine Sources were written to the same CurrentCloud.rbxl and reread. Limited Egg 02 remains pending quantity/button clarification. Evidence and limits: reports/World2PaidFacilities_20261021/README.md.

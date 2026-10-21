@@ -81,6 +81,9 @@ end
 -- Only the seven existing, exact World2 roots authorize World2 training.
 local World2=require(script.Parent.World2GameplayConfig)
 local stationTypes={1,1,2,2,3,3,4}
+function Config.GetPremiumTreadmillPassId(world)
+ return world==2 and World2.Treadmills[4].GamePassId or Config.PremiumTreadmillPassId
+end
 function Config.WorldForModel(model)
  if not model then return nil end
  if model.Parent==workspace:FindFirstChild("Treadmills") and Config.Get(model.Name) then return 1 end

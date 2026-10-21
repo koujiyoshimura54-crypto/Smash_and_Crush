@@ -12,32 +12,36 @@ local function sessionFor(player)
  if not s or not s.Loaded or not s.Data then return nil,"DataNotLoaded" end
  return s
 end
-function M.RefreshRedOwnership(player,force)
+function M.RefreshPassOwnership(player,id,force)
+ local aura=Config.Get(id)
+ if not aura or aura.PurchaseType~="GamePass" then return false,"InvalidAuraId" end
  local s,code=sessionFor(player)
  if not s then return false,code end
- local cached=pass[player]
+ local entries=pass[player] or {};pass[player]=entries
+ local cached=entries[id]
  if cached and not force and os.clock()-cached.time<60 then return cached.owned,"Verified" end
- if busy[player] then return false,"RequestInProgress" end
+ if busy[player] then return cached and cached.owned==true or false,"RequestInProgress" end
  busy[player]=true
- local ok,owned=pcall(function() return Marketplace:UserOwnsGamePassAsync(player.UserId,Config.Get("Red").GamePassId) end)
+ local ok,owned=pcall(function() return Marketplace:UserOwnsGamePassAsync(player.UserId,aura.GamePassId) end)
  busy[player]=nil
- if not ok then return false,"OwnershipUnavailable" end
+ if not ok then return cached and cached.owned==true or false,"OwnershipUnavailable" end
  if Data.Get(player)~=s then return false,"DataNotLoaded" end
- pass[player]={owned=owned==true,time=os.clock()}
+ entries[id]={owned=owned==true,time=os.clock()}
  -- The saved flag is only a cache. Gameplay also requires this verified session.
  if not s.Saving then
   local value=owned and true or nil
-  if s.Data.OwnedAuras.Red~=value then s.Data.OwnedAuras.Red=value;s.Dirty=true end
+  if s.Data.OwnedAuras[id]~=value then s.Data.OwnedAuras[id]=value;s.Dirty=true end
  end
  return owned==true,"Verified"
 end
+function M.RefreshRedOwnership(player,force) return M.RefreshPassOwnership(player,"Red",force) end
 function M.GetOwnedAuras(player)
  local s,code=sessionFor(player)
  if not s then return nil,code end
  local out={}
  for _,id in ipairs(Config.Order) do
   if Config.Get(id).PurchaseEnabled==false then out[id]=false
-  elseif id=="Red" then out[id]=pass[player]~=nil and pass[player].owned==true
+  elseif Config.Get(id).PurchaseType=="GamePass" then out[id]=pass[player]~=nil and pass[player][id]~=nil and pass[player][id].owned==true
   elseif id=="VIP" then out[id]=s.Data.OwnedAuras[id]==true and Passes.HasShopPass(player,"VIP")
   else out[id]=s.Data.OwnedAuras[id]==true end
  end
@@ -98,12 +102,12 @@ function M.EquipAura(player,id)
  local aura=Config.Get(id)
  if not aura then return false,"InvalidAuraId" end
  if aura.PurchaseType=="Entitlement" and M.GetOwnedAuras(player)[id]~=true then return false,"NotOwned" end
- if id=="Red" then
-  local owned,code=M.RefreshRedOwnership(player,false)
+ if aura.PurchaseType=="GamePass" then
+  local owned,code=M.RefreshPassOwnership(player,id,false)
   if not owned then return false,code=="Verified" and "NotOwned" or code end
  end
  return mutate(player,function(s)
-  if id=="Red" then s.Data.OwnedAuras.Red=true end
+  if aura.PurchaseType=="GamePass" then s.Data.OwnedAuras[id]=true end
   return Data.SetEquippedAura(player,id)
  end,false)
 end
@@ -115,6 +119,13 @@ function M.CompleteRedPurchase(player)
   s.Data.OwnedAuras.Red=true
   return true,"Purchased"
  end,true,"Red")
+end
+function M.CompletePassPurchase(player,id)
+ if id=="Red" then return M.CompleteRedPurchase(player) end
+ local owned,code=M.RefreshPassOwnership(player,id,true)
+ if not owned then return false,code=="Verified" and "NotOwned" or code end
+ -- Pass ownership is durable on Roblox; selecting this Aura remains explicit.
+ return true,"Purchased"
 end
 function M.UnequipAura(player)
  return mutate(player,function() return Data.SetEquippedAura(player,"") end,false)

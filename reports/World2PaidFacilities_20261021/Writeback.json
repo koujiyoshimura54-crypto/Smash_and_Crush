@@ -1,0 +1,50 @@
+{
+  "inputSha256": "cc7aa254b4654ea0faf0e514e72aa842677522f58d6b14c71185abf182a6f0cb",
+  "outputSha256": "8afea7a24a37d00aa360f36d73fb02cf2aa3f8593d375498ff69892c87d94703",
+  "bytes": 6356485,
+  "sources": {
+    "ReplicatedStorage.Config.World2GameplayConfig": {
+      "before": "54c2eeb2f47e048922aaa2ccbfe9ed4cd08d87c764120417eb98fc32299eef6f",
+      "after": "85a1313941e459818795d68c19e588f6f858242c8a8c49f68827bfe23ae9c867"
+    },
+    "ReplicatedStorage.Config.TreadmillConfig": {
+      "before": "1d5634e416c67488dc8a523c2d668fdad346916ee95bfd1bb719f76d8ccf741c",
+      "after": "c894f4c56376a50469cc31e70d8086cbd0c5a2ab9c8547ef4210d5beeacb18d0"
+    },
+    "ReplicatedStorage.Config.AuraConfig": {
+      "before": "8e413e8eb9ee523cf921196bbbb5cb1ee88415a77f7ff1154a4a2c3f4c94a57b",
+      "after": "72c62c920ab6cab0edf8f4c987cfba03ad0ba5a76bed54b49076c2e2276f8633"
+    },
+    "ServerScriptService.Services.GamePassService": {
+      "before": "2249ff9e63d2823cd143ce56e78b2cf4e1d77386fb185b611df9565d1713fda9",
+      "after": "00d86fb521f3496d317fb77b3bf092f1b1ecbcb6fa648ab4f77e50fa1d49cf52"
+    },
+    "ServerScriptService.Services.TrainingManager": {
+      "before": "f0a2fc856dbbb1f720d740f602e9c3180ca33e9a0da45b92ee0e5828636db76c",
+      "after": "3f7b72cc99777bd400ac8680e597edb0e412b8fc7f44571a98304049b2b2cec9"
+    },
+    "ServerScriptService.Services.AuraService": {
+      "before": "77f1df63e3bf7d5d8effa937aa941c6dc0e48559b0129643fe6437316fa73142",
+      "after": "fe273657bd4338d78cdc3077fbff1a4f5f21ff59ee14c91bbb36802673248b2b"
+    },
+    "ServerScriptService.Systems.Controllers.AuraController": {
+      "before": "479fc5194e83863cf3bd2fa0cd661c72dbbcbc1cc0123d4f6db80ac74a4036c0",
+      "after": "5c6f5da34ed75193bf8874da33755477e0d80371d6c05785bbd05bbe84e3a918"
+    },
+    "StarterGui.StrengthGui.AuraInventoryClient": {
+      "before": "af8fde39f96b845cbd05c5ddf8d757f67b390d5c0eabfa8875dc62c2adfabd55",
+      "after": "c7cf39654f9d843df138252dfa37076b350d757c4eaa91f33988f31a86e242ee"
+    },
+    "StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient": {
+      "before": "0f1645bd06718fef09d9e44b5984e95d4676d37a11a439dbb1a3336e87091118",
+      "after": "c315ed895f5814d8125468457bd0c5b44c935e8ae06846dcd95d521ab3f0425b"
+    }
+  },
+  "syntaxCompiled": true,
+  "writtenAndReread": true,
+  "allOtherSourcesPropertiesParentsUniqueIdsUnchanged": true,
+  "bossParityAe7c5d0And40TrophyButtonsPreserved": true,
+  "limitedEggReceiptAndPetSettingsUnchangedPendingQuantityConfirmation": true,
+  "testFixturesWritten": false,
+  "studioSaveOrPublishUsed": false
+}

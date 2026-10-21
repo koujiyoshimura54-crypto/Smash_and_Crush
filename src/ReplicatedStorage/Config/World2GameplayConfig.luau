@@ -133,8 +133,11 @@ local C={
    Count=1,
    Multiplier=35,
    RequiredRebirth=nil,
-   PurchaseEnabled=false,
-   PurchaseType="Robux",
+   PurchaseEnabled=true,
+   PurchaseType="GamePass",
+   RequiresPremium=true,
+   GamePassId=2044250678,
+   BasePrice=399,
   }},
  Auras={{
    StrengthBonus=200,
@@ -158,7 +161,9 @@ local C={
    PriceWin=500000,
   },{
    StrengthBonus=1500,
-   PurchaseEnabled=false,
+   PurchaseEnabled=true,
+   GamePassId=2045204630,
+   BasePrice=299,
   }},
  Eggs={{
    PriceWin=1000,
@@ -190,8 +195,8 @@ for eggIndex,sources in ipairs(C.PetSources) do
  end
 end
 C.PaidOffers={
- Treadmill04={Multiplier=C.Treadmills[4].Multiplier,PurchaseEnabled=false},
- Aura={StrengthBonus=C.Auras[6].StrengthBonus,PurchaseEnabled=false},
+ Treadmill04=C.Treadmills[4],
+ Aura=C.Auras[6],
  LimitedEgg={EggId=C.EggIds[5],PurchaseEnabled=false},
 }
 local function freeze(value)

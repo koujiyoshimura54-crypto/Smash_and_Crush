@@ -632,3 +632,8 @@ Both World contexts now confirm and notify an eligible owner Trophy/Win receipt 
 ## 2026-10-21 — Current World2 boss behavior
 
 World2 Stage1-10 use current World1 non-animation chase and combat behavior, including Strength × (1 + glove bonus) damage, unlimited attack count, existing timing, per-owner HP/UI and reset/return lifecycle. World2 HP, RequiredStrength, walls and rewards remain independently configured. The old World2 five-hit lottery route is no longer used. Per-template visual scales and body bounds are persisted in World2BossVisualConfig; fresh personal clones prevent cumulative scaling. Trophy collection still requires a valid defeated-stage receipt and either normal (Win x2 excluded) or double pad; existing Win x3 correction remains. World2 animation creation is deferred. See reports/World2BossParity_20261021/REPORT.md.
+
+
+## 2026-10-21 — World2 premium pass connections
+
+World2 old treadmill tier 04 (one machine, current root 07) now uses Game Pass 2044250678, base 399 Robux, with its unchanged x35 Training effect. World2 Aura W2_AURA_06 uses Game Pass 2045204630, base 299 Robux, and grants +1500 only when selected in Inventory. Server-verified purchase completion updates access immediately; World1 IDs/effects remain independent. Current Marketplace prices drive the UI; failed lookups never imply free access. Limited Egg 02 Product 3720640383/base 279 remains disabled until its purchase quantity/button is explicitly confirmed. See reports/World2PaidFacilities_20261021/README.md.
