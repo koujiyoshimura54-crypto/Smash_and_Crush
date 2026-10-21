@@ -619,3 +619,7 @@ DataStoreConfig.ResetWorld2ArrivalOnStudioPlay=true enables a Studio-only, unsav
 ## 2026-10-21 - Authored surface seam maintenance
 
 Proven small coplanar overlaps at Lobby carpet connections, dumbbell stand seams and World2 treadmill frame ends were trimmed only within volumes covered by adjoining blocks. Existing outer geometry, traversal, collision settings, transparent barriers, Sources and gameplay remain intact. World1 has 3 adjusted Parts and World2 has 19; no Stage geometry was changed without sufficient surface evidence. Appearance and runtime behavior have not been verified by Play.
+
+## 2026-10-21 - Marked World1 stage wall end faces
+
+Used the saved BlockSquareX marker and current manual edits to identify corresponding Environment_RightSide/Cliff01/BorderPattern walls in World1 Stage01-10. Recessed three competing Bottom end faces per Stage by 0.02-0.06 studs; green Upper Parts and all unrelated properties remain unchanged. Same-file writeback was reread successfully. Exact Full Paths and before/after transforms: reports/MarkedStageWallFaces_20261021/Writeback.json. Appearance and runtime confirmation are reserved for the user.

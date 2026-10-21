@@ -2317,3 +2317,7 @@ The user confirmed prior World2 arrival, explaining the existing ??? presentatio
 ## 2026-10-21 - Map surface seam writeback
 
 Completed minimal geometry-only edits to 22 saved Parts (World1: 3; World2: 19) and reread the same CurrentCloud.rbxl successfully. Exact paths, instance refs and before/after properties are recorded in reports/MapSurfaceSeams_20261021/Writeback.json. Uncertain mesh and complex wall candidates remain unchanged. No Studio, Play, screenshots or production-data changes; the user will verify appearance and gameplay.
+
+## 2026-10-21 - Marked World1 stage wall end faces
+
+Used the saved BlockSquareX marker and current manual edits to identify corresponding Environment_RightSide/Cliff01/BorderPattern walls in World1 Stage01-10. Recessed three competing Bottom end faces per Stage by 0.02-0.06 studs; green Upper Parts and all unrelated properties remain unchanged. Same-file writeback was reread successfully. Exact Full Paths and before/after transforms: reports/MarkedStageWallFaces_20261021/Writeback.json. Appearance and runtime confirmation are reserved for the user.

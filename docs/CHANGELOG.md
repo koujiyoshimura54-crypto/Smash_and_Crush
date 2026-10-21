@@ -1086,3 +1086,7 @@ Added ResetWorld2ArrivalOnStudioPlay to the existing DataStoreConfig and an unsa
 ## 2026-10-21 - Coplanar map surface seams
 
 Trimmed proven adjoining opaque-block face overlaps in the current place: 3 World1 Parts and 19 World2 Parts. Carpet ends, dumbbell stand seams and World2 treadmill 01-04 frame ends now meet at their existing seams (approximately 0.008-0.078 studs trimmed). No Sources or gameplay settings changed. See reports/MapSurfaceSeams_20261021/README.md and Writeback.json. Same-file writeback was reread; visual and runtime verification are reserved for the user.
+
+## 2026-10-21 - Marked World1 stage wall end faces
+
+Used the saved BlockSquareX marker and current manual edits to identify corresponding Environment_RightSide/Cliff01/BorderPattern walls in World1 Stage01-10. Recessed three competing Bottom end faces per Stage by 0.02-0.06 studs; green Upper Parts and all unrelated properties remain unchanged. Same-file writeback was reread successfully. Exact Full Paths and before/after transforms: reports/MarkedStageWallFaces_20261021/Writeback.json. Appearance and runtime confirmation are reserved for the user.

@@ -1,0 +1,1027 @@
+{
+  "world": 1,
+  "markerPath": "Workspace.GeneratedMap.BattleCorridor.Stage01.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquareX",
+  "inputSha256": "de92471ed68a20b20beff0fc34aaf76e0053a1a0cd7b16985c65689d7bc298fa",
+  "outputSha256": "752ae2710c7e6941006ec872ed042dadd1950b2a49411b9ebe0390623baececb",
+  "stages": [
+    {
+      "stage": 1,
+      "measuredCoplanarPairs": 11,
+      "changedParts": 3
+    },
+    {
+      "stage": 2,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    },
+    {
+      "stage": 3,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    },
+    {
+      "stage": 4,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    },
+    {
+      "stage": 5,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    },
+    {
+      "stage": 6,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    },
+    {
+      "stage": 7,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    },
+    {
+      "stage": 8,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    },
+    {
+      "stage": 9,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    },
+    {
+      "stage": 10,
+      "measuredCoplanarPairs": 9,
+      "changedParts": 3
+    }
+  ],
+  "changes": [
+    {
+      "stage": 1,
+      "ref": 82033,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        121.30000305175781
+      ],
+      "beforeSize": [
+        12.600000381469727,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        121.29000091552734
+      ],
+      "afterSize": [
+        12.579999923706055,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        82040,
+        82100,
+        82123
+      ]
+    },
+    {
+      "stage": 1,
+      "ref": 82100,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquareX.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        121.30000305175781
+      ],
+      "beforeSize": [
+        12.600000381469727,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        121.2800064086914
+      ],
+      "afterSize": [
+        12.5600004196167,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        82033,
+        82040,
+        82093,
+        82108,
+        82123
+      ]
+    },
+    {
+      "stage": 1,
+      "ref": 82123,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        121.05000305175781
+      ],
+      "beforeSize": [
+        13.100000381469727,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        121.02000427246094
+      ],
+      "afterSize": [
+        13.039999961853027,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        82033,
+        82040,
+        82093,
+        82100,
+        82108,
+        82116
+      ]
+    },
+    {
+      "stage": 2,
+      "ref": 79076,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        239.1999969482422
+      ],
+      "beforeSize": [
+        10.100006103515625,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        239.19000244140625
+      ],
+      "afterSize": [
+        10.080005645751953,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        79069,
+        79084,
+        79099
+      ]
+    },
+    {
+      "stage": 2,
+      "ref": 79084,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        239.1999969482422
+      ],
+      "beforeSize": [
+        10.100006103515625,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        239.17999267578125
+      ],
+      "afterSize": [
+        10.060006141662598,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        79069,
+        79076,
+        79091,
+        79099
+      ]
+    },
+    {
+      "stage": 2,
+      "ref": 79099,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        238.9499969482422
+      ],
+      "beforeSize": [
+        10.600006103515625,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        238.9199981689453
+      ],
+      "afterSize": [
+        10.540005683898926,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        79069,
+        79076,
+        79084,
+        79091,
+        79106
+      ]
+    },
+    {
+      "stage": 3,
+      "ref": 69834,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        358.5199890136719
+      ],
+      "beforeSize": [
+        10.099998474121094,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        358.5099792480469
+      ],
+      "afterSize": [
+        10.079998016357422,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        69841,
+        69856,
+        69871
+      ]
+    },
+    {
+      "stage": 3,
+      "ref": 69856,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        358.5199890136719
+      ],
+      "beforeSize": [
+        10.099998474121094,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        358.5
+      ],
+      "afterSize": [
+        10.059998512268066,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        69834,
+        69841,
+        69849,
+        69871
+      ]
+    },
+    {
+      "stage": 3,
+      "ref": 69871,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        358.2699890136719
+      ],
+      "beforeSize": [
+        10.599998474121094,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        358.239990234375
+      ],
+      "afterSize": [
+        10.539998054504395,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        69834,
+        69841,
+        69849,
+        69856,
+        69864
+      ]
+    },
+    {
+      "stage": 4,
+      "ref": 70888,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        480.7200012207031
+      ],
+      "beforeSize": [
+        10.100017547607422,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        480.7099914550781
+      ],
+      "afterSize": [
+        10.08001708984375,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        70881,
+        70903,
+        70918
+      ]
+    },
+    {
+      "stage": 4,
+      "ref": 70918,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        480.7200012207031
+      ],
+      "beforeSize": [
+        10.100017547607422,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        480.70001220703125
+      ],
+      "afterSize": [
+        10.060017585754395,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        70881,
+        70888,
+        70903,
+        70911
+      ]
+    },
+    {
+      "stage": 4,
+      "ref": 70903,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        480.4700012207031
+      ],
+      "beforeSize": [
+        10.600017547607422,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        480.44000244140625
+      ],
+      "afterSize": [
+        10.540017127990723,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        70881,
+        70888,
+        70896,
+        70911,
+        70918
+      ]
+    },
+    {
+      "stage": 5,
+      "ref": 80287,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        606.6699829101562
+      ],
+      "beforeSize": [
+        10.100005149841309,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        606.6599731445312
+      ],
+      "afterSize": [
+        10.080004692077637,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        80220,
+        80257,
+        80280
+      ]
+    },
+    {
+      "stage": 5,
+      "ref": 80257,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        606.6699829101562
+      ],
+      "beforeSize": [
+        10.100005149841309,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        606.6499633789062
+      ],
+      "afterSize": [
+        10.060005187988281,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        80220,
+        80250,
+        80280,
+        80287
+      ]
+    },
+    {
+      "stage": 5,
+      "ref": 80220,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        606.4199829101562
+      ],
+      "beforeSize": [
+        10.600005149841309,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        606.3899536132812
+      ],
+      "afterSize": [
+        10.54000473022461,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        80227,
+        80250,
+        80257,
+        80280,
+        80287
+      ]
+    },
+    {
+      "stage": 6,
+      "ref": 77988,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        736.3699951171875
+      ],
+      "beforeSize": [
+        10.099992752075195,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        736.3599853515625
+      ],
+      "afterSize": [
+        10.079992294311523,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        77965,
+        77995,
+        78010
+      ]
+    },
+    {
+      "stage": 6,
+      "ref": 77965,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        736.3699951171875
+      ],
+      "beforeSize": [
+        10.099992752075195,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        736.3499755859375
+      ],
+      "afterSize": [
+        10.059992790222168,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        77958,
+        77988,
+        77995,
+        78010
+      ]
+    },
+    {
+      "stage": 6,
+      "ref": 78010,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        736.1199951171875
+      ],
+      "beforeSize": [
+        10.599992752075195,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        736.0899658203125
+      ],
+      "afterSize": [
+        10.539992332458496,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        77958,
+        77965,
+        77988,
+        77995,
+        78003
+      ]
+    },
+    {
+      "stage": 7,
+      "ref": 75749,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        947.3699951171875
+      ],
+      "beforeSize": [
+        10.099992752075195,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        947.3599853515625
+      ],
+      "afterSize": [
+        10.079992294311523,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        75666,
+        75719,
+        75742
+      ]
+    },
+    {
+      "stage": 7,
+      "ref": 75719,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        947.3699951171875
+      ],
+      "beforeSize": [
+        10.099992752075195,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        947.3499755859375
+      ],
+      "afterSize": [
+        10.059992790222168,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        75666,
+        75712,
+        75742,
+        75749
+      ]
+    },
+    {
+      "stage": 7,
+      "ref": 75666,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        947.1199951171875
+      ],
+      "beforeSize": [
+        10.599992752075195,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        947.0899658203125
+      ],
+      "afterSize": [
+        10.539992332458496,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        75673,
+        75712,
+        75719,
+        75742,
+        75749
+      ]
+    },
+    {
+      "stage": 8,
+      "ref": 74476,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        1182.3699951171875
+      ],
+      "beforeSize": [
+        10.099931716918945,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        1182.3599853515625
+      ],
+      "afterSize": [
+        10.079931259155273,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        74469,
+        74506,
+        74536
+      ]
+    },
+    {
+      "stage": 8,
+      "ref": 74536,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        1182.3699951171875
+      ],
+      "beforeSize": [
+        10.099931716918945,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        1182.3499755859375
+      ],
+      "afterSize": [
+        10.059931755065918,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        74469,
+        74476,
+        74506,
+        74529
+      ]
+    },
+    {
+      "stage": 8,
+      "ref": 74506,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        1182.1199951171875
+      ],
+      "beforeSize": [
+        10.599931716918945,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        1182.0899658203125
+      ],
+      "afterSize": [
+        10.539931297302246,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        74469,
+        74476,
+        74499,
+        74529,
+        74536
+      ]
+    },
+    {
+      "stage": 9,
+      "ref": 81512,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        1363.369873046875
+      ],
+      "beforeSize": [
+        10.100175857543945,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        1363.35986328125
+      ],
+      "afterSize": [
+        10.080175399780273,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        81505,
+        81520,
+        81542
+      ]
+    },
+    {
+      "stage": 9,
+      "ref": 81542,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        1363.369873046875
+      ],
+      "beforeSize": [
+        10.100175857543945,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        1363.349853515625
+      ],
+      "afterSize": [
+        10.060175895690918,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        81505,
+        81512,
+        81520,
+        81535
+      ]
+    },
+    {
+      "stage": 9,
+      "ref": 81520,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        1363.119873046875
+      ],
+      "beforeSize": [
+        10.600175857543945,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        1363.08984375
+      ],
+      "afterSize": [
+        10.540175437927246,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        81505,
+        81512,
+        81527,
+        81535,
+        81542
+      ]
+    },
+    {
+      "stage": 10,
+      "ref": 72167,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        323.5625,
+        1.0,
+        1508.369873046875
+      ],
+      "beforeSize": [
+        10.100175857543945,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        323.5625,
+        1.0,
+        1508.35986328125
+      ],
+      "afterSize": [
+        10.080175399780273,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.02,
+      "competingParts": [
+        72121,
+        72160,
+        72190
+      ]
+    },
+    {
+      "stage": 10,
+      "ref": 72190,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockSquare.Bottom",
+      "beforePosition": [
+        327.5625,
+        14.0,
+        1508.369873046875
+      ],
+      "beforeSize": [
+        10.100175857543945,
+        26.0,
+        17.0
+      ],
+      "afterPosition": [
+        327.5625,
+        14.0,
+        1508.349853515625
+      ],
+      "afterSize": [
+        10.060175895690918,
+        26.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.04,
+      "competingParts": [
+        72121,
+        72160,
+        72167,
+        72197
+      ]
+    },
+    {
+      "stage": 10,
+      "ref": 72121,
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Boundaries.Environment_RightSide.Cliff01.BorderPattern.BlockRectangle.Bottom",
+      "beforePosition": [
+        334.5625,
+        22.5,
+        1508.119873046875
+      ],
+      "beforeSize": [
+        10.600175857543945,
+        31.0,
+        17.0
+      ],
+      "afterPosition": [
+        334.5625,
+        22.5,
+        1508.08984375
+      ],
+      "afterSize": [
+        10.540175437927246,
+        31.0,
+        17.0
+      ],
+      "recessedPositiveZ": 0.06,
+      "competingParts": [
+        72114,
+        72160,
+        72167,
+        72190,
+        72197
+      ]
+    }
+  ],
+  "writtenAndReread": true,
+  "unrelatedPropertiesAndSourcesPreserved": true,
+  "playTested": false,
+  "appearanceVerified": false,
+  "studioOpened": false
+}
