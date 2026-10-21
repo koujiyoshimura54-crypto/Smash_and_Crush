@@ -1,0 +1,575 @@
+{
+  "inputSha256": "4c374c4af576e427ba84af9a81d7c222928159419fb29650a77822aed0b6699d",
+  "outputSha256": "189a0007a13fcd649cdc4bc3fc3b8e53175d94d24f1281e82cbc497d37bee3aa",
+  "sources": {
+    "ServerScriptService.Services.TrophyRewardService": "768f60e36f46d59d4e901b712ea927b9477ba44d491a3507844e5f61917eb4c2",
+    "ServerScriptService.Services.GamePassService": "2249ff9e63d2823cd143ce56e78b2cf4e1d77386fb185b611df9565d1713fda9",
+    "StarterPlayer.StarterPlayerScripts.Combat.CombatClient": "285cbde758cbb185587868d8425dec51b410216b349ba01299bbd00fd032e6cb"
+  },
+  "buttons": [
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        165.875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage01.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        165.875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        283.8599853515625
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage02.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        283.8599853515625
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        404.6199951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage03.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        404.6199951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        528.6950073242188
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage04.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        528.6950073242188
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        656.52001953125
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage05.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        656.52001953125
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        826.8699951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage06.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        826.8699951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        1049.8699951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage07.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        1049.8699951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        1257.8699951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage08.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        1257.8699951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        1420.8699951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage09.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        1420.8699951171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.TrophyNormalButton",
+      "position": [
+        255.11998779296874,
+        4.180000005960465,
+        1595.4200439453125
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.GeneratedMap.BattleCorridor.Stage10.TrophyDoubleButton",
+      "position": [
+        320.47998779296876,
+        4.180000005960465,
+        1595.4200439453125
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        2137.7177734375
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage01.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        2137.7177734375
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        2256.3701171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage02.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        2256.3701171875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        2377.85009765625
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage03.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        2377.85009765625
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        2502.86279296875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage04.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        2502.86279296875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        2631.625
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage05.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        2631.625
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        2822.30029296875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage06.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        2822.30029296875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        3051.30029296875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage07.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        3051.30029296875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        3245.800048828125
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage08.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        3245.800048828125
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        3399.80029296875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage09.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        3399.80029296875
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.TrophyNormalButton",
+      "position": [
+        -6.2799999237060575,
+        2.2800000074505804,
+        3591.900146484375
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    },
+    {
+      "path": "Workspace.World2Map.BattleCorridor.Stage10.TrophyDoubleButton",
+      "position": [
+        62.12000007629395,
+        2.2800000074505804,
+        3591.900146484375
+      ],
+      "size": [
+        8.0,
+        0.30000001192092896,
+        5.0
+      ],
+      "created": true
+    }
+  ],
+  "unrelatedExistingRowsUnchanged": true,
+  "syntaxCompiled": true,
+  "writtenAndReread": true,
+  "runtimeTested": false
+}

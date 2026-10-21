@@ -100,6 +100,15 @@ local function clearTrophy(id)
  for key,visual in trophyVisuals do visual:Destroy();trophyVisuals[key]=nil end
 end
 local function showTrophy(d)
+ if d.StaticButtons then
+  local map=workspace:FindFirstChild(mapName)
+  local corridor=map and map:FindFirstChild("BattleCorridor")
+  local stage=corridor and corridor:FindFirstChild(("Stage%02d"):format(d.Stage))
+  local button=stage and stage:FindFirstChild("TrophyNormalButton")
+  local amount=button and button:FindFirstChild("Amount",true)
+  if amount then amount.Text="+"..tostring(d.WinReward).." Win" end
+  return
+ end
  local existing=trophyVisuals[d.Id]
  if existing and existing.Parent then return end
  local visual=RS.UI.Templates:WaitForChild("TrophyRewardTemplate"):Clone()

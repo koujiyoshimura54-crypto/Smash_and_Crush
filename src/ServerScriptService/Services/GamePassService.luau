@@ -24,6 +24,7 @@ local winRefreshBusy=setmetatable({}, {__mode="k"})
 local winPromptLocks=setmetatable({}, {__mode="k"})
 local winLastRequest=setmetatable({}, {__mode="k"})
 local winRecovery=setmetatable({}, {__mode="k"})
+local trophyPurchases=setmetatable({}, {__mode="k"})
 local function currentWorld()
  return Config.GetWorld(game.PlaceId)
 end
@@ -48,6 +49,14 @@ function M.Refresh(player)
  for _,tier in ipairs({{Key="Double",Id=Config.GetDoubleWinPassId("World1")},{Key="Triple",Id=Config.GetTripleWinPassId("World1")}}) do
   local ok,owned=pcall(function() return MarketplaceService:UserOwnsGamePassAsync(player.UserId,tier.Id) end)
   if ok then entry[tier.Key]=owned==true else entry.Verified=false end
+  -- Deliver this receipt immediately after Double ownership is confirmed; do not
+  -- wait for the unrelated Triple ownership request or a persistence operation.
+  local purchase=trophyPurchases[player]
+  if tier.Key=="Double" and entry.Double and purchase and player.Parent==Players then
+   cache[player]=entry
+   trophyPurchases[player]=nil
+   task.spawn(purchase.OnOwned)
+  end
  end
  winRefreshBusy[player]=nil
  if player.Parent~=Players then return false,"PlayerUnavailable" end
@@ -97,12 +106,23 @@ function M.GetWinReward(player,baseReward,worldId)
  if worldId==2 then return math.floor(tonumber(baseReward) or 0) end -- No configured World2 Win pass; never borrow World1 IDs.
  return math.floor((tonumber(baseReward) or 0)*M.GetWinMultiplier(player))
 end
+-- Trophy choices suppress only Double Win; the separate Triple tier is retained.
+function M.GetTrophyWinReward(player,baseReward,worldId,double)
+ local entry=cache[player]
+ local other=worldId==1 and M.AreEffectsEnabled(player) and entry and entry.Triple and 3 or 1
+ return math.floor((tonumber(baseReward) or 0)*other*(double and 2 or 1))
+end
+function M.GetTrophyDoubleOwnership(player)
+ if not cache[player] then M.Refresh(player) end
+ local entry=cache[player]
+ return entry~=nil and entry.Double==true,entry and entry.Verified and "Verified" or "OwnershipUnavailable"
+end
 local function releaseWinPrompt(player,lock)
  if winPromptLocks[player]~=lock then return end
  winPromptLocks[player]=nil
  if player.Parent==Players then player:SetAttribute("WinPassPromptBusy",false) end
 end
-function M.Prompt(player)
+function M.Prompt(player,trophy)
  if not M.IsWorld1() then return false,"UnavailableWorld" end
  if winPromptLocks[player] then return false,"Pending" end
  local now=os.clock()
@@ -119,13 +139,17 @@ function M.Prompt(player)
   end
   return false,status
  end
- local passId=M.GetNextWinPassId(player)
+ if trophy and not trophy.IsCurrent() then releaseWinPrompt(player,lock);return false,"Expired" end
+ local doubleOwned=M.GetTrophyDoubleOwnership(player)
+ if trophy and doubleOwned then releaseWinPrompt(player,lock);return false,"AlreadyOwned" end
+ local passId=trophy and Config.GetDoubleWinPassId("World1") or M.GetNextWinPassId(player)
  if not passId then releaseWinPrompt(player,lock);return false,"AlreadyOwned" end
  lock.PassId=passId
+ lock.Trophy=trophy
  local ok=pcall(function() MarketplaceService:PromptGamePassPurchase(player,passId) end)
  if not ok then releaseWinPrompt(player,lock);return false,"PromptUnavailable" end
  -- Recovery only if Roblox never sends the close event.
- task.delay(120,function() releaseWinPrompt(player,lock) end)
+ if not trophy then task.delay(120,function() releaseWinPrompt(player,lock) end) end
  return true,"Prompted"
 end
 MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,passId,purchased)
@@ -136,6 +160,7 @@ MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,passId
   if lock then releaseWinPrompt(player,lock) end
   return
  end
+ if lock and lock.Trophy then trophyPurchases[player]=lock.Trophy end
  task.spawn(function()
   -- A client completion is never sufficient to authorize a multiplier.
   for attempt=1,5 do
@@ -155,6 +180,7 @@ MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,passId
  end)
 end)
 Players.PlayerRemoving:Connect(function(player)
+ trophyPurchases[player]=nil
  cache[player]=nil;winRefreshBusy[player]=nil;winPromptLocks[player]=nil;winLastRequest[player]=nil;winRecovery[player]=nil
 end)
 

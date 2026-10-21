@@ -30,13 +30,27 @@ local records = {}
 local activeClaims = {}
 local map, remote, resetRun, isDefeated
 local sequence = 0
-local template = RS.UI.Templates:WaitForChild("TrophyRewardTemplate")
-
-local hitboxes = Instance.new("Folder")
-hitboxes.Name = worldId==2 and "World2PersonalTrophyHitboxes" or "PersonalTrophyHitboxes"
-hitboxes.Parent = workspace
+local watched=setmetatable({}, {__mode="k"})
+local function overlap(character,pad,margin)
+ local params=OverlapParams.new()
+ params.FilterType=Enum.RaycastFilterType.Include
+ params.FilterDescendantsInstances={character}
+ return workspace:GetPartBoundsInBox(pad.CFrame*CFrame.new(0,0.3,0),pad.Size+Vector3.new(margin or 0,0.6,margin or 0),params)
+end
+local function eligible(player,record)
+ local character=player.Character
+ local humanoid=character and character:FindFirstChildOfClass("Humanoid")
+ return player.Parent==Players and records[player] and records[player][record.Stage]==record
+  and record.Character==character and humanoid and humanoid.Health>0
+  and (player:GetAttribute("CurrentWorld") or 1)==worldId and isDefeated(player,record.Stage)
+end
 
 function M.InitializePlayer(player)
+ if not watched[player] then
+  watched[player]=true
+  player:GetAttributeChangedSignal("CurrentWorld"):Connect(function() M.Clear(player) end)
+  player.CharacterRemoving:Connect(function() M.Clear(player) end)
+ end
 	if player:GetAttribute("Win") == nil then
 		player:SetAttribute("Win", 0)
 	end
@@ -54,8 +68,7 @@ function M.Clear(player)
 	activeClaims[player] = nil
 
 	for _, record in stages or {} do
-		record.Connection:Disconnect()
-		record.Hitbox:Destroy()
+		for _,connection in record.Connections do connection:Disconnect() end
 
 		if player.Parent == Players then
 			remote:FireClient(player, {
@@ -73,7 +86,8 @@ function M.SendState(player)
 				Type = "TrophySpawn",
 				Id = r.Id,
 				Stage = r.Stage,
-				WinReward = GamePass.GetWinReward(player, RewardConfig.GetBaseReward(r.Stage,worldId),worldId),
+				WinReward = GamePass.GetTrophyWinReward(player, RewardConfig.GetBaseReward(r.Stage,worldId),worldId,false),
+				StaticButtons = true,
 				CFrame = r.CFrame
 			})
 		end
@@ -88,7 +102,7 @@ local function diagnose(player, record, reason)
   player.UserId, worldId, record.Stage, record.Id, tostring(record.Collected), reason))
 end
 
-local function collectAttempt(player, record, part)
+local function collectAttempt(player, record, part, double, purchased)
 	if (player:GetAttribute("CurrentWorld") or 1)~=worldId or not records[player]
 		or records[player][record.Stage] ~= record
 		or record.Claiming
@@ -96,7 +110,7 @@ local function collectAttempt(player, record, part)
 		return
 	end
 
-	if record.Owner ~= player or not isDefeated(player, record.Stage) then
+	if record.Owner ~= player or not eligible(player,record) then
 		return
 	end
 
@@ -104,20 +118,14 @@ local function collectAttempt(player, record, part)
 	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
 
 	if not character
-		or not part:IsDescendantOf(character)
+		or (not purchased and (not part or not part:IsDescendantOf(character)))
 		or not humanoid
 		or humanoid.Health <= 0 then
 		return
 	end
 
-	-- Verify physical overlap on the server, including when Touched was raised.
-	local params = OverlapParams.new()
-	params.FilterType = Enum.RaycastFilterType.Include
-	params.FilterDescendantsInstances = {character}
-
-	if #workspace:GetPartsInPart(record.Hitbox, params) == 0 then
-		return
-	end
+ local pad=double and record.DoublePad or record.Hitbox
+ if not purchased and #overlap(character,pad)==0 then return end
 
 	if not PlayerData.IsLoaded(player) then return end
 
@@ -127,13 +135,13 @@ local function collectAttempt(player, record, part)
 	if not record.Collected then
 	 local baseReward = RewardConfig.GetBaseReward(record.Stage, worldId)
 	 if typeof(baseReward) ~= "number" then diagnose(player, record, "MissingReward"); return end
-	 local winReward = GamePass.GetWinReward(player, baseReward, worldId)
+	 local winReward = GamePass.GetTrophyWinReward(player, baseReward, worldId, double)
 	 -- A cold pass lookup can yield; never use pre-yield balance or eligibility.
 	 if not records[player] or records[player][record.Stage] ~= record
 	  or player.Character ~= character or humanoid.Health <= 0
 	  or (player:GetAttribute("CurrentWorld") or 1) ~= worldId
 	  or not isDefeated(player, record.Stage) or not PlayerData.IsLoaded(player) then return end
-	 if #workspace:GetPartsInPart(record.Hitbox, params) == 0 then return end
+	 if not purchased and #overlap(character,pad)==0 then return end
 	 local win = player:GetAttribute("Win")
 	 if typeof(win) ~= "number" or win ~= win or win < 0 or win == math.huge then
 	  diagnose(player, record, "InvalidWin"); return
@@ -213,18 +221,50 @@ local function collectAttempt(player, record, part)
 	resetRun(player)
 end
 
-local function collect(player, record, part)
- if record.Processing or (record.RetryAt and os.clock() < record.RetryAt) then return end
- record.Processing = true
- -- Never make one player's streaming/save suspend the shared overlap scan.
+local collect
+collect=function(player,record,part,double,purchased)
+ if not eligible(player,record) then return end
+ if not purchased and #overlap(record.Character,double and record.DoublePad or record.Hitbox)==0 then return end
+ if double and not record.Collected and not purchased then
+  if record.Prompting or record.InsideDouble then return end
+  record.InsideDouble=true
+  record.Prompting=true
+  task.spawn(function()
+   local ok,err=xpcall(function()
+    local owned,status=GamePass.GetTrophyDoubleOwnership(player)
+    if not eligible(player,record) or record.Collected then return end
+    if owned then
+     if #overlap(record.Character,record.DoublePad)>0 then collect(player,record,part,true,true) end
+     return
+    end
+    if status~="Verified" then return end
+    local token=record.Purchase or {}
+    record.Purchase=token
+    local function current()
+     return eligible(player,record) and not record.Collected and record.Purchase==token
+    end
+    local prompted,reason=GamePass.Prompt(player,{
+     IsCurrent=function() return current() and #overlap(record.Character,record.DoublePad)>0 end,
+     OnOwned=function()
+      if current() then collect(player,record,nil,true,true) end
+     end,
+    })
+    if not prompted and reason=="AlreadyOwned" and current() then collect(player,record,nil,true,true) end
+   end,debug.traceback)
+   record.Prompting=false
+   if not ok then diagnose(player,record,"Purchase:"..tostring(err)) end
+  end)
+  return
+ end
+ if record.Processing or (record.RetryAt and os.clock()<record.RetryAt) then return end
+ record.Processing=true
  task.spawn(function()
-  local ok, err = xpcall(function() collectAttempt(player, record, part) end, debug.traceback)
-  record.Claiming = false
-  record.Processing = false
-  if not record.Collected and activeClaims[player] == record then activeClaims[player] = nil end
-  -- Backoff is only for an already credited return retry, never initial reward acceptance.
-  if record.Collected then record.RetryAt = os.clock() + 1 end
-  if not ok then diagnose(player, record, "Exception:" .. tostring(err)) end
+  local ok,err=xpcall(function() collectAttempt(player,record,part,double,purchased) end,debug.traceback)
+  record.Claiming=false
+  record.Processing=false
+  if not record.Collected and activeClaims[player]==record then activeClaims[player]=nil end
+  if record.Collected then record.RetryAt=os.clock()+1 end
+  if not ok then diagnose(player,record,"Exception:"..tostring(err)) end
  end)
 end
 
@@ -264,37 +304,20 @@ function M.Spawn(player, major)
 		return false
 	end
 
-	local handle = template.Handle
-
-	-- Floor-relative placement on the left of the boss area, clear of the enlarged visual.
-	local inset = math.max(handle.Size.X / 2 + 4, floor.Size.X * 0.12)
-	local padLocal = CFrame.new(
-		-floor.Size.X / 2 + inset,
-		floor.Size.Y / 2 + handle.Size.Y / 2 + 0.03,
-		0
-	)
-	local cf = floor.CFrame * padLocal * handle.CFrame.Rotation
-
-	local box = Instance.new("Part")
-	box.Name = "Trophy_" .. player.UserId .. "_Stage" .. major
-
-	-- A shallow volume above the pad catches feet, without a surrounding pickup radius.
-	box.Size = handle.Size + Vector3.new(0, 0.6, 0)
-	box.CFrame = cf * CFrame.new(0, 0.3, 0)
-	box.Anchored = true
-	box.CanCollide = false
-	box.CanTouch = true
-	box.CanQuery = true
-	box.Transparency = 1
-
-	box:SetAttribute("OwnerUserId", player.UserId)
-	box:SetAttribute("MajorStage", major)
-	box:SetAttribute("WinReward", baseReward)
+ -- Authored equipment is saved in the place; never regenerate buttons per run.
+ local normal=stage:FindFirstChild("TrophyNormalButton")
+ local double=stage:FindFirstChild("TrophyDoubleButton")
+ local box=normal and normal:FindFirstChild("Handle")
+ local doublePad=double and double:FindFirstChild("Handle")
+ assert(box and doublePad,"Saved Trophy buttons missing")
+ local cf=box.CFrame
 
 	sequence += 1
 
 	local r = {
 		Owner = player,
+		Character = player.Character,
+		DoublePad = doublePad,
 		Stage = major,
 		Id = sequence,
 		Hitbox = box,
@@ -306,17 +329,21 @@ function M.Spawn(player, major)
 	records[player] = records[player] or {}
 	records[player][major] = r
 
-	r.Connection = box.Touched:Connect(function(part)
-		collect(player, r, part)
-	end)
-
-	box.Parent = hitboxes
+ r.Connections={
+  box.Touched:Connect(function(part)
+   if player.Character and part:IsDescendantOf(player.Character) then collect(player,r,part,false,false) end
+  end),
+  doublePad.Touched:Connect(function(part)
+   if player.Character and part:IsDescendantOf(player.Character) then collect(player,r,part,true,false) end
+  end),
+ }
 
 	remote:FireClient(player, {
 		Type = "TrophySpawn",
 		Id = r.Id,
 		Stage = r.Stage,
-		WinReward = GamePass.GetWinReward(player, baseReward,worldId),
+		WinReward = GamePass.GetTrophyWinReward(player, baseReward,worldId,false),
+		StaticButtons = true,
 		CFrame = r.CFrame
 	})
 
@@ -345,17 +372,17 @@ RunService.Heartbeat:Connect(function(dt)
 		local character = player.Character
 
 		if character then
-			local params = OverlapParams.new()
-			params.FilterType = Enum.RaycastFilterType.Include
-			params.FilterDescendantsInstances = {character}
-
 			for _, record in stages do
 				if records[player] ~= stages then
 					break
 				end
 
-				for _, part in workspace:GetPartsInPart(record.Hitbox, params) do
-					collect(player, record, part)
+    if not eligible(player,record) then continue end
+    if #overlap(character,record.DoublePad,1.5)==0 then record.InsideDouble=false end
+    local doubleParts=overlap(character,record.DoublePad)
+    if doubleParts[1] then collect(player,record,doubleParts[1],true,false) end
+				for _, part in overlap(character,record.Hitbox) do
+					collect(player, record, part, false, false)
 
 					if records[player] ~= stages then
 						break

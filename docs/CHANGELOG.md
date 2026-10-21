@@ -1094,3 +1094,10 @@ Used the saved BlockSquareX marker and current manual edits to identify correspo
 ## 2026-10-21 - Trophy receipt before return waits
 
 Both World contexts now confirm and notify an eligible owner Trophy/Win receipt before item banking or Lobby streaming. Durable item banking and existing PlayerData saving remain enabled. Per-player receipt state prevents repeat credit during return retries, and protected independent workers release transient error locks without blocking the shared overlap scan. Only TrophyRewardService changed. Same-file Source readback and syntax compilation passed; no Play or measured timing claims. The unknown persistent inability report remains unconfirmed. See reports/TrophyReceipt_20261021/README.md.
+
+## 2026-10-21 - Saved normal and Double Win Trophy choices
+
+- Persisted 20 Double Win buttons and 20 normal buttons across both Worlds, using existing yellow geometry and mirrored floor-relative placement.
+- Connected the existing Double Win Game Pass server confirmation to the exact pending Trophy receipt; normal omits Double, left applies it once, and the separate Triple correction is retained.
+- Preserved immediate credit/notification before durable banking and return, receipt retry protection, and unrelated map/source edits.
+- Syntax compilation and same-file writeback/readback passed. Play, real payment and visual confirmation remain with the user. See `reports/TrophyChoice_20261021/README.md` and `Writeback.json`.
