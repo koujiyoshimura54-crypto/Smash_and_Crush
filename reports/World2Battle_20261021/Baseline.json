@@ -1,0 +1,757 @@
+{
+  "Elapsed": 1120.1416930999985,
+  "Clients": {
+    "Player1": {
+      "Events": [
+        {
+          "Value": 1,
+          "Kind": "Attribute",
+          "Name": "CurrentStage",
+          "Time": 7.312733000006119
+        },
+        {
+          "Time": 9.384360100004415,
+          "Kind": "Ready"
+        },
+        {
+          "Before": 100,
+          "Kind": "Damage",
+          "After": 75,
+          "Time": 132.66483670000162
+        },
+        {
+          "Value": 2,
+          "Kind": "Attribute",
+          "Name": "CurrentStage",
+          "Time": 133.03017660000478
+        },
+        {
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": true,
+              "GuiEnabled": true,
+              "HP": "300/300",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "325/325",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "350/350",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "425/425",
+              "CanCollide": true
+            }
+          ],
+          "RenderedAt": 130.42323179999948,
+          "Health": 100,
+          "Time": 133.1961513999995,
+          "Position": [
+            287.7974853515625,
+            7.135168552398682,
+            174.64466857910156
+          ],
+          "Status": {
+            "Started": 121.14139160000195,
+            "Phase": "RunStage",
+            "Ended": 130.4392766000019,
+            "Result": "Advanced",
+            "SubStage": 4
+          },
+          "Kind": "ClientReport",
+          "Stage": 2,
+          "World": 1
+        },
+        {
+          "Before": 100,
+          "Kind": "Damage",
+          "After": 75,
+          "Time": 202.36140590000286
+        },
+        {
+          "Before": 75,
+          "Kind": "Damage",
+          "After": 50,
+          "Time": 203.36082180000085
+        },
+        {
+          "Before": 50,
+          "Kind": "Damage",
+          "After": 25,
+          "Time": 204.36098050000146
+        },
+        {
+          "Before": 25,
+          "Kind": "Damage",
+          "After": 0,
+          "Time": 205.36069660000067
+        },
+        {
+          "Time": 205.37734040000214,
+          "Kind": "Death"
+        },
+        {
+          "Value": 1,
+          "Kind": "Attribute",
+          "Name": "CurrentStage",
+          "Time": 205.37830360000225
+        },
+        {
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": true,
+              "GuiEnabled": true,
+              "HP": "100/100",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "125/125",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "150/150",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "200/200",
+              "CanCollide": true
+            }
+          ],
+          "RenderedAt": 202.6709441999992,
+          "Health": 0,
+          "Time": 205.47727619999932,
+          "Position": [
+            287.88787841796875,
+            7.102726936340332,
+            279.3962707519531
+          ],
+          "Status": {
+            "Started": 193.3047641000012,
+            "Phase": "ObserveBoss",
+            "Ended": 202.71127059999708,
+            "Result": "Died",
+            "SubStage": 3
+          },
+          "Kind": "ClientReport",
+          "Stage": 1,
+          "World": 1
+        }
+      ],
+      "LastClientReport": {
+        "ForeignVisibleParts": 0,
+        "Walls": [
+          {
+            "Visible": true,
+            "GuiEnabled": true,
+            "HP": "100/100",
+            "CanCollide": true
+          },
+          {
+            "Visible": true,
+            "GuiEnabled": false,
+            "HP": "125/125",
+            "CanCollide": true
+          },
+          {
+            "Visible": true,
+            "GuiEnabled": false,
+            "HP": "150/150",
+            "CanCollide": true
+          },
+          {
+            "Visible": true,
+            "GuiEnabled": false,
+            "HP": "200/200",
+            "CanCollide": true
+          }
+        ],
+        "RenderedAt": 202.6709441999992,
+        "Health": 0,
+        "Time": 205.47727619999932,
+        "Position": [
+          287.88787841796875,
+          7.102726936340332,
+          279.3962707519531
+        ],
+        "Status": {
+          "Started": 193.3047641000012,
+          "Phase": "ObserveBoss",
+          "Ended": 202.71127059999708,
+          "Result": "Died",
+          "SubStage": 3
+        },
+        "Kind": "ClientReport",
+        "Stage": 1,
+        "World": 1
+      }
+    },
+    "Player2": {
+      "Events": [
+        {
+          "Value": 1,
+          "Kind": "Attribute",
+          "Name": "CurrentStage",
+          "Time": 8.21534740000061
+        },
+        {
+          "Time": 9.80181590000575,
+          "Kind": "Ready"
+        },
+        {
+          "Value": 2,
+          "Kind": "Attribute",
+          "Name": "CurrentWorld",
+          "Time": 88.73361920000025
+        },
+        {
+          "Value": 1,
+          "Kind": "Attribute",
+          "Name": "World2CurrentStage",
+          "Time": 88.73371910000424
+        },
+        {
+          "Value": "c410b487-1559-46db-91f5-ab2424618bf8",
+          "Kind": "Attribute",
+          "Name": "World2RunId",
+          "Time": 88.73372200000449
+        },
+        {
+          "Before": 100,
+          "Kind": "Damage",
+          "After": 75,
+          "Time": 139.0795450000005
+        },
+        {
+          "Value": 2,
+          "Kind": "Attribute",
+          "Name": "World2CurrentStage",
+          "Time": 139.89656000000105
+        },
+        {
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": true,
+              "GuiEnabled": true,
+              "HP": "0/0",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": true
+            }
+          ],
+          "RenderedAt": 135.8077185000002,
+          "Health": 100,
+          "Time": 139.92889070000092,
+          "Position": [
+            27.91534423828125,
+            5.135112762451172,
+            2125.60302734375
+          ],
+          "Status": {
+            "Started": 121.9076212,
+            "Phase": "RunStage",
+            "Ended": 135.85807550000027,
+            "Result": "Advanced",
+            "SubStage": 4
+          },
+          "Kind": "ClientReport",
+          "Stage": 2,
+          "World": 2
+        },
+        {
+          "Before": 100,
+          "Kind": "Damage",
+          "After": 75,
+          "Time": 208.47746840000036
+        },
+        {
+          "Before": 75,
+          "Kind": "Damage",
+          "After": 50,
+          "Time": 209.47759850000148
+        },
+        {
+          "Before": 50,
+          "Kind": "Damage",
+          "After": 25,
+          "Time": 210.46090930000355
+        },
+        {
+          "Before": 25,
+          "Kind": "Damage",
+          "After": 0,
+          "Time": 211.47709730000497
+        },
+        {
+          "Stage": 1,
+          "Kind": "Death",
+          "Time": 211.4949751000022,
+          "World": 2
+        },
+        {
+          "Value": 1,
+          "Kind": "Attribute",
+          "Name": "World2CurrentStage",
+          "Time": 211.49502020000364
+        },
+        {
+          "Value": "293200be-e69f-440e-a19d-09a250a3fa33",
+          "Kind": "Attribute",
+          "Name": "World2RunId",
+          "Time": 211.49502210000355
+        },
+        {
+          "Health": 0,
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": false,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": false
+            },
+            {
+              "Visible": false,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": false
+            },
+            {
+              "Visible": false,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": false
+            },
+            {
+              "Visible": false,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": false
+            }
+          ],
+          "BossGauge": {
+            "Enabled": true,
+            "HP": "700M / 700M",
+            "Adornee": "BossDisplaySurface"
+          },
+          "RenderedAt": 207.40232240000478,
+          "Time": 211.50965250000445,
+          "Position": [
+            27.944910049438477,
+            5.1042256355285645,
+            2232.511962890625
+          ],
+          "Status": {
+            "Started": 195.56960880000406,
+            "Phase": "ObserveBoss",
+            "Ended": 207.43743740000355,
+            "Result": "Died",
+            "SubStage": 4
+          },
+          "Kind": "ClientReport",
+          "Stage": 2,
+          "World": 2
+        },
+        {
+          "Value": "c3d7bf67-5c8a-4711-ad83-e8bc513ad8be",
+          "Kind": "Attribute",
+          "Name": "World2RunId",
+          "Time": 214.87099100000341
+        },
+        {
+          "Before": 100,
+          "Kind": "Damage",
+          "After": 75,
+          "Time": 488.5824933999975
+        },
+        {
+          "Value": 2,
+          "Kind": "Attribute",
+          "Name": "World2CurrentStage",
+          "Time": 489.3996523000096
+        },
+        {
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": true,
+              "GuiEnabled": true,
+              "HP": "0/0",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "0/0",
+              "CanCollide": true
+            }
+          ],
+          "RenderedAt": 485.3278023000021,
+          "Health": 100,
+          "Time": 489.4313725999964,
+          "Position": [
+            27.92691993713379,
+            5.135120868682861,
+            2125.450927734375
+          ],
+          "Status": {
+            "Started": 470.874364400006,
+            "Phase": "RunStage",
+            "Ended": 485.3599159000005,
+            "Result": "Advanced",
+            "SubStage": 4
+          },
+          "Kind": "ClientReport",
+          "Stage": 2,
+          "World": 2
+        },
+        {
+          "Value": 1,
+          "Kind": "Attribute",
+          "Name": "CurrentWorld",
+          "Time": 556.7467405000061
+        },
+        {
+          "Health": 100,
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": true,
+              "GuiEnabled": true,
+              "HP": "100/100",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "125/125",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "150/150",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "200/200",
+              "CanCollide": true
+            }
+          ],
+          "BossGauge": {
+            "Enabled": false,
+            "HP": "375 / 375",
+            "Adornee": "BossDisplaySurface"
+          },
+          "RenderedAt": 607.2726474000083,
+          "Time": 611.4104431000014,
+          "Position": [
+            287.7998352050781,
+            7.135193824768066,
+            94.1622085571289
+          ],
+          "Status": {
+            "Started": 557.257460000008,
+            "Phase": "ObserveBoss",
+            "Ended": 607.3372595999972,
+            "Result": "Stopped",
+            "SubStage": 1
+          },
+          "Kind": "ClientReport",
+          "Stage": 1,
+          "World": 1
+        },
+        {
+          "Health": 100,
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": true,
+              "GuiEnabled": true,
+              "HP": "100/100",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "125/125",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "150/150",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "200/200",
+              "CanCollide": true
+            }
+          ],
+          "BossGauge": {
+            "Enabled": false,
+            "HP": "375 / 375",
+            "Adornee": "BossDisplaySurface"
+          },
+          "RenderedAt": 960.5250435000053,
+          "Time": 964.6624295000074,
+          "Position": [
+            287.7998352050781,
+            7.135193824768066,
+            94.1622085571289
+          ],
+          "Status": {
+            "Started": 925.4756784000056,
+            "Phase": "ObserveBoss",
+            "Ended": 960.5891437999962,
+            "Result": "Stopped",
+            "SubStage": 1
+          },
+          "Kind": "ClientReport",
+          "Stage": 1,
+          "World": 1
+        },
+        {
+          "Health": 100,
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": true,
+              "GuiEnabled": true,
+              "HP": "100/100",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "125/125",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "150/150",
+              "CanCollide": true
+            },
+            {
+              "Visible": true,
+              "GuiEnabled": false,
+              "HP": "200/200",
+              "CanCollide": true
+            }
+          ],
+          "BossGauge": {
+            "Enabled": false,
+            "HP": "375 / 375",
+            "Adornee": "BossDisplaySurface"
+          },
+          "RenderedAt": 994.9909312999953,
+          "Time": 999.0777184000035,
+          "Position": [
+            298.2515563964844,
+            7.13519287109375,
+            86.31289672851562
+          ],
+          "Status": {
+            "Phase": "Move",
+            "Ended": 995.0064817999955,
+            "Result": "MoveEnded",
+            "Started": 994.4577843000006
+          },
+          "Kind": "ClientReport",
+          "Stage": 1,
+          "World": 1
+        },
+        {
+          "Before": 100,
+          "Kind": "Damage",
+          "After": 75,
+          "Time": 1016.4946660999994
+        },
+        {
+          "Before": 75,
+          "Kind": "Damage",
+          "After": 50,
+          "Time": 1017.4948048000078
+        },
+        {
+          "Before": 50,
+          "Kind": "Damage",
+          "After": 25,
+          "Time": 1018.4947124000028
+        },
+        {
+          "Before": 25,
+          "Kind": "Damage",
+          "After": 0,
+          "Time": 1019.4954448000062
+        },
+        {
+          "Stage": 2,
+          "Kind": "Death",
+          "Time": 1019.512438100006,
+          "World": 1
+        },
+        {
+          "Health": 0,
+          "ForeignVisibleParts": 0,
+          "Walls": [
+            {
+              "Visible": false,
+              "GuiEnabled": false,
+              "HP": "0/100",
+              "CanCollide": false
+            },
+            {
+              "Visible": false,
+              "GuiEnabled": false,
+              "HP": "125/125",
+              "CanCollide": false
+            },
+            {
+              "Visible": false,
+              "GuiEnabled": false,
+              "HP": "150/150",
+              "CanCollide": false
+            },
+            {
+              "Visible": false,
+              "GuiEnabled": false,
+              "HP": "200/200",
+              "CanCollide": false
+            }
+          ],
+          "BossGauge": {
+            "Enabled": true,
+            "HP": "375 / 375",
+            "Adornee": "BossDisplaySurface"
+          },
+          "RenderedAt": 1015.4392618999991,
+          "Time": 1019.5269428000029,
+          "Position": [
+            287.8262023925781,
+            7.085299968719482,
+            167.65869140625
+          ],
+          "Status": {
+            "Started": 1008.2885460999969,
+            "Phase": "ObserveBoss",
+            "Ended": 1015.457049500008,
+            "Result": "Died",
+            "SubStage": 1
+          },
+          "Kind": "ClientReport",
+          "Stage": 1,
+          "World": 1
+        },
+        {
+          "Value": 2,
+          "Kind": "Attribute",
+          "Name": "CurrentWorld",
+          "Time": 1072.7759011000016
+        }
+      ],
+      "LastClientReport": {
+        "Health": 0,
+        "ForeignVisibleParts": 0,
+        "Walls": [
+          {
+            "Visible": false,
+            "GuiEnabled": false,
+            "HP": "0/100",
+            "CanCollide": false
+          },
+          {
+            "Visible": false,
+            "GuiEnabled": false,
+            "HP": "125/125",
+            "CanCollide": false
+          },
+          {
+            "Visible": false,
+            "GuiEnabled": false,
+            "HP": "150/150",
+            "CanCollide": false
+          },
+          {
+            "Visible": false,
+            "GuiEnabled": false,
+            "HP": "200/200",
+            "CanCollide": false
+          }
+        ],
+        "BossGauge": {
+          "Enabled": true,
+          "HP": "375 / 375",
+          "Adornee": "BossDisplaySurface"
+        },
+        "RenderedAt": 1015.4392618999991,
+        "Time": 1019.5269428000029,
+        "Position": [
+          287.8262023925781,
+          7.085299968719482,
+          167.65869140625
+        ],
+        "Status": {
+          "Started": 1008.2885460999969,
+          "Phase": "ObserveBoss",
+          "Ended": 1015.457049500008,
+          "Result": "Died",
+          "SubStage": 1
+        },
+        "Kind": "ClientReport",
+        "Stage": 1,
+        "World": 1
+      }
+    }
+  }
+}

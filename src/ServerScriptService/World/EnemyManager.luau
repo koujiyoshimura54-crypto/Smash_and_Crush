@@ -21,6 +21,8 @@ local Badges=require(game.ServerScriptService.Services.BadgeAwardService)
 local function inWorld(p) return (p:GetAttribute("CurrentWorld") or 1)==worldId end
 local watched=setmetatable({}, {__mode="k"})
 local lossRespawns=setmetatable({}, {__mode="k"})
+local deathObservers=setmetatable({}, {__mode="k"})
+local bindCharacter
 local removeEnemy,spawnEnemy
 local runRevisions=setmetatable({}, {__mode="k"})
 local messageSequences=setmetatable({}, {__mode="k"})
@@ -137,7 +139,7 @@ local function boxesOverlap(a,b)
   and math.abs(p.Y)<=targetHalf.Y+projected.Y
   and math.abs(p.Z)<=targetHalf.Z+projected.Z
 end
-local function state(p)local s=states[p]if not s then s={Gauges={},Defeated={},RunRevision=runRevisions[p] or 0}for i=1,10 do s.Gauges[i]=Boss.GetStageConfig(i).MaxHP end states[p]=s end return s end
+local function state(p)local s=states[p]if not s then s={Gauges={},Defeated={},Character=p.Character,RunRevision=runRevisions[p] or 0}for i=1,10 do s.Gauges[i]=Boss.GetStageConfig(i).MaxHP end states[p]=s end return s end
 local function send(p,d)
  messageSequences[p]=(messageSequences[p] or 0)+1
  d.OwnerUserId=p.UserId;d.WorldId=worldId
@@ -178,21 +180,14 @@ function M.InitializePlayer(p,targetStage)
    if lossRespawns[p] then
     -- Keep the planned-loss guard through the old character reset. It is
     -- cleared only by the CharacterAdded raised by our explicit LoadCharacter.
-    if reset~=false then lossRespawns[p]=nil end
+    if reset~=false then
+     lossRespawns[p]=nil
+     if states[p] then states[p].Character=character end
+    end
    elseif reset~=false then
     M.InitializePlayer(p)
    end
-   task.spawn(function()
-    ensureWallCombatTrigger(character)
-    local hum=character:WaitForChild("Humanoid",10)
-    if hum and p.Character==character then
-     hum.Died:Once(function()
-      if RunInventory and p.Character==character then RunInventory.Invalidate(p) end
-      cleanupWallCombatTrigger(character)
-      if inWorld(p) and p.Character==character and not lossRespawns[p] then M.InitializePlayer(p) end
-     end)
-    end
-   end)
+   bindCharacter(p,character)
   end
   p.CharacterAdded:Connect(characterAdded)
   p.CharacterRemoving:Connect(function(character)
@@ -201,8 +196,31 @@ function M.InitializePlayer(p,targetStage)
    cleanupWallCombatTrigger(character)
    if removeEnemy then removeEnemy(p) end
   end)
-  if p.Character then characterAdded(p.Character,false) end
  end
+ if inWorld(p) and p.Character then bindCharacter(p,p.Character) end
+end
+-- Activation can occur on a character whose CharacterAdded ran in another World.
+-- Keep one observer per player/World and never let an old avatar reset a new run.
+bindCharacter=function(p,character)
+ local previous=deathObservers[p]
+ if previous and previous.Character==character then
+  task.spawn(ensureWallCombatTrigger,character)
+  return
+ end
+ if previous and previous.Connection then previous.Connection:Disconnect() end
+ local observer={Character=character}
+ deathObservers[p]=observer
+ task.spawn(function()
+  local hum=character:WaitForChild("Humanoid",10)
+  if deathObservers[p]~=observer or p.Character~=character or not hum then return end
+  ensureWallCombatTrigger(character)
+  observer.Connection=hum.Died:Once(function()
+   if deathObservers[p]~=observer or p.Character~=character then return end
+   if RunInventory then RunInventory.Invalidate(p) end
+   cleanupWallCombatTrigger(character)
+   if inWorld(p) and not lossRespawns[p] then M.InitializePlayer(p) end
+  end)
+ end)
 end
 local function returnToLobbyAfterLoss(p)
  if lossRespawns[p] then return end
@@ -1203,16 +1221,21 @@ end)
  end
  for _,p in Players:GetPlayers()do if inWorld(p) then M.InitializePlayer(p) end end monitor()return enemies end
 function M.Activate(p)
+ -- A death in another World invalidates this avatar's old challenge too.
+ -- Persistent unlocks, inventory and confirmed rewards live outside this state.
+ if not states[p] or states[p].Character~=p.Character then
+  M.InitializePlayer(p)
+ else
+  bindCharacter(p,p.Character)
+ end
  if RunInventory and states[p] then
   local ps=states[p]
   if not RunInventory.SetActive(p,ps.RunInventoryId,true) then
    ps.RunInventoryId=RunInventory.Reset(p,true)
   end
  end
- if not states[p] then M.InitializePlayer(p) else
-  p:SetAttribute("IsFighting",false)
-  M.SendState(p)
- end
+ p:SetAttribute("IsFighting",false)
+ M.SendState(p)
 end
 function M.Deactivate(p)
  Speed.ClearTransitionBoost(p,worldId)
@@ -1232,7 +1255,11 @@ function M.GetEnemy(n,p)return p and getEnemy(p,n,false) or nil end
 function M.GetGauge(p,n)return state(p).Gauges[n]end
 function M.GetPlayerState(p)return state(p)end
 function M.ResetPlayer(p)M.InitializePlayer(p)end
-Players.PlayerRemoving:Connect(function(p) cleanupPlayerWallCombatTriggers(p) removeEnemy(p) Boss.Reset(p) enemyGeneration[p]=nil runRevisions[p]=nil messageSequences[p]=nil states[p]=nil sessions[p]=nil recognizedPlayers[p]=nil watched[p]=nil lossRespawns[p]=nil lastManualAttack[p]=nil end)
+Players.PlayerRemoving:Connect(function(p)
+ local observer=deathObservers[p]
+ if observer and observer.Connection then observer.Connection:Disconnect() end
+ deathObservers[p]=nil
+ cleanupPlayerWallCombatTriggers(p) removeEnemy(p) Boss.Reset(p) enemyGeneration[p]=nil runRevisions[p]=nil messageSequences[p]=nil states[p]=nil sessions[p]=nil recognizedPlayers[p]=nil watched[p]=nil lossRespawns[p]=nil lastManualAttack[p]=nil end)
 
  contexts[worldId]=M
  return M

@@ -6,8 +6,9 @@ local function forWorld(worldId)
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local M = {}
-local CHASE_SPEED = 28 -- studs/second; shared by all World1 bosses
-local TURN_RESPONSE = 12 -- exponential visual smoothing, not a gameplay turn limit
+local World2Movement=worldId==2 and require(game.ReplicatedStorage.Config.World2BossMovementConfig)
+local CHASE_SPEED = 16 -- studs/second; shared by all World1 bosses
+local TURN_RESPONSE = 4 -- exponential visual smoothing, not a gameplay turn limit
 local CONTACT_GAP = 0.8
 local EDGE_MARGIN = 0.25
 local STUCK_WINDOW = 1.25
@@ -96,7 +97,7 @@ local function update(r, dt)
   local distance=delta.Magnitude
   local direction=distance>0.001 and delta/distance or flat(current.LookVector)
   targetYaw=math.atan2(-direction.X,-direction.Z)
-  local yaw=yawOf(current)+angleDelta(yawOf(current),targetYaw)*(1-math.exp(-TURN_RESPONSE*dt))
+  local yaw=yawOf(current)+angleDelta(yawOf(current),targetYaw)*(1-math.exp(-r.TurnResponse*dt))
   rotation=CFrame.Angles(0,yaw,0)
   local gap=distance-contactDistance(r,direction,rotation,root)
   destination=clampGoal(r,current.Position+direction*math.max(0,gap),rotation)
@@ -110,7 +111,7 @@ local function update(r, dt)
   r.Recovery=nil
   destination=r.Home.Position
   targetYaw=yawOf(r.Home)
-  local yaw=yawOf(current)+angleDelta(yawOf(current),targetYaw)*(1-math.exp(-TURN_RESPONSE*dt))
+  local yaw=yawOf(current)+angleDelta(yawOf(current),targetYaw)*(1-math.exp(-r.TurnResponse*dt))
   rotation=CFrame.Angles(0,yaw,0)
   if (destination-current.Position).Magnitude<0.01 and math.abs(angleDelta(yawOf(current),targetYaw))<0.002 then
    if r.Mode~="Idle" then enemy:PivotTo(r.Home) end
@@ -120,7 +121,7 @@ local function update(r, dt)
   end
   setMode(r,"Returning",nil)
  end
- local nextPosition=stepToward(current.Position,destination,CHASE_SPEED*dt)
+ local nextPosition=stepToward(current.Position,destination,r.Speed*dt)
  -- Pivot always remains in this Stage. Authored initial visual overhang is
  -- drawn inward at normal speed, rather than snapping at combat start.
  local p=r.Floor.CFrame:PointToObjectSpace(nextPosition)
@@ -140,7 +141,7 @@ local function update(r, dt)
   if not accepted then
    rotation=current.Rotation
    local safeGoal=clampGoal(r,destination,rotation)
-   if safeGoal then nextPosition=stepToward(current.Position,safeGoal,CHASE_SPEED*dt) end
+   if safeGoal then nextPosition=stepToward(current.Position,safeGoal,r.Speed*dt) end
   end
  end
  local commanded=(nextPosition-current.Position).Magnitude
@@ -173,7 +174,10 @@ end
 function M.Register(enemy, stage, stageModel)
  local floor=assert(stageModel:FindFirstChild("Floor"),"Stage Floor missing")
  local home=enemy:GetPivot()
+ local movement=World2Movement and World2Movement.Get(stage)
  local r={Enemy=enemy,Stage=stage,Floor=floor,Home=home,Footprint={},Mode="Idle",
+  Speed=movement and movement.Speed or CHASE_SPEED,
+  TurnResponse=movement and movement.TurnResponse or TURN_RESPONSE,
   MinX=-floor.Size.X/2+EDGE_MARGIN,MaxX=floor.Size.X/2-EDGE_MARGIN,
   MinZ=-floor.Size.Z/2+EDGE_MARGIN,MaxZ=floor.Size.Z/2-EDGE_MARGIN,
   LastPosition=home.Position,Window=0,Commanded=0,Travel=0,Recoveries=0}
@@ -204,7 +208,8 @@ function M.Register(enemy, stage, stageModel)
  end
  records[enemy]=r
  enemy:SetAttribute("ChaseHomePivot",home)
- enemy:SetAttribute("ChaseSpeed",CHASE_SPEED)
+ enemy:SetAttribute("ChaseSpeed",r.Speed)
+ enemy:SetAttribute("ChaseTurnResponse",r.TurnResponse)
  enemy:SetAttribute("ChaseState","Idle")
  enemy:SetAttribute("ChaseTargetUserId",0)
  enemy:SetAttribute("ChaseRecoveryCount",0)

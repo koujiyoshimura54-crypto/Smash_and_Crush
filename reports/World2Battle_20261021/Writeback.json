@@ -1,0 +1,35 @@
+{
+  "inputSha256": "17ce9238d4db65dfb34d82e375768bada63b79b19651036c85f0a1c1650f108d",
+  "outputSha256": "89ca93ff0a0bdd4d6afab4f9840cfb70ee7909f7145514580509c17d477b1323",
+  "bytes": 6897001,
+  "sources": {
+    "ServerScriptService.World.EnemyManager": {
+      "before": "689c5c352ea76a214b769b64d2f52a573edfece7a78116319f0458f0b2071961",
+      "after": "1928c2781df8d3ac0e9133b1b2b3d88e4e40749249cae281f6d10911eaa76684"
+    },
+    "ServerScriptService.World.BossChaseService": {
+      "before": "942de6a0c4ea2a615967bff5ff08080a6c1915dac6a1f490e2caedc67a524267",
+      "after": "fe054d5b00eb08f92a130863354b88bcbd296c25a1ae4df51c36c6867198c672"
+    },
+    "StarterPlayer.StarterPlayerScripts.Combat.CombatClient": {
+      "before": "4518408d1b9c49dc6a3fddb3a816997353bc0ae9ee94f969bcbf11f8e6b95eee",
+      "after": "647d977f208785b90f4a17767059b0f1932ce0d8d4d99facd082da6c1fffe9fd"
+    },
+    "ReplicatedStorage.Config.World2BossMovementConfig": {
+      "before": null,
+      "after": "c4018bf8af8c452396abe8a51be1ba7d55ada25360b53a9bb20596f8cf534afc"
+    }
+  },
+  "verifiedExistingProperties": 4915670,
+  "newInstances": [
+    "ReplicatedStorage.Config.World2BossMovementConfig"
+  ],
+  "otherSourcesModelsPropertiesParentsPreserved": true,
+  "world1ActualMovementPreserved": {
+    "Speed": 16,
+    "TurnResponse": 4
+  },
+  "testFixturesWritten": false,
+  "studioSaveOrPublishUsed": false,
+  "writtenAndReread": true
+}

@@ -1,0 +1,705 @@
+{
+  "Started": 83.59693040000275,
+  "Finished": 199.72481369999878,
+  "Mode": "AllStages",
+  "Rows": [
+    {
+      "Stage": 1,
+      "Started": 83.59694519999903,
+      "Ended": 95.37945259999833,
+      "Result": "Advanced",
+      "BeforeEnemy": {
+        "Revision": 1,
+        "Owner": -2,
+        "Turn": 4.5,
+        "Target": 0,
+        "Chase": "Idle",
+        "Generation": 1,
+        "Position": [
+          27.920000076293945,
+          2.5,
+          2152.960205078125
+        ],
+        "Speed": 18,
+        "Look": [
+          0,
+          0,
+          -1
+        ],
+        "Stage": 1,
+        "Recoveries": 0
+      },
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 1,
+        "Maxes": [
+          140000000,
+          175000000,
+          210000000,
+          280000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 350000000,
+        "Gauges": [
+          140000000,
+          175000000,
+          210000000,
+          280000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 1,
+        "Maxes": [
+          140000000,
+          175000000,
+          210000000,
+          280000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 350000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 2,
+      "Started": 95.37945829999808,
+      "Ended": 104.62834440000006,
+      "Result": "Advanced",
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 2,
+        "Maxes": [
+          280000000,
+          350000000,
+          420000000,
+          560000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 700000000,
+        "Gauges": [
+          280000000,
+          350000000,
+          420000000,
+          560000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 2,
+        "Maxes": [
+          280000000,
+          350000000,
+          420000000,
+          560000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 700000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 3,
+      "Started": 104.62835330000962,
+      "Ended": 114.49393910000799,
+      "Result": "Advanced",
+      "BeforeEnemy": {
+        "Revision": 1,
+        "Owner": -2,
+        "Turn": 5.1,
+        "Target": 0,
+        "Chase": "Idle",
+        "Generation": 3,
+        "Position": [
+          27.920000076293945,
+          2.5,
+          2393.48095703125
+        ],
+        "Speed": 20,
+        "Look": [
+          0,
+          0,
+          -1
+        ],
+        "Stage": 3,
+        "Recoveries": 0
+      },
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 3,
+        "Maxes": [
+          600000000,
+          750000000,
+          900000000,
+          1200000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 1500000000,
+        "Gauges": [
+          600000000,
+          750000000,
+          900000000,
+          1200000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 3,
+        "Maxes": [
+          600000000,
+          750000000,
+          900000000,
+          1200000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 1500000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 4,
+      "Started": 114.49394260000554,
+      "Ended": 124.4286548000091,
+      "Result": "Advanced",
+      "BeforeEnemy": {
+        "Revision": 1,
+        "Owner": -2,
+        "Turn": 5.4,
+        "Target": 0,
+        "Chase": "Idle",
+        "Generation": 4,
+        "Position": [
+          27.920000076293945,
+          2.5,
+          2516.92236328125
+        ],
+        "Speed": 21,
+        "Look": [
+          0,
+          0,
+          -1
+        ],
+        "Stage": 4,
+        "Recoveries": 0
+      },
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 4,
+        "Maxes": [
+          1400000000,
+          1750000000,
+          2100000000,
+          2800000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 3500000000,
+        "Gauges": [
+          1400000000,
+          1750000000,
+          2100000000,
+          2800000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 4,
+        "Maxes": [
+          1400000000,
+          1750000000,
+          2100000000,
+          2800000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 3500000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 5,
+      "Started": 124.42865850000817,
+      "Ended": 135.3313247000042,
+      "Result": "Advanced",
+      "BeforeEnemy": {
+        "Revision": 1,
+        "Owner": -2,
+        "Turn": 5.7,
+        "Target": 0,
+        "Chase": "Idle",
+        "Generation": 5,
+        "Position": [
+          27.920000076293945,
+          2.5,
+          2649.5390625
+        ],
+        "Speed": 22,
+        "Look": [
+          0,
+          0,
+          -1
+        ],
+        "Stage": 5,
+        "Recoveries": 0
+      },
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 5,
+        "Maxes": [
+          3600000000,
+          4500000000,
+          5400000000,
+          7200000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 9000000000,
+        "Gauges": [
+          3600000000,
+          4500000000,
+          5400000000,
+          7200000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 5,
+        "Maxes": [
+          3600000000,
+          4500000000,
+          5400000000,
+          7200000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 9000000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 6,
+      "Started": 135.3313277999987,
+      "Ended": 147.27658570000494,
+      "Result": "Advanced",
+      "BeforeEnemy": {
+        "Revision": 1,
+        "Owner": -2,
+        "Turn": 6,
+        "Target": 0,
+        "Chase": "Idle",
+        "Generation": 6,
+        "Position": [
+          27.920000076293945,
+          2.5,
+          2858.6435546875
+        ],
+        "Speed": 23,
+        "Look": [
+          0,
+          0,
+          -1
+        ],
+        "Stage": 6,
+        "Recoveries": 0
+      },
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 6,
+        "Maxes": [
+          10000000000,
+          12500000000,
+          15000000000,
+          20000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 25000000000,
+        "Gauges": [
+          10000000000,
+          12500000000,
+          15000000000,
+          20000000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 6,
+        "Maxes": [
+          10000000000,
+          12500000000,
+          15000000000,
+          20000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 25000000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 7,
+      "Started": 147.27658930000325,
+      "Ended": 160.97713290000684,
+      "Result": "Advanced",
+      "BeforeEnemy": {
+        "Revision": 1,
+        "Owner": -2,
+        "Turn": 6.3,
+        "Target": 0,
+        "Chase": "Idle",
+        "Generation": 7,
+        "Position": [
+          27.920000076293945,
+          2.5,
+          3085.554443359375
+        ],
+        "Speed": 24,
+        "Look": [
+          0,
+          0,
+          -1
+        ],
+        "Stage": 7,
+        "Recoveries": 0
+      },
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 7,
+        "Maxes": [
+          30000000000,
+          37500000000,
+          45000000000,
+          60000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 75000000000,
+        "Gauges": [
+          30000000000,
+          37500000000,
+          45000000000,
+          60000000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 7,
+        "Maxes": [
+          30000000000,
+          37500000000,
+          45000000000,
+          60000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 75000000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 8,
+      "Started": 160.97713769999973,
+      "Ended": 174.95966600000975,
+      "Result": "Advanced",
+      "BeforeEnemy": {
+        "Revision": 1,
+        "Owner": -2,
+        "Turn": 6.6,
+        "Target": 0,
+        "Chase": "Idle",
+        "Generation": 8,
+        "Position": [
+          27.920000076293945,
+          2.5,
+          3276.8134765625
+        ],
+        "Speed": 25,
+        "Look": [
+          0,
+          0,
+          -1
+        ],
+        "Stage": 8,
+        "Recoveries": 0
+      },
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 8,
+        "Maxes": [
+          100000000000,
+          125000000000,
+          150000000000,
+          200000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 250000000000,
+        "Gauges": [
+          100000000000,
+          125000000000,
+          150000000000,
+          200000000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 8,
+        "Maxes": [
+          100000000000,
+          125000000000,
+          150000000000,
+          200000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 250000000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 9,
+      "Started": 174.95966990001034,
+      "Ended": 187.22481379999954,
+      "Result": "Advanced",
+      "BeforeEnemy": {
+        "Revision": 1,
+        "Owner": -2,
+        "Turn": 6.9,
+        "Target": 0,
+        "Chase": "Idle",
+        "Generation": 9,
+        "Position": [
+          27.920000076293945,
+          2.5,
+          3404.1005859375
+        ],
+        "Speed": 26,
+        "Look": [
+          0,
+          0,
+          -1
+        ],
+        "Stage": 9,
+        "Recoveries": 0
+      },
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 9,
+        "Maxes": [
+          360000000000,
+          450000000000,
+          540000000000,
+          720000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 900000000000,
+        "Gauges": [
+          360000000000,
+          450000000000,
+          540000000000,
+          720000000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 9,
+        "Maxes": [
+          360000000000,
+          450000000000,
+          540000000000,
+          720000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 900000000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": false
+    },
+    {
+      "Stage": 10,
+      "Started": 187.22481729999708,
+      "Ended": 199.72481159999734,
+      "Result": "Complete",
+      "BeforeWalls": {
+        "Current": 1,
+        "MajorStage": 10,
+        "Maxes": [
+          1400000000000,
+          1750000000000,
+          2100000000000,
+          2800000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 3500000000000,
+        "Gauges": [
+          1400000000000,
+          1750000000000,
+          2100000000000,
+          2800000000000
+        ],
+        "Cleared": []
+      },
+      "AfterWalls": {
+        "Current": 5,
+        "MajorStage": 10,
+        "Maxes": [
+          1400000000000,
+          1750000000000,
+          2100000000000,
+          2800000000000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 3500000000000,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "HealthAfter": 100,
+      "WinBefore": 100000,
+      "WinAfter": 100000,
+      "Complete": true
+    }
+  ]
+}

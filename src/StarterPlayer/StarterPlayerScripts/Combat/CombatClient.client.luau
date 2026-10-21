@@ -12,7 +12,7 @@ local R=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild(worldId==2 and "Worl
 local NumberFormat=require(RS.Modules:WaitForChild("NumberFormat"))
 -- Presentation only: HP and destruction still come from the legacy server.
 local PurchasedWallVisuals=worldId==1 and require(RS.MergeToForge:WaitForChild("WallBreakVisualService"))
-local PurchasedWallHealth=worldId==1 and require(RS.Modules:WaitForChild("Config")).Stages.Health
+local PurchasedWallHealth=require(RS.Modules:WaitForChild("Config")).Stages.Health
 local presentedWallBreaks={}
 -- Fixed world-space UI metrics from the original 27-stud Wall, 580x270 canvas.
 -- Resize the canvas with the physical wall: text pixels and bar height no longer stretch.
@@ -182,7 +182,7 @@ local function wallGauge(a,b,c,d)
  local major,index,v,max=1,a,b,c; if d~=nil then major,index,v,max=a,b,c,d end
  local m=wallModel(major,index)
  local w,gui=wallSurface(major,index)
- local purchased=worldId==1 and w and w:FindFirstChild("SurfaceGui")
+ local purchased=w and w:FindFirstChild("SurfaceGui")
  if purchased then
   local health=purchased:FindFirstChild("Health")
   local amount=health and health:FindFirstChild("Amount")
@@ -299,6 +299,17 @@ end
 local overheadParts=setmetatable({}, {__mode="k"})
 local overheadConnection
 local function overheadBounds(e)
+ -- World2's measured rendered bounds include SpecialMesh geometry whose carrier
+ -- Part may be tiny. The existing helper moves with the actor; no map scan.
+ local measured=worldId==2 and e:FindFirstChild("BossVisualBounds")
+ if measured and measured:IsA("BasePart") then
+  local cf=measured.CFrame;local half=measured.Size/2
+  local r,u,b=cf.RightVector,cf.UpVector,cf.LookVector
+  local extent=Vector3.new(math.abs(r.X)*half.X+math.abs(u.X)*half.Y+math.abs(b.X)*half.Z,
+   math.abs(r.Y)*half.X+math.abs(u.Y)*half.Y+math.abs(b.Y)*half.Z,
+   math.abs(r.Z)*half.X+math.abs(u.Z)*half.Y+math.abs(b.Z)*half.Z)
+  return cf.Position-extent,cf.Position+extent
+ end
  local visual=e:FindFirstChildOfClass("Model")
  if not visual then return nil end
  local cached=overheadParts[e]
@@ -843,6 +854,7 @@ R.OnClientEvent:Connect(function(d)
   fight(d.Active)
  end
 end)
+local queuedWallRenders=setmetatable({}, {__mode="k"})
 workspace.DescendantAdded:Connect(function(part)
  if part:IsA("BasePart") and part.Name=="MiniBossCollider" then
   local stage=part.Parent and part.Parent:GetAttribute("StageNumber")
@@ -851,8 +863,8 @@ workspace.DescendantAdded:Connect(function(part)
    task.defer(function()visible(stage,not defeated[stage]);syncPersonalBossCollider(stage)end)
   end
  end
- if worldId==1 and part:IsA("SurfaceGui") and part.Name=="SurfaceGui" then
-  part=part.Parent
+ if part:IsA("SurfaceGui") or part:IsA("GuiObject") then
+  part=part:FindFirstAncestorWhichIsA("BasePart")
  end
  if not part or not part:IsA("BasePart") or part.Name~="Wall" then return end
  local model=part.Parent
@@ -860,7 +872,10 @@ workspace.DescendantAdded:Connect(function(part)
  local major,index=model.Name:match("^Stage(%d+)%.([1-4])$")
  major,index=tonumber(major),tonumber(index)
  if not major or major<1 or major>10 then return end
+ if queuedWallRenders[part] then return end
+ queuedWallRenders[part]=true
  task.defer(function()
+  queuedWallRenders[part]=nil
   if wallModel(major,index)==model then renderWallStage(major);syncPersonalBossCollider(major) end
  end)
 end)
