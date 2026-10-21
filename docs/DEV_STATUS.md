@@ -2335,3 +2335,8 @@ World2 Stage1-10 now reuse current World1 non-animation combat through isolated 
 ## 2026-10-21 — World2 paid facilities, partial delivery
 
 Treadmill and Aura purchase connections are implemented, syntax-checked, and exercised in an isolated local server with two real clients, temporary in-memory persistence and mocked Marketplace events. UI clicks, x35 training, explicit +1500 Aura equipment, cancellation/error handling, independent players/World1 IDs, and simulated save/reload/fresh ownership caches passed. Actual payment and actual production rejoin are unverified. Limited Egg 02 count/button remains awaiting the requested user clarification; no Egg/Receipt change is claimed. Same-file Source writeback and non-target preservation are recorded in reports/World2PaidFacilities_20261021/Writeback.json.
+
+
+## 2026-10-21 — All three World2 paid facilities connected
+
+Completed Limited Egg 02 after the user confirmed Open1 and dedicated UI only. Focused local Play verified real entry/button UI, current price/odds, simulated cancellation and policy/price failures, one-Pet receipt grants, duplicate suppression, journal interruption and ambiguous-save recovery. In-memory reload plus a fresh receipt cache preserved the exact count; actual payment/production rejoin remain unverified. Prior Treadmill/Aura connections were retained without repeating broad tests, per the user's speed preference. Seven Sources compiled and matched same-file writeback/readback. See reports/LimitedEgg02_20261021/README.md and Writeback.json.

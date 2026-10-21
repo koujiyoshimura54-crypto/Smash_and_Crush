@@ -9,6 +9,7 @@ local Janitor=require(RS.Packages.Janitor)
 local Config=require(RS.Config.LimitedEggConfig)
 local Viewport=require(RS.Modules.LimitedPetViewport)
 local M={}
+local activeConfig=Config
 local lifetime=Janitor.new()
 local sheet=Janitor.new()
 local active=nil
@@ -47,7 +48,7 @@ local messages={
 }
 local function updatePurchaseUI()
  if not buyControl or not availability then return end
- local enabled=priceReady and not purchaseBusy and offeredVersion==Config.RollVersion
+ local enabled=priceReady and not purchaseBusy and offeredVersion==activeConfig.RollVersion
  -- Keep input connected so a denied click can explain its reason; M.purchase gates prompting.
  buyControl.Active=true;buyControl.Interactable=true;buyControl.Selectable=true;buyControl.AutoButtonColor=enabled
  buyControl:SetAttribute("PurchaseAllowed",enabled)
@@ -60,7 +61,8 @@ function M.purchase()
   return false,"Unavailable"
  end
  purchaseBusy=true;updatePurchaseUI()
- local ok,response=boundedCall(function() return requestRemote:InvokeServer("Purchase",offeredVersion) end)
+ local productId,version=activeConfig.ProductId,offeredVersion
+ local ok,response=boundedCall(function() return requestRemote:InvokeServer("Purchase",version,productId) end)
  if not ok or type(response)~="table" or not response.ok then
   purchaseBusy=false
   local reason=ok and type(response)=="table" and response.reason or (response=="RequestTimeout" and "RequestTimeout" or "PromptFailed")
@@ -94,14 +96,26 @@ local function label(donor,parent,name,text,position,size)
  x.Position=position;x.Size=size;x.Visible=true;x.TextScaled=true;x.ZIndex=5
  return x
 end
-local function setBoard(price)
- local model=workspace:FindFirstChild(Config.Entrance)
+local function entrance(offer)
+ if offer.WorldId==2 then
+  local map=workspace:FindFirstChild("World2Map")
+  local area=map and map:FindFirstChild("TrainingArea")
+  local facilities=area and area:FindFirstChild("FacilityDisplays")
+  local model=facilities and facilities:FindFirstChild("LimitedEggDisplay")
+  return model,model and model:FindFirstChild("PetMesh")
+ end
+ local model=workspace:FindFirstChild(offer.Entrance)
+ return model,model and model.PrimaryPart
+end
+local function setBoard(price,offer)
+ offer=offer or Config
+ local model,part=entrance(offer)
  if not model then return end
  local board=model:FindFirstChild("BillboardGui")
  if board then
-  board.Adornee=model.PrimaryPart
+  board.Adornee=part
   local title=board:FindFirstChild("AlwaysBetter")
-  if title then title.Text=Config.Name;title.AutoLocalize=false end
+  if title then title.Text=offer.Name;title.AutoLocalize=false end
   local amount=board:FindFirstChild("Price")
   if amount then amount.Text=price and require(RS.Modules.NumberFormat).Price(price).." Robux / 1 Pet" or "Unavailable / 1 Pet";amount.AutoLocalize=false end
  end
@@ -112,11 +126,13 @@ function M.close()
  sheet:Cleanup()
 end
 
-function M.show(parent,fetchPrice)
- if active and active.Parent==parent then return active end
+function M.show(parent,fetchPrice,offer)
+ offer=offer or Config
+ if active and active.Parent==parent and activeConfig.ProductId==offer.ProductId then return active end
  M.close()
+ activeConfig=offer
  local gui=Instance.new("ScreenGui")
- gui.Name="LimitedEgg01Gui";gui.ResetOnSpawn=false;gui.IgnoreGuiInset=true
+ gui.Name=offer.WorldId==2 and "LimitedEgg02Gui" or "LimitedEgg01Gui";gui.ResetOnSpawn=false;gui.IgnoreGuiInset=true
  gui.DisplayOrder=1000;gui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
  sheet:Add(gui,"Destroy")
  local ok,err=xpcall(function()
@@ -132,13 +148,13 @@ function M.show(parent,fetchPrice)
   end
   sheet:Add(gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(fit))
   local info=panel.Info
-  info.Text=Config.Name;info.AutoLocalize=false;info.TextScaled=true
+  info.Text=offer.Name;info.AutoLocalize=false;info.TextScaled=true
   info.AnchorPoint=Vector2.zero;info.Position=UDim2.fromOffset(60,16);info.Size=UDim2.fromOffset(580,44)
   local pets=panel.Pets
   for _,x in pets:GetChildren() do if x:IsA("UIGridStyleLayout") then x:Destroy() end end
   local seventh=pets["6"]:Clone();seventh.Name="7";seventh.Parent=pets
   local nameDonor=RS.Assets.Templates.PetInventory.Title
-  for i,entry in Config.Entries do
+  for i,entry in offer.Entries do
    local card=pets[tostring(i)]
    card.Image="";card.Visible=true;card.AnchorPoint=Vector2.zero
    local column=(i-1)%4;local row=math.floor((i-1)/4)
@@ -186,33 +202,33 @@ function M.show(parent,fetchPrice)
   if not active then return end
   local player=Players.LocalPlayer;local character=player and player.Character
   local root=character and character:FindFirstChild("HumanoidRootPart")
-  local entrance=workspace:FindFirstChild(Config.Entrance)
-  local part=entrance and entrance.PrimaryPart
-  if not root or not part or (root.Position-part.Position).Magnitude>24 then M.close() end
+  local _,part=entrance(offer)
+  if not root or not part or (root.Position-part.Position).Magnitude>24
+   or (player:GetAttribute("CurrentWorld") or 1)~=offer.WorldId then M.close() end
  end))
   end
   sheet:Add(gui.Destroying:Connect(function() if active==gui then task.defer(M.close) end end))
   priceReady=false;offeredVersion=nil;unavailableReason="Loading price and eligibility...";updatePurchaseUI()
   if fetchPrice~=false then task.spawn(function()
-   local success,product=boundedCall(function() return Marketplace:GetProductInfoAsync(Config.ProductId,Enum.InfoType.Product) end)
-   local offered,offer=boundedCall(function()
+   local success,product=boundedCall(function() return Marketplace:GetProductInfoAsync(offer.ProductId,Enum.InfoType.Product) end)
+   local offered,response=boundedCall(function()
     local deadline=os.clock()+10
     while not requestRemote and started and active==gui and os.clock()<deadline do task.wait(.05) end
     if not requestRemote then return {ok=false,reason="ServerUnavailable"} end
-    return requestRemote:InvokeServer("Offer")
+    return requestRemote:InvokeServer("Offer",nil,offer.ProductId)
    end)
    if active~=gui or not gui.Parent then return end
-   local valid=success and type(product)=="table" and product.ProductId==Config.ProductId and product.IsForSale==true
+   local valid=success and type(product)=="table" and product.ProductId==offer.ProductId and product.IsForSale==true
     and type(product.PriceInRobux)=="number" and product.PriceInRobux>0 and product.PriceInRobux<math.huge
    if valid then
     buy.Main.Amount.Text=utf8.char(0xE002).." "..require(RS.Modules.NumberFormat).Price(product.PriceInRobux)
-    gui:SetAttribute("PriceSource","Marketplace");setBoard(product.PriceInRobux)
-   else gui:SetAttribute("PriceSource","Unavailable");setBoard(nil) end
-   if valid and offered and type(offer)=="table" and offer.ok and offer.ProductId==Config.ProductId
-    and offer.TableVersion==Config.RollVersion then
-    priceReady=true;offeredVersion=offer.TableVersion
+    gui:SetAttribute("PriceSource","Marketplace");setBoard(product.PriceInRobux,offer)
+   else gui:SetAttribute("PriceSource","Unavailable");setBoard(nil,offer) end
+   if valid and offered and type(response)=="table" and response.ok and response.ProductId==offer.ProductId
+    and response.TableVersion==offer.RollVersion then
+    priceReady=true;offeredVersion=response.TableVersion
    else
-    local reason=not valid and "PriceUnavailable" or (offered and type(offer)=="table" and offer.reason or "PurchasesUnavailable")
+    local reason=not valid and "PriceUnavailable" or (offered and type(response)=="table" and response.reason or "PurchasesUnavailable")
     unavailableReason=messages[reason] or "Purchase unavailable. Reopen to retry."
    end
    print("[LimitedEgg01] offer",priceReady,priceReady and "Allowed" or unavailableReason)
@@ -245,9 +261,28 @@ end
 function M.start()
  if started then return end started=true;generation+=1
  local currentGeneration=generation
+ -- A local interaction prompt opens the same dedicated Open1 sheet; no geometry changes.
+ local secondPrompt
+ local function bindSecond()
+  if secondPrompt and secondPrompt.Parent then return end
+  local _,part=entrance(Config.World2)
+  if not part then return end
+  secondPrompt=Instance.new("ProximityPrompt")
+  secondPrompt.Name="LimitedEgg02Prompt";secondPrompt.ActionText="View Pets"
+  secondPrompt.ObjectText=Config.World2.Name;secondPrompt.AutoLocalize=false
+  secondPrompt.RequiresLineOfSight=false;secondPrompt.MaxActivationDistance=24
+  secondPrompt.Parent=part;lifetime:Add(secondPrompt,"Destroy")
+  lifetime:Add(secondPrompt.Triggered:Connect(function(player)
+   local p=Players.LocalPlayer
+   if p and (not player or player==p) and p:GetAttribute("CurrentWorld")==2 then M.show(p.PlayerGui,true,Config.World2) end
+  end))
+  setBoard(nil,Config.World2)
+ end
+ bindSecond()
+ lifetime:Add(workspace.DescendantAdded:Connect(function(v)if v.Name=="PetMesh" then bindSecond() end end))
  lifetime:Add(Marketplace.PromptProductPurchaseFinished:Connect(function(userId,productId)
   local player=Players.LocalPlayer
-  if player and userId==player.UserId and productId==Config.ProductId then
+  if player and userId==player.UserId and Config.ForProduct(productId) then
    purchaseBusy=false;transientMessage=nil;updatePurchaseUI()
   end
  end))

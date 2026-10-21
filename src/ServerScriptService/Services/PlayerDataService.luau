@@ -208,7 +208,7 @@ local function normalizeLimitedReceipts(raw)
  local out={}
  for id,record in pairs(raw) do
   if type(id)~="string" or id=="" or #id>100 or type(record)~="table"
-   or record.ProductId~=LimitedEgg.ProductId or not LimitedEgg.ValidateResult(record.Result,record.TableVersion) then
+   or not LimitedEgg.ForProduct(record.ProductId) or not LimitedEgg.ValidateResult(record.Result,record.TableVersion,record.ProductId) then
    return nil,"InvalidLimitedReceipt"
   end
   out[id]={ProductId=record.ProductId,TableVersion=record.TableVersion,Result=table.clone(record.Result)}
@@ -1256,8 +1256,8 @@ function PlayerDataService.GrantLimitedEgg(player,purchaseId,record)
  if s.OwnershipLost then return false,"SessionOwnershipLost" end
  if s.StudioStartOverride then return false,"StudioOverrideActive" end
  if type(purchaseId)~="string" or purchaseId=="" or #purchaseId>100 or type(record)~="table"
-  or record.PlayerId~=player.UserId or record.ProductId~=LimitedEgg.ProductId
-  or not LimitedEgg.ValidateResult(record.Result,record.TableVersion) then return false,"InvalidLimitedReceipt" end
+  or record.PlayerId~=player.UserId or not LimitedEgg.ForProduct(record.ProductId)
+  or not LimitedEgg.ValidateResult(record.Result,record.TableVersion,record.ProductId) then return false,"InvalidLimitedReceipt" end
  local pending=s.PendingItemMutation
  if pending then
   if pending.LimitedEggGrant and pending.Id==purchaseId then

@@ -197,7 +197,7 @@ end
 C.PaidOffers={
  Treadmill04=C.Treadmills[4],
  Aura=C.Auras[6],
- LimitedEgg={EggId=C.EggIds[5],PurchaseEnabled=false},
+ LimitedEgg={EggId=C.EggIds[5],PurchaseEnabled=true,ProductId=3720640383,BasePrice=279,Count=1,Button="Open1"},
 }
 local function freeze(value)
  if type(value)=="table" and not table.isfrozen(value) then

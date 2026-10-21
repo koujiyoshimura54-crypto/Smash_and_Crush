@@ -1,0 +1,44 @@
+{
+  "inputSha256": "8afea7a24a37d00aa360f36d73fb02cf2aa3f8593d375498ff69892c87d94703",
+  "outputSha256": "ed0180132ca96c00b62b3926faf88957ee25f2c518a8b0cfa115b911165f8293",
+  "bytes": 6357474,
+  "sources": {
+    "ReplicatedStorage.Config.LimitedEggConfig": {
+      "before": "11c31d9e340cb2eee6eb5fdf4ac3d28e2550539e19691af3d37bec7dde35ffb4",
+      "after": "ffd93c9eb9afc2e0a81db98034f97055c848e196e29bdfb558b31fce0a35ac5e"
+    },
+    "ReplicatedStorage.Config.World2GameplayConfig": {
+      "before": "85a1313941e459818795d68c19e588f6f858242c8a8c49f68827bfe23ae9c867",
+      "after": "5b4a3ecb5cb921064ec5a85d54e959275337900a20de348dab5c4a2e8ad39123"
+    },
+    "ServerScriptService.Systems.Purchases.ReceiptService": {
+      "before": "67645918f511602b4d45855f5f3432037aa17d7bdfc04482c73306d480e2394f",
+      "after": "700ec94007e4e78bd17feace070be318290064c924d54a358321ad21f5a3e411"
+    },
+    "ServerScriptService.Services.PlayerDataService": {
+      "before": "434bc47ab5d3fc713d14b833ea91426fb3a178198c68afdbbe8d1eebd382c21e",
+      "after": "c779ec8924fa85a975e9f3a2fb5fac8e2fd55f20fa58d6637ce75871b4f18cee"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.StandClient": {
+      "before": "e90bf4d35ac4d9a82c487a98c5b521c11c61c7ea885d292cddcee44df2e9673b",
+      "after": "d8ad2ce36dc3d85dd7afa06ec38cf8592c516db4d93021f676c8ae40095196fc"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.EggClient": {
+      "before": "d70897c50a1ecce452c4ca2990e47029e18bd58884349ea6805657993426c998",
+      "after": "3751c60b8f00319370674540e922afeb30ae35168d23ae323ab365a1b2d039c3"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.HatchClient": {
+      "before": "05a6f8fa50e61116de6c6cfe658a7518a04a1ef659418a30b7e047c6ea82d3b6",
+      "after": "7b962f74b3cd191f613dba986ffecf9011d2806eb2845fcc8b3d1b29f320e169"
+    }
+  },
+  "syntaxCompiled": true,
+  "writtenAndReread": true,
+  "allOtherSourcesPropertiesParentsUniqueIdsUnchanged": true,
+  "bossTrophyPremiumPassConnectionsAndPetModelsPreserved": true,
+  "productId": 3720640383,
+  "quantityPerPurchase": 1,
+  "button": "Open1",
+  "studioSaveOrPublishUsed": false,
+  "testFixturesWritten": false
+}

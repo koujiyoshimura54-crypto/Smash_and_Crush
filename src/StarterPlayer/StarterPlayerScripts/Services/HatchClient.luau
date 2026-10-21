@@ -1008,15 +1008,16 @@ function HatchClient.playCommittedLimited(notice)
   return false,"NotCommitted"
  end
  local purchaseId=notice.PurchaseId
- if notice.ProductId~=Limited.ProductId or type(purchaseId)~="string" or #purchaseId==0 or #purchaseId>128 then
+ local offer=Limited.ForProduct(notice.ProductId)
+ if not offer or type(purchaseId)~="string" or #purchaseId==0 or #purchaseId>128 then
   return false,"InvalidReceipt"
  end
  local result=notice.Result
  if type(result)~="table" or type(result.pet)~="string" or type(result.id)~="string" or #result.id==0 then
   return false,"InvalidResult"
  end
- local entry=Limited.ByName[result.pet]
- if not entry or result.percent~=entry.Percent or not Pet.model(result.pet) then return false,"InvalidResult" end
+ local entry=offer.ByName[result.pet]
+ if not entry or not offer.ValidateResult(result,notice.TableVersion) or not Pet.model(result.pet) then return false,"InvalidResult" end
  local state=Pet.NormalizeState(notice.State)
  if not state or state.Owned[result.id]~=result.pet then return false,"ResultNotOwned" end
  if shownLimited[purchaseId] then return false,"AlreadyShown" end

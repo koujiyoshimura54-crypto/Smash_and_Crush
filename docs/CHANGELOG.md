@@ -1111,3 +1111,8 @@ Connected World2 Stage1-10 to the current World1 personal chase/attack/Strength-
 ## 2026-10-21 — Connect World2 premium Treadmill and Aura
 
 Connected Game Passes 2044250678 and 2045204630 to existing World2 training/inventory behavior, preserving current effects and World1 entitlements. Added current-price presentation and server-confirmed immediate ownership updates; validated scoped two-client behavior with simulated billing and isolated data. Nine Sources were written to the same CurrentCloud.rbxl and reread. Limited Egg 02 remains pending quantity/button clarification. Evidence and limits: reports/World2PaidFacilities_20261021/README.md.
+
+
+## 2026-10-21 — Connect Limited Egg 02 with dedicated Open1 UI
+
+Connected Developer Product 3720640383 to one World2 Pet per purchase, reusing the dedicated Limited Egg UI and sole durable Receipt path. Preserved existing models/odds/effects, World1 purchases and the prior premium pass connections. Scoped isolated Play checked UI, cancellation, policy/price failures and receipt/save replay without real billing or production data. Same-file Source writeback/readback passed. Evidence: reports/LimitedEgg02_20261021/README.md.

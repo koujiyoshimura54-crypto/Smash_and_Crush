@@ -637,3 +637,8 @@ World2 Stage1-10 use current World1 non-animation chase and combat behavior, inc
 ## 2026-10-21 — World2 premium pass connections
 
 World2 old treadmill tier 04 (one machine, current root 07) now uses Game Pass 2044250678, base 399 Robux, with its unchanged x35 Training effect. World2 Aura W2_AURA_06 uses Game Pass 2045204630, base 299 Robux, and grants +1500 only when selected in Inventory. Server-verified purchase completion updates access immediately; World1 IDs/effects remain independent. Current Marketplace prices drive the UI; failed lookups never imply free access. Limited Egg 02 Product 3720640383/base 279 remains disabled until its purchase quantity/button is explicitly confirmed. See reports/World2PaidFacilities_20261021/README.md.
+
+
+## 2026-10-21 — Limited Egg 02 Open 1 confirmed
+
+User-confirmed Developer Product 3720640383 (base 279 Robux) grants one existing World2 Limited Pet per purchase. World2 now uses the dedicated single-Open1 Limited Egg UI; Open3/Open8 are not shown. Its current seven candidates, odds, multipliers and models remain unchanged. The existing sole ProcessReceipt and atomic Pet/PurchaseId persistence handle repeat purchases and retries. World1 Limited Egg 01 remains Open1/Product 3717610547. This resolves the pending Egg quantity in the prior paid-facilities entry. See reports/LimitedEgg02_20261021/README.md.

@@ -64,12 +64,12 @@ local committedEvent
 local initialized=false
 local function receiptMatches(record,r)
  return matches(record,r) and record.Kind=="LimitedEgg"
-  and Limited.ValidateResult(record.Result,record.TableVersion)
+  and Limited.ValidateResult(record.Result,record.TableVersion,r.ProductId)
 end
-local function outcome()
+local function outcome(offer)
  local roll=random:NextInteger(1,200)
  local cumulative=0
- for _,entry in ipairs(Limited.Entries) do
+ for _,entry in ipairs(offer.Entries) do
   cumulative+=entry.Percent*2
   if roll<=cumulative then return {id=HttpService:GenerateGUID(false),pet=entry.Name,percent=entry.Percent} end
  end
@@ -106,6 +106,8 @@ local function scheduleReceiptRetry(r)
  end)
 end
 processLimitedReceipt=function(r)
+ local offer=Limited.ForProduct(r.ProductId)
+ if not offer or offer.Count~=1 then return pending end
  local key=r.PurchaseId
  local player=Players:GetPlayerByUserId(r.PlayerId)
  if not player or inFlight[key] then return pending end
@@ -123,13 +125,13 @@ processLimitedReceipt=function(r)
     return nextRecord
    end
    if not proposed then return nil end
-   return {PlayerId=r.PlayerId,ProductId=r.ProductId,Kind="LimitedEgg",TableVersion=Limited.RollVersion,
+   return {PlayerId=r.PlayerId,ProductId=r.ProductId,Kind="LimitedEgg",TableVersion=offer.RollVersion,
     Result=proposed,Status="Reserved",Owner=owner,LeaseUntil=os.time()+180}
   end
   -- Recover the existing immutable outcome before generating any new proposal.
   local record=getLimitedStore():UpdateAsync(key,function(old) return reserve(old,nil) end)
   if not record and not rejected then
-   local proposed=outcome()
+   local proposed=outcome(offer)
    record=getLimitedStore():UpdateAsync(key,function(old) return reserve(old,proposed) end)
   end
   if not receiptMatches(record,r) then return pending end
@@ -157,13 +159,13 @@ processLimitedReceipt=function(r)
  if not ok then warn("Limited Egg receipt deferred: "..tostring(decision));return pending end
  return decision
 end
-local function productInfo()
- if not Limited.PurchaseEnabled then return nil,"PurchasesUnavailable" end
+local function productInfo(offer)
+ if not offer.PurchaseEnabled then return nil,"PurchasesUnavailable" end
  -- Cloud Studio can inspect a prompt; receipt grants remain disabled in Studio.
  if RunService:IsStudio() and game.PlaceId~=126576845524886 then return nil,"LocalStudioUnsupported" end
- if game.GameId~=Limited.UniverseId then return nil,"WrongExperience" end
- local ok,info=pcall(function() return Marketplace:GetProductInfoAsync(Limited.ProductId,Enum.InfoType.Product) end)
- if not ok or type(info)~="table" or info.ProductId~=Limited.ProductId or info.IsForSale~=true
+ if game.GameId~=offer.UniverseId then return nil,"WrongExperience" end
+ local ok,info=pcall(function() return Marketplace:GetProductInfoAsync(offer.ProductId,Enum.InfoType.Product) end)
+ if not ok or type(info)~="table" or info.ProductId~=offer.ProductId or info.IsForSale~=true
   or type(info.PriceInRobux)~="number" or info.PriceInRobux~=info.PriceInRobux
   or info.PriceInRobux<=0 or info.PriceInRobux==math.huge then return nil,"PriceUnavailable" end
  if info.UniverseId~=nil then
@@ -172,7 +174,7 @@ local function productInfo()
   local listed,found=pcall(function()
    local pages=Marketplace:GetDeveloperProductsAsync()
    for _=1,100 do
-    for _,entry in ipairs(pages:GetCurrentPage()) do if entry.ProductId==Limited.ProductId then return true end end
+    for _,entry in ipairs(pages:GetCurrentPage()) do if entry.ProductId==offer.ProductId then return true end end
     if pages.IsFinished then return false end
     pages:AdvanceToNextPageAsync()
    end
@@ -182,7 +184,7 @@ local function productInfo()
  end
  return info
 end
-local function eligibility(player)
+local function eligibility(player,offer)
  if RunService:IsStudio() and not studioAuthorized(player) then return nil,"StudioDeveloperRequired" end
  local session=Data.Get(player)
  if not session or not session.Loaded or not session.Data then return nil,"DataNotLoaded" end
@@ -192,8 +194,8 @@ local function eligibility(player)
  local success,policy=pcall(function() return Policy:GetPolicyInfoForPlayerAsync(player) end)
  if not success or type(policy)~="table" or type(policy.ArePaidRandomItemsRestricted)~="boolean" then return nil,"PolicyUnavailable" end
  if policy.ArePaidRandomItemsRestricted then return nil,"PaidRandomRestricted" end
- for _,entry in ipairs(Limited.Entries) do if not Pet.model(entry.Name) then return nil,"PetModelUnavailable" end end
- local info,reason=productInfo()
+ for _,entry in ipairs(offer.Entries) do if not Pet.model(entry.Name) then return nil,"PetModelUnavailable" end end
+ local info,reason=productInfo(offer)
  if not info then return nil,reason end
  if player.Parent~=Players or Data.Get(player)~=session or session.Data~=snapshot or session.OwnershipLost then
   return nil,"SessionOwnershipLost"
@@ -201,16 +203,26 @@ local function eligibility(player)
  if session.Saving or session.PendingItemMutation then return nil,"DataSaving" end
  return info
 end
-local function nearEntrance(player)
- local model=workspace:FindFirstChild(Limited.Entrance)
- local part=model and model.PrimaryPart
+local function nearEntrance(player,offer)
+ local part
+ if offer.WorldId==2 then
+  local map=workspace:FindFirstChild("World2Map")
+  local area=map and map:FindFirstChild("TrainingArea")
+  local facilities=area and area:FindFirstChild("FacilityDisplays")
+  local model=facilities and facilities:FindFirstChild("LimitedEggDisplay")
+  part=model and model:FindFirstChild("PetMesh")
+ else
+  local model=workspace:FindFirstChild(offer.Entrance)
+  part=model and model.PrimaryPart
+ end
  local character=player.Character
  local root=character and character:FindFirstChild("HumanoidRootPart")
  local hum=character and character:FindFirstChildOfClass("Humanoid")
- return part and root and hum and hum.Health>0 and (player:GetAttribute("CurrentWorld") or 1)==1
+ return part and root and hum and hum.Health>0 and (player:GetAttribute("CurrentWorld") or 1)==offer.WorldId
   and (root.Position-part.Position).Magnitude<=24
 end
-function M.LimitedRequest(player,action,value)
+function M.LimitedRequest(player,action,value,productId)
+ local offer=Limited.ForProduct(productId or Limited.ProductId)
  if action=="Offer" or action=="Purchase" then print("[LimitedEgg01] request",action,player and player.UserId,game.PlaceId) end
  if not player or player.Parent~=Players then return {ok=false,reason="InvalidPlayer"} end
  if action=="Ready" then
@@ -229,7 +241,7 @@ function M.LimitedRequest(player,action,value)
    if type(value)~="string" or value=="" or #value>100 then return {ok=false,reason="InvalidReceipt"} end
    if RunService:IsStudio() and not studioAuthorized(player) then return {ok=false,reason="StudioDeveloperRequired"} end
    local saved=getLimitedStore():UpdateAsync(value,function(old)
-    if not old or old.PlayerId~=player.UserId or old.ProductId~=Limited.ProductId or old.Kind~="LimitedEgg"
+    if not old or old.PlayerId~=player.UserId or not Limited.ForProduct(old.ProductId) or old.Kind~="LimitedEgg"
      or old.Status~="Granted" then return nil end
     local final=table.clone(old);final.Presented=true;return final
    end)
@@ -237,15 +249,16 @@ function M.LimitedRequest(player,action,value)
    return {ok=false,reason="NotificationPending"}
   end
   if action~="Offer" and action~="Purchase" then return {ok=false,reason="InvalidAction"} end
+  if not offer or offer.Count~=1 then return {ok=false,reason="PurchasesUnavailable"} end
   if promptBusy[player] then return {ok=false,reason="PurchaseBusy"} end
-  if not nearEntrance(player) then return {ok=false,reason="TooFarFromEgg"} end
-  local info,reason=eligibility(player)
+  if not nearEntrance(player,offer) then return {ok=false,reason="TooFarFromEgg"} end
+  local info,reason=eligibility(player,offer)
   if not info then return {ok=false,reason=reason} end
-  if action=="Offer" then return {ok=true,ProductId=Limited.ProductId,Price=info.PriceInRobux,TableVersion=Limited.RollVersion} end
-  if value~=Limited.RollVersion or not nearEntrance(player) then return {ok=false,reason="OfferChanged"} end
-  promptBusy[player]=true
-  print("[LimitedEgg01] prompting",player.UserId,Limited.ProductId)
-  local prompted,err=pcall(function() Marketplace:PromptProductPurchase(player,Limited.ProductId) end)
+  if action=="Offer" then return {ok=true,ProductId=offer.ProductId,Price=info.PriceInRobux,TableVersion=offer.RollVersion,Count=offer.Count} end
+  if value~=offer.RollVersion or not nearEntrance(player,offer) then return {ok=false,reason="OfferChanged"} end
+  promptBusy[player]=offer.ProductId
+  print("[LimitedEgg] prompting",player.UserId,offer.ProductId)
+  local prompted,err=pcall(function() Marketplace:PromptProductPurchase(player,offer.ProductId) end)
   if not prompted then promptBusy[player]=nil;warn("Limited Egg prompt failed: "..tostring(err));return {ok=false,reason="PromptFailed"} end
   return {ok=true}
  end)
@@ -267,9 +280,9 @@ function M.InitializeLimited()
  request.OnServerInvoke=M.LimitedRequest
  print("[LimitedEgg01] server ready",game.PlaceId,Limited.ProductId)
  Marketplace.PromptProductPurchaseFinished:Connect(function(userId,productId)
-  if productId~=Limited.ProductId then return end
+  if not Limited.ForProduct(productId) then return end
   local player=Players:GetPlayerByUserId(userId)
-  if player then promptBusy[player]=nil end -- completion/cancel only unlocks; never grants
+  if player and promptBusy[player]==productId then promptBusy[player]=nil end -- completion/cancel only unlocks; never grants
  end)
  Players.PlayerRemoving:Connect(function(player)
   promptBusy[player]=nil;requestBusy[player]=nil;nextRequest[player]=nil;ready[player]=nil
@@ -353,7 +366,7 @@ local function processItemReceipt(r)
 end
 
 function M.ProcessReceipt(r)
- if typeof(r)=="table" and r.ProductId==Limited.ProductId then
+ if typeof(r)=="table" and Limited.ForProduct(r.ProductId)~=nil then
   if type(r.PurchaseId)~="string" or r.PurchaseId=="" or #r.PurchaseId>100
    or type(r.PlayerId)~="number" or r.PlayerId~=r.PlayerId or r.PlayerId<=0 or r.PlayerId%1~=0 or r.PlayerId==math.huge then return pending end
   local decision=processLimitedReceipt(r)

@@ -347,6 +347,8 @@ local function build(egg: Sheet)
 end
 
 local function register(part: BasePart)
+ -- Paid World2 Limited Egg uses the dedicated single-purchase candidate sheet.
+ if Egg.identity(part)==require(ReplicatedStorage.Config.LimitedEggConfig).World2.EggId then return end
  local prize=part:FindFirstChild("Prize")
  local amount=prize and prize:FindFirstChild("Info")
  if amount and amount:IsA("TextLabel") then amount.Text=Egg.purchasable(Egg.identity(part)) and require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(Egg.identity(part))) or "Unavailable" end
