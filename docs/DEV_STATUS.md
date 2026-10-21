@@ -2301,3 +2301,7 @@ The existing Pets entry is saved as the sixth common HUD button; runtime mountin
 ## 2026-10-21 - Wall extensions written; further Play verification stopped by user
 
 Added 75 saved vertical Parts across both Worlds, with an upper Y=160 and existing passage space preserved. Maximum-size representative outer/upper-opening collision and ground opening passage were observed in isolated Play with fixture positioning. The user then stopped further verification. Normal-size climbing, destruction/progression, successful StageSkip, Gate/return and camera/attack behavior remain unverified; the test runtime returned StageNotReady for StageSkip. The same rbxl was written and decoded with all existing Sources/properties/parents preserved and valid UniqueIds/references. Verification Studio was cleaned and closed without Save/Publish. See reports/WallExtensions_20261021/README.md and the requested blue/transparent images.
+
+## 2026-10-21 - Existing wall extensions repositioned
+
+Repositioned only the 54 World1 and 21 World2 wall-extension Parts toward their outer/downstream edges; adjusted horizontal connecting lengths. Wrote the same CurrentCloud.rbxl and confirmed written bytes, preserving all other chunks and instance identities. No Studio, Play, screenshot or additional test was performed at the user's direction; the user will verify behavior. See reports/WallExtensionEdges_20261021/README.md.

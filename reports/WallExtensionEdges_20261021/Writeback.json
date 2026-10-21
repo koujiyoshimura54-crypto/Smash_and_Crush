@@ -1,0 +1,1743 @@
+{
+  "inputSha256": "885da7ec604d93e56af033221827166880b30e06488c115d729a4cc2e8782f9a",
+  "outputSha256": "b6475118f3f347a32e96a616a3c489dba53ed1cf07d16b1de2e09a857b686d2d",
+  "world1Parts": 54,
+  "world2Parts": 21,
+  "changedProperties": [
+    "CFrame",
+    "size"
+  ],
+  "unchangedHeightAndFlags": true,
+  "allOtherChunksByteIdentical": true,
+  "noInstancesAddedRemovedOrReparented": true,
+  "uniqueIdsUnchanged": true,
+  "runtimeAndVisualTesting": "Not performed; user will verify",
+  "written": true,
+  "changes": [
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Wall_1",
+      "beforePosition": [
+        274.0999984741211,
+        98.4375,
+        -77.30000305175781
+      ],
+      "afterPosition": [
+        274.8066635131836,
+        98.4375,
+        -98.37500305175782
+      ],
+      "beforeSize": [
+        211.30002746582034,
+        123.125,
+        21.125
+      ],
+      "afterSize": [
+        282.8616485595703,
+        123.125,
+        21.125
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Wall_2",
+      "beforePosition": [
+        384.54998779296875,
+        97.9375,
+        7.4499969482421875
+      ],
+      "afterPosition": [
+        405.62498779296874,
+        97.9375,
+        15.863693237304688
+      ],
+      "beforeSize": [
+        21.125,
+        124.125,
+        173.30001220703124
+      ],
+      "afterSize": [
+        21.125,
+        124.125,
+        249.702392578125
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Wall_3",
+      "beforePosition": [
+        274.6289367675781,
+        97.9375,
+        104.28184509277344
+      ],
+      "afterPosition": [
+        274.8066635131836,
+        97.9375,
+        128.52054138183593
+      ],
+      "beforeSize": [
+        207.24215087890627,
+        124.125,
+        24.2886962890625
+      ],
+      "afterSize": [
+        282.8616485595703,
+        124.125,
+        24.2886962890625
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Lobby_Wall_4",
+      "beforePosition": [
+        165.06333923339844,
+        97.9375,
+        11.255569458007812
+      ],
+      "afterPosition": [
+        143.98833923339845,
+        97.9375,
+        15.863693237304688
+      ],
+      "beforeSize": [
+        21.125,
+        124.125,
+        181.9111572265625
+      ],
+      "afterSize": [
+        21.125,
+        124.125,
+        249.702392578125
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage03_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        404.62001037597656
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        404.62001037597656
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        82.20000610351565
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        82.20000610351565
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage03_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        404.6199951171875
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        404.6199951171875
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        82.19997558593752
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        82.19997558593752
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage03_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        343.5199890136719
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        343.5199890136719
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.19997558593752
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.19997558593752
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage03_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        343.5199890136719
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        343.5199890136719
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593752
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593752
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage04_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        528.6949920654297
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        528.6949920654297
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        85.95000610351559
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        85.95000610351559
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage04_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        465.7200012207031
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        465.7200012207031
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593752
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593752
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage04_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        465.7200164794922
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        465.7200164794922
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.20000610351565
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.20000610351565
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage04_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        528.6950378417969
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        528.6950378417969
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        85.95003662109372
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        85.95003662109372
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage10_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        1595.4200439453125
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        1597.3950439453124
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        164.0999999999999
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        168.04999999999995
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage10_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        1595.4200439453125
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        1597.3950439453124
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        164.0999999999999
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        168.04999999999995
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage10_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        1493.3699340820312
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        1493.3699340820312
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage10_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        1493.3699340820312
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        1493.3699340820312
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage10_End",
+      "beforePosition": [
+        287.79998779296875,
+        100.4375,
+        1678.4200439453125
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        100.4375,
+        1680.3700439453125
+      ],
+      "beforeSize": [
+        150.35000000000002,
+        119.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        119.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage08_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        1257.8699951171875
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        1257.8699951171875
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        140.9999023437499
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        140.9999023437499
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage08_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        1257.8699951171875
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        1257.8699951171875
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        140.9999023437499
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        140.9999023437499
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage08_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        1167.3699951171875
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        1167.3699951171875
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.20009765624991
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.20009765624991
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage08_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        1167.3699340820312
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        1167.3699340820312
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage07_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        1049.8700256347656
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        1049.8700256347656
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        195.00008544921866
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        195.00008544921866
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage07_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        932.3699951171875
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        932.3699951171875
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage07_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        932.3699951171875
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        932.3699951171875
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.20009765624991
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.20009765624991
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage07_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        1049.8699645996094
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        1049.8699645996094
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        194.99996337890616
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        194.99996337890616
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage06_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        826.8699951171875
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        826.8699951171875
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        171.0000244140624
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        171.0000244140624
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage06_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        826.8699645996094
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        826.8699645996094
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        170.99996337890616
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        170.99996337890616
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage06_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        721.3700256347656
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        721.3700256347656
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.20003662109366
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.20003662109366
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage06_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        721.3699951171875
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        721.3699951171875
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage02_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        283.85997772216797
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        283.85997772216797
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        79.31998596191409
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        79.31998596191409
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage02_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        283.85999298095703
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        283.85999298095703
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        79.32001647949221
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        79.32001647949221
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage02_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        224.1999969482422
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        224.1999969482422
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.20000610351565
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.20000610351565
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage02_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        224.1999969482422
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        224.1999969482422
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.20000610351565
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.20000610351565
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage05_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        591.6699829101562
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        591.6699829101562
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage05_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        656.5199890136719
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        656.5199890136719
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        89.70003662109366
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        89.70003662109366
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage05_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        656.5200500488281
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        656.5200500488281
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        89.70003662109366
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        89.70003662109366
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage05_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        591.6699829101562
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        591.6699829101562
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage09_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        1420.8700561523438
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        1420.8700561523438
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        105.00002441406241
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        105.00002441406241
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage09_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        1420.8700561523438
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        1420.8700561523438
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        105.00002441406241
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        105.00002441406241
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage09_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        1348.3699340820312
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        1348.3699340820312
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage09_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        1348.3699340820312
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        1348.3699340820312
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        40.19997558593741
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage01_Environment_RightSide",
+      "beforePosition": [
+        328.0625,
+        97.9375,
+        106.30000305175781
+      ],
+      "afterPosition": [
+        360.1375,
+        97.9375,
+        106.30000305175781
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        42.70000610351562
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        42.70000610351562
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage01_BossArea_RightSide",
+      "beforePosition": [
+        346.86248779296875,
+        97.9375,
+        165.875
+      ],
+      "afterPosition": [
+        378.93748779296874,
+        97.9375,
+        165.875
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        76.64998779296876
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        76.64998779296876
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage01_BossArea_LeftSide",
+      "beforePosition": [
+        228.73748779296875,
+        97.9375,
+        165.875
+      ],
+      "afterPosition": [
+        196.66248779296876,
+        97.9375,
+        165.875
+      ],
+      "beforeSize": [
+        32.125,
+        124.125,
+        76.64998779296876
+      ],
+      "afterSize": [
+        32.125,
+        124.125,
+        76.64998779296876
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage01_Environment_LeftSide",
+      "beforePosition": [
+        247.53748321533203,
+        97.9375,
+        106.30000305175781
+      ],
+      "afterPosition": [
+        215.4624984741211,
+        97.9375,
+        106.30000305175781
+      ],
+      "beforeSize": [
+        32.12498474121094,
+        124.125,
+        42.70000610351562
+      ],
+      "afterSize": [
+        32.12498474121094,
+        124.125,
+        42.70000610351562
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_EastWall",
+      "beforePosition": [
+        150.51251220703125,
+        96.9375,
+        1937.8199462890625
+      ],
+      "afterPosition": [
+        171.58751220703124,
+        96.9375,
+        1932.0699462890625
+      ],
+      "beforeSize": [
+        21.125,
+        126.125,
+        202.1200195312499
+      ],
+      "afterSize": [
+        21.125,
+        126.125,
+        260.320068359375
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_WestWall",
+      "beforePosition": [
+        -121.27249145507812,
+        96.9375,
+        1937.3199462890625
+      ],
+      "afterPosition": [
+        -142.3474914550781,
+        96.9375,
+        1932.0699462890625
+      ],
+      "beforeSize": [
+        21.125,
+        126.125,
+        202.1200195312499
+      ],
+      "afterSize": [
+        21.125,
+        126.125,
+        260.320068359375
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_RearWall",
+      "beforePosition": [
+        14.8700180053711,
+        96.9375,
+        1833.597412109375
+      ],
+      "afterPosition": [
+        14.620010375976562,
+        96.9375,
+        1812.522412109375
+      ],
+      "beforeSize": [
+        254.22013244628909,
+        126.125,
+        21.125
+      ],
+      "afterSize": [
+        335.1600036621094,
+        126.125,
+        21.125
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_ExitLeft",
+      "beforePosition": [
+        -71.72001647949219,
+        96.9375,
+        2030.54248046875
+      ],
+      "afterPosition": [
+        -84.9949737548828,
+        96.9375,
+        2051.61748046875
+      ],
+      "beforeSize": [
+        109.38012084960937,
+        126.125,
+        21.125
+      ],
+      "afterSize": [
+        135.93003540039064,
+        126.125,
+        21.125
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_ExitRight",
+      "beforePosition": [
+        103.92010498046875,
+        96.9375,
+        2030.54248046875
+      ],
+      "afterPosition": [
+        127.78502807617187,
+        96.9375,
+        2051.61748046875
+      ],
+      "beforeSize": [
+        61.10012207031251,
+        126.125,
+        21.125
+      ],
+      "afterSize": [
+        108.82996826171876,
+        126.125,
+        21.125
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage01_10_LeftWall",
+      "beforePosition": [
+        -38.64250183105469,
+        96.9375,
+        2846.059326171875
+      ],
+      "afterPosition": [
+        -59.71750183105469,
+        96.9375,
+        2862.949853515625
+      ],
+      "beforeSize": [
+        21.125,
+        126.125,
+        1624.2943359375001
+      ],
+      "afterSize": [
+        21.125,
+        126.125,
+        1658.0753906250002
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage01_10_RightWall",
+      "beforePosition": [
+        94.48249816894531,
+        96.9375,
+        2846.9485473632812
+      ],
+      "afterPosition": [
+        115.55749816894532,
+        96.9375,
+        2863.508996582031
+      ],
+      "beforeSize": [
+        21.125,
+        126.125,
+        1623.8362060546876
+      ],
+      "afterSize": [
+        21.125,
+        126.125,
+        1656.9571044921877
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage10_EndWall",
+      "beforePosition": [
+        28.381105422973633,
+        96.9375,
+        3660.300048828125
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        3681.375048828125
+      ],
+      "beforeSize": [
+        99.93864974975585,
+        126.125,
+        21.125
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        21.125
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage01_To_Stage02_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        204.14999771118164
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        206.09999771118163
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage02_To_Stage03_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        323.4699897766113
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        325.4199897766113
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage03_To_Stage04_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        445.6700019836426
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        447.62000198364257
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage04_To_Stage05_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        571.6199836730957
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        573.5699836730957
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage05_To_Stage06_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        701.319995880127
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        703.269995880127
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage06_To_Stage07_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        912.319995880127
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        914.269995880127
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage07_To_Stage08_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        1147.319995880127
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        1149.269995880127
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage08_To_Stage09_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        1328.319995880127
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        1330.269995880127
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.GeneratedMap.WallTopExtensions.Stage09_To_Stage10_AboveOpening",
+      "beforePosition": [
+        287.79998779296875,
+        97.9375,
+        1473.319995880127
+      ],
+      "afterPosition": [
+        287.79998779296875,
+        97.9375,
+        1475.269995880127
+      ],
+      "beforeSize": [
+        150.25,
+        124.125,
+        2
+      ],
+      "afterSize": [
+        214.5,
+        124.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage01_To_Stage02_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        2154.630027770996
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        2156.580027770996
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage02_To_Stage03_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        2273.9500732421875
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        2275.9000732421873
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage03_To_Stage04_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        2396.149932861328
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        2398.099932861328
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage04_To_Stage05_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        2522.1002197265625
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        2524.0502197265623
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage05_To_Stage06_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        2651.8002319335938
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        2653.7502319335936
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage06_To_Stage07_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        2862.8003692626953
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        2864.750369262695
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage07_To_Stage08_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        3097.8001708984375
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        3099.7501708984373
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage08_To_Stage09_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        3278.8003540039062
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        3280.750354003906
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage09_To_Stage10_AboveOpening",
+      "beforePosition": [
+        27.920000076293945,
+        96.9375,
+        3423.8000869750977
+      ],
+      "afterPosition": [
+        27.919998168945312,
+        96.9375,
+        3425.7500869750975
+      ],
+      "beforeSize": [
+        154.25,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        196.5,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_To_Stage01_AboveOpening",
+      "beforePosition": [
+        33.41998,
+        96.9375,
+        2029.54
+      ],
+      "afterPosition": [
+        28.170043945312496,
+        96.9375,
+        2042.0549804687498
+      ],
+      "beforeSize": [
+        101.00012,
+        126.125,
+        2
+      ],
+      "afterSize": [
+        90.59999999999997,
+        126.125,
+        2
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Lobby_EastExit_Junction",
+      "beforePosition": [
+        138.512512207,
+        90.4375,
+        2028.730102539
+      ],
+      "afterPosition": [
+        170.58751220703124,
+        90.4375,
+        2041.0549804687498
+      ],
+      "beforeSize": [
+        19.125,
+        139.125,
+        18
+      ],
+      "afterSize": [
+        19.125,
+        139.125,
+        18
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage10_EndLeft_Junction",
+      "beforePosition": [
+        -29.442502975,
+        94.4375,
+        3654.648681641
+      ],
+      "afterPosition": [
+        -58.71750183105469,
+        94.4375,
+        3670.812548828125
+      ],
+      "beforeSize": [
+        19.125,
+        131.125,
+        7.428079129
+      ],
+      "afterSize": [
+        19.125,
+        131.125,
+        7.428079129
+      ]
+    },
+    {
+      "path": "Workspace.World2Map.WallTopExtensions.Stage10_EndRight_Junction",
+      "beforePosition": [
+        82.482498169,
+        90.4375,
+        3654.648681641
+      ],
+      "afterPosition": [
+        114.55749816894532,
+        90.4375,
+        3670.812548828125
+      ],
+      "beforeSize": [
+        19.125,
+        139.125,
+        7.428079129
+      ],
+      "afterSize": [
+        19.125,
+        139.125,
+        7.428079129
+      ]
+    }
+  ]
+}

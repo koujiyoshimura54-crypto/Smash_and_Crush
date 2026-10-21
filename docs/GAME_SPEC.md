@@ -603,3 +603,7 @@ World2Visited is permanent progression in the existing PlayerData record. Succes
 ## 2026-10-21 - Saved vertical wall extensions
 
 CurrentCloud contains fixed transparent vertical wall extensions in GeneratedMap.WallTopExtensions (54 Parts) and World2Map.WallTopExtensions (21 Parts). They follow existing Lobby/corridor walls and connect above Stage openings to world Y=160, leaving 31.875 studs of opening height. There is no roof, runtime generator or change to destructible-wall ownership, player movement or progression. Parts are anchored, collidable, fully transparent, non-touching and shadowless in Default; CanQuery remains true for physical placement queries. Exact measured placement and verification limits are recorded in reports/WallExtensions_20261021/README.md.
+
+## 2026-10-21 - Wall extension outside-edge placement
+
+The existing 75 transparent wall extensions now place their Map-facing surfaces at perimeter outside edges with 0.05-stud inward contact, leaving the original thickness outside the usable wall top. Stage-opening panels move to the downstream (+Z) edge; connecting spans/corners meet the moved panels. Y=160 tops, opening heights, thicknesses and flags remain unchanged. Runtime/visual verification will be performed by the user. Record: reports/WallExtensionEdges_20261021/README.md.

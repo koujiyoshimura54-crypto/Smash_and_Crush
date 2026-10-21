@@ -29,3 +29,7 @@ Play was stopped. All memory-only Source replacements were restored, the test ad
 The guarded writer adds the two folders and 75 Parts directly to the same rbxl. It re-decodes the written bytes and validates saved positions, dimensions, transparency/collision properties, dense references and UniqueIds while comparing every existing property/parent and preserving every existing Source. `FileValidation.json` records the result. A further native Studio reopen was omitted after the user's stop instruction. The writer is a no-op on a matching already-applied file and refuses unexpected or partial local state, preventing duplicate panels.
 
 Final written SHA-256: `885da7ec604d93e56af033221827166880b30e06488c115d729a4cc2e8782f9a`. The target lock file is absent. The external rbxl is not Git-tracked; this commit contains the exact placement manifest, guarded writer and English records.
+
+## 2026-10-21 follow-up — move panels to outside edges
+
+The same 75 Parts were subsequently repositioned to preserve playable wall-top space. Perimeter contact faces now meet the outside edges; Stage-opening planes move toward the next Stage (+Z). Only positions and connecting horizontal lengths changed; heights, thicknesses and all flags remain unchanged. See [edge relocation record](../WallExtensionEdges_20261021/README.md) and its exact before/after manifest. The images and Play observations above describe the earlier placement, not this follow-up. No Studio or Play verification was performed for the follow-up; the user will verify it.

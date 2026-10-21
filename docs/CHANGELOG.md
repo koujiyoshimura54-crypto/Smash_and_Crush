@@ -1070,3 +1070,7 @@ Added server-confirmed permanent World2 arrival state in existing PlayerData, ce
 ## 2026-10-21 - Vertical extensions over existing World1/World2 walls
 
 Added two dedicated folders containing 54 World1 and 21 World2 fixed transparent wall Parts, with Y=160 tops and upper Stage-opening spans. Preserved existing geometry, Sources, destructible walls and gameplay. Recorded limited isolated Play observations and the user-requested stop of further verification. Wrote the same CurrentCloud.rbxl with lossless existing-row comparison and re-decode/reference validation. Evidence: reports/WallExtensions_20261021/README.md.
+
+## 2026-10-21 - Preserve usable wall tops by moving transparent boundaries outward
+
+Moved the existing 75 panels to outside/downstream edges and joined their endpoints, changing only positions and horizontal span lengths. Preserved heights, thicknesses, flags and all unrelated place content. Same-file writeback completed; visual/runtime verification is assigned to the user. Evidence: reports/WallExtensionEdges_20261021/Writeback.json.
