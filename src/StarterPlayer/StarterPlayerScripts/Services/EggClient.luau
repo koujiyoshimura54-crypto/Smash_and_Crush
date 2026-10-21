@@ -77,7 +77,7 @@ local function setPair(root: Instance, name: string, text: string)
 end
 
 local function setIcon(frame: ImageLabel, petName: string)
- if Pet.isLimited(petName) then require(ReplicatedStorage.Modules.LimitedPetViewport).bind(frame,petName);return end
+ if Pet.UsesModelViewport(petName) then require(ReplicatedStorage.Modules.LimitedPetViewport).bind(frame,petName,false);return end
 	local decal = if icons then icons:FindFirstChild(Pet.VisualName(petName)) else nil
 	if not (decal and decal:IsA("Decal")) then
 		warn(`[EggClient] could not find {table.concat(ICONS_PATH, ".")}.{petName}`)

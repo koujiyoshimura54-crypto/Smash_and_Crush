@@ -195,7 +195,7 @@ function PetClient.showCard(name: string, root: GuiObject)
 
 	card.AnchorPoint = Vector2.zero
 
-	setPair(card, NAME_NAME, name)
+	setPair(card, NAME_NAME, Pet.DisplayName(name))
 
 	local rarity = Pet.rarity(name)
 	local label = card:FindFirstChild(RARITY_NAME)
@@ -287,7 +287,7 @@ local function buildTile(id: string, name: string, order: number, options: any?)
 
 	tile.LayoutOrder = order
 
-	setPair(tile, TITLE_NAME, name)
+	setPair(tile, TITLE_NAME, Pet.DisplayName(name))
 
 	local main = tile:FindFirstChild(MAIN_NAME)
 	if main then
@@ -373,7 +373,7 @@ function PetClient.setMaterialSelection(tile: GuiObject, name: string, selected:
  local main=tile:FindFirstChild(MAIN_NAME)
  local check=main and main:FindFirstChild(CHECK_NAME)
  if check and check:IsA("GuiObject") then check.Visible=selected and not equipped end
- setPair(tile,TITLE_NAME,name..(equipped and " (Equipped)" or ""))
+ setPair(tile,TITLE_NAME,Pet.DisplayName(name)..(equipped and " (Equipped)" or ""))
  local button=tile:FindFirstChild(BUTTON_NAME)
  if button and button:IsA("GuiButton") then
   button.Active=not equipped;button.Interactable=not equipped;button.Selectable=not equipped
@@ -440,6 +440,30 @@ local function rebuild()
 	end
 
 	refreshChecks()
+	-- Automatic canvas bounds omit scale-based padding on the purchased wrapping list.
+	-- Keep automatic sizing (tile heights use the window) and include its full last row.
+	local layout=root:FindFirstChildOfClass("UIListLayout")
+	if root:IsA("ScrollingFrame") and layout then
+		local function fitCanvas()
+			local scale=1
+			local ancestor: Instance?=root
+			while ancestor do
+				local sizing=ancestor:FindFirstChildOfClass("UIScale")
+				if sizing then scale*=sizing.Scale end
+				ancestor=ancestor.Parent
+			end
+			if scale<=0 or root.AbsoluteSize.Y<=0 then return end
+			local padding=root:FindFirstChildOfClass("UIPadding")
+			local fraction=padding and padding.PaddingTop.Scale+padding.PaddingBottom.Scale or 0
+			local offsets=padding and padding.PaddingTop.Offset+padding.PaddingBottom.Offset or 0
+			local height=math.ceil((layout.AbsoluteContentSize.Y/scale+offsets+4)/math.max(1-fraction,.05))
+			local target=UDim2.new(root.CanvasSize.X.Scale,root.CanvasSize.X.Offset,0,height)
+			if root.CanvasSize~=target then root.CanvasSize=target end
+		end
+		janitor:Add(layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(fitCanvas))
+		janitor:Add(root:GetPropertyChangedSignal("AbsoluteSize"):Connect(fitCanvas))
+		task.defer(fitCanvas)
+	end
 end
 
 local function bind(gui: ScreenGui)

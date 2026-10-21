@@ -8,6 +8,7 @@ local RunService=game:GetService("RunService")
 local Janitor=require(RS.Packages.Janitor)
 local Config=require(RS.Config.LimitedEggConfig)
 local Viewport=require(RS.Modules.LimitedPetViewport)
+local Pet=require(RS.Modules.Pet)
 local M={}
 local activeConfig=Config
 local lifetime=Janitor.new()
@@ -167,7 +168,7 @@ function M.show(parent,fetchPrice,offer)
    percent.Text=string.format("%g%%",entry.Percent);percent.AutoLocalize=false
    percent.AnchorPoint=Vector2.zero;percent.Position=UDim2.fromOffset(4,148);percent.Size=UDim2.fromOffset(148,23)
    percent.TextScaled=true;percent.ZIndex=5;percent.TextXAlignment=Enum.TextXAlignment.Center
-   local petName=label(nameDonor,card,"PetName",entry.Name,UDim2.fromOffset(4,124),UDim2.fromOffset(148,23))
+   local petName=label(nameDonor,card,"PetName",Pet.DisplayName(entry.Name),UDim2.fromOffset(4,124),UDim2.fromOffset(148,23))
    petName.TextXAlignment=Enum.TextXAlignment.Center
    -- Keep the purchased candidate container and its Percent child.
    local cleanup,view=Viewport.mount(card,entry.Name)

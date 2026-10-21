@@ -617,7 +617,7 @@ local function reveal(slot: Slot, token: number, index: number)
 
 		explode(slot, token)
 
-		slot.name.Text = string.format(settings.nameFormat, result.pet, result.percent)
+		slot.name.Text = string.format(settings.nameFormat, Pet.DisplayName(result.pet), result.percent)
 		pop(slot.name)
 
 		local rarity = Pet.rarity(result.pet)

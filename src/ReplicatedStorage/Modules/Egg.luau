@@ -154,6 +154,8 @@ function Egg.ranked(Pets: {[string]: number}): {Slot}
 
 	table.sort(List, function(a: Slot, b: Slot): boolean
 		if a.percent ~= b.percent then return a.percent > b.percent end
+		local wa,wb=World2.Pets[a.pet],World2.Pets[b.pet]
+		if wa and wb and wa.Egg==wb.Egg then return wa.Slot<wb.Slot end
 		local x,y=Egg.mergePet(a.pet),Egg.mergePet(b.pet)
 		if x and y and x.Egg==y.Egg then return x.Slot<y.Slot end
 

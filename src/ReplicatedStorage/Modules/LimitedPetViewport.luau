@@ -1,11 +1,10 @@
 -- Static display only. Adapted from purchased HatchClient.mount; never plays tracks.
 local RS=game:GetService("ReplicatedStorage")
-local Config=require(RS.Config.LimitedEggConfig)
 local M={}
 local Pet=require(RS.Modules.Pet)
 local bindings=setmetatable({}, {__mode="k"})
 
-function M.supports(name) return Pet.isLimited(name) end
+function M.supports(name) return Pet.UsesModelViewport(name) end
 
 -- Same static purchased-model display/fitting for Pet models and actual normal Egg MeshParts.
 function M.mountTemplate(host,template,yaw,viewportName,orientation)
@@ -85,11 +84,9 @@ function M.mountTemplate(host,template,yaw,viewportName,orientation)
 end
 
 function M.mount(host,name)
- name=Pet.VisualName(name)
- local entry=Config.ByName[name]
+ local entry=Pet.VisualEntry(name)
  if not entry then return nil end
- local templates=RS.Assets:FindFirstChild(Config.ModelsFolder)
- local template=templates and templates:FindFirstChild(name)
+ local template=Pet.model(name)
  assert(template and template:IsA("Model"),"Missing purchased limited Pet: "..name)
  return M.mountTemplate(host,template,entry.Yaw,"LimitedPetViewport")
 end
@@ -101,7 +98,7 @@ function M.mountEgg(host,name)
 end
 
 -- Inventory tabs/menus can hide through an ancestor. Release static models then.
-function M.bind(host,name)
+function M.bind(host,name,reserveTitle)
  if not M.supports(name) then return nil end
  if bindings[host] then bindings[host]() end
  local watched={};local lifetime={};local unmount;local dead=false
@@ -123,8 +120,8 @@ function M.bind(host,name)
     local view
     unmount,view=M.mount(host,name)
     -- Reserve the purchased tile title band above the visible model.
-    view.Position=UDim2.fromScale(.03,.20)
-    view.Size=UDim2.fromScale(.94,.76)
+    view.Position=reserveTitle==false and UDim2.fromScale(0,0) or UDim2.fromScale(.03,.20)
+    view.Size=reserveTitle==false and UDim2.fromScale(1,1) or UDim2.fromScale(.94,.76)
    end
   else clear() end
  end

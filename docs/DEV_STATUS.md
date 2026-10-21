@@ -2340,3 +2340,9 @@ Treadmill and Aura purchase connections are implemented, syntax-checked, and exe
 ## 2026-10-21 — All three World2 paid facilities connected
 
 Completed Limited Egg 02 after the user confirmed Open1 and dedicated UI only. Focused local Play verified real entry/button UI, current price/odds, simulated cancellation and policy/price failures, one-Pet receipt grants, duplicate suppression, journal interruption and ambiguous-save recovery. In-memory reload plus a fresh receipt cache preserved the exact count; actual payment/production rejoin remain unverified. Prior Treadmill/Aura connections were retained without repeating broad tests, per the user's speed preference. Seven Sources compiled and matched same-file writeback/readback. See reports/LimitedEgg02_20261021/README.md and Writeback.json.
+
+## 2026-10-21 — World2 approved 35-Pet model assignment
+
+Implemented against the current CurrentCloud file after 58849b4. Registered only the 35 approved model subtrees under ReplicatedStorage.Assets.World2Pets, retaining existing saved IDs and slot effects. Shared purchased-model viewports now serve all World2 candidates, hatch reveals, Inventory and followers. Fixed World2 same-odds slot order and the full-collection Inventory's clipped last row.
+
+Two isolated local Play sessions verified all 35 candidate/Inventory displays, all 35 actual follower signatures/effects, five Egg hatch/equip paths, old-ID copy/equipment restoration, mock receipt duplicate prevention, death/respawn and World travel cleanup. World1 normal and Limited01 render checks passed. No live payment, production data or live rejoin was tested. Same-file writeback verified 4,751,237 existing properties and all added clone properties. Five requested candidate images and details are in [World2PetModels_20261021](../reports/World2PetModels_20261021/README.md). Studio Save/Publish was not used.

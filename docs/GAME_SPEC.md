@@ -642,3 +642,7 @@ World2 old treadmill tier 04 (one machine, current root 07) now uses Game Pass 2
 ## 2026-10-21 — Limited Egg 02 Open 1 confirmed
 
 User-confirmed Developer Product 3720640383 (base 279 Robux) grants one existing World2 Limited Pet per purchase. World2 now uses the dedicated single-Open1 Limited Egg UI; Open3/Open8 are not shown. Its current seven candidates, odds, multipliers and models remain unchanged. The existing sole ProcessReceipt and atomic Pet/PurchaseId persistence handle repeat purchases and retries. World1 Limited Egg 01 remains Open1/Product 3717610547. This resolves the pending Egg quantity in the prior paid-facilities entry. See reports/LimitedEgg02_20261021/README.md.
+
+## World2 approved Pet presentations (2026-10-21)
+
+World2's four normal Eggs and Limited Egg 02 now resolve their existing 35 saved species IDs to the approved purchased Pet_ models. The fixed slot probabilities, Strength multipliers, prices, copy/equipment IDs and merge scope are unchanged. Candidate, hatch, Inventory and follower visuals use the same mapping; normal candidates retain four columns and probabilities beneath. Limited Egg 02 remains product 3720640383, Open 1 / one Pet, with unchanged receipt version 1 and server receipt persistence. See [the assignment and verification record](../reports/World2PetModels_20261021/README.md) and its complete compatibility CSV.

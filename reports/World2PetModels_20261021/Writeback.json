@@ -1,0 +1,473 @@
+{
+  "inputSha256": "ed0180132ca96c00b62b3926faf88957ee25f2c518a8b0cfa115b911165f8293",
+  "outputSha256": "54cbff432b4405c8ccdc44aaef8f4c7024e60a2544d5cc31ec40c67f43c1ee57",
+  "bytes": 6894904,
+  "changedSources": {
+    "ReplicatedStorage.Config.World2GameplayConfig": {
+      "before": "5b4a3ecb5cb921064ec5a85d54e959275337900a20de348dab5c4a2e8ad39123",
+      "after": "c1925e4bff36b99ade2c600cf8d1bc3620b930a5ebccc09d1a4ce6c973e05e53"
+    },
+    "ReplicatedStorage.Modules.Pet": {
+      "before": "a2654934183746684cc4d5b7c011a57efbd4fa66959c55e120a2a4dd07a64548",
+      "after": "4f067776321396fca87a1f71bcf944a074210745d0c0d3a2afe5e171c362176d"
+    },
+    "ReplicatedStorage.Modules.Egg": {
+      "before": "897503297580e559b13618712b7711b7ff833ffdfd84b8991b1ba28c855f5e30",
+      "after": "38c55e4593f3bdeb48037608f8b37f09397bc67f624f898e5e4841ad4ae068b3"
+    },
+    "ReplicatedStorage.Modules.LimitedPetViewport": {
+      "before": "6098de2b9ac0567c12d7a0f1a9bb26c8ca66942c41a7c7c2b6b68fbc2a22fa8c",
+      "after": "c3f4ff1a583fa075f8d390063ed18ebc6189e43924fe2bf46ce6894a82312748"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.EggClient": {
+      "before": "3751c60b8f00319370674540e922afeb30ae35168d23ae323ab365a1b2d039c3",
+      "after": "ad06f3d63d46739e6b52847ef6d1209448c31eef9e4d9846378ed13bb02e91da"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.PetClient": {
+      "before": "724dc114d656e0035b1ce44c46a405604b2df01c76a53cd232c0d0197c646c2c",
+      "after": "84305a3ad1e98c01b50c7afb82c90e61fc1ccccf73f0a8f91752093aadd3768c"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.PetFollowClient": {
+      "before": "46b801e5bb5c44cd581a2c9ed550e99ecae3b5be58b4ef043fd8abea93f24ce0",
+      "after": "98a6df72d2e8df74fb4e96bbce7ddf3f84fe77a1c2a56c0c0913016e4d20dd22"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.HatchClient": {
+      "before": "7b962f74b3cd191f613dba986ffecf9011d2806eb2845fcc8b3d1b29f320e169",
+      "after": "7b116189ff5b4c144d04b12849ff2c5a60ace205174a234c315b7d295e84576d"
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.StandClient": {
+      "before": "d8ad2ce36dc3d85dd7afa06ec38cf8592c516db4d93021f676c8ae40095196fc",
+      "after": "88bf4c37c1d62b9cdac8722939ce43477fdea2dbd530c588494e30608cd21089"
+    }
+  },
+  "models": [
+    {
+      "Egg": "W2_Basic",
+      "Slot": 1,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Dog",
+      "NewModelId": "Pet_027",
+      "StrengthMultiplier": 1.6,
+      "StrengthBonusPercent": 60.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_027",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_027",
+      "ClonedInstances": 51
+    },
+    {
+      "Egg": "W2_Basic",
+      "Slot": 2,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Grey Cat",
+      "NewModelId": "Pet_028",
+      "StrengthMultiplier": 1.6,
+      "StrengthBonusPercent": 60.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_028",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_028",
+      "ClonedInstances": 148
+    },
+    {
+      "Egg": "W2_Basic",
+      "Slot": 3,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Pink Bunny",
+      "NewModelId": "Pet_032",
+      "StrengthMultiplier": 1.6,
+      "StrengthBonusPercent": 60.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_032",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_032",
+      "ClonedInstances": 155
+    },
+    {
+      "Egg": "W2_Basic",
+      "Slot": 4,
+      "ProbabilityPercent": 15,
+      "SavedSpeciesId": "W2 Sheep",
+      "NewModelId": "Pet_052",
+      "StrengthMultiplier": 1.8,
+      "StrengthBonusPercent": 80.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_052",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_052",
+      "ClonedInstances": 127
+    },
+    {
+      "Egg": "W2_Basic",
+      "Slot": 5,
+      "ProbabilityPercent": 6.5,
+      "SavedSpeciesId": "W2 Bear",
+      "NewModelId": "Pet_030",
+      "StrengthMultiplier": 2,
+      "StrengthBonusPercent": 100,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_030",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_030",
+      "ClonedInstances": 77
+    },
+    {
+      "Egg": "W2_Basic",
+      "Slot": 6,
+      "ProbabilityPercent": 3,
+      "SavedSpeciesId": "W2 Camel",
+      "NewModelId": "Pet_141",
+      "StrengthMultiplier": 2.3,
+      "StrengthBonusPercent": 130.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_141",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_141",
+      "ClonedInstances": 60
+    },
+    {
+      "Egg": "W2_Basic",
+      "Slot": 7,
+      "ProbabilityPercent": 0.5,
+      "SavedSpeciesId": "W2 Slime",
+      "NewModelId": "Pet_098",
+      "StrengthMultiplier": 2.6,
+      "StrengthBonusPercent": 160.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_098",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_098",
+      "ClonedInstances": 73
+    },
+    {
+      "Egg": "W2_Rare",
+      "Slot": 1,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Cow",
+      "NewModelId": "Pet_035",
+      "StrengthMultiplier": 1.8,
+      "StrengthBonusPercent": 80.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_035",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_035",
+      "ClonedInstances": 37
+    },
+    {
+      "Egg": "W2_Rare",
+      "Slot": 2,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Giraffe",
+      "NewModelId": "Pet_040",
+      "StrengthMultiplier": 1.8,
+      "StrengthBonusPercent": 80.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_040",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_040",
+      "ClonedInstances": 31
+    },
+    {
+      "Egg": "W2_Rare",
+      "Slot": 3,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Lion",
+      "NewModelId": "Pet_063",
+      "StrengthMultiplier": 1.8,
+      "StrengthBonusPercent": 80.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_063",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_063",
+      "ClonedInstances": 40
+    },
+    {
+      "Egg": "W2_Rare",
+      "Slot": 4,
+      "ProbabilityPercent": 15,
+      "SavedSpeciesId": "W2 Lizard",
+      "NewModelId": "Pet_006",
+      "StrengthMultiplier": 2,
+      "StrengthBonusPercent": 100,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_006",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_006",
+      "ClonedInstances": 157
+    },
+    {
+      "Egg": "W2_Rare",
+      "Slot": 5,
+      "ProbabilityPercent": 6.5,
+      "SavedSpeciesId": "W2 Spider",
+      "NewModelId": "Pet_054",
+      "StrengthMultiplier": 2.3,
+      "StrengthBonusPercent": 130.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_054",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_054",
+      "ClonedInstances": 47
+    },
+    {
+      "Egg": "W2_Rare",
+      "Slot": 6,
+      "ProbabilityPercent": 3,
+      "SavedSpeciesId": "W2 Bat",
+      "NewModelId": "Pet_112",
+      "StrengthMultiplier": 2.6,
+      "StrengthBonusPercent": 160.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_112",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_112",
+      "ClonedInstances": 67
+    },
+    {
+      "Egg": "W2_Rare",
+      "Slot": 7,
+      "ProbabilityPercent": 0.5,
+      "SavedSpeciesId": "W2 Shroom",
+      "NewModelId": "Pet_014",
+      "StrengthMultiplier": 2.9,
+      "StrengthBonusPercent": 190.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_014",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_014",
+      "ClonedInstances": 99
+    },
+    {
+      "Egg": "W2_Legendary",
+      "Slot": 1,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Elephant",
+      "NewModelId": "Pet_115",
+      "StrengthMultiplier": 2,
+      "StrengthBonusPercent": 100,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_115",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_115",
+      "ClonedInstances": 84
+    },
+    {
+      "Egg": "W2_Legendary",
+      "Slot": 2,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Mammoth",
+      "NewModelId": "Pet_082",
+      "StrengthMultiplier": 2,
+      "StrengthBonusPercent": 100,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_082",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_082",
+      "ClonedInstances": 7062
+    },
+    {
+      "Egg": "W2_Legendary",
+      "Slot": 3,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Penguin",
+      "NewModelId": "Pet_092",
+      "StrengthMultiplier": 2,
+      "StrengthBonusPercent": 100,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_092",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_092",
+      "ClonedInstances": 100
+    },
+    {
+      "Egg": "W2_Legendary",
+      "Slot": 4,
+      "ProbabilityPercent": 15,
+      "SavedSpeciesId": "W2 Crocodile",
+      "NewModelId": "Pet_072",
+      "StrengthMultiplier": 2.2,
+      "StrengthBonusPercent": 120.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_072",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_072",
+      "ClonedInstances": 47
+    },
+    {
+      "Egg": "W2_Legendary",
+      "Slot": 5,
+      "ProbabilityPercent": 6.5,
+      "SavedSpeciesId": "W2 Octopus",
+      "NewModelId": "Pet_004",
+      "StrengthMultiplier": 2.5,
+      "StrengthBonusPercent": 150.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_004",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_004",
+      "ClonedInstances": 60
+    },
+    {
+      "Egg": "W2_Legendary",
+      "Slot": 6,
+      "ProbabilityPercent": 3,
+      "SavedSpeciesId": "W2 Shark",
+      "NewModelId": "Pet_168",
+      "StrengthMultiplier": 2.9,
+      "StrengthBonusPercent": 190.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_168",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_168",
+      "ClonedInstances": 51
+    },
+    {
+      "Egg": "W2_Legendary",
+      "Slot": 7,
+      "ProbabilityPercent": 0.5,
+      "SavedSpeciesId": "W2 Ninja",
+      "NewModelId": "Pet_113",
+      "StrengthMultiplier": 3.2,
+      "StrengthBonusPercent": 220.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_113",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_113",
+      "ClonedInstances": 56
+    },
+    {
+      "Egg": "W2_Mythic",
+      "Slot": 1,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Turtle",
+      "NewModelId": "Pet_104",
+      "StrengthMultiplier": 2.2,
+      "StrengthBonusPercent": 120.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_104",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_104",
+      "ClonedInstances": 134
+    },
+    {
+      "Egg": "W2_Mythic",
+      "Slot": 2,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Alien",
+      "NewModelId": "Pet_131",
+      "StrengthMultiplier": 2.2,
+      "StrengthBonusPercent": 120.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_131",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_131",
+      "ClonedInstances": 48
+    },
+    {
+      "Egg": "W2_Mythic",
+      "Slot": 3,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Anglerfish",
+      "NewModelId": "Pet_164",
+      "StrengthMultiplier": 2.2,
+      "StrengthBonusPercent": 120.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_164",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_164",
+      "ClonedInstances": 123
+    },
+    {
+      "Egg": "W2_Mythic",
+      "Slot": 4,
+      "ProbabilityPercent": 15,
+      "SavedSpeciesId": "W2 Dino",
+      "NewModelId": "Pet_026",
+      "StrengthMultiplier": 2.5,
+      "StrengthBonusPercent": 150.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_026",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_026",
+      "ClonedInstances": 87
+    },
+    {
+      "Egg": "W2_Mythic",
+      "Slot": 5,
+      "ProbabilityPercent": 6.5,
+      "SavedSpeciesId": "W2 Scorpion",
+      "NewModelId": "Pet_018",
+      "StrengthMultiplier": 2.8,
+      "StrengthBonusPercent": 180.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_018",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_018",
+      "ClonedInstances": 95
+    },
+    {
+      "Egg": "W2_Mythic",
+      "Slot": 6,
+      "ProbabilityPercent": 3,
+      "SavedSpeciesId": "W2 Evil Dragon",
+      "NewModelId": "Pet_129",
+      "StrengthMultiplier": 3.1,
+      "StrengthBonusPercent": 210.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_129",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_129",
+      "ClonedInstances": 41
+    },
+    {
+      "Egg": "W2_Mythic",
+      "Slot": 7,
+      "ProbabilityPercent": 0.5,
+      "SavedSpeciesId": "W2 Chimpanzini Bananini",
+      "NewModelId": "Pet_051",
+      "StrengthMultiplier": 3.5,
+      "StrengthBonusPercent": 250.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_051",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_051",
+      "ClonedInstances": 42
+    },
+    {
+      "Egg": "W2_Limited",
+      "Slot": 1,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Pet_042",
+      "NewModelId": "Pet_107",
+      "StrengthMultiplier": 2.9,
+      "StrengthBonusPercent": 190.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_107",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_107",
+      "ClonedInstances": 48
+    },
+    {
+      "Egg": "W2_Limited",
+      "Slot": 2,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Pet_064",
+      "NewModelId": "Pet_089",
+      "StrengthMultiplier": 2.9,
+      "StrengthBonusPercent": 190.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_089",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_089",
+      "ClonedInstances": 60
+    },
+    {
+      "Egg": "W2_Limited",
+      "Slot": 3,
+      "ProbabilityPercent": 25,
+      "SavedSpeciesId": "W2 Pet_081",
+      "NewModelId": "Pet_093",
+      "StrengthMultiplier": 2.9,
+      "StrengthBonusPercent": 190.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_093",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_093",
+      "ClonedInstances": 43
+    },
+    {
+      "Egg": "W2_Limited",
+      "Slot": 4,
+      "ProbabilityPercent": 15,
+      "SavedSpeciesId": "W2 Pet_086",
+      "NewModelId": "Pet_172",
+      "StrengthMultiplier": 3.2,
+      "StrengthBonusPercent": 220.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_172",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_172",
+      "ClonedInstances": 49
+    },
+    {
+      "Egg": "W2_Limited",
+      "Slot": 5,
+      "ProbabilityPercent": 6.5,
+      "SavedSpeciesId": "W2 Pet_094",
+      "NewModelId": "Pet_133",
+      "StrengthMultiplier": 3.6,
+      "StrengthBonusPercent": 260.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_133",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_133",
+      "ClonedInstances": 33
+    },
+    {
+      "Egg": "W2_Limited",
+      "Slot": 6,
+      "ProbabilityPercent": 3,
+      "SavedSpeciesId": "W2 Pet_024",
+      "NewModelId": "Pet_117",
+      "StrengthMultiplier": 4,
+      "StrengthBonusPercent": 300,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_117",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_117",
+      "ClonedInstances": 57
+    },
+    {
+      "Egg": "W2_Limited",
+      "Slot": 7,
+      "ProbabilityPercent": 0.5,
+      "SavedSpeciesId": "W2 Pet_135",
+      "NewModelId": "Pet_178",
+      "StrengthMultiplier": 4.5,
+      "StrengthBonusPercent": 350.0,
+      "SourceFullPath": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_178",
+      "RuntimeFullPath": "ReplicatedStorage.Assets.World2Pets.Pet_178",
+      "ClonedInstances": 65
+    }
+  ],
+  "addedInstances": 9555,
+  "verifiedExistingProperties": 4751237,
+  "allOtherPropertiesSourcesParentsPreserved": true,
+  "allClonePropertiesAndInternalReferencesVerified": true,
+  "savedSpeciesAndReceiptVersionUnchanged": true,
+  "writtenAndReread": true,
+  "studioSaveOrPublishUsed": false,
+  "testFixturesWritten": false
+}

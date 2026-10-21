@@ -199,7 +199,7 @@ local function update(delta: number)
 			local side = settings.side * (settings.Sides[slot] or 0)
 			local behind = body.CFrame * Vector3.new(side, 0, settings.back)
 			-- Offset only the new grounded models by the existing bob amplitude.
-			local lift = if Pet.isLimited(follower.name) then settings.bob else 0
+			local lift = if Pet.UsesModelViewport(follower.name) then settings.bob else 0
 			local target = Vector3.new(behind.X, ground + settings.up + lift, behind.Z)
 
 			local position = follower.position or target

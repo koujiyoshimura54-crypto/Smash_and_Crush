@@ -181,6 +181,9 @@ local C={
  PetProbabilities={0.25,0.25,0.25,0.15,0.065,0.03,0.005},
  PetMultipliers={{1.6,1.6,1.6,1.8,2,2.3,2.6},{1.8,1.8,1.8,2,2.3,2.6,2.9},{2,2,2,2.2,2.5,2.9,3.2},{2.2,2.2,2.2,2.5,2.8,3.1,3.5},{2.9,2.9,2.9,3.2,3.6,4,4.5}},
  PetSources={{"Dog","Grey Cat","Pink Bunny","Sheep","Bear","Camel","Slime"},{"Cow","Giraffe","Lion","Lizard","Spider","Bat","Shroom"},{"Elephant","Mammoth","Penguin","Crocodile","Octopus","Shark","Ninja"},{"Turtle","Alien","Anglerfish","Dino","Scorpion","Evil Dragon","Chimpanzini Bananini"},{"Pet_042","Pet_064","Pet_081","Pet_086","Pet_094","Pet_024","Pet_135"}},
+ -- PetSources are immutable saved species/receipt keys; ModelIds only select presentation.
+ PetModelsFolder="World2Pets",
+ PetModelIds={{"Pet_027","Pet_028","Pet_032","Pet_052","Pet_030","Pet_141","Pet_098"},{"Pet_035","Pet_040","Pet_063","Pet_006","Pet_054","Pet_112","Pet_014"},{"Pet_115","Pet_082","Pet_092","Pet_072","Pet_004","Pet_168","Pet_113"},{"Pet_104","Pet_131","Pet_164","Pet_026","Pet_018","Pet_129","Pet_051"},{"Pet_107","Pet_089","Pet_093","Pet_172","Pet_133","Pet_117","Pet_178"}},
  EggIds={"W2_Basic","W2_Rare","W2_Legendary","W2_Mythic","W2_Limited"},
  EggNames={"World 2 Basic","World 2 Rare","World 2 Legendary","World 2 Mythic","World 2 Limited"},
  DumbbellImages={117636801345125,87392597068250,90484814439233,92409856077185,76660708269544,73514550426804,86006626767728,101543601215487,70465860935084,89190858658364,135716155094439,116813512043021},
@@ -188,9 +191,12 @@ local C={
 C.WorldId=2
 C.Version="World2Workbook_20261020"
 C.Pets={}
+C.PetVisuals={}
 for eggIndex,sources in ipairs(C.PetSources) do
  for slot,source in ipairs(sources) do
-  C.Pets["W2 "..source]={WorldId=2,SourcePet=source,Egg=C.EggIds[eggIndex],Slot=slot,
+  local modelId=C.PetModelIds[eggIndex][slot]
+  C.PetVisuals[modelId]={Yaw=0,MaxAspect=1.6}
+  C.Pets["W2 "..source]={WorldId=2,SourcePet=source,ModelId=modelId,Egg=C.EggIds[eggIndex],Slot=slot,
    Multiplier=C.PetMultipliers[eggIndex][slot],Percent=C.PetProbabilities[slot]*100}
  end
 end

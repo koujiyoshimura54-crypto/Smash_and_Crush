@@ -1116,3 +1116,9 @@ Connected Game Passes 2044250678 and 2045204630 to existing World2 training/inve
 ## 2026-10-21 — Connect Limited Egg 02 with dedicated Open1 UI
 
 Connected Developer Product 3720640383 to one World2 Pet per purchase, reusing the dedicated Limited Egg UI and sole durable Receipt path. Preserved existing models/odds/effects, World1 purchases and the prior premium pass connections. Scoped isolated Play checked UI, cancellation, policy/price failures and receipt/save replay without real billing or production data. Same-file Source writeback/readback passed. Evidence: reports/LimitedEgg02_20261021/README.md.
+
+## 2026-10-21 — World2 approved Pet model assignment
+
+- Mapped all 35 approved purchased Pet models through the existing World2 saved species IDs; preserved slot effects, probabilities, pricing, receipt outcomes and equipment identity.
+- Reused model viewports in candidates/Inventory and the existing hatch/follower paths; fixed same-odds World2 order and Inventory's last-row scroll extent.
+- Verified scoped isolated Play, all 35 displays/followers, five Egg paths and mock receipt/save compatibility; retained five requested candidate screenshots. Wrote the current rbxl in place with unrelated property preservation checks. See [the English record](../reports/World2PetModels_20261021/README.md).

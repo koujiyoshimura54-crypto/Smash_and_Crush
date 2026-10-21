@@ -16,7 +16,19 @@ local Pet = {}
 local World2=require(ReplicatedStorage.Config.World2GameplayConfig)
 function Pet.VisualName(name)
  local entry=World2.Pets[name]
- return entry and entry.SourcePet or name
+ return entry and entry.ModelId or name
+end
+
+function Pet.DisplayName(name)
+ return Pet.VisualName(name)
+end
+
+function Pet.VisualEntry(name)
+ return World2.PetVisuals[Pet.VisualName(name)] or Limited.ByName[name]
+end
+
+function Pet.UsesModelViewport(name)
+ return Pet.VisualEntry(name)~=nil
 end
 
 Pet.InventoryField = "inventory"
@@ -64,6 +76,12 @@ end
 
 function Pet.model(name: string): Model?
  name=Pet.VisualName(name)
+ if World2.PetVisuals[name] then
+  local assets=ReplicatedStorage:FindFirstChild("Assets")
+  local folder=assets and assets:FindFirstChild(World2.PetModelsFolder)
+  local model=folder and folder:FindFirstChild(name)
+  return if model and model:IsA("Model") then model else nil
+ end
 	if Limited.ByName[name] then
 		local assets=ReplicatedStorage:FindFirstChild("Assets")
 		local limited=assets and assets:FindFirstChild(Limited.ModelsFolder)
@@ -91,7 +109,8 @@ end
 
 -- Prepare display/follower clones only. Never edits the purchased templates.
 function Pet.isLimited(name: string): boolean
- return Limited.ByName[Pet.VisualName(name)]~=nil
+ local entry=World2.Pets[name]
+ return if entry then entry.Egg==World2.EggIds[5] else Limited.ByName[name]~=nil
 end
 
 local function visibleBounds(model: Model): (Vector3,Vector3)
@@ -110,8 +129,7 @@ local function visibleBounds(model: Model): (Vector3,Vector3)
 end
 
 function Pet.prepareLimited(model: Model,name: string,height: number?,grounded: boolean?): Vector3?
- name=Pet.VisualName(name)
- local entry=Limited.ByName[name]
+ local entry=Pet.VisualEntry(name)
  if not entry then return nil end
  assert(model.PrimaryPart,"Limited Pet PrimaryPart missing")
  -- Pivot the entire rig; assigning only primary.CFrame breaks multipart layouts.
@@ -119,7 +137,11 @@ function Pet.prepareLimited(model: Model,name: string,height: number?,grounded: 
  local low,high=visibleBounds(model)
  if height then
   assert(height>0 and high.Y>low.Y,"Invalid limited Pet height")
-  model:ScaleTo(model:GetScale()*height/(high.Y-low.Y))
+  local size=high-low
+  local scale=height/size.Y
+  -- Low, long purchased rigs keep their volume without becoming oversized followers.
+  if entry.MaxAspect then scale=math.min(scale,height*entry.MaxAspect/math.max(size.X,size.Z)) end
+  model:ScaleTo(model:GetScale()*scale)
   low,high=visibleBounds(model)
  end
  local center=(low+high)/2

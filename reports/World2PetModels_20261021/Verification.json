@@ -1,0 +1,84 @@
+{
+  "legacy": {
+    "count": 39,
+    "equippedPreserved": true,
+    "unknownPreserved": true
+  },
+  "eggs": [
+    {
+      "egg": "W2_Basic",
+      "hatchSaved": true,
+      "equipViaClient": true,
+      "saveName": "W2 Dog",
+      "model": "Pet_027"
+    },
+    {
+      "egg": "W2_Rare",
+      "hatchSaved": true,
+      "equipViaClient": true,
+      "saveName": "W2 Lion",
+      "model": "Pet_063"
+    },
+    {
+      "egg": "W2_Legendary",
+      "hatchSaved": true,
+      "equipViaClient": true,
+      "saveName": "W2 Elephant",
+      "model": "Pet_115"
+    },
+    {
+      "egg": "W2_Mythic",
+      "hatchSaved": true,
+      "equipViaClient": true,
+      "saveName": "W2 Dino",
+      "model": "Pet_026"
+    },
+    {
+      "egg": "W2_Limited",
+      "hatchSaved": true,
+      "equipViaClient": true,
+      "saveName": "W2 Pet_042",
+      "model": "Pet_107",
+      "product": 3720640383,
+      "count": 1,
+      "receiptDuplicateBlocked": true
+    }
+  ],
+  "inventory": {
+    "all35ModelsPresent": true,
+    "all35VisuallyInspected": true,
+    "lastRowPaddingFixed": true
+  },
+  "follow": {
+    "all35MeshSignaturesMatched": true,
+    "maxModels": 1,
+    "deathRespawn": true,
+    "world1ThenWorld2": true
+  },
+  "reload": {
+    "isolatedDataServiceReload": true,
+    "count": 44,
+    "equipmentPreserved": true,
+    "duplicateReceiptNoChange": true
+  },
+  "world1": {
+    "normalBasicUI": true,
+    "limitedEgg01UI": true,
+    "allFourNormalPoolsAndModelsResolved": true,
+    "limitedProductId": 3717610547
+  },
+  "finalFixes": {
+    "freshPlayInventoryLastRowVisible": true,
+    "freshPlayMythicExactOrder": true
+  },
+  "scope": {
+    "realLocalPlay": true,
+    "realHatchInputClicks": true,
+    "all35InventoryRendered": true,
+    "isolatedDataStore": true,
+    "simulatedReceipt": true,
+    "realRobux": false,
+    "liveDataModified": false,
+    "rejoin": "PlayerDataService save/release/load in memory, not live reconnect"
+  }
+}
