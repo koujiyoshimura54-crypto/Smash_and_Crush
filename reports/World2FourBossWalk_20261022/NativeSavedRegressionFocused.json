@@ -1,0 +1,37 @@
+[
+  {
+    "Success": true,
+    "Result": {
+      "Fixture": "Two native clients; in-memory stores and payment mocks; server-driven test inputs",
+      "Cases": {
+        "IntroInterruptionRetry": true,
+        "Preview6": {
+          "InvokedThrough": "Existing Preview callbacks",
+          "Candidate": "Approved Walk (production)",
+          "VisibleJointsChanged": 5
+        },
+        "Preview4": {
+          "InvokedThrough": "Existing Preview callbacks",
+          "Candidate": "Approved Walk (production)",
+          "VisibleJointsChanged": 9
+        },
+        "World1": {
+          "Speed": 16,
+          "Turn": 4,
+          "Moved": 24.032882690429688
+        },
+        "Preview7": {
+          "InvokedThrough": "Existing Preview callbacks",
+          "Candidate": "Approved Walk (production)",
+          "VisibleJointsChanged": 5
+        },
+        "Preview2": {
+          "InvokedThrough": "Existing Preview callbacks",
+          "Candidate": "Approved Walk (production)",
+          "VisibleJointsChanged": 5
+        }
+      },
+      "Errors": []
+    }
+  }
+]

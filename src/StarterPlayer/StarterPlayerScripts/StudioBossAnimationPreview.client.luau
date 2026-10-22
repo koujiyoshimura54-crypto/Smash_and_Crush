@@ -98,8 +98,7 @@ local function rebuild()
 	for _, item in model:GetDescendants() do
 		if item:IsA("LuaSourceContainer") or item:IsA("Sound") then item:Destroy()
 		elseif item:IsA("BasePart") then
-			item.Anchored = item.Name == "HumanoidRootPart" or item.Name == "DisplayRoot" or stageSelected==4 or stageSelected==6
-			if stageSelected==4 and item:IsDescendantOf(model.Targeter) and item.Name~="HumanoidRootPart" then item.Anchored=false end
+			item.Anchored = item.Name == "HumanoidRootPart" or item.Name == "DisplayRoot"
 			item.CanCollide = false; item.CanTouch = false; item.CanQuery = false
 		elseif item:IsA("Humanoid") then
 			item.EvaluateStateMachine = false; item.BreakJointsOnDeath = false; item.RequiresNeck = false
@@ -177,6 +176,14 @@ local function play()
 	source.Text = describe(candidate)
 	message("Loading " .. candidate.Name .. " ...")
 	task.spawn(function()
+		if candidate.Kind=="ProductionGait" then
+   local shared=require(RS.Modules.World2BossGait)
+   local ok,gait=pcall(shared.Compile,model,stageSelected)
+   if not ok then message("Production gait not ready: "..tostring(gait),true);return end
+   monitor=Run.PreSimulation:Connect(function(dt) shared.Update(gait,dt,gait.Settings.ReferenceSpeed*speed) end)
+   message("Production Walk: shared joint motion, amplitude, cadence and ground correction.")
+   return
+  end
 		if candidate.Kind=="Procedural" then
    local torso=model:FindFirstChild("Torso")
    local joints={}

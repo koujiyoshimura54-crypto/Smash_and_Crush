@@ -4,6 +4,7 @@ local M={}
 function M.Prepare(model,stage)
  local entry=Config.Stages[stage]
  if not entry or model:GetAttribute("World2RigVersion")==1 then return end
+ if entry.Gait then require(script.Parent.World2BossGaitRig).Build(model,stage) end
  if entry.Rig=="SCP096" then
   local torso=model:FindFirstChild("Torso")
   for _,joint in torso:GetChildren() do

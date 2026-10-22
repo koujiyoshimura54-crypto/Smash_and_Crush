@@ -6,13 +6,13 @@ local RS = game:GetService("ReplicatedStorage")
 local templates = game:GetService("ServerStorage"):WaitForChild("EnemyTemplates"):WaitForChild("World2SCPDisplays")
 local stages = {
 	[1] = {"SCP-096", "SCP096_Display", "MainAnimation is absent from this file's template."},
-	[2] = {"SCP-023", "SCP023_Display", "Recovered procedural gait from PreMerge SourceModels.SCP-023.Animate; preview only."},
-	[4] = {"SCP-058", "SCP058_Display", "Visible Body parts are not connected to the four hidden Targeter motors. Native assets are diagnostics only."},
-	[7] = {"SCP-939", "SCP939_Display", "Saved 939walk clips plus archived Animate Walk 4607522177. Inspect visible limbs."},
+	[2] = {"SCP-023", "SCP023_Display", "Approved Walk shares the production diagonal gait and ground correction. Historical candidates remain available."},
+	[4] = {"SCP-058", "SCP058_Display", "Approved Walk drives the four visible articulated legs; native carrier assets are diagnostics only."},
+	[7] = {"SCP-939", "SCP939_Display", "Approved Walk shares production 939walk at 1.35x swing with ground correction."},
 	[9] = {"SCP-682", "SCP682_Display", "WalkAnim drives a hidden R6 carrier; the visible animal is one rigid FileMesh."},
 	[3] = {"SCP-035", "SCP035_Display", "Animate and its child Animation overrides are absent from this template."},
 	[5] = {"SCP-049", "SCP049_Display", "Only the Animation objects and saved clips present in this template are listed."},
-	[6] = {"SCP-173", "SCP173_Display", "No Animation, Humanoid or Motor6D exists in this static template."},
+	[6] = {"SCP-173", "SCP173_Display", "Approved Walk articulates the existing arm/leg part groups using the production gait."},
 	[8] = {"SCP-106", "SCP106_Display", "Humanoid exists; no Animation or joint-animation script is present."},
 	[10] = {"SCP-323", "SCP323_Display", "Animate and Stunned are absent from this file's template."},
 }
@@ -92,6 +92,9 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 	end
 
 	local candidates, ids = {}, {}
+ if require(RS.Config.World2BossAnimationConfig).Stages[stage] and require(RS.Config.World2BossAnimationConfig).Stages[stage].Gait then
+  table.insert(candidates,{Name="Approved Walk (production)",Kind="ProductionGait",Path={},Source="ReplicatedStorage.Modules.World2BossGait / Config.World2BossAnimationConfig"})
+ end
  if stage==2 then
   for _,kind in {"Legacy023","Large023"} do
    table.insert(candidates,{Name=kind=="Legacy023" and "Recovered 023 gait (original)" or "Recovered 023 gait (large, aligned)",

@@ -5,9 +5,11 @@ local RS=game:GetService("ReplicatedStorage")
 local Config=require(RS.Config:WaitForChild("World2BossAnimationConfig"))
 local Rig=require(RS.Modules:WaitForChild("World2BossRig"))
 local Clip=require(RS.Modules:WaitForChild("World2BossClip"))
+local Gait=require(RS.Modules:WaitForChild("World2BossGait"))
 local player=Players.LocalPlayer
 local records={}
 local cache={}
+local alive=true
 local function clean(enemy)
  local r=records[enemy];records[enemy]=nil
  if not r then return end
@@ -16,25 +18,33 @@ local function clean(enemy)
  if r.Animation then r.Animation:Destroy() end
  if r.WalkClip then Clip.Reset(r.WalkClip) end
  if r.IntroClip then Clip.Reset(r.IntroClip) end
+ if r.Gait then Gait.Reset(r.Gait) end
 end
 local function add(enemy)
- if not enemy:IsA("Model") or records[enemy] or enemy:GetAttribute("OwnerUserId")~=player.UserId then return end
+ if not alive or not enemy:IsA("Model") or records[enemy] or enemy:GetAttribute("OwnerUserId")~=player.UserId then return end
  local stage=enemy:GetAttribute("StageNumber")
  local entry=Config.Stages[stage]
  if not entry then return end
- local visual=enemy:FindFirstChild("SCP-"..({[1]="096",[3]="035",[5]="049",[8]="106",[10]="323"})[stage])
+ local visual=enemy:FindFirstChild("SCP-"..({[1]="096",[2]="023",[3]="035",[4]="058",[5]="049",[6]="173",[7]="939",[8]="106",[10]="323"})[stage])
  local root=enemy:FindFirstChild("HumanoidRootPart")
  local hum=visual and visual:FindFirstChildWhichIsA("Humanoid",true)
  local animator=hum and hum:FindFirstChildOfClass("Animator")
- if not visual or not root or not animator then return end
+ if not visual or not root or not entry.Gait and not animator then return end
  local connected=0
  for _,x in visual:GetDescendants() do
   if x:IsA("Motor6D") and x.Part0 and x.Part1 then connected+=1 end
  end
- if connected<((entry.Rig=="R6" or entry.Rig=="SCP096") and 6 or 15) then return end
+ if connected<(entry.MinMotors or ((entry.Rig=="R6" or entry.Rig=="SCP096") and 6 or 15)) then return end
+ local gait
+ if entry.Gait then
+  local ok,value=pcall(Gait.Compile,visual,stage)
+  if not ok then return end -- bounded mount retries wait for complete replicated joints
+  gait=value
+ end
  local r={Enemy=enemy,Visual=visual,Root=root,Last=root.Position,Entry=entry,Moving=false,
   LegLength=Rig.LegLength(visual,entry.Retarget~=nil),Started=os.clock(),Clock=0}
- records[enemy]=r
+ r.Gait=gait;records[enemy]=r
+ if gait then return end -- these joints have exactly one writer and no animation track
  local sequence=Rig.Intro(visual,stage)
  if sequence then
   local ok,clip=pcall(Clip.Compile,sequence,visual)
@@ -79,12 +89,14 @@ local function queue(enemy)
   repeat
    local owner=enemy:GetAttribute("OwnerUserId")
    local stage=enemy:GetAttribute("StageNumber")
-   if owner and owner~=player.UserId or stage and not Config.Stages[stage] then break end
+   if not alive or owner and owner~=player.UserId or stage and not Config.Stages[stage] then break end
    add(enemy)
    if records[enemy] or not enemy.Parent then break end
    task.wait(.1)
   until os.clock()>=deadline
   pending[enemy]=nil
+  if alive and enemy:IsDescendantOf(folder) and enemy:GetAttribute("OwnerUserId")==player.UserId and not records[enemy]
+   and Config.Stages[enemy:GetAttribute("StageNumber")] then warn("[World2BossAnimation] Rig mount timed out: "..enemy.Name) end
  end)
 end
 local added=folder.DescendantAdded:Connect(queue)
@@ -106,10 +118,13 @@ local heartbeat=Run.PreSimulation:Connect(function(dt)
    enemy:SetAttribute("LocalBossAnimation","Intro")
   else
    if r.InIntro then Clip.Reset(r.IntroClip);r.InIntro=false end
-   local available=r.Track~=nil or r.WalkClip~=nil
+   local available=r.Track~=nil or r.WalkClip~=nil or r.Gait~=nil
    local moving=available and not intro and speed>Config.MoveThreshold
    local rate=speed/(Config.ReferenceSpeed*r.LegLength/Config.ReferenceLegLength)/(r.Entry.RetargetWeight or 1)
-   if moving then
+   if r.Gait then
+    Gait.Update(r.Gait,dt,moving and speed or 0)
+    rate=speed/r.Entry.Gait.ReferenceSpeed
+   elseif moving then
     if r.Track then
      if not r.Track.IsPlaying then r.Track:Play(Config.FadeTime,1,rate) else r.Track:AdjustSpeed(rate) end
     elseif r.WalkClip then
@@ -124,7 +139,7 @@ local heartbeat=Run.PreSimulation:Connect(function(dt)
    enemy:SetAttribute("LocalBossWalkRate",rate)
   end
   if not r.Warned and os.clock()-r.Started>Config.LoadTimeout and
-   (r.Track and r.Track.Length==0 or not r.Track and not r.WalkClip) then
+   (r.Track and r.Track.Length==0 or not r.Track and not r.WalkClip and not r.Gait) then
    r.Warned=true;r.Failed=true;warn("[World2BossAnimation] Walk load timed out: "..r.Entry.Walk)
   end
  end
@@ -134,5 +149,6 @@ local worldChanged=player:GetAttributeChangedSignal("CurrentWorld"):Connect(func
  else for _,x in folder:GetDescendants() do queue(x) end end
 end)
 script.Destroying:Connect(function()
+ alive=false
  heartbeat:Disconnect();added:Disconnect();worldChanged:Disconnect();for enemy in records do clean(enemy) end
 end)

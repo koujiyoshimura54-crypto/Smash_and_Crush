@@ -1,0 +1,129 @@
+{
+  "Success": true,
+  "Result": {
+    "Fixture": "Two native clients; in-memory stores and payment mocks; server-driven test inputs",
+    "Cases": {
+      "Balance2": {
+        "Speed": 19,
+        "Turn": 4.8
+      },
+      "S2_Player2_Normal": {
+        "VisibleMovedParts": {
+          "Right Arm_Right Arm": 1.238702416419983,
+          "Right Leg_Right Leg": 0.9546695351600647,
+          "Left Leg_Left Leg": 1.238702416419983,
+          "Left Arm_Left Arm": 0.9546695351600647
+        },
+        "Animation": "Walk",
+        "MinBoundsAboveFloor": -0.13433182905338015,
+        "MaxJointGap": 0.0002441722899675369,
+        "VisibleLimbRadians": 1.238702416419983,
+        "Tracks": 0,
+        "Moved": 23.7744083404541,
+        "ForeignVisibleParts": 0,
+        "Stage": 2,
+        "Motors": 6
+      },
+      "S2_Player2_Side": {
+        "VisibleMovedParts": {
+          "Right Arm_Right Arm": 0.9024098515510559,
+          "Right Leg_Right Leg": 1.1713968515396118,
+          "Left Leg_Left Leg": 0.9024098515510559,
+          "Left Arm_Left Arm": 1.1713968515396118
+        },
+        "Animation": "Walk",
+        "MinBoundsAboveFloor": 0.003845193730715124,
+        "MaxJointGap": 0.0002441704273223877,
+        "VisibleLimbRadians": 1.1713968515396118,
+        "Tracks": 0,
+        "Moved": 26.46834945678711,
+        "ForeignVisibleParts": 0,
+        "Stage": 2,
+        "Motors": 6
+      },
+      "S2_Player1_Side": {
+        "VisibleMovedParts": {
+          "Right Arm_Right Arm": 1.180574893951416,
+          "Right Leg_Right Leg": 1.3826665878295898,
+          "Left Leg_Left Leg": 1.180574893951416,
+          "Left Arm_Left Arm": 1.3826665878295898
+        },
+        "Animation": "Walk",
+        "MinBoundsAboveFloor": -0.023704471483924294,
+        "MaxJointGap": 0.0002441704273223877,
+        "VisibleLimbRadians": 1.3826665878295898,
+        "Tracks": 0,
+        "Moved": 26.192920684814453,
+        "ForeignVisibleParts": 0,
+        "Stage": 2,
+        "Motors": 6
+      },
+      "S2_Player1_Front": {
+        "VisibleMovedParts": {
+          "Right Arm_Right Arm": 0.9794100522994995,
+          "Right Leg_Right Leg": 0.8248536586761475,
+          "Left Leg_Left Leg": 0.9794100522994995,
+          "Left Arm_Left Arm": 0.8248536586761475
+        },
+        "Animation": "Walk",
+        "MinBoundsAboveFloor": -0.16456331852891282,
+        "MaxJointGap": 0.0002441722899675369,
+        "VisibleLimbRadians": 0.9794100522994995,
+        "Tracks": 0,
+        "Moved": 9.536264419555664,
+        "ForeignVisibleParts": 0,
+        "Stage": 2,
+        "Motors": 6
+      },
+      "S4_Player1_Front": {
+        "VisibleMovedParts": [],
+        "Animation": "Walk",
+        "MinBoundsAboveFloor": -0.0960418888305945,
+        "MaxJointGap": 0.19631783664226532,
+        "VisibleLimbRadians": 0,
+        "Tracks": 0,
+        "Moved": 9.68554973602295,
+        "ForeignVisibleParts": 0,
+        "Stage": 4,
+        "Motors": 13
+      },
+      "S2_Player2_Front": {
+        "VisibleMovedParts": {
+          "Right Arm_Right Arm": 0.8135760426521301,
+          "Right Leg_Right Leg": 0.7452018857002258,
+          "Left Leg_Left Leg": 0.8135760426521301,
+          "Left Arm_Left Arm": 0.7452018857002258
+        },
+        "Animation": "Walk",
+        "MinBoundsAboveFloor": -0.10918596787495716,
+        "MaxJointGap": 0.0002441704273223877,
+        "VisibleLimbRadians": 0.8135760426521301,
+        "Tracks": 0,
+        "Moved": 8.21022891998291,
+        "ForeignVisibleParts": 0,
+        "Stage": 2,
+        "Motors": 6
+      },
+      "S2_Player1_Normal": {
+        "VisibleMovedParts": {
+          "Right Arm_Right Arm": 0.9087773561477661,
+          "Right Leg_Right Leg": 0.7880570888519287,
+          "Left Leg_Left Leg": 0.9087773561477661,
+          "Left Arm_Left Arm": 0.7880570888519287
+        },
+        "Animation": "Walk",
+        "MinBoundsAboveFloor": -0.0085670787085661,
+        "MaxJointGap": 0.0002441704273223877,
+        "VisibleLimbRadians": 0.9087773561477661,
+        "Tracks": 0,
+        "Moved": 20.539487838745117,
+        "ForeignVisibleParts": 0,
+        "Stage": 2,
+        "Motors": 6
+      }
+    },
+    "Errors": [
+      "Visible limbs did not move stage 4 Player1\nServerScriptService.__FourBossServer:10\nServerScriptService.__FourBossServer:15\n"
+    ]
+  }
+}

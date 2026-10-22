@@ -655,3 +655,7 @@ Stage1/3/5/10 Walk507777826; Stage8 Walk125749145. Only actual actor travel play
 ### 2026-10-22 - SCP049 thigh appearance; remaining gait research only
 
 Fresh SCP049 actors use black SurfaceAppearance.Color on the existing LeftUpperLeg/RightUpperLeg MeshParts because Color/empty TextureID alone still rendered pale. Geometry, joints, gait and intro order remain unchanged. Stage2/4/6/7/9 candidates and adaptations are Studio Preview only; no production Walk configuration or permanent rig changes are authorized by this investigation. See [remaining boss investigation](../reports/World2RemainingBossAnimations_20261022/README.md).
+
+### 2026-10-22 - Approved production gaits for023/058/173/939
+
+The owner's subsequent instruction authorizes anatomical joint construction for058/173 and production connection for Stage2/4/6/7. These four now share cached per-actor joint gaits between personal combat actors and Preview:023 diagonal stride,058 four visible articulated legs,173 independent composite arms/legs and939 existing saved939walk at1.35x rotational amplitude. Actual movement drives cadence; contact/home stops restore rest, and World exit/actor retirement cleans animation state. No combat values or imported AI scripts change.682 remains outside scope. Existing096/035/049/106/323 definitions and049 black thighs/once-per-challenge Idle remain. See [implementation and native verification](../reports/World2FourBossWalk_20261022/README.md).

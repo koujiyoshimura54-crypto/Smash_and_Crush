@@ -656,3 +656,7 @@ Pets is a saved sixth entry at StarterGui.StrengthGui.LeftMenu.PetsButton, with 
 ## 2026-10-22 - Studio Boss Animation Preview investigation controls
 
 The Studio-only tool lists all ten World2 Bosses in two columns. Existing manual R15/R6 candidates, Play/Stop/Close, Front/Side/Back and cycle-speed controls remain. Stage2 offers original/recovered large aligned procedural gait; Stage7 offers its saved939walk and a1.35x rotational variant. Other added stages expose diagnostic candidates and explicit structural limitations, not an implied production gait. A floor guide is limited to the five investigation stages; status excludes hidden helper motors from visible-motion detection. Public runtime UI and combat configuration are unchanged. Native callbacks and images were checked; physical input and narrow-device layout remain unverified. See [investigation and candidate instructions](../reports/World2RemainingBossAnimations_20261022/README.md).
+
+### 2026-10-22 - Shared production Preview candidates
+
+Stage2/4/6/7 now offer **Approved Walk (production)** in the existing sorted candidate list, sharing the exact production gait, amplitude, cadence and ground correction. Historical candidates and all controls remain. Only the preview copy receives preparation; production never calls the Studio tool. Current HUD, Strength/Win displays and death-camera manual edits are preserved. Details: [four-boss delivery](../reports/World2FourBossWalk_20261022/README.md).

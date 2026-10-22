@@ -1,0 +1,585 @@
+{
+  "before": {
+    "sha256": "f4850f737eddeb0ecf6aae87e3b0be396daf35f06a3eb2ca3f89d6654023165f",
+    "instanceCount": 192558,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 192557,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192558,
+      "PROP.Ref": 81104,
+      "PROP.Content": 0,
+      "PRNT.Child": 192558,
+      "PRNT.Parent": 192558
+    }
+  },
+  "after": {
+    "sha256": "0f67af139808fdc301cb8dd23292aa556d1ea524440df31885fd9cb8ee5203bb",
+    "instanceCount": 192560,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 192559,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192560,
+      "PROP.Ref": 81104,
+      "PROP.Content": 0,
+      "PRNT.Child": 192560,
+      "PRNT.Parent": 192560
+    }
+  },
+  "AddedInstances": 16,
+  "RemovedObsoleteJoints": 14,
+  "PreservedPropertyRowsChecked": 88992,
+  "AllowedChangedProperties": [
+    [
+      "ReplicatedStorage.Config.World2BossAnimationConfig",
+      "Source"
+    ],
+    [
+      "ReplicatedStorage.Modules.World2BossRig",
+      "Source"
+    ],
+    [
+      "ReplicatedStorage.Modules.World2BossGaitRig",
+      "Source"
+    ],
+    [
+      "ReplicatedStorage.Modules.World2BossGait",
+      "Source"
+    ],
+    [
+      "StarterPlayer.StarterPlayerScripts.World2BossAnimationClient",
+      "Source"
+    ],
+    [
+      "ServerScriptService.StudioBossAnimationPreview",
+      "Source"
+    ],
+    [
+      "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview",
+      "Source"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.Part.DisplayRootWeld",
+      "Part0Internal"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.GaitBody",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.GaitBody",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.GaitBody",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.GaitBody",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_LeftArm",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_LeftArm",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_LeftArm",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_LeftArm",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_RightArm",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_RightArm",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_RightArm",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_RightArm",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_LeftLeg",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_LeftLeg",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_LeftLeg",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_LeftLeg",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_RightLeg",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_RightLeg",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_RightLeg",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display.DisplayRoot.Gait_RightLeg",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP173_Display",
+      "AttributesSerialize"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display.Torso.Right Hip",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display.Torso.Right Hip",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display.Torso.Left Shoulder",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display.Torso.Left Shoulder",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display.Torso.Right Shoulder",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display.Torso.Right Shoulder",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display.Torso.Left Hip",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display.Torso.Left Hip",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP023_Display",
+      "AttributesSerialize"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP939_Display",
+      "AttributesSerialize"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearRightHip",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearRightHip",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearRightHip",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearRightHip",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearRightKnee",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearRightKnee",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearRightKnee",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearRightKnee",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontRightHip",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontRightHip",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontRightHip",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontRightHip",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontRightKnee",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontRightKnee",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontRightKnee",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontRightKnee",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontLeftHip",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontLeftHip",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontLeftHip",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontLeftHip",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontLeftKnee",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontLeftKnee",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontLeftKnee",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_FrontLeftKnee",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearLeftHip",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearLeftHip",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearLeftHip",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearLeftHip",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearLeftKnee",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearLeftKnee",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearLeftKnee",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.Gait_RearLeftKnee",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.GaitBody",
+      "Part0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.GaitBody",
+      "Part1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.GaitBody",
+      "C0"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display.Targeter.HumanoidRootPart.GaitBody",
+      "C1"
+    ],
+    [
+      "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP058_Display",
+      "AttributesSerialize"
+    ]
+  ],
+  "SourceFiles": {
+    "ReplicatedStorage.Config.World2BossAnimationConfig": "src/ReplicatedStorage/Config/World2BossAnimationConfig.luau",
+    "ReplicatedStorage.Modules.World2BossRig": "src/ReplicatedStorage/Modules/World2BossRig.luau",
+    "ReplicatedStorage.Modules.World2BossGaitRig": "src/ReplicatedStorage/Modules/World2BossGaitRig.luau",
+    "ReplicatedStorage.Modules.World2BossGait": "src/ReplicatedStorage/Modules/World2BossGait.luau",
+    "StarterPlayer.StarterPlayerScripts.World2BossAnimationClient": "src/StarterPlayer/StarterPlayerScripts/World2BossAnimationClient.client.luau",
+    "ServerScriptService.StudioBossAnimationPreview": "src/ServerScriptService/StudioBossAnimationPreview.server.luau",
+    "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview": "src/StarterPlayer/StarterPlayerScripts/StudioBossAnimationPreview.client.luau"
+  },
+  "Repair": {
+    "before": {
+      "sha256": "29e3ae656fe82a7def704cfa514fd0c05a28ce17ec822d0108848a4f11bb62b8",
+      "instanceCount": 192560,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 192573,
+      "outOfBoundsCount": 14,
+      "missingInRangeCount": 14,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 192560,
+        "PROP.Ref": 81104,
+        "PROP.Content": 0,
+        "PRNT.Child": 192560,
+        "PRNT.Parent": 192560
+      }
+    },
+    "after": {
+      "sha256": "0f67af139808fdc301cb8dd23292aa556d1ea524440df31885fd9cb8ee5203bb",
+      "instanceCount": 192560,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 192559,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 192560,
+        "PROP.Ref": 81104,
+        "PROP.Content": 0,
+        "PRNT.Child": 192560,
+        "PRNT.Parent": 192560
+      }
+    },
+    "renumberedInstances": 14,
+    "modifiedChunks": 2,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "Written": true,
+  "StudioOpen": "Checked separately by native saved-file runner; not implied by decoding"
+}

@@ -1,0 +1,910 @@
+[
+  {
+    "Success": true,
+    "Result": {
+      "Fixture": "Two native clients; in-memory stores and payment mocks; server-driven test inputs",
+      "Cases": {
+        "S4_Player2_Front": {
+          "VisibleMovedParts": {
+            "Gait_RearRightKnee_Part_48": 0.888787567615509,
+            "Gait_FrontRightKnee_Part_19": 0.6484120488166809,
+            "Gait_RearRightHip_Part_33": 0.6916534304618835,
+            "Gait_RearLeftKnee_Part_35": 0.59804368019104,
+            "Gait_RearLeftHip_Part_18": 0.6343070864677429,
+            "Gait_FrontLeftHip_Part_22": 0.64448481798172,
+            "Gait_FrontLeftKnee_Part_17": 0.7144878506660461,
+            "Gait_FrontRightHip_Part_24": 0.3725663423538208
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": -0.03808857685867473,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.888787567615509,
+          "Tracks": 0,
+          "Moved": 7.772536754608154,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_Player2_Normal": {
+          "VisibleMovedParts": {
+            "Gait_RearRightKnee_Part_48": 0.6647498607635498,
+            "Gait_FrontRightKnee_Part_19": 0.8538339138031006,
+            "Gait_RearRightHip_Part_33": 0.8399891257286072,
+            "Gait_RearLeftKnee_Part_35": 0.9801584482192993,
+            "Gait_RearLeftHip_Part_18": 0.7940280437469482,
+            "Gait_FrontLeftHip_Part_22": 0.43712279200553894,
+            "Gait_FrontLeftKnee_Part_17": 0.7002333402633667,
+            "Gait_FrontRightHip_Part_24": 0.545648455619812
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": -0.03812793982421958,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.9801584482192993,
+          "Tracks": 0,
+          "Moved": 35.04729461669922,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_Retry2": {
+          "VisibleMovedParts": {
+            "Gait_RearRightKnee_Part_24": 0.5777026414871216,
+            "Gait_FrontRightKnee_Part_22": 0.5052575469017029,
+            "Gait_FrontLeftKnee_Part_40": 0.7748578786849976,
+            "Gait_FrontRightHip_Part_16": 0.3326430916786194,
+            "Gait_RearLeftKnee_Part_48": 0.5709611773490906,
+            "Gait_RearRightHip_Part_25": 1.181229829788208,
+            "Gait_RearLeftHip_Part_46": 0.6373670101165771,
+            "Gait_FrontLeftHip_Part_2": 0.5000621676445007
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.0999346709868183,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.181229829788208,
+          "Tracks": 0,
+          "Moved": 22.67920684814453,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_PeerDuringDeath": {
+          "VisibleMovedParts": {
+            "Gait_RearRightKnee_Part_48": 0.6732909083366394,
+            "Gait_FrontRightKnee_Part_19": 0.9468357563018799,
+            "Gait_RearRightHip_Part_33": 0.767408013343811,
+            "Gait_RearLeftKnee_Part_35": 0.7979015707969666,
+            "Gait_RearLeftHip_Part_18": 0.9987877607345581,
+            "Gait_FrontLeftHip_Part_22": 0.4094994068145752,
+            "Gait_FrontLeftKnee_Part_17": 0.6069050431251526,
+            "Gait_FrontRightHip_Part_24": 0.3548586070537567
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": -0.023670744820033285,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.9987877607345581,
+          "Tracks": 0,
+          "Moved": 7.832226276397705,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_Player1_Side": {
+          "VisibleMovedParts": {
+            "Gait_FrontRightKnee_Part_43": 0.9884321689605713,
+            "Gait_FrontLeftKnee_Part_41": 0.8028943538665771,
+            "Gait_FrontLeftHip_Part_12": 0.5153661966323853,
+            "Gait_RearRightHip_Part_18": 0.9102004170417786,
+            "Gait_FrontRightHip_Part_40": 0.37440937757492065,
+            "Gait_RearRightKnee_Part_29": 0.7853417992591858,
+            "Gait_RearLeftKnee_Part_26": 0.9778662919998169,
+            "Gait_RearLeftHip_Part_7": 1.133746862411499
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09774984478651216,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.133746862411499,
+          "Tracks": 0,
+          "Moved": 28.217960357666016,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_PeerAfterDeparture": {
+          "VisibleMovedParts": {
+            "Gait_RearRightKnee_Part_48": 0.9984868764877319,
+            "Gait_FrontRightKnee_Part_19": 0.7393789291381836,
+            "Gait_RearRightHip_Part_33": 0.9288989305496216,
+            "Gait_RearLeftKnee_Part_35": 0.7738896012306213,
+            "Gait_RearLeftHip_Part_18": 0.8404139280319214,
+            "Gait_FrontLeftHip_Part_22": 0.6512328386306763,
+            "Gait_FrontLeftKnee_Part_17": 0.9772285223007202,
+            "Gait_FrontRightHip_Part_24": 0.3753388822078705
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": -0.03424267944957293,
+          "MaxJointGap": 0.00024414295330643654,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.9984868764877319,
+          "Tracks": 0,
+          "Moved": 30.599403381347656,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_Player1_Front": {
+          "VisibleMovedParts": {
+            "Gait_FrontRightKnee_Part_43": 0.63780677318573,
+            "Gait_FrontLeftKnee_Part_41": 0.637226939201355,
+            "Gait_FrontLeftHip_Part_12": 0.6603732705116272,
+            "Gait_RearRightHip_Part_18": 0.6926891207695007,
+            "Gait_FrontRightHip_Part_40": 0.3563009202480316,
+            "Gait_RearRightKnee_Part_29": 0.8772733807563782,
+            "Gait_RearLeftKnee_Part_26": 0.5718554258346558,
+            "Gait_RearLeftHip_Part_7": 0.6556058526039124
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09993601709415678,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.8772733807563782,
+          "Tracks": 0,
+          "Moved": 6.475406646728516,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_Return": {
+          "VisibleMovedParts": {
+            "Gait_FrontRightKnee_Part_43": 0.7892481684684753,
+            "Gait_FrontLeftKnee_Part_41": 0.9872655272483826,
+            "Gait_FrontLeftHip_Part_12": 0.4004233479499817,
+            "Gait_RearRightHip_Part_18": 1.2795562744140625,
+            "Gait_FrontRightHip_Part_40": 0.4542139768600464,
+            "Gait_RearRightKnee_Part_29": 0.9479131698608398,
+            "Gait_RearLeftKnee_Part_26": 0.7708321213722229,
+            "Gait_RearLeftHip_Part_7": 0.6442955136299133
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.0999364615855054,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.2795562744140625,
+          "Tracks": 0,
+          "Moved": 16.45045280456543,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_PeerAfterDefeat": {
+          "VisibleMovedParts": {
+            "Gait_RearRightKnee_Part_48": 0.6834579706192017,
+            "Gait_FrontRightKnee_Part_19": 0.9283908605575562,
+            "Gait_RearRightHip_Part_33": 0.737349271774292,
+            "Gait_RearLeftKnee_Part_35": 0.8389805555343628,
+            "Gait_RearLeftHip_Part_18": 0.9623379707336426,
+            "Gait_FrontLeftHip_Part_22": 0.43453848361968994,
+            "Gait_FrontLeftKnee_Part_17": 0.6076205372810364,
+            "Gait_FrontRightHip_Part_24": 0.41893842816352844
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": -0.03425766110268391,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.9623379707336426,
+          "Tracks": 0,
+          "Moved": 19.179595947265625,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "Balance4": {
+          "Speed": 21,
+          "Turn": 5.4
+        },
+        "S4_Player1_Normal": {
+          "VisibleMovedParts": {
+            "Gait_FrontRightKnee_Part_43": 0.7669662833213806,
+            "Gait_FrontLeftKnee_Part_41": 0.511695921421051,
+            "Gait_FrontLeftHip_Part_12": 0.3895845115184784,
+            "Gait_RearRightHip_Part_18": 0.707421600818634,
+            "Gait_FrontRightHip_Part_40": 0.4865960478782654,
+            "Gait_RearRightKnee_Part_29": 0.5636851787567139,
+            "Gait_RearLeftKnee_Part_26": 0.6434419751167297,
+            "Gait_RearLeftHip_Part_7": 1.0730804204940796
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.0988950908039592,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.0730804204940796,
+          "Tracks": 0,
+          "Moved": 32.364234924316406,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_WorldExit": {
+          "VisibleMovedParts": [],
+          "Moved": 0,
+          "MinBoundsAboveFloor": 0.099937245116553,
+          "ForeignVisibleParts": 0,
+          "Records": {
+            "Pending": 0,
+            "Active": 0
+          },
+          "VisibleLimbRadians": 0,
+          "Tracks": 0,
+          "MaxJointGap": 0.000244140625,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_Retry3": {
+          "VisibleMovedParts": {
+            "Gait_RearLeftKnee_Part_14": 0.5881521105766296,
+            "Gait_FrontRightHip_Part_38": 0.32927465438842773,
+            "Gait_RearLeftHip_Part_2": 0.6102941632270813,
+            "Gait_FrontLeftKnee_Part_8": 0.8118565678596497,
+            "Gait_FrontRightKnee_Part_28": 0.49517878890037537,
+            "Gait_RearRightHip_Part_48": 1.254452109336853,
+            "Gait_FrontLeftHip_Part_29": 0.46350154280662537,
+            "Gait_RearRightKnee_Part_33": 0.537859320640564
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09993634240059457,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.254452109336853,
+          "Tracks": 0,
+          "Moved": 21.60072135925293,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_Retry1": {
+          "VisibleMovedParts": {
+            "Gait_FrontLeftHip_Part_13": 0.535213053226471,
+            "Gait_RearLeftKnee_Part_21": 0.5353100299835205,
+            "Gait_FrontLeftKnee_Part_4": 0.7017419338226318,
+            "Gait_RearLeftHip_Part_17": 0.6094679236412048,
+            "Gait_FrontRightKnee_Part_23": 0.5191406607627869,
+            "Gait_RearRightHip_Part_48": 1.1063222885131836,
+            "Gait_RearRightKnee_Part_38": 0.6263169646263123,
+            "Gait_FrontRightHip_Part_8": 0.2810872793197632
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09993614224993408,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.1063222885131836,
+          "Tracks": 0,
+          "Moved": 20.934329986572266,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "Lifecycle4": {
+          "RealDefeat": true,
+          "Restart": true,
+          "RealDeparture": true,
+          "Retries": 3,
+          "WorldExit": true,
+          "Death": true,
+          "Return": true,
+          "PeerUnchanged": true,
+          "Contact": true
+        },
+        "S4_Restart": {
+          "VisibleMovedParts": {
+            "Gait_FrontRightKnee_Part_43": 0.6170720458030701,
+            "Gait_FrontLeftKnee_Part_41": 0.6444373726844788,
+            "Gait_FrontLeftHip_Part_12": 0.41740667819976807,
+            "Gait_RearRightHip_Part_18": 0.779877245426178,
+            "Gait_FrontRightHip_Part_40": 0.35770663619041443,
+            "Gait_RearRightKnee_Part_29": 0.7090126872062683,
+            "Gait_RearLeftKnee_Part_26": 0.5610411167144775,
+            "Gait_RearLeftHip_Part_7": 0.5843096375465393
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.08128939557332915,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.779877245426178,
+          "Tracks": 0,
+          "Moved": 27.880155563354492,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_ContactStop": {
+          "VisibleMovedParts": [],
+          "Animation": "Stopped",
+          "MinBoundsAboveFloor": 0.099937245116553,
+          "MaxJointGap": 0.0002441410906612873,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.00048828125,
+          "Tracks": 0,
+          "Moved": 0,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_Player2_Side": {
+          "VisibleMovedParts": {
+            "Gait_RearRightKnee_Part_48": 1.0089884996414185,
+            "Gait_FrontRightKnee_Part_19": 0.7561707496643066,
+            "Gait_RearRightHip_Part_33": 0.919421911239624,
+            "Gait_RearLeftKnee_Part_35": 0.8055527806282043,
+            "Gait_RearLeftHip_Part_18": 0.8651747107505798,
+            "Gait_FrontLeftHip_Part_22": 0.6718546748161316,
+            "Gait_FrontLeftKnee_Part_17": 0.9704813361167908,
+            "Gait_FrontRightHip_Part_24": 0.40189939737319946
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": -0.038183983187717985,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.0089884996414185,
+          "Tracks": 0,
+          "Moved": 29.3171329498291,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_HomeSettled": {
+          "VisibleMovedParts": [],
+          "Animation": "Stopped",
+          "MinBoundsAboveFloor": 0.099937245116553,
+          "MaxJointGap": 1.9660499219753547e-06,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0,
+          "Tracks": 0,
+          "Moved": 0,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        },
+        "S4_PeerDuringStop": {
+          "VisibleMovedParts": {
+            "Gait_RearRightKnee_Part_48": 0.7771092653274536,
+            "Gait_FrontRightKnee_Part_19": 0.9689675569534302,
+            "Gait_RearRightHip_Part_33": 0.9481977224349976,
+            "Gait_RearLeftKnee_Part_35": 0.998390257358551,
+            "Gait_RearLeftHip_Part_18": 0.6855509281158447,
+            "Gait_FrontLeftHip_Part_22": 0.40114933252334595,
+            "Gait_FrontLeftKnee_Part_17": 0.7652889490127563,
+            "Gait_FrontRightHip_Part_24": 0.6026465892791748
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": -0.016850835024478705,
+          "MaxJointGap": 0.00024414854124188423,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0.998390257358551,
+          "Tracks": 0,
+          "Moved": 9.457551002502441,
+          "ForeignVisibleParts": 0,
+          "Stage": 4,
+          "Motors": 13
+        }
+      },
+      "Errors": []
+    }
+  },
+  {
+    "Success": true,
+    "Result": {
+      "Fixture": "Two native clients; in-memory stores and payment mocks; server-driven test inputs",
+      "Cases": {
+        "S7_Player1_Side": {
+          "VisibleMovedParts": {
+            "Motor6D_Part_1": 0.6330395340919495,
+            "Motor6D_Part_5": 0.24790722131729126,
+            "Motor6D_Part_2": 0.6224864721298218,
+            "Motor6D_Right Leg_10": 0.6330393552780151,
+            "Motor6D_Left Leg_8": 0.6224866509437561,
+            "Motor6D_Right Arm_6": 1.0286853313446045,
+            "Motor6D_Left Arm_4": 1.0513180494308472,
+            "Motor6D_Part_11": 0.24790722131729126,
+            "Motor6D_chest_7": 0.24790722131729126
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.07994173414323313,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.0513180494308472,
+          "Tracks": 0,
+          "Moved": 45.80811309814453,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_WorldExit": {
+          "VisibleMovedParts": [],
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.10000014305114746,
+          "MaxJointGap": 1.9073486328125e-06,
+          "Records": {
+            "Pending": 0,
+            "Active": 0
+          },
+          "VisibleLimbRadians": 0,
+          "Tracks": 0,
+          "Moved": 0,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_Player2_Side": {
+          "VisibleMovedParts": {
+            "Motor6D_chest_6": 0.34565189480781555,
+            "Motor6D_Left Leg_3": 0.5957709550857544,
+            "Motor6D_Part_5": 0.5227891802787781,
+            "Motor6D_Part_7": 0.34565189480781555,
+            "Motor6D_Part_9": 0.5957709550857544,
+            "Motor6D_Part_4": 0.34565189480781555,
+            "Motor6D_Left Arm_1": 1.1845451593399048,
+            "Motor6D_Right Leg_2": 0.522788941860199,
+            "Motor6D_Right Arm_11": 1.5528839826583862
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.036723088962659745,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.5528839826583862,
+          "Tracks": 0,
+          "Moved": 51.344871520996094,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_Retry2": {
+          "VisibleMovedParts": {
+            "Motor6D_Right Leg_4": 0.6204771399497986,
+            "Motor6D_Left Leg_2": 0.6243427991867065,
+            "Motor6D_Part_5": 0.28271013498306274,
+            "Motor6D_Part_10": 0.6204771399497986,
+            "Motor6D_Left Arm_1": 1.1402183771133423,
+            "Motor6D_Right Arm_3": 1.1708492040634155,
+            "Motor6D_chest_7": 0.2827097177505493,
+            "Motor6D_Part_11": 0.28271013498306274,
+            "Motor6D_Part_8": 0.6243429780006409
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.10000014305114746,
+          "MaxJointGap": 0.0002441704273223877,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.1708492040634155,
+          "Tracks": 0,
+          "Moved": 23.989377975463867,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_Player1_Front": {
+          "VisibleMovedParts": {
+            "Motor6D_Part_1": 0.6152289509773254,
+            "Motor6D_Part_5": 0.31800398230552673,
+            "Motor6D_Part_2": 0.6646414399147034,
+            "Motor6D_Right Leg_10": 0.6152291297912598,
+            "Motor6D_Left Leg_8": 0.6646414399147034,
+            "Motor6D_Right Arm_6": 1.3170316219329834,
+            "Motor6D_Left Arm_4": 1.2374635934829712,
+            "Motor6D_Part_11": 0.3180043697357178,
+            "Motor6D_chest_7": 0.31800398230552673
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09999982502642979,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.3170316219329834,
+          "Tracks": 0,
+          "Moved": 112.91179656982422,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_PeerAfterDeparture": {
+          "VisibleMovedParts": {
+            "Motor6D_chest_6": 0.23553521931171417,
+            "Motor6D_Left Leg_3": 0.7813410758972168,
+            "Motor6D_Part_5": 0.6100399494171143,
+            "Motor6D_Part_7": 0.23553521931171417,
+            "Motor6D_Part_9": 0.7813410758972168,
+            "Motor6D_Part_4": 0.23553471267223358,
+            "Motor6D_Left Arm_1": 1.0882446765899658,
+            "Motor6D_Right Leg_2": 0.6100395321846008,
+            "Motor6D_Right Arm_11": 1.278937578201294
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09999991551566723,
+          "MaxJointGap": 0.0002441480755805969,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.278937578201294,
+          "Tracks": 0,
+          "Moved": 35.772457122802734,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_HomeSettled": {
+          "VisibleMovedParts": [],
+          "Animation": "Stopped",
+          "MinBoundsAboveFloor": 0.10000014305114746,
+          "MaxJointGap": 1.9073486328125e-06,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0,
+          "Tracks": 0,
+          "Moved": 0,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_Return": {
+          "VisibleMovedParts": {
+            "Motor6D_Part_1": 0.6224478483200073,
+            "Motor6D_Part_5": 0.4083571434020996,
+            "Motor6D_Part_2": 0.6345334053039551,
+            "Motor6D_Right Leg_10": 0.6224478483200073,
+            "Motor6D_Left Leg_8": 0.6345334053039551,
+            "Motor6D_Right Arm_6": 1.7248817682266235,
+            "Motor6D_Left Arm_4": 1.4954545497894287,
+            "Motor6D_Part_11": 0.4083571434020996,
+            "Motor6D_chest_7": 0.4083571434020996
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.10000004522170158,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.7248817682266235,
+          "Tracks": 0,
+          "Moved": 20.77274513244629,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "Balance7": {
+          "Speed": 24,
+          "Turn": 6.3
+        },
+        "S7_Retry3": {
+          "VisibleMovedParts": {
+            "Motor6D_Right Leg_4": 0.6220029592514038,
+            "Motor6D_Part_3": 0.6220031976699829,
+            "Motor6D_Left Arm_11": 1.335099220275879,
+            "Motor6D_Part_9": 0.34552696347236633,
+            "Motor6D_Right Arm_10": 1.4310120344161987,
+            "Motor6D_Part_2": 0.6650120615959167,
+            "Motor6D_Part_6": 0.345527321100235,
+            "Motor6D_chest_1": 0.345527321100235,
+            "Motor6D_Left Leg_7": 0.6650120615959167
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.10000014305114746,
+          "MaxJointGap": 0.0002441704273223877,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.4310120344161987,
+          "Tracks": 0,
+          "Moved": 24.757518768310547,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "Lifecycle7": {
+          "RealDefeat": true,
+          "Restart": true,
+          "RealDeparture": true,
+          "Retries": 3,
+          "WorldExit": true,
+          "Death": true,
+          "Return": true,
+          "PeerUnchanged": true,
+          "Contact": true
+        },
+        "S7_Restart": {
+          "VisibleMovedParts": {
+            "Motor6D_Part_1": 0.6218460202217102,
+            "Motor6D_Part_5": 0.2468673586845398,
+            "Motor6D_Part_2": 0.5391368269920349,
+            "Motor6D_Right Leg_10": 0.6218458414077759,
+            "Motor6D_Left Leg_8": 0.5391368269920349,
+            "Motor6D_Right Arm_6": 1.004624605178833,
+            "Motor6D_Left Arm_4": 1.0515437126159668,
+            "Motor6D_Part_11": 0.2468673586845398,
+            "Motor6D_chest_7": 0.2468683421611786
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.10000014305114746,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.0515437126159668,
+          "Tracks": 0,
+          "Moved": 7.645932197570801,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_Retry1": {
+          "VisibleMovedParts": {
+            "Motor6D_Right Leg_4": 0.6205515265464783,
+            "Motor6D_Part_5": 0.6498814225196838,
+            "Motor6D_Part_9": 0.3455061912536621,
+            "Motor6D_Left Leg_6": 0.6498816013336182,
+            "Motor6D_Left Arm_8": 1.3274949789047241,
+            "Motor6D_chest_7": 0.3455061912536621,
+            "Motor6D_Right Arm_1": 1.4148885011672974,
+            "Motor6D_Part_11": 0.3455061912536621,
+            "Motor6D_Part_10": 0.6205515265464783
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.10000014305114746,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.4148885011672974,
+          "Tracks": 0,
+          "Moved": 25.580759048461914,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_PeerDuringStop": {
+          "VisibleMovedParts": {
+            "Motor6D_chest_6": 0.31409958004951477,
+            "Motor6D_Left Leg_3": 0.5917546153068542,
+            "Motor6D_Part_5": 0.5503036975860596,
+            "Motor6D_Part_7": 0.3140999674797058,
+            "Motor6D_Part_9": 0.5917547941207886,
+            "Motor6D_Part_4": 0.31409919261932373,
+            "Motor6D_Left Arm_1": 1.1923911571502686,
+            "Motor6D_Right Leg_2": 0.5503039360046387,
+            "Motor6D_Right Arm_11": 1.3246562480926514
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.10000006110713855,
+          "MaxJointGap": 0.0002441480755805969,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.3246562480926514,
+          "Tracks": 0,
+          "Moved": 24.748559951782227,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_PeerAfterDefeat": {
+          "VisibleMovedParts": {
+            "Motor6D_chest_6": 0.3101441562175751,
+            "Motor6D_Left Leg_3": 0.43137094378471375,
+            "Motor6D_Part_5": 0.4731334447860718,
+            "Motor6D_Part_7": 0.3101441562175751,
+            "Motor6D_Part_9": 0.43137094378471375,
+            "Motor6D_Part_4": 0.31014376878738403,
+            "Motor6D_Left Arm_1": 1.0606838464736938,
+            "Motor6D_Right Leg_2": 0.4731331765651703,
+            "Motor6D_Right Arm_11": 1.4542921781539917
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09999988495795264,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.4542921781539917,
+          "Tracks": 0,
+          "Moved": 24.333189010620117,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_Player2_Normal": {
+          "VisibleMovedParts": {
+            "Motor6D_chest_6": 0.39271315932273865,
+            "Motor6D_Left Leg_3": 0.7269557118415833,
+            "Motor6D_Part_5": 0.6493672132492065,
+            "Motor6D_Part_7": 0.39271315932273865,
+            "Motor6D_Part_9": 0.7269555330276489,
+            "Motor6D_Part_4": 0.39271315932273865,
+            "Motor6D_Left Arm_1": 1.4739166498184204,
+            "Motor6D_Right Leg_2": 0.6493673920631409,
+            "Motor6D_Right Arm_11": 1.626441240310669
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09999990908498546,
+          "MaxJointGap": 0.0002441722899675369,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.626441240310669,
+          "Tracks": 0,
+          "Moved": 26.177906036376953,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_Player2_Front": {
+          "VisibleMovedParts": {
+            "Motor6D_chest_6": 0.3337205648422241,
+            "Motor6D_Left Leg_3": 0.6874358057975769,
+            "Motor6D_Part_5": 0.6176836490631104,
+            "Motor6D_Part_7": 0.3337209224700928,
+            "Motor6D_Part_9": 0.6874356269836426,
+            "Motor6D_Part_4": 0.3337205648422241,
+            "Motor6D_Left Arm_1": 1.284349799156189,
+            "Motor6D_Right Leg_2": 0.6176836490631104,
+            "Motor6D_Right Arm_11": 1.3820881843566895
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.0999998970941931,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.3820881843566895,
+          "Tracks": 0,
+          "Moved": 113.36480712890625,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_Player1_Normal": {
+          "VisibleMovedParts": {
+            "Motor6D_Part_1": 0.6221635341644287,
+            "Motor6D_Part_5": 0.3572913706302643,
+            "Motor6D_Part_2": 0.5883525609970093,
+            "Motor6D_Right Leg_10": 0.6221635341644287,
+            "Motor6D_Left Leg_8": 0.5883527398109436,
+            "Motor6D_Right Arm_6": 1.4797375202178955,
+            "Motor6D_Left Arm_4": 1.3553513288497925,
+            "Motor6D_Part_11": 0.3572913706302643,
+            "Motor6D_chest_7": 0.35729172825813293
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09999977708567087,
+          "MaxJointGap": 0.000244170892983675,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.4797375202178955,
+          "Tracks": 0,
+          "Moved": 26.70359992980957,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_PeerDuringDeath": {
+          "VisibleMovedParts": {
+            "Motor6D_chest_6": 0.40872323513031006,
+            "Motor6D_Left Leg_3": 0.5785490870475769,
+            "Motor6D_Part_5": 0.6930398344993591,
+            "Motor6D_Part_7": 0.40872323513031006,
+            "Motor6D_Part_9": 0.5785490870475769,
+            "Motor6D_Part_4": 0.40872323513031006,
+            "Motor6D_Left Arm_1": 1.5590225458145142,
+            "Motor6D_Right Leg_2": 0.6930400133132935,
+            "Motor6D_Right Arm_11": 1.6541848182678223
+          },
+          "Animation": "Walk",
+          "MinBoundsAboveFloor": 0.09999995335073564,
+          "MaxJointGap": 0.0002441480755805969,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 1.6541848182678223,
+          "Tracks": 0,
+          "Moved": 21.48491668701172,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        },
+        "S7_ContactStop": {
+          "VisibleMovedParts": [],
+          "Animation": "Stopped",
+          "MinBoundsAboveFloor": 0.10000014305114746,
+          "MaxJointGap": 3.814697265625e-06,
+          "Records": {
+            "Pending": 0,
+            "Active": 1
+          },
+          "VisibleLimbRadians": 0,
+          "Tracks": 0,
+          "Moved": 0,
+          "ForeignVisibleParts": 0,
+          "Stage": 7,
+          "Motors": 13
+        }
+      },
+      "Errors": []
+    }
+  }
+]

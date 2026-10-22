@@ -1135,3 +1135,9 @@ Remaining visual issue: SCP049 still exposes a pale carrier segment during strid
 - Extended only Studio Preview for023/058/173/939/682; recovered historical candidates and saved clips, added large023/939 variants, and distinguished visible limb movement from hidden helper movement. No production connection or permanent rig modifications for these five.
 - Fixed049's two pale upper-leg carriers with thigh-only black SurfaceAppearance; actual native battle and fresh actors checked, existing3.0s intro preserved.096 corrections and all balance/gameplay settings retained.
 - Three-Source same-file writeback/reopen, syntax and referent/UniqueId checks completed. Native images and limb measurements retained at user request. Physical input, public assets and final gait adoption remain unverified. Evidence and the corrected test-fixture failure: reports/World2RemainingBossAnimations_20261022/README.md.
+
+## 2026-10-22 - Four additional personal Boss production gaits
+
+- Connected023/058/173/939 to movement-driven production joint animation and the shared Preview candidate.058 gains four visible articulated legs;173 gains anatomical arm/leg groups. Existing geometry/rest poses and all combat settings remain.
+- All four passed native two-client same-Stage movement, stop/restart/return, death/respawn, three retries, defeat and departure isolation. Native image sequences are retained at the owner's request.
+- Applied only seven Sources and approved joint/version deltas to the current owner-approved rbxl; native saved-file reopening and reference/UniqueId checks passed. HUD/Strength/Win, death-camera and attack-angle160/210 edits were preserved. No Studio Save/Publish or production data writes. Details and verification limits: reports/World2FourBossWalk_20261022/README.md.
