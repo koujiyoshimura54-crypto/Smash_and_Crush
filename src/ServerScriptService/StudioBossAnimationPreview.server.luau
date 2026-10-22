@@ -73,6 +73,19 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 		if item:IsA("LuaSourceContainer") or item:IsA("Sound") or item:IsA("LayerCollector")
 			or item:IsA("ProximityPrompt") or item:IsA("ClickDetector") then item:Destroy() end
 	end
+	-- 確認用の複製にだけWalk候補を追加
+	local walkCandidates = {
+		{"Walk候補 R15", "rbxassetid://507777826"},
+		{"Walk候補 R6", "rbxassetid://125749145"},
+	}
+
+	for _, entry in ipairs(walkCandidates) do
+		local animation = Instance.new("Animation")
+		animation.Name = entry[1]
+		animation.AnimationId = entry[2]
+		animation.Parent = model
+	end
+
 	local candidates, ids = {}, {}
 	local motors, humanoids = 0, 0
 	for _, item in model:GetDescendants() do
