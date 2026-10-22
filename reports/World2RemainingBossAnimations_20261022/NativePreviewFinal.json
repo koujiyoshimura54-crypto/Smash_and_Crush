@@ -1,0 +1,48 @@
+{
+  "Success": true,
+  "Result": {
+    "Cases": [
+      {
+        "MaxAnyRadians": 1.5894688367843628,
+        "LowestPartBoundsAboveGuide": -0.052062282562255646,
+        "TrackPlaying": false,
+        "Stage": 2,
+        "MaxVisibleRadians": 1.5894688367843628,
+        "TrackLength": 0,
+        "Candidate": "Recovered 023 gait (large, aligned)",
+        "Variant": "Original",
+        "Status": "Preview-only recovered joint gait; inspect four visible legs, axes and floor clearance.",
+        "Kind": "Procedural",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Arm": 1.5894688367843628,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Leg": 1.5894688367843628,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Arm": 1.5894688367843628,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Leg": 1.5894688367843628
+        },
+        "Colors": []
+      },
+      {
+        "MaxAnyRadians": 1.8463069200515747,
+        "LowestPartBoundsAboveGuide": -0.17493201255798319,
+        "TrackPlaying": false,
+        "Stage": 7,
+        "MaxVisibleRadians": 1.8463069200515747,
+        "TrackLength": 0,
+        "Candidate": "939walk (large 1.35x)",
+        "Variant": "Original",
+        "Status": "Saved 939walk, 1.35x rotational swing; preview only. Inspect feet at the floor guide.",
+        "Kind": "KeyframeSequence",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Part": 0.720378041267395,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.chest": 0.4476068913936615,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Leg": 0.5907982587814331,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Leg": 0.7203782200813293,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Arm": 1.6734492778778076,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Arm": 1.8463069200515747
+        },
+        "Colors": []
+      }
+    ],
+    "Errors": []
+  }
+}

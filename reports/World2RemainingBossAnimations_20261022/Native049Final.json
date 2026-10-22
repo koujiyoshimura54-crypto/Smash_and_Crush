@@ -1,0 +1,98 @@
+{
+  "Success": true,
+  "Result": {
+    "Fixture": "In-memory stores; server-positioned anchored player targets; real combat services and native client animation",
+    "Cases": {
+      "IntroElapsed": 3.017335891723633,
+      "Stage5Peer": {
+        "JointRadians": 1.9211783409118652,
+        "LimbRadians": 1.9233108758926392,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5326235264478792,
+        "Moved": 43.460689544677734,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "LeftShoulder",
+          "Neck",
+          "RightElbow",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "RightKnee",
+          "LeftHip"
+        ]
+      },
+      "BlackOnTwoFreshActors": true,
+      "Speed5": {
+        "Speed": 22,
+        "Turn": 5.7
+      },
+      "Thighs": {
+        "Left": {
+          "Color": [
+            0,
+            0,
+            0
+          ],
+          "Transparency": 1,
+          "SurfaceBlack": true,
+          "Texture": ""
+        },
+        "Right": {
+          "Color": [
+            0,
+            0,
+            0
+          ],
+          "Transparency": 1,
+          "SurfaceBlack": true,
+          "Texture": ""
+        }
+      },
+      "Stage5Moving": {
+        "JointRadians": 2.5890421867370605,
+        "LimbRadians": 2.5560264587402344,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5324962024344422,
+        "Moved": 67.68701934814453,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "RightKnee",
+          "Neck",
+          "RightElbow",
+          "RightAnkle",
+          "LeftAnkle",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "LeftShoulder",
+          "LeftHip"
+        ]
+      },
+      "IntroDuration": 3,
+      "049Intro": {
+        "Moved": 0,
+        "JointRadians": 1.5593879222869873,
+        "Tracks": 0,
+        "Animation": "Intro",
+        "ForeignVisibleParts": 0,
+        "ChangedJoints": [
+          "Neck"
+        ],
+        "Stage": 5,
+        "LimbRadians": 1.5593879222869873
+      }
+    },
+    "Errors": []
+  }
+}

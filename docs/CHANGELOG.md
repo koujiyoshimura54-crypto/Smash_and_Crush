@@ -1129,3 +1129,9 @@ Connected Developer Product 3720640383 to one World2 Pet per purchase, reusing t
 - Connected approved World2 personal boss Walk animations and SCP049 saved-clip intro; corrected096 clone joint axes/readiness and049 hidden thighs. Native isolated two-client movement/lifecycle verification recorded in reports/World2BossWalk_20261022. Public-server authorization and physical user input remain unverified.
 
 Remaining visual issue: SCP049 still exposes a pale carrier segment during stride despite correct server tint/texture checks. Its clothing match is not claimed complete.096 adjusted motion is confirmed on both native clients; public-server playback remains unverified.
+
+## 2026-10-22 - Remaining boss animation research and SCP049 thigh color
+
+- Extended only Studio Preview for023/058/173/939/682; recovered historical candidates and saved clips, added large023/939 variants, and distinguished visible limb movement from hidden helper movement. No production connection or permanent rig modifications for these five.
+- Fixed049's two pale upper-leg carriers with thigh-only black SurfaceAppearance; actual native battle and fresh actors checked, existing3.0s intro preserved.096 corrections and all balance/gameplay settings retained.
+- Three-Source same-file writeback/reopen, syntax and referent/UniqueId checks completed. Native images and limb measurements retained at user request. Physical input, public assets and final gait adoption remain unverified. Evidence and the corrected test-fixture failure: reports/World2RemainingBossAnimations_20261022/README.md.

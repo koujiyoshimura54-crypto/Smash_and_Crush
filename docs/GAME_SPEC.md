@@ -651,3 +651,7 @@ World2's four normal Eggs and Limited Egg 02 now resolve their existing 35 saved
 ## 2026-10-22 ? World2 personal boss animations
 
 Stage1/3/5/10 Walk507777826; Stage8 Walk125749145. Only actual actor travel plays Walk, including return movement. Stage5 owner Wall4 destruction plays the existing SCP049_Display.AnimSaves.Idle once at1x (3.0s), then releases pursuit; challenge reset allows a new intro. Owner death/World exit/actor removal cancels old state. No combat invulnerability or new attack gate is introduced. Details: [World2 animation report](../reports/World2BossWalk_20261022/README.md).
+
+### 2026-10-22 - SCP049 thigh appearance; remaining gait research only
+
+Fresh SCP049 actors use black SurfaceAppearance.Color on the existing LeftUpperLeg/RightUpperLeg MeshParts because Color/empty TextureID alone still rendered pale. Geometry, joints, gait and intro order remain unchanged. Stage2/4/6/7/9 candidates and adaptations are Studio Preview only; no production Walk configuration or permanent rig changes are authorized by this investigation. See [remaining boss investigation](../reports/World2RemainingBossAnimations_20261022/README.md).

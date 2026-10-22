@@ -1,0 +1,299 @@
+{
+  "Success": true,
+  "Result": {
+    "Cases": [
+      {
+        "MaxAnyRadians": 1.1886879205703735,
+        "TrackPlaying": false,
+        "Stage": 2,
+        "MaxVisibleRadians": 1.1886879205703735,
+        "TrackLength": 0,
+        "Candidate": "Recovered 023 gait (large, aligned)",
+        "Variant": "Original",
+        "Status": "Preview-only recovered joint gait; inspect four visible legs, axes and floor clearance.",
+        "Kind": "Procedural",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Arm": 1.1886879205703735,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Leg": 1.1886879205703735,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Arm": 1.1886879205703735,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Leg": 1.1886879205703735
+        },
+        "Colors": []
+      },
+      {
+        "MaxAnyRadians": 0,
+        "TrackPlaying": false,
+        "Stage": 2,
+        "MaxVisibleRadians": 0,
+        "TrackLength": 0,
+        "Candidate": "Recovered 023 gait (original)",
+        "Variant": "Original",
+        "Status": "Preview-only recovered joint gait; inspect four visible legs, axes and floor clearance.",
+        "Kind": "Procedural",
+        "MovedParts": [],
+        "Colors": []
+      },
+      {
+        "TrackLength": 0.6666669845581055,
+        "Id": "rbxassetid://125749145",
+        "TrackPlaying": true,
+        "Stage": 2,
+        "MaxVisibleRadians": 2.068179130554199,
+        "MaxAnyRadians": 2.068179130554199,
+        "Candidate": "Walk候補 R6",
+        "Variant": "Original",
+        "Status": "Playing Walk候補 R6  |  1.0x  |  visible joints moved",
+        "Kind": "Asset",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Eye": 0.040832024067640305,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Leg": 1.9252043962478638,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Torso": 0.040832024067640305,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Leg": 2.068179130554199,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Arm": 1.481321096420288,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Arm": 1.87868070602417
+        },
+        "Colors": []
+      },
+      {
+        "TrackLength": 0.6666669845581055,
+        "Id": "rbxassetid://125749145",
+        "TrackPlaying": true,
+        "Stage": 4,
+        "MaxVisibleRadians": 0,
+        "MaxAnyRadians": 2.055971384048462,
+        "Candidate": "Walk候補 R6",
+        "Variant": "Original",
+        "Status": "Playing Walk候補 R6  |  1.0x  |  visible joints moved",
+        "Kind": "Asset",
+        "MovedParts": [],
+        "Colors": []
+      },
+      {
+        "TrackLength": 0,
+        "Id": "rbxassetid://125749145",
+        "TrackPlaying": false,
+        "Stage": 6,
+        "MaxVisibleRadians": 0,
+        "MaxAnyRadians": 0,
+        "Candidate": "Walk候補 R6",
+        "Variant": "Original",
+        "Status": "Animation or compatible Humanoid is missing.",
+        "Kind": "Asset",
+        "MovedParts": [],
+        "Colors": []
+      },
+      {
+        "MaxAnyRadians": 1.384429931640625,
+        "TrackPlaying": true,
+        "Stage": 7,
+        "MaxVisibleRadians": 1.384429931640625,
+        "TrackLength": 1,
+        "Candidate": "939walk",
+        "Variant": "Original",
+        "Status": "Playing 939walk  |  1.0x  |  visible joints moved",
+        "Kind": "KeyframeSequence",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Part": 0.5487946271896362,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.chest": 0.3373633027076721,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Leg": 0.4509499967098236,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Leg": 0.5487946271896362,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Arm": 1.2665431499481201,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Arm": 1.384429931640625
+        },
+        "Colors": []
+      },
+      {
+        "TrackLength": 0,
+        "Id": "rbxassetid://4607522177",
+        "TrackPlaying": true,
+        "Stage": 7,
+        "MaxVisibleRadians": 0,
+        "MaxAnyRadians": 0,
+        "Candidate": "Archived 939 Walk",
+        "Variant": "Original",
+        "Status": "Load failed/timed out. Check asset permission and Output.",
+        "Kind": "Asset",
+        "MovedParts": [],
+        "Colors": []
+      },
+      {
+        "MaxAnyRadians": 1.3844287395477295,
+        "TrackPlaying": true,
+        "Stage": 7,
+        "MaxVisibleRadians": 1.3844287395477295,
+        "TrackLength": 1,
+        "Candidate": "Automatic Save",
+        "Variant": "Original",
+        "Status": "Playing Automatic Save  |  1.0x  |  visible joints moved",
+        "Kind": "KeyframeSequence",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Part": 0.5487932562828064,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.chest": 0.3373625576496124,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Leg": 0.45094865560531616,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Leg": 0.5487934947013855,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Arm": 1.2665412425994873,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Arm": 1.3844287395477295
+        },
+        "Colors": []
+      },
+      {
+        "MaxAnyRadians": 1.3844292163848877,
+        "TrackPlaying": true,
+        "Stage": 7,
+        "MaxVisibleRadians": 1.3844292163848877,
+        "TrackLength": 1,
+        "Candidate": "Test",
+        "Variant": "Original",
+        "Status": "Playing Test  |  1.0x  |  visible joints moved",
+        "Kind": "KeyframeSequence",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Part": 0.5487934947013855,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.chest": 0.3373625576496124,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Leg": 0.45094865560531616,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Leg": 0.5487934947013855,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Left Arm": 1.266541600227356,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Right Arm": 1.3844292163848877
+        },
+        "Colors": []
+      },
+      {
+        "TrackLength": 0,
+        "Id": "http://www.roblox.com/asset/?id=189040478",
+        "TrackPlaying": true,
+        "Stage": 9,
+        "MaxVisibleRadians": 0,
+        "MaxAnyRadians": 0,
+        "Candidate": "WalkAnim",
+        "Variant": "Original",
+        "Status": "Load failed/timed out. Check asset permission and Output.",
+        "Kind": "Asset",
+        "MovedParts": [],
+        "Colors": []
+      },
+      {
+        "TrackLength": 0.6666719913482666,
+        "Id": "rbxassetid://507777826",
+        "TrackPlaying": true,
+        "Stage": 5,
+        "MaxVisibleRadians": 2.5481905937194824,
+        "MaxAnyRadians": 2.5481905937194824,
+        "Candidate": "Walk候補 R15",
+        "Variant": "Color",
+        "Status": "Playing Walk候補 R15  |  1.0x  |  visible joints moved",
+        "Kind": "Asset",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightUpperLeg": 1.509271264076233,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightFoot.Meshes/RightLowerLeg (3)": 1.4821503162384033,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftLowerArm.Meshes/RightLowerArm (5)": 1.1751474142074585,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftUpperArm.Meshes/RightUpperArm (5)": 0.6966710090637207,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftFoot.Meshes/LeftLowerLeg (3)": 1.3030664920806885,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightLowerArm.Meshes/LeftLowerArm (5)": 1.3866817951202393,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.UpperTorso.Meshes/Torso (9)": 0.21943946182727814,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightUpperArm.Meshes/LeftUpperArm (5)": 0.598912239074707,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LowerTorso": 0.037590354681015015,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Head.Meshes/Head1": 0.12085877358913422,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftUpperLeg": 2.5481905937194824
+        },
+        "Colors": {
+          "Left": [
+            0,
+            0,
+            0,
+            0,
+            ""
+          ],
+          "Right": [
+            0,
+            0,
+            0,
+            0,
+            ""
+          ]
+        }
+      },
+      {
+        "TrackLength": 0.6666719913482666,
+        "Id": "rbxassetid://507777826",
+        "TrackPlaying": true,
+        "Stage": 5,
+        "MaxVisibleRadians": 2.6880974769592285,
+        "MaxAnyRadians": 2.6880974769592285,
+        "Candidate": "Walk候補 R15",
+        "Variant": "Surface",
+        "Status": "Playing Walk候補 R15  |  1.0x  |  visible joints moved",
+        "Kind": "Asset",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightUpperLeg": 2.6880974769592285,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightFoot.Meshes/RightLowerLeg (3)": 2.5645604133605957,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftLowerArm.Meshes/RightLowerArm (5)": 1.7345340251922607,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftUpperArm.Meshes/RightUpperArm (5)": 0.8750301599502563,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftFoot.Meshes/LeftLowerLeg (3)": 2.424044370651245,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightLowerArm.Meshes/LeftLowerArm (5)": 1.648567795753479,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.UpperTorso.Meshes/Torso (9)": 0.23431584239006042,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightUpperArm.Meshes/LeftUpperArm (5)": 0.9984797835350037,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LowerTorso": 0.04327347129583359,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Head.Meshes/Head1": 0.18521690368652344,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftUpperLeg": 1.828092098236084
+        },
+        "Colors": {
+          "Left": [
+            0,
+            0,
+            0,
+            0,
+            ""
+          ],
+          "Right": [
+            0,
+            0,
+            0,
+            0,
+            ""
+          ]
+        }
+      },
+      {
+        "TrackLength": 0.6666719913482666,
+        "Id": "rbxassetid://507777826",
+        "TrackPlaying": true,
+        "Stage": 5,
+        "MaxVisibleRadians": 2.6387224197387695,
+        "MaxAnyRadians": 2.6387224197387695,
+        "Candidate": "Walk候補 R15",
+        "Variant": "BodyColors",
+        "Status": "Playing Walk候補 R15  |  1.0x  |  visible joints moved",
+        "Kind": "Asset",
+        "MovedParts": {
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightUpperLeg": 2.6387224197387695,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightFoot.Meshes/RightLowerLeg (3)": 2.5706565380096436,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftLowerArm.Meshes/RightLowerArm (5)": 1.742444634437561,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftUpperArm.Meshes/RightUpperArm (5)": 0.8661825060844421,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftFoot.Meshes/LeftLowerLeg (3)": 2.375270128250122,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightLowerArm.Meshes/LeftLowerArm (5)": 1.6253494024276733,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.UpperTorso.Meshes/Torso (9)": 0.2336144745349884,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.RightUpperArm.Meshes/LeftUpperArm (5)": 0.9912520051002502,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LowerTorso": 0.04329000040888786,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.Head.Meshes/Head1": 0.18023693561553955,
+          "Players.Player1.PlayerGui.StudioBossAnimationPreviewGui.Panel.View.PreviewWorld.Template.LeftUpperLeg": 1.8378398418426514
+        },
+        "Colors": {
+          "Left": [
+            0,
+            0,
+            0,
+            0,
+            ""
+          ],
+          "Right": [
+            0,
+            0,
+            0,
+            0,
+            ""
+          ]
+        }
+      }
+    ],
+    "Errors": []
+  }
+}

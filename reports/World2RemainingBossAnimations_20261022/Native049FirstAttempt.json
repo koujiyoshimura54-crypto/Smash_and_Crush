@@ -1,0 +1,99 @@
+{
+  "Success": true,
+  "Result": {
+    "Fixture": "In-memory stores; server-positioned anchored player targets; real combat services and native client animation",
+    "Cases": {
+      "IntroElapsed": 3.016042947769165,
+      "Stage5Peer": {
+        "JointRadians": 2.3893203735351562,
+        "LimbRadians": 2.4147238731384277,
+        "Animation": "Stopped",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0,
+        "Moved": 45.60877990722656,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "LeftShoulder",
+          "Neck",
+          "RightElbow",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "RightKnee",
+          "LeftHip"
+        ]
+      },
+      "Speed5": {
+        "Speed": 22,
+        "Turn": 5.7
+      },
+      "Thighs": {
+        "Left": {
+          "Color": [
+            0,
+            0,
+            0
+          ],
+          "Transparency": 1,
+          "SurfaceBlack": true,
+          "Texture": ""
+        },
+        "Right": {
+          "Color": [
+            0,
+            0,
+            0
+          ],
+          "Transparency": 1,
+          "SurfaceBlack": true,
+          "Texture": ""
+        }
+      },
+      "Stage5Moving": {
+        "JointRadians": 2.077409505844116,
+        "LimbRadians": 2.4961447715759277,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5326977925112721,
+        "Moved": 68.0304183959961,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "RightKnee",
+          "Neck",
+          "RightElbow",
+          "RightAnkle",
+          "LeftAnkle",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "LeftShoulder",
+          "LeftHip"
+        ]
+      },
+      "IntroDuration": 3,
+      "049Intro": {
+        "Moved": 0,
+        "JointRadians": 1.2497552633285522,
+        "Tracks": 0,
+        "Animation": "Intro",
+        "ForeignVisibleParts": 0,
+        "ChangedJoints": [
+          "Neck"
+        ],
+        "Stage": 5,
+        "LimbRadians": 1.2497552633285522
+      }
+    },
+    "Errors": [
+      "ServerScriptService.__WalkTestDriver:150: Real wall1-4 damage/carry did not clear\nServerScriptService.__WalkTestDriver:11 function prepare\nServerScriptService.__WalkTestDriver:150\nServerScriptService.__WalkTestDriver:23\n"
+    ]
+  }
+}

@@ -6,6 +6,10 @@ local RS = game:GetService("ReplicatedStorage")
 local templates = game:GetService("ServerStorage"):WaitForChild("EnemyTemplates"):WaitForChild("World2SCPDisplays")
 local stages = {
 	[1] = {"SCP-096", "SCP096_Display", "MainAnimation is absent from this file's template."},
+	[2] = {"SCP-023", "SCP023_Display", "Recovered procedural gait from PreMerge SourceModels.SCP-023.Animate; preview only."},
+	[4] = {"SCP-058", "SCP058_Display", "Visible Body parts are not connected to the four hidden Targeter motors. Native assets are diagnostics only."},
+	[7] = {"SCP-939", "SCP939_Display", "Saved 939walk clips plus archived Animate Walk 4607522177. Inspect visible limbs."},
+	[9] = {"SCP-682", "SCP682_Display", "WalkAnim drives a hidden R6 carrier; the visible animal is one rigid FileMesh."},
 	[3] = {"SCP-035", "SCP035_Display", "Animate and its child Animation overrides are absent from this template."},
 	[5] = {"SCP-049", "SCP049_Display", "Only the Animation objects and saved clips present in this template are listed."},
 	[6] = {"SCP-173", "SCP173_Display", "No Animation, Humanoid or Motor6D exists in this static template."},
@@ -88,15 +92,23 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 	end
 
 	local candidates, ids = {}, {}
+ if stage==2 then
+  for _,kind in {"Legacy023","Large023"} do
+   table.insert(candidates,{Name=kind=="Legacy023" and "Recovered 023 gait (original)" or "Recovered 023 gait (large, aligned)",
+    Kind="Procedural",Procedure=kind,Source="PreMerge: ServerStorage.World2SCPAssets.SourceModels.SCP-023.Animate; isolated joint equations only",Path={}})
+  end
+ elseif stage==7 then
+  local a=Instance.new("Animation");a.Name="Archived 939 Walk";a.AnimationId="rbxassetid://4607522177";a.Parent=model
+ end
 	local motors, humanoids = 0, 0
 	for _, item in model:GetDescendants() do
 		if item:IsA("Motor6D") and item.Part0 and item.Part1 then motors += 1 end
 		if item:IsA("Humanoid") then humanoids += 1 end
 		if item:IsA("Animation") or item:IsA("KeyframeSequence") then
 			local path = relative(item, model)
-			local original = template:GetFullName() .. "." .. table.concat(path, ".")
+			local original = item.Name=="Archived 939 Walk" and "PreMerge: ServerStorage.World2SCPAssets.SourceModels.SCP-939.Animate.walk.RunAnim" or template:GetFullName() .. "." .. table.concat(path, ".")
 			if item:IsA("Animation") then
-				local id = item.AnimationId:match("%d+")
+				local id = item.AnimationId:match("^rbxassetid://(%d+)$") or item.AnimationId:match("[?&]id=(%d+)$") or item.AnimationId:match("^(%d+)$")
 				if id then
 					local previous = ids[id]
 					if previous then previous.Name ..= " / " .. item.Name; previous.Source ..= "\n" .. original
@@ -113,6 +125,13 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 			end
 		end
 	end
+if stage==7 then
+  for _,candidate in table.clone(candidates) do
+   if candidate.Name=="939walk" and candidate.Kind=="KeyframeSequence" then
+    local large=table.clone(candidate);large.Name="939walk (large 1.35x)";large.Amplitude=1.35;table.insert(candidates,large)
+   end
+  end
+ end
 	table.sort(candidates, function(a, b) return a.Name < b.Name end)
 	local container = Instance.new("Folder")
 	container.Name = tostring(player.UserId)

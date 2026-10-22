@@ -34,9 +34,16 @@ function M.Prepare(model,stage)
    local thigh=model:FindFirstChild(side.."UpperLeg")
    local foot=model:FindFirstChild(side.."Foot")
    local boot=foot and foot:FindFirstChildWhichIsA("BasePart")
-   if thigh and boot then thigh.Transparency=0;thigh.Color=Color3.fromRGB(35,31,28)
+   if thigh and boot then thigh.Transparency=0;thigh.Color=Color3.new(0,0,0)
     -- The hidden avatar carrier had a pale skin texture, unrelated to the coat.
-    if thigh:IsA("MeshPart") then thigh.TextureID="" end end
+    if thigh:IsA("MeshPart") then
+     thigh.TextureID=""
+     -- The avatar carrier still rendered pale with Color/TextureID alone.
+     -- Override only these two existing thighs, without changing their geometry.
+     local surface=thigh:FindFirstChild("SCP049BlackThigh")
+     if not surface then surface=Instance.new("SurfaceAppearance");surface.Name="SCP049BlackThigh";surface.Parent=thigh end
+     surface.Color=Color3.new(0,0,0)
+    end end
   end
  end
  local connected={}

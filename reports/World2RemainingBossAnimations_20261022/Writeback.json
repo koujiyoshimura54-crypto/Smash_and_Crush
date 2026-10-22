@@ -1,0 +1,53 @@
+{
+  "before": {
+    "sha256": "68aed1f64f92cae7fa621f606661d301caee5b04c45772eed3cc1c62649ae8b0",
+    "instanceCount": 192538,
+    "classCount": 161,
+    "minimumId": 0,
+    "maximumId": 192537,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192538,
+      "PROP.Ref": 81074,
+      "PROP.Content": 0,
+      "PRNT.Child": 192538,
+      "PRNT.Parent": 192538
+    }
+  },
+  "after": {
+    "sha256": "5b4cc9194de35f3853714cac59ad68363c5e2f19e78afc42311f78bcbae08619",
+    "instanceCount": 192538,
+    "classCount": 161,
+    "minimumId": 0,
+    "maximumId": 192537,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192538,
+      "PROP.Ref": 81074,
+      "PROP.Content": 0,
+      "PRNT.Child": 192538,
+      "PRNT.Parent": 192538
+    }
+  },
+  "sources": {
+    "ReplicatedStorage.Modules.World2BossRig": {
+      "before": "4c730a7446b1f19ab80bbe58bc3690189ea7b36885c96f6953a34ec9468daaec",
+      "after": "0efb4337e0017879533b8a445a17450e4cd039852a4c2dd8ea897229ba30df50"
+    },
+    "ServerScriptService.StudioBossAnimationPreview": {
+      "before": "d0f187431ebf84cb95c18608a84a01a59a162a9eeff4900fa020fd62605719fb",
+      "after": "9ab3fbaf98645195bcb5384e68357ac71580f9ff7b8a2d011d76c0ba6ffb0e0a"
+    },
+    "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview": {
+      "before": "8a21fc7ba64ab94660f8082598ac3509c9181fb53331d2173b45f578df8451a9",
+      "after": "ea459db5e7c705e931aa9880ba50ee4bf2d6691224b64e0db34aae5f7095f9d0"
+    }
+  },
+  "originalRowsChecked": 4915517,
+  "allSavedTemplatesParentsAndOtherPropertiesPreserved": true,
+  "written": true
+}

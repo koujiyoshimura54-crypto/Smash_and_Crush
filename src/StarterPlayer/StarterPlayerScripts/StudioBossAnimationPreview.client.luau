@@ -57,10 +57,10 @@ local source = label("Source", panel, "Select a Boss and an existing animation."
 source.TextSize = 12
 source.TextYAlignment = Enum.TextYAlignment.Top
 local status = label("Status", panel, "No game data or combat state is changed.", UDim2.new(0, 12, 1, -48), UDim2.new(1, -24, 0, 42))
-local list = create("ScrollingFrame", "Animations", panel, {Position = UDim2.fromOffset(12, 191), Size = UDim2.new(0, 178, 1, -249),
+local list = create("ScrollingFrame", "Animations", panel, {Position = UDim2.fromOffset(12, 269), Size = UDim2.new(0, 178, 1, -327),
 	BackgroundTransparency = 1, BorderSizePixel = 0, ScrollBarThickness = 5, CanvasSize = UDim2.new(), AutomaticCanvasSize = Enum.AutomaticSize.Y})
 create("UIListLayout", "Layout", list, {Padding = UDim.new(0, 5), SortOrder = Enum.SortOrder.LayoutOrder})
-label("AnimationsTitle", panel, "Existing animations", UDim2.fromOffset(12, 164), UDim2.fromOffset(178, 23))
+label("AnimationsTitle", panel, "Existing animations", UDim2.fromOffset(12, 242), UDim2.fromOffset(178, 23))
 
 local epoch, playEpoch, speed = 0, 0, 1
 local template, model, world, track, metadata, selected, monitor, logConnection
@@ -98,7 +98,8 @@ local function rebuild()
 	for _, item in model:GetDescendants() do
 		if item:IsA("LuaSourceContainer") or item:IsA("Sound") then item:Destroy()
 		elseif item:IsA("BasePart") then
-			item.Anchored = item.Name == "HumanoidRootPart" or item.Name == "DisplayRoot"
+			item.Anchored = item.Name == "HumanoidRootPart" or item.Name == "DisplayRoot" or stageSelected==4 or stageSelected==6
+			if stageSelected==4 and item:IsDescendantOf(model.Targeter) and item.Name~="HumanoidRootPart" then item.Anchored=false end
 			item.CanCollide = false; item.CanTouch = false; item.CanQuery = false
 		elseif item:IsA("Humanoid") then
 			item.EvaluateStateMachine = false; item.BreakJointsOnDeath = false; item.RequiresNeck = false
@@ -110,13 +111,22 @@ local function rebuild()
 	basis = root and root.CFrame.Rotation or CFrame.new()
 	for _, part in model:GetDescendants() do
 		if not part:IsA("BasePart") or part.Transparency >= .99 then continue end
-		for _, x in {-1, 1} do for _, y in {-1, 1} do for _, z in {-1, 1} do
-			local corner = part.CFrame:PointToWorldSpace(part.Size * Vector3.new(x, y, z) / 2)
+		local mesh=part:FindFirstChildOfClass("SpecialMesh")
+  local meshSize=mesh and require(RS.Config.World2BossVisualConfig).FileMeshSizes[mesh.MeshId]
+  local extent=meshSize and meshSize*mesh.Scale or part.Size
+  local offset=meshSize and mesh.Offset or Vector3.zero
+  for _, x in {-1, 1} do for _, y in {-1, 1} do for _, z in {-1, 1} do
+			local corner = part.CFrame:PointToWorldSpace(offset+extent * Vector3.new(x, y, z) / 2)
 			min = min:Min(corner); max = max:Max(corner)
 		end end end
 	end
 	if min.X == math.huge then message("No visible parts found in the current template.", true); return false end
 	center = (min + max) / 2; radius = math.max(1, (max - min).Magnitude / 2)
+ if stageSelected==2 or stageSelected==4 or stageSelected==6 or stageSelected==7 or stageSelected==9 then
+  local floor=Instance.new("Part");floor.Name="PreviewFloorGuide";floor.Anchored=true;floor.CanCollide=false
+  floor.Size=Vector3.new((max.X-min.X)*1.5,.02,(max.Z-min.Z)*1.5)
+  floor.CFrame=CFrame.new(center.X,min.Y-.01,center.Z);floor.Color=Color3.fromRGB(95,100,110);floor.Transparency=.65;floor.Parent=world
+ end
 	aim()
 	return true
 end
@@ -132,7 +142,9 @@ local function jointPose()
 	local result = {}
 	for _, motor in model:GetDescendants() do
 		if motor:IsA("Motor6D") and motor.Part0 and motor.Part1 then
-			result[motor] = motor.Part0.CFrame:ToObjectSpace(motor.Part1.CFrame)
+			local visible=motor.Part1.Transparency<.99
+   for _,child in motor.Part1:GetDescendants() do if child:IsA("BasePart") and child.Transparency<.99 then visible=true end end
+   if visible then result[motor] = motor.Part0.CFrame:ToObjectSpace(motor.Part1.CFrame) end
 		end
 	end
 	return result
@@ -165,7 +177,31 @@ local function play()
 	source.Text = describe(candidate)
 	message("Loading " .. candidate.Name .. " ...")
 	task.spawn(function()
-		local object = findRelative(candidate.Path)
+		if candidate.Kind=="Procedural" then
+   local torso=model:FindFirstChild("Torso")
+   local joints={}
+   for _,name in {"Right Hip","Left Hip","Right Shoulder","Left Shoulder"} do
+    local j=torso and torso:FindFirstChild(name)
+    if j and j.Part0 and j.Part1 then table.insert(joints,j) end
+   end
+   if #joints~=4 then message("Recovered gait requires the four existing 023 limb motors.",true);return end
+   local elapsed=0
+   monitor=Run.PreSimulation:Connect(function(dt)
+    elapsed+=dt*speed
+    local a=math.sin(elapsed*(candidate.Procedure=="Legacy023" and 9 or 6))* (candidate.Procedure=="Legacy023" and 1 or .8)
+    for _,j in joints do
+     local direction=j.Name:find("Hip") and -1 or 1
+     if candidate.Procedure=="Legacy023" then j.MaxVelocity=.1;j.DesiredAngle=a*direction
+     else
+      local axis=(j.Part0.CFrame*j.C0):VectorToObjectSpace(torso.CFrame.RightVector)
+      j.Transform=CFrame.fromAxisAngle(axis,a*direction)
+     end
+    end
+   end)
+   message("Preview-only recovered joint gait; inspect four visible legs, axes and floor clearance.")
+   return
+  end
+  local object = findRelative(candidate.Path)
 		local humanoid = model and model:FindFirstChildWhichIsA("Humanoid", true)
 		if not object or not humanoid then message("Animation or compatible Humanoid is missing.", true); return end
 		local animator = humanoid:FindFirstChildWhichIsA("Animator") or Instance.new("Animator", humanoid)
@@ -193,7 +229,22 @@ local function play()
 			message("Approved R15 Walk retargeted onto corrected existing SCP-096 joints.")
 			return
 		end
-		local animation = Instance.new("Animation")
+		if candidate.Amplitude then
+   local module=require(RS.Modules.World2BossClip)
+   local ok,clip=pcall(module.Compile,object,model)
+   if not ok then message("Saved clip joint mismatch: "..tostring(clip),true);return end
+   local elapsed=0
+   monitor=Run.PreSimulation:Connect(function(dt)
+    elapsed=(elapsed+dt*speed)%clip.Duration;module.Sample(clip,elapsed)
+    for _,binding in clip.Bindings do
+     local j=binding.Joint;local axis,a=j.Transform:ToAxisAngle()
+     j.Transform=CFrame.new(j.Transform.Position)*CFrame.fromAxisAngle(axis,a*candidate.Amplitude)
+    end
+   end)
+   message("Saved 939walk, 1.35x rotational swing; preview only. Inspect feet at the floor guide.")
+   return
+  end
+  local animation = Instance.new("Animation")
 		animation.Name = "PreviewAnimation"
 		animation.Parent = model
 		local loadedTrack
@@ -239,7 +290,7 @@ local function selectBoss(stage)
 	table.clear(candidateButtons)
 	for n, b in bossButtons do b.BackgroundColor3 = n == stage and Color3.fromRGB(49, 113, 101) or Color3.fromRGB(48, 62, 82) end
 	message("Loading current Boss template ...")
-	source.Text = "Current file only; historical standard Animate IDs are not substituted."
+	source.Text = "Current templates; recovered candidates identify their archived source."
 	task.spawn(function()
 		local ok, response = pcall(function() return remote:InvokeServer("Select", token, stage) end)
 		if token ~= epoch or not panel.Visible then return end
@@ -262,6 +313,7 @@ local function selectBoss(stage)
 				source.Text = describe(candidate)
 				message(candidate.Name == "Animation" and "Original object name: Animation; intended use is unverified. Press Play to inspect." or "Selected " .. candidate.Name .. ". Press Play.")
 			end)
+			b.TextWrapped=true;b.TextSize=12
 			b.LayoutOrder = index
 			table.insert(candidateButtons, b)
 		end
@@ -276,7 +328,7 @@ local function close()
 	task.spawn(function() pcall(function() remote:InvokeServer("Close", token) end) end)
 end
 button("Close", panel, "Close", UDim2.new(1, -72, 0, 7), UDim2.fromOffset(60, 28), close)
-local bosses = {{1, "SCP-096"}, {3, "SCP-035"}, {5, "SCP-049"}, {6, "SCP-173"}, {8, "SCP-106"}, {10, "SCP-323"}}
+local bosses = {{1,"SCP-096"},{2,"SCP-023"},{3,"SCP-035"},{4,"SCP-058"},{5,"SCP-049"},{6,"SCP-173"},{7,"SCP-939"},{8,"SCP-106"},{9,"SCP-682"},{10,"SCP-323"}}
 for index, boss in bosses do
 	bossButtons[boss[1]] = button("Stage" .. boss[1], panel, "Stage " .. boss[1] .. "\n" .. boss[2], UDim2.fromOffset(12 + (index - 1) % 2 * 91, 42 + math.floor((index - 1) / 2) * 39), UDim2.fromOffset(87, 34), function() selectBoss(boss[1]) end)
 end
