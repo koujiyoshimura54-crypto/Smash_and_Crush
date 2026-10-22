@@ -1122,3 +1122,10 @@ Connected Developer Product 3720640383 to one World2 Pet per purchase, reusing t
 - Mapped all 35 approved purchased Pet models through the existing World2 saved species IDs; preserved slot effects, probabilities, pricing, receipt outcomes and equipment identity.
 - Reused model viewports in candidates/Inventory and the existing hatch/follower paths; fixed same-odds World2 order and Inventory's last-row scroll extent.
 - Verified scoped isolated Play, all 35 displays/followers, five Egg paths and mock receipt/save compatibility; retained five requested candidate screenshots. Wrote the current rbxl in place with unrelated property preservation checks. See [the English record](../reports/World2PetModels_20261021/README.md).
+
+
+## 2026-10-22
+
+- Connected approved World2 personal boss Walk animations and SCP049 saved-clip intro; corrected096 clone joint axes/readiness and049 hidden thighs. Native isolated two-client movement/lifecycle verification recorded in reports/World2BossWalk_20261022. Public-server authorization and physical user input remain unverified.
+
+Remaining visual issue: SCP049 still exposes a pale carrier segment during stride despite correct server tint/texture checks. Its clothing match is not claimed complete.096 adjusted motion is confirmed on both native clients; public-server playback remains unverified.

@@ -176,6 +176,23 @@ local function play()
 			if token == playEpoch then message(changed(before, jointPose()) > 0 and "Saved static pose applied; no timed motion (speed has no effect)." or "Pose did not move the visible rig; inspect joint compatibility.", changed(before, jointPose()) == 0) end
 			return
 		end
+		if stageSelected==1 and candidate.Id=="rbxassetid://507777826" then
+			local clipModule=require(game.ReplicatedStorage.Modules.World2BossClip)
+			local ok,clip=pcall(function()
+				local sequence=game:GetService("KeyframeSequenceProvider"):GetKeyframeSequenceAsync(candidate.Id)
+    return clipModule.Compile(sequence,model,true,require(RS.Config.World2BossAnimationConfig).Stages[1].RetargetWeight)
+			end)
+			if token~=playEpoch then return end
+			if not ok then message("Cannot retarget approved Walk: "..tostring(clip),true);return end
+			local elapsed=0
+			monitor=Run.PreSimulation:Connect(function(dt)
+				if token~=playEpoch or not model then return end
+				elapsed=(elapsed+dt*speed)%clip.Duration
+				clipModule.Sample(clip,elapsed)
+			end)
+			message("Approved R15 Walk retargeted onto corrected existing SCP-096 joints.")
+			return
+		end
 		local animation = Instance.new("Animation")
 		animation.Name = "PreviewAnimation"
 		animation.Parent = model

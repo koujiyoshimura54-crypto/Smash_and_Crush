@@ -2346,3 +2346,10 @@ Completed Limited Egg 02 after the user confirmed Open1 and dedicated UI only. F
 Implemented against the current CurrentCloud file after 58849b4. Registered only the 35 approved model subtrees under ReplicatedStorage.Assets.World2Pets, retaining existing saved IDs and slot effects. Shared purchased-model viewports now serve all World2 candidates, hatch reveals, Inventory and followers. Fixed World2 same-odds slot order and the full-collection Inventory's clipped last row.
 
 Two isolated local Play sessions verified all 35 candidate/Inventory displays, all 35 actual follower signatures/effects, five Egg hatch/equip paths, old-ID copy/equipment restoration, mock receipt duplicate prevention, death/respawn and World travel cleanup. World1 normal and Limited01 render checks passed. No live payment, production data or live rejoin was tested. Same-file writeback verified 4,751,237 existing properties and all added clone properties. Five requested candidate images and details are in [World2PetModels_20261021](../reports/World2PetModels_20261021/README.md). Studio Save/Publish was not used.
+
+
+## 2026-10-22 ? World2 approved boss Walk and SCP049 intro
+
+Connected the approved Walk assets on personal Stage1/3/5/8/10 actors, preserving combat tuning and manual Preview candidates. Added clone-only096 joint corrections and bounded replication readiness, plus049 existing upper-leg visibility and exact saved Idle intro (3.0s) after owner Wall4 destruction. Isolated native two-client Play verified real joint/limb motion, intro/stop/return/retry/cancellation and peer isolation; physical user input and public-server asset authorization remain unverified. Same-file native reopen and static referent/UniqueId validation accompany the source-only writeback. Details: [World2BossWalk_20261022](../reports/World2BossWalk_20261022/README.md).
+
+Remaining visual issue: SCP049 still exposes a pale carrier segment during stride despite correct server tint/texture checks. Its clothing match is not claimed complete.096 adjusted motion is confirmed on both native clients; public-server playback remains unverified.

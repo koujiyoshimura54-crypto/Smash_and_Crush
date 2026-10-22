@@ -1,0 +1,387 @@
+{
+  "Success": true,
+  "Result": {
+    "Fixture": "In-memory stores; server-positioned anchored player targets; real combat services and native client animation",
+    "Cases": {
+      "MoveAgain": {
+        "JointRadians": 2.1409029960632324,
+        "LimbRadians": 1.824518084526062,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5326980847862042,
+        "Moved": 55.524818420410156,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "RightKnee",
+          "Root",
+          "RightElbow",
+          "LeftAnkle",
+          "RightAnkle",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Neck",
+          "LeftElbow",
+          "LeftShoulder",
+          "LeftHip"
+        ]
+      },
+      "Speed1": {
+        "Speed": 18,
+        "Turn": 4.5
+      },
+      "DeparturePeerIsolation": true,
+      "Stage5Moving": {
+        "JointRadians": 2.4167017936706543,
+        "LimbRadians": 2.5913450717926025,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5326085743992416,
+        "Moved": 67.74471282958984,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "RightKnee",
+          "Neck",
+          "RightElbow",
+          "RightAnkle",
+          "LeftAnkle",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "LeftShoulder",
+          "LeftHip"
+        ]
+      },
+      "ContactStop": {
+        "JointRadians": 0,
+        "LimbRadians": 0.00048828125,
+        "Animation": "Stopped",
+        "ForeignVisibleParts": 0,
+        "Tracks": 0,
+        "Rate": 0,
+        "Moved": 15.823338508605957,
+        "Stage": 5,
+        "ChangedJoints": []
+      },
+      "World1": {
+        "Speed": 16,
+        "Turn": 4,
+        "Moved": 24.238265991210938
+      },
+      "FreshRig2": {
+        "Scale": 2.700000047683716,
+        "Motors": 15
+      },
+      "Stage10Moving": {
+        "JointRadians": 2.6333181858062744,
+        "LimbRadians": 2.5912747383117676,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 1.136361676687613,
+        "Moved": 150.38389587402344,
+        "Stage": 10,
+        "ChangedJoints": [
+          "Waist",
+          "RightKnee",
+          "Neck",
+          "RightElbow",
+          "LeftAnkle",
+          "RightAnkle",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "LeftShoulder",
+          "LeftHip"
+        ]
+      },
+      "Speed8": {
+        "Speed": 25,
+        "Turn": 6.6
+      },
+      "FreshRig4": {
+        "Scale": 2.700000047683716,
+        "Motors": 15
+      },
+      "WorldExitDuringIntro": {
+        "PeerUnchanged": true,
+        "Cancelled": true
+      },
+      "Speed5": {
+        "Speed": 22,
+        "Turn": 5.7
+      },
+      "FreshRig5": {
+        "Scale": 2.700000047683716,
+        "Motors": 15
+      },
+      "Stage1Moving": {
+        "JointRadians": 1.1369447708129883,
+        "LimbRadians": 1.1303236484527588,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 0,
+        "Rate": 1.0003950396994203,
+        "Moved": 60.89246368408203,
+        "Stage": 1,
+        "ChangedJoints": [
+          "Left Shoulder",
+          "Right Shoulder",
+          "Neck",
+          "Right Hip",
+          "Left Hip",
+          "RootJoint"
+        ]
+      },
+      "Speed3": {
+        "Speed": 20,
+        "Turn": 5.1
+      },
+      "Stage5Peer": {
+        "JointRadians": 2.3655428886413574,
+        "LimbRadians": 2.378434181213379,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5326185659669302,
+        "Moved": 45.16744613647461,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "LeftShoulder",
+          "Neck",
+          "RightElbow",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "RightKnee",
+          "LeftHip"
+        ]
+      },
+      "DeathDuringIntro": {
+        "PeerIntro": "Completed",
+        "PeerUnchanged": true,
+        "OldActorRemoved": true
+      },
+      "Stage3Moving": {
+        "JointRadians": 2.2881548404693604,
+        "LimbRadians": 2.261789083480835,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.4957467088514335,
+        "Moved": 66.94508361816406,
+        "Stage": 3,
+        "ChangedJoints": [
+          "Waist",
+          "LeftShoulder",
+          "Neck",
+          "RightElbow",
+          "LeftAnkle",
+          "RightAnkle",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "RightKnee",
+          "LeftHip"
+        ]
+      },
+      "ReturnHome": {
+        "JointRadians": 1.9706861972808838,
+        "LimbRadians": 2.370361804962158,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5325570124210796,
+        "Moved": 55.765724182128906,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "RightKnee",
+          "Neck",
+          "RightElbow",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "LeftShoulder",
+          "LeftHip"
+        ]
+      },
+      "DefeatPeerIsolation": true,
+      "IntroElapsed": 3.0001320838928223,
+      "Speed10": {
+        "Speed": 27,
+        "Turn": 7.2
+      },
+      "Stage8Moving": {
+        "JointRadians": 1.7971134185791016,
+        "LimbRadians": 1.7984315156936646,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5208446731260441,
+        "Moved": 111.24669647216797,
+        "Stage": 8,
+        "ChangedJoints": [
+          "Left Shoulder",
+          "Right Shoulder",
+          "Root Hip",
+          "Neck",
+          "Right Hip",
+          "Left Hip"
+        ]
+      },
+      "Stage3Peer": {
+        "JointRadians": 1.910449743270874,
+        "LimbRadians": 1.9060770273208618,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.4959527567447526,
+        "Moved": 57.508426666259766,
+        "Stage": 3,
+        "ChangedJoints": [
+          "Waist",
+          "RightKnee",
+          "Neck",
+          "RightElbow",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "LeftShoulder",
+          "LeftHip"
+        ]
+      },
+      "Stage10Peer": {
+        "JointRadians": 2.615919351577759,
+        "LimbRadians": 2.5821022987365723,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 1.136363488384728,
+        "Moved": 116.86930847167969,
+        "Stage": 10,
+        "ChangedJoints": [
+          "Waist",
+          "RightKnee",
+          "Neck",
+          "RightElbow",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "LeftShoulder",
+          "LeftHip"
+        ]
+      },
+      "Stage1Peer": {
+        "JointRadians": 1.265659213066101,
+        "LimbRadians": 1.2566168308258057,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 0,
+        "Rate": 0.9997683334076363,
+        "Moved": 46.96400451660156,
+        "Stage": 1,
+        "ChangedJoints": [
+          "Left Shoulder",
+          "Right Shoulder",
+          "Neck",
+          "Right Hip",
+          "Left Hip"
+        ]
+      },
+      "FreshRig3": {
+        "Scale": 2.700000047683716,
+        "Motors": 15
+      },
+      "Stage8Peer": {
+        "JointRadians": 1.6500132083892822,
+        "LimbRadians": 1.6500595808029175,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5207055772111581,
+        "Moved": 105.25971984863281,
+        "Stage": 8,
+        "ChangedJoints": [
+          "Left Shoulder",
+          "Right Shoulder",
+          "Root Hip",
+          "Neck",
+          "Right Hip",
+          "Left Hip"
+        ]
+      },
+      "PeerAfterDeparture": {
+        "JointRadians": 2.022218942642212,
+        "LimbRadians": 2.363605260848999,
+        "Animation": "Walk",
+        "ForeignVisibleParts": 0,
+        "Tracks": 1,
+        "Rate": 0.5324793702005728,
+        "Moved": 52.7104606628418,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Waist",
+          "LeftShoulder",
+          "Neck",
+          "RightElbow",
+          "LeftKnee",
+          "RightHip",
+          "RightShoulder",
+          "Root",
+          "LeftElbow",
+          "RightKnee",
+          "LeftHip"
+        ]
+      },
+      "ContactServer": {
+        "Target": -1,
+        "Mode": "Chasing",
+        "Motion": 0
+      },
+      "FreshRig1": {
+        "Scale": 2.700000047683716,
+        "Motors": 15
+      },
+      "ReturnSettled": {
+        "Mode": "Idle",
+        "Intro": "Completed",
+        "Motion": 0
+      },
+      "IntroDuration": 3,
+      "049Intro": {
+        "JointRadians": 1.4053356647491455,
+        "LimbRadians": 1.4053356647491455,
+        "Animation": "Intro",
+        "ForeignVisibleParts": 0,
+        "Tracks": 0,
+        "Rate": 0,
+        "Moved": 0,
+        "Stage": 5,
+        "ChangedJoints": [
+          "Neck"
+        ]
+      }
+    },
+    "Errors": []
+  }
+}

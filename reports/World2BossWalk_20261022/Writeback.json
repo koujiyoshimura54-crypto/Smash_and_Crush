@@ -1,0 +1,72 @@
+{
+  "inputSha256": "2404d5dec7831e7f551c481c680f357bbb0c44a7107f04b2ad101a1c3837933f",
+  "outputSha256": "28eb3fc3424b5cabfbb66fb20d9c3b5b4fae6c1a3f8baab0071e31fee282764a",
+  "before": {
+    "sha256": "2404d5dec7831e7f551c481c680f357bbb0c44a7107f04b2ad101a1c3837933f",
+    "instanceCount": 192533,
+    "classCount": 161,
+    "minimumId": 0,
+    "maximumId": 192532,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192533,
+      "PROP.Ref": 81074,
+      "PROP.Content": 0,
+      "PRNT.Child": 192533,
+      "PRNT.Parent": 192533
+    }
+  },
+  "after": {
+    "sha256": "28eb3fc3424b5cabfbb66fb20d9c3b5b4fae6c1a3f8baab0071e31fee282764a",
+    "instanceCount": 192538,
+    "classCount": 161,
+    "minimumId": 0,
+    "maximumId": 192537,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192538,
+      "PROP.Ref": 81074,
+      "PROP.Content": 0,
+      "PRNT.Child": 192538,
+      "PRNT.Parent": 192538
+    }
+  },
+  "changedSources": {
+    "ServerScriptService.World.BossChaseService": {
+      "before": "fe054d5b00eb08f92a130863354b88bcbd296c25a1ae4df51c36c6867198c672",
+      "after": "aa03c58be223006f59e5ae1e76fb763330ebb451a2c871a00ae49a00bc771897"
+    },
+    "ServerScriptService.World.BossVisualPlacement": {
+      "before": "c6525b6c59af58774306b2b0cede082ea96c4d18a83d5ffd0af86e4f2b2cf495",
+      "after": "634c9c3c9f56d8149ea07731910704eed5a49f93db4edf45bd44d6955912053f"
+    },
+    "ServerScriptService.World.EnemyManager": {
+      "before": "1928c2781df8d3ac0e9133b1b2b3d88e4e40749249cae281f6d10911eaa76684",
+      "after": "bf789067bd201e99487e0ba9d56a1a4f20e0dea93433ac25e9f33b06f32a0231"
+    },
+    "ServerScriptService.StudioBossAnimationPreview": {
+      "before": "740d0ebaecb5b5e76cc3bc6be4faa17b227bce61a77434300305ba3f20532a54",
+      "after": "d0f187431ebf84cb95c18608a84a01a59a162a9eeff4900fa020fd62605719fb"
+    },
+    "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview": {
+      "before": "0b4095af197fc5ab96c7cc77c36e475623aa9629d74e1458967df23aaf1ca402",
+      "after": "213f10531c6ce1d2f418dd246d5bdd477e6593139eae2a01037228cd493491e3"
+    }
+  },
+  "newSources": {
+    "ReplicatedStorage.Config.World2BossAnimationConfig": 192533,
+    "ReplicatedStorage.Modules.World2BossRig": 192534,
+    "ReplicatedStorage.Modules.World2BossClip": 192535,
+    "ServerScriptService.World.World2BossAnimationService": 192536,
+    "StarterPlayer.StarterPlayerScripts.World2BossAnimationClient": 192537
+  },
+  "verifiedOriginalProperties": 4915455,
+  "allOtherPropertiesSourcesParentsPreserved": true,
+  "allSavedRigTemplatesAndGeometryUnchanged": true,
+  "manualPreviewCandidatesPreserved": true,
+  "writtenAndReread": true
+}

@@ -113,6 +113,7 @@ function M.Build(map,stageNumber,generation)
  assert(high.X-low.X<=maxX-minX and high.Z-low.Z<=maxZ-minZ,"Boss cannot fit arena")
  local shift=Vector3.new(math.clamp(0,minX-low.X,maxX-high.X),0,math.clamp(0,minZ-low.Z,maxZ-high.Z))
  enemy:PivotTo(enemy:GetPivot()+shift)
+ require(RS.Modules.World2BossRig).Prepare(visual,stageNumber)
  return enemy
 end
 return M

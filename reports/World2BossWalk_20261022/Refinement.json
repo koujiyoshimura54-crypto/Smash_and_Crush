@@ -1,0 +1,86 @@
+{
+  "inputSha256": "d3cd2787bd1ca55dd04c1c38189d065d556f881a6c831928e7dd87989f9185cb",
+  "outputSha256": "68aed1f64f92cae7fa621f606661d301caee5b04c45772eed3cc1c62649ae8b0",
+  "before": {
+    "sha256": "d3cd2787bd1ca55dd04c1c38189d065d556f881a6c831928e7dd87989f9185cb",
+    "instanceCount": 192538,
+    "classCount": 161,
+    "minimumId": 0,
+    "maximumId": 192537,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192538,
+      "PROP.Ref": 81074,
+      "PROP.Content": 0,
+      "PRNT.Child": 192538,
+      "PRNT.Parent": 192538
+    }
+  },
+  "after": {
+    "sha256": "68aed1f64f92cae7fa621f606661d301caee5b04c45772eed3cc1c62649ae8b0",
+    "instanceCount": 192538,
+    "classCount": 161,
+    "minimumId": 0,
+    "maximumId": 192537,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192538,
+      "PROP.Ref": 81074,
+      "PROP.Content": 0,
+      "PRNT.Child": 192538,
+      "PRNT.Parent": 192538
+    }
+  },
+  "changedSources": {
+    "ReplicatedStorage.Config.World2BossAnimationConfig": {
+      "before": "3ee7b3b5ee35f9d50318213ae0c773a724139878cd25e575f035e5ea2ccebec3",
+      "after": "3ee7b3b5ee35f9d50318213ae0c773a724139878cd25e575f035e5ea2ccebec3"
+    },
+    "ReplicatedStorage.Modules.World2BossRig": {
+      "before": "b0be0613d53f1f9ff41d7541aa6c021c0db67347e216da5422594c407f1f6422",
+      "after": "4c730a7446b1f19ab80bbe58bc3690189ea7b36885c96f6953a34ec9468daaec"
+    },
+    "ReplicatedStorage.Modules.World2BossClip": {
+      "before": "ec4b4eb2a0da0be6f65e41ab87bb4cd41e81dfda46f7543781dca57786b131fc",
+      "after": "ec4b4eb2a0da0be6f65e41ab87bb4cd41e81dfda46f7543781dca57786b131fc"
+    },
+    "ServerScriptService.World.World2BossAnimationService": {
+      "before": "1b6d590f3794b12755629f8d04f9a4da29189929f2f14ed02f6089c2fc47a57e",
+      "after": "1b6d590f3794b12755629f8d04f9a4da29189929f2f14ed02f6089c2fc47a57e"
+    },
+    "StarterPlayer.StarterPlayerScripts.World2BossAnimationClient": {
+      "before": "2c7478da61e14ea5ca1b5ac7a27672cf953a7170d99d8f12f23aed776f2d54a5",
+      "after": "2c7478da61e14ea5ca1b5ac7a27672cf953a7170d99d8f12f23aed776f2d54a5"
+    },
+    "ServerScriptService.World.BossChaseService": {
+      "before": "aa03c58be223006f59e5ae1e76fb763330ebb451a2c871a00ae49a00bc771897",
+      "after": "aa03c58be223006f59e5ae1e76fb763330ebb451a2c871a00ae49a00bc771897"
+    },
+    "ServerScriptService.World.BossVisualPlacement": {
+      "before": "634c9c3c9f56d8149ea07731910704eed5a49f93db4edf45bd44d6955912053f",
+      "after": "634c9c3c9f56d8149ea07731910704eed5a49f93db4edf45bd44d6955912053f"
+    },
+    "ServerScriptService.World.EnemyManager": {
+      "before": "bf789067bd201e99487e0ba9d56a1a4f20e0dea93433ac25e9f33b06f32a0231",
+      "after": "bf789067bd201e99487e0ba9d56a1a4f20e0dea93433ac25e9f33b06f32a0231"
+    },
+    "ServerScriptService.StudioBossAnimationPreview": {
+      "before": "d0f187431ebf84cb95c18608a84a01a59a162a9eeff4900fa020fd62605719fb",
+      "after": "d0f187431ebf84cb95c18608a84a01a59a162a9eeff4900fa020fd62605719fb"
+    },
+    "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview": {
+      "before": "8a21fc7ba64ab94660f8082598ac3509c9181fb53331d2173b45f578df8451a9",
+      "after": "8a21fc7ba64ab94660f8082598ac3509c9181fb53331d2173b45f578df8451a9"
+    }
+  },
+  "newSources": {},
+  "verifiedOriginalProperties": 4915517,
+  "allOtherPropertiesSourcesParentsPreserved": true,
+  "allSavedRigTemplatesAndGeometryUnchanged": true,
+  "manualPreviewCandidatesPreserved": true,
+  "writtenAndReread": true
+}

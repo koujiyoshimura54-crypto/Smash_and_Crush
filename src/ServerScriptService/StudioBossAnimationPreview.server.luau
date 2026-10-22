@@ -68,6 +68,7 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 	if not template or not template:IsA("Model") then return {Error = "Boss template is missing: " .. entry[2]} end
 	local model = template:Clone()
 	model.Name = "Template"
+	require(RS.Modules.World2BossRig).Prepare(model,stage)
 	-- Templates are currently script-free. Defend against later imported additions too.
 	for _, item in model:GetDescendants() do
 		if item:IsA("LuaSourceContainer") or item:IsA("Sound") or item:IsA("LayerCollector")

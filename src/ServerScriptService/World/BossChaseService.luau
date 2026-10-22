@@ -7,6 +7,7 @@ local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local M = {}
 local World2Movement=worldId==2 and require(game.ReplicatedStorage.Config.World2BossMovementConfig)
+local Animation=worldId==2 and require(script.Parent.World2BossAnimationService)
 local CHASE_SPEED = 16 -- studs/second; shared by all World1 bosses
 local TURN_RESPONSE = 4 -- exponential visual smoothing, not a gameplay turn limit
 local CONTACT_GAP = 0.8
@@ -79,7 +80,10 @@ local function pickTarget(r)
 end
 local function update(r, dt)
  local enemy=r.Enemy
- if not enemy.Parent or not r.Floor.Parent then records[enemy]=nil;return end
+ if not enemy.Parent or not r.Floor.Parent then M.Unregister(enemy);return end
+ if Animation and not Animation.Ready(enemy) then
+  enemy:SetAttribute("BossMotionSpeed",0);setMode(r,"Intro",nil);return
+ end
  local current=enemy:GetPivot()
  local actualTravel=(current.Position-r.LastPosition).Magnitude
  r.LastPosition=current.Position
@@ -116,6 +120,7 @@ local function update(r, dt)
   if (destination-current.Position).Magnitude<0.01 and math.abs(angleDelta(yawOf(current),targetYaw))<0.002 then
    if r.Mode~="Idle" then enemy:PivotTo(r.Home) end
    setMode(r,"Idle",nil)
+   if Animation then enemy:SetAttribute("BossMotionSpeed",0) end
    r.Window=0;r.Commanded=0;r.Travel=0
    return
   end
@@ -146,6 +151,7 @@ local function update(r, dt)
  end
  local commanded=(nextPosition-current.Position).Magnitude
  enemy:PivotTo(CFrame.new(nextPosition)*rotation)
+ if Animation then enemy:SetAttribute("BossMotionSpeed",commanded/math.max(dt,.001)) end
  if target then
   r.Window+=dt;r.Commanded+=commanded;r.Travel+=actualTravel
   if r.Window>=STUCK_WINDOW then
@@ -207,6 +213,7 @@ function M.Register(enemy, stage, stageModel)
   end
  end
  records[enemy]=r
+ if Animation then Animation.Register(enemy,stage);enemy:SetAttribute("BossMotionSpeed",0) end
  enemy:SetAttribute("ChaseHomePivot",home)
  enemy:SetAttribute("ChaseSpeed",r.Speed)
  enemy:SetAttribute("ChaseTurnResponse",r.TurnResponse)
@@ -215,7 +222,11 @@ function M.Register(enemy, stage, stageModel)
  enemy:SetAttribute("ChaseRecoveryCount",0)
 end
 function M.Unregister(enemy)
+ if Animation then Animation.Unregister(enemy) end
  records[enemy]=nil
+end
+function M.BeginIntro(enemy)
+ if Animation then Animation.BeginIntro(enemy) end
 end
  contexts[worldId]=M
  M.ForWorld=forWorld

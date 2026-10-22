@@ -1119,6 +1119,10 @@ local function updateCombat(p,manualRequest)
        elseif Wall.IsBossUnlockedForStage(attackPlayer,attackStage) then
         if Chase and table.find(cleared,4) then
          recognizedPlayers[attackPlayer]={Stage=attackStage,Character=ch,CombatStarted=false}
+         if worldId==2 and attackStage==5 then
+          local actor=getEnemy(attackPlayer,attackStage,true)
+          if actor then Chase.BeginIntro(actor) end
+         end
         end
         send(attackPlayer,{Type="Stage1BossUnlocked",MajorStage=attackStage})
         local bossMax=Boss.GetStageConfig(attackStage).MaxHP

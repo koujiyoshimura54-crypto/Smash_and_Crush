@@ -646,3 +646,8 @@ User-confirmed Developer Product 3720640383 (base 279 Robux) grants one existing
 ## World2 approved Pet presentations (2026-10-21)
 
 World2's four normal Eggs and Limited Egg 02 now resolve their existing 35 saved species IDs to the approved purchased Pet_ models. The fixed slot probabilities, Strength multipliers, prices, copy/equipment IDs and merge scope are unchanged. Candidate, hatch, Inventory and follower visuals use the same mapping; normal candidates retain four columns and probabilities beneath. Limited Egg 02 remains product 3720640383, Open 1 / one Pet, with unchanged receipt version 1 and server receipt persistence. See [the assignment and verification record](../reports/World2PetModels_20261021/README.md) and its complete compatibility CSV.
+
+
+## 2026-10-22 ? World2 personal boss animations
+
+Stage1/3/5/10 Walk507777826; Stage8 Walk125749145. Only actual actor travel plays Walk, including return movement. Stage5 owner Wall4 destruction plays the existing SCP049_Display.AnimSaves.Idle once at1x (3.0s), then releases pursuit; challenge reset allows a new intro. Owner death/World exit/actor removal cancels old state. No combat invulnerability or new attack gate is introduced. Details: [World2 animation report](../reports/World2BossWalk_20261022/README.md).
