@@ -57,16 +57,17 @@ local source = label("Source", panel, "Select a Boss and an existing animation."
 source.TextSize = 12
 source.TextYAlignment = Enum.TextYAlignment.Top
 local status = label("Status", panel, "No game data or combat state is changed.", UDim2.new(0, 12, 1, -48), UDim2.new(1, -24, 0, 42))
-local list = create("ScrollingFrame", "Animations", panel, {Position = UDim2.fromOffset(12, 269), Size = UDim2.new(0, 178, 1, -327),
+local list = create("ScrollingFrame", "Animations", panel, {Position = UDim2.fromOffset(12, 308), Size = UDim2.new(0, 178, 1, -366),
 	BackgroundTransparency = 1, BorderSizePixel = 0, ScrollBarThickness = 5, CanvasSize = UDim2.new(), AutomaticCanvasSize = Enum.AutomaticSize.Y})
 create("UIListLayout", "Layout", list, {Padding = UDim.new(0, 5), SortOrder = Enum.SortOrder.LayoutOrder})
-label("AnimationsTitle", panel, "Existing animations", UDim2.fromOffset(12, 242), UDim2.fromOffset(178, 23))
+label("AnimationsTitle", panel, "Existing animations", UDim2.fromOffset(12, 281), UDim2.fromOffset(178, 23))
 
 local epoch, playEpoch, speed = 0, 0, 1
 local template, model, world, track, metadata, selected, monitor, logConnection
 local stageSelected = 1
 local angle = "Front"
 local basis, center, radius = CFrame.new(), Vector3.zero, 4
+local previewCorners = {}
 local bossButtons, candidateButtons, speedButtons = {}, {}, {}
 local launch
 local function message(text, failed)
@@ -85,7 +86,20 @@ local function aim()
 	local direction = angle == "Side" and basis.RightVector or (angle == "Back" and -basis.LookVector or basis.LookVector)
 	local aspect = math.max(.25, view.AbsoluteSize.X / math.max(1, view.AbsoluteSize.Y))
 	local halfFov = math.atan(math.tan(math.rad(camera.FieldOfView / 2)) * math.min(1, aspect))
-	camera.CFrame = CFrame.lookAt(center + direction * (radius / math.sin(halfFov) * 1.12), center)
+	local distance = radius / math.sin(halfFov) * 1.12
+	if stageSelected == "New682" then
+		-- Fit the imported long tail in each view instead of shrinking its frontal legs.
+		local orientation = CFrame.lookAt(center + direction, center)
+		local tanY = math.tan(math.rad(camera.FieldOfView / 2))
+		distance = 1
+		for _, corner in previewCorners do
+			local offset = corner - center
+			local depth = offset:Dot(direction)
+			distance = math.max(distance, depth + math.abs(offset:Dot(orientation.RightVector)) / (tanY * aspect) * 1.15,
+				depth + math.abs(offset:Dot(orientation.UpVector)) / tanY * 1.15)
+		end
+	end
+	camera.CFrame = CFrame.lookAt(center + direction * distance, center)
 end
 local function rebuild()
 	cleanModel()
@@ -95,10 +109,13 @@ local function rebuild()
 	world.Name = "PreviewWorld"
 	world.Parent = view
 	local min, max = Vector3.new(math.huge, math.huge, math.huge), Vector3.new(-math.huge, -math.huge, -math.huge)
+	table.clear(previewCorners)
 	for _, item in model:GetDescendants() do
 		if item:IsA("LuaSourceContainer") or item:IsA("Sound") then item:Destroy()
 		elseif item:IsA("BasePart") then
+			-- Imported loose eye decorations stay anchored; do not weld its hidden limbs solid.
 			item.Anchored = item.Name == "HumanoidRootPart" or item.Name == "DisplayRoot"
+				or (stageSelected == "New682" and item.Anchored)
 			item.CanCollide = false; item.CanTouch = false; item.CanQuery = false
 		elseif item:IsA("Humanoid") then
 			item.EvaluateStateMachine = false; item.BreakJointsOnDeath = false; item.RequiresNeck = false
@@ -116,12 +133,13 @@ local function rebuild()
   local offset=meshSize and mesh.Offset or Vector3.zero
   for _, x in {-1, 1} do for _, y in {-1, 1} do for _, z in {-1, 1} do
 			local corner = part.CFrame:PointToWorldSpace(offset+extent * Vector3.new(x, y, z) / 2)
+			table.insert(previewCorners, corner)
 			min = min:Min(corner); max = max:Max(corner)
 		end end end
 	end
 	if min.X == math.huge then message("No visible parts found in the current template.", true); return false end
 	center = (min + max) / 2; radius = math.max(1, (max - min).Magnitude / 2)
- if stageSelected==2 or stageSelected==4 or stageSelected==6 or stageSelected==7 or stageSelected==9 then
+ if stageSelected==2 or stageSelected==4 or stageSelected==6 or stageSelected==7 or stageSelected==9 or stageSelected=="New682" then
   local floor=Instance.new("Part");floor.Name="PreviewFloorGuide";floor.Anchored=true;floor.CanCollide=false
   floor.Size=Vector3.new((max.X-min.X)*1.5,.02,(max.Z-min.Z)*1.5)
   floor.CFrame=CFrame.new(center.X,min.Y-.01,center.Z);floor.Color=Color3.fromRGB(95,100,110);floor.Transparency=.65;floor.Parent=world
@@ -281,7 +299,9 @@ local function play()
 			last = now
 			if failed then return end
 			if not track.IsPlaying and track.Length > 0 then message("Finished " .. candidate.Name .. ". Press Play to replay."); return end
-			if moving then message(string.format("Playing %s  |  %.1fx  |  visible joints moved", candidate.Name, speed))
+			if stageSelected == "New682" and track.Length > 0 then
+				message(string.format("Loaded %s | %.1fx | Animal legs are one rigid mesh, not articulated. Inspect the front/side view.", candidate.Name, speed))
+			elseif moving then message(string.format("Playing %s  |  %.1fx  |  visible joints moved", candidate.Name, speed))
 			elseif elapsed > 6 and track.Length == 0 then message("Load failed/timed out. Check asset permission and Output.", true)
 			elseif elapsed > 1.5 then message("No changing joint pose observed: static clip or rig mismatch. Inspect the model/Output.", true) end
 		end)
@@ -339,6 +359,7 @@ local bosses = {{1,"SCP-096"},{2,"SCP-023"},{3,"SCP-035"},{4,"SCP-058"},{5,"SCP-
 for index, boss in bosses do
 	bossButtons[boss[1]] = button("Stage" .. boss[1], panel, "Stage " .. boss[1] .. "\n" .. boss[2], UDim2.fromOffset(12 + (index - 1) % 2 * 91, 42 + math.floor((index - 1) / 2) * 39), UDim2.fromOffset(87, 34), function() selectBoss(boss[1]) end)
 end
+bossButtons.New682 = button("New682", panel, "NEW SCP-682 (Workspace)", UDim2.fromOffset(12, 237), UDim2.fromOffset(178, 34), function() selectBoss("New682") end)
 button("Play", panel, "Play", UDim2.new(0, 202, 1, -135), UDim2.fromOffset(64, 28), play)
 button("Stop", panel, "Stop", UDim2.new(0, 272, 1, -135), UDim2.fromOffset(64, 28), function() if rebuild() then message("Stopped. Original template pose restored.") end end)
 for index, value in {.5, 1, 1.5} do

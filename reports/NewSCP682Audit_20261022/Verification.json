@@ -1,0 +1,139 @@
+{
+  "Scope": "Actual local native Play; imported AI/scripts/modules never executed. 95 other BaseScripts disabled only in unsaved test sessions, preserving original flags. No game persistence, receipts or combat ran.",
+  "NativeSavedReadback": {
+    "SavedSourcesMatch": 2,
+    "ImportedScriptsDisabled": 8,
+    "OriginalSourcesPreserved": 14,
+    "TestFixtureAbsent": true
+  },
+  "InitialWalkPartMeasurement": {
+    "Source": "Animate.walk / run  |  http://www.roblox.com/asset/?id=125749145\nWorkspace.SCP-682. .Animate.walk.WalkAnim / Animate.run.RunAnim",
+    "PartMotion": {
+      "1": {
+        "Transparency": 1,
+        "Translation": 0.8193126320838928,
+        "Part": "Right Arm",
+        "Motor": "Right Shoulder",
+        "RelativeRotationDegrees": 13.71425999484044
+      },
+      "2": {
+        "Transparency": 1,
+        "Translation": 2.205287456512451,
+        "Part": "Left Leg",
+        "Motor": "Left Hip",
+        "RelativeRotationDegrees": 22.29770749837669
+      },
+      "3": {
+        "Transparency": 0,
+        "Translation": 0.0012688636779785156,
+        "Part": "Torso",
+        "Motor": "RootJoint",
+        "RelativeRotationDegrees": 0.43700724248505174
+      },
+      "4": {
+        "Transparency": 1,
+        "Translation": 0.00010363168985350057,
+        "Part": "Head",
+        "Motor": "Neck",
+        "RelativeRotationDegrees": 0.1769387051516116
+      },
+      "5": {
+        "Transparency": 1,
+        "Translation": 0.4852358400821686,
+        "Part": "Left Arm",
+        "Motor": "Left Shoulder",
+        "RelativeRotationDegrees": 6.177427564147809
+      },
+      "6": {
+        "Transparency": 1,
+        "Translation": 2.5475878715515137,
+        "Part": "Right Leg",
+        "Motor": "Right Hip",
+        "RelativeRotationDegrees": 23.357790423603102
+      }
+    },
+    "Status": "Loaded Animate.walk / run | 1.0x | Animal legs are one rigid mesh, not articulated. Inspect the front/side view.",
+    "Counts": {
+      "Parts": 115
+    },
+    "Tracks": {
+      "1": {
+        "Time": 0.5124980211257935,
+        "Id": "http://www.roblox.com/asset/?id=125749145",
+        "Length": 0.6666669845581055,
+        "Speed": 1,
+        "Playing": true
+      }
+    }
+  },
+  "FinalSavedWalkPartMeasurement": {
+    "MeshId": "rbxassetid://957757849",
+    "Status": "Loaded Animate.walk / run | 0.5x | Animal legs are one rigid mesh, not articulated. Inspect the front/side view.",
+    "MeshScale": "0.9840545654296875, 0.9840546250343323, 0.9840546250343323",
+    "Candidate": "Animate.walk / run  |  http://www.roblox.com/asset/?id=125749145\nWorkspace.SCP-682. .Animate.walk.WalkAnim / Animate.run.RunAnim",
+    "Time": 0.22497597336769104,
+    "ImportedSourcesInPreview": 0,
+    "MaximumRelativePartRotationDegrees": {
+      "Left Shoulder": 82.70006707429779,
+      "Right Shoulder": 103.83845070635508,
+      "Neck": 0.8641138589639056,
+      "Right Hip": 114.79662862580511,
+      "Left Hip": 114.8162859102364,
+      "RootJoint": 2.1244908543013272
+    },
+    "Length": 0.6666669845581055,
+    "Speed": 0.5,
+    "MeshOffset": "0, 5.9043288230896, 39.36220169067383"
+  },
+  "FinalSavedOriginalWalkFailure": {
+    "Time": 0,
+    "Status": "Asset load/permission failure: http://www.roblox.com/asset/?id=189040478 (see Output)",
+    "Length": 0,
+    "IsPlaying": true,
+    "Source": "WalkAnim (SCP049AnimationScript)  |  http://www.roblox.com/asset/?id=189040478\nWorkspace.SCP-682. .WalkAnim"
+  },
+  "AssetFailureOutput": {
+    "1": "ContentId: rbxassetid://189040478 failed due to: User is not authorized to access Asset.",
+    "2": "Failed to load animation with sanitized ID rbxassetid://189040478: Animation failed to load, assetId: https://assetdelivery.roblox.com/v1/asset?id=189040478&serverplaceid=0"
+  },
+  "FinalStop": {
+    "Status": "Stopped. Original template pose restored.",
+    "Tracks": 0,
+    "Source": "Workspace.SCP-682"
+  },
+  "FinalClose": {
+    "CameraSubject": "Humanoid",
+    "PreviewErrors": [],
+    "PanelVisible": false,
+    "WorldRemoved": true
+  },
+  "FinalServerCleanup": {
+    "ExportedModules": 0,
+    "RemainingPreviewModels": 0,
+    "ImportedEnabled": 0
+  },
+  "ActualUI": [
+    "Open",
+    "NEW SCP-682 (Workspace)",
+    "Animate.walk / run",
+    "WalkAnim (SCP049AnimationScript)",
+    "Play",
+    "Stop",
+    "Front",
+    "Side",
+    "0.5x",
+    "1x",
+    "1.5x",
+    "Old Stage9 selector and return to new model",
+    "Close"
+  ],
+  "VisualInspection": "Final full-body front and side native window captures inspected. All visible animal feet stayed in the authored pose relative to body; rigid whole-animal root sway is not leg articulation. No separated visible body segments or deforming body appeared. There was no actual stepping/footfall cycle to qualify. Screenshots temporary and deleted.",
+  "NotVerified": [
+    "Access to 189040478 in an authorized published Experience",
+    "Imported AI behavior (deliberately not executed)",
+    "Production Stage9 integration (out of scope)",
+    "Independent animated ground contact (no articulated visible gait exists)",
+    "Full game regression, real data writes or payments"
+  ],
+  "TemporaryStateRemoved": true
+}

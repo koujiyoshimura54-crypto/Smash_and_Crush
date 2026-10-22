@@ -1,0 +1,116 @@
+{
+  "InputSha256": "7e948d203176ccd6bd827a7182982388bd471c0489daeac4b7497af0508e7fc3",
+  "OutputSha256": "460c86374d171c30bab42830891280f6aa319aa74642cc224ac73d781a955aa6",
+  "ChangedProperties": [
+    {
+      "Path": "Workspace.SCP-682. .SCP049AnimationScript",
+      "Property": "Disabled"
+    },
+    {
+      "Path": "Workspace.SCP-682. .SCP049HeadSoundScript",
+      "Property": "Disabled"
+    },
+    {
+      "Path": "Workspace.SCP-682. .SCP049AttackScript",
+      "Property": "Disabled"
+    },
+    {
+      "Path": "Workspace.SCP-682. .SCP049TargetScript",
+      "Property": "Disabled"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Weld",
+      "Property": "Disabled"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Weld Script",
+      "Property": "Disabled"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Script",
+      "Property": "Disabled"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Animate",
+      "Property": "Disabled"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview",
+      "Property": "Source"
+    },
+    {
+      "Path": "ServerScriptService.StudioBossAnimationPreview",
+      "Property": "Source"
+    }
+  ],
+  "SourceFiles": {
+    "ServerScriptService.StudioBossAnimationPreview": "src/ServerScriptService/StudioBossAnimationPreview.server.luau",
+    "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview": "src/StarterPlayer/StarterPlayerScripts/StudioBossAnimationPreview.client.luau"
+  },
+  "PreservedOriginalImportedSources": 14,
+  "DisabledImportedScripts": 8,
+  "ModuleEntrypointsBlocked": "All imported callers disabled; no external caller in current Sources; preview strips every imported script/module",
+  "VerifiedPropertyValues": 4919551,
+  "AllOtherPropertiesAndParentsPreserved": true,
+  "AddedOrRemovedInstances": 0,
+  "Integrity": {
+    "sha256": "460c86374d171c30bab42830891280f6aa319aa74642cc224ac73d781a955aa6",
+    "instanceCount": 192713,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 192712,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192713,
+      "PROP.Ref": 81138,
+      "PROP.Content": 0,
+      "PRNT.Child": 192713,
+      "PRNT.Parent": 192713
+    }
+  },
+  "Repair": {
+    "before": {
+      "sha256": "460c86374d171c30bab42830891280f6aa319aa74642cc224ac73d781a955aa6",
+      "instanceCount": 192713,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 192712,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 192713,
+        "PROP.Ref": 81138,
+        "PROP.Content": 0,
+        "PRNT.Child": 192713,
+        "PRNT.Parent": 192713
+      }
+    },
+    "after": {
+      "sha256": "460c86374d171c30bab42830891280f6aa319aa74642cc224ac73d781a955aa6",
+      "instanceCount": 192713,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 192712,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 192713,
+        "PROP.Ref": 81138,
+        "PROP.Content": 0,
+        "PRNT.Child": 192713,
+        "PRNT.Parent": 192713
+      }
+    },
+    "renumberedInstances": 0,
+    "modifiedChunks": 0,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "WrittenAndReread": true,
+  "StudioSavePublish": false
+}

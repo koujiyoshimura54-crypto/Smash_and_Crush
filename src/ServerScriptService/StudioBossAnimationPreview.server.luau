@@ -5,6 +5,7 @@ local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local templates = game:GetService("ServerStorage"):WaitForChild("EnemyTemplates"):WaitForChild("World2SCPDisplays")
 local stages = {
+	["New682"] = {"NEW SCP-682 (Workspace)", "SCP-682", "Imported 682: two reviewed Walk assets only. The visible animal is one rigid mesh; R6 limbs are invisible."},
 	[1] = {"SCP-096", "SCP096_Display", "MainAnimation is absent from this file's template."},
 	[2] = {"SCP-023", "SCP023_Display", "Approved Walk shares the production diagonal gait and ground correction. Historical candidates remain available."},
 	[4] = {"SCP-058", "SCP058_Display", "Approved Walk drives the four visible articulated legs; native carrier assets are diagnostics only."},
@@ -68,11 +69,38 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 	if action == "Close" then return {Closed = true} end
 	local entry = stages[stage]
 	if action ~= "Select" or not entry then return {Error = "Unknown preview Boss"} end
-	local template = templates:FindFirstChild(entry[2])
+	local imported682 = stage == "New682"
+	local template = (imported682 and workspace or templates):FindFirstChild(entry[2])
 	if not template or not template:IsA("Model") then return {Error = "Boss template is missing: " .. entry[2]} end
 	local model = template:Clone()
 	model.Name = "Template"
-	require(RS.Modules.World2BossRig).Prepare(model,stage)
+	if not imported682 then require(RS.Modules.World2BossRig).Prepare(model,stage) end
+	if imported682 then
+		-- Copy data only before stripping imported code (Animate owns child overrides).
+		-- Never require, enable or execute any imported Script/ModuleScript.
+		local rig = model:FindFirstChild(" ")
+		local animate = rig and rig:FindFirstChild("Animate")
+		local walk = animate and animate:FindFirstChild("walk")
+		local originalWalk = rig and rig:FindFirstChild("WalkAnim")
+		local overrideWalk = walk and walk:FindFirstChild("WalkAnim")
+		local reviewed = Instance.new("Folder")
+		reviewed.Name = "ReviewedWalkAnimations"
+		reviewed.Parent = model
+		for _, row in {
+			{originalWalk, "WalkAnim (SCP049AnimationScript)", "189040478", " .WalkAnim"},
+			{overrideWalk, "Animate.walk / run", "125749145", " .Animate.walk.WalkAnim / Animate.run.RunAnim"},
+		} do
+			local animation = row[1]
+			if not animation or not animation:IsA("Animation") or animation.AnimationId:match("[?&]id=(%d+)$") ~= row[3] then
+				model:Destroy()
+				return {Error = "Imported 682 Walk data changed; review it before previewing."}
+			end
+			local copy = animation:Clone()
+			copy.Name = row[2]
+			copy:SetAttribute("ReviewedSource", template:GetFullName() .. "." .. row[4])
+			copy.Parent = reviewed
+		end
+	end
 	-- Templates are currently script-free. Defend against later imported additions too.
 	for _, item in model:GetDescendants() do
 		if item:IsA("LuaSourceContainer") or item:IsA("Sound") or item:IsA("LayerCollector")
@@ -84,7 +112,7 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 		{"Walk候補 R6", "rbxassetid://125749145"},
 	}
 
-	for _, entry in ipairs(walkCandidates) do
+	for _, entry in ipairs(imported682 and {} or walkCandidates) do
 		local animation = Instance.new("Animation")
 		animation.Name = entry[1]
 		animation.AnimationId = entry[2]
@@ -108,8 +136,10 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 		if item:IsA("Motor6D") and item.Part0 and item.Part1 then motors += 1 end
 		if item:IsA("Humanoid") then humanoids += 1 end
 		if item:IsA("Animation") or item:IsA("KeyframeSequence") then
+			if imported682 and item.Parent.Name ~= "ReviewedWalkAnimations" then continue end
 			local path = relative(item, model)
 			local original = item.Name=="Archived 939 Walk" and "PreMerge: ServerStorage.World2SCPAssets.SourceModels.SCP-939.Animate.walk.RunAnim" or template:GetFullName() .. "." .. table.concat(path, ".")
+			if imported682 then original = item:GetAttribute("ReviewedSource") end
 			if item:IsA("Animation") then
 				local id = item.AnimationId:match("^rbxassetid://(%d+)$") or item.AnimationId:match("[?&]id=(%d+)$") or item.AnimationId:match("^(%d+)$")
 				if id then

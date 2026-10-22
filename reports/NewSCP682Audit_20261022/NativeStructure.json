@@ -1,0 +1,1040 @@
+{
+  "Controllers": [
+    {
+      "Path": "Workspace.SCP-682. .Humanoid",
+      "RigType": "R6",
+      "Class": "Humanoid"
+    }
+  ],
+  "Path": "Workspace.SCP-682",
+  "Meshes": [
+    {
+      "Offset": [
+        0,
+        5.9043288230896,
+        39.36220169067383
+      ],
+      "Path": "Workspace.SCP-682. .Torso.Mesh",
+      "MeshType": "FileMesh",
+      "Scale": [
+        0.9840545654296875,
+        0.9840546250343323,
+        0.9840546250343323
+      ],
+      "Class": "SpecialMesh",
+      "MeshId": "rbxassetid://957757849",
+      "TextureId": "rbxassetid://957760563"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Zombie Left Arm",
+      "MeshId": 37683097,
+      "OverlayTextureId": 37686282,
+      "Class": "CharacterMesh",
+      "BaseTextureId": 0,
+      "BodyPart": "LeftArm"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Zombie Left Leg",
+      "MeshId": 37683150,
+      "OverlayTextureId": 37687646,
+      "Class": "CharacterMesh",
+      "BaseTextureId": 0,
+      "BodyPart": "LeftLeg"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Zombie Right Arm",
+      "MeshId": 37683174,
+      "OverlayTextureId": 37686282,
+      "Class": "CharacterMesh",
+      "BaseTextureId": 0,
+      "BodyPart": "RightArm"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Zombie Right Leg",
+      "MeshId": 37683227,
+      "OverlayTextureId": 37687646,
+      "Class": "CharacterMesh",
+      "BaseTextureId": 0,
+      "BodyPart": "RightLeg"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Zombie torso",
+      "MeshId": 37683263,
+      "OverlayTextureId": 37686282,
+      "Class": "CharacterMesh",
+      "BaseTextureId": 0,
+      "BodyPart": "Torso"
+    }
+  ],
+  "Animations": [
+    {
+      "Id": "http://www.roblox.com/asset/?id=189040478",
+      "Path": "Workspace.SCP-682. .WalkAnim"
+    },
+    {
+      "Id": "http://www.roblox.com/item.aspx?id=189040829",
+      "Path": "Workspace.SCP-682. .ArmOutAnim"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=125750800",
+      "Path": "Workspace.SCP-682. .Animate.climb.ClimbAnim"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=125750759",
+      "Path": "Workspace.SCP-682. .Animate.fall.FallAnim"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=125750544",
+      "Path": "Workspace.SCP-682. .Animate.idle.Animation1"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=125750618",
+      "Path": "Workspace.SCP-682. .Animate.idle.Animation2"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=125750702",
+      "Path": "Workspace.SCP-682. .Animate.jump.JumpAnim"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=125749145",
+      "Path": "Workspace.SCP-682. .Animate.run.RunAnim"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=125750867",
+      "Path": "Workspace.SCP-682. .Animate.toolnone.ToolNoneAnim"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=125749145",
+      "Path": "Workspace.SCP-682. .Animate.walk.WalkAnim"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=180416148",
+      "Path": "Workspace.SCP-682. .Animations.Attack"
+    },
+    {
+      "Id": "http://www.roblox.com/asset/?id=183294396",
+      "Path": "Workspace.SCP-682. .Animations.Arms"
+    }
+  ],
+  "Joints": [
+    {
+      "Path": "Workspace.SCP-682. .Head.HeadWeld",
+      "C1": [
+        0,
+        0.18589304387569427,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "Part0": "Workspace.SCP-682. .Head",
+      "Class": "Weld",
+      "C0": [
+        0,
+        0.4647325873374939,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Head.HeadWeld",
+      "C1": [
+        0,
+        0.37178608775138855,
+        0.5948578119277954,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "Part0": "Workspace.SCP-682. .Head",
+      "Class": "Weld",
+      "C0": [
+        0,
+        0.4647325873374939,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Head.HeadWeld",
+      "C1": [
+        0.16730375587940216,
+        0.41825929284095764,
+        0.45543795824050903,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "Part0": "Workspace.SCP-682. .Head",
+      "Class": "Weld",
+      "C0": [
+        0,
+        0.4647325873374939,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Head.HeadWeld",
+      "C1": [
+        -0.16730375587940216,
+        0.41825929284095764,
+        0.45543795824050903,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0.9999999403953552
+      ],
+      "Part0": "Workspace.SCP-682. .Head",
+      "Class": "Weld",
+      "C0": [
+        0,
+        0.4647325873374939,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Torso.Right Shoulder",
+      "C1": [
+        -2.981872081756592,
+        2.981872081756592,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "Part0": "Workspace.SCP-682. .Torso",
+      "Class": "Motor6D",
+      "C0": [
+        5.963744163513184,
+        2.981872081756592,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "Part1": "Workspace.SCP-682. .Right Arm"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Torso.Right Hip",
+      "C1": [
+        2.981872081756592,
+        5.963744163513184,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "Part0": "Workspace.SCP-682. .Torso",
+      "Class": "Motor6D",
+      "C0": [
+        5.963744163513184,
+        -5.963744163513184,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "Part1": "Workspace.SCP-682. .Right Leg"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Torso.Left Hip",
+      "C1": [
+        -2.981872081756592,
+        5.963744163513184,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Part0": "Workspace.SCP-682. .Torso",
+      "Class": "Motor6D",
+      "C0": [
+        -5.963744163513184,
+        -5.963744163513184,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Part1": "Workspace.SCP-682. .Left Leg"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Torso.Left Shoulder",
+      "C1": [
+        2.981872081756592,
+        2.981872081756592,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Part0": "Workspace.SCP-682. .Torso",
+      "Class": "Motor6D",
+      "C0": [
+        -5.963744163513184,
+        2.981872081756592,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Part1": "Workspace.SCP-682. .Left Arm"
+    },
+    {
+      "Path": "Workspace.SCP-682. .Torso.Neck",
+      "C1": [
+        0,
+        -2.981872081756592,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "Part0": "Workspace.SCP-682. .Torso",
+      "Class": "Motor6D",
+      "C0": [
+        0,
+        5.963744163513184,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "Part1": "Workspace.SCP-682. .Head"
+    },
+    {
+      "Path": "Workspace.SCP-682. .HumanoidRootPart.RootJoint",
+      "C1": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "Part0": "Workspace.SCP-682. .HumanoidRootPart",
+      "Class": "Motor6D",
+      "C0": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "Part1": "Workspace.SCP-682. .Torso"
+    }
+  ],
+  "Counts": {
+    "Decal": 62,
+    "Humanoid": 1,
+    "ModuleScript": 6,
+    "Part": 17,
+    "Configuration": 3,
+    "StringValue": 7,
+    "Weld": 4,
+    "BoolValue": 1,
+    "Sound": 11,
+    "Script": 8,
+    "Animation": 12,
+    "BodyColors": 1,
+    "CharacterMesh": 5,
+    "Model": 2,
+    "Motor6D": 6,
+    "NumberValue": 2,
+    "SpecialMesh": 1,
+    "IntValue": 3
+  },
+  "Parts": [
+    {
+      "Path": "Workspace.SCP-682. .Head",
+      "CanCollide": true,
+      "Color": [
+        0.06666667014360428,
+        0.06666667014360428,
+        0.06666667014360428
+      ],
+      "Class": "Part",
+      "Transparency": 1,
+      "Name": "Head",
+      "Anchored": false,
+      "Material": "SmoothPlastic",
+      "CFrame": [
+        291.5475158691406,
+        174.90936279296875,
+        120.39865112304688,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Size": [
+        11.927490234375,
+        5.9637451171875,
+        5.9637451171875
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Torso",
+      "CanCollide": true,
+      "Color": [
+        0.06666667014360428,
+        0.06666667014360428,
+        0.06666667014360428
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Torso",
+      "Anchored": false,
+      "Material": "SmoothPlastic",
+      "CFrame": [
+        291.5475158691406,
+        165.9637451171875,
+        120.39865112304688,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Size": [
+        11.927490234375,
+        11.927490234375,
+        5.9637451171875
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Left Arm",
+      "CanCollide": false,
+      "Color": [
+        0.10588235408067703,
+        0.16470588743686676,
+        0.2078431397676468
+      ],
+      "Class": "Part",
+      "Transparency": 1,
+      "Name": "Left Arm",
+      "Anchored": false,
+      "Material": "SmoothPlastic",
+      "CFrame": [
+        291.5475158691406,
+        165.9637451171875,
+        111.45303344726562,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Size": [
+        5.9637451171875,
+        11.927490234375,
+        5.9637451171875
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Right Arm",
+      "CanCollide": false,
+      "Color": [
+        0.10588235408067703,
+        0.16470588743686676,
+        0.2078431397676468
+      ],
+      "Class": "Part",
+      "Transparency": 1,
+      "Name": "Right Arm",
+      "Anchored": false,
+      "Material": "SmoothPlastic",
+      "CFrame": [
+        291.5475158691406,
+        165.9637451171875,
+        129.34426879882812,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Size": [
+        5.9637451171875,
+        11.927490234375,
+        5.9637451171875
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Left Leg",
+      "CanCollide": false,
+      "Color": [
+        0.10588235408067703,
+        0.16470588743686676,
+        0.2078431397676468
+      ],
+      "Class": "Part",
+      "Transparency": 1,
+      "Name": "Left Leg",
+      "Anchored": false,
+      "Material": "SmoothPlastic",
+      "CFrame": [
+        291.5475158691406,
+        154.0362548828125,
+        117.41677856445312,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Size": [
+        5.9637451171875,
+        11.927490234375,
+        5.9637451171875
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Right Leg",
+      "CanCollide": false,
+      "Color": [
+        0.10588235408067703,
+        0.16470588743686676,
+        0.2078431397676468
+      ],
+      "Class": "Part",
+      "Transparency": 1,
+      "Name": "Right Leg",
+      "Anchored": false,
+      "Material": "SmoothPlastic",
+      "CFrame": [
+        291.5475158691406,
+        154.0362548828125,
+        123.38052368164062,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Size": [
+        5.9637451171875,
+        11.927490234375,
+        5.9637451171875
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .HumanoidRootPart",
+      "CanCollide": true,
+      "Color": [
+        0.05098039284348488,
+        0.4117647111415863,
+        0.6745098233222961
+      ],
+      "Class": "Part",
+      "Transparency": 1,
+      "Name": "HumanoidRootPart",
+      "Anchored": true,
+      "Material": "SmoothPlastic",
+      "CFrame": [
+        291.5475158691406,
+        165.9637451171875,
+        120.39865112304688,
+        0,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "Size": [
+        11.927490234375,
+        11.927490234375,
+        5.9637451171875
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        334.2597351074219,
+        191.69944763183594,
+        126.5736083984375,
+        -0.9063076972961426,
+        0,
+        0.4226185977458954,
+        0,
+        1,
+        0,
+        -0.4226185977458954,
+        0,
+        -0.9063076972961426
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        331.9410095214844,
+        193.4416046142578,
+        113.80865478515625,
+        -0.8191522359848022,
+        0,
+        -0.5735762119293213,
+        0,
+        1,
+        0,
+        0.5735762119293213,
+        0,
+        -0.8191522359848022
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        334.0230712890625,
+        193.4874725341797,
+        114.5382080078125,
+        -0.8191522359848022,
+        0,
+        -0.5735762119293213,
+        0,
+        1,
+        0,
+        0.5735762119293213,
+        0,
+        -0.8191522359848022
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        334.0230712890625,
+        191.69944763183594,
+        113.39044189453125,
+        -0.8191522359848022,
+        0,
+        -0.5735762119293213,
+        0,
+        1,
+        0,
+        0.5735762119293213,
+        0,
+        -0.8191522359848022
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        336.6122131347656,
+        192.38230895996094,
+        114.27386474609375,
+        -0.8191522359848022,
+        0,
+        -0.5735762119293213,
+        0,
+        1,
+        0,
+        0.5735762119293213,
+        0,
+        -0.8191522359848022
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        338.6348876953125,
+        193.49366760253906,
+        117.15032958984375,
+        -0.8191522359848022,
+        0,
+        -0.5735762119293213,
+        0,
+        1,
+        0,
+        0.5735762119293213,
+        0,
+        -0.8191522359848022
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        338.6348876953125,
+        193.49366760253906,
+        122.31640625,
+        -0.9848077297210693,
+        0,
+        0.17364847660064697,
+        0,
+        1,
+        0,
+        -0.17364847660064697,
+        0,
+        -0.9848077297210693
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        336.6736145019531,
+        192.38230895996094,
+        125.53890991210938,
+        -0.8191518783569336,
+        0,
+        0.5735766887664795,
+        0,
+        1,
+        0,
+        -0.5735766887664795,
+        0,
+        -0.8191518783569336
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        334.0230712890625,
+        193.4874725341797,
+        125.24166870117188,
+        -0.8191518783569336,
+        0,
+        0.5735766887664795,
+        0,
+        1,
+        0,
+        -0.5735766887664795,
+        0,
+        -0.8191518783569336
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    },
+    {
+      "Path": "Workspace.SCP-682. .Part",
+      "CanCollide": false,
+      "Color": [
+        1,
+        1,
+        0
+      ],
+      "Class": "Part",
+      "Transparency": 0,
+      "Name": "Part",
+      "Anchored": true,
+      "Material": "Neon",
+      "CFrame": [
+        332.10040283203125,
+        193.4416046142578,
+        125.95550537109375,
+        -0.9848077297210693,
+        0,
+        0.17364847660064697,
+        0,
+        1,
+        0,
+        -0.17364847660064697,
+        0,
+        -0.9848077297210693
+      ],
+      "Size": [
+        1.5772111415863037,
+        1.5772111415863037,
+        1.5772111415863037
+      ]
+    }
+  ]
+}
