@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-10-22 ? Stage9 skinned SCP-682
+
+The current 32-Bone MeshPart replaces the rigid Stage9 display. Shared owner-only procedural quadruped IK drives the visible skin in production and Preview; previous combat dimensions and tuning remain fixed. See [focused verification](../reports/World2SCP682Skin_20261022/README.md).
+
 ## 2026-10-01 — Inventory Capacity tiers 5→12
 
 - 実装差分はInventoryCapacityConfigのみ。5→12の7価格を追加し、5→6は100から5 Winへ変更。

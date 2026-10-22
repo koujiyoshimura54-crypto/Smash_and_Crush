@@ -1,0 +1,51 @@
+{
+  "Fixture": "Two native clients; in-memory stores and payment mocks; server-driven test inputs",
+  "Cases": {
+    "S9_Player2_Front": {
+      "VisibleLimbRadians": 0,
+      "VisibleMovedParts": [],
+      "Error": "Floor is not a valid member of Model \"Workspace.World2Map.BattleCorridor.Stage09\"\nPlayers.Player2.PlayerScripts.__682Client:34\nPlayers.Player2.PlayerScripts.__682Client:16\n",
+      "MinBoundsAboveFloor": {
+        "m": null,
+        "t": "numeric",
+        "v": "inf"
+      },
+      "Stage": 9,
+      "MaxJointGap": 0,
+      "ForeignVisibleParts": 0
+    },
+    "S9_Player1_Front": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 0.6051051616668701,
+        "Bip01_L_UpperArm": 0.4018728733062744,
+        "Bip01_R_Calf": 0.5099183320999146,
+        "Bip01_L_Thigh": 0.4960443377494812,
+        "Bip01_R_Hand": 0.8702874183654785,
+        "Bip01_L_Hand": 0.8655713200569153,
+        "Bip01_R_Thigh": 0.4972759783267975,
+        "Bip01_R_UpperArm": 0.39799001812934875,
+        "Bip01_L_Calf": 0.5096234679222107,
+        "Bip01_L_Foot": 0.6109025478363037,
+        "Bip01_L_Forearm": 0.8465771079063416,
+        "Bip01_R_Forearm": 0.8490837216377258
+      },
+      "Moved": 49.92036437988281,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 0.8702874183654785,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    }
+  },
+  "Errors": {
+    "1": "ServerScriptService.__682Server:81: Floor is not a valid member of Model \"Workspace.World2Map.BattleCorridor.Stage09\"\nPlayers.Player2.PlayerScripts.__682Client:34\nPlayers.Player2.PlayerScripts.__682Client:16\n\nServerScriptService.__682Server:10 function result\nServerScriptService.__682Server:81\nServerScriptService.__682Server:15\n"
+  }
+}

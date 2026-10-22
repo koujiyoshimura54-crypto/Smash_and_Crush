@@ -17,6 +17,7 @@ local function corners(part)
 end
 function M.Compile(model,stage)
  local entry=assert(Config.Stages[stage]);local settings=assert(entry.Gait)
+ if entry.Rig=="SCP682Skin" then return require(script.Parent.World2SCP682Gait).Compile(model,settings) end
  local root=assert(model:FindFirstChild("HumanoidRootPart",true) or model:FindFirstChild("DisplayRoot"))
  local result={Root=root,Settings=settings,Stage=stage,Clock=0,Blend=0,Edges={},Joints={},ByName={},Feet={},Rest={},Pose={}}
  local children={}
@@ -121,6 +122,7 @@ local function ground(r)
  r.GroundCorrection=offset
 end
 function M.Update(r,dt,speed)
+ if r.Skinned682 then return require(script.Parent.World2SCP682Gait).Update(r,dt,speed) end
  local s=r.Settings;local moving=speed>Config.MoveThreshold
  r.Blend=math.clamp(r.Blend+(moving and 1 or -1)*dt/Config.FadeTime,0,1)
  if moving then r.Clock=(r.Clock+dt*math.clamp(speed/s.ReferenceSpeed,0,2)/s.Period)%1 end
@@ -145,6 +147,7 @@ function M.Update(r,dt,speed)
  for _,j in r.Joints do j.Transform=CFrame.identity:Lerp(j.Transform,r.Blend) end
 end
 function M.Reset(r)
+ if r.Skinned682 then return require(script.Parent.World2SCP682Gait).Reset(r) end
  for _,j in r.Joints do if j.Parent then j.Transform=CFrame.identity end end
  r.Blend=0
 end

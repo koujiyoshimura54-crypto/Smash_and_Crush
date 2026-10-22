@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-10-22 ? World2 Stage9 SCP-682
+
+Stage9 uses SCP682_Skinned_Display (mesh 10775394100, 32 original Bones), spawned at 0.75 of authored scale. World2SCP682Gait drives visible four-limb skin deformation on each owner client, also exposed through Studio Preview. Existing combat HP/rewards/movement/turn settings and fixed collision dimensions are preserved. [Implementation record](../reports/World2SCP682Skin_20261022/README.md).
+
 ## 2026-10-01 — Inventory Capacity tiers 5→12
 
 - 既存InventoryCapacityConfigの7段階を使用し最大12へ拡張。価格はBALANCE_SPECの2026-10-01表を正本とする。購入後は既存Update UIが次段階を表示し、12でMAXとなる。購入処理・Transaction・Ownership・Remote・Run・HUD・UIデザインは未変更。

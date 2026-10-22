@@ -25,7 +25,7 @@ local function add(enemy)
  local stage=enemy:GetAttribute("StageNumber")
  local entry=Config.Stages[stage]
  if not entry then return end
- local visual=enemy:FindFirstChild("SCP-"..({[1]="096",[2]="023",[3]="035",[4]="058",[5]="049",[6]="173",[7]="939",[8]="106",[10]="323"})[stage])
+ local visual=enemy:FindFirstChild("SCP-"..({[1]="096",[2]="023",[3]="035",[4]="058",[5]="049",[6]="173",[7]="939",[8]="106",[9]="682",[10]="323"})[stage])
  local root=enemy:FindFirstChild("HumanoidRootPart")
  local hum=visual and visual:FindFirstChildWhichIsA("Humanoid",true)
  local animator=hum and hum:FindFirstChildOfClass("Animator")

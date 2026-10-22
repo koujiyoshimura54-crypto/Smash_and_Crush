@@ -8,7 +8,10 @@ local stages = {
  [6] = {SCP="SCP-173", Template="SCP173_Display", VisualScale=1.75, FacingYaw=0, BodyRatio=Vector3.new(.9,1,.9)},
  [7] = {SCP="SCP-939", Template="SCP939_Display", VisualScale=2.5, FacingYaw=0, BodyRatio=Vector3.new(.8,1,.85)},
  [8] = {SCP="SCP-106", Template="SCP106_Display", VisualScale=3.0, FacingYaw=0, BodyRatio=Vector3.new(.9,1,.9)},
- [9] = {SCP="SCP-682", Template="SCP682_Display", VisualScale=1.4, FacingYaw=0, BodyRatio=Vector3.new(.85,1,.55), BodyOffset=Vector3.new(0,0,-.18)},
+ [9] = {SCP="SCP-682", Template="SCP682_Skinned_Display", VisualScale=.75, FacingYaw=0,
+  -- Preserve the former Stage9 combat box; skin deformation never resizes it.
+  ColliderSize=Vector3.new(10.912297821,9.407477379,21.394394493),
+  ColliderOffset=Vector3.new(0,.003027201,-7.001801834)},
  [10] = {SCP="SCP-323", Template="SCP323_Display", VisualScale=1.8, FacingYaw=0, BodyRatio=Vector3.new(.8,.9,.85)},
 }
 for _,entry in stages do table.freeze(entry) end

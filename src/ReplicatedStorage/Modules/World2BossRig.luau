@@ -4,6 +4,12 @@ local M={}
 function M.Prepare(model,stage)
  local entry=Config.Stages[stage]
  if not entry or model:GetAttribute("World2RigVersion")==1 then return end
+ if entry.Rig=="SCP682Skin" then
+  local mesh=assert(model:FindFirstChild("scp_crock_reference"),"682 skin missing")
+  mesh.Anchored=true;mesh.CanCollide=false;mesh.CanTouch=false;mesh.CanQuery=false;mesh.Massless=true
+  model.PrimaryPart=mesh;model:SetAttribute("World2RigVersion",1)
+  return -- Bone skin needs no carrier motors or rigid weld conversion.
+ end
  if entry.Gait then require(script.Parent.World2BossGaitRig).Build(model,stage) end
  if entry.Rig=="SCP096" then
   local torso=model:FindFirstChild("Torso")

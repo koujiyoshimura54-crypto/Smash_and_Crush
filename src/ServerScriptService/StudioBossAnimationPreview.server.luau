@@ -5,12 +5,11 @@ local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local templates = game:GetService("ServerStorage"):WaitForChild("EnemyTemplates"):WaitForChild("World2SCPDisplays")
 local stages = {
-	["New682"] = {"NEW SCP-682 (Workspace)", "SCP-682", "Imported 682: two reviewed Walk assets only. The visible animal is one rigid mesh; R6 limbs are invisible."},
 	[1] = {"SCP-096", "SCP096_Display", "MainAnimation is absent from this file's template."},
 	[2] = {"SCP-023", "SCP023_Display", "Approved Walk shares the production diagonal gait and ground correction. Historical candidates remain available."},
 	[4] = {"SCP-058", "SCP058_Display", "Approved Walk drives the four visible articulated legs; native carrier assets are diagnostics only."},
 	[7] = {"SCP-939", "SCP939_Display", "Approved Walk shares production 939walk at 1.35x swing with ground correction."},
-	[9] = {"SCP-682", "SCP682_Display", "WalkAnim drives a hidden R6 carrier; the visible animal is one rigid FileMesh."},
+	[9] = {"SCP-682", "SCP682_Skinned_Display", "Production quadruped Walk deforms the visible 32-Bone skin. No AnimationId or imported code is required."},
 	[3] = {"SCP-035", "SCP035_Display", "Animate and its child Animation overrides are absent from this template."},
 	[5] = {"SCP-049", "SCP049_Display", "Only the Animation objects and saved clips present in this template are listed."},
 	[6] = {"SCP-173", "SCP173_Display", "Approved Walk articulates the existing arm/leg part groups using the production gait."},
@@ -112,7 +111,7 @@ request.OnServerInvoke = function(player, action, epoch, stage)
 		{"Walk候補 R6", "rbxassetid://125749145"},
 	}
 
-	for _, entry in ipairs(imported682 and {} or walkCandidates) do
+	for _, entry in ipairs((imported682 or stage==9) and {} or walkCandidates) do
 		local animation = Instance.new("Animation")
 		animation.Name = entry[1]
 		animation.AnimationId = entry[2]

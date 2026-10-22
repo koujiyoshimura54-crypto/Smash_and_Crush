@@ -90,8 +90,8 @@ function M.Build(map,stageNumber,generation)
  local collider=Instance.new("Part")
  collider.Name="MiniBossCollider"
  local displaySize=high-low
- collider.Size=displaySize*entry.BodyRatio
- local bodyCenter=(low+high)/2+displaySize*(entry.BodyOffset or Vector3.zero)
+ collider.Size=entry.ColliderSize or displaySize*entry.BodyRatio
+ local bodyCenter=(low+high)/2+(entry.ColliderOffset or displaySize*(entry.BodyOffset or Vector3.zero))
  collider.CFrame=CFrame.new(bodyCenter)
  collider.Transparency=1;collider.Anchored=true
  collider.CanCollide=false;collider.CanTouch=false;collider.CanQuery=false

@@ -9,6 +9,7 @@ local stages={
  [6]={Rig="SCP173",MinMotors=5,Gait={Period=.8,ReferenceSpeed=23,Amplitude=.70,ArmAmplitude=.95,Stance=.60,GroundLimit=.55}},
  [7]={Rig="SCP939",MinMotors=13,Gait={Period=1,ReferenceSpeed=24,Amplitude=1.35,GroundLimit=1.25,ClipPath={"AnimSaves","939walk"}}},
  [8]={Walk="rbxassetid://125749145",Rig="R6"},
+ [9]={Rig="SCP682Skin",MinMotors=0,Gait={Period=.32,ReferenceSpeed=26,Stride=2.7,Lift=1.1,Stance=.58}},
  [10]={Walk=r15,Rig="R15"},
 }
 for _,row in stages do if row.Gait then table.freeze(row.Gait) end;table.freeze(row) end

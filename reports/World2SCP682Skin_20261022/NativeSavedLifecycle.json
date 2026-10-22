@@ -1,0 +1,343 @@
+{
+  "Fixture": "Two native clients; in-memory stores and payment mocks; server-driven test inputs",
+  "Cases": {
+    "S9_Return": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 1.0817636251449585,
+        "Bip01_L_UpperArm": 0.6251376867294312,
+        "Bip01_R_Calf": 0.7555374503135681,
+        "Bip01_L_Thigh": 0.698145866394043,
+        "Bip01_R_Hand": 1.2935657501220703,
+        "Bip01_L_Hand": 1.2383040189743042,
+        "Bip01_R_Thigh": 0.6013039350509644,
+        "Bip01_R_UpperArm": 0.476436585187912,
+        "Bip01_L_Calf": 0.5927945375442505,
+        "Bip01_L_Foot": 0.7854886054992676,
+        "Bip01_L_Forearm": 0.9427559971809387,
+        "Bip01_R_Forearm": 1.3148479461669922
+      },
+      "Moved": 20.782630920410156,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 1.3148479461669922,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "S9_PeerDuringDeath": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 0.7616764903068542,
+        "Bip01_L_UpperArm": 0.47607383131980896,
+        "Bip01_R_Calf": 0.5087604522705078,
+        "Bip01_L_Thigh": 0.7145348191261292,
+        "Bip01_R_Hand": 1.4499801397323608,
+        "Bip01_L_Hand": 1.1426270008087158,
+        "Bip01_R_Thigh": 0.61241614818573,
+        "Bip01_R_UpperArm": 0.4590515196323395,
+        "Bip01_L_Calf": 0.7132678627967834,
+        "Bip01_L_Foot": 1.035497784614563,
+        "Bip01_L_Forearm": 0.9229182004928589,
+        "Bip01_R_Forearm": 1.3255091905593872
+      },
+      "Moved": 26.08816146850586,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 1.4499801397323608,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "S9_HomeSettled": {
+      "VisibleMovedParts": [],
+      "Moved": 0,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 0,
+      "Tracks": 0,
+      "Animation": "Stopped",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "SharedStage4": {
+      "VisibleMovedParts": {
+        "Gait_FrontRightHip_Part_21": 0.31480643153190613,
+        "Gait_RearRightKnee_Part_1": 0.7311809659004211,
+        "Gait_RearLeftHip_Part_25": 0.5828859210014343,
+        "Gait_RearLeftKnee_Part_34": 0.5156198740005493,
+        "Gait_FrontLeftKnee_Part_28": 0.633398711681366,
+        "Gait_RearRightHip_Part_40": 1.0045493841171265,
+        "Gait_FrontLeftHip_Part_8": 0.6179073452949524,
+        "Gait_FrontRightKnee_Part_11": 0.5525082349777222
+      },
+      "Moved": 38.18034362792969,
+      "MinBoundsAboveFloor": 0.09993610151554755,
+      "MaxJointGap": 0.0002441722899675369,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 1.0045493841171265,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 0,
+      "ForeignVisibleParts": 0,
+      "Stage": 4,
+      "Motors": 13
+    },
+    "S9_Retry2": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 0.6046168804168701,
+        "Bip01_L_UpperArm": 0.36928287148475647,
+        "Bip01_R_Calf": 0.49695801734924316,
+        "Bip01_L_Thigh": 0.4404022991657257,
+        "Bip01_R_Hand": 0.8345863819122314,
+        "Bip01_L_Hand": 0.8400430679321289,
+        "Bip01_R_Thigh": 0.39230865240097046,
+        "Bip01_R_UpperArm": 0.36045101284980774,
+        "Bip01_L_Calf": 0.48297131061553955,
+        "Bip01_L_Foot": 0.604756772518158,
+        "Bip01_L_Forearm": 0.7587541937828064,
+        "Bip01_R_Forearm": 0.8430017828941345
+      },
+      "Moved": 23.776697158813477,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 0.8430017828941345,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "Lifecycle9": {
+      "RealDefeat": true,
+      "Restart": true,
+      "RealDeparture": true,
+      "Retries": 2,
+      "Contact": true,
+      "Death": true,
+      "Return": true,
+      "PeerUnchanged": true,
+      "WorldExit": true
+    },
+    "S9_ContactStop": {
+      "VisibleMovedParts": [],
+      "Moved": 0,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 0,
+      "Tracks": 0,
+      "Animation": "Stopped",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "S9_PeerAfterDefeat": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 0.5722493529319763,
+        "Bip01_L_UpperArm": 0.32791194319725037,
+        "Bip01_R_Calf": 0.4065721035003662,
+        "Bip01_L_Thigh": 0.4675765037536621,
+        "Bip01_R_Hand": 0.8225366473197937,
+        "Bip01_L_Hand": 0.9021792411804199,
+        "Bip01_R_Thigh": 0.5362457036972046,
+        "Bip01_R_UpperArm": 0.7129209041595459,
+        "Bip01_L_Calf": 0.7585445046424866,
+        "Bip01_L_Foot": 0.9568604826927185,
+        "Bip01_L_Forearm": 0.8886037468910217,
+        "Bip01_R_Forearm": 1.12132728099823
+      },
+      "Moved": 26.014249801635742,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 1.12132728099823,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "Balance9": {
+      "Speed": 26,
+      "Turn": 6.9
+    },
+    "S9_Retry1": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 0.8349918723106384,
+        "Bip01_L_UpperArm": 0.497513085603714,
+        "Bip01_R_Calf": 0.6137155890464783,
+        "Bip01_L_Thigh": 0.6816898584365845,
+        "Bip01_R_Hand": 1.3408597707748413,
+        "Bip01_L_Hand": 1.2328033447265625,
+        "Bip01_R_Thigh": 0.6681541204452515,
+        "Bip01_R_UpperArm": 0.6536561846733093,
+        "Bip01_L_Calf": 0.7758422493934631,
+        "Bip01_L_Foot": 1.0971508026123047,
+        "Bip01_L_Forearm": 1.3158035278320312,
+        "Bip01_R_Forearm": 1.0068638324737549
+      },
+      "Moved": 24.39772605895996,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 1.3408597707748413,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "S9_PeerDuringStop": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 0.7746544480323792,
+        "Bip01_L_UpperArm": 0.38957130908966064,
+        "Bip01_R_Calf": 0.5903267860412598,
+        "Bip01_L_Thigh": 0.7221654653549194,
+        "Bip01_R_Hand": 1.4171812534332275,
+        "Bip01_L_Hand": 0.9419357180595398,
+        "Bip01_R_Thigh": 0.5472151041030884,
+        "Bip01_R_UpperArm": 0.5153485536575317,
+        "Bip01_L_Calf": 0.6316484212875366,
+        "Bip01_L_Foot": 1.0109397172927856,
+        "Bip01_L_Forearm": 1.0385301113128662,
+        "Bip01_R_Forearm": 1.183262586593628
+      },
+      "Moved": 25.967350006103516,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 1.4171812534332275,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "S9_WorldExit": {
+      "VisibleMovedParts": [],
+      "Moved": 0,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "ForeignVisibleParts": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 0
+      },
+      "VisibleLimbRadians": 0,
+      "Tracks": 0,
+      "Bones": 32,
+      "MaxJointGap": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "S9_PeerAfterDeparture": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 0.5995649099349976,
+        "Bip01_L_UpperArm": 0.3992418646812439,
+        "Bip01_R_Calf": 0.5075950622558594,
+        "Bip01_L_Thigh": 0.6630266904830933,
+        "Bip01_R_Hand": 1.1184279918670654,
+        "Bip01_L_Hand": 0.7949596643447876,
+        "Bip01_R_Thigh": 0.48017725348472595,
+        "Bip01_R_UpperArm": 0.7352107167243958,
+        "Bip01_L_Calf": 0.8218659162521362,
+        "Bip01_L_Foot": 0.7909911870956421,
+        "Bip01_L_Forearm": 0.7189981341362,
+        "Bip01_R_Forearm": 1.3478063344955444
+      },
+      "Moved": 39.89054870605469,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 1.3478063344955444,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "S9_Restart": {
+      "VisibleMovedParts": {
+        "Bip01_R_Foot": 0.6051921248435974,
+        "Bip01_L_UpperArm": 0.36947867274284363,
+        "Bip01_R_Calf": 0.49503377079963684,
+        "Bip01_L_Thigh": 0.46927955746650696,
+        "Bip01_R_Hand": 0.7890595197677612,
+        "Bip01_L_Hand": 0.8461369872093201,
+        "Bip01_R_Thigh": 0.48264622688293457,
+        "Bip01_R_UpperArm": 0.41824719309806824,
+        "Bip01_L_Calf": 0.5227258801460266,
+        "Bip01_L_Foot": 0.5960147976875305,
+        "Bip01_L_Forearm": 0.7693050503730774,
+        "Bip01_R_Forearm": 0.8143601417541504
+      },
+      "Moved": 35.87306213378906,
+      "MinBoundsAboveFloor": 0.09999990463256836,
+      "MaxJointGap": 0,
+      "Records": {
+        "Pending": 0,
+        "Active": 1
+      },
+      "VisibleLimbRadians": 0.8461369872093201,
+      "Tracks": 0,
+      "Animation": "Walk",
+      "Bones": 32,
+      "ForeignVisibleParts": 0,
+      "Stage": 9,
+      "Motors": 0
+    },
+    "Preview9": {
+      "Candidate": "Approved Walk (production)",
+      "InvokedThrough": "Existing Preview callbacks",
+      "VisibleJointsChanged": 15
+    }
+  },
+  "Errors": [],
+  "NativeRunnerElapsedSeconds": 61.841
+}

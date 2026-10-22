@@ -1,0 +1,127 @@
+{
+  "InputSha256": "db08f1f7a0dff736033f88dd5d4cf555b15b1c147da94cbd033a30046c0b5371",
+  "OutputSha256": "33966385ae0388e75eb64745a5942d0bcb46446430b23c56a19c3b0aedf8d6ad",
+  "Sources": {
+    "ReplicatedStorage.Config.World2BossAnimationConfig": "src/ReplicatedStorage/Config/World2BossAnimationConfig.luau",
+    "ReplicatedStorage.Config.World2BossVisualConfig": "src/ReplicatedStorage/Config/World2BossVisualConfig.luau",
+    "ReplicatedStorage.Modules.World2BossGait": "src/ReplicatedStorage/Modules/World2BossGait.luau",
+    "ReplicatedStorage.Modules.World2BossRig": "src/ReplicatedStorage/Modules/World2BossRig.luau",
+    "ReplicatedStorage.Modules.World2SCP682Gait": "src/ReplicatedStorage/Modules/World2SCP682Gait.luau",
+    "ServerScriptService.World.BossVisualPlacement": "src/ServerScriptService/World/BossVisualPlacement.luau",
+    "ServerScriptService.StudioBossAnimationPreview": "src/ServerScriptService/StudioBossAnimationPreview.server.luau",
+    "StarterPlayer.StarterPlayerScripts.World2BossAnimationClient": "src/StarterPlayer/StarterPlayerScripts/World2BossAnimationClient.client.luau",
+    "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview": "src/StarterPlayer/StarterPlayerScripts/StudioBossAnimationPreview.client.luau"
+  },
+  "MovedFrom": "Workspace.SCP-682",
+  "MovedTo": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP682_Skinned_Display",
+  "OriginalBonesPreserved": 32,
+  "OriginalMeshSkinTextureSizeAndInitialPosesPreserved": true,
+  "OtherPropertiesPreservedChecked": 4917525,
+  "AddedModules": 1,
+  "RemovedInstances": 0,
+  "AllowedChanges": [
+    {
+      "Path": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP682_Skinned_Display",
+      "Property": "Name"
+    },
+    {
+      "Path": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP682_Skinned_Display.scp_crock_reference",
+      "Property": "Anchored"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.StudioBossAnimationPreview",
+      "Property": "Source"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.World2BossAnimationClient",
+      "Property": "Source"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.World2BossRig",
+      "Property": "Source"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.World2BossGait",
+      "Property": "Source"
+    },
+    {
+      "Path": "ReplicatedStorage.Config.World2BossVisualConfig",
+      "Property": "Source"
+    },
+    {
+      "Path": "ReplicatedStorage.Config.World2BossAnimationConfig",
+      "Property": "Source"
+    },
+    {
+      "Path": "ServerScriptService.World.BossVisualPlacement",
+      "Property": "Source"
+    },
+    {
+      "Path": "ServerScriptService.StudioBossAnimationPreview",
+      "Property": "Source"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.World2SCP682Gait",
+      "Property": "Source"
+    }
+  ],
+  "Integrity": {
+    "sha256": "33966385ae0388e75eb64745a5942d0bcb46446430b23c56a19c3b0aedf8d6ad",
+    "instanceCount": 192719,
+    "classCount": 162,
+    "minimumId": 0,
+    "maximumId": 192718,
+    "outOfBoundsCount": 0,
+    "missingInRangeCount": 0,
+    "duplicateUniqueIds": 0,
+    "referenceValuesByKind": {
+      "INST": 192719,
+      "PROP.Ref": 81106,
+      "PROP.Content": 0,
+      "PRNT.Child": 192719,
+      "PRNT.Parent": 192719
+    }
+  },
+  "Repair": {
+    "before": {
+      "sha256": "33966385ae0388e75eb64745a5942d0bcb46446430b23c56a19c3b0aedf8d6ad",
+      "instanceCount": 192719,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 192718,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 192719,
+        "PROP.Ref": 81106,
+        "PROP.Content": 0,
+        "PRNT.Child": 192719,
+        "PRNT.Parent": 192719
+      }
+    },
+    "after": {
+      "sha256": "33966385ae0388e75eb64745a5942d0bcb46446430b23c56a19c3b0aedf8d6ad",
+      "instanceCount": 192719,
+      "classCount": 162,
+      "minimumId": 0,
+      "maximumId": 192718,
+      "outOfBoundsCount": 0,
+      "missingInRangeCount": 0,
+      "duplicateUniqueIds": 0,
+      "referenceValuesByKind": {
+        "INST": 192719,
+        "PROP.Ref": 81106,
+        "PROP.Content": 0,
+        "PRNT.Child": 192719,
+        "PRNT.Parent": 192719
+      }
+    },
+    "renumberedInstances": 0,
+    "modifiedChunks": 0,
+    "preservedInstanceCount": true,
+    "allNonReferenceBytesUnchanged": true,
+    "hierarchyAndReferenceTargetsPreserved": true
+  },
+  "WrittenAndReread": false
+}

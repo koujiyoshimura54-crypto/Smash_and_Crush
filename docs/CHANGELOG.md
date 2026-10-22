@@ -1,5 +1,9 @@
 # 2026-10-01 — Inventory Capacity tiers 5→12
 
+## 2026-10-22 ? Stage9 SCP-682 skin and locomotion
+
+Integrated the current imported 32-Bone SCP-682 as the Stage9 template after native visible-weight checks. Added shared production/Preview quadruped gait, matched the previous display scale and retained its fixed collider. See [record](../reports/World2SCP682Skin_20261022/README.md) for native verification and limits.
+
 - Expanded only the upgrade catalogue to seven tiers priced at 5 / 15 / 30 / 75 / 150 / 1,000 / 4,500 Win; capacity 12 uses the existing MAX presentation.
 - One Play verified actual 5→6 and 6→7 purchases, the next 7→8 / 30 price and trophy icon, plus client-only capacity-12 MAX presentation. Existing purchase/save/UI code unchanged; Place/GUI unsaved, Play stopped in Edit.
 
