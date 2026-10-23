@@ -1,7 +1,7 @@
 -- Approved 2026-10-22. Locomotion never changes pursuit/combat tuning.
 local r15="rbxassetid://507777826"
 local stages={
- [1]={Walk=r15,Retarget="R15ToR6",RetargetWeight=.5,Rig="SCP096"},
+ [1]={Rig="SCP096Skin",MinBones=73},
  [2]={Rig="SCP023",MinMotors=6,Gait={Period=1,ReferenceSpeed=19,Amplitude=.70,Stance=.60,GroundLimit=.65}},
  [3]={Walk=r15,Rig="R15"},
  [4]={Rig="SCP058",MinMotors=13,Gait={Period=.75,ReferenceSpeed=21,Stride=1.05,Lift=.55,Stance=.62,GroundLimit=.40}},

@@ -1,0 +1,26 @@
+{
+  "Logs": [
+    {
+      "Log": "0.744.0.7441077_20261023T054016Z_Studio_92C19_last.log",
+      "ProductionAnimationDiagnostics": [],
+      "FixtureFloorReplicationErrors": 0,
+      "UnrelatedSoundLoadErrors": 13,
+      "TestCloseAlreadyInProgress": 0
+    },
+    {
+      "Log": "0.744.0.7441077_20261023T054023Z_Studio_CC511_last.log",
+      "ProductionAnimationDiagnostics": [],
+      "FixtureFloorReplicationErrors": 2,
+      "UnrelatedSoundLoadErrors": 10,
+      "TestCloseAlreadyInProgress": 1
+    },
+    {
+      "Log": "0.744.0.7441077_20261023T054022Z_Studio_8BEE6_last.log",
+      "ProductionAnimationDiagnostics": [],
+      "FixtureFloorReplicationErrors": 3,
+      "UnrelatedSoundLoadErrors": 10,
+      "TestCloseAlreadyInProgress": 0
+    }
+  ],
+  "Interpretation": "Final native assertions passed. The asynchronous fixture initially sampled Floor before replication; those early samples failed, later samples and all five phases succeeded. A nil guard was added to the repository fixture after this run and syntax-checked, not rerun. Production animation errors were not found in these logs. Sound/archived-asset errors were outside this scope; no broad regression claim."
+}

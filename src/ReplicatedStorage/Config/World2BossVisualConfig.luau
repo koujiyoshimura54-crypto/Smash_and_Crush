@@ -1,6 +1,8 @@
 -- Explicit World2 boss allowlist. SourceModels are archival, never auto-enumerated.
 local stages = {
- [1] = {SCP="SCP-096", Template="SCP096_Display", VisualScale=2.25, FacingYaw=0, BodyRatio=Vector3.new(.9,1,.9)},
+ [1] = {SCP="SCP-096", Template="SCP096_BodyBones_Display", VisualScale=2.25, FacingYaw=0, BodyRatio=Vector3.new(.9,1,.9),
+  -- Retain the previous096 attack/contact box; the wider skin does not enlarge reach.
+  ColliderSize=Vector3.new(6.884978771209717,15.75,2.5559258460998537),ColliderOffset=Vector3.zero},
  [2] = {SCP="SCP-023", Template="SCP023_Display", VisualScale=3.6, FacingYaw=0, BodyRatio=Vector3.new(.9,1,.85)},
  [3] = {SCP="SCP-035", Template="SCP035_Display", VisualScale=3.0, FacingYaw=0, BodyRatio=Vector3.new(.9,1,.9)},
  [4] = {SCP="SCP-058", Template="SCP058_Display", VisualScale=3.0, FacingYaw=0, BodyRatio=Vector3.new(.75,.85,.7)},

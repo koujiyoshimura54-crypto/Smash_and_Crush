@@ -1,0 +1,26 @@
+{
+  "Success": true,
+  "Result": {
+    "Success": false,
+    "Mode": "Native two-client Play; isolated stores; server-driven positions and real combat API",
+    "Cases": {
+      "Intro": {
+        "BStart": 1792733752.118745,
+        "AStart": 1792733751.500952,
+        "AFirstBoundary": 1792733753.000952,
+        "Duration": 2.5
+      },
+      "InterruptedStart": true,
+      "AttackLoopAndReentry": true,
+      "BothMoved": true,
+      "Damage": {
+        "Interval": 1,
+        "SecondsAfterStart": 0.14914298057556152,
+        "Amount": 25
+      }
+    },
+    "Errors": [
+      "ServerScriptService.__SCP096TestServer:12: Timeout: real Boss defeat\nServerScriptService.__SCP096TestServer:12 function waitFor\nServerScriptService.__SCP096TestServer:155\nServerScriptService.__SCP096TestServer:17\n"
+    ]
+  }
+}

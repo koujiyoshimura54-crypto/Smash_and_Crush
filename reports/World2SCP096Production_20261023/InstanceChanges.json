@@ -1,0 +1,14 @@
+{
+  "Basis": "Current unsaved Studio; no disk place imported or overwritten",
+  "AddedTemplate": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP096_BodyBones_Display",
+  "SourceMesh": "Workspace.SCP 096.FBXImportGeneric.Body.LP",
+  "SourceClips": "ServerStorage.RBX_ANIMSAVES.SCP096_VisibleBody",
+  "Rebuild": "BuildTemplate.luau",
+  "Snapshot": "ModelSnapshot.json",
+  "RetainedOldTemplate": "ServerStorage.EnemyTemplates.World2SCPDisplays.SCP096_Display",
+  "PropertyChanges": [
+    {"Path": "Workspace.SCP 096.SCP-096Main", "Property": "Enabled", "Before": true, "After": false},
+    {"Path": "Workspace.SCP 096.RunToTheSCP", "Property": "Enabled", "Before": true, "After": false},
+    {"Path": "Workspace.SCP 096.Respawn", "Property": "Enabled", "Before": true, "After": false}
+  ]
+}

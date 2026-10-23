@@ -6,6 +6,7 @@ local Config=require(RS.Config:WaitForChild("World2BossAnimationConfig"))
 local Rig=require(RS.Modules:WaitForChild("World2BossRig"))
 local Clip=require(RS.Modules:WaitForChild("World2BossClip"))
 local Gait=require(RS.Modules:WaitForChild("World2BossGait"))
+local Body096=require(RS.Modules:WaitForChild("World2SCP096Clip"))
 local player=Players.LocalPlayer
 local records={}
 local cache={}
@@ -19,6 +20,7 @@ local function clean(enemy)
  if r.WalkClip then Clip.Reset(r.WalkClip) end
  if r.IntroClip then Clip.Reset(r.IntroClip) end
  if r.Gait then Gait.Reset(r.Gait) end
+ if r.Body096 then Body096.Reset(r.Body096) end
 end
 local function add(enemy)
  if not alive or not enemy:IsA("Model") or records[enemy] or enemy:GetAttribute("OwnerUserId")~=player.UserId then return end
@@ -29,6 +31,13 @@ local function add(enemy)
  local root=enemy:FindFirstChild("HumanoidRootPart")
  local hum=visual and visual:FindFirstChildWhichIsA("Humanoid",true)
  local animator=hum and hum:FindFirstChildOfClass("Animator")
+ if entry.Rig=="SCP096Skin" then
+  if not visual or not root then return end
+  local ok,body=pcall(Body096.Compile,visual)
+  if not ok then return end -- bounded mount retries wait for Bones and all five saved clips
+  records[enemy]={Enemy=enemy,Visual=visual,Root=root,Last=root.Position,Entry=entry,Started=os.clock(),Body096=body}
+  return
+ end
  if not visual or not root or not entry.Gait and not animator then return end
  local connected=0
  for _,x in visual:GetDescendants() do
@@ -110,6 +119,13 @@ local heartbeat=Run.PreSimulation:Connect(function(dt)
   -- Replication arrives in packets. Preserve their measured distance/time over a
   -- short window, while server MotionSpeed explicitly clears contact/idle stops.
   speed=enemy:GetAttribute("BossMotionSpeed") or speed
+  if r.Body096 then
+   local phase=enemy:GetAttribute("SCP096Phase") or "Waiting"
+   Body096.Update(r.Body096,phase,enemy:GetAttribute("SCP096PhaseStartedAt") or 0,
+    workspace:GetServerTimeNow(),speed>Config.MoveThreshold,enemy:GetAttribute("SCP096PhaseRevision") or 0)
+   enemy:SetAttribute("LocalBossAnimation",phase)
+   continue
+  end
   local intro=enemy:GetAttribute("BossIntroState")=="Playing"
   if intro and r.IntroClip then
    if r.Track and r.Track.IsPlaying then r.Track:Stop(0) end

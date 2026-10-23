@@ -1,0 +1,409 @@
+{
+  "Success": true,
+  "Result": {
+    "Success": true,
+    "Mode": "Native two-client Play; isolated stores; server-driven positions and real combat API",
+    "Cases": {
+      "InterruptedStart": true,
+      "AttackLoopAndReentry": true,
+      "DepartureIsolation": true,
+      "Final_-2": {
+        "Actors": [
+          {
+            "Visible": false,
+            "Phases": [
+              {
+                "Phase": "Waiting",
+                "Time": 1792734032.040538
+              }
+            ],
+            "MaxTravel": 0,
+            "Generation": 1,
+            "MinFootY": {
+              "m": null,
+              "t": "numeric",
+              "v": "inf"
+            },
+            "BoneCount": 73,
+            "Changes": [],
+            "MaxFootY": {
+              "m": null,
+              "t": "numeric",
+              "v": "-inf"
+            }
+          },
+          {
+            "Visible": true,
+            "Phases": [
+              {
+                "Phase": "Waiting",
+                "Time": 1792734033.198199
+              },
+              {
+                "Phase": "GetUp_Panic",
+                "Time": 1792734033.812237
+              },
+              {
+                "Phase": "Panic",
+                "Time": 1792734035.017516
+              },
+              {
+                "Phase": "Running",
+                "Time": 1792734036.016193
+              },
+              {
+                "Phase": "AttackRunStart",
+                "Time": 1792734038.116515
+              },
+              {
+                "Phase": "Running",
+                "Time": 1792734038.334337
+              },
+              {
+                "Phase": "AttackRunStart",
+                "Time": 1792734039.34948
+              },
+              {
+                "Phase": "AttackRun",
+                "Time": 1792734039.94973
+              },
+              {
+                "Phase": "Running",
+                "Time": 1792734041.416081
+              },
+              {
+                "Phase": "AttackRunStart",
+                "Time": 1792734041.449241
+              },
+              {
+                "Phase": "AttackRun",
+                "Time": 1792734042.083488
+              }
+            ],
+            "MaxTravel": 57.060386657714844,
+            "Generation": 2,
+            "MinFootY": 1.0805463790893555,
+            "BoneCount": 73,
+            "Changes": {
+              "Running": 15,
+              "GetUp_Panic": 15,
+              "Waiting": 0,
+              "Panic": 15,
+              "AttackRunStart": 15,
+              "AttackRun": 15
+            },
+            "MaxFootY": 9.530891418457031
+          },
+          {
+            "Visible": true,
+            "Phases": [
+              {
+                "Phase": "Loading",
+                "Time": 1792734076.483168
+              },
+              {
+                "Phase": "Waiting",
+                "Time": 1792734076.485761
+              }
+            ],
+            "MaxTravel": 0,
+            "Generation": 4,
+            "MinFootY": 0.7630839347839355,
+            "BoneCount": 73,
+            "Changes": {
+              "Loading": 0,
+              "Waiting": 14
+            },
+            "MaxFootY": 4.549951553344727
+          },
+          {
+            "Visible": true,
+            "Phases": [
+              {
+                "Phase": "Loading",
+                "Time": 1792734083.700673
+              },
+              {
+                "Phase": "Waiting",
+                "Time": 1792734083.752365
+              },
+              {
+                "Phase": "GetUp_Panic",
+                "Time": 1792734084.027449
+              },
+              {
+                "Phase": "Panic",
+                "Time": 1792734085.532507
+              },
+              {
+                "Phase": "Running",
+                "Time": 1792734086.501002
+              },
+              {
+                "Phase": "AttackRunStart",
+                "Time": 1792734086.654544
+              },
+              {
+                "Phase": "AttackRun",
+                "Time": 1792734087.249587
+              }
+            ],
+            "MaxTravel": 0.0146484375,
+            "Generation": 7,
+            "MinFootY": 0.7630839347839355,
+            "BoneCount": 73,
+            "Changes": {
+              "Running": 15,
+              "Waiting": 14,
+              "GetUp_Panic": 15,
+              "Loading": 0,
+              "Panic": 15,
+              "AttackRunStart": 15,
+              "AttackRun": 14
+            },
+            "MaxFootY": 9.06965160369873
+          },
+          {
+            "Visible": true,
+            "Phases": [
+              {
+                "Phase": "Loading",
+                "Time": 1792734087.498293
+              },
+              {
+                "Phase": "Waiting",
+                "Time": 1792734087.56653
+              },
+              {
+                "Phase": "GetUp_Panic",
+                "Time": 1792734087.857611
+              },
+              {
+                "Phase": "Panic",
+                "Time": 1792734089.350045
+              },
+              {
+                "Phase": "Running",
+                "Time": 1792734090.350613
+              },
+              {
+                "Phase": "AttackRunStart",
+                "Time": 1792734090.472485
+              }
+            ],
+            "MaxTravel": 0.0146484375,
+            "Generation": 8,
+            "MinFootY": 0.7630839347839355,
+            "BoneCount": 73,
+            "Changes": {
+              "Running": 15,
+              "GetUp_Panic": 15,
+              "Loading": 0,
+              "Waiting": 14,
+              "AttackRunStart": 15,
+              "Panic": 15
+            },
+            "MaxFootY": 9.229891777038574
+          },
+          {
+            "Visible": true,
+            "Phases": [
+              {
+                "Phase": "Loading",
+                "Time": 1792734077.118611
+              },
+              {
+                "Phase": "Waiting",
+                "Time": 1792734077.165167
+              },
+              {
+                "Phase": "GetUp_Panic",
+                "Time": 1792734077.442639
+              },
+              {
+                "Phase": "Panic",
+                "Time": 1792734078.915964
+              },
+              {
+                "Phase": "Running",
+                "Time": 1792734079.935059
+              },
+              {
+                "Phase": "Cancelled",
+                "Time": 1792734080.009149
+              }
+            ],
+            "MaxTravel": 0.0146484375,
+            "Generation": 6,
+            "MinFootY": 0.7630839347839355,
+            "BoneCount": 73,
+            "Changes": {
+              "Running": 15,
+              "Panic": 15,
+              "Loading": 0,
+              "Cancelled": 15,
+              "Waiting": 14,
+              "GetUp_Panic": 15
+            },
+            "MaxFootY": 4.549951553344727
+          },
+          {
+            "Visible": true,
+            "Phases": [
+              {
+                "Phase": "Waiting",
+                "Time": 1792734076.990997
+              }
+            ],
+            "MaxTravel": 0,
+            "Generation": 5,
+            "MinFootY": 4.345780372619629,
+            "BoneCount": 73,
+            "Changes": {
+              "Waiting": 0
+            },
+            "MaxFootY": 4.549951553344727
+          },
+          {
+            "Visible": true,
+            "Phases": [
+              {
+                "Phase": "Loading",
+                "Time": 1792734072.296592
+              },
+              {
+                "Phase": "Waiting",
+                "Time": 1792734072.363943
+              },
+              {
+                "Phase": "GetUp_Panic",
+                "Time": 1792734072.640739
+              },
+              {
+                "Phase": "Cancelled",
+                "Time": 1792734072.78166
+              }
+            ],
+            "MaxTravel": 0,
+            "Generation": 3,
+            "MinFootY": 0.7630839347839355,
+            "BoneCount": 73,
+            "Changes": {
+              "Loading": 0,
+              "Cancelled": 14,
+              "Waiting": 14,
+              "GetUp_Panic": 14
+            },
+            "MaxFootY": 4.549951553344727
+          }
+        ],
+        "Diagnostics": {
+          "Records": 0,
+          "Pending": 0,
+          "BodyBindings": 0
+        },
+        "Tracks": 0,
+        "ForeignVisible": 0
+      },
+      "Intro": {
+        "BStart": 1792734034.36433,
+        "AStart": 1792734033.496549,
+        "AFirstBoundary": 1792734034.996549,
+        "Duration": 2.5
+      },
+      "LifecycleAndPeerIsolation": true,
+      "Final_-1": {
+        "Actors": [
+          {
+            "Visible": false,
+            "Phases": [
+              {
+                "Phase": "Waiting",
+                "Time": 1792734031.938689
+              }
+            ],
+            "MaxTravel": 0,
+            "Generation": 1,
+            "MinFootY": {
+              "m": null,
+              "t": "numeric",
+              "v": "inf"
+            },
+            "BoneCount": 73,
+            "Changes": [],
+            "MaxFootY": {
+              "m": null,
+              "t": "numeric",
+              "v": "-inf"
+            }
+          },
+          {
+            "Visible": true,
+            "Phases": [
+              {
+                "Phase": "Loading",
+                "Time": 1792734033.877762
+              },
+              {
+                "Phase": "Waiting",
+                "Time": 1792734033.893379
+              },
+              {
+                "Phase": "GetUp_Panic",
+                "Time": 1792734034.785427
+              },
+              {
+                "Phase": "Panic",
+                "Time": 1792734035.905039
+              },
+              {
+                "Phase": "Running",
+                "Time": 1792734036.888806
+              },
+              {
+                "Phase": "AttackRunStart",
+                "Time": 1792734039.968803
+              },
+              {
+                "Phase": "AttackRun",
+                "Time": 1792734040.569143
+              },
+              {
+                "Phase": "Running",
+                "Time": 1792734072.142141
+              }
+            ],
+            "MaxTravel": 63.0862922668457,
+            "Generation": 2,
+            "MinFootY": 0.7630839347839355,
+            "BoneCount": 73,
+            "Changes": {
+              "Running": 15,
+              "Waiting": 14,
+              "GetUp_Panic": 15,
+              "Loading": 0,
+              "Panic": 15,
+              "AttackRunStart": 15,
+              "AttackRun": 15
+            },
+            "MaxFootY": 9.353075981140137
+          }
+        ],
+        "Diagnostics": {
+          "Records": 1,
+          "Pending": 0,
+          "BodyBindings": 73
+        },
+        "Tracks": 0,
+        "ForeignVisible": 0
+      },
+      "BothMoved": true,
+      "Damage": {
+        "Interval": 1,
+        "SecondsAfterStart": 0.14943599700927734,
+        "Amount": 25
+      }
+    },
+    "Errors": []
+  }
+}

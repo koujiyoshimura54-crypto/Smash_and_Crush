@@ -8,6 +8,7 @@ local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 local Speed = require(game.ServerScriptService.Services:WaitForChild("SpeedService"))
 local SpeedAttackConfig = require(game.ReplicatedStorage.Config:WaitForChild("SpeedBossAttackConfig"))
+local Animation = worldId==2 and require(script.Parent.World2BossAnimationService)
 local M = {}
 local BOSS_DAMAGE = 25
 local BOSS_ATTACK_INTERVAL = 1
@@ -118,6 +119,7 @@ function M.Stop(player, heal)
  local r=active[player]
  if not r then return end
  active[player]=nil
+ if Animation and r.Stage==1 then Animation.SetAttackEligible(r.Enemy,false) end
  if r.ChildAdded then r.ChildAdded:Disconnect() end
  if r.Died then r.Died:Disconnect() end
  for healthScript,enabled in r.RegenScripts do
@@ -156,7 +158,10 @@ end
 
 function M.Rebind(player, enemy)
  local r=active[player]
- if r then r.Enemy=enemy end
+ if r then
+  if Animation and r.Stage==1 then Animation.SetAttackEligible(r.Enemy,false) end
+  r.Enemy=enemy
+ end
 end
 function M.SetHealHandler(callback) healHandler=callback end
 function M.SetSessionValidator(callback) validateSession=callback end
@@ -173,10 +178,23 @@ RunService.Heartbeat:Connect(function()
    M.Stop(player,true)
   else
    local due=math.floor((now-r.StartedAt)/BOSS_ATTACK_INTERVAL)
+   local body096=Animation and r.Stage==1
+   if body096 and not Animation.Ready(r.Enemy) then
+    -- Only the requested096 opening blocks Boss attacks. Preserve absolute
+    -- cadence and discard blocked deadlines rather than banking delayed hits.
+    r.NextHit=due+1
+    continue
+   end
+   local eligible,distance,reach
+   if body096 then
+    eligible,distance,reach=M.IsInRange(r.Enemy,r.Stage,r.Humanoid,root)
+    Animation.SetAttackEligible(r.Enemy,eligible,now)
+   end
    if due>=r.NextHit then
     -- Absolute deadlines; missed server frames never generate a burst of catch-up hits.
     r.NextHit=due+1
-    local hit,distance,reach=M.IsInRange(r.Enemy,r.Stage,r.Humanoid,root)
+    local hit=eligible
+    if not body096 then hit,distance,reach=M.IsInRange(r.Enemy,r.Stage,r.Humanoid,root) end
     local before=r.Humanoid.Health
     if hit then
      -- Deliberately bypass ForceField only for this formal Boss combat.

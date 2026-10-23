@@ -1,0 +1,19 @@
+{
+  "Checks": 114,
+  "Mode": "Native Edit unit checks, not Play or visual acceptance",
+  "SampledBoneChanges": {
+    "Running": 15,
+    "GetUp_Panic": 14,
+    "Panic": 15,
+    "AttackRunStart": 15,
+    "AttackRun": 13
+  },
+  "Durations": {
+    "Running": 0.6000000238418579,
+    "GetUp_Panic": 3,
+    "Panic": 2,
+    "AttackRunStart": 0.6000000238418579,
+    "AttackRun": 0.6000000238418579
+  },
+  "IntroSeconds": 2.5
+}

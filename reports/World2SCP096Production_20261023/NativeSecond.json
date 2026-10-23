@@ -1,0 +1,37 @@
+{
+  "Success": true,
+  "Result": {
+    "Success": false,
+    "Mode": "Native two-client Play; isolated stores; server-driven positions and real combat API",
+    "Cases": {
+      "LifecycleAndPeerIsolation": true,
+      "Intro": {
+        "BStart": 1792733883.316984,
+        "AStart": 1792733882.799706,
+        "AFirstBoundary": 1792733884.299706,
+        "Duration": 2.5
+      },
+      "InterruptedStart": true,
+      "AttackLoopAndReentry": true,
+      "Final_-2": {
+        "Actors": [],
+        "Diagnostics": {
+          "Records": 0,
+          "Pending": 0,
+          "BodyBindings": 0
+        },
+        "Tracks": 0,
+        "ForeignVisible": 0
+      },
+      "BothMoved": true,
+      "Damage": {
+        "Interval": 1,
+        "SecondsAfterStart": 0.15065383911132812,
+        "Amount": 25
+      }
+    },
+    "Errors": [
+      "ServerScriptService.__SCP096TestServer:14: No client Bone movement for GetUp_Panic\nServerScriptService.__SCP096TestServer:14\nServerScriptService.__SCP096TestServer:17\n"
+    ]
+  }
+}

@@ -1119,7 +1119,7 @@ local function updateCombat(p,manualRequest)
        elseif Wall.IsBossUnlockedForStage(attackPlayer,attackStage) then
         if Chase and table.find(cleared,4) then
          recognizedPlayers[attackPlayer]={Stage=attackStage,Character=ch,CombatStarted=false}
-         if worldId==2 and attackStage==5 then
+         if worldId==2 and (attackStage==1 or attackStage==5) then
           local actor=getEnemy(attackPlayer,attackStage,true)
           if actor then Chase.BeginIntro(actor) end
          end
