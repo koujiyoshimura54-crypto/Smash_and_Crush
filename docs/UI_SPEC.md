@@ -660,3 +660,7 @@ The Studio-only tool lists all ten World2 Bosses in two columns. Existing manual
 ### 2026-10-22 - Shared production Preview candidates
 
 Stage2/4/6/7 now offer **Approved Walk (production)** in the existing sorted candidate list, sharing the exact production gait, amplitude, cadence and ground correction. Historical candidates and all controls remain. Only the preview copy receives preparation; production never calls the Studio tool. Current HUD, Strength/Win displays and death-camera manual edits are preserved. Details: [four-boss delivery](../reports/World2FourBossWalk_20261022/README.md).
+
+## 2026-10-23 - Y01 player camera framing recovery
+
+The current editor calibration is `18 * (1 + (MuscleHeightScale - 1) * .15)` studs, applied once on a new Character or changed height. Manual zoom remains standard, with authored minimum .5 and maximum128 times height scale. Same-character World travel, StageSkip and Trophy return retain nominal manual zoom; death respawn reframes the new Character. A temporarily Scriptable/unready camera now retries when normal follow returns. Camera replacement preserves nominal zoom even during obstacle occlusion; body centering uses an absolute correction only when resizing. Existing death freeze, FOV restoration and spawn heading remain. Native Play/rendered representative checks and limits: [Y01 report](../reports/PlayerCameraY01_20261023/README.md). Current Studio only; no rbxl write or Save/Publish.

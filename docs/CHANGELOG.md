@@ -1150,3 +1150,8 @@ Remaining visual issue: SCP049 still exposes a pale carrier segment during strid
 
 - Changed the current Cloud-place Studio editor's Stage1 sequence to GetUp_Panic2x -> Panic2x -> AttackRunStart1x once -> AttackRun1x loop throughout pursuit. Hit-condition changes no longer restore arms-down Running; damage25/1s is unchanged.
 - Passed116 native Edit checks and focused two-client runtime pose/state/combat checks. Rendered appearance and public servers remain unverified. Preserved template/clips and restored test fixtures/display values; no rbxl write or Studio Save/Publish. See reports/World2SCP096Production_20261023/FORWARD_PURSUIT.md.
+
+## 2026-10-23 - Y01 camera framing recovery
+
+- Preserve the current18/.15 calibration and manual zoom while retrying missed resize framing when normal camera follow becomes ready. Camera replacement uses nominal zoom; centering is absolute and resize-only.
+- Native focused Play/rendered checks covered representative sizes in both Worlds, wheel zoom, lifecycle/return routes and occlusion. Restored test substitutions/settings; current Studio remains unsaved in Edit, without rbxl write or Save/Publish. See reports/PlayerCameraY01_20261023/README.md.

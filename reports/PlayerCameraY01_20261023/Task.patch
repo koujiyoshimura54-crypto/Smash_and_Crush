@@ -1,0 +1,99 @@
+--- live-before/SpawnFacingCameraClient
++++ live-after/SpawnFacingCameraClient
+@@ -13,0 +14 @@
++local requestFraming
+@@ -32,0 +34,5 @@
++  for _,property in {"CameraType", "CameraSubject"} do
++   table.insert(cameraConnections, camera:GetPropertyChangedSignal(property):Connect(function()
++    if requestFraming then requestFraming() end
++   end))
++  end
+@@ -38,0 +45 @@
++ if requestFraming then requestFraming() end
+@@ -106,0 +114,4 @@
++-- A frame can be unavailable while the standard camera initializes or another
++-- presentation temporarily owns it. Retain that request until normal follow returns.
++local framingRequest = 0
++local stopped = false
+@@ -111,2 +122,3 @@
+- if frozenCharacter or humanoid.Health<=0 or player.Character~=character or not camera or camera.CameraSubject~=humanoid or not root or typeof(scale)~="number" then return end
+- if camera.CameraType~=Enum.CameraType.Custom or appliedScale[character]==scale then return end
++ if frozenCharacter or humanoid.Health<=0 or player.Character~=character or not camera
++  or camera.CameraSubject~=humanoid or not root or typeof(scale)~="number" then return false end
++ if camera.CameraType~=Enum.CameraType.Custom then return false end
+@@ -114,5 +126,11 @@
+- if not controller or not controller.SetCameraToSubjectDistance then return end
+-	local cameraScale = 1 + (scale - 1) * CAMERA_SCALE_INFLUENCE
+-	local distance = CAMERA_BASE_DISTANCE * cameraScale
+- -- The old scaled minimum forced the camera out. Keep room to zoom inward,
+- -- and retain the previous maximum so the user can still zoom all the way out.
++ if not controller or not controller.SetCameraToSubjectDistance then return false end
++ local previous=appliedScale[character]
++ local resized=not previous or previous.Scale~=scale or previous.Humanoid~=humanoid
++ if not resized and previous.Camera==camera and previous.Controller==controller then return true end
++ local distance=CAMERA_BASE_DISTANCE*(1+(scale-1)*CAMERA_SCALE_INFLUENCE)
++ if not resized then
++  -- Read the nominal zoom from the previous controller, never an occlusion-
++  -- shortened CFrame/Focus distance. A camera replacement keeps manual zoom.
++  local old=previous.Controller
++  distance=old and old.GetCameraToSubjectDistance and old:GetCameraToSubjectDistance() or previous.Distance
++ end
+@@ -124,6 +142,40 @@
+- appliedScale[character]=scale
+- if scale<=1 then humanoid.CameraOffset=Vector3.zero return end
+- local box=character:GetBoundingBox()
+- local worldDelta=box.Position-camera.Focus.Position
+- humanoid.CameraOffset=humanoid.CameraOffset+root.CFrame:VectorToObjectSpace(worldDelta)
+-end
++ appliedScale[character]={Scale=scale,Humanoid=humanoid,Camera=camera,Controller=controller,Distance=distance}
++ if resized then
++ if scale<=1 then humanoid.CameraOffset=Vector3.zero
++ elseif controller.GetSubjectPosition then
++  -- Ask the standard camera for its uncorrected subject point. Camera.Focus
++  -- can still belong to the pre-growth/pre-teleport frame, so adding its delta
++  -- repeatedly accumulates an unrelated offset.
++  local oldOffset=humanoid.CameraOffset
++  humanoid.CameraOffset=Vector3.zero
++  local subject=controller:GetSubjectPosition()
++  if subject then
++   local box=character:GetBoundingBox()
++   humanoid.CameraOffset=root.CFrame:VectorToObjectSpace(box.Position-subject)
++  else humanoid.CameraOffset=oldOffset end
++ end
++ end
++ return true
++end
++requestFraming=function()
++ framingRequest+=1
++ local requested=framingRequest
++ local character=player.Character
++ local humanoid=character and character:FindFirstChildOfClass("Humanoid")
++ if not character or character~=boundCharacter or not humanoid or frozenCharacter or humanoid.Health<=0 then return end
++ task.spawn(function()
++  local deadline=os.clock()+10
++  repeat
++   RunService.RenderStepped:Wait()
++   if stopped or requested~=framingRequest or character~=player.Character or humanoid.Parent~=character
++    or frozenCharacter or humanoid.Health<=0 then return end
++   if syncScale(character,humanoid) then return end
++  until os.clock()>=deadline
++ end)
++end
++-- Late PlayerModule/CameraModule insertion must also retry an earlier request.
++local function moduleArrived(instance)
++ if instance.Name=="PlayerModule" or instance.Name=="CameraModule" then requestFraming() end
++end
++local playerModuleConnection=player:WaitForChild("PlayerScripts").DescendantAdded:Connect(moduleArrived)
++local starterModuleConnection=game:GetService("StarterPlayer").DescendantAdded:Connect(moduleArrived)
+@@ -171 +223 @@
+-   if requested==revision then syncScale(character,humanoid) end
++   if requested==revision and character==boundCharacter then requestFraming() end
+@@ -178,0 +231 @@
++ requestFraming()
+@@ -182,0 +236 @@
++ framingRequest += 1
+@@ -230,0 +285,4 @@
++ stopped=true
++ framingRequest+=1
++ playerModuleConnection:Disconnect()
++ starterModuleConnection:Disconnect()
