@@ -12,7 +12,7 @@ function M.Create(durations)
   assert(entry.Speed>0 and entry.Speed<math.huge,"Invalid clip speed: "..name)
   intervals[name]=duration/entry.Speed
  end
- return {Phase="Waiting",StartedAt=0,Revision=0,Used=false,Intervals=intervals}
+ return {Phase="Waiting",StartedAt=0,Revision=0,Used=false,AttackEligible=false,Intervals=intervals}
 end
 function M.Begin(r,now)
  if r.Used or r.Phase=="Cancelled" then return false end
@@ -24,7 +24,7 @@ function M.Update(r,now)
   phase(r,"Panic",r.StartedAt+r.Intervals.GetUp_Panic)
  end
  if r.Phase=="Panic" and now>=r.StartedAt+r.Intervals.Panic then
-  phase(r,"Running",r.StartedAt+r.Intervals.Panic)
+  phase(r,"AttackRunStart",r.StartedAt+r.Intervals.Panic)
  end
  if r.Phase=="AttackRunStart" and now>=r.StartedAt+r.Intervals.AttackRunStart then
   phase(r,"AttackRun",r.StartedAt+r.Intervals.AttackRunStart)
@@ -36,12 +36,12 @@ function M.Ready(r,now)
  return r.Phase=="Running" or r.Phase=="AttackRunStart" or r.Phase=="AttackRun"
 end
 function M.SetAttack(r,eligible,now)
- if not M.Ready(r,now) then return end
- local attacking=r.Phase=="AttackRunStart" or r.Phase=="AttackRun"
- if eligible and not attacking then phase(r,"AttackRunStart",now)
- elseif not eligible and attacking then phase(r,"Running",now) end
+ -- Pursuit keeps the approved arms-forward loop, independent of hit range.
+ -- Eligibility only keeps that loop playing during stationary close combat.
+ r.AttackEligible=M.Ready(r,now) and eligible==true
 end
 function M.Cancel(r)
+ r.AttackEligible=false
  if r.Phase~="Cancelled" then phase(r,"Cancelled",r.StartedAt) end
 end
 return M

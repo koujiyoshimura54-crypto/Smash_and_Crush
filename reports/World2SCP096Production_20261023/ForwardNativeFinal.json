@@ -1,0 +1,198 @@
+{
+  "Result": {
+    "Success": true,
+    "Result": {
+      "Success": true,
+      "Mode": "Native two-client Play; isolated stores; server-driven positions and real combat API",
+      "Cases": {
+        "DistantForwardPursuit": true,
+        "Forward_-1": {
+          "Actors": [
+            {
+              "Visible": true,
+              "MaxTravel": 0,
+              "BoneCount": 73,
+              "Changes": {
+                "Waiting": 0
+              },
+              "Generation": 1,
+              "Phases": [
+                {
+                  "Phase": "Waiting",
+                  "Time": 1792748012.296866
+                }
+              ],
+              "ArmSamples": [],
+              "MinFootY": {
+                "m": null,
+                "t": "numeric",
+                "v": "inf"
+              },
+              "MaxFootY": {
+                "m": null,
+                "t": "numeric",
+                "v": "-inf"
+              }
+            },
+            {
+              "Visible": true,
+              "MaxTravel": 54.90185546875,
+              "BoneCount": 73,
+              "Changes": {
+                "Waiting": 14,
+                "GetUp_Panic": 15,
+                "Loading": 0,
+                "Panic": 15,
+                "AttackRunStart": 15,
+                "AttackRun": 15
+              },
+              "Generation": 2,
+              "Phases": [
+                {
+                  "Phase": "Loading",
+                  "Time": 1792748019.369455
+                },
+                {
+                  "Phase": "Waiting",
+                  "Time": 1792748019.499027
+                },
+                {
+                  "Phase": "GetUp_Panic",
+                  "Time": 1792748019.950938
+                },
+                {
+                  "Phase": "Panic",
+                  "Time": 1792748021.22009
+                },
+                {
+                  "Phase": "AttackRunStart",
+                  "Time": 1792748022.253829
+                },
+                {
+                  "Phase": "AttackRun",
+                  "Time": 1792748022.852999
+                }
+              ],
+              "ArmSamples": {
+                "Contact": {
+                  "MaxVertical": 0.05362468212842941,
+                  "MinForward": 0.9729811549186707,
+                  "Count": 130
+                },
+                "Pursuit": {
+                  "MaxVertical": 0.05357440188527107,
+                  "MinForward": 0.9729436039924622,
+                  "Count": 292
+                }
+              },
+              "MinFootY": 1.0805511474609375,
+              "MaxFootY": 9.242876052856445
+            }
+          ],
+          "Diagnostics": {
+            "Records": 1,
+            "Pending": 0,
+            "BodyBindings": 73
+          },
+          "Tracks": 0,
+          "ForeignVisible": 0
+        },
+        "RangeChangesPreserveLoop": true,
+        "RetryAndPeerIsolation": true,
+        "Forward_-2": {
+          "Actors": [
+            {
+              "Visible": true,
+              "MaxTravel": 0,
+              "BoneCount": 73,
+              "Changes": {
+                "Waiting": 0
+              },
+              "Generation": 1,
+              "Phases": [
+                {
+                  "Phase": "Waiting",
+                  "Time": 1792748012.186485
+                }
+              ],
+              "ArmSamples": [],
+              "MinFootY": {
+                "m": null,
+                "t": "numeric",
+                "v": "inf"
+              },
+              "MaxFootY": {
+                "m": null,
+                "t": "numeric",
+                "v": "-inf"
+              }
+            },
+            {
+              "Visible": true,
+              "MaxTravel": 63.088890075683594,
+              "BoneCount": 73,
+              "Changes": {
+                "GetUp_Panic": 15,
+                "Waiting": 0,
+                "Panic": 15,
+                "AttackRunStart": 15,
+                "AttackRun": 15
+              },
+              "Generation": 2,
+              "Phases": [
+                {
+                  "Phase": "Waiting",
+                  "Time": 1792748015.597816
+                },
+                {
+                  "Phase": "GetUp_Panic",
+                  "Time": 1792748016.258444
+                },
+                {
+                  "Phase": "Panic",
+                  "Time": 1792748017.638925
+                },
+                {
+                  "Phase": "AttackRunStart",
+                  "Time": 1792748018.551766
+                },
+                {
+                  "Phase": "AttackRun",
+                  "Time": 1792748019.091373
+                }
+              ],
+              "ArmSamples": {
+                "Contact": {
+                  "MaxVertical": 0.05479707196354866,
+                  "MinForward": 0.9729065299034119,
+                  "Count": 122
+                },
+                "Pursuit": {
+                  "MaxVertical": 0.05546959489583969,
+                  "MinForward": 0.9728986024856567,
+                  "Count": 726
+                }
+              },
+              "MinFootY": 1.083876609802246,
+              "MaxFootY": 9.501832008361816
+            }
+          ],
+          "Diagnostics": {
+            "Records": 1,
+            "Pending": 0,
+            "BodyBindings": 73
+          },
+          "Tracks": 0,
+          "ForeignVisible": 0
+        },
+        "Damage": {
+          "Interval": 1,
+          "SecondsAfterContact": 0.20176196098327637,
+          "Amount": 25
+        }
+      },
+      "Errors": []
+    }
+  },
+  "Running": false
+}

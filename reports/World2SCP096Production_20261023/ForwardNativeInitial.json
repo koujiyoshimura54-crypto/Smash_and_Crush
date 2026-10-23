@@ -1,0 +1,108 @@
+{
+  "Result": {
+    "Success": true,
+    "Result": {
+      "Success": false,
+      "Mode": "Native two-client Play; isolated stores; server-driven positions and real combat API",
+      "Cases": {
+        "RangeChangesPreserveLoop": true,
+        "Forward_-2": {
+          "Actors": [
+            {
+              "Visible": true,
+              "MaxTravel": 0,
+              "BoneCount": 73,
+              "Changes": {
+                "Waiting": 0
+              },
+              "Generation": 1,
+              "Phases": [
+                {
+                  "Phase": "Waiting",
+                  "Time": 1792747929.966992
+                }
+              ],
+              "ArmSamples": [],
+              "MinFootY": {
+                "m": null,
+                "t": "numeric",
+                "v": "inf"
+              },
+              "MaxFootY": {
+                "m": null,
+                "t": "numeric",
+                "v": "-inf"
+              }
+            },
+            {
+              "Visible": true,
+              "MaxTravel": 62.99943161010742,
+              "BoneCount": 73,
+              "Changes": {
+                "GetUp_Panic": 15,
+                "Waiting": 0,
+                "Panic": 15,
+                "AttackRunStart": 15,
+                "AttackRun": 15
+              },
+              "Generation": 2,
+              "Phases": [
+                {
+                  "Phase": "Waiting",
+                  "Time": 1792747931.005002
+                },
+                {
+                  "Phase": "GetUp_Panic",
+                  "Time": 1792747932.170137
+                },
+                {
+                  "Phase": "Panic",
+                  "Time": 1792747933.031651
+                },
+                {
+                  "Phase": "AttackRunStart",
+                  "Time": 1792747934.179003
+                },
+                {
+                  "Phase": "AttackRun",
+                  "Time": 1792747934.597386
+                }
+              ],
+              "ArmSamples": {
+                "Contact": {
+                  "MaxVertical": 0.053385429084300995,
+                  "MinForward": 0.9729721546173096,
+                  "Count": 170
+                },
+                "Pursuit": {
+                  "MaxVertical": 0.05336691066622734,
+                  "MinForward": 0.9729669690132141,
+                  "Count": 732
+                }
+              },
+              "MinFootY": 1.2013931274414062,
+              "MaxFootY": 9.124103546142578
+            }
+          ],
+          "Diagnostics": {
+            "Records": 1,
+            "Pending": 0,
+            "BodyBindings": 73
+          },
+          "Tracks": 0,
+          "ForeignVisible": 0
+        },
+        "DistantForwardPursuit": true,
+        "Damage": {
+          "Interval": 1,
+          "SecondsAfterContact": 0.6170010566711426,
+          "Amount": 25
+        }
+      },
+      "Errors": [
+        "ServerScriptService.__SCP096TestServer:14: No client Bone movement for GetUp_Panic\nServerScriptService.__SCP096TestServer:14\nServerScriptService.__SCP096TestServer:17\n"
+      ]
+    }
+  },
+  "Running": false
+}

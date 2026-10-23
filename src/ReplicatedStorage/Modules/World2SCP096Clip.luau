@@ -61,7 +61,7 @@ function M.Sample(r,name,time)
   if binding.Bone.Parent then binding.Bone.Transform=CFrame.new(position)*value.Rotation end
  end
 end
-function M.Update(r,phase,started,now,moving,revision)
+function M.Update(r,phase,started,now,active,revision)
  if phase=="Cancelled" or phase=="Failed" then M.Reset(r);return end
  local name=phase=="Waiting" and "GetUp_Panic" or phase
  local clip=r.Clips[name]
@@ -70,11 +70,12 @@ function M.Update(r,phase,started,now,moving,revision)
  local time=elapsed*clip.Entry.Speed
  if phase=="Waiting" then time=0
  elseif clip.Entry.Looped then time%=clip.Duration end
- -- Freeze locomotion when actual travel stops; attacking/intro keep playing.
- if phase=="Running" then
+ -- Keep the same forward-arm pose when travel and close combat both stop.
+ -- Range changes do not restart the clip or select the old arms-down Running.
+ if clip.Entry.Looped then
   if r.LastPhase==phase and r.LastRevision==revision then
-   time=((r.LastTime or 0)+(moving and math.max(0,now-(r.LastNow or now))*clip.Entry.Speed or 0))%clip.Duration
-  elseif not moving then time=0 end
+   time=((r.LastTime or 0)+(active and math.max(0,now-(r.LastNow or now))*clip.Entry.Speed or 0))%clip.Duration
+  elseif not active then time=0 end
  end
  M.Sample(r,name,time)
  r.LastTime=time;r.LastPhase=phase;r.LastRevision=revision;r.LastNow=now

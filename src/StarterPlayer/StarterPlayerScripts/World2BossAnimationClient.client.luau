@@ -121,8 +121,9 @@ local heartbeat=Run.PreSimulation:Connect(function(dt)
   speed=enemy:GetAttribute("BossMotionSpeed") or speed
   if r.Body096 then
    local phase=enemy:GetAttribute("SCP096Phase") or "Waiting"
+   local active=speed>Config.MoveThreshold or enemy:GetAttribute("SCP096AttackEligible")==true
    Body096.Update(r.Body096,phase,enemy:GetAttribute("SCP096PhaseStartedAt") or 0,
-    workspace:GetServerTimeNow(),speed>Config.MoveThreshold,enemy:GetAttribute("SCP096PhaseRevision") or 0)
+    workspace:GetServerTimeNow(),active,enemy:GetAttribute("SCP096PhaseRevision") or 0)
    enemy:SetAttribute("LocalBossAnimation",phase)
    continue
   end

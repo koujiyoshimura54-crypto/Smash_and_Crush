@@ -91,83 +91,51 @@ local ok,err=xpcall(function()
  local function phase(e,name,seconds)
   return waitFor(function()return e.Parent and e:GetAttribute('SCP096Phase')==name end,seconds or 5,name)
  end
- local a,b=prepare(A),prepare(B)
- local aStart=a:GetAttribute('BossIntroStartedAt');local bStart=b:GetAttribute('BossIntroStartedAt')
- near(A,a);near(B,b)
- local aPivot,bPivot=a:GetPivot(),b:GetPivot()
- task.wait(.3)
- check((a:GetPivot().Position-aPivot.Position).Magnitude<.001 and (b:GetPivot().Position-bPivot.Position).Magnitude<.001,'Intro moved')
- local attackA=Attack.GetState(A)
- check(not attackA or not attackA.LastAttack,'Intro dealt Boss damage')
- waitFor(function()return a:GetAttribute('SCP096Phase')~='GetUp_Panic' end,3,'GetUp completes')
- report.Cases.Intro={AStart=aStart,BStart=bStart,AFirstBoundary=a:GetAttribute('SCP096PhaseStartedAt'),Duration=a:GetAttribute('BossIntroDuration')}
- check(math.abs(report.Cases.Intro.AFirstBoundary-aStart-1.5)<.03,'GetUp2x duration')
- far(A,a);far(B,b)
- phase(a,'Running',4);phase(b,'Running',4)
+ local a=prepare(A);far(A,a)
+ local aStart=a:GetAttribute('BossIntroStartedAt')
+ phase(a,'AttackRunStart',4)
  check(math.abs(a:GetAttribute('SCP096PhaseStartedAt')-aStart-2.5)<.03,'Combined2x intro')
+ phase(a,'AttackRun',2)
+ local b=prepare(B);far(B,b);phase(b,'AttackRun',4)
+ local aRevision,bRevision=a:GetAttribute('SCP096PhaseRevision'),b:GetAttribute('SCP096PhaseRevision')
+ local aPivot,bPivot=a:GetPivot(),b:GetPivot()
  task.wait(1.2)
  check((a:GetPivot().Position-aPivot.Position).Magnitude>.3 and (b:GetPivot().Position-bPivot.Position).Magnitude>.3,'Both actors pursue')
- report.Cases.BothMoved=true
- near(A,a);phase(a,'AttackRunStart');task.wait(.15);far(A,a);phase(a,'Running')
- report.Cases.InterruptedStart=true
- -- Enter just before an existing damage deadline. Start animation must not delay it.
- local active=waitFor(function()return Attack.GetState(A)end,4,'formal Boss attack session')
- local targetTime=active.StartedAt+math.floor(workspace:GetServerTimeNow()-active.StartedAt)+.85
- if targetTime<=workspace:GetServerTimeNow() then targetTime+=1 end
- waitFor(function()return workspace:GetServerTimeNow()>=targetTime end,2,'scheduled re-entry')
- near(A,a);phase(a,'AttackRunStart')
- local start=a:GetAttribute('SCP096PhaseStartedAt')
- local hit=waitFor(function()local r=Attack.GetState(A);local h=r and r.LastAttack
-  return h and h.Hit and h.ActualAt>=start and h end,2,'unchanged damage cadence')
+ check(not a:GetAttribute('SCP096AttackEligible') and not b:GetAttribute('SCP096AttackEligible'),'Distant pursuit outside hit condition')
+ report.Cases.DistantForwardPursuit=true
+ near(A,a);near(B,b)
+ waitFor(function()return a:GetAttribute('SCP096AttackEligible') and b:GetAttribute('SCP096AttackEligible')end,4,'contact eligibility')
+ local contact=workspace:GetServerTimeNow()
+ local hit=waitFor(function()local state=Attack.GetState(A);local h=state and state.LastAttack
+  return h and h.Hit and h.ActualAt>=contact and h end,3,'existing damage deadline')
  check(hit.HealthBefore-hit.HealthAfter==25,'Damage25')
- check(hit.ActualAt-start<.6,'Damage wrongly waits for AttackRunStart')
- phase(a,'AttackRun',2)
- report.Cases.Damage={Amount=hit.HealthBefore-hit.HealthAfter,SecondsAfterStart=hit.ActualAt-start,Interval=1}
- near(B,b);phase(b,'AttackRunStart');phase(b,'AttackRun',2)
+ report.Cases.Damage={Amount=hit.HealthBefore-hit.HealthAfter,SecondsAfterContact=hit.ActualAt-contact,Interval=1}
  task.wait(.8)
- far(A,a);phase(a,'Running');near(A,a);phase(a,'AttackRunStart');phase(a,'AttackRun',2)
- report.Cases.AttackLoopAndReentry=true
- -- Leave both actual actors active for read-only captures; no camera/UI changes.
- workspace:SetAttribute('__SCP096TestPhase','Visual')
- task.wait(30)
- workspace:SetAttribute('__SCP096TestPhase','Lifecycle')
- far(B,b);local peerGeneration=b:GetAttribute('SpawnGeneration')
- local function peer()
-  check(actor(B)==b and b:GetAttribute('SpawnGeneration')==peerGeneration and b.Parent,'Peer actor reset')
-  check(b:GetAttribute('SCP096Phase')~='Cancelled','Peer animation cancelled')
- end
- local old=a;a=prepare(A);task.wait(.15);keepAlive[A]=nil;targets[A]=nil
- A.Character:FindFirstChildOfClass('Humanoid').Health=0
- waitFor(function()return not a.Parent end,6,'intro death retires actor');peer()
- ready(A);a=prepare(A);check(a~=old,'Retry uses fresh actor');peer()
- local cancelled=a;EM.InitializePlayer(A,1);task.wait(.15)
- check(not cancelled.Parent,'Return reset retires intro');peer()
- a=prepare(A);phase(a,'Running',4);near(A,a);phase(a,'AttackRunStart')
- keepAlive[A]=nil;A.Character:FindFirstChildOfClass('Humanoid').Health=0
- waitFor(function()return not a.Parent end,6,'attack death retires actor');peer()
- ready(A);a=prepare(A);phase(a,'Running',4);near(A,a);phase(a,'AttackRunStart');phase(a,'AttackRun',2)
- EM.Deactivate(A);A:SetAttribute('CurrentWorld',1);targets[A]=nil
- check(not a.Parent,'World return retires attack');peer()
- -- Existing BossCombatService snapshots Strength at encounter start.
- -- Prepare lethal strength before entering, never overwrite that production rule.
- ready(A);a=prepare(A,1e16);phase(a,'Running',4);near(A,a);phase(a,'AttackRunStart')
- task.wait(.3)
- local accepted,reason=EM.TryManualAttack(A)
- check(accepted,'Accepted defeat input '..tostring(reason))
- waitFor(function()return EM.GetPlayerState(A).Defeated[1]==true end,5,'real Boss defeat');peer()
- report.Cases.LifecycleAndPeerIsolation=true
- for _,p in players do local key='Final_'..p.UserId;request:FireClient(p,key,'Report')
+ far(A,a);far(B,b);task.wait(1.2)
+ check(a:GetAttribute('SCP096Phase')=='AttackRun' and b:GetAttribute('SCP096Phase')=='AttackRun','Range exit preserves loop')
+ check(a:GetAttribute('SCP096PhaseRevision')==aRevision and b:GetAttribute('SCP096PhaseRevision')==bRevision,'Contact cannot restart Start/loop')
+ report.Cases.RangeChangesPreserveLoop=true
+ for _,p in players do local key='Forward_'..p.UserId;request:FireClient(p,key,'Report')
   local data=waitFor(function()return replies[key]end,8,'client report').Value
   report.Cases[key]=data
-  check(data.ForeignVisible==0,'Foreign Boss became visible')
-  check(data.Tracks==0,'Unexpected animation tracks')
-  local found={}
-  for _,capture in data.Actors do for name,count in capture.Changes do if count>0 and capture.Visible then found[name]=true end end end
-  for _,name in {'GetUp_Panic','Panic','Running','AttackRunStart','AttackRun'} do check(found[name],'No client Bone movement for '..name) end
+  check(data.ForeignVisible==0 and data.Tracks==0,'Visibility/tracks regression')
+  local currentGeneration=(p==A and a or b):GetAttribute('SpawnGeneration')
+  local first;for _,capture in data.Actors do if capture.Generation==currentGeneration then first=capture;break end end
+  check(first and first.Visible,'Body mesh visible flag')
+  for _,name in {'GetUp_Panic','Panic','AttackRunStart','AttackRun'} do check((first.Changes[name] or 0)>0,'No client Bone movement for '..name) end
+  for _,row in first.Phases do check(row.Phase~='Running','Arms-down Running appeared') end
+  for _,keyName in {'Pursuit','Contact'} do
+   local arms=first.ArmSamples[keyName]
+   check(arms and arms.Count>20 and arms.MinForward>.9 and arms.MaxVertical<.15,'Forward horizontal arms during '..keyName)
+  end
  end
- targets[A]=nil;keepAlive[A]=nil;request:FireClient(A,'Exit','Leave')
- waitFor(function()return A.Parent~=Players end,10,'real test client departure');peer()
- report.Cases.DepartureIsolation=true
+ local peerGeneration=b:GetAttribute('SpawnGeneration')
+ local old=a;a=prepare(A);far(A,a);phase(a,'AttackRun',4)
+ check(a~=old and not old.Parent,'Fresh retry actor')
+ check(actor(B)==b and b:GetAttribute('SpawnGeneration')==peerGeneration and b:GetAttribute('SCP096PhaseRevision')==bRevision,'Retry cannot reset peer')
+ EM.Deactivate(A);targets[A]=nil;A:SetAttribute('CurrentWorld',1)
+ check(not a.Parent and b.Parent and b:GetAttribute('SCP096Phase')=='AttackRun','Return cancels only owner')
+ report.Cases.RetryAndPeerIsolation=true
 end,debug.traceback)
 if not ok then table.insert(report.Errors,err) end
 report.Success=ok

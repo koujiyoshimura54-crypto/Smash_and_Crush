@@ -1145,3 +1145,8 @@ Remaining visual issue: SCP049 still exposes a pale carrier segment during strid
 - Connected023/058/173/939 to movement-driven production joint animation and the shared Preview candidate.058 gains four visible articulated legs;173 gains anatomical arm/leg groups. Existing geometry/rest poses and all combat settings remain.
 - All four passed native two-client same-Stage movement, stop/restart/return, death/respawn, three retries, defeat and departure isolation. Native image sequences are retained at the owner's request.
 - Applied only seven Sources and approved joint/version deltas to the current owner-approved rbxl; native saved-file reopening and reference/UniqueId checks passed. HUD/Strength/Win, death-camera and attack-angle160/210 edits were preserved. No Studio Save/Publish or production data writes. Details and verification limits: reports/World2FourBossWalk_20261022/README.md.
+
+## 2026-10-23 - SCP096 forward-arm pursuit correction
+
+- Changed the current Cloud-place Studio editor's Stage1 sequence to GetUp_Panic2x -> Panic2x -> AttackRunStart1x once -> AttackRun1x loop throughout pursuit. Hit-condition changes no longer restore arms-down Running; damage25/1s is unchanged.
+- Passed116 native Edit checks and focused two-client runtime pose/state/combat checks. Rendered appearance and public servers remain unverified. Preserved template/clips and restored test fixtures/display values; no rbxl write or Studio Save/Publish. See reports/World2SCP096Production_20261023/FORWARD_PURSUIT.md.

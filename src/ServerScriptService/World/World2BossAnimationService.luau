@@ -8,6 +8,10 @@ local M={}
 local records={}
 local function publish096(enemy,r)
  local timeline=r.Timeline
+ if r.PublishedAttackEligible~=timeline.AttackEligible then
+  r.PublishedAttackEligible=timeline.AttackEligible
+  enemy:SetAttribute("SCP096AttackEligible",timeline.AttackEligible)
+ end
  if r.PublishedRevision==timeline.Revision then return end
  r.PublishedRevision=timeline.Revision
  enemy:SetAttribute("SCP096PhaseStartedAt",timeline.StartedAt)

@@ -23,7 +23,7 @@ Run.Heartbeat:Connect(function()
   live=actor
   captures[actor]={Generation=actor:GetAttribute('SpawnGeneration'),Bones=bones,Mesh=mesh,
    Phases={},Changes={},Previous={},FirstRoot=actor:GetPivot(),MaxTravel=0,Visible=false,
-   MinFootY=math.huge,MaxFootY=-math.huge}
+   MinFootY=math.huge,MaxFootY=-math.huge,ArmSamples={}}
  end
  local r=actor and captures[actor]
  if not r then return end
@@ -45,6 +45,18 @@ Run.Heartbeat:Connect(function()
   end
  end
  r.Changes[phase]=math.max(r.Changes[phase] or 0,changed)
+ if phase=='AttackRun' then
+  local key=actor:GetAttribute('SCP096AttackEligible') and 'Contact' or 'Pursuit'
+  local arms=r.ArmSamples[key] or {Count=0,MinForward=1,MaxVertical=0}
+  for _,side in {'L','R'} do
+   local upper=r.Mesh:FindFirstChild(side..'.Arm_U',true)
+   local hand=r.Mesh:FindFirstChild(side..'.Hand',true)
+   local direction=r.Mesh.CFrame:VectorToObjectSpace((hand.TransformedWorldCFrame.Position-upper.TransformedWorldCFrame.Position).Unit)
+   arms.Count+=1;arms.MinForward=math.min(arms.MinForward,-direction.Z)
+   arms.MaxVertical=math.max(arms.MaxVertical,math.abs(direction.Y))
+  end
+  r.ArmSamples[key]=arms
+ end
  r.MaxTravel=math.max(r.MaxTravel,(actor:GetPivot().Position-r.FirstRoot.Position).Magnitude)
  r.Visible=r.Visible or r.Mesh.Transparency<.99 and r.Mesh.LocalTransparencyModifier<.99
 end)
@@ -67,7 +79,7 @@ request.OnClientEvent:Connect(function(key,action,generation)
  local result={Actors={},ForeignVisible=0,Tracks=0}
  for actor,r in captures do
   table.insert(result.Actors,{Generation=r.Generation,Phases=r.Phases,Changes=r.Changes,
-   MaxTravel=r.MaxTravel,Visible=r.Visible,BoneCount=#r.Bones,MinFootY=r.MinFootY,MaxFootY=r.MaxFootY})
+   MaxTravel=r.MaxTravel,Visible=r.Visible,BoneCount=#r.Bones,MinFootY=r.MinFootY,MaxFootY=r.MaxFootY,ArmSamples=r.ArmSamples})
  end
  local folder=workspace:FindFirstChild('World2Enemies')
  if folder then for _,owner in folder:GetChildren() do
