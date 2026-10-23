@@ -1153,5 +1153,7 @@ Remaining visual issue: SCP049 still exposes a pale carrier segment during strid
 
 ## 2026-10-23 - Y01 camera framing recovery
 
+- Follow-up: read the owner's PreMerge rbxl directly and restored the current Studio's StarterPlayer zoom bounds from .5/128 to18/30. A focused ordinary Play verified property propagation and scaled runtime bounds. Source and unrelated edits were retained; Edit remains unsaved. See reports/PlayerCameraY01_20261023/PREMERGE_BOUNDS.md.
+
 - Preserve the current18/.15 calibration and manual zoom while retrying missed resize framing when normal camera follow becomes ready. Camera replacement uses nominal zoom; centering is absolute and resize-only.
 - Native focused Play/rendered checks covered representative sizes in both Worlds, wheel zoom, lifecycle/return routes and occlusion. Restored test substitutions/settings; current Studio remains unsaved in Edit, without rbxl write or Save/Publish. See reports/PlayerCameraY01_20261023/README.md.
