@@ -11,6 +11,32 @@ end
 function M.GetPoints(item)
  return item and Master.TypePrefixes[item.ItemType] and M.RarityPoints[item.Rarity] or nil
 end
+function M.GetRank(item)
+ local rank=item and Master.RarityRank[item.Rarity]
+ return rank and rank+((item.WorldId or 1)==2 and 5 or 0) or nil
+end
+function M.IsUnlocked(item,world2Unlocked)
+ return item~=nil and ((item.WorldId or 1)==1 or world2Unlocked==true)
+end
+function M.Groups(owned,world2Unlocked)
+ local groups={}
+ local kinds={Glove=1,Protein=2,TrainingBelt=3}
+ local elements={};for i,name in ipairs(Master.Elements) do elements[name]=i end
+ for id,count in pairs(owned or {}) do
+  local item=Master.Get(id)
+  if integer(count) and M.GetPoints(item) and M.IsUnlocked(item,world2Unlocked) then
+   -- Element variants remain distinct: they participate in different set bonuses.
+   table.insert(groups,{Key=id,ItemId=id,Count=count,Rank=M.GetRank(item),KindOrder=kinds[item.ItemType],ElementOrder=elements[item.Element]})
+  end
+ end
+ table.sort(groups,function(a,b)
+  if a.Rank~=b.Rank then return a.Rank<b.Rank end
+  if a.ElementOrder~=b.ElementOrder then return a.ElementOrder<b.ElementOrder end
+  if a.KindOrder~=b.KindOrder then return a.KindOrder<b.KindOrder end
+  return a.ItemId<b.ItemId
+ end)
+ return groups
+end
 function M.Ladder()
  local rows={}
  for _,name in ipairs(Master.Rarities) do
@@ -35,7 +61,7 @@ function M.RarityOdds(points)
  end
  return {{Rarity=ladder[#ladder].Rarity,Probability=1}}
 end
-function M.Evaluate(materials,owned)
+function M.Evaluate(materials,owned,world2Unlocked)
  if typeof(materials)~="table" then return nil,"InvalidMaterials" end
  local total,count,types,elements,ids=0,0,{},{},{}
  local worldId
@@ -44,6 +70,7 @@ function M.Evaluate(materials,owned)
   local p=M.GetPoints(item)
   if not item or not p or not Master.ElementSet[item.Element] then return nil,"InvalidItemId" end
   local world=item.WorldId or 1
+  if world==2 and world2Unlocked==false then return nil,"WorldNotReached" end
   if worldId and worldId~=world then return nil,"MixedWorldMaterials" end
   worldId=world
   if not integer(n) then return nil,"InvalidAmount" end

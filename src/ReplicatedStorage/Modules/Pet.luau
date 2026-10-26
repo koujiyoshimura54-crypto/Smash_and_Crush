@@ -347,6 +347,14 @@ function Pet.NormalizeState(raw)
   if type(id)~="string" or #id==0 or #id>128 or type(name)~="string" or #name==0 or #name>128 then return nil,"InvalidPetCopy" end
   out.Owned[id]=name
  end
+ if raw.Protected~=nil then
+  if type(raw.Protected)~="table" then return nil,"InvalidPetProtection" end
+  out.Protected={}
+  for id,protected in pairs(raw.Protected) do
+   if type(id)~="string" or type(protected)~="boolean" then return nil,"InvalidPetProtection" end
+   out.Protected[id]=protected
+  end
+ end
  for slot,id in pairs(raw.Equipped) do
   if (slot~=1 and slot~=2) or type(id)~="string" then return nil,"InvalidPetEquip" end
  end

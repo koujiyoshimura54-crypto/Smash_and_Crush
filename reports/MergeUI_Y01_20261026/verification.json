@@ -1,0 +1,1421 @@
+{
+  "Checks": [
+    {
+      "Passed": true,
+      "Name": "Locked UI"
+    },
+    {
+      "Passed": true,
+      "Name": "Locked server"
+    },
+    {
+      "Passed": true,
+      "Name": "Saved arrival respects Studio reset"
+    },
+    {
+      "Passed": true,
+      "Name": "Server rejects forged/protected/equipped Pet IDs",
+      "Detail": {
+        "Unowned": "PetNotMergeable",
+        "Protected": "PetProtected",
+        "Equipped": "PetEquipped",
+        "Duplicate": "InvalidPetMaterials"
+      }
+    },
+    {
+      "Passed": true,
+      "Name": "Actual first arrival"
+    },
+    {
+      "Passed": true,
+      "Name": "World1 return retains arrival"
+    },
+    {
+      "Passed": true,
+      "Name": "All ranks visible after return"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 1"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 2"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 3"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 4"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 5"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 6"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 7"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 8"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 9"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 10"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 11"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 12"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 13"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 14"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 15"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 16"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 17"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 18"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 19"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 20"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 21"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 22"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 23"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 24"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 25"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 26"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 27"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 28"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 29"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank/order 30"
+    },
+    {
+      "Passed": true,
+      "Name": "Scroll reaches rank 10"
+    },
+    {
+      "Passed": true,
+      "Name": "Item remove one, owned unchanged"
+    },
+    {
+      "Passed": true,
+      "Name": "Item Clear"
+    },
+    {
+      "Passed": true,
+      "Name": "Drag handler adds one"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank 9 candidate in World1"
+    },
+    {
+      "Passed": true,
+      "Name": "Rank 9 real grant and consumption"
+    },
+    {
+      "Passed": true,
+      "Name": "Completed rank presentation"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Pet/Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Pet/Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Pet/Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable footer Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Ore/Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Ore/Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Ore/Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable footer Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Item/Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Item/Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Item/Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable footer Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Pet/Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Pet/Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable Pet/Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Stable footer Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Pet group uses owned copies"
+    },
+    {
+      "Passed": true,
+      "Name": "Pet capacity excludes protected/equipped"
+    },
+    {
+      "Passed": true,
+      "Name": "Pet remove one"
+    },
+    {
+      "Passed": true,
+      "Name": "Pet Clear"
+    },
+    {
+      "Passed": true,
+      "Name": "Pet Egg roll/open/grant",
+      "Detail": "Basic"
+    },
+    {
+      "Passed": true,
+      "Name": "Exact Pet consumption"
+    },
+    {
+      "Passed": true,
+      "Name": "Protected/equipped/performance retained"
+    },
+    {
+      "Passed": true,
+      "Name": "Pet refreshed after merge"
+    },
+    {
+      "Passed": true,
+      "Name": "Ore cap, points, inputs"
+    },
+    {
+      "Passed": true,
+      "Name": "Ore calculated candidates"
+    },
+    {
+      "Passed": true,
+      "Name": "Ore remove one and recalculate"
+    },
+    {
+      "Passed": true,
+      "Name": "Ore consumes/grants one",
+      "Detail": "NORMAL_11"
+    },
+    {
+      "Passed": true,
+      "Name": "Ore clears after confirmation"
+    },
+    {
+      "Passed": true,
+      "Name": "Sale quantity and Win preview"
+    },
+    {
+      "Passed": true,
+      "Name": "Sale exact count/Win",
+      "Detail": 100110
+    },
+    {
+      "Passed": true,
+      "Name": "Sale resets selection"
+    },
+    {
+      "Passed": true,
+      "Name": "Dumbbell duplicate ownership",
+      "Detail": 2
+    },
+    {
+      "Passed": true,
+      "Name": "Reopen adds exactly once"
+    },
+    {
+      "Passed": true,
+      "Name": "Reopen adds exactly once"
+    },
+    {
+      "Passed": true,
+      "Name": "Reopen adds exactly once"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow tabs Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow selection callback Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow button separation Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow Clear callback Item"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow tabs Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow selection callback Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow point/owned separation Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow point/selection separation Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow button separation Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow Clear callback Pet"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow tabs Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow selection callback Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow point/owned separation Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow point/selection separation Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow button separation Ore"
+    },
+    {
+      "Passed": true,
+      "Name": "Narrow Clear callback Ore"
+    }
+  ],
+  "RNG": "Unmodified production Random.new sampling; guaranteed candidates follow unchanged Config.",
+  "RenderSteps": 30,
+  "VisualComparison": {
+    "Inspected": true,
+    "Images": [
+      "screenshots/item-comparison.png",
+      "screenshots/pet-comparison.png",
+      "screenshots/ore-comparison.png"
+    ],
+    "Conditions": "Each reference panel crop resized to the 819x540 native Studio panel crop; no map/inventory equivalence assumed.",
+    "Limits": "Existing asset art/tint/padding retained; no pixel-perfect claim. Device touch hardware was not tested."
+  },
+  "Success": true,
+  "Viewport": "1279, 720",
+  "ArrivalReset": true,
+  "PhysicalInput": {
+    "Method": "Windows pointer events in the real Studio viewport",
+    "ItemClicks": "2 additions, owned 8 unchanged",
+    "ItemRemoval": "2 to 1",
+    "ItemDrag": "exactly 1 addition after inset correction",
+    "NarrowPetClicks": "2 Cow copies, 100 pt",
+    "NarrowClear": "0",
+    "NarrowHost": "360x640 Frame; emulator settings unchanged"
+  },
+  "Snapshots": {
+    "OreSelected": {
+      "Tab": "Ore",
+      "Inputs": [
+        {
+          "Points": 100,
+          "Key": "ORE_015:1",
+          "Count": 1
+        },
+        {
+          "Points": 100,
+          "Key": "ORE_015:2",
+          "Count": 1
+        },
+        {
+          "Points": 100,
+          "Key": "ORE_015:3",
+          "Count": 1
+        },
+        {
+          "Points": 130,
+          "Key": "ORE_016:1",
+          "Count": 1
+        },
+        {
+          "Points": 130,
+          "Key": "ORE_016:2",
+          "Count": 1
+        }
+      ],
+      "Canvas": [
+        311.3377685546875,
+        1032
+      ],
+      "Rows": [
+        {
+          "Enabled": false,
+          "Bounds": [
+            168.7977752685547,
+            -97.675537109375,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_001",
+          "Owned": 12,
+          "Points": 5,
+          "Order": 1,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            290.7266540527344,
+            -97.675537109375,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_002",
+          "Owned": 12,
+          "Points": 7,
+          "Order": 2,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            412.6555480957031,
+            -97.675537109375,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_003",
+          "Owned": 12,
+          "Points": 9,
+          "Order": 3,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            168.7977752685547,
+            24.253341674804688,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_004",
+          "Owned": 12,
+          "Points": 11,
+          "Order": 4,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            290.7266540527344,
+            24.253341674804688,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_005",
+          "Owned": 12,
+          "Points": 15,
+          "Order": 5,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            412.6555480957031,
+            24.253341674804688,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_006",
+          "Owned": 12,
+          "Points": 20,
+          "Order": 6,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            168.7977752685547,
+            146.18223571777344,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_007",
+          "Owned": 12,
+          "Points": 25,
+          "Order": 7,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            290.7266540527344,
+            146.18223571777344,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_008",
+          "Owned": 12,
+          "Points": 30,
+          "Order": 8,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            412.6555480957031,
+            146.18223571777344,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_009",
+          "Owned": 12,
+          "Points": 35,
+          "Order": 9,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            168.7977752685547,
+            268.1111145019531,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_010",
+          "Owned": 12,
+          "Points": 40,
+          "Order": 10,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            290.7266540527344,
+            268.1111145019531,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_011",
+          "Owned": 12,
+          "Points": 55,
+          "Order": 11,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            412.6555480957031,
+            268.1111145019531,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_012",
+          "Owned": 12,
+          "Points": 65,
+          "Order": 12,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            168.7977752685547,
+            390.0400085449219,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_013",
+          "Owned": 12,
+          "Points": 75,
+          "Order": 13,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            290.7266540527344,
+            390.0400085449219,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_014",
+          "Owned": 12,
+          "Points": 85,
+          "Order": 14,
+          "Selected": 0
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            412.6555480957031,
+            390.0400085449219,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_015",
+          "Owned": 12,
+          "Points": 100,
+          "Order": 15,
+          "Selected": 3
+        },
+        {
+          "Enabled": false,
+          "Bounds": [
+            168.7977752685547,
+            511.96893310546875,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "ORE_016",
+          "Owned": 12,
+          "Points": 130,
+          "Order": 16,
+          "Selected": 2
+        }
+      ],
+      "Candidates": [
+        {
+          "Id": "NORMAL_11",
+          "Percent": 75
+        },
+        {
+          "Id": "NORMAL_12",
+          "Percent": 25
+        }
+      ],
+      "Visible": true,
+      "Total": "Total: 560 pt",
+      "Bounds": [
+        153.20220947265625,
+        12,
+        972.5955810546875,
+        638
+      ],
+      "Tabs": {
+        "Ore": {
+          "Visible": true,
+          "Bounds": [
+            418.32666015625,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        },
+        "Item": {
+          "Visible": true,
+          "Bounds": [
+            168.79776000976562,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        },
+        "Pet": {
+          "Visible": true,
+          "Bounds": [
+            293.56219482421875,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        }
+      },
+      "Footer": {
+        "Clear": [
+          731.655517578125,
+          583.3644409179688,
+          121.92888641357422,
+          46.78666687011719
+        ],
+        "Merge": [
+          870.5977783203125,
+          576.2755737304688,
+          238.8955535888672,
+          58.12888717651367
+        ]
+      },
+      "Status": "",
+      "Selected": "Selected: 5/5",
+      "Enabled": true
+    },
+    "PetGrouped": {
+      "Tab": "Pet",
+      "Inputs": [
+        {
+          "Points": 50,
+          "Key": "Cow",
+          "Count": 2
+        }
+      ],
+      "Canvas": [
+        0,
+        516
+      ],
+      "Rows": [
+        {
+          "Enabled": false,
+          "Bounds": [
+            168.7977752685547,
+            213.324462890625,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "Cow",
+          "Owned": 2,
+          "Points": 50,
+          "Order": 1,
+          "Selected": 2
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            290.7266540527344,
+            213.324462890625,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "Giraffe",
+          "Owned": 1,
+          "Points": 50,
+          "Order": 2,
+          "Selected": 0
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            412.6555480957031,
+            213.324462890625,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "Slime",
+          "Owned": 1,
+          "Points": 50,
+          "Order": 3,
+          "Selected": 0
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            335.25335693359375,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "Camel",
+          "Owned": 1,
+          "Points": 40,
+          "Order": 4,
+          "Selected": 0
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            290.7266540527344,
+            335.25335693359375,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "Bear",
+          "Owned": 2,
+          "Points": 30,
+          "Order": 5,
+          "Selected": 0
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            412.6555480957031,
+            335.25335693359375,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "Dog",
+          "Owned": 5,
+          "Points": 10,
+          "Order": 6,
+          "Selected": 0
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            457.1822509765625,
+            116.25777435302734,
+            116.25777435302734
+          ],
+          "Key": "Grey Cat",
+          "Owned": 3,
+          "Points": 10,
+          "Order": 7,
+          "Selected": 0
+        }
+      ],
+      "Candidates": [
+        {
+          "Id": "Rare",
+          "Percent": 60
+        },
+        {
+          "Id": "Legendary",
+          "Percent": 40
+        }
+      ],
+      "Visible": true,
+      "Total": "Total: 100 pt",
+      "Bounds": [
+        153.20220947265625,
+        12,
+        972.5955810546875,
+        638
+      ],
+      "Tabs": {
+        "Ore": {
+          "Visible": true,
+          "Bounds": [
+            418.32666015625,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        },
+        "Item": {
+          "Visible": true,
+          "Bounds": [
+            168.79776000976562,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        },
+        "Pet": {
+          "Visible": true,
+          "Bounds": [
+            293.56219482421875,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        }
+      },
+      "Footer": {
+        "Clear": [
+          731.655517578125,
+          583.3644409179688,
+          121.92888641357422,
+          46.78666687011719
+        ],
+        "Merge": [
+          870.5977783203125,
+          576.2755737304688,
+          238.8955535888672,
+          58.12888717651367
+        ]
+      },
+      "Status": "",
+      "Selected": "Selected: 2",
+      "Enabled": true
+    },
+    "ItemBoundary": {
+      "Tab": "Item",
+      "Inputs": [],
+      "Canvas": [
+        317.58221435546875,
+        1495
+      ],
+      "Rows": [
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            -104.675537109375,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "GLOVE_COMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 1,
+          "Rank": 1
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            -104.675537109375,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "PROTEIN_COMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 2,
+          "Rank": 1
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            -104.675537109375,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "TRAININGBELT_COMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 3,
+          "Rank": 1
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            0.9489059448242188,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "GLOVE_UNCOMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 4,
+          "Rank": 2
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            0.9489059448242188,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "PROTEIN_UNCOMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 5,
+          "Rank": 2
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            0.9489059448242188,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "TRAININGBELT_UNCOMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 6,
+          "Rank": 2
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            107.28225708007812,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "GLOVE_RARE_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 7,
+          "Rank": 3
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            107.28225708007812,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "PROTEIN_RARE_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 8,
+          "Rank": 3
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            107.28225708007812,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "TRAININGBELT_RARE_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 9,
+          "Rank": 3
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            212.90667724609375,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "GLOVE_EPIC_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 10,
+          "Rank": 4
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            212.90667724609375,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "PROTEIN_EPIC_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 11,
+          "Rank": 4
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            212.90667724609375,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "TRAININGBELT_EPIC_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 12,
+          "Rank": 4
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            319.2400207519531,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "GLOVE_LEGENDARY_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 13,
+          "Rank": 5
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            319.2400207519531,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "PROTEIN_LEGENDARY_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 14,
+          "Rank": 5
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            319.2400207519531,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "TRAININGBELT_LEGENDARY_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 15,
+          "Rank": 5
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            424.86444091796875,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_GLOVE_COMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 16,
+          "Rank": 6
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            424.86444091796875,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_PROTEIN_COMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 17,
+          "Rank": 6
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            424.86444091796875,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_TRAININGBELT_COMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 18,
+          "Rank": 6
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            531.1978149414062,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_GLOVE_UNCOMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 19,
+          "Rank": 7
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            531.1978149414062,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_PROTEIN_UNCOMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 20,
+          "Rank": 7
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            531.1978149414062,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_TRAININGBELT_UNCOMMON_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 21,
+          "Rank": 7
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            636.822265625,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_GLOVE_RARE_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 22,
+          "Rank": 8
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            636.822265625,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_PROTEIN_RARE_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 23,
+          "Rank": 8
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            636.822265625,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_TRAININGBELT_RARE_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 24,
+          "Rank": 8
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            743.1555786132812,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_GLOVE_EPIC_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 25,
+          "Rank": 9
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            743.1555786132812,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_PROTEIN_EPIC_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 26,
+          "Rank": 9
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            743.1555786132812,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_TRAININGBELT_EPIC_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 27,
+          "Rank": 9
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            168.7977752685547,
+            848.780029296875,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_GLOVE_LEGENDARY_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 28,
+          "Rank": 10
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            283.63775634765625,
+            848.780029296875,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_PROTEIN_LEGENDARY_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 29,
+          "Rank": 10
+        },
+        {
+          "Enabled": true,
+          "Bounds": [
+            398.477783203125,
+            848.780029296875,
+            110.586669921875,
+            101.37110900878906
+          ],
+          "Key": "W2_TRAININGBELT_LEGENDARY_FIRE",
+          "Owned": 8,
+          "Selected": 0,
+          "Order": 30,
+          "Rank": 10
+        }
+      ],
+      "Candidates": [],
+      "Visible": true,
+      "Total": "Total: 0 pt",
+      "Bounds": [
+        153.20220947265625,
+        12,
+        972.5955810546875,
+        638
+      ],
+      "Tabs": {
+        "Ore": {
+          "Visible": true,
+          "Bounds": [
+            418.32666015625,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        },
+        "Item": {
+          "Visible": true,
+          "Bounds": [
+            168.79776000976562,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        },
+        "Pet": {
+          "Visible": true,
+          "Bounds": [
+            293.56219482421875,
+            128.25778198242188,
+            119.09333038330078,
+            48.204444885253906
+          ]
+        }
+      },
+      "Footer": {
+        "Clear": [
+          731.655517578125,
+          583.3644409179688,
+          121.92888641357422,
+          46.78666687011719
+        ],
+        "Merge": [
+          870.5977783203125,
+          576.2755737304688,
+          238.8955535888672,
+          58.12888717651367
+        ]
+      },
+      "Status": "",
+      "Selected": "Selected: 0",
+      "Enabled": false
+    }
+  },
+  "EditVerification": {
+    "Mode": "Edit",
+    "UniverseId": 10765181857,
+    "PlaceId": 126576845524886,
+    "RestoredTemporarySources": 36,
+    "TemporaryObjectsRemaining": 0,
+    "CameraUnchanged": true,
+    "ShowDevelopmentGuiUnchanged": true,
+    "SavePublish": false
+  }
+}

@@ -1,6 +1,30 @@
 -- Existing normal-Pet points and Possible Eggs odds, shared by UI and server.
 local Egg=require(script.Parent.Egg)
 local M={}
+function M.Eligible(state,id)
+ local name=state and state.Owned and state.Owned[id]
+ if not name or not Egg.mergePet(name) then return false,"PetNotMergeable" end
+ if table.find(state.Equipped or {},id) then return false,"PetEquipped" end
+ if state.Protected and state.Protected[id] then return false,"PetProtected" end
+ return true
+end
+function M.Groups(state)
+ local byName={}
+ for id,name in pairs(state and state.Owned or {}) do
+  local info=Egg.mergePet(name)
+  if info then
+   -- Use the authoritative species ID, never a shared icon/model/display name.
+   local group=byName[name]
+   if not group then group={Key=name,Name=name,Count=0,Points=info.Points,Ids={}};byName[name]=group end
+   group.Count+=1
+   if M.Eligible(state,id) then table.insert(group.Ids,id) end
+  end
+ end
+ local groups={}
+ for _,group in pairs(byName) do table.sort(group.Ids);table.insert(groups,group) end
+ table.sort(groups,function(a,b) return a.Points~=b.Points and a.Points>b.Points or a.Points==b.Points and a.Name<b.Name end)
+ return groups
+end
 function M.Evaluate(state,ids)
  if typeof(state)~="table" or typeof(state.Owned)~="table" or typeof(ids)~="table" then return nil,"InvalidPetMaterials" end
  local count=#ids
@@ -12,8 +36,8 @@ function M.Evaluate(state,ids)
   seen[id]=true
   local name=state.Owned[id];local info=name and Egg.mergePet(name)
   if not info then return nil,"PetNotMergeable" end
-  if table.find(state.Equipped or {},id) then return nil,"PetEquipped" end
-  if state.Protected and state.Protected[id] then return nil,"PetProtected" end
+  local allowed,reason=M.Eligible(state,id)
+  if not allowed then return nil,reason end
   points+=info.Points
  end
  local preview=Egg.mergePreview(points,count)

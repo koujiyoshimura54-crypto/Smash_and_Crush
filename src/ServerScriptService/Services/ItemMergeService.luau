@@ -33,6 +33,7 @@ function M.GetState(player)
  end
  return {Loaded=owned~=nil,OwnedItems=owned or {},EquippedItems=Items.GetEquippedItems(player) or {},
   MinimumCount=Config.MinimumCount,SessionToken=s.Token,NextSequence=(journal.Sequence or 0)+1,
+  World2Unlocked=Data.HasReachedWorld2(player),
   SavePending=data and (data.Saving or data.PendingItemMutation~=nil) or false,LastResult=result}
 end
 function M.MergeItem(player,request)
@@ -43,7 +44,7 @@ function M.MergeItem(player,request)
  if request.SessionToken~=s.Token then return false,"MergeSessionChanged" end
  local owned=Items.GetOwnedItems(player)
  if not owned then return false,"DataNotLoaded" end
- local preview,reason=Config.Evaluate(request.Materials,owned)
+ local preview,reason=Config.Evaluate(request.Materials,owned,Data.HasReachedWorld2(player))
  -- Replays compare immutable submitted counts, not possibly already-consumed holdings.
  local previous=s.Requests[request.RequestId]
  if previous then
