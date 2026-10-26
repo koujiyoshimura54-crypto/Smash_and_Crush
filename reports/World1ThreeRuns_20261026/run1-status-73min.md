@@ -1,0 +1,5 @@
+# Run 1 checkpoint after the user's status question
+
+Run 1 was not complete. Stage 5 first defeat was observed at 3511.627 seconds (58:31.627). Stage 10 was not cleared within 60 minutes. At 4390.855 seconds the player was training on Normal02 with Strength 142267.5, level 38, rebirth 0, Win 27 and NORMAL_03 equipped. All Codex delays remain included in elapsed time.
+
+Continuation input error: the first post-compaction Move call used named coordinates although the existing bridge expects an indexed array. The ordinary movement destination consequently became the origin. This was corrected with an indexed MoveTo destination; no teleport or state edit was used. Subsequent read at 4447.420 seconds showed Win 7 and NORMAL_02 equipped (previously Win 27 and NORMAL_03). The movement route passed purchase pads; an incidental ordinary 20-Win NORMAL_02 purchase is the likely explanation, to be corroborated against the native events. Record it as operator overhead, not random progression variance. Game Source/balance remain unchanged.

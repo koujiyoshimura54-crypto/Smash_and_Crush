@@ -1,0 +1,11 @@
+# Run 1 live notes
+
+- Native UI-ready clock starts at 2026-10-26 14:25:51.309 UTC. Full initial server snapshot in main-run01 checkpoints: Strength 0 / level 1 / Win 0 / rebirth 0 / no inventory and no override. Loading request timestamp is retained by the orchestrator.
+- Stage1 first defeat: 112.213 seconds, Strength 193, level 5. First natural drop Copper Ore (11 points). Native movement and Auto combat passed all four walls and the Boss. No forced outcome.
+- The agent spent substantial real time inspecting/repairing its input focus handling after Stage1. This time remains in elapsed time. Early operation-phase annotations overinclude focus-debug/agent inspection spans; preserve the raw ledger and disclose this attribution uncertainty instead of inventing a human-time correction.
+- A movement-input release bug in the harness allowed an unintended additional ordinary Stage1 lap after Trophy return. It produced another 1 Win and a Common Fire TrainingBelt. This is recorded as an operator/control issue, not random-time variance or a deliberate efficient route. No CFrame/progression assignment was used. A normal input release on Trophy Stage reset was added to the operation helper; game Sources/parameters remain fixed.
+- One Copper Ore merged through actual UI into NORMAL_02 (+5 Strength). It used no Win. The ordinary Win price is 20; current funds were only 2 Win. Equipped through normal Inventory UI. This is direct evidence of useful early Ore forging relative to buying that same Dumbbell.
+- Best Equip put the naturally banked Common Fire Belt on. Normal02 treadmill then actually awarded 15 Strength/second (6 base-plus-Dumbbell × 1.25 Belt × two ticks), with no extra multiplier.
+- Stage2 first defeat: 1043.743 seconds, Strength 1684, level 12. The agent overshot the 450 target while investigating controls; all extra training time is included. Two Stone Ore copies held because their combined 10 points cannot improve the +5 equipped Dumbbell. No merge forced for coverage.
+- Rebirth eligible at level 10, but deferred at the observed post-training state because rebuilding 1667 Strength at 15/s exceeds the fixed 90-second rule.
+- Client streaming initially omitted far Stage9/10 markers. Server geometry reads found both; this was not treated as a gameplay bug or bypass.

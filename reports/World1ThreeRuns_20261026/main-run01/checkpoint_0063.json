@@ -1,0 +1,2534 @@
+{
+  "Snapshot": {
+    "OwnedDumbbells": {
+      "NORMAL_02": 1,
+      "NORMAL_03": 1
+    },
+    "Win": 57,
+    "Loaded": true,
+    "EquippedItems": {
+      "Protein": "PROTEIN_UNCOMMON_ICE",
+      "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+      "Glove": "GLOVE_RARE_FIRE"
+    },
+    "SpentWin": 100,
+    "UTC": 1793029361.806,
+    "Override": false,
+    "Auto": true,
+    "EarnedWin": 156,
+    "Strength": 146221.5,
+    "ForgeJournal": {
+      "Id": "fffd9f62-68e7-4e08-809a-baab2ea88e8f",
+      "ResultId": "ORE_002",
+      "Sequence": 22,
+      "Signature": "DropOre|ORE_002"
+    },
+    "Multipliers": {
+      "VIP": 1,
+      "Rebirth": 1,
+      "Win": 1
+    },
+    "Health": 100,
+    "Stage": 2,
+    "Bag": {
+      "Items": [],
+      "Count": 0,
+      "Active": true,
+      "Capacity": 5,
+      "WorldId": 1,
+      "RunId": "31ab3ab1-efcf-49ee-bf96-ac5044a7e1fb"
+    },
+    "Elapsed": 4610.496999979019,
+    "Defeated": [
+      true
+    ],
+    "Pets": {
+      "Revision": 0,
+      "Version": 1,
+      "LastResults": [],
+      "Owned": [],
+      "Equipped": [
+        ""
+      ],
+      "LastRequestId": ""
+    },
+    "Fighting": false,
+    "Aura": "Pink",
+    "Speed": 24,
+    "Level": 38,
+    "EquippedDumbbell": "NORMAL_02",
+    "Capacity": 5,
+    "Rebirth": 0,
+    "Walls": {
+      "Current": 5,
+      "MajorStage": 2,
+      "Maxes": [
+        300,
+        325,
+        350,
+        425
+      ],
+      "Skipped": false,
+      "BossMaxHP": 2250,
+      "Gauges": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "Cleared": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "ItemMergeJournal": {
+      "Sequence": 0
+    },
+    "OwnedItems": {
+      "TRAININGBELT_COMMON_FIRE": 2,
+      "GLOVE_COMMON_ICE": 1,
+      "GLOVE_RARE_FIRE": 1,
+      "PROTEIN_UNCOMMON_ICE": 1,
+      "TRAININGBELT_COMMON_ICE": 1,
+      "TRAININGBELT_COMMON_ELECTRIC": 2,
+      "PROTEIN_COMMON_FIRE": 3,
+      "PROTEIN_COMMON_ELECTRIC": 1,
+      "GLOVE_COMMON_ELECTRIC": 2,
+      "GLOVE_COMMON_FIRE": 1,
+      "TRAININGBELT_RARE_FIRE": 1
+    },
+    "Position": [
+      287.74481201171875,
+      8.310546875,
+      273.5025634765625
+    ],
+    "Ores": {
+      "ORE_003": 1,
+      "ORE_007": 1,
+      "ORE_002": 3,
+      "ORE_008": 1,
+      "ORE_010": 1,
+      "ORE_004": 1,
+      "ORE_001": 7,
+      "ORE_005": 1,
+      "ORE_006": 1
+    },
+    "OwnedAuras": {
+      "Pink": true
+    },
+    "Visited": false,
+    "NormalTrainingGain": 26,
+    "Deaths": 1
+  },
+  "Totals": {
+    "operations": 589.3390004634857,
+    "training": 2023.7969994544983,
+    "combat": 47.726999282836914,
+    "death": 3.3480000495910645,
+    "codex_interruption": 1741.8389995098114,
+    "movement": 204.3950011730194
+  },
+  "TotalEvents": 1084,
+  "Events": [
+    {
+      "UTC": 1793029220.39,
+      "Index": 1034,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029220.39,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145129.5,
+        "ForgeJournal": {
+          "Id": "07d36c0b-d47d-4499-be4a-b3eeb6312370",
+          "ResultId": "ORE_001",
+          "Sequence": 17,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 2,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4469.081000089645,
+        "Defeated": [
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 5,
+          "MajorStage": 2,
+          "Maxes": [
+            300,
+            325,
+            350,
+            425
+          ],
+          "Skipped": false,
+          "BossMaxHP": 2250,
+          "Gauges": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "Cleared": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.6370849609375,
+          8.310545921325684,
+          244.9877166748047
+        ],
+        "Ores": {
+          "ORE_001": 6,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_004": 1,
+          "ORE_005": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4469.081000089645,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029222.143,
+      "Index": 1035,
+      "Payload": {
+        "Remote": "EnemyDropGachaResult",
+        "Data": {
+          "Segment": 5,
+          "OwnerUserId": "benchmark-player",
+          "Outcome": "ORE",
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d",
+          "OreId": "ORE_001",
+          "WorldId": 1,
+          "Stage": 2,
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057"
+        }
+      },
+      "Elapsed": 4470.833999872208,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793029222.209,
+      "Index": 1036,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029222.209,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145192.5,
+        "ForgeJournal": {
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057",
+          "ResultId": "ORE_001",
+          "Sequence": 18,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 3,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4470.900000095367,
+        "Defeated": [
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 48,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 3,
+          "Maxes": [
+            600,
+            750,
+            900,
+            1200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 12500,
+          "Gauges": [
+            600,
+            750,
+            900,
+            1200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.485595703125,
+          8.30539608001709,
+          279.95086669921875
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4470.900000095367,
+      "Kind": "Defeat"
+    },
+    {
+      "UTC": 1793029225.644,
+      "Index": 1037,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029225.644,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145192.5,
+        "ForgeJournal": {
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057",
+          "ResultId": "ORE_001",
+          "Sequence": 18,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 3,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4474.335000038147,
+        "Defeated": [
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 3,
+          "Maxes": [
+            600,
+            750,
+            900,
+            1200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 12500,
+          "Gauges": [
+            600,
+            750,
+            900,
+            1200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.6875,
+          8.310546875,
+          282.341796875
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4474.335000038147,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029230.876,
+      "Index": 1038,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029230.876,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145192.5,
+        "ForgeJournal": {
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057",
+          "ResultId": "ORE_001",
+          "Sequence": 18,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 3,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4479.566999912262,
+        "Defeated": [
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 3,
+          "Maxes": [
+            600,
+            750,
+            900,
+            1200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 12500,
+          "Gauges": [
+            600,
+            750,
+            900,
+            1200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.6875,
+          8.310546875,
+          282.341796875
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4479.566999912262,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029232.51,
+      "Index": 1039,
+      "Payload": {
+        "Phase": "movement",
+        "Reason": "Normal Humanoid MoveTo"
+      },
+      "Elapsed": 4481.2009999752045,
+      "Kind": "Decision"
+    },
+    {
+      "UTC": 1793029236.075,
+      "Index": 1040,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029236.075,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145297.5,
+        "ForgeJournal": {
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057",
+          "ResultId": "ORE_001",
+          "Sequence": 18,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 3,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4484.766000032425,
+        "Defeated": [
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 5,
+          "MajorStage": 3,
+          "Maxes": [
+            600,
+            750,
+            900,
+            1200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 12500,
+          "Gauges": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "Cleared": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.67596435546875,
+          8.310546875,
+          376.13323974609375
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4484.766000032425,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029237.891,
+      "Index": 1041,
+      "Payload": {
+        "Remote": "EnemyDropGachaResult",
+        "Data": {
+          "Segment": 4,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d",
+          "OwnerUserId": "benchmark-player",
+          "Outcome": "ITEM",
+          "Id": "ca3abbb6-9041-41b7-98e0-6ac80f5f0241",
+          "WorldId": 1,
+          "Stage": 3,
+          "ItemId": "TRAININGBELT_COMMON_FIRE"
+        }
+      },
+      "Elapsed": 4486.582000017166,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793029237.892,
+      "Index": 1042,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029237.892,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145339.5,
+        "ForgeJournal": {
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057",
+          "ResultId": "ORE_001",
+          "Sequence": 18,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 4,
+        "Bag": {
+          "Items": {
+            "TRAININGBELT_COMMON_FIRE": 1
+          },
+          "Count": 1,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4486.582999944687,
+        "Defeated": [
+          true,
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 48,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 4,
+          "Maxes": [
+            3000,
+            3750,
+            4500,
+            6000
+          ],
+          "Skipped": false,
+          "BossMaxHP": 30000,
+          "Gauges": [
+            3000,
+            3750,
+            4500,
+            6000
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.798828125,
+          8.310546875,
+          404.2607421875
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4486.582999944687,
+      "Kind": "Defeat"
+    },
+    {
+      "UTC": 1793029241.258,
+      "Index": 1043,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029241.258,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145339.5,
+        "ForgeJournal": {
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057",
+          "ResultId": "ORE_001",
+          "Sequence": 18,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 4,
+        "Bag": {
+          "Items": {
+            "TRAININGBELT_COMMON_FIRE": 1
+          },
+          "Count": 1,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4489.948999881744,
+        "Defeated": [
+          true,
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 4,
+          "Maxes": [
+            3000,
+            3750,
+            4500,
+            6000
+          ],
+          "Skipped": false,
+          "BossMaxHP": 30000,
+          "Gauges": [
+            3000,
+            3750,
+            4500,
+            6000
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.798828125,
+          8.310546875,
+          404.2607421875
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4489.948999881744,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029246.492,
+      "Index": 1044,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029246.492,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145339.5,
+        "ForgeJournal": {
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057",
+          "ResultId": "ORE_001",
+          "Sequence": 18,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 4,
+        "Bag": {
+          "Items": {
+            "TRAININGBELT_COMMON_FIRE": 1
+          },
+          "Count": 1,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4495.183000087738,
+        "Defeated": [
+          true,
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 4,
+          "Maxes": [
+            3000,
+            3750,
+            4500,
+            6000
+          ],
+          "Skipped": false,
+          "BossMaxHP": 30000,
+          "Gauges": [
+            3000,
+            3750,
+            4500,
+            6000
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.798828125,
+          8.310546875,
+          404.2607421875
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4495.183000087738,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029248.293,
+      "Index": 1045,
+      "Payload": {
+        "Phase": "movement",
+        "Reason": "Normal Humanoid MoveTo"
+      },
+      "Elapsed": 4496.983999967575,
+      "Kind": "Decision"
+    },
+    {
+      "UTC": 1793029251.668,
+      "Index": 1046,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029251.667,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145444.5,
+        "ForgeJournal": {
+          "Id": "65320042-dbfe-472f-8a05-5ed47dcc9057",
+          "ResultId": "ORE_001",
+          "Sequence": 18,
+          "Signature": "DropOre|ORE_001"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 4,
+        "Bag": {
+          "Items": {
+            "TRAININGBELT_COMMON_FIRE": 1
+          },
+          "Count": 1,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4500.358000040054,
+        "Defeated": [
+          true,
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 5,
+          "MajorStage": 4,
+          "Maxes": [
+            3000,
+            3750,
+            4500,
+            6000
+          ],
+          "Skipped": false,
+          "BossMaxHP": 30000,
+          "Gauges": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "Cleared": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.6263427734375,
+          8.310546875,
+          495.8162536621094
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4500.358999967575,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029252.925,
+      "Index": 1047,
+      "Payload": {
+        "Remote": "EnemyDropGachaResult",
+        "Data": {
+          "Segment": 3,
+          "OwnerUserId": "benchmark-player",
+          "Outcome": "ORE",
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d",
+          "OreId": "ORE_008",
+          "WorldId": 1,
+          "Stage": 4,
+          "Id": "9d635c59-a329-4a8c-8553-7a298ee15c08"
+        }
+      },
+      "Elapsed": 4501.6159999370575,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793029252.976,
+      "Index": 1048,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029252.976,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145465.5,
+        "ForgeJournal": {
+          "Id": "9d635c59-a329-4a8c-8553-7a298ee15c08",
+          "ResultId": "ORE_008",
+          "Sequence": 19,
+          "Signature": "DropOre|ORE_008"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 5,
+        "Bag": {
+          "Items": {
+            "TRAININGBELT_COMMON_FIRE": 1
+          },
+          "Count": 1,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4501.667000055313,
+        "Defeated": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 48,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 5,
+          "Maxes": [
+            40000,
+            50000,
+            60000,
+            80000
+          ],
+          "Skipped": false,
+          "BossMaxHP": 100000,
+          "Gauges": [
+            40000,
+            50000,
+            60000,
+            80000
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.7034606933594,
+          8.308477401733398,
+          517.628662109375
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_008": 1,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4501.667000055313,
+      "Kind": "Defeat"
+    },
+    {
+      "UTC": 1793029256.892,
+      "Index": 1049,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029256.892,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145465.5,
+        "ForgeJournal": {
+          "Id": "9d635c59-a329-4a8c-8553-7a298ee15c08",
+          "ResultId": "ORE_008",
+          "Sequence": 19,
+          "Signature": "DropOre|ORE_008"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 5,
+        "Bag": {
+          "Items": {
+            "TRAININGBELT_COMMON_FIRE": 1
+          },
+          "Count": 1,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4505.582999944687,
+        "Defeated": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 5,
+          "Maxes": [
+            40000,
+            50000,
+            60000,
+            80000
+          ],
+          "Skipped": false,
+          "BossMaxHP": 100000,
+          "Gauges": [
+            40000,
+            50000,
+            60000,
+            80000
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.771484375,
+          8.310546875,
+          527.298828125
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_008": 1,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4505.582999944687,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029262.143,
+      "Index": 1050,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029262.143,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145465.5,
+        "ForgeJournal": {
+          "Id": "9d635c59-a329-4a8c-8553-7a298ee15c08",
+          "ResultId": "ORE_008",
+          "Sequence": 19,
+          "Signature": "DropOre|ORE_008"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 5,
+        "Bag": {
+          "Items": {
+            "TRAININGBELT_COMMON_FIRE": 1
+          },
+          "Count": 1,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4510.833999872208,
+        "Defeated": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 5,
+          "Maxes": [
+            40000,
+            50000,
+            60000,
+            80000
+          ],
+          "Skipped": false,
+          "BossMaxHP": 100000,
+          "Gauges": [
+            40000,
+            50000,
+            60000,
+            80000
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.771484375,
+          8.310546875,
+          527.298828125
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_008": 1,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4510.833999872208,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029263.991,
+      "Index": 1051,
+      "Payload": {
+        "Phase": "movement",
+        "Reason": "Normal Humanoid MoveTo"
+      },
+      "Elapsed": 4512.681999921799,
+      "Kind": "Decision"
+    },
+    {
+      "UTC": 1793029267.358,
+      "Index": 1052,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_02": 1,
+          "NORMAL_03": 1
+        },
+        "Win": 7,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "PROTEIN_UNCOMMON_ICE",
+          "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+          "Glove": "GLOVE_RARE_FIRE"
+        },
+        "SpentWin": 100,
+        "UTC": 1793029267.358,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 106,
+        "Strength": 145549.5,
+        "ForgeJournal": {
+          "Id": "9d635c59-a329-4a8c-8553-7a298ee15c08",
+          "ResultId": "ORE_008",
+          "Sequence": 19,
+          "Signature": "DropOre|ORE_008"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 5,
+        "Bag": {
+          "Items": {
+            "TRAININGBELT_COMMON_FIRE": 1
+          },
+          "Count": 1,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+        },
+        "Elapsed": 4516.0490000247955,
+        "Defeated": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": true,
+        "Aura": "Pink",
+        "Speed": 24,
+        "Level": 38,
+        "EquippedDumbbell": "NORMAL_02",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 3,
+          "MajorStage": 5,
+          "Maxes": [
+            40000,
+            50000,
+            60000,
+            80000
+          ],
+          "Skipped": false,
+          "BossMaxHP": 100000,
+          "Gauges": [
+            0,
+            0,
+            4471.5,
+            80000
+          ],
+          "Cleared": [
+            true,
+            true
+          ]
+        },
+        "Rebirth": 0,
+        "OwnedItems": {
+          "TRAININGBELT_COMMON_FIRE": 1,
+          "GLOVE_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1,
+          "PROTEIN_UNCOMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "TRAININGBELT_COMMON_ELECTRIC": 2,
+          "PROTEIN_COMMON_FIRE": 3,
+          "PROTEIN_COMMON_ELECTRIC": 1,
+          "GLOVE_COMMON_ELECTRIC": 2,
+          "GLOVE_COMMON_FIRE": 1,
+          "TRAININGBELT_RARE_FIRE": 1
+        },
+        "Position": [
+          287.53466796875,
+          8.301711082458496,
+          599.116455078125
+        ],
+        "Ores": {
+          "ORE_001": 7,
+          "ORE_008": 1,
+          "ORE_007": 1,
+          "ORE_003": 1,
+          "ORE_005": 1,
+          "ORE_004": 1,
+          "ORE_002": 2
+        },
+        "OwnedAuras": {
+          "Pink": true
+        },
+        "Visited": false,
+        "NormalTrainingGain": 26,
+        "Deaths": 1
+      },
+      "Elapsed": 4516.0490000247955,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793029270.626,
+      "Index": 1053,
+      "Payload": {
+        "Remote": "EnemyDropGachaResult",
+        "Data": {
+          "Segment": 5,
+          "OwnerUserId": "benchmark-player",
+          "Outcome": "ORE",
+          "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d",
+          "OreId": "ORE_006",
+          "WorldId": 1,
+          "Stage": 5,
+          "Id": "7e635e4b-7a6d-4bc1-9b71-98d796795fda"
+        }
+      },
+      "Elapsed": 4519.316999912262,
+      "Kind": "ClientEvent"
+    }
+  ],
+  "StartUTC": 1793024751.309,
+  "Cursor": 1053,
+  "FirstClears": [
+    {
+      "OwnedDumbbells": [],
+      "Win": 0,
+      "Loaded": true,
+      "EquippedItems": {
+        "Protein": "",
+        "TrainingBelt": "",
+        "Glove": ""
+      },
+      "SpentWin": 0,
+      "UTC": 1793024863.522,
+      "Override": false,
+      "Auto": true,
+      "EarnedWin": 0,
+      "Strength": 193,
+      "ForgeJournal": {
+        "Id": "bdf16dd6-901b-4a1b-ac35-c42c3835f03a",
+        "ResultId": "ORE_004",
+        "Sequence": 1,
+        "Signature": "DropOre|ORE_004"
+      },
+      "Multipliers": {
+        "VIP": 1,
+        "Rebirth": 1,
+        "Win": 1
+      },
+      "Health": 100,
+      "Stage": 1,
+      "Bag": {
+        "Items": [],
+        "Count": 0,
+        "Active": true,
+        "Capacity": 5,
+        "WorldId": 1,
+        "RunId": "bfe54484-b62e-4496-b3ca-560030afc451"
+      },
+      "Elapsed": 112.21300005912781,
+      "Defeated": [
+        true
+      ],
+      "Pets": {
+        "LastRequestId": "",
+        "Version": 1,
+        "LastResults": [],
+        "Revision": 0,
+        "Equipped": [
+          ""
+        ],
+        "Owned": []
+      },
+      "Fighting": false,
+      "Aura": "",
+      "Speed": 48,
+      "Level": 5,
+      "EquippedDumbbell": "",
+      "Capacity": 5,
+      "ItemMergeJournal": {
+        "Sequence": 0
+      },
+      "Walls": {
+        "Current": 5,
+        "MajorStage": 1,
+        "Maxes": [
+          100,
+          125,
+          150,
+          200
+        ],
+        "Skipped": false,
+        "BossMaxHP": 375,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "Rebirth": 0,
+      "OwnedItems": [],
+      "Position": [
+        287.740234375,
+        7.134765625,
+        165.3193359375
+      ],
+      "Ores": {
+        "ORE_004": 1
+      },
+      "OwnedAuras": [],
+      "Visited": false,
+      "NormalTrainingGain": 1,
+      "Deaths": 0
+    },
+    {
+      "OwnedDumbbells": {
+        "NORMAL_02": 1
+      },
+      "Win": 2,
+      "Loaded": true,
+      "EquippedItems": {
+        "Protein": "",
+        "TrainingBelt": "TRAININGBELT_COMMON_FIRE",
+        "Glove": ""
+      },
+      "SpentWin": 0,
+      "UTC": 1793025795.052,
+      "Override": false,
+      "Auto": true,
+      "EarnedWin": 1,
+      "Strength": 1683,
+      "ForgeJournal": {
+        "Id": "7eae9fad-fb34-4ba5-9261-cc3035f71e77",
+        "ResultId": "ORE_001",
+        "Sequence": 4,
+        "Signature": "DropOre|ORE_001"
+      },
+      "Multipliers": {
+        "VIP": 1,
+        "Rebirth": 1,
+        "Win": 1
+      },
+      "Health": 100,
+      "Stage": 3,
+      "Bag": {
+        "Items": [],
+        "Count": 0,
+        "Active": true,
+        "Capacity": 5,
+        "WorldId": 1,
+        "RunId": "15155106-967d-44d1-b23b-6a95c0e9da99"
+      },
+      "Elapsed": 1043.7430000305176,
+      "Defeated": [
+        true,
+        true
+      ],
+      "Pets": {
+        "LastRequestId": "",
+        "Version": 1,
+        "LastResults": [],
+        "Revision": 0,
+        "Equipped": [
+          ""
+        ],
+        "Owned": []
+      },
+      "Fighting": false,
+      "Aura": "",
+      "Speed": 48,
+      "Level": 12,
+      "EquippedDumbbell": "NORMAL_02",
+      "Capacity": 5,
+      "ItemMergeJournal": {
+        "Sequence": 0
+      },
+      "Walls": {
+        "Current": 1,
+        "MajorStage": 3,
+        "Maxes": [
+          600,
+          750,
+          900,
+          1200
+        ],
+        "Skipped": false,
+        "BossMaxHP": 12500,
+        "Gauges": [
+          600,
+          750,
+          900,
+          1200
+        ],
+        "Cleared": []
+      },
+      "Rebirth": 0,
+      "OwnedItems": {
+        "TRAININGBELT_COMMON_FIRE": 1
+      },
+      "Position": [
+        287.15625,
+        7.502208232879639,
+        279.6270751953125
+      ],
+      "Ores": {
+        "ORE_001": 2
+      },
+      "OwnedAuras": [],
+      "Visited": false,
+      "NormalTrainingGain": 6,
+      "Deaths": 0
+    },
+    {
+      "OwnedDumbbells": {
+        "NORMAL_02": 1
+      },
+      "Win": 5,
+      "Loaded": true,
+      "EquippedItems": {
+        "Protein": "",
+        "TrainingBelt": "TRAININGBELT_COMMON_FIRE",
+        "Glove": ""
+      },
+      "SpentWin": 0,
+      "UTC": 1793026005.011,
+      "Override": false,
+      "Auto": true,
+      "EarnedWin": 4,
+      "Strength": 2949,
+      "ForgeJournal": {
+        "Id": "607cafdc-f36d-4eb1-8ec9-e73aa27a6677",
+        "ResultId": "ORE_003",
+        "Sequence": 7,
+        "Signature": "DropOre|ORE_003"
+      },
+      "Multipliers": {
+        "VIP": 1,
+        "Rebirth": 1,
+        "Win": 1
+      },
+      "Health": 100,
+      "Stage": 3,
+      "Bag": {
+        "Items": [],
+        "Count": 0,
+        "Active": true,
+        "Capacity": 5,
+        "WorldId": 1,
+        "RunId": "5fe08210-2f7b-4ce5-8dcc-f6f8085ee54b"
+      },
+      "Elapsed": 1253.7019999027252,
+      "Defeated": [
+        true,
+        true,
+        true
+      ],
+      "Pets": {
+        "LastRequestId": "",
+        "Version": 1,
+        "LastResults": [],
+        "Revision": 0,
+        "Equipped": [
+          ""
+        ],
+        "Owned": []
+      },
+      "Fighting": false,
+      "Aura": "",
+      "Speed": 48,
+      "Level": 15,
+      "EquippedDumbbell": "NORMAL_02",
+      "Capacity": 5,
+      "ItemMergeJournal": {
+        "Sequence": 0
+      },
+      "Walls": {
+        "Current": 5,
+        "MajorStage": 3,
+        "Maxes": [
+          600,
+          750,
+          900,
+          1200
+        ],
+        "Skipped": false,
+        "BossMaxHP": 12500,
+        "Gauges": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Cleared": [
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "Rebirth": 0,
+      "OwnedItems": {
+        "TRAININGBELT_COMMON_FIRE": 1
+      },
+      "Position": [
+        287.3315734863281,
+        7.624999523162842,
+        440.3021545410156
+      ],
+      "Ores": {
+        "ORE_001": 3,
+        "ORE_003": 1,
+        "ORE_002": 1
+      },
+      "OwnedAuras": [],
+      "Visited": false,
+      "NormalTrainingGain": 6,
+      "Deaths": 0
+    },
+    {
+      "OwnedDumbbells": {
+        "NORMAL_02": 1
+      },
+      "Win": 12,
+      "Loaded": true,
+      "EquippedItems": {
+        "Protein": "",
+        "TrainingBelt": "TRAININGBELT_COMMON_FIRE",
+        "Glove": ""
+      },
+      "SpentWin": 0,
+      "UTC": 1793026346.829,
+      "Override": false,
+      "Auto": true,
+      "EarnedWin": 11,
+      "Strength": 6173.5,
+      "ForgeJournal": {
+        "Id": "1d03574d-89e4-4f84-b61d-7c9ea2179d5d",
+        "ResultId": "ORE_007",
+        "Sequence": 11,
+        "Signature": "DropOre|ORE_007"
+      },
+      "Multipliers": {
+        "VIP": 1,
+        "Rebirth": 1,
+        "Win": 1
+      },
+      "Health": 100,
+      "Stage": 5,
+      "Bag": {
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "Count": 1,
+        "Active": true,
+        "Capacity": 5,
+        "WorldId": 1,
+        "RunId": "aa4e733a-678a-4d0e-8ce6-d4b2c02e62b0"
+      },
+      "Elapsed": 1595.5199999809265,
+      "Defeated": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "Pets": {
+        "LastRequestId": "",
+        "Version": 1,
+        "LastResults": [],
+        "Revision": 0,
+        "Equipped": [
+          ""
+        ],
+        "Owned": []
+      },
+      "Fighting": false,
+      "Aura": "",
+      "Speed": 48,
+      "Level": 19,
+      "EquippedDumbbell": "NORMAL_02",
+      "Capacity": 5,
+      "ItemMergeJournal": {
+        "Sequence": 0
+      },
+      "Walls": {
+        "Current": 1,
+        "MajorStage": 5,
+        "Maxes": [
+          40000,
+          50000,
+          60000,
+          80000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 100000,
+        "Gauges": [
+          40000,
+          50000,
+          60000,
+          80000
+        ],
+        "Cleared": []
+      },
+      "Rebirth": 0,
+      "OwnedItems": {
+        "TRAININGBELT_COMMON_FIRE": 1
+      },
+      "Position": [
+        287.8149719238281,
+        7.625746250152588,
+        516.5036010742188
+      ],
+      "Ores": {
+        "ORE_003": 1,
+        "ORE_007": 1,
+        "ORE_002": 2,
+        "ORE_004": 1,
+        "ORE_001": 4
+      },
+      "OwnedAuras": [],
+      "Visited": false,
+      "NormalTrainingGain": 6,
+      "Deaths": 1
+    },
+    {
+      "OwnedDumbbells": {
+        "NORMAL_02": 1
+      },
+      "Win": 37,
+      "Loaded": true,
+      "EquippedItems": {
+        "Protein": "PROTEIN_UNCOMMON_ICE",
+        "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+        "Glove": "GLOVE_COMMON_ELECTRIC"
+      },
+      "SpentWin": 30,
+      "UTC": 1793028262.936,
+      "Override": false,
+      "Auto": true,
+      "EarnedWin": 66,
+      "Strength": 46245.5,
+      "ForgeJournal": {
+        "Id": "78e66c16-ebfb-490e-886f-80c9d7d772bf",
+        "ResultId": "ORE_005",
+        "Sequence": 13,
+        "Signature": "DropOre|ORE_005"
+      },
+      "Multipliers": {
+        "VIP": 1,
+        "Rebirth": 1,
+        "Win": 1
+      },
+      "Health": 100,
+      "Stage": 6,
+      "Bag": {
+        "Items": {
+          "GLOVE_COMMON_ELECTRIC": 1,
+          "TRAININGBELT_COMMON_ICE": 1,
+          "GLOVE_RARE_FIRE": 1
+        },
+        "Count": 3,
+        "Active": true,
+        "Capacity": 5,
+        "WorldId": 1,
+        "RunId": "ff3be1ad-1e1a-498b-85c3-181e252ce09e"
+      },
+      "Elapsed": 3511.62700009346,
+      "Defeated": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "Pets": {
+        "LastRequestId": "",
+        "Version": 1,
+        "LastResults": [],
+        "Revision": 0,
+        "Equipped": [
+          ""
+        ],
+        "Owned": []
+      },
+      "Fighting": false,
+      "Aura": "Pink",
+      "Speed": 48,
+      "Level": 31,
+      "EquippedDumbbell": "NORMAL_02",
+      "Capacity": 5,
+      "ItemMergeJournal": {
+        "Sequence": 0
+      },
+      "Walls": {
+        "Current": 1,
+        "MajorStage": 6,
+        "Maxes": [
+          200000,
+          250000,
+          300000,
+          400000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 500000,
+        "Gauges": [
+          200000,
+          250000,
+          300000,
+          400000
+        ],
+        "Cleared": []
+      },
+      "Rebirth": 0,
+      "OwnedItems": {
+        "TRAININGBELT_COMMON_FIRE": 1,
+        "GLOVE_COMMON_ICE": 1,
+        "PROTEIN_UNCOMMON_ICE": 1,
+        "TRAININGBELT_COMMON_ELECTRIC": 2,
+        "PROTEIN_COMMON_FIRE": 3,
+        "PROTEIN_COMMON_ELECTRIC": 1,
+        "GLOVE_COMMON_ELECTRIC": 1,
+        "GLOVE_COMMON_FIRE": 1,
+        "TRAININGBELT_RARE_FIRE": 1
+      },
+      "Position": [
+        287.80078125,
+        7.8203125,
+        656.337890625
+      ],
+      "Ores": {
+        "ORE_003": 1,
+        "ORE_007": 1,
+        "ORE_002": 2,
+        "ORE_005": 1,
+        "ORE_004": 1,
+        "ORE_001": 5
+      },
+      "OwnedAuras": {
+        "Pink": true
+      },
+      "Visited": false,
+      "NormalTrainingGain": 26,
+      "Deaths": 1
+    },
+    {
+      "OwnedDumbbells": {
+        "NORMAL_02": 1,
+        "NORMAL_03": 1
+      },
+      "Win": 7,
+      "Loaded": true,
+      "EquippedItems": {
+        "Protein": "PROTEIN_UNCOMMON_ICE",
+        "TrainingBelt": "TRAININGBELT_RARE_FIRE",
+        "Glove": "GLOVE_RARE_FIRE"
+      },
+      "SpentWin": 100,
+      "UTC": 1793029292.941,
+      "Override": false,
+      "Auto": true,
+      "EarnedWin": 106,
+      "Strength": 145864.5,
+      "ForgeJournal": {
+        "Id": "609b686d-ce97-4e0d-9cf0-2e66368fb597",
+        "ResultId": "ORE_010",
+        "Sequence": 21,
+        "Signature": "DropOre|ORE_010"
+      },
+      "Multipliers": {
+        "VIP": 1,
+        "Rebirth": 1,
+        "Win": 1
+      },
+      "Health": 100,
+      "Stage": 7,
+      "Bag": {
+        "Items": {
+          "TRAININGBELT_COMMON_FIRE": 1
+        },
+        "Count": 1,
+        "Active": true,
+        "Capacity": 5,
+        "WorldId": 1,
+        "RunId": "f0d03864-0f4e-4142-b9ea-df218b29dd8d"
+      },
+      "Elapsed": 4541.631999969482,
+      "Defeated": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "Pets": {
+        "LastRequestId": "",
+        "Version": 1,
+        "LastResults": [],
+        "Revision": 0,
+        "Equipped": [
+          ""
+        ],
+        "Owned": []
+      },
+      "Fighting": false,
+      "Aura": "Pink",
+      "Speed": 48,
+      "Level": 38,
+      "EquippedDumbbell": "NORMAL_02",
+      "Capacity": 5,
+      "ItemMergeJournal": {
+        "Sequence": 0
+      },
+      "Walls": {
+        "Current": 1,
+        "MajorStage": 7,
+        "Maxes": [
+          1400000,
+          1750000,
+          2100000,
+          2800000
+        ],
+        "Skipped": false,
+        "BossMaxHP": 3500000,
+        "Gauges": [
+          1400000,
+          1750000,
+          2100000,
+          2800000
+        ],
+        "Cleared": []
+      },
+      "Rebirth": 0,
+      "OwnedItems": {
+        "TRAININGBELT_COMMON_FIRE": 1,
+        "GLOVE_COMMON_ICE": 1,
+        "GLOVE_RARE_FIRE": 1,
+        "PROTEIN_UNCOMMON_ICE": 1,
+        "TRAININGBELT_COMMON_ICE": 1,
+        "TRAININGBELT_COMMON_ELECTRIC": 2,
+        "PROTEIN_COMMON_FIRE": 3,
+        "PROTEIN_COMMON_ELECTRIC": 1,
+        "GLOVE_COMMON_ELECTRIC": 2,
+        "GLOVE_COMMON_FIRE": 1,
+        "TRAININGBELT_RARE_FIRE": 1
+      },
+      "Position": [
+        287.6014099121094,
+        8.308554649353027,
+        821.7861938476562
+      ],
+      "Ores": {
+        "ORE_003": 1,
+        "ORE_007": 1,
+        "ORE_001": 7,
+        "ORE_008": 1,
+        "ORE_010": 1,
+        "ORE_006": 1,
+        "ORE_004": 1,
+        "ORE_005": 1,
+        "ORE_002": 2
+      },
+      "OwnedAuras": {
+        "Pink": true
+      },
+      "Visited": false,
+      "NormalTrainingGain": 26,
+      "Deaths": 1
+    }
+  ]
+}
