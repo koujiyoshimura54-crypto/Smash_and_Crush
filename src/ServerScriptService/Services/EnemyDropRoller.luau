@@ -55,6 +55,9 @@ function M.Roll(rng,stage,worldId)
  local result={Outcome=hit and "ITEM" or "MISS",Segment=segments[rng:NextInteger(1,#segments)]}
  if hit then
   result.ItemId=M.RollItem(rng,stage,nil,worldId)
+ elseif (worldId or 1)==1 then
+  result.Outcome="ORE"
+  result.OreId=require(game.ReplicatedStorage.Config.OreConfig).Roll(stage,rng:NextNumber())
  end
  return result
 end

@@ -1,0 +1,301 @@
+{
+  "Sources": [
+    {
+      "Path": "ReplicatedStorage.Config.DumbbellItemMaster",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "5b62d07ae2c483b359f61d1cd573f4dedb6ed40a6b409536811d18c1cfb1249f",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Config.DumbbellStandConfig",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "fab3a0fb75efcd6f54c1521036d20a9316d0a3a0fae709969b2e2fc8b3c8117e",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Config.ItemMaster",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "94f6a4a6a4ac787d29353948d2cccfbe8465c043166faf0aac998b327ad17b1d",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Config.ItemMergeConfig",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "ac788243d1bafc8facb30035116445ce9e97fbbfd682402bf2ebd2bd4e054453",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.Egg",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "38c55e4593f3bdeb48037608f8b37f09397bc67f624f898e5e4841ad4ae068b3",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.Pet",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "8150a8e5253158c142deca03c082fc5bfbea13917b74a29f68f59519e5fe8164",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.InventoryPresentation",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "b8c96b0c7716811a44659ef9edd6cf9081c3b7f5674d8a39a11f2a592464a59e",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.ResponsivePanels",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "c2fed59e188edcb60ec17d619690006bfd566d4b1c485aa147c7f4f2acbaa314",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.PlayerDataService",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "c62fb89774365b809f4c1719558bc53dd59c52f6585ca0ca5c4a3373c90f49d2",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.PlayerDataOwnership",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "20924ed47aba81b57a683286d230af3ba2c9aec31c3fc78abab6927914b159be",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.PetServer",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "cc4042764ab0d7c131e995364d332216e6e1fc676d8bf98d5021272d3ba9a4cd",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.EggServer",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "5d2686c0c49f17e3f70188665f12b195ae4d45fd2eb2a8eee39b21662a66c3e9",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.DumbbellService",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "6507c9fe8d090e583e1406acb713a6f18bfa65dc7b7f032bdfd6ac49cf85b905",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.ItemService",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "871678311d8df12722223917ae8315ca1aab6b7960e67533794a0280fe55d6ea",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.ItemMergeService",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "0746f353340d5bd0a559c2195153b7e7bb1c873d06d6b7896612d956a5bf64eb",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.EnemyDropGachaService",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "0768dbf3fe60c7437168bb6638644f890269defcea5811beb9f3bbcdeb76fbf2",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.EnemyDropRoller",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "95e7e8be6e83b22e1e2a272cf4824462e9ccfe3d359f1b74a9d51702fe71143e",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.RunInventoryService",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "aea19d0a874cc40721be013cba8a4eb211d7d4468c263166317e9d76f7462a24",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.RunItemBankService",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "e383c5451bda1a046008571438d9a21624394582f6514c34539794dc51ee5df2",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.DumbbellStandService",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "b8a689e2aed7bc4a8fdb067566fafcdee391f60425b3b26281db4c53e8bce737",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.DumbbellController",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "87c8af40a04b811006330faa06266bdf075d8bc15870f6c0c4309f0ee9d94de7",
+      "Class": "Script"
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.ItemMergeController",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "0fce5c16b6f4af596c73447b20d5308903a00947d6ec21179176927a50c296b8",
+      "Class": "Script"
+    },
+    {
+      "Path": "ServerScriptService.Systems.Debug.StudioStartController",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "9187f31950132d759cc9f398647043161ab4dd98b84fe722148d8615fbf2d38f",
+      "Class": "Script"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.InventoryTabsClient",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "ce26bacbb4c8731e86b67c224a1372294caa097392f43a2db64ea072716f06be",
+      "Class": "LocalScript"
+    },
+    {
+      "Path": "StarterGui.StrengthUI.MergePanel_New.MergePanelClient_New",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "402182585652fd3355fad4a739b88e27df6b7debdaca67c96e969a87627b5726",
+      "Class": "LocalScript"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.PetClient",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "5f811a77b74378f0b7e74cceacdd557b90873e008c887ac6dcb665c1154a271f",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.HatchClient",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "8c0f28e679b126ec3662b2d544f014b4a75707cd767bc23073045dded9195a72",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+      "Changed": false,
+      "SourceMatches": true,
+      "Sha256": "556320d4de2aafc211204e46d1adf0362d7dde34ec8fd0155fd3868399025cb4",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.UI.EnemyDropGachaClient",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "8aeb6d32f72ae2c255218ddd60b4a385f101a56e65826e2ddce9d6f8ce6e61ee",
+      "Class": "LocalScript"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.InventoryPanelClient",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "4a09f4c685eb78e93c9f819773ebfbf2251ca214eb10d5c804d55391b168b4f0",
+      "Class": "LocalScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.TrophyRewardService",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "36fa5e3d56b5685f542d8da490d5a915034534a88f49bb7482b6102541faa18a",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Config.OreConfig",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "0bc561966d388b010dda43220b13724c079687df2dd01f18ed9b270ba20bf390",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.ForgeClient",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "1b1d7705f70083e0437de9ca9f9a347a7d75f19c9e7992a9d5208e873f8ff594",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.ForgeInventory",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "41451fecbaa61034379e7c49475e7b75c54483dd0a36f7184bcaab1dfb4300f7",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.InventoryCounts",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "3be3d38c922a73dca25f667e1b71ed7d9786d98fd7e1d19545b7a12113e19a17",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.OreMerge",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "a9e8f2845b8482a0981ec78df285966efdb5dc54766669b479d562bceda9fdf0",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.ForgePersistence",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "50546eb721aa04987d19f3312b2447f83672586b8859f612192f997aba4152c0",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Services.ForgeService",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "109b6609044c003a40564bbe0e51e5c53b6c8cda21e1f4e7631efdce72d64abd",
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.ForgeController",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "549504cdfdfcfacc9d5f1168fe042daf33a65451caff7aec49307c8ec41cabf4",
+      "Class": "Script"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.PetMerge",
+      "Changed": true,
+      "SourceMatches": true,
+      "Sha256": "a7bd30c8b64b878148c5967709b9f24a19fde711c85999f7e960cccccd56f26b",
+      "Class": "ModuleScript"
+    }
+  ],
+  "Final": {
+    "UniverseId": 10765181857,
+    "Version": 267,
+    "PlaceId": 126576845524886,
+    "QARemnants": [],
+    "Running": false
+  },
+  "ChangedCount": 22,
+  "CompilePassed": 22,
+  "ViewRestore": {
+    "Camera": true,
+    "Focus": true,
+    "FOV": true,
+    "ShowDevelopmentGui": true
+  },
+  "SavePublishPerformed": false,
+  "RbxlWritten": false
+}

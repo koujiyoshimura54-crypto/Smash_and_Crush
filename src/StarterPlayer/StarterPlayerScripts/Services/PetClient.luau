@@ -619,19 +619,19 @@ function PetClient.request(action,a,b)
 			if token~=requestToken or response.generation~=generation or stateGeneration~=generation then finish();return end
 			if response.ok then
 				-- Receipt identity prevents an unrelated refresh/retry from replaying Hatch.
-				if action=="OpenEgg" and playerData and playerData.LastRequestId==id then
+				if (action=="OpenEgg" or action=="Merge") and playerData and playerData.LastRequestId==id then
 					local shown,why=xpcall(function()
-						require(script.Parent.HatchClient).play(playerData.LastResults,a)
+						require(script.Parent.HatchClient).play(playerData.LastResults,action=="Merge" and playerData.LastMergeEgg or a)
 					end,debug.traceback)
 					if not shown then warn("[PetClient] Committed hatch presentation failed: "..tostring(why)) end
 				end
 				finish()
-				return
+				return true,response.reason
 			end
 			if response.reason~="InventorySavePending" and response.reason~="PetRequestFailed" then
 				finish()
 				PetClient.notify(response.reason)
-				return
+				return false,response.reason
 			end
 		end
 		-- Lost response: retry this exact ID/revision; never silently create another roll.

@@ -45,6 +45,9 @@ local cards={}
 
 local selectedId
 local owned={}
+local counts={}
+local Forge=require(RS.Modules.ForgeClient)
+local NumberFormat=require(RS.Modules.NumberFormat)
 local stateLoaded=false
 local equipped=""
 local pending={}
@@ -69,8 +72,21 @@ local function label(parent,name,text,position,size,color)
  return obj
 end
 local function updateButtons()
- local requestPending=next(pending)~=nil
+ local requestPending=next(pending)~=nil or Forge.IsPending()
  for itemId,card in pairs(cards) do
+  card.OwnedCount.Text=(counts[itemId] or 0)>0 and ("×"..counts[itemId]) or ""
+  local sale=card:FindFirstChild("SellButton")
+  if sale then
+   local item=Master.Get(itemId)
+   local max=math.max(0,(counts[itemId] or 0)-(equipped==itemId and 1 or 0))
+   local quantity=math.clamp(math.floor(tonumber(card.SellQuantity.Text) or 1),0,max)
+   if not card.SellQuantity:IsFocused() then card.SellQuantity.Text=tostring(quantity>0 and quantity or 1) end
+   sale.Visible=(counts[itemId] or 0)>0;card.SellQuantity.Visible=sale.Visible
+   sale.Text=quantity>0 and ("Sell "..NumberFormat.Price(quantity*item.SellWin)) or "Keep 1"
+   sale.Active=quantity>0 and not requestPending;sale.Interactable=sale.Active
+   PurchaseHUD.PurchaseButton(sale,"Win",sale.Text)
+   sale:SetAttribute("SellQuantity",quantity)
+  end
   local button=card:FindFirstChild("BuyButton")
   if button then
    local isEquipped=equipped==itemId
@@ -100,6 +116,7 @@ end
 local function applyState(state)
  if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedDumbbells)~="table" then return false end
  owned=state.OwnedDumbbells
+ counts=state.DumbbellCounts or {}
  stateLoaded=true
  equipped=typeof(state.EquippedDumbbell)=="string" and state.EquippedDumbbell or ""
  if typeof(state.Win)=="number" then panel.WinLabel.Text="Win  "..tostring(state.Win) end
@@ -175,6 +192,23 @@ for order,item in ipairs(sortedItems) do
   trophy.Name="WinIcon";trophy.Image=gui.WinLabel.TrophyIcon.Image
   trophy.BackgroundTransparency=1;trophy.ScaleType=Enum.ScaleType.Fit;trophy.AnchorPoint=Vector2.new(1,.5)
   trophy.Position=UDim2.new(.5,-8,.5,0);trophy.ZIndex=34;trophy.Parent=buy
+  local countLabel=label(card,"OwnedCount","",UDim2.new(.55,0,0,8),UDim2.new(.4,0,0,30),Color3.new(1,1,1))
+  countLabel.TextScaled=true;countLabel.ZIndex=35
+  if item.SellWin then
+   local quantity=Instance.new("TextBox");quantity.Name="SellQuantity";quantity.Text="1";quantity.ClearTextOnFocus=false
+   quantity.BackgroundColor3=Color3.fromRGB(25,19,45);quantity.TextColor3=Color3.new(1,1,1);quantity.TextScaled=true
+   quantity.ZIndex=34;quantity.Parent=card;round(quantity,7)
+   local sell=Instance.new("TextButton");sell.Name="SellButton";sell.Text="Sell";sell.ZIndex=34
+   sell.BackgroundColor3=Color3.fromRGB(230,180,20);sell.TextColor3=Color3.new(1,1,1);sell.TextScaled=true;sell.Parent=card;round(sell,7)
+   quantity.FocusLost:Connect(updateButtons)
+   Responsive.ConnectActivation(sell,function()
+    if not sell.Active or Forge.IsPending() then return end
+    selectCard(itemId)
+    Forge.Refresh()
+    local ok,code=Forge.Request("SellDumbbell",{ItemId=itemId,Count=sell:GetAttribute("SellQuantity")})
+    if not ok then showStatus(code) end
+   end)
+  end
   cards[itemId]=card
   card.Activated:Connect(function() selectCard(itemId) end)
   Responsive.ConnectActivation(buy,function()
@@ -213,7 +247,7 @@ layout=function()
  local iconHeight=math.max(compact and 84 or 104,76/scale)
  local effectHeight=math.max(28,22/scale)
  local buttonHeight=math.max(42,40/scale)
- local height=math.max(compact and 186 or 206,10+iconHeight+8+effectHeight+8+buttonHeight+12)
+ local height=math.max(compact and 186 or 206,10+iconHeight+8+effectHeight+8+buttonHeight+12)+54
  grid.FillDirectionMaxCells=columns
  grid.CellPadding=UDim2.fromOffset(14,14)
  grid.CellSize=UDim2.fromOffset(cellWidth,height)
@@ -236,11 +270,32 @@ layout=function()
   strength.TextStrokeColor3=Color3.new();strength.TextStrokeTransparency=0
   local button=card.BuyButton
   local bh=buttonHeight
-  button.Position=UDim2.new(0,12,1,-bh-12)
+  button.Position=UDim2.new(0,12,1,-bh-66)
+  if card:FindFirstChild("SellButton") then
+   card.SellQuantity.Position=UDim2.new(0,12,1,-52);card.SellQuantity.Size=UDim2.new(.25,-8,0,40)
+   card.SellButton.Position=UDim2.new(.25,8,1,-52);card.SellButton.Size=UDim2.new(.75,-20,0,40)
+  end
   button.Size=UDim2.new(1,-24,0,bh)
   button.TextSize=22
   button.Price.TextSize=24
   button.WinIcon.Size=UDim2.fromOffset(compact and 32 or 36,compact and 32 or 36)
+  -- StarterGui purchase donors can be measured before CurrentCamera has a real
+  -- viewport. Refit these inventory copies using this visible ScreenGui's size.
+  local donor=game.StarterGui.ScreenGui.Menus.RestockShop.Main.Common.Buy
+  local chain={};local node=donor
+  while node and not node:IsA("ScreenGui") do
+   if node:IsA("GuiObject") then table.insert(chain,1,node) end;node=node.Parent
+  end
+  local measured=gui.AbsoluteSize
+  for _,node in ipairs(chain) do measured=Vector2.new(measured.X*node.Size.X.Scale+node.Size.X.Offset,measured.Y*node.Size.Y.Scale+node.Size.Y.Offset) end
+  local ratio=measured.X/math.max(1,measured.Y)
+  for _,control in ipairs({button,card:FindFirstChild("SellButton")}) do
+   local visual=control and control:FindFirstChild("PurchasedButtonVisual")
+   if visual and ratio>0 then
+    local size=control.AbsoluteSize/scale;local h=math.min(size.Y,size.X/ratio)
+    visual.Size=UDim2.fromOffset(h*ratio,h)
+   end
+  end
  end
 end
 list:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
@@ -282,4 +337,11 @@ player:GetAttributeChangedSignal("EquippedDumbbell"):Connect(function()
  if panel.Visible then refreshState() end
 end)
 player:GetAttributeChangedSignal("World2Visited"):Connect(updateButtons)
+Forge.Changed:Connect(function() updateButtons() end)
+Forge.Completed:Connect(function(op,result)
+ if op.Action=="SellDumbbell" then
+  refreshState();showStatus(result.Success and "Sold" or tostring(result.Code))
+ end
+end)
+player:GetAttributeChangedSignal("ForgeInventoryRevision"):Connect(function() task.defer(refreshState) end)
 updateButtons()

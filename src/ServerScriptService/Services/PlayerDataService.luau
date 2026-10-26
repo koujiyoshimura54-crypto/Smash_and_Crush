@@ -12,6 +12,8 @@ local SpeedConfig=require(game.ReplicatedStorage.Config:WaitForChild("SpeedConfi
 local SizeChangeConfig=require(game.ReplicatedStorage.Config:WaitForChild("SizeChangeConfig"))
 local CapacityConfig=require(game.ReplicatedStorage.Config:WaitForChild("InventoryCapacityConfig"))
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
+local Counts=require(game.ReplicatedStorage.Modules.InventoryCounts)
+local ForgeInventory=require(game.ReplicatedStorage.Modules.ForgeInventory)
 local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
@@ -232,11 +234,11 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
- if typeof(itemId)~="string" or itemId=="" or owned[itemId]~=true then return "" end
+ if typeof(itemId)~="string" or itemId=="" or (Counts.Count(owned[itemId]) or 0)<1 then return "" end
  local item=DumbbellItemMaster.Get(itemId)
  return item and item.Category=="Dumbbell" and itemId or ""
 end
@@ -298,16 +300,15 @@ local function normalize(raw)
   if raw.EquippedSpeed~=nil and raw.EquippedSpeed~="Normal" and raw.EquippedSpeed~="Premium" then return nil,"Invalid EquippedSpeed" end
   d.EquippedSpeed=raw.EquippedSpeed or "Normal"
   -- Missing inventory is legacy data. Never replace a malformed saved inventory.
-  if raw.OwnedDumbbells~=nil then
-   if typeof(raw.OwnedDumbbells)~="table" then return nil,"Invalid OwnedDumbbells" end
-   for itemId,owned in pairs(raw.OwnedDumbbells) do
-    if typeof(itemId)~="string" or itemId=="" or owned~=true then
-     return nil,"Invalid OwnedDumbbells entry"
-    end
-    -- Preserve unknown IDs so future definitions do not lose ownership.
-    d.OwnedDumbbells[itemId]=true
-   end
-  end
+  local bells,bellError=Counts.Normalize(raw.OwnedDumbbells)
+  if not bells then return nil,bellError end
+  d.OwnedDumbbells=bells
+  local ores,oreError=Counts.Normalize(raw.OwnedOres)
+  if not ores then return nil,oreError end
+  d.OwnedOres=ores
+  local forge,forgeError=ForgeInventory.Journal(raw.ForgeJournal)
+  if not forge then return nil,forgeError end
+  d.ForgeJournal=forge
   if raw.OwnedAuras~=nil then
    if typeof(raw.OwnedAuras)~="table" then return nil,"Invalid OwnedAuras" end
    for id,owned in pairs(raw.OwnedAuras) do
@@ -347,6 +348,8 @@ local function normalize(raw)
 end
 local function applyAttributes(player,d)
  Pet.Publish(player,d.Pets)
+ player:SetAttribute("ForgeInventoryRevision",d.ForgeJournal.Sequence)
+ player:SetAttribute("ForgeSavePending",false)
  player:SetAttribute("SpeedUpgradeStage",d.SpeedUpgradeStage)
  player:SetAttribute("EquippedSpeed",d.EquippedSpeed)
  player:SetAttribute("SpeedUpgradePurchasePending",false)
@@ -660,6 +663,7 @@ end
 -- Server-only setter; data and its Attribute mirror change without yielding.
 function PlayerDataService.SetEquippedDumbbell(player,itemId)
  local s=sessions[player]
+ if s and s.PendingItemMutation then return false,"InventorySavePending" end
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
  if s.Saving then return false,"DataSaving" end
  if typeof(itemId)~="string" then return false,"InvalidItemId" end
@@ -667,7 +671,7 @@ function PlayerDataService.SetEquippedDumbbell(player,itemId)
   local item=DumbbellItemMaster.Get(itemId)
   if not item then return false,"InvalidItemId" end
   if item.Category~="Dumbbell" then return false,"InvalidCategory" end
-  if s.Data.OwnedDumbbells[itemId]~=true then return false,"NotOwned" end
+  if (Counts.Count(s.Data.OwnedDumbbells[itemId]) or 0)<1 then return false,"NotOwned" end
  end
  if s.Data.EquippedDumbbell==itemId then return true,"AlreadyEquipped" end
  s.Data.EquippedDumbbell=itemId
@@ -793,7 +797,7 @@ function PlayerDataService.SetWin(player,value)
  -- A capacity/Pet write may have committed even if its response was lost. Do not
  -- spend the same balance elsewhere while its receipt is unresolved; rewards
  -- can still increase Win and are retained when the purchase is acknowledged.
- if s.PendingItemMutation and (s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.SpeedUpgrade or s.PendingItemMutation.PetMutation) and n<s.Data.Win then return false end
+ if s.PendingItemMutation and (s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.SpeedUpgrade or s.PendingItemMutation.PetMutation or s.PendingItemMutation.ForgeMutation) and n<s.Data.Win then return false end
  s.Data.Win=math.max(0,math.floor(n))
  player:SetAttribute("Win",s.Data.Win)
  s.Dirty=true
@@ -874,6 +878,8 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   Win=d.Win,
   OwnedSpeeds=table.clone(d.OwnedSpeeds),
   OwnedDumbbells=table.clone(d.OwnedDumbbells),
+  OwnedOres=table.clone(d.OwnedOres),
+  ForgeJournal=assert(ForgeInventory.Journal(d.ForgeJournal)),
   EquippedDumbbell=d.EquippedDumbbell,
   OwnedAuras=table.clone(d.OwnedAuras),
   EquippedAura=equipAuraOnSuccess or d.EquippedAura,
@@ -922,6 +928,8 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.OwnedSpeeds=assert(normalizeSpeeds(old.OwnedSpeeds))
    for id in pairs(payload.OwnedSpeeds) do merged.OwnedSpeeds[id]=true end
    merged.OwnedDumbbells=table.clone(payload.OwnedDumbbells)
+   merged.OwnedOres=assert(Counts.Normalize(old.OwnedOres))
+   merged.ForgeJournal=assert(ForgeInventory.Journal(old.ForgeJournal))
    merged.EquippedDumbbell=payload.EquippedDumbbell
    merged.OwnedAuras=table.clone(payload.OwnedAuras)
    for key in pairs(merged.ShopRewards.Claims) do local product=ShopConfig.Get(key)
@@ -1357,7 +1365,7 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload,g
  if (generation or 0)~=(s.PetViewGeneration or 0) then return false,"PetStateChanged" end
  local override=s.StudioStartOverride
  local preview=override and s.StudioPetPreview
- if override and (not RunService:IsStudio() or not preview or (action~="Equip" and action~="Hatch")) then
+ if override and (not RunService:IsStudio() or not preview or (action~="Equip" and action~="Hatch" and action~="Merge")) then
   return false,"StudioOverrideActive"
  end
  local data=s.Data
@@ -1391,6 +1399,17 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload,g
    if type(result)~="table" or type(result.id)~="string" or #result.id~=36
     or type(result.pet)~="string" or allowed[result.pet]==nil or allowed[result.pet]~=result.percent then return false,"InvalidPetResult" end
   end
+ elseif action=="Merge" then
+  local merge=require(game.ReplicatedStorage.Modules.PetMerge)
+  local egg=require(game.ReplicatedStorage.Modules.Egg)
+  if type(payload)~="table" or type(payload.Results)~="table" or #payload.Results~=1 then return false,"InvalidPetMerge" end
+  local preview,err=merge.Evaluate(view,payload.Materials)
+  if not preview then return false,err end
+  if not merge.ValidEgg(preview,payload.EggName) then return false,"InvalidMergeEgg" end
+  local result=payload.Results[1];local allowed=egg.pets(payload.EggName)
+  if type(result)~="table" or type(result.id)~="string" or #result.id~=36
+   or type(result.pet)~="string" or allowed[result.pet]~=result.percent or not Pet.model(result.pet) then return false,"InvalidPetResult" end
+  op.Materials=preview.Ids;op.EggName=payload.EggName;op.Results=payload.Results
  elseif action=="Equip" then
   if type(payload)~="string" or not view.Owned[payload] then return false,"PetNotOwned" end
   if not Pet.model(view.Owned[payload]) then return false,"PetModelUnavailable" end
@@ -1410,10 +1429,43 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload,g
   s.StudioPetPreview=state
   player:SetAttribute("Win",data.Win)
   Pet.Publish(player,state)
-  return true,action=="Hatch" and "StudioPetHatched" or "StudioPetEquipped"
+  return true,action=="Hatch" and "StudioPetHatched" or action=="Merge" and "StudioPetMerged" or "StudioPetEquipped"
  end
  s.PendingItemMutation=op
  player:SetAttribute("PetSavePending",true)
+ return PlayerDataService.ResolveItemMutation(player)
+end
+
+-- Only trusted server services create this operation; clients never supply deltas or prices.
+function PlayerDataService.MutateForge(player,request)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.OwnershipLost then return false,"DataNotLoaded" end
+ if s.PendingItemMutation then
+  local old=s.PendingItemMutation
+  if old.ForgeMutation and old.Id==request.Id and old.Signature==request.Signature then return PlayerDataService.ResolveItemMutation(player) end
+  return false,"InventorySavePending"
+ end
+ if s.Saving then return false,"DataSaving" end
+ local d=s.Data
+ local op=table.clone(request)
+ op.ForgeMutation=true;op.ResetToken=d.ResetToken
+ op.WinBefore=player:GetAttribute("Win") or d.Win
+ op.PaidBefore=d.ShopRewards.WinGrantedTotal
+ op.DumbbellsBefore=table.clone(d.OwnedDumbbells);op.EquippedBefore=d.EquippedDumbbell
+ local probe=table.clone(d);probe.Win=op.WinBefore
+ local nextData,reason,delta=ForgeInventory.Apply(probe,op)
+ if not nextData then return false,reason end
+ if reason=="AlreadyApplied" then return true,reason end
+ op.WinDelta=delta
+ if RunService:IsStudio() and s.StudioStartOverride then
+  d.OwnedOres=nextData.OwnedOres;d.OwnedDumbbells=nextData.OwnedDumbbells
+  d.ForgeJournal=nextData.ForgeJournal;d.Win=nextData.Win
+  player:SetAttribute("Win",d.Win)
+  player:SetAttribute("ForgeInventoryRevision",d.ForgeJournal.Sequence)
+  return true,"StudioForgePreview"
+ end
+ s.PendingItemMutation=op
+ player:SetAttribute("ForgeSavePending",true)
  return PlayerDataService.ResolveItemMutation(player)
 end
 
@@ -1421,6 +1473,14 @@ function PlayerDataService.ResolveItemMutation(player)
  local s=sessions[player]
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
+ if op.ForgeMutation then
+  return require(script.Parent.ForgePersistence).Resolve(player,s,op,{
+   Update=function(transform) return ownedUpdate(player,s,transform) end,
+   Current=function() return sessions[player]==s and s.Loaded and not s.OwnershipLost and s.PendingItemMutation==op and s.Data.ResetToken==op.ResetToken end,
+   Defaults=defaults,ResetToken=resetToken,Metadata=metadata,
+   Retry=function() scheduleItemMutationRetry(player,s,op) end,
+  })
+ end
  if op.LimitedEggGrant then return resolveLimitedEggGrant(player,s,op) end
  if op.SpeedUpgrade then return resolveSpeedPurchase(player,s,op) end
  if op.CapacityUpgrade then return resolveCapacityPurchase(player,s,op) end

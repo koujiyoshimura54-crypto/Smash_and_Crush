@@ -1157,3 +1157,8 @@ Remaining visual issue: SCP049 still exposes a pale carrier segment during strid
 
 - Preserve the current18/.15 calibration and manual zoom while retrying missed resize framing when normal camera follow becomes ready. Camera replacement uses nominal zoom; centering is absolute and resize-only.
 - Native focused Play/rendered checks covered representative sizes in both Worlds, wheel zoom, lifecycle/return routes and occlusion. Restored test substitutions/settings; current Studio remains unsaved in Edit, without rbxl write or Save/Publish. See reports/PlayerCameraY01_20261023/README.md.
+
+
+## 2026-10-26 — World1 Ore / Pet Merge phases1.1–1.4
+
+Connected executable Pet Merge with immediate Egg Hatch, World1 Ore rewards/merge/sale, quantity dumbbells and protected equipment sales. Shared confirmed balance and purchased UI remain in the current unsaved Studio Edit session. Focused actual input/Play, isolated persistence,313 pure assertions,27 remote assertions and20 native two-client checks are documented separately from outstanding visual/public-server checks. No rbxl rewrite or Save/Publish. See [World1Ore report](../reports/World1Ore_20261026/README.md).

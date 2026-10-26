@@ -14,7 +14,7 @@ local function getInventoryState(player)
  local purchasable = Service.GetPurchasableDumbbells(player)
  return {
   Loaded = owned ~= nil and purchasable ~= nil,
-  OwnedDumbbells = owned or {}, PurchasableDumbbells = purchasable or {},
+  OwnedDumbbells = owned or {}, DumbbellCounts=Service.GetDumbbellCounts(player) or {}, PurchasableDumbbells = purchasable or {},
   EquippedDumbbell = Service.GetEquippedDumbbell(player) or "",
   Win = player:GetAttribute("Win") or 0,
  }

@@ -2,6 +2,7 @@
 local Players = game:GetService("Players")
 local Master = require(game:GetService("ReplicatedStorage").Config:WaitForChild("DumbbellItemMaster"))
 local Data = require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
+local Counts=require(game.ReplicatedStorage.Modules.InventoryCounts)
 local M = {}
 local busy = setmetatable({}, {__mode="k"})
 local function finite(value)
@@ -10,13 +11,13 @@ end
 function M.HasDumbbell(player, itemId)
  if typeof(itemId) ~= "string" then return false end
  local session = Data.Get(player)
- return session ~= nil and session.Loaded == true and session.Data.OwnedDumbbells[itemId] == true
+ return session ~= nil and session.Loaded == true and (Counts.Count(session.Data.OwnedDumbbells[itemId]) or 0)>0
 end
 -- Return a copy, never the mutable session inventory. nil means not loaded.
 function M.GetOwnedDumbbells(player)
  local session = Data.Get(player)
  if not session or not session.Loaded then return nil, "DataNotLoaded" end
- return table.clone(session.Data.OwnedDumbbells)
+ return Counts.Owned(session.Data.OwnedDumbbells)
 end
 -- One authoritative eligibility path for purchase, inventory UI and notifications.
 local function purchaseEligibility(player, itemId)
@@ -33,7 +34,7 @@ local function purchaseEligibility(player, itemId)
  if session.PendingItemMutation then return false, "InventorySavePending" end
  local owned = session.Data.OwnedDumbbells
  if typeof(owned) ~= "table" then return false, "InventoryUnavailable" end
- if owned[itemId] == true then return false, "AlreadyOwned" end
+ if (Counts.Count(owned[itemId]) or 0)>0 then return false, "AlreadyOwned" end
  if item.WorldId == 2 and not Data.HasReachedWorld2(player) then return false, "WorldNotReached" end
  local price = item.PriceWin
  if not finite(price) or price <= 0 or price % 1 ~= 0 then return false, "InvalidPrice" end
@@ -61,10 +62,16 @@ function M.PurchaseDumbbell(player, itemId)
  local ok, success, result = pcall(function()
   local available, code, session, owned, price, win = purchaseEligibility(player, itemId)
   if not available then return false, code end
+  if Master.Get(itemId).WorldId~=2 then
+   local id=game.HttpService:GenerateGUID(false)
+   return Data.MutateForge(player,{Action="BuyDumbbell",ItemId=itemId,Id=id,
+    Sequence=session.Data.ForgeJournal.Sequence+1,Signature="BuyDumbbell|"..itemId,ResultId=itemId})
+  end
+  -- Existing World2 purchase path and prices are retained.
   -- No yields from validation through debit and ownership insertion.
   -- Reuse the existing Win setter; the Attribute remains the balance authority.
   if not Data.SetWin(player, win - price) then return false, "DataNotLoaded" end
-  owned[itemId] = true
+  owned[itemId] = 1
   session.Dirty = true
   return true, "Purchased"
  end)
@@ -82,7 +89,7 @@ function M.GetEquippedDumbbell(player)
  if not session or not session.Loaded or not session.Data then return nil end
  local itemId = session.Data.EquippedDumbbell
  local item = Master.Get(itemId)
- if not item or item.Category ~= "Dumbbell" or session.Data.OwnedDumbbells[itemId] ~= true then return nil end
+ if not item or item.Category ~= "Dumbbell" or (Counts.Count(session.Data.OwnedDumbbells[itemId]) or 0)<1 then return nil end
  return itemId
 end
 function M.GetStrengthBonus(player)
@@ -109,5 +116,9 @@ function M.UnequipDumbbell(player)
  end
  if busy[player] then return false, "PurchaseInProgress" end
  return Data.SetEquippedDumbbell(player, "")
+end
+function M.GetDumbbellCounts(player)
+ local s=Data.Get(player)
+ return s and s.Loaded and table.clone(s.Data.OwnedDumbbells) or nil
 end
 return M

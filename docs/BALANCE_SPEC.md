@@ -702,3 +702,10 @@ Stages6..12 now require100000/3000000/50000000/100000000/300000000/1000000000/30
 ## 2026-10-20 - Rebirth authority consolidation, no balance change
 
 RebirthConfig now directly owns the existing effective levels10/15/22/30/45/70/90/110/140/160, unchanged entries11..30, and the existing base1/+0.5-per-count multiplier. World2GameplayConfig no longer owns Rebirth. Cumulative Strength references moved to the common Config as information only; they are not admission conditions. Existing World2 treadmill RequiredRebirth0/7/9 and all other equipment values are unchanged.
+
+
+## 2026-10-26 — Confirmed World1 Ore/dumbbell balance
+
+Authoritative numeric definitions are `ReplicatedStorage.Config.OreConfig` and `DumbbellItemMaster`; the complete twelve-row table is recorded in [World1Ore_20261026](../reports/World1Ore_20261026/README.md). World1 purchase Win:7,20,50,130,250,500,1000,1500,2500,4500,8000,13000. Sale Win:3,10,25,65,125,250,500,750,1250,2250,4000,6500. Merge thresholds:5,20,40,70,110,160,220,290,370,450,530,650. Strength bonuses remain3,5,9,15,25,45,75,120,180,280,450,700.
+
+Ore merge uses only the two neighboring thresholds; the upper probability is `(points-lower)/(upper-lower)`, with exact thresholds guaranteed.500/530/560/590/620/650 produce the requested37.5%/62.5%,100%,75%/25%,50%/50%,25%/75%,100% cases. World1 conditional Ore pools total100%; Spark begins Stage9. No World2, Egg, Pet strength, Item merge formula or multiplier-order rebalance. Spark×5 direct sale325 versus forged#12 sale6500 is intentional, not normalized. Reserved Ore017–020 sale values remain unset.

@@ -6,6 +6,7 @@ local Data=require(game.ServerScriptService.Services.PlayerDataService)
 local Roller=require(game.ServerScriptService.Services.EnemyDropRoller)
 local RunInventory=require(game.ServerScriptService.Services.RunInventoryService)
 local remote=RS.Remotes:WaitForChild("EnemyDropGachaResult")
+local Forge=require(script.Parent.ForgeService)
 local rng=Random.new()
 local processed=setmetatable({},{__mode="k"})
 local queues={}
@@ -52,7 +53,14 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
  result.Stage=stage
  result.WorldId=worldId
  result.RunId=runId
+ -- Owner decision: discard either category when the existing run bag is full.
+ -- The discard animation is a separate future task; never show acquisition here.
+ if worldId==1 then
+  local bag=RunInventory.GetSnapshot(player)
+  if bag and bag.Count>=bag.Capacity then result.Discarded=true;result.Reason="InventoryFull" end
+ end
  record.Stages[stage]=result
+ if result.Discarded then return true,"Discarded" end
  local queue=queues[player]
  if queue then table.insert(queue,result) else
   queue={result};queues[player]=queue
@@ -60,7 +68,22 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
    while player.Parent==Players and #queue>0 do
     local nextResult=queue[1]
     local success
-    if nextResult.WorldId==1 then
+    if nextResult.WorldId==1 and nextResult.Outcome=="ORE" then
+     -- A genuine defeat already passed the personal run/dedup gate above.
+     -- Durable ores survive movement, death and World changes during a yielding save.
+     while player.Parent==Players do
+      local bag=RunInventory.GetSnapshot(player)
+      local session=Data.Get(player)
+      local accepted=session and session.PendingItemMutation and session.PendingItemMutation.Id==nextResult.Id
+      if not accepted and bag and bag.Count>=bag.Capacity then nextResult.Discarded=true;break end
+      local added,code=Forge.GrantOre(player,nextResult.OreId,nextResult.Id)
+      if added then success=true;break end
+      if code~="InventorySavePending" and code~="DataSaving" and code~="DataNotLoaded" then
+       warn("[EnemyDropGacha] Ore grant rejected: "..tostring(code));break
+      end
+      task.wait(.5)
+     end
+    elseif nextResult.WorldId==1 then
      success=RunInventory.IsCurrent(player,nextResult.RunId)
      if success and nextResult.Outcome=="ITEM" then
       local added,code=RunInventory.TryAddDrop(player,nextResult.RunId,nextResult.Id,nextResult.ItemId)

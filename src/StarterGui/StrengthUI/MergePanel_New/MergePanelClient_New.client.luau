@@ -1,9 +1,14 @@
--- Purchased Merge Shop presentation. No Pet merge transaction or new recipe authority.
+-- Purchased Merge Shop presentation with independent Item/Pet/Ore transaction authorities.
 -- Reference coordinate system: Item image panel (150,63)-(1522,886), 1372 x 823.
 -- BEGIN MERGE VIEW: the same factory is used by Edit-only previews with read-only adapters.
 local function buildMergeShop(ctx)
  local gui,RS,PetClient,Egg,Master=ctx.gui,ctx.RS,ctx.PetClient,ctx.Egg,ctx.Master
  local ItemMergeConfig=require(RS.Config.ItemMergeConfig)
+ local PetMerge=require(RS.Modules.PetMerge)
+ local OreConfig=require(RS.Config.OreConfig)
+ local OreMerge=require(RS.Modules.OreMerge)
+ local Dumbbells=require(RS.Config.DumbbellItemMaster)
+ local Forge=require(RS.Modules.ForgeClient)
  -- Item Merge only; Inventory and the shared Shop/drop star renderer stay intact.
  local goldStar="rbxassetid://76134658177553"
  local greyStar="rbxassetid://126441080731699"
@@ -131,7 +136,7 @@ local function buildMergeShop(ctx)
   end
   return x
  end
- local tabs={Item=action("Item",body,"Item"),Pet=action("Pet",body,"Pet")}
+ local tabs={Item=action("Item",body,"Item"),Pet=action("Pet",body,"Pet"),Ore=action("Ore",body,"Ore")}
  -- Owned is an inactive purchase-state donor; navigation must accept input.
  for _,button in pairs(tabs) do button.Active=true;button.Interactable=true end
  local listTitle=text("ListTitle",body,"Your Items");listTitle.TextXAlignment=Enum.TextXAlignment.Left
@@ -170,13 +175,38 @@ local function buildMergeShop(ctx)
  dropStud.ImageTransparency=.9;dropStud.ZIndex=215;dropStud.Active=false
  local dropTitle=text("Added",drop,"Drag Items Here")
  local dropHint=text("DropHint",drop,"Select at least 2 Items")
- local selectedLabel=text("Selected",body,"Selected: 0");selectedLabel.TextXAlignment=Enum.TextXAlignment.Left
+ local selectedLabel=text("Selected",body,"Selected: 0");selectedLabel.TextXAlignment=Enum.TextXAlignment.Left;selectedLabel.TextWrapped=false
  local clear=action("Clear",body,"Clear",true)
  local merge=action("Merge",body,"Merge")
  local creates=text("Creates",body,"Creates 1 Item")
+ creates.TextWrapped=false
  local status=text("Status",body,"");status.TextWrapped=true
+ local sell=action("SellMode",body,"Sell")
+ sell.UIGradient.Color=ColorSequence.new(Color3.fromRGB(255,205,0),Color3.fromRGB(255,242,45))
+ sell.Active=true;sell.Interactable=true
+ local totalLabel=text("Total",drop,"Total: 0")
+ local slots={}
+ for i=1,5 do
+  local slot=panel("OreSlot"..i,drop)
+  local icon=clone(RS.Assets.Templates.PetInventory.Main.Icon,"Icon",slot)
+  icon.BackgroundTransparency=1;icon.ScaleType=Enum.ScaleType.Fit;icon.Image="";icon.Visible=true;icon.ZIndex=228
+  local points=text("Points",slot,"")
+  local hit=Instance.new("TextButton");hit.Name="Remove";hit.Text="";hit.BackgroundTransparency=1;hit.Size=UDim2.fromScale(1,1);hit.ZIndex=245;hit.Parent=slot
+  slots[i]={Root=slot,Icon=icon,Points=points,Button=hit}
+ end
+ local saleTitle=text("SaleTitle",result,"")
+ local saleIcon=clone(RS.Assets.Templates.PetInventory.Main.Icon,"SaleIcon",result)
+ saleIcon.BackgroundTransparency=1;saleIcon.ScaleType=Enum.ScaleType.Fit;saleIcon.ZIndex=228
+ local saleQuantity=Instance.new("TextBox");saleQuantity.Name="SaleQuantity";saleQuantity.Text="1";saleQuantity.ClearTextOnFocus=false
+ saleQuantity.FontFace=purchasedBold;saleQuantity.TextColor3=Color3.new(1,1,1);saleQuantity.TextStrokeTransparency=0
+ saleQuantity.TextScaled=true;saleQuantity.BackgroundColor3=Color3.fromRGB(15,30,40);saleQuantity.ZIndex=245;saleQuantity.Parent=result
+ local minus=action("Less",result,"−",true);local plus=action("More",result,"+");local maximum=action("Max",result,"Max")
  local tab="Item"
+ local oreState,oreSelected,oreSale=Forge.State,{},{}
+ local sellMode=false
+ local activeOre,completedDumbbell=nil,nil
  local petState,itemState=nil,nil
+ local petPending=false
  local petSelected,itemSelected={},{ }
  local committedItemId=nil
  local itemFresh,itemPending=false,false
@@ -193,9 +223,15 @@ local function buildMergeShop(ctx)
  local blockedActivation={}
  local render,refreshList,layout
  local view={Root=shop,Drop=drop,Tabs=tabs,List=list,Merge=merge,ClearButton=clear}
+ local function oreSelection() return sellMode and oreSale or oreSelected end
  local function selectedCount()
+  if tab=="Ore" then local n=0;for _,count in pairs(oreSelection()) do n+=count end;return n end
   local n=0;for _ in pairs(tab=="Pet" and petSelected or itemSelected) do n+=1 end;return n
  end
+ local function petIds()
+  local ids={} for id in pairs(petSelected) do table.insert(ids,id) end;table.sort(ids);return ids
+ end
+ local function petPreview() return PetMerge.Evaluate(petState,petIds()) end
  local function itemMaterials()
   local materials={}
   for _,entry in pairs(itemSelected) do materials[entry.ItemId]=(materials[entry.ItemId] or 0)+1 end
@@ -206,14 +242,15 @@ local function buildMergeShop(ctx)
  end
  local function worn(id) return petState and table.find(petState.Equipped or {},id)~=nil end
  local function selectable(entry)
+  if tab=="Ore" then return not Forge.IsPending() and oreState and (oreState.Ores[entry.Id] or 0)>0 end
   if tab=="Pet" then
-   return petState and petState.Owned[entry.Id]==entry.Name and not worn(entry.Id) and Egg.mergePet(entry.Name)~=nil
+   return not petPending and not PetClient.busy() and petState and petState.Owned[entry.Id]==entry.Name and not worn(entry.Id) and Egg.mergePet(entry.Name)~=nil
   end
   local count=itemState and itemState.OwnedItems and itemState.OwnedItems[entry.ItemId] or 0
   return not itemPending and ItemMergeConfig.GetPoints(Master.Get(entry.ItemId)) and count>=entry.Unit
  end
  local function selected(entry)
-  return tab=="Pet" and petSelected[entry.Id]==true or tab=="Item" and itemSelected[entry.Key]~=nil
+  return tab=="Ore" and (oreSelection()[entry.Id] or 0)>0 or tab=="Pet" and petSelected[entry.Id]==true or tab=="Item" and itemSelected[entry.Key]~=nil
  end
  local function releaseCandidates()
   for _,fn in candidateCleanups do fn() end;table.clear(candidateCleanups)
@@ -236,7 +273,13 @@ local function buildMergeShop(ctx)
  end
  local function choose(entry,addOnly)
   if not selectable(entry) then return end
-  if tab=="Pet" then
+  if tab=="Ore" then
+   local selected=oreSelection();activeOre=entry.Id
+   local count=selected[entry.Id] or 0
+   if not sellMode and selectedCount()>=5 then status.Text="Maximum 5 Ores";return end
+   if count<(oreState.Ores[entry.Id] or 0) then selected[entry.Id]=count+1 end
+   completedDumbbell=nil
+  elseif tab=="Pet" then
    if addOnly then petSelected[entry.Id]=true else petSelected[entry.Id]=not petSelected[entry.Id] or nil end
   else
    if not addOnly and itemSelected[entry.Key] then itemSelected[entry.Key]=nil else itemSelected[entry.Key]=entry end
@@ -397,6 +440,20 @@ local function buildMergeShop(ctx)
   local activation=tile.Button.Activated:Connect(function() view:ActivateMaterial(entry.Key) end)
   return tile,function() activation:Disconnect();tile:Destroy() end
  end
+ local function makeOreTile(entry,order)
+  local tile=clone(RS.Assets.Templates.PetInventory,entry.Key,list)
+  layer(tile,222);tile.Stroke.ZIndex=222;tile.Main.ZIndex=223;tile.Main.Icon.ZIndex=225
+  tile.Main.Checkmark.ZIndex=226;tile.Title.ZIndex=227;tile.Button.ZIndex=239
+  tile.Visible=true;tile.LayoutOrder=order
+  local ore=OreConfig.Get(entry.Id);tile.Main.Icon.Image=ore.Image
+  tile.Main.UIGradient.Color=ColorSequence.new(ore.Color:Lerp(Color3.new(0,0,0),.55),ore.Color)
+  local count=text("OwnedCount",tile,"×0");count.ZIndex=237
+  count.Position=UDim2.fromScale(.51,.75);count.Size=UDim2.fromScale(.45,.23)
+  local badge=text("SelectedCount",tile,"");badge.ZIndex=238;badge.TextColor3=Color3.fromRGB(58,233,255)
+  badge.AnchorPoint=Vector2.zero;badge.Position=UDim2.fromScale(.02,.02);badge.Size=UDim2.fromScale(.4,.25)
+  local activation=tile.Button.Activated:Connect(function() view:ActivateMaterial(entry.Key) end)
+  return tile,function() activation:Disconnect();tile:Destroy() end
+ end
  local refreshingList=false
  local function materialAt(index)
   for _,g in ipairs(itemGroups) do
@@ -410,7 +467,11 @@ local function buildMergeShop(ctx)
  refreshList=function(force)
   if refreshingList then return end;refreshingList=true
   local nextItems={}
-  if tab=="Pet" then
+  if tab=="Ore" then
+   for _,ore in ipairs(OreConfig.GetAvailable()) do
+    if oreState and (oreState.Ores[ore.Id] or 0)>0 then table.insert(nextItems,{Id=ore.Id,Key=ore.Id,Name=ore.Name}) end
+   end
+  elseif tab=="Pet" then
    for id,name in pairs(petState and petState.Owned or {}) do
     if Egg.mergePet(name) and not worn(id) then table.insert(nextItems,{Id=id,Key=id,Name=name}) end
    end
@@ -454,7 +515,8 @@ local function buildMergeShop(ctx)
   releaseCards();items=nextItems;listKey=key
   for index,entry in items do
    local tile,cleanup
-   if tab=="Pet" then tile,cleanup=PetClient.createMaterialTile(entry.Id,entry.Name,index,list,function() view:ActivateMaterial(entry.Key) end)
+   if tab=="Ore" then tile,cleanup=makeOreTile(entry,index)
+   elseif tab=="Pet" then tile,cleanup=PetClient.createMaterialTile(entry.Id,entry.Name,index,list,function() view:ActivateMaterial(entry.Key) end)
    else tile,cleanup=makeItemTile(entry,index) end
    if tile then
     prepareTile(tile,entry)
@@ -470,8 +532,8 @@ local function buildMergeShop(ctx)
   local x=clone(RS.Assets.Templates.OpenEgg.Background.Pets["1"],name,tab=="Item" and resultItems or result)
   clearLayout(x);x.AnchorPoint=Vector2.new(.5,0);x.Visible=true;x.Image="";x.BackgroundTransparency=1
   x.ZIndex=223;x.Button.Visible=false;x.Button.Active=false;x.Button.Interactable=false
-  local label=percent and not rarity and action("Name",x,name) or text("Name",x,name)
-  if percent and not rarity then
+  local label=percent and not rarity and tab~="Ore" and action("Name",x,name) or text("Name",x,name)
+  if percent and not rarity and tab~="Ore" then
    label.Active=false;label.Interactable=false;label.Selectable=false;label.AutoButtonColor=false
    if ctx.ItemColors[name] and name~="Rare" then label.UIGradient.Color=ctx.ItemColors[name] end
   end
@@ -519,15 +581,24 @@ local function buildMergeShop(ctx)
  local function updateResults(n)
   if not shop.Visible then releaseCandidates();return end
   local outcomes={}
-  if tab=="Pet" then
-   local points=0
-   for id in pairs(petSelected) do local meta=petState and Egg.mergePet(petState.Owned[id]);if meta then points+=meta.Points end end
-   local preview=Egg.mergePreview(points,n)
-   -- No agreed mixed-origin "maintained Egg" exists. Keep genuine outcomes/odds, without inventing a base or redistribution.
-   if preview.Eligible then for _,o in preview.Outcomes do table.insert(outcomes,{Name=o.Egg,Percent=o.Percent,Image=Egg.NormalPools[o.Egg].Icon}) end end
+  if tab=="Ore" then
+   resultTitle.Text=sellMode and "Sell Ores" or "Merge Result"
+   resultHint.Text=""
+   if not sellMode then
+    local preview=OreMerge.Evaluate(oreSelected,oreState and oreState.Ores)
+    if completedDumbbell then preview={Outcomes={{Id=completedDumbbell,Probability=1}}} end
+    if preview then
+     for _,o in ipairs(preview.Outcomes) do local item=Dumbbells.Get(o.Id)
+      table.insert(outcomes,{Name="#"..item.Grade,Image=item.Image,Percent=o.Probability*100,Strength=item.StrengthBonus})
+     end
+    else resultHint.Text="Select 1–5 Ores" end
+   end
+  elseif tab=="Pet" then
+   local preview=petPreview()
+   if preview then for _,o in ipairs(preview.Outcomes) do table.insert(outcomes,{Name=o.Egg,Percent=o.Percent,Image=Egg.NormalPools[o.Egg].Icon}) end end
    resultTitle.Text="Possible Eggs"
    resultHint.Text=n<2 and "Select at least 2 Pets" or ""
-   result:SetAttribute("UpgradeBaselineUnresolved",true)
+   result:SetAttribute("UpgradeBaselineUnresolved",nil)
   else
    resultTitle.Text="Merge Result"
    local preview=itemPreview()
@@ -546,7 +617,14 @@ local function buildMergeShop(ctx)
   local key=table.concat(keys,"|")
   if candidateKey~=key then
    releaseCandidates()
-   for i,o in outcomes do candidate(o.Name,o.Image,o.Percent,i,#outcomes,o.Rarity,o.ItemId) end
+   for i,o in outcomes do
+    local card=candidate(o.Name,o.Image,o.Percent,i,#outcomes,o.Rarity,o.ItemId)
+    if o.Strength then
+     local effect=text("Strength",card,"Strength +"..o.Strength)
+     effect.TextWrapped=false
+     effect.AnchorPoint=Vector2.new(.5,1);effect.Position=UDim2.fromScale(.5,.87);effect.Size=UDim2.fromScale(1,.13)
+    end
+   end
    candidateKey=key
   end
   for i,o in outcomes do
@@ -581,24 +659,53 @@ local function buildMergeShop(ctx)
  end
  render=function()
   local n=selectedCount()
-  listTitle.Text=tab=="Pet" and "Your Pets" or "Your Items"
-  creates.Text=tab=="Pet" and "Creates 1 Egg" or "Creates 1 Item"
-  selectedLabel.Text=string.format("Selected: %d",n)
+  listTitle.Text=tab=="Ore" and "Your Ores" or tab=="Pet" and "Your Pets" or "Your Items"
+  sell.Visible=tab=="Ore";sell.PriceTag.Text=sellMode and "Back" or "Sell"
+  for _,control in ipairs({saleTitle,saleIcon,saleQuantity,minus,plus,maximum}) do control.Visible=tab=="Ore" and sellMode end
+  if tab=="Ore" and sellMode then
+   local ore=activeOre and OreConfig.Get(activeOre)
+   saleTitle.Text=ore and ore.Name or "Select Ores"
+   saleIcon.Image=ore and ore.Image or ""
+   if not saleQuantity:IsFocused() then saleQuantity.Text=tostring(activeOre and oreSale[activeOre] or 0) end
+   for _,button in ipairs({minus,plus,maximum}) do paintButton(button,ore~=nil and not Forge.IsPending()) end
+  end
+  creates.Text=tab=="Ore" and (sellMode and "" or "Creates 1 Dumbbell") or tab=="Pet" and "Creates 1 Egg" or "Creates 1 Item"
+  selectedLabel.Text=string.format("Selected: %d",n)..(tab=="Ore" and not sellMode and "/5" or "")
   selectedLabel:SetAttribute("SelectedCount",n)
   dropTitle.Text=n==0 and (tab=="Pet" and "Drag Pets Here" or "Drag Items Here") or string.format("%d %s Added",n,tab=="Pet" and "Pets" or "Items")
   dropHint.Text=tab=="Pet" and (n>0 and "Drag more Pets here" or "") or (n<itemMinimum and "Select at least "..itemMinimum.." Items" or "Drag more Items here")
-  if dropStroke and not (drag and drag.Active) then dropStroke.Color=n>0 and Color3.fromRGB(94,255,0) or Color3.fromRGB(0,218,242) end
-  drop.BackgroundColor3=n>0 and Color3.fromRGB(7,53,31) or shopSource.BackgroundColor3
+  for _,slot in ipairs(slots) do slot.Root.Visible=false;slot.Id=nil end
+  totalLabel.Visible=tab=="Ore"
+  if tab=="Ore" then
+   dropTitle.Visible=sellMode;dropHint.Visible=false
+   dropTitle.Text=sellMode and "Select quantities above" or ""
+   local preview=OreMerge.Selection(oreSelection(),oreState and oreState.Ores,sellMode)
+   totalLabel.Text=(sellMode and "Total: " or "Total: ")..tostring(preview and preview.Total or 0)..(sellMode and " Win" or "")
+   if not sellMode then
+    local index=0
+    for _,ore in ipairs(OreConfig.GetAvailable()) do for _=1,oreSelected[ore.Id] or 0 do
+     index+=1;local slot=slots[index];slot.Id=ore.Id;slot.Icon.Image=ore.Image;slot.Points.Text=ore.Points.." pts"
+    end end
+    for _,slot in ipairs(slots) do slot.Root.Visible=true;slot.Icon.Visible=slot.Id~=nil;slot.Points.Visible=slot.Id~=nil end
+   end
+  else dropTitle.Visible=true;dropHint.Visible=true end
+  if dropStroke and not (drag and drag.Active) then dropStroke.Color=tab=="Ore" and Color3.fromRGB(0,218,242) or n>0 and Color3.fromRGB(94,255,0) or Color3.fromRGB(0,218,242) end
+  drop.BackgroundColor3=tab=="Ore" and Color3.fromRGB(13,28,38) or n>0 and Color3.fromRGB(7,53,31) or shopSource.BackgroundColor3
   for _,entry in items do
    local tile=tiles[entry.Key]
    if tile then
     if tab=="Pet" then PetClient.setMaterialSelection(tile,entry.Name,selected(entry),false) end
     tile.Title.Visible=false;tile.Main.Checkmark.Visible=selected(entry)
-    tintSelected(tile,selected(entry))
+    tintSelected(tile,selected(entry) and tab~="Ore")
+    if tab=="Ore" then
+     tile.OwnedCount.Text="×"..tostring(oreState.Ores[entry.Id] or 0)
+     tile.SelectedCount.Text=selected(entry) and ("+"..oreSelection()[entry.Id]) or ""
+     tile.Main.Checkmark.Visible=false
+    end
     local edge=tile.Main:FindFirstChildOfClass("UIStroke")
     if edge then
      local g=edge:FindFirstChildOfClass("UIGradient");if g then g.Enabled=not selected(entry) end
-     edge.Color=selected(entry) and Color3.fromRGB(119,255,0) or tile:GetAttribute("OriginalEdgeColor")
+     edge.Color=selected(entry) and (tab=="Ore" and Color3.fromRGB(0,224,255) or Color3.fromRGB(119,255,0)) or tile:GetAttribute("OriginalEdgeColor")
      edge.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize;edge.Thickness=selected(entry) and 4 or 2
     end
     tile.Button.Active=selectable(entry)==true;tile.Button.Interactable=tile.Button.Active
@@ -610,12 +717,15 @@ local function buildMergeShop(ctx)
   end
   local preview=tab=="Item" and itemPreview()
   local ready=tab=="Item" and preview~=nil and itemFresh and not itemPending and itemState and not itemState.SavePending
-  paintButton(merge,ready);paintButton(clear,tab=="Pet" or not itemPending)
+  if tab=="Pet" then ready=petPreview()~=nil and not petPending and not PetClient.busy() end
+  if tab=="Ore" then ready=oreState and not oreState.Pending and not Forge.IsPending() and OreMerge.Selection(oreSelection(),oreState.Ores,sellMode)~=nil end
+  paintButton(merge,ready==true);paintButton(clear,tab=="Ore" and not Forge.IsPending() or tab=="Pet" or tab=="Item" and not itemPending)
   merge:SetAttribute("ExecutionEnabled",ready)
-  merge.PriceTag.Text="Merge"
-  if tab=="Pet" then status.Text="Merge disabled" elseif itemPending then status.Text="Merging…" end
+  merge.PriceTag.Text=tab=="Ore" and sellMode and "Sell" or "Merge"
+  if tab=="Pet" and (petPending or PetClient.busy()) then status.Text="Merging…" elseif tab=="Item" and itemPending then status.Text="Merging…" end
   empty.Visible=#items==0
-  empty.Text=tab=="Pet" and (petState and "No available normal Pets" or "Pet inventory is loading") or (itemState and "No mergeable Items" or "Item inventory is loading")
+  if tab=="Ore" and Forge.IsPending() then status.Text="Saving…" end
+  empty.Text=tab=="Ore" and (oreState and "No Ores" or "Loading Ores") or tab=="Pet" and (petState and "No available normal Pets" or "Pet inventory is loading") or (itemState and "No mergeable Items" or "Item inventory is loading")
   updateResults(n);layout()
  end
  layout=function()
@@ -637,9 +747,12 @@ local function buildMergeShop(ctx)
   if portrait then lx,ly,lw,lh=18,248,664,390;rx,ry,rw,rh=18,654,664,218;dy,dh,fy=886,152,1056 end
   if portrait and tab=="Item" then rh+=82;dy+=82;fy+=82 end
   local tabsY=portrait and 124 or 160
-  rect(tabs.Item,18,tabsY,portrait and 324 or 244,portrait and 62 or 82)
-  rect(tabs.Pet,portrait and 358 or 276,tabsY,portrait and 324 or 228,portrait and 62 or 82)
-  rect(listTitle,24,portrait and 198 or 247,lw,portrait and 44 or 56)
+  local tw=(lw-12)/3
+  rect(tabs.Item,18,tabsY,tw,portrait and 62 or 82)
+  rect(tabs.Pet,18+tw+6,tabsY,tw,portrait and 62 or 82)
+  rect(tabs.Ore,18+(tw+6)*2,tabsY,tw,portrait and 62 or 82)
+  rect(sell,lx+lw-130,portrait and 198 or 247,126,portrait and 44 or 56)
+  rect(listTitle,24,portrait and 198 or 247,tab=="Ore" and lw-140 or lw,portrait and 44 or 56)
   rect(list,lx,ly,lw,lh);rect(empty,lx,ly,lw,lh)
   cell=(lw-24)/3
   for index,entry in items do
@@ -653,6 +766,8 @@ local function buildMergeShop(ctx)
   list.CanvasSize=UDim2.fromOffset(0,tab=="Item" and materialCanvasHeight or math.ceil(#items/3)*(cell+8))
   rect(result,rx,ry,rw,rh)
   rect(resultTitle,20,8,rw-40,portrait and 38 or 52)
+  rect(saleIcon,24,65,140,rh-92);rect(saleTitle,180,60,rw-205,44)
+  rect(minus,185,116,65,58);rect(saleQuantity,262,116,150,58);rect(plus,424,116,65,58);rect(maximum,510,116,118,58)
   rect(resultHint,18,rh*.5,rw-36,portrait and 34 or 44)
   resultItems.Visible=tab=="Item"
   rect(resultItems,12,portrait and 52 or 66,rw-24,rh-(portrait and 60 or 74))
@@ -680,6 +795,23 @@ local function buildMergeShop(ctx)
     local viewport=x:FindFirstChild("NormalEggViewport")
     if viewport then viewport.Size=UDim2.fromScale(1,portrait and .59 or .72) end
    end
+   if tab=="Ore" then
+    if portrait then x.Size=UDim2.fromOffset(math.min(300,(rw-40)/math.max(1,total)),h) end
+    local icon=x:FindFirstChild("ActualImage");if icon then icon.Size=UDim2.fromScale(1,.61) end
+    if nameplate then nameplate.Position=UDim2.fromScale(.5,.72);nameplate.Size=UDim2.fromScale(1,.14) end
+    local effect=x:FindFirstChild("Strength");if effect then effect.Position=UDim2.fromScale(.5,.87);effect.Size=UDim2.fromScale(1,.14) end
+    if portrait then
+     if icon then icon.Size=UDim2.fromScale(1,.42) end
+     if nameplate then nameplate.Position=UDim2.fromScale(.5,.60);nameplate.Size=UDim2.fromScale(1,.18) end
+     if effect then effect.Position=UDim2.fromScale(.5,.82);effect.Size=UDim2.fromScale(1,.22) end
+     x.Percent.Size=UDim2.fromScale(1,.18)
+    end
+    -- Design-space font sizes scale once with the panel; TextScaled plus a
+    -- minimum constraint otherwise clips or double-shrinks short portrait rows.
+    if nameplate then nameplate.TextScaled=not portrait;nameplate.TextSize=26;nameplate.TextWrapped=false end
+    if effect then effect.TextScaled=not portrait;effect.TextSize=32 end
+    x.Percent.TextScaled=not portrait;x.Percent.TextSize=26;x.Percent.TextWrapped=false
+   end
    if tab=="Item" then
     local stars=x:FindFirstChild("RarityStars")
     local starWidth=math.min(x.Size.X.Offset-8,218)
@@ -689,6 +821,12 @@ local function buildMergeShop(ctx)
    end
   end
   rect(drop,rx,dy,rw,dh)
+  local slotWidth=(rw-44)/5
+  for i,slot in ipairs(slots) do
+   rect(slot.Root,12+(i-1)*(slotWidth+4),10,slotWidth,dh-52)
+   rect(slot.Icon,4,0,slotWidth-8,dh-84);rect(slot.Points,2,dh-84,slotWidth-4,28)
+  end
+  rect(totalLabel,18,dh-37,rw-36,31)
   local dashIndex=0
   for x=12,rw-24,30 do
    dashIndex+=1;dash(dashIndex,x,0,18,5)
@@ -702,9 +840,11 @@ local function buildMergeShop(ctx)
   rect(dropTitle,18,dh*.23,rw-36,dh*.35)
   rect(dropHint,18,dh*.65,rw-36,dh*.21)
   rect(selectedLabel,rx,fy+25,rw*.295,42)
+  selectedLabel.TextScaled=not portrait;selectedLabel.TextSize=28
   rect(clear,rx+rw*.31,fy+18,rw*.22,64)
   rect(merge,rx+rw*.57,fy,rw*.43,88)
   rect(creates,rx+rw*.57,fy+92,rw*.43,24)
+  creates.TextScaled=not portrait;creates.TextSize=22
   rect(status,rx,dy+dh+3,rw*.54,portrait and 22 or 24)
  end
  function view:SetPetState(state)
@@ -722,13 +862,16 @@ local function buildMergeShop(ctx)
   if tab=="Item" then status.Text=message or "";refreshList(false);render() end
  end
  function view:SelectTab(name)
-  if name~="Pet" and name~="Item" then return end
+  if name~="Pet" and name~="Item" and name~="Ore" then return end
   endDrag();petSelected={};itemSelected={};committedItemId=nil;status.Text=""
-  releaseCandidates();tab=name;shop:SetAttribute("SelectedTab",tab)
+  releaseCandidates();tab=name;sellMode=false;oreSelected={};oreSale={};completedDumbbell=nil;shop:SetAttribute("SelectedTab",tab)
   list.CanvasPosition=Vector2.zero;refreshList(true);render()
   if ctx.OnTab then ctx.OnTab(name) end
+  if name=="Ore" then task.spawn(Forge.Refresh) end
  end
  function view:Clear()
+  if tab=="Pet" and petPending then return end
+  if tab=="Ore" then if Forge.IsPending() then return end;oreSelected={};oreSale={};completedDumbbell=nil end
   if itemPending and tab=="Item" then return end
   endDrag();petSelected={};itemSelected={};committedItemId=nil;status.Text="";render()
  end
@@ -746,7 +889,23 @@ local function buildMergeShop(ctx)
  end
  connect(clear.Activated,function() if clear.Interactable then view:Clear() end end)
  function view:SubmitItem()
-  -- The sole Item send hook. Pet is refused even if a caller forcibly enables its visual control.
+  if tab=="Pet" then
+   if not merge.Interactable or petPending or PetClient.busy() or not petPreview() then return end
+   local ids=petIds();petPending=true;render()
+   task.spawn(function()
+    local ok,why=PetClient.request("Merge",ids)
+    petPending=false
+    if ok then petSelected={} end
+    petState=PetClient.state();status.Text=ok and "Egg created" or tostring(why or "Please wait")
+    if tab=="Pet" then refreshList(false);render() end
+   end)
+   return
+  end
+  if tab=="Ore" then
+   if not merge.Interactable or Forge.IsPending() then return end
+   Forge.Request(sellMode and "SellOre" or "MergeOre",{Materials=table.clone(oreSelection())});return
+  end
+  -- Item retains its existing transaction authority.
   if tab~="Item" or not merge.Interactable or itemPending then return end
   if not itemFresh or not itemPreview() or itemState.SavePending then return end
   itemPending=true;itemFresh=false;render()
@@ -756,6 +915,40 @@ local function buildMergeShop(ctx)
   self:Clear();committedItemId=id;if tab=="Item" then render() end
  end
  connect(merge.Activated,function() view:SubmitItem() end)
+ connect(sell.Activated,function()
+  if tab~="Ore" or Forge.IsPending() then return end
+  sellMode=not sellMode;oreSale={};activeOre=nil;status.Text="";completedDumbbell=nil;render()
+ end)
+ local function setSaleQuantity(n)
+  if not activeOre or Forge.IsPending() then return end
+  n=math.clamp(math.floor(tonumber(n) or 0),0,oreState.Ores[activeOre] or 0)
+  oreSale[activeOre]=n>0 and n or nil;render()
+ end
+ connect(saleQuantity.FocusLost,function() setSaleQuantity(saleQuantity.Text) end)
+ connect(minus.Activated,function() setSaleQuantity((oreSale[activeOre] or 0)-1) end)
+ connect(plus.Activated,function() setSaleQuantity((oreSale[activeOre] or 0)+1) end)
+ connect(maximum.Activated,function() setSaleQuantity(oreState and oreState.Ores[activeOre] or 0) end)
+ for _,slot in ipairs(slots) do connect(slot.Button.Activated,function()
+  if tab~="Ore" or sellMode or Forge.IsPending() or not slot.Id then return end
+  oreSelected[slot.Id]-=1;if oreSelected[slot.Id]==0 then oreSelected[slot.Id]=nil end
+  completedDumbbell=nil;status.Text="";render()
+ end) end
+ connect(Forge.Changed,function(state)
+  oreState=state
+  for _,selection in ipairs({oreSelected,oreSale}) do for id,n in pairs(selection) do
+   local count=math.min(n,state and state.Ores and state.Ores[id] or 0);selection[id]=count>0 and count or nil
+  end end
+  if tab=="Ore" then refreshList(false);render() end
+ end)
+ connect(Forge.Completed,function(op,response)
+  if op.Action~="MergeOre" and op.Action~="SellOre" then return end
+  if response.Success then
+   oreSelected={};oreSale={}
+   completedDumbbell=op.Action=="MergeOre" and response.State.Journal.ResultId or nil
+   status.Text=op.Action=="SellOre" and "Sold" or "Created"
+  else status.Text=tostring(response.Code) end
+  if tab=="Ore" then refreshList(false);render() end
+ end)
  connect(top.Close.Activated,function() view:Hide() end)
  for name,button in pairs(tabs) do connect(button.Activated,function() view:SelectTab(name) end) end
  connect(gui:GetPropertyChangedSignal("AbsoluteSize"),layout)

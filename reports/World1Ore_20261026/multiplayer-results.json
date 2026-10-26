@@ -1,0 +1,45 @@
+{
+  "Success": true,
+  "Result": {
+    "OwnerCue": [
+      {
+        "LocalParent": true,
+        "Image": "rbxassetid://106917824814020",
+        "Loaded": false,
+        "OwnHead": true,
+        "Id": "e964b2e0-118c-4382-bf79-7c5438fc6a79"
+      }
+    ],
+    "Combat": [
+      {
+        "Player": "Player1",
+        "Reason": "Combat",
+        "Accepted": true
+      }
+    ],
+    "Checks": [
+      "Two clients connected",
+      "Isolated seed loaded",
+      "Isolated seed loaded",
+      "Client owns response",
+      "Client one merge",
+      "Other inventory unchanged",
+      "Client owns response",
+      "Client two merge independent",
+      "Enemy service ready",
+      "Personal Boss defeated by combat path",
+      "Other Boss alive",
+      "Client owns response",
+      "Client owns response",
+      "Drop remote sent only to owner",
+      "Head cue only on owner client",
+      "Boss reward dedup",
+      "Client owns response",
+      "Other client inventory survives owner death",
+      "Client owns response",
+      "Cue cleaned on death"
+    ],
+    "Kind": "Two real native clients, isolated stores; scripted inputs",
+    "Passed": true
+  }
+}

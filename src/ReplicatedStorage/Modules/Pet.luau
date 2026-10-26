@@ -359,6 +359,10 @@ function Pet.NormalizeState(raw)
   end
  end
  if type(raw.LastRequestId)~="string" or #raw.LastRequestId>128 or type(raw.LastResults)~="table" or #raw.LastResults>8 then return nil,"InvalidPetReceipt" end
+ if raw.LastMergeEgg~=nil then
+  if type(raw.LastMergeEgg)~="string" or not table.find(require(script.Parent.Egg).NormalOrder,raw.LastMergeEgg) then return nil,"InvalidMergeEgg" end
+  out.LastMergeEgg=raw.LastMergeEgg
+ end
  out.LastRequestId=raw.LastRequestId
  for index in pairs(raw.LastResults) do
   if type(index)~="number" or index%1~=0 or index<1 or index>#raw.LastResults then return nil,"InvalidPetReceipt" end
@@ -378,13 +382,27 @@ function Pet.ApplyOperation(raw,op)
  if state.Revision~=op.Revision then return nil,"PetStateChanged" end
  if state.Revision>=9007199254740991 then return nil,"PetRevisionLimit" end
  local results={}
- if op.Action=="Hatch" then
+ if op.Action=="Merge" then
+  local Merge=require(script.Parent.PetMerge)
+  local preview,err=Merge.Evaluate(state,op.Materials)
+  if not preview then return nil,err end
+  if not Merge.ValidEgg(preview,op.EggName) or #op.Results~=1 then return nil,"InvalidMergeEgg" end
+  local allowed=require(script.Parent.Egg).pets(op.EggName)
+  local result=op.Results[1]
+  if not result or allowed[result.pet]~=result.percent or state.Owned[result.id] then return nil,"InvalidPetResult" end
+  for _,id in ipairs(preview.Ids) do state.Owned[id]=nil end
+  state.Owned[result.id]=result.pet
+  table.insert(results,table.clone(result))
+  state.LastMergeEgg=op.EggName
+ elseif op.Action=="Hatch" then
+  state.LastMergeEgg=nil
   for _,result in ipairs(op.Results) do
    if state.Owned[result.id] then return nil,"PetIdConflict" end
    state.Owned[result.id]=result.pet
    table.insert(results,table.clone(result))
   end
  elseif op.Action=="Equip" then
+  state.LastMergeEgg=nil
   if not state.Owned[op.PetId] then return nil,"PetNotOwned" end
   state.Equipped[1]=if state.Equipped[1]==op.PetId then "" else op.PetId
  else return nil,"InvalidPetAction" end

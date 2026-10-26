@@ -13,6 +13,11 @@ local seen={}
 local running=false
 local activeGui,activeTween,tickConnection,pointerTween
 local releaseLayout
+local ContentProvider=game:GetService("ContentProvider")
+task.spawn(function()
+ local images={} for _,ore in ipairs(require(RS.Config.OreConfig).GetAvailable()) do table.insert(images,ore.Image) end
+ pcall(function() ContentProvider:PreloadAsync(images) end)
+end)
 local HUD=require(RS.Modules:WaitForChild("HUDLayout"))
 local function disableTokenLocalization(root)
  if root:IsA("GuiBase2d") then root.AutoLocalize=false end
@@ -91,8 +96,48 @@ local function show(result)
   task.wait(.9)
  end
 end
+-- Local-only, nonblocking acquisition cue. No replicated BillboardGui or level label.
+local overhead={}
+local function clearOverhead()
+ for gui,connection in pairs(overhead) do connection:Disconnect();gui:Destroy() end
+ table.clear(overhead)
+end
+local function showOverhead(result)
+ local character=player.Character
+ local item=result.Outcome=="ORE" and require(RS.Config.OreConfig).Get(result.OreId) or Master.Get(result.ItemId)
+ if not item then return end
+ -- Loading runs in its own task; movement, combat and the next input continue.
+ pcall(function() ContentProvider:PreloadAsync({item.Image}) end)
+ if player.Character~=character then return end
+ local head=character and character:FindFirstChild("Head")
+ local humanoid=character and character:FindFirstChildOfClass("Humanoid")
+ if not head or not humanoid or humanoid.Health<=0 then return end
+ local gui=Instance.new("BillboardGui");gui.Name="PersonalDropReward";gui.Size=UDim2.fromOffset(110,110)
+ gui.Adornee=head;gui.AlwaysOnTop=true;gui.Active=false;gui:SetAttribute("RewardId",result.Id)
+ local icon=Instance.new("ImageLabel");icon.Name="Icon";icon.BackgroundTransparency=1;icon.Size=UDim2.fromScale(.88,.88)
+ icon.Image=item.Image;icon.ScaleType=Enum.ScaleType.Fit;icon.Parent=gui
+ local quantity=Instance.new("TextLabel");quantity.Name="Quantity";quantity.BackgroundTransparency=1
+ quantity.Text="×1";quantity.FontFace=Font.fromEnum(Enum.Font.GothamBlack);quantity.TextColor3=Color3.new(1,1,1)
+ quantity.TextStrokeTransparency=0;quantity.TextSize=28;quantity.Size=UDim2.fromScale(.5,.3);quantity.Position=UDim2.fromScale(.5,.68);quantity.Parent=gui
+ gui.Parent=player.PlayerGui
+ local function remove()
+  local c=overhead[gui];if c then c:Disconnect();overhead[gui]=nil end
+  gui:Destroy()
+ end
+ overhead[gui]=RunService.Heartbeat:Connect(function()
+  if player.Character~=character or not head.Parent or humanoid.Health<=0 then remove();return end
+  gui.StudsOffsetWorldSpace=Vector3.new(0,head.Size.Y/2+2,0)
+ end)
+ task.delay(2,remove)
+end
+player.CharacterRemoving:Connect(clearOverhead)
 remote.OnClientEvent:Connect(function(result)
  if typeof(result)~="table" or result.OwnerUserId~=player.UserId or typeof(result.Id)~="string" or seen[result.Id] then return end
+ if result.WorldId==1 then
+  if result.Outcome~="ITEM" and result.Outcome~="ORE" then return end
+  seen[result.Id]=true;task.delay(120,function() seen[result.Id]=nil end)
+  task.spawn(showOverhead,result);return
+ end
  if not currentRun(result) then return end
  local segment=result.Segment
  if typeof(segment)~="number" or segment%1~=0 or segment<1 or segment>5 then return end

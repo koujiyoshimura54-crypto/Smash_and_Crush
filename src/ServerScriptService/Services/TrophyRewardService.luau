@@ -182,7 +182,7 @@ local function collectAttempt(player, record, part, double, purchased)
     Type="Dumbbell1GuideUnlocked",
     Stage=record.Stage,
     TrophyId=record.Id,
-    OwnsNormal01=owned.NORMAL_01==true,
+    OwnsNormal01=(require(game.ReplicatedStorage.Modules.InventoryCounts).Count(owned.NORMAL_01) or 0)>0,
    })
   end
  end

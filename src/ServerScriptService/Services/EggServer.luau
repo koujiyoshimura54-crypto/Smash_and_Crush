@@ -48,13 +48,32 @@ local function open(player,name,button,id,revision,generation)
  end
  return Data.MutatePets(player,id,revision,"Hatch",{EggName=name,Count=count,PriceWin=price,Results=results},generation)
 end
+local function mergePets(player,ids,id,revision,generation)
+ local state,reason=Data.GetPetState(player)
+ if not state then return false,reason end
+ local session=Data.Get(player)
+ if session.Saving or session.PendingItemMutation then return false,"DataSaving" end
+ if state.Revision~=revision then return false,"PetStateChanged" end
+ local Merge=require(RS.Modules.PetMerge)
+ local preview,why=Merge.Evaluate(state,ids)
+ if not preview then return false,why end
+ -- Roll the existing Egg outcome first, then hatch exactly one normal Pet.
+ -- Both choices are retained in the same durable material-consumption transaction.
+ local eggName=Merge.Pick(preview,math.random())
+ local list=Egg.ranked(Egg.pets(eggName))
+ if #list==0 then return false,"EggUnavailable" end
+ for _,slot in ipairs(list) do if not Pet.model(slot.pet) then return false,"PetModelUnavailable" end end
+ local pet,percent=Egg.pick(list)
+ local results={{id=Http:GenerateGUID(false),pet=pet,percent=percent,duplicate=false,bonus=0}}
+ return Data.MutatePets(player,id,revision,"Merge",{Materials=preview.Ids,EggName=eggName,Results=results},generation)
+end
 function M.request(player,action,id,revision,a,b,generation)
  if player.Parent~=Players then return {ok=false,reason="InvalidPlayer"} end
  if action=="GetState" then
   local state,reason,currentGeneration=Pets.state(player)
   return {ok=state~=nil,reason=reason or "State",state=state,generation=currentGeneration,pending=player:GetAttribute("PetSavePending")==true}
  end
- if action~="OpenEgg" and action~="Equip" then return reply(player,false,"InvalidAction") end
+ if action~="OpenEgg" and action~="Equip" and action~="Merge" then return reply(player,false,"InvalidAction") end
  if type(id)~="string" or #id~=36 or not id:match("^[%x%-]+$")
   or type(revision)~="number" or revision~=revision or revision<0 or revision%1~=0 then return reply(player,false,"InvalidPetRequest") end
  local state,reason=Data.GetPetState(player)
@@ -77,6 +96,7 @@ function M.request(player,action,id,revision,a,b,generation)
  if action=="OpenEgg" then
   if type(a)~="string" or type(b)~="string" then return reply(player,false,"InvalidEggRequest") end
   ok,why=open(player,a,b,id,revision,generation)
+ elseif action=="Merge" then ok,why=mergePets(player,a,id,revision,generation)
  else ok,why=Pets.equip(player,a,id,revision,generation) end
  return reply(player,ok,why)
 end
