@@ -2425,3 +2425,12 @@ Details, Full Paths, numeric table, retained requested images and limitations: [
 Reproduced the World1 post-death Merge failure on current Y02 Studio, Place126576845524886/version292. A respawned StarterGui Folder removed the controller while persistent Merge GUIs and the mounted guard survived. Moved the existing controller template to StarterPlayer.StarterPlayerScripts.UI.MergePanelClient_New; Source behavior/UI/balance are unchanged. Runtime-only reparent was tested and failed; template relocation passed ordinary reset death, respawn, facility re-entry, real click selection and an actual Stone→NORMAL_01 merge after normal combat acquisition.
 
 The user cancelled all three progression runs during preparation; none started. Restored35 temporary dependencies, removed all helpers and verified439 guarded Sources. Studio remains open in Edit with the fix unsaved; no Save/Publish or rbxl write. See [World1MergeRespawn_20261027](../reports/World1MergeRespawn_20261027/README.md).
+
+
+## 2026-10-27 — One adaptive World1 benchmark, completed
+
+Completed exactly one fresh, unpaid, isolated run in current Y02 through the first Stage10 defeat in11014.913 seconds (3h03m34.913s), with three natural deaths. The60-minute checkpoint was Stage3. All reasoning, rendering and input stalls remain included. Raw categories include86.715 minutes of AI/idle/interruption and67.194 minutes of training, including overlapping reasoning. This is not an estimate of human completion time or the general player average.
+
+Observed actual UI Ore forging, equipment and sale, BasicEgg/Bear and Aura purchases, Item merge/set selection, and R5/Gold. The late strategy changed to ordinary movement evasion. After failed approaches, Stage10 was won with59 normal Auto hits, wider movement paths and physics jumps calibrated from observed hits. Game balance, damage, HP, RNG and gameplay Sources were unchanged; no data was granted. Auto attacks during pursuit outside contact and BestEquip element-set ties are findings for design review, without implementation changes here.
+
+Exported2888 events and ten first-clear snapshots. Stopped Play, restored35 temporary dependency substitutions, removed four Edit fixtures, and verified439 original Sources and all recorded camera/development-GUI values. Merge fix12b43fa and user edits were retained. Studio remains open in unsaved Edit; no Save/Publish, rbxl write, extra Place or additional benchmark. Full scope, failed inputs, timing and limits: [World1SingleRun_20261027](../reports/World1SingleRun_20261027/README.md).

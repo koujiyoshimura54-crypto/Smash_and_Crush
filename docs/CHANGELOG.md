@@ -1168,3 +1168,12 @@ Connected executable Pet Merge with immediate Egg Hatch, World1 Ore rewards/merg
 
 - Moved the existing Merge controller from the respawned StarterGui Folder to persistent StarterPlayerScripts.UI. Real Play verified death/respawn/re-entry and Stone consumption/dumbbell creation through mouse input. No balance or transaction change.
 - Three progression runs were cancelled by the user before measurement. Test isolation removed; Studio left unsaved in Edit. See reports/World1MergeRespawn_20261027/README.md.
+
+
+## 2026-10-27 — One adaptive World1 benchmark, completed
+
+Completed exactly one fresh, unpaid, isolated Y02 run through the first Stage10 defeat in11014.913 seconds (3h03m34.913s), with three natural deaths. The60-minute checkpoint was Stage3. All reasoning and input stalls remain included; this is not a human completion-time estimate or player average.
+
+Observed actual UI forging, equipment, sale, Egg/Pet/Aura, Item merge/set selection and R5/Gold. After failed approaches, ordinary movement and hit-calibrated physics jumps enabled59 normal Auto hits to defeat Stage10. No gameplay Source, balance or RNG changes and no data grants. Auto range and BestEquip set selection remain design-review findings.
+
+Exported2888 events and ten first-clear snapshots. Play stopped;35 dependencies restored, four fixtures removed,439 original Sources and recorded view values verified. Merge fix12b43fa and user edits retained. Studio remains open in unsaved Edit. No Save/Publish, rbxl write or additional run. [Report and limits](../reports/World1SingleRun_20261027/README.md).
