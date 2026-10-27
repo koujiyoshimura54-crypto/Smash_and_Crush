@@ -1162,3 +1162,9 @@ Remaining visual issue: SCP049 still exposes a pale carrier segment during strid
 ## 2026-10-26 — World1 Ore / Pet Merge phases1.1–1.4
 
 Connected executable Pet Merge with immediate Egg Hatch, World1 Ore rewards/merge/sale, quantity dumbbells and protected equipment sales. Shared confirmed balance and purchased UI remain in the current unsaved Studio Edit session. Focused actual input/Play, isolated persistence,313 pure assertions,27 remote assertions and20 native two-client checks are documented separately from outstanding visual/public-server checks. No rbxl rewrite or Save/Publish. See [World1Ore report](../reports/World1Ore_20261026/README.md).
+
+
+## 2026-10-27 — Merge respawn lifecycle
+
+- Moved the existing Merge controller from the respawned StarterGui Folder to persistent StarterPlayerScripts.UI. Real Play verified death/respawn/re-entry and Stone consumption/dumbbell creation through mouse input. No balance or transaction change.
+- Three progression runs were cancelled by the user before measurement. Test isolation removed; Studio left unsaved in Edit. See reports/World1MergeRespawn_20261027/README.md.

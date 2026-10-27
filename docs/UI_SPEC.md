@@ -671,3 +671,8 @@ The current editor calibration is `18 * (1 + (MuscleHeightScale - 1) * .15)` stu
 The existing purchased Merge view contains Item/Pet/Ore in that order; Ore retains the yellow Stud header, basket/title/close, dark outlined body, three-column scroll list, cyan selected counts, independent five input slots, dynamic candidates/points, Clear/Merge and Creates1Dumbbell. Actual Ore asset IDs and current dumbbell images are used; no Ore stars or new Ore Inventory tab. Sell/Back toggles an inline mode with independent quantities and total Win, without spending on mode change. Dumbbell Inventory shows aggregate quantities and inline sale, preserving one equipped copy.
 
 The source factory supplies portrait layout; a360×430 constrained-parent input check identified and corrected clipped labels. Requested screenshots/known limits are in [World1Ore_20261026](../reports/World1Ore_20261026/README.md). These captures are1390×497, not the reference's1615×974; exact-resolution and real touch acceptance remain unverified. Studio window/device-preview settings were not changed.
+
+
+## 2026-10-27 — Persistent Merge controller ownership
+
+MergeShopGui and StrengthGui persist across character respawn. Their single controller now originates at `StarterPlayer.StarterPlayerScripts.UI.MergePanelClient_New`, moved from `StarterGui.StrengthUI.MergePanel_New`. Do not deploy both copies. This keeps proximity/input handlers alive with the persistent GUI; the existing layout, visibility rules and transaction logic are retained. Death/respawn/re-entry and a real Ore merge passed focused Play; see reports/World1MergeRespawn_20261027/README.md.

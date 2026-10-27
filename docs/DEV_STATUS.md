@@ -2418,3 +2418,10 @@ Reproduced Pet Merge's disabled button: the existing path was explicitly preview
 Verified313 native pure/config assertions,27 actual remote assertions and20 native two-client checks; also actual mouse selection/merge/sale/equip/Pet Hatch/Item Merge, controlled Stage9/10 combat drops, ambiguous-save retry, isolated reload and StudioStartOverride reset. Exact-resolution reference comparison, real mobile touch, public server and production persistence are unverified. The two-client overhead cue was routed correctly but sampled before its image loaded; the final preload change has no fresh two-client image capture. All22 changed Sources compile/match Edit;40 scoped Sources audited. All36 temporary dependency replacements restored and fixtures removed. Studio remains open in Edit, with recorded camera/display values restored. No rbxl write, Studio Save/Publish or Cloud update. Manual Save/Publish required.
 
 Details, Full Paths, numeric table, retained requested images and limitations: [World1Ore_20261026](../reports/World1Ore_20261026/README.md).
+
+
+## 2026-10-27 — Merge controller survives death/respawn
+
+Reproduced the World1 post-death Merge failure on current Y02 Studio, Place126576845524886/version292. A respawned StarterGui Folder removed the controller while persistent Merge GUIs and the mounted guard survived. Moved the existing controller template to StarterPlayer.StarterPlayerScripts.UI.MergePanelClient_New; Source behavior/UI/balance are unchanged. Runtime-only reparent was tested and failed; template relocation passed ordinary reset death, respawn, facility re-entry, real click selection and an actual Stone→NORMAL_01 merge after normal combat acquisition.
+
+The user cancelled all three progression runs during preparation; none started. Restored35 temporary dependencies, removed all helpers and verified439 guarded Sources. Studio remains open in Edit with the fix unsaved; no Save/Publish or rbxl write. See [World1MergeRespawn_20261027](../reports/World1MergeRespawn_20261027/README.md).
