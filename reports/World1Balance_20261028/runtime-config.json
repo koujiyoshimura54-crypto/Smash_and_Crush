@@ -1,0 +1,298 @@
+{
+  "Bosses": [
+    {
+      "Boss": 375,
+      "Required": 75,
+      "Walls": [
+        100,
+        125,
+        150,
+        200
+      ]
+    },
+    {
+      "Boss": 2250,
+      "Required": 450,
+      "Walls": [
+        300,
+        325,
+        350,
+        425
+      ]
+    },
+    {
+      "Boss": 12500,
+      "Required": 2500,
+      "Walls": [
+        600,
+        750,
+        900,
+        1200
+      ]
+    },
+    {
+      "Boss": 30000,
+      "Required": 6000,
+      "Walls": [
+        3000,
+        3750,
+        4500,
+        6000
+      ]
+    },
+    {
+      "Boss": 75000,
+      "Required": 15000,
+      "Walls": [
+        7000,
+        8750,
+        10500,
+        14000
+      ]
+    },
+    {
+      "Boss": 190000,
+      "Required": 38000,
+      "Walls": [
+        76000,
+        95000,
+        114000,
+        152000
+      ]
+    },
+    {
+      "Boss": 410000,
+      "Required": 82000,
+      "Walls": [
+        164000,
+        205000,
+        246000,
+        328000
+      ]
+    },
+    {
+      "Boss": 990000,
+      "Required": 198000,
+      "Walls": [
+        396000,
+        495000,
+        594000,
+        792000
+      ]
+    },
+    {
+      "Boss": 1800000,
+      "Required": 360000,
+      "Walls": [
+        720000,
+        900000,
+        1080000,
+        1440000
+      ]
+    },
+    {
+      "Boss": 5000000,
+      "Required": 1000000,
+      "Walls": [
+        2000000,
+        2500000,
+        3000000,
+        4000000
+      ]
+    }
+  ],
+  "Dumbbells": [
+    {
+      "SourceType": "Earned",
+      "PriceWin": 5,
+      "SellWin": 3,
+      "StrengthBonus": 1,
+      "Grade": 1,
+      "ImageAssetId": 131314372434925,
+      "Mergeable": true,
+      "Image": "rbxassetid://131314372434925",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 5,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 1",
+      "ItemId": "NORMAL_01"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 20,
+      "SellWin": 10,
+      "StrengthBonus": 3,
+      "Grade": 2,
+      "ImageAssetId": 126019719977317,
+      "Mergeable": true,
+      "Image": "rbxassetid://126019719977317",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 20,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 2",
+      "ItemId": "NORMAL_02"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 50,
+      "SellWin": 25,
+      "StrengthBonus": 5,
+      "Grade": 3,
+      "ImageAssetId": 96428309215438,
+      "Mergeable": true,
+      "Image": "rbxassetid://96428309215438",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 40,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 3",
+      "ItemId": "NORMAL_03"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 100,
+      "SellWin": 50,
+      "StrengthBonus": 7,
+      "Grade": 4,
+      "ImageAssetId": 77317637436768,
+      "Mergeable": true,
+      "Image": "rbxassetid://77317637436768",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 70,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 4",
+      "ItemId": "NORMAL_04"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 150,
+      "SellWin": 75,
+      "StrengthBonus": 10,
+      "Grade": 5,
+      "ImageAssetId": 134662273184560,
+      "Mergeable": true,
+      "Image": "rbxassetid://134662273184560",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 110,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 5",
+      "ItemId": "NORMAL_05"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 400,
+      "SellWin": 200,
+      "StrengthBonus": 15,
+      "Grade": 6,
+      "ImageAssetId": 92138447886967,
+      "Mergeable": true,
+      "Image": "rbxassetid://92138447886967",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 160,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 6",
+      "ItemId": "NORMAL_06"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 750,
+      "SellWin": 375,
+      "StrengthBonus": 25,
+      "Grade": 7,
+      "ImageAssetId": 79967244610623,
+      "Mergeable": true,
+      "Image": "rbxassetid://79967244610623",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 220,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 7",
+      "ItemId": "NORMAL_07"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 1250,
+      "SellWin": 625,
+      "StrengthBonus": 35,
+      "Grade": 8,
+      "ImageAssetId": 110171141876908,
+      "Mergeable": true,
+      "Image": "rbxassetid://110171141876908",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 290,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 8",
+      "ItemId": "NORMAL_08"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 2000,
+      "SellWin": 1000,
+      "StrengthBonus": 50,
+      "Grade": 9,
+      "ImageAssetId": 129522181601539,
+      "Mergeable": true,
+      "Image": "rbxassetid://129522181601539",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 370,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 9",
+      "ItemId": "NORMAL_09"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 3500,
+      "SellWin": 1750,
+      "StrengthBonus": 65,
+      "Grade": 10,
+      "ImageAssetId": 92929093922544,
+      "Mergeable": true,
+      "Image": "rbxassetid://92929093922544",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 450,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 10",
+      "ItemId": "NORMAL_10"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 5000,
+      "SellWin": 2500,
+      "StrengthBonus": 85,
+      "Grade": 11,
+      "ImageAssetId": 89748292939648,
+      "Mergeable": true,
+      "Image": "rbxassetid://89748292939648",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 530,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 11",
+      "ItemId": "NORMAL_11"
+    },
+    {
+      "SourceType": "Earned",
+      "PriceWin": 7500,
+      "SellWin": 3750,
+      "StrengthBonus": 100,
+      "Grade": 12,
+      "ImageAssetId": 121194224737958,
+      "Mergeable": true,
+      "Image": "rbxassetid://121194224737958",
+      "ElementId": "NORMAL",
+      "Category": "Dumbbell",
+      "MergePoints": 650,
+      "SeriesId": "NORMAL",
+      "Name": "Normal Dumbbell 12",
+      "ItemId": "NORMAL_12"
+    }
+  ]
+}

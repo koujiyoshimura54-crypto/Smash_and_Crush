@@ -1,0 +1,1311 @@
+{
+  "Snapshot": {
+    "OwnedDumbbells": [],
+    "Training": "Normal02",
+    "Win": 1,
+    "Loaded": true,
+    "EquippedItems": {
+      "Protein": "",
+      "TrainingBelt": "",
+      "Glove": ""
+    },
+    "SpentWin": 0,
+    "UTC": 1793188420.823,
+    "Override": false,
+    "Auto": true,
+    "EarnedWin": 1,
+    "Strength": 94,
+    "ForgeJournal": {
+      "Sequence": 0
+    },
+    "Multipliers": {
+      "VIP": 1,
+      "Rebirth": 1,
+      "Win": 1
+    },
+    "Health": 100,
+    "Stage": 1,
+    "Bag": {
+      "Items": [],
+      "Count": 0,
+      "Active": true,
+      "Capacity": 5,
+      "WorldId": 1,
+      "RunId": "171319d2-d905-412e-b8b4-448446913d4c"
+    },
+    "Elapsed": 77.27799987792969,
+    "Defeated": [],
+    "Pets": {
+      "Revision": 0,
+      "Version": 1,
+      "LastResults": [],
+      "Owned": [],
+      "Equipped": [
+        ""
+      ],
+      "LastRequestId": ""
+    },
+    "Fighting": false,
+    "Aura": "",
+    "Speed": 24,
+    "Level": 4,
+    "EquippedDumbbell": "",
+    "Capacity": 5,
+    "Rebirth": 0,
+    "Walls": {
+      "Current": 1,
+      "MajorStage": 1,
+      "Maxes": [
+        100,
+        125,
+        150,
+        200
+      ],
+      "Skipped": false,
+      "BossMaxHP": 375,
+      "Gauges": [
+        100,
+        125,
+        150,
+        200
+      ],
+      "Cleared": []
+    },
+    "ItemMergeJournal": {
+      "Sequence": 0
+    },
+    "OwnedItems": [],
+    "Position": [
+      251.658203125,
+      8.13525390625,
+      -42.6318359375
+    ],
+    "Ores": [],
+    "OwnedAuras": [],
+    "Visited": false,
+    "NormalTrainingGain": 1,
+    "Deaths": 0
+  },
+  "Totals": {
+    "operations": 4.184999942779541,
+    "training": 46.66600012779236,
+    "combat": 0,
+    "death": 0,
+    "codex_interruption": 22.627000093460083,
+    "movement": 3.616999864578247
+  },
+  "TotalEvents": 190,
+  "Events": [
+    {
+      "UTC": 1793188356.14,
+      "Index": 41,
+      "Payload": {
+        "Remote": "AuraPurchaseRequest",
+        "Data": {
+          "State": {
+            "Loaded": true,
+            "OwnedAuras": {
+              "Blue": false,
+              "Purple": false,
+              "Secret": false,
+              "W2_AURA_01": false,
+              "W2_AURA_04": false,
+              "Pink": false,
+              "W2_AURA_05": false,
+              "W2_AURA_06": false,
+              "W2_AURA_03": false,
+              "Green": false,
+              "VIP": false,
+              "Yellow": false,
+              "W2_AURA_02": false,
+              "Red": false
+            },
+            "EquippedAura": ""
+          }
+        }
+      },
+      "Elapsed": 12.59500002861023,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188356.974,
+      "Index": 42,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 13.428999900817871,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188356.974,
+      "Index": 43,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 16.780537000042386,
+            "Potions": {
+              "ServerTime": 1793188356.925335,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 13.428999900817871,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188357.99,
+      "Index": 44,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 14.444999933242798,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188357.99,
+      "Index": 45,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 17.79726080002729,
+            "Potions": {
+              "ServerTime": 1793188357.942058,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 14.444999933242798,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188359.007,
+      "Index": 46,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 15.461999893188477,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188359.007,
+      "Index": 47,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 18.81414210004732,
+            "Potions": {
+              "ServerTime": 1793188358.958941,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 15.461999893188477,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188359.39,
+      "Index": 48,
+      "Payload": {
+        "OwnedDumbbells": [],
+        "Win": 0,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "",
+          "TrainingBelt": "",
+          "Glove": ""
+        },
+        "SpentWin": 0,
+        "UTC": 1793188359.39,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 0,
+        "Strength": 0,
+        "ForgeJournal": {
+          "Sequence": 0
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 1,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "171319d2-d905-412e-b8b4-448446913d4c"
+        },
+        "Elapsed": 15.84500002861023,
+        "Defeated": [],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "",
+        "Speed": 24,
+        "Level": 1,
+        "EquippedDumbbell": "",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 1,
+          "Maxes": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 375,
+          "Gauges": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": [],
+        "Position": [
+          287.861328125,
+          7.3388671875,
+          13
+        ],
+        "Ores": [],
+        "OwnedAuras": [],
+        "Visited": false,
+        "NormalTrainingGain": 1,
+        "Deaths": 0
+      },
+      "Elapsed": 15.84500002861023,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793188360.007,
+      "Index": 49,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 16.461999893188477,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188360.007,
+      "Index": 50,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 19.814915199996904,
+            "Potions": {
+              "ServerTime": 1793188359.959716,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 16.461999893188477,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188361.023,
+      "Index": 51,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 17.477999925613403,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188361.023,
+      "Index": 52,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 20.829935200046748,
+            "Potions": {
+              "ServerTime": 1793188360.974731,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 17.477999925613403,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188362.024,
+      "Index": 53,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 18.478999853134155,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188362.024,
+      "Index": 54,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 21.830127299996093,
+            "Potions": {
+              "ServerTime": 1793188361.974927,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 18.478999853134155,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188363.023,
+      "Index": 55,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 19.477999925613403,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188363.023,
+      "Index": 56,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 22.831258099991828,
+            "Potions": {
+              "ServerTime": 1793188362.976056,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 19.477999925613403,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188364.041,
+      "Index": 57,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 20.495999813079834,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188364.041,
+      "Index": 58,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 23.847687399946153,
+            "Potions": {
+              "ServerTime": 1793188363.992486,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 20.495999813079834,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188364.107,
+      "Index": 59,
+      "Payload": {
+        "Phase": "movement",
+        "Reason": "Normal MoveTo"
+      },
+      "Elapsed": 20.562000036239624,
+      "Kind": "Decision"
+    },
+    {
+      "UTC": 1793188364.609,
+      "Index": 60,
+      "Payload": {
+        "OwnedDumbbells": [],
+        "Win": 0,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "",
+          "TrainingBelt": "",
+          "Glove": ""
+        },
+        "SpentWin": 0,
+        "UTC": 1793188364.609,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 0,
+        "Strength": 0,
+        "ForgeJournal": {
+          "Sequence": 0
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 1,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "171319d2-d905-412e-b8b4-448446913d4c"
+        },
+        "Elapsed": 21.063999891281128,
+        "Defeated": [],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "",
+        "Speed": 24,
+        "Level": 1,
+        "EquippedDumbbell": "",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 1,
+          "Maxes": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 375,
+          "Gauges": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": [],
+        "Position": [
+          287.85882568359375,
+          7.338871479034424,
+          7.871926307678223
+        ],
+        "Ores": [],
+        "OwnedAuras": [],
+        "Visited": false,
+        "NormalTrainingGain": 1,
+        "Deaths": 0
+      },
+      "Elapsed": 21.063999891281128,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793188365.058,
+      "Index": 61,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 21.513000011444092,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188365.058,
+      "Index": 62,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 24.863690300029702,
+            "Potions": {
+              "ServerTime": 1793188365.008488,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 21.513000011444092,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188366.073,
+      "Index": 63,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 22.527999877929688,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188366.073,
+      "Index": 64,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 25.880629500024952,
+            "Potions": {
+              "ServerTime": 1793188366.025427,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 22.527999877929688,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188367.073,
+      "Index": 65,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 23.527999877929688,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188367.073,
+      "Index": 66,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 26.880981700029224,
+            "Potions": {
+              "ServerTime": 1793188367.025778,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 23.527999877929688,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188368.091,
+      "Index": 67,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": true,
+            "CurrentDay": 1,
+            "ClaimedDays": 0,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Ready",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 24.546000003814697,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188368.091,
+      "Index": 68,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 27.897559499950148,
+            "Potions": {
+              "ServerTime": 1793188368.04237,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 24.546000003814697,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188368.391,
+      "Index": 69,
+      "Payload": {
+        "Phase": "operations",
+        "Reason": "Normal UI request DailyRewardClaim"
+      },
+      "Elapsed": 24.84599995613098,
+      "Kind": "Decision"
+    },
+    {
+      "UTC": 1793188368.391,
+      "Index": 70,
+      "Payload": {
+        "Before": 0,
+        "Delta": 1,
+        "After": 1
+      },
+      "Elapsed": 24.84599995613098,
+      "Kind": "Win"
+    },
+    {
+      "UTC": 1793188368.44,
+      "Index": 71,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": false,
+            "CurrentDay": 2,
+            "ClaimedDays": 1,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Claimed",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          },
+          "Success": true,
+          "Result": {
+            "Amount": 1,
+            "RewardType": "Win"
+          },
+          "Code": "Claimed"
+        }
+      },
+      "Elapsed": 24.894999980926514,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188369.108,
+      "Index": 72,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": false,
+            "CurrentDay": 2,
+            "ClaimedDays": 1,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Claimed",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 25.562999963760376,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188369.108,
+      "Index": 73,
+      "Payload": {
+        "Remote": "TimeRewardClaim",
+        "Data": {
+          "State": {
+            "ClaimedRewards": [],
+            "Completed": false,
+            "ElapsedSeconds": 28.91371180000715,
+            "Potions": {
+              "ServerTime": 1793188369.058509,
+              "TrainingSeconds": 0,
+              "StrengthSeconds": 0
+            },
+            "Loaded": true,
+            "States": {
+              "Reward04": "Locked",
+              "Reward01": "Locked",
+              "Reward03": "Locked",
+              "Reward07": "Locked",
+              "Reward05": "Locked",
+              "Reward06": "Locked",
+              "Reward09": "Locked",
+              "Reward08": "Locked",
+              "Reward02": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 25.562999963760376,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188369.791,
+      "Index": 74,
+      "Payload": {
+        "OwnedDumbbells": [],
+        "Win": 1,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "",
+          "TrainingBelt": "",
+          "Glove": ""
+        },
+        "SpentWin": 0,
+        "UTC": 1793188369.791,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 1,
+        "Strength": 3,
+        "ForgeJournal": {
+          "Sequence": 0
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 1,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "171319d2-d905-412e-b8b4-448446913d4c"
+        },
+        "Elapsed": 26.245999813079834,
+        "Defeated": [],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "",
+        "Speed": 24,
+        "Level": 1,
+        "EquippedDumbbell": "",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 1,
+          "Maxes": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 375,
+          "Gauges": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": [],
+        "Position": [
+          287.787109375,
+          8.046232223510742,
+          -41.44919204711914
+        ],
+        "Ores": [],
+        "OwnedAuras": [],
+        "Visited": false,
+        "NormalTrainingGain": 1,
+        "Deaths": 0
+      },
+      "Elapsed": 26.245999813079834,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793188370.108,
+      "Index": 75,
+      "Payload": {
+        "Remote": "DailyRewardClaim",
+        "Data": {
+          "State": {
+            "Completed": false,
+            "HasReady": false,
+            "CurrentDay": 2,
+            "ClaimedDays": 1,
+            "Loaded": true,
+            "DateUTC": "2026-10-28",
+            "States": {
+              "Day1": "Claimed",
+              "VIP": "Locked",
+              "Day6": "Locked",
+              "Day3": "Locked",
+              "Day4": "Locked",
+              "Day5": "Locked",
+              "Day7": "Locked",
+              "Day2": "Locked"
+            }
+          }
+        }
+      },
+      "Elapsed": 26.562999963760376,
+      "Kind": "ClientEvent"
+    }
+  ],
+  "StartUTC": 1793188343.545,
+  "Cursor": 75,
+  "FirstClears": []
+}

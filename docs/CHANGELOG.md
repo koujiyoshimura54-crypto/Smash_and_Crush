@@ -1,5 +1,9 @@
 # 2026-10-01 — Inventory Capacity tiers 5→12
 
+## 2026-10-28 — World1 approved HP and Dumbbell rebalance
+
+Installed approved World1 Stage5–10 Boss HP75k/190k/410k/990k/1.8M/5M, fixed Stage5 walls and preserved Stage1–4; updated only the twelve NORMAL Dumbbells' Strength/purchase/sale numbers. Native checks and one isolated unpaid Stage10 first-clear run52:16.654 are recorded with natural RNG, deaths, manual-input strategy and AI-time limitations. QA dependencies/helpers were removed while retaining the new balance and current unsaved Edit. No OS GUI, Save/Publish or rbxl write. [Evidence](../reports/World1Balance_20261028/README.md).
+
 ## 2026-10-22 ? Stage9 SCP-682 skin and locomotion
 
 Integrated the current imported 32-Bone SCP-682 as the Stage9 template after native visible-weight checks. Added shared production/Preview quadruped gait, matched the previous display scale and retained its fixed collider. See [record](../reports/World2SCP682Skin_20261022/README.md) for native verification and limits.

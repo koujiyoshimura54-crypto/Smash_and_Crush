@@ -1,0 +1,31 @@
+{
+  "NativeClientBosses": 10,
+  "NativeClientWallValues": 40,
+  "NativeClientDumbbells": 12,
+  "MasterOnlyThreeNumericFieldsChanged": true,
+  "Stage1To4Preserved": true,
+  "MergePointsPreserved": [
+    5,
+    20,
+    40,
+    70,
+    110,
+    160,
+    220,
+    290,
+    370,
+    450,
+    530,
+    650
+  ],
+  "Preflight": {
+    "SeedWin": 1000,
+    "PurchaseWin": 995,
+    "AfterSale": 998,
+    "AfterRebuy": 993,
+    "EquippedNormalGain": 2,
+    "ObservedTraining": 27,
+    "LaterTraining": 151
+  },
+  "MainFreshStateConfirmed": true
+}

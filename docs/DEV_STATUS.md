@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-10-28 — Approved World1 balance and one native unpaid clear
+
+Applied only World1BossConfig HP references/fixed Stage5 walls and NORMAL_01..12 numeric fields in DumbbellItemMaster to the user's current unsaved Studio. Native Config/transaction/training checks passed; one fresh isolated unpaid run reached the server's first Stage10 defeat in52:16.654, including AI/input delays. It used natural Ore/Item merges, four rebirths and later normal manual combat/retreat. Five deaths and favorable Item merge draws are documented; this is not a typical/public-player time. Pet/Hatch interaction and rendered UI remain unverified under the no-OS-input constraint. Restored35 isolation substitutions, matched446 post-implementation Sources, retained approved balance and existing edits, removed helpers and left Edit without Save/Publish/rbxl write. Details: [World1Balance_20261028](../reports/World1Balance_20261028/README.md).
+
 ## 2026-10-22 ? Stage9 skinned SCP-682
 
 The current 32-Bone MeshPart replaces the rigid Stage9 display. Shared owner-only procedural quadruped IK drives the visible skin in production and Preview; previous combat dimensions and tuning remain fixed. See [focused verification](../reports/World2SCP682Skin_20261022/README.md).

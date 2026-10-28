@@ -1,5 +1,39 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-10-28 — Approved World1 HP and Dumbbell values
+
+This table supersedes earlier World1 Boss/Wall and NORMAL dumbbell values below. Current unsaved Studio is authoritative. Boss HP retains RequiredStrength × 5; RequiredStrength is a calculation reference, not a new entry gate or enforced hit count. Stage1–4 are preserved; Stage5 uses fixed walls; Stage6–10 walls are 40/50/60/80% of Boss HP. Combat, Win rewards, intervals, movement and World2 remain unchanged.
+
+| Stage | Boss HP | Wall1 | Wall2 | Wall3 | Wall4 |
+|---|---:|---:|---:|---:|---:|
+| 1 | 375 | 100 | 125 | 150 | 200 |
+| 2 | 2250 | 300 | 325 | 350 | 425 |
+| 3 | 12500 | 600 | 750 | 900 | 1200 |
+| 4 | 30000 | 3000 | 3750 | 4500 | 6000 |
+| 5 | 75000 | 7000 | 8750 | 10500 | 14000 |
+| 6 | 190000 | 76000 | 95000 | 114000 | 152000 |
+| 7 | 410000 | 164000 | 205000 | 246000 | 328000 |
+| 8 | 990000 | 396000 | 495000 | 594000 | 792000 |
+| 9 | 1800000 | 720000 | 900000 | 1080000 | 1440000 |
+| 10 | 5000000 | 2000000 | 2500000 | 3000000 | 4000000 |
+
+| NORMAL grade | Strength addition | Purchase Win | Sale Win | Merge points |
+|---|---:|---:|---:|---:|
+| 1 | 1 | 5 | 3 | 5 |
+| 2 | 3 | 20 | 10 | 20 |
+| 3 | 5 | 50 | 25 | 40 |
+| 4 | 7 | 100 | 50 | 70 |
+| 5 | 10 | 150 | 75 | 110 |
+| 6 | 15 | 400 | 200 | 160 |
+| 7 | 25 | 750 | 375 | 220 |
+| 8 | 35 | 1250 | 625 | 290 |
+| 9 | 50 | 2000 | 1000 | 370 |
+| 10 | 65 | 3500 | 1750 | 450 |
+| 11 | 85 | 5000 | 2500 | 530 |
+| 12 | 100 | 7500 | 3750 | 650 |
+
+Only PriceWin / SellWin / StrengthBonus change in DumbbellItemMaster. Existing IDs, images, Grade, owned quantities, equipped IDs, saved schema, merge thresholds and World2 definitions remain. Existing owned dumbbells use these current effects/prices. Ore points/drops/sales/RNG and Item/Aura/Pet/Treadmill/Rebirth/payment values are unchanged. See reports/World1Balance_20261028 for actual verification; no predicted clear time is established by these tables.
+
 ## 2026-10-17 - Provisional World1 Stage5-10 Boss and Wall HP
 
 This owner-approved provisional balance supersedes earlier World1 HP tables and the Stage1-5 fixed-wall rule below. `ReplicatedStorage.Config.World1BossConfig` remains the only authority. Preserve Stage1-4 exactly as found in CurrentCloud/5bf7d96; Stage5 now joins Stage6-10 in deriving four walls from RequiredStrength times 2 / 2.5 / 3 / 4. Boss HP remains RequiredStrength times 5. Future tuning should edit this Config, not duplicate HP tables in consumers.

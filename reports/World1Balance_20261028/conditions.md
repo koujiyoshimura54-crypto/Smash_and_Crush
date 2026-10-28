@@ -1,0 +1,12 @@
+# Fresh unpaid run — fixed conditions
+Current unsaved Studio, Place126576845524886. Approved Boss/wall and NORMAL_01..12 values are installed before the QA baseline. The post-implementation Source guard covers446 objects; QA cleanup must preserve these new values.
+
+Preflight was a separate discarded Play with initial1000 fixture Win solely to exercise normal client purchase/equip/unequip/sale and training effect. NORMAL_01 purchase1000→995, unequip, normal ForgeClient sale→998, rebuy→993, native normal-training gain2. No preflight state carries into the main run.
+
+The main run starts from native default loading into a new empty in-memory store: Strength0, LV1, Win0, rebirth0, empty inventories, World2 unvisited, capacity5, ordinary AutoON. Marketplace ownership is false, badge ownership empty, real payment prompts blocked, no group-membership benefit claimed. No StudioStartOverride shortcut or existing account data is used. Gameplay speed, intervals, damage, RNG, Ore points/drop/sale rules, Item/Aura/Pet/Treadmill/Rebirth/World2 remain unchanged.
+
+No OS GUI, mouse/keyboard, window/focus, camera or emulator operation is used. Native LocalScript automation uses the same client Remotes and ForgeClient methods as ordinary UI; server checks/payments/ownership/RNG remain authoritative. Movement is ordinary Humanoid MoveTo/Jump, native collision and combat; no direct coordinates, grants, HP edits, server gameplay function invocation, or unlocked-teleport bypass.
+
+Decisions are reconsidered at meaningful milestones: compare actual training gain and cost of Dumbbells/Item/Aura/Pets, natural Ore merge candidates, bankable loot, rebirth and stage attempts. No fixed90-second rebirth rule, all-products purchase rule or five-hit preparation requirement is imposed. Failed combat should prompt a different movement/upgrade decision rather than repeated identical failure. Ordinary dodging is allowed. Target training intervals have explicit purposes. No further balance edits occur during the run.
+
+Clock starts when a living character, HumanoidRootPart, loaded Strength attribute and StrengthGui are available to the native client. It does not depend on OS focus or a rendered input frame. Stage10 first defeat ends it; read-only native polling is0.25s. All AI delays and growth during them remain in elapsed time. Raw exclusive categories prioritize death/combat/training/movement/annotated operations/AI idle. Actual data and decisions are checkpointed to the repository throughout.

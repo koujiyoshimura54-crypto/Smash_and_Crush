@@ -1,0 +1,726 @@
+{
+  "Snapshot": {
+    "OwnedDumbbells": [],
+    "Win": 998,
+    "Loaded": true,
+    "EquippedItems": {
+      "Protein": "",
+      "TrainingBelt": "",
+      "Glove": ""
+    },
+    "SpentWin": 5,
+    "UTC": 1793188203.631,
+    "Override": false,
+    "Auto": true,
+    "EarnedWin": 1003,
+    "Strength": 3,
+    "ForgeJournal": {
+      "Id": "c944e00d-70ca-4d40-bcd6-cdc139f6ffbc",
+      "ResultId": "",
+      "Sequence": 2,
+      "Signature": "SellDumbbell||NORMAL_01:1"
+    },
+    "Multipliers": {
+      "VIP": 1,
+      "Rebirth": 1,
+      "Win": 1
+    },
+    "Health": 100,
+    "Stage": 1,
+    "Bag": {
+      "Items": [],
+      "Count": 0,
+      "Active": true,
+      "Capacity": 5,
+      "WorldId": 1,
+      "RunId": "d19e7c94-db48-4daf-83af-d268528d0afc"
+    },
+    "Elapsed": 46.84599995613098,
+    "Defeated": [],
+    "Pets": {
+      "Revision": 0,
+      "Version": 1,
+      "LastResults": [],
+      "Owned": [],
+      "Equipped": [
+        ""
+      ],
+      "LastRequestId": ""
+    },
+    "Fighting": false,
+    "Aura": "",
+    "Speed": 24,
+    "Level": 1,
+    "EquippedDumbbell": "",
+    "Capacity": 5,
+    "Rebirth": 0,
+    "Walls": {
+      "Current": 1,
+      "MajorStage": 1,
+      "Maxes": [
+        100,
+        125,
+        150,
+        200
+      ],
+      "Skipped": false,
+      "BossMaxHP": 375,
+      "Gauges": [
+        100,
+        125,
+        150,
+        200
+      ],
+      "Cleared": []
+    },
+    "ItemMergeJournal": {
+      "Sequence": 0
+    },
+    "OwnedItems": [],
+    "Position": [
+      287.7646484375,
+      8.056640625,
+      -41.3681640625
+    ],
+    "Ores": [],
+    "OwnedAuras": [],
+    "Visited": false,
+    "NormalTrainingGain": 1,
+    "Deaths": 0
+  },
+  "Totals": {
+    "operations": 13.581000089645386,
+    "training": 0,
+    "combat": 0,
+    "death": 0,
+    "codex_interruption": 31.113999843597412,
+    "movement": 2.0820000171661377
+  },
+  "TotalEvents": 31,
+  "Events": [
+    {
+      "UTC": 1793188177.748,
+      "Index": 20,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_01": 1
+        },
+        "Win": 995,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "",
+          "TrainingBelt": "",
+          "Glove": ""
+        },
+        "SpentWin": 5,
+        "UTC": 1793188177.748,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 1000,
+        "Strength": 0,
+        "ForgeJournal": {
+          "Id": "f376d86d-dd02-4be2-9b3d-71d9d6db475e",
+          "ResultId": "NORMAL_01",
+          "Sequence": 1,
+          "Signature": "BuyDumbbell|NORMAL_01"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 1,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "d19e7c94-db48-4daf-83af-d268528d0afc"
+        },
+        "Elapsed": 20.96299982070923,
+        "Defeated": [],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "",
+        "Speed": 24,
+        "Level": 1,
+        "EquippedDumbbell": "NORMAL_01",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 1,
+          "Maxes": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 375,
+          "Gauges": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": [],
+        "Position": [
+          287.861328125,
+          7.3388671875,
+          13
+        ],
+        "Ores": [],
+        "OwnedAuras": [],
+        "Visited": false,
+        "NormalTrainingGain": 2,
+        "Deaths": 0
+      },
+      "Elapsed": 20.96299982070923,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793188181.38,
+      "Index": 21,
+      "Payload": {
+        "Phase": "movement",
+        "Reason": "Normal MoveTo"
+      },
+      "Elapsed": 24.59500002861023,
+      "Kind": "Decision"
+    },
+    {
+      "UTC": 1793188182.964,
+      "Index": 22,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_01": 1
+        },
+        "Win": 995,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "",
+          "TrainingBelt": "",
+          "Glove": ""
+        },
+        "SpentWin": 5,
+        "UTC": 1793188182.964,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 1000,
+        "Strength": 0,
+        "ForgeJournal": {
+          "Id": "f376d86d-dd02-4be2-9b3d-71d9d6db475e",
+          "ResultId": "NORMAL_01",
+          "Sequence": 1,
+          "Signature": "BuyDumbbell|NORMAL_01"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 1,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "d19e7c94-db48-4daf-83af-d268528d0afc"
+        },
+        "Elapsed": 26.17899990081787,
+        "Defeated": [],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "",
+        "Speed": 24,
+        "Level": 1,
+        "EquippedDumbbell": "NORMAL_01",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 1,
+          "Maxes": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 375,
+          "Gauges": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": [],
+        "Position": [
+          287.861328125,
+          7.3388671875,
+          13
+        ],
+        "Ores": [],
+        "OwnedAuras": [],
+        "Visited": false,
+        "NormalTrainingGain": 2,
+        "Deaths": 0
+      },
+      "Elapsed": 26.17899990081787,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793188184.014,
+      "Index": 23,
+      "Payload": {
+        "Remote": "AuraPurchaseRequest",
+        "Data": {
+          "State": {
+            "Loaded": true,
+            "OwnedAuras": {
+              "Blue": false,
+              "Purple": false,
+              "Secret": false,
+              "W2_AURA_01": false,
+              "W2_AURA_04": false,
+              "Pink": false,
+              "W2_AURA_05": false,
+              "W2_AURA_06": false,
+              "W2_AURA_03": false,
+              "Green": false,
+              "VIP": false,
+              "Yellow": false,
+              "W2_AURA_02": false,
+              "Red": false
+            },
+            "EquippedAura": ""
+          }
+        }
+      },
+      "Elapsed": 27.228999853134155,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188188.165,
+      "Index": 24,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_01": 1
+        },
+        "Win": 995,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "",
+          "TrainingBelt": "",
+          "Glove": ""
+        },
+        "SpentWin": 5,
+        "UTC": 1793188188.164,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 1000,
+        "Strength": 0,
+        "ForgeJournal": {
+          "Id": "f376d86d-dd02-4be2-9b3d-71d9d6db475e",
+          "ResultId": "NORMAL_01",
+          "Sequence": 1,
+          "Signature": "BuyDumbbell|NORMAL_01"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 1,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "d19e7c94-db48-4daf-83af-d268528d0afc"
+        },
+        "Elapsed": 31.378999948501587,
+        "Defeated": [],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "",
+        "Speed": 24,
+        "Level": 1,
+        "EquippedDumbbell": "NORMAL_01",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 1,
+          "Maxes": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 375,
+          "Gauges": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": [],
+        "Position": [
+          287.861328125,
+          7.3388671875,
+          13
+        ],
+        "Ores": [],
+        "OwnedAuras": [],
+        "Visited": false,
+        "NormalTrainingGain": 2,
+        "Deaths": 0
+      },
+      "Elapsed": 31.37999987602234,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793188192.814,
+      "Index": 25,
+      "Payload": {
+        "Phase": "movement",
+        "Reason": "Normal MoveTo"
+      },
+      "Elapsed": 36.02899980545044,
+      "Kind": "Decision"
+    },
+    {
+      "UTC": 1793188193.365,
+      "Index": 26,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_01": 1
+        },
+        "Win": 995,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "",
+          "TrainingBelt": "",
+          "Glove": ""
+        },
+        "SpentWin": 5,
+        "UTC": 1793188193.365,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 1000,
+        "Strength": 0,
+        "ForgeJournal": {
+          "Id": "f376d86d-dd02-4be2-9b3d-71d9d6db475e",
+          "ResultId": "NORMAL_01",
+          "Sequence": 1,
+          "Signature": "BuyDumbbell|NORMAL_01"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 1,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "d19e7c94-db48-4daf-83af-d268528d0afc"
+        },
+        "Elapsed": 36.579999923706055,
+        "Defeated": [],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "",
+        "Speed": 24,
+        "Level": 1,
+        "EquippedDumbbell": "NORMAL_01",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 1,
+          "Maxes": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 375,
+          "Gauges": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": [],
+        "Position": [
+          287.8561096191406,
+          7.338867664337158,
+          5.000687599182129
+        ],
+        "Ores": [],
+        "OwnedAuras": [],
+        "Visited": false,
+        "NormalTrainingGain": 2,
+        "Deaths": 0
+      },
+      "Elapsed": 36.579999923706055,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793188196.746,
+      "Index": 27,
+      "Payload": {
+        "Phase": "operations",
+        "Reason": "Normal UI request DumbbellEquipRequest"
+      },
+      "Elapsed": 39.960999965667725,
+      "Kind": "Decision"
+    },
+    {
+      "UTC": 1793188196.799,
+      "Index": 28,
+      "Payload": {
+        "Remote": "DumbbellEquipRequest",
+        "Data": {
+          "State": {
+            "OwnedDumbbells": {
+              "NORMAL_01": true
+            },
+            "DumbbellCounts": {
+              "NORMAL_01": 1
+            },
+            "Win": 995,
+            "EquippedDumbbell": "",
+            "Loaded": true,
+            "PurchasableDumbbells": {
+              "NORMAL_02": true,
+              "NORMAL_07": true,
+              "NORMAL_06": true,
+              "NORMAL_05": true,
+              "NORMAL_04": true,
+              "NORMAL_03": true
+            }
+          },
+          "Code": "Unequipped",
+          "Success": true,
+          "ItemId": ""
+        }
+      },
+      "Elapsed": 40.013999938964844,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188198.596,
+      "Index": 29,
+      "Payload": {
+        "OwnedDumbbells": {
+          "NORMAL_01": 1
+        },
+        "Win": 995,
+        "Loaded": true,
+        "EquippedItems": {
+          "Protein": "",
+          "TrainingBelt": "",
+          "Glove": ""
+        },
+        "SpentWin": 5,
+        "UTC": 1793188198.596,
+        "Override": false,
+        "Auto": true,
+        "EarnedWin": 1000,
+        "Strength": 3,
+        "ForgeJournal": {
+          "Id": "f376d86d-dd02-4be2-9b3d-71d9d6db475e",
+          "ResultId": "NORMAL_01",
+          "Sequence": 1,
+          "Signature": "BuyDumbbell|NORMAL_01"
+        },
+        "Multipliers": {
+          "VIP": 1,
+          "Rebirth": 1,
+          "Win": 1
+        },
+        "Health": 100,
+        "Stage": 1,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "d19e7c94-db48-4daf-83af-d268528d0afc"
+        },
+        "Elapsed": 41.81099987030029,
+        "Defeated": [],
+        "Pets": {
+          "LastRequestId": "",
+          "Version": 1,
+          "LastResults": [],
+          "Revision": 0,
+          "Equipped": [
+            ""
+          ],
+          "Owned": []
+        },
+        "Fighting": false,
+        "Aura": "",
+        "Speed": 24,
+        "Level": 1,
+        "EquippedDumbbell": "",
+        "Capacity": 5,
+        "ItemMergeJournal": {
+          "Sequence": 0
+        },
+        "Walls": {
+          "Current": 1,
+          "MajorStage": 1,
+          "Maxes": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Skipped": false,
+          "BossMaxHP": 375,
+          "Gauges": [
+            100,
+            125,
+            150,
+            200
+          ],
+          "Cleared": []
+        },
+        "Rebirth": 0,
+        "OwnedItems": [],
+        "Position": [
+          287.7724609375,
+          8.046897888183594,
+          -41.443336486816406
+        ],
+        "Ores": [],
+        "OwnedAuras": [],
+        "Visited": false,
+        "NormalTrainingGain": 1,
+        "Deaths": 0
+      },
+      "Elapsed": 41.81099987030029,
+      "Kind": "Snapshot"
+    },
+    {
+      "UTC": 1793188199.047,
+      "Index": 30,
+      "Payload": {
+        "Remote": "AuraPurchaseRequest",
+        "Data": {
+          "State": {
+            "Loaded": true,
+            "OwnedAuras": {
+              "Blue": false,
+              "Purple": false,
+              "Secret": false,
+              "W2_AURA_01": false,
+              "W2_AURA_04": false,
+              "Pink": false,
+              "W2_AURA_05": false,
+              "W2_AURA_06": false,
+              "W2_AURA_03": false,
+              "Green": false,
+              "VIP": false,
+              "Yellow": false,
+              "W2_AURA_02": false,
+              "Red": false
+            },
+            "EquippedAura": ""
+          }
+        }
+      },
+      "Elapsed": 42.26199984550476,
+      "Kind": "ClientEvent"
+    },
+    {
+      "UTC": 1793188200.079,
+      "Index": 31,
+      "Payload": {
+        "Before": 995,
+        "Delta": 3,
+        "After": 998
+      },
+      "Elapsed": 43.293999910354614,
+      "Kind": "Win"
+    }
+  ],
+  "StartUTC": 1793188156.785,
+  "Cursor": 31,
+  "FirstClears": []
+}

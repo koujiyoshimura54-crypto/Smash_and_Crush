@@ -1,0 +1,11 @@
+# Main run live checkpoints
+
+- The main run begins with native default0 Strength/Win, LV1/rebirth0, empty inventories, no override and no World2 arrival. Preflight1000 Win was confined to the prior discarded Play.
+- Stage1 first defeat101.142s. Natural Stone5pt forged NORMAL_01; normal Inventory request equipped it. Daily1 Win and timed rewards were claimed via their actual claim Remotes.
+- Ordinary circular dodging failed at Stage2/Strength401 (death299.569s, on arena floor). Stationary shorter combat after legitimate potion training succeeded at520.726s. No stats were edited to recover.
+- Natural21pt Ore selection forged NORMAL_02;43pt forged NORMAL_03;77pt later forged NORMAL_04. Each used ForgeClient.Request and native server RNG/payment/persistence checks. Obsolete unequipped dumbbells were sold normally for3/10/25 Win respectively.
+- A sparse Jump=true pulse did not prevent a Stage3 death at870 Strength. Ordinary hold-jump input at PreSimulation produced real Humanoid Jumping states and vertical physical motion without changing JumpHeight, speed, HP or collision. Stage3 first defeat971.259s. Stage4 attempt at2804 failed; actual training before the retry overshot its4500 intent and later cleared at1187.832s. All AI/observer preparation time and overlapping growth are counted.
+- Stage5 first defeat1316.228s at below15000 reference Strength, using normal jump. This is an actual below-reference clear, not a forced5-hit rule.
+- Pink Aura30 and Purple75 were purchased normally, based on additive growth perWin. Early rebirths1/2/3 retained gear and cost actual rebuilding time; there was no90-second rebuilding restriction. Third rebirth unlocked ordinary Iron01.
+- Two spare Common Electric Belts (2pt) merged naturally to Uncommon Electric Belt. Two Common Glove variants (2pt) merged naturally to Uncommon Ice Glove. Both were re-equipped with normal Best Equip. No probabilities were fixed; both happened to receive the50% Uncommon branch.
+- Early telemetry included routine state-only refresh spam. Restarting only the QA client helper briefly failed on a concatenated Luau token; it was corrected without restarting Play or changing game Source. Attempts to compile in Play returned loadstring unavailable. This operator interruption remains in elapsed time; Source compile checks in Edit are kept separate.
