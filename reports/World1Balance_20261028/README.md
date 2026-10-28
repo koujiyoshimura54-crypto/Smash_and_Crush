@@ -10,7 +10,7 @@ No second/third main run was started. A separate discarded preflight preceded th
 
 ## Live target and implementation
 
-Current unsaved Studio, Place126576845524886 / Universe10765181857. Git baseline7407fcb. Current live Sources were read and guarded; neither an old rbxl nor a complete Git Source set was imported. Only these gameplay Sources changed:
+Current unsaved Studio, Place126576845524886 / Universe10765181857. Local checkout baseline7407fcb; current Studio remained authoritative. See the final integration note for pre-existing remote work discovered on push. Current live Sources were read and guarded; neither an old rbxl nor a complete Git Source set was imported. Only these gameplay Sources changed:
 
 - **ReplicatedStorage.Config.World1BossConfig**: RequiredStrength5..10 becomes15000/38000/82000/198000/360000/1000000, retaining Boss HP = reference ×5. Stage5 receives fixed7000/8750/10500/14000 walls. Existing Stage6..10 derivation at2/2.5/3/4 times reference yields40/50/60/80% Boss HP. Stages1..4, lottery definitions, lookup APIs, combat and rewards remain unchanged. No entry/mandatory-hit-count condition was introduced.
 - **ReplicatedStorage.Config.DumbbellItemMaster**: only NORMAL_01..12 PriceWin, SellWin and StrengthBonus values change to the supplied table. No IDs, images, Grade, quantities, equipped IDs, 2D objects, save schema or World2 rows change. Existing owned equipment reads the current Master; no migration, deletion or compensation is added.
@@ -134,3 +134,7 @@ No further balance retuning was applied. One run with favorable merge luck, time
 Cleanup compared all446 post-implementation baseline Sources against their expected original/temporary forms before restoring: no unexpected edits. Exactly35 dependency substitutions were restored, the three remaining Edit fixtures removed (preflight seed had already been removed), runtime-only helpers ended with Play, and zero __Night/__Balance helpers remain. Both approved Configs compiled/matched and retain the new values. Camera CFrame/focus/FOV/type and development-GUI setting match the initial state. [Cleanup proof](cleanup.json).
 
 The repository changes are the two Configs, scoped specification/status/changelog entries, and this report/harness/evidence. No OS GUI operation, Studio Save/Publish, rbxl writeback/new rbxl/backup/copy/migration or Studio closure occurred. The user's pre-existing unsaved edits remain in the open Edit Studio. **Manual Save/Publish is required before moving PCs or exiting.**
+
+### Final Git integration
+
+The first normal push of feature commit8515e2c was rejected because origin/main already contained12b43fa (Merge controller respawn relocation) and b5677a8 (the prior2026-10-27 adaptive run record). Both remote commits were fetched and retained through a normal merge, without force push, rebase or reset. Their Sources were not copied into Studio; the current live446-Source guard and approved two Configs remained unchanged. The previous3h03m run is a separate old-balance/policy/input trial, not a controlled before/after comparison with this52-minute run. Its result is not combined with the present clock.

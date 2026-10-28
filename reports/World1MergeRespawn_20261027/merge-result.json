@@ -1,0 +1,24 @@
+{
+  "Method": "Real Studio Play; ordinary reset death, movement, Auto combat, Trophy and mouse UI; isolated memory storage",
+  "Deaths": 1,
+  "OresAfter": [],
+  "DumbbellsAfter": {
+    "NORMAL_01": 1
+  },
+  "WinAfter": 1,
+  "ForgeJournal": {
+    "Id": "feee76ad-610c-41ed-ab3f-14d29fbd51d7",
+    "ResultId": "NORMAL_01",
+    "Sequence": 2,
+    "Signature": "MergeOre||ORE_001:1"
+  },
+  "ExpectedBefore": {
+    "Ores": {
+      "ORE_001": 1
+    },
+    "OwnedDumbbells": {},
+    "Win": 1
+  },
+  "FinalEventCursor": 87,
+  "TotalEvents": 87
+}

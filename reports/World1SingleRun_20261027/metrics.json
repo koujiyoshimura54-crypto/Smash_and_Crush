@@ -1,0 +1,282 @@
+{
+  "Complete": true,
+  "BenchmarkRuns": 1,
+  "ElapsedSeconds": 11014.913000106812,
+  "TimeFormat": "real elapsed; includes reasoning, blocked input and concurrent growth",
+  "RawCategoriesSeconds": {
+    "operations": 484.69399976730347,
+    "training": 4031.6219997406006,
+    "combat": 659.0749974250793,
+    "death": 10.15000033378601,
+    "codex_interruption": 5202.870999097824,
+    "movement": 626.501003742218
+  },
+  "RawCategoriesMinutes": {
+    "operations": 8.078233329455058,
+    "training": 67.19369999567668,
+    "combat": 10.984583290417989,
+    "death": 0.16916667222976683,
+    "codex_interruption": 86.7145166516304,
+    "movement": 10.441683395703633
+  },
+  "Deaths": 3,
+  "FirstClearedStages": 10,
+  "Events": 2888,
+  "FinishedUTC": 1793088437.49,
+  "UnpaidMultipliers": {
+    "VIP": 1,
+    "Rebirth": 3.5,
+    "Win": 1
+  },
+  "FinalEquipment": {
+    "Dumbbell": "NORMAL_07",
+    "Aura": "Yellow",
+    "Items": {
+      "Protein": "PROTEIN_RARE_ICE",
+      "TrainingBelt": "TRAININGBELT_RARE_ICE",
+      "Glove": "GLOVE_COMMON_ICE"
+    },
+    "Pets": {
+      "Revision": 2,
+      "Version": 1,
+      "LastResults": [],
+      "Owned": {
+        "baef1515-b4a9-4fb8-ad3d-4bd475fc4a01": "Bear"
+      },
+      "Equipped": [
+        "baef1515-b4a9-4fb8-ad3d-4bd475fc4a01"
+      ],
+      "LastRequestId": "c69ecc4f-66f3-451a-8c07-960fbdf0ebb7"
+    }
+  },
+  "Encounters": [
+    {
+      "Stage": 8,
+      "Start": 9013.708000183105,
+      "SpawnGeneration": 81,
+      "Result": "WIN",
+      "HealthSamples": [
+        100,
+        75,
+        75
+      ],
+      "MotionSamples": 3,
+      "LastAttack": 4,
+      "JumpCalibrations": [],
+      "MinRootY": 8.898530960083008,
+      "MaxRootY": 8.898531913757324,
+      "LastBossHP": 0,
+      "End": 9016.892000198364
+    },
+    {
+      "Stage": 9,
+      "Start": 9228.667000055313,
+      "SpawnGeneration": 91,
+      "Result": "WIN",
+      "HealthSamples": [
+        100,
+        75,
+        75,
+        50,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25
+      ],
+      "MotionSamples": 15,
+      "LastAttack": 19,
+      "JumpCalibrations": [],
+      "MinRootY": 8.898530960083008,
+      "MaxRootY": 8.898531913757324,
+      "LastBossHP": 0,
+      "End": 9244.833000183105
+    },
+    {
+      "Stage": 9,
+      "Start": 9600.25200009346,
+      "SpawnGeneration": 101,
+      "Result": "WIN",
+      "HealthSamples": [
+        100,
+        75,
+        75,
+        50,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25
+      ],
+      "MotionSamples": 14,
+      "LastAttack": 18,
+      "JumpCalibrations": [],
+      "MinRootY": 8.898530960083008,
+      "MaxRootY": 8.898531913757324,
+      "LastBossHP": 0,
+      "End": 9615.663000106812
+    },
+    {
+      "Stage": 10,
+      "Start": 10032.051000118256,
+      "SpawnGeneration": 102,
+      "Result": "Death",
+      "HealthSamples": [
+        100,
+        75,
+        50,
+        50,
+        50,
+        25,
+        0
+      ],
+      "MotionSamples": 6,
+      "LastAttack": 7,
+      "JumpCalibrations": [],
+      "MinRootY": 8.843522071838379,
+      "MaxRootY": 16.121652603149414,
+      "LastBossHP": 220681890.4660007,
+      "End": 10038.03500008583
+    },
+    {
+      "Stage": 9,
+      "Start": 10413.986000061035,
+      "SpawnGeneration": 111,
+      "Result": "Death",
+      "HealthSamples": [
+        100,
+        75,
+        75,
+        50,
+        25,
+        0
+      ],
+      "MotionSamples": 5,
+      "LastAttack": 6,
+      "JumpCalibrations": [],
+      "MinRootY": 8.898530960083008,
+      "MaxRootY": 8.898531913757324,
+      "LastBossHP": 49699101.46800059,
+      "End": 10418.96900010109
+    },
+    {
+      "Stage": 9,
+      "Start": 10817.22100019455,
+      "SpawnGeneration": 120,
+      "Result": "WIN",
+      "HealthSamples": [
+        100,
+        75,
+        75,
+        50,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25
+      ],
+      "MotionSamples": 14,
+      "LastAttack": 18,
+      "JumpCalibrations": [],
+      "MinRootY": 8.898490905761719,
+      "MaxRootY": 8.898531913757324,
+      "LastBossHP": 0,
+      "End": 10832.682000160217
+    },
+    {
+      "Stage": 10,
+      "Start": 10963.713000059128,
+      "SpawnGeneration": 121,
+      "Result": "WIN",
+      "HealthSamples": [
+        100,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "MotionSamples": 46,
+      "LastAttack": 59,
+      "JumpCalibrations": [
+        {
+          "Elapsed": 10964.731000185013,
+          "Health": 75,
+          "Delay": 0.68
+        },
+        {
+          "Elapsed": 10977.713999986649,
+          "Health": 50,
+          "Delay": 0.68
+        }
+      ],
+      "MinRootY": 8.520553588867188,
+      "MaxRootY": 16.380002975463867,
+      "LastBossHP": 0,
+      "End": 11014.91200017929
+    }
+  ],
+  "Assertions": [
+    "One Start/Finished",
+    "Ten first clears",
+    "Contiguous event indexes",
+    "Raw category sum matches real duration within1s",
+    "Final first-clear elapsed matches finish within1s"
+  ]
+}

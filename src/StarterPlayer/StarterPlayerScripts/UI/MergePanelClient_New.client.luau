@@ -1,3 +1,4 @@
+-- Persistent PlayerScripts owner; the old StarterGui Folder respawned this controller.
 -- Shared interactive Item/Pet/Ore view; current transaction and proximity wiring retained.
 local buildMergeShop=require(game:GetService("ReplicatedStorage").Modules:WaitForChild("MergeShopView"))
 
