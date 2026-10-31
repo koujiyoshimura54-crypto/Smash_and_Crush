@@ -1185,3 +1185,8 @@ Completed exactly one fresh, unpaid, isolated Y02 run through the first Stage10 
 Observed actual UI forging, equipment, sale, Egg/Pet/Aura, Item merge/set selection and R5/Gold. After failed approaches, ordinary movement and hit-calibrated physics jumps enabled59 normal Auto hits to defeat Stage10. No gameplay Source, balance or RNG changes and no data grants. Auto range and BestEquip set selection remain design-review findings.
 
 Exported2888 events and ten first-clear snapshots. Play stopped;35 dependencies restored, four fixtures removed,439 original Sources and recorded view values verified. Merge fix12b43fa and user edits retained. Studio remains open in unsaved Edit. No Save/Publish, rbxl write or additional run. [Report and limits](../reports/World1SingleRun_20261027/README.md).
+
+
+## 2026-10-31 ? Strength rewards and HUD (unsaved local Edit)
+
+Added departure-based offline Strength (3600 seconds, 5%), three timed-reference Strength Developer Products, dedicated double-offline receipt handling, and the HP/Level/purchase-row HUD. Verified isolated state/persistence logic and memory-only local Play. Left the local-file Studio unsaved in Edit; no Save/Publish or rbxl writeback. Evidence and limitations: reports/StrengthRewards_20261031/REPORT.md.

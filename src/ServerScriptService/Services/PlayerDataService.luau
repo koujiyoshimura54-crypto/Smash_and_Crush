@@ -18,6 +18,7 @@ local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
 local Ownership=require(script.Parent.PlayerDataOwnership)
+local StrengthRewardState=require(script.Parent.StrengthRewardState)
 local StoreConfig=require(game.ServerScriptService.Config:WaitForChild("DataStoreConfig"))
 -- Acquiring a DataStore can throw for an unpublished Studio file. Do it inside
 -- the existing protected read/write operation, never during module require.
@@ -244,6 +245,9 @@ local function validEquipped(itemId,owned)
 end
 local function normalize(raw)
  local d=defaults()
+ local rewards,rewardError=StrengthRewardState.Normalize(type(raw)=="table" and raw.StrengthRewards or nil)
+ if not rewards then return nil,rewardError end
+ d.StrengthRewards=rewards
  d.ItemMergeJournal=assert(normalizeItemMerge(nil))
  if typeof(raw)=="table" and typeof(raw.ResetToken)=="string" then d.ResetToken=raw.ResetToken end
  if typeof(raw)=="table" then
@@ -698,6 +702,7 @@ end
 
 function PlayerDataService.SetCurrentStrength(player,value)
  local s=sessions[player]
+ if s and s.PendingItemMutation and s.PendingItemMutation.StrengthMutation then return false end
  if not s or not s.Loaded then return false end
  if not finite(value) then return false end
  s.Data.Strength=math.max(0,value)
@@ -772,6 +777,7 @@ function PlayerDataService.AddStrengthGain(player,gain)
 end
 function PlayerDataService.ResetStrengthProgress(player)
  local s=sessions[player]
+ if s and s.PendingItemMutation then return false,"InventorySavePending" end
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
  local d=s.Data
  d.Strength,d.Level,d.LevelProgress=0,1,0
@@ -839,7 +845,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  end
  if not s or not s.Loaded or not s.Data then return false,"not loaded" end
  if s.Saving then return false,"saving" end
- if not s.Dirty and s.LastSave and os.clock()-s.LastSave<10 then return true,"already saved" end
+ if not s.StrengthClosing and not s.Dirty and s.LastSave and os.clock()-s.LastSave<10 then return true,"already saved" end
  if equipAuraOnSuccess~=nil and (not AuraConfig.Get(equipAuraOnSuccess) or s.Data.OwnedAuras[equipAuraOnSuccess]~=true) then return false,"InvalidAuraEquip" end
  s.Saving=true
  local d=s.Data
@@ -853,7 +859,10 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   d.DailyStrengthEarned=0
  end
  local persisted=s.StudioStartOverride
+ local rate=s.StrengthDepartureRate or require(script.Parent.StrengthReference).Get(player)
+ local rewardPresence=StrengthRewardState.Checkpoint(d.StrengthRewards,s.OwnerToken,s.StrengthDepartureTime or os.time(),rate or 0,s.StrengthClosing==true).Presence
  local payload={
+  StrengthPresence=rewardPresence,
   AutoTapEnabled=d.AutoTapEnabled~=false,
   SelectedSizeTier=d.SelectedSizeTier,
   InventoryCapacity=d.InventoryCapacity,
@@ -901,6 +910,8 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    if typeof(old)~="table" then error("Invalid saved PlayerData") end
    if resetToken(old)~=saveToken then superseded=true; return old,users,meta end
    local merged=table.clone(old)
+   merged.StrengthRewards=assert(StrengthRewardState.Normalize(old.StrengthRewards))
+   merged.StrengthRewards.Presence=payload.StrengthPresence
    merged.HighestUnlockedWorld=math.max(assert(normalizeUnlockedWorld(old.HighestUnlockedWorld)),payload.HighestUnlockedWorld)
    if old.World2Visited~=nil and typeof(old.World2Visited)~="boolean" then error("Invalid World2Visited") end
    merged.World2Visited=old.World2Visited==true or payload.World2Visited
@@ -1473,6 +1484,15 @@ function PlayerDataService.ResolveItemMutation(player)
  local s=sessions[player]
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
+ if op.StrengthMutation then
+  return require(script.Parent.StrengthRewardPersistence).Resolve(player,s,op,{
+   Update=function(transform) return ownedUpdate(player,s,transform) end,
+   Current=function() return sessions[player]==s and s.Loaded and not s.OwnershipLost and s.PendingItemMutation==op and s.Data.ResetToken==op.ResetToken end,
+   ResetToken=resetToken,Metadata=metadata,
+   Retry=function() scheduleItemMutationRetry(player,s,op) end,
+   Grant=function(gain) return PlayerDataService.AddStrengthGain(player,gain) end,
+  })
+ end
  if op.ForgeMutation then
   return require(script.Parent.ForgePersistence).Resolve(player,s,op,{
    Update=function(transform) return ownedUpdate(player,s,transform) end,
@@ -1944,6 +1964,36 @@ function PlayerDataService.GetDailyStrengthTop(limit,date)
   out[#out+1]={UserId=tonumber(entry.key),Value=entry.value}
  end
  return out
+end
+-- Serialized with all existing Item/Pet/Forge writes. Unconfirmed operations
+-- remain behind the existing save barrier and retry with the same immutable ID.
+function PlayerDataService.CommitStrengthOperation(player,request)
+ local s=sessions[player]
+ if not s or not s.Loaded or s.OwnershipLost then return false,"DataNotLoaded" end
+ if s.Saving or s.StrengthClosing then return false,"DataSaving" end
+ if s.PendingItemMutation then
+  if s.PendingItemMutation.StrengthMutation and s.PendingItemMutation.Id==request.Id then return PlayerDataService.ResolveItemMutation(player) end
+  return false,"InventorySavePending"
+ end
+ local op=StrengthRewardState.Copy(request)
+ local probe,gain,reason=StrengthRewardState.Apply(s.Data.StrengthRewards,op)
+ if not probe then return false,reason end
+ if RunService:IsStudio() and s.StudioStartOverride then
+  if gain>0 then assert(PlayerDataService.AddStrengthGain(player,gain)) end
+  s.Data.StrengthRewards=probe
+  player:SetAttribute("StrengthRewardRevision",(player:GetAttribute("StrengthRewardRevision") or 0)+1)
+  return true,"StudioStrengthPreview"
+ end
+ op.Before=table.clone(s.Data);op.ResetToken=s.Data.ResetToken;op.StrengthMutation=true
+ s.PendingItemMutation=op
+ return PlayerDataService.ResolveItemMutation(player)
+end
+function PlayerDataService.PrepareStrengthDeparture(player)
+ local s=sessions[player]
+ if s and s.Loaded and not s.StrengthClosing then
+  s.StrengthDepartureRate=require(script.Parent.StrengthReference).Get(player) or 0
+  s.StrengthDepartureTime=os.time();s.StrengthClosing=true;s.Dirty=true
+ end
 end
 function PlayerDataService.Release(player)
  sessions[player]=nil

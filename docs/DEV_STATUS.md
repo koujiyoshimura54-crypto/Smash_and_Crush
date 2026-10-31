@@ -2444,3 +2444,8 @@ Completed exactly one fresh, unpaid, isolated run in current Y02 through the fir
 Observed actual UI Ore forging, equipment and sale, BasicEgg/Bear and Aura purchases, Item merge/set selection, and R5/Gold. The late strategy changed to ordinary movement evasion. After failed approaches, Stage10 was won with59 normal Auto hits, wider movement paths and physics jumps calibrated from observed hits. Game balance, damage, HP, RNG and gameplay Sources were unchanged; no data was granted. Auto attacks during pursuit outside contact and BestEquip element-set ties are findings for design review, without implementation changes here.
 
 Exported2888 events and ten first-clear snapshots. Stopped Play, restored35 temporary dependency substitutions, removed four Edit fixtures, and verified439 original Sources and all recorded camera/development-GUI values. Merge fix12b43fa and user edits were retained. Studio remains open in unsaved Edit; no Save/Publish, rbxl write, extra Place or additional benchmark. Full scope, failed inputs, timing and limits: [World1SingleRun_20261027](../reports/World1SingleRun_20261027/README.md).
+
+
+## 2026-10-31 ? Strength rewards and HUD (unsaved local Edit)
+
+Strength rewards/HUD implemented in a separately opened local-file Studio, left in unsaved Edit. 84 isolated assertions, 13 compiled Sources and memory-only native grant/respawn checks. No actual Robux payment or production persistence. Cancelled quote recovery, unknown receipts, unconfirmed departures and image/render limits are documented. The original Cloud Studio and unrelated dirty checkout were preserved. See reports/StrengthRewards_20261031/REPORT.md.

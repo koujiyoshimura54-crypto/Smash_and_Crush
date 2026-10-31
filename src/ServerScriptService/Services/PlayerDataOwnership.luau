@@ -1,6 +1,7 @@
 -- Per-session fencing for every normal PlayerData write, on the same key.
 local ReturnPersistence = require(script.Parent.RunReturnPersistence)
 local M = {}
+local StrengthRewards = require(script.Parent.StrengthRewardState)
 
 function M.Acquire(store, key, attempt, defaults, validate, current)
 	if attempt.Lost then error("SessionOwnershipLost", 0) end
@@ -12,6 +13,7 @@ function M.Acquire(store, key, attempt, defaults, validate, current)
 		attempt.ExpectedOwner = raw and raw.SessionOwnerToken
 		attempt.Read = true
 	end
+	attempt.StrengthNow = attempt.StrengthNow or os.time()
 	local rejected = false
 	local saved = store:UpdateAsync(key, function(old, info)
 		rejected = false
@@ -27,6 +29,7 @@ function M.Acquire(store, key, attempt, defaults, validate, current)
 		-- Normalize legacy item quantities before any durable delta operation.
 		data.OwnedItems = table.clone(normalized.OwnedItems)
 		ReturnPersistence.Recover(data)
+		data.StrengthRewards = StrengthRewards.Acquire(data.StrengthRewards, attempt.Token, attempt.StrengthNow)
 		data.SessionOwnerToken = attempt.Token
 		local meta = info and info:GetMetadata() or {}
 		local j = data.RunReturnJournal

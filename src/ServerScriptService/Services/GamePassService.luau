@@ -242,7 +242,7 @@ MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,passId
  end)
 end)
 Players.PlayerRemoving:Connect(function(player)
- premiumCache[player]=nil;premiumBusy[player]=nil;premiumPrompts[player]=nil
+ task.defer(function() premiumCache[player]=nil;premiumBusy[player]=nil;premiumPrompts[player]=nil end)
 end)
 
 -- Speed entitlement is verified independently of other Game Passes.
@@ -351,6 +351,6 @@ end
 function M.GetVIPStrengthMultiplier(player)
  return M.AreEffectsEnabled(player) and M.HasShopPass(player,"VIP") and ShopConfig.Get("VIP").StrengthMultiplier or 1
 end
-Players.PlayerRemoving:Connect(function(player) shopCache[player]=nil;shopBusy[player]=nil end)
+Players.PlayerRemoving:Connect(function(player) task.defer(function() shopCache[player]=nil;shopBusy[player]=nil end) end)
 
 return M

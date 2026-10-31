@@ -1,0 +1,39 @@
+{
+  "files": {
+    "src/ReplicatedStorage/Config/StrengthRewardConfig.luau": "a77f7d2bfe5d9e7c2ef5489b88d6f56f41ece244490d1f666159544b87099bf1",
+    "src/ReplicatedStorage/Modules/HUDLayout.luau": "083a14168db6aa47bf0159b5dd5dc43584e9c83b983e618c0eb19571a809a336",
+    "src/ReplicatedStorage/Modules/StrengthRewardUI.luau": "2904ff67644ee5884ca98da3c7bec0f6b108c6e9198f690373fedea3d0cd897b",
+    "src/ServerScriptService/Services/GamePassService.luau": "f91fd890a7d364123a24bb0303aeb0ac6268dd5df45e47c9e2f7542fe96d39bd",
+    "src/ServerScriptService/Services/PlayerDataOwnership.luau": "284c8128e577f395228c3ef0960e607f77edd93e6922af79b86104391c006d1d",
+    "src/ServerScriptService/Services/PlayerDataService.luau": "41b366e055212a39663c5cc8bb76be9f6195f8a478163b9fed9351f7ac1d68b3",
+    "src/ServerScriptService/Services/StrengthReference.luau": "32618211885ec992f8f6fe33d9e6769b4d00b1c0d50522dd56aa6fabf5e1d5c8",
+    "src/ServerScriptService/Services/StrengthRewardPersistence.luau": "51b44e529c1efebf947dcfae6ae5f87c4ff953991f6b26f6a1a593caf6f3d144",
+    "src/ServerScriptService/Services/StrengthRewardService.luau": "1bed68a4ab928b499faede880aa917c5bb66315721c68354f4ba67988e1cf085",
+    "src/ServerScriptService/Services/StrengthRewardState.luau": "17bbd2d114cc57eb34921db668dd30f3db5223efd80fbadab40ca5912a0b75d9",
+    "src/ServerScriptService/Systems/Controllers/PlayerDataController.server.luau": "629982bae43aee5304803f0bbeb2c96d648ebadff59198116928412c9865daf4",
+    "src/ServerScriptService/Systems/Purchases/ReceiptService.luau": "7e112385c3a6a349d4430fb560878fc7ddd267e143942116fa5f95f36dd06085",
+    "src/StarterGui/StrengthGui/StrengthRewardClient.client.luau": "d29ec05e86a8eae4114464eea42573ad8301d11861d913a233ca63042edd27b2"
+  },
+  "isolatedChecks": 84,
+  "native": {
+    "normalClaim": 180000,
+    "duplicateClaimExtra": 0,
+    "packs": [
+      240,
+      1440,
+      4800
+    ],
+    "doubleTotal": 360000,
+    "duplicateReceiptExtra": 0,
+    "memoryReloadReceiptExtra": 0,
+    "respawned": true,
+    "hpCount": 1,
+    "packRowCount": 1,
+    "popupCount": 1
+  },
+  "rbxlUnchangedSHA256": "1951c12eb639703bd516dd925983f63a54ac3a701bb2c0ea6b4810fccb62d97a",
+  "livePaymentsTested": false,
+  "productionPersistenceTested": false,
+  "narrowRenderingTested": false,
+  "iconLoaded": false
+}

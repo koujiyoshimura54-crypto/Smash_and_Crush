@@ -366,6 +366,12 @@ local function processItemReceipt(r)
 end
 
 function M.ProcessReceipt(r)
+ if typeof(r)=="table" and require(game.ReplicatedStorage.Config.StrengthRewardConfig).ForProduct(r.ProductId) then
+  if type(r.PurchaseId)~="string" or r.PurchaseId=="" or #r.PurchaseId>100 or type(r.PlayerId)~="number" then return pending end
+  local ok,decision=pcall(require(game.ServerScriptService.Services.StrengthRewardService).ProcessReceipt,r)
+  if not ok then warn("Strength receipt deferred: "..tostring(decision));return pending end
+  return decision
+ end
  if typeof(r)=="table" and Limited.ForProduct(r.ProductId)~=nil then
   if type(r.PurchaseId)~="string" or r.PurchaseId=="" or #r.PurchaseId>100
    or type(r.PlayerId)~="number" or r.PlayerId~=r.PlayerId or r.PlayerId<=0 or r.PlayerId%1~=0 or r.PlayerId==math.huge then return pending end

@@ -676,3 +676,8 @@ The source factory supplies portrait layout; a360×430 constrained-parent input 
 ## 2026-10-27 — Persistent Merge controller ownership
 
 MergeShopGui and StrengthGui persist across character respawn. Their single controller now originates at `StarterPlayer.StarterPlayerScripts.UI.MergePanelClient_New`, moved from `StarterGui.StrengthUI.MergePanel_New`. Do not deploy both copies. This keeps proximity/input handlers alive with the persistent GUI; the existing layout, visibility rules and transaction logic are retained. Death/respawn/re-entry and a real Ore merge passed focused Play; see reports/World1MergeRespawn_20261027/README.md.
+
+
+## 2026-10-31 ? Strength rewards and HUD (unsaved local Edit)
+
+Unsaved local implementation: one Humanoid HP display replaces CoreGui Health above Level; three purchased-style Strength offer cards below Level; native OFFLINE REWARDS popup with CLAIM and CLAIM ?2, purchased icons/materials, no time or formula explanations. Normal-size geometry and respawn uniqueness checked; narrow rendering and icon loading remain unverified. See reports/StrengthRewards_20261031/REPORT.md.

@@ -680,3 +680,8 @@ The current user-approved implementation adds a World1-only Ore branch to the ex
 Ore001–016 can be merged in groups of1–5 total units, including repeats, for one World1 dumbbell and no Win fee.017–020 are reserved definitions. Dumbbells support quantity ownership, legacy boolean=true→1 compatibility and quantity sale; equipment applies one bonus and protects its last copy. Ore sale is in the Merge Ore tab, with no five-unit sale limit.
 
 Pet Merge now executes the existing normal-Pet points/Possible Eggs probabilities, requires at least two distinct eligible unprotected/unequipped copies, atomically consumes them and rolls one Egg's Pet. The resulting Egg immediately uses the existing Hatch presentation, per the latest instruction. No new saved Egg inventory, Limited Pet eligibility or paid receipt changes. `/test` remains isolated and resets temporary changes. See [implementation/verification limits](../reports/World1Ore_20261026/README.md).
+
+
+## 2026-10-31 ? Strength rewards and HUD (unsaved local Edit)
+
+Offline Strength rewards and three Strength packs now have an unsaved local Studio implementation. The only current offline policy is a 3600-second cap at 0.05 efficiency. Quotes and reward amounts are immutable; the existing owned PlayerData and sole receipt dispatcher handle grants. Conservative cancelled-intent reconciliation and unconfirmed departures have explicit limitations; see reports/StrengthRewards_20261031/REPORT.md.

@@ -49,7 +49,7 @@ local function saveBounded(players,timeout,flush)
    local player=players[index]
    if not player then return end
    if Data.IsLoaded(player) then
-    if flush then saveLatest(player,timeout or 30)
+    if flush then Data.PrepareStrengthDeparture(player);saveLatest(player,timeout or 30)
     else Data.Save(player);Data.WaitForSave(player,timeout or 30) end
    end
    completed+=1
@@ -82,6 +82,7 @@ Players.PlayerRemoving:Connect(function(player)
  local c=winConnections[player]
  if c then c:Disconnect(); winConnections[player]=nil end
  if Data.IsLoaded(player) then
+  Data.PrepareStrengthDeparture(player)
   saveLatest(player,30)
  end
  Data.Release(player)
@@ -105,3 +106,5 @@ task.spawn(function()
  end)
  if not ok then warn("[BasicEgg] Startup failed: "..tostring(err)) end
 end)
+
+require(game.ServerScriptService.Services.StrengthRewardService).Init()
