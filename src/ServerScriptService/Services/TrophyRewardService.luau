@@ -283,7 +283,7 @@ function M.Spawn(player, major)
 
 	local bossStage = stage
 		and stage:FindFirstChild(
-			("Stage%d.5"):format(major)
+			(worldId==2 and "Stage%d.Boss" or "Stage%d.5"):format(major)
 		)
 
 	local marker = bossStage

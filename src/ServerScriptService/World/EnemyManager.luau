@@ -478,7 +478,7 @@ local function attachStaticStageVisual(e)
  local floorHalf=floor.Size/2
  -- Size remains based on the authored boss-area floor center.
  -- EnemySpawn may move inside that area without shrinking the existing appearance.
- local bossArea=map.BattleCorridor[("Stage%02d"):format(n)]:FindFirstChild(("Stage%d.5"):format(n))
+ local bossArea=map.BattleCorridor[("Stage%02d"):format(n)]:FindFirstChild((worldId==2 and "Stage%d.Boss" or "Stage%d.5"):format(n))
  local sizeAnchor=bossArea and bossArea:FindFirstChild("Floor")
  local relative=floor.CFrame:PointToObjectSpace(sizeAnchor and sizeAnchor.Position or root.Position)
  local depth=math.max(1,2*(floorHalf.Z-math.abs(relative.Z))-2)
@@ -1103,21 +1103,21 @@ local function updateCombat(p,manualRequest)
       local function applyWallHit()
        s.Pending-=1
        if not inWorld(attackPlayer) or attackPlayer.Parent~=Players or sessions[attackPlayer]~=s or Stage.GetCurrentStageNumber(attackPlayer)~=attackStage or attackPlayer.Character~=ch or not hum or hum.Health<=0 then return end
-       -- Carry remains inside Walls 1-4; any remainder after Wall4 is discarded.
+       -- Carry spans this Stage's walls; final-wall surplus is never applied to the Boss.
+       local wallCount=Wall.GetWallCount(attackStage)
        local firstIndex=Wall.GetCurrentIndexForStage(attackPlayer,attackStage)
        local cleared,nextIndex=Wall.ApplyDamageForStage(attackPlayer,attackStage,attackPower)
-       if firstIndex==1 and table.find(cleared,1) and table.find(cleared,2)
-        and table.find(cleared,3) and table.find(cleared,4) then
+       if firstIndex==1 and #cleared==wallCount then
         Speed.BeginTimedBoost(attackPlayer,worldId,"WallSweep")
        end
        for _,index in ipairs(cleared) do
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=index,Current=0,Max=Wall.GetStageConfig(attackStage).Walls[index]})
-        send(attackPlayer,{Type="WallCleared",MajorStage=attackStage,Index=index,Next=nextIndex,State=Wall.GetSnapshotForStage(attackPlayer,attackStage),NextMax=(nextIndex<=4 and Wall.GetStageConfig(attackStage).Walls[nextIndex] or nil)})
+        send(attackPlayer,{Type="WallCleared",MajorStage=attackStage,Index=index,Next=nextIndex,State=Wall.GetSnapshotForStage(attackPlayer,attackStage),NextMax=(nextIndex<=wallCount and Wall.GetStageConfig(attackStage).Walls[nextIndex] or nil)})
        end
-       if nextIndex<=4 then
+       if nextIndex<=wallCount then
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=nextIndex,Current=Wall.GetGaugeForStage(attackPlayer,attackStage,nextIndex),Max=Wall.GetStageConfig(attackStage).Walls[nextIndex]})
        elseif Wall.IsBossUnlockedForStage(attackPlayer,attackStage) then
-        if Chase and table.find(cleared,4) then
+        if Chase and table.find(cleared,wallCount) then
          recognizedPlayers[attackPlayer]={Stage=attackStage,Character=ch,CombatStarted=false}
          if worldId==2 and (attackStage==1 or attackStage==5) then
           local actor=getEnemy(attackPlayer,attackStage,true)
@@ -1203,7 +1203,7 @@ end)
     local eligible=inWorld(p) and Stage.GetCurrentStageNumber(p)==n
      and not Stage.GetState(p).WorldComplete and not state(p).Defeated[n]
      and hum and hum.Health>0 and root and Chase.ContainsPlayer(enemy,root.Position)
-    -- The compatibility Floor starts at the boss arena, after Wall4.
+    -- The compatibility Floor starts at the boss arena, after the final wall.
     -- Acquire pursuit on entry even if wall-unlock recognition expired outside it.
     if eligible and not recognized and not fighting and Wall.IsBossUnlockedForStage(p,n) then
      recognized={Stage=n,Character=ch,CombatStarted=false}

@@ -64,6 +64,13 @@ local folder=Instance.new("Folder")folder.Name=worldId==2 and "World2PersonalCom
 local fills,personalBossColliders,defeated={},{},{} local track,sound local currentStage=P:GetAttribute(stageAttribute) or 1
 local wallGauges,wallState={},{ }
 local wallParts={}
+local WallConfig=require(RS.Config:WaitForChild(worldId==2 and "World2Config" or "World1BossConfig"))
+local function wallCount(major)
+ local state=wallState[major]
+ if state and state.Maxes then return state.WallCount or #state.Maxes end
+ local cfg=worldId==2 and WallConfig.GetStageConfig(major) or WallConfig.GetWallConfig(major)
+ return #cfg.Walls
+end
 local activeCombatType,activeCombatStage,activeWallIndex
 local recommendationGui
 local trophyVisuals={}
@@ -155,7 +162,7 @@ local function setWallStageDisplay(major,index,on)
  end
 end
 local function showBossRecommendation(major,v)
- local map=workspace:FindFirstChild(mapName); local bc=map and map:FindFirstChild("BattleCorridor"); local st=bc and bc:FindFirstChild(("Stage%02d"):format(major)); local m=st and st:FindFirstChild(("Stage%d.5"):format(major)); local floor=m and m:FindFirstChild("Floor")
+ local map=workspace:FindFirstChild(mapName); local bc=map and map:FindFirstChild("BattleCorridor"); local st=bc and bc:FindFirstChild(("Stage%02d"):format(major)); local m=st and st:FindFirstChild((worldId==2 and "Stage%d.Boss" or "Stage%d.5"):format(major)); local floor=m and m:FindFirstChild("Floor")
  if not floor then return end
  if recommendationGui then recommendationGui:Destroy() end
  local g=Instance.new("BillboardGui"); g.Name="BossRecommendedLevel"; g.Adornee=floor; g.Size=UDim2.fromOffset(112,32); g.StudsOffset=Vector3.new(-14,3,0); g.AlwaysOnTop=true; g.Parent=floor
@@ -233,7 +240,7 @@ local function clearWallGauge(major,index)
 end
 local function renderWallStage(major)
  local state=wallState[major]
- for index=1,4 do
+ for index=1,wallCount(major) do
   local closed=isWallClosed(major,index)
   setWallVisible(major,index,closed)
   setWallStageDisplay(major,index,state~=nil and closed and not state.Skipped and major==currentStage and state.Current==index)
@@ -277,9 +284,9 @@ local function bossName(e)
 end
 local function bossWall(n)
  if n<10 then return wallSurface(n+1,1) end
- local m=wallModel(10,4)
+ local m=wallModel(10,wallCount(10))
  local stage=m and m.Parent
- local _,reference=wallSurface(10,4)
+ local _,reference=wallSurface(10,wallCount(10))
  if worldId==2 then
   local map=workspace:FindFirstChild(mapName)
   local nextArea=map and map:FindFirstChild("NextWorldArea")
@@ -292,7 +299,7 @@ end
 local function bossDisplayEnabled(n)
  local state=wallState[n]
  return (P:GetAttribute("CurrentWorld") or 1)==worldId and n==currentStage and not defeated[n] and not bossSuppressed[n]
-  and state~=nil and not state.Skipped and state.Current>=5
+  and state~=nil and not state.Skipped and state.Current>wallCount(n)
 end
 -- World1 uses the existing personal SurfaceGui/HP records as a camera-facing
 -- overhead panel. No server instances or combat state are shared by this UI.
@@ -515,7 +522,7 @@ local function gauge(n,v,max)
 end
 local function bossUnlocked(n)
  local state=wallState[n]
- return state~=nil and not state.Skipped and state.Current>=5
+ return state~=nil and not state.Skipped and state.Current>wallCount(n)
 end
 local function removePersonalBossCollider(n)
  local record=personalBossColliders[n]
@@ -762,7 +769,7 @@ R.OnClientEvent:Connect(function(d)
  elseif d.Type=="WallInitialize" then
   local major=d.State.MajorStage or 1
   if worldId==1 then
-   for index=1,4 do
+   for index=1,wallCount(major) do
     if not d.State.Cleared[index] then presentedWallBreaks[tostring(major).."."..tostring(index)]=nil end
    end
   end
@@ -832,7 +839,7 @@ R.OnClientEvent:Connect(function(d)
    state.Cleared[d.Index]=true
    state.Gauges[d.Index]=0
    state.Current=d.Next
-   if d.Next<=4 and d.NextMax then state.Maxes[d.Next]=d.NextMax end
+   if d.Next<=wallCount(major) and d.NextMax then state.Maxes[d.Next]=d.NextMax end
    refreshGaugeVisibility()
    syncPersonalBossCollider(major)
   end
@@ -843,7 +850,7 @@ R.OnClientEvent:Connect(function(d)
   visible(stage,true)
   refreshGaugeVisibility()
   syncPersonalBossCollider(stage)
- elseif d.Type=="Initialize"then table.clear(presentedWallBreaks) activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,4 do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],(enemy(i) and enemy(i):GetAttribute("BossMaxHP")) or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
+ elseif d.Type=="Initialize"then table.clear(presentedWallBreaks) activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,wallCount(major) do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],(enemy(i) and enemy(i):GetAttribute("BossMaxHP")) or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
 	elseif d.Type=="EnemyDefeated"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil hideBossRecommendation() defeated[d.Stage]=true removePersonalBossCollider(d.Stage) if d.Stage<10 then currentStage=d.Stage+1 end refreshGaugeVisibility() fight(false) playDefeatSound() setBossVisualVisible(enemy(d.Stage),false)
  elseif d.Type=="StageCleared"then currentStage=d.CurrentStage refreshGaugeVisibility() for major in wallState do renderWallStage(major) end removePersonalBossCollider(d.Stage)
  elseif d.Type=="Fighting"then
@@ -869,9 +876,9 @@ workspace.DescendantAdded:Connect(function(part)
  if not part or not part:IsA("BasePart") or part.Name~="Wall" then return end
  local model=part.Parent
  if not model then return end
- local major,index=model.Name:match("^Stage(%d+)%.([1-4])$")
+ local major,index=model.Name:match("^Stage(%d+)%.(%d+)$")
  major,index=tonumber(major),tonumber(index)
- if not major or major<1 or major>10 then return end
+ if not major or major<1 or major>10 or not index or index<1 or index>wallCount(major) then return end
  if queuedWallRenders[part] then return end
  queuedWallRenders[part]=true
  task.defer(function()

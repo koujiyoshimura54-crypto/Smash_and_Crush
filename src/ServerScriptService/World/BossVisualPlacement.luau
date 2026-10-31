@@ -26,7 +26,7 @@ M.GetVisibleBounds=bounds
 function M.Build(map,stageNumber,generation)
  local entry=assert(Config.Stages[stageNumber],"Unapproved World2 boss stage")
  local stage=assert(map.BattleCorridor:FindFirstChild(("Stage%02d"):format(stageNumber)))
- local area=assert(stage:FindFirstChild(("Stage%d.5"):format(stageNumber)))
+ local area=assert(stage:FindFirstChild(("Stage%d.Boss"):format(stageNumber)))
  local marker=assert(area:FindFirstChild("EnemySpawn"))
  local floor=assert(area:FindFirstChild("Floor"))
  local template=assert(SS.EnemyTemplates.World2SCPDisplays:FindFirstChild(entry.Template))
@@ -107,7 +107,7 @@ function M.Build(map,stageNumber,generation)
  local maxX=mainFloor.Position.X+mainFloor.Size.X/2-.25
  local minZ=mainFloor.Position.Z-mainFloor.Size.Z/2+.25
  local maxZ=mainFloor.Position.Z+mainFloor.Size.Z/2-.25
- local wall=stage:FindFirstChild(("Stage%d.4"):format(stageNumber))
+ local wall=stage:FindFirstChild(("Stage%d.%d"):format(stageNumber,require(RS.Config.World2Config).GetWallCount(stageNumber)))
  wall=wall and wall:FindFirstChild("Wall")
  if wall and wall:IsA("BasePart") then minZ=math.max(minZ,wall.Position.Z+wall.Size.Z/2+.25) end
  assert(high.X-low.X<=maxX-minX and high.Z-low.Z<=maxZ-minZ,"Boss cannot fit arena")

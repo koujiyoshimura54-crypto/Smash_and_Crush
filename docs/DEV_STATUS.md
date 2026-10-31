@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-10-31 — World2 approved HP and 55 Edit walls
+
+Implemented the exact approved World2 HP table in the current unsaved Place126576845524886/version303. Stages1–5 now have five walls and Stages6–10 have six within the unchanged30-stud endpoint spans. Progression, snapshots, owner rendering/collision, skips/reset/carry, final-wall Boss intros/chase and streamed restoration follow per-Stage counts. World1 values/four-wall structure, rewards, equipment, Boss animation/motion/attack settings and existing edits are retained.
+
+Native tests passed all55 wall half-hit/clear/display/unlock paths, all10 Boss HP, representative carry, Stage5/6 death/return/retry and previously completed two-client isolation, World1 Stage1, maximum-size passage, actual World round-trip/streamed sixth-wall restoration and Stage10 defeat/completion/Trophy return. Initial QA format/streaming failures and the corrected remaining `[1-4]` stream-name matcher are retained in the record. Prepared isolated fixtures establish no progression-time estimate; public servers, production persistence, physical input and complete all-Stage rendered acceptance remain unverified. Play stopped;35 temporary substitutions restored,3 helpers removed,446 Sources and55 Edit walls verified. Studio remains open in unsaved Edit; no Save/Publish/rbxl write. [Full Paths, layout manifest and evidence](../reports/World2HPWalls_20261031/README.md).
+
 ## 2026-10-28 — Approved World1 balance and one native unpaid clear
 
 Applied only World1BossConfig HP references/fixed Stage5 walls and NORMAL_01..12 numeric fields in DumbbellItemMaster to the user's current unsaved Studio. Native Config/transaction/training checks passed; one fresh isolated unpaid run reached the server's first Stage10 defeat in52:16.654, including AI/input delays. It used natural Ore/Item merges, four rebirths and later normal manual combat/retreat. Five deaths and favorable Item merge draws are documented; this is not a typical/public-player time. Pet/Hatch interaction and rendered UI remain unverified under the no-OS-input constraint. Restored35 isolation substitutions, matched446 post-implementation Sources, retained approved balance and existing edits, removed helpers and left Edit without Save/Publish/rbxl write. Details: [World1Balance_20261028](../reports/World1Balance_20261028/README.md).

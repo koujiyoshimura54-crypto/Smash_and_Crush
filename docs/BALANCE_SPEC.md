@@ -1,5 +1,24 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-10-31 — Approved World2 HP and variable wall counts
+
+This table supersedes earlier World2 Boss/wall values and four-wall assumptions. M=1,000,000; B=1,000,000,000. World2GameplayConfig owns the values; World2Config and World2BossConfig expose them. RequiredStrength remains Boss HP / 5 as information only, without entry restrictions or a mandatory hit count.
+
+| Stage | Boss HP | Wall1 | Wall2 | Wall3 | Wall4 | Wall5 | Wall6 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 15M | 6M | 7.5M | 9M | 10.5M | 12M | — |
+| 2 | 30M | 12M | 15M | 18M | 21M | 24M | — |
+| 3 | 75M | 30M | 37.5M | 45M | 52.5M | 60M | — |
+| 4 | 150M | 60M | 75M | 90M | 105M | 120M | — |
+| 5 | 500M | 200M | 250M | 300M | 350M | 400M | — |
+| 6 | 1B | 400M | 500M | 600M | 700M | 800M | 900M |
+| 7 | 5B | 2B | 2.5B | 3B | 3.5B | 4B | 4.5B |
+| 8 | 15B | 6B | 7.5B | 9B | 10.5B | 12B | 13.5B |
+| 9 | 45B | 18B | 22.5B | 27B | 31.5B | 36B | 40.5B |
+| 10 | 150B | 60B | 75B | 90B | 105B | 120B | 135B |
+
+Stages1–5 have five walls; Stages6–10 have six, totaling55. Carry propagates across all walls within the Stage and is discarded at the Boss boundary. Win rewards, drops, prices, equipment, Treadmill, Rebirth, World1 values and all Boss motion/attack tuning remain unchanged. The 3.5T/70B/140B proposals are superseded by this table. These focused prepared tests establish no three-hour completion-time claim. See [implementation and verification](../reports/World2HPWalls_20261031/README.md).
+
 ## 2026-10-28 — Approved World1 HP and Dumbbell values
 
 This table supersedes earlier World1 Boss/Wall and NORMAL dumbbell values below. Current unsaved Studio is authoritative. Boss HP retains RequiredStrength × 5; RequiredStrength is a calculation reference, not a new entry gate or enforced hit count. Stage1–4 are preserved; Stage5 uses fixed walls; Stage6–10 walls are 40/50/60/80% of Boss HP. Combat, Win rewards, intervals, movement and World2 remain unchanged.

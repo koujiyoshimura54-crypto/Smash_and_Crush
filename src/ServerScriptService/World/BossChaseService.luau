@@ -188,7 +188,7 @@ function M.Register(enemy, stage, stageModel)
   MinZ=-floor.Size.Z/2+EDGE_MARGIN,MaxZ=floor.Size.Z/2-EDGE_MARGIN,
   LastPosition=home.Position,Window=0,Commanded=0,Travel=0,Recoveries=0}
  if worldId==2 then
-  local segment=stageModel:FindFirstChild(("Stage%d.4"):format(stage))
+  local segment=stageModel:FindFirstChild(("Stage%d.%d"):format(stage,require(game.ReplicatedStorage.Config.World2Config).GetWallCount(stage)))
   local wall=segment and segment:FindFirstChild("Wall")
   if wall and wall:IsA("BasePart") then
    local cf=floor.CFrame:ToObjectSpace(wall.CFrame)

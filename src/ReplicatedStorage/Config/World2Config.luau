@@ -8,7 +8,7 @@ local C={
  StageCount=10,
  RequiredStrengthStatus="Configured",
  BalanceVersion=Workbook.Version,
- WallHitMultipliers=table.freeze({2,2.5,3,4}),
+ WallHitMultipliers=table.freeze({2,2.5,3,3.5,4,4.5}), -- Stage rows determine the actual count.
  BossHitMultiplier=5,
 }
 local stages={
@@ -27,10 +27,16 @@ for stage,entry in ipairs(stages) do
  local approved=Workbook.Stages[stage]
  entry.RequiredStrength=approved.BossMaxHP/C.BossHitMultiplier -- Existing combat benchmark, never an entry gate.
  entry.Walls=approved.Walls
+ entry.WallCount=#approved.Walls
+ local multipliers={}
+ for i,hp in ipairs(approved.Walls) do multipliers[i]=hp/entry.RequiredStrength end
+ entry.WallHitMultipliers=table.freeze(multipliers)
  entry.BossMaxHP=approved.BossMaxHP
  entry.WinReward=approved.WinReward
  table.freeze(entry)
 end
 C.Stages=table.freeze(stages)
 function C.GetStageConfig(stage) return C.Stages[stage] end
+function C.GetWallCount(stage) return #C.Stages[stage].Walls end
+function C.GetWallHitMultipliers(stage) return C.Stages[stage].WallHitMultipliers end
 return table.freeze(C)
