@@ -47,9 +47,10 @@ local function render()
  menu.TimeRewardsButton.NotificationBadge.Visible=anyReady
  local age=os.clock()-receivedAt
  for _,r in ipairs(Config.Rewards) do
-  local card=panel.Holder:FindFirstChild(r.Id)
+  local card=panel.Holder:FindFirstChild(Config.GetCardName(r))
   if card then
    card.RewardName.Text=label(r)
+   card.Decor.Icon.Image=Config.GetImage(r)
    local state=snapshot and snapshot.States and snapshot.States[r.Id] or "Locked"
    local ready=state=="Ready" and snapshot.Loaded==true
    card.Locked.Visible=not ready and state~="Claimed" and state~="Pending"
@@ -79,7 +80,7 @@ local function refresh()
  render()
 end
 for _,r in ipairs(Config.Rewards) do
- local card=panel.Holder:WaitForChild(r.Id)
+ local card=panel.Holder:WaitForChild(Config.GetCardName(r))
  Responsive.ConnectActivation(card.Redeem,function()
   if pending or not snapshot or not snapshot.States or snapshot.States[r.Id]~="Ready" then return end
   pending=r.Id message="Claiming..."
@@ -94,6 +95,10 @@ request.OnClientEvent:Connect(function(result)
   pending=nil
   message=result.Success and "Claimed!" or tostring(result.Code)
   if result.Success and result.Result and result.Result.Items then message=tostring(#result.Result.Items).." Items received" end
+  if result.Success and result.Result and result.Result.RewardType=="Ore" then
+   local ore=require(RS.Config.OreConfig).Get(result.Result.OreId)
+   message=ore.Name.." ×"..tostring(result.Result.Amount).." received"
+  end
  end
  render()
 end)

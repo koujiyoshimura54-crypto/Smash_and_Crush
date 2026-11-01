@@ -53,7 +53,11 @@ function M.Claim(p,id)
  s.Records[id]=record s.Busy=true
  local ok,success,code=xpcall(function()
   local result
-  if reward.RewardType=="Win" then
+  if reward.RewardType=="Ore" then
+   local ore=require(game.ReplicatedStorage.Config.OreConfig).Get(reward.OreId)
+   if not ore or not ore.Available or amount%1~=0 then return false,"InvalidOre" end
+   result={RewardType="Ore",OreId=ore.Id,Amount=amount}
+  elseif reward.RewardType=="Win" then
    local win=p:GetAttribute("Win")
    if typeof(win)~="number" or win~=win or win<0 or amount%1~=0 or win+amount>=9007199254740991 then return false,"InvalidWin" end
    result={RewardType="Win",Amount=amount}

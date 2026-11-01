@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-01 — TimeReward content mapping
+
+The same nine authored cards now map ClaimOrder to stable content IDs. The first card displays Stone ×1 using OreConfig image 131452437678251. Existing first through fifth contents move one card later; obsolete training-equivalent Strength is removed. Reward labels, icons and notification follow the actual server result; PotionStatus resolves its icon by reward ID rather than slot. Positions, sizes, fonts, borders and all other UI remain unchanged. Native rendered order and Stone claim feedback were checked. [Details](../reports/StoneOnboarding_20261101.md).
+
 ## 2026-10-21 — Restored Inventory secrets and World1 2D displays
 
 Unowned Inventory Dumbbells and Items use the existing card background darkened by25%, a black transparent icon and white outlined `???`. Current ownership restores the original colors; equipped/owned-unequipped cards stay normal. No new unlock rules, layout or purchase logic. Reused the previously tested three Sources unchanged. The six owner-supplied World1 transparent IDs are shared by Master, saved stands, Inventory and Shop; NORMAL_05 remains134662273184560.

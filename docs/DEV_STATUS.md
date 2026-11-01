@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-01 — TimeReward and first Stage1 Stone
+
+Applied to current canonical unsaved Studio: one new TimeReward Stone with stable history-preserving reward IDs, plus one replacement Stone for a new player's lifetime first World1 Stage1 defeat. Existing records are excluded from the boss guarantee as explicitly selected by the owner. Two native clients passed 28 focused checks with memory persistence, including real first Boss kills, independent ownership, two-Stone merge, acknowledgement-loss retries, full bag and session reload. Rendered TimeReward order/Stone feedback passed in short Play; production persistence/rejoin and separate death/rebirth/travel cycles were not tested. All helpers removed, protected Sources matched, Edit restored without Save/Publish/rbxl write. [English record](../reports/StoneOnboarding_20261101.md).
+
 ## 2026-10-31 — World2 approved HP and 55 Edit walls
 
 Implemented the exact approved World2 HP table in the current unsaved Place126576845524886/version303. Stages1–5 now have five walls and Stages6–10 have six within the unchanged30-stud endpoint spans. Progression, snapshots, owner rendering/collision, skips/reset/carry, final-wall Boss intros/chase and streamed restoration follow per-Stage counts. World1 values/four-wall structure, rewards, equipment, Boss animation/motion/attack settings and existing edits are retained.

@@ -424,21 +424,23 @@ Daily/Time/Community Item報酬はMISSなしだが、**受取時CurrentStage**�
 
 UTCで1日1つ、7段階は一度きり。VIPは別枠でUTC日次1 Win。
 
-| Time ID | 累積オンライン秒 | 報酬 |
+| Time content ID (display order) | 累積オンライン秒 | 報酬 |
 |---|---:|---|
-| 01 | 60 | 1 Win |
-| 02 | 120 | Training Potion 60秒 |
-| 03 | 300 | 3 Win |
-| 04 | 420 | Strength Potion 180秒 |
-| 05 | 600 | 10 Win |
-| 06 | 900 | 通常Training15秒相当Strength |
+| StoneIntro01 (1) | 60 | Stone ×1 (ORE_001) |
+| Reward01 (2) | 120 | 1 Win |
+| Reward02 (3) | 300 | Training Potion 60秒 |
+| Reward03 (4) | 420 | 3 Win |
+| Reward04 (5) | 600 | Strength Potion 180秒 |
+| Reward05 (6) | 900 | 10 Win |
 | 07 | 1,200 | Training Potion 180秒 |
 | 08 | 1,800 | 25 Win |
 | 09 | 2,700 | ItemRoll ×10 |
 
 累積時間・取得状況は保存、2700秒で蓄積上限。前の報酬のClaimを次の必須条件にしない。オフライン経過を通常の時間加算に用いない。
 
-Strength Potionは×1.5、Training Potionは機器Tierへ+1、標準180秒。同種の追加は時間延長、倍率の重複乗算ではない。Time02だけ60秒。Shop Packは期限の保存・復元があり、通常Potionのセッションタイマーとは異なる。
+Strength Potionは×1.5、Training Potionは機器Tierへ+1、標準180秒。同種の追加は時間延長、倍率の重複乗算ではない。Reward02（表示枠3）だけ60秒。Shop Packは期限の保存・復元があり、通常Potionのセッションタイマーとは異なる。
+
+2026-11-01: Reward06の通常Training15秒相当Strengthは削除。既存報酬IDと取得履歴は保持し、新規Stoneだけ独立ID。新規PlayerDataの本人初回World1 Stage1 BossドロップもStone ×1へ置換（追加なし）。既存レコードは初回保証対象外。満杯時破棄・2回目以降の通常抽選・他Stage/Worldは維持。[確認記録](../reports/StoneOnboarding_20261101.md)。
 
 Community：GroupId787332211、加入確認後に一度だけ3 Win＋ItemRoll1。根拠: [ReplicatedStorage.Config.TimeRewardConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.TimeRewardConfig.luau)、[ReplicatedStorage.Config.DailyRewardConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.DailyRewardConfig.luau)、[ReplicatedStorage.Config.CommunityRewardConfig](../reports/Implementation_Audit_20260915/sources/ReplicatedStorage.Config.CommunityRewardConfig.luau)。
 

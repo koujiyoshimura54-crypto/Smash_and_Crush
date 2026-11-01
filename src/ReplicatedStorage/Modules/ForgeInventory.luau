@@ -3,6 +3,7 @@ local Counts=require(script.Parent.InventoryCounts)
 local Ore=require(script.Parent.Parent.Config.OreConfig)
 local Master=require(script.Parent.Parent.Config.DumbbellItemMaster)
 local Merge=require(script.Parent.OreMerge)
+local FirstStage1=require(script.Parent.FirstStage1RewardState)
 local M={}
 function M.Journal(raw)
  if raw==nil then return {Sequence=0} end
@@ -44,6 +45,12 @@ function M.Apply(data,op)
   if not item or item.WorldId==2 then return nil,"InvalidItemId" end
   if (bells[op.ItemId] or 0)>0 then return nil,"AlreadyOwned" end
   delta=-item.PriceWin;bells[op.ItemId]=1
+ elseif op.Action=="FirstStage1Defeat" then
+  local first,reason=FirstStage1.Normalize(data.FirstStage1Reward,false)
+  if not first then return nil,reason end
+  if first.Consumed then return nil,"FirstStage1AlreadyConsumed" end
+  if op.ResultId~="" and op.ResultId~=FirstStage1.OreId then return nil,"InvalidFirstStage1Ore" end
+  if op.ResultId~="" then ores[op.ResultId]=(ores[op.ResultId] or 0)+1 end
  elseif op.Action=="DropOre" then
   local ore=Ore.Get(op.ResultId);if not ore or not ore.Available then return nil,"InvalidOre" end
   ores[op.ResultId]=(ores[op.ResultId] or 0)+1
@@ -53,6 +60,7 @@ function M.Apply(data,op)
  for _,inventory in ipairs({ores,bells}) do for _,n in pairs(inventory) do if not Counts.Count(n) then return nil,"CountOverflow" end end end
  local out=table.clone(data)
  out.OwnedOres=ores;out.OwnedDumbbells=bells;out.Win=win
+ if op.Action=="FirstStage1Defeat" then out.FirstStage1Reward={Version=1,Consumed=true,DefeatId=op.Id,OreGranted=op.ResultId~=""} end
  out.ForgeJournal={Sequence=op.Sequence,Id=op.Id,Signature=op.Signature,ResultId=op.ResultId or ""}
  return out,"Applied",delta
 end

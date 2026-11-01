@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-01 — Stone introduction rewards
+
+TimeReward now starts with Stone ×1 at 60 seconds. Former rewards 1–5 move to slots 2–6; the 15-second training-equivalent Strength reward is retired. Stable content IDs preserve claimed history and online elapsed time. New player data also receives Stone ×1 instead of the ordinary draw on its first personal World1 Stage1 Boss defeat. Existing data without the lifetime flag is excluded by the owner's decision. The flag and ore commit together; existing bag-full discard rules remain. No tutorial changes. Applied to unsaved canonical Studio and verified with two native clients using isolated persistence. [Schedule, paths and verification](../reports/StoneOnboarding_20261101.md).
+
 ## 2026-11-01 — Ore merge minimum correction (repository; Studio application pending)
 
 Ore merge requires **2–5 total units**, including repeated Ore IDs, rather than the initial 1–5 implementation. One unit may still be selected to view points or sold; a merge needs at least two. Server evaluation and client merge eligibility share the same rule. Points, probabilities, prices, ownership, Item/Pet rules and existing tutorials are unchanged. This supersedes only the Ore minimum in the October26 entry. This session changed repository Sources only; the current unsaved Studio document and Cloud remain unmodified. See [scope and focused verification](../reports/OreMergeMinimum_20261101/README.md).

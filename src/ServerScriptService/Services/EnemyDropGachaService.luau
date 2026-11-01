@@ -11,6 +11,15 @@ local rng=Random.new()
 local processed=setmetatable({},{__mode="k"})
 local queues={}
 local M={}
+local function reserveFirstStage1(player,result)
+ if result.WorldId~=1 or result.Stage~=1 then return end
+ local session=Data.Get(player)
+ if not session or not session.Loaded then result.CheckFirstStage1=true;return end
+ result.CheckFirstStage1=nil
+ if Data.ReserveFirstStage1Defeat(player,result.Id,result.Discarded) then
+  result.FirstStage1=true;result.Outcome="ORE";result.OreId="ORE_001";result.ItemId=nil;result.Segment=1
+ end
+end
 local function grant(player,result)
  while player.Parent==Players do
   local session=Data.Get(player)
@@ -59,8 +68,9 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
   local bag=RunInventory.GetSnapshot(player)
   if bag and bag.Count>=bag.Capacity then result.Discarded=true;result.Reason="InventoryFull" end
  end
+ reserveFirstStage1(player,result)
  record.Stages[stage]=result
- if result.Discarded then return true,"Discarded" end
+ if result.Discarded and not result.FirstStage1 and not result.CheckFirstStage1 then return true,"Discarded" end
  local queue=queues[player]
  if queue then table.insert(queue,result) else
   queue={result};queues[player]=queue
@@ -68,7 +78,26 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
    while player.Parent==Players and #queue>0 do
     local nextResult=queue[1]
     local success
-    if nextResult.WorldId==1 and nextResult.Outcome=="ORE" then
+    while nextResult.CheckFirstStage1 and player.Parent==Players do
+     reserveFirstStage1(player,nextResult)
+     if nextResult.CheckFirstStage1 then task.wait(.25) end
+    end
+    if nextResult.FirstStage1 then
+     while player.Parent==Players do
+      local added,code=Data.ResolveFirstStage1Defeat(player,nextResult.Id)
+      if added then
+       success=code=="Applied"
+       if code=="Discarded" then nextResult.Discarded=true;nextResult.Reason="InventoryFull" end
+       break
+      end
+      if code~="InventorySavePending" and code~="DataSaving" and code~="DataNotLoaded" then
+       warn("[EnemyDropGacha] First Stage1 grant rejected: "..tostring(code));break
+      end
+      task.wait(.5)
+     end
+    elseif nextResult.Discarded then
+     success=false
+    elseif nextResult.WorldId==1 and nextResult.Outcome=="ORE" then
      -- A genuine defeat already passed the personal run/dedup gate above.
      -- Durable ores survive movement, death and World changes during a yielding save.
      while player.Parent==Players do
@@ -109,7 +138,7 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
    if queues[player]==queue then queues[player]=nil end
   end)
  end
- return true,result.Outcome,result.ItemId
+ return true,result.Discarded and "Discarded" or result.Outcome,result.ItemId
 end
 Players.PlayerRemoving:Connect(function(player) queues[player]=nil end)
 return M

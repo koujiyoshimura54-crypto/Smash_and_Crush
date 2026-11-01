@@ -42,6 +42,7 @@ function M.Resolve(player,s,op,ctx)
  s.Data.OwnedOres=assert(Counts.Normalize(saved.OwnedOres))
  s.Data.OwnedDumbbells=assert(Counts.Normalize(saved.OwnedDumbbells))
  s.Data.ForgeJournal=journal
+ if op.Action=="FirstStage1Defeat" then s.Data.FirstStage1Reward=assert(require(RS.Modules.FirstStage1RewardState).Normalize(saved.FirstStage1Reward,false)) end
  local paid=tonumber(saved.ShopRewards and saved.ShopRewards.WinGrantedTotal) or 0
  local unseen=math.max(0,paid-(s.Data.ShopRewards.WinGrantedTotal or 0))
  s.Data.ShopRewards.WinGrantedTotal=math.max(paid,s.Data.ShopRewards.WinGrantedTotal or 0)
@@ -49,7 +50,7 @@ function M.Resolve(player,s,op,ctx)
  player:SetAttribute("Win",s.Data.Win)
  s.PendingItemMutation=nil;s.Saving=false;s.Dirty=true;op.Resolving=false
  player:SetAttribute("ForgeSavePending",false)
- player:SetAttribute("ForgeInventoryRevision",journal.Sequence)
+ player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)
  return true,"Applied"
 end
 return M

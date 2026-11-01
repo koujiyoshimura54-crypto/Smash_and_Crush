@@ -14,6 +14,7 @@ local CapacityConfig=require(game.ReplicatedStorage.Config:WaitForChild("Invento
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
 local Counts=require(game.ReplicatedStorage.Modules.InventoryCounts)
 local ForgeInventory=require(game.ReplicatedStorage.Modules.ForgeInventory)
+local FirstStage1=require(game.ReplicatedStorage.Modules.FirstStage1RewardState)
 local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
@@ -235,7 +236,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -245,6 +246,9 @@ local function validEquipped(itemId,owned)
 end
 local function normalize(raw)
  local d=defaults()
+ local first,firstError=FirstStage1.Normalize(type(raw)=="table" and raw.FirstStage1Reward or nil,raw==nil)
+ if not first then return nil,firstError end
+ d.FirstStage1Reward=first
  local rewards,rewardError=StrengthRewardState.Normalize(type(raw)=="table" and raw.StrengthRewards or nil)
  if not rewards then return nil,rewardError end
  d.StrengthRewards=rewards
@@ -843,6 +847,10 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   local resolved,reason=PlayerDataService.ResolveItemMutation(player)
   if not resolved then return false,reason end
  end
+ if s and s.PendingFirstStage1Defeat then
+  local resolved,reason=PlayerDataService.ResolveFirstStage1Defeat(player)
+  if not resolved then return false,reason end
+ end
  if not s or not s.Loaded or not s.Data then return false,"not loaded" end
  if s.Saving then return false,"saving" end
  if not s.StrengthClosing and not s.Dirty and s.LastSave and os.clock()-s.LastSave<10 then return true,"already saved" end
@@ -874,6 +882,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
   CommunityRewards=assert(normalizeCommunity(d.CommunityRewards)),
   TimeRewards=assert(normalizeTimeRewards(d.TimeRewards)),
+  FirstStage1Reward=assert(FirstStage1.Normalize(d.FirstStage1Reward,false)),
   DailyRewards=assert(normalizeDailyRewards(d.DailyRewards)),
   TutorialCompleted=d.TutorialCompleted==true,
   Strength=persisted and persisted.Strength or d.Strength,
@@ -918,6 +927,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.ShopRewards=mergeShop(old.ShopRewards,payload.ShopRewards)
    merged.CommunityRewards=mergeCommunity(old.CommunityRewards,payload.CommunityRewards)
    merged.TimeRewards=mergeTimeRewards(old.TimeRewards,payload.TimeRewards)
+   merged.FirstStage1Reward=FirstStage1.Merge(old.FirstStage1Reward,payload.FirstStage1Reward)
    merged.DailyRewards=mergeDailyRewards(old.DailyRewards,payload.DailyRewards)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
    merged.AutoTapEnabled=payload.AutoTapEnabled
@@ -1447,6 +1457,55 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload,g
  return PlayerDataService.ResolveItemMutation(player)
 end
 
+-- Called only after EnemyDropGachaService validates this player's World1 Stage1 defeat.
+-- Reserve synchronously; the ordinary save/exit path also flushes this reservation.
+function PlayerDataService.ReserveFirstStage1Defeat(player,dropId,discarded)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.OwnershipLost then return false,"DataNotLoaded" end
+ if type(dropId)~="string" or dropId=="" then return false,"InvalidDropId" end
+ if s.PendingFirstStage1Defeat or s.Data.FirstStage1Reward.Consumed then return false,"FirstStage1AlreadyConsumed" end
+ s.PendingFirstStage1Defeat={Id=dropId,Discarded=discarded==true}
+ s.Dirty=true
+ return true,"Reserved"
+end
+function PlayerDataService.ResolveFirstStage1Defeat(player,expectedId)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.OwnershipLost then return false,"DataNotLoaded" end
+ local pending=s.PendingFirstStage1Defeat
+ if not pending then
+  local first=s.Data.FirstStage1Reward
+  if expectedId and first.DefeatId==expectedId then return true,first.OreGranted and "Applied" or "Discarded" end
+  return true,"NoPendingDefeat"
+ end
+ if expectedId and pending.Id~=expectedId then return false,"DefeatChanged" end
+ local function confirmed()
+  local first=s.Data.FirstStage1Reward
+  if not first.Consumed then return nil end
+  s.PendingFirstStage1Defeat=nil
+  if first.DefeatId~=pending.Id then return false,"FirstStage1AlreadyConsumed" end
+  return true,first.OreGranted and "Applied" or "Discarded"
+ end
+ if s.Data.FirstStage1Reward.Consumed then return confirmed() end
+ if s.Saving then return false,"DataSaving" end
+ if s.PendingItemMutation then
+  if s.PendingItemMutation.Id~=pending.Id then return false,"InventorySavePending" end
+  local ok,why=PlayerDataService.ResolveItemMutation(player)
+  if not ok then return false,why end
+  return confirmed()
+ end
+ if not pending.Operation then
+  -- Match ordinary Ore's existing capacity check, including after a queued save.
+  local bag=require(script.Parent.RunInventoryService).GetSnapshot(player)
+  local discarded=pending.Discarded or bag and bag.Count>=bag.Capacity
+  local oreId=discarded and "" or FirstStage1.OreId
+  pending.Operation={Id=pending.Id,Action="FirstStage1Defeat",ResultId=oreId,
+   Signature="FirstStage1Defeat|"..oreId,Sequence=s.Data.ForgeJournal.Sequence+1}
+ end
+ local ok,why=PlayerDataService.MutateForge(player,pending.Operation)
+ if not ok then return false,why end
+ return confirmed()
+end
+
 -- Only trusted server services create this operation; clients never supply deltas or prices.
 function PlayerDataService.MutateForge(player,request)
  local s=sessions[player]
@@ -1471,8 +1530,9 @@ function PlayerDataService.MutateForge(player,request)
  if RunService:IsStudio() and s.StudioStartOverride then
   d.OwnedOres=nextData.OwnedOres;d.OwnedDumbbells=nextData.OwnedDumbbells
   d.ForgeJournal=nextData.ForgeJournal;d.Win=nextData.Win
+  if op.Action=="FirstStage1Defeat" then d.FirstStage1Reward=nextData.FirstStage1Reward end
   player:SetAttribute("Win",d.Win)
-  player:SetAttribute("ForgeInventoryRevision",d.ForgeJournal.Sequence)
+  player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)
   return true,"StudioForgePreview"
  end
  s.PendingItemMutation=op
@@ -1595,6 +1655,11 @@ function PlayerDataService.ResolveItemMutation(player)
      merged.TimeRewards.Claimed[reward.Id]=true
      if reward.Result.RewardType=="Win" then
       merged.Win=op.Snapshot.Win+reward.Result.Amount
+     elseif reward.Result.RewardType=="Ore" then
+      local ores=assert(Counts.Normalize(merged.OwnedOres))
+      local count=(ores[reward.Result.OreId] or 0)+reward.Result.Amount
+      if not Counts.Count(count) then error("Ore count overflow") end
+      ores[reward.Result.OreId]=count;merged.OwnedOres=ores
      elseif reward.Result.RewardType=="Strength" then
       local gain=reward.Result.Amount
       local strength,level,progress=LevelProgression.ApplyGain(op.Snapshot,gain)
@@ -1700,6 +1765,9 @@ function PlayerDataService.ResolveItemMutation(player)
   -- Apply the committed reward once locally before Save can snapshot attributes.
   if result.RewardType=="Win" then
    PlayerDataService.SetWin(player,(player:GetAttribute("Win") or 0)+result.Amount)
+  elseif result.RewardType=="Ore" then
+   s.Data.OwnedOres=assert(Counts.Normalize(saved.OwnedOres))
+   player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)
   elseif result.RewardType=="Strength" then
    require(game.ServerScriptService.Services.StrengthManager).AddRewardStrength(player,result.Amount)
   elseif result.RewardType=="Potion" and player.Parent==game:GetService("Players") then
@@ -1765,6 +1833,9 @@ local function prepareTimeReward(player,context)
    local total,reason=LevelProgression.ApplyGain(s.Data,result.Amount)
    if not total then return nil,reason end
   end
+ elseif result.RewardType=="Ore" then
+  local ore=require(game.ReplicatedStorage.Config.OreConfig).Get(result.OreId)
+  if not ore or not ore.Available or result.OreId~=config.OreId or result.Amount~=config.Amount or not Counts.Count(result.Amount) or result.Amount<1 then return nil,"InvalidOre" end
  elseif result.RewardType=="Potion" then
   if result.PotionId~=config.PotionId then return nil,"InvalidPotion" end
  end
