@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-01 — Item Inventory and Merge presentation
+
+Applied eight scoped Source diffs and47 content-text Font properties to the current canonical Studio. Permanent World1-clear display gating, W1/W2 ordering, actual global-rank image stars, Dumbbell/Aura-only shared font and Merge K/M text are implemented. Native Play verified normal rendered views, isolated narrow mounts, scope exclusions, exact Ore sale/merge and Item merge quantities, clear-before-arrival, legacy proof migration, memory save/reload and death/respawn. Fixed a deferred star-layout callback after card destruction; final repeated open/close/filter/tab checks passed without related errors.
+
+Production persistence/rejoin, physical input/device emulation and mock Pet artwork were not verified. Display unlock precedes the unchanged W2-arrival purchase/merge permission. Eight final Sources matched disk and compiled; eleven protected Sources remained unchanged. Temporary adapters/helpers removed; canonical Studio stopped in unsaved Edit without Save/Publish/rbxl writes. [English record and requested comparison images](../reports/InventoryUI2_20261101.md).
+
 ## 2026-11-01 — TimeReward and first Stage1 Stone
 
 Applied to current canonical unsaved Studio: one new TimeReward Stone with stable history-preserving reward IDs, plus one replacement Stone for a new player's lifetime first World1 Stage1 defeat. Existing records are excluded from the boss guarantee as explicitly selected by the owner. Two native clients passed 28 focused checks with memory persistence, including real first Boss kills, independent ownership, two-Stone merge, acknowledgement-loss retries, full bag and session reload. Rendered TimeReward order/Stone feedback passed in short Play; production persistence/rejoin and separate death/rebirth/travel cycles were not tested. All helpers removed, protected Sources matched, Edit restored without Save/Publish/rbxl write. [English record](../reports/StoneOnboarding_20261101.md).

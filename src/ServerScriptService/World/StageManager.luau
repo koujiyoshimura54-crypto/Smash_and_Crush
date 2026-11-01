@@ -27,7 +27,7 @@ function M.InitializePlayer(p,targetStage)
  return s
 end
 function M.IsStageSkipped(p,n)return get(p).Skipped[n]==true end
-function M.ClearStage(p,n)local s=get(p) if s.WorldComplete then return false,"complete" end if n~=s.CurrentStage then return false,"out of order" end s.Cleared[n]=true if n<10 then s.CurrentStage+=1 p:SetAttribute(worldId==2 and "World2CurrentStage" or "CurrentStage",s.CurrentStage)else s.WorldComplete=true p:SetAttribute(worldId==2 and "World2Complete" or "WorldComplete",true)end return true end
+function M.ClearStage(p,n)local s=get(p) if s.WorldComplete then return false,"complete" end if n~=s.CurrentStage then return false,"out of order" end s.Cleared[n]=true if n<10 then s.CurrentStage+=1 p:SetAttribute(worldId==2 and "World2CurrentStage" or "CurrentStage",s.CurrentStage)else s.WorldComplete=true p:SetAttribute(worldId==2 and "World2Complete" or "WorldComplete",true) if worldId==1 then require(game.ServerScriptService.Services.PlayerDataService).MarkWorld1Cleared(p) end end return true end
 function M.GetCurrentStageNumber(p)return get(p).CurrentStage end
 function M.IsStageCleared(p,n)return get(p).Cleared[n]==true end
 function M.GetState(p)local s=get(p)local c={}for n,v in s.Cleared do c[n]=v end return{CurrentStage=s.CurrentStage,Cleared=c,WorldComplete=s.WorldComplete}end

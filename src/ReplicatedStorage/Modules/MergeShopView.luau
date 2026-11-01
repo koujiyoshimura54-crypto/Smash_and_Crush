@@ -7,6 +7,8 @@ return function(ctx)
  local OreMerge=require(RS.Modules.OreMerge)
  local Bells=require(RS.Config.DumbbellItemMaster)
  local Forge=require(RS.Modules.ForgeClient)
+ local Presentation=require(RS.Modules.InventoryPresentation)
+ local NumberFormat=require(RS.Modules.NumberFormat)
  local Master,PetClient,Egg=ctx.Master,ctx.PetClient,ctx.Egg
  local font=Font.fromEnum(Enum.Font.GothamBlack)
  local cyan=Color3.fromRGB(0,224,245)
@@ -155,13 +157,13 @@ return function(ctx)
   local n=0;for _,id in entry.Ids do if petSelected[id] then n+=1 end end;return n
  end
  local function available(entry)
-  if tab=='Item' then return not itemPending and (itemSelected[entry.ItemId] or 0)<entry.Count end
+   if tab=='Item' then return not itemPending and Items.IsUnlocked(Master.Get(entry.ItemId),unlocked()) and (itemSelected[entry.ItemId] or 0)<entry.Count end
   if tab=='Ore' then return not Forge.IsPending() and groupSelected(entry)<entry.Count and (sellMode or selectedCount()<5) end
   return not petPending and not PetClient.busy() and groupSelected(entry)<#entry.Ids
  end
  local function rebuildGroups()
   groups={}
-  if tab=='Item' then groups=Items.Groups(itemState and itemState.OwnedItems,unlocked())
+   if tab=='Item' then groups=Items.Groups(itemState and itemState.OwnedItems,itemState and itemState.World1Cleared==true)
   elseif tab=='Pet' then groups=PetMerge.Groups(petState)
   else for _,ore in ipairs(Ore.GetAvailable()) do
    local count=oreState and oreState.Ores and oreState.Ores[ore.Id] or 0
@@ -172,21 +174,22 @@ return function(ctx)
  local function rankBand(parent,item)
   local rank=Items.GetRank(item)
   local band=surface('RarityStars',parent,Color3.fromRGB(0,43,92),230);band.Corner.CornerRadius=UDim.new(0,5)
-  band:SetAttribute('Rank',rank)
-  if rank>5 then
-   local star=new('ImageLabel','BlueStar',band,{BackgroundTransparency=1,Image='rbxassetid://126441080731699',
-    ImageColor3=Color3.fromRGB(65,229,255),ScaleType=Enum.ScaleType.Fit,Position=UDim2.fromScale(.18,.06),Size=UDim2.fromScale(.29,.88),ZIndex=232})
-   local number=label('RankNumber',band,tostring(rank),46,233);number.Position=UDim2.fromScale(.48,0);number.Size=UDim2.fromScale(.38,1)
-  else
-   for i=1,5 do new('ImageLabel','Star'..i,band,{BackgroundTransparency=1,Image=i<=rank and 'rbxassetid://76134658177553' or 'rbxassetid://126441080731699',
-    ScaleType=Enum.ScaleType.Fit,Position=UDim2.fromScale(.025+(i-1)*.19,.06),Size=UDim2.fromScale(.19,.88),ZIndex=232}) end
-  end
+   Presentation.SetItemImageStars(band,item,232)
+   local function fitStars()
+    if not band.Parent then return end
+    -- Grid offsets are in unscaled local UI units.
+    local scale=math.max(fit.Scale,.001)
+    Presentation.LayoutItemImageStars(band,band.AbsoluteSize.X/scale,band.AbsoluteSize.Y/scale)
+   end
+   local connection=band:GetPropertyChangedSignal('AbsoluteSize'):Connect(fitStars)
+   band.Destroying:Once(function()connection:Disconnect()end)
+   task.defer(fitStars)
   return band
  end
  local function pointsBadge(parent,points)
   local badge=surface('Points',parent,Color3.fromRGB(8,17,20),234);badge.BackgroundTransparency=.08;badge.Corner.CornerRadius=UDim.new(0,9)
   badge.Position=UDim2.fromScale(.025,.03);badge.Size=UDim2.fromScale(.61,.22)
-  local number=label('Value',badge,tostring(points),38,235);number.Position=UDim2.fromScale(.03,0);number.Size=UDim2.fromScale(.73,1)
+   local number=label('Value',badge,NumberFormat.Format(points),38,235);number.Position=UDim2.fromScale(.03,0);number.Size=UDim2.fromScale(.73,1)
   local unit=label('Unit',badge,'pt',22,235);unit.Position=UDim2.fromScale(.75,.23);unit.Size=UDim2.fromScale(.23,.67)
   return badge
  end
@@ -216,15 +219,15 @@ return function(ctx)
   end
   if kind=='Item' then local band=rankBand(tile,Master.Get(entry.ItemId));band.Position=UDim2.fromScale(0,.75);band.Size=UDim2.fromScale(1,.25)
   else pointsBadge(tile,entry.Points) end
-  local owned=label('OwnedCount',tile,'×'..entry.Count,38,237)
+   local owned=label('OwnedCount',tile,'×'..NumberFormat.Format(entry.Count),38,237)
   owned.Position=UDim2.fromScale(.50,kind=='Item' and .53 or .75);owned.Size=UDim2.fromScale(.47,.23);owned.TextXAlignment=Enum.TextXAlignment.Right;owned.Visible=not input
   local badge=surface('SelectedCount',tile,Color3.fromRGB(0,139,229),238);badge.Corner.CornerRadius=UDim.new(1,0)
   badge.AnchorPoint=Vector2.new(1,0);badge.Position=UDim2.fromScale(1.015,-.015);badge.Size=UDim2.fromScale(.29,.29);stroke(badge,cyan,5)
   local countLabel=label('Value',badge,'',36,239);countLabel.Size=UDim2.fromScale(1,1)
   local record={Root=tile,Destroy=cleanup,Entry=entry}
   function record:Update(nextEntry,n,enabled)
-   self.Entry=nextEntry;owned.Text='×'..tostring(nextEntry.Count or 0)
-   badge.Visible=n>0;countLabel.Text=tostring(n)
+    self.Entry=nextEntry;owned.Text='×'..NumberFormat.Format(nextEntry.Count or 0)
+    badge.Visible=n>0;countLabel.Text=NumberFormat.Format(n)
    border.Color=n>0 and cyan or Color3.fromRGB(12,19,23);border.Thickness=n>0 and 4 or 2
    tile.Button.Active=enabled;tile.Button.Interactable=enabled
    tile:SetAttribute('OwnedCount',nextEntry.Count or 0);tile:SetAttribute('SelectedCount',n)
@@ -346,8 +349,8 @@ return function(ctx)
   if outcome.ItemId then
    local band=rankBand(card,Master.Get(outcome.ItemId));band.Position=UDim2.fromScale(0,.75);band.Size=UDim2.fromScale(1,.25)
   elseif outcome.Grade then
-   local grade=label('Number',card,tostring(outcome.Grade),46,233);grade.Position=UDim2.fromScale(.03,.02);grade.Size=UDim2.fromScale(.35,.23);grade.TextXAlignment=Enum.TextXAlignment.Left
-   local strength=label('Strength',card,'+'..outcome.Strength,46,233);strength.TextColor3=Color3.fromRGB(145,255,0)
+    local grade=label('Number',card,NumberFormat.Format(outcome.Grade),46,233);grade.Position=UDim2.fromScale(.03,.02);grade.Size=UDim2.fromScale(.35,.23);grade.TextXAlignment=Enum.TextXAlignment.Left
+    local strength=label('Strength',card,'+'..NumberFormat.Format(outcome.Strength),46,233);strength.TextColor3=Color3.fromRGB(145,255,0)
    strength.Position=UDim2.fromScale(.32,.75);strength.Size=UDim2.fromScale(.65,.23);strength.TextXAlignment=Enum.TextXAlignment.Right
   end
   local percent=label('Percent',x,'',36,238)
@@ -394,7 +397,7 @@ return function(ctx)
   local n=selectedCount()
   title.Text=tab=='Item' and 'Your Items' or tab=='Pet' and 'Your Pets' or 'Your Ores'
   resultTitle.Text=tab=='Pet' and 'Possible Eggs' or sellMode and 'Sell Ores' or 'Merge Result'
-  selectedLabel.Text='Selected: '..n..(tab=='Ore' and not sellMode and '/5' or '');selectedLabel:SetAttribute('SelectedCount',n)
+   selectedLabel.Text='Selected: '..NumberFormat.Format(n)..(tab=='Ore' and not sellMode and '/5' or '');selectedLabel:SetAttribute('SelectedCount',n)
   creates.Text=tab=='Pet' and 'Creates 1 Egg' or tab=='Ore' and (sellMode and '' or 'Creates 1 Dumbbell') or 'Creates 1 Item'
   sell.Visible=tab=='Ore';sell.PriceTag.Text=sellMode and 'Back' or 'Sell'
   reconcile(materialCards,list,groups,false)
@@ -405,10 +408,10 @@ return function(ctx)
   totalLabel.Visible=tab=='Ore' or tab=='Pet' and n>0
   if tab=='Ore' then
    local selection=OreMerge.Selection(oreSelection(),oreState and oreState.Ores,sellMode)
-   totalLabel.Text='Total: '..tostring(selection and selection.Total or 0)..(sellMode and ' Win' or ' pt')
+    totalLabel.Text='Total: '..NumberFormat.Format(selection and selection.Total or 0)..(sellMode and ' Win' or ' pt')
   elseif tab=='Pet' then
    local points=0;for id in pairs(petSelected) do local info=petState and Egg.mergePet(petState.Owned[id]);if info then points+=info.Points end end
-   totalLabel.Text='Total: '..points..' pt'
+    totalLabel.Text='Total: '..NumberFormat.Format(points)..' pt'
   end
   for name,b in pairs(tabs) do
    b.BackgroundColor3=name==tab and Color3.new(1,1,1) or Color3.fromRGB(75,163,68)
@@ -429,7 +432,7 @@ return function(ctx)
   for _,control in {saleIcon,saleTitle,quantity,minus,plus,max} do control.Visible=sellMode end
   if sellMode then
    local ore=activeOre and Ore.Get(activeOre);saleIcon.Image=ore and ore.Image or '';saleTitle.Text=ore and ore.Name or 'Select Ores'
-   if not quantity:IsFocused() then quantity.Text=tostring(activeOre and oreSale[activeOre] or 0) end
+    if not quantity:IsFocused() then quantity.Text=NumberFormat.Format(activeOre and oreSale[activeOre] or 0) end
    for _,b in {minus,plus,max} do enabled(b,ore~=nil and not Forge.IsPending()) end
   end
   if shop.Visible then updateCandidates() end
@@ -560,7 +563,16 @@ return function(ctx)
   if not activeOre or Forge.IsPending() then return end
   n=math.clamp(math.floor(tonumber(n) or 0),0,oreState.Ores[activeOre] or 0);oreSale[activeOre]=n>0 and n or nil;render()
  end
- connect(quantity.FocusLost,function()saleCount(quantity.Text)end)
+ connect(quantity.Focused,function()
+  quantity:SetAttribute('EditingExactQuantity',true)
+  quantity.Text=tostring(activeOre and oreSale[activeOre] or 0)
+ end)
+ connect(quantity.FocusLost,function()
+  if quantity:GetAttribute('EditingExactQuantity') then
+   quantity:SetAttribute('EditingExactQuantity',nil)
+   saleCount(quantity.Text)
+  end
+ end)
  connect(minus.Activated,function()saleCount((oreSale[activeOre] or 0)-1)end)
  connect(plus.Activated,function()saleCount((oreSale[activeOre] or 0)+1)end)
  connect(max.Activated,function()saleCount(oreState and oreState.Ores[activeOre] or 0)end)

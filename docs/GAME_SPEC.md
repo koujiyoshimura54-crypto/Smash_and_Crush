@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-01 — Permanent World1 completion for Item visibility
+
+Server-confirmed World1 Stage10 completion now records `World1Cleared` in the existing owned player-data session/save path. Inventory and Merge use it only for Item card visibility. Completion before trophy collection or World2 arrival is sufficient; death, run reset and World return do not clear it. Legacy saved gate unlock (`HighestUnlockedWorld >= 2`), saved `World2Visited` or a verified World1Complete badge recover the flag. Failed badge lookup does not grant it. Studio arrival-preview resets remain separate.
+
+W2 Item purchase and merge execution still require arrival. Mixed-World restrictions, ownership, equipment, probabilities, prices, Ore2–5 rules, TimeReward, first-Boss Stone, offline rewards and tutorials are unchanged. This is a display/progression-proof addition, not a balance change. [Implementation and isolated persistence checks](../reports/InventoryUI2_20261101.md).
+
 ## 2026-11-01 — Stone introduction rewards
 
 TimeReward now starts with Stone ×1 at 60 seconds. Former rewards 1–5 move to slots 2–6; the 15-second training-equivalent Strength reward is retired. Stable content IDs preserve claimed history and online elapsed time. New player data also receives Stone ×1 instead of the ordinary draw on its first personal World1 Stage1 Boss defeat. Existing data without the lifetime flag is excluded by the owner's decision. The flag and ore commit together; existing bag-full discard rules remain. No tutorial changes. Applied to unsaved canonical Studio and verified with two native clients using isolated persistence. [Schedule, paths and verification](../reports/StoneOnboarding_20261101.md).

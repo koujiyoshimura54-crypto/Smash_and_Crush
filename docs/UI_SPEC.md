@@ -1,5 +1,13 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-01 — Item presentation, scoped Inventory font and Merge numbers
+
+This revision supersedes historical arrival-only Item visibility, local World2 rarity stars and broader Inventory font requests. Item cards are filtered out before creation until the server's permanent `World1Cleared` flag is true. Existing rarity filters and element/quantity grouping remain; each filter lists World1 before World2, with the three Item kinds together per element. Merge retains its existing global-rank ordering. No hidden-card grid slots remain.
+
+Inventory Item cards/equipment and Merge material/input/result cards share existing star images: global ranks1–10, five columns and two rows above rank5. Unowned secret artwork remains unchanged. Only text under `InventoryPanel.Content.Dumbbells` and `.Aura` uses `StrengthHUDStyle.Font`; tabs, Items, Speed and all Merge fonts retain their existing settings and sizes.
+
+Merge counts, points, sale totals and result quantities reuse `NumberFormat.Format` for K/M notation. The sale quantity field displays the exact integer while editing and abbreviation when blurred; requests and calculations retain numeric values. W2 purchase and Item merge execution still require the existing arrival condition, even when completion has already revealed their cards. Native normal and isolated narrow-region captures, exact transaction checks and limitations: [record](../reports/InventoryUI2_20261101.md).
+
 ## 2026-11-01 — TimeReward content mapping
 
 The same nine authored cards now map ClaimOrder to stable content IDs. The first card displays Stone ×1 using OreConfig image 131452437678251. Existing first through fifth contents move one card later; obsolete training-equivalent Strength is removed. Reward labels, icons and notification follow the actual server result; PotionStatus resolves its icon by reward ID rather than slot. Positions, sizes, fonts, borders and all other UI remain unchanged. Native rendered order and Stone claim feedback were checked. [Details](../reports/StoneOnboarding_20261101.md).

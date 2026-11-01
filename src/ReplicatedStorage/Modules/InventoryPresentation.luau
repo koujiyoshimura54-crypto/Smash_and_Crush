@@ -1,5 +1,51 @@
 -- Presentation only. All purchase/equip/merge/Skip decisions remain in callers.
 local M={}
+-- Only these two Inventory content pages share the HUD font. Tabs and other views retain theirs.
+function M.ApplyInventoryContentFont(x)
+ if not (x:IsA("TextLabel") or x:IsA("TextButton") or x:IsA("TextBox")) then return false end
+ local panel=x:FindFirstAncestor("InventoryPanel")
+ local content=panel and panel:FindFirstChild("Content")
+ if not content then return false end
+ for _,name in {"Dumbbells","Aura"} do
+  local page=content:FindFirstChild(name)
+  if page and x:IsDescendantOf(page) then
+   x.Font=require(game.ReplicatedStorage.Config.StrengthHUDStyle).Font
+   return true
+  end
+ end
+ return false
+end
+function M.ItemRank(item)
+ return require(game.ReplicatedStorage.Config.ItemMergeConfig).GetRank(item) or 0
+end
+-- Inventory and Merge share actual image-star counts; Shop/drop presentation stays unchanged.
+function M.SetItemImageStars(row,item,z)
+ local rank=M.ItemRank(item)
+ row:SetAttribute("Rank",rank)
+ local grid=row:FindFirstChild("StarGrid")
+ if not grid then grid=Instance.new("UIGridLayout");grid.Name="StarGrid";grid.Parent=row end
+ grid.FillDirectionMaxCells=5;grid.SortOrder=Enum.SortOrder.LayoutOrder
+ grid.HorizontalAlignment=Enum.HorizontalAlignment.Center;grid.VerticalAlignment=Enum.VerticalAlignment.Center
+ grid.CellPadding=UDim2.fromOffset(3,2)
+ for i=1,10 do
+  local star=row:FindFirstChild("Star"..i)
+  if not star then star=Instance.new("ImageLabel");star.Name="Star"..i;star.Parent=row end
+  star.BackgroundTransparency=1;star.Active=false;star.ScaleType=Enum.ScaleType.Fit
+  star.ImageColor3=Color3.new(1,1,1);star.ImageTransparency=0;star.LayoutOrder=i;star.ZIndex=z
+  star:SetAttribute("ResponsiveOriginalZ",z)
+  star.Image=i<=rank and "rbxassetid://76134658177553" or "rbxassetid://126441080731699"
+  star.Visible=i<=(rank>5 and 10 or 5)
+ end
+ row.Visible=item~=nil
+ return row
+end
+function M.LayoutItemImageStars(row,width,height)
+ local grid=row:FindFirstChild("StarGrid")
+ if not row.Parent or not grid then return end
+ local rows=(row:GetAttribute("Rank") or 0)>5 and 2 or 1
+ local side=math.max(1,math.floor(math.min((width-12)/5,(height-(rows-1)*2)/rows)))
+ grid.CellSize=UDim2.fromOffset(side,side)
+end
 -- Native localization, scoped to equipment wording from GameLocalizationTable.csv.
 local equipmentLocalization=Instance.new("LocalizationTable")
 equipmentLocalization.Name="EquipmentStateLocalization";equipmentLocalization.SourceLocaleId="en-us"
@@ -110,12 +156,14 @@ function M.SetItemStars(icon,item,existing)
 end
 function M.SetButtonEnabled(button,enabled) button.Active=enabled==true;button.AutoButtonColor=button.Active end
 function M.ApplyPurchasedText(x)
- if protected(x) or not (x:IsA("TextLabel") or x:IsA("TextButton") or x:IsA("TextBox")) then return end
+ if not (x:IsA("TextLabel") or x:IsA("TextButton") or x:IsA("TextBox")) then return end
+ if protected(x) then M.ApplyInventoryContentFont(x);return end
  local _,top,card=templates()
  local description=x.Name:find("Description") or x.Name:find("Instruction") or x.Name=="Status" or x.Name=="Benefits"
  local donor=description and card.Benefits or (x.Name=="EquippedStatus" or x.Name=="EquipButton") and card.Owned.PriceTag or card:FindFirstChild("Title")
  if x.Parent and x.Parent.Name=="Tabs" then donor=top.ShopText1 end
  copy(x,donor,{"FontFace","TextColor3","TextStrokeColor3","TextStrokeTransparency"})
+ M.ApplyInventoryContentFont(x)
  local ink=donor:FindFirstChildWhichIsA("UIStroke")
  if ink then
   local existing=x:FindFirstChild("PurchasedTextUIStroke")
@@ -564,7 +612,9 @@ function M.BindPurchasedPanel(panel)
  for _,x in visual:GetDescendants() do if x:IsA("GuiObject") then x.ZIndex=close.ZIndex+x.ZIndex-top.Close.ZIndex;x.Active=false end end
  local installed=setmetatable({},{__mode="k"})
  local function apply(x)
-  if not x:IsDescendantOf(panel) or protected(x) then return end
+  if not x:IsDescendantOf(panel) then return end
+  M.ApplyInventoryContentFont(x)
+  if protected(x) then return end
   M.ApplyPurchasedText(x)
   local surface=(x:IsA("Frame") or x:IsA("ScrollingFrame") or x:IsA("TextButton") or x:IsA("TextLabel"))
    and (x.BackgroundTransparency<.95 or isBody(x)) and x.Name~="Divider"

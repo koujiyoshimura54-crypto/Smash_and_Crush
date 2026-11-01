@@ -34,6 +34,7 @@ function M.GetState(player)
  return {Loaded=owned~=nil,OwnedItems=owned or {},EquippedItems=Items.GetEquippedItems(player) or {},
   MinimumCount=Config.MinimumCount,SessionToken=s.Token,NextSequence=(journal.Sequence or 0)+1,
   World2Unlocked=Data.HasReachedWorld2(player),
+  World1Cleared=data and data.Loaded and data.Data.World1Cleared==true or false,
   SavePending=data and (data.Saving or data.PendingItemMutation~=nil) or false,LastResult=result}
 end
 function M.MergeItem(player,request)

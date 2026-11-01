@@ -13,6 +13,7 @@ local gui=script.Parent
 local menu=gui:WaitForChild("LeftMenu")
 local shell=gui:WaitForChild("InventoryPanel")
 local function applyInventoryFont(object)
+ Presentation.ApplyInventoryContentFont(object)
  if object:FindFirstAncestor("PurchasedButtonVisual") then return end
  if object:IsA("TextLabel") or object:IsA("TextButton") or object:IsA("TextBox") then
   Presentation.ApplyPurchasedText(object)

@@ -1,3 +1,7 @@
+# 2026-11-01 — Item Inventory and Merge presentation
+
+Preserved the current canonical Edit document while adding permanent World1-clear Item visibility, World/rank ordering, shared image stars1–10, Dumbbell/Aura content-only Fredoka and display-only Merge K/M formatting. Native isolated Play covered actual renders, exact Item/Ore transactions, migration/save/reload and respawn; repeated card lifecycle checks passed after fixing a delayed layout callback. Retained requested before/after and narrow-region captures. No production writes, Save/Publish, tutorial or reward changes. [Evidence and limits](../reports/InventoryUI2_20261101.md).
+
 # 2026-11-01 — Stone introduction rewards
 
 Added Stone ×1 to TimeReward slot1 while preserving content-based claims, elapsed time and all remaining effects; replaced only new players' first personal World1 Stage1 Boss draw with Stone ×1. Existing records are excluded from the guarantee by explicit owner choice. Atomic grants, lost-acknowledgement retries, two native clients, actual first Boss combat and the two-Stone merge passed in memory isolation. Visual order/claim feedback checked; production persistence/rejoin not exercised. Canonical Studio retains all edits in unsaved Edit; test helpers removed. [Record](../reports/StoneOnboarding_20261101.md).

@@ -181,8 +181,7 @@ function M.LayoutItems(gui,page,list,grid)
   end
   local socketHeight=(size.Y-top-3*12)/3
   local function squareStars(row,width,height)
-   local side=math.max(1,math.floor(math.min((width-12)/5,height)))
-   row.StarGrid.CellSize=UDim2.fromOffset(side,side)
+   require(game.ReplicatedStorage.Modules.InventoryPresentation).LayoutItemImageStars(row,width,height)
   end
   for i,name in {"ProteinSocket","GloveSocket","TrainingBeltSocket"} do
    local socket=equipment[name]

@@ -236,7 +236,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -246,6 +246,7 @@ local function validEquipped(itemId,owned)
 end
 local function normalize(raw)
  local d=defaults()
+ d.World1Cleared=false
  local first,firstError=FirstStage1.Normalize(type(raw)=="table" and raw.FirstStage1Reward or nil,raw==nil)
  if not first then return nil,firstError end
  d.FirstStage1Reward=first
@@ -276,6 +277,9 @@ local function normalize(raw)
   local world,worldError=normalizeUnlockedWorld(raw.HighestUnlockedWorld)
   if not world then return nil,worldError end
   d.HighestUnlockedWorld=world
+  if raw.World1Cleared~=nil and typeof(raw.World1Cleared)~="boolean" then return nil,"Invalid World1Cleared" end
+  -- Legacy gate unlock and saved arrival prove completion; Studio arrival previews do not erase it.
+  d.World1Cleared=raw.World1Cleared==true or world>=2 or d.World2Visited
   local shop,shopError=normalizeShop(raw.ShopRewards)
   if not shop then return nil,shopError end
   d.ShopRewards=shop
@@ -366,6 +370,7 @@ local function applyAttributes(player,d)
  player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
  player:SetAttribute("InventoryCapacity",d.InventoryCapacity)
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
+ player:SetAttribute("World1Cleared",d.World1Cleared==true)
  player:SetAttribute("World2Visited",world2VisitedForSession(sessions[player]))
  player:SetAttribute("TutorialCompleted",d.TutorialCompleted==true)
  player:SetAttribute("Strength",d.Strength)
@@ -646,6 +651,21 @@ function PlayerDataService.Load(player)
  if not d then return false,validationError end
  s.Loaded=true;s.Data=d;s.Dirty=true;s.LastSave=nil;s.TimeRewardClock=os.clock()
  applyAttributes(player,d)
+ -- Recover the historical completion badge independently of the Studio arrival preview.
+ if not d.World1Cleared then
+  if player:GetAttribute("WorldComplete")==true then PlayerDataService.MarkWorld1Cleared(player) end
+  task.defer(function()
+   local badges=game:GetService("BadgeService")
+   local id=require(game.ReplicatedStorage.Config.BadgeConfig).GetBadgeId("World1Complete")
+   for attempt=1,3 do
+    if sessions[player]~=s or s.Data~=d or not s.Loaded or player.Parent~=Players or d.World1Cleared then return end
+    local success,owned=pcall(badges.UserHasBadgeAsync,badges,player.UserId,id)
+    if sessions[player]~=s or s.Data~=d or not s.Loaded then return end
+    if success then if owned then PlayerDataService.MarkWorld1Cleared(player) end;return end
+    task.wait(attempt)
+   end
+  end)
+ end
  -- A Gate unlock is not arrival. Existing IntoWorld2 badges were awarded only
  -- after successful server travel; ownership alone is never migration proof.
  if not studioArrivalPreview and not d.World2Visited then
@@ -879,6 +899,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   Pets=assert(Pet.NormalizeState(d.Pets)),
   HighestUnlockedWorld=d.HighestUnlockedWorld,
   World2Visited=d.World2Visited==true,
+  World1Cleared=d.World1Cleared==true,
   ShopRewards=assert(normalizeShop(d.ShopRewards)),
   CommunityRewards=assert(normalizeCommunity(d.CommunityRewards)),
   TimeRewards=assert(normalizeTimeRewards(d.TimeRewards)),
@@ -924,6 +945,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.HighestUnlockedWorld=math.max(assert(normalizeUnlockedWorld(old.HighestUnlockedWorld)),payload.HighestUnlockedWorld)
    if old.World2Visited~=nil and typeof(old.World2Visited)~="boolean" then error("Invalid World2Visited") end
    merged.World2Visited=old.World2Visited==true or payload.World2Visited
+   merged.World1Cleared=old.World1Cleared==true or merged.HighestUnlockedWorld>=2 or merged.World2Visited or payload.World1Cleared
    merged.ShopRewards=mergeShop(old.ShopRewards,payload.ShopRewards)
    merged.CommunityRewards=mergeCommunity(old.CommunityRewards,payload.CommunityRewards)
    merged.TimeRewards=mergeTimeRewards(old.TimeRewards,payload.TimeRewards)
@@ -993,6 +1015,8 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  d.HighestUnlockedWorld=math.max(d.HighestUnlockedWorld,assert(normalizeUnlockedWorld(saved.HighestUnlockedWorld)))
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
  d.World2Visited=d.World2Visited==true or saved.World2Visited==true
+ d.World1Cleared=d.World1Cleared==true or saved.World1Cleared==true or d.HighestUnlockedWorld>=2 or d.World2Visited
+ player:SetAttribute("World1Cleared",d.World1Cleared)
  player:SetAttribute("World2Visited",world2VisitedForSession(s))
  local unseenShopWin=math.max(0,saved.ShopRewards.WinGrantedTotal-d.ShopRewards.WinGrantedTotal)
  d.ShopRewards=mergeShop(d.ShopRewards,saved.ShopRewards)
@@ -1078,6 +1102,14 @@ function PlayerDataService.CanAccessWorld(player,world)
   and s~=nil and s.Loaded==true and s.Data~=nil
   and s.Data.HighestUnlockedWorld>=world
 end
+-- Called only by the server's World1 completion path or verified legacy proof.
+function PlayerDataService.MarkWorld1Cleared(player)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.OwnershipLost then return false,"DataNotLoaded" end
+ if not s.Data.World1Cleared then s.Data.World1Cleared=true;s.Dirty=true end
+ player:SetAttribute("World1Cleared",true)
+ return true
+end
 function PlayerDataService.UnlockWorld(player,world)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
@@ -1086,6 +1118,7 @@ function PlayerDataService.UnlockWorld(player,world)
  local data=s.Data
  if data.HighestUnlockedWorld>=value then return true,"AlreadyUnlocked" end
  data.HighestUnlockedWorld=math.max(data.HighestUnlockedWorld,value)
+ if value>=2 then PlayerDataService.MarkWorld1Cleared(player) end
  s.Dirty=true
  player:SetAttribute("HighestUnlockedWorld",data.HighestUnlockedWorld)
  -- Same save queue/reset barrier as tutorial completion. Never yield inside pickup.

@@ -25,6 +25,9 @@ local function worldLocked(id)
  return item and item.WorldId==2 and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id
   and player:GetAttribute("World2Visited")~=true
 end
+local function visibleItem(item)
+ return (item.WorldId or 1)==1 or player:GetAttribute("World1Cleared")==true
+end
 local selectedId,pending
 local rarityIndex=1
 local rarities=Master.Rarities
@@ -115,19 +118,10 @@ local function stars(parent,item,pos,size)
  local row=parent:FindFirstChild("RarityStars")
  if not row then
   row=Instance.new("Frame");row.Name="RarityStars";row.BackgroundTransparency=1;row.Active=false;layer(row,39);row.Parent=parent
-  local grid=Instance.new("UIGridLayout");grid.Name="StarGrid"
-  grid.FillDirectionMaxCells=5;grid.SortOrder=Enum.SortOrder.LayoutOrder
-  grid.HorizontalAlignment=Enum.HorizontalAlignment.Center;grid.VerticalAlignment=Enum.VerticalAlignment.Center
-  grid.CellPadding=UDim2.fromOffset(3,0);grid.Parent=row
-  for i=1,5 do
-   local star=icon(row,"Star"..i,STAR_GREY,UDim2.new(),UDim2.fromOffset(44,44),40)
-   star.LayoutOrder=i;star.ImageColor3=Color3.new(1,1,1)
-  end
  end
  row.Position=pos;row.Size=size
- local rank=item and Master.RarityRank[item.Rarity] or 0
- for i=1,5 do row["Star"..i].Image=i<=rank and STAR_GOLD or STAR_GREY end
- row.Visible=item~=nil
+ Presentation.SetItemImageStars(row,item,40)
+ for _,star in row:GetChildren() do if star:IsA("ImageLabel") then layer(star,40) end end
  return row
 end
 local function effect(item)
@@ -240,13 +234,14 @@ render=function()
   rarityBadges[n].Visible=page:GetAttribute("UnseenRarity_"..rarities[n])==true
  end
  local ids={}
- for id,item in pairs(Master.GetAll()) do if item.Rarity==rarities[rarityIndex] then table.insert(ids,id) end end
+ for id,item in pairs(Master.GetAll()) do if item.Rarity==rarities[rarityIndex] and visibleItem(item) then table.insert(ids,id) end end
  local typeOrder={};for i,kind in ipairs(kinds) do typeOrder[kind]=i end
  table.sort(ids,function(a,b)
   local x,y=Master.Get(a),Master.Get(b)
-  if x.ItemType~=y.ItemType then return (typeOrder[x.ItemType] or 99)<(typeOrder[y.ItemType] or 99) end
   if (x.WorldId or 1)~=(y.WorldId or 1) then return (x.WorldId or 1)<(y.WorldId or 1) end
-   return x.Element<y.Element
+  if Presentation.ItemRank(x)~=Presentation.ItemRank(y) then return Presentation.ItemRank(x)<Presentation.ItemRank(y) end
+  if x.Element~=y.Element then return table.find(Master.Elements,x.Element)<table.find(Master.Elements,y.Element) end
+  return (typeOrder[x.ItemType] or 99)<(typeOrder[y.ItemType] or 99)
  end)
  for order,id in ipairs(ids) do
   local item=Master.Get(id)
@@ -255,7 +250,7 @@ render=function()
   surface(c,item.Rarity,selectedId==id);layer(c,32);c.Parent=list
   local picture=icon(c,"Icon",item.Image,UDim2.new(),UDim2.new(),36)
   local locked=worldLocked(id)
-  Presentation.SetInventorySecret(c,picture,locked or (stateLoaded and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id))
+  Presentation.SetInventorySecret(c,picture,stateLoaded and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id)
   local effectLabel=label(c,"Effect","W"..tostring(item.WorldId or 1).." "..effect(item),UDim2.new(),UDim2.new(),34)
   effectLabel.FontFace=effectFont
   effectLabel:FindFirstChildOfClass("UIStroke").Thickness=2.5
@@ -293,7 +288,6 @@ render=function()
   elseif not locked and item.RobuxPurchasable then
    priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",robuxRemote,id)
   end
-  Presentation.SetInventoryWorldLock(c,picture,locked)
  end
  layout();list.CanvasPosition=scroll
 end
@@ -368,6 +362,10 @@ RS.Remotes:WaitForChild("ItemMergeRequest").OnClientEvent:Connect(function(resul
  if typeof(result)=="table" and shell.Visible then if not applyState(result.State) then refresh() end end
 end)
 player:GetAttributeChangedSignal("World2Visited"):Connect(function() if selectedId and worldLocked(selectedId) then selectedId=nil end;render() end)
+player:GetAttributeChangedSignal("World1Cleared"):Connect(function()
+ if selectedId and not visibleItem(Master.Get(selectedId)) then selectedId=nil end
+ render()
+end)
 render()
 
 task.spawn(function()
