@@ -26,7 +26,7 @@ function M.View(player)
 	local result = {Ready = rate ~= nil, Offers = {}, Reward = reward and {Id = id, Amount = reward.Amount}, Pending = blocked}
 	for _, product in ipairs(Config.Packs) do
 		local pending = s.Data.StrengthRewards.Pending[tostring(product.ProductId)]
-		result.Offers[tostring(product.ProductId)] = pending and pending.Amount or rate and rate * product.Seconds or 0
+		result.Offers[tostring(product.ProductId)] = pending and pending.Amount or rate and State.PackAmount(rate, product.Seconds) or 0
 	end
 	return result
 end
@@ -52,7 +52,7 @@ function M.Request(player, action, value)
 			end
 			op.Action, op.ProductId = "Prepare", value
 			if kind == "DoubleOffline" then op.RewardId = State.NextReward(s.Data.StrengthRewards)
-			else op.Amount = assert(Reference.Get(player)) * product.Seconds end
+			else op.Amount = State.PackAmount(assert(Reference.Get(player)), product.Seconds) end
 		elseif action == "Open" then
 			if RunService:IsStudio() or type(value) ~= "table" or type(value.IntentId) ~= "string" then return {Ok=false,Code="Unavailable"} end
 			op.Action,op.ProductId,op.IntentId="Open",value.ProductId,value.IntentId

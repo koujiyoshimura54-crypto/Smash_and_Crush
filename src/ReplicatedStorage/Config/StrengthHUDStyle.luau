@@ -8,7 +8,7 @@ return {
   Level = {Size=54, Stroke=4}, Progress = {Size=48, Stroke=4},
   Pack = {Size=55, Stroke=5},
   AutoTitle = {Size=19, MinScreenSize=13, Stroke=2}, AutoState = {Size=27, MinScreenSize=19, Stroke=2.5},
-  OfflineTitle = {Size=46, Stroke=3}, OfflineAmount = {Size=43, Stroke=3},
+  OfflineTitle = {Size=58, Stroke=4}, OfflineAmount = {Size=60, Stroke=4},
   Claim = {Size=38, Stroke=3}, DoubleClaim = {Size=32, Stroke=2.5},
   Price = {Size=25, Stroke=2}, Close = {Size=44, Stroke=3},
  },
@@ -30,7 +30,11 @@ return {
  Border = {Gauge=5, Pack=5, GaugeRadius=17, HealthRadius=12, PackRadius=5},
  Offline = {
   Width=700, Height=450, MarginX=32, MarginY=48, Border=6, Radius=16,
-  Title={30,18,640,58}, Icon={245,86,210,210}, Amount={25,294,650,54},
+  Title={24,12,652,68}, Icon={254,91,192,192}, Amount={18,290,664,64},
+  Halo={248,84,204,204}, HaloColor=Color3.fromRGB(255,214,35),
+  ButtonBorder=4, ButtonRadius=9, PriceIconSize=24, PriceGap=5,
+  ClaimColors={Color3.fromRGB(213,255,0),Color3.fromRGB(86,238,0)},
+  DoubleColors={Color3.fromRGB(255,239,0),Color3.fromRGB(255,160,0)},
   Claim={22,358,320,76}, Double={358,358,320,76},
   CloseInset=8, CloseSize=64,
  },
@@ -50,6 +54,7 @@ return {
   -- Existing owned image, also used by Workspace.Treadmills.Billboard.
   Strength="rbxassetid://106106287008236",
   Heart="rbxassetid://79503513671021",
+  Robux="rbxassetid://100116824861927",
   HeartTint=Color3.fromRGB(255,170,85),
   -- Purchased Shop card StudPattern, four embossed squares per tile edge.
   Studs="rbxassetid://97016358865650", StudCell=128, StudSize=32,

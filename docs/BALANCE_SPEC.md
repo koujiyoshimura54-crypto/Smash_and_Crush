@@ -767,3 +767,7 @@ Ore merge uses only the two neighboring thresholds; the upper probability is `(p
 ## 2026-10-31 ? Strength rewards and HUD (unsaved local Edit)
 
 Offline Strength: departure reference per second ? min(elapsed seconds, 3600) ? 0.05. Double product 3724845103 adds the remaining amount to reach exactly 2? the fixed reward. Packs: 3724835102 / 120 seconds / base19; 3724835678 / 720 seconds / base99; 3724836170 / 2400 seconds / base299. Prices are queried from Marketplace, not scaled by progression. Existing training and treadmill values are unchanged.
+
+## 2026-11-01 — Final integer Strength pack quotes
+
+New pack offers/intents use `floor(reference Strength per second * product seconds)` after all reference calculations. Server View, Prepare and saved intent/grant agree; abbreviation1.44K remains valid for1440. Existing pending fractional promises are retained exactly on resume/receipt. Offline rewards, current balances, LevelProgress, Training, durations, product IDs/prices and receipt identity safeguards are unchanged. Focused native evidence: [OfflinePopupFix_20261101](../reports/OfflinePopupFix_20261101/REPORT.md).

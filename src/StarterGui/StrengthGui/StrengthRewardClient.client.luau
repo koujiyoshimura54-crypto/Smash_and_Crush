@@ -89,8 +89,7 @@ local function fetchPrice(product, button)
 	if ok and type(info) == "table" and info.IsForSale == true and type(info.PriceInRobux) == "number" then
 		prices[product.ProductId] = info.PriceInRobux
 		if product.ProductId == Config.DoubleOffline.ProductId then
-			Layout.PurchaseButton(button, "Robux", info.PriceInRobux)
-			Presentation.Offline(panel)
+			Presentation.OfflinePrice(panel, info.PriceInRobux)
 		end
 		-- Main pack cards are a single input; official price remains on native checkout.
 		button:SetAttribute("PriceInRobux",info.PriceInRobux)

@@ -14,7 +14,6 @@ function M.Build(gui)
 	local existing = gui:FindFirstChild("OfflineRewards")
 	if existing then
 		local row=gui.StrengthLevelHUD.StrengthPacks
-		if not mounted[gui] then Layout.PurchaseButton(existing.Double.Price,"Robux","...") end
 		Presentation.Apply(gui)
 		Layout.Mount(gui).Refresh()
 		mounted[gui]=true
@@ -22,7 +21,7 @@ function M.Build(gui)
 	end
 	local donorGui = gui.Parent:FindFirstChild("ScreenGui") or game.StarterGui.ScreenGui
 	local donor = donorGui.Menus.OfflineEarnings
-	local iconImage = donor.Main.Icon.Image
+	local iconImage = require(RS.Config.StrengthHUDStyle).Assets.Strength
 	local style = donor.Main.NormalEarned
 	local function label(name, parent, text, position, size)
 		local x = style:Clone(); x.Name = name; x.Text = text; x.Position = position; x.Size = size
@@ -61,7 +60,7 @@ function M.Build(gui)
 	double.Title.Position = UDim2.fromScale(.03, .03); double.Title.Size = UDim2.fromScale(.94, .52)
 	local price = make("TextButton", "Price", double, {BackgroundTransparency = 1, Text = "", AutoButtonColor = false,
 		Position = UDim2.fromScale(.28, .52), Size = UDim2.fromScale(.44, .42), ZIndex = 55, Active = false})
-	Layout.PurchaseButton(price, "Robux", "...")
+	-- One full-size Double.Button owns input; Price is presentation only.
 	local close = donor.Exit:Clone(); close.Name = "Close"; close.AnchorPoint = Vector2.new(.5, .5)
 	close.Position = UDim2.new(1, -O.CloseInset, 0, O.CloseInset); close.Size = UDim2.fromOffset(O.CloseSize, O.CloseSize); close.Visible = true; close.Parent = panel
 	for _, child in ipairs(close:GetDescendants()) do if child:IsA("GuiObject") then child.ZIndex = 60 end end

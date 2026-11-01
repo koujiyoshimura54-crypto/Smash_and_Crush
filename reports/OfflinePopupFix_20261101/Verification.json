@@ -1,0 +1,206 @@
+{
+  "Target": "MergeToForge_CurrentCloud.rbxl",
+  "BaseCommit": "463b708a6f29eb81e13eaec9646ba66c845ec3d6",
+  "PanelBefore": {
+    "Background": "0.0862745, 0.101961, 0.137255",
+    "Transparency": 0.2199999988079071,
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Size": "{0, 700}, {0, 450}"
+  },
+  "PanelAfter": {
+    "Background": "0.0862745, 0.101961, 0.137255",
+    "Transparency": 0.2199999988079071,
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Size": "{0, 700}, {0, 450}"
+  },
+  "Preservation": {
+    "BottomHudUnchanged": true,
+    "ControlSourcesUnchanged": true
+  },
+  "Runtime": {
+    "PriceInteractable": false,
+    "PanelSize": "{0, 700}, {0, 450}",
+    "Price": 18,
+    "PriceVisual": false,
+    "PanelPosition": "{0.5, 0}, {0.5, 0}",
+    "ButtonZ": 59,
+    "PriceZ": 54,
+    "AmountSize": 60,
+    "TitleSize": 58,
+    "Icon": "rbxassetid://106106287008236",
+    "Transparency": 0.2199999988079071
+  },
+  "IntegerTests": {
+    "OfflineClaim": 123.75,
+    "OldPromisedGain": 240.9,
+    "Checks": 33,
+    "Cases": [
+      {
+        "Raw": 240.9,
+        "Progress": 240.375,
+        "Quote": 240,
+        "Gain": 240,
+        "Strength": 250.25,
+        "Product": 3724835102
+      },
+      {
+        "Raw": 240,
+        "Progress": 240.375,
+        "Quote": 240,
+        "Gain": 240,
+        "Strength": 250.25,
+        "Product": 3724835102
+      },
+      {
+        "Raw": 1440.9,
+        "Progress": 1440.375,
+        "Quote": 1440,
+        "Gain": 1440,
+        "Strength": 1450.25,
+        "Product": 3724835678
+      },
+      {
+        "Raw": 1440,
+        "Progress": 1440.375,
+        "Quote": 1440,
+        "Gain": 1440,
+        "Strength": 1450.25,
+        "Product": 3724835678
+      },
+      {
+        "Raw": 4800.75,
+        "Progress": 4800.375,
+        "Quote": 4800,
+        "Gain": 4800,
+        "Strength": 4810.25,
+        "Product": 3724836170
+      },
+      {
+        "Raw": 4800,
+        "Progress": 4800.375,
+        "Quote": 4800,
+        "Gain": 4800,
+        "Strength": 4810.25,
+        "Product": 3724836170
+      }
+    ],
+    "OfflineExtra": 123.75
+  },
+  "ServiceView": {
+    "NewOffers": {
+      "3724835102": 240,
+      "3724835678": 1445,
+      "3724836170": 4818
+    },
+    "LegacyOffer": 240.9
+  },
+  "ClientCallbacks": {
+    "Ok": true,
+    "Result": {
+      "DoublePrepare": 1,
+      "ActualPayment": false,
+      "AutoUnchanged": true,
+      "Price": "18",
+      "PriceSingleTarget": true,
+      "DoubleOpen": 1,
+      "NoRewardBlocked": true,
+      "NormalClaim": true
+    }
+  },
+  "NativeHitTests": {
+    "Price": [
+      "StrengthGui.PopupFixInput.Double.Button"
+    ],
+    "Title": [
+      "StrengthGui.PopupFixInput.Double.Button"
+    ],
+    "Edge": [
+      "StrengthGui.PopupFixInput.Double.Button"
+    ]
+  },
+  "TextFits": {
+    "Format4800": "4.8K",
+    "PriceFits": true,
+    "TitleFits": true,
+    "LowerAuto": true,
+    "Format1440": "1.44K",
+    "Texts": [
+      {
+        "Bounds": "486, 60",
+        "Text": "+180000 STRENGTH",
+        "TextFits": true,
+        "Size": "664, 64"
+      },
+      {
+        "Bounds": "423, 60",
+        "Text": "+125K STRENGTH",
+        "TextFits": true,
+        "Size": "664, 64"
+      },
+      {
+        "Bounds": "449, 60",
+        "Text": "+1.44M STRENGTH",
+        "TextFits": true,
+        "Size": "664, 64"
+      },
+      {
+        "Bounds": "519, 60",
+        "Text": "+999.99Qi STRENGTH",
+        "TextFits": true,
+        "Size": "664, 64"
+      }
+    ]
+  },
+  "RepeatedStyling": {
+    "AmountFits": true,
+    "ArmMatchesHUD": true,
+    "Stable": true,
+    "RepeatedOfflineCount": 124
+  },
+  "Final": {
+    "TemporaryObjects": [],
+    "Sources": [
+      {
+        "Compiles": true,
+        "Path": "ReplicatedStorage.Modules.StrengthRewardUI",
+        "Match": true
+      },
+      {
+        "Compiles": true,
+        "Path": "ServerScriptService.Services.StrengthRewardService",
+        "Match": true
+      },
+      {
+        "Compiles": true,
+        "Path": "ReplicatedStorage.Modules.StrengthHUDPresentation",
+        "Match": true
+      },
+      {
+        "Compiles": true,
+        "Path": "ServerScriptService.Services.StrengthRewardState",
+        "Match": true
+      },
+      {
+        "Compiles": true,
+        "Path": "ReplicatedStorage.Config.StrengthHUDStyle",
+        "Match": true
+      },
+      {
+        "Compiles": true,
+        "Path": "StarterGui.StrengthGui.StrengthRewardClient",
+        "Match": true
+      }
+    ],
+    "Panel": {
+      "Background": "0.0862745, 0.101961, 0.137255",
+      "Transparency": 0.2199999988079071,
+      "Position": "{0.5, 0}, {0.5, 0}",
+      "Size": "{0, 700}, {0, 450}"
+    },
+    "PlayerDataRestored": true
+  },
+  "ActualPayments": false,
+  "ProductionWrites": false,
+  "RbxlSHA256": "1951C12EB639703BD516DD925983F63A54AC3A701BB2C0EA6B4810FCCB62D97A",
+  "Console": "No related production runtime error observed. Existing audio authorization warnings. An initial diagnostic table.insert/gsub error was fixed in the probe; corrected hit-test passed."
+}

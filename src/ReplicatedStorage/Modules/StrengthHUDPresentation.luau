@@ -169,24 +169,72 @@ function M.Apply(gui)
  end
  M.Offline(gui.OfflineRewards)
 end
+-- Offline-only art. No bottom-HUD geometry or text size changes here.
+function M.OfflinePrice(panel,price)
+ local holder=panel.Double.Price
+ if price~=nil then holder:SetAttribute("PriceInRobux",price) end
+ local old=holder:FindFirstChild("PurchasedButtonVisual");if old then old:Destroy() end
+ holder.Text="";holder.BackgroundTransparency=1;holder.Active=false;holder.Interactable=false
+ holder.AutoButtonColor=false;holder.ZIndex=54
+ local icon=image(holder,"Robux",Style.Assets.Robux,54)
+ local label=node(holder,"TextLabel","Amount")
+ M.Text(label,"Price");label.ZIndex=54;label.Active=false
+ local value=holder:GetAttribute("PriceInRobux")
+ label.Text=type(value)=="number" and tostring(value) or "..."
+ local o=Style.Offline
+ local width=math.ceil(TextService:GetTextSize(label.Text,Style.Text.Price.Size,Style.Font,Vector2.new(1000,100)).X)
+ holder.AnchorPoint=Vector2.new(.5,0);holder.Position=UDim2.fromScale(.5,.53)
+ holder.Size=UDim2.fromOffset(o.PriceIconSize+o.PriceGap+width,30)
+ rect(icon,0,1,o.PriceIconSize,o.PriceIconSize)
+ rect(label,o.PriceIconSize+o.PriceGap,0,width,28)
+end
 function M.Offline(panel)
  local o=Style.Offline
- panel.Size=UDim2.fromOffset(o.Width,o.Height)
- corner(panel,o.Radius)
- -- Preserve the existing outside panel border; gauge borders are inset.
- local border=panel:FindFirstChild("Border");if border then border.Thickness=o.Border end
+ -- Preserve the existing outer panel's size/position/background. Only contents change.
  for name,box in {Title=o.Title,StrengthIcon=o.Icon,Amount=o.Amount,Claim=o.Claim,Double=o.Double} do rect(panel[name],table.unpack(box)) end
- panel.Close.Size=UDim2.fromOffset(o.CloseSize,o.CloseSize)
- panel.Close.Position=UDim2.new(1,-o.CloseInset,0,o.CloseInset)
  M.Text(panel.Title,"OfflineTitle");M.Text(panel.Amount,"OfflineAmount")
  panel.Amount.TextColor3=Color3.fromRGB(255,223,65)
+ panel.StrengthIcon.Image=Style.Assets.Strength;panel.StrengthIcon.ScaleType=Enum.ScaleType.Fit
+ panel.StrengthIcon.ImageColor3=Color3.new(1,1,1);panel.StrengthIcon.ZIndex=52
+ local halo=node(panel,"Frame","StrengthHalo")
+ halo.BackgroundTransparency=1;halo.Active=false;halo.ZIndex=51;halo.ClipsDescendants=true
+ rect(halo,table.unpack(o.Halo))
+ -- Native circular glow and fading rays, confined between the title and amount.
+ for i=1,12 do
+  local disk=node(halo,"Frame","Glow"..i)
+  disk.BorderSizePixel=0;disk.Active=false;disk.ZIndex=51
+  disk.AnchorPoint=Vector2.new(.5,.5);disk.Position=UDim2.fromScale(.5,.5)
+  local diameter=1-(i-1)*.055;disk.Size=UDim2.fromScale(diameter,diameter)
+  disk.BackgroundColor3=o.HaloColor;disk.BackgroundTransparency=.94
+  corner(disk,1000)
+ end
+ for i=1,16 do
+  local ray=node(halo,"Frame","Ray"..i)
+  ray.BackgroundTransparency=1;ray.Active=false;ray.ZIndex=51
+  ray.Size=UDim2.fromScale(1,1);ray.Rotation=(i-1)*22.5
+  local beam=node(ray,"Frame","Beam")
+  beam.BorderSizePixel=0;beam.Active=false;beam.ZIndex=51
+  beam.AnchorPoint=Vector2.new(.5,1);beam.Position=UDim2.fromScale(.5,.5)
+  beam.Size=UDim2.fromScale(i%2==0 and .065 or .10,.49)
+  beam.BackgroundColor3=o.HaloColor;beam.BackgroundTransparency=0
+  local fade=node(beam,"UIGradient","Fade");fade.Rotation=90
+  fade.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.55,.5),NumberSequenceKeypoint.new(1,.05)})
+ end
  M.Text(panel.Claim.Title,"Claim");M.Text(panel.Double.Title,"DoubleClaim");M.Text(panel.Close.Title,"Close")
  panel.Claim.Title.AnchorPoint=Vector2.zero;panel.Double.Title.AnchorPoint=Vector2.zero
  panel.Close.Title.Size=UDim2.fromScale(1,.9)
- -- Preserve the existing purchased Robux icon/glyph, price skin and popup layout.
- local visual=panel.Double.Price:FindFirstChild("PurchasedButtonVisual")
- if visual then M.Text(visual.Main.Amount,"Price");visual.Main.Amount.Size=UDim2.fromScale(.94,.9) end
- for _,frame in {panel.Claim,panel.Double} do M.BindPress(frame.Button,frame) end
+ for _,frame in {panel.Claim,panel.Double} do
+  local colors=frame==panel.Claim and o.ClaimColors or o.DoubleColors
+  frame.Stroke.Visible=false
+  frame.Main.AnchorPoint=Vector2.zero;frame.Main.Position=UDim2.new();frame.Main.Size=UDim2.fromScale(1,1)
+  frame.Main.BackgroundColor3=Color3.new(1,1,1);frame.Main.BackgroundTransparency=0
+  corner(frame.Main,o.ButtonRadius);gradient(frame.Main,colors[1],colors[2])
+  stroke(frame.Main,o.ButtonBorder,Enum.ApplyStrokeMode.Border)
+  frame.Button.AnchorPoint=Vector2.zero;frame.Button.Position=UDim2.new();frame.Button.Size=UDim2.fromScale(1,1)
+  frame.Button.ZIndex=59;frame.Title.ZIndex=54
+  M.BindPress(frame.Button,frame)
+ end
+ M.OfflinePrice(panel)
 end
 function M.LayoutItems(hud)
  local row=hud:FindFirstChild("ItemEffectHUD");if not row then return end

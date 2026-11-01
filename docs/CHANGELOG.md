@@ -1195,3 +1195,8 @@ Added departure-based offline Strength (3600 seconds, 5%), three timed-reference
 
 - Centralized Fredoka One and measured HUD/popup styling; added short red HP, actual level-progress text/fill and thin gold/purple/red purchase cards using existing assets. Preserved Auto Tap, live equipment effects, server quotes and reward/receipt configuration.
 - Native isolated Play, mock purchase routing, rebuild/resize geometry and eight Source checks completed. Retained reference/native comparison images; final complete raster unavailable after capture failure, with asset/glyph differences documented. Removed test storage insertions and left unsaved Edit without Save/Publish or rbxl write. See [HUD reference report](../reports/HUDReference_20261101/REPORT.md).
+
+## 2026-11-01 — Offline popup and pack final rounding
+
+- Reused the working Strength arm with native glow, enlarged offline Fredoka text, unified black claim borders and integrated the official double-product price into one purchase target. Preserved panel exterior and lower HUD.
+- Floor only new final pack quotes; preserve pending fractional promises and offline/Training/progression behavior. Focused native/mock verification and rendered evidence recorded; no real payment or production write. Removed test fixtures and left unsaved Edit. [Report](../reports/OfflinePopupFix_20261101/REPORT.md).

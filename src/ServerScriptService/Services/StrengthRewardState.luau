@@ -7,6 +7,13 @@ local function copy(v)
 	local out = {} for k, x in pairs(v) do out[k] = copy(x) end return out
 end
 M.Copy = copy
+-- Only newly quoted packs use this final rounding; saved intents remain exact.
+function M.PackAmount(rate, seconds)
+ assert(number(rate) and number(seconds), "InvalidStrengthQuote")
+ local amount=rate*seconds
+ assert(number(amount), "InvalidStrengthQuote")
+ return math.floor(amount)
+end
 function M.Normalize(raw)
 	if raw == nil then return {Version = 1, Rewards = {}, Pending = {}, Receipts = {}, GrantedTotal = 0} end
 	if type(raw) ~= "table" or raw.Version ~= 1 or not number(raw.GrantedTotal)
@@ -90,7 +97,9 @@ function M.Apply(raw, op)
 			if not r or r.Paid >= r.Amount then return nil, 0, "RewardUnavailable" end
 			amount = r.Amount
 		end
-		if not number(amount) or amount <= 0 then return nil, 0, "InvalidAmount" end
+		if not number(amount) then return nil, 0, "InvalidAmount" end
+		if kind == "Pack" then amount = M.PackAmount(amount, 1) end
+		if amount <= 0 then return nil, 0, "InvalidAmount" end
 		state.Pending[key] = {Id = op.Id, ProductId = op.ProductId, Kind = kind, Amount = amount, RewardId = op.RewardId, State = "Prepared"}
 	elseif op.Action == "Open" then
 		local p = state.Pending[tostring(op.ProductId)]
