@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-01 — Ore merge minimum correction (repository; Studio application pending)
+
+Ore merge requires **2–5 total units**, including repeated Ore IDs, rather than the initial 1–5 implementation. One unit may still be selected to view points or sold; a merge needs at least two. Server evaluation and client merge eligibility share the same rule. Points, probabilities, prices, ownership, Item/Pet rules and existing tutorials are unchanged. This supersedes only the Ore minimum in the October26 entry. This session changed repository Sources only; the current unsaved Studio document and Cloud remain unmodified. See [scope and focused verification](../reports/OreMergeMinimum_20261101/README.md).
+
 ## 2026-10-31 — World2 five/six-wall progression
 
 World2 Stages1–5 contain five authored Edit walls and Stages6–10 contain six. Wall order, owner HP/collision/visibility, snapshots, skips, death/return/retry, streamed restoration, Boss recognition and final-wall intros use each Stage's configured wall count. World2 Boss sections are named StageN.Boss to separate them from wall5/6; World1 retains its four walls and StageN.5 Boss section. The original first/last wall positions, Stage floors/lengths, Boss/Trophy markers, Lobby and perimeter geometry are retained. Approved HP is recorded in BALANCE_SPEC. [Scope, migration manifest and native tests](../reports/World2HPWalls_20261031/README.md).

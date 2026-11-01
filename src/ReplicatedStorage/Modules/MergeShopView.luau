@@ -369,7 +369,7 @@ return function(ctx)
    local preview=OreMerge.Evaluate(oreSelected,oreState and oreState.Ores)
    if completedBell then preview={Outcomes={{Id=completedBell,Probability=1}}} end
    if preview then for _,o in preview.Outcomes do local bell=Bells.Get(o.Id);table.insert(rows,{Id=o.Id,Image=bell.Image,Grade=bell.Grade,Strength=bell.StrengthBonus,Percent=o.Probability*100}) end
-   else hint='Select 1–5 Ores' end
+   else hint=string.format('Select %d–%d Ores',OreMerge.Minimum,OreMerge.Maximum) end
   end
   local keys={tab,tostring(sellMode)};for _,o in rows do table.insert(keys,o.ItemId or o.Id or o.Egg) end
   local signature=table.concat(keys,'|')
@@ -416,7 +416,13 @@ return function(ctx)
   end
   local ready=tab=='Item' and itemFresh and not itemPending and itemState and not itemState.SavePending and itemPreview()~=nil
   if tab=='Pet' then ready=not petPending and not PetClient.busy() and petPreview()~=nil end
-  if tab=='Ore' then ready=oreState and not oreState.Pending and not Forge.IsPending() and OreMerge.Selection(oreSelection(),oreState.Ores,sellMode)~=nil end
+  if tab=='Ore' then
+   ready=false
+   if oreState and not oreState.Pending and not Forge.IsPending() then
+    if sellMode then ready=OreMerge.Selection(oreSelection(),oreState.Ores,true)~=nil
+    else ready=OreMerge.Evaluate(oreSelection(),oreState.Ores)~=nil end
+   end
+  end
   enabled(merge,ready==true);merge:SetAttribute('ExecutionEnabled',ready==true);merge.PriceTag.Text=sellMode and 'Sell' or 'Merge'
   enabled(clear,not itemPending and not petPending and not Forge.IsPending())
   empty.Visible=#groups==0;empty.Text=(tab=='Item' and not itemState or tab=='Pet' and not petState or tab=='Ore' and not oreState) and 'Loading…' or 'No materials'

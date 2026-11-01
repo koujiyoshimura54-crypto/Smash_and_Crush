@@ -1,7 +1,7 @@
 local Ore=require(script.Parent.Parent.Config.OreConfig)
 local Dumbbells=require(script.Parent.Parent.Config.DumbbellItemMaster)
 local Counts=require(script.Parent.InventoryCounts)
-local M={Minimum=1,Maximum=5}
+local M={Minimum=2,Maximum=5}
 function M.Selection(raw,owned,selling)
  if typeof(raw)~="table" then return nil,"InvalidMaterials" end
  local selected,total,quantity,entries={},0,0,0
@@ -19,6 +19,8 @@ function M.Selection(raw,owned,selling)
 end
 function M.Evaluate(raw,owned)
  local result,reason=M.Selection(raw,owned,false);if not result then return nil,reason end
+ -- Selection also serves single-ore point previews, sales and existing request signatures.
+ if result.Count<M.Minimum then return nil,"SelectAtLeastTwoOres" end
  local rows=Dumbbells.GetSorted(1)
  local lower=rows[1]
  for _,item in ipairs(rows) do
