@@ -1,40 +1,57 @@
 local player=game:GetService("Players").LocalPlayer
 local RS=game:GetService("ReplicatedStorage")
 local Requirements=require(RS.Config:WaitForChild("LevelRequirements"))
-local Format=require(RS.Modules:WaitForChild("NumberFormat"))
+local Presentation=require(RS.Modules:WaitForChild("StrengthHUDPresentation"))
 local gui=script.Parent
+require(RS.Modules.StrengthRewardUI).Build(gui)
 local hud=gui:WaitForChild("StrengthLevelHUD")
-local strengthValue=hud:WaitForChild("StrengthValueContainer"):WaitForChild("Strength")
-local panel=hud.LevelPanel
-strengthValue.AutoLocalize=false
-panel.Level.AutoLocalize=false
-panel.ProgressText.AutoLocalize=false
-local clip=panel.ProgressBackground.ProgressClip
-local fill=clip.Fill
-local old=gui:FindFirstChild("StrengthLabel")
-if old then old.Visible=false end
-local progress=0
+local panel=hud:WaitForChild("LevelPanel")
+local bar=panel:WaitForChild("StrengthProgressBar")
+local levelLabel=bar:WaitForChild("Level")
+local amountLabel=bar:WaitForChild("Exp")
+
+levelLabel.AutoLocalize=false
+amountLabel.AutoLocalize=false
+-- Keep the parent containers and style references used by Auto Tap and item effects.
+local totalContainer=hud:WaitForChild("StrengthValueContainer")
+local totalLabel=totalContainer:WaitForChild("Strength")
+totalContainer.Visible=true
+totalLabel.AutoLocalize=false
+panel:WaitForChild("Level").Visible=false
+panel:WaitForChild("ProgressText").Visible=false
+panel:WaitForChild("ProgressBackground").Visible=false
+local legacy=gui:FindFirstChild("StrengthLabel")
+if legacy then legacy.Visible=false end
 local function layout()
- require(RS.Modules.HUDLayout).Mount(gui).Refresh()
+ require(RS.Modules:WaitForChild("HUDLayout")).Mount(gui).Refresh()
 end
 local function update()
  local strength=math.max(0,tonumber(player:GetAttribute("Strength")) or 0)
+ totalLabel.Text=Presentation.Number(strength)
  local level=tonumber(player:GetAttribute("Level")) or 1
  local levelProgress=math.max(0,tonumber(player:GetAttribute("LevelProgress")) or 0)
  local required=Requirements.GetRequiredStrength(level)
- progress=level>=Requirements.MaxLevel and 1 or (required>0 and math.clamp(levelProgress/required,0,1) or 0)
- strengthValue.Text=Format.Format(strength)
- panel.Level.Text="Lv."..tostring(level)
- panel.ProgressText.Text=Format.Format(levelProgress).." / "..Format.Format(required)
- clip.Size=UDim2.fromScale(progress,1)
- clip.Visible=progress>0
- layout()
-end
-player:GetAttributeChangedSignal("Strength"):Connect(update)
-player:GetAttributeChangedSignal("Level"):Connect(update)
-player:GetAttributeChangedSignal("LevelProgress"):Connect(update)
-player.CharacterAdded:Connect(update)
-gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
-panel:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
-update()
+ local atMax=level>=Requirements.MaxLevel
+ local progress=atMax and 1 or (required>0 and math.clamp(levelProgress/required,0,1) or 0)
+ levelLabel.Text="Lv."..tostring(level)
+ amountLabel.Text=Presentation.Number(levelProgress).." / "..(atMax and "MAX" or Presentation.Number(required))
+ Presentation.SetFill(bar,progress)
 
+end
+-- Read the related replicated attributes together after the current signal batch.
+local updateQueued=false
+local function queueUpdate()
+ if updateQueued then return end
+ updateQueued=true
+ task.defer(function()
+  updateQueued=false
+  if script.Parent then update() end
+ end)
+end
+player:GetAttributeChangedSignal("Strength"):Connect(queueUpdate)
+player:GetAttributeChangedSignal("Level"):Connect(queueUpdate)
+player:GetAttributeChangedSignal("LevelProgress"):Connect(queueUpdate)
+player.CharacterAdded:Connect(queueUpdate)
+gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
+layout()
+update()

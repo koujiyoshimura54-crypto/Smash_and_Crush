@@ -6,6 +6,7 @@ local gui = script.Parent
 local Config = require(RS.Config.StrengthRewardConfig)
 local Format = require(RS.Modules.NumberFormat)
 local Layout = require(RS.Modules.HUDLayout)
+local Presentation = require(RS.Modules.StrengthHUDPresentation)
 local panel, row = require(RS.Modules.StrengthRewardUI).Build(gui)
 local remote = RS.Remotes:WaitForChild("StrengthRewards")
 local prices, closed, busy, view = {}, {}, false, nil
@@ -23,8 +24,8 @@ local function bindHealth(character)
 	local hum = character:WaitForChild("Humanoid", 10)
 	if not alive or player.Character ~= character or not hum then return end
 	local function render()
-		health.Main.Size = UDim2.fromScale(hum.MaxHealth > 0 and math.clamp(hum.Health / hum.MaxHealth, 0, 1) or 0, 1)
-		health.Exp.Text = Format.Format(hum.Health) .. " / " .. Format.Format(hum.MaxHealth)
+		Presentation.SetFill(health, hum.MaxHealth > 0 and hum.Health / hum.MaxHealth or 0)
+		health.Exp.Text = Presentation.Number(hum.Health) .. "/" .. Presentation.Number(hum.MaxHealth)
 	end
 	table.insert(healthConnections, hum.HealthChanged:Connect(render))
 	table.insert(healthConnections, hum:GetPropertyChangedSignal("MaxHealth"):Connect(render))
@@ -53,7 +54,7 @@ local function paint()
 	panel.Double.Button.Active = not busy and reward ~= nil and not view.Pending and prices[Config.DoubleOffline.ProductId] ~= nil
 	for _, product in ipairs(Config.Packs) do
 		local card = row[tostring(product.ProductId)]
-		card.Amount.Text = "+" .. Format.Format(view.Offers[tostring(product.ProductId)] or 0)
+		card.Amount.Text = "+" .. Presentation.Number(view.Offers[tostring(product.ProductId)] or 0)
 		card.Purchase.Active = not busy and view.Ready and not view.Pending and prices[product.ProductId] ~= nil
 	end
 end
@@ -68,7 +69,7 @@ local function purchase(id)
 	local result = request("Prepare", id)
 	if result.Ok then
 		if result.RewardId then panel.Amount.Text = "+" .. Format.Format(result.Amount) .. " STRENGTH"
-		else row[tostring(id)].Amount.Text = "+" .. Format.Format(result.Amount) end
+		else row[tostring(id)].Amount.Text = "+" .. Presentation.Number(result.Amount) end
 		-- The displayed amount is the persisted server quote before native checkout.
 		request("Open", {ProductId = id, IntentId = result.IntentId})
 	end
@@ -87,7 +88,13 @@ local function fetchPrice(product, button)
 	-- Client lookup uses the same player context as regional/personalized checkout.
 	if ok and type(info) == "table" and info.IsForSale == true and type(info.PriceInRobux) == "number" then
 		prices[product.ProductId] = info.PriceInRobux
-		Layout.PurchaseButton(button, "Robux", info.PriceInRobux); paint()
+		if product.ProductId == Config.DoubleOffline.ProductId then
+			Layout.PurchaseButton(button, "Robux", info.PriceInRobux)
+			Presentation.Offline(panel)
+		end
+		-- Main pack cards are a single input; official price remains on native checkout.
+		button:SetAttribute("PriceInRobux",info.PriceInRobux)
+		paint()
 	end
 end
 for _, product in ipairs(Config.Packs) do task.spawn(fetchPrice, product, row[tostring(product.ProductId)].Purchase) end

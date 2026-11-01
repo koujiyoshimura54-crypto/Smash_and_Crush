@@ -3,7 +3,7 @@ local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local TextService = game:GetService("TextService")
-local RunService = game:GetService("RunService")
+local Layout = require(RS.Modules.HUDLayout)
 local player = Players.LocalPlayer
 local remotes = RS:WaitForChild("Remotes")
 local master = require(RS.Config:WaitForChild("ItemMaster"))
@@ -160,61 +160,8 @@ local function punch()
  gloveTween:Play()
 end
 
-local function intersects(a, b)
- return a.X < b.X + b.W and a.X + a.W > b.X
-  and a.Y < b.Y + b.H and a.Y + a.H > b.Y
-end
 local function layout()
- if not row.Visible then return end
- local compact = gui.AbsoluteSize.Y < 500
- local iconSize, textSize, gap = compact and 28 or 32, compact and 18 or 20, compact and 12 or 18
- local height = iconSize + 4
- local width, count = 0, 0
- for _, definition in ipairs(definitions) do
-  local entry = entries[definition.Kind]
-  if entry.Frame.Visible then
-   if entry.MeasuredText ~= entry.Label.Text or entry.MeasuredSize ~= textSize then
-    entry.MeasuredText, entry.MeasuredSize = entry.Label.Text, textSize
-    entry.TextWidth = math.ceil(TextService:GetTextSize(entry.Label.Text, textSize,
-     entry.Label.Font, Vector2.new(1000, height)).X) + 3
-   end
-   local textWidth = entry.TextWidth
-   if count > 0 then width += gap end
-   entry.Frame.Position = UDim2.fromOffset(width, 0)
-   entry.Frame.Size = UDim2.fromOffset(iconSize + 5 + textWidth, height)
-   entry.Holder.Position = UDim2.fromOffset(0, 2)
-   entry.Holder.Size = UDim2.fromOffset(iconSize, iconSize)
-   entry.Label.Position = UDim2.fromOffset(iconSize + 5, 0)
-   entry.Label.Size = UDim2.fromOffset(textWidth, height)
-   entry.Label.TextSize = textSize
-   width += iconSize + 5 + textWidth
-   count += 1
-  end
- end
- row.Size = UDim2.fromOffset(width, height)
- -- Keep the row above the gauge and any active potion status occupying that lane.
- local badgeHeight = setBadge.Visible and (compact and 24 or 28) or 0
- local badgeGap = setBadge.Visible and 5 or 0
- local top = hud.AbsolutePosition.Y - height - badgeHeight - badgeGap - 8
- local left = hud.AbsolutePosition.X + (hud.AbsoluteSize.X - width) / 2
- local potion = gui:FindFirstChild("PotionStatus")
- if potion and potion.Visible then
-  local p, s = potion.AbsolutePosition, potion.AbsoluteSize
-  if intersects({X=left,Y=top-5,W=width,H=height+badgeHeight+badgeGap+5}, {X=p.X,Y=p.Y,W=s.X,H=s.Y}) then
-   top = p.Y - height - badgeHeight - badgeGap - 8
-  end
- end
- row.Position = UDim2.new(.5, 0, 0, top + badgeHeight + badgeGap + height - hud.AbsolutePosition.Y)
- if setBadge.Visible then
-  local textSize = compact and 17 or 19
-  local iconSize = compact and 18 or 21
-  setMultiplier.TextSize = textSize
-  setMultiplier.Size = UDim2.fromOffset(0,badgeHeight)
-  setIcon.Size = UDim2.fromOffset(iconSize,iconSize)
-  setBadge.Size = UDim2.fromOffset(0,badgeHeight)
-  setBadge.AnchorPoint = Vector2.new(.5,0)
-  setBadge.Position = UDim2.new(.5,0,0,top-hud.AbsolutePosition.Y)
- end
+ Layout.Mount(gui).Refresh()
 end
 local revision = 0
 local loaded = false
@@ -315,10 +262,9 @@ task.spawn(function()
  while not loaded and script.Parent do refresh(); if not loaded then task.wait(1) end end
 end)
 -- HUDLayout moves the status lane in response to device and potion changes.
-local layoutConnection = RunService.RenderStepped:Connect(layout)
+layout()
 script.Destroying:Connect(function()
  resetCharacter()
- layoutConnection:Disconnect()
  setBadge:Destroy()
  row:Destroy()
 end)

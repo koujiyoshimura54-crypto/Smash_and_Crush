@@ -2449,3 +2449,9 @@ Exported2888 events and ten first-clear snapshots. Stopped Play, restored35 temp
 ## 2026-10-31 ? Strength rewards and HUD (unsaved local Edit)
 
 Strength rewards/HUD implemented in a separately opened local-file Studio, left in unsaved Edit. 84 isolated assertions, 13 compiled Sources and memory-only native grant/respawn checks. No actual Robux payment or production persistence. Cancelled quote recovery, unknown receipts, unconfirmed departures and image/render limits are documented. The original Cloud Studio and unrelated dirty checkout were preserved. See reports/StrengthRewards_20261031/REPORT.md.
+
+## 2026-11-01 — Measured bottom HUD, visual acceptance partly outstanding
+
+Applied the two owner's measured references to the current unsaved local-file Studio, preserving its newer StrengthDisplay hierarchy/batching and Auto Tap. Shared StrengthHUDStyle controls Fredoka One, outlines, dimensions, colors and existing assets. HP is short/red, level progress uses actual LevelProgress/requirement, and the gold/purple/red cards use whole-card purchase targets with clipped large arms. Offline popup typography shares the style; economy/receipt Sources remain unchanged.
+
+Eight Sources compile/match; focused memory-only native Play verified HP/death/respawn, equipment/quotes, level fill, Auto Tap toggles and mocked purchase/claim routes. Native geometry covers reference/portrait/landscape/control reservations and rebuild idempotence. Requested original-pixel comparison images were retained. Full final raster acceptance is incomplete: capture stopped responding after earlier complete tile comparisons, and existing icon shapes/Fredoka contours differ from the images. No real payment, production data write, physical GUI input or view-setting change. Test insertions removed; Play stopped and original rbxl hash unchanged. Studio remains unsaved in Edit. [Full Paths, comparison method and limits](../reports/HUDReference_20261101/REPORT.md).

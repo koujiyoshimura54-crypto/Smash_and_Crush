@@ -1,0 +1,1486 @@
+[
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel",
+    "Background": "0.482353, 0.345098, 0.403922",
+    "Position": "{0, 0}, {0, 137}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 10,
+    "Size": "{0, 876}, {0, 66}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.Corner",
+    "Radius": "0.219999999, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 3,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.Outline",
+    "Enabled": false,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": false,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.ProgressBackground",
+    "Background": "0.482353, 0.345098, 0.403922",
+    "Position": "{0, 0}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 11,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.ProgressBackground.Corner",
+    "Radius": "0.219999999, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.ProgressBackground.ProgressClip",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 0}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 12,
+    "Size": "{0, 0}, {1, 0}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.ProgressBackground.ProgressClip.Fill",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 12,
+    "Size": "{0, 588}, {0, 28}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.ProgressBackground.ProgressClip.Fill.Corner",
+    "Radius": "0.219999999, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Visible": false,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.Level",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": true,
+    "Font": "Enum.Font.Legacy",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0.0250000004, 0}, {0.119999997, 0}",
+    "Text": "",
+    "ZIndex": 13,
+    "TextSize": 8,
+    "Size": "{0.280000001, 0}, {0.75999999, 0}"
+  },
+  {
+    "Thickness": 3,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.Level.TextOutline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": false,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.ProgressText",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": true,
+    "Font": "Enum.Font.Legacy",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0.330000013, 0}, {0.119999997, 0}",
+    "Text": "",
+    "ZIndex": 13,
+    "TextSize": 8,
+    "Size": "{0.644999981, 0}, {0.75999999, 0}"
+  },
+  {
+    "Thickness": 3,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.ProgressText.TextOutline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 14,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Visible": false,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Stroke",
+    "Background": "0.407843, 0.176471, 0",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 11,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Stroke.UICorner",
+    "Radius": "0.174418598, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.04651162773370743,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Stroke.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0, 250}, {0, 0}",
+    "Text": "-- / --",
+    "ZIndex": 17,
+    "TextSize": 48,
+    "Size": "{0, 596}, {0, 66}"
+  },
+  {
+    "Thickness": 4,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0, 30}, {0, 0}",
+    "Text": "Lv.--",
+    "ZIndex": 17,
+    "TextSize": 54,
+    "Size": "{0, 220}, {0, 66}"
+  },
+  {
+    "Thickness": 4,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Corner",
+    "Radius": "0, 17",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Outline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": false,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.FillClip",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 5}, {0, 5}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 15,
+    "Size": "{0, 0}, {1, -10}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.FillClip.Main",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 15,
+    "Size": "{0, 866}, {0, 56}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.FillClip.Main.UICorner",
+    "Radius": "0, 12",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.04651162773370743,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.FillClip.Main.UIStroke",
+    "Enabled": false,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 430}, {0, 51}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 14,
+    "Size": "{0, 446}, {0, 84}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 96}, {0, 0}",
+    "Text": "0",
+    "ZIndex": 14,
+    "TextSize": 57,
+    "Size": "{0, 29}, {0, 84}"
+  },
+  {
+    "Thickness": 4.5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength.TextOutline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 137}, {0, 0}",
+    "Text": "Strength",
+    "ZIndex": 14,
+    "TextSize": 57,
+    "Size": "{0, 309}, {0, 84}"
+  },
+  {
+    "Thickness": 4.5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit.TextOutline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthIcon",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://106106287008236",
+    "Position": "{0, 0}, {0, -6}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 10,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 96}, {0, 96}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 0}, {0, 216}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 1,
+    "Size": "{0, 876}, {0, 78}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 10,
+    "Size": "{0, 287}, {0, 78}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Amount",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Text": "+...",
+    "ZIndex": 13,
+    "TextSize": 55,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Thickness": 5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Amount.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Purchase",
+    "Active": true,
+    "Class": "TextButton",
+    "TextScaled": false,
+    "Font": "Enum.Font.Legacy",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 0}, {0, 0}",
+    "Text": "",
+    "ZIndex": 15,
+    "TextSize": 8,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Corner",
+    "Radius": "0, 5",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Outline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 5}, {0, 5}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 11,
+    "Size": "{1, -10}, {1, -10}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StrengthIcon",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://106106287008236",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 12,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 100}, {0, 100}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 0}, {0, 0}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell0_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 15}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell1_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 68}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell2_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 121}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell3_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 174}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell4_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 227}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell0_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 15}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell1_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 68}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell2_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 121}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell3_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 174}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835102.Art.StudPattern.Cell4_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 227}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678",
+    "Background": "1, 1, 1",
+    "Position": "{0, 295}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 10,
+    "Size": "{0, 286}, {0, 78}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Amount",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Text": "+...",
+    "ZIndex": 13,
+    "TextSize": 55,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Thickness": 5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Amount.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Purchase",
+    "Active": true,
+    "Class": "TextButton",
+    "TextScaled": false,
+    "Font": "Enum.Font.Legacy",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 0}, {0, 0}",
+    "Text": "",
+    "ZIndex": 15,
+    "TextSize": 8,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Corner",
+    "Radius": "0, 5",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Outline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 5}, {0, 5}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 11,
+    "Size": "{1, -10}, {1, -10}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StrengthIcon",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://106106287008236",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 12,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 100}, {0, 100}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 0}, {0, 0}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell0_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 15}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell1_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 68}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell2_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 121}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell3_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 174}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell4_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 227}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell0_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 15}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell1_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 68}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell2_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 121}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell3_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 174}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724835678.Art.StudPattern.Cell4_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 227}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170",
+    "Background": "1, 1, 1",
+    "Position": "{0, 589}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 10,
+    "Size": "{0, 287}, {0, 78}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Amount",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Text": "+...",
+    "ZIndex": 13,
+    "TextSize": 55,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Thickness": 5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Amount.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Purchase",
+    "Active": true,
+    "Class": "TextButton",
+    "TextScaled": false,
+    "Font": "Enum.Font.Legacy",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 0}, {0, 0}",
+    "Text": "",
+    "ZIndex": 15,
+    "TextSize": 8,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Corner",
+    "Radius": "0, 5",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Outline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 5}, {0, 5}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 11,
+    "Size": "{1, -10}, {1, -10}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StrengthIcon",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://106106287008236",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 12,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 100}, {0, 100}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 0}, {0, 0}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell0_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 15}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell1_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 68}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell2_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 121}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell3_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 174}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell4_0",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 227}, {0, -5}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell0_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 15}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell1_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 68}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell2_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 121}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell3_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 174}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.StrengthPacks.3724836170.Art.StudPattern.Cell4_1",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://97016358865650",
+    "Position": "{0, 227}, {0, 48}",
+    "ImageRectSize": "128, 128",
+    "ZIndex": 11,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 32}, {0, 32}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth",
+    "Background": "1, 1, 1",
+    "Position": "{0, 68}, {0, 72}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 14,
+    "Size": "{0, 336}, {0, 52}"
+  },
+  {
+    "Visible": false,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Stroke",
+    "Background": "0.407843, 0.176471, 0",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 11,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Stroke.UICorner",
+    "Radius": "0.174418598, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.04651162773370743,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Stroke.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Exp",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Text": "-- / --",
+    "ZIndex": 17,
+    "TextSize": 41,
+    "Size": "{0, 336}, {0, 52}"
+  },
+  {
+    "Thickness": 3.5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Exp.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": false,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Level",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": true,
+    "Font": "Enum.Font.Legacy",
+    "Background": "1, 1, 1",
+    "Position": "{0.219999999, 0}, {0.49000001, 0}",
+    "Text": "HP",
+    "ZIndex": 16,
+    "TextSize": 40,
+    "Size": "{0.381176472, 0}, {0.600000024, 0}"
+  },
+  {
+    "Thickness": 0.05999999865889549,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Level.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Corner",
+    "Radius": "0, 12",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 5,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Outline",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": false,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.FillClip",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 5}, {0, 5}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 15,
+    "Size": "{0, 0}, {1, -10}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.FillClip.Main",
+    "Background": "1, 1, 1",
+    "Position": "{0, 0}, {0, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 15,
+    "Size": "{0, 326}, {0, 42}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.FillClip.Main.UICorner",
+    "Radius": "0, 7",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.04651162773370743,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.FillClip.Main.UIStroke",
+    "Enabled": false,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.StrengthLevelHUD.PlayerHealth.Heart",
+    "Active": false,
+    "Color": "1, 0.666667, 0.333333",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://79503513671021",
+    "Position": "{0, -30}, {0, -9}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 18,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 70}, {0, 70}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Corner",
+    "Radius": "0, 16",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 6,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Border",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Title",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0, 30}, {0, 18}",
+    "Text": "OFFLINE REWARDS",
+    "ZIndex": 53,
+    "TextSize": 46,
+    "Size": "{0, 640}, {0, 58}"
+  },
+  {
+    "Thickness": 3,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Title.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthIcon",
+    "Active": false,
+    "Color": "1, 1, 1",
+    "Class": "ImageLabel",
+    "Image": "rbxassetid://87852658984573",
+    "Position": "{0, 245}, {0, 86}",
+    "ImageRectSize": "0, 0",
+    "ZIndex": 51,
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Size": "{0, 210}, {0, 210}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Amount",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0, 25}, {0, 294}",
+    "Text": "+0 STRENGTH",
+    "ZIndex": 53,
+    "TextSize": 43,
+    "Size": "{0, 650}, {0, 54}"
+  },
+  {
+    "Thickness": 3,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Amount.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 22}, {0, 358}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 7,
+    "Size": "{0, 320}, {0, 76}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Stroke",
+    "Background": "0.061123, 0.466346, 0",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 52,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Stroke.UICorner",
+    "Radius": "0.13333334, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.0533333346247673,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Stroke.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Main",
+    "Background": "1, 1, 1",
+    "Position": "{0.5, 0}, {0.473333329, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 52,
+    "Size": "{1, 0}, {0.946666718, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Main.UICorner",
+    "Radius": "0.140845075, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.056338027119636536,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Main.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Button",
+    "Active": true,
+    "Class": "TextButton",
+    "TextScaled": true,
+    "Font": "Enum.Font.Legacy",
+    "Background": "1, 1, 1",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Text": "Button",
+    "ZIndex": 59,
+    "TextSize": 14,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Title",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0.0399999991, 0}, {0.0599999987, 0}",
+    "Text": "CLAIM",
+    "ZIndex": 54,
+    "TextSize": 38,
+    "Size": "{0.920000017, 0}, {0.879999995, 0}"
+  },
+  {
+    "Thickness": 3,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Title.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0, 358}, {0, 358}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 7,
+    "Size": "{0, 320}, {0, 76}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Stroke",
+    "Background": "0.254902, 0, 0.647059",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 52,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Stroke.UICorner",
+    "Radius": "0.13333334, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.0533333346247673,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Stroke.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Main",
+    "Background": "1, 0.835294, 0",
+    "Position": "{0.5, 0}, {0.473333329, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 52,
+    "Size": "{1, 0}, {0.946666718, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Main.UICorner",
+    "Radius": "0.140845075, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.056338027119636536,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Main.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Button",
+    "Active": true,
+    "Class": "TextButton",
+    "TextScaled": true,
+    "Font": "Enum.Font.Legacy",
+    "Background": "1, 1, 1",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Text": "Button",
+    "ZIndex": 59,
+    "TextSize": 14,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Title",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0.0299999993, 0}, {0.0299999993, 0}",
+    "Text": "CLAIM ×2",
+    "ZIndex": 54,
+    "TextSize": 32,
+    "Size": "{0.939999998, 0}, {0.519999981, 0}"
+  },
+  {
+    "Thickness": 2.5,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Title.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price",
+    "Active": false,
+    "Class": "TextButton",
+    "TextScaled": false,
+    "Font": "Enum.Font.Legacy",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0.280000001, 0}, {0.519999981, 0}",
+    "Text": "",
+    "ZIndex": 55,
+    "TextSize": 8,
+    "Size": "{0.439999998, 0}, {0.419999987, 0}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 55,
+    "Size": "{0, 4}, {0, 31}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual.Stroke",
+    "Background": "0.061123, 0.466346, 0",
+    "Position": "{0.5, 0}, {0.516129017, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 55,
+    "Size": "{1, 0}, {0.967741847, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual.Stroke.UICorner",
+    "Radius": "0.0833333358, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.05000000074505806,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual.Stroke.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual.Main",
+    "Background": "1, 1, 1",
+    "Position": "{0.5, 0}, {0.483870953, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 56,
+    "Size": "{1, 0}, {0.90322578, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual.Main.UICorner",
+    "Radius": "0.0892857164, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.0535714291036129,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual.Main.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual.Main.Amount",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Text": "...",
+    "ZIndex": 57,
+    "TextSize": 25,
+    "Size": "{0.939999998, 0}, {0.899999976, 0}"
+  },
+  {
+    "Thickness": 2,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.PurchasedButtonVisual.Main.Amount.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close",
+    "Background": "0.639216, 0.635294, 0.647059",
+    "Position": "{1, -8}, {0, 8}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 2,
+    "Size": "{0, 64}, {0, 64}"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Stroke",
+    "Background": "0.423077, 0, 0",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 60,
+    "Size": "{1, 0}, {1, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Stroke.UICorner",
+    "Radius": "0.13333334, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.0533333346247673,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Stroke.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Main",
+    "Background": "0.921569, 0.0980392, 0.0784314",
+    "Position": "{0.5, 0}, {0.473333329, 0}",
+    "Active": false,
+    "Class": "Frame",
+    "ZIndex": 60,
+    "Size": "{1, 0}, {0.946666658, 0}"
+  },
+  {
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Main.UICorner",
+    "Radius": "0.140845075, 0",
+    "Class": "UICorner"
+  },
+  {
+    "Thickness": 0.056338027119636536,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Main.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Title",
+    "Active": false,
+    "Class": "TextLabel",
+    "TextScaled": false,
+    "Font": "Enum.Font.FredokaOne",
+    "Background": "1, 1, 1",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Text": "×",
+    "ZIndex": 60,
+    "TextSize": 44,
+    "Size": "{1, 0}, {0.899999976, 0}"
+  },
+  {
+    "Thickness": 3,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Title.UIStroke",
+    "Enabled": true,
+    "Class": "UIStroke"
+  },
+  {
+    "Visible": true,
+    "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Button",
+    "Active": true,
+    "Class": "TextButton",
+    "TextScaled": true,
+    "Font": "Enum.Font.Legacy",
+    "Background": "1, 1, 1",
+    "Position": "{0.5, 0}, {0.5, 0}",
+    "Text": "Button",
+    "ZIndex": 60,
+    "TextSize": 14,
+    "Size": "{1, 0}, {1, 0}"
+  }
+]

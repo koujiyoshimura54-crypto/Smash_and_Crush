@@ -1,6 +1,7 @@
 -- Layout slots own placement; existing public button paths remain stable.
 local RunService=game:GetService("RunService")
 local TweenService=game:GetService("TweenService")
+local Presentation=require(script.Parent.StrengthHUDPresentation)
 local M={}
 local function write(object,key,value)
  if object[key]~=value then object[key]=value end
@@ -339,40 +340,16 @@ function M.Mount(gui)
     statusBlocks=blocks
    end
    local packs=strength:FindFirstChild("StrengthPacks")
+   local small=touch or compact
    if packs then
-    local extra=(touch or compact) and 82 or 102
-    sy=math.max(4,sy-extra);sh+=extra
+    if not strength.LevelPanel.StrengthProgressBar:FindFirstChild("FillClip") then Presentation.Apply(gui) end
+    local bottomBlocks={
+     {X=leftX,Y=leftY,W=leftWidth*leftScale,H=leftHeight*leftScale},
+     {X=rightX,Y=rightY,W=211*rs,H=476*rs},
+    }
+    for _,control in controls do table.insert(bottomBlocks,{X=control.P.X,Y=control.P.Y,W=control.S.X,H=control.S.Y}) end
+    sx,sy,sw,sh=Presentation.Layout(gui,w,h,bottomBlocks)
    end
-   if touch then
-    hud.BottomStatus.AnchorPoint=Vector2.new(.5,0);hud.BottomStatus.Position=UDim2.new(.5,0,0,sy)
-    strength.AnchorPoint=Vector2.new(.5,0);strength.Position=UDim2.new(.5,0,0,sy)
-   else
-    hud.BottomStatus.AnchorPoint=Vector2.zero;hud.BottomStatus.Position=UDim2.fromOffset(sx,sy)
-    strength.AnchorPoint=Vector2.zero;strength.Position=UDim2.fromOffset(sx,sy)
-   end
-   hud.BottomStatus.Size=UDim2.fromOffset(sw,sh);strength.Size=UDim2.fromOffset(sw,sh)
-   local small=touch or compact;local bh=small and 32 or sh/1.75;local th=small and 22 or bh*.62;local gap=small and 4 or bh*.13
-   local strengthDisplay=strength:FindFirstChild("StrengthValueContainer")
-   if strengthDisplay then
-    strengthDisplay.Position=UDim2.new();strengthDisplay.Size=UDim2.new(1,0,0,th)
-    local textSize=small and 18 or th*.94
-    for _,label in ipairs({strengthDisplay.Strength,strengthDisplay.StrengthUnit}) do
-     label.Size=UDim2.new(0,0,1,0);label.AutomaticSize=Enum.AutomaticSize.X;label.TextSize=textSize;label.TextScaled=false
-    end
-   else
-    strength.Strength.Position=UDim2.new();strength.Strength.Size=UDim2.new(1,0,0,th);strength.Strength.TextSize=small and 18 or th*.94
-    strength.Strength.TextScaled=false
-   end
-   if packs then bh=small and 24 or math.min(bh,38) end
-   local hp=strength:FindFirstChild("PlayerHealth")
-   local hpHeight=hp and (small and 22 or 28) or 0
-   if hp then hp.Position=UDim2.fromOffset(0,th+gap);hp.Size=UDim2.new(1,0,0,hpHeight) end
-   local bar=strength.LevelPanel;bar.Position=UDim2.fromOffset(0,th+gap+hpHeight+(hp and 4 or 0));bar.Size=UDim2.new(1,0,0,bh)
-   for _,label in ipairs({bar.Level,bar.ProgressText}) do label.TextScaled=true end
-   if packs then packs.Position=UDim2.fromOffset(0,bar.Position.Y.Offset+bh+4);packs.Size=UDim2.new(1,0,0,small and 54 or 64) end
-   local offline=gui:FindFirstChild("OfflineRewards")
-   if offline then offline.RewardScale.Scale=math.min(1,(w-32)/700,(h-48)/450) end
-   bar.ProgressBackground.ProgressClip.Fill.Size=UDim2.fromOffset(bar.AbsoluteSize.X,bar.AbsoluteSize.Y)
    if potion and potion.Visible then
     local count=0 for _,r in ipairs(potion:GetChildren()) do if r:IsA("Frame") and r.Visible then count+=1 end end
     local ph=math.max(38,count*42-4)
@@ -419,7 +396,9 @@ function M.Mount(gui)
    returnDirty=true
    local overlay=hud:FindFirstChild("Overlay")
    local touch=root and root:FindFirstChild("TouchGui")
-   if object==gui or (property=="Visible" and (object.Name=="PotionStatus" or object.Name=="RunReturnButton"))
+   if object==gui
+    or (object:IsDescendantOf(gui.StrengthLevelHUD) and (property=="Text" or property=="Visible"))
+    or (property=="Visible" and (object.Name=="PotionStatus" or object.Name=="RunReturnButton"))
     or (overlay and object:IsDescendantOf(overlay))
     or (touch and object:IsDescendantOf(touch)) then invalidate() end
   end)

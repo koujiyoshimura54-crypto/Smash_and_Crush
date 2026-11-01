@@ -1,0 +1,284 @@
+{
+  "Date": "2026-11-01",
+  "Scope": "Local unsaved Studio HUD only; no backend/economy change.",
+  "ReferenceImages": [
+    {
+      "Name": "三色購入ボタンと大きな腕アイコン.png",
+      "Width": 1676,
+      "Height": 938
+    },
+    {
+      "Name": "レベル50の半分進行UI.png",
+      "Width": 1677,
+      "Height": 938
+    }
+  ],
+  "Geometry": {
+    "ZeroEmpty": true,
+    "NoPayment": true,
+    "Cases": [
+      {
+        "TextClipping": [],
+        "Auto": {
+          "Y": 749,
+          "X": 1296,
+          "W": 88,
+          "H": 66
+        },
+        "Name": "reference",
+        "Packs": {
+          "Y": 828,
+          "X": 408,
+          "W": 876,
+          "H": 78
+        },
+        "Scale": 1,
+        "Level": {
+          "Y": 749,
+          "X": 408,
+          "W": 876,
+          "H": 66
+        },
+        "HP": {
+          "Y": 684,
+          "X": 476,
+          "W": 336,
+          "H": 52
+        },
+        "Canvas": [
+          1676,
+          938
+        ]
+      },
+      {
+        "TextClipping": [],
+        "Auto": {
+          "Y": 544.8828735351562,
+          "X": 292,
+          "W": 56.12612533569336,
+          "H": 56.12612533569336
+        },
+        "Name": "portrait",
+        "Packs": {
+          "Y": 605.1080932617188,
+          "X": 12,
+          "W": 276.2162170410156,
+          "H": 24.594593048095703
+        },
+        "Scale": 0.315315306186676,
+        "Level": {
+          "Y": 580.1981811523438,
+          "X": 12,
+          "W": 276.2162170410156,
+          "H": 20.810810089111328
+        },
+        "HP": {
+          "Y": 559.7026977539062,
+          "X": 33.44144058227539,
+          "W": 105.9459457397461,
+          "H": 16.39639663696289
+        },
+        "Canvas": [
+          360,
+          640
+        ]
+      },
+      {
+        "TextClipping": [],
+        "Auto": {
+          "Y": 255.87631225585938,
+          "X": 494.8102111816406,
+          "W": 56.03411865234375,
+          "H": 56.03411865234375
+        },
+        "Name": "landscape",
+        "Packs": {
+          "Y": 316.8997802734375,
+          "X": 154,
+          "W": 336.2047119140625,
+          "H": 29.93603515625
+        },
+        "Scale": 0.3837953209877014,
+        "Level": {
+          "Y": 286.5799560546875,
+          "X": 154,
+          "W": 336.2047119140625,
+          "H": 25.33049201965332
+        },
+        "HP": {
+          "Y": 261.6332702636719,
+          "X": 180.09808349609375,
+          "W": 128.95523071289062,
+          "H": 19.95735740661621
+        },
+        "Canvas": [
+          640,
+          360
+        ]
+      },
+      {
+        "TextClipping": [],
+        "Auto": {
+          "Y": 404.88287353515625,
+          "X": 292,
+          "W": 56.12612533569336,
+          "H": 56.12612533569336
+        },
+        "Name": "portrait-controls",
+        "Packs": {
+          "Y": 465.10809326171875,
+          "X": 12,
+          "W": 276.2162170410156,
+          "H": 24.594593048095703
+        },
+        "Scale": 0.315315306186676,
+        "Level": {
+          "Y": 440.19818115234375,
+          "X": 12,
+          "W": 276.2162170410156,
+          "H": 20.810810089111328
+        },
+        "HP": {
+          "Y": 419.70269775390625,
+          "X": 33.44144058227539,
+          "W": 105.9459457397461,
+          "H": 16.39639663696289
+        },
+        "Canvas": [
+          360,
+          640
+        ]
+      }
+    ],
+    "LargeDigits": {
+      "Text": "999Qi",
+      "PackSize": 55,
+      "Size": 57
+    }
+  },
+  "Builder": {
+    "Descendants": 209,
+    "FreshBuild": true,
+    "OldFontReapplied": true,
+    "RepeatedBuildSameRoots": true,
+    "HealthFill": true
+  },
+  "FinalPopup": [
+    {
+      "Font": "Enum.Font.FredokaOne",
+      "Name": "Title",
+      "Fits": true,
+      "Anchor": "0, 0",
+      "Text": "OFFLINE REWARDS",
+      "Bounds": "369, 46",
+      "Size": "640, 58"
+    },
+    {
+      "Font": "Enum.Font.FredokaOne",
+      "Name": "Amount",
+      "Fits": true,
+      "Anchor": "0, 0",
+      "Text": "+0 STRENGTH",
+      "Bounds": "246, 43",
+      "Size": "650, 54"
+    },
+    {
+      "Font": "Enum.Font.FredokaOne",
+      "Name": "Title",
+      "Fits": true,
+      "Anchor": "0, 0",
+      "Text": "CLAIM",
+      "Bounds": "102, 38",
+      "Size": "294.399994, 66.8799973"
+    },
+    {
+      "Font": "Enum.Font.FredokaOne",
+      "Name": "Title",
+      "Fits": true,
+      "Anchor": "0, 0",
+      "Text": "CLAIM ×2",
+      "Bounds": "125, 32",
+      "Size": "300.799988, 39.5199966"
+    },
+    {
+      "Font": "Enum.Font.FredokaOne",
+      "Name": "Title",
+      "Fits": true,
+      "Anchor": "0.5, 0.5",
+      "Text": "×",
+      "Bounds": "19, 44",
+      "Size": "64, 57.5999985"
+    },
+    {
+      "Font": "Enum.Font.FredokaOne",
+      "Name": "Amount",
+      "Fits": true,
+      "Anchor": "0.5, 0.5",
+      "Text": " 18",
+      "Bounds": "50, 25",
+      "Size": "50, 25.1999989"
+    }
+  ],
+  "FinalSources": {
+    "TemporaryObjects": [],
+    "Sources": [
+      {
+        "Compiles": true,
+        "Path": "ReplicatedStorage.Config.StrengthHUDStyle",
+        "Matches": true
+      },
+      {
+        "Compiles": true,
+        "Path": "ReplicatedStorage.Modules.StrengthHUDPresentation",
+        "Matches": true
+      },
+      {
+        "Compiles": true,
+        "Path": "ReplicatedStorage.Modules.HUDLayout",
+        "Matches": true
+      },
+      {
+        "Compiles": true,
+        "Path": "ReplicatedStorage.Modules.StrengthRewardUI",
+        "Matches": true
+      },
+      {
+        "Compiles": true,
+        "Path": "StarterGui.StrengthGui.StrengthRewardClient",
+        "Matches": true
+      },
+      {
+        "Compiles": true,
+        "Path": "StarterGui.StrengthGui.StrengthDisplay",
+        "Matches": true
+      },
+      {
+        "Compiles": true,
+        "Path": "StarterPlayer.StarterPlayerScripts.UI.ItemEffectHUDClient",
+        "Matches": true
+      },
+      {
+        "Compiles": true,
+        "Path": "StarterPlayer.StarterPlayerScripts.UI.AutoTapClient",
+        "Matches": true
+      }
+    ],
+    "PlayerDataOriginal": true
+  },
+  "Console": {
+    "relevant": [
+      "[LimitedEgg01] server ready 0 3717610547",
+      "[StudioTest] Registered /test",
+      "[StudioTest] Dependencies ready; automatic start=false",
+      "[LimitedEgg01] client remotes ready 0"
+    ],
+    "audioWarnings": 72
+  },
+  "NativeInputLimitation": "Earlier Play hit tests resolved each pack input alone. Final Play GetGuiObjectsAtPosition returned empty for every tested GUI and screen_capture stopped responding. No OS input or display change was used.",
+  "VisualLimitation": "Comparison images are a measured native tile pass before final item sizing, stud-cell spacing and heart tint refinements. Final partial top-row capture is separately labeled. Final full raster unavailable.",
+  "Persistence": "Temporary memory-only storage and ordered-store guard removed; PlayerDataService source equals pre-test current-session source.",
+  "RbxlSHA256": "1951C12EB639703BD516DD925983F63A54AC3A701BB2C0EA6B4810FCCB62D97A",
+  "NoRealPurchase": true,
+  "NoProductionDataWrites": true,
+  "FinalEdit": true
+}

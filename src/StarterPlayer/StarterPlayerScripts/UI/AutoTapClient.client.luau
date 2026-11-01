@@ -46,12 +46,7 @@ title.Size=UDim2.fromScale(1,0.38)
 state.Position=UDim2.fromScale(0,0.43)
 state.Size=UDim2.fromScale(1,0.51)
 local function layout()
- -- Inherit the HUD's coordinate space/UIScale instead of reconstructing safe-area positions.
- local height=math.clamp(HUDLayout.GetLocalSize(bar).Y,44,54)
- button.Size=UDim2.fromOffset(math.round(height*1.35),height)
- button.Position=UDim2.new(1,8,1,0)
- title.TextSize=math.clamp(height*0.30,13,16)
- state.TextSize=math.clamp(height*0.44,19,24)
+ HUDLayout.Mount(strengthGui).Refresh()
 end
 local function refresh()
  local enabled=player:GetAttribute("AutoTapEnabled")~=false
