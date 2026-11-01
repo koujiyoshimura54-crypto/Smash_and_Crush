@@ -2475,3 +2475,9 @@ Native Edit checks: Fredoka One, 24px text, 184x28 label; all recorded non-font 
 ## 2026-11-01 — Ore minimum applied to the canonical Studio
 
 Applied existing commit d19dce6's four localized edits to OreMerge and MergeShopView in PlaceId126576845524886, preserving current edits. Native MinimumCount passed264 assertions; one memory-only Play passed48 UI/remote assertions covering one-unit rejection, same/mixed two and five-unit merges, one/six-unit sales and idempotent retries. Inspected the actual one-unit UI; physical input and production persistence were not tested. Removed all QA substitutions/helpers and returned to unsaved Edit without Save/Publish or rbxl writes. Tutorial and tuning unchanged. [Application record](../reports/OreMergeMinimum_20261101/README.md).
+
+## 2026-11-01 — Battle Bag font applied to the canonical Studio
+
+Applied the previously local-only 3d2b352 font change to the current Edit session of PlaceId `126576845524886`: added the shared StrengthHUDStyle require and font assignment in `StarterGui.StrengthGui.RunInventoryHUDClient`, and set the existing `StarterGui.StrengthGui.HUD.RunInventoryLabel.Font` from that shared setting. No GUI reconstruction. The final controller matches the existing Git Source; this is an application record, not another implementation.
+
+Native Edit checks confirm Fredoka One, valid syntax and fitting counter text. Only Font/FontFace changed; the 24px text size, 184x28 label, position, colors, outline and icon are unchanged. OreMerge and MergeShopView remain byte-for-byte identical to their corrected pre-task Sources. No Play, new rendered-image acceptance, test objects, saved data or unrelated UI change. Left the canonical Studio open in unsaved Edit; no Save/Publish, rbxl write or Studio closure. User manual saving is still required.

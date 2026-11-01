@@ -1212,3 +1212,7 @@ Connected only RunInventoryLabel to StrengthHUDStyle.Font, preserving the latest
 ## 2026-11-01 — Ore minimum Studio application
 
 Applied existing d19dce6 to the canonical PlaceId126576845524886 through localized Source edits. Native264 pure checks and48 isolated UI/remote checks passed; one-unit rendering inspected. Cleaned QA changes and left unsaved Edit. This entry records application/testing, not a second implementation. [Results and limits](../reports/OreMergeMinimum_20261101/README.md).
+
+## 2026-11-01 — Canonical Battle Bag font application
+
+Applied the missing shared-font connection and authored label Font from 3d2b352 to PlaceId `126576845524886`. Verified native Edit font/text metrics and unchanged non-font presentation; retained the Ore minimum correction. No Play or save operation. Canonical Studio remains unsaved in Edit; see DEV_STATUS for scope and verification limits.
