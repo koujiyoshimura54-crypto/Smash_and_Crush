@@ -1208,3 +1208,7 @@ Documented the original19 steps, completion predicates, legacy persistence and c
 ## 2026-11-01 — Battle Bag count shared font
 
 Connected only RunInventoryLabel to StrengthHUDStyle.Font, preserving the latest authored-GUI controller and all non-font presentation/behavior. Native Edit property, text-width and compilation checks passed; actual HUD capture unavailable, no Play claim. See the matching DEV_STATUS entry. Left Studio unsaved in Edit.
+
+## 2026-11-01 — Ore minimum Studio application
+
+Applied existing d19dce6 to the canonical PlaceId126576845524886 through localized Source edits. Native264 pure checks and48 isolated UI/remote checks passed; one-unit rendering inspected. Cleaned QA changes and left unsaved Edit. This entry records application/testing, not a second implementation. [Results and limits](../reports/OreMergeMinimum_20261101/README.md).
