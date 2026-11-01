@@ -5,34 +5,18 @@ local player = Players.LocalPlayer
 local gui = script.Parent
 local hud = gui:WaitForChild("HUD")
 local HUDLayout = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("HUDLayout"))
-local style = gui:WaitForChild("StrengthLevelHUD"):WaitForChild("LevelPanel"):WaitForChild("Level")
-
-local label = Instance.new("TextLabel")
-label.Name = "RunInventoryLabel"
-label.BackgroundTransparency = 1
-label.BorderSizePixel = 0
-label.Active = false
-label.Selectable = false
+local HUDStyle = require(ReplicatedStorage:WaitForChild("Config"):WaitForChild("StrengthHUDStyle"))
+-- Existing purchased UI instances are stored in the HUD; no UI is reconstructed.
+local label = hud:WaitForChild("RunInventoryLabel")
+local icon = hud:WaitForChild("RunInventoryIcon")
 label.AutoLocalize = false
-label.FontFace = style.FontFace
-label.TextColor3 = style.TextColor3
-label.TextStrokeColor3 = style.TextStrokeColor3
-label.TextStrokeTransparency = style.TextStrokeTransparency
-label.TextXAlignment = Enum.TextXAlignment.Left
-label.TextYAlignment = Enum.TextYAlignment.Center
-label.TextScaled = false
-label.TextWrapped = false
-label.ZIndex = style.ZIndex
-label.Text = ""
-local outline = style:FindFirstChild("TextOutline")
-if outline then outline:Clone().Parent = label end
-label.Parent = hud
+label.Font = HUDStyle.Font
 
 local function render()
 	local count = player:GetAttribute("RunInventoryCount")
 	local capacity = player:GetAttribute("RunInventoryCapacity")
 	-- Do not invent a capacity while the initial attributes are replicating.
-	label.Text = "Inventory " .. (count == nil and "-" or tostring(count))
+	label.Text = (count == nil and "-" or tostring(count))
 		.. " / " .. (capacity == nil and "-" or tostring(capacity))
 end
 
@@ -46,4 +30,5 @@ HUDLayout.Mount(gui).Refresh()
 script.Destroying:Connect(function()
 	for _, connection in ipairs(connections) do connection:Disconnect() end
 	label:Destroy()
+	icon:Destroy()
 end)

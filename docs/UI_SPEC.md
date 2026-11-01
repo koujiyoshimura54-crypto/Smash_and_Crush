@@ -693,3 +693,7 @@ Original reference images and native comparison passes are retained by explicit 
 ## 2026-11-01 — Offline-only popup refinement
 
 Preserved the700×450 centered panel, background transparency0.22 and lower HUD. Popup now reuses the working yellow Strength arm with native yellow glow/rays; fresh generation no longer selects the donor shoe. Offline Fredoka title/amount sizes are58/60 with4px outlines. Claim is yellow-green and double yellow-orange, both black-bordered. Double's fetched Robux price is plain icon/text within the existing button, with one full-size input; the green mini-button is removed. Native Play images, text bounds, single-target hit tests and mocked callback checks passed. Lower HUD/AutoTap properties and control Sources are unchanged. [Evidence and limits](../reports/OfflinePopupFix_20261101/REPORT.md).
+
+## 2026-11-01 — Battle Bag counter font only
+
+`StarterGui.StrengthGui.HUD.RunInventoryLabel` now uses `ReplicatedStorage.Config.StrengthHUDStyle.Font` (Fredoka One). The current authored-GUI `RunInventoryHUDClient` applies that shared font; it does not reconstruct the GUI. Counter text size, geometry, colors, outline, icon and behavior are retained. This does not extend to normal Inventory, Back or tutorial UI.

@@ -1204,3 +1204,7 @@ Added departure-based offline Strength (3600 seconds, 5%), three timed-reference
 ## 2026-11-01 — Purchased tutorial provenance and connection audit
 
 Documented the original19 steps, completion predicates, legacy persistence and current missing/disabled connections from original-map bytes and current Studio reads. Preserved the active corrected floor guide. Battle Bag font work awaits identification of the intended panel; no Studio implementation/Play/save action occurred. [Audit](../reports/PurchasedTutorialAudit_20261101/REPORT.md).
+
+## 2026-11-01 — Battle Bag count shared font
+
+Connected only RunInventoryLabel to StrengthHUDStyle.Font, preserving the latest authored-GUI controller and all non-font presentation/behavior. Native Edit property, text-width and compilation checks passed; actual HUD capture unavailable, no Play claim. See the matching DEV_STATUS entry. Left Studio unsaved in Edit.
