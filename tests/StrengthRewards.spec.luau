@@ -26,13 +26,13 @@ return function(sources)
 	local online=S.Acquire(s,"simultaneous",3800);eq(online.Rewards.simultaneous,nil)
 	local uncertain=S.Acquire(s,"stale-online",1000000);eq(uncertain.Rewards["stale-online"],nil)
 	s=S.Checkpoint(s,"second",4000,1,true)
-	s=S.Acquire(s,"third",4060);near(s.Rewards.second.Amount,180000);near(s.Rewards.third.Amount,3)
+	s=S.Acquire(s,"third",4060);eq(s.Rewards.second,nil);near(s.Rewards.third.Amount,3)
 	local other=S.Acquire(nil,"other",1);eq(next(other.Rewards),nil)
-	local op={Id="claim",Action="Claim",RewardId="second"}
-	local nextState,gain=S.Apply(s,op);near(gain,180000)
+	local op={Id="claim",Action="Claim",RewardId="third"}
+	local nextState,gain=S.Apply(s,op);near(gain,3)
 	s=nextState
 	local _,duplicate=S.Apply(s,op);near(duplicate,0)
-	local _,spam=S.Apply(s,{Id="spam",Action="Claim",RewardId="second"});near(spam,0)
+	local _,spam=S.Apply(s,{Id="spam",Action="Claim",RewardId="third"});near(spam,0)
 	local base=S.Acquire(S.Checkpoint(S.Acquire(nil,"a",0),"a",100,1000,true),"reward",3700)
 	local product=C.DoubleOffline.ProductId
 	local prep={Id="intent",Action="Prepare",ProductId=product,RewardId="reward"}

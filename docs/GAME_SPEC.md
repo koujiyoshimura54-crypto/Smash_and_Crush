@@ -689,3 +689,7 @@ Pet Merge now executes the existing normal-Pet points/Possible Eggs probabilitie
 ## 2026-10-31 ? Strength rewards and HUD (unsaved local Edit)
 
 Offline Strength rewards and three Strength packs now have an unsaved local Studio implementation. The only current offline policy is a 3600-second cap at 0.05 efficiency. Quotes and reward amounts are immutable; the existing owned PlayerData and sole receipt dispatcher handle grants. Conservative cancelled-intent reconciliation and unconfirmed departures have explicit limitations; see reports/StrengthRewards_20261031/REPORT.md.
+
+## 2026-11-01 — Offline rewards refresh on every login
+
+Each new login replaces any previous ordinary reward with only the latest confirmed departure-to-login interval; there is no accumulation or carry-forward. Previous claims do not prevent future rewards. A zero interval exposes no old reward, and the same login cannot regenerate a reward by reopening its UI. Only the current reward ID may be normally claimed. Pending paid double intents retain their original reward amounts/IDs and receipt journal separately for delayed fulfillment; they cannot target the new reward. Cap3600 seconds, efficiency5%, reference calculation and all other product/UI rules are unchanged. [Implementation and verification](../reports/OfflineRewardRefresh_20261101.md).

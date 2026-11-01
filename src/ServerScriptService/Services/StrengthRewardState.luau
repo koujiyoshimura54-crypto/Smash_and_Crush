@@ -42,6 +42,13 @@ end
 function M.Acquire(raw, token, now)
 	local state = assert(M.Normalize(raw))
 	if state.Owner == token then return state end -- ambiguous acquisition retry
+	-- A login replaces the free reward. Keep old records only while an immutable
+	-- paid intent still needs them; receipts and their deduplication journal survive.
+	local retained = {}
+	for _, intent in pairs(state.Pending) do
+		if intent.Kind == "DoubleOffline" then retained[intent.RewardId] = true end
+	end
+	for id in pairs(state.Rewards) do if not retained[id] then state.Rewards[id] = nil end end
 	local p = state.Presence
 	if p and p.State == "Offline" then
 		-- Only a confirmed departure proves this interval was offline. An expired
@@ -62,11 +69,11 @@ function M.Checkpoint(raw, token, now, rate, closing)
 	return state
 end
 function M.NextReward(state)
-	local id, reward
-	for key, r in pairs(state.Rewards) do
-		if r.Paid < r.Amount and (not reward or r.CreatedAt < reward.CreatedAt or r.CreatedAt == reward.CreatedAt and key < id) then id, reward = key, r end
-	end
-	return id, reward
+	-- Rewards are keyed by the acquisition token. Archived paid intents must never
+	-- become the current free reward, including when this login earned zero.
+	local id = state.Owner
+	local reward = id and state.Rewards[id]
+	if reward and reward.Paid < reward.Amount then return id, reward end
 end
 function M.Apply(raw, op)
 	local state = assert(M.Normalize(raw))
@@ -74,15 +81,18 @@ function M.Apply(raw, op)
 	local gain = 0
 	if op.Action == "Claim" then
 		local r = state.Rewards[op.RewardId]
-		if not r then return nil, 0, "RewardUnavailable" end
+		if op.RewardId ~= state.Owner or not r then return nil, 0, "RewardUnavailable" end
 		gain = math.max(0, r.Amount - r.Paid)
 		r.Paid += gain
 	elseif op.Action == "Prepare" then
 		local product, kind = Config.ForProduct(op.ProductId)
 		if not product then return nil, 0, "ProductUnavailable" end
+		if kind == "DoubleOffline" and (op.RewardId ~= state.Owner or not state.Rewards[op.RewardId]) then return nil, 0, "RewardUnavailable" end
 		local key = tostring(op.ProductId)
 		local previous = state.Pending[key]
 		if previous then
+			-- Never resume an older reward's checkout from this login's popup.
+			if previous.Kind == "DoubleOffline" and previous.RewardId ~= op.RewardId then return nil, 0, "PurchasePending" end
 			-- A cancelled dialog cannot prove the absence of a delayed receipt.
 			-- Retain and resume the same quote; never bind that receipt to a newer one.
 			if previous.State ~= "Cancelled" and previous.State ~= "Prepared" then return nil, 0, "PurchasePending" end
@@ -104,6 +114,7 @@ function M.Apply(raw, op)
 	elseif op.Action == "Open" then
 		local p = state.Pending[tostring(op.ProductId)]
 		if not p or p.Id ~= op.IntentId or p.State ~= "Prepared" then return nil, 0, "PurchasePending" end
+		if p.Kind == "DoubleOffline" and p.RewardId ~= state.Owner then return nil, 0, "RewardUnavailable" end
 		p.State = "Prompting"
 	elseif op.Action == "Cancel" then
 		local key = tostring(op.ProductId)

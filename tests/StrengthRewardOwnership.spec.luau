@@ -28,7 +28,7 @@ eq(pcall(O.Update,store,"test",oldSession,function()error("must not run")end,fun
 eq(oldSession.OwnershipLost,true)
 local third={Token="three",StrengthNow=3700}
 O.Acquire(store,"test",third,defaults,normalize,function()return true end)
-eq(raw.StrengthRewards.Rewards.three,nil);eq(raw.StrengthRewards.Rewards.two.Amount,180000)
+eq(raw.StrengthRewards.Rewards.three,nil);eq(raw.StrengthRewards.Rewards.two,nil)
 return {Checks=count,Store="memory only",OwnershipFence=true,FailedReadDidNotCreateData=true}
 end
 

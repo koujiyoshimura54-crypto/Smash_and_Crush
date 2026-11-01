@@ -1216,3 +1216,7 @@ Applied existing d19dce6 to the canonical PlaceId126576845524886 through localiz
 ## 2026-11-01 — Canonical Battle Bag font application
 
 Applied the missing shared-font connection and authored label Font from 3d2b352 to PlaceId `126576845524886`. Verified native Edit font/text metrics and unchanged non-font presentation; retained the Ore minimum correction. No Play or save operation. Canonical Studio remains unsaved in Edit; see DEV_STATUS for scope and verification limits.
+
+## 2026-11-01 — Replace ordinary offline rewards per login
+
+Applied the scoped StrengthRewardState change to the canonical Studio, preserving pending paid promises and receipt IDs. Added replacement/replay regression coverage; native isolated tests and short memory-only Play confirmed fresh rewards after unclaimed or claimed sessions and correct Strength/LV gain. Cleaned test changes and left unsaved Edit. [Results and limits](../reports/OfflineRewardRefresh_20261101.md).
