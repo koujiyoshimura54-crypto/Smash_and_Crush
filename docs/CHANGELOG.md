@@ -1,3 +1,7 @@
+# 2026-11-02 — Ore merge initial tutorial
+
+Added new/reset-only Ore-to-Dumbbell guidance, atomic Forge completion and reset fencing in the current canonical Studio. Reused floor arrows and purchased editable GUI; preserved rewards and latest rank UI. Focused memory-isolated native Play and normal/narrow rendering passed; helpers removed, unsaved Edit retained. [Record](../reports/OreMergeTutorial_20261102.md).
+
 # 2026-11-02 — Common Item rank presentation
 
 Removed Item World labels, separated Inventory rank filters, switched ranks6+ to one star plus multiplier and sorted Merge Items by descending rank. Applied four minimal Source diffs to current canonical Studio; focused isolated rendering/interaction checks passed. Existing server rules and other UI retained. [Record](../reports/ItemRankUI_20261102.md).

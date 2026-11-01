@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-02 — Editable Ore merge guide
+
+`StarterGui.OreMergeTutorialGui` is the authored purchased-highlight template. Edit Highlight.Outline/Shadow/Corner and PaddingX/Y; edit Messages StringValue.Value for each short instruction. The runtime follows target geometry without rewriting those appearance settings. It reuses the existing floor arrows, then highlights Ore, materials and Merge. The callout uses the Merge title band, leaving controls accessible; ordinary generated results remain. [Exact editing paths and rendered checks](../reports/OreMergeTutorial_20261102.md).
+
 ## 2026-11-02 — Common Item rank filters and compact high ranks
 
 Supersedes only the November1 Item ordering/filter/star presentation: remove World text from Item effects; Inventory filters select one global rank, with inaccessible ranks/cards omitted. Filter buttons are generated from catalogue ranks, shown in up to two rows of five, with scrolling for further rows. Ranks1–5 retain five star slots; ranks6+ use one existing gold star plus `×rank` in Inventory cards/equipment and Merge material/input/results. Merge Item materials sort by descending rank while preserving element/kind order within each rank. Existing permanent clear gating, execution permissions, fonts, K/M formatting and gameplay are unchanged. [Focused record](../reports/ItemRankUI_20261102.md).

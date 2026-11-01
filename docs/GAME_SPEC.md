@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-02 — Ore-to-Dumbbell onboarding
+
+New records and the existing `/resetdata` path opt in; existing records without the new field remain excluded. Any two usable Ore units qualify. Presentation waits for the original floor tutorial, alive/Lobby status and competing effects. A separate durable state completes atomically with the normal successful Ore merge, even before the guide appears. No extra reward or merge-rule change. Reset fences old Forge requests/responses. [Implementation and isolated tests](../reports/OreMergeTutorial_20261102.md).
+
 ## 2026-11-01 — Permanent World1 completion for Item visibility
 
 Server-confirmed World1 Stage10 completion now records `World1Cleared` in the existing owned player-data session/save path. Inventory and Merge use it only for Item card visibility. Completion before trophy collection or World2 arrival is sufficient; death, run reset and World return do not clear it. Legacy saved gate unlock (`HighestUnlockedWorld >= 2`), saved `World2Visited` or a verified World1Complete badge recover the flag. Failed badge lookup does not grant it. Studio arrival-preview resets remain separate.

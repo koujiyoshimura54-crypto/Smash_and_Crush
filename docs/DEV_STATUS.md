@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-02 — Ore merge initial tutorial
+
+Applied to the current canonical Studio: new/reset eligibility, independent saved completion inside Forge, reset fencing, existing-floor navigation and editable purchased highlight/message GUI. Native memory-isolated Play covered the two-Stone reward path, actual reset, ordinary UI merge, failure/retry/reload, legacy exclusion, interruption/resume and owner style retention. Normal and isolated narrow renders were inspected. Production persistence/rejoin and physical input remain unverified. Helpers removed; unsaved Edit retained. [Record](../reports/OreMergeTutorial_20261102.md).
+
 ## 2026-11-02 — Item rank presentation revision
 
 Four presentation Sources updated in canonical Studio: exact global-rank Inventory filters, no World labels, compact star×rank above5 and descending Merge Item ranks. Two focused memory-isolated solo Play sessions verified locked/unlocked filtering, exact ranks1/6/10, existing within-rank order, selection/removal/clear/reopen, actual equip response and rendered readability. Fixed TextWrapped/TextScaled assignment after the first render revealed tiny rank text. Helpers removed; final Sources checked, unsaved Edit retained. No multiplayer mode, production writes or Save/Publish. [Record](../reports/ItemRankUI_20261102.md).

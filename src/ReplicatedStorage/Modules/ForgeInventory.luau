@@ -4,6 +4,7 @@ local Ore=require(script.Parent.Parent.Config.OreConfig)
 local Master=require(script.Parent.Parent.Config.DumbbellItemMaster)
 local Merge=require(script.Parent.OreMerge)
 local FirstStage1=require(script.Parent.FirstStage1RewardState)
+local OreTutorial=require(script.Parent.OreMergeTutorialState)
 local M={}
 function M.Journal(raw)
  if raw==nil then return {Sequence=0} end
@@ -60,6 +61,7 @@ function M.Apply(data,op)
  for _,inventory in ipairs({ores,bells}) do for _,n in pairs(inventory) do if not Counts.Count(n) then return nil,"CountOverflow" end end end
  local out=table.clone(data)
  out.OwnedOres=ores;out.OwnedDumbbells=bells;out.Win=win
+ if op.Action=="MergeOre" then out.OreMergeTutorial=OreTutorial.Complete(data.OreMergeTutorial,op.Id) end
  if op.Action=="FirstStage1Defeat" then out.FirstStage1Reward={Version=1,Consumed=true,DefeatId=op.Id,OreGranted=op.ResultId~=""} end
  out.ForgeJournal={Sequence=op.Sequence,Id=op.Id,Signature=op.Signature,ResultId=op.ResultId or ""}
  return out,"Applied",delta

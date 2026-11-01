@@ -5,9 +5,11 @@ local player=game:GetService("Players").LocalPlayer
 local M={State=nil}
 local changed=Instance.new("BindableEvent");M.Changed=changed.Event
 local completed=Instance.new("BindableEvent");M.Completed=completed.Event
-local pending,fetching,invoking
+local pending,fetching,invoking,refreshAgain
 local function accept(response)
- if typeof(response)~="table" or typeof(response.State)~="table" then return end
+ if typeof(response)~="table" or typeof(response.State)~="table" then return false end
+ local token=player:GetAttribute("ForgeSessionToken")
+ if response.State.Loaded and token and response.State.Token~=token then return false end
  M.State=response.State
  if pending and (pending.Token~=M.State.Token or pending.Generation~=M.State.Generation) then
   local op=pending;pending=nil
@@ -18,14 +20,16 @@ local function accept(response)
   completed:Fire(op,{Success=true,Code="Applied",State=M.State})
  end
  changed:Fire(M.State)
+ return true
 end
 function M.IsPending() return pending~=nil end
 function M.Refresh()
- if fetching then return M.State end
+ if fetching then refreshAgain=true;return M.State end
  fetching=true
  local ok,response=pcall(function() return RS.Remotes:WaitForChild("ForgeRequest"):InvokeServer({Action="GetState"}) end)
  fetching=false
  if ok then accept(response) end
+ if refreshAgain then refreshAgain=false;task.defer(M.Refresh) end
  return M.State
 end
 local function send()
@@ -34,7 +38,7 @@ local function send()
  local ok,response=pcall(function() return RS.Remotes.ForgeRequest:InvokeServer(op) end)
  invoking=false
  if ok then
-  accept(response)
+  if not accept(response) then return end
   if pending==op and typeof(response)=="table" and response.Code~="InventorySavePending" and response.Code~="RateLimited" and response.Code~="DataSaving" then
    pending=nil;completed:Fire(op,response);changed:Fire(M.State)
   end
@@ -64,4 +68,7 @@ end
 player:GetAttributeChangedSignal("ForgeInventoryRevision"):Connect(function() task.defer(M.Refresh) end)
 player:GetAttributeChangedSignal("ForgeSavePending"):Connect(function() task.defer(M.Refresh) end)
 player:GetAttributeChangedSignal("PetViewGeneration"):Connect(function() task.defer(M.Refresh) end)
+player:GetAttributeChangedSignal("ForgeSessionToken"):Connect(function()
+ pending=nil;M.State=nil;changed:Fire(nil);task.defer(M.Refresh)
+end)
 return M

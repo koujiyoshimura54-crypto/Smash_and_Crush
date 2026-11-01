@@ -99,6 +99,10 @@ local function refreshFloors()
    end
   end end
  end
+ -- Optional Merge navigation uses the same floor-only renderer in the second lobby.
+ local world2=workspace:FindFirstChild("World2Map")
+ local secondLobby=world2 and world2:FindFirstChild("TrainingArea")
+ add(secondLobby and secondLobby:FindFirstChild("Floor"))
  rayParams.FilterDescendantsInstances=floorParts
  floorsDirty=false;sceneRevision+=1
 end
@@ -363,7 +367,12 @@ local function refresh()
  local character=player.Character
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
  if updateScheduler then updateScheduler() end
- if player:GetAttribute("TutorialCompleted")~=false then clear();stopCache();return end
+ if player:GetAttribute("TutorialCompleted")~=false then
+  local target=player:GetAttribute("OreTutorialTarget")
+  if player:GetAttribute("TutorialCompleted")==true and typeof(target)=="Vector3" and humanoid and humanoid.Health>0 then show("OreMerge",target)
+  else clear();stopCache() end
+  return
+ end
  if (player:GetAttribute("CurrentWorld") or 1)~=1 then hide();stopCache();return end
  if not humanoid or humanoid.Health<=0 then hide();stopCache();return end
  -- Completion is server-owned. Level, boss defeat and Trophy are separate states.
@@ -392,6 +401,7 @@ end
 table.insert(connections,player:GetAttributeChangedSignal("IsTraining"):Connect(trainingChanged))
 table.insert(connections,player:GetAttributeChangedSignal("Level"):Connect(refresh))
 table.insert(connections,player:GetAttributeChangedSignal("TutorialCompleted"):Connect(trainingChanged))
+table.insert(connections,player:GetAttributeChangedSignal("OreTutorialTarget"):Connect(refresh))
 table.insert(connections,player:GetAttributeChangedSignal("TutorialResetSequence"):Connect(function()
  local sequence=player:GetAttribute("TutorialResetSequence")
  if sequence~=resetSequence then
@@ -402,7 +412,9 @@ local elapsed=0
 updateScheduler=function()
  local character=player.Character
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
- local enabled=player:GetAttribute("TutorialCompleted")==false and (player:GetAttribute("CurrentWorld") or 1)==1
+ local original=player:GetAttribute("TutorialCompleted")==false and (player:GetAttribute("CurrentWorld") or 1)==1
+ local merge=player:GetAttribute("TutorialCompleted")==true and typeof(player:GetAttribute("OreTutorialTarget"))=="Vector3"
+ local enabled=(original or merge)
   and humanoid and humanoid.Health>0
  if not enabled then
   if tickConnection then tickConnection:Disconnect();tickConnection=nil end

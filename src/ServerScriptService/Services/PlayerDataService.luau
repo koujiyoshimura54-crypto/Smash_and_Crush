@@ -15,6 +15,7 @@ local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
 local Counts=require(game.ReplicatedStorage.Modules.InventoryCounts)
 local ForgeInventory=require(game.ReplicatedStorage.Modules.ForgeInventory)
 local FirstStage1=require(game.ReplicatedStorage.Modules.FirstStage1RewardState)
+local OreTutorial=require(game.ReplicatedStorage.Modules.OreMergeTutorialState)
 local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
@@ -236,7 +237,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -246,6 +247,9 @@ local function validEquipped(itemId,owned)
 end
 local function normalize(raw)
  local d=defaults()
+ local tutorial,tutorialError=OreTutorial.Normalize(type(raw)=="table" and raw.OreMergeTutorial or nil,raw==nil)
+ if not tutorial then return nil,tutorialError end
+ d.OreMergeTutorial=tutorial
  d.World1Cleared=false
  local first,firstError=FirstStage1.Normalize(type(raw)=="table" and raw.FirstStage1Reward or nil,raw==nil)
  if not first then return nil,firstError end
@@ -359,6 +363,10 @@ local function normalize(raw)
  return d
 end
 local function applyAttributes(player,d)
+ local session=sessions[player]
+ session.ForgeToken=session.ForgeToken or HttpService:GenerateGUID(false)
+ player:SetAttribute("ForgeSessionToken",session.ForgeToken)
+ OreTutorial.Publish(player,d.OreMergeTutorial)
  Pet.Publish(player,d.Pets)
  player:SetAttribute("ForgeInventoryRevision",d.ForgeJournal.Sequence)
  player:SetAttribute("ForgeSavePending",false)
@@ -532,7 +540,12 @@ function PlayerDataService.Reset(player)
   resetByUserIdBusy[userId]=nil
   return false,saved
  end
+ -- Reset keeps the existing paid/offline journal and its current owner in memory,
+ -- just as writeFreshReset preserves it on disk. Do not leave that session field nil.
+ fresh.StrengthRewards=assert(StrengthRewardState.Normalize(saved.StrengthRewards))
  s.Data=fresh
+ s.ForgeToken=HttpService:GenerateGUID(false)
+ s.PendingFirstStage1Defeat=nil
  s.TimeRewardClock=os.clock()
  s.Loaded=true
  s.Saving=false
@@ -906,6 +919,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   FirstStage1Reward=assert(FirstStage1.Normalize(d.FirstStage1Reward,false)),
   DailyRewards=assert(normalizeDailyRewards(d.DailyRewards)),
   TutorialCompleted=d.TutorialCompleted==true,
+  OreMergeTutorial=assert(OreTutorial.Normalize(d.OreMergeTutorial,false)),
   Strength=persisted and persisted.Strength or d.Strength,
   Level=persisted and persisted.Level or d.Level,
   LevelProgress=persisted and persisted.LevelProgress or d.LevelProgress,
@@ -952,6 +966,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.FirstStage1Reward=FirstStage1.Merge(old.FirstStage1Reward,payload.FirstStage1Reward)
    merged.DailyRewards=mergeDailyRewards(old.DailyRewards,payload.DailyRewards)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
+   merged.OreMergeTutorial=OreTutorial.Merge(old.OreMergeTutorial,payload.OreMergeTutorial)
    merged.AutoTapEnabled=payload.AutoTapEnabled
    merged.SelectedSizeTier=payload.SelectedSizeTier
    merged.EquippedSpeed=payload.EquippedSpeed
@@ -1563,6 +1578,7 @@ function PlayerDataService.MutateForge(player,request)
  if RunService:IsStudio() and s.StudioStartOverride then
   d.OwnedOres=nextData.OwnedOres;d.OwnedDumbbells=nextData.OwnedDumbbells
   d.ForgeJournal=nextData.ForgeJournal;d.Win=nextData.Win
+  if op.Action=="MergeOre" then d.OreMergeTutorial=nextData.OreMergeTutorial;OreTutorial.Publish(player,d.OreMergeTutorial) end
   if op.Action=="FirstStage1Defeat" then d.FirstStage1Reward=nextData.FirstStage1Reward end
   player:SetAttribute("Win",d.Win)
   player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)

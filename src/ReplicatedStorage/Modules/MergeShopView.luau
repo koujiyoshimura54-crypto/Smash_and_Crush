@@ -137,6 +137,13 @@ return function(ctx)
  local groups,byKey={},{}
  local render,layout,add,remove
  local view={Root=shop,Drop=drop,Tabs=tabs,List=list,Merge=merge,ClearButton=clear}
+ local changed=Instance.new('BindableEvent');view.Changed=changed.Event
+ local closeRevision=0
+ function view:GetOreTutorialState()
+  return {Open=shop.Visible,Tab=tab,Selling=sellMode,CloseRevision=closeRevision,
+   Pending=Forge.IsPending() or oreState and oreState.Pending==true,
+   Valid=tab=='Ore' and not sellMode and oreState~=nil and OreMerge.Evaluate(oreSelected,oreState.Ores)~=nil}
+ end
  local drag,blocked=nil,{}
  local function unlocked() return itemState and itemState.World2Unlocked==true end
  local function oreSelection() return sellMode and oreSale or oreSelected end
@@ -441,6 +448,7 @@ return function(ctx)
   end
   if shop.Visible then updateCandidates() end
   layout()
+  changed:Fire()
  end
  local layingOut=false
  layout=function()
@@ -528,13 +536,15 @@ return function(ctx)
  function view:IsPet() return tab=='Pet' end
  function view:IsItem() return tab=='Item' end
  function view:Show() shop.Visible=true;self:SelectTab('Item') end
- function view:Hide()
+ function view:Hide(reason)
+  if reason=='Closed' then closeRevision+=1 end
   shop.Visible=false;endDrag();itemSelected={};petSelected={};oreSelected={};oreSale={};completedItem=nil;completedBell=nil
   destroyCards(materialCards);destroyCards(inputCards);destroyCards(candidateCards);candidateSignature='';table.clear(blocked)
+  changed:Fire()
  end
  function view:Destroy()
   if dead then return end
-  self:Hide();dead=true;for _,c in connections do c:Disconnect() end;if host~=gui then host:Destroy() else shop:Destroy() end
+  self:Hide();dead=true;for _,c in connections do c:Disconnect() end;changed:Destroy();if host~=gui then host:Destroy() else shop:Destroy() end
  end
  function view:SubmitItem()
   if not merge.Interactable then return end
@@ -556,7 +566,7 @@ return function(ctx)
  end
  function view:CompleteItem(id) itemSelected={};completedItem=id;if tab=='Item' and shop.Visible then render() end end
  connect(merge.Activated,function()view:SubmitItem()end);connect(clear.Activated,function()view:Clear()end)
- connect(top.Close.Activated,function()view:Hide()end)
+ connect(top.Close.Activated,function()view:Hide('Closed')end)
  for name,b in pairs(tabs) do connect(b.Activated,function()view:SelectTab(name)end) end
  function view:SetSellMode(value)
   if tab~='Ore' or Forge.IsPending() then return end

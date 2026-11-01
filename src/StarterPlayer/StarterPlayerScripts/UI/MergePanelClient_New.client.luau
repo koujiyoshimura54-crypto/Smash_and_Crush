@@ -52,6 +52,7 @@ if not ok then
  warn("[MergeShop] Purchased UI mount failed; no substitute created: "..tostring(built));return
 end
 view=built
+local stopOreTutorial=require(RS.Modules.OreMergeTutorialGuide).Mount(player,gui,view)
 local shop=view.Root
 gui.InventoryPanel.Content.Merge.Visible=false
 refresh=function()
@@ -123,6 +124,6 @@ for _,name in {"InventoryPanel","ShopPanel","RebirthPanel"} do
  local x=gui:FindFirstChild(name)
  if x then x:GetPropertyChangedSignal("Visible"):Connect(function() if x.Visible then view:Hide() end end) end
 end
-script.Destroying:Connect(function() beat:Disconnect();view:Destroy();gui:SetAttribute("MergeShopMounted",nil) end)
+script.Destroying:Connect(function() stopOreTutorial();beat:Disconnect();view:Destroy();gui:SetAttribute("MergeShopMounted",nil) end)
 -- Mark mounted only after state/result/proximity handlers are installed.
 gui:SetAttribute("MergeShopMounted",true)

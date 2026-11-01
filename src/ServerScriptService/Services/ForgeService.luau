@@ -12,6 +12,7 @@ function M.State(player)
  if not s.ForgeToken then s.ForgeToken=Http:GenerateGUID(false) end
  local d=s.Data
  return {Loaded=true,Token=s.ForgeToken,Sequence=d.ForgeJournal.Sequence,Journal=table.clone(d.ForgeJournal),
+  OreTutorial=table.clone(d.OreMergeTutorial),
   Ores=table.clone(d.OwnedOres),DumbbellCounts=table.clone(d.OwnedDumbbells),EquippedDumbbell=d.EquippedDumbbell,
   Win=player:GetAttribute("Win") or d.Win,Pending=s.PendingItemMutation~=nil,Generation=s.PetViewGeneration or 0}
 end
