@@ -1200,3 +1200,7 @@ Added departure-based offline Strength (3600 seconds, 5%), three timed-reference
 
 - Reused the working Strength arm with native glow, enlarged offline Fredoka text, unified black claim borders and integrated the official double-product price into one purchase target. Preserved panel exterior and lower HUD.
 - Floor only new final pack quotes; preserve pending fractional promises and offline/Training/progression behavior. Focused native/mock verification and rendered evidence recorded; no real payment or production write. Removed test fixtures and left unsaved Edit. [Report](../reports/OfflinePopupFix_20261101/REPORT.md).
+
+## 2026-11-01 — Purchased tutorial provenance and connection audit
+
+Documented the original19 steps, completion predicates, legacy persistence and current missing/disabled connections from original-map bytes and current Studio reads. Preserved the active corrected floor guide. Battle Bag font work awaits identification of the intended panel; no Studio implementation/Play/save action occurred. [Audit](../reports/PurchasedTutorialAudit_20261101/REPORT.md).

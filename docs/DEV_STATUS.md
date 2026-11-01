@@ -2459,3 +2459,9 @@ Eight Sources compile/match; focused memory-only native Play verified HP/death/r
 ## 2026-11-01 — Offline popup and integer pack follow-up
 
 Completed five scoped changes from the current463b708 Studio state: arm/halo, larger offline-only text, green/yellow claim gradients with black borders, integrated fetched double price, and final integer new-pack quotes. Existing fractional pending purchases remain exact.33 native state/progression checks plus actual service-View fixture, native text/hit tests and mock callback contention checks passed. Native normal Play and detailed tile captures were inspected; physical input/real payment/production persistence are unverified. Six Sources match/compile; lower HUD and control Sources are unchanged. Play stopped, test insertions removed, rbxl unchanged, Studio remains unsaved in Edit. [Record](../reports/OfflinePopupFix_20261101/REPORT.md).
+
+## 2026-11-01 — Purchased tutorial audit; Battle Bag target pending
+
+Read the original Downloads/Game/Game.rbxl and current local-file Studio without changing either. The original19-stage wall/Wins/shoe/Rebirth/treadmill/Egg/Pet tutorial Sources and assets remain, but both imported Main loaders are disabled and several original target paths are absent. The active floor-arrow guide uses separate server-owned TutorialCompleted and retains its carpet/obstruction/cache fixes. No migration or original tutorial Play was performed.
+
+The requested Battle Bag detail panel was not found in this target. Current authored run counter/icon and Back controller were identified; the counter's current Source differs from Git and was preserved. Asked the user to clarify whether these or another detail panel are intended. No font/gameplay/UI Source change or visual/lifecycle acceptance is claimed. Studio remains in existing unsaved Edit. [Full sequence, paths and reuse findings](../reports/PurchasedTutorialAudit_20261101/REPORT.md).

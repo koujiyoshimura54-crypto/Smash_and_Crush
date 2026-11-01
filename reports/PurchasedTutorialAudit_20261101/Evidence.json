@@ -1,0 +1,458 @@
+{
+  "Target": "MergeToForge_CurrentCloud.rbxl",
+  "Baseline": "7050c374762c61c1ed5c31973b933e9ba42ce0b6",
+  "Original": {
+    "Path": "C:\\Users\\kouji\\Downloads\\Game\\Game.rbxl",
+    "SHA256": "2369cfe1ff4ef2111112bca45e853a9cc33cad0217b3074205820ce2f4bb1f5c",
+    "PriorAudit": "C:\\Users\\kouji\\GameAsset_Full_Audit_20261001.md"
+  },
+  "Startup": [
+    {
+      "Enabled": false,
+      "Path": "ServerScriptService.Main",
+      "Disabled": true,
+      "RunContext": "Enum.RunContext.Legacy"
+    },
+    {
+      "Enabled": false,
+      "Path": "StarterPlayer.StarterPlayerScripts.Main",
+      "Disabled": true,
+      "RunContext": "Enum.RunContext.Legacy"
+    }
+  ],
+  "DependencyPaths": [
+    {
+      "Exists": false,
+      "Path": "Workspace.Stages.1"
+    },
+    {
+      "Exists": false,
+      "Path": "Workspace.Stages.2"
+    },
+    {
+      "Exists": false,
+      "Path": "Workspace.Stages.3"
+    },
+    {
+      "Exists": false,
+      "Path": "Workspace.WinButtons.1.WinButton.Press"
+    },
+    {
+      "Exists": false,
+      "Path": "Workspace.WinButtons.3.WinButton"
+    },
+    {
+      "Exists": false,
+      "Path": "Workspace.ShoesModels.2"
+    },
+    {
+      "Exists": false,
+      "Path": "Workspace.ShoesModels.3"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.2",
+      "Exists": true,
+      "Class": "Model",
+      "Children": 8,
+      "Pivot": "233.21200561523438, 7.1360931396484375, 18.959434509277344"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.3",
+      "Exists": true,
+      "Class": "Model",
+      "Children": 8,
+      "Pivot": "233.21200561523438, 7.1360931396484375, 5.498634338378906"
+    },
+    {
+      "Exists": false,
+      "Path": "Workspace.Treadmills.Normal"
+    },
+    {
+      "Exists": false,
+      "Path": "Workspace.Treadmills.Iron"
+    },
+    {
+      "Children": 2,
+      "Path": "Workspace.Eggs.Basic",
+      "Exists": true,
+      "Class": "MeshPart"
+    },
+    {
+      "Visible": true,
+      "Path": "StarterGui.ScreenGui.Left.Rebirth",
+      "Exists": true,
+      "Class": "Frame",
+      "Children": 6
+    },
+    {
+      "Exists": false,
+      "Path": "StarterGui.ScreenGui.Left.Inventory"
+    },
+    {
+      "Visible": true,
+      "Path": "StarterGui.ScreenGui.Menus.Rebirth.Main.Rebirth",
+      "Exists": true,
+      "Class": "Frame",
+      "Children": 4
+    },
+    {
+      "Visible": true,
+      "Path": "StarterGui.ScreenGui.Menus.Rebirth.Exit",
+      "Exists": true,
+      "Class": "Frame",
+      "Children": 5
+    },
+    {
+      "Visible": true,
+      "Path": "StarterGui.ScreenGui.Menus.Inventory.Main.Items",
+      "Exists": true,
+      "Class": "ScrollingFrame",
+      "Children": 2
+    },
+    {
+      "Visible": true,
+      "Path": "StarterGui.ScreenGui.Menus.Inventory.Exit",
+      "Exists": true,
+      "Class": "Frame",
+      "Children": 5
+    },
+    {
+      "Children": 4,
+      "Path": "ReplicatedStorage.Assets.Tutorial",
+      "Exists": true,
+      "Class": "Folder"
+    },
+    {
+      "Children": 7,
+      "Path": "ReplicatedStorage.Assets.Templates",
+      "Exists": true,
+      "Class": "Folder"
+    },
+    {
+      "Children": 0,
+      "Path": "SoundService.UI.Winner",
+      "Exists": true,
+      "Class": "Sound"
+    }
+  ],
+  "TutorialAssets": [
+    {
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialBeam",
+      "Width0": 4,
+      "Width1": 4,
+      "Class": "Beam",
+      "FaceCamera": true,
+      "Texture": "rbxassetid://74906879757285"
+    },
+    {
+      "Class": "Attachment",
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialAttachment1"
+    },
+    {
+      "Class": "Attachment",
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialAttachment0"
+    },
+    {
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialHighlight",
+      "BackgroundTransparency": 1,
+      "Class": "Frame"
+    },
+    {
+      "Thickness": 0.02500000037252903,
+      "Transparency": 0,
+      "Color": "1, 1, 1",
+      "Class": "UIStroke",
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialHighlight.UIStroke"
+    },
+    {
+      "Class": "UICorner",
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialHighlight.UICorner"
+    },
+    {
+      "Thickness": 100,
+      "Transparency": 0.25,
+      "Color": "0, 0, 0",
+      "Class": "UIStroke",
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialHighlight.UIStroke"
+    }
+  ],
+  "CurrentCompletionContexts": {
+    "ServerScriptService.Services.PlayerDataService": "r ranking mirror save failed for \"..player.Name)\n end\n return true\nend\n\n-- Called only by the server after a confirmed Stage 1 Trophy pickup.\n-- Do not yield in the reward/teleport transaction. Reuse the regular save lock\n-- and ResetToken barrier, and abandon retries when Reset replaces this data.\nfunction PlayerDataService.CompleteTutorial(player)\n local s=sessions[player]\n if not s or not s.Loaded or not s.Data then return false,\"DataNotLoaded\" end\n local data=s.Data\n if data.TutorialCompleted then return true end\n data.TutorialCompleted=true\n s.Dirty=true\n player:SetAttribute(\"TutorialCompleted\",true)\n task.defer(function()\n  for attempt=1,3 do\n   if sessions[player]~=s or s.Data~=data or not s.Loaded then return end\n   if PlayerDataService.WaitForSave(player,30) then\n    if sessions[player]~=s or s.Data~=data or not s.Loaded then return end\n    s.Dirty=true\n    local ok=PlayerDataService.Save(player)\n    if ok then return end\n   end",
+    "ServerScriptService.Services.TrophyRewardService": "cord.Stage,\n    TrophyId=record.Id,\n    OwnsNormal01=(require(game.ReplicatedStorage.Modules.InventoryCounts).Count(owned.NORMAL_01) or 0)>0,\n   })\n  end\n end\n\n\n\t-- Normal completion: validated Stage1 pickup. Stage2 Boss attack is the fallback.\n\tif worldId==1 and record.Stage == 1 then\n\t\tPlayerData.CompleteTutorial(player)\n\tend\n\n\tend -- Notify once; retries below never credit again.\n\n\tlocal function current()\n\t return player.Parent == Players and records[player] and records[player][record.Stage] == record\n\t  and player.Character == character and humanoid.Health > 0\n\t  and (player:GetAttribute(\"CurrentWorld\") or 1) == worldId\n\tend\n\t-- Durable item banking remains mandatory before reset, but cannot delay Win credit.\n\tif Bank and not record.Banked then\n\t local snapshot = Run.GetSnapshot(player)\n\t local committed, reason = false, \"MissingRun\"\n\t if snapshot then committed, reason = Bank.Commit(player, snapshot.RunId) end\n\t if not committed th",
+    "ServerScriptService.World.EnemyManager": "al ps=state(p)\n       ps.AttackSequence=(ps.AttackSequence or 0)+1\n       -- Auto retains its existing hit delay; manual applies the accepted hit immediately.\n       local attackId=ps.AttackSequence\n       if worldId==1 and n==2 and p:GetAttribute(\"TutorialCompleted\")==false then\n        PlayerData.CompleteTutorial(p)\n       end\n       send(p,{Type=\"CombatAttack\",Id=attackId,Stage=n,Attack=bs.Attacks+1,Duration=Boss.AttackDuration,HitDelay=manualRequest and 0 or MINIBOSS_DAMAGE_DELAY,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})\n       s.Pending+=1\n       local function applyBossHit()\n        s.Pending-=1\n        if not inWorld(p) or p.Parent~=Players or sessions[p]~=s or Stage.GetCurrentStageNumber(p)~=n or state(p)~=ps or p.Character~=ch or not hum or hum.Health<=0 then return end\n        if s.CombatType~=\"MiniBoss\" or s.Instance~=e or getEnemy(p,n,false)~=e or not e.Paren"
+  },
+  "TutorialReferences": [
+    {
+      "Lines": [
+        "Loader.load(script.Parent.Services)"
+      ],
+      "Path": "ServerScriptService.Main"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "\t\tif Tutorial.startable(playerData) then",
+        "\t\t\twhile Tutorial.stage(playerData) == Tutorial.None and os.clock() < deadline do",
+        "\t\tif Tutorial.running(playerData) then",
+        "\t\t\twhile Tutorial.running(playerData) do"
+      ],
+      "Path": "ServerScriptService.Services.StreakServer"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "\treturn Tutorial.running(playerData)"
+      ],
+      "Path": "ServerScriptService.Services.SlimeServer"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "local TutorialServer = {}",
+        "\tif not Tutorial.startable(playerData) then return end",
+        "\tplayerData[Tutorial.Field](Tutorial.First)",
+        "\tif not Tutorial.running(playerData) then return end",
+        "\tlocal done = Tutorial.doneStage()",
+        "\tplayerData[Tutorial.Field](function(stage: number): number",
+        "function TutorialServer.start()",
+        "\tQuickNet.TutorialStep.OnServerEvent:ConnectAsync(step)",
+        "return TutorialServer"
+      ],
+      "Path": "ServerScriptService.Services.TutorialServer"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "\treturn Tutorial.running(playerData)"
+      ],
+      "Path": "ServerScriptService.Services.AutoRunServer"
+    },
+    {
+      "Lines": [
+        " return {OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=\"\"},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed=\"Normal\", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell=\"\", OwnedAuras={}, EquippedAura=\"\", OwnedItems={}, EquippedItems={Protein=\"\",Glove=\"\",TrainingBelt=\"\"}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}",
+        "  d.TutorialCompleted=raw.TutorialCompleted==true",
+        " player:SetAttribute(\"TutorialCompleted\",d.TutorialCompleted==true)",
+        " player:SetAttribute(\"TutorialResetSequence\",(player:GetAttribute(\"TutorialResetSequence\") or 0)+1)",
+        "  TutorialCompleted=d.TutorialCompleted==true,",
+        "   merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted",
+        "function PlayerDataService.CompleteTutorial(player)",
+        " if data.TutorialCompleted then return true end",
+        " data.TutorialCompleted=true",
+        " player:SetAttribute(\"TutorialCompleted\",true)",
+        "   warn(\"Tutorial completion save pending for \"..player.Name..\"; existing autosave will retry\")"
+      ],
+      "Path": "ServerScriptService.Services.PlayerDataService"
+    },
+    {
+      "Lines": [
+        "\t\tPlayerData.CompleteTutorial(player)"
+      ],
+      "Path": "ServerScriptService.Services.TrophyRewardService"
+    },
+    {
+      "Lines": [
+        "       if worldId==1 and n==2 and p:GetAttribute(\"TutorialCompleted\")==false then",
+        "        PlayerData.CompleteTutorial(p)"
+      ],
+      "Path": "ServerScriptService.World.EnemyManager"
+    },
+    {
+      "Lines": [
+        "Loader.load(script.Parent.Services)"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Main"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "\tif Tutorial.running(playerData) then"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.LevelClient"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "\tif Tutorial.running(playerData) then return end"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.DailyClient"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "\tif Tutorial.running(playerData) then return end"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.RemindClient"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "\tlocal step = playerData[Tutorial.Field]",
+        "\t\t\tif Tutorial.running(playerData) then",
+        "\t\twarn(`[SlimeClient] the profile carries no \"{Tutorial.Field}\" to watch`)",
+        "\tif not Tutorial.running(playerData) then"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.SlimeClient"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "local TutorialClient = {}",
+        "\tlocal settings = Config.Tutorial",
+        "\tlocal grow = Config.Tutorial.guiGrow",
+        "\tmade.AspectRatio = Config.Tutorial.tileRatio",
+        "\tfor _, name in ipairs(Config.Tutorial.Torso) do",
+        "\tlocal settings = Config.Tutorial",
+        "\tlocal template = folder:FindFirstChild(Config.Tutorial.highlight)",
+        "\tlocal grow = Config.Tutorial.guiGrow",
+        "\tring.ZIndex = Config.Tutorial.zIndex",
+        "\t\t\twarn(`[TutorialClient] could not find {gui:GetFullName()}.{table.concat(Path, \".\")}`)",
+        "\t\twarn(`[TutorialClient] could not find {Workspace:GetFullName()}.{table.concat(row.World, \".\")}`)",
+        "\tlocal settings = Config.Tutorial",
+        "\t\twarn(`[TutorialClient] could not find {gui:GetFullName()}.{settings.leftFrame}`)",
+        "\t\tif child.Name == Config.Tutorial.keep then continue end",
+        "\tlocal settings = Config.Tutorial",
+        "\t\tQuickNet.TutorialStep:FireServer()",
+        "\trow = Config.Tutorial.Stages[stage]",
+        "\t\tMenuClient.hold(Config.Tutorial.leftFrame, false)",
+        "\tlocal settings = Config.Tutorial",
+        "\t\t\tsize = UDim2.fromScale(Config.Tutorial.tileSize, Config.Tutorial.tileSize)",
+        "\t\tlocal alpha = math.clamp(1 - math.exp(-delta / Config.Tutorial.moveSeconds), 0, 1)",
+        "\t\treturn (Math.level(speed)) >= Config.Tutorial.level",
+        "\t\tstanding = if on then standing + Config.Tutorial.tickSeconds else 0",
+        "\t\treturn standing >= Config.Tutorial.runSeconds",
+        "\tlocal stage = Tutorial.stage(playerData)",
+        "\t\twarn(`[TutorialClient] Config.Tutorial.Stages names \"{row.key}\", which nothing answers for`)",
+        "\tif stage >= #Config.Tutorial.Stages then",
+        "\tQuickNet.TutorialStep:FireServer()",
+        "\tlocal template = if folder then folder:FindFirstChild(Config.Tutorial.highlight) else nil",
+        "\t\twarn(`[TutorialClient] could not find {ReplicatedStorage:GetFullName()}.{table.concat(Config.Tutorial.Folder, \".\")}.{Config.Tutorial.highlight}`)",
+        "\tframe.ZIndex = Config.Tutorial.zIndex",
+        "function TutorialClient.start()",
+        "\tif Tutorial.done(playerData) then return end",
+        "\twhile Tutorial.stage(playerData) == Tutorial.None and os.clock() < deadline do",
+        "\t\ttask.wait(Config.Tutorial.tickSeconds)",
+        "\tif not Tutorial.running(playerData) then return end",
+        "\tlocal settings = Config.Tutorial",
+        "\t\twarn(`[TutorialClient] could not find {ReplicatedStorage:GetFullName()}.{table.concat(settings.Folder, \".\")}`)",
+        "\t\twarn(`[TutorialClient] could not find {SoundService:GetFullName()}.{table.concat(settings.soundPath, \".\")}`)",
+        "return TutorialClient"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.TutorialClient"
+    },
+    {
+      "Lines": [
+        "local Tutorial = require(ReplicatedStorage.Modules.Tutorial)",
+        "\t\tif Tutorial.running(playerData) then"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.AutoRunClient"
+    },
+    {
+      "Lines": [
+        "local resetSequence=player:GetAttribute(\"TutorialResetSequence\")",
+        " if previous:IsA(\"Folder\") and previous.Name==\"TutorialFloorGuide\"",
+        "  route=Instance.new(\"Folder\") route.Name=\"TutorialFloorGuide\" route.Parent=workspace",
+        " if player:GetAttribute(\"TutorialCompleted\")~=false then clear();stopCache();return end",
+        " if player:GetAttribute(\"TutorialCompleted\")==false and player:GetAttribute(\"IsTraining\")==true then trained=true end",
+        "table.insert(connections,player:GetAttributeChangedSignal(\"TutorialCompleted\"):Connect(trainingChanged))",
+        "table.insert(connections,player:GetAttributeChangedSignal(\"TutorialResetSequence\"):Connect(function()",
+        " local sequence=player:GetAttribute(\"TutorialResetSequence\")",
+        " local enabled=player:GetAttribute(\"TutorialCompleted\")==false and (player:GetAttribute(\"CurrentWorld\") or 1)==1"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient"
+    },
+    {
+      "Lines": [
+        " -- Same twin-arm Chevron geometry as TutorialGuideClient; no asset dependency."
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillGuideClient"
+    }
+  ],
+  "HatchReferences": [
+    {
+      "Lines": [
+        "-- Existing purchased HatchClient TEXT_FONT; keep Win/Robux amount artwork intact."
+      ],
+      "Path": "StarterGui.StrengthGui.ItemInventoryTabClient"
+    },
+    {
+      "Lines": [
+        "local HatchClient = require(script.Parent.HatchClient)",
+        "\tif PetClient.busy() or HatchClient.playing() then return end",
+        "\tlocal wanted = enabled and not HatchClient.playing()"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.EggClient"
+    },
+    {
+      "Lines": [
+        " require(script.Parent.HatchClient).cancelNormal()",
+        "\tif require(script.Parent.HatchClient).playing() then return end",
+        "\t\t\t\t\t\trequire(script.Parent.HatchClient).play(playerData.LastResults,action==\"Merge\" and playerData.LastMergeEgg or a)",
+        "\trequire(script.Parent.HatchClient).start()"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.PetClient"
+    },
+    {
+      "Lines": [
+        "local HatchClient = {}",
+        "\twarn(`[HatchClient] could not find {SoundService:GetFullName()}.{table.concat(path, \".\")}`)",
+        "\t\twarn(`[HatchClient] {template:GetFullName()} is neither a model nor a part`)",
+        "\t\t\twarn(`[HatchClient] could not find a model for {result.pet}`)",
+        "function HatchClient.playing(): boolean",
+        "function HatchClient.shown(): number",
+        "function HatchClient.cancelNormal()",
+        "function HatchClient.play(Results: {Result}, eggName: string?)",
+        "function HatchClient.playCommittedLimited(notice)",
+        "  if not ok then clear();MenuClient.shroud(false);warn(\"[HatchClient] Limited display failed: \"..tostring(accepted)) end",
+        "function HatchClient.start()",
+        "\t\twarn(`[HatchClient] could not find {ReplicatedStorage:GetFullName()}.{table.concat(EGG_PATH, \".\")}`)",
+        "return HatchClient"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.HatchClient"
+    },
+    {
+      "Lines": [
+        "    return require(script.Parent.HatchClient).playCommittedLimited(result)"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.StandClient"
+    },
+    {
+      "Lines": [
+        "local HatchClient = require(script.Parent.HatchClient)",
+        "local TutorialClient = {}",
+        "\t\t\twarn(`[TutorialClient] could not find {gui:GetFullName()}.{table.concat(Path, \".\")}`)",
+        "\t\twarn(`[TutorialClient] could not find {Workspace:GetFullName()}.{table.concat(row.World, \".\")}`)",
+        "\t\twarn(`[TutorialClient] could not find {gui:GetFullName()}.{settings.leftFrame}`)",
+        "\tshownAt = HatchClient.shown()",
+        "\tif HatchClient.playing() then",
+        "\t\treturn HatchClient.shown() > shownAt",
+        "\t\twarn(`[TutorialClient] Config.Tutorial.Stages names \"{row.key}\", which nothing answers for`)",
+        "\t\twarn(`[TutorialClient] could not find {ReplicatedStorage:GetFullName()}.{table.concat(Config.Tutorial.Folder, \".\")}.{Config.Tutorial.highlight}`)",
+        "function TutorialClient.start()",
+        "\t\twarn(`[TutorialClient] could not find {ReplicatedStorage:GetFullName()}.{table.concat(settings.Folder, \".\")}`)",
+        "\t\twarn(`[TutorialClient] could not find {SoundService:GetFullName()}.{table.concat(settings.soundPath, \".\")}`)",
+        "return TutorialClient"
+      ],
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.TutorialClient"
+    },
+    {
+      "Lines": [
+        "local TutorialServer = {}",
+        "function TutorialServer.start()",
+        "return TutorialServer"
+      ],
+      "Path": "ServerScriptService.Services.TutorialServer"
+    }
+  ],
+  "BattleBag": {
+    "Status": "Awaiting target clarification. No Battle Bag detail panel found in specified local Studio. No font Source/object mutation performed.",
+    "Counter": "StarterGui.StrengthGui.HUD.RunInventoryLabel",
+    "Controller": "StarterGui.StrengthGui.RunInventoryHUDClient",
+    "RelatedReturn": "StarterGui.StrengthGui.RunReturnClient",
+    "ExistingFont": "Enum.Font.Legacy",
+    "ExistingTextSize": 24,
+    "SharedFontConfig": "ReplicatedStorage.Config.StrengthHUDStyle",
+    "ExpectedFont": "Enum.Font.FredokaOne"
+  },
+  "Validation": "Static only; no purchased tutorial runtime started; no Play in this audit.",
+  "StudioChanged": false
+}
