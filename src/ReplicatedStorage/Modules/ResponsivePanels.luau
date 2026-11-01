@@ -200,8 +200,20 @@ function M.LayoutItems(gui,page,list,grid)
    end
    squareStars(socket.RarityStars,(left-12)*(narrow and .92 or .54),socketHeight*(narrow and .21 or .30))
   end
-  page.RarityTabs.Position=UDim2.fromOffset(right,0);page.RarityTabs.Size=UDim2.fromOffset(size.X-right,top-10)
-  list.Position=UDim2.fromOffset(right,top);list.Size=UDim2.fromOffset(size.X-right,size.Y-top-footer)
+  local rankButtons={}
+  for _,button in page.RarityTabs:GetChildren() do if button:IsA("GuiButton") and button.Visible then table.insert(rankButtons,button) end end
+  table.sort(rankButtons,function(a,b)return a.LayoutOrder<b.LayoutOrder end)
+  local rankRows=math.max(1,math.ceil(#rankButtons/5))
+  local rankHeight=top-10
+  local rankViewport=math.min(rankRows,2)*(rankHeight+8)-8
+  local listTop=rankViewport+10
+  page.RarityTabs.Position=UDim2.fromOffset(right,0);page.RarityTabs.Size=UDim2.fromOffset(size.X-right,rankViewport)
+  page.RarityTabs.CanvasSize=UDim2.fromOffset(0,rankRows*(rankHeight+8)-8)
+  for i,button in ipairs(rankButtons) do
+   button.Position=UDim2.new(((i-1)%5)/5,4,0,math.floor((i-1)/5)*(rankHeight+8))
+   button.Size=UDim2.new(.2,-8,0,rankHeight)
+  end
+  list.Position=UDim2.fromOffset(right,listTop);list.Size=UDim2.fromOffset(size.X-right,math.max(1,size.Y-listTop-footer))
   page.Status.Position=UDim2.fromOffset(right,size.Y-26);page.Status.Size=UDim2.fromOffset(size.X-right,24)
   page.Status.Visible=footer>0
   -- Minimum screen-space card width; reduce columns instead of fitting all rows.

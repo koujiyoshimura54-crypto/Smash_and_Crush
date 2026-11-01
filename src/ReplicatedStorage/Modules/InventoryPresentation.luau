@@ -34,17 +34,30 @@ function M.SetItemImageStars(row,item,z)
   star.ImageColor3=Color3.new(1,1,1);star.ImageTransparency=0;star.LayoutOrder=i;star.ZIndex=z
   star:SetAttribute("ResponsiveOriginalZ",z)
   star.Image=i<=rank and "rbxassetid://76134658177553" or "rbxassetid://126441080731699"
-  star.Visible=i<=(rank>5 and 10 or 5)
+  star.Visible=rank<=5 and i<=5
  end
+ local compact=row:FindFirstChild("CompactRank")
+ if not compact then
+  compact=Instance.new("Frame");compact.Name="CompactRank";compact.BackgroundTransparency=1;compact.Active=false;compact.LayoutOrder=11;compact.Parent=row
+  local star=Instance.new("ImageLabel");star.Name="RankStar";star.BackgroundTransparency=1;star.Active=false
+  star.Image="rbxassetid://76134658177553";star.ScaleType=Enum.ScaleType.Fit;star.Size=UDim2.fromScale(.38,1);star.Parent=compact
+  local number=Instance.new("TextLabel");number.Name="RankNumber";number.BackgroundTransparency=1;number.Active=false
+  number.Font=Enum.Font.GothamBlack;number.TextColor3=Color3.new(1,1,1);number.TextStrokeColor3=Color3.new();number.TextStrokeTransparency=0
+  number.TextWrapped=true;number.TextScaled=true;number.TextSize=36;number.AutoLocalize=false
+  number.Position=UDim2.fromScale(.38,0);number.Size=UDim2.fromScale(.62,1);number.Parent=compact
+  local limit=Instance.new("UITextSizeConstraint");limit.MinTextSize=8;limit.MaxTextSize=46;limit.Parent=number
+ end
+ compact.Visible=rank>5;compact.RankNumber.Text="×"..rank
+ for _,x in {compact,compact.RankStar,compact.RankNumber} do x.ZIndex=z;x:SetAttribute("ResponsiveOriginalZ",z) end
  row.Visible=item~=nil
  return row
 end
 function M.LayoutItemImageStars(row,width,height)
  local grid=row:FindFirstChild("StarGrid")
  if not row.Parent or not grid then return end
- local rows=(row:GetAttribute("Rank") or 0)>5 and 2 or 1
- local side=math.max(1,math.floor(math.min((width-12)/5,(height-(rows-1)*2)/rows)))
- grid.CellSize=UDim2.fromOffset(side,side)
+ local compact=(row:GetAttribute("Rank") or 0)>5
+ local side=math.max(1,math.floor(math.min(compact and width/2.6 or (width-12)/5,height)))
+ grid.CellSize=UDim2.fromOffset(compact and math.floor(side*2.6) or side,side)
 end
 -- Native localization, scoped to equipment wording from GameLocalizationTable.csv.
 local equipmentLocalization=Instance.new("LocalizationTable")

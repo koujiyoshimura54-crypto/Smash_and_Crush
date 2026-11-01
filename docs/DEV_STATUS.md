@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-02 — Item rank presentation revision
+
+Four presentation Sources updated in canonical Studio: exact global-rank Inventory filters, no World labels, compact star×rank above5 and descending Merge Item ranks. Two focused memory-isolated solo Play sessions verified locked/unlocked filtering, exact ranks1/6/10, existing within-rank order, selection/removal/clear/reopen, actual equip response and rendered readability. Fixed TextWrapped/TextScaled assignment after the first render revealed tiny rank text. Helpers removed; final Sources checked, unsaved Edit retained. No multiplayer mode, production writes or Save/Publish. [Record](../reports/ItemRankUI_20261102.md).
+
 ## 2026-11-01 — Item Inventory and Merge presentation
 
 Applied eight scoped Source diffs and47 content-text Font properties to the current canonical Studio. Permanent World1-clear display gating, W1/W2 ordering, actual global-rank image stars, Dumbbell/Aura-only shared font and Merge K/M text are implemented. Native Play verified normal rendered views, isolated narrow mounts, scope exclusions, exact Ore sale/merge and Item merge quantities, clear-before-arrival, legacy proof migration, memory save/reload and death/respawn. Fixed a deferred star-layout callback after card destruction; final repeated open/close/filter/tab checks passed without related errors.

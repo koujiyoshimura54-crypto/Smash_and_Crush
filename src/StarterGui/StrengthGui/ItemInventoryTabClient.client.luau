@@ -30,7 +30,15 @@ local function visibleItem(item)
 end
 local selectedId,pending
 local rarityIndex=1
-local rarities=Master.Rarities
+local ranks,rankItems,rankRarities={},{},{}
+for id,item in pairs(Master.GetAll()) do
+ local rank=Presentation.ItemRank(item)
+ if rank>0 then
+  if not rankItems[rank] then rankItems[rank]={};rankRarities[rank]=item.Rarity;table.insert(ranks,rank) end
+  table.insert(rankItems[rank],id)
+ end
+end
+table.sort(ranks)
 local kinds=Master.Kinds
 -- Item-only reference presentation. Existing remotes/configs remain authoritative.
 local Responsive=require(RS.Modules.ResponsivePanels)
@@ -121,7 +129,7 @@ local function stars(parent,item,pos,size)
  end
  row.Position=pos;row.Size=size
  Presentation.SetItemImageStars(row,item,40)
- for _,star in row:GetChildren() do if star:IsA("ImageLabel") then layer(star,40) end end
+ for _,star in row:GetDescendants() do if star:IsA("GuiObject") then layer(star,40) end end
  return row
 end
 local function effect(item)
@@ -170,7 +178,9 @@ for _,kind in ipairs(kinds) do
   pending=kind;equipRemote:FireServer(kind,"Unequip")
  end)
 end
-local tabbar=Instance.new("Frame");tabbar.Name="RarityTabs";tabbar.BackgroundTransparency=1;tabbar.Active=false;layer(tabbar,35);tabbar.Parent=page
+local tabbar=Instance.new("ScrollingFrame");tabbar.Name="RarityTabs";tabbar.BackgroundTransparency=1;tabbar.BorderSizePixel=0
+tabbar.Active=true;tabbar.ScrollingDirection=Enum.ScrollingDirection.Y;tabbar.ScrollBarThickness=5;tabbar.CanvasSize=UDim2.new()
+tabbar.ClipsDescendants=true;layer(tabbar,35);tabbar.Parent=page
 list.BackgroundTransparency=1;list.Visible=true;list.Active=true;list.ScrollingEnabled=true
 list.ScrollingDirection=Enum.ScrollingDirection.Y;list.AutomaticCanvasSize=Enum.AutomaticSize.None
 list.CanvasSize=UDim2.new();list.ScrollBarThickness=9;list.ScrollBarImageColor3=Color3.fromRGB(191,202,223)
@@ -229,16 +239,25 @@ render=function()
   stars(s.socket,item,UDim2.fromScale(.44,.40),UDim2.fromScale(.54,.30))
   s.socket.Active=item~=nil;s.socket.Interactable=item~=nil
  end
- for n,t in ipairs(tabs) do
-  surface(t,rarities[n]);raritySelected(t,n==rarityIndex);t.StudPattern.Visible=false
-  rarityBadges[n].Visible=page:GetAttribute("UnseenRarity_"..rarities[n])==true
+ local visibleRanks={}
+ for _,rank in ipairs(ranks) do
+  local visible,unseen=false,false
+  for _,id in ipairs(rankItems[rank]) do
+   if visibleItem(Master.Get(id)) then visible=true;unseen=unseen or page:GetAttribute("UnseenItem_"..id)==true end
+  end
+  tabs[rank].Visible=visible;rarityBadges[rank].Visible=visible and unseen
+  if visible then table.insert(visibleRanks,rank) end
+ end
+ if not tabs[rarityIndex] or not tabs[rarityIndex].Visible then rarityIndex=visibleRanks[1] end
+ for _,rank in ipairs(ranks) do
+  local t=tabs[rank]
+  surface(t,rankRarities[rank]);raritySelected(t,rank==rarityIndex);t.StudPattern.Visible=false
  end
  local ids={}
- for id,item in pairs(Master.GetAll()) do if item.Rarity==rarities[rarityIndex] and visibleItem(item) then table.insert(ids,id) end end
+ for id,item in pairs(Master.GetAll()) do if Presentation.ItemRank(item)==rarityIndex and visibleItem(item) then table.insert(ids,id) end end
  local typeOrder={};for i,kind in ipairs(kinds) do typeOrder[kind]=i end
  table.sort(ids,function(a,b)
   local x,y=Master.Get(a),Master.Get(b)
-  if (x.WorldId or 1)~=(y.WorldId or 1) then return (x.WorldId or 1)<(y.WorldId or 1) end
   if Presentation.ItemRank(x)~=Presentation.ItemRank(y) then return Presentation.ItemRank(x)<Presentation.ItemRank(y) end
   if x.Element~=y.Element then return table.find(Master.Elements,x.Element)<table.find(Master.Elements,y.Element) end
   return (typeOrder[x.ItemType] or 99)<(typeOrder[y.ItemType] or 99)
@@ -251,7 +270,7 @@ render=function()
   local picture=icon(c,"Icon",item.Image,UDim2.new(),UDim2.new(),36)
   local locked=worldLocked(id)
   Presentation.SetInventorySecret(c,picture,stateLoaded and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id)
-  local effectLabel=label(c,"Effect","W"..tostring(item.WorldId or 1).." "..effect(item),UDim2.new(),UDim2.new(),34)
+  local effectLabel=label(c,"Effect",effect(item),UDim2.new(),UDim2.new(),34)
   effectLabel.FontFace=effectFont
   effectLabel:FindFirstChildOfClass("UIStroke").Thickness=2.5
   stars(c,item,UDim2.new(),UDim2.new())
@@ -291,14 +310,14 @@ render=function()
  end
  layout();list.CanvasPosition=scroll
 end
-for n=1,5 do
+for _,n in ipairs(ranks) do
  local b=Instance.new("TextButton");b.Name="Star"..n;b.Text="";b.AutoButtonColor=false
- b.Position=UDim2.new((n-1)/5,4,0,0);b.Size=UDim2.new(.2,-8,1,0)
- surface(b,rarities[n]);b.StudPattern.Visible=false;layer(b,36);b.Parent=tabbar
+ b.LayoutOrder=n;b:SetAttribute("ItemRank",n)
+ surface(b,rankRarities[n]);b.StudPattern.Visible=false;layer(b,36);b.Parent=tabbar
  local star=icon(b,"RankStar",STAR_GOLD,UDim2.fromScale(.34,.5),UDim2.fromScale(.34,.78),40)
  star.AnchorPoint=Vector2.new(.5,.5);star.ImageColor3=Color3.new(1,1,1)
  local square=Instance.new("UIAspectRatioConstraint");square.AspectRatio=1;square.Parent=star
- local number=label(b,"Label",tostring(n),UDim2.fromScale(.53,.08),UDim2.fromScale(.30,.84),40)
+ local number=label(b,"Label",n>5 and "×"..n or tostring(n),UDim2.fromScale(n>5 and .49 or .53,.08),UDim2.fromScale(n>5 and .43 or .30,.84),40)
  number.FontFace=effectFont
  local badge=Badges.GetOrClone(gui.LeftMenu.InventoryButton.NotificationBadge,b,"RarityGuideBadge")
  badge.AnchorPoint=Vector2.new(1,0);badge.Position=UDim2.new(1,-2,0,2);badge.Size=UDim2.fromOffset(24,24)

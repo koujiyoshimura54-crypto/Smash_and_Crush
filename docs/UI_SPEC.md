@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-02 — Common Item rank filters and compact high ranks
+
+Supersedes only the November1 Item ordering/filter/star presentation: remove World text from Item effects; Inventory filters select one global rank, with inaccessible ranks/cards omitted. Filter buttons are generated from catalogue ranks, shown in up to two rows of five, with scrolling for further rows. Ranks1–5 retain five star slots; ranks6+ use one existing gold star plus `×rank` in Inventory cards/equipment and Merge material/input/results. Merge Item materials sort by descending rank while preserving element/kind order within each rank. Existing permanent clear gating, execution permissions, fonts, K/M formatting and gameplay are unchanged. [Focused record](../reports/ItemRankUI_20261102.md).
+
 ## 2026-11-01 — Item presentation, scoped Inventory font and Merge numbers
 
 This revision supersedes historical arrival-only Item visibility, local World2 rarity stars and broader Inventory font requests. Item cards are filtered out before creation until the server's permanent `World1Cleared` flag is true. Existing rarity filters and element/quantity grouping remain; each filter lists World1 before World2, with the three Item kinds together per element. Merge retains its existing global-rank ordering. No hidden-card grid slots remain.

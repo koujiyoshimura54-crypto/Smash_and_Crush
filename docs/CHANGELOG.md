@@ -1,3 +1,7 @@
+# 2026-11-02 — Common Item rank presentation
+
+Removed Item World labels, separated Inventory rank filters, switched ranks6+ to one star plus multiplier and sorted Merge Items by descending rank. Applied four minimal Source diffs to current canonical Studio; focused isolated rendering/interaction checks passed. Existing server rules and other UI retained. [Record](../reports/ItemRankUI_20261102.md).
+
 # 2026-11-01 — Item Inventory and Merge presentation
 
 Preserved the current canonical Edit document while adding permanent World1-clear Item visibility, World/rank ordering, shared image stars1–10, Dumbbell/Aura content-only Fredoka and display-only Merge K/M formatting. Native isolated Play covered actual renders, exact Item/Ore transactions, migration/save/reload and respawn; repeated card lifecycle checks passed after fixing a delayed layout callback. Retained requested before/after and narrow-region captures. No production writes, Save/Publish, tutorial or reward changes. [Evidence and limits](../reports/InventoryUI2_20261101.md).

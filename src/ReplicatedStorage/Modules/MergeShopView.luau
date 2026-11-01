@@ -163,7 +163,11 @@ return function(ctx)
  end
  local function rebuildGroups()
   groups={}
-   if tab=='Item' then groups=Items.Groups(itemState and itemState.OwnedItems,itemState and itemState.World1Cleared==true)
+   if tab=='Item' then
+    groups=Items.Groups(itemState and itemState.OwnedItems,itemState and itemState.World1Cleared==true)
+    -- Reverse ranks only; preserve the existing element/kind order within each rank.
+    local order={};for i,entry in ipairs(groups) do order[entry]=i end
+    table.sort(groups,function(a,b)if a.Rank~=b.Rank then return a.Rank>b.Rank end return order[a]<order[b] end)
   elseif tab=='Pet' then groups=PetMerge.Groups(petState)
   else for _,ore in ipairs(Ore.GetAvailable()) do
    local count=oreState and oreState.Ores and oreState.Ores[ore.Id] or 0
@@ -363,7 +367,7 @@ return function(ctx)
    local preview,reason=itemPreview()
    if completedItem then local item=Master.Get(completedItem);rows={{ItemId=completedItem,Image=item.Image,Percent=100}}
    elseif preview then for _,o in preview.Outcomes do table.insert(rows,{ItemId=o.ItemId,Image=Master.Get(o.ItemId).Image,Percent=o.Percent}) end
-   else hint=reason=='MixedWorldMaterials' and 'Use materials from one World' or 'Select at least 2 Items' end
+   else hint=reason=='MixedWorldMaterials' and 'These materials cannot be combined' or 'Select at least 2 Items' end
   elseif tab=='Pet' then
    local preview=petPreview()
    if preview then for _,o in preview.Outcomes do table.insert(rows,{Egg=o.Egg,Image=Egg.NormalPools[o.Egg].Icon,Percent=o.Percent}) end
