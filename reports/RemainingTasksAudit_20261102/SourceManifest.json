@@ -1,0 +1,180 @@
+{
+  "Basis": "Captured canonical Edit Sources, LF-normalized SHA-256; comparison to the current clean src files at baseline 60e84fd.",
+  "Note": "ElementSetBonus mismatch is one trailing newline only, preserved. This is a selected source manifest, not a full-place export.",
+  "Sources": [
+    {
+      "Path": "ServerScriptService.Services.DumbbellService",
+      "File": "src/ServerScriptService/Services/DumbbellService.luau",
+      "MatchesGitFile": true,
+      "SHA256": "6507c9fe8d090e583e1406acb713a6f18bfa65dc7b7f032bdfd6ac49cf85b905"
+    },
+    {
+      "Path": "ServerScriptService.Services.AutoTapService",
+      "File": "src/ServerScriptService/Services/AutoTapService.luau",
+      "MatchesGitFile": true,
+      "SHA256": "c487819d5f2687546e94d607ee21c7d5e417c3da5a752c94f94a3a17a3e33a72"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.OreMergeTutorialGuide",
+      "File": "src/ReplicatedStorage/Modules/OreMergeTutorialGuide.luau",
+      "MatchesGitFile": true,
+      "SHA256": "57fce8a99f8b459e75b2d8d376920adab158c378fc96378cfea0d03bbe5b569f"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.InventoryPresentation",
+      "File": "src/ReplicatedStorage/Modules/InventoryPresentation.luau",
+      "MatchesGitFile": true,
+      "SHA256": "f510deba83726bb5a4232d98e261ae39df1d20fef3e0d171c689b9e4a966776b"
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.DumbbellController",
+      "File": "src/ServerScriptService/Systems/Controllers/DumbbellController.server.luau",
+      "MatchesGitFile": true,
+      "SHA256": "87c8af40a04b811006330faa06266bdf075d8bc15870f6c0c4309f0ee9d94de7"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.ItemInventoryTabClient",
+      "File": "src/StarterGui/StrengthGui/ItemInventoryTabClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "7d9ae1b5533f9a03e03d59ec273f8a7722673c9216edd3f8485f4a4ca6df6525"
+    },
+    {
+      "Path": "ServerScriptService.Services.ForgePersistence",
+      "File": "src/ServerScriptService/Services/ForgePersistence.luau",
+      "MatchesGitFile": true,
+      "SHA256": "2c3581f645700d1250cfc523e293af209cca00c65486443eb990c0c08be49952"
+    },
+    {
+      "Path": "ReplicatedStorage.Config.StrengthHUDStyle",
+      "File": "src/ReplicatedStorage/Config/StrengthHUDStyle.luau",
+      "MatchesGitFile": true,
+      "SHA256": "6b02fc290658231a2357d7c99f818f3b85bcae94c0cdf468ecd07c0b488e713c"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.UI.AutoTapClient",
+      "File": "src/StarterPlayer/StarterPlayerScripts/UI/AutoTapClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "1f1a4f7c2d9068e16682e1b315ba4ab163820efc640a9a5bf2a7390f51fba3d5"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.ForgeInventory",
+      "File": "src/ReplicatedStorage/Modules/ForgeInventory.luau",
+      "MatchesGitFile": true,
+      "SHA256": "e1f22f966eb573477f9fdca05892577e834891013ad5438b4d4e81af50df921c"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.ShopBenefitsClient",
+      "File": "src/StarterGui/StrengthGui/ShopBenefitsClient.luau",
+      "MatchesGitFile": true,
+      "SHA256": "45c3fc9e3a581d0846dd59ed835a430ec6d6df0d233a1856306d877fe1fb3947"
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.ForgeController",
+      "File": "src/ServerScriptService/Systems/Controllers/ForgeController.server.luau",
+      "MatchesGitFile": true,
+      "SHA256": "549504cdfdfcfacc9d5f1168fe042daf33a65451caff7aec49307c8ec41cabf4"
+    },
+    {
+      "Path": "ServerScriptService.Services.ForgeService",
+      "File": "src/ServerScriptService/Services/ForgeService.luau",
+      "MatchesGitFile": true,
+      "SHA256": "d947836d1064a4e609ac0dde650900ac66ba91ed08bc67d5802216944679196a"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.HUDLayout",
+      "File": "src/ReplicatedStorage/Modules/HUDLayout.luau",
+      "MatchesGitFile": true,
+      "SHA256": "72f390edbf57ef96e4b9a46507cf7ce5b5cf38f6f321877265a2887b44e8c5e4"
+    },
+    {
+      "Path": "ServerScriptService.Services.PlayerDataService",
+      "File": "src/ServerScriptService/Services/PlayerDataService.luau",
+      "MatchesGitFile": true,
+      "SHA256": "4b8a9a16a2e30df6651933c800954c8b61fdb57dcff42602fd896bbcde39521a"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.SpeedInventoryClient",
+      "File": "src/StarterGui/StrengthGui/SpeedInventoryClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "d195d428081ddfc0f92708a7cc1c8c1bb6c339dcd5c36e1b240cf0620aaf9bc1"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.InventoryCounts",
+      "File": "src/ReplicatedStorage/Modules/InventoryCounts.luau",
+      "MatchesGitFile": true,
+      "SHA256": "3be3d38c922a73dca25f667e1b71ed7d9786d98fd7e1d19545b7a12113e19a17"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.InventoryPanelClient",
+      "File": "src/StarterGui/StrengthGui/InventoryPanelClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "ca37e4ee1b5066e625768f2a7320a7a4fa480a81dd495f306f40e1836043701b"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.StrengthHUDPresentation",
+      "File": "src/ReplicatedStorage/Modules/StrengthHUDPresentation.luau",
+      "MatchesGitFile": true,
+      "SHA256": "7a12fe2a764e5b075272d9507c60baa6f81d1e13b11b3497bf037d0a762af98b"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.UI.StageSkipClient",
+      "File": "src/StarterPlayer/StarterPlayerScripts/UI/StageSkipClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "a4763d60fdbbbe23dba1688cc97080c7a33e49cc6d11b4b607458c645fa2b9fc"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+      "File": "src/StarterPlayer/StarterPlayerScripts/Services/DumbbellStandClient.luau",
+      "MatchesGitFile": true,
+      "SHA256": "556320d4de2aafc211204e46d1adf0362d7dde34ec8fd0155fd3868399025cb4"
+    },
+    {
+      "Path": "ServerScriptService.Services.ItemService",
+      "File": "src/ServerScriptService/Services/ItemService.luau",
+      "MatchesGitFile": true,
+      "SHA256": "871678311d8df12722223917ae8315ca1aab6b7960e67533794a0280fe55d6ea"
+    },
+    {
+      "Path": "ServerScriptService.Services.StrengthManager",
+      "File": "src/ServerScriptService/Services/StrengthManager.luau",
+      "MatchesGitFile": true,
+      "SHA256": "8e0f160c2f4f98b761444cf5d658b86bf907098bf4dd5268ea05a432048b1410"
+    },
+    {
+      "Path": "ServerScriptService.World.EnemyManager",
+      "File": "src/ServerScriptService/World/EnemyManager.luau",
+      "MatchesGitFile": true,
+      "SHA256": "d293b74f2125e7b1cbd39e41afcb410b77dc252e42c94b1048597975c04bcf8b"
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "File": "src/StarterPlayer/StarterPlayerScripts/Combat/CombatClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "a399ee92830a83a6530d53d69d7c12f20ef4266c46d38d35dbb6c3552bcc73f7"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.ElementSetBonus",
+      "File": "src/ReplicatedStorage/Modules/ElementSetBonus.luau",
+      "MatchesGitFile": false,
+      "SHA256": "01f6ec50fd89e34b6e3eca7f16cd45dbd77ec32f78566ab04c24bcab246e01fe"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.InventoryCapacityUpgradeClient",
+      "File": "src/StarterGui/StrengthGui/InventoryCapacityUpgradeClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "49b61c0343311b66d1210226f5c278d2dae9589e33d9f290540b1aba978c3fd7"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.AuraInventoryClient",
+      "File": "src/StarterGui/StrengthGui/AuraInventoryClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "c7cf39654f9d843df138252dfa37076b350d757c4eaa91f33988f31a86e242ee"
+    },
+    {
+      "Path": "StarterGui.StrengthGui.EssentialStudShopClient",
+      "File": "src/StarterGui/StrengthGui/EssentialStudShopClient.client.luau",
+      "MatchesGitFile": true,
+      "SHA256": "8ca83cf5c5e17858a5d9e0836de1ce17afbb0a0f1c49a18e455ad53b50b64fb4"
+    }
+  ]
+}

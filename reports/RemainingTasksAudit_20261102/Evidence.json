@@ -1,0 +1,415 @@
+{
+  "Date": "2026-11-02",
+  "PlaceId": 126576845524886,
+  "BaselineCommit": "60e84fd853e61923c41ee46e7f0914564d22badc",
+  "Method": "Focused solo native Play with memory-only stores and prepared states. No production data, real payment, implementation change or retained screenshot.",
+  "PriorPresentationSourceComparison": {
+    "Mismatch": [],
+    "Compared": 17
+  },
+  "DumbbellSale": {
+    "PreparedCount": 3,
+    "EquippedType": "NORMAL_01",
+    "SellTwo": {
+      "Success": true,
+      "Code": "Applied",
+      "RemainingCount": 1,
+      "Equipped": "NORMAL_01"
+    },
+    "SellLast": {
+      "Success": false,
+      "Code": "EquippedLastCopy"
+    },
+    "ActualInventoryUI": {
+      "Sale": "Keep 1",
+      "Quantity": 0,
+      "Count": "×1",
+      "Active": false,
+      "Interactable": false,
+      "Selected": "1"
+    }
+  },
+  "Aura": {
+    "RuntimeLabels": [
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.AuraName",
+        "Font": "FredokaOne",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Text": "Pink Aura",
+        "TextTransparency": 0,
+        "AncestorVisible": true
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.StrengthBonus",
+        "Font": "FredokaOne",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Text": "+5 Strength",
+        "TextTransparency": 0,
+        "AncestorVisible": true
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton",
+        "Font": "FredokaOne",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Text": "",
+        "TextTransparency": 1,
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.Label",
+        "Font": "FredokaOne",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Text": "BUY",
+        "TextTransparency": 1,
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.PinkAuraCard.BuyButton.PurchasedButtonVisual.Main.Amount",
+        "Font": "FredokaOne",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Text": "30",
+        "TextTransparency": 0,
+        "AncestorVisible": true
+      }
+    ],
+    "Screen": "1390x622 unchanged viewport; first three Aura rows and prices inspected. Japanese resolved fallback family unknown. Other rows property-only."
+  },
+  "Purchase": {
+    "RuntimeLabels": [
+      {
+        "Path": "PlayerGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card02_StarterPack.PurchaseArea.Purchase.PurchasedButtonVisual.Main.Amount",
+        "Font": "Legacy",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Text": "...",
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card07_RedProtein.Purchase.PurchasedButtonVisual.Main.Amount",
+        "Font": "Legacy",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Text": "75",
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryPanel.Content.Items.OwnedItems.PROTEIN_COMMON_FIRE.WinPurchase.PurchasedButtonVisual.Main.Amount",
+        "Font": "Legacy",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Text": "75",
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryPanel.Content.Speed.SpeedList.Premium.BuyButton.PurchasedButtonVisual.Main.Amount",
+        "Font": "Legacy",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Text": "...",
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StageSkipGui.Panel.Stages.Stage2.WinButton.PurchasedButtonVisual.Main.Amount",
+        "Font": "Legacy",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Text": "1",
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StageSkipGui.Panel.Stages.Stage2.RobuxButton.PurchasedButtonVisual.Main.Amount",
+        "Font": "Legacy",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Text": " 10",
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryCapacityUpgradePanel.InventoryCapacity.Purchase.PurchasedButtonVisual.Main.Amount",
+        "Font": "Legacy",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Text": "5",
+        "AncestorVisible": false
+      },
+      {
+        "Path": "PlayerGui.StrengthGui.InventoryCapacityUpgradePanel.Speed.Purchase.PurchasedButtonVisual.Main.Amount",
+        "Font": "Legacy",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Text": "100",
+        "AncestorVisible": false
+      }
+    ],
+    "Note": "AncestorVisible does not account for scroll clipping or guarantee pixel visibility. Inactive original ScreenGui pages excluded. Marketplace placeholders are isolated mock results.",
+    "PhysicalExamples": [
+      {
+        "Path": "Workspace.PerStepButtons.1.BillboardGui.Price",
+        "Text": "+3 Strength",
+        "Font": "Legacy"
+      },
+      {
+        "Path": "Workspace.PerStepButtons.1.BillboardGui.Amount.Main",
+        "Text": "5",
+        "Font": "Legacy"
+      },
+      {
+        "Path": "Workspace.PerStepButtons.1.BillboardGui.Status",
+        "Text": "Step to buy",
+        "Font": "Legacy"
+      },
+      {
+        "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Price",
+        "Text": "+800 Strength",
+        "Font": "Legacy"
+      },
+      {
+        "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Amount.Main",
+        "Text": "3000",
+        "Font": "Legacy"
+      },
+      {
+        "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.StationNumber",
+        "Text": "01",
+        "Font": "Legacy"
+      },
+      {
+        "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Status",
+        "Text": "Step to buy",
+        "Font": "Legacy"
+      }
+    ],
+    "EggTemplates": [
+      {
+        "Path": "ReplicatedStorage.Assets.Templates.OpenEgg.Opens.Open1.Title",
+        "Font": "Legacy",
+        "Text": "Open"
+      },
+      {
+        "Path": "ReplicatedStorage.Assets.Templates.OpenEgg.Opens.Open3.Title",
+        "Font": "Legacy",
+        "Text": "Open 3"
+      },
+      {
+        "Path": "ReplicatedStorage.Assets.Templates.OpenEgg.Opens.Open8.Title",
+        "Font": "Legacy",
+        "Text": "Open 8"
+      }
+    ]
+  },
+  "BestEquip": {
+    "BestFromIce": {
+      "Equipment": {
+        "Protein": "PROTEIN_UNCOMMON_ICE",
+        "TrainingBelt": "TRAININGBELT_RARE_ICE",
+        "Glove": "GLOVE_COMMON_ICE"
+      },
+      "Set": "Ice",
+      "Multiplier": 1.5,
+      "Protein": 15,
+      "Belt": 1,
+      "Glove": 0.05
+    },
+    "HigherGlove": {
+      "Equipment": {
+        "Protein": "PROTEIN_UNCOMMON_ICE",
+        "TrainingBelt": "TRAININGBELT_RARE_ICE",
+        "Glove": "GLOVE_UNCOMMON_FIRE"
+      },
+      "Multiplier": 1,
+      "Protein": 15,
+      "Belt": 1,
+      "Glove": 0.1
+    },
+    "ManualIce": {
+      "Equipment": {
+        "Protein": "PROTEIN_UNCOMMON_ICE",
+        "TrainingBelt": "TRAININGBELT_RARE_ICE",
+        "Glove": "GLOVE_COMMON_ICE"
+      },
+      "Set": "Ice",
+      "Multiplier": 1.5,
+      "Protein": 15,
+      "Belt": 1,
+      "Glove": 0.05
+    },
+    "Best": {
+      "Equipment": {
+        "Protein": "PROTEIN_UNCOMMON_ICE",
+        "TrainingBelt": "TRAININGBELT_RARE_ICE",
+        "Glove": "GLOVE_COMMON_ELECTRIC"
+      },
+      "Multiplier": 1,
+      "Protein": 15,
+      "Belt": 1,
+      "Glove": 0.05
+    }
+  },
+  "Auto": {
+    "Setup": {
+      "Attacks": 1,
+      "Boss": "287.79998779296875, 8, 198.89999389648438",
+      "Auto": true,
+      "Position": "287.79998779296875, 7.5, 198.89999389648438",
+      "Fighting": true,
+      "Distance": 0.5,
+      "HP": 374,
+      "Stage": 1
+    },
+    "Far": {
+      "Before": {
+        "Attacks": 1,
+        "Boss": "287.79998779296875, 8, 198.89999389648438",
+        "Auto": true,
+        "Position": "250.79998779296875, 7.5, 133.60000610351562",
+        "Fighting": true,
+        "Distance": 75.0555648803711,
+        "HP": 374,
+        "Stage": 1
+      },
+      "After": {
+        "Attacks": 4,
+        "Boss": "271.8404541015625, 8, 169.33209228515625",
+        "Auto": true,
+        "Position": "250.79998779296875, 7.5, 133.60000610351562",
+        "Fighting": true,
+        "Distance": 41.46966552734375,
+        "HP": 371,
+        "Stage": 1
+      }
+    },
+    "Raised": {
+      "Before": {
+        "Attacks": 4,
+        "Boss": "271.08392333984375, 8, 167.92530822753906",
+        "Auto": true,
+        "Position": "250.79998779296875, 107.5, 133.60000610351562",
+        "Fighting": true,
+        "Distance": 107.19102478027344,
+        "HP": 371,
+        "Stage": 1
+      },
+      "After": {
+        "Attacks": 6,
+        "Boss": "258.2477722167969, 8, 143.93978881835938",
+        "Auto": true,
+        "Position": "250.79998779296875, 107.5, 133.60000610351562",
+        "Fighting": true,
+        "Distance": 100.31266784667969,
+        "HP": 369,
+        "Stage": 1
+      }
+    },
+    "Outside": {
+      "Boss": "266.5818176269531, 8, 159.4107208251953",
+      "Auto": true,
+      "Position": "360.79998779296875, 7.5, 165.875",
+      "Distance": 94.44098663330078,
+      "Stage": 1,
+      "Fighting": false
+    },
+    "ClientEvents": {
+      "GaugeEvents": 4,
+      "Playing": [
+        {
+          "Id": "rbxassetid://14618196485",
+          "Time": 420.4210205078125,
+          "Playing": true
+        },
+        {
+          "Id": "http://www.roblox.com/asset/?id=507766388",
+          "Time": 1.1999996900558472,
+          "Playing": true
+        },
+        {
+          "Id": "rbxassetid://87608603137173",
+          "Time": 0.2666666805744171,
+          "Playing": false
+        }
+      ],
+      "AttackEvents": 4
+    },
+    "Note": "Root anchoring and relocation are runtime fixtures. Elevated position is not a natural-progression claim. No continuous punch-motion visual acceptance."
+  },
+  "AssetAuthorization": [
+    {
+      "Path": "SoundService.UI.Click",
+      "Id": "110783070910373",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    },
+    {
+      "Path": "SoundService.UI.Success",
+      "Id": "132703558395523",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    },
+    {
+      "Path": "SoundService.UI.Winner",
+      "Id": "93441624600336",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    },
+    {
+      "Path": "SoundService.UI.Cash",
+      "Id": "80878570230928",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    },
+    {
+      "Path": "SoundService.UI.Hover",
+      "Id": "70375637366855",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    },
+    {
+      "Path": "SoundService.UI.Notification",
+      "Id": "117918896943222",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    },
+    {
+      "Path": "SoundService.UI.Error",
+      "Id": "137456349421517",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    },
+    {
+      "Path": "SoundService.Music.Classic Easter",
+      "Id": "92759730216628",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    },
+    {
+      "Path": "SoundService.Music.Fun And Games (Sleigh Bells Version)",
+      "Id": "75011432119943",
+      "Class": "Sound",
+      "Loaded": false,
+      "Length": 0,
+      "LogReason": "User is not authorized to access Asset."
+    }
+  ],
+  "VisualLimits": {
+    "Carpet": "Image obtained, route obstructed; visual acceptance remains unconfirmed.",
+    "Trophy": "No new raster acceptance.",
+    "CapacityPanel": "Auto-hid before capture; image cannot establish its appearance."
+  },
+  "RestoredEdit": {
+    "Restored": 37,
+    "Sources": 461,
+    "HttpSame": true,
+    "ProtectedInstances": 19053,
+    "CameraSame": true,
+    "Properties": 55309,
+    "FocusSame": true,
+    "Differences": []
+  }
+}
