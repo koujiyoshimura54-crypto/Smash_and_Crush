@@ -13,13 +13,15 @@ local workspace={FindFirstChild=function(_,name)return name=="Treadmills" and fo
 local dependencies={PlayerDataService={Get=function()return {Loaded=true,Data=data}end},
 DumbbellService={GetStrengthBonus=function()return equipment.Dumbbell end},
 AuraService={GetStrengthBonus=function()return equipment.Aura end},
-ItemService={GetProteinBonus=function()return equipment.Protein end,GetBeltTreadmillBonus=function()return equipment.Belt end,GetElementSetMultiplier=function()return equipment.Element end},
+ItemService={GetEffectiveEffects=function()return {Protein=equipment.Protein,TrainingBelt=equipment.Belt} end},
+PotionService={GetStrengthMultiplier=function()return 7 end,GetTrainingBonus=function()return 99 end},
+StrengthCalculation=require(game.ReplicatedStorage.Modules.StrengthCalculation),
 GamePassService={AreEffectsEnabled=function()return true end,HasPremiumTreadmill=function(_,w)return owned[w]==true end,GetVIPStrengthMultiplier=function()return equipment.VIP end},
 PetServer={GetStrengthMultiplier=function()return equipment.Pet end},
 RebirthConfig={GetMultiplier=function()return equipment.Rebirth end},TrainingConfig={BaseGain=1,TrainingInterval=.5},
 TreadmillConfig={GetForModel=function(m)return m end}}
 local parent={};local config={};for k in pairs(dependencies)do parent[k]=k;config[k]=k end
-local game={GetService=function()return {Config=config}end}
+local game={GetService=function()return {Config=config,Modules=config}end}
 local fn=assert(loadstring(code));setfenv(fn,setmetatable({script={Parent=parent},game=game,workspace=workspace,require=function(k)return dependencies[k]end},{__index=getfenv()}))
 local M=fn();local checks=0
 local function verify(expected,name)checks+=1;local rate,c=M.Get(p);assert(math.abs(rate-expected)<1e-8,name.." "..rate);return c end
@@ -34,7 +36,7 @@ data.Strength=1e30;verify(14,"balance independence")
 p.CurrentWorld=1;p.StrengthPotion=999;verify(14,"current world and potion independence")
 owned[2]=true;local best=verify(70,"W2 premium");assert(best.World==2);checks+=1
 equipment={Dumbbell=10,Aura=20,Protein=30,Belt=3,Rebirth=4,VIP=1.25,Element=1.5,Pet=2}
-verify(61*38*4*1.25*1.5*2/.5,"complete equation")
+verify(61*38*4*1.25*2/.5,"complete equation without final set multiplier")
 assert(data.Strength==1e30 and p.CurrentWorld==1);checks+=1
 return {Checks=checks,NoPlayerMutation=true,World2CandidateRetained=true}
 end

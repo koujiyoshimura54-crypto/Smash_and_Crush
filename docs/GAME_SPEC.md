@@ -452,8 +452,8 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 ## 2026-09-19 — Matching Element Set Bonus
 
 - Protein, Glove, and Training Belt form a set only when all three equipped Items have the same valid Element: Fire, Ice, or Electric. Rarity does not participate in the set check.
-- A matching set multiplies server-authoritative training Strength gain by 1.5 after the existing Rebirth, source, Potion, and VIP multipliers. Fixed rewards remain outside training multipliers.
-- The set is derived from owned/equipped Item data and is never stored separately. Glove Boss Damage and Training Belt tier effects are unchanged.
+- Updated 2026-11-02: a matching set multiplies each equipped Item's base effect by 1.5: Protein Strength addition, Glove Boss damage bonus, and Belt treadmill addition. No final Strength multiplier remains. Base config and fractional values are retained.
+- The set is derived from owned/equipped Item data and is never stored separately. Best Equip compares combinations by the shared training equation, then effective Boss bonus, then current equipment retention. [Implementation and verification](../reports/ElementSetEffects_20261102.md).
 # Boss contact and per-player generation continuity
 
 - Every World1 Boss CombatZone is derived from the current MiniBossCollider with a five-stud horizontal shell. Boss contact accepts the existing forward combat trigger or the character root, so approach direction does not prevent combat before the PersonalBossCollider stops the character.

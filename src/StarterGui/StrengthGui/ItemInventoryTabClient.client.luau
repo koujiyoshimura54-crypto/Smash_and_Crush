@@ -5,7 +5,7 @@ local Badges=require(RS.Modules:WaitForChild("BadgeRenderer"))
 local Presentation=require(RS.Modules:WaitForChild("InventoryPresentation"))
 local player=Players.LocalPlayer
 local Master=require(RS.Config:WaitForChild("ItemMaster"))
-local ItemMultiplierConfig=require(RS.Config:WaitForChild("ItemMultiplierConfig"))
+local ElementSetBonus=require(RS.Modules:WaitForChild("ElementSetBonus"))
 local Products=require(RS.Config:WaitForChild("DeveloperProductConfig"))
 local MarketplacePrice=require(RS.Modules:WaitForChild("MarketplacePrice"))
 local PriceFormat=require(RS.Modules:WaitForChild("NumberFormat"))
@@ -133,9 +133,13 @@ local function stars(parent,item,pos,size)
  return row
 end
 local function effect(item)
- if item.ItemType=="Protein" then return "Strength +"..tostring(ItemMultiplierConfig.GetProteinBonus(item.Rarity,item.WorldId)) end
- if item.ItemType=="Glove" then return string.format("Boss Damage +%g%%",ItemMultiplierConfig.GetGloveBossDamageBonus(item.Rarity,item.WorldId)*100) end
- return "Treadmill +"..tostring(ItemMultiplierConfig.GetBeltTreadmillBonus(item.Rarity,item.WorldId)).."×"
+ local value=ElementSetBonus.GetBaseEffect(item)
+ if equipped[item.ItemType]==item.ItemId and (owned[item.ItemId] or 0)>0 then
+  value=ElementSetBonus.GetEffects(owned,equipped)[item.ItemType]
+ end
+ if item.ItemType=="Protein" then return "Strength +"..tostring(value) end
+ if item.ItemType=="Glove" then return string.format("Boss Damage +%g%%",value*100) end
+ return "Treadmill +"..tostring(value).."×"
 end
 
 -- Claim this page before the shared skin sees any new descendants.

@@ -2519,3 +2519,8 @@ Applied 15 localized Source changes and added two presentation ModuleScripts to 
 All ten Bosses showed actual body movement in native solo Play; representative death/retry/World travel and late-child checks passed. A real two-client native test passed 15 assertions for animation isolation, personal Trophy visibility, mock purchase cancellation and single normal award/return. Carpet floor/occlusion predicates passed, but carpet and post-fix Trophy raster capture timed out; their visual acceptance remains open. All 21 production/test Sources compiled.
 
 Removed four fixtures and restored 38 temporary substitutions. Final Edit: 461 expected Sources, 8,634 protected instances / 37,733 unchanged properties, no unexpected authored topology change; camera/HTTP state preserved. Unsaved, no Save/Publish/rbxl write. [English report, Full Paths and evidence](../reports/World1Presentation_20261102/REPORT.md).
+
+
+## 2026-11-02 — Per-Item element set effects and Best Equip
+
+Applied shared per-Item 1.5 effects, removed final Strength multiplication, and added combination-aware Best Equip to the current canonical Studio. Native isolated Play passed 72 assertions; the pure reference test passed 13. Checked actual Boss/Strength/LV mutations, death/respawn, World travel and existing UI. See [English record and limits](../reports/ElementSetEffects_20261102.md). Cleaned fixtures and left unsaved Edit; no Save/Publish.

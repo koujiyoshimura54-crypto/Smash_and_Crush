@@ -74,7 +74,7 @@ local setMultiplier = Instance.new("TextLabel")
 setMultiplier.Name = "Multiplier"
 setMultiplier.BackgroundTransparency = 1
 setMultiplier.FontFace = hud.LevelPanel.Level.FontFace
-setMultiplier.Text = "×1.5"
+setMultiplier.Text = "Item ×1.5"
 setMultiplier.TextColor3 = Color3.new(1,1,1)
 setMultiplier.TextStrokeColor3 = Color3.fromRGB(24,21,35)
 setMultiplier.TextStrokeTransparency = .1
@@ -171,6 +171,7 @@ local function applyState(state)
  revision += 1
  loaded = true
  local count = 0
+ local effective=elementSetBonus.GetEffects(state.OwnedItems,state.EquippedItems)
  for _, definition in ipairs(definitions) do
   local entry = entries[definition.Kind]
   local id = state.EquippedItems[definition.Kind]
@@ -184,8 +185,8 @@ local function applyState(state)
   entry.ItemId = equipped and id or nil
   entry.Frame.Visible = equipped == true
   if equipped then
-   local value = definition.Get(item.Rarity,item.WorldId) * (definition.Factor or 1)
-   entry.Label.Text = "+" .. string.format("%.2f", value):gsub("0+$", ""):gsub("%.$", "") .. definition.Suffix
+   local value = effective[definition.Kind] * (definition.Factor or 1)
+   entry.Label.Text = "+" .. string.format("%g", value) .. definition.Suffix
    count += 1
   end
  end

@@ -10,6 +10,7 @@ local RebirthConfig=require(ReplicatedStorage.Config:WaitForChild("RebirthConfig
 local PotionService=require(game.ServerScriptService.Services:WaitForChild("PotionService"))
 local ShopPasses=require(game.ServerScriptService.Services.GamePassService)
 local PetServer=require(game.ServerScriptService.Services.PetServer)
+local Calculation=require(ReplicatedStorage.Modules.StrengthCalculation)
 local StrengthManager = {}
 
 local ATTRIBUTE_NAME = "Strength"
@@ -169,14 +170,14 @@ function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier
  local bonus=sourceMultiplier~=nil and DumbbellService.GetStrengthBonus(player) or 0
  local proteinBonus=ItemService.GetProteinBonus(player)
  local auraBonus=AuraService.GetStrengthBonus(player)
- local baseWithBonuses=amount>0 and (amount+(bonus+auraBonus+proteinBonus)*tickCount) or amount
  -- Only the server training caller supplies this multiplier; walking defaults to 1.
  sourceMultiplier=sourceMultiplier or 1
  if not isFiniteNumber(sourceMultiplier) or sourceMultiplier<=0 then return nil, "sourceMultiplier must be positive and finite" end
- local gain=baseWithBonuses*StrengthManager.GetStrengthGainMultiplier(player)*sourceMultiplier*PotionService.GetStrengthMultiplier(player)*ShopPasses.GetVIPStrengthMultiplier(player)*ItemService.GetElementSetMultiplier(player)
- -- Apply only to normal gains after the existing calculation. Fixed rewards and
- -- GetNormalTrainingGain's reward baseline deliberately bypass the Pet ability.
- gain*=PetServer.GetStrengthMultiplier(player)
+ local gain=Calculation.Gain(amount,tickCount,{
+  Dumbbell=bonus,Aura=auraBonus,Protein=proteinBonus,
+  Rebirth=StrengthManager.GetStrengthGainMultiplier(player),StrengthPotion=PotionService.GetStrengthMultiplier(player),
+  VIP=ShopPasses.GetVIPStrengthMultiplier(player),Pet=PetServer.GetStrengthMultiplier(player),
+ },sourceMultiplier)
  return commitGain(player,gain)
 end
 

@@ -65,9 +65,16 @@ function M.Rebind(player,boss,stage)
  active[player]=s
  return s
 end
-function M.Get(player) return active[player] end
-function M.Attack(player)
+function M.Get(player)
  local s=active[player]
+ if s and not s.Completed then
+  s.GloveBonus=ItemService.GetGloveBossDamageBonus(player)
+  s.BattleDamage=s.BattleStartStrength*(1+s.GloveBonus)
+ end
+ return s
+end
+function M.Attack(player)
+ local s=M.Get(player)
  if not s then return "Inactive",nil end
  if s.Completed then return "Complete",s end
  s.Attacks+=1

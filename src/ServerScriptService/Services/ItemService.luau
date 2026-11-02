@@ -2,7 +2,6 @@
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ItemMaster = require(ReplicatedStorage.Config:WaitForChild("ItemMaster"))
-local ItemMultiplierConfig = require(ReplicatedStorage.Config:WaitForChild("ItemMultiplierConfig"))
 local ElementSetBonus = require(ReplicatedStorage.Modules:WaitForChild("ElementSetBonus"))
 local Data = require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
 local Badges = require(game.ServerScriptService.Services:WaitForChild("BadgeAwardService"))
@@ -139,48 +138,74 @@ function ItemService.EquipItem(player,itemId)
  s.Dirty=true
  return true,"Equipped"
 end
--- Best Equip only selects IDs; ownership, slot replacement and dirty tracking
--- remain in EquipItem. No yield occurs until all three slots are processed.
-local rarityRank=ItemMaster.RarityRank
-local bestSlotOrder=ItemMaster.Kinds
+-- Score combinations using one read-only training snapshot. A lower-effect Item
+-- of the same type/element cannot beat a higher one, so retain only that frontier.
+-- Duplicate units never create extra candidates. Equal candidates prefer current IDs.
 function ItemService.EquipBestItems(player)
  local s,code=equipmentSession(player)
  if not s then return false,code end
  if s.Saving then return false,"DataSaving" end
  if s.PendingItemMutation then return false,"InventoryBusy" end
- local selected,ranks={},{}
- local function score(item)
-  local getter=({Protein=ItemMultiplierConfig.GetProteinBonus,Glove=ItemMultiplierConfig.GetGloveBossDamageBonus,TrainingBelt=ItemMultiplierConfig.GetBeltTreadmillBonus})[item.ItemType]
-  return getter and getter(item.Rarity,item.WorldId) or 0
+ -- Lazy require avoids the ItemService/StrengthReference initialization cycle.
+ local Reference=require(script.Parent.StrengthReference)
+ local components,candidates=Reference.GetContext(player,true)
+ if not components then return false,candidates end
+ local owned,current=s.Data.OwnedItems,s.Data.EquippedItems
+ local pools,selected={},{}
+ for _,kind in ipairs(ItemMaster.Kinds) do
+  local byElement={}
+  for id,count in pairs(owned) do
+   local item=ItemMaster.Get(id)
+   if item and item.ItemType==kind and finiteInteger(count) and count>0 then
+    local key=item.Element
+    local prior=byElement[key]
+    local value=ElementSetBonus.GetBaseEffect(item)
+    local old=prior and ElementSetBonus.GetBaseEffect(ItemMaster.Get(prior))
+    if not prior or value>old or (value==old and
+     (id==current[kind] or (prior~=current[kind] and id<prior))) then byElement[key]=id end
+   end
+  end
+  local pool={}
+  for _,id in pairs(byElement) do table.insert(pool,id) end
+  table.sort(pool)
+  if #pool==0 then pool[1]="" end
+  pools[kind]=pool
+  local item=ItemMaster.Get(current[kind])
+  selected[kind]=item and item.ItemType==kind and (owned[current[kind]] or 0)>0 and current[kind] or ""
  end
- for id,count in pairs(s.Data.OwnedItems) do
-  local item=ItemMaster.Get(id)
-  local rank=item and score(item)
-  if item and slots[item.ItemType] and rank and finiteInteger(count) and count>0 then
-   local kind=item.ItemType
-   if not ranks[kind] or rank>ranks[kind]
-    or (rank==ranks[kind] and id<selected[kind]) then
-    selected[kind],ranks[kind]=id,rank
+ local function score(equipped)
+  local effects=ElementSetBonus.GetEffects(owned,equipped)
+  local rate=Reference.Calculate(components,candidates,effects)
+  local changes=0
+  for _,kind in ipairs(ItemMaster.Kinds) do if (current[kind] or "")~=equipped[kind] then changes+=1 end end
+  return rate,effects.Glove,changes
+ end
+ local bestRate,bestDamage,bestChanges=score(selected)
+ local function equal(a,b) return math.abs(a-b)<=1e-12*math.max(1,math.abs(a),math.abs(b)) end
+ for _,protein in ipairs(pools.Protein) do
+  for _,glove in ipairs(pools.Glove) do
+   for _,belt in ipairs(pools.TrainingBelt) do
+    local equipment={Protein=protein,Glove=glove,TrainingBelt=belt}
+    local rate,damage,changes=score(equipment)
+    local tied=equal(rate,bestRate)
+    if (not tied and rate>bestRate) or (tied and
+     ((not equal(damage,bestDamage) and damage>bestDamage) or
+      (equal(damage,bestDamage) and changes<bestChanges))) then
+     selected,bestRate,bestDamage,bestChanges=equipment,rate,damage,changes
+    end
    end
   end
  end
  local changed=false
- for _,kind in ipairs(bestSlotOrder) do
+ -- EquipItem's existing owned/type rules are unchanged. No yield between slots.
+ for _,kind in ipairs(ItemMaster.Kinds) do
   local id=selected[kind]
-  if id then
-   local current=s.Data.EquippedItems[kind]
-   local item=ItemMaster.Get(current)
-   if item and item.ItemType==kind and score(item)==ranks[kind]
-    and ItemService.HasItem(player,current) then
-    id=current
-   end
-   local success,reason=ItemService.EquipItem(player,id)
-   if not success then return false,reason end
-   if reason=="Equipped" then changed=true end
+  if id~="" then
+   local ok,reason=ItemService.EquipItem(player,id)
+   if not ok then return false,reason end
+   changed=changed or reason=="Equipped"
   end
  end
- -- EquipItem already marks changed slots Dirty. Match manual Equip:
- -- reply immediately; periodic/leave/shutdown saves persist EquippedItems.
  return true,changed and "BestEquipped" or "AlreadyBestEquipped"
 end
 
@@ -193,26 +218,14 @@ function ItemService.UnequipItem(player,itemType)
  s.Dirty=true
  return true,"Unequipped"
 end
--- All effects use the existing owned, type-matched equipped slot.
-local function getEquippedRarity(player, itemType)
+-- One effective Item calculation for training, Boss damage and references.
+function ItemService.GetEffectiveEffects(player)
  local s=equipmentSession(player)
- if not s then return nil end
- local id=s.Data.EquippedItems[itemType]
- local item=ItemMaster.Get(id)
- if item and item.ItemType==itemType and ItemService.GetItemCount(player,id)>0 then
-  return item.Rarity,item.WorldId or 1
- end
- return nil
+ return ElementSetBonus.GetEffects(s and s.Data.OwnedItems,s and s.Data.EquippedItems)
 end
-function ItemService.GetProteinBonus(player)
- return ItemMultiplierConfig.GetProteinBonus(getEquippedRarity(player,"Protein"))
-end
-function ItemService.GetGloveBossDamageBonus(player)
- return ItemMultiplierConfig.GetGloveBossDamageBonus(getEquippedRarity(player,"Glove"))
-end
-function ItemService.GetBeltTreadmillBonus(player)
- return ItemMultiplierConfig.GetBeltTreadmillBonus(getEquippedRarity(player,"TrainingBelt"))
-end
+function ItemService.GetProteinBonus(player) return ItemService.GetEffectiveEffects(player).Protein end
+function ItemService.GetGloveBossDamageBonus(player) return ItemService.GetEffectiveEffects(player).Glove end
+function ItemService.GetBeltTreadmillBonus(player) return ItemService.GetEffectiveEffects(player).TrainingBelt end
 function ItemService.GetEquippedElementSet(player)
  local s=equipmentSession(player)
  if not s then return nil end

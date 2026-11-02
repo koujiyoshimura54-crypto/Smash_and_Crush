@@ -465,7 +465,7 @@ Time Rewards and Daily Rewards retain their existing visuals while locked or rea
 
 ## Element Set Bonus HUD
 
-When equipped Protein, Glove, and Training Belt Items share an Element, the Item Effect HUD displays the matching existing Element image beside `×1.5` in the Fire coral, Ice cyan, or Electric gold palette. The compact badge is centered immediately above the three existing Item effects and is hidden for incomplete or mixed sets. The former FIRE / ICE / ELECTRIC SET localization Sources remain as old candidates.
+When equipped Protein, Glove, and Training Belt Items share an Element, the Item Effect HUD displays the matching existing Element image beside `Item ×1.5` in the Fire coral, Ice cyan, or Electric gold palette. Equipped card/HUD effects include the per-Item set bonus; unequipped cards retain base effects. The compact badge remains centered immediately above the three existing Item effects and hidden for incomplete or mixed sets. HUD decimals retain fractional Belt bonuses such as 0.375. Fonts/layout are unchanged. Updated 2026-11-02; [verification](../reports/ElementSetEffects_20261102.md).
 
 ## 2026-09-30 — Run Inventory Phase 5B notification only
 

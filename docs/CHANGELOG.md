@@ -1248,3 +1248,8 @@ Applied the scoped StrengthRewardState change to the canonical Studio, preservin
 ## 2026-11-02 — World1 presentation repairs
 
 Registered exact treadmill carpet surfaces, restored all ten personal Boss animation bindings, and gated whole Trophy equipment by server-confirmed personal qualification. Native solo body-motion checks and 15 real two-client assertions passed; carpet and post-fix Trophy raster acceptance remains unconfirmed. Removed test fixtures and returned the canonical Studio to unsaved Edit without saving/publishing. [Record](../reports/World1Presentation_20261102/REPORT.md).
+
+
+## 2026-11-02 — Per-Item element set effects and Best Equip
+
+Applied shared per-Item 1.5 effects, removed final Strength multiplication, and added combination-aware Best Equip to the current canonical Studio. Native isolated Play passed 72 assertions; the pure reference test passed 13. Checked actual Boss/Strength/LV mutations, death/respawn, World travel and existing UI. See [English record and limits](../reports/ElementSetEffects_20261102.md). Cleaned fixtures and left unsaved Edit; no Save/Publish.
