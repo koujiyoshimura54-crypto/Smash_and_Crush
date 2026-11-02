@@ -900,7 +900,7 @@ local function defeat(p,n)
  p:SetAttribute("IsFighting",false)
  send(p,{Type="Fighting",Active=false})
  send(p,{Type="Gauge",Stage=n,Current=0,Max=Boss.GetStageConfig(n).MaxHP})
- send(p,{Type="EnemyDefeated",Stage=n})
+ send(p,{Type="EnemyDefeated",Stage=n,SpawnGeneration=worldId==1 and enemy and enemy:GetAttribute("SpawnGeneration") or nil})
  -- Boss defeat advances the Major Stage; Trophy remains claimable until pickup.
  task.delay(0.05,function()
   if p.Parent==Players and state(p)==ps and ps.Defeated[n] then
@@ -909,7 +909,7 @@ local function defeat(p,n)
     Badges.Award(p,"FirstSmash")
     local st=Stage.GetState(p)
     if worldId==1 and st.WorldComplete then Badges.Award(p,"World1Complete") end
-    send(p,{Type="StageCleared",Stage=n,CurrentStage=st.CurrentStage,WorldComplete=st.WorldComplete})
+    send(p,{Type="StageCleared",Stage=n,CurrentStage=st.CurrentStage,WorldComplete=st.WorldComplete,SpawnGeneration=worldId==1 and enemy and enemy:GetAttribute("SpawnGeneration") or nil})
    end
   end
  end)
@@ -1065,7 +1065,7 @@ local function updateCombat(p,manualRequest)
        if worldId==1 and n==2 and p:GetAttribute("TutorialCompleted")==false then
         PlayerData.CompleteTutorial(p)
        end
-       send(p,{Type="CombatAttack",Id=attackId,Stage=n,Attack=bs.Attacks+1,Duration=Boss.AttackDuration,HitDelay=manualRequest and 0 or MINIBOSS_DAMAGE_DELAY,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
+       send(p,{Type="CombatAttack",Id=attackId,Stage=n,SpawnGeneration=worldId==1 and e:GetAttribute("SpawnGeneration") or nil,Attack=bs.Attacks+1,Duration=Boss.AttackDuration,HitDelay=manualRequest and 0 or MINIBOSS_DAMAGE_DELAY,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
        s.Pending+=1
        local function applyBossHit()
         s.Pending-=1
@@ -1165,7 +1165,7 @@ function M.Initialize(newMap)map=newMap or W:FindFirstChild(worldId==2 and "Worl
  remote.OnServerEvent:Connect(function(p,d) if inWorld(p) and typeof(d)=="table" and d.Type=="RequestState" then M.SendState(p) Trophy.SendState(p) end end)
  Trophy.Initialize(map,remote,function(p) M.InitializePlayer(p) end,function(p,n)
  return state(p).Defeated[n]==true
-end)
+end,worldId==1 and send or nil)
  Stage.Initialize(map)spawnAll()
  if BossAttack then
   BossAttack.SetHealHandler(function(p,enemy,n,character)

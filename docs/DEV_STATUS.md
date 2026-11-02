@@ -2507,3 +2507,11 @@ Native Edit checks confirm Fredoka One, valid syntax and fitting counter text. O
 ## 2026-11-01 — Current-login offline reward replacement
 
 Changed only StrengthRewardState in canonical PlaceId `126576845524886`: retire old free rewards, display/claim only the current token, retain immutable old paid intents and receipt deduplication. Native226 isolated assertions and focused memory-only Play verified unclaimed/claimed reloads, zero/cap, stale IDs, retries, delayed mock receipts and actual UI/Strength/LV agreement. Restored8 test substitutions, removed helpers and verified11 guarded Sources including Ore merge/Battle Bag/HUD. Left unsaved Edit; no Save/Publish or rbxl write. Real payment, production save and actual rejoin remain untested. [Record](../reports/OfflineRewardRefresh_20261101.md).
+
+## 2026-11-02 — World1 arrows, Boss animation and personal Trophy
+
+Applied 15 localized Source changes and added two presentation ModuleScripts to the current canonical Studio. Registered the two exact treadmill carpet surfaces, restored all ten owner-specific Boss animation bindings, and hid/restored whole Trophy equipment from server-confirmed personal qualification. Preserved approved Merge presentation, World2 animation, balance and map properties.
+
+All ten Bosses showed actual body movement in native solo Play; representative death/retry/World travel and late-child checks passed. A real two-client native test passed 15 assertions for animation isolation, personal Trophy visibility, mock purchase cancellation and single normal award/return. Carpet floor/occlusion predicates passed, but carpet and post-fix Trophy raster capture timed out; their visual acceptance remains open. All 21 production/test Sources compiled.
+
+Removed four fixtures and restored 38 temporary substitutions. Final Edit: 461 expected Sources, 8,634 protected instances / 37,733 unchanged properties, no unexpected authored topology change; camera/HTTP state preserved. Unsaved, no Save/Publish/rbxl write. [English report, Full Paths and evidence](../reports/World1Presentation_20261102/REPORT.md).

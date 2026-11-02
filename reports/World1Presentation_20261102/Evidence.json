@@ -1,0 +1,2601 @@
+{
+  "PlaceId": 126576845524886,
+  "Date": "2026-11-02",
+  "BaseCommit": "1d0715035b701e55c1fb6ea9235527b67f3b1e40",
+  "Methods": {
+    "Data": "Temporary in-memory stores, disabled real purchase/badge APIs",
+    "Combat": "Prepared strength and own wall clearance; real EnemyManager attack/defeat and Trophy pad touches; native respawn/travel",
+    "Visual": "Actual solo Boss screenshots inspected; root-relative bone/mesh samples additionally measured",
+    "Multiplayer": "StudioTestService.ExecuteMultiplayerTestAsync(2) on current Edit model",
+    "CaptureLimits": "Carpet and post-fix Trophy raster capture timed out. Multiplayer assertions are actual client properties/body transforms, not inspected images."
+  },
+  "Floor": {
+    "VisibleParts": 24,
+    "RouteTarget": "Treadmill",
+    "RouteExists": true,
+    "ChevronCount": 21,
+    "ActiveCache": true,
+    "Floors": 55,
+    "OnScreenParts": 0,
+    "Carpets": [
+      {
+        "Top": 4.209009312093258,
+        "Path": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Lower",
+        "Registered": true,
+        "Query": true
+      },
+      {
+        "Top": 4.400014594197273,
+        "Path": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper",
+        "Registered": true,
+        "Query": true
+      },
+      {
+        "Top": 4.4000150710344315,
+        "Path": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.Upper",
+        "Registered": true,
+        "Query": true
+      },
+      {
+        "Top": 4.2120146825909615,
+        "Path": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.Lower",
+        "Registered": true,
+        "Query": true
+      }
+    ],
+    "Trace": [
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+        "Center": [
+          285.5294189453125,
+          7.339282035827637,
+          10.389752388000488
+        ],
+        "PartVisible": true,
+        "Height": 4.400015354156494,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 1
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+        "Center": [
+          283.19775390625,
+          7.339282035827637,
+          7.779512882232666
+        ],
+        "PartVisible": true,
+        "Height": 4.400015354156494,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 2
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+        "Center": [
+          280.8660888671875,
+          7.339282035827637,
+          5.169273376464844
+        ],
+        "PartVisible": true,
+        "Height": 4.400015354156494,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 3
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+        "Center": [
+          278.534423828125,
+          7.339282035827637,
+          2.5590343475341797
+        ],
+        "PartVisible": true,
+        "Height": 4.400015354156494,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 4
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Lower",
+        "Index": 5,
+        "Blocker": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          276.2027587890625,
+          7.339282035827637,
+          -0.05120563507080078
+        ],
+        "Height": 4.212014198303223,
+        "Decision": "FootprintHeightEdge",
+        "FootprintProbe": 4
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Center": [
+          273.87109375,
+          7.339282035827637,
+          -2.661444664001465
+        ],
+        "PartVisible": true,
+        "Height": 4,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 6
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Center": [
+          271.5394287109375,
+          7.339282035827637,
+          -5.271683692932129
+        ],
+        "PartVisible": true,
+        "Height": 4,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 7
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Index": 8,
+        "Blocker": "Workspace.Chill Octopus.PetMesh",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          269.2077941894531,
+          7.339282035827637,
+          -7.881922721862793
+        ],
+        "Height": 4,
+        "Decision": "Occluded",
+        "FootprintProbe": 2
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Index": 9,
+        "Blocker": "Workspace.Chill Octopus.PetMesh",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          266.8761291503906,
+          7.339282035827637,
+          -10.49216365814209
+        ],
+        "Height": 4,
+        "Decision": "Occluded",
+        "FootprintProbe": 1
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Index": 10,
+        "Blocker": "Workspace.Chill Octopus.PetMesh",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          264.5444641113281,
+          7.339282035827637,
+          -13.102402687072754
+        ],
+        "Height": 4,
+        "Decision": "Occluded",
+        "FootprintProbe": 1
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Index": 11,
+        "Blocker": "Workspace.Chill Octopus.PetMesh",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          262.2127990722656,
+          7.339282035827637,
+          -15.712641716003418
+        ],
+        "Height": 4,
+        "Decision": "Occluded",
+        "FootprintProbe": 1
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Center": [
+          259.8811340332031,
+          7.339282035827637,
+          -18.322879791259766
+        ],
+        "PartVisible": true,
+        "Height": 4,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 12
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Center": [
+          257.5494689941406,
+          7.339282035827637,
+          -20.933120727539062
+        ],
+        "PartVisible": true,
+        "Height": 4,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 13
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.Floor",
+        "Index": 14,
+        "Blocker": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Lower",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          255.21780395507812,
+          7.339282035827637,
+          -23.543357849121094
+        ],
+        "Height": 4,
+        "Decision": "FootprintHeightEdge",
+        "FootprintProbe": 2
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Lower",
+        "Index": 15,
+        "Blocker": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          252.88613891601562,
+          7.339282035827637,
+          -26.15359878540039
+        ],
+        "Height": 4.209009647369385,
+        "Decision": "FootprintHeightEdge",
+        "FootprintProbe": 2
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper",
+        "Center": [
+          250.55447387695312,
+          7.339282035827637,
+          -28.763835906982422
+        ],
+        "PartVisible": true,
+        "Height": 4.400015354156494,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 16
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper",
+        "Center": [
+          248.22280883789062,
+          7.339282035827637,
+          -31.37407684326172
+        ],
+        "PartVisible": true,
+        "Height": 4.400015354156494,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 17
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper",
+        "Center": [
+          245.8911590576172,
+          7.339282035827637,
+          -33.984317779541016
+        ],
+        "PartVisible": true,
+        "Height": 4.400015354156494,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 18
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper",
+        "Center": [
+          243.5594940185547,
+          7.339282035827637,
+          -36.59455490112305
+        ],
+        "PartVisible": true,
+        "Height": 4.400015354156494,
+        "Decision": "Visible",
+        "ActualFloorOnly": true,
+        "Index": 19
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper",
+        "Index": 20,
+        "Blocker": "Workspace.Treadmills.Normal01.1",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          241.2278289794922,
+          7.339282035827637,
+          -39.204795837402344
+        ],
+        "Height": 4.400015354156494,
+        "Decision": "Occluded",
+        "FootprintProbe": 1
+      },
+      {
+        "Surface": "Workspace.GeneratedMap.TrainingArea.PathToTreadmills.ThreadmillStand.Upper",
+        "Index": 21,
+        "Blocker": "Workspace.Treadmills.Normal01.2",
+        "ActualFloorOnly": false,
+        "PartVisible": false,
+        "Center": [
+          238.8961639404297,
+          7.339282035827637,
+          -41.815032958984375
+        ],
+        "Height": 4.400015354156494,
+        "Decision": "Occluded",
+        "FootprintProbe": 1
+      }
+    ],
+    "Scheduler": true,
+    "Parts": 42
+  },
+  "Bosses": [
+    {
+      "Stage": 1,
+      "BodyMotion": {
+        "ChangedBones": 16,
+        "ChangedVisibleParts": 0,
+        "MaxAngle": 0.7192901968955994,
+        "MaxPosition": 1.9795243740081787
+      },
+      "Tracks": [
+        {
+          "Name": "Animation",
+          "Time": 2.0375001430511475,
+          "Speed": 1,
+          "Priority": "Idle",
+          "Length": 3.799999952316284,
+          "Id": "rbxassetid://91205904952804"
+        },
+        {
+          "Name": "Stage01Walk",
+          "Time": 0.8874996304512024,
+          "Speed": 1,
+          "Priority": "Movement",
+          "Length": 1.149999976158142,
+          "Id": "rbxassetid://101135921440052"
+        }
+      ],
+      "VisibleMeshes": 3,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 2,
+      "BodyMotion": {
+        "ChangedBones": 18,
+        "ChangedVisibleParts": 2,
+        "MaxAngle": 0.48974093794822693,
+        "MaxPosition": 1.8978772163391113
+      },
+      "Tracks": [
+        {
+          "Name": "Animation",
+          "Time": 1.770833134651184,
+          "Speed": 1,
+          "Priority": "Idle",
+          "Length": 2.799999952316284,
+          "Id": "rbxassetid://132887057767342"
+        },
+        {
+          "Name": "Stage02Walk",
+          "Time": 0.7208329439163208,
+          "Speed": 1,
+          "Priority": "Movement",
+          "Length": 1.0499999523162842,
+          "Id": "rbxassetid://85312619327964"
+        }
+      ],
+      "VisibleMeshes": 2,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 3,
+      "BodyMotion": {
+        "ChangedBones": 0,
+        "ChangedVisibleParts": 15,
+        "MaxAngle": 1.3064899444580078,
+        "MaxPosition": 3.2488813400268555
+      },
+      "Tracks": [
+        {
+          "Name": "Stage03Idle",
+          "Time": 2.0500004291534424,
+          "Speed": 1,
+          "Priority": "Idle",
+          "Length": 3.7666666507720947,
+          "Id": "rbxassetid://507766388"
+        },
+        {
+          "Name": "Stage03Walk",
+          "Time": 0.46249955892562866,
+          "Speed": 0.6000000238418579,
+          "Priority": "Movement",
+          "Length": 0.625,
+          "Id": "rbxassetid://16562332340"
+        }
+      ],
+      "VisibleMeshes": 15,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 4,
+      "BodyMotion": {
+        "ChangedBones": 5,
+        "ChangedVisibleParts": 0,
+        "MaxAngle": 3.129532814025879,
+        "MaxPosition": 2.8576207160949707
+      },
+      "Tracks": [
+        {
+          "Name": "Stage04FlyingIdle",
+          "Time": 1.7958325147628784,
+          "Speed": 1,
+          "Priority": "Idle",
+          "Length": 3.200000047683716,
+          "Id": "rbxassetid://106628129530672"
+        }
+      ],
+      "VisibleMeshes": 2,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 5,
+      "BodyMotion": {
+        "ChangedBones": 31,
+        "ChangedVisibleParts": 0,
+        "MaxAngle": 0.7822033166885376,
+        "MaxPosition": 4.348519325256348
+      },
+      "Tracks": [
+        {
+          "Name": "Animation",
+          "Time": 1.6166659593582153,
+          "Speed": 1,
+          "Priority": "Idle",
+          "Length": 2.5,
+          "Id": "rbxassetid://112974249593053"
+        },
+        {
+          "Name": "Stage05Walk",
+          "Time": 0.09999938309192657,
+          "Speed": 1,
+          "Priority": "Movement",
+          "Length": 1.5,
+          "Id": "rbxassetid://117716156512077"
+        }
+      ],
+      "VisibleMeshes": 5,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 6,
+      "BodyMotion": {
+        "ChangedBones": 22,
+        "ChangedVisibleParts": 0,
+        "MaxAngle": 0.5060028433799744,
+        "MaxPosition": 3.08219051361084
+      },
+      "Tracks": [
+        {
+          "Name": "Stage06Walk",
+          "Time": 0.4333327114582062,
+          "Speed": 1,
+          "Priority": "Movement",
+          "Length": 1.399999976158142,
+          "Id": "rbxassetid://75886030899803"
+        }
+      ],
+      "VisibleMeshes": 9,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 7,
+      "BodyMotion": {
+        "ChangedBones": 16,
+        "ChangedVisibleParts": 0,
+        "MaxAngle": 0.49367979168891907,
+        "MaxPosition": 0.19548092782497406
+      },
+      "Tracks": [
+        {
+          "Name": "Stage07Walk",
+          "Time": 1.6083327531814575,
+          "Speed": 1,
+          "Priority": "Movement",
+          "Length": 2,
+          "Id": "rbxassetid://74631943240369"
+        }
+      ],
+      "VisibleMeshes": 2,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 8,
+      "BodyMotion": {
+        "ChangedBones": 34,
+        "ChangedVisibleParts": 2,
+        "MaxAngle": 1.0368114709854126,
+        "MaxPosition": 5.75229024887085
+      },
+      "Tracks": [
+        {
+          "Name": "Stage08PeelWave",
+          "Time": 1.6833324432373047,
+          "Speed": 1,
+          "Priority": "Idle",
+          "Length": 3.5999999046325684,
+          "Id": "rbxassetid://115610694828356"
+        }
+      ],
+      "VisibleMeshes": 2,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 9,
+      "BodyMotion": {
+        "ChangedBones": 67,
+        "ChangedVisibleParts": 0,
+        "MaxAngle": 0.8671062588691711,
+        "MaxPosition": 4.330180644989014
+      },
+      "Tracks": [
+        {
+          "Name": "Stage09Walk",
+          "Time": 1.7166659832000732,
+          "Speed": 1,
+          "Priority": "Movement",
+          "Length": 2.200000047683716,
+          "Id": "rbxassetid://108628810173990"
+        }
+      ],
+      "VisibleMeshes": 14,
+      "ScreenInspected": true
+    },
+    {
+      "Stage": 10,
+      "BodyMotion": {
+        "ChangedBones": 21,
+        "ChangedVisibleParts": 0,
+        "MaxAngle": 1.4476302862167358,
+        "MaxPosition": 7.025848865509033
+      },
+      "Tracks": [
+        {
+          "Name": "Stage10WingFlap",
+          "Time": 1.7666661739349365,
+          "Speed": 1,
+          "Priority": "Idle",
+          "Length": 3.200000047683716,
+          "Id": "rbxassetid://104415070241342"
+        }
+      ],
+      "VisibleMeshes": 7,
+      "ScreenInspected": true
+    }
+  ],
+  "Solo": {
+    "TrophyShown": [
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 1,
+        "EnabledGui": 1,
+        "VisibleParts": 1
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 1,
+        "EnabledGui": 1,
+        "VisibleParts": 1
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 2,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 2,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 3,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 3,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 4,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 4,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 5,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 5,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 6,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 6,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 7,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 7,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 8,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 8,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 9,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 9,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 10,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 10,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      }
+    ],
+    "TrophyCollected": [
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 1,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 1,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 2,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 2,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 3,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 3,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 4,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 4,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 5,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 5,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 6,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 6,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 7,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 7,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 8,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 8,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 9,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 9,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": false,
+        "EnabledEffects": 0,
+        "Stage": 10,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      },
+      {
+        "Double": true,
+        "EnabledEffects": 0,
+        "Stage": 10,
+        "EnabledGui": 0,
+        "VisibleParts": 0
+      }
+    ],
+    "LateHidden": {
+      "Decal": 1,
+      "Transparency": 0.41999998688697815,
+      "LTM": 1,
+      "Particle": false,
+      "Light": false
+    },
+    "LateShown": {
+      "Decal": 0,
+      "Transparency": 0.41999998688697815,
+      "LTM": 0.20000000298023224,
+      "Particle": false,
+      "Light": true
+    },
+    "Death": {
+      "Bones": 0,
+      "Arrows": 0,
+      "Tracks": [],
+      "Trophies": [
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 1,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 1,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 2,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 2,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 3,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 3,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 4,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 4,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 5,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 5,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 6,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 6,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 7,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 7,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 8,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 8,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 9,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 9,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 10,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 10,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        }
+      ],
+      "VisibleMeshes": 0,
+      "OreTarget": "nil",
+      "Motors": 0,
+      "World": 1
+    },
+    "Retry": {
+      "BodyMotion": {
+        "ChangedBones": 34,
+        "ChangedVisibleParts": 2,
+        "MaxAngle": 1.0457295179367065,
+        "MaxPosition": 5.439478397369385
+      },
+      "Snapshot": {
+        "OreTarget": "nil",
+        "Run": 9,
+        "VisibleMeshes": 2,
+        "Bones": 34,
+        "World": 1,
+        "Tracks": [
+          {
+            "Name": "Stage08PeelWave",
+            "Time": 1.7250001430511475,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Length": 3.5999999046325684,
+            "Id": "rbxassetid://115610694828356"
+          }
+        ],
+        "Generation": 9,
+        "Trophies": [
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 1,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 1,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 2,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 2,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 3,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 3,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 4,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 4,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 5,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 5,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 6,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 6,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 7,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 7,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 8,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 8,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 9,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 9,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 10,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 10,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          }
+        ],
+        "Arrows": 0,
+        "Stage": 8,
+        "Motors": 2
+      }
+    },
+    "World2": {
+      "OreTarget": "6.02763557434082, 9.250000953674316, 1932.2628173828125",
+      "VisibleMeshes": 0,
+      "Bones": 0,
+      "Tracks": [],
+      "World": 2,
+      "Arrows": 4,
+      "ArrowTarget": "OreMerge",
+      "Trophies": [
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 1,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 1,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 2,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 2,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 3,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 3,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 4,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 4,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 5,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 5,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 6,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 6,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 7,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 7,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 8,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 8,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 9,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 9,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": false,
+          "EnabledEffects": 0,
+          "Stage": 10,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        },
+        {
+          "Double": true,
+          "EnabledEffects": 0,
+          "Stage": 10,
+          "EnabledGui": 0,
+          "VisibleParts": 0
+        }
+      ],
+      "Motors": 0
+    },
+    "WorldReturn": {
+      "BodyMotion": {
+        "ChangedBones": 34,
+        "ChangedVisibleParts": 2,
+        "MaxAngle": 0.9896271228790283,
+        "MaxPosition": 4.601901054382324
+      },
+      "Snapshot": {
+        "OreTarget": "nil",
+        "Run": 10,
+        "VisibleMeshes": 2,
+        "Bones": 34,
+        "World": 1,
+        "Tracks": [
+          {
+            "Name": "Stage08PeelWave",
+            "Time": 1.8916665315628052,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Length": 3.5999999046325684,
+            "Id": "rbxassetid://115610694828356"
+          }
+        ],
+        "Generation": 11,
+        "Trophies": [
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 1,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 1,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 2,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 2,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 3,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 3,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 4,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 4,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 5,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 5,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 6,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 6,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 7,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 7,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 8,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 8,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 9,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 9,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": false,
+            "EnabledEffects": 0,
+            "Stage": 10,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          },
+          {
+            "Double": true,
+            "EnabledEffects": 0,
+            "Stage": 10,
+            "EnabledGui": 0,
+            "VisibleParts": 0
+          }
+        ],
+        "Arrows": 0,
+        "Stage": 8,
+        "Motors": 2
+      }
+    },
+    "StaleGeneration": {
+      "SameActor": true,
+      "RejectedOld": true
+    },
+    "LateBoss": {
+      "Before": 2,
+      "OldStopped": true,
+      "DelayedWalkRestored": 2,
+      "Sample": {
+        "BodyMotion": {
+          "ChangedBones": 16,
+          "ChangedVisibleParts": 0,
+          "MaxAngle": 0.7095275521278381,
+          "MaxPosition": 1.65634024143219
+        },
+        "Snapshot": {
+          "World": 1,
+          "OreTarget": "nil",
+          "Run": 3,
+          "VisibleMeshes": 3,
+          "Bones": 16,
+          "Trophies": [
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 1,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 1,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 2,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 2,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 3,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 3,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 4,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 4,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 5,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 5,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 6,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 6,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 7,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 7,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 8,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 8,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 9,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 9,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": false,
+              "EnabledEffects": 0,
+              "Stage": 10,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            },
+            {
+              "Double": true,
+              "EnabledEffects": 0,
+              "Stage": 10,
+              "EnabledGui": 0,
+              "VisibleParts": 0
+            }
+          ],
+          "Tracks": [
+            {
+              "Name": "Animation",
+              "Time": 2.2999987602233887,
+              "Speed": 1,
+              "Priority": "Idle",
+              "Length": 3.799999952316284,
+              "Id": "rbxassetid://91205904952804"
+            },
+            {
+              "Name": "Stage01Walk",
+              "Time": 0.6333332061767578,
+              "Speed": 1,
+              "Priority": "Movement",
+              "Length": 1.149999976158142,
+              "Id": "rbxassetid://101135921440052"
+            }
+          ],
+          "Generation": 2,
+          "Arrows": 48,
+          "ArrowTarget": "Treadmill",
+          "Stage": 1,
+          "Motors": 3
+        }
+      },
+      "DelayedWalkAbsent": 1
+    },
+    "TrophyReplacement": {
+      "ReplacementShown": 0,
+      "OriginalRestored": 0
+    },
+    "MergeOpen": {
+      "Step": "ChooseOre",
+      "ArrowParts": 0,
+      "Target": null
+    },
+    "MergeResume": {
+      "Step": "GoToMerge",
+      "VisibleArrowParts": 14
+    }
+  },
+  "Multiplayer": {
+    "State": "Finished",
+    "Result": {
+      "Snapshots": {
+        "Before": [
+          {
+            "BodyMotion": {
+              "ChangedBones": 34,
+              "ChangedVisibleParts": 2,
+              "MaxAngle": 0.5691434741020203,
+              "MaxPosition": 2.6473381519317627
+            },
+            "Snapshot": {
+              "Bones": 34,
+              "OreTarget": "nil",
+              "Run": 3,
+              "VisibleMeshes": 2,
+              "Trophies": [
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 1,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 1,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 2,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 2,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 3,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 3,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 4,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 4,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 5,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 5,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 6,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 6,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 7,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 7,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 8,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 8,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 9,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 9,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 10,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 10,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                }
+              ],
+              "Motors": 2,
+              "Tracks": [
+                {
+                  "Name": "Stage08PeelWave",
+                  "Time": 1.2999995946884155,
+                  "Speed": 1,
+                  "Length": 3.5999999046325684,
+                  "Priority": "Idle",
+                  "Id": "rbxassetid://115610694828356"
+                }
+              ],
+              "Generation": 2,
+              "Arrows": 24,
+              "ArrowTarget": "Treadmill",
+              "Stage": 8,
+              "World": 1
+            }
+          },
+          {
+            "BodyMotion": {
+              "ChangedBones": 34,
+              "ChangedVisibleParts": 2,
+              "MaxAngle": 0.9932480454444885,
+              "MaxPosition": 2.310527801513672
+            },
+            "Snapshot": {
+              "Bones": 34,
+              "OreTarget": "nil",
+              "Run": 3,
+              "VisibleMeshes": 2,
+              "Trophies": [
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 1,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 1,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 2,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 2,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 3,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 3,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 4,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 4,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 5,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 5,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 6,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 6,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 7,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 7,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 8,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 8,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 9,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 9,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 10,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 10,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                }
+              ],
+              "Motors": 2,
+              "Tracks": [
+                {
+                  "Name": "Stage08PeelWave",
+                  "Time": 3.1624979972839355,
+                  "Speed": 1,
+                  "Length": 3.5999999046325684,
+                  "Priority": "Idle",
+                  "Id": "rbxassetid://115610694828356"
+                }
+              ],
+              "Generation": 2,
+              "Arrows": 190,
+              "ArrowTarget": "Treadmill",
+              "Stage": 8,
+              "World": 1
+            }
+          }
+        ],
+        "OneDefeat": [
+          {
+            "Bones": 67,
+            "OreTarget": "nil",
+            "Run": 4,
+            "VisibleMeshes": 14,
+            "Trophies": [
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 1,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 1,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 2,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 2,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 3,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 3,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 4,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 4,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 5,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 5,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 6,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 6,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 7,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 7,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 8,
+                "EnabledGui": 1,
+                "VisibleParts": 1
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 8,
+                "EnabledGui": 1,
+                "VisibleParts": 1
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 9,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 9,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": false,
+                "EnabledEffects": 0,
+                "Stage": 10,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              },
+              {
+                "Double": true,
+                "EnabledEffects": 0,
+                "Stage": 10,
+                "EnabledGui": 0,
+                "VisibleParts": 0
+              }
+            ],
+            "Motors": 19,
+            "Tracks": [
+              {
+                "Name": "Stage09Walk",
+                "Time": 0.2958333492279053,
+                "Speed": 1,
+                "Length": 2.200000047683716,
+                "Priority": "Movement",
+                "Id": "rbxassetid://108628810173990"
+              }
+            ],
+            "Generation": 4,
+            "Arrows": 190,
+            "ArrowTarget": "Treadmill",
+            "Stage": 9,
+            "World": 1
+          },
+          {
+            "BodyMotion": {
+              "ChangedBones": 34,
+              "ChangedVisibleParts": 2,
+              "MaxAngle": 0.6471453309059143,
+              "MaxPosition": 3.152564525604248
+            },
+            "Snapshot": {
+              "Bones": 34,
+              "OreTarget": "nil",
+              "Run": 3,
+              "VisibleMeshes": 2,
+              "Trophies": [
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 1,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 1,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 2,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 2,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 3,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 3,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 4,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 4,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 5,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 5,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 6,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 6,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 7,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 7,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 8,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 8,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 9,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 9,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": false,
+                  "EnabledEffects": 0,
+                  "Stage": 10,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                },
+                {
+                  "Double": true,
+                  "EnabledEffects": 0,
+                  "Stage": 10,
+                  "EnabledGui": 0,
+                  "VisibleParts": 0
+                }
+              ],
+              "Motors": 2,
+              "Tracks": [
+                {
+                  "Name": "Stage08PeelWave",
+                  "Time": 2.76249623298645,
+                  "Speed": 1,
+                  "Length": 3.5999999046325684,
+                  "Priority": "Idle",
+                  "Id": "rbxassetid://115610694828356"
+                }
+              ],
+              "Generation": 2,
+              "Arrows": 190,
+              "ArrowTarget": "Treadmill",
+              "Stage": 8,
+              "World": 1
+            }
+          }
+        ],
+        "Collected": {
+          "Before": 0,
+          "Repeated": {
+            "Prompts": 3,
+            "PromptBusy": false,
+            "Stage": 1,
+            "Win": 150,
+            "Defeated": [],
+            "World": 1
+          },
+          "After": {
+            "Prompts": 3,
+            "PromptBusy": false,
+            "Stage": 1,
+            "Win": 150,
+            "Defeated": [],
+            "World": 1
+          }
+        },
+        "Cancelled": {
+          "Prompts": 3,
+          "PromptBusy": false,
+          "Stage": 9,
+          "Win": 0,
+          "Defeated": {
+            "8": true
+          },
+          "World": 1
+        }
+      },
+      "Kind": "Two real native clients, in-memory stores, prepared combat",
+      "Passed": true,
+      "Checks": [
+        "Both owners animate actual Stage8 body bones",
+        "Both whole Trophy pairs hidden before defeat",
+        "Other owner remains invisible and unanimated",
+        "Other owner remains invisible and unanimated",
+        "Only defeated owner sees both Trophy devices",
+        "Peer animation continues once after other defeat",
+        "Qualified double pad prompts mock purchase without granting Win",
+        "Mock purchase cancellation releases lock without reward",
+        "Purchase cancellation preserves authorized Trophy",
+        "Owner death hides whole devices",
+        "Peer animation survives other death",
+        "Owner retry has one moving track",
+        "Normal Trophy grants once, repeated contact grants nothing",
+        "Normal collection hides owner Trophy and preserves peer",
+        "Peer animation survives other return"
+      ]
+    },
+    "OK": true
+  },
+  "FinalVerification": {
+    "CameraSame": true,
+    "TopologyDifferences": [
+      {
+        "Path": "explorerSelectConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "hideMeshConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "showMeshConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "cancelValidationConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "runValidationConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "MemStorageConnection",
+        "Now": "nil",
+        "Was": "MemStorageService"
+      },
+      {
+        "Path": "FrameRateManager",
+        "Now": "nil",
+        "Was": "Stats"
+      },
+      {
+        "Path": "Render",
+        "Now": "nil",
+        "Was": "Stats"
+      }
+    ],
+    "ExtraAuthored": [],
+    "Properties": 37733,
+    "FocusSame": true,
+    "Sources": 461,
+    "ProtectedInstances": 8634,
+    "HttpSame": true,
+    "ProtectedDifferences": [],
+    "UnexpectedSources": [],
+    "ChangedSources": [
+      "ServerScriptService.Services.TrophyRewardService",
+      "ServerScriptService.World.EnemyManager",
+      "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "StarterPlayer.StarterPlayerScripts.Combat.Stage03AttackVisual",
+      "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage01AppearanceClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage02AppearanceClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage03IdleClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage04AppearanceClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage05AppearanceClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage06AppearanceClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage07AppearanceClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage08AppearanceClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage09AppearanceClient",
+      "StarterPlayer.StarterPlayerScripts.World.Stage10AppearanceClient"
+    ]
+  },
+  "Topology": {
+    "AuthoredParentChecks": 212895,
+    "UnexpectedAuthoredParentChanges": [],
+    "Added": [
+      "ReplicatedStorage.Modules.World1BossPresentation",
+      "ReplicatedStorage.Modules.PersonalTrophyVisibility"
+    ]
+  },
+  "Export": {
+    "ProductionMatchesExport": true,
+    "CheckedSources": 17
+  },
+  "Limitations": [
+    "No carpet/Trophy post-fix screenshot acceptance; runtime visibility and occlusion only.",
+    "Large Bosses partly cropped in unchanged default camera.",
+    "No physical input/mobile, public server, real paid checkout or persistent production writes."
+  ]
+}

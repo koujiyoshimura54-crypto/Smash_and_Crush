@@ -1240,3 +1240,7 @@ Applied the missing shared-font connection and authored label Font from 3d2b352 
 ## 2026-11-01 — Replace ordinary offline rewards per login
 
 Applied the scoped StrengthRewardState change to the canonical Studio, preserving pending paid promises and receipt IDs. Added replacement/replay regression coverage; native isolated tests and short memory-only Play confirmed fresh rewards after unclaimed or claimed sessions and correct Strength/LV gain. Cleaned test changes and left unsaved Edit. [Results and limits](../reports/OfflineRewardRefresh_20261101.md).
+
+## 2026-11-02 — World1 presentation repairs
+
+Registered exact treadmill carpet surfaces, restored all ten personal Boss animation bindings, and gated whole Trophy equipment by server-confirmed personal qualification. Native solo body-motion checks and 15 real two-client assertions passed; carpet and post-fix Trophy raster acceptance remains unconfirmed. Removed test fixtures and returned the canonical Studio to unsaved Edit without saving/publishing. [Record](../reports/World1Presentation_20261102/REPORT.md).

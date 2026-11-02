@@ -1,6 +1,6 @@
+local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
 -- Idle follows the same personal defeat state as CombatClient.
 -- Action-priority attacks override Idle without changing their timing.
-local remote=game:GetService("ReplicatedStorage").Remotes:WaitForChild("GameRemotes"):WaitForChild("CombatState")
 local rig,idle,walk,destroyConnection
 local hidden=false
 local function release()
@@ -10,8 +10,8 @@ local function release()
  rig=nil
 end
 local function refresh()
- local enemies=workspace:FindFirstChild("Enemies")
- local enemy=enemies and enemies:FindFirstChild("Stage03_Enemy")
+ local enemy=Binding.Get(3)
+ hidden=enemy==nil
  local current=enemy and enemy:FindFirstChild("TungTungSahurRig")
  if current~=rig then release()end
  if hidden then
@@ -50,21 +50,5 @@ local function refresh()
  end
  if walk and not walk.IsPlaying then walk:Play(0.15,1,1); walk:AdjustSpeed(0.6) end
 end
-remote.OnClientEvent:Connect(function(d)
- if d.Type=="Initialize" then
-  hidden=(d.Cleared and d.Cleared[3])==true or (d.Skipped and d.Skipped[3])==true
-  refresh()
- elseif d.Type=="EnemyDefeated" and d.Stage==3 then
-  hidden=true
-  refresh()
- end
-end)
-workspace.DescendantAdded:Connect(function(d)
- if d.Name=="TungTungSahurRig" or d.Name=="Stage03Idle" or d.Name=="Stage03Walk" or d:IsA("Animator") then
-  task.defer(refresh)
- end
-end)
-script.Destroying:Connect(release)
-refresh()
--- Also covers joining after CombatClient's initial snapshot request.
-remote:FireServer({Type="RequestState"})
+local disconnect=Binding.Watch(3,refresh)
+script.Destroying:Connect(function() disconnect();release() end)

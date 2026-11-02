@@ -28,7 +28,10 @@ end
 
 local records = {}
 local activeClaims = {}
-local map, remote, resetRun, isDefeated
+local map, remote, resetRun, isDefeated, presentationSend
+local function notify(player,data)
+ if presentationSend then presentationSend(player,data) else remote:FireClient(player,data) end
+end
 local sequence = 0
 local watched=setmetatable({}, {__mode="k"})
 local function overlap(character,pad,margin)
@@ -71,7 +74,7 @@ function M.Clear(player)
 		for _,connection in record.Connections do connection:Disconnect() end
 
 		if player.Parent == Players then
-			remote:FireClient(player, {
+			notify(player, {
 				Type = "TrophyRemoved",
 				Id = record.Id
 			})
@@ -81,12 +84,14 @@ end
 
 function M.SendState(player)
 	for _, r in records[player] or {} do
-		if not r.Claiming then
-			remote:FireClient(player, {
+		if not r.Claiming and (worldId~=1 or not r.Collected and eligible(player,r)) then
+   local reward=GamePass.GetTrophyWinReward(player, RewardConfig.GetBaseReward(r.Stage,worldId),worldId,false)
+   if worldId==1 and (not eligible(player,r) or r.Collected) then continue end
+			notify(player, {
 				Type = "TrophySpawn",
 				Id = r.Id,
 				Stage = r.Stage,
-				WinReward = GamePass.GetTrophyWinReward(player, RewardConfig.GetBaseReward(r.Stage,worldId),worldId,false),
+				WinReward = reward,
 				StaticButtons = true,
 				CFrame = r.CFrame
 			})
@@ -166,7 +171,7 @@ local function collectAttempt(player, record, part, double, purchased)
   counts.ByStage[record.Stage]=(counts.ByStage[record.Stage] or 0)+1
  end
 	-- Presentation only: emitted after the authoritative Win value has changed.
-	remote:FireClient(player, {
+	notify(player, {
 		Type = "TrophyCollected",
 		Id = record.Id,
 		Stage = record.Stage,
@@ -178,7 +183,7 @@ local function collectAttempt(player, record, part, double, purchased)
   local session=PlayerData.Get(player)
   local owned=session and session.Loaded and session.Data and session.Data.OwnedDumbbells
   if typeof(owned)=="table" then
-   remote:FireClient(player,{
+   notify(player,{
     Type="Dumbbell1GuideUnlocked",
     Stage=record.Stage,
     TrophyId=record.Id,
@@ -338,11 +343,13 @@ function M.Spawn(player, major)
   end),
  }
 
-	remote:FireClient(player, {
+ local reward=GamePass.GetTrophyWinReward(player, baseReward,worldId,false)
+ if worldId==1 and (not eligible(player,r) or r.Collected) then return false end
+	notify(player, {
 		Type = "TrophySpawn",
 		Id = r.Id,
 		Stage = r.Stage,
-		WinReward = GamePass.GetTrophyWinReward(player, baseReward,worldId,false),
+		WinReward = reward,
 		StaticButtons = true,
 		CFrame = r.CFrame
 	})
@@ -350,11 +357,12 @@ function M.Spawn(player, major)
 	return true
 end
 
-function M.Initialize(newMap, combatRemote, reset, defeated)
+function M.Initialize(newMap, combatRemote, reset, defeated, sendPresentation)
 	map = newMap
 	remote = combatRemote
 	resetRun = reset
 	isDefeated = defeated
+ presentationSend=worldId==1 and sendPresentation or nil
 end
 
 local elapsed = 0

@@ -717,3 +717,9 @@ Preserved the700×450 centered panel, background transparency0.22 and lower HUD.
 ## 2026-11-01 — Battle Bag counter font only
 
 `StarterGui.StrengthGui.HUD.RunInventoryLabel` now uses `ReplicatedStorage.Config.StrengthHUDStyle.Font` (Fredoka One). The current authored-GUI `RunInventoryHUDClient` applies that shared font; it does not reconstruct the GUI. Counter text size, geometry, colors, outline, icon and behavior are retained. This does not extend to normal Inventory, Back or tutorial UI.
+
+## 2026-11-02 — World1 personal Trophy and presentation
+
+Each World1 stage's entire TrophyNormalButton/TrophyDoubleButton equipment is locally hidden before the player's server-confirmed defeat qualification, restored with its original visual values while qualified, and hidden after collection/death/run reset/world departure. Shared equipment and server reward/purchase authorization remain unchanged. All ten Boss appearance scripts follow only the local owner's accepted actor and release/rebind their existing clips and effects across lifecycle changes. Initial tutorial floor arrows also register the exact ThreadmillStand Upper/Lower walking surfaces; Merge guide conditions and approved presentation remain unchanged.
+
+Native solo and two-client runtime checks passed. Boss body-motion screenshots were inspected; carpet and post-fix Trophy raster acceptance remain unconfirmed after capture timeouts. [Implementation and verification limits](../reports/World1Presentation_20261102/REPORT.md).

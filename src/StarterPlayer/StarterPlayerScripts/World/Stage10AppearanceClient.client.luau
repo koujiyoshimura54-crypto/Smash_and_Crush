@@ -1,8 +1,8 @@
+local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
 -- Stage10 presentation follows the existing personal combat visibility.
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
-local remote = game:GetService("ReplicatedStorage").Remotes:WaitForChild("GameRemotes"):WaitForChild("CombatState")
 local rig, track
 local hidden = true
 local connections = {}
@@ -58,6 +58,7 @@ local function release()
  table.clear(connections)
  table.clear(watchedParts)
  stopTrack()
+ for emitter,original in emitters do if emitter.Parent then emitter.Rate=original.rate end end
  table.clear(emitters)
  rig = nil
 end
@@ -68,8 +69,8 @@ local function watchPart(part)
  table.insert(connections, part:GetPropertyChangedSignal("Transparency"):Connect(function() task.defer(refresh) end))
 end
 refresh = function()
- local enemies = workspace:FindFirstChild("Enemies")
- local enemy = enemies and enemies:FindFirstChild("Stage10_Enemy")
+ local enemy=Binding.Get(10)
+ hidden=enemy==nil
  local current = enemy and enemy:FindFirstChild("Dragon Cannelloni")
  if current ~= rig then
   release()
@@ -104,18 +105,5 @@ refresh = function()
  if not track.IsPlaying then track:Play(.15, 1, 1) end
  startVFX()
 end
-remote.OnClientEvent:Connect(function(data)
- if data.Type == "Initialize" then
-  hidden = (data.Cleared and data.Cleared[10]) == true or (data.Skipped and data.Skipped[10]) == true
- elseif (data.Type == "EnemyDefeated" or data.Type == "StageCleared") and data.Stage == 10 then
-  hidden = true
- end
- task.defer(refresh)
-end)
-player:GetAttributeChangedSignal("CurrentWorld"):Connect(function() task.defer(refresh) end)
-workspace.DescendantAdded:Connect(function(item)
- if item.Name == "Stage10_Enemy" or item.Name == "Dragon Cannelloni" then task.defer(refresh) end
-end)
-script.Destroying:Connect(release)
-refresh()
-remote:FireServer({Type = "RequestState"})
+local disconnect=Binding.Watch(10,refresh)
+script.Destroying:Connect(function() disconnect();release() end)
