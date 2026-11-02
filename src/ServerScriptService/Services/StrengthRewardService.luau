@@ -28,6 +28,10 @@ function M.View(player)
 		local pending = s.Data.StrengthRewards.Pending[tostring(product.ProductId)]
 		result.Offers[tostring(product.ProductId)] = pending and pending.Amount or rate and State.PackAmount(rate, product.Seconds) or 0
 	end
+	-- Read-only presentation totals; committed state remains the sole authority.
+	result.GrantedTotal=s.Data.StrengthRewards.GrantedTotal
+	result.SessionToken=s.ForgeToken
+	result.Level=s.Data.Level
 	return result
 end
 function M.Request(player, action, value)

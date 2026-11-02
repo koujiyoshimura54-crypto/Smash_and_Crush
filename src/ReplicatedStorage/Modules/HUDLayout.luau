@@ -560,6 +560,7 @@ function M.PurchaseButton(button,currency,value)
    local clip=ui and ui:FindFirstChild(name)
    if clip and clip:IsA("Sound") then clip:Play() end
   end
+  button:SetAttribute("ExistingHoverSE",true);button:SetAttribute("ExistingClickSE",true)
   connect(button.MouseEnter,function()entry.hovered=true;sound("Hover");resize(true)end)
   connect(button.MouseLeave,function()entry.hovered=false;entry.pressed=false;resize(true)end)
   connect(button.MouseButton1Down,function()entry.pressed=true;resize(true)end)

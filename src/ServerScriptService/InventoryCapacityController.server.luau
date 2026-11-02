@@ -16,6 +16,6 @@ remote.OnServerEvent:Connect(function(player, currentCapacity)
 	lastRequest[player] = now
 	local ok, success, code = pcall(Data.PurchaseInventoryCapacity, player, currentCapacity)
 	if not ok then warn("Capacity purchase failed: " .. tostring(success)); success, code = false, "PurchaseFailed" end
-	if player.Parent == Players then remote:FireClient(player, success, code) end
+	if player.Parent == Players then remote:FireClient(player, success, code, success and game.HttpService:GenerateGUID(false) or nil) end
 end)
 Players.PlayerRemoving:Connect(function(player) lastRequest[player] = nil end)

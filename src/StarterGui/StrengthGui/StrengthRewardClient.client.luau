@@ -1,6 +1,7 @@
 local Players = game:GetService("Players")
 local Marketplace = game:GetService("MarketplaceService")
 local RS = game:GetService("ReplicatedStorage")
+local Feedback=require(RS.Modules.UIFeedback)
 local player = Players.LocalPlayer
 local gui = script.Parent
 local Config = require(RS.Config.StrengthRewardConfig)
@@ -43,6 +44,10 @@ task.spawn(function()
 end)
 local function request(action, value)
 	local ok, result = pcall(remote.InvokeServer, remote, action, value)
+	if ok and type(result)=="table" then
+		Feedback.ObserveStrength(result.View or result)
+		if action~="View" and result.Ok==false then Feedback.Denied(result.Code) end
+	end
 	return ok and type(result) == "table" and result or {Ok = false}
 end
 local function paint()

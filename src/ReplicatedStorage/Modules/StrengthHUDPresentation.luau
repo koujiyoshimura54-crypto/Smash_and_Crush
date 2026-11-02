@@ -100,6 +100,7 @@ end
 function M.BindPress(button,visual)
  if bound[button] then return end
  bound[button]=true
+ button:SetAttribute("ExistingClickSE",true)
  local scale=node(visual,"UIScale","PressScale")
  local settings=require(RS.Modules.Config).Button
  local tween

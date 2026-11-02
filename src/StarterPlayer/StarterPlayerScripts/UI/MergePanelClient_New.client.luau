@@ -72,6 +72,7 @@ consumeResult=function(result)
   status="Waiting for save…";return
  end
  local id=pendingRequest.RequestId;pendingRequest=nil;pending=false;revision+=1
+ require(RS.Modules.UIFeedback).ItemMerge(result)
  if result.MergeState and result.MergeState.Loaded then state=result.MergeState;fresh=true end
  status=result.Success and "Merge complete." or errors[result.Code] or "Merge failed. Please retry."
  view:SetItemState(state,fresh,pending,status)

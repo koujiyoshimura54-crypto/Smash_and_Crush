@@ -1253,3 +1253,8 @@ Registered exact treadmill carpet surfaces, restored all ten personal Boss anima
 ## 2026-11-02 — Per-Item element set effects and Best Equip
 
 Applied shared per-Item 1.5 effects, removed final Strength multiplication, and added combination-aware Best Equip to the current canonical Studio. Native isolated Play passed 72 assertions; the pure reference test passed 13. Checked actual Boss/Strength/LV mutations, death/respawn, World travel and existing UI. See [English record and limits](../reports/ElementSetEffects_20261102.md). Cleaned fixtures and left unsaved Edit; no Save/Publish.
+
+
+## 2026-11-02 — Missing event sound feedback
+
+Connected silent active event paths to existing SoundService.UI audio, preserving existing button/hatch/Trophy sounds. Added settings live in ReplicatedStorage.Config.UISoundConfig.Added. Confirmed-result IDs/state guard duplicates; no receipt/save schema change. Isolated native Play checked counts, denial/replay/cancellation, death/respawn and loaded advancing playback. Actual listening and physical mouse/touch input remain unverified. [Full event matrix, changed paths and limits](../reports/EventSoundConnections_20261102.md). Canonical Studio remains unsaved Edit.

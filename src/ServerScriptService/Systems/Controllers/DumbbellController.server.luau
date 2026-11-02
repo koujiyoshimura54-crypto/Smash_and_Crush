@@ -19,10 +19,12 @@ local function getInventoryState(player)
   Win = player:GetAttribute("Win") or 0,
  }
 end
-local function respond(target, player, itemId, success, code, source)
+local function respond(target, player, itemId, success, code, source, purchased)
  if player.Parent ~= Players then return end
  target:FireClient(player, {
   Success = success, Code = code,
+  PurchaseConfirmed=purchased==true,
+  FeedbackId=purchased and game.HttpService:GenerateGUID(false) or nil,
   ItemId = typeof(itemId) == "string" and #itemId <= 128 and itemId or nil,
   State = getInventoryState(player), Source = source,
  })
@@ -30,7 +32,7 @@ end
 local function execute(player, itemId, isEquip, isStand)
  if inFlight[player] then return false, "PurchaseInProgress" end
  inFlight[player] = true
- local ok, success, code = pcall(function()
+ local ok, success, code, purchased = pcall(function()
   if isStand and Service.GetEquippedDumbbell(player) == itemId then return true, "AlreadyEquipped" end
   if isEquip or (isStand and Service.HasDumbbell(player, itemId)) then
    if itemId == "" and not isStand then return Service.UnequipDumbbell(player) end
@@ -38,14 +40,15 @@ local function execute(player, itemId, isEquip, isStand)
   end
   local bought, reason = Service.PurchaseDumbbell(player, itemId)
   if not bought then return false, reason end
-  return Service.EquipDumbbell(player, itemId)
+  local equipped, equipCode=Service.EquipDumbbell(player, itemId)
+  return equipped, equipCode, bought
  end)
  inFlight[player] = nil
  if not ok then
   warn("[DumbbellController] Request failed: " .. tostring(success))
   return false, "PurchaseFailed"
  end
- return success, code
+ return success, code, purchased
 end
 local function inventory(target, player, itemId, context, isEquip)
  -- The former client stand protocol is no longer an equipment entrance.
@@ -57,8 +60,8 @@ local function inventory(target, player, itemId, context, isEquip)
   respond(target, player, itemId, false, "RateLimited"); return
  end
  last[player] = now
- local success, code = execute(player, itemId, isEquip, false)
- respond(target, player, itemId, success, code)
+ local success, code, purchased = execute(player, itemId, isEquip, false)
+ respond(target, player, itemId, success, code, nil, purchased)
 end
 stateRemote.OnServerInvoke = getInventoryState
 remote.OnServerEvent:Connect(function(player, itemId, context)
@@ -69,10 +72,10 @@ equipRemote.OnServerEvent:Connect(function(player, itemId, context)
 end)
 Stand.Start(function(player, itemId)
  if not Service.GetOwnedDumbbells(player) then return false end
- local success, code = execute(player, itemId, false, true)
+ local success, code, purchased = execute(player, itemId, false, true)
  if not success and (code == "DataNotLoaded" or code == "DataSaving"
   or code == "InventorySavePending" or code == "PurchaseInProgress") then return false end
- if code ~= "AlreadyEquipped" then respond(remote, player, itemId, success, code, "DumbbellStand") end
+ if code ~= "AlreadyEquipped" then respond(remote, player, itemId, success, code, "DumbbellStand", purchased) end
  return true
 end)
 Players.PlayerRemoving:Connect(function(player)

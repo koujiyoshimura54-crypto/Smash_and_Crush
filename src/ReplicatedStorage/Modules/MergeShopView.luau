@@ -334,7 +334,7 @@ return function(ctx)
   local key,active,scrolling=drag.Key,drag.Active,drag.Scrolling
   if active or scrolling then blocked[key]=os.clock()+.5 end
   local addIt=active and insideDrop(position);endDrag()
-  if addIt then add(key) end
+  if addIt then add(key);require(RS.Modules.UIFeedback).Play("Click") end
  end
  add=function(key)
   local entry=byKey[key];if not entry or not available(entry) then return end
