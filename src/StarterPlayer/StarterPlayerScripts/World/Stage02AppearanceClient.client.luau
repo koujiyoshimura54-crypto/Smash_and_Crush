@@ -1,3 +1,4 @@
+local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
 -- Personal visual state follows the server's existing combat snapshots.
 local RS=game:GetService("ReplicatedStorage")
 local RunService=game:GetService("RunService")
@@ -27,7 +28,6 @@ local function startFloating(model)
   weld.C0=CFrame.new(localOffset)*floatBase
  end)
 end
-local remote=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild("CombatState")
 local rig,idle,walk,animation,destroyConnection
 local hidden=false
 local originals={}
@@ -42,8 +42,8 @@ local function release()
  originals={}
 end
 local function refresh()
- local enemies=workspace:FindFirstChild("Enemies")
- local enemy=enemies and enemies:FindFirstChild("Stage02_Enemy")
+ local enemy=Binding.Get(2)
+ hidden=enemy==nil
  local current=enemy and enemy:FindFirstChild("TralaleroTralalaRig")
  if current~=rig then
   release()
@@ -97,20 +97,5 @@ local function refresh()
  end
  if walk and not walk.IsPlaying then walk:Play(.15,1,1)end
 end
-remote.OnClientEvent:Connect(function(d)
- if d.Type=="Initialize"then
-  hidden=(d.Cleared and d.Cleared[2])==true or (d.Skipped and d.Skipped[2])==true
-  refresh()
- elseif d.Type=="EnemyDefeated"and d.Stage==2 then
-  hidden=true
-  refresh()
- end
-end)
-workspace.DescendantAdded:Connect(function(d)
- if d.Name=="Stage02VisualRootWeld"or d.Name=="TralaleroTralalaRig"or d.Name=="Stage02Idle"or d.Name=="Stage02Walk"or d:IsA("Animator")or d:IsA("ParticleEmitter")or d:IsA("Trail")or d:IsA("Beam")then
-  task.defer(refresh)
- end
-end)
-script.Destroying:Connect(release)
-refresh()
-remote:FireServer({Type="RequestState"})
+local disconnect=Binding.Watch(2,refresh)
+script.Destroying:Connect(function() disconnect();release() end)

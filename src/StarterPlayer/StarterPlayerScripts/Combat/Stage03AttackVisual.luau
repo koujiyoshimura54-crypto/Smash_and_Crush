@@ -1,3 +1,4 @@
+local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
 -- Personal encounter presentation: driven only by server CombatState events.
 local M={}
 local rig,track,destroyConnection
@@ -16,9 +17,7 @@ function M.Reset()
  rig=nil
 end
 function M.Prepare()
- local enemies=workspace:FindFirstChild("Enemies")
- local owned=enemies and enemies:FindFirstChild("Owner_"..game.Players.LocalPlayer.UserId)
- local enemy=owned and owned:FindFirstChild("Stage03_Enemy")
+ local enemy=Binding.Get(3)
  local current=enemy and enemy:FindFirstChild("TungTungSahurRig")
  if current==rig and track then return track end
  M.Reset()
@@ -39,6 +38,8 @@ end
 function M.Play(d)
  -- Wall attacks do not carry the server's boss Attack counter.
  if d.Stage~=3 or typeof(d.Attack)~="number" or typeof(d.Id)~="number"then return end
+ local enemy=Binding.Get(3)
+ if not enemy or (d.SpawnGeneration~=nil and d.SpawnGeneration~=enemy:GetAttribute("SpawnGeneration")) then return end
  local active=M.Prepare()
  if not active or d.Id<=lastId then return end
  lastId=d.Id
@@ -48,9 +49,14 @@ function M.Play(d)
  local speed=animation:GetAttribute("PlaybackSpeed")
  local delay=math.max(0,d.HitDelay-animation:GetAttribute("SwingTime")/speed)
  task.delay(delay,function()
-  if generation~=version or track~=active or not rig or not rig.Parent then return end
+  if generation~=version or track~=active or not rig or not rig.Parent or Binding.Get(3)~=enemy then return end
   active:Play(0.03,1,speed)
   active.TimePosition=0
  end)
 end
+local disconnect=Binding.Watch(3,function()
+ local enemy=Binding.Get(3)
+ if rig and (not enemy or rig.Parent~=enemy) then M.Reset() end
+end)
+script.Destroying:Connect(function()disconnect();M.Reset()end)
 return M

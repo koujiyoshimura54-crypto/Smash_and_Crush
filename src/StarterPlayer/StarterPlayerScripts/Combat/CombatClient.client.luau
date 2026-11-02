@@ -8,6 +8,8 @@ local stageAttribute=worldId==2 and "World2CurrentStage" or "CurrentStage"
 local stageSurfaceName=worldId==2 and "World2StageSurface" or "StageSurface"
 local P=game:GetService("Players").LocalPlayer
 local RS=game:GetService("ReplicatedStorage")local T=game:GetService("TweenService")local RunService=game:GetService("RunService")
+local BossPresentation=worldId==1 and require(RS.Modules:WaitForChild("World1BossPresentation"))
+local PersonalTrophy=worldId==1 and require(RS.Modules:WaitForChild("PersonalTrophyVisibility")).Mount(P)
 local R=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild(worldId==2 and "World2CombatState" or "CombatState")
 local NumberFormat=require(RS.Modules:WaitForChild("NumberFormat"))
 -- Presentation only: HP and destruction still come from the legacy server.
@@ -266,6 +268,7 @@ local function isBossStage(stage)
  return typeof(stage)=="number" and stage%1==0 and stage>=1 and stage<=10
 end
 local function acceptsBossGeneration(stage,generation)
+ if BossPresentation then return BossPresentation.AcceptGeneration(stage,generation) end
  if typeof(generation)~="number" then return true end
  local enemies=enemyFolder()
  local current=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
@@ -618,6 +621,7 @@ local function setBossVisualVisible(e,on)
    elseif part:GetAttribute("BossVisualPlaying") and not part.IsPlaying then part:Play() end
   end
  end
+ if BossPresentation then BossPresentation.SetVisible(e,on) end
 end
 local function visible(n,on)
  local e=enemy(n)
@@ -758,6 +762,11 @@ R.OnClientEvent:Connect(function(d)
   elseif d.RunRevision~=runRevision then return end
   if typeof(d.MessageSequence)~="number" or d.MessageSequence<=messageSequence then return end
   runRevision=d.RunRevision;messageSequence=d.MessageSequence
+ end
+ if BossPresentation then
+  BossPresentation.SetRevision(runRevision)
+  if isBossStage(d.Stage) and not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
+  PersonalTrophy.Handle(d)
  end
  if d.Type=="CombatAttack" then
   playCombatAttack(d)
@@ -928,6 +937,7 @@ do
  end)
 end
 script.Destroying:Connect(function()
+ if PersonalTrophy then PersonalTrophy.Destroy() end
  if overheadConnection then overheadConnection:Disconnect() end
  for stage in personalBossColliders do removePersonalBossCollider(stage) end
  if folder.Parent then folder:Destroy() end

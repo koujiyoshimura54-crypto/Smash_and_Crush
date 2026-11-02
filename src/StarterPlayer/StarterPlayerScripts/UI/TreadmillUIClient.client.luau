@@ -4,6 +4,7 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Config = require(game:GetService("ReplicatedStorage").Config:WaitForChild("TreadmillConfig"))
 local MarketplacePrice=require(game.ReplicatedStorage.Modules.MarketplacePrice)
+local PurchaseHUD=require(game.ReplicatedStorage.Modules.HUDLayout)
 local premiumPrice
 local red = Color3.fromRGB(255, 60, 60)
 local blue = Color3.fromRGB(55, 145, 255)
@@ -99,6 +100,12 @@ local function refresh()
   local world=Config.WorldForModel(model)
   layout(model,world==1 and model:FindFirstChild("BillboardGui")or model:FindFirstChild("StationBillboard"),world)
   if not entry then continue end
+  -- Only the active World1 premium purchase label; multiplier/requirements stay authored.
+  if world==1 and entry.RequiresPremium then
+   local board=model:FindFirstChild("BillboardGui")
+   local requirement=board and board:FindFirstChild("Rebirth")
+   PurchaseHUD.ApplyPurchaseTextFont(requirement and requirement:FindFirstChild("Amount"))
+  end
   if Config.WorldForModel(model)==2 then
    local label=model:FindFirstChild("StationBillboard") and model.StationBillboard:FindFirstChild("Multiplier")
    if label then label.Text=string.format("%02d",tonumber(kind:match("(%d+)$")) or 0).." | "..tostring(entry.Multiplier).."x Strength\n"..(entry.PurchaseEnabled==false and "Robux - Unavailable"

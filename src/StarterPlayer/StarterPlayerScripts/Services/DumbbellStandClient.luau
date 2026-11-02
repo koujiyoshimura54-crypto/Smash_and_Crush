@@ -5,6 +5,7 @@ local Player = Players.LocalPlayer
 local Config = require(RS.Config:WaitForChild("DumbbellStandConfig"))
 local Master = require(RS.Config:WaitForChild("DumbbellItemMaster"))
 local NumberFormat = require(RS.Modules.NumberFormat)
+local PurchaseHUD = require(RS.Modules.HUDLayout)
 local WinIcon = game:GetService("StarterGui").StrengthGui.HUD.WinAmount.Inside.Icon.Image
 local M = {}
 local started = false
@@ -39,12 +40,13 @@ function M.start()
    if press then board.Adornee = press end
    local amount = board:FindFirstChild("Amount")
    setPair(amount, "Main", NumberFormat.Price(item.PriceWin))
+   PurchaseHUD.ApplyPurchaseTextFont(amount)
    setPair(board, "Price", "+" .. tostring(item.StrengthBonus) .. " Strength")
    local itemIcon = board:FindFirstChild("ItemIcon")
    if itemIcon and itemIcon:IsA("ImageLabel") then itemIcon.Image = item.Image end
    setPair(board, "Status", equipped == itemId and "Equipped"
     or (loaded and (owned[itemId] and "Owned" or "Step to buy") or ""))
-   for _,name in {"Status","StatusShadow"}do local label=board:FindFirstChild(name);if label then require(RS.Modules.InventoryPresentation).LocalizeEquipmentLabel(label)end end
+   for _,name in {"Status","StatusShadow"}do local label=board:FindFirstChild(name);if label then PurchaseHUD.ApplyPurchaseTextFont(label);require(RS.Modules.InventoryPresentation).LocalizeEquipmentLabel(label)end end
    local icon = amount and amount:FindFirstChild("Icon")
    if icon and icon:IsA("ImageLabel") then
     icon.Image = WinIcon

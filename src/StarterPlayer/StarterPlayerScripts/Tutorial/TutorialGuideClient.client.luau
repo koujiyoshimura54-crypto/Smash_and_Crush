@@ -78,6 +78,9 @@ local function refreshFloors()
   end
   local treadPath=lobby and lobby:FindFirstChild("PathToTreadmills")
   if treadPath then add(treadPath:FindFirstChild("Upper"));add(treadPath:FindFirstChild("Lower")) end
+  -- Only these exact nested layers form the walkable treadmill carpet.
+  local stand=treadPath and treadPath:FindFirstChild("ThreadmillStand")
+  if stand then add(stand:FindFirstChild("Upper"));add(stand:FindFirstChild("Lower")) end
   local connector=map:FindFirstChild("LobbyCorridorConnector")
   add(connector and connector:FindFirstChild("ConnectorFloor"))
   local nextArea=map:FindFirstChild("NextWorldArea")

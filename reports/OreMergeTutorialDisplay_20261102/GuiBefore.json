@@ -1,0 +1,364 @@
+{
+  "Config": {
+    "Tutorial": {
+      "badge": "!",
+      "highlight": "TutorialHighlight",
+      "tileRatio": 1,
+      "Torso": [
+        "UpperTorso",
+        "Torso",
+        "HumanoidRootPart"
+      ],
+      "worldPadding": 0.012,
+      "near": "TutorialAttachment0",
+      "Folder": [
+        "Assets",
+        "Tutorial"
+      ],
+      "keep": "Speed",
+      "tileSize": 0.125,
+      "runSeconds": 3,
+      "Quiet": [
+        "Shop",
+        "Daily",
+        "Playtime",
+        "Free"
+      ],
+      "zIndex": 50,
+      "to": null,
+      "guiGrow": 1.18,
+      "tickSeconds": 0.1,
+      "from": null,
+      "moveSeconds": 0.12,
+      "doneText": "You finished tutorial!",
+      "level": 4,
+      "beam": "TutorialBeam",
+      "leftFrame": "Left",
+      "soundPath": [
+        "UI",
+        "Winner"
+      ],
+      "edgeInset": 0.02,
+      "minSize": 0.05,
+      "far": "TutorialAttachment1"
+    },
+    "Notify": {
+      "lineWidth": 0.72,
+      "openSeconds": 0.25,
+      "lineHeight": 0.036,
+      "shadeRotation": 0,
+      "textScale": 1.25,
+      "shadePad": 0.035,
+      "linePadding": 0.02,
+      "middle": 0.17,
+      "maxStanding": 3,
+      "strokeShare": 0.0021,
+      "seconds": 3,
+      "width": 1,
+      "shadeScale": 1.1,
+      "maxWaiting": 6,
+      "closeSeconds": 0.2,
+      "Shade": [
+        0,
+        0.125,
+        0.375,
+        0.5
+      ],
+      "shadeMargin": 0.015
+    }
+  },
+  "StarterGui.ScreenGui": [
+    {
+      "Properties": {
+        "Enabled": "false",
+        "DisplayOrder": "0",
+        "ResetOnSpawn": "false",
+        "IgnoreGuiInset": "true",
+        "ZIndexBehavior": "Enum.ZIndexBehavior.Sibling"
+      },
+      "Path": "StarterGui.ScreenGui",
+      "Attributes": {
+        "WallPrototypeOriginalEnabled": true
+      },
+      "Class": "ScreenGui"
+    }
+  ],
+  "HttpEnabled": false,
+  "PlaceId": 126576845524886,
+  "StarterGui.OreMergeTutorialGui": [
+    {
+      "Properties": {
+        "Enabled": "true",
+        "DisplayOrder": "45",
+        "ResetOnSpawn": "false",
+        "IgnoreGuiInset": "false",
+        "ZIndexBehavior": "Enum.ZIndexBehavior.Sibling"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui",
+      "Attributes": [],
+      "Class": "ScreenGui"
+    },
+    {
+      "Properties": {
+        "Visible": "true",
+        "Active": "false",
+        "Interactable": "true",
+        "Rotation": "0",
+        "BackgroundColor3": "0.639216, 0.635294, 0.647059",
+        "Selectable": "false",
+        "AnchorPoint": "0, 0",
+        "Transparency": "1",
+        "BackgroundTransparency": "1",
+        "Position": "{0, 0}, {0, 0}",
+        "ClipsDescendants": "false",
+        "ZIndex": "1",
+        "BorderSizePixel": "1",
+        "Size": "{1, 0}, {1, 0}"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": "false",
+        "FontFace": "Font { Family = rbxasset://fonts/families/LegacyArial.json, Weight = Regular, Style = Normal }",
+        "Active": "false",
+        "Selectable": "false",
+        "AnchorPoint": "0.5, 0",
+        "ZIndex": "3",
+        "BorderSizePixel": "0",
+        "Size": "{0.850000024, 0}, {0, 56}",
+        "ClipsDescendants": "false",
+        "Text": "",
+        "TextColor3": "1, 1, 1",
+        "TextTransparency": "0",
+        "Rotation": "0",
+        "Transparency": "0",
+        "BackgroundTransparency": "0",
+        "Position": "{0.5, 0}, {0.0199999996, 0}",
+        "TextWrapped": "true",
+        "Interactable": "true",
+        "TextScaled": "true",
+        "BackgroundColor3": "0.0980392, 0.0980392, 0.117647"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Message",
+      "Attributes": {
+        "HeaderCenterX": 0.5,
+        "HeaderWidthScale": 0.7,
+        "FigmaNodeId": "85:58",
+        "HeaderInset": 4,
+        "Gap": 10,
+        "MaxWidth": 500
+      },
+      "Class": "TextLabel"
+    },
+    {
+      "Properties": {
+        "Enabled": "true",
+        "Color": "0, 0, 0",
+        "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual",
+        "LineJoinMode": "Enum.LineJoinMode.Round",
+        "Thickness": "0.05000000074505806",
+        "Transparency": "0",
+        "ZIndex": "3",
+        "StrokeSizingMode": "Enum.StrokeSizingMode.ScaledSize",
+        "BorderStrokePosition": "Enum.BorderStrokePosition.Outer"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Message.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "MaxTextSize": "26",
+        "MinTextSize": "12"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Message.UITextSizeConstraint",
+      "Attributes": [],
+      "Class": "UITextSizeConstraint"
+    },
+    {
+      "Properties": {
+        "Color": "0 1 0.941176 0.666667 0 1 1 0.666667 0 0 ",
+        "Transparency": "0 0 0 1 0 0 ",
+        "Enabled": "true",
+        "Rotation": "90"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Message.UIGradient",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "CornerRadius": "0, 8"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Message.UICorner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": "false",
+        "Active": "false",
+        "Interactable": "true",
+        "Rotation": "0",
+        "BackgroundColor3": "1, 1, 1",
+        "Selectable": "false",
+        "AnchorPoint": "0, 0",
+        "Transparency": "1",
+        "BackgroundTransparency": "1",
+        "Position": "{0.5, 0}, {0.5, 0}",
+        "ClipsDescendants": "false",
+        "ZIndex": "2",
+        "BorderSizePixel": "0",
+        "Size": "{0.224999994, 0}, {0.25, 0}"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Highlight",
+      "Attributes": {
+        "PaddingY": 6,
+        "PaddingX": 6
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": "true",
+        "Color": "1, 1, 1",
+        "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual",
+        "LineJoinMode": "Enum.LineJoinMode.Round",
+        "Thickness": "3",
+        "Transparency": "0",
+        "ZIndex": "2",
+        "StrokeSizingMode": "Enum.StrokeSizingMode.FixedSize",
+        "BorderStrokePosition": "Enum.BorderStrokePosition.Outer"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Highlight.Outline",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "CornerRadius": "0, 8"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Highlight.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": "true",
+        "Color": "0, 0, 0",
+        "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual",
+        "LineJoinMode": "Enum.LineJoinMode.Round",
+        "Thickness": "6",
+        "Transparency": "0.25",
+        "ZIndex": "1",
+        "StrokeSizingMode": "Enum.StrokeSizingMode.FixedSize",
+        "BorderStrokePosition": "Enum.BorderStrokePosition.Outer"
+      },
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Highlight.Shadow",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": [],
+      "Path": "StarterGui.OreMergeTutorialGui.Messages",
+      "Attributes": [],
+      "Class": "Folder"
+    },
+    {
+      "Properties": [],
+      "Path": "StarterGui.OreMergeTutorialGui.Messages.Saving",
+      "Attributes": [],
+      "Class": "StringValue"
+    },
+    {
+      "Properties": [],
+      "Path": "StarterGui.OreMergeTutorialGui.Messages.AddOres",
+      "Attributes": [],
+      "Class": "StringValue"
+    },
+    {
+      "Properties": [],
+      "Path": "StarterGui.OreMergeTutorialGui.Messages.GoToMerge",
+      "Attributes": [],
+      "Class": "StringValue"
+    },
+    {
+      "Properties": [],
+      "Path": "StarterGui.OreMergeTutorialGui.Messages.ChooseOre",
+      "Attributes": [],
+      "Class": "StringValue"
+    },
+    {
+      "Properties": [],
+      "Path": "StarterGui.OreMergeTutorialGui.Messages.Merge",
+      "Attributes": [],
+      "Class": "StringValue"
+    }
+  ],
+  "ReplicatedStorage.Assets.Tutorial.TutorialHighlight": [
+    {
+      "Properties": {
+        "Visible": "false",
+        "Active": "false",
+        "Interactable": "true",
+        "Rotation": "0",
+        "BackgroundColor3": "1, 1, 1",
+        "Selectable": "false",
+        "AnchorPoint": "0.5, 0.5",
+        "Transparency": "1",
+        "BackgroundTransparency": "1",
+        "Position": "{0.5, 0}, {0.5, 0}",
+        "ClipsDescendants": "false",
+        "ZIndex": "2",
+        "BorderSizePixel": "0",
+        "Size": "{0.224999994, 0}, {0.25, 0}"
+      },
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialHighlight",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": "true",
+        "Color": "1, 1, 1",
+        "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual",
+        "LineJoinMode": "Enum.LineJoinMode.Round",
+        "Thickness": "0.02500000037252903",
+        "Transparency": "0",
+        "ZIndex": "2",
+        "StrokeSizingMode": "Enum.StrokeSizingMode.ScaledSize",
+        "BorderStrokePosition": "Enum.BorderStrokePosition.Outer"
+      },
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialHighlight.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "CornerRadius": "0.100000001, 0"
+      },
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialHighlight.UICorner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": "true",
+        "Color": "0, 0, 0",
+        "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual",
+        "LineJoinMode": "Enum.LineJoinMode.Round",
+        "Thickness": "100",
+        "Transparency": "0.25",
+        "ZIndex": "1",
+        "StrokeSizingMode": "Enum.StrokeSizingMode.ScaledSize",
+        "BorderStrokePosition": "Enum.BorderStrokePosition.Outer"
+      },
+      "Path": "ReplicatedStorage.Assets.Tutorial.TutorialHighlight.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    }
+  ]
+}

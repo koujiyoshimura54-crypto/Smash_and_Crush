@@ -139,11 +139,6 @@ return function(ctx)
  local view={Root=shop,Drop=drop,Tabs=tabs,List=list,Merge=merge,ClearButton=clear}
  local changed=Instance.new('BindableEvent');view.Changed=changed.Event
  local closeRevision=0
- function view:GetOreTutorialState()
-  return {Open=shop.Visible,Tab=tab,Selling=sellMode,CloseRevision=closeRevision,
-   Pending=Forge.IsPending() or oreState and oreState.Pending==true,
-   Valid=tab=='Ore' and not sellMode and oreState~=nil and OreMerge.Evaluate(oreSelected,oreState.Ores)~=nil}
- end
  local drag,blocked=nil,{}
  local function unlocked() return itemState and itemState.World2Unlocked==true end
  local function oreSelection() return sellMode and oreSale or oreSelected end
@@ -167,6 +162,32 @@ return function(ctx)
    if tab=='Item' then return not itemPending and Items.IsUnlocked(Master.Get(entry.ItemId),unlocked()) and (itemSelected[entry.ItemId] or 0)<entry.Count end
   if tab=='Ore' then return not Forge.IsPending() and groupSelected(entry)<entry.Count and (sellMode or selectedCount()<5) end
   return not petPending and not PetClient.busy() and groupSelected(entry)<#entry.Ids
+ end
+ -- Read-only display target: use the same eligibility/counts as the real card action.
+ function view:GetOreTutorialState()
+  local material,repeatMaterial
+  if tab=='Ore' and not sellMode then
+   local best=-1
+   local a=list.AbsolutePosition;local b=a+list.AbsoluteSize
+   for _,entry in groups do
+    local card=materialCards[entry.Key]
+    if card and available(entry) then
+     local p=card.Root.AbsolutePosition;local q=p+card.Root.AbsoluteSize
+     local width=math.max(0,math.min(b.X,q.X)-math.max(a.X,p.X))
+     local height=math.max(0,math.min(b.Y,q.Y)-math.max(a.Y,p.Y))
+     if width>1 and height>1 then
+      local full=width*height/math.max(1,card.Root.AbsoluteSize.X*card.Root.AbsoluteSize.Y)>.95
+      local repeated=(oreSelected[entry.Id] or 0)>0
+      local score=(full and 2 or 0)+(repeated and 1 or 0)
+      if score>best then best=score;material=card.Root;repeatMaterial=repeated end
+     end
+    end
+   end
+  end
+  return {Open=shop.Visible,Tab=tab,Selling=sellMode,CloseRevision=closeRevision,
+   Pending=Forge.IsPending() or oreState and oreState.Pending==true,
+   MaterialTarget=material,RepeatMaterial=repeatMaterial,SelectedCount=selectedCount(),
+   Valid=tab=='Ore' and not sellMode and oreState~=nil and OreMerge.Evaluate(oreSelected,oreState.Ores)~=nil}
  end
  local function rebuildGroups()
   groups={}

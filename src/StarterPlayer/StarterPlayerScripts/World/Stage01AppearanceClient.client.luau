@@ -1,6 +1,6 @@
+local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
 -- Personal visual state follows the server's existing combat snapshots.
 local RS=game:GetService("ReplicatedStorage")
-local remote=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild("CombatState")
 local rig,idle,animation,walk,destroyConnection
 local hidden=false
 local originals={}
@@ -14,8 +14,8 @@ local function release()
  originals={}
 end
 local function refresh()
- local enemies=workspace:FindFirstChild("Enemies")
- local enemy=enemies and enemies:FindFirstChild("Stage01_Enemy")
+ local enemy=Binding.Get(1)
+ hidden=enemy==nil
  local current=enemy and enemy:FindFirstChild("BallerinaCappuccinaRig")
  if current~=rig then
   release()
@@ -69,20 +69,5 @@ local function refresh()
  end
  if not walk.IsPlaying then walk:Play(.35,1,1)end
 end
-remote.OnClientEvent:Connect(function(d)
- if d.Type=="Initialize"then
-  hidden=(d.Cleared and d.Cleared[1])==true or (d.Skipped and d.Skipped[1])==true
-  refresh()
- elseif d.Type=="EnemyDefeated"and d.Stage==1 then
-  hidden=true
-  refresh()
- end
-end)
-workspace.DescendantAdded:Connect(function(d)
- if d.Name=="BallerinaCappuccinaRig"or d.Name=="Stage01Idle"or d.Name=="Stage01Walk"or d:IsA("Animator")or d:IsA("ParticleEmitter")or d:IsA("Trail")or d:IsA("Beam")then
-  task.defer(refresh)
- end
-end)
-script.Destroying:Connect(release)
-refresh()
-remote:FireServer({Type="RequestState"})
+local disconnect=Binding.Watch(1,refresh)
+script.Destroying:Connect(function() disconnect();release() end)

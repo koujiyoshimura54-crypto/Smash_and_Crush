@@ -1,3 +1,11 @@
+# 2026-11-02 — Sale label and shared purchase font
+
+Applied disabled Sell wording and shared Fredoka One to current Y02 purchase renderers, preserving count-based inventory and server purchase/sale rules. Focused isolated Play verified sale guards, runtime font updates and respawn; inspected representative images. Existing Shop width limitation and incomplete Aura/Egg raster checks are recorded. Helpers removed; unsaved Edit retained. [Record](../reports/PurchaseText_20261102/REPORT.md).
+
+# 2026-11-02 — Purchased ore tutorial presentation
+
+Replaced the v1 thin-border/purchase-label adaptation with the live purchased scaled highlight, target growth/interpolation and pinned-notification presentation. Migrated the existing editable GUI, selected usable visible ore cards and retained ordinary tutorial completion. Compared native captures and verified isolated same-Stone merge, narrow/scroll/lifecycle/input-path and next-Play author editing. Helpers removed; unsaved canonical Edit retained. [Record and GUI diff](../reports/OreMergeTutorialDisplay_20261102/REPORT.md).
+
 # 2026-11-02 — Ore merge initial tutorial
 
 Added new/reset-only Ore-to-Dumbbell guidance, atomic Forge completion and reset fencing in the current canonical Studio. Reused floor arrows and purchased editable GUI; preserved rewards and latest rank UI. Focused memory-isolated native Play and normal/narrow rendering passed; helpers removed, unsaved Edit retained. [Record](../reports/OreMergeTutorial_20261102.md).
@@ -1236,3 +1244,7 @@ Applied the missing shared-font connection and authored label Font from 3d2b352 
 ## 2026-11-01 — Replace ordinary offline rewards per login
 
 Applied the scoped StrengthRewardState change to the canonical Studio, preserving pending paid promises and receipt IDs. Added replacement/replay regression coverage; native isolated tests and short memory-only Play confirmed fresh rewards after unclaimed or claimed sessions and correct Strength/LV gain. Cleaned test changes and left unsaved Edit. [Results and limits](../reports/OfflineRewardRefresh_20261101.md).
+
+## 2026-11-02 — World1 presentation repairs
+
+Registered exact treadmill carpet surfaces, restored all ten personal Boss animation bindings, and gated whole Trophy equipment by server-confirmed personal qualification. Native solo body-motion checks and 15 real two-client assertions passed; carpet and post-fix Trophy raster acceptance remains unconfirmed. Removed test fixtures and returned the canonical Studio to unsaved Edit without saving/publishing. [Record](../reports/World1Presentation_20261102/REPORT.md).

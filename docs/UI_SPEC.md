@@ -1,8 +1,14 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-02 — Purchase text and disabled dumbbell sale
+
+Active purchase prices, purchase labels and in-button states reuse `ReplicatedStorage.Config.StrengthHUDStyle.Font` through `HUDLayout.ApplyPurchaseTextFont`, including visible cloned purchase text and scoped independent builders. This supersedes the older exclusion only for Item/Speed purchase controls; their general text, Inventory tabs and all Merge/tutorial text remain unchanged. Font changes do not change authored sizes, colors, outlines, layout or currency art. [Exact scope and visual limitations](../reports/PurchaseText_20261102/REPORT.md).
+
+Dumbbell ownership stays grouped by type/count; individual IDs and migration are withdrawn. A zero effective sale quantity displays disabled `Sell`, including the cloned visual; positive quantities retain the existing sale return. Unowned sale controls remain hidden. Existing server protection of one equipped copy and quantity normalization are unchanged.
+
 ## 2026-11-02 — Editable Ore merge guide
 
-`StarterGui.OreMergeTutorialGui` is the authored purchased-highlight template. Edit Highlight.Outline/Shadow/Corner and PaddingX/Y; edit Messages StringValue.Value for each short instruction. The runtime follows target geometry without rewriting those appearance settings. It reuses the existing floor arrows, then highlights Ore, materials and Merge. The callout uses the Merge title band, leaving controls accessible; ordinary generated results remain. [Exact editing paths and rendered checks](../reports/OreMergeTutorial_20261102.md).
+`StarterGui.OreMergeTutorialGui` v2 reuses the actual purchased scaled white outline / broad translucent black stroke / relative corner, 1.18 target growth and 0.12-second exponential following. Edit Highlight.Outline/Shadow/Corner, GuiGrow/MoveSeconds and optional PaddingX/Y; runtime does not reset these authored settings. Messages are editable StringValues. Notification.Stack.Line.Message uses the purchased NotifyClient.pin presentation, mapped to the Merge title band. The existing floor arrows lead to Merge, then Ore, an actually addable visible card (including the same Stone again), then Merge. The Edit installer migrates v1 and preserves subsequent v2 edits. [Full paths, comparison and native verification](../reports/OreMergeTutorialDisplay_20261102/REPORT.md). This supersedes the initial thin-border/purchase-label presentation recorded earlier on November 2; gameplay and persistence remain unchanged.
 
 ## 2026-11-02 — Common Item rank filters and compact high ranks
 
@@ -717,3 +723,9 @@ Preserved the700×450 centered panel, background transparency0.22 and lower HUD.
 ## 2026-11-01 — Battle Bag counter font only
 
 `StarterGui.StrengthGui.HUD.RunInventoryLabel` now uses `ReplicatedStorage.Config.StrengthHUDStyle.Font` (Fredoka One). The current authored-GUI `RunInventoryHUDClient` applies that shared font; it does not reconstruct the GUI. Counter text size, geometry, colors, outline, icon and behavior are retained. This does not extend to normal Inventory, Back or tutorial UI.
+
+## 2026-11-02 — World1 personal Trophy and presentation
+
+Each World1 stage's entire TrophyNormalButton/TrophyDoubleButton equipment is locally hidden before the player's server-confirmed defeat qualification, restored with its original visual values while qualified, and hidden after collection/death/run reset/world departure. Shared equipment and server reward/purchase authorization remain unchanged. All ten Boss appearance scripts follow only the local owner's accepted actor and release/rebind their existing clips and effects across lifecycle changes. Initial tutorial floor arrows also register the exact ThreadmillStand Upper/Lower walking surfaces; Merge guide conditions and approved presentation remain unchanged.
+
+Native solo and two-client runtime checks passed. Boss body-motion screenshots were inspected; carpet and post-fix Trophy raster acceptance remain unconfirmed after capture timeouts. [Implementation and verification limits](../reports/World1Presentation_20261102/REPORT.md).

@@ -62,9 +62,10 @@ No remote audio bytes were downloaded for a waveform/hash comparison; no listeni
 - Git commit `60ea616`, `reports/PerformanceAudit_20261020/Static.json`, records registered Y IDs for Hover, Error, WallBreak, Cash, Click, Winner and Notification among local-file SoundId references. This supports prior registration/import; the aggregate does not identify their Full Paths or prove that the active UI references were replaced.
 - No dedicated upload transaction/detailed ID-replacement commit was found by scoped Git message/content searches. Absence of such a record does not mean the upload did not occur; the account inventory directly establishes registration.
 - The previous canonical tutorial verification associated with `3386385` emitted **User is not authorized to access Asset** for the nine old UI/Music IDs. Those are prior-play results, not a fresh Preload test for this request. WallBreak was absent from that nine-ID error list; no permission problem is inferred from absence or from its name.
+- Fetching main exposed the newer **Y02** audit `e62d8d7`, [RemainingTasksAudit_20261102](./RemainingTasksAudit_20261102/REPORT.md), whose baseline was60e84fd in the same Place. Its native evidence records all nine old IDs with **IsLoaded=false / TimeLength=0** and explicit authorization errors. It identifies Click/Hover/Notification as active, Success/Winner as configured hatch paths, Cash/Error as not demonstrated active, and both BGM instances as not playing with the legacy MusicClient loader disabled. This strengthens the historical comparison, but is another session's Y02 evidence, not a newly connected Y01 test. No new Preload result is claimed.
 - Local historical Studio logs also contain those nine authorization errors. No private account credentials or whole logs are copied into this report.
 
-The repository snapshot gives the following **static** usage links; the current Studio's live execution chain is pending connection:
+The repository snapshot at3386385 gives the following **static** usage links; the newer Y02 audit above provides additional recorded evidence. The current Y01 Studio's live execution chain is pending connection:
 
 | Source / audio | Evidence and limit |
 | --- | --- |
@@ -72,7 +73,7 @@ The repository snapshot gives the following **static** usage links; the current 
 | `ReplicatedStorage.Modules.StrengthHUDPresentation` → UI.Click | Existing button activation calls Sound:Play. |
 | `StarterPlayer.StarterPlayerScripts.Services.PetClient` | Starts ButtonClient, NotifyClient and HatchClient; notification/egg integration exists. |
 | `StarterPlayer.StarterPlayerScripts.Services.HatchClient` + `ReplicatedStorage.Modules.Config` | knockPath=UI.Click, crackPath=UI.Success, rarePath=UI.Winner; clones and plays the corresponding Sounds. |
-| UI.Notification / UI.Cash / UI.Error | Original notification/currency/rejection uses are documented; exact current startup/call sites were not re-read live. |
+| UI.Notification / UI.Cash / UI.Error | The fetched Y02 audit identifies NotifyClient as active, Cash duplicatePath as retained but unbound at Hatch startup, and Error in legacy PurchaseClient with active use unestablished. Not re-read live on Y01. |
 | Music.Classic Easter / Music.Fun And Games | Original MusicClient plays the playlist. Previous tutorial audit records the old Main disabled; mere BGM instances/config or load errors do not establish an active playlist today. |
 | WallBreak | Original StageClient used the Sound. Current repository CombatClient routes World1 wall clears to ReplicatedStorage.MergeToForge.WallBreakVisualService.Play; its current live Sound reference remains unread. |
 
@@ -95,5 +96,7 @@ Roblox documents that metadata remains visible independently of usage permission
 Once the intended Studio connects, read its current Sounds and exact caller chain first. If it still uses F's IDs, the Y candidates should be checked for content/load before recommending those registered IDs. If an owned candidate is already referenced and loads, no replacement is needed. Permission configuration is an alternative only where the desired asset still lacks access; do not conclude re-upload is required. This audit made no replacements or permission changes.
 
 ## Files and preservation
+
+The final comparison is against fetched main2130f5c; only these two audit files are added. Existing upstream work was merged normally without importing it into Studio.
 
 Only this English report and its compact public metadata evidence JSON are added to Git. No Source, SoundId, GUI, permission or publication setting was changed. No uploads, purchases, seller contacts, Play, OS input, layout/camera changes, Save/Publish, rbxl write or Studio exit occurred. No test helper was installed, so none remains. The reachable local Studio stayed in its existing Edit state. The absent canonical Studio's current unsaved state cannot be inspected or certified.

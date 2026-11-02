@@ -1,8 +1,8 @@
+local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
 -- World1 Stage09 visual only. Published Walk plus Bone-following VFX.
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
-local remote = game:GetService("ReplicatedStorage").Remotes.GameRemotes:WaitForChild("CombatState")
 local STAGE = 9
 local MODEL_NAME = "Trippa Troppa Tralala Lirilì Rilà TungTung Sahur Boneca TungTung Tralalelo TrippiTroppa Crocodina"
 local PART_NAMES = {"tralalafxpart", "tralalafxpart2", "elephantofxpart", "frogfxpart", "sahurfxpart"}
@@ -111,8 +111,8 @@ local function bind(current)
 end
 
 refresh = function()
-	local enemies = workspace:FindFirstChild("Enemies")
-	local enemy = enemies and enemies:FindFirstChild("Stage09_Enemy")
+	local enemy=Binding.Get(9)
+	hidden=enemy==nil
 	local current = enemy and enemy:FindFirstChild(MODEL_NAME)
 	if current ~= rig then
 		release()
@@ -140,22 +140,5 @@ refresh = function()
 	end
 end
 
-remote.OnClientEvent:Connect(function(data)
-	if data.Type == "Initialize" then
-		hidden = (data.Cleared and data.Cleared[STAGE]) == true or (data.Skipped and data.Skipped[STAGE]) == true
-	elseif data.Stage == STAGE and data.Type == "BossInitialize" then
-		hidden = false
-	elseif data.Stage == STAGE and (data.Type == "EnemyDefeated" or data.Type == "StageCleared") then
-		hidden = true
-	else
-		return
-	end
-	task.defer(refresh)
-end)
-player:GetAttributeChangedSignal("CurrentWorld"):Connect(function() task.defer(refresh) end)
-workspace.DescendantAdded:Connect(function(d)
-	if d.Name == "Stage09_Enemy" or d.Name == MODEL_NAME or d.Name == "Stage09Walk" then task.defer(refresh) end
-end)
-script.Destroying:Connect(release)
-refresh()
-remote:FireServer({Type = "RequestState"})
+local disconnect=Binding.Watch(9,refresh)
+script.Destroying:Connect(function() disconnect();release() end)

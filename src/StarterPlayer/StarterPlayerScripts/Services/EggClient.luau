@@ -22,6 +22,7 @@ local Janitor = require(ReplicatedStorage.Packages.Janitor)
 -- Requests are acknowledged through the legacy Pet transaction bridge.
 local Config = require(ReplicatedStorage.Modules.Config)
 local Egg = require(ReplicatedStorage.Modules.Egg)
+local PurchaseHUD = require(ReplicatedStorage.Modules.HUDLayout)
 local Pet = require(ReplicatedStorage.Modules.Pet)
 local ButtonClient = require(script.Parent.ButtonClient)
 local NotifyClient = require(script.Parent.NotifyClient)
@@ -94,6 +95,7 @@ local function stampSheet(name: string, open: BillboardGui)
 		for _,frame in ipairs(opens:GetChildren()) do
 			local count=Egg.count(frame.Name)
 			if count then
+                PurchaseHUD.ApplyPurchaseTextFont(frame)
 				local price=require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(name)*count)
                 setPair(frame,"Title",Egg.purchasable(name) and string.format("Open %d\n%s Win",count,price) or "Unavailable")
                 local button=frame:FindFirstChild("Button")
@@ -351,7 +353,7 @@ local function register(part: BasePart)
  if Egg.identity(part)==require(ReplicatedStorage.Config.LimitedEggConfig).World2.EggId then return end
  local prize=part:FindFirstChild("Prize")
  local amount=prize and prize:FindFirstChild("Info")
- if amount and amount:IsA("TextLabel") then amount.Text=Egg.purchasable(Egg.identity(part)) and require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(Egg.identity(part))) or "Unavailable" end
+ if amount and amount:IsA("TextLabel") then PurchaseHUD.ApplyPurchaseTextFont(amount);amount.Text=Egg.purchasable(Egg.identity(part)) and require(ReplicatedStorage.Modules.NumberFormat).Price(Egg.price(Egg.identity(part))) or "Unavailable" end
 	local egg = Eggs[Egg.identity(part)]
 
 	if egg then

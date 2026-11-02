@@ -3,6 +3,14 @@
   "RequestedPlaceId": 126576845524886,
   "RequestedUniverseId": 10765181857,
   "CanonicalConnectionAvailable": false,
+  "PriorY02Audit": {
+    "Commit": "e62d8d7",
+    "Path": "reports/RemainingTasksAudit_20261102/Evidence.json",
+    "PlaceId": 126576845524886,
+    "Baseline": "60e84fd853e61923c41ee46e7f0914564d22badc",
+    "NinePriorReferences": "IsLoaded=false, TimeLength=0, User is not authorized to access Asset.",
+    "Classification": "Prior session evidence only; no current Y01 Preload or playback test"
+  },
   "ConnectedReadOnlyContext": {
     "StudioId": "efe98a60-96db-4c08-a202-e69691797755",
     "Name": "MergeToForge_CurrentCloud.rbxl",

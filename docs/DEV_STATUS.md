@@ -1,5 +1,13 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-02 — Dumbbell sale labels and purchase fonts
+
+Eight scoped Sources are reflected in current unsaved Y02: disabled `Sell` replaces `Keep 1`; actual common and independent purchase renderers use shared Fredoka One. Native isolated Play verified surplus/all-copy sale, equipped-last-copy refusal, invalid-input request gating, fonts through price updates/recreation/respawn, and inspected Limited Egg/capacity/dumbbell images. Shared Shop visuals have an existing narrow-geometry issue reproduced with the old font; no layout repair was included. Aura/Egg raster acceptance remains limited. All temporary dependencies/observers removed; final Edit Source/property checks passed. No data migration, real payment, Save/Publish or camera/OS input. [English record and limits](../reports/PurchaseText_20261102/REPORT.md).
+
+## 2026-11-02 — Purchased ore tutorial presentation corrected
+
+Applied three scoped display Sources and the existing authored GUI migration to canonical unsaved Y02. Reused purchased scaled strokes/corners, guiRect/draw interpolation and NotifyClient.pin presentation without starting legacy tutorial/HUD restrictions. Native captures compared the donor and revised display; normal/narrow, scroll, same-Stone selection/ordinary completion, close/death/respawn, hit queries/drag callbacks and authored edits across Play passed. Physical input, device emulation and broad persistence/payment regressions remain unverified. Removed all test substitutions/helpers and restored purchased defaults; final Edit Sources and GUI checked. No Save/Publish/rbxl write/OS input/camera change. [English record and GUI diff](../reports/OreMergeTutorialDisplay_20261102/REPORT.md).
+
 ## 2026-11-02 — Ore merge initial tutorial
 
 Applied to the current canonical Studio: new/reset eligibility, independent saved completion inside Forge, reset fencing, existing-floor navigation and editable purchased highlight/message GUI. Native memory-isolated Play covered the two-Stone reward path, actual reset, ordinary UI merge, failure/retry/reload, legacy exclusion, interruption/resume and owner style retention. Normal and isolated narrow renders were inspected. Production persistence/rejoin and physical input remain unverified. Helpers removed; unsaved Edit retained. [Record](../reports/OreMergeTutorial_20261102.md).
@@ -2503,3 +2511,11 @@ Native Edit checks confirm Fredoka One, valid syntax and fitting counter text. O
 ## 2026-11-01 — Current-login offline reward replacement
 
 Changed only StrengthRewardState in canonical PlaceId `126576845524886`: retire old free rewards, display/claim only the current token, retain immutable old paid intents and receipt deduplication. Native226 isolated assertions and focused memory-only Play verified unclaimed/claimed reloads, zero/cap, stale IDs, retries, delayed mock receipts and actual UI/Strength/LV agreement. Restored8 test substitutions, removed helpers and verified11 guarded Sources including Ore merge/Battle Bag/HUD. Left unsaved Edit; no Save/Publish or rbxl write. Real payment, production save and actual rejoin remain untested. [Record](../reports/OfflineRewardRefresh_20261101.md).
+
+## 2026-11-02 — World1 arrows, Boss animation and personal Trophy
+
+Applied 15 localized Source changes and added two presentation ModuleScripts to the current canonical Studio. Registered the two exact treadmill carpet surfaces, restored all ten owner-specific Boss animation bindings, and hid/restored whole Trophy equipment from server-confirmed personal qualification. Preserved approved Merge presentation, World2 animation, balance and map properties.
+
+All ten Bosses showed actual body movement in native solo Play; representative death/retry/World travel and late-child checks passed. A real two-client native test passed 15 assertions for animation isolation, personal Trophy visibility, mock purchase cancellation and single normal award/return. Carpet floor/occlusion predicates passed, but carpet and post-fix Trophy raster capture timed out; their visual acceptance remains open. All 21 production/test Sources compiled.
+
+Removed four fixtures and restored 38 temporary substitutions. Final Edit: 461 expected Sources, 8,634 protected instances / 37,733 unchanged properties, no unexpected authored topology change; camera/HTTP state preserved. Unsaved, no Save/Publish/rbxl write. [English report, Full Paths and evidence](../reports/World1Presentation_20261102/REPORT.md).
