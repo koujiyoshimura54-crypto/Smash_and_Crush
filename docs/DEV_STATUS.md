@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-02 — Purchased ore tutorial presentation corrected
+
+Applied three scoped display Sources and the existing authored GUI migration to canonical unsaved Y02. Reused purchased scaled strokes/corners, guiRect/draw interpolation and NotifyClient.pin presentation without starting legacy tutorial/HUD restrictions. Native captures compared the donor and revised display; normal/narrow, scroll, same-Stone selection/ordinary completion, close/death/respawn, hit queries/drag callbacks and authored edits across Play passed. Physical input, device emulation and broad persistence/payment regressions remain unverified. Removed all test substitutions/helpers and restored purchased defaults; final Edit Sources and GUI checked. No Save/Publish/rbxl write/OS input/camera change. [English record and GUI diff](../reports/OreMergeTutorialDisplay_20261102/REPORT.md).
+
 ## 2026-11-02 — Ore merge initial tutorial
 
 Applied to the current canonical Studio: new/reset eligibility, independent saved completion inside Forge, reset fencing, existing-floor navigation and editable purchased highlight/message GUI. Native memory-isolated Play covered the two-Stone reward path, actual reset, ordinary UI merge, failure/retry/reload, legacy exclusion, interruption/resume and owner style retention. Normal and isolated narrow renders were inspected. Production persistence/rejoin and physical input remain unverified. Helpers removed; unsaved Edit retained. [Record](../reports/OreMergeTutorial_20261102.md).

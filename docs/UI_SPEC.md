@@ -2,7 +2,7 @@
 
 ## 2026-11-02 — Editable Ore merge guide
 
-`StarterGui.OreMergeTutorialGui` is the authored purchased-highlight template. Edit Highlight.Outline/Shadow/Corner and PaddingX/Y; edit Messages StringValue.Value for each short instruction. The runtime follows target geometry without rewriting those appearance settings. It reuses the existing floor arrows, then highlights Ore, materials and Merge. The callout uses the Merge title band, leaving controls accessible; ordinary generated results remain. [Exact editing paths and rendered checks](../reports/OreMergeTutorial_20261102.md).
+`StarterGui.OreMergeTutorialGui` v2 reuses the actual purchased scaled white outline / broad translucent black stroke / relative corner, 1.18 target growth and 0.12-second exponential following. Edit Highlight.Outline/Shadow/Corner, GuiGrow/MoveSeconds and optional PaddingX/Y; runtime does not reset these authored settings. Messages are editable StringValues. Notification.Stack.Line.Message uses the purchased NotifyClient.pin presentation, mapped to the Merge title band. The existing floor arrows lead to Merge, then Ore, an actually addable visible card (including the same Stone again), then Merge. The Edit installer migrates v1 and preserves subsequent v2 edits. [Full paths, comparison and native verification](../reports/OreMergeTutorialDisplay_20261102/REPORT.md). This supersedes the initial thin-border/purchase-label presentation recorded earlier on November 2; gameplay and persistence remain unchanged.
 
 ## 2026-11-02 — Common Item rank filters and compact high ranks
 

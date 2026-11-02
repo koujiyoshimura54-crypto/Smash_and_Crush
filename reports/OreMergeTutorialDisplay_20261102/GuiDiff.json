@@ -1,0 +1,181 @@
+{
+  "Reparented": [
+    {
+      "Before": "StarterGui.OreMergeTutorialGui.Canvas.Message",
+      "After": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Stack.Line.Message",
+      "ExtraAttributesRetained": true
+    }
+  ],
+  "Changes": [
+    {
+      "Path": "StarterGui.OreMergeTutorialGui",
+      "Properties": {
+        "IgnoreGuiInset": {
+          "Before": "false",
+          "After": "true"
+        }
+      },
+      "Attributes": {
+        "PresentationVersion": {
+          "Before": null,
+          "After": 2
+        }
+      }
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas",
+      "Properties": {
+        "Interactable": {
+          "Before": "true",
+          "After": "false"
+        }
+      },
+      "Attributes": {}
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Highlight",
+      "Properties": {
+        "Interactable": {
+          "Before": "true",
+          "After": "false"
+        },
+        "AnchorPoint": {
+          "Before": "0, 0",
+          "After": "0.5, 0.5"
+        },
+        "ZIndex": {
+          "Before": "2",
+          "After": "50"
+        }
+      },
+      "Attributes": {
+        "MoveSeconds": {
+          "Before": null,
+          "After": 0.12
+        },
+        "GuiGrow": {
+          "Before": null,
+          "After": 1.18
+        },
+        "PaddingY": {
+          "Before": 6,
+          "After": 0
+        },
+        "PaddingX": {
+          "Before": 6,
+          "After": 0
+        }
+      }
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Highlight.Corner",
+      "Properties": {
+        "CornerRadius": {
+          "Before": "0, 8",
+          "After": "0.100000001, 0"
+        }
+      },
+      "Attributes": {}
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Highlight.Outline",
+      "Properties": {
+        "Thickness": {
+          "Before": "3",
+          "After": "0.02500000037252903"
+        },
+        "StrokeSizingMode": {
+          "Before": "Enum.StrokeSizingMode.FixedSize",
+          "After": "Enum.StrokeSizingMode.ScaledSize"
+        }
+      },
+      "Attributes": {}
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Highlight.Shadow",
+      "Properties": {
+        "Thickness": {
+          "Before": "6",
+          "After": "100"
+        },
+        "StrokeSizingMode": {
+          "Before": "Enum.StrokeSizingMode.FixedSize",
+          "After": "Enum.StrokeSizingMode.ScaledSize"
+        }
+      },
+      "Attributes": {}
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification",
+      "Change": "Added or reparented",
+      "Class": "Frame"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Shade",
+      "Change": "Added or reparented",
+      "Class": "Frame"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Shade.UIGradient",
+      "Change": "Added or reparented",
+      "Class": "UIGradient"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Stack",
+      "Change": "Added or reparented",
+      "Class": "Frame"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Stack.Line",
+      "Change": "Added or reparented",
+      "Class": "Frame"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Stack.Line.Message",
+      "Change": "Added or reparented",
+      "Class": "TextLabel"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Stack.Line.Message.UIGradient",
+      "Change": "Added or reparented",
+      "Class": "UIGradient"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Stack.Line.Message.UIScale",
+      "Change": "Added or reparented",
+      "Class": "UIScale"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Stack.Line.Message.UIStroke",
+      "Change": "Added or reparented",
+      "Class": "UIStroke"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Canvas.Notification.Stack.UIListLayout",
+      "Change": "Added or reparented",
+      "Class": "UIListLayout"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Messages.AddAnother",
+      "Change": "Added or reparented",
+      "Class": "StringValue"
+    },
+    {
+      "Path": "StarterGui.OreMergeTutorialGui.Messages.ScrollOres",
+      "Change": "Added or reparented",
+      "Class": "StringValue"
+    }
+  ],
+  "PathsNoLongerAtOldLocation": [
+    "StarterGui.OreMergeTutorialGui.Canvas.Message",
+    "StarterGui.OreMergeTutorialGui.Canvas.Message.UIStroke",
+    "StarterGui.OreMergeTutorialGui.Canvas.Message.UITextSizeConstraint",
+    "StarterGui.OreMergeTutorialGui.Canvas.Message.UIGradient",
+    "StarterGui.OreMergeTutorialGui.Canvas.Message.UICorner"
+  ],
+  "Notes": [
+    "Compare only properties present in both captures; before capture did not include all text properties.",
+    "Message AutomaticSize.X inherited from purchase button was changed to None; TextScaled remains true.",
+    "Recognized old Message UICorner and UITextSizeConstraint were removed; the original TextLabel was reparented."
+  ]
+}

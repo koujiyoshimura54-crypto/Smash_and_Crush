@@ -1,3 +1,7 @@
+# 2026-11-02 — Purchased ore tutorial presentation
+
+Replaced the v1 thin-border/purchase-label adaptation with the live purchased scaled highlight, target growth/interpolation and pinned-notification presentation. Migrated the existing editable GUI, selected usable visible ore cards and retained ordinary tutorial completion. Compared native captures and verified isolated same-Stone merge, narrow/scroll/lifecycle/input-path and next-Play author editing. Helpers removed; unsaved canonical Edit retained. [Record and GUI diff](../reports/OreMergeTutorialDisplay_20261102/REPORT.md).
+
 # 2026-11-02 — Ore merge initial tutorial
 
 Added new/reset-only Ore-to-Dumbbell guidance, atomic Forge completion and reset fencing in the current canonical Studio. Reused floor arrows and purchased editable GUI; preserved rewards and latest rank UI. Focused memory-isolated native Play and normal/narrow rendering passed; helpers removed, unsaved Edit retained. [Record](../reports/OreMergeTutorial_20261102.md).
