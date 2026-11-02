@@ -1,0 +1,776 @@
+{
+  "AuditDateUTC": "2026-11-02",
+  "RequestedPlaceId": 126576845524886,
+  "RequestedUniverseId": 10765181857,
+  "CanonicalConnectionAvailable": false,
+  "ConnectedReadOnlyContext": {
+    "StudioId": "efe98a60-96db-4c08-a202-e69691797755",
+    "Name": "MergeToForge_CurrentCloud.rbxl",
+    "PlaceId": 0,
+    "UniverseId": 0,
+    "Usage": "Identity check and account/asset metadata requests only; no scene audit or Play"
+  },
+  "UniverseOwner": {
+    "Id": 7467238848,
+    "Name": "yossy945",
+    "Type": "User",
+    "RootPlaceId": 101572058398926,
+    "Source": "https://games.roblox.com/v1/games?universeIds=10765181857"
+  },
+  "PlaceUniverseResponse": {
+    "universeId": 10765181857,
+    "Source": "https://apis.roblox.com/universes/v1/places/126576845524886/universe"
+  },
+  "CurrentSoundIds": null,
+  "CurrentPreloadResults": null,
+  "CurrentIsLoaded": null,
+  "CurrentTimeLength": null,
+  "CurrentPlayback": null,
+  "AuditoryConfirmation": false,
+  "PermissionGrantList": null,
+  "ModerationState": null,
+  "RegisteredUserInventory": [
+    {
+      "Id": "134468436646618",
+      "Name": "Music1",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "83679816707559",
+      "Name": "Music2",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "137104456181758",
+      "Name": "Success",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "119147718004156",
+      "Name": "Notification",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "121202237775456",
+      "Name": "Winner",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "138115752460180",
+      "Name": "Click",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "125741903880677",
+      "Name": "Cash",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "97452853183370",
+      "Name": "WallBreak",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "76931233259822",
+      "Name": "Error",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "96375954366615",
+      "Name": "Hover",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    },
+    {
+      "Id": "89468328910114",
+      "Name": "Pause and Hit",
+      "CreatorId": "7467238848",
+      "CreatorName": "yossy945",
+      "Type": "Audio"
+    }
+  ],
+  "AssetMetadata": {
+    "1836009208": {
+      "AssetTypeId": 3,
+      "Name": "Classic Easter",
+      "IsForSale": false,
+      "Created": "2018-05-25T17:13:25.06Z",
+      "IsPublicDomain": true,
+      "Updated": "2025-10-04T00:24:27.097Z",
+      "Creator": {
+        "Name": "APMOfficial",
+        "CreatorTargetId": 7462718749,
+        "Id": 7462718749,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "1842909673": {
+      "AssetTypeId": 3,
+      "Name": "Fun And Games (Sleigh Bells Version)",
+      "IsForSale": false,
+      "Created": "2018-05-26T23:50:46.827Z",
+      "IsPublicDomain": true,
+      "Updated": "2025-10-16T21:31:01.87Z",
+      "Creator": {
+        "Name": "APMOfficial",
+        "CreatorTargetId": 7462718749,
+        "Id": 7462718749,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "93441624600336": {
+      "AssetTypeId": 3,
+      "Name": "winner!",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:36:37.642Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:36:37.706Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "138115752460180": {
+      "AssetTypeId": 3,
+      "Name": "Click",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:20.224Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:20.291Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "78327592233446": {
+      "AssetTypeId": 3,
+      "Name": "error-011-352286",
+      "IsForSale": false,
+      "Created": "2026-01-03T18:23:22.797Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-01-03T18:23:22.843Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "78191995101116": {
+      "AssetTypeId": 3,
+      "Name": "Cash",
+      "IsForSale": false,
+      "Created": "2026-06-07T16:23:43.87Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-06-07T16:23:43.936Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "92759730216628": {
+      "AssetTypeId": 3,
+      "Name": "Classic Easter",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:34:36.566Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:34:36.63Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "134468436646618": {
+      "AssetTypeId": 3,
+      "Name": "Music1",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:23.829Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:23.895Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "137104456181758": {
+      "AssetTypeId": 3,
+      "Name": "Success",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:20.576Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:20.64Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "70375637366855": {
+      "AssetTypeId": 3,
+      "Name": "ui-bubble-click",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:36:37.652Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:36:37.721Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "110783070910373": {
+      "AssetTypeId": 3,
+      "Name": "Click",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:36:37.668Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:36:37.733Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "119147718004156": {
+      "AssetTypeId": 3,
+      "Name": "Notification",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:20.512Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:20.578Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "83679816707559": {
+      "AssetTypeId": 3,
+      "Name": "Music2",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:23.239Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:23.304Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "117918896943222": {
+      "AssetTypeId": 3,
+      "Name": "Roblox GUI - Notification High",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:36:37.469Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:36:37.533Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "75011432119943": {
+      "AssetTypeId": 3,
+      "Name": "Fun And Games (Sleigh Bells Version)",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:34:38.067Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:34:38.129Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "137456349421517": {
+      "AssetTypeId": 3,
+      "Name": "error-011-352286",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:36:37.989Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:36:38.055Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "121202237775456": {
+      "AssetTypeId": 3,
+      "Name": "Winner",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:20.305Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:20.375Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "76931233259822": {
+      "AssetTypeId": 3,
+      "Name": "Error",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:20.129Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:20.201Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "70918698908416": {
+      "AssetTypeId": 3,
+      "Name": "Click",
+      "IsForSale": false,
+      "Created": "2026-06-07T16:23:45.763Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-06-07T16:23:45.823Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "127039883737564": {
+      "AssetTypeId": 3,
+      "Name": "winner!",
+      "IsForSale": false,
+      "Created": "2025-12-18T10:27:32.3Z",
+      "IsPublicDomain": true,
+      "Updated": "2025-12-18T10:27:32.347Z",
+      "Creator": {
+        "Name": "4nrxyk",
+        "CreatorTargetId": 1516485959,
+        "Id": 1516485959,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "132703558395523": {
+      "AssetTypeId": 3,
+      "Name": "CashGenerator",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:36:37.816Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:36:37.881Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "17208361335": {
+      "AssetTypeId": 3,
+      "Name": "Roblox GUI - Notification High",
+      "IsForSale": false,
+      "Created": "2024-04-19T20:09:14.42Z",
+      "IsPublicDomain": true,
+      "Updated": "2024-04-19T20:09:14.427Z",
+      "Creator": {
+        "Name": "Roblox",
+        "CreatorTargetId": 1,
+        "Id": 1,
+        "HasVerifiedBadge": true,
+        "CreatorType": "User"
+      }
+    },
+    "80878570230928": {
+      "AssetTypeId": 3,
+      "Name": "Cash",
+      "IsForSale": false,
+      "Created": "2026-09-20T08:36:37.861Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-09-20T08:36:37.931Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "96375954366615": {
+      "AssetTypeId": 3,
+      "Name": "Hover",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:19.994Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:20.06Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "128365454350444": {
+      "AssetTypeId": 3,
+      "Name": "CashGenerator",
+      "IsForSale": false,
+      "Created": "2026-06-07T16:23:29.328Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-06-07T16:23:29.407Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "Id": 8709680466,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "100100028436250": {
+      "AssetTypeId": 3,
+      "Name": "lordsonny-small-rock-break-194553",
+      "IsForSale": false,
+      "Created": "2026-08-29T18:18:01.287Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-08-29T18:18:01.347Z",
+      "Creator": {
+        "Name": "Chilled Games!",
+        "CreatorTargetId": 393283365,
+        "Id": 11263288191,
+        "HasVerifiedBadge": false,
+        "CreatorType": "Group"
+      }
+    },
+    "125741903880677": {
+      "AssetTypeId": 3,
+      "Name": "Cash",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:20.166Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:20.231Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "77120543307812": {
+      "AssetTypeId": 3,
+      "Name": "ui-bubble-click",
+      "IsForSale": false,
+      "Created": "2024-10-24T12:33:28.617Z",
+      "IsPublicDomain": true,
+      "Updated": "2024-10-24T12:33:28.62Z",
+      "Creator": {
+        "Name": "NotBlackrus",
+        "CreatorTargetId": 6558843,
+        "Id": 1672799557,
+        "HasVerifiedBadge": false,
+        "CreatorType": "Group"
+      }
+    },
+    "97452853183370": {
+      "AssetTypeId": 3,
+      "Name": "WallBreak",
+      "IsForSale": false,
+      "Created": "2026-10-01T11:47:20.145Z",
+      "IsPublicDomain": false,
+      "Updated": "2026-10-01T11:47:20.215Z",
+      "Creator": {
+        "Name": "yossy945",
+        "CreatorTargetId": 7467238848,
+        "Id": 7467238848,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      }
+    },
+    "107566922588765": {
+      "Name": "lordsonny-small-rock-break-194553 (1)",
+      "AssetTypeId": 3,
+      "Created": "2026-09-20T08:36:37.748Z",
+      "Updated": "2026-09-20T08:36:37.812Z",
+      "Creator": {
+        "Name": "Fl0ppaDevelopa",
+        "CreatorTargetId": 8709680466,
+        "CreatorType": "User"
+      },
+      "IsPublicDomain": false,
+      "IsForSale": false
+    }
+  },
+  "CandidateAudioMetadata": {
+    "1": {
+      "AudioType": "Enum.AudioSubType.SoundEffect",
+      "AssetId": "138115752460180",
+      "Title": "Click",
+      "Duration": 0,
+      "Artist": "yossy945"
+    },
+    "2": {
+      "AudioType": "Enum.AudioSubType.SoundEffect",
+      "AssetId": "96375954366615",
+      "Title": "Hover",
+      "Duration": 0,
+      "Artist": "yossy945"
+    },
+    "3": {
+      "AudioType": "Enum.AudioSubType.SoundEffect",
+      "AssetId": "119147718004156",
+      "Title": "Notification",
+      "Duration": 2,
+      "Artist": "yossy945"
+    },
+    "4": {
+      "AudioType": "Enum.AudioSubType.SoundEffect",
+      "AssetId": "137104456181758",
+      "Title": "Success",
+      "Duration": 2,
+      "Artist": "yossy945"
+    },
+    "5": {
+      "AudioType": "Enum.AudioSubType.SoundEffect",
+      "AssetId": "121202237775456",
+      "Title": "Winner",
+      "Duration": 2,
+      "Artist": "yossy945"
+    },
+    "6": {
+      "AudioType": "Enum.AudioSubType.SoundEffect",
+      "AssetId": "125741903880677",
+      "Title": "Cash",
+      "Duration": 2,
+      "Artist": "yossy945"
+    },
+    "7": {
+      "AudioType": "Enum.AudioSubType.SoundEffect",
+      "AssetId": "76931233259822",
+      "Title": "Error",
+      "Duration": 1,
+      "Artist": "yossy945"
+    },
+    "8": {
+      "AudioType": "Enum.AudioSubType.Music",
+      "AssetId": "83679816707559",
+      "Title": "Music2",
+      "Duration": 122,
+      "Artist": "yossy945"
+    },
+    "9": {
+      "AudioType": "Enum.AudioSubType.Music",
+      "AssetId": "134468436646618",
+      "Title": "Music1",
+      "Duration": 141,
+      "Artist": "yossy945"
+    },
+    "10": {
+      "AudioType": "Enum.AudioSubType.SoundEffect",
+      "AssetId": "97452853183370",
+      "Title": "WallBreak",
+      "Duration": 4,
+      "Artist": "yossy945"
+    }
+  },
+  "LocalFileMetadata": [
+    {
+      "File": "Cash.mp3",
+      "Info": {
+        "format": {
+          "duration": "1.741458"
+        }
+      }
+    },
+    {
+      "File": "Click.mp3",
+      "Info": {
+        "format": {
+          "duration": "0.394042"
+        }
+      }
+    },
+    {
+      "File": "Error.mp3",
+      "Info": {
+        "format": {
+          "duration": "0.925708"
+        }
+      }
+    },
+    {
+      "File": "Hover.mp3",
+      "Info": {
+        "format": {
+          "duration": "0.500000"
+        }
+      }
+    },
+    {
+      "File": "Music1.mp3",
+      "Info": {
+        "format": {
+          "duration": "141.311995"
+        }
+      }
+    },
+    {
+      "File": "Music2.mp3",
+      "Info": {
+        "format": {
+          "duration": "122.236984"
+        }
+      }
+    },
+    {
+      "File": "Notification.mp3",
+      "Info": {
+        "format": {
+          "duration": "1.517698"
+        }
+      }
+    },
+    {
+      "File": "Success.mp3",
+      "Info": {
+        "format": {
+          "duration": "1.812104"
+        }
+      }
+    },
+    {
+      "File": "WallBreak.mp3",
+      "Info": {
+        "format": {
+          "duration": "4.048980"
+        }
+      }
+    },
+    {
+      "File": "Winner.mp3",
+      "Info": {
+        "format": {
+          "duration": "1.578957"
+        }
+      }
+    }
+  ],
+  "PurchasedFile": {
+    "File": "C:\\Users\\kouji\\Downloads\\Game\\Game.rbxl",
+    "Sha256": "2369cfe1ff4ef2111112bca45e853a9cc33cad0217b3074205820ce2f4bb1f5c",
+    "Sounds": [
+      {
+        "Path": "SoundService.UI.Notification",
+        "SoundId": "rbxassetid://117918896943222"
+      },
+      {
+        "Path": "SoundService.UI.Winner",
+        "SoundId": "rbxassetid://93441624600336"
+      },
+      {
+        "Path": "SoundService.UI.Hover",
+        "SoundId": "rbxassetid://70375637366855"
+      },
+      {
+        "Path": "SoundService.UI.Click",
+        "SoundId": "rbxassetid://110783070910373"
+      },
+      {
+        "Path": "SoundService.UI.Success",
+        "SoundId": "rbxassetid://132703558395523"
+      },
+      {
+        "Path": "SoundService.UI.Cash",
+        "SoundId": "rbxassetid://80878570230928"
+      },
+      {
+        "Path": "SoundService.UI.Error",
+        "SoundId": "rbxassetid://137456349421517"
+      },
+      {
+        "Path": "SoundService.Music.Classic Easter",
+        "SoundId": "rbxassetid://92759730216628"
+      },
+      {
+        "Path": "SoundService.Music.Fun And Games (Sleigh Bells Version)",
+        "SoundId": "rbxassetid://75011432119943"
+      },
+      {
+        "Path": "SoundService.WallBreak",
+        "SoundId": "rbxassetid://107566922588765"
+      }
+    ]
+  },
+  "PriorCanonicalPlay": {
+    "RelatedCommit": "3386385",
+    "Note": "Previous tutorial-verification Play, not a fresh audio test in this audit",
+    "Errors": [
+      "Failed to load sound rbxassetid://70375637366855: User is not authorized to access Asset.",
+      "Failed to load sound rbxassetid://117918896943222: User is not authorized to access Asset.",
+      "Failed to load sound rbxassetid://93441624600336: User is not authorized to access Asset.",
+      "Failed to load sound rbxassetid://132703558395523: User is not authorized to access Asset.",
+      "Failed to load sound rbxassetid://110783070910373: User is not authorized to access Asset.",
+      "Failed to load sound rbxassetid://80878570230928: User is not authorized to access Asset.",
+      "Failed to load sound rbxassetid://137456349421517: User is not authorized to access Asset.",
+      "Failed to load sound rbxassetid://92759730216628: User is not authorized to access Asset.",
+      "Failed to load sound rbxassetid://75011432119943: User is not authorized to access Asset."
+    ]
+  }
+}
