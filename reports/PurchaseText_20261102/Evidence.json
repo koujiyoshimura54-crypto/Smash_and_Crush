@@ -1,0 +1,515 @@
+{
+  "PlaceId": 126576845524886,
+  "BaselineCommit": "e62d8d7",
+  "PreparedIsolatedStates": true,
+  "PhysicalInput": false,
+  "RealPayments": false,
+  "Sale": {
+    "InputCases": [
+      {
+        "Input": "0",
+        "Result": {
+          "Visual": "Sell",
+          "Active": false,
+          "Interactable": false,
+          "Text": "Sell",
+          "AutoButtonColor": false,
+          "Quantity": 0,
+          "Count": "×3",
+          "Card": "NORMAL_01",
+          "Input": "1",
+          "Visible": true,
+          "Family": "rbxasset://fonts/families/FredokaOne.json"
+        }
+      },
+      {
+        "Input": "-2",
+        "Result": {
+          "Visual": "Sell",
+          "Active": false,
+          "Interactable": false,
+          "Text": "Sell",
+          "AutoButtonColor": false,
+          "Quantity": 0,
+          "Count": "×3",
+          "Card": "NORMAL_01",
+          "Input": "1",
+          "Visible": true,
+          "Family": "rbxasset://fonts/families/FredokaOne.json"
+        }
+      },
+      {
+        "Input": "",
+        "Result": {
+          "Visual": "Sell 3",
+          "Active": true,
+          "Interactable": true,
+          "Text": "Sell 3",
+          "AutoButtonColor": true,
+          "Quantity": 1,
+          "Count": "×3",
+          "Card": "NORMAL_01",
+          "Input": "1",
+          "Visible": true,
+          "Family": "rbxasset://fonts/families/FredokaOne.json"
+        }
+      },
+      {
+        "Input": "999",
+        "Result": {
+          "Visual": "Sell 6",
+          "Active": true,
+          "Interactable": true,
+          "Text": "Sell 6",
+          "AutoButtonColor": true,
+          "Quantity": 2,
+          "Count": "×3",
+          "Card": "NORMAL_01",
+          "Input": "2",
+          "Visible": true,
+          "Family": "rbxasset://fonts/families/FredokaOne.json"
+        }
+      },
+      {
+        "Input": "2",
+        "Result": {
+          "Visual": "Sell 6",
+          "Active": true,
+          "Interactable": true,
+          "Text": "Sell 6",
+          "AutoButtonColor": true,
+          "Quantity": 2,
+          "Count": "×3",
+          "Card": "NORMAL_01",
+          "Input": "2",
+          "Visible": true,
+          "Family": "rbxasset://fonts/families/FredokaOne.json"
+        }
+      }
+    ],
+    "DisabledFinal": {
+      "Visual": "Sell",
+      "Active": false,
+      "Interactable": false,
+      "Text": "Sell",
+      "AutoButtonColor": false,
+      "Quantity": 0,
+      "Count": "×3",
+      "Card": "NORMAL_01",
+      "Input": "1",
+      "Visible": true,
+      "Family": "rbxasset://fonts/families/FredokaOne.json"
+    },
+    "ZeroAndNegativeActivationServer": {
+      "Prompts": 0,
+      "Count": 3,
+      "AttributeWin": 1000,
+      "Win": 1000,
+      "Equipped": "NORMAL_01",
+      "Requests": {
+        "GetState": 4
+      }
+    },
+    "EquippedSaleCommitted": {
+      "Prompts": 0,
+      "Count": 1,
+      "AttributeWin": 1006,
+      "Win": 1006,
+      "Equipped": "NORMAL_01",
+      "Requests": {
+        "SellDumbbell": 1,
+        "GetState": 7
+      }
+    },
+    "LastCopyRefused": {
+      "State": {
+        "Prompts": 0,
+        "Count": 1,
+        "AttributeWin": 1006,
+        "Win": 1006,
+        "Equipped": "NORMAL_01",
+        "Requests": {
+          "SellDumbbell": 4,
+          "GetState": 16
+        }
+      },
+      "Success": false,
+      "Code": "EquippedLastCopy"
+    },
+    "FinalLastCopyUI": {
+      "Visual": "Sell",
+      "Active": false,
+      "Interactable": false,
+      "Text": "Sell",
+      "AutoButtonColor": false,
+      "Quantity": 0,
+      "Count": "×1",
+      "Card": "NORMAL_01",
+      "Input": "1",
+      "Visible": true,
+      "Family": "rbxasset://fonts/families/FredokaOne.json"
+    },
+    "UnequippedAllCommitted": {
+      "Prompts": 0,
+      "Count": 0,
+      "AttributeWin": 1009,
+      "Win": 1009,
+      "Equipped": "",
+      "Requests": {
+        "SellDumbbell": 5,
+        "GetState": 18
+      }
+    },
+    "EmptyUI": {
+      "Visual": "Sell",
+      "Active": false,
+      "Interactable": false,
+      "Text": "Sell",
+      "AutoButtonColor": false,
+      "Quantity": 0,
+      "Count": "",
+      "Card": "NORMAL_01",
+      "Input": "1",
+      "Visible": false,
+      "Family": "rbxasset://fonts/families/FredokaOne.json"
+    }
+  },
+  "SharedFont": {
+    "Count": 146,
+    "FredokaCount": 145,
+    "ExcludedHiddenLegacy": [
+      {
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Path": "PlayerGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card04_Teleporter.PurchaseArea.Purchase.PurchasedButtonVisual.Main.Amount",
+        "Text": " 0"
+      }
+    ],
+    "Probe": {
+      "Before": {
+        "Visible": true,
+        "Path": "PlayerGui.StrengthGui.__PurchaseProbe.TextButton.PurchasedButtonVisual.Main.Amount",
+        "TextFits": true,
+        "TextTransparency": 0,
+        "Text": " 99",
+        "Font": "FredokaOne",
+        "Position": "69.3437119, 15.4516144",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Bounds": "60, 27",
+        "Size": "61.3125801, 27.7741928"
+      },
+      "Regenerated": {
+        "Visible": true,
+        "Path": "PlayerGui.StrengthGui.__PurchaseProbe.TextButton.PurchasedButtonVisual.Main.Amount",
+        "TextFits": true,
+        "TextTransparency": 0,
+        "Text": "Owned",
+        "Font": "FredokaOne",
+        "Position": "61.5, 15.4516144",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Bounds": "77, 27",
+        "Size": "77, 27.7741928"
+      },
+      "NonFontPropertiesUnchanged": true,
+      "Late": {
+        "Visible": true,
+        "Path": "PlayerGui.StrengthGui.__PurchaseProbe.TextButton.PurchasedButtonVisual.LatePurchaseLabel",
+        "TextFits": false,
+        "TextTransparency": 0,
+        "Text": "Label",
+        "Font": "FredokaOne",
+        "Position": "0, 9.5",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Bounds": "18, 8",
+        "Size": "0, 0"
+      },
+      "Updated": {
+        "Visible": true,
+        "Path": "PlayerGui.StrengthGui.__PurchaseProbe.TextButton.PurchasedButtonVisual.Main.Amount",
+        "TextFits": true,
+        "TextTransparency": 0,
+        "Text": " 1.234K",
+        "Font": "FredokaOne",
+        "Position": "51, 15.4516144",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Bounds": "98, 25",
+        "Size": "98, 27.7741928"
+      }
+    }
+  },
+  "IndependentFonts": {
+    "Capacity": {
+      "Labels": [
+        {
+          "Visible": true,
+          "Path": "PlayerGui.StrengthGui.InventoryCapacityUpgradePanel.InventoryCapacity.Purchase.PurchasedButtonVisual.Main.Amount",
+          "TextFits": true,
+          "TextTransparency": 0,
+          "Text": "5",
+          "Font": "FredokaOne",
+          "Position": "990.368164, 248.858734",
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "Bounds": "19, 43",
+          "Size": "29.9233341, 43.0495224"
+        },
+        {
+          "Visible": true,
+          "Path": "PlayerGui.StrengthGui.InventoryCapacityUpgradePanel.Speed.Purchase.PurchasedButtonVisual.Main.Amount",
+          "TextFits": true,
+          "TextTransparency": 0,
+          "Text": "100",
+          "Font": "FredokaOne",
+          "Position": "975.829834, 463.337524",
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "Bounds": "59, 43",
+          "Size": "59, 43.0495224"
+        }
+      ],
+      "Open": true,
+      "PriceUpdate": {
+        "Visible": true,
+        "Path": "PlayerGui.StrengthGui.InventoryCapacityUpgradePanel.InventoryCapacity.Purchase.PurchasedButtonVisual.Main.Amount",
+        "TextFits": true,
+        "TextTransparency": 0,
+        "Text": "777",
+        "Font": "FredokaOne",
+        "Position": "975.329834, 248.858734",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Bounds": "60, 43",
+        "Size": "60.0000038, 43.0495224"
+      }
+    },
+    "Limited": {
+      "Capacity": {
+        "Visible": true,
+        "Path": "PlayerGui.StrengthGui.InventoryCapacityUpgradePanel.InventoryCapacity.Purchase.PurchasedButtonVisual.Main.Amount",
+        "TextFits": true,
+        "TextTransparency": 0,
+        "Text": "777",
+        "Font": "FredokaOne",
+        "Position": "975.329834, 248.858734",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Bounds": "60, 43",
+        "Size": "60.0000038, 43.0495224"
+      },
+      "Reopened": {
+        "Visible": true,
+        "Path": "PlayerGui.LimitedEgg01Gui.Background.Opens.Open1.Main.Amount",
+        "TextFits": true,
+        "TextTransparency": 0,
+        "Text": " 99",
+        "Font": "FredokaOne",
+        "Position": "659.745239, 436.967743",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Bounds": "70, 32",
+        "Size": "70.5094681, 32.5161285"
+      }
+    },
+    "LateAndDenied": {
+      "DeniedAttempt": {
+        "Reason": "Unavailable",
+        "Done": true,
+        "PromptDelta": 0,
+        "Accepted": false
+      },
+      "LateTrophyFont": "rbxasset://fonts/families/FredokaOne.json"
+    },
+    "Trophy": [
+      {
+        "Path": "Workspace.Trophy.BillboardGui.Text",
+        "Text": "x2 Wins",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "TextFits": true,
+        "Size": "138.599991, 19.6000004",
+        "Bounds": "60.7345238, 19.4040012"
+      },
+      {
+        "Path": "Workspace.Trophy.BillboardGui.Price",
+        "Text": "...",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "TextFits": true,
+        "Size": "138.599991, 14",
+        "Bounds": "8.31599998, 13.8600006"
+      }
+    ],
+    "PhysicalDumbbellAndPremium": [
+      {
+        "Path": "Workspace.PerStepButtons.1.BillboardGui.Price",
+        "Text": "+1 Strength",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "TextFits": true,
+        "Size": "101.650002, 14.9800005",
+        "Bounds": "69.4053345, 14.8302002"
+      },
+      {
+        "Path": "Workspace.PerStepButtons.1.BillboardGui.Amount.Main",
+        "Text": "5",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "TextFits": true,
+        "Size": "6, 12.8400002",
+        "Bounds": "5.59310389, 12.7115993"
+      },
+      {
+        "Path": "Workspace.PerStepButtons.1.BillboardGui.Status",
+        "Text": "Equipped",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "TextFits": true,
+        "Size": "101.650002, 10.6999998",
+        "Bounds": "21.6097202, 10.5930004"
+      },
+      {
+        "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Price",
+        "Text": "+800 Strength",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "TextFits": false,
+        "Size": "2, 0.300000012",
+        "Bounds": "1.68695998, 0.296999991"
+      },
+      {
+        "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Amount.Main",
+        "Text": "3K",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "TextFits": false,
+        "Size": "2, 0.329999983",
+        "Bounds": "0.339767963, 0.326699972"
+      },
+      {
+        "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.StationNumber",
+        "Text": "01",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "TextFits": false,
+        "Size": "2, 0.179999992",
+        "Bounds": "0.178199992, 0.178199992"
+      },
+      {
+        "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui.Status",
+        "Text": "Step to buy",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "TextFits": false,
+        "Size": "2, 0.300000012",
+        "Bounds": "1.36026001, 0.296999991"
+      },
+      {
+        "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Rebirth.Amount",
+        "Text": "Premium",
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "TextFits": false,
+        "Size": "0, 0",
+        "Bounds": "36.2779617, 10.3356009"
+      },
+      {
+        "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Multiplier",
+        "Text": "+20 筋力",
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "TextFits": false,
+        "Size": "0, 0",
+        "Bounds": "38.7642441, 12.3453007"
+      }
+    ],
+    "Egg": {
+      "ScreenConfirmed": false,
+      "Enabled": false,
+      "Labels": [
+        {
+          "Path": "PlayerGui.ScreenGui.Basic.Opens.Open1.Title",
+          "Text": "Open 1\n15 Win",
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "TextFits": false,
+          "Size": "0, 0",
+          "Bounds": "2, 1"
+        },
+        {
+          "Path": "PlayerGui.ScreenGui.Basic.Opens.Open1.Button",
+          "Text": "Button",
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "TextFits": false,
+          "Size": "0, 0",
+          "Bounds": "1, 1"
+        },
+        {
+          "Path": "PlayerGui.ScreenGui.Basic.Opens.Open3.Title",
+          "Text": "Open 3\n45 Win",
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "TextFits": false,
+          "Size": "0, 0",
+          "Bounds": "2, 1"
+        },
+        {
+          "Path": "PlayerGui.ScreenGui.Basic.Opens.Open3.Button",
+          "Text": "Button",
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "TextFits": false,
+          "Size": "0, 0",
+          "Bounds": "1, 1"
+        },
+        {
+          "Path": "PlayerGui.ScreenGui.Basic.Opens.Open8.Title",
+          "Text": "Open 8\n120 Win",
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "TextFits": false,
+          "Size": "0, 0",
+          "Bounds": "2, 1"
+        },
+        {
+          "Path": "PlayerGui.ScreenGui.Basic.Opens.Open8.Button",
+          "Text": "Button",
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "TextFits": false,
+          "Size": "0, 0",
+          "Bounds": "1, 1"
+        }
+      ]
+    }
+  },
+  "Respawn": {
+    "ActualDeath": true,
+    "ComparedTextObservations": 1174,
+    "FamilyChanges": [],
+    "Sale": {
+      "Visual": "Sell",
+      "Active": false,
+      "Interactable": false,
+      "Text": "Sell",
+      "AutoButtonColor": false,
+      "Quantity": 0,
+      "Count": "×1",
+      "Card": "NORMAL_01",
+      "Input": "1",
+      "Visible": true,
+      "Family": "rbxasset://fonts/families/FredokaOne.json"
+    }
+  },
+  "VisualAcceptance": {
+    "LimitedEgg": "Inspected 1390x622 screen; mocked 99 and Robux symbol intact.",
+    "CapacitySpeed": "Inspected 1390x622 screen; 5/100 and Trophy icons intact.",
+    "Dumbbell": "Inspected Sell 6, then disabled Sell with count 1.",
+    "Shop": "NOT accepted: existing narrow visuals; same result using old Legacy font.",
+    "Aura": "Later capture did not return; only runtime font acceptance.",
+    "Egg": "Sheet renderer fonts confirmed; on-screen visibility not established.",
+    "RetainedScreenshots": false
+  },
+  "ShopGeometryComparison": {
+    "Fredoka": {
+      "Font": "FredokaOne",
+      "Bounds": "2, 2",
+      "Size": "{0, 6}, {0, 44}"
+    },
+    "Legacy": {
+      "Font": "Legacy",
+      "Bounds": "2, 2",
+      "Size": "{0, 6}, {0, 44}"
+    },
+    "Viewport": "1390, 622"
+  },
+  "FinalEdit": {
+    "ProtectedProperties": 82465,
+    "ChangedSources": 8,
+    "FocusSame": true,
+    "Restored": 38,
+    "Sources": 461,
+    "ProtectedInstances": 22273,
+    "HttpSame": true,
+    "Differences": [],
+    "CameraSame": true,
+    "FixturesRemoved": 3
+  }
+}

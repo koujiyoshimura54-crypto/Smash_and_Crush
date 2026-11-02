@@ -9,6 +9,7 @@ local Janitor=require(RS.Packages.Janitor)
 local Config=require(RS.Config.LimitedEggConfig)
 local Viewport=require(RS.Modules.LimitedPetViewport)
 local Pet=require(RS.Modules.Pet)
+local PurchaseHUD=require(RS.Modules.HUDLayout)
 local M={}
 local activeConfig=Config
 local lifetime=Janitor.new()
@@ -118,7 +119,7 @@ local function setBoard(price,offer)
   local title=board:FindFirstChild("AlwaysBetter")
   if title then title.Text=offer.Name;title.AutoLocalize=false end
   local amount=board:FindFirstChild("Price")
-  if amount then amount.Text=price and require(RS.Modules.NumberFormat).Price(price).." Robux / 1 Pet" or "Unavailable / 1 Pet";amount.AutoLocalize=false end
+  if amount then PurchaseHUD.ApplyPurchaseTextFont(amount);amount.Text=price and require(RS.Modules.NumberFormat).Price(price).." Robux / 1 Pet" or "Unavailable / 1 Pet";amount.AutoLocalize=false end
  end
 end
 function M.close()
@@ -181,6 +182,7 @@ function M.show(parent,fetchPrice,offer)
   local buy=purchased.RestockShop.Main.Common.BuyRobux:Clone()
   buy.Name="Open1";stripScripts(buy);buy.AnchorPoint=Vector2.new(.5,0)
   buy.Position=UDim2.new(.5,0,0,0);buy.Size=UDim2.fromOffset(230,48);buy.Parent=opens
+  PurchaseHUD.ApplyPurchaseTextFont(buy)
   buy.Main.Amount.Text="--";buy.Main.Amount.AutoLocalize=false
   for _,x in buy:GetDescendants() do
    if x:IsA("GuiButton") then x.Active=false;x.Interactable=false;x.Selectable=false;x.AutoButtonColor=false end

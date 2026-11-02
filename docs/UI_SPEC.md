@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-02 — Purchase text and disabled dumbbell sale
+
+Active purchase prices, purchase labels and in-button states reuse `ReplicatedStorage.Config.StrengthHUDStyle.Font` through `HUDLayout.ApplyPurchaseTextFont`, including visible cloned purchase text and scoped independent builders. This supersedes the older exclusion only for Item/Speed purchase controls; their general text, Inventory tabs and all Merge/tutorial text remain unchanged. Font changes do not change authored sizes, colors, outlines, layout or currency art. [Exact scope and visual limitations](../reports/PurchaseText_20261102/REPORT.md).
+
+Dumbbell ownership stays grouped by type/count; individual IDs and migration are withdrawn. A zero effective sale quantity displays disabled `Sell`, including the cloned visual; positive quantities retain the existing sale return. Unowned sale controls remain hidden. Existing server protection of one equipped copy and quantity normalization are unchanged.
+
 ## 2026-11-02 — Editable Ore merge guide
 
 `StarterGui.OreMergeTutorialGui` v2 reuses the actual purchased scaled white outline / broad translucent black stroke / relative corner, 1.18 target growth and 0.12-second exponential following. Edit Highlight.Outline/Shadow/Corner, GuiGrow/MoveSeconds and optional PaddingX/Y; runtime does not reset these authored settings. Messages are editable StringValues. Notification.Stack.Line.Message uses the purchased NotifyClient.pin presentation, mapped to the Merge title band. The existing floor arrows lead to Merge, then Ore, an actually addable visible card (including the same Stone again), then Merge. The Edit installer migrates v1 and preserves subsequent v2 edits. [Full paths, comparison and native verification](../reports/OreMergeTutorialDisplay_20261102/REPORT.md). This supersedes the initial thin-border/purchase-label presentation recorded earlier on November 2; gameplay and persistence remain unchanged.

@@ -5,6 +5,7 @@ local PromptService=game:GetService("ProximityPromptService")
 local Marketplace=game:GetService("MarketplaceService")
 local Config=require(RS.Config:WaitForChild("WorldPassConfig"))
 local Prices=require(RS.Modules:WaitForChild("MarketplacePrice"))
+local PurchaseHUD=require(RS.Modules.HUDLayout)
 local player=Players.LocalPlayer
 local remote=RS.Remotes:WaitForChild("World1DoubleWinPrompt")
 local M={}
@@ -22,6 +23,11 @@ local function refresh()
  renderVersion+=1
  local version=renderVersion
  local model,_,prompt=equipment()
+ local purchaseBoard=model and model:FindFirstChild("BillboardGui")
+ if purchaseBoard then
+  PurchaseHUD.ApplyPurchaseTextFont(purchaseBoard:FindFirstChild("Text"))
+  PurchaseHUD.ApplyPurchaseTextFont(purchaseBoard:FindFirstChild("Price"))
+ end
  if not model or not prompt then return end
  local world=Config.GetWorld(game.PlaceId)
  local verified=player:GetAttribute("WinPassOwnershipVerified")==true
@@ -37,8 +43,9 @@ local function refresh()
  board.Adornee=model:FindFirstChild("PartMain")
  local label=board:FindFirstChild("Text")
  local price=board:FindFirstChild("Price")
- if label and label:IsA("TextLabel") then label.Text=title end
+ if label and label:IsA("TextLabel") then PurchaseHUD.ApplyPurchaseTextFont(label);label.Text=title end
  if not price or not price:IsA("TextLabel") then return end
+ PurchaseHUD.ApplyPurchaseTextFont(price)
  price.Text=owned and "" or "..."
  if owned or not passId then return end
  task.spawn(function()
@@ -82,6 +89,13 @@ function M.start()
   end)
  end
  workspace.ChildAdded:Connect(function(child) if child.Name=="Trophy" then refresh() end end)
+ -- The server may deliver the board/prompt after the initial model event.
+ -- Apply only the arriving purchase text; do not change prompt eligibility.
+ workspace.DescendantAdded:Connect(function(child)
+  local board=child.Parent
+  if board and board.Name=="BillboardGui" and board.Parent==workspace:FindFirstChild("Trophy")
+   and (child.Name=="Text" or child.Name=="Price") then PurchaseHUD.ApplyPurchaseTextFont(child) end
+ end)
  refresh()
 end
 return M

@@ -1,3 +1,7 @@
+# 2026-11-02 — Sale label and shared purchase font
+
+Applied disabled Sell wording and shared Fredoka One to current Y02 purchase renderers, preserving count-based inventory and server purchase/sale rules. Focused isolated Play verified sale guards, runtime font updates and respawn; inspected representative images. Existing Shop width limitation and incomplete Aura/Egg raster checks are recorded. Helpers removed; unsaved Edit retained. [Record](../reports/PurchaseText_20261102/REPORT.md).
+
 # 2026-11-02 — Purchased ore tutorial presentation
 
 Replaced the v1 thin-border/purchase-label adaptation with the live purchased scaled highlight, target growth/interpolation and pinned-notification presentation. Migrated the existing editable GUI, selected usable visible ore cards and retained ordinary tutorial completion. Compared native captures and verified isolated same-Stone merge, narrow/scroll/lifecycle/input-path and next-Play author editing. Helpers removed; unsaved canonical Edit retained. [Record and GUI diff](../reports/OreMergeTutorialDisplay_20261102/REPORT.md).

@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-02 — Dumbbell sale labels and purchase fonts
+
+Eight scoped Sources are reflected in current unsaved Y02: disabled `Sell` replaces `Keep 1`; actual common and independent purchase renderers use shared Fredoka One. Native isolated Play verified surplus/all-copy sale, equipped-last-copy refusal, invalid-input request gating, fonts through price updates/recreation/respawn, and inspected Limited Egg/capacity/dumbbell images. Shared Shop visuals have an existing narrow-geometry issue reproduced with the old font; no layout repair was included. Aura/Egg raster acceptance remains limited. All temporary dependencies/observers removed; final Edit Source/property checks passed. No data migration, real payment, Save/Publish or camera/OS input. [English record and limits](../reports/PurchaseText_20261102/REPORT.md).
+
 ## 2026-11-02 — Purchased ore tutorial presentation corrected
 
 Applied three scoped display Sources and the existing authored GUI migration to canonical unsaved Y02. Reused purchased scaled strokes/corners, guiRect/draw interpolation and NotifyClient.pin presentation without starting legacy tutorial/HUD restrictions. Native captures compared the donor and revised display; normal/narrow, scroll, same-Stone selection/ordinary completion, close/death/respawn, hit queries/drag callbacks and authored edits across Play passed. Physical input, device emulation and broad persistence/payment regressions remain unverified. Removed all test substitutions/helpers and restored purchased defaults; final Edit Sources and GUI checked. No Save/Publish/rbxl write/OS input/camera change. [English record and GUI diff](../reports/OreMergeTutorialDisplay_20261102/REPORT.md).

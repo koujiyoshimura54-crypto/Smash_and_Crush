@@ -83,8 +83,8 @@ local function updateButtons()
    local quantity=math.clamp(math.floor(tonumber(card.SellQuantity.Text) or 1),0,max)
    if not card.SellQuantity:IsFocused() then card.SellQuantity.Text=tostring(quantity>0 and quantity or 1) end
    sale.Visible=(counts[itemId] or 0)>0;card.SellQuantity.Visible=sale.Visible
-   sale.Text=quantity>0 and ("Sell "..NumberFormat.Price(quantity*item.SellWin)) or "Keep 1"
-   sale.Active=quantity>0 and not requestPending;sale.Interactable=sale.Active
+   sale.Text=quantity>0 and ("Sell "..NumberFormat.Price(quantity*item.SellWin)) or "Sell"
+   Presentation.SetButtonEnabled(sale,quantity>0 and not requestPending);sale.Interactable=sale.Active
    PurchaseHUD.PurchaseButton(sale,"Win",sale.Text)
    sale:SetAttribute("SellQuantity",quantity)
   end
@@ -206,6 +206,7 @@ for order,item in ipairs(sortedItems) do
     if not sell.Active or Forge.IsPending() then return end
     selectCard(itemId)
     Forge.Refresh()
+    if not sell.Active or (sell:GetAttribute("SellQuantity") or 0)<=0 then return end
     local ok,code=Forge.Request("SellDumbbell",{ItemId=itemId,Count=sell:GetAttribute("SellQuantity")})
     if not ok then showStatus(code) end
    end)

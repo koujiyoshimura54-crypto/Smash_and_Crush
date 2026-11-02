@@ -2,6 +2,7 @@
 local RunService=game:GetService("RunService")
 local TweenService=game:GetService("TweenService")
 local Presentation=require(script.Parent.StrengthHUDPresentation)
+local PurchaseStyle=require(game:GetService("ReplicatedStorage").Config.StrengthHUDStyle)
 local M={}
 local function write(object,key,value)
  if object[key]~=value then object[key]=value end
@@ -442,6 +443,19 @@ end
 
 -- Purchased RestockShop button visuals only. Existing GuiButtons retain all
 -- purchase handlers, state, visibility and product/price ownership.
+-- Font only: callers pass a purchase label/visual, never a whole inventory or shop.
+-- Reuse the editable shared setting; layout, outlines and currency art stay authored.
+function M.ApplyPurchaseTextFont(root)
+ if not root then return end
+ local face=Font.fromEnum(PurchaseStyle.Font)
+ local function apply(object)
+  if object:IsA("TextLabel") or object:IsA("TextButton") or object:IsA("TextBox") then
+   write(object,"FontFace",face)
+  end
+ end
+ apply(root)
+ for _,object in ipairs(root:GetDescendants()) do apply(object) end
+end
 local purchaseSkins=setmetatable({}, {__mode="k"})
 local function purchaseDonor(currency)
  local source=game:GetService("StarterGui"):FindFirstChild("ScreenGui")
@@ -510,6 +524,7 @@ function M.PurchaseButton(button,currency,value)
    elseif object:IsA("ImageLabel") or object:IsA("ImageButton") then mute(object,"ImageTransparency")
    elseif object:IsA("UIStroke") then mute(object,"Transparency") end
   end
+  connect(visual.DescendantAdded,M.ApplyPurchaseTextFont)
   hideOld(button)
   for _,object in ipairs(button:GetDescendants()) do hideOld(object) end
   connect(button.DescendantAdded,hideOld)
@@ -567,6 +582,7 @@ function M.PurchaseButton(button,currency,value)
  text=text:gsub("%s+[Rr]obux%s*$",""):gsub("%s+[Ww]ins?%s*$","")
  text=require(script.Parent.NumberFormat).PriceText(text)
  local price=text:match("^%d")~=nil
+ M.ApplyPurchaseTextFont(entry.visual)
  local amount=entry.visual.Main.Amount
  local icon=entry.visual.Main:FindFirstChild("Icon")
  if icon then icon.Visible=price end

@@ -5,6 +5,7 @@ local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local gui = script.Parent
 local Responsive = require(RS.Modules:WaitForChild("ResponsivePanels"))
+local PurchaseHUD = require(RS.Modules.HUDLayout)
 local Config = require(RS.Config:WaitForChild("InventoryCapacityPreviewConfig"))
 local Upgrades = require(RS.Config:WaitForChild("InventoryCapacityConfig"))
 local SpeedConfig = require(RS.Config:WaitForChild("SpeedConfig"))
@@ -74,6 +75,7 @@ local function bindWinButton(button, priceLabel)
  end
  visual.Parent=button
  local function update()
+  PurchaseHUD.ApplyPurchaseTextFont(visual)
   visual.Main.Amount.Text=priceLabel.Text
   visual.Main.Icon.Visible=priceLabel.Text:match("^%d")~=nil
  end
