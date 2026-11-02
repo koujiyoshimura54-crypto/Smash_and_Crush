@@ -141,27 +141,30 @@ local C={
   }},
  Auras={{
    StrengthBonus=200,
-   PurchaseEnabled=true,
+   PurchaseEnabled=false,
    PriceWin=5000,
   },{
    StrengthBonus=350,
-   PurchaseEnabled=true,
+   PurchaseEnabled=false,
    PriceWin=15000,
   },{
    StrengthBonus=500,
-   PurchaseEnabled=true,
+   PurchaseEnabled=false,
    PriceWin=50000,
   },{
    StrengthBonus=750,
-   PurchaseEnabled=true,
+   PurchaseEnabled=false,
    PriceWin=150000,
   },{
    StrengthBonus=1000,
-   PurchaseEnabled=true,
+   PurchaseEnabled=false,
    PriceWin=500000,
   },{
-   StrengthBonus=1500,
+   StrengthBonus=2000,
    PurchaseEnabled=true,
+   Name="Eclipse Aura",
+   Icon="rbxassetid://96141188431939",
+   IconFallback="rbxthumb://type=Asset&id=96141188431939&w=420&h=420",
    GamePassId=2045204630,
    BasePrice=299,
   }},

@@ -39,8 +39,8 @@ function M.GetOwnedAuras(player)
  local s,code=sessionFor(player)
  if not s then return nil,code end
  local out={}
- for _,id in ipairs(Config.Order) do
-  if Config.Get(id).PurchaseEnabled==false then out[id]=false
+ for id,aura in pairs(Config.GetAll()) do
+  if aura.PurchaseEnabled==false and not aura.LegacyOwnedOnly then out[id]=false
   elseif Config.Get(id).PurchaseType=="GamePass" then out[id]=pass[player]~=nil and pass[player][id]~=nil and pass[player][id].owned==true
   elseif id=="VIP" then out[id]=s.Data.OwnedAuras[id]==true and Passes.HasShopPass(player,"VIP")
   else out[id]=s.Data.OwnedAuras[id]==true end
@@ -87,6 +87,7 @@ function M.PurchaseAura(player,id)
  local aura=Config.Get(id)
  if not aura then return false,"InvalidAuraId" end
  if aura.PurchaseType~="Win" then return false,"InvalidPurchaseType" end
+ if aura.PurchaseEnabled==false or aura.LegacyOwnedOnly then return false,"Unavailable" end
  return mutate(player,function(s)
   if s.Data.OwnedAuras[id]==true then return false,"AlreadyOwned" end
   local win=s.Data.Win

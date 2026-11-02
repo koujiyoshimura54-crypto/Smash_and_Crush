@@ -1,0 +1,991 @@
+{
+  "PlaceId": 126576845524886,
+  "GitBaseline": "b44d4fb",
+  "DataIsolation": "All DataStore, Marketplace and Badge acquisitions in 38 Sources temporarily redirected to in-memory fixtures; native Scripts/LocalScripts; restored.",
+  "InitialSourceMatchesGit": 12,
+  "CompiledProductionSources": 6,
+  "PurchaseDisplayPriceProbe": 319,
+  "RealReadOnlyGamePassInfo": {
+    "Red": {
+      "Id": 1975173075,
+      "Price": 90
+    },
+    "Eclipse": {
+      "Id": 2045204630,
+      "Price": 270
+    },
+    "Note": "Localized current GetProductInfoAsync response; not constants used by production."
+  },
+  "ServerCases": {
+    "GainBlue": {
+      "Normal": 1501,
+      "After": 4003,
+      "Before": 2502,
+      "Multiplier": 1,
+      "Result": 4003,
+      "Reference": 3002,
+      "Bonus": 1500
+    },
+    "RedWorld2": {
+      "Visual": "Red_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": false,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Bonus": 500,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 22,
+      "Equipped": "Red",
+      "World": 2
+    },
+    "RedWorld1": {
+      "Visual": "Red_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": false,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Success": true,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 22,
+      "Equipped": "Red",
+      "Bonus": 500
+    },
+    "UnownedEclipseEquip": {
+      "EffectCount": 0,
+      "Prompts": 0,
+      "Win": 1000000,
+      "Success": false,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": false,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": false
+      },
+      "Emitters": 0,
+      "Beams": 0,
+      "Bonus": 0
+    },
+    "LegacySave": {
+      "Owned": {
+        "W2_AURA_06": true,
+        "Blue": true,
+        "Green": true,
+        "W2_AURA_05": true,
+        "W2_AURA_01": true,
+        "Red": true
+      },
+      "Equipped": "W2_AURA_05",
+      "Success": true
+    },
+    "BlueExisting": {
+      "Visual": "Blue_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Bonus": 1500,
+      "Success": true,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 1,
+      "Equipped": "Blue",
+      "World": 2
+    },
+    "LegacySaleRejected": {
+      "Status": {
+        "Visual": "Blue_Aura1",
+        "Win": 1000000,
+        "Owned": {
+          "W2_AURA_01": true,
+          "Secret": false,
+          "Pink": false,
+          "Blue": true,
+          "W2_AURA_04": false,
+          "Purple": false,
+          "W2_AURA_05": true,
+          "VIP": false,
+          "W2_AURA_03": false,
+          "Green": true,
+          "W2_AURA_06": true,
+          "Yellow": false,
+          "W2_AURA_02": false,
+          "Red": true
+        },
+        "Beams": 0,
+        "Bonus": 1000,
+        "Prompts": 0,
+        "EffectCount": 1,
+        "Emitters": 1,
+        "Equipped": "W2_AURA_05",
+        "World": 2
+      },
+      "Success": false,
+      "Code": "Unavailable"
+    },
+    "Both": {
+      "Visual": "Eclipse_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 4,
+      "Bonus": 2000,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 3,
+      "Equipped": "W2_AURA_06",
+      "World": 2
+    },
+    "Neither": {
+      "Beams": 0,
+      "Win": 1000000,
+      "EffectCount": 0,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": false,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": false
+      },
+      "Emitters": 0,
+      "Prompts": 0,
+      "Bonus": 0
+    },
+    "World2": {
+      "Visual": "Red_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": false,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Bonus": 500,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 22,
+      "Equipped": "Red",
+      "World": 2
+    },
+    "BluePurchase": {
+      "Status": {
+        "Visual": "Blue_Aura1",
+        "Win": 725000,
+        "Owned": {
+          "W2_AURA_01": true,
+          "Secret": false,
+          "Pink": false,
+          "Blue": true,
+          "W2_AURA_04": false,
+          "Purple": false,
+          "W2_AURA_05": true,
+          "VIP": false,
+          "W2_AURA_03": false,
+          "Green": true,
+          "W2_AURA_06": true,
+          "Yellow": false,
+          "W2_AURA_02": false,
+          "Red": true
+        },
+        "Beams": 0,
+        "Bonus": 1500,
+        "Prompts": 0,
+        "EffectCount": 1,
+        "Emitters": 1,
+        "Equipped": "Blue",
+        "World": 2
+      },
+      "Success": true,
+      "Code": "Purchased"
+    },
+    "RedUnowned": {
+      "Visual": "Eclipse_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": false
+      },
+      "Beams": 4,
+      "Bonus": 2000,
+      "Success": false,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 3,
+      "Equipped": "W2_AURA_06",
+      "World": 2
+    },
+    "GainGreen": {
+      "Normal": 501,
+      "After": 2502,
+      "Before": 2001,
+      "Multiplier": 1,
+      "Result": 2502,
+      "Reference": 1002,
+      "Bonus": 500
+    },
+    "EclipseFinal": {
+      "Visual": "Eclipse_Aura1",
+      "Win": 725000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 4,
+      "Bonus": 2000,
+      "Success": true,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 3,
+      "Equipped": "W2_AURA_06",
+      "World": 2
+    },
+    "GreenClear": {
+      "Visual": "Blue_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": false,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Bonus": 1000,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 1,
+      "Equipped": "W2_AURA_05",
+      "World": 2
+    },
+    "NoDuplicates": {
+      "Visual": "Eclipse_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 4,
+      "Bonus": 2000,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 3,
+      "Equipped": "W2_AURA_06",
+      "World": 2
+    },
+    "GreenPurchase": {
+      "Status": {
+        "Visual": "Blue_Aura1",
+        "Win": 975000,
+        "Owned": {
+          "W2_AURA_01": true,
+          "Secret": false,
+          "Pink": false,
+          "Blue": true,
+          "W2_AURA_04": false,
+          "Purple": false,
+          "W2_AURA_05": true,
+          "VIP": false,
+          "W2_AURA_03": false,
+          "Green": true,
+          "W2_AURA_06": true,
+          "Yellow": false,
+          "W2_AURA_02": false,
+          "Red": true
+        },
+        "Beams": 0,
+        "Bonus": 500,
+        "Prompts": 0,
+        "EffectCount": 1,
+        "Emitters": 1,
+        "Equipped": "Green",
+        "World": 2
+      },
+      "Success": true,
+      "Code": "Purchased"
+    },
+    "EclipseOnly": {
+      "Prompts": 0,
+      "World": 2,
+      "Win": 1000000,
+      "Beams": 0,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": false
+      },
+      "Emitters": 0,
+      "EffectCount": 0,
+      "Bonus": 0
+    },
+    "GreenExisting": {
+      "Visual": "Green_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Bonus": 500,
+      "Success": true,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 15,
+      "Equipped": "Green",
+      "World": 2
+    },
+    "BothEclipse": {
+      "Visual": "Eclipse_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 4,
+      "Bonus": 2000,
+      "Success": true,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 3,
+      "Equipped": "W2_AURA_06",
+      "World": 2
+    },
+    "RedOnly": {
+      "Beams": 0,
+      "Win": 1000000,
+      "EffectCount": 0,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": false,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Emitters": 0,
+      "Prompts": 0,
+      "Bonus": 0
+    },
+    "BlueClear": {
+      "Visual": "Blue_Aura1",
+      "Win": 975000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": false,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Bonus": 500,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 1,
+      "Equipped": "Green",
+      "World": 2
+    },
+    "EclipseEquip": {
+      "Visual": "Eclipse_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": false
+      },
+      "Beams": 4,
+      "Bonus": 2000,
+      "Success": true,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 3,
+      "Equipped": "W2_AURA_06",
+      "World": 2
+    },
+    "Legacy": {
+      "Visual": "Blue_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Bonus": 1000,
+      "Success": true,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 1,
+      "Equipped": "W2_AURA_05",
+      "World": 2
+    },
+    "GainEclipse": {
+      "Normal": 2001,
+      "After": 2001,
+      "Before": 0,
+      "Multiplier": 1,
+      "Result": 2001,
+      "Reference": 4002,
+      "Bonus": 2000
+    }
+  },
+  "FinalRingCases": {
+    "Before": {
+      "Count": 1,
+      "Weld": "Weld",
+      "Expected": -2.819267635345459,
+      "Error": 8.392333983309186e-07,
+      "Actual": -2.8192667961120605
+    },
+    "DeathEffects": 0,
+    "AfterGrowth": {
+      "Count": 1,
+      "Weld": "Weld",
+      "Expected": -3.309084539413452,
+      "Error": 3.528594971768939e-07,
+      "Actual": -3.309084892272949
+    },
+    "Gain": {
+      "Normal": 2001,
+      "After": 2001,
+      "Before": 0,
+      "Multiplier": 1,
+      "Result": 2001,
+      "Reference": 4002,
+      "Bonus": 2000
+    },
+    "Switched": {
+      "Visual": "Green_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 0,
+      "Bonus": 500,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 15,
+      "Equipped": "Green",
+      "World": 2
+    },
+    "Back": {
+      "Visual": "Eclipse_Aura1",
+      "Win": 1000000,
+      "Owned": {
+        "W2_AURA_01": true,
+        "Secret": false,
+        "Pink": false,
+        "Blue": true,
+        "W2_AURA_04": false,
+        "Purple": false,
+        "W2_AURA_05": true,
+        "VIP": false,
+        "W2_AURA_03": false,
+        "Green": true,
+        "W2_AURA_06": true,
+        "Yellow": false,
+        "W2_AURA_02": false,
+        "Red": true
+      },
+      "Beams": 4,
+      "Bonus": 2000,
+      "Prompts": 0,
+      "EffectCount": 1,
+      "Emitters": 3,
+      "Equipped": "W2_AURA_06",
+      "World": 2
+    }
+  },
+  "FinalCards": {
+    "PromptBefore": {
+      "Count": 0
+    },
+    "Cards": {
+      "1": {
+        "Visible": true,
+        "Image": "rbxassetid://110843600021702",
+        "Name": "PinkAuraCard",
+        "Active": true,
+        "Price": "30",
+        "ImageLoaded": true,
+        "Bonus": "+5 Strength"
+      },
+      "2": {
+        "Visible": true,
+        "Image": "rbxassetid://113527186215193",
+        "Name": "PurpleAuraCard",
+        "Active": true,
+        "Price": "75",
+        "ImageLoaded": true,
+        "Bonus": "+10 Strength"
+      },
+      "3": {
+        "Visible": true,
+        "Image": "rbxassetid://115006077417349",
+        "Name": "YellowAuraCard",
+        "Active": true,
+        "Price": "200",
+        "ImageLoaded": true,
+        "Bonus": "+30 Strength"
+      },
+      "4": {
+        "Visible": true,
+        "Image": "rbxassetid://72326661519750",
+        "Name": "GreenAuraCard",
+        "Active": true,
+        "Price": "25K",
+        "ImageLoaded": true,
+        "Bonus": "+500 Strength"
+      },
+      "5": {
+        "Visible": true,
+        "Image": "rbxassetid://104827909443134",
+        "Name": "BlueAuraCard",
+        "Active": true,
+        "Price": "250K",
+        "ImageLoaded": false,
+        "Bonus": "+1500 Strength"
+      },
+      "6": {
+        "Visible": true,
+        "Image": "rbxassetid://86956843606297",
+        "Name": "RedAuraCard",
+        "Active": true,
+        "Price": "100",
+        "ImageLoaded": true,
+        "Bonus": "+500 Strength"
+      },
+      "7": {
+        "Visible": true,
+        "Image": "rbxthumb://type=Asset&id=96141188431939&w=420&h=420",
+        "Name": "W2_AURA_06AuraCard",
+        "Active": true,
+        "Price": "319",
+        "ImageLoaded": true,
+        "Bonus": "+2000 Strength"
+      },
+      "8": {
+        "Visible": true,
+        "Image": "rbxassetid://122420734012429",
+        "Name": "VIPAuraCard",
+        "Active": true,
+        "Price": "VIP",
+        "ImageLoaded": true,
+        "Bonus": "Exclusive Aura"
+      },
+      "9": {
+        "Visible": true,
+        "Image": "rbxassetid://113527186215193",
+        "Name": "SecretAuraCard",
+        "Active": true,
+        "Price": "PACK",
+        "ImageLoaded": true,
+        "Bonus": "Exclusive Aura"
+      }
+    }
+  },
+  "EditPreservation": {
+    "Audit": {
+      "ObjectChanges": [
+        {
+          "Before": "1250",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.Price.Amount",
+          "After": "250000",
+          "Property": "Text"
+        },
+        {
+          "Before": "+150 Strength",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.BlueAuraCard.StrengthBonus",
+          "After": "+1500 Strength",
+          "Property": "Text"
+        },
+        {
+          "Before": "500",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.Price.Amount",
+          "After": "25000",
+          "Property": "Text"
+        },
+        {
+          "Before": "+50 Strength",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.GreenAuraCard.StrengthBonus",
+          "After": "+500 Strength",
+          "Property": "Text"
+        }
+      ],
+      "Edit": true,
+      "RestoredTemporary": 38,
+      "ChangedSources": [
+        "ReplicatedStorage.Config.AuraConfig",
+        "ServerScriptService.Services.AuraService",
+        "ReplicatedStorage.Config.World2GameplayConfig",
+        "StarterGui.StrengthGui.AuraInventoryClient",
+        "ServerScriptService.Services.AuraCharacterEffects",
+        "ReplicatedStorage.Modules.EclipseAuraVisual"
+      ],
+      "CameraFocusUntouched": true,
+      "AddedObjects": [
+        {
+          "Class": "Frame",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard"
+        },
+        {
+          "Class": "UICorner",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.UICorner"
+        },
+        {
+          "Class": "UIStroke",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.UIStroke"
+        },
+        {
+          "Class": "UIGradient",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.UIGradient"
+        },
+        {
+          "Class": "ImageLabel",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.AuraIcon"
+        },
+        {
+          "Class": "TextLabel",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.AuraName"
+        },
+        {
+          "Class": "UITextSizeConstraint",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.AuraName.UITextSizeConstraint"
+        },
+        {
+          "Class": "TextLabel",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.StrengthBonus"
+        },
+        {
+          "Class": "UITextSizeConstraint",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.StrengthBonus.UITextSizeConstraint"
+        },
+        {
+          "Class": "TextLabel",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.Price"
+        },
+        {
+          "Class": "UITextSizeConstraint",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.Price.UITextSizeConstraint"
+        },
+        {
+          "Class": "TextLabel",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.Price.Amount"
+        },
+        {
+          "Class": "UITextSizeConstraint",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.Price.Amount.UITextSizeConstraint"
+        },
+        {
+          "Class": "ImageLabel",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.Price.CurrencyIcon"
+        },
+        {
+          "Class": "TextButton",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.BuyButton"
+        },
+        {
+          "Class": "UICorner",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.BuyButton.UICorner"
+        },
+        {
+          "Class": "UIStroke",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.BuyButton.UIStroke"
+        },
+        {
+          "Class": "UIGradient",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.BuyButton.UIGradient"
+        },
+        {
+          "Class": "TextLabel",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.BuyButton.Label"
+        },
+        {
+          "Class": "UITextSizeConstraint",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.BuyButton.Label.UITextSizeConstraint"
+        },
+        {
+          "Class": "UIStroke",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.PurchasedInnerUIStroke"
+        },
+        {
+          "Class": "ImageLabel",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Content.Aura.AuraList.W2_AURA_06AuraCard.StudPattern"
+        }
+      ],
+      "PlayResult": [
+        true,
+        "Aura implementation verified"
+      ],
+      "RemovedObjects": [],
+      "CameraUntouched": true,
+      "UnexpectedSources": [],
+      "HttpUnchanged": true
+    },
+    "SourceCount": 461,
+    "ProtectedObjectCount": 16493
+  },
+  "ImageRead": {
+    "Id": 96141188431939,
+    "Direct": "Failure",
+    "SameAssetRobloxThumbnail": "Success; IsLoaded=true and screenshot inspected",
+    "Cause": "Not established by the available logs. No permissions were changed."
+  },
+  "VisualChecks": {
+    "Viewport": "1390x622",
+    "Narrow": "360px cloned card fixture only; viewport/device settings untouched",
+    "ScreenshotsRetained": false,
+    "Observed": "Eclipse image, purple/dark flames, gold lightning and ring; prices/Robux icon, English Eclipse title and numeric glyphs; Japanese localization retained",
+    "PostRespawn": "Fonts and effect verified. The immediate post-respawn screenshot still had pending icon loads, including Red/VIP; no claim of instantaneous icon completion."
+  },
+  "Limits": [
+    "No real payment or production save data",
+    "No physical narrow device/full narrow viewport test",
+    "World changes prepared through existing CurrentWorld state; natural portal traversal not exercised",
+    "Toolbar dropdown selection unavailable through connection; native solo Test API used, EndTest completed, EditModeActive true",
+    "No specific Japanese fallback font identified; Latin/digits visibly match shared HUD face"
+  ],
+  "FinalSourceHashes": {
+    "ReplicatedStorage.Config.AuraConfig": {
+      "File": "src/ReplicatedStorage/Config/AuraConfig.luau",
+      "SHA256NormalizedLF": "03847b17bf22a31060e8ca844a8b05c9ded38ef0a412463226dbfe0c6a32f0b3"
+    },
+    "ServerScriptService.Services.AuraService": {
+      "File": "src/ServerScriptService/Services/AuraService.luau",
+      "SHA256NormalizedLF": "d75c8eeec3ff884e47167acf2e9e54e2a15a3dbe54e2efdb642a928fc40addeb"
+    },
+    "ReplicatedStorage.Config.World2GameplayConfig": {
+      "File": "src/ReplicatedStorage/Config/World2GameplayConfig.luau",
+      "SHA256NormalizedLF": "fb0edfa77dc02c19747b25d2957c1591e4bf05b7a8b02afabebcc5ca1c968818"
+    },
+    "StarterGui.StrengthGui.AuraInventoryClient": {
+      "File": "src/StarterGui/StrengthGui/AuraInventoryClient.client.luau",
+      "SHA256NormalizedLF": "dbd5ad4797d6f415b3a37abe3d5626a90d104ba17a2b9bdff7ad6046798bb2fd"
+    },
+    "ServerScriptService.Services.AuraCharacterEffects": {
+      "File": "src/ServerScriptService/Services/AuraCharacterEffects.luau",
+      "SHA256NormalizedLF": "eeac9fb1a3f14887a428b23b30083ca8b95fd09dd559f835acf9792884528503"
+    },
+    "ReplicatedStorage.Modules.EclipseAuraVisual": {
+      "File": "src/ReplicatedStorage/Modules/EclipseAuraVisual.luau",
+      "SHA256NormalizedLF": "80d5c1ce26a674d7e6abec12c027dfe11b91af44dc5673a63e3a58826dad10f6"
+    }
+  }
+}

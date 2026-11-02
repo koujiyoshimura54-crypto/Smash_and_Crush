@@ -15,11 +15,33 @@ local purchase=RS.Remotes:WaitForChild("AuraPurchaseRequest")
 local equip=RS.Remotes:WaitForChild("AuraEquipRequest")
 local remote=RS.Remotes:WaitForChild("AuraInventoryState")
 local shopRequest=RS.Remotes:WaitForChild("ShopPurchaseRequest")
+-- Apply the shared HUD face to the actual Aura text, including late cloned paint.
+-- Event driven: no per-frame font enforcement, and no change to localization.
+local fontBindings=setmetatable({}, {__mode="k"})
+local function bindAuraFont(object)
+ if not (object:IsA("TextLabel") or object:IsA("TextButton") or object:IsA("TextBox")) then return end
+ if fontBindings[object] then return end
+ local function applyFont()
+  local face=Font.fromEnum(require(RS.Config.StrengthHUDStyle).Font)
+  if object.FontFace~=face then object.FontFace=face end
+ end
+ fontBindings[object]=object:GetPropertyChangedSignal("FontFace"):Connect(applyFont)
+ object.Destroying:Once(function() fontBindings[object]:Disconnect();fontBindings[object]=nil end)
+ applyFont()
+end
+for _,object in ipairs(panel:GetDescendants()) do bindAuraFont(object) end
+panel.DescendantAdded:Connect(bindAuraFont)
+-- Retired compatibility entries are never offered as new cards.
+for _,card in ipairs(list:GetChildren()) do
+ local id=card.Name:match("^(.*)AuraCard$")
+ if id and Config.Get(id) and Config.Get(id).Listed==false then card.Visible=false end
+end
 -- Entitlement cards reuse the authored Aura template and existing equip renderer.
 for _,id in ipairs(Config.Order) do
  if not list:FindFirstChild(id.."AuraCard") then
   local card=list.PinkAuraCard:Clone()
   card.Name=id.."AuraCard";card.LayoutOrder=Config.Get(id).Order
+  card.Visible=Config.IsListed(id,player:GetAttribute("CurrentWorld"))
   card.Parent=list
  end
 end
@@ -35,12 +57,14 @@ local equipColor=ColorSequence.new(Color3.fromRGB(75,136,213),Color3.fromRGB(47,
 local equippedColor=ColorSequence.new(Color3.fromRGB(111,120,137),Color3.fromRGB(70,76,88))
 local AuraNotifications=require(gui:WaitForChild("AuraPurchaseNotifications"))
 local displayPrices={Red=Config.Get("Red").DisplayPriceFallback}
+local resolvedIcons={}
 local function render()
  AuraNotifications.Render(gui,loaded,owned,player:GetAttribute("Win"))
  for _,id in ipairs(Config.Order) do
   local aura=Config.Get(id)
   local card=list[id.."AuraCard"]
-  Presentation.SetIdentity(card.AuraName,card.AuraIcon,aura.Name,aura.Icon)
+  card.Visible=Config.IsListed(id,player:GetAttribute("CurrentWorld"))
+  Presentation.SetIdentity(card.AuraName,card.AuraIcon,aura.Name,resolvedIcons[id] or aura.Icon)
   local b=card.BuyButton
   local isEquipped=equipped==id
   b.Label.Text=notice[id] or (aura.PurchaseEnabled==false and "UNAVAILABLE" or isEquipped and "Equipped" or owned[id] and "Equip" or aura.PurchaseType=="Entitlement" and "VIEW PACK" or "BUY")
@@ -58,6 +82,7 @@ local function render()
   Presentation.SetEquipped(b,isEquipped)
   local visual=b:FindFirstChild("PurchasedButtonVisual");if visual then visual.Main.Amount.AutoLocalize=owned[id]==true end
   card.StrengthBonus.Text=aura.PurchaseType=="Entitlement" and "Exclusive Aura" or "+"..aura.StrengthBonus.." Strength"
+  PurchaseHUD.ApplyPurchaseTextFont(card)
  end
 end
 local function apply(state)
@@ -125,8 +150,23 @@ local function opened()
 end
 shell:GetPropertyChangedSignal("Visible"):Connect(opened)
 panel:GetPropertyChangedSignal("Visible"):Connect(opened)
+player:GetAttributeChangedSignal("CurrentWorld"):Connect(render)
 AuraNotifications.Changed:Connect(render)
 render()
+-- Retry no assets in a loop: use the same asset's Roblox thumbnail only when
+-- its direct image endpoint fails. Config retains the requested original ID.
+for _,id in ipairs(Config.Order) do
+ local aura=Config.Get(id)
+ if aura.IconFallback then task.spawn(function()
+  local failed=false
+  pcall(function()
+   game:GetService("ContentProvider"):PreloadAsync({aura.Icon},function(_,status)
+    failed=status==Enum.AssetFetchStatus.Failure or status==Enum.AssetFetchStatus.TimedOut
+   end)
+  end)
+  if failed and script.Parent then resolvedIcons[id]=aura.IconFallback;render() end
+ end) end
+end
 task.spawn(function()
  while script.Parent and not require(RS.Modules:WaitForChild("InventoryNotificationState")).Load() do task.wait(2) end
  refresh()
