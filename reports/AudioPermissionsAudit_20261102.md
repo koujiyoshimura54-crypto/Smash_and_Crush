@@ -14,8 +14,10 @@ Authenticated Creator Inventory search (`scope=user, assetType=Audio`) returned1
 
 The purchased file `C:\Users\kouji\Downloads\Game\Game.rbxl` was parsed read-only with the existing binary reader. SHA256 `2369cfe1ff4ef2111112bca45e853a9cc33cad0217b3074205820ce2f4bb1f5c` matches the previous audit. Its nine UI/Music IDs exactly match the user's preceding-reference table and the previous canonical tutorial Play's authorization errors. Its WallBreak ID is **107566922588765**, not the MP3 metadata ID100100028436250. This original-file value is **not a claim about the current canonical WallBreak**.
 
-**F** = Fl0ppaDevelopa / **User8709680466** (purchased-map reference owner; different from the game owner).  
-**Y** = yossy945 / **User7467238848** (registered candidate and game owner).  
+**F** = Fl0ppaDevelopa / **User8709680466** (purchased-map reference owner; different from the game owner).
+
+**Y** = yossy945 / **User7467238848** (registered candidate and game owner).
+
 All assets in the following table are Audio. **Current Full Path/SoundId and fresh loading results remain unverified**; paths/IDs below are explicitly prior canonical references, except WallBreak's original-file reference.
 
 | File | Prior Full Path / reference ID | Reference asset name / owner | Registered candidate ID / name / owner | Loading evidence | Necessary action |
