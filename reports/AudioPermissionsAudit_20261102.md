@@ -1,5 +1,7 @@
 # Audio registration and permission audit — 2026-11-02
 
+Follow-up: the canonical Studio subsequently connected and the owner authorized replacement. [Verified findings, nine applied SoundIds and unchanged WallBreak](./AudioReplacement_20261102.md). The initial connection-limited evidence below is retained as history.
+
 ## Conclusion and connection limit
 
 **Registered uploads are confirmed. The nine IDs in the preceding canonical Play are the purchased-map IDs, not the user's registered IDs. The current canonical Studio document cannot be certified in this audit because it was not connected.** Re-uploading is not justified by the available evidence.

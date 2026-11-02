@@ -1,0 +1,1308 @@
+{
+  "Date": "2026-11-02",
+  "PlaceId": 126576845524886,
+  "UniverseId": 10765181857,
+  "Authorization": "Initially read-only; user subsequently instructed: 問題なさそうなら差し替えて",
+  "Changes": [
+    {
+      "Path": "SoundService.UI.Click",
+      "Before": "rbxassetid://110783070910373",
+      "After": "rbxassetid://138115752460180",
+      "Name": "Click"
+    },
+    {
+      "Path": "SoundService.UI.Hover",
+      "Before": "rbxassetid://70375637366855",
+      "After": "rbxassetid://96375954366615",
+      "Name": "Hover"
+    },
+    {
+      "Path": "SoundService.UI.Notification",
+      "Before": "rbxassetid://117918896943222",
+      "After": "rbxassetid://119147718004156",
+      "Name": "Notification"
+    },
+    {
+      "Path": "SoundService.UI.Success",
+      "Before": "rbxassetid://132703558395523",
+      "After": "rbxassetid://137104456181758",
+      "Name": "Success"
+    },
+    {
+      "Path": "SoundService.UI.Winner",
+      "Before": "rbxassetid://93441624600336",
+      "After": "rbxassetid://121202237775456",
+      "Name": "Winner"
+    },
+    {
+      "Path": "SoundService.UI.Cash",
+      "Before": "rbxassetid://80878570230928",
+      "After": "rbxassetid://125741903880677",
+      "Name": "Cash"
+    },
+    {
+      "Path": "SoundService.UI.Error",
+      "Before": "rbxassetid://137456349421517",
+      "After": "rbxassetid://76931233259822",
+      "Name": "Error"
+    },
+    {
+      "Path": "SoundService.Music.Classic Easter",
+      "Before": "rbxassetid://92759730216628",
+      "After": "rbxassetid://83679816707559",
+      "Name": "Music2"
+    },
+    {
+      "Path": "SoundService.Music.Fun And Games (Sleigh Bells Version)",
+      "Before": "rbxassetid://75011432119943",
+      "After": "rbxassetid://134468436646618",
+      "Name": "Music1"
+    }
+  ],
+  "PreservedWallBreak": {
+    "Path": "SoundService.WallBreak",
+    "Id": "rbxassetid://128974899749995",
+    "Metadata": {
+      "AssetTypeId": 3,
+      "TargetId": 128974899749995,
+      "IsNew": false,
+      "Updated": "2026-05-19T04:48:30.844Z",
+      "IsLimitedUnique": false,
+      "ProductId": 0,
+      "MinimumMembershipLevel": 0,
+      "Created": "2026-05-19T04:48:30.78Z",
+      "Creator": {
+        "Name": "Kadestinator",
+        "CreatorTargetId": 74012656,
+        "Id": 74012656,
+        "HasVerifiedBadge": false,
+        "CreatorType": "User"
+      },
+      "IsLimited": false,
+      "ContentRatingTypeId": 0,
+      "PriceDiscountDetails": [],
+      "IsPublicDomain": true,
+      "Name": "[Block Tales] Defeated Enemy",
+      "IsForSale": false,
+      "AssetId": 128974899749995,
+      "Sales": 0,
+      "Description": "SFX",
+      "IconImageAssetId": 0
+    }
+  },
+  "ExistingUploadedInstances": [
+    {
+      "Path": "Workspace.Sounds.Hover",
+      "IsLoaded": true,
+      "Volume": 0.5,
+      "SoundId": "rbxassetid://96375954366615",
+      "Looped": false,
+      "TimeLength": 0.5,
+      "Playing": false
+    },
+    {
+      "Path": "Workspace.Sounds.Error",
+      "IsLoaded": true,
+      "Volume": 0.5,
+      "SoundId": "rbxassetid://76931233259822",
+      "Looped": false,
+      "TimeLength": 0.9257083333333334,
+      "Playing": false
+    },
+    {
+      "Path": "Workspace.Sounds.WallBreak",
+      "IsLoaded": true,
+      "Volume": 0.5,
+      "SoundId": "rbxassetid://97452853183370",
+      "Looped": false,
+      "TimeLength": 4.048979591836734,
+      "Playing": false
+    },
+    {
+      "Path": "Workspace.Sounds.Cash",
+      "IsLoaded": true,
+      "Volume": 0.5,
+      "SoundId": "rbxassetid://125741903880677",
+      "Looped": false,
+      "TimeLength": 1.7414583333333333,
+      "Playing": false
+    },
+    {
+      "Path": "Workspace.Sounds.Click",
+      "IsLoaded": true,
+      "Volume": 0.5,
+      "SoundId": "rbxassetid://138115752460180",
+      "Looped": false,
+      "TimeLength": 0.3940416666666667,
+      "Playing": false
+    },
+    {
+      "Path": "Workspace.Sounds.Winner",
+      "IsLoaded": true,
+      "Volume": 0.5,
+      "SoundId": "rbxassetid://121202237775456",
+      "Looped": false,
+      "TimeLength": 1.5789569160997732,
+      "Playing": false
+    },
+    {
+      "Path": "Workspace.Sounds.Notification",
+      "IsLoaded": true,
+      "Volume": 0.5,
+      "SoundId": "rbxassetid://119147718004156",
+      "Looped": false,
+      "TimeLength": 1.5176979166666666,
+      "Playing": false
+    },
+    {
+      "Path": "Workspace.Sounds.Success",
+      "IsLoaded": true,
+      "Volume": 0.5,
+      "SoundId": "rbxassetid://137104456181758",
+      "Looped": false,
+      "TimeLength": 1.8121041666666666,
+      "Playing": false
+    },
+    {
+      "Path": "Workspace.Sounds.Sound",
+      "IsLoaded": true,
+      "Volume": 0.07000000029802322,
+      "SoundId": "rbxassetid://89468328910114",
+      "Looped": true,
+      "TimeLength": 144.2135,
+      "Playing": true
+    }
+  ],
+  "BeforeLoads": [
+    {
+      "Path": "SoundService.UI.Hover",
+      "After": {
+        "Path": "SoundService.UI.Hover",
+        "TimeLength": 0,
+        "Id": "rbxassetid://70375637366855",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://70375637366855",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://70375637366855",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Cash",
+      "After": {
+        "Path": "SoundService.UI.Cash",
+        "TimeLength": 0,
+        "Id": "rbxassetid://80878570230928",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://80878570230928",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://80878570230928",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Winner",
+      "After": {
+        "Path": "SoundService.UI.Winner",
+        "TimeLength": 0,
+        "Id": "rbxassetid://93441624600336",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://93441624600336",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://93441624600336",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Success",
+      "After": {
+        "Path": "SoundService.UI.Success",
+        "TimeLength": 0,
+        "Id": "rbxassetid://132703558395523",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://132703558395523",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://132703558395523",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Error",
+      "After": {
+        "Path": "SoundService.UI.Error",
+        "TimeLength": 0,
+        "Id": "rbxassetid://137456349421517",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://137456349421517",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://137456349421517",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Click",
+      "After": {
+        "Path": "SoundService.UI.Click",
+        "TimeLength": 0,
+        "Id": "rbxassetid://110783070910373",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://110783070910373",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://110783070910373",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Notification",
+      "After": {
+        "Path": "SoundService.UI.Notification",
+        "TimeLength": 0,
+        "Id": "rbxassetid://117918896943222",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://117918896943222",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://117918896943222",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.Music.Classic Easter",
+      "After": {
+        "Path": "SoundService.Music.Classic Easter",
+        "TimeLength": 0,
+        "Id": "rbxassetid://92759730216628",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://92759730216628",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://92759730216628",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.Music.Fun And Games (Sleigh Bells Version)",
+      "After": {
+        "Path": "SoundService.Music.Fun And Games (Sleigh Bells Version)",
+        "TimeLength": 0,
+        "Id": "rbxassetid://75011432119943",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": false,
+        "MaxTimePosition": 0,
+        "Ended": false
+      },
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://75011432119943",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://75011432119943",
+          "Status": "Failure"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Hover",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Hover",
+        "TimeLength": 0.5,
+        "Id": "rbxassetid://96375954366615",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.171,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 0.5,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://96375954366615",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://96375954366615",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.WallBreak",
+      "After": {
+        "Path": "SoundService.WallBreak",
+        "TimeLength": 0.9375056689342404,
+        "Id": "rbxassetid://128974899749995",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.171,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 0.9375056689342404,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://128974899749995",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://128974899749995",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Click",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Click",
+        "TimeLength": 0.3940416666666667,
+        "Id": "rbxassetid://138115752460180",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.171,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 0.3940416666666667,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://138115752460180",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://138115752460180",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Winner",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Winner",
+        "TimeLength": 1.5789569160997732,
+        "Id": "rbxassetid://121202237775456",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 1.5789569160997732,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://121202237775456",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://121202237775456",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Success",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Success",
+        "TimeLength": 1.8121041666666666,
+        "Id": "rbxassetid://137104456181758",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 1.8121041666666666,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://137104456181758",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://137104456181758",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Cash",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Cash",
+        "TimeLength": 1.7414583333333333,
+        "Id": "rbxassetid://125741903880677",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 1.7414583333333333,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://125741903880677",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://125741903880677",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Notification",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Notification",
+        "TimeLength": 1.5176979166666666,
+        "Id": "rbxassetid://119147718004156",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 1.5176979166666666,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://119147718004156",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://119147718004156",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Error",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Error",
+        "TimeLength": 0.9257083333333334,
+        "Id": "rbxassetid://76931233259822",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.171,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 0.9257083333333334,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://76931233259822",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://76931233259822",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Music2",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Music2",
+        "TimeLength": 122.23698412698413,
+        "Id": "rbxassetid://83679816707559",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.171,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 122.23698412698413,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://83679816707559",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://83679816707559",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.Music1",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.Music1",
+        "TimeLength": 141.3119954648526,
+        "Id": "rbxassetid://134468436646618",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.171,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 141.3119954648526,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://134468436646618",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://134468436646618",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.__AudioAuditSounds.WallBreak",
+      "After": {
+        "Path": "SoundService.__AudioAuditSounds.WallBreak",
+        "TimeLength": 4.048979591836734,
+        "Id": "rbxassetid://97452853183370",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.171,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 4.048979591836734,
+      "PreloadCallSucceeded": true,
+      "Role": "Registered",
+      "Id": "rbxassetid://97452853183370",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://97452853183370",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    }
+  ],
+  "AfterLoads": [
+    {
+      "Path": "SoundService.UI.Winner",
+      "After": {
+        "Path": "SoundService.UI.Winner",
+        "TimeLength": 1.5789569160997732,
+        "Id": "rbxassetid://121202237775456",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 1.5789569160997732,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://121202237775456",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://121202237775456",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Success",
+      "After": {
+        "Path": "SoundService.UI.Success",
+        "TimeLength": 1.8121041666666666,
+        "Id": "rbxassetid://137104456181758",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 1.8121041666666666,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://137104456181758",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://137104456181758",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Error",
+      "After": {
+        "Path": "SoundService.UI.Error",
+        "TimeLength": 0.9257083333333334,
+        "Id": "rbxassetid://76931233259822",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 0.9257083333333334,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://76931233259822",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://76931233259822",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Hover",
+      "After": {
+        "Path": "SoundService.UI.Hover",
+        "TimeLength": 0.5,
+        "Id": "rbxassetid://96375954366615",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 0.5,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://96375954366615",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://96375954366615",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Notification",
+      "After": {
+        "Path": "SoundService.UI.Notification",
+        "TimeLength": 1.5176979166666666,
+        "Id": "rbxassetid://119147718004156",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 1.5176979166666666,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://119147718004156",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://119147718004156",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Cash",
+      "After": {
+        "Path": "SoundService.UI.Cash",
+        "TimeLength": 1.7414583333333333,
+        "Id": "rbxassetid://125741903880677",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.213,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 1.7414583333333333,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://125741903880677",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://125741903880677",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.UI.Click",
+      "After": {
+        "Path": "SoundService.UI.Click",
+        "TimeLength": 0.3940416666666667,
+        "Id": "rbxassetid://138115752460180",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.213,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 0.3940416666666667,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://138115752460180",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://138115752460180",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.Music.Classic Easter",
+      "After": {
+        "Path": "SoundService.Music.Classic Easter",
+        "TimeLength": 122.23698412698413,
+        "Id": "rbxassetid://83679816707559",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 122.23698412698413,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://83679816707559",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://83679816707559",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.WallBreak",
+      "After": {
+        "Path": "SoundService.WallBreak",
+        "TimeLength": 0.9375056689342404,
+        "Id": "rbxassetid://128974899749995",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 0.9375056689342404,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://128974899749995",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://128974899749995",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    },
+    {
+      "Path": "SoundService.Music.Fun And Games (Sleigh Bells Version)",
+      "After": {
+        "Path": "SoundService.Music.Fun And Games (Sleigh Bells Version)",
+        "TimeLength": 141.3119954648526,
+        "Id": "rbxassetid://134468436646618",
+        "IsLoaded": true,
+        "TimePosition": 0,
+        "Playing": false
+      },
+      "MutedPlayback": {
+        "Playing": true,
+        "IsLoaded": true,
+        "MaxTimePosition": 0.192,
+        "Ended": false
+      },
+      "IsLoaded": true,
+      "TimeLength": 141.3119954648526,
+      "PreloadCallSucceeded": true,
+      "Role": "Current",
+      "Id": "rbxassetid://134468436646618",
+      "Callbacks": {
+        "1": {
+          "Id": "rbxassetid://134468436646618",
+          "Status": "Success"
+        }
+      },
+      "TimePosition": 0,
+      "Playing": false
+    }
+  ],
+  "BeforeCallerObservations": [
+    {
+      "Id": "rbxassetid://70375637366855",
+      "Path": "SoundService.UI.Hover",
+      "After": {
+        "Path": "SoundService.UI.Hover",
+        "TimeLength": 0,
+        "Id": "rbxassetid://70375637366855",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": true
+      },
+      "TimeLength": 0,
+      "Phase": "Existing ButtonClient audio helper",
+      "IsLoaded": false,
+      "TimePosition": 0,
+      "Playing": true
+    },
+    {
+      "Id": "rbxassetid://110783070910373",
+      "Path": "SoundService.UI.Click",
+      "After": {
+        "Path": "SoundService.UI.Click",
+        "TimeLength": 0,
+        "Id": "rbxassetid://110783070910373",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": true
+      },
+      "TimeLength": 0,
+      "Phase": "Existing ButtonClient audio helper",
+      "IsLoaded": false,
+      "TimePosition": 0,
+      "Playing": true
+    },
+    {
+      "Id": "rbxassetid://117918896943222",
+      "Path": "SoundService.UI.Notification",
+      "After": {
+        "Path": "SoundService.UI.Notification",
+        "TimeLength": 0,
+        "Id": "rbxassetid://117918896943222",
+        "IsLoaded": false,
+        "TimePosition": 0,
+        "Playing": true
+      },
+      "TimeLength": 0,
+      "Phase": "Existing NotifyClient.pin",
+      "IsLoaded": false,
+      "TimePosition": 0,
+      "Playing": true
+    }
+  ],
+  "BeforeCloneObservations": [
+    {
+      "TimePosition": 0,
+      "Name": "Click",
+      "Id": "rbxassetid://110783070910373",
+      "Phase": "Existing HatchClient audio helper",
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "Playing": true
+    },
+    {
+      "TimePosition": 0,
+      "Name": "Success",
+      "Id": "rbxassetid://132703558395523",
+      "Phase": "Existing HatchClient audio helper",
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "Playing": true
+    },
+    {
+      "TimePosition": 0,
+      "Name": "Winner",
+      "Id": "rbxassetid://93441624600336",
+      "Phase": "Existing HatchClient audio helper",
+      "IsLoaded": false,
+      "TimeLength": 0,
+      "Playing": true
+    },
+    {
+      "TimePosition": 0.205,
+      "Name": "WallBreak",
+      "Id": "rbxassetid://128974899749995",
+      "Phase": "Existing WallBreakVisualService.Play on isolated part",
+      "IsLoaded": true,
+      "TimeLength": 0.9375056689342404,
+      "Playing": true
+    }
+  ],
+  "AfterCallerObservations": [
+    {
+      "Id": "rbxassetid://96375954366615",
+      "Path": "SoundService.UI.Hover",
+      "After": {
+        "Path": "SoundService.UI.Hover",
+        "TimeLength": 0.5,
+        "Id": "rbxassetid://96375954366615",
+        "IsLoaded": true,
+        "TimePosition": 0.149,
+        "Playing": true
+      },
+      "TimeLength": 0.5,
+      "Phase": "Existing ButtonClient audio helper",
+      "IsLoaded": true,
+      "TimePosition": 0.021,
+      "Playing": true
+    },
+    {
+      "Id": "rbxassetid://138115752460180",
+      "Path": "SoundService.UI.Click",
+      "After": {
+        "Path": "SoundService.UI.Click",
+        "TimeLength": 0.3940416666666667,
+        "Id": "rbxassetid://138115752460180",
+        "IsLoaded": true,
+        "TimePosition": 0.128,
+        "Playing": true
+      },
+      "TimeLength": 0.3940416666666667,
+      "Phase": "Existing ButtonClient audio helper",
+      "IsLoaded": true,
+      "TimePosition": 0,
+      "Playing": true
+    },
+    {
+      "Id": "rbxassetid://119147718004156",
+      "Path": "SoundService.UI.Notification",
+      "After": {
+        "Path": "SoundService.UI.Notification",
+        "TimeLength": 1.5176979166666666,
+        "Id": "rbxassetid://119147718004156",
+        "IsLoaded": true,
+        "TimePosition": 0.149,
+        "Playing": true
+      },
+      "TimeLength": 1.5176979166666666,
+      "Phase": "Existing NotifyClient.pin",
+      "IsLoaded": true,
+      "TimePosition": 0,
+      "Playing": true
+    },
+    {
+      "ObservedAtCreation": true,
+      "After": {
+        "Path": "SoundService.Click",
+        "TimeLength": 0.3940416666666667,
+        "Id": "rbxassetid://138115752460180",
+        "IsLoaded": true,
+        "TimePosition": 0.128,
+        "Playing": true
+      },
+      "Phase": "Existing HatchClient audio helper",
+      "IsLoaded": true,
+      "TimeLength": 0.3940416666666667,
+      "Id": "rbxassetid://138115752460180",
+      "TimePosition": 0,
+      "Path": "SoundService.Click",
+      "Playing": true
+    },
+    {
+      "ObservedAtCreation": true,
+      "After": {
+        "Path": "SoundService.Success",
+        "TimeLength": 1.8121041666666666,
+        "Id": "rbxassetid://137104456181758",
+        "IsLoaded": true,
+        "TimePosition": 0.128,
+        "Playing": true
+      },
+      "Phase": "Existing HatchClient audio helper",
+      "IsLoaded": true,
+      "TimeLength": 1.8121041666666666,
+      "Id": "rbxassetid://137104456181758",
+      "TimePosition": 0,
+      "Path": "SoundService.Success",
+      "Playing": true
+    },
+    {
+      "ObservedAtCreation": true,
+      "After": {
+        "Path": "SoundService.Winner",
+        "TimeLength": 1.5789569160997732,
+        "Id": "rbxassetid://121202237775456",
+        "IsLoaded": true,
+        "TimePosition": 0.128,
+        "Playing": true
+      },
+      "Phase": "Existing HatchClient audio helper",
+      "IsLoaded": true,
+      "TimeLength": 1.5789569160997732,
+      "Id": "rbxassetid://121202237775456",
+      "TimePosition": 0,
+      "Path": "SoundService.Winner",
+      "Playing": true
+    },
+    {
+      "ObservedAtCreation": true,
+      "After": {
+        "Path": "SoundService.WallBreak",
+        "TimeLength": 0.9375056689342404,
+        "Id": "rbxassetid://128974899749995",
+        "IsLoaded": true,
+        "TimePosition": 0.121,
+        "Playing": true
+      },
+      "Phase": "Existing WallBreakVisualService.Play on isolated part",
+      "IsLoaded": true,
+      "TimeLength": 0.9375056689342404,
+      "Id": "rbxassetid://128974899749995",
+      "TimePosition": 0,
+      "Path": "SoundService.WallBreak",
+      "Playing": true
+    }
+  ],
+  "Restoration": {
+    "SourcesUnchanged": 462,
+    "ExpectedIdChanges": 9,
+    "Mode": "Edit",
+    "Helpers": 0,
+    "SoundPropertiesVerified": 74
+  },
+  "NoSavePublish": true,
+  "ProductionDataChanged": false,
+  "AuditoryConfirmation": false,
+  "PermissionSettingsChanged": false,
+  "Reuploaded": false
+}
