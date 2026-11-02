@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Inventory/Aura/hover corrections
+
+Six scoped live Sources updated: permanent-arrival W2 Dumbbell visibility, single Aura currency price with startup visual refit, shared-source hover and disabled UI sound guards. Native isolated Play inspected normal/narrow Aura pixels, purchase/equip, progression visibility, reopen/death and measured hover playback counts/volume. Fredoka's absent Japanese glyphs were confirmed rather than claiming another font assignment fixed Japanese. Helpers removed; unsaved canonical Edit retained. [Record](../reports/InventoryAuraHover_20261103.md).
+
 ## 2026-11-02 — Player-to-Boss contact requirement
 
 Scoped EnemyManager change applied to current unsaved canonical Studio: separate contact from pursuit retention and recheck at impact. Native isolated two-client Play covered both Worlds, separation/recontact, paired arena-exit healing, stale attacks and owner independence. [Evidence and limits](../reports/BossContact_20261102.md).

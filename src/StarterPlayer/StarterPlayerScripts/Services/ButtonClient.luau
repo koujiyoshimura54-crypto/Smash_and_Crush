@@ -57,8 +57,8 @@ local function scaled(size: UDim2, factor: number): UDim2
 	)
 end
 
-local function play(sound: Sound?)
-	if not sound then return end
+local function play(sound: Sound?, button: GuiButton)
+	if not sound or not require(ReplicatedStorage.Modules.UIFeedback).CanInteract(button) then return end
 
 	sound:Play()
 end
@@ -111,12 +111,13 @@ local function bindButton(button: GuiButton, bag: any)
 
 	bag:Add(button.MouseEnter:Connect(function()
 		entry.hovered = true
-		play(hoverSound)
+		require(ReplicatedStorage.Modules.UIFeedback).Hover(button)
 		resize(entry)
 		showTip(entry, true)
 	end))
 
 	bag:Add(button.MouseLeave:Connect(function()
+		require(ReplicatedStorage.Modules.UIFeedback).Leave(button)
 		entry.hovered = false
 		entry.pressed = false
 		resize(entry)
@@ -134,7 +135,7 @@ local function bindButton(button: GuiButton, bag: any)
 	end))
 
 	bag:Add(button.Activated:Connect(function()
-		play(clickSound)
+		play(clickSound,button)
 	end))
 end
 

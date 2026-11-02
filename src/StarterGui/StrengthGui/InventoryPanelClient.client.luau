@@ -55,8 +55,8 @@ local pending={}
 local layout
 local function worldLocked(itemId)
  local item=Master.Get(itemId)
- return item and item.WorldId==2 and owned[itemId]~=true and equipped~=itemId
-  and player:GetAttribute("World2Visited")~=true
+ return item and item.WorldId==2
+  and (not stateLoaded or player:GetAttribute("World2Visited")~=true)
 end
 local function round(parent,radius)
  local corner=Instance.new("UICorner")
@@ -75,6 +75,11 @@ end
 local function updateButtons()
  local requestPending=next(pending)~=nil or Forge.IsPending()
  for itemId,card in pairs(cards) do
+  local hidden=worldLocked(itemId)
+  card.Visible=not hidden
+  card.Active=not hidden and stateLoaded
+  card.Interactable=card.Active
+  if hidden then Presentation.SetSelected(card,false) end
   card.OwnedCount.Text=(counts[itemId] or 0)>0 and ("×"..counts[itemId]) or ""
   local sale=card:FindFirstChild("SellButton")
   if sale then
@@ -104,7 +109,7 @@ local function updateButtons()
    PurchaseHUD.PurchaseButton(button,"Win",(isOwned or isEquipped) and button.Text or button.Price.Text)
    Presentation.SetEquipped(button,isEquipped)
    local visual=button:FindFirstChild("PurchasedButtonVisual");if visual then visual.Main.Amount.AutoLocalize=isOwned end
-   Presentation.SetInventoryWorldLock(card,card.Icon,locked)
+   card:SetAttribute("InventoryWorldLocked",false)
   end
  end
 local item=Master.Get(equipped)
@@ -168,6 +173,7 @@ for order,item in ipairs(sortedItems) do
   card.Name=itemId card.Text="" card.AutoButtonColor=false
   card.LayoutOrder=order card.Size=UDim2.fromOffset(150,230)
   card.BackgroundColor3=Color3.fromRGB(113,54,156) card.BorderSizePixel=0
+  card.Visible=item.WorldId~=2 -- Never flash a W2 card before authoritative state arrives.
   card.ZIndex=31 card.Parent=list
   card:SetAttribute("ItemId",itemId)
   round(card,12)
@@ -203,7 +209,7 @@ for order,item in ipairs(sortedItems) do
    sell.BackgroundColor3=Color3.fromRGB(230,180,20);sell.TextColor3=Color3.new(1,1,1);sell.TextScaled=true;sell.Parent=card;round(sell,7)
    quantity.FocusLost:Connect(updateButtons)
    Responsive.ConnectActivation(sell,function()
-    if not sell.Active or Forge.IsPending() then return end
+    if worldLocked(itemId) or not sell.Active or Forge.IsPending() then return end
     selectCard(itemId)
     Forge.Refresh()
     if not sell.Active or (sell:GetAttribute("SellQuantity") or 0)<=0 then return end

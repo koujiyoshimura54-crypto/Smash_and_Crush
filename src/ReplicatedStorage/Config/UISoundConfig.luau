@@ -8,7 +8,8 @@ Config.CoinCollect = table.freeze({
 
 -- Added feedback only. Existing CoinCollect and SoundService objects stay unchanged.
 Config.Added = table.freeze({
- Hover={Sound="Hover",Volume=0.22,Speed=1,Interval=0.09},
+ -- Hover volume/speed/SoundGroup come only from SoundService.UI.Hover.
+ Hover={Sound="Hover",Interval=0.09},
  Click={Sound="Click",Volume=0.65,Speed=1,Interval=0.035},
  Rebirth={Sound="Winner",Volume=1,Speed=1,Interval=0.15},
  Offline={Sound="Success",Volume=1,Speed=1,Interval=0.12},

@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-03 — Inventory visibility, Aura price and hover
+
+W2 Dumbbell cards are absent until inventory state is loaded and the existing server World2Visited arrival mirror is true; ownership/equipment alone never exposes them. Arrival persists on World1 return. Aura Win/Robux prices render only inside the existing purchase visual; old Price objects remain hidden data sources. Existing Fredoka applies to Aura content, but its installed font lacks Japanese glyphs, so Japanese fallback remains without language/font substitution. Hover uses SoundService.UI.Hover directly at its authored volume; disabled/hidden UI is silent. [Native display/audio evidence and limits](../reports/InventoryAuraHover_20261103.md).
+
 ## 2026-11-02 — Purchase text and disabled dumbbell sale
 
 Active purchase prices, purchase labels and in-button states reuse `ReplicatedStorage.Config.StrengthHUDStyle.Font` through `HUDLayout.ApplyPurchaseTextFont`, including visible cloned purchase text and scoped independent builders. This supersedes the older exclusion only for Item/Speed purchase controls; their general text, Inventory tabs and all Merge/tutorial text remain unchanged. Font changes do not change authored sizes, colors, outlines, layout or currency art. [Exact scope and visual limitations](../reports/PurchaseText_20261102/REPORT.md).

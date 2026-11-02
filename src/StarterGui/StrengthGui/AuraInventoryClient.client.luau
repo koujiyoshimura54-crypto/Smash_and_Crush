@@ -72,12 +72,19 @@ local function render()
   Presentation.SetButtonEnabled(b,loaded and not pending and aura.PurchaseEnabled~=false
    and (owned[id] or aura.PurchaseType~="GamePass" or displayPrices[id]~=nil))
   card.Price.Amount.Text=aura.PurchaseEnabled==false and "" or aura.PurchaseType=="Entitlement" and (aura.Entitlement=="VIP" and "VIP" or "PACK") or MarketplacePrice.Format(aura.PurchaseType=="Win" and aura.Price or displayPrices[id])
+  -- Keep the old price as the async/data source, but render currency only
+  -- inside the existing purchase visual. No hidden input surface remains.
+  if aura.PurchaseType=="Win" or aura.PurchaseType=="GamePass" then
+   card.Price.Visible=false
+   card.Price.Active=false
+  end
   local currencyIcon=card.Price:FindFirstChild("CurrencyIcon")
   if aura.WorldId==2 and aura.PurchaseType=="GamePass" and currencyIcon then
    currencyIcon.Image=list.RedAuraCard.Price.CurrencyIcon.Image
   end
   if aura.PurchaseType~="Entitlement" and aura.PurchaseEnabled~=false then
    PurchaseHUD.PurchaseButton(b,aura.PurchaseType=="Win" and "Win" or "Robux",notice[id] or (owned[id] and b.Label.Text or card.Price.Amount.Text))
+   PurchaseHUD.RefitPurchaseButton(b) -- Re-evaluate an early 1-pixel startup viewport when the page renders.
   end
   Presentation.SetEquipped(b,isEquipped)
   local visual=b:FindFirstChild("PurchasedButtonVisual");if visual then visual.Main.Amount.AutoLocalize=owned[id]==true end

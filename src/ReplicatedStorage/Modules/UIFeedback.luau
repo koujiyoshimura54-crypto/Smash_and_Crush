@@ -8,6 +8,8 @@ local Config=require(RS.Config.UISoundConfig).Added
 local M={}
 local played,last,sounds={},{},{}
 local buttons=setmetatable({},{__mode="k"})
+local hovered=setmetatable({},{__mode="k"})
+local pendingHover
 local started=false
 local progress,claims
 local rejected={NotEnoughWin=true,InsufficientWin=true,NotEnoughItems=true,NotEnoughOres=true,
@@ -26,6 +28,11 @@ function M.Play(kind,key)
  local source=SS:FindFirstChild("UI") and SS.UI:FindFirstChild(setting.Sound)
  if not source or not source:IsA("Sound") then return false end
  last[kind]=now
+ if kind=="Hover" then
+  -- All hover owners play the same live source: one volume/mute/group control.
+  source:Stop();source.TimePosition=0;source:Play()
+  return true
+ end
  local sound=sounds[setting.Sound]
  if not sound then
   sound=source:Clone();sound.Name="AddedUIFeedback_"..setting.Sound
@@ -51,12 +58,29 @@ local function usable(button)
  end
  return ancestor==player.PlayerGui
 end
+function M.CanInteract(button) return usable(button) end
+function M.Hover(button)
+ if not usable(button) or UIS:GetLastInputType()~=Enum.UserInputType.MouseMovement or hovered[button] then return false end
+ hovered[button]=true
+ if pendingHover then
+  -- A parent card and its child purchase target can enter in the same frame.
+  if button:IsDescendantOf(pendingHover) then pendingHover=button end
+  return false
+ end
+ pendingHover=button
+ task.defer(function()
+  local target=pendingHover;pendingHover=nil
+  if target and hovered[target] and usable(target) then M.Play("Hover") end
+ end)
+ return true
+end
+function M.Leave(button) hovered[button]=nil end
 function M.Button(button,hover)
  if not usable(button) then return false end
- -- Shared purchased buttons keep their exact existing source/volume/timing.
+ -- These buttons already call the shared hover entry from their existing owner.
  if button:GetAttribute(hover and "ExistingHoverSE" or "ExistingClickSE") then return false end
- if hover and UIS:GetLastInputType()~=Enum.UserInputType.MouseMovement then return false end
- return M.Play(hover and "Hover" or "Click")
+ if hover then return M.Hover(button) end
+ return M.Play("Click")
 end
 function M.BindButton(button)
  if not button:IsA("GuiButton") or buttons[button] then return end
@@ -65,6 +89,7 @@ function M.BindButton(button)
  if screen and screen.Name=="ScreenGui" then return end
  buttons[button]=true
  button.MouseEnter:Connect(function()M.Button(button,true)end)
+ button.MouseLeave:Connect(function()M.Leave(button)end)
  button.Activated:Connect(function()M.Button(button,false)end)
 end
 function M.ObserveStrength(view)

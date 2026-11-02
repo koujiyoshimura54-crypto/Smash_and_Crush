@@ -1,3 +1,7 @@
+# 2026-11-03 — Inventory visibility, Aura price and shared hover
+
+Hide unreached W2 dumbbells including owned test data; remove duplicate Aura currency price; refit the existing Aura purchase visual after startup. Route hover through its single authored Sound and suppress non-interactive UI SE. Inspected actual Japanese/Latin rendering and documented Fredoka's missing Japanese glyphs. Isolated native UI/transaction/audio checks and Edit cleanup passed. [Evidence](../reports/InventoryAuraHover_20261103.md).
+
 # 2026-11-02 — Player-to-Boss contact-only damage
 
 Separated arena pursuit retention from Player hit eligibility in current canonical EnemyManager. Recheck actual trigger/CombatZone overlap at impact, preserving chase, remaining HP and Auto on contact loss and paired full healing on living arena exit. Both Worlds and two real clients were checked with isolated data; helpers removed and unsaved Edit retained. [Evidence and limits](../reports/BossContact_20261102.md).

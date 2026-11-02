@@ -555,14 +555,16 @@ function M.PurchaseButton(button,currency,value)
   end
   -- Reuse ButtonClient's hover/press sizing and Config.Button values, without
   -- starting its global binder or any purchased gameplay service.
+  entry.resize=resize
   local function sound(name)
+   if not require(script.Parent.UIFeedback).CanInteract(button) then return end
    local ui=game:GetService("SoundService"):FindFirstChild("UI")
    local clip=ui and ui:FindFirstChild(name)
    if clip and clip:IsA("Sound") then clip:Play() end
   end
   button:SetAttribute("ExistingHoverSE",true);button:SetAttribute("ExistingClickSE",true)
-  connect(button.MouseEnter,function()entry.hovered=true;sound("Hover");resize(true)end)
-  connect(button.MouseLeave,function()entry.hovered=false;entry.pressed=false;resize(true)end)
+  connect(button.MouseEnter,function()entry.hovered=true;require(script.Parent.UIFeedback).Hover(button);resize(true)end)
+  connect(button.MouseLeave,function()entry.hovered=false;entry.pressed=false;require(script.Parent.UIFeedback).Leave(button);resize(true)end)
   connect(button.MouseButton1Down,function()entry.pressed=true;resize(true)end)
   connect(button.MouseButton1Up,function()entry.pressed=false;resize(true)end)
   connect(button.Activated,function()sound("Click")end)
@@ -588,6 +590,10 @@ function M.PurchaseButton(button,currency,value)
  local icon=entry.visual.Main:FindFirstChild("Icon")
  if icon then icon.Visible=price end
  amount.Text=currency=="Robux" and price and utf8.char(0xE002).." "..text or text
+end
+function M.RefitPurchaseButton(button)
+ local entry=purchaseSkins[button]
+ if entry then entry.resize(false) end
 end
 function M.BindPurchaseButton(button,currency,label)
  M.PurchaseButton(button,currency,label.Text)
