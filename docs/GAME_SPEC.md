@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-02 — Player-to-Boss contact-only hits
+
+Both Worlds require overlap of the existing Player attack trigger and personal Boss CombatZone at attack acceptance and at impact. Arena membership alone retains pursuit, encounter HP and Auto state; it never authorizes Player damage. Recontact uses the existing cadence without catch-up. Living arena exit retains the paired full heal for Player and undefeated Boss; defeated Bosses remain defeated. Boss-to-Player combat, pursuit settings, collider sizes and wall behavior are unchanged. [Implementation and native two-client checks](../reports/BossContact_20261102.md).
+
 ## 2026-11-02 — Ore-to-Dumbbell onboarding
 
 New records and the existing `/resetdata` path opt in; existing records without the new field remain excluded. Any two usable Ore units qualify. Presentation waits for the original floor tutorial, alive/Lobby status and competing effects. A separate durable state completes atomically with the normal successful Ore merge, even before the guide appears. No extra reward or merge-rule change. Reset fences old Forge requests/responses. [Implementation and isolated tests](../reports/OreMergeTutorial_20261102.md).

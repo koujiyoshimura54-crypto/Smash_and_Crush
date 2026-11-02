@@ -1,3 +1,7 @@
+# 2026-11-02 — Player-to-Boss contact-only damage
+
+Separated arena pursuit retention from Player hit eligibility in current canonical EnemyManager. Recheck actual trigger/CombatZone overlap at impact, preserving chase, remaining HP and Auto on contact loss and paired full healing on living arena exit. Both Worlds and two real clients were checked with isolated data; helpers removed and unsaved Edit retained. [Evidence and limits](../reports/BossContact_20261102.md).
+
 # 2026-11-02 — Sale label and shared purchase font
 
 Applied disabled Sell wording and shared Fredoka One to current Y02 purchase renderers, preserving count-based inventory and server purchase/sale rules. Focused isolated Play verified sale guards, runtime font updates and respawn; inspected representative images. Existing Shop width limitation and incomplete Aura/Egg raster checks are recorded. Helpers removed; unsaved Edit retained. [Record](../reports/PurchaseText_20261102/REPORT.md).

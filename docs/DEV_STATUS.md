@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-02 — Player-to-Boss contact requirement
+
+Scoped EnemyManager change applied to current unsaved canonical Studio: separate contact from pursuit retention and recheck at impact. Native isolated two-client Play covered both Worlds, separation/recontact, paired arena-exit healing, stale attacks and owner independence. [Evidence and limits](../reports/BossContact_20261102.md).
+
 ## 2026-11-02 — Dumbbell sale labels and purchase fonts
 
 Eight scoped Sources are reflected in current unsaved Y02: disabled `Sell` replaces `Keep 1`; actual common and independent purchase renderers use shared Fredoka One. Native isolated Play verified surplus/all-copy sale, equipped-last-copy refusal, invalid-input request gating, fonts through price updates/recreation/respawn, and inspected Limited Egg/capacity/dumbbell images. Shared Shop visuals have an existing narrow-geometry issue reproduced with the old font; no layout repair was included. Aura/Egg raster acceptance remains limited. All temporary dependencies/observers removed; final Edit Source/property checks passed. No data migration, real payment, Save/Publish or camera/OS input. [English record and limits](../reports/PurchaseText_20261102/REPORT.md).

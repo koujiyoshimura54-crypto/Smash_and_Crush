@@ -139,6 +139,29 @@ local function boxesOverlap(a,b)
   and math.abs(p.Y)<=targetHalf.Y+projected.Y
   and math.abs(p.Z)<=targetHalf.Z+projected.Z
 end
+-- Both existing attack Parts are non-queryable. Test all separating axes;
+-- keep the wall broad phase and authored collider dimensions unchanged.
+local function bossContact(character,enemy)
+ local a=getWallCombatTrigger(character)
+ local b=enemy and enemy:FindFirstChild("CombatZone")
+ if not a or not b or not b:IsA("BasePart") then return false end
+ local aa={a.CFrame.RightVector,a.CFrame.UpVector,a.CFrame.LookVector}
+ local ba={b.CFrame.RightVector,b.CFrame.UpVector,b.CFrame.LookVector}
+ local ah={a.Size.X/2,a.Size.Y/2,a.Size.Z/2}
+ local bh={b.Size.X/2,b.Size.Y/2,b.Size.Z/2}
+ local delta=b.Position-a.Position
+ local function separated(axis)
+  if axis:Dot(axis)<1e-12 then return false end
+  local reach=0
+  for i=1,3 do reach+=math.abs(axis:Dot(aa[i]))*ah[i]+math.abs(axis:Dot(ba[i]))*bh[i] end
+  return math.abs(delta:Dot(axis))>reach+1e-6
+ end
+ for i=1,3 do
+  if separated(aa[i]) or separated(ba[i]) then return false end
+  for j=1,3 do if separated(aa[i]:Cross(ba[j])) then return false end end
+ end
+ return true
+end
 local function state(p)local s=states[p]if not s then s={Gauges={},Defeated={},Character=p.Character,RunRevision=runRevisions[p] or 0}for i=1,10 do s.Gauges[i]=Boss.GetStageConfig(i).MaxHP end states[p]=s end return s end
 local function send(p,d)
  messageSequences[p]=(messageSequences[p] or 0)+1
@@ -981,20 +1004,14 @@ local function updateCombat(p,manualRequest)
    local wallHit=wallPart and wallTrigger and hum and hum.Health>0 and boxesOverlap(wallTrigger,wallPart)
    local e=not st.WorldComplete and not state(p).Defeated[n] and hum and hum.Health>0 and root and getEnemy(p,n,true)
    local bossUnlocked=(not Wall.Config[n]) or Wall.IsBossUnlockedForStage(p,n)
-   local enemyTrigger=getWallCombatTrigger(ch)
-   local combatZone=e and e:FindFirstChild("CombatZone")
-   local enemyHit=bossUnlocked and e and hum and hum.Health>0 and combatZone
-    and ((enemyTrigger and boxesOverlap(enemyTrigger,combatZone)) or (root and boxesOverlap(root,combatZone)))
-   -- World1 chase keeps an established encounter while the living player stays
-   -- in this Stage; moving out of the mobile shell must not cancel pursuit.
-   if Chase and root then
-    local ongoing=sessions[p]
-    local retained=ongoing and ongoing.CombatType=="MiniBoss" and ongoing.Stage==n
-     and ongoing.Character==ch and ongoing.Instance==e and p:GetAttribute("IsFighting")==true
-    enemyHit=bossUnlocked and e and hum and hum.Health>0 and Chase.ContainsPlayer(e,root.Position)
-     and (enemyHit or retained)
-   end
-   -- The existing session owns the combat type until contact and pending hits end.
+   local inArena=e and root and Chase.ContainsPlayer(e,root.Position)
+   local enemyHit=bossUnlocked and e and hum and hum.Health>0 and inArena and bossContact(ch,e)
+   -- Staying in the arena retains pursuit and health, never permission to hit.
+   local ongoing=sessions[p]
+   local retainBossSession=bossUnlocked and e and hum and hum.Health>0 and inArena
+    and ongoing and ongoing.CombatType=="MiniBoss" and ongoing.Stage==n
+    and ongoing.Character==ch and ongoing.Instance==e and p:GetAttribute("IsFighting")==true
+   -- The existing session owns the combat type until its normal exit/reset.
    local active=sessions[p]
    if active and (active.Stage~=n or active.Character~=ch or not hum or hum.Health<=0 or st.WorldComplete) then
     if BossAttack then BossAttack.Stop(p,true) end
@@ -1066,11 +1083,16 @@ local function updateCombat(p,manualRequest)
         PlayerData.CompleteTutorial(p)
        end
        send(p,{Type="CombatAttack",Id=attackId,Stage=n,SpawnGeneration=worldId==1 and e:GetAttribute("SpawnGeneration") or nil,Attack=bs.Attacks+1,Duration=Boss.AttackDuration,HitDelay=manualRequest and 0 or MINIBOSS_DAMAGE_DELAY,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
+       local spawnGeneration=e:GetAttribute("SpawnGeneration")
        s.Pending+=1
        local function applyBossHit()
         s.Pending-=1
         if not inWorld(p) or p.Parent~=Players or sessions[p]~=s or Stage.GetCurrentStageNumber(p)~=n or state(p)~=ps or p.Character~=ch or not hum or hum.Health<=0 then return end
         if s.CombatType~="MiniBoss" or s.Instance~=e or getEnemy(p,n,false)~=e or not e.Parent or ps.Defeated[n] or Boss.Get(p)~=bs or bs.Completed then return end
+        if e:GetAttribute("SpawnGeneration")~=spawnGeneration then return end
+        -- Arena exit keeps its paired heal; losing contact only misses this hit.
+        if endCombatOnArenaExit(p) or not root or not Chase.ContainsPlayer(e,root.Position)
+         or not bossContact(ch,e) then return end
         local hpBefore=bs.HP
         local status,hitState=Boss.Attack(p)
         if hitState~=bs or status=="Inactive" or status=="Complete" then return end
@@ -1140,7 +1162,7 @@ local function updateCombat(p,manualRequest)
       if manualRequest then applyWallHit() else task.delay(WALL_DAMAGE_DELAY,applyWallHit) end
      end
     end
-   elseif sessions[p] and sessions[p].Pending==0 then
+   elseif sessions[p] and sessions[p].Pending==0 and not retainBossSession then
     if BossAttack then BossAttack.Stop(p,true) end
     Boss.Cancel(p)
     sessions[p]=nil
