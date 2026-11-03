@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-03 — Developer production Win command
+
+Canonical Studio issuer7467238848 may use `/setwin amount UserId` to queue a production Win replacement. The existing owner session or next login applies it; unresolved requests report pending, never success. Omitted ID still sets own Studio Win. Other fields, command permissions and Limited Egg remain unchanged. New public receiver code requires manual Publish/new server deployment. [Record](../reports/ProductionWinAndBoss_20261103.md).
+
 ## 2026-11-03 — Scoped Limited Egg Studio testers
 
 Canonical Studio Limited Egg tests allow UserIds7467238848,10591394123,10653503502 through the server-only `StudioDebugConfig.LimitedEggTestUserIds`. This does not grant creator/GamePass privileges or change public paid purchases. Existing issuer-only Studio `/setwin` and other debug permissions remain unchanged. [Verification](../reports/LimitedEggStudioTesters_20261103.md).

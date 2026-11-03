@@ -121,7 +121,13 @@ function M.Execute(player,message)
    userIdSpecified=true
   elseif #words~=1 then return false,"Usage: /resetdata [UserId]" end
  elseif command=="/addwin" or command=="/setwin" then
-  if #words~=2 or not words[2]:match("^%d+$") or not validNumber(value) or value%1~=0 then
+  if command=="/setwin" and #words==3 then
+   targetUserId=tonumber(words[3])
+   if player.UserId~=7467238848 then return false,"DeveloperRequired" end
+   if not words[3]:match("^%d+$") or not validNumber(targetUserId) or targetUserId<1 or targetUserId%1~=0 then return false,"InvalidUserId" end
+   userIdSpecified=true
+  end
+  if (#words~=2 and not userIdSpecified) or not words[2]:match("^%d+$") or not validNumber(value) or value%1~=0 then
    return false,"Usage: "..command.." non-negative integer (0-9007199254740991)"
   end
  elseif command=="/setstrength" then
@@ -132,7 +138,9 @@ function M.Execute(player,message)
  if busy[player] then return false,"DebugBusy" end
  if command=="/resetdata" and busyUserIds[targetUserId] then return false,"DebugBusy" end
  local sessionTarget
- if command=="/resetdata" then
+ if command=="/setwin" and userIdSpecified then
+  sessionTarget=nil
+ elseif command=="/resetdata" then
   -- Explicit UserId resets an offline Production record and do not depend on
   -- the command issuer's Studio PlayerData session state.
   sessionTarget=userIdSpecified and nil or player
@@ -161,6 +169,9 @@ function M.Execute(player,message)
    if not resetOK then return false,"ProductionResetFailed: "..tostring(freshOrError) end
    print(("[StudioDebug] Production reset success: UserId=%d"):format(targetUserId))
    return true,("Production reset success: UserId=%d"):format(targetUserId)
+  end
+  if command=="/setwin" and userIdSpecified then
+   return Data.SetProductionWin(player,targetUserId,value)
   end
   if command=="/addwin" or command=="/setwin" then
    -- Use only the normal Studio session/store; never the Production reset path.

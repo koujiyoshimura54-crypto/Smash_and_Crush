@@ -22,6 +22,7 @@ local EggTutorial=require(game.ReplicatedStorage.Modules.EggPetTutorialState)
 local PetMergeTutorial=require(game.ReplicatedStorage.Modules.PetMergeTutorialState)
 local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
 local Ownership=require(script.Parent.PlayerDataOwnership)
+local AdminWin=require(script.Parent.ProductionWinState)
 local StrengthRewardState=require(script.Parent.StrengthRewardState)
 local StoreConfig=require(game.ServerScriptService.Config:WaitForChild("DataStoreConfig"))
 -- Acquiring a DataStore can throw for an unpublished Studio file. Do it inside
@@ -406,7 +407,10 @@ end
 local function keyForUserId(userId) return "Player_"..tostring(userId) end
 local function key(player) return keyForUserId(player.UserId) end
 local function ownedUpdate(player,session,transform)
- return Ownership.Update(store,key(player),session,transform,function()
+ return Ownership.Update(store,key(player),session,function(old,info)
+  assert(not session.PendingAdminWin and AdminWin.AppliedId(old)==session.AdminWinAppliedId,"AdminWinSyncPending")
+  return transform(old,info)
+ end,function()
   return sessions[player]==session and not session.OwnershipLost
  end)
 end
@@ -515,6 +519,7 @@ local function writeFreshReset(userId,fresh,targetStore,ownerSession,ownerPlayer
    for field,value in pairs(fresh) do
     merged[field]=typeof(value)=="table" and table.clone(value) or value
    end
+   merged.AdminWin=nil -- Explicit reset cancels any older administrative Win request.
    merged.ResetToken=fresh.ResetToken
    merged.SessionOwnerToken=resetOwner
    merged.RunReturnJournal=nil
@@ -554,6 +559,7 @@ function PlayerDataService.Reset(player)
  -- just as writeFreshReset preserves it on disk. Do not leave that session field nil.
  fresh.StrengthRewards=assert(StrengthRewardState.Normalize(saved.StrengthRewards))
  s.Data=fresh
+ s.AdminWinAppliedId=nil;s.PendingAdminWin=nil
  -- Reset is a new Pet view, even when the new inventory revision is zero.
  s.PetViewGeneration=(s.PetViewGeneration or 0)+1
  player:SetAttribute("PetViewGeneration",s.PetViewGeneration)
@@ -651,6 +657,17 @@ function PlayerDataService.ResetProductionByUserId(userId,allowedStudioPlayer)
  return true,fresh
 end
 
+function PlayerDataService.SetProductionWin(issuer,userId,value)
+ return require(script.Parent.ProductionWinService).Request(issuer,userId,value,productionStore)
+end
+function PlayerDataService.SyncProductionWin(player)
+ if RunService:IsStudio() then return false,"ProductionOnly" end
+ local s=sessions[player]
+ return require(script.Parent.ProductionWinService).Sync(player,s,store,function()
+  return sessions[player]==s and s and not s.OwnershipLost
+ end)
+end
+
 function PlayerDataService.Load(player)
  local s=sessions[player]
  if s and s.OwnershipLost then return false,"SessionOwnershipLost" end
@@ -675,6 +692,7 @@ function PlayerDataService.Load(player)
  end
  local d,validationError=normalize(raw)
  if not d then return false,validationError end
+ s.AdminWinAppliedId=AdminWin.AppliedId(raw)
  s.Loaded=true;s.Data=d;s.Dirty=true;s.LastSave=nil;s.TimeRewardClock=os.clock()
  applyAttributes(player,d)
  -- Recover the historical completion badge independently of the Studio arrival preview.
@@ -853,6 +871,7 @@ function PlayerDataService.SetWin(player,value)
  -- A capacity/Pet write may have committed even if its response was lost. Do not
  -- spend the same balance elsewhere while its receipt is unresolved; rewards
  -- can still increase Win and are retained when the purchase is acknowledged.
+ if s.PendingAdminWin and n<s.Data.Win then return false end
  if s.PendingItemMutation and (s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.SpeedUpgrade or s.PendingItemMutation.PetMutation or s.PendingItemMutation.ForgeMutation) and n<s.Data.Win then return false end
  s.Data.Win=math.max(0,math.floor(n))
  player:SetAttribute("Win",s.Data.Win)

@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Production setwin and actual Stage1 re-fights
+
+Six scoped live Sources implement developer-only production Win directives, live synchronization and login recovery. Memory-isolated native command/controller, lost-ack retry and HUD checks passed. Five actual Stage1 defeats with normal returns, reload and respawn showed first-only Stone; Item bag updates worked, Ore correctly bypassed the Item-only count. No Boss/UI repair was needed. Public deployment/real accounts remain untested; unsaved Edit retained. [Evidence](../reports/ProductionWinAndBoss_20261103.md).
+
 ## 2026-11-03 — Limited Egg Studio tester access
 
 Two live Sources updated; dedicated tester list covers request, receipt and result acknowledgment. Six native memory-isolated W1/W2 receipts granted once and reached the existing hatch consumer. Unchanged `/setwin` passed own-data/attribute/HUD and invalid-input checks; target IDs and peer isolation were simulated, not real account logins. Cleaned helpers and returned unsaved Edit. [Record and limits](../reports/LimitedEggStudioTesters_20261103.md).

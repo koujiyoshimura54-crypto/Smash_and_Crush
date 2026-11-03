@@ -2,6 +2,7 @@
 local ReturnPersistence = require(script.Parent.RunReturnPersistence)
 local M = {}
 local StrengthRewards = require(script.Parent.StrengthRewardState)
+local AdminWin = require(script.Parent.ProductionWinState)
 
 function M.Acquire(store, key, attempt, defaults, validate, current)
 	if attempt.Lost then error("SessionOwnershipLost", 0) end
@@ -30,6 +31,7 @@ function M.Acquire(store, key, attempt, defaults, validate, current)
 		data.OwnedItems = table.clone(normalized.OwnedItems)
 		ReturnPersistence.Recover(data)
 		data.StrengthRewards = StrengthRewards.Acquire(data.StrengthRewards, attempt.Token, attempt.StrengthNow)
+		data = AdminWin.Acquire(data, attempt.Token)
 		data.SessionOwnerToken = attempt.Token
 		local meta = info and info:GetMetadata() or {}
 		local j = data.RunReturnJournal

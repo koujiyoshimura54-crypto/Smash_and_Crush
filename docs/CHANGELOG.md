@@ -1,3 +1,7 @@
+# 2026-11-03 — Production Win targeting and Stage1 loot verification
+
+Added developer-only `/setwin amount UserId` using durable directives and owned live-session synchronization. Native isolated re-fights confirmed first-only Stone, normal Item/Ore grants and correct Item-only Battle Bag display; no loot probabilities/UI changes. [Record and limits](../reports/ProductionWinAndBoss_20261103.md).
+
 # 2026-11-03 — Limited Egg Studio-only tester whitelist
 
 Added10591394123 and10653503502 alongside7467238848 to a dedicated server Limited Egg test list, retaining creator/GamePass and all command permissions. Verified scoped native receipt/hatch processing and existing setwin; no public payment changes. [Record](../reports/LimitedEggStudioTesters_20261103.md).
