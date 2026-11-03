@@ -28,7 +28,7 @@ function M.Commit(player, runId)
 			context = nil
 		end
 		if not context then
-			context = {Id = token.Id, RunId = token.RunId, Validate = function() return Run.CanReturn(player, token) end}
+			context = {Id = token.Id, RunId = token.RunId, Ores = table.clone(token.Ores), Validate = function() return Run.CanReturn(player, token) end}
 			contexts[player] = context
 			context.Connection = player:GetAttributeChangedSignal("RunInventoryId"):Connect(function()
 				if not context.Committed and not context.Validate() then

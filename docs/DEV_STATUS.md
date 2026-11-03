@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Boss Ore Battle Bag correction
+
+Seven live Sources now carry Boss Ore in the real provisional bag and atomically bank Item/Ore deltas together. Native combat/return/death/reset, mixed capacity, lost-ack retry and actual1/5・5/5 pixels passed;20 focused plus18 legacy transaction cases passed. TimeReward remains direct. Helpers removed; unsaved Edit retained. [Record and limits](../reports/World1BossOreBag_20261103.md).
+
 ## 2026-11-03 — Production setwin and actual Stage1 re-fights
 
 Six scoped live Sources implement developer-only production Win directives, live synchronization and login recovery. Memory-isolated native command/controller, lost-ack retry and HUD checks passed. Five actual Stage1 defeats with normal returns, reload and respawn showed first-only Stone; Item bag updates worked, Ore correctly bypassed the Item-only count. No Boss/UI repair was needed. Public deployment/real accounts remain untested; unsaved Edit retained. [Evidence](../reports/ProductionWinAndBoss_20261103.md).

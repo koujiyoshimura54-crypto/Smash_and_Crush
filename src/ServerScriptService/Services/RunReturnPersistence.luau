@@ -1,7 +1,11 @@
 -- Durable World1 Return journal in the existing PlayerData key.
--- Pending never owns items. Granted is terminal: death/leave never subtracts it.
+-- Pending owns neither Items nor Ores. Granted is terminal: death/leave never subtracts it.
 local M = {}
 local MAX_COUNT = 9007199254740991
+-- Separate Ore-capable journal so older servers can still read their Item-only field.
+local function journalKey(op)
+ return next(op.OreDeltas or {}) and "RunOreReturnJournal" or "RunReturnJournal"
+end
 
 local function integer(n)
 	return typeof(n) == "number" and n == n and n >= 1 and n <= MAX_COUNT and n % 1 == 0
@@ -17,40 +21,53 @@ function M.ValidateJournal(j)
 		or typeof(j.OwnerToken) ~= "string" or not integer(j.Sequence)
 		or typeof(j.RunId) ~= "string" or not integer(j.CreatedAt)
 		or (j.State ~= "Pending" and j.State ~= "Granted" and j.State ~= "Cancelled")
-		or typeof(j.ItemDelta) ~= "table" or next(j.ItemDelta) == nil then
+		or typeof(j.ItemDelta) ~= "table" or j.OreDelta~=nil and typeof(j.OreDelta)~="table"
+		or next(j.ItemDelta)==nil and (j.OreDelta==nil or next(j.OreDelta)==nil) then
 		return false
 	end
 	for id, n in pairs(j.ItemDelta) do
 		if typeof(id) ~= "string" or not integer(n) then return false end
 	end
-	return true
+	for id,n in pairs(j.OreDelta or {}) do
+  if typeof(id)~="string" or not integer(n) then return false end
+ end
+ return true
 end
 
 -- Called atomically with ownership acquisition, before Loaded=true.
--- A Pending journal has not modified OwnedItems; never replay an abandoned run.
+-- A Pending journal has not modified OwnedItems/OwnedOres; never replay an abandoned run.
 function M.Recover(data)
-	local j = data.RunReturnJournal
-	assert(M.ValidateJournal(j), "Invalid RunReturnJournal")
-	if j and j.State == "Pending" then
-		local copy = table.clone(j)
-		copy.ItemDelta = table.clone(j.ItemDelta)
-		copy.State = "Cancelled"
-		copy.ResolvedAt = os.time()
-		copy.Reason = "SessionRecovery"
-		data.RunReturnJournal = copy
-	end
+ for _,key in {"RunReturnJournal","RunOreReturnJournal"} do
+  local j=data[key]
+  assert(M.ValidateJournal(j),"Invalid "..key)
+  if j and j.State=="Pending" then
+   local copy=table.clone(j)
+   copy.ItemDelta=table.clone(j.ItemDelta);copy.OreDelta=table.clone(j.OreDelta or {})
+   copy.State="Cancelled";copy.ResolvedAt=os.time();copy.Reason="SessionRecovery"
+   data[key]=copy
+  end
+ end
 end
 
 -- Pure, non-yielding transition. nil means NO write (including no metadata write).
 -- Sequence is a per-owner high-water mark, so replaced/old IDs cannot be prepared again.
 function M.Transition(old, op, action)
 	if old.SessionOwnerToken ~= op.OwnerToken then return nil, "SessionOwnershipLost" end
-	local j = old.RunReturnJournal
+ local key=journalKey(op)
+ local j=old[key]
 	assert(M.ValidateJournal(j), "Invalid RunReturnJournal")
 	local same = j and j.TransactionId == op.Id and j.OwnerToken == op.OwnerToken
 		and j.Sequence == op.Sequence
-	if j and j.TransactionId == op.Id and not same then return nil, "TransactionMismatch" end
-	if same and (j.RunId ~= op.RunId or not deltasEqual(j.ItemDelta, op.Deltas)) then
+ for _,otherKey in {"RunReturnJournal","RunOreReturnJournal"} do
+  local other=old[otherKey]
+  assert(M.ValidateJournal(other),"Invalid "..otherKey)
+  if otherKey~=key and other then
+   if other.TransactionId==op.Id then return nil,"TransactionMismatch" end
+   if action=="Prepare" and not same and (other.State=="Pending" or other.OwnerToken==op.OwnerToken and op.Sequence<=other.Sequence) then return nil,"StaleTransaction" end
+  end
+ end
+ if j and j.TransactionId == op.Id and not same then return nil, "TransactionMismatch" end
+	if same and (j.RunId ~= op.RunId or not deltasEqual(j.ItemDelta, op.Deltas) or not deltasEqual(j.OreDelta or {},op.OreDeltas or {})) then
 		return nil, "TransactionMismatch"
 	end
 	if action == "Prepare" then
@@ -60,10 +77,10 @@ function M.Transition(old, op, action)
 		end
 		local data = table.clone(old)
 		local nextJournal = {TransactionId = op.Id, OwnerToken = op.OwnerToken,
-			Sequence = op.Sequence, RunId = op.RunId, ItemDelta = table.clone(op.Deltas),
+			Sequence = op.Sequence, RunId = op.RunId, ItemDelta = table.clone(op.Deltas), OreDelta=table.clone(op.OreDeltas or {}),
 			CreatedAt = op.CreatedAt, State = "Pending"}
 		assert(M.ValidateJournal(nextJournal), "Invalid return operation")
-		data.RunReturnJournal = nextJournal
+		data[key] = nextJournal
 		return data, "Pending"
 	end
 	if not same then return nil, "StaleTransaction" end
@@ -72,6 +89,7 @@ function M.Transition(old, op, action)
 	local data = table.clone(old)
 	local nextJournal = table.clone(j)
 	nextJournal.ItemDelta = table.clone(j.ItemDelta)
+ nextJournal.OreDelta = table.clone(j.OreDelta or {})
 	nextJournal.ResolvedAt = os.time()
 	if action == "Cancel" then
 		nextJournal.State = "Cancelled"
@@ -82,12 +100,18 @@ function M.Transition(old, op, action)
 			if count > MAX_COUNT then return nil, "CountOverflow" end
 			owned[id] = count
 		end
-		data.OwnedItems = owned
-		nextJournal.State = "Granted"
+		local ores=table.clone(old.OwnedOres or {})
+  for id,amount in pairs(j.OreDelta or {}) do
+   local count=(ores[id] or 0)+amount
+   if count>MAX_COUNT then return nil,"CountOverflow" end
+   ores[id]=count
+  end
+  data.OwnedItems=owned;data.OwnedOres=ores
+  nextJournal.State = "Granted"
 	else
 		error("Invalid return transition")
 	end
-	data.RunReturnJournal = nextJournal
+	data[key] = nextJournal
 	return data, nextJournal.State
 end
 
@@ -109,7 +133,13 @@ function M.Resolve(player, session, op, adapter)
 		session.Saving = false
 	end
 	local function finish(result, saved)
-		if saved and adapter.Current() then session.Data.OwnedItems = adapter.Items(saved.OwnedItems) end
+		if saved and adapter.Current() then
+   session.Data.OwnedItems=adapter.Items(saved.OwnedItems)
+   if adapter.Ores then session.Data.OwnedOres=assert(adapter.Ores(saved.OwnedOres)) end
+   if result=="Changed" and next(op.OreDeltas or {}) then
+    player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)
+   end
+  end
 		op.Result = result
 		if session.PendingItemMutation == op then session.PendingItemMutation = nil end
 		session.Dirty = true
@@ -140,7 +170,7 @@ function M.Resolve(player, session, op, adapter)
 			break -- uncertain write; retry retains ID/sequence/snapshot
 		end
 		if rejection then return finish(rejection) end
-		local j = saved and saved.RunReturnJournal
+		local j = saved and saved[journalKey(op)]
 		if not j or j.TransactionId ~= op.Id or j.OwnerToken ~= op.OwnerToken or j.Sequence ~= op.Sequence then break end
 		if j.State == "Granted" then
 			context.Committed = true

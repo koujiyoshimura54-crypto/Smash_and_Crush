@@ -51,7 +51,8 @@ function M.Apply(data,op)
   if not first then return nil,reason end
   if first.Consumed then return nil,"FirstStage1AlreadyConsumed" end
   if op.ResultId~="" and op.ResultId~=FirstStage1.OreId then return nil,"InvalidFirstStage1Ore" end
-  if op.ResultId~="" then ores[op.ResultId]=(ores[op.ResultId] or 0)+1 end
+  if op.Delivery~=nil and op.Delivery~="BattleBag" then return nil,"InvalidFirstStage1Delivery" end
+  if op.ResultId~="" and op.Delivery~="BattleBag" then ores[op.ResultId]=(ores[op.ResultId] or 0)+1 end
  elseif op.Action=="DropOre" then
   local ore=Ore.Get(op.ResultId);if not ore or not ore.Available then return nil,"InvalidOre" end
   ores[op.ResultId]=(ores[op.ResultId] or 0)+1
@@ -62,7 +63,11 @@ function M.Apply(data,op)
  local out=table.clone(data)
  out.OwnedOres=ores;out.OwnedDumbbells=bells;out.Win=win
  if op.Action=="MergeOre" then out.OreMergeTutorial=OreTutorial.Complete(data.OreMergeTutorial,op.Id) end
- if op.Action=="FirstStage1Defeat" then out.FirstStage1Reward={Version=1,Consumed=true,DefeatId=op.Id,OreGranted=op.ResultId~=""} end
+ if op.Action=="FirstStage1Defeat" then
+  local bag=op.Delivery=="BattleBag"
+  out.FirstStage1Reward={Version=1,Consumed=true,DefeatId=op.Id,OreGranted=not bag and op.ResultId~="",
+   Delivery=op.Delivery,BagEligible=bag and op.ResultId~="" or nil}
+ end
  out.ForgeJournal={Sequence=op.Sequence,Id=op.Id,Signature=op.Signature,ResultId=op.ResultId or ""}
  return out,"Applied",delta
 end

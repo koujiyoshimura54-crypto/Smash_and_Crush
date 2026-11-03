@@ -522,7 +522,7 @@ local function writeFreshReset(userId,fresh,targetStore,ownerSession,ownerPlayer
    merged.AdminWin=nil -- Explicit reset cancels any older administrative Win request.
    merged.ResetToken=fresh.ResetToken
    merged.SessionOwnerToken=resetOwner
-   merged.RunReturnJournal=nil
+   merged.RunReturnJournal=nil;merged.RunOreReturnJournal=nil
    meta.RunReturnId=nil;meta.RunReturnState=nil;meta.ItemMutationId=nil
    return merged,users,meta
   end
@@ -1555,12 +1555,16 @@ end
 
 -- Called only after EnemyDropGachaService validates this player's World1 Stage1 defeat.
 -- Reserve synchronously; the ordinary save/exit path also flushes this reservation.
-function PlayerDataService.ReserveFirstStage1Defeat(player,dropId,discarded)
+local function firstStage1Outcome(first)
+ if first.Delivery=="BattleBag" then return first.BagEligible and "BagPending" or "Discarded" end
+ return first.OreGranted and "Applied" or "Discarded" -- Previously committed direct grants stay committed.
+end
+function PlayerDataService.ReserveFirstStage1Defeat(player,dropId,discarded,runId)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data or s.OwnershipLost then return false,"DataNotLoaded" end
  if type(dropId)~="string" or dropId=="" then return false,"InvalidDropId" end
  if s.PendingFirstStage1Defeat or s.Data.FirstStage1Reward.Consumed then return false,"FirstStage1AlreadyConsumed" end
- s.PendingFirstStage1Defeat={Id=dropId,Discarded=discarded==true}
+ s.PendingFirstStage1Defeat={Id=dropId,Discarded=discarded==true,RunId=runId}
  s.Dirty=true
  return true,"Reserved"
 end
@@ -1570,7 +1574,7 @@ function PlayerDataService.ResolveFirstStage1Defeat(player,expectedId)
  local pending=s.PendingFirstStage1Defeat
  if not pending then
   local first=s.Data.FirstStage1Reward
-  if expectedId and first.DefeatId==expectedId then return true,first.OreGranted and "Applied" or "Discarded" end
+  if expectedId and first.DefeatId==expectedId then return true,firstStage1Outcome(first) end
   return true,"NoPendingDefeat"
  end
  if expectedId and pending.Id~=expectedId then return false,"DefeatChanged" end
@@ -1579,7 +1583,7 @@ function PlayerDataService.ResolveFirstStage1Defeat(player,expectedId)
   if not first.Consumed then return nil end
   s.PendingFirstStage1Defeat=nil
   if first.DefeatId~=pending.Id then return false,"FirstStage1AlreadyConsumed" end
-  return true,first.OreGranted and "Applied" or "Discarded"
+  return true,firstStage1Outcome(first)
  end
  if s.Data.FirstStage1Reward.Consumed then return confirmed() end
  if s.Saving then return false,"DataSaving" end
@@ -1591,11 +1595,12 @@ function PlayerDataService.ResolveFirstStage1Defeat(player,expectedId)
  end
  if not pending.Operation then
   -- Match ordinary Ore's existing capacity check, including after a queued save.
-  local bag=require(script.Parent.RunInventoryService).GetSnapshot(player)
-  local discarded=pending.Discarded or bag and bag.Count>=bag.Capacity
+  local run=require(script.Parent.RunInventoryService)
+  local bag=run.GetSnapshot(player)
+  local discarded=pending.Discarded or not run.IsCurrent(player,pending.RunId) or bag and bag.Count>=bag.Capacity
   local oreId=discarded and "" or FirstStage1.OreId
-  pending.Operation={Id=pending.Id,Action="FirstStage1Defeat",ResultId=oreId,
-   Signature="FirstStage1Defeat|"..oreId,Sequence=s.Data.ForgeJournal.Sequence+1}
+  pending.Operation={Id=pending.Id,Action="FirstStage1Defeat",ResultId=oreId,Delivery="BattleBag",
+   Signature="FirstStage1Defeat|BattleBag|"..oreId,Sequence=s.Data.ForgeJournal.Sequence+1}
  end
  local ok,why=PlayerDataService.MutateForge(player,pending.Operation)
  if not ok then return false,why end
@@ -1666,7 +1671,7 @@ function PlayerDataService.ResolveItemMutation(player)
   return require(script.Parent.RunReturnPersistence).Resolve(player,s,op,{
    Update=function(transform) return ownedUpdate(player,s,transform) end,
    Current=function() return sessions[player]==s and s.Loaded and not s.OwnershipLost and s.Data.ResetToken==op.ResetToken end,
-   Items=normalizeItems,Defaults=defaults,Metadata=metadata,ResetToken=resetToken,
+   Items=normalizeItems,Ores=Counts.Normalize,Defaults=defaults,Metadata=metadata,ResetToken=resetToken,
   })
  end
  -- PendingItemMutation serializes the player; the operation retains its reward ID
@@ -2005,7 +2010,9 @@ function PlayerDataService.ChangeItemCounts(player,deltas,timeReward)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
  if s.Saving or s.PendingItemMutation then return false,"DataSaving" end
- if typeof(deltas)~="table" or next(deltas)==nil then return false,"InvalidChanges" end
+ local returnContext=timeReward and timeReward.RunReturn
+ local hasReturnOres=returnContext and typeof(returnContext.Ores)=="table" and next(returnContext.Ores)~=nil
+ if typeof(deltas)~="table" or next(deltas)==nil and not hasReturnOres then return false,"InvalidChanges" end
  local changes={}
  local master=require(game.ReplicatedStorage.Config.ItemMaster)
  for id,delta in pairs(deltas) do
@@ -2029,9 +2036,16 @@ function PlayerDataService.ChangeItemCounts(player,deltas,timeReward)
   local context=timeReward.RunReturn
   if typeof(context.Id)~="string" or typeof(context.Validate)~="function" or not context.Validate() then return false,"StaleRun" end
   for _,delta in pairs(changes) do if delta<=0 then return false,"InvalidRewardItems" end end
+  local ores=Counts.Normalize(context.Ores or {})
+  if not ores then return false,"InvalidRewardOres" end
+  local oreConfig=require(game.ReplicatedStorage.Config.OreConfig)
+  for id,count in pairs(ores) do
+   local def=oreConfig.Get(id)
+   if not def or not def.Available or count<1 or (s.Data.OwnedOres[id] or 0)>MAX_COUNT-count then return false,"InvalidRewardOres" end
+  end
   s.ReturnSequence+=1
   op={Id=context.Id,WinPrice=0,ResetToken=s.Data.ResetToken,RunReturn=context,
-   OwnerToken=s.OwnerToken,Sequence=s.ReturnSequence,RunId=context.RunId,CreatedAt=os.time()}
+   OwnerToken=s.OwnerToken,Sequence=s.ReturnSequence,RunId=context.RunId,CreatedAt=os.time(),OreDeltas=ores}
   context.Operation=op
  elseif timeReward and timeReward.CommunityReward then
   local reason

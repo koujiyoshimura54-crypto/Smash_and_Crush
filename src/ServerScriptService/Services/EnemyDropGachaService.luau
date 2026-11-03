@@ -6,7 +6,6 @@ local Data=require(game.ServerScriptService.Services.PlayerDataService)
 local Roller=require(game.ServerScriptService.Services.EnemyDropRoller)
 local RunInventory=require(game.ServerScriptService.Services.RunInventoryService)
 local remote=RS.Remotes:WaitForChild("EnemyDropGachaResult")
-local Forge=require(script.Parent.ForgeService)
 local rng=Random.new()
 local processed=setmetatable({},{__mode="k"})
 local queues={}
@@ -16,7 +15,7 @@ local function reserveFirstStage1(player,result)
  local session=Data.Get(player)
  if not session or not session.Loaded then result.CheckFirstStage1=true;return end
  result.CheckFirstStage1=nil
- if Data.ReserveFirstStage1Defeat(player,result.Id,result.Discarded) then
+ if Data.ReserveFirstStage1Defeat(player,result.Id,result.Discarded,result.RunId) then
   result.FirstStage1=true;result.Outcome="ORE";result.OreId="ORE_001";result.ItemId=nil;result.Segment=1
  end
 end
@@ -86,7 +85,11 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
      while player.Parent==Players do
       local added,code=Data.ResolveFirstStage1Defeat(player,nextResult.Id)
       if added then
-       success=code=="Applied"
+       if code=="BagPending" then
+        local reason
+        success,reason=RunInventory.TryAddOreDrop(player,nextResult.RunId,nextResult.Id,nextResult.OreId)
+        if reason=="InventoryFull" then nextResult.Discarded=true;nextResult.Reason=reason end
+       else success=code=="Applied" end
        if code=="Discarded" then nextResult.Discarded=true;nextResult.Reason="InventoryFull" end
        break
       end
@@ -98,20 +101,9 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
     elseif nextResult.Discarded then
      success=false
     elseif nextResult.WorldId==1 and nextResult.Outcome=="ORE" then
-     -- A genuine defeat already passed the personal run/dedup gate above.
-     -- Durable ores survive movement, death and World changes during a yielding save.
-     while player.Parent==Players do
-      local bag=RunInventory.GetSnapshot(player)
-      local session=Data.Get(player)
-      local accepted=session and session.PendingItemMutation and session.PendingItemMutation.Id==nextResult.Id
-      if not accepted and bag and bag.Count>=bag.Capacity then nextResult.Discarded=true;break end
-      local added,code=Forge.GrantOre(player,nextResult.OreId,nextResult.Id)
-      if added then success=true;break end
-      if code~="InventorySavePending" and code~="DataSaving" and code~="DataNotLoaded" then
-       warn("[EnemyDropGacha] Ore grant rejected: "..tostring(code));break
-      end
-      task.wait(.5)
-     end
+     local reason
+     success,reason=RunInventory.TryAddOreDrop(player,nextResult.RunId,nextResult.Id,nextResult.OreId)
+     if reason=="InventoryFull" then nextResult.Discarded=true;nextResult.Reason=reason end
     elseif nextResult.WorldId==1 then
      success=RunInventory.IsCurrent(player,nextResult.RunId)
      if success and nextResult.Outcome=="ITEM" then

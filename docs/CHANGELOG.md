@@ -1,3 +1,7 @@
+# 2026-11-03 — Put World1 Boss Ore in Battle Bag
+
+Corrected the previous Item-only bag routing: normal Ore and first Stone now count toward provisional capacity, bank with Items, and are lost if unbanked at death. Existing durable holdings, TimeReward and lifetime guarantee consumption preserved. Native/pure checks and cleanup passed. [Record](../reports/World1BossOreBag_20261103.md).
+
 # 2026-11-03 — Production Win targeting and Stage1 loot verification
 
 Added developer-only `/setwin amount UserId` using durable directives and owned live-session synchronization. Native isolated re-fights confirmed first-only Stone, normal Item/Ore grants and correct Item-only Battle Bag display; no loot probabilities/UI changes. [Record and limits](../reports/ProductionWinAndBoss_20261103.md).

@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-03 — Battle Bag counts both Items and Boss Ore
+
+The existing Battle Bag fraction now reports the actual combined provisional Item/Ore quantity. No font, geometry or duplicate counter change. Native Stone1/5 and mixed5/5 rendering inspected; return and death reset the combined count. [Record](../reports/World1BossOreBag_20261103.md).
+
 ## 2026-11-03 — Item points, Pet equipment and discovery
 
 Merge Item cards, inputs, candidates and completed results show shared merge points; selected points total uses the same ItemMergeConfig definition. Normal Inventory stars are unchanged. Ore acquisition cues show per-unit points with no quantity; Item cues show only the icon. HUD Item icons follow equipped IDs and the Item ×1.5 caption uses shared HUD typography. Pet equipment displays 0/3–3/3 and total multiplier including base one; strongest follows at rear center. Normal Egg undiscovered species use alpha/model silhouettes; Limited remains colored. Shop geometry was left unchanged after failed reproduction. [Evidence and raster limits](../reports/PetThreeAndPresentation_20261103.md).

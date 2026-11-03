@@ -1,7 +1,8 @@
--- World1 provisional boss loot. Only capacity is read from permanent PlayerData.
+-- World1 provisional Item/Ore boss loot shares one capacity and return transaction.
 local Players=game:GetService("Players")
 local HttpService=game:GetService("HttpService")
 local Master=require(game.ReplicatedStorage.Config.ItemMaster)
+local Ore=require(game.ReplicatedStorage.Config.OreConfig)
 local Data=require(script.Parent.PlayerDataService)
 local states={}
 local M={}
@@ -28,7 +29,7 @@ end
 function M.Reset(player,active)
  if not validPlayer(player) then return nil end
  local s={RunId=HttpService:GenerateGUID(false),WorldId=1,Capacity=M.GetCapacity(player),
-  Items={},Count=0,Active=active==true,ProcessedDrops={}}
+  Items={},Ores={},Count=0,Active=active==true,ProcessedDrops={}}
  states[player]=s
  sync(player,s)
  return s.RunId
@@ -61,7 +62,7 @@ function M.BeginReturn(player,runId)
   or (player:GetAttribute("CurrentWorld") or 1)~=1 or not alive(player) then return nil,"StaleRun" end
  if not s.ReturnToken then
   s.ReturnToken={Id=HttpService:GenerateGUID(false),RunId=runId,Character=player.Character,
-   Items=table.clone(s.Items),Count=s.Count}
+   Items=table.clone(s.Items),Ores=table.clone(s.Ores),Count=s.Count}
  end
  return s.ReturnToken
 end
@@ -83,23 +84,31 @@ end
 function M.GetSnapshot(player)
  local s=states[player]
  if not s then return nil end
- return {RunId=s.RunId,WorldId=s.WorldId,Capacity=s.Capacity,Items=table.clone(s.Items),
+ return {RunId=s.RunId,WorldId=s.WorldId,Capacity=s.Capacity,Items=table.clone(s.Items),Ores=table.clone(s.Ores),
   Count=s.Count,Active=s.Active}
 end
 -- No yields between generation/duplicate/capacity checks and the write.
-function M.TryAddDrop(player,runId,dropId,itemId)
+local function addDrop(player,runId,dropId,itemId,isOre)
  if not M.IsCurrent(player,runId) then return false,"StaleRun" end
  if typeof(dropId)~="string" or dropId=="" then return false,"InvalidDropId" end
- if not Master.Get(itemId) then return false,"InvalidItemId" end
+ local definition=isOre and Ore.Get(itemId) or Master.Get(itemId)
+ if not definition or isOre and not definition.Available then return false,isOre and "InvalidOreId" or "InvalidItemId" end
  local s=states[player]
  if s.ProcessedDrops[dropId] then return false,"AlreadyProcessed" end
  s.Capacity=M.GetCapacity(player)
  s.ProcessedDrops[dropId]=true
  if s.Count>=s.Capacity then return false,"InventoryFull" end
- s.Items[itemId]=(s.Items[itemId] or 0)+1
+ local inventory=isOre and s.Ores or s.Items
+ inventory[itemId]=(inventory[itemId] or 0)+1
  s.Count+=1
  sync(player,s)
  return true,"Added"
+end
+function M.TryAddDrop(player,runId,dropId,itemId)
+ return addDrop(player,runId,dropId,itemId,false)
+end
+function M.TryAddOreDrop(player,runId,dropId,oreId)
+ return addDrop(player,runId,dropId,oreId,true)
 end
 local capacityConnections={}
 local function watchCapacity(player)

@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-03 — Boss Ore shares Battle Bag
+
+Supersedes earlier direct World1 Boss-Ore grants: normal Boss Ore and first Stage1 Stone now enter the provisional Battle Bag together with Items. They share capacity and Drop-ID dedupe, are banked atomically on the existing return path, and are lost on death before bank confirmation. Lifetime first-defeat consumption survives loss; old owned Ore is retained. TimeReward Stone still grants directly. [Evidence](../reports/World1BossOreBag_20261103.md).
+
 ## 2026-11-03 — Developer production Win command
 
 Canonical Studio issuer7467238848 may use `/setwin amount UserId` to queue a production Win replacement. The existing owner session or next login applies it; unresolved requests report pending, never success. Omitted ID still sets own Studio Win. Other fields, command permissions and Limited Egg remain unchanged. New public receiver code requires manual Publish/new server deployment. [Record](../reports/ProductionWinAndBoss_20261103.md).
