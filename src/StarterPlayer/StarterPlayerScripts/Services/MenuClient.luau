@@ -44,6 +44,8 @@ local screen: ScreenGui? = nil
 local blur: BlurEffect? = nil
 local openName: string? = nil
 local openToken = 0
+local closeRevision = 0
+function MenuClient.closeRevision() return closeRevision end
 
 local slid = false
 local originalOrder = 0
@@ -263,6 +265,7 @@ end
 function MenuClient.close()
 	local name = openName
 	if not name then return end
+ closeRevision += 1
 	openName = nil
 	petLayer(false)
 

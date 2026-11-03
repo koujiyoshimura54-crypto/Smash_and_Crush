@@ -4,6 +4,7 @@ local RunService=game:GetService("RunService")
 local Forge=require(script.Parent.ForgeClient)
 local State=require(script.Parent.OreMergeTutorialState)
 local Presentation=require(script.Parent.OreMergeTutorialPresentation)
+local Coordinator=require(script.Parent.TutorialPresentationCoordinator)
 local M={}
 function M.Mount(player,gui,view)
  local pg=player:WaitForChild("PlayerGui")
@@ -28,6 +29,7 @@ function M.Mount(player,gui,view)
   return x==pg
  end
  local function hide(reason)
+  Coordinator.Release(overlay)
   navigation(nil);step=nil;presentation:Hide()
   overlay:SetAttribute("Step",reason or "Waiting")
   overlay:SetAttribute("Target",nil)
@@ -78,6 +80,7 @@ function M.Mount(player,gui,view)
   if not state or not state.Loaded or state.Token~=player:GetAttribute("ForgeSessionToken")
    or State.AvailableCount(state.Ores)<2 then hide("WaitingForOres");return end
   if dismissed and not current.Open then hide("Dismissed");return end
+  if not Coordinator.Acquire(overlay) then hide("WaitingForGuide");return end
   local nextStep,nextTarget,messageKey
   if not current.Open then
    if not destination then hide("WaitingForFacility");return end

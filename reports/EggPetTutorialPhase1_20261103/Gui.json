@@ -1,0 +1,892 @@
+[
+  {
+    "Properties": {
+      "Enabled": true,
+      "ScreenInsets": {
+        "Value": "Enum.ScreenInsets.DeviceSafeInsets",
+        "Type": "EnumItem"
+      },
+      "DisplayOrder": 45,
+      "ResetOnSpawn": false,
+      "IgnoreGuiInset": true,
+      "AutoLocalize": true,
+      "ZIndexBehavior": {
+        "Value": "Enum.ZIndexBehavior.Sibling",
+        "Type": "EnumItem"
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui",
+    "Attributes": {
+      "PresentationVersion": 2,
+      "CompletionSeconds": 2.5,
+      "TutorialPhase": 1
+    },
+    "Class": "ScreenGui"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "Selectable": false,
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Rotation": 0,
+      "ClipsDescendants": false,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      },
+      "ZIndex": 1,
+      "BorderSizePixel": 1,
+      "Size": {
+        "Y": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": false,
+      "Selectable": false,
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Rotation": 0,
+      "ClipsDescendants": false,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "BackgroundColor3": {
+        "B": 1,
+        "Type": "Color3",
+        "G": 1,
+        "R": 1
+      },
+      "ZIndex": 50,
+      "BorderSizePixel": 0,
+      "Size": {
+        "Y": {
+          "Scale": 0.25,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.22499999403953552,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Highlight",
+    "Attributes": {
+      "MoveSeconds": 0.12,
+      "GuiGrow": 1.18,
+      "PaddingX": 0,
+      "PaddingY": 0
+    },
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "CornerRadius": {
+        "Scale": 0.10000000149011612,
+        "Type": "UDim",
+        "Offset": 0
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Highlight.Corner",
+    "Attributes": [],
+    "Class": "UICorner"
+  },
+  {
+    "Properties": {
+      "Thickness": 0.02500000037252903,
+      "Transparency": 0,
+      "LineJoinMode": {
+        "Value": "Enum.LineJoinMode.Round",
+        "Type": "EnumItem"
+      },
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "B": 1,
+        "Type": "Color3",
+        "G": 1,
+        "R": 1
+      },
+      "ZIndex": 2,
+      "StrokeSizingMode": {
+        "Value": "Enum.StrokeSizingMode.ScaledSize",
+        "Type": "EnumItem"
+      },
+      "Enabled": true
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Highlight.Outline",
+    "Attributes": [],
+    "Class": "UIStroke"
+  },
+  {
+    "Properties": {
+      "Thickness": 100,
+      "Transparency": 0.25,
+      "LineJoinMode": {
+        "Value": "Enum.LineJoinMode.Round",
+        "Type": "EnumItem"
+      },
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "B": 0,
+        "Type": "Color3",
+        "G": 0,
+        "R": 0
+      },
+      "ZIndex": 1,
+      "StrokeSizingMode": {
+        "Value": "Enum.StrokeSizingMode.ScaledSize",
+        "Type": "EnumItem"
+      },
+      "Enabled": true
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Highlight.Shadow",
+    "Attributes": [],
+    "Class": "UIStroke"
+  },
+  {
+    "Properties": {
+      "Visible": false,
+      "Selectable": false,
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Rotation": 0,
+      "ClipsDescendants": false,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      },
+      "ZIndex": 60,
+      "BorderSizePixel": 0,
+      "Size": {
+        "Y": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification",
+    "Attributes": {
+      "HeaderCenterX": 0.5,
+      "HeaderWidthScale": 0.7,
+      "ReferenceHeight": 720
+    },
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "Selectable": false,
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Rotation": 0,
+      "ClipsDescendants": false,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "Transparency": 0,
+      "BackgroundTransparency": 0,
+      "Position": {
+        "Y": {
+          "Scale": 0.17000000178813934,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "BackgroundColor3": {
+        "B": 0,
+        "Type": "Color3",
+        "G": 0,
+        "R": 0
+      },
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "Y": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Shade",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Enabled": true,
+      "Transparency": {
+        "Keypoints": [
+          {
+            "Value": 0,
+            "Time": 0,
+            "Envelope": 0
+          },
+          {
+            "Value": 0,
+            "Time": 1,
+            "Envelope": 0
+          }
+        ],
+        "Type": "NumberSequence"
+      },
+      "Color": {
+        "Keypoints": [
+          {
+            "Value": {
+              "B": 1,
+              "Type": "Color3",
+              "G": 1,
+              "R": 1
+            },
+            "Time": 0
+          },
+          {
+            "Value": {
+              "B": 1,
+              "Type": "Color3",
+              "G": 1,
+              "R": 1
+            },
+            "Time": 1
+          }
+        ],
+        "Type": "ColorSequence"
+      },
+      "Offset": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Scale": 1,
+      "Rotation": 0
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Shade.UIGradient",
+    "Attributes": [],
+    "Class": "UIGradient"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "Selectable": false,
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Rotation": 0,
+      "ClipsDescendants": false,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.17000000178813934,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      },
+      "ZIndex": 2,
+      "BorderSizePixel": 0,
+      "Size": {
+        "Y": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Stack",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": false,
+      "Selectable": false,
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Rotation": 0,
+      "ClipsDescendants": false,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      },
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "Y": {
+          "Scale": 0.035999998450279236,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.7200000286102295,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Stack.Line",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/GothamSSm.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Heavy"
+      },
+      "Active": false,
+      "Selectable": false,
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "TextTransparency": 0,
+      "TextSize": 40,
+      "ZIndex": 3,
+      "BorderSizePixel": 0,
+      "Size": {
+        "Y": {
+          "Scale": 1.25,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 1.25,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "TextXAlignment": {
+        "Value": "Enum.TextXAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "AutoLocalize": false,
+      "ClipsDescendants": false,
+      "TextWrapped": true,
+      "Text": "",
+      "Interactable": false,
+      "TextStrokeColor3": {
+        "B": 0,
+        "Type": "Color3",
+        "G": 0,
+        "R": 0
+      },
+      "Rotation": 0,
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "TextColor3": {
+        "B": 1,
+        "Type": "Color3",
+        "G": 1,
+        "R": 1
+      },
+      "TextYAlignment": {
+        "Value": "Enum.TextYAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "TextScaled": true,
+      "BackgroundColor3": {
+        "B": 0.11764705926179886,
+        "Type": "Color3",
+        "G": 0.09803921729326248,
+        "R": 0.09803921729326248
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Stack.Line.Message",
+    "Attributes": {
+      "HeaderInset": 4,
+      "HeaderWidthScale": 0.7,
+      "FigmaNodeId": "85:58",
+      "HeaderCenterX": 0.5,
+      "Gap": 10,
+      "MaxWidth": 500
+    },
+    "Class": "TextLabel"
+  },
+  {
+    "Properties": {
+      "Enabled": true,
+      "Transparency": {
+        "Keypoints": [
+          {
+            "Value": 0,
+            "Time": 0,
+            "Envelope": 0
+          },
+          {
+            "Value": 0,
+            "Time": 1,
+            "Envelope": 0
+          }
+        ],
+        "Type": "NumberSequence"
+      },
+      "Color": {
+        "Keypoints": [
+          {
+            "Value": {
+              "B": 0.6666666865348816,
+              "Type": "Color3",
+              "G": 0.9411764740943909,
+              "R": 1
+            },
+            "Time": 0
+          },
+          {
+            "Value": {
+              "B": 0,
+              "Type": "Color3",
+              "G": 0.6666666865348816,
+              "R": 1
+            },
+            "Time": 1
+          }
+        ],
+        "Type": "ColorSequence"
+      },
+      "Offset": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Scale": 1,
+      "Rotation": 90
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Stack.Line.Message.UIGradient",
+    "Attributes": [],
+    "Class": "UIGradient"
+  },
+  {
+    "Properties": {
+      "Scale": 1
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Stack.Line.Message.UIScale",
+    "Attributes": [],
+    "Class": "UIScale"
+  },
+  {
+    "Properties": {
+      "Thickness": 1.8899999856948853,
+      "Transparency": 0,
+      "LineJoinMode": {
+        "Value": "Enum.LineJoinMode.Round",
+        "Type": "EnumItem"
+      },
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "B": 0,
+        "Type": "Color3",
+        "G": 0,
+        "R": 0
+      },
+      "ZIndex": 3,
+      "StrokeSizingMode": {
+        "Value": "Enum.StrokeSizingMode.FixedSize",
+        "Type": "EnumItem"
+      },
+      "Enabled": true
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Stack.Line.Message.UIStroke",
+    "Attributes": [],
+    "Class": "UIStroke"
+  },
+  {
+    "Properties": {
+      "VerticalAlignment": {
+        "Value": "Enum.VerticalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "SortOrder": {
+        "Value": "Enum.SortOrder.LayoutOrder",
+        "Type": "EnumItem"
+      },
+      "HorizontalAlignment": {
+        "Value": "Enum.HorizontalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "Padding": {
+        "Scale": 0.019999999552965164,
+        "Type": "UDim",
+        "Offset": 0
+      },
+      "FillDirection": {
+        "Value": "Enum.FillDirection.Vertical",
+        "Type": "EnumItem"
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.Notification.Stack.UIListLayout",
+    "Attributes": [],
+    "Class": "UIListLayout"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "Selectable": false,
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Rotation": 0,
+      "ClipsDescendants": false,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.04500000178813934,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      },
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "Y": {
+          "Scale": 0.06499999761581421,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.800000011920929,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.NotificationRegion",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": false,
+      "Selectable": false,
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Rotation": 0,
+      "ClipsDescendants": false,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      },
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "Y": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      }
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Canvas.TargetProxy",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": [],
+    "Path": "StarterGui.EggPetTutorialGui.Messages",
+    "Attributes": [],
+    "Class": "Folder"
+  },
+  {
+    "Properties": {
+      "Value": "Pet equipped!"
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Messages.Complete",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Press Best Equip."
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Messages.Equip",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Go to the Basic Egg!"
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Messages.GoToEgg",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Open 1 Egg."
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Messages.OpenOne",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Open your Pets."
+    },
+    "Path": "StarterGui.EggPetTutorialGui.Messages.OpenPets",
+    "Attributes": [],
+    "Class": "StringValue"
+  }
+]

@@ -371,8 +371,9 @@ local function refresh()
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
  if updateScheduler then updateScheduler() end
  if player:GetAttribute("TutorialCompleted")~=false then
-  local target=player:GetAttribute("OreTutorialTarget")
-  if player:GetAttribute("TutorialCompleted")==true and typeof(target)=="Vector3" and humanoid and humanoid.Health>0 then show("OreMerge",target)
+  local egg=player:GetAttribute("EggTutorialTarget")
+  local target=player:GetAttribute("OreTutorialTarget") or egg
+  if player:GetAttribute("TutorialCompleted")==true and typeof(target)=="Vector3" and humanoid and humanoid.Health>0 then show(egg and "BasicEgg" or "OreMerge",target)
   else clear();stopCache() end
   return
  end
@@ -405,6 +406,7 @@ table.insert(connections,player:GetAttributeChangedSignal("IsTraining"):Connect(
 table.insert(connections,player:GetAttributeChangedSignal("Level"):Connect(refresh))
 table.insert(connections,player:GetAttributeChangedSignal("TutorialCompleted"):Connect(trainingChanged))
 table.insert(connections,player:GetAttributeChangedSignal("OreTutorialTarget"):Connect(refresh))
+table.insert(connections,player:GetAttributeChangedSignal("EggTutorialTarget"):Connect(refresh))
 table.insert(connections,player:GetAttributeChangedSignal("TutorialResetSequence"):Connect(function()
  local sequence=player:GetAttribute("TutorialResetSequence")
  if sequence~=resetSequence then
@@ -417,7 +419,8 @@ updateScheduler=function()
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
  local original=player:GetAttribute("TutorialCompleted")==false and (player:GetAttribute("CurrentWorld") or 1)==1
  local merge=player:GetAttribute("TutorialCompleted")==true and typeof(player:GetAttribute("OreTutorialTarget"))=="Vector3"
- local enabled=(original or merge)
+ local egg=player:GetAttribute("TutorialCompleted")==true and typeof(player:GetAttribute("EggTutorialTarget"))=="Vector3"
+ local enabled=(original or merge or egg)
   and humanoid and humanoid.Health>0
  if not enabled then
   if tickConnection then tickConnection:Disconnect();tickConnection=nil end

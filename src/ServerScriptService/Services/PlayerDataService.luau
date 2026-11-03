@@ -18,6 +18,7 @@ local FirstStage1=require(game.ReplicatedStorage.Modules.FirstStage1RewardState)
 local OreTutorial=require(game.ReplicatedStorage.Modules.OreMergeTutorialState)
 local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
+local EggTutorial=require(game.ReplicatedStorage.Modules.EggPetTutorialState)
 local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
 local Ownership=require(script.Parent.PlayerDataOwnership)
 local StrengthRewardState=require(script.Parent.StrengthRewardState)
@@ -237,7 +238,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -250,6 +251,9 @@ local function normalize(raw)
  local tutorial,tutorialError=OreTutorial.Normalize(type(raw)=="table" and raw.OreMergeTutorial or nil,raw==nil)
  if not tutorial then return nil,tutorialError end
  d.OreMergeTutorial=tutorial
+ local eggTutorial,eggError=EggTutorial.Normalize(type(raw)=="table" and raw.EggPetTutorial or nil,raw==nil)
+ if not eggTutorial then return nil,eggError end
+ d.EggPetTutorial=eggTutorial
  d.World1Cleared=false
  local first,firstError=FirstStage1.Normalize(type(raw)=="table" and raw.FirstStage1Reward or nil,raw==nil)
  if not first then return nil,firstError end
@@ -367,6 +371,7 @@ local function applyAttributes(player,d)
  session.ForgeToken=session.ForgeToken or HttpService:GenerateGUID(false)
  player:SetAttribute("ForgeSessionToken",session.ForgeToken)
  OreTutorial.Publish(player,d.OreMergeTutorial)
+ EggTutorial.Publish(player,d.EggPetTutorial)
  Pet.Publish(player,d.Pets)
  player:SetAttribute("ForgeInventoryRevision",d.ForgeJournal.Sequence)
  player:SetAttribute("ForgeSavePending",false)
@@ -923,6 +928,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   DailyRewards=assert(normalizeDailyRewards(d.DailyRewards)),
   TutorialCompleted=d.TutorialCompleted==true,
   OreMergeTutorial=assert(OreTutorial.Normalize(d.OreMergeTutorial,false)),
+  EggPetTutorial=assert(EggTutorial.Normalize(d.EggPetTutorial,false)),
   Strength=persisted and persisted.Strength or d.Strength,
   Level=persisted and persisted.Level or d.Level,
   LevelProgress=persisted and persisted.LevelProgress or d.LevelProgress,
@@ -978,6 +984,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.SpeedUpgradeStage=assert(SpeedConfig.NormalizeStage(old.SpeedUpgradeStage,old.OwnedSpeeds))
    -- Pet transactions own their durable inventory and equipment.
    merged.Pets=assert(Pet.NormalizeState(old.Pets))
+   merged.EggPetTutorial=assert(EggTutorial.Normalize(old.EggPetTutorial,false))
    merged.Strength=payload.Strength
    merged.Level=payload.Level
    merged.LevelProgress=payload.LevelProgress
@@ -1391,6 +1398,7 @@ local function resolvePetMutation(player,s,op)
    if reason=="AlreadyApplied" then return old,users,meta end
    local merged=table.clone(old)
    merged.Pets=state
+   merged.EggPetTutorial=EggTutorial.Apply(old.EggPetTutorial,op,state)
    -- Includes any paid credit committed after this operation's live snapshot.
    local shop=assert(normalizeShop(old.ShopRewards))
    merged.Win=op.WinBefore-op.PriceWin+math.max(0,shop.WinGrantedTotal-op.ShopWinBefore)
@@ -1410,6 +1418,8 @@ local function resolvePetMutation(player,s,op)
  end
  s.PendingItemMutation=nil
  s.Data.Pets=assert(Pet.NormalizeState(saved.Pets))
+ s.Data.EggPetTutorial=assert(EggTutorial.Normalize(saved.EggPetTutorial,false))
+ EggTutorial.Publish(player,s.Data.EggPetTutorial)
  local credited=math.max(0,assert(normalizeShop(saved.ShopRewards)).WinGrantedTotal-s.Data.ShopRewards.WinGrantedTotal)
  s.Data.ShopRewards=mergeShop(s.Data.ShopRewards,saved.ShopRewards)
  PlayerDataService.SetWin(player,s.Data.Win-op.PriceWin+credited)
@@ -1464,7 +1474,7 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload,g
   if not finite(unitPrice) or unitPrice<=0 or unitPrice%1~=0
    or unitPrice>9007199254740991/payload.Count
    or payload.PriceWin~=unitPrice*payload.Count then return false,"InvalidPetHatch" end
-  op.PriceWin=payload.PriceWin;op.Results=payload.Results
+  op.PriceWin=payload.PriceWin;op.Results=payload.Results;op.EggName=payload.EggName
   local allowed=egg.pets(payload.EggName)
   if type(allowed)~="table" then return false,"InvalidPetHatch" end
   for _,result in ipairs(op.Results) do

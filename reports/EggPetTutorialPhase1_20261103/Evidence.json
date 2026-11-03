@@ -1,0 +1,3206 @@
+{
+  "PlaceId": 126576845524886,
+  "UniverseId": 10765181857,
+  "Baseline": "bcee859",
+  "NativeTests": {
+    "completedBeforeReload": {
+      "Pets": {
+        "Revision": 2,
+        "Version": 1,
+        "LastRequestId": "621844b2-1aa2-4996-8b3d-48c69e36f2ec",
+        "LastResults": [],
+        "Discovered": {
+          "Grey Cat": true
+        },
+        "Equipped": [
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f",
+          "",
+          ""
+        ],
+        "Owned": {
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f": "Grey Cat"
+        }
+      },
+      "Health": 100,
+      "Generation": 1,
+      "Tutorial": {
+        "Completed": true,
+        "Acquired": {
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f": "Grey Cat"
+        },
+        "PurchaseId": "2bb5bf63-f72e-4b01-a4c0-ed3c55bf9dbd",
+        "CompletionId": "621844b2-1aa2-4996-8b3d-48c69e36f2ec",
+        "Eligible": true,
+        "Version": 1
+      },
+      "Pending": false,
+      "Win": 0,
+      "World": 1
+    },
+    "reload": {
+      "Pets": {
+        "Revision": 2,
+        "Version": 1,
+        "LastRequestId": "621844b2-1aa2-4996-8b3d-48c69e36f2ec",
+        "LastResults": [],
+        "Discovered": {
+          "Grey Cat": true
+        },
+        "Equipped": [
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f",
+          "",
+          ""
+        ],
+        "Owned": {
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f": "Grey Cat"
+        }
+      },
+      "Health": 100,
+      "Generation": 2,
+      "Tutorial": {
+        "Completed": true,
+        "Acquired": {
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f": "Grey Cat"
+        },
+        "PurchaseId": "2bb5bf63-f72e-4b01-a4c0-ed3c55bf9dbd",
+        "CompletionId": "621844b2-1aa2-4996-8b3d-48c69e36f2ec",
+        "Eligible": true,
+        "Version": 1
+      },
+      "Pending": false,
+      "Win": 0,
+      "World": 1
+    },
+    "completedReloadClient": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 443
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 540,
+        "W": 460,
+        "X": 10
+      },
+      "Arrow": "nil",
+      "Hatch": false,
+      "Owner": "nil",
+      "Step": "Complete",
+      "Sheet": {
+        "Enabled": true,
+        "Offset": "0, 0.3193349838256836, 0",
+        "Target": {
+          "Y": 363.8324890136719,
+          "H": 52.125,
+          "W": 160.08001708984375,
+          "X": 72.03598022460938
+        },
+        "Size": "667, 417"
+      },
+      "Pets": {
+        "Revision": 2,
+        "Version": 1,
+        "LastRequestId": "621844b2-1aa2-4996-8b3d-48c69e36f2ec",
+        "LastResults": [],
+        "Discovered": {
+          "Grey Cat": true
+        },
+        "Equipped": [
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f",
+          "",
+          ""
+        ],
+        "Owned": {
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f": "Grey Cat"
+        }
+      },
+      "OreStep": "WaitingForOres",
+      "Menu": "Inventory",
+      "Focus": {
+        "Y": 110.48809814453125,
+        "H": 51.09209442138672,
+        "W": 144.79531860351562,
+        "X": 252.1498565673828
+      },
+      "FocusVisible": false,
+      "Rendered": 10074,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": true,
+        "Acquired": {
+          "f93b9b66-67fc-4e07-872d-8f79bd68ad4f": "Grey Cat"
+        },
+        "PurchaseId": "2bb5bf63-f72e-4b01-a4c0-ed3c55bf9dbd",
+        "CompletionId": "621844b2-1aa2-4996-8b3d-48c69e36f2ec",
+        "Eligible": true,
+        "Version": 1
+      }
+    },
+    "reset": {
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "Health": 100,
+      "Generation": 3,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      },
+      "Pending": false,
+      "Win": 3,
+      "World": 1
+    },
+    "reapproach": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Hatch": false,
+      "Owner": "nil",
+      "Step": "WaitingForEgg",
+      "Sheet": {
+        "Enabled": true,
+        "Offset": "0, -0.37228965759277344, 0",
+        "Target": {
+          "Y": 367.322509765625,
+          "H": 52.625,
+          "W": 161.52001953125,
+          "X": 72.6839599609375
+        },
+        "Size": "673, 421"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "WaitingForOres",
+      "Menu": "Inventory",
+      "Focus": {
+        "Y": 136.0733184814453,
+        "H": 58.85052490234375,
+        "W": 437.5336608886719,
+        "X": 731.7137451171875
+      },
+      "FocusVisible": false,
+      "Rendered": 10121,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "winSpent": {
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "Health": 100,
+      "Generation": 3,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      },
+      "Pending": false,
+      "Win": 2,
+      "World": 1
+    },
+    "winSpentClient": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Hatch": false,
+      "Owner": "nil",
+      "Step": "WaitingForWin",
+      "Sheet": {
+        "Enabled": true,
+        "Offset": "0, -0.5885419845581055, 0",
+        "Target": {
+          "Y": 363.8324890136719,
+          "H": 52.125,
+          "W": 160.32000732421875,
+          "X": 72.14398193359375
+        },
+        "Size": "668, 417"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "WaitingForOres",
+      "Menu": "Inventory",
+      "Focus": {
+        "Y": 136.0733184814453,
+        "H": 58.85052490234375,
+        "W": 437.5336608886719,
+        "X": 731.7137451171875
+      },
+      "FocusVisible": false,
+      "Rendered": 10148,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "insufficient": {
+      "ok": false,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      },
+      "generation": 3,
+      "pending": false,
+      "state": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "reason": "NotEnoughWin"
+    },
+    "saveFailure": {
+      "ok": false,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      },
+      "generation": 3,
+      "pending": true,
+      "state": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "reason": "InventorySavePending"
+    },
+    "saveFailureClient": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Hatch": false,
+      "Owner": "nil",
+      "Step": "WaitingForHatch",
+      "Sheet": {
+        "Enabled": true,
+        "Offset": "0, 0.25139331817626953, 0",
+        "Target": {
+          "Y": 363.8324890136719,
+          "H": 52.125,
+          "W": 160.08001708984375,
+          "X": 72.03598022460938
+        },
+        "Size": "667, 417"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "WaitingForOres",
+      "Menu": "Inventory",
+      "Focus": {
+        "Y": 136.0733184814453,
+        "H": 58.85052490234375,
+        "W": 437.5336608886719,
+        "X": 731.7137451171875
+      },
+      "FocusVisible": false,
+      "Rendered": 10232,
+      "Busy": true,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "resolve": [
+      true,
+      "PetSaved"
+    ],
+    "replay": {
+      "ok": true,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        },
+        "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "Eligible": true,
+        "Version": 1
+      },
+      "generation": 3,
+      "pending": false,
+      "state": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+            "percent": 6.5,
+            "pet": "Bear",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Bear": true
+        },
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        }
+      },
+      "reason": "AlreadyApplied"
+    },
+    "afterResolve": {
+      "Lines": 1,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Step": "Equip",
+      "Pets": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+            "percent": 6.5,
+            "pet": "Bear",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Bear": true
+        },
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        }
+      },
+      "Focus": {
+        "Y": 144.57098388671875,
+        "H": 45.591651916503906,
+        "W": 302.2275695800781,
+        "X": 741.2314453125
+      },
+      "FocusVisible": true,
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Busy": false,
+      "Owner": "EggPetTutorialGui",
+      "Sheet": {
+        "Enabled": true,
+        "Offset": "0, 0.5885334014892578, 0",
+        "Target": {
+          "Y": 363.8324890136719,
+          "H": 52.125,
+          "W": 160.08001708984375,
+          "X": 72.03598022460938
+        },
+        "Size": "667, 417"
+      },
+      "Message": "Press Best Equip.",
+      "OreStep": "WaitingForOres",
+      "Menu": "Inventory",
+      "Rendered": 10268,
+      "Target": "Players.<local>.PlayerGui.ScreenGui.Menus.Inventory.Main.PetBestEquip",
+      "Hatch": false,
+      "MessageRect": {
+        "Y": -23.125,
+        "H": 26.25,
+        "W": 680,
+        "X": 355
+      },
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        },
+        "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "Eligible": true,
+        "Version": 1
+      }
+    },
+    "close": {
+      "Value": 1,
+      "Status": {
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Lines": 0,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Owner": "nil",
+        "Step": "Dismissed",
+        "Sheet": {
+          "Enabled": true,
+          "Offset": "0, -0.5819606781005859, 0",
+          "Target": {
+            "Y": 363.8324890136719,
+            "H": 52.125,
+            "W": 160.08001708984375,
+            "X": 72.03598022460938
+          },
+          "Size": "667, 417"
+        },
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "OreStep": "WaitingForOres",
+        "Hatch": false,
+        "Focus": {
+          "Y": 157.38401794433594,
+          "H": 40.20409393310547,
+          "W": 266.51336669921875,
+          "X": 735.768310546875
+        },
+        "FocusVisible": false,
+        "Rendered": 12565,
+        "Busy": false,
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      }
+    },
+    "closeWait": {
+      "Value": {
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Lines": 0,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Owner": "nil",
+        "Step": "Dismissed",
+        "Sheet": {
+          "Enabled": true,
+          "Offset": "0, -0.5577707290649414, 0",
+          "Target": {
+            "Y": 363.8324890136719,
+            "H": 52.125,
+            "W": 160.08001708984375,
+            "X": 72.03598022460938
+          },
+          "Size": "667, 417"
+        },
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "OreStep": "WaitingForOres",
+        "Hatch": false,
+        "Focus": {
+          "Y": 157.38401794433594,
+          "H": 40.20409393310547,
+          "W": 266.51336669921875,
+          "X": 735.768310546875
+        },
+        "FocusVisible": false,
+        "Rendered": 12570,
+        "Busy": false,
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      },
+      "Status": {
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Lines": 0,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Owner": "nil",
+        "Step": "Dismissed",
+        "Sheet": {
+          "Enabled": true,
+          "Offset": "0, -0.3593406677246094, 0",
+          "Target": {
+            "Y": 363.8324890136719,
+            "H": 52.125,
+            "W": 160.08001708984375,
+            "X": 72.03598022460938
+          },
+          "Size": "667, 417"
+        },
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "OreStep": "WaitingForOres",
+        "Hatch": false,
+        "Focus": {
+          "Y": 157.38401794433594,
+          "H": 40.20409393310547,
+          "W": 266.51336669921875,
+          "X": 735.768310546875
+        },
+        "FocusVisible": false,
+        "Rendered": 12591,
+        "Busy": false,
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      }
+    },
+    "reenter": {
+      "Value": {
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Lines": 0,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Owner": "nil",
+        "Step": "Dismissed",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, -0.1024026870727539, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "OreStep": "WaitingForOres",
+        "Hatch": false,
+        "Focus": {
+          "Y": 157.38401794433594,
+          "H": 40.20409393310547,
+          "W": 266.51336669921875,
+          "X": 735.768310546875
+        },
+        "FocusVisible": false,
+        "Rendered": 12630,
+        "Busy": false,
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      },
+      "Status": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "OpenPets",
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": true,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": false,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": true,
+          "Offset": "0, 0.4801950454711914, 0",
+          "Target": {
+            "Y": 371.68499755859375,
+            "H": 53.25,
+            "W": 163.68002319335938,
+            "X": 73.65597534179688
+          },
+          "Size": "682, 426"
+        },
+        "Message": "Open your Pets.",
+        "OreStep": "WaitingForOres",
+        "Rendered": 12651,
+        "Target": "Players.<local>.PlayerGui.StrengthGui.LeftMenu.PetsButton",
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -23.125,
+          "H": 26.25,
+          "W": 680,
+          "X": 355
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      }
+    },
+    "death": {
+      "Pets": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+            "percent": 6.5,
+            "pet": "Bear",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Bear": true
+        },
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        }
+      },
+      "Health": 100,
+      "Generation": 3,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        },
+        "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "Eligible": true,
+        "Version": 1
+      },
+      "Pending": false,
+      "Win": 0,
+      "World": 1
+    },
+    "respawn": {
+      "Value": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "OpenPets",
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": true,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": false,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Message": "Open your Pets.",
+        "OreStep": "WaitingForOres",
+        "Rendered": 12866,
+        "Target": "Players.<local>.PlayerGui.StrengthGui.LeftMenu.PetsButton",
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -23.125,
+          "H": 26.25,
+          "W": 680,
+          "X": 355
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      },
+      "Status": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "OpenPets",
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": true,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": false,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Message": "Open your Pets.",
+        "OreStep": "WaitingForOres",
+        "Rendered": 12887,
+        "Target": "Players.<local>.PlayerGui.StrengthGui.LeftMenu.PetsButton",
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -23.125,
+          "H": 26.25,
+          "W": 680,
+          "X": 355
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      }
+    },
+    "world2": {
+      "Value": {
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Lines": 0,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Owner": "nil",
+        "Step": "WaitingForLobby",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "OreStep": "Waiting",
+        "Hatch": false,
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": false,
+        "Rendered": 12896,
+        "Busy": false,
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      },
+      "Status": {
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Lines": 0,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Owner": "nil",
+        "Step": "WaitingForLobby",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "OreStep": "WaitingForOres",
+        "Hatch": false,
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": false,
+        "Rendered": 12906,
+        "Busy": false,
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      }
+    },
+    "world1": {
+      "Value": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "OpenPets",
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": true,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": false,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Message": "Open your Pets.",
+        "OreStep": "WaitingForOres",
+        "Rendered": 12914,
+        "Target": "Players.<local>.PlayerGui.StrengthGui.LeftMenu.PetsButton",
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -21.96031951904297,
+          "H": 23.920637130737305,
+          "W": 634.5263671875,
+          "X": 377.73681640625
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      },
+      "Status": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "OpenPets",
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": true,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": false,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Message": "Open your Pets.",
+        "OreStep": "WaitingForOres",
+        "Rendered": 12922,
+        "Target": "Players.<local>.PlayerGui.StrengthGui.LeftMenu.PetsButton",
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -23.125,
+          "H": 26.25,
+          "W": 680,
+          "X": 355
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      }
+    },
+    "unfinishedReload": {
+      "Pets": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+            "percent": 6.5,
+            "pet": "Bear",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Bear": true
+        },
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        }
+      },
+      "Health": 100,
+      "Generation": 4,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        },
+        "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "Eligible": true,
+        "Version": 1
+      },
+      "Pending": false,
+      "Win": 0,
+      "World": 1
+    },
+    "unfinishedReloadClient": {
+      "Value": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "OpenPets",
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": true,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": false,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Message": "Open your Pets.",
+        "OreStep": "WaitingForOres",
+        "Rendered": 12934,
+        "Target": "Players.<local>.PlayerGui.StrengthGui.LeftMenu.PetsButton",
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -21.829715728759766,
+          "H": 23.6594295501709,
+          "W": 600.202392578125,
+          "X": 394.8988037109375
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      },
+      "Status": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "OpenPets",
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": true,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": false,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Message": "Open your Pets.",
+        "OreStep": "WaitingForOres",
+        "Rendered": 12957,
+        "Target": "Players.<local>.PlayerGui.StrengthGui.LeftMenu.PetsButton",
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -23.125,
+          "H": 26.25,
+          "W": 680,
+          "X": 355
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      }
+    },
+    "manual": {
+      "Value": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "Equip",
+        "Pets": {
+          "Revision": 1,
+          "Version": 1,
+          "LastRequestId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "LastResults": [
+            {
+              "duplicate": false,
+              "id": "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+              "percent": 6.5,
+              "pet": "Bear",
+              "bonus": 0
+            }
+          ],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 180.23280334472656,
+          "H": 55.30018997192383,
+          "W": 280.1549072265625,
+          "X": 665.4814453125
+        },
+        "FocusVisible": true,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": true,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Message": "Press Best Equip.",
+        "OreStep": "WaitingForOres",
+        "Menu": "Inventory",
+        "Rendered": 12989,
+        "Target": "Players.<local>.PlayerGui.ScreenGui.Menus.Inventory.Main.PetBestEquip",
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -23.125,
+          "H": 26.25,
+          "W": 680,
+          "X": 355
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "Eligible": true,
+          "Version": 1
+        }
+      },
+      "Status": {
+        "Lines": 1,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Step": "Complete",
+        "Pets": {
+          "Revision": 2,
+          "Version": 1,
+          "LastRequestId": "91379177-01cf-4fcf-924b-ac8815729b8f",
+          "LastResults": [],
+          "Discovered": {
+            "Bear": true
+          },
+          "Equipped": [
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+            "",
+            ""
+          ],
+          "Owned": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          }
+        },
+        "Focus": {
+          "Y": 168.16209411621094,
+          "H": 52.01407241821289,
+          "W": 287.6260070800781,
+          "X": 691.1210327148438
+        },
+        "FocusVisible": false,
+        "Proxy": {
+          "Y": 345,
+          "H": 52,
+          "W": 160,
+          "X": 433
+        },
+        "Busy": false,
+        "Owner": "EggPetTutorialGui",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0.09652233123779297, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Message": "Pet equipped!",
+        "OreStep": "WaitingForOres",
+        "Menu": "Inventory",
+        "Rendered": 13008,
+        "Hatch": false,
+        "MessageRect": {
+          "Y": -23.125,
+          "H": 26.25,
+          "W": 680,
+          "X": 355
+        },
+        "Tutorial": {
+          "Completed": true,
+          "Acquired": {
+            "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+          },
+          "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+          "CompletionId": "91379177-01cf-4fcf-924b-ac8815729b8f",
+          "Eligible": true,
+          "Version": 1
+        }
+      }
+    },
+    "manualServer": {
+      "Pets": {
+        "Revision": 2,
+        "Version": 1,
+        "LastRequestId": "91379177-01cf-4fcf-924b-ac8815729b8f",
+        "LastResults": [],
+        "Discovered": {
+          "Bear": true
+        },
+        "Equipped": [
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad",
+          "",
+          ""
+        ],
+        "Owned": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        }
+      },
+      "Health": 100,
+      "Generation": 4,
+      "Tutorial": {
+        "Completed": true,
+        "Acquired": {
+          "e552fe32-e1b0-47a8-b8a4-62f02f0d95ad": "Bear"
+        },
+        "PurchaseId": "e9688abd-de25-4f39-90ff-16bb3d031d45",
+        "CompletionId": "91379177-01cf-4fcf-924b-ac8815729b8f",
+        "Eligible": true,
+        "Version": 1
+      },
+      "Pending": false,
+      "Win": 0,
+      "World": 1
+    },
+    "oreFirst": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Owner": "OreMergeTutorialGui",
+      "Step": "WaitingForWin",
+      "Sheet": {
+        "Enabled": false,
+        "Offset": "0, 0.09652233123779297, 0",
+        "Target": {
+          "Y": 0,
+          "H": 0,
+          "W": 0,
+          "X": 0
+        },
+        "Size": "0, 0"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "GoToMerge",
+      "Hatch": false,
+      "Focus": {
+        "Y": 168.16209411621094,
+        "H": 52.01407241821289,
+        "W": 287.6260070800781,
+        "X": 691.1210327148438
+      },
+      "FocusVisible": false,
+      "Rendered": 15516,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "waitOre": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Owner": "OreMergeTutorialGui",
+      "Step": "WaitingForGuide",
+      "Sheet": {
+        "Enabled": false,
+        "Offset": "0, 0.09652233123779297, 0",
+        "Target": {
+          "Y": 0,
+          "H": 0,
+          "W": 0,
+          "X": 0
+        },
+        "Size": "0, 0"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "GoToMerge",
+      "Hatch": false,
+      "Focus": {
+        "Y": 168.16209411621094,
+        "H": 52.01407241821289,
+        "W": 287.6260070800781,
+        "X": 691.1210327148438
+      },
+      "FocusVisible": false,
+      "Rendered": 15548,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "oreMerge": {
+      "State": {
+        "DumbbellCounts": {
+          "NORMAL_01": 1
+        },
+        "Sequence": 3,
+        "EquippedDumbbell": "",
+        "Loaded": true,
+        "Pending": false,
+        "Journal": {
+          "Id": "0d58c249-923c-4393-91de-b539c9ff3744",
+          "ResultId": "NORMAL_01",
+          "Sequence": 3,
+          "Signature": "MergeOre||ORE_001:2"
+        },
+        "Token": "0f73275d-dcbe-4d09-90b7-5d963a863d96",
+        "Ores": [],
+        "OreTutorial": {
+          "Completed": true,
+          "CompletionId": "0d58c249-923c-4393-91de-b539c9ff3744",
+          "Version": 1,
+          "Eligible": true
+        },
+        "Win": 3,
+        "Generation": 5
+      },
+      "Success": true,
+      "Code": "Applied"
+    },
+    "oreEnded": {
+      "Lines": 1,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "342.6244201660156, 12.702367782592773, -7.353715419769287",
+      "Step": "GoToEgg",
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "Focus": {
+        "Y": 168.16209411621094,
+        "H": 52.01407241821289,
+        "W": 287.6260070800781,
+        "X": 691.1210327148438
+      },
+      "FocusVisible": false,
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Busy": false,
+      "Owner": "EggPetTutorialGui",
+      "Sheet": {
+        "Enabled": false,
+        "Offset": "0, 0.09652233123779297, 0",
+        "Target": {
+          "Y": 0,
+          "H": 0,
+          "W": 0,
+          "X": 0
+        },
+        "Size": "0, 0"
+      },
+      "Message": "Go to the Basic Egg!",
+      "OreStep": "Complete",
+      "Rendered": 15579,
+      "Hatch": false,
+      "MessageRect": {
+        "Y": -23.125,
+        "H": 26.25,
+        "W": 680,
+        "X": 355
+      },
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "notification": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Owner": "EggPetTutorialGui",
+      "Step": "WaitingForDisplay",
+      "Sheet": {
+        "Enabled": false,
+        "Offset": "0, 0.09652233123779297, 0",
+        "Target": {
+          "Y": 0,
+          "H": 0,
+          "W": 0,
+          "X": 0
+        },
+        "Size": "0, 0"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "Complete",
+      "Hatch": false,
+      "Focus": {
+        "Y": 168.16209411621094,
+        "H": 52.01407241821289,
+        "W": 287.6260070800781,
+        "X": 691.1210327148438
+      },
+      "FocusVisible": false,
+      "Rendered": 15606,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "oldRequest": {
+      "ok": false,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      },
+      "generation": 6,
+      "pending": false,
+      "state": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "reason": "PetStateChanged"
+    },
+    "resetRestart": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Owner": "nil",
+      "Step": "WaitingForDisplay",
+      "Sheet": {
+        "Enabled": false,
+        "Offset": "0, 0.09652233123779297, 0",
+        "Target": {
+          "Y": 0,
+          "H": 0,
+          "W": 0,
+          "X": 0
+        },
+        "Size": "0, 0"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "Waiting",
+      "Hatch": false,
+      "Focus": {
+        "Y": 168.16209411621094,
+        "H": 52.01407241821289,
+        "W": 287.6260070800781,
+        "X": 691.1210327148438
+      },
+      "FocusVisible": false,
+      "Rendered": 15663,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "legacy": {
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "Health": 100,
+      "Generation": 7,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": false
+      },
+      "Pending": false,
+      "Win": 3,
+      "World": 1
+    },
+    "legacyClient": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Owner": "nil",
+      "Step": "Ineligible",
+      "Sheet": {
+        "Enabled": false,
+        "Offset": "0, 0.09652233123779297, 0",
+        "Target": {
+          "Y": 0,
+          "H": 0,
+          "W": 0,
+          "X": 0
+        },
+        "Size": "0, 0"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "Waiting",
+      "Hatch": false,
+      "Focus": {
+        "Y": 168.16209411621094,
+        "H": 52.01407241821289,
+        "W": 287.6260070800781,
+        "X": 691.1210327148438
+      },
+      "FocusVisible": false,
+      "Rendered": 15696,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": false
+      }
+    },
+    "failureAfter": {
+      "ok": false,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      },
+      "generation": 8,
+      "pending": true,
+      "state": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "reason": "InventorySavePending"
+    },
+    "afterLostAckClient": {
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Owner": "EggPetTutorialGui",
+      "Step": "WaitingForHatch",
+      "Sheet": {
+        "Enabled": true,
+        "Offset": "0, 0.4359474182128906, 0",
+        "Target": {
+          "Y": 363.8324890136719,
+          "H": 52.125,
+          "W": 160.08001708984375,
+          "X": 72.03598022460938
+        },
+        "Size": "667, 417"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "WaitingForOres",
+      "Hatch": false,
+      "Focus": {
+        "Y": 340.31988525390625,
+        "H": 61.359981536865234,
+        "W": 188.7999267578125,
+        "X": 418.59991455078125
+      },
+      "FocusVisible": false,
+      "Rendered": 23885,
+      "Busy": true,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "lostAckReplay": {
+      "ok": true,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "cdbc9f07-01fa-4d2a-8697-913d922103a4": "Dog"
+        },
+        "PurchaseId": "363daedd-7686-49b8-b950-a8807bae440f",
+        "Eligible": true,
+        "Version": 1
+      },
+      "generation": 8,
+      "pending": false,
+      "state": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "363daedd-7686-49b8-b950-a8807bae440f",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "cdbc9f07-01fa-4d2a-8697-913d922103a4",
+            "percent": 25,
+            "pet": "Dog",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Dog": true
+        },
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": {
+          "cdbc9f07-01fa-4d2a-8697-913d922103a4": "Dog"
+        }
+      },
+      "reason": "AlreadyApplied"
+    },
+    "notifyResume": {
+      "Lines": 1,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Step": "OpenPets",
+      "Pets": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "363daedd-7686-49b8-b950-a8807bae440f",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "cdbc9f07-01fa-4d2a-8697-913d922103a4",
+            "percent": 25,
+            "pet": "Dog",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Dog": true
+        },
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": {
+          "cdbc9f07-01fa-4d2a-8697-913d922103a4": "Dog"
+        }
+      },
+      "Focus": {
+        "Y": 432.543212890625,
+        "H": 123.9888687133789,
+        "W": 123.98888397216797,
+        "X": 129.543212890625
+      },
+      "FocusVisible": true,
+      "Proxy": {
+        "Y": 345,
+        "H": 52,
+        "W": 160,
+        "X": 433
+      },
+      "Busy": false,
+      "Owner": "EggPetTutorialGui",
+      "Sheet": {
+        "Enabled": true,
+        "Offset": "0, -0.09302139282226562, 0",
+        "Target": {
+          "Y": 363.8324890136719,
+          "H": 52.125,
+          "W": 160.08001708984375,
+          "X": 72.03598022460938
+        },
+        "Size": "667, 417"
+      },
+      "Message": "Open your Pets.",
+      "OreStep": "WaitingForOres",
+      "Rendered": 23922,
+      "Target": "Players.<local>.PlayerGui.StrengthGui.LeftMenu.PetsButton",
+      "Hatch": false,
+      "MessageRect": {
+        "Y": -23.125,
+        "H": 26.25,
+        "W": 680,
+        "X": 355
+      },
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "cdbc9f07-01fa-4d2a-8697-913d922103a4": "Dog"
+        },
+        "PurchaseId": "363daedd-7686-49b8-b950-a8807bae440f",
+        "Eligible": true,
+        "Version": 1
+      }
+    },
+    "history": [
+      {
+        "At": 20599.599269,
+        "Step": "WaitingForWin",
+        "Arrow": false
+      },
+      {
+        "At": 20612.987548200006,
+        "Step": "GoToEgg",
+        "Arrow": true
+      },
+      {
+        "At": 20632.9140472,
+        "Step": "OpenOne",
+        "Arrow": false
+      },
+      {
+        "At": 20650.749142999994,
+        "Step": "WaitingForHatch",
+        "Arrow": false
+      },
+      {
+        "At": 20689.01126140001,
+        "Step": "OpenPets",
+        "Arrow": false
+      },
+      {
+        "At": 20689.84616040002,
+        "Step": "Equip",
+        "Arrow": false
+      },
+      {
+        "At": 20726.645302899997,
+        "Step": "Complete",
+        "Arrow": false
+      },
+      {
+        "At": 20767.12685140001,
+        "Step": "Loading",
+        "Arrow": false
+      },
+      {
+        "At": 20767.17746159999,
+        "Step": "Complete",
+        "Arrow": false
+      },
+      {
+        "At": 20767.778746099968,
+        "Step": "Loading",
+        "Arrow": false
+      },
+      {
+        "At": 20767.82989350002,
+        "Step": "WaitingForEgg",
+        "Arrow": false
+      },
+      {
+        "At": 20768.541998400004,
+        "Step": "WaitingForWin",
+        "Arrow": false
+      },
+      {
+        "At": 20769.07606449997,
+        "Step": "WaitingForEgg",
+        "Arrow": false
+      },
+      {
+        "At": 20769.942023299984,
+        "Step": "WaitingForHatch",
+        "Arrow": false
+      },
+      {
+        "At": 20770.408218699973,
+        "Step": "WaitingForWin",
+        "Arrow": false
+      },
+      {
+        "At": 20770.459394100006,
+        "Step": "Equip",
+        "Arrow": false
+      },
+      {
+        "At": 20808.8734253,
+        "Step": "Dismissed",
+        "Arrow": false
+      },
+      {
+        "At": 20810.33966419997,
+        "Step": "OpenPets",
+        "Arrow": false
+      },
+      {
+        "At": 20810.739710299997,
+        "Step": "WaitingForLobby",
+        "Arrow": false
+      },
+      {
+        "At": 20814.4725647,
+        "Step": "OpenPets",
+        "Arrow": false
+      },
+      {
+        "At": 20815.048955100006,
+        "Step": "WaitingForLobby",
+        "Arrow": false
+      },
+      {
+        "At": 20815.91097009997,
+        "Step": "OpenPets",
+        "Arrow": false
+      },
+      {
+        "At": 20816.676196300017,
+        "Step": "Loading",
+        "Arrow": false
+      },
+      {
+        "At": 20816.743779900018,
+        "Step": "OpenPets",
+        "Arrow": false
+      },
+      {
+        "At": 20817.507535099983,
+        "Step": "Equip",
+        "Arrow": false
+      },
+      {
+        "At": 20817.791691099992,
+        "Step": "Complete",
+        "Arrow": false
+      },
+      {
+        "At": 20859.307439900003,
+        "Step": "Loading",
+        "Arrow": false
+      },
+      {
+        "At": 20859.411315799982,
+        "Step": "WaitingForWin",
+        "Arrow": false
+      },
+      {
+        "At": 20860.022198799998,
+        "Step": "WaitingForGuide",
+        "Arrow": false
+      },
+      {
+        "At": 20860.748898399994,
+        "Step": "GoToEgg",
+        "Arrow": true
+      },
+      {
+        "At": 20861.137776600022,
+        "Step": "WaitingForDisplay",
+        "Arrow": false
+      },
+      {
+        "At": 20861.692280600022,
+        "Step": "Loading",
+        "Arrow": false
+      },
+      {
+        "At": 20861.736681499984,
+        "Step": "WaitingForLobby",
+        "Arrow": false
+      },
+      {
+        "At": 20861.8102602,
+        "Step": "WaitingForDisplay",
+        "Arrow": false
+      },
+      {
+        "At": 20862.556954599975,
+        "Step": "Loading",
+        "Arrow": false
+      },
+      {
+        "At": 20862.6066767,
+        "Step": "Ineligible",
+        "Arrow": false
+      },
+      {
+        "At": 20874.37279230001,
+        "Step": "Loading",
+        "Arrow": false
+      },
+      {
+        "At": 20874.481664600025,
+        "Step": "GoToEgg",
+        "Arrow": true
+      },
+      {
+        "At": 20916.437437899993,
+        "Step": "OpenOne",
+        "Arrow": false
+      },
+      {
+        "At": 20999.167285399977,
+        "Step": "WaitingForHatch",
+        "Arrow": false
+      },
+      {
+        "At": 20999.61705629999,
+        "Step": "WaitingForWin",
+        "Arrow": false
+      },
+      {
+        "At": 20999.66765909997,
+        "Step": "OpenPets",
+        "Arrow": false
+      }
+    ],
+    "pure": [
+      "legacy excluded",
+      "fresh eligible",
+      "confirmed Basic provenance",
+      "replay stable",
+      "unrelated equip cannot complete",
+      "owned acquired equip completes",
+      "missing acquired copy not completion",
+      "bad schema rejected",
+      "other Egg not Basic"
+    ],
+    "fullSlotsHatch": {
+      "ok": true,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "0f52b2f2-69b5-44d8-a997-db1c157e5fac": "Pink Bunny"
+        },
+        "PurchaseId": "989ed3e1-14fe-44a6-80e3-fb112119a248",
+        "Eligible": true,
+        "Version": 1
+      },
+      "generation": 2,
+      "pending": false,
+      "state": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "989ed3e1-14fe-44a6-80e3-fb112119a248",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "0f52b2f2-69b5-44d8-a997-db1c157e5fac",
+            "percent": 25,
+            "pet": "Pink Bunny",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Elephant": true,
+          "Pink Bunny": true,
+          "Crocodile": true,
+          "Octopus": true
+        },
+        "Equipped": [
+          "f58485ae-fffb-42ba-85d7-00d810fc2b78",
+          "1d4401f9-1caa-4922-aed3-38d1b0d6a6bb",
+          "3ff1ed85-1b52-4994-a5e0-f413bd849f32"
+        ],
+        "Owned": {
+          "0f52b2f2-69b5-44d8-a997-db1c157e5fac": "Pink Bunny",
+          "f58485ae-fffb-42ba-85d7-00d810fc2b78": "Elephant",
+          "1d4401f9-1caa-4922-aed3-38d1b0d6a6bb": "Crocodile",
+          "3ff1ed85-1b52-4994-a5e0-f413bd849f32": "Octopus"
+        }
+      },
+      "reason": "PetSaved"
+    },
+    "fullSlotsReject": {
+      "ok": false,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "0f52b2f2-69b5-44d8-a997-db1c157e5fac": "Pink Bunny"
+        },
+        "PurchaseId": "989ed3e1-14fe-44a6-80e3-fb112119a248",
+        "Eligible": true,
+        "Version": 1
+      },
+      "generation": 2,
+      "pending": false,
+      "state": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "989ed3e1-14fe-44a6-80e3-fb112119a248",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "0f52b2f2-69b5-44d8-a997-db1c157e5fac",
+            "percent": 25,
+            "pet": "Pink Bunny",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Elephant": true,
+          "Pink Bunny": true,
+          "Crocodile": true,
+          "Octopus": true
+        },
+        "Equipped": [
+          "f58485ae-fffb-42ba-85d7-00d810fc2b78",
+          "1d4401f9-1caa-4922-aed3-38d1b0d6a6bb",
+          "3ff1ed85-1b52-4994-a5e0-f413bd849f32"
+        ],
+        "Owned": {
+          "0f52b2f2-69b5-44d8-a997-db1c157e5fac": "Pink Bunny",
+          "f58485ae-fffb-42ba-85d7-00d810fc2b78": "Elephant",
+          "1d4401f9-1caa-4922-aed3-38d1b0d6a6bb": "Crocodile",
+          "3ff1ed85-1b52-4994-a5e0-f413bd849f32": "Octopus"
+        }
+      },
+      "reason": "PetSlotsFull"
+    },
+    "fullSlotsBest": {
+      "ok": true,
+      "tutorial": {
+        "Completed": false,
+        "Acquired": {
+          "0f52b2f2-69b5-44d8-a997-db1c157e5fac": "Pink Bunny"
+        },
+        "PurchaseId": "989ed3e1-14fe-44a6-80e3-fb112119a248",
+        "Eligible": true,
+        "Version": 1
+      },
+      "generation": 2,
+      "pending": false,
+      "state": {
+        "Revision": 1,
+        "Version": 1,
+        "LastRequestId": "989ed3e1-14fe-44a6-80e3-fb112119a248",
+        "LastResults": [
+          {
+            "duplicate": false,
+            "id": "0f52b2f2-69b5-44d8-a997-db1c157e5fac",
+            "percent": 25,
+            "pet": "Pink Bunny",
+            "bonus": 0
+          }
+        ],
+        "Discovered": {
+          "Elephant": true,
+          "Pink Bunny": true,
+          "Crocodile": true,
+          "Octopus": true
+        },
+        "Equipped": [
+          "f58485ae-fffb-42ba-85d7-00d810fc2b78",
+          "1d4401f9-1caa-4922-aed3-38d1b0d6a6bb",
+          "3ff1ed85-1b52-4994-a5e0-f413bd849f32"
+        ],
+        "Owned": {
+          "0f52b2f2-69b5-44d8-a997-db1c157e5fac": "Pink Bunny",
+          "f58485ae-fffb-42ba-85d7-00d810fc2b78": "Elephant",
+          "1d4401f9-1caa-4922-aed3-38d1b0d6a6bb": "Crocodile",
+          "3ff1ed85-1b52-4994-a5e0-f413bd849f32": "Octopus"
+        }
+      },
+      "reason": "AlreadyBestEquipped"
+    },
+    "staleClient": {
+      "Proxy": {
+        "Y": -58,
+        "H": 0,
+        "W": 0,
+        "X": 0
+      },
+      "Lines": 0,
+      "Canvas": {
+        "Y": -58,
+        "H": 622,
+        "W": 1390,
+        "X": 0
+      },
+      "Arrow": "nil",
+      "Owner": "nil",
+      "Step": "WaitingForLobby",
+      "Sheet": {
+        "Enabled": false,
+        "Offset": "0, 0, 0",
+        "Target": {
+          "Y": 0,
+          "H": 0,
+          "W": 0,
+          "X": 0
+        },
+        "Size": "0, 0"
+      },
+      "Pets": {
+        "Revision": 0,
+        "Version": 1,
+        "LastRequestId": "",
+        "LastResults": [],
+        "Discovered": [],
+        "Equipped": [
+          "",
+          "",
+          ""
+        ],
+        "Owned": []
+      },
+      "OreStep": "Waiting",
+      "Hatch": false,
+      "Focus": {
+        "Y": 432.543212890625,
+        "H": 123.9888687133789,
+        "W": 123.98888397216797,
+        "X": 129.543212890625
+      },
+      "FocusVisible": false,
+      "Rendered": 5115,
+      "Busy": false,
+      "Tutorial": {
+        "Completed": false,
+        "Acquired": [],
+        "Version": 1,
+        "Eligible": true
+      }
+    },
+    "finalOre": {
+      "Egg": {
+        "Proxy": {
+          "Y": -58,
+          "H": 0,
+          "W": 0,
+          "X": 0
+        },
+        "Lines": 0,
+        "Canvas": {
+          "Y": -58,
+          "H": 622,
+          "W": 1390,
+          "X": 0
+        },
+        "Arrow": "nil",
+        "Owner": "OreMergeTutorialGui",
+        "Step": "WaitingForDisplay",
+        "Sheet": {
+          "Enabled": false,
+          "Offset": "0, 0, 0",
+          "Target": {
+            "Y": 0,
+            "H": 0,
+            "W": 0,
+            "X": 0
+          },
+          "Size": "0, 0"
+        },
+        "Pets": {
+          "Revision": 0,
+          "Version": 1,
+          "LastRequestId": "",
+          "LastResults": [],
+          "Discovered": [],
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "Owned": []
+        },
+        "OreStep": "ChooseOre",
+        "Hatch": false,
+        "Focus": {
+          "Y": 432.543212890625,
+          "H": 123.9888687133789,
+          "W": 123.98888397216797,
+          "X": 129.543212890625
+        },
+        "FocusVisible": false,
+        "Rendered": 7229,
+        "Busy": false,
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": [],
+          "Version": 1,
+          "Eligible": true
+        }
+      },
+      "Ore": {
+        "Visible": true,
+        "Shadow": 100,
+        "Target": "Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Ore",
+        "Grow": 1.18,
+        "Step": "ChooseOre",
+        "Thickness": 0.02500000037252903
+      }
+    }
+  },
+  "MultiplayerFirstAttempt": {
+    "Reports": [
+      {
+        "Passed": true,
+        "Checks": [
+          "author Outline survives Play",
+          "author Shadow survives Play",
+          "author growth survives Play",
+          "author message survives Play",
+          "ordinary Basic purchase",
+          "hatch playing",
+          "ordinary Best Equip",
+          "one equipped",
+          "other server not granted/completed",
+          "own reset clears progress/display",
+          "template retained across steps"
+        ]
+      },
+      {
+        "Passed": false,
+        "Error": "ServerScriptService.__EggQAMultiServer:10: Multiplayer fixture timeout\nPlayers.Player1.PlayerScripts.__EggQAMultiClient:42\nPlayers.Player1.PlayerScripts.__EggQAMultiClient:15\n",
+        "Checks": [
+          "author Outline survives Play",
+          "author Shadow survives Play",
+          "author growth survives Play",
+          "author message survives Play"
+        ]
+      }
+    ],
+    "States": [
+      {
+        "Pets": {
+          "Revision": 0,
+          "Version": 1,
+          "LastResults": [],
+          "Owned": [],
+          "Discovered": [],
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "LastRequestId": ""
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": [],
+          "Version": 1,
+          "Eligible": true
+        },
+        "Win": 2
+      },
+      {
+        "Pets": {
+          "Revision": 0,
+          "Version": 1,
+          "LastResults": [],
+          "Owned": [],
+          "Discovered": [],
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "LastRequestId": ""
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": [],
+          "Version": 1,
+          "Eligible": true
+        },
+        "Win": 2
+      }
+    ]
+  },
+  "MultiplayerFinal": {
+    "Reports": [
+      {
+        "Passed": true,
+        "Checks": [
+          "author Outline survives Play",
+          "author Shadow survives Play",
+          "author growth survives Play",
+          "author message survives Play",
+          "ordinary Basic purchase",
+          "hatch playing",
+          "ordinary Best Equip",
+          "one equipped",
+          "other server not granted/completed",
+          "own reset clears progress/display",
+          "template retained across steps"
+        ]
+      },
+      {
+        "Passed": true,
+        "Checks": [
+          "author Outline survives Play",
+          "author Shadow survives Play",
+          "author growth survives Play",
+          "author message survives Play",
+          "own server unchanged by peer",
+          "own client unchanged by peer",
+          "own guide starts independently",
+          "template retained across steps"
+        ]
+      }
+    ],
+    "States": [
+      {
+        "Pets": {
+          "Revision": 0,
+          "Version": 1,
+          "LastResults": [],
+          "Owned": [],
+          "Discovered": [],
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "LastRequestId": ""
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": [],
+          "Version": 1,
+          "Eligible": true
+        },
+        "Win": 2
+      },
+      {
+        "Pets": {
+          "Revision": 0,
+          "Version": 1,
+          "LastResults": [],
+          "Owned": [],
+          "Discovered": [],
+          "Equipped": [
+            "",
+            "",
+            ""
+          ],
+          "LastRequestId": ""
+        },
+        "Tutorial": {
+          "Completed": false,
+          "Acquired": [],
+          "Version": 1,
+          "Eligible": true
+        },
+        "Win": 3
+      }
+    ]
+  },
+  "FinalCases": {
+    "State": {
+      "Completed": false,
+      "Acquired": [],
+      "Version": 1,
+      "Eligible": true
+    },
+    "Passed": true,
+    "EarlyServerConfirmed": true,
+    "LimitedPauseResume": true,
+    "OtherEggResume": true,
+    "EarlySkippedAllInstructions": true,
+    "OtherEggPause": true
+  },
+  "Integrity": {
+    "UniverseId": 10765181857,
+    "Running": false,
+    "OreRendererUnchanged": true,
+    "Properties": 30442,
+    "Helpers": [],
+    "Camera": true,
+    "Objects": 5542,
+    "Sources": 470,
+    "Issues": [],
+    "Focus": true,
+    "HoverUnchanged": true,
+    "Restored": 37,
+    "PlaceId": 126576845524886,
+    "Http": true
+  },
+  "VisualChecks": {
+    "ScreensAcquired": true,
+    "Native": [
+      "floor chevrons toward Basic",
+      "purchased notification",
+      "hatch egg and Grey Cat reveal",
+      "Pets entry highlight",
+      "Best Equip highlight",
+      "completion notice",
+      "Ore tab highlight and notification"
+    ],
+    "Narrow": "460x540 isolated canvas with a 380x430 Pet menu; no device-preview setting change",
+    "Open1": "Projected focus and underlying Billboard properties/callbacks verified, but the ordinary Billboard card was absent from captures. Pixel alignment/readability and physical pointer remain unverified.",
+    "Mirror": "A later isolated artwork-mirror attempt had zero sheet size at the sampled camera/proximity choice and did not establish visual acceptance.",
+    "Input": "Native activation callbacks and normal request APIs invoked by isolated fixtures, no physical input.",
+    "ScreenshotsRetained": false
+  },
+  "Limitations": [
+    "No production data store or public-server rejoin",
+    "No real Robux purchase",
+    "No OS mouse/keyboard, window, camera or device-preview manipulation",
+    "No ordinary Pet owned-count capacity exists in current code; PetSlotsFull is an equipment-slot rejection",
+    "No new Pet merge tutorial or automatic transition"
+  ]
+}
