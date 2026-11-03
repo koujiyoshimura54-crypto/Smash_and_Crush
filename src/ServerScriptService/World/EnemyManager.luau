@@ -28,7 +28,7 @@ local runRevisions=setmetatable({}, {__mode="k"})
 local messageSequences=setmetatable({}, {__mode="k"})
 local M={} local map,folder,remote,remoteConnection local enemies={} local states=setmetatable({},{__mode="k"}) local sessions=setmetatable({},{__mode="k"}) local token=0
 local AutoTapConfig=require(RS.Config:WaitForChild("AutoTapConfig"))
-local lastManualAttack=setmetatable({}, {__mode="k"})
+local ActionTiming=require(game.ServerScriptService.Services.PlayerActionTiming)
 -- Recognition is separate from combat: only the final wall hit arms pre-combat pursuit.
 local recognizedPlayers=setmetatable({}, {__mode="k"})
 local LOSS_DEATH_DISPLAY_DURATION=0.8
@@ -171,6 +171,7 @@ local function send(p,d)
 end
 function M.SendState(p)local st=Stage.GetState(p)local ps=state(p)local g={}for i=1,10 do g[i]=ps.Gauges[i]end send(p,{Type="Initialize",CurrentStage=st.CurrentStage,Cleared=ps.Defeated,Skipped=ps.Skipped,WorldComplete=st.WorldComplete,Gauges=g}) for major in pairs(Wall.Config) do send(p,{Type="WallInitialize",State=Wall.GetSnapshotForStage(p,major)}) end end
 function M.InitializePlayer(p,targetStage)
+ ActionTiming.CancelAutomatic(p)
  Speed.ClearTransitionBoost(p,worldId)
  if BossAttack then BossAttack.Stop(p,true) end
  if removeEnemy then removeEnemy(p) end
@@ -980,7 +981,8 @@ local function updateCombat(p,manualRequest)
  if endCombatOnArenaExit(p) then return false,"ArenaExit" end
  local now=W:GetServerTimeNow()
  local auto=PlayerData.IsAutoTapEnabled(p)
- if manualRequest and auto then return false,"AutoEnabled" end
+ if manualRequest and not ActionTiming.CanAct(p,true) then return false,"Cooldown" end
+ local performed=false
    local n=Stage.GetCurrentStageNumber(p)
    local st=Stage.GetState(p)
    local ch=p.Character
@@ -1041,12 +1043,9 @@ local function updateCombat(p,manualRequest)
      if wallHit then
       startedWall=true
       initialWallPower=Strength.GetStrength(p)
-      if auto and initialWallPower>0 then
-       local ps=state(p);ps.AttackSequence=(ps.AttackSequence or 0)+1
-       send(p,{Type="CombatAttack",Id=ps.AttackSequence,Stage=n,Duration=Boss.AttackDuration})
-      end
+
      end
-     sessions[p]={Stage=n,Target=targetKey,LastTick=now,CombatType=wallHit and "Wall" or "MiniBoss",Instance=target,Character=ch,Pending=0}
+     sessions[p]={Stage=n,Target=targetKey,CombatType=wallHit and "Wall" or "MiniBoss",Instance=target,Character=ch,Pending=0}
      p:SetAttribute("IsFighting",true)
      send(p,{Type="Fighting",Active=true,CombatType=sessions[p].CombatType,Stage=n,WallIndex=wallHit and Wall.GetCurrentIndexForStage(p,n) or nil})
      if enemyHit and not wallHit and Wall.Config[n] then
@@ -1056,7 +1055,7 @@ local function updateCombat(p,manualRequest)
       if bs.HP<=0 then
        bs.Completed=true
        defeat(p,n)
-       return true,"Defeated"
+       return false,"Defeated"
       end
       if BossAttack then BossAttack.Start(p,e,n,now) end
       state(p).Gauges[n]=bs.HP
@@ -1065,28 +1064,23 @@ local function updateCombat(p,manualRequest)
      end
     end
     s=sessions[p]
-    if manualRequest then
-     if now-(lastManualAttack[p] or -math.huge)<AutoTapConfig.ManualAttackCooldown or s.Pending>0 then return false,"Cooldown" end
-     lastManualAttack[p]=now
+    local function dispatchHit(hit,lead,animate)
+     if manualRequest then animate(0);return hit() end
+     local accepted,delay=ActionTiming.ScheduleAutomatic(p,lead,hit,function()s.Pending-=1 end)
+     if accepted then s.Pending+=1;animate(delay) end
+     return accepted
     end
-    if manualRequest or (auto and (startedWall or startedEnemy or now-s.LastTick>=Boss.AttackInterval)) then
-     s.LastTick=now
+    if manualRequest or auto then
      local power=initialWallPower or Strength.GetStrength(p)
      if enemyHit and not wallHit and Wall.Config[n] then
       local bs=Boss.Get(p)
-      if bs and not bs.Completed then
+      if bs and not bs.Completed and bs.BattleDamage>0 then
        local ps=state(p)
-       ps.AttackSequence=(ps.AttackSequence or 0)+1
-       -- Auto retains its existing hit delay; manual applies the accepted hit immediately.
-       local attackId=ps.AttackSequence
-       if worldId==1 and n==2 and p:GetAttribute("TutorialCompleted")==false then
-        PlayerData.CompleteTutorial(p)
-       end
-       send(p,{Type="CombatAttack",Id=attackId,Stage=n,SpawnGeneration=worldId==1 and e:GetAttribute("SpawnGeneration") or nil,Attack=bs.Attacks+1,Duration=Boss.AttackDuration,HitDelay=manualRequest and 0 or MINIBOSS_DAMAGE_DELAY,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
+       -- Keep automatic windup/contact validation, but land on the shared due time.
+       local attackId
+
        local spawnGeneration=e:GetAttribute("SpawnGeneration")
-       s.Pending+=1
        local function applyBossHit()
-        s.Pending-=1
         if not inWorld(p) or p.Parent~=Players or sessions[p]~=s or Stage.GetCurrentStageNumber(p)~=n or state(p)~=ps or p.Character~=ch or not hum or hum.Health<=0 then return end
         if s.CombatType~="MiniBoss" or s.Instance~=e or getEnemy(p,n,false)~=e or not e.Parent or ps.Defeated[n] or Boss.Get(p)~=bs or bs.Completed then return end
         if e:GetAttribute("SpawnGeneration")~=spawnGeneration then return end
@@ -1095,7 +1089,8 @@ local function updateCombat(p,manualRequest)
          or not bossContact(ch,e) then return end
         local hpBefore=bs.HP
         local status,hitState=Boss.Attack(p)
-        if hitState~=bs or status=="Inactive" or status=="Complete" then return end
+        if hitState~=bs or status=="Inactive" or status=="Complete" or bs.HP>=hpBefore then return false end
+        ActionTiming.RecordSuccess(p,manualRequest==true)
         ps.Gauges[n]=bs.HP
         -- Presentation evidence from the accepted hit; damage math remains in Boss.Attack.
         send(p,{Type="BossGauge",Stage=n,Current=bs.HP,Max=bs.MaxHP,Attack=bs.Attacks,
@@ -1112,23 +1107,25 @@ local function updateCombat(p,manualRequest)
          send(p,{Type="Fighting",Active=false})
          returnToLobbyAfterLoss(p)
         end
+        return true
        end
-       if manualRequest then applyBossHit() else task.delay(MINIBOSS_DAMAGE_DELAY,applyBossHit) end
+       performed=dispatchHit(applyBossHit,MINIBOSS_DAMAGE_DELAY,function(delay)
+        ps.AttackSequence=(ps.AttackSequence or 0)+1;attackId=ps.AttackSequence
+        if worldId==1 and n==2 and p:GetAttribute("TutorialCompleted")==false then PlayerData.CompleteTutorial(p) end
+        send(p,{Type="CombatAttack",Id=attackId,Stage=n,SpawnGeneration=worldId==1 and e:GetAttribute("SpawnGeneration") or nil,Attack=bs.Attacks+1,Duration=Boss.AttackDuration,HitDelay=delay,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
+       end)
       end
      elseif s.CombatType=="Wall" and power>0 then
-      if manualRequest or not startedWall then
-       local ps=state(p);ps.AttackSequence=(ps.AttackSequence or 0)+1
-       send(p,{Type="CombatAttack",Id=ps.AttackSequence,Stage=n,Duration=Boss.AttackDuration,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
-      end
       local attackPlayer,attackStage,attackPower=p,n,power
-      s.Pending+=1
       local function applyWallHit()
-       s.Pending-=1
        if not inWorld(attackPlayer) or attackPlayer.Parent~=Players or sessions[attackPlayer]~=s or Stage.GetCurrentStageNumber(attackPlayer)~=attackStage or attackPlayer.Character~=ch or not hum or hum.Health<=0 then return end
        -- Carry spans this Stage's walls; final-wall surplus is never applied to the Boss.
        local wallCount=Wall.GetWallCount(attackStage)
        local firstIndex=Wall.GetCurrentIndexForStage(attackPlayer,attackStage)
+       local hpBefore=Wall.GetGaugeForStage(attackPlayer,attackStage,firstIndex)
        local cleared,nextIndex=Wall.ApplyDamageForStage(attackPlayer,attackStage,attackPower)
+       if #cleared==0 and Wall.GetGaugeForStage(attackPlayer,attackStage,firstIndex)>=hpBefore then return false end
+       ActionTiming.RecordSuccess(p,manualRequest==true)
        if firstIndex==1 and #cleared==wallCount then
         Speed.BeginTimedBoost(attackPlayer,worldId,"WallSweep")
        end
@@ -1158,8 +1155,12 @@ local function updateCombat(p,manualRequest)
          send(attackPlayer,{Type="Fighting",Active=false})
         end
        end
+       return true
       end
-      if manualRequest then applyWallHit() else task.delay(WALL_DAMAGE_DELAY,applyWallHit) end
+      performed=dispatchHit(applyWallHit,WALL_DAMAGE_DELAY,function(delay)
+       local ps=state(p);ps.AttackSequence=(ps.AttackSequence or 0)+1
+       send(p,{Type="CombatAttack",Id=ps.AttackSequence,Stage=n,Duration=Boss.AttackDuration,HitDelay=delay,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
+      end)
      end
     end
    elseif sessions[p] and sessions[p].Pending==0 and not retainBossSession then
@@ -1169,12 +1170,16 @@ local function updateCombat(p,manualRequest)
     p:SetAttribute("IsFighting",false)
     send(p,{Type="Fighting",Active=false})
    end
- return target~=nil,target and "Combat" or "NoCombat"
+ return performed==true,target and "Combat" or "NoCombat"
 end
 -- Same contact, damage, carry, result and progression path as automatic attacks.
 function M.TryManualAttack(p)
  if not M.IsReady() then return false,"NotReady" end
  return updateCombat(p,true)
+end
+function M.TryAutomaticAttack(p)
+ if not M.IsReady() then return false,"NotReady" end
+ return updateCombat(p,false)
 end
 local function monitor()
  token+=1 local t=token task.spawn(function() while t==token do
@@ -1264,6 +1269,7 @@ function M.Activate(p)
  M.SendState(p)
 end
 function M.Deactivate(p)
+ ActionTiming.CancelAutomatic(p)
  Speed.ClearTransitionBoost(p,worldId)
  if RunInventory and states[p] then RunInventory.SetActive(p,states[p].RunInventoryId,false) end
  if BossAttack then BossAttack.Stop(p,true) end
@@ -1285,7 +1291,7 @@ Players.PlayerRemoving:Connect(function(p)
  local observer=deathObservers[p]
  if observer and observer.Connection then observer.Connection:Disconnect() end
  deathObservers[p]=nil
- cleanupPlayerWallCombatTriggers(p) removeEnemy(p) Boss.Reset(p) enemyGeneration[p]=nil runRevisions[p]=nil messageSequences[p]=nil states[p]=nil sessions[p]=nil recognizedPlayers[p]=nil watched[p]=nil lossRespawns[p]=nil lastManualAttack[p]=nil end)
+ cleanupPlayerWallCombatTriggers(p) removeEnemy(p) Boss.Reset(p) enemyGeneration[p]=nil runRevisions[p]=nil messageSequences[p]=nil states[p]=nil sessions[p]=nil recognizedPlayers[p]=nil watched[p]=nil lossRespawns[p]=nil end)
 
  contexts[worldId]=M
  return M
@@ -1294,7 +1300,7 @@ local default=forWorld(1)
 local API={ForWorld=forWorld}
 setmetatable(API,{__index=default})
 -- Existing player-facing callers select the active world; World1-only data APIs stay compatible.
-for _,name in {"TryManualAttack","SendState","InitializePlayer","ResetPlayer","GetPlayerState","GetGauge"} do
+for _,name in {"TryManualAttack","TryAutomaticAttack","SendState","InitializePlayer","ResetPlayer","GetPlayerState","GetGauge"} do
  API[name]=function(player,...)
   return forWorld(player:GetAttribute("CurrentWorld")==2 and 2 or 1)[name](player,...)
  end

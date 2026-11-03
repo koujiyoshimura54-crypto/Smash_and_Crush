@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-03 — Manual actions while Auto is enabled
+
+Manual gameplay taps remain available with Auto ON. Successful normal Strength, wall and Player-to-Boss actions share one server minimum interval of0.2s. Each success replaces the next-auto deadline: manual +0.3s, automatic +0.5s. Auto OFF suppresses automatic actions only; rejected input does not advance either timestamp. The existing heartbeat now services the automatic normal-gain deadline without requiring movement or accumulating missed walking ticks. One action routes to training or one combat path. Treadmill and Boss-to-Player clocks remain separate. [Evidence](../reports/AutoManualCadence_20261103.md).
+
 ## 2026-11-03 — Dumbbell gain follows the Lobby
 
 In both Worlds, equipped Dumbbell Strength addition applies to existing live gains inside the server Training Lobby footprint, including red carpets and treadmills. Outside the Lobby it contributes zero without unequipping; returning restores it. Treadmill multipliers retain their original effect on the complete gain. This supersedes earlier treadmill-only Dumbbell applicability. Purchase/offline reference snapshots remain location-independent. [Verification](../reports/DumbbellLobby_20261103.md).

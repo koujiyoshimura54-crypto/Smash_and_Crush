@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Auto ON manual actions and one shared cadence
+
+Six live Sources now accept manual gameplay input with Auto ON and use a common server0.2s success floor, manual→auto0.3s and auto→auto0.5s. Native two-client tests passed both Worlds' Strength/wall/Boss routes, rejections, contact/death/re-fight, peer independence, GUI exclusion and separate treadmill ticks. Fixed one deferred-notification reset race; focused fixture retries completed the remaining cases.476 Sources/74 SoundIds preserved after cleanup; unsaved Edit retained. [Timings and limits](../reports/AutoManualCadence_20261103.md).
+
 ## 2026-11-03 — Dumbbell Lobby gain correction
 
 One live Source now gates Dumbbell additions on the existing server Lobby bounds instead of treadmill-source arguments. Native two-client isolated Play passed manual, walking/Auto, treadmill, Battle/return, death and World-travel checks in both Worlds; only three fixture-affected cases required a focused retry. Reference rates and all other gain factors remain unchanged. Helpers removed;475 Sources and74 SoundIds preserved; unsaved Edit retained. [Evidence and limits](../reports/DumbbellLobby_20261103.md).

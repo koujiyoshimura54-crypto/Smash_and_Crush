@@ -1,3 +1,7 @@
+# 2026-11-03 — Accept manual actions with Auto ON
+
+Removed all three active Auto-ON manual rejection gates. Shared successful-action timing covers normal Strength, wall and Player-to-Boss hits; superseded automatic reservations are canceled. Existing damage, contact checks, treadmill loop and Boss-to-Player behavior remain. Native isolated measurements and cleanup recorded. [Evidence](../reports/AutoManualCadence_20261103.md).
+
 # 2026-11-03 — Restore equipped Dumbbell gains throughout the Lobby
 
 Changed only StrengthManager's Dumbbell applicability gate to existing server Lobby geometry. Both Worlds now include it during normal Lobby gains and treadmill ticks, exclude it in Battle, and restore it on return. Native isolated two-client measurements and cleanup passed; purchase/offline references unchanged. [Record](../reports/DumbbellLobby_20261103.md).

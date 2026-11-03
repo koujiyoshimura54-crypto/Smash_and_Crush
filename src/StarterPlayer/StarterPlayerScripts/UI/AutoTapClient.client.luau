@@ -74,9 +74,9 @@ local function interactiveAt(position)
 end
 local lastSent=-math.huge
 local function tap(position,processed)
- if processed or player:GetAttribute("AutoTapEnabled")~=false or interactiveAt(position) then return end
+ if processed or interactiveAt(position) then return end
  local now=os.clock()
- if now-lastSent<math.min(config.ManualTapCooldown,config.ManualAttackCooldown) then return end
+ if now-lastSent<config.MinimumInterval then return end
  lastSent=now
  -- The server chooses training versus the current contact combat target.
  remote:FireServer("Tap")

@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-03 — Shared Player action cadence
+
+AutoTapConfig owns MinimumInterval0.2, AfterManualDelay0.3 and AutoInterval0.5 seconds. Apply these to successful ordinary Strength awards, wall hits and Player-to-Boss hits, not independently per input source. Existing single-action gain/damage arithmetic and modifiers are unchanged. Automatic combat windup leads into the due time; manual success cancels its superseded reservation. Boss-to-Player damage/timing and treadmill periods/multipliers remain unchanged. [Native timings](../reports/AutoManualCadence_20261103.md).
+
 ## 2026-11-03 — Lobby Dumbbell correction
 
 Only the applicability gate changes: live Dumbbell addition is the equipped base bonus inside the current World's Training Lobby footprint, otherwise zero. It is added once per existing gain tick before the existing multipliers, independently of treadmill boarding. Base bonuses, all other equipment factors, treadmill values and input cadence are unchanged. Fixed rewards and the raw equipment/reference-rate APIs are unchanged. [Measured examples](../reports/DumbbellLobby_20261103.md).
