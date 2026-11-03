@@ -674,7 +674,11 @@ function PetClient.busy()
 	return pending or Player:GetAttribute("PetSavePending")==true
 end
 
-local eggTutorial
+local eggTutorial,petMergeTutorial
+function PetClient.mergeTutorialState()
+ if stateGeneration~=(Player:GetAttribute("PetViewGeneration") or 0) then return nil end
+ return petMergeTutorial
+end
 function PetClient.tutorialState()
  if stateGeneration~=(Player:GetAttribute("PetViewGeneration") or 0) then return nil end
  return eggTutorial
@@ -691,6 +695,7 @@ local function accept(response)
 	stateGeneration=generation
 	playerData=state
  eggTutorial=require(ReplicatedStorage.Modules.EggPetTutorialState).Normalize(response.tutorial,false)
+ petMergeTutorial=require(ReplicatedStorage.Modules.PetMergeTutorialState).Normalize(response.mergeTutorial,false)
 	rebuild()
  stateChanged:Fire(state)
 end

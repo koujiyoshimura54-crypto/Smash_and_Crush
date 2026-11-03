@@ -1,0 +1,868 @@
+{
+  "BaselineCommit": "1592c61",
+  "PlaceId": 126576845524886,
+  "RuntimeTests": [
+    {
+      "Case": "OneAvailable",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"View\":{\"Tab\":\"Item\",\"SelectedCount\":0,\"CloseRevision\":0,\"Pending\":false,\"Open\":false,\"Valid\":false},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Arrow\":\"nil\",\"Step\":\"WaitingForPets\",\"Pets\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Grey Cat\"}},\"Focus\":{\"Y\":175.25,\"H\":155.5,\"W\":312.75,\"X\":538.625},\"FocusVisible\":false,\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"nil\",\"OreStep\":\"WaitingForOres\",\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"}],\"Hatch\":false,\"EggStep\":\"WaitingForWin\",\"Outline\":0.02500000037252903,\"Grow\":1.18}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "TwoCopiesBasicTab",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"View\":{\"Tab\":\"Item\",\"SelectedCount\":0,\"CloseRevision\":0,\"Pending\":false,\"Open\":true,\"Valid\":false},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Arrow\":\"nil\",\"Step\":\"ChoosePet\",\"Pets\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Grey Cat\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"Focus\":{\"Y\":106.72798156738281,\"H\":48.14400100708008,\"W\":118.94397735595703,\"X\":393.12799072265627},\"Target\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Pet\",\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"PetMergeTutorialGui\",\"Grow\":1.18,\"Message\":\"Select Pets.\",\"OreStep\":\"WaitingForOres\",\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"}],\"Hatch\":false,\"Outline\":0.02500000037252903,\"EggStep\":\"WaitingForDisplay\",\"MessageRect\":{\"Y\":42.25,\"H\":27.5,\"W\":478.75,\"X\":455.625},\"FocusVisible\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "SelectionAndDrag",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Removed\":{\"View\":{\"Tab\":\"Pet\",\"SelectedCount\":1,\"RepeatMaterial\":true,\"CloseRevision\":0,\"Valid\":false,\"Pending\":false,\"MaterialTarget\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Materials.Grey Cat\",\"Open\":true},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Arrow\":\"nil\",\"Step\":\"AddPets\",\"Pets\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Grey Cat\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"Focus\":{\"Y\":203.61639404296876,\"H\":110.50953674316406,\"W\":127.93182373046875,\"X\":344.1640930175781},\"Target\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Materials.Grey Cat\",\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"PetMergeTutorialGui\",\"Grow\":1.18,\"Message\":\"Add one more Pet.\",\"OreStep\":\"WaitingForOres\",\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":296.6000061035156},\"Name\":\"Grey Cat\",\"Order\":1,\"Points\":10,\"Selected\":1}],\"Hatch\":false,\"Outline\":0.02500000037252903,\"EggStep\":\"WaitingForDisplay\",\"MessageRect\":{\"Y\":42.25,\"H\":27.5,\"W\":478.75,\"X\":455.625},\"FocusVisible\":true},\"Two\":{\"View\":{\"Tab\":\"Pet\",\"SelectedCount\":2,\"CloseRevision\":0,\"Pending\":false,\"Open\":true,\"Valid\":true},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Arrow\":\"nil\",\"Step\":\"Merge\",\"Pets\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Grey Cat\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"Focus\":{\"Y\":451.2216491699219,\"H\":64.38091278076172,\"W\":225.25204467773438,\"X\":808.7064208984375},\"Target\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Merge\",\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"PetMergeTutorialGui\",\"Grow\":1.18,\"Message\":\"Merge your Pets.\",\"OreStep\":\"WaitingForOres\",\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":296.6000061035156},\"Name\":\"Grey Cat\",\"Order\":1,\"Points\":10,\"Selected\":2}],\"Hatch\":false,\"Outline\":0.02500000037252903,\"EggStep\":\"WaitingForDisplay\",\"MessageRect\":{\"Y\":42.25,\"H\":27.5,\"W\":478.75,\"X\":455.625},\"FocusVisible\":true},\"One\":{\"View\":{\"Tab\":\"Pet\",\"SelectedCount\":1,\"RepeatMaterial\":true,\"CloseRevision\":0,\"Valid\":false,\"Pending\":false,\"MaterialTarget\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Materials.Grey Cat\",\"Open\":true},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Arrow\":\"nil\",\"Step\":\"AddPets\",\"Pets\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Grey Cat\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"Focus\":{\"Y\":173.54396057128907,\"H\":116.11197662353516,\"W\":116.11201477050781,\"X\":287.7440490722656},\"Target\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Materials.Grey Cat\",\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"PetMergeTutorialGui\",\"Grow\":1.18,\"Message\":\"Add one more Pet.\",\"OreStep\":\"WaitingForOres\",\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":296.6000061035156},\"Name\":\"Grey Cat\",\"Order\":1,\"Points\":10,\"Selected\":1}],\"Hatch\":false,\"Outline\":0.02500000037252903,\"EggStep\":\"WaitingForDisplay\",\"MessageRect\":{\"Y\":42.249977111816409,\"H\":27.500045776367189,\"W\":478.75079345703127,\"X\":455.6246032714844},\"FocusVisible\":true},\"Blockers\":[],\"Ready\":{\"View\":{\"Tab\":\"Pet\",\"SelectedCount\":2,\"CloseRevision\":0,\"Pending\":false,\"Open\":true,\"Valid\":true},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Arrow\":\"nil\",\"Step\":\"Merge\",\"Pets\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Grey Cat\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"Focus\":{\"Y\":454.68701171875,\"H\":63.735328674316409,\"W\":226.61410522460938,\"X\":815.2079467773438},\"Target\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Merge\",\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"PetMergeTutorialGui\",\"Grow\":1.18,\"Message\":\"Merge your Pets.\",\"OreStep\":\"WaitingForOres\",\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":296.6000061035156},\"Name\":\"Grey Cat\",\"Order\":1,\"Points\":10,\"Selected\":2}],\"Hatch\":false,\"Outline\":0.02500000037252903,\"EggStep\":\"WaitingForDisplay\",\"MessageRect\":{\"Y\":42.25,\"H\":27.5,\"W\":478.75,\"X\":455.625},\"FocusVisible\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "NormalMergeHatchCompletion",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"View\":{\"Tab\":\"Pet\",\"SelectedCount\":0,\"RepeatMaterial\":false,\"CloseRevision\":0,\"Valid\":false,\"Pending\":false,\"MaterialTarget\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Materials.Sheep\",\"Open\":true},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":true,\"ResultPetId\":\"9a1080ef-9de0-42b4-b7d0-1a903f2b3a5d\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"83c29e9f-d57b-4042-9c69-5263d1fbb4c0\"},\"Arrow\":\"nil\",\"Step\":\"Complete\",\"Pets\":{\"LastRequestId\":\"83c29e9f-d57b-4042-9c69-5263d1fbb4c0\",\"Revision\":1,\"Version\":1,\"Owned\":{\"9a1080ef-9de0-42b4-b7d0-1a903f2b3a5d\":\"Sheep\"},\"LastResults\":[{\"duplicate\":false,\"id\":\"9a1080ef-9de0-42b4-b7d0-1a903f2b3a5d\",\"percent\":15,\"pet\":\"Sheep\",\"bonus\":0}],\"LastMergeEgg\":\"Basic\",\"Equipped\":[\"\",\"\",\"\"],\"Discovered\":{\"Sheep\":true,\"Grey Cat\":true}},\"Focus\":{\"Y\":483.73443603515627,\"H\":58.32380676269531,\"W\":238.0311279296875,\"X\":869.7051391601563},\"FocusVisible\":false,\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"PetMergeTutorialGui\",\"Message\":\"Pet merge complete!\",\"OreStep\":\"WaitingForOres\",\"Outline\":0.02500000037252903,\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":296.6000061035156},\"Name\":\"Sheep\",\"Order\":1,\"Points\":20,\"Selected\":0}],\"Hatch\":false,\"EggStep\":\"WaitingForDisplay\",\"MessageRect\":{\"Y\":42.25,\"H\":27.5,\"W\":478.75,\"X\":455.625},\"Grow\":1.18}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "CompletedMemoryReload",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"Tutorial\":{\"Completed\":true,\"ResultPetId\":\"9a1080ef-9de0-42b4-b7d0-1a903f2b3a5d\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"83c29e9f-d57b-4042-9c69-5263d1fbb4c0\"},\"Generation\":4,\"Pets\":{\"LastRequestId\":\"83c29e9f-d57b-4042-9c69-5263d1fbb4c0\",\"Revision\":1,\"Version\":1,\"Owned\":{\"9a1080ef-9de0-42b4-b7d0-1a903f2b3a5d\":\"Sheep\"},\"LastResults\":[{\"duplicate\":false,\"id\":\"9a1080ef-9de0-42b4-b7d0-1a903f2b3a5d\",\"percent\":15,\"pet\":\"Sheep\",\"bonus\":0}],\"LastMergeEgg\":\"Basic\",\"Equipped\":[\"\",\"\",\"\"],\"Discovered\":{\"Sheep\":true,\"Grey Cat\":true}},\"Pending\":false,\"Win\":0,\"World\":1}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "CompletedReloadNoPrompt",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Tutorial\":{\"Completed\":true,\"ResultPetId\":\"9a1080ef-9de0-42b4-b7d0-1a903f2b3a5d\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"83c29e9f-d57b-4042-9c69-5263d1fbb4c0\"},\"Step\":\"Complete\",\"Focus\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "TwoEquippedPrepared",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "TwoEquipped",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Eligible\":false,\"EggStep\":\"WaitingForWin\",\"Step\":\"WaitingForPets\",\"Available\":0}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OneProtectedPrepared",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OneProtected",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Eligible\":false,\"EggStep\":\"WaitingForWin\",\"Step\":\"WaitingForPets\",\"Available\":1}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "DifferentSpeciesPrepared",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "DifferentSpecies",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Eligible\":true,\"EggStep\":\"WaitingForWin\",\"Step\":\"GoToMerge\",\"Available\":2}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "DifferentSpeciesEnter",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "DifferentSpeciesValid",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"View\":{\"Tab\":\"Pet\",\"SelectedCount\":2,\"CloseRevision\":0,\"Pending\":false,\"Open\":true,\"Valid\":true},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Arrow\":\"nil\",\"Step\":\"Merge\",\"Pets\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Dog\":true,\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Dog\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"Focus\":{\"Y\":473.299560546875,\"H\":57.74505615234375,\"W\":234.84239196777345,\"X\":857.3663330078125},\"Target\":\"Players.<local>.PlayerGui.MergeShopGui.MergeShopPanel.Body.Merge\",\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"PetMergeTutorialGui\",\"Grow\":1.18,\"Message\":\"Merge your Pets.\",\"OreStep\":\"WaitingForOres\",\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":296.6000061035156},\"Name\":\"Dog\",\"Order\":1,\"Points\":10,\"Selected\":1},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":399.8000183105469},\"Name\":\"Grey Cat\",\"Order\":2,\"Points\":10,\"Selected\":1}],\"Hatch\":false,\"Outline\":0.02500000037252903,\"EggStep\":\"WaitingForDisplay\",\"MessageRect\":{\"Y\":42.25,\"H\":27.5,\"W\":478.75,\"X\":455.625},\"FocusVisible\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "SelectedMaterialEquipped",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"View\":{\"Tab\":\"Pet\",\"SelectedCount\":1,\"CloseRevision\":0,\"Pending\":false,\"Open\":true,\"Valid\":false},\"Shadow\":0.25,\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Arrow\":\"nil\",\"Step\":\"WaitingForPets\",\"Pets\":{\"Revision\":1,\"Version\":1,\"LastRequestId\":\"4929f98d-4ca9-4638-843e-820c976d266c\",\"LastResults\":[],\"Discovered\":{\"Dog\":true,\"Grey Cat\":true},\"Equipped\":[\"00000000-0000-0000-0000-000000000001\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Dog\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"Focus\":{\"Y\":481.33404541015627,\"H\":57.95549011230469,\"W\":237.3826446533203,\"X\":867.5416259765625},\"FocusVisible\":false,\"Busy\":false,\"Root\":{\"Y\":12,\"H\":540,\"W\":823.2000122070313,\"X\":283.3999938964844},\"Owner\":\"nil\",\"OreStep\":\"WaitingForOres\",\"Cards\":[{\"Order\":0,\"Rect\":{\"Y\":206.39999389648438,\"H\":30.000001907348634,\"W\":304.8000183105469,\"X\":296.5999755859375},\"Name\":\"Empty\"},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":296.6000061035156},\"Name\":\"Dog\",\"Order\":1,\"Points\":10,\"Selected\":0},{\"Rect\":{\"Y\":182.40000915527345,\"H\":98.4000015258789,\"W\":98.4000015258789,\"X\":399.8000183105469},\"Name\":\"Grey Cat\",\"Order\":2,\"Points\":10,\"Selected\":1}],\"Hatch\":false,\"EggStep\":\"WaitingForDisplay\",\"Outline\":0.02500000037252903,\"Grow\":1.18}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "ExplicitClose",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Open\":false,\"Step\":\"WaitingForDisplay\",\"Focus\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "Reapproach",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "ReopenedNormally",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Step\":\"WaitingForDisplay\",\"Open\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "UnfinishedReload",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "UnfinishedReloadResumed",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Step\":\"WaitingForDisplay\",\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "CloseWithEligibleMaterials",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Remained\":{\"Step\":\"Dismissed\",\"Open\":false},\"Closed\":{\"Step\":\"Dismissed\",\"Open\":false}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "ReapproachAndNotification",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Notification\":{\"Step\":\"WaitingForDisplay\",\"Focus\":false},\"Reopened\":{\"Step\":\"ChoosePet\",\"Open\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "ActualDeathRespawn",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "RespawnState",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForWin\",\"Open\":false,\"Arrow\":\"307.8357238769531, 11.250000953674316, 37.68581008911133\",\"Completed\":false,\"Owner\":\"PetMergeTutorialGui\",\"Step\":\"GoToMerge\",\"Ore\":\"WaitingForOres\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "PreparedWorld2",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "World2Destination",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForLobby\",\"Open\":false,\"Arrow\":\"6.02763557434082, 9.250000953674316, 1932.2628173828125\",\"Completed\":false,\"Owner\":\"PetMergeTutorialGui\",\"Step\":\"GoToMerge\",\"Ore\":\"WaitingForOres\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "World2Facility",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "World2MergeOpened",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForLobby\",\"Open\":true,\"Arrow\":\"nil\",\"Completed\":false,\"Owner\":\"PetMergeTutorialGui\",\"Step\":\"ChoosePet\",\"Ore\":\"WaitingForOres\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "Outside",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OutsidePaused",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForLobby\",\"Open\":false,\"Arrow\":\"nil\",\"Completed\":false,\"Owner\":\"nil\",\"Step\":\"WaitingForLobby\",\"Ore\":\"Waiting\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "ReturnBusy",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "BusyPaused",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForDisplay\",\"Open\":false,\"Arrow\":\"nil\",\"Completed\":false,\"Owner\":\"nil\",\"Step\":\"WaitingForDisplay\",\"Ore\":\"Waiting\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "ReturnEnded",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "ReturnResume",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForWin\",\"Open\":false,\"Arrow\":\"307.8357238769531, 11.250000953674316, 37.68581008911133\",\"Completed\":false,\"Owner\":\"PetMergeTutorialGui\",\"Step\":\"GoToMerge\",\"Ore\":\"WaitingForOres\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "FailBeforeRejectedPending",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":false,\"tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"generation\":15,\"state\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Dog\":true,\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Dog\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"pending\":true,\"mergeTutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"reason\":\"InventorySavePending\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "FailBeforeClientNoCompletion",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Completed\":false,\"Pending\":true,\"Step\":\"WaitingForTransaction\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "FailBeforeResolvedOnce",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Replay\":{\"ok\":true,\"tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"generation\":15,\"state\":{\"LastRequestId\":\"8a32de16-4884-4bbe-9240-af3785c93554\",\"Revision\":1,\"Version\":1,\"Owned\":{\"b45258f9-6cbb-4e84-87f7-0f6db9a7058f\":\"Lion\"},\"LastResults\":[{\"duplicate\":false,\"id\":\"b45258f9-6cbb-4e84-87f7-0f6db9a7058f\",\"percent\":25,\"pet\":\"Lion\",\"bonus\":0}],\"LastMergeEgg\":\"Rare\",\"Equipped\":[\"\",\"\",\"\"],\"Discovered\":{\"Dog\":true,\"Lion\":true,\"Grey Cat\":true}},\"pending\":false,\"mergeTutorial\":{\"Completed\":true,\"ResultPetId\":\"b45258f9-6cbb-4e84-87f7-0f6db9a7058f\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"8a32de16-4884-4bbe-9240-af3785c93554\"},\"reason\":\"AlreadyApplied\"},\"State\":{\"Egg\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"Tutorial\":{\"Completed\":true,\"ResultPetId\":\"b45258f9-6cbb-4e84-87f7-0f6db9a7058f\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"8a32de16-4884-4bbe-9240-af3785c93554\"},\"Generation\":15,\"Pets\":{\"LastRequestId\":\"8a32de16-4884-4bbe-9240-af3785c93554\",\"Revision\":1,\"Version\":1,\"Owned\":{\"b45258f9-6cbb-4e84-87f7-0f6db9a7058f\":\"Lion\"},\"LastResults\":[{\"duplicate\":false,\"id\":\"b45258f9-6cbb-4e84-87f7-0f6db9a7058f\",\"percent\":25,\"pet\":\"Lion\",\"bonus\":0}],\"LastMergeEgg\":\"Rare\",\"Equipped\":[\"\",\"\",\"\"],\"Discovered\":{\"Dog\":true,\"Lion\":true,\"Grey Cat\":true}},\"Pending\":false,\"Win\":0,\"World\":1},\"Resolved\":[true,\"PetSaved\"]}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "FailAfterRejectedPending",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":false,\"tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"generation\":17,\"state\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Dog\":true,\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Dog\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"pending\":false,\"mergeTutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"reason\":\"PleaseWait\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "FailAfterClientNoCompletion",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Completed\":false,\"Pending\":false,\"Step\":\"ChoosePet\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "FailAfterResolvedOnce",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Replay\":{\"ok\":true,\"tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"generation\":17,\"state\":{\"LastRequestId\":\"dca7e1b2-1e92-49b8-a080-39aa3162e2a1\",\"Revision\":1,\"Version\":1,\"Owned\":{\"894df10b-046b-4016-ba54-01e1b79f4b88\":\"Sheep\"},\"LastResults\":[{\"duplicate\":false,\"id\":\"894df10b-046b-4016-ba54-01e1b79f4b88\",\"percent\":15,\"pet\":\"Sheep\",\"bonus\":0}],\"LastMergeEgg\":\"Basic\",\"Equipped\":[\"\",\"\",\"\"],\"Discovered\":{\"Dog\":true,\"Sheep\":true,\"Grey Cat\":true}},\"pending\":false,\"mergeTutorial\":{\"Completed\":true,\"ResultPetId\":\"894df10b-046b-4016-ba54-01e1b79f4b88\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"dca7e1b2-1e92-49b8-a080-39aa3162e2a1\"},\"reason\":\"PetSaved\"},\"State\":{\"Egg\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"Tutorial\":{\"Completed\":true,\"ResultPetId\":\"894df10b-046b-4016-ba54-01e1b79f4b88\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"dca7e1b2-1e92-49b8-a080-39aa3162e2a1\"},\"Generation\":17,\"Pets\":{\"LastRequestId\":\"dca7e1b2-1e92-49b8-a080-39aa3162e2a1\",\"Revision\":1,\"Version\":1,\"Owned\":{\"894df10b-046b-4016-ba54-01e1b79f4b88\":\"Sheep\"},\"LastResults\":[{\"duplicate\":false,\"id\":\"894df10b-046b-4016-ba54-01e1b79f4b88\",\"percent\":15,\"pet\":\"Sheep\",\"bonus\":0}],\"LastMergeEgg\":\"Basic\",\"Equipped\":[\"\",\"\",\"\"],\"Discovered\":{\"Dog\":true,\"Sheep\":true,\"Grey Cat\":true}},\"Pending\":false,\"Win\":0,\"World\":1},\"Resolved\":[false,\"NoPendingMutation\"]}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "InvalidGeneratedPetRejected",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[false,\"InvalidPetResult\"]"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "RememberPreResetRequest",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "ActualResetStaleServerRequest",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Replay\":{\"ok\":false,\"tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"generation\":20,\"state\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":[],\"Equipped\":[\"\",\"\",\"\"],\"Owned\":[]},\"pending\":false,\"mergeTutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"reason\":\"PetStateChanged\"},\"State\":{\"Egg\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Generation\":20,\"Pets\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":[],\"Equipped\":[\"\",\"\",\"\"],\"Owned\":[]},\"Pending\":false,\"Win\":0,\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "AckLossActuallyPending",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":false,\"tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"generation\":22,\"state\":{\"Revision\":0,\"Version\":1,\"LastRequestId\":\"\",\"LastResults\":[],\"Discovered\":{\"Dog\":true,\"Grey Cat\":true},\"Equipped\":[\"\",\"\",\"\"],\"Owned\":{\"00000000-0000-0000-0000-000000000001\":\"Dog\",\"00000000-0000-0000-0000-000000000002\":\"Grey Cat\"}},\"pending\":true,\"mergeTutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"reason\":\"InventorySavePending\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "AckLossNotYetAccepted",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Pending\":true,\"Step\":\"WaitingForTransaction\",\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "AckLossExactlyOnce",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Replay\":{\"ok\":true,\"tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"generation\":22,\"state\":{\"LastRequestId\":\"8e6dec62-b9ea-4798-a0b7-6a854cd8b10e\",\"Revision\":1,\"Version\":1,\"Owned\":{\"d0eb854c-9a05-4df0-96f9-b2aa0f9446c6\":\"Dog\"},\"LastResults\":[{\"duplicate\":false,\"id\":\"d0eb854c-9a05-4df0-96f9-b2aa0f9446c6\",\"percent\":25,\"pet\":\"Dog\",\"bonus\":0}],\"LastMergeEgg\":\"Basic\",\"Equipped\":[\"\",\"\",\"\"],\"Discovered\":{\"Dog\":true,\"Grey Cat\":true}},\"pending\":false,\"mergeTutorial\":{\"Completed\":true,\"ResultPetId\":\"d0eb854c-9a05-4df0-96f9-b2aa0f9446c6\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"8e6dec62-b9ea-4798-a0b7-6a854cd8b10e\"},\"reason\":\"AlreadyApplied\"},\"Resolved\":[true,\"PetSaved\"]}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "StaleClientSuccessRejectedAfterReset",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Step\":\"WaitingForPets\",\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "EarlyThreeMaterialSuccess",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"ok\":true,\"tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true},\"generation\":25,\"state\":{\"LastRequestId\":\"3bc8713d-e56c-4f2d-bd82-2d7f4172ec6e\",\"Revision\":1,\"Version\":1,\"Owned\":{\"66f20cf0-7c2f-4829-ab6b-7ccdceff64f9\":\"Giraffe\"},\"LastResults\":[{\"duplicate\":false,\"id\":\"66f20cf0-7c2f-4829-ab6b-7ccdceff64f9\",\"percent\":25,\"pet\":\"Giraffe\",\"bonus\":0}],\"LastMergeEgg\":\"Rare\",\"Equipped\":[\"\",\"\",\"\"],\"Discovered\":{\"Giraffe\":true,\"Dog\":true,\"Grey Cat\":true,\"Sheep\":true}},\"pending\":false,\"mergeTutorial\":{\"Completed\":true,\"ResultPetId\":\"66f20cf0-7c2f-4829-ab6b-7ccdceff64f9\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"3bc8713d-e56c-4f2d-bd82-2d7f4172ec6e\"},\"reason\":\"PetSaved\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "EarlySuccessNoGuide",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForLobby\",\"Open\":true,\"Completed\":true,\"Owner\":\"nil\",\"Step\":\"WaitingForLobby\",\"Ore\":\"Waiting\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "FloorCompleteAfterOwnMerge",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "EarlySuccessSkipsSteps",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForLobby\",\"Open\":true,\"Completed\":true,\"Owner\":\"nil\",\"Step\":\"WaitingForLobby\",\"Ore\":\"Waiting\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "EggPriorityPrepared",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "EggFirstOwner",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"GoToEgg\",\"Open\":false,\"Completed\":false,\"Owner\":\"EggPetTutorialGui\",\"Step\":\"WaitingForPets\",\"Ore\":\"WaitingForOres\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "SecondEligibleDuringEgg",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "PetMergeWaitsForEgg",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"GoToEgg\",\"Open\":false,\"Completed\":false,\"Owner\":\"EggPetTutorialGui\",\"Step\":\"WaitingForGuide\",\"Ore\":\"WaitingForOres\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "EggNormalPause",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "PetMergeAfterEggPause",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForWin\",\"Open\":false,\"Completed\":false,\"Owner\":\"PetMergeTutorialGui\",\"Step\":\"GoToMerge\",\"Ore\":\"WaitingForOres\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OreFirstPrepared",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OreFirstOwner",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForWin\",\"Open\":false,\"Completed\":false,\"Owner\":\"OreMergeTutorialGui\",\"Step\":\"WaitingForPets\",\"Ore\":\"GoToMerge\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "SecondEligibleDuringOre",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "PetMergeWaitsForOre",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForDisplay\",\"Open\":true,\"Completed\":false,\"Owner\":\"PetMergeTutorialGui\",\"Step\":\"ChoosePet\",\"Ore\":\"WaitingForGuide\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OreWithoutReloadSetup",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OreWithoutReloadOwner",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForWin\",\"Completed\":false,\"Owner\":\"OreMergeTutorialGui\",\"Step\":\"WaitingForPets\",\"Ore\":\"GoToMerge\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OreNotInterruptedByNormalEligibilityChange",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForWin\",\"Completed\":false,\"Owner\":\"OreMergeTutorialGui\",\"Step\":\"WaitingForGuide\",\"Ore\":\"GoToMerge\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OreFacilityEnter",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OreTabStillOwns",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForDisplay\",\"Completed\":false,\"Owner\":\"OreMergeTutorialGui\",\"Step\":\"WaitingForGuide\",\"Ore\":\"ChooseOre\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "OrdinaryOreSuccess",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"DumbbellCounts\":{\"NORMAL_01\":1},\"Sequence\":3,\"EquippedDumbbell\":\"\",\"Loaded\":true,\"Pending\":false,\"Journal\":{\"Id\":\"b8e97d45-f641-43f7-9e0d-af42dac85758\",\"ResultId\":\"NORMAL_01\",\"Sequence\":3,\"Signature\":\"MergeOre||ORE_001:2\"},\"Token\":\"83be1786-a0cf-4ff4-88ae-92d610720396\",\"Ores\":[],\"OreTutorial\":{\"Completed\":true,\"CompletionId\":\"b8e97d45-f641-43f7-9e0d-af42dac85758\",\"Version\":1,\"Eligible\":true},\"Win\":0,\"Generation\":33},\"Success\":true,\"Code\":\"Applied\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "Case": "PetMergeAfterOreComplete",
+      "Result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForDisplay\",\"Completed\":false,\"Owner\":\"PetMergeTutorialGui\",\"Step\":\"ChoosePet\",\"Ore\":\"Complete\"}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "Multiplayer": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Reports\":[{\"Passed\":true,\"Checks\":[\"authored outline survives Play\",\"authored shadow survives Play\",\"authored growth survives Play\",\"authored message survives Play\",\"ordinary selected two\",\"two consumed and one granted\",\"peer still owns both original copies\",\"own reset clears progress and presentation\",\"author values survive step changes\"]},{\"Passed\":true,\"Checks\":[\"authored outline survives Play\",\"authored shadow survives Play\",\"authored growth survives Play\",\"authored message survives Play\",\"peer merge did not alter own server\",\"peer merge did not alter own client\",\"peer reset did not alter own materials\",\"ordinary selected two\",\"two consumed and one granted\",\"own merge did not grant to reset peer\",\"author values survive step changes\"]}],\"States\":[{\"Pets\":{\"Revision\":0,\"Version\":1,\"LastResults\":[],\"Owned\":[],\"Discovered\":[],\"Equipped\":[\"\",\"\",\"\"],\"LastRequestId\":\"\"},\"Tutorial\":{\"Completed\":false,\"Version\":1,\"Eligible\":true},\"Win\":0},{\"Pets\":{\"LastMergeEgg\":\"Basic\",\"Revision\":1,\"Version\":1,\"LastResults\":[{\"duplicate\":false,\"id\":\"dd0fb8f2-2144-4e7f-9bff-019019c9a195\",\"percent\":6.5,\"pet\":\"Bear\",\"bonus\":0}],\"Owned\":{\"dd0fb8f2-2144-4e7f-9bff-019019c9a195\":\"Bear\"},\"Discovered\":{\"Dog\":true,\"Grey Cat\":true,\"Bear\":true},\"Equipped\":[\"\",\"\",\"\"],\"LastRequestId\":\"d2f45878-ac64-4a27-bb48-4c9151fcfbdf\"},\"Tutorial\":{\"Completed\":true,\"ResultPetId\":\"dd0fb8f2-2144-4e7f-9bff-019019c9a195\",\"Version\":1,\"Eligible\":true,\"RequestId\":\"d2f45878-ac64-4a27-bb48-4c9151fcfbdf\"},\"Win\":0}]}"
+      }
+    ],
+    "isError": false
+  },
+  "Integrity": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Hover\":0.15,\"GuiObjects\":24,\"Properties\":56566,\"Helpers\":[],\"Objects\":5566,\"Sources\":472,\"Running\":false,\"PlaceId\":126576845524886,\"Issues\":[]}"
+      }
+    ],
+    "isError": false
+  },
+  "Visual": {
+    "CapturedAndInspected": [
+      "World1 floor arrows",
+      "Pet tab",
+      "Grouped materials",
+      "Merge",
+      "Hatch",
+      "Sheep reveal",
+      "Completion",
+      "Scroll",
+      "Narrow430x606 material and Merge",
+      "Ore regression"
+    ],
+    "Narrow": "Native fixture container; no device preview",
+    "PhysicalInput": false
+  },
+  "Cohort": {
+    "LegacyEligible": false,
+    "Phase1CohortEligible": true,
+    "IDsAndEquipmentPreserved": true
+  },
+  "Exceptions": [
+    "Existing request cooldown required acknowledgement-loss retry",
+    "Memory reload resets Forge token; Ore priority retested by normal unequip",
+    "Initial narrow root-size attempt overridden by existing layout",
+    "Three helper _G context errors; native LocalScript fixture then succeeded"
+  ],
+  "Persistence": "Memory only; production data untouched"
+}

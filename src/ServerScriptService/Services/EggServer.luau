@@ -14,9 +14,13 @@ local function tutorial(player)
  local s=Data.Get(player)
  return s and s.Loaded and not s.OwnershipLost and require(RS.Modules.EggPetTutorialState).Normalize(s.Data.EggPetTutorial,false) or nil
 end
+local function mergeTutorial(player)
+ local s=Data.Get(player)
+ return s and s.Loaded and not s.OwnershipLost and require(RS.Modules.PetMergeTutorialState).Normalize(s.Data.PetMergeTutorial,s.Data.EggPetTutorial.Eligible) or nil
+end
 local function reply(player,ok,reason)
  local state,_,generation=Pets.state(player)
- return {ok=ok,reason=reason,state=state,generation=generation,tutorial=tutorial(player),pending=player:GetAttribute("PetSavePending")==true}
+ return {ok=ok,reason=reason,state=state,generation=generation,tutorial=tutorial(player),mergeTutorial=mergeTutorial(player),pending=player:GetAttribute("PetSavePending")==true}
 end
 local function open(player,name,button,id,revision,generation)
  if not Egg.isEgg(name) or not Egg.purchasable(name) then return false,"EggUnavailable" end
@@ -75,7 +79,7 @@ function M.request(player,action,id,revision,a,b,generation)
  if player.Parent~=Players then return {ok=false,reason="InvalidPlayer"} end
  if action=="GetState" then
   local state,reason,currentGeneration=Pets.state(player)
-  return {ok=state~=nil,reason=reason or "State",state=state,generation=currentGeneration,tutorial=tutorial(player),pending=player:GetAttribute("PetSavePending")==true}
+  return {ok=state~=nil,reason=reason or "State",state=state,generation=currentGeneration,tutorial=tutorial(player),mergeTutorial=mergeTutorial(player),pending=player:GetAttribute("PetSavePending")==true}
  end
  if action~="OpenEgg" and action~="Equip" and action~="BestEquip" and action~="Merge" then return reply(player,false,"InvalidAction") end
  if type(id)~="string" or #id~=36 or not id:match("^[%x%-]+$")

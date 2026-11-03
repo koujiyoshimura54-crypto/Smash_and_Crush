@@ -189,6 +189,32 @@ return function(ctx)
    MaterialTarget=material,RepeatMaterial=repeatMaterial,SelectedCount=selectedCount(),
    Valid=tab=='Ore' and not sellMode and oreState~=nil and OreMerge.Evaluate(oreSelected,oreState.Ores)~=nil}
  end
+ -- Read-only Pet target; eligibility and selection validation use the current authority snapshot.
+ function view:GetPetTutorialState()
+  local state=PetClient.state()
+  local material,repeatMaterial
+  if tab=='Pet' then
+   local best=-1;local a=list.AbsolutePosition;local b=a+list.AbsoluteSize
+   for _,entry in groups do
+    local card=materialCards[entry.Key];local unused=false
+    for _,id in entry.Ids do if not petSelected[id] and PetMerge.Eligible(state,id) then unused=true;break end end
+    if card and unused and not petPending and not PetClient.busy() then
+     local p=card.Root.AbsolutePosition;local q=p+card.Root.AbsoluteSize
+     local width=math.max(0,math.min(b.X,q.X)-math.max(a.X,p.X))
+     local height=math.max(0,math.min(b.Y,q.Y)-math.max(a.Y,p.Y))
+     if width>1 and height>1 then
+      local full=width*height/math.max(1,card.Root.AbsoluteSize.X*card.Root.AbsoluteSize.Y)>.95
+      local repeated=groupSelected(entry)>0
+      local score=(full and 2 or 0)+(repeated and 1 or 0)
+      if score>best then best=score;material=card.Root;repeatMaterial=repeated end
+     end
+    end
+   end
+  end
+  return {Open=shop.Visible,Tab=tab,CloseRevision=closeRevision,Pending=petPending or PetClient.busy(),
+   MaterialTarget=material,RepeatMaterial=repeatMaterial,SelectedCount=tab=='Pet' and #petIds() or 0,
+   Valid=tab=='Pet' and PetMerge.Evaluate(state,petIds())~=nil}
+ end
  local function rebuildGroups()
   groups={}
    if tab=='Item' then

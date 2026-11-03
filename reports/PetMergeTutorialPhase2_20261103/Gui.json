@@ -1,0 +1,790 @@
+[
+  {
+    "Properties": {
+      "Enabled": true,
+      "ScreenInsets": {
+        "Value": "Enum.ScreenInsets.DeviceSafeInsets",
+        "Type": "EnumItem"
+      },
+      "DisplayOrder": 45,
+      "ResetOnSpawn": false,
+      "IgnoreGuiInset": true,
+      "ZIndexBehavior": {
+        "Value": "Enum.ZIndexBehavior.Sibling",
+        "Type": "EnumItem"
+      },
+      "AutoLocalize": true
+    },
+    "Path": "StarterGui.PetMergeTutorialGui",
+    "Attributes": {
+      "PresentationVersion": 2,
+      "TutorialPhase": 2,
+      "CompletionSeconds": 2.5
+    },
+    "Class": "ScreenGui"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "Size": {
+        "Y": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "BorderSizePixel": 1,
+      "ClipsDescendants": false,
+      "Selectable": false,
+      "Rotation": 0,
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "ZIndex": 1,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": false,
+      "Size": {
+        "Y": {
+          "Scale": 0.25,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.22499999403953552,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "BorderSizePixel": 0,
+      "ClipsDescendants": false,
+      "Selectable": false,
+      "Rotation": 0,
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "ZIndex": 50,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "BackgroundColor3": {
+        "B": 1,
+        "Type": "Color3",
+        "G": 1,
+        "R": 1
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Highlight",
+    "Attributes": {
+      "MoveSeconds": 0.12,
+      "GuiGrow": 1.18,
+      "PaddingX": 0,
+      "PaddingY": 0
+    },
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "CornerRadius": {
+        "Scale": 0.10000000149011612,
+        "Type": "UDim",
+        "Offset": 0
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Highlight.Corner",
+    "Attributes": [],
+    "Class": "UICorner"
+  },
+  {
+    "Properties": {
+      "Thickness": 0.02500000037252903,
+      "Transparency": 0,
+      "StrokeSizingMode": {
+        "Value": "Enum.StrokeSizingMode.ScaledSize",
+        "Type": "EnumItem"
+      },
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "B": 1,
+        "Type": "Color3",
+        "G": 1,
+        "R": 1
+      },
+      "ZIndex": 2,
+      "LineJoinMode": {
+        "Value": "Enum.LineJoinMode.Round",
+        "Type": "EnumItem"
+      },
+      "Enabled": true
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Highlight.Outline",
+    "Attributes": [],
+    "Class": "UIStroke"
+  },
+  {
+    "Properties": {
+      "Thickness": 100,
+      "Transparency": 0.25,
+      "StrokeSizingMode": {
+        "Value": "Enum.StrokeSizingMode.ScaledSize",
+        "Type": "EnumItem"
+      },
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "B": 0,
+        "Type": "Color3",
+        "G": 0,
+        "R": 0
+      },
+      "ZIndex": 1,
+      "LineJoinMode": {
+        "Value": "Enum.LineJoinMode.Round",
+        "Type": "EnumItem"
+      },
+      "Enabled": true
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Highlight.Shadow",
+    "Attributes": [],
+    "Class": "UIStroke"
+  },
+  {
+    "Properties": {
+      "Visible": false,
+      "Size": {
+        "Y": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "BorderSizePixel": 0,
+      "ClipsDescendants": false,
+      "Selectable": false,
+      "Rotation": 0,
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "ZIndex": 60,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification",
+    "Attributes": {
+      "HeaderCenterX": 0.5,
+      "HeaderWidthScale": 0.7,
+      "ReferenceHeight": 720
+    },
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "Size": {
+        "Y": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "BorderSizePixel": 0,
+      "ClipsDescendants": false,
+      "Selectable": false,
+      "Rotation": 0,
+      "Transparency": 0,
+      "BackgroundTransparency": 0,
+      "Position": {
+        "Y": {
+          "Scale": 0.17000000178813934,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "ZIndex": 1,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "BackgroundColor3": {
+        "B": 0,
+        "Type": "Color3",
+        "G": 0,
+        "R": 0
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Shade",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Enabled": true,
+      "Transparency": {
+        "Keypoints": [
+          {
+            "Value": 0,
+            "Time": 0,
+            "Envelope": 0
+          },
+          {
+            "Value": 0,
+            "Time": 1,
+            "Envelope": 0
+          }
+        ],
+        "Type": "NumberSequence"
+      },
+      "Color": {
+        "Keypoints": [
+          {
+            "Value": {
+              "B": 1,
+              "Type": "Color3",
+              "G": 1,
+              "R": 1
+            },
+            "Time": 0
+          },
+          {
+            "Value": {
+              "B": 1,
+              "Type": "Color3",
+              "G": 1,
+              "R": 1
+            },
+            "Time": 1
+          }
+        ],
+        "Type": "ColorSequence"
+      },
+      "Scale": 1,
+      "Offset": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Rotation": 0
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Shade.UIGradient",
+    "Attributes": [],
+    "Class": "UIGradient"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "Size": {
+        "Y": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 1,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "BorderSizePixel": 0,
+      "ClipsDescendants": false,
+      "Selectable": false,
+      "Rotation": 0,
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.17000000178813934,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "ZIndex": 2,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Stack",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": false,
+      "Size": {
+        "Y": {
+          "Scale": 0.035999998450279236,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.7200000286102295,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AutoLocalize": true,
+      "Active": false,
+      "Interactable": false,
+      "BorderSizePixel": 0,
+      "ClipsDescendants": false,
+      "Selectable": false,
+      "Rotation": 0,
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "ZIndex": 1,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "BackgroundColor3": {
+        "B": 0.6470588445663452,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "R": 0.6392157077789307
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Stack.Line",
+    "Attributes": [],
+    "Class": "Frame"
+  },
+  {
+    "Properties": {
+      "Visible": true,
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/GothamSSm.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Heavy"
+      },
+      "Active": false,
+      "Selectable": false,
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BorderSizePixel": 0,
+      "Interactable": false,
+      "ZIndex": 3,
+      "AutomaticSize": {
+        "Value": "Enum.AutomaticSize.None",
+        "Type": "EnumItem"
+      },
+      "Size": {
+        "Y": {
+          "Scale": 1.25,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 1.25,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "TextColor3": {
+        "B": 1,
+        "Type": "Color3",
+        "G": 1,
+        "R": 1
+      },
+      "TextStrokeColor3": {
+        "B": 0,
+        "Type": "Color3",
+        "G": 0,
+        "R": 0
+      },
+      "AutoLocalize": false,
+      "ClipsDescendants": false,
+      "TextWrapped": true,
+      "Text": "",
+      "TextXAlignment": {
+        "Value": "Enum.TextXAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "TextSize": 40,
+      "Rotation": 0,
+      "Transparency": 1,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Y": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        },
+        "Type": "UDim2",
+        "X": {
+          "Scale": 0.5,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "TextTransparency": 0,
+      "TextYAlignment": {
+        "Value": "Enum.TextYAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "TextScaled": true,
+      "BackgroundColor3": {
+        "B": 0.11764705926179886,
+        "Type": "Color3",
+        "G": 0.09803921729326248,
+        "R": 0.09803921729326248
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Stack.Line.Message",
+    "Attributes": {
+      "HeaderInset": 4,
+      "HeaderWidthScale": 0.7,
+      "FigmaNodeId": "85:58",
+      "HeaderCenterX": 0.5,
+      "Gap": 10,
+      "MaxWidth": 500
+    },
+    "Class": "TextLabel"
+  },
+  {
+    "Properties": {
+      "Enabled": true,
+      "Transparency": {
+        "Keypoints": [
+          {
+            "Value": 0,
+            "Time": 0,
+            "Envelope": 0
+          },
+          {
+            "Value": 0,
+            "Time": 1,
+            "Envelope": 0
+          }
+        ],
+        "Type": "NumberSequence"
+      },
+      "Color": {
+        "Keypoints": [
+          {
+            "Value": {
+              "B": 0.6666666865348816,
+              "Type": "Color3",
+              "G": 0.9411764740943909,
+              "R": 1
+            },
+            "Time": 0
+          },
+          {
+            "Value": {
+              "B": 0,
+              "Type": "Color3",
+              "G": 0.6666666865348816,
+              "R": 1
+            },
+            "Time": 1
+          }
+        ],
+        "Type": "ColorSequence"
+      },
+      "Scale": 1,
+      "Offset": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Rotation": 90
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Stack.Line.Message.UIGradient",
+    "Attributes": [],
+    "Class": "UIGradient"
+  },
+  {
+    "Properties": {
+      "Scale": 1
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Stack.Line.Message.UIScale",
+    "Attributes": [],
+    "Class": "UIScale"
+  },
+  {
+    "Properties": {
+      "Thickness": 1.8899999856948853,
+      "Transparency": 0,
+      "StrokeSizingMode": {
+        "Value": "Enum.StrokeSizingMode.FixedSize",
+        "Type": "EnumItem"
+      },
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "B": 0,
+        "Type": "Color3",
+        "G": 0,
+        "R": 0
+      },
+      "ZIndex": 3,
+      "LineJoinMode": {
+        "Value": "Enum.LineJoinMode.Round",
+        "Type": "EnumItem"
+      },
+      "Enabled": true
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Stack.Line.Message.UIStroke",
+    "Attributes": [],
+    "Class": "UIStroke"
+  },
+  {
+    "Properties": {
+      "VerticalAlignment": {
+        "Value": "Enum.VerticalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "SortOrder": {
+        "Value": "Enum.SortOrder.LayoutOrder",
+        "Type": "EnumItem"
+      },
+      "HorizontalAlignment": {
+        "Value": "Enum.HorizontalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "Padding": {
+        "Scale": 0.019999999552965164,
+        "Type": "UDim",
+        "Offset": 0
+      },
+      "FillDirection": {
+        "Value": "Enum.FillDirection.Vertical",
+        "Type": "EnumItem"
+      }
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Canvas.Notification.Stack.UIListLayout",
+    "Attributes": [],
+    "Class": "UIListLayout"
+  },
+  {
+    "Properties": [],
+    "Path": "StarterGui.PetMergeTutorialGui.Messages",
+    "Attributes": [],
+    "Class": "Folder"
+  },
+  {
+    "Properties": {
+      "Value": "Add one more Pet."
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Messages.AddAnother",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Add 2 unequipped Pets."
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Messages.AddPets",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Select Pets."
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Messages.ChoosePet",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Pet merge complete!"
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Messages.Complete",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Go to Merge!"
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Messages.GoToMerge",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Merge your Pets."
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Messages.Merge",
+    "Attributes": [],
+    "Class": "StringValue"
+  },
+  {
+    "Properties": {
+      "Value": "Scroll to an available Pet."
+    },
+    "Path": "StarterGui.PetMergeTutorialGui.Messages.ScrollPets",
+    "Attributes": [],
+    "Class": "StringValue"
+  }
+]
