@@ -1,3 +1,7 @@
+# 2026-11-04 — Item/Dumbbell equipment onboarding and Best Equip
+
+Added server-confirmed fresh/reset equipment guidance, ordinary Dumbbell Best Equip and shared green styling. Preserved existing gameplay; native isolated UI/transaction checks and cleanup recorded. [Evidence](../reports/EquipmentTutorial_20261104.md).
+
 # 2026-11-03 — Dumbbell inventory and selected-type sale panel
 
 Measured the supplied reference; added the equipped showcase, count badges and one following sale popup using existing Win skins. Removed old quantity inputs/Owned text. Existing server sale protection and persistence are unchanged. Native trade/visual evidence and remaining differences: [record](../reports/DumbbellInventory_20261103.md).

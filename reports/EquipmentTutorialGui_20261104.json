@@ -1,0 +1,1300 @@
+{
+  "1": {
+    "Path": "StarterGui.ItemEquipTutorialGui",
+    "Class": "ScreenGui",
+    "Attributes": {
+      "PresentationVersion": 2,
+      "CompletionSeconds": 2.5,
+      "TutorialPhase": 5
+    },
+    "Properties": {
+      "Enabled": true,
+      "DisplayOrder": 45,
+      "ResetOnSpawn": false,
+      "IgnoreGuiInset": true,
+      "ZIndexBehavior": "Enum.ZIndexBehavior.Sibling"
+    }
+  },
+  "2": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": true,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 1,
+      "Size": {
+        "YScale": 1,
+        "XScale": 1,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "3": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Highlight",
+    "Class": "Frame",
+    "Attributes": {
+      "MoveSeconds": 0.12,
+      "GuiGrow": 1.18,
+      "PaddingX": 0,
+      "PaddingY": 0
+    },
+    "Properties": {
+      "Visible": false,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 1,
+        "Type": "Color3",
+        "G": 1,
+        "B": 1
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.5,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 50,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0.25,
+        "XScale": 0.22499999403953552,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "4": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Highlight.Outline",
+    "Class": "UIStroke",
+    "Attributes": [],
+    "Properties": {
+      "Thickness": 0.02500000037252903,
+      "Transparency": 0,
+      "StrokeSizingMode": "Enum.StrokeSizingMode.ScaledSize",
+      "Color": {
+        "R": 1,
+        "Type": "Color3",
+        "G": 1,
+        "B": 1
+      },
+      "Enabled": true,
+      "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual"
+    }
+  },
+  "5": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Highlight.Corner",
+    "Class": "UICorner",
+    "Attributes": [],
+    "Properties": {
+      "CornerRadius": {
+        "Scale": 0.10000000149011612,
+        "Type": "UDim",
+        "Offset": 0
+      }
+    }
+  },
+  "6": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Highlight.Shadow",
+    "Class": "UIStroke",
+    "Attributes": [],
+    "Properties": {
+      "Thickness": 100,
+      "Transparency": 0.25,
+      "StrokeSizingMode": "Enum.StrokeSizingMode.ScaledSize",
+      "Color": {
+        "R": 0,
+        "Type": "Color3",
+        "G": 0,
+        "B": 0
+      },
+      "Enabled": true,
+      "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual"
+    }
+  },
+  "7": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification",
+    "Class": "Frame",
+    "Attributes": {
+      "HeaderCenterX": 0.5,
+      "HeaderWidthScale": 0.7,
+      "ReferenceHeight": 720
+    },
+    "Properties": {
+      "Visible": false,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 60,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 1,
+        "XScale": 1,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "8": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Shade",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": true,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0,
+        "Type": "Color3",
+        "G": 0,
+        "B": 0
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 0,
+      "Position": {
+        "YScale": 0.17000000178813934,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "9": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Shade.UIGradient",
+    "Class": "UIGradient",
+    "Attributes": [],
+    "Properties": {
+      "Enabled": true,
+      "Transparency": {
+        "Keypoints": {
+          "1": {
+            "Value": 0,
+            "Time": 0,
+            "Envelope": 0
+          },
+          "2": {
+            "Value": 0,
+            "Time": 1,
+            "Envelope": 0
+          }
+        },
+        "Type": "NumberSequence"
+      },
+      "Color": {
+        "Keypoints": {
+          "1": {
+            "Value": {
+              "R": 1,
+              "Type": "Color3",
+              "G": 1,
+              "B": 1
+            },
+            "Time": 0
+          },
+          "2": {
+            "Value": {
+              "R": 1,
+              "Type": "Color3",
+              "G": 1,
+              "B": 1
+            },
+            "Time": 1
+          }
+        },
+        "Type": "ColorSequence"
+      },
+      "Offset": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Rotation": 0
+    }
+  },
+  "10": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Stack",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": true,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.17000000178813934,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 2,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 1,
+        "XScale": 1,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "11": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Stack.Line",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": false,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.5,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0.035999998450279236,
+        "XScale": 0.7200000286102295,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "12": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Stack.Line.Message",
+    "Class": "TextLabel",
+    "Attributes": {
+      "HeaderCenterX": 0.5,
+      "HeaderWidthScale": 0.7,
+      "FigmaNodeId": "85:58",
+      "HeaderInset": 4,
+      "Gap": 10,
+      "MaxWidth": 500
+    },
+    "Properties": {
+      "Visible": true,
+      "TextWrapped": true,
+      "Active": false,
+      "TextStrokeColor3": {
+        "R": 0,
+        "Type": "Color3",
+        "G": 0,
+        "B": 0
+      },
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "ZIndex": 3,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 1.25,
+        "XScale": 1.25,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "AutoLocalize": false,
+      "ClipsDescendants": false,
+      "Text": "",
+      "TextTransparency": 0,
+      "Interactable": false,
+      "Rotation": 0,
+      "TextSize": 40,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.5,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "TextColor3": {
+        "R": 1,
+        "Type": "Color3",
+        "G": 1,
+        "B": 1
+      },
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/GothamSSm.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Heavy"
+      },
+      "TextScaled": true,
+      "BackgroundColor3": {
+        "R": 0.09803921729326248,
+        "Type": "Color3",
+        "G": 0.09803921729326248,
+        "B": 0.11764705926179886
+      }
+    }
+  },
+  "13": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Stack.Line.Message.UIStroke",
+    "Class": "UIStroke",
+    "Attributes": [],
+    "Properties": {
+      "Thickness": 1.8899999856948853,
+      "Transparency": 0,
+      "StrokeSizingMode": "Enum.StrokeSizingMode.FixedSize",
+      "Color": {
+        "R": 0,
+        "Type": "Color3",
+        "G": 0,
+        "B": 0
+      },
+      "Enabled": true,
+      "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual"
+    }
+  },
+  "14": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Stack.Line.Message.UIGradient",
+    "Class": "UIGradient",
+    "Attributes": [],
+    "Properties": {
+      "Enabled": true,
+      "Transparency": {
+        "Keypoints": {
+          "1": {
+            "Value": 0,
+            "Time": 0,
+            "Envelope": 0
+          },
+          "2": {
+            "Value": 0,
+            "Time": 1,
+            "Envelope": 0
+          }
+        },
+        "Type": "NumberSequence"
+      },
+      "Color": {
+        "Keypoints": {
+          "1": {
+            "Value": {
+              "R": 1,
+              "Type": "Color3",
+              "G": 0.9411764740943909,
+              "B": 0.6666666865348816
+            },
+            "Time": 0
+          },
+          "2": {
+            "Value": {
+              "R": 1,
+              "Type": "Color3",
+              "G": 0.6666666865348816,
+              "B": 0
+            },
+            "Time": 1
+          }
+        },
+        "Type": "ColorSequence"
+      },
+      "Offset": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Rotation": 90
+    }
+  },
+  "15": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Stack.Line.Message.UIScale",
+    "Class": "UIScale",
+    "Attributes": [],
+    "Properties": {
+      "Scale": 1
+    }
+  },
+  "16": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.Notification.Stack.UIListLayout",
+    "Class": "UIListLayout",
+    "Attributes": [],
+    "Properties": {
+      "VerticalAlignment": "Enum.VerticalAlignment.Center",
+      "FillDirection": "Enum.FillDirection.Vertical",
+      "HorizontalAlignment": "Enum.HorizontalAlignment.Center",
+      "Padding": {
+        "Scale": 0.019999999552965164,
+        "Type": "UDim",
+        "Offset": 0
+      },
+      "SortOrder": "Enum.SortOrder.LayoutOrder"
+    }
+  },
+  "17": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.TargetProxy",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": false,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "18": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Canvas.NotificationRegion",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": true,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.04500000178813934,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0.06499999761581421,
+        "XScale": 0.800000011920929,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "19": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Messages",
+    "Class": "Folder",
+    "Attributes": [],
+    "Properties": []
+  },
+  "20": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Messages.Equip",
+    "Class": "StringValue",
+    "Attributes": [],
+    "Properties": {
+      "Value": "Press Best Equip."
+    }
+  },
+  "21": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Messages.OpenInventory",
+    "Class": "StringValue",
+    "Attributes": [],
+    "Properties": {
+      "Value": "Open your Inventory."
+    }
+  },
+  "22": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Messages.ChooseTab",
+    "Class": "StringValue",
+    "Attributes": [],
+    "Properties": {
+      "Value": "Choose Items."
+    }
+  },
+  "23": {
+    "Path": "StarterGui.ItemEquipTutorialGui.Messages.Complete",
+    "Class": "StringValue",
+    "Attributes": [],
+    "Properties": {
+      "Value": "Item equipped!"
+    }
+  },
+  "24": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui",
+    "Class": "ScreenGui",
+    "Attributes": {
+      "PresentationVersion": 2,
+      "CompletionSeconds": 2.5,
+      "TutorialPhase": 6
+    },
+    "Properties": {
+      "Enabled": true,
+      "DisplayOrder": 45,
+      "ResetOnSpawn": false,
+      "IgnoreGuiInset": true,
+      "ZIndexBehavior": "Enum.ZIndexBehavior.Sibling"
+    }
+  },
+  "25": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": true,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 1,
+      "Size": {
+        "YScale": 1,
+        "XScale": 1,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "26": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Highlight",
+    "Class": "Frame",
+    "Attributes": {
+      "MoveSeconds": 0.12,
+      "GuiGrow": 1.18,
+      "PaddingX": 0,
+      "PaddingY": 0
+    },
+    "Properties": {
+      "Visible": false,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 1,
+        "Type": "Color3",
+        "G": 1,
+        "B": 1
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.5,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 50,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0.25,
+        "XScale": 0.22499999403953552,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "27": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Highlight.Outline",
+    "Class": "UIStroke",
+    "Attributes": [],
+    "Properties": {
+      "Thickness": 0.02500000037252903,
+      "Transparency": 0,
+      "StrokeSizingMode": "Enum.StrokeSizingMode.ScaledSize",
+      "Color": {
+        "R": 1,
+        "Type": "Color3",
+        "G": 1,
+        "B": 1
+      },
+      "Enabled": true,
+      "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual"
+    }
+  },
+  "28": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Highlight.Corner",
+    "Class": "UICorner",
+    "Attributes": [],
+    "Properties": {
+      "CornerRadius": {
+        "Scale": 0.10000000149011612,
+        "Type": "UDim",
+        "Offset": 0
+      }
+    }
+  },
+  "29": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Highlight.Shadow",
+    "Class": "UIStroke",
+    "Attributes": [],
+    "Properties": {
+      "Thickness": 100,
+      "Transparency": 0.25,
+      "StrokeSizingMode": "Enum.StrokeSizingMode.ScaledSize",
+      "Color": {
+        "R": 0,
+        "Type": "Color3",
+        "G": 0,
+        "B": 0
+      },
+      "Enabled": true,
+      "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual"
+    }
+  },
+  "30": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification",
+    "Class": "Frame",
+    "Attributes": {
+      "HeaderCenterX": 0.5,
+      "HeaderWidthScale": 0.7,
+      "ReferenceHeight": 720
+    },
+    "Properties": {
+      "Visible": false,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 60,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 1,
+        "XScale": 1,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "31": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Shade",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": true,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0,
+        "Type": "Color3",
+        "G": 0,
+        "B": 0
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 0,
+      "Position": {
+        "YScale": 0.17000000178813934,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "32": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Shade.UIGradient",
+    "Class": "UIGradient",
+    "Attributes": [],
+    "Properties": {
+      "Enabled": true,
+      "Transparency": {
+        "Keypoints": {
+          "1": {
+            "Value": 0,
+            "Time": 0,
+            "Envelope": 0
+          },
+          "2": {
+            "Value": 0,
+            "Time": 1,
+            "Envelope": 0
+          }
+        },
+        "Type": "NumberSequence"
+      },
+      "Color": {
+        "Keypoints": {
+          "1": {
+            "Value": {
+              "R": 1,
+              "Type": "Color3",
+              "G": 1,
+              "B": 1
+            },
+            "Time": 0
+          },
+          "2": {
+            "Value": {
+              "R": 1,
+              "Type": "Color3",
+              "G": 1,
+              "B": 1
+            },
+            "Time": 1
+          }
+        },
+        "Type": "ColorSequence"
+      },
+      "Offset": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Rotation": 0
+    }
+  },
+  "33": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Stack",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": true,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.17000000178813934,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 2,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 1,
+        "XScale": 1,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "34": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Stack.Line",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": false,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.5,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0.035999998450279236,
+        "XScale": 0.7200000286102295,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "35": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Stack.Line.Message",
+    "Class": "TextLabel",
+    "Attributes": {
+      "HeaderCenterX": 0.5,
+      "HeaderWidthScale": 0.7,
+      "FigmaNodeId": "85:58",
+      "HeaderInset": 4,
+      "Gap": 10,
+      "MaxWidth": 500
+    },
+    "Properties": {
+      "Visible": true,
+      "TextWrapped": true,
+      "Active": false,
+      "TextStrokeColor3": {
+        "R": 0,
+        "Type": "Color3",
+        "G": 0,
+        "B": 0
+      },
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Y": 0.5,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "ZIndex": 3,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 1.25,
+        "XScale": 1.25,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "AutoLocalize": false,
+      "ClipsDescendants": false,
+      "Text": "",
+      "TextTransparency": 0,
+      "Interactable": false,
+      "Rotation": 0,
+      "TextSize": 40,
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.5,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "TextColor3": {
+        "R": 1,
+        "Type": "Color3",
+        "G": 1,
+        "B": 1
+      },
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/GothamSSm.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Heavy"
+      },
+      "TextScaled": true,
+      "BackgroundColor3": {
+        "R": 0.09803921729326248,
+        "Type": "Color3",
+        "G": 0.09803921729326248,
+        "B": 0.11764705926179886
+      }
+    }
+  },
+  "36": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Stack.Line.Message.UIStroke",
+    "Class": "UIStroke",
+    "Attributes": [],
+    "Properties": {
+      "Thickness": 1.8899999856948853,
+      "Transparency": 0,
+      "StrokeSizingMode": "Enum.StrokeSizingMode.FixedSize",
+      "Color": {
+        "R": 0,
+        "Type": "Color3",
+        "G": 0,
+        "B": 0
+      },
+      "Enabled": true,
+      "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual"
+    }
+  },
+  "37": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Stack.Line.Message.UIGradient",
+    "Class": "UIGradient",
+    "Attributes": [],
+    "Properties": {
+      "Enabled": true,
+      "Transparency": {
+        "Keypoints": {
+          "1": {
+            "Value": 0,
+            "Time": 0,
+            "Envelope": 0
+          },
+          "2": {
+            "Value": 0,
+            "Time": 1,
+            "Envelope": 0
+          }
+        },
+        "Type": "NumberSequence"
+      },
+      "Color": {
+        "Keypoints": {
+          "1": {
+            "Value": {
+              "R": 1,
+              "Type": "Color3",
+              "G": 0.9411764740943909,
+              "B": 0.6666666865348816
+            },
+            "Time": 0
+          },
+          "2": {
+            "Value": {
+              "R": 1,
+              "Type": "Color3",
+              "G": 0.6666666865348816,
+              "B": 0
+            },
+            "Time": 1
+          }
+        },
+        "Type": "ColorSequence"
+      },
+      "Offset": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "Rotation": 90
+    }
+  },
+  "38": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Stack.Line.Message.UIScale",
+    "Class": "UIScale",
+    "Attributes": [],
+    "Properties": {
+      "Scale": 1
+    }
+  },
+  "39": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.Notification.Stack.UIListLayout",
+    "Class": "UIListLayout",
+    "Attributes": [],
+    "Properties": {
+      "VerticalAlignment": "Enum.VerticalAlignment.Center",
+      "FillDirection": "Enum.FillDirection.Vertical",
+      "HorizontalAlignment": "Enum.HorizontalAlignment.Center",
+      "Padding": {
+        "Scale": 0.019999999552965164,
+        "Type": "UDim",
+        "Offset": 0
+      },
+      "SortOrder": "Enum.SortOrder.LayoutOrder"
+    }
+  },
+  "40": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.TargetProxy",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": false,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0,
+        "XScale": 0,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "41": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Canvas.NotificationRegion",
+    "Class": "Frame",
+    "Attributes": [],
+    "Properties": {
+      "Visible": true,
+      "Active": false,
+      "Interactable": false,
+      "BackgroundColor3": {
+        "R": 0.6392157077789307,
+        "Type": "Color3",
+        "G": 0.6352941393852234,
+        "B": 0.6470588445663452
+      },
+      "Rotation": 0,
+      "AnchorPoint": {
+        "Y": 0,
+        "Type": "Vector2",
+        "X": 0.5
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "YScale": 0.04500000178813934,
+        "XScale": 0.5,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      },
+      "ClipsDescendants": false,
+      "ZIndex": 1,
+      "BorderSizePixel": 0,
+      "Size": {
+        "YScale": 0.06499999761581421,
+        "XScale": 0.800000011920929,
+        "XOffset": 0,
+        "Type": "UDim2",
+        "YOffset": 0
+      }
+    }
+  },
+  "42": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Messages",
+    "Class": "Folder",
+    "Attributes": [],
+    "Properties": []
+  },
+  "43": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Messages.Equip",
+    "Class": "StringValue",
+    "Attributes": [],
+    "Properties": {
+      "Value": "Press Best Equip."
+    }
+  },
+  "44": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Messages.OpenInventory",
+    "Class": "StringValue",
+    "Attributes": [],
+    "Properties": {
+      "Value": "Open your Inventory."
+    }
+  },
+  "45": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Messages.ChooseTab",
+    "Class": "StringValue",
+    "Attributes": [],
+    "Properties": {
+      "Value": "Choose Dumbbells."
+    }
+  },
+  "46": {
+    "Path": "StarterGui.DumbbellEquipTutorialGui.Messages.Complete",
+    "Class": "StringValue",
+    "Attributes": [],
+    "Properties": {
+      "Value": "Dumbbell equipped!"
+    }
+  }
+}

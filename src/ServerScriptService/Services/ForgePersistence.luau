@@ -46,6 +46,9 @@ function M.Resolve(player,s,op,ctx)
   local tutorial=require(RS.Modules.OreMergeTutorialState)
   s.Data.OreMergeTutorial=assert(tutorial.Normalize(saved.OreMergeTutorial,false))
   tutorial.Publish(player,s.Data.OreMergeTutorial)
+  local equipment=require(RS.Modules.EquipmentTutorialState)
+  s.Data.EquipmentTutorial=equipment.Merge(saved.EquipmentTutorial,s.Data.EquipmentTutorial)
+  equipment.Publish(player,s.Data)
  end
  if op.Action=="FirstStage1Defeat" then s.Data.FirstStage1Reward=assert(require(RS.Modules.FirstStage1RewardState).Normalize(saved.FirstStage1Reward,false)) end
  local paid=tonumber(saved.ShopRewards and saved.ShopRewards.WinGrantedTotal) or 0

@@ -110,7 +110,8 @@ function M.Mount(player,services)
   if blocked() then
    local merge=pg:FindFirstChild("MergeShopGui")
    local usingMerge=merge and merge:FindFirstChild("MergeShopPanel") and displayed(merge.MergeShopPanel)
-   hide("WaitingForDisplay",not usingMerge and Coordinator.Owner()==overlay);return
+   local usingEquipment=gui.InventoryPanel.Visible
+   hide("WaitingForDisplay",not usingMerge and not usingEquipment and Coordinator.Owner()==overlay);return
   end
   if dismissed and not inventoryOpen then hide("Dismissed");return end
   local owned=State.OwnedTarget(tutorial,pets)

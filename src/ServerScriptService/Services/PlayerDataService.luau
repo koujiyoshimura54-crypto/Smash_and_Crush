@@ -16,6 +16,7 @@ local Counts=require(game.ReplicatedStorage.Modules.InventoryCounts)
 local ForgeInventory=require(game.ReplicatedStorage.Modules.ForgeInventory)
 local FirstStage1=require(game.ReplicatedStorage.Modules.FirstStage1RewardState)
 local OreTutorial=require(game.ReplicatedStorage.Modules.OreMergeTutorialState)
+local EquipmentTutorial=require(game.ReplicatedStorage.Modules.EquipmentTutorialState)
 local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local EggTutorial=require(game.ReplicatedStorage.Modules.EggPetTutorialState)
@@ -240,7 +241,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -256,6 +257,9 @@ local function normalize(raw)
  local eggTutorial,eggError=EggTutorial.Normalize(type(raw)=="table" and raw.EggPetTutorial or nil,raw==nil)
  if not eggTutorial then return nil,eggError end
  d.EggPetTutorial=eggTutorial
+ local equipment,equipmentError=EquipmentTutorial.Normalize(type(raw)=="table" and raw.EquipmentTutorial or nil,eggTutorial.Eligible)
+ if not equipment then return nil,equipmentError end
+ d.EquipmentTutorial=equipment
  local petMergeTutorial,petMergeError=PetMergeTutorial.Normalize(type(raw)=="table" and raw.PetMergeTutorial or nil,eggTutorial.Eligible)
  if not petMergeTutorial then return nil,petMergeError end
  d.PetMergeTutorial=petMergeTutorial
@@ -376,6 +380,7 @@ local function applyAttributes(player,d)
  session.ForgeToken=session.ForgeToken or HttpService:GenerateGUID(false)
  player:SetAttribute("ForgeSessionToken",session.ForgeToken)
  OreTutorial.Publish(player,d.OreMergeTutorial)
+ EquipmentTutorial.Publish(player,d)
  EggTutorial.Publish(player,d.EggPetTutorial)
  PetMergeTutorial.Publish(player,d.PetMergeTutorial)
  Pet.Publish(player,d.Pets)
@@ -733,6 +738,12 @@ function PlayerDataService.Load(player)
 end
 
 -- Server-only setter; data and its Attribute mirror change without yielding.
+function PlayerDataService.RefreshEquipmentTutorial(player)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data then return false end
+ if EquipmentTutorial.Publish(player,s.Data) then s.Dirty=true end
+ return true
+end
 function PlayerDataService.SetEquippedDumbbell(player,itemId)
  local s=sessions[player]
  if s and s.PendingItemMutation then return false,"InventorySavePending" end
@@ -745,10 +756,11 @@ function PlayerDataService.SetEquippedDumbbell(player,itemId)
   if item.Category~="Dumbbell" then return false,"InvalidCategory" end
   if (Counts.Count(s.Data.OwnedDumbbells[itemId]) or 0)<1 then return false,"NotOwned" end
  end
- if s.Data.EquippedDumbbell==itemId then return true,"AlreadyEquipped" end
+ if s.Data.EquippedDumbbell==itemId then PlayerDataService.RefreshEquipmentTutorial(player);return true,"AlreadyEquipped" end
  s.Data.EquippedDumbbell=itemId
  s.Dirty=true
  player:SetAttribute("EquippedDumbbell",itemId)
+ PlayerDataService.RefreshEquipmentTutorial(player)
  return true,itemId=="" and "Unequipped" or "Equipped"
 end
 
@@ -922,6 +934,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  if equipAuraOnSuccess~=nil and (not AuraConfig.Get(equipAuraOnSuccess) or s.Data.OwnedAuras[equipAuraOnSuccess]~=true) then return false,"InvalidAuraEquip" end
  s.Saving=true
  local d=s.Data
+ EquipmentTutorial.Refresh(d)
  local saveToken=d.ResetToken
  if not s.StudioStartOverride then d.Strength=math.max(0,tonumber(player:GetAttribute("Strength")) or d.Strength) end
  d.RebirthCount=math.max(0,math.floor(tonumber(player:GetAttribute("RebirthCount")) or d.RebirthCount))
@@ -952,6 +965,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   DailyRewards=assert(normalizeDailyRewards(d.DailyRewards)),
   TutorialCompleted=d.TutorialCompleted==true,
   OreMergeTutorial=assert(OreTutorial.Normalize(d.OreMergeTutorial,false)),
+  EquipmentTutorial=assert(EquipmentTutorial.Normalize(d.EquipmentTutorial,false)),
   EggPetTutorial=assert(EggTutorial.Normalize(d.EggPetTutorial,false)),
   PetMergeTutorial=assert(PetMergeTutorial.Normalize(d.PetMergeTutorial,d.EggPetTutorial.Eligible)),
   Strength=persisted and persisted.Strength or d.Strength,
@@ -1001,6 +1015,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.DailyRewards=mergeDailyRewards(old.DailyRewards,payload.DailyRewards)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
    merged.OreMergeTutorial=OreTutorial.Merge(old.OreMergeTutorial,payload.OreMergeTutorial)
+   merged.EquipmentTutorial=EquipmentTutorial.Merge(old.EquipmentTutorial,payload.EquipmentTutorial)
    merged.AutoTapEnabled=payload.AutoTapEnabled
    merged.SelectedSizeTier=payload.SelectedSizeTier
    merged.EquippedSpeed=payload.EquippedSpeed
@@ -1631,7 +1646,10 @@ function PlayerDataService.MutateForge(player,request)
  if RunService:IsStudio() and s.StudioStartOverride then
   d.OwnedOres=nextData.OwnedOres;d.OwnedDumbbells=nextData.OwnedDumbbells
   d.ForgeJournal=nextData.ForgeJournal;d.Win=nextData.Win
-  if op.Action=="MergeOre" then d.OreMergeTutorial=nextData.OreMergeTutorial;OreTutorial.Publish(player,d.OreMergeTutorial) end
+  if op.Action=="MergeOre" then
+   d.OreMergeTutorial=nextData.OreMergeTutorial;OreTutorial.Publish(player,d.OreMergeTutorial)
+   d.EquipmentTutorial=nextData.EquipmentTutorial;PlayerDataService.RefreshEquipmentTutorial(player)
+  end
   if op.Action=="FirstStage1Defeat" then d.FirstStage1Reward=nextData.FirstStage1Reward end
   player:SetAttribute("Win",d.Win)
   player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)
@@ -1890,6 +1908,7 @@ function PlayerDataService.ResolveItemMutation(player)
  s.PendingItemMutation=nil
  s.Saving=false
  s.Dirty=true
+ PlayerDataService.RefreshEquipmentTutorial(player)
  return true,"Changed"
 end
 function PlayerDataService.ChangeItemCount(player,itemId,delta,winPrice)
@@ -2119,6 +2138,7 @@ function PlayerDataService.GrantPurchasedItem(player,itemId,purchaseId,quantityV
  if not ok or not info or (info:GetMetadata().ItemReceiptSequence or 0)<intentSequence then return false,"OwnershipSaveFailed" end
  s.Data.OwnedItems=assert(normalizeItems(saved.OwnedItems))
  s.Dirty=true
+ PlayerDataService.RefreshEquipmentTutorial(player)
  return true,"Granted"
 end
 

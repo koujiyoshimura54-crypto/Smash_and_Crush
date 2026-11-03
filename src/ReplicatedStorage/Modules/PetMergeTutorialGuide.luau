@@ -89,7 +89,7 @@ function M.Mount(player,gui,view)
   local owns=Coordinator.Owner()==overlay
   -- Success consumes the materials before the response/hatch. Do not re-gate on count.
   if current.Pending or PetClient.busy() or HatchClient.playing() then hide("WaitingForTransaction",owns);return end
-  if blocked() then hide("WaitingForDisplay",owns);return end
+  if blocked() then hide("WaitingForDisplay",owns and not gui.InventoryPanel.Visible);return end
   if dismissed and not current.Open then hide("Dismissed");return end
   local _,eligible=State.Available(pets)
   if not state.Completed and not eligible then hide("WaitingForPets");return end

@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-04 — Equipment guidance and matching Best Equip buttons
+
+Item and Dumbbell equipment guides reuse the approved purchased renderer/coordinator and separate authored editable templates. Dumbbells has a separate Best Equip below its retained showcase; both Best Equip buttons read the authored green Equipped-badge gradient. Item surrounding layout/fonts remain unchanged. [Exact edit locations, native rendering and limits](../reports/EquipmentTutorial_20261104.md).
+
 ## 2026-11-03 — Measured Dumbbell inventory and sale panel
 
 Dumbbells-only layout follows the supplied1586×992 reference: purple equipped panel with green non-button status/glow, count badges, per-card Equip/Sell and one anchored sale popup. No Owned line or quantity input. SellOne and selected-type SellAll reuse purchased Win skins and the existing Forge transaction; an equipped copy stays protected. Other Inventory content and W2 no-price/no-sale behavior remain unchanged. [Native transactions, comparison and raster limits](../reports/DumbbellInventory_20261103.md).

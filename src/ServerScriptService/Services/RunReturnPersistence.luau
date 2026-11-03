@@ -135,6 +135,7 @@ function M.Resolve(player, session, op, adapter)
 	local function finish(result, saved)
 		if saved and adapter.Current() then
    session.Data.OwnedItems=adapter.Items(saved.OwnedItems)
+   require(game.ReplicatedStorage.Modules.EquipmentTutorialState).Publish(player,session.Data)
    if adapter.Ores then session.Data.OwnedOres=assert(adapter.Ores(saved.OwnedOres)) end
    if result=="Changed" and next(op.OreDeltas or {}) then
     player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)

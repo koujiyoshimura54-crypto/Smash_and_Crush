@@ -14,6 +14,7 @@ local function getInventoryState(player)
  local purchasable = Service.GetPurchasableDumbbells(player)
  return {
   Loaded = owned ~= nil and purchasable ~= nil,
+  EquipmentGeneration=player:GetAttribute("ForgeSessionToken"),
   OwnedDumbbells = owned or {}, DumbbellCounts=Service.GetDumbbellCounts(player) or {}, PurchasableDumbbells = purchasable or {},
   EquippedDumbbell = Service.GetEquippedDumbbell(player) or "",
   Win = player:GetAttribute("Win") or 0,
@@ -35,6 +36,7 @@ local function execute(player, itemId, isEquip, isStand)
  local ok, success, code, purchased = pcall(function()
   if isStand and Service.GetEquippedDumbbell(player) == itemId then return true, "AlreadyEquipped" end
   if isEquip or (isStand and Service.HasDumbbell(player, itemId)) then
+   if itemId == "__BestEquip" and not isStand then return Service.EquipBestDumbbell(player) end
    if itemId == "" and not isStand then return Service.UnequipDumbbell(player) end
    return Service.EquipDumbbell(player, itemId)
   end
@@ -67,7 +69,10 @@ stateRemote.OnServerInvoke = getInventoryState
 remote.OnServerEvent:Connect(function(player, itemId, context)
  inventory(remote, player, itemId, context, false)
 end)
-equipRemote.OnServerEvent:Connect(function(player, itemId, context)
+equipRemote.OnServerEvent:Connect(function(player, itemId, context, generation)
+ if generation~=nil and generation~=player:GetAttribute("ForgeSessionToken") then
+  respond(equipRemote,player,itemId,false,"EquipmentStateChanged");return
+ end
  inventory(equipRemote, player, itemId, context, true)
 end)
 Stand.Start(function(player, itemId)

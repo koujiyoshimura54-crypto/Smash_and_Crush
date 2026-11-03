@@ -52,6 +52,7 @@ local NumberFormat=require(RS.Modules.NumberFormat)
 local View=require(RS.Modules.DumbbellInventoryView)
 local view=View.Mount(panel,gui)
 local stateLoaded=false
+local equipmentGeneration
 local equipped=""
 local pending={}
 local layout
@@ -76,6 +77,7 @@ local function label(parent,name,text,position,size,color)
 end
 local function updateButtons()
  local requestPending=next(pending)~=nil or Forge.IsPending()
+ View.Skin(panel.Equipped.BestEquipButton,"Best Equip","Best",stateLoaded and next(owned)~=nil and not requestPending)
  for itemId,card in pairs(cards) do
   local hidden=worldLocked(itemId)
   card.Visible=not hidden
@@ -120,6 +122,8 @@ local item=Master.Get(equipped)
 end
 local function applyState(state)
  if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedDumbbells)~="table" then return false end
+ if state.EquipmentGeneration and state.EquipmentGeneration~=player:GetAttribute("ForgeSessionToken") then return false end
+ equipmentGeneration=state.EquipmentGeneration or player:GetAttribute("ForgeSessionToken")
  owned=state.OwnedDumbbells
  counts=state.DumbbellCounts or {}
  stateLoaded=true
@@ -164,6 +168,11 @@ local function selectCard(itemId)
   Presentation.SetSelected(card,selected)
  end
 end
+Responsive.ConnectActivation(panel.Equipped.BestEquipButton,function()
+ if not stateLoaded or next(pending)~=nil or Forge.IsPending() or next(owned)==nil then return end
+ pending.__BestEquip=true;updateButtons()
+ equipRemote:FireServer("__BestEquip",nil,equipmentGeneration)
+end)
 local sortedItems=Master.GetSorted()
 for order,item in ipairs(sortedItems) do
  local itemId=item.ItemId
@@ -184,7 +193,7 @@ for order,item in ipairs(sortedItems) do
    pending[itemId]=true
    updateButtons()
    if owned[itemId]==true then
-    equipRemote:FireServer(itemId)
+    equipRemote:FireServer(itemId,nil,equipmentGeneration)
    else
     purchaseRemote:FireServer(itemId)
    end

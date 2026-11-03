@@ -3,6 +3,7 @@ local RS=game.ReplicatedStorage
 local HUD=require(script.Parent.HUDLayout)
 local Style=require(RS.Config.StrengthHUDStyle)
 local Format=require(script.Parent.NumberFormat)
+local EquipmentStyle=require(script.Parent.EquipmentButtonStyle)
 local M={}
 M.Geometry={Reference=Vector2.new(1586,992),Shell=Vector2.new(1426,864),Inset=16,Header=140,TabsY=148,TabsHeight=88,ContentY=270,
  LeftFraction=420/1394,Gap=16,CardGap=12,CardRatio=318/315,PopupWidth=538,PopupHeight=250}
@@ -65,8 +66,8 @@ function M.Skin(button,value,kind,enabled)
  local v=button.PurchasedButtonVisual;local main=v.Main
  local flow=main:FindFirstChildOfClass("UIListLayout");if flow then flow:Destroy() end
  local numeric=tostring(value):match("^%d")~=nil
- main.UIGradient.Color=kind=="Equip" and green or kind=="Equipped" and gray or main.UIGradient.Color
- if kind~="Equip" and kind~="Equipped" then
+ main.UIGradient.Color=(kind=="Best" and EquipmentStyle.Gradient() or kind=="Equip" and green) or kind=="Equipped" and gray or main.UIGradient.Color
+ if kind~="Best" and kind~="Equip" and kind~="Equipped" then
   main.UIGradient.Color=game.StarterGui.ScreenGui.Menus.RestockShop.Main.Common.Buy.Main.UIGradient.Color
  end
  for _,o in {v.Stroke,main} do
@@ -103,6 +104,11 @@ function M.StyleEquipped(page)
   badge.BackgroundColor3=Color3.new(1,1,1);badge.Active=false
   local t=label("Label",badge,52,38);t.Text="Equipped";t.AutoLocalize=false;t.Size=UDim2.fromScale(.95,.85);t.AnchorPoint=Vector2.new(.5,.5);t.Position=UDim2.fromScale(.5,.5)
  end
+ local best=eq:FindFirstChild("BestEquipButton")
+ if not best then
+  best=make("TextButton","BestEquipButton",eq,40);best.Text="Best Equip";best.AutoLocalize=false
+ end
+ M.Skin(best,"Best Equip","Best",false)
  local halo=eq:FindFirstChild("EquipmentGlow")
  if not halo then halo=game.StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card01_SecretPack.Sunburst:Clone();halo.Name="EquipmentGlow";halo.Parent=eq end
  halo:SetAttribute("InventoryReferenceOwned",true);halo.BackgroundTransparency=1;halo.ImageColor3=Color3.fromRGB(240,174,255);halo.ImageTransparency=.18;halo.Visible=true;halo.Active=false;halo.ScaleType=Enum.ScaleType.Fit;layer(halo,34)
@@ -194,8 +200,10 @@ function M.Mount(page,gui)
   rect(page.Equipped,0,0,left,size.Y)
   local eq=page.Equipped;rect(eq.EquippedBadge,left*.19,20,left*.64,78)
   rect(eq.EquipmentGlow,10,size.Y*.17,left-20,size.Y*.64)
-  rect(eq.Preview,left*.055,size.Y*.26,left*.89,size.Y*.47)
-  rect(eq.Multiplier,12,size.Y*.77,left-24,size.Y*.17)
+  rect(eq.Preview,left*.055,size.Y*.24,left*.89,size.Y*.44)
+  rect(eq.Multiplier,12,size.Y*.69,left-24,size.Y*.13)
+  rect(eq.BestEquipButton,16,size.Y*.84,left-32,size.Y*.12)
+  HUD.RefitPurchaseButton(eq.BestEquipButton)
   rect(list,left+gap,0,size.X-left-gap,size.Y)
   local pad=list:FindFirstChildOfClass("UIPadding");if pad then pad.PaddingLeft=UDim.new(0,6);pad.PaddingRight=UDim.new(0,6);pad.PaddingTop=UDim.new(0,6);pad.PaddingBottom=UDim.new(0,6) end
   local width=size.X-left-gap-12;local cols=size.X<900 and 2 or 3;local cw=(width-(cols-1)*12)/cols;local ch=cw*M.Geometry.CardRatio

@@ -110,6 +110,13 @@ function M.EquipDumbbell(player, itemId)
  -- No yield between validation and assignment; only one ItemId is stored.
  return Data.SetEquippedDumbbell(player, itemId)
 end
+function M.EquipBestDumbbell(player)
+ local session=Data.Get(player)
+ if not session or not session.Loaded then return false,"DataNotLoaded" end
+ local id=require(game.ReplicatedStorage.Modules.DumbbellEquipment).Best(session.Data.OwnedDumbbells,session.Data.EquippedDumbbell)
+ if not id then return false,"NoDumbbells" end
+ return M.EquipDumbbell(player,id)
+end
 function M.UnequipDumbbell(player)
  if typeof(player) ~= "Instance" or not player:IsA("Player") or player.Parent ~= Players then
   return false, "InvalidPlayer"

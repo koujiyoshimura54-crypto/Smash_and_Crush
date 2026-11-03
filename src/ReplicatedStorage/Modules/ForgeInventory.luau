@@ -62,7 +62,10 @@ function M.Apply(data,op)
  for _,inventory in ipairs({ores,bells}) do for _,n in pairs(inventory) do if not Counts.Count(n) then return nil,"CountOverflow" end end end
  local out=table.clone(data)
  out.OwnedOres=ores;out.OwnedDumbbells=bells;out.Win=win
- if op.Action=="MergeOre" then out.OreMergeTutorial=OreTutorial.Complete(data.OreMergeTutorial,op.Id) end
+ if op.Action=="MergeOre" then
+  out.OreMergeTutorial=OreTutorial.Complete(data.OreMergeTutorial,op.Id)
+  require(script.Parent.EquipmentTutorialState).Refresh(out)
+ end
  if op.Action=="FirstStage1Defeat" then
   local bag=op.Delivery=="BattleBag"
   out.FirstStage1Reward={Version=1,Consumed=true,DefeatId=op.Id,OreGranted=not bag and op.ResultId~="",

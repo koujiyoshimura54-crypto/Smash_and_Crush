@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-04 — Equipment onboarding implemented
+
+Phases5/6 and Dumbbell Best Equip are applied to current unsaved canonical Studio. Isolated native Play covered banking, normal Ore UI generation/equipment, failure/reset/reload, guide arbitration and normal/narrow rendering. Eighteen Sources match exports; helpers removed and Edit restored. [Verification and untested public/physical paths](../reports/EquipmentTutorial_20261104.md).
+
 ## 2026-11-03 — Dumbbell inventory and sale UI
 
 Five presentation/client Sources plus authored equipped decoration now implement measured reference geometry and selected-type sale choices. Native memory-isolated Play checked actual ownership/Win deltas, equipped protection, replay, purchase/equip, respawn, popup targeting and narrow-region clamping. Comparison images retain material/localization/resolution differences explicitly. Helpers removed; unsaved Edit retained. [Record](../reports/DumbbellInventory_20261103.md).

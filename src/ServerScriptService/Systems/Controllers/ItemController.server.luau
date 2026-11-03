@@ -9,9 +9,12 @@ local lastEquipRequest=setmetatable({}, {__mode="k"})
 local lastRequest=setmetatable({}, {__mode="k"})
 
 local function getState(player)
+ local Data=require(game.ServerScriptService.Services.PlayerDataService)
+ Data.RefreshEquipmentTutorial(player)
  local owned=Service.GetOwnedItems(player)
  return {
   Loaded=owned~=nil,
+  EquipmentGeneration=player:GetAttribute("ForgeSessionToken"),
   OwnedItems=owned or {},
   EquippedItems=Service.GetEquippedItems(player) or {},
   Win=player:GetAttribute("Win") or 0,
@@ -41,11 +44,13 @@ end)
 Players.PlayerRemoving:Connect(function(player) lastRequest[player]=nil end)
 
 -- Equip: FireServer(itemId). Unequip: FireServer(itemType, "Unequip").
-equipRemote.OnServerEvent:Connect(function(player,value,action)
+equipRemote.OnServerEvent:Connect(function(player,value,action,generation)
  local now=os.clock()
  local success,code
  local cooldown=action=="BestEquip" and 1 or 0.2
- if lastEquipRequest[player] and now-lastEquipRequest[player]<cooldown then
+ if generation~=nil and generation~=player:GetAttribute("ForgeSessionToken") then
+  success,code=false,"EquipmentStateChanged"
+ elseif lastEquipRequest[player] and now-lastEquipRequest[player]<cooldown then
   success,code=false,"RateLimited"
  else
   lastEquipRequest[player]=now

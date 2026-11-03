@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-04 — Item and post-Ore Dumbbell equipment onboarding
+
+The established fresh/reset cohort receives banked-Item equipment guidance and, after its first successful Ore merge, Dumbbell equipment guidance. Only server-confirmed equipment completes; existing self-equipment/optimal Dumbbells skip redundant operations. Missing new fields do not enroll ordinary legacy data. Dumbbell Best Equip uses actual owned master effects and retains current equipment on ties. [Implementation and isolated evidence](../reports/EquipmentTutorial_20261104.md).
+
 ## 2026-11-03 — Boss-to-Player attack depth
 
 Both Worlds now compress only the Boss-local front/back distance envelope to 90% about its original center. Width, height, angle, damage, cadence, models, physical colliders and Player-to-Boss contact remain unchanged. BossAttackHitboxConfig.DepthScale is the single adjustment point. [Native HP evidence](../reports/BossAttackDepth_20261103.md).

@@ -132,10 +132,11 @@ function ItemService.EquipItem(player,itemId)
  if not s then return false,code end
  if s.Saving then return false,"DataSaving" end
  if ItemService.GetItemCount(player,itemId)<1 then return false,"NotOwned" end
- if s.Data.EquippedItems[item.ItemType]==itemId then return true,"AlreadyEquipped" end
+ if s.Data.EquippedItems[item.ItemType]==itemId then Data.RefreshEquipmentTutorial(player);return true,"AlreadyEquipped" end
  -- No yield: only this type's slot is replaced; ownership is retained.
  s.Data.EquippedItems[item.ItemType]=itemId
  s.Dirty=true
+ Data.RefreshEquipmentTutorial(player)
  return true,"Equipped"
 end
 -- Score combinations using one read-only training snapshot. A lower-effect Item

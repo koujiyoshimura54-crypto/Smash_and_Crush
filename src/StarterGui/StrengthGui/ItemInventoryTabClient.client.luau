@@ -20,6 +20,7 @@ local page=shell.Content.Items
 local list=page.OwnedItems
 local owned,equipped={},{}
 local stateLoaded=false
+local equipmentGeneration
 local function worldLocked(id)
  local item=Master.Get(id)
  return item and item.WorldId==2 and (owned[id] or 0)<=0 and equipped[item.ItemType]~=id
@@ -162,12 +163,13 @@ surface(bestButton,"Epic");bestButton.StudPattern.Visible=false;layer(bestButton
 bestButton.TextTransparency=1;bestButton.TextStrokeTransparency=1
 local bestText=label(bestButton,"Label",bestButton.Text,UDim2.fromScale(.03,.08),UDim2.fromScale(.94,.84),30)
 bestText.FontFace=Font.fromEnum(Enum.Font.GothamBlack);layer(bestText,44)
+require(RS.Modules.EquipmentButtonStyle).Apply(bestButton)
 bestButton:GetPropertyChangedSignal("Text"):Connect(function() bestText.Text=bestButton.Text end)
 local bestLimit=Instance.new("UITextSizeConstraint");bestLimit.MinTextSize=8;bestLimit.MaxTextSize=32;bestLimit.Parent=bestButton
 bestButton.Activated:Connect(function()
  if pending then return end
  pending="BestEquip";bestButton.Text="Equipping...";bestButton.Interactable=false
- page.Status.Text="";equipRemote:FireServer(nil,"BestEquip")
+ page.Status.Text="";equipRemote:FireServer(nil,"BestEquip",equipmentGeneration)
 end)
 for _,kind in ipairs(kinds) do
  local s=Instance.new("TextButton");s.Name=kind.."Socket";s.Text="";s.AutoButtonColor=false
@@ -179,7 +181,7 @@ for _,kind in ipairs(kinds) do
  slots[kind]={image=pic,none=none,stars=row,socket=s,check=tick}
  s.Activated:Connect(function()
   if pending or not Master.Get(equipped[kind]) then return end
-  pending=kind;equipRemote:FireServer(kind,"Unequip")
+  pending=kind;equipRemote:FireServer(kind,"Unequip",equipmentGeneration)
  end)
 end
 local tabbar=Instance.new("ScrollingFrame");tabbar.Name="RarityTabs";tabbar.BackgroundTransparency=1;tabbar.BorderSizePixel=0
@@ -210,7 +212,8 @@ local render
 local function request(remote,id)
  if not stateLoaded or (remote~=equipRemote and worldLocked(id)) then return end
  if pending then return end
- pending=id;page.Status.Text="...";remote:FireServer(id)
+ pending=id;page.Status.Text="..."
+ if remote==equipRemote then remote:FireServer(id,"Equip",equipmentGeneration) else remote:FireServer(id) end
 end
 local function priceButton(card,name,price,imageId,remote,itemId)
  local b=Instance.new("TextButton");b.Name=name;b.Text="";b.BackgroundTransparency=1;layer(b,42);b.Parent=card
@@ -338,6 +341,8 @@ gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(fit)
 task.defer(fit)
 local function applyState(state)
  if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedItems)~="table" then return false end
+ if state.EquipmentGeneration and state.EquipmentGeneration~=player:GetAttribute("ForgeSessionToken") then return false end
+ equipmentGeneration=state.EquipmentGeneration or player:GetAttribute("ForgeSessionToken")
  owned=state.OwnedItems equipped=typeof(state.EquippedItems)=="table" and state.EquippedItems or {}
  stateLoaded=true
  render() return true
