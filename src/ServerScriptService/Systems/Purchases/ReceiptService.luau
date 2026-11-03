@@ -40,8 +40,8 @@ local limitedStore
 local function studioAuthorized(player)
  return RunService:IsStudio() and game.PlaceId==126576845524886 and game.GameId==10765181857
   and player and player.Parent==Players
-  and type(StudioDebugConfig.ProductionCreatorUserIds)=="table"
-  and StudioDebugConfig.ProductionCreatorUserIds[player.UserId]==true
+  and type(StudioDebugConfig.LimitedEggTestUserIds)=="table"
+  and StudioDebugConfig.LimitedEggTestUserIds[player.UserId]==true
   and StoreConfig.GetName("PlayerData_v1")=="PlayerData_v1_Studio"
   and StoreConfig.GetName("DeveloperProductReceipts_v1")=="DeveloperProductReceipts_v1_Studio"
 end
@@ -226,6 +226,7 @@ function M.LimitedRequest(player,action,value,productId)
  if action=="Offer" or action=="Purchase" then print("[LimitedEgg01] request",action,player and player.UserId,game.PlaceId) end
  if not player or player.Parent~=Players then return {ok=false,reason="InvalidPlayer"} end
  if action=="Ready" then
+  if RunService:IsStudio() and not studioAuthorized(player) then return {ok=false,reason="StudioDeveloperRequired"} end
   ready[player]=true
   for _,delivery in pairs(deliveries) do
    if delivery.Player==player and committedEvent then

@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-03 — Scoped Limited Egg Studio testers
+
+Canonical Studio Limited Egg tests allow UserIds7467238848,10591394123,10653503502 through the server-only `StudioDebugConfig.LimitedEggTestUserIds`. This does not grant creator/GamePass privileges or change public paid purchases. Existing issuer-only Studio `/setwin` and other debug permissions remain unchanged. [Verification](../reports/LimitedEggStudioTesters_20261103.md).
+
 ## 2026-11-03 — Three equipped Pets and species discovery
 
 Supersedes earlier single-Pet equipment descriptions. Equip at most three distinct owned individual IDs; duplicate species are allowed. Full slots require explicit unequip then equip. Normal Egg discovery is durable per species ID, seeded only from confirmed ownership/results; consumed Pets stay discovered. Limited candidates always show normally. Existing reset clears discovery and advances the Pet client generation. [Implementation and verification limits](../reports/PetThreeAndPresentation_20261103.md).

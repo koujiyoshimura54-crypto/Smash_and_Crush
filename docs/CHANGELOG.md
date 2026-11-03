@@ -1,3 +1,7 @@
+# 2026-11-03 — Limited Egg Studio-only tester whitelist
+
+Added10591394123 and10653503502 alongside7467238848 to a dedicated server Limited Egg test list, retaining creator/GamePass and all command permissions. Verified scoped native receipt/hatch processing and existing setwin; no public payment changes. [Record](../reports/LimitedEggStudioTesters_20261103.md).
+
 # 2026-11-03 — Three Pets, saved species discovery and scoped Item UI
 
 Applied nine scoped Source diffs to unsaved canonical Studio. Added three-copy additive Pet equipment/following, durable normal-Egg silhouettes and reset view fencing; updated Merge Item points, pickup captions and equipped HUD icons. Native isolated operations and two-client tests passed within the recorded display limits. Shop remained unchanged after non-reproduction. [Record](../reports/PetThreeAndPresentation_20261103.md).

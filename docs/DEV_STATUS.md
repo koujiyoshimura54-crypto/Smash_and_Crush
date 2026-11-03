@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Limited Egg Studio tester access
+
+Two live Sources updated; dedicated tester list covers request, receipt and result acknowledgment. Six native memory-isolated W1/W2 receipts granted once and reached the existing hatch consumer. Unchanged `/setwin` passed own-data/attribute/HUD and invalid-input checks; target IDs and peer isolation were simulated, not real account logins. Cleaned helpers and returned unsaved Edit. [Record and limits](../reports/LimitedEggStudioTesters_20261103.md).
+
 ## 2026-11-03 — Scoped Item display, three Pets and Egg discovery
 
 Nine live Sources updated; existing unsaved canonical work retained. Native isolated transactions/growth/reset and real two-client follower checks passed. Shop price geometry was not reproduced and was not changed. Item/HUD/Limited pixels were inspected; normal Egg candidate content was checked in an isolated render, while world Billboard acceptance remains limited. Helpers removed, exact Source sync verified, unsaved Edit retained. [English record](../reports/PetThreeAndPresentation_20261103.md).
