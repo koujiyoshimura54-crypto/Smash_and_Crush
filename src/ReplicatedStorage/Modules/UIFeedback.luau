@@ -29,8 +29,17 @@ function M.Play(kind,key)
  if not source or not source:IsA("Sound") then return false end
  last[kind]=now
  if kind=="Hover" then
-  -- All hover owners play the same live source: one volume/mute/group control.
-  source:Stop();source.TimePosition=0;source:Play()
+  -- Use the live source as the baseline; never write a scaled value back to it.
+  local sound=sounds.Hover
+  if not sound then
+   sound=source:Clone();sound.Name="AddedUIFeedback_Hover"
+   sound:SetAttribute("AddedUIFeedback",true);sound.Looped=false;sound.PlayOnRemove=false
+   sound.Parent=SS;sounds.Hover=sound
+  end
+  sound.SoundId=source.SoundId;sound.SoundGroup=source.SoundGroup
+  sound.Volume=source.Volume*(setting.Volume or 1)
+  sound.PlaybackSpeed=source.PlaybackSpeed
+  sound:Stop();sound.TimePosition=0;sound:Play()
   return true
  end
  local sound=sounds[setting.Sound]
@@ -58,9 +67,29 @@ local function usable(button)
  end
  return ancestor==player.PlayerGui
 end
+local leftActions={SkipButton=true,InventoryButton=true,RebirthButton=true,ShopButton=true,
+ CommunityRewardsButton=true,PetsButton=true,MergeButton=true}
+local function soundScope(button)
+ local strength=player.PlayerGui:FindFirstChild("StrengthGui")
+ local hud=strength and strength:FindFirstChild("HUD")
+ local menu=strength and strength:FindFirstChild("LeftMenu")
+ local x=button
+ while x and x~=player.PlayerGui do
+  if x:GetAttribute("NoUISound")==true then return "Silent" end
+  if x.Parent==hud and (x.Name=="WinAmount" or x.Name=="RebirthAmount") then return "Display" end
+  if x.Parent==menu and leftActions[x.Name] then return "ClickOnly" end
+  x=x.Parent
+ end
+ return "Normal"
+end
 function M.CanInteract(button) return usable(button) end
+function M.CanSound(button,kind)
+ if not usable(button) then return false end
+ local scope=soundScope(button)
+ return scope~="Silent" and scope~="Display" and (kind~="Hover" or scope~="ClickOnly")
+end
 function M.Hover(button)
- if not usable(button) or UIS:GetLastInputType()~=Enum.UserInputType.MouseMovement or hovered[button] then return false end
+ if not M.CanSound(button,"Hover") or UIS:GetLastInputType()~=Enum.UserInputType.MouseMovement or hovered[button] then return false end
  hovered[button]=true
  if pendingHover then
   -- A parent card and its child purchase target can enter in the same frame.
@@ -70,13 +99,13 @@ function M.Hover(button)
  pendingHover=button
  task.defer(function()
   local target=pendingHover;pendingHover=nil
-  if target and hovered[target] and usable(target) then M.Play("Hover") end
+  if target and hovered[target] and M.CanSound(target,"Hover") then M.Play("Hover") end
  end)
  return true
 end
 function M.Leave(button) hovered[button]=nil end
 function M.Button(button,hover)
- if not usable(button) then return false end
+ if not M.CanSound(button,hover and "Hover" or "Click") then return false end
  -- These buttons already call the shared hover entry from their existing owner.
  if button:GetAttribute(hover and "ExistingHoverSE" or "ExistingClickSE") then return false end
  if hover then return M.Hover(button) end
@@ -84,6 +113,10 @@ function M.Button(button,hover)
 end
 function M.BindButton(button)
  if not button:IsA("GuiButton") or buttons[button] then return end
+ if soundScope(button)=="Display" then
+  button.Active=false;button.Interactable=false;button.Selectable=false;button.AutoButtonColor=false
+  return
+ end
  -- This entire existing tree is already owned by ButtonClient.
  local screen=button:FindFirstAncestorWhichIsA("ScreenGui")
  if screen and screen.Name=="ScreenGui" then return end

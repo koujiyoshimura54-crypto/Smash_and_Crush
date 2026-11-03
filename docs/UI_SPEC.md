@@ -742,3 +742,8 @@ Native solo and two-client runtime checks passed. Boss body-motion screenshots w
 ## 2026-11-02 — Missing event sound feedback
 
 Connected silent active event paths to existing SoundService.UI audio, preserving existing button/hatch/Trophy sounds. Added settings live in ReplicatedStorage.Config.UISoundConfig.Added. Confirmed-result IDs/state guard duplicates; no receipt/save schema change. Isolated native Play checked counts, denial/replay/cancellation, death/respawn and loaded advancing playback. Actual listening and physical mouse/touch input remain unverified. [Full event matrix, changed paths and limits](../reports/EventSoundConnections_20261102.md). Canonical Studio remains unsaved Edit.
+
+
+## 2026-11-03 — Pet HUD, Hover and Battle Bag repair (visual acceptance open)
+
+Pet inventory uses a single outlined Best Equip caption, static card sizes, and a temporary ScreenGui layer above the regular HUD with an input shield. Merge retains numeric point-descending order. Left menu actions are Hover-silent/click-enabled; Win/Rebirth counters are noninteractive and silent. Hover playback uses the source volume multiplied by UISoundConfig.Added.Hover.Volume. The unsaved Studio coefficient 0.15 and other manual sound settings are preserved pending the explicit clarification; requested initial coefficient 1 is not yet applied. Battle Bag is loaded/alive/battle-area gated and uses HUDLayout.BattleBagScale=1.5. Runtime state, callback and numeric tests passed within the limits recorded; no screenshot or listening acceptance was obtained. [Full paths, evidence and open items](../reports/PetHudRepair_20261103/REPORT.md). Test fixtures removed; Studio is unsaved Edit.

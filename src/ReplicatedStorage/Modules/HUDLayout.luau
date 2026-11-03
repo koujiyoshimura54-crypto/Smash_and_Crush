@@ -4,6 +4,7 @@ local TweenService=game:GetService("TweenService")
 local Presentation=require(script.Parent.StrengthHUDPresentation)
 local PurchaseStyle=require(game:GetService("ReplicatedStorage").Config.StrengthHUDStyle)
 local M={}
+M.BattleBagScale=1.5 -- Absolute multiplier of the original icon/text/gap dimensions.
 local function write(object,key,value)
  if object[key]~=value then object[key]=value end
 end
@@ -281,28 +282,32 @@ function M.Mount(gui)
   local strength=gui:FindFirstChild("StrengthLevelHUD")
   -- Independent of TopHUD's Win scale; keep this readout legible on phones.
   local inventory=hud:FindFirstChild("RunInventoryLabel")
+  local originalInventoryBottom
   if inventory then
    local small=compact and w>h
    local ix=small and leftX+leftWidth*leftScale+12 or edge
-   local iy=small and winY+64*winScale+10 or 12
+   local originalY=small and winY+64*winScale+10 or 12
+   originalInventoryBottom=originalY+28
+   local scale=math.min(M.BattleBagScale,math.max(.1,(w-edge-ix)/(small and 180 or 220)))
+   local height=28*scale
+   -- Grow upward into the existing top margin; keep other HUD/Back anchors unchanged.
+   local iy=math.max(4,originalInventoryBottom-height)
    local icon=hud:FindFirstChild("RunInventoryIcon")
-   local height=28
-   local inset=icon and height+8 or 0
+   local inset=icon and (28+8)*scale or 0
    if icon then
     icon.Position=UDim2.fromOffset(ix,iy)
     icon.Size=UDim2.fromOffset(height,height)
    end
    inventory.Position=UDim2.fromOffset(ix+inset,iy)
-   inventory.Size=UDim2.fromOffset((small and 180 or 220)-inset,height)
-   -- The purchased counter's 24px number style fits the existing 28px readout.
-   inventory.TextSize=hud.WinAmount.Main.TextSize
+   inventory.Size=UDim2.fromOffset((small and 180 or 220)*scale-inset,height)
+   inventory.TextSize=hud.WinAmount.Main.TextSize*scale
   end
   local returnButton=hud:FindFirstChild("RunReturnButton")
   local returnY=12
   if returnButton then
    if compact then
     returnY=winY+64*winScale+12
-    if inventory then returnY=math.max(returnY,inventory.Position.Y.Offset+inventory.Size.Y.Offset+10) end
+    if originalInventoryBottom then returnY=math.max(returnY,originalInventoryBottom+10) end
    end
    returnButton.AnchorPoint=Vector2.new(.5,0)
    write(returnButton,"Size",UDim2.fromOffset(0,compact and 44 or 48))
@@ -557,7 +562,7 @@ function M.PurchaseButton(button,currency,value)
   -- starting its global binder or any purchased gameplay service.
   entry.resize=resize
   local function sound(name)
-   if not require(script.Parent.UIFeedback).CanInteract(button) then return end
+   if not require(script.Parent.UIFeedback).CanSound(button,name) then return end
    local ui=game:GetService("SoundService"):FindFirstChild("UI")
    local clip=ui and ui:FindFirstChild(name)
    if clip and clip:IsA("Sound") then clip:Play() end

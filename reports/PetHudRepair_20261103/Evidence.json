@@ -1,0 +1,344 @@
+{
+  "placeId": 126576845524886,
+  "date": "2026-11-03",
+  "baselineCommit": "49271bd",
+  "visualCapture": {
+    "available": false,
+    "renderSteppedDuringTwoSeconds": 0,
+    "heartbeatsDuringTwoSeconds": 120,
+    "nativeCapture": "timed out; no pixels returned",
+    "nativePointer": "timed out; no physical input acceptance"
+  },
+  "native": {
+    "soundEvents": {
+      "WinHover": {
+        "Callbacks": 0,
+        "Hover": 0,
+        "Click": 0
+      },
+      "Disabled": {
+        "Callbacks": 1,
+        "Hover": 0,
+        "Click": 0
+      },
+      "WinClick": {
+        "Callbacks": 0,
+        "Hover": 0,
+        "Click": 0
+      },
+      "LeftHover": {
+        "Callbacks": 1,
+        "Hover": 0,
+        "Click": 0
+      },
+      "Hidden": {
+        "Callbacks": 1,
+        "Hover": 0,
+        "Click": 0
+      },
+      "GroupCopied": true,
+      "SourceMute": true,
+      "InputType": "Enum.UserInputType.MouseMovement",
+      "Duplicate": 0,
+      "TabHover": {
+        "Callbacks": 1,
+        "Hover": 1,
+        "Click": 0
+      },
+      "LeftClick": {
+        "Callbacks": 2,
+        "Hover": 0,
+        "Click": 1
+      },
+      "TabPath": "Players.yossy945.PlayerGui.MergeShopGui.MergeShopPanel.Body.Pet",
+      "RebirthCount": {
+        "Callbacks": 0,
+        "Hover": 0,
+        "Click": 0
+      }
+    },
+    "hoverVolumes": [
+      {
+        "Factor": 0,
+        "Source": 1,
+        "Group": "nil",
+        "Actual": 0,
+        "Playing": true
+      },
+      {
+        "Factor": 0.5,
+        "Source": 1,
+        "Group": "nil",
+        "Actual": 0.5,
+        "Playing": true
+      },
+      {
+        "Factor": 1,
+        "Source": 1,
+        "Group": "nil",
+        "Actual": 1,
+        "Playing": true
+      }
+    ],
+    "bag": {
+      "LabelSize": "276, 42",
+      "TextVisible": true,
+      "Gap": 12,
+      "Text": "0 / 5",
+      "ReturnSize": "{0, 0}, {0, 0}",
+      "Visible": true,
+      "Fighting": false,
+      "Position": "22, 4",
+      "IconSize": "42, 42",
+      "IconVisible": true,
+      "TextSize": 36,
+      "World": 1
+    },
+    "merge": [
+      {
+        "Y": 182.40000915527344,
+        "X": 154.5999755859375,
+        "Name": "Chimpanzini Bananini",
+        "Order": 1,
+        "Points": 6250,
+        "Text": "6.2K"
+      },
+      {
+        "Y": 182.40000915527344,
+        "X": 257.79998779296875,
+        "Name": "Ninja",
+        "Order": 2,
+        "Points": 1250,
+        "Text": "1.2K"
+      },
+      {
+        "Y": 182.40000915527344,
+        "X": 361,
+        "Name": "Turtle",
+        "Order": 3,
+        "Points": 1250,
+        "Text": "1.2K"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 154.5999755859375,
+        "Name": "Shark",
+        "Order": 4,
+        "Points": 1000,
+        "Text": "1K"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 257.79998779296875,
+        "Name": "Elephant",
+        "Order": 5,
+        "Points": 250,
+        "Text": "250"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 361,
+        "Name": "Bat",
+        "Order": 6,
+        "Points": 200,
+        "Text": "200"
+      },
+      {
+        "Y": 388.79998779296875,
+        "X": 154.5999755859375,
+        "Name": "Bear",
+        "Order": 7,
+        "Points": 30,
+        "Text": "30"
+      },
+      {
+        "Y": 388.79998779296875,
+        "X": 257.79998779296875,
+        "Name": "Dog",
+        "Order": 8,
+        "Points": 10,
+        "Text": "10"
+      }
+    ],
+    "mergeAfterSelection": [
+      {
+        "Y": 182.40000915527344,
+        "X": 154.5999755859375,
+        "Name": "Chimpanzini Bananini",
+        "Order": 1,
+        "Points": 6250,
+        "Text": "6.2K"
+      },
+      {
+        "Y": 182.40000915527344,
+        "X": 257.79998779296875,
+        "Name": "Ninja",
+        "Order": 2,
+        "Points": 1250,
+        "Text": "1.2K"
+      },
+      {
+        "Y": 182.40000915527344,
+        "X": 361,
+        "Name": "Turtle",
+        "Order": 3,
+        "Points": 1250,
+        "Text": "1.2K"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 154.5999755859375,
+        "Name": "Shark",
+        "Order": 4,
+        "Points": 1000,
+        "Text": "1K"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 257.79998779296875,
+        "Name": "Elephant",
+        "Order": 5,
+        "Points": 250,
+        "Text": "250"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 361,
+        "Name": "Bat",
+        "Order": 6,
+        "Points": 200,
+        "Text": "200"
+      },
+      {
+        "Y": 388.79998779296875,
+        "X": 154.5999755859375,
+        "Name": "Bear",
+        "Order": 7,
+        "Points": 30,
+        "Text": "30"
+      },
+      {
+        "Y": 388.79998779296875,
+        "X": 257.79998779296875,
+        "Name": "Dog",
+        "Order": 8,
+        "Points": 10,
+        "Text": "10"
+      }
+    ],
+    "mergeAfterReopen": [
+      {
+        "Y": 182.40000915527344,
+        "X": 154.5999755859375,
+        "Name": "Chimpanzini Bananini",
+        "Order": 1,
+        "Points": 6250,
+        "Text": "6.2K"
+      },
+      {
+        "Y": 182.40000915527344,
+        "X": 257.79998779296875,
+        "Name": "Ninja",
+        "Order": 2,
+        "Points": 1250,
+        "Text": "1.2K"
+      },
+      {
+        "Y": 182.40000915527344,
+        "X": 361,
+        "Name": "Turtle",
+        "Order": 3,
+        "Points": 1250,
+        "Text": "1.2K"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 154.5999755859375,
+        "Name": "Shark",
+        "Order": 4,
+        "Points": 1000,
+        "Text": "1K"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 257.79998779296875,
+        "Name": "Elephant",
+        "Order": 5,
+        "Points": 250,
+        "Text": "250"
+      },
+      {
+        "Y": 285.6000061035156,
+        "X": 361,
+        "Name": "Bat",
+        "Order": 6,
+        "Points": 200,
+        "Text": "200"
+      },
+      {
+        "Y": 388.79998779296875,
+        "X": 154.5999755859375,
+        "Name": "Bear",
+        "Order": 7,
+        "Points": 30,
+        "Text": "30"
+      },
+      {
+        "Y": 388.79998779296875,
+        "X": 257.79998779296875,
+        "Name": "Dog",
+        "Order": 8,
+        "Points": 10,
+        "Text": "10"
+      }
+    ]
+  },
+  "layout": {
+    "mode": "Runtime property measurements; panel UIScale forced to 1 because native renderer was inactive",
+    "normal": {
+      "headerBottom": 191.95398330688477,
+      "listTop": 202.4913330078125,
+      "cardSide": 125.873055
+    },
+    "isolatedNarrowPanel": {
+      "width": 390,
+      "height": 460,
+      "headerBottom": 179.81504440307617,
+      "listTop": 192.44776916503906,
+      "cardSide": 107.419174
+    },
+    "displayOrder": {
+      "petOpen": 11,
+      "normalHUD": 10,
+      "petClosed": 0,
+      "hatch": 20
+    },
+    "bestCaptions": [
+      "Best Equip"
+    ],
+    "hiddenButtonTexts": []
+  },
+  "cleanup": {
+    "restoredTemporarySources": 41,
+    "baselineSources": 465,
+    "baselineObjects": 16401,
+    "baselineProperties": 51131,
+    "unexpectedDifferences": [],
+    "temporaryObjectsRemaining": [],
+    "cameraUnchanged": true,
+    "focusUnchanged": true,
+    "httpSettingUnchanged": true,
+    "mode": "Edit",
+    "unsaved": true
+  },
+  "config": {
+    "studioUnmodified": {
+      "Hover": 0.15,
+      "Rebirth": 1.3,
+      "Offline": 1.3,
+      "Merge": 1.3
+    },
+    "requestedHoverDefault": 1,
+    "requestedDefaultStatus": "Pending answer to explicit preservation clarification; no Config Source write"
+  }
+}

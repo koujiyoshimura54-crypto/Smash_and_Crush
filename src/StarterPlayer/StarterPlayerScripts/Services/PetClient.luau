@@ -15,6 +15,15 @@ local HUDStyle = require(ReplicatedStorage.Config.StrengthHUDStyle)
 local function styleText(root)
  for _,label in ipairs({root,unpack(root:GetDescendants())}) do
   if not (label:IsA("TextLabel") or label:IsA("TextButton") or label:IsA("TextBox")) then continue end
+  -- Transparent input text still renders a contextual UIStroke. Keep input labels empty.
+  if label:IsA("GuiButton") then
+   label.Text="";label.TextTransparency=1;label.TextStrokeTransparency=1
+   for _,child in label:GetChildren() do
+    if child:IsA("UIStroke") and child.ApplyStrokeMode==Enum.ApplyStrokeMode.Contextual then child:Destroy() end
+   end
+   continue
+  end
+  if label.Name:match("Shadow$") then label.Visible=false;continue end
   label.Font=HUDStyle.Font;label.TextStrokeTransparency=1
   local outline
   for _,child in ipairs(label:GetChildren()) do
@@ -342,6 +351,8 @@ local function buildTile(id: string, name: string, order: number, options: any?)
 	end
 
  if not options.activate then
+  local input=tile:FindFirstChild(BUTTON_NAME)
+  if input then input:SetAttribute("NoButtonScale",true) end
   -- Reserve a bottom strip; Pet Merge keeps its original tiles and point labels.
   if main then
    local icon=main:FindFirstChild(ICON_NAME)
@@ -563,7 +574,13 @@ local function bind(gui: ScreenGui)
   local best=viewJanitor:Add(donor:Clone())
   best.Name="PetBestEquip";best.AnchorPoint=Vector2.new(.5,.5)
   best.Position=UDim2.fromScale(.78,.21);best.Size=UDim2.fromScale(.34,.11)
-  best.Visible=shown;setPair(best,TITLE_NAME,"Best Equip");styleText(best)
+  best.Visible=shown
+  local caption=assert(best:FindFirstChild(TITLE_NAME))
+  -- Exactly one visible caption, even if the donor later acquires a shadow/old label.
+  for _,label in best:GetDescendants() do
+   if label:IsA("TextLabel") and label~=caption then label:Destroy() end
+  end
+  setText(caption,"Best Equip");styleText(best)
   bestFrame=best;bestButton=best:FindFirstChild(BUTTON_NAME)
   if bestButton then
    viewJanitor:Add(bestButton.Activated:Connect(function()

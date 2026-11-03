@@ -46,6 +46,18 @@ local openName: string? = nil
 local openToken = 0
 
 local slid = false
+local originalOrder = 0
+local petShield: TextButton? = nil
+local function petLayer(on: boolean)
+ local gui=screen
+ if not gui then return end
+ local inventory=Menus.Inventory
+ if inventory then inventory.frame.Interactable=on end
+ if petShield then petShield.Visible=on;petShield.Active=on;petShield.Interactable=on end
+ local strength=gui.Parent and gui.Parent:FindFirstChild("StrengthGui")
+ -- Above ordinary HUD (10), below the existing HatchGui (20) and purchase screens.
+ gui.DisplayOrder=on and math.max(originalOrder,(strength and strength.DisplayOrder or 10)+1) or originalOrder
+end
 
 local function findPath(root: Instance, path: {string}): Instance?
 	local current: Instance? = root
@@ -123,12 +135,13 @@ local function collect(gui: ScreenGui)
 		return
 	end
 
+	if screen~=gui then originalOrder=gui.DisplayOrder end
 	screen = gui
 
 	for _, child in ipairs(gui:GetChildren()) do
 		if not child:IsA("GuiObject") then continue end
 
-		if child.Name == Config.Leave.frame then continue end
+		if child.Name == Config.Leave.frame or child.Name=="PetInputShield" then continue end
 
 		table.insert(Panels, { frame = child, base = child.Position })
 
@@ -203,6 +216,18 @@ local function bind(gui: ScreenGui)
 	slid = false
 
 	collect(gui)
+ local shield=gui:FindFirstChild("PetInputShield")
+ if not shield then
+  shield=Instance.new("TextButton");shield.Name="PetInputShield"
+  shield.Text="";shield.TextTransparency=1;shield.BackgroundTransparency=1
+  shield.BorderSizePixel=0;shield.AutoButtonColor=false;shield.Selectable=false
+  shield.Size=UDim2.fromScale(1,1);shield.Position=UDim2.new()
+  shield.ZIndex=0;shield:SetAttribute("NoUISound",true);shield.Visible=false
+  shield.Parent=gui
+ end
+ petShield=shield
+ petLayer(false)
+ janitor:Add(gui.Destroying:Connect(function()petShield=nil end))
 	bindButtons(gui)
 end
 
@@ -219,6 +244,7 @@ function MenuClient.open(name: string)
 
 	hideOthers(name)
 	menu.frame.Visible = true
+	petLayer(name=="Inventory")
 
 	if wasOpen then
 		menu.scale.Scale = menu.open
@@ -238,6 +264,7 @@ function MenuClient.close()
 	local name = openName
 	if not name then return end
 	openName = nil
+	petLayer(false)
 
 	local menu = Menus[name]
 	if not menu then return end
@@ -261,6 +288,7 @@ function MenuClient.close()
 end
 
 function MenuClient.shroud(on: boolean)
+	petLayer(false)
 	openToken += 1
 	local token = openToken
 

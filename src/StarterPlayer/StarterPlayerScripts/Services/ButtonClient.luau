@@ -1,5 +1,8 @@
 type Button = {
 	frame: GuiObject,
+	button: GuiButton,
+	tween: Tween?,
+	scaled: boolean,
 	base: UDim2,
 	hover: UDim2,
 	press: UDim2,
@@ -58,15 +61,22 @@ local function scaled(size: UDim2, factor: number): UDim2
 end
 
 local function play(sound: Sound?, button: GuiButton)
-	if not sound or not require(ReplicatedStorage.Modules.UIFeedback).CanInteract(button) then return end
+	if not sound or not require(ReplicatedStorage.Modules.UIFeedback).CanSound(button,"Click") then return end
 
 	sound:Play()
 end
 
 local function resize(entry: Button)
-	local target = if entry.pressed then entry.press elseif entry.hovered then entry.hover else entry.base
-
-	TweenService:Create(entry.frame, SIZE_INFO, { Size = target }):Play()
+ local wasAnimating=entry.tween and entry.tween.PlaybackState==Enum.PlaybackState.Playing
+ if entry.tween then entry.tween:Cancel();entry.tween=nil end
+ if entry.button:GetAttribute("NoButtonScale")==true then
+  if entry.scaled or wasAnimating then entry.frame.Size=entry.base;entry.scaled=false end
+  return
+ end
+ local target = if entry.pressed then entry.press elseif entry.hovered then entry.hover else entry.base
+ entry.scaled=entry.pressed or entry.hovered
+ entry.tween=TweenService:Create(entry.frame,SIZE_INFO,{Size=target})
+ entry.tween:Play()
 end
 
 local function showTip(entry: Button, on: boolean)
@@ -90,6 +100,7 @@ local function bindButton(button: GuiButton, bag: any)
 
 	local entry: Button = {
 		frame = frame,
+  button = button, tween = nil, scaled = false,
 		base = base,
 		hover = scaled(base, hoverScale),
 		press = scaled(base, hoverScale * Config.Button.pressScale),
@@ -104,11 +115,15 @@ local function bindButton(button: GuiButton, bag: any)
 
 	bag:Add(function()
 		Buttons[button] = nil
-		frame.Size = base
+  if entry.tween then entry.tween:Cancel() end
+		if button:GetAttribute("NoButtonScale")~=true then frame.Size = base end
 
 		showTip(entry, false)
 	end, true)
 
+ bag:Add(button:GetAttributeChangedSignal("NoButtonScale"):Connect(function()
+  entry.hovered=false;entry.pressed=false;resize(entry)
+ end))
 	bag:Add(button.MouseEnter:Connect(function()
 		entry.hovered = true
 		require(ReplicatedStorage.Modules.UIFeedback).Hover(button)
