@@ -1,3 +1,7 @@
+# 2026-11-03 — Restore equipped Dumbbell gains throughout the Lobby
+
+Changed only StrengthManager's Dumbbell applicability gate to existing server Lobby geometry. Both Worlds now include it during normal Lobby gains and treadmill ticks, exclude it in Battle, and restore it on return. Native isolated two-client measurements and cleanup passed; purchase/offline references unchanged. [Record](../reports/DumbbellLobby_20261103.md).
+
 # 2026-11-03 — Put World1 Boss Ore in Battle Bag
 
 Corrected the previous Item-only bag routing: normal Ore and first Stone now count toward provisional capacity, bank with Items, and are lost if unbanked at death. Existing durable holdings, TimeReward and lifetime guarantee consumption preserved. Native/pure checks and cleanup passed. [Record](../reports/World1BossOreBag_20261103.md).

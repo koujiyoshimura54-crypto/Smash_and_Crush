@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-03 — Lobby Dumbbell correction
+
+Only the applicability gate changes: live Dumbbell addition is the equipped base bonus inside the current World's Training Lobby footprint, otherwise zero. It is added once per existing gain tick before the existing multipliers, independently of treadmill boarding. Base bonuses, all other equipment factors, treadmill values and input cadence are unchanged. Fixed rewards and the raw equipment/reference-rate APIs are unchanged. [Measured examples](../reports/DumbbellLobby_20261103.md).
+
 ## 2026-11-03 — Additive three-Pet Strength
 
 The current Pet modifier is **1 + sum of equipped individual StrengthPercent / 100**, up to three owned copies. 10% + 20% + 30% = ×1.6. Existing individual effects, normal gain factors and applicability are unchanged. The shared modifier flows through PetServer to normal StrengthManager gain and StrengthReference. Fixed purchase/offline amounts and receipt records are retained. This supersedes the first-equipped-only statement below. [Native calculation checks](../reports/PetThreeAndPresentation_20261103.md).

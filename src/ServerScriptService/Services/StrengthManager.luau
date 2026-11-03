@@ -2,6 +2,7 @@ local Players = game:GetService("Players")
 
 local PlayerData=require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
 local DumbbellService=require(game.ServerScriptService.Services:WaitForChild("DumbbellService"))
+local TrainingLobbyArea=require(game.ServerScriptService.Services:WaitForChild("TrainingLobbyAreaService"))
 local ItemService=require(game.ServerScriptService.Services:WaitForChild("ItemService"))
 local AuraService=require(game.ServerScriptService.Services:WaitForChild("AuraService"))
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
@@ -166,8 +167,9 @@ function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier
  if not isFiniteNumber(amount) then return nil, "amount must be a finite number" end
  tickCount=tickCount or 1
  if not isFiniteNumber(tickCount) or tickCount<1 or tickCount%1~=0 then return nil, "tickCount must be a positive integer" end
- -- V5: Dumbbell contributes to training; walking uses Base + Aura + Protein.
- local bonus=sourceMultiplier~=nil and DumbbellService.GetStrengthBonus(player) or 0
+ -- Live Dumbbell gains depend on the server Lobby footprint, not treadmill occupancy.
+ -- Keep the raw equipment bonus location-independent for reward/reference snapshots.
+ local bonus=TrainingLobbyArea.IsInTrainingLobby(player) and DumbbellService.GetStrengthBonus(player) or 0
  local proteinBonus=ItemService.GetProteinBonus(player)
  local auraBonus=AuraService.GetStrengthBonus(player)
  -- Only the server training caller supplies this multiplier; walking defaults to 1.

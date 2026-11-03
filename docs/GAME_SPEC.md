@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-03 — Dumbbell gain follows the Lobby
+
+In both Worlds, equipped Dumbbell Strength addition applies to existing live gains inside the server Training Lobby footprint, including red carpets and treadmills. Outside the Lobby it contributes zero without unequipping; returning restores it. Treadmill multipliers retain their original effect on the complete gain. This supersedes earlier treadmill-only Dumbbell applicability. Purchase/offline reference snapshots remain location-independent. [Verification](../reports/DumbbellLobby_20261103.md).
+
 ## 2026-11-03 — Boss Ore shares Battle Bag
 
 Supersedes earlier direct World1 Boss-Ore grants: normal Boss Ore and first Stage1 Stone now enter the provisional Battle Bag together with Items. They share capacity and Drop-ID dedupe, are banked atomically on the existing return path, and are lost on death before bank confirmation. Lifetime first-defeat consumption survives loss; old owned Ore is retained. TimeReward Stone still grants directly. [Evidence](../reports/World1BossOreBag_20261103.md).

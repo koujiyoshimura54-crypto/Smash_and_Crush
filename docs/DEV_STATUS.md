@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Dumbbell Lobby gain correction
+
+One live Source now gates Dumbbell additions on the existing server Lobby bounds instead of treadmill-source arguments. Native two-client isolated Play passed manual, walking/Auto, treadmill, Battle/return, death and World-travel checks in both Worlds; only three fixture-affected cases required a focused retry. Reference rates and all other gain factors remain unchanged. Helpers removed;475 Sources and74 SoundIds preserved; unsaved Edit retained. [Evidence and limits](../reports/DumbbellLobby_20261103.md).
+
 ## 2026-11-03 — Boss Ore Battle Bag correction
 
 Seven live Sources now carry Boss Ore in the real provisional bag and atomically bank Item/Ore deltas together. Native combat/return/death/reset, mixed capacity, lost-ack retry and actual1/5・5/5 pixels passed;20 focused plus18 legacy transaction cases passed. TimeReward remains direct. Helpers removed; unsaved Edit retained. [Record and limits](../reports/World1BossOreBag_20261103.md).
