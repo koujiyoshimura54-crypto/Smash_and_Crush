@@ -57,4 +57,3 @@ Item/Pet/Aura/Rebirth values, each-Item ×1.5, Best Equip, treadmill settings, i
 - Canonical Studio is back in **Edit with unsaved changes**. No Save, Publish, rbxl write, OS input, camera/device-preview change or user Studio shutdown was performed. The user must manually Save/Publish.
 
 Fixtures: tests/DumbbellLobby.server.luau and tests/DumbbellLobby.client.luau. They are not installed in the final DataModel and require the memory-isolation harness to run safely.
-

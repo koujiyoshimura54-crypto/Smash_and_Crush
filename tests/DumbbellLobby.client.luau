@@ -17,4 +17,3 @@ RS:WaitForChild("__DumbQARequest").OnClientEvent:Connect(function(id,action,valu
  end)
  RS.__DumbQAReply:FireServer(id,{OK=ok,Value=result})
 end)
-

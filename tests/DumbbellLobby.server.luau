@@ -187,4 +187,3 @@ local ok,err=xpcall(function()
 end,debug.traceback)
 if not ok then report.Cases[#report.Cases+1]={Label="setup",Passed=false,Error=err}end
 finish()
-
