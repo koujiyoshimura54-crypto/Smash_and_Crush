@@ -10,6 +10,26 @@ local HttpService = game:GetService("HttpService")
 local Config = require(ReplicatedStorage.Modules.Config)
 local Pet = require(ReplicatedStorage.Modules.Pet)
 local LimitedViewport = require(ReplicatedStorage.Modules.LimitedPetViewport)
+local HUDStyle = require(ReplicatedStorage.Config.StrengthHUDStyle)
+-- Pet-only display projection; preserve localization, sizing and authored colors.
+local function styleText(root)
+ for _,label in ipairs({root,unpack(root:GetDescendants())}) do
+  if not (label:IsA("TextLabel") or label:IsA("TextButton") or label:IsA("TextBox")) then continue end
+  label.Font=HUDStyle.Font;label.TextStrokeTransparency=1
+  local outline
+  for _,child in ipairs(label:GetChildren()) do
+   if child:IsA("UIStroke") then if outline then child.Enabled=false else outline=child end end
+  end
+  outline=outline or Instance.new("UIStroke")
+  outline.Name="PetTextOutline";outline.Enabled=true
+  outline.ApplyStrokeMode=Enum.ApplyStrokeMode.Contextual
+  outline.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+  outline.Thickness=HUDStyle.Text.Price.Stroke
+  outline.Color=HUDStyle.Colors.Outline;outline.Transparency=0
+  for _,child in ipairs(outline:GetChildren()) do if child:IsA("UIGradient") then child.Enabled=false end end
+  outline.Parent=label
+ end
+end
 
 local GUI_NAME = "ScreenGui"
 local MENU_PATH = { "Menus", "Inventory" }
@@ -48,6 +68,7 @@ local Tiles: {[string]: GuiObject} = {}
 local janitor = Janitor.new()
 
 local cardJanitor = Janitor.new()
+local viewJanitor = Janitor.new()
 
 local cardRoot: GuiObject? = nil
 local playerData: any = nil -- validated legacy Pet state, never purchased Data
@@ -63,6 +84,8 @@ local icons: Instance? = nil
 local menu: GuiObject? = nil
 local itemsFrame: GuiObject? = nil
 local infoLabel: GuiObject? = nil
+local bestFrame: GuiObject? = nil
+local bestButton: GuiButton? = nil
 
 local shown = true
 
@@ -229,6 +252,7 @@ function PetClient.showCard(name: string, root: GuiObject)
 		if icon and icon:IsA("GuiObject") then icon.Visible = false end
 	end
 
+	styleText(card)
 	card.Parent = root
 
 	PetClient.moveCard()
@@ -261,10 +285,20 @@ function PetClient.pinCard(name: string, root: GuiObject, position: UDim2, size:
 	PetClient.placeCard(position, size)
 end
 
+local function refreshBest()
+ local button=bestButton
+ if not button then return end
+ local enabled=shown and playerData~=nil and next(playerData.Owned)~=nil and not pending and Player:GetAttribute("PetSavePending")~=true
+ button.Active=enabled;button.Interactable=enabled;button.Selectable=enabled
+ local title=bestFrame and bestFrame:FindFirstChild(TITLE_NAME)
+ if title and title:IsA("TextLabel") then title.TextTransparency=enabled and 0 or .4 end
+end
+
 local function refreshChecks()
 	local Equipped = if playerData then playerData.Equipped else {}
  local count=#Pet.EquippedEntries(playerData)
- setText(infoLabel,string.format("Equipped (%d/%d)  Strength ×%g",count,Pet.MaxEquipped,Pet.StrengthMultiplier(playerData)))
+ setText(infoLabel,string.format("Equipped (%d/%d)\nStrength ×%g",count,Pet.MaxEquipped,Pet.StrengthMultiplier(playerData)))
+ refreshBest()
 
 	for name, tile in Tiles do
 		local main = tile:FindFirstChild(MAIN_NAME)
@@ -307,6 +341,27 @@ local function buildTile(id: string, name: string, order: number, options: any?)
 		end
 	end
 
+ if not options.activate then
+  -- Reserve a bottom strip; Pet Merge keeps its original tiles and point labels.
+  if main then
+   local icon=main:FindFirstChild(ICON_NAME)
+   if icon and icon:IsA("GuiObject") then icon.Position=UDim2.fromScale(.5,.52);icon.Size=UDim2.fromScale(.78,.54) end
+   local check=main:FindFirstChild(CHECK_NAME)
+   if check and check:IsA("GuiObject") then check.Position=UDim2.fromScale(.15,.89);check.Size=UDim2.fromScale(.2,.2) end
+  end
+  local title=tile:FindFirstChild(TITLE_NAME)
+  if title and title:IsA("TextLabel") then
+   local multiplier=title:Clone();multiplier.Name="StrengthMultiplier"
+   multiplier.Text=Pet.MultiplierText(name);multiplier.AnchorPoint=Vector2.new(1,1)
+   multiplier.Position=UDim2.fromScale(.96,.97);multiplier.Size=UDim2.fromScale(.68,.16)
+   multiplier.TextXAlignment=Enum.TextXAlignment.Right
+   multiplier.ZIndex=title.ZIndex+1;multiplier.Parent=tile
+  end
+  tile:SetAttribute("StrengthPercent",Pet.StrengthPercent(name) or 0)
+  local aspect=tile:FindFirstChildOfClass("UIAspectRatioConstraint") or Instance.new("UIAspectRatioConstraint")
+  aspect.AspectRatio=1;aspect.DominantAxis=Enum.DominantAxis.Width;aspect.Parent=tile
+  styleText(tile)
+ end
 	tint(tile, name)
 
 	local button = tile:FindFirstChild(BUTTON_NAME)
@@ -414,6 +469,8 @@ function PetClient.setShown(on: boolean)
 		info.Visible = on
 	end
 
+	if bestFrame then bestFrame.Visible=on end
+	refreshBest()
 	for _, tile in Tiles do
 		if tile.Visible == on then continue end
 
@@ -428,12 +485,7 @@ local function rebuild()
 	local root = itemsFrame
 	if not root then return end
 
-	local ids = {}
-	for id in pairs(if playerData then playerData.Owned else {}) do table.insert(ids, id) end
-	table.sort(ids, function(a, b)
-		local left, right = playerData.Owned[a], playerData.Owned[b]
-		return if left == right then a < b else left < right
-	end)
+	local ids = Pet.InventoryIds(playerData)
 	for order, id in ipairs(ids) do
 		local name = playerData.Owned[id]
 		local tile = buildTile(id, name, order)
@@ -443,6 +495,12 @@ local function rebuild()
 		tile.Parent = root
 	end
 
+ local function fitTiles()
+  local width=root.AbsoluteSize.X<480 and .29 or .21
+  for _,tile in pairs(Tiles) do tile.Size=UDim2.fromScale(width,1) end
+ end
+ janitor:Add(root:GetPropertyChangedSignal("AbsoluteSize"):Connect(fitTiles))
+ fitTiles()
 	refreshChecks()
 	-- Automatic canvas bounds omit scale-based padding on the purchased wrapping list.
 	-- Keep automatic sizing (tile heights use the window) and include its full last row.
@@ -471,6 +529,8 @@ local function rebuild()
 end
 
 local function bind(gui: ScreenGui)
+	viewJanitor:Cleanup()
+	bestFrame=nil;bestButton=nil
 	janitor:Cleanup()
 	cardJanitor:Cleanup()
 	table.clear(Tiles)
@@ -494,12 +554,38 @@ local function bind(gui: ScreenGui)
 
 	menu = root
 	itemsFrame = items
+ -- Separate equipment controls from the title and scrolling card region.
+ items.AnchorPoint=Vector2.new(.5,0)
+ items.Position=UDim2.fromScale(.5,.31);items.Size=UDim2.fromScale(1,.67)
+ local main=root:FindFirstChild(MAIN_NAME)
+ local donor=main and main:FindFirstChild("ItemsTab") and main.ItemsTab:FindFirstChild("EquipBest")
+ if donor then
+  local best=viewJanitor:Add(donor:Clone())
+  best.Name="PetBestEquip";best.AnchorPoint=Vector2.new(.5,.5)
+  best.Position=UDim2.fromScale(.78,.21);best.Size=UDim2.fromScale(.34,.11)
+  best.Visible=shown;setPair(best,TITLE_NAME,"Best Equip");styleText(best)
+  bestFrame=best;bestButton=best:FindFirstChild(BUTTON_NAME)
+  if bestButton then
+   viewJanitor:Add(bestButton.Activated:Connect(function()
+    if bestButton and bestButton.Active and bestButton.Interactable and not PetClient.busy() then
+     task.defer(PetClient.request,"BestEquip")
+    end
+   end))
+  end
+  -- ButtonClient's descendant hook owns hover/click audio exactly once.
+  best.Parent=main
+ end
+ if root:FindFirstChild(TITLE_NAME) then styleText(root[TITLE_NAME]) end
 
 	local info = findPath(root, INFO_PATH)
 	if info and info:IsA("GuiObject") then
 		infoLabel = info
 		info.Visible = shown
-		info.AutoLocalize = false -- Do not translate using the retired two-pet caption.
+		info.AutoLocalize = true
+  info.AnchorPoint=Vector2.zero;info.Position=UDim2.fromScale(.04,.14)
+  info.Size=UDim2.fromScale(.55,.14);info.TextXAlignment=Enum.TextXAlignment.Left
+  info.TextWrapped=true;info.TextScaled=true
+  styleText(info)
 	else
 		warn(`[PetClient] could not find {root:GetFullName()}.{table.concat(INFO_PATH, ".")}`)
 	end
@@ -510,6 +596,7 @@ end
 local function retirePetView()
  requestToken+=1
  pending=false
+ refreshBest()
  require(script.Parent.HatchClient).cancelNormal()
 end
 function PetClient.start()
@@ -546,6 +633,7 @@ function PetClient.start()
 		bind(child)
 	end)
 
+	Player:GetAttributeChangedSignal("PetSavePending"):Connect(refreshBest)
 	Player:GetAttributeChangedSignal("PetInventoryRevision"):Connect(function()
 		task.spawn(PetClient.refresh)
 	end)
@@ -607,9 +695,10 @@ function PetClient.request(action,a,b)
 	if not playerData then PetClient.notify("DataNotLoaded");return end
 	if require(script.Parent.HatchClient).playing() then return end
 	pending=true
+	refreshBest()
 	requestToken+=1
 	local token=requestToken
-	local function finish() if token==requestToken then pending=false end end
+	local function finish() if token==requestToken then pending=false;refreshBest() end end
 	local id=HttpService:GenerateGUID(false)
 	local revision=playerData.Revision
 	local generation=stateGeneration

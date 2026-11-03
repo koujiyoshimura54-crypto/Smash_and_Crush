@@ -71,6 +71,49 @@ function Pet.EquippedEntries(state)
  return entries
 end
 
+-- Inventory ordering is separate from PetMerge.Groups' point ordering.
+function Pet.InventoryIds(state)
+ local ids={}
+ for id in pairs(state and state.Owned or {}) do table.insert(ids,id) end
+ table.sort(ids,function(a,b)
+  local left,right=state.Owned[a],state.Owned[b]
+  local x,y=Pet.StrengthPercent(left) or 0,Pet.StrengthPercent(right) or 0
+  if x~=y then return x>y end
+  return if left==right then a<b else left<right
+ end)
+ return ids
+end
+
+-- Trusted mutation path: strength and eligibility come only from owned server data.
+function Pet.BestEquipped(state)
+ local candidates,slots={},{}
+ for slot,id in ipairs(state.Equipped) do if id~="" then slots[id]=slot end end
+ for id,name in pairs(state.Owned) do
+  local percent=Pet.StrengthPercent(name)
+  if percent and percent==percent and percent>=0 and percent<math.huge and Pet.model(name) then
+   table.insert(candidates,{Id=id,Name=name,Percent=percent,Slot=slots[id]})
+  end
+ end
+ table.sort(candidates,function(a,b)
+  if a.Percent~=b.Percent then return a.Percent>b.Percent end
+  if (a.Slot~=nil)~=(b.Slot~=nil) then return a.Slot~=nil end
+  if a.Slot and b.Slot then return a.Slot<b.Slot end
+  return if a.Name==b.Name then a.Id<b.Id else a.Name<b.Name
+ end)
+ local selected,out={},{"","",""}
+ for index=1,math.min(Pet.MaxEquipped,#candidates) do selected[candidates[index].Id]=true end
+ -- Keep existing selected slots as well as tied individuals, avoiding needless reshuffles.
+ for slot,id in ipairs(state.Equipped) do if selected[id] then out[slot]=id;selected[id]=nil end end
+ for _,entry in ipairs(candidates) do
+  if selected[entry.Id] then out[assert(table.find(out,""))]=entry.Id;selected[entry.Id]=nil end
+ end
+ return out
+end
+
+function Pet.MultiplierText(name)
+ return string.format("×%g",1+(Pet.StrengthPercent(name) or 0)/100)
+end
+
 function Pet.StrengthMultiplier(state): number
  local percent=0
  for _,entry in ipairs(Pet.EquippedEntries(state)) do percent+=entry.Percent end
@@ -434,6 +477,9 @@ function Pet.ApplyOperation(raw,op)
    state.Owned[result.id]=result.pet
    table.insert(results,table.clone(result))
   end
+ elseif op.Action=="BestEquip" then
+  state.LastMergeEgg=nil
+  state.Equipped=Pet.BestEquipped(state)
  elseif op.Action=="Equip" then
   state.LastMergeEgg=nil
   if not state.Owned[op.PetId] then return nil,"PetNotOwned" end
@@ -465,6 +511,6 @@ end
 
 function Pet.StrengthText(name)
  local percent=Pet.StrengthPercent(name)
- return percent and string.format("Strength ×%g",1+percent/100) or "Cosmetic pet"
+ return percent and ("Strength "..Pet.MultiplierText(name)) or "Cosmetic pet"
 end
 return Pet

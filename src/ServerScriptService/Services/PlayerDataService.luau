@@ -1437,7 +1437,7 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload,g
  if (generation or 0)~=(s.PetViewGeneration or 0) then return false,"PetStateChanged" end
  local override=s.StudioStartOverride
  local preview=override and s.StudioPetPreview
- if override and (not RunService:IsStudio() or not preview or (action~="Equip" and action~="Hatch" and action~="Merge")) then
+ if override and (not RunService:IsStudio() or not preview or (action~="Equip" and action~="BestEquip" and action~="Hatch" and action~="Merge")) then
   return false,"StudioOverrideActive"
  end
  local data=s.Data
@@ -1482,6 +1482,11 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload,g
   if type(result)~="table" or type(result.id)~="string" or #result.id~=36
    or type(result.pet)~="string" or allowed[result.pet]~=result.percent or not Pet.model(result.pet) then return false,"InvalidPetResult" end
   op.Materials=preview.Ids;op.EggName=payload.EggName;op.Results=payload.Results
+ elseif action=="BestEquip" then
+  local chosen=Pet.BestEquipped(view)
+  local same=true
+  for slot=1,Pet.MaxEquipped do if chosen[slot]~=view.Equipped[slot] then same=false;break end end
+  op.NoChange=same
  elseif action=="Equip" then
   if type(payload)~="string" or not view.Owned[payload] then return false,"PetNotOwned" end
   if not Pet.model(view.Owned[payload]) then return false,"PetModelUnavailable" end
@@ -1491,6 +1496,7 @@ function PlayerDataService.MutatePets(player,requestId,revision,action,payload,g
  if sessions[player]~=s or s.Data~=data or s.StudioStartOverride~=override
   or (generation or 0)~=(s.PetViewGeneration or 0) or s.StudioPetPreview~=preview then return false,"PetStateChanged" end
  if not finite(op.WinBefore) or op.WinBefore<op.PriceWin then return false,"NotEnoughWin" end
+ if op.NoChange then return true,"AlreadyBestEquipped" end
  if preview then
   local state,reason=Pet.ApplyOperation(preview,op)
   if not state then return false,reason end

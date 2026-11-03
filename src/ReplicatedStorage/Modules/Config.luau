@@ -63,7 +63,7 @@ Config.Eggs = {
 
 	Eggs = {
 		Basic = {
-			wins = 15,
+			wins = 3,
 
 			Pets = {
 				["Camel"] = 3,
@@ -1129,7 +1129,7 @@ Config.PetFollow = {
 	yaw = 0,
 
 	back = 4,
-	side = 2.5,
+	side = 3.0,
 	up = 0,
 
 	Sides = { 1, -1 },

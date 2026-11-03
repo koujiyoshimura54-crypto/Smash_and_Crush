@@ -23,6 +23,9 @@ function M.equip(player,id,requestId,revision,generation)
  if not Pet.model(state.Owned[id]) then return false,"PetModelUnavailable" end
  return Data.MutatePets(player,requestId,revision,"Equip",id,generation)
 end
+function M.bestEquip(player,requestId,revision,generation)
+ return Data.MutatePets(player,requestId,revision,"BestEquip",nil,generation)
+end
 function M.publish(player)
  local state=M.state(player)
  if state then Pet.Publish(player,state) end

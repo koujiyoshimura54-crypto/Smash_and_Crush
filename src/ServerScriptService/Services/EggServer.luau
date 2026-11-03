@@ -73,7 +73,7 @@ function M.request(player,action,id,revision,a,b,generation)
   local state,reason,currentGeneration=Pets.state(player)
   return {ok=state~=nil,reason=reason or "State",state=state,generation=currentGeneration,pending=player:GetAttribute("PetSavePending")==true}
  end
- if action~="OpenEgg" and action~="Equip" and action~="Merge" then return reply(player,false,"InvalidAction") end
+ if action~="OpenEgg" and action~="Equip" and action~="BestEquip" and action~="Merge" then return reply(player,false,"InvalidAction") end
  if type(id)~="string" or #id~=36 or not id:match("^[%x%-]+$")
   or type(revision)~="number" or revision~=revision or revision<0 or revision%1~=0 then return reply(player,false,"InvalidPetRequest") end
  local state,reason=Data.GetPetState(player)
@@ -96,6 +96,7 @@ function M.request(player,action,id,revision,a,b,generation)
  if action=="OpenEgg" then
   if type(a)~="string" or type(b)~="string" then return reply(player,false,"InvalidEggRequest") end
   ok,why=open(player,a,b,id,revision,generation)
+ elseif action=="BestEquip" then ok,why=Pets.bestEquip(player,id,revision,generation)
  elseif action=="Merge" then ok,why=mergePets(player,a,id,revision,generation)
  else ok,why=Pets.equip(player,a,id,revision,generation) end
  return reply(player,ok,why)
