@@ -1,5 +1,7 @@
 # Auto ON manual input / shared action clock — 2026-11-03
 
+Correction: the stationary automatic-training behavior described in this historical implementation record was outside the user's requested scope. It was subsequently removed; the original walking predicate is required again. Shared cadence and manual-while-Auto behavior remain. See [the correction and new native verification](AutoWalkingGate_20261103.md). The ordinary-training portion of the original cadence fixture assumes the superseded stationary behavior; use AutoWalkingGate for the corrected movement requirement.
+
 ## Scope, cause and live changes
 
 Canonical unsaved Y01 Studio: PlaceId126576845524886 / UniverseId10765181857. Base Git9c3ed78, including the Dumbbell Lobby correction and2173c0e Boss Ore Battle Bag work. The separate local-file Studio was untouched.

@@ -2,7 +2,7 @@
 
 ## 2026-11-03 — Manual actions while Auto is enabled
 
-Manual gameplay taps remain available with Auto ON. Successful normal Strength, wall and Player-to-Boss actions share one server minimum interval of0.2s. Each success replaces the next-auto deadline: manual +0.3s, automatic +0.5s. Auto OFF suppresses automatic actions only; rejected input does not advance either timestamp. The existing heartbeat now services the automatic normal-gain deadline without requiring movement or accumulating missed walking ticks. One action routes to training or one combat path. Treadmill and Boss-to-Player clocks remain separate. [Evidence](../reports/AutoManualCadence_20261103.md).
+Manual gameplay taps remain available with Auto ON. Successful normal Strength, wall and Player-to-Boss actions share one server minimum interval of0.2s. Each success replaces the next-auto deadline: manual +0.3s, automatic +0.5s. Auto OFF suppresses automatic actions only; rejected input does not advance either timestamp. Automatic ordinary Strength retains the original grounded-walking predicate; stationary Auto does not train. There is no accumulation of missed walking ticks. One action routes to training or one combat path. Treadmill and Boss-to-Player clocks remain separate. [Cadence evidence](../reports/AutoManualCadence_20261103.md), [walking-condition correction](../reports/AutoWalkingGate_20261103.md).
 
 ## 2026-11-03 — Dumbbell gain follows the Lobby
 

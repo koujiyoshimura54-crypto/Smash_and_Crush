@@ -1,3 +1,7 @@
+# 2026-11-03 — Restore the existing walking gate for Auto training
+
+Removed the unintended stationary ordinary-training grant introduced in ad907b3. Restored the original walking predicate without changing manual input, combat routing or the shared action clock. Both-World native checks passed. [Record](../reports/AutoWalkingGate_20261103.md).
+
 # 2026-11-03 — Accept manual actions with Auto ON
 
 Removed all three active Auto-ON manual rejection gates. Shared successful-action timing covers normal Strength, wall and Player-to-Boss hits; superseded automatic reservations are canceled. Existing damage, contact checks, treadmill loop and Boss-to-Player behavior remain. Native isolated measurements and cleanup recorded. [Evidence](../reports/AutoManualCadence_20261103.md).

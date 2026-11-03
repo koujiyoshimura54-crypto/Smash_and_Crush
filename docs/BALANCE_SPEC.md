@@ -2,7 +2,7 @@
 
 ## 2026-11-03 — Shared Player action cadence
 
-AutoTapConfig owns MinimumInterval0.2, AfterManualDelay0.3 and AutoInterval0.5 seconds. Apply these to successful ordinary Strength awards, wall hits and Player-to-Boss hits, not independently per input source. Existing single-action gain/damage arithmetic and modifiers are unchanged. Automatic combat windup leads into the due time; manual success cancels its superseded reservation. Boss-to-Player damage/timing and treadmill periods/multipliers remain unchanged. [Native timings](../reports/AutoManualCadence_20261103.md).
+AutoTapConfig owns MinimumInterval0.2, AfterManualDelay0.3 and AutoInterval0.5 seconds. Apply these to successful ordinary Strength awards, wall hits and Player-to-Boss hits, not independently per input source. Automatic ordinary Strength still requires the original grounded-walking condition; stationary manual taps and automatic combat do not. Existing single-action gain/damage arithmetic and modifiers are unchanged. Automatic combat windup leads into the due time; manual success cancels its superseded reservation. Boss-to-Player damage/timing and treadmill periods/multipliers remain unchanged. [Native timings](../reports/AutoManualCadence_20261103.md).
 
 ## 2026-11-03 — Lobby Dumbbell correction
 

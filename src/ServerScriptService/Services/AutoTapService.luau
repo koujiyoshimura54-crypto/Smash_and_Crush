@@ -18,6 +18,13 @@ end
 local function treadmill(p)
  return p:GetAttribute("IsTraining")==true or Training.GetOccupiedTreadmill(p)~=nil
 end
+local function isGroundedWalking(p)
+ local h=p.Character:FindFirstChildOfClass("Humanoid")
+ local r=p.Character:FindFirstChild("HumanoidRootPart")
+ local st=h:GetState()
+ if st~=Enum.HumanoidStateType.Running and st~=Enum.HumanoidStateType.RunningNoPhysics then return false end
+ return h.MoveDirection.Magnitude>0.05 or Vector3.new(r.AssemblyLinearVelocity.X,0,r.AssemblyLinearVelocity.Z).Magnitude>0.5
+end
 local function act(p,manual)
  if not ready(p) then return false,"NotReady" end
  if not manual and not Data.IsAutoTapEnabled(p) then return false,"AutoDisabled" end
@@ -28,6 +35,9 @@ local function act(p,manual)
  else accepted,reason=Enemy.TryAutomaticAttack(p) end
  if reason~="NoCombat" then return accepted,reason end
  if p:GetAttribute("IsFighting") then return false,"CombatPending" end
+ -- Restore the original movement predicate only for automatic ordinary training.
+ -- Manual taps and already-routed wall/Boss attacks do not require walking.
+ if not manual and not isGroundedWalking(p) then return false,"NotWalking" end
  local before=Strength.GetStrength(p)
  local value,err=Strength.AddStrength(p,TrainingConfig.BaseGain,1)
  if value==nil then return false,err end

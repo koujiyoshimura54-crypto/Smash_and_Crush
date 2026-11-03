@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Restore ordinary Auto training's walking requirement
+
+Corrected an unauthorized stationary-training expansion in ad907b3. One live Source restores the former grounded-walking predicate only for automatic ordinary gains; manual-while-Auto and shared0.2/0.3/0.5s timing remain. Both Worlds passed18 targeted native checks: idle0, moving+3, stationary manual+1, stopped0 and stationary automatic wall damage. Helpers removed; unsaved Edit retained. [Correction and evidence](../reports/AutoWalkingGate_20261103.md).
+
 ## 2026-11-03 — Auto ON manual actions and one shared cadence
 
 Six live Sources now accept manual gameplay input with Auto ON and use a common server0.2s success floor, manual→auto0.3s and auto→auto0.5s. Native two-client tests passed both Worlds' Strength/wall/Boss routes, rejections, contact/death/re-fight, peer independence, GUI exclusion and separate treadmill ticks. Fixed one deferred-notification reset race; focused fixture retries completed the remaining cases.476 Sources/74 SoundIds preserved after cleanup; unsaved Edit retained. [Timings and limits](../reports/AutoManualCadence_20261103.md).
