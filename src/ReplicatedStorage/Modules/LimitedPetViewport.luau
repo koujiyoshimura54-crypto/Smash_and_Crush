@@ -123,6 +123,8 @@ function M.bind(host,name,reserveTitle)
     view.Position=reserveTitle==false and UDim2.fromScale(0,0) or UDim2.fromScale(.03,.20)
     view.Size=reserveTitle==false and UDim2.fromScale(1,1) or UDim2.fromScale(.94,.76)
    end
+   local view=host:FindFirstChild("LimitedPetViewport")
+   if view then view.ImageColor3=host:GetAttribute("PetSilhouette")==true and Color3.new(0,0,0) or Color3.new(1,1,1) end
   else clear() end
  end
  local function watch()
@@ -143,6 +145,7 @@ function M.bind(host,name,reserveTitle)
   bindings[host]=nil;host.Image=originalImage
  end
  bindings[host]=cleanup
+ table.insert(lifetime,host:GetAttributeChangedSignal("PetSilhouette"):Connect(refresh))
  table.insert(lifetime,host.AncestryChanged:Connect(watch))
  table.insert(lifetime,host.Destroying:Connect(cleanup))
  watch()

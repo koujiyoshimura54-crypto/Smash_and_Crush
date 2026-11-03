@@ -116,9 +116,15 @@ local function showOverhead(result)
  gui.Adornee=head;gui.AlwaysOnTop=true;gui.Active=false;gui:SetAttribute("RewardId",result.Id)
  local icon=Instance.new("ImageLabel");icon.Name="Icon";icon.BackgroundTransparency=1;icon.Size=UDim2.fromScale(.88,.88)
  icon.Image=item.Image;icon.ScaleType=Enum.ScaleType.Fit;icon.Parent=gui
- local quantity=Instance.new("TextLabel");quantity.Name="Quantity";quantity.BackgroundTransparency=1
- quantity.Text="×1";quantity.FontFace=Font.fromEnum(Enum.Font.GothamBlack);quantity.TextColor3=Color3.new(1,1,1)
- quantity.TextStrokeTransparency=0;quantity.TextSize=28;quantity.Size=UDim2.fromScale(.5,.3);quantity.Position=UDim2.fromScale(.5,.68);quantity.Parent=gui
+ if result.Outcome=="ORE" then
+  gui.Size=UDim2.fromOffset(180,110)
+  icon.Size=UDim2.fromOffset(97,97)
+  local points=Instance.new("TextLabel");points.Name="Points";points.BackgroundTransparency=1
+  points.Text=require(RS.Modules.NumberFormat).Format(item.Points).." pt"
+  points.FontFace=Font.fromEnum(Enum.Font.GothamBlack);points.TextColor3=Color3.new(1,1,1)
+  points.TextStrokeTransparency=0;points.TextSize=28;points.TextScaled=true
+  points.Size=UDim2.fromOffset(83,38);points.Position=UDim2.fromOffset(97,34);points.Parent=gui
+ end
  gui.Parent=player.PlayerGui
  local function remove()
   local c=overhead[gui];if c then c:Disconnect();overhead[gui]=nil end

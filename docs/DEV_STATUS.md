@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Scoped Item display, three Pets and Egg discovery
+
+Nine live Sources updated; existing unsaved canonical work retained. Native isolated transactions/growth/reset and real two-client follower checks passed. Shop price geometry was not reproduced and was not changed. Item/HUD/Limited pixels were inspected; normal Egg candidate content was checked in an isolated render, while world Billboard acceptance remains limited. Helpers removed, exact Source sync verified, unsaved Edit retained. [English record](../reports/PetThreeAndPresentation_20261103.md).
+
 ## 2026-11-03 — Inventory/Aura/hover corrections
 
 Six scoped live Sources updated: permanent-arrival W2 Dumbbell visibility, single Aura currency price with startup visual refit, shared-source hover and disabled UI sound guards. Native isolated Play inspected normal/narrow Aura pixels, purchase/equip, progression visibility, reopen/death and measured hover playback counts/volume. Fredoka's absent Japanese glyphs were confirmed rather than claiming another font assignment fixed Japanese. Helpers removed; unsaved canonical Edit retained. [Record](../reports/InventoryAuraHover_20261103.md).

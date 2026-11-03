@@ -77,8 +77,18 @@ local function setPair(root: Instance, name: string, text: string)
 	setText(root:FindFirstChild(name .. SHADOW_SUFFIX), text)
 end
 
-local function setIcon(frame: ImageLabel, petName: string)
- if Pet.UsesModelViewport(petName) then require(ReplicatedStorage.Modules.LimitedPetViewport).bind(frame,petName,false);return end
+local function setIcon(frame: ImageLabel, petName: string, normal: boolean)
+ local silhouette=normal and not Pet.HasDiscovered(PetClient.state(),petName)
+ frame.ImageColor3=silhouette and Color3.new(0,0,0) or Color3.new(1,1,1)
+ frame:SetAttribute("PetSilhouette",silhouette)
+ if Pet.UsesModelViewport(petName) then
+  if frame:GetAttribute("PetSpeciesId")~=petName then
+   require(ReplicatedStorage.Modules.LimitedPetViewport).bind(frame,petName,false)
+  end
+  frame:SetAttribute("PetSpeciesId",petName)
+  return
+ end
+ frame:SetAttribute("PetSpeciesId",petName)
 	local decal = if icons then icons:FindFirstChild(Pet.VisualName(petName)) else nil
 	if not (decal and decal:IsA("Decal")) then
 		warn(`[EggClient] could not find {table.concat(ICONS_PATH, ".")}.{petName}`)
@@ -181,7 +191,7 @@ local function stampSheet(name: string, open: BillboardGui)
 			end
 		end
 		setPair(frame, PERCENT_NAME, string.format(Config.Eggs.percentFormat, slot.percent))
-		setIcon(frame, slot.pet)
+		setIcon(frame, slot.pet, Egg.NormalPools[name]~=nil)
 	end
 
 	if #List <= #Frames then return end
@@ -557,6 +567,18 @@ function EggClient.start()
 		bind(child)
 	end)
 
+ -- Refresh only registered candidate images; keep prices, names, input and sheet geometry.
+ PetClient.StateChanged:Connect(function()
+  for name,egg in pairs(Eggs) do
+   local candidates=egg.open and findPath(egg.open,SLOTS_PATH)
+   if candidates then
+    for _,frame in ipairs(candidates:GetChildren()) do
+     local species=frame:GetAttribute("PetSpeciesId")
+     if frame:IsA("ImageLabel") and species then setIcon(frame,species,Egg.NormalPools[name]~=nil) end
+    end
+   end
+  end
+ end)
 	local rise = Config.Egg.rise
 	local rate = TURN / Config.Egg.seconds
 

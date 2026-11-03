@@ -40,6 +40,8 @@ local UNTINTED = Color3.new(1, 1, 1)
 local CARD_INDEX = "card"
 
 local PetClient = {}
+local stateChanged=Instance.new("BindableEvent")
+PetClient.StateChanged=stateChanged.Event
 
 local Tiles: {[string]: GuiObject} = {}
 
@@ -261,8 +263,8 @@ end
 
 local function refreshChecks()
 	local Equipped = if playerData then playerData.Equipped else {}
-	local count = if Equipped[1] and Equipped[1] ~= "" then 1 else 0
-	setText(infoLabel, `Equipped ({count}/{Pet.MaxEquipped})`)
+ local count=#Pet.EquippedEntries(playerData)
+ setText(infoLabel,string.format("Equipped (%d/%d)  Strength ×%g",count,Pet.MaxEquipped,Pet.StrengthMultiplier(playerData)))
 
 	for name, tile in Tiles do
 		local main = tile:FindFirstChild(MAIN_NAME)
@@ -579,6 +581,7 @@ local function accept(response)
 	stateGeneration=generation
 	playerData=state
 	rebuild()
+ stateChanged:Fire(state)
 end
 
 function PetClient.refresh()
@@ -589,6 +592,7 @@ end
 
 function PetClient.notify(reason)
 	local messages={
+		PetSlotsFull="3 Pets equipped. Unequip a Pet to replace it.",
 		NotEnoughWin="Not enough Win.",DataNotLoaded="Player data is not ready.",
 		DataSaving="Saving. Please wait.",InventorySavePending="Saving pets. Please wait.",
 		TooFarFromEgg="Move closer to the Egg.",PetStateChanged="Pet inventory refreshed. Please try again.",

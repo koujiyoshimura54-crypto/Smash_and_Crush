@@ -35,10 +35,11 @@ Pet.InventoryField = "inventory"
 Pet.PetsField = "pets"
 Pet.None = NONE
 
-Pet.MaxEquipped = 1
+Pet.MaxEquipped = 3
 Pet.Slots = { "current" }
 
-Pet.Attributes = { "Pet" }
+Pet.Attributes = { "Pet", "Pet2", "Pet3" }
+Pet.IdAttributes = { "PetId", "Pet2Id", "Pet3Id" }
 
 -- World1 ability data follows actual configured species/IDs, never display captions
 -- or the purchased Speed multiplier. Merge points remain a separate setting.
@@ -57,12 +58,27 @@ function Pet.StrengthPercent(name: string): number?
 	return nil
 end
 
+function Pet.EquippedEntries(state)
+ local entries,seen={},{}
+ if type(state)~="table" or type(state.Owned)~="table" or type(state.Equipped)~="table" then return entries end
+ for slot=1,Pet.MaxEquipped do
+  local id=state.Equipped[slot]
+  local name=type(id)=="string" and state.Owned[id]
+  if type(name)=="string" and not seen[id] then
+   seen[id]=true;table.insert(entries,{Id=id,Name=name,Slot=slot,Percent=Pet.StrengthPercent(name) or 0})
+  end
+ end
+ return entries
+end
+
 function Pet.StrengthMultiplier(state): number
-	if type(state)~="table" or type(state.Owned)~="table" or type(state.Equipped)~="table" then return 1 end
-	local id=state.Equipped[1]
-	local name=type(id)=="string" and state.Owned[id]
-	if type(name)~="string" then return 1 end
-	return 1+(Pet.StrengthPercent(name) or 0)/100
+ local percent=0
+ for _,entry in ipairs(Pet.EquippedEntries(state)) do percent+=entry.Percent end
+ return 1+percent/100
+end
+
+function Pet.HasDiscovered(state,name): boolean
+ return type(state)=="table" and type(state.Discovered)=="table" and state.Discovered[name]==true
 end
 
 function Pet.container(playerData: any): any
@@ -337,7 +353,7 @@ end
 
 -- Legacy Smash persistence. Each copy has an immutable ID; names only select visuals.
 function Pet.NormalizeState(raw)
- local out={Version=1,Revision=0,Owned={},Equipped={""},LastRequestId="",LastResults={}}
+ local out={Version=1,Revision=0,Owned={},Equipped={"","",""},Discovered={},LastRequestId="",LastResults={}}
  if raw==nil then return out end
  if type(raw)~="table" or raw.Version~=1 then return nil,"InvalidPetsVersion" end
  if type(raw.Revision)~="number" or raw.Revision<0 or raw.Revision%1~=0 or raw.Revision>9007199254740991 then return nil,"InvalidPetsRevision" end
@@ -346,6 +362,14 @@ function Pet.NormalizeState(raw)
  for id,name in pairs(raw.Owned) do
   if type(id)~="string" or #id==0 or #id>128 or type(name)~="string" or #name==0 or #name>128 then return nil,"InvalidPetCopy" end
   out.Owned[id]=name
+  out.Discovered[name]=true -- Existing owned copies are evidence, never visual aliases.
+ end
+ if raw.Discovered~=nil then
+  if type(raw.Discovered)~="table" then return nil,"InvalidPetDiscovery" end
+  for name,obtained in pairs(raw.Discovered) do
+   if type(name)~="string" or #name==0 or #name>128 or type(obtained)~="boolean" then return nil,"InvalidPetDiscovery" end
+   if obtained then out.Discovered[name]=true end
+  end
  end
  if raw.Protected~=nil then
   if type(raw.Protected)~="table" then return nil,"InvalidPetProtection" end
@@ -356,14 +380,14 @@ function Pet.NormalizeState(raw)
   end
  end
  for slot,id in pairs(raw.Equipped) do
-  if (slot~=1 and slot~=2) or type(id)~="string" then return nil,"InvalidPetEquip" end
+  if type(slot)~="number" or slot%1~=0 or slot<1 or slot>Pet.MaxEquipped or type(id)~="string" then return nil,"InvalidPetEquip" end
  end
- -- Read legacy two-slot data in order; only equipment changes, never ownership.
- for slot=1,2 do
+ -- Preserve valid legacy slots and IDs; repair duplicate references without deleting a copy.
+ local equipped={}
+ for slot=1,Pet.MaxEquipped do
   local id=raw.Equipped[slot]
-  if id and id~="" and out.Owned[id] then
-   out.Equipped[1]=id
-   break
+  if id and id~="" and out.Owned[id] and not equipped[id] then
+   out.Equipped[slot]=id;equipped[id]=true
   end
  end
  if type(raw.LastRequestId)~="string" or #raw.LastRequestId>128 or type(raw.LastResults)~="table" or #raw.LastResults>8 then return nil,"InvalidPetReceipt" end
@@ -378,6 +402,7 @@ function Pet.NormalizeState(raw)
  for _,result in ipairs(raw.LastResults) do
   if type(result)~="table" or type(result.id)~="string" or type(result.pet)~="string" or out.Owned[result.id]~=result.pet
    or type(result.percent)~="number" or result.percent~=result.percent or result.percent<=0 or result.percent>100 then return nil,"InvalidPetResult" end
+  out.Discovered[result.pet]=true
   table.insert(out.LastResults,{id=result.id,pet=result.pet,percent=result.percent,duplicate=false,bonus=0})
  end
  return out
@@ -412,8 +437,15 @@ function Pet.ApplyOperation(raw,op)
  elseif op.Action=="Equip" then
   state.LastMergeEgg=nil
   if not state.Owned[op.PetId] then return nil,"PetNotOwned" end
-  state.Equipped[1]=if state.Equipped[1]==op.PetId then "" else op.PetId
+  local equipped=table.find(state.Equipped,op.PetId)
+  if equipped then state.Equipped[equipped]=""
+  else
+   local free=table.find(state.Equipped,"")
+   if not free then return nil,"PetSlotsFull" end
+   state.Equipped[free]=op.PetId
+  end
  else return nil,"InvalidPetAction" end
+ for _,result in ipairs(results) do state.Discovered[result.pet]=true end
  state.Revision+=1
  state.LastRequestId=op.Id
  state.LastResults=results
@@ -422,16 +454,17 @@ end
 
 function Pet.Publish(player,state)
  for slot,attribute in ipairs(Pet.Attributes) do
-  player:SetAttribute(attribute,state.Owned[state.Equipped[slot]] or Pet.None)
+  local id=state.Equipped[slot] or ""
+  player:SetAttribute(attribute,state.Owned[id] or Pet.None)
+  player:SetAttribute(Pet.IdAttributes[slot],id)
  end
- player:SetAttribute("Pet2",Pet.None) -- Clear the retired follower mirror on load/reset/update.
+ -- Publish one coherent formation after all compatibility mirrors are updated.
+ player:SetAttribute("PetEquipment",game:GetService("HttpService"):JSONEncode(Pet.EquippedEntries(state)))
  player:SetAttribute("PetInventoryRevision",state.Revision)
 end
 
 function Pet.StrengthText(name)
- local entry=World2.Pets[name]
- if entry then return string.format("Strength x%g",entry.Multiplier) end
  local percent=Pet.StrengthPercent(name)
- return percent and string.format("Strength +%g%%",percent) or "Cosmetic pet"
+ return percent and string.format("Strength ×%g",1+percent/100) or "Cosmetic pet"
 end
 return Pet

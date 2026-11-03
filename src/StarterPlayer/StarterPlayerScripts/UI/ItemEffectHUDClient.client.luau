@@ -4,6 +4,7 @@ local RS = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local TextService = game:GetService("TextService")
 local Layout = require(RS.Modules.HUDLayout)
+local HUDPresentation = require(RS.Modules.StrengthHUDPresentation)
 local player = Players.LocalPlayer
 local remotes = RS:WaitForChild("Remotes")
 local master = require(RS.Config:WaitForChild("ItemMaster"))
@@ -18,9 +19,9 @@ row.AnchorPoint = Vector2.new(.5, 1)
 row.Visible = false
 row.Parent = hud
 local definitions = {
- {Kind = "Protein", Asset = master.Get("PROTEIN_COMMON_FIRE").Image, Get = effects.GetProteinBonus, Suffix = " STR"},
- {Kind = "Glove", Asset = master.Get("GLOVE_COMMON_FIRE").Image, Get = effects.GetGloveBossDamageBonus, Factor = 100, Suffix = "% DMG"},
- {Kind = "TrainingBelt", Asset = master.Get("TRAININGBELT_COMMON_FIRE").Image, Get = effects.GetBeltTreadmillBonus, Suffix = " Tier"},
+ {Kind = "Protein", Get = effects.GetProteinBonus, Suffix = " STR"},
+ {Kind = "Glove", Get = effects.GetGloveBossDamageBonus, Factor = 100, Suffix = "% DMG"},
+ {Kind = "TrainingBelt", Get = effects.GetBeltTreadmillBonus, Suffix = " Tier"},
 }
 local entries = {}
 for _, definition in ipairs(definitions) do
@@ -38,7 +39,7 @@ for _, definition in ipairs(definitions) do
  icon.BackgroundTransparency = 1
  icon.BorderSizePixel = 0
  icon.ImageTransparency = 0
- icon.Image = definition.Asset
+ icon.Image = ""
  icon.ScaleType = Enum.ScaleType.Fit
  icon.Size = UDim2.fromScale(1, 1)
  icon.Parent = holder
@@ -73,11 +74,10 @@ setIcon.Parent = setBadge
 local setMultiplier = Instance.new("TextLabel")
 setMultiplier.Name = "Multiplier"
 setMultiplier.BackgroundTransparency = 1
-setMultiplier.FontFace = hud.LevelPanel.Level.FontFace
+HUDPresentation.Text(setMultiplier,"AutoTitle")
 setMultiplier.Text = "Item ×1.5"
 setMultiplier.TextColor3 = Color3.new(1,1,1)
-setMultiplier.TextStrokeColor3 = Color3.fromRGB(24,21,35)
-setMultiplier.TextStrokeTransparency = .1
+-- Font and text outline come from StrengthHUDStyle through HUDPresentation.
 setMultiplier.TextScaled = false
 setMultiplier.AutomaticSize = Enum.AutomaticSize.X
 setMultiplier.AutoLocalize = false
@@ -161,6 +161,7 @@ local function punch()
 end
 
 local function layout()
+ HUDPresentation.Text(setMultiplier,"AutoTitle")
  Layout.Mount(gui).Refresh()
 end
 local revision = 0
@@ -183,6 +184,7 @@ local function applyState(state)
    elseif definition.Kind == "TrainingBelt" then stopBelt() end
   end
   entry.ItemId = equipped and id or nil
+  entry.Icon.Image = equipped and item.Image or ""
   entry.Frame.Visible = equipped == true
   if equipped then
    local value = effective[definition.Kind] * (definition.Factor or 1)

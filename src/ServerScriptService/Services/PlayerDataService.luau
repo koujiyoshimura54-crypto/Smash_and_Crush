@@ -544,6 +544,9 @@ function PlayerDataService.Reset(player)
  -- just as writeFreshReset preserves it on disk. Do not leave that session field nil.
  fresh.StrengthRewards=assert(StrengthRewardState.Normalize(saved.StrengthRewards))
  s.Data=fresh
+ -- Reset is a new Pet view, even when the new inventory revision is zero.
+ s.PetViewGeneration=(s.PetViewGeneration or 0)+1
+ player:SetAttribute("PetViewGeneration",s.PetViewGeneration)
  s.ForgeToken=HttpService:GenerateGUID(false)
  s.PendingFirstStage1Defeat=nil
  s.TimeRewardClock=os.clock()

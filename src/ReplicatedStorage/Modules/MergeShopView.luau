@@ -194,7 +194,7 @@ return function(ctx)
    if tab=='Item' then
     groups=Items.Groups(itemState and itemState.OwnedItems,itemState and itemState.World1Cleared==true)
     -- Reverse ranks only; preserve the existing element/kind order within each rank.
-    local order={};for i,entry in ipairs(groups) do order[entry]=i end
+    local order={};for i,entry in ipairs(groups) do order[entry]=i;entry.Points=Items.GetPoints(Master.Get(entry.ItemId)) end
     table.sort(groups,function(a,b)if a.Rank~=b.Rank then return a.Rank>b.Rank end return order[a]<order[b] end)
   elseif tab=='Pet' then groups=PetMerge.Groups(petState)
   else for _,ore in ipairs(Ore.GetAvailable()) do
@@ -202,21 +202,6 @@ return function(ctx)
    if count>0 then table.insert(groups,{Key=ore.Id,Id=ore.Id,Name=ore.Name,Count=count,Points=ore.Points}) end
   end end
   byKey={};for _,entry in groups do byKey[entry.Key]=entry end
- end
- local function rankBand(parent,item)
-  local rank=Items.GetRank(item)
-  local band=surface('RarityStars',parent,Color3.fromRGB(0,43,92),230);band.Corner.CornerRadius=UDim.new(0,5)
-   Presentation.SetItemImageStars(band,item,232)
-   local function fitStars()
-    if not band.Parent then return end
-    -- Grid offsets are in unscaled local UI units.
-    local scale=math.max(fit.Scale,.001)
-    Presentation.LayoutItemImageStars(band,band.AbsoluteSize.X/scale,band.AbsoluteSize.Y/scale)
-   end
-   local connection=band:GetPropertyChangedSignal('AbsoluteSize'):Connect(fitStars)
-   band.Destroying:Once(function()connection:Disconnect()end)
-   task.defer(fitStars)
-  return band
  end
  local function pointsBadge(parent,points)
   local badge=surface('Points',parent,Color3.fromRGB(8,17,20),234);badge.BackgroundTransparency=.08;badge.Corner.CornerRadius=UDim.new(0,9)
@@ -240,7 +225,7 @@ return function(ctx)
   local original=tile.Main:FindFirstChildOfClass('UIStroke');if original then original.Enabled=false end
   local border=stroke(tile.Main,Color3.fromRGB(12,19,23),2);border.Name='SelectionBorder'
   local icon=tile.Main.Icon;icon.ZIndex=226;icon.AnchorPoint=Vector2.zero;icon.ScaleType=Enum.ScaleType.Fit
-  icon.Position=UDim2.fromScale(.025,kind=='Item' and .015 or .25);icon.Size=UDim2.fromScale(.95,kind=='Item' and .73 or .65)
+  icon.Position=UDim2.fromScale(.025,.25);icon.Size=UDim2.fromScale(.95,.65)
   local inherited=icon:FindFirstChild('RarityStars');if inherited then inherited:Destroy() end
   tile.Button.AnchorPoint=Vector2.zero;tile.Button.Position=UDim2.new();tile.Button.Size=UDim2.fromScale(1,1)
   tile.Button.ZIndex=242;tile.Button.Text='';tile.Button.BackgroundTransparency=1;tile.Button.AutoButtonColor=false
@@ -249,10 +234,9 @@ return function(ctx)
    tile.Main.UIGradient.Color=ColorSequence.new(Color3.fromRGB(250,250,250),Color3.fromRGB(162,172,181));tile.Main.UIGradient.Rotation=90
    icon.Image=kind=='Item' and Master.Get(entry.ItemId).Image or Ore.Get(entry.Id).Image
   end
-  if kind=='Item' then local band=rankBand(tile,Master.Get(entry.ItemId));band.Position=UDim2.fromScale(0,.75);band.Size=UDim2.fromScale(1,.25)
-  else pointsBadge(tile,entry.Points) end
+  pointsBadge(tile,entry.Points)
    local owned=label('OwnedCount',tile,'×'..NumberFormat.Format(entry.Count),38,237)
-  owned.Position=UDim2.fromScale(.50,kind=='Item' and .53 or .75);owned.Size=UDim2.fromScale(.47,.23);owned.TextXAlignment=Enum.TextXAlignment.Right;owned.Visible=not input
+  owned.Position=UDim2.fromScale(.50,.75);owned.Size=UDim2.fromScale(.47,.23);owned.TextXAlignment=Enum.TextXAlignment.Right;owned.Visible=not input
   local badge=surface('SelectedCount',tile,Color3.fromRGB(0,139,229),238);badge.Corner.CornerRadius=UDim.new(1,0)
   badge.AnchorPoint=Vector2.new(1,0);badge.Position=UDim2.fromScale(1.015,-.015);badge.Size=UDim2.fromScale(.29,.29);stroke(badge,cyan,5)
   local countLabel=label('Value',badge,'',36,239);countLabel.Size=UDim2.fromScale(1,1)
@@ -379,7 +363,8 @@ return function(ctx)
     Size=UDim2.fromScale(.94,outcome.ItemId and .72 or .88),ScaleType=Enum.ScaleType.Fit,ZIndex=226})
   end
   if outcome.ItemId then
-   local band=rankBand(card,Master.Get(outcome.ItemId));band.Position=UDim2.fromScale(0,.75);band.Size=UDim2.fromScale(1,.25)
+   pointsBadge(card,Items.GetPoints(Master.Get(outcome.ItemId)))
+   local icon=card:FindFirstChild('Icon');icon.Position=UDim2.fromScale(.03,.25);icon.Size=UDim2.fromScale(.94,.72)
   elseif outcome.Grade then
     local grade=label('Number',card,NumberFormat.Format(outcome.Grade),46,233);grade.Position=UDim2.fromScale(.03,.02);grade.Size=UDim2.fromScale(.35,.23);grade.TextXAlignment=Enum.TextXAlignment.Left
     local strength=label('Strength',card,'+'..NumberFormat.Format(outcome.Strength),46,233);strength.TextColor3=Color3.fromRGB(145,255,0)
@@ -437,13 +422,17 @@ return function(ctx)
   inputList.Visible=n>0 and not sellMode
   dropTitle.Visible=n==0 or sellMode;dropHint.Visible=n==0 and tab=='Item' and not sellMode
   dropTitle.Text=sellMode and 'Select quantities above' or tab=='Pet' and 'Drag Pets Here' or tab=='Ore' and 'Drag Ores Here' or 'Drag Items Here'
-  totalLabel.Visible=tab=='Ore' or tab=='Pet' and n>0
+  totalLabel.Visible=tab=='Ore' or n>0
   if tab=='Ore' then
    local selection=OreMerge.Selection(oreSelection(),oreState and oreState.Ores,sellMode)
     totalLabel.Text='Total: '..NumberFormat.Format(selection and selection.Total or 0)..(sellMode and ' Win' or ' pt')
   elseif tab=='Pet' then
    local points=0;for id in pairs(petSelected) do local info=petState and Egg.mergePet(petState.Owned[id]);if info then points+=info.Points end end
     totalLabel.Text='Total: '..NumberFormat.Format(points)..' pt'
+  elseif tab=='Item' then
+   local points=0;for id,count in pairs(itemSelected) do points+=(Items.GetPoints(Master.Get(id)) or 0)*count end
+   totalLabel.Text='Total: '..NumberFormat.Format(points)..' pt'
+   totalLabel:SetAttribute('Points',points)
   end
   for name,b in pairs(tabs) do
    b.BackgroundColor3=name==tab and Color3.new(1,1,1) or Color3.fromRGB(75,163,68)

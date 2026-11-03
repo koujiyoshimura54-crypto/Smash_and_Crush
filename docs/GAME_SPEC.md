@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-03 — Three equipped Pets and species discovery
+
+Supersedes earlier single-Pet equipment descriptions. Equip at most three distinct owned individual IDs; duplicate species are allowed. Full slots require explicit unequip then equip. Normal Egg discovery is durable per species ID, seeded only from confirmed ownership/results; consumed Pets stay discovered. Limited candidates always show normally. Existing reset clears discovery and advances the Pet client generation. [Implementation and verification limits](../reports/PetThreeAndPresentation_20261103.md).
+
 ## 2026-11-02 — Player-to-Boss contact-only hits
 
 Both Worlds require overlap of the existing Player attack trigger and personal Boss CombatZone at attack acceptance and at impact. Arena membership alone retains pursuit, encounter HP and Auto state; it never authorizes Player damage. Recontact uses the existing cadence without catch-up. Living arena exit retains the paired full heal for Player and undefeated Boss; defeated Bosses remain defeated. Boss-to-Player combat, pursuit settings, collider sizes and wall behavior are unchanged. [Implementation and native two-client checks](../reports/BossContact_20261102.md).

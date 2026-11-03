@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-03 — Additive three-Pet Strength
+
+The current Pet modifier is **1 + sum of equipped individual StrengthPercent / 100**, up to three owned copies. 10% + 20% + 30% = ×1.6. Existing individual effects, normal gain factors and applicability are unchanged. The shared modifier flows through PetServer to normal StrengthManager gain and StrengthReference. Fixed purchase/offline amounts and receipt records are retained. This supersedes the first-equipped-only statement below. [Native calculation checks](../reports/PetThreeAndPresentation_20261103.md).
+
 ## 2026-10-31 — Approved World2 HP and variable wall counts
 
 This table supersedes earlier World2 Boss/wall values and four-wall assumptions. M=1,000,000; B=1,000,000,000. World2GameplayConfig owns the values; World2Config and World2BossConfig expose them. RequiredStrength remains Boss HP / 5 as information only, without entry restrictions or a mandatory hit count.

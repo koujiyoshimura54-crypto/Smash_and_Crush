@@ -1,5 +1,7 @@
 type Follower = {
 	name: string,
+ id: string,
+ side: number,
 
 	position: Vector3?,
 
@@ -125,20 +127,37 @@ local function refresh(player: Player)
 		Followers[player] = Slots
 	end
 
-	-- Remove retired slots before refreshing the single purchased follower.
-	for slot in pairs(Slots) do
-		if slot > Pet.MaxEquipped then despawn(player, slot) end
-	end
-
-	for slot, attribute in ipairs(Pet.Attributes) do
-		local name = player:GetAttribute(attribute)
+ -- Formation is recomputed only when server equipment changes, never each frame.
+ local encoded=player:GetAttribute("PetEquipment")
+ local ok,entries=pcall(function()return game:GetService("HttpService"):JSONDecode(encoded or "[]")end)
+ if not ok or type(entries)~="table" then entries={} end
+ table.sort(entries,function(a,b)
+  if a.Percent~=b.Percent then return a.Percent>b.Percent end
+  return a.Slot<b.Slot
+ end)
+ local bySlot={}
+ for rank,entry in ipairs(entries) do
+  entry.Side=rank==1 and 0 or rank==2 and -1 or 1
+  bySlot[entry.Slot]=entry
+ end
+ for slot in pairs(Slots) do
+  if not bySlot[slot] then despawn(player,slot) end
+ end
+ for slot=1,Pet.MaxEquipped do
+  local entry=bySlot[slot]
+  local name=entry and entry.Name
 		if type(name) ~= "string" or name == Pet.None then
 			despawn(player, slot)
 			continue
 		end
 
 		local follower = Slots[slot]
-		if follower and follower.name == name then continue end
+  if follower and follower.name==name and follower.id==entry.Id then
+   follower.side=entry.Side
+   local model=janitor:Get(indexOf(slot))
+   if model then model:SetAttribute("FormationSide",entry.Side) end
+   continue
+  end
 
 		local template = Pet.model(name)
 		if not template then
@@ -151,6 +170,10 @@ local function refresh(player: Player)
 
 		local model = janitor:Add(template:Clone(), "Destroy", indexOf(slot))
 		model.Name = `{player.Name} {slot}`
+  model:SetAttribute("OwnerUserId",player.UserId)
+  model:SetAttribute("PetInstanceId",entry.Id)
+  model:SetAttribute("PetSpeciesId",name)
+  model:SetAttribute("FormationSide",entry.Side)
 
 		decorate(model, name)
 
@@ -159,6 +182,8 @@ local function refresh(player: Player)
 
 		Slots[slot] = {
 			name = name,
+   id=entry.Id,
+   side=entry.Side,
 			position = nil,
 			yaw = nil,
 			phase = 0,
@@ -196,7 +221,7 @@ local function update(delta: number)
 			end
 
 			local ground = body.Position.Y - body.Size.Y / 2 - humanoid.HipHeight
-			local side = settings.side * (settings.Sides[slot] or 0)
+			local side = settings.side * (follower.side or 0)
 			local behind = body.CFrame * Vector3.new(side, 0, settings.back)
 			-- Offset only the new grounded models by the existing bob amplitude.
 			local lift = if Pet.UsesModelViewport(follower.name) then settings.bob else 0
@@ -267,11 +292,9 @@ local function track(player: Player)
 	local janitor = Janitor.new()
 	Watched[player] = janitor
 
-	for _, attribute in ipairs(Pet.Attributes) do
-		janitor:Add(player:GetAttributeChangedSignal(attribute):Connect(function()
-			refresh(player)
-		end))
-	end
+ janitor:Add(player:GetAttributeChangedSignal("PetEquipment"):Connect(function()
+  refresh(player)
+ end))
 
 	refresh(player)
 end

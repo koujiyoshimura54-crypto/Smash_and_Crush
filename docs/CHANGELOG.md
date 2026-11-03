@@ -1,3 +1,7 @@
+# 2026-11-03 — Three Pets, saved species discovery and scoped Item UI
+
+Applied nine scoped Source diffs to unsaved canonical Studio. Added three-copy additive Pet equipment/following, durable normal-Egg silhouettes and reset view fencing; updated Merge Item points, pickup captions and equipped HUD icons. Native isolated operations and two-client tests passed within the recorded display limits. Shop remained unchanged after non-reproduction. [Record](../reports/PetThreeAndPresentation_20261103.md).
+
 # 2026-11-03 — Inventory visibility, Aura price and shared hover
 
 Hide unreached W2 dumbbells including owned test data; remove duplicate Aura currency price; refit the existing Aura purchase visual after startup. Route hover through its single authored Sound and suppress non-interactive UI SE. Inspected actual Japanese/Latin rendering and documented Fredoka's missing Japanese glyphs. Isolated native UI/transaction/audio checks and Edit cleanup passed. [Evidence](../reports/InventoryAuraHover_20261103.md).
