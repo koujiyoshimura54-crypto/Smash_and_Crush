@@ -46,6 +46,20 @@ function M.Fit(panel,gui)
   local portrait=v.X<700 and v.X<v.Y
   local items=panel.Content.Items
   local itemView=items.Visible and items:GetAttribute("ItemReferenceLayout")==true
+  local dumbbells=panel.Content.Dumbbells
+  if dumbbells.Visible and dumbbells:GetAttribute("DumbbellReferenceLayout") then
+   local design=require(script.Parent.DumbbellInventoryView).Geometry
+   local dims=portrait and Vector2.new(700,950) or design.Shell
+   local s=portrait and math.min((v.X-24)/dims.X,(v.Y-24)/dims.Y)
+    or math.min(v.X/design.Reference.X,v.Y/design.Reference.Y)
+   local u=panel:FindFirstChild("ResponsiveScale")
+   if not u then u=Instance.new("UIScale");u.Name="ResponsiveScale";u.Parent=panel end
+   set(u,{Scale=math.clamp(s,.05,1)},true)
+   set(panel,{Size=UDim2.fromOffset(dims.X,dims.Y),AnchorPoint=Vector2.new(.5,.5),
+    Position=UDim2.fromOffset(v.X/2,reserveTop+v.Y*(portrait and .5 or 514/992))},true)
+   aspect(panel,dims.X,dims.Y,true);panel:SetAttribute("ResponsiveCompact",portrait)
+   return
+  end
   d=itemView and (portrait and Vector2.new(700,1050) or Vector2.new(1368,910))
    or (portrait and Vector2.new(700,900) or Vector2.new(1130,812))
   local s=portrait and math.min((v.X-24)/d.X,(v.Y-24)/d.Y)

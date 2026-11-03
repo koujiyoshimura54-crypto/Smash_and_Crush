@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-03 — Measured Dumbbell inventory and sale panel
+
+Dumbbells-only layout follows the supplied1586×992 reference: purple equipped panel with green non-button status/glow, count badges, per-card Equip/Sell and one anchored sale popup. No Owned line or quantity input. SellOne and selected-type SellAll reuse purchased Win skins and the existing Forge transaction; an equipped copy stays protected. Other Inventory content and W2 no-price/no-sale behavior remain unchanged. [Native transactions, comparison and raster limits](../reports/DumbbellInventory_20261103.md).
+
 ## 2026-11-03 — Battle Bag counts both Items and Boss Ore
 
 The existing Battle Bag fraction now reports the actual combined provisional Item/Ore quantity. No font, geometry or duplicate counter change. Native Stone1/5 and mixed5/5 rendering inspected; return and death reset the combined count. [Record](../reports/World1BossOreBag_20261103.md).

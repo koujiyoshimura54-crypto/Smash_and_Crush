@@ -551,7 +551,8 @@ function M.PurchaseButton(button,currency,value)
    local height=math.min(size.Y,size.X/ratio)
    local scale=entry.pressed and settings.hoverScale*settings.pressScale
     or entry.hovered and settings.hoverScale or 1
-   local target=UDim2.fromOffset(height*ratio*scale,height*scale)
+   local target=button:GetAttribute("PurchaseFillBounds") and UDim2.fromOffset(size.X*scale,size.Y*scale)
+    or UDim2.fromOffset(height*ratio*scale,height*scale)
    if entry.target==target then return end
    entry.target=target
    if entry.tween then entry.tween:Cancel() end

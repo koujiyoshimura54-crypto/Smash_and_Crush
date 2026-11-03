@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Dumbbell inventory and sale UI
+
+Five presentation/client Sources plus authored equipped decoration now implement measured reference geometry and selected-type sale choices. Native memory-isolated Play checked actual ownership/Win deltas, equipped protection, replay, purchase/equip, respawn, popup targeting and narrow-region clamping. Comparison images retain material/localization/resolution differences explicitly. Helpers removed; unsaved Edit retained. [Record](../reports/DumbbellInventory_20261103.md).
+
 ## 2026-11-03 — Boss-to-Player depth at 90%
 
 Two live Sources implement the local-depth coefficient without editing shared Parts. One isolated two-client run passed83 focused checks on four differently shaped Bosses, real PlayerHP, yaw, contact damage, pursuit, respawn/re-fight and independent sessions. Remaining Bosses share the verified code route; not every model was played.477 Sources and74 SoundIds verified after cleanup; unsaved Edit retained. [Record and limits](../reports/BossAttackDepth_20261103.md).

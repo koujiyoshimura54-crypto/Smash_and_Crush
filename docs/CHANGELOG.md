@@ -1,3 +1,7 @@
+# 2026-11-03 — Dumbbell inventory and selected-type sale panel
+
+Measured the supplied reference; added the equipped showcase, count badges and one following sale popup using existing Win skins. Removed old quantity inputs/Owned text. Existing server sale protection and persistence are unchanged. Native trade/visual evidence and remaining differences: [record](../reports/DumbbellInventory_20261103.md).
+
 # 2026-11-03 — Reduce only Boss-to-Player attack depth
 
 Applied Boss-local depth0.9 to the actual server distance predicate; preserved lateral/vertical/angle checks, damage/cadence and shared physical/contact geometry. Four representative Bosses passed native HP boundaries and rotation tests. Helpers removed; current unsaved edits preserved. [Evidence](../reports/BossAttackDepth_20261103.md).

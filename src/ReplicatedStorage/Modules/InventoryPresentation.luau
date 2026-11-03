@@ -427,6 +427,12 @@ local function setupInventoryReference(panel,header,titleIcon,close)
  end
 end
 local function layoutInventoryReference(panel,header,titleIcon,close)
+ local dumbbells=require(script.Parent.DumbbellInventoryView)
+ if dumbbells.LayoutShell(panel,header,titleIcon,close) then return end
+ -- Restore the shared shell's existing look when leaving the Dumbbells page.
+ panel.PurchasedInventoryBody.BackgroundColor3=Color3.fromRGB(7,20,32);panel.PurchasedInventoryBody.BackgroundTransparency=.12
+ panel.PurchasedInventoryBody.UIStroke.Thickness=4;panel.PurchasedInventoryBody.UICorner.CornerRadius=UDim.new(0,24)
+ header.OuterUIStroke.Thickness=4;header.UICorner.CornerRadius=UDim.new(0,24);header.ShopText1.FontFace=inventoryBold
  local w,h=panel.Size.X.Offset,panel.Size.Y.Offset
  local items=panel.Content.Items
  local itemView=items.Visible and items:GetAttribute("ItemReferenceLayout")==true
@@ -651,10 +657,12 @@ function M.BindPurchasedPanel(panel)
    panel.Content.Position=UDim2.fromOffset(16,compact and 118 or 138);panel.Content.Size=UDim2.new(1,-32,1,compact and -132 or -152)
    close.Size=UDim2.fromOffset(compact and 40 or 48,compact and 40 or 48);close.Position=UDim2.new(1,compact and -49 or -57,0,compact and 7 or 10)
    local d=panel.Content.Dumbbells.Equipped
+   if not panel.Content.Dumbbells:GetAttribute("DumbbellReferenceLayout") then
    d.Size=UDim2.new(.29,-10,1,0)
    d.Preview.Position=UDim2.new(0,16,0,48);d.Preview.Size=UDim2.new(1,-32,0,compact and 84 or 150)
    d.ItemName.Position=UDim2.new(0,8,0,compact and 140 or 210);d.ItemName.Size=UDim2.new(1,-16,0,40)
    d.Multiplier.Position=UDim2.new(0,8,0,compact and 184 or 256);d.Multiplier.Size=UDim2.new(1,-16,0,30)
+   end
    for _,tab in panel.Tabs:GetChildren() do
     if tab:IsA("TextButton") then tab.TextScaled=true local limit=tab:FindFirstChildOfClass("UITextSizeConstraint") if limit then limit.MaxTextSize=23 end end
    end
