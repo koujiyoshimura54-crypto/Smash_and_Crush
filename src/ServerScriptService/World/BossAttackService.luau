@@ -8,6 +8,7 @@ local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 local Speed = require(game.ServerScriptService.Services:WaitForChild("SpeedService"))
 local SpeedAttackConfig = require(game.ReplicatedStorage.Config:WaitForChild("SpeedBossAttackConfig"))
+local HitboxConfig = require(game.ReplicatedStorage.Config:WaitForChild("BossAttackHitboxConfig"))
 local Animation = worldId==2 and require(script.Parent.World2BossAnimationService)
 local M = {}
 local BOSS_DAMAGE = 25
@@ -76,7 +77,7 @@ function M.GetAttackBounds(enemy, stage, player)
  end
  -- Cap the existing vertical overlap volume; no jumping-state special case.
  local attackTop=math.min(high.Y,low.Y+settings.AttackHeight)
- return {Pivot=pivot,Low=low,High=high,AttackTop=attackTop,Reach=reach,BaseReach=reach,EquippedSpeedItemId=itemId,Settings=settings}
+ return {Pivot=pivot,Low=low,High=high,AttackTop=attackTop,Reach=reach,BaseReach=reach,DepthScale=HitboxConfig.DepthScale,EquippedSpeedItemId=itemId,Settings=settings}
 end
 
 function M.IsInRange(enemy, stage, humanoid, root)
@@ -86,7 +87,11 @@ function M.IsInRange(enemy, stage, humanoid, root)
 
 	local point=bounds.Pivot:PointToObjectSpace(root.Position)
 	local dx=math.max(bounds.Low.X-point.X,0,point.X-bounds.High.X)
-	local dz=math.max(bounds.Low.Z-point.Z,0,point.Z-bounds.High.Z)
+	-- Inverse-map only local depth, compressing the full rounded distance envelope
+	-- (body extent + reach + player radius) once about its unchanged center.
+	local centerZ=(bounds.Low.Z+bounds.High.Z)/2
+	local depthPoint=centerZ+(point.Z-centerZ)/bounds.DepthScale
+	local dz=math.max(bounds.Low.Z-depthPoint,0,depthPoint-bounds.High.Z)
 	local distance=math.sqrt(dx*dx+dz*dz)
 
 	local playerRadius=math.max(root.Size.X,root.Size.Z)/2

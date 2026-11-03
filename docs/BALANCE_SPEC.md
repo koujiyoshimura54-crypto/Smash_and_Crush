@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-03 — Boss attack local-depth coefficient
+
+BossAttackHitboxConfig.DepthScale=0.9 applies once to the existing Boss-to-Player distance envelope in local Z, including its reach extension, without multiplying the lateral distance or changing Speed-based angle/reach tuning. Native representatives retain 25 damage / 1-second scheduled intervals; W1 Stage1 full depth changes 28 → 25.2 studs for the tested Player size. [All measured representatives](../reports/BossAttackDepth_20261103.md).
+
 ## 2026-11-03 — Shared Player action cadence
 
 AutoTapConfig owns MinimumInterval0.2, AfterManualDelay0.3 and AutoInterval0.5 seconds. Apply these to successful ordinary Strength awards, wall hits and Player-to-Boss hits, not independently per input source. Automatic ordinary Strength still requires the original grounded-walking condition; stationary manual taps and automatic combat do not. Existing single-action gain/damage arithmetic and modifiers are unchanged. Automatic combat windup leads into the due time; manual success cancels its superseded reservation. Boss-to-Player damage/timing and treadmill periods/multipliers remain unchanged. [Native timings](../reports/AutoManualCadence_20261103.md).

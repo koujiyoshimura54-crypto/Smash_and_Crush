@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-03 — Boss-to-Player attack depth
+
+Both Worlds now compress only the Boss-local front/back distance envelope to 90% about its original center. Width, height, angle, damage, cadence, models, physical colliders and Player-to-Boss contact remain unchanged. BossAttackHitboxConfig.DepthScale is the single adjustment point. [Native HP evidence](../reports/BossAttackDepth_20261103.md).
+
 ## 2026-11-03 — Manual actions while Auto is enabled
 
 Manual gameplay taps remain available with Auto ON. Successful normal Strength, wall and Player-to-Boss actions share one server minimum interval of0.2s. Each success replaces the next-auto deadline: manual +0.3s, automatic +0.5s. Auto OFF suppresses automatic actions only; rejected input does not advance either timestamp. Automatic ordinary Strength retains the original grounded-walking predicate; stationary Auto does not train. There is no accumulation of missed walking ticks. One action routes to training or one combat path. Treadmill and Boss-to-Player clocks remain separate. [Cadence evidence](../reports/AutoManualCadence_20261103.md), [walking-condition correction](../reports/AutoWalkingGate_20261103.md).

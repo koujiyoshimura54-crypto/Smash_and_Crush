@@ -1,0 +1,818 @@
+{
+  "Passed": true,
+  "Kind": "Native server combat; two real clients; memory stores; scripted fixture positions",
+  "Cases": [
+    {
+      "Passed": true,
+      "Label": "W1 Stage1 geometry and native damage"
+    },
+    {
+      "Passed": true,
+      "Label": "W1 Stage10 geometry and native damage"
+    },
+    {
+      "Passed": true,
+      "Label": "W2 Stage2 geometry and native damage"
+    },
+    {
+      "Passed": true,
+      "Label": "W2 Stage9 geometry and native damage"
+    },
+    {
+      "Passed": true,
+      "Label": "Death, re-fight and World transition: no accumulated shrink"
+    },
+    {
+      "Passed": true,
+      "Label": "Independent native PlayerHP sessions"
+    }
+  ],
+  "Samples": [
+    {
+      "World": 1,
+      "OldShell": {
+        "1": {
+          "HealthAfter": 100,
+          "HealthBefore": 100,
+          "Index": 1,
+          "Reach": 9,
+          "ActualAt": 1793713886.610098,
+          "Distance": 9.777781168619791,
+          "Hit": false,
+          "ScheduledAt": 1793713886.60904
+        }
+      },
+      "OldDepth": 28,
+      "Width": 37,
+      "Inner": {
+        "1": {
+          "HealthAfter": 75,
+          "HealthBefore": 100,
+          "Index": 2,
+          "Reach": 9,
+          "ActualAt": 1793713887.626943,
+          "Distance": 8.222215440538195,
+          "Hit": true,
+          "ScheduledAt": 1793713887.60904
+        },
+        "2": {
+          "HealthAfter": 75,
+          "HealthBefore": 100,
+          "Index": 3,
+          "Reach": 9,
+          "ActualAt": 1793713888.609671,
+          "Distance": 8.222215440538195,
+          "Hit": true,
+          "ScheduledAt": 1793713888.60904
+        }
+      },
+      "Collider": "19, 16.842552185058594, 10",
+      "Stage": 1,
+      "NewDepth": 25.2
+    },
+    {
+      "World": 1,
+      "OldShell": {
+        "1": {
+          "HealthAfter": 100,
+          "HealthBefore": 100,
+          "Index": 1,
+          "Reach": 11.42822265625,
+          "ActualAt": 1793713892.344297,
+          "Distance": 13.221788194444443,
+          "Hit": false,
+          "ScheduledAt": 1793713892.342189
+        }
+      },
+      "OldDepth": 64.5693359375,
+      "Width": 63.10516357421875,
+      "Inner": {
+        "1": {
+          "HealthAfter": 75,
+          "HealthBefore": 100,
+          "Index": 2,
+          "Reach": 11.42822265625,
+          "ActualAt": 1793713893.343515,
+          "Distance": 9.634684244791664,
+          "Hit": true,
+          "ScheduledAt": 1793713893.342189
+        },
+        "2": {
+          "HealthAfter": 75,
+          "HealthBefore": 100,
+          "Index": 3,
+          "Reach": 11.42822265625,
+          "ActualAt": 1793713894.343575,
+          "Distance": 9.634684244791664,
+          "Hit": true,
+          "ScheduledAt": 1793713894.342189
+        }
+      },
+      "Collider": "28, 46, 32",
+      "Stage": 10,
+      "NewDepth": 58.11240234375
+    },
+    {
+      "World": 2,
+      "OldShell": {
+        "1": {
+          "HealthAfter": 100,
+          "HealthBefore": 100,
+          "Index": 1,
+          "Reach": 9,
+          "ActualAt": 1793713897.725968,
+          "Distance": 9.940483940972221,
+          "Hit": false,
+          "ScheduledAt": 1793713897.710183
+        }
+      },
+      "OldDepth": 33.8525390625,
+      "Width": 23.47570037841797,
+      "Inner": {
+        "1": {
+          "HealthAfter": 75,
+          "HealthBefore": 100,
+          "Index": 2,
+          "Reach": 9,
+          "ActualAt": 1793713898.726219,
+          "Distance": 8.059516059027777,
+          "Hit": true,
+          "ScheduledAt": 1793713898.710183
+        },
+        "2": {
+          "HealthAfter": 75,
+          "HealthBefore": 100,
+          "Index": 3,
+          "Reach": 9,
+          "ActualAt": 1793713899.7265,
+          "Distance": 8.059516059027777,
+          "Hit": true,
+          "ScheduledAt": 1793713899.710183
+        }
+      },
+      "Collider": "5.475698947906494, 13.348581314086914, 15.8524169921875",
+      "Stage": 2,
+      "NewDepth": 30.46728515625
+    },
+    {
+      "World": 2,
+      "OldShell": {
+        "1": {
+          "HealthAfter": 100,
+          "HealthBefore": 100,
+          "Index": 1,
+          "Reach": 9,
+          "ActualAt": 1793713903.460842,
+          "Distance": 10.094292534722221,
+          "Hit": false,
+          "ScheduledAt": 1793713903.459682
+        }
+      },
+      "OldDepth": 39.39453125,
+      "Width": 28.912296295166016,
+      "Inner": {
+        "1": {
+          "HealthAfter": 75,
+          "HealthBefore": 100,
+          "Index": 2,
+          "Reach": 9,
+          "ActualAt": 1793713904.475551,
+          "Distance": 7.905707465277779,
+          "Hit": true,
+          "ScheduledAt": 1793713904.459682
+        },
+        "2": {
+          "HealthAfter": 75,
+          "HealthBefore": 100,
+          "Index": 3,
+          "Reach": 9,
+          "ActualAt": 1793713905.460082,
+          "Distance": 7.905707465277779,
+          "Hit": true,
+          "ScheduledAt": 1793713905.459682
+        }
+      },
+      "Collider": "10.912298202514648, 9.407477378845215, 21.394393920898438",
+      "Stage": 9,
+      "NewDepth": 35.455078125
+    }
+  ],
+  "Checks": [
+    {
+      "Passed": true,
+      "Label": "W1S1 original bounds/center/height/angle/reach unchanged"
+    },
+    {
+      "Passed": true,
+      "Label": "W1S1 old-only front shell"
+    },
+    {
+      "Label": "W1S1 old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 1,
+        "Reach": 9,
+        "ActualAt": 1793713886.610098,
+        "Distance": 9.777781168619791,
+        "Hit": false,
+        "ScheduledAt": 1793713886.60904
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W1S1 inside reduced depth"
+    },
+    {
+      "Label": "W1S1 inside actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 2,
+        "Reach": 9,
+        "ActualAt": 1793713887.626943,
+        "Distance": 8.222215440538195,
+        "Hit": true,
+        "ScheduledAt": 1793713887.60904
+      }
+    },
+    {
+      "Label": "W1S1 inside actual HP 2",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 3,
+        "Reach": 9,
+        "ActualAt": 1793713888.609671,
+        "Distance": 8.222215440538195,
+        "Hit": true,
+        "ScheduledAt": 1793713888.60904
+      }
+    },
+    {
+      "Label": "W1S1 original one-second native cadence",
+      "Passed": true,
+      "Detail": 0.9827280044555664
+    },
+    {
+      "Passed": true,
+      "Label": "W1S1 front boundary 0.899"
+    },
+    {
+      "Passed": true,
+      "Label": "W1S1 front boundary 0.901"
+    },
+    {
+      "Label": "W1S1 lateral distance envelope unchanged -1",
+      "Passed": true,
+      "Detail": {
+        "Distance": 8.989990234375,
+        "Reach": 9,
+        "Old": 8.989990234375
+      }
+    },
+    {
+      "Label": "W1S1 lateral distance envelope unchanged 1",
+      "Passed": true,
+      "Detail": {
+        "Distance": 8.989990234375,
+        "Reach": 9,
+        "Old": 8.989990234375
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W1S1 original upper-height edge inside"
+    },
+    {
+      "Passed": true,
+      "Label": "W1S1 original upper-height edge outside"
+    },
+    {
+      "Passed": true,
+      "Label": "W1S1 yaw90 shrinks Boss-local front"
+    },
+    {
+      "Label": "W1S1 yaw90 old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 4,
+        "Reach": 9,
+        "ActualAt": 1793713889.61047,
+        "Distance": 9.777763737572563,
+        "Hit": false,
+        "ScheduledAt": 1793713889.60904
+      }
+    },
+    {
+      "Label": "W1S1 yaw90 inner actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 5,
+        "Reach": 9,
+        "ActualAt": 1793713890.609568,
+        "Distance": 8.222214963701036,
+        "Hit": true,
+        "ScheduledAt": 1793713890.60904
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W1S1 physical/contact Parts untouched"
+    },
+    {
+      "Label": "W1 native client Player-to-Boss hit unchanged",
+      "Passed": true,
+      "Detail": {
+        "Before": 375,
+        "After": 374.625,
+        "Damage": 0.375
+      }
+    },
+    {
+      "Label": "W1 native pursuit still moves",
+      "Passed": true,
+      "Detail": {
+        "Movement": 5.06951904296875
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 original bounds/center/height/angle/reach unchanged"
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 old-only front shell"
+    },
+    {
+      "Label": "W1S10 old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 1,
+        "Reach": 11.42822265625,
+        "ActualAt": 1793713892.344297,
+        "Distance": 13.221788194444443,
+        "Hit": false,
+        "ScheduledAt": 1793713892.342189
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 inside reduced depth"
+    },
+    {
+      "Label": "W1S10 inside actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 2,
+        "Reach": 11.42822265625,
+        "ActualAt": 1793713893.343515,
+        "Distance": 9.634684244791664,
+        "Hit": true,
+        "ScheduledAt": 1793713893.342189
+      }
+    },
+    {
+      "Label": "W1S10 inside actual HP 2",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 3,
+        "Reach": 11.42822265625,
+        "ActualAt": 1793713894.343575,
+        "Distance": 9.634684244791664,
+        "Hit": true,
+        "ScheduledAt": 1793713894.342189
+      }
+    },
+    {
+      "Label": "W1S10 original one-second native cadence",
+      "Passed": true,
+      "Detail": 1.0000600814819336
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 front boundary 0.899"
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 front boundary 0.901"
+    },
+    {
+      "Label": "W1S10 lateral distance envelope unchanged -1",
+      "Passed": true,
+      "Detail": {
+        "Distance": 11.418212890625,
+        "Reach": 11.42822265625,
+        "Old": 11.418212890625
+      }
+    },
+    {
+      "Label": "W1S10 lateral distance envelope unchanged 1",
+      "Passed": true,
+      "Detail": {
+        "Distance": 11.418212890625,
+        "Reach": 11.42822265625,
+        "Old": 11.418212890625
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 original upper-height edge inside"
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 original upper-height edge outside"
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 yaw90 shrinks Boss-local front"
+    },
+    {
+      "Label": "W1S10 yaw90 old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 4,
+        "Reach": 11.428207397460938,
+        "ActualAt": 1793713895.342345,
+        "Distance": 13.221784803602432,
+        "Hit": false,
+        "ScheduledAt": 1793713895.342189
+      }
+    },
+    {
+      "Label": "W1S10 yaw90 inner actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 5,
+        "Reach": 11.428207397460938,
+        "ActualAt": 1793713896.342667,
+        "Distance": 9.634613037109375,
+        "Hit": true,
+        "ScheduledAt": 1793713896.342189
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W1S10 physical/contact Parts untouched"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 original bounds/center/height/angle/reach unchanged"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 old-only front shell"
+    },
+    {
+      "Label": "W2S2 old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 1,
+        "Reach": 9,
+        "ActualAt": 1793713897.725968,
+        "Distance": 9.940483940972221,
+        "Hit": false,
+        "ScheduledAt": 1793713897.710183
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 inside reduced depth"
+    },
+    {
+      "Label": "W2S2 inside actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 2,
+        "Reach": 9,
+        "ActualAt": 1793713898.726219,
+        "Distance": 8.059516059027777,
+        "Hit": true,
+        "ScheduledAt": 1793713898.710183
+      }
+    },
+    {
+      "Label": "W2S2 inside actual HP 2",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 3,
+        "Reach": 9,
+        "ActualAt": 1793713899.7265,
+        "Distance": 8.059516059027777,
+        "Hit": true,
+        "ScheduledAt": 1793713899.710183
+      }
+    },
+    {
+      "Label": "W2S2 original one-second native cadence",
+      "Passed": true,
+      "Detail": 1.0002810955047607
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 front boundary 0.899"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 front boundary 0.901"
+    },
+    {
+      "Label": "W2S2 lateral distance envelope unchanged -1",
+      "Passed": true,
+      "Detail": {
+        "Distance": 8.989999771118164,
+        "Reach": 9,
+        "Old": 8.989999771118164
+      }
+    },
+    {
+      "Label": "W2S2 lateral distance envelope unchanged 1",
+      "Passed": true,
+      "Detail": {
+        "Distance": 8.989999771118164,
+        "Reach": 9,
+        "Old": 8.989999771118164
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 original upper-height edge inside"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 original upper-height edge outside"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 yaw90 shrinks Boss-local front"
+    },
+    {
+      "Label": "W2S2 yaw90 old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 4,
+        "Reach": 9,
+        "ActualAt": 1793713900.726354,
+        "Distance": 9.940345658196343,
+        "Hit": false,
+        "ScheduledAt": 1793713900.710183
+      }
+    },
+    {
+      "Label": "W2S2 yaw90 inner actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 5,
+        "Reach": 9,
+        "ActualAt": 1793713901.726665,
+        "Distance": 8.059655401441786,
+        "Hit": true,
+        "ScheduledAt": 1793713901.710183
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W2S2 physical/contact Parts untouched"
+    },
+    {
+      "Label": "W2 native client Player-to-Boss hit unchanged",
+      "Passed": true,
+      "Detail": {
+        "Before": 30000000,
+        "After": 29970000,
+        "Damage": 30000
+      }
+    },
+    {
+      "Label": "W2 native pursuit still moves",
+      "Passed": true,
+      "Detail": {
+        "Movement": 4.661069869995117
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 original bounds/center/height/angle/reach unchanged"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 old-only front shell"
+    },
+    {
+      "Label": "W2S9 old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 1,
+        "Reach": 9,
+        "ActualAt": 1793713903.460842,
+        "Distance": 10.094292534722221,
+        "Hit": false,
+        "ScheduledAt": 1793713903.459682
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 inside reduced depth"
+    },
+    {
+      "Label": "W2S9 inside actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 2,
+        "Reach": 9,
+        "ActualAt": 1793713904.475551,
+        "Distance": 7.905707465277779,
+        "Hit": true,
+        "ScheduledAt": 1793713904.459682
+      }
+    },
+    {
+      "Label": "W2S9 inside actual HP 2",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 3,
+        "Reach": 9,
+        "ActualAt": 1793713905.460082,
+        "Distance": 7.905707465277779,
+        "Hit": true,
+        "ScheduledAt": 1793713905.459682
+      }
+    },
+    {
+      "Label": "W2S9 original one-second native cadence",
+      "Passed": true,
+      "Detail": 0.9845311641693115
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 front boundary 0.899"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 front boundary 0.901"
+    },
+    {
+      "Label": "W2S9 lateral distance envelope unchanged -1",
+      "Passed": true,
+      "Detail": {
+        "Distance": 8.989999771118164,
+        "Reach": 9,
+        "Old": 8.989999771118164
+      }
+    },
+    {
+      "Label": "W2S9 lateral distance envelope unchanged 1",
+      "Passed": true,
+      "Detail": {
+        "Distance": 8.990001678466797,
+        "Reach": 9,
+        "Old": 8.990001678466797
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 original upper-height edge inside"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 original upper-height edge outside"
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 yaw90 shrinks Boss-local front"
+    },
+    {
+      "Label": "W2S9 yaw90 old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 4,
+        "Reach": 9,
+        "ActualAt": 1793713906.460152,
+        "Distance": 10.094289157125683,
+        "Hit": false,
+        "ScheduledAt": 1793713906.459682
+      }
+    },
+    {
+      "Label": "W2S9 yaw90 inner actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 75,
+        "HealthBefore": 100,
+        "Index": 5,
+        "Reach": 9,
+        "ActualAt": 1793713907.459909,
+        "Distance": 7.905710445510017,
+        "Hit": true,
+        "ScheduledAt": 1793713907.459682
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "W2S9 physical/contact Parts untouched"
+    },
+    {
+      "Passed": true,
+      "Label": "Repeated bounds factor 1"
+    },
+    {
+      "Passed": true,
+      "Label": "Repeated bounds factor 2"
+    },
+    {
+      "Passed": true,
+      "Label": "Repeated bounds factor 3"
+    },
+    {
+      "Passed": true,
+      "Label": "Repeated bounds factor 4"
+    },
+    {
+      "Passed": true,
+      "Label": "Repeated bounds factor 5"
+    },
+    {
+      "Label": "Respawn/re-fight unchanged depth",
+      "Passed": true,
+      "Detail": {
+        "Old": 28,
+        "New": 25.2
+      }
+    },
+    {
+      "Label": "Respawn old-only shell actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 1,
+        "Reach": 9,
+        "ActualAt": 1793713912.76038,
+        "Distance": 9.777781168619791,
+        "Hit": false,
+        "ScheduledAt": 1793713912.759398
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "World2 transition factor"
+    },
+    {
+      "Passed": true,
+      "Label": "World1 return/recreated actor no accumulation"
+    },
+    {
+      "Label": "Peer test owner outside actual HP 1",
+      "Passed": true,
+      "Detail": {
+        "HealthAfter": 100,
+        "HealthBefore": 100,
+        "Index": 1,
+        "Reach": 9,
+        "ActualAt": 1793713914.943706,
+        "Distance": 9.777781168619791,
+        "Hit": false,
+        "ScheduledAt": 1793713914.94278
+      }
+    },
+    {
+      "Passed": true,
+      "Label": "Peer damage remains independent"
+    }
+  ]
+}

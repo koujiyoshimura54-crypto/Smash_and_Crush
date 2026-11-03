@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-03 — Boss-to-Player depth at 90%
+
+Two live Sources implement the local-depth coefficient without editing shared Parts. One isolated two-client run passed83 focused checks on four differently shaped Bosses, real PlayerHP, yaw, contact damage, pursuit, respawn/re-fight and independent sessions. Remaining Bosses share the verified code route; not every model was played.477 Sources and74 SoundIds verified after cleanup; unsaved Edit retained. [Record and limits](../reports/BossAttackDepth_20261103.md).
+
 ## 2026-11-03 — Restore ordinary Auto training's walking requirement
 
 Corrected an unauthorized stationary-training expansion in ad907b3. One live Source restores the former grounded-walking predicate only for automatic ordinary gains; manual-while-Auto and shared0.2/0.3/0.5s timing remain. Both Worlds passed18 targeted native checks: idle0, moving+3, stationary manual+1, stopped0 and stationary automatic wall damage. Helpers removed; unsaved Edit retained. [Correction and evidence](../reports/AutoWalkingGate_20261103.md).
