@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-04 — World selector and gate blockers implemented
+
+Applied to the current canonical Studio and left unsaved in Edit. Isolated native two-client Play passed19 checks for contact, collision, close/recontact, authoritative refusal, private travel, round trips and respawn. Normal/narrow rendering was captured and inspected; exact reference-resolution rendering and an official World3 preview remain unavailable. [Source/GUI manifest and verification limits](../reports/WorldGate_20261104.md).
+
 ## 2026-11-04 — Equipment onboarding implemented
 
 Phases5/6 and Dumbbell Best Equip are applied to current unsaved canonical Studio. Isolated native Play covered banking, normal Ore UI generation/equipment, failure/reset/reload, guide arbitration and normal/narrow rendering. Eighteen Sources match exports; helpers removed and Edit restored. [Verification and untested public/physical paths](../reports/EquipmentTutorial_20261104.md).

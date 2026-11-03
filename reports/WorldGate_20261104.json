@@ -1,0 +1,357 @@
+{
+  "UniverseId": 10765181857,
+  "Sources": {
+    "ReplicatedStorage.Modules.WorldSelectionPresentation": {
+      "Hash": 542454497,
+      "Length": 3976
+    },
+    "ReplicatedStorage.Modules.WorldGateContact": {
+      "Hash": 3283724142,
+      "Length": 1555
+    },
+    "ReplicatedStorage.Config.WorldGateConfig": {
+      "Hash": 431542129,
+      "Length": 867
+    },
+    "ServerScriptService.Services.WorldGateService": {
+      "Hash": 243794279,
+      "Length": 4936
+    },
+    "ServerScriptService.Systems.Controllers.StageProgressController": {
+      "Hash": 3781994810,
+      "Length": 1451
+    },
+    "StarterPlayer.StarterPlayerScripts.World.WorldGateClient": {
+      "Hash": 2828156578,
+      "Length": 3703
+    }
+  },
+  "Edit": true,
+  "Walls": [
+    {
+      "Path": "Workspace.World2Gate.WorldSelectionWall",
+      "CanCollide": true,
+      "CFrame": [
+        237.60000610351562,
+        15,
+        76.0999984741211,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "Transparency": 1,
+      "Size": [
+        12.199999809265137,
+        26,
+        0.5
+      ]
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.World1ReturnGate.WorldSelectionWall",
+      "CanCollide": true,
+      "CFrame": [
+        -22.27998161315918,
+        13,
+        2011.0799560546875,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "Transparency": 1,
+      "Size": [
+        12.199999809265137,
+        26,
+        0.5
+      ]
+    }
+  ],
+  "PlaceId": 126576845524886,
+  "TemporaryHelpers": [],
+  "Gui": {
+    "Worlds": [
+      {
+        "Path": "StarterGui.WorldTravelGui.Modal.Card.WorldList.World1",
+        "Attributes": {
+          "LockedBackgroundTransparency": 0.12,
+          "WorldId": 1
+        },
+        "PreviewFieldOfView": 38,
+        "PreviewCameraCFrame": [
+          287,
+          32,
+          52,
+          1,
+          0,
+          0,
+          0,
+          0.9858211278915405,
+          0.16779933869838715,
+          0,
+          -0.16779933869838715,
+          0.9858211278915405
+        ],
+        "PreviewSource": "Current World1 owned lobby scenery",
+        "Parts": 1234
+      },
+      {
+        "Path": "StarterGui.WorldTravelGui.Modal.Card.WorldList.World2",
+        "Attributes": {
+          "LockedBackgroundTransparency": 0.12,
+          "WorldId": 2
+        },
+        "PreviewFieldOfView": 38,
+        "PreviewCameraCFrame": [
+          15,
+          31,
+          1982,
+          1,
+          0,
+          0,
+          0,
+          0.9874406456947327,
+          0.157990500330925,
+          0,
+          -0.157990500330925,
+          0.9874406456947327
+        ],
+        "PreviewSource": "Current World2 owned lobby scenery",
+        "Parts": 980
+      },
+      {
+        "Path": "StarterGui.WorldTravelGui.Modal.Card.WorldList.World3",
+        "Attributes": {
+          "LockedBackgroundTransparency": 0.12,
+          "WorldId": 3
+        },
+        "PreviewFieldOfView": 38,
+        "PreviewCameraCFrame": [
+          -9.299999237060547,
+          30,
+          1258.5655517578125,
+          0.9999999403953552,
+          0,
+          0,
+          0,
+          0.9985633492469788,
+          0.053582966327667236,
+          0,
+          -0.05358296260237694,
+          0.9985634088516235
+        ],
+        "PreviewSource": "Purchased LevelTemplate scenery sample ONLY; World3 map and destination not available",
+        "Parts": 1121
+      }
+    ],
+    "Path": "StarterGui.WorldTravelGui",
+    "Attributes": {
+      "TransferOriginalEnabled": true,
+      "OriginalPath": "StarterGui.WorldTravelGui",
+      "WorldSelectionVersion": 1
+    },
+    "DisplayOrder": 10010,
+    "CardAttributes": {
+      "HeaderHeight": 104,
+      "CloseTextSize": 85,
+      "TitleTextSize": 100,
+      "SidePadding": 36,
+      "CardHeight": 234,
+      "ButtonTextSize": 62,
+      "ReferenceHeight": 844,
+      "ReferenceWidth": 1312,
+      "WorldTextSize": 106,
+      "CardGap": 15
+    }
+  },
+  "Reference": {
+    "First": [
+      1672,
+      941
+    ],
+    "Locked": [
+      1671,
+      941
+    ],
+    "Panel": [
+      169,
+      60,
+      1312,
+      844
+    ],
+    "Cards": [
+      1240,
+      234
+    ],
+    "CardGap": 15,
+    "Action": [
+      338,
+      99
+    ]
+  },
+  "NativeTwoClient": {
+    "Reports": [
+      {
+        "Passed": true,
+        "Checks": [
+          {
+            "Passed": true,
+            "Evidence": {
+              "WallDistance": 0.8099212646484375,
+              "Highest": 2,
+              "Touching": true,
+              "Health": 100,
+              "World": 1
+            },
+            "Name": "Native walking blocked at wall; private prompt"
+          },
+          {
+            "Name": "Unlocked W2 and locked W3",
+            "Passed": true
+          },
+          {
+            "Name": "Close while touching stays closed",
+            "Passed": true
+          },
+          {
+            "Passed": true,
+            "Evidence": {
+              "WallDistance": 0.8154067993164062,
+              "Highest": 2,
+              "Touching": true,
+              "Health": 100,
+              "World": 1
+            },
+            "Name": "Native walking blocked at wall; private prompt"
+          },
+          {
+            "Name": "Leave and recontact re-arms once",
+            "Passed": true
+          },
+          {
+            "Passed": true,
+            "Evidence": {
+              "WallDistance": 63.099998474121094,
+              "Highest": 1,
+              "Touching": false,
+              "Health": 100,
+              "World": 1
+            },
+            "Name": "Travel is private"
+          },
+          {
+            "Name": "Arrival outside gate, no reopen",
+            "Passed": true
+          },
+          {
+            "Passed": true,
+            "Evidence": {
+              "WallDistance": 0.8204345703125,
+              "Highest": 2,
+              "Touching": true,
+              "Health": 100,
+              "World": 2
+            },
+            "Name": "Native walking blocked at wall; private prompt"
+          },
+          {
+            "Name": "W2 current, W1 teleport",
+            "Passed": true
+          },
+          {
+            "Name": "Death respawn does not reopen/duplicate GUI",
+            "Passed": true
+          },
+          {
+            "Passed": true,
+            "Evidence": {
+              "WallDistance": 0.814300537109375,
+              "Highest": 2,
+              "Touching": true,
+              "Health": 100,
+              "World": 1
+            },
+            "Name": "Native walking blocked at wall; private prompt"
+          },
+          {
+            "Name": "Contact still works after respawn",
+            "Passed": true
+          }
+        ]
+      },
+      {
+        "Passed": true,
+        "Checks": [
+          {
+            "Name": "Peer contact/travel did not open local UI",
+            "Passed": true
+          },
+          {
+            "Passed": true,
+            "Evidence": {
+              "WallDistance": 0.8137893676757812,
+              "Highest": 1,
+              "Touching": true,
+              "Health": 100,
+              "World": 1
+            },
+            "Name": "Native walking blocked at wall; private prompt"
+          },
+          {
+            "Name": "Locked player sees cards but cannot activate",
+            "Passed": true
+          },
+          {
+            "Name": "Direct locked W2 request denied",
+            "Passed": true
+          },
+          {
+            "Name": "Unprepared W3 request denied",
+            "Passed": true
+          },
+          {
+            "Passed": true,
+            "Evidence": {
+              "WallDistance": 0.809722900390625,
+              "Highest": 2,
+              "Touching": true,
+              "Health": 100,
+              "World": 1
+            },
+            "Name": "Native walking blocked at wall; private prompt"
+          },
+          {
+            "Name": "Independent second-player unlock and travel",
+            "Passed": true
+          }
+        ]
+      }
+    ],
+    "States": [
+      {
+        "WallDistance": 0.8032302856445312,
+        "Highest": 2,
+        "Touching": true,
+        "Health": 100,
+        "World": 1
+      },
+      {
+        "WallDistance": 63.0999755859375,
+        "Highest": 2,
+        "Touching": false,
+        "Health": 100,
+        "World": 2
+      }
+    ]
+  }
+}
