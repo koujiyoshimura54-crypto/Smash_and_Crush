@@ -1,3 +1,7 @@
+# 2026-11-04 — Single automatic combat execution
+
+Removed duplicate attack initiation and delayed Player hit reservations. Combat Auto now uses0.8s and manual-to-Auto0.5s; grounded-walking Auto stays0.5s. Validated real HP/gain timing and matched punch/sound counts in both Worlds' solo Play. [Scope and limits](../reports/CombatAutoSingleOwner_20261104/REPORT.md).
+
 # 2026-11-04 — Fence stale equipped-Item HUD state
 
 Fixed reset/old-response Belt display residue in the current unsaved Studio. Server effects were already correct. Measured both Worlds' Auto/manual sequence through original input/Remotes; sustained0.2s automatic damage was not reproduced, so combat code and settings remain unchanged. [Evidence and limitations](../reports/AutoBelt_20261104/REPORT.md).

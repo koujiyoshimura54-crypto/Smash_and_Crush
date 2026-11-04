@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-04 — Separate combat and walking Auto intervals
+
+AutoTapConfig: MinimumInterval=0.2, AfterManualDelay=0.5, CombatAutoInterval=0.8, AutoInterval=0.5 seconds. Success deadlines are based on the current time; failed input does not advance them and toggles/run resets cannot shorten an existing deadline. The0.8 value applies to successful automatic wall/Boss hits only. Grounded-walking Auto remains0.5s; manual Strength remains available at the shared0.2 minimum. Damage/gain arithmetic, walking predicate, treadmill and Boss-to-Player settings are unchanged. [Measured solo cases](../reports/CombatAutoSingleOwner_20261104/REPORT.md).
+
 ## 2026-11-03 — Boss attack local-depth coefficient
 
 BossAttackHitboxConfig.DepthScale=0.9 applies once to the existing Boss-to-Player distance envelope in local Z, including its reach extension, without multiplying the lateral distance or changing Speed-based angle/reach tuning. Native representatives retain 25 damage / 1-second scheduled intervals; W1 Stage1 full depth changes 28 → 25.2 studs for the tested Player size. [All measured representatives](../reports/BossAttackDepth_20261103.md).

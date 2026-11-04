@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-04 — Automatic combat unified
+
+Current canonical Studio now has one automatic action owner, immediate validated combat execution and no delayed hit tickets. Combat Auto uses0.8s, manual-to-Auto0.5s and ordinary walking Auto0.5s, retaining the shared0.2 minimum. Scoped solo Play measured both Worlds' wall/Boss HP, ordinary Strength, notification/Track/sound counts and interruption/retry boundaries. Belt repair and existing unsaved edits are preserved. [English record, test corrections and limits](../reports/CombatAutoSingleOwner_20261104/REPORT.md).
+
 ## 2026-11-04 — Stale Belt HUD repaired; Auto acceleration not reproduced
 
 Current unsaved Studio now clears/reloads Item effects on ForgeSessionToken changes and rejects old-generation snapshots. Reproduced a stale Belt icon after reset while the server effect was already zero; actual solo screens and normal treadmill gains confirm the repair. Both Worlds' representative wall/Boss damage retained approximately0.5s Auto cadence after toggles/manual input; attack code/settings were not changed. Final verification used solo Test after the user's instruction. Helpers removed;486 Sources verified; focused Edit, unsaved. [Measurements, fixture limits and Full Paths](../reports/AutoBelt_20261104/REPORT.md).
