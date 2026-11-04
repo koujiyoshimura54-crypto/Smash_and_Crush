@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-04 — Current-session Item effect HUD
+
+The equipped-Item HUD clears icons/values on data-generation changes, waits for accepted current-session state, and rejects stale replies. Unversioned legacy merge notifications request fresh equipment state. Owned/equipped validation and server effect values remain unchanged. [Reproduction and actual solo rendering](../reports/AutoBelt_20261104/REPORT.md).
+
 ## 2026-11-04 — Three-card World selector
 
 The old YES/NO gate modal is replaced by editable World1/2/3 cards, shared Fredoka One, blue Current, green Teleport and gray Locked states. Locked cards retain faint scenery under an editable dark-gray overlay. Narrow areas scroll vertically. Existing map scenery supplies GUI-only previews; World3 has only a purchased-scenery placeholder, not an official map. [Measurements, actual rendering and manual edit paths](../reports/WorldGate_20261104.md).

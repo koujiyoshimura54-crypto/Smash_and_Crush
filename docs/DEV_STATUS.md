@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-04 — Stale Belt HUD repaired; Auto acceleration not reproduced
+
+Current unsaved Studio now clears/reloads Item effects on ForgeSessionToken changes and rejects old-generation snapshots. Reproduced a stale Belt icon after reset while the server effect was already zero; actual solo screens and normal treadmill gains confirm the repair. Both Worlds' representative wall/Boss damage retained approximately0.5s Auto cadence after toggles/manual input; attack code/settings were not changed. Final verification used solo Test after the user's instruction. Helpers removed;486 Sources verified; focused Edit, unsaved. [Measurements, fixture limits and Full Paths](../reports/AutoBelt_20261104/REPORT.md).
+
 ## 2026-11-04 — World selector and gate blockers implemented
 
 Applied to the current canonical Studio and left unsaved in Edit. Isolated native two-client Play passed19 checks for contact, collision, close/recontact, authoritative refusal, private travel, round trips and respawn. Normal/narrow rendering was captured and inspected; exact reference-resolution rendering and an official World3 preview remain unavailable. [Source/GUI manifest and verification limits](../reports/WorldGate_20261104.md).

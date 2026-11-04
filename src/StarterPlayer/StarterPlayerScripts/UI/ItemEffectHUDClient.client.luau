@@ -52,6 +52,7 @@ for _, definition in ipairs(definitions) do
  label.TextStrokeTransparency = .15
  label.TextXAlignment = Enum.TextXAlignment.Left
  label.TextScaled = false
+ label.Text = ""
  label.Parent = frame
  entries[definition.Kind] = {Frame = frame, Holder = holder, Icon = icon, Label = label}
 end
@@ -166,9 +167,29 @@ local function layout()
 end
 local revision = 0
 local loaded = false
+local function clearState()
+ revision += 1
+ loaded = false
+ stopGlove()
+ stopBelt()
+ lastAttackId = 0
+ for _, entry in pairs(entries) do
+  entry.ItemId = nil
+  entry.Frame.Visible = false
+  entry.Icon.Image = ""
+  entry.Label.Text = ""
+ end
+ row.Visible = false
+ setBadge.Visible = false
+ setIcon.Image = ""
+ layout()
+end
 local function applyState(state)
- if typeof(state) ~= "table" or state.Loaded ~= true
-  or typeof(state.OwnedItems) ~= "table" or typeof(state.EquippedItems) ~= "table" then return end
+ local generation = player:GetAttribute("ForgeSessionToken")
+ if typeof(state) ~= "table" or typeof(generation) ~= "string"
+  or state.EquipmentGeneration ~= generation then return end
+ if state.Loaded ~= true then clearState(); return end
+ if typeof(state.OwnedItems) ~= "table" or typeof(state.EquippedItems) ~= "table" then return end
  revision += 1
  loaded = true
  local count = 0
@@ -190,6 +211,8 @@ local function applyState(state)
    local value = effective[definition.Kind] * (definition.Factor or 1)
    entry.Label.Text = "+" .. string.format("%g", value) .. definition.Suffix
    count += 1
+  else
+   entry.Label.Text = ""
   end
  end
  local element = elementSetBonus.GetMatchingElement(state.OwnedItems,state.EquippedItems)
@@ -210,15 +233,42 @@ local function refresh()
  repeat
   refreshAgain = false
   local before = revision
+  local generation = player:GetAttribute("ForgeSessionToken")
   local ok, state = pcall(function() return stateRemote:InvokeServer() end)
-  -- An equip reply arriving while this request yields is newer than this snapshot.
-  if ok and before == revision then applyState(state) end
+  -- Both an equip reply and a reset invalidate an in-flight inventory snapshot.
+  if ok and before == revision and generation == player:GetAttribute("ForgeSessionToken") then
+   applyState(state)
+  end
  until not refreshAgain
  refreshing = false
 end
+local loading = false
+local function ensureLoaded()
+ if loading then return end
+ loading = true
+ task.spawn(function()
+  while not loaded and script.Parent do
+   refresh()
+   if not loaded then task.wait(1) end
+  end
+  loading = false
+ end)
+end
+player:GetAttributeChangedSignal("ForgeSessionToken"):Connect(function()
+ -- Reset replaces inventory without necessarily replacing the Character/HUD.
+ clearState()
+ ensureLoaded()
+end)
 for _, name in ipairs({"ItemEquipRequest", "ItemPurchaseRequest", "ItemRobuxPurchaseRequest", "ItemMergeRequest"}) do
  remotes:WaitForChild(name).OnClientEvent:Connect(function(result)
-  if typeof(result) == "table" then applyState(result.State) end
+  if typeof(result) ~= "table" or typeof(result.State) ~= "table" then return end
+  if result.State.EquipmentGeneration == nil then
+   -- Legacy merge notifications are invalidation signals, not trusted snapshots.
+   task.spawn(refresh)
+  else
+   applyState(result.State)
+  end
+  if not loaded then ensureLoaded() end
  end)
 end
 local gameRemotes = remotes:WaitForChild("GameRemotes")
@@ -261,9 +311,7 @@ player.CharacterRemoving:Connect(resetCharacter)
 player.CharacterAdded:Connect(characterAdded)
 if player.Character then task.spawn(characterAdded, player.Character) end
 -- Initial data loading can complete after the first inventory response.
-task.spawn(function()
- while not loaded and script.Parent do refresh(); if not loaded then task.wait(1) end end
-end)
+ensureLoaded()
 -- HUDLayout moves the status lane in response to device and potion changes.
 layout()
 script.Destroying:Connect(function()

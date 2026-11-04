@@ -1,3 +1,7 @@
+# 2026-11-04 — Fence stale equipped-Item HUD state
+
+Fixed reset/old-response Belt display residue in the current unsaved Studio. Server effects were already correct. Measured both Worlds' Auto/manual sequence through original input/Remotes; sustained0.2s automatic damage was not reproduced, so combat code and settings remain unchanged. [Evidence and limitations](../reports/AutoBelt_20261104/REPORT.md).
+
 # 2026-11-04 — Item/Dumbbell equipment onboarding and Best Equip
 
 Added server-confirmed fresh/reset equipment guidance, ordinary Dumbbell Best Equip and shared green styling. Preserved existing gameplay; native isolated UI/transaction checks and cleanup recorded. [Evidence](../reports/EquipmentTutorial_20261104.md).
