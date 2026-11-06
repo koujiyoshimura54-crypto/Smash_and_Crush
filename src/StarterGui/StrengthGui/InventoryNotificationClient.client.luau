@@ -12,7 +12,7 @@ local remote=RS.Remotes:WaitForChild("EnemyDropGachaResult")
 local purchase=RS.Remotes:WaitForChild("DumbbellPurchaseRequest")
 local equip=RS.Remotes:WaitForChild("DumbbellEquipRequest")
 local stateRemote=RS.Remotes:WaitForChild("DumbbellInventoryState")
-local itemStateRemote=RS.Remotes:WaitForChild("ItemInventoryState")
+local itemStateRemote=RS.Remotes:WaitForChild("BankedItemNotificationState")
 local Master=require(RS.Config:WaitForChild("ItemMaster"))
 local Dumbbells=require(RS.Config:WaitForChild("DumbbellItemMaster"))
 local ids={}
@@ -234,10 +234,18 @@ table.insert(connections,panel.Content.Dumbbells:GetPropertyChangedSignal("Visib
 table.insert(connections,player:GetAttributeChangedSignal("Win"):Connect(function() task.spawn(refresh) end))
 table.insert(connections,remote.OnClientEvent:Connect(function(result)
  if typeof(result)~="table" or result.OwnerUserId~=player.UserId
+  or result.RunId~=nil or result.WorldId==1
   or result.Outcome~="ITEM" or typeof(result.Id)~="string"
   or seenResults[result.Id] or not Master.Get(result.ItemId) then return end
  seenResults[result.Id]=true
  acquired(result.ItemId)
+end))
+-- Replay/late mounting is safe: union confirmed ownership, never clear seen history.
+table.insert(connections,RS.Remotes:WaitForChild("RunLootBanked").OnClientEvent:Connect(function(state)
+ if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedItems)~="table" then return end
+ for id,count in pairs(state.OwnedItems) do
+  if count>0 then acquired(id) end
+ end
 end))
 local function inventoryResult(result)
  if typeof(result)=="table" then applyState(result.State) end
@@ -251,7 +259,7 @@ task.spawn(function()
  if not alive then return end
  local ok,state=pcall(function() return itemStateRemote:InvokeServer() end)
  if ok and typeof(state)=="table" and state.Loaded==true and typeof(state.OwnedItems)=="table" then
-  itemOwned=state.OwnedItems
+  for id,count in pairs(state.OwnedItems) do itemOwned[id]=math.max(itemOwned[id] or 0,count) end
   for id,count in pairs(itemOwned) do
    local item=Master.Get(id)
    if count>0 and item and not NotificationState.IsSeen("Items",id) then

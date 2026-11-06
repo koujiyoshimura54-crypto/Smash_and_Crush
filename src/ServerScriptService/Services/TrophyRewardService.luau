@@ -205,6 +205,18 @@ local function collectAttempt(player, record, part, double, purchased)
 	  and player.Character == character and humanoid.Health > 0
 	  and (player:GetAttribute("CurrentWorld") or 1) == worldId
 	end
+	-- Begin the existing streaming request while durable banking is in flight.
+	-- Never move/reset before both operations succeed; retries retain the receipt.
+	local stream = record.LobbyStream
+	if not stream or stream.Done and (not stream.Placement or not Placement.IsCurrent(player, stream.Placement)) then
+	 stream = {}
+	 record.LobbyStream = stream
+	 task.spawn(function()
+	  local ok, placement, reason = pcall(Placement.StreamLobby, player, character, worldId)
+	  stream.Placement, stream.Reason = ok and placement or nil, ok and reason or tostring(placement)
+	  stream.Done = true
+	 end)
+	end
 	-- Durable item banking remains mandatory before reset, but cannot delay Win credit.
 	if Bank and not record.Banked then
 	 local snapshot = Run.GetSnapshot(player)
@@ -214,7 +226,11 @@ local function collectAttempt(player, record, part, double, purchased)
 	 record.Banked = true
 	end
 	if not current() then return end
-	local placement, reason = Placement.StreamLobby(player, character, worldId)
+	while not stream.Done do
+	 if not current() then return end
+	 RunService.Heartbeat:Wait()
+	end
+	local placement, reason = stream.Placement, stream.Reason
 	if not placement then diagnose(player, record, "Stream:" .. tostring(reason)); return end
 	if not current() or not Placement.IsCurrent(player, placement) then return end
 	humanoid.Health = humanoid.MaxHealth

@@ -37,6 +37,31 @@ end
 function M.Invalidate(player)
  return M.Reset(player,false)
 end
+-- Latch the loss on the dying character BEFORE clearing the run.
+-- An ambiguous durable write must settle before we claim its loot was lost.
+function M.DiscardOnDeath(player,character)
+ if player.Character~=character or character:GetAttribute("BattleBagDeathPending") then return end
+ character:SetAttribute("BattleBagDeathPending",true)
+ local s=states[player]
+ local count=s and s.Count or 0
+ local session=Data.Get(player)
+ local op=session and session.PendingItemMutation
+ if not (op and op.RunReturn and s and op.RunId==s.RunId) then op=nil end
+ M.Invalidate(player)
+ local function finish()
+  character:SetAttribute("BattleBagLostCount",op and op.Result=="Changed" and 0 or count)
+  character:SetAttribute("BattleBagDeathResolved",true)
+ end
+ if op and not op.Result then
+  task.spawn(function()
+   while not op.Result and player.Parent==Players do
+    Data.ResolveItemMutation(player)
+    if not op.Result then task.wait(.25) end
+   end
+   if op.Result then finish() end
+  end)
+ else finish() end
+end
 function M.SetActive(player,runId,active)
  local s=states[player]
  if not validPlayer(player) or not s or s.RunId~=runId then return false end

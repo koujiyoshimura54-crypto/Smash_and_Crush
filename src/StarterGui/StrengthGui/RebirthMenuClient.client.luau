@@ -30,7 +30,7 @@ local function refresh()
  local can=not maxed and req~=nil and value>=req
  badge.Visible=can
  fill.Size=UDim2.fromScale((maxed or can) and 1 or (req and req>0 and math.clamp(value/req,0,1) or 0),1)
- progress.Text=maxed and "MAX" or ("REQUIRED LEVEL  Lv %s  •  Lv %d / %s"):format(tostring(req or "N/A"),value,tostring(req or "N/A"))
+ progress.Text=maxed and "MAX" or ("Required Level: %s"):format(tostring(req or "N/A"))
  local cr=current:FindFirstChild("RewardText",true)
  local ar=after:FindFirstChild("RewardText",true)
  if cr then cr.Text=("x%.1f"):format(multiplier(n)) end

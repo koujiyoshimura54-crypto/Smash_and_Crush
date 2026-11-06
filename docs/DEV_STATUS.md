@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-06 — Return and presentation fixes in unsaved canonical Edit
+
+Implemented overlapping Trophy bank/stream waits, arrival-gated Item acquisition notifications, server-confirmed bag-loss death text, continuous yellow-carpet arrows and a single Fredoka Rebirth requirement label. Both Worlds passed native prepared Trophy collection; mixed-bag/retry/death/ambiguous-write checks preserved single ownership and prior unseen notifications. Actual images covered death with/without loot, yellow-border arrows and normal/narrow Rebirth. Production persistence, natural full runs and real mobile input remain unverified. Restored40 QA substitutions, verified487 Sources (10 intentional changes), and left Play stopped/focused Edit without Save/Publish/rbxl writes. [English Full Paths, measurements and limits](../reports/ReturnUX_20261106/REPORT.md).
+
 ## 2026-11-04 — Automatic combat unified
 
 Current canonical Studio now has one automatic action owner, immediate validated combat execution and no delayed hit tickets. Combat Auto uses0.8s, manual-to-Auto0.5s and ordinary walking Auto0.5s, retaining the shared0.2 minimum. Scoped solo Play measured both Worlds' wall/Boss HP, ordinary Strength, notification/Track/sound counts and interruption/retry boundaries. Belt repair and existing unsaved edits are preserved. [English record, test corrections and limits](../reports/CombatAutoSingleOwner_20261104/REPORT.md).

@@ -1,3 +1,7 @@
+# 2026-11-06 — Confirmed return notifications and presentation fixes
+
+Overlap Trophy banking and Lobby streaming without changing durable reward safeguards. Gate provisional Item notices on validated Lobby arrival; show actual bag loss in existing death UI. Support yellow carpet steps and simplify the Rebirth requirement with readable Fredoka text. Verified isolated native Play, response-loss retries and actual UI images; canonical Studio remains unsaved Edit. [Evidence](../reports/ReturnUX_20261106/REPORT.md).
+
 # 2026-11-04 — Single automatic combat execution
 
 Removed duplicate attack initiation and delayed Player hit reservations. Combat Auto now uses0.8s and manual-to-Auto0.5s; grounded-walking Auto stays0.5s. Validated real HP/gain timing and matched punch/sound counts in both Worlds' solo Play. [Scope and limits](../reports/CombatAutoSingleOwner_20261104/REPORT.md).

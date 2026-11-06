@@ -238,7 +238,7 @@ bindCharacter=function(p,character)
   ensureWallCombatTrigger(character)
   observer.Connection=hum.Died:Once(function()
    if deathObservers[p]~=observer or p.Character~=character then return end
-   if RunInventory then RunInventory.Invalidate(p) end
+   if RunInventory then RunInventory.DiscardOnDeath(p,character) end
    cleanupWallCombatTrigger(character)
    if inWorld(p) and not lossRespawns[p] then M.InitializePlayer(p) end
   end)

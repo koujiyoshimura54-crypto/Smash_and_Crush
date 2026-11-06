@@ -9,6 +9,8 @@ local bound = setmetatable({}, {__mode = "k"})
 local characterRequests = setmetatable({}, {__mode = "k"})
 local spawned = Instance.new("BindableEvent")
 M.Spawned = spawned.Event
+local arrived = Instance.new("BindableEvent")
+M.Arrived = arrived.Event
 local started = false
 local remotes = RS:WaitForChild("Remotes")
 local placementReady = remotes:FindFirstChild("LobbySpawnReady") or Instance.new("RemoteEvent")
@@ -148,6 +150,7 @@ function M.MoveToLobby(player, character, worldId)
 	character:SetAttribute("LobbySpawnPlaced", true)
 	character:SetAttribute("SpawnFacingDirection", direction.Unit)
 	character:SetAttribute("SpawnFacingRevision", (character:GetAttribute("SpawnFacingRevision") or 0) + 1)
+	request.Lobby = true
 	request.Target = position
 	request.Revision = (character:GetAttribute("SpawnPlacementRevision") or 0) + 1
 	character:SetAttribute("SpawnPlacementTarget", position)
@@ -166,6 +169,7 @@ placementReady.OnServerEvent:Connect(function(player, character, revision, posit
 	if not root or hum.Health <= 0 or request.Root ~= root or (root.Position - request.Target).Magnitude > 0.5 then return end
 	root.Anchored = request.Anchored
 	request.Root = nil
+	if request.Lobby then arrived:Fire(player, character, revision) end
 end)
 
 -- A delayed data load may resize someone who has already left the spawn.

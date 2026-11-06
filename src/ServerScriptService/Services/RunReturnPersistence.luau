@@ -145,6 +145,7 @@ function M.Resolve(player, session, op, adapter)
 		if session.PendingItemMutation == op then session.PendingItemMutation = nil end
 		session.Dirty = true
 		unlock()
+  if context.OnResolved then context.OnResolved(result) end
 		return result == "Changed", result
 	end
 	-- Separate durable writes: confirmation of Pending MUST precede Grant.

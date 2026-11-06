@@ -25,6 +25,7 @@ local MAX_CHEVRONS=160
 local UPDATE_INTERVAL=.2
 local floorParts={}
 local floorSet={}
+local carpetSet={}
 local rayParams=RaycastParams.new()
 rayParams.FilterType=Enum.RaycastFilterType.Include
 rayParams.IgnoreWater=true
@@ -57,9 +58,12 @@ local function hide()
  lastRouteState=nil
 end
 local function refreshFloors()
- table.clear(floorParts);table.clear(floorSet)
+ table.clear(floorParts);table.clear(floorSet);table.clear(carpetSet)
  local function add(part)
-  if part and part:IsA("BasePart") then floorSet[part]=true;table.insert(floorParts,part) end
+  if part and part:IsA("BasePart") then
+   floorSet[part]=true;table.insert(floorParts,part)
+   if part.Name=="Upper" or part.Name=="Lower" then carpetSet[part]=true end
+  end
  end
  local map=workspace:FindFirstChild("GeneratedMap")
  if map then
@@ -268,6 +272,7 @@ local function floorOnly(hit,direction,top)
  local side=forward:Cross(normal).Unit
  local candidates=nearCandidates(hit.Position,top)
  local points={hit.Position}
+ local highest=hit.Position.Y
  local tip=hit.Position+forward*.65
  for _,sign in {-1,1} do
   local tail=hit.Position-forward*.65+side*(sign*1.05)
@@ -279,14 +284,18 @@ local function floorOnly(hit,direction,top)
  end
  for _,point in points do
   local floorHit=workspace:Raycast(Vector3.new(point.X,top,point.Z),Vector3.new(0,-256,0),rayParams)
-  if not floorHit or not floorSet[floorHit.Instance] or floorHit.Normal.Y<=.5
-   or math.abs(floorHit.Position.Y-point.Y)>.08 then return false end
+  if not floorHit or not floorSet[floorHit.Instance] or floorHit.Normal.Y<=.5 then return false end
+  -- Only registered carpet edges may bridge their measured <=0.4-stud
+  -- step to another approved walking surface; equipment remains an occluder.
+  local tolerance=(carpetSet[hit.Instance] or carpetSet[floorHit.Instance]) and .45 or .08
+  if math.abs(floorHit.Position.Y-point.Y)>tolerance then return false end
+  highest=math.max(highest,floorHit.Position.Y)
   for _,part in candidates do
    if part.Parent and part.Transparency<1 and part.LocalTransparencyModifier<.99
     and blocks(part,floorHit.Position,top) then return false end
   end
  end
- return true
+ return true,highest
 end
 local function arm(index,side)
  local part=Instance.new("Part")
@@ -341,11 +350,12 @@ local function show(key,target)
   local direction=segment.Direction
   local center=segment.Start+direction*localDistance
   local hit=workspace:Raycast(Vector3.new(center.X,castTop,center.Z),Vector3.new(0,-256,0),rayParams)
-  if floorOnly(hit,direction,castTop) then
+  local supported,height=floorOnly(hit,direction,castTop)
+  if supported then
    local normal=hit.Normal
    local forward=(direction-normal*direction:Dot(normal)).Unit
    local side=forward:Cross(normal).Unit
-   local origin=hit.Position+normal*.055
+   local origin=Vector3.new(hit.Position.X,height,hit.Position.Z)+normal*.055
    local tip=origin+forward*.65
    for armIndex,sign in ipairs({-1,1}) do
     local tail=origin-forward*.65+side*(sign*1.05)

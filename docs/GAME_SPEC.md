@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-06 — Confirmed return and death loss
+
+Trophy return overlaps existing Lobby streaming with durable World1 bag banking, retaining both journal confirmations and the single-credit/retry guards. Acquisition exclamations exclude provisional drops and release confirmed return Items only after the validated Lobby placement acknowledgement. Death records actual Item/Ore bag loss before invalidation; ambiguous writes settle before the loss subtitle is selected. World2 direct ownership and all existing rewards/timing remain. [Evidence and limitations](../reports/ReturnUX_20261106/REPORT.md).
+
 ## 2026-11-04 — Single automatic combat update
 
 Supersedes the November3 shared Auto delay: only the Heartbeat action router executes automatic Player combat. Successful combat Auto schedules the next Auto at now+0.8s; manual success uses now+0.5s. Ordinary grounded-walking Auto retains0.5s; the shared successful-action minimum remains0.2s. The0.1s combat loop maintains state/contact without attacking. No delayed hit reservation or catch-up; Auto rearming cannot shorten a committed deadline. Only successful HP changes emit punch/SE notifications. Treadmill and Boss-to-Player rules remain unchanged. [Solo timing and playback evidence](../reports/CombatAutoSingleOwner_20261104/REPORT.md).

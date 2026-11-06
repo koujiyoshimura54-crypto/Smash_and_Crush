@@ -13,6 +13,12 @@ local cameraConnections = {}
 local restoringCamera = false
 local requestFraming
 local deathGui, overlay, fade
+local lossConnection
+local function updateLoss()
+ if not overlay then return end
+ local detail=overlay:FindFirstChild("LootLoss")
+ if detail then detail.Visible=frozenCharacter~=nil and (frozenCharacter:GetAttribute("BattleBagLostCount") or 0)>0 end
+end
 local function lockCamera()
  local camera = workspace.CurrentCamera
  if not frozenFrame or not camera or restoringCamera then return end
@@ -47,6 +53,7 @@ end
 local function showDeath()
  if not deathGui then return end
  deathGui.Enabled = true
+ updateLoss()
  if fade then fade:Cancel() end
  overlay.BackgroundTransparency = 1
  fade = TweenService:Create(overlay, TweenInfo.new(.15), {BackgroundTransparency = .5})
@@ -233,6 +240,8 @@ local function align(character)
 end
 local function bindCharacter(character)
  boundCharacter = character
+ if lossConnection then lossConnection:Disconnect() end
+ lossConnection=character:GetAttributeChangedSignal("BattleBagLostCount"):Connect(updateLoss)
  framingRequest += 1
  headingRequest += 1
  if facingConnection then facingConnection:Disconnect(); facingConnection = nil end
@@ -283,6 +292,7 @@ task.spawn(function()
 end)
 script.Destroying:Connect(function()
  stopped=true
+ if lossConnection then lossConnection:Disconnect() end
  framingRequest+=1
  playerModuleConnection:Disconnect()
  starterModuleConnection:Disconnect()
