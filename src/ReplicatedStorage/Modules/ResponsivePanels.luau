@@ -255,7 +255,13 @@ function M.LayoutItems(gui,page,list,grid)
     local button=c:FindFirstChild(name)
     if button then
      button.Position=UDim2.fromOffset(8,y)
-     button.Size=UDim2.fromOffset(width-16,buttonHeight)
+     local sale=c:FindFirstChild("SellButton")
+     local bw=sale and (width-24)*.56 or width-16
+     button.Size=UDim2.fromOffset(bw,buttonHeight)
+     if sale then
+      sale.Position=UDim2.fromOffset(16+bw,y);sale.Size=UDim2.fromOffset(width-24-bw,buttonHeight)
+      HUD.RefitPurchaseButton(sale)
+     end
     end
    end
   end end

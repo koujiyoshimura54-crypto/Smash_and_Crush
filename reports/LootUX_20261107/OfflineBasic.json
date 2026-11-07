@@ -1,0 +1,234 @@
+{
+  "OK": true,
+  "ConfigurationUnchanged": true,
+  "Store": "PlayerData_v1_Studio",
+  "Rate": 10,
+  "Rows": [
+    {
+      "SavedRate": 10,
+      "ExpectedNormal": 300,
+      "Elapsed": 600,
+      "Quoted": 300,
+      "Capped": 600,
+      "OK": true,
+      "GrantedDelta": 300,
+      "StrengthDelta": 300,
+      "EarnedDelta": 300,
+      "Display": "+300 STRENGTH",
+      "Mode": "NormalClaim",
+      "StrengthAfter": 600,
+      "StrengthBefore": 300
+    },
+    {
+      "SavedRate": 10,
+      "ExpectedNormal": 300,
+      "Elapsed": 600,
+      "Quoted": 300,
+      "Capped": 600,
+      "OK": true,
+      "GrantedDelta": 600,
+      "StrengthDelta": 600,
+      "EarnedDelta": 600,
+      "Display": "+300 STRENGTH",
+      "Mode": "MockDoubleReceipt",
+      "StrengthAfter": 1200,
+      "StrengthBefore": 600
+    },
+    {
+      "SavedRate": 10,
+      "ExpectedNormal": 1800,
+      "Elapsed": 3600,
+      "Quoted": 1800,
+      "Capped": 3600,
+      "OK": true,
+      "GrantedDelta": 1800,
+      "StrengthDelta": 1800,
+      "EarnedDelta": 1800,
+      "Display": "+1.8K STRENGTH",
+      "Mode": "NormalClaim",
+      "StrengthAfter": 3000,
+      "StrengthBefore": 1200
+    },
+    {
+      "SavedRate": 10,
+      "ExpectedNormal": 1800,
+      "Elapsed": 3600,
+      "Quoted": 1800,
+      "Capped": 3600,
+      "OK": true,
+      "GrantedDelta": 3600,
+      "StrengthDelta": 3600,
+      "EarnedDelta": 3600,
+      "Display": "+1.8K STRENGTH",
+      "Mode": "MockDoubleReceipt",
+      "StrengthAfter": 6600,
+      "StrengthBefore": 3000
+    },
+    {
+      "SavedRate": 10,
+      "ExpectedNormal": 1800,
+      "Elapsed": 7200,
+      "Quoted": 1800,
+      "Capped": 3600,
+      "OK": true,
+      "GrantedDelta": 1800,
+      "StrengthDelta": 1800,
+      "EarnedDelta": 1800,
+      "Display": "+1.8K STRENGTH",
+      "Mode": "NormalClaim",
+      "StrengthAfter": 8400,
+      "StrengthBefore": 6600
+    },
+    {
+      "SavedRate": 10,
+      "ExpectedNormal": 1800,
+      "Elapsed": 7200,
+      "Quoted": 1800,
+      "Capped": 3600,
+      "OK": true,
+      "GrantedDelta": 3600,
+      "StrengthDelta": 3600,
+      "EarnedDelta": 3600,
+      "Display": "+1.8K STRENGTH",
+      "Mode": "MockDoubleReceipt",
+      "StrengthAfter": 12000,
+      "StrengthBefore": 8400
+    }
+  ],
+  "Configuration": {
+    "MaxSeconds": 3600,
+    "Efficiency": 0.05,
+    "DecayBands": []
+  },
+  "StoredRateFixture": {
+    "Expected": 900,
+    "Rate": 30,
+    "Amount": 900
+  },
+  "SavedPresence": {
+    "State": "Offline",
+    "Rate": 10,
+    "At": 1793955135
+  },
+  "Departure": {
+    "Rate": 10,
+    "At": 1793955135
+  },
+  "OnlineCheckpointHasReward": false,
+  "Selected": {
+    "Multiplier": 5,
+    "Accessible": true,
+    "Name": "01",
+    "World": 2
+  },
+  "Components": [
+    {
+      "Dumbbell": 0,
+      "StrengthPotion": 1,
+      "Belt": 0,
+      "VIP": 1,
+      "Aura": 0,
+      "TrainingBonus": 0,
+      "Protein": 0,
+      "Pet": 1,
+      "Rebirth": 1
+    },
+    {
+      "Dumbbell": 0,
+      "StrengthPotion": 1,
+      "Belt": 0,
+      "VIP": 1,
+      "Aura": 0,
+      "TrainingBonus": 0,
+      "Protein": 0,
+      "Pet": 1,
+      "Rebirth": 1
+    }
+  ],
+  "Candidates": [
+    {
+      "Multiplier": 3,
+      "Accessible": false,
+      "Name": "Gold01",
+      "World": 1
+    },
+    {
+      "Multiplier": 2,
+      "Accessible": false,
+      "Name": "Iron02",
+      "World": 1
+    },
+    {
+      "Multiplier": 1,
+      "Accessible": true,
+      "Name": "Normal01",
+      "World": 1
+    },
+    {
+      "Multiplier": 2,
+      "Accessible": false,
+      "Name": "Iron01",
+      "World": 1
+    },
+    {
+      "Multiplier": 20,
+      "Accessible": false,
+      "Name": "Diamond01",
+      "World": 1
+    },
+    {
+      "Multiplier": 1,
+      "Accessible": true,
+      "Name": "Normal02",
+      "World": 1
+    },
+    {
+      "Multiplier": 3,
+      "Accessible": false,
+      "Name": "Gold02",
+      "World": 1
+    },
+    {
+      "Multiplier": 7,
+      "Accessible": false,
+      "Name": "03",
+      "World": 2
+    },
+    {
+      "Multiplier": 12,
+      "Accessible": false,
+      "Name": "05",
+      "World": 2
+    },
+    {
+      "Multiplier": 5,
+      "Accessible": true,
+      "Name": "01",
+      "World": 2
+    },
+    {
+      "Multiplier": 5,
+      "Accessible": true,
+      "Name": "02",
+      "World": 2
+    },
+    {
+      "Multiplier": 12,
+      "Accessible": false,
+      "Name": "06",
+      "World": 2
+    },
+    {
+      "Multiplier": 7,
+      "Accessible": false,
+      "Name": "04",
+      "World": 2
+    },
+    {
+      "Multiplier": 35,
+      "Accessible": false,
+      "Name": "07",
+      "World": 2
+    }
+  ]
+}

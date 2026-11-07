@@ -17,6 +17,7 @@ function M.Resolve(player,s,op,ctx)
     -- pending-mutation barrier protect this exact snapshot throughout retries.
     merged.OwnedDumbbells=op.DumbbellsBefore
     merged.EquippedDumbbell=op.EquippedBefore
+    if op.Action=="SellItem" then merged.OwnedItems=op.ItemsBefore;merged.EquippedItems=op.EquippedItemsBefore end
     local paid=tonumber(merged.ShopRewards and merged.ShopRewards.WinGrantedTotal) or 0
     merged.Win=op.WinBefore+math.max(0,paid-op.PaidBefore)
    end
@@ -41,6 +42,7 @@ function M.Resolve(player,s,op,ctx)
  end
  s.Data.OwnedOres=assert(Counts.Normalize(saved.OwnedOres))
  s.Data.OwnedDumbbells=assert(Counts.Normalize(saved.OwnedDumbbells))
+ if op.Action=="SellItem" then s.Data.OwnedItems=assert(Counts.Normalize(saved.OwnedItems)) end
  s.Data.ForgeJournal=journal
  if op.Action=="MergeOre" then
   local tutorial=require(RS.Modules.OreMergeTutorialState)

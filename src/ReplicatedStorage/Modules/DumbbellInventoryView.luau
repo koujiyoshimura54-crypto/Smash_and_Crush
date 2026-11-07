@@ -152,10 +152,8 @@ function M.LayoutShell(panel,header,titleIcon,close)
  rect(panel.Content,16,cy,w-32,h-cy-16)
  return true
 end
-function M.Mount(page,gui)
- M.StyleEquipped(page)
- local view={Selected=nil};local shell=page:FindFirstAncestor("InventoryPanel");local list=page.Items;local grid=list.UIGridLayout
- local popup=make("Frame","DumbbellSellPanel",page,90);popup.Active=true;popup.Visible=false;surface(popup,30,false)
+function M.CreateSalePopup(parent,name)
+ local popup=make("Frame",name,parent,90);popup.Active=true;popup.Visible=false;surface(popup,30,false)
  popup.UIGradient.Color=ColorSequence.new(Color3.fromRGB(108,0,170),Color3.fromRGB(81,0,131))
  local arrow=make("Frame","Pointer",popup,89);arrow.BackgroundColor3=Color3.fromRGB(113,0,176);arrow.Rotation=45;arrow.Size=UDim2.fromOffset(32,32);ink(arrow,6)
  local title=label("SellTitle",popup,64,92);title.Text="Sell"
@@ -164,6 +162,13 @@ function M.Mount(page,gui)
  for _,o in close:GetDescendants() do if o:IsA("GuiObject") then layer(o,97);o.Active=false end end
  local one=make("TextButton","SellOne",popup,93);one.Text="";one:SetAttribute("PurchaseFillBounds",true)
  local all=make("TextButton","SellAll",popup,93);all.Text="";all:SetAttribute("PurchaseFillBounds",true)
+ return {Popup=popup,Arrow=arrow,Title=title,CloseButton=close,One=one,All=all}
+end
+function M.Mount(page,gui)
+ M.StyleEquipped(page)
+ local view={Selected=nil};local shell=page:FindFirstAncestor("InventoryPanel");local list=page.Items;local grid=list.UIGridLayout
+ local parts=M.CreateSalePopup(page,"DumbbellSellPanel")
+ local popup,arrow,title,close,one,all=parts.Popup,parts.Arrow,parts.Title,parts.CloseButton,parts.One,parts.All
  local connections={}
  local function connect(signal,fn)connections[#connections+1]=signal:Connect(fn)end
  local function follow()

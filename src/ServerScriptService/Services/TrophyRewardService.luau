@@ -10,8 +10,8 @@ local Placement = require(game.ServerScriptService.Services.LobbySpawnService)
 local GamePass = require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
 local PlayerData = require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
 
-local Bank = worldId==1 and require(game.ServerScriptService.Services.RunItemBankService)
-local Run = worldId==1 and require(game.ServerScriptService.Services.RunInventoryService)
+local Bank = require(game.ServerScriptService.Services.RunItemBankService)
+local Run = require(game.ServerScriptService.Services.RunInventoryService)
 
 local M = {}
 
@@ -206,7 +206,7 @@ local function collectAttempt(player, record, part, double, purchased)
 	  and (player:GetAttribute("CurrentWorld") or 1) == worldId
 	end
 	-- Begin the existing streaming request while durable banking is in flight.
-	-- Never move/reset before both operations succeed; retries retain the receipt.
+	-- Movement waits for safe streaming; the banking worker retains its own receipt.
 	local stream = record.LobbyStream
 	if not stream or stream.Done and (not stream.Placement or not Placement.IsCurrent(player, stream.Placement)) then
 	 stream = {}
@@ -217,11 +217,11 @@ local function collectAttempt(player, record, part, double, purchased)
 	  stream.Done = true
 	 end)
 	end
-	-- Durable item banking remains mandatory before reset, but cannot delay Win credit.
+	-- Freeze a server-owned receipt before reset; its worker and journal survive travel.
 	if Bank and not record.Banked then
 	 local snapshot = Run.GetSnapshot(player)
 	 local committed, reason = false, "MissingRun"
-	 if snapshot then committed, reason = Bank.Commit(player, snapshot.RunId) end
+	 if snapshot then committed, reason = Bank.Begin(player, snapshot.RunId) end
 	 if not committed then diagnose(player, record, "Bank:" .. tostring(reason)); return end
 	 record.Banked = true
 	end
@@ -318,6 +318,7 @@ function M.Spawn(player, major)
 
 	assert(marker and floor, "Trophy boss spawn/floor missing")
 
+	task.spawn(Placement.PrefetchLobby,player,player.Character,worldId)
 	local baseReward = RewardConfig.GetBaseReward(major,worldId)
 
 	if typeof(baseReward) ~= "number" then

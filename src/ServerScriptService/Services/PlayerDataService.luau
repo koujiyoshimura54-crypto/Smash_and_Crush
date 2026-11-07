@@ -885,7 +885,7 @@ function PlayerDataService.SetWin(player,value)
  -- can still increase Win and are retained when the purchase is acknowledged.
  if s.PendingAdminWin and n<s.Data.Win then return false end
  if s.PendingItemMutation and (s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.SpeedUpgrade or s.PendingItemMutation.PetMutation or s.PendingItemMutation.ForgeMutation) and n<s.Data.Win then return false end
- s.Data.Win=math.max(0,math.floor(n))
+ s.Data.Win=require(game.ReplicatedStorage.Modules.WinAmount).Normalize(n)
  player:SetAttribute("Win",s.Data.Win)
  s.Dirty=true
  return true
@@ -1638,6 +1638,9 @@ function PlayerDataService.MutateForge(player,request)
  op.WinBefore=player:GetAttribute("Win") or d.Win
  op.PaidBefore=d.ShopRewards.WinGrantedTotal
  op.DumbbellsBefore=table.clone(d.OwnedDumbbells);op.EquippedBefore=d.EquippedDumbbell
+ if op.Action=="SellItem" then
+  op.ItemsBefore=table.clone(d.OwnedItems);op.EquippedItemsBefore=table.clone(d.EquippedItems)
+ end
  local probe=table.clone(d);probe.Win=op.WinBefore
  local nextData,reason,delta=ForgeInventory.Apply(probe,op)
  if not nextData then return false,reason end
@@ -1645,6 +1648,7 @@ function PlayerDataService.MutateForge(player,request)
  op.WinDelta=delta
  if RunService:IsStudio() and s.StudioStartOverride then
   d.OwnedOres=nextData.OwnedOres;d.OwnedDumbbells=nextData.OwnedDumbbells
+  if op.Action=="SellItem" then d.OwnedItems=nextData.OwnedItems end
   d.ForgeJournal=nextData.ForgeJournal;d.Win=nextData.Win
   if op.Action=="MergeOre" then
    d.OreMergeTutorial=nextData.OreMergeTutorial;OreTutorial.Publish(player,d.OreMergeTutorial)
@@ -2064,7 +2068,8 @@ function PlayerDataService.ChangeItemCounts(player,deltas,timeReward)
   end
   s.ReturnSequence+=1
   op={Id=context.Id,WinPrice=0,ResetToken=s.Data.ResetToken,RunReturn=context,
-   OwnerToken=s.OwnerToken,Sequence=s.ReturnSequence,RunId=context.RunId,CreatedAt=os.time(),OreDeltas=ores}
+   OwnerToken=s.OwnerToken,Sequence=s.ReturnSequence,RunId=context.RunId,CreatedAt=os.time(),OreDeltas=ores,
+   Accepted=context.Accepted,WinSnapshot=context.Accepted and (player:GetAttribute("Win") or s.Data.Win) or nil}
   context.Operation=op
  elseif timeReward and timeReward.CommunityReward then
   local reason

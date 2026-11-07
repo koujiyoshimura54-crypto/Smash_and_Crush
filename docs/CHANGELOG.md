@@ -1,3 +1,7 @@
+# 2026-11-07 — Retained return, Item sales and Boss loot controls
+
+Move and release players before bag persistence finishes while retaining the accepted receipt and original retry journal. Unify both Worlds' provisional bag, add definition-priced owned Item sales, restore Item result stars and show one five-second Boss cue with an adjacent acquisition-specific Drop. Offline5%/3600s remains unchanged after isolated rate/claim audit. Native Play and actual desktop images checked; production/physical input limits and final Save result are [recorded](../reports/LootUX_20261107/REPORT.md).
+
 # 2026-11-06 — Confirmed return notifications and presentation fixes
 
 Overlap Trophy banking and Lobby streaming without changing durable reward safeguards. Gate provisional Item notices on validated Lobby arrival; show actual bag loss in existing death UI. Support yellow carpet steps and simplify the Rebirth requirement with readable Fredoka text. Verified isolated native Play, response-loss retries and actual UI images; canonical Studio remains unsaved Edit. [Evidence](../reports/ReturnUX_20261106/REPORT.md).

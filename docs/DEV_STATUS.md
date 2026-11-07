@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-07 — Fast return, Item sale and Boss cue validation
+
+Implemented retained asynchronous return transactions, owned Item sale, Item result stars and a five-second latest-only acquisition cue with adjacent Drop in both Worlds. Native isolated Play covered return, delayed/ambiguous saves, death/departure retention, sale replay/stale requests, Drop identity and cue replacement. With0.6s per injected save, W1 movement changed1.213→0.086s and control1.244→0.261s; these are fixture measurements, not production latency. Offline5%/3600s was traced through actual claim deltas with normal and synthetic doubled receipts and remains unchanged. Actual desktop UI images inspected; physical input, public persistence and real paid checkout remain unverified. Existing manual edits and prior UI/combat fixes preserved. Final cleanup, canonical Save and Git evidence are in the [English report](../reports/LootUX_20261107/REPORT.md).
+
 ## 2026-11-06 — Return and presentation fixes in unsaved canonical Edit
 
 Implemented overlapping Trophy bank/stream waits, arrival-gated Item acquisition notifications, server-confirmed bag-loss death text, continuous yellow-carpet arrows and a single Fredoka Rebirth requirement label. Both Worlds passed native prepared Trophy collection; mixed-bag/retry/death/ambiguous-write checks preserved single ownership and prior unseen notifications. Actual images covered death with/without loot, yellow-border arrows and normal/narrow Rebirth. Production persistence, natural full runs and real mobile input remain unverified. Restored40 QA substitutions, verified487 Sources (10 intentional changes), and left Play stopped/focused Edit without Save/Publish/rbxl writes. [English Full Paths, measurements and limits](../reports/ReturnUX_20261106/REPORT.md).

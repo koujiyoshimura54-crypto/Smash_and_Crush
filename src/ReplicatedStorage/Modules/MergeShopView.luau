@@ -389,7 +389,10 @@ return function(ctx)
     Size=UDim2.fromScale(.94,outcome.ItemId and .72 or .88),ScaleType=Enum.ScaleType.Fit,ZIndex=226})
   end
   if outcome.ItemId then
-   pointsBadge(card,Items.GetPoints(Master.Get(outcome.ItemId)))
+   local stars=new('Frame','RarityStars',card,{BackgroundTransparency=1,Position=UDim2.fromScale(.04,.02),Size=UDim2.fromScale(.92,.23),ZIndex=233})
+   Presentation.SetItemImageStars(stars,Master.Get(outcome.ItemId),233)
+   local function sizeStars()Presentation.LayoutItemImageStars(stars,stars.AbsoluteSize.X,stars.AbsoluteSize.Y)end
+   stars:GetPropertyChangedSignal("AbsoluteSize"):Connect(sizeStars);task.defer(sizeStars)
    local icon=card:FindFirstChild('Icon');icon.Position=UDim2.fromScale(.03,.25);icon.Size=UDim2.fromScale(.94,.72)
   elseif outcome.Grade then
     local grade=label('Number',card,NumberFormat.Format(outcome.Grade),46,233);grade.Position=UDim2.fromScale(.03,.02);grade.Size=UDim2.fromScale(.35,.23);grade.TextXAlignment=Enum.TextXAlignment.Left

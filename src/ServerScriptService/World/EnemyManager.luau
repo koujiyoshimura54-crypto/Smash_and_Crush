@@ -13,7 +13,7 @@ local Wall=require(game.ServerScriptService.World.Stage1WallManager).ForWorld(wo
 local Boss=require(game.ServerScriptService.World.BossCombatService).ForWorld(worldId)
 local Trophy=require(game.ServerScriptService.Services.TrophyRewardService).ForWorld(worldId)
 local ItemDrops=require(game.ServerScriptService.Services.EnemyDropGachaService)
-local RunInventory=worldId==1 and require(game.ServerScriptService.Services.RunInventoryService)
+local RunInventory=require(game.ServerScriptService.Services.RunInventoryService)
 local PlayerData=require(game.ServerScriptService.Services.PlayerDataService)
 local Speed=require(game.ServerScriptService.Services.SpeedService)
 local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
@@ -188,7 +188,9 @@ function M.InitializePlayer(p,targetStage)
   ps.RunReturnId=game:GetService("HttpService"):GenerateGUID(false)
   p:SetAttribute("World2RunId",ps.RunReturnId)
  end
- if RunInventory then ps.RunInventoryId=RunInventory.Reset(p,true) end
+ if RunInventory then ps.RunInventoryId=RunInventory.Reset(p,true)
+  if worldId==2 then ps.RunReturnId=ps.RunInventoryId;p:SetAttribute("World2RunId",ps.RunReturnId) end
+ end
  ps.Skipped={}
  for major=1,targetStage-1 do ps.Skipped[major]=true end
  p:SetAttribute("IsFighting",false)

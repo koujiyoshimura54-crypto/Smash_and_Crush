@@ -3,6 +3,7 @@ local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local RS = game:GetService("ReplicatedStorage")
 local M = {}
+local prefetched=setmetatable({}, {__mode="k"})
 local requests = setmetatable({}, {__mode = "k"})
 local loading = setmetatable({}, {__mode = "k"})
 local bound = setmetatable({}, {__mode = "k"})
@@ -155,6 +156,11 @@ function M.MoveToLobby(player, character, worldId)
 	request.Revision = (character:GetAttribute("SpawnPlacementRevision") or 0) + 1
 	character:SetAttribute("SpawnPlacementTarget", position)
 	character:SetAttribute("SpawnPlacementRevision", request.Revision)
+ task.delay(1,function()
+  if requests[player]==request and request.Root and M.IsCurrent(player,request) then
+   pcall(function()player:RequestStreamAroundAsync(position)end)
+  end
+ end)
 	return true
 end
 
@@ -194,6 +200,16 @@ function M.OnScaleApplied(player, character)
 	end
 end
 
+function M.PrefetchLobby(player,character,worldId)
+ local marker=M.GetLobby(worldId)
+ if not marker or player.Character~=character then return end
+ local old=prefetched[player]
+ if old and old.Character==character and old.World==worldId and os.clock()-old.Time<10 then return old end
+ local job={Character=character,World=worldId,Time=os.clock()}
+ prefetched[player]=job
+ job.OK=pcall(function()player:RequestStreamAroundAsync(marker.Position)end);job.Done=true
+ return job
+end
 -- Stream before a yielding travel request; all continuations revalidate identity.
 function M.StreamLobby(player, character, worldId)
 	local root = living(player, character)
@@ -202,7 +218,13 @@ function M.StreamLobby(player, character, worldId)
 	local request = M.CancelPending(player)
 	request.Root, request.Anchored = root, root.Anchored
 	root.Anchored = true
-	local ok, err = pcall(function() player:RequestStreamAroundAsync(marker.Position) end)
+	local cache=prefetched[player]
+ local ok,err
+ if cache and cache.Character==character and cache.World==worldId and os.clock()-cache.Time<10 then
+  while not cache.Done and M.IsCurrent(player,request) do task.wait() end
+  ok=cache.OK
+ end
+ if not ok then ok,err=pcall(function()player:RequestStreamAroundAsync(marker.Position)end) end
 	if not M.IsCurrent(player, request) then return nil, "StalePlacement" end
 	root.Anchored = request.Anchored
 	request.Root = nil

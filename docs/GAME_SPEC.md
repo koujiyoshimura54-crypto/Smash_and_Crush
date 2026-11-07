@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-07 — Retained return receipts and owned-Item sales
+
+Both Worlds now keep Boss Items/Ores in the provisional Battle Bag. Trophy and Back freeze an accepted receipt before resetting the active run; Lobby movement and floor-acknowledged control resume independently of persistence. The retained transaction retries through death/departure, and acquisition exclamations require both confirmed ownership and Lobby arrival. Owned Items sell through the existing Forge journal, with last equipped copies, Robux-only definitions and absent Win prices protected. Drop discards only the currently displayed acquisition, with no Win or owned-inventory change. This supersedes the preceding World2 direct-ownership statement. [Native measurements and limits](../reports/LootUX_20261107/REPORT.md).
+
 ## 2026-11-06 — Confirmed return and death loss
 
 Trophy return overlaps existing Lobby streaming with durable World1 bag banking, retaining both journal confirmations and the single-credit/retry guards. Acquisition exclamations exclude provisional drops and release confirmed return Items only after the validated Lobby placement acknowledgement. Death records actual Item/Ore bag loss before invalidation; ambiguous writes settle before the loss subtitle is selected. World2 direct ownership and all existing rewards/timing remain. [Evidence and limitations](../reports/ReturnUX_20261106/REPORT.md).

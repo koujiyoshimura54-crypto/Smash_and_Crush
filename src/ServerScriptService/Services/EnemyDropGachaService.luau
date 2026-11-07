@@ -1,7 +1,6 @@
 -- Independent enemy reward path; one roll per player/run/stage, before any yield.
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
-local Items=require(game.ServerScriptService.Services.ItemService)
 local Data=require(game.ServerScriptService.Services.PlayerDataService)
 local Roller=require(game.ServerScriptService.Services.EnemyDropRoller)
 local RunInventory=require(game.ServerScriptService.Services.RunInventoryService)
@@ -19,38 +18,14 @@ local function reserveFirstStage1(player,result)
   result.FirstStage1=true;result.Outcome="ORE";result.OreId="ORE_001";result.ItemId=nil;result.Segment=1
  end
 end
-local function grant(player,result)
- while player.Parent==Players do
-  local session=Data.Get(player)
-  if not session or not session.Loaded or session.Saving or session.PendingItemMutation then
-   task.wait(.25)
-  else
-   local added,code=Items.AddItem(player,result.ItemId,1)
-   if added then Items.NotifyRegularItemGranted(player,result.ItemId);return true end
-   if code=="InventorySavePending" then
-    -- Observe the original operation: never issue a second +1 after an ambiguous write.
-    local op=session.PendingItemMutation
-    if not op then return false end
-    repeat task.wait(.25) until op.Result or player.Parent~=Players
-    local changed=op.Result=="Changed"
-    if changed then Items.NotifyRegularItemGranted(player,result.ItemId) end
-    return changed
-   elseif code~="DataSaving" and code~="DataNotLoaded" then
-    warn("[EnemyDropGacha] Grant rejected: "..tostring(code))
-    return false
-   end
-  end
- end
- return false
-end
 function M.OnEnemyDefeated(player,stage,run,worldId)
  if typeof(player)~="Instance" or not player:IsA("Player") or player.Parent~=Players then return false,"InvalidPlayer" end
  if typeof(stage)~="number" or stage%1~=0 or stage<1 or stage>10 then return false,"InvalidStage" end
  if typeof(run)~="table" or not run.Defeated or run.Defeated[stage]~=true then return false,"NotDefeated" end
  worldId=worldId or (player:GetAttribute("CurrentWorld") or 1)
  if worldId~=1 and worldId~=2 then return false,"InvalidWorld" end
- local runId=worldId==1 and run.RunInventoryId or nil
- if worldId==1 and not RunInventory.IsCurrent(player,runId) then return false,"StaleRun" end
+ local runId=run.RunInventoryId
+ if not RunInventory.IsCurrent(player,runId) then return false,"StaleRun" end
  local record=processed[run]
  if not record then record={Player=player,Stages={}};processed[run]=record end
  if record.Player~=player then return false,"InvalidOwner" end
@@ -63,12 +38,12 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
  result.RunId=runId
  -- Owner decision: discard either category when the existing run bag is full.
  -- The discard animation is a separate future task; never show acquisition here.
- if worldId==1 then
-  local bag=RunInventory.GetSnapshot(player)
-  if bag and bag.Count>=bag.Capacity then result.Discarded=true;result.Reason="InventoryFull" end
- end
+ RunInventory.ExpectDrop(player,result.Id)
+ local bag=RunInventory.GetSnapshot(player)
+ if bag and bag.Count>=bag.Capacity then result.Discarded=true;result.Reason="InventoryFull" end
  reserveFirstStage1(player,result)
  record.Stages[stage]=result
+ remote:FireClient(player,{Id=result.Id,OwnerUserId=player.UserId,RunId=runId,WorldId=worldId,Outcome="REPLACE"})
  if result.Discarded and not result.FirstStage1 and not result.CheckFirstStage1 then return true,"Discarded" end
  local queue=queues[player]
  if queue then table.insert(queue,result) else
@@ -100,16 +75,15 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
      end
     elseif nextResult.Discarded then
      success=false
-    elseif nextResult.WorldId==1 and nextResult.Outcome=="ORE" then
+    elseif nextResult.Outcome=="ORE" then
      local reason
      success,reason=RunInventory.TryAddOreDrop(player,nextResult.RunId,nextResult.Id,nextResult.OreId)
      if reason=="InventoryFull" then nextResult.Discarded=true;nextResult.Reason=reason end
-    elseif nextResult.WorldId==1 then
+    else
      success=RunInventory.IsCurrent(player,nextResult.RunId)
      if success and nextResult.Outcome=="ITEM" then
       local added,code=RunInventory.TryAddDrop(player,nextResult.RunId,nextResult.Id,nextResult.ItemId)
       success=added
-      if added then Items.NotifyRegularItemGranted(player,nextResult.ItemId) end
       if code=="InventoryFull" then
        -- Preserve the draw, but never present an ungranted item as acquired.
        nextResult.Outcome="MISS"
@@ -120,9 +94,6 @@ function M.OnEnemyDefeated(player,stage,run,worldId)
       end
      end
      success=success and RunInventory.IsCurrent(player,nextResult.RunId)
-    else
-     -- World2 retains its existing durable inventory grant path.
-     success=nextResult.Outcome=="MISS" or grant(player,nextResult)
     end
     if success and player.Parent==Players then remote:FireClient(player,nextResult) end
     table.remove(queue,1)

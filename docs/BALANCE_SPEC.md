@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-07 — Item sale units and unchanged offline efficiency
+
+Owned Item sale units derive from half the current ItemMaster Win purchase price and reuse the existing integer Win normalization. Common75 therefore sells for37 per copy; UI, quantity totals and persisted Win use that unit. Robux-only Items and the nine W2 Legendary Items without WinPrice are not sellable. Purchase prices and Ore sale units are unchanged. Offline audit traced departure Rate, capped time, quote and actual claim delta: efficiency0.05 and cap3600 seconds agree for baseline/equipped rates below/at/above the cap. No offline setting or reward operation changed. [Tables and isolated evidence](../reports/LootUX_20261107/REPORT.md).
+
 ## 2026-11-04 — Separate combat and walking Auto intervals
 
 AutoTapConfig: MinimumInterval=0.2, AfterManualDelay=0.5, CombatAutoInterval=0.8, AutoInterval=0.5 seconds. Success deadlines are based on the current time; failed input does not advance them and toggles/run resets cannot shorten an existing deadline. The0.8 value applies to successful automatic wall/Boss hits only. Grounded-walking Auto remains0.5s; manual Strength remains available at the shared0.2 minimum. Damage/gain arithmetic, walking predicate, treadmill and Boss-to-Player settings are unchanged. [Measured solo cases](../reports/CombatAutoSingleOwner_20261104/REPORT.md).

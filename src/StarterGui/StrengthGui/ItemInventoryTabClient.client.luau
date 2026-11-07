@@ -30,6 +30,45 @@ local function visibleItem(item)
  return (item.WorldId or 1)==1 or player:GetAttribute("World1Cleared")==true
 end
 local selectedId,pending
+local Forge=require(RS.Modules.ForgeClient)
+local Sale=require(RS.Modules.ItemSale)
+local SaleView=require(RS.Modules.DumbbellInventoryView)
+local sale=SaleView.CreateSalePopup(page,"ItemSellPanel")
+local saleId
+local function closeSale()saleId=nil;sale.Popup.Visible=false end
+local function updateSale()
+ local unit=saleId and Sale.UnitPrice(saleId)
+ if not unit or not shell.Visible or not page.Visible then closeSale();return end
+ local available=Sale.Available(saleId,owned,equipped)
+ local enabled=available>0 and not Forge.IsPending() and not pending
+ SaleView.Skin(sale.One,PriceFormat.Price(unit),"Price",enabled)
+ SaleView.Skin(sale.All,PriceFormat.Price(unit*available),"All",enabled)
+ local size=PurchaseHUD.GetLocalSize(page)
+ local w=math.min(SaleView.Geometry.PopupWidth,size.X-12)
+ local h=math.min(SaleView.Geometry.PopupHeight,size.Y-12)
+ sale.Popup.AnchorPoint=Vector2.new(.5,.5);sale.Popup.Position=UDim2.fromScale(.5,.5);sale.Popup.Size=UDim2.fromOffset(w,h)
+ sale.Arrow.Visible=false
+ sale.Title.Position=UDim2.fromOffset(18,8);sale.Title.Size=UDim2.fromOffset(w-36,72)
+ sale.CloseButton.Position=UDim2.fromOffset(w-76,12);sale.CloseButton.Size=UDim2.fromOffset(60,60)
+ local bw=(w-44)/2
+ sale.One.Position=UDim2.fromOffset(16,94);sale.One.Size=UDim2.fromOffset(bw,h-110)
+ sale.All.Position=UDim2.fromOffset(28+bw,94);sale.All.Size=UDim2.fromOffset(bw,h-110)
+ sale.Popup.Visible=true
+ PurchaseHUD.RefitPurchaseButton(sale.One);PurchaseHUD.RefitPurchaseButton(sale.All)
+end
+local function sell(all)
+ if not saleId or pending or Forge.IsPending() then return end
+ local id=saleId;local unit=Sale.UnitPrice(id);local available=Sale.Available(id,owned,equipped)
+ if not unit or available<1 then updateSale();return end
+ Forge.Request("SellItem",{ItemId=id,Count=all and available or 1,ExpectedCount=owned[id] or 0,UnitPrice=unit})
+ updateSale()
+end
+sale.One.Activated:Connect(function()sell(false)end)
+sale.All.Activated:Connect(function()sell(true)end)
+sale.CloseButton.Activated:Connect(closeSale)
+shell:GetPropertyChangedSignal("Visible"):Connect(function()if not shell.Visible then closeSale()end end)
+page:GetPropertyChangedSignal("Visible"):Connect(function()if not page.Visible then closeSale()end end)
+page:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateSale)
 local rarityIndex=1
 local ranks,rankItems,rankRarities={},{},{}
 for id,item in pairs(Master.GetAll()) do
@@ -285,12 +324,21 @@ render=function()
   local count=label(c,"OwnedCount","×"..tostring(owned[id] or 0),UDim2.fromOffset(8,8),UDim2.fromOffset(65,28),24)
   count.Visible=(owned[id] or 0)>1;count.TextXAlignment=Enum.TextXAlignment.Left
   c.Activated:Connect(function()
-   if worldLocked(id) or not stateLoaded then return end
+   if sale.Popup.Visible or Forge.IsPending() or worldLocked(id) or not stateLoaded then return end
    selectedId=id
    if (owned[id] or 0)>0 and equipped[item.ItemType]~=id and not pending then request(equipRemote,id) end
    render()
   end)
   if (owned[id] or 0)>0 then
+   local unit=Sale.UnitPrice(id)
+   if unit then
+    local sellButton=Instance.new("TextButton");sellButton.Name="SellButton";sellButton.Text="Sell";layer(sellButton,42);sellButton.Parent=c
+    SaleView.Skin(sellButton,"Sell","Sell",Sale.Available(id,owned,equipped)>0 and not Forge.IsPending() and not pending)
+    sellButton.Activated:Connect(function()
+     if pending or Forge.IsPending() then return end
+     saleId=id;updateSale();task.spawn(Forge.Refresh)
+    end)
+   end
    local isEquipped=equipped[item.ItemType]==id
    local b=Instance.new("TextButton");b.Name=isEquipped and "EquippedStatus" or "EquipButton";b.Text=""
    surface(b,"Uncommon");b.StudPattern.Visible=false;layer(b,42);b.Parent=c
@@ -315,7 +363,7 @@ render=function()
    priceButton(c,"RobuxPurchase",robuxPrices[item.Rarity] or item.RobuxPrice,"rbxasset://textures/ui/common/robux.png",robuxRemote,id)
   end
  end
- layout();list.CanvasPosition=scroll
+ layout();list.CanvasPosition=scroll;updateSale()
 end
 for _,n in ipairs(ranks) do
  local b=Instance.new("TextButton");b.Name="Star"..n;b.Text="";b.AutoButtonColor=false
@@ -352,6 +400,18 @@ local function refresh()
  if not ok or not applyState(state) then page.Status.Text="Inventory is loading. Please reopen."
  else page.Status.Text="" end
 end
+Forge.Changed:Connect(function(state)
+ if state and state.Loaded and state.Token==player:GetAttribute("ForgeSessionToken") and state.OwnedItems then
+  owned=state.OwnedItems;equipped=state.EquippedItems or equipped;stateLoaded=true
+  equipmentGeneration=state.Token;render()
+ else updateSale() end
+end)
+Forge.Completed:Connect(function(op,response)
+ if op.Action~="SellItem" then return end
+ page.Status.Text=response.Success and "" or tostring(response.Code)
+ refresh();updateSale()
+end)
+RS.Remotes:WaitForChild("RunLootBanked").OnClientEvent:Connect(function()refresh();Forge.Refresh()end)
 -- Notification attributes survive card rebuilds and inventory close/reopen.
 page.AttributeChanged:Connect(function(name)
  if string.sub(name,1,11)=="UnseenItem_" or string.sub(name,1,13)=="UnseenRarity_" then render() end

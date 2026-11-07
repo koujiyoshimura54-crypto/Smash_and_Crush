@@ -1,4 +1,4 @@
--- Shared World1 run banking for Back and Trophy. No travel, UI or Win rewards.
+-- Shared run banking for Back and Trophy. No travel, UI or Win rewards.
 local Players = game:GetService("Players")
 local Services = script.Parent
 local Run = require(Services.RunInventoryService)
@@ -6,6 +6,8 @@ local Items = require(Services.ItemService)
 local Data = require(Services.PlayerDataService)
 local M = {}
 local busy = {}
+local queue={}
+local working={}
 local contexts = {}
 local pendingNotifications = {}
 local RS = game:GetService("ReplicatedStorage")
@@ -29,6 +31,7 @@ local function notificationState(player)
 end
 snapshot.OnServerInvoke = notificationState
 require(Services.LobbySpawnService).Arrived:Connect(function(player)
+ for _,token in ipairs(queue[player] or {}) do token.Arrived=true end
  local pending=pendingNotifications[player]
  if not pending then return end
  local changed=false
@@ -36,7 +39,7 @@ require(Services.LobbySpawnService).Arrived:Connect(function(player)
   entry.Arrived=true
   if entry.Committed then pending[id]=nil;changed=true end
  end
- if changed then notification:FireClient(player,notificationState(player)) end
+ if changed then if player.Parent==Players then notification:FireClient(player,notificationState(player)) end end
  if not next(pending) then pendingNotifications[player]=nil end
 end)
 local function forget(player)
@@ -46,7 +49,7 @@ local function forget(player)
 end
 
 function M.Commit(player, runId)
- if typeof(player) ~= "Instance" or not player:IsA("Player") or player.Parent ~= Players then return false, "InvalidPlayer" end
+ if typeof(player) ~= "Instance" or not player:IsA("Player") or player.Parent ~= Players and not Run.GetAccepted(player,runId) then return false, "InvalidPlayer" end
  if typeof(runId) ~= "string" or #runId > 64 then return false, "InvalidRunId" end
  if busy[player] then return false, "ReturnBusy" end
  busy[player] = true
@@ -60,11 +63,11 @@ function M.Commit(player, runId)
 			context = nil
 		end
 		if not context then
-			context = {Id = token.Id, RunId = token.RunId, Ores = table.clone(token.Ores), Validate = function() return Run.CanReturn(player, token) end}
+			context = {Id = token.Id, Accepted=token.Accepted, RunId = token.RunId, Ores = table.clone(token.Ores), Validate = function() return Run.CanReturn(player, token) end}
 			contexts[player] = context
    if token.Count>0 then
     local session=Data.Get(player)
-    local entry={Items=table.clone(token.Items),ResetToken=session.Data.ResetToken}
+    local entry={Items=table.clone(token.Items),ResetToken=session.Data.ResetToken,Arrived=token.Arrived}
     pendingNotifications[player]=pendingNotifications[player] or {}
     pendingNotifications[player][token.Id]=entry
     -- Called by the existing journal's terminal resolution, including death/retry.
@@ -73,7 +76,7 @@ function M.Commit(player, runId)
      if not pending or pending[token.Id]~=entry then return end
      entry.Committed=result=="Changed"
      if not entry.Committed or entry.Arrived then pending[token.Id]=nil end
-     if entry.Committed and entry.Arrived then notification:FireClient(player,notificationState(player)) end
+     if entry.Committed and entry.Arrived then if player.Parent==Players then notification:FireClient(player,notificationState(player)) end end
      if not next(pending) then pendingNotifications[player]=nil end
     end
    end
@@ -95,13 +98,7 @@ function M.Commit(player, runId)
 			elseif context.Operation then
 				changed, result = Data.ResolveItemMutation(player)
 			else
-				changed, result = Items.RunItemTransaction(player, function(transaction)
-					for id, amount in pairs(token.Items) do
-						local added, failure = Items.AddItem(player, id, amount, transaction)
-						if not added then return false, failure end
-					end
-					return true
-				end, {RunReturn = context})
+				changed, result = Data.ChangeItemCounts(player,token.Items,{RunReturn=context})
 			end
 		end
 		context.Permit = false
@@ -127,7 +124,43 @@ function M.Commit(player, runId)
  return success, reason, token
 end
 
+-- Accepted return receipts outlive run reset, death, world travel and departure.
+local function work(player)
+ if working[player] then return end
+ working[player]=true
+ local delay=.1
+ while queue[player] and #queue[player]>0 do
+  local token=queue[player][1]
+  local ok,why=M.Commit(player,token.RunId)
+  if ok then table.remove(queue[player],1);delay=.1
+  else
+   local session=Data.Get(player)
+   if not session or not session.Loaded then break end
+   if session.OwnershipLost or session.Data.ResetToken~=token.ResetToken then break end
+   task.wait(delay);delay=math.min(2,delay*2)
+  end
+ end
+ if queue[player] and #queue[player]==0 then queue[player]=nil end
+ working[player]=nil
+end
+function M.Begin(player,runId)
+ local token,why=Run.AcceptReturn(player,runId)
+ if not token then return nil,why end
+ if not token.Queued then
+  token.Queued=true
+  queue[player]=queue[player] or {};table.insert(queue[player],token)
+  task.defer(work,player)
+ end
+ return token
+end
+function M.Flush(player,timeout)
+ if queue[player] and not working[player] then task.spawn(work,player) end
+ local deadline=os.clock()+(timeout or 30)
+ while queue[player] and os.clock()<deadline do task.wait(.05) end
+ return queue[player]==nil
+end
 Players.PlayerRemoving:Connect(function(player)
+ if queue[player] then return end
 	local context = contexts[player]
 	if context and not context.Committed then
 		context.Cancelled = true

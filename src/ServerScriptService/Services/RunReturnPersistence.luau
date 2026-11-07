@@ -1,4 +1,4 @@
--- Durable World1 Return journal in the existing PlayerData key.
+-- Durable Return journal in the existing PlayerData key.
 -- Pending owns neither Items nor Ores. Granted is terminal: death/leave never subtracts it.
 local M = {}
 local MAX_COUNT = 9007199254740991
@@ -21,6 +21,7 @@ function M.ValidateJournal(j)
 		or typeof(j.OwnerToken) ~= "string" or not integer(j.Sequence)
 		or typeof(j.RunId) ~= "string" or not integer(j.CreatedAt)
 		or (j.State ~= "Pending" and j.State ~= "Granted" and j.State ~= "Cancelled")
+		or j.Accepted~=nil and typeof(j.Accepted)~="boolean"
 		or typeof(j.ItemDelta) ~= "table" or j.OreDelta~=nil and typeof(j.OreDelta)~="table"
 		or next(j.ItemDelta)==nil and (j.OreDelta==nil or next(j.OreDelta)==nil) then
 		return false
@@ -35,7 +36,7 @@ function M.ValidateJournal(j)
 end
 
 -- Called atomically with ownership acquisition, before Loaded=true.
--- A Pending journal has not modified OwnedItems/OwnedOres; never replay an abandoned run.
+-- Accepted returns survive departure; unaccepted legacy runs are cancelled.
 function M.Recover(data)
  for _,key in {"RunReturnJournal","RunOreReturnJournal"} do
   local j=data[key]
@@ -43,7 +44,13 @@ function M.Recover(data)
   if j and j.State=="Pending" then
    local copy=table.clone(j)
    copy.ItemDelta=table.clone(j.ItemDelta);copy.OreDelta=table.clone(j.OreDelta or {})
-   copy.State="Cancelled";copy.ResolvedAt=os.time();copy.Reason="SessionRecovery"
+   if copy.Accepted then
+    data.OwnedItems=table.clone(data.OwnedItems or {});data.OwnedOres=table.clone(data.OwnedOres or {})
+    for id,n in pairs(copy.ItemDelta) do local count=(data.OwnedItems[id] or 0)+n;assert(count<=MAX_COUNT,"CountOverflow");data.OwnedItems[id]=count end
+    for id,n in pairs(copy.OreDelta) do local count=(data.OwnedOres[id] or 0)+n;assert(count<=MAX_COUNT,"CountOverflow");data.OwnedOres[id]=count end
+    copy.State="Granted"
+   else copy.State="Cancelled" end
+   copy.ResolvedAt=os.time();copy.Reason="SessionRecovery"
    data[key]=copy
   end
  end
@@ -78,9 +85,10 @@ function M.Transition(old, op, action)
 		local data = table.clone(old)
 		local nextJournal = {TransactionId = op.Id, OwnerToken = op.OwnerToken,
 			Sequence = op.Sequence, RunId = op.RunId, ItemDelta = table.clone(op.Deltas), OreDelta=table.clone(op.OreDeltas or {}),
-			CreatedAt = op.CreatedAt, State = "Pending"}
+			CreatedAt = op.CreatedAt, State = "Pending", Accepted=op.Accepted==true}
 		assert(M.ValidateJournal(nextJournal), "Invalid return operation")
 		data[key] = nextJournal
+  if op.Accepted then data.Win=op.WinSnapshot end
 		return data, "Pending"
 	end
 	if not same then return nil, "StaleTransaction" end
@@ -125,7 +133,7 @@ function M.Resolve(player, session, op, adapter)
 	end
 	-- Ordinary saves cannot initiate a grant. They may settle a cancellation,
 	-- which is a no-op if the durable transaction has already become Granted.
-	if valid() and not context.Permit then return false, "InventorySavePending" end
+	if valid() and not context.Permit and not context.Accepted then return false, "InventorySavePending" end
 	op.Resolving = true
 	session.Saving = true
 	local function unlock()
@@ -183,7 +191,7 @@ function M.Resolve(player, session, op, adapter)
 	end
 	unlock()
 	-- No detached background writes after Release. An unresolved Pending record
-	-- is cancelled by next Join's atomic ownership acquisition/recovery.
+	-- is resolved by the next Join's atomic ownership acquisition/recovery.
 	return false, "InventorySavePending"
 end
 

@@ -76,12 +76,16 @@ end
 
 -- Only painted, visible screen UI blocks Back; transparent layout/input frames do not.
 local function placeReturnButton(gui,button,w,h,y,edge,objects)
- if not shown(button) then return end
- local width,height=button.AbsoluteSize.X,button.AbsoluteSize.Y
+ local drop=button.Parent:FindFirstChild("RunDropButton")
+ local hasDrop=drop and shown(drop)
+ if not shown(button) and not hasDrop then return end
+ local backWidth=button.AbsoluteSize.X
+ local extra=hasDrop and drop.AbsoluteSize.X+10 or 0
+ local width,height=backWidth+extra,math.max(button.AbsoluteSize.Y,hasDrop and drop.AbsoluteSize.Y or 0)
  local origin=button.Parent.AbsolutePosition
  local blocks={}
  for x in pairs(objects) do
-  if x:IsA("GuiObject") and x~=button and not x:IsDescendantOf(button) and shown(x) then
+  if x:IsA("GuiObject") and x~=button and not x:IsDescendantOf(button) and x~=drop and not (drop and x:IsDescendantOf(drop)) and shown(x) then
    local painted=x.BackgroundTransparency<1
     or (x:IsA("TextLabel") or x:IsA("TextButton") or x:IsA("TextBox")) and x.Text~="" and x.TextTransparency<1
     or (x:IsA("ImageLabel") or x:IsA("ImageButton")) and x.Image~="" and x.ImageTransparency<1
@@ -120,10 +124,10 @@ local function placeReturnButton(gui,button,w,h,y,edge,objects)
    local rect={X=cx-width/2,Y=cy,W=width,H=height}
    local clear=true
    for _,block in ipairs(blocks) do if overlaps(rect,block,4) then clear=false;break end end
-   if clear then button.Position=UDim2.fromOffset(cx,cy);return end
+   if clear then button.Position=UDim2.fromOffset(cx-extra/2,cy);return end
   end
  end end
- button.Position=UDim2.fromOffset(math.clamp(preferred,edge+width/2,w-edge-width/2),y)
+ button.Position=UDim2.fromOffset(math.clamp(preferred,edge+width/2,w-edge-width/2)-extra/2,y)
 end
 
 function M.Mount(gui)
@@ -404,7 +408,7 @@ function M.Mount(gui)
    local touch=root and root:FindFirstChild("TouchGui")
    if object==gui
     or (object:IsDescendantOf(gui.StrengthLevelHUD) and (property=="Text" or property=="Visible"))
-    or (property=="Visible" and (object.Name=="PotionStatus" or object.Name=="RunReturnButton"))
+    or (property=="Visible" and (object.Name=="PotionStatus" or object.Name=="RunReturnButton" or object.Name=="RunDropButton"))
     or (overlay and object:IsDescendantOf(overlay))
     or (touch and object:IsDescendantOf(touch)) then invalidate() end
   end)

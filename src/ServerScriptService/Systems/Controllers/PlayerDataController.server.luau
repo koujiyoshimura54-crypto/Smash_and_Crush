@@ -25,6 +25,7 @@ end
 
 local function saveLatest(player,timeout)
  local deadline=os.clock()+(timeout or 30)
+ if not require(game.ServerScriptService.Services.RunItemBankService).Flush(player,timeout or 30) then return false end
  for attempt=1,3 do
   Data.WaitForSave(player,math.max(0,deadline-os.clock()))
   local ok=Data.Save(player)
@@ -85,7 +86,12 @@ Players.PlayerRemoving:Connect(function(player)
   Data.PrepareStrengthDeparture(player)
   saveLatest(player,30)
  end
- Data.Release(player)
+ local bank=require(game.ServerScriptService.Services.RunItemBankService)
+ if bank.Flush(player,0) then Data.Release(player)
+ else task.spawn(function()
+  while Data.IsLoaded(player) and not bank.Flush(player,10) do task.wait(1) end
+  if Data.IsLoaded(player) then saveLatest(player,30);Data.Release(player) end
+ end) end
 end)
 
 task.spawn(function()

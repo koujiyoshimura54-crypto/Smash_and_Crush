@@ -22,6 +22,7 @@ function M.Apply(data,op)
  if journal.Sequence+1~=op.Sequence then return nil,"InventoryChanged" end
  local ores=Counts.Normalize(data.OwnedOres);local bells=Counts.Normalize(data.OwnedDumbbells)
  if not ores or not bells then return nil,"InvalidInventory" end
+ local items
  local delta=0
  if op.Action=="MergeOre" then
   local preview,reason=Merge.Evaluate(op.Materials,ores);if not preview then return nil,reason end
@@ -41,6 +42,20 @@ function M.Apply(data,op)
   if op.ItemId==data.EquippedDumbbell and count>=owned then return nil,"EquippedLastCopy" end
   bells[op.ItemId]=owned-count;if bells[op.ItemId]==0 then bells[op.ItemId]=nil end
   delta=count*item.SellWin
+ elseif op.Action=="SellItem" then
+  local Sale=require(script.Parent.ItemSale)
+  local unit,reason=Sale.UnitPrice(op.ItemId)
+  local count=typeof(op.Count)=="number" and Counts.Count(op.Count)
+  if not unit then return nil,reason end
+  if not count or count<1 then return nil,"InvalidSale" end
+  items=Counts.Normalize(data.OwnedItems);if not items then return nil,"InvalidInventory" end
+  local owned=items[op.ItemId] or 0
+  if op.ExpectedCount~=owned or op.UnitPrice~=unit then return nil,"InventoryChanged" end
+  local available=Sale.Available(op.ItemId,items,data.EquippedItems)
+  if count>owned then return nil,"NotEnoughItems" end
+  if count>available then return nil,"EquippedLastCopy" end
+  items[op.ItemId]=owned-count;if items[op.ItemId]==0 then items[op.ItemId]=nil end
+  delta=count*unit
  elseif op.Action=="BuyDumbbell" then
   local item=Master.Get(op.ItemId)
   if not item or item.WorldId==2 then return nil,"InvalidItemId" end
@@ -61,6 +76,7 @@ function M.Apply(data,op)
  if not Counts.Count(win) then return nil,win<0 and "NotEnoughWin" or "WinOverflow" end
  for _,inventory in ipairs({ores,bells}) do for _,n in pairs(inventory) do if not Counts.Count(n) then return nil,"CountOverflow" end end end
  local out=table.clone(data)
+ if items then out.OwnedItems=items end
  out.OwnedOres=ores;out.OwnedDumbbells=bells;out.Win=win
  if op.Action=="MergeOre" then
   out.OreMergeTutorial=OreTutorial.Complete(data.OreMergeTutorial,op.Id)

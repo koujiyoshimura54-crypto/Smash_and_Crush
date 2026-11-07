@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-07 — Item sale, result stars and latest Boss cue
+
+Owned Item cards reuse the Dumbbell sale popup/art for Sell One and Sell All surplus, with the existing single quantity display. Only Item merge result/candidate rarity changes to stars (1–5) or star × rank (6+); materials, inputs, point totals and Pet/Ore displays remain unchanged. One Boss cue lasts about five seconds after rendering and is replaced immediately by the next result. Its Drop button sits beside Back and clears its target on expiry/replacement/return/death without discarding anything automatically. Actual desktop captures were inspected; narrow/device touch certification remains open. [Images versus fixture checks](../reports/LootUX_20261107/REPORT.md).
+
 ## 2026-11-06 — Return notifications, death, carpet arrows and Rebirth
 
 Unbanked Battle Bag drops do not create acquisition exclamations. Confirmed return Item notices wait for server-validated Lobby arrival; prior unseen and direct acquisitions remain. Existing death UI shows YOU DIED and adds You lost your loot. only for actual server-confirmed bag loss. Approved carpet steps support continuous yellow-border arrows while equipment obstruction remains. Rebirth displays only Required Level: N in Fredoka One, or MAX; cards, gauge and execution rules are unchanged. [Actual images, native checks and narrow-fixture limits](../reports/ReturnUX_20261106/REPORT.md).

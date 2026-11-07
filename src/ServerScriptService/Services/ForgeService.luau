@@ -12,6 +12,7 @@ function M.State(player)
  if not s.ForgeToken then s.ForgeToken=Http:GenerateGUID(false) end
  local d=s.Data
  return {Loaded=true,Token=s.ForgeToken,Sequence=d.ForgeJournal.Sequence,Journal=table.clone(d.ForgeJournal),
+  OwnedItems=table.clone(d.OwnedItems),EquippedItems=table.clone(d.EquippedItems),
   OreTutorial=table.clone(d.OreMergeTutorial),
   Ores=table.clone(d.OwnedOres),DumbbellCounts=table.clone(d.OwnedDumbbells),EquippedDumbbell=d.EquippedDumbbell,
   Win=player:GetAttribute("Win") or d.Win,Pending=s.PendingItemMutation~=nil,Generation=s.PetViewGeneration or 0}
@@ -29,10 +30,14 @@ function M.Request(player,request)
   selection,reason=Merge.Selection(request.Materials,nil,request.Action=="SellOre")
   if not selection then return response(false,reason) end
   signature=Merge.Signature(request.Action,selection.Materials)
- elseif request.Action=="SellDumbbell" then
+ elseif request.Action=="SellDumbbell" or request.Action=="SellItem" then
   itemId=request.ItemId
   if typeof(itemId)~="string" or #itemId>128 or typeof(request.Count)~="number" or not Counts.Count(request.Count) or request.Count<1 then return response(false,"InvalidSale") end
   signature=Merge.Signature(request.Action,{[itemId]=request.Count})
+  if request.Action=="SellItem" then
+   if typeof(request.ExpectedCount)~="number" or not Counts.Count(request.ExpectedCount) or typeof(request.UnitPrice)~="number" then return response(false,"InvalidSale") end
+   signature..="|"..tostring(request.ExpectedCount).."|"..tostring(request.UnitPrice)
+  end
  else return response(false,"InvalidAction") end
  if state.Journal.Id==request.Id then
   return response(state.Journal.Sequence==request.Sequence and state.Journal.Signature==signature,"AlreadyApplied")
@@ -53,7 +58,7 @@ function M.Request(player,request)
    resultId=Merge.Pick(preview,rng:NextNumber())
   end
   return Data.MutateForge(player,{Id=request.Id,Sequence=request.Sequence,Signature=signature,
-   Action=request.Action,Materials=selection and selection.Materials,ItemId=itemId,Count=request.Count,ResultId=resultId})
+   Action=request.Action,Materials=selection and selection.Materials,ItemId=itemId,Count=request.Count,ExpectedCount=request.ExpectedCount,UnitPrice=request.UnitPrice,ResultId=resultId})
  end)
  busy[player]=nil
  if not ok then warn("[Forge] "..tostring(success));return response(false,"RequestFailed") end

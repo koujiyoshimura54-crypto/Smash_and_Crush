@@ -1,168 +1,110 @@
+-- One provisional acquisition cue. Closing a cue never removes loot.
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
-local TweenService=game:GetService("TweenService")
 local RunService=game:GetService("RunService")
+local ContentProvider=game:GetService("ContentProvider")
 local player=Players.LocalPlayer
 local Master=require(RS.Config:WaitForChild("ItemMaster"))
-local ItemPresentation=require(RS.Modules:WaitForChild("InventoryPresentation"))
-local template=RS.UI.Templates:WaitForChild("EnemyDropGachaTemplate")
+local Ore=require(RS.Config.OreConfig)
+local Format=require(RS.Modules.NumberFormat)
+local HUD=require(RS.Modules.HUDLayout)
 local remote=RS.Remotes:WaitForChild("EnemyDropGachaResult")
-local rarities=Master.Rarities
-local queue={}
+local dropRemote=RS.Remotes:WaitForChild("RunDrop")
+local strength=player.PlayerGui:WaitForChild("StrengthGui")
+local hud=strength:WaitForChild("HUD")
+local back=hud:WaitForChild("RunReturnButton")
+local button=back:Clone();button.Name="RunDropButton";button.Text="Drop"
+button.AutomaticSize=Enum.AutomaticSize.None;button.BackgroundColor3=Color3.fromRGB(200,92,30)
+button.Visible=false;button.Parent=hud
+local serial=0
+local active,activeGui,awaiting,busy,pendingRun
 local seen={}
-local running=false
-local activeGui,activeTween,tickConnection,pointerTween
-local releaseLayout
-local ContentProvider=game:GetService("ContentProvider")
-task.spawn(function()
- local images={} for _,ore in ipairs(require(RS.Config.OreConfig).GetAvailable()) do table.insert(images,ore.Image) end
- pcall(function() ContentProvider:PreloadAsync(images) end)
-end)
-local HUD=require(RS.Modules:WaitForChild("HUDLayout"))
-local function disableTokenLocalization(root)
- if root:IsA("GuiBase2d") then root.AutoLocalize=false end
- for _,instance in ipairs(root:GetDescendants()) do
-  if instance:IsA("GuiBase2d") then instance.AutoLocalize=false end
- end
+local function valid(result)
+ local char=player.Character;local hum=char and char:FindFirstChildOfClass("Humanoid")
+ return result.RunId==player:GetAttribute("RunInventoryId") and player:GetAttribute("RunInventoryActive")==true
+  and result.WorldId==(player:GetAttribute("CurrentWorld") or 1) and hum and hum.Health>0
+  and player:GetAttribute("RunReturnBusy")~=true
 end
-local function cleanup()
- if releaseLayout then releaseLayout();releaseLayout=nil end
- if tickConnection then tickConnection:Disconnect();tickConnection=nil end
- if activeTween then activeTween:Cancel();activeTween=nil end
- if pointerTween then pointerTween:Cancel();pointerTween=nil end
+local function close()
+ serial+=1
+ local old=active;active=nil;busy=nil;button.Visible=false
  if activeGui then activeGui:Destroy();activeGui=nil end
+ if old then task.spawn(function()pcall(function()dropRemote:InvokeServer("Close",old.RunId,old.Id)end)end) end
 end
-local function currentRun(result)
- return result.WorldId~=1 or (result.RunId==player:GetAttribute("RunInventoryId")
-  and player:GetAttribute("RunInventoryActive")==true)
+local function positionButton()
+ local scale=HUD.GetScale(hud)
+ local pos=(back.AbsolutePosition-hud.AbsolutePosition)/scale
+ local size=back.AbsoluteSize/scale
+ local gap=10/scale
+ local w=math.max(size.X,68/scale);local h=math.max(size.Y,44/scale)
+ button.AnchorPoint=Vector2.zero
+ button.Position=UDim2.fromOffset(pos.X+size.X+gap,pos.Y)
+ button.Size=UDim2.fromOffset(w,h)
+ button.TextSize=back.TextSize;button.ZIndex=back.ZIndex
 end
-local function show(result)
- if not currentRun(result) then return end
- local gui=template:Clone()
- disableTokenLocalization(gui)
- activeGui=gui
- gui.Name="EnemyDropGacha"
- gui.Enabled=true
- gui:SetAttribute("ResultId",result.Id)
- gui:SetAttribute("Outcome",result.Outcome)
- gui:SetAttribute("Segment",result.Segment)
- gui.Parent=player:WaitForChild("PlayerGui")
- local holder=gui.Root
- holder.Visible=false
- releaseLayout=HUD.Reserve(player.PlayerGui:WaitForChild("StrengthGui"),holder)
- RunService.RenderStepped:Wait();RunService.RenderStepped:Wait()
- if not gui.Parent then return end
- holder.Visible=true
- local wheel=holder.Wheel
- local pointer=holder.Pointer
- local target=-(3*360+(result.Segment-.5)*72)
- wheel.Rotation=0
- local lastTick=0
- tickConnection=RunService.Heartbeat:Connect(function()
-  local count=math.floor(math.abs(wheel.Rotation)/72)
-  if count>lastTick then
-   lastTick=count
-   gui.Tick:Play()
-   if pointerTween then pointerTween:Cancel() end
-   pointer.Rotation=12
-   pointerTween=TweenService:Create(pointer,TweenInfo.new(.18,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Rotation=0})
-   pointerTween:Play()
-  end
- end)
- activeTween=TweenService:Create(wheel,TweenInfo.new(3.0,Enum.EasingStyle.Circular,Enum.EasingDirection.Out),{Rotation=target})
- local started=os.clock()
- activeTween:Play()
- local playback=activeTween.Completed:Wait()
- if tickConnection then tickConnection:Disconnect();tickConnection=nil end
- if playback~=Enum.PlaybackState.Completed or not gui.Parent or not currentRun(result) then return end
- gui:SetAttribute("SpinElapsed",os.clock()-started)
- gui:SetAttribute("Stopped",true)
- if pointerTween then pointerTween:Cancel();pointerTween=nil end
- pointer.Rotation=0
- if result.Outcome=="MISS" then
-  holder.Result.Text=result.Reason=="InventoryFull" and "RUN INVENTORY FULL" or "MISS";holder.Result.Visible=true
-  task.wait(.45)
- else
-  local item=Master.Get(result.ItemId)
-  if not item then return end
-  gui.Reward:Play()
-  wheel.Visible=false;pointer.Visible=false
-  local card=holder.ItemCard
-  card.Icon.Image=item.Image
-  ItemPresentation.SetItemStars(card.Icon,item,card.Stars)
-  card:SetAttribute("ItemId",item.ItemId)
-  card:SetAttribute("Rarity",item.Rarity)
-  card.Visible=true
-  task.wait(.9)
- end
+local function discardDisplayed()
+ if busy or not active or not button.Visible then return end
+ local result=active;local generation=serial;busy=true;button.Interactable=false
+ local ok,dropped=pcall(function()return dropRemote:InvokeServer("Drop",result.RunId,result.Id)end)
+ if generation~=serial then return end
+ busy=nil
+ if ok and dropped then close() else button.Interactable=true end
 end
--- Local-only, nonblocking acquisition cue. No replicated BillboardGui or level label.
-local overhead={}
-local function clearOverhead()
- for gui,connection in pairs(overhead) do connection:Disconnect();gui:Destroy() end
- table.clear(overhead)
-end
-local function showOverhead(result)
+button.Activated:Connect(discardDisplayed)
+local function show(result,generation)
  local character=player.Character
- local item=result.Outcome=="ORE" and require(RS.Config.OreConfig).Get(result.OreId) or Master.Get(result.ItemId)
+ local item=result.Outcome=="ORE" and Ore.Get(result.OreId) or Master.Get(result.ItemId)
  if not item then return end
- -- Loading runs in its own task; movement, combat and the next input continue.
- pcall(function() ContentProvider:PreloadAsync({item.Image}) end)
- if player.Character~=character then return end
- local head=character and character:FindFirstChild("Head")
- local humanoid=character and character:FindFirstChildOfClass("Humanoid")
- if not head or not humanoid or humanoid.Health<=0 then return end
+ pcall(function()ContentProvider:PreloadAsync({item.Image})end)
+ local deadline=os.clock()+2
+ while generation==serial and not valid(result) and player.Character==character and os.clock()<deadline do task.wait() end
+ if generation~=serial or not valid(result) or player.Character~=character then return end
+ local head=character:FindFirstChild("Head");if not head then return end
  local gui=Instance.new("BillboardGui");gui.Name="PersonalDropReward";gui.Size=UDim2.fromOffset(110,110)
- gui.Adornee=head;gui.AlwaysOnTop=true;gui.Active=false;gui:SetAttribute("RewardId",result.Id)
- local icon=Instance.new("ImageLabel");icon.Name="Icon";icon.BackgroundTransparency=1;icon.Size=UDim2.fromScale(.88,.88)
- icon.Image=item.Image;icon.ScaleType=Enum.ScaleType.Fit;icon.Parent=gui
+ gui.Adornee=head;gui.AlwaysOnTop=true;gui.Active=false;gui.AutoLocalize=false
+ gui.StudsOffsetWorldSpace=Vector3.new(0,head.Size.Y/2+2,0)
+ local icon=Instance.new("ImageLabel");icon.Name="Icon";icon.BackgroundTransparency=1
+ icon.Size=UDim2.fromScale(.88,.88);icon.Image=item.Image;icon.ScaleType=Enum.ScaleType.Fit;icon.Parent=gui
  if result.Outcome=="ORE" then
-  gui.Size=UDim2.fromOffset(180,110)
-  icon.Size=UDim2.fromOffset(97,97)
+  gui.Size=UDim2.fromOffset(180,110);icon.Size=UDim2.fromOffset(97,97)
   local points=Instance.new("TextLabel");points.Name="Points";points.BackgroundTransparency=1
-  points.Text=require(RS.Modules.NumberFormat).Format(item.Points).." pt"
+  points.AutoLocalize=false;points.Text=Format.Format(item.Points).." pt"
   points.FontFace=Font.fromEnum(Enum.Font.GothamBlack);points.TextColor3=Color3.new(1,1,1)
   points.TextStrokeTransparency=0;points.TextSize=28;points.TextScaled=true
   points.Size=UDim2.fromOffset(83,38);points.Position=UDim2.fromOffset(97,34);points.Parent=gui
  end
- gui.Parent=player.PlayerGui
- local function remove()
-  local c=overhead[gui];if c then c:Disconnect();overhead[gui]=nil end
-  gui:Destroy()
- end
- overhead[gui]=RunService.Heartbeat:Connect(function()
-  if player.Character~=character or not head.Parent or humanoid.Health<=0 then remove();return end
-  gui.StudsOffsetWorldSpace=Vector3.new(0,head.Size.Y/2+2,0)
- end)
- task.delay(2,remove)
+ active=result;activeGui=gui;gui.Parent=player.PlayerGui
+ RunService.RenderStepped:Wait();RunService.RenderStepped:Wait()
+ if generation~=serial or not valid(result) then if generation==serial then close()end;return end
+ local shown=os.clock()
+ task.delay(5,function()if generation==serial then close()end end)
+ local ok,accepted=pcall(function()return dropRemote:InvokeServer("Shown",result.RunId,result.Id)end)
+ if generation~=serial then return end
+ if not ok or not accepted or os.clock()-shown>=5 or not valid(result) then close();return end
+ positionButton();button.Visible=true;button.Interactable=true
 end
-player.CharacterRemoving:Connect(clearOverhead)
 remote.OnClientEvent:Connect(function(result)
- if typeof(result)~="table" or result.OwnerUserId~=player.UserId or typeof(result.Id)~="string" or seen[result.Id] then return end
- if result.WorldId==1 then
-  if result.Outcome~="ITEM" and result.Outcome~="ORE" then return end
-  seen[result.Id]=true;task.delay(120,function() seen[result.Id]=nil end)
-  task.spawn(showOverhead,result);return
+ if typeof(result)~="table" or result.OwnerUserId~=player.UserId or typeof(result.Id)~="string" then return end
+ if result.Outcome=="REPLACE" then
+  if awaiting~=result.Id then close();awaiting=result.Id;pendingRun=result.RunId end
+  return
  end
- if not currentRun(result) then return end
- local segment=result.Segment
- if typeof(segment)~="number" or segment%1~=0 or segment<1 or segment>5 then return end
- if result.Outcome~="MISS" and result.Outcome~="ITEM" then return end
- if (segment%2==0)~=(result.Outcome=="ITEM") then return end
- if result.Outcome=="ITEM" and not Master.Get(result.ItemId) then return end
- seen[result.Id]=true
- task.delay(120,function() seen[result.Id]=nil end)
- table.insert(queue,result)
- if running then return end
- running=true
- task.spawn(function()
-  while #queue>0 do
-   local nextResult=table.remove(queue,1)
-   local ok,err=xpcall(function() show(nextResult) end,debug.traceback)
-   cleanup()
-   if not ok then warn("[EnemyDropGacha] "..tostring(err)) end
-  end
-  running=false
- end)
+ if seen[result.Id] or awaiting and awaiting~=result.Id then return end
+ close();awaiting=result.Id;pendingRun=result.RunId;seen[result.Id]=true
+ task.delay(120,function()seen[result.Id]=nil end)
+ if result.Discarded or result.Outcome~="ITEM" and result.Outcome~="ORE" then return end
+ task.spawn(show,result,serial)
 end)
-player.CharacterRemoving:Connect(cleanup)
+for _,attribute in {"RunInventoryId","RunInventoryActive","CurrentWorld","RunReturnBusy"} do
+ player:GetAttributeChangedSignal(attribute):Connect(function()
+  if active and not valid(active) then close() end
+  if attribute=="RunInventoryId" and player:GetAttribute("RunInventoryId")~=pendingRun then close();awaiting=nil;pendingRun=nil end
+ end)
+end
+player.CharacterRemoving:Connect(function()close();awaiting=nil end)
+RunService.Heartbeat:Connect(function()
+ if active then
+  if not valid(active) then close();return end
+  positionButton()
+ end
+end)
