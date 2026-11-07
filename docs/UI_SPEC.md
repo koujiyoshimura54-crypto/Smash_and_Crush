@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-07 — Dumbbell purchase notification strength filter
+
+Dumbbell purchase guidance additionally requires the candidate's own StrengthBonus to be at least the currently equipped Dumbbell's bonus. The same filtered candidates drive card/tab/Inventory badges and refresh after normal/Best Equip, reload/reopen and respawn. Other categories, seen-history rules, purchase/world eligibility and UI design are unchanged. [Focused native checks and actual desktop images](../reports/DumbbellNotice_20261107.md).
+
 ## 2026-11-07 — Item sale, result stars and latest Boss cue
 
 Owned Item cards reuse the Dumbbell sale popup/art for Sell One and Sell All surplus, with the existing single quantity display. Only Item merge result/candidate rarity changes to stars (1–5) or star × rank (6+); materials, inputs, point totals and Pet/Ore displays remain unchanged. One Boss cue lasts about five seconds after rendering and is replaced immediately by the next result. Its Drop button sits beside Back and clears its target on expiry/replacement/return/death without discarding anything automatically. Actual desktop captures were inspected; narrow/device touch certification remains open. [Images versus fixture checks](../reports/LootUX_20261107/REPORT.md).

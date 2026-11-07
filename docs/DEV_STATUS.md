@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-07 — Lower Dumbbell purchase notices excluded
+
+Changed only InventoryNotificationClient gameplay Source. Isolated native Play passed lower/upper and normal/Best Equip cases in both Worlds, aggregate retention for other notifications, reopen/respawn and locked World2 cards. Equal strength used a presentation fixture; W1 actual desktop images confirmed the before/after badges. Helpers removed and Edit restored; canonical Save and delivery details are in the [short report](../reports/DumbbellNotice_20261107.md).
+
 ## 2026-11-07 — Fast return, Item sale and Boss cue validation
 
 Implemented retained asynchronous return transactions, owned Item sale, Item result stars and a five-second latest-only acquisition cue with adjacent Drop in both Worlds. Native isolated Play covered return, delayed/ambiguous saves, death/departure retention, sale replay/stale requests, Drop identity and cue replacement. With0.6s per injected save, W1 movement changed1.213→0.086s and control1.244→0.261s; these are fixture measurements, not production latency. Offline5%/3600s was traced through actual claim deltas with normal and synthetic doubled receipts and remains unchanged. Actual desktop UI images inspected; physical input, public persistence and real paid checkout remain unverified. Existing manual edits and prior UI/combat fixes preserved. Final cleanup, canonical Save and Git evidence are in the [English report](../reports/LootUX_20261107/REPORT.md).

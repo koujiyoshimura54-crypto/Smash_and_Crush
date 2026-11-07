@@ -106,10 +106,13 @@ local function render()
 end
 table.insert(connections,badge.Parent:GetAttributeChangedSignal("AuraPurchaseAvailable"):Connect(render))
 table.insert(connections,badge.Parent:GetAttributeChangedSignal("SpeedPurchaseAvailable"):Connect(render))
-local function evaluate(purchasable)
+local function evaluate(purchasable,equippedId)
  if not owned then render();return end
+ local equipped=Dumbbells.Get(equippedId)
+ local equippedBonus=equipped and equipped.StrengthBonus or 0
  for _,id in ids do
-  affordable[id]=purchasable[id]==true
+  -- Filter only purchase guidance; preserve the server's purchase/world eligibility.
+  affordable[id]=purchasable[id]==true and Dumbbells.Get(id).StrengthBonus>=equippedBonus
   if owned[id]==true then pending[id]=nil end
  end
  render()
@@ -119,7 +122,7 @@ local function applyState(state)
   or typeof(state.PurchasableDumbbells)~="table" then return false end
  revision+=1
  owned=state.OwnedDumbbells
- evaluate(state.PurchasableDumbbells)
+ evaluate(state.PurchasableDumbbells,state.EquippedDumbbell)
  return true
 end
 local function refresh()
@@ -232,6 +235,15 @@ end
 table.insert(connections,panel:GetPropertyChangedSignal("Visible"):Connect(opened))
 table.insert(connections,panel.Content.Dumbbells:GetPropertyChangedSignal("Visible"):Connect(opened))
 table.insert(connections,player:GetAttributeChangedSignal("Win"):Connect(function() task.spawn(refresh) end))
+-- Equipment acknowledgements below cover normal/Best Equip; refresh also handles
+-- replicated changes, load completion, reopened UI and character replacement.
+for _,attribute in {"EquippedDumbbell","World2Visited","ForgeSessionToken"} do
+ table.insert(connections,player:GetAttributeChangedSignal(attribute):Connect(function() task.spawn(refresh) end))
+end
+table.insert(connections,player.CharacterAdded:Connect(function() task.spawn(refresh) end))
+table.insert(connections,gui:GetPropertyChangedSignal("Enabled"):Connect(function()
+ if gui.Enabled then task.spawn(refresh) end
+end))
 table.insert(connections,remote.OnClientEvent:Connect(function(result)
  if typeof(result)~="table" or result.OwnerUserId~=player.UserId
   or result.RunId~=nil or result.WorldId==1

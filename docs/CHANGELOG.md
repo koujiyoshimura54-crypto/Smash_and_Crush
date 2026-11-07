@@ -1,3 +1,7 @@
+# 2026-11-07 — Filter lower Dumbbell purchase notifications
+
+Filter only Dumbbell purchase notification candidates by their StrengthBonus against current equipment. Refresh normal/Best Equip and lifecycle changes; preserve other valid aggregate reasons and locked-world eligibility. Both Worlds passed isolated native checks; W1 before/after images inspected. [Scope and Save evidence](../reports/DumbbellNotice_20261107.md).
+
 # 2026-11-07 — Retained return, Item sales and Boss loot controls
 
 Move and release players before bag persistence finishes while retaining the accepted receipt and original retry journal. Unify both Worlds' provisional bag, add definition-priced owned Item sales, restore Item result stars and show one five-second Boss cue with an adjacent acquisition-specific Drop. Offline5%/3600s remains unchanged after isolated rate/claim audit. Native Play and actual desktop images checked; production/physical input limits and final Save result are [recorded](../reports/LootUX_20261107/REPORT.md).
