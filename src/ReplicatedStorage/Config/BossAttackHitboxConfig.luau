@@ -1,2 +1,2 @@
--- Boss -> Player only. Compress the complete local-Z distance envelope about its existing center.
-return table.freeze({DepthScale=0.9})
+-- Legacy Stage1 view. All live stages use BossBehaviorConfig directly.
+return table.freeze({DepthScale=require(script.Parent.BossBehaviorConfig).Get(1,1).DepthScale})

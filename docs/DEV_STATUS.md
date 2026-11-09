@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-09 — Boss Config unification complete; canonical edits unsaved
+
+Six scoped Sources implement common per-World/Stage Boss behavior while preserving live Speed tuning and W2 presentation. All20 actors resolved their settings; native Stage3 perturbations changed chase/turning, interval/damage and range only as configured. Six surviving hits, arena retention/heal, defeat, generation, respawn/travel and Player cadence passed. A boundary-fixture mistake was corrected without production changes. Helpers removed, production initial values restored, stopped/focused Edit. SaveWithoutPublish API refused the Edit context; no OS fallback or Publish. Preserve these live edits for the subsequent Ore phase. [Evidence and limits](../reports/BossBehavior_20261109/REPORT.md).
+
 ## 2026-11-07 — Lower Dumbbell purchase notices excluded
 
 Changed only InventoryNotificationClient gameplay Source. Isolated native Play passed lower/upper and normal/Best Equip cases in both Worlds, aggregate retention for other notifications, reopen/respawn and locked World2 cards. Equal strength used a presentation fixture; W1 actual desktop images confirmed the before/after badges. Helpers removed and Edit restored; canonical Save and delivery details are in the [short report](../reports/DumbbellNotice_20261107.md).

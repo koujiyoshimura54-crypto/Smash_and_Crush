@@ -1,0 +1,252 @@
+{
+  "OK": true,
+  "Stages": [],
+  "Checks": 150,
+  "Samples": [
+    {
+      "BeforeHits": [
+        {
+          "HealthAfter": 9975,
+          "HealthBefore": 10000,
+          "Index": 1,
+          "Hit": true,
+          "ActualAt": 1794209153.364903,
+          "ScheduledAt": 1794209153.348549,
+          "Reach": 9,
+          "Distance": 5.462029351128471
+        },
+        {
+          "HealthAfter": 9950,
+          "HealthBefore": 9975,
+          "Index": 2,
+          "Hit": true,
+          "ActualAt": 1794209154.365165,
+          "ScheduledAt": 1794209154.348549,
+          "Reach": 9,
+          "Distance": 5.462029351128471
+        }
+      ],
+      "AfterHits": [
+        {
+          "HealthAfter": 9993,
+          "HealthBefore": 10000,
+          "Index": 2,
+          "Hit": true,
+          "ActualAt": 1794209155.684155,
+          "ScheduledAt": 1794209155.68241,
+          "Reach": 7,
+          "Distance": 4.062033066382774
+        },
+        {
+          "HealthAfter": 9986,
+          "HealthBefore": 9993,
+          "Index": 3,
+          "Hit": true,
+          "ActualAt": 1794209156.048757,
+          "ScheduledAt": 1794209156.03241,
+          "Reach": 7,
+          "Distance": 4.062033066382774
+        },
+        {
+          "HealthAfter": 9979,
+          "HealthBefore": 9986,
+          "Index": 4,
+          "Hit": true,
+          "ActualAt": 1794209156.39933,
+          "ScheduledAt": 1794209156.38241,
+          "Reach": 7,
+          "Distance": 4.062033066382774
+        },
+        {
+          "HealthAfter": 9972,
+          "HealthBefore": 9979,
+          "Index": 5,
+          "Hit": true,
+          "ActualAt": 1794209156.748653,
+          "ScheduledAt": 1794209156.73241,
+          "Reach": 7,
+          "Distance": 4.062033066382774
+        },
+        {
+          "HealthAfter": 9965,
+          "HealthBefore": 9972,
+          "Index": 6,
+          "Hit": true,
+          "ActualAt": 1794209157.09813,
+          "ScheduledAt": 1794209157.0824099,
+          "Reach": 7,
+          "Distance": 4.062033066382774
+        },
+        {
+          "HealthAfter": 9958,
+          "HealthBefore": 9965,
+          "Index": 7,
+          "Hit": true,
+          "ActualAt": 1794209157.447922,
+          "ScheduledAt": 1794209157.43241,
+          "Reach": 7,
+          "Distance": 4.062033066382774
+        }
+      ],
+      "PlayerGaps": [
+        0.5003456000122242,
+        0.8163384000072256,
+        0.80033729999559,
+        0.8003461000043899
+      ],
+      "AfterMovement": {
+        "Speed": 7.999702133881162,
+        "TurnError": 6.305764133074376e-8,
+        "Steps": 22,
+        "TurnResponse": 2
+      },
+      "Outside": [
+        {
+          "HealthAfter": 9958,
+          "HealthBefore": 9958,
+          "Index": 8,
+          "Hit": false,
+          "ActualAt": 1794209157.798241,
+          "ScheduledAt": 1794209157.78241,
+          "Reach": 7,
+          "Distance": 7.009774354787973
+        }
+      ],
+      "BeforeMovement": {
+        "Speed": 15.999868543357318,
+        "TurnError": 4.75136274769028e-8,
+        "Steps": 22,
+        "TurnResponse": 4
+      },
+      "World": 1
+    },
+    {
+      "BeforeHits": [
+        {
+          "HealthAfter": 9975,
+          "HealthBefore": 10000,
+          "Index": 1,
+          "Hit": true,
+          "ActualAt": 1794209167.631899,
+          "ScheduledAt": 1794209167.623601,
+          "Reach": 9,
+          "Distance": 5.646918402777778
+        },
+        {
+          "HealthAfter": 9950,
+          "HealthBefore": 9975,
+          "Index": 2,
+          "Hit": true,
+          "ActualAt": 1794209168.632898,
+          "ScheduledAt": 1794209168.623601,
+          "Reach": 9,
+          "Distance": 5.646918402777778
+        }
+      ],
+      "AfterHits": [
+        {
+          "HealthAfter": 9991,
+          "HealthBefore": 10000,
+          "Index": 1,
+          "Hit": true,
+          "ActualAt": 1794209169.597777,
+          "ScheduledAt": 1794209169.597645,
+          "Reach": 7,
+          "Distance": 4.246824227846585
+        },
+        {
+          "HealthAfter": 9982,
+          "HealthBefore": 9991,
+          "Index": 2,
+          "Hit": true,
+          "ActualAt": 1794209170.047844,
+          "ScheduledAt": 1794209170.047645,
+          "Reach": 7,
+          "Distance": 4.246824227846585
+        },
+        {
+          "HealthAfter": 9973,
+          "HealthBefore": 9982,
+          "Index": 3,
+          "Hit": true,
+          "ActualAt": 1794209170.498786,
+          "ScheduledAt": 1794209170.497645,
+          "Reach": 7,
+          "Distance": 4.246824227846585
+        },
+        {
+          "HealthAfter": 9964,
+          "HealthBefore": 9973,
+          "Index": 4,
+          "Hit": true,
+          "ActualAt": 1794209170.94838,
+          "ScheduledAt": 1794209170.947645,
+          "Reach": 7,
+          "Distance": 4.246824227846585
+        },
+        {
+          "HealthAfter": 9955,
+          "HealthBefore": 9964,
+          "Index": 5,
+          "Hit": true,
+          "ActualAt": 1794209171.397953,
+          "ScheduledAt": 1794209171.397645,
+          "Reach": 7,
+          "Distance": 4.246824227846585
+        },
+        {
+          "HealthAfter": 9946,
+          "HealthBefore": 9955,
+          "Index": 6,
+          "Hit": true,
+          "ActualAt": 1794209171.848951,
+          "ScheduledAt": 1794209171.847645,
+          "Reach": 7,
+          "Distance": 4.246824227846585
+        }
+      ],
+      "PlayerGaps": [
+        0.5005023999838158,
+        0.815741500002332,
+        0.8164352000458166,
+        0.8008946999907494
+      ],
+      "AfterMovement": {
+        "Speed": 11.000305446975634,
+        "TurnError": 6.133564112165146e-8,
+        "Steps": 21,
+        "TurnResponse": 1.5
+      },
+      "Outside": [
+        {
+          "HealthAfter": 9946,
+          "HealthBefore": 9946,
+          "Index": 7,
+          "Hit": false,
+          "ActualAt": 1794209172.298542,
+          "ScheduledAt": 1794209172.297645,
+          "Reach": 7,
+          "Distance": 7.009158758016733
+        }
+      ],
+      "BeforeMovement": {
+        "Speed": 20.000848292674984,
+        "TurnError": 8.824920483263554e-8,
+        "Steps": 22,
+        "TurnResponse": 5.1
+      },
+      "World": 2
+    }
+  ],
+  "Cases": [
+    {
+      "OK": true,
+      "Name": "World1 baseline and isolated Stage3 overrides"
+    },
+    {
+      "OK": true,
+      "Name": "World2 baseline and isolated Stage3 overrides"
+    }
+  ],
+  "Done": true
+}

@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-09 — Boss behavior authority, unchanged initial balance
+
+BossBehaviorConfig is the single editable source for both Worlds' Stage1..10 movement and Boss-to-Player attacks. W1 remains16/4; W2 remains18..27 and4.5..7.2. All stages retain1s/25 damage, body-relative width1/depth0.9/height1, reach0.25 clamped8..14, base angle104, height3.5 and padding1. The live owner's Speed angle changes104/160/210 supersede Git's old uniform104 and are preserved as modifiers. Player cadence and HP/wall HP remain unchanged. [Full table, units and isolated perturbation measurements](../reports/BossBehavior_20261109/REPORT.md).
+
 ## 2026-11-07 — Item sale units and unchanged offline efficiency
 
 Owned Item sale units derive from half the current ItemMaster Win purchase price and reuse the existing integer Win normalization. Common75 therefore sells for37 per copy; UI, quantity totals and persisted Win use that unit. Robux-only Items and the nine W2 Legendary Items without WinPrice are not sellable. Purchase prices and Ore sale units are unchanged. Offline audit traced departure Rate, capped time, quote and actual claim delta: efficiency0.05 and cap3600 seconds agree for baseline/equipped rates below/at/above the cap. No offline setting or reward operation changed. [Tables and isolated evidence](../reports/LootUX_20261107/REPORT.md).

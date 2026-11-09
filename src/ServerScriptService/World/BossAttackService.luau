@@ -7,29 +7,18 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 local Speed = require(game.ServerScriptService.Services:WaitForChild("SpeedService"))
-local SpeedAttackConfig = require(game.ReplicatedStorage.Config:WaitForChild("SpeedBossAttackConfig"))
-local HitboxConfig = require(game.ReplicatedStorage.Config:WaitForChild("BossAttackHitboxConfig"))
+local Behavior = require(game.ReplicatedStorage.Config:WaitForChild("BossBehaviorConfig"))
 local Animation = worldId==2 and require(script.Parent.World2BossAnimationService)
 local M = {}
-local BOSS_DAMAGE = 25
-local BOSS_ATTACK_INTERVAL = 1
 local PLAYER_MAX_HEALTH = 100
 local active = {}
 local validateSession
 local healHandler
 
-local function getSettings(player)
+local function getSettings(player,stage)
  local id=player and Speed.GetEquippedSpeedItemId(player) or "NONE"
- local settings=typeof(id)=="string" and SpeedAttackConfig[id] or nil
- if typeof(settings)~="table" then return "NONE",SpeedAttackConfig.NONE end
- for _,key in {"ReachScale","MinReach","MaxReach","AttackAngle","AttackHeight","VerticalPadding"} do
-  local value=settings[key]
-  if typeof(value)~="number" or value~=value or math.abs(value)==math.huge or value<0 then
-   return "NONE",SpeedAttackConfig.NONE
-  end
- end
- if settings.MinReach>settings.MaxReach then return "NONE",SpeedAttackConfig.NONE end
- return id,settings
+ if not Behavior.SpeedModifiers[id] then id="NONE" end
+ return id,Behavior.GetAttackSettings(worldId,stage,id)
 end
 
 function M.GetAttackBounds(enemy, stage, player)
@@ -64,7 +53,8 @@ function M.GetAttackBounds(enemy, stage, player)
  if collider and collider:IsA("BasePart") then include(collider) end
  if low.X==math.huge then return nil end
  local size=high-low
- local itemId,settings=getSettings(player)
+ local itemId,settings=getSettings(player,stage)
+ local behavior=Behavior.Get(worldId,stage)
  local reach=math.clamp(math.max(size.X,size.Z)*settings.ReachScale,settings.MinReach,settings.MaxReach)
  local map=Workspace:FindFirstChild(worldId==2 and "World2Map" or "GeneratedMap")
  local corridor=map and map:FindFirstChild("BattleCorridor")
@@ -77,7 +67,7 @@ function M.GetAttackBounds(enemy, stage, player)
  end
  -- Cap the existing vertical overlap volume; no jumping-state special case.
  local attackTop=math.min(high.Y,low.Y+settings.AttackHeight)
- return {Pivot=pivot,Low=low,High=high,AttackTop=attackTop,Reach=reach,BaseReach=reach,DepthScale=HitboxConfig.DepthScale,EquippedSpeedItemId=itemId,Settings=settings}
+ return {Pivot=pivot,Low=low,High=high,AttackTop=attackTop,Reach=reach,BaseReach=reach,DepthScale=behavior.DepthScale,WidthScale=behavior.WidthScale,HeightScale=behavior.HeightScale,EquippedSpeedItemId=itemId,Settings=settings}
 end
 
 function M.IsInRange(enemy, stage, humanoid, root)
@@ -86,7 +76,9 @@ function M.IsInRange(enemy, stage, humanoid, root)
 	if not bounds then return false,math.huge,0 end
 
 	local point=bounds.Pivot:PointToObjectSpace(root.Position)
-	local dx=math.max(bounds.Low.X-point.X,0,point.X-bounds.High.X)
+	local centerX=(bounds.Low.X+bounds.High.X)/2
+	local widthPoint=centerX+(point.X-centerX)/bounds.WidthScale
+	local dx=math.max(bounds.Low.X-widthPoint,0,widthPoint-bounds.High.X)
 	-- Inverse-map only local depth, compressing the full rounded distance envelope
 	-- (body extent + reach + player radius) once about its unchanged center.
 	local centerZ=(bounds.Low.Z+bounds.High.Z)/2
@@ -97,9 +89,14 @@ function M.IsInRange(enemy, stage, humanoid, root)
 	local playerRadius=math.max(root.Size.X,root.Size.Z)/2
 	local bottom=point.Y-humanoid.HipHeight-root.Size.Y/2
 	local top=point.Y+root.Size.Y/2
-	local vertical=
-		top>=bounds.Low.Y-bounds.Settings.VerticalPadding
-		and bottom<=bounds.AttackTop+bounds.Settings.VerticalPadding
+	local attackBottom=bounds.Low.Y-bounds.Settings.VerticalPadding
+ local attackTop=bounds.AttackTop+bounds.Settings.VerticalPadding
+ if bounds.HeightScale~=1 then
+  local centerY=(attackBottom+attackTop)/2
+  attackBottom=centerY+(attackBottom-centerY)*bounds.HeightScale
+  attackTop=centerY+(attackTop-centerY)*bounds.HeightScale
+ end
+ local vertical=top>=attackBottom and bottom<=attackTop
 
 	-- Boss正面を中心とした攻撃角度。
 	-- 270°なら真後ろ90°だけが攻撃範囲外になる。
@@ -146,7 +143,7 @@ function M.Start(player, enemy, stage, startedAt)
  if previous and previous.Character==character and previous.Enemy==enemy and previous.Stage==stage then return end
  M.Stop(player,true)
  local r={Player=player,Character=character,Humanoid=hum,Enemy=enemy,Stage=stage,
-  StartedAt=startedAt,NextHit=1,RegenScripts={}}
+  StartedAt=startedAt,NextHit=1,RegenScripts={},Behavior=Behavior.Get(worldId,stage)}
  active[player]=r
  local function pauseRegen(child)
   if child:IsA("Script") and child.Name=="Health" and r.RegenScripts[child]==nil then
@@ -182,7 +179,7 @@ RunService.Heartbeat:Connect(function()
   if not valid then
    M.Stop(player,true)
   else
-   local due=math.floor((now-r.StartedAt)/BOSS_ATTACK_INTERVAL)
+   local due=math.floor((now-r.StartedAt)/r.Behavior.AttackInterval)
    local body096=Animation and r.Stage==1
    if body096 and not Animation.Ready(r.Enemy) then
     -- Only the requested096 opening blocks Boss attacks. Preserve absolute
@@ -204,9 +201,9 @@ RunService.Heartbeat:Connect(function()
     if hit then
      -- Deliberately bypass ForceField only for this formal Boss combat.
      -- The spawn ForceField instance and lobby protection remain intact.
-     r.Humanoid.Health=math.max(0,before-BOSS_DAMAGE)
+     r.Humanoid.Health=math.max(0,before-r.Behavior.Damage)
     end
-    r.LastAttack={Index=due,ScheduledAt=r.StartedAt+due*BOSS_ATTACK_INTERVAL,
+    r.LastAttack={Index=due,ScheduledAt=r.StartedAt+due*r.Behavior.AttackInterval,
      ActualAt=Workspace:GetServerTimeNow(),Hit=hit,Distance=distance,Reach=reach,
      HealthBefore=before,HealthAfter=r.Humanoid.Health}
    end

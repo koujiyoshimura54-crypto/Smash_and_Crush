@@ -1,0 +1,208 @@
+{
+  "OK": false,
+  "Stages": [
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 1,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 2,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 3,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 4,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 5,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 6,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 7,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 8,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 9,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 16,
+      "TurnResponse": 4,
+      "Stage": 10,
+      "World": 1
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 18,
+      "TurnResponse": 4.5,
+      "Stage": 1,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 19,
+      "TurnResponse": 4.8,
+      "Stage": 2,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 20,
+      "TurnResponse": 5.1,
+      "Stage": 3,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 21,
+      "TurnResponse": 5.4,
+      "Stage": 4,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 22,
+      "TurnResponse": 5.7,
+      "Stage": 5,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 23,
+      "TurnResponse": 6,
+      "Stage": 6,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 24,
+      "TurnResponse": 6.3,
+      "Stage": 7,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 25,
+      "TurnResponse": 6.6,
+      "Stage": 8,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 26,
+      "TurnResponse": 6.9,
+      "Stage": 9,
+      "World": 2
+    },
+    {
+      "Damage": 25,
+      "DepthScale": 0.9,
+      "Interval": 1,
+      "Speed": 27,
+      "TurnResponse": 7.2,
+      "Stage": 10,
+      "World": 2
+    }
+  ],
+  "Checks": 170,
+  "Samples": [],
+  "Cases": [
+    {
+      "OK": true,
+      "Name": "All20 native actors use the Stage config and unchanged baseline geometry"
+    },
+    {
+      "OK": false,
+      "Name": "World1 baseline and isolated Stage3 overrides",
+      "Error": "ServerScriptService.__BossBehaviorQA:47: Missing attack session\nServerScriptService.__BossBehaviorQA:47 function attack\nServerScriptService.__BossBehaviorQA:108\nServerScriptService.__BossBehaviorQA:10 function case\nServerScriptService.__BossBehaviorQA:103\n"
+    },
+    {
+      "OK": false,
+      "Name": "World2 baseline and isolated Stage3 overrides",
+      "Error": "ServerScriptService.__BossBehaviorQA:47: Missing attack session\nServerScriptService.__BossBehaviorQA:47 function attack\nServerScriptService.__BossBehaviorQA:108\nServerScriptService.__BossBehaviorQA:10 function case\nServerScriptService.__BossBehaviorQA:103\n"
+    },
+    {
+      "OK": true,
+      "Name": "Death return and World round trip retain baseline; no repeated shrink"
+    }
+  ],
+  "Done": true
+}

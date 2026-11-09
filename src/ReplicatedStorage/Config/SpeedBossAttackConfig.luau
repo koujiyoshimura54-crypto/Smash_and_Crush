@@ -1,29 +1,5 @@
--- Item-specific Boss -> Player hitbox settings; independent of WalkSpeed.
-local C = {
- NONE = {
-  ReachScale = 0.25,
-  MinReach = 8,
-  MaxReach = 14,
-  AttackAngle = 104,
-  AttackHeight = 3.5,
-  VerticalPadding = 1,
- },
- SPEED_BOOST = {
-  ReachScale = 0.25,
-  MinReach = 8,
-  MaxReach = 14,
-  AttackAngle = 104,
-  AttackHeight = 3.5,
-  VerticalPadding = 1,
- },
- SPEED_PREMIUM = {
-  ReachScale = 0.25,
-  MinReach = 8,
-  MaxReach = 14,
-  AttackAngle = 104,
-  AttackHeight = 3.5,
-  VerticalPadding = 1,
- },
-}
-for _, entry in pairs(C) do table.freeze(entry) end
+-- Legacy World1 Stage1 view; author Stage values and SpeedModifiers in BossBehaviorConfig.
+local Behavior=require(script.Parent.BossBehaviorConfig)
+local C={}
+for id in pairs(Behavior.SpeedModifiers) do C[id]=table.freeze(Behavior.GetAttackSettings(1,1,id)) end
 return table.freeze(C)

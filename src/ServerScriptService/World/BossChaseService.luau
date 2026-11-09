@@ -6,10 +6,8 @@ local function forWorld(worldId)
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local M = {}
-local World2Movement=worldId==2 and require(game.ReplicatedStorage.Config.World2BossMovementConfig)
+local Behavior=require(game.ReplicatedStorage.Config.BossBehaviorConfig)
 local Animation=worldId==2 and require(script.Parent.World2BossAnimationService)
-local CHASE_SPEED = 16 -- studs/second; shared by all World1 bosses
-local TURN_RESPONSE = 4 -- exponential visual smoothing, not a gameplay turn limit
 local CONTACT_GAP = 0.8
 local EDGE_MARGIN = 0.25
 local STUCK_WINDOW = 1.25
@@ -180,10 +178,10 @@ end
 function M.Register(enemy, stage, stageModel)
  local floor=assert(stageModel:FindFirstChild("Floor"),"Stage Floor missing")
  local home=enemy:GetPivot()
- local movement=World2Movement and World2Movement.Get(stage)
+ local movement=Behavior.Get(worldId,stage)
  local r={Enemy=enemy,Stage=stage,Floor=floor,Home=home,Footprint={},Mode="Idle",
-  Speed=movement and movement.Speed or CHASE_SPEED,
-  TurnResponse=movement and movement.TurnResponse or TURN_RESPONSE,
+  Speed=movement.Speed,
+  TurnResponse=movement.TurnResponse,
   MinX=-floor.Size.X/2+EDGE_MARGIN,MaxX=floor.Size.X/2-EDGE_MARGIN,
   MinZ=-floor.Size.Z/2+EDGE_MARGIN,MaxZ=floor.Size.Z/2-EDGE_MARGIN,
   LastPosition=home.Position,Window=0,Commanded=0,Travel=0,Recoveries=0}

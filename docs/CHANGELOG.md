@@ -1,3 +1,7 @@
+# 2026-11-09 — Common Boss behavior Config
+
+Unify both Worlds' Stage movement and Boss-to-Player settings in BossBehaviorConfig, preserving current values and the owner's Speed angle adjustments. Native all-stage binding and scoped actual movement/damage/boundary/lifecycle checks passed; no fixed-four-hit limiter required removal. Edit retained unsaved because SaveWithoutPublish API rejected Edit; no OS fallback. [Record](../reports/BossBehavior_20261109/REPORT.md).
+
 # 2026-11-07 — Filter lower Dumbbell purchase notifications
 
 Filter only Dumbbell purchase notification candidates by their StrengthBonus against current equipment. Refresh normal/Best Equip and lifecycle changes; preserve other valid aggregate reasons and locked-world eligibility. Both Worlds passed isolated native checks; W1 before/after images inspected. [Scope and Save evidence](../reports/DumbbellNotice_20261107.md).
