@@ -1,3 +1,7 @@
+# 2026-11-09 — Shared World Ore and Dumbbell forging
+
+Enabled the four reserved World2 Ores and added only the approved twelve; preserved live World1 balance edits. Both Worlds now read independent Stage drop rows, and existing Forge transactions share unlocked cross-World candidates with a highest-result cap. Existing UI reused. Isolated native gameplay/persistence and actual UI captures completed; acquisition Billboard pixels remain unconfirmed. Cleanup returned Studio to Edit; Save API refused, so canonical edits remain unsaved. [Record](../reports/WorldOre_20261109/REPORT.md).
+
 # 2026-11-09 — Common Boss behavior Config
 
 Unify both Worlds' Stage movement and Boss-to-Player settings in BossBehaviorConfig, preserving current values and the owner's Speed angle adjustments. Native all-stage binding and scoped actual movement/damage/boundary/lifecycle checks passed; no fixed-four-hit limiter required removal. Edit retained unsaved because SaveWithoutPublish API rejected Edit; no OS fallback. [Record](../reports/BossBehavior_20261109/REPORT.md).

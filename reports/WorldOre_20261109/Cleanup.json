@@ -1,0 +1,30 @@
+{
+  "Unchanged": 481,
+  "Total": 491,
+  "BossPreserved": true,
+  "HttpEnabled": false,
+  "CameraRestored": true,
+  "Changed": [
+    "ReplicatedStorage.Config.DumbbellItemMaster",
+    "ReplicatedStorage.Config.EnemyDropConfig",
+    "ReplicatedStorage.Config.ItemMaster",
+    "ReplicatedStorage.Config.OreConfig",
+    "ReplicatedStorage.Modules.ForgeClient",
+    "ReplicatedStorage.Modules.ForgeInventory",
+    "ReplicatedStorage.Modules.MergeShopView",
+    "ReplicatedStorage.Modules.OreMerge",
+    "ServerScriptService.Services.EnemyDropRoller",
+    "ServerScriptService.Services.ForgeService"
+  ],
+  "RestoredQA": 40,
+  "PlaceId": 126576845524886,
+  "Mode": "Edit",
+  "FocusedDataModel": "Edit",
+  "Save": {
+    "OK": false,
+    "Publish": false,
+    "PlaceId": 126576845524886,
+    "Result": "Game:SavePlace can only be called from a server script, aborting save function",
+    "PlaceVersion": 475
+  }
+}

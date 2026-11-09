@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-09 — Shared World1 / World2 Ore pipeline
+
+Both Worlds use per-Stage Item20% / Ore80% settings in EnemyDropConfig, with independent conditional Ore pools initially mapped by local index. Stable ORE_017–020 are enabled and ORE_021–032 are added; the withdrawn remaining SuperRares are absent. Existing Bag, banking, loss, Drop and Forge journals are reused. Ore forging shares eligible adjacent-threshold calculations across Worlds, retains arrival unlock on World1 return, and caps above the highest eligible result. [Definitions, paths, native tests and limits](../reports/WorldOre_20261109/REPORT.md).
+
 ## 2026-11-09 — Shared per-Stage Boss behavior
 
 Both Worlds' movement and Boss-to-Player attacks now resolve ReplicatedStorage.Config.BossBehaviorConfig.Worlds[world][stage]. It owns movement/turning, interval/damage, body-relative width/depth/height and reach/angle settings, with the preserved Speed-equipment adjustments. Former movement/depth/Speed Configs are compatibility views. Existing HP, wall HP, Player clocks, owner/session checks, W2 models/intro and return/reward paths remain. No active four-hit cap existed. [Native evidence and manual editing guide](../reports/BossBehavior_20261109/REPORT.md).

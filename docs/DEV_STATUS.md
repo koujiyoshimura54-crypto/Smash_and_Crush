@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-09 — Ore implementation validated; canonical edits still unsaved
+
+Completed the Ore phase after Boss commit92bdfb9 while preserving live manual edits. Ten scoped Sources implement32 Ore definitions, common per-World/Stage drops, World2 thresholds and shared eligible merging. Isolated native tests covered real Boss Ore→Bag→Trophy/death, sale/merge replay and failure recovery, memory reload, UI operations, World return and reset tutorial.40 temporary substitutions and all DataModel QA helpers were removed;491 shipping Sources remain, stopped/focused Edit. SaveWithoutPublish again refused the Edit context; no OS fallback, Publish or rbxl writeback. **Manual canonical Save is still required.** [English report](../reports/WorldOre_20261109/REPORT.md).
+
 ## 2026-11-09 — Boss Config unification complete; canonical edits unsaved
 
 Six scoped Sources implement common per-World/Stage Boss behavior while preserving live Speed tuning and W2 presentation. All20 actors resolved their settings; native Stage3 perturbations changed chase/turning, interval/damage and range only as configured. Six surviving hits, arena retention/heal, defeat, generation, respawn/travel and Player cadence passed. A boundary-fixture mistake was corrected without production changes. Helpers removed, production initial values restored, stopped/focused Edit. SaveWithoutPublish API refused the Edit context; no OS fallback or Publish. Preserve these live edits for the subsequent Ore phase. [Evidence and limits](../reports/BossBehavior_20261109/REPORT.md).

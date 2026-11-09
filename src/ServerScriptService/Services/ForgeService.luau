@@ -11,7 +11,7 @@ function M.State(player)
  if not s or not s.Loaded then return {Loaded=false} end
  if not s.ForgeToken then s.ForgeToken=Http:GenerateGUID(false) end
  local d=s.Data
- return {Loaded=true,Token=s.ForgeToken,Sequence=d.ForgeJournal.Sequence,Journal=table.clone(d.ForgeJournal),
+ return {Loaded=true,World2Unlocked=Data.HasReachedWorld2(player),Token=s.ForgeToken,Sequence=d.ForgeJournal.Sequence,Journal=table.clone(d.ForgeJournal),
   OwnedItems=table.clone(d.OwnedItems),EquippedItems=table.clone(d.EquippedItems),
   OreTutorial=table.clone(d.OreMergeTutorial),
   Ores=table.clone(d.OwnedOres),DumbbellCounts=table.clone(d.OwnedDumbbells),EquippedDumbbell=d.EquippedDumbbell,
@@ -53,12 +53,13 @@ function M.Request(player,request)
   end
   local resultId=""
   if request.Action=="MergeOre" then
-   local preview,err=Merge.Evaluate(selection.Materials,s.Data.OwnedOres)
+   local preview,err=Merge.Evaluate(selection.Materials,s.Data.OwnedOres,state.World2Unlocked)
    if not preview then return false,err end
    resultId=Merge.Pick(preview,rng:NextNumber())
   end
   return Data.MutateForge(player,{Id=request.Id,Sequence=request.Sequence,Signature=signature,
-   Action=request.Action,Materials=selection and selection.Materials,ItemId=itemId,Count=request.Count,ExpectedCount=request.ExpectedCount,UnitPrice=request.UnitPrice,ResultId=resultId})
+   -- Freeze server eligibility with the existing retained operation for save retries.
+   World2Unlocked=state.World2Unlocked,Action=request.Action,Materials=selection and selection.Materials,ItemId=itemId,Count=request.Count,ExpectedCount=request.ExpectedCount,UnitPrice=request.UnitPrice,ResultId=resultId})
  end)
  busy[player]=nil
  if not ok then warn("[Forge] "..tostring(success));return response(false,"RequestFailed") end

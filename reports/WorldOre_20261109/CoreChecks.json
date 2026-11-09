@@ -1,0 +1,878 @@
+{
+  "Pools": [
+    {
+      "Ores": [
+        {
+          "Id": "ORE_001",
+          "Weight": 45
+        },
+        {
+          "Id": "ORE_002",
+          "Weight": 30
+        },
+        {
+          "Id": "ORE_003",
+          "Weight": 17
+        },
+        {
+          "Id": "ORE_004",
+          "Weight": 8
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 1,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_017",
+          "Weight": 45
+        },
+        {
+          "Id": "ORE_018",
+          "Weight": 30
+        },
+        {
+          "Id": "ORE_019",
+          "Weight": 17
+        },
+        {
+          "Id": "ORE_020",
+          "Weight": 8
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 1,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_001",
+          "Weight": 40
+        },
+        {
+          "Id": "ORE_002",
+          "Weight": 28
+        },
+        {
+          "Id": "ORE_003",
+          "Weight": 17
+        },
+        {
+          "Id": "ORE_004",
+          "Weight": 10
+        },
+        {
+          "Id": "ORE_005",
+          "Weight": 5
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 2,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_017",
+          "Weight": 40
+        },
+        {
+          "Id": "ORE_018",
+          "Weight": 28
+        },
+        {
+          "Id": "ORE_019",
+          "Weight": 17
+        },
+        {
+          "Id": "ORE_020",
+          "Weight": 10
+        },
+        {
+          "Id": "ORE_021",
+          "Weight": 5
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 2,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_001",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_003",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_004",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_005",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_006",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_007",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 3,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_017",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_019",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_020",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_021",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_022",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_023",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 3,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_003",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_005",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_006",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_007",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_008",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_009",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 4,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_019",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_021",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_022",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_023",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_024",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_025",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 4,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_005",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_006",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_008",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_009",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_010",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_011",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 5,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_021",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_022",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_024",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_025",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_026",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_027",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 5,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_006",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_008",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_009",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_010",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_011",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_012",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 6,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_022",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_024",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_025",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_026",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_027",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_028",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 6,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_008",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_010",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_011",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_012",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_013",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_014",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 7,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_024",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_026",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_027",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_028",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_029",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_030",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 7,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_010",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_011",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_012",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_013",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_014",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_015",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 8,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_026",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_027",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_028",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_029",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_030",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_031",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 8,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_011",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_012",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_013",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_014",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_015",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_016",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 9,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_027",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_028",
+          "Weight": 25
+        },
+        {
+          "Id": "ORE_029",
+          "Weight": 18
+        },
+        {
+          "Id": "ORE_030",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_031",
+          "Weight": 7
+        },
+        {
+          "Id": "ORE_032",
+          "Weight": 3
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 9,
+      "World": 2
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_011",
+          "Weight": 10
+        },
+        {
+          "Id": "ORE_012",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_013",
+          "Weight": 13
+        },
+        {
+          "Id": "ORE_014",
+          "Weight": 15
+        },
+        {
+          "Id": "ORE_015",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_016",
+          "Weight": 15
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 10,
+      "World": 1
+    },
+    {
+      "Ores": [
+        {
+          "Id": "ORE_027",
+          "Weight": 10
+        },
+        {
+          "Id": "ORE_028",
+          "Weight": 12
+        },
+        {
+          "Id": "ORE_029",
+          "Weight": 13
+        },
+        {
+          "Id": "ORE_030",
+          "Weight": 15
+        },
+        {
+          "Id": "ORE_031",
+          "Weight": 35
+        },
+        {
+          "Id": "ORE_032",
+          "Weight": 15
+        }
+      ],
+      "ItemChance": 0.2,
+      "Stage": 10,
+      "World": 2
+    }
+  ],
+  "Checks": 2147,
+  "ForgeFinal": {
+    "Sequence": 15,
+    "Win": 18846,
+    "Created12": 2
+  },
+  "Cases": [
+    {
+      "OK": true,
+      "Name": "Definitions / twenty conditional Stage pools"
+    },
+    {
+      "OK": true,
+      "Name": "Merge eligibility / boundaries / cap / quantities"
+    },
+    {
+      "OK": true,
+      "Name": "Native Forge / sale replay / save retries / reload"
+    }
+  ],
+  "Definitions": [
+    {
+      "Image": "rbxassetid://131452437678251",
+      "Name": "Stone",
+      "Id": "ORE_001",
+      "Points": 5,
+      "Rarity": "Common",
+      "SellWin": 1
+    },
+    {
+      "Image": "rbxassetid://83727497047517",
+      "Name": "Coal",
+      "Id": "ORE_002",
+      "Points": 7,
+      "Rarity": "Common",
+      "SellWin": 3
+    },
+    {
+      "Image": "rbxassetid://111308943708149",
+      "Name": "Iron",
+      "Id": "ORE_003",
+      "Points": 9,
+      "Rarity": "Common",
+      "SellWin": 5
+    },
+    {
+      "Image": "rbxassetid://106917824814020",
+      "Name": "Copper",
+      "Id": "ORE_004",
+      "Points": 11,
+      "Rarity": "Common",
+      "SellWin": 7
+    },
+    {
+      "Image": "rbxassetid://98802386870713",
+      "Name": "Quartz",
+      "Id": "ORE_005",
+      "Points": 15,
+      "Rarity": "Common",
+      "SellWin": 9
+    },
+    {
+      "Image": "rbxassetid://92842832362846",
+      "Name": "Silver Stone",
+      "Id": "ORE_006",
+      "Points": 20,
+      "Rarity": "Uncommon",
+      "SellWin": 10
+    },
+    {
+      "Image": "rbxassetid://100254430391832",
+      "Name": "Sand Crystal",
+      "Id": "ORE_007",
+      "Points": 30,
+      "Rarity": "Uncommon",
+      "SellWin": 15
+    },
+    {
+      "Image": "rbxassetid://90313945125672",
+      "Name": "Brown Ore",
+      "Id": "ORE_008",
+      "Points": 35,
+      "Rarity": "Uncommon",
+      "SellWin": 20
+    },
+    {
+      "Image": "rbxassetid://74885090507086",
+      "Name": "Rock Core",
+      "Id": "ORE_009",
+      "Points": 45,
+      "Rarity": "Uncommon",
+      "SellWin": 25
+    },
+    {
+      "Image": "rbxassetid://131216796823283",
+      "Name": "Gray Crystal",
+      "Id": "ORE_010",
+      "Points": 50,
+      "Rarity": "Uncommon",
+      "SellWin": 30
+    },
+    {
+      "Image": "rbxassetid://122870709116506",
+      "Name": "Amber",
+      "Id": "ORE_011",
+      "Points": 60,
+      "Rarity": "Rare",
+      "SellWin": 35
+    },
+    {
+      "Image": "rbxassetid://95006906073775",
+      "Name": "Topaz",
+      "Id": "ORE_012",
+      "Points": 75,
+      "Rarity": "Rare",
+      "SellWin": 40
+    },
+    {
+      "Image": "rbxassetid://80400820880542",
+      "Name": "Jade",
+      "Id": "ORE_013",
+      "Points": 90,
+      "Rarity": "Rare",
+      "SellWin": 45
+    },
+    {
+      "Image": "rbxassetid://111060074263221",
+      "Name": "Aqua Crystal",
+      "Id": "ORE_014",
+      "Points": 100,
+      "Rarity": "Rare",
+      "SellWin": 50
+    },
+    {
+      "Image": "rbxassetid://133113647660531",
+      "Name": "Forest Stone",
+      "Id": "ORE_015",
+      "Points": 130,
+      "Rarity": "Rare",
+      "SellWin": 55
+    },
+    {
+      "Image": "rbxassetid://103644070407489",
+      "Name": "Spark Ore",
+      "Id": "ORE_016",
+      "Points": 145,
+      "Rarity": "Super Rare",
+      "SellWin": 65
+    },
+    {
+      "Image": "rbxassetid://136139361458479",
+      "Name": "Sunstone",
+      "Id": "ORE_017",
+      "Points": 175,
+      "Rarity": "Super Rare",
+      "SellWin": 90
+    },
+    {
+      "Image": "rbxassetid://136614965232146",
+      "Name": "Moon Quartz",
+      "Id": "ORE_018",
+      "Points": 200,
+      "Rarity": "Super Rare",
+      "SellWin": 95
+    },
+    {
+      "Image": "rbxassetid://95334159293900",
+      "Name": "Blue Crystal",
+      "Id": "ORE_019",
+      "Points": 230,
+      "Rarity": "Super Rare",
+      "SellWin": 100
+    },
+    {
+      "Image": "rbxassetid://99321545969483",
+      "Name": "Green Core",
+      "Id": "ORE_020",
+      "Points": 260,
+      "Rarity": "Super Rare",
+      "SellWin": 110
+    },
+    {
+      "Image": "rbxassetid://123040533451102",
+      "Name": "Fire Crystal",
+      "Id": "ORE_021",
+      "Points": 500,
+      "Rarity": "Rare",
+      "SellWin": 125
+    },
+    {
+      "Image": "rbxassetid://131904521722854",
+      "Name": "Ice Crystal",
+      "Id": "ORE_022",
+      "Points": 800,
+      "Rarity": "Rare",
+      "SellWin": 150
+    },
+    {
+      "Image": "rbxassetid://91063489732839",
+      "Name": "Thunder Crystal",
+      "Id": "ORE_023",
+      "Points": 1200,
+      "Rarity": "Rare",
+      "SellWin": 175
+    },
+    {
+      "Image": "rbxassetid://86680826462250",
+      "Name": "Wind Crystal",
+      "Id": "ORE_024",
+      "Points": 1800,
+      "Rarity": "Rare",
+      "SellWin": 200
+    },
+    {
+      "Image": "rbxassetid://73601508560022",
+      "Name": "Earth Crystal",
+      "Id": "ORE_025",
+      "Points": 2700,
+      "Rarity": "Rare",
+      "SellWin": 225
+    },
+    {
+      "Image": "rbxassetid://116198836377017",
+      "Name": "Ruby Core",
+      "Id": "ORE_026",
+      "Points": 4000,
+      "Rarity": "Rare",
+      "SellWin": 250
+    },
+    {
+      "Image": "rbxassetid://81308625825873",
+      "Name": "Sapphire Core",
+      "Id": "ORE_027",
+      "Points": 6000,
+      "Rarity": "Rare",
+      "SellWin": 280
+    },
+    {
+      "Image": "rbxassetid://134950477291874",
+      "Name": "Emerald Core",
+      "Id": "ORE_028",
+      "Points": 9000,
+      "Rarity": "Rare",
+      "SellWin": 315
+    },
+    {
+      "Image": "rbxassetid://115312330145120",
+      "Name": "Amethyst",
+      "Id": "ORE_029",
+      "Points": 12000,
+      "Rarity": "Rare",
+      "SellWin": 345
+    },
+    {
+      "Image": "rbxassetid://82851451613885",
+      "Name": "Frostbite",
+      "Id": "ORE_030",
+      "Points": 16000,
+      "Rarity": "Rare",
+      "SellWin": 375
+    },
+    {
+      "Image": "rbxassetid://127269924651631",
+      "Name": "Blood Ore",
+      "Id": "ORE_031",
+      "Points": 24000,
+      "Rarity": "Super Rare",
+      "SellWin": 440
+    },
+    {
+      "Image": "rbxassetid://132695351248923",
+      "Name": "Crimson",
+      "Id": "ORE_032",
+      "Points": 30000,
+      "Rarity": "Super Rare",
+      "SellWin": 500
+    }
+  ]
+}

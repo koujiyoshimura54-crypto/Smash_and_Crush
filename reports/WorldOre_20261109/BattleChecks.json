@@ -1,0 +1,100 @@
+{
+  "Battles": [
+    {
+      "Items": [],
+      "Ores": {
+        "ORE_017": 1
+      },
+      "Stage": 2,
+      "World": 2
+    },
+    {
+      "Items": [],
+      "Ores": {
+        "ORE_019": 1
+      },
+      "Stage": 3,
+      "World": 2
+    },
+    {
+      "Items": [],
+      "Ores": {
+        "ORE_001": 1
+      },
+      "Stage": 1,
+      "World": 1
+    },
+    {
+      "Items": {
+        "GLOVE_COMMON_FIRE": 1
+      },
+      "Ores": [],
+      "Stage": 2,
+      "World": 1
+    },
+    {
+      "Items": {
+        "W2_TRAININGBELT_COMMON_FIRE": 1
+      },
+      "Ores": [],
+      "Stage": 4,
+      "World": 2
+    }
+  ],
+  "Checks": [
+    "Native player attack accepted Combat",
+    "Boss defeat replay blocked",
+    "Native drop uses matching World",
+    "Return bank finishes",
+    "Actual trophy banks Ore",
+    "Return clears provisional bag",
+    "Native player attack accepted Combat",
+    "Boss defeat replay blocked",
+    "Native drop uses matching World",
+    "Native death discards provisional bag",
+    "Death does not bank unconfirmed Ore",
+    "Death latches real lost amount",
+    "First same-type unit",
+    "Second same-type unit",
+    "Current notification acknowledged",
+    "Only displayed unit dropped",
+    "Other copy / owned / Win unchanged",
+    "Stale / repeated Drop rejected",
+    "Mixed category capacity",
+    "Fill shared capacity",
+    "Fill shared capacity",
+    "Fill shared capacity",
+    "Full bag Ore rejected",
+    "Bag cannot be sold",
+    "Native death discards provisional bag",
+    "Death does not bank unconfirmed Ore",
+    "Death latches real lost amount",
+    "Native player attack accepted Combat",
+    "Boss defeat replay blocked",
+    "Native drop uses matching World",
+    "Return bank finishes",
+    "Actual trophy banks Ore",
+    "Return clears provisional bag",
+    "Native player attack accepted Combat",
+    "Boss defeat replay blocked",
+    "Native death discards provisional bag",
+    "Death latches real lost amount",
+    "First same-type unit",
+    "Second same-type unit",
+    "Current notification acknowledged",
+    "Only displayed unit dropped",
+    "Other copy / owned / Win unchanged",
+    "Stale / repeated Drop rejected",
+    "Mixed category capacity",
+    "Fill shared capacity",
+    "Fill shared capacity",
+    "Fill shared capacity",
+    "Full bag Ore rejected",
+    "Bag cannot be sold",
+    "Native death discards provisional bag",
+    "Death does not bank unconfirmed Ore",
+    "Death latches real lost amount",
+    "Native player attack accepted Combat",
+    "Boss defeat replay blocked"
+  ]
+}

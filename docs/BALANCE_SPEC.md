@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-09 — Confirmed 16 + 16 Ore values and World2 merge thresholds
+
+OreConfig holds the approved32 Points/SellWin/image definitions; the live World1 point edits are preserved. EnemyDropConfig has twenty independent Stage rows: Item0.20 and conditional Ore weights summing100, with World2 initialized by the unchanged World1 local-index mapping. World2 Dumbbell merge thresholds are1000,2500,5000,9000,14000,20000,28000,38000,50000,65000,82000,100000. World1 thresholds and all Dumbbell purchase/sale/Strength/image values remain unchanged. Two–five materials, exact/adjacent outcomes and highest-candidate cap apply. [Complete numeric tables](../reports/WorldOre_20261109/REPORT.md).
+
 ## 2026-11-09 — Boss behavior authority, unchanged initial balance
 
 BossBehaviorConfig is the single editable source for both Worlds' Stage1..10 movement and Boss-to-Player attacks. W1 remains16/4; W2 remains18..27 and4.5..7.2. All stages retain1s/25 damage, body-relative width1/depth0.9/height1, reach0.25 clamped8..14, base angle104, height3.5 and padding1. The live owner's Speed angle changes104/160/210 supersede Git's old uniform104 and are preserved as modifiers. Player cadence and HP/wall HP remain unchanged. [Full table, units and isolated perturbation measurements](../reports/BossBehavior_20261109/REPORT.md).

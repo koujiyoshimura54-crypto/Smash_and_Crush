@@ -187,7 +187,7 @@ return function(ctx)
   return {Open=shop.Visible,Tab=tab,Selling=sellMode,CloseRevision=closeRevision,
    Pending=Forge.IsPending() or oreState and oreState.Pending==true,
    MaterialTarget=material,RepeatMaterial=repeatMaterial,SelectedCount=selectedCount(),
-   Valid=tab=='Ore' and not sellMode and oreState~=nil and OreMerge.Evaluate(oreSelected,oreState.Ores)~=nil}
+   Valid=tab=='Ore' and not sellMode and oreState~=nil and OreMerge.Evaluate(oreSelected,oreState.Ores,oreState.World2Unlocked)~=nil}
  end
  -- Read-only Pet target; eligibility and selection validation use the current authority snapshot.
  function view:GetPetTutorialState()
@@ -415,7 +415,7 @@ return function(ctx)
    if preview then for _,o in preview.Outcomes do table.insert(rows,{Egg=o.Egg,Image=Egg.NormalPools[o.Egg].Icon,Percent=o.Percent}) end
    else hint='Select at least 2 Pets' end
   elseif not sellMode then
-   local preview=OreMerge.Evaluate(oreSelected,oreState and oreState.Ores)
+   local preview=OreMerge.Evaluate(oreSelected,oreState and oreState.Ores,oreState and oreState.World2Unlocked)
    if completedBell then preview={Outcomes={{Id=completedBell,Probability=1}}} end
    if preview then for _,o in preview.Outcomes do local bell=Bells.Get(o.Id);table.insert(rows,{Id=o.Id,Image=bell.Image,Grade=bell.Grade,Strength=bell.StrengthBonus,Percent=o.Probability*100}) end
    else hint=string.format('Select %d–%d Ores',OreMerge.Minimum,OreMerge.Maximum) end
@@ -473,7 +473,7 @@ return function(ctx)
    ready=false
    if oreState and not oreState.Pending and not Forge.IsPending() then
     if sellMode then ready=OreMerge.Selection(oreSelection(),oreState.Ores,true)~=nil
-    else ready=OreMerge.Evaluate(oreSelection(),oreState.Ores)~=nil end
+    else ready=OreMerge.Evaluate(oreSelection(),oreState.Ores,oreState.World2Unlocked)~=nil end
    end
   end
   enabled(merge,ready==true);merge:SetAttribute('ExecutionEnabled',ready==true);merge.PriceTag.Text=sellMode and 'Sell' or 'Merge'

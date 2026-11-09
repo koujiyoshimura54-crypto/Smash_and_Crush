@@ -65,6 +65,7 @@ function M.Request(action,fields)
  end)
  return true
 end
+player:GetAttributeChangedSignal("World2Visited"):Connect(function() task.defer(M.Refresh) end)
 player:GetAttributeChangedSignal("ForgeInventoryRevision"):Connect(function() task.defer(M.Refresh) end)
 player:GetAttributeChangedSignal("ForgeSavePending"):Connect(function() task.defer(M.Refresh) end)
 player:GetAttributeChangedSignal("PetViewGeneration"):Connect(function() task.defer(M.Refresh) end)

@@ -50,14 +50,15 @@ function M.RollItem(rng,stage,rarityWeights,worldId)
 end
 function M.Roll(rng,stage,worldId)
  validateStage(stage)
- local hit=rng:NextNumber()<Master.DropHitChance
+ local source=assert(require(game.ReplicatedStorage.Config.EnemyDropConfig).Get(worldId or 1,stage),"Invalid drop World")
+ local hit=rng:NextNumber()<source.ItemChance
  local segments=hit and {2,4} or {1,3,5}
  local result={Outcome=hit and "ITEM" or "MISS",Segment=segments[rng:NextInteger(1,#segments)]}
  if hit then
   result.ItemId=M.RollItem(rng,stage,nil,worldId)
- elseif (worldId or 1)==1 then
+ else
   result.Outcome="ORE"
-  result.OreId=require(game.ReplicatedStorage.Config.OreConfig).Roll(stage,rng:NextNumber())
+  result.OreId=require(game.ReplicatedStorage.Config.OreConfig).Roll(stage,rng:NextNumber(),worldId)
  end
  return result
 end

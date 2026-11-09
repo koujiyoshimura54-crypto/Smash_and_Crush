@@ -1,0 +1,19 @@
+{
+  "Checks": 2097,
+  "Cases": [
+    {
+      "OK": true,
+      "Name": "Definitions / twenty conditional Stage pools"
+    },
+    {
+      "OK": true,
+      "Name": "Merge eligibility / boundaries / cap / quantities"
+    },
+    {
+      "OK": false,
+      "Name": "Native Forge / sale replay / save retries / reload",
+      "Error": "ServerScriptService.__OreQA:9: Client unlock spoof ignored\nServerScriptService.__OreQA:9\nServerScriptService.__OreQA:12 function case\nServerScriptService.__OreQA:73\n"
+    }
+  ],
+  "Resolution": "Initial fixture edited only live OwnedOres; ordinary Save intentionally preserves durable Forge ownership. Seeded the isolated memory record as well, then reran the complete Forge case successfully. No production fix required."
+}

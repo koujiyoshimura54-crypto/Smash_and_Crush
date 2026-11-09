@@ -1,0 +1,50 @@
+{
+  "Method": "Studio MCP screen_capture plus native client callbacks. No OS input, foregrounding or UIAutomation.",
+  "ImagesInspected": [
+    "Existing World1 layout and Ore list",
+    "All requested new Ore images across list, inputs and sale preview",
+    "Blood Ore x4 + Ruby Core x1: 100K, W2 Dumbbell12 100% and actual completed result",
+    "Crimson single sale 500 Win",
+    "Sunstone single sale 90 Win in World2",
+    "Reset tutorial: Choose 2 ores; Press Merge"
+  ],
+  "Properties": {
+    "All32OreIconsLoaded": true,
+    "InitialImageLoadingObserved": true,
+    "AfterRespawnUIReopened": true,
+    "World2CandidateAfterWorld1Return": "W2_NORMAL_12",
+    "NativeUI100kMergeConsumed": {
+      "ORE_031": 4,
+      "ORE_026": 1
+    },
+    "NativeUIWinDeltas": [
+      500,
+      90
+    ],
+    "All32OneEachSale": {
+      "Expected": 4190,
+      "Actual": 4190
+    },
+    "OneOreValid": false,
+    "TwoOresValid": true,
+    "ResetTutorialCompleted": true,
+    "TimeRewardStoneDirect": true,
+    "BagMergeRejected": "NotEnoughOres",
+    "World2Stage1KeptWorld1FirstGuarantee": true
+  },
+  "NotVisuallyConfirmed": [
+    "Acquisition Billboard icon and points: capture omitted/cropped/blurred the layer; native properties confirmed the 24K/30K point labels, image ID, loaded state on the 24K cue and five-second lifetime.",
+    "Every existing World1 Ore image individually was not re-inspected.",
+    "Physical touch input / real device layouts were not tested."
+  ],
+  "FixtureNotes": [
+    "The first client QA BindableFunction was parented under PlayerGui and removed during respawn. Moved only the probe to PlayerScripts and verified the actual persistent Merge view reopened.",
+    "Reset used the existing reset command under fully substituted in-memory DataStore services. The command logs the logical production store name, but no real production data was read or reset."
+  ],
+  "ConsoleNotes": [
+    "Expected injected precommit and acknowledgement-loss warnings.",
+    "Expected stubbed Badge award failures.",
+    "Pre-existing non-Ore asset permission/not-found messages; requested 32 Ore ImageLabels loaded successfully.",
+    "No changed-source runtime error or infinite yield observed."
+  ]
+}

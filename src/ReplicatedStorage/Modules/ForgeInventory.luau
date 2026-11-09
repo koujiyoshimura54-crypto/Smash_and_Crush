@@ -25,7 +25,7 @@ function M.Apply(data,op)
  local items
  local delta=0
  if op.Action=="MergeOre" then
-  local preview,reason=Merge.Evaluate(op.Materials,ores);if not preview then return nil,reason end
+  local preview,reason=Merge.Evaluate(op.Materials,ores,op.World2Unlocked==true);if not preview then return nil,reason end
   local valid=false for _,row in ipairs(preview.Outcomes) do if row.Id==op.ResultId and row.Probability>0 then valid=true end end
   if not valid then return nil,"InvalidResult" end
   for id,count in pairs(preview.Materials) do ores[id]-=count;if ores[id]==0 then ores[id]=nil end end

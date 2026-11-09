@@ -8,7 +8,7 @@ function M.Selection(raw,owned,selling)
  for id,n in pairs(raw) do
   local ore=Ore.Get(id);local count=Counts.Count(n)
   entries+=1
-  if entries>16 or not ore or not ore.Available or typeof(n)~="number" or not count or count<1 then return nil,"InvalidMaterials" end
+  if entries>#Ore.GetAvailable() or not ore or not ore.Available or typeof(n)~="number" or not count or count<1 then return nil,"InvalidMaterials" end
   if owned and count>(Counts.Count(owned[id]) or 0) then return nil,"NotEnoughOres" end
   selected[id]=count;quantity+=count;total+=count*(selling and ore.SellWin or ore.Points)
   if total>Counts.Max or quantity>Counts.Max then return nil,"CountOverflow" end
@@ -17,12 +17,22 @@ function M.Selection(raw,owned,selling)
  if not selling and quantity>M.Maximum then return nil,"TooManyMaterials" end
  return {Materials=selected,Count=quantity,Total=total}
 end
-function M.Evaluate(raw,owned)
+-- The server supplies its accepted permanent-arrival eligibility, never CurrentWorld.
+function M.Candidates(world2Unlocked)
+ local rows={}
+ for _,item in ipairs(Dumbbells.GetSorted()) do
+  if item.MergePoints and (item.WorldId~=2 or world2Unlocked==true) then table.insert(rows,item) end
+ end
+ table.sort(rows,function(a,b)if a.MergePoints~=b.MergePoints then return a.MergePoints<b.MergePoints end return a.ItemId<b.ItemId end)
+ return rows
+end
+function M.Evaluate(raw,owned,world2Unlocked)
  local result,reason=M.Selection(raw,owned,false);if not result then return nil,reason end
  -- Selection also serves single-ore point previews, sales and existing request signatures.
  if result.Count<M.Minimum then return nil,"SelectAtLeastTwoOres" end
- local rows=Dumbbells.GetSorted(1)
+ local rows=M.Candidates(world2Unlocked)
  local lower=rows[1]
+ if result.Total<=lower.MergePoints then result.Outcomes={{Id=lower.ItemId,Probability=1}};return result end
  for _,item in ipairs(rows) do
   if result.Total==item.MergePoints then result.Outcomes={{Id=item.ItemId,Probability=1}};return result end
   if result.Total<item.MergePoints then
@@ -32,7 +42,9 @@ function M.Evaluate(raw,owned)
   end
   lower=item
  end
- return nil,"InvalidPoints"
+ -- Above the highest unlocked threshold stays a valid, capped merge.
+ result.Outcomes={{Id=lower.ItemId,Probability=1}}
+ return result
 end
 function M.Pick(preview,unit)
  local sum=0

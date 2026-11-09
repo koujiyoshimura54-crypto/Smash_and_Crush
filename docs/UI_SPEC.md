@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-09 — World2 Ore uses the existing Merge UI
+
+The shared Ore list, five inputs, candidates/result and inline quantity sale use the current32 definitions. Only server arrival eligibility was connected to existing Ore preview calls. Layout, fonts, K/M formatting, counts, order and buttons remain; no rarity treatment or World headings were added. Actual images confirmed new Ore cards,100K inputs/output and90/500 Win sale displays. Acquisition Billboard appearance remains unconfirmed by MCP capture, although native image/point properties and five-second replacement behavior passed. [Evidence and limits](../reports/WorldOre_20261109/REPORT.md).
+
 ## 2026-11-07 — Dumbbell purchase notification strength filter
 
 Dumbbell purchase guidance additionally requires the candidate's own StrengthBonus to be at least the currently equipped Dumbbell's bonus. The same filtered candidates drive card/tab/Inventory badges and refresh after normal/Best Equip, reload/reopen and respawn. Other categories, seen-history rules, purchase/world eligibility and UI design are unchanged. [Focused native checks and actual desktop images](../reports/DumbbellNotice_20261107.md).

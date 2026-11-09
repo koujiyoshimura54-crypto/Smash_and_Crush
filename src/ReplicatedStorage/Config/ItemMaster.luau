@@ -77,7 +77,7 @@ ItemMaster.Kinds=table.freeze(kinds)
 -- Existing drop odds retained; Rare balance is not yet finalized in V5.
 ItemMaster.DropWeights=table.freeze({80,13,4,2,1})
 ItemMaster.DropUnlockStage=table.freeze({Epic=5,Legendary=8})
-ItemMaster.DropHitChance=0.20
+ItemMaster.DropHitChance=require(script.Parent.EnemyDropConfig).Worlds[1][1].ItemChance -- Legacy read-only view
 function ItemMaster.Get(itemId)
  if typeof(itemId) ~= "string" then return nil end
  return items[itemId]

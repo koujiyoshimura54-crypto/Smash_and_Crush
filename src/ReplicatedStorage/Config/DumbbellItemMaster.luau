@@ -15,9 +15,10 @@ local definitions = {
  {ItemId="NORMAL_12", Name="Normal Dumbbell 12", Grade=12, PriceWin=7500, MergePoints=650, SellWin=3750, StrengthBonus=100, ImageAssetId=121194224737958},
 }
 local World2=require(script.Parent.World2GameplayConfig)
+local world2MergePoints={1000,2500,5000,9000,14000,20000,28000,38000,50000,65000,82000,100000}
 for index,row in ipairs(World2.Dumbbells) do
  table.insert(definitions,{ItemId=string.format("W2_NORMAL_%02d",index),Name="World 2 Dumbbell "..index,
-  WorldId=2,Grade=index,PriceWin=row.PriceWin,StrengthBonus=row.StrengthBonus,ImageAssetId=World2.DumbbellImages[index]})
+  WorldId=2,Grade=index,MergePoints=world2MergePoints[index],PriceWin=row.PriceWin,StrengthBonus=row.StrengthBonus,ImageAssetId=World2.DumbbellImages[index]})
 end
 for _, item in ipairs(definitions) do
  item.Category = "Dumbbell"
