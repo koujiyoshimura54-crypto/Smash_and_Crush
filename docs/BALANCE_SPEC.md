@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-10 — Requested finite LV and World2 balance
+
+Q(1–50) is unchanged. For51–200: r(L)=0.20+(L-51)*0.0007; Q(L)=ceil(Q(L-1)*(1+r(L))/10)*10. Above200 retain Q(200)+(L-200)*250000000, MaxLevel10000 and existing Rebirth. This supersedes the earlier held LV proposal. World2 Boss HP is10M/30M/75M/150M/500M/1.5B/7B/50B/350B/1.5T; fixed recommended LV55/60/65/70/75/80/90/100/110/115, required Strength=HP/5. Walls use40–80% for stages1–5 and40–90% for6–10. The20 requested Ore point values already matched; no Ore/equipment threshold change was needed. [Native10020 checks and balance matrix](../reports/RequestedPhases_20261110.md).
+
 ## 2026-11-10 — Phases 1.1–1.4
 
 Applied offline reward: departureStrength × (0.04 × min(elapsed,86400)/3600), preserving fractions and zero. The three paid Strength pack formulas are unchanged. Treadmill multipliers/eligibility/cadence and all Ore points/sale/pools/merge thresholds are unchanged. The proposed compounded LV51+ curve passes240020/288390/346940 but becomes non-finite at1106; current LevelRequirements/MaxLevel10000/rebirth remain unchanged. [New/old LV table and numeric evidence](../reports/Phase11To14_20261110.md).

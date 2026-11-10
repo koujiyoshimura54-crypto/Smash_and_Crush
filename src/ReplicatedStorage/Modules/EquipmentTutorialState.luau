@@ -3,10 +3,11 @@ local Items=require(script.Parent.Parent.Config.ItemMaster)
 local Dumbbells=require(script.Parent.DumbbellEquipment)
 local M={}
 function M.Normalize(raw,eligible)
- if raw==nil then return {Version=1,Eligible=eligible==true,ItemCompleted=false,DumbbellCompleted=false} end
+ if raw==nil then return {Version=1,Eligible=eligible==true,ItemCompleted=false,DumbbellCompleted=false,HigherDumbbellCompleted=false} end
  if type(raw)~="table" or raw.Version~=1 or type(raw.Eligible)~="boolean"
-  or type(raw.ItemCompleted)~="boolean" or type(raw.DumbbellCompleted)~="boolean" then return nil,"InvalidEquipmentTutorial" end
- return {Version=1,Eligible=raw.Eligible,ItemCompleted=raw.ItemCompleted,DumbbellCompleted=raw.DumbbellCompleted}
+  or type(raw.ItemCompleted)~="boolean" or type(raw.DumbbellCompleted)~="boolean"
+  or raw.HigherDumbbellCompleted~=nil and type(raw.HigherDumbbellCompleted)~="boolean" then return nil,"InvalidEquipmentTutorial" end
+ return {Version=1,Eligible=raw.Eligible,ItemCompleted=raw.ItemCompleted,DumbbellCompleted=raw.DumbbellCompleted,HigherDumbbellCompleted=raw.HigherDumbbellCompleted==true}
 end
 function M.Merge(old,incoming)
  local b=assert(M.Normalize(incoming,false))
@@ -14,6 +15,7 @@ function M.Merge(old,incoming)
  local a=assert(M.Normalize(old,false))
  a.ItemCompleted=a.ItemCompleted or b.ItemCompleted
  a.DumbbellCompleted=a.DumbbellCompleted or b.DumbbellCompleted
+ a.HigherDumbbellCompleted=a.HigherDumbbellCompleted or b.HigherDumbbellCompleted
  return a
 end
 function M.ItemAvailable(data)
@@ -26,7 +28,7 @@ end
 function M.Refresh(data)
  local eligible=data.EggPetTutorial and data.EggPetTutorial.Eligible
  local state=assert(M.Normalize(data.EquipmentTutorial,eligible))
- local oldItem,oldBell=state.ItemCompleted,state.DumbbellCompleted
+ local oldItem,oldBell,oldHigher=state.ItemCompleted,state.DumbbellCompleted,state.HigherDumbbellCompleted
  if state.Eligible then
   for kind,id in pairs(data.EquippedItems or {}) do
    local item=Items.Get(id)
@@ -34,11 +36,14 @@ function M.Refresh(data)
   end
   if data.OreMergeTutorial and data.OreMergeTutorial.Completed then
    local best=Dumbbells.Best(data.OwnedDumbbells,data.EquippedDumbbell)
-   if best and best==data.EquippedDumbbell then state.DumbbellCompleted=true end
+   if best and best==data.EquippedDumbbell then
+    state.DumbbellCompleted=true
+    if data.HigherOreMergeTutorial and data.HigherOreMergeTutorial.Completed then state.HigherDumbbellCompleted=true end
+   end
   end
  end
  data.EquipmentTutorial=state
- return oldItem~=state.ItemCompleted or oldBell~=state.DumbbellCompleted
+ return oldItem~=state.ItemCompleted or oldBell~=state.DumbbellCompleted or oldHigher~=state.HigherDumbbellCompleted
 end
 function M.Publish(player,data)
  local changed=M.Refresh(data);local state=data.EquipmentTutorial
@@ -48,7 +53,8 @@ function M.Publish(player,data)
  player:SetAttribute("DumbbellEquipTutorialEligible",state.Eligible)
  player:SetAttribute("DumbbellEquipTutorialReady",data.OreMergeTutorial and data.OreMergeTutorial.Completed==true
   and Dumbbells.Best(data.OwnedDumbbells,data.EquippedDumbbell)~=nil)
- player:SetAttribute("DumbbellEquipTutorialCompleted",state.DumbbellCompleted)
+ local higher=data.HigherOreMergeTutorial and data.HigherOreMergeTutorial.Completed
+ player:SetAttribute("DumbbellEquipTutorialCompleted",higher and state.HigherDumbbellCompleted or not higher and state.DumbbellCompleted)
  return changed
 end
 return table.freeze(M)

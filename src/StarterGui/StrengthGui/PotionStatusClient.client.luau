@@ -8,7 +8,7 @@ panel.Size=UDim2.fromOffset(202,38);panel.ZIndex=10;panel.Parent=gui
 local stack=Instance.new("UIListLayout")
 stack.Padding=UDim.new(0,4);stack.SortOrder=Enum.SortOrder.LayoutOrder;stack.Parent=panel
 local definitions={
- {Id="Training",Field="TrainingSeconds",Reward="Reward07",Title="Training ×"..tostring(1+Config.Potions.Training.TreadmillBonus)},
+ {Id="Training",Field="TrainingSeconds",Reward="Reward07",Title="Treadmill Potion +"..tostring(Config.Potions.Training.TreadmillBonus)},
  {Id="Strength",Field="StrengthSeconds",Reward="Reward04",Title="Strength ×"..tostring(Config.Potions.Strength.Multiplier)},
 }
 local rows={}
@@ -20,7 +20,7 @@ for order,d in ipairs(definitions) do
  icon.Image=Config.GetImage(Config.Get(d.Reward))
  icon.Position=UDim2.fromOffset(5,5);icon.Size=UDim2.fromOffset(28,28);icon.ScaleType=Enum.ScaleType.Fit;icon.ZIndex=11;icon.Parent=row
  local title=Instance.new("TextLabel");title.Name="Title";title.BackgroundTransparency=1;title.Text=d.Title
- title.Font=Enum.Font.GothamBold;title.TextSize=14;title.TextColor3=Color3.new(1,1,1);title.TextXAlignment=Enum.TextXAlignment.Left
+ title.TextWrapped=true;title.Font=Enum.Font.GothamBold;title.TextSize=14;title.TextColor3=Color3.new(1,1,1);title.TextXAlignment=Enum.TextXAlignment.Left
  title.Position=UDim2.fromOffset(38,0);title.Size=UDim2.new(1,-84,1,0);title.ZIndex=11;title.Parent=row
  local timer=title:Clone();timer.Name="Remaining";timer.Text="";timer.TextXAlignment=Enum.TextXAlignment.Right
  timer.Position=UDim2.new(1,-45,0,0);timer.Size=UDim2.new(0,39,1,0);timer.Parent=row

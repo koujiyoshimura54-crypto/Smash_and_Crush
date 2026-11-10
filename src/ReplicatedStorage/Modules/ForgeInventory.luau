@@ -5,6 +5,7 @@ local Master=require(script.Parent.Parent.Config.DumbbellItemMaster)
 local Merge=require(script.Parent.OreMerge)
 local FirstStage1=require(script.Parent.FirstStage1RewardState)
 local OreTutorial=require(script.Parent.OreMergeTutorialState)
+local HigherOreTutorial=require(script.Parent.HigherOreMergeTutorialState)
 local M={}
 function M.Journal(raw)
  if raw==nil then return {Sequence=0} end
@@ -80,6 +81,8 @@ function M.Apply(data,op)
  out.OwnedOres=ores;out.OwnedDumbbells=bells;out.Win=win
  if op.Action=="MergeOre" then
   out.OreMergeTutorial=OreTutorial.Complete(data.OreMergeTutorial,op.Id)
+  local higher=assert(HigherOreTutorial.Normalize(data.HigherOreMergeTutorial,data.OreMergeTutorial and data.OreMergeTutorial.Eligible))
+  out.HigherOreMergeTutorial=HigherOreTutorial.IsResult(op.ResultId) and HigherOreTutorial.Complete(higher,op.Id) or higher
   require(script.Parent.EquipmentTutorialState).Refresh(out)
  end
  if op.Action=="FirstStage1Defeat" then

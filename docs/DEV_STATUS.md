@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-10 — Requested phases 1.1 → 1.2 → 1.4 → 1.5
+
+Implemented in canonical unsaved Place126576845524886 in the requested order. Memory-only native validation covered reward history/retry, higher merge/equipment/chest, Egg/Pet/Limited regression, finite LV progression/save/Rebirth, all10 World2 Bosses/55 walls and all14 treadmill gains/exits. Normal/narrow treadmill geometry passed; raster/icon loading and narrow chest raster remain unconfirmed. Helpers removed and Play stopped in Edit. No OS input, foreground operation, Save/Publish, rbxl write or Studio close. [English record, paths and limitations](../reports/RequestedPhases_20261110.md).
+
 ## 2026-11-10 — Phases 1.1–1.4
 
 Phases1.2–1.4 applied to canonical unsaved Studio; Phase1.1 LV changes held at the finite-number boundary. Native offline retry/migration, all14 treadmill actual gains/exits, Ore classification/sale/merge/Bag contracts passed within memory isolation. Final Ore/World2 narrow raster checks remain outstanding.490 Sources:13 intentional changes,477 unchanged; helpers removed, Play stopped/focused Edit, no Save/Publish. Manual Save required. [English record and evidence](../reports/Phase11To14_20261110.md).

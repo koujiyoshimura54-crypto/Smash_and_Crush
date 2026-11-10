@@ -12,16 +12,16 @@ local C={
  BossHitMultiplier=5,
 }
 local stages={
- [1]={RecommendedLevel=60},
- [2]={RecommendedLevel=75},
- [3]={RecommendedLevel=90},
- [4]={RecommendedLevel=105},
- [5]={RecommendedLevel=120},
- [6]={RecommendedLevel=140},
- [7]={RecommendedLevel=155},
- [8]={RecommendedLevel=170},
- [9]={RecommendedLevel=185},
- [10]={RecommendedLevel=200},
+ [1]={RecommendedLevel=55},
+ [2]={RecommendedLevel=60},
+ [3]={RecommendedLevel=65},
+ [4]={RecommendedLevel=70},
+ [5]={RecommendedLevel=75},
+ [6]={RecommendedLevel=80},
+ [7]={RecommendedLevel=90},
+ [8]={RecommendedLevel=100},
+ [9]={RecommendedLevel=110},
+ [10]={RecommendedLevel=115},
 }
 for stage,entry in ipairs(stages) do
  local approved=Workbook.Stages[stage]

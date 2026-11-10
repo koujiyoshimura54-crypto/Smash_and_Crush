@@ -36,13 +36,13 @@ Config.MultiplierBillboard = {
 }
 -- Shared World1/World2 station headings; existing artwork and fonts are reused.
 Config.StationHeading = {
- Size = Vector2.new(16, 3.5),
- GroupGap = 0.055,
- RequirementWidth = 0.29,
- MultiplierWidth = 0.62,
- IconWidth = 0.49,
- IconGap = 0.015,
- RowHeight = 0.72,
+ Size = Vector2.new(16, 6),
+ GroupGap = 0.06, -- Vertical separation between the requirement and gain rows.
+ RequirementWidth = 0.42,
+ PremiumRequirementWidth = 0.60,
+ MultiplierWidth = 0.94,
+ IconGap = 0.035, -- Relative to the compact requirement group.
+ RowHeight = 0.42,
  World2Offset = Vector3.new(0, 7.35, 0),
 }
 -- Stud units; edit in Studio and restart Play to tune the moving chevrons.

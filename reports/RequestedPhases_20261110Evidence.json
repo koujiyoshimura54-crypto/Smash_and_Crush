@@ -1,0 +1,897 @@
+{
+  "Context": {
+    "PlaceId": 126576845524886,
+    "UniverseId": 10765181857,
+    "BaseCommit": "a9ce5f9",
+    "DataIsolation": "Native in-memory external-service adapters; no real data writes or payments",
+    "OSInput": false,
+    "SavePublish": false
+  },
+  "Rewards": {
+    "Passed": true,
+    "Checks": [
+      "Schedule slot 1",
+      "Schedule slot 2",
+      "Schedule slot 3",
+      "Schedule slot 4",
+      "Schedule slot 5",
+      "Schedule slot 6",
+      "Schedule slot 7",
+      "Schedule slot 8",
+      "Schedule slot 9",
+      "Iron26 ordinary adjacent draw70/30",
+      "Stone2 actual direct grant",
+      "Stone replay no grant",
+      "Iron ambiguous acknowledgement retained",
+      "Pending Iron replay blocked",
+      "Iron retry exactly2",
+      "Iron confirmed replay blocked",
+      "Win3 actual grant",
+      "Win replay no grant",
+      "TimeReward ores bypass Battle Bag",
+      "Treadmill60 keeps Training internal ID",
+      "Treadmill additive bonus1 unchanged",
+      "Strength180 effect unchanged",
+      "Potion prewrite failure retained",
+      "Treadmill180 added once after retry",
+      "Potion replay adds no duration",
+      "Moved reward IDs survive save reload",
+      "Unclaimed moved rewards remain available",
+      "Retired claims retained but never applied to different slots",
+      "Grant and history persist together",
+      "Legacy slot2 cannot mark new Iron claimed"
+    ]
+  },
+  "HigherOre": {
+    "Passed": 13,
+    "Checks": {
+      "1": "Existing BestEquip completes higher handoff",
+      "2": "Higher and equipment survive memory reload",
+      "3": "Two stones do not trigger",
+      "4": "Battle Bag Iron2 excluded",
+      "5": "Self-directed success before first guide completes higher",
+      "6": "Forge replay consumes/grants once",
+      "7": "Higher lost acknowledgement retained",
+      "8": "Higher resolved atomically",
+      "9": "Resolved replay remains idempotent",
+      "10": "Resolved higher reload",
+      "11": "Death does not reset completion",
+      "12": "Actual resetdata restores eligibility",
+      "13": "Missing field does not enroll excluded legacy"
+    }
+  },
+  "LevelsAndLoad": {
+    "Pure": {
+      "Passed": true,
+      "Values": {
+        "50": 200010,
+        "51": 240020,
+        "52": 288200,
+        "53": 346250,
+        "60": 1271460,
+        "70": 8564370,
+        "80": 61112700,
+        "90": 461819340,
+        "100": 3694673210,
+        "200": 85207248960711180000,
+        "201": 85207248960961180000,
+        "9999": 85207251410461180000,
+        "10000": 85207251410711180000
+      },
+      "Checks": 10020
+    },
+    "Reloaded": {
+      "AttributeLevel": 52,
+      "Strength": 1000001,
+      "Progress": 59981,
+      "Level": 52,
+      "Rebirth": 0,
+      "AttributeStrength": 1000001
+    },
+    "Stage1": {
+      "Maxes": {
+        "1": 4000000,
+        "2": 5000000,
+        "3": 6000000,
+        "4": 7000000,
+        "5": 8000000
+      },
+      "Walls": {
+        "1": 4000000,
+        "2": 5000000,
+        "3": 6000000,
+        "4": 7000000,
+        "5": 8000000
+      },
+      "RecommendedLevel": 55,
+      "BossHP": 10000000,
+      "EncounterHP": 10000000,
+      "BossGauge": 10000000,
+      "RequiredStrength": 2000000,
+      "Stage": 1,
+      "World": 2
+    },
+    "Loaded": {
+      "AttributeLevel": 51,
+      "Strength": 1000000,
+      "Progress": 300000,
+      "Level": 51,
+      "Rebirth": 0,
+      "AttributeStrength": 1000000
+    },
+    "Gain": {
+      "AttributeLevel": 52,
+      "Strength": 1000001,
+      "Progress": 59981,
+      "Level": 52,
+      "Rebirth": 0,
+      "AttributeStrength": 1000001
+    }
+  },
+  "World2GeneratedActorsAndWalls": {
+    "1": {
+      "Maxes": {
+        "1": 4000000,
+        "2": 5000000,
+        "3": 6000000,
+        "4": 7000000,
+        "5": 8000000
+      },
+      "Walls": {
+        "1": 4000000,
+        "2": 5000000,
+        "3": 6000000,
+        "4": 7000000,
+        "5": 8000000
+      },
+      "RecommendedLevel": 55,
+      "BossHP": 10000000,
+      "EncounterHP": 10000000,
+      "BossGauge": 10000000,
+      "RequiredStrength": 2000000,
+      "Stage": 1,
+      "World": 2
+    },
+    "2": {
+      "Maxes": {
+        "1": 12000000,
+        "2": 15000000,
+        "3": 18000000,
+        "4": 21000000,
+        "5": 24000000
+      },
+      "Walls": {
+        "1": 12000000,
+        "2": 15000000,
+        "3": 18000000,
+        "4": 21000000,
+        "5": 24000000
+      },
+      "RecommendedLevel": 60,
+      "BossHP": 30000000,
+      "EncounterHP": 30000000,
+      "BossGauge": 30000000,
+      "RequiredStrength": 6000000,
+      "Stage": 2,
+      "World": 2
+    },
+    "3": {
+      "Maxes": {
+        "1": 30000000,
+        "2": 37500000,
+        "3": 45000000,
+        "4": 52500000,
+        "5": 60000000
+      },
+      "Walls": {
+        "1": 30000000,
+        "2": 37500000,
+        "3": 45000000,
+        "4": 52500000,
+        "5": 60000000
+      },
+      "RecommendedLevel": 65,
+      "BossHP": 75000000,
+      "EncounterHP": 75000000,
+      "BossGauge": 75000000,
+      "RequiredStrength": 15000000,
+      "Stage": 3,
+      "World": 2
+    },
+    "4": {
+      "Maxes": {
+        "1": 60000000,
+        "2": 75000000,
+        "3": 90000000,
+        "4": 105000000,
+        "5": 120000000
+      },
+      "Walls": {
+        "1": 60000000,
+        "2": 75000000,
+        "3": 90000000,
+        "4": 105000000,
+        "5": 120000000
+      },
+      "RecommendedLevel": 70,
+      "BossHP": 150000000,
+      "EncounterHP": 150000000,
+      "BossGauge": 150000000,
+      "RequiredStrength": 30000000,
+      "Stage": 4,
+      "World": 2
+    },
+    "5": {
+      "Maxes": {
+        "1": 200000000,
+        "2": 250000000,
+        "3": 300000000,
+        "4": 350000000,
+        "5": 400000000
+      },
+      "Walls": {
+        "1": 200000000,
+        "2": 250000000,
+        "3": 300000000,
+        "4": 350000000,
+        "5": 400000000
+      },
+      "RecommendedLevel": 75,
+      "BossHP": 500000000,
+      "EncounterHP": 500000000,
+      "BossGauge": 500000000,
+      "RequiredStrength": 100000000,
+      "Stage": 5,
+      "World": 2
+    },
+    "6": {
+      "Maxes": {
+        "1": 600000000,
+        "2": 750000000,
+        "3": 900000000,
+        "4": 1050000000,
+        "5": 1200000000,
+        "6": 1350000000
+      },
+      "Walls": {
+        "1": 600000000,
+        "2": 750000000,
+        "3": 900000000,
+        "4": 1050000000,
+        "5": 1200000000,
+        "6": 1350000000
+      },
+      "RecommendedLevel": 80,
+      "BossHP": 1500000000,
+      "EncounterHP": 1500000000,
+      "BossGauge": 1500000000,
+      "RequiredStrength": 300000000,
+      "Stage": 6,
+      "World": 2
+    },
+    "7": {
+      "Maxes": {
+        "1": 2800000000,
+        "2": 3500000000,
+        "3": 4200000000,
+        "4": 4900000000,
+        "5": 5600000000,
+        "6": 6300000000
+      },
+      "Walls": {
+        "1": 2800000000,
+        "2": 3500000000,
+        "3": 4200000000,
+        "4": 4900000000,
+        "5": 5600000000,
+        "6": 6300000000
+      },
+      "RecommendedLevel": 90,
+      "BossHP": 7000000000,
+      "EncounterHP": 7000000000,
+      "BossGauge": 7000000000,
+      "RequiredStrength": 1400000000,
+      "Stage": 7,
+      "World": 2
+    },
+    "8": {
+      "Maxes": {
+        "1": 20000000000,
+        "2": 25000000000,
+        "3": 30000000000,
+        "4": 35000000000,
+        "5": 40000000000,
+        "6": 45000000000
+      },
+      "Walls": {
+        "1": 20000000000,
+        "2": 25000000000,
+        "3": 30000000000,
+        "4": 35000000000,
+        "5": 40000000000,
+        "6": 45000000000
+      },
+      "RecommendedLevel": 100,
+      "BossHP": 50000000000,
+      "EncounterHP": 50000000000,
+      "BossGauge": 50000000000,
+      "RequiredStrength": 10000000000,
+      "Stage": 8,
+      "World": 2
+    },
+    "9": {
+      "Maxes": {
+        "1": 140000000000,
+        "2": 175000000000,
+        "3": 210000000000,
+        "4": 245000000000,
+        "5": 280000000000,
+        "6": 315000000000
+      },
+      "Walls": {
+        "1": 140000000000,
+        "2": 175000000000,
+        "3": 210000000000,
+        "4": 245000000000,
+        "5": 280000000000,
+        "6": 315000000000
+      },
+      "RecommendedLevel": 110,
+      "BossHP": 350000000000,
+      "EncounterHP": 350000000000,
+      "BossGauge": 350000000000,
+      "RequiredStrength": 70000000000,
+      "Stage": 9,
+      "World": 2
+    },
+    "10": {
+      "Maxes": {
+        "1": 600000000000,
+        "2": 750000000000,
+        "3": 900000000000,
+        "4": 1050000000000,
+        "5": 1200000000000,
+        "6": 1350000000000
+      },
+      "Walls": {
+        "1": 600000000000,
+        "2": 750000000000,
+        "3": 900000000000,
+        "4": 1050000000000,
+        "5": 1200000000000,
+        "6": 1350000000000
+      },
+      "RecommendedLevel": 115,
+      "BossHP": 1500000000000,
+      "EncounterHP": 1500000000000,
+      "BossGauge": 1500000000000,
+      "RequiredStrength": 300000000000,
+      "Stage": 10,
+      "World": 2
+    }
+  },
+  "World2Lifecycle": {
+    "World2": {
+      "World": 2,
+      "Walls": {
+        "WallCount": 5,
+        "Current": 1,
+        "MajorStage": 1,
+        "Maxes": {
+          "1": 4000000,
+          "2": 5000000,
+          "3": 6000000,
+          "4": 7000000,
+          "5": 8000000
+        },
+        "Skipped": false,
+        "BossMaxHP": 10000000,
+        "Gauges": {
+          "1": 4000000,
+          "2": 5000000,
+          "3": 6000000,
+          "4": 7000000,
+          "5": 8000000
+        },
+        "Cleared": []
+      }
+    },
+    "World1": {
+      "World": 1,
+      "Walls": {
+        "WallCount": 4,
+        "Current": 1,
+        "MajorStage": 1,
+        "Maxes": {
+          "1": 100,
+          "2": 125,
+          "3": 150,
+          "4": 200
+        },
+        "Skipped": false,
+        "BossMaxHP": 375,
+        "Gauges": {
+          "1": 100,
+          "2": 125,
+          "3": 150,
+          "4": 200
+        },
+        "Cleared": []
+      }
+    },
+    "Retry": {
+      "Maxes": {
+        "1": 4000000,
+        "2": 5000000,
+        "3": 6000000,
+        "4": 7000000,
+        "5": 8000000
+      },
+      "Walls": {
+        "1": 4000000,
+        "2": 5000000,
+        "3": 6000000,
+        "4": 7000000,
+        "5": 8000000
+      },
+      "RecommendedLevel": 55,
+      "BossHP": 10000000,
+      "EncounterHP": 10000000,
+      "BossGauge": 10000000,
+      "RequiredStrength": 2000000,
+      "Stage": 1,
+      "World": 2
+    },
+    "Death": {
+      "WallCount": 5,
+      "Current": 1,
+      "MajorStage": 1,
+      "Maxes": {
+        "1": 4000000,
+        "2": 5000000,
+        "3": 6000000,
+        "4": 7000000,
+        "5": 8000000
+      },
+      "Skipped": false,
+      "BossMaxHP": 10000000,
+      "Gauges": {
+        "1": 4000000,
+        "2": 5000000,
+        "3": 6000000,
+        "4": 7000000,
+        "5": 8000000
+      },
+      "Cleared": []
+    }
+  },
+  "Rebirth": {
+    "Rebirth": {
+      "AttributeLevel": 1,
+      "Strength": 0,
+      "Progress": 0,
+      "Level": 1,
+      "Rebirth": 1,
+      "AttributeStrength": 0
+    },
+    "Reload": {
+      "AttributeLevel": 1,
+      "Strength": 0,
+      "Progress": 0,
+      "Level": 1,
+      "Rebirth": 1,
+      "AttributeStrength": 0
+    }
+  },
+  "BossLabels": {
+    "1": {
+      "Recommended": 55,
+      "Max": 10000000
+    },
+    "2": {
+      "Recommended": 60,
+      "Text": "Recommended Lv. 60",
+      "Max": 30000000
+    },
+    "3": {
+      "Recommended": 65,
+      "Text": "Recommended Lv. 65",
+      "Max": 75000000
+    },
+    "4": {
+      "Recommended": 70,
+      "Text": "Recommended Lv. 70",
+      "Max": 150000000
+    },
+    "5": {
+      "Recommended": 75,
+      "Text": "Recommended Lv. 75",
+      "Max": 500000000
+    },
+    "6": {
+      "Recommended": 80,
+      "Text": "Recommended Lv. 80",
+      "Max": 1500000000
+    },
+    "7": {
+      "Recommended": 90,
+      "Text": "Recommended Lv. 90",
+      "Max": 7000000000
+    },
+    "8": {
+      "Recommended": 100,
+      "Text": "Recommended Lv. 100",
+      "Max": 50000000000
+    },
+    "9": {
+      "Recommended": 110,
+      "Text": "Recommended Lv. 110",
+      "Max": 350000000000
+    },
+    "10": {
+      "Recommended": 115,
+      "Max": 1500000000000
+    }
+  },
+  "TreadmillNarrowProperties": {
+    "Mode": "Narrow",
+    "Count": 14,
+    "Rows": {
+      "1": {
+        "RequirementFits": true,
+        "Path": "Workspace.Treadmills.Diamond01.BillboardGui",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "Premium",
+        "IconLoaded": false,
+        "IconGap": 3.5699996948242188,
+        "Gain": "×20 Strength",
+        "RowGap": 3.7799911499023438
+      },
+      "2": {
+        "RequirementFits": true,
+        "Path": "Workspace.Treadmills.Gold01.BillboardGui",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "×5",
+        "IconLoaded": false,
+        "IconGap": 2.4989852905273438,
+        "Gain": "×3 Strength",
+        "RowGap": 3.7799911499023438
+      },
+      "3": {
+        "RequirementFits": true,
+        "Path": "Workspace.Treadmills.Gold02.BillboardGui",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "×5",
+        "IconLoaded": false,
+        "IconGap": 2.4990158081054688,
+        "Gain": "×3 Strength",
+        "RowGap": 3.7800064086914062
+      },
+      "4": {
+        "RequirementFits": true,
+        "Path": "Workspace.Treadmills.Iron01.BillboardGui",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "×3",
+        "IconLoaded": false,
+        "IconGap": 2.4989852905273438,
+        "Gain": "×2 Strength",
+        "RowGap": 3.7800064086914062
+      },
+      "5": {
+        "RequirementFits": true,
+        "Path": "Workspace.Treadmills.Iron02.BillboardGui",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "×3",
+        "IconLoaded": false,
+        "IconGap": 2.4990158081054688,
+        "Gain": "×2 Strength",
+        "RowGap": 3.7800216674804688
+      },
+      "6": {
+        "GainFits": true,
+        "Path": "Workspace.Treadmills.Normal01.BillboardGui",
+        "GainHeight": 26,
+        "Gain": "×1 Strength",
+        "Width": 170
+      },
+      "7": {
+        "GainFits": true,
+        "Path": "Workspace.Treadmills.Normal02.BillboardGui",
+        "GainHeight": 26,
+        "Gain": "×1 Strength",
+        "Width": 170
+      },
+      "8": {
+        "GainFits": true,
+        "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.StationBillboard",
+        "GainHeight": 26,
+        "Gain": "×5 Strength",
+        "Width": 170
+      },
+      "9": {
+        "GainFits": true,
+        "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.StationBillboard",
+        "GainHeight": 26,
+        "Gain": "×5 Strength",
+        "Width": 170
+      },
+      "10": {
+        "RequirementFits": true,
+        "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.StationBillboard",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "×7",
+        "IconLoaded": false,
+        "IconGap": 2.4989852905273438,
+        "Gain": "×7 Strength",
+        "RowGap": 3.7800216674804688
+      },
+      "11": {
+        "RequirementFits": true,
+        "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.StationBillboard",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "×7",
+        "IconLoaded": false,
+        "IconGap": 2.4990158081054688,
+        "Gain": "×7 Strength",
+        "RowGap": 3.7799911499023438
+      },
+      "12": {
+        "RequirementFits": true,
+        "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.StationBillboard",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "×9",
+        "IconLoaded": false,
+        "IconGap": 2.4989852905273438,
+        "Gain": "×12 Strength",
+        "RowGap": 3.7799911499023438
+      },
+      "13": {
+        "RequirementFits": true,
+        "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.StationBillboard",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "×9",
+        "IconLoaded": false,
+        "IconGap": 2.4990158081054688,
+        "Gain": "×12 Strength",
+        "RowGap": 3.7799911499023438
+      },
+      "14": {
+        "RequirementFits": true,
+        "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.StationBillboard",
+        "GainHeight": 26,
+        "Width": 170,
+        "GainFits": true,
+        "Requirement": "99",
+        "IconLoaded": false,
+        "IconGap": 3.5700302124023438,
+        "Gain": "×35 Strength",
+        "RowGap": 3.7799911499023438
+      }
+    }
+  },
+  "TreadmillRespawn": {
+    "respawn": {
+      "seconds": 6.010937200044282,
+      "Floor": "Enum.Material.Plastic",
+      "active": true,
+      "sessions": 1,
+      "ticks": 8,
+      "delta": 308,
+      "Inside": true,
+      "Position": "-26.425533294677734, 6.985013008117676, 1896.4788818359375",
+      "rows": {
+        "1": {
+          "delta": 38.5,
+          "multiplier": 7,
+          "time": 7863.930550100049,
+          "result": 77
+        },
+        "2": {
+          "delta": 38.5,
+          "multiplier": 7,
+          "time": 7864.936140700011,
+          "result": 115.5
+        },
+        "3": {
+          "delta": 38.5,
+          "multiplier": 7,
+          "time": 7865.452740499983,
+          "result": 154
+        },
+        "4": {
+          "delta": 38.5,
+          "multiplier": 7,
+          "time": 7866.953506399994,
+          "result": 192.5
+        },
+        "5": {
+          "delta": 38.5,
+          "multiplier": 7,
+          "time": 7867.4686355000595,
+          "result": 231
+        },
+        "6": {
+          "delta": 38.5,
+          "multiplier": 7,
+          "time": 7867.970071000047,
+          "result": 269.5
+        },
+        "7": {
+          "delta": 38.5,
+          "multiplier": 7,
+          "time": 7868.485825299984,
+          "result": 308
+        },
+        "8": {
+          "delta": 38.5,
+          "multiplier": 7,
+          "time": 7869.001683600014,
+          "result": 346.5
+        }
+      },
+      "Ready": true
+    },
+    "dead": {
+      "seconds": 0.608245600014925,
+      "active": false,
+      "sessions": 0,
+      "ticks": 0,
+      "delta": 0,
+      "rows": []
+    }
+  },
+  "FinalStudio": {
+    "Paths": {
+      "1": "ReplicatedStorage.Config.DailyRewardConfig",
+      "2": "ReplicatedStorage.Config.LevelRequirements",
+      "3": "ReplicatedStorage.Config.TimeRewardConfig",
+      "4": "ReplicatedStorage.Config.TreadmillConfig",
+      "5": "ReplicatedStorage.Config.World2Config",
+      "6": "ReplicatedStorage.Config.World2GameplayConfig",
+      "7": "ReplicatedStorage.Modules.EquipmentTutorialState",
+      "8": "ReplicatedStorage.Modules.ForgeInventory",
+      "9": "ReplicatedStorage.Modules.HigherOreMergeTutorialState",
+      "10": "ReplicatedStorage.Modules.MergeShopView",
+      "11": "ReplicatedStorage.Modules.OreMergeTutorialGuide",
+      "12": "ReplicatedStorage.Modules.TreadmillStationHeading",
+      "13": "ServerScriptService.Services.ForgePersistence",
+      "14": "ServerScriptService.Services.ForgeService",
+      "15": "ServerScriptService.Services.PlayerDataService",
+      "16": "StarterGui.StrengthGui.PotionStatusClient",
+      "17": "StarterGui.StrengthGui.TimeRewardsClient",
+      "18": "StarterPlayer.StarterPlayerScripts.Services.HatchClient",
+      "19": "StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient"
+    },
+    "UniverseId": 10765181857,
+    "Checked": 19,
+    "OldPotionNames": [],
+    "PlaceId": 126576845524886,
+    "Helpers": [],
+    "Chest": "Workspace.Gift.Cube.003",
+    "Running": false,
+    "ChestStreaming": "Persistent",
+    "SourceCount": 492
+  },
+  "ChangedSourceManifest": [
+    {
+      "path": "ReplicatedStorage.Config.DailyRewardConfig",
+      "length": 804,
+      "adler32": 2806648867
+    },
+    {
+      "path": "ReplicatedStorage.Config.LevelRequirements",
+      "length": 2627,
+      "adler32": 2214729048
+    },
+    {
+      "path": "ReplicatedStorage.Config.TimeRewardConfig",
+      "length": 2110,
+      "adler32": 1942015076
+    },
+    {
+      "path": "ReplicatedStorage.Config.TreadmillConfig",
+      "length": 4421,
+      "adler32": 878826860
+    },
+    {
+      "path": "ReplicatedStorage.Config.World2Config",
+      "length": 1648,
+      "adler32": 3033745220
+    },
+    {
+      "path": "ReplicatedStorage.Config.World2GameplayConfig",
+      "length": 6194,
+      "adler32": 2533941970
+    },
+    {
+      "path": "ReplicatedStorage.Modules.EquipmentTutorialState",
+      "length": 3265,
+      "adler32": 2350554481
+    },
+    {
+      "path": "ReplicatedStorage.Modules.ForgeInventory",
+      "length": 5903,
+      "adler32": 121581897
+    },
+    {
+      "path": "ReplicatedStorage.Modules.HigherOreMergeTutorialState",
+      "length": 1519,
+      "adler32": 352853968
+    },
+    {
+      "path": "ReplicatedStorage.Modules.MergeShopView",
+      "length": 41104,
+      "adler32": 3373144726
+    },
+    {
+      "path": "ReplicatedStorage.Modules.OreMergeTutorialGuide",
+      "length": 7301,
+      "adler32": 785390615
+    },
+    {
+      "path": "ReplicatedStorage.Modules.TreadmillStationHeading",
+      "length": 3172,
+      "adler32": 3679414571
+    },
+    {
+      "path": "ServerScriptService.Services.ForgePersistence",
+      "length": 3724,
+      "adler32": 3192140845
+    },
+    {
+      "path": "ServerScriptService.Services.ForgeService",
+      "length": 4897,
+      "adler32": 2969755487
+    },
+    {
+      "path": "ServerScriptService.Services.PlayerDataService",
+      "length": 118815,
+      "adler32": 3328809824
+    },
+    {
+      "path": "StarterGui.StrengthGui.PotionStatusClient",
+      "length": 3379,
+      "adler32": 10135145
+    },
+    {
+      "path": "StarterGui.StrengthGui.TimeRewardsClient",
+      "length": 6076,
+      "adler32": 3009564994
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.HatchClient",
+      "length": 31631,
+      "adler32": 536745454
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient",
+      "length": 7922,
+      "adler32": 2286213992
+    }
+  ],
+  "Limitations": [
+    "Treadmill normal/narrow capture stalled; property checks are not visual acceptance and icon IsLoaded=false.",
+    "Narrow chest/result raster unverified.",
+    "Stage10 recommendation payload and actor verified; actual TextLabel/raster not captured.",
+    "Real public-server rejoin/DataStore outages and paid purchases are intentionally not tested.",
+    "High-level requirements use native binary64, which cannot preserve individual 10-unit granularity at Q200 magnitude."
+  ]
+}

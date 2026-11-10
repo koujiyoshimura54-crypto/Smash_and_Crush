@@ -70,7 +70,7 @@ local function render()
   local s=math.max(0,snapshot.Potions.StrengthSeconds-age)
   local t=math.max(0,snapshot.Potions.TrainingSeconds-age)
   if s>0 then text=text.."  Strength x"..tostring(Config.Potions.Strength.Multiplier).." "..duration(s) end
-  if t>0 then text=text.."  Training +"..tostring(Config.Potions.Training.TreadmillBonus).." "..duration(t) end
+  if t>0 then text=text.."  Treadmill Potion +"..tostring(Config.Potions.Training.TreadmillBonus).." "..duration(t) end
  end
  panel.Status.Text=text
 end

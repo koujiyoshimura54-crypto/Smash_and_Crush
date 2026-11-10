@@ -3,6 +3,7 @@ local TREADMILL_TAG="TrainingTreadmill"
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local Config = require(game:GetService("ReplicatedStorage").Config:WaitForChild("TreadmillConfig"))
+local Heading=require(game.ReplicatedStorage.Modules.TreadmillStationHeading)
 local MarketplacePrice=require(game.ReplicatedStorage.Modules.MarketplacePrice)
 local PurchaseHUD=require(game.ReplicatedStorage.Modules.HUDLayout)
 local premiumPrice
@@ -84,41 +85,9 @@ local function layout(model,gui,world,entry)
    if board:FindFirstChild("Multiplier") then label.FontFace=board.Multiplier.FontFace end
   end
  end
- local row=gui:FindFirstChildOfClass("UIListLayout")
- if row then
-  set(row,"Wraps",false)
-  set(row,"FillDirection",Enum.FillDirection.Horizontal)
-  set(row,"HorizontalAlignment",Enum.HorizontalAlignment.Center)
-  set(row,"VerticalAlignment",Enum.VerticalAlignment.Center)
-  set(row,"SortOrder",Enum.SortOrder.LayoutOrder)
-  set(row,"Padding",UDim.new(style.GroupGap,0))
- end
- local hasGroup=requirement~=nil and (needsRebirth or entry.RequiresPremium)
- set(label,"LayoutOrder",2);set(label,"AnchorPoint",Vector2.zero)
- set(label,"AutomaticSize",Enum.AutomaticSize.None)
- set(label,"Size",UDim2.fromScale(hasGroup and style.MultiplierWidth or .94,style.RowHeight))
- set(label,"TextWrapped",true);set(label,"TextScaled",true);set(label,"AutoLocalize",false)
- label.Text="×"..tostring(entry.Multiplier).." Strength"
+ Heading.Apply(gui,entry,world)
  if requirement then
-  set(requirement,"Visible",hasGroup);set(requirement,"LayoutOrder",1)
-  set(requirement,"AnchorPoint",Vector2.zero);set(requirement,"AutomaticSize",Enum.AutomaticSize.None)
-  set(requirement,"Size",UDim2.fromScale(style.RequirementWidth,style.RowHeight))
-  local icon=requirement:FindFirstChild("Icon")
   local amount=requirement:FindFirstChild("Amount")
-  set(icon,"LayoutOrder",1);set(icon,"Size",UDim2.fromScale(style.IconWidth,1))
-  set(icon,"ScaleType",Enum.ScaleType.Fit)
-  set(amount,"LayoutOrder",2);set(amount,"AutomaticSize",Enum.AutomaticSize.None)
-  set(amount,"Size",UDim2.fromScale(1-style.IconWidth-style.IconGap,1))
-  set(amount,"TextXAlignment",Enum.TextXAlignment.Left)
-  set(amount,"TextWrapped",true);set(amount,"TextScaled",true);set(amount,"AutoLocalize",false)
-  local inner=requirement:FindFirstChildOfClass("UIListLayout")
-  if inner then
-   set(inner,"Wraps",false)
-   set(inner,"Padding",UDim.new(style.IconGap,0));set(inner,"FillDirection",Enum.FillDirection.Horizontal)
-   set(inner,"HorizontalAlignment",Enum.HorizontalAlignment.Center);set(inner,"VerticalAlignment",Enum.VerticalAlignment.Center)
-   set(inner,"SortOrder",Enum.SortOrder.LayoutOrder)
-  end
-  if needsRebirth and amount then amount.Text="×"..tostring(entry.RequiredRebirth) end
   if entry.RequiresPremium then
    PurchaseHUD.ApplyPurchaseTextFont(amount)
    if world==2 and amount then

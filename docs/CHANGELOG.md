@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-10 — Requested phases 1.1, 1.2, 1.4 and 1.5
+
+Updated stable-ID TimeRewards and Potion captions; added a separate20-point higher-Ore tutorial and committed chest result presentation; applied the bounded51–200 LV curve and requested World2 HP/levels; unified14 treadmill headings as two rows. Existing Ore points already matched. Native memory-only verification and explicit image/precision limits are in the [English work record](../reports/RequestedPhases_20261110.md). Canonical Studio remains unsaved Edit for manual Save/Publish.
+
 ## 2026-11-10 — Phases 1.1–1.4
 
 Applied departure-Strength offline rewards, repaired World2 physical treadmill support and unified headings, corrected32 Ore rarities and added small rarity text. Held the requested LV curve because binary64 overflows at1106 against MaxLevel10000. Scoped native isolated validation and UI capture limitations are documented. No canonical Save/Publish or production-data tests. [Work record](../reports/Phase11To14_20261110.md).

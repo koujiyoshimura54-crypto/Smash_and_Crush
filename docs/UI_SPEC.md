@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-10 — Requested reward, higher merge and treadmill UI
+
+TimeReward cards reflect the new schedule and Treadmill Potion name. The higher-Ore guide reuses OreMergeTutorialGui/Presentation and its authored white frame, shade, follow behavior and editable messages. Committed Ore results use the existing chest with distinct Dumbbell image/name data in HatchClient. Both Worlds'14 treadmill headings share a compact icon/requirement upper row and multiplier lower row through TreadmillStationHeading and TreadmillConfig.StationHeading. Normal/narrow native geometry passed; final treadmill raster/icon loading is unconfirmed, so property checks are not visual acceptance. [Manual locations and image evidence](../reports/RequestedPhases_20261110.md).
+
 ## 2026-11-10 — Phases 1.1–1.4
 
 Offline uses the existing popup with an eligible-duration title (maximum24 Hours of Offline Rewards). Both Worlds use existing icon/font groups plus Config multiplier text for treadmill headings. Ore notification/card/sale details add small shared-definition rarity labels; tuning is in OreConfig.RarityDisplay. Earlier offline and treadmill actual images were checked. Final Ore images and World2 narrow heading raster remain unconfirmed after Play reported a1×1 viewport; do not treat TextFits as visual acceptance. [Paths, tuning and limits](../reports/Phase11To14_20261110.md).

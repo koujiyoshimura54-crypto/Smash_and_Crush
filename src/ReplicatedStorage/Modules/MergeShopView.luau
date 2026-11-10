@@ -166,7 +166,8 @@ return function(ctx)
   return not petPending and not PetClient.busy() and groupSelected(entry)<#entry.Ids
  end
  -- Read-only display target: use the same eligibility/counts as the real card action.
- function view:GetOreTutorialState()
+ function view:GetOreTutorialState(minimumPoints)
+  local desired=minimumPoints and oreState and require(RS.Modules.HigherOreMergeTutorialState).Selection(oreState.Ores,oreState.World2Unlocked)
   local material,repeatMaterial
   if tab=='Ore' and not sellMode then
    local best=-1
@@ -180,13 +181,15 @@ return function(ctx)
      if width>1 and height>1 then
       local full=width*height/math.max(1,card.Root.AbsoluteSize.X*card.Root.AbsoluteSize.Y)>.95
       local repeated=(oreSelected[entry.Id] or 0)>0
-      local score=(full and 2 or 0)+(repeated and 1 or 0)
+      local needed=desired and (desired[entry.Id] or 0)>(oreSelected[entry.Id] or 0)
+      local score=(full and 2 or 0)+(repeated and 1 or 0)+(needed and 10 or 0)
       if score>best then best=score;material=card.Root;repeatMaterial=repeated end
      end
     end
    end
   end
-  return {Open=shop.Visible,Tab=tab,Selling=sellMode,CloseRevision=closeRevision,
+  local preview=oreState and OreMerge.Evaluate(oreSelected,oreState.Ores,oreState.World2Unlocked)
+  return {TotalPoints=preview and preview.Total or 0,Open=shop.Visible,Tab=tab,Selling=sellMode,CloseRevision=closeRevision,
    Pending=Forge.IsPending() or oreState and oreState.Pending==true,
    MaterialTarget=material,RepeatMaterial=repeatMaterial,SelectedCount=selectedCount(),
    Valid=tab=='Ore' and not sellMode and oreState~=nil and OreMerge.Evaluate(oreSelected,oreState.Ores,oreState.World2Unlocked)~=nil}
@@ -648,6 +651,11 @@ return function(ctx)
   if op.Action~='MergeOre' and op.Action~='SellOre' then return end
   if response.Success then oreSelected={};oreSale={};completedBell=op.Action=='MergeOre' and response.State.Journal.ResultId or nil;status.Text=op.Action=='SellOre' and 'Sold' or 'Created'
   else status.Text=tostring(response.Code) end
+  if response.Success and op.Action=='MergeOre' then
+   local services=game.Players.LocalPlayer.PlayerScripts:FindFirstChild('Services')
+   local hatch=services and services:FindFirstChild('HatchClient')
+   if hatch and require(hatch).playCommittedDumbbell(op,response) then view:Hide('DumbbellReveal') end
+  end
   if tab=='Ore' and shop.Visible then render() end
  end)
  if ctx.Input then

@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-10 — Requested phases 1.1, 1.2, 1.4, 1.5
+
+TimeReward uses the requested nine-slot schedule with stable reward IDs and new IronIntro01. Training's player-facing name is Treadmill Potion; internal ID/effect remain. An independent saved higher-Ore guide starts from usable owned2–5 Ore worth20+ points and completes on a confirmed NORMAL_02+ result. The existing Egg renderer presents committed Dumbbells using Workspace.Gift.Cube.003 and hands off to the existing equipment guide. The revised finite51–200 LV formula supersedes the earlier held unbounded proposal; post200 stays linear. [Full paths, behavior and verification limits](../reports/RequestedPhases_20261110.md).
+
 ## 2026-11-10 — Phases 1.1–1.4
 
 Offline Strength now uses the confirmed server departure snapshot at4% per hour, capped24h (96%), with no additional equipment multiplier. Version2 presence migration never treats legacy Rate as Strength; ambiguous first migration earns zero new reward, and paid bindings remain exact. World2 grounded treadmill support uses the shared training pipeline. Ore rarity ranges are001–010 Common,011–020 Uncommon,021–030 Rare,031–032 Super Rare. The proposed LV curve is HELD because it overflows at1106 with MaxLevel10000. [English record](../reports/Phase11To14_20261110.md).

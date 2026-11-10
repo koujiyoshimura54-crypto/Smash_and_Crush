@@ -1,4 +1,8 @@
 type Result = {
+	kind: string?,
+	dumbbell: string?,
+	image: string?,
+	displayName: string?,
 	pet: string,
 	percent: number,
 	duplicate: boolean,
@@ -49,6 +53,7 @@ type Spin = {
 type Show = {
 	Rolls: {Result},
 	egg: string?,
+	Kind: string?,
 }
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -66,6 +71,7 @@ local Config = require(ReplicatedStorage.Modules.Config)
 local Egg = require(ReplicatedStorage.Modules.Egg)
 local Pet = require(ReplicatedStorage.Modules.Pet)
 local Limited = require(ReplicatedStorage.Config.LimitedEggConfig)
+local Dumbbells = require(ReplicatedStorage.Config.DumbbellItemMaster)
 local MenuClient = require(script.Parent.MenuClient)
 -- Foreign purchase UI/IDs are not loaded.
 
@@ -118,7 +124,9 @@ local TEXT_INFO = TweenInfo.new(Config.Hatch.Pop.seconds, Enum.EasingStyle.Back,
 local HatchClient = {}
 
 local Pending: {Show} = {}
-local playVerified: ({Result}, string?) -> boolean
+local playVerified: ({Result}, string?, string?) -> boolean
+local shownDumbbells: {[string]: boolean} = {}
+local activeDumbbell = false
 local shownLimited: {[string]: boolean} = {} -- Session-only visual deduplication, never a save/grant marker.
 
 local Slots: {Slot} = {}
@@ -504,7 +512,7 @@ end
 
 local function explode(slot: Slot, token: number)
 	local settings = Config.Hatch.Burst
-	local Run = colorsOf(slot.result.pet)
+	local Run = slot.result.kind == "Dumbbell" and {UNTINTED} or colorsOf(slot.result.pet)
 
 	for index = 1, settings.rings do
 		local color = Run[(index - 1) % #Run + 1]
@@ -606,6 +614,15 @@ local function reveal(slot: Slot, token: number, index: number)
 		slot.egg.Visible = false
 		slot.opened = true
 
+		if result.kind == "Dumbbell" then
+			(slot.pet :: any).Image = result.image
+			slot.pet.Visible = true
+			TweenService:Create(slot.petScale, REVEAL_INFO, { Scale = 1 }):Play()
+			explode(slot, token)
+			slot.name.Text = result.displayName or ""
+			pop(slot.name)
+			return
+		end
 		local model = Pet.model(result.pet)
 		if model then
 			mount(slot.pet, model, settings.zoom, slot.aspect)
@@ -698,6 +715,7 @@ local function clear()
 	playToken += 1
 	stage = nil
 	activeNormal = false
+	activeDumbbell = false
 	hint = nil
 	hintScale = nil
 	shade = nil
@@ -719,7 +737,7 @@ local function finish()
 	local queued = table.remove(Pending, 1)
 	if not queued then return end
 
-	playVerified(queued.Rolls, queued.egg)
+	playVerified(queued.Rolls, queued.egg, queued.Kind)
 end
 
 local function pressed()
@@ -739,7 +757,11 @@ local function pressed()
 	finish()
 end
 
-local function templateFor(name: string?): Instance?
+local function templateFor(name: string?, kind: string?): Instance?
+	if kind == "Dumbbell" then
+		local chest=Workspace:FindFirstChild("Gift")
+		return chest and chest:FindFirstChild("Cube.003")
+	end
 	if not name then return eggTemplate end
 	if not Egg.isEgg(name) then return eggTemplate end
 
@@ -774,7 +796,7 @@ end
 
 local function build(Results: {Result}, eggName: string?): boolean
 	local playerGui = Player:FindFirstChildOfClass("PlayerGui")
-	local template = templateFor(eggName)
+	local template = templateFor(eggName, Results[1] and Results[1].kind)
 	if not (playerGui and template) then return false end
 
 	local settings = Config.Hatch
@@ -882,7 +904,12 @@ local function build(Results: {Result}, eggName: string?): boolean
 		local eggScale = Instance.new("UIScale")
 		eggScale.Parent = egg
 
-		local pet = Instance.new("ViewportFrame")
+		local pet = Instance.new(result.kind == "Dumbbell" and "ImageLabel" or "ViewportFrame")
+		if result.kind == "Dumbbell" then
+			pet.Name="DumbbellResult"
+			(pet :: any).ScaleType=Enum.ScaleType.Fit
+			pet:SetAttribute("DumbbellId",result.dumbbell)
+		end
 		pet.BackgroundTransparency = 1
 		pet.AnchorPoint = Vector2.new(0.5, 0.5)
 		pet.Position = UDim2.fromScale(0.5, VIEWPORT_MIDDLE)
@@ -920,7 +947,7 @@ local function build(Results: {Result}, eggName: string?): boolean
 	end
 
 	local label = newLabel(catcher, UDim2.fromScale(0.5, HINT_MIDDLE), HINT_WIDTH, HINT_HEIGHT)
-	label.Text = settings.clickHint
+	label.Text = Results[1] and Results[1].kind == "Dumbbell" and "Click the chest!" or settings.clickHint
 	label.Parent = catcher
 
 	hint = label
@@ -951,7 +978,7 @@ function HatchClient.shown(): number
 	return shows
 end
 
-playVerified = function(Results: {Result}, eggName: string?): boolean
+playVerified = function(Results: {Result}, eggName: string?, kind: string?): boolean
 	if type(Results) ~= "table" then return false end
 
 	local egg = if type(eggName) == "string" and eggName ~= "" then eggName else nil
@@ -960,6 +987,12 @@ playVerified = function(Results: {Result}, eggName: string?): boolean
 
 	for _, entry in ipairs(Results) do
 		if type(entry) ~= "table" then continue end
+		if kind == "Dumbbell" then
+			if entry.kind == "Dumbbell" and type(entry.dumbbell)=="string" then
+				table.insert(Rolls,table.clone(entry))
+			end
+			continue
+		end
 		if type(entry.pet) ~= "string" then continue end
 
 		table.insert(Rolls, {
@@ -973,13 +1006,14 @@ playVerified = function(Results: {Result}, eggName: string?): boolean
 	if #Rolls == 0 then return false end
 
 	if stage then
-		table.insert(Pending, { Rolls = Rolls, egg = egg })
+		table.insert(Pending, { Rolls = Rolls, egg = egg, Kind = kind })
 		return true
 	end
 
 	playToken += 1
 	stage = KNOCKING
-	activeNormal = egg ~= nil
+	activeNormal = egg ~= nil and kind ~= "Dumbbell"
+	activeDumbbell = kind == "Dumbbell"
 	knocks = Config.Hatch.clicks
 
 	MenuClient.shroud(true)
@@ -1003,14 +1037,41 @@ function HatchClient.cancelNormal()
  clear()
  MenuClient.shroud(false)
  local queued=table.remove(Pending,1)
- if queued then playVerified(queued.Rolls,queued.egg) end
+ if queued then playVerified(queued.Rolls,queued.egg,queued.Kind) end
 end
+
+-- Visuals consume an already committed ordinary Forge result. No grant or draw occurs here.
+function HatchClient.playCommittedDumbbell(op,response)
+ if type(op)~="table" or op.Action~="MergeOre" or type(response)~="table" or response.Success~=true then return false,"NotCommitted" end
+ local state=response.State;local journal=state and state.Journal
+ if not state or not state.Loaded or not journal or journal.Id~=op.Id or journal.Sequence~=op.Sequence
+  or state.Token~=op.Token or state.Token~=Player:GetAttribute("ForgeSessionToken") then return false,"StaleResult" end
+ local item=Dumbbells.Get(journal.ResultId)
+ if not item or not state.DumbbellCounts or (state.DumbbellCounts[item.ItemId] or 0)<1 then return false,"ResultNotOwned" end
+ local key=state.Token..":"..op.Id
+ if shownDumbbells[key] then return false,"AlreadyShown" end
+ shownDumbbells[key]=true
+ local ok,accepted=pcall(playVerified,{{kind="Dumbbell",dumbbell=item.ItemId,image=item.Image,displayName=item.Name}},nil,"Dumbbell")
+ if not ok or not accepted then
+  shownDumbbells[key]=nil
+  if not ok then clear();MenuClient.shroud(false);warn("[HatchClient] Dumbbell display failed: "..tostring(accepted))end
+  return false,"PresentationUnavailable"
+ end
+ return true,"Queued"
+end
+function HatchClient.cancelOre()
+ for i=#Pending,1,-1 do if Pending[i].Kind=="Dumbbell" then table.remove(Pending,i)end end
+ if not activeDumbbell then return end
+ finish()
+end
+Player.CharacterRemoving:Connect(HatchClient.cancelOre)
+Player:GetAttributeChangedSignal("ForgeSessionToken"):Connect(HatchClient.cancelOre)
 
 function HatchClient.play(Results: {Result}, eggName: string?)
  -- Regular Win-Egg acknowledgements must not start a paid limited reveal.
  if type(Results)~="table" then return false end
  for _,result in Results do
-  if type(result)=="table" and Pet.isLimited(result.pet) then return false end
+  if type(result)=="table" and (result.kind=="Dumbbell" or Pet.isLimited(result.pet)) then return false end
  end
  return playVerified(Results,eggName)
 end

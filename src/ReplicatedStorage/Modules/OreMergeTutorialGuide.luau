@@ -3,6 +3,7 @@ local RS=game:GetService("ReplicatedStorage")
 local RunService=game:GetService("RunService")
 local Forge=require(script.Parent.ForgeClient)
 local State=require(script.Parent.OreMergeTutorialState)
+local Higher=require(script.Parent.HigherOreMergeTutorialState)
 local Presentation=require(script.Parent.OreMergeTutorialPresentation)
 local Coordinator=require(script.Parent.TutorialPresentationCoordinator)
 local M={}
@@ -67,18 +68,20 @@ function M.Mount(player,gui,view)
  end
  local function refresh()
   if dead then return end
-  local current=view:GetOreTutorialState()
+  local higher=player:GetAttribute("OreTutorialCompleted")==true
+  local current=view:GetOreTutorialState(higher and Higher.MinimumPoints or nil)
+  overlay:SetAttribute("GuideKind",higher and "Higher" or "Initial")
   if current.CloseRevision~=closeRevision then closeRevision=current.CloseRevision;dismissed=true end
   if current.Open then dismissed=false end
   local inLobby,destination=lobby()
   if not inLobby then dismissed=false end
   if inLobby and not wasLobby then dismissed=false end;wasLobby=inLobby
   if player:GetAttribute("OreTutorialEligible")~=true then hide("Ineligible");return end
-  if player:GetAttribute("OreTutorialCompleted")==true then hide("Complete");return end
+  if higher and (player:GetAttribute("HigherOreTutorialEligible")~=true or player:GetAttribute("HigherOreTutorialCompleted")==true) then hide("Complete");return end
   if player:GetAttribute("TutorialCompleted")~=true or not inLobby or blocked() then hide("Waiting");return end
   local state=Forge.State
   if not state or not state.Loaded or state.Token~=player:GetAttribute("ForgeSessionToken")
-   or State.AvailableCount(state.Ores)<2 then hide("WaitingForOres");return end
+   or State.AvailableCount(state.Ores)<2 or higher and not Higher.Selection(state.Ores,state.World2Unlocked) then hide("WaitingForOres");return end
   if dismissed and not current.Open then hide("Dismissed");return end
   if not Coordinator.Acquire(overlay) then hide("WaitingForGuide");return end
   local nextStep,nextTarget,messageKey
@@ -89,19 +92,19 @@ function M.Mount(player,gui,view)
    navigation(nil)
    if current.Tab~="Ore" or current.Selling then nextStep="ChooseOre";nextTarget=view.Tabs.Ore
    elseif current.Pending then nextStep="Saving";nextTarget=view.Merge
-   elseif current.Valid then nextStep="Merge";nextTarget=view.Merge
+   elseif current.Valid and (not higher or current.TotalPoints>=Higher.MinimumPoints) then nextStep="Merge";nextTarget=view.Merge
    else
-    nextStep="AddOres";nextTarget=current.MaterialTarget or view.List
-    messageKey=not current.MaterialTarget and "ScrollOres" or current.RepeatMaterial and "AddAnother" or "AddOres"
+    nextStep="AddOres";nextTarget=current.SelectedCount>=5 and view.ClearButton or current.MaterialTarget or view.List
+    messageKey=higher and current.SelectedCount>=5 and "ClearOres" or not current.MaterialTarget and "ScrollOres" or current.RepeatMaterial and "AddAnother" or "AddOres"
    end
   end
   step=nextStep;overlay:SetAttribute("Step",step)
-  local text=messages:FindFirstChild(messageKey or step) or messages[step]
+  local text=higher and messages:FindFirstChild("Higher"..(messageKey or step)) or messages:FindFirstChild(messageKey or step) or messages[step]
   presentation:Pin(text.Value);presentation:Target(nextTarget)
   overlay:SetAttribute("Target",nextTarget and nextTarget:GetFullName() or nil)
  end
  connect(view.Changed,refresh);connect(Forge.Changed,refresh)
- for _,name in {"TutorialCompleted","OreTutorialEligible","OreTutorialCompleted","ForgeSessionToken","TutorialResetSequence","RunReturnBusy","CurrentWorld"} do
+ for _,name in {"TutorialCompleted","OreTutorialEligible","OreTutorialCompleted","HigherOreTutorialEligible","HigherOreTutorialCompleted","ForgeSessionToken","TutorialResetSequence","RunReturnBusy","CurrentWorld"} do
   connect(player:GetAttributeChangedSignal(name),function()
    if name=="TutorialResetSequence" or name=="ForgeSessionToken" then dismissed=false end
    refresh()
@@ -111,7 +114,7 @@ function M.Mount(player,gui,view)
  -- Only fixed references / known modal paths at 5Hz; no full Workspace/PlayerGui scans.
  connect(RunService.Heartbeat,function(dt)
   elapsed+=dt;if elapsed<.2 then return end;elapsed=0
-  if player:GetAttribute("OreTutorialEligible")==true and player:GetAttribute("OreTutorialCompleted")~=true then refresh() end
+  if player:GetAttribute("OreTutorialEligible")==true and (player:GetAttribute("OreTutorialCompleted")~=true or player:GetAttribute("HigherOreTutorialCompleted")~=true) then refresh() end
  end)
  task.defer(Forge.Refresh);refresh()
  return function()

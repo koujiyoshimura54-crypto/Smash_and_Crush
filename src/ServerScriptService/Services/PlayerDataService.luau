@@ -16,6 +16,7 @@ local Counts=require(game.ReplicatedStorage.Modules.InventoryCounts)
 local ForgeInventory=require(game.ReplicatedStorage.Modules.ForgeInventory)
 local FirstStage1=require(game.ReplicatedStorage.Modules.FirstStage1RewardState)
 local OreTutorial=require(game.ReplicatedStorage.Modules.OreMergeTutorialState)
+local HigherOreTutorial=require(game.ReplicatedStorage.Modules.HigherOreMergeTutorialState)
 local EquipmentTutorial=require(game.ReplicatedStorage.Modules.EquipmentTutorialState)
 local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
@@ -241,7 +242,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {HigherOreMergeTutorial=assert(HigherOreTutorial.Normalize(nil,true)),EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -254,6 +255,9 @@ local function normalize(raw)
  local tutorial,tutorialError=OreTutorial.Normalize(type(raw)=="table" and raw.OreMergeTutorial or nil,raw==nil)
  if not tutorial then return nil,tutorialError end
  d.OreMergeTutorial=tutorial
+ local higher,higherError=HigherOreTutorial.Normalize(type(raw)=="table" and raw.HigherOreMergeTutorial or nil,tutorial.Eligible)
+ if not higher then return nil,higherError end
+ d.HigherOreMergeTutorial=higher
  local eggTutorial,eggError=EggTutorial.Normalize(type(raw)=="table" and raw.EggPetTutorial or nil,raw==nil)
  if not eggTutorial then return nil,eggError end
  d.EggPetTutorial=eggTutorial
@@ -380,6 +384,7 @@ local function applyAttributes(player,d)
  session.ForgeToken=session.ForgeToken or HttpService:GenerateGUID(false)
  player:SetAttribute("ForgeSessionToken",session.ForgeToken)
  OreTutorial.Publish(player,d.OreMergeTutorial)
+ HigherOreTutorial.Publish(player,d.HigherOreMergeTutorial)
  EquipmentTutorial.Publish(player,d)
  EggTutorial.Publish(player,d.EggPetTutorial)
  PetMergeTutorial.Publish(player,d.PetMergeTutorial)
@@ -966,6 +971,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   DailyRewards=assert(normalizeDailyRewards(d.DailyRewards)),
   TutorialCompleted=d.TutorialCompleted==true,
   OreMergeTutorial=assert(OreTutorial.Normalize(d.OreMergeTutorial,false)),
+  HigherOreMergeTutorial=assert(HigherOreTutorial.Normalize(d.HigherOreMergeTutorial,false)),
   EquipmentTutorial=assert(EquipmentTutorial.Normalize(d.EquipmentTutorial,false)),
   EggPetTutorial=assert(EggTutorial.Normalize(d.EggPetTutorial,false)),
   PetMergeTutorial=assert(PetMergeTutorial.Normalize(d.PetMergeTutorial,d.EggPetTutorial.Eligible)),
@@ -1016,6 +1022,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.DailyRewards=mergeDailyRewards(old.DailyRewards,payload.DailyRewards)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
    merged.OreMergeTutorial=OreTutorial.Merge(old.OreMergeTutorial,payload.OreMergeTutorial)
+   merged.HigherOreMergeTutorial=HigherOreTutorial.Merge(old.HigherOreMergeTutorial,payload.HigherOreMergeTutorial)
    merged.EquipmentTutorial=EquipmentTutorial.Merge(old.EquipmentTutorial,payload.EquipmentTutorial)
    merged.AutoTapEnabled=payload.AutoTapEnabled
    merged.SelectedSizeTier=payload.SelectedSizeTier
@@ -1653,6 +1660,7 @@ function PlayerDataService.MutateForge(player,request)
   d.ForgeJournal=nextData.ForgeJournal;d.Win=nextData.Win
   if op.Action=="MergeOre" then
    d.OreMergeTutorial=nextData.OreMergeTutorial;OreTutorial.Publish(player,d.OreMergeTutorial)
+   d.HigherOreMergeTutorial=nextData.HigherOreMergeTutorial;HigherOreTutorial.Publish(player,d.HigherOreMergeTutorial)
    d.EquipmentTutorial=nextData.EquipmentTutorial;PlayerDataService.RefreshEquipmentTutorial(player)
   end
   if op.Action=="FirstStage1Defeat" then d.FirstStage1Reward=nextData.FirstStage1Reward end
