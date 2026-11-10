@@ -65,22 +65,70 @@ local function title(folder,treadmill)
  local label=gui:FindFirstChild("Name")
  if label then set(label,"AutomaticSize",Enum.AutomaticSize.None);set(label,"Size",UDim2.fromScale(.76,.9));set(label,"TextScaled",true);set(label,"TextWrapped",true)end
 end
-local function layout(model,gui,world)
- if not gui then return end
- set(gui,"Size",UDim2.fromScale(12,5))
- if world==1 then
-  local text=gui:FindFirstChild("Multiplier")
-  if text then set(text,"Position",UDim2.fromScale(.5,.70));set(text,"Size",UDim2.fromScale(.94,.43))end
-  local requirement=gui:FindFirstChild("Rebirth")
-  if requirement then
-   set(requirement,"AutomaticSize",Enum.AutomaticSize.None);set(requirement,"Size",UDim2.fromScale(.94,.36));set(requirement,"Position",UDim2.fromScale(.5,.12))
-   local amount=requirement:FindFirstChild("Amount")
-   set(amount,"AutomaticSize",Enum.AutomaticSize.None);set(amount,"Size",UDim2.fromScale(.70,1))
+local function layout(model,gui,world,entry)
+ if not gui or not entry then return end
+ local style=Config.StationHeading
+ set(gui,"Size",UDim2.fromScale(style.Size.X,style.Size.Y))
+ if world==2 then set(gui,"StudsOffsetWorldSpace",style.World2Offset) end
+ local label=gui:FindFirstChild("Multiplier")
+ if not label then return end
+ local needsRebirth=not entry.RequiresPremium and (entry.RequiredRebirth or 0)>0
+ local requirement=gui:FindFirstChild("Rebirth")
+ if world==2 and (needsRebirth or entry.RequiresPremium) and not requirement then
+  local folder=workspace:FindFirstChild("Treadmills")
+  local donor=folder and folder:FindFirstChild(entry.RequiresPremium and "Diamond01" or "Iron01")
+  local board=donor and donor:FindFirstChild("BillboardGui")
+  local source=board and board:FindFirstChild("Rebirth")
+  if source then
+   requirement=source:Clone();requirement.Name="Rebirth";requirement.Parent=gui
+   if board:FindFirstChild("Multiplier") then label.FontFace=board.Multiplier.FontFace end
   end
- else
-  local label=gui:FindFirstChild("Multiplier")
-  set(label,"Position",UDim2.fromScale(.04,.04));set(label,"Size",UDim2.fromScale(.92,.92))
-  set(gui,"StudsOffsetWorldSpace",Vector3.new(0,7.35,0))
+ end
+ local row=gui:FindFirstChildOfClass("UIListLayout")
+ if row then
+  set(row,"Wraps",false)
+  set(row,"FillDirection",Enum.FillDirection.Horizontal)
+  set(row,"HorizontalAlignment",Enum.HorizontalAlignment.Center)
+  set(row,"VerticalAlignment",Enum.VerticalAlignment.Center)
+  set(row,"SortOrder",Enum.SortOrder.LayoutOrder)
+  set(row,"Padding",UDim.new(style.GroupGap,0))
+ end
+ local hasGroup=requirement~=nil and (needsRebirth or entry.RequiresPremium)
+ set(label,"LayoutOrder",2);set(label,"AnchorPoint",Vector2.zero)
+ set(label,"AutomaticSize",Enum.AutomaticSize.None)
+ set(label,"Size",UDim2.fromScale(hasGroup and style.MultiplierWidth or .94,style.RowHeight))
+ set(label,"TextWrapped",true);set(label,"TextScaled",true);set(label,"AutoLocalize",false)
+ label.Text="×"..tostring(entry.Multiplier).." Strength"
+ if requirement then
+  set(requirement,"Visible",hasGroup);set(requirement,"LayoutOrder",1)
+  set(requirement,"AnchorPoint",Vector2.zero);set(requirement,"AutomaticSize",Enum.AutomaticSize.None)
+  set(requirement,"Size",UDim2.fromScale(style.RequirementWidth,style.RowHeight))
+  local icon=requirement:FindFirstChild("Icon")
+  local amount=requirement:FindFirstChild("Amount")
+  set(icon,"LayoutOrder",1);set(icon,"Size",UDim2.fromScale(style.IconWidth,1))
+  set(icon,"ScaleType",Enum.ScaleType.Fit)
+  set(amount,"LayoutOrder",2);set(amount,"AutomaticSize",Enum.AutomaticSize.None)
+  set(amount,"Size",UDim2.fromScale(1-style.IconWidth-style.IconGap,1))
+  set(amount,"TextXAlignment",Enum.TextXAlignment.Left)
+  set(amount,"TextWrapped",true);set(amount,"TextScaled",true);set(amount,"AutoLocalize",false)
+  local inner=requirement:FindFirstChildOfClass("UIListLayout")
+  if inner then
+   set(inner,"Wraps",false)
+   set(inner,"Padding",UDim.new(style.IconGap,0));set(inner,"FillDirection",Enum.FillDirection.Horizontal)
+   set(inner,"HorizontalAlignment",Enum.HorizontalAlignment.Center);set(inner,"VerticalAlignment",Enum.VerticalAlignment.Center)
+   set(inner,"SortOrder",Enum.SortOrder.LayoutOrder)
+  end
+  if needsRebirth and amount then amount.Text="×"..tostring(entry.RequiredRebirth) end
+  if entry.RequiresPremium then
+   PurchaseHUD.ApplyPurchaseTextFont(amount)
+   if world==2 and amount then
+    amount.Text=entry.PurchaseEnabled==false and "Unavailable"
+     or player:GetAttribute("HasWorld2PremiumTreadmill")==true and "Owned" or MarketplacePrice.Format(premiumPrice,"")
+   end
+  end
+ elseif world==2 and entry.RequiresPremium then
+  -- Streaming fallback until the existing donor arrives; retain the price.
+  label.Text..="\n"..MarketplacePrice.Format(premiumPrice," Robux")
  end
 end
 
@@ -98,20 +146,8 @@ local function refresh()
   local required = gui and gui:FindFirstChild("Required")
   local entry,kind = Config.GetForModel(model)
   local world=Config.WorldForModel(model)
-  layout(model,world==1 and model:FindFirstChild("BillboardGui")or model:FindFirstChild("StationBillboard"),world)
+  layout(model,world==1 and model:FindFirstChild("BillboardGui")or model:FindFirstChild("StationBillboard"),world,entry)
   if not entry then continue end
-  -- Only the active World1 premium purchase label; multiplier/requirements stay authored.
-  if world==1 and entry.RequiresPremium then
-   local board=model:FindFirstChild("BillboardGui")
-   local requirement=board and board:FindFirstChild("Rebirth")
-   PurchaseHUD.ApplyPurchaseTextFont(requirement and requirement:FindFirstChild("Amount"))
-  end
-  if Config.WorldForModel(model)==2 then
-   local label=model:FindFirstChild("StationBillboard") and model.StationBillboard:FindFirstChild("Multiplier")
-   if label then label.Text=string.format("%02d",tonumber(kind:match("(%d+)$")) or 0).." | "..tostring(entry.Multiplier).."x Strength\n"..(entry.PurchaseEnabled==false and "Robux - Unavailable"
-     or entry.RequiresPremium and (player:GetAttribute("HasWorld2PremiumTreadmill")==true and "Owned" or MarketplacePrice.Format(premiumPrice," Robux"))
-     or ((entry.RequiredRebirth or 0)>0 and "Rebirth "..entry.RequiredRebirth.." Required" or "Available")) end
-  end
   local strength = gui and gui:FindFirstChild("Strength")
   if strength then strength.Text = "×"..tostring(entry.Multiplier).." Strength" end
   if required and entry.RequiredRebirth then

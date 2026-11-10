@@ -8,7 +8,7 @@ return {
   Level = {Size=54, Stroke=4}, Progress = {Size=48, Stroke=4},
   Pack = {Size=55, Stroke=5},
   AutoTitle = {Size=19, MinScreenSize=13, Stroke=2}, AutoState = {Size=27, MinScreenSize=19, Stroke=2.5},
-  OfflineTitle = {Size=58, Stroke=4}, OfflineAmount = {Size=60, Stroke=4},
+  OfflineTitle = {Size=36, Stroke=3}, OfflineAmount = {Size=60, Stroke=4},
   Claim = {Size=38, Stroke=3}, DoubleClaim = {Size=32, Stroke=2.5},
   Price = {Size=25, Stroke=2}, Close = {Size=44, Stroke=3},
  },

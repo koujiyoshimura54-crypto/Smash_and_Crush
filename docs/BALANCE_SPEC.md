@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-10 — Phases 1.1–1.4
+
+Applied offline reward: departureStrength × (0.04 × min(elapsed,86400)/3600), preserving fractions and zero. The three paid Strength pack formulas are unchanged. Treadmill multipliers/eligibility/cadence and all Ore points/sale/pools/merge thresholds are unchanged. The proposed compounded LV51+ curve passes240020/288390/346940 but becomes non-finite at1106; current LevelRequirements/MaxLevel10000/rebirth remain unchanged. [New/old LV table and numeric evidence](../reports/Phase11To14_20261110.md).
+
 ## 2026-11-09 — Confirmed 16 + 16 Ore values and World2 merge thresholds
 
 OreConfig holds the approved32 Points/SellWin/image definitions; the live World1 point edits are preserved. EnemyDropConfig has twenty independent Stage rows: Item0.20 and conditional Ore weights summing100, with World2 initialized by the unchanged World1 local-index mapping. World2 Dumbbell merge thresholds are1000,2500,5000,9000,14000,20000,28000,38000,50000,65000,82000,100000. World1 thresholds and all Dumbbell purchase/sale/Strength/image values remain unchanged. Two–five materials, exact/adjacent outcomes and highest-candidate cap apply. [Complete numeric tables](../reports/WorldOre_20261109/REPORT.md).

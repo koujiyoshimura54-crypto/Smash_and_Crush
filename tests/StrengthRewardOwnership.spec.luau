@@ -1,8 +1,8 @@
 ﻿return function(sources)
 local config=assert(loadstring(sources.Config))()
-local modules={Config=config,RunReturn={Recover=function()end}}
+local modules={Config=config,RunReturn={Recover=function()end},AdminWin={Acquire=function(d)return d end}}
 local function load(source)
-local fn=assert(loadstring(source));setfenv(fn,setmetatable({game={ReplicatedStorage={Config={StrengthRewardConfig="Config"}}},script={Parent={StrengthRewardState="State",RunReturnPersistence="RunReturn"}},require=function(k)return modules[k]end},{__index=getfenv()}));return fn()
+local fn=assert(loadstring(source));setfenv(fn,setmetatable({game={ReplicatedStorage={Config={StrengthRewardConfig="Config"}}},script={Parent={StrengthRewardState="State",RunReturnPersistence="RunReturn",ProductionWinState="AdminWin"}},require=function(k)return modules[k]end},{__index=getfenv()}));return fn()
 end
 modules.State=load(sources.State);local S=modules.State
 local O=load(sources.Ownership)
@@ -17,7 +17,7 @@ fail=true;local attempt={Token="one"}
 eq(pcall(O.Acquire,store,"test",attempt,defaults,normalize,function()return true end),false);eq(raw,nil);eq(attempt.Read,nil)
 fail=false;O.Acquire(store,"test",attempt,defaults,normalize,function()return true end)
 eq(raw.SessionOwnerToken,"one");eq(next(raw.StrengthRewards.Rewards),nil)
-raw.StrengthRewards=S.Checkpoint(raw.StrengthRewards,"one",100,1000,true)
+raw.StrengthRewards=S.Checkpoint(raw.StrengthRewards,"one",100,4500000,true)
 local nextAttempt={Token="two",StrengthNow=3700}
 O.Acquire(store,"test",nextAttempt,defaults,normalize,function()return true end)
 eq(raw.StrengthRewards.Rewards.two.Amount,180000)

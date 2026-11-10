@@ -125,6 +125,8 @@ return function(ctx)
  local status=label('Status',body,'',23);status.TextXAlignment=Enum.TextXAlignment.Left
  local saleIcon=new('ImageLabel','SaleIcon',result,{BackgroundTransparency=1,ScaleType=Enum.ScaleType.Fit,ZIndex=225})
  local saleTitle=label('SaleTitle',result,'',32)
+ local saleRarity=label('SaleRarity',result,'',Ore.RarityDisplay.Detail.TextSize)
+ saleRarity.TextWrapped=false
  local quantity=new('TextBox','SaleQuantity',result,{Text='0',FontFace=font,TextScaled=true,TextColor3=Color3.new(1,1,1),
   BackgroundColor3=Color3.fromRGB(24,42,50),ClearTextOnFocus=false,ZIndex=245});round(quantity,10)
  local minus=button('Less',result,'−','red');local plus=button('More',result,'+');local max=button('Max',result,'Max')
@@ -259,6 +261,12 @@ return function(ctx)
    tile.Main.BackgroundColor3=Color3.new(1,1,1)
    tile.Main.UIGradient.Color=ColorSequence.new(Color3.fromRGB(250,250,250),Color3.fromRGB(162,172,181));tile.Main.UIGradient.Rotation=90
    icon.Image=kind=='Item' and Master.Get(entry.ItemId).Image or Ore.Get(entry.Id).Image
+  end
+  if kind=='Ore' then
+   local ore=Ore.Get(entry.Id);local style=Ore.RarityDisplay.Card
+   local rarity=label('Rarity',tile,ore.Rarity,style.TextSize,237)
+   rarity.TextColor3=ore.Color;rarity.TextWrapped=false
+   rarity.Position=style.Position;rarity.Size=style.Size;rarity.TextXAlignment=Enum.TextXAlignment.Left
   end
   pointsBadge(tile,entry.Points)
    local owned=label('OwnedCount',tile,'×'..NumberFormat.Format(entry.Count),38,237)
@@ -479,9 +487,10 @@ return function(ctx)
   enabled(merge,ready==true);merge:SetAttribute('ExecutionEnabled',ready==true);merge.PriceTag.Text=sellMode and 'Sell' or 'Merge'
   enabled(clear,not itemPending and not petPending and not Forge.IsPending())
   empty.Visible=#groups==0;empty.Text=(tab=='Item' and not itemState or tab=='Pet' and not petState or tab=='Ore' and not oreState) and 'Loading…' or 'No materials'
-  for _,control in {saleIcon,saleTitle,quantity,minus,plus,max} do control.Visible=sellMode end
+  for _,control in {saleIcon,saleTitle,saleRarity,quantity,minus,plus,max} do control.Visible=sellMode end
   if sellMode then
    local ore=activeOre and Ore.Get(activeOre);saleIcon.Image=ore and ore.Image or '';saleTitle.Text=ore and ore.Name or 'Select Ores'
+   saleRarity.Text=ore and ore.Rarity or '';saleRarity.TextColor3=ore and ore.Color or Color3.new(1,1,1)
     if not quantity:IsFocused() then quantity.Text=NumberFormat.Format(activeOre and oreSale[activeOre] or 0) end
    for _,b in {minus,plus,max} do enabled(b,ore~=nil and not Forge.IsPending()) end
   end
@@ -543,6 +552,7 @@ return function(ctx)
   rect(selectedLabel,rx,fy+22,rw*.30,42);rect(clear,rx+rw*.32,fy+10,rw*.22,66);rect(merge,rx+rw*.57,fy,rw*.43,82)
   rect(creates,rx+rw*.57,fy+84,rw*.43,22);rect(status,rx,fy-18,rw*.55,22)
   rect(saleIcon,20,70,rw*.35,rh-90);rect(saleTitle,rw*.38,74,rw*.59,48)
+  rect(saleRarity,rw*.38,Ore.RarityDisplay.Detail.Top,rw*.59,Ore.RarityDisplay.Detail.Height)
   local sy=math.min(rh-72,140);rect(minus,rw*.38,sy,60,58);rect(quantity,rw*.38+68,sy,110,58);rect(plus,rw*.38+186,sy,60,58);rect(max,rw*.38+254,sy,98,58)
   layingOut=false
  end

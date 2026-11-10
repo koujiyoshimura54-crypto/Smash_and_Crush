@@ -34,6 +34,17 @@ Config.MultiplierBillboard = {
  Size = Vector2.new(16, 10), -- World-space studs at TextScale=1.
  TextScale = 1.5,
 }
+-- Shared World1/World2 station headings; existing artwork and fonts are reused.
+Config.StationHeading = {
+ Size = Vector2.new(16, 3.5),
+ GroupGap = 0.055,
+ RequirementWidth = 0.29,
+ MultiplierWidth = 0.62,
+ IconWidth = 0.49,
+ IconGap = 0.015,
+ RowHeight = 0.72,
+ World2Offset = Vector3.new(0, 7.35, 0),
+}
 -- Stud units; edit in Studio and restart Play to tune the moving chevrons.
 Config.Guide = {
  Enabled = true,
@@ -68,14 +79,11 @@ function Config.GetDisplayText(modelName)
  return title.."\n×"..tostring(entry.Multiplier)..requirement
 end
 
--- Display-only base gain; the award/access configuration above is unchanged.
+-- Shared station text, also used by the existing left-menu localization refresh.
 function Config.GetGainDisplayText(modelName,localeId)
  local entry=Config.Get(modelName)
  if not entry then return nil end
- local training=require(script.Parent:WaitForChild("TrainingConfig"))
- local amount=training.BaseGain*entry.Multiplier
- local japanese=string.sub(string.lower(localeId or ""),1,2)=="ja"
- return string.format(japanese and "+%g \u{7B4B}\u{529B}" or "+%g Strength",amount)
+ return "×"..tostring(entry.Multiplier).." Strength"
 end
 
 -- Only the seven existing, exact World2 roots authorize World2 training.

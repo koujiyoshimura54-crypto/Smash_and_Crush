@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-10 — Phases 1.1–1.4
+
+Phases1.2–1.4 applied to canonical unsaved Studio; Phase1.1 LV changes held at the finite-number boundary. Native offline retry/migration, all14 treadmill actual gains/exits, Ore classification/sale/merge/Bag contracts passed within memory isolation. Final Ore/World2 narrow raster checks remain outstanding.490 Sources:13 intentional changes,477 unchanged; helpers removed, Play stopped/focused Edit, no Save/Publish. Manual Save required. [English record and evidence](../reports/Phase11To14_20261110.md).
+
 ## 2026-11-09 — Ore implementation validated; canonical edits still unsaved
 
 Completed the Ore phase after Boss commit92bdfb9 while preserving live manual edits. Ten scoped Sources implement32 Ore definitions, common per-World/Stage drops, World2 thresholds and shared eligible merging. Isolated native tests covered real Boss Ore→Bag→Trophy/death, sale/merge replay and failure recovery, memory reload, UI operations, World return and reset tutorial.40 temporary substitutions and all DataModel QA helpers were removed;491 shipping Sources remain, stopped/focused Edit. SaveWithoutPublish again refused the Edit context; no OS fallback, Publish or rbxl writeback. **Manual canonical Save is still required.** [English report](../reports/WorldOre_20261109/REPORT.md).

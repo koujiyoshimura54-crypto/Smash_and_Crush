@@ -15,8 +15,8 @@ function M.PackAmount(rate, seconds)
  return math.floor(amount)
 end
 function M.Normalize(raw)
-	if raw == nil then return {Version = 1, Rewards = {}, Pending = {}, Receipts = {}, GrantedTotal = 0} end
-	if type(raw) ~= "table" or raw.Version ~= 1 or not number(raw.GrantedTotal)
+	if raw == nil then return {Version = 2, Rewards = {}, Pending = {}, Receipts = {}, GrantedTotal = 0} end
+	if type(raw) ~= "table" or (raw.Version ~= 1 and raw.Version ~= 2) or not number(raw.GrantedTotal)
 		or type(raw.Rewards) ~= "table" or type(raw.Pending) ~= "table" or type(raw.Receipts) ~= "table" then return nil, "InvalidStrengthRewards" end
 	for id, r in pairs(raw.Rewards) do
 		if type(id) ~= "string" or type(r) ~= "table" or not number(r.Amount) or not number(r.Paid)
@@ -34,10 +34,15 @@ function M.Normalize(raw)
 	end
 	if raw.Presence then
 		local p = raw.Presence
-		if type(p) ~= "table" or not number(p.At) or not number(p.Rate)
+		if type(p) ~= "table" or not number(p.At)
 			or (p.State ~= "Online" and p.State ~= "Offline") then return nil, "InvalidStrengthPresence" end
+		if p.Basis == "DepartureStrengthV1" then
+			if not number(p.Strength) then return nil, "InvalidDepartureStrength" end
+		elseif p.Basis ~= nil or not number(p.Rate) then return nil, "InvalidStrengthPresence" end
 	end
-	return copy(raw)
+	local state = copy(raw)
+	state.Version = 2 -- Migrate the envelope only; paid amounts/bindings stay exact.
+	return state
 end
 function M.Acquire(raw, token, now)
 	local state = assert(M.Normalize(raw))
@@ -50,22 +55,26 @@ function M.Acquire(raw, token, now)
 	end
 	for id in pairs(state.Rewards) do if not retained[id] then state.Rewards[id] = nil end end
 	local p = state.Presence
-	if p and p.State == "Offline" then
+	if p and p.State == "Offline" and p.Basis == "DepartureStrengthV1" then
 		-- Only a confirmed departure proves this interval was offline. An expired
 		-- heartbeat cannot prove a prior server stopped; never infer that interval.
 		local start = p.At
-		local amount = Config.OfflineAmount(p.Rate, math.max(0, now - start))
-		if amount > 0 then state.Rewards[token] = {Amount = amount, Paid = 0, CreatedAt = now} end
+		local seconds = Config.OfflineSeconds(math.max(0, now - start))
+		local amount = Config.OfflineAmount(p.Strength, seconds)
+		if amount > 0 then state.Rewards[token] = {Amount = amount, Paid = 0, CreatedAt = now, Seconds = seconds} end
 	end
+	-- Legacy Rate is equipment gain/second, never departure Strength. Without a
+	-- proven snapshot the first migrated login earns zero; the next confirmed exit
+	-- establishes the new basis. Old paid intents above remain payable unchanged.
 	state.Owner = token
-	state.Presence = {State = "Online", At = now, Rate = 0}
+	state.Presence = {State = "Online", At = now, Basis = "DepartureStrengthV1", Strength = 0}
 	return state
 end
-function M.Checkpoint(raw, token, now, rate, closing)
+function M.Checkpoint(raw, token, now, strength, closing)
 	local state = assert(M.Normalize(raw))
 	assert(state.Owner == token, "StrengthOwnerMismatch")
-	assert(number(rate), "InvalidStrengthRate")
-	state.Presence = {State = closing and "Offline" or "Online", At = now, Rate = rate}
+	assert(number(strength), "InvalidDepartureStrength")
+	state.Presence = {State = closing and "Offline" or "Online", At = now, Basis = "DepartureStrengthV1", Strength = strength}
 	return state
 end
 function M.NextReward(state)

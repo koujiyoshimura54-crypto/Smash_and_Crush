@@ -233,7 +233,21 @@ function TrainingManager.IsPlayerInsideZone(player,zone)
     if math.abs(cf.Position.Y-halfY)<=h.Y then return true end
    end
   end
-  if foundFoot then return false end
+  if foundFoot then
+   -- World2's 0.8-stud deck zones are thinner than the animated/scaled R15
+   -- foot offsets. Confirm the physical deck under a grounded root in the same
+   -- footprint instead of restarting the tick clock on every running pose.
+   -- World1 retains its existing foot rule; airborne World2 feet cannot fall back.
+   if TreadmillConfig.WorldForModel(zone.Parent)~=2 or humanoid.FloorMaterial==Enum.Material.Air then return false end
+   local params=RaycastParams.new()
+   params.FilterType=Enum.RaycastFilterType.Exclude
+   params.FilterDescendantsInstances={character}
+   params.RespectCanCollide=true
+   local reach=humanoid.HipHeight+root.Size.Y/2+h.Y
+   local hit=Workspace:Raycast(root.Position,Vector3.new(0,-reach,0),params)
+   return hit~=nil and hit.Instance:IsDescendantOf(zone.Parent)
+    and zone.CFrame:PointToObjectSpace(hit.Position).Y<=h.Y
+  end
  end
  -- R6 or unavailable R15 feet retain the previous Root/HipHeight fallback.
  local footPosition=root.Position-Vector3.new(0,humanoid.HipHeight+root.Size.Y/2,0)

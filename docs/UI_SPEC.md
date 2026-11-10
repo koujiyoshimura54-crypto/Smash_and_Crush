@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-10 — Phases 1.1–1.4
+
+Offline uses the existing popup with an eligible-duration title (maximum24 Hours of Offline Rewards). Both Worlds use existing icon/font groups plus Config multiplier text for treadmill headings. Ore notification/card/sale details add small shared-definition rarity labels; tuning is in OreConfig.RarityDisplay. Earlier offline and treadmill actual images were checked. Final Ore images and World2 narrow heading raster remain unconfirmed after Play reported a1×1 viewport; do not treat TextFits as visual acceptance. [Paths, tuning and limits](../reports/Phase11To14_20261110.md).
+
 ## 2026-11-09 — World2 Ore uses the existing Merge UI
 
 The shared Ore list, five inputs, candidates/result and inline quantity sale use the current32 definitions. Only server arrival eligibility was connected to existing Ore preview calls. Layout, fonts, K/M formatting, counts, order and buttons remain; no rarity treatment or World headings were added. Actual images confirmed new Ore cards,100K inputs/output and90/500 Win sale displays. Acquisition Billboard appearance remains unconfirmed by MCP capture, although native image/point properties and five-second replacement behavior passed. [Evidence and limits](../reports/WorldOre_20261109/REPORT.md).

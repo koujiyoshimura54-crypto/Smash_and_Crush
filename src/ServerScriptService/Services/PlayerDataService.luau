@@ -945,8 +945,9 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   d.DailyStrengthEarned=0
  end
  local persisted=s.StudioStartOverride
- local rate=s.StrengthDepartureRate or require(script.Parent.StrengthReference).Get(player)
- local rewardPresence=StrengthRewardState.Checkpoint(d.StrengthRewards,s.OwnerToken,s.StrengthDepartureTime or os.time(),rate or 0,s.StrengthClosing==true).Presence
+ local departureStrength=s.StrengthDepartureStrength
+ if departureStrength==nil then departureStrength=persisted and persisted.Strength or d.Strength end
+ local rewardPresence=StrengthRewardState.Checkpoint(d.StrengthRewards,s.OwnerToken,s.StrengthDepartureTime or os.time(),departureStrength,s.StrengthClosing==true).Presence
  local payload={
   StrengthPresence=rewardPresence,
   AutoTapEnabled=d.AutoTapEnabled~=false,
@@ -2198,7 +2199,8 @@ end
 function PlayerDataService.PrepareStrengthDeparture(player)
  local s=sessions[player]
  if s and s.Loaded and not s.StrengthClosing then
-  s.StrengthDepartureRate=require(script.Parent.StrengthReference).Get(player) or 0
+  -- Snapshot once from server-owned data before any yielding save/retry work.
+  s.StrengthDepartureStrength=s.StudioStartOverride and s.StudioStartOverride.Strength or s.Data.Strength
   s.StrengthDepartureTime=os.time();s.StrengthClosing=true;s.Dirty=true
  end
 end

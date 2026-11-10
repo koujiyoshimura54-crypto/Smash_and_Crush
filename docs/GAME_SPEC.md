@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-10 — Phases 1.1–1.4
+
+Offline Strength now uses the confirmed server departure snapshot at4% per hour, capped24h (96%), with no additional equipment multiplier. Version2 presence migration never treats legacy Rate as Strength; ambiguous first migration earns zero new reward, and paid bindings remain exact. World2 grounded treadmill support uses the shared training pipeline. Ore rarity ranges are001–010 Common,011–020 Uncommon,021–030 Rare,031–032 Super Rare. The proposed LV curve is HELD because it overflows at1106 with MaxLevel10000. [English record](../reports/Phase11To14_20261110.md).
+
 ## 2026-11-09 — Shared World1 / World2 Ore pipeline
 
 Both Worlds use per-Stage Item20% / Ore80% settings in EnemyDropConfig, with independent conditional Ore pools initially mapped by local index. Stable ORE_017–020 are enabled and ORE_021–032 are added; the withdrawn remaining SuperRares are absent. Existing Bag, banking, loss, Drop and Forge journals are reused. Ore forging shares eligible adjacent-threshold calculations across Worlds, retains arrival unlock on World1 return, and caps above the highest eligible result. [Definitions, paths, native tests and limits](../reports/WorldOre_20261109/REPORT.md).

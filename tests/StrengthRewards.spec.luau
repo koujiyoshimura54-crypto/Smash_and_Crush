@@ -13,19 +13,19 @@ return function(sources)
 	end
 	modules.Config=load("Config");modules.Requirements=load("Requirements");modules.Progress=load("Progress");modules.State=load("State")
 	local C,S=modules.Config,modules.State
-	near(C.OfflineAmount(1000,0),0);near(C.OfflineAmount(1000,60),3000)
-	near(C.OfflineAmount(1000,3600),180000);near(C.OfflineAmount(1000,7200),180000)
-	eq(C.Offline.MaxSeconds,3600);eq(C.Offline.Efficiency,.05)
+	near(C.OfflineAmount(4500000,0),0);near(C.OfflineAmount(4500000,60),3000)
+	near(C.OfflineAmount(4500000,3600),180000);near(C.OfflineAmount(4500000,7200),360000)
+	eq(C.Offline.MaxSeconds,86400);eq(C.Offline.HourlyFraction,.04)
 	for i,seconds in ipairs({120,720,2400}) do eq(C.Packs[i].Seconds,seconds) end
 	local s=S.Acquire(nil,"first",100)
 	eq(next(s.Rewards),nil)
-	s=S.Checkpoint(s,"first",200,1000,true)
+	s=S.Checkpoint(s,"first",200,4500000,true)
 	s=S.Acquire(s,"second",3800)
 	near(s.Rewards.second.Amount,180000)
 	local again=S.Acquire(s,"second",999999);near(again.Rewards.second.Amount,180000)
 	local online=S.Acquire(s,"simultaneous",3800);eq(online.Rewards.simultaneous,nil)
 	local uncertain=S.Acquire(s,"stale-online",1000000);eq(uncertain.Rewards["stale-online"],nil)
-	s=S.Checkpoint(s,"second",4000,1,true)
+	s=S.Checkpoint(s,"second",4000,4500,true)
 	s=S.Acquire(s,"third",4060);eq(s.Rewards.second,nil);near(s.Rewards.third.Amount,3)
 	local other=S.Acquire(nil,"other",1);eq(next(other.Rewards),nil)
 	local op={Id="claim",Action="Claim",RewardId="third"}
@@ -33,7 +33,7 @@ return function(sources)
 	s=nextState
 	local _,duplicate=S.Apply(s,op);near(duplicate,0)
 	local _,spam=S.Apply(s,{Id="spam",Action="Claim",RewardId="third"});near(spam,0)
-	local base=S.Acquire(S.Checkpoint(S.Acquire(nil,"a",0),"a",100,1000,true),"reward",3700)
+	local base=S.Acquire(S.Checkpoint(S.Acquire(nil,"a",0),"a",100,4500000,true),"reward",3700)
 	local product=C.DoubleOffline.ProductId
 	local prep={Id="intent",Action="Prepare",ProductId=product,RewardId="reward"}
 	base=assert(S.Apply(base,prep));near(base.Pending[tostring(product)].Amount,180000)
@@ -54,8 +54,8 @@ return function(sources)
 	local claimed,claimAfterCancel=S.Apply(cancelled,{Id="normal2",Action="Claim",RewardId="reward"});near(claimAfterCancel,180000)
 	local _,lateAfterCancel=S.Apply(claimed,receipt);near(lateAfterCancel,180000)
 	local none,_,reason=S.Apply(base,{Id="bad",Action="Receipt",ProductId=product,IntentId="newer",PurchaseId="old"});eq(none,nil);eq(reason,"UnmatchedReceipt")
-	local oldEfficiency=C.Offline.Efficiency;C.Offline.Efficiency=.001
-	local _,frozen=S.Apply(base,receipt);near(frozen,360000);C.Offline.Efficiency=oldEfficiency
+	local oldFraction=C.Offline.HourlyFraction;C.Offline.HourlyFraction=.001
+	local _,frozen=S.Apply(base,receipt);near(frozen,360000);C.Offline.HourlyFraction=oldFraction
 	for _,pack in ipairs(C.Packs) do
 		local state=S.Acquire(nil,"pack-player",0)
 		state=assert(S.Apply(state,{Id="offer",Action="Prepare",ProductId=pack.ProductId,Amount=1000*pack.Seconds}))

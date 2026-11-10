@@ -1,5 +1,5 @@
 -- Stable Ore IDs shared by both Worlds. Drop weights live in EnemyDropConfig.
-local M = {Version = "WorldOre2"}
+local M = {Version = "WorldOre3"}
 local rows = {
  {"Stone",5,1,131452437678251}, {"Coal",7,3,83727497047517},
  {"Iron",9,5,111308943708149}, {"Copper",11,7,106917824814020},
@@ -26,9 +26,15 @@ local rows = {
 }
 local names={"Common","Uncommon","Rare","Super Rare"}
 local colors={Color3.fromRGB(145,151,160),Color3.fromRGB(72,193,86),Color3.fromRGB(54,144,245),Color3.fromRGB(180,69,247)}
+-- Presentation-only tuning; rarity names/colors above are shared by every Ore view.
+M.RarityDisplay=table.freeze({
+ Card=table.freeze({TextSize=20,Position=UDim2.fromScale(.025,.81),Size=UDim2.fromScale(.47,.16)}),
+ Detail=table.freeze({TextSize=22,Top=122,Height=18}),
+ Drop=table.freeze({TextSize=14,Position=UDim2.fromOffset(97,76),Size=UDim2.fromOffset(83,24)}),
+})
 local byId,ordered={},{}
 for index,row in ipairs(rows) do
- local rank=index<=20 and math.ceil(index/5) or (index<=30 and 3 or 4)
+ local rank=index<=10 and 1 or (index<=20 and 2 or (index<=30 and 3 or 4))
  local ore=table.freeze({Id=string.format("ORE_%03d",index),Index=index,Name=row[1],Points=row[2],SellWin=row[3],
   Image="rbxassetid://"..row[4],RarityId=string.format("RARITY_%02d",rank),Rarity=names[rank],Color=colors[rank],Available=true,WorldId=index<=16 and 1 or 2,WorldIndex=(index-1)%16+1})
  byId[ore.Id]=ore

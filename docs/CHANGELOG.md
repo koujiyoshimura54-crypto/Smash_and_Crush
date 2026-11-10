@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-10 — Phases 1.1–1.4
+
+Applied departure-Strength offline rewards, repaired World2 physical treadmill support and unified headings, corrected32 Ore rarities and added small rarity text. Held the requested LV curve because binary64 overflows at1106 against MaxLevel10000. Scoped native isolated validation and UI capture limitations are documented. No canonical Save/Publish or production-data tests. [Work record](../reports/Phase11To14_20261110.md).
+
 Enabled the four reserved World2 Ores and added only the approved twelve; preserved live World1 balance edits. Both Worlds now read independent Stage drop rows, and existing Forge transactions share unlocked cross-World candidates with a highest-result cap. Existing UI reused. Isolated native gameplay/persistence and actual UI captures completed; acquisition Billboard pixels remain unconfirmed. Cleanup returned Studio to Edit; Save API refused, so canonical edits remain unsaved. [Record](../reports/WorldOre_20261109/REPORT.md).
 
 # 2026-11-09 — Common Boss behavior Config

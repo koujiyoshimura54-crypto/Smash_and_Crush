@@ -8,7 +8,8 @@ local Config = require(RS.Config.StrengthRewardConfig)
 local Format = require(RS.Modules.NumberFormat)
 local Layout = require(RS.Modules.HUDLayout)
 local Presentation = require(RS.Modules.StrengthHUDPresentation)
-local panel, row = require(RS.Modules.StrengthRewardUI).Build(gui)
+local RewardUI = require(RS.Modules.StrengthRewardUI)
+local panel, row = RewardUI.Build(gui)
 local remote = RS.Remotes:WaitForChild("StrengthRewards")
 local prices, closed, busy, view = {}, {}, false, nil
 local alive = true
@@ -54,7 +55,10 @@ local function paint()
 	if not view then return end
 	local reward = view.Reward
 	panel.Visible = reward ~= nil and not closed[reward.Id]
-	if reward then panel.Amount.Text = "+" .. Format.Format(reward.Amount) .. " STRENGTH" end
+	if reward then
+		panel.Title.Text = RewardUI.DurationTitle(reward.Seconds)
+		panel.Amount.Text = "+" .. Format.Format(reward.Amount) .. " STRENGTH"
+	end
 	panel.Claim.Button.Active = not busy
 	panel.Double.Button.Active = not busy and reward ~= nil and not view.Pending and prices[Config.DoubleOffline.ProductId] ~= nil
 	for _, product in ipairs(Config.Packs) do

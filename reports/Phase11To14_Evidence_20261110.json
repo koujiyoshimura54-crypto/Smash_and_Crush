@@ -1,0 +1,491 @@
+{
+  "Level": {
+    "checks": 59,
+    "rows": [
+      {
+        "delta": 0,
+        "level": 1,
+        "proposed": 10,
+        "old": 10
+      },
+      {
+        "delta": 0,
+        "level": 49,
+        "proposed": 150010,
+        "old": 150010
+      },
+      {
+        "delta": 0,
+        "level": 50,
+        "proposed": 200010,
+        "old": 200010
+      },
+      {
+        "delta": -78980,
+        "level": 51,
+        "proposed": 240020,
+        "old": 319000
+      },
+      {
+        "delta": -174610,
+        "level": 52,
+        "proposed": 288390,
+        "old": 463000
+      },
+      {
+        "delta": -324060,
+        "level": 53,
+        "proposed": 346940,
+        "old": 671000
+      },
+      {
+        "delta": -514110,
+        "level": 54,
+        "proposed": 417890,
+        "old": 932000
+      },
+      {
+        "delta": -731020,
+        "level": 55,
+        "proposed": 503980,
+        "old": 1235000
+      },
+      {
+        "delta": -960440,
+        "level": 56,
+        "proposed": 608560,
+        "old": 1569000
+      },
+      {
+        "delta": -1188250,
+        "level": 57,
+        "proposed": 735750,
+        "old": 1924000
+      },
+      {
+        "delta": -1396370,
+        "level": 58,
+        "proposed": 890630,
+        "old": 2287000
+      },
+      {
+        "delta": -1570550,
+        "level": 59,
+        "proposed": 1079450,
+        "old": 2650000
+      },
+      {
+        "delta": -1690080,
+        "level": 60,
+        "proposed": 1309920,
+        "old": 3000000
+      },
+      {
+        "delta": 17660540,
+        "level": 75,
+        "proposed": 27660540,
+        "old": 10000000
+      },
+      {
+        "delta": 8125712430,
+        "level": 100,
+        "proposed": 8163490430,
+        "old": 37778000
+      },
+      {
+        "delta": 5.563876455245939e+22,
+        "level": 199,
+        "proposed": 5.5638764552464135e+22,
+        "old": 4750222000
+      },
+      {
+        "delta": 7.920178134042769e+22,
+        "level": 200,
+        "proposed": 7.920178134043269e+22,
+        "old": 5000000000
+      },
+      {
+        "delta": 1.1286253841011133e+23,
+        "level": 201,
+        "proposed": 1.1286253841011658e+23,
+        "old": 5250000000
+      },
+      {
+        "delta": 3.765510805073441e+307,
+        "level": 1104,
+        "proposed": 3.765510805073441e+307,
+        "old": 231000000000
+      },
+      {
+        "delta": 1.0471885548909237e+308,
+        "level": 1105,
+        "proposed": 1.0471885548909237e+308,
+        "old": 231250000000
+      }
+    ],
+    "current200": 5000000000,
+    "firstInfinite": 1106,
+    "maxLevel": 10000,
+    "offlineCurrentCurve": {
+      "gain": 960000,
+      "beforeStrength": 1000000,
+      "progressBefore": 300000,
+      "progress": 478000,
+      "level": 53,
+      "strength": 1960000,
+      "levelBefore": 51
+    },
+    "current201": 5250000000,
+    "legacy": {
+      "nextGain": 1,
+      "nextLevel": 52,
+      "progress": 300000,
+      "level": 51,
+      "nextProgress": 59981
+    },
+    "fresh": {
+      "gain": 7639555,
+      "level": 61,
+      "progress": 0
+    },
+    "currentMax": 2455000000000
+  },
+  "TreadmillWorld2": [
+    {
+      "World": 2,
+      "Station": "01",
+      "Multiplier": 5,
+      "Ticks": 4,
+      "Delta": 110,
+      "Seconds": 2.1024776000413112,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 2,
+      "Station": "02",
+      "Multiplier": 5,
+      "Ticks": 4,
+      "Delta": 110,
+      "Seconds": 2.115153199993074,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 2,
+      "Station": "03",
+      "Multiplier": 7,
+      "Ticks": 4,
+      "Delta": 154,
+      "Seconds": 2.1006869000266306,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 2,
+      "Station": "04",
+      "Multiplier": 7,
+      "Ticks": 4,
+      "Delta": 154,
+      "Seconds": 2.100928500003647,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 2,
+      "Station": "05",
+      "Multiplier": 12,
+      "Ticks": 4,
+      "Delta": 264,
+      "Seconds": 2.1169144999585114,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 2,
+      "Station": "06",
+      "Multiplier": 12,
+      "Ticks": 4,
+      "Delta": 264,
+      "Seconds": 2.115350399981253,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 2,
+      "Station": "07",
+      "Multiplier": 35,
+      "Ticks": 4,
+      "Delta": 770,
+      "Seconds": 2.100037199968938,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    }
+  ],
+  "TreadmillWorld1": [
+    {
+      "World": 1,
+      "Station": "Normal01",
+      "Multiplier": 1,
+      "Ticks": 4,
+      "Delta": 22,
+      "Seconds": 2.110899100021925,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 1,
+      "Station": "Normal02",
+      "Multiplier": 1,
+      "Ticks": 4,
+      "Delta": 22,
+      "Seconds": 2.115631599968765,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 1,
+      "Station": "Iron01",
+      "Multiplier": 2,
+      "Ticks": 4,
+      "Delta": 44,
+      "Seconds": 2.10050910001155,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 1,
+      "Station": "Iron02",
+      "Multiplier": 2,
+      "Ticks": 4,
+      "Delta": 44,
+      "Seconds": 2.1006280000437982,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 1,
+      "Station": "Gold01",
+      "Multiplier": 3,
+      "Ticks": 4,
+      "Delta": 66,
+      "Seconds": 2.1003356999717653,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 1,
+      "Station": "Gold02",
+      "Multiplier": 3,
+      "Ticks": 4,
+      "Delta": 66,
+      "Seconds": 2.1179403999703936,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    },
+    {
+      "World": 1,
+      "Station": "Diamond01",
+      "Multiplier": 20,
+      "Ticks": 4,
+      "Delta": 440,
+      "Seconds": 2.1168207000009716,
+      "Sessions": 1,
+      "AfterExitDelta": 0
+    }
+  ],
+  "Lifecycle": {
+    "w1rebirth": {
+      "seconds": 0.7056209000293165,
+      "active": false,
+      "sessions": 0,
+      "ticks": 0,
+      "delta": 0,
+      "rows": []
+    },
+    "w2rebirth": {
+      "seconds": 0.7005236999830231,
+      "active": false,
+      "sessions": 0,
+      "ticks": 0,
+      "delta": 0,
+      "rows": []
+    },
+    "worldSwitch": {
+      "seconds": 0.6003979999804869,
+      "active": false,
+      "sessions": 0,
+      "ticks": 0,
+      "delta": 0,
+      "rows": []
+    },
+    "death": {
+      "respawn": {
+        "seconds": 1.100438599998597,
+        "active": true,
+        "sessions": 1,
+        "ticks": 1,
+        "delta": 38.5,
+        "rows": {
+          "1": {
+            "delta": 38.5,
+            "multiplier": 7,
+            "time": 2613.441855299985,
+            "result": 115.5
+          }
+        }
+      },
+      "dead": {
+        "seconds": 0.6154566000332125,
+        "active": false,
+        "sessions": 0,
+        "ticks": 0,
+        "delta": 0,
+        "rows": []
+      }
+    },
+    "owned": {
+      "w1": true,
+      "enabled": true,
+      "w2": true
+    },
+    "w1premium": {
+      "seconds": 0.7146142999990843,
+      "active": false,
+      "sessions": 0,
+      "ticks": 0,
+      "delta": 0,
+      "rows": []
+    },
+    "w2premium": {
+      "seconds": 0.7115082999807782,
+      "active": false,
+      "sessions": 0,
+      "ticks": 0,
+      "delta": 0,
+      "rows": []
+    },
+    "unowned": {
+      "w1": false,
+      "enabled": true,
+      "w2": false
+    }
+  },
+  "Ore": {
+    "DefinitionInvariants": 320,
+    "PureRegression": 156,
+    "BattleBagJournalChecks": 20,
+    "NativeSale": {
+      "Ore": "ORE_032",
+      "Units": 1,
+      "Win": 500,
+      "Replay": "AlreadyApplied"
+    },
+    "NativeMerge": {
+      "Ore": "ORE_001",
+      "Units": 2,
+      "Result": "NORMAL_02",
+      "Replay": "AlreadyApplied"
+    },
+    "DropService": {
+      "LatestOnly": true,
+      "SameTypeRemaining": 1,
+      "Replay": "StaleDrop",
+      "TimeoutAfterSeconds": 5.1,
+      "Timeout": "ExpiredDrop",
+      "BagRetained": true,
+      "BankCommitted": true
+    },
+    "RasterConfirmed": false,
+    "FinalPlayViewport": "1x1"
+  },
+  "Cleanup": {
+    "SourceCount": 490,
+    "ChangedSources": 13,
+    "UnchangedSources": 477,
+    "MissingSources": 0,
+    "EnabledChanges": 0,
+    "Helpers": 0,
+    "Play": "Stopped",
+    "Focus": "Edit",
+    "Saved": false,
+    "Published": false,
+    "CompiledChangedSources": 13,
+    "LocalLiveSourceMatches": 13,
+    "AuthoredTemplateGroups": 5
+  },
+  "Offline": {
+    "PureSuites": [
+      {
+        "Name": "StrengthRewards.spec.luau",
+        "OfflineOneHour": 180000,
+        "Persistence": "memory only; response loss retried",
+        "OfflineDouble": 360000,
+        "Checks": 60
+      },
+      {
+        "Name": "StrengthRewardOwnership.spec.luau",
+        "FailedReadDidNotCreateData": true,
+        "OwnershipFence": true,
+        "Store": "memory only",
+        "Checks": 11
+      },
+      {
+        "Name": "OfflineRewardRefresh.spec.luau",
+        "Kind": "Memory reload and mock receipt dispatch through current Sources; not live rejoin, payment or production storage",
+        "Checks": 155
+      },
+      {
+        "Name": "OfflineDepartureStrength.spec.luau",
+        "Migration": "No legacy Rate reinterpretation; old paid quotes exact",
+        "Fractional": true,
+        "Checks": 50
+      }
+    ],
+    "NativeSamples": [
+      {
+        "requestedSeconds": 0,
+        "strength": 1000.125,
+        "amount": 0
+      },
+      {
+        "amount": 40.005,
+        "requestedSeconds": 3600,
+        "strength": 1000.125,
+        "rewardSeconds": 3600
+      },
+      {
+        "amount": 480.06,
+        "requestedSeconds": 43200,
+        "strength": 1000.125,
+        "rewardSeconds": 43200
+      },
+      {
+        "amount": 960.12,
+        "requestedSeconds": 86400,
+        "strength": 1000.125,
+        "rewardSeconds": 86400
+      },
+      {
+        "amount": 960.12,
+        "requestedSeconds": 172800,
+        "strength": 1000.125,
+        "rewardSeconds": 86400
+      }
+    ],
+    "NativeCap": {
+      "DepartureStrength": 1234.567,
+      "ElapsedSeconds": 90000,
+      "Reward": 1185.18432,
+      "EligibleSeconds": 86400,
+      "LaterStrength": 9000.125,
+      "ClaimResult": 10185.30932,
+      "Retries": "Lost acknowledgement; exactly once"
+    },
+    "PackOffers": {
+      "3724835102": 240,
+      "3724835678": 1440,
+      "3724836170": 4800
+    }
+  }
+}

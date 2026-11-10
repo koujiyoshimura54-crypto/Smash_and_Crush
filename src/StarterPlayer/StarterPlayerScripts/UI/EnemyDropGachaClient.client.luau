@@ -72,6 +72,13 @@ local function show(result,generation)
   points.FontFace=Font.fromEnum(Enum.Font.GothamBlack);points.TextColor3=Color3.new(1,1,1)
   points.TextStrokeTransparency=0;points.TextSize=28;points.TextScaled=true
   points.Size=UDim2.fromOffset(83,38);points.Position=UDim2.fromOffset(97,34);points.Parent=gui
+  local style=Ore.RarityDisplay.Drop
+  local rarity=Instance.new("TextLabel");rarity.Name="Rarity";rarity.BackgroundTransparency=1
+  rarity.AutoLocalize=false;rarity.FontFace=points.FontFace;rarity.Text=item.Rarity;rarity.TextColor3=item.Color
+  rarity.TextStrokeTransparency=0;rarity.TextSize=style.TextSize;rarity.TextScaled=true;rarity.TextWrapped=false
+  rarity.Position=style.Position;rarity.Size=style.Size
+  local limit=Instance.new("UITextSizeConstraint");limit.MaxTextSize=style.TextSize;limit.MinTextSize=1;limit.Parent=rarity
+  rarity.Parent=gui
  end
  active=result;activeGui=gui;gui.Parent=player.PlayerGui
  RunService.RenderStepped:Wait();RunService.RenderStepped:Wait()

@@ -23,7 +23,7 @@ function M.View(player)
 	local rate = ready[player] and Reference.Get(player) or nil
 	local blocked = false
 	for _, intent in pairs(s.Data.StrengthRewards.Pending) do if intent.State == "Prompting" then blocked = true end end
-	local result = {Ready = rate ~= nil, Offers = {}, Reward = reward and {Id = id, Amount = reward.Amount}, Pending = blocked}
+	local result = {Ready = rate ~= nil, Offers = {}, Reward = reward and {Id = id, Amount = reward.Amount, Seconds = reward.Seconds}, Pending = blocked}
 	for _, product in ipairs(Config.Packs) do
 		local pending = s.Data.StrengthRewards.Pending[tostring(product.ProductId)]
 		result.Offers[tostring(product.ProductId)] = pending and pending.Amount or rate and State.PackAmount(rate, product.Seconds) or 0

@@ -4,6 +4,15 @@ local Config = require(RS.Config.StrengthRewardConfig)
 local Presentation = require(script.Parent.StrengthHUDPresentation)
 local O = require(RS.Config.StrengthHUDStyle).Offline
 local M = {}
+function M.DurationTitle(seconds)
+	if type(seconds) ~= "number" then return "OFFLINE REWARDS" end
+	seconds = Config.OfflineSeconds(seconds)
+	local hours = seconds / 3600
+	local duration = hours >= 1 and string.format("%.2f", hours):gsub("0+$", ""):gsub("%.$", "")
+		or string.format("%.2f", seconds / 60):gsub("0+$", ""):gsub("%.$", "")
+	local unit = hours >= 1 and (hours == 1 and "Hour" or "Hours") or (seconds == 60 and "Minute" or "Minutes")
+	return duration .. " " .. unit .. " of Offline Rewards"
+end
 local mounted=setmetatable({}, {__mode="k"})
 local function make(class, name, parent, properties)
 	local x = Instance.new(class); x.Name = name
