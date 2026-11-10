@@ -619,6 +619,7 @@ local function reveal(slot: Slot, token: number, index: number)
 			slot.pet.Visible = true
 			TweenService:Create(slot.petScale, REVEAL_INFO, { Scale = 1 }):Play()
 			explode(slot, token)
+			slot.name.AutoLocalize = false -- Dumbbell names are English in every locale.
 			slot.name.Text = result.displayName or ""
 			pop(slot.name)
 			return

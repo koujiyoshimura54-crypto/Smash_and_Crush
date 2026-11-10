@@ -6,6 +6,7 @@ local Config = require(RS.Config:WaitForChild("DumbbellStandConfig"))
 local Master = require(RS.Config:WaitForChild("DumbbellItemMaster"))
 local NumberFormat = require(RS.Modules.NumberFormat)
 local PurchaseHUD = require(RS.Modules.HUDLayout)
+local StandPresentation = require(RS.Modules.DumbbellStandPresentation)
 local WinIcon = game:GetService("StarterGui").StrengthGui.HUD.WinAmount.Inside.Icon.Image
 local M = {}
 local started = false
@@ -29,7 +30,7 @@ function M.start()
   for _, item in ipairs(Master.GetSorted(worldId)) do
    local index = item.Grade
    local model = folder:FindFirstChild(tostring(index))
-   local board = model and model:FindFirstChild("BillboardGui")
+   local board = model and (worldId==2 and StandPresentation.Ensure(model) or model:FindFirstChild("BillboardGui"))
    local itemId = item.ItemId
    local press = Config.GetPress(folder, index,worldId)
    if press then
@@ -77,9 +78,17 @@ function M.start()
   equipped = Player:GetAttribute("EquippedDumbbell") or ""
   render()
  end)
+ local queued=false
+ local function schedule()
+  if queued then return end;queued=true
+  task.defer(function()queued=false;render()end)
+ end
+ local bound=setmetatable({}, {__mode="k"})
  local function bind(folder)
-  folder.DescendantAdded:Connect(render)
-  render()
+  if bound[folder] then return end;bound[folder]=true
+  folder.DescendantAdded:Connect(schedule)
+  folder.DescendantRemoving:Connect(schedule)
+  schedule()
  end
  workspace.ChildAdded:Connect(function(child) if child.Name == Config.FolderName then bind(child) end end)
  for worldId=1,2 do local folder=Config.GetFolder(worldId);if folder then bind(folder) end end

@@ -1,0 +1,672 @@
+{
+  "BaseCommit": "df9d0fd",
+  "Names": [
+    {
+      "Id": "NORMAL_01",
+      "Name": "Dumbbell 1"
+    },
+    {
+      "Id": "NORMAL_02",
+      "Name": "Dumbbell 2"
+    },
+    {
+      "Id": "NORMAL_03",
+      "Name": "Dumbbell 3"
+    },
+    {
+      "Id": "NORMAL_04",
+      "Name": "Dumbbell 4"
+    },
+    {
+      "Id": "NORMAL_05",
+      "Name": "Dumbbell 5"
+    },
+    {
+      "Id": "NORMAL_06",
+      "Name": "Dumbbell 6"
+    },
+    {
+      "Id": "NORMAL_07",
+      "Name": "Dumbbell 7"
+    },
+    {
+      "Id": "NORMAL_08",
+      "Name": "Dumbbell 8"
+    },
+    {
+      "Id": "NORMAL_09",
+      "Name": "Dumbbell 9"
+    },
+    {
+      "Id": "NORMAL_10",
+      "Name": "Dumbbell 10"
+    },
+    {
+      "Id": "NORMAL_11",
+      "Name": "Dumbbell 11"
+    },
+    {
+      "Id": "NORMAL_12",
+      "Name": "Dumbbell 12"
+    },
+    {
+      "Id": "W2_NORMAL_01",
+      "Name": "World 2 Dumbbell 1"
+    },
+    {
+      "Id": "W2_NORMAL_02",
+      "Name": "World 2 Dumbbell 2"
+    },
+    {
+      "Id": "W2_NORMAL_03",
+      "Name": "World 2 Dumbbell 3"
+    },
+    {
+      "Id": "W2_NORMAL_04",
+      "Name": "World 2 Dumbbell 4"
+    },
+    {
+      "Id": "W2_NORMAL_05",
+      "Name": "World 2 Dumbbell 5"
+    },
+    {
+      "Id": "W2_NORMAL_06",
+      "Name": "World 2 Dumbbell 6"
+    },
+    {
+      "Id": "W2_NORMAL_07",
+      "Name": "World 2 Dumbbell 7"
+    },
+    {
+      "Id": "W2_NORMAL_08",
+      "Name": "World 2 Dumbbell 8"
+    },
+    {
+      "Id": "W2_NORMAL_09",
+      "Name": "World 2 Dumbbell 9"
+    },
+    {
+      "Id": "W2_NORMAL_10",
+      "Name": "World 2 Dumbbell 10"
+    },
+    {
+      "Id": "W2_NORMAL_11",
+      "Name": "World 2 Dumbbell 11"
+    },
+    {
+      "Id": "W2_NORMAL_12",
+      "Name": "World 2 Dumbbell 12"
+    }
+  ],
+  "NameVerification": {
+    "ActualLocale": "ja-jp",
+    "MergeResult": "NORMAL_02",
+    "ChestText": "Dumbbell 2",
+    "EquipmentAfterReopen": "Dumbbell 2",
+    "AutoLocalize": false,
+    "HostileJapaneseTranslationIgnored": true,
+    "EnglishTranslator": "Dumbbell 2",
+    "SeparateEnglishClientSession": false
+  },
+  "World1Purchase": {
+    "Name": "Dumbbell 12",
+    "Id": "NORMAL_12",
+    "Price": 7500,
+    "Count": 1,
+    "Equipped": "NORMAL_12",
+    "Debited": 7500
+  },
+  "World2Purchases": [
+    {
+      "Name": "World 2 Dumbbell 1",
+      "Id": "W2_NORMAL_01",
+      "Price": 3000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_01",
+      "Debited": 3000
+    },
+    {
+      "Name": "World 2 Dumbbell 2",
+      "Id": "W2_NORMAL_02",
+      "Price": 6000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_02",
+      "Debited": 6000
+    },
+    {
+      "Name": "World 2 Dumbbell 3",
+      "Id": "W2_NORMAL_03",
+      "Price": 12000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_03",
+      "Debited": 12000
+    },
+    {
+      "Name": "World 2 Dumbbell 4",
+      "Id": "W2_NORMAL_04",
+      "Price": 25000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_04",
+      "Debited": 25000
+    },
+    {
+      "Name": "World 2 Dumbbell 5",
+      "Id": "W2_NORMAL_05",
+      "Price": 50000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_05",
+      "Debited": 50000
+    },
+    {
+      "Name": "World 2 Dumbbell 6",
+      "Id": "W2_NORMAL_06",
+      "Price": 100000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_06",
+      "Debited": 100000
+    },
+    {
+      "Name": "World 2 Dumbbell 7",
+      "Id": "W2_NORMAL_07",
+      "Price": 200000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_07",
+      "Debited": 200000
+    },
+    {
+      "Name": "World 2 Dumbbell 8",
+      "Id": "W2_NORMAL_08",
+      "Price": 400000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_08",
+      "Debited": 400000
+    },
+    {
+      "Name": "World 2 Dumbbell 9",
+      "Id": "W2_NORMAL_09",
+      "Price": 750000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_09",
+      "Debited": 750000
+    },
+    {
+      "Name": "World 2 Dumbbell 10",
+      "Id": "W2_NORMAL_10",
+      "Price": 1250000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_10",
+      "Debited": 1250000
+    },
+    {
+      "Name": "World 2 Dumbbell 11",
+      "Id": "W2_NORMAL_11",
+      "Price": 2000000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_11",
+      "Debited": 2000000
+    },
+    {
+      "Name": "World 2 Dumbbell 12",
+      "Id": "W2_NORMAL_12",
+      "Price": 3500000,
+      "Count": 1,
+      "Equipped": "W2_NORMAL_12",
+      "Debited": 3500000
+    }
+  ],
+  "OwnedReentry": {
+    "Equipped": "W2_NORMAL_01",
+    "Debited": 0
+  },
+  "RuntimeAfterTravelDeathAndRecreation": [
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.1.BillboardGui",
+      "Id": "NORMAL_01",
+      "Boards": 1,
+      "Strength": "+1 Strength",
+      "World": 1,
+      "Image": "rbxassetid://131314372434925",
+      "Name": "Dumbbell 1",
+      "Price": "5",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.2.BillboardGui",
+      "Id": "NORMAL_02",
+      "Boards": 1,
+      "Strength": "+3 Strength",
+      "World": 1,
+      "Image": "rbxassetid://126019719977317",
+      "Name": "Dumbbell 2",
+      "Price": "20",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.3.BillboardGui",
+      "Id": "NORMAL_03",
+      "Boards": 1,
+      "Strength": "+5 Strength",
+      "World": 1,
+      "Image": "rbxassetid://96428309215438",
+      "Name": "Dumbbell 3",
+      "Price": "50",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.4.BillboardGui",
+      "Id": "NORMAL_04",
+      "Boards": 1,
+      "Strength": "+7 Strength",
+      "World": 1,
+      "Image": "rbxassetid://77317637436768",
+      "Name": "Dumbbell 4",
+      "Price": "100",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.5.BillboardGui",
+      "Id": "NORMAL_05",
+      "Boards": 1,
+      "Strength": "+10 Strength",
+      "World": 1,
+      "Image": "rbxassetid://134662273184560",
+      "Name": "Dumbbell 5",
+      "Price": "150",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.6.BillboardGui",
+      "Id": "NORMAL_06",
+      "Boards": 1,
+      "Strength": "+15 Strength",
+      "World": 1,
+      "Image": "rbxassetid://92138447886967",
+      "Name": "Dumbbell 6",
+      "Price": "400",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.7.BillboardGui",
+      "Id": "NORMAL_07",
+      "Boards": 1,
+      "Strength": "+25 Strength",
+      "World": 1,
+      "Image": "rbxassetid://79967244610623",
+      "Name": "Dumbbell 7",
+      "Price": "750",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.8.BillboardGui",
+      "Id": "NORMAL_08",
+      "Boards": 1,
+      "Strength": "+35 Strength",
+      "World": 1,
+      "Image": "rbxassetid://110171141876908",
+      "Name": "Dumbbell 8",
+      "Price": "1.25K",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.9.BillboardGui",
+      "Id": "NORMAL_09",
+      "Boards": 1,
+      "Strength": "+50 Strength",
+      "World": 1,
+      "Image": "rbxassetid://129522181601539",
+      "Name": "Dumbbell 9",
+      "Price": "2K",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.10.BillboardGui",
+      "Id": "NORMAL_10",
+      "Boards": 1,
+      "Strength": "+65 Strength",
+      "World": 1,
+      "Image": "rbxassetid://92929093922544",
+      "Name": "Dumbbell 10",
+      "Price": "3.5K",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.11.BillboardGui",
+      "Id": "NORMAL_11",
+      "Boards": 1,
+      "Strength": "+85 Strength",
+      "World": 1,
+      "Image": "rbxassetid://89748292939648",
+      "Name": "Dumbbell 11",
+      "Price": "5K",
+      "Status": "Step to buy",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.PerStepButtons.12.BillboardGui",
+      "Id": "NORMAL_12",
+      "Boards": 1,
+      "Strength": "+100 Strength",
+      "World": 1,
+      "Image": "rbxassetid://121194224737958",
+      "Name": "Dumbbell 12",
+      "Price": "7.5K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui",
+      "Id": "W2_NORMAL_01",
+      "Boards": 1,
+      "Strength": "+800 Strength",
+      "World": 2,
+      "Image": "rbxassetid://117636801345125",
+      "Name": "World 2 Dumbbell 1",
+      "Price": "3K",
+      "Status": "Equipped",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui",
+      "Id": "W2_NORMAL_02",
+      "Boards": 1,
+      "Strength": "+900 Strength",
+      "World": 2,
+      "Image": "rbxassetid://87392597068250",
+      "Name": "World 2 Dumbbell 2",
+      "Price": "6K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui",
+      "Id": "W2_NORMAL_03",
+      "Boards": 1,
+      "Strength": "+1000 Strength",
+      "World": 2,
+      "Image": "rbxassetid://90484814439233",
+      "Name": "World 2 Dumbbell 3",
+      "Price": "12K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui",
+      "Id": "W2_NORMAL_04",
+      "Boards": 1,
+      "Strength": "+1100 Strength",
+      "World": 2,
+      "Image": "rbxassetid://92409856077185",
+      "Name": "World 2 Dumbbell 4",
+      "Price": "25K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui",
+      "Id": "W2_NORMAL_05",
+      "Boards": 1,
+      "Strength": "+1250 Strength",
+      "World": 2,
+      "Image": "rbxassetid://76660708269544",
+      "Name": "World 2 Dumbbell 5",
+      "Price": "50K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui",
+      "Id": "W2_NORMAL_06",
+      "Boards": 1,
+      "Strength": "+1400 Strength",
+      "World": 2,
+      "Image": "rbxassetid://73514550426804",
+      "Name": "World 2 Dumbbell 6",
+      "Price": "100K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui",
+      "Id": "W2_NORMAL_07",
+      "Boards": 1,
+      "Strength": "+1600 Strength",
+      "World": 2,
+      "Image": "rbxassetid://86006626767728",
+      "Name": "World 2 Dumbbell 7",
+      "Price": "200K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui",
+      "Id": "W2_NORMAL_08",
+      "Boards": 1,
+      "Strength": "+1800 Strength",
+      "World": 2,
+      "Image": "rbxassetid://101543601215487",
+      "Name": "World 2 Dumbbell 8",
+      "Price": "400K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui",
+      "Id": "W2_NORMAL_09",
+      "Boards": 1,
+      "Strength": "+2000 Strength",
+      "World": 2,
+      "Image": "rbxassetid://70465860935084",
+      "Name": "World 2 Dumbbell 9",
+      "Price": "750K",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui",
+      "Id": "W2_NORMAL_10",
+      "Boards": 1,
+      "Strength": "+2250 Strength",
+      "World": 2,
+      "Image": "rbxassetid://89190858658364",
+      "Name": "World 2 Dumbbell 10",
+      "Price": "1.25M",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui",
+      "Id": "W2_NORMAL_11",
+      "Boards": 1,
+      "Strength": "+2500 Strength",
+      "World": 2,
+      "Image": "rbxassetid://135716155094439",
+      "Name": "World 2 Dumbbell 11",
+      "Price": "2M",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    },
+    {
+      "Offset": "0, 6.5, 0",
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui",
+      "Id": "W2_NORMAL_12",
+      "Boards": 1,
+      "Strength": "+3000 Strength",
+      "World": 2,
+      "Image": "rbxassetid://116813512043021",
+      "Name": "World 2 Dumbbell 12",
+      "Price": "3.5M",
+      "Status": "Owned",
+      "Fit": "Fit",
+      "Clip": false,
+      "Size": "{9, 0}, {9, 0}"
+    }
+  ],
+  "FinalEditAudit": {
+    "PlaceId": 126576845524886,
+    "Running": false,
+    "Template": "ReplicatedStorage.DumbbellStandBillboardTemplate",
+    "Helpers": [],
+    "TutorialMessages": {
+      "1": {
+        "Path": "StarterGui.OreMergeTutorialGui.Messages.Saving",
+        "Text": "Creating your dumbbell…"
+      },
+      "2": {
+        "Path": "StarterGui.OreMergeTutorialGui.Messages.GoToMerge",
+        "Text": "Go to Merge to create a dumbbell!"
+      },
+      "3": {
+        "Path": "StarterGui.OreMergeTutorialGui.Messages.HigherMerge",
+        "Text": "Press Merge to create a stronger dumbbell."
+      },
+      "4": {
+        "Path": "StarterGui.OreMergeTutorialGui.Messages.HigherSaving",
+        "Text": "Creating your stronger dumbbell…"
+      },
+      "5": {
+        "Path": "StarterGui.OreMergeTutorialGui.Messages.HigherGoToMerge",
+        "Text": "Go to Merge to create a stronger dumbbell!"
+      },
+      "6": {
+        "Path": "StarterGui.DumbbellEquipTutorialGui.Messages.ChooseTab",
+        "Text": "Choose Dumbbells."
+      },
+      "7": {
+        "Path": "StarterGui.DumbbellEquipTutorialGui.Messages.Complete",
+        "Text": "Dumbbell equipped!"
+      }
+    },
+    "CheckedSources": {
+      "1": "ReplicatedStorage.Config.DumbbellItemMaster",
+      "2": "ReplicatedStorage.Modules.DumbbellStandPresentation",
+      "3": "StarterGui.StrengthGui.InventoryPanelClient",
+      "4": "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+      "5": "StarterPlayer.StarterPlayerScripts.Services.HatchClient"
+    },
+    "StationGeometryUnchanged": 12,
+    "OldNameLabels": []
+  },
+  "SourceManifest": [
+    {
+      "path": "ReplicatedStorage.Config.DumbbellItemMaster",
+      "length": 3575,
+      "adler32": 378961878
+    },
+    {
+      "path": "ReplicatedStorage.Modules.DumbbellStandPresentation",
+      "length": 2791,
+      "adler32": 4267888837
+    },
+    {
+      "path": "StarterGui.StrengthGui.InventoryPanelClient",
+      "length": 12268,
+      "adler32": 1416753878
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+      "length": 4614,
+      "adler32": 3617928528
+    },
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.HatchClient",
+      "length": 31712,
+      "adler32": 524169565
+    }
+  ],
+  "ActualImageCoverage": {
+    "World1Reference": true,
+    "World2BeforeAfter": true,
+    "All12Normal180px": true,
+    "All12Narrow128px": true,
+    "UnownedOwnedEquipped": true,
+    "AfterDeathAndRecreation": true,
+    "DeviceEmulator": false
+  },
+  "Isolation": {
+    "ExternalServiceSourceRedirections": 39,
+    "TemporaryProbes": 2,
+    "ProductionDataWrites": false,
+    "RealPayments": false,
+    "SavePublish": false,
+    "OSInput": false
+  }
+}

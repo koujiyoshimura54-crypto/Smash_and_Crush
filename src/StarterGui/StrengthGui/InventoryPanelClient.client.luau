@@ -110,6 +110,7 @@ local function updateButtons()
  end
 local item=Master.Get(equipped)
  panel.Equipped.Preview.Image=item and item.Image or ""
+ panel.Equipped.ItemName.AutoLocalize=item==nil -- Only actual Dumbbell names stay English.
  panel.Equipped.ItemName.Text=item and item.Name or "None equipped"
  panel.Equipped.Multiplier.Text=item and ("+"..NumberFormat.Format(item.StrengthBonus).." STR") or ""
  if selectedId and worldLocked(selectedId) then selectedId=nil;panel:SetAttribute("SelectedItemId",nil) end

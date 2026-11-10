@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-10 — Dumbbell names and twelve World2 stand UIs
+
+Removed the player-facing Normal prefix at the shared catalogue, guarded actual name labels from translation and repaired all12 W2 exhibition boards using current W1 artwork/layout. Native Japanese chest result, normal/narrow sign images, exact purchases, travel/respawn/recreation passed; actual en-us client session and non-stand W2 name screens remain unverified. Canonical unsaved Edit retained, helpers removed. [English work record](../reports/DumbbellNamesAndWorld2Stands_20261110.md).
+
 ## 2026-11-10 — Requested phases 1.1 → 1.2 → 1.4 → 1.5
 
 Implemented in canonical unsaved Place126576845524886 in the requested order. Memory-only native validation covered reward history/retry, higher merge/equipment/chest, Egg/Pet/Limited regression, finite LV progression/save/Rebirth, all10 World2 Bosses/55 walls and all14 treadmill gains/exits. Normal/narrow treadmill geometry passed; raster/icon loading and narrow chest raster remain unconfirmed. Helpers removed and Play stopped in Edit. No OS input, foreground operation, Save/Publish, rbxl write or Studio close. [English record, paths and limitations](../reports/RequestedPhases_20261110.md).

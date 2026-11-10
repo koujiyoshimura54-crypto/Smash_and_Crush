@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-10 — Dumbbell English names and W2 stand layout
+
+Renamed Normal Dumbbell1–12 to Dumbbell1–12, retaining IDs/numbers and W2 names; scoped name translation guards. Repaired W2's9×12 clipped/extra-row layout to the existing W1 9×9 template and connected runtime recreation. Actual images and all12 isolated purchases verified; no place save/publication. [Record](../reports/DumbbellNamesAndWorld2Stands_20261110.md).
+
 ## 2026-11-10 — Requested phases 1.1, 1.2, 1.4 and 1.5
 
 Updated stable-ID TimeRewards and Potion captions; added a separate20-point higher-Ore tutorial and committed chest result presentation; applied the bounded51–200 LV curve and requested World2 HP/levels; unified14 treadmill headings as two rows. Existing Ore points already matched. Native memory-only verification and explicit image/precision limits are in the [English work record](../reports/RequestedPhases_20261110.md). Canonical Studio remains unsaved Edit for manual Save/Publish.
