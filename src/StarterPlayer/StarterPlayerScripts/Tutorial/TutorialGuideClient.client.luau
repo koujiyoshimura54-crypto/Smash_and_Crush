@@ -2,6 +2,7 @@ local treadmillFolder=workspace:WaitForChild("Treadmills")
 -- Local-only floor navigation; progression and completion use existing server state.
 local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
+local IntroBalance=require(RS.Config:WaitForChild("World1BossConfig"))
 local RunService=game:GetService("RunService")
 local player=Players.LocalPlayer
 local trained=false
@@ -391,7 +392,7 @@ local function refresh()
  if (player:GetAttribute("CurrentWorld") or 1)~=1 then hide();stopCache();return end
  if not humanoid or humanoid.Health<=0 then hide();stopCache();return end
  -- Completion is server-owned. Level, boss defeat and Trophy are separate states.
- if (player:GetAttribute("Level") or 1)<2 then
+ if IntroBalance.NeedsIntroTraining(player:GetAttribute("Level"),player:GetAttribute("Strength"),enteredWall or stage1Defeated) then
   local treadmill=treadmillFolder:FindFirstChild("Normal01")
   local zone=treadmill and treadmill:FindFirstChild("Area")
   if zone then show("Treadmill",zone.Position) else hide() end

@@ -1,0 +1,9 @@
+{
+  "kind": "Native Edit Luau with service adapters; not a Play run",
+  "assertions": 263738,
+  "progressionSource": "Current canonical Studio-derived LevelProgression with the tracked normalization fix",
+  "combatSource": "Current canonical Studio Stage1WallManager and BossCombatService",
+  "checks": "tests/EarlyGameBalance/Checks.luau",
+  "result": "passed",
+  "limits": "Arithmetic, migration and encounter adapters do not validate physical movement, remote replication or persistence; those have separate native Play records."
+}

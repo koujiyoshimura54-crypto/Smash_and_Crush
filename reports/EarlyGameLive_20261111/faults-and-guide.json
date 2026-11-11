@@ -1,0 +1,66 @@
+{
+  "kind": "Native Play with seeded synthetic save profiles and memory-only fault injection; not production rejoin",
+  "OverflowCases": 11,
+  "IronWhileHeld": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Elapsed\":167.50598280027044,\"Pending\":true,\"StoredOres\":{\"ORE_001\":2},\"Ores\":{\"ORE_001\":2}}"
+      }
+    ],
+    "isError": false
+  },
+  "IronResolved": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Elapsed\":177.55638320022264,\"Pending\":false,\"StoredOres\":{\"ORE_001\":2,\"ORE_003\":2},\"Ores\":{\"ORE_001\":2,\"ORE_003\":2}}"
+      }
+    ],
+    "isError": false
+  },
+  "RewardsAfterAcknowledgementLoss": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Win\":3,\"Progress\":3,\"StoredWin\":3,\"Ores\":{\"ORE_001\":2,\"ORE_003\":2},\"Elapsed\":203.67003280029167,\"Level\":2,\"Strength\":10,\"Claimed\":{\"IronIntro01\":true,\"StoneIntro01\":true,\"Reward03\":true}}"
+      }
+    ],
+    "isError": false
+  },
+  "AttributeOrder": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"1\":{\"Order\":{\"1\":\"Level\",\"2\":\"Strength\"},\"Trace\":{\"1\":\"Treadmill\",\"2\":\"Treadmill\"},\"ChangesIn60Frames\":0,\"After10\":\"Wall1.1\"},\"2\":{\"Order\":{\"1\":\"Strength\",\"2\":\"Level\"},\"Trace\":{\"1\":\"Treadmill\",\"2\":\"Treadmill\"},\"ChangesIn60Frames\":0,\"After10\":\"Wall1.1\"}}"
+      }
+    ],
+    "isError": false
+  },
+  "GuideStrength7to10": [
+    {
+      "Strength": 8,
+      "Level": 2,
+      "Target": "Treadmill"
+    },
+    {
+      "Strength": 9,
+      "Level": 2,
+      "Target": "Treadmill"
+    },
+    {
+      "Strength": 10,
+      "Level": 2,
+      "Target": "Wall1.1"
+    }
+  ],
+  "RebirthWhileGuideActive": {
+    "Before": "Wall1.1",
+    "After": "Treadmill",
+    "Level": 1,
+    "Progress": 0,
+    "Strength": 0,
+    "Rebirth": 1
+  },
+  "VisualNotes": "Viewed live HUD 39 Strength, Lv.3, 9 / 33; viewed Strength7 and Strength10 with Lv.2 unchanged and floor arrows to wall at10. Viewed Rebirth panel at Lv.1 / 0 / 7; screenshot camera moved only through Studio API. Images not retained."
+}

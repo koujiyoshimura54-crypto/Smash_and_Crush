@@ -1,0 +1,74 @@
+[
+  {
+    "Mode": "Auto",
+    "GearPathToStage2": "NORMAL_01 -> NORMAL_02",
+    "BeforeCount": 3,
+    "BeforeStage2Total": 168.05234495798746,
+    "AfterCount": 2,
+    "AfterStage2Total": 165.6847494840622,
+    "AfterBeforeRatio": 0.985911559433954
+  },
+  {
+    "Mode": "Auto",
+    "GearPathToStage2": "NORMAL_01 -> NORMAL_03",
+    "BeforeCount": 1,
+    "BeforeStage2Total": 155.4273989200592,
+    "AfterCount": 2,
+    "AfterStage2Total": 153.8770409822464,
+    "AfterBeforeRatio": 0.9900251953736278
+  },
+  {
+    "Mode": "Auto",
+    "GearPathToStage2": "NORMAL_02",
+    "BeforeCount": 2,
+    "BeforeStage2Total": 140.26796758174896,
+    "AfterCount": 2,
+    "AfterStage2Total": 133.9443234205246,
+    "AfterBeforeRatio": 0.9549174036649607
+  },
+  {
+    "Mode": "Manual",
+    "GearPathToStage2": "NORMAL_01",
+    "BeforeCount": 5,
+    "BeforeStage2Total": 119.10474638938904,
+    "AfterCount": 4,
+    "AfterStage2Total": 118.51553726196289,
+    "AfterBeforeRatio": 0.9950530172366109
+  },
+  {
+    "Mode": "Manual",
+    "GearPathToStage2": "NORMAL_02",
+    "BeforeCount": 1,
+    "BeforeStage2Total": 92.23030805587769,
+    "AfterCount": 2,
+    "AfterStage2Total": 93.92957007884979,
+    "AfterBeforeRatio": 1.0184241173947137
+  },
+  {
+    "Mode": "Mixed",
+    "GearPathToStage2": "NORMAL_01 -> NORMAL_02",
+    "BeforeCount": 1,
+    "BeforeStage2Total": 154.85939002037048,
+    "AfterCount": 4,
+    "AfterStage2Total": 154.40053725242615,
+    "AfterBeforeRatio": 0.997036971617388
+  },
+  {
+    "Mode": "Mixed",
+    "GearPathToStage2": "NORMAL_01 -> NORMAL_03",
+    "BeforeCount": 1,
+    "BeforeStage2Total": 145.6595070362091,
+    "AfterCount": 1,
+    "AfterStage2Total": 148.49454498291016,
+    "AfterBeforeRatio": 1.0194634597108467
+  },
+  {
+    "Mode": "Mixed",
+    "GearPathToStage2": "NORMAL_02",
+    "BeforeCount": 4,
+    "BeforeStage2Total": 123.87783396244049,
+    "AfterCount": 1,
+    "AfterStage2Total": 122.06188988685608,
+    "AfterBeforeRatio": 0.9853408473695544
+  }
+]

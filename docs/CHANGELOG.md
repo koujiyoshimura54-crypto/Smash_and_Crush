@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-12 — Normalize saved excess progress and verify PR #1 natively
+
+Tracked the current live LevelProgression, carried excess on load/zero gain, and published corrected zero-gain state. Preserved Strength, save version and Back/collision Sources.36 native before/after routes plus isolated boundary/fault/visual checks are recorded; balance acceptance and main reflection remain held. Canonical helpers removed, unsaved Edit retained. [Work record](../reports/EarlyGameLive_20261111/REPORT.md).
+
 ## 2026-11-11 — Preserve the fresh Battle Bag after Back
 
 Removed RunReturnService's extra Run.Invalidate after Enemy.InitializePlayer. Before/after native Play reproduced and repaired Back → walking → loot → W1/W2 Stage2 Trophy return. Controlled save faults, exact inventory deltas, stale requests and death were checked; canonical unsaved Edit retained. [Evidence and limits](../reports/BackBagReturn_20261111.md).

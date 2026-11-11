@@ -1,0 +1,31 @@
+{
+  "Cleanup": {
+    "Restored": 39,
+    "Leftovers": []
+  },
+  "FinalAudit": {
+    "Running": false,
+    "PlaceId": 126576845524886,
+    "SourceReferences": [],
+    "SourceCount": 493,
+    "Matches": {
+      "ServerScriptService.Services.PlayerDataService": true,
+      "ReplicatedStorage.Config.World1BossConfig": true,
+      "ReplicatedStorage.Config.LevelRequirements": true,
+      "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient": true,
+      "ReplicatedStorage.Modules.LevelProgression": true
+    },
+    "Helpers": [],
+    "UniverseId": 10765181857
+  },
+  "ProtectedSources": {
+    "ServerScriptService.Services.RunReturnService": true,
+    "ServerScriptService.World.EnemyManager": true,
+    "StarterPlayer.StarterPlayerScripts.Combat.CombatClient": true,
+    "ReplicatedStorage.Modules.World1BossPresentation": true,
+    "StarterPlayer.StarterPlayerScripts.World.Stage01AppearanceClient": true
+  },
+  "State": "Stopped, focused Edit; unsaved changes retained",
+  "SavePublishCalled": false,
+  "CanonicalStudioClosed": false
+}

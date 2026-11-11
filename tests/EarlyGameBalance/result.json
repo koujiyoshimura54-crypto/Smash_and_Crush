@@ -1,0 +1,10 @@
+{
+  "kind": "Luau-WASM with service adapters; not Roblox Play",
+  "checks": 255902,
+  "progressionSource": "tracked 2026-09-15 snapshot, current live source must be checked",
+  "recommendedStrength": 60,
+  "bossHits": 4,
+  "worstIdealAutoSeconds": 3.2,
+  "lethalSeconds": 4,
+  "attackCountModel": "stage,strength,oldWallHits,newWallHits,oldBossHits,newBossHits,oldTotal,newTotal,actionCountSpeedRatio\n1,20,29,20,19,12,48,32,1.5000\n1,30,20,13,13,8,33,21,1.5714\n1,45,13,9,9,5,22,14,1.5714\n1,60,10,7,7,4,17,11,1.5455\n1,75,8,6,5,3,13,9,1.4444\n1,100,6,4,4,3,10,7,1.4286\n2,300,5,10,8,8,13,18,0.7222\n2,450,4,7,5,5,9,12,0.7500\n2,600,3,5,4,4,7,9,0.7778\n2,955,2,4,3,3,5,7,0.7143"
+}

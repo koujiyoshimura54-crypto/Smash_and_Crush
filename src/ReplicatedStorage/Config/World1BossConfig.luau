@@ -1,11 +1,19 @@
--- World1 Stage1-10 balance authority. Stage5-10 approved balance: 2026-10-28.
+-- World1 Stage1-10 balance authority. Stage1 early-pace draft: 2026-11-11.
+-- Stage2 walls absorb part of the shorter opening; Stage3-10 are unchanged.
+-- This draft still requires the full fresh-player route to be timed in Studio.
 -- World2 uses its independent World2Config. Shared V5 lottery retained.
 local C={}
+-- Preserve the old first-wall guidance floor even though Lv2 now costs only 7.
+-- This is a tutorial arrow condition, not a combat/Stage entry restriction.
+C.IntroTrainingStrength=10
+function C.NeedsIntroTraining(level,strength,hasBattleProgress)
+ return (level or 1)<2 or (not hasBattleProgress and (strength or 0)<C.IntroTrainingStrength)
+end
 C.RequiredStrength={
- [1]=75,[2]=450,[3]=2500,[4]=6000,[5]=15000,
+ [1]=45,[2]=450,[3]=2500,[4]=6000,[5]=15000,
  [6]=38000,[7]=82000,[8]=198000,[9]=360000,[10]=1000000,
 }
-C.RecommendedLevels={8,10,15,20,25,30,35,40,45,50}
+C.RecommendedLevels={4,10,15,20,25,30,35,40,45,50}
 C.StageCount=#C.RecommendedLevels
 C.HPPerRequiredStrength=5
 C.Lottery={
@@ -30,12 +38,13 @@ function C.GetLotteryWinChance(ratio)
  end
  return 0
 end
--- Preserve Stage1-5 fixed walls independently of Boss strength.
+-- Stage1 walls are approximately two thirds of their old HP (rounded to 5).
+-- Stage2 keeps its Boss HP and uses moderately longer fixed walls.
+-- Preserve Stage3-5 fixed walls independently of Boss strength.
 -- Stage6-10 derive walls at 40/50/60/80 percent of Boss HP.
--- In particular Stage2 retains its special 3 / 3.25 / 3.5 / 4.25 multipliers.
 local walls={
- [1]={100,125,150,200},
- [2]={300,325,350,425},
+ [1]={65,85,100,135},
+ [2]={500,650,800,1050},
  [3]={600,750,900,1200},
  [4]={3000,3750,4500,6000},
  [5]={7000,8750,10500,14000},

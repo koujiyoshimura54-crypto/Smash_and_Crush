@@ -1,0 +1,761 @@
+{
+  "Kind": "Separate actual fresh visual Play; pause excluded from benchmark times",
+  "Guide": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Frames\":60,\"GuideCount\":1,\"Level\":4,\"Strength\":70,\"Target\":\"Trophy1\"}"
+      }
+    ],
+    "isError": false
+  },
+  "Route": {
+    "Runs": [
+      {
+        "ReadyAt": 1794411507.547968,
+        "Events": [
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 1,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 0,
+              "TimeRewards": {
+                "ElapsedSeconds": 7.145188800059259,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 0
+            },
+            "Seconds": 0.037056922912597656,
+            "Time": 1794411508.585027,
+            "Details": {
+              "ClientReady": 1794411508.563768,
+              "Mode": "Auto"
+            },
+            "Kind": "Operable"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 1,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 0,
+              "TimeRewards": {
+                "ElapsedSeconds": 7.145505300024524,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 0
+            },
+            "Seconds": 0.037394046783447266,
+            "Time": 1794411508.585364,
+            "Details": {
+              "Target": 60
+            },
+            "Kind": "TrainStart"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 2,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 7,
+              "TimeRewards": {
+                "ElapsedSeconds": 10.617182400077581,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 0
+            },
+            "Seconds": 3.509068012237549,
+            "Time": 1794411512.057038,
+            "Kind": "Level2"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 3,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 27,
+              "TimeRewards": {
+                "ElapsedSeconds": 20.833242299966514,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 0
+            },
+            "Seconds": 13.725115060806274,
+            "Time": 1794411522.273085,
+            "Kind": "Level3"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 60,
+              "TimeRewards": {
+                "ElapsedSeconds": 37.716932800016366,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 0
+            },
+            "Seconds": 30.608775854110718,
+            "Time": 1794411539.156746,
+            "Kind": "Level4"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 60,
+              "TimeRewards": {
+                "ElapsedSeconds": 37.815205199993216,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 0
+            },
+            "Seconds": 30.707026958465576,
+            "Time": 1794411539.254997,
+            "Kind": "TrainEnd"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 60,
+              "TimeRewards": {
+                "ElapsedSeconds": 37.81541500007734,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 0
+            },
+            "Seconds": 30.70725703239441,
+            "Time": 1794411539.255227,
+            "Kind": "FirstStage1Start"
+          },
+          {
+            "State": {
+              "Bag": 1,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 70,
+              "TimeRewards": {
+                "ElapsedSeconds": 50.66521970008034,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 10
+            },
+            "Seconds": 43.55704402923584,
+            "Time": 1794411552.105014,
+            "Details": {
+              "Generation": 1
+            },
+            "Kind": "BossDefeated1"
+          },
+          {
+            "State": {
+              "Bag": 1,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 70,
+              "TimeRewards": {
+                "ElapsedSeconds": 50.665414300048724,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 10
+            },
+            "Seconds": 43.557251930236816,
+            "Time": 1794411552.105222,
+            "Kind": "FirstStage1End"
+          },
+          {
+            "State": {
+              "Bag": 1,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 70,
+              "TimeRewards": {
+                "ElapsedSeconds": 50.6655489000259,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 10
+            },
+            "Seconds": 43.55738592147827,
+            "Time": 1794411552.105356,
+            "Details": {
+              "Target": ""
+            },
+            "Kind": "VisualPause"
+          },
+          {
+            "State": {
+              "Bag": 1,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 70,
+              "TimeRewards": {
+                "ElapsedSeconds": 50.98038890003227,
+                "ClaimedRewards": []
+              },
+              "Health": 100,
+              "Ores": [],
+              "Rebirth": 0,
+              "Stage": 2,
+              "Progress": 10
+            },
+            "Seconds": 43.87218689918518,
+            "Time": 1794411552.420157,
+            "Kind": "TrophySpawn1"
+          },
+          {
+            "State": {
+              "Bag": 1,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 70,
+              "TimeRewards": {
+                "ElapsedSeconds": 60.514621400041506,
+                "ClaimedRewards": {
+                  "StoneIntro01": true
+                }
+              },
+              "Health": 100,
+              "Ores": {
+                "ORE_001": 2
+              },
+              "Rebirth": 0,
+              "Stage": 2,
+              "Progress": 10
+            },
+            "Seconds": 53.40643882751465,
+            "Time": 1794411561.954409,
+            "Details": "StoneIntro01",
+            "Kind": "TimeReward"
+          },
+          {
+            "State": {
+              "Bag": 1,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 70,
+              "TimeRewards": {
+                "ElapsedSeconds": 120.14452209998854,
+                "ClaimedRewards": {
+                  "StoneIntro01": true,
+                  "IronIntro01": true
+                }
+              },
+              "Health": 100,
+              "Ores": {
+                "ORE_001": 2,
+                "ORE_003": 2
+              },
+              "Rebirth": 0,
+              "Stage": 2,
+              "Progress": 10
+            },
+            "Seconds": 113.03626894950867,
+            "Time": 1794411621.584239,
+            "Details": "IronIntro01",
+            "Kind": "TimeReward"
+          },
+          {
+            "State": {
+              "Bag": 1,
+              "Win": 0,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 70,
+              "TimeRewards": {
+                "ElapsedSeconds": 128.52728589996696,
+                "ClaimedRewards": {
+                  "StoneIntro01": true,
+                  "IronIntro01": true
+                }
+              },
+              "Health": 100,
+              "Ores": {
+                "ORE_001": 2,
+                "ORE_003": 2
+              },
+              "Rebirth": 0,
+              "Stage": 2,
+              "Progress": 10
+            },
+            "Seconds": 121.4190149307251,
+            "Time": 1794411629.966985,
+            "Kind": "TrophyApproach1"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 1,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 73,
+              "TimeRewards": {
+                "ElapsedSeconds": 130.08978929999284,
+                "ClaimedRewards": {
+                  "StoneIntro01": true,
+                  "IronIntro01": true
+                }
+              },
+              "Health": 100,
+              "Ores": {
+                "ORE_001": 3,
+                "ORE_003": 2
+              },
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 13
+            },
+            "Seconds": 122.98149991035461,
+            "Time": 1794411631.52947,
+            "Kind": "TrophyReturned1"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 1,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 73,
+              "TimeRewards": {
+                "ElapsedSeconds": 130.09005320002325,
+                "ClaimedRewards": {
+                  "StoneIntro01": true,
+                  "IronIntro01": true
+                }
+              },
+              "Health": 100,
+              "Ores": {
+                "ORE_001": 3,
+                "ORE_003": 2
+              },
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 13
+            },
+            "Seconds": 122.98178696632385,
+            "Time": 1794411631.529757,
+            "Kind": "VisualReturned"
+          },
+          {
+            "State": {
+              "Bag": 0,
+              "Win": 1,
+              "Loaded": true,
+              "EquippedItems": {
+                "Protein": "",
+                "TrainingBelt": "",
+                "Glove": ""
+              },
+              "Level": 4,
+              "EquippedAura": "",
+              "EquippedDumbbell": "",
+              "Pending": false,
+              "Strength": 73,
+              "TimeRewards": {
+                "ElapsedSeconds": 130.09018529998139,
+                "ClaimedRewards": {
+                  "StoneIntro01": true,
+                  "IronIntro01": true
+                }
+              },
+              "Health": 100,
+              "Ores": {
+                "ORE_001": 3,
+                "ORE_003": 2
+              },
+              "Rebirth": 0,
+              "Stage": 1,
+              "Progress": 13
+            },
+            "Seconds": 122.98193502426147,
+            "Time": 1794411631.529905,
+            "Details": {
+              "Deaths": 0
+            },
+            "Kind": "Complete"
+          }
+        ],
+        "Variant": "AfterVisual",
+        "Success": true,
+        "Mode": "Auto",
+        "Repetition": 0,
+        "Finished": true
+      }
+    ],
+    "Started": 1794411508.54797,
+    "Variant": "AfterVisual"
+  },
+  "ReloadReplay": {
+    "Before": {
+      "Bag": 0,
+      "Win": 1,
+      "Loaded": true,
+      "EquippedItems": {
+        "Protein": "",
+        "TrainingBelt": "",
+        "Glove": ""
+      },
+      "Level": 4,
+      "EquippedAura": "",
+      "EquippedDumbbell": "",
+      "Pending": false,
+      "Strength": 73,
+      "Walls": [
+        {
+          "WallCount": 4,
+          "Current": 1,
+          "Skipped": false,
+          "Maxes": [
+            65,
+            85,
+            100,
+            135
+          ],
+          "MajorStage": 1,
+          "BossMaxHP": 225,
+          "Gauges": [
+            65,
+            85,
+            100,
+            135
+          ],
+          "Cleared": []
+        },
+        {
+          "WallCount": 4,
+          "Current": 1,
+          "Skipped": false,
+          "Maxes": [
+            500,
+            650,
+            800,
+            1050
+          ],
+          "MajorStage": 2,
+          "BossMaxHP": 2250,
+          "Gauges": [
+            500,
+            650,
+            800,
+            1050
+          ],
+          "Cleared": []
+        }
+      ],
+      "Dumbbells": [],
+      "Progress": 13,
+      "Health": 100,
+      "Ores": {
+        "ORE_001": 3,
+        "ORE_003": 2
+      },
+      "Defeated": [],
+      "Rebirth": 0,
+      "Stage": 1,
+      "TimeRewards": {
+        "ClaimedRewards": {
+          "StoneIntro01": true,
+          "IronIntro01": true
+        },
+        "Potions": {
+          "ServerTime": 1794411666.218141,
+          "TrainingSeconds": 0,
+          "StrengthSeconds": 0
+        },
+        "ElapsedSeconds": 164.7784413000336,
+        "Completed": false,
+        "Loaded": true,
+        "States": {
+          "Reward04": "Locked",
+          "StoneIntro01": "Claimed",
+          "IronIntro01": "Claimed",
+          "Reward03": "Locked",
+          "Reward07": "Locked",
+          "Reward05": "Locked",
+          "Reward09": "Locked",
+          "Reward02": "Locked",
+          "Reward08": "Locked"
+        }
+      }
+    },
+    "ReplayCode": "AlreadyClaimed",
+    "After": {
+      "Bag": 0,
+      "Win": 1,
+      "Loaded": true,
+      "EquippedItems": {
+        "Protein": "",
+        "TrainingBelt": "",
+        "Glove": ""
+      },
+      "Level": 4,
+      "EquippedAura": "",
+      "EquippedDumbbell": "",
+      "Pending": false,
+      "Strength": 73,
+      "Walls": [
+        {
+          "WallCount": 4,
+          "Current": 1,
+          "Skipped": false,
+          "Maxes": [
+            65,
+            85,
+            100,
+            135
+          ],
+          "MajorStage": 1,
+          "BossMaxHP": 225,
+          "Gauges": [
+            65,
+            85,
+            100,
+            135
+          ],
+          "Cleared": []
+        },
+        {
+          "WallCount": 4,
+          "Current": 1,
+          "Skipped": false,
+          "Maxes": [
+            500,
+            650,
+            800,
+            1050
+          ],
+          "MajorStage": 2,
+          "BossMaxHP": 2250,
+          "Gauges": [
+            500,
+            650,
+            800,
+            1050
+          ],
+          "Cleared": []
+        }
+      ],
+      "Dumbbells": [],
+      "Progress": 13,
+      "Health": 100,
+      "Ores": {
+        "ORE_001": 3,
+        "ORE_003": 2
+      },
+      "Defeated": [],
+      "Rebirth": 0,
+      "Stage": 1,
+      "TimeRewards": {
+        "ClaimedRewards": {
+          "StoneIntro01": true,
+          "IronIntro01": true
+        },
+        "Potions": {
+          "ServerTime": 1794411666.218577,
+          "TrainingSeconds": 0,
+          "StrengthSeconds": 0
+        },
+        "ElapsedSeconds": 164.77854820003267,
+        "Completed": false,
+        "Loaded": true,
+        "States": {
+          "Reward04": "Locked",
+          "StoneIntro01": "Claimed",
+          "IronIntro01": "Claimed",
+          "Reward03": "Locked",
+          "Reward07": "Locked",
+          "Reward05": "Locked",
+          "Reward09": "Locked",
+          "Reward02": "Locked",
+          "Reward08": "Locked"
+        }
+      }
+    }
+  },
+  "Images": "White floor chevrons to the yellow Trophy return pad were visible; the cup mesh itself was not visible in this angle. After actual return, Lobby and HUD73 Strength / Lv.4 /13 of60 were visible. No images retained."
+}

@@ -851,7 +851,7 @@ function PlayerDataService.AddStrengthGain(player,gain)
  local d=s.Data
  local strength,level,progress=LevelProgression.ApplyGain(d,gain)
  if not strength then return nil,level end
- if gain==0 then return d.Strength end
+ if gain==0 and level==d.Level and progress==d.LevelProgress then return d.Strength end
  d.Strength,d.Level,d.LevelProgress=strength,level,progress
  s.Dirty=true
  player:SetAttribute("Strength",strength)
