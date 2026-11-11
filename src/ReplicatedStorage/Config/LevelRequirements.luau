@@ -1,15 +1,17 @@
 local LevelRequirements = {}
 
 -- Each value is now the gain required to advance FROM that level.
--- Lv1-50 progression requirements are the current approved cumulative-Strength curve.
+-- Early costs are redistributed, not multiplied into awarded Strength.
+-- Both curves need 530 total gain to reach Lv8 and 955 to reach Lv10.
+local LEGACY_EARLY_REQUIREMENTS = table.freeze({10,30,50,70,90,125,155})
 local FIXED_STRENGTH = table.freeze({
-	[1] = 10,
-	[2] = 30,
-	[3] = 50,
-	[4] = 70,
-	[5] = 90,
-	[6] = 125,
-	[7] = 155,
+	[1] = 7,
+	[2] = 20,
+	[3] = 33,
+	[4] = 60,
+	[5] = 95,
+	[6] = 145,
+	[7] = 170,
 	[8] = 190,
 	[9] = 235,
 	[10] = 290,
@@ -82,6 +84,12 @@ function LevelRequirements.GetRequiredStrength(level)
  return FIXED_STRENGTH[200] + (value - 200) * LevelRequirements.Post200StrengthPerLevel
 end
 
+-- Keep the historical threshold lookup stable for unversioned saved profiles.
+-- These are costs from a level, not cumulative thresholds for live progression.
+local function getLegacyRequiredStrength(level)
+ return LEGACY_EARLY_REQUIREMENTS[level] or LevelRequirements.GetRequiredStrength(level)
+end
+
 -- Legacy migration lookup ONLY (and archived tests). Never use for live Level.
 -- New progression consumes each current-level requirement in LevelProgression.
 function LevelRequirements.CalculateLevel(strength)
@@ -90,7 +98,7 @@ function LevelRequirements.CalculateLevel(strength)
  local low, high = 1, LevelRequirements.MaxLevel
  while low < high do
   local middle = math.floor((low + high + 1) / 2)
-  if value >= LevelRequirements.GetRequiredStrength(middle) then
+  if value >= getLegacyRequiredStrength(middle) then
    low = middle
   else
    high = middle - 1
@@ -100,3 +108,4 @@ function LevelRequirements.CalculateLevel(strength)
 end
 
 return table.freeze(LevelRequirements)
+
