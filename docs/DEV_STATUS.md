@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — PR #1 live progression verification; main held
+
+Canonical126576845524886 now carries the unsaved PR candidate and a live-derived excess-progress normalization fix.36 native normal routes (six per input mode before/after), seeded save/HUD retry/reload, real multiplayer isolation, Back/death/rematch and final guide images were checked. Mixed Stage2 total remains+11.57% in the unbalanced RNG sample; balance acceptance/main reflection are held. Helpers removed; stopped/focused Edit. [Individual runs, fixes and limits](../reports/EarlyGameLive_20261111/REPORT.md).
+
 ## 2026-11-11 — Back / walking re-entry Battle Bag fix
 
 Reproduced the inactive/mismatched Bag and W1 Stage2 credited=true Bank:StaleRun in canonical Place126576845524886. Removed only Back's redundant post-initialization invalidation. Two isolated native cycles per World, normal/empty returns, stale requests, death, delayed saving and confirmed-grant acknowledgement loss passed;55 evidence assertions passed. Helpers removed, stopped/focused unsaved Edit. Production/multiplayer persistence remains unverified; manual Save/Publish required. [English record](../reports/BackBagReturn_20261111.md).

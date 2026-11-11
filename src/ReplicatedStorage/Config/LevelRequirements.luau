@@ -108,4 +108,3 @@ function LevelRequirements.CalculateLevel(strength)
 end
 
 return table.freeze(LevelRequirements)
-

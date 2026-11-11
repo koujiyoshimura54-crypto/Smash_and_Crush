@@ -11,7 +11,7 @@ node tests/EarlyGameBalance/run.mjs
 
 For a runtime installed elsewhere, set `LUAU_WEB_MODULE` to its absolute `luau-web/src/index.js` path. Dependency version1.4.0 is pinned.
 
-The default progression fixture is the repository's September15 archived module, NOT a current Studio export. Before application, export the live `ReplicatedStorage.Modules.LevelProgression` and use:
+The default progression module is now `src/ReplicatedStorage/Modules/LevelProgression.luau`, derived from the current canonical Studio on November11. It normalizes existing excess progress before the first HUD publication. An explicit alternative can be supplied with:
 
 ```sh
 LEVEL_PROGRESSION_SOURCE=/absolute/path/to/live-LevelProgression.luau node tests/EarlyGameBalance/run.mjs

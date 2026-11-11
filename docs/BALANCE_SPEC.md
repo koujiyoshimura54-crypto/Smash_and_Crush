@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-12 — PR #1 candidate in unsaved Studio; acceptance held
+
+Candidate Q(1..7)=7/20/33/60/95/145/170, fresh cumulative530 toLV8 and955 toLV10. Stage1 Boss225, walls65/85/100/135, recommendedLV4; Stage2 Boss2250 unchanged, walls500/650/800/1050. Existing excess progress carries before HUD publication without changing Strength or schema; existing low-level remaining gain can increase by up to40. Live36-route testing measured LV4 about1.5× and wholeStage1 about1.38–1.41× faster. Mixed Stage2 total+11.57% leaves the comparison gate unresolved; no main release is approved by this note. [Evidence](../reports/EarlyGameLive_20261111/REPORT.md).
+
 ## 2026-11-10 — Requested finite LV and World2 balance
 
 Q(1–50) is unchanged. For51–200: r(L)=0.20+(L-51)*0.0007; Q(L)=ceil(Q(L-1)*(1+r(L))/10)*10. Above200 retain Q(200)+(L-200)*250000000, MaxLevel10000 and existing Rebirth. This supersedes the earlier held LV proposal. World2 Boss HP is10M/30M/75M/150M/500M/1.5B/7B/50B/350B/1.5T; fixed recommended LV55/60/65/70/75/80/90/100/110/115, required Strength=HP/5. Walls use40–80% for stages1–5 and40–90% for6–10. The20 requested Ore point values already matched; no Ore/equipment threshold change was needed. [Native10020 checks and balance matrix](../reports/RequestedPhases_20261110.md).

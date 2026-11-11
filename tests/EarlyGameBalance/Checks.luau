@@ -47,14 +47,16 @@ end
 for _,strength in {1e6,1e12,1e20,1e24,1e100,1e300} do
  eq(AfterRequirements.CalculateLevel(strength),BeforeRequirements.CalculateLevel(strength),"large legacy lookup")
 end
--- Loading preserves saved LV/progress; it never derives live LV from Strength.
--- Positive gains consume carry against the new cost. No migration/version bump.
+-- Loading consumes excess saved progress against current costs without deriving
+-- live LV from Strength, changing Strength, or bumping the saved version.
 for level=1,12 do
  local oldCost=BeforeRequirements.GetRequiredStrength(level)
  for progress=0,oldCost+.5,.25 do
   local raw={Level=level,LevelProgress=progress,LevelProgressVersion=1,Strength=987654.5}
   local l,p=after.Normalize(raw)
-  eq(l,level,"saved level unchanged");eq(p,progress,"saved progress unchanged")
+  ok(l>=level,"saved level never decreases")
+  near(prefix(AfterRequirements,l)+p,prefix(AfterRequirements,level)+progress,"saved progress conservation")
+  ok(p<AfterRequirements.GetRequiredStrength(l),"normalized before first display")
   local l0,p0=after.Advance(l,p,0)
   eq(l0,l,"zero gain level");eq(p0,p,"zero gain progress")
   for _,gain in {.25,1,19.5,530,955} do

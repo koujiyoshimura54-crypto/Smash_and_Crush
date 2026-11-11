@@ -60,4 +60,3 @@ function C.GetWallConfig(stage) return wallConfigs[stage] end
 table.freeze(C.RequiredStrength)
 table.freeze(C.RecommendedLevels)
 return table.freeze(C)
-
