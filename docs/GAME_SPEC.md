@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-11 — Back return keeps the next active Bag
+
+After accepting the old Bag receipt, Back preserves the fresh active Bag created by Enemy.InitializePlayer, including its matching combat Run ID, just like Trophy return. Walking re-entry can therefore collect loot without another initialization. Old accepted receipts remain separate during save retries; stale drops and death loss retain their existing checks. [Reproduction and verification](../reports/BackBagReturn_20261111.md).
+
 ## 2026-11-10 — Requested phases 1.1, 1.2, 1.4, 1.5
 
 TimeReward uses the requested nine-slot schedule with stable reward IDs and new IronIntro01. Training's player-facing name is Treadmill Potion; internal ID/effect remain. An independent saved higher-Ore guide starts from usable owned2–5 Ore worth20+ points and completes on a confirmed NORMAL_02+ result. The existing Egg renderer presents committed Dumbbells using Workspace.Gift.Cube.003 and hands off to the existing equipment guide. The revised finite51–200 LV formula supersedes the earlier held unbounded proposal; post200 stays linear. [Full paths, behavior and verification limits](../reports/RequestedPhases_20261110.md).

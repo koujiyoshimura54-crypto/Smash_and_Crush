@@ -1,0 +1,2706 @@
+{
+  "before": {
+    "beforePrepare": {
+      "OK": false,
+      "Error": "ServerScriptService.__BackBagQARunner:51: StalePlacement\nServerScriptService.__BackBagQARunner:51 function act\nServerScriptService.__BackBagQARunner:121\nServerScriptService.__BackBagQARunner:121\n"
+    },
+    "beforeBack": {
+      "OK": true,
+      "Result": {
+        "Seconds": 0.033421800006181,
+        "Win": 0,
+        "CombatId": "run-1",
+        "Pending": false,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": false,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-2",
+          "Ores": []
+        },
+        "Reason": "Returned",
+        "OK": true,
+        "Items": [],
+        "IDsMatch": false,
+        "Position": "287.861083984375, 7.725223541259766, 12.999991416931152",
+        "BlockedWrites": 0,
+        "Ores": [],
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    "beforeWalk": {
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": false,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-2",
+          "Ores": []
+        },
+        "Win": 0,
+        "CombatId": "run-1",
+        "Distance": 73.17475128173828,
+        "Pending": false,
+        "Items": [],
+        "Ores": [],
+        "IDsMatch": false,
+        "Crossed": true,
+        "BlockedWrites": 0,
+        "Position": "287.8625183105469, 7.133169174194336, 86.17386627197266",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    "beforeAdd": {
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": false,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-2",
+          "Ores": []
+        },
+        "Win": 0,
+        "ItemOK": false,
+        "CombatId": "run-1",
+        "Pending": false,
+        "Items": [],
+        "OreOK": false,
+        "OreReason": "StaleRun",
+        "ItemReason": "StaleRun",
+        "IDsMatch": false,
+        "Ores": [],
+        "BlockedWrites": 0,
+        "Position": "287.8625183105469, 7.133847713470459, 86.17386627197266",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    "beforeFight": {
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": false,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-2",
+          "Ores": []
+        },
+        "Win": 0,
+        "Ores": [],
+        "CombatId": "run-1",
+        "Pending": false,
+        "Defeated": true,
+        "Lobby": false,
+        "Items": [],
+        "AttackAccepted": true,
+        "IDsMatch": false,
+        "Position": "287.90179443359375, 12.749491691589355, 312.71038818359375",
+        "AttackReason": "Combat",
+        "BlockedWrites": 0,
+        "Stage": 2,
+        "World": 1
+      }
+    },
+    "beforeTrophy": {
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": false,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-2",
+          "Ores": []
+        },
+        "Win": 3,
+        "Returned": false,
+        "CombatId": "run-1",
+        "Pending": false,
+        "Items": [],
+        "Position": "255.12107849121094, 7.13292121887207, 283.86370849609375",
+        "IDsMatch": false,
+        "Ores": [],
+        "BlockedWrites": 0,
+        "WinDelta": 3,
+        "Lobby": false,
+        "World": 1
+      }
+    }
+  },
+  "after": [
+    {
+      "name": "W1Prepare",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-3",
+          "Ores": []
+        },
+        "Win": 0,
+        "CombatId": "run-3",
+        "Pending": false,
+        "Items": [],
+        "IDsMatch": true,
+        "Ores": [],
+        "BlockedWrites": 0,
+        "Position": "287.86376953125, 7.531364917755127, 13.000198364257812",
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Back1",
+      "OK": true,
+      "Result": {
+        "Seconds": 0.0332162999548018,
+        "Win": 0,
+        "CombatId": "run-4",
+        "Pending": false,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-4",
+          "Ores": []
+        },
+        "Reason": "Returned",
+        "OK": true,
+        "Items": [],
+        "IDsMatch": true,
+        "Position": "287.861083984375, 7.7246832847595215, 12.999991416931152",
+        "BlockedWrites": 0,
+        "Ores": [],
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Walk1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-4",
+          "Ores": []
+        },
+        "Win": 0,
+        "CombatId": "run-4",
+        "Distance": 73.26342010498047,
+        "Pending": false,
+        "Items": [],
+        "Ores": [],
+        "IDsMatch": true,
+        "Crossed": true,
+        "BlockedWrites": 0,
+        "Position": "287.8625183105469, 7.133179664611816, 86.26253509521484",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Add1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-4",
+          "Ores": {
+            "ORE_003": 1
+          }
+        },
+        "Win": 0,
+        "ItemOK": true,
+        "CombatId": "run-4",
+        "Pending": false,
+        "Items": [],
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Ores": [],
+        "BlockedWrites": 0,
+        "Position": "287.8625183105469, 7.133847713470459, 86.26253509521484",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Fight1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 3,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-4",
+          "Ores": {
+            "ORE_003": 1,
+            "ORE_004": 1
+          }
+        },
+        "Win": 0,
+        "Ores": [],
+        "CombatId": "run-4",
+        "Pending": false,
+        "Defeated": true,
+        "Lobby": false,
+        "Items": [],
+        "AttackAccepted": true,
+        "IDsMatch": true,
+        "Position": "287.90179443359375, 12.749491691589355, 312.71038818359375",
+        "AttackReason": "Combat",
+        "BlockedWrites": 0,
+        "Stage": 2,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Trophy1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-5",
+          "Ores": []
+        },
+        "Win": 3,
+        "Returned": true,
+        "CombatId": "run-5",
+        "Pending": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "Position": "287.861083984375, 7.7129364013671875, 12.999991416931152",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "BlockedWrites": 0,
+        "WinDelta": 3,
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Flush1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-5",
+          "Ores": []
+        },
+        "Win": 3,
+        "CombatId": "run-5",
+        "Pending": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "Flushed": true,
+        "IDsMatch": true,
+        "Position": "287.86376953125, 7.531364917755127, 13.000198364257812",
+        "BlockedWrites": 0,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Stale1",
+      "OK": true,
+      "Result": {
+        "State": {
+          "Bag": {
+            "Items": [],
+            "Count": 0,
+            "Active": true,
+            "Capacity": 5,
+            "WorldId": 1,
+            "RunId": "run-5",
+            "Ores": []
+          },
+          "Win": 3,
+          "CombatId": "run-5",
+          "Pending": false,
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "IDsMatch": true,
+          "Ores": {
+            "ORE_003": 1,
+            "ORE_004": 1
+          },
+          "BlockedWrites": 0,
+          "Position": "287.86376953125, 7.531364917755127, 13.000198364257812",
+          "Lobby": true,
+          "World": 1
+        },
+        "ItemReason": "StaleRun",
+        "ItemOK": false,
+        "OreReason": "StaleRun",
+        "OreOK": false
+      }
+    },
+    {
+      "name": "W1Replay1",
+      "OK": true,
+      "Result": {
+        "State": {
+          "Bag": {
+            "Items": [],
+            "Count": 0,
+            "Active": true,
+            "Capacity": 5,
+            "WorldId": 1,
+            "RunId": "run-5",
+            "Ores": []
+          },
+          "Win": 3,
+          "CombatId": "run-5",
+          "Pending": false,
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "IDsMatch": true,
+          "Ores": {
+            "ORE_003": 1,
+            "ORE_004": 1
+          },
+          "BlockedWrites": 0,
+          "Position": "287.861083984375, 7.716329574584961, 12.999991416931152",
+          "Lobby": true,
+          "World": 1
+        },
+        "WinDelta": 0
+      }
+    },
+    {
+      "name": "W1Back2",
+      "OK": true,
+      "Result": {
+        "Seconds": 0.03220980009064078,
+        "Win": 3,
+        "CombatId": "run-6",
+        "Pending": false,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-6",
+          "Ores": []
+        },
+        "Reason": "Returned",
+        "OK": true,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "IDsMatch": true,
+        "Position": "287.861083984375, 7.722002983093262, 12.999991416931152",
+        "BlockedWrites": 0,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Walk2",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-6",
+          "Ores": []
+        },
+        "Win": 3,
+        "CombatId": "run-6",
+        "Distance": 72.37495422363281,
+        "Pending": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "IDsMatch": true,
+        "Crossed": true,
+        "BlockedWrites": 0,
+        "Position": "287.861083984375, 7.2930097579956055, 85.37367248535156",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Add2",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-6",
+          "Ores": {
+            "ORE_003": 1
+          }
+        },
+        "Win": 3,
+        "ItemOK": true,
+        "CombatId": "run-6",
+        "Pending": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "BlockedWrites": 0,
+        "Position": "287.861083984375, 7.293853759765625, 85.37367248535156",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Fight2",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 3,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-6",
+          "Ores": {
+            "ORE_003": 1,
+            "ORE_001": 1
+          }
+        },
+        "Win": 3,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "CombatId": "run-6",
+        "Pending": false,
+        "Defeated": true,
+        "Lobby": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "AttackAccepted": true,
+        "IDsMatch": true,
+        "Position": "287.90179443359375, 12.749491691589355, 312.71038818359375",
+        "AttackReason": "Combat",
+        "BlockedWrites": 0,
+        "Stage": 2,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Hold2",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 3,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-6",
+          "Ores": {
+            "ORE_003": 1,
+            "ORE_001": 1
+          }
+        },
+        "Win": 3,
+        "CombatId": "run-6",
+        "Pending": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "BlockedWrites": 0,
+        "Position": "287.90179443359375, 12.749491691589355, 312.71038818359375",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1TrophyHeld",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-7",
+          "Ores": []
+        },
+        "Win": 6,
+        "Returned": true,
+        "CombatId": "run-7",
+        "Pending": true,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "Position": "287.861083984375, 7.715112686157227, 12.999991416931152",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "BlockedWrites": 1,
+        "WinDelta": 3,
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1NewWalkPending",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-7",
+          "Ores": []
+        },
+        "Win": 6,
+        "CombatId": "run-7",
+        "Distance": 72.36273956298828,
+        "Pending": true,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "IDsMatch": true,
+        "Crossed": true,
+        "BlockedWrites": 1,
+        "Position": "287.862548828125, 7.293623447418213, 85.362548828125",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1NewLootPending",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-7",
+          "Ores": {
+            "ORE_003": 1
+          }
+        },
+        "Win": 6,
+        "ItemOK": true,
+        "CombatId": "run-7",
+        "Pending": true,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "BlockedWrites": 1,
+        "Position": "287.862548828125, 7.293853759765625, 85.362548828125",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1ReleaseFailures",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-7",
+          "Ores": {
+            "ORE_003": 1
+          }
+        },
+        "Win": 6,
+        "CombatId": "run-7",
+        "Pending": true,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 1
+        },
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 1,
+          "ORE_004": 1
+        },
+        "BlockedWrites": 1,
+        "Position": "287.862548828125, 7.293853759765625, 85.362548828125",
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1RetryFlushed",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-7",
+          "Ores": {
+            "ORE_003": 1
+          }
+        },
+        "Win": 6,
+        "CombatId": "run-7",
+        "Pending": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 2
+        },
+        "Flushed": true,
+        "IDsMatch": true,
+        "Position": "287.862548828125, 7.293853759765625, 85.362548828125",
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_003": 2,
+          "ORE_004": 1,
+          "ORE_001": 1
+        },
+        "Lobby": false,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1RetrySaved",
+      "OK": true,
+      "Result": {
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 2
+        },
+        "Win": 6,
+        "Ores": {
+          "ORE_003": 2,
+          "ORE_004": 1,
+          "ORE_001": 1
+        }
+      }
+    },
+    {
+      "name": "W1NewBagBack",
+      "OK": true,
+      "Result": {
+        "Seconds": 0.035178299993276596,
+        "Win": 6,
+        "CombatId": "run-8",
+        "Pending": false,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-8",
+          "Ores": []
+        },
+        "Reason": "Returned",
+        "OK": true,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 2
+        },
+        "IDsMatch": true,
+        "Position": "287.861083984375, 7.719058990478516, 12.999991416931152",
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_003": 2,
+          "ORE_004": 1,
+          "ORE_001": 1
+        },
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1NewBagFlushed",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-8",
+          "Ores": []
+        },
+        "Win": 6,
+        "CombatId": "run-8",
+        "Pending": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Flushed": true,
+        "IDsMatch": true,
+        "Position": "287.86376953125, 7.531364917755127, 13.000198364257812",
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_001": 1
+        },
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W2Prepare",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-9",
+          "Ores": []
+        },
+        "Win": 6,
+        "CombatId": "run-9",
+        "Pending": false,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "World": 2,
+        "IDsMatch": true,
+        "Position": "27.98145866394043, 5.534182548522949, 1947.98046875",
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_001": 1
+        },
+        "Lobby": true,
+        "ReturnId": "run-9"
+      }
+    },
+    {
+      "name": "W2Back1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-10",
+          "Ores": []
+        },
+        "Win": 6,
+        "World": 2,
+        "CombatId": "run-10",
+        "Pending": false,
+        "Seconds": 0.033936099964194,
+        "Reason": "Returned",
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "OK": true,
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_001": 1
+        },
+        "BlockedWrites": 1,
+        "Position": "27.981096267700195, 5.719920635223389, 1947.97998046875",
+        "Lobby": true,
+        "ReturnId": "run-10"
+      }
+    },
+    {
+      "name": "W2Walk1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-10",
+          "Ores": []
+        },
+        "Win": 6,
+        "CombatId": "run-10",
+        "Pending": false,
+        "World": 2,
+        "Position": "27.981185913085938, 5.213350772857666, 2020.737548828125",
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Distance": 72.7577896118164,
+        "IDsMatch": true,
+        "Crossed": true,
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_001": 1
+        },
+        "Lobby": false,
+        "ReturnId": "run-10"
+      }
+    },
+    {
+      "name": "W2Add1",
+      "OK": true,
+      "Result": {
+        "World": 2,
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-10",
+          "Ores": {
+            "ORE_021": 1
+          }
+        },
+        "Win": 6,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "CombatId": "run-10",
+        "Pending": false,
+        "ItemOK": true,
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Position": "27.981185913085938, 5.213850498199463, 2020.737548828125",
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_001": 1
+        },
+        "Lobby": false,
+        "ReturnId": "run-10"
+      }
+    },
+    {
+      "name": "W2Fight1",
+      "OK": true,
+      "Result": {
+        "World": 2,
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 3,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-10",
+          "Ores": {
+            "ORE_021": 2
+          }
+        },
+        "Win": 6,
+        "Lobby": false,
+        "CombatId": "run-10",
+        "Pending": false,
+        "Defeated": true,
+        "BlockedWrites": 1,
+        "Items": {
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "AttackAccepted": true,
+        "IDsMatch": true,
+        "Position": "27.920000076293945, 9.100000381469727, 2264.375",
+        "AttackReason": "Combat",
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_001": 1
+        },
+        "Stage": 2,
+        "ReturnId": "run-10"
+      }
+    },
+    {
+      "name": "W2Trophy1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-11",
+          "Ores": []
+        },
+        "Win": 7006,
+        "Returned": true,
+        "CombatId": "run-11",
+        "Pending": false,
+        "World": 2,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Position": "27.981096267700195, 5.787720680236816, 1947.97998046875",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "BlockedWrites": 1,
+        "WinDelta": 7000,
+        "Lobby": true,
+        "ReturnId": "run-11"
+      }
+    },
+    {
+      "name": "W2Flush1",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-11",
+          "Ores": []
+        },
+        "Win": 7006,
+        "CombatId": "run-11",
+        "Pending": false,
+        "World": 2,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Flushed": true,
+        "IDsMatch": true,
+        "Position": "27.98145866394043, 5.534182548522949, 1947.98046875",
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Lobby": true,
+        "ReturnId": "run-11"
+      }
+    },
+    {
+      "name": "W2Stale1",
+      "OK": true,
+      "Result": {
+        "State": {
+          "Bag": {
+            "Items": [],
+            "Count": 0,
+            "Active": true,
+            "Capacity": 5,
+            "WorldId": 2,
+            "RunId": "run-11",
+            "Ores": []
+          },
+          "Win": 7006,
+          "CombatId": "run-11",
+          "Pending": false,
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1,
+            "PROTEIN_COMMON_FIRE": 3
+          },
+          "World": 2,
+          "IDsMatch": true,
+          "Position": "27.98145866394043, 5.534182548522949, 1947.98046875",
+          "BlockedWrites": 1,
+          "Ores": {
+            "ORE_001": 1,
+            "ORE_003": 3,
+            "ORE_004": 1,
+            "ORE_021": 2
+          },
+          "Lobby": true,
+          "ReturnId": "run-11"
+        },
+        "ItemReason": "StaleRun",
+        "ItemOK": false,
+        "OreReason": "StaleRun",
+        "OreOK": false
+      }
+    },
+    {
+      "name": "W2Replay1",
+      "OK": true,
+      "Result": {
+        "State": {
+          "Bag": {
+            "Items": [],
+            "Count": 0,
+            "Active": true,
+            "Capacity": 5,
+            "WorldId": 2,
+            "RunId": "run-11",
+            "Ores": []
+          },
+          "Win": 7006,
+          "CombatId": "run-11",
+          "Pending": false,
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1,
+            "PROTEIN_COMMON_FIRE": 3
+          },
+          "World": 2,
+          "IDsMatch": true,
+          "Position": "27.981096267700195, 5.71818208694458, 1947.97998046875",
+          "BlockedWrites": 1,
+          "Ores": {
+            "ORE_001": 1,
+            "ORE_003": 3,
+            "ORE_004": 1,
+            "ORE_021": 2
+          },
+          "Lobby": true,
+          "ReturnId": "run-11"
+        },
+        "WinDelta": 0
+      }
+    },
+    {
+      "name": "W2Back2",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-12",
+          "Ores": []
+        },
+        "Win": 7006,
+        "World": 2,
+        "CombatId": "run-12",
+        "Pending": false,
+        "Seconds": 0.051961799967102706,
+        "Reason": "Returned",
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "OK": true,
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "BlockedWrites": 1,
+        "Position": "27.981096267700195, 5.723485946655273, 1947.97998046875",
+        "Lobby": true,
+        "ReturnId": "run-12"
+      }
+    },
+    {
+      "name": "W2Walk2",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-12",
+          "Ores": []
+        },
+        "Win": 7006,
+        "CombatId": "run-12",
+        "Pending": false,
+        "World": 2,
+        "Position": "27.981090545654297, 5.293384552001953, 2020.337158203125",
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Distance": 72.35845184326172,
+        "IDsMatch": true,
+        "Crossed": true,
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Lobby": false,
+        "ReturnId": "run-12"
+      }
+    },
+    {
+      "name": "W2Add2",
+      "OK": true,
+      "Result": {
+        "World": 2,
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-12",
+          "Ores": {
+            "ORE_021": 1
+          }
+        },
+        "Win": 7006,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "CombatId": "run-12",
+        "Pending": false,
+        "ItemOK": true,
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Position": "27.981090545654297, 5.293853759765625, 2020.337158203125",
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Lobby": false,
+        "ReturnId": "run-12"
+      }
+    },
+    {
+      "name": "W2Fight2",
+      "OK": true,
+      "Result": {
+        "World": 2,
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 3,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-12",
+          "Ores": {
+            "ORE_018": 1,
+            "ORE_021": 1
+          }
+        },
+        "Win": 7006,
+        "Lobby": false,
+        "CombatId": "run-12",
+        "Pending": false,
+        "Defeated": true,
+        "BlockedWrites": 1,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "AttackAccepted": true,
+        "IDsMatch": true,
+        "Position": "27.920000076293945, 9.100000381469727, 2264.375",
+        "AttackReason": "Combat",
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Stage": 2,
+        "ReturnId": "run-12"
+      }
+    },
+    {
+      "name": "W2Hold2",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 3,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-12",
+          "Ores": {
+            "ORE_018": 1,
+            "ORE_021": 1
+          }
+        },
+        "Win": 7006,
+        "CombatId": "run-12",
+        "Pending": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "World": 2,
+        "IDsMatch": true,
+        "Position": "27.920000076293945, 9.100000381469727, 2264.375",
+        "BlockedWrites": 1,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Lobby": false,
+        "ReturnId": "run-12"
+      }
+    },
+    {
+      "name": "W2FaultGranted",
+      "OK": true,
+      "Result": true
+    },
+    {
+      "name": "W2TrophyHeld",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-13",
+          "Ores": []
+        },
+        "Win": 14006,
+        "Returned": true,
+        "CombatId": "run-13",
+        "Pending": true,
+        "World": 2,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Position": "27.981096267700195, 5.661086082458496, 1947.97998046875",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "BlockedWrites": 2,
+        "WinDelta": 7000,
+        "Lobby": true,
+        "ReturnId": "run-13"
+      }
+    },
+    {
+      "name": "W2NewWalkPending",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-13",
+          "Ores": []
+        },
+        "Win": 14006,
+        "CombatId": "run-13",
+        "Pending": true,
+        "World": 2,
+        "Position": "27.981189727783203, 5.213273048400879, 2020.4188232421875",
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Distance": 72.4390640258789,
+        "IDsMatch": true,
+        "Crossed": true,
+        "BlockedWrites": 2,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Lobby": false,
+        "ReturnId": "run-13"
+      }
+    },
+    {
+      "name": "W2NewLootPending",
+      "OK": true,
+      "Result": {
+        "World": 2,
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-13",
+          "Ores": {
+            "ORE_021": 1
+          }
+        },
+        "Win": 14006,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "CombatId": "run-13",
+        "Pending": true,
+        "ItemOK": true,
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Position": "27.981189727783203, 5.213850498199463, 2020.4188232421875",
+        "BlockedWrites": 2,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Lobby": false,
+        "ReturnId": "run-13"
+      }
+    },
+    {
+      "name": "W2DeathPending",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-14",
+          "Ores": []
+        },
+        "Win": 14006,
+        "CombatId": "run-14",
+        "Pending": true,
+        "World": 2,
+        "Resolved": true,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "BlockedWrites": 2,
+        "IDsMatch": true,
+        "Position": "27.981456756591797, 5.534182548522949, 1947.98046875",
+        "Lost": 2,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Lobby": true,
+        "ReturnId": "run-14"
+      }
+    },
+    {
+      "name": "W2ReleaseGranted",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-14",
+          "Ores": []
+        },
+        "Win": 14006,
+        "CombatId": "run-14",
+        "Pending": true,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 1,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "World": 2,
+        "IDsMatch": true,
+        "Position": "27.98145866394043, 5.534182548522949, 1947.98046875",
+        "BlockedWrites": 2,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 2
+        },
+        "Lobby": true,
+        "ReturnId": "run-14"
+      }
+    },
+    {
+      "name": "W2RetryFlushed",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-14",
+          "Ores": []
+        },
+        "Win": 14006,
+        "CombatId": "run-14",
+        "Pending": false,
+        "World": 2,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 2,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Flushed": true,
+        "IDsMatch": true,
+        "Position": "27.98145866394043, 5.534182548522949, 1947.98046875",
+        "BlockedWrites": 2,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 3
+        },
+        "Lobby": true,
+        "ReturnId": "run-14"
+      }
+    },
+    {
+      "name": "W2FaultEvidence",
+      "OK": true,
+      "Result": {
+        "BlockedWrites": 2,
+        "BeforeRemaining": 0,
+        "AfterRemaining": 0,
+        "GrantedAckLost": 0
+      }
+    },
+    {
+      "name": "W2NormalPrepare",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-15",
+          "Ores": []
+        },
+        "Win": 14006,
+        "CombatId": "run-15",
+        "Pending": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 2,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "World": 2,
+        "IDsMatch": true,
+        "Position": "27.98145866394043, 5.534182548522949, 1947.98046875",
+        "BlockedWrites": 2,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 3
+        },
+        "Lobby": true,
+        "ReturnId": "run-15"
+      }
+    },
+    {
+      "name": "W2NormalAdd",
+      "OK": true,
+      "Result": {
+        "World": 2,
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-15",
+          "Ores": {
+            "ORE_021": 1
+          }
+        },
+        "Win": 14006,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 2,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "CombatId": "run-15",
+        "Pending": false,
+        "ItemOK": true,
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Position": "27.98145866394043, 5.534182548522949, 1947.98046875",
+        "BlockedWrites": 2,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 3
+        },
+        "Lobby": true,
+        "ReturnId": "run-15"
+      }
+    },
+    {
+      "name": "W2NormalFight",
+      "OK": false,
+      "Error": "ServerScriptService.__BackBagQARunner:97: attempt to modify a readonly table\nServerScriptService.__BackBagQARunner:97 function act\nServerScriptService.__BackBagQARunner:147\nServerScriptService.__BackBagQARunner:147\n"
+    },
+    {
+      "name": "W2GrantFaultArm",
+      "OK": true,
+      "Result": true
+    },
+    {
+      "name": "W2GrantHold",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 3,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-15",
+          "Ores": {
+            "ORE_019": 1,
+            "ORE_021": 1
+          }
+        },
+        "Win": 14006,
+        "CombatId": "run-15",
+        "Pending": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 2,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "World": 2,
+        "IDsMatch": true,
+        "Position": "27.920000076293945, 9.100000381469727, 2264.375",
+        "BlockedWrites": 2,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 3
+        },
+        "Lobby": false,
+        "ReturnId": "run-15"
+      }
+    },
+    {
+      "name": "W2NormalTrophyHeld",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-16",
+          "Ores": []
+        },
+        "Win": 21006,
+        "Returned": true,
+        "CombatId": "run-16",
+        "Pending": true,
+        "World": 2,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 2,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Position": "27.981096267700195, 5.736307621002197, 1947.97998046875",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 3
+        },
+        "BlockedWrites": 3,
+        "WinDelta": 7000,
+        "Lobby": true,
+        "ReturnId": "run-16"
+      }
+    },
+    {
+      "name": "W2GrantedNewWalk",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-16",
+          "Ores": []
+        },
+        "Win": 21006,
+        "CombatId": "run-16",
+        "Pending": true,
+        "World": 2,
+        "Position": "27.981176376342773, 5.133787631988525, 2021.52587890625",
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 2,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Distance": 73.54650115966797,
+        "IDsMatch": true,
+        "Crossed": true,
+        "BlockedWrites": 3,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 3
+        },
+        "Lobby": false,
+        "ReturnId": "run-16"
+      }
+    },
+    {
+      "name": "W2GrantedNewLoot",
+      "OK": true,
+      "Result": {
+        "World": 2,
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-16",
+          "Ores": {
+            "ORE_021": 1
+          }
+        },
+        "Win": 21006,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 2,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "CombatId": "run-16",
+        "Pending": true,
+        "ItemOK": true,
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Position": "27.981176376342773, 5.133847713470459, 2021.52587890625",
+        "BlockedWrites": 3,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 3
+        },
+        "Lobby": false,
+        "ReturnId": "run-16"
+      }
+    },
+    {
+      "name": "W2GrantedRelease",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-16",
+          "Ores": {
+            "ORE_021": 1
+          }
+        },
+        "Win": 21006,
+        "CombatId": "run-16",
+        "Pending": true,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 2,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "World": 2,
+        "IDsMatch": true,
+        "Position": "27.981176376342773, 5.133847713470459, 2021.52587890625",
+        "BlockedWrites": 3,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 3
+        },
+        "Lobby": false,
+        "ReturnId": "run-16"
+      }
+    },
+    {
+      "name": "W2GrantedFlushed",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-16",
+          "Ores": {
+            "ORE_021": 1
+          }
+        },
+        "Win": 21006,
+        "CombatId": "run-16",
+        "Pending": false,
+        "World": 2,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 3,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Flushed": true,
+        "IDsMatch": true,
+        "Position": "27.981176376342773, 5.133847713470459, 2021.52587890625",
+        "BlockedWrites": 3,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_019": 1,
+          "ORE_001": 1,
+          "ORE_004": 1,
+          "ORE_021": 4
+        },
+        "Lobby": false,
+        "ReturnId": "run-16"
+      }
+    },
+    {
+      "name": "W2GrantedFaultEvidence",
+      "OK": true,
+      "Result": {
+        "BlockedWrites": 3,
+        "BeforeRemaining": 0,
+        "AfterRemaining": 0,
+        "GrantedAckLost": 1
+      }
+    },
+    {
+      "name": "W2GrantedReplay",
+      "OK": true,
+      "Result": {
+        "State": {
+          "Bag": {
+            "Items": {
+              "W2_GLOVE_UNCOMMON_ICE": 1
+            },
+            "Count": 2,
+            "Active": true,
+            "Capacity": 5,
+            "WorldId": 2,
+            "RunId": "run-16",
+            "Ores": {
+              "ORE_021": 1
+            }
+          },
+          "Win": 21006,
+          "CombatId": "run-16",
+          "Pending": false,
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 3,
+            "PROTEIN_COMMON_FIRE": 3
+          },
+          "World": 2,
+          "IDsMatch": true,
+          "Position": "27.981096267700195, 5.713266372680664, 1947.97998046875",
+          "BlockedWrites": 3,
+          "Ores": {
+            "ORE_003": 3,
+            "ORE_018": 1,
+            "ORE_019": 1,
+            "ORE_001": 1,
+            "ORE_004": 1,
+            "ORE_021": 4
+          },
+          "Lobby": true,
+          "ReturnId": "run-16"
+        },
+        "WinDelta": 0
+      }
+    },
+    {
+      "name": "W2LastBack",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-17",
+          "Ores": []
+        },
+        "Win": 21006,
+        "World": 2,
+        "CombatId": "run-17",
+        "Pending": false,
+        "Seconds": 0.05632480001077056,
+        "Reason": "Returned",
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 3,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "OK": true,
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_019": 1,
+          "ORE_001": 1,
+          "ORE_004": 1,
+          "ORE_021": 4
+        },
+        "BlockedWrites": 3,
+        "Position": "27.981096267700195, 5.725295066833496, 1947.97998046875",
+        "Lobby": true,
+        "ReturnId": "run-17"
+      }
+    },
+    {
+      "name": "W2LastFlush",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-17",
+          "Ores": []
+        },
+        "Win": 21006,
+        "CombatId": "run-17",
+        "Pending": false,
+        "World": 2,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Flushed": true,
+        "IDsMatch": true,
+        "Position": "27.981096267700195, 5.725295066833496, 1947.97998046875",
+        "BlockedWrites": 3,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "Lobby": true,
+        "ReturnId": "run-17"
+      }
+    },
+    {
+      "name": "W1DeathPrepare",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-18",
+          "Ores": []
+        },
+        "Win": 21006,
+        "CombatId": "run-18",
+        "Pending": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "BlockedWrites": 3,
+        "Position": "287.861083984375, 7.720545768737793, 12.999991416931152",
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1DeathAdd",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": {
+            "PROTEIN_COMMON_FIRE": 1
+          },
+          "Count": 2,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-18",
+          "Ores": {
+            "ORE_003": 1
+          }
+        },
+        "Win": 21006,
+        "ItemOK": true,
+        "CombatId": "run-18",
+        "Pending": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "OreOK": true,
+        "OreReason": "Added",
+        "ItemReason": "Added",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "BlockedWrites": 3,
+        "Position": "287.861083984375, 7.720545768737793, 12.999991416931152",
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1Death",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-19",
+          "Ores": []
+        },
+        "Win": 21006,
+        "CombatId": "run-19",
+        "Pending": false,
+        "Resolved": true,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "BlockedWrites": 3,
+        "IDsMatch": true,
+        "Position": "287.86376953125, 7.531364917755127, 13.000198364257812",
+        "Lost": 2,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1DeathStale",
+      "OK": true,
+      "Result": {
+        "State": {
+          "Bag": {
+            "Items": [],
+            "Count": 0,
+            "Active": true,
+            "Capacity": 5,
+            "WorldId": 1,
+            "RunId": "run-19",
+            "Ores": []
+          },
+          "Win": 21006,
+          "CombatId": "run-19",
+          "Pending": false,
+          "Items": {
+            "W2_GLOVE_UNCOMMON_ICE": 4,
+            "PROTEIN_COMMON_FIRE": 3
+          },
+          "IDsMatch": true,
+          "Ores": {
+            "ORE_003": 3,
+            "ORE_018": 1,
+            "ORE_001": 1,
+            "ORE_019": 1,
+            "ORE_004": 1,
+            "ORE_021": 5
+          },
+          "BlockedWrites": 3,
+          "Position": "287.86376953125, 7.531364917755127, 13.000198364257812",
+          "Lobby": true,
+          "World": 1
+        },
+        "ItemReason": "StaleRun",
+        "ItemOK": false,
+        "OreReason": "StaleRun",
+        "OreOK": false
+      }
+    },
+    {
+      "name": "W1EmptyFight",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-19",
+          "Ores": []
+        },
+        "Win": 21006,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "CombatId": "run-19",
+        "Pending": false,
+        "Defeated": true,
+        "Lobby": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "AttackAccepted": true,
+        "IDsMatch": true,
+        "Position": "287.90179443359375, 12.749491691589355, 312.71038818359375",
+        "AttackReason": "Combat",
+        "BlockedWrites": 3,
+        "Stage": 2,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1EmptyTrophy",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-20",
+          "Ores": []
+        },
+        "Win": 21009,
+        "Returned": true,
+        "CombatId": "run-20",
+        "Pending": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Position": "287.861083984375, 7.784605979919434, 12.999991416931152",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "BlockedWrites": 3,
+        "WinDelta": 3,
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W1EmptyFlush",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 1,
+          "RunId": "run-20",
+          "Ores": []
+        },
+        "Win": 21009,
+        "CombatId": "run-20",
+        "Pending": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Flushed": true,
+        "IDsMatch": true,
+        "Position": "287.86376953125, 7.531364917755127, 13.000198364257812",
+        "BlockedWrites": 3,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "Lobby": true,
+        "World": 1
+      }
+    },
+    {
+      "name": "W2EmptyPrepare",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-21",
+          "Ores": []
+        },
+        "Win": 21009,
+        "CombatId": "run-21",
+        "Pending": false,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "World": 2,
+        "IDsMatch": true,
+        "Position": "27.981456756591797, 5.534182548522949, 1947.98046875",
+        "BlockedWrites": 3,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "Lobby": true,
+        "ReturnId": "run-21"
+      }
+    },
+    {
+      "name": "W2EmptyFight",
+      "OK": true,
+      "Result": {
+        "World": 2,
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-21",
+          "Ores": []
+        },
+        "Win": 21009,
+        "Lobby": false,
+        "CombatId": "run-21",
+        "Pending": false,
+        "Defeated": true,
+        "BlockedWrites": 3,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "AttackAccepted": true,
+        "IDsMatch": true,
+        "Position": "27.920000076293945, 9.100000381469727, 2264.375",
+        "AttackReason": "Combat",
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "Stage": 2,
+        "ReturnId": "run-21"
+      }
+    },
+    {
+      "name": "W2EmptyTrophy",
+      "OK": true,
+      "Result": {
+        "Bag": {
+          "Items": [],
+          "Count": 0,
+          "Active": true,
+          "Capacity": 5,
+          "WorldId": 2,
+          "RunId": "run-22",
+          "Ores": []
+        },
+        "Win": 28009,
+        "Returned": true,
+        "CombatId": "run-22",
+        "Pending": false,
+        "World": 2,
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Position": "27.981096267700195, 5.7911481857299805, 1947.97998046875",
+        "IDsMatch": true,
+        "Ores": {
+          "ORE_003": 3,
+          "ORE_018": 1,
+          "ORE_001": 1,
+          "ORE_019": 1,
+          "ORE_004": 1,
+          "ORE_021": 5
+        },
+        "BlockedWrites": 3,
+        "WinDelta": 7000,
+        "Lobby": true,
+        "ReturnId": "run-22"
+      }
+    },
+    {
+      "name": "W2FinalSave",
+      "OK": true,
+      "Result": {
+        "OreJournal": {
+          "Sequence": 7,
+          "Accepted": true,
+          "State": "Granted",
+          "CreatedAt": 1794398882,
+          "ResolvedAt": 1794398882,
+          "OreDelta": {
+            "ORE_021": 1
+          },
+          "ItemDelta": {
+            "W2_GLOVE_UNCOMMON_ICE": 1
+          },
+          "RunId": "run-16"
+        },
+        "Items": {
+          "W2_GLOVE_UNCOMMON_ICE": 4,
+          "PROTEIN_COMMON_FIRE": 3
+        },
+        "Win": 28009,
+        "Ores": {
+          "ORE_001": 1,
+          "ORE_018": 1,
+          "ORE_019": 1,
+          "ORE_003": 3,
+          "ORE_004": 1,
+          "ORE_021": 5
+        }
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "Before: inactive and mismatched after Back",
+      "passed": true
+    },
+    {
+      "name": "Before: walking preserves broken generation",
+      "passed": true
+    },
+    {
+      "name": "Before: both pickups reject StaleRun",
+      "passed": true
+    },
+    {
+      "name": "Before: credited but stuck",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle1 Back",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle1 Walk",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle1 both loot",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle1 native defeat",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle1 Trophy",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle2 Back",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle2 Walk",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle2 both loot",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle2 native defeat",
+      "passed": true
+    },
+    {
+      "name": "W1 cycle2 Trophy",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle1 Back",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle1 Walk",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle1 both loot",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle1 native defeat",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle1 Trophy",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle2 Back",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle2 Walk",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle2 both loot",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle2 native defeat",
+      "passed": true
+    },
+    {
+      "name": "W2 cycle2 Trophy",
+      "passed": true
+    },
+    {
+      "name": "W1 retry exact Items",
+      "passed": true
+    },
+    {
+      "name": "W1 retry exact Ores",
+      "passed": true
+    },
+    {
+      "name": "W1 retry Win unchanged by retry",
+      "passed": true
+    },
+    {
+      "name": "W1 retry new bag separate",
+      "passed": true
+    },
+    {
+      "name": "W2 delayed death exact Items",
+      "passed": true
+    },
+    {
+      "name": "W2 delayed death exact Ores",
+      "passed": true
+    },
+    {
+      "name": "W2 delayed death Win unchanged by retry",
+      "passed": true
+    },
+    {
+      "name": "W2 Granted lost ack exact Items",
+      "passed": true
+    },
+    {
+      "name": "W2 Granted lost ack exact Ores",
+      "passed": true
+    },
+    {
+      "name": "W2 Granted lost ack Win unchanged by retry",
+      "passed": true
+    },
+    {
+      "name": "W2 Granted lost ack new bag separate",
+      "passed": true
+    },
+    {
+      "name": "Granted acknowledgement loss actually injected",
+      "passed": true
+    },
+    {
+      "name": "W1 stale old loot rejected",
+      "passed": true
+    },
+    {
+      "name": "W1 trophy replay no Win",
+      "passed": true
+    },
+    {
+      "name": "W1 death drops unbanked only",
+      "passed": true
+    },
+    {
+      "name": "W1 empty native trophy",
+      "passed": true
+    },
+    {
+      "name": "W1 empty no Items gain",
+      "passed": true
+    },
+    {
+      "name": "W1 empty no Ores gain",
+      "passed": true
+    },
+    {
+      "name": "W2 stale old loot rejected",
+      "passed": true
+    },
+    {
+      "name": "W2 trophy replay no Win",
+      "passed": true
+    },
+    {
+      "name": "W2 death drops unbanked only",
+      "passed": true
+    },
+    {
+      "name": "W2 empty native trophy",
+      "passed": true
+    },
+    {
+      "name": "W2 empty no Items gain",
+      "passed": true
+    },
+    {
+      "name": "W2 empty no Ores gain",
+      "passed": true
+    },
+    {
+      "name": "Final saved Win",
+      "passed": true
+    },
+    {
+      "name": "No helper references",
+      "passed": true
+    },
+    {
+      "name": "Services.RunInventoryService final source",
+      "passed": true
+    },
+    {
+      "name": "Services.RunReturnService final source",
+      "passed": true
+    },
+    {
+      "name": "Services.RunItemBankService final source",
+      "passed": true
+    },
+    {
+      "name": "World.EnemyManager final source",
+      "passed": true
+    },
+    {
+      "name": "Services.TrophyRewardService final source",
+      "passed": true
+    }
+  ]
+}

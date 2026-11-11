@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-11 — Preserve the fresh Battle Bag after Back
+
+Removed RunReturnService's extra Run.Invalidate after Enemy.InitializePlayer. Before/after native Play reproduced and repaired Back → walking → loot → W1/W2 Stage2 Trophy return. Controlled save faults, exact inventory deltas, stale requests and death were checked; canonical unsaved Edit retained. [Evidence and limits](../reports/BackBagReturn_20261111.md).
+
 ## 2026-11-10 — Dumbbell English names and W2 stand layout
 
 Renamed Normal Dumbbell1–12 to Dumbbell1–12, retaining IDs/numbers and W2 names; scoped name translation guards. Repaired W2's9×12 clipped/extra-row layout to the existing W1 9×9 template and connected runtime recreation. Actual images and all12 isolated purchases verified; no place save/publication. [Record](../reports/DumbbellNamesAndWorld2Stands_20261110.md).

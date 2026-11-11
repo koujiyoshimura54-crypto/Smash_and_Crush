@@ -1,6 +1,5 @@
 local Players = game:GetService("Players")
 local Services = script.Parent
-local Run = require(Services.RunInventoryService)
 local Bank = require(Services.RunItemBankService)
 local Enemy = require(game.ServerScriptService.World.EnemyManager)
 local Trophy = require(Services.TrophyRewardService)
@@ -12,9 +11,8 @@ local busy = {}
 local function returnToLobby(player, character, spawn, worldEnemy)
 	-- Reuse the normal World1 reset, never Trophy.collect or its reward path.
 	(worldEnemy or Enemy).InitializePlayer(player)
-	-- InitializePlayer prepares an active run for ordinary respawns. A voluntary
-	-- return ends this run; the next World1 StartRun activates a fresh generation.
-	Run.Invalidate(player)
+	-- Keep the fresh active bag and combat Run ID aligned for walking re-entry.
+	-- Bank.Begin already retained the previous bag as a separate return receipt.
 	Training.StopTraining(player)
 	local hum = character:FindFirstChildOfClass("Humanoid")
 	hum.Health = hum.MaxHealth
