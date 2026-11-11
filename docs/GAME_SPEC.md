@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-12 — AutoTap starts OFF on every join
+
+New and existing players start each loaded session with AutoTap OFF, including records saved with ON. The server publishes OFF before waiting for data and replaces only the loaded AutoTap value before exposing Loaded. Repeated Load of an already loaded session returns without resetting the toggle; normal user toggles, death, respawn and World travel keep their existing behavior. The saved Boolean remains schema-compatible. This supersedes the historical join-time ON default; reset defaults and action/treadmill timing are unchanged. [Focused verification](../reports/AutoTapJoinOff_20261112/REPORT.md).
+
 ## 2026-11-11 — Back return keeps the next active Bag
 
 After accepting the old Bag receipt, Back preserves the fresh active Bag created by Enemy.InitializePlayer, including its matching combat Run ID, just like Trophy return. Walking re-entry can therefore collect loot without another initialization. Old accepted receipts remain separate during save retries; stale drops and death loss retain their existing checks. [Reproduction and verification](../reports/BackBagReturn_20261111.md).

@@ -429,10 +429,10 @@ function PlayerDataService.Get(player)
  local s=sessions[player]
  return s
 end
--- Server-owned preference; the Attribute is a client display mirror only.
+-- Server-owned session toggle; the Attribute is a client display mirror only.
 function PlayerDataService.IsAutoTapEnabled(player)
  local s=sessions[player]
- return not s or not s.Loaded or s.Data.AutoTapEnabled~=false
+ return s~=nil and s.Loaded==true and s.Data.AutoTapEnabled==true
 end
 function PlayerDataService.SetAutoTapEnabled(player,enabled)
  local s=sessions[player]
@@ -689,6 +689,8 @@ function PlayerDataService.Load(player)
    AcquireAttempt={Token=token}}
   sessions[player]=s
  end
+ -- Joining never resumes a saved ON state, including while acquisition yields.
+ player:SetAttribute("AutoTapEnabled",false)
  s.Loading=true
  -- The same acquisition attempt survives an ambiguous response. It may not
  -- steal ownership back if a different server acquired this key meanwhile.
@@ -702,6 +704,7 @@ function PlayerDataService.Load(player)
  end
  local d,validationError=normalize(raw)
  if not d then return false,validationError end
+ d.AutoTapEnabled=false
  s.AdminWinAppliedId=AdminWin.AppliedId(raw)
  s.Loaded=true;s.Data=d;s.Dirty=true;s.LastSave=nil;s.TimeRewardClock=os.clock()
  applyAttributes(player,d)

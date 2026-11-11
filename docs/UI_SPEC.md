@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-12 — AutoTap initialization display
+
+AutoTapButton renders ON only for an explicitly true AutoTapEnabled attribute. Missing/loading state renders OFF with the existing OFF colors; geometry, font, user input and server-driven updates are unchanged. [Focused verification](../reports/AutoTapJoinOff_20261112/REPORT.md).
+
 ## 2026-11-10 — English Dumbbell names and World2 exhibit repair
 
 Shared NORMAL_01–12 names are Dumbbell1–12 (with the existing space before each number); W2 retains World 2 Dumbbell1–12. Only actual name labels opt out of translation. World2's12 exhibition boards now reuse the live World1 GUI through DumbbellStandBillboardTemplate/DumbbellStandPresentation, preserving World2 data and the physical Press purchase path. Actual normal/narrow images, all12 native purchases, gate travel, death and board recreation passed within isolation. [Exact names, Full Paths and limits](../reports/DumbbellNamesAndWorld2Stands_20261110.md).

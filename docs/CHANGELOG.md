@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-12 — Start AutoTap OFF on every join
+
+PlayerDataService now ignores saved ON only when initializing a new loaded session; AutoTapClient renders ON only for explicit true. Existing same-session lifecycle, controls and timing are retained. Native isolated joins and focused regressions passed; canonical unsaved Edit preserved. [Evidence](../reports/AutoTapJoinOff_20261112/REPORT.md).
+
 ## 2026-11-11 — Preserve the fresh Battle Bag after Back
 
 Removed RunReturnService's extra Run.Invalidate after Enemy.InitializePlayer. Before/after native Play reproduced and repaired Back → walking → loot → W1/W2 Stage2 Trophy return. Controlled save faults, exact inventory deltas, stale requests and death were checked; canonical unsaved Edit retained. [Evidence and limits](../reports/BackBagReturn_20261111.md).

@@ -1,0 +1,44 @@
+{
+  "SourceCount": 493,
+  "ChangedAfterFixtureRemoval": [],
+  "PlaceId": 126576845524886,
+  "UniverseId": 10765181857,
+  "IsolationRestored": 39,
+  "HelpersRemaining": [],
+  "State": "Stopped / focused Edit; existing unsaved edits retained",
+  "Protected": [
+    {
+      "FullPath": "ServerScriptService.Services.RunReturnService",
+      "UnchangedFromPostFixBaseline": true
+    },
+    {
+      "FullPath": "ServerScriptService.Services.StrengthRewardService",
+      "UnchangedFromPostFixBaseline": true
+    },
+    {
+      "FullPath": "StarterGui.StrengthGui.StrengthRewardClient",
+      "UnchangedFromPostFixBaseline": true
+    },
+    {
+      "FullPath": "StarterGui.StrengthGui.InventoryNotificationClient",
+      "UnchangedFromPostFixBaseline": true
+    },
+    {
+      "FullPath": "ServerScriptService.World.EnemyManager",
+      "UnchangedFromPostFixBaseline": true
+    },
+    {
+      "FullPath": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "UnchangedFromPostFixBaseline": true
+    },
+    {
+      "FullPath": "ReplicatedStorage.Modules.World1BossPresentation",
+      "UnchangedFromPostFixBaseline": true
+    },
+    {
+      "FullPath": "StarterPlayer.StarterPlayerScripts.World.Stage01AppearanceClient",
+      "UnchangedFromPostFixBaseline": true
+    }
+  ],
+  "SavePublishCalled": false
+}

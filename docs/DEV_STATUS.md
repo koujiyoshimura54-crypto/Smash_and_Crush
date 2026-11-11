@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — AutoTap joins OFF
+
+Two live Source changes initialize server state OFF before/after load and display missing attributes as OFF. Two isolated native three-client launches passed new/saved-OFF/saved-ON joins, independent saved-ON reload, toggle/manual/walking and death/World-travel regressions. Helpers removed;493 shipping Sources verified, unsaved Edit retained. Prior PR #1 candidate stays in Studio and is excluded from this main change. [Record and limits](../reports/AutoTapJoinOff_20261112/REPORT.md).
+
 ## 2026-11-11 — Back / walking re-entry Battle Bag fix
 
 Reproduced the inactive/mismatched Bag and W1 Stage2 credited=true Bank:StaleRun in canonical Place126576845524886. Removed only Back's redundant post-initialization invalidation. Two isolated native cycles per World, normal/empty returns, stale requests, death, delayed saving and confirmed-grant acknowledgement loss passed;55 evidence assertions passed. Helpers removed, stopped/focused unsaved Edit. Production/multiplayer persistence remains unverified; manual Save/Publish required. [English record](../reports/BackBagReturn_20261111.md).

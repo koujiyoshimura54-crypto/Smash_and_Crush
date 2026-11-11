@@ -1,0 +1,138 @@
+{
+  "Checks": [
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 0,
+        "Attribute": false
+      },
+      "Name": "Join OFF profile -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 50
+      },
+      "Name": "Loading OFF profile -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 0,
+        "Attribute": false
+      },
+      "Name": "No initial automatic gain -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 11,
+        "Attribute": false
+      },
+      "Name": "Join OFF profile -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 97
+      },
+      "Name": "Loading OFF profile -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 11,
+        "Attribute": false
+      },
+      "Name": "No initial automatic gain -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 26,
+        "Attribute": false
+      },
+      "Name": "Join OFF profile -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 168
+      },
+      "Name": "Loading OFF profile -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 26,
+        "Attribute": false
+      },
+      "Name": "No initial automatic gain -3",
+      "Passed": true
+    }
+  ],
+  "Input": "Native clients through existing game Remotes; no OS input",
+  "InitialObservations": [
+    {
+      "Profile": -1,
+      "Client": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Server": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 50
+      }
+    },
+    {
+      "Profile": -2,
+      "Client": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Server": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 97
+      }
+    },
+    {
+      "Profile": -3,
+      "Client": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Server": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 168
+      }
+    }
+  ],
+  "Passed": true,
+  "Profiles": []
+}

@@ -1,0 +1,434 @@
+{
+  "Checks": [
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 0,
+        "Attribute": false
+      },
+      "Name": "Join OFF profile -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 71
+      },
+      "Name": "Loading OFF profile -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 0,
+        "Attribute": false
+      },
+      "Name": "No initial automatic gain -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 11,
+        "Attribute": false
+      },
+      "Name": "Join OFF profile -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 127
+      },
+      "Name": "Loading OFF profile -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 11,
+        "Attribute": false
+      },
+      "Name": "No initial automatic gain -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 23,
+        "Attribute": false
+      },
+      "Name": "Join OFF profile -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 207
+      },
+      "Name": "Loading OFF profile -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 23,
+        "Attribute": false
+      },
+      "Name": "No initial automatic gain -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "State": {
+          "SawOnBeforeInput": false,
+          "Text": "OFF",
+          "Attribute": false,
+          "GradientTop": "0.662745, 0.635294, 0.705882"
+        },
+        "Distance": 15.16302490234375
+      },
+      "Name": "OFF walking no gain -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "SawOnBeforeInput": false,
+        "Text": "ON",
+        "Attribute": true,
+        "GradientTop": "1, 0.905882, 0.294118"
+      },
+      "Name": "Toggle ON -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Before": 0,
+        "After": 1
+      },
+      "Name": "Manual while ON -1",
+      "Passed": true
+    },
+    {
+      "Name": "Stationary ON no gain -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Delta": 1,
+        "Walk": {
+          "State": {
+            "SawOnBeforeInput": false,
+            "Text": "ON",
+            "Attribute": true,
+            "GradientTop": "1, 0.905882, 0.294118"
+          },
+          "Distance": 15.168487548828125
+        }
+      },
+      "Name": "ON walking gains -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Name": "Toggle OFF -1",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "State": {
+          "SawOnBeforeInput": false,
+          "Text": "OFF",
+          "Attribute": false,
+          "GradientTop": "0.662745, 0.635294, 0.705882"
+        },
+        "Distance": 15.162994384765625
+      },
+      "Name": "OFF walking no gain -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "SawOnBeforeInput": false,
+        "Text": "ON",
+        "Attribute": true,
+        "GradientTop": "1, 0.905882, 0.294118"
+      },
+      "Name": "Toggle ON -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Before": 11,
+        "After": 12
+      },
+      "Name": "Manual while ON -2",
+      "Passed": true
+    },
+    {
+      "Name": "Stationary ON no gain -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Delta": 2,
+        "Walk": {
+          "State": {
+            "SawOnBeforeInput": false,
+            "Text": "ON",
+            "Attribute": true,
+            "GradientTop": "1, 0.905882, 0.294118"
+          },
+          "Distance": 14.86846923828125
+        }
+      },
+      "Name": "ON walking gains -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Name": "Toggle OFF -2",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "State": {
+          "SawOnBeforeInput": false,
+          "Text": "OFF",
+          "Attribute": false,
+          "GradientTop": "0.662745, 0.635294, 0.705882"
+        },
+        "Distance": 15.16302490234375
+      },
+      "Name": "OFF walking no gain -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "SawOnBeforeInput": false,
+        "Text": "ON",
+        "Attribute": true,
+        "GradientTop": "1, 0.905882, 0.294118"
+      },
+      "Name": "Toggle ON -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Before": 23,
+        "After": 24
+      },
+      "Name": "Manual while ON -3",
+      "Passed": true
+    },
+    {
+      "Name": "Stationary ON no gain -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "Delta": 2,
+        "Walk": {
+          "State": {
+            "SawOnBeforeInput": false,
+            "Text": "ON",
+            "Attribute": true,
+            "GradientTop": "1, 0.905882, 0.294118"
+          },
+          "Distance": 15.061126708984375
+        }
+      },
+      "Name": "ON walking gains -3",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Name": "Toggle OFF -3",
+      "Passed": true
+    },
+    {
+      "Name": "Repeated Load within same session keeps ON",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "SawOnBeforeInput": false,
+        "Text": "ON",
+        "Attribute": true,
+        "GradientTop": "1, 0.905882, 0.294118"
+      },
+      "Name": "Respawn retains true",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "GradientTop": "1, 0.905882, 0.294118",
+        "SawOnBeforeInput": false,
+        "Text": "ON",
+        "Attribute": true,
+        "World": 2
+      },
+      "Name": "World travel retains true",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "GradientTop": "0.662745, 0.635294, 0.705882",
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "World": 2
+      },
+      "Name": "Respawn retains false",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "GradientTop": "0.662745, 0.635294, 0.705882",
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "World": 1
+      },
+      "Name": "World travel retains false",
+      "Passed": true
+    },
+    {
+      "Name": "Memory save retains ON as legacy field",
+      "Passed": true
+    },
+    {
+      "Name": "Unloaded authority OFF",
+      "Passed": true
+    },
+    {
+      "Evidence": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Name": "Saved ON new session reload OFF",
+      "Passed": true
+    }
+  ],
+  "Input": "Native clients through existing game Remotes; no OS input",
+  "InitialObservations": [
+    {
+      "Profile": -1,
+      "Client": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Server": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 71
+      }
+    },
+    {
+      "Profile": -2,
+      "Client": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Server": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 127
+      }
+    },
+    {
+      "Profile": -3,
+      "Client": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "Server": {
+        "LoadingEnabled": false,
+        "BeforeInputEnabled": false,
+        "LoadingSamples": 207
+      }
+    }
+  ],
+  "Passed": true,
+  "Profiles": [
+    {
+      "Profile": -1,
+      "UI": {
+        "GradientTop": "0.662745, 0.635294, 0.705882",
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "World": 1
+      },
+      "State": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 3,
+        "Attribute": false,
+        "World": 1
+      }
+    },
+    {
+      "Profile": -2,
+      "UI": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "State": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 14,
+        "Attribute": false
+      }
+    },
+    {
+      "Profile": -3,
+      "UI": {
+        "SawOnBeforeInput": false,
+        "Text": "OFF",
+        "Attribute": false,
+        "GradientTop": "0.662745, 0.635294, 0.705882"
+      },
+      "State": {
+        "Enabled": false,
+        "StoredSession": false,
+        "Strength": 26,
+        "Attribute": false
+      }
+    }
+  ]
+}
