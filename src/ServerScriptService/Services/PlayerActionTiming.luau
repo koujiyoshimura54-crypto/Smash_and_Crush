@@ -22,7 +22,7 @@ state=function(p)
  local ch=p.Character
  local hum=ch and ch:FindFirstChildOfClass("Humanoid")
  local world=p:GetAttribute("CurrentWorld")
- local enabled=p:GetAttribute("AutoTapEnabled")~=false
+ local enabled=p:GetAttribute("AutoTapEnabled")==true
  local living=ch~=nil and ch~=s.Removing and ch.Parent~=nil and hum~=nil and hum.Health>0
  -- Attribute signals may be deferred: synchronize here too, and reset only once.
  if s.Character~=ch or s.World~=world or s.Living~=living then
@@ -44,7 +44,7 @@ end
 function M.CanAct(p,manual)
  local s=state(p);local now=os.clock()
  return alive(p,s) and now-s.Last>=Config.MinimumInterval
-  and (manual or (p:GetAttribute("AutoTapEnabled")~=false and now>=s.NextAuto))
+  and (manual or (p:GetAttribute("AutoTapEnabled")==true and now>=s.NextAuto))
 end
 -- Call only after a real, non-yielding gain/hit commits. Failed attempts never call this.
 function M.RecordSuccess(p,manual,combat)

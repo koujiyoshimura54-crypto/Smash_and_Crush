@@ -242,7 +242,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {HigherOreMergeTutorial=assert(HigherOreTutorial.Normalize(nil,true)),EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {HigherOreMergeTutorial=assert(HigherOreTutorial.Normalize(nil,true)),EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=false,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -283,7 +283,7 @@ local function normalize(raw)
   if not merge then return nil,mergeError end
   d.ItemMergeJournal=merge
   if raw.AutoTapEnabled~=nil and typeof(raw.AutoTapEnabled)~="boolean" then return nil,"Invalid AutoTapEnabled" end
-  d.AutoTapEnabled=raw.AutoTapEnabled~=false
+  d.AutoTapEnabled=raw.AutoTapEnabled==true
   if raw.SelectedSizeTier~=nil and (not finite(raw.SelectedSizeTier) or raw.SelectedSizeTier%1~=0 or raw.SelectedSizeTier<0 or raw.SelectedSizeTier>SizeChangeConfig.MaxTier) then return nil,"Invalid SelectedSizeTier" end
   d.SelectedSizeTier=raw.SelectedSizeTier or 0
   local capacity,capacityError=CapacityConfig.Normalize(raw.InventoryCapacity)
@@ -395,7 +395,7 @@ local function applyAttributes(player,d)
  player:SetAttribute("EquippedSpeed",d.EquippedSpeed)
  player:SetAttribute("SpeedUpgradePurchasePending",false)
  player:SetAttribute("PetSavePending",false)
- player:SetAttribute("AutoTapEnabled",d.AutoTapEnabled~=false)
+ player:SetAttribute("AutoTapEnabled",d.AutoTapEnabled==true)
  player:SetAttribute("SelectedSizeTier",d.SelectedSizeTier)
  player:SetAttribute("InventoryCapacity",d.InventoryCapacity)
  player:SetAttribute("HighestUnlockedWorld",d.HighestUnlockedWorld)
@@ -432,7 +432,7 @@ end
 -- Server-owned preference; the Attribute is a client display mirror only.
 function PlayerDataService.IsAutoTapEnabled(player)
  local s=sessions[player]
- return not s or not s.Loaded or s.Data.AutoTapEnabled~=false
+ return s~=nil and s.Loaded==true and s.Data.AutoTapEnabled==true
 end
 function PlayerDataService.SetAutoTapEnabled(player,enabled)
  local s=sessions[player]
@@ -955,7 +955,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  local rewardPresence=StrengthRewardState.Checkpoint(d.StrengthRewards,s.OwnerToken,s.StrengthDepartureTime or os.time(),departureStrength,s.StrengthClosing==true).Presence
  local payload={
   StrengthPresence=rewardPresence,
-  AutoTapEnabled=d.AutoTapEnabled~=false,
+  AutoTapEnabled=d.AutoTapEnabled==true,
   SelectedSizeTier=d.SelectedSizeTier,
   InventoryCapacity=d.InventoryCapacity,
   SpeedUpgradeStage=d.SpeedUpgradeStage,

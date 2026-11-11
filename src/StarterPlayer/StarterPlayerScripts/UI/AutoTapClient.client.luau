@@ -49,7 +49,7 @@ local function layout()
  HUDLayout.Mount(strengthGui).Refresh()
 end
 local function refresh()
- local enabled=player:GetAttribute("AutoTapEnabled")~=false
+ local enabled=player:GetAttribute("AutoTapEnabled")==true
  state.Text=enabled and "ON" or "OFF"
  gradient.Color=enabled
   and ColorSequence.new(Color3.fromRGB(255,231,75),Color3.fromRGB(255,151,34))
