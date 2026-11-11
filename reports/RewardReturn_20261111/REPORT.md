@@ -65,4 +65,3 @@ All three instrumented Sources were restored, all **39** external-service substi
 Studio is stopped in **Edit**, with changes **unsaved**. No OS input, foregrounding, Save/Publish, rbxl writeback or Studio closure occurred. **The user must manually Save/Publish to update the public game.**
 
 Delivery: this change is committed on top of dd3531e and pushed normally to origin/main; the commit identifier is supplied in the completion message. No force push.
-
