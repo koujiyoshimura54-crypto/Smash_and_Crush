@@ -13,6 +13,8 @@ local panel, row = RewardUI.Build(gui)
 local remote = RS.Remotes:WaitForChild("StrengthRewards")
 local prices, closed, busy, view = {}, {}, false, nil
 local alive = true
+local viewRevision, activeClaim = 0, nil
+local claimTitle = panel.Claim.Title.Text
 -- The existing HP display is Roblox CoreGui. Replace that one display with the
 -- same Humanoid values; HUDLayout exclusively owns the replacement's geometry.
 local health = gui.StrengthLevelHUD:WaitForChild("PlayerHealth")
@@ -43,13 +45,12 @@ task.spawn(function()
 		task.wait(.5)
 	end
 end)
-local function request(action, value)
-	local ok, result = pcall(remote.InvokeServer, remote, action, value)
+local function request(action, value, quiet, token)
+	local ok, result = pcall(remote.InvokeServer, remote, action, value, token)
 	if ok and type(result)=="table" then
-		Feedback.ObserveStrength(result.View or result)
-		if action~="View" and result.Ok==false then Feedback.Denied(result.Code) end
+		if not quiet and action~="View" and result.Ok==false then Feedback.Denied(result.Code) end
 	end
-	return ok and type(result) == "table" and result or {Ok = false}
+	return ok and type(result) == "table" and result or {Ok = false, Code = "Retry"}
 end
 local function paint()
 	if not view then return end
@@ -59,6 +60,7 @@ local function paint()
 		panel.Title.Text = RewardUI.DurationTitle(reward.Seconds)
 		panel.Amount.Text = "+" .. Format.Format(reward.Amount) .. " STRENGTH"
 	end
+	panel.Claim.Title.Text = activeClaim and "Claiming..." or claimTitle
 	panel.Claim.Button.Active = not busy
 	panel.Double.Button.Active = not busy and reward ~= nil and not view.Pending and prices[Config.DoubleOffline.ProductId] ~= nil
 	for _, product in ipairs(Config.Packs) do
@@ -67,9 +69,53 @@ local function paint()
 		card.Purchase.Active = not busy and view.Ready and not view.Pending and prices[product.ProductId] ~= nil
 	end
 end
+local function applyView(result)
+	if not alive or not result.Offers or result.SessionToken ~= player:GetAttribute("ForgeSessionToken") then return false end
+	view = result
+	Feedback.ObserveStrength(result)
+	paint()
+	return true
+end
 local function refresh()
+	if not alive or activeClaim then return end
+	viewRevision += 1
+	local version = viewRevision
 	local result = request("View")
-	if result.Offers then view = result; paint() end
+	if version == viewRevision and not activeClaim then applyView(result) end
+end
+local retryable = {Busy=true, DataSaving=true, InventorySavePending=true, Retry=true}
+local function claim()
+	if busy or not view or not view.Reward then return end
+	local token = {RewardId=view.Reward.Id, Session=view.SessionToken}
+	if token.Session ~= player:GetAttribute("ForgeSessionToken") then return end
+	activeClaim=token; busy=true; viewRevision+=1; paint()
+	local function current()
+		return alive and activeClaim==token and token.Session==player:GetAttribute("ForgeSessionToken")
+	end
+	local failure = "Retry"
+	local deadline = os.clock()+45
+	for attempt=1,10 do
+		if not current() or os.clock()>=deadline then break end
+		-- A lost RemoteFunction response must not leave input locked forever.
+		local result, completed
+		task.spawn(function() result=request("Claim",token.RewardId,true,token.Session); completed=true end)
+		local responseDeadline=math.min(deadline,os.clock()+10)
+		repeat task.wait(.05) until completed or not current() or os.clock()>=responseDeadline
+		if not current() then return end
+		result=completed and result or {Ok=false,Code="Retry"}
+		if result.Ok and result.View and applyView(result.View) then
+			closed[token.RewardId]=true
+			failure=nil
+			break
+		end
+		failure=result.Code or "Retry"
+		if not retryable[failure] then break end
+		local untilTime=math.min(deadline,os.clock()+math.min(2,.5*2^(attempt-1)))
+		repeat task.wait(.05) until not current() or os.clock()>=untilTime
+	end
+	if not current() then return end
+	activeClaim=nil; busy=false; paint()
+	if failure then Feedback.Denied(failure); task.defer(refresh) end
 end
 local function purchase(id)
 	if busy or not view or view.Pending or not prices[id] then return end
@@ -85,10 +131,7 @@ local function purchase(id)
 	busy = false; refresh()
 end
 panel.Close.Button.Activated:Connect(function() if view and view.Reward then closed[view.Reward.Id] = true end; panel.Visible = false end)
-panel.Claim.Button.Activated:Connect(function()
-	if busy or not view or not view.Reward then return end
-	busy = true; paint(); request("Claim", view.Reward.Id); busy = false; refresh()
-end)
+panel.Claim.Button.Activated:Connect(claim)
 panel.Double.Button.Activated:Connect(function() purchase(Config.DoubleOffline.ProductId) end)
 for _, product in ipairs(Config.Packs) do row[tostring(product.ProductId)].Purchase.Activated:Connect(function() purchase(product.ProductId) end) end
 local function fetchPrice(product, button)
@@ -107,6 +150,11 @@ local function fetchPrice(product, button)
 end
 for _, product in ipairs(Config.Packs) do task.spawn(fetchPrice, product, row[tostring(product.ProductId)].Purchase) end
 task.spawn(fetchPrice, Config.DoubleOffline, panel.Double.Price)
+local sessionChanged = player:GetAttributeChangedSignal("ForgeSessionToken"):Connect(function()
+	activeClaim=nil; busy=false; view=nil; viewRevision+=1
+	panel.Visible=false; panel.Claim.Title.Text=claimTitle
+	task.defer(refresh)
+end)
 local revision = player:GetAttributeChangedSignal("StrengthRewardRevision"):Connect(function() task.defer(refresh) end)
-script.Destroying:Once(function() alive = false; revision:Disconnect(); clearHealth(); healthAdded:Disconnect(); healthRemoving:Disconnect() end)
+script.Destroying:Once(function() alive = false; activeClaim=nil; viewRevision+=1; sessionChanged:Disconnect(); revision:Disconnect(); clearHealth(); healthAdded:Disconnect(); healthRemoving:Disconnect() end)
 task.spawn(function() while alive do refresh(); task.wait(2) end end)

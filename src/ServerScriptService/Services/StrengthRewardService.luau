@@ -9,7 +9,7 @@ local State = require(script.Parent.StrengthRewardState)
 local Reference = require(script.Parent.StrengthReference)
 local Passes = require(script.Parent.GamePassService)
 local M = {}
-local locks, prompts, ready, nextRequest = {}, {}, {}, {}
+local locks, prompts, ready, nextRequest, nextView, claims = {}, {}, {}, {}, {}, {}
 local initialized = false
 local function sessionFor(player)
 	local s = Data.Get(player)
@@ -34,18 +34,32 @@ function M.View(player)
 	result.Level=s.Data.Level
 	return result
 end
-function M.Request(player, action, value)
-	if locks[player] or os.clock() < (nextRequest[player] or 0) then return {Ok = false, Code = "Busy"} end
-	nextRequest[player] = os.clock() + .25
+function M.Request(player, action, value, token)
 	local s = sessionFor(player)
 	if not s then return {Ok = false, Code = "DataNotLoaded"} end
-	if action == "View" then return M.View(player) end
+	-- Polling never consumes the mutation allowance or holds the claim lock.
+	if action == "View" then
+		if os.clock() < (nextView[player] or 0) then return {Ok = false, Code = "Busy"} end
+		nextView[player] = os.clock() + .25
+		return M.View(player)
+	end
+	if locks[player] or os.clock() < (nextRequest[player] or 0) then return {Ok = false, Code = "Busy"} end
+	nextRequest[player] = os.clock() + .25
 	locks[player] = true
 	local ok, result = pcall(function()
 		local op = {Id = Http:GenerateGUID(false)}
 		if action == "Claim" then
 			if type(value) ~= "string" then return {Ok = false, Code = "InvalidReward"} end
-			op.Action, op.RewardId = "Claim", value
+			if token ~= s.ForgeToken then return {Ok = false, Code = "SaveSuperseded"} end
+			-- Retry the same immutable operation across an uncertain save. A reset or
+			-- a new session/reward must never inherit the previous operation.
+			local claim = claims[player]
+			if not claim or claim.Session ~= s or claim.Token ~= s.ForgeToken or claim.RewardId ~= value then
+				claim = {Session = s, Token = s.ForgeToken, RewardId = value, Operation = op}
+				op.Action, op.RewardId = "Claim", value
+				claims[player] = claim
+			end
+			op = claim.Operation
 		elseif action == "Prepare" then
 			-- Test sessions may display offers but never open a real Robux checkout.
 			if RunService:IsStudio() then return {Ok = false, Code = "StudioCheckoutDisabled"} end
@@ -136,7 +150,7 @@ function M.Init()
 	end
 	Players.PlayerAdded:Connect(joined)
 	for _, player in ipairs(Players:GetPlayers()) do joined(player) end
-	Players.PlayerRemoving:Connect(function(player) locks[player] = nil; prompts[player] = nil; ready[player] = nil; nextRequest[player] = nil end)
+	Players.PlayerRemoving:Connect(function(player) locks[player] = nil; prompts[player] = nil; ready[player] = nil; nextRequest[player] = nil; nextView[player] = nil; claims[player] = nil end)
 	Marketplace.PromptProductPurchaseFinished:Connect(function(userId, productId, purchased)
 		if purchased then return end -- only a receipt grants anything
 		local player = Players:GetPlayerByUserId(userId)

@@ -131,15 +131,16 @@ local function refresh()
  if alive and version==revision and ok then return applyState(state) end
  return owned~=nil
 end
-local function acquired(itemId)
+local function acquired(itemId, deferRender)
  local item=Master.Get(itemId)
  if not item then return end
  itemOwned[itemId]=math.max(1,itemOwned[itemId] or 0)
- itemPage:SetAttribute("UnseenItem_"..itemId,true)
- itemPage:SetAttribute("UnseenRarity_"..item.Rarity,true)
- if panel.Visible then inventoryShown[itemId]=true end
- if panel.Visible and itemPage.Visible then itemTabShown[itemId]=true end
- render()
+ -- Derive notification attributes from seen history; never mark a seen item new.
+ if not NotificationState.IsSeen("Items",itemId) then
+  if panel.Visible then inventoryShown[itemId]=true end
+  if panel.Visible and itemPage.Visible then itemTabShown[itemId]=true end
+ end
+ if not deferRender then render() end
 end
 local function currentItemIds()
  local out={}
@@ -256,8 +257,9 @@ end))
 table.insert(connections,RS.Remotes:WaitForChild("RunLootBanked").OnClientEvent:Connect(function(state)
  if typeof(state)~="table" or state.Loaded~=true or typeof(state.OwnedItems)~="table" then return end
  for id,count in pairs(state.OwnedItems) do
-  if count>0 then acquired(id) end
+  if count>0 then acquired(id,true) end
  end
+ render()
 end))
 local function inventoryResult(result)
  if typeof(result)=="table" then applyState(result.State) end

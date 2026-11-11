@@ -411,10 +411,18 @@ Forge.Completed:Connect(function(op,response)
  page.Status.Text=response.Success and "" or tostring(response.Code)
  refresh();updateSale()
 end)
-RS.Remotes:WaitForChild("RunLootBanked").OnClientEvent:Connect(function()refresh();Forge.Refresh()end)
+-- Forge's confirmed snapshot already includes Items/equipment and refreshes this page.
+RS.Remotes:WaitForChild("RunLootBanked").OnClientEvent:Connect(function()Forge.Refresh()end)
 -- Notification attributes survive card rebuilds and inventory close/reopen.
+local notificationRenderQueued=false
 page.AttributeChanged:Connect(function(name)
- if string.sub(name,1,11)=="UnseenItem_" or string.sub(name,1,13)=="UnseenRarity_" then render() end
+ if string.sub(name,1,11)~="UnseenItem_" and string.sub(name,1,13)~="UnseenRarity_" then return end
+ if notificationRenderQueued then return end
+ notificationRenderQueued=true
+ task.defer(function()
+  notificationRenderQueued=false
+  if script.Parent then render() end
+ end)
 end)
 RS.Remotes:WaitForChild("EnemyDropGachaResult").OnClientEvent:Connect(function(result)
  if typeof(result)=="table" and result.OwnerUserId==player.UserId and result.Outcome=="ITEM" then refresh() end

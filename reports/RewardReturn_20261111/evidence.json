@@ -1,0 +1,527 @@
+{
+  "date": "2026-11-11",
+  "placeId": 126576845524886,
+  "universeId": 10765181857,
+  "baselineCommit": "dd3531e",
+  "mode": "Native Studio solo Play, memory-only persistence/payment adapters, programmatic UI callbacks; injected faults/seeded inventory are simulations.",
+  "claimBaseline": {
+    "view": "offers returned",
+    "claim": "Busy",
+    "strengthDelta": 0
+  },
+  "claims": [
+    {
+      "name": "ViewThenClick",
+      "seconds": 0.6664563999511302,
+      "requests": 1,
+      "during": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "Burst",
+      "seconds": 0.6337272999808192,
+      "requests": 1,
+      "during": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "DataSaving",
+      "seconds": 2.234707499970682,
+      "requests": 3,
+      "during": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "SaveDelay",
+      "seconds": 1.9337686999933794,
+      "requests": 1,
+      "during": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "FailBefore",
+      "seconds": 1.1505023000063375,
+      "requests": 2,
+      "during": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "LostSaveAck",
+      "seconds": 1.0850140999536961,
+      "requests": 2,
+      "during": {
+        "strength": 0,
+        "diskStrength": 123,
+        "paid": 0,
+        "diskPaid": 123,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "LostResponse",
+      "seconds": 1.0655285000102594,
+      "requests": 2,
+      "during": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "OldView",
+      "seconds": 2.7172944999765605,
+      "requests": 1,
+      "during": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "Fatal",
+      "seconds": 0.2839046000735834,
+      "requests": 1,
+      "during": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": false,
+        "visible": true,
+        "title": "CLAIM"
+      },
+      "after": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": false,
+        "visible": true,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "Reset",
+      "seconds": 1.2672666000435129,
+      "requests": 1,
+      "during": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": false,
+        "visible": true,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "SlowResponse",
+      "seconds": 11.050390899996273,
+      "requests": 2,
+      "during": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "PendingOther",
+      "seconds": 2.184936700039543,
+      "requests": 3,
+      "during": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 123,
+        "diskStrength": 123,
+        "paid": 123,
+        "diskPaid": 123,
+        "busy": false,
+        "visible": false,
+        "title": "CLAIM"
+      }
+    },
+    {
+      "name": "Exhausted",
+      "seconds": 18.466475300025195,
+      "requests": 10,
+      "during": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": true,
+        "visible": true,
+        "title": "Claiming..."
+      },
+      "after": {
+        "strength": 0,
+        "diskStrength": 0,
+        "paid": 0,
+        "diskPaid": 0,
+        "busy": false,
+        "visible": true,
+        "title": "CLAIM"
+      }
+    }
+  ],
+  "double": {
+    "OK": true,
+    "Mode": "Pure state simulation, no checkout",
+    "Checks": 11
+  },
+  "performance": [
+    {
+      "kind": "Empty",
+      "ownedTypes": 1,
+      "delay": 0,
+      "failures": 0,
+      "before": {
+        "notificationRenders": 0,
+        "itemRenders": 0,
+        "itemRenderMs": 0,
+        "returnMs": 18.269062042236328,
+        "saveMs": 0
+      },
+      "after": {
+        "notificationRenders": 0,
+        "itemRenders": 0,
+        "itemRenderMs": 0,
+        "returnMs": 17.528057098388672,
+        "arrivalMs": 60.7450008392334,
+        "controlsMs": 62.12115287780762,
+        "saveMs": 0,
+        "inventoryMs": null,
+        "maxFrameMs": 85.72109788656235,
+        "p95FrameMs": 85.72109788656235
+      }
+    },
+    {
+      "kind": "Items",
+      "ownedTypes": 1,
+      "delay": 0,
+      "failures": 0,
+      "before": {
+        "notificationRenders": 1,
+        "itemRenders": 6,
+        "itemRenderMs": 128.7919000023976,
+        "returnMs": 12.272834777832031,
+        "saveMs": 0.2269744873046875
+      },
+      "after": {
+        "notificationRenders": 1,
+        "itemRenders": 1,
+        "itemRenderMs": 21.633299998939037,
+        "returnMs": 18.158912658691406,
+        "arrivalMs": 62.11113929748535,
+        "controlsMs": 63.01712989807129,
+        "saveMs": 0.15091896057128906,
+        "inventoryMs": 133.45003128051758,
+        "maxFrameMs": 87.10580319166183,
+        "p95FrameMs": 87.10580319166183
+      }
+    },
+    {
+      "kind": "Ores",
+      "ownedTypes": 1,
+      "delay": 0,
+      "failures": 0,
+      "before": {
+        "notificationRenders": 1,
+        "itemRenders": 7,
+        "itemRenderMs": 134.05750005040318,
+        "returnMs": 17.019033432006836,
+        "saveMs": 0.18906593322753906
+      },
+      "after": {
+        "notificationRenders": 1,
+        "itemRenders": 2,
+        "itemRenderMs": 40.30949994921684,
+        "returnMs": 18.587112426757812,
+        "arrivalMs": 56.71501159667969,
+        "controlsMs": 57.46603012084961,
+        "saveMs": 0.17595291137695312,
+        "inventoryMs": 183.95113945007324,
+        "maxFrameMs": 94.05060112476349,
+        "p95FrameMs": 94.05060112476349
+      }
+    },
+    {
+      "kind": "Mixed",
+      "ownedTypes": 1,
+      "delay": 0,
+      "failures": 0,
+      "before": {
+        "notificationRenders": 1,
+        "itemRenders": 7,
+        "itemRenderMs": 142.37460016738623,
+        "returnMs": 16.026020050048828,
+        "saveMs": 0.23698806762695312
+      },
+      "after": {
+        "notificationRenders": 1,
+        "itemRenders": 2,
+        "itemRenderMs": 43.979099951684475,
+        "returnMs": 17.050981521606445,
+        "arrivalMs": 55.7100772857666,
+        "controlsMs": 56.34498596191406,
+        "saveMs": 0.17189979553222656,
+        "inventoryMs": 168.79796981811523,
+        "maxFrameMs": 151.68319642543793,
+        "p95FrameMs": 151.68319642543793
+      }
+    },
+    {
+      "kind": "Items",
+      "ownedTypes": 90,
+      "delay": 0,
+      "failures": 0,
+      "before": {
+        "notificationRenders": 90,
+        "itemRenders": 360,
+        "itemRenderMs": 9206.197401043028,
+        "returnMs": 14.687061309814453,
+        "saveMs": 0.32401084899902344
+      },
+      "after": {
+        "notificationRenders": 1,
+        "itemRenders": 1,
+        "itemRenderMs": 25.84499993827194,
+        "returnMs": 19.6990966796875,
+        "arrivalMs": 76.59316062927246,
+        "controlsMs": 77.43716239929199,
+        "saveMs": 0.19598007202148438,
+        "inventoryMs": 151.41010284423828,
+        "maxFrameMs": 97.86369651556015,
+        "p95FrameMs": 97.86369651556015
+      }
+    },
+    {
+      "kind": "Mixed",
+      "ownedTypes": 90,
+      "delay": 0.6,
+      "failures": 1,
+      "before": {
+        "notificationRenders": 90,
+        "itemRenders": 360,
+        "itemRenderMs": 9016.978000174277,
+        "returnMs": 11.152982711791992,
+        "saveMs": 1949.153184890747
+      },
+      "after": {
+        "notificationRenders": 1,
+        "itemRenders": 2,
+        "itemRenderMs": 53.00760001409799,
+        "returnMs": 18.178939819335938,
+        "arrivalMs": 53.20882797241211,
+        "controlsMs": 53.94792556762695,
+        "saveMs": 1932.9900741577148,
+        "inventoryMs": 2131.3118934631348,
+        "maxFrameMs": 108.83740335702896,
+        "p95FrameMs": 69.81469690799713
+      }
+    }
+  ],
+  "frameCaveat": "Before matrix Stop snapshots could precede trailing RenderStepped stalls. A separate initial 90-type run captured 363 item renders/9285.68 ms and a 13505.93 ms frame. After Stop waited two RenderStepped ticks. Timings are local Studio samples, not production guarantees.",
+  "race": {
+    "ok": true,
+    "walkDistance": 3.1687543392181396,
+    "anchored": false,
+    "unconfirmedItems": [],
+    "items": {
+      "GLOVE_COMMON_ICE": 1,
+      "PROTEIN_COMMON_FIRE": 1
+    },
+    "ores": {
+      "ORE_003": 1,
+      "ORE_001": 1
+    },
+    "notifications": 2,
+    "staleDrop": "StaleRun",
+    "replayCode": "StaleRun",
+    "idsMatch": true
+  },
+  "unseen": {
+    "OK": true,
+    "First": {
+      "Flags": {
+        "PROTEIN_COMMON_FIRE": true,
+        "TRAININGBELT_COMMON_ELECTRIC": true,
+        "GLOVE_COMMON_ICE": true
+      },
+      "Badge": true,
+      "TrueWrites": 3
+    },
+    "Seen": {
+      "Flags": {
+        "PROTEIN_COMMON_FIRE": false,
+        "TRAININGBELT_COMMON_ELECTRIC": false,
+        "GLOVE_COMMON_ICE": false
+      },
+      "Badge": false,
+      "TrueWrites": 3
+    },
+    "Reacquired": {
+      "Flags": {
+        "PROTEIN_COMMON_FIRE": false,
+        "TRAININGBELT_COMMON_ELECTRIC": false,
+        "GLOVE_COMMON_ICE": false
+      },
+      "Badge": false,
+      "TrueWrites": 0
+    }
+  },
+  "cleanup": {
+    "restoredAdapters": 39,
+    "restoredInstrumentedSources": 3,
+    "changedProductionSources": 4,
+    "guardedBossAndBackSourcesUnchanged": 5,
+    "helperInstances": 0,
+    "mode": "Edit, unsaved"
+  }
+}
