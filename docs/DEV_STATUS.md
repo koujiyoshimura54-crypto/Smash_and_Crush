@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — Stage2 Boss outcome instrumentation
+
+Applied FirstPlayAnalyticsService, BossAttackService and RunReturnService to canonical unsaved Studio126576845524886.101 isolated outcome/integration assertions,59 transport assertions,68 existing Stage2 assertions and38 legacy assertions against both versions pass. Old four-funnel/custom output matches; both outcomes add at most4 Funnel rows.499 Sources checked:3 changed,496 unchanged. No helpers installed, Play started/stopped, Save/Publish or Place-file writes. Actual gameplay/Creator Hub receipt remain unverified;20-player instantaneous stress still drops620/1000 rows at the unchanged deadline. [Full Paths, overlap interpretation, evidence and manual Hub procedure](../reports/FirstStage2BossOutcomes_20261112/REPORT.md).
+
 ## 2026-11-12 — Ore-only five-slot merge input strip
 
 Ore merge now shows five unit positions from the existing selection, with #5B9FE6 next-required emphasis only at zero/one and quiet optional slots at two or more. Existing evaluation/transactions and Item/Pet/sale presentation are retained; loading is not executable. Fixed the existing touch-scroll timestamp typo exposed by verification. 234 behavior, 20 integration, 5,736 regression and 384 geometry assertions passed in isolated Edit tests. Four-device 0/1/2/5 screenshots are retained as requested; physical input, gameplay Play and live transactions remain unverified. [Full Paths, images and limits](../reports/OreSlots_20261112.md). Studio unsaved; manual Save/Publish required.

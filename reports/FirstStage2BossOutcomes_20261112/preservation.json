@@ -1,0 +1,14 @@
+{
+  "Before": 499,
+  "After": 499,
+  "Changed": [
+    "ServerScriptService.Services.FirstPlayAnalyticsService",
+    "ServerScriptService.Services.RunReturnService",
+    "ServerScriptService.World.BossAttackService"
+  ],
+  "Removed": [],
+  "Unchanged": 496,
+  "Documents": [],
+  "Orientation": "Enum.ScreenOrientation.LandscapeSensor",
+  "ProtectedSourceFingerprints": {"ReplicatedStorage.Config.World1BossConfig":{"Before":[2517,1296232001,1953409951],"After":[2517,1296232001,1953409951]},"ReplicatedStorage.Modules.LevelProgression":{"Before":[2253,2308645183,3961795197],"After":[2253,2308645183,3961795197]},"ReplicatedStorage.Modules.HUDLayout":{"Before":[30229,2553757785,2057350851],"After":[30229,2553757785,2057350851]},"ReplicatedStorage.Modules.MergeShopView":{"Before":[43714,3280352035,3926216673],"After":[43714,3280352035,3926216673]},"ServerScriptService.Services.RunItemBankService":{"Before":[7347,793624603,2600645055],"After":[7347,793624603,2600645055]},"ServerScriptService.Services.TrophyRewardService":{"Before":[15249,2559780680,732604302],"After":[15249,2559780680,732604302]},"StarterGui.StrengthGui.RunReturnClient":{"Before":[7202,1137429254,1194639316],"After":[7202,1137429254,1194639316]}}
+}

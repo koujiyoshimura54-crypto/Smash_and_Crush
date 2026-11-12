@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-12 — Stage2 Boss outcomes, Phase 1.1–1.3
+
+Added MTF_FirstStage2BossDeath_v1 and MTF_FirstStage2BossBack_v1 with shared effective-damage starts, actual lethal-hit attribution and exact successful Back placement correlation. Existing funnel outputs and gameplay preserved in isolated comparison;101 outcome,59 transport,68 Stage2 and38 legacy checks passed. Canonical Studio unsaved; no Play/Hub verification or publication. [Evidence and limits](../reports/FirstStage2BossOutcomes_20261112/REPORT.md).
+
 ## 2026-11-12 — Ore-only five-slot merge input strip
 
 Ore merge now shows five unit positions from the existing selection, with #5B9FE6 next-required emphasis only at zero/one and quiet optional slots at two or more. Existing evaluation/transactions and Item/Pet/sale presentation are retained; loading is not executable. Fixed the existing touch-scroll timestamp typo exposed by verification. 234 behavior, 20 integration, 5,736 regression and 384 geometry assertions passed in isolated Edit tests. Four-device 0/1/2/5 screenshots are retained as requested; physical input, gameplay Play and live transactions remain unverified. [Full Paths, images and limits](../reports/OreSlots_20261112.md). Studio unsaved; manual Save/Publish required.

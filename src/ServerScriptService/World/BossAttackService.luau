@@ -1,3 +1,4 @@
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local contexts={}
 local function forWorld(worldId)
  assert(worldId==1 or worldId==2,"Unsupported world")
@@ -202,6 +203,8 @@ RunService.Heartbeat:Connect(function()
      -- Deliberately bypass ForceField only for this formal Boss combat.
      -- The spawn ForceField instance and lobby protection remain intact.
      r.Humanoid.Health=math.max(0,before-r.Behavior.Damage)
+     -- r retains the validated attacker/stage/character if Died already reset the run.
+     Analytics.Stage2BossHit(player,worldId,r,before,r.Humanoid.Health)
     end
     r.LastAttack={Index=due,ScheduledAt=r.StartedAt+due*r.Behavior.AttackInterval,
      ActualAt=Workspace:GetServerTimeNow(),Hit=hit,Distance=distance,Reach=reach,

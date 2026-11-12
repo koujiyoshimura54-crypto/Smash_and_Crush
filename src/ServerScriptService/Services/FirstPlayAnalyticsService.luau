@@ -12,11 +12,13 @@ local states=setmetatable({},{__mode="k"})
 local remote=RS.Remotes:FindFirstChild("FirstPlayAnalytics") or Instance.new("RemoteEvent")
 remote.Name="FirstPlayAnalytics";remote.Parent=RS.Remotes
 local release="PlaceVersion:"..tostring(game.PlaceVersion)
-local names={Entry="MTF_Entry_v1",Combat="MTF_FirstCombat_v1",Ore="MTF_FirstOreMerge_v1",Stage2="MTF_FirstStage2Combat_v1"}
+local names={Entry="MTF_Entry_v1",Combat="MTF_FirstCombat_v1",Ore="MTF_FirstOreMerge_v1",Stage2="MTF_FirstStage2Combat_v1",
+ Stage2Death="MTF_FirstStage2BossDeath_v1",Stage2Back="MTF_FirstStage2BossBack_v1"}
 local steps={Entry={"ServerJoined","DataLoaded","ClientPlayable"},
  Combat={"Playable","EnteredStage1","ClearedFirstWall","ClearedStage1Walls","DamagedStage1Boss","DefeatedStage1Boss"},
  Ore={"Eligible","OreViewOpened","ValidSelection","MergeRequested","MergeCommitted"},
- Stage2={"EnteredStage2","ClearedFirstWall","ClearedStage2Walls","DamagedStage2Boss","DefeatedStage2Boss"}}
+ Stage2={"EnteredStage2","ClearedFirstWall","ClearedStage2Walls","DamagedStage2Boss","DefeatedStage2Boss"},
+ Stage2Death={"DamagedStage2Boss","KilledByStage2Boss"},Stage2Back={"DamagedStage2Boss","BackBeforeStage2BossDefeat"}}
 local function fields(cohort,detail)
  return {[Enum.AnalyticsCustomFieldKeys.CustomField01.Name]=release,
   [Enum.AnalyticsCustomFieldKeys.CustomField02.Name]=cohort,
@@ -42,6 +44,16 @@ local function step(p,s,f,index)
  return true
 end
 local function new(s) return s and s.Loaded and s.Cohort=="New" and not s.Reset end
+local function stage2OutcomeEligible(s)
+ return new(s) and not s.Skip and not s.Stage2Defeated
+end
+-- These two funnels add no elapsed/value events and never repair a missing prefix.
+local function outcomeStep(p,s,f,index)
+ if not stage2OutcomeEligible(s) or s.Progress[f]~=index-1 then return end
+ s.Progress[f]=index
+ Transport.Enqueue(p,s,{Kind="Funnel",Name=names[f],Session=s.Id,Step=index,StepName=steps[f][index],
+  Fields=fields("NewFirstSession","Normal")})
+end
 local function data(p)
  local d=require(script.Parent.PlayerDataService)
  local s=d.Get(p)
@@ -67,7 +79,7 @@ end
 function M.Join(p)
  if states[p] then return end
  local s={Id=Http:GenerateGUID(false),Joined=os.clock(),Cohort="Unknown",Loaded=false,
-  Progress={Entry=0,Combat=0,Ore=0,Stage2=0},Broken={},Seen={},Queue={},SendBroken={},Failed=0,Dropped=0,
+  Progress={Entry=0,Combat=0,Ore=0,Stage2=0,Stage2Death=0,Stage2Back=0},Broken={},Seen={},Queue={},SendBroken={},Failed=0,Dropped=0,
   Connections={},ClientTokens=8,ClientAt=os.clock(),ClientSequence=0}
  states[p]=s
  p:SetAttribute("MTFSession",s.Id)
@@ -108,6 +120,16 @@ function M.Placed(p,c,revision)
  s.PlacementCharacter=c;s.PlacementRevision=revision
  if new(s) and s.Return and s.Return.Character==c and revision>s.Return.Revision then
   custom(p,s,"ReturnArrived","ReturnLobbyArrived")
+ end
+ local back=s.Stage2BackPlacement
+ if back and back.Character==c and back.Revision==revision then
+  s.Stage2BackPlacement=nil
+  if stage2OutcomeEligible(s) and p.Parent==Players and c==living(p)
+   and (p:GetAttribute("CurrentWorld") or 1)==back.World
+   and p:GetAttribute("RunInventoryId")==back.ReturnRunId
+   and c:GetAttribute("SpawnPlacementRevision")==revision then
+   outcomeStep(p,s,"Stage2Back",2)
+  end
  end
 end
 function M.Playable(p,c,revision)
@@ -155,6 +177,8 @@ end
 function M.Combat(p,worldId,stage,index)
  local s=states[p]
  if worldId~=1 or (stage~=1 and stage~=2) or not new(s) or index<2 or index>6 then return end
+ -- Latch the actual defeat even if its funnel prefix was missed. Never reset on a run reset.
+ if stage==2 and index==6 then s.Stage2Defeated=true;s.Stage2BackPlacement=nil end
  local funnel=stage==2 and "Stage2" or "Combat"
  local i=stage==2 and index-1 or index
  -- Existing server hooks use 2=entry, 3/4=walls, 5=effective damage, 6=defeat.
@@ -164,10 +188,46 @@ function M.Combat(p,worldId,stage,index)
  local detail=stage==2 and "Observed:Stage2:"..steps.Stage2[i] or "Observed:"..steps.Combat[i]
  if s.Skip or s.Broken[funnel] then custom(p,s,key,detail)
  else
-  step(p,s,funnel,i)
+  local advanced=step(p,s,funnel,i)
+  if stage==2 and i==4 and advanced then
+   outcomeStep(p,s,"Stage2Death",1)
+   outcomeStep(p,s,"Stage2Back",1)
+  end
   -- Keep the actual out-of-order Stage2 observation, without inventing prior steps.
   if stage==2 and s.Broken.Stage2 then custom(p,s,key,detail) end
  end
+end
+-- Only BossAttackService calls this, immediately after its validated, in-range HP write.
+-- The captured attack survives synchronous Died/reset handlers; do not reread CurrentStage.
+function M.Stage2BossHit(p,worldId,attack,before,after)
+ local s=states[p]
+ if not stage2OutcomeEligible(s) or worldId~=1 or attack.Stage~=2
+  or p.Parent~=Players or p.Character~=attack.Character or not attack.Enemy
+  or attack.Humanoid.Parent~=attack.Character
+  or attack.Character:FindFirstChildOfClass("Humanoid")~=attack.Humanoid
+  or not (before>0 and before-attack.Behavior.Damage<=0 and after==0 and attack.Humanoid.Health==0) then return end
+ outcomeStep(p,s,"Stage2Death",2)
+end
+-- RunReturnService supplies a validated current source run, before streaming or reset.
+function M.CaptureStage2Back(p,worldId,stage,character,runId,combatState)
+ local s=states[p]
+ if not stage2OutcomeEligible(s) or s.Progress.Stage2Back~=1 or worldId~=1 or stage~=2
+  or p.Parent~=Players or character~=living(p) then return nil end
+ return {Session=s.Id,World=worldId,Stage=stage,Character=character,RunId=runId,CombatState=combatState}
+end
+-- MoveToLobby succeeded. Await its existing authoritative placement acknowledgement,
+-- without blocking return, banking, or saving and without reusing the first ReturnAccepted.
+function M.Stage2BackPlaced(p,source,token,returnRunId)
+ local s=states[p]
+ if not source or not stage2OutcomeEligible(s) or s.Id~=source.Session or s.Progress.Stage2Back~=1
+  or source.World~=1 or source.Stage~=2 or token.RunId~=source.RunId or token.Character~=source.Character
+  or not token.Accepted or p.Parent~=Players or p.Character~=source.Character
+  or (p:GetAttribute("CurrentWorld") or 1)~=source.World or not returnRunId or returnRunId==source.RunId
+  or p:GetAttribute("RunInventoryId")~=returnRunId then return end
+ local c=source.Character;local h=c:FindFirstChildOfClass("Humanoid")
+ if not h or h.Health<=0 or not c:GetAttribute("LobbySpawnPlaced") then return end
+ s.Stage2BackPlacement={Character=c,World=source.World,Stage=source.Stage,SourceRunId=source.RunId,ReturnRunId=returnRunId,
+  Revision=c:GetAttribute("SpawnPlacementRevision")}
 end
 function M.Skipped(p)
  local s=states[p];if not new(s) then return end

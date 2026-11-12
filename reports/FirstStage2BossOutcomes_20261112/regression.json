@@ -1,0 +1,362 @@
+{
+  "Passed": true,
+  "Geometry": {
+    "Stage2Floors": 3,
+    "Source": "Read-only current canonical geometry"
+  },
+  "Stage1FloorParity": 3,
+  "Checks": [
+    {
+      "Name": "All existing state assertions pass unchanged",
+      "Passed": true
+    },
+    {
+      "Name": "Existing three funnels and custom event stream identical",
+      "Passed": true
+    },
+    {
+      "Name": "Stage2 starts neither at join nor load",
+      "Passed": true
+    },
+    {
+      "Name": "Normal Stage2 five steps once, independent of Merge and Playable",
+      "Passed": true
+    },
+    {
+      "Name": "Stage2 stable step/session 1",
+      "Passed": true
+    },
+    {
+      "Name": "Join-origin elapsed seconds 1",
+      "Passed": true
+    },
+    {
+      "Name": "Stage2 stable step/session 2",
+      "Passed": true
+    },
+    {
+      "Name": "Join-origin elapsed seconds 2",
+      "Passed": true
+    },
+    {
+      "Name": "Stage2 stable step/session 3",
+      "Passed": true
+    },
+    {
+      "Name": "Join-origin elapsed seconds 3",
+      "Passed": true
+    },
+    {
+      "Name": "Stage2 stable step/session 4",
+      "Passed": true
+    },
+    {
+      "Name": "Join-origin elapsed seconds 4",
+      "Passed": true
+    },
+    {
+      "Name": "Stage2 stable step/session 5",
+      "Passed": true
+    },
+    {
+      "Name": "Join-origin elapsed seconds 5",
+      "Passed": true
+    },
+    {
+      "Name": "Completed Stage2 reaches are not emitted again after skip",
+      "Passed": true
+    },
+    {
+      "Name": "Death/respawn/retry retain session and completed steps",
+      "Passed": true
+    },
+    {
+      "Name": "Return/lobby/re-entry retain same participation",
+      "Passed": true
+    },
+    {
+      "Name": "Existing excluded from Stage2",
+      "Passed": true
+    },
+    {
+      "Name": "Unknown excluded from Stage2",
+      "Passed": true
+    },
+    {
+      "Name": "Unloaded excluded",
+      "Passed": true
+    },
+    {
+      "Name": "Reset excluded",
+      "Passed": true
+    },
+    {
+      "Name": "Reloaded different profile excluded",
+      "Passed": true
+    },
+    {
+      "Name": "World2 Stage2 and other stages excluded",
+      "Passed": true
+    },
+    {
+      "Name": "Stage attribute alone does not prove entry",
+      "Passed": true
+    },
+    {
+      "Name": "Dead and anchored root rejected for Stage2 entry",
+      "Passed": true
+    },
+    {
+      "Name": "Foreign root rejected",
+      "Passed": true
+    },
+    {
+      "Name": "No client Stage2 step gateway",
+      "Passed": true
+    },
+    {
+      "Name": "World exclusion did not poison later World1 flow",
+      "Passed": true
+    },
+    {
+      "Name": "Skip keeps only observed normal prefix 0",
+      "Passed": true
+    },
+    {
+      "Name": "Skip classified once 0",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 0:1",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 0:2",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 0:3",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 0:4",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 0:5",
+      "Passed": true
+    },
+    {
+      "Name": "Skip keeps only observed normal prefix 1",
+      "Passed": true
+    },
+    {
+      "Name": "Skip classified once 1",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 1:2",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 1:3",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 1:4",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 1:5",
+      "Passed": true
+    },
+    {
+      "Name": "Skip keeps only observed normal prefix 2",
+      "Passed": true
+    },
+    {
+      "Name": "Skip classified once 2",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 2:3",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 2:4",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 2:5",
+      "Passed": true
+    },
+    {
+      "Name": "Skip keeps only observed normal prefix 4",
+      "Passed": true
+    },
+    {
+      "Name": "Skip classified once 4",
+      "Passed": true
+    },
+    {
+      "Name": "Skipped reach once 4:5",
+      "Passed": true
+    },
+    {
+      "Name": "Missing step never backfilled 1",
+      "Passed": true
+    },
+    {
+      "Name": "Ordering exception once 1",
+      "Passed": true
+    },
+    {
+      "Name": "Missing step never backfilled 2",
+      "Passed": true
+    },
+    {
+      "Name": "Ordering exception once 2",
+      "Passed": true
+    },
+    {
+      "Name": "Missing step never backfilled 3",
+      "Passed": true
+    },
+    {
+      "Name": "Ordering exception once 3",
+      "Passed": true
+    },
+    {
+      "Name": "Missing step never backfilled 4",
+      "Passed": true
+    },
+    {
+      "Name": "Ordering exception once 4",
+      "Passed": true
+    },
+    {
+      "Name": "Departure ends observation",
+      "Passed": true
+    },
+    {
+      "Name": "Later join does not resume first session",
+      "Passed": true
+    },
+    {
+      "Name": "Stage2 send failure suppresses later Stage2 sends",
+      "Passed": true
+    },
+    {
+      "Name": "Stage2 failure leaves other funnels working",
+      "Passed": true
+    },
+    {
+      "Name": "Actual service normal four funnels and auxiliaries total48",
+      "Passed": true
+    },
+    {
+      "Name": "Stage1 physical predicate unchanged Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.5.Floor",
+      "Passed": true
+    },
+    {
+      "Name": "Stage1 physical predicate unchanged Workspace.GeneratedMap.BattleCorridor.Stage01.Floor",
+      "Passed": true
+    },
+    {
+      "Name": "Stage1 physical predicate unchanged Workspace.GeneratedMap.BattleCorridor.Stage01.WalkableGeometry.Floor",
+      "Passed": true
+    },
+    {
+      "Name": "Actual floor entry Workspace.GeneratedMap.BattleCorridor.Stage02.WalkableGeometry.Floor",
+      "Passed": true
+    },
+    {
+      "Name": "Actual floor entry Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.5.Floor",
+      "Passed": true
+    },
+    {
+      "Name": "Actual floor entry Workspace.GeneratedMap.BattleCorridor.Stage02.Floor",
+      "Passed": true
+    }
+  ],
+  "LegacyAssertions": 38,
+  "Kind": "Native Luau isolated Edit simulation; no Play/network/data writes",
+  "Cases": {
+    "Normal": {
+      "Steps": [
+        {
+          "Step": 1,
+          "Fields": {
+            "CustomField01": "PlaceVersion:559",
+            "CustomField03": "Normal",
+            "CustomField02": "NewFirstSession"
+          },
+          "Name": "MTF_FirstStage2Combat_v1",
+          "StepName": "EnteredStage2",
+          "Kind": "Funnel",
+          "UserId": -4055,
+          "Session": "isolated--4056"
+        },
+        {
+          "Step": 2,
+          "Fields": {
+            "CustomField01": "PlaceVersion:559",
+            "CustomField03": "Normal",
+            "CustomField02": "NewFirstSession"
+          },
+          "Name": "MTF_FirstStage2Combat_v1",
+          "StepName": "ClearedFirstWall",
+          "Kind": "Funnel",
+          "UserId": -4055,
+          "Session": "isolated--4056"
+        },
+        {
+          "Step": 3,
+          "Fields": {
+            "CustomField01": "PlaceVersion:559",
+            "CustomField03": "Normal",
+            "CustomField02": "NewFirstSession"
+          },
+          "Name": "MTF_FirstStage2Combat_v1",
+          "StepName": "ClearedStage2Walls",
+          "Kind": "Funnel",
+          "UserId": -4055,
+          "Session": "isolated--4056"
+        },
+        {
+          "Step": 4,
+          "Fields": {
+            "CustomField01": "PlaceVersion:559",
+            "CustomField03": "Normal",
+            "CustomField02": "NewFirstSession"
+          },
+          "Name": "MTF_FirstStage2Combat_v1",
+          "StepName": "DamagedStage2Boss",
+          "Kind": "Funnel",
+          "UserId": -4055,
+          "Session": "isolated--4056"
+        },
+        {
+          "Step": 5,
+          "Fields": {
+            "CustomField01": "PlaceVersion:559",
+            "CustomField03": "Normal",
+            "CustomField02": "NewFirstSession"
+          },
+          "Name": "MTF_FirstStage2Combat_v1",
+          "StepName": "DefeatedStage2Boss",
+          "Kind": "Funnel",
+          "UserId": -4055,
+          "Session": "isolated--4056"
+        }
+      ],
+      "NoMergeDependency": true
+    }
+  },
+  "NormalEventBudget": {
+    "Additional": 12,
+    "QueueCapacity": 64,
+    "AfterStage2": 48,
+    "BeforeStage2": 36
+  }
+}

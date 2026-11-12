@@ -1,5 +1,13 @@
 # Isolated FirstPlayAnalytics verification
 
+## Boss outcomes — isolated Edit only, 2026-11-12
+
+`Stage2Outcomes.luau` returns `function(sources,deps)`. Supply current Sources as Service/Attack/Return/Transport/Run/Bank; use the same modules from main `a8b65952e03e6f775d47cb28809e191ee6beee0c` as Baseline/AttackBaseline/ReturnBaseline. deps contains the pure OreConfig/OreMerge/InventoryCounts values. All gameplay modules execute as copied text with fake Players, characters, clock, placement, data and API adapters. Only the old Ore location predicate is replaced with a logical fixture. No test Instance, Remote, Script, save operation or API call is installed in the DataModel. Stream/ack changes are deterministic injected continuation boundaries, not a network Play test. The real return, run inventory, bank, Boss heartbeat damage and Analytics Sources execute; physical range, placement and durable saves are adapters.
+
+`Stage2OutcomesTransport.luau` returns `function(transportSource)` and checks both new names, overflow, send failures, independent prefix fences,50-row admission and20×46 versus20×50 saturation with a fake clock/API. The existing Stage2Matrix was also run with Baseline=a8b6595 and only its normal-budget assertion/label changed in memory from46 to48 (the two new starts; that fixture never observes the new outcomes). Its historical normal-budget Additional metadata is adjusted to12 relative to the original36-row three-funnel route. All other assertions remain unchanged. StateMatrix's38 assertions run against both versions.
+
+The committed result JSON and [report](../../reports/FirstStage2BossOutcomes_20261112/REPORT.md) distinguish simulated checks from actual gameplay and Hub delivery. Do not start/stop the user's Play or follow the older Play-launch instructions for this task.
+
 ## Stage2 addition — Edit-only, 2026-11-12
 
 For the Stage2 task, do NOT follow the older Play-launch instructions below. The user prohibits starting/stopping their Play. Run Stage2Matrix.luau and Stage2Transport.luau through native Edit loadstring, with copied Sources; install no Script, Remote or isolation adapter in the DataModel.

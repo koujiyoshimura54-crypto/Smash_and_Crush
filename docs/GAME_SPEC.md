@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-12 — First Stage2 Boss death and Back funnels
+
+Added two two-step New first-session funnels from the existing accepted Stage2 Boss damage observation: actual lethal Boss attack and confirmed living Back arrival before the first defeat. Join-scoped progress and a permanent-for-this-join defeat latch survive retries. Completions overlap; do not sum them as departures or undefeated players. Three live-derived server Sources changed; balance, return/save behavior and all UI are retained. [Schema](FIRST_PLAY_ANALYTICS.md), [isolated verification and unverified Play/Hub scope](../reports/FirstStage2BossOutcomes_20261112/REPORT.md). Studio remains unsaved.
+
 ## 2026-11-12 — Ore-only five-slot merge input strip
 
 Ore merge now shows five unit positions from the existing selection, with #5B9FE6 next-required emphasis only at zero/one and quiet optional slots at two or more. Existing evaluation/transactions and Item/Pet/sale presentation are retained; loading is not executable. Fixed the existing touch-scroll timestamp typo exposed by verification. 234 behavior, 20 integration, 5,736 regression and 384 geometry assertions passed in isolated Edit tests. Four-device 0/1/2/5 screenshots are retained as requested; physical input, gameplay Play and live transactions remain unverified. [Full Paths, images and limits](../reports/OreSlots_20261112.md). Studio unsaved; manual Save/Publish required.

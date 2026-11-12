@@ -1,0 +1,691 @@
+{
+  "Transport": {
+    "Passed": true,
+    "Cases": {
+      "Normal": {
+        "Events": 50,
+        "QueueCapacity": 64
+      },
+      "Saturation": {
+        "Players": 20,
+        "Dropped": 620,
+        "Events": 1000,
+        "RatePerMinute": 520,
+        "Sent": 380,
+        "MaxQueue": 50,
+        "SimulatedSeconds": 30.000000000000124
+      },
+      "Overflow": {
+        "LaterOtherFunnelDelivered": true,
+        "Dropped": 1
+      },
+      "BaselineSaturation": {
+        "Players": 20,
+        "Dropped": 540,
+        "Events": 920,
+        "RatePerMinute": 520,
+        "Sent": 380,
+        "MaxQueue": 46,
+        "SimulatedSeconds": 30.000000000000124
+      },
+      "Failure": {
+        "Failed": 1,
+        "Retries": 0
+      }
+    },
+    "Checks": [
+      {
+        "Name": "50-event full normal participation fits existing 64 queue",
+        "Passed": true
+      },
+      {
+        "Name": "Enqueue is deferred and non-blocking",
+        "Passed": true
+      },
+      {
+        "Name": "Normal burst delivers without drops",
+        "Passed": true
+      },
+      {
+        "Name": "Overflow capped, first missing funnel fenced",
+        "Passed": true
+      },
+      {
+        "Name": "Overflow does not block other funnels",
+        "Passed": true
+      },
+      {
+        "Name": "Thrown send is caught once without retry",
+        "Passed": true
+      },
+      {
+        "Name": "Failed Stage2 suppresses later steps, Ore still sends",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 1",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 2",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 3",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 4",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 5",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 6",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 7",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 8",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 9",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 10",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 11",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 12",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 13",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 14",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 15",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 16",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 17",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 18",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 19",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 20",
+        "Passed": true
+      },
+      {
+        "Name": "Saturated shared budget uses bounded wait/drop",
+        "Passed": true
+      },
+      {
+        "Name": "Every stress row either sent or locally dropped",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 1",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 2",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 3",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 4",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 5",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 6",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 7",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 8",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 9",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 10",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 11",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 12",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 13",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 14",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 15",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 16",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 17",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 18",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 19",
+        "Passed": true
+      },
+      {
+        "Name": "Stress queue drains 20",
+        "Passed": true
+      },
+      {
+        "Name": "Saturated shared budget uses bounded wait/drop",
+        "Passed": true
+      },
+      {
+        "Name": "Every stress row either sent or locally dropped",
+        "Passed": true
+      },
+      {
+        "Name": "Disabled analytics queues nothing",
+        "Passed": true
+      },
+      {
+        "Name": "MTF_FirstStage2BossDeath_v1 failed first step fences terminal",
+        "Passed": true
+      },
+      {
+        "Name": "MTF_FirstStage2BossDeath_v1 failed terminal is not retried",
+        "Passed": true
+      },
+      {
+        "Name": "MTF_FirstStage2BossDeath_v1 missing queued first step never backfills",
+        "Passed": true
+      },
+      {
+        "Name": "MTF_FirstStage2BossBack_v1 failed first step fences terminal",
+        "Passed": true
+      },
+      {
+        "Name": "MTF_FirstStage2BossBack_v1 failed terminal is not retried",
+        "Passed": true
+      },
+      {
+        "Name": "MTF_FirstStage2BossBack_v1 missing queued first step never backfills",
+        "Passed": true
+      },
+      {
+        "Name": "One new funnel failure does not poison the other",
+        "Passed": true
+      }
+    ]
+  },
+  "Outcomes": {
+    "Passed": true,
+    "Kind": "Native Luau isolated simulation; not gameplay Play or Hub receipt",
+    "EventBudget": {
+      "QueueCapacity": 64,
+      "Baseline": 46,
+      "Added": 4,
+      "WithBothOutcomes": 50
+    },
+    "Checks": [
+      {
+        "Name": "Effective damage starts both funnels exactly once",
+        "Passed": true
+      },
+      {
+        "Name": "MTF_FirstStage2BossDeath_v1 schema",
+        "Passed": true
+      },
+      {
+        "Name": "MTF_FirstStage2BossBack_v1 schema",
+        "Passed": true
+      },
+      {
+        "Name": "Lethal Boss write survives synchronous Died/run reset",
+        "Passed": true
+      },
+      {
+        "Name": "Death terminal exact name",
+        "Passed": true
+      },
+      {
+        "Name": "Death then retry Back accepted",
+        "Passed": true
+      },
+      {
+        "Name": "Back placement submission alone not completed",
+        "Passed": true
+      },
+      {
+        "Name": "Death then Back completes each once with same GUID",
+        "Passed": true
+      },
+      {
+        "Name": "Back terminal exact name",
+        "Passed": true
+      },
+      {
+        "Name": "Defeat after both outcomes still completes existing funnel",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated death never duplicates",
+        "Passed": true
+      },
+      {
+        "Name": "Back then retry death Back accepted",
+        "Passed": true
+      },
+      {
+        "Name": "Back then death completes both",
+        "Passed": true
+      },
+      {
+        "Name": "Defeat after Back/death progresses",
+        "Passed": true
+      },
+      {
+        "Name": "Existing excludes outcomes",
+        "Passed": true
+      },
+      {
+        "Name": "Unknown excludes outcomes",
+        "Passed": true
+      },
+      {
+        "Name": "Unloaded excludes outcomes",
+        "Passed": true
+      },
+      {
+        "Name": "Reset excludes outcomes",
+        "Passed": true
+      },
+      {
+        "Name": "DataReplaced excludes outcomes",
+        "Passed": true
+      },
+      {
+        "Name": "SkipBefore excludes outcomes",
+        "Passed": true
+      },
+      {
+        "Name": "SkipAfter excludes outcomes",
+        "Passed": true
+      },
+      {
+        "Name": "DebugOverride excludes outcomes",
+        "Passed": true
+      },
+      {
+        "Name": "ResetCharacter never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "Fall never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "OtherStage never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "World2 never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "NoDamage never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "Miss never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "InvalidSession never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "OldCharacter never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "Nonlethal never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "OtherCauseDuringNonlethal never completes Boss death",
+        "Passed": true
+      },
+      {
+        "Name": "Missing Stage2 observation 2 never synthesized",
+        "Passed": true
+      },
+      {
+        "Name": "Missing Stage2 observation 3 never synthesized",
+        "Passed": true
+      },
+      {
+        "Name": "Missing Stage2 observation 4 never synthesized",
+        "Passed": true
+      },
+      {
+        "Name": "Missing Stage2 observation 5 never synthesized",
+        "Passed": true
+      },
+      {
+        "Name": "Stage1 never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "World2 return behavior remains successful",
+        "Passed": true
+      },
+      {
+        "Name": "World2 never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "BossLocked return behavior remains successful",
+        "Passed": true
+      },
+      {
+        "Name": "BossLocked never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "NoDamage never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "Concurrent Back returns ReturnBusy",
+        "Passed": true
+      },
+      {
+        "Name": "Busy never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "StaleRun rejected",
+        "Passed": true
+      },
+      {
+        "Name": "StaleRun never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "StreamFail never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "StalePlacement never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "PlacementFail never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "PlacementThrow never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "DeathDuringStream never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "CharacterDuringStream never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "RunDuringStream never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "StageDuringStream never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "WorldDuringStream never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "DefeatDuringStream never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "DataDuringStream never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "DeathBeforeAck never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "RunBeforeAck never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "CharacterBeforeAck never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "WorldBeforeAck never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "RevisionBeforeAck never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "SkipBeforeAck never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "DefeatBeforeAck never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "Trophy shared banking succeeds",
+        "Passed": true
+      },
+      {
+        "Name": "Trophy never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "Walk never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "AutomaticRespawn never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "NoAck never completes Back",
+        "Passed": true
+      },
+      {
+        "Name": "Stage1 Back succeeds",
+        "Passed": true
+      },
+      {
+        "Name": "Later Stage2 Back succeeds",
+        "Passed": true
+      },
+      {
+        "Name": "Earlier first ReturnAccepted does not suppress Stage2 Back",
+        "Passed": true
+      },
+      {
+        "Name": "DefeatBeforeOutcomes permanently excludes later-run completion",
+        "Passed": true
+      },
+      {
+        "Name": "DefeatAfterDeath permanently excludes later-run completion",
+        "Passed": true
+      },
+      {
+        "Name": "DefeatAfterBack permanently excludes later-run completion",
+        "Passed": true
+      },
+      {
+        "Name": "OutOfOrderDefeat permanently excludes later-run completion",
+        "Passed": true
+      },
+      {
+        "Name": "Rejoin GUID changes and Existing cannot resume",
+        "Passed": true
+      },
+      {
+        "Name": "Existing four funnels and every custom row unchanged",
+        "Passed": true
+      },
+      {
+        "Name": "Gameplay reset/training/speed/move trace unchanged",
+        "Passed": true
+      },
+      {
+        "Name": "Exactly four additional Funnel events and no new Custom events",
+        "Passed": true
+      },
+      {
+        "Name": "Disabled ordinary loot added",
+        "Passed": true
+      },
+      {
+        "Name": "Disabled leaves damage and return functional",
+        "Passed": true
+      },
+      {
+        "Name": "Disabled deferred bank still saves exactly once",
+        "Passed": true
+      },
+      {
+        "Name": "SendFailure ordinary loot added",
+        "Passed": true
+      },
+      {
+        "Name": "SendFailure leaves damage and return functional",
+        "Passed": true
+      },
+      {
+        "Name": "SendFailure deferred bank still saves exactly once",
+        "Passed": true
+      },
+      {
+        "Name": "Initial spam-route return succeeds",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 1",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 2",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 3",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 4",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 5",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 6",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 7",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 8",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 9",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated old run rejected 10",
+        "Passed": true
+      },
+      {
+        "Name": "Back spam does not duplicate completion",
+        "Passed": true
+      },
+      {
+        "Name": "Return succeeds before deferred bank runs",
+        "Passed": true
+      },
+      {
+        "Name": "Placement does not wait for deferred save",
+        "Passed": true
+      },
+      {
+        "Name": "Deferred bank settles after placement",
+        "Passed": true
+      }
+    ]
+  }
+}
