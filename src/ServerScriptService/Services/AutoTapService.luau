@@ -1,4 +1,5 @@
 -- Input routing only. One shared server clock covers successful training and combat.
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local Players=game:GetService("Players")
 local Services=game.ServerScriptService.Services
 local Data=require(Services.PlayerDataService)
@@ -42,6 +43,7 @@ local function act(p,manual)
  local value,err=Strength.AddStrength(p,TrainingConfig.BaseGain,1)
  if value==nil then return false,err end
  if value<=before then return false,"NoGain" end
+ Analytics.Strength(p,manual and "Manual" or "AutoWalking")
  Timing.RecordSuccess(p,manual)
  return true,"Training"
 end
@@ -57,6 +59,9 @@ function M.Toggle(p)
  local now=os.clock()
  if now-(toggles[p] or -math.huge)<0.15 then return false end
  toggles[p]=now
- return Data.SetAutoTapEnabled(p,not Data.IsAutoTapEnabled(p))
+ local enabled=not Data.IsAutoTapEnabled(p)
+ local changed=Data.SetAutoTapEnabled(p,enabled)
+ if changed and enabled then Analytics.AutoOn(p) end
+ return changed
 end
 return M

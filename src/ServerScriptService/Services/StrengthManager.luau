@@ -1,3 +1,4 @@
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local Players = game:GetService("Players")
 
 local PlayerData=require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
@@ -162,6 +163,7 @@ end
 
 -- tickCount preserves per-tick bonuses when walking batches elapsed ticks.
 function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier)
+ local treadmillSource=sourceMultiplier~=nil
  local valid, message=validatePlayer(player)
  if not valid then return nil, message end
  if not isFiniteNumber(amount) then return nil, "amount must be a finite number" end
@@ -180,7 +182,10 @@ function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier
   Rebirth=StrengthManager.GetStrengthGainMultiplier(player),StrengthPotion=PotionService.GetStrengthMultiplier(player),
   VIP=ShopPasses.GetVIPStrengthMultiplier(player),Pet=PetServer.GetStrengthMultiplier(player),
  },sourceMultiplier)
- return commitGain(player,gain)
+ local before=StrengthManager.GetStrength(player)
+ local result,reason=commitGain(player,gain)
+ if treadmillSource and result and result>before then Analytics.Strength(player,"Treadmill") end
+ return result,reason
 end
 
 function StrengthManager.ResetStrength(player)

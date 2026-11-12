@@ -1,0 +1,40 @@
+{
+  "Passed": true,
+  "Result": {
+    "Passed": true,
+    "Checks": [
+      {
+        "Name": "Absent read and committed create is New",
+        "Passed": true
+      },
+      {
+        "Name": "Existing zero-level-like profile is Existing",
+        "Passed": true
+      },
+      {
+        "Name": "Disappearing saved record is Unknown",
+        "Passed": true
+      },
+      {
+        "Name": "Creation acknowledgement loss not a successful load",
+        "Passed": true
+      },
+      {
+        "Name": "Same confirmed creation attempt retry remains New",
+        "Passed": true
+      },
+      {
+        "Name": "Next acquisition of saved profile is Existing",
+        "Passed": true
+      },
+      {
+        "Name": "Repeated callback cannot keep tentative New over existing record",
+        "Passed": true
+      },
+      {
+        "Name": "Reset default-looking persisted data is Existing",
+        "Passed": true
+      }
+    ]
+  }
+}

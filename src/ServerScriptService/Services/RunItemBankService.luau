@@ -1,4 +1,5 @@
 -- Shared run banking for Back and Trophy. No travel, UI or Win rewards.
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local Players = game:GetService("Players")
 local Services = script.Parent
 local Run = require(Services.RunInventoryService)
@@ -72,6 +73,7 @@ function M.Commit(player, runId)
     pendingNotifications[player][token.Id]=entry
     -- Called by the existing journal's terminal resolution, including death/retry.
     context.OnResolved=function(result)
+     if result=="Changed" then Analytics.ReturnCommitted(player,token.Id,false) end
      local pending=pendingNotifications[player]
      if not pending or pending[token.Id]~=entry then return end
      entry.Committed=result=="Changed"
@@ -114,6 +116,7 @@ function M.Commit(player, runId)
 		-- Callers own their UI, rewards and lobby/reset behavior.
 		if not Run.CompleteReturn(player, token) then return false, "StaleRun" end
 
+  Analytics.ReturnCommitted(player,token.Id,token.Count==0)
   forget(player)
   return true, "Banked", token
  end, debug.traceback)
@@ -146,6 +149,7 @@ end
 function M.Begin(player,runId)
  local token,why=Run.AcceptReturn(player,runId)
  if not token then return nil,why end
+ Analytics.ReturnAccepted(player,token.Id)
  if not token.Queued then
   token.Queued=true
   queue[player]=queue[player] or {};table.insert(queue[player],token)

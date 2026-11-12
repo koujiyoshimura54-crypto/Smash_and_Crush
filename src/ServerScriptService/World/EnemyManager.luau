@@ -1,4 +1,5 @@
 -- Shared implementation; each World owns its runtime state and map references.
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local contexts={}
 local function forWorld(worldId)
  assert(worldId==1 or worldId==2,"Unsupported world")
@@ -908,6 +909,7 @@ local function defeat(p,n)
  if ps.Defeated[n] then return end
  ps.Gauges[n]=0
  ps.Defeated[n]=true
+ Analytics.Combat(p,worldId,n,6)
  if n>=1 and n<10 then Speed.BeginTimedBoost(p,worldId,"BossDefeat") end
  -- Claim defeat before any result/reward notification; all damage paths share this guard.
  local enemy=getEnemy(p,n,false)
@@ -988,6 +990,7 @@ local function updateCombat(p,manualRequest)
    local ch=p.Character
    local hum=ch and ch:FindFirstChildOfClass("Humanoid")
    local root=ch and ch:FindFirstChild("HumanoidRootPart")
+   Analytics.StagePresence(p,worldId,root)
    -- Walking back into the existing lobby footprint also ends this transition.
    if root and Speed.GetTransitionBoost(p) then
     local training=map and map:FindFirstChild("TrainingArea")
@@ -1084,6 +1087,7 @@ local function updateCombat(p,manualRequest)
         local attackId=(ps.AttackSequence or 0)+1
         local status,hitState=Boss.Attack(p)
         if hitState~=bs or status=="Inactive" or status=="Complete" or bs.HP>=hpBefore then return false end
+        Analytics.Combat(p,worldId,n,5)
         ActionTiming.RecordSuccess(p,manualRequest==true,true)
         ps.AttackSequence=attackId
         if worldId==1 and n==2 and p:GetAttribute("TutorialCompleted")==false then PlayerData.CompleteTutorial(p) end
@@ -1130,6 +1134,8 @@ local function updateCombat(p,manualRequest)
         Speed.BeginTimedBoost(attackPlayer,worldId,"WallSweep")
        end
        for _,index in ipairs(cleared) do
+        if index==1 then Analytics.Combat(attackPlayer,worldId,attackStage,3) end
+        if index==wallCount then Analytics.Combat(attackPlayer,worldId,attackStage,4) end
         send(attackPlayer,{Type="WallGauge",MajorStage=attackStage,Index=index,Current=0,Max=Wall.GetStageConfig(attackStage).Walls[index]})
         send(attackPlayer,{Type="WallCleared",MajorStage=attackStage,Index=index,Next=nextIndex,State=Wall.GetSnapshotForStage(attackPlayer,attackStage),NextMax=(nextIndex<=wallCount and Wall.GetStageConfig(attackStage).Walls[nextIndex] or nil)})
        end

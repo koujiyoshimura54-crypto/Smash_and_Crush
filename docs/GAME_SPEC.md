@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-12 — First-play analytics v1
+
+The current user instruction supersedes the earlier analytics deferral. Entry covers every server join; FirstCombat and FirstOreMerge cover confirmed newly created profiles in their first session, with Ore eligibility as its own denominator. Instrumentation does not change gameplay, rewards, UI or save schemas. [Full schema, Full Paths and measurement limits](FIRST_PLAY_ANALYTICS.md); [native and simulated verification](../reports/FirstPlayAnalytics_20261112/REPORT.md). Publication remains the owner's manual action.
+
 ## 2026-11-12 — AutoTap starts OFF on every join
 
 New and existing players start each loaded session with AutoTap OFF, including records saved with ON. The server publishes OFF before waiting for data and replaces only the loaded AutoTap value before exposing Loaded. Repeated Load of an already loaded session returns without resetting the toggle; normal user toggles, death, respawn and World travel keep their existing behavior. The saved Boolean remains schema-compatible. This supersedes the historical join-time ON default; reset defaults and action/treadmill timing are unchanged. [Focused verification](../reports/AutoTapJoinOff_20261112/REPORT.md).

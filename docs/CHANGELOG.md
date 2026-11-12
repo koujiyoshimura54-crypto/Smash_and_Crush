@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-12 — First-play loading, combat and Ore analytics
+
+Added server-owned MTF_Entry_v1, MTF_FirstCombat_v1 and MTF_FirstOreMerge_v1 with verified cohort provenance, sequential deduplication, independent skip/return observations and elapsed values. Studio uses a bounded recorder. Preserves current gameplay and existing fixes. Native normal routes and isolated fault checks passed; no Save/Publish. [English specification](FIRST_PLAY_ANALYTICS.md) and [verification](../reports/FirstPlayAnalytics_20261112/REPORT.md).
+
 ## 2026-11-12 — Start AutoTap OFF on every join
 
 PlayerDataService now ignores saved ON only when initializing a new loaded session; AutoTapClient renders ON only for explicit true. Existing same-session lifecycle, controls and timing are retained. Native isolated joins and focused regressions passed; canonical unsaved Edit preserved. [Evidence](../reports/AutoTapJoinOff_20261112/REPORT.md).

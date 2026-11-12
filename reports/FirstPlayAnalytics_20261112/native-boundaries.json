@@ -1,0 +1,600 @@
+{
+  "Method": "Native client UI and real runtime services, injected memory-store faults/materials",
+  "Checks": [
+    {
+      "Name": "New from actual profile creation",
+      "Passed": true
+    },
+    {
+      "Name": "Existing LV1/Strength0 not New",
+      "Passed": true
+    },
+    {
+      "Name": "Failed load keeps Entry denominator",
+      "Passed": true
+    },
+    {
+      "Name": "Auto initial OFF retained",
+      "Passed": true
+    },
+    {
+      "Name": "Early-open and Bag-only Ore do not invent Eligible",
+      "Passed": true
+    },
+    {
+      "Name": "Current early-open view reobserved after eligibility",
+      "Passed": true
+    },
+    {
+      "Name": "Held save no committed step",
+      "Passed": true
+    },
+    {
+      "Details": {
+        "Result": "NORMAL_01",
+        "Journal": {
+          "Id": "f247f3d0-6be9-4c1f-bd15-b9691d10b946",
+          "ResultId": "NORMAL_01",
+          "Sequence": 3,
+          "Signature": "MergeOre||ORE_001:2"
+        }
+      },
+      "Name": "Acknowledgement loss/replay exactly one grant and commit",
+      "Passed": true
+    },
+    {
+      "Name": "Precommit failure stays pending",
+      "Passed": true
+    },
+    {
+      "Name": "Later merge not another first completion",
+      "Passed": true
+    },
+    {
+      "Name": "Actual death/respawn keeps same funnel",
+      "Passed": true
+    },
+    {
+      "Name": "First actual death once",
+      "Passed": true
+    },
+    {
+      "Name": "Analytics failure leaves training success intact",
+      "Passed": true
+    },
+    {
+      "Name": "Actual debug reset excluded",
+      "Passed": true
+    },
+    {
+      "Name": "Saved reload stays Existing and Entry does not restart",
+      "Passed": true
+    }
+  ],
+  "Events": [
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ServerJoined",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ServerJoined",
+        "CustomField02": "Unknown"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.000024699955247342587,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "DataLoaded",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:DataLoaded",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0009834000375121832,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Profile:New",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0009875999530777335,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ServerJoined",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "dda03ef5-699a-42ed-98f7-785cc4d33f11"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ServerJoined",
+        "CustomField02": "Unknown"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.000022400054149329662,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "DataLoaded",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "dda03ef5-699a-42ed-98f7-785cc4d33f11"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:DataLoaded",
+        "CustomField02": "Existing"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0006864999886602163,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Profile:Existing",
+        "CustomField02": "Existing"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0006906000198796391,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ServerJoined",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "9affc888-2c0b-4f19-b060-0204469025e9"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ServerJoined",
+        "CustomField02": "Unknown"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.000016400008462369442,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "LoadFailed",
+        "CustomField02": "Unknown"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 6.051623100065626,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ClientPlayable",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ClientPlayable",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 9.8502447999781,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "Playable",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:Playable",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 9.85025240003597,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ClientPlayable",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "dda03ef5-699a-42ed-98f7-785cc4d33f11"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ClientPlayable",
+        "CustomField02": "Existing"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 9.044412899995223,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "OreViewBeforeEligible",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 12.150495499954559,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "Eligible",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:Eligible",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 12.96976749994792,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "OreViewOpened",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:OreViewOpened",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 13.017225799965672,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "ValidSelection",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:ValidSelection",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 13.373876999947242,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "MergeRequestAccepted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 14.41821599996183,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 4,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "MergeRequested",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:MergeRequested",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 14.418229799950495,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "MergeSaved",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 16.451126000029035,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 5,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "MergeCommitted",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "35cdc3f3-233a-4136-a4b5-0a9f10efe5ee"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:MergeCommitted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 16.451139300013892,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Death:Ore:MergeCommitted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 17.55103119998239,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "DebugReset",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 22.71796020003967,
+      "Kind": "Custom",
+      "UserId": -1
+    }
+  ],
+  "SavedExisting": {
+    "OwnedDumbbells": [],
+    "SpeedUpgradeStage": 0,
+    "Win": 0,
+    "EquipmentTutorial": {
+      "Version": 1,
+      "DumbbellCompleted": false,
+      "ItemCompleted": false,
+      "Eligible": false,
+      "HigherDumbbellCompleted": false
+    },
+    "EquippedItems": {
+      "Protein": "",
+      "TrainingBelt": "",
+      "Glove": ""
+    },
+    "LevelProgressVersion": 1,
+    "HigherOreMergeTutorial": {
+      "Completed": false,
+      "Version": 1,
+      "Eligible": false
+    },
+    "DailyStrengthEarned": 0,
+    "World1Cleared": false,
+    "EquippedSpeed": "Normal",
+    "EggPetTutorial": {
+      "Completed": false,
+      "Acquired": [],
+      "Version": 1,
+      "Eligible": false
+    },
+    "InventoryNotificationSeen": {
+      "Dumbbells": [],
+      "DumbbellBuy": [],
+      "Aura": [],
+      "Speed": [],
+      "Items": []
+    },
+    "CommunityRewards": {
+      "Claimed": false
+    },
+    "Strength": 0,
+    "ForgeJournal": {
+      "Sequence": 0
+    },
+    "LevelProgress": 0,
+    "ItemMergeJournal": {
+      "Sequence": 0
+    },
+    "World2Visited": false,
+    "OwnedItems": [],
+    "Pets": {
+      "Revision": 0,
+      "Version": 1,
+      "LastResults": [],
+      "Owned": [],
+      "Discovered": [],
+      "Equipped": [
+        "",
+        "",
+        ""
+      ],
+      "LastRequestId": ""
+    },
+    "OwnedAuras": [],
+    "TotalStrengthEarned": 0,
+    "DailyDate": "2026-11-12",
+    "Level": 1,
+    "StrengthRewards": {
+      "Presence": {
+        "At": 1794441488,
+        "State": "Online",
+        "Strength": 0,
+        "Basis": "DepartureStrengthV1"
+      },
+      "Version": 2,
+      "Rewards": [],
+      "Owner": "a6685351-6b22-4b14-a21c-1832dc1cfc75",
+      "Pending": [],
+      "Receipts": [],
+      "GrantedTotal": 0
+    },
+    "InventoryCapacity": 5,
+    "OwnedSpeeds": [],
+    "OreMergeTutorial": {
+      "Completed": false,
+      "Version": 1,
+      "Eligible": false
+    },
+    "EquippedAura": "",
+    "EquippedDumbbell": "",
+    "DailyRewards": {
+      "LastClaimDateUTC": "",
+      "ClaimedDays": 0
+    },
+    "AutoTapEnabled": false,
+    "OwnedOres": [],
+    "HighestUnlockedWorld": 1,
+    "FirstStage1Reward": {
+      "Version": 1,
+      "Consumed": true
+    },
+    "ShopRewards": {
+      "Claims": [],
+      "PotionExpiresUTC": [],
+      "WinGrantedTotal": 0,
+      "VIPDailyDateUTC": "",
+      "WinReceipts": []
+    },
+    "PetMergeTutorial": {
+      "Completed": false,
+      "Version": 1,
+      "Eligible": false
+    },
+    "TimeRewards": {
+      "ElapsedSeconds": 21.743339099921286,
+      "Claimed": []
+    },
+    "SessionOwnerToken": "a6685351-6b22-4b14-a21c-1832dc1cfc75",
+    "SelectedSizeTier": 0,
+    "TutorialCompleted": false,
+    "RebirthCount": 0
+  },
+  "Passed": true
+}

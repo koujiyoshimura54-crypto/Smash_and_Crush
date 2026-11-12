@@ -1,4 +1,5 @@
 -- One owner for character loading and lobby placement. No saved player state.
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local RS = game:GetService("ReplicatedStorage")
@@ -175,7 +176,7 @@ placementReady.OnServerEvent:Connect(function(player, character, revision, posit
 	if not root or hum.Health <= 0 or request.Root ~= root or (root.Position - request.Target).Magnitude > 0.5 then return end
 	root.Anchored = request.Anchored
 	request.Root = nil
-	if request.Lobby then arrived:Fire(player, character, revision) end
+	if request.Lobby then Analytics.Placed(player,character,revision);arrived:Fire(player, character, revision) end
 end)
 
 -- A delayed data load may resize someone who has already left the spawn.

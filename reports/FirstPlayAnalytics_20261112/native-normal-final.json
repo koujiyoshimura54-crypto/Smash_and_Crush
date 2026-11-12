@@ -1,0 +1,3017 @@
+{
+  "Analytics": [
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ServerJoined",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ServerJoined",
+        "CustomField02": "Unknown"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.000026399968191981316,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "DataLoaded",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:DataLoaded",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0009541000472381711,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Profile:New",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0009568999521434307,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ServerJoined",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ServerJoined",
+        "CustomField02": "Unknown"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.000021200045011937618,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "DataLoaded",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:DataLoaded",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0008723000064492226,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Profile:New",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0008752000285312533,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ServerJoined",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ServerJoined",
+        "CustomField02": "Unknown"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.000022399937734007835,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "DataLoaded",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:DataLoaded",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0007553999312222004,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Profile:New",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 0.0007575999479740858,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ClientPlayable",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ClientPlayable",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 10.327813799958676,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "Playable",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:Playable",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 10.32782030000817,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ClientPlayable",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ClientPlayable",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 9.951164900092408,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "Playable",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:Playable",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 9.951170400017872,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions"
+      },
+      "Name": "MTF_Entry_v1",
+      "StepName": "ClientPlayable",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Entry:ClientPlayable",
+        "CustomField02": "New"
+      },
+      "Name": "MTF_EntrySeconds_v1",
+      "Value": 9.860703099984676,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "Playable",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:Playable",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 9.86070680001285,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "UserAutoOn",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 11.243219599942677,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "UserAutoOn",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 13.544986999942921,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Strength:Manual",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 12.702121100039221,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Strength:AutoWalking",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 14.062837300007232,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Strength:AutoWalking",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 11.76176389993634,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "EnteredStage1",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:EnteredStage1",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 32.1859893000219,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "ClearedFirstWall",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:ClearedFirstWall",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 32.56708880001679,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 4,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "ClearedStage1Walls",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:ClearedStage1Walls",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 34.401601399993524,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 5,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "DamagedStage1Boss",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:DamagedStage1Boss",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 36.250760800088756,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 6,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "DefeatedStage1Boss",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:DefeatedStage1Boss",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 36.76723450003192,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnAccepted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 37.70246770000085,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnLootSaved",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 37.70433540001977,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnLobbyArrived",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 37.784508000011556,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "EnteredStage1",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:EnteredStage1",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 45.044002200011164,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "ClearedFirstWall",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:ClearedFirstWall",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 45.62678169994615,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "EnteredStage1",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:EnteredStage1",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 46.00868480000645,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 4,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "ClearedStage1Walls",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:ClearedStage1Walls",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 48.3771257000044,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "ClearedFirstWall",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:ClearedFirstWall",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 46.560385899967514,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 5,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "DamagedStage1Boss",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:DamagedStage1Boss",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 50.20979079999961,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 6,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "DefeatedStage1Boss",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:DefeatedStage1Boss",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 51.64413799997419,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnAccepted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 52.545467099989764,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnLootSaved",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 52.54765389999375,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnLobbyArrived",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 52.610958999954164,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 4,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "ClearedStage1Walls",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:ClearedStage1Walls",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 50.61049919994548,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 5,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "DamagedStage1Boss",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:DamagedStage1Boss",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 52.4437947999686,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 6,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstCombat_v1",
+      "StepName": "DefeatedStage1Boss",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Combat:DefeatedStage1Boss",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 54.87587619991973,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnAccepted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 55.69456109998282,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnLootSaved",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 55.69723549997434,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "ReturnLobbyArrived",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 55.77608589990996,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "Eligible",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:Eligible",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 60.35901539993938,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "Eligible",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:Eligible",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 60.11701070005074,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "OreViewOpened",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:OreViewOpened",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.14253259997349,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "ValidSelection",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:ValidSelection",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.49336409999523,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 1,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "Eligible",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:Eligible",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 60.42495729995426,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 4,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "MergeRequested",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:MergeRequested",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.95970849995501,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 5,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "MergeCommitted",
+      "Kind": "Funnel",
+      "UserId": -1,
+      "Session": "c4893238-a23f-419d-b456-0e5aff6bc687"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:MergeCommitted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.96013989998028,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "OreViewOpened",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:OreViewOpened",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 61.866283499985,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "ValidSelection",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:ValidSelection",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.199326100060716,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 4,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "MergeRequested",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:MergeRequested",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.66722800000571,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 5,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "MergeCommitted",
+      "Kind": "Funnel",
+      "UserId": -2,
+      "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:MergeCommitted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.66748679999728,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Step": 2,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "OreViewOpened",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:OreViewOpened",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.142022599931806,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 3,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "ValidSelection",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:ValidSelection",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.49046329990961,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 4,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "MergeRequested",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:MergeRequested",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.95914739998989,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Step": 5,
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstOreMerge_v1",
+      "StepName": "MergeCommitted",
+      "Kind": "Funnel",
+      "UserId": -3,
+      "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32"
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "Ore:MergeCommitted",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 62.95944939996116,
+      "Kind": "Custom",
+      "UserId": -3
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "DumbbellEquipped",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 66.57593639998231,
+      "Kind": "Custom",
+      "UserId": -1
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "DumbbellEquipped",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 66.26608480000868,
+      "Kind": "Custom",
+      "UserId": -2
+    },
+    {
+      "Fields": {
+        "CustomField01": "PlaceVersion:543",
+        "CustomField03": "DumbbellEquipped",
+        "CustomField02": "NewFirstSession"
+      },
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Value": 66.52575739996973,
+      "Kind": "Custom",
+      "UserId": -3
+    }
+  ],
+  "Variant": "AnalyticsFinal",
+  "Checks": [
+    {
+      "Steps": [
+        1,
+        2,
+        3
+      ],
+      "Funnel": "MTF_Entry_v1",
+      "UserId": -2,
+      "Passed": true
+    },
+    {
+      "Steps": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "Funnel": "MTF_FirstOreMerge_v1",
+      "UserId": -2,
+      "Passed": true
+    },
+    {
+      "Steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "Funnel": "MTF_FirstCombat_v1",
+      "UserId": -2,
+      "Passed": true
+    },
+    {
+      "Steps": [
+        1,
+        2,
+        3
+      ],
+      "Funnel": "MTF_Entry_v1",
+      "UserId": -1,
+      "Passed": true
+    },
+    {
+      "Steps": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "Funnel": "MTF_FirstOreMerge_v1",
+      "UserId": -1,
+      "Passed": true
+    },
+    {
+      "Steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "Funnel": "MTF_FirstCombat_v1",
+      "UserId": -1,
+      "Passed": true
+    },
+    {
+      "Steps": [
+        1,
+        2,
+        3
+      ],
+      "Funnel": "MTF_Entry_v1",
+      "UserId": -3,
+      "Passed": true
+    },
+    {
+      "Steps": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "Funnel": "MTF_FirstOreMerge_v1",
+      "UserId": -3,
+      "Passed": true
+    },
+    {
+      "Steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "Funnel": "MTF_FirstCombat_v1",
+      "UserId": -3,
+      "Passed": true
+    }
+  ],
+  "Started": 1794441746.9831,
+  "Runs": [
+    {
+      "UserId": -2,
+      "ReadyAt": 1794441745.833433,
+      "Events": [
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 1,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 0,
+            "TimeRewards": {
+              "ElapsedSeconds": 12.434599600033835,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 0.01654195785522461,
+          "Time": 1794441746.999642,
+          "Details": {
+            "ClientReady": 1794441746.99344,
+            "Mode": "Manual"
+          },
+          "Kind": "Operable"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 1,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 0,
+            "TimeRewards": {
+              "ElapsedSeconds": 12.434822399984114,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 0.016775131225585938,
+          "Time": 1794441746.999875,
+          "Details": {
+            "Target": 60
+          },
+          "Kind": "TrainStart"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 2,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 7,
+            "TimeRewards": {
+              "ElapsedSeconds": 14.284490899997763,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 1.866466999053955,
+          "Time": 1794441748.849567,
+          "Kind": "Level2"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 3,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 27,
+            "TimeRewards": {
+              "ElapsedSeconds": 19.5173590000486,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 7.0993969440460205,
+          "Time": 1794441754.082497,
+          "Kind": "Level3"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 28.11818760004826,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 15.700317144393921,
+          "Time": 1794441762.683417,
+          "Kind": "Level4"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 28.184053600067273,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 15.766174077987671,
+          "Time": 1794441762.749274,
+          "Kind": "TrainEnd"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 28.18427219998557,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 15.766415119171143,
+          "Time": 1794441762.749515,
+          "Kind": "FirstStage1Start"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 36.800677499966696,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 25
+          },
+          "Seconds": 24.382918119430542,
+          "Time": 1794441771.366018,
+          "Details": {
+            "Generation": 1
+          },
+          "Kind": "BossDefeated1"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 36.91703290003352,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 2,
+            "Progress": 25
+          },
+          "Seconds": 24.499261140823364,
+          "Time": 1794441771.482361,
+          "Kind": "FirstStage1End"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 36.917210199986584,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 2,
+            "Progress": 25
+          },
+          "Seconds": 24.49946117401123,
+          "Time": 1794441771.482561,
+          "Kind": "TrophyApproach1"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 37.10047249996569,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 2,
+            "Progress": 25
+          },
+          "Seconds": 24.682706117630005,
+          "Time": 1794441771.665806,
+          "Kind": "TrophySpawn1"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 37.83324619999621,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 25
+          },
+          "Seconds": 25.415480136871338,
+          "Time": 1794441772.39858,
+          "Kind": "TrophyReturned1"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 60.14970319997519,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 3
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 25
+          },
+          "Seconds": 47.73221206665039,
+          "Time": 1794441794.715312,
+          "Details": "StoneIntro01",
+          "Kind": "TimeReward"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 62.6676588000264,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 25
+          },
+          "Seconds": 50.25020909309387,
+          "Time": 1794441797.233309,
+          "Details": {
+            "Snapshot": {
+              "Token": "1ce2743a-b86e-427f-bb31-35025d3d37de",
+              "Generation": 0,
+              "Materials": {
+                "ORE_001": 2
+              },
+              "Open": true,
+              "Session": "1536e305-1fe0-4f7f-9ec6-ecc672cb4323",
+              "Sequence": 215
+            },
+            "PanelVisible": true
+          },
+          "Kind": "VisibleOreSelection"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 62.74894930003211,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 25
+          },
+          "Seconds": 50.33149600028992,
+          "Time": 1794441797.314596,
+          "Details": {
+            "Result": "NORMAL_02",
+            "Material": "ORE_001"
+          },
+          "Kind": "FirstMerge"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "NORMAL_02",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 66.38282200007234,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 25
+          },
+          "Seconds": 53.965404987335205,
+          "Time": 1794441800.948505,
+          "Details": "NORMAL_02",
+          "Kind": "DumbbellEquipped"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "NORMAL_02",
+            "Pending": false,
+            "Strength": 85,
+            "TimeRewards": {
+              "ElapsedSeconds": 67.78192780003883,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 25
+          },
+          "Seconds": 55.364530086517334,
+          "Time": 1794441802.34763,
+          "Details": {
+            "Deaths": 0
+          },
+          "Kind": "Complete"
+        }
+      ],
+      "Variant": "AnalyticsFinal",
+      "Success": true,
+      "Mode": "Manual",
+      "Repetition": 1,
+      "Finished": true
+    },
+    {
+      "UserId": -1,
+      "ReadyAt": 1794441745.833681,
+      "Events": [
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 1,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 0,
+            "TimeRewards": {
+              "ElapsedSeconds": 13.761270399903879,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 0.23353004455566406,
+          "Time": 1794441747.21663,
+          "Details": {
+            "ClientReady": 1794441747.201515,
+            "Mode": "Mixed"
+          },
+          "Kind": "Operable"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 1,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 0,
+            "TimeRewards": {
+              "ElapsedSeconds": 13.761329200002365,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 0.23359203338623047,
+          "Time": 1794441747.216692,
+          "Details": {
+            "Target": 60
+          },
+          "Kind": "TrainStart"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 2,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 7,
+            "TimeRewards": {
+              "ElapsedSeconds": 17.012841599993408,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 3.4851341247558594,
+          "Time": 1794441750.468234,
+          "Kind": "Level2"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 3,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 27,
+            "TimeRewards": {
+              "ElapsedSeconds": 26.129615199984983,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 12.601994037628174,
+          "Time": 1794441759.585094,
+          "Kind": "Level3"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 41.07735309994314,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 27.549926042556763,
+          "Time": 1794441774.533026,
+          "Kind": "Level4"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 41.14375459996518,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 27.616311073303223,
+          "Time": 1794441774.599411,
+          "Kind": "TrainEnd"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 41.14413919998333,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 27.61670708656311,
+          "Time": 1794441774.599807,
+          "Kind": "FirstStage1Start"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 73,
+            "TimeRewards": {
+              "ElapsedSeconds": 51.693414999987,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 13
+          },
+          "Seconds": 38.16611099243164,
+          "Time": 1794441785.149211,
+          "Details": {
+            "Generation": 1
+          },
+          "Kind": "BossDefeated1"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 73,
+            "TimeRewards": {
+              "ElapsedSeconds": 51.75984289997723,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 2,
+            "Progress": 13
+          },
+          "Seconds": 38.23253107070923,
+          "Time": 1794441785.215631,
+          "Kind": "FirstStage1End"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 73,
+            "TimeRewards": {
+              "ElapsedSeconds": 51.760082399938256,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 2,
+            "Progress": 13
+          },
+          "Seconds": 38.23278999328613,
+          "Time": 1794441785.21589,
+          "Kind": "TrophyApproach1"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 73,
+            "TimeRewards": {
+              "ElapsedSeconds": 52.00883949990384,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 2,
+            "Progress": 13
+          },
+          "Seconds": 38.4815411567688,
+          "Time": 1794441785.464641,
+          "Kind": "TrophySpawn1"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 74,
+            "TimeRewards": {
+              "ElapsedSeconds": 52.70978269993793,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 14
+          },
+          "Seconds": 39.182499170303345,
+          "Time": 1794441786.165599,
+          "Kind": "TrophyReturned1"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 74,
+            "TimeRewards": {
+              "ElapsedSeconds": 60.40868759993464,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 3
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 14
+          },
+          "Seconds": 46.88149094581604,
+          "Time": 1794441793.864591,
+          "Details": "StoneIntro01",
+          "Kind": "TimeReward"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 77,
+            "TimeRewards": {
+              "ElapsedSeconds": 62.9601154999109,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 17
+          },
+          "Seconds": 49.43295502662659,
+          "Time": 1794441796.416055,
+          "Details": {
+            "Snapshot": {
+              "Token": "87e41053-6e6c-484b-b5ac-8c3a4de8a2c8",
+              "Generation": 0,
+              "Materials": {
+                "ORE_001": 2
+              },
+              "Open": true,
+              "Session": "c4893238-a23f-419d-b456-0e5aff6bc687",
+              "Sequence": 216
+            },
+            "PanelVisible": true
+          },
+          "Kind": "VisibleOreSelection"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 77,
+            "TimeRewards": {
+              "ElapsedSeconds": 63.05827129993122,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 17
+          },
+          "Seconds": 49.531097173690796,
+          "Time": 1794441796.514197,
+          "Details": {
+            "Result": "NORMAL_02",
+            "Material": "ORE_001"
+          },
+          "Kind": "FirstMerge"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "NORMAL_02",
+            "Pending": false,
+            "Strength": 77,
+            "TimeRewards": {
+              "ElapsedSeconds": 66.69217709999066,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 17
+          },
+          "Seconds": 53.16504216194153,
+          "Time": 1794441800.148142,
+          "Details": "NORMAL_02",
+          "Kind": "DumbbellEquipped"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "NORMAL_02",
+            "Pending": false,
+            "Strength": 77,
+            "TimeRewards": {
+              "ElapsedSeconds": 68.12536099995486,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 17
+          },
+          "Seconds": 54.59824013710022,
+          "Time": 1794441801.58134,
+          "Details": {
+            "Deaths": 0
+          },
+          "Kind": "Complete"
+        }
+      ],
+      "Variant": "AnalyticsFinal",
+      "Success": true,
+      "Mode": "Mixed",
+      "Repetition": 1,
+      "Finished": true
+    },
+    {
+      "UserId": -3,
+      "ReadyAt": 1794441745.983097,
+      "Events": [
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 1,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 0,
+            "TimeRewards": {
+              "ElapsedSeconds": 11.45976390002761,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 0.2332911491394043,
+          "Time": 1794441747.216391,
+          "Details": {
+            "ClientReady": 1794441747.206835,
+            "Mode": "Auto"
+          },
+          "Kind": "Operable"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 1,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 0,
+            "TimeRewards": {
+              "ElapsedSeconds": 11.459921299945563,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 0.23345518112182617,
+          "Time": 1794441747.216555,
+          "Details": {
+            "Target": 60
+          },
+          "Kind": "TrainStart"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 2,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 7,
+            "TimeRewards": {
+              "ElapsedSeconds": 14.844039099989459,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 3.6176021099090576,
+          "Time": 1794441750.600702,
+          "Kind": "Level2"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 3,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 27,
+            "TimeRewards": {
+              "ElapsedSeconds": 25.07916869991459,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 13.852861166000366,
+          "Time": 1794441760.835961,
+          "Kind": "Level3"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 41.96009710000362,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 30.73399305343628,
+          "Time": 1794441777.717093,
+          "Kind": "Level4"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 42.0415424000239,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 30.815412044525146,
+          "Time": 1794441777.798512,
+          "Kind": "TrainEnd"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 60,
+            "TimeRewards": {
+              "ElapsedSeconds": 42.041802900028415,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 0
+          },
+          "Seconds": 30.815693140029907,
+          "Time": 1794441777.798793,
+          "Kind": "FirstStage1Start"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 70,
+            "TimeRewards": {
+              "ElapsedSeconds": 54.89105789992027,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 10
+          },
+          "Seconds": 43.665096044540405,
+          "Time": 1794441790.648196,
+          "Details": {
+            "Generation": 1
+          },
+          "Kind": "BossDefeated1"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 70,
+            "TimeRewards": {
+              "ElapsedSeconds": 54.907960599986836,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 10
+          },
+          "Seconds": 43.68199110031128,
+          "Time": 1794441790.665091,
+          "Kind": "FirstStage1End"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 70,
+            "TimeRewards": {
+              "ElapsedSeconds": 54.908190999994986,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 10
+          },
+          "Seconds": 43.68224000930786,
+          "Time": 1794441790.66534,
+          "Kind": "TrophyApproach1"
+        },
+        {
+          "State": {
+            "Bag": 1,
+            "Win": 0,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 70,
+            "TimeRewards": {
+              "ElapsedSeconds": 55.22411509999074,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": [],
+            "Rebirth": 0,
+            "Stage": 2,
+            "Progress": 10
+          },
+          "Seconds": 43.998157024383545,
+          "Time": 1794441790.981257,
+          "Kind": "TrophySpawn1"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 71,
+            "TimeRewards": {
+              "ElapsedSeconds": 55.87497529992834,
+              "ClaimedRewards": []
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 11
+          },
+          "Seconds": 44.64902710914612,
+          "Time": 1794441791.632127,
+          "Kind": "TrophyReturned1"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 71,
+            "TimeRewards": {
+              "ElapsedSeconds": 60.45781289995648,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 3
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 11
+          },
+          "Seconds": 49.231919050216675,
+          "Time": 1794441796.215019,
+          "Details": "StoneIntro01",
+          "Kind": "TimeReward"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 74,
+            "TimeRewards": {
+              "ElapsedSeconds": 62.95942309999373,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 14
+          },
+          "Seconds": 51.73355507850647,
+          "Time": 1794441798.716655,
+          "Details": {
+            "Snapshot": {
+              "Token": "1c0a474c-d46b-4338-b434-b78c1598ec5c",
+              "Generation": 0,
+              "Materials": {
+                "ORE_001": 2
+              },
+              "Open": true,
+              "Session": "7596f74d-ed6c-44d1-94e3-92d15ebffd32",
+              "Sequence": 218
+            },
+            "PanelVisible": true
+          },
+          "Kind": "VisibleOreSelection"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "",
+            "Pending": false,
+            "Strength": 74,
+            "TimeRewards": {
+              "ElapsedSeconds": 63.04037659999449,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 14
+          },
+          "Seconds": 51.81451106071472,
+          "Time": 1794441798.797611,
+          "Details": {
+            "Result": "NORMAL_01",
+            "Material": "ORE_001"
+          },
+          "Kind": "FirstMerge"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "NORMAL_01",
+            "Pending": false,
+            "Strength": 74,
+            "TimeRewards": {
+              "ElapsedSeconds": 66.62415029993281,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 14
+          },
+          "Seconds": 55.398311138153076,
+          "Time": 1794441802.381411,
+          "Details": "NORMAL_01",
+          "Kind": "DumbbellEquipped"
+        },
+        {
+          "State": {
+            "Bag": 0,
+            "Win": 1,
+            "Loaded": true,
+            "EquippedItems": {
+              "Protein": "",
+              "TrainingBelt": "",
+              "Glove": ""
+            },
+            "Level": 4,
+            "EquippedAura": "",
+            "EquippedDumbbell": "NORMAL_01",
+            "Pending": false,
+            "Strength": 74,
+            "TimeRewards": {
+              "ElapsedSeconds": 68.04014169995207,
+              "ClaimedRewards": {
+                "StoneIntro01": true
+              }
+            },
+            "Health": 100,
+            "Ores": {
+              "ORE_001": 1
+            },
+            "Rebirth": 0,
+            "Stage": 1,
+            "Progress": 14
+          },
+          "Seconds": 56.81432294845581,
+          "Time": 1794441803.797423,
+          "Details": {
+            "Deaths": 0
+          },
+          "Kind": "Complete"
+        }
+      ],
+      "Variant": "AnalyticsFinal",
+      "Success": true,
+      "Mode": "Auto",
+      "Repetition": 1,
+      "Finished": true
+    }
+  ]
+}

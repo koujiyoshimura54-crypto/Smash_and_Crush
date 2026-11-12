@@ -1,0 +1,270 @@
+{
+  "Passed": true,
+  "Result": {
+    "Cases": [
+      {
+        "Id": -1001,
+        "Kind": "New"
+      },
+      {
+        "Id": -1002,
+        "Kind": "Existing"
+      },
+      {
+        "Id": -1003,
+        "Kind": "Unknown"
+      },
+      {
+        "Id": -1004,
+        "Kind": "LoadFailed"
+      },
+      {
+        "Id": -1005,
+        "Kind": "New"
+      },
+      {
+        "Id": -1006,
+        "Kind": "New"
+      },
+      {
+        "Id": -1007,
+        "Kind": "New"
+      },
+      {
+        "Id": -1008,
+        "Kind": "New"
+      },
+      {
+        "Id": -1009,
+        "Kind": "New"
+      },
+      {
+        "Id": -1010,
+        "Kind": "New"
+      },
+      {
+        "Id": -1011,
+        "Kind": "New"
+      },
+      {
+        "Id": -1012,
+        "Kind": "New"
+      },
+      {
+        "Id": -1013,
+        "Kind": "New"
+      },
+      {
+        "Id": -1014,
+        "Kind": "New"
+      },
+      {
+        "Id": -1015,
+        "Kind": "New"
+      },
+      {
+        "Id": -1016,
+        "Kind": "New"
+      },
+      {
+        "Id": -1017,
+        "Kind": "New"
+      },
+      {
+        "Id": -1018,
+        "Kind": "New"
+      },
+      {
+        "Id": -1019,
+        "Kind": "New"
+      },
+      {
+        "Id": -1020,
+        "Kind": "New"
+      },
+      {
+        "Id": -1021,
+        "Kind": "New"
+      },
+      {
+        "Id": -1022,
+        "Kind": "New"
+      },
+      {
+        "Id": -1023,
+        "Kind": "New"
+      },
+      {
+        "Id": -1024,
+        "Kind": "New"
+      },
+      {
+        "Id": -1025,
+        "Kind": "New"
+      },
+      {
+        "Id": -1026,
+        "Kind": "New"
+      },
+      {
+        "Id": -1027,
+        "Kind": "New"
+      }
+    ],
+    "Passed": true,
+    "Checks": [
+      {
+        "Name": "New Entry exactly once",
+        "Passed": true
+      },
+      {
+        "Name": "New Combat cohort",
+        "Passed": true
+      },
+      {
+        "Name": "New Ore cohort",
+        "Passed": true
+      },
+      {
+        "Name": "Existing Entry exactly once",
+        "Passed": true
+      },
+      {
+        "Name": "Existing Combat cohort",
+        "Passed": true
+      },
+      {
+        "Name": "Existing Ore cohort",
+        "Passed": true
+      },
+      {
+        "Name": "Unknown Entry exactly once",
+        "Passed": true
+      },
+      {
+        "Name": "Unknown Combat cohort",
+        "Passed": true
+      },
+      {
+        "Name": "Unknown Ore cohort",
+        "Passed": true
+      },
+      {
+        "Name": "Entry exit after 1",
+        "Passed": true
+      },
+      {
+        "Name": "Entry exit after 2",
+        "Passed": true
+      },
+      {
+        "Name": "Entry exit after 3",
+        "Passed": true
+      },
+      {
+        "Name": "Combat exit after 1",
+        "Passed": true
+      },
+      {
+        "Name": "Combat exit after 2",
+        "Passed": true
+      },
+      {
+        "Name": "Combat exit after 3",
+        "Passed": true
+      },
+      {
+        "Name": "Combat exit after 4",
+        "Passed": true
+      },
+      {
+        "Name": "Combat exit after 5",
+        "Passed": true
+      },
+      {
+        "Name": "Combat exit after 6",
+        "Passed": true
+      },
+      {
+        "Name": "Ore exit after 1",
+        "Passed": true
+      },
+      {
+        "Name": "Ore exit after 2",
+        "Passed": true
+      },
+      {
+        "Name": "Ore exit after 3",
+        "Passed": true
+      },
+      {
+        "Name": "Ore exit after 4",
+        "Passed": true
+      },
+      {
+        "Name": "Ore exit after 5",
+        "Passed": true
+      },
+      {
+        "Name": "Early view creates no eligibility",
+        "Passed": true
+      },
+      {
+        "Name": "Request not commit",
+        "Passed": true
+      },
+      {
+        "Name": "Early-open refresh + duplicate exact five",
+        "Passed": true
+      },
+      {
+        "Name": "Captured visible request before delayed Remote",
+        "Passed": true
+      },
+      {
+        "Name": "Invalid session/data/character/generation/location refused",
+        "Passed": true
+      },
+      {
+        "Name": "Missing view never fabricates steps",
+        "Passed": true
+      },
+      {
+        "Name": "StageSkip independent, no auto-completed wall steps",
+        "Passed": true
+      },
+      {
+        "Name": "Out-of-order no synthetic clear",
+        "Passed": true
+      },
+      {
+        "Name": "Death duplicates / rematch same funnel",
+        "Passed": true
+      },
+      {
+        "Name": "Reset never becomes New",
+        "Passed": true
+      },
+      {
+        "Name": "Return order false",
+        "Passed": true
+      },
+      {
+        "Name": "Return order true",
+        "Passed": true
+      },
+      {
+        "Name": "First action once",
+        "Passed": true
+      },
+      {
+        "Name": "Failed first funnel send suppresses later Entry steps",
+        "Passed": true
+      },
+      {
+        "Name": "Failure does not stop service",
+        "Passed": true
+      }
+    ]
+  }
+}

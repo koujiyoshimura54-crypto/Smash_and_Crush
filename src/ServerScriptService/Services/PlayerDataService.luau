@@ -1,3 +1,4 @@
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local DSS=game:GetService("DataStoreService")
 local Players=game:GetService("Players")
 local RunService=game:GetService("RunService")
@@ -575,6 +576,7 @@ function PlayerDataService.Reset(player)
  player:SetAttribute("PetViewGeneration",s.PetViewGeneration)
  s.ForgeToken=HttpService:GenerateGUID(false)
  s.PendingFirstStage1Defeat=nil
+ Analytics.Reset(player)
  s.TimeRewardClock=os.clock()
  s.Loaded=true
  s.Saving=false
@@ -708,6 +710,7 @@ function PlayerDataService.Load(player)
  s.AdminWinAppliedId=AdminWin.AppliedId(raw)
  s.Loaded=true;s.Data=d;s.Dirty=true;s.LastSave=nil;s.TimeRewardClock=os.clock()
  applyAttributes(player,d)
+ Analytics.Loaded(player,d,s.AcquireAttempt.ProfileKind)
  -- Recover the historical completion badge independently of the Studio arrival preview.
  if not d.World1Cleared then
   if player:GetAttribute("WorldComplete")==true then PlayerDataService.MarkWorld1Cleared(player) end
@@ -768,6 +771,7 @@ function PlayerDataService.SetEquippedDumbbell(player,itemId)
  s.Data.EquippedDumbbell=itemId
  s.Dirty=true
  player:SetAttribute("EquippedDumbbell",itemId)
+ Analytics.Equipped(player,itemId)
  PlayerDataService.RefreshEquipmentTutorial(player)
  return true,itemId=="" and "Unequipped" or "Equipped"
 end
@@ -815,6 +819,7 @@ function PlayerDataService.ApplyStudioStartLevel(player,strength,level)
   local preview,reason=Pet.NormalizeState(d.Pets)
   if not preview then return false,reason end
   -- The active test data and every nested table are separate from the restore source.
+  Analytics.Reset(player)
   s.StudioStartOverride={Data=d,Dirty=s.Dirty,Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate,Win=d.Win,RebirthCount=d.RebirthCount}
   s.Data=cloneStudioData(d)
   s.StudioPetPreview=preview
@@ -1671,6 +1676,7 @@ function PlayerDataService.MutateForge(player,request)
   player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)
   return true,"StudioForgePreview"
  end
+ Analytics.OreRequested(player,op)
  s.PendingItemMutation=op
  player:SetAttribute("ForgeSavePending",true)
  return PlayerDataService.ResolveItemMutation(player)

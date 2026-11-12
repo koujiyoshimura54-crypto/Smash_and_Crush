@@ -1,3 +1,4 @@
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local Players = game:GetService("Players")
 local MarketplaceService = game:GetService("MarketplaceService")
 local Config = require(game.ReplicatedStorage.Config.StageSkipConfig)
@@ -175,6 +176,7 @@ function M.ApplyLocked(player, target, debit)
   warn("[StageSkip] Initialization failed: "..tostring(err))
   return false,"Unable to start Stage"
  end
+ Analytics.Skipped(player)
  return true,"Stage "..target..".1 started"
 end
 function M.BuyWithWin(player,target)

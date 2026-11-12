@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — First-play analytics implemented
+
+Three funnels and bounded elapsed-value observations are implemented in current canonical Studio126576845524886. Six ordinary routes across two native launches,15 injected native boundary assertions,38 final state assertions and8 ownership assertions passed.27 scoped Sources matched the intended live-derived result; temporary helpers were removed. Creator Hub receipt/public-server behavior remain unverified. The user subsequently requested to run Studio Play personally; do not stop that Play. [Schema](FIRST_PLAY_ANALYTICS.md), [evidence and limitations](../reports/FirstPlayAnalytics_20261112/REPORT.md).
+
 ## 2026-11-12 — AutoTap joins OFF
 
 Two live Source changes initialize server state OFF before/after load and display missing attributes as OFF. Two isolated native three-client launches passed new/saved-OFF/saved-ON joins, independent saved-ON reload, toggle/manual/walking and death/World-travel regressions. Helpers removed;493 shipping Sources verified, unsaved Edit retained. Prior PR #1 candidate stays in Studio and is excluded from this main change. [Record and limits](../reports/AutoTapJoinOff_20261112/REPORT.md).

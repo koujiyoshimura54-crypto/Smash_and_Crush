@@ -60,7 +60,7 @@ function M.Request(player,request)
   end
   return Data.MutateForge(player,{Id=request.Id,Sequence=request.Sequence,Signature=signature,
    -- Freeze server eligibility with the existing retained operation for save retries.
-   World2Unlocked=state.World2Unlocked,Action=request.Action,Materials=selection and selection.Materials,ItemId=itemId,Count=request.Count,ExpectedCount=request.ExpectedCount,UnitPrice=request.UnitPrice,ResultId=resultId})
+   World2Unlocked=state.World2Unlocked,Action=request.Action,AnalyticsContext=request.AnalyticsContext,Materials=selection and selection.Materials,ItemId=itemId,Count=request.Count,ExpectedCount=request.ExpectedCount,UnitPrice=request.UnitPrice,ResultId=resultId})
  end)
  busy[player]=nil
  if not ok then warn("[Forge] "..tostring(success));return response(false,"RequestFailed") end

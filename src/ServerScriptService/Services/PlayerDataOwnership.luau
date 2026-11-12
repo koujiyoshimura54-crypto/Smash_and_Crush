@@ -11,6 +11,7 @@ function M.Acquire(store, key, attempt, defaults, validate, current)
 		options.UseCache = false
 		local raw = store:GetAsync(key, options)
 		assert(raw == nil or typeof(raw) == "table", "Invalid saved PlayerData")
+		attempt.InitiallyMissing = raw == nil
 		attempt.ExpectedOwner = raw and raw.SessionOwnerToken
 		attempt.Read = true
 	end
@@ -26,6 +27,9 @@ function M.Acquire(store, key, attempt, defaults, validate, current)
 		end
 		local normalized, reason = validate(old)
 		assert(normalized, reason)
+		-- Transient provenance only; never emit analytics inside UpdateAsync.
+		if old==nil then attempt.ProfileKind=attempt.InitiallyMissing and "New" or "Unknown"
+		elseif owner~=attempt.Token or attempt.ProfileKind==nil then attempt.ProfileKind="Existing" end
 		local data = old and table.clone(old) or defaults()
 		-- Normalize legacy item quantities before any durable delta operation.
 		data.OwnedItems = table.clone(normalized.OwnedItems)

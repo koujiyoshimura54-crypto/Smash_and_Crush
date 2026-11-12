@@ -49,6 +49,7 @@ function M.Request(action,fields)
  local state=M.State or M.Refresh()
  if not state or not state.Loaded then return false,"DataNotLoaded" end
  local op=table.clone(fields or {})
+ if action=="MergeOre" then op.AnalyticsContext=require(RS.Modules.FirstPlayAnalyticsClient).Snapshot() end
  op.Action=action;op.Id=Http:GenerateGUID(false);op.Sequence=state.Sequence+1;op.Token=state.Token;op.Generation=state.Generation
  pending=op;changed:Fire(state)
  task.spawn(function()

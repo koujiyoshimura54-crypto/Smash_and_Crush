@@ -1,3 +1,4 @@
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local Players=game:GetService("Players")
 local Data=require(game.ServerScriptService.Services:WaitForChild("PlayerDataService"))
 local AUTOSAVE_INTERVAL=90
@@ -10,6 +11,7 @@ local function load(player)
   if ok then return true end
   task.wait(attempt)
  end
+ Analytics.LoadFailed(player)
  warn("PlayerData unavailable for "..player.Name.."; session will not be saved")
  return false
 end
@@ -71,15 +73,18 @@ local function currentPlayers()
 end
 
 Players.PlayerAdded:Connect(function(player)
+ Analytics.Join(player)
  bindWin(player)
  task.spawn(load,player)
 end)
 for _,player in ipairs(Players:GetPlayers()) do
+ Analytics.Join(player)
  bindWin(player)
  task.spawn(load,player)
 end
 
 Players.PlayerRemoving:Connect(function(player)
+ Analytics.Leaving(player)
  local c=winConnections[player]
  if c then c:Disconnect(); winConnections[player]=nil end
  if Data.IsLoaded(player) then

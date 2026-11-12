@@ -1,3 +1,4 @@
+local Analytics=require(game.ServerScriptService.Services.FirstPlayAnalyticsService)
 local RS=game:GetService("ReplicatedStorage")
 local Inventory=require(RS.Modules.ForgeInventory)
 local Counts=require(RS.Modules.InventoryCounts)
@@ -64,6 +65,7 @@ function M.Resolve(player,s,op,ctx)
  s.PendingItemMutation=nil;s.Saving=false;s.Dirty=true;op.Resolving=false
  player:SetAttribute("ForgeSavePending",false)
  player:SetAttribute("ForgeInventoryRevision",(player:GetAttribute("ForgeInventoryRevision") or 0)+1)
+ Analytics.OreCommitted(player,op)
  return true,"Applied"
 end
 return M
