@@ -218,7 +218,9 @@ Before2・3はサーバーログのみ取得し、6クライアント側のconso
 
 新しい曲線・保存・再生の変更で未解消のRuntime Error／データ損失は検証範囲では見つからなかった。一方、待機プレイヤーのBossによる衝突は未解消であり、複数プレイヤーの移動に関する受け入れ確認は完了していない。関連のStage1設定・戦闘Sourceは今回変更していないが、原因を既存実装／検証環境のどちらかへ断定する証拠も不足している。公開前に正常に描画される環境で再現確認が必要。
 
-Gitの実装commitと通常push結果は、後続の記録commitで本節へ追記する。PR #1はopen・draft・未マージ、head `67a9ca51522b24d02c711f1d339e4a4cf349d653` を維持。force push、PRのマージ、過去報告の数値書換えは行わない。
+実装commitは [7104c61](https://github.com/koujiyoshimura54-crypto/Smash_and_Crush/commit/7104c61ff54c92316e60e7334a5c7cf8987957c1)。2026-11-13 02:15 JSTに `git push origin HEAD:main` が成功し、origin/mainは `35ed907` → `7104c61` と通常のfast-forwardで更新された。[push記録](push_receipt.json)。本節の結果追記は後続の文書専用commitで、ゲームSourceの追加変更はない。
+
+PR #1はopen・draft・未マージ、head `67a9ca51522b24d02c711f1d339e4a4cf349d653` を維持。force push、PRのマージ、過去報告の数値書換えは行っていない。これは指定実装と検証記録の反映であり、上記の未達・未確認を全て解消した完成判定ではない。
 
 実機タップ、公開サーバーでの実再参加、本番DataStoreの保存／通信挙動、Creator Hub受信は未確認。メモリ保存の実サービス検証を公開保存の合格とは扱わない。既存の保存前クラッシュ制限、marker以前の曲線履歴不明、RNGと少数試行のばらつき、高LVのIEEE754精度限界を残す。速度目標未達を合格と呼ばず、指定値を検証都合で変更しない。
 
