@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-12 — Restore only Stage2 wall HP (user decision)
+
+The owner rejected extending Stage2 to compensate for the shorter opening. Restore World1 Stage2 walls to300/325/350/425 (total1400), replacing500/650/800/1050 (total3000). Keep the candidate Stage1 walls65/85/100/135 and accepted Boss HP225/2250 for Stage1/2. This commit does not change LevelRequirements or awarded Player Strength. The36-route measurements at f2c8cf3 used the rejected Stage2 walls; they are historical evidence, not validation of this restored configuration. This is a repository update on Draft PR #1; the owner will edit Studio manually. Studio application, Save/Publish and post-restoration Play are not verified here. [Current decision and scope](https://github.com/koujiyoshimura54-crypto/Smash_and_Crush/pull/1).
+
 ## 2026-11-12 — Normalize saved excess progress and verify PR #1 natively
 
 Tracked the current live LevelProgression, carried excess on load/zero gain, and published corrected zero-gain state. Preserved Strength, save version and Back/collision Sources.36 native before/after routes plus isolated boundary/fault/visual checks are recorded; balance acceptance and main reflection remain held. Canonical helpers removed, unsaved Edit retained. [Work record](../reports/EarlyGameLive_20261111/REPORT.md).

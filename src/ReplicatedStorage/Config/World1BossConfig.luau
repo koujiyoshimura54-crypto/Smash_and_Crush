@@ -1,5 +1,5 @@
 -- World1 Stage1-10 balance authority. Stage1 early-pace draft: 2026-11-11.
--- Stage2 walls absorb part of the shorter opening; Stage3-10 are unchanged.
+-- Stage2 walls restored by user decision 2026-11-12; Stage3-10 are unchanged.
 -- This draft still requires the full fresh-player route to be timed in Studio.
 -- World2 uses its independent World2Config. Shared V5 lottery retained.
 local C={}
@@ -39,12 +39,12 @@ function C.GetLotteryWinChance(ratio)
  return 0
 end
 -- Stage1 walls are approximately two thirds of their old HP (rounded to 5).
--- Stage2 keeps its Boss HP and uses moderately longer fixed walls.
+-- Stage2 retains its original fixed walls and unchanged Boss HP.
 -- Preserve Stage3-5 fixed walls independently of Boss strength.
 -- Stage6-10 derive walls at 40/50/60/80 percent of Boss HP.
 local walls={
  [1]={65,85,100,135},
- [2]={500,650,800,1050},
+ [2]={300,325,350,425},
  [3]={600,750,900,1200},
  [4]={3000,3750,4500,6000},
  [5]={7000,8750,10500,14000},

@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — Restore only Stage2 wall HP (user decision)
+
+The owner rejected extending Stage2 to compensate for the shorter opening. Restore World1 Stage2 walls to300/325/350/425 (total1400), replacing500/650/800/1050 (total3000). Keep the candidate Stage1 walls65/85/100/135 and accepted Boss HP225/2250 for Stage1/2. This commit does not change LevelRequirements or awarded Player Strength. The36-route measurements at f2c8cf3 used the rejected Stage2 walls; they are historical evidence, not validation of this restored configuration. This is a repository update on Draft PR #1; the owner will edit Studio manually. Studio application, Save/Publish and post-restoration Play are not verified here. [Current decision and scope](https://github.com/koujiyoshimura54-crypto/Smash_and_Crush/pull/1).
+
 ## 2026-11-12 — PR #1 live progression verification; main held
 
 Canonical126576845524886 now carries the unsaved PR candidate and a live-derived excess-progress normalization fix.36 native normal routes (six per input mode before/after), seeded save/HUD retry/reload, real multiplayer isolation, Back/death/rematch and final guide images were checked. Mixed Stage2 total remains+11.57% in the unbalanced RNG sample; balance acceptance/main reflection are held. Helpers removed; stopped/focused Edit. [Individual runs, fixes and limits](../reports/EarlyGameLive_20261111/REPORT.md).

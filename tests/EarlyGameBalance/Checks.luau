@@ -107,7 +107,8 @@ ok(AfterBossConfig.NeedsIntroTraining(2,7,false),"early LV2 does not lower first
 ok(not AfterBossConfig.NeedsIntroTraining(2,10,false),"old entry Strength proceeds")
 ok(not AfterBossConfig.NeedsIntroTraining(2,7,true),"cleared wall/Boss never regresses for the new floor")
 ok(AfterBossConfig.NeedsIntroTraining(1,0,true),"existing LV reset behavior retained")
-for stage=3,10 do
+-- Stage2 walls are restored; Stage2+ configuration matches the baseline.
+for stage=2,10 do
  eq(AfterBossConfig.GetRequiredStrength(stage),BeforeBossConfig.GetRequiredStrength(stage))
  eq(AfterBossConfig.GetRecommendedLevel(stage),BeforeBossConfig.GetRecommendedLevel(stage))
  eq(AfterBossConfig.GetMaxHP(stage),BeforeBossConfig.GetMaxHP(stage))
@@ -186,7 +187,7 @@ for stage=1,2 do
   local ow,ob=attackCount(BeforeBossConfig,power,stage)
   local nw,nb=attackCount(AfterBossConfig,power,stage)
   if stage==1 then ok(nw+nb<ow+ob,"opening uses fewer accepted attacks")
-  else ok(nw>ow and nb==ob,"stage2 adds wall actions only") end
+  else ok(nw==ow and nb==ob,"stage2 wall and Boss actions match baseline") end
   timing[#timing+1]=string.format("%d,%g,%d,%d,%d,%d,%d,%d,%.4f",stage,power,ow,nw,ob,nb,ow+ob,nw+nb,(ow+ob)/(nw+nb))
  end
 end
