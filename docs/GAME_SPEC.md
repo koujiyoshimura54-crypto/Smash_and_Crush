@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-12 — Mobile landscape policy and relative left-menu floor
+
+Aligned authored StarterGui orientation with the existing LandscapeSensor client policy and added event-only repair. LeftMenu avoidance now stops at 70% of the current viewport/tablet baseline, with existing two-column and input behavior retained. 44 policy assertions, 345 native Edit layout assertions and a 161-object PC geometry comparison passed. Rendered device previews were inspected; physical-device portrait joins, app/link comparison and real touch remain unverified. High-stick overlap is retained at the floor. [Full Paths, baseline calculation, results and device observer](../reports/MobileOrientationHUD_20261112.md). Unsaved; manual Save/Publish required.
+
 ## 2026-11-12 — Egg close, notification image and Trophy restoration
 
 Implemented per-Egg close/re-entry behavior and retained Limited Egg purchase flow, rendered image 126155807251943 through the common notification helper with deduplicated motion, and repaired detached Trophy authored-value restoration. Six production Sources; 16 Egg, 22 badge and 640 Trophy assertions passed. Device-simulator Edit previews were inspected; physical input, actual combat/streaming and resolution of the mobile-only Trophy symptom remain unverified. No Save/Publish. [Work record](../reports/EggBadgeTrophy_20261112.md).

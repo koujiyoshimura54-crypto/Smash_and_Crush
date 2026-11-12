@@ -5,6 +5,7 @@ local Presentation=require(script.Parent.StrengthHUDPresentation)
 local PurchaseStyle=require(game:GetService("ReplicatedStorage").Config.StrengthHUDStyle)
 local M={}
 M.BattleBagScale=1.5 -- Absolute multiplier of the original icon/text/gap dimensions.
+M.LeftMenuMinRatio=0.70 -- Minimum extra-avoidance scale relative to this viewport's normal left menu.
 local function write(object,key,value)
  if object[key]~=value then object[key]=value end
 end
@@ -199,9 +200,23 @@ function M.Mount(gui)
   local rebirthCounter=hud:FindFirstChild("RebirthAmount")
   local counterHeight,counterBodyWidth,counterInset,counterGap=94.5,252,50,14
   local counterStack=2*(counterHeight+counterGap)
+  -- Normal size uses the same viewport/tablet/counter budgets, before controls
+  -- reduce leftBottom. It is not the desktop design size or a fixed UIScale.
+  local normalLeftScale=(tablet and tabletBase or math.clamp(
+   math.min(preferred,(h-16-top)/leftHeight,limitW/leftWidth),.12,1))*(tablet and 3.0 or 1)
+  local normalLeftY=top
+  if winCounter and rebirthCounter then
+   normalLeftScale=math.min(normalLeftScale,math.max(.12,(h-16-54)/(leftHeight+counterStack)))
+   normalLeftY=54+counterStack*normalLeftScale
+  end
+  if tablet then
+   normalLeftScale=math.min(normalLeftScale,(w-2*edge)/leftWidth,(h-edge-normalLeftY)/leftHeight)
+  end
+  local minimumLeftScale=touch and normalLeftScale*math.clamp(M.LeftMenuMinRatio,0,1) or 0
+  leftScale=math.max(leftScale,minimumLeftScale)
   if winCounter and rebirthCounter then
    local counterTop=54 -- Below the existing inventory readout.
-   leftScale=math.min(leftScale,math.max(.12,(leftBottom-counterTop)/(leftHeight+counterStack)))
+   leftScale=math.max(minimumLeftScale,math.min(leftScale,math.max(.12,(leftBottom-counterTop)/(leftHeight+counterStack))))
    leftY=counterTop+counterStack*leftScale
    minLeftY=leftY
   end
@@ -257,8 +272,14 @@ function M.Mount(gui)
      else leftScale=math.min(leftScale,math.max(1,r.Y-leftY-10)/bottom) end
     end
    end end
-   left.Position=UDim2.fromOffset(leftX,leftY);left.HUDScale.Scale=leftScale
+   left.Position=UDim2.fromOffset(leftX,leftY)
   end
+  -- Final clamp follows every avoidance path, before slots, paint and hit targets.
+  leftScale=math.max(leftScale,minimumLeftScale)
+  left.HUDScale.Scale=leftScale
+  gui:SetAttribute("LeftMenuBaseScale",normalLeftScale)
+  gui:SetAttribute("LeftMenuFinalScale",leftScale)
+  gui:SetAttribute("LeftMenuAvoidanceRatio",leftScale/normalLeftScale)
   if winCounter and rebirthCounter then
    local counterTop=leftY-counterStack*leftScale
    for index,counter in ipairs({winCounter,rebirthCounter}) do
