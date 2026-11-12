@@ -12,6 +12,12 @@ return function(ctx)
  local Master,PetClient,Egg=ctx.Master,ctx.PetClient,ctx.Egg
  local font=Font.fromEnum(Enum.Font.GothamBlack)
  local cyan=Color3.fromRGB(0,224,245)
+ -- Ore input placeholders only; shared Item/Pet colors and selection stay unchanged.
+ local oreSlotStyle={
+  Accent=Color3.fromRGB(91,159,230),
+  Quiet=Color3.fromRGB(100,100,100),Background=Color3.fromRGB(26,28,29),
+  Corner=16,Outline=6,Gap=16,
+ }
  local connections,materialCards,inputCards,candidateCards={},{},{},{}
  local dead=false
  local function connect(signal,callback)
@@ -115,6 +121,19 @@ return function(ctx)
  stud.ImageTransparency=.94;stud.ZIndex=215;stud.Active=false
  local dashes={}
  local inputList=scroll('Inputs',drop,220);inputList.ScrollingDirection=Enum.ScrollingDirection.X;inputList.ScrollBarThickness=6
+ local oreSlots={}
+ for i=1,OreMerge.Maximum do
+  local slot=surface('OreEmptySlot'..i,inputList,oreSlotStyle.Background,222)
+  slot.Visible=false;slot.Active=false;slot.Interactable=false
+  slot.BackgroundTransparency=.12;slot.Corner.CornerRadius=UDim.new(0,oreSlotStyle.Corner)
+  new('UIGradient','Shading',slot,{Color=ColorSequence.new(Color3.fromRGB(230,230,230),Color3.fromRGB(255,255,255)),Rotation=90})
+  local outline=stroke(slot,oreSlotStyle.Quiet,oreSlotStyle.Outline)
+  local plus=label('Plus',slot,'+',72,223)
+  plus.Position=UDim2.fromScale(.15,.12);plus.Size=UDim2.fromScale(.7,.76)
+  plus.TextColor3=oreSlotStyle.Quiet;plus.TextStrokeTransparency=1
+  plus.Active=false;plus.Interactable=false
+  oreSlots[i]={Root=slot,Outline=outline,Plus=plus}
+ end
  local dropTitle=label('DropTitle',drop,'Drag Items Here',52)
  local dropHint=label('DropHint',drop,'Select at least 2 Items',32)
  local totalLabel=label('Total',drop,'Total: 0 pt',46)
@@ -340,7 +359,7 @@ return function(ctx)
  function view:MovePointer(position)
   if not drag then return end
   drag.Last=position;local delta=position-drag.Start
-  if drag.Touch and not drag.Active and math.abs(delta.Y)>10 and math.abs(delta.Y)>math.abs(delta.X)*1.2 and os.clock()-drag.Start<.2 then drag.Scrolling=true;return end
+  if drag.Touch and not drag.Active and math.abs(delta.Y)>10 and math.abs(delta.Y)>math.abs(delta.X)*1.2 and os.clock()-drag.Started<.2 then drag.Scrolling=true;return end
   if drag.Scrolling then return end
   if not drag.Active and delta.Magnitude>10 then
    local card=materialCards[drag.Key];if not card then endDrag();return end
@@ -463,8 +482,20 @@ return function(ctx)
   sell.Visible=tab=='Ore';sell.PriceTag.Text=sellMode and 'Back' or 'Sell'
   reconcile(materialCards,list,groups,false)
   local inputs=selectedEntries();reconcile(inputCards,inputList,sellMode and {} or inputs,true)
-  inputList.Visible=n>0 and not sellMode
-  dropTitle.Visible=n==0 or sellMode;dropHint.Visible=n==0 and tab=='Item' and not sellMode
+  local oreInputs=tab=='Ore' and not sellMode
+  inputList.Visible=(oreInputs or n>0) and not sellMode
+  inputList.ScrollingEnabled=not oreInputs
+  inputList.ScrollBarThickness=oreInputs and 0 or 6
+  if oreInputs then inputList.CanvasPosition=Vector2.zero end
+  for i,slot in oreSlots do
+   slot.Root.Visible=oreInputs and i>#inputs
+   local nextRequired=oreInputs and oreState and oreState.Loaded==true and not oreState.Pending
+    and not Forge.IsPending() and n<OreMerge.Minimum and i==n+1
+   local color=nextRequired and oreSlotStyle.Accent or oreSlotStyle.Quiet
+   slot.Outline.Color=color;slot.Plus.TextColor3=color
+   slot.Root:SetAttribute('NextRequired',nextRequired==true)
+  end
+  dropTitle.Visible=not oreInputs and (n==0 or sellMode);dropHint.Visible=n==0 and tab=='Item' and not sellMode
   dropTitle.Text=sellMode and 'Select quantities above' or tab=='Pet' and 'Drag Pets Here' or tab=='Ore' and 'Drag Ores Here' or 'Drag Items Here'
   totalLabel.Visible=tab=='Ore' or n>0
   if tab=='Ore' then
@@ -488,7 +519,7 @@ return function(ctx)
    ready=false
    if oreState and not oreState.Pending and not Forge.IsPending() then
     if sellMode then ready=OreMerge.Selection(oreSelection(),oreState.Ores,true)~=nil
-    else ready=OreMerge.Evaluate(oreSelection(),oreState.Ores,oreState.World2Unlocked)~=nil end
+    else ready=oreState.Loaded==true and OreMerge.Evaluate(oreSelection(),oreState.Ores,oreState.World2Unlocked)~=nil end
    end
   end
   enabled(merge,ready==true);merge:SetAttribute('ExecutionEnabled',ready==true);merge.PriceTag.Text=sellMode and 'Sell' or 'Merge'
@@ -543,9 +574,17 @@ return function(ctx)
   rect(drop,rx,dy,rw,dh)
   local inputs=selectedEntries();local lower=totalLabel.Visible and 48 or 10
   rect(inputList,12,12,rw-24,dh-lower-16)
+  local oreInputs=tab=='Ore' and not sellMode
   local inputSide=math.min(dh-lower-22,(rw-48)/5)
-  for i,entry in inputs do local card=inputCards[entry.Key];if card then rect(card.Root,(i-1)*(inputSide+8),2,inputSide,inputSide) end end
-  inputList.CanvasSize=UDim2.fromOffset(#inputs*(inputSide+8),0)
+  local inputGap,inputX=8,0
+  if oreInputs then
+   inputGap=oreSlotStyle.Gap
+   inputSide=math.min(dh-lower-28,(rw-40-inputGap*(OreMerge.Maximum-1))/OreMerge.Maximum)
+   inputX=(rw-24-(inputSide*OreMerge.Maximum+inputGap*(OreMerge.Maximum-1)))/2
+   for i,slot in oreSlots do rect(slot.Root,inputX+(i-1)*(inputSide+inputGap),6,inputSide,inputSide) end
+  end
+  for i,entry in inputs do local card=inputCards[entry.Key];if card then rect(card.Root,inputX+(i-1)*(inputSide+inputGap),oreInputs and 6 or 2,inputSide,inputSide) end end
+  inputList.CanvasSize=oreInputs and UDim2.new() or UDim2.fromOffset(#inputs*(inputSide+8),0)
   rect(totalLabel,12,dh-46,rw-24,42);rect(dropTitle,16,dh*.24,rw-32,dh*.36);rect(dropHint,16,dh*.65,rw-32,dh*.23)
   local k=0
   local function dash(a,b,c,d)
@@ -595,6 +634,7 @@ return function(ctx)
  function view:Hide(reason)
   if reason=='Closed' then closeRevision+=1 end
   shop.Visible=false;endDrag();itemSelected={};petSelected={};oreSelected={};oreSale={};completedItem=nil;completedBell=nil
+  for _,slot in oreSlots do slot.Root.Visible=false;slot.Root:SetAttribute('NextRequired',false) end
   destroyCards(materialCards);destroyCards(inputCards);destroyCards(candidateCards);candidateSignature='';table.clear(blocked)
   changed:Fire()
  end

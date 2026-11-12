@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-12 — Ore-only five-slot merge input strip
+
+Ore merge now shows five unit positions from the existing selection, with #5B9FE6 next-required emphasis only at zero/one and quiet optional slots at two or more. Existing evaluation/transactions and Item/Pet/sale presentation are retained; loading is not executable. Fixed the existing touch-scroll timestamp typo exposed by verification. 234 behavior, 20 integration, 5,736 regression and 384 geometry assertions passed in isolated Edit tests. Four-device 0/1/2/5 screenshots are retained as requested; physical input, gameplay Play and live transactions remain unverified. [Full Paths, images and limits](../reports/OreSlots_20261112.md). Studio unsaved; manual Save/Publish required.
+
 ## 2026-11-12 — Mobile landscape policy and relative left-menu floor
 
 Aligned authored StarterGui orientation with the existing LandscapeSensor client policy and added event-only repair. LeftMenu avoidance now stops at 70% of the current viewport/tablet baseline, with existing two-column and input behavior retained. 44 policy assertions, 345 native Edit layout assertions and a 161-object PC geometry comparison passed. Rendered device previews were inspected; physical-device portrait joins, app/link comparison and real touch remain unverified. High-stick overlap is retained at the floor. [Full Paths, baseline calculation, results and device observer](../reports/MobileOrientationHUD_20261112.md). Unsaved; manual Save/Publish required.
