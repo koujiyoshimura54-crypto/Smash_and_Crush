@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — First Stage2 combat funnel
+
+Applied one canonical live-derived Source: FirstPlayAnalyticsService.68 Stage2/state checks,38 legacy checks against both versions with identical old event streams, and52 transport checks passed in isolated native Edit simulations. No actual combat Play or Creator Hub receipt tested; no Play start/stop, Save/Publish or player-data mutation.498 Sources:one changed,497 preserved. PR #1 remains unmerged; manual Save/Publish required. [Record](../reports/FirstStage2Combat_20261112.md).
+
 ## 2026-11-12 — First-play analytics implemented
 
 Three funnels and bounded elapsed-value observations are implemented in current canonical Studio126576845524886. Six ordinary routes across two native launches,15 injected native boundary assertions,38 final state assertions and8 ownership assertions passed.27 scoped Sources matched the intended live-derived result; temporary helpers were removed. Creator Hub receipt/public-server behavior remain unverified. The user subsequently requested to run Studio Play personally; do not stop that Play. [Schema](FIRST_PLAY_ANALYTICS.md), [evidence and limitations](../reports/FirstPlayAnalytics_20261112/REPORT.md).

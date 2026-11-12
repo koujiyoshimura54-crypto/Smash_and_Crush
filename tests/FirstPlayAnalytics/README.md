@@ -1,5 +1,13 @@
 # Isolated FirstPlayAnalytics verification
 
+## Stage2 addition — Edit-only, 2026-11-12
+
+For the Stage2 task, do NOT follow the older Play-launch instructions below. The user prohibits starting/stopping their Play. Run Stage2Matrix.luau and Stage2Transport.luau through native Edit loadstring, with copied Sources; install no Script, Remote or isolation adapter in the DataModel.
+
+Stage2Matrix returns a function(sources,deps). sources contains Service (current FirstPlayAnalyticsService Source), Baseline (same Source from main736f02b), Transport (unchanged FirstPlayAnalyticsTransport Source), and LegacyMatrix (StateMatrix.luau text). deps contains the pure OreConfig, OreMerge and InventoryCounts module values. Its fake Players/data/remotes/clock use no player saves; only Stage01/Stage02 Floor geometry is read from workspace. The old StateMatrix's Merge-location dependency is replaced with its documented logical fixture; cohort, funnel, StagePresence, ordering and deduplication code are unchanged. BindableEvents are unparented and destroyed after completion.
+
+Stage2Transport returns a function(transportSource). The fake API records locally; the fake clock/scheduler exercises the published-mode pacing branch without any real Analytics call. Both suites return serializable result tables. No result containing real-player data is exported. See [Stage2 report](../../reports/FirstStage2Combat_20261112.md) for the actual outcomes and unverified native-gameplay scope.
+
 Only canonical Place126576845524886 / Universe10765181857. No Save/Publish, real payments or production data. These files are fixtures, not Rojo shipping Sources.
 
 Use the39-reference isolated memory adapter and exact before/after backups documented by `tests/EarlyGameLive/InstallIsolation.luau` and `RemoveIsolation.luau` on the early-stage verification branch (f2c8cf3). Source changes must preserve current live edits. The connected Roblox `rbx-instrument-analytics` skill recommends `multi_edit`; use exact Source guards and that editing API for current fixtures/restoration. Do not copy older game Sources.

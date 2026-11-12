@@ -12,10 +12,11 @@ local states=setmetatable({},{__mode="k"})
 local remote=RS.Remotes:FindFirstChild("FirstPlayAnalytics") or Instance.new("RemoteEvent")
 remote.Name="FirstPlayAnalytics";remote.Parent=RS.Remotes
 local release="PlaceVersion:"..tostring(game.PlaceVersion)
-local names={Entry="MTF_Entry_v1",Combat="MTF_FirstCombat_v1",Ore="MTF_FirstOreMerge_v1"}
+local names={Entry="MTF_Entry_v1",Combat="MTF_FirstCombat_v1",Ore="MTF_FirstOreMerge_v1",Stage2="MTF_FirstStage2Combat_v1"}
 local steps={Entry={"ServerJoined","DataLoaded","ClientPlayable"},
  Combat={"Playable","EnteredStage1","ClearedFirstWall","ClearedStage1Walls","DamagedStage1Boss","DefeatedStage1Boss"},
- Ore={"Eligible","OreViewOpened","ValidSelection","MergeRequested","MergeCommitted"}}
+ Ore={"Eligible","OreViewOpened","ValidSelection","MergeRequested","MergeCommitted"},
+ Stage2={"EnteredStage2","ClearedFirstWall","ClearedStage2Walls","DamagedStage2Boss","DefeatedStage2Boss"}}
 local function fields(cohort,detail)
  return {[Enum.AnalyticsCustomFieldKeys.CustomField01.Name]=release,
   [Enum.AnalyticsCustomFieldKeys.CustomField02.Name]=cohort,
@@ -66,7 +67,7 @@ end
 function M.Join(p)
  if states[p] then return end
  local s={Id=Http:GenerateGUID(false),Joined=os.clock(),Cohort="Unknown",Loaded=false,
-  Progress={Entry=0,Combat=0,Ore=0},Broken={},Seen={},Queue={},SendBroken={},Failed=0,Dropped=0,
+  Progress={Entry=0,Combat=0,Ore=0,Stage2=0},Broken={},Seen={},Queue={},SendBroken={},Failed=0,Dropped=0,
   Connections={},ClientTokens=8,ClientAt=os.clock(),ClientSequence=0}
  states[p]=s
  p:SetAttribute("MTFSession",s.Id)
@@ -99,7 +100,7 @@ end
 function M.Reset(p)
  local s=states[p];if not s then return end
  if new(s) then custom(p,s,"Reset","DebugReset") end
- s.Reset=true;s.Cohort="Reset";s.Broken.Combat=true;s.Broken.Ore=true
+ s.Reset=true;s.Cohort="Reset";s.Broken.Combat=true;s.Broken.Ore=true;s.Broken.Stage2=true
  p:SetAttribute("MTFNewFirstSession",false)
 end
 function M.Placed(p,c,revision)
@@ -119,36 +120,58 @@ function M.Playable(p,c,revision)
  if new(s) then step(p,s,"Combat",1) end
  return true
 end
-local floorCache,mapCache
-function M.StagePresence(p,worldId,root)
- local s=states[p]
- if worldId~=1 or not new(s) or s.Progress.Combat>=2 or s.Broken.Combat or not root then return end
+local floorCache,mapCache={},nil
+local function onStageFloor(root,stageNumber)
  local map=workspace:FindFirstChild("GeneratedMap")
- if mapCache~=map then floorCache=nil;mapCache=map end
- if not floorCache then
-  local corridor=map and map:FindFirstChild("BattleCorridor");local stage=corridor and corridor:FindFirstChild("Stage01")
-  if not stage then return end
-  floorCache={}
-  for _,o in stage:GetDescendants() do if o:IsA("BasePart") and o.Name=="Floor" then table.insert(floorCache,o) end end
+ if mapCache~=map then floorCache={};mapCache=map end
+ local floors=floorCache[stageNumber]
+ if not floors then
+  local corridor=map and map:FindFirstChild("BattleCorridor")
+  local stage=corridor and corridor:FindFirstChild(("Stage%02d"):format(stageNumber))
+  if not stage then return false end
+  floors={}
+  for _,o in stage:GetDescendants() do if o:IsA("BasePart") and o.Name=="Floor" then table.insert(floors,o) end end
+  floorCache[stageNumber]=floors
  end
- for _,floor in floorCache do
+ for _,floor in floors do
   if floor.Parent then
    local v=floor.CFrame:PointToObjectSpace(root.Position);local h=floor.Size/2
-   if math.abs(v.X)<=h.X and math.abs(v.Z)<=h.Z and v.Y>=h.Y-2 and v.Y<=h.Y+35 then
-    M.Combat(p,worldId,1,2);return
-   end
+   if math.abs(v.X)<=h.X and math.abs(v.Z)<=h.Z and v.Y>=h.Y-2 and v.Y<=h.Y+35 then return true end
   end
+ end
+ return false
+end
+function M.StagePresence(p,worldId,root)
+ local s=states[p]
+ if worldId~=1 or not new(s) or not root then return end
+ -- Preserve Stage1's existing physical predicate and cohort/ordering gates.
+ if s.Progress.Combat<2 and not s.Broken.Combat and onStageFloor(root,1) then M.Combat(p,worldId,1,2) end
+ -- Stage2 starts at physical entry, independently of Combat completion or Ore.
+ if s.Progress.Stage2<1 and not s.Seen.ObservedStage21 then
+  local c=living(p)
+  if c and root==c.HumanoidRootPart and onStageFloor(root,2) then M.Combat(p,worldId,2,2) end
  end
 end
 function M.Combat(p,worldId,stage,index)
  local s=states[p]
- if worldId~=1 or stage~=1 or not new(s) or index<2 or index>6 then return end
- if s.Skip or s.Broken.Combat then custom(p,s,"ObservedCombat"..index,"Observed:"..steps.Combat[index])
- else step(p,s,"Combat",index) end
+ if worldId~=1 or (stage~=1 and stage~=2) or not new(s) or index<2 or index>6 then return end
+ local funnel=stage==2 and "Stage2" or "Combat"
+ local i=stage==2 and index-1 or index
+ -- Existing server hooks use 2=entry, 3/4=walls, 5=effective damage, 6=defeat.
+ -- One Stage2 reach observation even if a later skip changes classification.
+ if stage==2 and (i%1~=0 or i<=s.Progress.Stage2) then return end
+ local key=stage==2 and "ObservedStage2"..i or "ObservedCombat"..i
+ local detail=stage==2 and "Observed:Stage2:"..steps.Stage2[i] or "Observed:"..steps.Combat[i]
+ if s.Skip or s.Broken[funnel] then custom(p,s,key,detail)
+ else
+  step(p,s,funnel,i)
+  -- Keep the actual out-of-order Stage2 observation, without inventing prior steps.
+  if stage==2 and s.Broken.Stage2 then custom(p,s,key,detail) end
+ end
 end
 function M.Skipped(p)
  local s=states[p];if not new(s) then return end
- s.Skip=true;s.Broken.Combat=true;custom(p,s,"StageSkip","StageSkip")
+ s.Skip=true;s.Broken.Combat=true;s.Broken.Stage2=true;custom(p,s,"StageSkip","StageSkip")
 end
 function M.Strength(p,route)
  local s=states[p];if not new(s) then return end

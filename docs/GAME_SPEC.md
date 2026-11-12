@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-12 — First Stage2 combat funnel
+
+Added MTF_FirstStage2Combat_v1 for the same confirmed New first-session cohort as FirstCombat. Five server observations start at actual World1 Stage2 entry, independently of Merge; death/return/retry retain join progress. World2 and exceptional skip/order paths do not advance the normal funnel. Existing three funnels and gameplay are unchanged. [Schema](FIRST_PLAY_ANALYTICS.md), [verification and limits](../reports/FirstStage2Combat_20261112.md).
+
 ## 2026-11-12 — First-play analytics v1
 
 The current user instruction supersedes the earlier analytics deferral. Entry covers every server join; FirstCombat and FirstOreMerge cover confirmed newly created profiles in their first session, with Ore eligibility as its own denominator. Instrumentation does not change gameplay, rewards, UI or save schemas. [Full schema, Full Paths and measurement limits](FIRST_PLAY_ANALYTICS.md); [native and simulated verification](../reports/FirstPlayAnalytics_20261112/REPORT.md). Publication remains the owner's manual action.

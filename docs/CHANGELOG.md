@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-12 — First Stage2 combat funnel
+
+Added five-step MTF_FirstStage2Combat_v1 and existing-name join-relative elapsed values. Server hook reuse changes only FirstPlayAnalyticsService; original three funnels, balance, rewards, AutoTap, saving, UI/tutorial and title are unchanged. Edit-only simulations and rate/queue failure checks are recorded; actual Play and published receipt remain unverified. PR #1 stays held. [Report](../reports/FirstStage2Combat_20261112.md).
+
 ## 2026-11-12 — First-play loading, combat and Ore analytics
 
 Added server-owned MTF_Entry_v1, MTF_FirstCombat_v1 and MTF_FirstOreMerge_v1 with verified cohort provenance, sequential deduplication, independent skip/return observations and elapsed values. Studio uses a bounded recorder. Preserves current gameplay and existing fixes. Native normal routes and isolated fault checks passed; no Save/Publish. [English specification](FIRST_PLAY_ANALYTICS.md) and [verification](../reports/FirstPlayAnalytics_20261112/REPORT.md).
