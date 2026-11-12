@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-13 — World1 Stage1–5 balance and cycle-safe progression
+
+Applied the approved HP table, recommended levels, Q1–29 and new-cycle Rebirth gates. Added a persistent per-cycle curve choice: existing profiles keep their current legacy cycle; new profiles and the next successful Rebirth use the new curve. Server progression, reward snapshots, LV display and Rebirth UI share that choice. Preserved the current Studio's Stage1/tutorial edits and added its missing LevelProgression module to Git. No changes to Stage6–10/World2 HP, ordinary gains, damage modifiers, cadence or analytics definitions. [Before/after tables, measured routes, migration and verification limits](../reports/World1Stage1To5Balance_20261112/REPORT.md). Unsaved; no Save/Publish.
+
 ## 2026-11-12 — Stage2 Boss outcomes, Phase 1.1–1.3
 
 Added MTF_FirstStage2BossDeath_v1 and MTF_FirstStage2BossBack_v1 with shared effective-damage starts, actual lethal-hit attribution and exact successful Back placement correlation. Existing funnel outputs and gameplay preserved in isolated comparison;101 outcome,59 transport,68 Stage2 and38 legacy checks passed. Canonical Studio unsaved; no Play/Hub verification or publication. [Evidence and limits](../reports/FirstStage2BossOutcomes_20261112/REPORT.md).

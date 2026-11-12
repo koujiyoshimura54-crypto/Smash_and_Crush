@@ -1,0 +1,150 @@
+{
+  "Checks": 644,
+  "Passed": false,
+  "Failures": [
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Mixed",
+      "Repetition": 2,
+      "UserId": -4,
+      "Check": "MTF_Entry_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Mixed",
+      "Repetition": 2,
+      "UserId": -4,
+      "Check": "MTF_FirstCombat_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Manual",
+      "Repetition": 3,
+      "UserId": -2,
+      "Check": "MTF_Entry_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Manual",
+      "Repetition": 3,
+      "UserId": -2,
+      "Check": "MTF_FirstCombat_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Manual",
+      "Repetition": 2,
+      "UserId": -5,
+      "Check": "MTF_Entry_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Manual",
+      "Repetition": 2,
+      "UserId": -5,
+      "Check": "MTF_FirstCombat_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Auto",
+      "Repetition": 2,
+      "UserId": -6,
+      "Check": "MTF_Entry_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Auto",
+      "Repetition": 2,
+      "UserId": -6,
+      "Check": "MTF_FirstCombat_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Auto",
+      "Repetition": 3,
+      "UserId": -3,
+      "Check": "MTF_Entry_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Auto",
+      "Repetition": 3,
+      "UserId": -3,
+      "Check": "MTF_FirstCombat_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Mixed",
+      "Repetition": 3,
+      "UserId": -1,
+      "Check": "MTF_Entry_v1 observed prefix"
+    },
+    {
+      "File": "native_after_2_3.json",
+      "Variant": "After",
+      "Mode": "Mixed",
+      "Repetition": 3,
+      "UserId": -1,
+      "Check": "MTF_FirstCombat_v1 observed prefix"
+    },
+    {
+      "File": "native_after_4.json",
+      "Variant": "After",
+      "Mode": "Auto",
+      "Repetition": 4,
+      "UserId": -3,
+      "Check": "MTF_Entry_v1 observed prefix"
+    },
+    {
+      "File": "native_after_4.json",
+      "Variant": "After",
+      "Mode": "Auto",
+      "Repetition": 4,
+      "UserId": -3,
+      "Check": "MTF_FirstCombat_v1 observed prefix"
+    },
+    {
+      "File": "native_after_4.json",
+      "Variant": "After",
+      "Mode": "Mixed",
+      "Repetition": 4,
+      "UserId": -1,
+      "Check": "MTF_Entry_v1 observed prefix"
+    },
+    {
+      "File": "native_after_4.json",
+      "Variant": "After",
+      "Mode": "Mixed",
+      "Repetition": 4,
+      "UserId": -1,
+      "Check": "MTF_FirstCombat_v1 observed prefix"
+    },
+    {
+      "Scope": "all retained native routes",
+      "Check": "existing four per-funnel observed steps match"
+    }
+  ],
+  "Routes": 24,
+  "Counts": {
+    "After/Manual": 4,
+    "After/Mixed": 4,
+    "After/Auto": 4,
+    "Before/Manual": 4,
+    "Before/Mixed": 4,
+    "Before/Auto": 4
+  },
+  "ExistingFourPerFunnelObservedStepsIdentical": false,
+  "NaturalCrossFunnelInterleavings": 5,
+  "Kind": "Assertions over recorded native evidence; not additional Play runs; failures are retained rather than backfilled"
+}

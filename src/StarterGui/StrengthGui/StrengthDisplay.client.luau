@@ -30,7 +30,7 @@ local function update()
  totalLabel.Text=Presentation.Number(strength)
  local level=tonumber(player:GetAttribute("Level")) or 1
  local levelProgress=math.max(0,tonumber(player:GetAttribute("LevelProgress")) or 0)
- local required=Requirements.GetRequiredStrength(level)
+ local required=Requirements.GetRequiredStrength(level,player:GetAttribute("LevelCurveVersion"))
  local atMax=level>=Requirements.MaxLevel
  local progress=atMax and 1 or (required>0 and math.clamp(levelProgress/required,0,1) or 0)
  levelLabel.Text="Lv."..tostring(level)
@@ -51,6 +51,7 @@ end
 player:GetAttributeChangedSignal("Strength"):Connect(queueUpdate)
 player:GetAttributeChangedSignal("Level"):Connect(queueUpdate)
 player:GetAttributeChangedSignal("LevelProgress"):Connect(queueUpdate)
+player:GetAttributeChangedSignal("LevelCurveVersion"):Connect(queueUpdate)
 player.CharacterAdded:Connect(queueUpdate)
 gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(layout)
 layout()

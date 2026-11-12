@@ -23,11 +23,11 @@ local function response(p,text)
  if not ok then warn("[StudioTest] Reply failed: "..tostring(why)) end
 end
 local function integer(text,min,max,label)local n=tonumber(text);if not n or n%1~=0 or n<min or n>max then return nil,("TEST ERROR: %s must be between %d and %d"):format(label,min,max) end;return n end
-local function strengthFor(level)
+local function strengthFor(level,curve)
  if level<=1 then return 0 end
  local low,high=0,1
- while high<9007199254740991 do local v=Progression.Advance(1,0,high);if v and v>=level then break end;high=math.min(9007199254740991,high*2) end
- while low<high do local mid=math.floor((low+high)/2);local v=Progression.Advance(1,0,mid);if v and v>=level then high=mid else low=mid+1 end end
+ while high<9007199254740991 do local v=Progression.Advance(1,0,high,curve);if v and v>=level then break end;high=math.min(9007199254740991,high*2) end
+ while low<high do local mid=math.floor((low+high)/2);local v=Progression.Advance(1,0,mid,curve);if v and v>=level then high=mid else low=mid+1 end end
  return low
 end
 local function stageOf(p,w)local n=p:GetAttribute(w==2 and "World2CurrentStage" or "CurrentStage");return typeof(n)=="number" and math.clamp(math.floor(n),1,10) or 1 end
@@ -52,7 +52,7 @@ local function apply(p,level,world,stage,levelOnly)
   local currentWorld=p:GetAttribute("CurrentWorld")==2 and 2 or 1
   if not st.Active then st.Original={World=currentWorld,Stage=stageOf(p,currentWorld)};st.Moved=false end
   local w=world or currentWorld;local s=stage or stageOf(p,currentWorld)
-  if level then local changed,why=Data.ApplyStudioStartLevel(p,strengthFor(level),level);if not changed then return false,"TEST ERROR: "..tostring(why) end;st.Active=true end
+  if level then local changed,why=Data.ApplyStudioStartLevel(p,strengthFor(level,Data.Get(p).Data.LevelCurveVersion),level);if not changed then return false,"TEST ERROR: "..tostring(why) end;st.Active=true end
   if not levelOnly then
    st.Moved=true;st.World=w;st.Stage=s
    local moved,why=move(p,w,s,ch);if not moved then return false,why end

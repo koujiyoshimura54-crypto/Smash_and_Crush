@@ -1,5 +1,15 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-12 — 育成サイクルを保持するLV曲線切替
+
+新規プロフィールのみ `LevelCurveVersion=2`。既存プロフィールでこの項目が欠ける場合は1として保存し、変更直前Studioの旧必要量・旧再生条件で現在のサイクルを継続する。LV1／Strength0による新規推測はしない。保存済みLV・小数／余剰進捗を保持し、現在StrengthからLVを再計算しない。保存LV自体がない旧形式だけ、従来の歴史的Threshold変換を維持する。
+
+サーバーの `PlayerDataService.TryRebirth` は所有権・保存中・未完了報酬を検査し、旧／新の選択曲線に対応する再生条件を満たしたとき、回数増加、Strength=0、LV1、進捗0、曲線2への切替を待機なしで一括反映する。装備・Win・所持品を維持。保存は既存の所有権付きSave経路と再試行を使う。再生応答は既存同様ランタイム成立を示し、即時の永続保存完了通知ではない。自動保存前のサーバー消失では未保存進行が戻る既存の制限が残る。
+
+Level／LevelProgress／LevelProgressVersion=1に加えてLevelCurveVersionを保存・複製する。通常付与、TimeRewardスナップショット、StrengthRewardの再試行スナップショット、StudioStartの退避にも曲線を保持する。未完了の永続報酬がある間は再生を成立させず、復元した報酬を旧サイクルに一度反映してから切り替える。必要量と再生条件を別の曲線で判定しない。未対応バージョンは推測変換しない。
+
+World1 Stage1〜5の確定HP・推奨LVは [BALANCE_SPEC](BALANCE_SPEC.md)。初期案内は既存 `NeedsIntroTraining` のStrength10到達条件を保持し、新曲線のLV2／Strength5だけでは戦闘案内へ進めない。既存6ファネルの定義・送信仕様は変更しない。[変更箇所、実Play、保存検証、残る制限](../reports/World1Stage1To5Balance_20261112/REPORT.md)。
+
 ## 2026-11-12 — First Stage2 Boss death and Back funnels
 
 Added two two-step New first-session funnels from the existing accepted Stage2 Boss damage observation: actual lethal Boss attack and confirmed living Back arrival before the first defeat. Join-scoped progress and a permanent-for-this-join defeat latch survive retries. Completions overlap; do not sum them as departures or undefeated players. Three live-derived server Sources changed; balance, return/save behavior and all UI are retained. [Schema](FIRST_PLAY_ANALYTICS.md), [isolated verification and unverified Play/Hub scope](../reports/FirstStage2BossOutcomes_20261112/REPORT.md). Studio remains unsaved.

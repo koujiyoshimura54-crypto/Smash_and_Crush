@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-12 — 選択中のLV曲線と再生条件の表示
+
+LVゲージと再生UIはサーバー複製 `LevelCurveVersion` と同じ曲線を参照し、切替通知でも再描画する。既存サイクルでは旧必要量／旧再生条件、新規と正常再生後は新必要量／新再生条件を表示。内部RequiredStrengthの新表示は追加せず、Boss UIは推奨LV4/8/15/20/25と実HPを既存経路で表示する。レイアウト、数値省略／丸め、Ore5スロット、横画面、左Menu70%、PetEggの×、通知、AutoTap初期OFFを維持する。[表示・端末検証と未確認事項](../reports/World1Stage1To5Balance_20261112/REPORT.md)。
+
 ## 2026-11-12 — Ore-only five-slot merge input strip
 
 Ore merge now shows five unit positions from the existing selection, with #5B9FE6 next-required emphasis only at zero/one and quiet optional slots at two or more. Existing evaluation/transactions and Item/Pet/sale presentation are retained; loading is not executable. Fixed the existing touch-scroll timestamp typo exposed by verification. 234 behavior, 20 integration, 5,736 regression and 384 geometry assertions passed in isolated Edit tests. Four-device 0/1/2/5 screenshots are retained as requested; physical input, gameplay Play and live transactions remain unverified. [Full Paths, images and limits](../reports/OreSlots_20261112.md). Studio unsaved; manual Save/Publish required.

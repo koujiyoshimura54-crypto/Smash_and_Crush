@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-13 — World1 Stage1–5 balance and per-cycle Level curves
+
+Implemented the specified Stage1–5 HP/recommended levels, Q1–29 and Rebirth gates in the current unsaved Studio. New profiles use curve2; unmarked existing profiles retain the captured pre-change curve1 and its Rebirth gates until their next successful Rebirth. The curve marker follows existing owned saves and reward snapshots; Level/progress remain authoritative. Stage6–10, World2 HP, gains, equipment effects and analytics definitions are unchanged.153326 pure checks and60 existing reward checks pass. Native comparisons, save-fault tests, device evidence and remaining limitations are recorded separately in the [work report](../reports/World1Stage1To5Balance_20261112/REPORT.md). The1.5× speed target is not implied by implementation completion. Studio remains unsaved; no Save/Publish or production-data verification.
+
+Verification retained24 earned native routes,1076 native data/service checks and43 single-player Stage2 outcome checks. All10 prepared Manual/Auto Boss cases reached the fifth hit. The overall1.5× target was missed;8 routes lacked ClientPlayable/FirstCombat, device viewports stayed1×1, and a foreign idle Boss blocked two multiplayer outcome attempts. Those acceptance gaps remain open. All owned tests/helpers were removed;499 Studio Sources were checked, with10 approved changes and489 unchanged. Physical touch and public receipt remain unverified.
+
 ## 2026-11-12 — Stage2 Boss outcome instrumentation
 
 Applied FirstPlayAnalyticsService, BossAttackService and RunReturnService to canonical unsaved Studio126576845524886.101 isolated outcome/integration assertions,59 transport assertions,68 existing Stage2 assertions and38 legacy assertions against both versions pass. Old four-funnel/custom output matches; both outcomes add at most4 Funnel rows.499 Sources checked:3 changed,496 unchanged. No helpers installed, Play started/stopped, Save/Publish or Place-file writes. Actual gameplay/Creator Hub receipt remain unverified;20-player instantaneous stress still drops620/1000 rows at the unchanged deadline. [Full Paths, overlap interpretation, evidence and manual Hub procedure](../reports/FirstStage2BossOutcomes_20261112/REPORT.md).

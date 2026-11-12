@@ -1,5 +1,7 @@
 # World1 Stage2〜5の序盤テンポ調整 — 指定値と未実装案
 
+後続記録：この計画保存後のユーザー指示により、確定数値・既存サイクル保護を実装する作業へ進んだ。[World1 Stage1〜5実装・検証報告](../../reports/World1Stage1To5Balance_20261112/REPORT.md) を参照。以下の提案時点の文章・過去数値は、そのまま履歴として保持する。
+
 記録日：2026-11-12 JST  
 対象：Merge to Forge Your Strength / PlaceId 126576845524886 / UniverseId 10765181857  
 調査基準：main `04595f1c35cc1f1836793317512d47213c60d26a`  

@@ -18,6 +18,7 @@ function M.Resolve(player, session, op, ctx)
 				assert(strength, level)
 				merged.Strength, merged.Level, merged.LevelProgress = strength, level, progress
 				merged.LevelProgressVersion = Progress.Version
+				merged.LevelCurveVersion = op.Before.LevelCurveVersion
 				merged.TotalStrengthEarned = op.Before.TotalStrengthEarned + gain
 				merged.DailyDate = op.Before.DailyDate
 				merged.DailyStrengthEarned = op.Before.DailyStrengthEarned + gain

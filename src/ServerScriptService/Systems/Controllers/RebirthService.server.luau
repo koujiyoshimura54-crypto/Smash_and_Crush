@@ -18,20 +18,20 @@ request.OnServerEvent:Connect(function(player,action)
   response(player,{Type="Denied",Reason="DataNotReady"})
   busy[player]=nil return
  end
- local count=Strength.GetRebirthCount(player)
- if Config.IsWorld1Max(count) then
+ local count=session.Data.RebirthCount
+ local curve=session.Data.LevelCurveVersion
+ if Config.IsWorld1Max(count,curve) then
   response(player,{Type="Denied",Reason="World1Max",RebirthCount=count})
   busy[player]=nil return
  end
- local required=Config.GetRequiredLevel(count)
- local level=Strength.GetLevel(player)
+ local required=Config.GetRequiredLevel(count,curve)
+ local level=session.Data.Level
  if required and level>=required then
-  local nextCount=count+1
-  PlayerData.SetRebirthCount(player,nextCount)
+  local accepted,nextCount=PlayerData.TryRebirth(player)
+  if not accepted then response(player,{Type="Denied",Reason=nextCount});busy[player]=nil;return end
   if count==0 and nextCount==1 then Badges.Award(player,"FirstRebirth") end
   Strength.ResetGainRemainder(player)
-  Strength.ResetStrength(player)
-  response(player,{Type="Success",RebirthCount=nextCount,RequiredLevel=Config.GetRequiredLevel(nextCount),Level=1})
+  response(player,{Type="Success",RebirthCount=nextCount,RequiredLevel=Config.GetRequiredLevel(nextCount,session.Data.LevelCurveVersion),Level=1})
  else
   response(player,{Type="Denied",RebirthCount=count,RequiredLevel=required,Level=level})
  end

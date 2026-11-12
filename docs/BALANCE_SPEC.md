@@ -1,5 +1,33 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-12 — World1 Stage1〜5確定値と育成サイクル別曲線
+
+今回の確定値は以下。過去の日付付き表は履歴であり、この節が現行指定となる。正本は未保存Studioの `World1BossConfig` と `LevelRequirements`。公開版への反映は未実施。
+
+| Stage | 壁1 | 壁2 | 壁3 | 壁4 | Boss HP | 推奨LV | 内部RequiredStrength |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 50 | 75 | 100 | 135 | 200 | 4 | 40 |
+| 2 | 275 | 300 | 320 | 390 | 1800 | 8 | 360 |
+| 3 | 565 | 705 | 845 | 1130 | 10000 | 15 | 2000 |
+| 4 | 2880 | 3600 | 4320 | 5760 | 25000 | 20 | 5000 |
+| 5 | 6860 | 8575 | 10290 | 13720 | 70000 | 25 | 14000 |
+
+Boss合計107000、壁合計60895、総HP167895。Stage1手動変更を含む実変更前182660から14765減少。Stage1〜5は固定壁であり、RequiredStrengthから生成しない。Stage6〜10の内部RequiredStrength38000/82000/198000/360000/1000000、派生壁とBoss HP、World2の独立HP表は維持。
+
+新曲線 `LevelCurveVersion=2` のQ(L)は現在LVから次LVへの必要量。
+
+| 対象LV | Q(L)（左から順） |
+|---|---|
+| 1〜9 | 5, 12, 23, 45, 60, 90, 125, 145, 170 |
+| 10〜19 | 195, 225, 260, 300, 345, 400, 480, 580, 700, 840 |
+| 20〜29 | 1100, 1400, 1800, 2200, 2500, 3200, 4000, 4750, 5400, 5965 |
+
+Q(30)以降は変更前と同一。新規／新曲線へ切替後の累計はLV4=40、8=360、10=675、12=1095、15=2000、17=2880、20=5000、24=11500、25=14000、30=37315、50=1018015。補正なしで推奨LVへ到達した直後のBossが5発になる基準。装備・追加育成による短縮は維持し、既存サイクル全員へ5発を強制しない。
+
+旧サイクルは今回の変更直前StudioのQ(1〜7)=7/20/33/60/95/145/170を含む旧表と、再生LV10/15/22/30/45を保持する。新サイクルは再生LV12/17/24/30/45。6回目以降の条件、倍率1+0.5×回数、通常Gain、装備、報酬、移動、攻撃間隔、Player HPは維持。ReferenceStrengthsは選択曲線と選択条件の累計を参照する。
+
+適用・保存方針と実測／未確認の区分は [今回の報告書](../reports/World1Stage1To5Balance_20261112/REPORT.md)。約1.5倍は計測目標であり、設定値の検算合格を速度目標達成とは扱わない。
+
 ## 2026-11-10 — Requested finite LV and World2 balance
 
 Q(1–50) is unchanged. For51–200: r(L)=0.20+(L-51)*0.0007; Q(L)=ceil(Q(L-1)*(1+r(L))/10)*10. Above200 retain Q(200)+(L-200)*250000000, MaxLevel10000 and existing Rebirth. This supersedes the earlier held LV proposal. World2 Boss HP is10M/30M/75M/150M/500M/1.5B/7B/50B/350B/1.5T; fixed recommended LV55/60/65/70/75/80/90/100/110/115, required Strength=HP/5. Walls use40–80% for stages1–5 and40–90% for6–10. The20 requested Ore point values already matched; no Ore/equipment threshold change was needed. [Native10020 checks and balance matrix](../reports/RequestedPhases_20261110.md).

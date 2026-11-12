@@ -1,0 +1,950 @@
+-- Both worlds share the renderer; tables, colliders and event streams are isolated.
+local function mount(worldId)
+local Stage03AttackVisual=worldId==1 and require(script.Parent:WaitForChild("Stage03AttackVisual"))
+ or {Stop=function() end,Play=function() end,Prepare=function() end,Reset=function() end}
+local mapName=worldId==2 and "World2Map" or "GeneratedMap"
+local enemiesName=worldId==2 and "World2Enemies" or "Enemies"
+local stageAttribute=worldId==2 and "World2CurrentStage" or "CurrentStage"
+local stageSurfaceName=worldId==2 and "World2StageSurface" or "StageSurface"
+local P=game:GetService("Players").LocalPlayer
+local RS=game:GetService("ReplicatedStorage")local T=game:GetService("TweenService")local RunService=game:GetService("RunService")
+local BossPresentation=worldId==1 and require(RS.Modules:WaitForChild("World1BossPresentation"))
+local PersonalTrophy=worldId==1 and require(RS.Modules:WaitForChild("PersonalTrophyVisibility")).Mount(P)
+local R=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild(worldId==2 and "World2CombatState" or "CombatState")
+local NumberFormat=require(RS.Modules:WaitForChild("NumberFormat"))
+-- Presentation only: HP and destruction still come from the legacy server.
+local PurchasedWallVisuals=worldId==1 and require(RS.MergeToForge:WaitForChild("WallBreakVisualService"))
+local PurchasedWallHealth=require(RS.Modules:WaitForChild("Config")).Stages.Health
+local presentedWallBreaks={}
+-- Fixed world-space UI metrics from the original 27-stud Wall, 580x270 canvas.
+-- Resize the canvas with the physical wall: text pixels and bar height no longer stretch.
+local BossDisplayConfig=require(RS.Config:WaitForChild("BossDisplayConfig"))
+local bossSurfaces={}
+local WallGaugeLayout={}
+WallGaugeLayout.StageGapStuds=1
+local function metrics(wall,surface)
+ local height=wall.Size.Y
+ surface.SizingMode=Enum.SurfaceGuiSizingMode.FixedSize
+ surface.CanvasSize=Vector2.new(580,height*10)
+ return height,4.32,5.13
+end
+function WallGaugeLayout.ApplyBoss(wall,reference,gui,stageNumber)
+ local height,_,barHeight=metrics(wall,gui)
+ -- Only canvas conversion uses surface height; the world-space HP center is Boss based.
+ local centerY=gui:GetAttribute("BossDisplayCenterY")
+ local center=wall.CFrame:PointToObjectSpace(Vector3.new(wall.Position.X,centerY,wall.Position.Z)).Y+height/2
+ local bottom=center-barHeight/2
+ gui.SizingMode=Enum.SurfaceGuiSizingMode.FixedSize
+ gui.CanvasSize=Vector2.new(580,height*10)
+ local sourceBar=reference.Panel.HPBar
+ local bar=gui:FindFirstChild("HPBar")
+ if not bar then return end
+ local y=1-(bottom+barHeight)/height
+ bar.Position=UDim2.new(sourceBar.Position.X.Scale,sourceBar.Position.X.Offset,y,0)
+ bar.Size=UDim2.new(sourceBar.Size.X.Scale,sourceBar.Size.X.Offset,barHeight/height,0)
+ local hp=gui:FindFirstChild("HPLabel")
+ if hp then
+  hp.Position=UDim2.new(bar.Position.X.Scale+.01,0,y+.02*barHeight/height,0)
+  hp.Size=UDim2.new(bar.Size.X.Scale-.02,0,.96*barHeight/height,0)
+ end
+ local stage=gui:FindFirstChild("StageNumber")
+ local name=gui:FindFirstChild("BossName")
+ local stageHeight=3.5
+ local nameHeight=stageNumber==9 and 12 or 6
+ local stageBottom=bottom+barHeight+WallGaugeLayout.StageGapStuds
+ if stage then stage.Position=UDim2.new(0,8,1-(stageBottom+stageHeight)/height,0);stage.Size=UDim2.new(1,-16,stageHeight/height,0) end
+ if name then name.Position=UDim2.new(0,8,1-(stageBottom+stageHeight+.4+nameHeight)/height,0);name.Size=UDim2.new(1,-16,nameHeight/height,0) end
+end
+
+local bossSuppressed={}
+local TrophyConfig=require(RS.Config:WaitForChild("TrophyRewardConfig"))
+local RIGHT_PUNCH_ANIMATION_ID = "rbxassetid://121823319369216"
+local LEFT_PUNCH_ANIMATION_ID  = "rbxassetid://87608603137173"
+local PUNCH_SOUND_ID="rbxassetid://139897497838184"
+local DEFEAT_SOUND_ID="rbxassetid://128974899749995"
+local folder=Instance.new("Folder")folder.Name=worldId==2 and "World2PersonalCombatVisuals" or "PersonalCombatVisuals"folder.Parent=workspace
+local fills,personalBossColliders,defeated={},{},{} local track,sound local currentStage=P:GetAttribute(stageAttribute) or 1
+local wallGauges,wallState={},{ }
+local wallParts={}
+local WallConfig=require(RS.Config:WaitForChild(worldId==2 and "World2Config" or "World1BossConfig"))
+local function wallCount(major)
+ local state=wallState[major]
+ if state and state.Maxes then return state.WallCount or #state.Maxes end
+ local cfg=worldId==2 and WallConfig.GetStageConfig(major) or WallConfig.GetWallConfig(major)
+ return #cfg.Walls
+end
+local activeCombatType,activeCombatStage,activeWallIndex
+local recommendationGui
+local trophyVisuals={}
+local function addTrophyRewardBillboard(visual,reward)
+ local handle=visual:FindFirstChild("Handle")
+ if not handle or not handle:IsA("BasePart") then return end
+ local gui=Instance.new("BillboardGui")
+ gui.Name="TrophyRewardBillboard"
+ gui.Adornee=handle
+ gui.AlwaysOnTop=true
+ gui.LightInfluence=0
+ gui.MaxDistance=60
+ gui.Size=UDim2.fromOffset(176,51)
+ gui.StudsOffsetWorldSpace=Vector3.new(0,handle.Size.Y/2+12,0)
+ gui.Parent=handle
+ local panel=Instance.new("Frame")
+ panel.Name="Panel";panel.Size=UDim2.fromScale(1,1);panel.BackgroundColor3=Color3.fromRGB(255,224,112);panel.BackgroundTransparency=.18;panel.BorderSizePixel=0;panel.Parent=gui
+ local corner=Instance.new("UICorner");corner.CornerRadius=UDim.new(0,14);corner.Parent=panel
+ local stroke=Instance.new("UIStroke");stroke.Color=Color3.fromRGB(83,49,12);stroke.Thickness=3;stroke.Parent=panel
+ local icon=Instance.new("ImageLabel")
+ icon.Name="TrophyIcon";icon.BackgroundTransparency=1;icon.Position=UDim2.fromOffset(8,6);icon.Size=UDim2.fromOffset(40,40);icon.ScaleType=Enum.ScaleType.Fit
+ icon.Image=P:WaitForChild("PlayerGui"):WaitForChild("StrengthGui"):WaitForChild("WinLabel"):WaitForChild("TrophyIcon").Image;icon.Parent=panel
+ local amount=Instance.new("TextLabel")
+ amount.Name="Amount";amount.BackgroundTransparency=1;amount.Position=UDim2.fromOffset(52,3);amount.Size=UDim2.new(1,-58,1,-6);amount.Font=Enum.Font.FredokaOne;amount.TextScaled=true
+ amount.TextColor3=Color3.fromRGB(255,255,255);amount.TextStrokeColor3=Color3.fromRGB(67,38,7);amount.TextStrokeTransparency=0;amount.Text="+"..tostring(reward).." Win";amount.Parent=panel
+ local constraint=Instance.new("UITextSizeConstraint");constraint.MinTextSize=14;constraint.MaxTextSize=27;constraint.Parent=amount
+end
+local function clearTrophy(id)
+ if id~=nil then
+  local visual=trophyVisuals[id]
+  if visual then visual:Destroy();trophyVisuals[id]=nil end
+  return
+ end
+ for key,visual in trophyVisuals do visual:Destroy();trophyVisuals[key]=nil end
+end
+local function showTrophy(d)
+ if d.StaticButtons then
+  local map=workspace:FindFirstChild(mapName)
+  local corridor=map and map:FindFirstChild("BattleCorridor")
+  local stage=corridor and corridor:FindFirstChild(("Stage%02d"):format(d.Stage))
+  local button=stage and stage:FindFirstChild("TrophyNormalButton")
+  local amount=button and button:FindFirstChild("Amount",true)
+  if amount then amount.Text="+"..tostring(d.WinReward).." Win" end
+  return
+ end
+ local existing=trophyVisuals[d.Id]
+ if existing and existing.Parent then return end
+ local visual=RS.UI.Templates:WaitForChild("TrophyRewardTemplate"):Clone()
+ visual.Name="PersonalTrophy"
+ visual:SetAttribute("TrophyId",d.Id)
+ visual:SetAttribute("MajorStage",d.Stage)
+ local reward=typeof(d.WinReward)=="number" and d.WinReward or TrophyConfig.GetBaseReward(d.Stage,worldId)
+ visual:SetAttribute("WinReward",reward)
+ visual:PivotTo(d.CFrame)
+ visual.Parent=workspace
+ addTrophyRewardBillboard(visual,reward)
+ trophyVisuals[d.Id]=visual
+ local button=visual:FindFirstChild("FloorButton")
+ local core=button and button:FindFirstChild("Core")
+ local light=core and core:FindFirstChildOfClass("SpotLight")
+ if light then
+  local pulse=T:Create(light,TweenInfo.new(1.6,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true),{Brightness=1.65})
+  visual.Destroying:Once(function() pulse:Cancel();pulse:Destroy() end)
+  pulse:Play()
+ end
+end
+local function wallModel(a,b)
+ local major,index=1,a; if b~=nil then major,index=a,b end
+ local map=workspace:FindFirstChild(mapName) local bc=map and map:FindFirstChild("BattleCorridor") local st=bc and bc:FindFirstChild(("Stage%02d"):format(major))
+ return st and st:FindFirstChild(("Stage%d.%d"):format(major,index))
+end
+local function wallSurface(major,index)
+ local m=wallModel(major,index)
+ local wall=m and m:FindFirstChild("Wall")
+ return wall,wall and wall:FindFirstChild(stageSurfaceName)
+end
+local function setWallStageDisplay(major,index,on)
+ local wall,surface=wallSurface(major,index)
+ local purchased=wall and wall:FindFirstChild("SurfaceGui")
+ if purchased then
+  -- Purchased walls intentionally have transparent bodies with visible textures.
+  purchased.Enabled=on==true and (P:GetAttribute("CurrentWorld") or 1)==worldId and wall.LocalTransparencyModifier<.99
+  if surface then surface:SetAttribute("PersonalStageDisplayEnabled",false);surface.Enabled=false end
+  return
+ end
+ if surface then
+  surface:SetAttribute("PersonalStageDisplayEnabled",on==true)
+  surface.Enabled=on==true and wall.LocalTransparencyModifier<.99 and wall.Transparency<.99
+ end
+end
+local function showBossRecommendation(major,v)
+ local map=workspace:FindFirstChild(mapName); local bc=map and map:FindFirstChild("BattleCorridor"); local st=bc and bc:FindFirstChild(("Stage%02d"):format(major)); local m=st and st:FindFirstChild((worldId==2 and "Stage%d.Boss" or "Stage%d.5"):format(major)); local floor=m and m:FindFirstChild("Floor")
+ if not floor then return end
+ if recommendationGui then recommendationGui:Destroy() end
+ local g=Instance.new("BillboardGui"); g.Name="BossRecommendedLevel"; g.Adornee=floor; g.Size=UDim2.fromOffset(112,32); g.StudsOffset=Vector3.new(-14,3,0); g.AlwaysOnTop=true; g.Parent=floor
+ local l=Instance.new("TextLabel"); l.Size=UDim2.fromOffset(112,32); l.BackgroundTransparency=1; l.Text=("Recommended Lv. %d"):format(v); l.TextColor3=Color3.fromRGB(255,235,170); l.TextScaled=true; l.Font=Enum.Font.GothamBold; l.Parent=g
+ recommendationGui=g
+end
+local function hideBossRecommendation() if recommendationGui then recommendationGui:Destroy(); recommendationGui=nil end end
+local function setWallVisible(a,b,c)
+ local major,index,on=1,a,b; if c~=nil then major,index,on=a,b,c end
+ local m=wallModel(major,index) if not m then return end
+ for _,x in m:GetDescendants() do
+  if x:IsA("BasePart") and x.Name=="Wall" then
+   wallParts[x]={Major=major,Index=index}
+   x.LocalTransparencyModifier=on and 0 or 1
+   -- Purchased walls render through Textures even when the Part is transparent.
+   for _,face in x:GetChildren() do
+    if face:IsA("Decal") then face.LocalTransparencyModifier=on and 0 or 1 end
+   end
+   x.CanCollide=on
+  end
+ end
+end
+local function wallGauge(a,b,c,d)
+ local major,index,v,max=1,a,b,c; if d~=nil then major,index,v,max=a,b,c,d end
+ local m=wallModel(major,index)
+ local w,gui=wallSurface(major,index)
+ local purchased=w and w:FindFirstChild("SurfaceGui")
+ if purchased then
+  local health=purchased:FindFirstChild("Health")
+  local amount=health and health:FindFirstChild("Amount")
+  local separate=health and health:FindFirstChild("Separate")
+  local fill=separate and separate:FindFirstChild("Bar")
+  if not amount or not fill then return end
+  local fraction=max>0 and math.clamp(v/max,0,1) or 0
+  amount.AutoLocalize=false
+  amount.Text=string.format(PurchasedWallHealth.format,NumberFormat.Format(v),NumberFormat.Format(max))
+  fill.Size=UDim2.new(fraction,0,fill.Size.Y.Scale,fill.Size.Y.Offset)
+  local gradient=fill:FindFirstChild("UIGradient")
+  if gradient then
+   local settings=PurchasedWallHealth
+   local band=if fraction<settings.lowBelow then settings.Low elseif fraction<settings.halfBelow then settings.Half else settings.Full
+   gradient.Color=ColorSequence.new(band.from,band.to)
+  end
+  local label=purchased:FindFirstChild("Stage")
+  if label then label.AutoLocalize=false;label.Text=("Stage %d-%d"):format(major,index) end
+  wallGauges[tostring(major).."."..tostring(index)]={Fill=fill,HP=amount,Max=max}
+  return
+ end
+ local panel=gui and gui:FindFirstChild("Panel")
+ local bar=panel and panel:FindFirstChild("HPBar")
+ if not bar then return end
+ local state=wallState[major]
+ bar.Visible=major==currentStage and state~=nil and not state.Skipped and state.Current==index and not state.Cleared[index]
+ bar.Fill.Size=UDim2.fromScale(max>0 and math.clamp(v/max,0,1) or 0,1)
+ bar.HPLabel.AutoLocalize=false
+ bar.HPLabel.Text=NumberFormat.Format(v).." / "..NumberFormat.Format(max)
+ wallGauges[tostring(major).."."..tostring(index)]={Fill=bar.Fill,HP=bar.HPLabel,Max=max}
+end
+-- One renderer for every Stage; server snapshots and clear/gauge notifications
+-- remain authoritative, including after a Wall streams back into the client.
+local function isWallClosed(major,index)
+ local state=wallState[major]
+ return not state or not (state.Skipped or state.Cleared[index] or index<state.Current)
+end
+local function clearWallGauge(major,index)
+ local m=wallModel(major,index)
+ local wall=m and m:FindFirstChild("Wall")
+ local surface=wall and wall:FindFirstChild(stageSurfaceName)
+ local purchased=wall and wall:FindFirstChild("SurfaceGui")
+ if purchased then purchased.Enabled=false end
+ local panel=surface and surface:FindFirstChild("Panel")
+ local bar=panel and panel:FindFirstChild("HPBar")
+ if bar then bar.Visible=false end
+ wallGauges[tostring(major).."."..tostring(index)]=nil
+end
+local function renderWallStage(major)
+ local state=wallState[major]
+ for index=1,wallCount(major) do
+  local closed=isWallClosed(major,index)
+  setWallVisible(major,index,closed)
+  setWallStageDisplay(major,index,state~=nil and closed and not state.Skipped and major==currentStage and state.Current==index)
+  if state and closed and not state.Skipped then
+   wallGauge(major,index,state.Gauges[index],state.Maxes[index])
+  else
+   clearWallGauge(major,index)
+  end
+ end
+end
+local runRevision,messageSequence=0,0
+local function enemyFolder()
+ local root=workspace:FindFirstChild(enemiesName)
+ return root and root:FindFirstChild("Owner_"..P.UserId)
+end
+local function enemy(n)
+ local owned=enemyFolder()
+ local e=owned and owned:FindFirstChild(("Stage%02d_Enemy"):format(n))
+ return e and e:GetAttribute("OwnerUserId")==P.UserId and e:GetAttribute("WorldId")==worldId
+  and e:GetAttribute("RunRevision")==runRevision and e or nil
+end
+local function isBossStage(stage)
+ return typeof(stage)=="number" and stage%1==0 and stage>=1 and stage<=10
+end
+local function acceptsBossGeneration(stage,generation)
+ if BossPresentation then return BossPresentation.AcceptGeneration(stage,generation) end
+ if typeof(generation)~="number" then return true end
+ local enemies=enemyFolder()
+ local current=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
+ local currentGeneration=current and current:GetAttribute("SpawnGeneration")
+ -- Accept a new generation even if its model has not replicated yet, but never
+ -- let a delayed event from an older generation overwrite the current gauge.
+ return typeof(currentGeneration)~="number" or generation>=currentGeneration
+end
+local function bossName(e)
+ local visual=e:FindFirstChildOfClass("Model")
+ if not visual then return e.Name end
+ local name=visual.Name
+ -- Imported rig suffixes are implementation names; preserve authored asset names otherwise.
+ if name:match("Rig$") then name=name:gsub("Rig$",""):gsub("(%l)(%u)","%1 %2") end
+ return name
+end
+local function bossWall(n)
+ if n<10 then return wallSurface(n+1,1) end
+ local m=wallModel(10,wallCount(10))
+ local stage=m and m.Parent
+ local _,reference=wallSurface(10,wallCount(10))
+ if worldId==2 then
+  local map=workspace:FindFirstChild(mapName)
+  local nextArea=map and map:FindFirstChild("NextWorldArea")
+  -- World2 has no Stage10BoundaryWall. Use its authored terminal bounds;
+  -- the shared renderer only reads this anchor and never changes its geometry.
+  return nextArea and nextArea:FindFirstChild("FutureConnectionBounds"),reference
+ end
+ return stage and stage:FindFirstChild("Stage10BoundaryWall"),reference
+end
+local function bossDisplayEnabled(n)
+ local state=wallState[n]
+ return (P:GetAttribute("CurrentWorld") or 1)==worldId and n==currentStage and not defeated[n] and not bossSuppressed[n]
+  and state~=nil and not state.Skipped and state.Current>wallCount(n)
+end
+-- World1 uses the existing personal SurfaceGui/HP records as a camera-facing
+-- overhead panel. No server instances or combat state are shared by this UI.
+local overheadParts=setmetatable({}, {__mode="k"})
+local overheadConnection
+local function overheadBounds(e)
+ -- World2's measured rendered bounds include SpecialMesh geometry whose carrier
+ -- Part may be tiny. The existing helper moves with the actor; no map scan.
+ local measured=worldId==2 and e:FindFirstChild("BossVisualBounds")
+ if measured and measured:IsA("BasePart") then
+  local cf=measured.CFrame;local half=measured.Size/2
+  local r,u,b=cf.RightVector,cf.UpVector,cf.LookVector
+  local extent=Vector3.new(math.abs(r.X)*half.X+math.abs(u.X)*half.Y+math.abs(b.X)*half.Z,
+   math.abs(r.Y)*half.X+math.abs(u.Y)*half.Y+math.abs(b.Y)*half.Z,
+   math.abs(r.Z)*half.X+math.abs(u.Z)*half.Y+math.abs(b.Z)*half.Z)
+  return cf.Position-extent,cf.Position+extent
+ end
+ local visual=e:FindFirstChildOfClass("Model")
+ if not visual then return nil end
+ local cached=overheadParts[e]
+ if not cached or cached.Visual~=visual or os.clock()-cached.Time>0.5 then
+  cached={Visual=visual,Time=os.clock(),Parts={}}
+  for _,part in visual:GetDescendants() do
+   if part:IsA("BasePart") and part.Transparency<1 then
+    local helper=false
+    local a=part
+    while a and a~=visual do
+     local name=a.Name:lower()
+     if name:find("vfx",1,true) or name:find("particle",1,true) then helper=true;break end
+     a=a.Parent
+    end
+    if not helper then table.insert(cached.Parts,part) end
+   end
+  end
+  overheadParts[e]=cached
+ end
+ local low=Vector3.new(math.huge,math.huge,math.huge)
+ local high=-low
+ for _,part in cached.Parts do
+  if part.Parent and part.Transparency<1 and part.LocalTransparencyModifier<0.99 then
+   local cf=part.CFrame
+   local half=part.Size/2
+   local r,u,b=cf.RightVector,cf.UpVector,cf.LookVector
+   local extent=Vector3.new(
+    math.abs(r.X)*half.X+math.abs(u.X)*half.Y+math.abs(b.X)*half.Z,
+    math.abs(r.Y)*half.X+math.abs(u.Y)*half.Y+math.abs(b.Y)*half.Z,
+    math.abs(r.Z)*half.X+math.abs(u.Z)*half.Y+math.abs(b.Z)*half.Z)
+   low=low:Min(cf.Position-extent);high=high:Max(cf.Position+extent)
+  end
+ end
+ if low.Y==math.huge then return nil end
+ return low,high
+end
+local function placeOverhead(e,n,g,surface)
+ local low,high=overheadBounds(e)
+ local camera=workspace.CurrentCamera
+ if not low or not camera then g.Enabled=false;return false end
+ local height=high.Y-low.Y
+ local referenceHeight=e:GetAttribute("BossDisplayHeight") or height
+ local width=math.clamp(referenceHeight*0.85,16,24)
+ local canvasHeight=n==9 and 230 or 160
+ local panelHeight=width*canvasHeight/580
+ local gap=math.clamp(height*0.08,1.2,3)
+ local anchor=Vector3.new((low.X+high.X)/2,high.Y+gap+panelHeight/2,(low.Z+high.Z)/2)
+ local screen=camera:WorldToViewportPoint(anchor)
+ local viewport=camera.ViewportSize
+ local edgeAdjusted=false
+ if screen.Z>0.5 and viewport.X>64 and viewport.Y>64 then
+  local focal=viewport.Y/(2*math.tan(math.rad(camera.FieldOfView)/2))
+  -- Keep the panel readable and compact at very close camera distances.
+  local maxPixels=math.min(360,viewport.X*0.42)
+  local scale=math.min(1,maxPixels*screen.Z/(focal*width))
+  width*=scale;panelHeight*=scale
+  anchor=Vector3.new(anchor.X,high.Y+gap+panelHeight/2,anchor.Z)
+  screen=camera:WorldToViewportPoint(anchor)
+  if screen.Z>0.5 then
+   local halfX=width*focal/(2*screen.Z)
+   local halfY=panelHeight*focal/(2*screen.Z)
+   local margin=16
+   local sx=math.clamp(screen.X,margin+halfX,math.max(margin+halfX,viewport.X-margin-halfX))
+   local sy=math.clamp(screen.Y,margin+halfY,math.max(margin+halfY,viewport.Y-margin-halfY))
+   if math.abs(sx-screen.X)>0.01 or math.abs(sy-screen.Y)>0.01 then
+    local ray=camera:ViewportPointToRay(sx,sy)
+    local look=camera.CFrame.LookVector
+    local depth=(anchor-ray.Origin):Dot(look)
+    anchor=ray.Origin+ray.Direction*(depth/ray.Direction:Dot(look))
+    edgeAdjusted=true
+   end
+  end
+ end
+ surface.Size=Vector3.new(width,panelHeight,0.05)
+ surface.CFrame=CFrame.lookAt(anchor,anchor-camera.CFrame.LookVector,camera.CFrame.UpVector)
+ surface.Transparency=1
+ surface:SetAttribute("BossTopY",high.Y)
+ surface:SetAttribute("OverheadGap",gap)
+ surface:SetAttribute("ScreenEdgeAdjusted",edgeAdjusted)
+ g.Enabled=true
+ return true
+end
+local function layoutOverhead(e,n,g)
+ local surface=bossSurfaces[n]
+ if not surface or not surface:IsDescendantOf(folder) then
+  surface=Instance.new("Part")
+  surface.Name="BossDisplaySurface"
+  surface.Anchored=true;surface.CanCollide=false;surface.CanTouch=false;surface.CanQuery=false
+  surface.CastShadow=false;surface.Transparency=1
+  surface:SetAttribute("VisualOnly",true);surface:SetAttribute("BossStage",n)
+  surface.Parent=folder;bossSurfaces[n]=surface
+ end
+ g.Adornee=surface;g.Face=Enum.NormalId.Front;g.Active=false
+ g.SizingMode=Enum.SurfaceGuiSizingMode.FixedSize
+ g.CanvasSize=Vector2.new(580,n==9 and 230 or 160)
+ g.AlwaysOnTop=false;g.LightInfluence=0;g.MaxDistance=200
+ g:SetAttribute("BossFollowing",true)
+ local nameHeight=n==9 and 110 or 44
+ local name=g:FindFirstChild("BossName")
+ local stage=g:FindFirstChild("StageNumber")
+ local bar=g:FindFirstChild("HPBar")
+ local hp=g:FindFirstChild("HPLabel")
+ local barY=nameHeight+32
+ if name then name.Position=UDim2.fromOffset(8,2);name.Size=UDim2.new(1,-16,0,nameHeight) end
+ if stage then stage.Position=UDim2.fromOffset(8,nameHeight+4);stage.Size=UDim2.new(1,-16,0,24) end
+ if bar then bar.Position=UDim2.fromOffset(10,barY);bar.Size=UDim2.new(1,-20,0,56) end
+ if hp then hp.Position=UDim2.fromOffset(16,barY+4);hp.Size=UDim2.new(1,-32,0,48) end
+ if g.Enabled then placeOverhead(e,n,g,surface) end
+ return true
+end
+local function updateGaugeLayout(e,n,g)
+ if worldId==1 or worldId==2 then return layoutOverhead(e,n,g) end
+ local wall,reference=bossWall(n)
+ -- Current purchased World2 walls replaced the old World2StageSurface donor.
+ -- Reuse the existing personal overhead renderer when that donor is absent.
+ if not reference then return layoutOverhead(e,n,g) end
+ local bossHeight=e:GetAttribute("BossDisplayHeight")
+ local bossBottom=e:GetAttribute("BossDisplayBottomY")
+ local bossTop=e:GetAttribute("BossDisplayTopY")
+ if not wall or not reference or not bossHeight or not bossBottom or not bossTop then return false end
+ local settings=BossDisplayConfig.Get(n)
+ local surface=bossSurfaces[n]
+ if not surface or not surface:IsDescendantOf(folder) then
+  surface=Instance.new("Part")
+  surface.Name="BossDisplaySurface"
+  surface.Anchored=true
+  surface.CanCollide=false
+  surface.CanTouch=false
+  surface.CanQuery=false
+  surface.CastShadow=false
+  surface.Material=Enum.Material.SmoothPlastic
+  surface:SetAttribute("VisualOnly",true)
+  surface:SetAttribute("BossStage",n)
+  surface.Parent=folder
+  bossSurfaces[n]=surface
+ end
+ -- Reference StageSurface.Face is the authored player-facing face.
+ local localNormal=Vector3.FromNormalId(reference.Face)
+ local normal=wall.CFrame:VectorToWorldSpace(localNormal)
+ local up=wall.CFrame.UpVector
+ local depth=math.abs(localNormal.X)*wall.Size.X+math.abs(localNormal.Z)*wall.Size.Z
+ local width=math.abs(localNormal.Z)*wall.Size.X+math.abs(localNormal.X)*wall.Size.Z
+ local thickness=math.max(.01,settings.Thickness)
+ surface.Size=Vector3.new(width,wall.Size.Y,thickness)
+ local position=wall.Position+normal*(depth/2+settings.SurfaceOffset+thickness/2)
+ surface.CFrame=CFrame.fromMatrix(position,up:Cross(-normal),up,-normal)
+ surface.Color=settings.Color
+ surface.Transparency=g.Enabled and settings.Transparency or 1
+ surface:SetAttribute("ReferenceWall",wall:GetFullName())
+ surface:SetAttribute("ReferenceFace",reference.Face.Name)
+ surface:SetAttribute("SurfaceOffset",settings.SurfaceOffset)
+ g.Adornee=surface
+ g:SetAttribute("WallAnchored",false)
+ g:SetAttribute("BossDisplayBottomY",bossBottom)
+ g:SetAttribute("BossDisplayTopY",bossTop)
+ g:SetAttribute("BossDisplayHeight",bossHeight)
+ g:SetAttribute("BossDisplayCenterY",bossTop+settings.VerticalOffset)
+ g.Face=Enum.NormalId.Front
+ g.Active=false
+ for _,property in ipairs({"SizingMode","CanvasSize","PixelsPerStud","LightInfluence","AlwaysOnTop","MaxDistance","ZOffset"}) do
+  g[property]=reference[property]
+ end
+ WallGaugeLayout.ApplyBoss(surface,reference,g,n)
+ return true
+end
+local function gauge(n,v,max)
+ -- Keep authoritative HP even when streaming has not delivered the Boss root yet.
+ fills[n]={Max=max,Current=v,Gui=nil}
+ local e=enemy(n)
+ if not e then return end
+ local head=e:FindFirstChild("HumanoidRootPart") or e:FindFirstChildWhichIsA("BasePart")
+ if not head then return end
+ local old=e:FindFirstChild("PersonalGauge",true) if old then old:Destroy() end
+ local nextWall=bossWall(n)
+ if not nextWall and worldId==1 then
+  fills[n]={Max=max,Current=v,Gui=nil}
+  return
+ end
+ local g=Instance.new("SurfaceGui")
+ g.Name="PersonalGauge"
+ g.Enabled=bossDisplayEnabled(n)
+ g.Parent=head
+ updateGaugeLayout(e,n,g)
+ local function label(name,text,pos,size,minSize,maxSize)
+  local l=Instance.new("TextLabel");l.Name=name;l.Text=text;l.Position=pos;l.Size=size
+  l.BackgroundTransparency=1;l.TextColor3=Color3.new(1,1,1);l.TextScaled=true;l.TextWrapped=true;l.Font=Enum.Font.FredokaOne;l.Parent=g
+  local constraint=Instance.new("UITextSizeConstraint");constraint.MinTextSize=minSize;constraint.MaxTextSize=maxSize;constraint.Parent=l
+  local stroke=Instance.new("UIStroke");stroke.Color=Color3.fromRGB(20,23,30);stroke.Thickness=2;stroke.Parent=l
+  return l
+ end
+ local nameHeight=n==9 and 116 or 60
+ label("BossName",bossName(e),UDim2.fromOffset(8,0),UDim2.new(1,-16,0,nameHeight),20,32)
+ label("StageNumber","STAGE "..n,UDim2.fromOffset(8,nameHeight+2),UDim2.new(1,-16,0,22),16,18)
+ local barY=nameHeight+34
+ local b=Instance.new("Frame");b.Name="HPBar";b.Position=UDim2.fromOffset(10,barY);b.Size=UDim2.new(1,-20,0,50);b.BackgroundColor3=Color3.fromRGB(35,38,45);b.BorderSizePixel=0;b.ClipsDescendants=true;b.Parent=g
+ local outline=Instance.new("UIStroke");outline.Thickness=3;outline.Color=Color3.fromRGB(15,18,22);outline.Parent=b
+ local f=Instance.new("Frame");f.Name="Fill";f.Size=UDim2.fromScale(max>0 and math.clamp(v/max,0,1) or 0,1);f.BackgroundColor3=Color3.fromRGB(80,225,65);f.BorderSizePixel=0;f.Parent=b
+ local hp=label("HPLabel",NumberFormat.Format(v).." / "..NumberFormat.Format(max),UDim2.fromOffset(16,barY+4),UDim2.new(1,-32,0,42),20,30)
+ hp.AutoLocalize=false
+ hp.ZIndex=3
+ fills[n]={Fill=f,HP=hp,Max=max,Current=v,Gui=g}
+ updateGaugeLayout(e,n,g)
+end
+local function bossUnlocked(n)
+ local state=wallState[n]
+ return state~=nil and not state.Skipped and state.Current>wallCount(n)
+end
+local function removePersonalBossCollider(n)
+ local record=personalBossColliders[n]
+ if not record then return end
+ if record.Part then
+  record.Part.CanCollide=false
+  record.Part:Destroy()
+ end
+ personalBossColliders[n]=nil
+end
+local function syncPersonalBossCollider(n)
+ if (P:GetAttribute("CurrentWorld") or 1)~=worldId or n~=currentStage or defeated[n] or not bossUnlocked(n) then
+  removePersonalBossCollider(n)
+  return
+ end
+ local enemies=enemyFolder()
+ local boss=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
+ local source=boss and boss:FindFirstChild("MiniBossCollider")
+ local root=boss and boss:FindFirstChild("HumanoidRootPart")
+ if not boss or not source or not source:IsA("BasePart") or not root or not root:IsA("BasePart") then
+  removePersonalBossCollider(n)
+  return
+ end
+ local generation=boss:GetAttribute("SpawnGeneration")
+ local record=personalBossColliders[n]
+ if record and (record.Enemy~=boss or record.Source~=source or record.Generation~=generation or not record.Part.Parent) then
+  removePersonalBossCollider(n)
+  record=nil
+ end
+ if not record then
+  local part=source:Clone()
+  part:ClearAllChildren()
+  part.Name=("PersonalBossCollider_Stage%02d"):format(n)
+  part.Transparency=1
+  part.Anchored=true
+  part.CanCollide=true
+  part.CanTouch=false
+  part.CanQuery=false
+  part.CastShadow=false
+  part:SetAttribute("PersonalBossCollider",true)
+  part:SetAttribute("BossStage",n)
+  part:SetAttribute("SpawnGeneration",generation)
+  part.Parent=folder
+  record={Part=part,Enemy=boss,Source=source,Root=root,Generation=generation,RelativeCFrame=root.CFrame:ToObjectSpace(source.CFrame)}
+  personalBossColliders[n]=record
+ end
+ record.Part.Size=source.Size
+ record.Part.CFrame=root.CFrame*record.RelativeCFrame
+ record.Part.CanCollide=true
+end
+local function refreshPersonalBossColliders()
+ for n=1,10 do syncPersonalBossCollider(n) end
+end
+local function staticVFX(e,on)
+ for _,d in e:GetDescendants() do
+  if d:IsA("ParticleEmitter") or d:IsA("Trail") or d:IsA("Beam") or d:IsA("Highlight") then
+   local enabled=d:GetAttribute("BossVisualEnabled")
+   if enabled==nil then enabled=d:GetAttribute("StaticVFXEnabled") end
+   if typeof(enabled)~="boolean" then enabled=d.Enabled end
+   d.Enabled=on and enabled or false
+   if not on and (d:IsA("ParticleEmitter") or d:IsA("Trail")) then d:Clear() end
+  end
+ end
+end
+local bossVisualTransparency=setmetatable({}, {__mode="k"})
+local function isBossVisualPart(e,part)
+ if part.Name=="HumanoidRootPart" or part.Name=="CombatZone" or part.Name=="MiniBossCollider" then return false end
+ if part:GetAttribute("PersonalBossCollider") then return false end
+ local ancestor=part.Parent
+ while ancestor and ancestor~=e do
+  if ancestor:IsA("Model") then return true end
+  ancestor=ancestor.Parent
+ end
+ return false
+end
+local function setBossVisualVisible(e,on)
+ if not e then return end
+ on=on and (P:GetAttribute("CurrentWorld") or 1)==worldId
+  and e:GetAttribute("OwnerUserId")==P.UserId and e:GetAttribute("RunRevision")==runRevision
+ for _,part in e:GetDescendants() do
+  if part:IsA("BasePart") or part:IsA("Decal") then
+   local authored=part:GetAttribute("BossVisualTransparency")
+   if typeof(authored)=="number" then part.Transparency=authored end
+   part.LocalTransparencyModifier=on and 0 or 1
+   if part:IsA("BasePart") then part.CanCollide=false end
+  elseif part:IsA("ParticleEmitter") or part:IsA("Trail") or part:IsA("Beam")
+   or part:IsA("Highlight") or part:IsA("Light") then
+   part.Enabled=on and part:GetAttribute("BossVisualEnabled")==true
+   if not on and (part:IsA("ParticleEmitter") or part:IsA("Trail")) then part:Clear() end
+  elseif part:IsA("Sound") then
+   part.Volume=on and (part:GetAttribute("BossVisualVolume") or 0) or 0
+   if not on then part:Stop()
+   elseif part:GetAttribute("BossVisualPlaying") and not part.IsPlaying then part:Play() end
+  end
+ end
+ if BossPresentation then BossPresentation.SetVisible(e,on) end
+end
+local function visible(n,on)
+ local e=enemy(n)
+ if e then staticVFX(e,on);setBossVisualVisible(e,on) end
+end
+local rightTrack,leftTrack
+local animationCharacter
+local lastAttackId=0
+local cleanupVersion=0
+local punchUntil=0
+local function releasePunch()
+ if rightTrack then rightTrack:Stop(0);rightTrack:Destroy();rightTrack=nil end
+ if leftTrack then leftTrack:Stop(0);leftTrack:Destroy();leftTrack=nil end
+ if sound then sound:Stop();sound:Destroy();sound=nil end
+ animationCharacter=nil
+end
+local function preparePunch()
+ local ch=P.Character
+ if ch~=animationCharacter then releasePunch() end
+ if not ch then return end
+ local hum=ch:FindFirstChildOfClass("Humanoid")
+ local animator=hum and hum:FindFirstChildOfClass("Animator")
+ if animator and not rightTrack then
+  local right=Instance.new("Animation");right.AnimationId=RIGHT_PUNCH_ANIMATION_ID
+  local left=Instance.new("Animation");left.AnimationId=LEFT_PUNCH_ANIMATION_ID
+  rightTrack=animator:LoadAnimation(right);leftTrack=animator:LoadAnimation(left)
+  rightTrack.Looped=false;leftTrack.Looped=false
+  right:Destroy();left:Destroy()
+  animationCharacter=ch
+ end
+ if not sound and ch:FindFirstChild("HumanoidRootPart") then
+  sound=Instance.new("Sound");sound.SoundId=PUNCH_SOUND_ID;sound.Looped=false;sound.Parent=ch.HumanoidRootPart
+ end
+end
+local function fight(on)
+ if not on then Stage03AttackVisual.Stop() end
+ cleanupVersion+=1
+ if on then preparePunch();return end
+ local version=cleanupVersion
+ -- A Wall clear or zone exit must not cut off an already authorized punch.
+ task.delay(math.max(0,punchUntil-os.clock()),function()
+  if cleanupVersion==version then releasePunch() end
+ end)
+end
+local function playCombatAttack(d)
+ if typeof(d.Id)~="number" or d.Id<=lastAttackId then return end
+ lastAttackId=d.Id;cleanupVersion+=1
+ preparePunch()
+ local duration=typeof(d.Duration)=="number" and math.clamp(d.Duration,.1,2) or .6
+ local manualSpeed=d.Manual==true and tonumber(d.AnimationSpeed) or nil
+ punchUntil=os.clock()+duration/(manualSpeed or 1)
+ if rightTrack and leftTrack then
+  rightTrack:Stop(0);leftTrack:Stop(0)
+  local selected=d.Id%2==1 and rightTrack or leftTrack
+  local speed=manualSpeed or (selected.Length>0 and selected.Length/duration or 1)
+  selected:Play(0.03,1,speed)
+ end
+ if sound then sound:Stop();sound.TimePosition=0;sound:Play() end
+end
+local function playDefeatSound()
+	local sound=Instance.new("Sound")
+	sound.SoundId=DEFEAT_SOUND_ID
+	sound.Volume=1
+	sound.Looped=false
+	sound.Parent=workspace.CurrentCamera
+	sound:Play()
+
+	sound.Ended:Once(function()
+		sound:Destroy()
+	end)
+end
+local function refreshGaugeVisibility()
+ for stage=1,10 do
+  local enemies=enemyFolder()
+  local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(stage))
+  local gui=e and e:FindFirstChild("PersonalGauge",true)
+  local sub=P:GetAttribute(("Stage%dSubStage"):format(stage)) or 1
+  if gui then
+   gui.Enabled=bossDisplayEnabled(stage)
+   if gui.Enabled then updateGaugeLayout(e,stage,gui) end
+  end
+  local surface=bossSurfaces[stage]
+  if surface and surface.Parent then
+   surface.Transparency=(worldId==1 or (gui and gui:GetAttribute("BossFollowing"))) and 1 or (gui and gui.Enabled and BossDisplayConfig.Get(stage).Transparency or 1)
+  end
+  renderWallStage(stage)
+ end
+end
+P:GetAttributeChangedSignal("CurrentWorld"):Connect(function()
+ for n=1,10 do visible(n,n==currentStage and not defeated[n]) end
+ refreshGaugeVisibility();refreshPersonalBossColliders()
+ if (P:GetAttribute("CurrentWorld") or 1)~=worldId then Stage03AttackVisual.Reset();fight(false) end
+end)
+P.CharacterAdded:Connect(function()
+ activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil
+ refreshGaugeVisibility()
+ refreshPersonalBossColliders()
+end)
+P:GetAttributeChangedSignal(stageAttribute):Connect(function()
+ local nextStage=P:GetAttribute(stageAttribute)
+ if typeof(nextStage)=="number" then
+  if nextStage~=3 then Stage03AttackVisual.Stop() end
+  currentStage=nextStage
+  refreshGaugeVisibility()
+  hideBossRecommendation()
+  -- Never reconstruct HP from the Major/SubStage number.
+  for major in wallState do renderWallStage(major) end
+  refreshPersonalBossColliders()
+ end
+end)
+RunService.PreSimulation:Connect(function()
+ for part,record in wallParts do
+  if not part:IsDescendantOf(workspace) then
+   wallParts[part]=nil
+  else
+   local closed=isWallClosed(record.Major,record.Index)
+   if part.CanCollide~=closed then part.CanCollide=closed end
+   local transparency=closed and 0 or 1
+   if part.LocalTransparencyModifier~=transparency then part.LocalTransparencyModifier=transparency end
+  end
+ end
+ for stage,record in personalBossColliders do
+  if record.Part and record.Part.Parent and record.Root and record.Root.Parent and record.Source and record.Source.Parent then
+   record.Part.Size=record.Source.Size
+   record.Part.CFrame=record.Root.CFrame*record.RelativeCFrame
+  else
+   task.defer(syncPersonalBossCollider,stage)
+  end
+ end
+
+end)
+R.OnClientEvent:Connect(function(d)
+ if typeof(d)~="table" or (d.OwnerUserId~=nil and d.OwnerUserId~=P.UserId)
+  or (d.WorldId~=nil and d.WorldId~=worldId) then return end
+ if d.RunRevision~=nil then
+  if d.Type=="Initialize" then
+   if d.RunRevision<runRevision then return end
+  elseif d.RunRevision~=runRevision then return end
+  if typeof(d.MessageSequence)~="number" or d.MessageSequence<=messageSequence then return end
+  runRevision=d.RunRevision;messageSequence=d.MessageSequence
+ end
+ if BossPresentation then
+  BossPresentation.SetRevision(runRevision)
+  if isBossStage(d.Stage) and not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
+  PersonalTrophy.Handle(d)
+ end
+ if d.Type=="CombatAttack" then
+  playCombatAttack(d)
+  Stage03AttackVisual.Play(d)
+ elseif d.Type=="TrophySpawn" then
+  showTrophy(d)
+ elseif d.Type=="TrophyRemoved" then
+  clearTrophy(d.Id)
+ elseif d.Type=="WallInitialize" then
+  local major=d.State.MajorStage or 1
+  if worldId==1 then
+   for index=1,wallCount(major) do
+    if not d.State.Cleared[index] then presentedWallBreaks[tostring(major).."."..tostring(index)]=nil end
+   end
+  end
+  wallState[major]=d.State
+ refreshGaugeVisibility()
+  syncPersonalBossCollider(major)
+ elseif d.Type=="WallGauge" then
+  local major=d.MajorStage or 1
+  local state=wallState[major]
+  if state then
+   state.Gauges[d.Index]=d.Current
+   state.Maxes[d.Index]=d.Max
+   renderWallStage(major)
+  end
+ elseif d.Type=="BossRecommendation" then
+  showBossRecommendation(d.Stage,d.RecommendedLevel)
+  if typeof(d.Current)=="number" then gauge(d.Stage,d.Current,d.Max) end
+  refreshGaugeVisibility()
+ elseif d.Type=="BossInitialize" then
+  if not isBossStage(d.Stage) then return end
+  if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
+  defeated[d.Stage]=nil
+  bossSuppressed[d.Stage]=nil
+  visible(d.Stage,true)
+  if d.Stage==3 then Stage03AttackVisual.Prepare() end
+  currentStage=d.Stage
+  gauge(d.Stage,d.Current,d.Max)
+  showBossRecommendation(d.Stage,d.RecommendedLevel)
+  refreshGaugeVisibility()
+ elseif d.Type=="BossGauge" then
+  if not acceptsBossGeneration(d.Stage,d.SpawnGeneration) then return end
+  local f=fills[d.Stage] if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
+ elseif d.Type=="BossResult" then
+  local stage=d.Stage
+  if not isBossStage(stage) then
+   warn("Invalid BossResult Stage")
+   return
+  end
+  if not acceptsBossGeneration(stage,d.SpawnGeneration) then return end
+  bossSuppressed[stage]=true
+  activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil
+  refreshGaugeVisibility()
+  hideBossRecommendation()
+  fight(false)
+ elseif d.Type=="WallCleared" then
+  local major=d.MajorStage or 1
+  if worldId==1 then
+   -- Each server-confirmed clear is presented once, including multiple Carry clears.
+   -- Do not infer destruction from a UI fill or a partially updated snapshot.
+   local key=tostring(major).."."..tostring(d.Index)
+   if not presentedWallBreaks[key] then
+    presentedWallBreaks[key]=true
+    local wall=wallSurface(major,d.Index)
+    if wall then
+     local ok,err=pcall(PurchasedWallVisuals.Play,wall)
+     if not ok then warn("Purchased Wall break presentation: "..tostring(err)) end
+    end
+   end
+  else
+   playDefeatSound()
+  end
+  -- Snapshot was captured after the existing Carry loop finished. Install it
+  -- atomically before rendering; never expose the cached pre-Carry MaxHP.
+  if d.State then wallState[major]=d.State end
+  local state=wallState[major]
+  if state then
+   state.Cleared[d.Index]=true
+   state.Gauges[d.Index]=0
+   state.Current=d.Next
+   if d.Next<=wallCount(major) and d.NextMax then state.Maxes[d.Next]=d.NextMax end
+   refreshGaugeVisibility()
+   syncPersonalBossCollider(major)
+  end
+ elseif d.Type=="Stage1BossUnlocked" then
+  local stage=d.MajorStage
+  if not isBossStage(stage) or defeated[stage] then return end
+  bossSuppressed[stage]=nil
+  visible(stage,true)
+  refreshGaugeVisibility()
+  syncPersonalBossCollider(stage)
+ elseif d.Type=="Initialize"then table.clear(presentedWallBreaks) activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil Stage03AttackVisual.Reset() lastAttackId=0 clearTrophy() hideBossRecommendation() fight(false) currentStage=d.CurrentStage for major in wallState do for i=1,wallCount(major) do clearWallGauge(major,i) end end table.clear(wallState) folder:ClearAllChildren()table.clear(bossSurfaces)table.clear(personalBossColliders)table.clear(defeated)table.clear(bossSuppressed)for i=1,10 do gauge(i,d.Gauges[i],(enemy(i) and enemy(i):GetAttribute("BossMaxHP")) or d.Gauges[i])if d.Cleared[i] or (d.Skipped and d.Skipped[i]) then defeated[i]=true visible(i,false)else visible(i,true)end end refreshGaugeVisibility() refreshPersonalBossColliders() elseif d.Type=="Gauge"then local f=fills[d.Stage]if f then f.Current=d.Current;f.Max=d.Max;if f.Fill then f.Fill.Size=UDim2.fromScale(math.clamp(d.Current/d.Max,0,1),1) f.HP.Text=NumberFormat.Format(d.Current).." / "..NumberFormat.Format(d.Max) end end
+	elseif d.Type=="EnemyDefeated"then activeCombatType,activeCombatStage,activeWallIndex=nil,nil,nil hideBossRecommendation() defeated[d.Stage]=true removePersonalBossCollider(d.Stage) if d.Stage<10 then currentStage=d.Stage+1 end refreshGaugeVisibility() fight(false) playDefeatSound() setBossVisualVisible(enemy(d.Stage),false)
+ elseif d.Type=="StageCleared"then currentStage=d.CurrentStage refreshGaugeVisibility() for major in wallState do renderWallStage(major) end removePersonalBossCollider(d.Stage)
+ elseif d.Type=="Fighting"then
+  activeCombatType=d.Active and d.CombatType or nil
+  activeCombatStage=d.Active and d.Stage or nil
+  activeWallIndex=d.Active and d.WallIndex or nil
+  refreshGaugeVisibility()
+  fight(d.Active)
+ end
+end)
+local queuedWallRenders=setmetatable({}, {__mode="k"})
+workspace.DescendantAdded:Connect(function(part)
+ if part:IsA("BasePart") and part.Name=="MiniBossCollider" then
+  local stage=part.Parent and part.Parent:GetAttribute("StageNumber")
+  if typeof(stage)=="number" and part.Parent:GetAttribute("OwnerUserId")==P.UserId
+   and part.Parent:GetAttribute("WorldId")==worldId then
+   task.defer(function()visible(stage,not defeated[stage]);syncPersonalBossCollider(stage)end)
+  end
+ end
+ if part:IsA("SurfaceGui") or part:IsA("GuiObject") then
+  part=part:FindFirstAncestorWhichIsA("BasePart")
+ end
+ if not part or not part:IsA("BasePart") or part.Name~="Wall" then return end
+ local model=part.Parent
+ if not model then return end
+ local major,index=model.Name:match("^Stage(%d+)%.(%d+)$")
+ major,index=tonumber(major),tonumber(index)
+ if not major or major<1 or major>10 or not index or index<1 or index>wallCount(major) then return end
+ if queuedWallRenders[part] then return end
+ queuedWallRenders[part]=true
+ task.defer(function()
+  queuedWallRenders[part]=nil
+  if wallModel(major,index)==model then renderWallStage(major);syncPersonalBossCollider(major) end
+ end)
+end)
+task.defer(function()
+ task.wait(.5)
+ for major in wallState do renderWallStage(major) end
+end)
+-- Presentation maintenance retries streamed walls/models. Boss bounds are sampled only at spawn.
+task.spawn(function()
+ while script.Parent do
+  task.wait(.5)
+  refreshPersonalBossColliders()
+  for n,record in fills do
+   local enemies=enemyFolder()
+   local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
+   if e and not defeated[n] then
+    visible(n,n==currentStage)
+    if not record.Gui or not record.Gui:IsDescendantOf(e) then
+     gauge(n,record.Current,record.Max)
+     record=fills[n]
+     refreshGaugeVisibility()
+    end
+    if record.Gui and record.Gui.Enabled and record.Gui.Adornee then
+     updateGaugeLayout(e,n,record.Gui)
+    end
+   end
+  end
+ end
+end)
+do
+ overheadConnection=RunService.RenderStepped:Connect(function()
+  local enemies=enemyFolder()
+  for n,record in fills do
+   local gui=record.Gui
+   local surface=bossSurfaces[n]
+   if gui and gui.Parent and gui:GetAttribute("BossFollowing") then
+    local e=enemies and enemies:FindFirstChild(("Stage%02d_Enemy"):format(n))
+    if e and surface and surface.Parent and (P:GetAttribute("CurrentWorld") or 1)==worldId and bossDisplayEnabled(n) then
+     placeOverhead(e,n,gui,surface)
+    else gui.Enabled=false end
+   end
+  end
+ end)
+end
+script.Destroying:Connect(function()
+ if PersonalTrophy then PersonalTrophy.Destroy() end
+ if overheadConnection then overheadConnection:Disconnect() end
+ for stage in personalBossColliders do removePersonalBossCollider(stage) end
+ if folder.Parent then folder:Destroy() end
+end)
+R:FireServer({Type="RequestState"})
+
+
+end
+task.spawn(mount,1)
+task.spawn(mount,2)

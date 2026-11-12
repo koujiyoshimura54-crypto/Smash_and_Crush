@@ -1,0 +1,61 @@
+{
+  "Passed": true,
+  "Files": [
+    {
+      "FullPath": "ReplicatedStorage.Config.World1BossConfig",
+      "RepositoryFile": "src/ReplicatedStorage/Config/World1BossConfig.luau",
+      "SHA256": "4550084b530ddd0216aaedf04dae5d8bcd83cd833ce07facefed1fcad24c9f38"
+    },
+    {
+      "FullPath": "ServerScriptService.Systems.Controllers.RebirthService",
+      "RepositoryFile": "src/ServerScriptService/Systems/Controllers/RebirthService.server.luau",
+      "SHA256": "d7f704abfde6986ad2d814246d9103994ed7f56eb04d0b6cc602e171782c11cf"
+    },
+    {
+      "FullPath": "ReplicatedStorage.Config.LevelRequirements",
+      "RepositoryFile": "src/ReplicatedStorage/Config/LevelRequirements.luau",
+      "SHA256": "171b1ca0e3d7e9aa77d2c597fffb401fb26df401dbd34d84fba0fc0c34fe6403"
+    },
+    {
+      "FullPath": "ServerScriptService.Services.PlayerDataService",
+      "RepositoryFile": "src/ServerScriptService/Services/PlayerDataService.luau",
+      "SHA256": "dcbdcefdc8b933f4be4f557733fbadf193cd2b42f064377bf04a8330742ff8e1"
+    },
+    {
+      "FullPath": "ReplicatedStorage.Modules.LevelProgression",
+      "RepositoryFile": "src/ReplicatedStorage/Modules/LevelProgression.luau",
+      "SHA256": "a6e4449f54f71e19578035bf7cfef55e6c9d96fc9b4e71a01aab437367e8b25d"
+    },
+    {
+      "FullPath": "ReplicatedStorage.Config.RebirthConfig",
+      "RepositoryFile": "src/ReplicatedStorage/Config/RebirthConfig.luau",
+      "SHA256": "ed01c91ebaa389ac37f0aec1f39596b80a6b2f8ab8eccceb90e39d3ba3d0a9ff"
+    },
+    {
+      "FullPath": "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient",
+      "RepositoryFile": "src/StarterPlayer/StarterPlayerScripts/Tutorial/TutorialGuideClient.client.luau",
+      "SHA256": "8dea50157e045b50473cca36c2d7e285af62e81e3902f046fcce03c1452b05fb"
+    },
+    {
+      "FullPath": "ServerScriptService.Systems.Debug.StudioStartController",
+      "RepositoryFile": "src/ServerScriptService/Systems/Debug/StudioStartController.server.luau",
+      "SHA256": "93b092b34e5aceef47abfabf971777c65f8a17b76c5f6790124a18d0ed7e1331"
+    },
+    {
+      "FullPath": "ServerScriptService.Services.StrengthRewardPersistence",
+      "RepositoryFile": "src/ServerScriptService/Services/StrengthRewardPersistence.luau",
+      "SHA256": "734b9bb7acf430ce9010461123182019250a16073a4058f7a64e9457076b6b47"
+    },
+    {
+      "FullPath": "StarterGui.StrengthGui.RebirthMenuClient",
+      "RepositoryFile": "src/StarterGui/StrengthGui/RebirthMenuClient.client.luau",
+      "SHA256": "d8ac20ffdff7ea76eb7a946cbf08b647b92cfbc62f1a0fd9f502d8a66b6064f0"
+    },
+    {
+      "FullPath": "StarterGui.StrengthGui.StrengthDisplay",
+      "RepositoryFile": "src/StarterGui/StrengthGui/StrengthDisplay.client.luau",
+      "SHA256": "df0a56bf0ac818a0b0c0803ea8470740876b7074fce6498e6d11353fc7729cb0"
+    }
+  ],
+  "Kind": "Repository bytes match recorded approved Sources; Studio exact Source audit is separate"
+}

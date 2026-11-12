@@ -13,6 +13,7 @@ local SpeedConfig=require(game.ReplicatedStorage.Config:WaitForChild("SpeedConfi
 local SizeChangeConfig=require(game.ReplicatedStorage.Config:WaitForChild("SizeChangeConfig"))
 local CapacityConfig=require(game.ReplicatedStorage.Config:WaitForChild("InventoryCapacityConfig"))
 local LevelProgression=require(game.ReplicatedStorage.Modules.LevelProgression)
+local RebirthConfig=require(game.ReplicatedStorage.Config.RebirthConfig)
 local Counts=require(game.ReplicatedStorage.Modules.InventoryCounts)
 local ForgeInventory=require(game.ReplicatedStorage.Modules.ForgeInventory)
 local FirstStage1=require(game.ReplicatedStorage.Modules.FirstStage1RewardState)
@@ -243,7 +244,7 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {HigherOreMergeTutorial=assert(HigherOreTutorial.Normalize(nil,true)),EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ return {HigherOreMergeTutorial=assert(HigherOreTutorial.Normalize(nil,true)),EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,LevelCurveVersion=LevelProgression.CurrentCurveVersion,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -316,10 +317,11 @@ local function normalize(raw)
   d.DailyRewards=dailyRewards
   d.TutorialCompleted=raw.TutorialCompleted==true
   if finite(raw.Strength) then d.Strength=math.max(0,raw.Strength) end
-  local level,progress=LevelProgression.Normalize(raw)
+  local level,progress,curve=LevelProgression.Normalize(raw)
   if not level then return nil,progress end
   d.Level=level
   d.LevelProgress=progress
+  d.LevelCurveVersion=curve
   if finite(raw.RebirthCount) then d.RebirthCount=math.max(0,math.floor(raw.RebirthCount)) end
   if finite(raw.TotalStrengthEarned) then d.TotalStrengthEarned=math.max(0,raw.TotalStrengthEarned) end
   if finite(raw.DailyStrengthEarned) then d.DailyStrengthEarned=math.max(0,raw.DailyStrengthEarned) end
@@ -404,6 +406,7 @@ local function applyAttributes(player,d)
  player:SetAttribute("World2Visited",world2VisitedForSession(sessions[player]))
  player:SetAttribute("TutorialCompleted",d.TutorialCompleted==true)
  player:SetAttribute("Strength",d.Strength)
+ player:SetAttribute("LevelCurveVersion",d.LevelCurveVersion)
  player:SetAttribute("LevelProgress",d.LevelProgress)
  player:SetAttribute("Level",d.Level)
  player:SetAttribute("RebirthCount",d.RebirthCount)
@@ -637,6 +640,7 @@ function PlayerDataService.ResetProductionByUserId(userId,allowedStudioPlayer)
   Level=1,
   LevelProgress=0,
   LevelProgressVersion=LevelProgression.Version,
+  LevelCurveVersion=LevelProgression.CurrentCurveVersion,
   Win=0,
   RebirthCount=0,
   HighestUnlockedWorld=1,
@@ -820,7 +824,7 @@ function PlayerDataService.ApplyStudioStartLevel(player,strength,level)
   if not preview then return false,reason end
   -- The active test data and every nested table are separate from the restore source.
   Analytics.Reset(player)
-  s.StudioStartOverride={Data=d,Dirty=s.Dirty,Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate,Win=d.Win,RebirthCount=d.RebirthCount}
+  s.StudioStartOverride={Data=d,Dirty=s.Dirty,Strength=d.Strength,Level=d.Level,LevelProgress=d.LevelProgress,LevelCurveVersion=d.LevelCurveVersion,TotalStrengthEarned=d.TotalStrengthEarned,DailyStrengthEarned=d.DailyStrengthEarned,DailyDate=d.DailyDate,Win=d.Win,RebirthCount=d.RebirthCount}
   s.Data=cloneStudioData(d)
   s.StudioPetPreview=preview
   s.PetViewGeneration=(s.PetViewGeneration or 0)+1
@@ -851,7 +855,7 @@ end
 function PlayerDataService.GetLevelState(player)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return nil end
- return s.Data.Level,s.Data.LevelProgress
+ return s.Data.Level,s.Data.LevelProgress,s.Data.LevelCurveVersion
 end
 function PlayerDataService.AddStrengthGain(player,gain)
  local s=sessions[player]
@@ -859,7 +863,7 @@ function PlayerDataService.AddStrengthGain(player,gain)
  local d=s.Data
  local strength,level,progress=LevelProgression.ApplyGain(d,gain)
  if not strength then return nil,level end
- if gain==0 then return d.Strength end
+ if gain==0 and level==d.Level and progress==d.LevelProgress then return d.Strength end
  d.Strength,d.Level,d.LevelProgress=strength,level,progress
  s.Dirty=true
  player:SetAttribute("Strength",strength)
@@ -879,6 +883,27 @@ function PlayerDataService.ResetStrengthProgress(player)
  player:SetAttribute("LevelProgress",0)
  player:SetAttribute("Level",1)
  return true
+end
+-- One non-yielding transition, persisted by the existing owned Save path.
+-- Pending durable rewards must publish before their cycle can be consumed.
+function PlayerDataService.TryRebirth(player)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.OwnershipLost then return false,"DataNotReady" end
+ if s.Saving or s.PendingItemMutation or s.PendingFirstStage1Defeat or s.StrengthClosing then return false,"DataNotReady" end
+ local d=s.Data
+ local required=RebirthConfig.GetRequiredLevel(d.RebirthCount,d.LevelCurveVersion)
+ if not required then return false,"World1Max" end
+ if d.Level<required then return false,"RequiredLevel" end
+ d.RebirthCount+=1
+ d.Strength,d.Level,d.LevelProgress=0,1,0
+ d.LevelCurveVersion=LevelProgression.CurrentCurveVersion
+ s.Dirty=true
+ player:SetAttribute("LevelCurveVersion",d.LevelCurveVersion)
+ player:SetAttribute("Strength",0)
+ player:SetAttribute("LevelProgress",0)
+ player:SetAttribute("Level",1)
+ player:SetAttribute("RebirthCount",d.RebirthCount)
+ return true,d.RebirthCount
 end
 function PlayerDataService.SetRebirthCount(player,value)
  local s=sessions[player]
@@ -987,6 +1012,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   Level=persisted and persisted.Level or d.Level,
   LevelProgress=persisted and persisted.LevelProgress or d.LevelProgress,
   LevelProgressVersion=LevelProgression.Version,
+  LevelCurveVersion=persisted and persisted.LevelCurveVersion or d.LevelCurveVersion,
   RebirthCount=d.RebirthCount,
   TotalStrengthEarned=persisted and persisted.TotalStrengthEarned or d.TotalStrengthEarned,
   DailyStrengthEarned=persisted and persisted.DailyStrengthEarned or d.DailyStrengthEarned,
@@ -1046,6 +1072,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.Level=payload.Level
    merged.LevelProgress=payload.LevelProgress
    merged.LevelProgressVersion=payload.LevelProgressVersion
+   merged.LevelCurveVersion=payload.LevelCurveVersion
    merged.RebirthCount=math.max(tonumber(old.RebirthCount) or 0,payload.RebirthCount)
    merged.TotalStrengthEarned=math.max(tonumber(old.TotalStrengthEarned) or 0,payload.TotalStrengthEarned)
    -- Preserve paid credits committed by a newer session after this snapshot.
@@ -1808,6 +1835,7 @@ function PlayerDataService.ResolveItemMutation(player)
       if not strength then error(level) end
       merged.Strength,merged.Level,merged.LevelProgress=strength,level,progress
       merged.LevelProgressVersion=LevelProgression.Version
+      merged.LevelCurveVersion=op.Snapshot.LevelCurveVersion
       merged.TotalStrengthEarned=math.max(tonumber(merged.TotalStrengthEarned) or 0,op.Snapshot.TotalStrengthEarned)+gain
       merged.DailyDate=op.Snapshot.DailyDate
       merged.DailyStrengthEarned=op.Snapshot.DailyStrengthEarned+gain
@@ -1989,7 +2017,7 @@ local function prepareTimeReward(player,context)
  return {
   Id=HttpService:GenerateGUID(false),WinPrice=0,TimeReward=context,
   ResetToken=d.ResetToken,ElapsedSeconds=progress.ElapsedSeconds,
-  Snapshot={Win=win,Strength=strength,Level=d.Level,LevelProgress=d.LevelProgress,TotalStrengthEarned=d.TotalStrengthEarned,
+  Snapshot={Win=win,Strength=strength,Level=d.Level,LevelProgress=d.LevelProgress,LevelCurveVersion=d.LevelCurveVersion,TotalStrengthEarned=d.TotalStrengthEarned,
    DailyDate=today(),DailyStrengthEarned=d.DailyDate==today() and d.DailyStrengthEarned or 0},
  }
 end

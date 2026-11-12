@@ -25,8 +25,8 @@ local function multiplier(n) return Config.GetMultiplier(n) end
 local function refresh()
  local value=level()
  local n=count()
- local maxed=Config.IsWorld1Max(n)
- local req=Config.GetRequiredLevel(n)
+ local maxed=Config.IsWorld1Max(n,player:GetAttribute("LevelCurveVersion"))
+ local req=Config.GetRequiredLevel(n,player:GetAttribute("LevelCurveVersion"))
  local can=not maxed and req~=nil and value>=req
  badge.Visible=can
  fill.Size=UDim2.fromScale((maxed or can) and 1 or (req and req>0 and math.clamp(value/req,0,1) or 0),1)
@@ -53,4 +53,5 @@ request.OnClientEvent:Connect(function(d)
 end)
 player:GetAttributeChangedSignal("Level"):Connect(refresh)
 player:GetAttributeChangedSignal("RebirthCount"):Connect(refresh)
+player:GetAttributeChangedSignal("LevelCurveVersion"):Connect(refresh)
 refresh()
