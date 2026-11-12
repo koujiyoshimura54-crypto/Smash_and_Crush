@@ -6,6 +6,7 @@ local NotificationState=require(RS.Modules:WaitForChild("InventoryNotificationSt
 local Exposure=require(RS.Modules:WaitForChild("InventoryNotificationExposure"))
 local player=Players.LocalPlayer
 local gui=script.Parent
+Badges.Mount(gui) -- Shared image/animation only; notification conditions stay below.
 local badge=gui:WaitForChild("LeftMenu"):WaitForChild("InventoryButton"):WaitForChild("NotificationBadge")
 local panel=gui:WaitForChild("InventoryPanel")
 local remote=RS.Remotes:WaitForChild("EnemyDropGachaResult")

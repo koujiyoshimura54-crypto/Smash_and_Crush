@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-12 — Egg close, notification image and Trophy restoration
+
+Implemented per-Egg close/re-entry behavior and retained Limited Egg purchase flow, rendered image 126155807251943 through the common notification helper with deduplicated motion, and repaired detached Trophy authored-value restoration. Six production Sources; 16 Egg, 22 badge and 640 Trophy assertions passed. Device-simulator Edit previews were inspected; physical input, actual combat/streaming and resolution of the mobile-only Trophy symptom remain unverified. No Save/Publish. [Work record](../reports/EggBadgeTrophy_20261112.md).
+
 ## 2026-11-12 — First Stage2 combat funnel
 
 Added MTF_FirstStage2Combat_v1 for the same confirmed New first-session cohort as FirstCombat. Five server observations start at actual World1 Stage2 entry, independently of Merge; death/return/retry retain join progress. World2 and exceptional skip/order paths do not advance the normal funnel. Existing three funnels and gameplay are unchanged. [Schema](FIRST_PLAY_ANALYTICS.md), [verification and limits](../reports/FirstStage2Combat_20261112.md).

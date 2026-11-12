@@ -6,6 +6,7 @@ type Sheet = {
 	share: number,
 	drift: Vector2,
 	openness: number,
+	dismissed: boolean,
 
 	janitor: any,
 }
@@ -47,6 +48,8 @@ local TURN = math.pi * 2
 local CARD_ZINDEX = 100
 
 local EggClient = {}
+local CloseButton = require(ReplicatedStorage.Modules:WaitForChild("EggSheetClose"))
+local started = false
 
 local Eggs: {[string]: Sheet} = {}
 
@@ -272,6 +275,12 @@ end
 
 local function bindSheet(egg: Sheet, open: BillboardGui)
 
+	CloseButton.Mount(open, egg.janitor, function()
+		egg.dismissed = true
+		egg.openness = 0
+		open.Enabled = false
+		PetClient.hideCard()
+	end)
 	ButtonClient.attach(open, egg.janitor)
 
 	local name = Egg.identity(egg.part)
@@ -383,6 +392,7 @@ local function register(part: BasePart)
 		share = 0,
 		drift = Vector2.zero,
 		openness = 0,
+		dismissed = false,
 		janitor = Janitor.new(),
 	}
 
@@ -424,10 +434,19 @@ local function better(angle: number, distance: number, bestAngle: number, bestDi
 	return angle < bestAngle
 end
 
+local function resetSheets()
+ for _,egg in Eggs do
+  egg.dismissed=false;egg.openness=0;egg.share=0;egg.drift=Vector2.zero
+  if egg.open then egg.open.Enabled=false end
+ end
+ PetClient.hideCard()
+end
+
 local function choose(camera: Camera): Sheet?
 	local character = Player.Character
 	local root = if character then character:FindFirstChild(ROOT_NAME) else nil
-	if not (root and root:IsA("BasePart")) then return nil end
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	if not (root and root:IsA("BasePart") and humanoid and humanoid.Health > 0) then resetSheets();return nil end
 
 	local from = camera.CFrame.Position
 	local look = camera.CFrame.LookVector
@@ -442,7 +461,8 @@ local function choose(camera: Camera): Sheet?
 		local anchor = egg.base.Position
 
 		local distance = (anchor - root.Position).Magnitude
-		if distance > Config.Egg.reach then continue end
+		if distance > Config.Egg.reach then egg.dismissed=false;continue end
+		if egg.dismissed then continue end
 
 		local towards = anchor - from
 		local length = towards.Magnitude
@@ -472,7 +492,7 @@ local function fit(egg: Sheet, camera: Camera, delta: number, wanted: boolean)
 	local step = if wanted then delta else -delta
 	egg.openness = math.clamp(egg.openness + step / Config.Egg.openSeconds, 0, 1)
 
-	setEnabled(open, egg.openness > 0)
+	setEnabled(open, egg.openness > 0 and not egg.dismissed)
 
 	if egg.openness <= 0 then
 		egg.share = 0
@@ -534,6 +554,11 @@ local function fit(egg: Sheet, camera: Camera, delta: number, wanted: boolean)
 end
 
 function EggClient.start()
+	if started then return end
+	started = true
+	Player.CharacterRemoving:Connect(resetSheets)
+	Player.CharacterAdded:Connect(resetSheets)
+	Player:GetAttributeChangedSignal("CurrentWorld"):Connect(resetSheets)
 	-- All purchased configured Eggs; no purchased Data profile is loaded.
 
 	local found = findPath(ReplicatedStorage, TEMPLATE_PATH)

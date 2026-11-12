@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — Egg close, notification image and Trophy restoration
+
+Implemented per-Egg close/re-entry behavior and retained Limited Egg purchase flow, rendered image 126155807251943 through the common notification helper with deduplicated motion, and repaired detached Trophy authored-value restoration. Six production Sources; 16 Egg, 22 badge and 640 Trophy assertions passed. Device-simulator Edit previews were inspected; physical input, actual combat/streaming and resolution of the mobile-only Trophy symptom remain unverified. No Save/Publish. [Work record](../reports/EggBadgeTrophy_20261112.md).
+
 ## 2026-11-12 — Slap Hand purchase UI hidden
 
 Applied the false purchase-prompt flag and the shared server guard to canonical unsaved Edit. Both Sources compiled; repeated isolated requests made zero MarketplaceService calls while hidden. Existing owned-tool behavior is preserved. No Play state change, real purchase, Save/Publish or player-data change; live visual confirmation is untested. [Record](../reports/SlapHandUIHidden_20261112.md).

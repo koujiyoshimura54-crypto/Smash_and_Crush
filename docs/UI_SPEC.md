@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-12 — Egg close, notification image and Trophy restoration
+
+Implemented per-Egg close/re-entry behavior and retained Limited Egg purchase flow, rendered image 126155807251943 through the common notification helper with deduplicated motion, and repaired detached Trophy authored-value restoration. Six production Sources; 16 Egg, 22 badge and 640 Trophy assertions passed. Device-simulator Edit previews were inspected; physical input, actual combat/streaming and resolution of the mobile-only Trophy symptom remain unverified. No Save/Publish. [Work record](../reports/EggBadgeTrophy_20261112.md).
+
 ## 2026-11-12 — Slap Hand purchase UI hidden
 
 `SlapPassConfig.PurchasePromptEnabled = false` suppresses the Roblox Slap Hand purchase dialog at the shared server prompt entry point, including automatic proximity requests. Existing owner tools remain available. No new GUI is added. Native Edit checks passed; actual Play/visual confirmation remains untested. [Record](../reports/SlapHandUIHidden_20261112.md).

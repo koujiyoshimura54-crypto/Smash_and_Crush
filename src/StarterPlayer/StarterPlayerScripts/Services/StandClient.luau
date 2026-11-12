@@ -10,6 +10,7 @@ local Config=require(RS.Config.LimitedEggConfig)
 local Viewport=require(RS.Modules.LimitedPetViewport)
 local Pet=require(RS.Modules.Pet)
 local PurchaseHUD=require(RS.Modules.HUDLayout)
+local CloseButton=require(RS.Modules:WaitForChild("EggSheetClose"))
 local M={}
 local activeConfig=Config
 local lifetime=Janitor.new()
@@ -144,9 +145,11 @@ function M.show(parent,fetchPrice,offer)
   panel.AnchorPoint=Vector2.new(.5,.5);panel.Position=UDim2.fromScale(.5,.5)
   panel.Size=UDim2.fromOffset(700,550);panel.Visible=true;panel.Parent=gui
   local scale=Instance.new("UIScale");scale.Parent=panel
+  local close
   local function fit()
    local size=gui.AbsoluteSize
    scale.Scale=math.min(1,math.max(1,size.X-24)/700,math.max(1,size.Y-24)/550)
+   if close then CloseButton.Fit(close,scale.Scale) end
   end
   sheet:Add(gui:GetPropertyChangedSignal("AbsoluteSize"):Connect(fit))
   local info=panel.Info
@@ -192,9 +195,7 @@ function M.show(parent,fetchPrice,offer)
   buyControl.Visible=true;buyControl.ZIndex=200
   sheet:Add(buyControl.Activated:Connect(M.purchase))
   print("[LimitedEgg01] button connected",buyControl:GetFullName())
-  local close=purchased.Inventory.Exit:Clone();close.Name="Close";stripScripts(close)
-  close.AnchorPoint=Vector2.zero;close.Position=UDim2.new(1,-56,0,14);close.Size=UDim2.fromOffset(42,42);close.Parent=panel
-  sheet:Add(close.Button.Activated:Connect(M.close))
+  close=CloseButton.Mount(panel,sheet,M.close)
   sheet:Add(Input.InputBegan:Connect(function(input,processed)
    if not processed and input.KeyCode==Enum.KeyCode.Escape then M.close() end
   end))
@@ -205,8 +206,9 @@ function M.show(parent,fetchPrice,offer)
   if not active then return end
   local player=Players.LocalPlayer;local character=player and player.Character
   local root=character and character:FindFirstChild("HumanoidRootPart")
+  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
   local _,part=entrance(offer)
-  if not root or not part or (root.Position-part.Position).Magnitude>24
+  if not humanoid or humanoid.Health<=0 or not root or not part or (root.Position-part.Position).Magnitude>24
    or (player:GetAttribute("CurrentWorld") or 1)~=offer.WorldId then M.close() end
  end))
   end

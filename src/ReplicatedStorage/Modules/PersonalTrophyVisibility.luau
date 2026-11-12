@@ -62,13 +62,21 @@ function M.Mount(player)
  local function refresh()
   for _,record in roots do for _,item in record.Items do apply(record,item) end end
  end
+ local function restore(item)
+  for _,c in item.Connections do c:Disconnect() end
+  table.clear(item.Connections)
+  -- Streaming detach is not Destroy. Restore even when Parent is nil, before
+  -- registration can capture our hidden values as the authored defaults.
+  for property,value in item.Values do
+   pcall(function() item.Object[property]=value end)
+  end
+ end
  local function release(root)
   local record=roots[root];if not record then return end;roots[root]=nil
   for _,c in record.Connections do c:Disconnect() end
-  for x,item in record.Items do
-   for _,c in item.Connections do c:Disconnect() end
-   if x.Parent then for property,value in item.Values do x[property]=value end end
-  end
+  for _,item in record.Items do restore(item) end
+  -- Old deferred removals must never restore over a newly registered record.
+  table.clear(record.Items)
  end
  local function discover(x)
   if dead then return end
@@ -79,11 +87,11 @@ function M.Mount(player)
    table.insert(record.Connections,root.DescendantAdded:Connect(function(child)add(record,child)end))
    table.insert(record.Connections,root.DescendantRemoving:Connect(function(child)
     task.defer(function()
+     if roots[root]~=record then return end
      local item=record.Items[child]
      if not item or child:IsDescendantOf(root) then return end
      record.Items[child]=nil
-     for _,c in item.Connections do c:Disconnect() end
-     if child.Parent then for property,value in item.Values do child[property]=value end end
+     restore(item)
     end)
    end))
    table.insert(record.Connections,root.AncestryChanged:Connect(function()

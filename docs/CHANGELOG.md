@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-12 — Egg close, notification image and Trophy restoration
+
+Implemented per-Egg close/re-entry behavior and retained Limited Egg purchase flow, rendered image 126155807251943 through the common notification helper with deduplicated motion, and repaired detached Trophy authored-value restoration. Six production Sources; 16 Egg, 22 badge and 640 Trophy assertions passed. Device-simulator Edit previews were inspected; physical input, actual combat/streaming and resolution of the mobile-only Trophy symptom remain unverified. No Save/Publish. [Work record](../reports/EggBadgeTrophy_20261112.md).
+
 ## 2026-11-12 — Hide Slap Hand purchase UI
 
 Disabled Slap Hand purchase prompts through a dedicated Config flag and the shared server prompt entry point. Existing owner tools and gameplay remain unchanged. Native Edit compilation and isolated prompt checks passed; no Play, real purchase, Save or Publish was performed. [Record](../reports/SlapHandUIHidden_20261112.md).
