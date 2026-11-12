@@ -318,6 +318,7 @@ function M.RefreshSlapPass(player)
  return owned==true,"Verified"
 end
 function M.PromptSlapPass(player)
+ if SlapConfig.PurchasePromptEnabled == false then return false,"Hidden" end
  if M.HasSlapPass(player) then return false,"AlreadyOwned" end
  local ok=pcall(function()
   MarketplaceService:PromptGamePassPurchase(player,SlapConfig.GamePassId)

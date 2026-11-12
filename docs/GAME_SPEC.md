@@ -173,7 +173,7 @@ Badge IDはReplicatedStorage.Config.BadgeConfig、所有確認と付与はServer
 - Player CharacterとAccessoryの全BasePartは`PlayerCharacters` CollisionGroupへ所属し、同Group間だけ非衝突とする。Floor、Stage Wall、PersonalBossCollider、Treadmill、Trophy等のWorld Collisionは従来どおり維持する。
 - Slap Pass（GamePassId `1987256653`）所有者へ`Slap Hand` ToolをSession中とRespawn後に1個だけ付与する。標準ToolのActivatedによりPCクリック／Mobileタップを共通入力とする。
 - SlapはServerが所有権、Tool装備、生存、別Player、8stud以内、正面範囲、5秒Cooldownを検証する。成功時だけ対象へ水平60／上方向20相当のImpulseを加え、Cooldownを開始する。対象なし・距離外・未所有・不正要求はCooldownを消費しない。
-- 未所有Playerが生存中の別Playerから8stud以内へ入るとGame Pass購入Promptを表示する。Prompt後はCancelを含め30秒間再表示せず、購入完了後はServerで所有権を再確認してRejoinなしでToolを付与する。
+- 2026-11-12: Slap Hand購入UIは`SlapPassConfig.PurchasePromptEnabled = false`で非表示。近接による購入Promptも表示しない。既存所有権・Tool付与・使用処理は維持する。再表示が必要な場合は同設定をtrueへ戻す（元の8stud近接／30秒Cooldown）。
 
 ## 2026-09-18 — Administrator Treadmill Game Pass
 

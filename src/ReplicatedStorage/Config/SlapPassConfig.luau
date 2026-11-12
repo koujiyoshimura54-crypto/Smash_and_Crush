@@ -1,5 +1,7 @@
 local Config = {
 	GamePassId = 1987256653,
+	-- Hide the Slap Hand purchase UI without changing existing ownership or tool behavior.
+	PurchasePromptEnabled = false,
 	ToolName = "Slap Hand",
 	ToolTemplateName = "SlapToolTemplate",
 	PlayerCollisionGroup = "PlayerCharacters",

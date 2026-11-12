@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-12 — Slap Hand purchase UI hidden
+
+`SlapPassConfig.PurchasePromptEnabled = false` suppresses the Roblox Slap Hand purchase dialog at the shared server prompt entry point, including automatic proximity requests. Existing owner tools remain available. No new GUI is added. Native Edit checks passed; actual Play/visual confirmation remains untested. [Record](../reports/SlapHandUIHidden_20261112.md).
+
 ## 2026-11-12 — AutoTap initialization display
 
 AutoTapButton renders ON only for an explicitly true AutoTapEnabled attribute. Missing/loading state renders OFF with the existing OFF colors; geometry, font, user input and server-driven updates are unchanged. [Focused verification](../reports/AutoTapJoinOff_20261112/REPORT.md).

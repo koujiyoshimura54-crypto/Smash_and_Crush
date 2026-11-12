@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — Slap Hand purchase UI hidden
+
+Applied the false purchase-prompt flag and the shared server guard to canonical unsaved Edit. Both Sources compiled; repeated isolated requests made zero MarketplaceService calls while hidden. Existing owned-tool behavior is preserved. No Play state change, real purchase, Save/Publish or player-data change; live visual confirmation is untested. [Record](../reports/SlapHandUIHidden_20261112.md).
+
 ## 2026-11-12 — First Stage2 combat funnel
 
 Applied one canonical live-derived Source: FirstPlayAnalyticsService.68 Stage2/state checks,38 legacy checks against both versions with identical old event streams, and52 transport checks passed in isolated native Edit simulations. No actual combat Play or Creator Hub receipt tested; no Play start/stop, Save/Publish or player-data mutation.498 Sources:one changed,497 preserved. PR #1 remains unmerged; manual Save/Publish required. [Record](../reports/FirstStage2Combat_20261112.md).

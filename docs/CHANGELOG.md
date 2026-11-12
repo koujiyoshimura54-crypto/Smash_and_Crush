@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-12 — Hide Slap Hand purchase UI
+
+Disabled Slap Hand purchase prompts through a dedicated Config flag and the shared server prompt entry point. Existing owner tools and gameplay remain unchanged. Native Edit compilation and isolated prompt checks passed; no Play, real purchase, Save or Publish was performed. [Record](../reports/SlapHandUIHidden_20261112.md).
+
 ## 2026-11-12 — First Stage2 combat funnel
 
 Added five-step MTF_FirstStage2Combat_v1 and existing-name join-relative elapsed values. Server hook reuse changes only FirstPlayAnalyticsService; original three funnels, balance, rewards, AutoTap, saving, UI/tutorial and title are unchanged. Edit-only simulations and rate/queue failure checks are recorded; actual Play and published receipt remain unverified. PR #1 stays held. [Report](../reports/FirstStage2Combat_20261112.md).
