@@ -100,7 +100,7 @@ local function player(strength,glove)
  function p:GetAttribute(k) return self.attrs[k] end
  return p
 end
-eq(AfterBossConfig.GetMaxHP(1),225);eq(AfterBossConfig.GetRecommendedLevel(1),4)
+eq(AfterBossConfig.GetMaxHP(1),200);eq(AfterBossConfig.GetRecommendedLevel(1),4)
 eq(AfterBossConfig.GetMaxHP(2),2250);eq(AfterBossConfig.GetRecommendedLevel(2),10)
 ok(AfterBossConfig.NeedsIntroTraining(1,0,false),"new profile trains")
 ok(AfterBossConfig.NeedsIntroTraining(2,7,false),"early LV2 does not lower first-wall Strength")
@@ -148,13 +148,13 @@ end
 local a,b=player(60),player(100)
 wall.InitializePlayer(a);wall.InitializePlayer(b)
 wall.ApplyDamageForStage(a,1,50)
-eq(wall.GetGaugeForStage(b,1,1),65)
+eq(wall.GetGaugeForStage(b,1,1),50)
 boss.Begin(a,{},1);boss.Begin(b,{},1);boss.Attack(a)
-eq(boss.Get(b).HP,225)
-boss.Reset(a);eq(boss.Begin(a,{},1).HP,225);eq(boss.Get(b).HP,225)
+eq(boss.Get(b).HP,200)
+boss.Reset(a);eq(boss.Begin(a,{},1).HP,200);eq(boss.Get(b).HP,200)
 local glove=player(60,.5)
 boss.Begin(glove,{},1);local _,gs=boss.Attack(glove)
-eq(gs.HP,135,"unchanged glove multiplier")
+eq(gs.HP,110,"unchanged glove multiplier")
 -- Conservative ideal-contact timing check: first Auto may wait a full 0.8s.
 -- This is arithmetic, NOT an actual engine timing or movement test.
 local recommendedStrength=prefix(AfterRequirements,AfterBossConfig.GetRecommendedLevel(1))

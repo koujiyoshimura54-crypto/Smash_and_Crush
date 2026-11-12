@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-12 — Stage1 walls50/75/100/135 and Boss200 (user decision)
+
+The owner specified Stage1 walls50/75/100/135 and Boss HP200. World1BossConfig.RequiredStrength[1] is40 because Boss HP is RequiredStrength x5; this also changes the existing Strength-ratio lottery reference. Stage2 stays at restored walls300/325/350/425 and Boss2250. No additional LV, Player Strength gain, Stage3+ or World2 changes. Updated the GitHub Draft PR configuration and corresponding model expectations; this session did not edit or verify Studio, Save/Publish, or run Play/Luau-WASM. The earlier36-route measurements at f2c8cf3 predate both latest decisions and do not validate these values. [Current scope](https://github.com/koujiyoshimura54-crypto/Smash_and_Crush/pull/1).
+
 ## 2026-11-12 — Restore only Stage2 wall HP (user decision)
 
 The owner rejected extending Stage2 to compensate for the shorter opening. Restore World1 Stage2 walls to300/325/350/425 (total1400), replacing500/650/800/1050 (total3000). Keep the candidate Stage1 walls65/85/100/135 and accepted Boss HP225/2250 for Stage1/2. This commit does not change LevelRequirements or awarded Player Strength. The36-route measurements at f2c8cf3 used the rejected Stage2 walls; they are historical evidence, not validation of this restored configuration. This is a repository update on Draft PR #1; the owner will edit Studio manually. Studio application, Save/Publish and post-restoration Play are not verified here. [Current decision and scope](https://github.com/koujiyoshimura54-crypto/Smash_and_Crush/pull/1).

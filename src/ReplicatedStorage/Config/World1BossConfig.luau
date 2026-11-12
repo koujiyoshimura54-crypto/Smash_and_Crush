@@ -10,7 +10,7 @@ function C.NeedsIntroTraining(level,strength,hasBattleProgress)
  return (level or 1)<2 or (not hasBattleProgress and (strength or 0)<C.IntroTrainingStrength)
 end
 C.RequiredStrength={
- [1]=45,[2]=450,[3]=2500,[4]=6000,[5]=15000,
+ [1]=40,[2]=450,[3]=2500,[4]=6000,[5]=15000,
  [6]=38000,[7]=82000,[8]=198000,[9]=360000,[10]=1000000,
 }
 C.RecommendedLevels={4,10,15,20,25,30,35,40,45,50}
@@ -38,12 +38,12 @@ function C.GetLotteryWinChance(ratio)
  end
  return 0
 end
--- Stage1 walls are approximately two thirds of their old HP (rounded to 5).
+-- Stage1 fixed walls follow the owner's 2026-11-12 values.
 -- Stage2 retains its original fixed walls and unchanged Boss HP.
 -- Preserve Stage3-5 fixed walls independently of Boss strength.
 -- Stage6-10 derive walls at 40/50/60/80 percent of Boss HP.
 local walls={
- [1]={65,85,100,135},
+ [1]={50,75,100,135},
  [2]={300,325,350,425},
  [3]={600,750,900,1200},
  [4]={3000,3750,4500,6000},
