@@ -1,0 +1,127 @@
+{
+  "cleanup": {
+    "removed": {"1":"ServerScriptService.Services","2":"ServerScriptService.Systems","3":"ServerScriptService.Config","4":"ServerScriptService.TreadmillTestDriver","5":"ReplicatedStorage.Config","6":"ServerStorage.TestRigs","7":"StarterPlayer.StarterPlayerScripts.World","8":"Workspace.Treadmills","9":"Workspace.World2Map","10":"Workspace.W1Floor","11":"Workspace.W2Floor"},
+    "universeId": 0,
+    "placeId": 0,
+    "remainingScripts": []
+  },
+  "geometry": {
+    "placeVersion": 621,
+    "placeId": 126576845524886,
+    "models": {
+      "1": {
+        "path": "Workspace.Treadmills.Normal01",
+        "attributes": [],
+        "area": {
+          "canQuery": true,
+          "canCollide": false,
+          "group": "Default",
+          "cframe": {"1":237.45263671875,"2":12.00000286102295,"3":-43.4310302734375,"4":1,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":1},
+          "canTouch": true,
+          "size": {"1":7,"2":15,"3":12}
+        }
+      },
+      "2": {
+        "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05",
+        "attributes": {"VisualType":"Treadmill03","DisplayOnly":false,"WorldId":2,"StationIndex":5},
+        "area": {
+          "canQuery": false,
+          "canCollide": false,
+          "group": "Default",
+          "cframe": {"1":25.77627182006836,"2":4.789134979248047,"3":1885.1024169921875,"4":1,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":1},
+          "canTouch": false,
+          "size": {"1":16.86189079284668,"2":0.800000011920929,"3":33.323204040527344}
+        }
+      },
+      "3": {
+        "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06",
+        "attributes": {"VisualType":"Treadmill03","DisplayOnly":false,"WorldId":2,"StationIndex":6},
+        "area": {
+          "canQuery": false,
+          "canCollide": false,
+          "group": "Default",
+          "cframe": {"1":61.27650451660156,"2":4.789134979248047,"3":1885.1024169921875,"4":1,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":1},
+          "canTouch": false,
+          "size": {"1":16.86189079284668,"2":0.800000011920929,"3":33.323204040527344}
+        }
+      },
+      "4": {
+        "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03",
+        "attributes": {"VisualType":"Treadmill02","DisplayOnly":false,"WorldId":2,"StationIndex":3},
+        "area": {
+          "canQuery": false,
+          "canCollide": false,
+          "group": "Default",
+          "cframe": {"1":-29.235595703125,"2":3.8543124198913574,"3":1891.1890869140625,"4":1,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":1},
+          "canTouch": false,
+          "size": {"1":10.874185562133789,"2":0.800000011920929,"3":22.407957077026367}
+        }
+      },
+      "5": {
+        "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07",
+        "attributes": {"VisualType":"Treadmill04","DisplayOnly":true,"WorldId":2,"StationIndex":7},
+        "area": {
+          "canQuery": false,
+          "canCollide": false,
+          "group": "Default",
+          "cframe": {"1":96.77674102783203,"2":4.789132118225098,"3":1885.1024169921875,"4":1,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":1},
+          "canTouch": false,
+          "size": {"1":16.86189079284668,"2":0.800000011920929,"3":33.323204040527344}
+        }
+      },
+      "6": {
+        "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04",
+        "attributes": {"VisualType":"Treadmill02","DisplayOnly":false,"WorldId":2,"StationIndex":4},
+        "area": {
+          "canQuery": false,
+          "canCollide": false,
+          "group": "Default",
+          "cframe": {"1":-4.0267333984375,"2":3.8543124198913574,"3":1891.1890869140625,"4":1,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":1},
+          "canTouch": false,
+          "size": {"1":10.874186515808105,"2":0.800000011920929,"3":22.407957077026367}
+        }
+      },
+      "7": {
+        "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02",
+        "attributes": {"VisualType":"Treadmill01","DisplayOnly":false,"WorldId":2,"StationIndex":2},
+        "area": {
+          "canQuery": false,
+          "canCollide": false,
+          "group": "Default",
+          "cframe": {"1":-52.80332565307617,"2":3.5596890449523926,"3":1893.3585205078125,"4":1,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":1},
+          "canTouch": false,
+          "size": {"1":8.994367599487305,"2":0.800000011920929,"3":18.5342960357666}
+        }
+      },
+      "8": {
+        "path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01",
+        "attributes": {"VisualType":"Treadmill01","DisplayOnly":false,"WorldId":2,"StationIndex":1},
+        "area": {
+          "canQuery": false,
+          "canCollide": false,
+          "group": "Default",
+          "cframe": {"1":-74.69155883789062,"2":3.5596890449523926,"3":1893.3585205078125,"4":1,"5":0,"6":0,"7":0,"8":1,"9":0,"10":0,"11":0,"12":1},
+          "canTouch": false,
+          "size": {"1":8.994367599487305,"2":0.800000011920929,"3":18.5342960357666}
+        }
+      }
+    }
+  },
+  "preservedSources": [
+    {"path":"StarterPlayer.StarterPlayerScripts.World.TreadmillRunClient","editor":true,"matchesExpected":true},
+    {"path":"ServerScriptService.Config.MuscleScaleConfig","editor":true,"matchesExpected":true},
+    {"path":"ServerScriptService.Systems.Controllers.MuscleCharacterService","editor":true,"matchesExpected":true},
+    {"path":"ServerScriptService.Services.TrainingManager","editor":true,"matchesExpected":true},
+    {"path":"ServerScriptService.Systems.Controllers.TrainingController","editor":true,"matchesExpected":true},
+    {"path":"ReplicatedStorage.Config.TreadmillConfig","editor":true,"matchesExpected":true},
+    {"path":"ReplicatedStorage.Config.World2GameplayConfig","editor":true,"matchesExpected":true},
+    {"path":"StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient","editor":true,"matchesExpected":true},
+    {"path":"ReplicatedStorage.Config.TrainingConfig","editor":true,"matchesExpected":true},
+    {"path":"ReplicatedStorage.Config.RebirthConfig","editor":true,"matchesExpected":true},
+    {"path":"ReplicatedStorage.Config.LevelRequirements","editor":true,"matchesExpected":true},
+    {"path":"ReplicatedStorage.Modules.StrengthCalculation","editor":true,"matchesExpected":true},
+    {"path":"ServerScriptService.Services.StrengthManager","editor":true,"matchesExpected":true}
+  ],
+  "pr": {"number":1,"state":"open","draft":true,"merged":false},
+  "studio": {"canonical":"Edit, unsaved; no Save/Publish","isolated":"Owned Play stopped, all fixture Scripts/objects removed, local fixture and empty startup processes closed after verifying exact launch arguments."}
+}

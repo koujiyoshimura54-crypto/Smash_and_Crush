@@ -220,6 +220,25 @@ function TrainingManager.IsPlayerInsideZone(player,zone)
  local rootLocal=zone.CFrame:PointToObjectSpace(root.Position)
  local h=zone.Size/2
  if math.abs(rootLocal.X)>h.X or math.abs(rootLocal.Z)>h.Z then return false end
+ if humanoid.RigType==Enum.HumanoidRigType.R15 and TreadmillConfig.WorldForModel(zone.Parent)==2 then
+  -- Server FloorMaterial can remain Air for a client-owned, grounded scaled rig.
+  -- Check the actual deck at the root's standing height, independently of the
+  -- animated feet. Keep the existing footprint and 0.4-stud vertical tolerance.
+  -- Vertical motion rejects takeoff/landing; an apex is outside the ray's reach.
+  local state=humanoid:GetState()
+  if humanoid.Jump or state==Enum.HumanoidStateType.Jumping
+   or state==Enum.HumanoidStateType.Freefall
+   or math.abs(root.AssemblyLinearVelocity.Y)>1 then return false end
+  local params=RaycastParams.new()
+  params.FilterType=Enum.RaycastFilterType.Exclude
+  params.FilterDescendantsInstances={character}
+  params.RespectCanCollide=true
+  local standingHeight=humanoid.HipHeight+root.Size.Y/2
+  local hit=Workspace:Raycast(root.Position,Vector3.new(0,-(standingHeight+h.Y),0),params)
+  return hit~=nil and hit.Instance:IsDescendantOf(zone.Parent)
+   and hit.Normal.Y>0.5 and hit.Distance>=standingHeight-h.Y
+   and zone.CFrame:PointToObjectSpace(hit.Position).Y<=h.Y
+ end
  if humanoid.RigType==Enum.HumanoidRigType.R15 then
   local foundFoot=false
   for _,name in {"LeftFoot","RightFoot"} do
@@ -233,23 +252,9 @@ function TrainingManager.IsPlayerInsideZone(player,zone)
     if math.abs(cf.Position.Y-halfY)<=h.Y then return true end
    end
   end
-  if foundFoot then
-   -- World2's 0.8-stud deck zones are thinner than the animated/scaled R15
-   -- foot offsets. Confirm the physical deck under a grounded root in the same
-   -- footprint instead of restarting the tick clock on every running pose.
-   -- World1 retains its existing foot rule; airborne World2 feet cannot fall back.
-   if TreadmillConfig.WorldForModel(zone.Parent)~=2 or humanoid.FloorMaterial==Enum.Material.Air then return false end
-   local params=RaycastParams.new()
-   params.FilterType=Enum.RaycastFilterType.Exclude
-   params.FilterDescendantsInstances={character}
-   params.RespectCanCollide=true
-   local reach=humanoid.HipHeight+root.Size.Y/2+h.Y
-   local hit=Workspace:Raycast(root.Position,Vector3.new(0,-reach,0),params)
-   return hit~=nil and hit.Instance:IsDescendantOf(zone.Parent)
-    and zone.CFrame:PointToObjectSpace(hit.Position).Y<=h.Y
-  end
+  if foundFoot then return false end
  end
- -- R6 or unavailable R15 feet retain the previous Root/HipHeight fallback.
+ -- R6 and World1 R15 rigs without feet retain the previous Root/HipHeight fallback.
  local footPosition=root.Position-Vector3.new(0,humanoid.HipHeight+root.Size.Y/2,0)
  local footLocal=zone.CFrame:PointToObjectSpace(footPosition)
  return math.abs(footLocal.Y)<=h.Y

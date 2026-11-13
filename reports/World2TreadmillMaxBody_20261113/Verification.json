@@ -1,0 +1,31 @@
+{
+  "classification": "Recorded native-physics evidence consistency and scoped Source check; not additional Play runs",
+  "passed": 23,
+  "checks": [
+    "Only occupancy function changed",
+    "Final identical-character before delta zero",
+    "Final identical-character after 8 ticks and +40",
+    "Character pose unchanged for final before/after",
+    "Final before/after raw numeric AddStrength returns",
+    "Server Air and client Plastic captured",
+    "Final four bodies times three stages",
+    "World1 12 unchanged-rule physics cases",
+    "Final seven equipment multipliers and exact 8 ticks",
+    "Exit death world load rebirth ownership reject",
+    "final_jump_0.1 no accepted airborne sample",
+    "final_jump_0.1 gain only after landing restart",
+    "final_jump_0.3 no accepted airborne sample",
+    "final_jump_0.3 gain only after landing restart",
+    "final_jump_0.45 no accepted airborne sample",
+    "final_jump_0.45 gain only after landing restart",
+    "Six short walk oscillations no gain",
+    "Outside after oscillation no gain",
+    "Dedicated run animation stops outside",
+    "13 canonical source and editor comparisons",
+    "PR1 open draft unmerged",
+    "Engine-load success is not relabeled reproduction",
+    "Retained gain intervals at least 0.5s"
+  ],
+  "sourceSha256": "8b547218684f45d789f44a6b6be21ef0161f371094c9401a160a7bd2cf7036a9",
+  "minimumRetainedInterval": 0.5003051001112908
+}

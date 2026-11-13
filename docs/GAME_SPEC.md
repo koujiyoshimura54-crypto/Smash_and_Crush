@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-13 — World2 Treadmillの支持面判定
+
+World2のR15はRootが既存AreaのX/Z内にあり、生存・利用資格を満たす場合に、同じ台の衝突面をRoot直下で確認する。立位高さはHipHeight＋Root半高。高さ許容はArea半高（現在0.4 studs）、支持面はArea上端以下かつ上向き。サーバーFloorMaterialだけでは拒否しない。Jump要求・Jumping・Freefall・上下速度の絶対値が1 stud/sを超える状態は停止する。アニメーションの足裏位置をWorld2の継続条件としない。
+
+World1の実足裏判定とR6の従来判定、購入・再生・World・読込条件、台倍率、Strength計算、0.5秒周期を維持。退出後の加算保持や補完はない。占有監視は現行TrainingControllerの毎Heartbeat、資格表示更新は0.2秒。最大Bodyの生成Rigでの修正前後実測と、通常アバター読込では未再現だった限界は[報告書](../reports/World2TreadmillMaxBody_20261113/REPORT.md)に分けて記録する。
+
 ## 2026-11-13 — Phase 2：初戦 → マージ・装備 → 再挑戦
 
 この節が同日Phase 1の「Phase 2未実施」と以前のStrength10条件に優先する。対象はPlace126576845524886 / Universe10765181857の未保存Studio、基準commit bc79c97。

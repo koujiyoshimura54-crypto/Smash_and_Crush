@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-13 - World2 Treadmill physical support for scaled R15
+
+World2 R15 occupancy now checks the current treadmill's collidable support surface within the existing root footprint and standing-height tolerance. Reject Jumping/Freefall, jump requests and vertical motion; do not rely on server FloorMaterial alone when a client-owned rig is grounded. World1/R6 rules, access checks, rewards and the0.5-second session timer remain unchanged.
+
+A generated maximum-body rig, including engine-matched collision properties, reproduced server Air/client Plastic and zero gains. The final predicate restores8 ticks/+40 in4.2 seconds with production StrengthManager and memory-only persistence. Final World2 body/station, jump, exit and access-loss checks pass. Normal engine avatar loading plus natural entry was already successful before the change; the reported avatar and public environment remain unverified. Canonical Studio remains unsaved, no Save/Publish. [Report and evidence](../reports/World2TreadmillMaxBody_20261113/REPORT.md).
+
 ## 2026-11-13 - Stop completed Stage1 Trophy navigation
 
 TutorialGuideClient now requires explicit TutorialCompleted=false before initial Trophy, wall or treadmill navigation, for both tutorial cohorts. Keep the FirstBattle Complete exception before the first Trophy receipt and retain the earlier Merge/Equip branches and later guides. One client line changed; reward, completion/save and Trophy presentation Sources are unchanged. Actual client state/event logic passes24/24 mocked cases (before9/24), with syntax and Studio Source/editor checks. No Play or rendered/reward acceptance; no Save/Publish. [Scope and evidence](../reports/Stage1TrophyGuideCompletion_20261113/REPORT.md).
