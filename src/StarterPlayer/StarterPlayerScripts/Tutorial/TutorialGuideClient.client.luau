@@ -5,6 +5,7 @@ local RS=game:GetService("ReplicatedStorage")
 local IntroBalance=require(RS.Config:WaitForChild("World1BossConfig"))
 local RunService=game:GetService("RunService")
 local player=Players.LocalPlayer
+local wallPrompt=require(RS.Modules:WaitForChild("Stage1WallPrompt")).Mount(player)
 local trained=false
 local enteredWall=false -- Monotonic Step2 completion: Wall clear, never combat entry.
 local trophy
@@ -378,6 +379,7 @@ local function wallCleared()
  trained=true enteredWall=true
 end
 local function refresh()
+ wallPrompt:SetGuide(nil,nil)
  local character=player.Character
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
  if updateScheduler then updateScheduler() end
@@ -407,7 +409,10 @@ local function refresh()
   local model=stage and stage:FindFirstChild("Stage1."..wallIndex)
   local target=model and (wallIndex<=4 and model:FindFirstChild("Wall")
    or model:FindFirstChild("EnemySpawn") or model:FindFirstChild("MiniBossSpawn") or model:FindFirstChild("Floor"))
-  if target then show(wallIndex<=4 and ("Wall1."..wallIndex) or "Stage1Boss",target.Position) else hide() end
+  if target then
+   if wallIndex<=4 then wallPrompt:SetGuide(wallIndex,target) end
+   if wallPrompt:IsVisible() then hide() else show(wallIndex<=4 and ("Wall1."..wallIndex) or "Stage1Boss",target.Position) end
+  else hide() end
  end
 end
 local function trainingChanged()
@@ -468,6 +473,7 @@ task.spawn(function()
  local remote=RS.Remotes:WaitForChild("GameRemotes"):WaitForChild("CombatState")
  remoteConnection=remote.OnClientEvent:Connect(function(d)
   if typeof(d)~="table" then return end
+  wallPrompt:Handle(d)
   if (d.Type=="EnemyDefeated" or d.Type=="StageCleared") and d.Stage==1 then stage1Defeated=true
   elseif d.Type=="Initialize" then
    trophy=nil wallIndex=1
@@ -486,9 +492,11 @@ task.spawn(function()
   elseif d.Type=="TrophyRemoved" and trophy and d.Id==trophy.Id then trophy=nil end
   refresh()
  end)
+ wallPrompt:RequestUsing(function() remote:FireServer({Type="RequestState"}) end)
  remote:FireServer({Type="RequestState"})
 end)
 script.Destroying:Once(function()
+ wallPrompt:Destroy()
  clear();stopCache()
  if tickConnection then tickConnection:Disconnect();tickConnection=nil end
  for _,connection in characterConnections do connection:Disconnect() end;table.clear(characterConnections)

@@ -166,9 +166,13 @@ local function send(p,d)
  messageSequences[p]=(messageSequences[p] or 0)+1
  d.OwnerUserId=p.UserId;d.WorldId=worldId
  d.RunRevision=runRevisions[p] or 0;d.MessageSequence=messageSequences[p]
+ if worldId==1 then d.TutorialResetSequence=p:GetAttribute("TutorialResetSequence") or 0 end
  remote:FireClient(p,d)
 end
-function M.SendState(p)local st=Stage.GetState(p)local ps=state(p)local g={}for i=1,10 do g[i]=ps.Gauges[i]end send(p,{Type="Initialize",CurrentStage=st.CurrentStage,Cleared=ps.Defeated,Skipped=ps.Skipped,WorldComplete=st.WorldComplete,Gauges=g}) for major in pairs(Wall.Config) do send(p,{Type="WallInitialize",State=Wall.GetSnapshotForStage(p,major)}) end end
+function M.SendState(p)local st=Stage.GetState(p)local ps=state(p)local g={}for i=1,10 do g[i]=ps.Gauges[i]end
+ local combat=sessions[p]
+ local activeCombat=worldId==1 and combat and {Active=true,CombatType=combat.CombatType,Stage=combat.Stage,WallIndex=combat.CombatType=="Wall" and Wall.GetCurrentIndexForStage(p,combat.Stage) or nil} or nil
+ send(p,{Type="Initialize",CurrentStage=st.CurrentStage,Cleared=ps.Defeated,Skipped=ps.Skipped,WorldComplete=st.WorldComplete,Gauges=g,Character=worldId==1 and p.Character or nil,ActiveCombat=activeCombat}) for major in pairs(Wall.Config) do send(p,{Type="WallInitialize",State=Wall.GetSnapshotForStage(p,major)}) end end
 function M.InitializePlayer(p,targetStage)
  ActionTiming.ResetAutomatic(p)
  Speed.ClearTransitionBoost(p,worldId)
@@ -1129,7 +1133,7 @@ local function updateCombat(p,manualRequest)
        if #cleared==0 and Wall.GetGaugeForStage(attackPlayer,attackStage,firstIndex)>=hpBefore then return false end
        ActionTiming.RecordSuccess(p,manualRequest==true,true)
        local ps=state(p);ps.AttackSequence=(ps.AttackSequence or 0)+1
-       send(p,{Type="CombatAttack",Id=ps.AttackSequence,Stage=n,Duration=Boss.AttackDuration,HitDelay=0,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
+       send(p,{Type="CombatAttack",Id=ps.AttackSequence,Stage=n,CombatType=worldId==1 and "Wall" or nil,WallIndex=worldId==1 and firstIndex or nil,Duration=Boss.AttackDuration,HitDelay=0,Manual=manualRequest==true,AnimationSpeed=manualRequest and AutoTapConfig.ManualAttackAnimationSpeed or nil})
        if firstIndex==1 and #cleared==wallCount then
         Speed.BeginTimedBoost(attackPlayer,worldId,"WallSweep")
        end

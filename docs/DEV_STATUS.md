@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-13 — Stage1 wall prompt, Phase 1
+
+Applied five Sources to canonical unsaved Studio 126576845524886: the existing guide now shows supplied image 85558189403057 with Click/Tap, conditioned on personal Stage1 wall combat and explicit AutoTap OFF. Completion uses accepted manual damage; no extra attack sender or saved field. Phase 2/balance changes excluded. Native mouse and phone/tablet simulator touches each produced one request and one accepted hit. 53 state assertions and eight Source compilations passed. Final related runtime console clean; a later incomplete-death render stall remains unverified. 40 temporary Source redirects restored, helpers removed, simulator default, eight relevant editor buffers verified. Existing edits and PR #1 retained. No Save/Publish. [Paths, evidence and limits](../reports/Stage1WallPrompt_20261113.md).
+
 ## 2026-11-13 — World1 Stage1–5 balance and per-cycle Level curves
 
 Implemented the specified Stage1–5 HP/recommended levels, Q1–29 and Rebirth gates in the current unsaved Studio. New profiles use curve2; unmarked existing profiles retain the captured pre-change curve1 and its Rebirth gates until their next successful Rebirth. The curve marker follows existing owned saves and reward snapshots; Level/progress remain authoritative. Stage6–10, World2 HP, gains, equipment effects and analytics definitions are unchanged.153326 pure checks and60 existing reward checks pass. Native comparisons, save-fault tests, device evidence and remaining limitations are recorded separately in the [work report](../reports/World1Stage1To5Balance_20261112/REPORT.md). The1.5× speed target is not implied by implementation completion. Studio remains unsaved; no Save/Publish or production-data verification.

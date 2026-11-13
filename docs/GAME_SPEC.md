@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-13 — Phase 1: Stage1壁の手動操作促し
+
+既存の初回チュートリアルがWorld1 Stage1の本人の現在壁へ案内中に、接触・戦闘状態とAutoTap明示OFFを確認して指画像とClick/Tapを表示する。既存CombatAttackの成立通知へWorld1の対象情報を補い、有効な本人の手動壁攻撃だけでセッション中の促しを完了する。入力だけ、UI操作、空振り、AutoTap、Bossや別対象は完了に使わない。死亡・次の壁では繰り返さず、既存TutorialResetSequenceで解除する。新規DataStore項目・攻撃送信経路は追加しない。
+
+今回の対象は促しだけ。壁4枚、HP、Boss、Strength/LV曲線、報酬、初期AutoTap OFF、既存ファネルとTreadmill条件・案内順を維持する。壁1枚への変更等のPhase 2は未実施。[実装・検証・未確認事項](../reports/Stage1WallPrompt_20261113.md)。正本は依頼指定Place126576845524886 / Universe10765181857、Studio未保存。
+
 ## 2026-11-12 — 育成サイクルを保持するLV曲線切替
 
 新規プロフィールのみ `LevelCurveVersion=2`。既存プロフィールでこの項目が欠ける場合は1として保存し、変更直前Studioの旧必要量・旧再生条件で現在のサイクルを継続する。LV1／Strength0による新規推測はしない。保存済みLV・小数／余剰進捗を保持し、現在StrengthからLVを再計算しない。保存LV自体がない旧形式だけ、従来の歴史的Threshold変換を維持する。
