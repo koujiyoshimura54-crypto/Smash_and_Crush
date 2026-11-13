@@ -1,5 +1,11 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-13 — Phase 2：初戦とマージ・装備の接続
+
+Applied the new-profile Stone/cohort transaction, protected Stone sales until confirmed Ore merge, first 60-second Win reward with verified legacy claim aliases, one HP50 World1 Stage1 wall, and fact-based LV2 battle / return / merge / equip / conditional LV4 retry guidance. Boss HP200, authored arena/floors, remaining stages, progression gains, Phase 1 image/input handling and existing funnels are retained.
+
+Isolated native earned loss and win routes, prepared branch/input/device checks, 14 memory-persistence cases / 120 assertions, 82 progression and 53 prompt assertions passed. Restored 40 temporary Source edits and removed helpers.38 scoped Source/editor checks and47→44 geometry comparison passed. Unsaved Edit; no Save/Publish or PR #1 merge. Physical devices, natural streaming, live persistence and retention improvement remain unverified. [Report](../reports/FirstBattleTutorial_Phase2_20261113/REPORT.md).
+
 ## 2026-11-13 — Phase 1: Stage1 Click / Tap cue
 
 Added the owner-supplied finger image 85558189403057 to the existing Stage1 tutorial wall guide, with current-input labels and responsive camera projection. Added only the missing World1 notification context to confirm the first effective manual wall attack. Existing attack routes, balance, saved tutorial data and funnels retained. Native desktop/phone/tablet simulator image-input checks and 53 state assertions passed; physical devices and the documented final incomplete-death render case remain unverified. Helpers removed, unsaved Edit retained, no Save/Publish. [Full work record](../reports/Stage1WallPrompt_20261113.md).

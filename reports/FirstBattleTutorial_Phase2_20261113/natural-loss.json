@@ -1,0 +1,658 @@
+{
+  "Kind": "Isolated native Play; earned Strength, ordinary movement and production attack/Forge/equip routes; automated controls",
+  "Events": [
+    {
+      "Name": "Stage1SubStage",
+      "At": 0.0006279945373535156,
+      "Level": 1,
+      "Strength": 0,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "Operable",
+      "At": 3.9504430294036865,
+      "Level": 1,
+      "Strength": 0,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "TrainStart",
+      "At": 3.950451135635376,
+      "Level": 1,
+      "Strength": 0,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "TreadmillEntered",
+      "At": 7.235359191894531,
+      "Level": 1,
+      "Strength": 0,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "Level",
+      "At": 9.619486093521118,
+      "Level": 2,
+      "Strength": 5,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "TrainEnd",
+      "At": 9.668057203292847,
+      "Level": 2,
+      "Strength": 5,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "FirstApproach",
+      "At": 10.234421014785767,
+      "Level": 2,
+      "Strength": 6,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "Stage1SubStage",
+      "At": 18.018360137939453,
+      "Level": 2,
+      "Strength": 6,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "FirstWallDestroyed",
+      "At": 18.102901220321655,
+      "Level": 2,
+      "Strength": 6,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "FirstBattleStarted",
+      "At": 20.201412200927734,
+      "Level": 2,
+      "Strength": 6,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "FirstBossStarted",
+      "At": 20.234174013137817,
+      "Level": 2,
+      "Strength": 6,
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "FirstBattleOutcome",
+      "At": 24.219505071640015,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "Stage1SubStage",
+      "At": 24.21962809562683,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "FirstDeath",
+      "At": 24.28352117538452,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "FirstLobbyReturn",
+      "At": 28.151116132736206,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "MergeApproach",
+      "At": 28.15112805366516,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "MergeShopOpened",
+      "At": 29.48363709449768,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "OreTutorialCompleted",
+      "At": 30.617093086242676,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "MergeCommitted",
+      "At": 30.6997230052948,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "WaitingRevealClicks",
+      "At": 30.699735164642334,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "RevealFinished",
+      "At": 34.15038704872131,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": ""
+    },
+    {
+      "Name": "DumbbellEquipTutorialInitialCompleted",
+      "At": 34.15060901641846,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "DumbbellEquipped",
+      "At": 34.210673093795776,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "TrainStart",
+      "At": 34.21067810058594,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "TreadmillEntered",
+      "At": 38.73388600349426,
+      "Level": 2,
+      "Strength": 6,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "Level",
+      "At": 40.16693902015686,
+      "Level": 3,
+      "Strength": 18,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "Level",
+      "At": 43.217934131622314,
+      "Level": 4,
+      "Strength": 42,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "TrainEnd",
+      "At": 43.300302028656006,
+      "Level": 4,
+      "Strength": 42,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "RetryApproach",
+      "At": 43.81689500808716,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "Stage1SubStage",
+      "At": 49.933693170547485,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "RetryWallDestroyed",
+      "At": 50.06685709953308,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "RetryBossStarted",
+      "At": 52.28343200683594,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": false,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "FirstBattleStage1Defeated",
+      "At": 53.30034518241882,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": true,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "RetryVictory",
+      "At": 53.39898109436035,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": true,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "TrophyApproach",
+      "At": 53.398991107940674,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": true,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "Stage1SubStage",
+      "At": 54.235204219818115,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": true,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "RetryLobbyReturn",
+      "At": 54.364824056625366,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": true,
+      "Dumbbell": "NORMAL_02"
+    },
+    {
+      "Name": "Complete",
+      "At": 54.36482906341553,
+      "Level": 4,
+      "Strength": 46,
+      "FirstOutcome": "Death",
+      "Stage1Defeated": true,
+      "Dumbbell": "NORMAL_02"
+    }
+  ],
+  "Analytics": [
+    {
+      "Name": "MTF_Entry_v1",
+      "Kind": "Funnel",
+      "Step": 1,
+      "StepName": "ServerJoined",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_EntrySeconds_v1",
+      "Kind": "Custom",
+      "Value": 0.000012399999832268804,
+      "Fields": {
+        "CustomField03": "Entry:ServerJoined",
+        "CustomField02": "Unknown",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_Entry_v1",
+      "Kind": "Funnel",
+      "Step": 2,
+      "StepName": "DataLoaded",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_EntrySeconds_v1",
+      "Kind": "Custom",
+      "Value": 0.00028809999639634043,
+      "Fields": {
+        "CustomField03": "Entry:DataLoaded",
+        "CustomField02": "New",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_EntrySeconds_v1",
+      "Kind": "Custom",
+      "Value": 0.00028929999825777486,
+      "Fields": {
+        "CustomField03": "Profile:New",
+        "CustomField02": "New",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstOreMerge_v1",
+      "Kind": "Funnel",
+      "Step": 1,
+      "StepName": "Eligible",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 0.00030839999817544594,
+      "Fields": {
+        "CustomField03": "Ore:Eligible",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_Entry_v1",
+      "Kind": "Funnel",
+      "Step": 3,
+      "StepName": "ClientPlayable",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "AllSessions",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_EntrySeconds_v1",
+      "Kind": "Custom",
+      "Value": 3.982712899996841,
+      "Fields": {
+        "CustomField03": "Entry:ClientPlayable",
+        "CustomField02": "New",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstCombat_v1",
+      "Kind": "Funnel",
+      "Step": 1,
+      "StepName": "Playable",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 3.9827163999943878,
+      "Fields": {
+        "CustomField03": "Combat:Playable",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 7.585707199999888,
+      "Fields": {
+        "CustomField03": "Strength:Treadmill",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstCombat_v1",
+      "Kind": "Funnel",
+      "Step": 2,
+      "StepName": "EnteredStage1",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 15.551731299994572,
+      "Fields": {
+        "CustomField03": "Combat:EnteredStage1",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstCombat_v1",
+      "Kind": "Funnel",
+      "Step": 3,
+      "StepName": "ClearedFirstWall",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 18.018784299994877,
+      "Fields": {
+        "CustomField03": "Combat:ClearedFirstWall",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstCombat_v1",
+      "Kind": "Funnel",
+      "Step": 4,
+      "StepName": "ClearedStage1Walls",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 18.0187877999997,
+      "Fields": {
+        "CustomField03": "Combat:ClearedStage1Walls",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstCombat_v1",
+      "Kind": "Funnel",
+      "Step": 5,
+      "StepName": "DamagedStage1Boss",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 20.368648499999836,
+      "Fields": {
+        "CustomField03": "Combat:DamagedStage1Boss",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 24.219219799997518,
+      "Fields": {
+        "CustomField03": "Death:Ore:Eligible",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 30.616893999998865,
+      "Fields": {
+        "CustomField03": "MergeRequestAccepted",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 30.616902399997343,
+      "Fields": {
+        "CustomField03": "OreRequestWithoutValidatedView",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 30.61746029999631,
+      "Fields": {
+        "CustomField03": "MergeSaved",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 34.150953599993954,
+      "Fields": {
+        "CustomField03": "DumbbellEquipped",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstCombat_v1",
+      "Kind": "Funnel",
+      "Step": 6,
+      "StepName": "DefeatedStage1Boss",
+      "Fields": {
+        "CustomField03": "Normal",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 53.300008599995635,
+      "Fields": {
+        "CustomField03": "Combat:DefeatedStage1Boss",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 54.234423299996706,
+      "Fields": {
+        "CustomField03": "ReturnAccepted",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 54.235657399993215,
+      "Fields": {
+        "CustomField03": "ReturnLootSaved",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    },
+    {
+      "Name": "MTF_FirstActionSeconds_v1",
+      "Kind": "Custom",
+      "Value": 54.29629489999934,
+      "Fields": {
+        "CustomField03": "ReturnLobbyArrived",
+        "CustomField02": "NewFirstSession",
+        "CustomField01": "PlaceVersion:0"
+      }
+    }
+  ],
+  "Warnings": [
+    {
+      "Kind": "MessageWarning",
+      "Message": "ContentId: rbxassetid://89137136456777 failed due to: Requester does not have permission for Asset."
+    },
+    {
+      "Kind": "MessageWarning",
+      "Message": "[BadgeAward] Award failed for isolated player (FirstSmash)"
+    }
+  ]
+}

@@ -1,11 +1,10 @@
 -- World1 Stage1-5 approved balance: 2026-11-12. Stage6-10 are unchanged.
 -- World2 uses its independent World2Config. Shared V5 lottery retained.
 local C={}
--- Preserve the old first-wall guidance floor even though Lv2 now costs only 5.
--- This is a tutorial arrow condition, not a combat/Stage entry restriction.
-C.IntroTrainingStrength=10
+-- Phase 2: initial guidance ends at Level >= 2; Strength gains/curve are unchanged.
+C.IntroTrainingStrength=0
 function C.NeedsIntroTraining(level,strength,hasBattleProgress)
- return (level or 1)<2 or (not hasBattleProgress and (strength or 0)<C.IntroTrainingStrength)
+ return (level or 1)<2
 end
 C.RequiredStrength={
  [1]=40,[2]=360,[3]=2000,[4]=5000,[5]=14000,
@@ -39,7 +38,7 @@ end
 -- Stage1-5 walls are fixed independently of RequiredStrength.
 -- Stage6-10 retain derived walls at 40/50/60/80 percent of Boss HP.
 local walls={
- [1]={50,75,100,135},
+ [1]={50},
  [2]={275,300,320,390},
  [3]={565,705,845,1130},
  [4]={2880,3600,4320,5760},

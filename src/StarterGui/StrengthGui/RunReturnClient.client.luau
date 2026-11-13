@@ -100,7 +100,8 @@ local function onCombat(data)
 	elseif data.Type == "WallInitialize" or data.Type == "WallCleared" then
 		local state = data.State
 		if typeof(state) ~= "table" or typeof(state.MajorStage) ~= "number" then return end
-		unlocked[state.MajorStage] = state.Skipped ~= true and (state.Current or 1) >= 5
+		unlocked[state.MajorStage] = state.Skipped ~= true and typeof(state.WallCount)=="number"
+			and (state.Current or 1)>state.WallCount
 	elseif data.Type == "Stage1BossUnlocked" then
 		if typeof(data.MajorStage) ~= "number" then return end
 		unlocked[data.MajorStage] = true

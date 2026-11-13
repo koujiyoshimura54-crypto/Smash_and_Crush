@@ -1,5 +1,15 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-13 — Phase 2：World1 Stage1壁1枚と初回所持・時間報酬
+
+この節が下の2026-11-12表のStage1壁・合計値に優先する。壁1はHP50・現在位置のまま、壁2/3/4の75/100/135を除去。壁合計360→50、Boss200込み560→250。Boss位置・Stage長・床・Stage1.5のBoss区画・報酬設備・境界は維持。Stage1〜5の壁合計は60585、Boss合計107000、総HP167585。Stage2以降とWorld2、全Boss、推奨LV、LV曲線、Strength獲得式、再生条件は変更しない。
+
+初回案内はLV>=2で壁へ進み、IntroTrainingStrength=10を追加条件にしない。初戦後のマージ・装備を終えた未撃破者はLV>=4で再挑戦。目標LV超過を認める。初戦・再戦とも通常戦闘の勝敗を尊重する。
+
+新規プロフィールの通常OwnedOresへStone×2を初期付与。時間報酬の初回だけ60秒・Win×1へ変更（ID IntroWin02）。履歴で確認した旧ID Reward01 / StoneIntro01と同じ初回枠として受取済みを判定する。残る8枠の時刻・内容・順序は変更しない。旧報酬回収や補償なし。
+
+[HP前後表・自然獲得ルートの実測・保存検証](../reports/FirstBattleTutorial_Phase2_20261113/REPORT.md)。計測値に合わせた追加のバランス調整は行っていない。
+
 ## 2026-11-12 — World1 Stage1〜5確定値と育成サイクル別曲線
 
 今回の確定値は以下。過去の日付付き表は履歴であり、この節が現行指定となる。正本は未保存Studioの `World1BossConfig` と `LevelRequirements`。公開版への反映は未実施。

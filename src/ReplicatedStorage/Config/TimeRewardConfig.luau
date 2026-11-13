@@ -2,7 +2,7 @@ local Ore=require(script.Parent.OreConfig)
 local C={}
 -- IDs identify reward contents, not their visual slots. Existing claims stay intact.
 C.Rewards={
- {Id="StoneIntro01",RequiredSeconds=60,RewardType="Ore",OreId="ORE_001",Amount=2,ClaimOrder=1,Label=Ore.Get("ORE_001").Name.." ×2"},
+ {Id="IntroWin02",RequiredSeconds=60,RewardType="Win",Amount=1,ClaimOrder=1,Label="Win"},
  {Id="IronIntro01",RequiredSeconds=120,RewardType="Ore",OreId="ORE_003",Amount=2,ClaimOrder=2,Label=Ore.Get("ORE_003").Name.." ×2"},
  {Id="Reward03",RequiredSeconds=180,RewardType="Win",Amount=3,ClaimOrder=3,Label="Win"},
  {Id="Reward02",RequiredSeconds=300,RewardType="Potion",Amount=1,PotionId="Training",PotionDurationSeconds=60,ClaimOrder=4,Label="Treadmill Potion"},
@@ -22,6 +22,16 @@ function C.Get(id)
  if typeof(id)~="string" then return nil end
  for _,r in ipairs(C.Rewards) do if r.Id==id then return r end end
  return nil
+end
+-- Verified history: 0188223 Reward01 (first Win), 912d51c StoneIntro01.
+-- These are one lifetime first slot, despite their former contents/positions.
+local firstSlot={IntroWin02=true,StoneIntro01=true,Reward01=true}
+function C.IsClaimed(claimed,id)
+ if firstSlot[id] then
+  for previous in pairs(firstSlot) do if claimed[previous]==true then return true end end
+  return false
+ end
+ return claimed[id]==true
 end
 function C.GetCardName(reward) return string.format("Reward%02d",reward.ClaimOrder) end
 function C.GetImage(reward)

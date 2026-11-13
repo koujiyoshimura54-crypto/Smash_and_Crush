@@ -51,6 +51,7 @@ function M.Publish(player,data)
  player:SetAttribute("ItemEquipTutorialReady",M.ItemAvailable(data))
  player:SetAttribute("ItemEquipTutorialCompleted",state.ItemCompleted)
  player:SetAttribute("DumbbellEquipTutorialEligible",state.Eligible)
+ player:SetAttribute("DumbbellEquipTutorialInitialCompleted",state.DumbbellCompleted)
  player:SetAttribute("DumbbellEquipTutorialReady",data.OreMergeTutorial and data.OreMergeTutorial.Completed==true
   and Dumbbells.Best(data.OwnedDumbbells,data.EquippedDumbbell)~=nil)
  local higher=data.HigherOreMergeTutorial and data.HigherOreMergeTutorial.Completed

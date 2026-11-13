@@ -6,6 +6,7 @@ local State=require(script.Parent.OreMergeTutorialState)
 local Higher=require(script.Parent.HigherOreMergeTutorialState)
 local Presentation=require(script.Parent.OreMergeTutorialPresentation)
 local Coordinator=require(script.Parent.TutorialPresentationCoordinator)
+local FirstBattle=require(script.Parent.FirstBattleTutorialState)
 local M={}
 function M.Mount(player,gui,view)
  local pg=player:WaitForChild("PlayerGui")
@@ -78,7 +79,10 @@ function M.Mount(player,gui,view)
   if inLobby and not wasLobby then dismissed=false end;wasLobby=inLobby
   if player:GetAttribute("OreTutorialEligible")~=true then hide("Ineligible");return end
   if higher and (player:GetAttribute("HigherOreTutorialEligible")~=true or player:GetAttribute("HigherOreTutorialCompleted")==true) then hide("Complete");return end
-  if player:GetAttribute("TutorialCompleted")~=true or not inLobby or blocked() then hide("Waiting");return end
+  local initialFlow=FirstBattle.Active(player)
+  if initialFlow and higher then hide("WaitingForFirstBattle");return end
+  local early=initialFlow and not higher and (current.Open or player:GetAttribute("FirstBattleOutcome")~=nil)
+  if not (early or FirstBattle.AllowLaterGuides(player)) or not inLobby or blocked() then hide("Waiting");return end
   local state=Forge.State
   if not state or not state.Loaded or state.Token~=player:GetAttribute("ForgeSessionToken")
    or State.AvailableCount(state.Ores)<2 or higher and not Higher.Selection(state.Ores,state.World2Unlocked) then hide("WaitingForOres");return end

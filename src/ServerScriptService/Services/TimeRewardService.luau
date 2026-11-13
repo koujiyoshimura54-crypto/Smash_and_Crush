@@ -26,7 +26,7 @@ function M.GetState(p)
  local states={} local completed=true
  for _,reward in ipairs(Config.Rewards) do
   local record=s.Records[reward.Id]
-  local status=progress.Claimed[reward.Id] and "Claimed"
+  local status=Config.IsClaimed(progress.Claimed,reward.Id) and "Claimed"
    or (record and record.Status or (progress.ElapsedSeconds>=reward.RequiredSeconds and "Ready" or "Locked"))
   states[reward.Id]=status
   if status~="Claimed" then completed=false end
@@ -41,7 +41,7 @@ function M.Claim(p,id)
  if not s then return false,"DataNotLoaded" end
  if s.Busy then return false,"ClaimInProgress" end
  local progress=Data.GetTimeRewards(p)
- if progress.Claimed[id] then return false,"AlreadyClaimed" end
+ if Config.IsClaimed(progress.Claimed,id) then return false,"AlreadyClaimed" end
  local previous=s.Records[id]
  if previous and previous.Resolving then return false,"ClaimInProgress" end
  if previous then return false,previous.Status,previous.Result end

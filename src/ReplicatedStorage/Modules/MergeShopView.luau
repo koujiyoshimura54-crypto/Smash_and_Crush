@@ -183,9 +183,10 @@ return function(ctx)
   if tab=='Ore' then return oreSelection()[entry.Id] or 0 end
   local n=0;for _,id in entry.Ids do if petSelected[id] then n+=1 end end;return n
  end
+ local function stoneLocked(id) return id=='ORE_001' and (not oreState or oreState.StoneSellLocked~=false) end
  local function available(entry)
    if tab=='Item' then return not itemPending and Items.IsUnlocked(Master.Get(entry.ItemId),unlocked()) and (itemSelected[entry.ItemId] or 0)<entry.Count end
-  if tab=='Ore' then return not Forge.IsPending() and groupSelected(entry)<entry.Count and (sellMode or selectedCount()<5) end
+  if tab=='Ore' then return not (sellMode and stoneLocked(entry.Id)) and not Forge.IsPending() and groupSelected(entry)<entry.Count and (sellMode or selectedCount()<5) end
   return not petPending and not PetClient.busy() and groupSelected(entry)<#entry.Ids
  end
  -- Read-only display target: use the same eligibility/counts as the real card action.
@@ -300,11 +301,18 @@ return function(ctx)
   local badge=surface('SelectedCount',tile,Color3.fromRGB(0,139,229),238);badge.Corner.CornerRadius=UDim.new(1,0)
   badge.AnchorPoint=Vector2.new(1,0);badge.Position=UDim2.fromScale(1.015,-.015);badge.Size=UDim2.fromScale(.29,.29);stroke(badge,cyan,5)
   local countLabel=label('Value',badge,'',36,239);countLabel.Size=UDim2.fromScale(1,1)
+  local lockLabel
+  if kind=='Ore' and not input then
+   lockLabel=label('SaleLock',tile,'Locked',22,240)
+   lockLabel.Position=UDim2.fromScale(.05,.48);lockLabel.Size=UDim2.fromScale(.9,.22)
+   lockLabel.Visible=false
+  end
   local record={Root=tile,Destroy=cleanup,Entry=entry}
   function record:Update(nextEntry,n,enabled)
     self.Entry=nextEntry;owned.Text='×'..NumberFormat.Format(nextEntry.Count or 0)
     badge.Visible=n>0;countLabel.Text=NumberFormat.Format(n)
    border.Color=n>0 and cyan or Color3.fromRGB(12,19,23);border.Thickness=n>0 and 4 or 2
+   if lockLabel then lockLabel.Visible=sellMode and stoneLocked(nextEntry.Id) end
    tile.Button.Active=enabled;tile.Button.Interactable=enabled
    tile:SetAttribute('OwnedCount',nextEntry.Count or 0);tile:SetAttribute('SelectedCount',n)
    tile:SetAttribute('ItemId',nextEntry.ItemId);tile:SetAttribute('Rank',nextEntry.Rank);tile:SetAttribute('Points',nextEntry.Points)
@@ -518,7 +526,7 @@ return function(ctx)
   if tab=='Ore' then
    ready=false
    if oreState and not oreState.Pending and not Forge.IsPending() then
-    if sellMode then ready=OreMerge.Selection(oreSelection(),oreState.Ores,true)~=nil
+    if sellMode then ready=OreMerge.Selection(oreSelection(),oreState.Ores,true)~=nil and not (stoneLocked('ORE_001') and (oreSelection().ORE_001 or 0)>0)
     else ready=oreState.Loaded==true and OreMerge.Evaluate(oreSelection(),oreState.Ores,oreState.World2Unlocked)~=nil end
    end
   end
@@ -526,11 +534,14 @@ return function(ctx)
   enabled(clear,not itemPending and not petPending and not Forge.IsPending())
   empty.Visible=#groups==0;empty.Text=(tab=='Item' and not itemState or tab=='Pet' and not petState or tab=='Ore' and not oreState) and 'Loading…' or 'No materials'
   for _,control in {saleIcon,saleTitle,saleRarity,quantity,minus,plus,max} do control.Visible=sellMode end
+  if sellMode and stoneLocked('ORE_001') then status.Text='Merge once to sell Stone'
+  elseif status.Text=='Merge once to sell Stone' then status.Text='' end
   if sellMode then
    local ore=activeOre and Ore.Get(activeOre);saleIcon.Image=ore and ore.Image or '';saleTitle.Text=ore and ore.Name or 'Select Ores'
    saleRarity.Text=ore and ore.Rarity or '';saleRarity.TextColor3=ore and ore.Color or Color3.new(1,1,1)
     if not quantity:IsFocused() then quantity.Text=NumberFormat.Format(activeOre and oreSale[activeOre] or 0) end
-   for _,b in {minus,plus,max} do enabled(b,ore~=nil and not Forge.IsPending()) end
+   quantity.TextEditable=ore~=nil and not stoneLocked(activeOre) and not Forge.IsPending()
+   for _,b in {minus,plus,max} do enabled(b,ore~=nil and not stoneLocked(activeOre) and not Forge.IsPending()) end
   end
   if shop.Visible then updateCandidates() end
   layout()
@@ -670,7 +681,7 @@ return function(ctx)
  end
  connect(sell.Activated,function()view:SetSellMode(not sellMode)end)
  local function saleCount(n)
-  if not activeOre or Forge.IsPending() then return end
+  if not activeOre or stoneLocked(activeOre) or Forge.IsPending() then return end
   n=math.clamp(math.floor(tonumber(n) or 0),0,oreState.Ores[activeOre] or 0);oreSale[activeOre]=n>0 and n or nil;render()
  end
  connect(quantity.Focused,function()

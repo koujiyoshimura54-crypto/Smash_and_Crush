@@ -10,6 +10,7 @@ local Analytics = require(Services.FirstPlayAnalyticsService)
 local Run = require(Services.RunInventoryService)
 local Stage = require(game.ServerScriptService.World.StageManager)
 local Wall = require(game.ServerScriptService.World.Stage1WallManager)
+local FirstBattle = require(Services.FirstBattleTutorialService)
 local M = {}
 local busy = {}
 -- Read-only analytics witnesses. Errors here must never change the return outcome.
@@ -68,18 +69,21 @@ function M.Request(player, runId)
   local spawn = worldTrophy.GetLobbySpawn()
 		if not spawn or not worldEnemy.IsReady() then return false, "LobbyUnavailable" end
 		local back=captureBack(player,worldId,runId,worldEnemy)
+		local introBack=worldId==1 and FirstBattle.CaptureBack(player,runId,worldEnemy.GetPlayerState(player)) or nil
 		local placement = Placement.StreamLobby(player, player.Character, worldId)
 		if not placement then return false, "CharacterNotReady" end
 		if back then
 			local current,valid=pcall(backSourceCurrent,player,back,worldEnemy)
 			if not current or not valid then back=nil end
 		end
+		if introBack and not FirstBattle.BackCurrent(player,introBack,worldEnemy.GetPlayerState(player)) then introBack=nil end
 		local token, code = Bank.Begin(player, runId)
 		local committed=token~=nil
 		if not committed then return false, code end
 		if not Placement.IsCurrent(player, placement) then return false, "StaleRun" end
 		local placed, why, returnRunId = returnToLobby(player, token.Character, spawn, worldEnemy)
 		if not placed then return false, why end
+		FirstBattle.BackPlaced(player,introBack,token,returnRunId)
 		Analytics.Stage2BackPlaced(player,back,token,returnRunId)
 		return true, "Returned"
 	end, debug.traceback)

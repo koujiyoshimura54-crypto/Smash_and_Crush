@@ -20,6 +20,7 @@ local FirstStage1=require(game.ReplicatedStorage.Modules.FirstStage1RewardState)
 local OreTutorial=require(game.ReplicatedStorage.Modules.OreMergeTutorialState)
 local HigherOreTutorial=require(game.ReplicatedStorage.Modules.HigherOreMergeTutorialState)
 local EquipmentTutorial=require(game.ReplicatedStorage.Modules.EquipmentTutorialState)
+local FirstBattle=require(game.ReplicatedStorage.Modules.FirstBattleTutorialState)
 local PlayerDataService={}
 local Pet=require(game.ReplicatedStorage.Modules.Pet)
 local EggTutorial=require(game.ReplicatedStorage.Modules.EggPetTutorialState)
@@ -244,7 +245,11 @@ local function normalizeItemMerge(raw)
  return {Sequence=raw.Sequence,RequestId=raw.RequestId,SessionToken=raw.SessionToken,ResultItemId=raw.ResultItemId,Signature=raw.Signature,Version=raw.Version}
 end
 local function defaults()
- return {HigherOreMergeTutorial=assert(HigherOreTutorial.Normalize(nil,true)),EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,LevelCurveVersion=LevelProgression.CurrentCurveVersion,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ local data={HigherOreMergeTutorial=assert(HigherOreTutorial.Normalize(nil,true)),EquipmentTutorial=assert(EquipmentTutorial.Normalize(nil,true)),PetMergeTutorial=assert(PetMergeTutorial.Normalize(nil,true)),EggPetTutorial=assert(EggTutorial.Normalize(nil,true)),OreMergeTutorial=assert(OreTutorial.Normalize(nil,true)),World1Cleared=false,FirstStage1Reward=assert(FirstStage1.Normalize(nil,true)),OwnedOres={},ForgeJournal={Sequence=0},World2Visited=false,ItemMergeJournal={Sequence=0},LimitedEggReceipts={},Pets=assert(Pet.NormalizeState(nil)),InventoryCapacity=CapacityConfig.DefaultCapacity,AutoTapEnabled=true,SelectedSizeTier=0,Level=1,LevelProgress=0,LevelProgressVersion=LevelProgression.Version,LevelCurveVersion=LevelProgression.CurrentCurveVersion,HighestUnlockedWorld=1,ShopRewards=assert(normalizeShop(nil)),CommunityRewards={Claimed=false},DailyRewards={ClaimedDays=0,LastClaimDateUTC=""},TimeRewards={ElapsedSeconds=0,Claimed={}}, TutorialCompleted=false, Strength=0, RebirthCount=0, TotalStrengthEarned=0, DailyStrengthEarned=0, DailyDate=today(), Win=0, SpeedUpgradeStage=0, EquippedSpeed="Normal", OwnedSpeeds={}, OwnedDumbbells={}, EquippedDumbbell="", OwnedAuras={}, EquippedAura="", OwnedItems={}, EquippedItems={Protein="",Glove="",TrainingBelt=""}, InventoryNotificationSeen=assert(normalizeNotificationSeen(nil))}
+ -- Ownership.Acquire commits this receipt and quantity together before Loaded=true.
+ data.FirstBattleTutorial=assert(FirstBattle.Normalize(nil,true))
+ data.OwnedOres={ORE_001=2}
+ return data
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
 local function validEquipped(itemId,owned)
@@ -254,6 +259,9 @@ local function validEquipped(itemId,owned)
 end
 local function normalize(raw)
  local d=defaults()
+ local firstBattle,firstBattleError=FirstBattle.Normalize(type(raw)=="table" and raw.FirstBattleTutorial or nil,raw==nil)
+ if not firstBattle then return nil,firstBattleError end
+ d.FirstBattleTutorial=firstBattle
  local tutorial,tutorialError=OreTutorial.Normalize(type(raw)=="table" and raw.OreMergeTutorial or nil,raw==nil)
  if not tutorial then return nil,tutorialError end
  d.OreMergeTutorial=tutorial
@@ -386,6 +394,7 @@ local function applyAttributes(player,d)
  local session=sessions[player]
  session.ForgeToken=session.ForgeToken or HttpService:GenerateGUID(false)
  player:SetAttribute("ForgeSessionToken",session.ForgeToken)
+ FirstBattle.Publish(player,d.FirstBattleTutorial)
  OreTutorial.Publish(player,d.OreMergeTutorial)
  HigherOreTutorial.Publish(player,d.HigherOreMergeTutorial)
  EquipmentTutorial.Publish(player,d)
@@ -579,6 +588,7 @@ function PlayerDataService.Reset(player)
  player:SetAttribute("PetViewGeneration",s.PetViewGeneration)
  s.ForgeToken=HttpService:GenerateGUID(false)
  s.PendingFirstStage1Defeat=nil
+ s.FirstBattleSaveScheduled=nil
  Analytics.Reset(player)
  s.TimeRewardClock=os.clock()
  s.Loaded=true
@@ -1001,6 +1011,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   CommunityRewards=assert(normalizeCommunity(d.CommunityRewards)),
   TimeRewards=assert(normalizeTimeRewards(d.TimeRewards)),
   FirstStage1Reward=assert(FirstStage1.Normalize(d.FirstStage1Reward,false)),
+  FirstBattleTutorial=assert(FirstBattle.Normalize(d.FirstBattleTutorial,false)),
   DailyRewards=assert(normalizeDailyRewards(d.DailyRewards)),
   TutorialCompleted=d.TutorialCompleted==true,
   OreMergeTutorial=assert(OreTutorial.Normalize(d.OreMergeTutorial,false)),
@@ -1053,6 +1064,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.CommunityRewards=mergeCommunity(old.CommunityRewards,payload.CommunityRewards)
    merged.TimeRewards=mergeTimeRewards(old.TimeRewards,payload.TimeRewards)
    merged.FirstStage1Reward=FirstStage1.Merge(old.FirstStage1Reward,payload.FirstStage1Reward)
+   merged.FirstBattleTutorial=FirstBattle.Merge(old.FirstBattleTutorial,payload.FirstBattleTutorial)
    merged.DailyRewards=mergeDailyRewards(old.DailyRewards,payload.DailyRewards)
    merged.TutorialCompleted=old.TutorialCompleted==true or payload.TutorialCompleted
    merged.OreMergeTutorial=OreTutorial.Merge(old.OreMergeTutorial,payload.OreMergeTutorial)
@@ -1145,6 +1157,36 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   warn("Player ranking mirror save failed for "..player.Name)
  end
  return true
+end
+
+-- Server combat witnesses call this after real start/result/accepted Back placement.
+-- Never yield in combat. Save monotonically through the existing owned save gate.
+function PlayerDataService.RecordFirstBattleFact(player,fact)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.OwnershipLost then return false,"DataNotLoaded" end
+ local d=s.Data
+ local nextState,changed=FirstBattle.Record(d.FirstBattleTutorial,fact)
+ if not changed then return true,"Unchanged" end
+ d.FirstBattleTutorial=nextState;s.Dirty=true
+ s.FirstBattleFactRevision=(s.FirstBattleFactRevision or 0)+1
+ FirstBattle.Publish(player,nextState)
+ if not s.FirstBattleSaveScheduled then
+  local job={};s.FirstBattleSaveScheduled=job
+  task.defer(function()
+   for attempt=1,3 do
+    if sessions[player]~=s or s.Data~=d or not s.Loaded then break end
+    local revision=s.FirstBattleFactRevision
+    if PlayerDataService.WaitForSave(player,30) and sessions[player]==s and s.Data==d and s.Loaded then
+     s.Dirty=true
+     local ok=PlayerDataService.Save(player)
+     if ok and s.FirstBattleFactRevision==revision then break end
+    end
+    task.wait(attempt)
+   end
+   if s.FirstBattleSaveScheduled==job then s.FirstBattleSaveScheduled=nil end
+  end)
+ end
+ return true,"Recorded"
 end
 
 -- Called only by the server after a confirmed Stage 1 Trophy pickup.
@@ -1794,7 +1836,7 @@ function PlayerDataService.ResolveItemMutation(player)
    if op.TimeReward then
     if resetToken(merged)~=op.ResetToken then rejection="SaveSupersededByReset";return nil end
     merged.TimeRewards=mergeTimeRewards(merged.TimeRewards,{ElapsedSeconds=op.ElapsedSeconds,Claimed={}})
-    if merged.TimeRewards.Claimed[op.TimeReward.Id] and meta.ItemMutationId~=op.Id then
+    if TimeRewardConfig.IsClaimed(merged.TimeRewards.Claimed,op.TimeReward.Id) and meta.ItemMutationId~=op.Id then
      rejection="AlreadyClaimed";return merged,users,meta
     end
    end
@@ -1995,7 +2037,7 @@ local function prepareTimeReward(player,context)
  local result=typeof(context)=="table" and context.Result
  if not config or typeof(result)~="table" or result.RewardType~=config.RewardType then return nil,"InvalidRewardId" end
  local progress=PlayerDataService.GetTimeRewards(player)
- if progress.Claimed[config.Id] then return nil,"AlreadyClaimed" end
+ if TimeRewardConfig.IsClaimed(progress.Claimed,config.Id) then return nil,"AlreadyClaimed" end
  if progress.ElapsedSeconds<config.RequiredSeconds then return nil,"Locked" end
  if result.RewardType=="Strength" or result.RewardType=="Win" then
   if not finite(result.Amount) or result.Amount<=0 then return nil,"InvalidAmount" end
@@ -2015,7 +2057,8 @@ local function prepareTimeReward(player,context)
  local strength=player:GetAttribute("Strength")
  if not finite(win) or not finite(strength) then return nil,"InvalidPlayerValues" end
  return {
-  Id=HttpService:GenerateGUID(false),WinPrice=0,TimeReward=context,
+  -- Retain the exact accepted contents through retries, including an older reward ID.
+  Id=HttpService:GenerateGUID(false),WinPrice=0,TimeReward=cloneStudioData(context),
   ResetToken=d.ResetToken,ElapsedSeconds=progress.ElapsedSeconds,
   Snapshot={Win=win,Strength=strength,Level=d.Level,LevelProgress=d.LevelProgress,LevelCurveVersion=d.LevelCurveVersion,TotalStrengthEarned=d.TotalStrengthEarned,
    DailyDate=today(),DailyStrengthEarned=d.DailyDate==today() and d.DailyStrengthEarned or 0},

@@ -3,6 +3,7 @@ local RS=game:GetService("ReplicatedStorage")
 local RunService=game:GetService("RunService")
 local Presentation=require(script.Parent.OreMergeTutorialPresentation)
 local Coordinator=require(script.Parent.TutorialPresentationCoordinator)
+local FirstBattle=require(script.Parent.FirstBattleTutorialState)
 local Config=require(script.Parent.Config)
 local M={}
 function M.Mount(player,services,kind)
@@ -70,7 +71,10 @@ function M.Mount(player,services,kind)
   if priorCompleted==false and complete then completionPending=true end
   priorCompleted=complete
   if complete and not completionPending then hide("Complete");return end
-  if not token or player:GetAttribute("TutorialCompleted")~=true or not inLobby then hide("WaitingForLobby");return end
+  local initialFlow=FirstBattle.Active(player)
+  if initialFlow and kind~="Dumbbell" then hide("WaitingForFirstBattle");return end
+  local early=initialFlow and kind=="Dumbbell" and player:GetAttribute("OreTutorialCompleted")==true
+  if not token or not (early or FirstBattle.AllowLaterGuides(player)) or not inLobby then hide("WaitingForLobby");return end
   if blocked() then hide("WaitingForDisplay");return end
   if dismissed and not open then hide("Dismissed");return end
   if not complete and player:GetAttribute(prefix.."Ready")~=true then hide("WaitingForEquipment");return end

@@ -16,6 +16,7 @@ local Trophy=require(game.ServerScriptService.Services.TrophyRewardService).ForW
 local ItemDrops=require(game.ServerScriptService.Services.EnemyDropGachaService)
 local RunInventory=require(game.ServerScriptService.Services.RunInventoryService)
 local PlayerData=require(game.ServerScriptService.Services.PlayerDataService)
+local FirstBattle=require(game.ServerScriptService.Services.FirstBattleTutorialService)
 local Speed=require(game.ServerScriptService.Services.SpeedService)
 local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
 local Badges=require(game.ServerScriptService.Services.BadgeAwardService)
@@ -174,6 +175,7 @@ function M.SendState(p)local st=Stage.GetState(p)local ps=state(p)local g={}for 
  local activeCombat=worldId==1 and combat and {Active=true,CombatType=combat.CombatType,Stage=combat.Stage,WallIndex=combat.CombatType=="Wall" and Wall.GetCurrentIndexForStage(p,combat.Stage) or nil} or nil
  send(p,{Type="Initialize",CurrentStage=st.CurrentStage,Cleared=ps.Defeated,Skipped=ps.Skipped,WorldComplete=st.WorldComplete,Gauges=g,Character=worldId==1 and p.Character or nil,ActiveCombat=activeCombat}) for major in pairs(Wall.Config) do send(p,{Type="WallInitialize",State=Wall.GetSnapshotForStage(p,major)}) end end
 function M.InitializePlayer(p,targetStage)
+ if worldId==1 then FirstBattle.Cancel(p) end
  ActionTiming.ResetAutomatic(p)
  Speed.ClearTransitionBoost(p,worldId)
  if BossAttack then BossAttack.Stop(p,true) end
@@ -245,6 +247,7 @@ bindCharacter=function(p,character)
   ensureWallCombatTrigger(character)
   observer.Connection=hum.Died:Once(function()
    if deathObservers[p]~=observer or p.Character~=character then return end
+   if worldId==1 then FirstBattle.Death(p,character,state(p),sessions[p]) end
    if RunInventory then RunInventory.DiscardOnDeath(p,character) end
    cleanupWallCombatTrigger(character)
    if inWorld(p) and not lossRespawns[p] then M.InitializePlayer(p) end
@@ -913,6 +916,7 @@ local function defeat(p,n)
  if ps.Defeated[n] then return end
  ps.Gauges[n]=0
  ps.Defeated[n]=true
+ if worldId==1 and n==1 then FirstBattle.Victory(p,ps) end
  Analytics.Combat(p,worldId,n,6)
  if n>=1 and n<10 then Speed.BeginTimedBoost(p,worldId,"BossDefeat") end
  -- Claim defeat before any result/reward notification; all damage paths share this guard.
@@ -1053,6 +1057,7 @@ local function updateCombat(p,manualRequest)
 
      end
      sessions[p]={Stage=n,Target=targetKey,CombatType=wallHit and "Wall" or "MiniBoss",Instance=target,Character=ch}
+     if worldId==1 and n==1 and not wallHit then FirstBattle.Start(p,state(p),sessions[p]) end
      p:SetAttribute("IsFighting",true)
      send(p,{Type="Fighting",Active=true,CombatType=sessions[p].CombatType,Stage=n,WallIndex=wallHit and Wall.GetCurrentIndexForStage(p,n) or nil})
      if enemyHit and not wallHit and Wall.Config[n] then
@@ -1276,6 +1281,7 @@ function M.Activate(p)
  M.SendState(p)
 end
 function M.Deactivate(p)
+ if worldId==1 then FirstBattle.Cancel(p) end
  ActionTiming.ResetAutomatic(p)
  Speed.ClearTransitionBoost(p,worldId)
  if RunInventory and states[p] then RunInventory.SetActive(p,states[p].RunInventoryId,false) end

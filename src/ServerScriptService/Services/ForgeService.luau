@@ -14,6 +14,7 @@ function M.State(player)
  return {Loaded=true,World2Unlocked=Data.HasReachedWorld2(player),Token=s.ForgeToken,Sequence=d.ForgeJournal.Sequence,Journal=table.clone(d.ForgeJournal),
   OwnedItems=table.clone(d.OwnedItems),EquippedItems=table.clone(d.EquippedItems),
   OreTutorial=table.clone(d.OreMergeTutorial),
+  StoneSellLocked=require(RS.Modules.FirstBattleTutorialState).StoneProtected(d),
   HigherOreTutorial=table.clone(d.HigherOreMergeTutorial),
   Ores=table.clone(d.OwnedOres),DumbbellCounts=table.clone(d.OwnedDumbbells),EquippedDumbbell=d.EquippedDumbbell,
   Win=player:GetAttribute("Win") or d.Win,Pending=s.PendingItemMutation~=nil,Generation=s.PetViewGeneration or 0}

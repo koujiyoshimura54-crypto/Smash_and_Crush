@@ -105,7 +105,7 @@ function M.Mount(player,services)
   if priorCompleted==false and tutorial.Completed then completionPending=true end
   priorCompleted=tutorial.Completed
   if tutorial.Completed and not completionPending then hide("Complete");return end
-  if player:GetAttribute("TutorialCompleted")~=true or not inLobby then hide("WaitingForLobby");return end
+  if not require(script.Parent.FirstBattleTutorialState).AllowLaterGuides(player) or not inLobby then hide("WaitingForLobby");return end
   if HatchClient.playing() or PetClient.busy() then hide("WaitingForHatch",Coordinator.Owner()==overlay);return end
   if blocked() then
    local merge=pg:FindFirstChild("MergeShopGui")

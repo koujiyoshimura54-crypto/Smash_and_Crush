@@ -85,7 +85,7 @@ function M.Mount(player,gui,view)
   if priorCompleted==false and state.Completed then completionPending=true end
   priorCompleted=state.Completed
   if state.Completed and not completionPending then hide("Complete");return end
-  if player:GetAttribute("TutorialCompleted")~=true or not inLobby then hide("WaitingForLobby");return end
+  if not require(script.Parent.FirstBattleTutorialState).AllowLaterGuides(player) or not inLobby then hide("WaitingForLobby");return end
   local owns=Coordinator.Owner()==overlay
   -- Success consumes the materials before the response/hatch. Do not re-gate on count.
   if current.Pending or PetClient.busy() or HatchClient.playing() then hide("WaitingForTransaction",owns);return end

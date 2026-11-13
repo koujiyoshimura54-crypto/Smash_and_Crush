@@ -13,7 +13,8 @@ end
 function M:CurrentWall()
  local w=self.Wall
  if not self.Ready or self.Stage~=1 or not w or w.Skipped~=false
-  or type(w.Current)~="number" or w.Current<1 or w.Current>4
+  or type(w.WallCount)~="number" or w.WallCount<1
+  or type(w.Current)~="number" or w.Current<1 or w.Current>w.WallCount
   or type(w.Cleared)~="table" or w.Cleared[w.Current]==true
   or type(w.Gauges)~="table" or type(w.Gauges[w.Current])~="number" or w.Gauges[w.Current]<=0 then return nil end
  return w.Current

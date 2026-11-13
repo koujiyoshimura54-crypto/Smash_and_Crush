@@ -1,5 +1,13 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-13 — Phase 2：初回戦闘・マージ・装備
+
+正本Place126576845524886 / Universe10765181857、Phase 1基準bc79c97から19 SourcesとStage1の壁3 Partだけを変更。新規Stone×2と対象識別の同時保存、保存確定までのStone売却制限、初回60秒Win×1と旧履歴互換、LV2初戦→帰還→マージ・装備→必要時LV4再戦を実装した。指画像・入力経路・既存ファネルを保持。
+
+82状態判定＋53壁促し判定、14ケース120項目のネイティブサービス保存故障注入を通過。自然獲得の隔離Playは敗北→再戦勝利54.365秒、先にLV4へ鍛える初戦勝利→マージ・装備44.660秒（参加から、自動操作）。自主マージ、Boss戦Backと戦闘前帰還の区別、勝利後Stage2→後のLobby帰還、LV4以降の再敗北を確認。未完了死亡復帰で指促し再表示、完了後は非表示も確認した。
+
+40件の検証差し替えを原文へ戻し、7補助オブジェクトとメモリ保存・backupを除去。38関連Source/Editorを照合し、19変更・19維持。Stage01の47→44 BasePartは指定3壁の削除のみで、残る44の配置・寸法・衝突等に差分なし。Studioは未保存Edit、Save/Publishなし。実機・自然streaming・本番DataStore・公開後継続率は未確認。描画停止の原因は未確定。[報告書と証拠](../reports/FirstBattleTutorial_Phase2_20261113/REPORT.md)。
+
 ## 2026-11-13 — Stage1 wall prompt, Phase 1
 
 Applied five Sources to canonical unsaved Studio 126576845524886: the existing guide now shows supplied image 85558189403057 with Click/Tap, conditioned on personal Stage1 wall combat and explicit AutoTap OFF. Completion uses accepted manual damage; no extra attack sender or saved field. Phase 2/balance changes excluded. Native mouse and phone/tablet simulator touches each produced one request and one accepted hit. 53 state assertions and eight Source compilations passed. Final related runtime console clean; a later incomplete-death render stall remains unverified. 40 temporary Source redirects restored, helpers removed, simulator default, eight relevant editor buffers verified. Existing edits and PR #1 retained. No Save/Publish. [Paths, evidence and limits](../reports/Stage1WallPrompt_20261113.md).

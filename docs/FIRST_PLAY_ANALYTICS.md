@@ -1,5 +1,11 @@
 # First-play analytics v1
 
+## 2026-11-13 — Phase 2 gameplay comparison caveat
+
+Phase 2 changes gameplay, not these event definitions. Initial owned Stone×2 makes existing Ore Eligible occur earlier, often immediately after confirmed new-profile acquisition. Before/after FirstOreMerge rates therefore have different eligibility timing and cannot be read as a retention improvement. Keep the existing PlaceVersion dimension; isolated unsaved Play reports PlaceVersion:0 and is not published cohort evidence.
+
+World1 Stage1 now has one wall. The same accepted destruction emits ClearedFirstWall (step3), then ClearedStage1Walls (step4), each once. Both native earned routes verified this order. No missing observations are filled in: the automated route's direct ordinary Forge request does not fabricate validated selection/view events. Existing names, order, cohort rules and six-funnel meaning remain unchanged. Additional flow instrumentation, if desired, is a separate proposal; none added here. [Phase 2 evidence](../reports/FirstBattleTutorial_Phase2_20261113/REPORT.md).
+
 Canonical Place **126576845524886**, Universe **10765181857**. Instrumentation only: no changes to difficulty, rewards, tutorials, UI, AutoTap policy, receipt handling or transaction schemas. The current unsaved Studio is authoritative. The held PR #1 early-game candidate remains in Studio and is not part of this main change.
 
 ## Cohorts, session boundaries and interpretation

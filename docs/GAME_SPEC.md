@@ -1,5 +1,19 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-13 — Phase 2：初戦 → マージ・装備 → 再挑戦
+
+この節が同日Phase 1の「Phase 2未実施」と以前のStrength10条件に優先する。対象はPlace126576845524886 / Universe10765181857の未保存Studio、基準commit bc79c97。
+
+新規プロフィールの所有権取得時に、通常OwnedOresのStone（ORE_001）×2とFirstBattleTutorial.Version=1 / Eligible=trueを同じ保存へ記録する。旧プロフィールでフィールドがない場合はEligible=falseとし、再配布・新導線への強制移行をしない。読込失敗は新規扱いしない。参加時AutoTap OFFを保持する。
+
+新対象の進行はLV>=2 → 壁1枚 → Stage1 Boss → 実際のDeath/Victory/受理されたBoss戦中Back後のLobby帰還 → 正規Oreマージの保存確定 → 最良装備。未撃破でLV<4なら再鍛錬、LV>=4なら再戦。撃破済みなら再鍛錬・再撃破を要求しない。初戦前の自主マージ・装備を認め、その後は未経験の初戦へ戻る。Stage2へ進んだ場合は次のLobby帰還までマージを待機する。戦闘前の落下・帰還・退出だけで初戦結果を記録しない。
+
+新しい保存事実はBattleStarted / FirstOutcome（Death・Back・Victory）/ Stage1Defeated。OreMergeTutorial.CompletedとEquipmentTutorial.DumbbellCompletedは既存の保存済み事実を使う。TutorialCompletedの既存意味（Stage1 Trophy、Stage2有効攻撃による既存フォールバック）は変えない。新導線が終わるまでPet・PetMerge・上位Ore・Item装備案内を待機し、終了後に通常条件へ戻す。
+
+初回Oreマージが保存確定するまではStone売却をUIとサーバーで禁止する。Stoneを含む単体・一括・混合要求全体を、所持数とWinを変えず拒否する。保存確定後のみ解除し、不足時の補充はしない。既存の最大5個・抽選・生成性能は維持する。初期付与、通常保存、Forge保存、応答消失・再試行の整合を隔離メモリ保存で検証した。
+
+[状態遷移・Full Paths・実Play計測・未確認範囲](../reports/FirstBattleTutorial_Phase2_20261113/REPORT.md)。強制敗北・HP偽装はなく、継続率改善は未検証の仮説。Save/Publishなし。
+
 ## 2026-11-13 — Phase 1: Stage1壁の手動操作促し
 
 既存の初回チュートリアルがWorld1 Stage1の本人の現在壁へ案内中に、接触・戦闘状態とAutoTap明示OFFを確認して指画像とClick/Tapを表示する。既存CombatAttackの成立通知へWorld1の対象情報を補い、有効な本人の手動壁攻撃だけでセッション中の促しを完了する。入力だけ、UI操作、空振り、AutoTap、Bossや別対象は完了に使わない。死亡・次の壁では繰り返さず、既存TutorialResetSequenceで解除する。新規DataStore項目・攻撃送信経路は追加しない。

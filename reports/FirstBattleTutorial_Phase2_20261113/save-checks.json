@@ -1,0 +1,63 @@
+{
+  "Finished": true,
+  "Kind": "Native services with injected memory-store failures and profiles",
+  "Cases": [
+    {
+      "Name": "New acquisition atomically commits Stone and cohort before ordinary save",
+      "Passed": true
+    },
+    {
+      "Name": "Read failure is not a new profile; ambiguous acquisition retries once",
+      "Passed": true
+    },
+    {
+      "Name": "Single/bulk/mixed/direct Stone sale rejected atomically; other ores remain sellable",
+      "Passed": true
+    },
+    {
+      "Name": "Forge precommit failure retains protection; retry/duplicates create only once",
+      "Passed": true
+    },
+    {
+      "Name": "Forge acknowledgement loss, disconnect and rejoin preserve one durable result",
+      "Passed": true
+    },
+    {
+      "Name": "Held Forge write rejects spam; disconnect while yielding cannot roll back new owner",
+      "Passed": true
+    },
+    {
+      "Name": "Normal save retries cannot resurrect consumed initial Stone",
+      "Passed": true
+    },
+    {
+      "Name": "Existing missing-cohort records preserve ores and have no new lock",
+      "Passed": true
+    },
+    {
+      "Name": "First reward 59/60s, held retry, acknowledgement loss, exactly one Win",
+      "Passed": true
+    },
+    {
+      "Name": "Both verified old first-slot IDs stay claimed after reload",
+      "Passed": true
+    },
+    {
+      "Name": "Accepted reward contents frozen through precommit retry",
+      "Passed": true
+    },
+    {
+      "Name": "Accepted old Stone operation retains its contents across config replacement",
+      "Passed": true
+    },
+    {
+      "Name": "Started without outcome survives rejoin; Back/Death/Victory are monotonic",
+      "Passed": true
+    },
+    {
+      "Name": "Existing best dumbbell satisfies equipment without downgrade; facts survive retraining reload",
+      "Passed": true
+    }
+  ],
+  "Checks": 120
+}

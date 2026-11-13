@@ -4,6 +4,9 @@ local Players=game:GetService("Players")
 local RS=game:GetService("ReplicatedStorage")
 local IntroBalance=require(RS.Config:WaitForChild("World1BossConfig"))
 local RunService=game:GetService("RunService")
+local FirstBattle=require(RS.Modules.FirstBattleTutorialState)
+local Coordinator=require(RS.Modules.TutorialPresentationCoordinator)
+local wallCount=#IntroBalance.GetWallConfig(1).Walls
 local player=Players.LocalPlayer
 local wallPrompt=require(RS.Modules:WaitForChild("Stage1WallPrompt")).Mount(player)
 local trained=false
@@ -378,40 +381,68 @@ end
 local function wallCleared()
  trained=true enteredWall=true
 end
+local function inLobby(character)
+ local root=character and character:FindFirstChild("HumanoidRootPart")
+ local map=workspace:FindFirstChild("GeneratedMap")
+ local area=map and map:FindFirstChild("TrainingArea")
+ local floor=area and area:FindFirstChild("Floor")
+ if not root or not floor then return false end
+ local p=floor.CFrame:PointToObjectSpace(root.Position)
+ return math.abs(p.X)<=floor.Size.X/2 and math.abs(p.Z)<=floor.Size.Z/2 and math.abs(p.Y)<=40
+end
 local function refresh()
  wallPrompt:SetGuide(nil,nil)
  local character=player.Character
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
  if updateScheduler then updateScheduler() end
- if player:GetAttribute("TutorialCompleted")~=false then
+ local pg=player:FindFirstChild("PlayerGui")
+ local mergeGui=pg and pg:FindFirstChild("MergeShopGui")
+ local panel=mergeGui and mergeGui:FindFirstChild("MergeShopPanel")
+ local phase=FirstBattle.Phase(FirstBattle.Read(player),{
+  -- Existing WorldGate authority represents the initial World1 with a nil attribute.
+  World=player:GetAttribute("CurrentWorld") or 1,Alive=humanoid~=nil and humanoid.Health>0,
+  InLobby=inLobby(character),MergeOpen=panel~=nil and panel.Visible,
+  Merged=player:GetAttribute("OreTutorialCompleted")==true,
+  Equipped=player:GetAttribute("DumbbellEquipTutorialInitialCompleted")==true,Level=player:GetAttribute("Level"),
+ })
+ local target=player:GetAttribute("OreTutorialTarget")
+ if phase=="Merge" then
+  if typeof(target)=="Vector3" then show("OreMerge",target) else hide() end
+  return
+ elseif phase=="Equip" or phase=="Waiting" then hide();return end
+ local legacy=phase=="Legacy"
+ if (legacy and player:GetAttribute("TutorialCompleted")~=false)
+  or phase=="Complete" and not (stage1Defeated and trophy) then
   local egg=player:GetAttribute("EggTutorialTarget")
   local pet=player:GetAttribute("PetMergeTutorialTarget")
-  local target=player:GetAttribute("OreTutorialTarget") or egg or pet
-  if player:GetAttribute("TutorialCompleted")==true and typeof(target)=="Vector3" and humanoid and humanoid.Health>0 then show(egg and "BasicEgg" or pet and "PetMerge" or "OreMerge",target)
+  target=target or egg or pet
+  if FirstBattle.AllowLaterGuides(player) and typeof(target)=="Vector3" and humanoid and humanoid.Health>0 then show(egg and "BasicEgg" or pet and "PetMerge" or "OreMerge",target)
   else clear();stopCache() end
   return
  end
  if (player:GetAttribute("CurrentWorld") or 1)~=1 then hide();stopCache();return end
  if not humanoid or humanoid.Health<=0 then hide();stopCache();return end
- -- Completion is server-owned. Level, boss defeat and Trophy are separate states.
- if IntroBalance.NeedsIntroTraining(player:GetAttribute("Level"),player:GetAttribute("Strength"),enteredWall or stage1Defeated) then
+ local owner=Coordinator.Owner()
+ if owner and owner.Name~="Stage1WallPromptGui" then hide();return end
+ if panel and panel.Visible or player:GetAttribute("RunReturnBusy") or player:GetAttribute("StageSkipBusy") then hide();return end
+ if phase=="Train" or legacy and IntroBalance.NeedsIntroTraining(player:GetAttribute("Level"),player:GetAttribute("Strength"),enteredWall or stage1Defeated) then
   local treadmill=treadmillFolder:FindFirstChild("Normal01")
   local zone=treadmill and treadmill:FindFirstChild("Area")
   if zone then show("Treadmill",zone.Position) else hide() end
- elseif stage1Defeated then
-  -- Stage advances before the owner-only TrophySpawn arrives. Wait for that
-  -- event instead of jumping to a Stage2 target during the spawn delay.
+ elseif stage1Defeated or phase=="Reward" then
   if trophy then show("Trophy"..trophy.Id,trophy.CFrame.Position) else hide() end
  else
   local map=workspace:FindFirstChild("GeneratedMap")
   local corridor=map and map:FindFirstChild("BattleCorridor")
   local stage=corridor and corridor:FindFirstChild("Stage01")
-  local model=stage and stage:FindFirstChild("Stage1."..wallIndex)
-  local target=model and (wallIndex<=4 and model:FindFirstChild("Wall")
+  -- Authored boss arena stays Stage1.5 even when only one wall remains.
+  local isWall=wallIndex<=wallCount
+  local model=stage and stage:FindFirstChild(isWall and "Stage1."..wallIndex or "Stage1.5")
+  local destination=model and (isWall and model:FindFirstChild("Wall")
    or model:FindFirstChild("EnemySpawn") or model:FindFirstChild("MiniBossSpawn") or model:FindFirstChild("Floor"))
-  if target then
-   if wallIndex<=4 then wallPrompt:SetGuide(wallIndex,target) end
-   if wallPrompt:IsVisible() then hide() else show(wallIndex<=4 and ("Wall1."..wallIndex) or "Stage1Boss",target.Position) end
+  if destination then
+   if isWall then wallPrompt:SetGuide(wallIndex,destination) end
+   if wallPrompt:IsVisible() then hide() else show(isWall and ("Wall1."..wallIndex) or "Stage1Boss",destination.Position) end
   else hide() end
  end
 end
@@ -431,14 +462,17 @@ table.insert(connections,player:GetAttributeChangedSignal("TutorialResetSequence
   resetSequence=sequence trained=false enteredWall=false stage1Defeated=false wallIndex=1 trophy=nil clear() refresh()
  end
 end))
+for _,name in {"FirstBattleTutorialEligible","FirstBattleOutcome","FirstBattleStage1Defeated","OreTutorialCompleted","DumbbellEquipTutorialInitialCompleted"} do
+ table.insert(connections,player:GetAttributeChangedSignal(name):Connect(refresh))
+end
 local elapsed=0
 updateScheduler=function()
  local character=player.Character
  local humanoid=character and character:FindFirstChildOfClass("Humanoid")
- local original=player:GetAttribute("TutorialCompleted")==false and (player:GetAttribute("CurrentWorld") or 1)==1
- local merge=player:GetAttribute("TutorialCompleted")==true and typeof(player:GetAttribute("OreTutorialTarget"))=="Vector3"
- local egg=player:GetAttribute("TutorialCompleted")==true and typeof(player:GetAttribute("EggTutorialTarget"))=="Vector3"
- local pet=player:GetAttribute("TutorialCompleted")==true and typeof(player:GetAttribute("PetMergeTutorialTarget"))=="Vector3"
+ local original=(player:GetAttribute("TutorialCompleted")==false or FirstBattle.Active(player)) and (player:GetAttribute("CurrentWorld") or 1)==1
+ local merge=FirstBattle.AllowLaterGuides(player) and typeof(player:GetAttribute("OreTutorialTarget"))=="Vector3"
+ local egg=FirstBattle.AllowLaterGuides(player) and typeof(player:GetAttribute("EggTutorialTarget"))=="Vector3"
+ local pet=FirstBattle.AllowLaterGuides(player) and typeof(player:GetAttribute("PetMergeTutorialTarget"))=="Vector3"
  local enabled=(original or merge or egg or pet)
   and humanoid and humanoid.Health>0
  if not enabled then
@@ -480,9 +514,9 @@ task.spawn(function()
    stage1Defeated=typeof(d.Cleared)=="table" and d.Cleared[1]==true
   elseif d.Type=="WallCleared" and d.MajorStage==1 then
    wallCleared()
-   wallIndex=math.clamp(tonumber(d.Next) or (d.Index+1),1,5)
+   wallIndex=math.clamp(tonumber(d.Next) or (d.Index+1),1,wallCount+1)
   elseif d.Type=="WallInitialize" and typeof(d.State)=="table" and d.State.MajorStage==1 then
-   wallIndex=math.clamp(tonumber(d.State.Current) or 1,1,5)
+   wallIndex=math.clamp(tonumber(d.State.Current) or 1,1,wallCount+1)
    if not d.State.Skipped and typeof(d.State.Cleared)=="table" and d.State.Cleared[1]==true then wallCleared() end
   elseif d.Type=="TrophySpawn" and d.Stage==1 and typeof(d.Id)=="number" and typeof(d.CFrame)=="CFrame" then
    -- Owner-only event from TrophyRewardService. Never scan another player's Trophy.

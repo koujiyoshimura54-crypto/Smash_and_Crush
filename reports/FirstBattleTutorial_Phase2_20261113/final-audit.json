@@ -1,0 +1,248 @@
+{
+  "Universe": 10765181857,
+  "Errors": [],
+  "Place": 126576845524886,
+  "Running": false,
+  "Helpers": [],
+  "Checks": [
+    {
+      "Editor": 2608297201,
+      "Path": "ReplicatedStorage.Config.Stage1WallPromptConfig",
+      "Source": 2608297201,
+      "Expected": 2608297201
+    },
+    {
+      "Editor": 1931301140,
+      "Path": "ReplicatedStorage.Config.TimeRewardConfig",
+      "Source": 1931301140,
+      "Expected": 1931301140
+    },
+    {
+      "Editor": 1672457624,
+      "Path": "ReplicatedStorage.Config.World1BossConfig",
+      "Source": 1672457624,
+      "Expected": 1672457624
+    },
+    {
+      "Editor": 1382091331,
+      "Path": "ReplicatedStorage.Modules.EggPetTutorialGuide",
+      "Source": 1382091331,
+      "Expected": 1382091331
+    },
+    {
+      "Editor": 2000412734,
+      "Path": "ReplicatedStorage.Modules.EquipmentTutorialGuide",
+      "Source": 2000412734,
+      "Expected": 2000412734
+    },
+    {
+      "Editor": 1690156540,
+      "Path": "ReplicatedStorage.Modules.EquipmentTutorialState",
+      "Source": 1690156540,
+      "Expected": 1690156540
+    },
+    {
+      "Editor": 1240743079,
+      "Path": "ReplicatedStorage.Modules.FirstBattleTutorialState",
+      "Source": 1240743079,
+      "Expected": 1240743079
+    },
+    {
+      "Editor": 2921059525,
+      "Path": "ReplicatedStorage.Modules.ForgeClient",
+      "Source": 2921059525,
+      "Expected": 2921059525
+    },
+    {
+      "Editor": 166622123,
+      "Path": "ReplicatedStorage.Modules.ForgeInventory",
+      "Source": 166622123,
+      "Expected": 166622123
+    },
+    {
+      "Editor": 352853968,
+      "Path": "ReplicatedStorage.Modules.HigherOreMergeTutorialState",
+      "Source": 352853968,
+      "Expected": 352853968
+    },
+    {
+      "Editor": 3738288210,
+      "Path": "ReplicatedStorage.Modules.MergeShopView",
+      "Source": 3738288210,
+      "Expected": 3738288210
+    },
+    {
+      "Editor": 3057269961,
+      "Path": "ReplicatedStorage.Modules.OreMerge",
+      "Source": 3057269961,
+      "Expected": 3057269961
+    },
+    {
+      "Editor": 1352960400,
+      "Path": "ReplicatedStorage.Modules.OreMergeTutorialGuide",
+      "Source": 1352960400,
+      "Expected": 1352960400
+    },
+    {
+      "Editor": 280554483,
+      "Path": "ReplicatedStorage.Modules.OreMergeTutorialState",
+      "Source": 280554483,
+      "Expected": 280554483
+    },
+    {
+      "Editor": 1306437782,
+      "Path": "ReplicatedStorage.Modules.PetMergeTutorialGuide",
+      "Source": 1306437782,
+      "Expected": 1306437782
+    },
+    {
+      "Editor": 3860350713,
+      "Path": "ReplicatedStorage.Modules.Stage1WallPrompt",
+      "Source": 3860350713,
+      "Expected": 3860350713
+    },
+    {
+      "Editor": 560477632,
+      "Path": "ReplicatedStorage.Modules.Stage1WallPromptState",
+      "Source": 560477632,
+      "Expected": 560477632
+    },
+    {
+      "Editor": 616592028,
+      "Path": "ReplicatedStorage.Modules.TutorialPresentationCoordinator",
+      "Source": 616592028,
+      "Expected": 616592028
+    },
+    {
+      "Editor": 1626028813,
+      "Path": "ServerScriptService.Config.FirstPlayAnalyticsConfig",
+      "Source": 1626028813,
+      "Expected": 1626028813
+    },
+    {
+      "Editor": 280157567,
+      "Path": "ServerScriptService.Services.FirstBattleTutorialService",
+      "Source": 280157567,
+      "Expected": 280157567
+    },
+    {
+      "Editor": 2661271057,
+      "Path": "ServerScriptService.Services.FirstPlayAnalyticsService",
+      "Source": 2661271057,
+      "Expected": 2661271057
+    },
+    {
+      "Editor": 3542901126,
+      "Path": "ServerScriptService.Services.ForgePersistence",
+      "Source": 3542901126,
+      "Expected": 3542901126
+    },
+    {
+      "Editor": 3651407421,
+      "Path": "ServerScriptService.Services.ForgeService",
+      "Source": 3651407421,
+      "Expected": 3651407421
+    },
+    {
+      "Editor": 611216678,
+      "Path": "ServerScriptService.Services.LobbySpawnService",
+      "Source": 611216678,
+      "Expected": 611216678
+    },
+    {
+      "Editor": 3036690731,
+      "Path": "ServerScriptService.Services.PlayerDataOwnership",
+      "Source": 3036690731,
+      "Expected": 3036690731
+    },
+    {
+      "Editor": 569943720,
+      "Path": "ServerScriptService.Services.PlayerDataService",
+      "Source": 569943720,
+      "Expected": 569943720
+    },
+    {
+      "Editor": 233700064,
+      "Path": "ServerScriptService.Services.RunInventoryService",
+      "Source": 233700064,
+      "Expected": 233700064
+    },
+    {
+      "Editor": 3248421998,
+      "Path": "ServerScriptService.Services.RunReturnService",
+      "Source": 3248421998,
+      "Expected": 3248421998
+    },
+    {
+      "Editor": 464455958,
+      "Path": "ServerScriptService.Services.TimeRewardService",
+      "Source": 464455958,
+      "Expected": 464455958
+    },
+    {
+      "Editor": 1136885072,
+      "Path": "ServerScriptService.Services.TrophyRewardService",
+      "Source": 1136885072,
+      "Expected": 1136885072
+    },
+    {
+      "Editor": 2253335787,
+      "Path": "ServerScriptService.World.BossAttackService",
+      "Source": 2253335787,
+      "Expected": 2253335787
+    },
+    {
+      "Editor": 173628447,
+      "Path": "ServerScriptService.World.EnemyManager",
+      "Source": 173628447,
+      "Expected": 173628447
+    },
+    {
+      "Editor": 2010015451,
+      "Path": "ServerScriptService.World.Stage1WallManager",
+      "Source": 2010015451,
+      "Expected": 2010015451
+    },
+    {
+      "Editor": 3460946335,
+      "Path": "ServerScriptService.World.StageManager",
+      "Source": 3460946335,
+      "Expected": 3460946335
+    },
+    {
+      "Editor": 3684095918,
+      "Path": "StarterGui.StrengthGui.RunReturnClient",
+      "Source": 3684095918,
+      "Expected": 3684095918
+    },
+    {
+      "Editor": 3009564994,
+      "Path": "StarterGui.StrengthGui.TimeRewardsClient",
+      "Source": 3009564994,
+      "Expected": 3009564994
+    },
+    {
+      "Editor": 2463409342,
+      "Path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "Source": 2463409342,
+      "Expected": 2463409342
+    },
+    {
+      "Editor": 1320071211,
+      "Path": "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient",
+      "Source": 1320071211,
+      "Expected": 1320071211
+    }
+  ],
+  "Geometry": {
+    "removed": [
+      "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.2.Wall",
+      "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.3.Wall",
+      "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.4.Wall"
+    ],
+    "added": [],
+    "changed": [],
+    "beforeCount": 47,
+    "afterCount": 44
+  }
+}

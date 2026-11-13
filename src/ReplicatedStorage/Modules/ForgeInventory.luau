@@ -6,6 +6,7 @@ local Merge=require(script.Parent.OreMerge)
 local FirstStage1=require(script.Parent.FirstStage1RewardState)
 local OreTutorial=require(script.Parent.OreMergeTutorialState)
 local HigherOreTutorial=require(script.Parent.HigherOreMergeTutorialState)
+local FirstBattle=require(script.Parent.FirstBattleTutorialState)
 local M={}
 function M.Journal(raw)
  if raw==nil then return {Sequence=0} end
@@ -33,6 +34,7 @@ function M.Apply(data,op)
   bells[op.ResultId]=(bells[op.ResultId] or 0)+1
  elseif op.Action=="SellOre" then
   local preview,reason=Merge.Selection(op.Materials,ores,true);if not preview then return nil,reason end
+  if FirstBattle.StoneProtected(data) and (preview.Materials.ORE_001 or 0)>0 then return nil,"StoneTutorialLocked" end
   for id,count in pairs(preview.Materials) do ores[id]-=count;if ores[id]==0 then ores[id]=nil end end
   delta=preview.Total
  elseif op.Action=="SellDumbbell" then
