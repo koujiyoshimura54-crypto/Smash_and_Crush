@@ -1,6 +1,6 @@
 local LevelRequirements = {}
 
--- Q(L) is the gain FROM L to L+1. Version1 retains the current pre-change cycle.
+-- Q(L) is the gain FROM L to L+1. Versions retain their distinct early curves.
 -- The historical threshold migration is independent of both progression curves.
 local LEGACY_EARLY_REQUIREMENTS = table.freeze({10,30,50,70,90,125,155})
 local FIXED_STRENGTH = table.freeze({
@@ -63,9 +63,14 @@ for level=51,200 do
  local rate=0.20+(level-51)*0.0007
  approved[level]=math.ceil(approved[level-1]*(1+rate)/10)*10
 end
-FIXED_STRENGTH=table.freeze(approved)
-
-local LEGACY_STRENGTH=FIXED_STRENGTH
+-- Freeze the original thresholds for profiles that never saved Level.
+-- Normal progression must not change that historical reconstruction.
+local HISTORICAL_STRENGTH=table.freeze(approved)
+local progression=table.clone(HISTORICAL_STRENGTH)
+for level=131,200 do
+ progression[level]=math.ceil(progression[level-1]*1.05/10)*10
+end
+local LEGACY_STRENGTH=table.freeze(progression)
 local current=table.clone(LEGACY_STRENGTH)
 local early={5,12,23,45,60,90,125,145,170,195,225,260,300,345,400,480,580,700,840,1100,1400,1800,2200,2500,3200,4000,4750,5400,5965}
 for level,cost in ipairs(early) do current[level]=cost end
@@ -83,8 +88,15 @@ LevelRequirements.FixedStrength = FIXED_STRENGTH
 LevelRequirements.LevelStrengthRequirements = FIXED_STRENGTH
 LevelRequirements.MaxFixedLevel = 200
 LevelRequirements.MaxLevel = 10000
--- Preserve the existing linear extension from the newly approved Q(200).
+-- Historical reconstruction only; live progression continues +5% after LV200.
 LevelRequirements.Post200StrengthPerLevel = 250000000
+local post200={}
+local previous=FIXED_STRENGTH[200]
+for level=201,LevelRequirements.MaxLevel do
+ previous=math.ceil(previous*1.05/10)*10
+ post200[level]=previous
+end
+table.freeze(post200)
 
 function LevelRequirements.GetRequiredStrength(level,curveVersion)
  local curve,reason=LevelRequirements.NormalizeCurveVersion(curveVersion)
@@ -95,7 +107,7 @@ function LevelRequirements.GetRequiredStrength(level,curveVersion)
  value = math.clamp(math.floor(value), 1, LevelRequirements.MaxLevel)
  local fixed = costs[value]
  if fixed ~= nil then return fixed end
- return FIXED_STRENGTH[200] + (value - 200) * LevelRequirements.Post200StrengthPerLevel
+ return post200[value]
 end
 
 function LevelRequirements.GetCumulativeStrength(level,curveVersion)
@@ -109,7 +121,8 @@ end
 -- Keep the historical threshold lookup stable for unversioned saved profiles.
 -- These are costs from a level, not cumulative thresholds for live progression.
 local function getLegacyRequiredStrength(level)
- return LEGACY_EARLY_REQUIREMENTS[level] or LevelRequirements.GetRequiredStrength(level,1)
+ return LEGACY_EARLY_REQUIREMENTS[level] or HISTORICAL_STRENGTH[level]
+  or HISTORICAL_STRENGTH[200] + (level-200)*LevelRequirements.Post200StrengthPerLevel
 end
 
 -- Legacy migration lookup ONLY (and archived tests). Never use for live Level.

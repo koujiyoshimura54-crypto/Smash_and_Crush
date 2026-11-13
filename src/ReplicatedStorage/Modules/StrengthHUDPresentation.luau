@@ -44,6 +44,8 @@ end
 -- Keeps 1440 -> 1.44K and long values bounded without shrinking the pack font.
 function M.Number(value)
  local n=math.max(0,tonumber(value) or 0)
+ -- Beyond the last abbreviation, keep high-level progress readable at fixed font size.
+ if n>=1e36 then return (string.format("%.2e",n):gsub("e%+0*","e")) end
  local suffixes={"","K","M","B","T","Qa","Qi","Sx","Sp","Oc","No","Dc"}
  local index=1
  while n>=1000 and index<#suffixes do n/=1000;index+=1 end

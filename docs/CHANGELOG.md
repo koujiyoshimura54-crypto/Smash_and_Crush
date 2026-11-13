@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-13 — LV131以降の追加Strengthを毎LV+5%
+
+両曲線のQ(1〜130)と旧形式LV復元を保持し、通常Q(131〜10000)を5%複利・10単位切上げへ。既存進捗繰越・保存方式を再利用。1e36以上のHUDを指数表記へ変更。ネイティブ隔離Playで通常／報酬加算、保存失敗・再試行、HUDを確認。実機・公開保存は未確認。数値精度とラベル端数の限界を含む[報告書](../reports/LevelGrowth5Pct_20261113/REPORT.md)。Studio未保存、Save/Publishなし。
+
 ## 2026-11-13 - World2 Treadmill physical support for scaled R15
 
 World2 R15 occupancy now checks the current treadmill's collidable support surface within the existing root footprint and standing-height tolerance. Reject Jumping/Freefall, jump requests and vertical motion; do not rely on server FloorMaterial alone when a client-owned rig is grounded. World1/R6 rules, access checks, rewards and the0.5-second session timer remain unchanged.

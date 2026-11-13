@@ -1,0 +1,4102 @@
+{
+  "date": "2026-11-13",
+  "baselineCommit": "9898d9e91a719f520db5a2647da4811e969ef3eb",
+  "canonicalPlaceId": 126576845524886,
+  "canonicalUniverseId": 10765181857,
+  "placeVersion": 621,
+  "method": "Native isolated Roblox Studio Play; actual PlayerDataService, StrengthManager, LevelProgression and StrengthDisplay; external persistence/payment/analytics dependencies replaced only in PlaceId 0. Test stats explicitly injected; not natural routes, devices, or public datastore.",
+  "before": {
+    "native": {
+      "treadmill": {
+        "state": {
+          "required": 10510823745140,
+          "loaded": true,
+          "pending": false,
+          "strength": 123459,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 4000000000003,
+            "Strength": 123459,
+            "LevelCurveVersion": 2
+          },
+          "progress": 4000000000003,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "result": 123459
+      },
+      "admin": {
+        "state": {
+          "required": 10510823745140,
+          "loaded": true,
+          "pending": false,
+          "strength": 9999999999999,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 4000000000010,
+            "Strength": 9999999999999,
+            "LevelCurveVersion": 2
+          },
+          "progress": 4000000000010,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "result": 9999999999999
+      },
+      "saved": {
+        "ok": true,
+        "state": {
+          "required": 10510823745140,
+          "loaded": true,
+          "pending": false,
+          "strength": 123456,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 4000000000000,
+            "Strength": 123456,
+            "LevelCurveVersion": 2
+          },
+          "progress": 4000000000000,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": false
+        }
+      },
+      "reloaded": {
+        "ok": true,
+        "state": {
+          "required": 10510823745140,
+          "loaded": true,
+          "pending": false,
+          "strength": 123456,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 4000000000000,
+            "Strength": 123456,
+            "LevelCurveVersion": 2
+          },
+          "progress": 4000000000000,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        }
+      },
+      "reward": {
+        "state": {
+          "required": 10510823745140,
+          "loaded": true,
+          "pending": false,
+          "strength": 123466,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 4000000000010,
+            "Strength": 123466,
+            "LevelCurveVersion": 2
+          },
+          "progress": 4000000000010,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "result": 123466
+      },
+      "walk": {
+        "state": {
+          "required": 10510823745140,
+          "loaded": true,
+          "pending": false,
+          "strength": 123456.5,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 4000000000000.5,
+            "Strength": 123456.5,
+            "LevelCurveVersion": 2
+          },
+          "progress": 4000000000000.5,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "result": 123456.5
+      },
+      "inject": {
+        "required": 10510823745140,
+        "loaded": true,
+        "pending": false,
+        "strength": 123456,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 136,
+          "LevelProgress": 4000000000000,
+          "Strength": 123456,
+          "LevelCurveVersion": 2
+        },
+        "progress": 4000000000000,
+        "level": 136,
+        "rebirth": 0,
+        "dirty": true
+      }
+    },
+    "hud": {
+      "level": "Lv.136",
+      "text": "4T / 10.5T",
+      "attributes": {
+        "progress": 4000000000010,
+        "level": 136,
+        "strength": 9999999999999,
+        "curve": 2
+      },
+      "fill": 0.38056010007858276
+    },
+    "largeHUD": {
+      "rect": {
+        "1": 502.5650634765625,
+        "2": 512.4296264648438,
+        "3": 454.3070373535156,
+        "4": 50.30916976928711
+      },
+      "progressText": "10000000000000001323945434466030186557813051577054744406252071157760Dc / MAX",
+      "viewport": {
+        "1": 1280,
+        "2": 715
+      },
+      "fits": false,
+      "textBounds": {
+        "1": 1326,
+        "2": 36
+      }
+    }
+  },
+  "numeric": {
+    "cumulative5CallsSeconds": 0.005088800098747015,
+    "cumulativeToMax": 7.302705560173296e+222,
+    "rows": [
+      {
+        "before": "856560689830",
+        "after": "856560689830",
+        "to": 126,
+        "from": 125
+      },
+      {
+        "before": "1072842264020",
+        "after": "1072842264020",
+        "to": 127,
+        "from": 126
+      },
+      {
+        "before": "1344485925270",
+        "after": "1344485925270",
+        "to": 128,
+        "from": 127
+      },
+      {
+        "before": "1685850901700",
+        "after": "1685850901700",
+        "to": 129,
+        "from": 128
+      },
+      {
+        "before": "2115068541280",
+        "after": "2115068541280",
+        "to": 130,
+        "from": 129
+      },
+      {
+        "before": "2655045539870",
+        "after": "2655045539870",
+        "to": 131,
+        "from": 130
+      },
+      {
+        "before": "3334737198080",
+        "after": "2787797816870",
+        "to": 132,
+        "from": 131
+      },
+      {
+        "before": "4190764236830",
+        "after": "2927187707720",
+        "to": 133,
+        "from": 132
+      },
+      {
+        "before": "5269466951400",
+        "after": "3073547093110",
+        "to": 134,
+        "from": 133
+      },
+      {
+        "before": "6629516371560",
+        "after": "3227224447770",
+        "to": 135,
+        "from": 134
+      },
+      {
+        "before": "8345235208520",
+        "after": "3388585670160",
+        "to": 136,
+        "from": 135
+      },
+      {
+        "before": "10510823745140",
+        "after": "3558014953670",
+        "to": 137,
+        "from": 136
+      },
+      {
+        "before": "13245740083630",
+        "after": "3735915701360",
+        "to": 138,
+        "from": 137
+      },
+      {
+        "before": "16701553671450",
+        "after": "3922711486430",
+        "to": 139,
+        "from": 138
+      },
+      {
+        "before": "21070680111910",
+        "after": "4118847060760",
+        "to": 140,
+        "from": 139
+      },
+      {
+        "before": "26597519505270",
+        "after": "4324789413800",
+        "to": 141,
+        "from": 140
+      },
+      {
+        "before": "33592667135160",
+        "after": "4541028884490",
+        "to": 142,
+        "from": 141
+      },
+      {
+        "before": "42451053458710",
+        "after": "4768080328720",
+        "to": 143,
+        "from": 142
+      },
+      {
+        "before": "53675111993200",
+        "after": "5006484345160",
+        "to": 144,
+        "from": 143
+      },
+      {
+        "before": "67904384182600",
+        "after": "5256808562420",
+        "to": 145,
+        "from": 144
+      },
+      {
+        "before": "85953369498340",
+        "after": "5519648990550",
+        "to": 146,
+        "from": 145
+      },
+      {
+        "before": "108859942469650",
+        "after": "5795631440080",
+        "to": 147,
+        "from": 146
+      },
+      {
+        "before": "137947319097550",
+        "after": "6085413012090",
+        "to": 148,
+        "from": 147
+      },
+      {
+        "before": "174903405883790",
+        "after": "6389683662700",
+        "to": 149,
+        "from": 148
+      },
+      {
+        "before": "221882460704180",
+        "after": "6709167845840",
+        "to": 150,
+        "from": 149
+      },
+      {
+        "before": "281635407371820",
+        "after": "7044626238140",
+        "to": 151,
+        "from": 150
+      },
+      {
+        "before": "357676967362220",
+        "after": "7396857550050",
+        "to": 152,
+        "from": 151
+      },
+      {
+        "before": "454500122427180",
+        "after": "7766700427560",
+        "to": 153,
+        "from": 152
+      },
+      {
+        "before": "577851455653920",
+        "after": "8155035448940",
+        "to": 154,
+        "from": 153
+      },
+      {
+        "before": "735084836737360",
+        "after": "8562787221390",
+        "to": 155,
+        "from": 154
+      },
+      {
+        "before": "935615980199320",
+        "after": "8990926582460",
+        "to": 156,
+        "from": 155
+      },
+      {
+        "before": "1191506950783840",
+        "after": "9440472911590",
+        "to": 157,
+        "from": 156
+      },
+      {
+        "before": "1518218156688770",
+        "after": "9912496557170",
+        "to": 158,
+        "from": 157
+      },
+      {
+        "before": "1935576327962520",
+        "after": "10408121385030",
+        "to": 159,
+        "from": 158
+      },
+      {
+        "before": "2469021163949000",
+        "after": "10928527454290",
+        "to": 160,
+        "from": 159
+      },
+      {
+        "before": "3151211711548110",
+        "after": "11474953827010",
+        "to": 161,
+        "from": 160
+      },
+      {
+        "before": "4024097355646940",
+        "after": "12048701518370",
+        "to": 162,
+        "from": 161
+      },
+      {
+        "before": "5141589191310100",
+        "after": "12651136594290",
+        "to": 163,
+        "from": 162
+      },
+      {
+        "before": "6573007622170840",
+        "after": "13283693424010",
+        "to": 164,
+        "from": 163
+      },
+      {
+        "before": "8407534049518730",
+        "after": "13947878095220",
+        "to": 165,
+        "from": 164
+      },
+      {
+        "before": "10759962076574080",
+        "after": "14645271999990",
+        "to": 166,
+        "from": 165
+      },
+      {
+        "before": "13778131439053110",
+        "after": "15377535599990",
+        "to": 167,
+        "from": 166
+      },
+      {
+        "before": "17652541999714850",
+        "after": "16146412379990",
+        "to": 168,
+        "from": 167
+      },
+      {
+        "before": "22628793589434472",
+        "after": "16953732998990",
+        "to": 169,
+        "from": 168
+      },
+      {
+        "before": "29023690657808648",
+        "after": "17801419648940",
+        "to": 170,
+        "from": 169
+      },
+      {
+        "before": "37246102221165840",
+        "after": "18691490631390",
+        "to": 171,
+        "from": 170
+      },
+      {
+        "before": "47823995251976944",
+        "after": "19626065162960",
+        "to": 172,
+        "from": 171
+      },
+      {
+        "before": "61439486700214784",
+        "after": "20607368421110",
+        "to": 173,
+        "from": 172
+      },
+      {
+        "before": "78974316204456096",
+        "after": "21637736842170",
+        "to": 174,
+        "from": 173
+      },
+      {
+        "before": "101568868070551008",
+        "after": "22719623684280",
+        "to": 175,
+        "from": 174
+      },
+      {
+        "before": "130698819433185024",
+        "after": "23855604868500",
+        "to": 176,
+        "from": 175
+      },
+      {
+        "before": "168274730020225728",
+        "after": "25048385111930",
+        "to": 177,
+        "from": 176
+      },
+      {
+        "before": "216771507212054784",
+        "after": "26300804367530",
+        "to": 178,
+        "from": 177
+      },
+      {
+        "before": "279396795645617408",
+        "after": "27615844585910",
+        "to": 179,
+        "from": 178
+      },
+      {
+        "before": "360310107664588224",
+        "after": "28996636815210",
+        "to": 180,
+        "from": 179
+      },
+      {
+        "before": "464908131919618176",
+        "after": "30446468655980",
+        "to": 181,
+        "from": 180
+      },
+      {
+        "before": "600196398308227072",
+        "after": "31968792088780",
+        "to": 182,
+        "from": 181
+      },
+      {
+        "before": "775273687694736896",
+        "after": "33567231693220",
+        "to": 183,
+        "from": 182
+      },
+      {
+        "before": "1001963713976678144",
+        "after": "35245593277890",
+        "to": 184,
+        "from": 183
+      },
+      {
+        "before": "1295639278543242496",
+        "after": "37007872941790",
+        "to": 185,
+        "from": 184
+      },
+      {
+        "before": "1676298098579247104",
+        "after": "38858266588880",
+        "to": 186,
+        "from": 185
+      },
+      {
+        "before": "2169967888610835456",
+        "after": "40801179918330",
+        "to": 187,
+        "from": 186
+      },
+      {
+        "before": "2810542409328753664",
+        "after": "42841238914250",
+        "to": 188,
+        "from": 187
+      },
+      {
+        "before": "3642181908249132032",
+        "after": "44983300859970",
+        "to": 189,
+        "from": 188
+      },
+      {
+        "before": "4722453062235824128",
+        "after": "47232465902970",
+        "to": 190,
+        "from": 189
+      },
+      {
+        "before": "6126438357638534144",
+        "after": "49594089198120",
+        "to": 191,
+        "from": 190
+      },
+      {
+        "before": "7952116988214816768",
+        "after": "52073793658030",
+        "to": 192,
+        "from": 191
+      },
+      {
+        "before": "10327414332594581504",
+        "after": "54677483340940",
+        "to": 193,
+        "from": 192
+      },
+      {
+        "before": "13419442183773399040",
+        "after": "57411357507990",
+        "to": 194,
+        "from": 193
+      },
+      {
+        "before": "17446616783123795968",
+        "after": "60281925383390",
+        "to": 195,
+        "from": 194
+      },
+      {
+        "before": "22694559111487434752",
+        "after": "63296021652560",
+        "to": 196,
+        "from": 195
+      },
+      {
+        "before": "29536968683600891904",
+        "after": "66460822735190",
+        "to": 197,
+        "from": 196
+      },
+      {
+        "before": "38463040619785084928",
+        "after": "69783863871950",
+        "to": 198,
+        "from": 197
+      },
+      {
+        "before": "50113495623517978624",
+        "after": "73273057065550",
+        "to": 199,
+        "from": 198
+      },
+      {
+        "before": "65327952894818041856",
+        "after": "76936709918830",
+        "to": 200,
+        "from": 199
+      },
+      {
+        "before": "85207248960711180288",
+        "after": "80783545414780",
+        "to": 201,
+        "from": 200
+      },
+      {
+        "before": "85207248960961183744",
+        "after": "84822722685520",
+        "to": 202,
+        "from": 201
+      },
+      {
+        "before": "85207248961211187200",
+        "after": "89063858819800",
+        "to": 203,
+        "from": 202
+      },
+      {
+        "before": "85207248961461174272",
+        "after": "93517051760790",
+        "to": 204,
+        "from": 203
+      },
+      {
+        "before": "85207248961711177728",
+        "after": "98192904348830",
+        "to": 205,
+        "from": 204
+      },
+      {
+        "before": "85207248961961181184",
+        "after": "103102549566280",
+        "to": 206,
+        "from": 205
+      }
+    ],
+    "passed": 40044,
+    "earlyUnchanged": true,
+    "scanSeconds": 0.14703660015948117,
+    "restorationUnchanged": true,
+    "failures": [],
+    "format": [
+      {
+        "value": 999,
+        "text": "999"
+      },
+      {
+        "value": 1440,
+        "text": "1.44K"
+      },
+      {
+        "value": 999499,
+        "text": "999K"
+      },
+      {
+        "value": 999500,
+        "text": "1M"
+      },
+      {
+        "value": 1e+33,
+        "text": "1Dc"
+      },
+      {
+        "value": 1e+36,
+        "text": "1.00e36"
+      },
+      {
+        "value": 1e+100,
+        "text": "1.00e100"
+      },
+      {
+        "value": 3.65135278008665e+221,
+        "text": "3.65e221"
+      }
+    ],
+    "maxQ": 3.65135278008665e+221
+  },
+  "serviceCases": [
+    {
+      "ok": true,
+      "name": "boundary curve1 LV129 offset-0.25",
+      "result": [
+        {
+          "required": 2115068541280,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 129,
+            "LevelProgress": 2115068541279.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 2115068541279.75,
+          "level": 129,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2115068541280,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 129,
+            "LevelProgress": 2115068541279.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 2115068541279.75,
+          "level": 129,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV129 offset0",
+      "result": [
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV129 offset0.25",
+      "result": [
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV130 offset-0.25",
+      "result": [
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 2655045539869.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 2655045539869.75,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 2655045539869.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 2655045539869.75,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV130 offset0",
+      "result": [
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV130 offset0.25",
+      "result": [
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV131 offset-0.25",
+      "result": [
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 2787797816869.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 2787797816869.75,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 2787797816869.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 2787797816869.75,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV131 offset0",
+      "result": [
+        {
+          "required": 2927187707720,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 132,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 132,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2927187707720,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 132,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 132,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV131 offset0.25",
+      "result": [
+        {
+          "required": 2927187707720,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 132,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 132,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2927187707720,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 132,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 132,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV136 offset-0.25",
+      "result": [
+        {
+          "required": 3558014953670,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 3558014953669.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 3558014953669.75,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 3558014953670,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 3558014953669.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 3558014953669.75,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV136 offset0",
+      "result": [
+        {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV136 offset0.25",
+      "result": [
+        {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV199 offset-0.25",
+      "result": [
+        {
+          "required": 76936709918830,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 199,
+            "LevelProgress": 76936709918829.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 76936709918829.75,
+          "level": 199,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 76936709918830,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 199,
+            "LevelProgress": 76936709918829.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 76936709918829.75,
+          "level": 199,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV199 offset0",
+      "result": [
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV199 offset0.25",
+      "result": [
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV200 offset-0.25",
+      "result": [
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 80783545414779.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 80783545414779.75,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 80783545414779.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 80783545414779.75,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV200 offset0",
+      "result": [
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV200 offset0.25",
+      "result": [
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV201 offset-0.25",
+      "result": [
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 84822722685519.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 84822722685519.75,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 84822722685519.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 84822722685519.75,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV201 offset0",
+      "result": [
+        {
+          "required": 89063858819800,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 202,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 202,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 89063858819800,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 202,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 202,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve1 LV201 offset0.25",
+      "result": [
+        {
+          "required": 89063858819800,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 202,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 202,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 89063858819800,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 202,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0.25,
+          "level": 202,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "multi LV + fraction curve1",
+      "result": {
+        "required": 3227224447770,
+        "loaded": true,
+        "pending": false,
+        "strength": 8788532618700.5,
+        "curve": 1,
+        "saving": false,
+        "attributes": {
+          "Level": 134,
+          "LevelProgress": 0.5,
+          "Strength": 8788532618700.5,
+          "LevelCurveVersion": 1
+        },
+        "progress": 0.5,
+        "level": 134,
+        "rebirth": 0,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "zero/admin curve1",
+      "result": {
+        "required": 3558014953670,
+        "loaded": true,
+        "pending": false,
+        "strength": 100000000000000,
+        "curve": 1,
+        "saving": false,
+        "attributes": {
+          "Level": 136,
+          "LevelProgress": 123.5,
+          "Strength": 100000000000000,
+          "LevelCurveVersion": 1
+        },
+        "progress": 123.5,
+        "level": 136,
+        "rebirth": 0,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "saved excess load curve1",
+      "result": {
+        "second": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 9001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 441985046330,
+            "Strength": 9001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 441985046330,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "first": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 9001,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 441985046330,
+            "Strength": 9001,
+            "LevelCurveVersion": 1
+          },
+          "progress": 441985046330,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        }
+      }
+    },
+    {
+      "ok": true,
+      "name": "rebirth curve1",
+      "result": {
+        "required": 5,
+        "loaded": true,
+        "pending": false,
+        "strength": 0,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 1,
+          "LevelProgress": 0,
+          "Strength": 0,
+          "LevelCurveVersion": 2
+        },
+        "progress": 0,
+        "level": 1,
+        "rebirth": 1,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV129 offset-0.25",
+      "result": [
+        {
+          "required": 2115068541280,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 129,
+            "LevelProgress": 2115068541279.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 2115068541279.75,
+          "level": 129,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2115068541280,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 129,
+            "LevelProgress": 2115068541279.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 2115068541279.75,
+          "level": 129,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV129 offset0",
+      "result": [
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV129 offset0.25",
+      "result": [
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV130 offset-0.25",
+      "result": [
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 2655045539869.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 2655045539869.75,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2655045539870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 130,
+            "LevelProgress": 2655045539869.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 2655045539869.75,
+          "level": 130,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV130 offset0",
+      "result": [
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV130 offset0.25",
+      "result": [
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV131 offset-0.25",
+      "result": [
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 2787797816869.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 2787797816869.75,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2787797816870,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 131,
+            "LevelProgress": 2787797816869.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 2787797816869.75,
+          "level": 131,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV131 offset0",
+      "result": [
+        {
+          "required": 2927187707720,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 132,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 132,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2927187707720,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 132,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 132,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV131 offset0.25",
+      "result": [
+        {
+          "required": 2927187707720,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 132,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 132,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 2927187707720,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 132,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 132,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV136 offset-0.25",
+      "result": [
+        {
+          "required": 3558014953670,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 3558014953669.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 3558014953669.75,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 3558014953670,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 3558014953669.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 3558014953669.75,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV136 offset0",
+      "result": [
+        {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV136 offset0.25",
+      "result": [
+        {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV199 offset-0.25",
+      "result": [
+        {
+          "required": 76936709918830,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 199,
+            "LevelProgress": 76936709918829.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 76936709918829.75,
+          "level": 199,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 76936709918830,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 199,
+            "LevelProgress": 76936709918829.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 76936709918829.75,
+          "level": 199,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV199 offset0",
+      "result": [
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV199 offset0.25",
+      "result": [
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV200 offset-0.25",
+      "result": [
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 80783545414779.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 80783545414779.75,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 80783545414780,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 200,
+            "LevelProgress": 80783545414779.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 80783545414779.75,
+          "level": 200,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV200 offset0",
+      "result": [
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV200 offset0.25",
+      "result": [
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV201 offset-0.25",
+      "result": [
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 84822722685519.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 84822722685519.75,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 84822722685520,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 201,
+            "LevelProgress": 84822722685519.75,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 84822722685519.75,
+          "level": 201,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV201 offset0",
+      "result": [
+        {
+          "required": 89063858819800,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 202,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 202,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 89063858819800,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 202,
+            "LevelProgress": 0,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0,
+          "level": 202,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "boundary curve2 LV201 offset0.25",
+      "result": [
+        {
+          "required": 89063858819800,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 202,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 202,
+          "rebirth": 0,
+          "dirty": true
+        },
+        {
+          "required": 89063858819800,
+          "loaded": true,
+          "pending": false,
+          "strength": 1001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 202,
+            "LevelProgress": 0.25,
+            "Strength": 1001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 0.25,
+          "level": 202,
+          "rebirth": 0,
+          "dirty": true
+        }
+      ]
+    },
+    {
+      "ok": true,
+      "name": "multi LV + fraction curve2",
+      "result": {
+        "required": 3227224447770,
+        "loaded": true,
+        "pending": false,
+        "strength": 8788532618700.5,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 134,
+          "LevelProgress": 0.5,
+          "Strength": 8788532618700.5,
+          "LevelCurveVersion": 2
+        },
+        "progress": 0.5,
+        "level": 134,
+        "rebirth": 1,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "zero/admin curve2",
+      "result": {
+        "required": 3558014953670,
+        "loaded": true,
+        "pending": false,
+        "strength": 100000000000000,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 136,
+          "LevelProgress": 123.5,
+          "Strength": 100000000000000,
+          "LevelCurveVersion": 2
+        },
+        "progress": 123.5,
+        "level": 136,
+        "rebirth": 0,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "saved excess load curve2",
+      "result": {
+        "second": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 9001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 441985046330,
+            "Strength": 9001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 441985046330,
+          "level": 137,
+          "rebirth": 1,
+          "dirty": true
+        },
+        "first": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 9001,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 441985046330,
+            "Strength": 9001,
+            "LevelCurveVersion": 2
+          },
+          "progress": 441985046330,
+          "level": 137,
+          "rebirth": 1,
+          "dirty": true
+        }
+      }
+    },
+    {
+      "ok": true,
+      "name": "rebirth curve2",
+      "result": {
+        "required": 5,
+        "loaded": true,
+        "pending": false,
+        "strength": 0,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 1,
+          "LevelProgress": 0,
+          "Strength": 0,
+          "LevelCurveVersion": 2
+        },
+        "progress": 0,
+        "level": 1,
+        "rebirth": 1,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "new profile",
+      "result": {
+        "required": 5,
+        "loaded": true,
+        "pending": false,
+        "strength": 0,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 1,
+          "LevelProgress": 0,
+          "Strength": 0,
+          "LevelCurveVersion": 2
+        },
+        "progress": 0,
+        "level": 1,
+        "rebirth": 0,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "existing missing curve marker",
+      "result": {
+        "required": 3735915701360,
+        "loaded": true,
+        "pending": false,
+        "strength": 321,
+        "curve": 1,
+        "saving": false,
+        "attributes": {
+          "Level": 137,
+          "LevelProgress": 441985046330,
+          "Strength": 321,
+          "LevelCurveVersion": 1
+        },
+        "progress": 441985046330,
+        "level": 137,
+        "rebirth": 0,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "old format missing Level",
+      "result": {
+        "restoredLevel": 145,
+        "after": {
+          "required": 5795631440080,
+          "loaded": true,
+          "pending": false,
+          "strength": 105519648990550,
+          "curve": 1,
+          "saving": false,
+          "attributes": {
+            "Level": 146,
+            "LevelProgress": 0,
+            "Strength": 105519648990550,
+            "LevelCurveVersion": 1
+          },
+          "progress": 0,
+          "level": 146,
+          "rebirth": 0,
+          "dirty": true
+        }
+      }
+    },
+    {
+      "ok": true,
+      "name": "maximum cap",
+      "result": {
+        "required": 3.65135278008665e+221,
+        "loaded": true,
+        "pending": false,
+        "strength": 1.0780184398351062e+222,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 10000,
+          "LevelProgress": 7.3027055601733e+221,
+          "Strength": 1.0780184398351062e+222,
+          "LevelCurveVersion": 2
+        },
+        "progress": 7.3027055601733e+221,
+        "level": 10000,
+        "rebirth": 0,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "save retry FailBefore",
+      "result": {
+        "reason": "ReplicatedStorage.__LevelMemory:14: fixture failure before commit",
+        "after": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 777,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 441985046330,
+            "Strength": 777,
+            "LevelCurveVersion": 2
+          },
+          "progress": 441985046330,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "firstAccepted": false
+      }
+    },
+    {
+      "ok": true,
+      "name": "save retry FailAfter",
+      "result": {
+        "reason": "ReplicatedStorage.__LevelMemory:17: fixture lost acknowledgement",
+        "after": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 777,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 441985046330,
+            "Strength": 777,
+            "LevelCurveVersion": 2
+          },
+          "progress": 441985046330,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "firstAccepted": false
+      }
+    },
+    {
+      "ok": true,
+      "name": "save pending + concurrent gain",
+      "result": {
+        "required": 3735915701360,
+        "loaded": true,
+        "pending": false,
+        "strength": 1003,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 137,
+          "LevelProgress": 1,
+          "Strength": 1003,
+          "LevelCurveVersion": 2
+        },
+        "progress": 1,
+        "level": 137,
+        "rebirth": 0,
+        "dirty": true
+      }
+    },
+    {
+      "ok": true,
+      "name": "durable reward retry FailBefore",
+      "result": {
+        "before": {
+          "required": 3558014953670,
+          "loaded": true,
+          "pending": true,
+          "strength": 1000,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 3558014953660,
+            "Strength": 1000,
+            "LevelCurveVersion": 2
+          },
+          "progress": 3558014953660,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": false
+        },
+        "first": false,
+        "after": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1020,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 10,
+            "Strength": 1020,
+            "LevelCurveVersion": 2
+          },
+          "progress": 10,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "reason": "InventorySavePending"
+      }
+    },
+    {
+      "ok": true,
+      "name": "durable reward retry FailAfter",
+      "result": {
+        "before": {
+          "required": 3558014953670,
+          "loaded": true,
+          "pending": true,
+          "strength": 1000,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 136,
+            "LevelProgress": 3558014953660,
+            "Strength": 1000,
+            "LevelCurveVersion": 2
+          },
+          "progress": 3558014953660,
+          "level": 136,
+          "rebirth": 0,
+          "dirty": false
+        },
+        "first": false,
+        "after": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1020,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 10,
+            "Strength": 1020,
+            "LevelCurveVersion": 2
+          },
+          "progress": 10,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "reason": "InventorySavePending"
+      }
+    },
+    {
+      "ok": true,
+      "name": "reward pending + concurrent gain + rebirth guard",
+      "result": {
+        "after": {
+          "required": 3735915701360,
+          "loaded": true,
+          "pending": false,
+          "strength": 1023,
+          "curve": 2,
+          "saving": false,
+          "attributes": {
+            "Level": 137,
+            "LevelProgress": 13,
+            "Strength": 1023,
+            "LevelCurveVersion": 2
+          },
+          "progress": 13,
+          "level": 137,
+          "rebirth": 0,
+          "dirty": true
+        },
+        "duplicateReason": "DataSaving"
+      }
+    }
+  ],
+  "fixtureCorrection": {
+    "initialPassed": 57,
+    "initialFailed": 3,
+    "failures": [
+      {
+        "ok": false,
+        "error": "ServerScriptService.LevelServiceChecks:135: RewardUnavailable",
+        "name": "durable reward retry FailBefore"
+      },
+      {
+        "ok": false,
+        "error": "ServerScriptService.LevelServiceChecks:135: RewardUnavailable",
+        "name": "durable reward retry FailAfter"
+      },
+      {
+        "ok": false,
+        "error": "ServerScriptService.LevelServiceChecks:152: RewardUnavailable",
+        "name": "reward pending + concurrent gain + rebirth guard"
+      }
+    ],
+    "cause": "Fixture injected free reward only into live data. Normal Save correctly retains durable journal. Seeded memory datastore reward as well; all three retested successfully. No product change made for these failures."
+  },
+  "additional": {
+    "smallGain": {
+      "q": 10117274128894480,
+      "strengthDelta": 0,
+      "after": {
+        "required": 10623137835339210,
+        "loaded": true,
+        "pending": false,
+        "strength": 10117274128894480,
+        "curve": 2,
+        "saving": false,
+        "attributes": {
+          "Level": 300,
+          "LevelProgress": 10117274128894480,
+          "Strength": 10117274128894480,
+          "LevelCurveVersion": 2
+        },
+        "progress": 10117274128894480,
+        "level": 300,
+        "rebirth": 0,
+        "dirty": true
+      },
+      "progressDelta": 0
+    },
+    "multipleLoad": {
+      "required": 3227224447770,
+      "loaded": true,
+      "pending": false,
+      "strength": 1234,
+      "curve": 1,
+      "saving": false,
+      "attributes": {
+        "Level": 134,
+        "LevelProgress": 0.5,
+        "Strength": 1234,
+        "LevelCurveVersion": 1
+      },
+      "progress": 0.5,
+      "level": 134,
+      "rebirth": 0,
+      "dirty": true
+    },
+    "precision": [
+      {
+        "value": "10117274128894480",
+        "level": 299,
+        "plus1Delta": 0,
+        "mod10": 0
+      },
+      {
+        "value": "11154294727106170",
+        "level": 301,
+        "plus1Delta": 2,
+        "mod10": 0
+      },
+      {
+        "value": "18169170746475248",
+        "level": 311,
+        "plus1Delta": 0,
+        "mod10": 8
+      },
+      {
+        "value": "74786770448132736",
+        "level": 340,
+        "plus1Delta": 0,
+        "mod10": 0
+      },
+      {
+        "value": "365135278008665032962760921693147948785792850234858936297771266857824467749525174542229553166058834954931599741193515995808245956631595504797132786125552898583367994072483071770720260011786121536325989669484248865760608256",
+        "level": 10000,
+        "plus1Delta": 0,
+        "mod10": 0
+      }
+    ],
+    "rebirthRetry": {
+      "required": 5,
+      "loaded": true,
+      "pending": false,
+      "strength": 0,
+      "curve": 2,
+      "saving": false,
+      "attributes": {
+        "Level": 1,
+        "LevelProgress": 0,
+        "Strength": 0,
+        "LevelCurveVersion": 2
+      },
+      "progress": 0,
+      "level": 1,
+      "rebirth": 2,
+      "dirty": true
+    }
+  },
+  "hud": [
+    {
+      "device": "average_windows",
+      "case": "carry example",
+      "required": 3735915701360,
+      "expectedRatio": 0.11830701805426243,
+      "progress": 441985046330,
+      "fillMatch": true,
+      "strength": 9001,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        1366,
+        763
+      ],
+      "level": 137,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.4029846191406,
+            550.4403076171875,
+            178.95521545410156,
+            53.68656539916992
+          ],
+          "text": "Lv.137",
+          "bounds": [
+            103,
+            43
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            536.3582763671875,
+            550.4403076171875,
+            484.80596923828125,
+            53.68656539916992
+          ],
+          "text": "442B / 3.74T",
+          "bounds": [
+            205,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 57,
+          "rect": [
+            760.8656616210938,
+            480.485107421875,
+            47.17910385131836,
+            68.32835388183594
+          ],
+          "text": "9K",
+          "bounds": [
+            47,
+            46
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 57,
+          "rect": [
+            817.8059692382812,
+            480.485107421875,
+            227.7611846923828,
+            68.32835388183594
+          ],
+          "text": "Strength",
+          "bounds": [
+            166,
+            46
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 0.11830701678991318
+    },
+    {
+      "device": "average_windows",
+      "case": "LV131",
+      "required": 2787797816870,
+      "expectedRatio": 0.9999999999999103,
+      "progress": 2787797816869.75,
+      "fillMatch": true,
+      "strength": 100000000000000,
+      "curve": 1,
+      "textMatch": true,
+      "viewport": [
+        1366,
+        763
+      ],
+      "level": 131,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.4029846191406,
+            550.4403076171875,
+            178.95521545410156,
+            53.68656539916992
+          ],
+          "text": "Lv.131",
+          "bounds": [
+            98,
+            43
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            536.3582763671875,
+            550.4403076171875,
+            484.80596923828125,
+            53.68656539916992
+          ],
+          "text": "2.79T / 2.79T",
+          "bounds": [
+            213,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 57,
+          "rect": [
+            760.8656005859375,
+            480.485107421875,
+            91.91790771484375,
+            68.32835388183594
+          ],
+          "text": "100T",
+          "bounds": [
+            92,
+            46
+          ],
+          "fits": false
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 57,
+          "rect": [
+            862.5447998046875,
+            480.485107421875,
+            183.0223846435547,
+            68.32835388183594
+          ],
+          "text": "Strength",
+          "bounds": [
+            166,
+            46
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 1
+    },
+    {
+      "device": "average_windows",
+      "case": "LV201",
+      "required": 84822722685520,
+      "expectedRatio": 0.5,
+      "progress": 42411361342760,
+      "fillMatch": true,
+      "strength": 1000000000000000,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        1366,
+        763
+      ],
+      "level": 201,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.4029846191406,
+            550.4403076171875,
+            178.95521545410156,
+            53.68656539916992
+          ],
+          "text": "Lv.201",
+          "bounds": [
+            105,
+            43
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            536.3582763671875,
+            550.4403076171875,
+            484.80596923828125,
+            53.68656539916992
+          ],
+          "text": "42.4T / 84.8T",
+          "bounds": [
+            215,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 57,
+          "rect": [
+            760.8656616210938,
+            480.485107421875,
+            71.58208465576172,
+            68.32835388183594
+          ],
+          "text": "1Qa",
+          "bounds": [
+            71,
+            46
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 57,
+          "rect": [
+            842.208984375,
+            480.485107421875,
+            203.3582000732422,
+            68.32835388183594
+          ],
+          "text": "Strength",
+          "bounds": [
+            166,
+            46
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 0.5
+    },
+    {
+      "device": "average_windows",
+      "case": "LV9999",
+      "required": 3.477478838177762e+221,
+      "expectedRatio": 0.028756465431835992,
+      "progress": 1e+220,
+      "fillMatch": true,
+      "strength": 1e+221,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        1366,
+        763
+      ],
+      "level": 9999,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.4029846191406,
+            550.4403076171875,
+            178.95521545410156,
+            53.68656539916992
+          ],
+          "text": "Lv.9999",
+          "bounds": [
+            126,
+            43
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            536.3582763671875,
+            550.4403076171875,
+            484.80596923828125,
+            53.68656539916992
+          ],
+          "text": "1.00e220 / 3.48e221",
+          "bounds": [
+            312,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 48,
+          "rect": [
+            760.8656616210938,
+            480.485107421875,
+            136.65670776367188,
+            68.32835388183594
+          ],
+          "text": "1.00e221",
+          "bounds": [
+            133,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 48,
+          "rect": [
+            905.65673828125,
+            480.485107421875,
+            139.9104461669922,
+            68.32835388183594
+          ],
+          "text": "Strength",
+          "bounds": [
+            141,
+            39
+          ],
+          "fits": false
+        }
+      ],
+      "fill": 0.028756465762853622
+    },
+    {
+      "device": "average_windows",
+      "case": "LV10000",
+      "required": 3.65135278008665e+221,
+      "expectedRatio": 1,
+      "progress": 1e+100,
+      "fillMatch": true,
+      "strength": 1e+100,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        1366,
+        763
+      ],
+      "level": 10000,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.4029846191406,
+            550.4403076171875,
+            178.95521545410156,
+            53.68656539916992
+          ],
+          "text": "Lv.10000",
+          "bounds": [
+            149,
+            43
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            536.3582763671875,
+            550.4403076171875,
+            484.80596923828125,
+            53.68656539916992
+          ],
+          "text": "1.00e100 / MAX",
+          "bounds": [
+            245,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 48,
+          "rect": [
+            760.8656616210938,
+            480.485107421875,
+            136.65670776367188,
+            68.32835388183594
+          ],
+          "text": "1.00e100",
+          "bounds": [
+            133,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 48,
+          "rect": [
+            905.65673828125,
+            480.485107421875,
+            139.9104461669922,
+            68.32835388183594
+          ],
+          "text": "Strength",
+          "bounds": [
+            141,
+            39
+          ],
+          "fits": false
+        }
+      ],
+      "fill": 1
+    },
+    {
+      "device": "iphone_17_pro",
+      "case": "max magnitude",
+      "required": 3.477478838177762e+221,
+      "expectedRatio": 0.5000749338596279,
+      "progress": 1.739e+221,
+      "fillMatch": true,
+      "strength": 3.65135278008665e+221,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        747,
+        380
+      ],
+      "level": 9999,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            211.15350341796875,
+            244.50106811523438,
+            89.12580108642578,
+            26.73773956298828
+          ],
+          "text": "Lv.9999",
+          "bounds": [
+            62,
+            21
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            300.2793273925781,
+            244.50106811523438,
+            241.44989013671875,
+            26.73773956298828
+          ],
+          "text": "1.74e221 / 3.48e221",
+          "bounds": [
+            153,
+            19
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 48,
+          "rect": [
+            412.0916748046875,
+            209.66098022460938,
+            68.05970001220703,
+            34.029850006103516
+          ],
+          "text": "3.65e221",
+          "bounds": [
+            68,
+            19
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 48,
+          "rect": [
+            484.2025146484375,
+            209.66098022460938,
+            69.68016815185547,
+            34.029850006103516
+          ],
+          "text": "Strength",
+          "bounds": [
+            69,
+            19
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 0.5000749230384827
+    },
+    {
+      "device": "iphone_17_pro",
+      "case": "LV137",
+      "required": 3735915701360,
+      "expectedRatio": 0.11830701805426243,
+      "progress": 441985046330,
+      "fillMatch": true,
+      "strength": 9001,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        747,
+        380
+      ],
+      "level": 137,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            211.15350341796875,
+            244.50106811523438,
+            89.12580108642578,
+            26.73773956298828
+          ],
+          "text": "Lv.137",
+          "bounds": [
+            50,
+            21
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            300.2793273925781,
+            244.50106811523438,
+            241.44989013671875,
+            26.73773956298828
+          ],
+          "text": "442B / 3.74T",
+          "bounds": [
+            103,
+            19
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 57,
+          "rect": [
+            412.0916748046875,
+            209.66098022460938,
+            23.496801376342773,
+            34.029850006103516
+          ],
+          "text": "9K",
+          "bounds": [
+            24,
+            23
+          ],
+          "fits": false
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 57,
+          "rect": [
+            440.44989013671875,
+            209.66098022460938,
+            113.4328384399414,
+            34.029850006103516
+          ],
+          "text": "Strength",
+          "bounds": [
+            84,
+            23
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 0.11830701678991318
+    },
+    {
+      "device": "ipad_pro_M5_13in",
+      "case": "LV137",
+      "required": 3735915701360,
+      "expectedRatio": 0.11830701805426243,
+      "progress": 441985046330,
+      "fillMatch": true,
+      "strength": 9001,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        1371,
+        1030
+      ],
+      "level": 137,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.54058837890625,
+            817.068603515625,
+            179.96420288085938,
+            53.989261627197266
+          ],
+          "text": "Lv.137",
+          "bounds": [
+            105,
+            44
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            537.5047607421875,
+            817.068603515625,
+            487.53936767578125,
+            53.989261627197266
+          ],
+          "text": "442B / 3.74T",
+          "bounds": [
+            205,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 57,
+          "rect": [
+            763.2780151367188,
+            746.718994140625,
+            47.445106506347656,
+            68.7136001586914
+          ],
+          "text": "9K",
+          "bounds": [
+            47,
+            46
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 57,
+          "rect": [
+            820.539306640625,
+            746.718994140625,
+            229.04534912109375,
+            68.7136001586914
+          ],
+          "text": "Strength",
+          "bounds": [
+            166,
+            46
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 0.11830701678991318
+    },
+    {
+      "device": "ipad_pro_M5_13in",
+      "case": "LV9999",
+      "required": 3.477478838177762e+221,
+      "expectedRatio": 0.5000749338596279,
+      "progress": 1.739e+221,
+      "fillMatch": true,
+      "strength": 3.65135278008665e+221,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        1371,
+        1030
+      ],
+      "level": 9999,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.54058837890625,
+            817.068603515625,
+            179.96420288085938,
+            53.989261627197266
+          ],
+          "text": "Lv.9999",
+          "bounds": [
+            130,
+            44
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            537.5047607421875,
+            817.068603515625,
+            487.53936767578125,
+            53.989261627197266
+          ],
+          "text": "1.74e221 / 3.48e221",
+          "bounds": [
+            304,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 48,
+          "rect": [
+            763.2780151367188,
+            746.718994140625,
+            137.4272003173828,
+            68.7136001586914
+          ],
+          "text": "3.65e221",
+          "bounds": [
+            137,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 48,
+          "rect": [
+            908.8853759765625,
+            746.718994140625,
+            140.69927978515625,
+            68.7136001586914
+          ],
+          "text": "Strength",
+          "bounds": [
+            141,
+            39
+          ],
+          "fits": false
+        }
+      ],
+      "fill": 0.5000749230384827
+    },
+    {
+      "device": "ipad_pro_M5_13in",
+      "case": "early curve1",
+      "required": 7,
+      "expectedRatio": 0.5,
+      "progress": 3.5,
+      "fillMatch": true,
+      "strength": 3.5,
+      "curve": 1,
+      "textMatch": true,
+      "viewport": [
+        1371,
+        1030
+      ],
+      "level": 1,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.54058837890625,
+            817.068603515625,
+            179.96420288085938,
+            53.989261627197266
+          ],
+          "text": "Lv.1",
+          "bounds": [
+            61,
+            44
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            537.5047607421875,
+            817.068603515625,
+            487.53936767578125,
+            53.989261627197266
+          ],
+          "text": "4 / 7",
+          "bounds": [
+            72,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 57,
+          "rect": [
+            763.2780151367188,
+            746.718994140625,
+            22.9045352935791,
+            68.7136001586914
+          ],
+          "text": "4",
+          "bounds": [
+            23,
+            46
+          ],
+          "fits": false
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 57,
+          "rect": [
+            795.998779296875,
+            746.718994140625,
+            253.58592224121094,
+            68.7136001586914
+          ],
+          "text": "Strength",
+          "bounds": [
+            166,
+            46
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 0.5
+    },
+    {
+      "device": "ipad_pro_M5_13in",
+      "case": "early curve2",
+      "required": 5,
+      "expectedRatio": 0.7,
+      "progress": 3.5,
+      "fillMatch": true,
+      "strength": 3.5,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        1371,
+        1030
+      ],
+      "level": 1,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.54058837890625,
+            817.068603515625,
+            179.96420288085938,
+            53.989261627197266
+          ],
+          "text": "Lv.1",
+          "bounds": [
+            61,
+            44
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            537.5047607421875,
+            817.068603515625,
+            487.53936767578125,
+            53.989261627197266
+          ],
+          "text": "4 / 5",
+          "bounds": [
+            71,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 57,
+          "rect": [
+            763.2780151367188,
+            746.718994140625,
+            22.9045352935791,
+            68.7136001586914
+          ],
+          "text": "4",
+          "bounds": [
+            23,
+            46
+          ],
+          "fits": false
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 57,
+          "rect": [
+            795.998779296875,
+            746.718994140625,
+            253.58592224121094,
+            68.7136001586914
+          ],
+          "text": "Strength",
+          "bounds": [
+            166,
+            46
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 0.699999988079071
+    },
+    {
+      "device": "ipad_pro_M5_13in",
+      "case": "after native triple LVUP",
+      "required": 3227224447770,
+      "expectedRatio": 1.5493189522206866e-13,
+      "progress": 0.5,
+      "fillMatch": true,
+      "strength": 8788532618700.5,
+      "curve": 2,
+      "textMatch": true,
+      "viewport": [
+        1371,
+        1030
+      ],
+      "level": 134,
+      "labels": [
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Level",
+          "font": 54,
+          "rect": [
+            357.54058837890625,
+            817.068603515625,
+            179.96420288085938,
+            53.989261627197266
+          ],
+          "text": "Lv.134",
+          "bounds": [
+            106,
+            44
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.LevelPanel.StrengthProgressBar.Exp",
+          "font": 48,
+          "rect": [
+            537.5047607421875,
+            817.068603515625,
+            487.53936767578125,
+            53.989261627197266
+          ],
+          "text": "1 / 3.23T",
+          "bounds": [
+            138,
+            39
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.Strength",
+          "font": 57,
+          "rect": [
+            763.2780151367188,
+            746.718994140625,
+            104.7064437866211,
+            68.7136001586914
+          ],
+          "text": "8.79T",
+          "bounds": [
+            104,
+            46
+          ],
+          "fits": true
+        },
+        {
+          "path": "PlayerGui.StrengthGui.StrengthLevelHUD.StrengthValueContainer.StrengthUnit",
+          "font": 57,
+          "rect": [
+            877.8006591796875,
+            746.718994140625,
+            171.7840118408203,
+            68.7136001586914
+          ],
+          "text": "Strength",
+          "bounds": [
+            166,
+            46
+          ],
+          "fits": true
+        }
+      ],
+      "fill": 1.5493189413698372e-13
+    }
+  ],
+  "sourceCheck": {
+    "count": 78,
+    "mismatches": []
+  },
+  "console": "Native Play output empty after before and after tests; intentionally injected save exceptions were caught and returned as failure reasons.",
+  "cleanup": {
+    "ownPlayStopped": true,
+    "ownSourceContainersRemoved": true,
+    "canonicalHelpersAdded": 0,
+    "savePublish": false,
+    "canonicalState": "unsaved Edit"
+  }
+}

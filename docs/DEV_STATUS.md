@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-13 — LV131以降+5%と旧形式復元の分離
+
+LevelRequirementsとStrengthHUDPresentationの2 Sourceを現行未保存Studioへ反映。Q(1〜130)両曲線維持、Q(131+)毎LV+5%、LV201以降も継続。旧プロフィールCalculateLevelは旧表・旧線形式を保持する。追加保存項目なし。
+
+40,044数値assertion、最終60件のネイティブサービス境界／保存故障／報酬再送ケース、追加の複数LV読込・再生保存再試行を実施。実StrengthDisplayの12状態を3画面種別で確認。メモリ保存を使う隔離Playであり、実機・本番DataStore・公開環境は未確認。高LVの浮動小数点限界と既存ラベルの微小幅超過を記録。78 Source/editor照合、補助清掃、正本未保存Edit・Save/Publishなし。[報告・表・証拠](../reports/LevelGrowth5Pct_20261113/REPORT.md)。
+
 ## 2026-11-13 - World2 Treadmill physical support for scaled R15
 
 World2 R15 occupancy now checks the current treadmill's collidable support surface within the existing root footprint and standing-height tolerance. Reject Jumping/Freefall, jump requests and vertical motion; do not rely on server FloorMaterial alone when a client-owned rig is grounded. World1/R6 rules, access checks, rewards and the0.5-second session timer remain unchanged.

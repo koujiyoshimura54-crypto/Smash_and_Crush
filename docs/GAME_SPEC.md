@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-13 — 高LV必要量と既存進捗の繰越
+
+両育成サイクルのQ(131+)を毎LV+5%・10単位切上げに統一。序盤Q(1〜130)と曲線1／2の選択、再生条件は維持する。既存のLevelProgression.Normalize→Advance(gain=0)で保存済み進捗を消費し、余りを繰り越す。LevelProgressVersion=1とLevelCurveVersionを継続し、新フラグなし。例LV136／進捗4兆→LV137／441985046330、所持Strengthは不変。
+
+Level自体が未保存の旧形式のみ、変更前の歴史的閾値とLV201以降線形式によるCalculateLevelを使用する。復元後は新しい通常必要量で進む。保存・報酬スナップショット・所有権・再試行の仕組みは変更しない。[経路、ネイティブサービス検証、未確認範囲](../reports/LevelGrowth5Pct_20261113/REPORT.md)。
+
 ## 2026-11-13 — World2 Treadmillの支持面判定
 
 World2のR15はRootが既存AreaのX/Z内にあり、生存・利用資格を満たす場合に、同じ台の衝突面をRoot直下で確認する。立位高さはHipHeight＋Root半高。高さ許容はArea半高（現在0.4 studs）、支持面はArea上端以下かつ上向き。サーバーFloorMaterialだけでは拒否しない。Jump要求・Jumping・Freefall・上下速度の絶対値が1 stud/sを超える状態は停止する。アニメーションの足裏位置をWorld2の継続条件としない。

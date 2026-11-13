@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-13 — 高LV必要量の表示
+
+StrengthDisplayは既存の複製属性と共通LevelRequirementsでLV／進捗／分母／ゲージを更新する。既存略記上限を超える1e36以上だけStrengthHUDPresentation.Numberで有効数字3桁の指数表記を使用（例1e100→1.00e100）。フォント、最小48、配置、既存略記は維持。
+
+隔離ネイティブPlayのPC・スマホ横・タブレット横エミュレーター12状態で表示値とゲージ一致。巨大Dc文字列のはみ出しを改善。所持Strength／単位ラベルには最大約1.1pxの既存縮尺端数差が残るため、TextFits完全一致とはしない。実機未確認。[実測・画面区分・限界](../reports/LevelGrowth5Pct_20261113/REPORT.md)。
+
 ## 2026-11-13 - Stop completed Stage1 Trophy navigation
 
 TutorialGuideClient now requires explicit TutorialCompleted=false before initial Trophy, wall or treadmill navigation, for both tutorial cohorts. Keep the FirstBattle Complete exception before the first Trophy receipt and retain the earlier Merge/Equip branches and later guides. One client line changed; reward, completion/save and Trophy presentation Sources are unchanged. Actual client state/event logic passes24/24 mocked cases (before9/24), with syntax and Studio Source/editor checks. No Play or rendered/reward acceptance; no Save/Publish. [Scope and evidence](../reports/Stage1TrophyGuideCompletion_20261113/REPORT.md).
