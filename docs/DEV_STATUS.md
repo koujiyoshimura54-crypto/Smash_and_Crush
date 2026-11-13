@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-13 - Equipment contact investigation only
+
+Read-only investigation of the current unsaved canonical Studio and main49f7090. User clarified that the treadmill symptom is World2 only, maximum Body, certain avatars, with barely visible animation and no observed Strength increase. Actual-foot and World2 support-ray fixes remain. Repeated occupancy loss before the0.5-second tick is a leading candidate, not a reproduced cause. Fixed root reach on Dumbbell stands and the thin Trophy overlap volume are separate growth-related candidates; the measured Merge height does not explain the historical maximum-body sample.
+
+Captured current geometry,15 Source/editor comparisons and63 static World2 support rays. No current-avatar Play reproduction, device/public test, code/geometry/config change, helper injection, Play control, Save/Publish, reset or live data/payment action. PR#1 remains open/draft/unmerged. [Facts, Full Paths, uncertainty and proposed next tests](../reports/EquipmentContactInvestigation_20261113/REPORT.md).
+
 ## 2026-11-13 — Phase 2：初回戦闘・マージ・装備
 
 正本Place126576845524886 / Universe10765181857、Phase 1基準bc79c97から19 SourcesとStage1の壁3 Partだけを変更。新規Stone×2と対象識別の同時保存、保存確定までのStone売却制限、初回60秒Win×1と旧履歴互換、LV2初戦→帰還→マージ・装備→必要時LV4再戦を実装した。指画像・入力経路・既存ファネルを保持。

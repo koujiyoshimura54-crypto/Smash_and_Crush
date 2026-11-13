@@ -1,5 +1,11 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-13 - Equipment contact investigation only
+
+Read-only investigation of the current unsaved canonical Studio and main49f7090. User clarified that the treadmill symptom is World2 only, maximum Body, certain avatars, with barely visible animation and no observed Strength increase. Actual-foot and World2 support-ray fixes remain. Repeated occupancy loss before the0.5-second tick is a leading candidate, not a reproduced cause. Fixed root reach on Dumbbell stands and the thin Trophy overlap volume are separate growth-related candidates; the measured Merge height does not explain the historical maximum-body sample.
+
+Captured current geometry,15 Source/editor comparisons and63 static World2 support rays. No current-avatar Play reproduction, device/public test, code/geometry/config change, helper injection, Play control, Save/Publish, reset or live data/payment action. PR#1 remains open/draft/unmerged. [Facts, Full Paths, uncertainty and proposed next tests](../reports/EquipmentContactInvestigation_20261113/REPORT.md).
+
 ## 2026-11-13 — Phase 2：初戦とマージ・装備の接続
 
 Applied the new-profile Stone/cohort transaction, protected Stone sales until confirmed Ore merge, first 60-second Win reward with verified legacy claim aliases, one HP50 World1 Stage1 wall, and fact-based LV2 battle / return / merge / equip / conditional LV4 retry guidance. Boss HP200, authored arena/floors, remaining stages, progression gains, Phase 1 image/input handling and existing funnels are retained.
