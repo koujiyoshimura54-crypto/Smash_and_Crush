@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-13 - Stop completed Stage1 Trophy navigation
+
+TutorialGuideClient now requires explicit TutorialCompleted=false before initial Trophy, wall or treadmill navigation, for both tutorial cohorts. Keep the FirstBattle Complete exception before the first Trophy receipt and retain the earlier Merge/Equip branches and later guides. One client line changed; reward, completion/save and Trophy presentation Sources are unchanged. Actual client state/event logic passes24/24 mocked cases (before9/24), with syntax and Studio Source/editor checks. No Play or rendered/reward acceptance; no Save/Publish. [Scope and evidence](../reports/Stage1TrophyGuideCompletion_20261113/REPORT.md).
+
 ## 2026-11-13 — Phase 2：初戦後および自主マージの案内
 
 既存OreMerge / Equipmentガイドを新導線の事実で起動し、TutorialCompletedを早期にtrueにしない。初戦前でも自分でショップを開けばOre→生成→最良装備を案内する。閉じただけで完了せず、強制再表示しない。初戦後はLobbyで再評価する。新導線中のPet・PetMerge・上位Ore・Item装備案内を待機し、既存Coordinatorで画面内の案内を一つにする。

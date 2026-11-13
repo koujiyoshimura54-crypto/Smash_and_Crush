@@ -411,7 +411,7 @@ local function refresh()
   return
  elseif phase=="Equip" or phase=="Waiting" then hide();return end
  local legacy=phase=="Legacy"
- if (legacy and player:GetAttribute("TutorialCompleted")~=false)
+ if player:GetAttribute("TutorialCompleted")~=false
   or phase=="Complete" and not (stage1Defeated and trophy) then
   local egg=player:GetAttribute("EggTutorialTarget")
   local pet=player:GetAttribute("PetMergeTutorialTarget")

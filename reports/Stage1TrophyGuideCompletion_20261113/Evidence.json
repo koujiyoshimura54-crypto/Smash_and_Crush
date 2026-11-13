@@ -1,0 +1,270 @@
+{
+  "Baseline": "3583c1cd5779212b34f1cf4e2ff9bc7a4377c86d",
+  "PlaceId": 126576845524886,
+  "StudioId": "f80707a4-0320-442f-803c-78a5775d0da0",
+  "Source": "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient",
+  "ChangedLines": [
+    414
+  ],
+  "Kind": "Mocked client state/events using actual Source tail; not Play or rendered UI",
+  "Before": {
+    "Passed": 9,
+    "Total": 24,
+    "Cases": [
+      {
+        "Name": "first victory, initial Trophy pending",
+        "Passed": true
+      },
+      {
+        "Name": "loss then merge/equip victory: FirstBattle Complete, Trophy pending",
+        "Passed": true
+      },
+      {
+        "Name": "TrophySpawn then first receipt completion removes guide immediately",
+        "Passed": false
+      },
+      {
+        "Name": "complete cohort retains no Trophy guide on repeat Stage1 defeat",
+        "Passed": false
+      },
+      {
+        "Name": "completion before TrophySpawn",
+        "Passed": false
+      },
+      {
+        "Name": "TrophySpawn before completion while FirstBattle Complete",
+        "Passed": false
+      },
+      {
+        "Name": "legacy initial unreceived Trophy preserved",
+        "Passed": true
+      },
+      {
+        "Name": "legacy complete profile restored and repeated TrophySpawn",
+        "Passed": true
+      },
+      {
+        "Name": "new cohort complete profile restored before first event",
+        "Passed": false
+      },
+      {
+        "Name": "Stage2 completion before merge/equip prevents later Stage1 guide",
+        "Passed": false
+      },
+      {
+        "Name": "completed death and respawn do not restart guide",
+        "Passed": false
+      },
+      {
+        "Name": "completed World round trip and Initialize do not restart guide",
+        "Passed": false
+      },
+      {
+        "Name": "unknown completion attribute never permits Trophy",
+        "Passed": false
+      },
+      {
+        "Name": "unknown completion with FirstBattle Complete never permits Trophy",
+        "Passed": false
+      },
+      {
+        "Name": "completed Battle phase does not fall back to walls",
+        "Passed": false
+      },
+      {
+        "Name": "completed Train phase does not fall back to treadmill",
+        "Passed": false
+      },
+      {
+        "Name": "completed initial receipt still permits pending Merge",
+        "Passed": true
+      },
+      {
+        "Name": "completed initial receipt retains Equip branch",
+        "Passed": true
+      },
+      {
+        "Name": "completed profile preserves later BasicEgg",
+        "Passed": false
+      },
+      {
+        "Name": "completed profile preserves later PetMerge",
+        "Passed": false
+      },
+      {
+        "Name": "completed profile preserves later OreMerge",
+        "Passed": false
+      },
+      {
+        "Name": "initial Trophy existing visibility gates remain",
+        "Passed": true
+      },
+      {
+        "Name": "unmatched or removed Trophy does not create a guide",
+        "Passed": true
+      },
+      {
+        "Name": "explicit existing reset re-enables initial tutorial",
+        "Passed": true
+      }
+    ]
+  },
+  "After": {
+    "Kind": "Mocked client state/events using actual Source tail; not Play or rendered UI",
+    "Total": 24,
+    "Passed": 24,
+    "Cases": [
+      {
+        "Name": "first victory, initial Trophy pending",
+        "Passed": true
+      },
+      {
+        "Name": "loss then merge/equip victory: FirstBattle Complete, Trophy pending",
+        "Passed": true
+      },
+      {
+        "Name": "TrophySpawn then first receipt completion removes guide immediately",
+        "Passed": true
+      },
+      {
+        "Name": "complete cohort retains no Trophy guide on repeat Stage1 defeat",
+        "Passed": true
+      },
+      {
+        "Name": "completion before TrophySpawn",
+        "Passed": true
+      },
+      {
+        "Name": "TrophySpawn before completion while FirstBattle Complete",
+        "Passed": true
+      },
+      {
+        "Name": "legacy initial unreceived Trophy preserved",
+        "Passed": true
+      },
+      {
+        "Name": "legacy complete profile restored and repeated TrophySpawn",
+        "Passed": true
+      },
+      {
+        "Name": "new cohort complete profile restored before first event",
+        "Passed": true
+      },
+      {
+        "Name": "Stage2 completion before merge/equip prevents later Stage1 guide",
+        "Passed": true
+      },
+      {
+        "Name": "completed death and respawn do not restart guide",
+        "Passed": true
+      },
+      {
+        "Name": "completed World round trip and Initialize do not restart guide",
+        "Passed": true
+      },
+      {
+        "Name": "unknown completion attribute never permits Trophy",
+        "Passed": true
+      },
+      {
+        "Name": "unknown completion with FirstBattle Complete never permits Trophy",
+        "Passed": true
+      },
+      {
+        "Name": "completed Battle phase does not fall back to walls",
+        "Passed": true
+      },
+      {
+        "Name": "completed Train phase does not fall back to treadmill",
+        "Passed": true
+      },
+      {
+        "Name": "completed initial receipt still permits pending Merge",
+        "Passed": true
+      },
+      {
+        "Name": "completed initial receipt retains Equip branch",
+        "Passed": true
+      },
+      {
+        "Name": "completed profile preserves later BasicEgg",
+        "Passed": true
+      },
+      {
+        "Name": "completed profile preserves later PetMerge",
+        "Passed": true
+      },
+      {
+        "Name": "completed profile preserves later OreMerge",
+        "Passed": true
+      },
+      {
+        "Name": "initial Trophy existing visibility gates remain",
+        "Passed": true
+      },
+      {
+        "Name": "unmatched or removed Trophy does not create a guide",
+        "Passed": true
+      },
+      {
+        "Name": "explicit existing reset re-enables initial tutorial",
+        "Passed": true
+      }
+    ]
+  },
+  "Compiled": true,
+  "EditorMatches": true,
+  "ReferenceSourcesUnchanged": true,
+  "ReferenceManifest": [
+    {
+      "bytes": 15249,
+      "path": "ServerScriptService.Services.TrophyRewardService",
+      "rolling": [
+        2559780680,
+        3279413267
+      ]
+    },
+    {
+      "bytes": 123101,
+      "path": "ServerScriptService.Services.PlayerDataService",
+      "rolling": [
+        34577767,
+        2819571208
+      ]
+    },
+    {
+      "bytes": 59558,
+      "path": "ServerScriptService.World.EnemyManager",
+      "rolling": [
+        3457678291,
+        2474077620
+      ]
+    },
+    {
+      "bytes": 3757,
+      "path": "ReplicatedStorage.Modules.FirstBattleTutorialState",
+      "rolling": [
+        1215570048,
+        1215256491
+      ]
+    },
+    {
+      "bytes": 6153,
+      "path": "ReplicatedStorage.Modules.PersonalTrophyVisibility",
+      "rolling": [
+        748205759,
+        4242437824
+      ]
+    }
+  ],
+  "PlayStarted": false,
+  "PlayStopped": false,
+  "SavePublish": false,
+  "InjectedInstances": 0,
+  "Limits": [
+    "Signals and rendering are table adapters in Edit; no gameplay or UI raster acceptance.",
+    "Stage2 completion and rejoin cases restore attributes; no actual attack, DataStore save/rejoin or network replication test."
+  ],
+  "BeforeSourceSHA256": "fd4e0635011e5634175f7100628554cd2bee3a2d86750a438204ecd833f65732",
+  "AfterSourceSHA256": "4e2b2e928c7755c821d205673296900b9c3d5803ca3fe759f8718280fbd87495"
+}

@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-13 - Stop completed Stage1 Trophy navigation
+
+TutorialGuideClient now requires explicit TutorialCompleted=false before initial Trophy, wall or treadmill navigation, for both tutorial cohorts. Keep the FirstBattle Complete exception before the first Trophy receipt and retain the earlier Merge/Equip branches and later guides. One client line changed; reward, completion/save and Trophy presentation Sources are unchanged. Actual client state/event logic passes24/24 mocked cases (before9/24), with syntax and Studio Source/editor checks. No Play or rendered/reward acceptance; no Save/Publish. [Scope and evidence](../reports/Stage1TrophyGuideCompletion_20261113/REPORT.md).
+
 ## 2026-11-13 - Equipment contact investigation only
 
 Read-only investigation of the current unsaved canonical Studio and main49f7090. User clarified that the treadmill symptom is World2 only, maximum Body, certain avatars, with barely visible animation and no observed Strength increase. Actual-foot and World2 support-ray fixes remain. Repeated occupancy loss before the0.5-second tick is a leading candidate, not a reproduced cause. Fixed root reach on Dumbbell stands and the thin Trophy overlap volume are separate growth-related candidates; the measured Merge height does not explain the historical maximum-body sample.
