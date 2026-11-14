@@ -19,6 +19,11 @@ function M.Mount(player,gui,view)
  local closeRevision=0
  local step
  local elapsed=0
+ local analytics=require(script.Parent.FirstPlayAnalyticsClient)
+ local unbindAnalytics=analytics.BindMergeGuide(function()
+  return not dead and step~=nil and overlay:GetAttribute("GuideKind")=="Initial"
+   and Coordinator.Owner()==overlay and presentation:IsShown()
+ end)
  local function connect(signal,fn) local c=signal:Connect(fn);connections[#connections+1]=c;return c end
  local function navigation(position)
   if player:GetAttribute("OreTutorialTarget")~=position then player:SetAttribute("OreTutorialTarget",position) end
@@ -122,7 +127,7 @@ function M.Mount(player,gui,view)
  end)
  task.defer(Forge.Refresh);refresh()
  return function()
-  if dead then return end;hide("Stopped");dead=true;presentation:Destroy()
+  if dead then return end;hide("Stopped");dead=true;unbindAnalytics();presentation:Destroy()
   for _,c in connections do c:Disconnect() end
  end
 end

@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-14 — 初戦終了後Ore計測
+
+MTF_FirstOreMerge_v1を指定の直列5段階へ変更。Victory／Death／Backを固定分類し、初期Stoneだけの開始・未観測段階の補完を防止。既存2 CustomEvent名を再利用し、迂回経路を詳細値で区別する。変更は計測6 Sourceのみ。
+
+隔離Playで3結果から実ガイド・Oreタブ操作・Forge保存確定まで確認。メニュー中のStep3抑制、Item/PetのStep4抑制、保存失敗中のStep5抑制を確認。模擬検証と実Playの内訳、描画停止から復帰した状況、公開Creator Hub未確認、ソース照合・後片付けは[報告書](../reports/PostFirstBattleOre_20261114/REPORT.md)。Save/Publishなし。継続率改善の検証ではない。
+
 ## 2026-11-13 — LV131以降+5%と旧形式復元の分離
 
 LevelRequirementsとStrengthHUDPresentationの2 Sourceを現行未保存Studioへ反映。Q(1〜130)両曲線維持、Q(131+)毎LV+5%、LV201以降も継続。旧プロフィールCalculateLevelは旧表・旧線形式を保持する。追加保存項目なし。

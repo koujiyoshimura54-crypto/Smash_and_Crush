@@ -165,7 +165,7 @@ return function(ctx)
  local function oreSelection() return sellMode and oreSale or oreSelected end
  require(RS.Modules.FirstPlayAnalyticsClient).BindOre(function()
   return {Open=shop.Visible and host.Enabled~=false and tab=="Ore" and not sellMode and not gui.Parent:FindFirstChild("HatchGui"),
-   Token=oreState and oreState.Token,Generation=oreState and oreState.Generation,Materials=table.clone(oreSelected)}
+   Panel=shop,Tab=tab,Selling=sellMode,CloseRevision=closeRevision,Token=oreState and oreState.Token,Generation=oreState and oreState.Generation,Materials=table.clone(oreSelected)}
  end,changed.Event)
  local function petIds()
   local ids={};for id in pairs(petSelected) do table.insert(ids,id) end;table.sort(ids);return ids

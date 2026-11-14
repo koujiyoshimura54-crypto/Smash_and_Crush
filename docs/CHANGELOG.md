@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-14 — MTF_FirstOreMerge_v1の初戦後直列化
+
+同名ファネルをFirstBattleEnded／LobbyPlayableAfterFirstBattle／MergeGuideShown／OreViewOpened／MergeCommittedへ変更。CustomField03でPostFirstBattle_v2と初戦結果を固定分類。描画済みガイド・Oreモードの観測、保存確定による完了、迂回Custom詳細、旧通知・重複・欠測の防止を追加。ゲーム進行・保存処理と他5ファネルは維持。実Play／模擬検証／公開未確認を分けた[報告書](../reports/PostFirstBattleOre_20261114/REPORT.md)。正本未保存・未Publish。
+
 ## 2026-11-13 — LV131以降の追加Strengthを毎LV+5%
 
 両曲線のQ(1〜130)と旧形式LV復元を保持し、通常Q(131〜10000)を5%複利・10単位切上げへ。既存進捗繰越・保存方式を再利用。1e36以上のHUDを指数表記へ変更。ネイティブ隔離Playで通常／報酬加算、保存失敗・再試行、HUDを確認。実機・公開保存は未確認。数値精度とラベル端数の限界を含む[報告書](../reports/LevelGrowth5Pct_20261113/REPORT.md)。Studio未保存、Save/Publishなし。

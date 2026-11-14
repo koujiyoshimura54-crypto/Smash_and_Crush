@@ -5,36 +5,35 @@ local Run=game:GetService("RunService")
 local player=Players.LocalPlayer
 local M={}
 local reader,started,remote,readyAck
-local sequence=0
-local lastSignature,lastSend,readyAttempts=nil,-math.huge,0
-local function snapshot()
+local sequence,viewRevision=0,0
+local readyAttempts=0
+local guideReader,lastRendered,viewIdentity
+local lastSignature,lastSend,attempts=nil,-math.huge,0
+local function readView()
  if not reader then return nil end
  local ok,v=pcall(reader)
  if not ok or type(v)~="table" then return nil end
- local token=player:GetAttribute("MTFSession")
- if not token then return nil end
- sequence+=1
- v.Session=token;v.Character=player.Character;v.Sequence=sequence
  return v
 end
-function M.Snapshot()
- local ok,v=pcall(snapshot);return ok and v or nil
+function M.BindMergeGuide(fn)
+ guideReader=fn
+ return function()if guideReader==fn then guideReader=nil end end
 end
-local function observe(force)
- if not remote or player:GetAttribute("MTFNewFirstSession")~=true or player:GetAttribute("MTFOreFinished")==true then return end
- local v=M.Snapshot();if not v then return end
- local parts={tostring(v.Open),tostring(v.Token),tostring(v.Generation),tostring(player:GetAttribute("ForgeInventoryRevision"))}
- local ids={} for id in v.Materials or {} do table.insert(ids,id) end;table.sort(ids)
- for _,id in ids do table.insert(parts,id..":"..tostring(v.Materials[id])) end
- local signature=table.concat(parts,"|")
- if not force and signature==lastSignature then return end
- if os.clock()-lastSend<.25 then return end
- lastSignature=signature;lastSend=os.clock()
- remote:FireServer("OreView",v)
+function M.Snapshot()
+ local ok,value=pcall(function()
+  local v=readView();local r=lastRendered
+  if not v or not r or os.clock()-r.At>1 or r.Character~=player.Character
+   or r.PostBattleToken~=player:GetAttribute("MTFPostBattleToken") or r.Session~=player:GetAttribute("MTFSession")
+   or v.Token~=r.Token or v.Generation~=r.Generation or v.CloseRevision~=r.CloseRevision
+   or v.Open~=true or r.Open~=true or v.Tab~="Ore" or v.Selling~=false then return nil end
+  sequence+=1
+  local result=table.clone(r);result.At=nil;result.Sequence=sequence;result.Materials=v.Materials
+  return result
+ end)
+ return ok and value or nil
 end
 function M.BindOre(fn,event)
- reader=fn
- if event then event:Connect(function()task.defer(function()pcall(observe,false)end)end) end
+ reader=fn -- Observe on rendered frames, not view-model/Target attribute changes.
 end
 local function visible(o)
  if not o or not o:IsA("GuiObject") or o.AbsoluteSize.X<=0 or o.AbsoluteSize.Y<=0 then return false end
@@ -77,6 +76,51 @@ local function playable()
  return {Session=player:GetAttribute("MTFSession"),Character=c,Revision=c:GetAttribute("SpawnPlacementRevision"),
   HUDReady=true,ControlsReady=true,LoadingGone=true}
 end
+local function renderedPanel(o)
+ if not o then return false end
+ local pg=player:FindFirstChild("PlayerGui");local camera=workspace.CurrentCamera
+ if not pg or not camera then return false end
+ local a,b=o.AbsolutePosition,o.AbsolutePosition+o.AbsoluteSize
+ local n=o
+ while n and n~=pg do
+  if n:IsA("GuiObject") then
+   if not n.Visible then return false end
+   if n.ClipsDescendants then
+    local x,y=n.AbsolutePosition,n.AbsolutePosition+n.AbsoluteSize
+    a=Vector2.new(math.max(a.X,x.X),math.max(a.Y,x.Y));b=Vector2.new(math.min(b.X,y.X),math.min(b.Y,y.Y))
+   end
+  elseif n:IsA("ScreenGui") and not n.Enabled then return false end
+  n=n.Parent
+ end
+ local size=camera.ViewportSize
+ return n==pg and math.min(b.X,size.X)>math.max(a.X,0)+1 and math.min(b.Y,size.Y)>math.max(a.Y,0)+1
+end
+local function observe()
+ if not remote or player:GetAttribute("MTFNewFirstSession")~=true or player:GetAttribute("MTFOreFinished")==true then return end
+ local challenge=player:GetAttribute("MTFPostBattleToken");if not challenge then return end
+ local v=readView();if not v then return end
+ v.Open=v.Open==true and v.Tab=="Ore" and v.Selling==false and renderedPanel(v.Panel)
+ v.Panel=nil
+ local identity={Character=player.Character,Open=v.Open,Token=v.Token,Generation=v.Generation,CloseRevision=v.CloseRevision}
+ local changed=not viewIdentity
+ if viewIdentity then for k,value in identity do if viewIdentity[k]~=value then changed=true;break end end end
+ if changed then viewRevision+=1;viewIdentity=identity end
+ local ready=playable()
+ v.Ready=ready~=nil;v.HUDReady=ready and ready.HUDReady;v.ControlsReady=ready and ready.ControlsReady;v.LoadingGone=ready and ready.LoadingGone
+ v.Revision=player.Character and player.Character:GetAttribute("SpawnPlacementRevision")
+ local ok,shown=pcall(function()return guideReader and guideReader()end)
+ v.GuideShown=ok and shown==true
+ v.Session=player:GetAttribute("MTFSession");v.PostBattleToken=challenge;v.Character=player.Character
+ v.ViewRevision=viewRevision;v.Rendered=true;v.At=os.clock()
+ lastRendered=table.clone(v)
+ local signature=table.concat({tostring(v.Session),challenge,tostring(viewRevision),tostring(v.Revision),tostring(v.Ready),tostring(v.GuideShown),tostring(v.Tab),tostring(v.Selling)},"|")
+ if signature~=lastSignature then lastSignature=signature;attempts=0 end
+ -- Bounded observation retries handle placement/message races, never retry Analytics API sends.
+ if attempts>=5 or os.clock()-lastSend<(attempts==0 and .25 or 1) then return end
+ sequence+=1;v.Sequence=sequence;v.At=nil
+ lastSend=os.clock();attempts+=1
+ remote:FireServer("OreView",v)
+end
 function M.Start()
  if started then return end;started=true
  local elapsed,readyAt=0,-math.huge
@@ -89,14 +133,18 @@ function M.Start()
    remote.OnClientEvent:Connect(function(action,token,value)
     if token~=player:GetAttribute("MTFSession") then return end
     if action=="PlayableAck" and value==true then readyAck=true
-    elseif action=="RefreshOre" then lastSignature=nil;task.defer(function()pcall(observe,true)end) end
+    elseif action=="RefreshOre" then lastSignature=nil end
    end)
   end
   if not readyAck and readyAttempts<5 and os.clock()-readyAt>=2 then
    local ok,v=pcall(playable)
    if ok and v then readyAttempts+=1;readyAt=os.clock();remote:FireServer("Playable",v) end
   end
-  pcall(observe,false)
+ end)
+ local renderElapsed=0
+ Run.RenderStepped:Connect(function(dt)
+  renderElapsed+=dt;if renderElapsed<.1 then return end;renderElapsed=0
+  pcall(observe)
  end)
 end
 return M

@@ -16,7 +16,7 @@ local names={Entry="MTF_Entry_v1",Combat="MTF_FirstCombat_v1",Ore="MTF_FirstOreM
  Stage2Death="MTF_FirstStage2BossDeath_v1",Stage2Back="MTF_FirstStage2BossBack_v1"}
 local steps={Entry={"ServerJoined","DataLoaded","ClientPlayable"},
  Combat={"Playable","EnteredStage1","ClearedFirstWall","ClearedStage1Walls","DamagedStage1Boss","DefeatedStage1Boss"},
- Ore={"Eligible","OreViewOpened","ValidSelection","MergeRequested","MergeCommitted"},
+ Ore={"FirstBattleEnded","LobbyPlayableAfterFirstBattle","MergeGuideShown","OreViewOpened","MergeCommitted"},
  Stage2={"EnteredStage2","ClearedFirstWall","ClearedStage2Walls","DamagedStage2Boss","DefeatedStage2Boss"},
  Stage2Death={"DamagedStage2Boss","KilledByStage2Boss"},Stage2Back={"DamagedStage2Boss","BackBeforeStage2BossDefeat"}}
 local function fields(cohort,detail)
@@ -39,8 +39,8 @@ local function step(p,s,f,index)
  end
  s.Progress[f]=index
  Transport.Enqueue(p,s,{Kind="Funnel",Name=names[f],Session=s.Id,Step=index,StepName=steps[f][index],
-  Fields=fields(f=="Entry" and "AllSessions" or "NewFirstSession","Normal")})
- custom(p,s,"Time:"..f..index,f..":"..steps[f][index],f=="Entry")
+  Fields=fields(f=="Entry" and "AllSessions" or "NewFirstSession",f=="Ore" and s.OreClass or "Normal")})
+ custom(p,s,"Time:"..f..index,f=="Ore" and s.OreClass..":"..steps[f][index] or f..":"..steps[f][index],f=="Entry")
  return true
 end
 local function new(s) return s and s.Loaded and s.Cohort=="New" and not s.Reset end
@@ -70,7 +70,7 @@ local function bindCharacter(p,s,c)
   if not h or states[p]~=s or p.Character~=c then return end
   s.Death=h.Died:Connect(function()
    if not new(s) then return end
-   local phase=s.Progress.Ore>0 and ("Ore:"..steps.Ore[s.Progress.Ore])
+   local phase=s.Progress.Ore>0 and (s.OreClass..":"..steps.Ore[s.Progress.Ore])
     or s.Progress.Combat>0 and ("Combat:"..steps.Combat[s.Progress.Combat]) or "Loading"
    custom(p,s,"FirstDeath","Death:"..phase)
   end)
@@ -231,7 +231,7 @@ function M.Stage2BackPlaced(p,source,token,returnRunId)
 end
 function M.Skipped(p)
  local s=states[p];if not new(s) then return end
- s.Skip=true;s.Broken.Combat=true;s.Broken.Stage2=true;custom(p,s,"StageSkip","StageSkip")
+ s.Skip=true;s.Broken.Combat=true;s.Broken.Stage2=true;s.Broken.Ore=true;custom(p,s,"StageSkip","StageSkip")
 end
 function M.Strength(p,route)
  local s=states[p];if not new(s) then return end
@@ -266,10 +266,10 @@ local function selection(owned,unlocked)
  return Merge.Evaluate(materials,owned,unlocked)
 end
 function M.CheckOre(p)
- local s=states[p];if not new(s) or s.Progress.Ore>0 or s.Reset then return end
+ local s=states[p];if not new(s) or s.Seen.OreEligible or s.Reset then return end
  local ds,d=data(p);if not ds or ds.StudioStartOverride then return end
  if selection(ds.Data.OwnedOres,d.HasReachedWorld2(p)) then
-  step(p,s,"Ore",1)
+  custom(p,s,"OreEligible","Ore:Eligible") -- Same material observation; no longer a funnel denominator.
   if p.Parent==Players then remote:FireClient(p,"RefreshOre",s.Id) end
  end
 end
@@ -286,45 +286,99 @@ local function atMerge(p)
  if area:IsA("Part") and area.Shape==Enum.PartType.Cylinder then return math.abs(v.X)<=h.X and v.Y*v.Y+v.Z*v.Z<=math.min(h.Y,h.Z)^2 end
  return math.abs(v.X)<=h.X and math.abs(v.Y)<=h.Y and math.abs(v.Z)<=h.Z
 end
-function M.OreView(p,payload,requestMaterials)
+local function inLobby(p)
+ local c=living(p)
+ if not c or (p:GetAttribute("CurrentWorld") or 1)~=1 or p:GetAttribute("IsFighting")==true
+  or p:GetAttribute("RunReturnBusy") or p:GetAttribute("StageSkipBusy") then return false end
+ local map=workspace:FindFirstChild("GeneratedMap")
+ local area=map and map:FindFirstChild("TrainingArea");local floor=area and area:FindFirstChild("Floor")
+ if not floor then return false end
+ local v=floor.CFrame:PointToObjectSpace(c.HumanoidRootPart.Position)
+ return math.abs(v.X)<=floor.Size.X/2 and math.abs(v.Z)<=floor.Size.Z/2 and math.abs(v.Y)<=40
+end
+-- Called only after the existing FirstBattleTutorialService accepts an actual result.
+function M.FirstBattleEnded(p,outcome)
  local s=states[p]
- if not new(s) or type(payload)~="table" or payload.Session~=s.Id or payload.Character~=p.Character
+ if not new(s) or s.OreEndObserved or s.Skip or (outcome~="Victory" and outcome~="Death" and outcome~="Back") then return end
+ local ds=data(p);local facts=ds and ds.Data.FirstBattleTutorial
+ if not facts or facts.Eligible~=true or facts.BattleStarted~=true or facts.FirstOutcome~=outcome
+  or ds.StudioStartOverride or (p:GetAttribute("CurrentWorld") or 1)~=1 then return end
+ s.OreEndObserved=true -- Exclusion is final too; a later retry must not enroll an early merger.
+ if s.MergeFinished or ds.Data.OreMergeTutorial.Completed==true then return end
+ s.OreClass="PostFirstBattle_v2:"..outcome
+ s.OreChallenge=Http:GenerateGUID(false)
+ p:SetAttribute("MTFPostBattleToken",s.OreChallenge)
+ step(p,s,"Ore",1)
+end
+local function postEligible(p,s)
+ if not new(s) or s.Skip or not s.OreClass or s.MergeFinished then return nil end
+ local ds=data(p)
+ if not ds or ds.StudioStartOverride or ds.Data~=s.Data or not ds.Data.FirstBattleTutorial
+  or ds.Data.FirstBattleTutorial.Eligible~=true then return nil end
+ return ds
+end
+local function bypass(p,s,why)
+ s.Broken.Ore=true;s.OreBypass=s.OreBypass or why
+ custom(p,s,"PostBypass:"..why,s.OreClass..":Bypass:"..why)
+end
+function M.OreView(p,payload,requestMaterials)
+ local s=states[p];local ds=postEligible(p,s)
+ if not ds or type(payload)~="table" or payload.Session~=s.Id or payload.PostBattleToken~=s.OreChallenge
+  or payload.Character~=p.Character or payload.Token~=ds.ForgeToken or payload.Generation~=(ds.PetViewGeneration or 0)
   or type(payload.Sequence)~="number" or payload.Sequence%1~=0 or payload.Sequence<1 or payload.Sequence>1000000
-  or (not requestMaterials and payload.Sequence<s.ClientSequence) or type(payload.Open)~="boolean" then return false end
- local ds,d=data(p)
- if not ds or payload.Token~=ds.ForgeToken or payload.Generation~=(ds.PetViewGeneration or 0) then return false end
- s.ClientSequence=math.max(s.ClientSequence,payload.Sequence)
- if not payload.Open then return false end
- if not atMerge(p) then return false end
- M.CheckOre(p)
- if s.Progress.Ore==0 then custom(p,s,"OreEarlyView","OreViewBeforeEligible");return false end
- if s.Progress.Ore==1 then step(p,s,"Ore",2) end
- local materials=payload.Materials
- if type(materials)~="table" then return true end
- local count=0;for id,n in materials do count+=1;if count>32 or type(id)~="string" or #id>64 or type(n)~="number" then return false end end
- local preview=Merge.Evaluate(materials,ds.Data.OwnedOres,d.HasReachedWorld2(p))
- if requestMaterials and Merge.Signature("MergeOre",materials)~=Merge.Signature("MergeOre",requestMaterials) then return false end
- if preview and s.Progress.Ore==2 then step(p,s,"Ore",3) end
- return preview~=nil
+  or payload.Sequence<s.ClientSequence or type(payload.ViewRevision)~="number" or payload.ViewRevision%1~=0
+  or payload.ViewRevision<0 or payload.ViewRevision>1000000 or payload.Rendered~=true
+  or type(payload.Open)~="boolean" then return false end
+ if requestMaterials then
+  -- Request context can validate a previously observed view, never manufacture its prefix.
+  if not payload.Open or payload.Tab~="Ore" or payload.Selling~=false or not atMerge(p)
+   or not s.OreView or s.OreView.Character~=p.Character or s.OreView.Revision~=payload.ViewRevision
+   or s.OreView.Token~=payload.Token or s.OreView.Generation~=payload.Generation then return false end
+  local materials=payload.Materials
+  if type(materials)~="table" then return false end
+  local count=0;for id,n in materials do count+=1;if count>32 or type(id)~="string" or #id>64 or type(n)~="number" then return false end end
+  local _,d=data(p)
+  return Merge.Evaluate(materials,ds.Data.OwnedOres,d.HasReachedWorld2(p))~=nil
+   and Merge.Signature("MergeOre",materials)==Merge.Signature("MergeOre",requestMaterials)
+ end
+ if payload.Sequence<=s.ClientSequence or payload.ViewRevision<(s.OreViewRevision or 0) then return false end
+ s.ClientSequence=payload.Sequence;s.OreViewRevision=payload.ViewRevision
+ if not payload.Open then s.OreView=nil end
+ if not inLobby(p) then return false end
+ local c=p.Character
+ if s.Progress.Ore==1 and payload.Ready==true and payload.HUDReady==true and payload.ControlsReady==true and payload.LoadingGone==true
+  and c==s.PlacementCharacter and payload.Revision==s.PlacementRevision
+  and payload.Revision==c:GetAttribute("SpawnPlacementRevision")
+  and c:GetAttribute("SpawnEngineReady")==true and c:GetAttribute("MuscleScaleReady")==true
+  and c:GetAttribute("LobbySpawnPlaced")==true then step(p,s,"Ore",2) end
+ if s.Progress.Ore==2 and payload.GuideShown==true and ds.Data.OreMergeTutorial.Completed~=true then step(p,s,"Ore",3) end
+ if payload.Open and payload.Tab=="Ore" and payload.Selling==false and payload.ViewRevision>0 and atMerge(p) then
+  s.OreView={Character=c,Revision=payload.ViewRevision,Token=payload.Token,Generation=payload.Generation}
+  if s.Progress.Ore==3 then step(p,s,"Ore",4)
+  elseif s.Progress.Ore<3 then bypass(p,s,s.Progress.Ore<2 and "OreViewBeforeLobbyReady" or "OreViewBeforeGuide") end
+ end
+ return true
 end
 function M.OreRequested(p,op)
- local s=states[p];if not new(s) or op.Action~="MergeOre" then return end
- if s.MergeId or s.Broken.Ore then return end -- Keep the first accepted operation across duplicate observations.
+ local s=states[p];if not new(s) or op.Action~="MergeOre" or s.MergeFinished or s.MergeId then return end
+ s.MergeId=op.Id
  M.CheckOre(p)
  local valid=M.OreView(p,op.AnalyticsContext,op.Materials)
- if s.Progress.Ore==3 and valid then
-  s.MergeId=op.Id;step(p,s,"Ore",4)
- else
-  s.Broken.Ore=true
+ s.MergePrefix=s.OreClass~=nil and s.Progress.Ore==4 and not s.Broken.Ore and valid
+ if not s.MergePrefix then
+  if s.OreClass then bypass(p,s,"MergeRequestWithoutPrefix") end
   custom(p,s,"ObservedMergeRequest","MergeRequestAccepted")
   custom(p,s,"OreNoView","OreRequestWithoutValidatedView")
  end
 end
 function M.OreCommitted(p,op)
- local s=states[p];if not new(s) or op.Action~="MergeOre" then return end
- if s.MergeFinished then return end;s.MergeFinished=true
- if s.MergeId==op.Id and not s.Broken.Ore then step(p,s,"Ore",5)
- else custom(p,s,"ObservedMergeCommit","MergeSaved") end
+ local s=states[p];if not new(s) or op.Action~="MergeOre" or s.MergeFinished then return end
+ s.MergeFinished=true
+ if s.OreClass and s.MergeId==op.Id and s.MergePrefix and not s.Skip and not s.Broken.Ore then step(p,s,"Ore",5)
+ else
+  if s.OreClass then bypass(p,s,"MergeCommitted") end
+  custom(p,s,"ObservedMergeCommit","MergeSaved")
+ end
  p:SetAttribute("MTFOreFinished",true)
 end
 function M.Leaving(p)

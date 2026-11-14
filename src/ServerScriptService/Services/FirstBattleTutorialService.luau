@@ -2,6 +2,7 @@
 -- Leaving the server, wall contact, arena recognition or a UI action is not a result.
 local Players=game:GetService("Players")
 local Data=require(script.Parent.PlayerDataService)
+local Analytics=require(script.Parent.FirstPlayAnalyticsService)
 local M={}
 local active=setmetatable({},{__mode="k"})
 local function eligible(p)
@@ -25,12 +26,12 @@ function M.Death(p,c,ps,combat)
  if not w or not s or w.Character~=c or p.Character~=c or w.State~=ps or w.Combat~=combat
   or not h or h.Health>0 or ps.Defeated[1] or (p:GetAttribute("CurrentWorld") or 1)~=1
   or ps.RunInventoryId~=w.RunId or s.Data.ResetToken~=w.ResetToken then return end
- Data.RecordFirstBattleFact(p,"Death");active[p]=nil
+ Data.RecordFirstBattleFact(p,"Death");Analytics.FirstBattleEnded(p,"Death");active[p]=nil
 end
 function M.Victory(p,ps)
  if not eligible(p) or (p:GetAttribute("CurrentWorld") or 1)~=1 or ps.Character~=p.Character
   or not ps.Defeated[1] or not living(p,p.Character) then return end
- Data.RecordFirstBattleFact(p,"Victory");active[p]=nil
+ Data.RecordFirstBattleFact(p,"Victory");Analytics.FirstBattleEnded(p,"Victory");active[p]=nil
 end
 function M.BackCurrent(p,w,ps)
  local s=eligible(p)
@@ -48,7 +49,7 @@ function M.BackPlaced(p,w,token,returnRunId)
  if not w or not s or not token or not token.Accepted or token.RunId~=w.RunId or token.Character~=w.Character
   or s.Data.ResetToken~=w.ResetToken or not living(p,w.Character) or (p:GetAttribute("CurrentWorld") or 1)~=1
   or p:GetAttribute("RunInventoryId")~=returnRunId then return end
- Data.RecordFirstBattleFact(p,"Back")
+ Data.RecordFirstBattleFact(p,"Back");Analytics.FirstBattleEnded(p,"Back")
 end
 function M.Cancel(p) active[p]=nil end
 Players.PlayerRemoving:Connect(M.Cancel)

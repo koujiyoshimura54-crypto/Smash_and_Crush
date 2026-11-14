@@ -122,6 +122,12 @@ function M.Mount(overlay,header)
   tween(strip,openInfo,{Size=shade})
   line:SetAttribute("OpeningUntil",os.clock()+settings.openSeconds)
  end
+ -- Read-only telemetry witness: a visible, clipped-in pinned instruction, not a target attribute.
+ function renderer:IsShown()
+  if destroyed or not active or not active.Parent or active.Message.Text=="" or active.Message.TextTransparency>=1 then return false end
+  local _,size=M.VisibleRect(active.Message,canvas)
+  return size~=nil and size.X>1 and size.Y>1
+ end
  function renderer:Target(nextTarget)
   if not target then snap=true end
   target=nextTarget

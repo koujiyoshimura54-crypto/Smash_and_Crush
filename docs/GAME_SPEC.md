@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-14 — 初戦終了後Oreファネル（計測のみ）
+
+既存MTF_FirstOreMerge_v1を、初戦結果→Lobby操作準備→マージガイド実表示→Ore合成画面実表示→保存確定の5段階へ変更。新規初回セッション・新導線対象・初戦時未合成だけを対象とする。初戦前合成は対象外、ガイド前の自主開店は既存CustomEventで迂回として識別。チュートリアル、戦闘、素材、報酬、合成・装備・保存仕様は変更しない。
+
+[計測仕様](FIRST_PLAY_ANALYTICS.md)／[検証報告](../reports/PostFirstBattleOre_20261114/REPORT.md)。
+
 ## 2026-11-13 — 高LV必要量と既存進捗の繰越
 
 両育成サイクルのQ(131+)を毎LV+5%・10単位切上げに統一。序盤Q(1〜130)と曲線1／2の選択、再生条件は維持する。既存のLevelProgression.Normalize→Advance(gain=0)で保存済み進捗を消費し、余りを繰り越す。LevelProgressVersion=1とLevelCurveVersionを継続し、新フラグなし。例LV136／進捗4兆→LV137／441985046330、所持Strengthは不変。

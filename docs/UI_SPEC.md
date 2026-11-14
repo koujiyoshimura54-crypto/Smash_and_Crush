@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-14 — Ore実表示の読取計測
+
+ガイドやショップの表示条件・配置・操作は維持。新規初戦後ファネルのため、既存Oreガイドの表示所有権と描画中の文字、Ore合成タブの表示領域を読み取る。Target属性、非表示メニュー、Item／Pet／売却画面だけでは表示達成としない。新規画面や入力処理は追加しない。
+
+[計測仕様](FIRST_PLAY_ANALYTICS.md)／[実Playと模擬検証](../reports/PostFirstBattleOre_20261114/REPORT.md)。
+
 ## 2026-11-13 — 高LV必要量の表示
 
 StrengthDisplayは既存の複製属性と共通LevelRequirementsでLV／進捗／分母／ゲージを更新する。既存略記上限を超える1e36以上だけStrengthHUDPresentation.Numberで有効数字3桁の指数表記を使用（例1e100→1.00e100）。フォント、最小48、配置、既存略記は維持。

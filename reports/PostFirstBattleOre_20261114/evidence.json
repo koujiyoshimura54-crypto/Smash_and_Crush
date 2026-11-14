@@ -1,0 +1,1105 @@
+{
+  "Date": "2026-11-14",
+  "Base": "d0b5f24",
+  "Kind": "Native prepared isolated Play; memory persistence, real UI observers except explicitly Hybrid-labelled entries. No Hub receipt.",
+  "StateMatrix": {
+    "OtherFunnelRows": 18,
+    "Kind": "Dependency-injected exact production service/transport; geometry mocked, not Play or Hub",
+    "Passed": true,
+    "Assertions": 185
+  },
+  "ClientMatrix": {
+    "Kind": "Exact client observer; fake render events, controls and GUI geometry; not physical UI",
+    "Passed": true,
+    "Assertions": 30
+  },
+  "Studio": {
+    "PlaceVersion": 627,
+    "Running": false,
+    "Editors": 20,
+    "Sources": 20,
+    "PlaceId": 126576845524886,
+    "Helpers": 0,
+    "UniverseId": 10765181857
+  },
+  "Native": {
+    "oreNativeActualMenuHidden": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": false,
+      "SavePending": false,
+      "Stone": 2,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 13.990842600003816
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 14.154728399997111
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualGuide": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": false,
+      "SavePending": false,
+      "Stone": 2,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 13.990842600003816
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 14.154728399997111
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeGuideShown",
+          "SecondsSinceJoin": 25.588388299991493
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualItem": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": false,
+      "SavePending": false,
+      "Stone": 2,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 13.990842600003816
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 14.154728399997111
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeGuideShown",
+          "SecondsSinceJoin": 25.588388299991493
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualPet": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": false,
+      "SavePending": false,
+      "Stone": 2,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 13.990842600003816
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 14.154728399997111
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeGuideShown",
+          "SecondsSinceJoin": 25.588388299991493
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualOre": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": false,
+      "SavePending": false,
+      "Stone": 2,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 13.990842600003816
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 14.154728399997111
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeGuideShown",
+          "SecondsSinceJoin": 25.588388299991493
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:OreViewOpened",
+          "SecondsSinceJoin": 49.187674500004505
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualPending": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": false,
+      "SavePending": true,
+      "Stone": 2,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 13.990842600003816
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 14.154728399997111
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeGuideShown",
+          "SecondsSinceJoin": 25.588388299991493
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:OreViewOpened",
+          "SecondsSinceJoin": 49.187674500004505
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualBackCommitted": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": true,
+      "SavePending": false,
+      "Stone": 0,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 5,
+          "Name": "MergeCommitted",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 13.990842600003816
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 14.154728399997111
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeGuideShown",
+          "SecondsSinceJoin": 25.588388299991493
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:OreViewOpened",
+          "SecondsSinceJoin": 49.187674500004505
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeCommitted",
+          "SecondsSinceJoin": 74.15383779999684
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualDeathCommitted": {
+      "New": true,
+      "Outcome": "Death",
+      "MergeCompleted": true,
+      "SavePending": false,
+      "Stone": 0,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 5,
+          "Name": "MergeCommitted",
+          "Classification": "PostFirstBattle_v2:Death"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Death:FirstBattleEnded",
+          "SecondsSinceJoin": 19.5583653000067
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 23.590856700000586
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:MergeGuideShown",
+          "SecondsSinceJoin": 23.590859699994326
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:OreViewOpened",
+          "SecondsSinceJoin": 45.940191000001505
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:MergeCommitted",
+          "SecondsSinceJoin": 47.82646549999481
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualVictoryStage2": {
+      "Stage2": {
+        "New": true,
+        "Outcome": "Victory",
+        "MergeCompleted": false,
+        "SavePending": false,
+        "Stone": 2,
+        "Stage": 2,
+        "Alive": true,
+        "Anchored": false,
+        "Fighting": true,
+        "Funnel": [
+          {
+            "Step": 1,
+            "Name": "FirstBattleEnded",
+            "Classification": "PostFirstBattle_v2:Victory"
+          }
+        ],
+        "Custom": [
+          {
+            "Detail": "PostFirstBattle_v2:Victory:FirstBattleEnded",
+            "SecondsSinceJoin": 15.42458560000523
+          }
+        ],
+        "PlaceVersion": "PlaceVersion:0"
+      },
+      "Returned": {
+        "New": true,
+        "Outcome": "Victory",
+        "MergeCompleted": false,
+        "SavePending": false,
+        "Stone": 3,
+        "Stage": 1,
+        "Alive": true,
+        "Anchored": false,
+        "Fighting": false,
+        "Funnel": [
+          {
+            "Step": 1,
+            "Name": "FirstBattleEnded",
+            "Classification": "PostFirstBattle_v2:Victory"
+          },
+          {
+            "Step": 2,
+            "Name": "LobbyPlayableAfterFirstBattle",
+            "Classification": "PostFirstBattle_v2:Victory"
+          },
+          {
+            "Step": 3,
+            "Name": "MergeGuideShown",
+            "Classification": "PostFirstBattle_v2:Victory"
+          }
+        ],
+        "Custom": [
+          {
+            "Detail": "PostFirstBattle_v2:Victory:FirstBattleEnded",
+            "SecondsSinceJoin": 15.42458560000523
+          },
+          {
+            "Detail": "PostFirstBattle_v2:Victory:LobbyPlayableAfterFirstBattle",
+            "SecondsSinceJoin": 39.82318780000787
+          },
+          {
+            "Detail": "PostFirstBattle_v2:Victory:MergeGuideShown",
+            "SecondsSinceJoin": 39.82319140000618
+          }
+        ],
+        "PlaceVersion": "PlaceVersion:0"
+      }
+    },
+    "oreNativeActualVictoryCommitted": {
+      "New": true,
+      "Outcome": "Victory",
+      "MergeCompleted": true,
+      "SavePending": false,
+      "Stone": 1,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 5,
+          "Name": "MergeCommitted",
+          "Classification": "PostFirstBattle_v2:Victory"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Victory:FirstBattleEnded",
+          "SecondsSinceJoin": 15.42458560000523
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 39.82318780000787
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:MergeGuideShown",
+          "SecondsSinceJoin": 39.82319140000618
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:OreViewOpened",
+          "SecondsSinceJoin": 57.47250150000036
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:MergeCommitted",
+          "SecondsSinceJoin": 59.25607950000267
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeEarlyMerge": {
+      "Before": {
+        "New": true,
+        "Outcome": null,
+        "MergeCompleted": true,
+        "SavePending": false,
+        "Stone": 0,
+        "Stage": 1,
+        "Alive": true,
+        "Anchored": false,
+        "Fighting": false,
+        "Funnel": [],
+        "Custom": [],
+        "PlaceVersion": "PlaceVersion:0"
+      },
+      "After": {
+        "New": true,
+        "Outcome": "Back",
+        "MergeCompleted": true,
+        "SavePending": false,
+        "Stone": 0,
+        "Stage": 1,
+        "Alive": true,
+        "Anchored": false,
+        "Fighting": false,
+        "Funnel": [],
+        "Custom": [],
+        "PlaceVersion": "PlaceVersion:0"
+      }
+    },
+    "oreNativeActualBypassView": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": false,
+      "SavePending": false,
+      "Stone": 2,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 12.264704399989569
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 12.380615899994154
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:Bypass:OreViewBeforeGuide",
+          "SecondsSinceJoin": 94.16104549999
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualBypassCommitted": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": true,
+      "SavePending": false,
+      "Stone": 0,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 12.264704399989569
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 12.380615899994154
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:Bypass:OreViewBeforeGuide",
+          "SecondsSinceJoin": 94.16104549999
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:Bypass:MergeRequestWithoutPrefix",
+          "SecondsSinceJoin": 96.52694250000059
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:Bypass:MergeCommitted",
+          "SecondsSinceJoin": 96.52746859999024
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreNativeActualSendFailure": {
+      "New": true,
+      "Outcome": "Back",
+      "MergeCompleted": true,
+      "SavePending": false,
+      "Stone": 0,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Back"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Back"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Back:FirstBattleEnded",
+          "SecondsSinceJoin": 14.175131600000896
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 14.30763310000475
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeGuideShown",
+          "SecondsSinceJoin": 14.307636600002297
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:OreViewOpened",
+          "SecondsSinceJoin": 36.088493600007496
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Back:MergeCommitted",
+          "SecondsSinceJoin": 38.045727100005024
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreHybridVictoryHeld": {
+      "New": true,
+      "Outcome": "Victory",
+      "MergeCompleted": false,
+      "SavePending": true,
+      "Stone": 3,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Victory"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Victory:FirstBattleEnded",
+          "SecondsSinceJoin": 42.90937700000359
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 280.5502209000115
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:MergeGuideShown",
+          "SecondsSinceJoin": 280.55022630000894
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:OreViewOpened",
+          "SecondsSinceJoin": 280.5502407000022
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreHybridVictoryCommitted": {
+      "New": true,
+      "Outcome": "Victory",
+      "MergeCompleted": true,
+      "SavePending": false,
+      "Stone": 1,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Victory"
+        },
+        {
+          "Step": 5,
+          "Name": "MergeCommitted",
+          "Classification": "PostFirstBattle_v2:Victory"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Victory:FirstBattleEnded",
+          "SecondsSinceJoin": 42.90937700000359
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 280.5502209000115
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:MergeGuideShown",
+          "SecondsSinceJoin": 280.55022630000894
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:OreViewOpened",
+          "SecondsSinceJoin": 280.5502407000022
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Victory:MergeCommitted",
+          "SecondsSinceJoin": 292.08250950000365
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreHybridDeathPending": {
+      "New": true,
+      "Outcome": "Death",
+      "MergeCompleted": false,
+      "SavePending": true,
+      "Stone": 2,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Death"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Death:FirstBattleEnded",
+          "SecondsSinceJoin": 59.159299099992495
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 101.72545629998785
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:MergeGuideShown",
+          "SecondsSinceJoin": 101.72545919999538
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:OreViewOpened",
+          "SecondsSinceJoin": 101.725466399992
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    },
+    "oreHybridDeathCommitted": {
+      "New": true,
+      "Outcome": "Death",
+      "MergeCompleted": true,
+      "SavePending": false,
+      "Stone": 0,
+      "Stage": 1,
+      "Alive": true,
+      "Anchored": false,
+      "Fighting": false,
+      "Funnel": [
+        {
+          "Step": 1,
+          "Name": "FirstBattleEnded",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 2,
+          "Name": "LobbyPlayableAfterFirstBattle",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 3,
+          "Name": "MergeGuideShown",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 4,
+          "Name": "OreViewOpened",
+          "Classification": "PostFirstBattle_v2:Death"
+        },
+        {
+          "Step": 5,
+          "Name": "MergeCommitted",
+          "Classification": "PostFirstBattle_v2:Death"
+        }
+      ],
+      "Custom": [
+        {
+          "Detail": "PostFirstBattle_v2:Death:FirstBattleEnded",
+          "SecondsSinceJoin": 59.159299099992495
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:LobbyPlayableAfterFirstBattle",
+          "SecondsSinceJoin": 101.72545629998785
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:MergeGuideShown",
+          "SecondsSinceJoin": 101.72545919999538
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:OreViewOpened",
+          "SecondsSinceJoin": 101.725466399992
+        },
+        {
+          "Detail": "PostFirstBattle_v2:Death:MergeCommitted",
+          "SecondsSinceJoin": 117.52422049999586
+        }
+      ],
+      "PlaceVersion": "PlaceVersion:0"
+    }
+  },
+  "Sources": [
+    {
+      "Path": "ServerScriptService/Services/FirstPlayAnalyticsService.luau",
+      "Bytes": 21117,
+      "BeforeAdler32": 2661271057,
+      "AfterAdler32": 2118698694,
+      "SHA256": "3f4d162189f5d39541bdea379dc593bbd469e103a4695ffc68260e5e639d8887",
+      "Changed": true
+    },
+    {
+      "Path": "ServerScriptService/Services/FirstPlayAnalyticsTransport.luau",
+      "Bytes": 2685,
+      "BeforeAdler32": 871335106,
+      "AfterAdler32": 871335106,
+      "SHA256": "78724033d067d793fcb19179147bb6b9175109af848b2365c0ba0abcf08e77c6",
+      "Changed": false
+    },
+    {
+      "Path": "ServerScriptService/Services/FirstBattleTutorialService.luau",
+      "Bytes": 3011,
+      "BeforeAdler32": 280157567,
+      "AfterAdler32": 1070604097,
+      "SHA256": "00da57362ab22bc5f416194a955a61285dd55b1bc6df572cafd9bcc9fc7c8113",
+      "Changed": true
+    },
+    {
+      "Path": "ServerScriptService/Services/PlayerDataService.luau",
+      "Bytes": 123101,
+      "BeforeAdler32": 569943720,
+      "AfterAdler32": 569943720,
+      "SHA256": "c47f92b1609bf09d0b6fa2a4b6b14f5beaff85c335a891d75a87185471e2bf80",
+      "Changed": false
+    },
+    {
+      "Path": "ServerScriptService/Services/ForgeService.luau",
+      "Bytes": 5021,
+      "BeforeAdler32": 3651407421,
+      "AfterAdler32": 3651407421,
+      "SHA256": "e23ae448c9e29d96ade72e19e8a7d67240c08ca6e34d04a322cb057c58c5b6e0",
+      "Changed": false
+    },
+    {
+      "Path": "ServerScriptService/Services/ForgePersistence.luau",
+      "Bytes": 3844,
+      "BeforeAdler32": 3542901126,
+      "AfterAdler32": 3542901126,
+      "SHA256": "d738e07b5a8cf17d4a9b1d84804535bdef9b40d923cb05b1ed83ea8e92e32c1a",
+      "Changed": false
+    },
+    {
+      "Path": "ServerScriptService/Services/LobbySpawnService.luau",
+      "Bytes": 16507,
+      "BeforeAdler32": 611216678,
+      "AfterAdler32": 611216678,
+      "SHA256": "9df3e1e148efefc2dcaf5bb3c944bd38c2f5344e7cc4572f5a9f3684e6575fa8",
+      "Changed": false
+    },
+    {
+      "Path": "ServerScriptService/Services/RunReturnService.luau",
+      "Bytes": 5045,
+      "BeforeAdler32": 3248421998,
+      "AfterAdler32": 3248421998,
+      "SHA256": "234248149ebd062fcfbae35a2bf9caf6af8d9ea01109e2e0bc51bc299760fdd6",
+      "Changed": false
+    },
+    {
+      "Path": "ServerScriptService/Services/TrainingManager.luau",
+      "Bytes": 15960,
+      "BeforeAdler32": 3506242348,
+      "AfterAdler32": 3506242348,
+      "SHA256": "8b547218684f45d789f44a6b6be21ef0161f371094c9401a160a7bd2cf7036a9",
+      "Changed": false
+    },
+    {
+      "Path": "ReplicatedStorage/Modules/FirstPlayAnalyticsClient.luau",
+      "Bytes": 7878,
+      "BeforeAdler32": 128406870,
+      "AfterAdler32": 991484395,
+      "SHA256": "25d6903b6c9f2946d38ca428ef560bbacf02b5672627f77a539384db866d9f79",
+      "Changed": true
+    },
+    {
+      "Path": "ReplicatedStorage/Modules/FirstBattleTutorialState.luau",
+      "Bytes": 3757,
+      "BeforeAdler32": 1240743079,
+      "AfterAdler32": 1240743079,
+      "SHA256": "b5dbf179f743c9eafc0c120689e4ab9d84e617f7af3de9a3fcdceceb6b3367de",
+      "Changed": false
+    },
+    {
+      "Path": "ReplicatedStorage/Modules/OreMergeTutorialGuide.luau",
+      "Bytes": 7895,
+      "BeforeAdler32": 1352960400,
+      "AfterAdler32": 1569911510,
+      "SHA256": "1ced9bce9117125ec1bc8a9389779c25663a9fe5cdf2f342ae1eb9182daabd6a",
+      "Changed": true
+    },
+    {
+      "Path": "ReplicatedStorage/Modules/OreMergeTutorialPresentation.luau",
+      "Bytes": 8517,
+      "BeforeAdler32": 2993698737,
+      "AfterAdler32": 1966520643,
+      "SHA256": "7f6773bfab305782f23c25b53c57fe01d272031add6e2bb2368aceb1a2dfb6a4",
+      "Changed": true
+    },
+    {
+      "Path": "ReplicatedStorage/Modules/MergeShopView.luau",
+      "Bytes": 44616,
+      "BeforeAdler32": 3738288210,
+      "AfterAdler32": 621664411,
+      "SHA256": "8750e3b040d311d378f97abb10dae30dea406d7da5c2e6b01b2ab2ef95ab0c89",
+      "Changed": true
+    },
+    {
+      "Path": "ReplicatedStorage/Modules/ForgeClient.luau",
+      "Bytes": 3485,
+      "BeforeAdler32": 2921059525,
+      "AfterAdler32": 2921059525,
+      "SHA256": "77953b8bcff5662db84d1b858309224967e5cee3dabafd01cde6bedc1e409451",
+      "Changed": false
+    },
+    {
+      "Path": "ReplicatedStorage/Modules/TutorialPresentationCoordinator.luau",
+      "Bytes": 318,
+      "BeforeAdler32": 616592028,
+      "AfterAdler32": 616592028,
+      "SHA256": "1733a1e3411dd4e6f1fbf408be7c7fdadd7792bd402112654fc6a52a18d038c3",
+      "Changed": false
+    },
+    {
+      "Path": "ReplicatedStorage/Modules/StrengthHUDPresentation.luau",
+      "Bytes": 19289,
+      "BeforeAdler32": 4173872932,
+      "AfterAdler32": 4173872932,
+      "SHA256": "dca8b0ecf9ddcca8780faf9a362033b2b642582521fa63fd67ab6db760c578c6",
+      "Changed": false
+    },
+    {
+      "Path": "StarterPlayer/StarterPlayerScripts/Tutorial/TutorialGuideClient.client.luau",
+      "Bytes": 25917,
+      "BeforeAdler32": 1574218738,
+      "AfterAdler32": 1574218738,
+      "SHA256": "4e2b2e928c7755c821d205673296900b9c3d5803ca3fe759f8718280fbd87495",
+      "Changed": false
+    },
+    {
+      "Path": "ReplicatedStorage/Config/LevelRequirements.luau",
+      "Bytes": 4508,
+      "BeforeAdler32": 4233666612,
+      "AfterAdler32": 4233666612,
+      "SHA256": "51719179201aa31e5979f04d839604bd469927fadb5a3155c9dbe66884d36c9b",
+      "Changed": false
+    },
+    {
+      "Path": "ServerScriptService/Config/FirstPlayAnalyticsConfig.luau",
+      "Bytes": 164,
+      "BeforeAdler32": 1626028813,
+      "AfterAdler32": 1626028813,
+      "SHA256": "7654585e097852efb38840f394761e1f8ffd7ad8be6ae649e40111986313100b",
+      "Changed": false
+    }
+  ]
+}
