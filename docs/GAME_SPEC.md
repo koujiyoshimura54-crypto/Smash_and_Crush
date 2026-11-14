@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-14 — Stage3 Bossの床埋まり
+
+Stage3の静止BBox配置と歩行姿勢の差、見える通路の高さ差を、クライアントR15外観のRoot Motor C0で補正する。現在のAnimator姿勢から両足下端を計算し、実床面を下回る分だけ持ち上げる。元C0から計算して非累積とし、既存Rig解放で復元する。戦闘Root/Collider/Weld、アニメーション/速度、Scale、HP10000、Stage1/2は維持。
+
+実描画・通常再生の接地・戦闘/撃破/帰還後の再出現、30 Native Edit assertionsを確認。実機/自然streaming/公開環境は未確認。[実測と検証区分](../reports/Stage03GroundContact_20261114/REPORT.md)。正本未保存Edit、Save/Publishなし。
+
 ## 2026-11-14 — Stage2 Bossの脚の動作幅
 
 World1 Stage2 Tralaleroの実Walkから求めた中心姿勢を使い、前脚関節と独立足制御の周期変動だけ1.5倍にする。Stage02LegMotionConfig.Amplitude=1.0で元の幅へ戻る。体/頭/尾、元Bone配置、Scale1.75、Idle2.8秒/Walk1.05秒・Speed1、既存浮遊0.3/3秒/基準0.3を維持する。補正はWeld/Rootに書き込まず、Stage1のGroundFitは使わない。

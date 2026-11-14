@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-14 — Stage3 Bossの床埋まり修正
+
+実床面と現在のR15足姿勢を使う外観側の接地補正を追加。最大約2.52 studsの埋まりを実描画・数値で改善。HP/当たり判定/アニメーション/Stage1/2を保持。隔離Playと30 Native Edit assertions、補助除去・未保存Editを確認。[報告書](../reports/Stage03GroundContact_20261114/REPORT.md)。Save/Publishなし。
+
 ## 2026-11-14 — Stage2 Bossの脚の振り幅1.5倍
 
 Stage2専用の中心姿勢・倍率で7 Boneの脚動作を補正。浮遊0.3/3秒/基準0.3、テンポ/Scale/AnimationId/HP/Collider/戦闘設定とStage1を保持。実描画・前後実測・20周の非累積・戦闘/再出現・64模擬assertionを確認。未保存Edit、Save/Publishなし。[証拠と未確認範囲](../reports/Stage02LegMotion_20261114/REPORT.md)。

@@ -1,9 +1,12 @@
 local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
+local GroundContact=require(game.ReplicatedStorage.Modules:WaitForChild("Stage03GroundContact"))
 -- Idle follows the same personal defeat state as CombatClient.
 -- Action-priority attacks override Idle without changing their timing.
 local rig,idle,walk,destroyConnection
+local removeGround,groundValid
 local hidden=false
 local function release()
+ if removeGround then removeGround();removeGround=nil;groundValid=nil end
  if destroyConnection then destroyConnection:Disconnect();destroyConnection=nil end
  if idle then idle:Stop(0);idle:Destroy();idle=nil end
  if walk then walk:Stop(0);walk:Destroy();walk=nil end
@@ -49,6 +52,8 @@ local function refresh()
   end
  end
  if walk and not walk.IsPlaying then walk:Play(0.15,1,1); walk:AdjustSpeed(0.6) end
+ if removeGround and not groundValid()then removeGround();removeGround=nil;groundValid=nil end
+ if not removeGround then removeGround,groundValid=GroundContact.Mount(rig)end
 end
 local disconnect=Binding.Watch(3,refresh)
 script.Destroying:Connect(function() disconnect();release() end)

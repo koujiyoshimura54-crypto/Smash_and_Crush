@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-14 — Stage3 Bossの接地修正
+
+製品2 Source。静止BBox/Floor基準と実通路・歩行姿勢の差による最大約2.52 studsの床埋まりを修正。クライアント外観Root Motorの高さだけを補正し、サーバー戦闘形状・HP・既存アニメーション・Stage1/2を保持。
+
+同位相の実描画比較、通常再生193標本×2、約8周後の非累積、実戦闘/撃破/帰還後の再出現、30 Native Edit assertionsを確認。攻撃Clip直接再生は模擬検証として区別。39差し替えを復元し補助除去、11 Source/Editor/ローカル一致。未保存Edit、Save/Publishなし。[報告・未確認範囲](../reports/Stage03GroundContact_20261114/REPORT.md)。
+
 ## 2026-11-14 — Stage2 Tralaleroの脚を1.5倍
 
 製品3 Sourceで脚の7 Boneの周期変動だけ1.5倍にした。Stage2自身の41キーから中心姿勢を設定し、独立足制御と親子関節を区別。浮遊処理全文、Weld、Scale、AnimationId、HP/Collider/戦闘設定、Stage1実装を保持。

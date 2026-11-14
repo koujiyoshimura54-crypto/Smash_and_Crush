@@ -1,0 +1,194 @@
+{
+  "BaselineCommit": "fa679c7c15a3dcb3e91ee717d2d3f9972c010d81",
+  "Kind": "Isolated native Play with memory services; automated setup/input",
+  "Walking": {
+    "BaseRootC0Y": -2.551741600036621,
+    "LoopSeconds": 8.40005850000307,
+    "AnimationTransformDifference": 0,
+    "State": {
+      "Root": "287.4307861328125, 11.536248207092285, 443.4970703125",
+      "Camera": "304.430786, 8.53624821, 420.49707, -0.804176152, 0.0414635427, 0.592943132, 0, 0.997564018, -0.0697580129, -0.594391108, -0.056097731, -0.802217126",
+      "Tracks": [
+        {
+          "Time": 0,
+          "Speed": 0,
+          "Length": 3.7666666507720947,
+          "Priority": "Idle",
+          "Id": "rbxassetid://507766388"
+        },
+        {
+          "Time": 0.15000000596046448,
+          "Speed": 0,
+          "Length": 0.625,
+          "Priority": "Movement",
+          "Id": "rbxassetid://16562332340"
+        }
+      ],
+      "Frames": 5555
+    },
+    "SamePhaseC0Difference": 0,
+    "Runs": {
+      "true": {
+        "Misses": 0,
+        "C0Min": -1.7880535125732422,
+        "Seconds": 3.216927100002067,
+        "C0Max": -0.03220415115356445,
+        "GapMax": 1.148337113740622,
+        "Samples": 193,
+        "GapMin": -0.0000016821598407545935,
+        "SupportGapMax": 0.0000029579851323902062
+      },
+      "false": {
+        "Misses": 0,
+        "C0Min": -2.551741600036621,
+        "Seconds": 3.2172384999867063,
+        "C0Max": -2.551741600036621,
+        "GapMax": -0.6551153028369283,
+        "Samples": 193,
+        "GapMin": -2.519537844373919,
+        "SupportGapMax": -0.7636704698166872
+      }
+    }
+  },
+  "Battle": {
+    "ActionTrackObserved": false,
+    "Samples": 43,
+    "MinFootGap": -0.0000013079308729402328
+  },
+  "ReappearanceAndDirectAttackPose": {
+    "Final": {
+      "Root": "287.4307861328125, 11.536248207092285, 443.4970703125",
+      "Camera": "304.430786, 8.53624821, 420.49707, -0.804176152, 0.0414635427, 0.592943132, 0, 0.997564018, -0.0697580129, -0.594391108, -0.056097731, -0.802217126",
+      "Tracks": [
+        {
+          "Time": 1.483332633972168,
+          "Speed": 1,
+          "Length": 3.7666666507720947,
+          "Priority": "Idle",
+          "Id": "rbxassetid://507766388"
+        },
+        {
+          "Time": 0.26499974727630615,
+          "Speed": 0.6000000238418579,
+          "Length": 0.625,
+          "Priority": "Movement",
+          "Id": "rbxassetid://16562332340"
+        }
+      ],
+      "Frames": 11407
+    },
+    "DirectAttackPose": {
+      "Samples": 60,
+      "MinimumFootGap": -0.0000015050536603666842,
+      "ActiveSamples": 23
+    },
+    "AttackAttributes": {
+      "PlaybackSpeed": 1.25,
+      "OriginalPath": "ServerStorage.EnemyTemplates.Stage03Boss.TungTungSahurRig.Stage03Attack",
+      "SwingTime": 0.2
+    },
+    "Reappeared": {
+      "Root": "287.4307861328125, 11.536248207092285, 443.4970703125",
+      "Camera": "304.430786, 8.53624821, 420.49707, -0.804176152, 0.0414635427, 0.592943132, 0, 0.997564018, -0.0697580129, -0.594391108, -0.056097731, -0.802217126",
+      "Tracks": [
+        {
+          "Time": 0.3833334445953369,
+          "Speed": 1,
+          "Length": 3.7666666507720947,
+          "Priority": "Idle",
+          "Id": "rbxassetid://507766388"
+        },
+        {
+          "Time": 0.23000004887580872,
+          "Speed": 0.6000000238418579,
+          "Length": 0.625,
+          "Priority": "Movement",
+          "Id": "rbxassetid://16562332340"
+        }
+      ],
+      "Frames": 11341
+    }
+  },
+  "ServerAfter": {
+    "RootC0": "0, -2.5517416, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1",
+    "HP": 10000,
+    "Parts": {
+      "MiniBossCollider": {
+        "CF": "287.799988, 10.4233942, 442.627014, 1, 0, 0, 0, 1, 0, 0, 0, 1",
+        "Size": "7.3384199142456055, 13.346802711486816, 5.586442947387695"
+      },
+      "HumanoidRootPart": {
+        "CF": "287.799988, 8, 442.627014, 1, 0, 0, 0, 1, 0, 0, 0, 1",
+        "Size": "2, 2, 1"
+      },
+      "CombatZone": {
+        "CF": "287.799988, 10.7499924, 442.627014, 1, 0, 0, 0, 1, 0, 0, 0, 1",
+        "Size": "17.338420867919922, 14, 15.586442947387695"
+      }
+    }
+  },
+  "FinalEdit": {
+    "Running": false,
+    "Version": 627,
+    "Place": 126576845524886,
+    "Helpers": [],
+    "Sources": [
+      {
+        "Hash": 1416332438,
+        "Path": "ReplicatedStorage.Modules.Stage03GroundContact",
+        "Editor": 1416332438
+      },
+      {
+        "Hash": 1991152595,
+        "Path": "StarterPlayer.StarterPlayerScripts.World.Stage03IdleClient",
+        "Editor": 1991152595
+      },
+      {
+        "Hash": 173628447,
+        "Path": "ServerScriptService.World.EnemyManager",
+        "Editor": 173628447
+      },
+      {
+        "Hash": 444610449,
+        "Path": "StarterPlayer.StarterPlayerScripts.Combat.Stage03AttackVisual",
+        "Editor": 444610449
+      },
+      {
+        "Hash": 316135793,
+        "Path": "ReplicatedStorage.Modules.World1BossPresentation",
+        "Editor": 316135793
+      },
+      {
+        "Hash": 1596007273,
+        "Path": "ReplicatedStorage.Modules.Stage01Motion",
+        "Editor": 1596007273
+      },
+      {
+        "Hash": 3677169553,
+        "Path": "ReplicatedStorage.Config.Stage01MotionConfig",
+        "Editor": 3677169553
+      },
+      {
+        "Hash": 4273690765,
+        "Path": "StarterPlayer.StarterPlayerScripts.World.Stage01AppearanceClient",
+        "Editor": 4273690765
+      },
+      {
+        "Hash": 1512133982,
+        "Path": "ReplicatedStorage.Modules.Stage02LegMotion",
+        "Editor": 1512133982
+      },
+      {
+        "Hash": 2966985854,
+        "Path": "ReplicatedStorage.Config.Stage02LegMotionConfig",
+        "Editor": 2966985854
+      },
+      {
+        "Hash": 2420449411,
+        "Path": "StarterPlayer.StarterPlayerScripts.World.Stage02AppearanceClient",
+        "Editor": 2420449411
+      }
+    ]
+  },
+  "EditAssertions": 30
+}
