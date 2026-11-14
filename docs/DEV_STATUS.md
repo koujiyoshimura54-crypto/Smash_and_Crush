@@ -1,5 +1,12 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-14 — Retire developer-only avatar override (repository only)
+
+Removed all executable code from `ServerScriptService.HisarinoHairAutoEquip` at the owner's request. The existing script path remains so applying its source replaces the old override. No developer accessory/clothing cleanup, Hisarino auto-equip, arm/leg transparency writes, or appearance-event subscriptions remain in this script. Normal avatar loading, LV growth, stored player data, and ServerStorage templates are unchanged.
+
+Validation: reviewed the before/after source and confirmed the replacement contains comments only. Roblox Studio was not connected; no Play, character rendering, Studio edits, Save/Publish, or PR #1 operation occurred. Applying the source to Studio and checking a fresh character are still required. This does not establish resolution of unrelated avatar/clothing deformation or maximum-Body foot/Trophy issues.
+
+
 ## 2026-11-14 ? Body?????LV??10???
 
 ??4 Source?????????LV2?140?????2.8?Y??2.0???????1?10?????11?13????10???????????????????????????????????????????

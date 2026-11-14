@@ -635,9 +635,10 @@ Lv1〜50のRequirementを各10 Strengthずつ増加した。Lv1→Lv2にも10 St
 # Boss HP visual-top alignment
 
 - World1 Boss HP UI uses the final rendered visual bounds for every Stage. The bar center is the visible Boss top plus the shared BossDisplayConfig VerticalOffset; Boss scale methods, Wall HP UI, combat, and balance are unchanged.
-# Developer avatar
+# Developer avatar — retired 2026-11-14
 
-- After `CharacterAppearanceLoaded`, UserId `7467238848` keeps only the `Hisarino_hair` and `Hisarino_Body` Accessory name allowlist; every other Character Accessory plus Classic Shirt/Pants/T-Shirt is removed. The original Head and its Dynamic Head `FaceControls` remain, and the existing 12 arm/hand/leg/foot parts stay transparent. Every other player keeps the Roblox avatar loaded for that account without avatar replacement or accessory removal.
+- At the owner's request, `ServerScriptService.HisarinoHairAutoEquip` is now an inert, comment-only script in the repository. It no longer removes avatar accessories or classic clothing, equips Hisarino hair/body, or hides arms and legs. The existing normal avatar loader and shared LV-based body growth remain unchanged; the legacy ServerStorage templates are retained.
+- This change was made in GitHub only. Studio synchronization, fresh-character rendering, and public deployment are not verified. Already altered live Characters are not repaired by stopping the script; verify the normal appearance on a fresh spawn after applying the change. Save/Publish remain the owner's manual actions.
 
 # 2026-09-24 — World2 SCP bosses
 
