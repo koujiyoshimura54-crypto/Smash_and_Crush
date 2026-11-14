@@ -105,6 +105,10 @@ function M.Mount(player,services)
   if priorCompleted==false and tutorial.Completed then completionPending=true end
   priorCompleted=tutorial.Completed
   if tutorial.Completed and not completionPending then hide("Complete");return end
+  -- This gate belongs only to initial Egg/Pet guidance, never to shared Ore guides.
+  if player:GetAttribute("EggTutorialStage2Defeated")~=true then
+   completionPending=nil;completionUntil=nil;hide("WaitingForStage2Victory");return
+  end
   if not require(script.Parent.FirstBattleTutorialState).AllowLaterGuides(player) or not inLobby then hide("WaitingForLobby");return end
   if HatchClient.playing() or PetClient.busy() then hide("WaitingForHatch",Coordinator.Owner()==overlay);return end
   if blocked() then
@@ -150,7 +154,7 @@ function M.Mount(player,services)
   presentation:Pin(overlay.Messages[step].Value);presentation:Target(target)
  end
  connect(PetClient.StateChanged,refresh)
- for _,name in {"Win","CurrentWorld","TutorialCompleted","PetViewGeneration","PetSavePending","RunReturnBusy","StageSkipBusy"} do
+ for _,name in {"Win","CurrentWorld","TutorialCompleted","EggTutorialStage2Defeated","PetViewGeneration","PetSavePending","RunReturnBusy","StageSkipBusy"} do
   connect(player:GetAttributeChangedSignal(name),refresh)
  end
  connect(player:GetAttributeChangedSignal("TutorialResetSequence"),function()

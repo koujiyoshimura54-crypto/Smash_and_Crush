@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-14 — Pet Stage2 gate and camera choice preservation
+
+副本126576845524886の5 Sourceを実装し隔離Playで検証。実Stage2撃破/非致死攻撃/Win StageSkip/World2撃破、手動Pet購入装備、保存競合/失敗再試行、初戦→Ore、再生/SIZE/成長、モバイルFollowのWorld/Trophy/死亡復帰を確認。実端末タッチ、2人実クライアント、実ネットワーク再参加など未確認範囲あり。補助除去・未保存Edit。Save/PublishとPR #1操作なし。 [検証・Full Path・制約](../reports/PetStage2Camera_20261114/REPORT.md)。
+
 ## 2026-11-14 — Retire developer-only avatar override (repository only)
 
 Removed all executable code from `ServerScriptService.HisarinoHairAutoEquip` at the owner's request. The existing script path remains so applying its source replaces the old override. No developer accessory/clothing cleanup, Hisarino auto-equip, arm/leg transparency writes, or appearance-event subscriptions remain in this script. Normal avatar loading, LV growth, stored player data, and ServerStorage templates are unchanged.

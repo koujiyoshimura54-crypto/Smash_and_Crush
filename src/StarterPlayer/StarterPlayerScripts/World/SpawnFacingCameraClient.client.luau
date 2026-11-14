@@ -1,4 +1,4 @@
--- One-shot standard-camera heading alignment after each server spawn correction.
+-- Preserve player camera choices; retain death presentation and new-subject recovery.
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
@@ -7,11 +7,12 @@ local player = Players.LocalPlayer
 local TweenService = game:GetService("TweenService")
 local frozenFrame, frozenFocus, frozenFov, frozenCharacter, resumeFov
 local encounters = {}
-local boundCharacter, diedConnection, scaleConnection, facingConnection
-local headingRequest = 0
+local boundCharacter, diedConnection
+local lastView, pendingView
+local restoreRevision = 0
+local stopped = false
 local cameraConnections = {}
 local restoringCamera = false
-local requestFraming
 local deathGui, overlay, fade
 local lossConnection
 local function updateLoss()
@@ -37,18 +38,12 @@ local function watchCamera()
   for _,property in {"CFrame", "Focus", "CameraType"} do
    table.insert(cameraConnections, camera:GetPropertyChangedSignal(property):Connect(lockCamera))
   end
-  for _,property in {"CameraType", "CameraSubject"} do
-   table.insert(cameraConnections, camera:GetPropertyChangedSignal(property):Connect(function()
-    if requestFraming then requestFraming() end
-   end))
-  end
   table.insert(cameraConnections, camera:GetPropertyChangedSignal("FieldOfView"):Connect(function()
    if frozenFrame and not restoringCamera and camera.FieldOfView ~= frozenFov then resumeFov = camera.FieldOfView end
    lockCamera()
   end))
  end
  lockCamera()
- if requestFraming then requestFraming() end
 end
 local function showDeath()
  if not deathGui then return end
@@ -59,10 +54,87 @@ local function showDeath()
  fade = TweenService:Create(overlay, TweenInfo.new(.15), {BackgroundTransparency = .5})
  fade:Play()
 end
+-- Read nominal user zoom, not the distance shortened by normal occlusion.
+local function getCameraController()
+ local module=player.PlayerScripts:FindFirstChild("PlayerModule")
+  or game:GetService("StarterPlayer"):FindFirstChild("PlayerModule")
+ local cameras=module and module:FindFirstChild("CameraModule")
+ if not cameras then return nil end
+ local ok,result=pcall(require,cameras)
+ return ok and result.activeCameraController or nil
+end
+-- FollowCamera interprets a teleport from its old position as walking sideways.
+-- Clear only that movement history during an acknowledged server placement;
+-- input, zoom, follow and occlusion still run in the standard controller.
+local placementCharacter, placementRevision
+local function prepareCameraForPlacement()
+ if stopped or frozenCharacter then return end
+ local character=player.Character
+ local root=character and character:FindFirstChild("HumanoidRootPart")
+ local humanoid=character and character:FindFirstChildOfClass("Humanoid")
+ local camera=workspace.CurrentCamera
+ if not root or not humanoid or humanoid.Health<=0 or not camera
+  or camera.CameraType~=Enum.CameraType.Custom or camera.CameraSubject~=humanoid then return end
+ if placementCharacter~=character then placementCharacter=character;placementRevision=nil end
+ local revision=character:GetAttribute("SpawnPlacementRevision")
+ local target=character:GetAttribute("SpawnPlacementTarget")
+ local arrived=revision~=placementRevision and typeof(target)=="Vector3" and (root.Position-target).Magnitude<=.5
+ if root.Anchored or arrived then
+  local controller=getCameraController()
+  if controller then controller.lastCameraTransform=nil;controller.lastCameraFocus=nil end
+ end
+ if arrived then placementRevision=revision end
+end
+local function rememberView()
+ if stopped or frozenCharacter or pendingView then return end
+ local character=player.Character
+ local humanoid=character and character:FindFirstChildOfClass("Humanoid")
+ local camera=workspace.CurrentCamera
+ if character~=boundCharacter or not humanoid or humanoid.Health<=0 or not camera
+  or camera.CameraType~=Enum.CameraType.Custom or camera.CameraSubject~=humanoid then return end
+ local controller=getCameraController()
+ if not controller or not controller.GetCameraToSubjectDistance then return end
+ lastView={Distance=controller:GetCameraToSubjectDistance(),Rotation=camera.CFrame.Rotation}
+end
+local function resumeView(character,humanoid)
+ if not lastView then return end
+ local view=lastView
+ pendingView=view;restoreRevision+=1
+ local revision=restoreRevision
+ task.spawn(function()
+  -- The standard controller must first accept the new Humanoid and spawn position.
+  RunService.RenderStepped:Wait()
+  RunService.RenderStepped:Wait()
+  local deadline=os.clock()+10
+  repeat
+   if stopped or revision~=restoreRevision or character~=player.Character
+    or character~=boundCharacter or humanoid.Health<=0 or frozenCharacter then return end
+   local camera=workspace.CurrentCamera
+   local controller=getCameraController()
+   if character:GetAttribute("LobbySpawnPlaced") and camera
+    and camera.CameraSubject==humanoid and camera.CameraType==Enum.CameraType.Custom
+    and controller and controller.GetSubjectPosition and controller.SetCameraToSubjectDistance then
+    local subject=controller:GetSubjectPosition()
+    if subject then
+     controller:SetCameraToSubjectDistance(view.Distance)
+     -- Rebase the chosen orbit at the NEW subject; never restore an old world position.
+     camera.Focus=CFrame.new(subject)
+     camera.CFrame=CFrame.new(subject)*view.Rotation*CFrame.new(0,0,view.Distance)
+     controller.lastCameraTransform=nil;controller.lastCameraFocus=nil
+     pendingView=nil
+     return
+    end
+   end
+   RunService.RenderStepped:Wait()
+  until os.clock()>=deadline
+  if revision==restoreRevision then pendingView=nil end
+ end)
+end
 local function freezeDeath(character)
  if character ~= boundCharacter or character ~= player.Character or frozenCharacter then return end
  local camera = workspace.CurrentCamera
  if not camera then return end
+ restoreRevision+=1;pendingView=nil
  frozenCharacter = character
  frozenFrame, frozenFocus, frozenFov = camera.CFrame, camera.Focus, camera.FieldOfView
  resumeFov = frozenFov
@@ -83,184 +155,41 @@ local function restoreFollow(character, humanoid)
   camera.CameraSubject = humanoid
   camera.CameraType = Enum.CameraType.Custom
  end
+ resumeView(character,humanoid)
  return true
 end
 workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(watchCamera)
 watchCamera()
 -- Enforce the snapshot after the standard camera and presentation shakes.
 RunService:BindToRenderStep("SmashDeathCamera", Enum.RenderPriority.Last.Value + 1, lockCamera)
+RunService:BindToRenderStep("SmashPlacementCamera", Enum.RenderPriority.Camera.Value - 1, prepareCameraForPlacement)
+RunService:BindToRenderStep("SmashRememberCamera", Enum.RenderPriority.Camera.Value + 2, rememberView)
 task.spawn(function()
  deathGui = player:WaitForChild("PlayerGui"):WaitForChild("DeathGui")
  overlay = deathGui:WaitForChild("Overlay")
  if frozenCharacter then showDeath() else deathGui.Enabled = false end
 end)
 
--- Automatic camera framing.
--- BASE_DISTANCE controls the normal camera distance.
--- SCALE_INFLUENCE controls how much character growth affects camera distance.
-local CAMERA_BASE_DISTANCE = 18
-local CAMERA_SCALE_INFLUENCE = 0.15
-local baseMinZoom = player.CameraMinZoomDistance
-local baseMaxZoom = player.CameraMaxZoomDistance
-local handled = setmetatable({}, {__mode="k"})
-local appliedScale = setmetatable({}, {__mode="k"})
-local cameraModule
-local function getCameraController()
- if not cameraModule then
-  -- Support both Roblox's current StarterPlayer module and the legacy location.
-  local module = player.PlayerScripts:FindFirstChild("PlayerModule")
-   or game:GetService("StarterPlayer"):FindFirstChild("PlayerModule")
-  local cameras = module and module:FindFirstChild("CameraModule")
-  if not cameras then return nil end
-  local ok,result = pcall(require,cameras)
-  if not ok then return nil end
-  cameraModule = result
- end
- return cameraModule.activeCameraController
-end
--- A frame can be unavailable while the standard camera initializes or another
--- presentation temporarily owns it. Retain that request until normal follow returns.
-local framingRequest = 0
-local stopped = false
-local function syncScale(character,humanoid)
- local camera=workspace.CurrentCamera
- local root=character:FindFirstChild("HumanoidRootPart")
- local scale=character:GetAttribute("MuscleHeightScale")
- if frozenCharacter or humanoid.Health<=0 or player.Character~=character or not camera
-  or camera.CameraSubject~=humanoid or not root or typeof(scale)~="number" then return false end
- if camera.CameraType~=Enum.CameraType.Custom then return false end
- local controller=getCameraController()
- if not controller or not controller.SetCameraToSubjectDistance then return false end
- local previous=appliedScale[character]
- local resized=not previous or previous.Scale~=scale or previous.Humanoid~=humanoid
- if not resized and previous.Camera==camera and previous.Controller==controller then return true end
- local distance=CAMERA_BASE_DISTANCE*(1+(scale-1)*CAMERA_SCALE_INFLUENCE)
- if not resized then
-  -- Read the nominal zoom from the previous controller, never an occlusion-
-  -- shortened CFrame/Focus distance. A camera replacement keeps manual zoom.
-  local old=previous.Controller
-  distance=old and old.GetCameraToSubjectDistance and old:GetCameraToSubjectDistance() or previous.Distance
- end
- local newMin=math.min(baseMinZoom,distance/2)
- local newMax=math.max(newMin,baseMaxZoom*scale)
- if newMin<player.CameraMinZoomDistance then player.CameraMinZoomDistance=newMin;player.CameraMaxZoomDistance=newMax
- else player.CameraMaxZoomDistance=newMax;player.CameraMinZoomDistance=newMin end
- controller:SetCameraToSubjectDistance(distance)
- appliedScale[character]={Scale=scale,Humanoid=humanoid,Camera=camera,Controller=controller,Distance=distance}
- if resized then
- if scale<=1 then humanoid.CameraOffset=Vector3.zero
- elseif controller.GetSubjectPosition then
-  -- Ask the standard camera for its uncorrected subject point. Camera.Focus
-  -- can still belong to the pre-growth/pre-teleport frame, so adding its delta
-  -- repeatedly accumulates an unrelated offset.
-  local oldOffset=humanoid.CameraOffset
-  humanoid.CameraOffset=Vector3.zero
-  local subject=controller:GetSubjectPosition()
-  if subject then
-   local box=character:GetBoundingBox()
-   humanoid.CameraOffset=root.CFrame:VectorToObjectSpace(box.Position-subject)
-  else humanoid.CameraOffset=oldOffset end
- end
- end
- return true
-end
-requestFraming=function()
- framingRequest+=1
- local requested=framingRequest
- local character=player.Character
- local humanoid=character and character:FindFirstChildOfClass("Humanoid")
- if not character or character~=boundCharacter or not humanoid or frozenCharacter or humanoid.Health<=0 then return end
- task.spawn(function()
-  local deadline=os.clock()+10
-  repeat
-   RunService.RenderStepped:Wait()
-   if stopped or requested~=framingRequest or character~=player.Character or humanoid.Parent~=character
-    or frozenCharacter or humanoid.Health<=0 then return end
-   if syncScale(character,humanoid) then return end
-  until os.clock()>=deadline
- end)
-end
--- Late PlayerModule/CameraModule insertion must also retry an earlier request.
-local function moduleArrived(instance)
- if instance.Name=="PlayerModule" or instance.Name=="CameraModule" then requestFraming() end
-end
-local playerModuleConnection=player:WaitForChild("PlayerScripts").DescendantAdded:Connect(moduleArrived)
-local starterModuleConnection=game:GetService("StarterPlayer").DescendantAdded:Connect(moduleArrived)
-local function alignHeading(character, humanoid)
- if character ~= player.Character or character ~= boundCharacter or frozenCharacter or humanoid.Health <= 0 then return end
- headingRequest += 1
- local requested = headingRequest
- local deadline = os.clock()+10
- local camera
- repeat
-  RunService.RenderStepped:Wait()
-  camera = workspace.CurrentCamera
-  if requested ~= headingRequest or frozenCharacter or humanoid.Health<=0 or player.Character ~= character then return end
- until (character:GetAttribute("SpawnFacingDirection") and camera and camera.CameraSubject==humanoid) or os.clock()>=deadline
- if not camera or camera.CameraSubject~=humanoid then return end
- -- Let the standard CameraModule finish its new-subject initialization.
- RunService.RenderStepped:Wait()
- RunService.RenderStepped:Wait()
- if requested ~= headingRequest or frozenCharacter or humanoid.Health<=0 or player.Character~=character or camera~=workspace.CurrentCamera
-  or camera.CameraSubject~=humanoid or camera.CameraType~=Enum.CameraType.Custom then return end
- syncScale(character,humanoid)
- local direction = character:GetAttribute("SpawnFacingDirection")
- if typeof(direction)~="Vector3" then return end
- local focus = camera.Focus.Position
- local offset = camera.CFrame.Position-focus
- local horizontal = Vector3.new(offset.X,0,offset.Z).Magnitude
- if horizontal<0.01 then return end
- local look = Vector3.new(camera.CFrame.LookVector.X,0,camera.CFrame.LookVector.Z)
- if look.Magnitude>0 and look.Unit:Dot(direction)>0.999 then return end
- -- Retain standard zoom distance and elevation; change only the heading.
- local position = focus-direction*horizontal+Vector3.new(0,offset.Y,0)
- camera.CFrame = CFrame.lookAt(position,focus,Vector3.yAxis)
-end
-local function align(character)
- if handled[character] then return end
- handled[character] = true
- local humanoid = character:WaitForChild("Humanoid", 10)
- if not humanoid then return end
- local revision=0
- scaleConnection=character:GetAttributeChangedSignal("MuscleHeightScale"):Connect(function()
-  revision+=1
-  local requested=revision
-  -- Coalesce a size update and allow its parts/joints to replicate before framing.
-  task.delay(.1,function()
-   if requested==revision and character==boundCharacter then requestFraming() end
-  end)
- end)
-
-
- facingConnection=character:GetAttributeChangedSignal("SpawnFacingRevision"):Connect(function()
-  task.spawn(alignHeading, character, humanoid)
- end)
- requestFraming()
- alignHeading(character, humanoid)
-end
+-- Body growth, SIZE/AUTO and SpawnFacingDirection do not own the camera.
+-- Character placement/facing and server acknowledgement remain in their own scripts.
 local function bindCharacter(character)
- boundCharacter = character
+ boundCharacter=character
+ restoreRevision+=1
  if lossConnection then lossConnection:Disconnect() end
  lossConnection=character:GetAttributeChangedSignal("BattleBagLostCount"):Connect(updateLoss)
- framingRequest += 1
- headingRequest += 1
- if facingConnection then facingConnection:Disconnect(); facingConnection = nil end
  for _,encounter in encounters do table.clear(encounter) end
- if diedConnection then diedConnection:Disconnect(); diedConnection = nil end
- if scaleConnection then scaleConnection:Disconnect(); scaleConnection = nil end
- local humanoid = character:WaitForChild("Humanoid", 10)
- if not humanoid or character ~= boundCharacter then return end
- diedConnection = humanoid.Died:Connect(function() freezeDeath(character) end)
- if humanoid.Health <= 0 then freezeDeath(character); return end
- local root = character:WaitForChild("HumanoidRootPart", 10)
- if not root or character ~= boundCharacter then return end
- while character == player.Character and not character:IsDescendantOf(workspace) do
-  RunService.Heartbeat:Wait()
- end
- if restoreFollow(character, humanoid) then align(character) end
+ if diedConnection then diedConnection:Disconnect();diedConnection=nil end
+ local humanoid=character:WaitForChild("Humanoid",10)
+ if not humanoid or character~=boundCharacter then return end
+ diedConnection=humanoid.Died:Connect(function()freezeDeath(character)end)
+ if humanoid.Health<=0 then freezeDeath(character);return end
+ local root=character:WaitForChild("HumanoidRootPart",10)
+ if not root or character~=boundCharacter then return end
+ while character==player.Character and not character:IsDescendantOf(workspace) do RunService.Heartbeat:Wait() end
+ restoreFollow(character,humanoid)
 end
-player.CharacterAdded:Connect(function(character) task.spawn(bindCharacter, character) end)
-if player.Character then task.spawn(bindCharacter, player.Character) end
+player.CharacterAdded:Connect(function(character)task.spawn(bindCharacter,character)end)
+if player.Character then task.spawn(bindCharacter,player.Character) end
 
 -- Listen to the existing presentation streams without waiting on an absent World2.
 task.spawn(function()
@@ -291,15 +220,11 @@ task.spawn(function()
  for _,remote in remotes:GetChildren() do hook(remote) end
 end)
 script.Destroying:Connect(function()
- stopped=true
+ stopped=true;restoreRevision+=1
  if lossConnection then lossConnection:Disconnect() end
- framingRequest+=1
- playerModuleConnection:Disconnect()
- starterModuleConnection:Disconnect()
  RunService:UnbindFromRenderStep("SmashDeathCamera")
+ RunService:UnbindFromRenderStep("SmashRememberCamera")
+ RunService:UnbindFromRenderStep("SmashPlacementCamera")
  if diedConnection then diedConnection:Disconnect() end
- if scaleConnection then scaleConnection:Disconnect() end
- if facingConnection then facingConnection:Disconnect() end
- headingRequest += 1
  for _,connection in cameraConnections do connection:Disconnect() end
 end)

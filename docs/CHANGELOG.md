@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-14 — Pet Stage2 gate and camera choice preservation
+
+副本StudioへPet初回案内のWorld1 Stage2実撃破ゲートと永続flagを追加。保存済み由来/完了を保ち、Pet取引と撃破記録の競合を統合。成長/帰還等の強制カメラ設定を解除し、死亡復帰の相対orbit復元とモバイルFollowの配置履歴処理を追加。隔離Play後に検証補助を除去。未保存Edit、公開操作なし。 [検証・Full Path・制約](../reports/PetStage2Camera_20261114/REPORT.md)。
+
 ## 2026-11-14 — Disable developer avatar replacement
 
 Replaced the executable contents of `ServerScriptService.HisarinoHairAutoEquip` with an inert script. Removed developer-only accessory/clothing deletion, Hisarino auto-equip, and limb hiding; retained normal loading, LV growth, and stored templates. Static source review only. GitHub change; Studio application, fresh-spawn appearance, and public deployment remain unverified. No Play, Save/Publish, or PR #1 operation.

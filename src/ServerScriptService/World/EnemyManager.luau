@@ -917,6 +917,7 @@ local function defeat(p,n)
  ps.Gauges[n]=0
  ps.Defeated[n]=true
  if worldId==1 and n==1 then FirstBattle.Victory(p,ps) end
+ if worldId==1 and n==2 then PlayerData.RecordWorld1Stage2Defeat(p) end
  Analytics.Combat(p,worldId,n,6)
  if n>=1 and n<10 then Speed.BeginTimedBoost(p,worldId,"BossDefeat") end
  -- Claim defeat before any result/reward notification; all damage paths share this guard.

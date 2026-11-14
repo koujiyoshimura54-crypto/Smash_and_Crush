@@ -1,17 +1,25 @@
 -- Server-authored lifetime progress, separate from Ore onboarding and Pet ownership.
 local M={}
 function M.Normalize(raw,isNew)
- if raw==nil then return {Version=1,Eligible=isNew==true,Completed=false,Acquired={}} end
+ if raw==nil then return {Version=1,Eligible=isNew==true,Completed=false,Acquired={},World1Stage2Defeated=false} end
  if type(raw)~="table" or raw.Version~=1 or type(raw.Eligible)~="boolean" or type(raw.Completed)~="boolean"
+  or raw.World1Stage2Defeated~=nil and type(raw.World1Stage2Defeated)~="boolean"
   or type(raw.Acquired)~="table" or raw.PurchaseId~=nil and type(raw.PurchaseId)~="string"
   or raw.CompletionId~=nil and type(raw.CompletionId)~="string" then return nil,"InvalidEggPetTutorial" end
- local out={Version=1,Eligible=raw.Eligible,Completed=raw.Completed,Acquired={},PurchaseId=raw.PurchaseId,CompletionId=raw.CompletionId}
+ local out={Version=1,Eligible=raw.Eligible,Completed=raw.Completed,World1Stage2Defeated=raw.World1Stage2Defeated==true,Acquired={},PurchaseId=raw.PurchaseId,CompletionId=raw.CompletionId}
  local count=0
  for id,species in raw.Acquired do
   count+=1
   if count>8 or type(id)~="string" or #id==0 or #id>128 or type(species)~="string" or #species==0 or #species>128 then return nil,"InvalidEggTutorialPet" end
   out.Acquired[id]=species
  end
+ return out
+end
+-- Only the combat fact is monotonic here. Pet transactions still own completion/provenance.
+function M.MergeCombatFact(raw,incoming)
+ local out=assert(M.Normalize(raw,false))
+ local other=assert(M.Normalize(incoming,false))
+ out.World1Stage2Defeated=out.World1Stage2Defeated or other.World1Stage2Defeated
  return out
 end
 function M.OwnedTarget(state,pets)
@@ -38,5 +46,6 @@ end
 function M.Publish(player,state)
  player:SetAttribute("EggTutorialEligible",state.Eligible)
  player:SetAttribute("EggTutorialCompleted",state.Completed)
+ player:SetAttribute("EggTutorialStage2Defeated",state.World1Stage2Defeated==true)
 end
 return table.freeze(M)

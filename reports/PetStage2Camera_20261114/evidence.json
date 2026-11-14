@@ -1,0 +1,1219 @@
+{
+  "place": 126576845524886,
+  "method": "Native Script/LocalScript isolated Play; preparations and failed attempts included; names redacted",
+  "cases": [
+    {
+      "name": "initial-camera",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.2617993950843811,\"3\":0,\"2\":3.1411609649658205},\"ActualDistance\":18.000001907348634,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 8.818056106567383, 12.999991416931152\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "skip-does-not-unlock",
+      "kind": "Server",
+      "body": "D.SetWin(p,1000);assert(D.WaitForSave(p,20));local result=table.pack(require(S.StageSkipService).BuyWithWin(p,2));return {Result=result,State=state()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Result\":{\"1\":true,\"2\":\"Stage 2.1 started\"},\"State\":{\"Attr\":false,\"Saving\":false,\"Win\":999,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":2,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false}}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "guide-before-victory",
+      "kind": "Client",
+      "body": "local o={} for _,v in p.PlayerGui:GetChildren() do if v:GetAttribute(\"Step\") then o[v.Name]=v:GetAttribute(\"Step\") end end return o",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"DumbbellEquipTutorialGui\":\"WaitingForLobby\",\"ItemEquipTutorialGui\":\"WaitingForFirstBattle\",\"PetMergeTutorialGui\":\"WaitingForLobby\",\"OreMergeTutorialGui\":\"Waiting\",\"EggPetTutorialGui\":\"WaitingForStage2Victory\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "stage2-nonlethal",
+      "kind": "Server",
+      "body": "local s=D.Get(p);s.Data.Level=3;s.Data.Strength=5;s.Dirty=true;p:SetAttribute(\"Level\",3);p:SetAttribute(\"Strength\",5)\nlocal W=require(game.ServerScriptService.World.Stage1WallManager)\nfor i=1,5 do W.ApplyDamageForStage(p,2,1e9) end E.SendState(p)\nlocal boss=assert(E.GetEnemy(2,p));local br=boss.HumanoidRootPart;local root=p.Character.HumanoidRootPart;local hum=p.Character.Humanoid\nlocal floor=workspace.GeneratedMap.BattleCorridor.Stage02.Floor\nlocal at=Vector3.new(br.Position.X,floor.Position.Y+floor.Size.Y/2+hum.HipHeight+root.Size.Y/2,br.Position.Z-2)\nroot.Anchored=false;p.Character:PivotTo(CFrame.lookAt(at,at+Vector3.zAxis));root.AssemblyLinearVelocity=Vector3.zero;root.Anchored=true\ntask.wait(.2);local hit=table.pack(E.TryManualAttack(p))\nlocal b=require(game.ServerScriptService.World.BossCombatService).Get(p)\nreturn {Hit=hit,State=state(),Boss=b and {HP=b.HP,Attacks=b.Attacks},TutorialCompleted=p:GetAttribute(\"TutorialCompleted\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"Attr\":false,\"Saving\":false,\"Win\":999,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":2,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false}},\"Boss\":{\"HP\":1795,\"Attacks\":1},\"TutorialCompleted\":true,\"Hit\":{\"1\":true,\"2\":\"Combat\"}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "stage2-real-victory-win-zero",
+      "kind": "Server",
+      "body": "if p.Character.Humanoid.Health<=0 then return {retry=\"dead\"} end\nE.StartRun(p,2);D.SetWin(p,0);local s=D.Get(p);s.Data.Level=32;s.Data.Strength=20000;s.Dirty=true;p:SetAttribute(\"Level\",32);p:SetAttribute(\"Strength\",20000)\nlocal W=require(game.ServerScriptService.World.Stage1WallManager);W.ApplyDamageForStage(p,2,1e9);E.SendState(p)\nlocal boss=assert(E.GetEnemy(2,p));local br=boss.HumanoidRootPart;local r=p.Character.HumanoidRootPart;local h=p.Character.Humanoid;local f=workspace.GeneratedMap.BattleCorridor.Stage02.Floor\nlocal at=Vector3.new(br.Position.X,f.Position.Y+f.Size.Y/2+h.HipHeight+r.Size.Y/2,br.Position.Z-2)\nr.Anchored=false;p.Character:PivotTo(CFrame.lookAt(at,at+Vector3.zAxis));r.AssemblyLinearVelocity=Vector3.zero;r.Anchored=true\ntask.wait(.25);local hit=table.pack(E.TryManualAttack(p));task.wait(.3)\nreturn {Hit=hit,State=state(),Defeated=E.GetPlayerState(p).Defeated[2]}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Tools.ExecuteLuauTool:101: sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Util.CommandExecution:54: AssistantCommand:1: ReplicatedStorage.__PetCameraQA.Case:11: assertion failed!"
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "name": "guide-immediately-after-combat",
+      "kind": "Client",
+      "body": "return {Egg=p.PlayerGui.EggPetTutorialGui:GetAttribute(\"Step\"),PetMerge=p.PlayerGui.PetMergeTutorialGui:GetAttribute(\"Step\"),Camera=snap()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"WaitingForStage2Victory\",\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.2617993950843811,\"3\":0,\"2\":3.1411609649658205},\"ActualDistance\":18.000001907348634,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.86376953125, 10.384490966796875, 13.000198364257812\",\"Min\":18,\"Stage2\":false},\"PetMerge\":\"WaitingForLobby\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "return-after-victory",
+      "kind": "Server",
+      "body": "p.Character.HumanoidRootPart.Anchored=false;return {Return=table.pack(require(S.RunReturnService).Request(p,p:GetAttribute(\"RunInventoryId\"))),State=state()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"Attr\":false,\"Saving\":false,\"Win\":0,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":1,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false}},\"Return\":{\"1\":true,\"2\":\"Returned\"}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "prepare-victory-via-stage-skip",
+      "kind": "Server",
+      "body": "D.SetWin(p,20);assert(D.WaitForSave(p,20));local skip=table.pack(require(S.StageSkipService).BuyWithWin(p,2));D.SetWin(p,0);local s=D.Get(p);s.Data.Level=32;s.Data.Strength=20000;s.Dirty=true;p:SetAttribute(\"Level\",32);p:SetAttribute(\"Strength\",20000)\nrequire(game.ServerScriptService.World.Stage1WallManager).ApplyDamageForStage(p,2,1e9);E.SendState(p);task.wait(.5)\nlocal boss=E.GetEnemy(2,p);return {Skip=skip,State=state(),Boss=boss and boss:GetFullName()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Skip\":{\"1\":true,\"2\":\"Stage 2.1 started\"},\"Boss\":\"Workspace.Enemies.Owner_TEST_USER_ID.Stage02_Enemy\",\"State\":{\"Attr\":false,\"Saving\":false,\"Win\":0,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":2,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false}}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "actual-stage2-kill",
+      "kind": "Server",
+      "body": "local boss=assert(E.GetEnemy(2,p));local br=boss.HumanoidRootPart;local r=p.Character.HumanoidRootPart;local h=p.Character.Humanoid;local f=workspace.GeneratedMap.BattleCorridor.Stage02.Floor\nlocal at=Vector3.new(br.Position.X,f.Position.Y+f.Size.Y/2+h.HipHeight+r.Size.Y/2,br.Position.Z-2)\nr.Anchored=false;p.Character:PivotTo(CFrame.lookAt(at,at+Vector3.zAxis));r.AssemblyLinearVelocity=Vector3.zero;r.Anchored=true\ntask.wait(.2);local hit=table.pack(E.TryManualAttack(p));task.wait(.4);return {Hit=hit,State=state(),Defeated=E.GetPlayerState(p).Defeated[2]}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"Attr\":true,\"Saving\":false,\"Win\":0,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":3,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":true}},\"Defeated\":true,\"Hit\":{\"1\":true,\"2\":\"Combat\"}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "no-guide-in-combat-zone",
+      "kind": "Client",
+      "body": "return {Step=p.PlayerGui.EggPetTutorialGui:GetAttribute(\"Step\"),Camera=snap()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Step\":\"WaitingForLobby\",\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.2617993950843811,\"3\":0,\"2\":3.1411609649658205},\"ActualDistance\":17.9999942779541,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.79998779296875, 9.984477996826172, 310.8399963378906\",\"Min\":18,\"Stage2\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "back-real-route",
+      "kind": "Server",
+      "body": "p.Character.HumanoidRootPart.Anchored=false;return {Result=table.pack(require(S.RunReturnService).Request(p,p:GetAttribute(\"RunInventoryId\"))),State=state()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Result\":{\"1\":true,\"2\":\"Returned\"},\"State\":{\"Attr\":true,\"Saving\":false,\"Win\":0,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":1,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":true}}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "satisfy-prior-guide-fixture-win-zero",
+      "kind": "Server",
+      "body": "local s=D.Get(p);s.Data.FirstBattleTutorial.Eligible=false;p:SetAttribute(\"FirstBattleTutorialEligible\",false);p:SetAttribute(\"TutorialCompleted\",true);D.SetWin(p,0);return state()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Attr\":true,\"Saving\":false,\"Win\":0,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":1,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "waiting-for-win",
+      "kind": "Client",
+      "body": "return {Step=p.PlayerGui.EggPetTutorialGui:GetAttribute(\"Step\"),Camera=snap()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Step\":\"WaitingForWin\",\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.2617993950843811,\"3\":0,\"2\":3.1411609649658205},\"ActualDistance\":18.000001907348634,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 10.384490966796875, 12.999991416931152\",\"Min\":18,\"Stage2\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "win-later-satisfied",
+      "kind": "Server",
+      "body": "D.SetWin(p,500);return state()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Attr\":true,\"Saving\":false,\"Win\":500,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":1,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "guide-starts-later",
+      "kind": "Client",
+      "body": "task.wait(.5);return {Egg=p.PlayerGui.EggPetTutorialGui:GetAttribute(\"Step\"),Merge=p.PlayerGui.PetMergeTutorialGui:GetAttribute(\"Step\"),Viewport=tostring(cam.ViewportSize)}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Viewport\":\"1279, 720\",\"Egg\":\"WaitingForGuide\",\"Merge\":\"WaitingForPets\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "manual-far-angle",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":30,\"Rotation\":{\"1\":-0.2617993950843811,\"3\":0,\"2\":3.1411609649658205},\"ActualDistance\":30.000001907348634,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 10.384490966796875, 12.999991416931152\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "guide-coordinator-owner",
+      "kind": "Client",
+      "body": "local co=require(game.ReplicatedStorage.Modules.TutorialGuideCoordinator);local o={} for _,v in p.PlayerGui:GetChildren() do if v:GetAttribute(\"Step\") then o[v.Name]=v:GetAttribute(\"Step\") end end return {Steps=o,Owner=co.Owner() and co.Owner().Name}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Tools.ExecuteLuauTool:101: sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Util.CommandExecution:54: AssistantCommand:1: TutorialGuideCoordinator is not a valid member of Folder \"ReplicatedStorage.Modules\""
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "name": "manual-rotated-camera",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":30,\"Rotation\":{\"1\":-0.2617993950843811,\"3\":0,\"2\":3.1411609649658205},\"ActualDistance\":30.000001907348634,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 10.384490966796875, 12.999991416931152\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "guide-prerequisites",
+      "kind": "Server",
+      "body": "local d=D.Get(p).Data;d.EquipmentTutorial.ItemCompleted=true;d.EquipmentTutorial.DumbbellCompleted=true;d.EquipmentTutorial.HigherDumbbellCompleted=true;require(RS.Modules.EquipmentTutorialState).Publish(p,d);return state()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Attr\":true,\"Saving\":false,\"Win\":500,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":1,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":true}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "guide-after-other-guide-completes",
+      "kind": "Client",
+      "body": "task.wait(3);local o={} for _,v in p.PlayerGui:GetChildren() do if v:GetAttribute(\"Step\") then o[v.Name]=v:GetAttribute(\"Step\") end end return o",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"DumbbellEquipTutorialGui\":\"WaitingForGuide\",\"ItemEquipTutorialGui\":\"WaitingForGuide\",\"PetMergeTutorialGui\":\"WaitingForPets\",\"OreMergeTutorialGui\":\"GoToMerge\",\"EggPetTutorialGui\":\"WaitingForGuide\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "fixture-complete-existing-ore-guide",
+      "kind": "Server",
+      "body": "local d=D.Get(p).Data;d.OreMergeTutorial.Completed=true;require(RS.Modules.OreMergeTutorialState).Publish(p,d.OreMergeTutorial);return true",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "guide-after-win-and-prior-guides",
+      "kind": "Client",
+      "body": "task.wait(4);return {Egg=p.PlayerGui.EggPetTutorialGui:GetAttribute(\"Step\"),Owner=require(game.ReplicatedStorage.Modules.TutorialPresentationCoordinator).Owner().Name}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"GoToEgg\",\"Owner\":\"EggPetTutorialGui\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-set-different-user-orbit-fixture",
+      "kind": "Client",
+      "body": "local at=c:GetSubjectPosition();local rot=CFrame.fromOrientation(math.rad(-32),math.rad(65),0);c:SetCameraToSubjectDistance(28);cam.CFrame=CFrame.new(at)*rot*CFrame.new(0,0,28);cam.Focus=CFrame.new(at);task.wait(.3);return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":28,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":28.003984451293947,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 10.384490966796875, 12.999991416931152\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "actual-lv-growth",
+      "kind": "Server",
+      "body": "local before=p.Character:GetAttribute(\"MuscleHeightScale\");local ok=require(S.StrengthManager).SetStrength(p,100000);task.wait(.5);return {OK=ok,ScaleBefore=before,ScaleAfter=p.Character:GetAttribute(\"MuscleHeightScale\"),Level=p:GetAttribute(\"Level\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"OK\":100000,\"ScaleAfter\":1.8,\"Level\":32,\"ScaleBefore\":1.8}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-after-lv-growth",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":28,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":28.0000057220459,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 10.384490966796875, 12.999991416931152\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "actual-rebirth",
+      "kind": "Server",
+      "body": "assert(D.WaitForSave(p,20));local result=table.pack(D.TryRebirth(p));task.wait(.5);return {Result=result,State=state(),Level=p:GetAttribute(\"Level\"),Count=p:GetAttribute(\"RebirthCount\"),Scale=p.Character:GetAttribute(\"MuscleHeightScale\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"Attr\":true,\"Saving\":false,\"Win\":500,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":1,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":true}},\"Count\":1,\"Scale\":1,\"Level\":1,\"Result\":{\"1\":true,\"2\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-after-rebirth",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":28,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":28.0000057220459,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 8.818056106567383, 12.999991416931152\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "actual-growth-after-rebirth",
+      "kind": "Server",
+      "body": "require(S.StrengthManager).SetStrength(p,100000);task.wait(.5);return {Level=p:GetAttribute(\"Level\"),Scale=p.Character:GetAttribute(\"MuscleHeightScale\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Scale\":1,\"Level\":1}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-after-growth-from-lv1",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":28,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":28.0000057220459,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 8.818056106567383, 12.999991416931152\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "pc-mouse-manual-near-and-angle",
+      "kind": "Client",
+      "body": "return {Camera=snap(),Touch=game:GetService(\"UserInputService\").TouchEnabled}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":17.99999237060547,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 8.818056106567383, 12.999991416931152\",\"Min\":18,\"Stage2\":true},\"Touch\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "size-unlock-fixture",
+      "kind": "Server",
+      "body": "assert(D.WaitForSave(p,20));local s=D.Get(p);s.Data.RebirthCount=5;s.Data.SizeChangeUnlocked=true;s.Dirty=true;p:SetAttribute(\"RebirthCount\",5);p:SetAttribute(\"SizeChangeUnlocked\",true);D.SetWin(p,5000);return {Result=table.pack(D.ChangeSelectedSize(p,3,require(RS.Config.SizeChangeConfig))),State=state()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Result\":{\"1\":true,\"4\":4500,\"3\":3,\"2\":\"Success\"},\"State\":{\"Attr\":true,\"Saving\":false,\"Win\":4500,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":1,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":true}}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-after-manual-size",
+      "kind": "Client",
+      "body": "task.wait(.3);return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":17.99999237060547,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.86376953125, 9.87540054321289, 13.000198364257812\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "actual-auto-size",
+      "kind": "Server",
+      "body": "return {Result=table.pack(D.ChangeSelectedSize(p,0,require(RS.Config.SizeChangeConfig))),Scale=p.Character:GetAttribute(\"MuscleHeightScale\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Result\":{\"1\":true,\"4\":4500,\"3\":0,\"2\":\"Success\"},\"Scale\":1.54}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-after-auto-size",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":17.999990463256837,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.86376953125, 8.818056106567383, 13.000198364257812\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "actual-level-gain",
+      "kind": "Server",
+      "body": "local before={Level=p:GetAttribute(\"Level\"),Scale=p.Character:GetAttribute(\"MuscleHeightScale\")};local ok=D.AddStrengthGain(p,100000);task.wait(.5);return {Before=before,OK=ok,Level=p:GetAttribute(\"Level\"),Scale=p.Character:GetAttribute(\"MuscleHeightScale\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Before\":{\"Scale\":1,\"Level\":1},\"Level\":36,\"OK\":200000,\"Scale\":1.8}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-after-actual-level-gain",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":17.99999237060547,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.86376953125, 10.384490966796875, 13.000198364257812\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "death-trigger",
+      "kind": "Server",
+      "body": "p.Character.Humanoid.Health=0;return true",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "death-overlay",
+      "kind": "Client",
+      "body": "return {Camera=snap(),DeathGui=p.PlayerGui:FindFirstChild(\"DeathOverlay\")~=nil}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Tools.ExecuteLuauTool:101: sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Util.CommandExecution:54: AssistantCommand:1: ReplicatedStorage.__PetCameraQA.Case:5: attempt to index nil with 'GetCameraToSubjectDistance'"
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "name": "camera-after-death-respawn",
+      "kind": "Client",
+      "body": "return {Camera=snap(),Health=p.Character.Humanoid.Health,Placed=p.Character:GetAttribute(\"LobbySpawnPlaced\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Placed\":true,\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":17.99999237060547,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 10.384490966796875, 12.999991416931152\",\"Min\":18,\"Stage2\":true},\"Health\":100}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "pc-native-mouse-rotation",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":17.99999237060547,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 10.384490966796875, 12.999991416931152\",\"Min\":18,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "manual-purchase-before-stage2",
+      "kind": "Server",
+      "body": "assert(D.WaitForSave(p,20));assert(D.Reset(p));D.SetAutoTapEnabled(p,false);E.InitializePlayer(p);D.SetWin(p,1000);assert(D.Save(p));nearEgg();local r=pet(\"OpenEgg\",\"Basic\",\"Open1\");assert(r.ok,r.reason);assert(not D.Get(p).Data.EggPetTutorial.World1Stage2Defeated);return {OK=r.ok,Reason=r.reason,Acquired=#D.Get(p).Data.EggPetTutorial.Acquired,Completed=D.Get(p).Data.EggPetTutorial.Completed,Stage2=p:GetAttribute(\"EggTutorialStage2Defeated\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Stage2\":false,\"Acquired\":0,\"Completed\":false,\"OK\":true,\"Reason\":\"PetSaved\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "manual-equip-before-stage2",
+      "kind": "Server",
+      "body": "task.wait(1);local r=pet(\"BestEquip\");assert(r.ok,r.reason);assert(D.Get(p).Data.EggPetTutorial.Completed);return {OK=r.ok,State=state(),Stored=saved().EggPetTutorial}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Stored\":{\"Completed\":true,\"Acquired\":{\"0258f92a-f4ba-4526-b21d-6d470b865f3a\":\"Dog\"},\"Version\":1,\"PurchaseId\":\"35898ad6-a420-48b7-ae67-304a6fed4db0\",\"CompletionId\":\"ee7c2b78-19bc-4aa4-bab0-c8de8216b5bc\",\"Eligible\":true,\"World1Stage2Defeated\":false},\"State\":{\"Attr\":false,\"Saving\":false,\"Win\":997,\"Health\":100,\"Loaded\":true,\"Pending\":false,\"Stage\":1,\"Tutorial\":{\"Completed\":true,\"Acquired\":{\"0258f92a-f4ba-4526-b21d-6d470b865f3a\":\"Dog\"},\"World1Stage2Defeated\":false,\"PurchaseId\":\"35898ad6-a420-48b7-ae67-304a6fed4db0\",\"CompletionId\":\"ee7c2b78-19bc-4aa4-bab0-c8de8216b5bc\",\"Eligible\":true,\"Version\":1}},\"OK\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "early-complete-then-fact-and-reload",
+      "kind": "Server",
+      "body": "local original=D.Get(p).Data.EggPetTutorial.CompletionId;D.RecordWorld1Stage2Defeat(p);task.wait(.3);assert(D.WaitForSave(p,20));assert(D.Save(p));D.Release(p);assert(D.Load(p));local st=D.Get(p).Data.EggPetTutorial;assert(st.Completed and st.CompletionId==original and st.World1Stage2Defeated);return {Completed=st.Completed,CompletionIdPreserved=st.CompletionId==original,Stage2=st.World1Stage2Defeated,Acquired=#st.Acquired}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Completed\":true,\"Acquired\":0,\"CompletionIdPreserved\":true,\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "completed-guide-not-replayed",
+      "kind": "Client",
+      "body": "task.wait(.5);return {Step=p.PlayerGui.EggPetTutorialGui:GetAttribute(\"Step\"),Stage2=p:GetAttribute(\"EggTutorialStage2Defeated\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Step\":\"Complete\",\"Stage2\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "held-purchase-defeat-overlap",
+      "kind": "Server",
+      "body": "assert(D.WaitForSave(p,20));assert(D.Reset(p));D.SetAutoTapEnabled(p,false);D.SetWin(p,1000);assert(D.Save(p));nearEgg()\nM.TargetKey=\"Player_\"..p.UserId;M.HoldWrites=true;M.BlockedWrites=0\nlocal result;task.spawn(function()result=pet(\"OpenEgg\",\"Basic\",\"Open1\")end)\nlocal deadline=os.clock()+5;repeat task.wait(.05)until M.BlockedWrites>0 or os.clock()>deadline\nassert(M.BlockedWrites>0,\"purchase not held\");assert(D.RecordWorld1Stage2Defeat(p));M.HoldWrites=false\ndeadline=os.clock()+15;repeat task.wait(.05)until result or os.clock()>deadline\nassert(result and result.ok,result and result.reason or \"no result\");assert(D.Get(p).Data.EggPetTutorial.World1Stage2Defeated,\"live rollback\")\nassert(D.WaitForSave(p,20));assert(D.Save(p));local st=saved().EggPetTutorial\nassert(st.World1Stage2Defeated and next(st.Acquired)~=nil and not st.Completed)\nreturn {Purchase=result.reason,Fact=st.World1Stage2Defeated,PartialPurchaseRetained=next(st.Acquired)~=nil,Completed=st.Completed,BlockedWrites=M.BlockedWrites}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Completed\":false,\"Purchase\":\"PetSaved\",\"BlockedWrites\":1,\"Fact\":true,\"PartialPurchaseRetained\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "flag-before-purchase-normal-save",
+      "kind": "Server",
+      "body": "local before=saved().EggPetTutorial.PurchaseId;task.wait(1);local r=pet(\"BestEquip\");assert(r.ok,r.reason);assert(D.Save(p));local st=saved().EggPetTutorial;assert(st.Completed and st.World1Stage2Defeated and st.PurchaseId==before);return {Equip=r.reason,Completed=st.Completed,Fact=st.World1Stage2Defeated,PurchaseProvenanceKept=st.PurchaseId==before}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Equip\":\"PetSaved\",\"Completed\":true,\"Fact\":true,\"PurchaseProvenanceKept\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "fact-save-precommit-failure-retry",
+      "kind": "Server",
+      "body": "assert(D.WaitForSave(p,20));assert(D.Reset(p));M.TargetKey=\"Player_\"..p.UserId;M.FailBefore=2;assert(D.RecordWorld1Stage2Defeat(p));local deadline=os.clock()+20\nrepeat task.wait(.2)until not D.Get(p).EggStage2SaveScheduled or os.clock()>deadline\nlocal st=saved().EggPetTutorial;assert(st.World1Stage2Defeated);return {Fact=st.World1Stage2Defeated,FailuresRemaining=M.FailBefore,Dirty=D.Get(p).Dirty,Pending=D.Get(p).EggStage2SaveScheduled~=nil}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"FailuresRemaining\":0,\"Pending\":false,\"Fact\":true,\"Dirty\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "pet-ack-loss-retry",
+      "kind": "Server",
+      "body": "assert(D.WaitForSave(p,20));D.SetWin(p,1000);assert(D.Save(p));nearEgg();local id=H:GenerateGUID(false);M.FailAfter=1;local r=pet(\"OpenEgg\",\"Basic\",\"Open1\",id);if not r.ok then task.wait(1);r=pet(\"OpenEgg\",\"Basic\",\"Open1\",id)end\nassert(r.ok,r.reason);local first=saved();local retry=pet(\"OpenEgg\",\"Basic\",\"Open1\",id);local last=saved();assert(last.Win==first.Win and last.EggPetTutorial.World1Stage2Defeated)\nreturn {Result=r.reason,Retry=retry.reason,WinChargedOnce=last.Win==997,Flag=last.EggPetTutorial.World1Stage2Defeated,Pending=D.Get(p).PendingItemMutation~=nil}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Retry\":\"AlreadyApplied\",\"Flag\":true,\"Pending\":false,\"Result\":\"AlreadyApplied\",\"WinChargedOnce\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "missing-field-completed-legacy-load",
+      "kind": "Server",
+      "body": "task.wait(1);assert(pet(\"BestEquip\").ok);assert(D.WaitForSave(p,20));assert(D.Save(p));local before=saved().EggPetTutorial;D.Release(p)\nlocal st=M.DataStoreService:GetDataStore(require(game.ServerScriptService.Config.DataStoreConfig).GetName(\"PlayerData_v1\"))\nst:UpdateAsync(\"Player_\"..p.UserId,function(old)old.EggPetTutorial.World1Stage2Defeated=nil;old.TutorialCompleted=true;return old end)\nassert(D.Load(p));local now=D.Get(p).Data.EggPetTutorial;assert(now.World1Stage2Defeated==false and now.Completed and now.PurchaseId==before.PurchaseId and now.CompletionId==before.CompletionId)\nreturn {MissingDefaultsFalse=not now.World1Stage2Defeated,CompletedRetained=now.Completed,PurchaseRetained=now.PurchaseId==before.PurchaseId,CompletionRetained=now.CompletionId==before.CompletionId}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"MissingDefaultsFalse\":true,\"CompletionRetained\":true,\"CompletedRetained\":true,\"PurchaseRetained\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world2-stage2-prepared-entry",
+      "kind": "Server",
+      "body": "assert(D.WaitForSave(p,20));assert(D.Reset(p));D.SetAutoTapEnabled(p,false);E.ForWorld(1).Deactivate(p);p:SetAttribute(\"CurrentWorld\",2);local e=E.ForWorld(2);e.StartRun(p,2)\nlocal d=D.Get(p).Data;d.Strength=1e8;d.Level=1;p:SetAttribute(\"Strength\",1e8);p:SetAttribute(\"Level\",1)\nlocal f=workspace.World2Map.BattleCorridor.Stage02.Floor;p.Character.HumanoidRootPart.Anchored=false;p.Character:PivotTo(CFrame.new(f.Position+Vector3.new(0,5,0)))\nrequire(game.ServerScriptService.World.Stage1WallManager).ForWorld(2).ApplyDamageForStage(p,2,1e15);task.wait(.5);e.SendState(p);local b=e.GetEnemy(2,p)\nreturn {Boss=b and b:GetFullName(),State=state()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"Attr\":false,\"Win\":0,\"Loaded\":true,\"Pending\":false,\"Saving\":false,\"Health\":100,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false},\"Stage\":1,\"World\":2},\"Boss\":\"Workspace.World2Enemies.Owner_TEST_USER_ID.Stage02_Enemy\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world2-stage2-real-kill-no-unlock",
+      "kind": "Server",
+      "body": "local e=E.ForWorld(2);local boss=assert(e.GetEnemy(2,p));local r=p.Character.HumanoidRootPart;local h=p.Character.Humanoid;local f=workspace.World2Map.BattleCorridor.Stage02.Floor;local br=boss.HumanoidRootPart\nlocal at=Vector3.new(br.Position.X,f.Position.Y+f.Size.Y/2+h.HipHeight+r.Size.Y/2,br.Position.Z-2)\nr.Anchored=false;p.Character:PivotTo(CFrame.lookAt(at,at+Vector3.zAxis));r.AssemblyLinearVelocity=Vector3.zero;r.Anchored=true;task.wait(.2);local result=table.pack(e.TryManualAttack(p));task.wait(.3)\nassert(e.GetPlayerState(p).Defeated[2] and not D.Get(p).Data.EggPetTutorial.World1Stage2Defeated);return {Result=result,Defeated=e.GetPlayerState(p).Defeated[2],Fact=p:GetAttribute(\"EggTutorialStage2Defeated\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Tools.ExecuteLuauTool:101: sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Util.CommandExecution:54: AssistantCommand:1: ReplicatedStorage.__PetCameraQA.Case:12: assertion failed!"
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "name": "world1-stage1-ore-preserved-prepare",
+      "kind": "Server",
+      "body": "p.Character.HumanoidRootPart.Anchored=false;E.ForWorld(2).Deactivate(p);p:SetAttribute(\"CurrentWorld\",1);E.ForWorld(1).Activate(p);require(S.LobbySpawnService).MoveToLobby(p,p.Character,1)\nE.StartRun(p,1);local f=workspace.GeneratedMap.BattleCorridor.Stage01.Floor;p.Character:PivotTo(CFrame.new(f.Position+Vector3.new(0,5,0)));require(game.ServerScriptService.World.Stage1WallManager).ApplyDamageForStage(p,1,1e9);task.wait(.4)\nreturn {Boss=E.GetEnemy(1,p)~=nil,State=state()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"Attr\":false,\"Win\":0,\"Loaded\":true,\"Pending\":false,\"Saving\":false,\"Health\":100,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false},\"Stage\":1,\"World\":1},\"Boss\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "stage1-real-kill",
+      "kind": "Server",
+      "body": "local boss=assert(E.GetEnemy(1,p));local r=p.Character.HumanoidRootPart;local h=p.Character.Humanoid;local f=workspace.GeneratedMap.BattleCorridor.Stage01.Floor;local br=boss.HumanoidRootPart\nlocal at=Vector3.new(br.Position.X,f.Position.Y+f.Size.Y/2+h.HipHeight+r.Size.Y/2,br.Position.Z-2)\np.Character:PivotTo(CFrame.lookAt(at,at+Vector3.zAxis));r.AssemblyLinearVelocity=Vector3.zero;r.Anchored=true;task.wait(.2);local result=table.pack(E.TryManualAttack(p));task.wait(.3);r.Anchored=false\nreturn {Result=result,Facts=D.Get(p).Data.FirstBattleTutorial,Stage2=D.Get(p).Data.EggPetTutorial.World1Stage2Defeated,Back=table.pack(require(S.RunReturnService).Request(p,p:GetAttribute(\"RunInventoryId\")))}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Stage2\":false,\"Facts\":{\"Stage1Defeated\":true,\"Version\":1,\"BattleStarted\":true,\"Eligible\":true,\"FirstOutcome\":\"Victory\"},\"Result\":{\"1\":true,\"2\":\"Combat\"},\"Back\":{\"1\":true,\"2\":\"Returned\"}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "ore-after-first-battle",
+      "kind": "Client",
+      "body": "task.wait(.5);return {Ore=p.PlayerGui.OreMergeTutorialGui:GetAttribute(\"Step\"),Egg=p.PlayerGui.EggPetTutorialGui:GetAttribute(\"Step\"),Owner=require(game.ReplicatedStorage.Modules.TutorialPresentationCoordinator).Owner().Name}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Egg\":\"Loading\",\"Ore\":\"GoToMerge\",\"Owner\":\"OreMergeTutorialGui\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "prepare-actual-world-gate",
+      "kind": "Server",
+      "body": "local d=D.Get(p).Data;d.World2Unlocked=true;p:SetAttribute(\"World2Unlocked\",true);d.RebirthCount=5;p:SetAttribute(\"RebirthCount\",5)\nlocal wall=require(RS.Modules.WorldGateContact).Wall(1);p.Character:PivotTo(wall.CFrame+Vector3.new(0,1,0));task.wait(.3);return {Allowed=D.CanAccessWorld(p,2),Touch=require(RS.Modules.WorldGateContact).Touching(wall,p.Character,require(RS.Config.WorldGateConfig).ContactPadding),Wall=wall:GetFullName()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Wall\":\"Workspace.World2Gate.WorldSelectionWall\",\"Touch\":true,\"Allowed\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-before-world-travel",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":18.000003814697267,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"237.59800720214844, 8.418041229248047, 76.92693328857422\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "actual-world-travel-request",
+      "kind": "Client",
+      "body": "game.ReplicatedStorage.Remotes.WorldTravelRequest:FireServer(\"Teleport\",2);return true",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world2-retry-state",
+      "kind": "Server",
+      "body": "return {State=state(),Unlocks=D.Get(p).Data.WorldUnlocks,Reached=D.Get(p).Data.World2Reached}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"Attr\":false,\"Win\":0,\"Loaded\":true,\"Pending\":false,\"Saving\":false,\"Health\":100,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false},\"Stage\":1,\"World\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "mobile-drag-camera",
+      "kind": "Client",
+      "body": "return {Camera=snap(),Touch=game:GetService(\"UserInputService\").TouchEnabled}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585053563117981,\"3\":0,\"2\":1.1344640254974366},\"ActualDistance\":18.000003814697267,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"237.59800720214844, 8.418041229248047, 76.92693328857422\",\"Min\":18,\"Stage2\":false},\"Touch\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world-travel-unlock-fixture",
+      "kind": "Server",
+      "body": "D.Get(p).Data.HighestUnlockedWorld=2;p:SetAttribute(\"HighestUnlockedWorld\",2);local wall=require(RS.Modules.WorldGateContact).Wall(1);p.Character:PivotTo(wall.CFrame+Vector3.new(0,1,0));return {Allowed=D.CanAccessWorld(p,2)}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Allowed\":true}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world-travel-live-remote",
+      "kind": "Client",
+      "body": "RS=game.ReplicatedStorage;RS.Remotes.WorldTravelRequest:FireServer(\"Teleport\",2);return true",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world-travel-confirm",
+      "kind": "Server",
+      "body": "task.wait(.4);return state()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Attr\":false,\"Win\":0,\"Loaded\":true,\"Pending\":false,\"Saving\":false,\"Health\":100,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false},\"Stage\":1,\"World\":2}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-after-world-travel-mobile",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585054159164429,\"3\":0,\"2\":3.022289991378784},\"ActualDistance\":18.000009536743165,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"27.981096267700195, 6.818056583404541, 1947.97998046875\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world2-stage2-entry-stable",
+      "kind": "Server",
+      "body": "local e=E.ForWorld(2);assert(p:GetAttribute(\"CurrentWorld\")==2);e.StartRun(p,2);local f=workspace.World2Map.BattleCorridor.Stage02.Floor\np.Character.HumanoidRootPart.Anchored=false;p.Character:PivotTo(CFrame.new(f.Position+Vector3.new(0,5,-10)));require(game.ServerScriptService.World.Stage1WallManager).ForWorld(2).ApplyDamageForStage(p,2,1e15);task.wait(.3)\nlocal b=e.GetEnemy(2,p);return {Boss=b and b:GetFullName(),Stage=require(game.ServerScriptService.World.StageManager).ForWorld(2).GetCurrentStageNumber(p),Strength=p:GetAttribute(\"Strength\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Boss\":\"Workspace.World2Enemies.Owner_TEST_USER_ID.Stage02_Enemy\",\"Stage\":2,\"Strength\":100000000}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world2-stage2-kill-confirm",
+      "kind": "Server",
+      "body": "local e=E.ForWorld(2);local boss=assert(e.GetEnemy(2,p));local r=p.Character.HumanoidRootPart;local h=p.Character.Humanoid;local f=workspace.World2Map.BattleCorridor.Stage02.Floor;local br=boss.HumanoidRootPart\nlocal at=Vector3.new(br.Position.X,f.Position.Y+f.Size.Y/2+h.HipHeight+r.Size.Y/2,br.Position.Z-2)\np.Character:PivotTo(CFrame.lookAt(at,at+Vector3.zAxis));r.AssemblyLinearVelocity=Vector3.zero;r.Anchored=true;task.wait(.2);local result=table.pack(e.TryManualAttack(p));task.wait(.3)\nreturn {Result=result,Defeated=e.GetPlayerState(p).Defeated[2],Fact=p:GetAttribute(\"EggTutorialStage2Defeated\"),Gauge=e.GetGauge(p,2),Health=h.Health,Stage=require(game.ServerScriptService.World.StageManager).ForWorld(2).GetCurrentStageNumber(p)}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Health\":100,\"Defeated\":true,\"Fact\":false,\"Gauge\":0,\"Result\":{\"1\":true,\"2\":\"Combat\"},\"Stage\":3}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "mobile-controller-details",
+      "kind": "Client",
+      "body": "return {Follow=c.isFollowCamera,CameraMovementMode=tostring(c.cameraMovementMode),Camera=snap()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"CameraMovementMode\":\"Enum.ComputerCameraMovementMode.Follow\",\"Follow\":true,\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585054159164429,\"3\":0,\"2\":3.1346750259399416},\"ActualDistance\":17.99991798400879,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"27.919963836669922, 6.418043613433838, 2212.016357421875\",\"Min\":18,\"Stage2\":false}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "world2-trophy-collection",
+      "kind": "Server",
+      "body": "local r=p.Character.HumanoidRootPart;r.Anchored=false;local pad=workspace.World2Map.BattleCorridor.Stage02.TrophyNormalButton.Handle\np.Character:PivotTo(CFrame.new(pad.Position+Vector3.new(0,pad.Size.Y/2+p.Character.Humanoid.HipHeight+r.Size.Y/2,0)));task.wait(2)\nreturn {State=state(),Position=tostring(r.Position),Counts=require(S.TrophyRewardService).ForWorld(2).GetStudioCollectionCounts(p)}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"State\":{\"Attr\":false,\"Win\":7000,\"Loaded\":true,\"Pending\":false,\"Saving\":false,\"Health\":100,\"Tutorial\":{\"Completed\":false,\"Acquired\":[],\"Version\":1,\"Eligible\":true,\"World1Stage2Defeated\":false},\"Stage\":1,\"World\":2},\"Counts\":{\"ByStage\":{\"2\":1},\"Total\":1},\"Position\":\"27.98145866394043, 5.337893009185791, 1947.98046875\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera-after-trophy",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":18,\"Rotation\":{\"1\":-0.5585054159164429,\"3\":0,\"2\":-0.09003864973783493},\"ActualDistance\":17.999977111816408,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"27.981096267700195, 6.818056583404541, 1947.97998046875\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-set-angle",
+      "kind": "Client",
+      "body": "local at=c:GetSubjectPosition();c:SetCameraToSubjectDistance(29);cam.CFrame=CFrame.new(at)*CFrame.fromOrientation(-.45,1.2,0)*CFrame.new(0,0,29);cam.Focus=CFrame.new(at);task.wait(.2);return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":3.141160726547241},\"ActualDistance\":28.833757400512697,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 8.818056106567383, 12.999991416931152\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-skip",
+      "kind": "Server",
+      "body": "D.SetWin(p,1000);D.SetAutoTapEnabled(p,false);local result=table.pack(require(S.StageSkipService).BuyWithWin(p,2));return {Result=result,Fact=p:GetAttribute(\"EggTutorialStage2Defeated\")}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Result\":{\"1\":true,\"2\":\"Stage 2.1 started\"},\"Fact\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-camera-after-skip",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":3.141160726547241},\"ActualDistance\":28.999998092651368,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.79998779296875, 8.418041229248047, 207.79998779296875\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-back",
+      "kind": "Server",
+      "body": "return table.pack(require(S.RunReturnService).Request(p,p:GetAttribute(\"RunInventoryId\")))",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"1\":true,\"2\":\"Returned\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-camera-after-back",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":3.141160726547241},\"ActualDistance\":29,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 8.818056106567383, 12.999991416931152\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-different-angle-fixture",
+      "kind": "Client",
+      "body": "local at=c:GetSubjectPosition();c:SetCameraToSubjectDistance(29);c.lastCameraTransform=nil;c.lastUserPanCamera=tick();cam.CFrame=CFrame.new(at)*CFrame.fromOrientation(-.45,1.2,0)*CFrame.new(0,0,29);cam.Focus=CFrame.new(at);task.wait(.3);return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":1.2000000476837159},\"ActualDistance\":29.000009536743165,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"287.861083984375, 8.818056106567383, 12.999991416931152\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-prepare-gate-fixture",
+      "kind": "Server",
+      "body": "D.Get(p).Data.HighestUnlockedWorld=2;local wall=require(RS.Modules.WorldGateContact).Wall(1);require(S.LobbySpawnService).MoveToCFrame(p,p.Character,wall.CFrame+Vector3.new(0,1,0));return true",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-gate-camera",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":1.2342630624771119},\"ActualDistance\":26.508848190307618,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"237.5984344482422, 8.418041229248047, 77.00752258300781\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-real-world-travel",
+      "kind": "Client",
+      "body": "game.ReplicatedStorage.Remotes.WorldTravelRequest:FireServer(\"Teleport\",2);return true",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-camera-after-world-travel",
+      "kind": "Client",
+      "body": "task.wait(.5);return {World=p:GetAttribute(\"CurrentWorld\"),Camera=snap()}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"World\":2,\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":1.2342630624771119},\"ActualDistance\":28.999996185302736,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"27.981096267700195, 6.818056583404541, 1947.97998046875\",\"Min\":18,\"Stage2\":false}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "keyboard-camera-rotation",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.4500000476837158,\"3\":0,\"2\":-0.7900420427322388},\"ActualDistance\":28.999971389770509,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"27.981096267700195, 6.818056583404541, 1947.97998046875\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-trophy-prepare",
+      "kind": "Server",
+      "body": "local d=D.Get(p).Data;d.Strength=1e8;p:SetAttribute(\"Strength\",1e8);local e=E.ForWorld(2);e.StartRun(p,2);require(game.ServerScriptService.World.Stage1WallManager).ForWorld(2).ApplyDamageForStage(p,2,1e15)\nlocal f=workspace.World2Map.BattleCorridor.Stage02.Floor;require(S.LobbySpawnService).MoveToCFrame(p,p.Character,CFrame.new(f.Position+Vector3.new(0,5,0)));task.wait(.4);local b=assert(e.GetEnemy(2,p));local r=p.Character.HumanoidRootPart;local h=p.Character.Humanoid;local pos=Vector3.new(b.HumanoidRootPart.Position.X,f.Position.Y+f.Size.Y/2+h.HipHeight+r.Size.Y/2,b.HumanoidRootPart.Position.Z-2)\nrequire(S.LobbySpawnService).MoveToCFrame(p,p.Character,CFrame.lookAt(pos,pos+Vector3.zAxis));task.wait(.3);local hit=table.pack(e.TryManualAttack(p));return {Hit=hit,Defeated=e.GetPlayerState(p).Defeated[2]}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Defeated\":true,\"Hit\":{\"1\":true,\"2\":\"Combat\"}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-camera-before-trophy",
+      "kind": "Client",
+      "body": "local at=c:GetSubjectPosition();c.lastCameraTransform=nil;c.lastUserPanCamera=tick();c:SetCameraToSubjectDistance(29);cam.CFrame=CFrame.new(at)*CFrame.fromOrientation(-.45,-.8,0)*CFrame.new(0,0,29);task.wait(.2);return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":-0.800000011920929},\"ActualDistance\":29.000022888183595,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"24.154132843017578, 6.418041706085205, 2255.52685546875\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-real-trophy-return",
+      "kind": "Server",
+      "body": "local pad=workspace.World2Map.BattleCorridor.Stage02.TrophyNormalButton.Handle;local r=p.Character.HumanoidRootPart;local pos=pad.Position+Vector3.new(0,pad.Size.Y/2+p.Character.Humanoid.HipHeight+r.Size.Y/2,0)\nrequire(S.LobbySpawnService).MoveToCFrame(p,p.Character,CFrame.new(pos));task.wait(2);return {Win=p:GetAttribute(\"Win\"),Counts=require(S.TrophyRewardService).ForWorld(2).GetStudioCollectionCounts(p)}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Win\":7999,\"Counts\":{\"ByStage\":{\"2\":1},\"Total\":1}}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-camera-after-trophy",
+      "kind": "Client",
+      "body": "return snap()",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":-0.800000011920929},\"ActualDistance\":29.000022888183595,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"27.981096267700195, 6.818056583404541, 1947.97998046875\",\"Min\":18,\"Stage2\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-death",
+      "kind": "Server",
+      "body": "D.RecordWorld1Stage2Defeat(p);p.Character.Humanoid.Health=0;return true",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "true"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-mobile-death-recovery-final",
+      "kind": "Client",
+      "body": "return {Camera=snap(),Health=p.Character.Humanoid.Health,Placed=p.Character:GetAttribute(\"LobbySpawnPlaced\"),DeathGui=p.PlayerGui.DeathGui.Enabled}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Placed\":true,\"Camera\":{\"Offset\":\"0, 0, 0\",\"Type\":\"Custom\",\"Max\":30,\"Distance\":29,\"Rotation\":{\"1\":-0.44999998807907107,\"3\":0,\"2\":-0.800000011920929},\"ActualDistance\":29.000022888183595,\"Subject\":\"Workspace.TEST_PLAYER.Humanoid\",\"Focus\":\"27.981096267700195, 6.818056583404541, 1947.97998046875\",\"Min\":18,\"Stage2\":true},\"DeathGui\":false,\"Health\":100}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "v2-fact-after-world2-death",
+      "kind": "Server",
+      "body": "return {World=p:GetAttribute(\"CurrentWorld\"),Fact=D.Get(p).Data.EggPetTutorial.World1Stage2Defeated,Stored=saved().EggPetTutorial.World1Stage2Defeated}",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"Stored\":true,\"Fact\":true,\"World\":2}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "final": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Max\":30,\"Min\":18,\"Helpers\":[],\"Checks\":{\"1\":{\"Editor\":true,\"Path\":\"ReplicatedStorage.Modules.EggPetTutorialGuide\",\"Source\":true},\"8\":{\"Editor\":true,\"Path\":\"StarterPlayer.StarterPlayerScripts.World.SpawnFacingCameraClient\",\"Source\":true},\"3\":{\"Editor\":true,\"Path\":\"ReplicatedStorage.Modules.FirstBattleTutorialState\",\"Source\":true},\"2\":{\"Editor\":true,\"Path\":\"ReplicatedStorage.Modules.EggPetTutorialState\",\"Source\":true},\"5\":{\"Editor\":true,\"Path\":\"ReplicatedStorage.Modules.PetMergeTutorialState\",\"Source\":true},\"4\":{\"Editor\":true,\"Path\":\"ReplicatedStorage.Modules.PetMergeTutorialGuide\",\"Source\":true},\"7\":{\"Editor\":true,\"Path\":\"ServerScriptService.Services.PlayerDataService\",\"Source\":true},\"6\":{\"Editor\":true,\"Path\":\"ServerScriptService.World.EnemyManager\",\"Source\":true}}}"
+      }
+    ],
+    "isError": false
+  }
+}

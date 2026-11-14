@@ -590,6 +590,7 @@ function PlayerDataService.Reset(player)
  s.ForgeToken=HttpService:GenerateGUID(false)
  s.PendingFirstStage1Defeat=nil
  s.FirstBattleSaveScheduled=nil
+ s.EggStage2SaveScheduled=nil
  Analytics.Reset(player)
  s.TimeRewardClock=os.clock()
  s.Loaded=true
@@ -1079,7 +1080,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    merged.SpeedUpgradeStage=assert(SpeedConfig.NormalizeStage(old.SpeedUpgradeStage,old.OwnedSpeeds))
    -- Pet transactions own their durable inventory and equipment.
    merged.Pets=assert(Pet.NormalizeState(old.Pets))
-   merged.EggPetTutorial=assert(EggTutorial.Normalize(old.EggPetTutorial,false))
+   merged.EggPetTutorial=EggTutorial.MergeCombatFact(old.EggPetTutorial,payload.EggPetTutorial)
    merged.PetMergeTutorial=assert(PetMergeTutorial.Normalize(old.PetMergeTutorial,merged.EggPetTutorial.Eligible))
    merged.Strength=payload.Strength
    merged.Level=payload.Level
@@ -1158,6 +1159,35 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   warn("Player ranking mirror save failed for "..player.Name)
  end
  return true
+end
+
+-- Called only by EnemyManager's confirmed World1 Stage2 defeat guard.
+-- Never infer this from stage entry, skips, damage, or TutorialCompleted.
+function PlayerDataService.RecordWorld1Stage2Defeat(player)
+ local s=sessions[player]
+ if not s or not s.Loaded or not s.Data or s.OwnershipLost then return false,"DataNotLoaded" end
+ local d=s.Data
+ if d.EggPetTutorial.World1Stage2Defeated then return true,"Unchanged" end
+ local nextState=assert(EggTutorial.Normalize(d.EggPetTutorial,false))
+ nextState.World1Stage2Defeated=true
+ d.EggPetTutorial=nextState;s.Dirty=true
+ EggTutorial.Publish(player,nextState)
+ if not s.EggStage2SaveScheduled then
+  local job={};s.EggStage2SaveScheduled=job
+  task.defer(function()
+   for attempt=1,3 do
+    if sessions[player]~=s or s.Data~=d or not s.Loaded or s.OwnershipLost then break end
+    if PlayerDataService.WaitForSave(player,30) and sessions[player]==s and s.Data==d and s.Loaded then
+     s.Dirty=true
+     if PlayerDataService.Save(player) then break end
+    end
+    task.wait(attempt)
+   end
+   if s.EggStage2SaveScheduled==job then s.EggStage2SaveScheduled=nil end
+   -- Unconfirmed facts remain Dirty for the existing autosave/departure retry.
+  end)
+ end
+ return true,"Recorded"
 end
 
 -- Server combat witnesses call this after real start/result/accepted Back placement.
@@ -1551,6 +1581,7 @@ function PlayerDataService.GrantLimitedEgg(player,purchaseId,record)
 end
 
 local function resolvePetMutation(player,s,op)
+ local combatFacts=assert(EggTutorial.Normalize(s.Data.EggPetTutorial,false))
  if op.Resolving then return false,"InventorySavePending" end
  op.Resolving=true;s.Saving=true
  local rejection
@@ -1564,7 +1595,7 @@ local function resolvePetMutation(player,s,op)
    if reason=="AlreadyApplied" then return old,users,meta end
    local merged=table.clone(old)
    merged.Pets=state
-   merged.EggPetTutorial=EggTutorial.Apply(old.EggPetTutorial,op,state)
+   merged.EggPetTutorial=EggTutorial.Apply(EggTutorial.MergeCombatFact(old.EggPetTutorial,combatFacts),op,state)
    merged.PetMergeTutorial=PetMergeTutorial.Apply(old.PetMergeTutorial,op,state,merged.EggPetTutorial.Eligible)
    -- Includes any paid credit committed after this operation's live snapshot.
    local shop=assert(normalizeShop(old.ShopRewards))
@@ -1585,7 +1616,8 @@ local function resolvePetMutation(player,s,op)
  end
  s.PendingItemMutation=nil
  s.Data.Pets=assert(Pet.NormalizeState(saved.Pets))
- s.Data.EggPetTutorial=assert(EggTutorial.Normalize(saved.EggPetTutorial,false))
+ -- A real defeat can arrive while this write yields, including an AlreadyApplied retry.
+ s.Data.EggPetTutorial=EggTutorial.MergeCombatFact(saved.EggPetTutorial,s.Data.EggPetTutorial)
  EggTutorial.Publish(player,s.Data.EggPetTutorial)
  s.Data.PetMergeTutorial=assert(PetMergeTutorial.Normalize(saved.PetMergeTutorial,s.Data.EggPetTutorial.Eligible))
  PetMergeTutorial.Publish(player,s.Data.PetMergeTutorial)
