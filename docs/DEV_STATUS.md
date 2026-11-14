@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-14 — Stage2 Tralaleroの脚を1.5倍
+
+製品3 Sourceで脚の7 Boneの周期変動だけ1.5倍にした。Stage2自身の41キーから中心姿勢を設定し、独立足制御と親子関節を区別。浮遊処理全文、Weld、Scale、AnimationId、HP/Collider/戦闘設定、Stage1実装を保持。
+
+隔離Playの実描画、193標本×2、角変位/足先幅約1.5倍、20周後の全Bone成分差0、実戦闘/撃破/帰還・再出現を確認。非表示/模擬Bone再到着と64模擬assertionも通過。39差し替え復元、補助除去、9 Source/Editor/ローカル一致、テンプレート18 Bone維持。実機/自然streaming/公開環境未確認。正本未保存Edit、Save/Publishなし。[報告書](../reports/Stage02LegMotion_20261114/REPORT.md)。
+
 ## 2026-11-14 — Stage1 Ballerinaの振り幅と床埋まり
 
 製品3 Sourceで既存アニメーションの局所変動を約2倍にし、見える赤い通路上面への外観だけの接地補正を追加。テンプレート/AnimationId、サーバー戦闘Root/Collider、HP/移動/攻撃設定は維持。

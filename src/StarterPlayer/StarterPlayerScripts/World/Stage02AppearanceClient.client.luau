@@ -1,4 +1,5 @@
 local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
+local LegMotion=require(game.ReplicatedStorage.Modules:WaitForChild("Stage02LegMotion"))
 -- Personal visual state follows the server's existing combat snapshots.
 local RS=game:GetService("ReplicatedStorage")
 local RunService=game:GetService("RunService")
@@ -29,10 +30,12 @@ local function startFloating(model)
  end)
 end
 local rig,idle,walk,animation,destroyConnection
+local removeLegMotion,legMotionValid
 local hidden=false
 local originals={}
 local missingIdWarned=false
 local function release()
+ if removeLegMotion then removeLegMotion();removeLegMotion=nil;legMotionValid=nil end
  stopFloating()
  if destroyConnection then destroyConnection:Disconnect();destroyConnection=nil end
  if idle then idle:Stop(0);idle:Destroy();idle=nil end
@@ -96,6 +99,10 @@ local function refresh()
   end
  end
  if walk and not walk.IsPlaying then walk:Play(.15,1,1)end
+ if removeLegMotion and not legMotionValid()then
+  removeLegMotion();removeLegMotion=nil;legMotionValid=nil
+ end
+ if walk and not removeLegMotion then removeLegMotion,legMotionValid=LegMotion.Mount(rig,walk)end
 end
 local disconnect=Binding.Watch(2,refresh)
 script.Destroying:Connect(function() disconnect();release() end)

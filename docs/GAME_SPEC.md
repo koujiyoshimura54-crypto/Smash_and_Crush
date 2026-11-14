@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-14 — Stage2 Bossの脚の動作幅
+
+World1 Stage2 Tralaleroの実Walkから求めた中心姿勢を使い、前脚関節と独立足制御の周期変動だけ1.5倍にする。Stage02LegMotionConfig.Amplitude=1.0で元の幅へ戻る。体/頭/尾、元Bone配置、Scale1.75、Idle2.8秒/Walk1.05秒・Speed1、既存浮遊0.3/3秒/基準0.3を維持する。補正はWeld/Rootに書き込まず、Stage1のGroundFitは使わない。
+
+実描画、角変位/足先幅約1.5倍、20周後の全Bone成分差0、戦闘/撃破/帰還後のTrack2本、64模擬assertionを確認。Stage1・他Stage・World2・戦闘設定は維持。実機/自然streaming/公開環境は未確認。[Full Paths・計測・検証区分](../reports/Stage02LegMotion_20261114/REPORT.md)。正本未保存Edit、Save/Publishなし。
+
 ## 2026-11-14 — Stage1 Bossの動作幅・接地
 
 World1 Stage1 Ballerinaの既存Walkを、周期の中心姿勢からの変動だけ約2倍にする。元のIdle/Walk、Speed1、3.8秒/1.15秒の周期、Scale4.5を維持。Stage01MotionConfig.Amplitude=1.0で元の振り幅へ戻る。固定姿勢やRoot移動を一律に倍増せず、毎フレーム補正前の姿勢から処理する。

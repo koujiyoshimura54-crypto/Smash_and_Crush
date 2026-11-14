@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-14 — Stage2 Bossの脚の振り幅1.5倍
+
+Stage2専用の中心姿勢・倍率で7 Boneの脚動作を補正。浮遊0.3/3秒/基準0.3、テンポ/Scale/AnimationId/HP/Collider/戦闘設定とStage1を保持。実描画・前後実測・20周の非累積・戦闘/再出現・64模擬assertionを確認。未保存Edit、Save/Publishなし。[証拠と未確認範囲](../reports/Stage02LegMotion_20261114/REPORT.md)。
+
 ## 2026-11-14 — Stage1 Bossの振り幅2倍・接地修正
 
 既存Ballerina Walkの局所変動を中心姿勢から2倍へ補正。非表示Floor基準による約0.4 studsの埋まりを、実通路へ合わせるクライアント外観Weldで修正。テンポ/Scale/AnimationId/サーバーCollider/HP/戦闘設定は維持。実描画、211標本×2、約12周の非累積、戦闘/再出現、43模擬assertionを確認。[変更箇所・証拠・未確認範囲](../reports/Stage01Motion_20261114/REPORT.md)。正本未保存、Save/Publishなし。
