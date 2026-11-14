@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-14 — Stage1 Bossの動作幅・接地
+
+World1 Stage1 Ballerinaの既存Walkを、周期の中心姿勢からの変動だけ約2倍にする。元のIdle/Walk、Speed1、3.8秒/1.15秒の周期、Scale4.5を維持。Stage01MotionConfig.Amplitude=1.0で元の振り幅へ戻る。固定姿勢やRoot移動を一律に倍増せず、毎フレーム補正前の姿勢から処理する。
+
+非表示Floorと見える通路の約0.4 studsの差は、実Stage01表面を確認してクライアントの外観Weldだけ補正する。サーバーRoot・Collider・HP200・移動/旋回/攻撃周期は保持。別Stage/World2へ適用しない。実描画、約12周の非累積、戦闘/再出現と43模擬assertionを確認。実機・自然streaming・公開環境は未確認。[Full Paths・実測・限界](../reports/Stage01Motion_20261114/REPORT.md)。未保存Edit、Save/Publishなし。
+
 ## 2026-11-14 — 初戦終了後Oreファネル（計測のみ）
 
 既存MTF_FirstOreMerge_v1を、初戦結果→Lobby操作準備→マージガイド実表示→Ore合成画面実表示→保存確定の5段階へ変更。新規初回セッション・新導線対象・初戦時未合成だけを対象とする。初戦前合成は対象外、ガイド前の自主開店は既存CustomEventで迂回として識別。チュートリアル、戦闘、素材、報酬、合成・装備・保存仕様は変更しない。

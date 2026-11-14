@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-14 — Stage1 Bossの振り幅2倍・接地修正
+
+既存Ballerina Walkの局所変動を中心姿勢から2倍へ補正。非表示Floor基準による約0.4 studsの埋まりを、実通路へ合わせるクライアント外観Weldで修正。テンポ/Scale/AnimationId/サーバーCollider/HP/戦闘設定は維持。実描画、211標本×2、約12周の非累積、戦闘/再出現、43模擬assertionを確認。[変更箇所・証拠・未確認範囲](../reports/Stage01Motion_20261114/REPORT.md)。正本未保存、Save/Publishなし。
+
 ## 2026-11-14 — MTF_FirstOreMerge_v1の初戦後直列化
 
 同名ファネルをFirstBattleEnded／LobbyPlayableAfterFirstBattle／MergeGuideShown／OreViewOpened／MergeCommittedへ変更。CustomField03でPostFirstBattle_v2と初戦結果を固定分類。描画済みガイド・Oreモードの観測、保存確定による完了、迂回Custom詳細、旧通知・重複・欠測の防止を追加。ゲーム進行・保存処理と他5ファネルは維持。実Play／模擬検証／公開未確認を分けた[報告書](../reports/PostFirstBattleOre_20261114/REPORT.md)。正本未保存・未Publish。

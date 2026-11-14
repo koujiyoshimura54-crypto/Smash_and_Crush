@@ -1,11 +1,14 @@
 local Binding=require(game.ReplicatedStorage.Modules:WaitForChild("World1BossPresentation"))
+local Motion=require(game.ReplicatedStorage.Modules:WaitForChild("Stage01Motion"))
 -- Personal visual state follows the server's existing combat snapshots.
 local RS=game:GetService("ReplicatedStorage")
 local rig,idle,animation,walk,destroyConnection
+local removeMotion
 local hidden=false
 local originals={}
 local missingIdWarned=false
 local function release()
+ if removeMotion then removeMotion();removeMotion=nil end
  if destroyConnection then destroyConnection:Disconnect();destroyConnection=nil end
  if idle then idle:Stop(0);idle:Destroy();idle=nil end
  if animation then animation:Destroy();animation=nil end
@@ -68,6 +71,7 @@ local function refresh()
   walk.Looped=true
  end
  if not walk.IsPlaying then walk:Play(.35,1,1)end
+ if not removeMotion then removeMotion=Motion.Mount(rig,walk)end
 end
 local disconnect=Binding.Watch(1,refresh)
 script.Destroying:Connect(function() disconnect();release() end)

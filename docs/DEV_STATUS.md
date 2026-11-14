@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-14 — Stage1 Ballerinaの振り幅と床埋まり
+
+製品3 Sourceで既存アニメーションの局所変動を約2倍にし、見える赤い通路上面への外観だけの接地補正を追加。テンプレート/AnimationId、サーバー戦闘Root/Collider、HP/移動/攻撃設定は維持。
+
+隔離Playの実描画、腕/脚/体の数値比較、Speed1で約12周後の姿勢差0、撃破/帰還/再出現の2 Track維持、43模擬assertionを確認。描画停止の時間帯は数値確認のみ、復帰後に実描画を実施したが停止原因は未確定。実機/自然streaming/公開環境は未確認。39差し替えを原文へ復元し補助除去、6 Source/Editor/ローカル一致。正本は未保存Edit、Save/Publishなし。[報告書](../reports/Stage01Motion_20261114/REPORT.md)。
+
 ## 2026-11-14 — 初戦終了後Ore計測
 
 MTF_FirstOreMerge_v1を指定の直列5段階へ変更。Victory／Death／Backを固定分類し、初期Stoneだけの開始・未観測段階の補完を防止。既存2 CustomEvent名を再利用し、迂回経路を詳細値で区別する。変更は計測6 Sourceのみ。
