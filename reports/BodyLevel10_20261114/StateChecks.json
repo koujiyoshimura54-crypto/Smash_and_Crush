@@ -1,0 +1,52 @@
+{
+  "Success": true,
+  "Report": {
+    "Cases": [
+      {
+        "Name": "all live level boundaries, cap and excluded parts",
+        "Passed": true
+      },
+      {
+        "Name": "Strength alone and attribute mirrors cannot select stage",
+        "Passed": true
+      },
+      {
+        "Name": "real AddStrengthGain crosses several stages at once",
+        "Passed": true
+      },
+      {
+        "Name": "repeated refreshes do not compound part sizes",
+        "Passed": true
+      },
+      {
+        "Name": "unloaded profile waits without applying uncertain attributes",
+        "Passed": true
+      },
+      {
+        "Name": "rebirth preserves selection 0",
+        "Passed": true
+      },
+      {
+        "Name": "death respawn preserves selection 0",
+        "Passed": true
+      },
+      {
+        "Name": "world 1 to 2 to 1 with real activation and placement 0",
+        "Passed": true
+      },
+      {
+        "Name": "rebirth preserves selection 10",
+        "Passed": true
+      },
+      {
+        "Name": "death respawn preserves selection 10",
+        "Passed": true
+      },
+      {
+        "Name": "world 1 to 2 to 1 with real activation and placement 10",
+        "Passed": true
+      }
+    ],
+    "Checks": 1593
+  }
+}

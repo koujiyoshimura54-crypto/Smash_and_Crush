@@ -1,5 +1,25 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-14 ? ????Body10??????
+
+???????Strength??13?????????AUTO????????LV?????????World2 Stage10???LV140?????????????????LV???Strength???????????????????
+
+|??|??LV|??X/Z|????Y|
+|---:|---:|---:|---:|
+|0|1|1.00|1.00|
+|1|2|1.40|1.20|
+|2|4|1.75|1.38|
+|3|8|2.05|1.54|
+|4|16|2.30|1.68|
+|5|32|2.50|1.80|
+|6|50|2.60|1.88|
+|7|70|2.68|1.93|
+|8|90|2.74|1.97|
+|9|115|2.78|1.99|
+|10|140|2.80|2.00|
+
+???(armScale?1)/.15????X/Z?????????????Root??????????????5????????500Win?AUTO????????LV??????11?13?10????Y2.00??????????????????????Trophy??????[??](../reports/BodyLevel10_20261114/REPORT.md)???
+
 ## 2026-11-13 — LV131以降の必要Strengthを毎LV+5%
 
 この節が以前の高LV必要量の記述に優先する。Q(L)はL→L+1の追加Strength。両LevelCurveVersionのQ(1〜130)を維持し、Q(131)から `math.ceil(Q(L-1)*1.05/10)*10`。LV201以降も継続し、通常進行には旧+250000000線形式を使わない。MaxLevel10000、再生条件・倍率・獲得量は維持。Q130=2655045539870、Q131=2787797816870、Q136=3558014953670、Q200=80783545414780、Q201=84822722685520。
@@ -600,7 +620,7 @@ Lv201以降は**暫定実装**としてLv200=5Bを起点に毎Level+250M、上�
 
 ## その他の数値と変更時の注意
 
-MuscleScaleConfig now uses the approved thirteen-stage table in the2026-10-20 section below. That section supersedes the old ten-stage summary; existing part growth proportions and excluded parts are retained.
+Current MuscleScaleConfig uses the approved level-based ten-stage table in the 2026-11-14 section above. The older thirteen-stage section is historical; existing part growth proportions and excluded parts remain.
 
 保存・課金の永続仕様は[GAME_SPEC](GAME_SPEC.md)、表示倍率は[UI_SPEC](UI_SPEC.md)、未確定事項は[DEV_STATUS](DEV_STATUS.md)。Balance変更時は有効参照元とWorld2への依存を監査し、実装変更・Play実測・回帰結果を区別して本書を更新する。
 
@@ -809,7 +829,7 @@ Shared Rebirth required LV for counts 1–10: 10/15/22/30/45/70/90/110/140/160; 
 Read from the actual CurrentCloud Config during the StageSkip repair: stages2..10 cost1 / 5 / 15 / 50 / 75 / 150 / 300 / 750 / 1200 Win. This supersedes the older StageSkip Win table above and records existing values, not a balance change. Existing ProductIds3711531641,3711531688,3711533318,3711533363,3711533407,3711533440,3711533493,3711533535,3711533573 and fallback Robux10..90 remain exact. World1, Lobby/noncombat and stage2..10 restrictions remain. Evidence: reports/StageSkip_20261020/REPORT.md and FileValidation.json.
 
 
-## 2026-10-20 - Approved thirteen-stage body growth
+## 2026-10-20 - Approved thirteen-stage body growth (historical; superseded 2026-11-14)
 
 Supersedes all earlier muscle threshold/height/factor tables, including the2026-09-20 ten-stage progression. Stage0 is the unchanged base, followed by13 discrete growth stages. Level is explanatory only; AUTO reads current Strength, with no World/Boss gate and no interpolation. Cap at13 for6B or more.
 

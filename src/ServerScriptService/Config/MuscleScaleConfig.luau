@@ -1,13 +1,13 @@
 local M={}
 M.NORMAL_SCALE=Vector3.one
-M.MUSCLE_THRESHOLDS={40,250,955,2840,7215,100000,3000000,50000000,100000000,300000000,1000000000,3000000000,6000000000}
-M.MAX_STAGE=#M.MUSCLE_THRESHOLDS
-M.UPPER_ARM_SCALES={1.30,1.45,1.525,1.60,1.675,1.825,1.975,2.05,2.20,2.35,2.50,2.65,2.80}
+M.LEVEL_THRESHOLDS={2,4,8,16,32,50,70,90,115,140}
+M.MAX_STAGE=#M.LEVEL_THRESHOLDS
+M.UPPER_ARM_SCALES={1.40,1.75,2.05,2.30,2.50,2.60,2.68,2.74,2.78,2.80}
 M.MUSCLE_GROWTH_FACTORS={}
 for stage,scale in ipairs(M.UPPER_ARM_SCALES) do
  M.MUSCLE_GROWTH_FACTORS[stage]=(scale-1)/0.15
 end
-M.HEIGHT_SCALES={1.10,1.175,1.25,1.35,1.45,1.70,2.00,2.15,2.40,2.65,2.95,3.25,3.55}
+M.HEIGHT_SCALES={1.20,1.38,1.54,1.68,1.80,1.88,1.93,1.97,1.99,2.00}
 M.PART_SCALE_KEYS={
  UpperTorso="UpperTorso",LowerTorso="LowerTorso",
  LeftUpperArm="UpperArm",RightUpperArm="UpperArm",
@@ -24,11 +24,11 @@ M.MUSCLE1_GROWTH={
 }
 M.MUSCLE1_GROWTH.UpperLeg=M.MUSCLE1_GROWTH.UpperTorso*0.75
 M.MUSCLE1_GROWTH.LowerLeg=M.MUSCLE1_GROWTH.UpperTorso*0.60
-function M.GetMuscleStage(strength)
- if typeof(strength)~="number" then return 0 end
+function M.GetMuscleStage(level)
+ if typeof(level)~="number" or level~=level or level==math.huge or level==-math.huge then return 0 end
  local stage=0
- for index,threshold in ipairs(M.MUSCLE_THRESHOLDS) do
-  if strength<threshold then break end
+ for index,threshold in ipairs(M.LEVEL_THRESHOLDS) do
+  if level<threshold then break end
   stage=index
  end
  return stage

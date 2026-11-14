@@ -1,0 +1,160 @@
+{
+  "Wall": {
+    "Fighting": false,
+    "Wall": {
+      "WallCount": 1,
+      "Current": 2,
+      "Skipped": false,
+      "Maxes": [
+        50
+      ],
+      "MajorStage": 1,
+      "BossMaxHP": 200,
+      "Gauges": [
+        0
+      ],
+      "Cleared": [
+        true
+      ]
+    },
+    "Stage": 1,
+    "Defeated": [],
+    "HP": 100
+  },
+  "Boss": {
+    "Battle": {
+      "Fighting": false,
+      "Wall": {
+        "WallCount": 1,
+        "Current": 2,
+        "Skipped": false,
+        "Maxes": [
+          50
+        ],
+        "MajorStage": 1,
+        "BossMaxHP": 200,
+        "Gauges": [
+          0
+        ],
+        "Cleared": [
+          true
+        ]
+      },
+      "Stage": 2,
+      "Defeated": [
+        true
+      ],
+      "HP": 100
+    },
+    "Body": {
+      "Training": false,
+      "Win": 9994,
+      "GroundName": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+      "Root": [
+        287.861083984375,
+        9.469189643859863,
+        12.999991416931152
+      ],
+      "Floor": "Plastic",
+      "Strength": 1002,
+      "HipHeight": 3.9160876274108887,
+      "State": "Running",
+      "Rebirth": 0,
+      "Soles": {
+        "LeftFoot": 5.045940592797026,
+        "RightFoot": 5.087840173491978
+      },
+      "Tier": 10,
+      "Height": 2,
+      "Level": 140,
+      "Ground": 4.400014400482178,
+      "Parts": {
+        "RightUpperArm": [
+          2.6393704414367676,
+          2.3767831325531006,
+          2.125040054321289
+        ],
+        "LeftLowerArm": [
+          1.5912361145019531,
+          2.2746691703796387,
+          1.7684494256973267
+        ],
+        "LowerTorso": [
+          2.675584077835083,
+          1.2388993501663208,
+          1.6598961353302002
+        ],
+        "Head": [
+          1.19501531124115,
+          1.1952306032180786,
+          1.2039055824279785
+        ],
+        "LeftUpperLeg": [
+          1.6239932775497437,
+          3.4149415493011475,
+          1.621836543083191
+        ],
+        "RightHand": [
+          0.7531499862670898,
+          0.8727191686630249,
+          0.7729461193084717
+        ],
+        "HumanoidRootPart": [
+          2,
+          1.9600000381469727,
+          1
+        ],
+        "UpperTorso": [
+          4.487349987030029,
+          3.7264273166656494,
+          2.3612866401672363
+        ],
+        "LeftUpperArm": [
+          2.638820171356201,
+          2.3767833709716797,
+          2.125040054321289
+        ],
+        "RightLowerArm": [
+          1.5912359952926636,
+          2.2746691703796387,
+          1.7684494256973267
+        ],
+        "LeftHand": [
+          0.7531499862670898,
+          0.8727191686630249,
+          0.7729460000991821
+        ],
+        "LeftFoot": [
+          0.7213894128799438,
+          0.8036507964134216,
+          1.2430022954940796
+        ],
+        "RightUpperLeg": [
+          1.6239932775497437,
+          3.414940357208252,
+          1.62193763256073
+        ],
+        "RightLowerLeg": [
+          1.344669222831726,
+          2.476280927658081,
+          1.4682365655899048
+        ],
+        "RightFoot": [
+          0.7213894724845886,
+          0.8036712408065796,
+          1.2430260181427002
+        ],
+        "LeftLowerLeg": [
+          1.3446691036224365,
+          2.476282835006714,
+          1.4681856632232666
+        ]
+      }
+    },
+    "Back": [
+      true,
+      "Returned"
+    ]
+  },
+  "Note": "Prepared Level/Strength/position, actual MCP mouse input through existing client combat path. Not natural progression timing."
+}

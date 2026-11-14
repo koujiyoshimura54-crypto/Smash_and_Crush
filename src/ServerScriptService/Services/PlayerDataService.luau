@@ -294,8 +294,9 @@ local function normalize(raw)
   d.ItemMergeJournal=merge
   if raw.AutoTapEnabled~=nil and typeof(raw.AutoTapEnabled)~="boolean" then return nil,"Invalid AutoTapEnabled" end
   d.AutoTapEnabled=raw.AutoTapEnabled~=false
-  if raw.SelectedSizeTier~=nil and (not finite(raw.SelectedSizeTier) or raw.SelectedSizeTier%1~=0 or raw.SelectedSizeTier<0 or raw.SelectedSizeTier>SizeChangeConfig.MaxTier) then return nil,"Invalid SelectedSizeTier" end
-  d.SelectedSizeTier=raw.SelectedSizeTier or 0
+  local sizeTier,sizeError=SizeChangeConfig.NormalizeSavedTier(raw.SelectedSizeTier)
+  if sizeTier==nil then return nil,sizeError end
+  d.SelectedSizeTier=sizeTier
   local capacity,capacityError=CapacityConfig.Normalize(raw.InventoryCapacity)
   if not capacity then return nil,capacityError end
   d.InventoryCapacity=capacity
@@ -932,7 +933,7 @@ function PlayerDataService.SetWin(player,value)
  -- spend the same balance elsewhere while its receipt is unresolved; rewards
  -- can still increase Win and are retained when the purchase is acknowledged.
  if s.PendingAdminWin and n<s.Data.Win then return false end
- if s.PendingItemMutation and (s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.SpeedUpgrade or s.PendingItemMutation.PetMutation or s.PendingItemMutation.ForgeMutation) and n<s.Data.Win then return false end
+ if s.PendingItemMutation and (s.PendingItemMutation.SizeChange or s.PendingItemMutation.CapacityUpgrade or s.PendingItemMutation.SpeedUpgrade or s.PendingItemMutation.PetMutation or s.PendingItemMutation.ForgeMutation) and n<s.Data.Win then return false end
  s.Data.Win=require(game.ReplicatedStorage.Modules.WinAmount).Normalize(n)
  player:SetAttribute("Win",s.Data.Win)
  s.Dirty=true
@@ -999,7 +1000,7 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
  local payload={
   StrengthPresence=rewardPresence,
   AutoTapEnabled=d.AutoTapEnabled~=false,
-  SelectedSizeTier=d.SelectedSizeTier,
+  SelectedSizeTier=assert(SizeChangeConfig.NormalizeSavedTier(d.SelectedSizeTier)),
   InventoryCapacity=d.InventoryCapacity,
   SpeedUpgradeStage=d.SpeedUpgradeStage,
   EquippedSpeed=d.EquippedSpeed,
@@ -1314,6 +1315,45 @@ local function scheduleItemMutationRetry(player,session,operation)
   PlayerDataService.ResolveItemMutation(player)
  end)
  return delaySeconds,nextAttempt
+end
+
+-- Size selection uses the existing write gate/retry lifecycle. The receipt is
+-- durable so acknowledgement loss cannot undo the selection or debit twice.
+local function resolveSizeChange(player,s,op)
+ if op.Resolving then return false,"InventorySavePending" end
+ op.Resolving=true;s.Saving=true
+ local rejection
+ local ok,saved=pcall(function()
+  return ownedUpdate(player,s,function(old,info)
+   rejection=nil
+   if resetToken(old)~=op.ResetToken then rejection="SaveSupersededByReset";return nil end
+   local oldTier=assert(SizeChangeConfig.NormalizeSavedTier(old.SelectedSizeTier))
+   local users,meta=metadata(info)
+   if old.SizeChangeOperationId==op.Id and oldTier==op.Tier then return old,users,meta end
+   if oldTier~=op.CurrentTier then rejection="SizeSelectionChanged";return nil end
+   local merged=table.clone(old)
+   merged.SelectedSizeTier=op.Tier
+   merged.Win=op.WinBefore-op.PriceWin
+   merged.SizeChangeOperationId=op.Id
+   return merged,users,meta
+  end)
+ end)
+ op.Resolving=false;s.Saving=false
+ if sessions[player]~=s or s.PendingItemMutation~=op then return false,"SaveSuperseded" end
+ if not ok or not saved or saved.SizeChangeOperationId~=op.Id then
+  if rejection or s.OwnershipLost then
+   s.PendingItemMutation=nil
+   return false,rejection or "SessionOwnershipLost"
+  end
+  scheduleItemMutationRetry(player,s,op)
+  return false,"InventorySavePending"
+ end
+ s.PendingItemMutation=nil
+ s.Data.SelectedSizeTier=op.Tier
+ PlayerDataService.SetWin(player,s.Data.Win-op.PriceWin)
+ s.Dirty=true
+ player:SetAttribute("SelectedSizeTier",op.Tier)
+ return true,"Success",op.Tier,s.Data.Win
 end
 
 -- Speed upgrades use the same session-owned atomic mutation gate as capacity.
@@ -1755,6 +1795,7 @@ function PlayerDataService.ResolveItemMutation(player)
  local s=sessions[player]
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
+ if op.SizeChange then return resolveSizeChange(player,s,op) end
  if op.StrengthMutation then
   return require(script.Parent.StrengthRewardPersistence).Resolve(player,s,op,{
    Update=function(transform) return ownedUpdate(player,s,transform) end,
@@ -2300,10 +2341,15 @@ end
 function PlayerDataService.ChangeSelectedSize(player,tier,config)
  local s=sessions[player]
  if not s or not s.Loaded or not s.Data then return false,"DataNotLoaded" end
- if s.Saving or s.PendingItemMutation then return false,"DataSaving" end
- if typeof(tier)~="number" or tier%1~=0 or tier<config.MinTier or tier>config.MaxTier then return false,"InvalidRequest" end
+ if not finite(tier) or tier%1~=0 or tier<SizeChangeConfig.MinTier or tier>SizeChangeConfig.MaxTier then return false,"InvalidRequest" end
  if s.Data.RebirthCount<(config.RequiredRebirth or 5) then return false,"Locked" end
- local current=s.Data.SelectedSizeTier or 0
+ local pending=s.PendingItemMutation
+ if pending then
+  if pending.SizeChange and pending.Tier==tier then return PlayerDataService.ResolveItemMutation(player) end
+  return false,"DataSaving"
+ end
+ if s.Saving then return false,"DataSaving" end
+ local current=assert(SizeChangeConfig.NormalizeSavedTier(s.Data.SelectedSizeTier))
  if current==tier then return true,"SameSize",current,s.Data.Win end
  if config.PaymentMode~="WIN" then
   if config.PaymentMode=="DEVELOPER_PRODUCT" and (config.DeveloperProductId or 0)<=0 then return false,"ProductNotConfigured" end
@@ -2312,25 +2358,9 @@ function PlayerDataService.ChangeSelectedSize(player,tier,config)
  local price=tier==0 and 0 or config.WinPrice
  local win=s.Data.Win
  if not finite(win) or win%1~=0 or win<price then return false,"NotEnoughWin",current,win end
- local token=s.Data.ResetToken;s.Saving=true
- local rejected
- local ok,saved=pcall(function() return ownedUpdate(player,s,function(old,info)
-  rejected=nil
-  if old~=nil and typeof(old)~="table" then error("Invalid saved PlayerData") end
-  if resetToken(old)~=token then rejected="SaveSupersededByReset";return nil end
-  local oldTier=old and old.SelectedSizeTier or 0
-  if not finite(oldTier) or oldTier%1~=0 or oldTier<SizeChangeConfig.MinTier or oldTier>SizeChangeConfig.MaxTier then error("Invalid SelectedSizeTier") end
-  local nextData=old and table.clone(old) or defaults()
-  nextData.SelectedSizeTier=tier;nextData.Win=win-price
-  local users,meta=metadata(info);return nextData,users,meta
- end) end)
- s.Saving=false
- if not ok or not saved or rejected then return false,rejected or "SaveFailed",current,win end
- if sessions[player]~=s then return false,"DataNotLoaded",current,win end
- local earned=(tonumber(player:GetAttribute("Win")) or win)-win
- s.Data.SelectedSizeTier=tier;s.Data.Win=math.max(0,saved.Win+earned);s.Dirty=earned~=0
- player:SetAttribute("Win",s.Data.Win);player:SetAttribute("SelectedSizeTier",tier)
- return true,"Success",tier,s.Data.Win
+ s.PendingItemMutation={SizeChange=true,Id=HttpService:GenerateGUID(false),
+  ResetToken=s.Data.ResetToken,CurrentTier=current,Tier=tier,WinBefore=win,PriceWin=price}
+ return PlayerDataService.ResolveItemMutation(player)
 end
 
 -- Free equipment selection uses the existing session/dirty-save path. Entitlement

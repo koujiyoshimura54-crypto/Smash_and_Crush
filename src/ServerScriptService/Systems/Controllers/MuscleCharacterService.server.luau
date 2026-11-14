@@ -1,5 +1,6 @@
 local Players=game:GetService("Players")
 local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
+local Data=require(game.ServerScriptService.Services.PlayerDataService)
 local Config=require(game.ServerScriptService.Config:WaitForChild("MuscleScaleConfig"))
 local bases=setmetatable({}, {__mode="k"})
 local appliedStage=setmetatable({}, {__mode="k"})
@@ -45,8 +46,12 @@ local function apply(player)
  local character=player.Character
  local base=character and bases[character]
  if not base then return end
- local selected=player:GetAttribute("SelectedSizeTier")
- local stage=typeof(selected)=="number" and selected%1==0 and selected>=1 and selected<=Config.MAX_STAGE and selected or Config.GetMuscleStage(player:GetAttribute("Strength"))
+ -- Attributes trigger refreshes; the loaded server profile is authoritative.
+ local session=Data.Get(player)
+ local level=Data.GetLevelState(player)
+ if not session or not session.Loaded or not level then return end
+ local selected=session.Data.SelectedSizeTier
+ local stage=typeof(selected)=="number" and selected%1==0 and selected>=1 and selected<=Config.MAX_STAGE and selected or Config.GetMuscleStage(level)
  if appliedStage[character]==stage then return end
  appliedStage[character]=stage
  local scaleHeight=Config.GetHeightScale(stage)
@@ -82,7 +87,7 @@ local function setup(player)
     if player.Character==character then
      apply(player)
      -- A missing/non-R15 rig still releases the loader using its actual dimensions.
-     character:SetAttribute("MuscleScaleReady",true)
+     if not bases[character] then character:SetAttribute("MuscleScaleReady",true) end
     end
    end)
   end
@@ -96,7 +101,7 @@ local function setup(player)
   ready()
  end
  player.CharacterAdded:Connect(onCharacter)
- player:GetAttributeChangedSignal("Strength"):Connect(function() apply(player) end)
+ player:GetAttributeChangedSignal("Level"):Connect(function() apply(player) end)
  player:GetAttributeChangedSignal("SelectedSizeTier"):Connect(function() local character=player.Character;if character then appliedStage[character]=nil end;apply(player) end)
  if player.Character then onCharacter(player.Character) end
 end

@@ -1,0 +1,68 @@
+{
+  "Success": true,
+  "Report": {
+    "Cases": [
+      {
+        "Name": "load/save/reload legacy 0",
+        "Passed": true
+      },
+      {
+        "Name": "load/save/reload legacy 1",
+        "Passed": true
+      },
+      {
+        "Name": "load/save/reload legacy 10",
+        "Passed": true
+      },
+      {
+        "Name": "load/save/reload legacy 11",
+        "Passed": true
+      },
+      {
+        "Name": "load/save/reload legacy 12",
+        "Passed": true
+      },
+      {
+        "Name": "load/save/reload legacy 13",
+        "Passed": true
+      },
+      {
+        "Name": "legacy raw 13 inside transaction before normal save",
+        "Passed": true
+      },
+      {
+        "Name": "new requests 11 to 13 and invalid values",
+        "Passed": true
+      },
+      {
+        "Name": "rebirth unlock and same/manual/auto price",
+        "Passed": true
+      },
+      {
+        "Name": "migration ordinary save failure and retry",
+        "Passed": true
+      },
+      {
+        "Name": "size mutation FailBefore retry and ordinary save",
+        "Passed": true
+      },
+      {
+        "Name": "size mutation FailAfter retry and ordinary save",
+        "Passed": true
+      },
+      {
+        "Name": "acknowledgement loss followed by session departure",
+        "Passed": true
+      },
+      {
+        "Name": "invalid saved data never converted to new profile",
+        "Passed": true
+      },
+      {
+        "Name": "new profile defaults",
+        "Passed": true
+      }
+    ],
+    "Checks": 134
+  }
+}

@@ -1,0 +1,563 @@
+{
+  "JointAttachmentChecks": {
+    "MaxError": 0,
+    "Stages": [
+      1,
+      5,
+      10,
+      0
+    ],
+    "Checks": 136
+  },
+  "Jump": [
+    {
+      "State": "Running",
+      "Training": true,
+      "T": 0.000002800021320581436,
+      "Strength": 400,
+      "Y": 8.305667877197266
+    },
+    {
+      "State": "Running",
+      "Training": true,
+      "T": 0.049671700020553544,
+      "Strength": 400,
+      "Y": 8.305667877197266
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.09974679999868385,
+      "Strength": 400,
+      "Y": 9.170903205871582
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.15034860000014305,
+      "Strength": 400,
+      "Y": 9.170903205871582
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.19871820000116713,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.24909710002248175,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.2988195000216365,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.3503612000204157,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.3988551000074949,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.45032200001878664,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.499540100019658,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Freefall",
+      "Training": false,
+      "T": 0.5499264000100084,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Landed",
+      "Training": false,
+      "T": 0.5996650000161026,
+      "Strength": 400,
+      "Y": 12.680669784545898
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 0.6494842999964021,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 0.6990228000213392,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 0.749063000024762,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 0.7999700000218581,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 0.8483378000091761,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 0.8989085000066552,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 0.9497163000050932,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 0.9989278000139166,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.0483421999961138,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.0987542000075337,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.1494884999992792,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.1984889000013936,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.2506293000187725,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.299333500006469,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.3484781000006478,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.3996662000135984,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.4483632000046782,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.4986623000004329,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.5490170000120997,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.5999294000212103,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.649063799995929,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.7000451000058092,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.7489972000184935,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.7998579000122845,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.8486482000153046,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.8987211000057869,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.9483423000201583,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    },
+    {
+      "State": "Running",
+      "Training": false,
+      "T": 1.9984346000128426,
+      "Strength": 400,
+      "Y": 8.019535064697266
+    }
+  ],
+  "Exit": {
+    "Before": {
+      "Training": false,
+      "Win": 34000,
+      "GroundName": "Workspace.World2Map.TrainingArea.Floor",
+      "Root": [
+        -99.56547546386719,
+        6.968753337860107,
+        1893.4422607421875
+      ],
+      "Floor": "Plastic",
+      "Strength": 400,
+      "HipHeight": 3.9160876274108887,
+      "State": "Running",
+      "Rebirth": 0,
+      "Soles": {
+        "LeftFoot": 2.5076537971872535,
+        "RightFoot": 2.5406127269645626
+      },
+      "Tier": 0,
+      "Height": 2,
+      "Level": 140,
+      "Ground": 2,
+      "Parts": {
+        "RightUpperArm": [
+          2.6393704414367676,
+          2.3767831325531006,
+          2.125040054321289
+        ],
+        "LeftLowerArm": [
+          1.5912361145019531,
+          2.2746691703796387,
+          1.7684494256973267
+        ],
+        "LowerTorso": [
+          2.675584077835083,
+          1.2388993501663208,
+          1.6598961353302002
+        ],
+        "Head": [
+          1.19501531124115,
+          1.1952306032180786,
+          1.2039055824279785
+        ],
+        "LeftUpperLeg": [
+          1.6239932775497437,
+          3.4149415493011475,
+          1.621836543083191
+        ],
+        "RightHand": [
+          0.7531499862670898,
+          0.8727191686630249,
+          0.7729461193084717
+        ],
+        "HumanoidRootPart": [
+          2,
+          1.9600000381469727,
+          1
+        ],
+        "UpperTorso": [
+          4.487349987030029,
+          3.7264273166656494,
+          2.3612866401672363
+        ],
+        "LeftUpperArm": [
+          2.638820171356201,
+          2.3767833709716797,
+          2.125040054321289
+        ],
+        "RightLowerArm": [
+          1.5912359952926636,
+          2.2746691703796387,
+          1.7684494256973267
+        ],
+        "LeftHand": [
+          0.7531499862670898,
+          0.8727191686630249,
+          0.7729460000991821
+        ],
+        "LeftFoot": [
+          0.7213894128799438,
+          0.8036507964134216,
+          1.2430022954940796
+        ],
+        "RightUpperLeg": [
+          1.6239932775497437,
+          3.414940357208252,
+          1.62193763256073
+        ],
+        "RightLowerLeg": [
+          1.344669222831726,
+          2.476280927658081,
+          1.4682365655899048
+        ],
+        "RightFoot": [
+          0.7213894724845886,
+          0.8036712408065796,
+          1.2430260181427002
+        ],
+        "LeftLowerLeg": [
+          1.3446691036224365,
+          2.476282835006714,
+          1.4681856632232666
+        ]
+      }
+    },
+    "After": {
+      "Training": false,
+      "Win": 34000,
+      "GroundName": "Workspace.World2Map.TrainingArea.Floor",
+      "Root": [
+        -99.42289733886719,
+        6.896487712860107,
+        1893.4422607421875
+      ],
+      "Floor": "Plastic",
+      "Strength": 400,
+      "HipHeight": 3.9160876274108887,
+      "State": "Running",
+      "Rebirth": 0,
+      "Soles": {
+        "LeftFoot": 2.4738046866962886,
+        "RightFoot": 2.5175593491723696
+      },
+      "Tier": 0,
+      "Height": 2,
+      "Level": 140,
+      "Ground": 2,
+      "Parts": {
+        "RightUpperArm": [
+          2.6393704414367676,
+          2.3767831325531006,
+          2.125040054321289
+        ],
+        "LeftLowerArm": [
+          1.5912361145019531,
+          2.2746691703796387,
+          1.7684494256973267
+        ],
+        "LowerTorso": [
+          2.675584077835083,
+          1.2388993501663208,
+          1.6598961353302002
+        ],
+        "Head": [
+          1.19501531124115,
+          1.1952306032180786,
+          1.2039055824279785
+        ],
+        "LeftUpperLeg": [
+          1.6239932775497437,
+          3.4149415493011475,
+          1.621836543083191
+        ],
+        "RightHand": [
+          0.7531499862670898,
+          0.8727191686630249,
+          0.7729461193084717
+        ],
+        "HumanoidRootPart": [
+          2,
+          1.9600000381469727,
+          1
+        ],
+        "UpperTorso": [
+          4.487349987030029,
+          3.7264273166656494,
+          2.3612866401672363
+        ],
+        "LeftUpperArm": [
+          2.638820171356201,
+          2.3767833709716797,
+          2.125040054321289
+        ],
+        "RightLowerArm": [
+          1.5912359952926636,
+          2.2746691703796387,
+          1.7684494256973267
+        ],
+        "LeftHand": [
+          0.7531499862670898,
+          0.8727191686630249,
+          0.7729460000991821
+        ],
+        "LeftFoot": [
+          0.7213894128799438,
+          0.8036507964134216,
+          1.2430022954940796
+        ],
+        "RightUpperLeg": [
+          1.6239932775497437,
+          3.414940357208252,
+          1.62193763256073
+        ],
+        "RightLowerLeg": [
+          1.344669222831726,
+          2.476280927658081,
+          1.4682365655899048
+        ],
+        "RightFoot": [
+          0.7213894724845886,
+          0.8036712408065796,
+          1.2430260181427002
+        ],
+        "LeftLowerLeg": [
+          1.3446691036224365,
+          2.476282835006714,
+          1.4681856632232666
+        ]
+      }
+    }
+  },
+  "PreparedBossFinal": {
+    "Attacks": [
+      {
+        "Health": 100,
+        "Gauge": 0,
+        "Result": [
+          true,
+          "Combat"
+        ],
+        "Fighting": false
+      }
+    ],
+    "Defeated": true,
+    "BossRoot": "287.79998779296875, 8, 198.89999389648438",
+    "PlayerRoot": "287.79998779296875, 8.896087646484375, 197.89999389648438"
+  },
+  "WallFinal": {
+    "BeforeHP": 50,
+    "AfterHP": 0,
+    "ManualEntryResult": [
+      true,
+      "Combat"
+    ]
+  },
+  "StageSkip": {
+    "Target": 2,
+    "Result": [
+      true,
+      "Stage 2.1 started"
+    ],
+    "WinBefore": 10000,
+    "WinAfter": 9999
+  },
+  "DirectNewRequests": [
+    {
+      "Requested": 11,
+      "Code": "InvalidRequest",
+      "Tier": 10
+    },
+    {
+      "Requested": 12,
+      "Code": "InvalidRequest",
+      "Tier": 10
+    },
+    {
+      "Requested": 13,
+      "Code": "InvalidRequest",
+      "Tier": 10
+    }
+  ]
+}
