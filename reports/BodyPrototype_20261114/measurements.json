@@ -1,0 +1,585 @@
+{
+  "placeId": 126576845524886,
+  "placeVersion": 648,
+  "mode": "isolated Studio Play; single actual local player",
+  "notes": [
+    "These records are actual Studio tool responses. RuntimeProbe runs in a Script's module cache; plugin require results are not used for game session state.",
+    "Original avatar Head asset 122931905199936; MeshId 117643569671751; Hair accessory 71658502219651.",
+    "Treadmill40 uncontrolled duration: 0 to 114; bounded 30% trial has timestamps.",
+    "Foot gaps measure oriented MeshPart bounding boxes against collision ray hits, not mesh triangles."
+  ],
+  "records": {
+    "catalogResult": [
+      {
+        "assetTypeId": 11,
+        "template": "http://www.roblox.com/asset/?id=3670737337",
+        "price": 0,
+        "loadOK": true,
+        "isPublicDomain": false,
+        "assetId": 3670737444,
+        "name": "Robloxシャツ - シンプルパターン",
+        "isForSale": true,
+        "class": "Shirt",
+        "infoOK": true
+      },
+      {
+        "assetTypeId": 11,
+        "template": "http://www.roblox.com/asset/?id=398634294",
+        "price": 0,
+        "loadOK": true,
+        "isPublicDomain": false,
+        "assetId": 398634295,
+        "name": "グレーのジャケット付き星形パステルトップス",
+        "isForSale": true,
+        "class": "Shirt",
+        "infoOK": true
+      },
+      {
+        "assetTypeId": 12,
+        "template": "http://www.roblox.com/asset/?id=398633811",
+        "price": 0,
+        "loadOK": true,
+        "isPublicDomain": false,
+        "assetId": 398633812,
+        "name": "ブラックジーンズと白シューズ",
+        "isForSale": true,
+        "class": "Pants",
+        "infoOK": true
+      }
+    ],
+    "treadmill40start": {
+      "before": {
+        "grips": {
+          "1": {
+            "offset": "-0.000013650365872308612, -0.15000057220458984, 0.0000021364539861679077",
+            "side": "Left",
+            "hand": "0.4503587782382965, 0.7137938737869263, 0.48259860277175903",
+            "bar": "2, 0.5, 0.19999998807907104"
+          },
+          "2": {
+            "offset": "0.000023373839212581515, -0.14999975264072418, 3.1478703022003174e-07",
+            "side": "Right",
+            "hand": "0.45035886764526367, 0.7137938737869263, 0.48259860277175903",
+            "bar": "2, 0.5, 0.19999998807907104"
+          }
+        },
+        "training": false,
+        "torso": "1.6583150625228882, 2.045398473739624, 1.0480365753173828",
+        "neckGap": 0.00003052130341529846,
+        "skin": "0.901961, 0.74902, 0.603922",
+        "dataLoaded": true,
+        "level": 1,
+        "floor": "Plastic",
+        "root": "287.83251953125, 6.390722751617432, 24.187870025634766",
+        "strength": 0,
+        "feet": {
+          "1": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Left",
+            "gap": -0.012631818417917273
+          },
+          "2": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Right",
+            "gap": -0.023089890069992514
+          }
+        },
+        "upperArm": "1.0368766784667969, 1.5474954843521118, 1.0122369527816772",
+        "health": 100,
+        "isolationWrites": 10,
+        "ratio": 0.4,
+        "stage": 1,
+        "hip": 1.589450478553772
+      },
+      "surface": "237.45263671875, 5.000002861022949, -40.4310302734375",
+      "hit": "Workspace.Treadmills.Normal01.1"
+    },
+    "treadmill40end": {
+      "treadmillState": {
+        "grips": {
+          "1": {
+            "offset": "-9.508803486824036e-07, -0.14999976754188538, 0.000002898275852203369",
+            "side": "Left",
+            "hand": "0.4503587782382965, 0.7137938737869263, 0.48259860277175903",
+            "bar": "2, 0.5, 0.19999998807907104"
+          },
+          "2": {
+            "offset": "0.00002691522240638733, -0.15000197291374207, -0.000004714354872703552",
+            "side": "Right",
+            "hand": "0.45035886764526367, 0.7137938737869263, 0.48259860277175903",
+            "bar": "2, 0.5, 0.19999998807907104"
+          }
+        },
+        "training": true,
+        "torso": "2.653304100036621, 2.8226499557495117, 1.5720548629760742",
+        "treadmill": "Normal01",
+        "neckGap": 9.5367431640625e-7,
+        "skin": "0.901961, 0.74902, 0.603922",
+        "dataLoaded": true,
+        "level": 5,
+        "floor": "Plastic",
+        "root": "237.4418487548828, 7.481595516204834, -40.42061996459961",
+        "strength": 114,
+        "feet": {
+          "1": {
+            "surface": "Workspace.Treadmills.Normal01.1",
+            "side": "Left",
+            "gap": 0.16492686564001957
+          },
+          "2": {
+            "surface": "Workspace.Treadmills.Normal01.1",
+            "side": "Right",
+            "gap": 0.4002244824229795
+          }
+        },
+        "upperArm": "1.8145341873168945, 2.1355438232421875, 1.7714146375656128",
+        "health": 100,
+        "isolationWrites": 13,
+        "ratio": 0.4,
+        "stage": 1.38,
+        "hip": 2.19344162940979
+      }
+    },
+    "treadmill30": {
+      "before": 0,
+      "samples": [
+        {
+          "level": 1,
+          "seconds": 0.5008148999986588,
+          "strength": 0,
+          "training": true
+        },
+        {
+          "level": 1,
+          "seconds": 1.0014334999978018,
+          "strength": 2,
+          "training": true
+        },
+        {
+          "level": 1,
+          "seconds": 1.517285299996729,
+          "strength": 4,
+          "training": true
+        },
+        {
+          "level": 2,
+          "seconds": 2.0177410999967833,
+          "strength": 6,
+          "training": true
+        },
+        {
+          "level": 2,
+          "seconds": 2.5343377999997756,
+          "strength": 8,
+          "training": true
+        },
+        {
+          "level": 2,
+          "seconds": 3.0501835999966715,
+          "strength": 10,
+          "training": true
+        },
+        {
+          "level": 2,
+          "seconds": 3.55070859999978,
+          "strength": 12,
+          "training": true
+        },
+        {
+          "level": 2,
+          "seconds": 4.067454099997121,
+          "strength": 14,
+          "training": true
+        }
+      ],
+      "after": 14,
+      "ratio": 0.3
+    },
+    "lv1_30metrics": {
+      "grips": {
+        "1": {
+          "offset": "8.706410881131887e-07, -0.1500009149312973, -1.6670674085617065e-07",
+          "side": "Left",
+          "hand": "0.337769091129303, 0.5353454351425171, 0.36194896697998047",
+          "bar": "2, 0.5, 0.19999998807907104"
+        },
+        "2": {
+          "offset": "0.000013116892660036683, -0.15000072121620178, -3.594905138015747e-07",
+          "side": "Right",
+          "hand": "0.33776915073394775, 0.5353454351425171, 0.36194896697998047",
+          "bar": "2, 0.5, 0.19999998807907104"
+        }
+      },
+      "training": false,
+      "torso": "1.2437363862991333, 1.5340487957000732, 0.7860274910926819",
+      "neckGap": 0.00003053247564821504,
+      "skin": "0.901961, 0.74902, 0.603922",
+      "dataLoaded": true,
+      "level": 1,
+      "floor": "Plastic",
+      "head": "1.19501531124115, 1.1952306032180786, 1.2039055824279785",
+      "root": "287.86376953125, 5.8907151222229, 13.000198364257812",
+      "strength": 0,
+      "feet": {
+        "1": {
+          "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+          "side": "Left",
+          "gap": -0.011740166684917064
+        },
+        "2": {
+          "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+          "side": "Right",
+          "gap": -0.019664176632621988
+        }
+      },
+      "upperArm": "0.7776575684547424, 1.1606216430664062, 0.7591776847839355",
+      "health": 100,
+      "isolationWrites": 13,
+      "faceControls": 1,
+      "hip": 1.1920878887176514,
+      "stage": 1,
+      "ratio": 0.3
+    },
+    "lv32_30metrics": {
+      "state": {
+        "grips": {
+          "1": {
+            "offset": "0.000007693852239754051, -0.15000019967556, 2.2351741790771484e-08",
+            "side": "Left",
+            "hand": "0.337769091129303, 0.5353454351425171, 0.36194896697998047",
+            "bar": "2, 0.5, 0.19999998807907104"
+          },
+          "2": {
+            "offset": "0.000006062269676476717, -0.1500007063150406, -1.1175870895385742e-07",
+            "side": "Right",
+            "hand": "0.33776915073394775, 0.5353454351425171, 0.36194896697998047",
+            "bar": "2, 0.5, 0.19999998807907104"
+          }
+        },
+        "training": false,
+        "torso": "2.736220121383667, 2.7612876892089844, 1.5720549821853638",
+        "neckGap": 0,
+        "skin": "0.901961, 0.74902, 0.603922",
+        "dataLoaded": true,
+        "level": 32,
+        "floor": "Plastic",
+        "head": "1.19501531124115, 1.1952306032180786, 1.2039055824279785",
+        "root": "287.8491516113281, 6.843170642852783, 12.986348152160645",
+        "strength": 50835,
+        "feet": {
+          "1": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Left",
+            "gap": 0.13490447198044553
+          },
+          "2": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Right",
+            "gap": 0.12177925129172706
+          }
+        },
+        "upperArm": "1.9441438913345337, 2.0891189575195312, 1.8979442119598389",
+        "health": 100,
+        "isolationWrites": 13,
+        "ratio": 0.3,
+        "stage": 1.8,
+        "hip": 2.1457581520080566
+      },
+      "reapply": {
+        "before": "2.736220121383667, 2.7612876892089844, 1.5720549821853638",
+        "after": "2.736220121383667, 2.7612876892089844, 1.5720549821853638",
+        "assembled": false
+      }
+    },
+    "lv140_30metrics": {
+      "state": {
+        "grips": {
+          "1": {
+            "offset": "-0.000008916249498724937, -0.1500018984079361, 7.208436727523804e-07",
+            "side": "Left",
+            "hand": "0.337769091129303, 0.5353454351425171, 0.36194896697998047",
+            "bar": "2, 0.5, 0.19999998807907104"
+          },
+          "2": {
+            "offset": "-0.000013977172784507275, -0.14999985694885254, -3.8929283618927e-07",
+            "side": "Right",
+            "hand": "0.33776915073394775, 0.5353454351425171, 0.36194896697998047",
+            "bar": "2, 0.5, 0.19999998807907104"
+          }
+        },
+        "training": false,
+        "torso": "3.034716844558716, 3.0680975914001465, 1.7292605638504028",
+        "neckGap": 0,
+        "skin": "0.901961, 0.74902, 0.603922",
+        "dataLoaded": true,
+        "level": 140,
+        "floor": "Plastic",
+        "head": "1.19501531124115, 1.1952306032180786, 1.2039055824279785",
+        "root": "287.85198974609375, 7.081116199493408, 12.99583625793457",
+        "strength": 43910429172515,
+        "feet": {
+          "1": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Left",
+            "gap": 0.1729138002445838
+          },
+          "2": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Right",
+            "gap": 0.15983692479915845
+          }
+        },
+        "upperArm": "2.177441358566284, 2.3212432861328125, 2.125697612762451",
+        "health": 100,
+        "isolationWrites": 13,
+        "ratio": 0.3,
+        "stage": 2,
+        "hip": 2.3841757774353027
+      },
+      "reapply": {
+        "before": "3.034716844558716, 3.0680975914001465, 1.7292605638504028",
+        "after": "3.034716844558716, 3.0680975914001465, 1.7292605638504028",
+        "assembled": false
+      }
+    },
+    "lv140_40metrics": {
+      "state": {
+        "grips": {
+          "1": {
+            "offset": "7.450580596923828e-07, -0.14999976754188538, 0.0000014603137969970703",
+            "side": "Left",
+            "hand": "0.4503587782382965, 0.7137938737869263, 0.48259860277175903",
+            "bar": "2, 0.5, 0.19999998807907104"
+          },
+          "2": {
+            "offset": "0.000017762184143066406, -0.1499989926815033, -0.0000019073486328125",
+            "side": "Right",
+            "hand": "0.45035886764526367, 0.7137938737869263, 0.48259860277175903",
+            "bar": "2, 0.5, 0.19999998807907104"
+          }
+        },
+        "training": false,
+        "torso": "4.046288967132568, 4.090796947479248, 2.305680513381958",
+        "neckGap": 0.00003053247564821504,
+        "skin": "0.956863, 0.843137, 0.745098",
+        "dataLoaded": true,
+        "level": 140,
+        "floor": "Plastic",
+        "head": "1.19501531124115, 1.1952306032180786, 1.2039055824279785",
+        "root": "287.7675476074219, 8.002961158752441, 12.827357292175293",
+        "strength": 43910429172515,
+        "feet": {
+          "1": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Left",
+            "gap": 0.25974698075325886
+          },
+          "2": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Right",
+            "gap": 0.24006735467093154
+          }
+        },
+        "upperArm": "2.903254985809326, 3.0949909687042236, 2.834263563156128",
+        "health": 100,
+        "isolationWrites": 13,
+        "faceControls": 1,
+        "hip": 3.178900957107544,
+        "stage": 2,
+        "ratio": 0.4
+      },
+      "reapply": {
+        "before": "4.046288967132568, 4.090796947479248, 2.305680513381958",
+        "after": "4.046288967132568, 4.090796947479248, 2.305680513381958",
+        "assembled": false
+      }
+    },
+    "respawn30": {
+      "state": {
+        "grips": {
+          "1": {
+            "offset": "-0.0000073150149546563625, -0.1500009000301361, 6.705522537231445e-07",
+            "side": "Left",
+            "hand": "0.337769091129303, 0.5353454351425171, 0.36194896697998047",
+            "bar": "2, 0.5, 0.19999998807907104"
+          },
+          "2": {
+            "offset": "-0.000011830474250018597, -0.14999979734420776, -1.1734664440155029e-07",
+            "side": "Right",
+            "hand": "0.33776915073394775, 0.5353454351425171, 0.36194896697998047",
+            "bar": "2, 0.5, 0.19999998807907104"
+          }
+        },
+        "training": false,
+        "torso": "3.034716844558716, 3.0680975914001465, 1.7292605638504028",
+        "neckGap": 0,
+        "skin": "0.901961, 0.74902, 0.603922",
+        "dataLoaded": true,
+        "level": 140,
+        "floor": "Plastic",
+        "head": "1.19501531124115, 1.1952306032180786, 1.2039055824279785",
+        "root": "287.8705139160156, 7.085892677307129, 12.99622917175293",
+        "strength": 43910429172515,
+        "feet": {
+          "1": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Left",
+            "gap": 0.17755170492718708
+          },
+          "2": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Right",
+            "gap": 0.16306532762533088
+          }
+        },
+        "upperArm": "2.177441358566284, 2.3212432861328125, 2.125697612762451",
+        "faceControls": 1,
+        "health": 100,
+        "isolationWrites": 13,
+        "ratio": 0.3,
+        "hip": 2.3841757774353027,
+        "stage": 2,
+        "hair": {
+          "1": {
+            "attachment": "HairAttachment",
+            "name": "Accessory (Messy Middle Part Hair)",
+            "part1": "Head"
+          }
+        }
+      },
+      "counts": {
+        "headNecks": 1,
+        "shirt": 1,
+        "fixedFace": 0,
+        "pants": 1,
+        "motors": 15
+      },
+      "reapply": {
+        "before": "3.034716844558716, 3.0680975914001465, 1.7292605638504028",
+        "after": "3.034716844558716, 3.0680975914001465, 1.7292605638504028",
+        "assembled": false
+      }
+    },
+    "respawn40": {
+      "state": {
+        "grips": {
+          "1": {
+            "offset": "0.00000759464455768466, -0.14999936521053314, -4.936009645462036e-08",
+            "side": "Left",
+            "hand": "0.4503587782382965, 0.7137938737869263, 0.48259860277175903",
+            "bar": "2, 0.5, 0.19999998807907104"
+          },
+          "2": {
+            "offset": "0.000012500095181167126, -0.1500006914138794, -8.512288331985474e-07",
+            "side": "Right",
+            "hand": "0.45035886764526367, 0.7137938737869263, 0.48259860277175903",
+            "bar": "2, 0.5, 0.19999998807907104"
+          }
+        },
+        "training": false,
+        "torso": "4.046288967132568, 4.090796947479248, 2.305680513381958",
+        "neckGap": 0.000030517578125,
+        "skin": "0.901961, 0.74902, 0.603922",
+        "dataLoaded": true,
+        "level": 140,
+        "floor": "Plastic",
+        "head": "1.19501531124115, 1.1952306032180786, 1.2039055824279785",
+        "root": "287.88262939453125, 7.974940776824951, 13.004715919494629",
+        "strength": 43910429172515,
+        "feet": {
+          "1": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Left",
+            "gap": 0.2296098049819859
+          },
+          "2": {
+            "surface": "Workspace.GeneratedMap.TrainingArea.EntranceCarpets.Upper",
+            "side": "Right",
+            "gap": 0.21124075233693862
+          }
+        },
+        "upperArm": "2.903254985809326, 3.0949909687042236, 2.834263563156128",
+        "faceControls": 1,
+        "health": 100,
+        "isolationWrites": 13,
+        "ratio": 0.4,
+        "hip": 3.178900957107544,
+        "stage": 2,
+        "hair": {
+          "1": {
+            "attachment": "HairAttachment",
+            "name": "Accessory (Messy Middle Part Hair)",
+            "part1": "Head"
+          }
+        }
+      },
+      "counts": {
+        "headNecks": 1,
+        "shirt": 1,
+        "fixedFace": 0,
+        "pants": 1,
+        "motors": 15
+      },
+      "reapply": {
+        "before": "4.046288967132568, 4.090796947479248, 2.305680513381958",
+        "after": "4.046288967132568, 4.090796947479248, 2.305680513381958",
+        "assembled": false
+      }
+    },
+    "consoleFinalPlay": "[StudioTest] Registered /test\n[StudioTest] Dependencies ready; automatic start=false\n[LimitedEgg01] server ready 126576845524886 3717610547\n[LimitedEgg01] client remotes ready 126576845524886\n[Roblox][sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Actions.ExecuteLuauActions] The execute_luau changed camera type. Resetting from Enum.CameraType.Scriptable back to Enum.CameraType.Custom\n[Roblox][sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Actions.ExecuteLuauActions] The execute_luau changed camera type. Resetting from Enum.CameraType.Scriptable back to Enum.CameraType.Custom"
+  },
+  "motion": {
+    "body40": {
+      "horizontalStuds": 22.669824600219727,
+      "jumpRise": 7.5286993980407715
+    },
+    "body30": {
+      "horizontalStuds": 23.55611801147461,
+      "jumpRise": 7.30722713470459
+    },
+    "input": "W or S for 0.9s, Space; samples over 220 * task.wait(.03); speed not inferred from wall-clock"
+  },
+  "manualSummary40LV32": {
+    "level": 32,
+    "strength": 50835,
+    "upperTorso": [
+      3.6482932567596436,
+      3.6817171573638916,
+      2.0960731506347656
+    ],
+    "upperArm": [
+      2.592191696166992,
+      2.785491704940796,
+      2.530592441558838
+    ],
+    "hip": 2.861010789871216,
+    "footGaps": [
+      0.17928584252866475,
+      0.1623751387230703
+    ],
+    "reapplyChanged": false
+  },
+  "skin": {
+    "inherited": [
+      230,
+      191,
+      154
+    ],
+    "testLight": [
+      244,
+      215,
+      190
+    ],
+    "testDark": [
+      111,
+      78,
+      55
+    ],
+    "faceColorMap": "rbxassetid://78897881727278",
+    "headDimensions": [
+      1.19501531124115,
+      1.1952306032180786,
+      1.2039055824279785
+    ]
+  }
+}
