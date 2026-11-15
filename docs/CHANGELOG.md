@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-15 — Analytics・退出時生成・Item45画像
+
+CustomEventの長いOre分類を衝突しないPF2へ短縮し、Studioにもフィールド制限検査を追加。退出開始から生成/配置継続を抑止し、古い要求と待機を解放。指定45 Item画像へ共通正本を更新、Shopの二重クリップを修正。隔離実Playと模擬テストを区別して記録し、副本は補助除去・未保存Editへ復帰。 [変更Full Path・証拠・未確認範囲](../reports/AnalyticsSpawnItems_20261115/REPORT.md)。
+
 ## 2026-11-14 — Pet Stage2 gate and camera choice preservation
 
 副本StudioへPet初回案内のWorld1 Stage2実撃破ゲートと永続flagを追加。保存済み由来/完了を保ち、Pet取引と撃破記録の競合を統合。成長/帰還等の強制カメラ設定を解除し、死亡復帰の相対orbit復元とモバイルFollowの配置履歴処理を追加。隔離Play後に検証補助を除去。未保存Edit、公開操作なし。 [検証・Full Path・制約](../reports/PetStage2Camera_20261114/REPORT.md)。

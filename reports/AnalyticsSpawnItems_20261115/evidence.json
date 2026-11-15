@@ -1,0 +1,1448 @@
+{
+  "Scope": {
+    "Date": "2026-11-15",
+    "PlaceId": 126576845524886,
+    "UniverseId": 10765181857,
+    "BaseCommit": "4b0560b526b20fa5a157f5e942edc607ffaa36dc",
+    "RealAnalyticsAPI": false,
+    "CreatorHub": false,
+    "ProductionDataStore": false,
+    "RealPayment": false,
+    "Note": "Native Play used temporary in-memory service adapters and prepared fixtures. Deterministic matrices are simulations."
+  },
+  "Audit": {
+    "Analytics": {
+      "OtherFunnelRows": 18,
+      "Kind": "Dependency-injected exact production service/transport; geometry mocked, not Play or Hub",
+      "Passed": true,
+      "Assertions": 1631
+    },
+    "Cleanup": {
+      "UniverseId": 10765181857,
+      "Device": "generic_handheld_720",
+      "PlaceId": 126576845524886,
+      "SavedOrPublished": false,
+      "Restored": 39,
+      "UnchangedSources": 505,
+      "ImageProperties": [
+        {
+          "Before": "rbxassetid://112294938722512",
+          "Path": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card08_RedGlove.Icon",
+          "After": "rbxassetid://131063706477806",
+          "Property": "Image"
+        },
+        {
+          "Before": "rbxassetid://123189885722060",
+          "Path": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card09_RedBelt.Icon",
+          "After": "rbxassetid://135152518487596",
+          "Property": "Image"
+        },
+        {
+          "Before": "rbxassetid://88813844869136",
+          "Path": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card07_RedProtein.Icon",
+          "After": "rbxassetid://119239917570949",
+          "Property": "Image"
+        },
+        {
+          "Before": "rbxassetid://88813844869136",
+          "Path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.Icon",
+          "After": "rbxassetid://119239917570949",
+          "Property": "Image"
+        }
+      ],
+      "OriginalSources": 511,
+      "HelpersRemaining": [],
+      "Mode": "Edit",
+      "HelpersRemoved": 5,
+      "ChangedSources": [
+        "ReplicatedStorage.Config.ItemMaster",
+        "ServerScriptService.Services.FirstPlayAnalyticsService",
+        "ServerScriptService.Services.FirstPlayAnalyticsTransport",
+        "ServerScriptService.Services.LobbySpawnService",
+        "StarterGui.StrengthGui.EssentialStudShopClient",
+        "StarterGui.StrengthGui.ItemInventoryTabClient"
+      ]
+    },
+    "Items": {
+      "Definitions": 90,
+      "UniqueImages": 45,
+      "UnchangedPropertyChecks": 1692,
+      "Passed": true,
+      "Authored": [
+        {
+          "before": "rbxassetid://112294938722512",
+          "path": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card08_RedGlove.Icon",
+          "after": "rbxassetid://131063706477806",
+          "item": "GLOVE_COMMON_FIRE"
+        },
+        {
+          "before": "rbxassetid://123189885722060",
+          "path": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card09_RedBelt.Icon",
+          "after": "rbxassetid://135152518487596",
+          "item": "TRAININGBELT_COMMON_FIRE"
+        },
+        {
+          "before": "rbxassetid://88813844869136",
+          "path": "StarterGui.StrengthGui.ShopPanel.MainScrollingFrame.Holder.Card07_RedProtein.Icon",
+          "after": "rbxassetid://119239917570949",
+          "item": "PROTEIN_COMMON_FIRE"
+        },
+        {
+          "before": "rbxassetid://88813844869136",
+          "path": "StarterGui.StrengthGui.InventoryPanel.Tabs.Items.Icon",
+          "after": "rbxassetid://119239917570949",
+          "item": "PROTEIN_COMMON_FIRE"
+        }
+      ]
+    },
+    "Spawn": {
+      "Cases": [
+        "before load",
+        "load",
+        "scale",
+        "stream",
+        "respawn"
+      ],
+      "Kind": "Simulated lifecycle/engine/stream boundaries; actual service control flow",
+      "Passed": true,
+      "Assertions": 34
+    },
+    "TransportStress": {
+      "Passed": true,
+      "Cases": {
+        "Normal": {
+          "Events": 46,
+          "QueueCapacity": 64
+        },
+        "Saturation": {
+          "Players": 20,
+          "Dropped": 540,
+          "Events": 920,
+          "RatePerMinute": 520,
+          "Sent": 380,
+          "MaxQueue": 46,
+          "SimulatedSeconds": 30.000000000000124
+        },
+        "Overflow": {
+          "LaterOtherFunnelDelivered": true,
+          "Dropped": 1
+        },
+        "BaselineSaturation": {
+          "Players": 20,
+          "Dropped": 340,
+          "Events": 720,
+          "RatePerMinute": 520,
+          "Sent": 380,
+          "MaxQueue": 36,
+          "SimulatedSeconds": 30.000000000000124
+        },
+        "Failure": {
+          "Failed": 1,
+          "Retries": 0
+        }
+      },
+      "Checks": [
+        {
+          "Name": "46-event full normal participation fits existing 64 queue",
+          "Passed": true
+        },
+        {
+          "Name": "Enqueue is deferred and non-blocking",
+          "Passed": true
+        },
+        {
+          "Name": "Normal burst delivers without drops",
+          "Passed": true
+        },
+        {
+          "Name": "Overflow capped, first missing funnel fenced",
+          "Passed": true
+        },
+        {
+          "Name": "Overflow does not block other funnels",
+          "Passed": true
+        },
+        {
+          "Name": "Thrown send is caught once without retry",
+          "Passed": true
+        },
+        {
+          "Name": "Failed Stage2 suppresses later steps, Ore still sends",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 1",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 2",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 3",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 4",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 5",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 6",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 7",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 8",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 9",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 10",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 11",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 12",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 13",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 14",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 15",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 16",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 17",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 18",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 19",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 20",
+          "Passed": true
+        },
+        {
+          "Name": "Saturated shared budget uses bounded wait/drop",
+          "Passed": true
+        },
+        {
+          "Name": "Every stress row either sent or locally dropped",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 1",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 2",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 3",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 4",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 5",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 6",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 7",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 8",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 9",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 10",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 11",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 12",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 13",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 14",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 15",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 16",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 17",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 18",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 19",
+          "Passed": true
+        },
+        {
+          "Name": "Stress queue drains 20",
+          "Passed": true
+        },
+        {
+          "Name": "Saturated shared budget uses bounded wait/drop",
+          "Passed": true
+        },
+        {
+          "Name": "Every stress row either sent or locally dropped",
+          "Passed": true
+        },
+        {
+          "Name": "Disabled analytics queues nothing",
+          "Passed": true
+        }
+      ]
+    },
+    "Transport": {
+      "Kind": "Simulated Studio and published transport branches",
+      "Passed": true,
+      "Assertions": 26
+    }
+  },
+  "NativeOre": {
+    "death": {
+      "Rows": [
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Death"
+          },
+          "StepName": "FirstBattleEnded",
+          "Kind": "Funnel",
+          "Step": 1,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 1011.114310399993,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Death:BattleEnd"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Death"
+          },
+          "StepName": "LobbyPlayableAfterFirstBattle",
+          "Kind": "Funnel",
+          "Step": 2,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 1014.6956105999998,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Death:LobbyReady"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Death"
+          },
+          "StepName": "MergeGuideShown",
+          "Kind": "Funnel",
+          "Step": 3,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 1014.9628158999985,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Death:GuideShown"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Death"
+          },
+          "StepName": "OreViewOpened",
+          "Kind": "Funnel",
+          "Step": 4,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 1046.8799934999988,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Death:OreView"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Death"
+          },
+          "StepName": "MergeCommitted",
+          "Kind": "Funnel",
+          "Step": 5,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 1062.410994299993,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Death:MergeDone"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        }
+      ],
+      "Ores": [],
+      "Loaded": true,
+      "Anchored": false,
+      "Strength": 40,
+      "Facts": {
+        "Stage1Defeated": false,
+        "Version": 1,
+        "BattleStarted": true,
+        "FirstOutcome": "Death",
+        "Eligible": true
+      },
+      "Pending": false,
+      "Fighting": false,
+      "Health": 100,
+      "Position": "306.9812316894531, 7.679804801940918, 36.63337326049805",
+      "Ore": true,
+      "Level": 4,
+      "Stage": 1,
+      "New": true
+    },
+    "back": {
+      "Rows": [
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Back"
+          },
+          "StepName": "FirstBattleEnded",
+          "Kind": "Funnel",
+          "Step": 1,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 25.751752600001055,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Back:BattleEnd"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Back"
+          },
+          "StepName": "LobbyPlayableAfterFirstBattle",
+          "Kind": "Funnel",
+          "Step": 2,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 25.868146200009505,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Back:LobbyReady"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Back"
+          },
+          "StepName": "MergeGuideShown",
+          "Kind": "Funnel",
+          "Step": 3,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 25.868152399998507,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Back:GuideShown"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Back"
+          },
+          "StepName": "OreViewOpened",
+          "Kind": "Funnel",
+          "Step": 4,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 42.83598280001024,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Back:OreView"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Back"
+          },
+          "StepName": "MergeCommitted",
+          "Kind": "Funnel",
+          "Step": 5,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 44.66638340000645,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Back:MergeDone"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        }
+      ],
+      "Ores": [],
+      "Loaded": true,
+      "Anchored": false,
+      "Strength": 40,
+      "Facts": {
+        "Stage1Defeated": false,
+        "Version": 1,
+        "BattleStarted": true,
+        "FirstOutcome": "Back",
+        "Eligible": true
+      },
+      "Pending": false,
+      "Fighting": false,
+      "Health": 100,
+      "Position": "306.9812316894531, 7.679804801940918, 36.63337326049805",
+      "Ore": true,
+      "Level": 4,
+      "Stage": 1,
+      "New": true
+    },
+    "victory": {
+      "Rows": [
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Victory"
+          },
+          "StepName": "FirstBattleEnded",
+          "Kind": "Funnel",
+          "Step": 1,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 22.567408299990348,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Victory:BattleEnd"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Victory"
+          },
+          "StepName": "LobbyPlayableAfterFirstBattle",
+          "Kind": "Funnel",
+          "Step": 2,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 26.694424000001163,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Victory:LobbyReady"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Victory"
+          },
+          "StepName": "MergeGuideShown",
+          "Kind": "Funnel",
+          "Step": 3,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 26.694428799994057,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Victory:GuideShown"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Victory"
+          },
+          "StepName": "OreViewOpened",
+          "Kind": "Funnel",
+          "Step": 4,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 53.88893889999599,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Victory:OreView"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        },
+        {
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PostFirstBattle_v2:Victory"
+          },
+          "StepName": "MergeCommitted",
+          "Kind": "Funnel",
+          "Step": 5,
+          "Name": "MTF_FirstOreMerge_v1"
+        },
+        {
+          "Value": 55.76403969999228,
+          "Fields": {
+            "CustomField01": "PlaceVersion:0",
+            "CustomField02": "NewFirstSession",
+            "CustomField03": "PF2:Victory:MergeDone"
+          },
+          "Name": "MTF_FirstActionSeconds_v1",
+          "Kind": "Custom"
+        }
+      ],
+      "Ores": {
+        "ORE_001": 1
+      },
+      "Loaded": true,
+      "Anchored": false,
+      "Strength": 40,
+      "Facts": {
+        "Stage1Defeated": true,
+        "Version": 1,
+        "BattleStarted": true,
+        "FirstOutcome": "Victory",
+        "Eligible": true
+      },
+      "Pending": false,
+      "Fighting": false,
+      "Health": 100,
+      "Position": "306.9812316894531, 7.679804801940918, 36.63337326049805",
+      "Ore": true,
+      "Level": 4,
+      "Stage": 1,
+      "New": true
+    }
+  },
+  "NativeSpawn": {
+    "World1": {
+      "MemoryWrites": 10,
+      "Anchored": false,
+      "Engine": true,
+      "Loaded": true,
+      "Placed": true,
+      "Events": [
+        {
+          "Event": "CharacterAdded",
+          "At": 7444.957750500005
+        },
+        {
+          "Value": true,
+          "Event": "LobbySpawnPlaced",
+          "At": 7446.387228700012
+        },
+        {
+          "Event": "CharacterAdded",
+          "At": 7745.516996900013
+        },
+        {
+          "Value": true,
+          "Event": "LobbySpawnPlaced",
+          "At": 7745.524219300001
+        }
+      ],
+      "Health": 100,
+      "Position": "287.81689453125, 7.336049556732178, 12.937697410583496",
+      "InvalidFields": [],
+      "Scale": true
+    },
+    "World2": {
+      "MemoryWrites": 23,
+      "Scale": true,
+      "Anchored": false,
+      "Engine": true,
+      "Loaded": true,
+      "Placed": true,
+      "Events": [
+        {
+          "Event": "CharacterAdded",
+          "At": 7444.957750500005
+        },
+        {
+          "Value": true,
+          "Event": "LobbySpawnPlaced",
+          "At": 7446.387228700012
+        },
+        {
+          "Event": "CharacterAdded",
+          "At": 7745.516996900013
+        },
+        {
+          "Value": true,
+          "Event": "LobbySpawnPlaced",
+          "At": 7745.524219300001
+        },
+        {
+          "Event": "CharacterAdded",
+          "At": 7913.080904000002
+        },
+        {
+          "Value": true,
+          "Event": "LobbySpawnPlaced",
+          "At": 7913.10163830001
+        }
+      ],
+      "Health": 100,
+      "Position": "27.98145866394043, 5.337893009185791, 1947.98046875",
+      "InvalidFields": [],
+      "World": 2
+    },
+    "Final": {
+      "MemoryWrites": 1,
+      "Anchored": false,
+      "Engine": true,
+      "Loaded": true,
+      "Placed": true,
+      "Events": [
+        {
+          "Event": "CharacterAdded",
+          "At": 9077.73181540001
+        },
+        {
+          "Value": true,
+          "Event": "MuscleScaleReady",
+          "At": 9077.73294300001
+        },
+        {
+          "Value": true,
+          "Event": "LobbySpawnPlaced",
+          "At": 9079.024404200012
+        },
+        {
+          "Event": "CharacterAdded",
+          "At": 9093.779519200005
+        },
+        {
+          "Value": true,
+          "Event": "MuscleScaleReady",
+          "At": 9093.779955000005
+        },
+        {
+          "Value": true,
+          "Event": "LobbySpawnPlaced",
+          "At": 9094.269858700005
+        }
+      ],
+      "Health": 100,
+      "Position": "287.86376953125, 7.336049556732178, 13.000198364257812",
+      "InvalidFields": [],
+      "Scale": true
+    },
+    "DepartureAttempt": {
+      "NativeAttempt": true,
+      "LoadReturnedBeforeKick": true,
+      "LoadResult": true,
+      "BeforeReturn": false,
+      "CharacterAdds": 1,
+      "PlayersAfter": 0,
+      "InFlightDepartureVerified": false
+    }
+  },
+  "Assets": [
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Belt05",
+      "Id": 99054363236474,
+      "ItemId": "TRAININGBELT_LEGENDARY_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Grove02",
+      "Id": 102792375678043,
+      "ItemId": "GLOVE_UNCOMMON_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Grove04",
+      "Id": 110315224232470,
+      "ItemId": "GLOVE_EPIC_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Belt04",
+      "Id": 105659825652489,
+      "ItemId": "TRAININGBELT_EPIC_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Belt03",
+      "Id": 93608276021361,
+      "ItemId": "TRAININGBELT_RARE_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Belt03",
+      "Id": 117141510259080,
+      "ItemId": "TRAININGBELT_RARE_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Protein05",
+      "Id": 97578658858016,
+      "ItemId": "PROTEIN_LEGENDARY_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "プロテイン01",
+      "Id": 119239917570949,
+      "ItemId": "PROTEIN_COMMON_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Protein04",
+      "Id": 82077986207411,
+      "ItemId": "PROTEIN_EPIC_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Protein03",
+      "Id": 82858655370111,
+      "ItemId": "PROTEIN_RARE_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Protein03",
+      "Id": 79765453122830,
+      "ItemId": "PROTEIN_RARE_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Protein04",
+      "Id": 82889919252005,
+      "ItemId": "PROTEIN_EPIC_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Grove05",
+      "Id": 131591548966635,
+      "ItemId": "GLOVE_LEGENDARY_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Protein03",
+      "Id": 107739440992464,
+      "ItemId": "PROTEIN_RARE_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Grove03",
+      "Id": 119911873482523,
+      "ItemId": "GLOVE_RARE_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Protein02",
+      "Id": 85795080513978,
+      "ItemId": "PROTEIN_UNCOMMON_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "グローブ01",
+      "Id": 131063706477806,
+      "ItemId": "GLOVE_COMMON_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Protein02",
+      "Id": 108422218042975,
+      "ItemId": "PROTEIN_UNCOMMON_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Grove05",
+      "Id": 73308020209583,
+      "ItemId": "GLOVE_LEGENDARY_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Belt05",
+      "Id": 104564972440529,
+      "ItemId": "TRAININGBELT_LEGENDARY_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Belt01",
+      "Id": 96496752053787,
+      "ItemId": "TRAININGBELT_COMMON_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Belt02",
+      "Id": 139567332510562,
+      "ItemId": "TRAININGBELT_UNCOMMON_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Grove01",
+      "Id": 111718628408896,
+      "ItemId": "GLOVE_COMMON_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Protein04",
+      "Id": 103146146252897,
+      "ItemId": "PROTEIN_EPIC_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Belt04",
+      "Id": 132759157132674,
+      "ItemId": "TRAININGBELT_EPIC_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Grove03",
+      "Id": 77605756931267,
+      "ItemId": "GLOVE_RARE_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Grove02",
+      "Id": 139999591744437,
+      "ItemId": "GLOVE_UNCOMMON_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Protein01",
+      "Id": 109626867118785,
+      "ItemId": "PROTEIN_COMMON_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Belt05",
+      "Id": 96064369103679,
+      "ItemId": "TRAININGBELT_LEGENDARY_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Grove04",
+      "Id": 109538064430664,
+      "ItemId": "GLOVE_EPIC_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Grove01",
+      "Id": 77728202879648,
+      "ItemId": "GLOVE_COMMON_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Protein05",
+      "Id": 91739900505998,
+      "ItemId": "PROTEIN_LEGENDARY_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Belt02",
+      "Id": 123049417284290,
+      "ItemId": "TRAININGBELT_UNCOMMON_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Grove05",
+      "Id": 93781714149316,
+      "ItemId": "GLOVE_LEGENDARY_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "ベルト01",
+      "Id": 135152518487596,
+      "ItemId": "TRAININGBELT_COMMON_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Protein05",
+      "Id": 124374248196874,
+      "ItemId": "PROTEIN_LEGENDARY_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Belt02",
+      "Id": 85833750596611,
+      "ItemId": "TRAININGBELT_UNCOMMON_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Belt04",
+      "Id": 74118581220310,
+      "ItemId": "TRAININGBELT_EPIC_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Protein02",
+      "Id": 91362170512211,
+      "ItemId": "PROTEIN_UNCOMMON_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Grove02",
+      "Id": 98887322321581,
+      "ItemId": "GLOVE_UNCOMMON_FIRE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Belt01",
+      "Id": 110481788029040,
+      "ItemId": "TRAININGBELT_COMMON_ICE"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Grove04",
+      "Id": 134926043547076,
+      "ItemId": "GLOVE_EPIC_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Protein01",
+      "Id": 88641679595352,
+      "ItemId": "PROTEIN_COMMON_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Electric_Belt03",
+      "Id": 119294353394586,
+      "ItemId": "TRAININGBELT_RARE_ELECTRIC"
+    },
+    {
+      "AssetTypeId": 1,
+      "Name": "Ice_Grove03",
+      "Id": 110123985270101,
+      "ItemId": "GLOVE_RARE_ICE"
+    }
+  ],
+  "ImageLoads": {
+    "LoadDone": true,
+    "Viewport": "1346, 624",
+    "Frames": 3319,
+    "ImageLoads": {
+      "rbxassetid://85833750596611": "Success",
+      "rbxassetid://105659825652489": "Success",
+      "rbxassetid://102792375678043": "Success",
+      "rbxassetid://82077986207411": "Success",
+      "rbxassetid://119911873482523": "Success",
+      "rbxassetid://77605756931267": "Success",
+      "rbxassetid://110315224232470": "Success",
+      "rbxassetid://97578658858016": "Success",
+      "rbxassetid://132759157132674": "Success",
+      "rbxassetid://99054363236474": "Success",
+      "rbxassetid://135152518487596": "Success",
+      "rbxassetid://73308020209583": "Success",
+      "rbxassetid://82858655370111": "Success",
+      "rbxassetid://139567332510562": "Success",
+      "rbxassetid://74118581220310": "Success",
+      "rbxassetid://93608276021361": "Success",
+      "rbxassetid://139999591744437": "Success",
+      "rbxassetid://96064369103679": "Success",
+      "rbxassetid://96496752053787": "Success",
+      "rbxassetid://93781714149316": "Success",
+      "rbxassetid://91739900505998": "Success",
+      "rbxassetid://82889919252005": "Success",
+      "rbxassetid://109538064430664": "Success",
+      "rbxassetid://108422218042975": "Success",
+      "rbxassetid://110481788029040": "Success",
+      "rbxassetid://91362170512211": "Success",
+      "rbxassetid://117141510259080": "Success",
+      "rbxassetid://131063706477806": "Success",
+      "rbxassetid://131591548966635": "Success",
+      "rbxassetid://119239917570949": "Success",
+      "rbxassetid://104564972440529": "Success",
+      "rbxassetid://107739440992464": "Success",
+      "rbxassetid://123049417284290": "Success",
+      "rbxassetid://124374248196874": "Success",
+      "rbxassetid://77728202879648": "Success",
+      "rbxassetid://110123985270101": "Success",
+      "rbxassetid://98887322321581": "Success",
+      "rbxassetid://134926043547076": "Success",
+      "rbxassetid://103146146252897": "Success",
+      "rbxassetid://79765453122830": "Success",
+      "rbxassetid://109626867118785": "Success",
+      "rbxassetid://85795080513978": "Success",
+      "rbxassetid://88641679595352": "Success",
+      "rbxassetid://119294353394586": "Success",
+      "rbxassetid://111718628408896": "Success"
+    }
+  },
+  "Transactions": {
+    "equip": {
+      "Count": 4,
+      "Win": 100000,
+      "Equipped": {
+        "Protein": "PROTEIN_COMMON_FIRE",
+        "TrainingBelt": "",
+        "Glove": ""
+      },
+      "World": 2
+    },
+    "sale": {
+      "Equipped": {
+        "Protein": "PROTEIN_COMMON_FIRE",
+        "TrainingBelt": "",
+        "Glove": ""
+      },
+      "MemoryWrites": 33,
+      "Count": 3,
+      "Win": 100037
+    },
+    "item_merge": {
+      "Equipped": {
+        "Protein": "PROTEIN_COMMON_FIRE",
+        "TrainingBelt": "",
+        "Glove": ""
+      },
+      "MemoryWrites": 37,
+      "AfterMergeCount": 3,
+      "Win": 100037
+    },
+    "purchase_integration": {
+      "OK": true,
+      "Win": 925,
+      "Code": "Purchased",
+      "Before": 0,
+      "After": 1
+    },
+    "shop_purchase": {
+      "MemoryWrites": 9,
+      "Win": 99925,
+      "Count": 5
+    }
+  },
+  "DropInjected": {
+    "Loaded": true,
+    "Image": "rbxassetid://131591548966635",
+    "Shown": true
+  },
+  "Shop": {
+    "Viewport": "1374, 1030",
+    "Rows": [
+      {
+        "Id": "PROTEIN_COMMON_FIRE",
+        "Image": "rbxassetid://119239917570949",
+        "Loaded": true
+      },
+      {
+        "Id": "GLOVE_COMMON_FIRE",
+        "Image": "rbxassetid://131063706477806",
+        "Loaded": true
+      },
+      {
+        "Id": "TRAININGBELT_COMMON_FIRE",
+        "Image": "rbxassetid://135152518487596",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_COMMON_ELECTRIC",
+        "Image": "rbxassetid://111718628408896",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_COMMON_FIRE",
+        "Image": "rbxassetid://131063706477806",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_COMMON_ICE",
+        "Image": "rbxassetid://77728202879648",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_EPIC_ELECTRIC",
+        "Image": "rbxassetid://134926043547076",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_EPIC_FIRE",
+        "Image": "rbxassetid://109538064430664",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_EPIC_ICE",
+        "Image": "rbxassetid://110315224232470",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_RARE_ELECTRIC",
+        "Image": "rbxassetid://119911873482523",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_RARE_FIRE",
+        "Image": "rbxassetid://77605756931267",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_RARE_ICE",
+        "Image": "rbxassetid://110123985270101",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_UNCOMMON_ELECTRIC",
+        "Image": "rbxassetid://102792375678043",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_UNCOMMON_FIRE",
+        "Image": "rbxassetid://98887322321581",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_GLOVE_UNCOMMON_ICE",
+        "Image": "rbxassetid://139999591744437",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_PROTEIN_COMMON_ELECTRIC",
+        "Image": "rbxassetid://88641679595352",
+        "Loaded": true
+      },
+      {
+        "Id": "W2_PROTEIN_COMMON_FIRE",
+        "Image": "rbxassetid://119239917570949",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_COMMON_ICE",
+        "Image": "rbxassetid://109626867118785",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_EPIC_ELECTRIC",
+        "Image": "rbxassetid://103146146252897",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_EPIC_FIRE",
+        "Image": "rbxassetid://82077986207411",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_EPIC_ICE",
+        "Image": "rbxassetid://82889919252005",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_RARE_ELECTRIC",
+        "Image": "rbxassetid://107739440992464",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_RARE_FIRE",
+        "Image": "rbxassetid://79765453122830",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_RARE_ICE",
+        "Image": "rbxassetid://82858655370111",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_UNCOMMON_ELECTRIC",
+        "Image": "rbxassetid://85795080513978",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_UNCOMMON_FIRE",
+        "Image": "rbxassetid://108422218042975",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_PROTEIN_UNCOMMON_ICE",
+        "Image": "rbxassetid://91362170512211",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_COMMON_ELECTRIC",
+        "Image": "rbxassetid://96496752053787",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_COMMON_FIRE",
+        "Image": "rbxassetid://135152518487596",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_COMMON_ICE",
+        "Image": "rbxassetid://110481788029040",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_EPIC_ELECTRIC",
+        "Image": "rbxassetid://105659825652489",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_EPIC_FIRE",
+        "Image": "rbxassetid://74118581220310",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_EPIC_ICE",
+        "Image": "rbxassetid://132759157132674",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_RARE_ELECTRIC",
+        "Image": "rbxassetid://119294353394586",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_RARE_FIRE",
+        "Image": "rbxassetid://93608276021361",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_RARE_ICE",
+        "Image": "rbxassetid://117141510259080",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_UNCOMMON_ELECTRIC",
+        "Image": "rbxassetid://85833750596611",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_UNCOMMON_FIRE",
+        "Image": "rbxassetid://139567332510562",
+        "Loaded": false
+      },
+      {
+        "Id": "W2_TRAININGBELT_UNCOMMON_ICE",
+        "Image": "rbxassetid://123049417284290",
+        "Loaded": false
+      }
+    ],
+    "OuterClip": true,
+    "InnerClip": false
+  }
+}

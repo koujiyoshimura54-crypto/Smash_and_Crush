@@ -9,6 +9,23 @@ local failNext=0
 local budget=120
 local updated=os.clock()
 local active=0
+local fieldKeys={"CustomField01","CustomField02","CustomField03"}
+local function diagnostic(s,e,reason)
+ -- Bound warnings per session as well as the delivery queue; never include player data/field values.
+ s.Diagnostics=(s.Diagnostics or 0)+1
+ if s.Diagnostics<=8 then
+  warn(("[FirstPlayAnalytics] %s event=%s kind=%s step=%s"):format(reason,tostring(e.Name),tostring(e.Kind),tostring(e.Step)))
+ end
+end
+local function validate(e)
+ if e.Fields~=nil and type(e.Fields)~="table" then return "invalid customFields: expected dictionary" end
+ for _,key in fieldKeys do
+  local value=e.Fields and e.Fields[key]
+  if value~=nil and (type(value)~="string" or #value>50 or utf8.len(value)==nil) then
+   return ("invalid %s: type=%s bytes=%s (limit 50)"):format(key,type(value),type(value)=="string" and tostring(#value) or "n/a")
+  end
+ end
+end
 local function send(p,e)
  if Run:IsStudio() then
   if failNext>0 then failNext-=1;error("Isolated analytics failure") end
@@ -22,10 +39,19 @@ end
 function M.Enqueue(p,s,e)
  if not Config.Enabled then return end
  if e.Kind=="Funnel" and s.SendBroken[e.Name] then return end
+ local invalid=validate(e)
+ if invalid then
+  s.Dropped+=1
+  if e.Kind=="Funnel" then s.SendBroken[e.Name]=true end
+  diagnostic(s,e,invalid)
+  return
+ end
  if #s.Queue>=Config.QueuePerSession then
   if e.Kind=="Funnel" then s.SendBroken[e.Name]=true end
   s.Dropped+=1;return
  end
+ -- Freeze the queued values by copying; callers cannot invalidate a validated row while it waits.
+ e=table.clone(e);e.Fields=table.clone(e.Fields or {})
  e.Expires=os.clock()+30
  table.insert(s.Queue,e)
  if s.Draining then return end
@@ -49,10 +75,11 @@ function M.Enqueue(p,s,e)
      if row.Kind=="Funnel" then s.SendBroken[row.Name]=true end
     else
      budget-=1
-     local ok=pcall(send,p,row)
+     local ok,err=pcall(send,p,row)
      if not ok then
       s.Failed+=1
       if row.Kind=="Funnel" then s.SendBroken[row.Name]=true end
+      diagnostic(s,row,"send failed: "..tostring(err))
      end
     end
    end

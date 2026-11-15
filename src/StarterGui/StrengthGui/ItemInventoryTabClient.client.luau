@@ -96,6 +96,7 @@ local categoryImages={
  Glove=Master.Get("GLOVE_COMMON_FIRE").Image,
  TrainingBelt=Master.Get("TRAININGBELT_COMMON_FIRE").Image,
 }
+shell.Tabs.Items.Icon.Image=categoryImages.Protein
 local palettes={
  Common={Color3.fromRGB(145,151,159),Color3.fromRGB(58,64,75),Color3.fromRGB(200,205,213)},
  Uncommon={Color3.fromRGB(0,209,58),Color3.fromRGB(0,103,36),Color3.fromRGB(49,255,92)},

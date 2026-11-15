@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-15 — Analytics・退出時生成・Item45画像
+
+通常Item画像はItemMasterの種類×属性×rarity別45件を正本にし、World2は同じ元rarity画像を共有する。01～05=Common～Legendary。Itemsタブ/空装備種類アイコンはCommon Fire。Shopは内側Holderのclipだけ解除し、外側ScrollingFrameで描画を切る。配置・サイズ・星・操作方式は維持。PC/スマホ/タブレット相当の代表描画を実Playで確認したが、全画像×全画面×全端末の網羅目視は未実施。 [変更Full Path・証拠・未確認範囲](../reports/AnalyticsSpawnItems_20261115/REPORT.md)。
+
 ## 2026-11-14 — Pet Stage2 gate and camera choice preservation
 
 Pet初回案内はWorld1 Stage2実撃破と既存条件の両方を満たして開始する。通常カメラのBody連動距離/zoom範囲/Offset、SpawnFacing強制回転を撤去。死亡演出・新Humanoidへの追従復帰は残し、直前の公称距離/角度を新subjectへ相対的に引き継ぐ。標準FollowCameraのワープ時だけ旧移動履歴を消し、通常入力・追従・遮蔽を維持する。Studio固定zoom範囲18～30は変更なし。 [検証・Full Path・制約](../reports/PetStage2Camera_20261114/REPORT.md)。

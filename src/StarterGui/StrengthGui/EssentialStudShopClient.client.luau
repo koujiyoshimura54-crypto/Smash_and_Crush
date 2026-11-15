@@ -23,6 +23,9 @@ local function layoutShop()
 end
 
 local holder=shop:WaitForChild("MainScrollingFrame"):WaitForChild("Holder")
+-- Holder retains the authored sizing reference; dynamic Item rows can extend below it.
+-- The enclosing ScrollingFrame owns viewport clipping, including those added rows.
+holder.ClipsDescendants=false
 -- Product artwork only; keep shared Inventory/Pet/HUD styling untouched.
 local function productIcon(x)
  return x:IsA("ImageLabel") and (x.Name=="Icon" or x.Name=="Icon1" or x.Name=="Icon2")

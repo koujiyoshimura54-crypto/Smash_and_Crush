@@ -8,6 +8,8 @@ local prefetched=setmetatable({}, {__mode="k"})
 local requests = setmetatable({}, {__mode = "k"})
 local loading = setmetatable({}, {__mode = "k"})
 local bound = setmetatable({}, {__mode = "k"})
+-- PlayerRemoving fires before Parent necessarily changes. Key by Player identity, never UserId.
+local leaving = setmetatable({}, {__mode = "k"})
 local characterRequests = setmetatable({}, {__mode = "k"})
 local spawned = Instance.new("BindableEvent")
 M.Spawned = spawned.Event
@@ -18,6 +20,23 @@ local remotes = RS:WaitForChild("Remotes")
 local placementReady = remotes:FindFirstChild("LobbySpawnReady") or Instance.new("RemoteEvent")
 placementReady.Name = "LobbySpawnReady"
 placementReady.Parent = remotes
+
+local function present(player)
+ return not leaving[player] and player.Parent == Players
+end
+local function releaseRequest(request)
+ if not request then return end
+ if request.StreamTask then pcall(task.cancel,request.StreamTask);request.StreamTask=nil end
+ if request.Root and request.Root.Parent then request.Root.Anchored=request.Anchored end
+ request.Root=nil
+end
+local function wakeLoad(player,cancel)
+ local load=loading[player]
+ if load then
+  if cancel then load.Cancelled=true end
+  if load.Wake then load.Wake:Fire() end
+ end
+end
 
 function M.WorldFor(player)
 	return player:GetAttribute("CurrentWorld") == 2 and 2 or 1
@@ -34,6 +53,7 @@ function M.GetLobby(worldId)
 end
 
 function M.ConfigureRespawn(player, worldId)
+	if not present(player) then return false end
 	local marker = M.GetLobby(worldId)
 	if not marker then return false end
 	local spawn = marker
@@ -64,21 +84,24 @@ end
 
 function M.CancelPending(player)
 	local old = requests[player]
-	if old and old.Root and old.Root.Parent then old.Root.Anchored = old.Anchored end
+	releaseRequest(old)
+	requests[player]=nil
+	wakeLoad(player,false)
+	if not present(player) then return nil end
 	local request = {Character = player.Character, World = M.WorldFor(player)}
 	requests[player] = request
 	return request
 end
 
 function M.IsCurrent(player, request)
-	return request ~= nil and requests[player] == request and player.Parent == Players
+	return request ~= nil and requests[player] == request and present(player)
 		and player.Character == request.Character and M.WorldFor(player) == request.World
 end
 
 local function living(player, character)
 	local root = character and character:FindFirstChild("HumanoidRootPart")
 	local hum = character and character:FindFirstChildOfClass("Humanoid")
-	if player.Parent ~= Players or player.Character ~= character or not root or not hum
+	if not present(player) or player.Character ~= character or not root or not hum
 		or hum.Health <= 0 or not character:IsDescendantOf(Workspace) then return nil end
 	return root, hum
 end
@@ -157,7 +180,8 @@ function M.MoveToLobby(player, character, worldId)
 	request.Revision = (character:GetAttribute("SpawnPlacementRevision") or 0) + 1
 	character:SetAttribute("SpawnPlacementTarget", position)
 	character:SetAttribute("SpawnPlacementRevision", request.Revision)
- task.delay(1,function()
+ request.StreamTask=task.delay(1,function()
+  request.StreamTask=nil
   if requests[player]==request and request.Root and M.IsCurrent(player,request) then
    pcall(function()player:RequestStreamAroundAsync(position)end)
   end
@@ -169,7 +193,7 @@ end
 -- Anchoring prevents old client physics packets from replaying the Trophy pose.
 placementReady.OnServerEvent:Connect(function(player, character, revision, position)
 	local request = requests[player]
-	if not request or request.Character ~= character or player.Character ~= character
+	if not M.IsCurrent(player,request) or request.Character ~= character or player.Character ~= character
 		or request.Revision ~= revision or typeof(position) ~= "Vector3"
 		or not request.Target or (request.Target - position).Magnitude > 0.5 then return end
 	local root, hum = living(player, character)
@@ -203,12 +227,14 @@ end
 
 function M.PrefetchLobby(player,character,worldId)
  local marker=M.GetLobby(worldId)
- if not marker or player.Character~=character then return end
+ if not present(player) or not marker or player.Character~=character then return end
  local old=prefetched[player]
  if old and old.Character==character and old.World==worldId and os.clock()-old.Time<10 then return old end
  local job={Character=character,World=worldId,Time=os.clock()}
  prefetched[player]=job
- job.OK=pcall(function()player:RequestStreamAroundAsync(marker.Position)end);job.Done=true
+ local ok=pcall(function()player:RequestStreamAroundAsync(marker.Position)end)
+ if not present(player) or player.Character~=character or prefetched[player]~=job then return nil end
+ job.OK=ok;job.Done=true
  return job
 end
 -- Stream before a yielding travel request; all continuations revalidate identity.
@@ -222,9 +248,10 @@ function M.StreamLobby(player, character, worldId)
 	local cache=prefetched[player]
  local ok,err
  if cache and cache.Character==character and cache.World==worldId and os.clock()-cache.Time<10 then
-  while not cache.Done and M.IsCurrent(player,request) do task.wait() end
+  while not cache.Done and prefetched[player]==cache and M.IsCurrent(player,request) do task.wait() end
   ok=cache.OK
  end
+ if not M.IsCurrent(player,request) then return nil,"StalePlacement" end
  if not ok then ok,err=pcall(function()player:RequestStreamAroundAsync(marker.Position)end) end
 	if not M.IsCurrent(player, request) then return nil, "StalePlacement" end
 	root.Anchored = request.Anchored
@@ -234,77 +261,142 @@ function M.StreamLobby(player, character, worldId)
 end
 
 function M.LoadCharacter(player, expectedCharacter, expectedRequest)
-	if loading[player] or player.Parent ~= Players
-		or (expectedCharacter and player.Character ~= expectedCharacter)
-		or (expectedRequest and not M.IsCurrent(player, expectedRequest)) then return false end
-	if not M.ConfigureRespawn(player, M.WorldFor(player)) then return false end
-	local load = {}
-	loading[player] = load
-	local ok, err = pcall(function() player:LoadCharacterAsync() end)
-	loading[player] = nil
-	local character = load.Character or player.Character
-	if not ok then warn("[LobbySpawn] Character load failed: " .. tostring(err)); return false end
-	if not character or player.Character ~= character then return false end
-	load.Request = characterRequests[character] or M.CancelPending(player)
-	characterRequests[character] = load.Request
-	-- The engine's final spawn move has completed. Muscle preparation starts now.
-	character:SetAttribute("SpawnEngineReady", true)
-	if not character:GetAttribute("MuscleScaleReady") then
-		local ready = Instance.new("BindableEvent")
-		local connection = character:GetAttributeChangedSignal("MuscleScaleReady"):Connect(function() ready:Fire() end)
-		local removed = player.CharacterRemoving:Connect(function(ch) if ch == character then ready:Fire() end end)
-		if not character:GetAttribute("MuscleScaleReady") and player.Character == character then ready.Event:Wait() end
-		connection:Disconnect(); removed:Disconnect(); ready:Destroy()
-	end
-	if not living(player, character) or not M.IsCurrent(player, load.Request) then return false end
-	local worldId = M.WorldFor(player)
-	local request = M.StreamLobby(player, character, worldId)
-	if not request or not M.IsCurrent(player, request) then return false end
-	local placed, why = M.MoveToLobby(player, character, worldId)
-	if not placed then warn("[LobbySpawn] Placement rejected: " .. tostring(why)); return false end
-	spawned:Fire(player, character)
-	return true
+ if loading[player] or not present(player)
+  or (expectedCharacter and player.Character ~= expectedCharacter)
+  or (expectedRequest and not M.IsCurrent(player, expectedRequest)) then return false end
+ if not M.ConfigureRespawn(player,M.WorldFor(player)) then return false end
+ local load={}
+ loading[player]=load
+ local function current()
+  return present(player) and loading[player]==load and not load.Cancelled
+ end
+ local function run()
+  local ok,err=pcall(function()player:LoadCharacterAsync()end)
+  -- In-flight engine work cannot be undone. Its result must never revive a departed session.
+  if not current() then return false end
+  if not ok then warn("[LobbySpawn] Character load failed: "..tostring(err));return false end
+  local character=load.Character or player.Character
+  if not character or player.Character~=character then return false end
+  load.Character=character
+  load.Request=load.Request or characterRequests[character] or M.CancelPending(player)
+  if not M.IsCurrent(player,load.Request) then return false end
+  characterRequests[character]=load.Request
+  character:SetAttribute("SpawnEngineReady",true)
+  if not character:GetAttribute("MuscleScaleReady") then
+   local ready=Instance.new("BindableEvent");load.Wake=ready
+   local connection=character:GetAttributeChangedSignal("MuscleScaleReady"):Connect(function()ready:Fire()end)
+   local removed=player.CharacterRemoving:Connect(function(ch)if ch==character then ready:Fire()end end)
+   local hum=character:FindFirstChildOfClass("Humanoid")
+   local died=hum and hum.Died:Connect(function()ready:Fire()end)
+   -- Recheck after subscribing, including removal with Parent still equal to Players.
+   if current() and M.IsCurrent(player,load.Request) and living(player,character)
+    and not character:GetAttribute("MuscleScaleReady") then ready.Event:Wait() end
+   connection:Disconnect();removed:Disconnect();if died then died:Disconnect()end
+   load.Wake=nil;ready:Destroy()
+  end
+  if not current() or not living(player,character) or not M.IsCurrent(player,load.Request)
+   or not character:GetAttribute("MuscleScaleReady") then return false end
+  local worldId=M.WorldFor(player)
+  local request=M.StreamLobby(player,character,worldId)
+  if not current() or not request or not M.IsCurrent(player,request) then return false end
+  local placed,why=M.MoveToLobby(player,character,worldId)
+  if not placed then warn("[LobbySpawn] Placement rejected: "..tostring(why));return false end
+  spawned:Fire(player,character)
+  return true
+ end
+ local ok,result=pcall(run)
+ -- Own the load until preparation/streaming finishes; an old completion cannot clear a new owner.
+ if loading[player]==load then loading[player]=nil end
+ if not ok then
+  if present(player) and not load.Cancelled then warn("[LobbySpawn] Character preparation failed: "..tostring(result)) end
+  return false
+ end
+ return result
 end
 
 function M.Start()
-	if started then return end
-	started = true
-	Players.CharacterAutoLoads = false
-	local function bind(player)
-		if bound[player] then return end
-		bound[player] = true
-		M.ConfigureRespawn(player, M.WorldFor(player))
-		player:GetAttributeChangedSignal("CurrentWorld"):Connect(function()
-			local request = requests[player]
-			if request and request.Character == player.Character and request.TargetWorld == M.WorldFor(player) then
-				request.World = M.WorldFor(player)
-			else M.CancelPending(player) end
-			M.ConfigureRespawn(player, M.WorldFor(player))
-		end)
-		player.CharacterAdded:Connect(function(character)
-			local request = characterRequests[character] or M.CancelPending(player)
-			characterRequests[character] = request
-			if loading[player] then loading[player].Character = character; loading[player].Request = request end
-			local hum = character:WaitForChild("Humanoid", 10)
-			if not hum or player.Character ~= character then return end
-			hum.Died:Once(function()
-				local request = M.CancelPending(player)
-				task.delay(Players.RespawnTime, function()
-					if M.IsCurrent(player, request) then M.LoadCharacter(player, character, request) end
-				end)
-			end)
-		end)
-		task.spawn(M.LoadCharacter, player)
-	end
-	Players.PlayerAdded:Connect(bind)
-	Players.PlayerRemoving:Connect(function(player)
-		M.CancelPending(player)
-		requests[player], loading[player], bound[player] = nil, nil, nil
-	end)
-	for _, player in Players:GetPlayers() do bind(player) end
+ if started then return end
+ started=true
+ Players.CharacterAutoLoads=false
+ local function cancelRespawn(binding)
+  if binding.Respawn then pcall(task.cancel,binding.Respawn);binding.Respawn=nil end
+ end
+ local function clearCharacter(binding)
+  if binding.Death then binding.Death:Disconnect();binding.Death=nil end
+ end
+ -- Register removal before scheduling any initial load.
+ Players.PlayerRemoving:Connect(function(player)
+  leaving[player]=true
+  wakeLoad(player,true)
+  releaseRequest(requests[player])
+  requests[player],prefetched[player]=nil,nil
+  local binding=bound[player]
+  if binding then
+   cancelRespawn(binding);clearCharacter(binding)
+   for _,connection in binding.Connections do connection:Disconnect() end
+   if binding.Character then characterRequests[binding.Character]=nil end
+  end
+  bound[player]=nil
+ end)
+ local function bind(player)
+  if bound[player] or not present(player) then return end
+  local binding={Connections={}};bound[player]=binding
+  local function valid()return present(player) and bound[player]==binding end
+  local function connect(signal,fn)table.insert(binding.Connections,signal:Connect(fn))end
+  M.ConfigureRespawn(player,M.WorldFor(player))
+  connect(player:GetAttributeChangedSignal("CurrentWorld"),function()
+   if not valid() then return end
+   local request=requests[player]
+   if request and request.Character==player.Character and request.TargetWorld==M.WorldFor(player) then
+    request.World=M.WorldFor(player)
+   else M.CancelPending(player) end
+   M.ConfigureRespawn(player,M.WorldFor(player))
+  end)
+  connect(player.CharacterRemoving,function(character)
+   if not valid() then return end
+   if binding.Character==character then
+    clearCharacter(binding);cancelRespawn(binding);binding.Character=nil
+   end
+   characterRequests[character]=nil
+   if requests[player] and requests[player].Character==character then
+    releaseRequest(requests[player]);requests[player]=nil
+   end
+   local load=loading[player]
+   if load and load.Character==character then wakeLoad(player,true) end
+  end)
+  connect(player.CharacterAdded,function(character)
+   if not valid() or player.Character~=character then return end
+   clearCharacter(binding);cancelRespawn(binding);binding.Character=character
+   local request=characterRequests[character] or M.CancelPending(player)
+   characterRequests[character]=request
+   local load=loading[player]
+   if load then
+    if load.Character and load.Character~=character then wakeLoad(player,true)
+    else load.Character=character;load.Request=request end
+   end
+   local deadline=os.clock()+10
+   local hum=character:FindFirstChildOfClass("Humanoid")
+   while not hum and valid() and binding.Character==character and player.Character==character and os.clock()<deadline do
+    task.wait(.05);hum=character:FindFirstChildOfClass("Humanoid")
+   end
+   if not hum or not valid() or binding.Character~=character or player.Character~=character then return end
+   binding.Death=hum.Died:Once(function()
+    if not valid() or binding.Character~=character or player.Character~=character then return end
+    local request=M.CancelPending(player)
+    cancelRespawn(binding)
+    binding.Respawn=task.delay(Players.RespawnTime,function()
+     binding.Respawn=nil
+     if valid() and M.IsCurrent(player,request) then M.LoadCharacter(player,character,request) end
+    end)
+   end)
+  end)
+  task.spawn(function()if valid() then M.LoadCharacter(player)end end)
+ end
+ Players.PlayerAdded:Connect(bind)
+ for _,player in Players:GetPlayers() do bind(player) end
 end
 
--- StageSkip extensions. The 36595fe lobby/load/return implementations above are unchanged.
+-- StageSkip shares the same placement ownership and departure guards.
 function M.GetRootClearance(player, character)
  local root,hum=living(player,character)
  return root and clearance(character,root,hum) or nil

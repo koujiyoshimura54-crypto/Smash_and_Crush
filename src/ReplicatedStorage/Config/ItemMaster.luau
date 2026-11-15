@@ -8,27 +8,28 @@ local rarities = {"Common","Uncommon","Rare","Epic","Legendary"}
 local elements = {"Fire","Ice","Electric"}
 local winPrices = {Common=75,Uncommon=200,Rare=600,Epic=4500}
 local Products=require(game.ReplicatedStorage.Config:WaitForChild("DeveloperProductConfig"))
+-- Upload 01..05 = Common..Legendary. Grove/Belt upload names do not change item IDs.
 local images = {
  Protein = {
-  Fire="rbxassetid://88813844869136",
-  Ice="rbxassetid://71899140469848",
-  Electric="rbxassetid://99486749835983",
+  Fire={"rbxassetid://119239917570949","rbxassetid://108422218042975","rbxassetid://79765453122830","rbxassetid://82077986207411","rbxassetid://91739900505998"},
+  Ice={"rbxassetid://109626867118785","rbxassetid://91362170512211","rbxassetid://82858655370111","rbxassetid://82889919252005","rbxassetid://124374248196874"},
+  Electric={"rbxassetid://88641679595352","rbxassetid://85795080513978","rbxassetid://107739440992464","rbxassetid://103146146252897","rbxassetid://97578658858016"},
  },
  Glove = {
-  Fire="rbxassetid://112294938722512",
-  Ice="rbxassetid://116331874339139",
-  Electric="rbxassetid://87861483932138",
+  Fire={"rbxassetid://131063706477806","rbxassetid://98887322321581","rbxassetid://77605756931267","rbxassetid://109538064430664","rbxassetid://73308020209583"},
+  Ice={"rbxassetid://77728202879648","rbxassetid://139999591744437","rbxassetid://110123985270101","rbxassetid://110315224232470","rbxassetid://93781714149316"},
+  Electric={"rbxassetid://111718628408896","rbxassetid://102792375678043","rbxassetid://119911873482523","rbxassetid://134926043547076","rbxassetid://131591548966635"},
  },
  TrainingBelt = {
-  Fire="rbxassetid://123189885722060",
-  Ice="rbxassetid://94400762055390",
-  Electric="rbxassetid://102495913054361",
+  Fire={"rbxassetid://135152518487596","rbxassetid://139567332510562","rbxassetid://93608276021361","rbxassetid://74118581220310","rbxassetid://104564972440529"},
+  Ice={"rbxassetid://110481788029040","rbxassetid://123049417284290","rbxassetid://117141510259080","rbxassetid://132759157132674","rbxassetid://96064369103679"},
+  Electric={"rbxassetid://96496752053787","rbxassetid://85833750596611","rbxassetid://119294353394586","rbxassetid://105659825652489","rbxassetid://99054363236474"},
  },
 }
 local items = {}
 
 for _, itemType in ipairs(itemTypes) do
- for _, rarity in ipairs(rarities) do
+ for rank, rarity in ipairs(rarities) do
   for _, element in ipairs(elements) do
    local itemId = itemType.Id.."_"..string.upper(rarity).."_"..string.upper(element)
    items[itemId] = table.freeze({
@@ -36,7 +37,7 @@ for _, itemType in ipairs(itemTypes) do
     ItemType = itemType.Name,
     Rarity = rarity,
     Element = element,
-    Image = images[itemType.Name][element],
+    Image = images[itemType.Name][element][rank],
     WinPrice = winPrices[rarity] or 0,
     RobuxPrice = Products.GetItemProduct(rarity) and Products.GetItemProduct(rarity).FallbackPrice or 0,
     ShopPurchasable = winPrices[rarity] ~= nil,

@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-15 — Analytics・退出時生成・Item45画像
+
+退出開始をPlayerRemovingで記録し、Player/Character/要求/生成所有者が有効な間だけLobby生成・体型準備・stream後の配置を続行する。退出時は待機・接続・復活予約と所有アンカーを解放。通常参加・死亡復帰・World1/World2配置を隔離実Playで確認。競合退出条件は模擬で確認し、実生成中切断と2行目のエンジンログ発生元は未確認。ゲーム進行・保存形式・balanceは変更しない。 [変更Full Path・証拠・未確認範囲](../reports/AnalyticsSpawnItems_20261115/REPORT.md)。
+
 ## 2026-11-14 — Pet Stage2 gate and camera choice preservation
 
 初回Egg購入→Pet装備ガイドに、本人のWorld1 Stage2 Boss実撃破済みという追加条件を設ける。既存の対象者・Lobby・生存・UI・Win条件を維持し、手動購入/装備は制限しない。保存はEggPetTutorial.World1Stage2Defeated、欠落false、過去撃破を推定しない。通常保存とPet取引で撃破flagのみ単調統合する。共有FirstBattle/Ore条件は変更しない。 [検証・Full Path・制約](../reports/PetStage2Camera_20261114/REPORT.md)。

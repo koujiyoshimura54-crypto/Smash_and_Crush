@@ -19,6 +19,10 @@ local steps={Entry={"ServerJoined","DataLoaded","ClientPlayable"},
  Ore={"FirstBattleEnded","LobbyPlayableAfterFirstBattle","MergeGuideShown","OreViewOpened","MergeCommitted"},
  Stage2={"EnteredStage2","ClearedFirstWall","ClearedStage2Walls","DamagedStage2Boss","DefeatedStage2Boss"},
  Stage2Death={"DamagedStage2Boss","KilledByStage2Boss"},Stage2Back={"DamagedStage2Boss","BackBeforeStage2BossDefeat"}}
+-- Custom-event dimensions have a 50-byte ceiling. Funnel names/steps/classes stay unchanged.
+local oreDetails={"BattleEnd","LobbyReady","GuideShown","OreView","MergeDone"}
+local bypassDetails={OreViewBeforeLobbyReady="ViewBeforeReady",OreViewBeforeGuide="ViewBeforeGuide",
+ MergeRequestWithoutPrefix="RequestNoPrefix",MergeCommitted="MergeCommitted"}
 local function fields(cohort,detail)
  return {[Enum.AnalyticsCustomFieldKeys.CustomField01.Name]=release,
   [Enum.AnalyticsCustomFieldKeys.CustomField02.Name]=cohort,
@@ -40,7 +44,7 @@ local function step(p,s,f,index)
  s.Progress[f]=index
  Transport.Enqueue(p,s,{Kind="Funnel",Name=names[f],Session=s.Id,Step=index,StepName=steps[f][index],
   Fields=fields(f=="Entry" and "AllSessions" or "NewFirstSession",f=="Ore" and s.OreClass or "Normal")})
- custom(p,s,"Time:"..f..index,f=="Ore" and s.OreClass..":"..steps[f][index] or f..":"..steps[f][index],f=="Entry")
+ custom(p,s,"Time:"..f..index,f=="Ore" and s.OreDetail..":"..oreDetails[index] or f..":"..steps[f][index],f=="Entry")
  return true
 end
 local function new(s) return s and s.Loaded and s.Cohort=="New" and not s.Reset end
@@ -70,7 +74,7 @@ local function bindCharacter(p,s,c)
   if not h or states[p]~=s or p.Character~=c then return end
   s.Death=h.Died:Connect(function()
    if not new(s) then return end
-   local phase=s.Progress.Ore>0 and (s.OreClass..":"..steps.Ore[s.Progress.Ore])
+   local phase=s.Progress.Ore>0 and (s.OreDetail..":"..oreDetails[s.Progress.Ore])
     or s.Progress.Combat>0 and ("Combat:"..steps.Combat[s.Progress.Combat]) or "Loading"
    custom(p,s,"FirstDeath","Death:"..phase)
   end)
@@ -306,6 +310,7 @@ function M.FirstBattleEnded(p,outcome)
  s.OreEndObserved=true -- Exclusion is final too; a later retry must not enroll an early merger.
  if s.MergeFinished or ds.Data.OreMergeTutorial.Completed==true then return end
  s.OreClass="PostFirstBattle_v2:"..outcome
+ s.OreDetail="PF2:"..outcome
  s.OreChallenge=Http:GenerateGUID(false)
  p:SetAttribute("MTFPostBattleToken",s.OreChallenge)
  step(p,s,"Ore",1)
@@ -319,7 +324,7 @@ local function postEligible(p,s)
 end
 local function bypass(p,s,why)
  s.Broken.Ore=true;s.OreBypass=s.OreBypass or why
- custom(p,s,"PostBypass:"..why,s.OreClass..":Bypass:"..why)
+ custom(p,s,"PostBypass:"..why,s.OreDetail..":Bypass:"..(bypassDetails[why] or why))
 end
 function M.OreView(p,payload,requestMaterials)
  local s=states[p];local ds=postEligible(p,s)

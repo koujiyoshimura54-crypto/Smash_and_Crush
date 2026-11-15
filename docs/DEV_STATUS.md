@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-15 — Analytics・退出時生成・Item45画像
+
+副本126576845524886へAnalytics分類/共通Transport検査、退出時Lobby生成の所有権・待機解除、Item45画像とShopクリップ修正を反映。3結果のOre5段階、通常参加・死亡復帰・World1/World2、代表UI操作を隔離実Playで確認。模擬Analytics1631/Transport26/Spawn34 assertionと既存stress52 check。実API/Hub、実生成中切断、実端末等は未確認。補助除去後511 Sourceを照合し、今回6件以外505件保持。未保存Edit、Save/Publish/PR #1操作なし。 [変更Full Path・証拠・未確認範囲](../reports/AnalyticsSpawnItems_20261115/REPORT.md)。
+
 ## 2026-11-14 — Pet Stage2 gate and camera choice preservation
 
 副本126576845524886の5 Sourceを実装し隔離Playで検証。実Stage2撃破/非致死攻撃/Win StageSkip/World2撃破、手動Pet購入装備、保存競合/失敗再試行、初戦→Ore、再生/SIZE/成長、モバイルFollowのWorld/Trophy/死亡復帰を確認。実端末タッチ、2人実クライアント、実ネットワーク再参加など未確認範囲あり。補助除去・未保存Edit。Save/PublishとPR #1操作なし。 [検証・Full Path・制約](../reports/PetStage2Camera_20261114/REPORT.md)。
