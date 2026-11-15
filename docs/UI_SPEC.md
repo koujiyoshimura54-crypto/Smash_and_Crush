@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-16 — World2専用Item画像06〜10
+
+World2はItemMasterの専用45画像を使用する。06〜10=Common〜Legendary（表示ランク6〜10）。World1画像、空種類アイコン、配置・サイズ・星・数値・操作は維持。以前のWorld1画像共有はこの指示で置き換える。PC/phone/tablet相当の隔離実Playで代表画面と画像を確認。[対応表・実Play・制約](../reports/World2ItemImages_20261115.md)。
+
 ## 2026-11-15 — Analytics・退出時生成・Item45画像
 
 通常Item画像はItemMasterの種類×属性×rarity別45件を正本にし、World2は同じ元rarity画像を共有する。01～05=Common～Legendary。Itemsタブ/空装備種類アイコンはCommon Fire。Shopは内側Holderのclipだけ解除し、外側ScrollingFrameで描画を切る。配置・サイズ・星・操作方式は維持。PC/スマホ/タブレット相当の代表描画を実Playで確認したが、全画像×全画面×全端末の網羅目視は未実施。 [変更Full Path・証拠・未確認範囲](../reports/AnalyticsSpawnItems_20261115/REPORT.md)。

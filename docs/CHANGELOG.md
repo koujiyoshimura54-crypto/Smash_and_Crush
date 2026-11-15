@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-16 — World2 Item画像06〜10
+
+ゲーム所有者へ45画像を登録し、共通ItemMasterのWorld2 Imageだけを差し替えた。World1・価格・効果・保存/合成仕様は維持。画像読込、代表UIと隔離実Playを確認し、検証補助を除去。Save/Publishなし。[対応表・実Play・制約](../reports/World2ItemImages_20261115.md)。
+
 ## 2026-11-15 — Analytics・退出時生成・Item45画像
 
 CustomEventの長いOre分類を衝突しないPF2へ短縮し、Studioにもフィールド制限検査を追加。退出開始から生成/配置継続を抑止し、古い要求と待機を解放。指定45 Item画像へ共通正本を更新、Shopの二重クリップを修正。隔離実Playと模擬テストを区別して記録し、副本は補助除去・未保存Editへ復帰。 [変更Full Path・証拠・未確認範囲](../reports/AnalyticsSpawnItems_20261115/REPORT.md)。

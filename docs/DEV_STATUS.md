@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-16 — World2 Item45画像の登録・反映
+
+指定PNG45枚をゲーム所有者へ登録し、全件Approvedと実読込を確認。副本ItemMasterのWorld2 Image45件だけ更新し、全90定義の他フィールドは一致。隔離実Playで代表UI/装備/購入/マージ/死亡復帰、phone/tablet表示を確認。既存アセット権限ログ、実機・公開環境等の未確認範囲を区別。補助除去、511 Source中510件保持、未保存Edit。[対応表・実Play・制約](../reports/World2ItemImages_20261115.md)。
+
 ## 2026-11-15 — Analytics・退出時生成・Item45画像
 
 副本126576845524886へAnalytics分類/共通Transport検査、退出時Lobby生成の所有権・待機解除、Item45画像とShopクリップ修正を反映。3結果のOre5段階、通常参加・死亡復帰・World1/World2、代表UI操作を隔離実Playで確認。模擬Analytics1631/Transport26/Spawn34 assertionと既存stress52 check。実API/Hub、実生成中切断、実端末等は未確認。補助除去後511 Sourceを照合し、今回6件以外505件保持。未保存Edit、Save/Publish/PR #1操作なし。 [変更Full Path・証拠・未確認範囲](../reports/AnalyticsSpawnItems_20261115/REPORT.md)。

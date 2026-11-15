@@ -26,6 +26,24 @@ local images = {
   Electric={"rbxassetid://96496752053787","rbxassetid://85833750596611","rbxassetid://119294353394586","rbxassetid://105659825652489","rbxassetid://99054363236474"},
  },
 }
+-- Upload 06..10 = World2 Common..Legendary (display ranks 6..10).
+local world2Images = {
+ Protein = {
+  Fire={"rbxassetid://136237412165016","rbxassetid://80099985786353","rbxassetid://99340317645486","rbxassetid://134953233792211","rbxassetid://77017472463243"},
+  Ice={"rbxassetid://118179858238695","rbxassetid://129669865032093","rbxassetid://119680560024540","rbxassetid://130499515826855","rbxassetid://126723124357935"},
+  Electric={"rbxassetid://106178663042067","rbxassetid://87357549308053","rbxassetid://117336147289487","rbxassetid://113727967764645","rbxassetid://117269460565255"},
+ },
+ Glove = {
+  Fire={"rbxassetid://74280673512618","rbxassetid://90055877712309","rbxassetid://117035832275501","rbxassetid://113185001705480","rbxassetid://121235136564738"},
+  Ice={"rbxassetid://82021641232664","rbxassetid://86309716139764","rbxassetid://112482767004991","rbxassetid://72673766766004","rbxassetid://98934007987043"},
+  Electric={"rbxassetid://114306457808851","rbxassetid://71242187536138","rbxassetid://74986318363859","rbxassetid://100766710950328","rbxassetid://118096701999842"},
+ },
+ TrainingBelt = {
+  Fire={"rbxassetid://86486962390940","rbxassetid://120496332637611","rbxassetid://99570951073156","rbxassetid://76162631763634","rbxassetid://71249795305351"},
+  Ice={"rbxassetid://72918904494941","rbxassetid://89420899228447","rbxassetid://109476972668907","rbxassetid://126465842000064","rbxassetid://104684295265635"},
+  Electric={"rbxassetid://106210517080753","rbxassetid://120230356848277","rbxassetid://82574060179334","rbxassetid://113352940250561","rbxassetid://86291841907893"},
+ },
+}
 local items = {}
 
 for _, itemType in ipairs(itemTypes) do
@@ -54,6 +72,7 @@ for id,item in pairs(originals) do
  local row=assert(World2.Items[item.Rarity])
  local worldItem=table.clone(item)
  worldItem.ItemId="W2_"..id;worldItem.WorldId=2
+ worldItem.Image=world2Images[item.ItemType][item.Element][table.find(rarities,item.Rarity)]
  worldItem.WinPrice=row.PriceWin;worldItem.ShopPurchasable=row.PriceWin~=nil
  worldItem.RobuxPurchasable=false;worldItem.RobuxPrice=nil
  items[worldItem.ItemId]=table.freeze(worldItem)
