@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-16 — 歩行音を接地中の実移動へ限定
+
+独自歩行音とRoblox標準Running音は、生存・接地・移動入力に加え、Rootの短時間の水平純変位で再生を判定する。停止・空中・死亡・配置変更時は停止し、揺れへのヒステリシスを設ける。入力端末による条件分岐なし。Strength加算音・SE/BGM音量・ゲーム進行は維持。通常/最大Bodyの隔離実Playで再生状態を確認し、聴感と実端末操作は未確認。[Full Path・条件・検証範囲](../reports/MovementSound_20261116.md)。
+
 ## 2026-11-15 — Analytics・退出時生成・Item45画像
 
 退出開始をPlayerRemovingで記録し、Player/Character/要求/生成所有者が有効な間だけLobby生成・体型準備・stream後の配置を続行する。退出時は待機・接続・復活予約と所有アンカーを解放。通常参加・死亡復帰・World1/World2配置を隔離実Playで確認。競合退出条件は模擬で確認し、実生成中切断と2行目のエンジンログ発生元は未確認。ゲーム進行・保存形式・balanceは変更しない。 [変更Full Path・証拠・未確認範囲](../reports/AnalyticsSpawnItems_20261115/REPORT.md)。

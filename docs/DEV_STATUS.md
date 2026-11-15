@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-16 — 副本の歩行音判定
+
+現在の独自音・標準Running・Strength加算音を分けて確認し、MovementSoundClient 1本で実変位による再生/停止を実装。通常/最大Bodyの歩行・停止・壁・Treadmill・ジャンプ・死亡復帰、最大Bodyの帰還/位置変更を隔離実Playで観測。聴感・実端末操作は未確認。補助39差し替えを復元し、511 Source中510件と音量等74件を保持。副本未保存Edit、Save/Publishなし。[実測・音量Full Path・制約](../reports/MovementSound_20261116.md)。
+
 ## 2026-11-16 — World2 Item45画像の登録・反映
 
 指定PNG45枚をゲーム所有者へ登録し、全件Approvedと実読込を確認。副本ItemMasterのWorld2 Image45件だけ更新し、全90定義の他フィールドは一致。隔離実Playで代表UI/装備/購入/マージ/死亡復帰、phone/tablet表示を確認。既存アセット権限ログ、実機・公開環境等の未確認範囲を区別。補助除去、511 Source中510件保持、未保存Edit。[対応表・実Play・制約](../reports/World2ItemImages_20261115.md)。

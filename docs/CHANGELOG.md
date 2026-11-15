@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-16 — 歩行音の実変位判定
+
+MovementSoundClientに接地中の水平純変位、開始/継続閾値、配置変更後の待機、即時停止、Character交代時の接続解除を実装。標準Runningにも同じ停止条件を適用し、音量は保持。通常/最大Bodyの実Playによる再生状態と、聴感・実端末の未確認を区別。補助除去・既存編集保持・副本未保存Edit。[検証と音量一覧](../reports/MovementSound_20261116.md)。
+
 ## 2026-11-16 — World2 Item画像06〜10
 
 ゲーム所有者へ45画像を登録し、共通ItemMasterのWorld2 Imageだけを差し替えた。World1・価格・効果・保存/合成仕様は維持。画像読込、代表UIと隔離実Playを確認し、検証補助を除去。Save/Publishなし。[対応表・実Play・制約](../reports/World2ItemImages_20261115.md)。
