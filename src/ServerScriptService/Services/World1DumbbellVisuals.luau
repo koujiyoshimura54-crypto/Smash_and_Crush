@@ -111,6 +111,42 @@ local function iconFor(stand)
  local icon=board and board:FindFirstChild("ItemIcon")
  return icon and icon:IsA("ImageLabel") and icon or nil
 end
+-- The model owner also owns this compact label. Keep the old world-space text
+-- heights: price 1.26, amount 1.08, status .9 studs; remove the hidden image row.
+local function labelProperty(object,key,value)
+ local attribute="DumbbellExhibitOriginal_"..key
+ if object:GetAttribute(attribute)==nil then object:SetAttribute(attribute,object[key])end
+ if object[key]~=value then object[key]=value end
+end
+local function restoreLabel(board)
+ if not board or not board:GetAttribute("DumbbellExhibitLabel")then return end
+ local function restore(object,keys)
+  if not object then return end
+  for _,key in keys do local v=object:GetAttribute("DumbbellExhibitOriginal_"..key);if v~=nil then object[key]=v end end
+ end
+ restore(board,{"Size","StudsOffset","StudsOffsetWorldSpace"})
+ for _,name in {"Price","Amount","Status"}do restore(board:FindFirstChild(name),{"Size"})end
+ restore(board:FindFirstChildOfClass("UIListLayout"),{"Padding"})
+ board:SetAttribute("DumbbellExhibitLabel",nil)
+end
+local function positionLabel(stand,press,display,config)
+ local board=stand:FindFirstChild("BillboardGui")
+ local tuning=config.ExhibitLabel
+ if not board or not board:IsA("BillboardGui")or not tuning then return end
+ board:SetAttribute("DumbbellExhibitLabel",true)
+ labelProperty(board,"Size",UDim2.fromScale(tuning.Width,tuning.Height))
+ for name,height in {Price=1.26,Amount=1.08,Status=.9}do
+  local row=board:FindFirstChild(name)
+  if row and row:IsA("GuiObject")then labelProperty(row,"Size",UDim2.new(row.Size.X,UDim.new(height/tuning.Height,0)))end
+ end
+ local layout=board:FindFirstChildOfClass("UIListLayout")
+ if layout then labelProperty(layout,"Padding",UDim.new(.09/tuning.Height,0))end
+ local cf,size=display:GetBoundingBox()
+ local halfY=(math.abs(cf.RightVector.Y)*size.X+math.abs(cf.UpVector.Y)*size.Y+math.abs(cf.LookVector.Y)*size.Z)/2
+ local center=Vector3.new(cf.Position.X,cf.Position.Y+halfY+tuning.Gap+tuning.Height/2,cf.Position.Z)
+ labelProperty(board,"StudsOffset",Vector3.zero)
+ labelProperty(board,"StudsOffsetWorldSpace",center-press.Position)
+end
 function M.RefreshExhibit(stand,rebuild)
  -- ItemId is authoritative. Never assign models by child order or World2 grade.
  local itemId=stand:GetAttribute("ItemId")
@@ -129,11 +165,14 @@ function M.RefreshExhibit(stand,rebuild)
   if icon:GetAttribute(original)==nil then
    icon:SetAttribute(original,icon.ImageTransparency)
   end
-  -- Keep Visible/layout/Image intact: hiding the row would move price text.
+  local visibility="World"..worldId.."DumbbellOriginalIconVisible"
+  if icon:GetAttribute(visibility)==nil then icon:SetAttribute(visibility,icon.Visible)end
+  icon.Visible=not display and icon:GetAttribute(visibility) or false
   icon.ImageTransparency=display and 1 or icon:GetAttribute(original)
  end
- if not display then return false end
+ if not display then restoreLabel(stand:FindFirstChild("BillboardGui"));return false end
  display:PivotTo(press.CFrame*CFrame.new(row.DisplayOffset)*rotation(row.DisplayRotation))
+ positionLabel(stand,press,display,config)
  return true
 end
 return M

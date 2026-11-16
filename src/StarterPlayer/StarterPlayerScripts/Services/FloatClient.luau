@@ -74,6 +74,8 @@ local function advance(delta: number)
 
 	for _, board in Boards do
 		if not board.gui.Parent then continue end
+		-- 3D exhibit text tracks the model top; legacy board bobbing is separate.
+		if board.gui:GetAttribute("DumbbellExhibitLabel")==true then continue end
 
 		board.gui.StudsOffset = board.offset + lift
 	end

@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-17 — 両Worldの展示1.5倍・モデル上のラベル
+
+登録済みW1全12・W2の10展示を4.8→7.2 studsへ等比拡大し、文字枠下端を実モデル上端から0.6 studs上へ移動。旧画像行の余白を除き、既存UI再適用・浮遊処理による位置の復帰を防止。手持ち寸法と購入判定は維持。副本Editで22実形状・描画を確認し、今回の実Playは未実施。09は追加FBXで対応確定、変換・登録待ち。05は対応未確定。[設定・画像・検証範囲](../reports/World2Dumbbell3D_20261117/EXHIBIT_SCALE_AND_W209.md)。
+
 ## 2026-11-17 — World1ダンベル設備の3D展示
 
 World1のPerStepButtons.1〜12へItemId別3Dを展示。既存ItemIconはImage・Visible・レイアウトを維持してImageTransparency=1とし、価格・説明の位置を保持する。ショップ／インベントリ画像は変更しない。World1DumbbellVisualConfigで展示全長4.8 studsと、手持ち横幅2 studs・厚み倍率を別々に調整可能。小Bodyは追加1倍、大Bodyの厚み上限は暫定1.5倍。新規装備UIは追加しない。[比較画像・調整方法](../reports/World1Dumbbell3D_20261116/REPORT.md)。

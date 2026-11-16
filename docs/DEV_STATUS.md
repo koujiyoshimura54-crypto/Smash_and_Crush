@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-17 — 両Worldの展示1.5倍・モデル上のラベル
+
+登録済みW1全12・W2の10展示を4.8→7.2 studsへ等比拡大し、文字枠下端を実モデル上端から0.6 studs上へ移動。旧画像行の余白を除き、既存UI再適用・浮遊処理による位置の復帰を防止。手持ち寸法と購入判定は維持。副本Editで22実形状・描画を確認し、今回の実Playは未実施。09は追加FBXで対応確定、変換・登録待ち。05は対応未確定。[設定・画像・検証範囲](../reports/World2Dumbbell3D_20261117/EXHIBIT_SCALE_AND_W209.md)。
+
 ## 2026-11-17 — World2 08の指定PNG登録とダンベル素材集約
 
 指定PNGをImage 112266643972428として登録し、World2GameplayConfig.DumbbellImages[8]だけ更新。World1/World2素材189ファイルを許可済み1フォルダーへ移動し、全内容照合した重複ZIP23個とPNG1個を削除。追加のローカル起動を止める指示に従い、画像の実UI描画は未確認。副本Editへ反映、Save/Publishなし。[画像ID・整理結果・検証限界](../reports/World2Dumbbell3D_20261117/UI08_AND_MATERIALS.md)。

@@ -31,6 +31,9 @@ local function copyStyle(target,source)
  end
 end
 function M.Apply(board)
+ -- Registered 3D exhibits already own their compact above-model label layout.
+ -- Reapplying the legacy template would restore its hidden icon gap and offset.
+ if board:GetAttribute("DumbbellExhibitLabel")==true then return true end
  local template=game.ReplicatedStorage:FindFirstChild("DumbbellStandBillboardTemplate")
  if not template then return false end
  copyStyle(board,template)
