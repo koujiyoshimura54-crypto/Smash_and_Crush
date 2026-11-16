@@ -52,6 +52,7 @@ local function attachDumbbell(character, side, hand, itemId, registered)
    descendant.Anchored = false
    descendant.CanCollide = false
    descendant.CanTouch = false
+   descendant.CanQuery = false
    descendant.Massless = true
   end
  end

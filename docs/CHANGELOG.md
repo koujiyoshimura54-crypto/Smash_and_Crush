@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-17 — World2ダンベル確定10種類を副本へ反映
+
+既存World1の原本複製・両手表示を完全ItemIdのまま共用し、World2確定10モデルを登録、設備展示とLobby両手へ反映。05/09の対応と8番UI用PNGのフォルダー許可は未解決。隔離2クライアントPlay289項目、4体型×装着有無の歩行約24 studs/s、実Strength更新、死亡復帰・World往復を確認。未確認の実進行/実端末と、設定/登録ID/復元/画像は[報告](../reports/World2Dumbbell3D_20261117/REPORT.md)。副本の既存編集を保持した未保存Edit、Save/Publishなし。
+
 ## 2026-11-17 — Body検証環境の修正とWorld1 Treadmill接地判定
 
 旧fixtureの筋肉MeshSize欠落を切り分け、同条件で低速1.15から24.04 studs/sへ復帰。実設備・現行Body生成・メモリStrength更新を使う隔離Playで最大Bodyの鍛錬を再確認。World1のジャンプ中判定を支持面確認へ修正し、副本の未保存Editへ反映。World2の12モデル/8番UIはアップロードフォルダ許可と05/09対応確認待ちで未完了。準備差分、実測、未確認事項は[報告](../reports/World2Dumbbell3D_20261117/REPORT.md)。

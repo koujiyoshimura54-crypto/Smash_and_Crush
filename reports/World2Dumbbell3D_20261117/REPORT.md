@@ -1,145 +1,132 @@
 # World2ダンベル・8番UI・Body/Treadmill調査
 
-2026-11-17。**部分完了。World2モデルと8番UIの取り込み・反映は未完了。**
+2026-11-17 再開分。**確定10種類を副本へ実装し隔離Playで検証。05/09の対応と8番UI画像は未完了。**
 
-Bodyの旧検証環境の不備を切り分け、実設備・現行Body生成を使う隔離Playで再測定した。World1 Treadmillのジャンプ中判定に本体の問題を確認し、TrainingManagerだけを副本へ修正反映した。World2はフォルダ許可と05/09の対応確認が必要。未完成の表示コードは実行対象へ入れず、[準備差分](pending/README.md)として保存した。
+対象実値: PlaceId **126576845524886** / UniverseId **10765181857** / Creator User **7467238848**。現在の未保存編集を基準とした。再開時HEAD/origin/mainは **c4a55e5f06e86c9dfc47cfdd320526237bb078d2**。84e999cへ巻き戻していない。前段の原因調査・修正前後の生測定は[BODY_PHASE.md](BODY_PHASE.md)に保存した。
 
-## 対象・保持・変更Full Path
+## 現在の反映内容・Full Path
 
-- 実接続: PlaceId 126576845524886、UniverseId 10765181857、OwnerUser 7467238848。
-- 開始HEAD/origin/main: 84e999ca4825a3b1f4896f308fb950cb0f9e6d46。ブランチ codex/analytics-spawn-items-20261115。
-- 無関係な未追跡 crashes/ は保持し、コミットへ含めない。
-- 開始時526 Sourceをメモリ基準で比較。変更Full Pathは **ServerScriptService.Services.TrainingManager** のみ。ファイルは src/ServerScriptService/Services/TrainingManager.luau。
-- BodyPrototype、WalkSpeed、モデル寸法、W1登録12種と05既存モデル、両手表示、価格・倍率・周期・LV・保存・装備・マージ・売却は変更しない。
-- 副本のPlay、Save/Publish、正本、PR #1、課金・本番保存は実施していない。検証用別Studioは終了。副本は既存編集を保持した未保存Edit。
+- 新規 `ReplicatedStorage.Config.World2DumbbellVisualConfig`。ItemId単位の展示・手持ち調整。
+- 新規 `ServerStorage.World2DumbbellModels.W2_NORMAL_01/02/03/04/06/07/08/10/11/12`。各1原本、GripとネイティブMeshPart/SurfaceAppearanceのみ。
+- 変更 `ServerScriptService.Services.World1DumbbellVisuals`。従来名を保ち、完全ItemIdからW1/W2のConfigと原本を選ぶ共通表示処理。
+- 変更 `ServerScriptService.Systems.Controllers.World1DumbbellExhibitController`。既存1コントローラーで両Worldの設備を監視。
+- 変更 `ServerScriptService.Systems.Controllers.DumbbellDisplayController`。既存装備同期・左右2本の処理を利用。legacy部品のCanQuery=falseを追加。
+- 展示追加 `Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.<1..12>.World2DumbbellExhibit`。対象は上記10番号。05/09は元表示のまま。
+- 前段c4a55e5の変更 `ServerScriptService.Services.TrainingManager` は保持。再開分で追加変更なし。
 
-## World2の入力と対応
+新しい装備システムや表示ループは追加していない。DumbbellServiceの有効な装備ItemIdと既存Lobby判定に追従する。World移動だけで装備品を別Worldの同番号へ変換しない。複製はサーバーが生成し、左右のHandWeldで接続。手持ちBasePartはAnchored=false、CanCollide/CanTouch/CanQuery=false、Massless=true。体型変更時は原本から再作成し倍率を累積させない。
 
-実Downloadsは C:\Users\kouji\Downloads。12 ZIPが存在し、各FBXのSHA256は異なる。原本は変更せず、展開先を Downloads\World2Dumbbells_20261117\originals\<UUID> とした。
+購入・価格・Strength倍率/周期・LV・所有/装備/マージ/売却/保存のSourceは変更していない。World1登録12種類と05の既存原本を維持。新展示だけ元ItemIconを透明化して二重表示を防ぎ、画像ID・レイアウトは保持する。設備の既存84部品の位置/寸法/接触等と37ラベルの文字列は変更なし。
 
-[元モデル12件の実描画](images/source_models.png)と[現行World2 UI](images/icons_before.png)を比較。元FBXをBlenderで描画し、画像から作り直していない。番号順・テクスチャ名では割り当てない。
+## 元ファイル・登録ID
 
-| ItemId | 元ZIPのUUID（tripo_convert_<UUID>.zip） | 確認内容 |
+元ZIPは実Downloads `C:\Users\kouji\Downloads`、展開済み原本は `Downloads\World2Dumbbells_20261117\originals\<UUID>`、作業GLBは同フォルダーのexports。全12元FBXは異なるSHA256。ファイル順やskull_maceという名前だけで割り当てていない。[元モデルの描画比較](images/source_models.png)と[旧設備/UI画像](images/icons_before.png)を照合した。
+
+追加されたモデル用フォルダー権限で10件のアップロードが成功。全件同じ正規所有者へ1回ずつ登録し、再アップロードせず再利用する。ZIP名は `tripo_convert_<UUID>.zip`。
+
+| ItemId | 元ZIPのUUID | Model / Mesh ID |
 |---|---|---|
-| W2_NORMAL_01 | be9de5d1-da96-4257-b9fa-0e9cfc268e96 | 黄・黒の工業型 |
-| W2_NORMAL_02 | 699aff5d-dfc7-47af-8c04-3d2fc97fbd2d | 赤い金具・コンクリート |
-| W2_NORMAL_03 | c29ae88b-713b-40c8-a674-7cc619ae9784 | 赤・鋼のスパイク |
-| W2_NORMAL_04 | 325c88e5-35ce-4599-abbc-d6add5edffa0 | 緑の液体 |
-| W2_NORMAL_05 | 未確定 | 下記髑髏2件との対応待ち |
-| W2_NORMAL_06 | 15b4b34a-ee7b-4724-a23d-840821ad4b01 | 蜘蛛 |
-| W2_NORMAL_07 | 6f4d6c73-89cb-4430-a575-6c6cdf56fdd4 | 鎖・赤い核 |
-| W2_NORMAL_08 | c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5 | 指定の紫水晶・黒い岩 |
-| W2_NORMAL_09 | 未確定 | 現行の目玉と一致するモデル未確認 |
-| W2_NORMAL_10 | 45523401-b6e5-40be-886e-87653b1ca616 | 青い浮遊キューブ |
-| W2_NORMAL_11 | 850c42fe-67c0-4846-9611-d1d1e7b1c6c0 | 双顎 |
-| W2_NORMAL_12 | 1f4b4e93-389d-433a-a119-495af875a4b4 | 金枠・紫の三角結晶 |
+| W2_NORMAL_01 | be9de5d1-da96-4257-b9fa-0e9cfc268e96 | 120423306946269 / 72012182548192 |
+| W2_NORMAL_02 | 699aff5d-dfc7-47af-8c04-3d2fc97fbd2d | 102716104784959 / 117246680201459 |
+| W2_NORMAL_03 | c29ae88b-713b-40c8-a674-7cc619ae9784 | 128085702169072 / 121454316614909 |
+| W2_NORMAL_04 | 325c88e5-35ce-4599-abbc-d6add5edffa0 | 117230570003114 / 128283127982055 |
+| W2_NORMAL_05 | 05/09対応未確定 | 未登録 |
+| W2_NORMAL_06 | 15b4b34a-ee7b-4724-a23d-840821ad4b01 | 76372035088717 / 110179195904955 |
+| W2_NORMAL_07 | 6f4d6c73-89cb-4430-a575-6c6cdf56fdd4 | 79273947117738 / 134262823105301 |
+| W2_NORMAL_08 | c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5 | 127996101926091 / 102402230962981 |
+| W2_NORMAL_09 | 05/09対応未確定 | 未登録 |
+| W2_NORMAL_10 | 45523401-b6e5-40be-886e-87653b1ca616 | 89304737924828 / 107482140752258 |
+| W2_NORMAL_11 | 850c42fe-67c0-4846-9611-d1d1e7b1c6c0 | 115656579181767 / 80759512986628 |
+| W2_NORMAL_12 | 1f4b4e93-389d-433a-a119-495af875a4b4 | 121212954959648 / 115333744093861 |
 
-129491e9-6098-49c1-85c7-bb7dda049030 と d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09 は別モデルだが実描画では両方髑髏。05/09への割当、または目玉の別元ファイルを確認中。消去法で割り当てていない。d359の柄は斜めなので、対応確定後に作業コピーの回転補正も必要。
+実Model/Mesh/**BaseColor・Normal・Roughness・Metallicの全40 ID**、ZIP/FBX/各テクスチャのSHA256、寸法/補正は[ASSETS.json](ASSETS.json)、登録成功記録は[UPLOADS.json](UPLOADS.json)。08は指定の紫水晶＋黒い岩。Model **127996101926091** / Mesh **102402230962981**、4マップは **130992463031571 / 86500659021694 / 86256269074579 / 107419410147538**（上記順）。
 
-作業GLBは12,538〜13,879 triangles、各約4.4〜5.8MB。削減・色変更なし。BaseColor=sRGB、Normal/Roughness/Metallic=Non-Colorで4マップを接続。元FBX・全テクスチャは保持。巨大FBX/GLB/重複素材はGitに含めない。
+BaseColor=sRGB、他3種=Non-Color。元ファイルを保持し、減ポリゴンや色/装飾の変更なし。柄方向X・グリップ中央を原点へ揃える剛体補正だけを作業コピーに適用。約12.5〜13.9k triangles/モデル。巨大FBX/GLB/重複素材はGitへ含めない。登録原本にはScript・外部ジョイント・購入処理を含めない。
 
-### 実際のアップロード拒否
+05/09に残った `129491e9-6098-49c1-85c7-bb7dda049030` と `d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09` は、異なるモデルだが両方髑髏形状。現行09の目玉と対応を確定できず、割当確認待ち。消去法で登録していない。d359は対応確定後に柄の斜め方向の作業コピー補正も必要。
 
-asset:read/writeスコープ付きUniverse GETはHTTP 200。08のGLBをアップロードすると **File not in an approved upload directory** で拒否された。成功したW2アップロードは0件、新Model/Mesh/Texture IDは未取得。拒否ファイルを別の許可済みフォルダへ移す回避はしていない。
+## 手動調整と復元
 
-必要: Studioの Assistant Settings → MCP Permissions → Approved upload directories に **C:\Users\kouji\Downloads\World2Dumbbells_20261117** を追加。Windowsの読み書き権限とは別。
+設定は `ReplicatedStorage.Config.World2DumbbellVisualConfig.Items.W2_NORMAL_XX` の一か所。
 
-実際に読んだ tmp/Dumbbell3D/skills/rbx-permissions/SKILL.md はフォルダ拒否時に “ask the user to approve its directory” とし、“Don't copy or move it yourself.” と指定する。許可確認が未回答のため依存工程を停止。OSのACL拒否や自動承認レビュー拒否ではない。
+| 設定 | 意味・現在値 |
+|---|---|
+| Template / SourceUUID | 登録原本名 / 元ファイル追跡用UUID |
+| DisplayLength | 展示の柄方向X全長、4.8 studs |
+| DisplayOffset | Pressのlocal座標基準、(0,8.4,0) studs |
+| DisplayRotation | 展示local軸回転、degrees |
+| HeldLength | 手持ち柄方向X全長、2 studs（既存Body全体倍率適用前） |
+| HeldThicknessMultiplier | 種類別Y/Z厚み、1。Xへ追加しない |
+| HeldRotation / GripOffset | 手持ちlocal軸回転degrees / グリップ補正studs |
+| BodyThickness | 小Body追加1、大Body追加上限1.5。既存BodyPrototype全体倍率と別 |
 
-[ASSETS.json](ASSETS.json)に12元ZIP、FBX/各マップSHA256、変換情報、確定10 ItemId/未確定2件を記録。実ID欄はnull。登録原本がないためRobloxからのモデル復元はまだできない。元ZIP/GLBはDownloadsに保持。
+例: 08の手首位置だけ下げる場合 `GripOffset=Vector3.new(0,-0.1,0)`。展示幅だけ変える場合 `DisplayLength=5`。横幅を維持して大Body厚みだけ調整する場合 `BodyThickness.MaxMultiplier`。Config変更は**新しいPlay/server開始時**に反映。Editで既にrequireされたModuleのキャッシュは自動更新されない。展示は次のPlayで初期化、未保存Editの見た目も即変更したい場合は最新SourceでのRefreshExhibitが必要。
 
-### 8番UI
+原本復元: [tools/InstallWorld2DumbbellModels.luau](../../tools/InstallWorld2DumbbellModels.luau)を指定副本のEditで実行する。対象Place/Universeをassertし、登録ModelからネイティブMeshPart/SurfaceAppearanceを取得して不足原本だけ復元する。既存原本を上書きせず、登録ID不一致なら停止。PlaceのSave/Publishはしない。原本と上記4 Sourceが揃うと既存コントローラーがPlay時に展示/両手を複製する。復元は正規のasset読込権限が必要。05/09は未登録なので復元対象外。
 
-指定PNG「紫水晶の双頭クリスタルメイス.png」はRGBA 1536×1024、透明画素あり。SHA256はASSETS.json参照。新画像ID未取得・未反映。3Dテクスチャで代用していない。
+## 隔離した実Play
 
-現行 ReplicatedStorage.Config.World2GameplayConfig.DumbbellImages[8] は **101543601215487** のまま。静的にDumbbellItemMasterからInventoryPanelClientの詳細/プレビュー、DumbbellInventoryViewの一覧、MergeShopViewの候補/ダンベル完成結果まで共通参照を追跡。登録後は共通設定1か所を差し替える。Fit/透明背景・レイアウトを変更する必要はない。差替え後UI画像はまだない。
+[VISUAL_PLAY_13.json.gz](VISUAL_PLAY_13.json.gz)は **2クライアント・289項目、失敗0**。PlaceId=0、現行Source39本の許可リスト/構文/禁止API/筋肉15部品MeshSizeと質量一致を**Play前にassert**した。[Sourceハッシュ・依存・禁止API](VISUAL_PLAY_MANIFEST.json)。副本を直接Playしていない。
 
-## ① 筋肉最小Bodyの低速: fixture修正
+実Lobby生成・BodyPrototype/体型適用ACK・MuscleCharacterService・装備Service・表示Controller・実設備形状・TrainingManager・StrengthManager/Calculation/LevelProgressionを通す。保存処理を持つ本番PlayerDataServiceは含めず、現行AddStrengthGain本体をそのまま使うメモリadapter。GamePass/Item/Potion/Aura/Pet/Analyticsは明示した効果0/倍率1/送信なしadapter。本番DataStore・課金・外部送信実装なし。公開環境でBody試作を有効化していない。
 
-前回コード・生データを読み、旧fixtureを現行Sourceで再実行。装着1.1478、非装着1.7248 studs/sを再現した。WalkSpeedは24。前回6.31/1.14と同じ著しい低速だが、非装着値まで一致したとは扱わない。
+確認できたこと:
 
-旧XML生成は筋肉15 MeshPartの公開MeshSizeに相当するXML InitialSizeを保持していなかった。**床・入力・測定時間・体型切替を変えず、この情報だけを補完**。Play前に15部品のMeshSize/質量が副本実値に一致することをassertした再実行では、装着24.0373、非装着23.9832 studs/sになった。
+- W1全12、W2確定10の左右2本、登録原本と展示/手持ちMeshId一致、展示各1つ、安全な部品属性と左右接続。W2の05/09はPendingとしてlegacyを確認し、新モデル合格数に含めない。
+- W2実10 MeshのAssetFetchStatus=Success、ネイティブSurfaceAppearance付き実描画。Editで全4マップの実IDを確認。各マップ単独のHTTP取得やレンダラー内部の使用率は測定していない。
+- 持ち替え、Worldをまたいでも実ItemId維持、Lobby退出/帰還、ロード待ち/復帰、所有数0/復帰、モデル欠落時の部分装着なし/連打再試行なし、復元後持替えで再表示。
+- 実DumbbellStandServiceがWorld2の08 Pressへの接近を検出。実購入は行わずcallbackを検証用に置換。価格・購入成功・マージ・売却の全UI経由操作を通した確認ではない。
+- 4体型×装着有無の歩行/停止/ジャンプ、両Worldの接地鍛錬/退出/空中/資格喪失/復帰、死亡で加算停止・表示残置なし・復帰後再鍛錬。
+- 2クライアント相互の表示。自動試験はW1 ItemIdの独立性も確認。追加観測で一方W2_NORMAL_08、他方W2_NORMAL_12の左右Meshを相手クライアントから取得した。[追加記録](PEER_WORLD2_HANDS.json)。
 
-| 条件 | 非装着 studs/s | 装着 studs/s | 筋肉最小AssemblyMass |
-|---|---:|---:|---:|
-| 旧fixture再現 | 1.7248 | 1.1478 | 3.880802 |
-| 旧fixture + MeshSize保持だけ | 23.9832 | 24.0373 | 3.880802 |
-| 現行生成・配置、安定後3回平均 | 23.9958 | 24.0002 | 3.880802 |
+歩行速度はWalkSpeed=24の既存値を維持し、接地安定後、加速1秒を除いて2秒間の実変位を3回測定。単位studs/s。
 
-根拠: [旧再現](ORIGINAL_FIXTURE_REPLAY.json)、[一要因修正後](ORIGINAL_FIXTURE_SERIALIZED_REPLAY.json)、[現行経路全生データgzip](BODY_FIXED_SERIALIZED.json.gz)。旧テストは装着/非装着の差だけで合否を決め、両方1台でも合格し得た。そのラベルを正常速度の根拠にしない。
+| Body | 非装着3回平均 | W2_NORMAL_08装着3回平均 |
+|---|---:|---:|
+| 通常最小 | 24.0012 | 24.0127 |
+| 通常成長最大 | 23.9886 | 24.0072 |
+| 筋肉最小 | 24.0144 | 24.0030 |
+| 筋肉成長最大 | 23.9916 | 24.0025 |
 
-今回再現した低速は旧fixtureの再構成不備で解消。本体Body、WalkSpeed、ダンベルサイズは修正しない。メッシュ情報欠落と旧生成/切替の組合せでの再現であり、すべての生成経路で必ず起きるとは断定しない。エンジン内部の衝突データの詳細原因までは未確認。
+24試行は23.9562〜24.0572。体型切替後の通常Body再測定23.9801。状態/入力/速度/部品/質量/HipHeightは生データへ記録。今回の装着品はW2_NORMAL_08。Bodyやダンベルを縮小して低速を隠していない。
 
-CreateMeshPartAsync/ApplyMeshによる再生成案では、同じBox指定・MeshSizeでも質量が違った（UpperTorso 38.6884対38.8812、筋肉最小AssemblyMass 3.1854対3.8808）。[その測定](BODY_FIXED_REGENERATED_MESH.json.gz)は比較用で、最終確認に採用しない。[旧切替だけの対照](BODY_LEGACY_TRANSITION.json.gz)も原因を単独再現しなかった。
+実メモリStrength増分は全体型で、1.65秒の3 tickあたりW1非装着+3/08装着+5403、W2非装着+15/08装着+27015。現在の08加算1800と既存台倍率を含む正規計算で、倍率や0.5秒設定は変更していない。加算呼出し数だけでなくStrength/LevelProgress更新を記録した。
 
-## ② 通常成長最大BodyのTreadmill: fixture不備と本体修正を分離
+先行run11はテストがruntimeからSurfaceAppearanceの旧ColorMapプロパティを読み、Plugin capability不足で停止。テストだけをEditでのID照合＋runtime native object/描画確認に変更した。run12は159項目後、退出先が実Lobby床の外で落下/死亡し次のRoot参照が失敗。fixtureだけにLobby範囲外の着地床を追加した。本体の床や接地条件は変更しない。[run11](VISUAL_PLAY_11.json.gz) / [run12](VISUAL_PLAY_12.json.gz)は失敗記録であり合格ではない。
 
-旧fixtureの仮設Areaは20×0.8×24、中心Y=1。足底が帯上端より高く、装着/非装着とも加算0になる結果を再確認。
+run13ログでは意図したW2_04欠落警告1回と、既存W1看板画像119910397965139の読込権限エラーを観測。後者を新W2モデルのエラーと混同しない。新表示ControllerのRuntime Error/Infinite Yieldは観測なし。撮影補助のVector3.ToString誤使用1回は撮影用MCP呼出しだけで、本体Sourceへ入れていない。
 
-実World1 Normal01のAreaは7×15×12、中心Y=12.0000、支持面Y=5.0000。実形状・現行Body生成で、**修正前TrainingManagerでも**通常成長最大BodyのStrengthが1.65秒で非装着+3/装着+6、各3 tick増加した。仮設形状の結果は本体不成立の証拠にならない。
+## 確認画像・端末の限界
 
-ただし実World1ではジャンプ中も足が高さ15のArea内に入りInside=trueとなる本体の問題を再現。World2は既存の支持面・高さ・移動状態判定でfalseだった。
+- [World2全12枠の設備展示](images/world2_exhibits_play.png)。05/09は旧画像、他10枠は新3D。
+- [通常Body・08両手](images/world2_held_normal_08.png) / [通常成長最大Body・08両手](images/world2_held_maximum_08.png)。背景の別Playerと手持ちは別Assembly。体との見た目の重なりは許容。
+- [iPhone 17 Pro相当・横](images/world2_phone_landscape.png) / [13インチiPad Pro M5相当・横](images/world2_tablet_landscape.png)。隔離Playで端末エミュレーションとタッチ操作UIを描画した。実タッチ/スティック操作やFPS/端末負荷を測定した意味ではない。
 
-本体修正は TrainingManager.IsPlayerInsideZone のR15支持面判定をWorld1にも適用。既存XZ範囲を維持し、実設備の上向き支持面をHipHeight+Root半高±0.4 studsで確認。Jump/Jumping/Freefall/垂直速度を除外し、FloorMaterial=Airだけで拒否しない。World2のArea半高による既存許容値は保持。
+副本Editの画面取得が白くなるため、掲載画像は最新Sourceと実設備を移した隔離Playで撮影した。元Studioのカメラ/GUI/端末設定は復元し、白画面を直すために本体を改変していない。
 
-| 同じ実設備・Body条件 | 修正前 | 修正後 |
-|---|---|---|
-| 通常最大/筋肉最小、装着/非装着、W1接地 | 全条件Strength増加 | 同じ増加を維持 |
-| 上記4条件、W1ジャンプ | Inside=true | Inside=false、実加算停止 |
-| W2接地/ジャンプ | 接地のみ有効 | 維持 |
+## 8番UIと残る未確認
 
-[修正前実Play](BODY_BASELINE_SERIALIZED.json.gz)は24チェック中W1ジャンプ4件が失敗。[修正後](BODY_FIXED_SERIALIZED.json.gz)112項目はすべて成立。0.5秒周期・倍率・Strength計算は変更していない。判定範囲の無制限拡大、接地条件の削除はしていない。
+指定PNG `C:\Users\kouji\Downloads\紫水晶の双頭クリスタルメイス.png`（RGBA 1536×1024、透過あり）は、モデル用に許可されたサブフォルダーの外にある。実画像アップロードが **File not in an approved upload directory** で拒否されたため新UI IDなし。OSの読み取り拒否やモデル用フォルダーの再拒否ではない。
 
-## 実Play構成と測定
+ユーザーがこのPNGを許可済み `Downloads\World2Dumbbells_20261117` へ移す、またはDownloadsをアップロード許可する回答待ち。実際に読んだ [rbx-permissions SKILL.md](../../tmp/Dumbbell3D/skills/rbx-permissions/SKILL.md) の “Don't copy or move it yourself.” に従い、拒否されたファイルをこちらで許可フォルダーへ移していない。
 
-本番保存・課金・外部送信実装を含まないローカルPlaceId=0。Source35本の許可リスト/構文/禁止呼出し/部品寸法・質量をPlay前にassertし、失敗ならExecuteMultiplayerTestAsyncへ進まない。
+`ReplicatedStorage.Config.World2GameplayConfig.DumbbellImages[8]` は旧 **101543601215487** のまま。DumbbellItemMaster.Imageを経由するInventoryPanelClientの詳細/プレビュー、DumbbellInventoryView一覧、MergeShopViewの候補/完成結果の参照は静的確認。指定PNGへ差し替えたUI描画は未確認・未完了。3Dテクスチャによる代用なし。
 
-実装を通す経路:
-- LobbySpawnService/Client → BodyPrototype初期化 → MuscleCharacterService → ComparisonService/Clientの体型適用ACK・配置。
-- DumbbellService → 既存サーバー両手表示。W2新モデル未実装のためW2の表示は既存legacy。
-- TrainingManager → StrengthManager → StrengthCalculation → LevelProgression → メモリPlayerDataService。
+その他未完了/未確認:
 
-本番PlayerDataService全体は含めない。現行AddStrengthGain関数本体をそのまま抽出したメモリadapterでStrength/Level/Progressを実更新。GamePass/Item/Potion/Aura/Pet/Analyticsは効果0/倍率1/送信なしの明示adapter。副本の無関係サービスを一括改変しない。
+- 05/09対応確定・2モデル登録・全12新3Dでの確認。
+- 実購入、マージ/売却から装備が変わる全進行、再参加での本番ロード。今回の装備/所有変化は隔離メモリ状態での確認。
+- 実機、公開環境、実データ保存、課金、実キー/ゲームパッド/タッチの操作感、端末FPS、大人数負荷。
+- 全サービス同時の統合Play、手動極大Body。今回の物理マトリクスは通常/筋肉それぞれ成長0/10。
 
-Studio内の実物理PlayでHumanoidへスクリプト入力。実キー/スティックの操作感の合格ではない。接地と垂直速度の連続安定を待ち、加速1秒を除き2秒間の変位を3回測定。全24試行で接地安定を確認。
+## Body2件の原因と修正範囲
 
-| Body | 非装着3回 studs/s | 装着3回 studs/s |
-|---|---|---|
-| 通常最小 | 23.987 / 23.268 / 23.999 | 23.997 / 24.011 / 24.016 |
-| 通常成長最大 | 24.004 / 23.992 / 23.996 | 23.997 / 23.967 / 24.002 |
-| 筋肉最小 | 24.000 / 23.992 / 23.995 | 24.008 / 24.007 / 23.986 |
-| 筋肉成長最大 | 23.991 / 24.002 / 24.054 | 23.992 / 23.998 / 24.000 |
+前段の同条件比較と生データは[BODY_PHASE.md](BODY_PHASE.md)。筋肉最小の旧低速はfixtureのMeshSize/InitialSize欠落を補完しただけで、装着1.1478→24.0373、非装着1.7248→23.9832へ復帰。WalkSpeed/Body/手持ち寸法の本体変更なし。
 
-23.268も除外せず記録。全試行の位置・入力・状態・AssemblyLinearVelocity・質量・HipHeightと、部品の衝突/固定/Massless/接続情報は生データに収録。WalkSpeed増加や閾値緩和で帳尻を合わせていない。
+通常成長最大の旧Treadmill不成立は仮設Area高さ0.8と実設備高さ15の相違。現行生成＋実形状では修正前もStrengthが増えた。一方、World1実設備でジャンプ中にも判定内になる本体不具合を再現し、TrainingManagerのR15支持面/垂直状態確認を修正。World2既存許容値・FloorMaterialだけで拒否しない判定は維持。今回W2モデル装着でも再検証した。fixture修正と本体修正を区別する。
 
-両Worldの実Treadmillで接地増加、ジャンプ/退出停止、再接近、資格喪失/復帰を確認。1.65秒で3 tick、W1非装着+3/装着+6、W2非装着+15/装着+30。W2の実測支持面Y=3.40969。実tick間隔32件は0.5003〜0.5178秒、平均0.5134秒（task.waitの遅延込み）。開始はfixtureから実StartTrainingを呼ぶ方式で、購入/設備入口UIを含む全ゲーム進行の確認ではない。
+## 提出・保持確認
 
-[追加Play](BODY_LIFECYCLE.json)9項目で、2クライアントが互いの01/12左右2本を観測、両Worldの死亡時加算停止・旧表示消去・復帰後2本・再鍛錬を確認。記録内RoundTripという旧ラベルはNormal体型要求後の測定24.0159を指し、そのrun単体で全4体型往復を行った意味ではない。体型列の往復は旧fixture再実行に別途含む。
+[STUDIO_VISUAL_FINAL.json](STUDIO_VISUAL_FINAL.json): 再開時526 Sourceのうち523保持、既知3変更＋新Config1本＝527。Source/Editor一致、予期しない変更/削除0。W1原本12、W2原本10、検証Instance0。副本は未保存Edit。検証用別Studioは終了し、元Studioだけを開いたままにする。Save/Publish・正本・PR #1・force pushは操作していない。無関係なcrashes/をGitへ含めない。
 
-CoreGuiのCreatorType未設定エラーと、旧fixtureの既存看板画像119910397965139の権限エラーを観測。今回のダンベルモデル/TrainingManagerとは区別し、権限回避・既存画像差替えなし。最初の新fixtureはStreaming=falseにより現行配置が完了せず、速度未測定で終了。実副本と同じtrue/64/1024へ揃えた後に測定した。
-
-## 静的確認と未確認
-
-静的確認:
-- W2設備は Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1..12。12 W2 ItemId属性を照合。購入Press/配置/価格説明UIは未変更。
-- 準備差分の構文、完全ItemIdでのWorld分離、W1全12 cloneの横幅2、厚み1〜1.5をEdit内の非親付け複製で確認。古いModule requireキャッシュではなく現行Sourceを新評価。
-- 画像共通参照と08だけの変更予定箇所を確認。既存W1画像は未変更。
-
-未確認・未完了:
-- W2登録12種、Robloxメッシュ/PBR読込、設備展示、両手表示、05/09確定、8番新UI ID/描画。
-- W2新表示での購入/マージ/売却/持替え/退出/再参加/読込失敗/負荷。準備コードを実装済みとは扱わない。
-- 新W2展示・手持ち・UI比較画像、スマホ/タブレット相当、実端末、公開環境、手動操作、本番保存、課金。
-- 本番全サービスを同時に動かす統合Play。隔離では明示依存だけを使用。
-- 通常成長最大を超える手動極大Bodyの修正後Treadmill。旧fixture再実行の手動Body歩行記録は、新支持面判定の合格ではない。
-
-## 再現用ファイルと反映タイミング
-
-tests/build_body_dumbbell_diagnostics.py、BodyDumbbellDiagnostics.server/client/memory.luau、read_body_dumbbell_results.pyを追加。入力SourceSnapshot.json、実設備geometry.json、NativeDonorAudit.jsonは作業PCのtmp/World2Dumbbell3D、W1モデルgeometryはtmp/Dumbbell3Dに保持。他PCでは最新副本から入力再取得が必要で、空checkoutだけでは生成できない。生成物・本番PDS全Source・巨大中間物はGitへ含めない。
-
-例: python tests/build_body_dumbbell_diagnostics.py --variant serialized_mesh --training-fixed --regression --clients 2
-
-生成runnerは隔離検査を通った時だけ別PlaceでPlayする。--training-fixedなしは修正前Snapshot、--training-onlyは通常最大/筋肉最小のTreadmill比較。旧fixtureの一要因再現補助はtests/replay_body_dumbbell_legacy.py。--serialized-meshを付けるとMeshSize保持だけを補完する。
-
-反映したTrainingManagerは新しいPlay/serverから有効。Editで既にrequireされたModuleの戻り値は更新されない。W2の調整予定Full Path・単位・例は[pending/README.md](pending/README.md)。準備差分を適用して現行表示を失わせないよう、現在の表示コードを保持している。
-
-最終[Studio確認](STUDIO_FINAL.json): 526 Source中525保持・1変更、追加/削除0、SourceとEditor一致、検証helper 0、W1登録モデル12保持、W2新Library未作成。副本Edit継続。Gitへの提出は確認できたTrainingManager修正・検証/報告・未適用準備差分に限定する。
+検証再現: `python tests/build_body_dumbbell_diagnostics.py --visuals --variant serialized_mesh --training-fixed --regression --clients 2`。必要な最新Source/geometryは作業PCのtmpへ保持し、Source39本の隔離検査成功時だけPlay。空checkoutには巨大/非公開の作業スナップショットを含めないため、別PCでは副本から再取得が必要。W2形状の読み取りexportはtests/ExportWorld2DumbbellGeometry.luau。pending/は前段の準備履歴で、現在の正本Sourceはsrc/。

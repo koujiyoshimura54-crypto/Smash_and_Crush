@@ -1,7 +1,15 @@
 -- Geometry-only clones shared by the authored stands and existing held display.
 -- No asset/network loads, equipment mutation, purchases, rewards, or data writes.
 local Storage=game:GetService("ServerStorage")
+-- Historical module path retained for World1 callers. Both worlds share the
+-- same clone/attach lifecycle; the full equipped ItemId selects the registry.
 local Config=require(game.ReplicatedStorage.Config.World1DumbbellVisualConfig)
+local World2Config=require(game.ReplicatedStorage.Config.World2DumbbellVisualConfig)
+local function registration(itemId)
+ if typeof(itemId)~="string" then return nil end
+ if Config.Items[itemId] then return Config,Config.Items[itemId],1 end
+ if World2Config.Items[itemId] then return World2Config,World2Config.Items[itemId],2 end
+end
 local M={}
 local warned={}
 local function warnOnce(key,message)
@@ -13,13 +21,15 @@ local function rotation(degrees)
  return CFrame.Angles(math.rad(degrees.X),math.rad(degrees.Y),math.rad(degrees.Z))
 end
 function M.Get(itemId,worldId)
- if worldId~=1 or typeof(itemId)~="string" then return nil end
- return Config.Items[itemId]
+ if worldId~=1 and worldId~=2 then return nil end
+ -- Moving worlds does not itself change the authoritative equipped ItemId.
+ local _,row=registration(itemId)
+ return row
 end
 function M.ThicknessForCharacter(character,itemId)
- local row=Config.Items[itemId]
+ local config,row=registration(itemId)
  local base=row and row.HeldThicknessMultiplier or 1
- local tuning=Config.BodyThickness
+ local tuning=config and config.BodyThickness
  local height=character:GetAttribute("MuscleHeightScale")
  if typeof(height)~="number" or height~=height or not tuning then return base end
  local span=tuning.FullHeightRatio-tuning.BaseHeightRatio
@@ -28,8 +38,8 @@ function M.ThicknessForCharacter(character,itemId)
  return base*(1+(tuning.MaxMultiplier-1)*progress)
 end
 function M.Clone(itemId,kind,bodyScale,thicknessOverride)
- local row=M.Get(itemId,1)
- local library=Storage:FindFirstChild(Config.LibraryName)
+ local config,row,worldId=registration(itemId)
+ local library=config and Storage:FindFirstChild(config.LibraryName)
  local source=row and library and library:FindFirstChild(row.Template)
  if not source or not source:IsA("Model") or not source.PrimaryPart then
   warnOnce(itemId,"Missing registered geometry for "..tostring(itemId));return nil
@@ -78,14 +88,16 @@ function M.Clone(itemId,kind,bodyScale,thicknessOverride)
   end
  end end
  display:SetAttribute("ItemId",itemId)
- display:SetAttribute("World1DumbbellVisual",true)
+ display:SetAttribute("DumbbellVisual",true)
+ display:SetAttribute("World"..worldId.."DumbbellVisual",true)
+ display:SetAttribute("VisualWorldId",worldId)
  return display
 end
 function M.Attach(character,side,hand,itemId,bodyScale,prototype)
  local display=M.Clone(itemId,"Held",bodyScale,M.ThicknessForCharacter(character,itemId))
  if not display then return false end
- local row=Config.Items[itemId]
- local offset=prototype and Vector3.new(0,-hand.Size.Y*.12,0) or Config.HandOffset*(bodyScale or 1)
+ local config,row=registration(itemId)
+ local offset=prototype and Vector3.new(0,-hand.Size.Y*.12,0) or config.HandOffset*(bodyScale or 1)
  local grip=row.GripOffset*(bodyScale or 1)
  display.Name="TrainingDumbbell"..side
  display:PivotTo(hand.CFrame*CFrame.new(offset+grip)*rotation(row.HeldRotation))
@@ -102,22 +114,23 @@ end
 function M.RefreshExhibit(stand,rebuild)
  -- ItemId is authoritative. Never assign models by child order or World2 grade.
  local itemId=stand:GetAttribute("ItemId")
- local row=M.Get(itemId,1)
+ local config,row,worldId=registration(itemId)
  local press=stand:FindFirstChild("Press")
- if not row or not press or not press:IsA("BasePart") then return false end
- local display=stand:FindFirstChild(Config.ExhibitName)
+ if not row or (stand:GetAttribute("WorldId") or 1)~=worldId or not press or not press:IsA("BasePart") then return false end
+ local display=stand:FindFirstChild(config.ExhibitName)
  if display and (rebuild or display:GetAttribute("ItemId")~=itemId) then display:Destroy();display=nil end
  if not display then
   display=M.Clone(itemId,"Exhibit")
-  if display then display.Name=Config.ExhibitName;display.Parent=stand end
+  if display then display.Name=config.ExhibitName;display.Parent=stand end
  end
  local icon=iconFor(stand)
  if icon then
-  if icon:GetAttribute("World1DumbbellOriginalImageTransparency")==nil then
-   icon:SetAttribute("World1DumbbellOriginalImageTransparency",icon.ImageTransparency)
+  local original="World"..worldId.."DumbbellOriginalImageTransparency"
+  if icon:GetAttribute(original)==nil then
+   icon:SetAttribute(original,icon.ImageTransparency)
   end
   -- Keep Visible/layout/Image intact: hiding the row would move price text.
-  icon.ImageTransparency=display and 1 or icon:GetAttribute("World1DumbbellOriginalImageTransparency")
+  icon.ImageTransparency=display and 1 or icon:GetAttribute(original)
  end
  if not display then return false end
  display:PivotTo(press.CFrame*CFrame.new(row.DisplayOffset)*rotation(row.DisplayRotation))

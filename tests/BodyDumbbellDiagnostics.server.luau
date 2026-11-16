@@ -20,6 +20,9 @@ end
 Players.PlayerAdded:Connect(bind);for _,p in Players:GetPlayers()do bind(p)end
 for _,m in {workspace.Treadmills.Normal01,workspace.World2Map.TrainingArea.TreadmillDisplays["01"]}do game.CollectionService:AddTag(m,"TrainingTreadmill")end
 Training.Initialize()
+if RS:GetAttribute("FixtureVisuals")then
+ require(game.ServerScriptService.Services.DumbbellStandService).Start(function(p,id)p:SetAttribute("FixtureStandEntry",id);return true end)
+end
 Placement.Start()
 local function machine(world)return world==2 and workspace.World2Map.TrainingArea.TreadmillDisplays["01"] or workspace.Treadmills.Normal01 end
 local function snapshot(p,world)
@@ -50,6 +53,15 @@ control.OnServerInvoke=function(p,action,v)
   require(game.ServerStorage.BodyPrototype_20261114.PlayableBodyPrototype).EndTransition(p.Character);p.Character.HumanoidRootPart.Anchored=false;return true
  elseif action=="Observer"then for _,other in Players:GetPlayers()do if other~=p then return observer:InvokeClient(other)end end;return {NoPeer=true}
  elseif action=="PeerEquip"then for _,other in Players:GetPlayers()do if other~=p then return Service.EquipDumbbell(other,v)end end;return false
+ elseif action=="PeerWorld"then
+  for _,other in Players:GetPlayers()do if other~=p then other:SetAttribute("CurrentWorld",v);return Placement.MoveToLobby(other,other.Character,v)end end;return false
+ elseif action=="Owned"then Data.Get(p).Data.OwnedDumbbells[v.Id]=v.Count;return true
+ elseif action=="Missing"then
+  local library=game.ServerStorage.World2DumbbellModels
+  if v then library.W2_NORMAL_04.Name="__FixtureMissing"else library.__FixtureMissing.Name="W2_NORMAL_04"end;return true
+ elseif action=="Finish"then
+  local result=_G.__W2VisualPlayResult;assert(result,"No completed visual result")
+  _G.__W2VisualPlayResult=nil;task.delay(.25,function()game.StudioTestService:EndTest(result)end);return true
  end
  error("Unknown fixture action: "..tostring(action))
 end
@@ -57,6 +69,10 @@ local finished=false
 results.OnServerEvent:Connect(function(p,result)
  if finished or p:GetAttribute("FixtureIndex")~=1 then return end
  finished=true;result.Isolation={PlaceId=0,Variant=RS:GetAttribute("FixtureVariant"),ProductionPersistencePresent=false,Players=#Players:GetPlayers(),ActualBodyComparisonHandshake=RS:GetAttribute("FixtureVariant")~="legacy_transition",ActualTrainingAndStrengthCalculation=true,MemoryGainFunctionCopiedVerbatim=true}
- game:GetService("StudioTestService"):EndTest(result)
+ if RS:GetAttribute("FixtureVisuals")then
+  _G.__W2VisualPlayResult=result;RS:SetAttribute("FixtureCaptureReady",true)
+  RS:SetAttribute("FixtureResultPassed",result.Passed);RS:SetAttribute("FixtureResultError",result.Error or result.FixtureFailure or "")
+  task.delay(240,function()if _G.__W2VisualPlayResult then local r=_G.__W2VisualPlayResult;_G.__W2VisualPlayResult=nil;game.StudioTestService:EndTest(r)end end)
+ else game:GetService("StudioTestService"):EndTest(result)end
 end)
 task.delay(600,function()if not finished then finished=true;game:GetService("StudioTestService"):EndTest({Passed=false,Error="Diagnostic timeout"})end end)

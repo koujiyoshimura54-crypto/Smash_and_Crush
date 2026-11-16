@@ -18,6 +18,7 @@ parser.add_argument('--training-fixed',action='store_true')
 parser.add_argument('--regression',action='store_true')
 parser.add_argument('--lifecycle-only',action='store_true')
 parser.add_argument('--training-only',action='store_true')
+parser.add_argument('--visuals',action='store_true',help='Use latest visual sources/geometry and exercise both registries')
 args=parser.parse_args()
 names={
  'ReplicatedStorage.Config':['World1DumbbellVisualConfig','DumbbellItemMaster','DumbbellStandConfig','World2GameplayConfig','TreadmillConfig','SpeedConfig','LevelRequirements','RebirthConfig','TrainingConfig'],
@@ -28,9 +29,14 @@ names={
  'StarterPlayer.StarterPlayerScripts.World':['LobbySpawnClient'],
  'ServerStorage.BodyPrototype_20261114':['PlayableBodyPrototype','PlayableShapeConfig','PlayableComparisonService','ComparisonClient'],
 }
+if args.visuals:
+ names['ReplicatedStorage.Config'].append('World2DumbbellVisualConfig')
+ names['ReplicatedStorage.Modules'].append('DumbbellEquipment')
+ names['ServerScriptService.Services'].append('DumbbellStandService')
+ names['ServerScriptService.Systems.Controllers'].append('World1DumbbellExhibitController')
 paths=[folder+'.'+name for folder,items in names.items() for name in items]+['ServerScriptService.Services.PlayerDataService']
 if args.list_sources:print(json.dumps(paths));raise SystemExit
-bank=json.loads((OUT/'SourceSnapshot.json').read_text(encoding='utf-8'))
+bank=json.loads((OUT/('VisualSourceSnapshot.json' if args.visuals else 'SourceSnapshot.json')).read_text(encoding='utf-8'))
 sources={path:bank[path] for path in paths if not path.endswith('.PlayerDataService')}
 if args.training_fixed:sources['ServerScriptService.Services.TrainingManager']=(ROOT/'src/ServerScriptService/Services/TrainingManager.luau').read_text(encoding='utf-8')
 adapted=[]
@@ -77,8 +83,11 @@ for path,source in sources.items():
 # native mesh metadata and PBR materials from approved registered Models below.
 old=json.loads((ROOT/'tmp/Dumbbell3D/geometry.json').read_text(encoding='utf-8'))
 for row in old:
- if row['Path'] not in ['ServerStorage.World1DumbbellModels','ServerStorage.Templates.DumbbellDisplayTemplate']:continue
+ if row['Path'] not in ['ServerStorage.World1DumbbellModels','ServerStorage.Templates.DumbbellDisplayTemplate']+(['Workspace.PerStepButtons']if args.visuals else []):continue
  model_xml(node(row['Path'].split('.')[:-1]),row['Tree'])
+if args.visuals:
+ for row in json.loads((OUT/'VisualGeometry.json').read_text(encoding='utf-8')):
+  model_xml(node(row['Path'].split('.')[:-1]),row['Tree'])
 geometry=json.loads((OUT/'geometry.json').read_text(encoding='utf-8'))
 audit=json.loads((OUT/'NativeDonorAudit.json').read_text(encoding='utf-8'))
 if args.variant=='serialized_mesh':
@@ -100,6 +109,10 @@ spawn=part('Workspace.GeneratedMap.TrainingArea.SpawnLocation',[20.0581722259521
 prop(spawn,'Neutral','boolean',True);prop(spawn,'Transparency','number',1)
 part('Workspace.World2Map.TrainingArea.Floor',[237,2,169],[14.620012283325196,1,1935.47998046875]+ident)
 part('Workspace.World2Map.TrainingArea.World2LobbySpawn',[13,1,13],[27.981096267700197,2.5,1947.97998046875]+back,collide=False)
+if args.visuals:
+ # Safe ground outside the authored lobby footprint for the exit lifecycle test.
+ # Without this fixture-only pad the scripted exit falls into the void and dies.
+ part('Workspace.FixtureOutsideLobbyLanding',[30,2,30],[170,1,1948]+ident)
 fixture=OUT/'BodyDiagnostics.rbxlx';ET.ElementTree(game).write(fixture,encoding='utf-8',xml_declaration=True)
 native={r['Name']:r for r in geometry['NativeMeshes']}
 for name,row in native.items():row['Mass']=audit[name]['Mass']
@@ -115,7 +128,9 @@ for _,s in game:GetDescendants()do if s:IsA("LuaSourceContainer")then
  actual+=1
 end end
 assert(actual==EXPECTED_COUNT,"ISOLATION FAILED: source count")
-for _,model in game.ServerStorage.World1DumbbellModels:GetChildren()do
+local libraries={game.ServerStorage.World1DumbbellModels}
+if VISUALS then table.insert(libraries,game.ServerStorage.World2DumbbellModels)end
+for _,library in libraries do for _,model in library:GetChildren()do
  local id=model:GetAttribute("SourceModelAssetId")
  if id then
   local package=game.InsertService:LoadAsset(id)
@@ -127,6 +142,9 @@ for _,model in game.ServerStorage.World1DumbbellModels:GetChildren()do
   mesh.Anchored=true;mesh.CanCollide=false;mesh.CanTouch=false;mesh.CanQuery=false;mesh.Massless=true
   mesh.Parent=old.Parent;old:Destroy()
  end
+end end
+if VISUALS then
+ for _,x in workspace:GetDescendants()do if x.Name=="World1DumbbellExhibit"or x.Name=="World2DumbbellExhibit"then x:Destroy()end end
 end
 -- The accepted fixture serializes public MeshSize as XML InitialSize and checks
 -- all 15 masses against Studio. Regeneration variants are diagnostic controls:
@@ -152,6 +170,7 @@ game.ReplicatedStorage:SetAttribute("FixtureMuscleOnly",MUSCLE_ONLY)
 game.ReplicatedStorage:SetAttribute("FixtureRegression",REGRESSION)
 game.ReplicatedStorage:SetAttribute("FixtureLifecycleOnly",LIFECYCLE_ONLY)
 game.ReplicatedStorage:SetAttribute("FixtureTrainingOnly",TRAINING_ONLY)
+game.ReplicatedStorage:SetAttribute("FixtureVisuals",VISUALS)
 print("BODY_DIAGNOSTICS_ISOLATION_CONFIRMED",game.PlaceId,actual)
 local ok,result=pcall(function()return game.StudioTestService:ExecuteMultiplayerTestAsync(CLIENTS,{Name="BodyDumbbellDiagnostics"})end)
 local encoded=game.HttpService:JSONEncode({Success=ok,Result=result})
@@ -160,7 +179,7 @@ print("BODY_DIAGNOSTICS_RESULT_BYTES",#encoded)
 for first=1,#encoded,18000 do print("BODY_DIAGNOSTICS_CHUNK "..math.floor((first-1)/18000+1).." "..encoded:sub(first,first+17999))end
 print("BODY_DIAGNOSTICS_EDIT_RETURNED",game.StudioTestService.EditModeActive)
 '''
-for k,v in {'EXPECTED_PATHS':json.dumps({p:True for p in sources}),'FORBIDDEN':json.dumps(forbidden),'EXPECTED_COUNT':str(len(sources)),'NATIVE':json.dumps(native),'CLIENTS':str(args.clients),'VARIANT':json.dumps(args.variant),'MUSCLE_ONLY':str(args.muscle_only).lower(),'REGRESSION':str(args.regression).lower(),'LIFECYCLE_ONLY':str(args.lifecycle_only).lower(),'TRAINING_ONLY':str(args.training_only).lower()}.items():runner=runner.replace(k,v)
+for k,v in {'EXPECTED_PATHS':json.dumps({p:True for p in sources}),'FORBIDDEN':json.dumps(forbidden),'EXPECTED_COUNT':str(len(sources)),'NATIVE':json.dumps(native),'CLIENTS':str(args.clients),'VARIANT':json.dumps(args.variant),'MUSCLE_ONLY':str(args.muscle_only).lower(),'REGRESSION':str(args.regression).lower(),'LIFECYCLE_ONLY':str(args.lifecycle_only).lower(),'TRAINING_ONLY':str(args.training_only).lower(),'VISUALS':str(args.visuals).lower()}.items():runner=runner.replace(k,v)
 (OUT/'RunBodyDiagnostics.luau').write_text(runner,encoding='utf-8')
 (OUT/'BodyFixtureManifest.json').write_text(json.dumps({'PlaceId':0,'Variant':args.variant,'Clients':args.clients,'TrainingFixed':args.training_fixed,'Regression':args.regression,'LifecycleOnly':args.lifecycle_only,'Sources':{p:hashlib.sha256(s.encode()).hexdigest()for p,s in sources.items()},'GateAdaptedOnlyInFixture':adapted,'PrePlayMeshSizeAndMassAssertions':args.variant=='serialized_mesh','DonorRegenerated':args.variant in ['native','legacy_transition'],'AddStrengthGainSHA256':hashlib.sha256(gain.encode()).hexdigest(),'ForbiddenCalls':forbidden},indent=2),encoding='utf-8')
 print(json.dumps({'Sources':len(sources),'Bytes':fixture.stat().st_size,'Fixture':str(fixture)}))

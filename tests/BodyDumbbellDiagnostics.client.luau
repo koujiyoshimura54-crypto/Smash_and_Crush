@@ -120,6 +120,55 @@ local function treadmill(world,name)
  control:InvokeServer("Stop")
 end
 local ok,err=xpcall(function()
+ if RS:GetAttribute("FixtureVisuals")then
+  body({Body="Normal",Mode="Growth",Stage=0});report.Visuals={}
+  local master=require(RS.Config.DumbbellItemMaster)
+  for world=1,2 do
+   assert(control:InvokeServer("World",world));assert(waitFor(ready,10))
+   local config=require(world==1 and RS.Config.World1DumbbellVisualConfig or RS.Config.World2DumbbellVisualConfig)
+   local stands=require(RS.Config.DumbbellStandConfig).GetFolder(world)
+   for i=1,12 do
+    local id=string.format(world==1 and "NORMAL_%02d"or "W2_NORMAL_%02d",i)
+    equip(id);local c=rig();local list=displays(c);local physical=true;local meshes={};local welds=0
+    for _,display in c:GetChildren()do if display.Name=="TrainingDumbbellRight"or display.Name=="TrainingDumbbellLeft"then
+     for _,part in display:GetDescendants()do
+      if part:IsA("BasePart")then physical=physical and not part.Anchored and not part.CanCollide and not part.CanTouch and not part.CanQuery and part.Massless end
+      -- Map IDs were audited in Edit. Legacy ColorMap reads require Plugin
+      -- capability; runtime checks only the replicated native material object.
+      if part:IsA("MeshPart")then table.insert(meshes,part.MeshId);local sa=part:FindFirstChildOfClass("SurfaceAppearance");check(sa~=nil,"Held native PBR object "..id.." "..display.Name)end
+      if part:IsA("WeldConstraint")and(part.Name=="RightHandWeld"or part.Name=="LeftHandWeld")then welds+=1;check(part.Part0==c:FindFirstChild(part.Name=="RightHandWeld"and "RightHand"or "LeftHand"),"Actual hand connection "..id.." "..display.Name)end
+     end
+    end end
+    check(#list==2 and list[1].ItemId==id and list[2].ItemId==id and physical and welds==2,"Safe independent dual display "..id)
+    local stand=stands[tostring(i)];local exhibit=stand:FindFirstChild(config.ExhibitName)
+    local row={ItemId=id,Registered=config.Items[id]~=nil,HeldMeshes=meshes,Price=master.Get(id).PriceWin,Exhibit=exhibit~=nil}
+    if config.Items[id]then
+     local count=0;for _,x in stand:GetChildren()do if x.Name==config.ExhibitName then count+=1 end end
+     check(count==1 and exhibit:GetAttribute("ItemId")==id and stand.BillboardGui.ItemIcon.ImageTransparency==1,"Unique exhibit "..id)
+     row.ExhibitMesh=exhibit:FindFirstChildWhichIsA("MeshPart",true)and exhibit:FindFirstChildWhichIsA("MeshPart",true).MeshId
+     if row.ExhibitMesh then check(meshes[1]==row.ExhibitMesh and meshes[2]==row.ExhibitMesh,"Shared registered mesh "..id)end
+    else row.Pending=true end
+    table.insert(report.Visuals,row)
+   end
+  end
+  equip("W2_NORMAL_08");local originalId=displays(P.Character)[1].ItemId
+  assert(control:InvokeServer("World",1));assert(waitFor(ready,10));task.wait(.5)
+  check(displays(P.Character)[1].ItemId==originalId and P.Character.TrainingDumbbellRight:GetAttribute("VisualWorldId")==2,"World move preserves actual World2 ItemId")
+  assert(control:InvokeServer("World",2));assert(waitFor(ready,10));task.wait(.5)
+  place(170,1948,2);check(#displays(P.Character)==0,"Lobby exit removes World2 pair")
+  place(28,1948,2);task.wait(.3);check(#displays(P.Character)==2,"Lobby return restores World2 pair")
+  control:InvokeServer("Loaded",false);task.wait(.4);check(#displays(P.Character)==0,"Load pending hides World2 pair")
+  control:InvokeServer("Loaded",true);task.wait(.4);check(#displays(P.Character)==2,"Load ready restores World2 pair")
+  control:InvokeServer("Owned",{Id="W2_NORMAL_08",Count=0});task.wait(.4);check(#displays(P.Character)==0,"Lost ownership hides World2 pair")
+  control:InvokeServer("Owned",{Id="W2_NORMAL_08",Count=1});task.wait(.4);check(#displays(P.Character)==2,"Restored ownership shows World2 pair")
+  control:InvokeServer("Missing",true);equip("W2_NORMAL_04");check(#displays(P.Character)==0 and P.Character.Humanoid.Health>0,"Missing model does not stop character")
+  task.wait(.6);check(#displays(P.Character)==0,"Missing model leaves no partial repeated attachments")
+  control:InvokeServer("Missing",false);equip("W2_NORMAL_03");equip("W2_NORMAL_04");check(#displays(P.Character)==2,"Equip change retries restored model")
+  local stand=workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons["8"];local press=stand.Press
+  place(press.Position.X,press.Position.Z,press.Position.Y+press.Size.Y/2);task.wait(.3)
+  check(P:GetAttribute("FixtureStandEntry")=="W2_NORMAL_08","Actual World2 purchase-pad entry detector")
+  assert(control:InvokeServer("World",1));assert(waitFor(ready,10))
+ end
  local cases={{Body="Normal",Mode="Growth",Stage=0},{Body="Normal",Mode="Growth",Stage=10},{Body="Muscle",Mode="Growth",Stage=0},{Body="Muscle",Mode="Growth",Stage=10}}
  if RS:GetAttribute("FixtureMuscleOnly")then cases={{Body="Muscle",Mode="Growth",Stage=0}}end
  if RS:GetAttribute("FixtureTrainingOnly")then cases={{Body="Normal",Mode="Growth",Stage=10},{Body="Muscle",Mode="Growth",Stage=0}}end
@@ -128,7 +177,7 @@ local ok,err=xpcall(function()
   assert(control:InvokeServer("World",1));assert(waitFor(ready,10));body(setting)
   local name=setting.Body..setting.Stage
   for _,held in {false,true}do
-   equip(held and "NORMAL_01"or "")
+   equip(held and (RS:GetAttribute("FixtureVisuals")and "W2_NORMAL_08"or "NORMAL_01")or "")
    local key=name..(held and "Held"or "Empty")
    report.Snapshots[key]=control:InvokeServer("Snapshot",1)
    if not RS:GetAttribute("FixtureTrainingOnly")then for trial=1,3 do measure(key,trial)end end
@@ -141,6 +190,10 @@ local ok,err=xpcall(function()
   local returned=measure("Normal0AfterBodyRequest",1)
   check(returned.Speed>23 and returned.Speed<25,"Body request completes normal motion",returned.Speed)
   if #game.Players:GetPlayers()>=2 then
+   if RS:GetAttribute("FixtureVisuals")then
+    assert(control:InvokeServer("World",2));assert(control:InvokeServer("PeerWorld",2));assert(waitFor(ready,10));task.wait(1)
+    place(38,1948,2)
+   end
    assert(control:InvokeServer("PeerEquip","NORMAL_12"));task.wait(.5)
    local peer=control:InvokeServer("Observer");local correct=false
    for _,row in peer do if row.Index==1 then correct=#row.Displays==2 and row.Displays[1].ItemId=="NORMAL_01"and row.Displays[2].ItemId=="NORMAL_01"end end
@@ -167,8 +220,14 @@ local ok,err=xpcall(function()
    control:InvokeServer("Stop")
   end
  end
+ if RS:GetAttribute("FixtureVisuals")then
+  assert(control:InvokeServer("World",2));assert(waitFor(ready,10));body({Body="Normal",Mode="Growth",Stage=0});equip("W2_NORMAL_08");place(28,1948,2)
+  report.MeshFetch={}
+  for _,row in report.Visuals do for _,id in row.HeldMeshes do report.MeshFetch[id]=game.ContentProvider:GetAssetFetchStatus(id).Name end end
+ end
 end,debug.traceback)
 report.Error=not ok and err or nil;report.Passed=ok
 for _,c in report.Checks do if not c.Passed then report.Passed=false end end
 input=Vector3.zero;Run:UnbindFromRenderStep("__BodyDumbbellInput");controls:Enable()
+_G.__BodyDumbbellLocalResult=report
 RS:WaitForChild("__BodyDumbbellResults"):FireServer(report)
