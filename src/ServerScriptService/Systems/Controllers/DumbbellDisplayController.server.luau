@@ -4,6 +4,7 @@ local RunService = game:GetService("RunService")
 local ServerStorage = game:GetService("ServerStorage")
 local Service = require(game.ServerScriptService.Services:WaitForChild("DumbbellService"))
 local AreaService = require(game.ServerScriptService.Services:WaitForChild("TrainingLobbyAreaService"))
+local Visuals = require(game.ServerScriptService.Services.World1DumbbellVisuals)
 local template = ServerStorage.Templates:WaitForChild("DumbbellDisplayTemplate")
 
 local DISPLAY_NAMES = {
@@ -31,7 +32,11 @@ local function prototypeScale(character)
  return character:GetAttribute("BodyPrototypeDumbbellScale")
 end
 
-local function attachDumbbell(character, side, hand, itemId)
+local function attachDumbbell(character, side, hand, itemId, registered)
+ if registered then
+  local scale=prototypeScale(character)
+  return Visuals.Attach(character,side,hand,itemId,scale or 1,scale~=nil)
+ end
  local display = template:Clone()
  display.Name = DISPLAY_NAMES[side]
  display:SetAttribute("ItemId", itemId)
@@ -68,6 +73,10 @@ end
 
 local function refreshPlayer(player, force)
  local character = player.Character
+ if player.Parent~=Players then
+  if character then removeVisuals(character) end
+  currentState[player]=nil;return
+ end
  if not character then
   currentState[player] = nil
   player:SetAttribute("InTrainingLobby", false)
@@ -76,32 +85,38 @@ local function refreshPlayer(player, force)
  local inLobby = AreaService.IsInTrainingLobby(player)
  player:SetAttribute("InTrainingLobby", inLobby)
  local itemId = inLobby and Service.GetEquippedDumbbell(player) or nil
- local key = itemId or ""
+ local worldId=player:GetAttribute("CurrentWorld") or 1
+ local registered=Visuals.Get(itemId,worldId)~=nil
+ local rightHand = character:FindFirstChild("RightHand")
+ local leftHand = character:FindFirstChild("LeftHand")
+ local key = (itemId or "")..":"..tostring(worldId)
+ if registered then key=key..":"..tostring(Visuals.ThicknessForCharacter(character,itemId)) end
  local scale=prototypeScale(character)
  if scale then key=key..":"..tostring(scale) end
  if RunService:IsStudio() and game.PlaceId==126576845524886 and character:GetAttribute("BodyPrototypeManaged") then
   key=key..":"..tostring(character:GetAttribute("BodyComparisonRevision"))
  end
- if not force and currentState[player] == key then return end
+ local state=currentState[player]
+ if not force and state and state.Key==key and state.Right==rightHand and state.Left==leftHand then return end
 
  removeVisuals(character)
  currentState[player] = nil
  if not itemId then
-  currentState[player] = ""
+  currentState[player] = {Key=key,Right=rightHand,Left=leftHand}
   return
  end
 
- local rightHand = character:FindFirstChild("RightHand")
- local leftHand = character:FindFirstChild("LeftHand")
  if not rightHand or not leftHand then return end
 
- local rightOk = attachDumbbell(character, "Right", rightHand, itemId)
- local leftOk = attachDumbbell(character, "Left", leftHand, itemId)
+ local rightOk = attachDumbbell(character, "Right", rightHand, itemId,registered)
+ local leftOk = attachDumbbell(character, "Left", leftHand, itemId,registered)
+ -- Missing visual resources never block gameplay or retry every Heartbeat.
+ -- Retry on a real equipment/world/character/body change, or next server start.
+ currentState[player] = {Key=key,Right=rightHand,Left=leftHand}
  if not rightOk or not leftOk then
   removeVisuals(character)
   return
  end
- currentState[player] = key
 end
 
 local function setupPlayer(player)
@@ -110,15 +125,24 @@ local function setupPlayer(player)
   currentState[player] = nil
   task.defer(refreshPlayer, player, true)
  end)
+ player.CharacterRemoving:Connect(function(character)
+  removeVisuals(character);currentState[player]=nil
+ end)
  player:GetAttributeChangedSignal("EquippedDumbbell"):Connect(function()
   task.defer(refreshPlayer, player, true)
+ end)
+ player:GetAttributeChangedSignal("CurrentWorld"):Connect(function()
+  task.defer(refreshPlayer,player,true)
  end)
  if player.Character then task.defer(refreshPlayer, player, true) end
 end
 
 Players.PlayerAdded:Connect(setupPlayer)
 for _, player in ipairs(Players:GetPlayers()) do setupPlayer(player) end
-Players.PlayerRemoving:Connect(function(player) currentState[player] = nil end)
+Players.PlayerRemoving:Connect(function(player)
+ if player.Character then removeVisuals(player.Character) end
+ currentState[player] = nil
+end)
 
 RunService.Heartbeat:Connect(function(dt)
  elapsed += dt

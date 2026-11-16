@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-17 — World1ダンベル3D展示と装備連動
+
+指定ZIPの11モデルを登録し、05の既存モデルと合わせて設備展示・Lobby両手表示へ接続。横幅を維持し、小Bodyの厚み追加は1倍。大Bodyの厚み上限は暫定1.5倍とした。画像ID・価格・報酬・装備判定・保存は維持。比較画像、アセットID、隔離Playと未確認事項は[報告](../reports/World1Dumbbell3D_20261116/REPORT.md)へ記録。
+
 ## 2026-11-16 — World1常設動く歩道の確定仕様
 
 搬送12 studs/sへ正規の方向・アナログ歩行速度を加算し、旧1.5倍固定を撤回。開始を固定経路の5 studsへ短縮。矢印0.5／流速4／幅3倍、搬送12をWorld1WalkwayConfigへ集約。歩行Coreアニメーションへ搬送速度を反映しない。保存処理を含まない専用Placeで隔離検査後に実Play測定し、模擬回帰と未確認の統合操作を区別した。[報告](../reports/World1Walkway_20261116/REPORT.md)。

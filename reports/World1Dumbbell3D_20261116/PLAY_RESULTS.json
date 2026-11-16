@@ -1,0 +1,774 @@
+{
+  "Run": "Native7, width 2 / thickness 3 (before final sizing feedback)",
+  "Result": {
+    "Success": true,
+    "Result": {
+      "RawAssetFetchObservation": {
+        "Other": 44,
+        "Success": 11,
+        "TextureMapsRequireVisualReview": true
+      },
+      "Checks": [
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_01",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_01",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_01",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_01",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_02",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_02",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_02",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_02",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_03",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_03",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_03",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_03",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_04",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_04",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_04",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_04",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 14
+          },
+          "Name": "Equipped NORMAL_05",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_05",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_05",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_05",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_06",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_06",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_06",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_06",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_07",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_07",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_07",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_07",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_08",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_08",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_08",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_08",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_09",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_09",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_09",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_09",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_10",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_10",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_10",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_10",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_11",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_11",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_11",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_11",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Safe": true,
+            "Parts": 4
+          },
+          "Name": "Equipped NORMAL_12",
+          "Passed": true
+        },
+        {
+          "Name": "Nonphysical NORMAL_12",
+          "Passed": true
+        },
+        {
+          "Name": "Visual does not mutate profile NORMAL_12",
+          "Passed": true
+        },
+        {
+          "Name": "Unique matching exhibit NORMAL_12",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "After": {
+              "Mass": 13.66592788696289,
+              "JumpRise": 7.266324520111084,
+              "Speed": 22.08896229296004,
+              "WalkSpeed": 24,
+              "Name": "NormalBodyHeld"
+            },
+            "Before": {
+              "Mass": 13.66592788696289,
+              "JumpRise": 7.266324520111084,
+              "Speed": 21.033812315135368,
+              "WalkSpeed": 24,
+              "Name": "NoDumbbellsAfterAssetLoad"
+            }
+          },
+          "Name": "Held leaves walk speed and assembly mass unchanged",
+          "Passed": false
+        },
+        {
+          "Name": "Held leaves jump unchanged",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Success": 11
+          },
+          "Name": "Client fetched 11 registered meshes",
+          "Passed": true
+        },
+        {
+          "Details": [
+            {
+              "Displays": [
+                {
+                  "Name": "TrainingDumbbellLeft",
+                  "ItemId": "NORMAL_12"
+                },
+                {
+                  "Name": "TrainingDumbbellRight",
+                  "ItemId": "NORMAL_12"
+                }
+              ],
+              "Index": 2
+            },
+            {
+              "Displays": [
+                {
+                  "Name": "TrainingDumbbellRight",
+                  "ItemId": "NORMAL_01"
+                },
+                {
+                  "Name": "TrainingDumbbellLeft",
+                  "ItemId": "NORMAL_01"
+                }
+              ],
+              "Index": 1
+            }
+          ],
+          "Name": "Second client sees first player's equipped model",
+          "Passed": true
+        },
+        {
+          "Name": "First client sees independent second player",
+          "Passed": true
+        },
+        {
+          "Name": "Lobby exit removes both",
+          "Passed": true
+        },
+        {
+          "Name": "Lobby return restores current equipment",
+          "Passed": true
+        },
+        {
+          "Name": "Load pending hides safely",
+          "Passed": true
+        },
+        {
+          "Name": "Load ready restores",
+          "Passed": true
+        },
+        {
+          "Name": "Unowned item has no held display",
+          "Passed": true
+        },
+        {
+          "Name": "World2 preserves legacy model",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "HeldLength": 1.9999995231628418,
+            "Dimensions": {
+              "Height": 8.47195553779602,
+              "Hip": 3.9160876274108887,
+              "Scale": 1
+            }
+          },
+          "Name": "Body scale absolute NormalGrowth10",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Held": {
+              "Mass": 83.87263488769531,
+              "JumpRise": 7.266331195831299,
+              "Speed": 23.981985781704214,
+              "WalkSpeed": 24,
+              "Name": "NormalGrowth10"
+            },
+            "Baseline": {
+              "Mass": 83.87263488769531,
+              "JumpRise": 7.266331195831299,
+              "Speed": 23.46816741899173,
+              "WalkSpeed": 24,
+              "Name": "NormalGrowth10_NoDumbbells"
+            }
+          },
+          "Name": "Body motion compared with no dumbbells NormalGrowth10",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "BaselineTicks": 0,
+            "Started": false,
+            "TickDifference": 0,
+            "BaselineStarted": false,
+            "Pose": {
+              "Health": 100,
+              "Root": "49.999786376953125, 5.8965744972229, 0",
+              "Hip": 3.9160876274108887,
+              "Feet": {
+                "LeftFoot": {
+                  "Y": 1.8744885921478271,
+                  "ZoneY": 0.8744885921478271,
+                  "SizeY": 0.8036507964134216
+                },
+                "RightFoot": {
+                  "Y": 1.9143106937408447,
+                  "ZoneY": 0.9143106937408447,
+                  "SizeY": 0.8036712408065796
+                }
+              },
+              "Inside": false
+            }
+          },
+          "Name": "TrainingManager unchanged with held NormalGrowth10",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "HeldLength": 1.0000001192092896,
+            "Dimensions": {
+              "Height": 4.498787581920624,
+              "Hip": 1.6902514696121216,
+              "Scale": 0.5
+            }
+          },
+          "Name": "Body scale absolute MuscleGrowth0",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Held": {
+              "Mass": 3.8808019161224365,
+              "JumpRise": 7.266020774841309,
+              "Speed": 0.6087212116108042,
+              "WalkSpeed": 24,
+              "Name": "MuscleGrowth0"
+            },
+            "Baseline": {
+              "Mass": 3.8808019161224365,
+              "JumpRise": 7.261098384857178,
+              "Speed": 1.755433097612655,
+              "WalkSpeed": 24,
+              "Name": "MuscleGrowth0_NoDumbbells"
+            }
+          },
+          "Name": "Body motion compared with no dumbbells MuscleGrowth0",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Gain": 1,
+            "BaselineTicks": 2,
+            "Started": true,
+            "TickDifference": 2,
+            "BaselineStarted": true,
+            "Pose": {
+              "Health": 100,
+              "Root": "49.999786376953125, 3.089890956878662, 0",
+              "Hip": 1.6902514696121216,
+              "Feet": {
+                "LeftFoot": {
+                  "Y": 1.1666665077209473,
+                  "ZoneY": 0.16666650772094727,
+                  "SizeY": 0.3473658561706543
+                },
+                "RightFoot": {
+                  "Y": 1.1630651950836182,
+                  "ZoneY": 0.16306519508361816,
+                  "SizeY": 0.3473658561706543
+                }
+              },
+              "Inside": true
+            }
+          },
+          "Name": "TrainingManager unchanged with held MuscleGrowth0",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "HeldLength": 1.500000238418579,
+            "Dimensions": {
+              "Height": 6.4078244268894196,
+              "Hip": 2.739269256591797,
+              "Scale": 0.75
+            }
+          },
+          "Name": "Body scale absolute MuscleGrowth10",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Held": {
+              "Mass": 19.709970474243164,
+              "JumpRise": 7.269163370132446,
+              "Speed": 22.080685293205093,
+              "WalkSpeed": 24,
+              "Name": "MuscleGrowth10"
+            },
+            "Baseline": {
+              "Mass": 19.709970474243164,
+              "JumpRise": 7.269163370132446,
+              "Speed": 21.89163516655454,
+              "WalkSpeed": 24,
+              "Name": "MuscleGrowth10_NoDumbbells"
+            }
+          },
+          "Name": "Body motion compared with no dumbbells MuscleGrowth10",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Gain": 1,
+            "BaselineTicks": 2,
+            "Started": true,
+            "TickDifference": 2,
+            "BaselineStarted": true,
+            "Pose": {
+              "Health": 100,
+              "Root": "49.999786376953125, 4.139711380004883, 0",
+              "Hip": 2.739269256591797,
+              "Feet": {
+                "LeftFoot": {
+                  "Y": 1.2195967435836792,
+                  "ZoneY": 0.2195967435836792,
+                  "SizeY": 0.48469656705856323
+                },
+                "RightFoot": {
+                  "Y": 1.2323286533355713,
+                  "ZoneY": 0.2323286533355713,
+                  "SizeY": 0.48469656705856323
+                }
+              },
+              "Inside": true
+            }
+          },
+          "Name": "TrainingManager unchanged with held MuscleGrowth10",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "HeldLength": 6.000000953674316,
+            "Dimensions": {
+              "Height": 50.156802237033844,
+              "Hip": 24.517478942871094,
+              "Scale": 3
+            }
+          },
+          "Name": "Body scale absolute NormalManual0",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Held": {
+              "Mass": 12604.970703125,
+              "JumpRise": 7.266317367553711,
+              "Speed": 23.91273895656155,
+              "WalkSpeed": 24,
+              "Name": "NormalManual0"
+            },
+            "Baseline": {
+              "Mass": 12604.970703125,
+              "JumpRise": 7.26915168762207,
+              "Speed": 23.999918908437092,
+              "WalkSpeed": 24,
+              "Name": "NormalManual0_NoDumbbells"
+            }
+          },
+          "Name": "Body motion compared with no dumbbells NormalManual0",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Gain": 1,
+            "BaselineTicks": 2,
+            "Started": true,
+            "TickDifference": 2,
+            "BaselineStarted": true,
+            "Pose": {
+              "Health": 100,
+              "Root": "49.999786376953125, 26.497474670410156, 0",
+              "Hip": 24.517478942871094,
+              "Feet": {
+                "LeftFoot": {
+                  "Y": 6.095047950744629,
+                  "ZoneY": 5.095047950744629,
+                  "SizeY": 10.062736511230469
+                },
+                "RightFoot": {
+                  "Y": 6.338324069976807,
+                  "ZoneY": 5.338324069976807,
+                  "SizeY": 10.062992095947266
+                }
+              },
+              "Inside": true
+            }
+          },
+          "Name": "TrainingManager unchanged with held NormalManual0",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "HeldLength": 2,
+            "Dimensions": {
+              "Height": 5.015680313110352,
+              "Hip": 1.9580438137054443,
+              "Scale": 1
+            }
+          },
+          "Name": "Body scale absolute NormalGrowth0",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Held": {
+              "Mass": 13.66592788696289,
+              "JumpRise": 7.266324520111084,
+              "Speed": 19.927638003631074,
+              "WalkSpeed": 24,
+              "Name": "NormalGrowth0"
+            },
+            "Baseline": {
+              "Mass": 13.66592788696289,
+              "JumpRise": 7.266324520111084,
+              "Speed": 20.149648128052164,
+              "WalkSpeed": 24,
+              "Name": "NormalGrowth0_NoDumbbells"
+            }
+          },
+          "Name": "Body motion compared with no dumbbells NormalGrowth0",
+          "Passed": true
+        },
+        {
+          "Details": {
+            "Gain": 1,
+            "BaselineTicks": 2,
+            "Started": true,
+            "TickDifference": 2,
+            "BaselineStarted": true,
+            "Pose": {
+              "Health": 100,
+              "Root": "49.999786376953125, 3.9375600814819336, 0",
+              "Hip": 1.9580438137054443,
+              "Feet": {
+                "LeftFoot": {
+                  "Y": 1.4065756797790527,
+                  "ZoneY": 0.40657567977905273,
+                  "SizeY": 0.8036507964134216
+                },
+                "RightFoot": {
+                  "Y": 1.4265021085739136,
+                  "ZoneY": 0.4265021085739136,
+                  "SizeY": 0.8036712408065796
+                }
+              },
+              "Inside": true
+            }
+          },
+          "Name": "TrainingManager unchanged with held NormalGrowth0",
+          "Passed": true
+        },
+        {
+          "Name": "Existing stand entrance detector still fires",
+          "Passed": true
+        },
+        {
+          "Name": "Missing resource allows gameplay without partial attachment",
+          "Passed": true
+        },
+        {
+          "Name": "Missing resource does not halt character",
+          "Passed": true
+        },
+        {
+          "Name": "Real equip change retries restored resource",
+          "Passed": true
+        },
+        {
+          "Name": "Death/respawn leaves exactly two new displays",
+          "Passed": true
+        },
+        {
+          "Name": "Repeated lobby transitions never double attach",
+          "Passed": true
+        }
+      ],
+      "Passed": false,
+      "Isolation": {
+        "Players": 2,
+        "PlaceId": 0,
+        "ProductionPersistencePresent": false,
+        "FixtureBodyGateAdapted": true
+      },
+      "Measurements": [
+        {
+          "Mass": 13.66592788696289,
+          "JumpRise": 7.266324996948242,
+          "Speed": 23.933991808946338,
+          "WalkSpeed": 24,
+          "Name": "NoDumbbells"
+        },
+        {
+          "Mass": 13.66592788696289,
+          "JumpRise": 7.266324520111084,
+          "Speed": 21.033812315135368,
+          "WalkSpeed": 24,
+          "Name": "NoDumbbellsAfterAssetLoad"
+        },
+        {
+          "Mass": 13.66592788696289,
+          "JumpRise": 7.266324520111084,
+          "Speed": 22.08896229296004,
+          "WalkSpeed": 24,
+          "Name": "NormalBodyHeld"
+        },
+        {
+          "Mass": 83.87263488769531,
+          "JumpRise": 7.266331195831299,
+          "Speed": 23.981985781704214,
+          "WalkSpeed": 24,
+          "Name": "NormalGrowth10"
+        },
+        {
+          "Mass": 83.87263488769531,
+          "JumpRise": 7.266331195831299,
+          "Speed": 23.46816741899173,
+          "WalkSpeed": 24,
+          "Name": "NormalGrowth10_NoDumbbells"
+        },
+        {
+          "Mass": 3.8808019161224365,
+          "JumpRise": 7.266020774841309,
+          "Speed": 0.6087212116108042,
+          "WalkSpeed": 24,
+          "Name": "MuscleGrowth0"
+        },
+        {
+          "Mass": 3.8808019161224365,
+          "JumpRise": 7.261098384857178,
+          "Speed": 1.755433097612655,
+          "WalkSpeed": 24,
+          "Name": "MuscleGrowth0_NoDumbbells"
+        },
+        {
+          "Mass": 19.709970474243164,
+          "JumpRise": 7.269163370132446,
+          "Speed": 22.080685293205093,
+          "WalkSpeed": 24,
+          "Name": "MuscleGrowth10"
+        },
+        {
+          "Mass": 19.709970474243164,
+          "JumpRise": 7.269163370132446,
+          "Speed": 21.89163516655454,
+          "WalkSpeed": 24,
+          "Name": "MuscleGrowth10_NoDumbbells"
+        },
+        {
+          "Mass": 12604.970703125,
+          "JumpRise": 7.266317367553711,
+          "Speed": 23.91273895656155,
+          "WalkSpeed": 24,
+          "Name": "NormalManual0"
+        },
+        {
+          "Mass": 12604.970703125,
+          "JumpRise": 7.26915168762207,
+          "Speed": 23.999918908437092,
+          "WalkSpeed": 24,
+          "Name": "NormalManual0_NoDumbbells"
+        },
+        {
+          "Mass": 13.66592788696289,
+          "JumpRise": 7.266324520111084,
+          "Speed": 19.927638003631074,
+          "WalkSpeed": 24,
+          "Name": "NormalGrowth0"
+        },
+        {
+          "Mass": 13.66592788696289,
+          "JumpRise": 7.266324520111084,
+          "Speed": 20.149648128052164,
+          "WalkSpeed": 24,
+          "Name": "NormalGrowth0_NoDumbbells"
+        }
+      ]
+    }
+  }
+}

@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-17 — World1ダンベル設備の3D展示
+
+World1のPerStepButtons.1〜12へItemId別3Dを展示。既存ItemIconはImage・Visible・レイアウトを維持してImageTransparency=1とし、価格・説明の位置を保持する。ショップ／インベントリ画像は変更しない。World1DumbbellVisualConfigで展示全長4.8 studsと、手持ち横幅2 studs・厚み倍率を別々に調整可能。小Bodyは追加1倍、大Bodyの厚み上限は暫定1.5倍。新規装備UIは追加しない。[比較画像・調整方法](../reports/World1Dumbbell3D_20261116/REPORT.md)。
+
 ## 2026-11-16 — World1常設動く歩道の独立表示
 
 ReplicatedStorage.Config.World1WalkwayConfigが常設側だけのWidthMultiplier=3／Transparency=0.5／ArrowSpeed=4 studs/sを持つ。実幅2.364→7.093studs、前後1.514・線幅0.34・厚み0.045を保持。22組の両腕が一体で移動・循環し、間隔3.5 studsを目安に循環長を均等割りする。入力・搬送速度とは独立し、静止中も流れる。床・設備判定をキャッシュし、毎フレーム部品生成や全経路Raycastをしない。
