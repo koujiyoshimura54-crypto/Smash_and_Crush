@@ -2,6 +2,15 @@ local Players=game:GetService("Players")
 local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
 local Data=require(game.ServerScriptService.Services.PlayerDataService)
 local Config=require(game.ServerScriptService.Config:WaitForChild("MuscleScaleConfig"))
+local Prototype
+if game:GetService("RunService"):IsStudio() and game.PlaceId==126576845524886 then
+ local folder=game.ServerStorage:FindFirstChild("BodyPrototype_20261114")
+ if folder and folder:GetAttribute("Enabled")==true then
+  local ok,result=pcall(function()return require(folder.PlayableBodyPrototype)end)
+  if ok and type(result.ApplyStage)=="function" then Prototype=result
+  else warn("[BodyPrototype] Growth module unavailable; keeping normal body") end
+ end
+end
 local bases=setmetatable({}, {__mode="k"})
 local appliedStage=setmetatable({}, {__mode="k"})
 local PART_NAMES={}
@@ -11,7 +20,12 @@ local function scalePosition(cf,scale)
 end
 local function prepare(player,character)
  local humanoid=character:WaitForChild("Humanoid",10)
- if not humanoid then return end
+ if not humanoid or not Placement.IsCharacterCurrent(player,character) then return end
+ if Prototype and character:GetAttribute("BodyPrototypeActive") then
+  bases[character]={Humanoid=humanoid,Prototype=true}
+  appliedStage[character]=nil
+  return
+ end
  if humanoid.RigType~=Enum.HumanoidRigType.R15 then
   warn("MuscleCharacterService skipped non-R15 character for "..player.Name)
   character:SetAttribute("MuscleScaleReady",true)
@@ -20,6 +34,7 @@ local function prepare(player,character)
  local partData={}
  for _,name in ipairs(PART_NAMES) do
   local part=character:WaitForChild(name,10)
+  if not Placement.IsCharacterCurrent(player,character) then return end
   if not part or not part:IsA("BasePart") then
    warn("MuscleCharacterService missing "..name.." for "..player.Name)
    return
@@ -45,7 +60,7 @@ end
 local function apply(player)
  local character=player.Character
  local base=character and bases[character]
- if not base then return end
+ if not base or not Placement.IsCharacterCurrent(player,character) then return end
  -- Attributes trigger refreshes; the loaded server profile is authoritative.
  local session=Data.Get(player)
  local level=Data.GetLevelState(player)
@@ -53,6 +68,14 @@ local function apply(player)
  local selected=session.Data.SelectedSizeTier
  local stage=typeof(selected)=="number" and selected%1==0 and selected>=1 and selected<=Config.MAX_STAGE and selected or Config.GetMuscleStage(level)
  if appliedStage[character]==stage then return end
+ if base.Prototype then
+  if Prototype.ApplyStage(character,stage) then
+   appliedStage[character]=stage
+   character:SetAttribute("MuscleScaleReady",true)
+   Placement.OnScaleApplied(player,character)
+  end
+  return
+ end
  appliedStage[character]=stage
  local scaleHeight=Config.GetHeightScale(stage)
  base.Humanoid.HipHeight=base.HipHeight*scaleHeight
@@ -79,12 +102,12 @@ local function setup(player)
  local function onCharacter(character)
   local readyConnection,removedConnection
   local function ready()
-   if not character:GetAttribute("SpawnEngineReady") or player.Character~=character then return end
+   if not character:GetAttribute("SpawnEngineReady") or not Placement.IsCharacterCurrent(player,character) then return end
    if readyConnection then readyConnection:Disconnect();readyConnection=nil end
    if removedConnection then removedConnection:Disconnect();removedConnection=nil end
    task.spawn(function()
     prepare(player,character)
-    if player.Character==character then
+    if Placement.IsCharacterCurrent(player,character) then
      apply(player)
      -- A missing/non-R15 rig still releases the loader using its actual dimensions.
      if not bases[character] then character:SetAttribute("MuscleScaleReady",true) end
@@ -101,6 +124,12 @@ local function setup(player)
   ready()
  end
  player.CharacterAdded:Connect(onCharacter)
+ if Prototype then
+  player.CharacterRemoving:Connect(function(character)
+   Prototype.Release(character)
+   bases[character]=nil;appliedStage[character]=nil
+  end)
+ end
  player:GetAttributeChangedSignal("Level"):Connect(function() apply(player) end)
  player:GetAttributeChangedSignal("SelectedSizeTier"):Connect(function() local character=player.Character;if character then appliedStage[character]=nil end;apply(player) end)
  if player.Character then onCharacter(player.Character) end
@@ -109,6 +138,7 @@ Players.PlayerAdded:Connect(setup)
 Players.PlayerRemoving:Connect(function(player)
  local character=player.Character
  if character then
+  if Prototype then Prototype.Release(character) end
   bases[character]=nil
   appliedStage[character]=nil
  end

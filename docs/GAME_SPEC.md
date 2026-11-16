@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-16 — 副本限定の操作可能な筋肉Body試作（未採用）
+
+`IsStudio()`・副本PlaceId 126576845524886・`ServerStorage.BodyPrototype_20261114`のEnabled=trueのときだけ、現在の生成経路で首から下を専用Bodyへ交換する。本人Head／顔／髪／肌色を保持し、黒い仮短パン、専用の絶対寸法によるLV1〜140成長を使用。通常Bodyと通常成長Config・バランス・保存形式は保持。Enabled=falseで次のPlayは通常Bodyへ戻る。終了時true、未保存Edit。正式採用ではなく、外観の判断と未検証事項が残る。[比較画像・切替・検証範囲](../reports/BodyPlayablePrototype_20261116.md)。
+
 ## 2026-11-16 — 歩行音を接地中の実移動へ限定
 
 独自歩行音とRoblox標準Running音は、生存・接地・移動入力に加え、Rootの短時間の水平純変位で再生を判定する。停止・空中・死亡・配置変更時は停止し、揺れへのヒステリシスを設ける。入力端末による条件分岐なし。Strength加算音・SE/BGM音量・ゲーム進行は維持。通常/最大Bodyの隔離実Playで再生状態を確認し、聴感と実端末操作は未確認。[Full Path・条件・検証範囲](../reports/MovementSound_20261116.md)。

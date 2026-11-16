@@ -106,6 +106,10 @@ local function living(player, character)
 	return root, hum
 end
 
+function M.IsCharacterCurrent(player, character)
+ return living(player,character)~=nil
+end
+
 local function clearance(character, root, hum)
 	local height = hum.HipHeight + root.Size.Y / 2
 	if hum.RigType == Enum.HumanoidRigType.R6 then
@@ -281,6 +285,24 @@ function M.LoadCharacter(player, expectedCharacter, expectedRequest)
   load.Request=load.Request or characterRequests[character] or M.CancelPending(player)
   if not M.IsCurrent(player,load.Request) then return false end
   characterRequests[character]=load.Request
+  -- Prototype gate precedes require, model creation, or any avatar mutation.
+  if game:GetService("RunService"):IsStudio() and game.PlaceId==126576845524886 then
+   local folder=game.ServerStorage:FindFirstChild("BodyPrototype_20261114")
+   if folder and folder:GetAttribute("Enabled")==true then
+    local function valid()
+     return current() and M.IsCurrent(player,load.Request) and living(player,character)~=nil
+    end
+    if not valid() then return false end
+    local success,applied,why=pcall(function()
+     return require(folder.PlayableBodyPrototype).Apply(character,valid)
+    end)
+    if not valid() then return false end
+    if not success or not applied then
+     warn("[BodyPrototype] Kept normal body: "..tostring(success and why or applied))
+    end
+   end
+  end
+  if not current() or not M.IsCurrent(player,load.Request) or not living(player,character) then return false end
   character:SetAttribute("SpawnEngineReady",true)
   if not character:GetAttribute("MuscleScaleReady") then
    local ready=Instance.new("BindableEvent");load.Wake=ready

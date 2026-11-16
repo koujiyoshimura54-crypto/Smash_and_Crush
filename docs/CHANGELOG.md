@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-16 — 副本限定の筋肉Body試作を継続利用可能に
+
+現行Lobby生成へ3条件付きのBody組立と専用成長を統合。本人の顔・髪を保持し、仮短パン・部位別寸法・HipHeight・握りを調整。実Playと構造／失敗注入を区別して検証し、補助を除去。試作ON・未保存Editで残した。通常Body／成長Config／保存・バランス不変更、正式採用・Save／Publishなし。[報告と比較画像](../reports/BodyPlayablePrototype_20261116.md)。
+
 ## 2026-11-16 — 歩行音の実変位判定
 
 MovementSoundClientに接地中の水平純変位、開始/継続閾値、配置変更後の待機、即時停止、Character交代時の接続解除を実装。標準Runningにも同じ停止条件を適用し、音量は保持。通常/最大Bodyの実Playによる再生状態と、聴感・実端末の未確認を区別。補助除去・既存編集保持・副本未保存Edit。[検証と音量一覧](../reports/MovementSound_20261116.md)。
