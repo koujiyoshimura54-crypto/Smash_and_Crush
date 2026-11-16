@@ -1,8 +1,10 @@
 # World2ダンベル・8番UI・Body/Treadmill調査
 
-2026-11-17 更新。**World1全12・World2登録10種類の展示を1.5倍にし、テキストをモデル上部へ変更。09はユーザー指定の追加FBXで対応確定、変換・登録は未完了。05は対応未確定。8番UI画像は登録・共通設定反映済み、実UI画面描画は未確認。**
+2026-11-17 更新。**05の髑髏・09の目玉を登録し、World2全12種類の3D展示が副本Editに揃った。World1/World2展示全長7.2 studs、テキストはモデル上部。05/09は左右手持ちのEdit接続・描画確認済み、実Playは未実施。8番UI画像の実インベントリ/マージ画面描画は未確認。**
 
-最新の[展示サイズ・上方ラベル・09入力・確認画像と未確認範囲](EXHIBIT_SCALE_AND_W209.md)。以下の隔離Play記録は展示拡大前の検証であり、今回のラベル変更はEdit確認のみ。
+最新の[05/09の登録ID・選定根拠・Edit確認・未確認範囲](W20509_IMPLEMENTATION.md)。以下の旧実Play記録は登録10種類の時点の証拠。
+
+前段の[展示サイズ・上方ラベル・09入力・確認画像と未確認範囲](EXHIBIT_SCALE_AND_W209.md)。以下の隔離Play記録は展示拡大前の検証であり、今回のラベル変更はEdit確認のみ。
 
 最新の[8番画像ID・素材集約・削除記録・確認限界](UI08_AND_MATERIALS.md)。
 
@@ -11,11 +13,11 @@
 ## 現在の反映内容・Full Path
 
 - 新規 `ReplicatedStorage.Config.World2DumbbellVisualConfig`。ItemId単位の展示・手持ち調整。
-- 新規 `ServerStorage.World2DumbbellModels.W2_NORMAL_01/02/03/04/06/07/08/10/11/12`。各1原本、GripとネイティブMeshPart/SurfaceAppearanceのみ。
+- 新規 `ServerStorage.World2DumbbellModels.W2_NORMAL_01〜12`。各1原本、GripとネイティブMeshPart/SurfaceAppearanceのみ。
 - 変更 `ServerScriptService.Services.World1DumbbellVisuals`。従来名を保ち、完全ItemIdからW1/W2のConfigと原本を選ぶ共通表示処理。
 - 変更 `ServerScriptService.Systems.Controllers.World1DumbbellExhibitController`。既存1コントローラーで両Worldの設備を監視。
 - 変更 `ServerScriptService.Systems.Controllers.DumbbellDisplayController`。既存装備同期・左右2本の処理を利用。legacy部品のCanQuery=falseを追加。
-- 展示追加 `Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.<1..12>.World2DumbbellExhibit`。対象は上記10番号。05/09は元表示のまま。
+- 展示追加 `Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.<1..12>.World2DumbbellExhibit`。現在は全12番号に反映済み。
 - 前段c4a55e5の変更 `ServerScriptService.Services.TrainingManager` は保持。再開分で追加変更なし。
 
 新しい装備システムや表示ループは追加していない。DumbbellServiceの有効な装備ItemIdと既存Lobby判定に追従する。World移動だけで装備品を別Worldの同番号へ変換しない。複製はサーバーが生成し、左右のHandWeldで接続。手持ちBasePartはAnchored=false、CanCollide/CanTouch/CanQuery=false、Massless=true。体型変更時は原本から再作成し倍率を累積させない。
@@ -34,20 +36,20 @@
 | W2_NORMAL_02 | 699aff5d-dfc7-47af-8c04-3d2fc97fbd2d | 102716104784959 / 117246680201459 |
 | W2_NORMAL_03 | c29ae88b-713b-40c8-a674-7cc619ae9784 | 128085702169072 / 121454316614909 |
 | W2_NORMAL_04 | 325c88e5-35ce-4599-abbc-d6add5edffa0 | 117230570003114 / 128283127982055 |
-| W2_NORMAL_05 | 髑髏2候補の対応未確定 | 未登録 |
+| W2_NORMAL_05 | 129491e9-6098-49c1-85c7-bb7dda049030 | 72432008607429 / 82927178003009 |
 | W2_NORMAL_06 | 15b4b34a-ee7b-4724-a23d-840821ad4b01 | 76372035088717 / 110179195904955 |
 | W2_NORMAL_07 | 6f4d6c73-89cb-4430-a575-6c6cdf56fdd4 | 79273947117738 / 134262823105301 |
 | W2_NORMAL_08 | c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5 | 127996101926091 / 102402230962981 |
-| W2_NORMAL_09 | 1d5bb350-b333-46b5-97b0-f61929c85f98（ユーザー指定） | 未登録・変換待ち |
+| W2_NORMAL_09 | 1d5bb350-b333-46b5-97b0-f61929c85f98（ユーザー指定） | 76842591874956 / 71030764434000 |
 | W2_NORMAL_10 | 45523401-b6e5-40be-886e-87653b1ca616 | 89304737924828 / 107482140752258 |
 | W2_NORMAL_11 | 850c42fe-67c0-4846-9611-d1d1e7b1c6c0 | 115656579181767 / 80759512986628 |
 | W2_NORMAL_12 | 1f4b4e93-389d-433a-a119-495af875a4b4 | 121212954959648 / 115333744093861 |
 
-実Model/Mesh/**BaseColor・Normal・Roughness・Metallicの全40 ID**、ZIP/FBX/各テクスチャのSHA256、寸法/補正は[ASSETS.json](ASSETS.json)、登録成功記録は[UPLOADS.json](UPLOADS.json)。08は指定の紫水晶＋黒い岩。Model **127996101926091** / Mesh **102402230962981**、4マップは **130992463031571 / 86500659021694 / 86256269074579 / 107419410147538**（上記順）。
+実Model/Mesh/**BaseColor・Normal・Roughness・Metallicの全48 ID**、ZIP/FBX/各テクスチャのSHA256、寸法/補正は[ASSETS.json](ASSETS.json)、登録成功記録は[UPLOADS.json](UPLOADS.json)。08は指定の紫水晶＋黒い岩。Model **127996101926091** / Mesh **102402230962981**、4マップは **130992463031571 / 86500659021694 / 86256269074579 / 107419410147538**（上記順）。
 
 BaseColor=sRGB、他3種=Non-Color。元ファイルを保持し、減ポリゴンや色/装飾の変更なし。柄方向X・グリップ中央を原点へ揃える剛体補正だけを作業コピーに適用。約12.5〜13.9k triangles/モデル。巨大FBX/GLB/重複素材はGitへ含めない。登録原本にはScript・外部ジョイント・購入処理を含めない。
 
-当初05/09候補だった `129491e9-6098-49c1-85c7-bb7dda049030` と `d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09` は、異なる髑髏モデル。現在09は追加された別FBXで確定し、05への割当確認が残る。消去法で登録していない。d359を使う場合は柄の斜め方向の作業コピー補正も必要。
+05は既存UIと同じ白い髑髏・赤い棘・骨の柄を持つ129491e9を描画比較して採用。d359c5a6も同じ意匠の別形状であり、未使用素材として保持。09は追加された目玉FBXをユーザー指定で採用。選定と実IDの詳細は最新の05/09報告に記録した。
 
 ## 手動調整と復元
 
@@ -66,7 +68,7 @@ BaseColor=sRGB、他3種=Non-Color。元ファイルを保持し、減ポリゴ�
 
 例: 08の手首位置だけ下げる場合 `GripOffset=Vector3.new(0,-0.1,0)`。展示幅だけ変える場合 `DisplayLength=5`。横幅を維持して大Body厚みだけ調整する場合 `BodyThickness.MaxMultiplier`。Config変更は**新しいPlay/server開始時**に反映。Editで既にrequireされたModuleのキャッシュは自動更新されない。展示は次のPlayで初期化、未保存Editの見た目も即変更したい場合は最新SourceでのRefreshExhibitが必要。
 
-原本復元: [tools/InstallWorld2DumbbellModels.luau](../../tools/InstallWorld2DumbbellModels.luau)を指定副本のEditで実行する。対象Place/Universeをassertし、登録ModelからネイティブMeshPart/SurfaceAppearanceを取得して不足原本だけ復元する。既存原本を上書きせず、登録ID不一致なら停止。PlaceのSave/Publishはしない。原本と上記4 Sourceが揃うと既存コントローラーがPlay時に展示/両手を複製する。復元は正規のasset読込権限が必要。05/09は未登録なので復元対象外。
+原本復元: [tools/InstallWorld2DumbbellModels.luau](../../tools/InstallWorld2DumbbellModels.luau)を指定副本のEditで実行する。対象Place/Universeをassertし、登録ModelからネイティブMeshPart/SurfaceAppearanceを取得して不足原本だけ復元する。既存原本を上書きせず、登録ID不一致なら停止。PlaceのSave/Publishはしない。原本と上記4 Sourceが揃うと既存コントローラーがPlay時に展示/両手を複製する。復元は正規のasset読込権限が必要。復元用登録一覧は今回05/09を追加し、全12件に更新済み。
 
 ## 隔離した実Play
 
@@ -116,7 +118,7 @@ run13ログでは意図したW2_04欠落警告1回と、既存W1看板画像1199
 
 その他未完了/未確認:
 
-- 05対応確定、確認済み09の変換・登録、全12新3Dでの確認。
+- 全12新3Dでの実Play確認（Editでの12対応と05/09読込・接続・描画は確認済み）。
 - 実購入、マージ/売却から装備が変わる全進行、再参加での本番ロード。今回の装備/所有変化は隔離メモリ状態での確認。
 - 実機、公開環境、実データ保存、課金、実キー/ゲームパッド/タッチの操作感、端末FPS、大人数負荷。
 - 全サービス同時の統合Play、手動極大Body。今回の物理マトリクスは通常/筋肉それぞれ成長0/10。

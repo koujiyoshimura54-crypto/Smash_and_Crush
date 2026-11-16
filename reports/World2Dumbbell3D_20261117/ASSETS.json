@@ -12,7 +12,7 @@
         0.189453125
       ],
       "MeshCenter": [
-        0.0,
+        0,
         0.01096343994140625,
         0.005523728206753731
       ],
@@ -56,11 +56,11 @@
           "sha256": "d5b697be1a4077a4772b3ed034337e95f9ab7b4d67e7308e81a73f223aad0dcd"
         }
       },
-      "GLB": "exports/129491e9-6098-49c1-85c7-bb7dda049030.glb",
+      "GLB": "World2/exports/129491e9-6098-49c1-85c7-bb7dda049030.glb",
       "GLBBytes": 5087128,
       "GLBSHA256": "781fcd1def13f699944b88e9eb784b29ebe1575b9e21c18cf085a6430a0bfc97",
-      "ItemId": null,
-      "MappingStatus": "AwaitingUserIdentification",
+      "ItemId": "W2_NORMAL_05",
+      "MappingStatus": "VisualComparison_SelectedHorizontalSkullVariant",
       "OriginalFilesSHA256": {
         "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbx": "55f3049028c9234f210552296354fbca95143dc3ce4dc2b634feaf778003a423",
         "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbm/skull_mace_3d_model_normal.jpg": "4a848fb4315a7441bf01ca7b136342d911ca18a7b6f52a741dde29aff73e0bd6",
@@ -69,14 +69,14 @@
         "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbm/skull_mace_3d_model_metallic.jpg": "d5b697be1a4077a4772b3ed034337e95f9ab7b4d67e7308e81a73f223aad0dcd",
         "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbm/skull_mace_3d_model_rm.jpg": "c28f2f93d6f557898aa12803c748a4672c0582640c10e45db4f4786bae512355"
       },
-      "AssetStatus": "NotUploaded_MappingUnconfirmed",
-      "ModelAssetId": null,
-      "MeshAssetId": null,
+      "AssetStatus": "Approved_RegisteredInCopy_Edit",
+      "ModelAssetId": 72432008607429,
+      "MeshAssetId": 82927178003009,
       "TextureAssetIds": {
-        "BaseColor": null,
-        "Normal": null,
-        "Roughness": null,
-        "Metallic": null
+        "BaseColor": 120439373379444,
+        "Normal": 78146366342005,
+        "Roughness": 114004727940296,
+        "Metallic": 90383938174375
       },
       "CurrentFBXPath": "C:\\Users\\kouji\\Downloads\\World2Dumbbells_20261117\\World2\\originals\\129491e9-6098-49c1-85c7-bb7dda049030\\tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbx",
       "CurrentGLBPath": "C:\\Users\\kouji\\Downloads\\World2Dumbbells_20261117\\World2\\exports\\129491e9-6098-49c1-85c7-bb7dda049030.glb"
@@ -951,7 +951,7 @@
       "GLBBytes": 4384932,
       "GLBSHA256": "b5919678290bedd0824a10343d5effeeb39966cb699eadbf636251ca32461fa9",
       "ItemId": null,
-      "MappingStatus": "AwaitingUserIdentification",
+      "MappingStatus": "UnusedAlternativeSkullVariant",
       "OriginalFilesSHA256": {
         "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbx": "c1be308b3257cebe72ab74e3f4c5de0c5ed1f7604261208374e4e70785c782be",
         "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbm/skull_mace_3d_model_normal.jpg": "1744b031cd643717481b5e6601587c49332c8eec5171dbaada25aef032e8437b",
@@ -960,7 +960,7 @@
         "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbm/skull_mace_3d_model_metallic.jpg": "ce0864e6ff8484d0537bdd5f72caa2a857cd7f6bc195d6c6287093749ff607c2",
         "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbm/skull_mace_3d_model_rm.jpg": "bfca7b5f8bac763f670e1f5749401b7f8edc40c308766e49dc6b637caada815d"
       },
-      "AssetStatus": "NotUploaded_MappingUnconfirmed",
+      "AssetStatus": "NotUploaded_UnusedAlternative",
       "ModelAssetId": null,
       "MeshAssetId": null,
       "TextureAssetIds": {
@@ -1010,20 +1010,86 @@
           "SHA256": "ef0350fb7fa543736b7a0eeb0ec51b7d7178abfb936027c24439a6c3a9a27b11"
         }
       ],
-      "AssetStatus": "NotUploaded_ConversionAwaitingBackgroundAppApproval",
-      "ModelAssetId": null,
-      "MeshAssetId": null,
+      "AssetStatus": "Approved_RegisteredInCopy_Edit",
+      "ModelAssetId": 76842591874956,
+      "MeshAssetId": 71030764434000,
       "TextureAssetIds": {
-        "BaseColor": null,
-        "Normal": null,
-        "Roughness": null,
-        "Metallic": null
+        "BaseColor": 81050513443457,
+        "Normal": 134443934692282,
+        "Roughness": 83262372304448,
+        "Metallic": 79015952266101
+      },
+      "SourceFBX": "tripo_convert_1d5bb350-b333-46b5-97b0-f61929c85f98.fbx",
+      "Triangles": 13498,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        -0.0001068115234375,
+        -0.00243186391890049,
+        0.21068572998046875
+      ],
+      "MeshCenter": [
+        0,
+        -0.00133514404296875,
+        -0.0022182483226060867
+      ],
+      "MeshSize": [
+        0.9803162813186646,
+        0.418701171875,
+        0.42828369140625
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "eyeball_club_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "72908ca7ccda75ab2f095441740ba65d6a0ed97f5dbc8746376e8b05ee12e6ca"
+        },
+        "normal": {
+          "file": "eyeball_club_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "61e24681c3d24d93af855f45a46bb38de3843f5cc861bb9c289884fc8d177fa4"
+        },
+        "roughness": {
+          "file": "eyeball_club_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "59c374910c912cc65e8b62015ab5912bdb91670c5d1fd22e3a323c4d22eaa4fd"
+        },
+        "metallic": {
+          "file": "eyeball_club_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "f762fc2413ae518846cec9013d39e56675bf04856fc6f0a977c6e74c48fa7235"
+        }
+      },
+      "GLBBytes": 4738528,
+      "GLBSHA256": "fcf5465d5690173cc78f41c112cad374943ba0809dd2d9818387333b064be5d2",
+      "CurrentFBXPath": "C:\\Users\\kouji\\Downloads\\World2Dumbbells_20261117\\World2\\originals\\1d5bb350-b333-46b5-97b0-f61929c85f98\\tripo_convert_1d5bb350-b333-46b5-97b0-f61929c85f98.fbx",
+      "CurrentGLBPath": "C:\\Users\\kouji\\Downloads\\World2Dumbbells_20261117\\World2\\exports\\1d5bb350-b333-46b5-97b0-f61929c85f98.glb",
+      "GLB": "World2/exports/1d5bb350-b333-46b5-97b0-f61929c85f98.glb",
+      "SourceZip": null,
+      "InputFormat": "User-provided extracted FBX and textures; ZIP not supplied",
+      "OriginalFilesSHA256": {
+        "tripo_convert_1d5bb350-b333-46b5-97b0-f61929c85f98.fbm/eyeball_club_3d_model_basecolor.jpg": "72908ca7ccda75ab2f095441740ba65d6a0ed97f5dbc8746376e8b05ee12e6ca",
+        "tripo_convert_1d5bb350-b333-46b5-97b0-f61929c85f98.fbm/eyeball_club_3d_model_metallic.jpg": "f762fc2413ae518846cec9013d39e56675bf04856fc6f0a977c6e74c48fa7235",
+        "tripo_convert_1d5bb350-b333-46b5-97b0-f61929c85f98.fbm/eyeball_club_3d_model_normal.jpg": "61e24681c3d24d93af855f45a46bb38de3843f5cc861bb9c289884fc8d177fa4",
+        "tripo_convert_1d5bb350-b333-46b5-97b0-f61929c85f98.fbm/eyeball_club_3d_model_rm.jpg": "6ea9f1e4e43520f56335b256d9e8fdef6cccfb1611b69a815a477b163184effc",
+        "tripo_convert_1d5bb350-b333-46b5-97b0-f61929c85f98.fbm/eyeball_club_3d_model_roughness.jpg": "59c374910c912cc65e8b62015ab5912bdb91670c5d1fd22e3a323c4d22eaa4fd",
+        "tripo_convert_1d5bb350-b333-46b5-97b0-f61929c85f98.fbx": "ef0350fb7fa543736b7a0eeb0ec51b7d7178abfb936027c24439a6c3a9a27b11"
       }
     }
   ],
-  "MissingItemMappings": [
-    "W2_NORMAL_05"
-  ],
+  "MissingItemMappings": [],
   "UI08": {
     "SourcePNG": "紫水晶の双頭クリスタルメイス.png",
     "SHA256": "99ba41843cef191afc9c2d19369b3fd5c5904598e3d0a6283b14a5e55182ddb1",
@@ -1036,5 +1102,8 @@
   "RegistrationFullPath": "ServerStorage.World2DumbbellModels",
   "RestoreTool": "tools/InstallWorld2DumbbellModels.luau",
   "LocalAssetRoot": "C:\\Users\\kouji\\Downloads\\World2Dumbbells_20261117",
-  "LocalZIPStatus": "Removed after all 23 archive entry payloads matched retained expanded files; explicitly requested consolidation"
+  "LocalZIPStatus": "Removed after all 23 archive entry payloads matched retained expanded files; explicitly requested consolidation",
+  "UnusedSourceUUIDs": [
+    "d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09"
+  ]
 }

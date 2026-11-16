@@ -25,6 +25,11 @@ local items={
   DisplayLength=7.2,DisplayRotation=Vector3.zero,DisplayOffset=Vector3.new(0,8.4,0),
   HeldLength=2,HeldThicknessMultiplier=1,HeldRotation=Vector3.zero,GripOffset=Vector3.zero,
  },
+ W2_NORMAL_05={
+  Template="W2_NORMAL_05",SourceUUID="129491e9-6098-49c1-85c7-bb7dda049030",
+  DisplayLength=7.2,DisplayRotation=Vector3.zero,DisplayOffset=Vector3.new(0,8.4,0),
+  HeldLength=2,HeldThicknessMultiplier=1,HeldRotation=Vector3.zero,GripOffset=Vector3.zero,
+ },
  W2_NORMAL_06={
   Template="W2_NORMAL_06",SourceUUID="15b4b34a-ee7b-4724-a23d-840821ad4b01",
   DisplayLength=7.2,DisplayRotation=Vector3.zero,DisplayOffset=Vector3.new(0,8.4,0),
@@ -37,6 +42,11 @@ local items={
  },
  W2_NORMAL_08={
   Template="W2_NORMAL_08",SourceUUID="c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5",
+  DisplayLength=7.2,DisplayRotation=Vector3.zero,DisplayOffset=Vector3.new(0,8.4,0),
+  HeldLength=2,HeldThicknessMultiplier=1,HeldRotation=Vector3.zero,GripOffset=Vector3.zero,
+ },
+ W2_NORMAL_09={
+  Template="W2_NORMAL_09",SourceUUID="1d5bb350-b333-46b5-97b0-f61929c85f98",
   DisplayLength=7.2,DisplayRotation=Vector3.zero,DisplayOffset=Vector3.new(0,8.4,0),
   HeldLength=2,HeldThicknessMultiplier=1,HeldRotation=Vector3.zero,GripOffset=Vector3.zero,
  },
@@ -55,8 +65,6 @@ local items={
   DisplayLength=7.2,DisplayRotation=Vector3.zero,DisplayOffset=Vector3.new(0,8.4,0),
   HeldLength=2,HeldThicknessMultiplier=1,HeldRotation=Vector3.zero,GripOffset=Vector3.zero,
  },
- -- Slot 05 awaits identification; slot 09 is confirmed as 1d5bb350-b333-46b5-97b0-f61929c85f98.
- -- Add slot 09 only after its native model is registered; never assign UUID order by elimination.
 }
 for _,row in items do table.freeze(row)end
 return table.freeze({
