@@ -1,5 +1,8 @@
 -- Prototype-only proportions; never writes to the normal MuscleScaleConfig.
 local C = {}
+C.Manual = {MinHeight=1, MaxHeight=10, MinThickness=1, MaxThickness=10}
+-- Manual height is solved from standing feet-to-head bounds with an unchanged head.
+-- These limits/presets do not alter the normal LV curve or the growth endpoints below.
 C.Progress = {0, 0.20, 0.36, 0.50, 0.62, 0.72, 0.80, 0.87, 0.925, 0.97, 1}
 C.Shapes = {
  UpperTorso = {Vector3.new(0.30,0.38,0.24), Vector3.new(0.60,0.62,0.55)},

@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-16 — Studio内の通常／筋肉Body比較（最新、未採用）
+
+同日の旧「裸固定・仮短パン・Play途中の交換なし」を本仕様で置き換える。IsStudio()・副本126576845524886・ServerStorage.BodyPrototype_20261114.Enabled=trueの全条件内だけ、通常／筋肉をPlay中に切替可能。成長段階11段階とLV1基準の手動倍率を分離し、身長1～10、部位の幅／厚み1～10を0.01刻みで独立指定する。身長3倍上限は撤回、太さ10倍は維持。正式成長曲線ではない。本人Head／装着品Instanceを保持し、比較中の服はClassic Tシャツ（ShirtGraphic）とPantsだけ可視、他の服／靴を一時非表示。比較解除は通常Body・保存済み表示・元の服へ戻る。保存／バランス／通常Configは変更しない。
+
+非StudioはEnabled=trueでも試作Module初期化・UI・Body変更なし。最終副本はEnabled=true、未保存Edit。巨大サイズの頭の隠れ・衣服UV・World1 Treadmill接触制約を残す。[検証区分・寸法・画像・未確認](../reports/BodyComparison_20261116.md)。
+
 ## 2026-11-16 — 副本限定の操作可能な筋肉Body試作（未採用）
 
 `IsStudio()`・副本PlaceId 126576845524886・`ServerStorage.BodyPrototype_20261114`のEnabled=trueのときだけ、現在の生成経路で首から下を専用Bodyへ交換する。本人Head／顔／髪／肌色を保持し、黒い仮短パン、専用の絶対寸法によるLV1〜140成長を使用。通常Bodyと通常成長Config・バランス・保存形式は保持。Enabled=falseで次のPlayは通常Bodyへ戻る。終了時true、未保存Edit。正式採用ではなく、外観の判断と未検証事項が残る。[比較画像・切替・検証範囲](../reports/BodyPlayablePrototype_20261116.md)。

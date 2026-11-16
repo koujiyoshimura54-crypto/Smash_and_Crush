@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-16 — Studio内Body比較、衣服可視切替、小数2桁
+
+通常／筋肉をPlay中に比較するUIと可逆交換を追加。実LV・保存SIZEと分離した成長段階／手動倍率、身長3倍制限撤回・太さ最大10・0.01調整、Classic Tシャツ／Pants以外の服の一時非表示に対応。切替死亡・位置ずれ・入力・SIZE復帰を修正。隔離実Play、23模擬／構造ケース453 assertion、OFF→ON、補助除去を確認。公開反映・正式採用なし。[報告](../reports/BodyComparison_20261116.md)。
+
 ## 2026-11-16 — 副本限定の筋肉Body試作を継続利用可能に
 
 現行Lobby生成へ3条件付きのBody組立と専用成長を統合。本人の顔・髪を保持し、仮短パン・部位別寸法・HipHeight・握りを調整。実Playと構造／失敗注入を区別して検証し、補助を除去。試作ON・未保存Editで残した。通常Body／成長Config／保存・バランス不変更、正式採用・Save／Publishなし。[報告と比較画像](../reports/BodyPlayablePrototype_20261116.md)。

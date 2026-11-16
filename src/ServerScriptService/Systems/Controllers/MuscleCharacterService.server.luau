@@ -2,12 +2,14 @@ local Players=game:GetService("Players")
 local Placement=require(game.ServerScriptService.Services.LobbySpawnService)
 local Data=require(game.ServerScriptService.Services.PlayerDataService)
 local Config=require(game.ServerScriptService.Config:WaitForChild("MuscleScaleConfig"))
-local Prototype
+local Prototype,Comparison
 if game:GetService("RunService"):IsStudio() and game.PlaceId==126576845524886 then
  local folder=game.ServerStorage:FindFirstChild("BodyPrototype_20261114")
  if folder and folder:GetAttribute("Enabled")==true then
   local ok,result=pcall(function()return require(folder.PlayableBodyPrototype)end)
-  if ok and type(result.ApplyStage)=="function" then Prototype=result
+  if ok and type(result.ApplyStage)=="function" then
+   Prototype=result
+   Comparison=require(folder.PlayableComparisonService)
   else warn("[BodyPrototype] Growth module unavailable; keeping normal body") end
  end
 end
@@ -21,7 +23,7 @@ end
 local function prepare(player,character)
  local humanoid=character:WaitForChild("Humanoid",10)
  if not humanoid or not Placement.IsCharacterCurrent(player,character) then return end
- if Prototype and character:GetAttribute("BodyPrototypeActive") then
+ if Prototype and character:GetAttribute("BodyPrototypeManaged") then
   bases[character]={Humanoid=humanoid,Prototype=true}
   appliedStage[character]=nil
   return
@@ -57,25 +59,30 @@ local function prepare(player,character)
  bases[character]={Humanoid=humanoid,Parts=partData,Motors=motorData,HipHeight=humanoid.HipHeight}
  appliedStage[character]=nil
 end
-local function apply(player)
+local function apply(player,force)
  local character=player.Character
  local base=character and bases[character]
- if not base or not Placement.IsCharacterCurrent(player,character) then return end
+ if not base or not Placement.IsCharacterCurrent(player,character) then return false,"Character unavailable" end
  -- Attributes trigger refreshes; the loaded server profile is authoritative.
  local session=Data.Get(player)
  local level=Data.GetLevelState(player)
- if not session or not session.Loaded or not level then return end
+ if not session or not session.Loaded or not level then return false,"Profile not ready" end
  local selected=session.Data.SelectedSizeTier
  local stage=typeof(selected)=="number" and selected%1==0 and selected>=1 and selected<=Config.MAX_STAGE and selected or Config.GetMuscleStage(level)
- if appliedStage[character]==stage then return end
  if base.Prototype then
-  if Prototype.ApplyStage(character,stage) then
-   appliedStage[character]=stage
+  local options,revision=Comparison.Get(player)
+  local key=(options.Active and "comparison"or tostring(stage))..":"..tostring(revision)
+  if not force and appliedStage[character]==key then return true end
+  local ok,why=Prototype.ApplyStage(character,stage,options)
+  if ok then
+   appliedStage[character]=key
    character:SetAttribute("MuscleScaleReady",true)
    Placement.OnScaleApplied(player,character)
+   Comparison.Updated(player)
   end
-  return
+  return ok,why
  end
+ if not force and appliedStage[character]==stage then return true end
  appliedStage[character]=stage
  local scaleHeight=Config.GetHeightScale(stage)
  base.Humanoid.HipHeight=base.HipHeight*scaleHeight
@@ -97,6 +104,7 @@ local function apply(player)
  character:SetAttribute("MuscleHeightScale",scaleHeight)
  character:SetAttribute("MuscleScaleReady",true)
  Placement.OnScaleApplied(player,character)
+ return true
 end
 local function setup(player)
  local function onCharacter(character)
@@ -131,9 +139,15 @@ local function setup(player)
   end)
  end
  player:GetAttributeChangedSignal("Level"):Connect(function() apply(player) end)
- player:GetAttributeChangedSignal("SelectedSizeTier"):Connect(function() local character=player.Character;if character then appliedStage[character]=nil end;apply(player) end)
+ player:GetAttributeChangedSignal("SelectedSizeTier"):Connect(function()
+  local character=player.Character
+  local comparison=Comparison and Comparison.Get(player)
+  if character and not(comparison and comparison.Active)then appliedStage[character]=nil end
+  apply(player)
+ end)
  if player.Character then onCharacter(player.Character) end
 end
+if Comparison then Comparison.Start(apply) end
 Players.PlayerAdded:Connect(setup)
 Players.PlayerRemoving:Connect(function(player)
  local character=player.Character

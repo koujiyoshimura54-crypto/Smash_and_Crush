@@ -27,7 +27,7 @@ end
 local function prototypeScale(character)
  if not RunService:IsStudio() or game.PlaceId~=126576845524886 then return nil end
  local folder=ServerStorage:FindFirstChild("BodyPrototype_20261114")
- if not folder or folder:GetAttribute("Enabled")~=true or not character:GetAttribute("BodyPrototypeActive") then return nil end
+ if not folder or folder:GetAttribute("Enabled")~=true or not character:GetAttribute("BodyComparisonActive") then return nil end
  return character:GetAttribute("BodyPrototypeDumbbellScale")
 end
 
@@ -79,6 +79,9 @@ local function refreshPlayer(player, force)
  local key = itemId or ""
  local scale=prototypeScale(character)
  if scale then key=key..":"..tostring(scale) end
+ if RunService:IsStudio() and game.PlaceId==126576845524886 and character:GetAttribute("BodyPrototypeManaged") then
+  key=key..":"..tostring(character:GetAttribute("BodyComparisonRevision"))
+ end
  if not force and currentState[player] == key then return end
 
  removeVisuals(character)

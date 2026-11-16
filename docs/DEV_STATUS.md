@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-16 — Play中のBody比較と0.01刻み調整
+
+副本で通常／筋肉を同一Character内で切替、LV相当／手動倍率を独立指定。身長3倍制限を撤回し入力1～10、太さ最大10を維持。Classic Tシャツ／Pants以外の服・靴を可逆的に非表示。切替時死亡、位置ずれ、数値入力、保存SIZE復帰の問題を修正。実Playで切替・連打・死亡復帰・歩行／ジャンプ・両World Treadmill・OFF→ON、23構造／模擬ケース453 assertionを確認。今回版の壁／Boss・実端末等は未確認として提出。ユーザーの早期提出指示により美術／設備調整へ広げない。
+
+検証補助39置換を復元、既存Source509件・保護2125 Instanceを保持。4 Source変更＋2追加、計515。Enabled=true・未保存Editで次のPlayから比較可能。非Studioは通常経路、Save／Publishなし。[Full Path・比較画像・実測・未確認](../reports/BodyComparison_20261116.md)。
+
 ## 2026-11-16 — 専用筋肉Bodyを副本で操作できる試作
 
 既存生成3 Sourceへ統合し、専用2 Module・基準コピー・比較モデルをServerStorageへ保管。本人Dynamic Headと髪を保持し、部位別寸法、黒い仮短パン、接地計算、ダンベル表示を調整。隔離実Playで歩行／ジャンプ／死亡復帰／再生／両WorldのTreadmill加算／壁とBoss／OFF→ONを確認。14構造・模擬ケース通過。Root選択による帰還停止と失敗復元時のアクセサリーWeld消失を修正。補助39件復元、既存Source508本・保護モデル1572個を保持。Enabled=true、未保存Editで試用可能。筋肉輪郭・服の仕上げ、最大BodyのWinTrophy等は未解決／未確認として区別。[Full Path・3方向比較・制約](../reports/BodyPlayablePrototype_20261116.md)。
