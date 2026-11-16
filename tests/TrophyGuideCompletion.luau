@@ -14,6 +14,8 @@ return function(e)
  local wallIndex,wallCount,UPDATE_INTERVAL=1,1,.2
  local resetSequence=player:GetAttribute("TutorialResetSequence")
  local connections,characterConnections={},{}
+ local renderer={}
+ function renderer:Destroy() if self.OnDestroy then self.OnDestroy() end;clear();stopCache() end
  local task={spawn=function(fn,...) return fn(...) end,defer=function(fn,...)return fn(...)end}
 ]]
  local factory=assert(loadstring(prefix..tail.."\nreturn {Refresh=refresh,Destroy=function()e.script.Destroying:Fire()end}\nend"))()

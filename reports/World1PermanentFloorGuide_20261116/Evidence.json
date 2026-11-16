@@ -1,0 +1,510 @@
+{
+  "Scope": {
+    "PlaceId": 126576845524886,
+    "UniverseId": 10765181857,
+    "GitBase": "4918a393e3c2ffeb388be0b00b923f174d47aad4",
+    "SourceBaseline": "Current unsaved duplicate Studio"
+  },
+  "ClientLifecycle": {
+    "1": {
+      "Passed": true,
+      "Name": "Fresh LV1 route"
+    },
+    "2": {
+      "Name": "3x full width; unchanged front/back extent",
+      "Passed": true,
+      "Detail": {
+        "New": {
+          "Depth": 1.5136356353759766,
+          "Width": 7.093475341796875
+        },
+        "Old": {
+          "Depth": 1.513636589050293,
+          "Width": 2.364471435546875
+        }
+      }
+    },
+    "3": {
+      "Passed": true,
+      "Name": "Unchanged stroke and vertical thickness"
+    },
+    "4": {
+      "Name": "Idle reuses Parts and skips redraw",
+      "Passed": true,
+      "Detail": {
+        "Created": 0,
+        "RevisionBefore": 10,
+        "RevisionAfter": 10
+      }
+    },
+    "5": {
+      "Passed": true,
+      "Name": "Movement keeps fixed endpoints"
+    },
+    "6": {
+      "Passed": true,
+      "Name": "Completed tutorial still shows route"
+    },
+    "7": {
+      "Passed": true,
+      "Name": "World2 hidden"
+    },
+    "8": {
+      "Passed": true,
+      "Name": "World1 restored"
+    },
+    "9": {
+      "Passed": true,
+      "Name": "Destroy removes owned route"
+    },
+    "10": {
+      "Passed": true,
+      "Name": "Script reinitialization creates one route"
+    }
+  },
+  "Geometry": {
+    "1": {
+      "Name": "Missing map hides all arrows",
+      "Passed": true
+    },
+    "2": {
+      "Name": "Replacement map uses new anchors and floors",
+      "Passed": true
+    },
+    "3": {
+      "Name": "Blocker fixture lies beyond old arrow width",
+      "Passed": true
+    },
+    "4": {
+      "Name": "Thin non-query obstacle on widened arm hides pair",
+      "Passed": true
+    },
+    "5": {
+      "Name": "Removed obstacle restores arrows",
+      "Passed": true
+    },
+    "6": {
+      "Name": "Supported centers with unsupported widened tips hide pairs",
+      "Passed": true
+    },
+    "7": {
+      "Name": "Restored wide floor redraws arrows",
+      "Passed": true
+    },
+    "8": {
+      "Name": "Unavailable floor does not leave floating arrows",
+      "Passed": true
+    },
+    "9": {
+      "Name": "Streamed floor returns",
+      "Passed": true
+    },
+    "10": {
+      "Name": "Removed first wall retains direction and measured endpoint",
+      "Passed": true
+    },
+    "11": {
+      "Name": "Replacement wall updates endpoint from actual geometry",
+      "Passed": true
+    },
+    "12": {
+      "Name": "Individual guide is not a permanent-route obstacle",
+      "Passed": true
+    },
+    "13": {
+      "Name": "Permanent route is not an individual-guide obstacle",
+      "Passed": true
+    },
+    "14": {
+      "Name": "Five map stream cycles keep one route with no orphaned visible arrows",
+      "Passed": true
+    },
+    "15": {
+      "Name": "Permanent map refresh preserves individual pool",
+      "Passed": true
+    },
+    "16": {
+      "Name": "Real map restored with 23 permanent chevrons",
+      "Passed": true
+    }
+  },
+  "Resources": {
+    "Kind": "Final renderer Source copy plus read-only closure counters; native client",
+    "Passed": true,
+    "Rows": {
+      "1": {
+        "Records": 8797,
+        "CacheConnections": 2,
+        "Alive": true,
+        "Pairs": 23
+      },
+      "2": {
+        "Records": 8797,
+        "CacheConnections": 2,
+        "Alive": true,
+        "Pairs": 23
+      },
+      "3": {
+        "Records": 8797,
+        "CacheConnections": 2,
+        "Alive": true,
+        "Pairs": 23
+      },
+      "4": {
+        "Records": 8797,
+        "CacheConnections": 2,
+        "Alive": true,
+        "Pairs": 23
+      },
+      "5": {
+        "Records": 8797,
+        "CacheConnections": 2,
+        "Alive": true,
+        "Pairs": 23
+      },
+      "6": {
+        "Records": 0,
+        "CacheConnections": 0,
+        "Alive": false,
+        "Pairs": 0
+      }
+    }
+  },
+  "TrophyMockRegression": {
+    "Total": 24,
+    "Kind": "Mocked client state/events using actual Source tail; not Play or rendered UI",
+    "Cases": {
+      "1": {
+        "Name": "first victory, initial Trophy pending",
+        "Passed": true
+      },
+      "2": {
+        "Name": "loss then merge/equip victory: FirstBattle Complete, Trophy pending",
+        "Passed": true
+      },
+      "3": {
+        "Name": "TrophySpawn then first receipt completion removes guide immediately",
+        "Passed": true
+      },
+      "4": {
+        "Name": "complete cohort retains no Trophy guide on repeat Stage1 defeat",
+        "Passed": true
+      },
+      "5": {
+        "Name": "completion before TrophySpawn",
+        "Passed": true
+      },
+      "6": {
+        "Name": "TrophySpawn before completion while FirstBattle Complete",
+        "Passed": true
+      },
+      "7": {
+        "Name": "legacy initial unreceived Trophy preserved",
+        "Passed": true
+      },
+      "8": {
+        "Name": "legacy complete profile restored and repeated TrophySpawn",
+        "Passed": true
+      },
+      "9": {
+        "Name": "new cohort complete profile restored before first event",
+        "Passed": true
+      },
+      "10": {
+        "Name": "Stage2 completion before merge/equip prevents later Stage1 guide",
+        "Passed": true
+      },
+      "11": {
+        "Name": "completed death and respawn do not restart guide",
+        "Passed": true
+      },
+      "12": {
+        "Name": "completed World round trip and Initialize do not restart guide",
+        "Passed": true
+      },
+      "13": {
+        "Name": "unknown completion attribute never permits Trophy",
+        "Passed": true
+      },
+      "14": {
+        "Name": "unknown completion with FirstBattle Complete never permits Trophy",
+        "Passed": true
+      },
+      "15": {
+        "Name": "completed Battle phase does not fall back to walls",
+        "Passed": true
+      },
+      "16": {
+        "Name": "completed Train phase does not fall back to treadmill",
+        "Passed": true
+      },
+      "17": {
+        "Name": "completed initial receipt still permits pending Merge",
+        "Passed": true
+      },
+      "18": {
+        "Name": "completed initial receipt retains Equip branch",
+        "Passed": true
+      },
+      "19": {
+        "Name": "completed profile preserves later BasicEgg",
+        "Passed": true
+      },
+      "20": {
+        "Name": "completed profile preserves later PetMerge",
+        "Passed": true
+      },
+      "21": {
+        "Name": "completed profile preserves later OreMerge",
+        "Passed": true
+      },
+      "22": {
+        "Name": "initial Trophy existing visibility gates remain",
+        "Passed": true
+      },
+      "23": {
+        "Name": "unmatched or removed Trophy does not create a guide",
+        "Passed": true
+      },
+      "24": {
+        "Name": "explicit existing reset re-enables initial tutorial",
+        "Passed": true
+      }
+    },
+    "Passed": 24
+  },
+  "NativeGameplay": {
+    "Wall": {
+      "World": 1,
+      "Root": "287.79998779296875, 7.5, 96",
+      "Loaded": true,
+      "Level": 2,
+      "Wall": {
+        "WallCount": 1,
+        "Current": 2,
+        "MajorStage": 1,
+        "Maxes": {
+          "1": 50
+        },
+        "Skipped": false,
+        "BossMaxHP": 200,
+        "Gauges": {
+          "1": 0
+        },
+        "Cleared": {
+          "1": true
+        }
+      },
+      "Complete": false
+    },
+    "AfterWall": {
+      "Visible": 46,
+      "Destination": "287.801513671875, 3.8983314037323, 94.9000015258789",
+      "Tutorial": "Stage1Boss",
+      "Origin": "287.861083984375, 3.8983314037323, 12.999991416931152"
+    },
+    "Boss": {
+      "World": 1,
+      "Wall": {
+        "WallCount": 1,
+        "Current": 2,
+        "MajorStage": 1,
+        "Maxes": {
+          "1": 50
+        },
+        "Skipped": false,
+        "BossMaxHP": 200,
+        "Gauges": {
+          "1": 0
+        },
+        "Cleared": {
+          "1": true
+        }
+      },
+      "Root": "287.79998779296875, 13.779726028442383, 198.89999389648438",
+      "Loaded": true,
+      "Level": 2,
+      "Defeated": true,
+      "Complete": false
+    },
+    "AfterBoss": {
+      "Visible": 46,
+      "Destination": "287.801513671875, 3.8983314037323, 94.9000015258789",
+      "Tutorial": "Trophy1",
+      "Origin": "287.861083984375, 3.8983314037323, 12.999991416931152"
+    },
+    "Trophy": {
+      "World": 1,
+      "Root": "287.86376953125, 7.726680278778076, 13.000198364257812",
+      "Loaded": true,
+      "Level": 2,
+      "Wall": {
+        "WallCount": 1,
+        "Current": 1,
+        "MajorStage": 1,
+        "Maxes": {
+          "1": 50
+        },
+        "Skipped": false,
+        "BossMaxHP": 200,
+        "Gauges": {
+          "1": 50
+        },
+        "Cleared": []
+      },
+      "Complete": true
+    },
+    "AfterTrophy": {
+      "Visible": 46,
+      "Tutorial": "OreMerge",
+      "Origin": "287.861083984375, 3.8983314037323, 12.999991416931152",
+      "Destination": "287.801513671875, 3.8983314037323, 94.9000015258789",
+      "Complete": true
+    },
+    "Death": {
+      "World": 1,
+      "Root": "287.86376953125, 7.726680278778076, 13.000198364257812",
+      "Loaded": true,
+      "Level": 2,
+      "Wall": {
+        "WallCount": 1,
+        "Current": 1,
+        "MajorStage": 1,
+        "Maxes": {
+          "1": 50
+        },
+        "Skipped": false,
+        "BossMaxHP": 200,
+        "Gauges": {
+          "1": 50
+        },
+        "Cleared": []
+      },
+      "Complete": true
+    },
+    "AfterDeath": {
+      "Visible": 46,
+      "Destination": "287.801513671875, 3.8983314037323, 94.9000015258789",
+      "Tutorial": "OreMerge",
+      "Origin": "287.861083984375, 3.8983314037323, 12.999991416931152"
+    },
+    "RepeatBoss": {
+      "World": 1,
+      "Wall": {
+        "WallCount": 1,
+        "Current": 2,
+        "MajorStage": 1,
+        "Maxes": {
+          "1": 50
+        },
+        "Skipped": false,
+        "BossMaxHP": 200,
+        "Gauges": {
+          "1": 0
+        },
+        "Cleared": {
+          "1": true
+        }
+      },
+      "Root": "287.79998779296875, 13.779726028442383, 198.89999389648438",
+      "Loaded": true,
+      "Level": 2,
+      "Defeated": true,
+      "Complete": true
+    },
+    "AfterRepeatBoss": {
+      "Visible": 46,
+      "Destination": "287.801513671875, 3.8983314037323, 94.9000015258789",
+      "Origin": "287.861083984375, 3.8983314037323, 12.999991416931152",
+      "Complete": true
+    },
+    "World2": {
+      "Visible": 0,
+      "Origin": "287.861083984375, 3.8983314037323, 12.999991416931152",
+      "Destination": "287.801513671875, 3.8983314037323, 94.9000015258789",
+      "Parts": 46,
+      "World": 2
+    },
+    "World1Return": {
+      "Visible": 46,
+      "Origin": "287.861083984375, 3.8983314037323, 12.999991416931152",
+      "Destination": "287.801513671875, 3.8983314037323, 94.9000015258789",
+      "Parts": 46,
+      "World": 1
+    }
+  },
+  "AdditionalFixtures": {
+    "Kind": "Local attribute/character fixtures; not a second real client or saved rejoin",
+    "SyntheticOtherCharacterDoesNotChangeRoute": true,
+    "ExistingCompletedLV140": true
+  },
+  "DeviceSimulation": {
+    "Phone": {
+      "Device": "iphone_17_pro",
+      "Viewport": "750, 382",
+      "Resolution": "874, 402"
+    },
+    "Tablet": {
+      "Device": "ipad_pro_M5_13in",
+      "Viewport": "1376, 1032",
+      "Resolution": "1376, 1032"
+    },
+    "PC": {
+      "Viewport": "1390x601"
+    },
+    "PhysicalDevicesTested": false
+  },
+  "Cleanup": {
+    "Restored": 39,
+    "RemovedHelpers": 2,
+    "ProtectedProductionSources": 3
+  },
+  "FinalAudit": {
+    "Total": 517,
+    "FinalHashes": {
+      "StarterPlayer.StarterPlayerScripts.Tutorial.World1FloorRouteClient": {
+        "bytes": 3466,
+        "a": 1278749360,
+        "b": 123464165
+      },
+      "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient": {
+        "bytes": 10592,
+        "a": 1154816571,
+        "b": 1565637446
+      },
+      "ReplicatedStorage.Modules.FloorGuideRenderer": {
+        "bytes": 20738,
+        "a": 1340461978,
+        "b": 429914084
+      }
+    },
+    "Device": "default",
+    "PlaceId": 126576845524886,
+    "Added": {
+      "1": "StarterPlayer.StarterPlayerScripts.Tutorial.World1FloorRouteClient",
+      "2": "ReplicatedStorage.Modules.FloorGuideRenderer"
+    },
+    "Running": false,
+    "Preserved": 514,
+    "Helpers": [],
+    "EditorMatches": true,
+    "Changed": {
+      "1": "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient"
+    },
+    "BodyPrototypeEnabled": true,
+    "UniverseId": 10765181857
+  },
+  "Console": {
+    "GuideErrors": 0,
+    "GuideWarnings": 0,
+    "GuideInfiniteYield": 0,
+    "KnownAssetWarnings": [
+      "17387207972",
+      "118491056518808"
+    ],
+    "MemoryAdapterBadgeFailures": [
+      "FirstSmash",
+      "IntoWorld2"
+    ]
+  }
+}

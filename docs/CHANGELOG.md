@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-16 — World1常設の床矢印
+
+副本Studioへ実SpawnからStage1壁手前までの独立した固定ガイドを追加。既存白Neonを使い濃さ70%・横幅3倍、拡幅実寸の床／障害物判定。個別ガイドとWinTrophy完了条件を保持。隔離実Play、26ネイティブ基本／幾何項目、資源反復、24 Trophy状態ケース、3画面描画を確認し、補助を除去して未保存Edit。実機等の限界と比較画像は[報告](../reports/World1PermanentFloorGuide_20261116/REPORT.md)。
+
 ## 2026-11-16 — Studio内Body比較、衣服可視切替、小数2桁
 
 通常／筋肉をPlay中に比較するUIと可逆交換を追加。実LV・保存SIZEと分離した成長段階／手動倍率、身長3倍制限撤回・太さ最大10・0.01調整、Classic Tシャツ／Pants以外の服の一時非表示に対応。切替死亡・位置ずれ・入力・SIZE復帰を修正。隔離実Play、23模擬／構造ケース453 assertion、OFF→ON、補助除去を確認。公開反映・正式採用なし。[報告](../reports/BodyComparison_20261116.md)。

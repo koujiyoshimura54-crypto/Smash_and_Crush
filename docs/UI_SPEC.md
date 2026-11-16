@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-16 — World1常設ルートの独立表示
+
+World1FloorRouteClient冒頭のSETTINGSが常設側だけのWidthMultiplier=3／Transparency=0.3を持つ。実幅2.364→7.093studs、前後1.514・線幅0.34・厚み0.045・間隔3.5を保持。生成先World1PermanentFloorGuideは既存TutorialFloorGuideとプール・寿命を分離し、双方を障害物から除外する。説明文／画像追加なし。初回Trophy誘導には引き続きTutorialCompletedの明示falseが必要で、完了後に復活させない。
+
+隔離実PlayでTreadmill／OreMerge併存、壁・Boss・Trophy帰還・死亡復帰・World往復を確認。PC1390×601／スマホ874×402／タブレット1376×1032相当の描画確認であり、実機確認ではない。[設定・外縁比較・画像・検証限界](../reports/World1PermanentFloorGuide_20261116/REPORT.md)。
+
 ## 2026-11-16 — 副本Studio専用Body比較UI
 
 条件成立時だけPlayers.<player>.PlayerGui.BodyComparisonGuiを生成。Win／再生回数／既存SIZE解放に依存しない。通常／筋肉、成長／手動、LV1／32／140と全11段階、身長／太さの小数2桁入力・±0.01、5プリセット、比較解除を持つ。手動範囲は身長1.00～10.00、太さ1.00～10.00。プリセットは1.00×1、1.75×3、2.75×5、4.00×7、5.00×10。切替中は連打抑止と状態表示。保存SIZEやプロフィールを変更せず、比較中だけ表示を優先する。

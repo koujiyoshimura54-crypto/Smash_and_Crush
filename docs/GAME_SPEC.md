@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-16 — World1の常設床矢印
+
+World1では新規／既存、LV、初回チュートリアル・個別ガイド・生死に依存せず、実Lobby SpawnLocationからStage1最初のWallの手前まで固定ルートを各クライアントで表示する。プレイヤー追従はせず、壁／Boss撃破後も行き先を変えない。World2では隠し、World1復帰・床再生成後は支持面を確認して戻す。既存個別ガイドと進行・完了・戦闘・報酬・保存・Analyticsは別管理。
+
+白Neonの既存2-Part矢印を流用し、常設だけTransparency=0.3、実外縁幅3倍、前後長・線幅・間隔を維持。拡幅実寸で床・非Query設備を検査する。[Full Paths・比較画像・隔離Play・未確認事項](../reports/World1PermanentFloorGuide_20261116/REPORT.md)。副本未保存Edit、Save/Publishなし。
+
 ## 2026-11-16 — Studio内の通常／筋肉Body比較（最新、未採用）
 
 同日の旧「裸固定・仮短パン・Play途中の交換なし」を本仕様で置き換える。IsStudio()・副本126576845524886・ServerStorage.BodyPrototype_20261114.Enabled=trueの全条件内だけ、通常／筋肉をPlay中に切替可能。成長段階11段階とLV1基準の手動倍率を分離し、身長1～10、部位の幅／厚み1～10を0.01刻みで独立指定する。身長3倍上限は撤回、太さ10倍は維持。正式成長曲線ではない。本人Head／装着品Instanceを保持し、比較中の服はClassic Tシャツ（ShirtGraphic）とPantsだけ可視、他の服／靴を一時非表示。比較解除は通常Body・保存済み表示・元の服へ戻る。保存／バランス／通常Configは変更しない。

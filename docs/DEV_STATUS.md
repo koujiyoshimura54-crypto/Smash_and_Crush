@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-16 — 副本World1の常設床矢印を実装
+
+副本126576845524886 / Universe10765181857の現在の未保存Sourceから、描画モジュール抽出＋独立常設LocalScriptを反映。実Spawn→壁面1.5studs手前の23組、Transparency0.3、外縁幅3倍・前後長維持。基本10／幾何16ネイティブ項目、資源5サイクル、Trophy状態24ケース、実攻撃／受取／死亡／Worldゲート往復と3画面描画を確認。
+
+39一時サービス置換を復元、検証補助0。開始時515 Source中514保持・1変更＋2追加＝517、Source/Editor一致、未保存Edit。実端末／複数実クライアント／自然streaming全順序／公開環境は未確認。[Full Paths・証拠・比較画像・制約](../reports/World1PermanentFloorGuide_20261116/REPORT.md)。Save/Publish・正本・PR #1操作なし。
+
 ## 2026-11-16 — Play中のBody比較と0.01刻み調整
 
 副本で通常／筋肉を同一Character内で切替、LV相当／手動倍率を独立指定。身長3倍制限を撤回し入力1～10、太さ最大10を維持。Classic Tシャツ／Pants以外の服・靴を可逆的に非表示。切替時死亡、位置ずれ、数値入力、保存SIZE復帰の問題を修正。実Playで切替・連打・死亡復帰・歩行／ジャンプ・両World Treadmill・OFF→ON、23構造／模擬ケース453 assertionを確認。今回版の壁／Boss・実端末等は未確認として提出。ユーザーの早期提出指示により美術／設備調整へ広げない。
