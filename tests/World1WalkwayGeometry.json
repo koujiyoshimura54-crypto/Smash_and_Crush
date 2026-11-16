@@ -1,0 +1,552 @@
+[
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "Floor"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.364705890417099,
+      0.6352941393852234,
+      0.2078431397676468
+    ],
+    "Class": "Part",
+    "CFrame": [
+      274.5,
+      0,
+      10.5,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      237,
+      8,
+      149
+    ]
+  },
+  {
+    "Transparency": 1,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "SpawnLocation"
+    ],
+    "CanQuery": false,
+    "CanCollide": false,
+    "Color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "Class": "SpawnLocation",
+    "CFrame": [
+      287.861083984375,
+      3.8983314037323,
+      12.999991416931152,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "Size": [
+      20.05817222595215,
+      1.0858172178268433,
+      20.05817222595215
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "EntranceCarpets",
+      "Lower"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.8274509906768799,
+      0.5921568870544434,
+      0
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      4.100014686584473,
+      13.299999237060547,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      28,
+      0.2239999920129776,
+      28
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "EntranceCarpets",
+      "Upper"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.729411780834198,
+      0.16078431904315948,
+      0.16078431904315948
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      4.200014591217041,
+      13.299999237060547,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      25,
+      0.4000000059604645,
+      25
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "EntranceCarpets",
+      "PathToRun",
+      "Upper"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.729411780834198,
+      0.16078431904315948,
+      0.16078431904315948
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      4.200014591217041,
+      55.399993896484375,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      13,
+      0.4000000059604645,
+      59.199989318847656
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "EntranceCarpets",
+      "PathToRun",
+      "Lower"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.8274509906768799,
+      0.5921568870544434,
+      0
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      4.100014686584473,
+      56.149993896484375,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      16,
+      0.2239999920129776,
+      57.699989318847656
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "EntranceCarpets",
+      "Path",
+      "Upper"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.729411780834198,
+      0.16078431904315948,
+      0.16078431904315948
+    ],
+    "Class": "Part",
+    "CFrame": [
+      259.7959899902344,
+      4.20011043548584,
+      12.943077087402344,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "Size": [
+      13,
+      0.4000000059604645,
+      31.007984161376953
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "EntranceCarpets",
+      "Path",
+      "Lower"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.8274509906768799,
+      0.5921568870544434,
+      0
+    ],
+    "Class": "Part",
+    "CFrame": [
+      259.74798583984375,
+      4.100014686584473,
+      12.943077087402344,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "Size": [
+      16,
+      0.2239999920129776,
+      28.163822174072266
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "EntranceCarpets",
+      "Path",
+      "Upper"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.729411780834198,
+      0.16078431904315948,
+      0.16078431904315948
+    ],
+    "Class": "Part",
+    "CFrame": [
+      315.81494140625,
+      4.20011043548584,
+      12.943077087402344,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "Size": [
+      13,
+      0.4000000059604645,
+      31.029895782470703
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "TrainingArea",
+      "EntranceCarpets",
+      "Path",
+      "Lower"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.8274509906768799,
+      0.5921568870544434,
+      0
+    ],
+    "Class": "Part",
+    "CFrame": [
+      315.74798583984375,
+      4.100014686584473,
+      12.943077087402344,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "Size": [
+      16,
+      0.2239999920129776,
+      28.163822174072266
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "BattleCorridor",
+      "Stage01",
+      "WalkableGeometry",
+      "PathToRun",
+      "Lower"
+    ],
+    "CanQuery": true,
+    "CanCollide": false,
+    "Color": [
+      0.8274509906768799,
+      0.5921568870544434,
+      0
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      4.100014686584473,
+      106.29998779296875,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      16,
+      0.2239999920129776,
+      42.599998474121094
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "BattleCorridor",
+      "Stage01",
+      "WalkableGeometry",
+      "PathToRun",
+      "Upper"
+    ],
+    "CanQuery": true,
+    "CanCollide": false,
+    "Color": [
+      0.729411780834198,
+      0.16078431904315948,
+      0.16078431904315948
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      4.200014591217041,
+      106.29998779296875,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      13,
+      0.4000000059604645,
+      42.599998474121094
+    ]
+  },
+  {
+    "Transparency": 0,
+    "Path": [
+      "GeneratedMap",
+      "BattleCorridor",
+      "Stage01",
+      "WalkableGeometry",
+      "Floor"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.364705890417099,
+      0.6352941393852234,
+      0.2078431397676468
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      0,
+      106.30000305175781,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      48.400001525878906,
+      8,
+      42.599998474121094
+    ]
+  },
+  {
+    "Transparency": 1,
+    "Path": [
+      "GeneratedMap",
+      "BattleCorridor",
+      "Stage01",
+      "Stage1.1",
+      "Wall"
+    ],
+    "CanQuery": true,
+    "CanCollide": true,
+    "Color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      15.6875,
+      97,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      89.20002746582031,
+      23.375,
+      1.2000000476837158
+    ]
+  },
+  {
+    "Transparency": 1,
+    "Path": [
+      "GeneratedMap",
+      "BattleCorridor",
+      "Stage01",
+      "Floor"
+    ],
+    "CanQuery": false,
+    "CanCollide": false,
+    "Color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "Class": "Part",
+    "CFrame": [
+      287.79998779296875,
+      0,
+      165.875,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "Size": [
+      86,
+      8,
+      76.55000305175781
+    ]
+  }
+]

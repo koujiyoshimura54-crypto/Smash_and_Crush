@@ -1,0 +1,1309 @@
+{
+  "Success": true,
+  "Result": {
+    "Rows": [
+      {
+        "LastRunningSpeed": 23.971153259277344,
+        "Seconds": 0.6005730000033509,
+        "MoveMagnitude": 1.0000000794728596,
+        "Root": "275.836181640625, 6.938041687011719, 50.2745246887207",
+        "Distance": 14.499780654907227,
+        "SideSpeed": -0.0028241479016727833,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "Normal24",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 0,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 24.14324429307732,
+        "Riding": false,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 12.000014305114746,
+        "Seconds": 0.60019420000026,
+        "MoveMagnitude": 0,
+        "Root": "287.84039306640625, 7.338057041168213, 43.354217529296875",
+        "Distance": 7.199891567230225,
+        "SideSpeed": -0.001403220462829274,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "Idle12",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 11.99593659390095,
+        "Riding": true,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 35.999942779541016,
+        "Seconds": 0.600690699997358,
+        "MoveMagnitude": 1.0000000794728596,
+        "Root": "287.8217468261719, 7.338057041168213, 64.31680297851562",
+        "Distance": 21.750228881835938,
+        "SideSpeed": 0.0031305388355081275,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "Forward36",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 36.20869922229793,
+        "Riding": true,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 23.999963760375977,
+        "Seconds": 0.6155334999784827,
+        "MoveMagnitude": 0.5000000397364298,
+        "Root": "287.83221435546875, 7.338057041168213, 56.547664642333984",
+        "Distance": 14.799776077270508,
+        "SideSpeed": -0.0028125167535320923,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "HalfForward24",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 0.08482309430837631,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 0.9151769280433655,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 24.043819024939936,
+        "Riding": true,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 0.08482309430837631,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 0.9151769280433655,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 11.999974250793457,
+        "Seconds": 0.5163105000101496,
+        "MoveMagnitude": 1.0000000794728596,
+        "Root": "287.8330078125, 7.338056564331055, 53.62104034423828",
+        "Distance": -6.149996757507324,
+        "SideSpeed": -0.0037488714186984747,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "ReverseMinus12",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": -11.911430732836982,
+        "Riding": true,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.9128748178482056,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 23.450471878051758,
+        "Seconds": 0.6164394000079483,
+        "MoveMagnitude": 1.0000000794728596,
+        "Root": "275.8332214355469, 6.938043594360352, 49.97916030883789",
+        "Distance": 14.699850082397461,
+        "SideSpeed": -0.0015023324655065366,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "Normal24AfterExit",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "Animation1",
+            "Weight": 0,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.871324896812439,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.871324896812439,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 23.846383086817493,
+        "Riding": false,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.871324896812439,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.871324896812439,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 32.551876068115234,
+        "Seconds": 0.08319040000787936,
+        "MoveMagnitude": 1.0000000794728596,
+        "Root": "286.07159423828125, 7.338059425354004, 43.95386505126953",
+        "Distance": 2.4142143726348877,
+        "SideSpeed": 17.002112002588703,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "Diagonal",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.871324896812439,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.871324896812439,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 29.02034817005599,
+        "Riding": true,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 1.871324896812439,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 1.871324896812439,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "Name": "SideInputEarly",
+        "Seconds": 0.0828132999886293,
+        "Side": 0.3134206533432007,
+        "Forward": 1.0000641345977783
+      },
+      {
+        "LastRunningSpeed": 38.823970794677734,
+        "Seconds": 0.5500560000073165,
+        "MoveMagnitude": 1,
+        "Root": "275.6208190917969, 6.9380388259887695, 53.90498352050781",
+        "Distance": 21.8335018157959,
+        "SideSpeed": 0.0006455203097555085,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "UpgradedNormal40",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 3.0981152057647705,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 3.0981152057647705,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 39.69323453522093,
+        "Riding": false,
+        "WalkSpeed": 40,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 3.0981152057647705,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 3.0981152057647705,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 51.999908447265625,
+        "Seconds": 0.5661862000124529,
+        "MoveMagnitude": 1,
+        "Root": "287.8243103027344, 7.338057041168213, 65.11102294921875",
+        "Distance": 29.250070571899414,
+        "SideSpeed": -0.0011926220022394664,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "UpgradedForward52",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 3.0981152057647705,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 3.0981152057647705,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 51.66157453370654,
+        "Riding": true,
+        "WalkSpeed": 40,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 3.0981152057647705,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 1,
+            "Speed": 3.0981152057647705,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 12.000042915344238,
+        "Seconds": 0.6166908000013791,
+        "MoveMagnitude": 0,
+        "Root": "287.8388977050781, 7.338057041168213, 45.70896530151367",
+        "Distance": 7.349888801574707,
+        "SideSpeed": -0.0013941353345215404,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "UpgradedIdle12",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 11.918272173929415,
+        "Riding": true,
+        "WalkSpeed": 40,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 12.000004768371582,
+        "Seconds": 0.6159917000040878,
+        "MoveMagnitude": 0,
+        "Root": "287.8409118652344, 6.456644058227539, 42.59434127807617",
+        "Distance": 7.399888038635254,
+        "SideSpeed": -0.0014052123438012558,
+        "HipHeight": 1.3706306219100952,
+        "State": "Running",
+        "RootSize": "1.399999976158142, 1.371999979019165, 0.699999988079071",
+        "Name": "ScaledR15_0.7",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 12.012967120476052,
+        "Riding": true,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 12.000014305114746,
+        "Seconds": 0.6174203999980818,
+        "MoveMagnitude": 0,
+        "Root": "287.841064453125, 7.338057041168213, 42.34416961669922",
+        "Distance": 7.399888038635254,
+        "SideSpeed": -0.0014019607070442656,
+        "HipHeight": 1.9580438137054443,
+        "State": "Running",
+        "RootSize": "2, 1.9600000381469727, 1",
+        "Name": "ScaledR15_1",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 11.98516932491742,
+        "Riding": true,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      },
+      {
+        "LastRunningSpeed": 12.000239372253418,
+        "Seconds": 0.6161378000106197,
+        "MoveMagnitude": 0,
+        "Root": "287.84124755859375, 10.27609920501709, 41.993896484375",
+        "Distance": 7.349888801574707,
+        "SideSpeed": -0.0013953866079007983,
+        "HipHeight": 3.9160876274108887,
+        "State": "Running",
+        "RootSize": "4, 3.9200000762939453, 2",
+        "Name": "ScaledR15_2",
+        "Tracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ],
+        "Speed": 11.928969138799836,
+        "Riding": true,
+        "WalkSpeed": 24,
+        "EndTracks": [
+          {
+            "Name": "Animation1",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Idle",
+            "Id": "rbxassetid://14618196485"
+          },
+          {
+            "Name": "World1WalkwayIdle",
+            "Weight": 1,
+            "Speed": 1,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=507766388"
+          },
+          {
+            "Name": "WalkAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913402848"
+          },
+          {
+            "Name": "RunAnim",
+            "Weight": 9.999999747378752e-05,
+            "Speed": 0,
+            "Priority": "Core",
+            "Id": "http://www.roblox.com/asset/?id=913376220"
+          }
+        ]
+      }
+    ],
+    "OtherPlayers": [
+      {
+        "Riding": false,
+        "Index": 1,
+        "Position": "287.86376953125, 7.336049556732178, 13.000198364257812"
+      },
+      {
+        "Riding": false,
+        "Index": 2,
+        "Position": "309.9969177246094, 7.336049556732178, 13.000198364257812"
+      }
+    ],
+    "Checks": [
+      {
+        "Name": "Spawn center does not ride",
+        "Passed": true
+      },
+      {
+        "Passed": true,
+        "Name": "Analog half input is preserved",
+        "Detail": 24.043819024939936
+      },
+      {
+        "Passed": true,
+        "Name": "Walking playback matches normal floor within 1%",
+        "Detail": {
+          "Normal": 1.9128748178482056,
+          "Walkway": 1.9128748178482056
+        }
+      },
+      {
+        "Name": "Passive carry does not speed up locomotion",
+        "Passed": true
+      },
+      {
+        "Passed": true,
+        "Name": "Native movement and animation event control restored after exit",
+        "Detail": {
+          "NativeExpected": 1.871324947823351,
+          "Speed": 23.846383086817493,
+          "Playback": 1.871324896812439,
+          "RunningEvent": 23.450471878051758
+        }
+      },
+      {
+        "Passed": true,
+        "Name": "Action track playback is untouched",
+        "Detail": 1.3700000047683716
+      },
+      {
+        "Passed": true,
+        "Name": "Existing Treadmill track retains rate and excludes carry",
+        "Detail": 1
+      },
+      {
+        "Passed": true,
+        "Name": "Diagonal preserves both components",
+        "Detail": {
+          "Side": 17.002112002588703,
+          "Forward": 29.02034817005599
+        }
+      },
+      {
+        "Name": "Side boundary disables local mover 2",
+        "Passed": true
+      },
+      {
+        "Name": "Side boundary disables local mover 3",
+        "Passed": true
+      },
+      {
+        "Name": "Side boundary disables local mover 4",
+        "Passed": true
+      },
+      {
+        "Name": "Side boundary disables local mover 5",
+        "Passed": true
+      },
+      {
+        "Name": "Side boundary disables local mover 6",
+        "Passed": true
+      },
+      {
+        "Name": "Side boundary disables local mover 7",
+        "Passed": true
+      },
+      {
+        "Name": "Side boundary disables local mover 8",
+        "Passed": true
+      },
+      {
+        "Passed": true,
+        "Name": "Side input leaves walkway",
+        "Detail": [
+          {
+            "Side": 3.366966962814331,
+            "Along": 25.60490608215332,
+            "Input": "-23.9999942779541, 0, -0.017456047236919403",
+            "Velocity": "-24.077045440673828, 0.01859903149306774, 11.905481338500977",
+            "Riding": true,
+            "MoverEnabled": true
+          },
+          {
+            "Side": 6.467499732971191,
+            "Along": 25.804895401000977,
+            "Input": "-23.9999942779541, 0, -0.017456047236919403",
+            "Velocity": "-24.00604820251465, 0.05018356069922447, -0.062729611992836",
+            "Riding": true,
+            "MoverEnabled": false
+          },
+          {
+            "Side": 9.367586135864258,
+            "Along": 25.804651260375977,
+            "Input": "-23.9999942779541, 0, -0.017456047236919403",
+            "Velocity": "-24.00028419494629, -1.3472121953964233, -0.02578834258019924",
+            "Riding": false,
+            "MoverEnabled": false
+          },
+          {
+            "Side": 12.167757034301758,
+            "Along": 25.804616928100586,
+            "Input": "-23.9999942779541, 0, -0.017456047236919403",
+            "Velocity": "-24.000028610229492, 0.020919756963849068, -0.0203306395560503",
+            "Riding": false,
+            "MoverEnabled": false
+          },
+          {
+            "Side": 14.967928886413574,
+            "Along": 25.804609298706055,
+            "Input": "-23.9999942779541, 0, -0.017456047236919403",
+            "Velocity": "-24.000001907348633, 0.00035158341052010655, -0.018465442582964897",
+            "Riding": false,
+            "MoverEnabled": false
+          },
+          {
+            "Side": 17.36807632446289,
+            "Along": 25.804584503173828,
+            "Input": "-23.9999942779541, 0, -0.017456047236919403",
+            "Velocity": "-23.999998092651367, 0.0001302073069382459, -0.0178533885627985",
+            "Riding": false,
+            "MoverEnabled": false
+          },
+          {
+            "Side": 20.16824722290039,
+            "Along": 25.80461883544922,
+            "Input": "-23.9999942779541, 0, -0.017456047236919403",
+            "Velocity": "-23.999998092651367, 0.00013020735059399158, -0.01759469322860241",
+            "Riding": false,
+            "MoverEnabled": false
+          },
+          {
+            "Side": 22.96841812133789,
+            "Along": 25.80463409423828,
+            "Input": "-23.9999942779541, 0, -0.017456047236919403",
+            "Velocity": "-23.999998092651367, 0.00013020732149016112, -0.017503265291452408",
+            "Riding": false,
+            "MoverEnabled": false
+          }
+        ]
+      },
+      {
+        "Passed": true,
+        "Name": "Normal walk near 24",
+        "Detail": 24.14324429307732
+      },
+      {
+        "Passed": true,
+        "Name": "Idle carry near 12",
+        "Detail": 11.99593659390095
+      },
+      {
+        "Passed": true,
+        "Name": "Forward adds 12",
+        "Detail": 36.20869922229793
+      },
+      {
+        "Passed": true,
+        "Name": "Reverse keeps signed input",
+        "Detail": -11.911430732836982
+      },
+      {
+        "Passed": true,
+        "Name": "Upgrade40 adds 12",
+        "Detail": 51.66157453370654
+      },
+      {
+        "Passed": true,
+        "Name": "Upgrade does not change passive carry",
+        "Detail": 11.918272173929415
+      },
+      {
+        "Passed": true,
+        "Name": "Upgraded walking playback matches normal floor",
+        "Detail": {
+          "Normal": 3.0981152057647705,
+          "Walkway": 3.0981152057647705
+        }
+      },
+      {
+        "Name": "Before fixed start boundary",
+        "Passed": true
+      },
+      {
+        "Passed": true,
+        "Name": "After fixed start boundary without input",
+        "Detail": {
+          "ObservedSeconds": 0.2333130000042729
+        }
+      },
+      {
+        "Name": "Jump releases carry",
+        "Passed": true
+      },
+      {
+        "Name": "Reboard after jump",
+        "Passed": true
+      },
+      {
+        "Name": "Airborne mover disabled immediately",
+        "Passed": true
+      },
+      {
+        "Name": "Airborne server ride clears",
+        "Passed": true
+      },
+      {
+        "Passed": true,
+        "Name": "Grounded scaled R15 0.7",
+        "Detail": 12.012967120476052
+      },
+      {
+        "Passed": true,
+        "Name": "Grounded scaled R15 1",
+        "Detail": 11.98516932491742
+      },
+      {
+        "Passed": true,
+        "Name": "Grounded scaled R15 2",
+        "Detail": 11.928969138799836
+      },
+      {
+        "Passed": true,
+        "Name": "Stops before first wall",
+        "Detail": {
+          "Along": 79.28255462646484,
+          "End": 79.40003031492228
+        }
+      },
+      {
+        "Name": "Stops inside current forward attack reach",
+        "Passed": true
+      },
+      {
+        "Name": "Personal wall disappearance keeps endpoint",
+        "Passed": true
+      },
+      {
+        "Name": "World2 attribute clears visuals and ride",
+        "Passed": true
+      },
+      {
+        "Name": "World1 attribute restores ride",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 1",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 2",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 3",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 4",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 5",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 6",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 7",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 8",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 9",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 10",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 11",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 12",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 13",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 14",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 15",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 16",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 17",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 18",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 19",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 20",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 21",
+        "Passed": true
+      },
+      {
+        "Name": "Visible pair opacity 22",
+        "Passed": true
+      },
+      {
+        "Passed": true,
+        "Name": "All arrows move as pairs while player idle",
+        "Detail": {
+          "Moving": 22,
+          "Count": 22,
+          "Paired": 22
+        }
+      },
+      {
+        "Passed": true,
+        "Name": "All pairs cycle without duplication/allocation",
+        "Detail": {
+          "Created": 0,
+          "Wrapped": 22,
+          "Folders": 1
+        }
+      },
+      {
+        "Name": "Respawn at origin has no carry",
+        "Passed": true
+      },
+      {
+        "Name": "Respawn can reboard",
+        "Passed": true
+      }
+    ],
+    "ConcurrentPlayers": [
+      {
+        "Riding": true,
+        "Index": 1,
+        "Position": "287.8273010253906, 7.336049556732178, 57.09254455566406"
+      },
+      {
+        "Riding": false,
+        "Index": 2,
+        "Position": "309.9969177246094, 7.336049556732178, 13.000198364257812"
+      }
+    ],
+    "Kind": "Actual isolated Studio Play; synthetic input/placement; fresh local fixture",
+    "Isolation": {
+      "DataStoreDependencies": 0,
+      "PlaceId": 0,
+      "ProductionSaveCode": false,
+      "Players": 2
+    },
+    "Passed": true
+  },
+  "Isolation": {
+    "PlaceId": 0,
+    "AllowlistedSources": 15,
+    "Clients": 2,
+    "AssertionsPassedBeforePlay": true,
+    "ProductionPersistencePresent": false,
+    "OriginalPlacePlayedThisRevision": false,
+    "ReturnedToEdit": true
+  },
+  "SourceHashes": {
+    "ReplicatedStorage.Config.World1WalkwayConfig": "725:477584816:174112676",
+    "ReplicatedStorage.Modules.FloorGuideRenderer": "24110:1327663480:479152063",
+    "ReplicatedStorage.Modules.World1WalkwayGeometry": "5728:1886500046:646281115",
+    "ReplicatedStorage.Modules.World1WalkwayLocomotion": "6645:133406217:439080083",
+    "ServerScriptService.Services.AutoTapService": "3211:1106063124:82329262",
+    "ServerScriptService.Services.World1WalkwayService": "5342:1862486672:15441370",
+    "ServerScriptService.Systems.Controllers.World1WalkwayController": "72:565661748:2107034374",
+    "StarterPlayer.StarterPlayerScripts.Tutorial.World1FloorRouteClient": "1737:1552306750:922449680",
+    "StarterPlayer.StarterPlayerScripts.World.World1WalkwayClient": "3648:1849677757:341534404"
+  }
+}

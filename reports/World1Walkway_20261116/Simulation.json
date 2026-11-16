@@ -1,0 +1,270 @@
+{
+  "Kind": "Edit geometry with simulated clock and mocked gameplay dependencies; not real Play",
+  "Render": {
+    "1": {
+      "Name": "Every arrow actually translates",
+      "Passed": true,
+      "Detail": {
+        "Count": 22,
+        "Moved": 22
+      }
+    },
+    "2": {
+      "Passed": true,
+      "Name": "Two arms move together"
+    },
+    "3": {
+      "Name": "All arrows retain Transparency 0.5 on current route",
+      "Passed": true,
+      "Detail": {
+        "Visible": 22
+      }
+    },
+    "4": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 1"
+    },
+    "5": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 2"
+    },
+    "6": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 3"
+    },
+    "7": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 4"
+    },
+    "8": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 5"
+    },
+    "9": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 6"
+    },
+    "10": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 7"
+    },
+    "11": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 8"
+    },
+    "12": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 9"
+    },
+    "13": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 10"
+    },
+    "14": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 11"
+    },
+    "15": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 12"
+    },
+    "16": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 13"
+    },
+    "17": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 14"
+    },
+    "18": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 15"
+    },
+    "19": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 16"
+    },
+    "20": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 17"
+    },
+    "21": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 18"
+    },
+    "22": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 19"
+    },
+    "23": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 20"
+    },
+    "24": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 21"
+    },
+    "25": {
+      "Passed": true,
+      "Name": "Cycle returns arrow 22"
+    },
+    "26": {
+      "Name": "Frame updates reuse pool and surface cache",
+      "Passed": true,
+      "Detail": {
+        "Parts": 44
+      }
+    },
+    "27": {
+      "Name": "Existing triple width preserved",
+      "Passed": true,
+      "Detail": {
+        "Width": 7.093475341796875
+      }
+    },
+    "28": {
+      "Passed": true,
+      "Name": "Hide suspends animation"
+    },
+    "29": {
+      "Passed": true,
+      "Name": "Thin non-query obstacle masks moving pair"
+    },
+    "30": {
+      "Passed": true,
+      "Name": "Removed obstacle restores cached flow"
+    }
+  },
+  "Strength": {
+    "Checks": {
+      "1": {
+        "Name": "Passive carry gives no automatic walking Strength",
+        "Passed": true
+      },
+      "2": {
+        "Name": "Manual tap still gains Strength during a ride",
+        "Passed": true
+      },
+      "3": {
+        "Name": "Ordinary grounded walking still gains Strength",
+        "Passed": true
+      },
+      "4": {
+        "Name": "Idle normal floor still gives no automatic gain",
+        "Passed": true
+      },
+      "5": {
+        "Name": "Treadmill remains routed to its own existing reward owner",
+        "Passed": true
+      },
+      "6": {
+        "Name": "Combat remains above the walking-only gate",
+        "Passed": true
+      }
+    },
+    "Kind": "Mocked dependency routing using actual Source"
+  },
+  "Trophy": {
+    "Total": 24,
+    "Kind": "Mocked client state/events using actual Source tail; not Play or rendered UI",
+    "Cases": {
+      "1": {
+        "Name": "first victory, initial Trophy pending",
+        "Passed": true
+      },
+      "2": {
+        "Name": "loss then merge/equip victory: FirstBattle Complete, Trophy pending",
+        "Passed": true
+      },
+      "3": {
+        "Name": "TrophySpawn then first receipt completion removes guide immediately",
+        "Passed": true
+      },
+      "4": {
+        "Name": "complete cohort retains no Trophy guide on repeat Stage1 defeat",
+        "Passed": true
+      },
+      "5": {
+        "Name": "completion before TrophySpawn",
+        "Passed": true
+      },
+      "6": {
+        "Name": "TrophySpawn before completion while FirstBattle Complete",
+        "Passed": true
+      },
+      "7": {
+        "Name": "legacy initial unreceived Trophy preserved",
+        "Passed": true
+      },
+      "8": {
+        "Name": "legacy complete profile restored and repeated TrophySpawn",
+        "Passed": true
+      },
+      "9": {
+        "Name": "new cohort complete profile restored before first event",
+        "Passed": true
+      },
+      "10": {
+        "Name": "Stage2 completion before merge/equip prevents later Stage1 guide",
+        "Passed": true
+      },
+      "11": {
+        "Name": "completed death and respawn do not restart guide",
+        "Passed": true
+      },
+      "12": {
+        "Name": "completed World round trip and Initialize do not restart guide",
+        "Passed": true
+      },
+      "13": {
+        "Name": "unknown completion attribute never permits Trophy",
+        "Passed": true
+      },
+      "14": {
+        "Name": "unknown completion with FirstBattle Complete never permits Trophy",
+        "Passed": true
+      },
+      "15": {
+        "Name": "completed Battle phase does not fall back to walls",
+        "Passed": true
+      },
+      "16": {
+        "Name": "completed Train phase does not fall back to treadmill",
+        "Passed": true
+      },
+      "17": {
+        "Name": "completed initial receipt still permits pending Merge",
+        "Passed": true
+      },
+      "18": {
+        "Name": "completed initial receipt retains Equip branch",
+        "Passed": true
+      },
+      "19": {
+        "Name": "completed profile preserves later BasicEgg",
+        "Passed": true
+      },
+      "20": {
+        "Name": "completed profile preserves later PetMerge",
+        "Passed": true
+      },
+      "21": {
+        "Name": "completed profile preserves later OreMerge",
+        "Passed": true
+      },
+      "22": {
+        "Name": "initial Trophy existing visibility gates remain",
+        "Passed": true
+      },
+      "23": {
+        "Name": "unmatched or removed Trophy does not create a guide",
+        "Passed": true
+      },
+      "24": {
+        "Name": "explicit existing reset re-enables initial tutorial",
+        "Passed": true
+      }
+    },
+    "Passed": 24
+  }
+}

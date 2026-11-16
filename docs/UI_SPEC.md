@@ -1,10 +1,10 @@
 # UI_SPEC — 現在のUI仕様正本
 
-## 2026-11-16 — World1常設ルートの独立表示
+## 2026-11-16 — World1常設動く歩道の独立表示
 
-World1FloorRouteClient冒頭のSETTINGSが常設側だけのWidthMultiplier=3／Transparency=0.3を持つ。実幅2.364→7.093studs、前後1.514・線幅0.34・厚み0.045・間隔3.5を保持。生成先World1PermanentFloorGuideは既存TutorialFloorGuideとプール・寿命を分離し、双方を障害物から除外する。説明文／画像追加なし。初回Trophy誘導には引き続きTutorialCompletedの明示falseが必要で、完了後に復活させない。
+ReplicatedStorage.Config.World1WalkwayConfigが常設側だけのWidthMultiplier=3／Transparency=0.5／ArrowSpeed=4 studs/sを持つ。実幅2.364→7.093studs、前後1.514・線幅0.34・厚み0.045を保持。22組の両腕が一体で移動・循環し、間隔3.5 studsを目安に循環長を均等割りする。入力・搬送速度とは独立し、静止中も流れる。床・設備判定をキャッシュし、毎フレーム部品生成や全経路Raycastをしない。
 
-隔離実PlayでTreadmill／OreMerge併存、壁・Boss・Trophy帰還・死亡復帰・World往復を確認。PC1390×601／スマホ874×402／タブレット1376×1032相当の描画確認であり、実機確認ではない。[設定・外縁比較・画像・検証限界](../reports/World1PermanentFloorGuide_20261116/REPORT.md)。
+生成先World1PermanentFloorGuideは既存TutorialFloorGuideとプール・寿命を分離し、双方を障害物から除外する。カメラ・向き・操作UIは変更しない。初回Trophy誘導には引き続きTutorialCompletedの明示falseが必要で、完了後に復活させない。今回の実Playは保存処理を含まない専用Placeでの実物理・Animator検査で、入力・位置は合成。実端末／ゲームパッド操作、副本全体の進行は未確認。[設定・実測・検証限界](../reports/World1Walkway_20261116/REPORT.md)。
 
 ## 2026-11-16 — 副本Studio専用Body比較UI
 

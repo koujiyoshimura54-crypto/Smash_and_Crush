@@ -1,10 +1,12 @@
 # GAME_SPEC — ゲーム仕様正本
 
-## 2026-11-16 — World1の常設床矢印
+## 2026-11-16 — World1の常設動く歩道（確定仕様）
 
 World1では新規／既存、LV、初回チュートリアル・個別ガイド・生死に依存せず、実Lobby SpawnLocationからStage1最初のWallの手前まで固定ルートを各クライアントで表示する。プレイヤー追従はせず、壁／Boss撃破後も行き先を変えない。World2では隠し、World1復帰・床再生成後は支持面を確認して戻す。既存個別ガイドと進行・完了・戦闘・報酬・保存・Analyticsは別管理。
 
-白Neonの既存2-Part矢印を流用し、常設だけTransparency=0.3、実外縁幅3倍、前後長・線幅・間隔を維持。拡幅実寸で床・非Query設備を検査する。[Full Paths・比較画像・隔離Play・未確認事項](../reports/World1PermanentFloorGuide_20261116/REPORT.md)。副本未保存Edit、Save/Publishなし。
+白Neonの既存2-Part矢印は、Transparency=0.5、実外縁幅3倍、4 studs/sの連続移動と循環。固定Spawn原点から5 studs先で接地したプレイヤーを12 studs/sで壁へ運び、通常の方向・アナログ入力速度を加算する（通常24なら無入力12、前進36、逆方向−12）。旧1.5倍の合計速度固定は撤回。WalkSpeedは変更せず、横離脱・ジャンプ・死亡・World変更で搬送解除。終点は最初の壁手前4 studsまたはBody外縁に応じた余白を維持する。
+
+搬送中の自動歩行Strengthは除外し、通常床の歩行・手動タップ・Treadmillは既存処理を維持。歩行Coreアニメーションは入力分だけの速度へ補正し、搬送分で速めない。設定はReplicatedStorage.Config.World1WalkwayConfigに集約し、次のPlay起動時に反映。[Full Paths・実Play測定・模擬回帰・未確認事項](../reports/World1Walkway_20261116/REPORT.md)。副本未保存Edit、Save/Publishなし。
 
 ## 2026-11-16 — Studio内の通常／筋肉Body比較（最新、未採用）
 

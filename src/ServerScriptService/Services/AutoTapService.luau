@@ -8,6 +8,7 @@ local Training=require(Services.TrainingManager)
 local Enemy=require(game.ServerScriptService.World.EnemyManager)
 local Timing=require(Services.PlayerActionTiming)
 local TrainingConfig=require(game.ReplicatedStorage.Config.TrainingConfig)
+local Walkway=require(Services.World1WalkwayService)
 local M={}
 local toggles=setmetatable({}, {__mode="k"})
 local function ready(p)
@@ -20,6 +21,8 @@ local function treadmill(p)
  return p:GetAttribute("IsTraining")==true or Training.GetOccupiedTreadmill(p)~=nil
 end
 local function isGroundedWalking(p)
+ -- Passive conveyor travel is not ordinary walking training. Manual combat/taps and treadmills keep their existing routes.
+ if Walkway.IsRiding(p) then return false end
  local h=p.Character:FindFirstChildOfClass("Humanoid")
  local r=p.Character:FindFirstChild("HumanoidRootPart")
  local st=h:GetState()

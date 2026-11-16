@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-16 — World1動く歩道を固定12＋通常入力へ修正
+
+現在の副本未保存実装を維持し、搬送を固定12 studs/s＋正規歩行の方向／アナログ入力へ変更。開始5 studs、矢印Transparency0.5・流速4・横幅3倍をConfigへ集約。歩行Core再生速度だけを補正し、個別ガイド・Trophy判定・保存・報酬・戦闘は変更しない。
+
+新規PlaceId 0に必要な床・壁と許可したSourceだけを配置し、隔離検査成功後に2クライアント実Play。速度・アナログ・離脱・実Animator・全矢印循環を測定。StrengthとTrophyは模擬回帰、BodyはScaleしたR15の代理検査。正規進行／BodyPrototype全サイズ／実端末は未確認。[Full Paths・測定値・保持確認・制約](../reports/World1Walkway_20261116/REPORT.md)。指定副本のPlay、Save/Publish、正本・PR #1操作なし。
+
 ## 2026-11-16 — 副本World1の常設床矢印を実装
 
 副本126576845524886 / Universe10765181857の現在の未保存Sourceから、描画モジュール抽出＋独立常設LocalScriptを反映。実Spawn→壁面1.5studs手前の23組、Transparency0.3、外縁幅3倍・前後長維持。基本10／幾何16ネイティブ項目、資源5サイクル、Trophy状態24ケース、実攻撃／受取／死亡／Worldゲート往復と3画面描画を確認。

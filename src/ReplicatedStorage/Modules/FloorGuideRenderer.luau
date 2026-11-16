@@ -25,6 +25,9 @@ function M.new(options)
  local margin=options.Fixed and radius or 2
 local route
 local pool={}
+local flow,flowConnection
+local flowSpeed=options.Fixed and tonumber(options.FlowSpeed) or 0
+local flowing=flowSpeed and flowSpeed>0
 local SPACING=3.5
 local MAX_CHEVRONS=160
 local floorParts={}
@@ -64,11 +67,13 @@ local function isCharacter(part)
  return false
 end
 local function clear()
+ flow=nil
  if route then route:Destroy();route=nil end
  table.clear(pool)
  lastRouteState=nil
 end
 local function hide()
+ flow=nil
  if route then attribute(route,"Target","") end
  for _,pair in ipairs(pool) do for _,part in ipairs(pair) do assign(part,"Transparency",1) end end
  lastRouteState=nil
@@ -311,9 +316,10 @@ local function floorOnly(hit,direction,top)
  local candidates=nearCandidates(hit.Position,top)
  local points={hit.Position}
  local highest=hit.Position.Y
- local tip=hit.Position+forward*halfDepth
+ local checkedDepth=halfDepth+(flowing and (options.SurfaceSampleStep or .25)/2 or 0)
+ local tip=hit.Position+forward*checkedDepth
  for _,sign in {-1,1} do
-  local tail=hit.Position-forward*halfDepth+side*(sign*halfWidth)
+  local tail=hit.Position-forward*checkedDepth+side*(sign*halfWidth)
   local edge=(tip-tail).Unit:Cross(normal)*.17
   if options.Fixed then
    -- Cover the real expanded arms at <=0.25 studs, including both outer edges.
@@ -359,6 +365,65 @@ local function arm(index,side)
  part.Parent=route
  return part
 end
+-- Only the permanent owner opts into flow. Surface/obstacle sampling happens
+-- on scene changes, never in the RenderStepped callback or once per frame.
+local function animate()
+ local data=flow
+ if not data or destroyed then return end
+ local phase=(os.clock()*flowSpeed)%data.span
+ for index=1,data.count do
+  local distance=data.first+((index-1)*data.spacing+phase)%data.span
+  local sampleIndex=math.min(#data.samples-1,math.floor(distance/data.step)+1)
+  local a,b=data.samples[sampleIndex],data.samples[sampleIndex+1]
+  local pair=pool[index]
+  if a and b and a.valid and b.valid then
+   local fraction=math.clamp((distance-a.distance)/(b.distance-a.distance),0,1)
+   local normal=a.normal:Lerp(b.normal,fraction).Unit
+   local forward=(data.direction-normal*data.direction:Dot(normal)).Unit
+   local side=forward:Cross(normal).Unit
+   local point=data.start+data.direction*distance
+   -- Max keeps each entire arm above a carpet transition instead of intersecting it.
+   local center=Vector3.new(point.X,math.max(a.height,b.height),point.Z)+normal*.055
+   local tip=center+forward*halfDepth
+   for armIndex,sign in {-1,1} do
+    local tail=center-forward*halfDepth+side*(sign*halfWidth)
+    assign(pair[armIndex],"Size",Vector3.new(.34,.045,(tip-tail).Magnitude))
+    assign(pair[armIndex],"CFrame",CFrame.lookAt((tip+tail)/2,tip,normal))
+    assign(pair[armIndex],"Transparency",options.Transparency or 0)
+   end
+  else
+   assign(pair[1],"Transparency",1);assign(pair[2],"Transparency",1)
+  end
+ end
+end
+local function buildFlow(start,target,distance,castTop)
+ local direction=Vector3.new(target.X-start.X,0,target.Z-start.Z).Unit
+ local step=options.SurfaceSampleStep or .25
+ local samples={}
+ for i=0,math.ceil(distance/step) do
+  local d=math.min(distance,i*step)
+  local point=start+direction*d
+  local hit=workspace:Raycast(Vector3.new(point.X,castTop,point.Z),Vector3.new(0,-256,0),rayParams)
+  local supported,height=floorOnly(hit,direction,castTop)
+  samples[#samples+1]={distance=d,valid=supported,height=height,normal=hit and hit.Normal}
+ end
+ local first=halfDepth+.34
+ local span=distance-2*first
+ local count=math.max(1,math.min(MAX_CHEVRONS,math.floor(span/(options.Spacing or SPACING))))
+ for index=1,count do
+  if not pool[index] then pool[index]={arm(index,"Left"),arm(index,"Right")} end
+ end
+ for index=count+1,#pool do assign(pool[index][1],"Transparency",1);assign(pool[index][2],"Transparency",1) end
+ flow={start=start,direction=direction,samples=samples,step=step,first=first,span=span,count=count,spacing=span/count}
+ attribute(route,"ChevronCount",count)
+ attribute(route,"FlowSpeed",flowSpeed)
+ attribute(route,"FlowSpan",span)
+ attribute(route,"FlowSpacing",span/count)
+ attribute(route,"Origin",start);attribute(route,"Destination",target)
+ attribute(route,"RenderRevision",(route:GetAttribute("RenderRevision") or 0)+1)
+ animate()
+ if not flowConnection then flowConnection=game:GetService("RunService").RenderStepped:Connect(animate) end
+end
 local function show(key,start,target)
  if destroyed then return end
  if not route then
@@ -387,6 +452,7 @@ local function show(key,start,target)
  if lastRouteState and lastRouteState.key==key and lastRouteState.origin==state.origin
   and lastRouteState.target==target and lastRouteState.revision==sceneRevision and lastRouteState.top==castTop then return end
  lastRouteState=state
+ if flowing then buildFlow(start,target,distance,castTop);return end
  local segmentIndex=1
  local segmentStartDistance=0
  for index=1,count do
@@ -436,6 +502,7 @@ end
  function self:Destroy()
   if destroyed then return end
   destroyed=true;clear();stopCache()
+  if flowConnection then flowConnection:Disconnect();flowConnection=nil end
   if owners[options.Name]==self then owners[options.Name]=nil end
   if self.OnDestroy then self.OnDestroy() end
  end

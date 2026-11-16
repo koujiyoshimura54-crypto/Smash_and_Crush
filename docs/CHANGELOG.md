@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-16 — World1常設動く歩道の確定仕様
+
+搬送12 studs/sへ正規の方向・アナログ歩行速度を加算し、旧1.5倍固定を撤回。開始を固定経路の5 studsへ短縮。矢印0.5／流速4／幅3倍、搬送12をWorld1WalkwayConfigへ集約。歩行Coreアニメーションへ搬送速度を反映しない。保存処理を含まない専用Placeで隔離検査後に実Play測定し、模擬回帰と未確認の統合操作を区別した。[報告](../reports/World1Walkway_20261116/REPORT.md)。
+
 ## 2026-11-16 — World1常設の床矢印
 
 副本Studioへ実SpawnからStage1壁手前までの独立した固定ガイドを追加。既存白Neonを使い濃さ70%・横幅3倍、拡幅実寸の床／障害物判定。個別ガイドとWinTrophy完了条件を保持。隔離実Play、26ネイティブ基本／幾何項目、資源反復、24 Trophy状態ケース、3画面描画を確認し、補助を除去して未保存Edit。実機等の限界と比較画像は[報告](../reports/World1PermanentFloorGuide_20261116/REPORT.md)。
