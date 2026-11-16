@@ -1,5 +1,7 @@
 # World1 ダンベル3D実装（2026-11-16開始／2026-11-17更新）
 
+> 2026-11-17素材整理: 現在のローカル素材は `C:\Users\kouji\Downloads\World2Dumbbells_20261117\World1` に集約。重複ZIPは展開内容照合後に削除。以下の取得時パスは履歴。[移動・削除記録](../World2Dumbbell3D_20261117/UI08_AND_MATERIALS.md)。
+
 対象：副本 PlaceId **126576845524886**、Universe **10765181857**。接続実値と所有者 User **7467238848** を確認。
 現在の未保存Studio編集を基準に反映。正本・PR #1・Save／Publishは操作していない。
 

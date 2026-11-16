@@ -1,6 +1,8 @@
 # World2ダンベル・8番UI・Body/Treadmill調査
 
-2026-11-17 再開分。**確定10種類を副本へ実装し隔離Playで検証。05/09の対応と8番UI画像は未完了。**
+2026-11-17 更新。**確定10種類を副本へ実装し隔離Playで検証。8番UI画像は登録・共通設定反映済み、画面描画は未確認。05/09は対応未確定。**
+
+最新の[8番画像ID・素材集約・削除記録・確認限界](UI08_AND_MATERIALS.md)。
 
 対象実値: PlaceId **126576845524886** / UniverseId **10765181857** / Creator User **7467238848**。現在の未保存編集を基準とした。再開時HEAD/origin/mainは **c4a55e5f06e86c9dfc47cfdd320526237bb078d2**。84e999cへ巻き戻していない。前段の原因調査・修正前後の生測定は[BODY_PHASE.md](BODY_PHASE.md)に保存した。
 
@@ -20,7 +22,7 @@
 
 ## 元ファイル・登録ID
 
-元ZIPは実Downloads `C:\Users\kouji\Downloads`、展開済み原本は `Downloads\World2Dumbbells_20261117\originals\<UUID>`、作業GLBは同フォルダーのexports。全12元FBXは異なるSHA256。ファイル順やskull_maceという名前だけで割り当てていない。[元モデルの描画比較](images/source_models.png)と[旧設備/UI画像](images/icons_before.png)を照合した。
+取得時の元ZIPは実Downloads `C:\Users\kouji\Downloads`。現在はユーザー指示により `Downloads\World2Dumbbells_20261117\World2\originals\<UUID>` と同World2配下のexportsへ集約し、全内容が展開済みファイルと一致した重複ZIPは削除済み。全12元FBXは異なるSHA256。ファイル順やskull_maceという名前だけで割り当てていない。[元モデルの描画比較](images/source_models.png)と[旧設備/UI画像](images/icons_before.png)を照合した。
 
 追加されたモデル用フォルダー権限で10件のアップロードが成功。全件同じ正規所有者へ1回ずつ登録し、再アップロードせず再利用する。ZIP名は `tripo_convert_<UUID>.zip`。
 
@@ -106,11 +108,9 @@ run13ログでは意図したW2_04欠落警告1回と、既存W1看板画像1199
 
 ## 8番UIと残る未確認
 
-指定PNG `C:\Users\kouji\Downloads\紫水晶の双頭クリスタルメイス.png`（RGBA 1536×1024、透過あり）は、モデル用に許可されたサブフォルダーの外にある。実画像アップロードが **File not in an approved upload directory** で拒否されたため新UI IDなし。OSの読み取り拒否やモデル用フォルダーの再拒否ではない。
+指定PNGをユーザーの明示指示で許可済みフォルダーへまとめ、Image **112266643972428** を登録。`ReplicatedStorage.Config.World2GameplayConfig.DumbbellImages[8]` の1か所へ反映した。DumbbellItemMasterからインベントリ一覧/詳細、マージ候補/完成結果へ共通参照する。PNGのアルファ/縦横比を保持し、3Dテクスチャで代用していない。
 
-ユーザーがこのPNGを許可済み `Downloads\World2Dumbbells_20261117` へ移す、またはDownloadsをアップロード許可する回答待ち。実際に読んだ [rbx-permissions SKILL.md](../../tmp/Dumbbell3D/skills/rbx-permissions/SKILL.md) の “Don't copy or move it yourself.” に従い、拒否されたファイルをこちらで許可フォルダーへ移していない。
-
-`ReplicatedStorage.Config.World2GameplayConfig.DumbbellImages[8]` は旧 **101543601215487** のまま。DumbbellItemMaster.Imageを経由するInventoryPanelClientの詳細/プレビュー、DumbbellInventoryView一覧、MergeShopViewの候補/完成結果の参照は静的確認。指定PNGへ差し替えたUI描画は未確認・未完了。3Dテクスチャによる代用なし。
+新規ローカル起動を止める指示に従い、追加のUI Playは行っていない。ContentFetchはSuccess、実UI描画・新画像の画面証拠は未確認。[詳細](UI08_AND_MATERIALS.md)。前段のフォルダー許可待ちは解消。
 
 その他未完了/未確認:
 
@@ -130,3 +130,5 @@ run13ログでは意図したW2_04欠落警告1回と、既存W1看板画像1199
 [STUDIO_VISUAL_FINAL.json](STUDIO_VISUAL_FINAL.json): 再開時526 Sourceのうち523保持、既知3変更＋新Config1本＝527。Source/Editor一致、予期しない変更/削除0。W1原本12、W2原本10、検証Instance0。副本は未保存Edit。検証用別Studioは終了し、元Studioだけを開いたままにする。Save/Publish・正本・PR #1・force pushは操作していない。無関係なcrashes/をGitへ含めない。
 
 検証再現: `python tests/build_body_dumbbell_diagnostics.py --visuals --variant serialized_mesh --training-fixed --regression --clients 2`。必要な最新Source/geometryは作業PCのtmpへ保持し、Source39本の隔離検査成功時だけPlay。空checkoutには巨大/非公開の作業スナップショットを含めないため、別PCでは副本から再取得が必要。W2形状の読み取りexportはtests/ExportWorld2DumbbellGeometry.luau。pending/は前段の準備履歴で、現在の正本Sourceはsrc/。
+
+今回の8番共通設定1か所の追加変更と、最新の副本確認は[UI08_AND_MATERIALS.md](UI08_AND_MATERIALS.md) / [UI08_STUDIO_FINAL.json](UI08_STUDIO_FINAL.json)。

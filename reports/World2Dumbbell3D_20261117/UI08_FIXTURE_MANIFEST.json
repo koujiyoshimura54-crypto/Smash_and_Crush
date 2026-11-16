@@ -1,0 +1,57 @@
+{
+  "PlaceId": 0,
+  "Sources": {
+    "ReplicatedStorage.Config.EnemyDropConfig": "3b05e1d6132cc7774d5c57517e8590fe0c612fdb28c031d89380b8c2a589171e",
+    "ReplicatedStorage.Modules.NumberFormat": "69854653f6fa9dc3e93dc4a15c6723e51be85968a02fc8913290e87e0b0750af",
+    "ReplicatedStorage.Modules.StrengthHUDPresentation": "dca8b0ecf9ddcca8780faf9a362033b2b642582521fa63fd67ab6db760c578c6",
+    "ReplicatedStorage.Config.LimitedEggConfig": "ffd93c9eb9afc2e0a81db98034f97055c848e196e29bdfb558b31fce0a35ac5e",
+    "ReplicatedStorage.Modules.InventoryPresentation": "82ddf736c70b4a4c1ae353d63b77c232c574f06308a3c02d43dcd3d90690451e",
+    "ReplicatedStorage.Modules.DumbbellInventoryView": "6f1a73f337efd965a645adce832ca30af9dd0014a91bb3a545ab6570859e8145",
+    "ReplicatedStorage.Modules.PetMerge": "a5dfd7a1700ac369b3ad9ecf38fcb9ba0553126001d3498ff09993b499ae71bb",
+    "ReplicatedStorage.Config.OreConfig": "865bef8b45ce61d6e4f18863cfa1c3c093f006665190c21ec856a8ab7ee83093",
+    "ReplicatedStorage.Modules.OreMerge": "b3cb499fba12f595b1d568f74ec78bf76acdff0b1176e5717a050ad41a9b4c00",
+    "ReplicatedStorage.Config.ItemMaster": "9e9e59d0550c909930efdf453e321e747ed9e36d1deac086aade1a2ba593d3c7",
+    "ReplicatedStorage.Config.DumbbellItemMaster": "a7e433651105bb5e84099293fe62e917427b94744680cc1907525ebe511a9be1",
+    "ReplicatedStorage.Modules.InventoryCounts": "3be3d38c922a73dca25f667e1b71ed7d9786d98fd7e1d19545b7a12113e19a17",
+    "ReplicatedStorage.Modules.HUDLayout": "5f0e505f3705e36439ffc70beff68bbdba2f0c639596e5e2dbf72181f256d7ab",
+    "ReplicatedStorage.Config.World2GameplayConfig": "d97bfba8ac3c551c2d026e8d229bb1a8c810f2a5dcac564d6e3cab1c395d6806",
+    "ReplicatedStorage.Config.ItemMergeConfig": "5b1733bd298c6f05ce0c6774984f95bc04c0eb00e4f6dd737b68b884ba519ac7",
+    "ReplicatedStorage.Modules.EquipmentButtonStyle": "aaa3aee711c91c59751088baa30fef8370c6100d13d28a5cd3b3d8b542a06479",
+    "ReplicatedStorage.Modules.Config": "a883ec80fd70ff639d69dd1c892f860d7f159dd5bde65c672b7b742cd0aa5ec0",
+    "ReplicatedStorage.Config.DeveloperProductConfig": "635437d65d1624f8a429799941ed79d3a3fe3a37145f7230486dc73938f24a4f",
+    "ReplicatedStorage.Modules.MergeShopView": "8750e3b040d311d378f97abb10dae30dea406d7da5c2e6b01b2ab2ef95ab0c89",
+    "ReplicatedStorage.Config.StrengthHUDStyle": "214aa6ffebc3deb3cab0ce30899babcc06ba0c4281fbafadec155362b5a35337",
+    "ReplicatedStorage.Modules.Egg": "38c55e4593f3bdeb48037608f8b37f09397bc67f624f898e5e4841ad4ae068b3",
+    "ReplicatedStorage.Modules.ForgeClient": "4e68d932f4de2d54247b309c82c8db390be81bd1e8ca4de28d985d253d402651",
+    "ReplicatedStorage.Modules.FirstPlayAnalyticsClient": "273036e04b25fee79aa94d1312c3178006d5e1a53c8edb9743938db925ab9b5a",
+    "ReplicatedStorage.Modules.UIFeedback": "34afe54747d752d9f8682d5e396b92498e0c840e6a085766cd05f77430d73943",
+    "StarterPlayer.StarterPlayerScripts.__World2UIFixture": "75e86a0e0dc333e6859f6d0a8a2dae13b85352b4fe3dc7787d452b31b630c7dd",
+    "ServerScriptService.__World2UIFixture": "8c4c8546cc5195cb5ec26340999eb8db4479fc76720d9a9dce342a66c90ba215"
+  },
+  "Adapters": [
+    "ForgeClient: Bindable UI state/completion, requests error",
+    "FirstPlayAnalyticsClient: no send",
+    "UIFeedback: no sound"
+  ],
+  "ForbiddenTokens": [
+    "DataStoreService",
+    "MarketplaceService",
+    "MemoryStoreService",
+    "AnalyticsService",
+    "TeleportService",
+    "HttpService:Post",
+    "HttpService:Request",
+    "GetDataStore",
+    "SavePlace",
+    "Publish"
+  ],
+  "Image": "112266643972428",
+  "PlayAttempt": {
+    "IsolationConfirmed": true,
+    "SourceCount": 26,
+    "ToolCallSucceeded": true,
+    "ResultReturned": false,
+    "UIVerified": false,
+    "FurtherLaunchStoppedByUser": true
+  }
+}

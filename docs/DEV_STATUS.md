@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-17 — World2 08の指定PNG登録とダンベル素材集約
+
+指定PNGをImage 112266643972428として登録し、World2GameplayConfig.DumbbellImages[8]だけ更新。World1/World2素材189ファイルを許可済み1フォルダーへ移動し、全内容照合した重複ZIP23個とPNG1個を削除。追加のローカル起動を止める指示に従い、画像の実UI描画は未確認。副本Editへ反映、Save/Publishなし。[画像ID・整理結果・検証限界](../reports/World2Dumbbell3D_20261117/UI08_AND_MATERIALS.md)。
+
 ## 2026-11-17 — World2ダンベル確定10種類を副本へ反映
 
 既存World1の原本複製・両手表示を完全ItemIdのまま共用し、World2確定10モデルを登録、設備展示とLobby両手へ反映。05/09の対応と8番UI用PNGのフォルダー許可は未解決。隔離2クライアントPlay289項目、4体型×装着有無の歩行約24 studs/s、実Strength更新、死亡復帰・World往復を確認。未確認の実進行/実端末と、設定/登録ID/復元/画像は[報告](../reports/World2Dumbbell3D_20261117/REPORT.md)。副本の既存編集を保持した未保存Edit、Save/Publishなし。
