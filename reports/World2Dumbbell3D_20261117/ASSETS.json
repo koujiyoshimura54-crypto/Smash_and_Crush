@@ -1,0 +1,964 @@
+{
+  "Models": [
+    {
+      "UUID": "129491e9-6098-49c1-85c7-bb7dda049030",
+      "SourceZip": "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.zip",
+      "SourceFBX": "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbx",
+      "Triangles": 13879,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        -0.0003204345703125,
+        0.005943307653069496,
+        0.189453125
+      ],
+      "MeshCenter": [
+        0.0,
+        0.01096343994140625,
+        0.005523728206753731
+      ],
+      "MeshSize": [
+        0.9808655977249146,
+        0.4008331298828125,
+        0.3714142441749573
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "skull_mace_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "313f0c2cf911304a5e318026865f08ba584e4202dcea0d0eb668fbe2526e7b4c"
+        },
+        "normal": {
+          "file": "skull_mace_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "4a848fb4315a7441bf01ca7b136342d911ca18a7b6f52a741dde29aff73e0bd6"
+        },
+        "roughness": {
+          "file": "skull_mace_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "6d3f8e41fd5e179129026c827befae2f35c1a04d9c13f5b8d15a20d3d318cfc5"
+        },
+        "metallic": {
+          "file": "skull_mace_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "d5b697be1a4077a4772b3ed034337e95f9ab7b4d67e7308e81a73f223aad0dcd"
+        }
+      },
+      "GLB": "exports/129491e9-6098-49c1-85c7-bb7dda049030.glb",
+      "GLBBytes": 5087128,
+      "GLBSHA256": "781fcd1def13f699944b88e9eb784b29ebe1575b9e21c18cf085a6430a0bfc97",
+      "ItemId": null,
+      "MappingStatus": "AwaitingUserIdentification",
+      "OriginalFilesSHA256": {
+        "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbx": "55f3049028c9234f210552296354fbca95143dc3ce4dc2b634feaf778003a423",
+        "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbm/skull_mace_3d_model_normal.jpg": "4a848fb4315a7441bf01ca7b136342d911ca18a7b6f52a741dde29aff73e0bd6",
+        "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbm/skull_mace_3d_model_basecolor.jpg": "313f0c2cf911304a5e318026865f08ba584e4202dcea0d0eb668fbe2526e7b4c",
+        "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbm/skull_mace_3d_model_roughness.jpg": "6d3f8e41fd5e179129026c827befae2f35c1a04d9c13f5b8d15a20d3d318cfc5",
+        "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbm/skull_mace_3d_model_metallic.jpg": "d5b697be1a4077a4772b3ed034337e95f9ab7b4d67e7308e81a73f223aad0dcd",
+        "tripo_convert_129491e9-6098-49c1-85c7-bb7dda049030.fbm/skull_mace_3d_model_rm.jpg": "c28f2f93d6f557898aa12803c748a4672c0582640c10e45db4f4786bae512355"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "15b4b34a-ee7b-4724-a23d-840821ad4b01",
+      "SourceZip": "tripo_convert_15b4b34a-ee7b-4724-a23d-840821ad4b01.zip",
+      "SourceFBX": "tripo_convert_15b4b34a-ee7b-4724-a23d-840821ad4b01.fbx",
+      "Triangles": 13686,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        -0.000335693359375,
+        -0.03381609916687012,
+        0.1808004379272461
+      ],
+      "MeshCenter": [
+        0.0,
+        -0.008162498474121094,
+        -0.03341938555240631
+      ],
+      "MeshSize": [
+        0.9783326387405396,
+        0.34527587890625,
+        0.46011364459991455
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "spider_weapon_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "5d1fd298f84b0976bee4516900f216510631a074bdbd7d16a52d65c05d3399be"
+        },
+        "normal": {
+          "file": "spider_weapon_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "2ddf735181cfa0ca633ce052cdafa81687fe307df2fcae4e814e51bf52843cb0"
+        },
+        "roughness": {
+          "file": "spider_weapon_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "cc3ee75c3efde311dba0055478da805435e1354c2efc97a1ea8c188289ff9bde"
+        },
+        "metallic": {
+          "file": "spider_weapon_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "2294bc26b9ca54c16b5832ed6ae02da828784e29094daac37fc79336955bee82"
+        }
+      },
+      "GLB": "exports/15b4b34a-ee7b-4724-a23d-840821ad4b01.glb",
+      "GLBBytes": 5753708,
+      "GLBSHA256": "fceac3f5008422295eb026463385c83c90c1d44e96a3c6793fb3f77f18aff642",
+      "ItemId": "W2_NORMAL_06",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_15b4b34a-ee7b-4724-a23d-840821ad4b01.fbx": "4e31bf09290d698c25af000330eefd0adc7077b4c4bb6c0225ff90f0f43495b3",
+        "tripo_convert_15b4b34a-ee7b-4724-a23d-840821ad4b01.fbm/spider_weapon_3d_model_basecolor.jpg": "5d1fd298f84b0976bee4516900f216510631a074bdbd7d16a52d65c05d3399be",
+        "tripo_convert_15b4b34a-ee7b-4724-a23d-840821ad4b01.fbm/spider_weapon_3d_model_metallic.jpg": "2294bc26b9ca54c16b5832ed6ae02da828784e29094daac37fc79336955bee82",
+        "tripo_convert_15b4b34a-ee7b-4724-a23d-840821ad4b01.fbm/spider_weapon_3d_model_rm.jpg": "1d0ff18e2b6f514e554e9fe8916a0484099b055198edd2ff4901a64a4161f6c0",
+        "tripo_convert_15b4b34a-ee7b-4724-a23d-840821ad4b01.fbm/spider_weapon_3d_model_normal.jpg": "2ddf735181cfa0ca633ce052cdafa81687fe307df2fcae4e814e51bf52843cb0",
+        "tripo_convert_15b4b34a-ee7b-4724-a23d-840821ad4b01.fbm/spider_weapon_3d_model_roughness.jpg": "cc3ee75c3efde311dba0055478da805435e1354c2efc97a1ea8c188289ff9bde"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "1f4b4e93-389d-433a-a119-495af875a4b4",
+      "SourceZip": "tripo_convert_1f4b4e93-389d-433a-a119-495af875a4b4.zip",
+      "SourceFBX": "tripo_convert_1f4b4e93-389d-433a-a119-495af875a4b4.fbx",
+      "Triangles": 12962,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        0.0001373291015625,
+        -0.00801466777920723,
+        0.27552223205566406
+      ],
+      "MeshCenter": [
+        0.0,
+        -0.014505386352539062,
+        0.007617916911840439
+      ],
+      "MeshSize": [
+        0.9817811250686646,
+        0.52203369140625,
+        0.4449616074562073
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "magic_mace_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "7c3c686de000e222b7da5cb73203a331fd9b0df06649b4923890d9f0e12ac0fc"
+        },
+        "normal": {
+          "file": "magic_mace_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "3686527f794d3b2e6c29e5ed49146017696255123a6412aee71ba11b1906160e"
+        },
+        "roughness": {
+          "file": "magic_mace_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "159d805dd0d789cf60f33bd0b3ca597c124c1466477799977321f44f399f3722"
+        },
+        "metallic": {
+          "file": "magic_mace_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "14ca271a23d9a0029e09216e7cf7268c59b8f5db626929743cc312f381de2cae"
+        }
+      },
+      "GLB": "exports/1f4b4e93-389d-433a-a119-495af875a4b4.glb",
+      "GLBBytes": 4741796,
+      "GLBSHA256": "af6b034981c25b673126f34f777fc155091d187cc83c52dec700d1372f9d3986",
+      "ItemId": "W2_NORMAL_12",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_1f4b4e93-389d-433a-a119-495af875a4b4.fbx": "0298cb726b4e717352a4d0e72147fcab2de61fb976d1e3fd15e562f91e4c7b35",
+        "tripo_convert_1f4b4e93-389d-433a-a119-495af875a4b4.fbm/magic_mace_3d_model_rm.jpg": "a469761fb97904a1a2adbb935af61387b01a716d36365120298e46e0e1d33a96",
+        "tripo_convert_1f4b4e93-389d-433a-a119-495af875a4b4.fbm/magic_mace_3d_model_metallic.jpg": "14ca271a23d9a0029e09216e7cf7268c59b8f5db626929743cc312f381de2cae",
+        "tripo_convert_1f4b4e93-389d-433a-a119-495af875a4b4.fbm/magic_mace_3d_model_normal.jpg": "3686527f794d3b2e6c29e5ed49146017696255123a6412aee71ba11b1906160e",
+        "tripo_convert_1f4b4e93-389d-433a-a119-495af875a4b4.fbm/magic_mace_3d_model_basecolor.jpg": "7c3c686de000e222b7da5cb73203a331fd9b0df06649b4923890d9f0e12ac0fc",
+        "tripo_convert_1f4b4e93-389d-433a-a119-495af875a4b4.fbm/magic_mace_3d_model_roughness.jpg": "159d805dd0d789cf60f33bd0b3ca597c124c1466477799977321f44f399f3722"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "325c88e5-35ce-4599-abbc-d6add5edffa0",
+      "SourceZip": "tripo_convert_325c88e5-35ce-4599-abbc-d6add5edffa0.zip",
+      "SourceFBX": "tripo_convert_325c88e5-35ce-4599-abbc-d6add5edffa0.fbx",
+      "Triangles": 13127,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        -0.0001068115234375,
+        0.00019456446170806885,
+        0.21978187561035156
+      ],
+      "MeshCenter": [
+        0.0,
+        0.008337020874023438,
+        0.00040815770626068115
+      ],
+      "MeshSize": [
+        0.9797669649124146,
+        0.45623779296875,
+        0.3888855576515198
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "nuclear_bomb_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "20c7f72c0c6223b5d43be3d7e088efced8ad919cffee011069747a1ae1647e0b"
+        },
+        "normal": {
+          "file": "nuclear_bomb_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "6571ae77f5002c8e6a9152cdf4d8a108c6575e2b70d5e4691a5b99c51b575355"
+        },
+        "roughness": {
+          "file": "nuclear_bomb_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "09a2506c7d74e283cf6506b30e8444a47748e5ac5b6fa654cf3e30ebe7eda658"
+        },
+        "metallic": {
+          "file": "nuclear_bomb_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "cedbdd2678ad5b2ccdb938dce58f9ab846c53fb272e53200a586e1d70d936bfa"
+        }
+      },
+      "GLB": "exports/325c88e5-35ce-4599-abbc-d6add5edffa0.glb",
+      "GLBBytes": 5342548,
+      "GLBSHA256": "6ac5f3baf82d5a65bfe47f34b844bd3469655837781bc2242a10b99bae6c936f",
+      "ItemId": "W2_NORMAL_04",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_325c88e5-35ce-4599-abbc-d6add5edffa0.fbx": "91e3685904d51833b6c651fc812c33ddf2e1577589d569e6fce86dce7db8b4ee",
+        "tripo_convert_325c88e5-35ce-4599-abbc-d6add5edffa0.fbm/nuclear_bomb_3d_model_rm.jpg": "f3ee0da4c9016c8779f15652828ab3a610080878ad68629baedc2ad60106965e",
+        "tripo_convert_325c88e5-35ce-4599-abbc-d6add5edffa0.fbm/nuclear_bomb_3d_model_normal.jpg": "6571ae77f5002c8e6a9152cdf4d8a108c6575e2b70d5e4691a5b99c51b575355",
+        "tripo_convert_325c88e5-35ce-4599-abbc-d6add5edffa0.fbm/nuclear_bomb_3d_model_roughness.jpg": "09a2506c7d74e283cf6506b30e8444a47748e5ac5b6fa654cf3e30ebe7eda658",
+        "tripo_convert_325c88e5-35ce-4599-abbc-d6add5edffa0.fbm/nuclear_bomb_3d_model_metallic.jpg": "cedbdd2678ad5b2ccdb938dce58f9ab846c53fb272e53200a586e1d70d936bfa",
+        "tripo_convert_325c88e5-35ce-4599-abbc-d6add5edffa0.fbm/nuclear_bomb_3d_model_basecolor.jpg": "20c7f72c0c6223b5d43be3d7e088efced8ad919cffee011069747a1ae1647e0b"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "45523401-b6e5-40be-886e-87653b1ca616",
+      "SourceZip": "tripo_convert_45523401-b6e5-40be-886e-87653b1ca616.zip",
+      "SourceFBX": "tripo_convert_45523401-b6e5-40be-886e-87653b1ca616.fbx",
+      "Triangles": 12538,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        -6.103515625e-05,
+        -0.010147089138627052,
+        0.2565021514892578
+      ],
+      "MeshCenter": [
+        0.0,
+        -0.0062427520751953125,
+        -0.010253915563225746
+      ],
+      "MeshSize": [
+        0.9797364473342896,
+        0.500518798828125,
+        0.387664794921875
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "energy_hammer_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "9f40b3dea3ce24e772b12f8da64f01bf29b59155e577ab28a237089a1389246d"
+        },
+        "normal": {
+          "file": "energy_hammer_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "5ef598c9871499689604dbc64a3145cef92306fcf73b714dfae47ab8efc361aa"
+        },
+        "roughness": {
+          "file": "energy_hammer_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "df4a65e9c3178b5bcb08b69c9267bcc2370c01d20813b373bfe8c0ac4a8b034f"
+        },
+        "metallic": {
+          "file": "energy_hammer_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "95052c30b896b0a51c522b6f8821e1d1e8e3d3493e3d8e7b4019d19e0cd13252"
+        }
+      },
+      "GLB": "exports/45523401-b6e5-40be-886e-87653b1ca616.glb",
+      "GLBBytes": 5676472,
+      "GLBSHA256": "d184e686c5d4264e821bb76c04c0ae9eaa5b541a50c9d3fb19a4a9ac26055c41",
+      "ItemId": "W2_NORMAL_10",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_45523401-b6e5-40be-886e-87653b1ca616.fbx": "3325d972eee63ea069ab00c833b8babcc5ae6de2402d6901647cfb73ba058e2f",
+        "tripo_convert_45523401-b6e5-40be-886e-87653b1ca616.fbm/energy_hammer_3d_model_rm.jpg": "9f6d9db1d0b2c4fb9561a2f38ad0b710abe8335a7b9120283e4b0a7d902fd82d",
+        "tripo_convert_45523401-b6e5-40be-886e-87653b1ca616.fbm/energy_hammer_3d_model_normal.jpg": "5ef598c9871499689604dbc64a3145cef92306fcf73b714dfae47ab8efc361aa",
+        "tripo_convert_45523401-b6e5-40be-886e-87653b1ca616.fbm/energy_hammer_3d_model_basecolor.jpg": "9f40b3dea3ce24e772b12f8da64f01bf29b59155e577ab28a237089a1389246d",
+        "tripo_convert_45523401-b6e5-40be-886e-87653b1ca616.fbm/energy_hammer_3d_model_metallic.jpg": "95052c30b896b0a51c522b6f8821e1d1e8e3d3493e3d8e7b4019d19e0cd13252",
+        "tripo_convert_45523401-b6e5-40be-886e-87653b1ca616.fbm/energy_hammer_3d_model_roughness.jpg": "df4a65e9c3178b5bcb08b69c9267bcc2370c01d20813b373bfe8c0ac4a8b034f"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "699aff5d-dfc7-47af-8c04-3d2fc97fbd2d",
+      "SourceZip": "tripo_convert_699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.zip",
+      "SourceFBX": "tripo_convert_699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.fbx",
+      "Triangles": 12879,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        6.10649585723877e-05,
+        0.004117975011467934,
+        0.22133445739746094
+      ],
+      "MeshCenter": [
+        0.0,
+        -0.0051326751708984375,
+        0.004407892003655434
+      ],
+      "MeshSize": [
+        0.9804688692092896,
+        0.432403564453125,
+        0.5376281142234802
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "stone_dumbbell_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "a6a9e06d9d134a837d6f9c5c4ecbe8ed05d0397c2aac5c04d314029dc3c4c3a3"
+        },
+        "normal": {
+          "file": "stone_dumbbell_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "55e02627b28b3720b66406657c7e05251e0e60b999c752a343077f633b9cd2ed"
+        },
+        "roughness": {
+          "file": "stone_dumbbell_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "9e82ccdc74a43b234a403ef9ca1f4bd6ac5baf78565e317454f6d5b75c4bd272"
+        },
+        "metallic": {
+          "file": "stone_dumbbell_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "e88bb76319f2fe20ebf9a9e86b10f5776a035ee75216ee315c7eb0f02601aa8f"
+        }
+      },
+      "GLB": "exports/699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.glb",
+      "GLBBytes": 4356616,
+      "GLBSHA256": "8dd0ed57d8026e8c02ca7844a542f95f90bfeef525d835217b92203dd642d08e",
+      "ItemId": "W2_NORMAL_02",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.fbx": "ade975d9b28efb08e30da7cdfd53ab5042755cd7bcc027d7134936dbfa3c9e44",
+        "tripo_convert_699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.fbm/stone_dumbbell_3d_model_metallic.jpg": "e88bb76319f2fe20ebf9a9e86b10f5776a035ee75216ee315c7eb0f02601aa8f",
+        "tripo_convert_699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.fbm/stone_dumbbell_3d_model_normal.jpg": "55e02627b28b3720b66406657c7e05251e0e60b999c752a343077f633b9cd2ed",
+        "tripo_convert_699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.fbm/stone_dumbbell_3d_model_roughness.jpg": "9e82ccdc74a43b234a403ef9ca1f4bd6ac5baf78565e317454f6d5b75c4bd272",
+        "tripo_convert_699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.fbm/stone_dumbbell_3d_model_basecolor.jpg": "a6a9e06d9d134a837d6f9c5c4ecbe8ed05d0397c2aac5c04d314029dc3c4c3a3",
+        "tripo_convert_699aff5d-dfc7-47af-8c04-3d2fc97fbd2d.fbm/stone_dumbbell_3d_model_rm.jpg": "6f819f6948262b53f5eb7f78f9e97ae9aead4e36d05072d9ddf0becaa652c7d4"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "6f4d6c73-89cb-4430-a575-6c6cdf56fdd4",
+      "SourceZip": "tripo_convert_6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.zip",
+      "SourceFBX": "tripo_convert_6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.fbx",
+      "Triangles": 13425,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        -4.57763671875e-05,
+        2.8617680072784424e-05,
+        0.22597885131835938
+      ],
+      "MeshCenter": [
+        0.0,
+        0.008274078369140625,
+        0.0002651140093803406
+      ],
+      "MeshSize": [
+        0.9801331758499146,
+        0.468505859375,
+        0.48170486092567444
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "heavy_dumbbell_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "0b6e310c590794975337f4427245f4c6ac608d703ef9b147157735098abda0b5"
+        },
+        "normal": {
+          "file": "heavy_dumbbell_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "e161f91151ad3866a13d920f372fbfd2227c362db7af5049692d3319969caf34"
+        },
+        "roughness": {
+          "file": "heavy_dumbbell_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "49d5e8010c4d9cf03be2fc8af212c4d9946de356601a34c90c6196379f4902ef"
+        },
+        "metallic": {
+          "file": "heavy_dumbbell_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "6e6bc03074ab02479928b40552f06784721c7d562671dff1c3b9bec1cc799555"
+        }
+      },
+      "GLB": "exports/6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.glb",
+      "GLBBytes": 5136924,
+      "GLBSHA256": "d8b22dd808a1d443d0afc99ace61d205e38f342c533afb9fad9bea1c30faaaf9",
+      "ItemId": "W2_NORMAL_07",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.fbx": "e9f65e630fb5c37df7a7b46d761abca7b102689ae3515206fa8e680819e78c60",
+        "tripo_convert_6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.fbm/heavy_dumbbell_3d_model_roughness.jpg": "49d5e8010c4d9cf03be2fc8af212c4d9946de356601a34c90c6196379f4902ef",
+        "tripo_convert_6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.fbm/heavy_dumbbell_3d_model_basecolor.jpg": "0b6e310c590794975337f4427245f4c6ac608d703ef9b147157735098abda0b5",
+        "tripo_convert_6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.fbm/heavy_dumbbell_3d_model_rm.jpg": "a4fccc3a1cdb8b2e3e0f4e44d99d87e1dc8945d7316272d7bbf61455524fe0d3",
+        "tripo_convert_6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.fbm/heavy_dumbbell_3d_model_normal.jpg": "e161f91151ad3866a13d920f372fbfd2227c362db7af5049692d3319969caf34",
+        "tripo_convert_6f4d6c73-89cb-4430-a575-6c6cdf56fdd4.fbm/heavy_dumbbell_3d_model_metallic.jpg": "6e6bc03074ab02479928b40552f06784721c7d562671dff1c3b9bec1cc799555"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "850c42fe-67c0-4846-9611-d1d1e7b1c6c0",
+      "SourceZip": "tripo_convert_850c42fe-67c0-4846-9611-d1d1e7b1c6c0.zip",
+      "SourceFBX": "tripo_convert_850c42fe-67c0-4846-9611-d1d1e7b1c6c0.fbx",
+      "Triangles": 13412,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        0.0002593994140625,
+        0.0005111750215291977,
+        0.2604331970214844
+      ],
+      "MeshCenter": [
+        0.0,
+        -0.015499114990234375,
+        0.0011748727411031723
+      ],
+      "MeshSize": [
+        0.9839783906936646,
+        0.4898681640625,
+        0.4333038926124573
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "monster_dumbbell_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "4bab1f02a2f6a443794c6c4f0b0a999543e7bd78b930153a1c5a0c73f4dcd9c3"
+        },
+        "normal": {
+          "file": "monster_dumbbell_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "1e821c44f393b93dd754dc1bd718f0072fd137fa2f98fda7ad0c215fc668c40d"
+        },
+        "roughness": {
+          "file": "monster_dumbbell_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "9f3f84c322b4a63cc94e3ce6c89924180e04720517b43da1f4101398bcd27fe5"
+        },
+        "metallic": {
+          "file": "monster_dumbbell_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "06a23f0442531b223bec75d3ac3449279b3e01cc7c733ae94eba86af5f7df434"
+        }
+      },
+      "GLB": "exports/850c42fe-67c0-4846-9611-d1d1e7b1c6c0.glb",
+      "GLBBytes": 4795728,
+      "GLBSHA256": "b18c59099cadfbe0bf5505dcfad4456086cb83f6dc40d2f8307387fb0555135d",
+      "ItemId": "W2_NORMAL_11",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_850c42fe-67c0-4846-9611-d1d1e7b1c6c0.fbx": "19b6c13c59a9ec6c7e59e91a00e41c0be18f474106c85872ed9ba7250ec695d7",
+        "tripo_convert_850c42fe-67c0-4846-9611-d1d1e7b1c6c0.fbm/monster_dumbbell_3d_model_metallic.jpg": "06a23f0442531b223bec75d3ac3449279b3e01cc7c733ae94eba86af5f7df434",
+        "tripo_convert_850c42fe-67c0-4846-9611-d1d1e7b1c6c0.fbm/monster_dumbbell_3d_model_rm.jpg": "1c92917f70c03ff90faa25a17f2e4956e8774638826a2209d722089c4220b039",
+        "tripo_convert_850c42fe-67c0-4846-9611-d1d1e7b1c6c0.fbm/monster_dumbbell_3d_model_roughness.jpg": "9f3f84c322b4a63cc94e3ce6c89924180e04720517b43da1f4101398bcd27fe5",
+        "tripo_convert_850c42fe-67c0-4846-9611-d1d1e7b1c6c0.fbm/monster_dumbbell_3d_model_normal.jpg": "1e821c44f393b93dd754dc1bd718f0072fd137fa2f98fda7ad0c215fc668c40d",
+        "tripo_convert_850c42fe-67c0-4846-9611-d1d1e7b1c6c0.fbm/monster_dumbbell_3d_model_basecolor.jpg": "4bab1f02a2f6a443794c6c4f0b0a999543e7bd78b930153a1c5a0c73f4dcd9c3"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "be9de5d1-da96-4257-b9fa-0e9cfc268e96",
+      "SourceZip": "tripo_convert_be9de5d1-da96-4257-b9fa-0e9cfc268e96.zip",
+      "SourceFBX": "tripo_convert_be9de5d1-da96-4257-b9fa-0e9cfc268e96.fbx",
+      "Triangles": 12790,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        3.0487775802612305e-05,
+        0.00010110065340995789,
+        0.1813526153564453
+      ],
+      "MeshCenter": [
+        0.0,
+        -0.0040073394775390625,
+        -0.00021934881806373596
+      ],
+      "MeshSize": [
+        0.9816285371780396,
+        0.3546905517578125,
+        0.39114394783973694
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "sci-fi_hammer_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "1bdb83edf5da06f1a0d32fc75a7aa749d75a1a3467a3a726c14453f0721d0d0e"
+        },
+        "normal": {
+          "file": "sci-fi_hammer_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "b906530faa064ca90c79bf49f656e1ecc52bef4bc2f700c69e289126c1e06536"
+        },
+        "roughness": {
+          "file": "sci-fi_hammer_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "a7e830c439b1295e1b1dd391b7d1c614c8052f483dd8de4914a1fba0422965c0"
+        },
+        "metallic": {
+          "file": "sci-fi_hammer_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "4b67db117ad34325820bb2cadc90b8856a0fbf397ab0c0291e75def790848ea8"
+        }
+      },
+      "GLB": "exports/be9de5d1-da96-4257-b9fa-0e9cfc268e96.glb",
+      "GLBBytes": 4687288,
+      "GLBSHA256": "54fbb24af942b915259f08ac88b7b93ff89a67eef223d5e28ad0a5375e3d8479",
+      "ItemId": "W2_NORMAL_01",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_be9de5d1-da96-4257-b9fa-0e9cfc268e96.fbx": "017f610fbaed52154e672e3bd8175d0fe96a617067ec9999e293e4229a084c86",
+        "tripo_convert_be9de5d1-da96-4257-b9fa-0e9cfc268e96.fbm/sci-fi_hammer_3d_model_roughness.jpg": "a7e830c439b1295e1b1dd391b7d1c614c8052f483dd8de4914a1fba0422965c0",
+        "tripo_convert_be9de5d1-da96-4257-b9fa-0e9cfc268e96.fbm/sci-fi_hammer_3d_model_rm.jpg": "6aa4c4f53edcf193914b3c2cbd5ecb755fc43c09caeae09edad9fead3ec26f51",
+        "tripo_convert_be9de5d1-da96-4257-b9fa-0e9cfc268e96.fbm/sci-fi_hammer_3d_model_metallic.jpg": "4b67db117ad34325820bb2cadc90b8856a0fbf397ab0c0291e75def790848ea8",
+        "tripo_convert_be9de5d1-da96-4257-b9fa-0e9cfc268e96.fbm/sci-fi_hammer_3d_model_normal.jpg": "b906530faa064ca90c79bf49f656e1ecc52bef4bc2f700c69e289126c1e06536",
+        "tripo_convert_be9de5d1-da96-4257-b9fa-0e9cfc268e96.fbm/sci-fi_hammer_3d_model_basecolor.jpg": "1bdb83edf5da06f1a0d32fc75a7aa749d75a1a3467a3a726c14453f0721d0d0e"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5",
+      "SourceZip": "tripo_convert_c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.zip",
+      "SourceFBX": "tripo_convert_c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.fbx",
+      "Triangles": 13666,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        -0.0001678466796875,
+        -0.0038013365119695663,
+        0.30102062225341797
+      ],
+      "MeshCenter": [
+        0.0,
+        0.014760017395019531,
+        -0.0038165654987096786
+      ],
+      "MeshSize": [
+        0.9819642305374146,
+        0.631561279296875,
+        0.5361633896827698
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "crystal_mace_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "11e62288f6b041d88da54bf82a24696363a23ae542c7176a9f30229e053fe221"
+        },
+        "normal": {
+          "file": "crystal_mace_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "e7a945c7e355e4a3d898166ad36c8b29ce0cf077e8429e57c66e45881aac3ea4"
+        },
+        "roughness": {
+          "file": "crystal_mace_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "6b37a96090bdcbb4e0e9805803f9d35c10bc95f2c465dbf4d85a128644fcf2af"
+        },
+        "metallic": {
+          "file": "crystal_mace_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "5d2b1b5bea1d19a471dcc8ae68e46d28cb0640ae41ae63d89b15a67354be2951"
+        }
+      },
+      "GLB": "exports/c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.glb",
+      "GLBBytes": 5185452,
+      "GLBSHA256": "4ee3c8f183b846a15858df06f04fbe4b85dd94c6f7a90cede8b20b2eceeaf3e1",
+      "ItemId": "W2_NORMAL_08",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.fbx": "37bff8820d9cca6f05dca193ddf47e1d6be7ecf5486cae46ae53e66a01644a8b",
+        "tripo_convert_c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.fbm/crystal_mace_3d_model_basecolor.jpg": "11e62288f6b041d88da54bf82a24696363a23ae542c7176a9f30229e053fe221",
+        "tripo_convert_c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.fbm/crystal_mace_3d_model_roughness.jpg": "6b37a96090bdcbb4e0e9805803f9d35c10bc95f2c465dbf4d85a128644fcf2af",
+        "tripo_convert_c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.fbm/crystal_mace_3d_model_metallic.jpg": "5d2b1b5bea1d19a471dcc8ae68e46d28cb0640ae41ae63d89b15a67354be2951",
+        "tripo_convert_c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.fbm/crystal_mace_3d_model_normal.jpg": "e7a945c7e355e4a3d898166ad36c8b29ce0cf077e8429e57c66e45881aac3ea4",
+        "tripo_convert_c0336e3e-4fa8-4e1b-8c0d-8ec6e1aa5dc5.fbm/crystal_mace_3d_model_rm.jpg": "0084bd8dfed34a19a8099d93d50a439a4d61ecec379fcffe9049ed73935325fc"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "c29ae88b-713b-40c8-a674-7cc619ae9784",
+      "SourceZip": "tripo_convert_c29ae88b-713b-40c8-a674-7cc619ae9784.zip",
+      "SourceFBX": "tripo_convert_c29ae88b-713b-40c8-a674-7cc619ae9784.fbx",
+      "Triangles": 13552,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        -0.000274658203125,
+        0.0027160756289958954,
+        0.24563217163085938
+      ],
+      "MeshCenter": [
+        0.0,
+        -0.002948760986328125,
+        0.0031738318502902985
+      ],
+      "MeshSize": [
+        0.9820557832717896,
+        0.4853668212890625,
+        0.4508056640625
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "spiked_mace_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "3e489c0c203b9a56c380dc514fa1ef5f4f2b5f794bf03d006295a66a0a9e7bbf"
+        },
+        "normal": {
+          "file": "spiked_mace_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "ffa64a7bc728d14b2f0c362277ed43438ebc93a1f65c25bc3362bf332510fa22"
+        },
+        "roughness": {
+          "file": "spiked_mace_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "4040f9419ad107fc0a944fc8b41fadd0c3a84f4c9f9e1f1a604dc745737fcf71"
+        },
+        "metallic": {
+          "file": "spiked_mace_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "ae6f8d9dd05d425b4dd775b954538ef539d90df07e7405ac683a412a9b47ebcb"
+        }
+      },
+      "GLB": "exports/c29ae88b-713b-40c8-a674-7cc619ae9784.glb",
+      "GLBBytes": 5006168,
+      "GLBSHA256": "2147a4e62e2ba3cae334f438da93b1d2e69cd15848eb9309d58b7471d7664513",
+      "ItemId": "W2_NORMAL_03",
+      "MappingStatus": "VisualComparisonConfirmed",
+      "OriginalFilesSHA256": {
+        "tripo_convert_c29ae88b-713b-40c8-a674-7cc619ae9784.fbx": "bb977ddc943296440469f8865d43691e59e00be2a32078b5bc61a645e8c2f5ed",
+        "tripo_convert_c29ae88b-713b-40c8-a674-7cc619ae9784.fbm/spiked_mace_3d_model_metallic.jpg": "ae6f8d9dd05d425b4dd775b954538ef539d90df07e7405ac683a412a9b47ebcb",
+        "tripo_convert_c29ae88b-713b-40c8-a674-7cc619ae9784.fbm/spiked_mace_3d_model_basecolor.jpg": "3e489c0c203b9a56c380dc514fa1ef5f4f2b5f794bf03d006295a66a0a9e7bbf",
+        "tripo_convert_c29ae88b-713b-40c8-a674-7cc619ae9784.fbm/spiked_mace_3d_model_roughness.jpg": "4040f9419ad107fc0a944fc8b41fadd0c3a84f4c9f9e1f1a604dc745737fcf71",
+        "tripo_convert_c29ae88b-713b-40c8-a674-7cc619ae9784.fbm/spiked_mace_3d_model_rm.jpg": "bade185115201e792a2102cce70b987d6519e8eb8cbd7c9a67696851c24dd23f",
+        "tripo_convert_c29ae88b-713b-40c8-a674-7cc619ae9784.fbm/spiked_mace_3d_model_normal.jpg": "ffa64a7bc728d14b2f0c362277ed43438ebc93a1f65c25bc3362bf332510fa22"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      }
+    },
+    {
+      "UUID": "d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09",
+      "SourceZip": "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.zip",
+      "SourceFBX": "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbx",
+      "Triangles": 13530,
+      "SourceYawDegrees": 0,
+      "GripInAlignedSource": [
+        0.0,
+        0.02843475341796875,
+        0.2503700256347656
+      ],
+      "MeshCenter": [
+        0.0,
+        -0.01574324071407318,
+        0.028175324201583862
+      ],
+      "MeshSize": [
+        0.9799196124076843,
+        0.4692535102367401,
+        0.977874755859375
+      ],
+      "SourceMetresPerUnit": 1,
+      "Maps": {
+        "basecolor": {
+          "file": "skull_mace_3d_model_basecolor.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "e50c247c99c9823ab2aae7748f5358561d555c5892a24323efbddb16e7fd7906"
+        },
+        "normal": {
+          "file": "skull_mace_3d_model_normal.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "1744b031cd643717481b5e6601587c49332c8eec5171dbaada25aef032e8437b"
+        },
+        "roughness": {
+          "file": "skull_mace_3d_model_roughness.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "2e0ddc4ebeda4c59f91aaa905e0af64219c79775a96889770955f0766e823f69"
+        },
+        "metallic": {
+          "file": "skull_mace_3d_model_metallic.jpg",
+          "size": [
+            2048,
+            2048
+          ],
+          "sha256": "ce0864e6ff8484d0537bdd5f72caa2a857cd7f6bc195d6c6287093749ff607c2"
+        }
+      },
+      "GLB": "exports/d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.glb",
+      "GLBBytes": 4384932,
+      "GLBSHA256": "b5919678290bedd0824a10343d5effeeb39966cb699eadbf636251ca32461fa9",
+      "ItemId": null,
+      "MappingStatus": "AwaitingUserIdentification",
+      "OriginalFilesSHA256": {
+        "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbx": "c1be308b3257cebe72ab74e3f4c5de0c5ed1f7604261208374e4e70785c782be",
+        "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbm/skull_mace_3d_model_normal.jpg": "1744b031cd643717481b5e6601587c49332c8eec5171dbaada25aef032e8437b",
+        "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbm/skull_mace_3d_model_basecolor.jpg": "e50c247c99c9823ab2aae7748f5358561d555c5892a24323efbddb16e7fd7906",
+        "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbm/skull_mace_3d_model_roughness.jpg": "2e0ddc4ebeda4c59f91aaa905e0af64219c79775a96889770955f0766e823f69",
+        "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbm/skull_mace_3d_model_metallic.jpg": "ce0864e6ff8484d0537bdd5f72caa2a857cd7f6bc195d6c6287093749ff607c2",
+        "tripo_convert_d359c5a6-d5f2-4e22-bb90-1b79bf0dcf09.fbm/skull_mace_3d_model_rm.jpg": "bfca7b5f8bac763f670e1f5749401b7f8edc40c308766e49dc6b637caada815d"
+      },
+      "AssetStatus": "NotUploaded_FolderPermissionDenied",
+      "ModelAssetId": null,
+      "MeshAssetId": null,
+      "TextureAssetIds": {
+        "BaseColor": null,
+        "Normal": null,
+        "Roughness": null,
+        "Metallic": null
+      },
+      "PendingNormalization": "Handle is diagonal in source; correct rotation on work copy after identification. Do not reshape."
+    }
+  ],
+  "MissingItemMappings": [
+    "W2_NORMAL_05",
+    "W2_NORMAL_09"
+  ],
+  "UI08": {
+    "SourcePNG": "紫水晶の双頭クリスタルメイス.png",
+    "SHA256": "99ba41843cef191afc9c2d19369b3fd5c5904598e3d0a6283b14a5e55182ddb1",
+    "OldImageId": 101543601215487,
+    "NewImageId": null,
+    "Status": "NotUploaded_NotApplied"
+  }
+}

@@ -1,0 +1,505 @@
+{
+  "Success": true,
+  "Result": {
+    "Training": [],
+    "Checks": [
+      {
+        "Details": 24.015858182122276,
+        "Name": "Body round trip restores normal motion",
+        "Passed": true
+      },
+      {
+        "Details": [
+          {
+            "Displays": [
+              {
+                "Name": "TrainingDumbbellRight",
+                "ItemId": "NORMAL_12"
+              },
+              {
+                "Name": "TrainingDumbbellLeft",
+                "ItemId": "NORMAL_12"
+              }
+            ],
+            "Index": 2
+          },
+          {
+            "Displays": [
+              {
+                "Name": "TrainingDumbbellLeft",
+                "ItemId": "NORMAL_01"
+              },
+              {
+                "Name": "TrainingDumbbellRight",
+                "ItemId": "NORMAL_01"
+              }
+            ],
+            "Index": 1
+          }
+        ],
+        "Name": "Peer sees first player's independent held ItemId",
+        "Passed": true
+      },
+      {
+        "Details": [
+          {
+            "Name": "TrainingDumbbellRight",
+            "ItemId": "NORMAL_12"
+          },
+          {
+            "Name": "TrainingDumbbellLeft",
+            "ItemId": "NORMAL_12"
+          }
+        ],
+        "Name": "First sees peer's independent held ItemId",
+        "Passed": true
+      },
+      {
+        "Name": "Death stops real gain W1",
+        "Passed": true
+      },
+      {
+        "Name": "Death leaves no duplicate displays W1",
+        "Passed": true
+      },
+      {
+        "Name": "Respawn can train again W1",
+        "Passed": true
+      },
+      {
+        "Name": "Death stops real gain W2",
+        "Passed": true
+      },
+      {
+        "Name": "Death leaves no duplicate displays W2",
+        "Passed": true
+      },
+      {
+        "Name": "Respawn can train again W2",
+        "Passed": true
+      }
+    ],
+    "Snapshots": [],
+    "Passed": true,
+    "Isolation": {
+      "Players": 2,
+      "Variant": "serialized_mesh",
+      "MemoryGainFunctionCopiedVerbatim": true,
+      "PlaceId": 0,
+      "ActualBodyComparisonHandshake": true,
+      "ActualTrainingAndStrengthCalculation": true,
+      "ProductionPersistencePresent": false
+    },
+    "Measurements": [
+      {
+        "Seconds": 2.01533539997763,
+        "Samples": [
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              37.51678466796875
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 3.259998629800975e-05
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              34.716827392578125
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.11541100000613369
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              31.916868209838867
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.23254749999614432
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              29.116857528686523
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.34866419999161735
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              26.31684684753418
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.4650734000024386
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              23.916837692260742
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.5661183999909554
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              21.1168270111084
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.6818718999857083
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              18.71681785583496
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.7820389999833424
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              15.916807174682617
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.8979056999960449
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              13.51679801940918
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 0.9992240999999922
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              10.716787338256836
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.1159128999861423
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              7.916778087615967
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.2318696999864187
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              5.516780376434326
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.3319281000003684
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              3.1167826652526855
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.432286600000225
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              0.3167833387851715
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.5481885999906808
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              -2.4832165241241455
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.6649804000044242
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              -4.883213996887207
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.76530939998338
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              -7.683211326599121
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.882018300006166
+          },
+          {
+            "State": "Running",
+            "Floor": "Plastic",
+            "Position": [
+              310,
+              6.938041687011719,
+              -10.483221054077148
+            ],
+            "Velocity": [
+              0,
+              5.2118251915089786e-05,
+              -24
+            ],
+            "Move": [
+              0,
+              0,
+              -1
+            ],
+            "Time": 1.9992926999984775
+          }
+        ],
+        "HeartbeatSeconds": 2.0333227245137095,
+        "HipHeight": 1.9580438137054443,
+        "Trial": 1,
+        "Mass": 13.66592788696289,
+        "JumpRise": 7.266326904296875,
+        "AfterJump": {
+          "OK": true,
+          "Seconds": 0.5676297000027262,
+          "Floor": "Plastic",
+          "Root": "310, 6.938041687011719, -11.959970474243164",
+          "Velocity": "0, 0.00005218523438088596, 0",
+          "State": "Running"
+        },
+        "Speed": 24.015858182122276,
+        "Name": "Normal0AfterBodyRoundTrip",
+        "WalkSpeed": 24,
+        "Settled": {
+          "OK": true,
+          "Seconds": 0.6995483999780845,
+          "Floor": "Plastic",
+          "Root": "310, 6.938041687011719, 60",
+          "Velocity": "0, 0.000052118251915089786, 0",
+          "State": "Running"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "Measurements": {
+    "Normal0Empty": {
+      "Trials": [
+        23.987371785292478,
+        23.267576952773943,
+        23.99856630080511
+      ],
+      "Mean": 23.751171679623845,
+      "Mass": 13.66592788696289
+    },
+    "Normal0Held": {
+      "Trials": [
+        23.996902699837932,
+        24.01120847329798,
+        24.01578310782611
+      ],
+      "Mean": 24.007964760320675,
+      "Mass": 13.66592788696289
+    },
+    "Normal10Empty": {
+      "Trials": [
+        24.003935289820365,
+        23.99193237667094,
+        23.99644938614593
+      ],
+      "Mean": 23.997439017545744,
+      "Mass": 83.87263488769531
+    },
+    "Normal10Held": {
+      "Trials": [
+        23.997489738014853,
+        23.96679780541644,
+        24.00242208266422
+      ],
+      "Mean": 23.988903208698506,
+      "Mass": 83.87263488769531
+    },
+    "Muscle0Empty": {
+      "Trials": [
+        23.999597141861617,
+        23.992332482096593,
+        23.995491007853925
+      ],
+      "Mean": 23.995806877270713,
+      "Mass": 3.8808019161224365
+    },
+    "Muscle0Held": {
+      "Trials": [
+        24.008075406497902,
+        24.006719066768028,
+        23.985752246421832
+      ],
+      "Mean": 24.00018223989592,
+      "Mass": 3.8808019161224365
+    },
+    "Muscle10Empty": {
+      "Trials": [
+        23.991010232955983,
+        24.002443572079777,
+        24.054018102042033
+      ],
+      "Mean": 24.01582396902593,
+      "Mass": 19.709970474243164
+    },
+    "Muscle10Held": {
+      "Trials": [
+        23.99152233903085,
+        23.997955910307255,
+        23.999733754508654
+      ],
+      "Mean": 23.996404001282254,
+      "Mass": 19.709970474243164
+    }
+  },
+  "AllSettled": true,
+  "TickIntervals": {
+    "Count": 32,
+    "Min": 0.5002539157867432,
+    "Max": 0.5178341865539551,
+    "Mean": 0.5134290531277657
+  },
+  "Training": [
+    {
+      "Name": "Normal0Empty",
+      "World": 1,
+      "Gain": 3,
+      "Ticks": 3,
+      "SupportY": 5.000002861022949
+    },
+    {
+      "Name": "Normal0Empty",
+      "World": 2,
+      "Gain": 15,
+      "Ticks": 3,
+      "SupportY": 3.4096903800964355
+    },
+    {
+      "Name": "Normal0Held",
+      "World": 1,
+      "Gain": 6,
+      "Ticks": 3,
+      "SupportY": 5.000002861022949
+    },
+    {
+      "Name": "Normal0Held",
+      "World": 2,
+      "Gain": 30,
+      "Ticks": 3,
+      "SupportY": 3.4096903800964355
+    },
+    {
+      "Name": "Normal10Empty",
+      "World": 1,
+      "Gain": 3,
+      "Ticks": 3,
+      "SupportY": 5.000002861022949
+    },
+    {
+      "Name": "Normal10Empty",
+      "World": 2,
+      "Gain": 15,
+      "Ticks": 3,
+      "SupportY": 3.4096903800964355
+    },
+    {
+      "Name": "Normal10Held",
+      "World": 1,
+      "Gain": 6,
+      "Ticks": 3,
+      "SupportY": 5.000002861022949
+    },
+    {
+      "Name": "Normal10Held",
+      "World": 2,
+      "Gain": 30,
+      "Ticks": 3,
+      "SupportY": 3.4096903800964355
+    },
+    {
+      "Name": "Muscle0Empty",
+      "World": 1,
+      "Gain": 3,
+      "Ticks": 3,
+      "SupportY": 5.000002861022949
+    },
+    {
+      "Name": "Muscle0Empty",
+      "World": 2,
+      "Gain": 15,
+      "Ticks": 3,
+      "SupportY": 3.4096903800964355
+    },
+    {
+      "Name": "Muscle0Held",
+      "World": 1,
+      "Gain": 6,
+      "Ticks": 3,
+      "SupportY": 5.000002861022949
+    },
+    {
+      "Name": "Muscle0Held",
+      "World": 2,
+      "Gain": 30,
+      "Ticks": 3,
+      "SupportY": 3.4096903800964355
+    },
+    {
+      "Name": "Muscle10Empty",
+      "World": 1,
+      "Gain": 3,
+      "Ticks": 3,
+      "SupportY": 5.000002861022949
+    },
+    {
+      "Name": "Muscle10Empty",
+      "World": 2,
+      "Gain": 15,
+      "Ticks": 3,
+      "SupportY": 3.4096903800964355
+    },
+    {
+      "Name": "Muscle10Held",
+      "World": 1,
+      "Gain": 6,
+      "Ticks": 3,
+      "SupportY": 5.000002861022949
+    },
+    {
+      "Name": "Muscle10Held",
+      "World": 2,
+      "Gain": 30,
+      "Ticks": 3,
+      "SupportY": 3.4096903800964355
+    }
+  ],
+  "Checks": 112,
+  "Failed": []
+}

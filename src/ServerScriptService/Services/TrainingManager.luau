@@ -220,10 +220,13 @@ function TrainingManager.IsPlayerInsideZone(player,zone)
  local rootLocal=zone.CFrame:PointToObjectSpace(root.Position)
  local h=zone.Size/2
  if math.abs(rootLocal.X)>h.X or math.abs(rootLocal.Z)>h.Z then return false end
- if humanoid.RigType==Enum.HumanoidRigType.R15 and TreadmillConfig.WorldForModel(zone.Parent)==2 then
+ local world=TreadmillConfig.WorldForModel(zone.Parent)
+ if humanoid.RigType==Enum.HumanoidRigType.R15 and (world==1 or world==2) then
   -- Server FloorMaterial can remain Air for a client-owned, grounded scaled rig.
   -- Check the actual deck at the root's standing height, independently of the
-  -- animated feet. Keep the existing footprint and 0.4-stud vertical tolerance.
+  -- animated feet. World1's authored Area is 15 studs tall: its half-height
+  -- cannot be used as a grounding tolerance. Use the same bounded 0.4-stud
+  -- support tolerance as World2 while retaining World2's existing calculation.
   -- Vertical motion rejects takeoff/landing; an apex is outside the ray's reach.
   local state=humanoid:GetState()
   if humanoid.Jump or state==Enum.HumanoidStateType.Jumping
@@ -234,9 +237,10 @@ function TrainingManager.IsPlayerInsideZone(player,zone)
   params.FilterDescendantsInstances={character}
   params.RespectCanCollide=true
   local standingHeight=humanoid.HipHeight+root.Size.Y/2
-  local hit=Workspace:Raycast(root.Position,Vector3.new(0,-(standingHeight+h.Y),0),params)
+  local tolerance=world==2 and h.Y or 0.4
+  local hit=Workspace:Raycast(root.Position,Vector3.new(0,-(standingHeight+tolerance),0),params)
   return hit~=nil and hit.Instance:IsDescendantOf(zone.Parent)
-   and hit.Normal.Y>0.5 and hit.Distance>=standingHeight-h.Y
+   and hit.Normal.Y>0.5 and hit.Distance>=standingHeight-tolerance
    and zone.CFrame:PointToObjectSpace(hit.Position).Y<=h.Y
  end
  if humanoid.RigType==Enum.HumanoidRigType.R15 then
@@ -254,7 +258,7 @@ function TrainingManager.IsPlayerInsideZone(player,zone)
   end
   if foundFoot then return false end
  end
- -- R6 and World1 R15 rigs without feet retain the previous Root/HipHeight fallback.
+ -- R6 and unregistered R15 zones without feet retain the previous fallback.
  local footPosition=root.Position-Vector3.new(0,humanoid.HipHeight+root.Size.Y/2,0)
  local footLocal=zone.CFrame:PointToObjectSpace(footPosition)
  return math.abs(footLocal.Y)<=h.Y
