@@ -354,4 +354,61 @@ function M.GetVIPStrengthMultiplier(player)
 end
 Players.PlayerRemoving:Connect(function(player) task.defer(function() shopCache[player]=nil;shopBusy[player]=nil end) end)
 
+-- Strength ownership is server-verified and session-scoped. Attributes are mirrors
+-- only; neither character respawns nor repeated purchase events stack the bonus.
+local strengthCache=setmetatable({}, {__mode="k"})
+local strengthBusy=setmetatable({}, {__mode="k"})
+local strengthRecovery=setmetatable({}, {__mode="k"})
+function M.HasStrengthPass(player)
+ return strengthCache[player]==true
+end
+function M.GetStrengthPassBonus(player)
+ return M.AreEffectsEnabled(player) and M.HasStrengthPass(player) and Config.StrengthPass.AdditiveMultiplier or 0
+end
+function M.RefreshStrengthPass(player)
+ if player.Parent~=Players then return false,"PlayerUnavailable" end
+ if strengthBusy[player] then return M.HasStrengthPass(player),"Pending" end
+ strengthBusy[player]=true
+ local ok,owned=pcall(function()
+  return MarketplaceService:UserOwnsGamePassAsync(player.UserId,Config.StrengthPass.GamePassId)
+ end)
+ strengthBusy[player]=nil
+ if player.Parent~=Players then return false,"PlayerUnavailable" end
+ -- Failure never creates ownership; retain only ownership verified this session.
+ if ok then strengthCache[player]=owned==true end
+ local status=ok and "Verified" or "OwnershipUnavailable"
+ player:SetAttribute("HasStrengthPass",M.HasStrengthPass(player))
+ player:SetAttribute("StrengthPassOwnershipStatus",status)
+ return M.HasStrengthPass(player),status
+end
+function M.ScheduleStrengthPassRefresh(player,expectOwned)
+ if player.Parent~=Players then return end
+ local existing=strengthRecovery[player]
+ if existing then
+  existing.ExpectOwned=existing.ExpectOwned or expectOwned==true
+  return
+ end
+ local retry={ExpectOwned=expectOwned==true}
+ strengthRecovery[player]=retry
+ task.spawn(function()
+  local attempt=0
+  while player.Parent==Players and strengthRecovery[player]==retry do
+   local owned,status=M.RefreshStrengthPass(player)
+   if status=="Verified" and (not retry.ExpectOwned or owned) then break end
+   attempt+=1
+   -- A single recovery worker per player; no per-tick Marketplace requests.
+   task.wait(attempt<5 and attempt or 15)
+  end
+  if strengthRecovery[player]==retry then strengthRecovery[player]=nil end
+ end)
+end
+MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,id,purchased)
+ if id==Config.StrengthPass.GamePassId and purchased then
+  M.ScheduleStrengthPassRefresh(player,true)
+ end
+end)
+Players.PlayerRemoving:Connect(function(player)
+ strengthCache[player]=nil;strengthBusy[player]=nil;strengthRecovery[player]=nil
+end)
+
 return M

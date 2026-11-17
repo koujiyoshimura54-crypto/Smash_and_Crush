@@ -50,7 +50,7 @@ gain=original.split('function PlayerDataService.AddStrengthGain(player,gain)',1)
 gain='function PlayerDataService.AddStrengthGain(player,gain)'+gain
 sources['ServerScriptService.Services.PlayerDataService']=memory.replace('-- INSERT_PRODUCTION_ADD_STRENGTH_GAIN',gain)
 sources['ServerScriptService.Services.FirstPlayAnalyticsService']='return {Strength=function()end,Placed=function()end}'
-sources['ServerScriptService.Services.GamePassService']='return {AreEffectsEnabled=function()return false end,HasPremiumTreadmill=function()return false end,GetVIPStrengthMultiplier=function()return 1 end}'
+sources['ServerScriptService.Services.GamePassService']='return {AreEffectsEnabled=function()return false end,HasPremiumTreadmill=function()return false end,GetVIPStrengthMultiplier=function()return 1 end,GetStrengthPassBonus=function()return 0 end}'
 sources['ServerScriptService.Services.ItemService']='return {GetBeltTreadmillBonus=function()return 0 end,GetProteinBonus=function()return 0 end}'
 sources['ServerScriptService.Services.PotionService']='return {GetTrainingBonus=function()return 0 end,GetStrengthMultiplier=function()return 1 end}'
 sources['ServerScriptService.Services.AuraService']='return {GetStrengthBonus=function()return 0 end}'

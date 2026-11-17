@@ -1,0 +1,40 @@
+{
+  "UniverseId": 10765181857,
+  "TotalSources": 527,
+  "PlaceId": 126576845524886,
+  "PurchasedMapMainEnabled": false,
+  "StudioEffectsEnabled": false,
+  "Running": false,
+  "GamePassControllerEnabled": true,
+  "TrainingControllerEnabled": true,
+  "HelpersRemoved": true,
+  "PlayStarted": false,
+  "TestAssertions": 181,
+  "EventBoardUnchanged": true,
+  "ChangedSources": [
+    "ReplicatedStorage.Config.TreadmillConfig",
+    "ReplicatedStorage.Config.World2GameplayConfig",
+    "ReplicatedStorage.Config.WorldPassConfig",
+    "ServerScriptService.Services.AutoTapService",
+    "ServerScriptService.Services.GamePassService",
+    "ServerScriptService.Services.StrengthManager",
+    "ServerScriptService.Systems.Controllers.GamePassController"
+  ],
+  "UnchangedSources": 520,
+  "Labels": [
+    {
+      "Before": "×20 Strength",
+      "Config": "ReplicatedStorage.Config.TreadmillConfig",
+      "After": "×7 Strength",
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Multiplier",
+      "World": 1
+    },
+    {
+      "Before": "×35 Strength",
+      "Config": "ReplicatedStorage.Config.World2GameplayConfig",
+      "After": "×15 Strength",
+      "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.StationBillboard.Multiplier",
+      "World": 2
+    }
+  ]
+}

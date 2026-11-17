@@ -1,5 +1,11 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-17 — GamePass Phase1：Strength＋1・有料Treadmill7／15
+
+現行副本の7 Sourceと既存看板Text2個へ差分反映。Strengthパス2089895831をserver所有確認し、歩行・Treadmillのsource倍率へ＋1。W1 Premium20→7、W2 Premium35→15、他補正・手動タップ・保存・接地・0.5秒周期は維持。最新13 Passの画面価格と管理された価格設定を[一覧](GAMEPASS_CATALOG.md)へ記録。
+
+隔離Edit模擬181 assertionで現物Strength更新関数をメモリsessionへ通し、増分1/2、7/8、5/6、15/16、補正併用660/726を確認。実Play・実購入・実リグ移動は未確認。安全なPlay隔離を確認できていないため起動せず、新しいStudio/アプリも開いていない。イベントボードは調査のみ、UI・イベントは未実装。既存編集を保持した未保存Edit、Save/Publishなし。[報告](../reports/GamePassPhase1_20261117/REPORT.md)。
+
 ## 2026-11-17 — ダンベル展示をボタンへ近づけ、Strength略記を統一
 
 両World各12展示のDisplayOffset.Yを8.4→4 studsへ変更。全長7.2は維持し、実ボタン上端との隙間1.1085〜1.9950 studsをEditで確認。設備Win行とStep to buyを非表示にし、Owned/Equippedは維持。Strengthは既存NumberFormat.FormatのK/M略記へ統一。値の定義・購入・加算・手持ちは変更なし。実クライアントSourceを切り離したUIで模擬実行し96状態確認、今回の実Playは未実施。[5/9登録を含む統合報告・最終画像・設定](../reports/World2Dumbbell3D_20261117/COMBINED_REPORT.md)。

@@ -1,4 +1,7 @@
 local Config={}
+-- Existing Creator Hub pass. Adds to the training source multiplier, not the final gain.
+-- Edit in Studio, then restart Play (ModuleScripts are cached per session).
+Config.StrengthPass={GamePassId=2089895831,AdditiveMultiplier=1}
 Config.WorldPasses={
  World1={DoubleWinPassId=1970515086,TripleWinPassId=2005353724,Multiplier=2},
  World2={DoubleWinPassId=nil},

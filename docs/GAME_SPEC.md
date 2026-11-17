@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-17 — GamePass Phase1
+
+副本の現行編集へStrengthパス2089895831のサーバー所有確認と、歩行・Treadmill倍率＋1を実装。既存GamePassServiceを拡張し、参加・購入後に再確認、退出でcacheを除去。所有Attributeは表示用のみ。既存Studio/製作者の効果ゲートを維持する。
+
+World1有料Treadmill20→7、World2有料35→15。パス併用8／16。新しい購入UI、報酬ボタン移動、イベントは未実装。購入Mapの `Workspace.EventBoard` は読み取り調査のみ。購入Mapの無効なMainを有効化しない。[最新Pass一覧](GAMEPASS_CATALOG.md)、[Full Path・検証と限界・ボード調査](../reports/GamePassPhase1_20261117/REPORT.md)。以下の日付が古い20／35倍記録は当時の記録。
+
 ## 2026-11-17 — World2ダンベル確定10種類を副本へ反映
 
 既存World1の原本複製・両手表示を完全ItemIdのまま共用し、World2確定10モデルを登録、設備展示とLobby両手へ反映。05/09の対応と8番UI用PNGのフォルダー許可は未解決。隔離2クライアントPlay289項目、4体型×装着有無の歩行約24 studs/s、実Strength更新、死亡復帰・World往復を確認。未確認の実進行/実端末と、設定/登録ID/復元/画像は[報告](../reports/World2Dumbbell3D_20261117/REPORT.md)。副本の既存編集を保持した未保存Edit、Save/Publishなし。
@@ -584,7 +590,7 @@ World2到達時にWorld2専用Inventoryを解放する。World2専用Item群はW
 
 - 実装済み: Starter Pack、Secret Pack、VIP、Premium Speed、World1 DoubleWin、Red Aura、通常ItemのRobux購入、Stage Skip。
 - 商品IDと効果はBALANCE_SPEC。表示価格はMarketplace取得を優先し、ConfigのFallbackPriceを確定販売価格と呼ばない。
-- Premium TreadmillはAdministrator Treadmill Game Pass（1982996954）所有者が利用可能。倍率は×20。
+- Premium TreadmillはAdministrator Treadmill Game Pass（1982996954）所有者が利用可能。2026-11-17以降は倍率×7（Strengthパス併用は設備部分×8）。
 - BUY WINの導線はあるがWinProductsが空。未確定IDを使ったWin販売は未実装。
 - Game Pass所有はサーバー確認。StudioではGamePassEffectsEnabled=falseにより所有状態と効果適用を分離する。
 - ProductionではStudio設定と分離し、StudioDebugConfig.ProductionCreatorUserIdsに明示した製作者だけをProductionCreatorGamePassEffectsEnabledで手動ON/OFFする。一般Playerは常に通常効果。所有表示とDeveloper Productは対象外。

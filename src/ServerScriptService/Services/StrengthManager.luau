@@ -162,7 +162,7 @@ function StrengthManager.GetNormalTrainingGain(player,baseGain)
 end
 
 -- tickCount preserves per-tick bonuses when walking batches elapsed ticks.
-function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier)
+function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier, gainSource)
  local treadmillSource=sourceMultiplier~=nil
  local valid, message=validatePlayer(player)
  if not valid then return nil, message end
@@ -177,6 +177,11 @@ function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier
  -- Only the server training caller supplies this multiplier; walking defaults to 1.
  sourceMultiplier=sourceMultiplier or 1
  if not isFiniteNumber(sourceMultiplier) or sourceMultiplier<=0 then return nil, "sourceMultiplier must be positive and finite" end
+ -- Walking and treadmill gains only. Manual taps and reward/reference paths keep
+ -- their existing rules. Belt/Training potion are already in sourceMultiplier.
+ if treadmillSource or gainSource=="Walking" then
+  sourceMultiplier+=ShopPasses.GetStrengthPassBonus(player)
+ end
  local gain=Calculation.Gain(amount,tickCount,{
   Dumbbell=bonus,Aura=auraBonus,Protein=proteinBonus,
   Rebirth=StrengthManager.GetStrengthGainMultiplier(player),StrengthPotion=PotionService.GetStrengthMultiplier(player),

@@ -43,7 +43,7 @@ local function act(p,manual)
  -- Manual taps and already-routed wall/Boss attacks do not require walking.
  if not manual and not isGroundedWalking(p) then return false,"NotWalking" end
  local before=Strength.GetStrength(p)
- local value,err=Strength.AddStrength(p,TrainingConfig.BaseGain,1)
+ local value,err=Strength.AddStrength(p,TrainingConfig.BaseGain,1,nil,manual and "Manual" or "Walking")
  if value==nil then return false,err end
  if value<=before then return false,"NoGain" end
  Analytics.Strength(p,manual and "Manual" or "AutoWalking")

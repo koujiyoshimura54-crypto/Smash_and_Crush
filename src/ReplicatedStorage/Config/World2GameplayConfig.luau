@@ -131,7 +131,7 @@ local C={
    PurchaseType="Rebirth",
   },{
    Count=1,
-   Multiplier=35,
+   Multiplier=15,
    RequiredRebirth=nil,
    PurchaseEnabled=true,
    PurchaseType="GamePass",

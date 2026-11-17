@@ -9,8 +9,12 @@ local function refreshOwnership(player)
   task.wait(15)
  end
 end
-Players.PlayerAdded:Connect(function(player) task.spawn(refreshOwnership,player) end)
-for _,player in ipairs(Players:GetPlayers()) do task.spawn(refreshOwnership,player) end
+local function refreshPlayer(player)
+ task.spawn(refreshOwnership,player)
+ Pass.ScheduleStrengthPassRefresh(player)
+end
+Players.PlayerAdded:Connect(refreshPlayer)
+for _,player in ipairs(Players:GetPlayers()) do refreshPlayer(player) end
 remote.OnServerEvent:Connect(function(player,action)
  if action~="Prompt" and action~="TrophyPrompt" then return end
  if action=="TrophyPrompt" then

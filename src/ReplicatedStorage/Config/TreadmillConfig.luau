@@ -5,7 +5,7 @@ Config.Types = {
  Normal = {Multiplier=1, RequiredRebirth=0, VisualTemplate=""},
 	Rebirth3 = {Multiplier=2, RequiredRebirth=3, VisualTemplate="Blue_Aura4"},
 	Rebirth7 = {Multiplier=3, RequiredRebirth=5, VisualTemplate="Green_Aura2"},
- Premium = {Multiplier=20, RequiresPremium=true, VisualTemplate="Premium_Fire", VisualInstanceName="PremiumAura"},
+ Premium = {Multiplier=7, RequiresPremium=true, VisualTemplate="Premium_Fire", VisualInstanceName="PremiumAura"},
 }
 -- Purchased visual names map to the existing authoritative strength tiers.
 Config.Assignments = {
