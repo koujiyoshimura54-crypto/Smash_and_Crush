@@ -1,0 +1,256 @@
+{
+  "BaselineMain": "1e795c8ed3f61cc59cc43f57b39f99ea02b9414a",
+  "ExpectedOverrides": [
+    "ReplicatedStorage.Config.LevelRequirements",
+    "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+    "StarterGui.StrengthGui.DailyRewardsClient"
+  ],
+  "Records": [
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Config.DumbbellLabelStyle",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Config.LevelRequirements",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Config.RightHUDStyle",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Config.World1DumbbellVisualConfig",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Config.World1WalkwayConfig",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Config.World2DumbbellVisualConfig",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Config.WorldPassConfig",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Modules.DumbbellStandPresentation",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Modules.FloorArrowGeometry",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Modules.FloorGuideRenderer",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Modules.HUDLayout",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Modules.LevelProgression",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Modules.NumberFormat",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": false,
+      "FullPath": "ReplicatedStorage.Modules.RightHUDPresentation",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ReplicatedStorage.Modules.StrengthHUDPresentation",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": false,
+      "FullPath": "ReplicatedStorage.Modules.World1WalkwayGeometry",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Config.DataStoreConfig",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.AutoTapService",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.DumbbellService",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.ForgePersistence",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.GamePassService",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.ItemService",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.PetServer",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.PlayerDataOwnership",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.PlayerDataService",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.RunReturnPersistence",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": false,
+      "FullPath": "ServerScriptService.Services.StrengthManager",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.StrengthRewardPersistence",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.TrophyRewardService",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.World1DumbbellVisuals",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Services.World1WalkwayService",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Systems.Controllers.GamePassController",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "ServerScriptService.Systems.Controllers.PlayerDataController",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "StarterGui.StrengthGui.DailyRewardsClient",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "StarterGui.StrengthGui.ShopBenefitsClient",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "StarterGui.StrengthGui.StrengthDisplay",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": false,
+      "FullPath": "StarterGui.World1DoubleWinGui.DoubleWinClient",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": false,
+      "FullPath": "StarterPlayer.StarterPlayerScripts.Tutorial.World1FloorRouteClient",
+      "EditorMatchesSource": true
+    },
+    {
+      "EqualExceptTrailingWhitespace": true,
+      "Exact": true,
+      "FullPath": "StarterPlayer.StarterPlayerScripts.World.World1WalkwayClient",
+      "EditorMatchesSource": true
+    }
+  ]
+}

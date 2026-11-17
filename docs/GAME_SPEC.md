@@ -1,5 +1,10 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-17 — Y01 Studio固有差分をGitへ保全
+
+副本の既存新Strength表とWorld1 Stage1表記を最新mainへ統合。Level/Strength/進捗と旧形式復元の既存契約、保存・装備・獲得倍率を保持。Dailyは文字化け2か所だけを修正し、報酬/購入/条件は維持。GUI設定を型付きで保全したが再適用していない。未保存Editのまま、実Play/Save/Publishなし。[保全資料・検証・未確認](../reports/Y01StudioPreservation_20261117/REPORT.md)。
+
+
 ## 2026-11-17 — 右HUD・歩道範囲・手動Strengthパス（Phase1を拡張）
 
 設備24台を数値のみのFredokaOne・オレンジ表示へ統一し、両WorldのTrophy予定WinをNumberFormatへ統一。報酬入口は安全領域上端へ横並び、通知「！」の端末別寸法を維持。右に独立した×2 Wins／×2 Strengthバナーを配置し、価格はMarketplacePriceから取得する。既存Win×3経路・報酬画面・保存処理は維持。

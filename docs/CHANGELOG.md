@@ -1,3 +1,7 @@
+# 2026-11-17 — Y01保全・新Strength表同期・Daily文字化け
+
+最新mainへfast-forward後、Studioの承認済みQ(51～200)とWorld1 Stage1表記を採用。DailyはVIP/READYの区切り文字2か所のみ修正（Git本体は既に正しい文言）。保存/進行Module・獲得倍率は変更なし。原文/GUI保全、比較CSV、独立計算と未確認範囲を[専用報告](../reports/Y01StudioPreservation_20261117/REPORT.md)へ記録。
+
 # 2026-11-17 — ダンベル＋表示・直前サイズの75％
 
 数値へ「+」を追加し、表示倍率を2→1.5へ調整。Owned／Equipped非表示を維持。[追補報告](../reports/DumbbellPlus75_20261117/REPORT.html)。

@@ -1,5 +1,10 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-17 — Y01 Studio固有差分の保全・main統合
+
+副本の新Strength表・Stage1表記を保全してmainへ統合。Dailyの文字化け2か所だけをStudioで修正し、既存mainの正しい文言と一致させた。Source/Editor原文とSHA256、型付きGUI設定2,888 Instance、Studio実装から生成した比較CSV402行を保存。純粋計算90,949 assertion、GUI前後差分0。元の承認CSVは所在未確認。実Play・Save/Publishなし、未保存Editを保持。FPS/DataStore調査は未着手。[Full Path・保全・検証](../reports/Y01StudioPreservation_20261117/REPORT.md)。
+
+
 ## 2026-11-17 — ダンベル＋表示・75％調整
 
 副本の2 Source、24台とテンプレートへ反映。Edit実描画、25回再適用、221パーツの位置・サイズ不変を確認。実Play・実端末は未確認。未保存Editを保持。[報告](../reports/DumbbellPlus75_20261117/REPORT.html)。

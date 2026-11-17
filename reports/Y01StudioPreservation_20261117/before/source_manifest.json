@@ -1,0 +1,75 @@
+[
+  {
+    "UniverseId": 10765181857,
+    "PlaceId": 126576845524886,
+    "PlaceVersion": 728,
+    "State": {
+      "Archivable": true
+    },
+    "CapturedAtUTC": "2026-11-17T11:42:15Z",
+    "ClassName": "ModuleScript",
+    "FullPath": "ReplicatedStorage.Config.LevelRequirements",
+    "EditorAccessible": true,
+    "SourceFile": "before/sources/ReplicatedStorage.Config.LevelRequirements.luau",
+    "SourceSHA256": "040c6341b982ebea724dc5b160675693a2c12de828e698edd2817a9ea683765e",
+    "SourceBytes": 7635,
+    "EditorFile": "before/sources/ReplicatedStorage.Config.LevelRequirements.luau",
+    "EditorSHA256": "040c6341b982ebea724dc5b160675693a2c12de828e698edd2817a9ea683765e",
+    "EditorBytes": 7635,
+    "EditorMatchesSource": true
+  },
+  {
+    "UniverseId": 10765181857,
+    "PlaceId": 126576845524886,
+    "PlaceVersion": 728,
+    "State": {
+      "Enabled": true,
+      "Archivable": true,
+      "Disabled": false,
+      "RunContext": {
+        "value": 0,
+        "type": "EnumItem",
+        "name": "Legacy",
+        "enum": "RunContext"
+      }
+    },
+    "CapturedAtUTC": "2026-11-17T11:42:20Z",
+    "ClassName": "LocalScript",
+    "FullPath": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+    "EditorAccessible": true,
+    "SourceFile": "before/sources/StarterPlayer.StarterPlayerScripts.Combat.CombatClient.luau",
+    "SourceSHA256": "262d055c523d504745b4b06490b98adfdd11073ec5fcb27864b4c4d2ca590df2",
+    "SourceBytes": 44640,
+    "EditorFile": "before/sources/StarterPlayer.StarterPlayerScripts.Combat.CombatClient.luau",
+    "EditorSHA256": "262d055c523d504745b4b06490b98adfdd11073ec5fcb27864b4c4d2ca590df2",
+    "EditorBytes": 44640,
+    "EditorMatchesSource": true
+  },
+  {
+    "UniverseId": 10765181857,
+    "PlaceId": 126576845524886,
+    "PlaceVersion": 728,
+    "State": {
+      "Enabled": true,
+      "Archivable": true,
+      "Disabled": false,
+      "RunContext": {
+        "value": 0,
+        "type": "EnumItem",
+        "name": "Legacy",
+        "enum": "RunContext"
+      }
+    },
+    "CapturedAtUTC": "2026-11-17T11:42:24Z",
+    "ClassName": "LocalScript",
+    "FullPath": "StarterGui.StrengthGui.DailyRewardsClient",
+    "EditorAccessible": true,
+    "SourceFile": "before/sources/StarterGui.StrengthGui.DailyRewardsClient.luau",
+    "SourceSHA256": "93af27ba9dd1d9c32fa570455d9a16c6f9c485c53022e7e9115c755c39864282",
+    "SourceBytes": 5320,
+    "EditorFile": "before/sources/StarterGui.StrengthGui.DailyRewardsClient.luau",
+    "EditorSHA256": "93af27ba9dd1d9c32fa570455d9a16c6f9c485c53022e7e9115c755c39864282",
+    "EditorBytes": 5320,
+    "EditorMatchesSource": true
+  }
+]

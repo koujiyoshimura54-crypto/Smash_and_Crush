@@ -1,5 +1,10 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-17 — Stage1表記の保全とDaily文字化け限定修正
+
+現行StudioのCombatClientにあるWorld1/major=1のStage1表記をGitへ保持。それ以外のStage表示と最新Trophy略記は維持。DailyRewardsClientのVIP/READY区切りを文字化けから「•」へ修正し、既存mainの文言に合わせた。報酬、条件、翻訳方針、GUI設定は変更なし。全対象GUI2,888 Instanceの前後設定差分0。実PlayでのREADY描画は未確認。[Full Path・原文・差分](../reports/Y01StudioPreservation_20261117/REPORT.md)。
+
+
 ## 2026-11-17 — ダンベルに＋を追加・直前サイズの75％
 
 最新指定により数値の先頭へ「+」を追加。SizeMultiplierを2から1.5へ変更し、直前の文字表示を75％へ縮小。Owned／Equipped非表示、共通K/M表記、字体・配色を維持。[比較と確認結果](../reports/DumbbellPlus75_20261117/REPORT.html)。

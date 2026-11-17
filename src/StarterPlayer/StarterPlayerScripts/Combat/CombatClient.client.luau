@@ -209,7 +209,12 @@ local function wallGauge(a,b,c,d)
    gradient.Color=ColorSequence.new(band.from,band.to)
   end
   local label=purchased:FindFirstChild("Stage")
-  if label then label.AutoLocalize=false;label.Text=("Stage %d-%d"):format(major,index) end
+			if label then
+				label.AutoLocalize = false
+				label.Text = (worldId == 1 and major == 1)
+					and "Stage1"
+					or ("Stage %d-%d"):format(major, index)
+			end
   wallGauges[tostring(major).."."..tostring(index)]={Fill=fill,HP=amount,Max=max}
   return
  end

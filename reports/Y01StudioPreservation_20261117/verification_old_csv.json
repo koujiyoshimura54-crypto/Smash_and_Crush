@@ -1,0 +1,1057 @@
+{
+  "Reference": "reports/Level_Curve_20260915/level_51_200_thresholds.csv",
+  "ReferenceSHA256": "e23162266c67d9627c1da1d3e3cad420e539293c367799e8e3cf54ecf65b0a2c",
+  "Formula": "smooth(t)=t*t*(3-2*t); 51..100 factor=10^smooth((L-50)/50); 101..140 factor=10^(1+2*smooth((L-100)/40)); 141..200 factor=1000; ceil(oldQ*factor/10)*10",
+  "Rows": [
+    {
+      "Level": 51,
+      "OldCSVRequirement": 319000,
+      "DerivedMultiplier": 1.002729980378401,
+      "RoundedExpected": 319880,
+      "Studio": 319880
+    },
+    {
+      "Level": 52,
+      "OldCSVRequirement": 463000,
+      "DerivedMultiplier": 1.0108157494203056,
+      "RoundedExpected": 468010,
+      "Studio": 468010
+    },
+    {
+      "Level": 53,
+      "OldCSVRequirement": 671000,
+      "DerivedMultiplier": 1.02416044841074,
+      "RoundedExpected": 687220,
+      "Studio": 687220
+    },
+    {
+      "Level": 54,
+      "OldCSVRequirement": 932000,
+      "DerivedMultiplier": 1.0427399193208104,
+      "RoundedExpected": 971840,
+      "Studio": 971840
+    },
+    {
+      "Level": 55,
+      "OldCSVRequirement": 1235000,
+      "DerivedMultiplier": 1.066596121230258,
+      "RoundedExpected": 1317250,
+      "Studio": 1317250
+    },
+    {
+      "Level": 56,
+      "OldCSVRequirement": 1569000,
+      "DerivedMultiplier": 1.0958320546063622,
+      "RoundedExpected": 1719370,
+      "Studio": 1719370
+    },
+    {
+      "Level": 57,
+      "OldCSVRequirement": 1924000,
+      "DerivedMultiplier": 1.1306078590751154,
+      "RoundedExpected": 2175290,
+      "Studio": 2175290
+    },
+    {
+      "Level": 58,
+      "OldCSVRequirement": 2287000,
+      "DerivedMultiplier": 1.1711378037113338,
+      "RoundedExpected": 2678400,
+      "Studio": 2678400
+    },
+    {
+      "Level": 59,
+      "OldCSVRequirement": 2650000,
+      "DerivedMultiplier": 1.2176879265442793,
+      "RoundedExpected": 3226880,
+      "Studio": 3226880
+    },
+    {
+      "Level": 60,
+      "OldCSVRequirement": 3000000,
+      "DerivedMultiplier": 1.2705741052085417,
+      "RoundedExpected": 3811730,
+      "Studio": 3811730
+    },
+    {
+      "Level": 61,
+      "OldCSVRequirement": 3351000,
+      "DerivedMultiplier": 1.3301603559672874,
+      "RoundedExpected": 4457370,
+      "Studio": 4457370
+    },
+    {
+      "Level": 62,
+      "OldCSVRequirement": 3724000,
+      "DerivedMultiplier": 1.3968571656498443,
+      "RoundedExpected": 5201900,
+      "Studio": 5201900
+    },
+    {
+      "Level": 63,
+      "OldCSVRequirement": 4118000,
+      "DerivedMultiplier": 1.4711196619657985,
+      "RoundedExpected": 6058080,
+      "Studio": 6058080
+    },
+    {
+      "Level": 64,
+      "OldCSVRequirement": 4530000,
+      "DerivedMultiplier": 1.5534454235495945,
+      "RoundedExpected": 7037110,
+      "Studio": 7037110
+    },
+    {
+      "Level": 65,
+      "OldCSVRequirement": 4961000,
+      "DerivedMultiplier": 1.6443717232149315,
+      "RoundedExpected": 8157730,
+      "Studio": 8157730
+    },
+    {
+      "Level": 66,
+      "OldCSVRequirement": 5408000,
+      "DerivedMultiplier": 1.744471987512519,
+      "RoundedExpected": 9434110,
+      "Studio": 9434110
+    },
+    {
+      "Level": 67,
+      "OldCSVRequirement": 5871000,
+      "DerivedMultiplier": 1.854351244119928,
+      "RoundedExpected": 10886900,
+      "Studio": 10886900
+    },
+    {
+      "Level": 68,
+      "OldCSVRequirement": 6349000,
+      "DerivedMultiplier": 1.9746403173272276,
+      "RoundedExpected": 12537000,
+      "Studio": 12537000
+    },
+    {
+      "Level": 69,
+      "OldCSVRequirement": 6840000,
+      "DerivedMultiplier": 2.105988522600208,
+      "RoundedExpected": 14404970,
+      "Studio": 14404970
+    },
+    {
+      "Level": 70,
+      "OldCSVRequirement": 7343000,
+      "DerivedMultiplier": 2.2490546058357817,
+      "RoundedExpected": 16514810,
+      "Studio": 16514810
+    },
+    {
+      "Level": 71,
+      "OldCSVRequirement": 7857000,
+      "DerivedMultiplier": 2.404495673676929,
+      "RoundedExpected": 18892130,
+      "Studio": 18892130
+    },
+    {
+      "Level": 72,
+      "OldCSVRequirement": 8381000,
+      "DerivedMultiplier": 2.5729538706097603,
+      "RoundedExpected": 21563930,
+      "Studio": 21563930
+    },
+    {
+      "Level": 73,
+      "OldCSVRequirement": 8914000,
+      "DerivedMultiplier": 2.7550405792569865,
+      "RoundedExpected": 24558440,
+      "Studio": 24558440
+    },
+    {
+      "Level": 74,
+      "OldCSVRequirement": 9454000,
+      "DerivedMultiplier": 2.9513179552351736,
+      "RoundedExpected": 27901760,
+      "Studio": 27901760
+    },
+    {
+      "Level": 75,
+      "OldCSVRequirement": 10000000,
+      "DerivedMultiplier": 3.1622776601683795,
+      "RoundedExpected": 31622780,
+      "Studio": 31622780
+    },
+    {
+      "Level": 76,
+      "OldCSVRequirement": 10543000,
+      "DerivedMultiplier": 3.3883167288910956,
+      "RoundedExpected": 35723030,
+      "Studio": 35723030
+    },
+    {
+      "Level": 77,
+      "OldCSVRequirement": 11080000,
+      "DerivedMultiplier": 3.629710602192627,
+      "RoundedExpected": 40217200,
+      "Studio": 40217200
+    },
+    {
+      "Level": 78,
+      "OldCSVRequirement": 11614000,
+      "DerivedMultiplier": 3.886583476768714,
+      "RoundedExpected": 45138790,
+      "Studio": 45138790
+    },
+    {
+      "Level": 79,
+      "OldCSVRequirement": 12153000,
+      "DerivedMultiplier": 4.158876270593619,
+      "RoundedExpected": 50542830,
+      "Studio": 50542830
+    },
+    {
+      "Level": 80,
+      "OldCSVRequirement": 12702000,
+      "DerivedMultiplier": 4.446312674691087,
+      "RoundedExpected": 56477070,
+      "Studio": 56477070
+    },
+    {
+      "Level": 81,
+      "OldCSVRequirement": 13266000,
+      "DerivedMultiplier": 4.748363959578121,
+      "RoundedExpected": 62991800,
+      "Studio": 62991800
+    },
+    {
+      "Level": 82,
+      "OldCSVRequirement": 13852000,
+      "DerivedMultiplier": 5.064213422693349,
+      "RoundedExpected": 70149490,
+      "Studio": 70149490
+    },
+    {
+      "Level": 83,
+      "OldCSVRequirement": 14465000,
+      "DerivedMultiplier": 5.392721595603634,
+      "RoundedExpected": 78005720,
+      "Studio": 78005720
+    },
+    {
+      "Level": 84,
+      "OldCSVRequirement": 15111000,
+      "DerivedMultiplier": 5.7323935675569215,
+      "RoundedExpected": 86622200,
+      "Studio": 86622200
+    },
+    {
+      "Level": 85,
+      "OldCSVRequirement": 15795000,
+      "DerivedMultiplier": 6.081350012787178,
+      "RoundedExpected": 96054930,
+      "Studio": 96054930
+    },
+    {
+      "Level": 86,
+      "OldCSVRequirement": 16524000,
+      "DerivedMultiplier": 6.437303717532723,
+      "RoundedExpected": 106370010,
+      "Studio": 106370010
+    },
+    {
+      "Level": 87,
+      "OldCSVRequirement": 17304000,
+      "DerivedMultiplier": 6.797543570750321,
+      "RoundedExpected": 117624700,
+      "Studio": 117624700
+    },
+    {
+      "Level": 88,
+      "OldCSVRequirement": 18139000,
+      "DerivedMultiplier": 7.158928089363961,
+      "RoundedExpected": 129855800,
+      "Studio": 129855800
+    },
+    {
+      "Level": 89,
+      "OldCSVRequirement": 19036000,
+      "DerivedMultiplier": 7.517890572470145,
+      "RoundedExpected": 143110570,
+      "Studio": 143110570
+    },
+    {
+      "Level": 90,
+      "OldCSVRequirement": 20000000,
+      "DerivedMultiplier": 7.870457896950989,
+      "RoundedExpected": 157409160,
+      "Studio": 157409160
+    },
+    {
+      "Level": 91,
+      "OldCSVRequirement": 21098000,
+      "DerivedMultiplier": 8.212284758689659,
+      "RoundedExpected": 173262790,
+      "Studio": 173262790
+    },
+    {
+      "Level": 92,
+      "OldCSVRequirement": 22382000,
+      "DerivedMultiplier": 8.53870481194443,
+      "RoundedExpected": 191113300,
+      "Studio": 191113300
+    },
+    {
+      "Level": 93,
+      "OldCSVRequirement": 23840000,
+      "DerivedMultiplier": 8.844799653330218,
+      "RoundedExpected": 210860030,
+      "Studio": 210860030
+    },
+    {
+      "Level": 94,
+      "OldCSVRequirement": 25458000,
+      "DerivedMultiplier": 9.125485933692763,
+      "RoundedExpected": 232316630,
+      "Studio": 232316630
+    },
+    {
+      "Level": 95,
+      "OldCSVRequirement": 27222000,
+      "DerivedMultiplier": 9.375620069258803,
+      "RoundedExpected": 255223130,
+      "Studio": 255223130
+    },
+    {
+      "Level": 96,
+      "OldCSVRequirement": 29120000,
+      "DerivedMultiplier": 9.59011908406989,
+      "RoundedExpected": 279264270,
+      "Studio": 279264270
+    },
+    {
+      "Level": 97,
+      "OldCSVRequirement": 31138000,
+      "DerivedMultiplier": 9.76409508443495,
+      "RoundedExpected": 304034400,
+      "Studio": 304034400
+    },
+    {
+      "Level": 98,
+      "OldCSVRequirement": 33262000,
+      "DerivedMultiplier": 9.892999793221383,
+      "RoundedExpected": 329060960,
+      "Studio": 329060960
+    },
+    {
+      "Level": 99,
+      "OldCSVRequirement": 35480000,
+      "DerivedMultiplier": 9.972774521238797,
+      "RoundedExpected": 353834050,
+      "Studio": 353834050
+    },
+    {
+      "Level": 100,
+      "OldCSVRequirement": 37778000,
+      "DerivedMultiplier": 10.0,
+      "RoundedExpected": 377780000,
+      "Studio": 377780000
+    },
+    {
+      "Level": 101,
+      "OldCSVRequirement": 40142000,
+      "DerivedMultiplier": 10.085269314628807,
+      "RoundedExpected": 404842890,
+      "Studio": 404842890
+    },
+    {
+      "Level": 102,
+      "OldCSVRequirement": 42560000,
+      "DerivedMultiplier": 10.339511009823713,
+      "RoundedExpected": 440049590,
+      "Studio": 440049590
+    },
+    {
+      "Level": 103,
+      "OldCSVRequirement": 45018000,
+      "DerivedMultiplier": 10.766201405745845,
+      "RoundedExpected": 484672860,
+      "Studio": 484672860
+    },
+    {
+      "Level": 104,
+      "OldCSVRequirement": 47502000,
+      "DerivedMultiplier": 11.37627285823431,
+      "RoundedExpected": 540395720,
+      "Studio": 540395720
+    },
+    {
+      "Level": 105,
+      "OldCSVRequirement": 50000000,
+      "DerivedMultiplier": 12.188141848422896,
+      "RoundedExpected": 609407100,
+      "Studio": 609407100
+    },
+    {
+      "Level": 106,
+      "OldCSVRequirement": 52568000,
+      "DerivedMultiplier": 13.228177080099346,
+      "RoundedExpected": 695378820,
+      "Studio": 695378820
+    },
+    {
+      "Level": 107,
+      "OldCSVRequirement": 55269000,
+      "DerivedMultiplier": 14.531568719043696,
+      "RoundedExpected": 803145280,
+      "Studio": 803145280
+    },
+    {
+      "Level": 108,
+      "OldCSVRequirement": 58098000,
+      "DerivedMultiplier": 16.14358556826486,
+      "RoundedExpected": 937910040,
+      "Studio": 937910040
+    },
+    {
+      "Level": 109,
+      "OldCSVRequirement": 61049000,
+      "DerivedMultiplier": 18.121222798365633,
+      "RoundedExpected": 1106282540,
+      "Studio": 1106282540
+    },
+    {
+      "Level": 110,
+      "OldCSVRequirement": 64116000,
+      "DerivedMultiplier": 20.53525026457146,
+      "RoundedExpected": 1316638110,
+      "Studio": 1316638110
+    },
+    {
+      "Level": 111,
+      "OldCSVRequirement": 67294000,
+      "DerivedMultiplier": 23.472670372616278,
+      "RoundedExpected": 1579569890,
+      "Studio": 1579569890
+    },
+    {
+      "Level": 112,
+      "OldCSVRequirement": 70578000,
+      "DerivedMultiplier": 27.039583641088434,
+      "RoundedExpected": 1908399740,
+      "Studio": 1908399740
+    },
+    {
+      "Level": 113,
+      "OldCSVRequirement": 73963000,
+      "DerivedMultiplier": 31.364437271424023,
+      "RoundedExpected": 2319807880,
+      "Studio": 2319807880
+    },
+    {
+      "Level": 114,
+      "OldCSVRequirement": 77442000,
+      "DerivedMultiplier": 36.601594055804924,
+      "RoundedExpected": 2834500650,
+      "Studio": 2834500650
+    },
+    {
+      "Level": 115,
+      "OldCSVRequirement": 81010000,
+      "DerivedMultiplier": 42.93510210083482,
+      "RoundedExpected": 3478172630,
+      "Studio": 3478172630
+    },
+    {
+      "Level": 116,
+      "OldCSVRequirement": 84662000,
+      "DerivedMultiplier": 50.58246620031142,
+      "RoundedExpected": 4282412760,
+      "Studio": 4282412760
+    },
+    {
+      "Level": 117,
+      "OldCSVRequirement": 88392000,
+      "DerivedMultiplier": 59.79811581852996,
+      "RoundedExpected": 5285675060,
+      "Studio": 5285675060
+    },
+    {
+      "Level": 118,
+      "OldCSVRequirement": 92196000,
+      "DerivedMultiplier": 70.8761306451183,
+      "RoundedExpected": 6534495750,
+      "Studio": 6534495750
+    },
+    {
+      "Level": 119,
+      "OldCSVRequirement": 96067000,
+      "DerivedMultiplier": 84.1516236852891,
+      "RoundedExpected": 8084194040,
+      "Studio": 8084194040
+    },
+    {
+      "Level": 120,
+      "OldCSVRequirement": 100000000,
+      "DerivedMultiplier": 100.0,
+      "RoundedExpected": 10000000000,
+      "Studio": 10000000000
+    },
+    {
+      "Level": 121,
+      "OldCSVRequirement": 103910000,
+      "DerivedMultiplier": 118.8331200524196,
+      "RoundedExpected": 12347949510,
+      "Studio": 12347949510
+    },
+    {
+      "Level": 122,
+      "OldCSVRequirement": 107737000,
+      "DerivedMultiplier": 141.0912236458097,
+      "RoundedExpected": 15200745170,
+      "Studio": 15200745170
+    },
+    {
+      "Level": 123,
+      "OldCSVRequirement": 111513000,
+      "DerivedMultiplier": 167.22934933848262,
+      "RoundedExpected": 18648246440,
+      "Studio": 18648246440
+    },
+    {
+      "Level": 124,
+      "OldCSVRequirement": 115273000,
+      "DerivedMultiplier": 197.6969640111862,
+      "RoundedExpected": 22789122140,
+      "Studio": 22789122140
+    },
+    {
+      "Level": 125,
+      "OldCSVRequirement": 119048000,
+      "DerivedMultiplier": 232.9096592460546,
+      "RoundedExpected": 27727429120,
+      "Studio": 27727429120
+    },
+    {
+      "Level": 126,
+      "OldCSVRequirement": 122873000,
+      "DerivedMultiplier": 273.2121443878487,
+      "RoundedExpected": 33570395820,
+      "Studio": 33570395820
+    },
+    {
+      "Level": 127,
+      "OldCSVRequirement": 126779000,
+      "DerivedMultiplier": 318.832437944326,
+      "RoundedExpected": 40421257660,
+      "Studio": 40421257660
+    },
+    {
+      "Level": 128,
+      "OldCSVRequirement": 130800000,
+      "DerivedMultiplier": 369.8281797802659,
+      "RoundedExpected": 48373525920,
+      "Studio": 48373525920
+    },
+    {
+      "Level": 129,
+      "OldCSVRequirement": 134968000,
+      "DerivedMultiplier": 426.0273689041454,
+      "RoundedExpected": 57500061930,
+      "Studio": 57500061930
+    },
+    {
+      "Level": 130,
+      "OldCSVRequirement": 139317000,
+      "DerivedMultiplier": 486.9675251658631,
+      "RoundedExpected": 67842854710,
+      "Studio": 67842854710
+    },
+    {
+      "Level": 131,
+      "OldCSVRequirement": 143880000,
+      "DerivedMultiplier": 551.8391397352009,
+      "RoundedExpected": 79398615430,
+      "Studio": 79398615430
+    },
+    {
+      "Level": 132,
+      "OldCSVRequirement": 148690000,
+      "DerivedMultiplier": 619.4410750767818,
+      "RoundedExpected": 92104693460,
+      "Studio": 92104693460
+    },
+    {
+      "Level": 133,
+      "OldCSVRequirement": 153779000,
+      "DerivedMultiplier": 688.1569494210869,
+      "RoundedExpected": 105824087530,
+      "Studio": 105824087530
+    },
+    {
+      "Level": 134,
+      "OldCSVRequirement": 159181000,
+      "DerivedMultiplier": 755.9620603389211,
+      "RoundedExpected": 120334796730,
+      "Studio": 120334796730
+    },
+    {
+      "Level": 135,
+      "OldCSVRequirement": 164928000,
+      "DerivedMultiplier": 820.4696109024991,
+      "RoundedExpected": 135318411990,
+      "Studio": 135318411990
+    },
+    {
+      "Level": 136,
+      "OldCSVRequirement": 171053000,
+      "DerivedMultiplier": 879.0225168308842,
+      "RoundedExpected": 150359438580,
+      "Studio": 150359438580
+    },
+    {
+      "Level": 137,
+      "OldCSVRequirement": 177591000,
+      "DerivedMultiplier": 928.832707389542,
+      "RoundedExpected": 164952329340,
+      "Studio": 164952329340
+    },
+    {
+      "Level": 138,
+      "OldCSVRequirement": 184572000,
+      "DerivedMultiplier": 967.1637266500187,
+      "RoundedExpected": 178511343360,
+      "Studio": 178511343360
+    },
+    {
+      "Level": 139,
+      "OldCSVRequirement": 192031000,
+      "DerivedMultiplier": 991.5451623582211,
+      "RoundedExpected": 190407409080,
+      "Studio": 190407409080
+    },
+    {
+      "Level": 140,
+      "OldCSVRequirement": 200000000,
+      "DerivedMultiplier": 1000.0,
+      "RoundedExpected": 200000000000,
+      "Studio": 200000000000
+    },
+    {
+      "Level": 141,
+      "OldCSVRequirement": 209441000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 209441000000,
+      "Studio": 209441000000
+    },
+    {
+      "Level": 142,
+      "OldCSVRequirement": 221171000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 221171000000,
+      "Studio": 221171000000
+    },
+    {
+      "Level": 143,
+      "OldCSVRequirement": 235012000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 235012000000,
+      "Studio": 235012000000
+    },
+    {
+      "Level": 144,
+      "OldCSVRequirement": 250782000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 250782000000,
+      "Studio": 250782000000
+    },
+    {
+      "Level": 145,
+      "OldCSVRequirement": 268301000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 268301000000,
+      "Studio": 268301000000
+    },
+    {
+      "Level": 146,
+      "OldCSVRequirement": 287388000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 287388000000,
+      "Studio": 287388000000
+    },
+    {
+      "Level": 147,
+      "OldCSVRequirement": 307864000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 307864000000,
+      "Studio": 307864000000
+    },
+    {
+      "Level": 148,
+      "OldCSVRequirement": 329548000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 329548000000,
+      "Studio": 329548000000
+    },
+    {
+      "Level": 149,
+      "OldCSVRequirement": 352259000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 352259000000,
+      "Studio": 352259000000
+    },
+    {
+      "Level": 150,
+      "OldCSVRequirement": 375817000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 375817000000,
+      "Studio": 375817000000
+    },
+    {
+      "Level": 151,
+      "OldCSVRequirement": 400042000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 400042000000,
+      "Studio": 400042000000
+    },
+    {
+      "Level": 152,
+      "OldCSVRequirement": 424753000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 424753000000,
+      "Studio": 424753000000
+    },
+    {
+      "Level": 153,
+      "OldCSVRequirement": 449770000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 449770000000,
+      "Studio": 449770000000
+    },
+    {
+      "Level": 154,
+      "OldCSVRequirement": 474912000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 474912000000,
+      "Studio": 474912000000
+    },
+    {
+      "Level": 155,
+      "OldCSVRequirement": 500000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 500000000000,
+      "Studio": 500000000000
+    },
+    {
+      "Level": 156,
+      "OldCSVRequirement": 525383000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 525383000000,
+      "Studio": 525383000000
+    },
+    {
+      "Level": 157,
+      "OldCSVRequirement": 551580000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 551580000000,
+      "Studio": 551580000000
+    },
+    {
+      "Level": 158,
+      "OldCSVRequirement": 578667000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 578667000000,
+      "Studio": 578667000000
+    },
+    {
+      "Level": 159,
+      "OldCSVRequirement": 606716000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 606716000000,
+      "Studio": 606716000000
+    },
+    {
+      "Level": 160,
+      "OldCSVRequirement": 635802000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 635802000000,
+      "Studio": 635802000000
+    },
+    {
+      "Level": 161,
+      "OldCSVRequirement": 666000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 666000000000,
+      "Studio": 666000000000
+    },
+    {
+      "Level": 162,
+      "OldCSVRequirement": 697383000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 697383000000,
+      "Studio": 697383000000
+    },
+    {
+      "Level": 163,
+      "OldCSVRequirement": 730025000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 730025000000,
+      "Studio": 730025000000
+    },
+    {
+      "Level": 164,
+      "OldCSVRequirement": 764000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 764000000000,
+      "Studio": 764000000000
+    },
+    {
+      "Level": 165,
+      "OldCSVRequirement": 799383000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 799383000000,
+      "Studio": 799383000000
+    },
+    {
+      "Level": 166,
+      "OldCSVRequirement": 836247000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 836247000000,
+      "Studio": 836247000000
+    },
+    {
+      "Level": 167,
+      "OldCSVRequirement": 874667000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 874667000000,
+      "Studio": 874667000000
+    },
+    {
+      "Level": 168,
+      "OldCSVRequirement": 914716000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 914716000000,
+      "Studio": 914716000000
+    },
+    {
+      "Level": 169,
+      "OldCSVRequirement": 956469000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 956469000000,
+      "Studio": 956469000000
+    },
+    {
+      "Level": 170,
+      "OldCSVRequirement": 1000000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1000000000000,
+      "Studio": 1000000000000
+    },
+    {
+      "Level": 171,
+      "OldCSVRequirement": 1045235000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1045235000000,
+      "Studio": 1045235000000
+    },
+    {
+      "Level": 172,
+      "OldCSVRequirement": 1092247000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1092247000000,
+      "Studio": 1092247000000
+    },
+    {
+      "Level": 173,
+      "OldCSVRequirement": 1141333000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1141333000000,
+      "Studio": 1141333000000
+    },
+    {
+      "Level": 174,
+      "OldCSVRequirement": 1192790000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1192790000000,
+      "Studio": 1192790000000
+    },
+    {
+      "Level": 175,
+      "OldCSVRequirement": 1246914000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1246914000000,
+      "Studio": 1246914000000
+    },
+    {
+      "Level": 176,
+      "OldCSVRequirement": 1304000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1304000000000,
+      "Studio": 1304000000000
+    },
+    {
+      "Level": 177,
+      "OldCSVRequirement": 1364346000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1364346000000,
+      "Studio": 1364346000000
+    },
+    {
+      "Level": 178,
+      "OldCSVRequirement": 1428247000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1428247000000,
+      "Studio": 1428247000000
+    },
+    {
+      "Level": 179,
+      "OldCSVRequirement": 1496000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1496000000000,
+      "Studio": 1496000000000
+    },
+    {
+      "Level": 180,
+      "OldCSVRequirement": 1567901000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1567901000000,
+      "Studio": 1567901000000
+    },
+    {
+      "Level": 181,
+      "OldCSVRequirement": 1644247000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1644247000000,
+      "Studio": 1644247000000
+    },
+    {
+      "Level": 182,
+      "OldCSVRequirement": 1725333000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1725333000000,
+      "Studio": 1725333000000
+    },
+    {
+      "Level": 183,
+      "OldCSVRequirement": 1811457000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1811457000000,
+      "Studio": 1811457000000
+    },
+    {
+      "Level": 184,
+      "OldCSVRequirement": 1902914000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 1902914000000,
+      "Studio": 1902914000000
+    },
+    {
+      "Level": 185,
+      "OldCSVRequirement": 2000000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 2000000000000,
+      "Studio": 2000000000000
+    },
+    {
+      "Level": 186,
+      "OldCSVRequirement": 2109778000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 2109778000000,
+      "Studio": 2109778000000
+    },
+    {
+      "Level": 187,
+      "OldCSVRequirement": 2238222000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 2238222000000,
+      "Studio": 2238222000000
+    },
+    {
+      "Level": 188,
+      "OldCSVRequirement": 2384000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 2384000000000,
+      "Studio": 2384000000000
+    },
+    {
+      "Level": 189,
+      "OldCSVRequirement": 2545778000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 2545778000000,
+      "Studio": 2545778000000
+    },
+    {
+      "Level": 190,
+      "OldCSVRequirement": 2722222000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 2722222000000,
+      "Studio": 2722222000000
+    },
+    {
+      "Level": 191,
+      "OldCSVRequirement": 2912000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 2912000000000,
+      "Studio": 2912000000000
+    },
+    {
+      "Level": 192,
+      "OldCSVRequirement": 3113778000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 3113778000000,
+      "Studio": 3113778000000
+    },
+    {
+      "Level": 193,
+      "OldCSVRequirement": 3326222000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 3326222000000,
+      "Studio": 3326222000000
+    },
+    {
+      "Level": 194,
+      "OldCSVRequirement": 3548000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 3548000000000,
+      "Studio": 3548000000000
+    },
+    {
+      "Level": 195,
+      "OldCSVRequirement": 3777778000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 3777778000000,
+      "Studio": 3777778000000
+    },
+    {
+      "Level": 196,
+      "OldCSVRequirement": 4014222000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 4014222000000,
+      "Studio": 4014222000000
+    },
+    {
+      "Level": 197,
+      "OldCSVRequirement": 4256000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 4256000000000,
+      "Studio": 4256000000000
+    },
+    {
+      "Level": 198,
+      "OldCSVRequirement": 4501778000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 4501778000000,
+      "Studio": 4501778000000
+    },
+    {
+      "Level": 199,
+      "OldCSVRequirement": 4750222000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 4750222000000,
+      "Studio": 4750222000000
+    },
+    {
+      "Level": 200,
+      "OldCSVRequirement": 5000000000,
+      "DerivedMultiplier": 1000,
+      "RoundedExpected": 5000000000000,
+      "Studio": 5000000000000
+    }
+  ]
+}

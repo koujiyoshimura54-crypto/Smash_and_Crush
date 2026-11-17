@@ -1,5 +1,12 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-17 — Studioに残る承認済み高LV表の同期
+
+今回の同期対象では、この節が以前のQ(131+)表の記述に優先する。Lv1～50の2曲線を保持し、Q(51～200)は現行Studioの明示150値を採用。旧参照CSVへ滑らかに1→10倍（Lv50～100）、10→1000倍（Lv100～140）、Lv140～200は1000倍。Q51=319880、Q100=377780000、Q136=150359438580、Q140=200000000000、Q200=5000000000000、Q201=5250000000000。Lv201以降は新Q200から毎LV＋5％・10単位切上げ。
+
+Qは次LVへの追加必要量で累積Strengthではない。保存Level/所持Strength/既存進捗を保持し、余剰進捗は既存LevelProgressionで繰り越す。旧形式の歴史的復元式・装備効果・獲得倍率は維持。新たなバランス案は追加せず、Studio既存実装をGitへ保存した。元の承認CSVは所在未確認で、今回のCSVはStudio実装から生成した比較用。[全行照合・純粋計算・限界](../reports/Y01StudioPreservation_20261117/REPORT.md)。
+
+
 ## 2026-11-17 — StrengthパスをManualへ追加（直下Phase1の手動除外を更新）
 
 共通StrengthManager.AddStrengthのWalking／Treadmill条件へManualを追加し、同じsource倍率へ＋1を一度だけ適用する。手動1→2、歩行1→2、W1有料7→8、W2有料15→16。既存装備・Rebirth・Pet・ポーション等の補正を維持。Treadmill上の歩行／Manual鍛錬抑制、単一ループ、共有クールダウンを維持。戦闘、固定報酬、Offline専用計算は対象外。Studio／製作者の効果ゲートはfalseのまま。今回の表示変更は内部価格・Win報酬を変更しない。[245 assertionの隔離模擬結果](../reports/RightHudWalkwayStrength_20261117/REPORT.html)。
