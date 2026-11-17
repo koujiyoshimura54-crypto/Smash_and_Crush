@@ -177,9 +177,9 @@ function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier
  -- Only the server training caller supplies this multiplier; walking defaults to 1.
  sourceMultiplier=sourceMultiplier or 1
  if not isFiniteNumber(sourceMultiplier) or sourceMultiplier<=0 then return nil, "sourceMultiplier must be positive and finite" end
- -- Walking and treadmill gains only. Manual taps and reward/reference paths keep
- -- their existing rules. Belt/Training potion are already in sourceMultiplier.
- if treadmillSource or gainSource=="Walking" then
+ -- All three training sources share one additive pass hook. Reward/reference
+ -- paths are separate. Belt/Training potion are already in sourceMultiplier.
+ if treadmillSource or gainSource=="Walking" or gainSource=="Manual" then
   sourceMultiplier+=ShopPasses.GetStrengthPassBonus(player)
  end
  local gain=Calculation.Gain(amount,tickCount,{

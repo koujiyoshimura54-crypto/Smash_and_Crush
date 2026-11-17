@@ -1,5 +1,11 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-17 — 右上報酬入口と右購入バナー・設備数値
+
+Playtime／Dailyは安全領域上端へ横並び。従来寸法の1/3、タップ下限44px。通知画像は従来の端末別寸法36／23.12／31.01px（PC／iPhone相当／iPad相当）を保持。右購入バナーは採用済み「小さくなった英語購入バナー.png」を基準とし、再度70%縮小しない。Only／Robux／動的価格は独立UI、取得失敗時は未確認金額を出さない。今回の取得値はWins=12（確認価格15との差は原因未確認）、Strength=3。
+
+全ダンベル設備はNumberFormat数値のみ、FredokaOne・明るいオレンジ・暗い縁取り。Owned／Equippedを維持。Trophyも共通省略表記。調整箇所はDumbbellLabelStyle、RightHUDStyle、World1WalkwayConfig。[変更前後画像・Native Editと模擬の区別](../reports/RightHudWalkwayStrength_20261117/REPORT.html)。
+
 ## 2026-11-17 — ダンベル展示をボタンへ近づけ、Strength略記を統一
 
 両World各12展示のDisplayOffset.Yを8.4→4 studsへ変更。全長7.2は維持し、実ボタン上端との隙間1.1085〜1.9950 studsをEditで確認。設備Win行とStep to buyを非表示にし、Owned/Equippedは維持。Strengthは既存NumberFormat.FormatのK/M略記へ統一。値の定義・購入・加算・手持ちは変更なし。実クライアントSourceを切り離したUIで模擬実行し96状態確認、今回の実Playは未実施。[5/9登録を含む統合報告・最終画像・設定](../reports/World2Dumbbell3D_20261117/COMBINED_REPORT.md)。

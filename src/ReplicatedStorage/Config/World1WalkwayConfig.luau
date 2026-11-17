@@ -8,10 +8,10 @@ return table.freeze({
  ArrowSpacing=3.5,
  SurfaceSampleStep=0.25,
  TransportSpeed=12,
- TransportWidth=7.093475, -- Matches the existing threefold chevron envelope.
- StartDistance=5, -- From the fixed SpawnLocation route origin, not a moving arrow.
+ -- Both rendering and transport use World1WalkwayGeometry.Bounds. Width is
+ -- calculated from WidthMultiplier and the actual chevron stroke geometry.
+ StartDistance=5, -- Empty entrance margin from the fixed SpawnLocation origin.
  EndClearance=4, -- Inside the existing 5-stud forward wall combat trigger.
- VisualWallClearance=1.5,
  RefreshInterval=0.2,
  GroundTolerance=0.45,
  EndpointTolerance=0.15,

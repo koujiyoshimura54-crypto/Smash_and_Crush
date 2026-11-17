@@ -2,25 +2,15 @@
 -- exact authored walking surfaces, and an event-maintained spatial blocker cache.
 -- Each owner has independent lifetime, settings and pool. No progression writes.
 local M={}
+local ArrowGeometry=require(script.Parent.FloorArrowGeometry)
 local owners={}
 function M.new(options)
  assert(type(options.Name)=="string","Floor guide needs an owner name")
  if owners[options.Name] then owners[options.Name]:Destroy() end
  local self={Controller=options.Owner};owners[options.Name]=self
  local destroyed=false
- local halfWidth,halfDepth=1.05,.65
- if options.WidthMultiplier and options.WidthMultiplier~=1 then
-  -- Preserve the total front/back envelope AND .34 line width. Scaling the
-  -- complete Part would also thicken the stroke and lengthen the chevron.
-  local length=math.sqrt(halfWidth^2+(2*halfDepth)^2)
-  local width=(2*halfWidth+.34*2*halfDepth/length)*options.WidthMultiplier
-  local depth=2*halfDepth+.34*halfWidth/length
-  for _=1,12 do
-   length=math.sqrt(halfWidth^2+(2*halfDepth)^2)
-   halfWidth=(width-.34*2*halfDepth/length)/2
-   halfDepth=(depth-.34*halfWidth/math.sqrt(halfWidth^2+(2*halfDepth)^2))/2
-  end
- end
+ local dimensions=ArrowGeometry.Dimensions(options.WidthMultiplier)
+ local halfWidth,halfDepth=dimensions.HalfWidth,dimensions.HalfDepth
  local radius=options.Fixed and math.sqrt(halfWidth^2+halfDepth^2)+.34 or 1.5
  local margin=options.Fixed and radius or 2
 local route

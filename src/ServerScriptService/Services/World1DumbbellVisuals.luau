@@ -5,6 +5,8 @@ local Storage=game:GetService("ServerStorage")
 -- same clone/attach lifecycle; the full equipped ItemId selects the registry.
 local Config=require(game.ReplicatedStorage.Config.World1DumbbellVisualConfig)
 local World2Config=require(game.ReplicatedStorage.Config.World2DumbbellVisualConfig)
+local StandPresentation=require(game.ReplicatedStorage.Modules.DumbbellStandPresentation)
+local ItemMaster=require(game.ReplicatedStorage.Config.DumbbellItemMaster)
 local function registration(itemId)
  if typeof(itemId)~="string" then return nil end
  if Config.Items[itemId] then return Config,Config.Items[itemId],1 end
@@ -179,9 +181,16 @@ function M.RefreshExhibit(stand,rebuild)
   icon.Visible=not display and icon:GetAttribute(visibility) or false
   icon.ImageTransparency=display and 1 or icon:GetAttribute(original)
  end
- if not display then restoreLabel(stand:FindFirstChild("BillboardGui"));return false end
+ if not display then
+  restoreLabel(stand:FindFirstChild("BillboardGui"))
+  local item=ItemMaster.Get(itemId)
+  StandPresentation.ApplyValue(stand:FindFirstChild("BillboardGui"),item and item.StrengthBonus)
+  return false
+ end
  display:PivotTo(press.CFrame*CFrame.new(row.DisplayOffset)*rotation(row.DisplayRotation))
  positionLabel(stand,press,display,config)
+ local item=ItemMaster.Get(itemId)
+ StandPresentation.ApplyValue(stand:FindFirstChild("BillboardGui"),item and item.StrengthBonus)
  return true
 end
 return M

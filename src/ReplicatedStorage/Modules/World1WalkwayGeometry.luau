@@ -1,6 +1,16 @@
 -- Shared geometry and bounded longitudinal motion. No progression writes.
 local Config=require(game.ReplicatedStorage.Config.World1WalkwayConfig)
+local ArrowGeometry=require(script.Parent.FloorArrowGeometry)
+local arrowHalfWidth=ArrowGeometry.Dimensions(Config.WidthMultiplier).Width/2
 local M={}
+function M.Bounds(route,character)
+ return Config.StartDistance,M.EndDistance(route,character)-Config.EndpointTolerance,arrowHalfWidth
+end
+function M.Contains(route,along,side,bodyEnd)
+ local first,last,halfWidth=M.Bounds(route)
+ if bodyEnd then last=math.min(last,bodyEnd-Config.EndpointTolerance) end
+ return along>=first and along<last and math.abs(side)<=halfWidth
+end
 function M.new()
  local owner,stageOwner,sectionOwner,floorOwner
  local wallLocal,wallSize

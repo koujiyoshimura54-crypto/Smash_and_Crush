@@ -42,8 +42,8 @@ local connection=RunService.PreSimulation:Connect(function(dt)
   and player:GetAttribute("IsTraining")~=true then
   local along,side=Geometry.Coordinates(route,root.Position)
   remaining=Geometry.EndDistance(route,character)-along
-  allowed=along>=Config.StartDistance and remaining>Config.EndpointTolerance
-   and math.abs(side)<=Config.TransportWidth/2 and humanoid.FloorMaterial~=Enum.Material.Air
+  allowed=Geometry.Contains(route,along,side,remaining+along)
+   and humanoid.FloorMaterial~=Enum.Material.Air
    and Geometry.Grounded(character,humanoid,root,route,params)
  end
  if constraint then constraint.Enabled=allowed end

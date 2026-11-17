@@ -44,8 +44,8 @@ local function step(player,s,dt,now)
  local teleported=s.LastPosition and (root.Position-s.LastPosition).Magnitude>math.max(8,((s.Speed or 0)+Config.TransportSpeed)*dt*3)
  s.LastPosition=root.Position
  if teleported then s.Input=0;s.InputAt=nil end
- if not s.Speed or teleported or s.Ended or along<Config.StartDistance or along>=ending-Config.EndpointTolerance
-  or math.abs(side)>Config.TransportWidth/2 or not Geometry.Grounded(character,humanoid,root,route,s.Params) then
+ if not s.Speed or teleported or s.Ended or not Geometry.Contains(route,along,side,ending)
+  or not Geometry.Grounded(character,humanoid,root,route,s.Params) then
   if s.Riding and along>=ending-Config.EndpointTolerance then
    s.Ended=true
    local velocity=root.AssemblyLinearVelocity

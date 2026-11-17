@@ -122,8 +122,9 @@ local function releaseWinPrompt(player,lock)
  winPromptLocks[player]=nil
  if player.Parent==Players then player:SetAttribute("WinPassPromptBusy",false) end
 end
-function M.Prompt(player,trophy)
+function M.Prompt(player,trophy,doubleOnly)
  if not M.IsWorld1() then return false,"UnavailableWorld" end
+ if player:GetAttribute("StrengthPassPromptBusy")==true then return false,"Pending" end
  if winPromptLocks[player] then return false,"Pending" end
  local now=os.clock()
  if winLastRequest[player] and now-winLastRequest[player]<1 then return false,"Cooldown" end
@@ -142,7 +143,8 @@ function M.Prompt(player,trophy)
  if trophy and not trophy.IsCurrent() then releaseWinPrompt(player,lock);return false,"Expired" end
  local doubleOwned=M.GetTrophyDoubleOwnership(player)
  if trophy and doubleOwned then releaseWinPrompt(player,lock);return false,"AlreadyOwned" end
- local passId=trophy and Config.GetDoubleWinPassId("World1") or M.GetNextWinPassId(player)
+ if doubleOnly and M.HasWorld1DoubleWin(player) then releaseWinPrompt(player,lock);return false,"AlreadyOwned" end
+ local passId=(trophy or doubleOnly) and Config.GetDoubleWinPassId("World1") or M.GetNextWinPassId(player)
  if not passId then releaseWinPrompt(player,lock);return false,"AlreadyOwned" end
  lock.PassId=passId
  lock.Trophy=trophy
@@ -359,6 +361,13 @@ Players.PlayerRemoving:Connect(function(player) task.defer(function() shopCache[
 local strengthCache=setmetatable({}, {__mode="k"})
 local strengthBusy=setmetatable({}, {__mode="k"})
 local strengthRecovery=setmetatable({}, {__mode="k"})
+local strengthPrompts=setmetatable({}, {__mode="k"})
+local strengthLastRequest=setmetatable({}, {__mode="k"})
+local function releaseStrengthPrompt(player,lock)
+ if strengthPrompts[player]~=lock then return end
+ strengthPrompts[player]=nil
+ if player.Parent==Players then player:SetAttribute("StrengthPassPromptBusy",false) end
+end
 function M.HasStrengthPass(player)
  return strengthCache[player]==true
 end
@@ -402,13 +411,34 @@ function M.ScheduleStrengthPassRefresh(player,expectOwned)
   if strengthRecovery[player]==retry then strengthRecovery[player]=nil end
  end)
 end
-MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,id,purchased)
- if id==Config.StrengthPass.GamePassId and purchased then
-  M.ScheduleStrengthPassRefresh(player,true)
+function M.PromptStrengthPass(player)
+ if player.Parent~=Players then return false,"PlayerUnavailable" end
+ if strengthPrompts[player] or winPromptLocks[player] then return false,"Pending" end
+ local now=os.clock()
+ if strengthLastRequest[player] and now-strengthLastRequest[player]<1 then return false,"Cooldown" end
+ strengthLastRequest[player]=now
+ local lock={};strengthPrompts[player]=lock;player:SetAttribute("StrengthPassPromptBusy",true)
+ local owned,status=M.RefreshStrengthPass(player)
+ if owned or status~="Verified" then
+  releaseStrengthPrompt(player,lock)
+  if status=="OwnershipUnavailable" then M.ScheduleStrengthPassRefresh(player) end
+  return false,owned and "AlreadyOwned" or status
  end
+ if player.Parent~=Players then releaseStrengthPrompt(player,lock);return false,"PlayerUnavailable" end
+ local ok=pcall(function()MarketplaceService:PromptGamePassPurchase(player,Config.StrengthPass.GamePassId)end)
+ if not ok then releaseStrengthPrompt(player,lock);return false,"PromptUnavailable" end
+ task.delay(120,function()releaseStrengthPrompt(player,lock)end)
+ return true,"Prompted"
+end
+MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player,id,purchased)
+ if id~=Config.StrengthPass.GamePassId then return end
+ local lock=strengthPrompts[player]
+ if lock then releaseStrengthPrompt(player,lock) end
+ if purchased then M.ScheduleStrengthPassRefresh(player,true) end
 end)
 Players.PlayerRemoving:Connect(function(player)
  strengthCache[player]=nil;strengthBusy[player]=nil;strengthRecovery[player]=nil
+ strengthPrompts[player]=nil;strengthLastRequest[player]=nil
 end)
 
 return M

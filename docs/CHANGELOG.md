@@ -1,3 +1,7 @@
+# 2026-11-17 — 右HUD・歩道範囲・手動Strengthパス
+
+設備数値・Trophyの共通省略表記、報酬入口の上端小型化と通知サイズ維持、動的価格の独立購入バナー、歩道表示と連続搬送境界の共用、Manualへの共通source倍率＋1を実装。副本へ反映し既存未保存編集を保持。Native Edit描画／床判定と隔離模擬で確認、実Play未実施。[画像・詳細検証・未確認事項](../reports/RightHudWalkwayStrength_20261117/REPORT.html)。
+
 # 2026-11-17 — GamePass Phase1
 
 Strengthパス2089895831のserver所有確認と歩行・Treadmill source倍率＋1を追加。W1有料20→7、W2有料35→15、既存看板の倍率Textのみ整合。13 Passの最新画面価格を記録。イベントボードは読み取り調査のみ、UI／イベントは未実装。隔離Edit模擬181項目で実計算・メモリ更新の増分を確認、実Playは未実施。副本の既存編集を保持、Save/Publishなし。[報告](../reports/GamePassPhase1_20261117/REPORT.md)。

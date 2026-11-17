@@ -97,7 +97,7 @@ local function addTrophyRewardBillboard(visual,reward)
  icon.Image=P:WaitForChild("PlayerGui"):WaitForChild("StrengthGui"):WaitForChild("WinLabel"):WaitForChild("TrophyIcon").Image;icon.Parent=panel
  local amount=Instance.new("TextLabel")
  amount.Name="Amount";amount.BackgroundTransparency=1;amount.Position=UDim2.fromOffset(52,3);amount.Size=UDim2.new(1,-58,1,-6);amount.Font=Enum.Font.FredokaOne;amount.TextScaled=true
- amount.TextColor3=Color3.fromRGB(255,255,255);amount.TextStrokeColor3=Color3.fromRGB(67,38,7);amount.TextStrokeTransparency=0;amount.Text="+"..tostring(reward).." Win";amount.Parent=panel
+ amount.TextColor3=Color3.fromRGB(255,255,255);amount.TextStrokeColor3=Color3.fromRGB(67,38,7);amount.TextStrokeTransparency=0;amount.Text="+"..NumberFormat.Format(reward).." Win";amount.Parent=panel
  local constraint=Instance.new("UITextSizeConstraint");constraint.MinTextSize=14;constraint.MaxTextSize=27;constraint.Parent=amount
 end
 local function clearTrophy(id)
@@ -115,7 +115,7 @@ local function showTrophy(d)
   local stage=corridor and corridor:FindFirstChild(("Stage%02d"):format(d.Stage))
   local button=stage and stage:FindFirstChild("TrophyNormalButton")
   local amount=button and button:FindFirstChild("Amount",true)
-  if amount then amount.Text="+"..tostring(d.WinReward).." Win" end
+  if amount then amount.Text="+"..NumberFormat.Format(d.WinReward).." Win" end
   return
  end
  local existing=trophyVisuals[d.Id]

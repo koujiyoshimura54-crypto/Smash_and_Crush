@@ -1,5 +1,32 @@
 -- World2 reuses the authored World1 stand GUI, without copying its item data.
 local M={}
+local RS=game:GetService("ReplicatedStorage")
+local Style=require(RS.Config.DumbbellLabelStyle)
+local NumberFormat=require(RS.Modules.NumberFormat)
+function M.ApplyValue(board,value)
+ if not board then return end
+ local amount=board:FindFirstChild("Amount")
+ if amount and amount:IsA("GuiObject") then amount.Visible=false end
+ for _,name in {"Status","StatusShadow"} do
+  local status=board:FindFirstChild(name)
+  if status and status:IsA("TextLabel") and status.Text=="Step to buy" then status.Text="";status.Visible=false end
+ end
+ for _,name in {"Price","PriceShadow"} do
+  local label=board:FindFirstChild(name)
+  if label and label:IsA("TextLabel") then
+   if value~=nil then label.Text=NumberFormat.Format(value) end
+   label.AutoLocalize=false;label.Font=Style.Font;label.TextColor3=Style.Color
+   label.TextWrapped=false;label.TextScaled=true;label.TextTruncate=Enum.TextTruncate.None
+   label.TextStrokeColor3=Style.OutlineColor;label.TextStrokeTransparency=1
+   local stroke=label:FindFirstChildOfClass("UIStroke") or Instance.new("UIStroke")
+   stroke.ApplyStrokeMode=Enum.ApplyStrokeMode.Contextual;stroke.Color=Style.OutlineColor
+   stroke.StrokeSizingMode=Enum.StrokeSizingMode.FixedSize
+   stroke.Thickness=Style.OutlineThickness;stroke.Transparency=0;stroke.Parent=label
+   local limit=label:FindFirstChildOfClass("UITextSizeConstraint") or Instance.new("UITextSizeConstraint")
+   limit.MinTextSize=Style.MinTextSize;limit.MaxTextSize=Style.MaxTextSize;limit.Parent=label
+  end
+ end
+end
 local fields={
  BillboardGui={"Size","ClipsDescendants","AlwaysOnTop","LightInfluence","Brightness","MaxDistance","SizeOffset","ExtentsOffset","ExtentsOffsetWorldSpace","StudsOffsetWorldSpace","ZIndexBehavior"},
  GuiObject={"Size","Position","AnchorPoint","AutomaticSize","SizeConstraint","LayoutOrder","ZIndex","BackgroundColor3","BackgroundTransparency","BorderSizePixel","BorderColor3","ClipsDescendants","Visible","Rotation"},
@@ -33,13 +60,14 @@ end
 function M.Apply(board)
  -- Registered 3D exhibits already own their compact above-model label layout.
  -- Reapplying the legacy template would restore its hidden icon gap and offset.
- if board:GetAttribute("DumbbellExhibitLabel")==true then return true end
+ if board:GetAttribute("DumbbellExhibitLabel")==true then M.ApplyValue(board);return true end
  local template=game.ReplicatedStorage:FindFirstChild("DumbbellStandBillboardTemplate")
  if not template then return false end
  copyStyle(board,template)
  -- This World2-only extra row changed the purchased row order and overflowed it.
  local number=board:FindFirstChild("StationNumber")
  if number then number:Destroy() end
+ M.ApplyValue(board)
  return true
 end
 function M.Ensure(model)

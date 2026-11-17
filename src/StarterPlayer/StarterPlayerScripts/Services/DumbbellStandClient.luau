@@ -4,7 +4,6 @@ local RS = game:GetService("ReplicatedStorage")
 local Player = Players.LocalPlayer
 local Config = require(RS.Config:WaitForChild("DumbbellStandConfig"))
 local Master = require(RS.Config:WaitForChild("DumbbellItemMaster"))
-local NumberFormat = require(RS.Modules.NumberFormat)
 local PurchaseHUD = require(RS.Modules.HUDLayout)
 local StandPresentation = require(RS.Modules.DumbbellStandPresentation)
 local M = {}
@@ -40,7 +39,7 @@ function M.start()
    if press then board.Adornee = press end
    local amount = board:FindFirstChild("Amount")
    if amount then amount.Visible = false end
-   setPair(board, "Price", "+" .. NumberFormat.Format(item.StrengthBonus) .. " Strength")
+   StandPresentation.ApplyValue(board,item.StrengthBonus)
    local itemIcon = board:FindFirstChild("ItemIcon")
    if itemIcon and itemIcon:IsA("ImageLabel") then itemIcon.Image = item.Image end
    local status = equipped == itemId and "Equipped"

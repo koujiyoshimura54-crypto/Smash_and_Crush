@@ -1,5 +1,11 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-17 — 右HUD・歩道範囲・手動Strengthパス（Phase1を拡張）
+
+設備24台を数値のみのFredokaOne・オレンジ表示へ統一し、両WorldのTrophy予定WinをNumberFormatへ統一。報酬入口は安全領域上端へ横並び、通知「！」の端末別寸法を維持。右に独立した×2 Wins／×2 Strengthバナーを配置し、価格はMarketplacePriceから取得する。既存Win×3経路・報酬画面・保存処理は維持。
+
+Strengthパスは共通AddStrengthでManualにもsource倍率＋1。歩道は表示と搬送を同じBounds（入口5 studs、壁前4 studs＋終端0.15、実外縁幅約7.0935）から計算し、既存Body停止余白も表示に反映。12＋通常移動、流速4・幅3倍・Transparency=.5は維持。副本未保存Editへ反映、実Play未実施。[比較画像・測定・Full Path・限界](../reports/RightHudWalkwayStrength_20261117/REPORT.html)。
+
 ## 2026-11-17 — GamePass Phase1
 
 副本の現行編集へStrengthパス2089895831のサーバー所有確認と、歩行・Treadmill倍率＋1を実装。既存GamePassServiceを拡張し、参加・購入後に再確認、退出でcacheを除去。所有Attributeは表示用のみ。既存Studio/製作者の効果ゲートを維持する。

@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-17 — 右HUD・設備表示・歩道範囲・手動Strengthパス
+
+副本の既存15 Sourceを変更、新規Module4個、24設備・20 Trophyラベル・右HUDへ反映。対象外511 SourceとDisabled状態、未保存Stage1表記、Daily／Shopの既存Studio差分を保持。Edit内の模擬245 assertion、ラベル145 assertion、実床447地点・矢印40パーツ・循環と状態切替4797 assertionを確認。PC／スマホ／タブレット相当の比較画像を保存。実Play、実端末、実購入、物理搬送・実アニメ速度の測定は未確認。Save／Publishなし、補助除去後の未保存Edit。[詳細・Full Path・残件](../reports/RightHudWalkwayStrength_20261117/REPORT.html)。
+
 ## 2026-11-17 — GamePass Phase1：Strength＋1・有料Treadmill7／15
 
 現行副本の7 Sourceと既存看板Text2個へ差分反映。Strengthパス2089895831をserver所有確認し、歩行・Treadmillのsource倍率へ＋1。W1 Premium20→7、W2 Premium35→15、他補正・手動タップ・保存・接地・0.5秒周期は維持。最新13 Passの画面価格と管理された価格設定を[一覧](GAMEPASS_CATALOG.md)へ記録。

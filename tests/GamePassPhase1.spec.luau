@@ -16,6 +16,7 @@ return function(Sources)
  end
  local fakeTask={spawn=function(f,...)local co=coroutine.create(f);resume(co,...);return co end,wait=function(t)return coroutine.yield(t or .01)end}
  fakeTask.defer=fakeTask.spawn
+ fakeTask.delay=function(delay,f,...)local args=table.pack(...);return fakeTask.spawn(function()fakeTask.wait(delay);f(table.unpack(args,1,args.n))end)end
  local function advance(seconds)
   local stop=now+seconds
   for _=1,1000 do
@@ -45,6 +46,11 @@ return function(Sources)
  function players:GetPlayers()return playerList end
  local market=node("MarketplaceService");market.PromptGamePassPurchaseFinished=signal()
  local ownership,requests,failures={},0,false
+ local prompts={};local promptFailure=false
+ function market:PromptGamePassPurchase(p,id)
+  if promptFailure then error("simulated prompt failure")end
+  table.insert(prompts,{Player=p,Id=id})
+ end
  function market:UserOwnsGamePassAsync(id,pass)
   requests+=1;if failures then error("simulated API failure")end
   return ownership[id]and ownership[id][pass]==true or false
@@ -97,6 +103,8 @@ return function(Sources)
  local function player(id)
   local p=node("TestPlayers."..id);p.Class="Player";p.UserId=id;p.Parent=players
   p.Character=node("Characters."..id);local h={Health=100,MoveDirection=Vector3.new(1,0,0),Died=signal(),GetState=function()return Enum.HumanoidStateType.Running end}
+  p.CharacterAdded=signal();p.CharacterRemoving=signal()
+  function p:GetAttributeChangedSignal()return signal()end
   function p.Character:FindFirstChildOfClass(c)return c=="Humanoid"and h or nil end
   local root=node(p.Character.Path..".HumanoidRootPart");root.AssemblyLinearVelocity=Vector3.zero
   p:SetAttribute("RebirthCount",0);p:SetAttribute("CurrentWorld",1);p:SetAttribute("Strength",0)
@@ -168,12 +176,19 @@ return function(Sources)
   p:SetAttribute("CurrentWorld",1)
   local walking=delta(function()return auto.TryAutomatic(p)end);near(walking,owned and 2 or 1,"walk gain")
   table.insert(results.Gains,{Case="Walking",Owned=owned,Delta=walking})
-  local manual=delta(function()return auto.HandleTap(p)end);near(manual,1,"manual tap unchanged")
+  local manual=delta(function()return auto.HandleTap(p)end);near(manual,owned and 2 or 1,"manual additive pass")
+  table.insert(results.Gains,{Case="Manual",Owned=owned,Delta=manual})
   controls.Walkway=true;local before=sessions[p].Data.Strength;check(not auto.TryAutomatic(p),"passive walkway not walking");near(sessions[p].Data.Strength,before,"passive walkway unchanged");controls.Walkway=false
   for i,m in machines do
    p:SetAttribute("CurrentWorld",i<=2 and 1 or 2)
    local expected=({1,7,5,15})[i]+(owned and 1 or 0)
    check(training.StartTraining(p,m),"session accepted")
+   check(training.StartTraining(p,m),"same treadmill re-entry accepted")
+   check(training.GetActiveSessionCount()==1,"one treadmill loop per player")
+   local beforeTap=sessions[p].Data.Strength
+   check(not auto.HandleTap(p),"treadmill blocks manual training")
+   check(not auto.TryAutomatic(p),"treadmill blocks walking training")
+   near(sessions[p].Data.Strength,beforeTap,"no extra treadmill gain")
    for tick=1,3 do
     local got=delta(function()advance(.5)end);near(got,expected,"training gain")
     table.insert(results.Gains,{Case=m.Path,Owned=owned,Tick=tick,Delta=got})
@@ -209,8 +224,45 @@ return function(Sources)
  check(training.StartTraining(p,machines[2]),"re-entry/revival fixture")
  check(delta(function()advance(.5)end)>0,"resumes after restored prerequisites");training.StopTraining(p)
  check(pass.GetStrengthPassBonus(p)==1,"death does not stack ownership")
+ -- Right HUD server purchase routes: no live platform purchases in this fixture.
+ advance(2);ownership[p.UserId][id]=false;pass.RefreshStrengthPass(p)
+ local promptCount=#prompts
+ check(pass.PromptStrengthPass(p),"Strength prompt accepted")
+ check(prompts[#prompts].Id==id,"Strength exact pass")
+ check(not pass.PromptStrengthPass(p),"Strength repeated tap locked")
+ check(#prompts==promptCount+1,"single prompt")
+ check(not pass.Prompt(p,nil,true),"other banner locked during Strength prompt")
+ market.PromptGamePassPurchaseFinished:Fire(p,id,false)
+ check(p:GetAttribute("StrengthPassPromptBusy")==false,"cancel releases Strength")
+ advance(2);promptFailure=true;check(not pass.PromptStrengthPass(p),"prompt failure rejected")
+ check(p:GetAttribute("StrengthPassPromptBusy")==false,"prompt failure unlocks");promptFailure=false
+ advance(2);failures=true;check(not pass.PromptStrengthPass(p),"ownership failure rejected")
+ check(#prompts==promptCount+1,"ownership failure never prompts");failures=false;advance(16)
+ ownership[p.UserId][id]=true;pass.RefreshStrengthPass(p)
+ check(not pass.PromptStrengthPass(p),"owned Strength not prompted")
+ ownership[p.UserId][1970515086]=false;ownership[p.UserId][2005353724]=false;pass.Refresh(p);advance(2)
+ check(pass.Prompt(p,nil,true),"Wins banner accepted");check(prompts[#prompts].Id==1970515086,"Wins exact pass")
+ check(not pass.PromptStrengthPass(p),"other banner locked during Wins prompt")
+ market.PromptGamePassPurchaseFinished:Fire(p,1970515086,false);advance(2)
+ ownership[p.UserId][1970515086]=true;pass.Refresh(p)
+ check(not pass.Prompt(p,nil,true),"owned Double not prompted")
+ advance(2);check(pass.Prompt(p),"legacy Triple route retained");check(prompts[#prompts].Id==2005353724,"legacy exact Triple pass")
+ market.PromptGamePassPurchaseFinished:Fire(p,2005353724,false)
+ -- Run the actual shared cooldown with the existing router and in-memory data.
+ local timing=runSource("ServerScriptService.Services.PlayerActionTiming",Sources["ServerScriptService.Services.PlayerActionTiming"])
+ local timingProxy=mockModules["ServerScriptService.Services.PlayerActionTiming"]
+ timingProxy.CanAct=timing.CanAct;timingProxy.RecordSuccess=timing.RecordSuccess
+ advance(2);check(auto.HandleTap(p),"manual with actual clock")
+ local sameFrame=sessions[p].Data.Strength
+ check(not auto.HandleTap(p),"same-frame manual blocked");check(not auto.TryAutomatic(p),"manual-auto shared cooldown")
+ near(sessions[p].Data.Strength,sameFrame,"cooldown cannot double gain")
+ advance(2);check(auto.TryAutomatic(p),"auto recovers after cooldown")
+ advance(2);local beforeCombat=sessions[p].Data.Strength
+ mockModules["ServerScriptService.World.EnemyManager"].TryManualAttack=function()return true,"Hit"end
+ check(auto.HandleTap(p),"manual combat accepted");near(sessions[p].Data.Strength,beforeCombat,"combat is not Strength training")
  for _,v in playerList do players.PlayerRemoving:Fire(v);v.Parent=nil end
- advance(20);check(#queue==0,"workers drained on leaving")
+ advance(130);check(#queue==0,"workers and prompt timeouts drained on leaving")
+ results.SimulatedPurchasePrompts=#prompts
  results.MarketplaceCalls=requests;results.LiveExternalCalls=0
  return results
 end

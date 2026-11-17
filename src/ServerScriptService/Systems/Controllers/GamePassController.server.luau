@@ -16,7 +16,15 @@ end
 Players.PlayerAdded:Connect(refreshPlayer)
 for _,player in ipairs(Players:GetPlayers()) do refreshPlayer(player) end
 remote.OnServerEvent:Connect(function(player,action)
- if action~="Prompt" and action~="TrophyPrompt" then return end
+ if action=="StrengthPrompt" then
+  local ok,reason=Pass.PromptStrengthPass(player)
+  remote:FireClient(player,"StrengthPassPromptResult",ok,reason)
+  return
+ end
+ if action~="Prompt" and action~="TrophyPrompt" and action~="DoubleWinOnly" then return end
+ if player:GetAttribute("StrengthPassPromptBusy")==true then
+  remote:FireClient(player,"WinPassPromptResult",false,"Pending");return
+ end
  if action=="TrophyPrompt" then
   local trophy=workspace:FindFirstChild("Trophy")
   local buy=trophy and trophy:FindFirstChild("Buy")
@@ -31,7 +39,7 @@ remote.OnServerEvent:Connect(function(player,action)
    return
   end
  end
- local ok,reason=Pass.Prompt(player)
+ local ok,reason=Pass.Prompt(player,nil,action=="DoubleWinOnly")
  remote:FireClient(player,"WinPassPromptResult",ok,reason)
 end)
 

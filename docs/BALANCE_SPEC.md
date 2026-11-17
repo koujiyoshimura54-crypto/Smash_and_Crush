@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-17 — StrengthパスをManualへ追加（直下Phase1の手動除外を更新）
+
+共通StrengthManager.AddStrengthのWalking／Treadmill条件へManualを追加し、同じsource倍率へ＋1を一度だけ適用する。手動1→2、歩行1→2、W1有料7→8、W2有料15→16。既存装備・Rebirth・Pet・ポーション等の補正を維持。Treadmill上の歩行／Manual鍛錬抑制、単一ループ、共有クールダウンを維持。戦闘、固定報酬、Offline専用計算は対象外。Studio／製作者の効果ゲートはfalseのまま。今回の表示変更は内部価格・Win報酬を変更しない。[245 assertionの隔離模擬結果](../reports/RightHudWalkwayStrength_20261117/REPORT.html)。
+
 ## 2026-11-17 — GamePass Phase1（以下の旧倍率記録より優先）
 
 Strengthパス2089895831は通常歩行・Treadmillのsource倍率へ＋1。`B=(amount+(Lobby内Dumbbell+Aura+Protein)×ticks)`、`gain=B×Rebirth×(設備倍率+Belt+TrainingPotion+StrengthPassBonus)×StrengthPotion×VIP×Pet`。歩行の設備倍率は1、Belt/TrainingPotionは0。小数を保持。手動タップ・固定報酬・Offline専用計算へパス効果を追加しない。

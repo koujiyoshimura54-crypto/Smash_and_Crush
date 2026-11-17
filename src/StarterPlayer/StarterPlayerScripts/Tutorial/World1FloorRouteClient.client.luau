@@ -19,8 +19,11 @@ local function refresh()
  end
  local route=resolve()
  if not route then renderer:Hide();return end
- renderer:Show("World1SpawnToFirstWall",route.Origin,
-  route.Origin+route.Direction*(route.WallDistance-SETTINGS.VisualWallClearance))
+ local first,last=Geometry.Bounds(route,player.Character)
+ -- Every circulating arrow stays inside the continuous transport corridor.
+ -- Keep the authored 5-stud entrance and wall/body stopping clearance.
+ renderer:Show("World1SpawnToFirstWall",route.Origin+route.Direction*first,
+  route.Origin+route.Direction*last)
 end
 local function tick()
  pending=nil

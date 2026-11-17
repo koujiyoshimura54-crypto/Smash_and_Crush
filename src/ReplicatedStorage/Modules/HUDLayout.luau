@@ -3,6 +3,7 @@ local RunService=game:GetService("RunService")
 local TweenService=game:GetService("TweenService")
 local Presentation=require(script.Parent.StrengthHUDPresentation)
 local PurchaseStyle=require(game:GetService("ReplicatedStorage").Config.StrengthHUDStyle)
+local RightPresentation=require(script.Parent.RightHUDPresentation)
 local M={}
 M.BattleBagScale=1.5 -- Absolute multiplier of the original icon/text/gap dimensions.
 M.LeftMenuMinRatio=0.70 -- Minimum extra-avoidance scale relative to this viewport's normal left menu.
@@ -300,10 +301,7 @@ function M.Mount(gui)
   hadOverlay=overlay~=nil
   right.HUDScale.Scale=rs
   for _,slot in ipairs(left:GetChildren()) do if slot:IsA("Frame") then follow(slot,menu:FindFirstChild(slot.Name),leftScale) end end
-  for _,slot in ipairs(right:GetChildren()) do if slot:IsA("Frame") then
-   local boost=gui.Parent:FindFirstChild("World1DoubleWinGui")
-   follow(slot,slot.Name=="DoubleWinButton" and boost and boost:FindFirstChild("DoubleWinButton") or menu:FindFirstChild(slot.Name),rs)
-  end end
+  RightPresentation.Layout(gui,rs)
   local strength=gui:FindFirstChild("StrengthLevelHUD")
   -- Independent of TopHUD's Win scale; keep this readout legible on phones.
   local inventory=hud:FindFirstChild("RunInventoryLabel")
