@@ -13,7 +13,8 @@ return function(loadModule)
     check(not b.Amount.Visible,"hidden Win cost")
     check(b.Price.Font==Enum.Font.FredokaOne and b.Price.TextScaled,"numeric style")
     check(not b.Price.Text:find("[+ ]") and not b.Price.Text:find("Strength"),"number only")
-    check(b.Status.Text~="Step to buy","no purchase caption")
+    check(b.Status.Text=="" and not b.Status.Visible,"numeric-only stand")
+    check(b.Price.NumericScale.Scale==2,"double numeric rendering")
     result.Stands+=1
    end
   end
@@ -23,7 +24,7 @@ return function(loadModule)
   for _,value in {1,1000,1200,1000000,1e18}do mod.ApplyValue(board,value)
    check(board.Price.Text==format.Format(value),"common formatter")
    check(not board.Amount.Visible,"no cost restored")
-   if status~="Step to buy"then check(board.Status.Text==status,"status unchanged")else check(board.Status.Text=="","purchase caption removed")end
+   check(board.Status.Text=="" and not board.Status.Visible,"all status captions hidden")
   end
  end
  local count=#board:GetDescendants()

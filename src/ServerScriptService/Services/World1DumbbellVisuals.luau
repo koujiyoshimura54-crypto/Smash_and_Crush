@@ -6,6 +6,7 @@ local Storage=game:GetService("ServerStorage")
 local Config=require(game.ReplicatedStorage.Config.World1DumbbellVisualConfig)
 local World2Config=require(game.ReplicatedStorage.Config.World2DumbbellVisualConfig)
 local StandPresentation=require(game.ReplicatedStorage.Modules.DumbbellStandPresentation)
+local LabelStyle=require(game.ReplicatedStorage.Config.DumbbellLabelStyle)
 local ItemMaster=require(game.ReplicatedStorage.Config.DumbbellItemMaster)
 local function registration(itemId)
  if typeof(itemId)~="string" then return nil end
@@ -113,8 +114,7 @@ local function iconFor(stand)
  local icon=board and board:FindFirstChild("ItemIcon")
  return icon and icon:IsA("ImageLabel") and icon or nil
 end
--- Keep the Strength line at 1.26 studs and owned/equipped status at .9 studs.
--- Hide the Win price row and remove the purchase prompt from this exhibit.
+-- Numeric-only label. Scale its canvas/text without changing exhibit geometry.
 local function labelProperty(object,key,value)
  local attribute="DumbbellExhibitOriginal_"..key
  if object:GetAttribute(attribute)==nil then object:SetAttribute(attribute,object[key])end
@@ -131,13 +131,14 @@ local function restoreLabel(board)
  restore(board:FindFirstChildOfClass("UIListLayout"),{"Padding"})
  board:SetAttribute("DumbbellExhibitLabel",nil)
 end
-local function positionLabel(stand,press,display,config)
+function M.PositionExhibitLabel(stand,press,display,config)
  local board=stand:FindFirstChild("BillboardGui")
  local tuning=config.ExhibitLabel
  if not board or not board:IsA("BillboardGui")or not tuning then return end
  board:SetAttribute("DumbbellExhibitLabel",true)
- labelProperty(board,"Size",UDim2.fromScale(tuning.Width,tuning.Height))
- for name,height in {Price=1.26,Status=.9}do
+ local scale=LabelStyle.SizeMultiplier
+ labelProperty(board,"Size",UDim2.fromScale(tuning.Width*scale,tuning.Height*scale))
+ for name,height in {Price=LabelStyle.ExhibitValueHeight,Status=.9}do
   local row=board:FindFirstChild(name)
   if row and row:IsA("GuiObject")then labelProperty(row,"Size",UDim2.new(row.Size.X,UDim.new(height/tuning.Height,0)))end
  end
@@ -146,15 +147,15 @@ local function positionLabel(stand,press,display,config)
  for _,name in {"Status","StatusShadow"}do
   local status=board:FindFirstChild(name)
   if status and status:IsA("TextLabel")then
-   if status.Text=="Step to buy"then status.Text=""end
-   labelProperty(status,"Visible",status.Text~="")
+   status.Text=""
+   labelProperty(status,"Visible",false)
   end
  end
  local layout=board:FindFirstChildOfClass("UIListLayout")
  if layout then labelProperty(layout,"Padding",UDim.new(.09/tuning.Height,0))end
  local cf,size=display:GetBoundingBox()
  local halfY=(math.abs(cf.RightVector.Y)*size.X+math.abs(cf.UpVector.Y)*size.Y+math.abs(cf.LookVector.Y)*size.Z)/2
- local center=Vector3.new(cf.Position.X,cf.Position.Y+halfY+tuning.Gap+tuning.Height/2,cf.Position.Z)
+ local center=Vector3.new(cf.Position.X,cf.Position.Y+halfY+tuning.Gap+tuning.Height*scale/2,cf.Position.Z)
  labelProperty(board,"StudsOffset",Vector3.zero)
  labelProperty(board,"StudsOffsetWorldSpace",center-press.Position)
 end
@@ -188,7 +189,7 @@ function M.RefreshExhibit(stand,rebuild)
   return false
  end
  display:PivotTo(press.CFrame*CFrame.new(row.DisplayOffset)*rotation(row.DisplayRotation))
- positionLabel(stand,press,display,config)
+ M.PositionExhibitLabel(stand,press,display,config)
  local item=ItemMaster.Get(itemId)
  StandPresentation.ApplyValue(stand:FindFirstChild("BillboardGui"),item and item.StrengthBonus)
  return true

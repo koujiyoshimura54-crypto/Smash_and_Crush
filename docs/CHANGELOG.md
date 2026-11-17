@@ -1,3 +1,7 @@
+# 2026-11-17 — ダンベル上部の数値専用化・2倍表示
+
+ユーザー追補によりOwned／Equippedも非表示。数値をNumericScale=2と専用キャンバスで2倍へ変更し、再生成・表示更新経路を統一。設備221パーツの形状・配置、価格と加算値は維持。副本未保存Editで確認。[追補報告](../reports/DumbbellNumericOnly_20261117/REPORT.html)。
+
 # 2026-11-17 — 右HUD・歩道範囲・手動Strengthパス
 
 設備数値・Trophyの共通省略表記、報酬入口の上端小型化と通知サイズ維持、動的価格の独立購入バナー、歩道表示と連続搬送境界の共用、Manualへの共通source倍率＋1を実装。副本へ反映し既存未保存編集を保持。Native Edit描画／床判定と隔離模擬で確認、実Play未実施。[画像・詳細検証・未確認事項](../reports/RightHudWalkwayStrength_20261117/REPORT.html)。

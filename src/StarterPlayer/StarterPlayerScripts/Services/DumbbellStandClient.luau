@@ -4,22 +4,14 @@ local RS = game:GetService("ReplicatedStorage")
 local Player = Players.LocalPlayer
 local Config = require(RS.Config:WaitForChild("DumbbellStandConfig"))
 local Master = require(RS.Config:WaitForChild("DumbbellItemMaster"))
-local PurchaseHUD = require(RS.Modules.HUDLayout)
 local StandPresentation = require(RS.Modules.DumbbellStandPresentation)
 local M = {}
 local started = false
-local function setPair(root, name, text)
- for _, suffix in ipairs({"", "Shadow"}) do
-  local label = root and root:FindFirstChild(name .. suffix)
-  if label and label:IsA("TextLabel") then label.AutoLocalize = false; label.Text = text end
- end
-end
 
 function M.start()
  if started then return end
  started = true
  local originals = {}
- local owned = {}
  local loaded = false
  local equipped = Player:GetAttribute("EquippedDumbbell") or ""
  local function renderWorld(worldId)
@@ -42,17 +34,6 @@ function M.start()
    StandPresentation.ApplyValue(board,item.StrengthBonus)
    local itemIcon = board:FindFirstChild("ItemIcon")
    if itemIcon and itemIcon:IsA("ImageLabel") then itemIcon.Image = item.Image end
-   local status = equipped == itemId and "Equipped"
-    or (loaded and owned[itemId] and "Owned" or "")
-   setPair(board, "Status", status)
-   for _,name in {"Status","StatusShadow"}do
-    local label=board:FindFirstChild(name)
-    if label then
-     label.Visible=status~=""
-     PurchaseHUD.ApplyPurchaseTextFont(label)
-     require(RS.Modules.InventoryPresentation).LocalizeEquipmentLabel(label)
-    end
-   end
   end
  end
  local function render() renderWorld(1);renderWorld(2) end
@@ -62,7 +43,6 @@ function M.start()
  local revision = 0
  local function applyState(state)
   if typeof(state) ~= "table" or not state.Loaded then return end
-  owned = state.OwnedDumbbells or {}
   equipped = state.EquippedDumbbell or ""
   loaded = true
   render()

@@ -1,0 +1,20 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ダンベル数値のみ・2倍表示 2026-11-17</title>
+<style>body{font:16px/1.8 system-ui,sans-serif;max-width:1100px;margin:32px auto;padding:0 20px;color:#202637}img{width:100%;height:auto}code{overflow-wrap:anywhere}.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0}@media(max-width:760px){.compare{grid-template-columns:1fr}}</style>
+<h1>ダンベル上部：数値のみ・2倍表示</h1>
+<p>2026-11-17。副本PlaceId 126576845524886／UniverseId 10765181857。基準commit 1032306と現在の未保存Studio編集を照合して変更。</p>
+<p>ユーザー追補により、Owned／Equipped／Step to buy・Win価格・アイコンを非表示にし、両Worldの全24設備を数値だけに統一。表示用Instanceは残し、既存参照の待機問題を避けた。購入・装備の内部状態、装備中の台座色、加算値、モデルの大きさ・高さは変更していない。</p>
+<p>数字は<code>DumbbellLabelStyle.SizeMultiplier=2</code>。数値専用<code>NumericScale.Scale=2</code>で縦横2倍に描画し、キャンバスも9×2.25→18×4.5 studsへ拡張。文字の論理領域とMaxTextSize=64を維持してから拡大する。UITextSizeConstraintは最大100で制限されるため、単に64→128とする方法は使用しない。ラベルの中心を上げて表示域を確保し、設備本体は動かしていない。フォント・色・K/M表記は維持。</p>
+<h2>変更Full Path</h2><ul>
+<li><code>ReplicatedStorage.Config.DumbbellLabelStyle</code></li>
+<li><code>ReplicatedStorage.Modules.DumbbellStandPresentation</code></li>
+<li><code>ServerScriptService.Services.World1DumbbellVisuals</code></li>
+<li><code>StarterPlayer.StarterPlayerScripts.Services.DumbbellStandClient</code></li>
+<li><code>ReplicatedStorage.DumbbellStandBillboardTemplate</code></li>
+<li><code>Workspace.PerStepButtons.1～12.BillboardGui</code></li>
+<li><code>Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1～12.BillboardGui</code></li></ul>
+<p>手動調整は<code>DumbbellLabelStyle.SizeMultiplier</code>。字体・色・縁取りも同じConfig。再適用用<code>tools/ApplyRightHudWalkwayPresentation.luau</code>も更新。</p>
+<h2>同じカメラでの比較</h2><div class="compare"><figure><img src="images/before.jpg"><figcaption>変更前</figcaption></figure><figure><img src="images/after.jpg"><figcaption>変更後：数値2倍</figcaption></figure></div>
+<h2>World2確認</h2><img src="images/world2.jpg">
+<h2>検証</h2><ul><li>Edit内で326 assertions成功。24台すべて数値のみ、NumericScale=2、共通省略表記を確認。</li><li>Owned／Equipped／Step to buyを与えても非表示へ戻ること、テンプレート100回再適用とサーバー配置処理10回でサイズ・Instance数が増えないことを確認。</li><li>設備221パーツのCFrame・Sizeが変更前と完全一致。</li><li>両WorldのStudio実描画を確認。実Play・実端末の確認は未実施。画面右側の既存HUDによる一部設備の遮蔽は、今回の数値拡大とは別の既存表示範囲。</li><li>副本へ反映し、検証コピーは除去。既存編集を保持した未保存Edit状態。Save／Publish・実購入なし。</li></ul>
+<p>変更した6 Luauファイルのコンパイル、git diff --check、報告書の画像・リンクを確認。最終照合でも4 Sourceとエディターバッファが一致し、24台の表示と221パーツの配置・サイズを維持。</p>
+<p><a href="EVIDENCE.json">全対象のFull Pathと確認結果</a>。今回分のみ通常commit／origin/mainへpush。commit IDは完了回答に記載。</p></html>

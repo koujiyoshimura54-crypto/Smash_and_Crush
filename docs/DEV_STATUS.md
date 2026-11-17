@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-17 — ダンベル上部を数値のみ・2倍へ追補
+
+副本の現行4 Sourceと24設備・共通テンプレートへ反映。Owned／Equippedのクライアント再表示処理も除去。Editで326 assertion、全24台、100回再適用の非増殖、221パーツのCFrame／Size維持を確認。両World実描画を確認、実Play未実施。未保存Editを保持、Save／Publishなし。[報告](../reports/DumbbellNumericOnly_20261117/REPORT.html)。
+
 ## 2026-11-17 — 右HUD・設備表示・歩道範囲・手動Strengthパス
 
 副本の既存15 Sourceを変更、新規Module4個、24設備・20 Trophyラベル・右HUDへ反映。対象外511 SourceとDisabled状態、未保存Stage1表記、Daily／Shopの既存Studio差分を保持。Edit内の模擬245 assertion、ラベル145 assertion、実床447地点・矢印40パーツ・循環と状態切替4797 assertionを確認。PC／スマホ／タブレット相当の比較画像を保存。実Play、実端末、実購入、物理搬送・実アニメ速度の測定は未確認。Save／Publishなし、補助除去後の未保存Edit。[詳細・Full Path・残件](../reports/RightHudWalkwayStrength_20261117/REPORT.html)。

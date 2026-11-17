@@ -8,14 +8,21 @@ return function(loadModule)
  local stands=loadModule(RS.Config.DumbbellStandConfig)
  local master=loadModule(RS.Config.DumbbellItemMaster)
  local labels=loadModule(RS.Modules.DumbbellStandPresentation)
+ local visuals=loadModule(game.ServerScriptService.Services.World1DumbbellVisuals)
  local format=loadModule(RS.Modules.NumberFormat)
  local result={Dumbbells={},Trophies={}}
  for world=1,2 do
+  local visualConfig=loadModule(RS.Config[world==1 and "World1DumbbellVisualConfig" or "World2DumbbellVisualConfig"])
   local folder=stands.GetFolder(world)
   if folder then for _,stand in folder:GetChildren() do
    local item=master.Get(stand:GetAttribute("ItemId") or stands.GetItemId(tonumber(stand.Name),world))
    local board=stand:FindFirstChild("BillboardGui")
-   if item and board then labels.ApplyValue(board,item.StrengthBonus);table.insert(result.Dumbbells,{Path=board:GetFullName(),Text=board.Price.Text}) end
+   if item and board then
+    local display=stand:FindFirstChild(visualConfig.ExhibitName)
+    local press=stand:FindFirstChild("Press")
+    if display and press then visuals.PositionExhibitLabel(stand,press,display,visualConfig) end
+    labels.ApplyValue(board,item.StrengthBonus);table.insert(result.Dumbbells,{Path=board:GetFullName(),Text=board.Price.Text})
+   end
   end end
  end
  local template=RS:FindFirstChild("DumbbellStandBillboardTemplate")

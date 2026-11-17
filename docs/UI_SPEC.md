@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-17 — ダンベル数値のみ・表示2倍（追補）
+
+ユーザー追加指定により、両World24台のOwned／Equippedも非表示として数値だけにする。DumbbellLabelStyle.SizeMultiplier=2、数値専用NumericScaleと表示キャンバスで元の数字を縦横2倍にする。TextScaledの上限値変更だけでは100で制限されるため、文字の実描画へUIScaleを適用。NumberFormat・FredokaOne・オレンジ・暗色縁取りと装備中の台座色を維持。設備モデル・価格・加算値は変更なし。[追補報告と比較](../reports/DumbbellNumericOnly_20261117/REPORT.html)。
+
 ## 2026-11-17 — 右上報酬入口と右購入バナー・設備数値
 
 Playtime／Dailyは安全領域上端へ横並び。従来寸法の1/3、タップ下限44px。通知画像は従来の端末別寸法36／23.12／31.01px（PC／iPhone相当／iPad相当）を保持。右購入バナーは採用済み「小さくなった英語購入バナー.png」を基準とし、再度70%縮小しない。Only／Robux／動的価格は独立UI、取得失敗時は未確認金額を出さない。今回の取得値はWins=12（確認価格15との差は原因未確認）、Strength=3。

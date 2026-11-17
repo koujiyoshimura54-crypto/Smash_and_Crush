@@ -5,15 +5,29 @@ local Style=require(RS.Config.DumbbellLabelStyle)
 local NumberFormat=require(RS.Modules.NumberFormat)
 function M.ApplyValue(board,value)
  if not board then return end
+ if board:GetAttribute("DumbbellExhibitLabel")~=true then
+  local size=Style.TemplateSize;local scale=Style.SizeMultiplier
+  board.Size=UDim2.new(size.X.Scale*scale,size.X.Offset*scale,size.Y.Scale*scale,size.Y.Offset*scale)
+ end
  local amount=board:FindFirstChild("Amount")
  if amount and amount:IsA("GuiObject") then amount.Visible=false end
+ local icon=board:FindFirstChild("ItemIcon")
+ if icon and icon:IsA("GuiObject") then icon.Visible=false end
  for _,name in {"Status","StatusShadow"} do
   local status=board:FindFirstChild(name)
-  if status and status:IsA("TextLabel") and status.Text=="Step to buy" then status.Text="";status.Visible=false end
+  if status and status:IsA("TextLabel") then status.Text="";status.Visible=false end
  end
  for _,name in {"Price","PriceShadow"} do
   local label=board:FindFirstChild(name)
   if label and label:IsA("TextLabel") then
+   local scale=Style.SizeMultiplier
+   local ui=label:FindFirstChild("NumericScale") or Instance.new("UIScale")
+   ui.Name="NumericScale";ui.Scale=scale;ui.Parent=label
+   -- Keep the original logical text bounds, then scale their actual rendering.
+   -- UITextSizeConstraint caps MaxTextSize at 100, so doubling that is insufficient.
+   local height=board:GetAttribute("DumbbellExhibitLabel")==true
+    and Style.ExhibitValueHeight/board.Size.Y.Scale or Style.TemplateValueHeight/scale
+   label.Size=UDim2.fromScale(Style.ValueWidth/scale,height)
    if value~=nil then label.Text=NumberFormat.Format(value) end
    label.AutoLocalize=false;label.Font=Style.Font;label.TextColor3=Style.Color
    label.TextWrapped=false;label.TextScaled=true;label.TextTruncate=Enum.TextTruncate.None
