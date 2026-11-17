@@ -1,5 +1,9 @@
 # 2026-11-09 — Shared World Ore and Dumbbell forging
 
+## 2026-11-17 — ダンベル展示をボタンへ近づけ、Strength略記を統一
+
+両World各12展示のDisplayOffset.Yを8.4→4 studsへ変更。全長7.2は維持し、実ボタン上端との隙間1.1085〜1.9950 studsをEditで確認。設備Win行とStep to buyを非表示にし、Owned/Equippedは維持。Strengthは既存NumberFormat.FormatのK/M略記へ統一。値の定義・購入・加算・手持ちは変更なし。実クライアントSourceを切り離したUIで模擬実行し96状態確認、今回の実Playは未実施。[5/9登録を含む統合報告・最終画像・設定](../reports/World2Dumbbell3D_20261117/COMBINED_REPORT.md)。
+
 ## 2026-11-17 — World2の05 / 09を登録、12展示が揃う
 
 05は既存UIと意匠が一致する水平な髑髏129491e9、09はユーザー指定の目玉1d5bb350を登録。既存共通表示へ設定2件を追加し、展示全長7.2 studs・上方ラベル・左右手持ちへ接続。Editで2メッシュ/8テクスチャの取得、全12対応、接続と描画を確認。新規Studio/実Playは開始せず、実装備遷移・Body移動・2クライアントの今回分は未確認。[登録ID・設定・画像・確認範囲](../reports/World2Dumbbell3D_20261117/W20509_IMPLEMENTATION.md)。

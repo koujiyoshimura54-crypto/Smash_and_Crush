@@ -1,6 +1,8 @@
 # World2ダンベル・8番UI・Body/Treadmill調査
 
-2026-11-17 更新。**05の髑髏・09の目玉を登録し、World2全12種類の3D展示が副本Editに揃った。World1/World2展示全長7.2 studs、テキストはモデル上部。05/09は左右手持ちのEdit接続・描画確認済み、実Playは未実施。8番UI画像の実インベントリ/マージ画面描画は未確認。**
+2026-11-17 更新。**World1/World2各12種類を展示全長7.2 studsのまま4.4 studs下げ、設備のWin行とStep to buyを非表示、Strengthを共通のK/M略記へ統一した。World2の05/09登録と合わせた最新状態は下記の統合報告を参照。今回の実Playと8番UIの実インベントリ/マージ描画は未確認。**
+
+[最新の統合報告：登録ID・最終表示・高さ・テキスト・Strength単位・確認画像・検証限界](COMBINED_REPORT.md)。
 
 最新の[05/09の登録ID・選定根拠・Edit確認・未確認範囲](W20509_IMPLEMENTATION.md)。以下の旧実Play記録は登録10種類の時点の証拠。
 
@@ -59,7 +61,7 @@ BaseColor=sRGB、他3種=Non-Color。元ファイルを保持し、減ポリゴ�
 |---|---|
 | Template / SourceUUID | 登録原本名 / 元ファイル追跡用UUID |
 | DisplayLength | 展示の柄方向X全長、7.2 studs（今回1.5倍） |
-| DisplayOffset | Pressのlocal座標基準、(0,8.4,0) studs |
+| DisplayOffset | Pressのlocal座標基準、(0,4,0) studs |
 | DisplayRotation | 展示local軸回転、degrees |
 | HeldLength | 手持ち柄方向X全長、2 studs（既存Body全体倍率適用前） |
 | HeldThicknessMultiplier | 種類別Y/Z厚み、1。Xへ追加しない |

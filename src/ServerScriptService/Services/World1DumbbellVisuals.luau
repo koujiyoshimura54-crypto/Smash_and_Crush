@@ -111,8 +111,8 @@ local function iconFor(stand)
  local icon=board and board:FindFirstChild("ItemIcon")
  return icon and icon:IsA("ImageLabel") and icon or nil
 end
--- The model owner also owns this compact label. Keep the old world-space text
--- heights: price 1.26, amount 1.08, status .9 studs; remove the hidden image row.
+-- Keep the Strength line at 1.26 studs and owned/equipped status at .9 studs.
+-- Hide the Win price row and remove the purchase prompt from this exhibit.
 local function labelProperty(object,key,value)
  local attribute="DumbbellExhibitOriginal_"..key
  if object:GetAttribute(attribute)==nil then object:SetAttribute(attribute,object[key])end
@@ -125,7 +125,7 @@ local function restoreLabel(board)
   for _,key in keys do local v=object:GetAttribute("DumbbellExhibitOriginal_"..key);if v~=nil then object[key]=v end end
  end
  restore(board,{"Size","StudsOffset","StudsOffsetWorldSpace"})
- for _,name in {"Price","Amount","Status"}do restore(board:FindFirstChild(name),{"Size"})end
+ for _,name in {"Price","Amount","Status"}do restore(board:FindFirstChild(name),{"Size","Visible"})end
  restore(board:FindFirstChildOfClass("UIListLayout"),{"Padding"})
  board:SetAttribute("DumbbellExhibitLabel",nil)
 end
@@ -135,9 +135,18 @@ local function positionLabel(stand,press,display,config)
  if not board or not board:IsA("BillboardGui")or not tuning then return end
  board:SetAttribute("DumbbellExhibitLabel",true)
  labelProperty(board,"Size",UDim2.fromScale(tuning.Width,tuning.Height))
- for name,height in {Price=1.26,Amount=1.08,Status=.9}do
+ for name,height in {Price=1.26,Status=.9}do
   local row=board:FindFirstChild(name)
   if row and row:IsA("GuiObject")then labelProperty(row,"Size",UDim2.new(row.Size.X,UDim.new(height/tuning.Height,0)))end
+ end
+ local amount=board:FindFirstChild("Amount")
+ if amount and amount:IsA("GuiObject")then labelProperty(amount,"Visible",false)end
+ for _,name in {"Status","StatusShadow"}do
+  local status=board:FindFirstChild(name)
+  if status and status:IsA("TextLabel")then
+   if status.Text=="Step to buy"then status.Text=""end
+   labelProperty(status,"Visible",status.Text~="")
+  end
  end
  local layout=board:FindFirstChildOfClass("UIListLayout")
  if layout then labelProperty(layout,"Padding",UDim.new(.09/tuning.Height,0))end
