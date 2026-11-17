@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-17 — ダンベルに＋を追加・直前サイズの75％
+
+最新指定により数値の先頭へ「+」を追加。SizeMultiplierを2から1.5へ変更し、直前の文字表示を75％へ縮小。Owned／Equipped非表示、共通K/M表記、字体・配色を維持。[比較と確認結果](../reports/DumbbellPlus75_20261117/REPORT.html)。
+
 ## 2026-11-17 — ダンベル数値のみ・表示2倍（追補）
 
 ユーザー追加指定により、両World24台のOwned／Equippedも非表示として数値だけにする。DumbbellLabelStyle.SizeMultiplier=2、数値専用NumericScaleと表示キャンバスで元の数字を縦横2倍にする。TextScaledの上限値変更だけでは100で制限されるため、文字の実描画へUIScaleを適用。NumberFormat・FredokaOne・オレンジ・暗色縁取りと装備中の台座色を維持。設備モデル・価格・加算値は変更なし。[追補報告と比較](../reports/DumbbellNumericOnly_20261117/REPORT.html)。

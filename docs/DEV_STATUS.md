@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-17 — ダンベル＋表示・75％調整
+
+副本の2 Source、24台とテンプレートへ反映。Edit実描画、25回再適用、221パーツの位置・サイズ不変を確認。実Play・実端末は未確認。未保存Editを保持。[報告](../reports/DumbbellPlus75_20261117/REPORT.html)。
+
 ## 2026-11-17 — ダンベル上部を数値のみ・2倍へ追補
 
 副本の現行4 Sourceと24設備・共通テンプレートへ反映。Owned／Equippedのクライアント再表示処理も除去。Editで326 assertion、全24台、100回再適用の非増殖、221パーツのCFrame／Size維持を確認。両World実描画を確認、実Play未実施。未保存Editを保持、Save／Publishなし。[報告](../reports/DumbbellNumericOnly_20261117/REPORT.html)。

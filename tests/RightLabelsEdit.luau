@@ -12,9 +12,9 @@ return function(loadModule)
    if b and tonumber(stand.Name) then
     check(not b.Amount.Visible,"hidden Win cost")
     check(b.Price.Font==Enum.Font.FredokaOne and b.Price.TextScaled,"numeric style")
-    check(not b.Price.Text:find("[+ ]") and not b.Price.Text:find("Strength"),"number only")
+    check(b.Price.Text:sub(1,1)=="+" and not b.Price.Text:find(" ") and not b.Price.Text:find("Strength"),"plus and number only")
     check(b.Status.Text=="" and not b.Status.Visible,"numeric-only stand")
-    check(b.Price.NumericScale.Scale==2,"double numeric rendering")
+    check(b.Price.NumericScale.Scale==1.5,"75 percent of previous double rendering")
     result.Stands+=1
    end
   end
@@ -22,7 +22,7 @@ return function(loadModule)
  local board=template:Clone()
  for _,status in {"Owned","Equipped","Step to buy"}do board.Status.Text=status;board.Status.Visible=true
   for _,value in {1,1000,1200,1000000,1e18}do mod.ApplyValue(board,value)
-   check(board.Price.Text==format.Format(value),"common formatter")
+   check(board.Price.Text=="+"..format.Format(value),"prefix and common formatter")
    check(not board.Amount.Visible,"no cost restored")
    check(board.Status.Text=="" and not board.Status.Visible,"all status captions hidden")
   end

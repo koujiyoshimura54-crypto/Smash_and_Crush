@@ -28,7 +28,7 @@ function M.ApplyValue(board,value)
    local height=board:GetAttribute("DumbbellExhibitLabel")==true
     and Style.ExhibitValueHeight/board.Size.Y.Scale or Style.TemplateValueHeight/scale
    label.Size=UDim2.fromScale(Style.ValueWidth/scale,height)
-   if value~=nil then label.Text=NumberFormat.Format(value) end
+   if value~=nil then label.Text="+"..NumberFormat.Format(value) end
    label.AutoLocalize=false;label.Font=Style.Font;label.TextColor3=Style.Color
    label.TextWrapped=false;label.TextScaled=true;label.TextTruncate=Enum.TextTruncate.None
    label.TextStrokeColor3=Style.OutlineColor;label.TextStrokeTransparency=1

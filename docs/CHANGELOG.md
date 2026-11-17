@@ -1,3 +1,7 @@
+# 2026-11-17 — ダンベル＋表示・直前サイズの75％
+
+数値へ「+」を追加し、表示倍率を2→1.5へ調整。Owned／Equipped非表示を維持。[追補報告](../reports/DumbbellPlus75_20261117/REPORT.html)。
+
 # 2026-11-17 — ダンベル上部の数値専用化・2倍表示
 
 ユーザー追補によりOwned／Equippedも非表示。数値をNumericScale=2と専用キャンバスで2倍へ変更し、再生成・表示更新経路を統一。設備221パーツの形状・配置、価格と加算値は維持。副本未保存Editで確認。[追補報告](../reports/DumbbellNumericOnly_20261117/REPORT.html)。

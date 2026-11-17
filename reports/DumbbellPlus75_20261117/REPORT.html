@@ -1,0 +1,18 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ダンベル＋表示・75％調整</title>
+<style>body{font:16px/1.8 system-ui,sans-serif;max-width:1100px;margin:30px auto;padding:0 20px;color:#202637}img{width:100%;height:auto}.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0}code{overflow-wrap:anywhere}@media(max-width:700px){.compare{grid-template-columns:1fr}}</style>
+<h1>ダンベル＋表示・直前サイズの75％</h1>
+<p>2026-11-17。副本PlaceId 126576845524886／UniverseId 10765181857。直前commit 7ee7305と現在のStudio Source・エディターバッファを照合して変更。</p>
+<p>両Worldの24設備に「+」を追加（例：+25、+1.2K）。文字倍率を2→1.5、すなわち直前の75％へ調整。Owned／Equippedは引き続き非表示。NumberFormat、FredokaOne、オレンジと暗色縁取り、購入・装備・Strength加算値は維持。</p>
+<h2>変更箇所・調整場所</h2><ul>
+<li><code>ReplicatedStorage.Config.DumbbellLabelStyle</code>：<code>SizeMultiplier=1.5</code>。文字と表示域を共通倍率で調整。</li>
+<li><code>ReplicatedStorage.Modules.DumbbellStandPresentation</code>：<code>ApplyValue</code>で共通NumberFormatの結果に「+」を追加。</li>
+<li><code>ReplicatedStorage.DumbbellStandBillboardTemplate</code>と、両World各12設備のBillboardGuiへ再適用。全Full Pathは<a href="EVIDENCE.json">確認結果</a>に記載。</li></ul>
+<h2>同じカメラでの比較</h2><div class="compare"><figure><img src="images/before.jpg"><figcaption>変更前：数値のみ・倍率2</figcaption></figure><figure><img src="images/after.jpg"><figcaption>変更後：＋付き・倍率1.5</figcaption></figure></div>
+<h2>World2</h2><img src="images/world2.jpg">
+<h2>確認結果・制限</h2><ul>
+<li>24台すべて「+」付き、NumericScale=1.5。表示域も18×4.5→13.5×3.375 studs（75％）。</li>
+<li>テンプレートを25回再適用しても「+」重複、Owned復活、Instance数増加なし。1／1K／1.5K／1Mの表示を確認。</li>
+<li>設備221パーツのCFrame・Sizeが変更前と一致。</li>
+<li>Studio Editで両Worldの実描画を確認。変更した3 Luauファイルのコンパイルを確認。実Play・実端末は未確認。</li>
+<li>検証用コピーは除去。Save／Publish・実購入なし。既存編集を保持した未保存Edit状態。</li></ul>
+<p>今回分のみ通常commit・origin/mainへpush。commit IDは完了回答に記載。</p></html>
