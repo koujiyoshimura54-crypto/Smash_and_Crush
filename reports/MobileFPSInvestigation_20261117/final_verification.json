@@ -1,0 +1,203 @@
+{
+  "PlaceVersion": 728,
+  "AtUTC": "2026-11-17T13:49:34Z",
+  "Settings": {
+    "StreamingIntegrityMode": "Enum.StreamingIntegrityMode.PauseOutsideLoadedArea",
+    "StreamingTargetRadius": 1024,
+    "StreamingMinRadius": 64,
+    "Gravity": 196.1999969482422,
+    "StreamOutBehavior": "Enum.StreamOutBehavior.Opportunistic",
+    "StreamingEnabled": true
+  },
+  "WorkspaceDescendants": 136473,
+  "UniverseId": 10765181857,
+  "PlaceId": 126576845524886,
+  "Running": false,
+  "WorldGUICount": 290,
+  "WorldGUISelectedPropertiesUnchanged": true,
+  "StreamingAndGravityUnchanged": true,
+  "SourceComparisonMethod": "CRLF normalized to LF only; no whitespace trimming. Editor exact-equal to current Source.",
+  "Sources": [
+    {
+      "Path": "ReplicatedStorage.Config.AuraConfig",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Config.LevelRequirements",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Config.TreadmillConfig",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Config.World1DumbbellVisualConfig",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Config.World1WalkwayConfig",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Config.World2DumbbellVisualConfig",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.EclipseAuraVisual",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.FloorGuideRenderer",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.HUDLayout",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.World1WalkwayGeometry",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.World1WalkwayLocomotion",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Services.AuraCharacterEffects",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Services.LobbySpawnService",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Services.TrainingManager",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Services.World1DumbbellVisuals",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Services.World1WalkwayService",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.DumbbellDisplayController",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.MuscleCharacterService",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.World1DumbbellExhibitController",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.World.BossChaseService",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.World.EnemyManager",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterGui.StrengthGui.DailyRewardsClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterGui.StrengthGui.EssentialStudShopClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterGui.StrengthGui.ItemInventoryTabClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.World2BossAnimationClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.Combat.CombatClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.Tutorial.World1FloorRouteClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.UI.MergePanelClient_New",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.UI.TreadmillGuideClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.World.World1WalkwayClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.ResponsivePanels",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "ServerScriptService.Services.TreadmillVisualService",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterGui.StrengthGui.StrengthRewardClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterGui.StrengthGui.TimeRewardsClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.Tutorial.TutorialGuideClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    },
+    {
+      "Path": "StarterPlayer.StarterPlayerScripts.UI.ItemEffectHUDClient",
+      "EditorEqualsSource": true,
+      "SourceUnchangedLF": true
+    }
+  ],
+  "StudioOperations": "Read only. No require, Source writes, property writes, Play/Stop, Save/Publish, closing or new Studio."
+}

@@ -1,0 +1,112 @@
+{
+  "SourceComparisonCount": 36,
+  "SourceMismatches": [
+    "ReplicatedStorage.Config.TreadmillConfig",
+    "ReplicatedStorage.Modules.World1WalkwayGeometry",
+    "StarterGui.StrengthGui.DailyRewardsClient",
+    "StarterPlayer.StarterPlayerScripts.Tutorial.World1FloorRouteClient"
+  ],
+  "Exhibits": 24,
+  "RegisteredModels": 24,
+  "ExhibitBaseParts": 53,
+  "UniqueDumbbellMeshes": 23,
+  "UniqueDumbbellMapIds": 92,
+  "SourceTriangleRecordCount": 23,
+  "SourceTriangleRange": [
+    3098,
+    13879
+  ],
+  "SourceTriangleSumAll23DistinctModels": 273204,
+  "SourceMapHashRecordsLinkedToCurrentIds": 92,
+  "DuplicateSourceFileHashesWithDifferentCurrentAssetIds": 0,
+  "EffectInventoryRecords": 1551,
+  "EffectInventoryExpected": 1551,
+  "WorldGUIs": 290,
+  "EnabledWorldGUIs": 235,
+  "AlwaysOnTopGUIs": 43,
+  "WorldGUIMaxDistanceDistribution": {
+    "infinity": 63,
+    "1000": 159,
+    "18970.328125": 1,
+    "16637.712890625": 1,
+    "5361.95263671875": 1,
+    "14039.091796875": 1,
+    "20060.068359375": 1,
+    "2762.64404296875": 1,
+    "5517.6171875": 1,
+    "12930.8515625": 1,
+    "3279.547119140625": 1,
+    "14161.1669921875": 1,
+    "12066.185546875": 1,
+    "14645.1220703125": 1,
+    "30": 2,
+    "40": 1,
+    "60": 40,
+    "200": 9,
+    "75": 2,
+    "0": 2
+  },
+  "PhysicsGroups": [
+    {
+      "UnanchoredTouchable": 2835,
+      "Path": "Workspace.Ungroup",
+      "RootAnchored": 2106,
+      "Unanchored": 3219,
+      "Query": 3118,
+      "Humanoids": 217,
+      "Constraints": 0,
+      "UnanchoredCollidable": 954,
+      "Parts": 3472
+    },
+    {
+      "UnanchoredTouchable": 1787,
+      "Path": "Workspace.Stud Egg & Pet",
+      "RootAnchored": 53,
+      "Unanchored": 4447,
+      "Query": 2555,
+      "Humanoids": 1,
+      "Constraints": 8,
+      "UnanchoredCollidable": 1475,
+      "Parts": 4670
+    },
+    {
+      "UnanchoredTouchable": 0,
+      "Path": "Workspace.MergeToForge",
+      "RootAnchored": 0,
+      "Unanchored": 0,
+      "Query": 3450,
+      "Humanoids": 0,
+      "Constraints": 0,
+      "UnanchoredCollidable": 0,
+      "Parts": 3510
+    },
+    {
+      "UnanchoredTouchable": 0,
+      "Path": "Workspace.GeneratedMap",
+      "RootAnchored": 0,
+      "Unanchored": 0,
+      "Query": 4494,
+      "Humanoids": 0,
+      "Constraints": 0,
+      "UnanchoredCollidable": 0,
+      "Parts": 4516
+    },
+    {
+      "UnanchoredTouchable": 0,
+      "Path": "Workspace.World2Map",
+      "RootAnchored": 0,
+      "Unanchored": 0,
+      "Query": 3531,
+      "Humanoids": 2,
+      "Constraints": 33,
+      "UnanchoredCollidable": 0,
+      "Parts": 3874
+    }
+  ],
+  "Cautions": [
+    "Edit inventory is not the visible/streamed/active runtime population.",
+    "Authored Rate sums are not measured particles per second.",
+    "Source triangulation is historical conversion metadata, not rendered mesh LOD.",
+    "Texture dimensions/PNG bytes do not establish runtime memory."
+  ]
+}

@@ -1,0 +1,504 @@
+{
+  "PlaceVersion": 728,
+  "UniverseId": 10765181857,
+  "Settings": {
+    "StreamOutBehavior": "Enum.StreamOutBehavior.Opportunistic",
+    "Gravity": 196.1999969482422,
+    "StreamingEnabled": true,
+    "StreamingIntegrityMode": "Enum.StreamingIntegrityMode.PauseOutsideLoadedArea",
+    "PlayerCharacterDestroyBehavior": "unavailable",
+    "StreamingTargetRadius": 1024,
+    "StreamingMinRadius": 64,
+    "ModelStreamingBehavior": "unavailable",
+    "GlobalWind": [
+      0,
+      0,
+      0
+    ],
+    "PhysicsSteppingMethod": "unavailable"
+  },
+  "Services": {
+    "ServerStorage": {
+      "Classes": {
+        "WrapLayer": 3,
+        "NoCollisionConstraint": 245,
+        "MeshPart": 610,
+        "UIAspectRatioConstraint": 120,
+        "WeldConstraint": 603,
+        "Folder": 139,
+        "Shirt": 12,
+        "Animator": 27,
+        "Attachment": 716,
+        "BlockMesh": 57,
+        "AnimationRigData": 4,
+        "TextLabel": 279,
+        "NumberValue": 98,
+        "AnimationController": 11,
+        "RigidConstraint": 14,
+        "ParticleEmitter": 90,
+        "LocalScript": 2,
+        "Configuration": 1,
+        "SurfaceGui": 40,
+        "StringValue": 202,
+        "ObjectValue": 13,
+        "CharacterMesh": 5,
+        "Pants": 11,
+        "CFrameValue": 174,
+        "ImageLabel": 120,
+        "Animation": 52,
+        "UIListLayout": 279,
+        "AnimationConstraint": 15,
+        "BodyColors": 12,
+        "UnionOperation": 31,
+        "SurfaceAppearance": 70,
+        "FaceControls": 11,
+        "Bone": 352,
+        "Tool": 1,
+        "Texture": 12588,
+        "TouchTransmitter": 5,
+        "HumanoidDescription": 9,
+        "Motor6D": 350,
+        "BallSocketConstraint": 14,
+        "Vector3Value": 787,
+        "CylinderMesh": 199,
+        "BillboardGui": 119,
+        "Humanoid": 24,
+        "Part": 6253,
+        "Weld": 1391,
+        "SpecialMesh": 134,
+        "BoolValue": 6,
+        "UIStroke": 319,
+        "Pose": 31641,
+        "AccessoryDescription": 45,
+        "BodyPartDescription": 54,
+        "Hat": 3,
+        "ManualWeld": 42,
+        "BindableFunction": 1,
+        "UICorner": 80,
+        "ModuleScript": 4,
+        "WrapTarget": 53,
+        "Sound": 1,
+        "SurfaceLight": 60,
+        "Frame": 160,
+        "UIGradient": 120,
+        "Decal": 69,
+        "KeyframeSequence": 37,
+        "Accessory": 17,
+        "Model": 1776,
+        "Keyframe": 849
+      },
+      "Descendants": 61629
+    },
+    "Workspace": {
+      "Classes": {
+        "ShirtGraphic": 16,
+        "Humanoid": 223,
+        "Highlight": 33,
+        "MeshPart": 5304,
+        "SpecialMesh": 1124,
+        "WeldConstraint": 2110,
+        "Folder": 296,
+        "Shirt": 127,
+        "Animator": 271,
+        "Attachment": 5175,
+        "BlockMesh": 26,
+        "AnimationRigData": 7,
+        "Beam": 158,
+        "Frame": 678,
+        "ProximityPrompt": 5,
+        "RigidConstraint": 21,
+        "ModuleScript": 1,
+        "LocalScript": 1,
+        "Configuration": 326,
+        "SurfaceGui": 161,
+        "StringValue": 617,
+        "ObjectValue": 357,
+        "CharacterMesh": 141,
+        "UIScale": 24,
+        "Pants": 127,
+        "CFrameValue": 1856,
+        "ImageLabel": 545,
+        "Animation": 40,
+        "UIListLayout": 374,
+        "AnimationConstraint": 30,
+        "BodyColors": 44,
+        "PointLight": 102,
+        "Model": 5192,
+        "Snap": 253,
+        "Part": 16740,
+        "FaceControls": 2,
+        "IntValue": 2244,
+        "Bone": 3400,
+        "Texture": 21960,
+        "Script": 4,
+        "Terrain": 1,
+        "Camera": 1,
+        "HumanoidDescription": 143,
+        "BindableFunction": 1,
+        "WrapTarget": 44,
+        "NoCollisionConstraint": 95,
+        "Motor6D": 4041,
+        "BallSocketConstraint": 28,
+        "UIPadding": 2,
+        "Status": 3,
+        "NumberValue": 29,
+        "AnimationController": 188,
+        "SurfaceAppearance": 214,
+        "BillboardGui": 129,
+        "ManualWeld": 1,
+        "Vector3Value": 1052,
+        "Weld": 8924,
+        "Trail": 13,
+        "BoolValue": 3,
+        "UIStroke": 1858,
+        "Sound": 56,
+        "UIAspectRatioConstraint": 454,
+        "AccessoryDescription": 12,
+        "PackageLink": 1,
+        "BodyPartDescription": 900,
+        "TextLabel": 1407,
+        "UICorner": 594,
+        "Pose": 39761,
+        "SpawnLocation": 2,
+        "UnionOperation": 121,
+        "UITextSizeConstraint": 68,
+        "ParticleEmitter": 1160,
+        "UIGradient": 773,
+        "Accessory": 469,
+        "KeyframeSequence": 55,
+        "Decal": 300,
+        "ScrollingFrame": 9,
+        "Keyframe": 3446
+      },
+      "Descendants": 136473
+    },
+    "ReplicatedStorage": {
+      "Classes": {
+        "Highlight": 1,
+        "SurfaceAppearance": 33,
+        "MeshPart": 715,
+        "UIAspectRatioConstraint": 23,
+        "WeldConstraint": 93,
+        "Folder": 60,
+        "Bone": 635,
+        "BloomEffect": 4,
+        "Attachment": 81,
+        "UIScale": 1,
+        "Sky": 4,
+        "AnimationRigData": 3,
+        "TextLabel": 58,
+        "UnionOperation": 1,
+        "Sound": 2,
+        "Frame": 48,
+        "ScreenGui": 1,
+        "Beam": 12,
+        "AnimationController": 42,
+        "RemoteEvent": 22,
+        "ModuleScript": 260,
+        "ParticleEmitter": 266,
+        "SpecialMesh": 1,
+        "KeyframeSequence": 3,
+        "Configuration": 4,
+        "BillboardGui": 11,
+        "SunRaysEffect": 4,
+        "ObjectValue": 5,
+        "Weld": 196,
+        "RemoteFunction": 8,
+        "TextButton": 14,
+        "UIStroke": 72,
+        "Pose": 6750,
+        "ImageLabel": 32,
+        "CFrameValue": 462,
+        "Decal": 98,
+        "PointLight": 3,
+        "Motor6D": 481,
+        "UIListLayout": 25,
+        "Part": 353,
+        "Animator": 41,
+        "UICorner": 21,
+        "UITextSizeConstraint": 1,
+        "Trail": 7,
+        "UIGradient": 18,
+        "Model": 144,
+        "Atmosphere": 3,
+        "ColorCorrectionEffect": 4,
+        "UISizeConstraint": 1,
+        "Keyframe": 250
+      },
+      "Descendants": 11377
+    }
+  },
+  "Lighting": {
+    "LightingStyle": "Enum.LightingStyle.Soft",
+    "GlobalShadows": true,
+    "EnvironmentSpecularScale": 0.25,
+    "Ambient": [
+      0.9686274528503418,
+      0.7882353067398071,
+      1
+    ],
+    "OutdoorAmbient": [
+      0.9803921580314636,
+      0.7843137383460999,
+      1
+    ],
+    "EnvironmentDiffuseScale": 0.3499999940395355,
+    "Brightness": 2.5,
+    "ShadowSoftness": 0.15000000596046448,
+    "PrioritizeLightingQuality": true
+  },
+  "PlaceId": 126576845524886,
+  "Roots": [
+    {
+      "Path": "Workspace.Gift",
+      "Descendants": 10,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.AssetContents",
+      "Descendants": 0,
+      "Class": "ModuleScript"
+    },
+    {
+      "Path": "Workspace.Leaderboards",
+      "Descendants": 3528,
+      "Class": "Folder"
+    },
+    {
+      "Path": "Workspace.Eggs",
+      "Descendants": 62,
+      "Class": "Folder"
+    },
+    {
+      "Path": "Workspace.Treadmills",
+      "Descendants": 458,
+      "Class": "Folder"
+    },
+    {
+      "Path": "Workspace.Sounds",
+      "Descendants": 9,
+      "Class": "Folder"
+    },
+    {
+      "Path": "Workspace.Mailboxes",
+      "Descendants": 54,
+      "Class": "Folder"
+    },
+    {
+      "Path": "Workspace.PerStepButtons",
+      "Descendants": 360,
+      "Class": "Folder"
+    },
+    {
+      "Path": "Workspace.ShoesModels",
+      "Descendants": 0,
+      "Class": "Folder"
+    },
+    {
+      "Path": "Workspace.Terrain",
+      "Descendants": 0,
+      "Class": "Terrain"
+    },
+    {
+      "Path": "Workspace.Stud Egg & Pet",
+      "Descendants": 31440,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.Ungroup",
+      "Descendants": 48741,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.GeneratedMap",
+      "Descendants": 16633,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.World2Map",
+      "Descendants": 16542,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.Map",
+      "Descendants": 3058,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.Dance Girl",
+      "Descendants": 253,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.Trophy",
+      "Descendants": 73,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.RestockShop",
+      "Descendants": 218,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.World2Gate",
+      "Descendants": 67,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.Ramp",
+      "Descendants": 13,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.DailyStrengthRankingBoard",
+      "Descendants": 191,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.ShopStallTemplate",
+      "Descendants": 669,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.EventBoard",
+      "Descendants": 11,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.Chill Octopus",
+      "Descendants": 13,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.WinsGift",
+      "Descendants": 24,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.TotalStrengthRankingBoard",
+      "Descendants": 191,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.SpawnLocation",
+      "Descendants": 1,
+      "Class": "SpawnLocation"
+    },
+    {
+      "Path": "Workspace.MergeToForge",
+      "Descendants": 13825,
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.Camera",
+      "Descendants": 0,
+      "Class": "Camera"
+    },
+    {
+      "Path": "ReplicatedStorage.Assets",
+      "Descendants": 10856,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.Packages",
+      "Descendants": 122,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.MergeToForge",
+      "Descendants": 16,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.UI",
+      "Descendants": 40,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.AuraVisualTemplates",
+      "Descendants": 121,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.TreadmillVisualTemplates",
+      "Descendants": 26,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.Remotes",
+      "Descendants": 24,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.Config",
+      "Descendants": 55,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.Modules",
+      "Descendants": 91,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ReplicatedStorage.DumbbellStandBillboardTemplate",
+      "Descendants": 16,
+      "Class": "BillboardGui"
+    },
+    {
+      "Path": "ServerStorage.Stage01LayoutBackup",
+      "Descendants": 1,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ServerStorage.PurchasedCourseOriginals",
+      "Descendants": 24530,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ServerStorage.MergeToForgeBossTemplates",
+      "Descendants": 1852,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ServerStorage.MergeToForge_LegacySystem",
+      "Descendants": 27,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ServerStorage.EnemyTemplates",
+      "Descendants": 5740,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ServerStorage.Templates",
+      "Descendants": 14,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ServerStorage.SlapToolTemplate",
+      "Descendants": 6,
+      "Class": "Tool"
+    },
+    {
+      "Path": "ServerStorage.RBX_ANIMSAVES",
+      "Descendants": 27212,
+      "Class": "Model"
+    },
+    {
+      "Path": "ServerStorage.BodyPrototype_20261114",
+      "Descendants": 2130,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels",
+      "Descendants": 58,
+      "Class": "Folder"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels",
+      "Descendants": 48,
+      "Class": "Folder"
+    }
+  ],
+  "UTC": "2026-11-17T13:12:36Z"
+}

@@ -1,0 +1,3346 @@
+{
+ "PlaceVersion": 728,
+ "AtUTC": "2026-11-17T13:30:55Z",
+ "UniverseId": 10765181857,
+ "EmbeddedScripts": [
+  {
+   "Source": "-- If you want custom colors for the curroption, Copy this \"126916531136577\" to get the curroption ID. Download the texture, then change the Red color within the texture. \n--Once your done changing the color to your liking. Go to the Curropted arm (and other curropted parts, Feet, spine, ect.), then go to Texture ID And upload YOUR VERSION of the curroption. ",
+   "Path": "Workspace.Ungroup.Forsaken Characters.Killers.John Doe.Skin John Does.Yourself.INSTRUCTIONS",
+   "Disabled": false,
+   "Class": "Script"
+  },
+  {
+   "Source": "-- Thank YOU for using this rig pack :D --\n\n-- It took alot of time to put all of this together, but it was all worth it! --\n\n-- NO CREDIT IS NEEDED IF USED.--\n",
+   "Path": "Workspace.Ungroup.Forsaken Characters.THANK YOU.",
+   "Disabled": false,
+   "Class": "Script"
+  },
+  {
+   "Source": "-- Original supplied dance ID (SMARTGAMER0007's EmoteScript); no replacement dance.\nlocal ANIMATION_ID = \"rbxassetid://15122972413\"\nlocal RUNNING_ATTRIBUTE = \"DanceGirlPlaybackRunning\"\nlocal model = script.Parent\nif model:GetAttribute(RUNNING_ATTRIBUTE) then return end\nmodel:SetAttribute(RUNNING_ATTRIBUTE, true)\n\nlocal animation, track\nlocal createdAnimation = false\nlocal connections = {}\nlocal finished = false\nlocal function cleanup()\n\tif finished then return end\n\tfinished = true\n\tfor _, connection in ipairs(connections) do connection:Disconnect() end\n\tif track then track:Stop(0); track:Destroy() end\n\tif createdAnimation and animation then animation:Destroy() end\n\tmodel:SetAttribute(RUNNING_ATTRIBUTE, nil)\nend\n\ntable.insert(connections, script.Destroying:Connect(cleanup))\ntable.insert(connections, script:GetPropertyChangedSignal(\"Enabled\"):Connect(function()\n\tif not script.Enabled then cleanup() end\nend))\ntable.insert(connections, model.AncestryChanged:Connect(function()\n\tif not model:IsDescendantOf(workspace) then cleanup() end\nend))\n\nlocal ok, reason = pcall(function()\n\tlocal humanoid = model:WaitForChild(\"Humanoid\", 10)\n\tassert(humanoid and humanoid:IsA(\"Humanoid\"), \"Humanoid missing\")\n\tlocal animator = humanoid:WaitForChild(\"Animator\", 10)\n\tassert(animator and animator:IsA(\"Animator\"), \"Animator missing\")\n\tif finished then return end\n\n\t-- The supplied Script had no Animation child and never used its animationid variable.\n\tanimation = script:FindFirstChild(\"Animation\")\n\tif animation then\n\t\tassert(animation:IsA(\"Animation\"), \"Animation child has the wrong class\")\n\t\tassert(animation.AnimationId == \"\" or animation.AnimationId == ANIMATION_ID,\n\t\t\t\"Animation child differs from the supplied dance; refusing to replace it\")\n\telse\n\t\tanimation = Instance.new(\"Animation\")\n\t\tanimation.Name = \"Animation\"\n\t\tcreatedAnimation = true\n\t\tanimation.Parent = script\n\tend\n\tanimation.AnimationId = ANIMATION_ID\n\n\t-- Reuse an existing copy of this dance and retire only duplicate copies of it.\n\tfor _, existing in ipairs(animator:GetPlayingAnimationTracks()) do\n\t\tif existing.Animation and existing.Animation.AnimationId == ANIMATION_ID then\n\t\t\tif not track then track = existing else existing:Stop(0); existing:Destroy() end\n\t\tend\n\tend\n\tif not track then track = animator:LoadAnimation(animation) end\n\tif finished then track:Stop(0); track:Destroy(); return end\n\ttrack.Looped = true\n\ttrack.Priority = Enum.AnimationPriority.Action\n\tif not track.IsPlaying then track:Play(0.1) end\nend)\n\nif not ok then\n\tcleanup()\n\twarn(\"[Dance Girl] Could not start supplied animation \" .. ANIMATION_ID .. \": \" .. tostring(reason))\nend\n",
+   "Path": "Workspace.Dance Girl.EmoteScript",
+   "Disabled": false,
+   "Class": "Script"
+  },
+  {
+   "Source": "local Character = script.Parent\nlocal Humanoid = Character:WaitForChild(\"Humanoid\")\nlocal pose = \"Standing\"\n\nlocal function getRigScale()\n\treturn Character:GetScale()\nend\n\nlocal AnimationSpeedDampeningObject = script:FindFirstChild(\"ScaleDampeningPercent\")\nlocal HumanoidHipHeight = 2\n\nlocal FFlagUserAnimateRemoveEmoteChatHook\ndo\n\tlocal success, result = pcall(function()\n\t\treturn UserSettings():IsUserFeatureEnabled(\"UserAnimateRemoveEmoteChatHook\")\n\tend)\n\tFFlagUserAnimateRemoveEmoteChatHook = success and result\nend\n\nlocal EMOTE_TRANSITION_TIME = 0.1\n\nlocal currentAnim = \"\"\nlocal currentAnimInstance = nil\nlocal currentAnimTrack = nil\nlocal currentAnimKeyframeHandler = nil\nlocal currentAnimSpeed = 1.0\n\nlocal runAnimTrack = nil\nlocal runAnimKeyframeHandler = nil\n\nlocal PreloadedAnims = {}\n\nlocal animTable = {}\nlocal animNames = {\n\tidle =     {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507766666\", weight = 1 },\n\t\t{ id = \"http://www.roblox.com/asset/?id=507766951\", weight = 1 },\n\t\t{ id = \"http://www.roblox.com/asset/?id=507766388\", weight = 9 }\n\t},\n\twalk =     {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507777826\", weight = 10 }\n\t},\n\trun =     {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507767714\", weight = 10 }\n\t},\n\tswim =     {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507784897\", weight = 10 }\n\t},\n\tswimidle =     {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507785072\", weight = 10 }\n\t},\n\tjump =     {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507765000\", weight = 10 }\n\t},\n\tfall =     {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507767968\", weight = 10 }\n\t},\n\tclimb = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507765644\", weight = 10 }\n\t},\n\tsit =     {\n\t\t{ id = \"http://www.roblox.com/asset/?id=2506281703\", weight = 10 }\n\t},\n\ttoolnone = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507768375\", weight = 10 }\n\t},\n\ttoolslash = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=522635514\", weight = 10 }\n\t},\n\ttoollunge = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=522638767\", weight = 10 }\n\t},\n\twave = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507770239\", weight = 10 }\n\t},\n\tpoint = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507770453\", weight = 10 }\n\t},\n\tdance = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507771019\", weight = 10 },\n\t\t{ id = \"http://www.roblox.com/asset/?id=507771955\", weight = 10 },\n\t\t{ id = \"http://www.roblox.com/asset/?id=507772104\", weight = 10 }\n\t},\n\tdance2 = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507776043\", weight = 10 },\n\t\t{ id = \"http://www.roblox.com/asset/?id=507776720\", weight = 10 },\n\t\t{ id = \"http://www.roblox.com/asset/?id=507776879\", weight = 10 }\n\t},\n\tdance3 = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507777268\", weight = 10 },\n\t\t{ id = \"http://www.roblox.com/asset/?id=507777451\", weight = 10 },\n\t\t{ id = \"http://www.roblox.com/asset/?id=507777623\", weight = 10 }\n\t},\n\tlaugh = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507770818\", weight = 10 }\n\t},\n\tcheer = {\n\t\t{ id = \"http://www.roblox.com/asset/?id=507770677\", weight = 10 }\n\t},\n}\n\n-- Existance in this list signifies that it is an emote, the value indicates if it is a looping emote\nlocal emoteNames = { wave = false, point = false, dance = true, dance2 = true, dance3 = true, laugh = false, cheer = false}\n\n-- Variables used in tracking if the character is using a ControllerManager.\n-- This implementation assumes the common case of the ControllerManager being a\n-- child of the character, and that only one ControllerManager exists under a given\n-- character. If a ControllerManager is not placed under its associated character,\n-- then it will not be detected by this script.\n-- The basis for this decision is performance: A ChildAdded listener on the\n-- character is less of a performance hit than a ChildAdded listener on the\n-- Workspace. And a FindFirstChild is more performant than checking for multiple\n-- controllers via GetChildren.\nlocal groundSensorChangedListener:RBXScriptSignal? = nil\nlocal managerRootChangedListener:RBXScriptSignal? = nil\nlocal managerParentChangedListener:RBXScriptSignal? = nil\nlocal charGroundSensor:ControllerPartSensor? = nil\nlocal charControllerManager:ControllerManager? = nil\n\nlocal CCLAnimationFixed\ndo\n\tlocal success, result = pcall(function()\n\t\treturn UserSettings():IsUserFeatureEnabled(\"UserAnimationAbilityManagerFixed\")\n\tend)\n\tCCLAnimationFixed = success and result\nend\n\n-- Clean up listeners associated with the character's ControllerManager\nfunction resetManagerListeners()\n\tif groundSensorChangedListener then\n\t\tgroundSensorChangedListener:Disconnect()\n\t\tgroundSensorChangedListener = nil\n\tend\n\tif managerRootChangedListener then\n\t\tmanagerRootChangedListener:Disconnect()\n\t\tmanagerRootChangedListener = nil\n\tend\n\tif managerParentChangedListener then\n\t\tmanagerParentChangedListener:Disconnect()\n\t\tmanagerParentChangedListener = nil\n\tend\nend\n\n-- Clean up all listeners and reset state.\nfunction teardownManager()\n\tresetManagerListeners()\n\tcharGroundSensor = nil\n\tcharControllerManager = nil\nend\n\n-- Returns true if checkManager controls the character associated with this script\n-- If so, then checkManager is assigned to charControllerManager.\n-- TODO: Remove this method when UserAnimationAbilityManagerFixed is made permanently true.\nfunction processIfManagerBelongsToCharacter(checkManager:ControllerManager):boolean\n\tif checkManager.RootPart == Character.PrimaryPart then\n\t\tif charControllerManager ~= checkManager then\n\t\t\tresetManagerListeners()\n\t\t\tcharGroundSensor = checkManager.GroundSensor\n\t\t\tgroundSensorChangedListener = checkManager:GetPropertyChangedSignal(\"GroundSensor\"):Connect(function()\n\t\t\t\tif processIfManagerBelongsToCharacter(checkManager) then\n\t\t\t\t\tgroundSensorChangedListener:Disconnect()\n\t\t\t\t\tgroundSensorChangedListener = nil\n\t\t\t\tend\n\t\t\tend)\n\t\t\tmanagerRootChangedListener = checkManager:GetPropertyChangedSignal(\"RootPart\"):Connect(function()\n\t\t\t\tif processIfManagerBelongsToCharacter(checkManager) then\n\t\t\t\t\tmanagerRootChangedListener:Disconnect()\n\t\t\t\t\tmanagerRootChangedListener = nil\n\t\t\t\tend\n\t\t\tend)\n\t\t\tmanagerParentChangedListener = checkManager.AncestryChanged:Connect(function(_, parent)\n\t\t\t\tif parent == nil then\n\t\t\t\t\tresetManagerListeners()\n\t\t\t\t\tlookForControllerManager()\n\t\t\t\tend\n\t\t\tend)\n\t\t\tcharControllerManager = checkManager\n\t\tend\n\t\treturn true\n\tend\n\treturn false\nend\n\n-- Attach to a confirmed-valid manager: record it, read its current GroundSensor,\n-- and watch for GroundSensor changes, RootPart changes, and removal.\nfunction setupManager(manager:ControllerManager)\n\tcharControllerManager = manager\n\tcharGroundSensor = manager.GroundSensor\n\n\tgroundSensorChangedListener = manager:GetPropertyChangedSignal(\"GroundSensor\"):Connect(function()\n\t\tcharGroundSensor = charControllerManager.GroundSensor\n\tend)\n\n\tmanagerRootChangedListener = manager:GetPropertyChangedSignal(\"RootPart\"):Connect(function()\n\t\tif manager.RootPart ~= Character.PrimaryPart then\n\t\t\tteardownManager()\n\t\t\tlookForControllerManager()\n\t\tend\n\tend)\n\n\tmanagerParentChangedListener = manager.AncestryChanged:Connect(function(_, parent)\n\t\tif parent == nil then\n\t\t\tteardownManager()\n\t\t\tlookForControllerManager()\n\t\tend\n\tend)\nend\n\n-- Looks for the first ControllerManager directly childed to the character. If such\n-- a controller does not exist or if it does not control that character, then a listener\n-- is set up to check if a controller is ever added.\nfunction lookForControllerManager()\n\tif CCLAnimationFixed then\n\t\tlocal child:ControllerManager? = Character:FindFirstChildOfClass(\"ControllerManager\")\n\t\tif child then\n\t\t\tif child.RootPart == Character.PrimaryPart then\n\t\t\t\tsetupManager(child)\n\t\t\telse\n\t\t\t\t-- Manager exists but RootPart not yet assigned; wait for it.\n\t\t\t\tlocal rootPartListener:RBXScriptSignal\n\t\t\t\trootPartListener = child:GetPropertyChangedSignal(\"RootPart\"):Connect(function()\n\t\t\t\t\tif child.RootPart == Character.PrimaryPart then\n\t\t\t\t\t\trootPartListener:Disconnect()\n\t\t\t\t\t\tsetupManager(child)\n\t\t\t\t\tend\n\t\t\t\tend)\n\t\t\tend\n\t\telse\n\t\t\tlocal managerAddedListener:RBXScriptSignal\n\t\t\tmanagerAddedListener = Character.ChildAdded:Connect(function(newChild)\n\t\t\t\tif newChild:IsA(\"ControllerManager\") then\n\t\t\t\t\tmanagerAddedListener:Disconnect()\n\t\t\t\t\tlookForControllerManager()\n\t\t\t\tend\n\t\t\tend)\n\t\tend\n\telse\n\t\tcharGroundSensor = nil\n\t\tcharControllerManager = nil\n\n\t\tlocal child:ControllerManager? = Character:FindFirstChildOfClass(\"ControllerManager\")\n\t\tif child then\n\t\t\tprocessIfManagerBelongsToCharacter(child)\n\t\tend\n\t\t-- The call to processIfManagerBelongsToCharacter above will have\n\t\t-- assigned charControllerManager on success\n\t\tif charControllerManager == nil then\n\t\t\tlocal managerAddedListener:RBXScriptSignal\n\t\t\tmanagerAddedListener = Character.ChildAdded:Connect(function(child)\n\t\t\t\tif child:IsA(\"ControllerManager\") then\n\t\t\t\t\tif processIfManagerBelongsToCharacter(child) then\n\t\t\t\t\t\tmanagerAddedListener:Disconnect()\n\t\t\t\t\t\tmanagerAddedListener = nil\n\t\t\t\t\tend\n\t\t\t\tend\n\t\t\tend)\n\t\tend\n\tend\nend\nlookForControllerManager()\n\nmath.randomseed(tick())\n\nfunction findExistingAnimationInSet(set, anim)\n\tif set == nil or anim == nil then\n\t\treturn 0\n\tend\n\n\tfor idx = 1, set.count, 1 do\n\t\tif set[idx].anim.AnimationId == anim.AnimationId then\n\t\t\treturn idx\n\t\tend\n\tend\n\n\treturn 0\nend\n\nfunction configureAnimationSet(name, fileList)\n\tif (animTable[name] ~= nil) then\n\t\tfor _, connection in pairs(animTable[name].connections) do\n\t\t\tconnection:disconnect()\n\t\tend\n\tend\n\tanimTable[name] = {}\n\tanimTable[name].count = 0\n\tanimTable[name].totalWeight = 0\n\tanimTable[name].connections = {}\n\n\tlocal allowCustomAnimations = true\n\n\tlocal success, msg = pcall(function() allowCustomAnimations = game:GetService(\"StarterPlayer\").AllowCustomAnimations end)\n\tif not success then\n\t\tallowCustomAnimations = true\n\tend\n\n\t-- check for config values\n\tlocal config = script:FindFirstChild(name)\n\tif (allowCustomAnimations and config ~= nil) then\n\t\ttable.insert(animTable[name].connections, config.ChildAdded:connect(function(child) configureAnimationSet(name, fileList) end))\n\t\ttable.insert(animTable[name].connections, config.ChildRemoved:connect(function(child) configureAnimationSet(name, fileList) end))\n\n\t\tlocal idx = 0\n\t\tfor _, childPart in pairs(config:GetChildren()) do\n\t\t\tif (childPart:IsA(\"Animation\")) then\n\t\t\t\tlocal newWeight = 1\n\t\t\t\tlocal weightObject = childPart:FindFirstChild(\"Weight\")\n\t\t\t\tif (weightObject ~= nil) then\n\t\t\t\t\tnewWeight = weightObject.Value\n\t\t\t\tend\n\t\t\t\tanimTable[name].count = animTable[name].count + 1\n\t\t\t\tidx = animTable[name].count\n\t\t\t\tanimTable[name][idx] = {}\n\t\t\t\tanimTable[name][idx].anim = childPart\n\t\t\t\tanimTable[name][idx].weight = newWeight\n\t\t\t\tanimTable[name].totalWeight = animTable[name].totalWeight + animTable[name][idx].weight\n\t\t\t\ttable.insert(animTable[name].connections, childPart.Changed:connect(function(property) configureAnimationSet(name, fileList) end))\n\t\t\t\ttable.insert(animTable[name].connections, childPart.ChildAdded:connect(function(property) configureAnimationSet(name, fileList) end))\n\t\t\t\ttable.insert(animTable[name].connections, childPart.ChildRemoved:connect(function(property) configureAnimationSet(name, fileList) end))\n\t\t\tend\n\t\tend\n\tend\n\n\t-- fallback to defaults\n\tif (animTable[name].count <= 0) then\n\t\tfor idx, anim in pairs(fileList) do\n\t\t\tanimTable[name][idx] = {}\n\t\t\tanimTable[name][idx].anim = Instance.new(\"Animation\")\n\t\t\tanimTable[name][idx].anim.Name = name\n\t\t\tanimTable[name][idx].anim.AnimationId = anim.id\n\t\t\tanimTable[name][idx].weight = anim.weight\n\t\t\tanimTable[name].count = animTable[name].count + 1\n\t\t\tanimTable[name].totalWeight = animTable[name].totalWeight + anim.weight\n\t\tend\n\tend\n\n\t-- preload anims\n\tfor i, animType in pairs(animTable) do\n\t\tfor idx = 1, animType.count, 1 do\n\t\t\tif PreloadedAnims[animType[idx].anim.AnimationId] == nil then\n\t\t\t\tHumanoid:LoadAnimation(animType[idx].anim)\n\t\t\t\tPreloadedAnims[animType[idx].anim.AnimationId] = true\n\t\t\tend\n\t\tend\n\tend\nend\n\n------------------------------------------------------------------------------------------------------------\n\nfunction configureAnimationSetOld(name, fileList)\n\tif (animTable[name] ~= nil) then\n\t\tfor _, connection in pairs(animTable[name].connections) do\n\t\t\tconnection:disconnect()\n\t\tend\n\tend\n\tanimTable[name] = {}\n\tanimTable[name].count = 0\n\tanimTable[name].totalWeight = 0\n\tanimTable[name].connections = {}\n\n\tlocal allowCustomAnimations = true\n\n\tlocal success, msg = pcall(function() allowCustomAnimations = game:GetService(\"StarterPlayer\").AllowCustomAnimations end)\n\tif not success then\n\t\tallowCustomAnimations = true\n\tend\n\n\t-- check for config values\n\tlocal config = script:FindFirstChild(name)\n\tif (allowCustomAnimations and config ~= nil) then\n\t\ttable.insert(animTable[name].connections, config.ChildAdded:connect(function(child) configureAnimationSet(name, fileList) end))\n\t\ttable.insert(animTable[name].connections, config.ChildRemoved:connect(function(child) configureAnimationSet(name, fileList) end))\n\t\tlocal idx = 1\n\t\tfor _, childPart in pairs(config:GetChildren()) do\n\t\t\tif (childPart:IsA(\"Animation\")) then\n\t\t\t\ttable.insert(animTable[name].connections, childPart.Changed:connect(function(property) configureAnimationSet(name, fileList) end))\n\t\t\t\tanimTable[name][idx] = {}\n\t\t\t\tanimTable[name][idx].anim = childPart\n\t\t\t\tlocal weightObject = childPart:FindFirstChild(\"Weight\")\n\t\t\t\tif (weightObject == nil) then\n\t\t\t\t\tanimTable[name][idx].weight = 1\n\t\t\t\telse\n\t\t\t\t\tanimTable[name][idx].weight = weightObject.Value\n\t\t\t\tend\n\t\t\t\tanimTable[name].count = animTable[name].count + 1\n\t\t\t\tanimTable[name].totalWeight = animTable[name].totalWeight + animTable[name][idx].weight\n\t\t\t\tidx = idx + 1\n\t\t\tend\n\t\tend\n\tend\n\n\t-- fallback to defaults\n\tif (animTable[name].count <= 0) then\n\t\tfor idx, anim in pairs(fileList) do\n\t\t\tanimTable[name][idx] = {}\n\t\t\tanimTable[name][idx].anim = Instance.new(\"Animation\")\n\t\t\tanimTable[name][idx].anim.Name = name\n\t\t\tanimTable[name][idx].anim.AnimationId = anim.id\n\t\t\tanimTable[name][idx].weight = anim.weight\n\t\t\tanimTable[name].count = animTable[name].count + 1\n\t\t\tanimTable[name].totalWeight = animTable[name].totalWeight + anim.weight\n\t\t\t-- print(name .. \" [\" .. idx .. \"] \" .. anim.id .. \" (\" .. anim.weight .. \")\")\n\t\tend\n\tend\n\n\t-- preload anims\n\tfor i, animType in pairs(animTable) do\n\t\tfor idx = 1, animType.count, 1 do\n\t\t\tHumanoid:LoadAnimation(animType[idx].anim)\n\t\tend\n\tend\nend\n\n-- Setup animation objects\nfunction scriptChildModified(child)\n\tlocal fileList = animNames[child.Name]\n\tif (fileList ~= nil) then\n\t\tconfigureAnimationSet(child.Name, fileList)\n\tend\nend\n\nscript.ChildAdded:connect(scriptChildModified)\nscript.ChildRemoved:connect(scriptChildModified)\n\n-- Clear any existing animation tracks\n-- Fixes issue with characters that are moved in and out of the Workspace accumulating tracks\nlocal animator = if Humanoid then Humanoid:FindFirstChildOfClass(\"Animator\") else nil\nif animator then\n\tlocal animTracks = animator:GetPlayingAnimationTracks()\n\tfor i,track in ipairs(animTracks) do\n\t\ttrack:Stop(0)\n\t\ttrack:Destroy()\n\tend\nend\n\nfor name, fileList in pairs(animNames) do\n\tconfigureAnimationSet(name, fileList)\nend\n\n-- ANIMATION\n\n-- declarations\nlocal toolAnim = \"None\"\nlocal toolAnimTime = 0\n\nlocal jumpAnimTime = 0\nlocal jumpAnimDuration = 0.31\n\nlocal toolTransitionTime = 0.1\nlocal fallTransitionTime = 0.2\n\nlocal currentlyPlayingEmote = false\n\n-- functions\n\nfunction stopAllAnimations()\n\tlocal oldAnim = currentAnim\n\n\t-- return to idle if finishing an emote\n\tif (emoteNames[oldAnim] ~= nil and emoteNames[oldAnim] == false) then\n\t\toldAnim = \"idle\"\n\tend\n\n\tif currentlyPlayingEmote then\n\t\toldAnim = \"idle\"\n\t\tcurrentlyPlayingEmote = false\n\tend\n\n\tcurrentAnim = \"\"\n\tcurrentAnimInstance = nil\n\tif (currentAnimKeyframeHandler ~= nil) then\n\t\tcurrentAnimKeyframeHandler:disconnect()\n\tend\n\n\tif (currentAnimTrack ~= nil) then\n\t\tcurrentAnimTrack:Stop()\n\t\tcurrentAnimTrack:Destroy()\n\t\tcurrentAnimTrack = nil\n\tend\n\n\t-- clean up walk if there is one\n\tif (runAnimKeyframeHandler ~= nil) then\n\t\trunAnimKeyframeHandler:disconnect()\n\tend\n\n\tif (runAnimTrack ~= nil) then\n\t\trunAnimTrack:Stop()\n\t\trunAnimTrack:Destroy()\n\t\trunAnimTrack = nil\n\tend\n\n\treturn oldAnim\nend\n\nfunction getHeightScale()\n\tif Humanoid then\n\t\tif not Humanoid.AutomaticScalingEnabled then\n\t\t\t-- When auto scaling is not enabled, the rig scale stands in for\n\t\t\t-- a computed scale.\n\t\t\treturn getRigScale()\n\t\tend\n\n\t\tlocal scale = Humanoid.HipHeight / HumanoidHipHeight\n\t\tif AnimationSpeedDampeningObject == nil then\n\t\t\tAnimationSpeedDampeningObject = script:FindFirstChild(\"ScaleDampeningPercent\")\n\t\tend\n\t\tif AnimationSpeedDampeningObject ~= nil then\n\t\t\tscale = 1 + (Humanoid.HipHeight - HumanoidHipHeight) * AnimationSpeedDampeningObject.Value / HumanoidHipHeight\n\t\tend\n\t\treturn scale\n\tend\n\treturn getRigScale()\nend\n\nlocal function rootMotionCompensation(speed)\n\tlocal speedScaled = speed * 1.25\n\tlocal heightScale = getHeightScale()\n\tlocal runSpeed = speedScaled / heightScale\n\treturn runSpeed\nend\n\nlocal smallButNotZero = 0.0001\nlocal function setRunSpeed(speed)\n\tlocal normalizedWalkSpeed = 0.5 -- established empirically using current `913402848` walk animation\n\tlocal normalizedRunSpeed  = 1\n\tlocal runSpeed = rootMotionCompensation(speed)\n\n\tlocal walkAnimationWeight = smallButNotZero\n\tlocal runAnimationWeight = smallButNotZero\n\tlocal timeWarp = 1\n\n\tif runSpeed <= normalizedWalkSpeed then\n\t\twalkAnimationWeight = 1\n\t\ttimeWarp = runSpeed/normalizedWalkSpeed\n\telseif runSpeed < normalizedRunSpeed then\n\t\tlocal fadeInRun = (runSpeed - normalizedWalkSpeed)/(normalizedRunSpeed - normalizedWalkSpeed)\n\t\twalkAnimationWeight = 1 - fadeInRun\n\t\trunAnimationWeight  = fadeInRun\n\telse\n\t\ttimeWarp = runSpeed/normalizedRunSpeed\n\t\trunAnimationWeight = 1\n\tend\n\tcurrentAnimTrack:AdjustWeight(walkAnimationWeight)\n\trunAnimTrack:AdjustWeight(runAnimationWeight)\n\tcurrentAnimTrack:AdjustSpeed(timeWarp)\n\trunAnimTrack:AdjustSpeed(timeWarp)\nend\n\nfunction setAnimationSpeed(speed)\n\tif currentAnim == \"walk\" then\n\t\tsetRunSpeed(speed)\n\telse\n\t\tif speed ~= currentAnimSpeed then\n\t\t\tcurrentAnimSpeed = speed\n\t\t\tcurrentAnimTrack:AdjustSpeed(currentAnimSpeed)\n\t\tend\n\tend\nend\n\nfunction keyFrameReachedFunc(frameName)\n\tif (frameName == \"End\") then\n\t\tif currentAnim == \"walk\" then\n\t\t\tif runAnimTrack.Looped ~= true then\n\t\t\t\trunAnimTrack.TimePosition = 0.0\n\t\t\tend\n\t\t\tif currentAnimTrack.Looped ~= true then\n\t\t\t\tcurrentAnimTrack.TimePosition = 0.0\n\t\t\tend\n\t\telse\n\t\t\tlocal repeatAnim = currentAnim\n\t\t\t-- return to idle if finishing an emote\n\t\t\tif (emoteNames[repeatAnim] ~= nil and emoteNames[repeatAnim] == false) then\n\t\t\t\trepeatAnim = \"idle\"\n\t\t\tend\n\n\t\t\tif currentlyPlayingEmote then\n\t\t\t\tif currentAnimTrack.Looped then\n\t\t\t\t\t-- Allow the emote to loop\n\t\t\t\t\treturn\n\t\t\t\tend\n\n\t\t\t\trepeatAnim = \"idle\"\n\t\t\t\tcurrentlyPlayingEmote = false\n\t\t\tend\n\n\t\t\tlocal animSpeed = currentAnimSpeed\n\t\t\tplayAnimation(repeatAnim, 0.15, Humanoid)\n\t\t\tsetAnimationSpeed(animSpeed)\n\t\tend\n\tend\nend\n\nfunction rollAnimation(animName)\n\tlocal roll = math.random(1, animTable[animName].totalWeight)\n\tlocal origRoll = roll\n\tlocal idx = 1\n\twhile (roll > animTable[animName][idx].weight) do\n\t\troll = roll - animTable[animName][idx].weight\n\t\tidx = idx + 1\n\tend\n\treturn idx\nend\n\nlocal function switchToAnim(anim, animName, transitionTime, humanoid)\n\t-- switch animation\n\tif (anim ~= currentAnimInstance) then\n\n\t\tif (currentAnimTrack ~= nil) then\n\t\t\tcurrentAnimTrack:Stop(transitionTime)\n\t\t\tcurrentAnimTrack:Destroy()\n\t\tend\n\n\t\tif (runAnimTrack ~= nil) then\n\t\t\trunAnimTrack:Stop(transitionTime)\n\t\t\trunAnimTrack:Destroy()\n\t\t\trunAnimTrack = nil\n\t\tend\n\n\t\tcurrentAnimSpeed = 1.0\n\n\t\t-- load it to the humanoid; get AnimationTrack\n\t\tcurrentAnimTrack = humanoid:LoadAnimation(anim)\n\t\tcurrentAnimTrack.Priority = Enum.AnimationPriority.Core\n\n\t\t-- play the animation\n\t\tcurrentAnimTrack:Play(transitionTime)\n\t\tcurrentAnim = animName\n\t\tcurrentAnimInstance = anim\n\n\t\t-- set up keyframe name triggers\n\t\tif (currentAnimKeyframeHandler ~= nil) then\n\t\t\tcurrentAnimKeyframeHandler:disconnect()\n\t\tend\n\t\tcurrentAnimKeyframeHandler = currentAnimTrack.KeyframeReached:connect(keyFrameReachedFunc)\n\n\t\t-- check to see if we need to blend a walk/run animation\n\t\tif animName == \"walk\" then\n\t\t\tlocal runAnimName = \"run\"\n\t\t\tlocal runIdx = rollAnimation(runAnimName)\n\n\t\t\trunAnimTrack = humanoid:LoadAnimation(animTable[runAnimName][runIdx].anim)\n\t\t\trunAnimTrack.Priority = Enum.AnimationPriority.Core\n\t\t\trunAnimTrack:Play(transitionTime)\n\n\t\t\tif (runAnimKeyframeHandler ~= nil) then\n\t\t\t\trunAnimKeyframeHandler:disconnect()\n\t\t\tend\n\t\t\trunAnimKeyframeHandler = runAnimTrack.KeyframeReached:connect(keyFrameReachedFunc)\n\t\tend\n\tend\nend\n\nfunction playAnimation(animName, transitionTime, humanoid)\n\tlocal idx = rollAnimation(animName)\n\tlocal anim = animTable[animName][idx].anim\n\n\tswitchToAnim(anim, animName, transitionTime, humanoid)\n\tcurrentlyPlayingEmote = false\nend\n\nfunction playEmote(emoteAnim, transitionTime, humanoid)\n\tswitchToAnim(emoteAnim, emoteAnim.Name, transitionTime, humanoid)\n\tcurrentlyPlayingEmote = true\nend\n\n-------------------------------------------------------------------------------------------\n-------------------------------------------------------------------------------------------\n\nlocal toolAnimName = \"\"\nlocal toolAnimTrack = nil\nlocal toolAnimInstance = nil\nlocal currentToolAnimKeyframeHandler = nil\n\nfunction toolKeyFrameReachedFunc(frameName)\n\tif (frameName == \"End\") then\n\t\tplayToolAnimation(toolAnimName, 0.0, Humanoid)\n\tend\nend\n\n\nfunction playToolAnimation(animName, transitionTime, humanoid, priority)\n\tlocal idx = rollAnimation(animName)\n\tlocal anim = animTable[animName][idx].anim\n\n\tif (toolAnimInstance ~= anim) then\n\n\t\tif (toolAnimTrack ~= nil) then\n\t\t\ttoolAnimTrack:Stop()\n\t\t\ttoolAnimTrack:Destroy()\n\t\t\ttransitionTime = 0\n\t\tend\n\n\t\t-- load it to the humanoid; get AnimationTrack\n\t\ttoolAnimTrack = humanoid:LoadAnimation(anim)\n\t\tif priority then\n\t\t\ttoolAnimTrack.Priority = priority\n\t\tend\n\n\t\t-- play the animation\n\t\ttoolAnimTrack:Play(transitionTime)\n\t\ttoolAnimName = animName\n\t\ttoolAnimInstance = anim\n\n\t\tcurrentToolAnimKeyframeHandler = toolAnimTrack.KeyframeReached:connect(toolKeyFrameReachedFunc)\n\tend\nend\n\nfunction stopToolAnimations()\n\tlocal oldAnim = toolAnimName\n\n\tif (currentToolAnimKeyframeHandler ~= nil) then\n\t\tcurrentToolAnimKeyframeHandler:disconnect()\n\tend\n\n\ttoolAnimName = \"\"\n\ttoolAnimInstance = nil\n\tif (toolAnimTrack ~= nil) then\n\t\ttoolAnimTrack:Stop()\n\t\ttoolAnimTrack:Destroy()\n\t\ttoolAnimTrack = nil\n\tend\n\n\treturn oldAnim\nend\n\n-------------------------------------------------------------------------------------------\n-------------------------------------------------------------------------------------------\n-- STATE CHANGE HANDLERS\n\nfunction onRunning(speed)\n\tlocal heightScale = getHeightScale()\n\n\t-- Adjust the walking speed if a ControllerManager is being used.\n\t-- \"speed\" is world speed, whereas we want local speed.\n\t-- IE, do not animate a walk if the character is stationary atop\n\t-- a moving platform.\n\tif charGroundSensor ~= nil and Humanoid.EvaluateStateMachine == false then\n\t\tlocal hrp = Humanoid.RootPart\n\t\tlocal sensedPart = charGroundSensor.SensedPart\n\t\tif sensedPart then\n\t\t\tlocal pos = charGroundSensor.HitFrame.Position\n\t\t\tlocal floorVel = sensedPart:GetVelocityAtPosition(pos)\n\t\t\tlocal assemblyVel = hrp.AssemblyLinearVelocity\n\t\t\t-- Ignore y-velocity, so that jumping does not influence the animation speed\n\t\t\tlocal relVel = Vector3.new(assemblyVel.X - floorVel.X, 0, assemblyVel.Z - floorVel.Z)\n\t\t\tlocal relSpeed = relVel.Magnitude\n\t\t\tlocal moveMag = charControllerManager.MovingDirection.Magnitude\n\t\t\tif moveMag < 0.1 then\n\t\t\t\trelSpeed = 0\n\t\t\t\tmoveMag = 0\n\t\t\telseif moveMag > 1.0 then\n\t\t\t\tmoveMag = 1.0\n\t\t\tend\n\t\t\tspeed = relSpeed * moveMag\n\t\tend\n\tend\n\n\tlocal movedDuringEmote = currentlyPlayingEmote and Humanoid.MoveDirection == Vector3.new(0, 0, 0)\n\tlocal speedThreshold = movedDuringEmote and (Humanoid.WalkSpeed / heightScale) or 0.75\n\tif speed > speedThreshold * heightScale then\n\t\tlocal scale = 16.0\n\t\tplayAnimation(\"walk\", 0.2, Humanoid)\n\t\tsetAnimationSpeed(speed / scale)\n\t\tpose = \"Running\"\n\telse\n\t\tif emoteNames[currentAnim] == nil and not currentlyPlayingEmote then\n\t\t\tplayAnimation(\"idle\", 0.2, Humanoid)\n\t\t\tpose = \"Standing\"\n\t\tend\n\tend\nend\n\nfunction onDied()\n\tpose = \"Dead\"\nend\n\nfunction onJumping()\n\tplayAnimation(\"jump\", 0.1, Humanoid)\n\tjumpAnimTime = jumpAnimDuration\n\tpose = \"Jumping\"\nend\n\nfunction onClimbing(speed)\n\tspeed /= getHeightScale()\n\tlocal scale = 5.0\n\tplayAnimation(\"climb\", 0.1, Humanoid)\n\tsetAnimationSpeed(speed / scale)\n\tpose = \"Climbing\"\nend\n\nfunction onGettingUp()\n\tpose = \"GettingUp\"\nend\n\nfunction onFreeFall()\n\tif (jumpAnimTime <= 0) then\n\t\tplayAnimation(\"fall\", fallTransitionTime, Humanoid)\n\tend\n\tpose = \"FreeFall\"\nend\n\nfunction onFallingDown()\n\tpose = \"FallingDown\"\nend\n\nfunction onSeated()\n\tpose = \"Seated\"\nend\n\nfunction onPlatformStanding()\n\tpose = \"PlatformStanding\"\nend\n\n-------------------------------------------------------------------------------------------\n-------------------------------------------------------------------------------------------\n\nfunction onSwimming(speed)\n\tspeed /= getHeightScale()\n\tif speed > 1.00 then\n\t\tlocal scale = 10.0\n\t\tplayAnimation(\"swim\", 0.4, Humanoid)\n\t\tsetAnimationSpeed(speed / scale)\n\t\tpose = \"Swimming\"\n\telse\n\t\tplayAnimation(\"swimidle\", 0.4, Humanoid)\n\t\tpose = \"Standing\"\n\tend\nend\n\nfunction animateTool()\n\tif (toolAnim == \"None\") then\n\t\tplayToolAnimation(\"toolnone\", toolTransitionTime, Humanoid, Enum.AnimationPriority.Idle)\n\t\treturn\n\tend\n\n\tif (toolAnim == \"Slash\") then\n\t\tplayToolAnimation(\"toolslash\", 0, Humanoid, Enum.AnimationPriority.Action)\n\t\treturn\n\tend\n\n\tif (toolAnim == \"Lunge\") then\n\t\tplayToolAnimation(\"toollunge\", 0, Humanoid, Enum.AnimationPriority.Action)\n\t\treturn\n\tend\nend\n\nfunction getToolAnim(tool)\n\tfor _, c in ipairs(tool:GetChildren()) do\n\t\tif c.Name == \"toolanim\" and c.className == \"StringValue\" then\n\t\t\treturn c\n\t\tend\n\tend\n\treturn nil\nend\n\nlocal lastTick = 0\n\nfunction stepAnimate(currentTime)\n\tlocal amplitude = 1\n\tlocal frequency = 1\n\tlocal deltaTime = currentTime - lastTick\n\tlastTick = currentTime\n\n\tlocal climbFudge = 0\n\tlocal setAngles = false\n\n\tif (jumpAnimTime > 0) then\n\t\tjumpAnimTime = jumpAnimTime - deltaTime\n\tend\n\n\tif (pose == \"FreeFall\" and jumpAnimTime <= 0) then\n\t\tplayAnimation(\"fall\", fallTransitionTime, Humanoid)\n\telseif (pose == \"Seated\") then\n\t\tplayAnimation(\"sit\", 0.5, Humanoid)\n\t\treturn\n\telseif (pose == \"Running\") then\n\t\tplayAnimation(\"walk\", 0.2, Humanoid)\n\telseif (pose == \"Dead\" or pose == \"GettingUp\" or pose == \"FallingDown\" or pose == \"Seated\" or pose == \"PlatformStanding\") then\n\t\tstopAllAnimations()\n\t\tamplitude = 0.1\n\t\tfrequency = 1\n\t\tsetAngles = true\n\tend\n\n\t-- Tool Animation handling\n\tlocal tool = Character:FindFirstChildOfClass(\"Tool\")\n\tif tool and tool:FindFirstChild(\"Handle\") then\n\t\tlocal animStringValueObject = getToolAnim(tool)\n\n\t\tif animStringValueObject then\n\t\t\ttoolAnim = animStringValueObject.Value\n\t\t\t-- message recieved, delete StringValue\n\t\t\tanimStringValueObject.Parent = nil\n\t\t\ttoolAnimTime = currentTime + .3\n\t\tend\n\n\t\tif currentTime > toolAnimTime then\n\t\t\ttoolAnimTime = 0\n\t\t\ttoolAnim = \"None\"\n\t\tend\n\n\t\tanimateTool()\n\telse\n\t\tstopToolAnimations()\n\t\ttoolAnim = \"None\"\n\t\ttoolAnimInstance = nil\n\t\ttoolAnimTime = 0\n\tend\nend\n\n-- connect events\nHumanoid.Died:connect(onDied)\nHumanoid.Running:connect(onRunning)\nHumanoid.Jumping:connect(onJumping)\nHumanoid.Climbing:connect(onClimbing)\nHumanoid.GettingUp:connect(onGettingUp)\nHumanoid.FreeFalling:connect(onFreeFall)\nHumanoid.FallingDown:connect(onFallingDown)\nHumanoid.Seated:connect(onSeated)\nHumanoid.PlatformStanding:connect(onPlatformStanding)\nHumanoid.Swimming:connect(onSwimming)\n\nif not FFlagUserAnimateRemoveEmoteChatHook then\n\t-- setup emote chat hook\n\tgame:GetService(\"Players\").LocalPlayer.Chatted:connect(function(msg)\n\t\tlocal emote = \"\"\n\t\tif (string.sub(msg, 1, 3) == \"/e \") then\n\t\t\temote = string.sub(msg, 4)\n\t\telseif (string.sub(msg, 1, 7) == \"/emote \") then\n\t\t\temote = string.sub(msg, 8)\n\t\tend\n\n\t\tif (pose == \"Standing\" and emoteNames[emote] ~= nil) then\n\t\t\tplayAnimation(emote, EMOTE_TRANSITION_TIME, Humanoid)\n\t\tend\n\tend)\nend\n\t\n-- emote bindable hook\nscript:WaitForChild(\"PlayEmote\").OnInvoke = function(emote)\n\t-- Only play emotes when idling\n\tif pose ~= \"Standing\" then\n\t\treturn\n\tend\n\n\tif emoteNames[emote] ~= nil then\n\t\t-- Default emotes\n\t\tplayAnimation(emote, EMOTE_TRANSITION_TIME, Humanoid)\n\n\t\treturn true, currentAnimTrack\n\telseif typeof(emote) == \"Instance\" and emote:IsA(\"Animation\") then\n\t\t-- Non-default emotes\n\t\tplayEmote(emote, EMOTE_TRANSITION_TIME, Humanoid)\n\n\t\treturn true, currentAnimTrack\n\tend\n\n\t-- Return false to indicate that the emote could not be played\n\treturn false\nend\n\nif Character.Parent ~= nil then\n\t-- initialize to idle\n\tplayAnimation(\"idle\", 0.1, Humanoid)\n\tpose = \"Standing\"\nend\n\n-- loop to handle timed state transitions and tool animations\nwhile Character.Parent ~= nil do\n\tlocal _, currentGameTime = wait(0.1)\n\tstepAnimate(currentGameTime)\nend\n",
+   "Path": "Workspace.ShopStallTemplate.Kijimuna_AvatarSetup_10624_autosetup.AnimateScript",
+   "Disabled": false,
+   "Class": "LocalScript"
+  },
+  {
+   "Source": "local avatar = script.Parent\nlocal humanoid = avatar:WaitForChild(\"Humanoid\")\nlocal animator = humanoid:WaitForChild(\"Animator\")\nlocal dance = avatar:WaitForChild(\"AnimateScript\"):WaitForChild(\"Dance\")\n\nlocal track = animator:LoadAnimation(dance)\ntrack.Looped = true\ntrack.Priority = Enum.AnimationPriority.Action\ntrack:Play()\n",
+   "Path": "Workspace.ShopStallTemplate.Kijimuna_AvatarSetup_10624_autosetup.DanceController",
+   "Disabled": false,
+   "Class": "Script"
+  }
+ ],
+ "PhysicsGroups": [
+  {
+   "UnanchoredTouchable": 2835,
+   "Path": "Workspace.Ungroup",
+   "RootAnchored": 2106,
+   "Unanchored": 3219,
+   "Query": 3118,
+   "Humanoids": 217,
+   "Constraints": 0,
+   "UnanchoredCollidable": 954,
+   "Parts": 3472
+  },
+  {
+   "UnanchoredTouchable": 1787,
+   "Path": "Workspace.Stud Egg & Pet",
+   "RootAnchored": 53,
+   "Unanchored": 4447,
+   "Query": 2555,
+   "Humanoids": 1,
+   "Constraints": 8,
+   "UnanchoredCollidable": 1475,
+   "Parts": 4670
+  },
+  {
+   "UnanchoredTouchable": 0,
+   "Path": "Workspace.MergeToForge",
+   "RootAnchored": 0,
+   "Unanchored": 0,
+   "Query": 3450,
+   "Humanoids": 0,
+   "Constraints": 0,
+   "UnanchoredCollidable": 0,
+   "Parts": 3510
+  },
+  {
+   "UnanchoredTouchable": 0,
+   "Path": "Workspace.GeneratedMap",
+   "RootAnchored": 0,
+   "Unanchored": 0,
+   "Query": 4494,
+   "Humanoids": 0,
+   "Constraints": 0,
+   "UnanchoredCollidable": 0,
+   "Parts": 4516
+  },
+  {
+   "UnanchoredTouchable": 0,
+   "Path": "Workspace.World2Map",
+   "RootAnchored": 0,
+   "Unanchored": 0,
+   "Query": 3531,
+   "Humanoids": 2,
+   "Constraints": 33,
+   "UnanchoredCollidable": 0,
+   "Parts": 3874
+  }
+ ],
+ "PlaceId": 126576845524886,
+ "Running": false,
+ "WorldGUI": [
+  {
+   "Enabled": true,
+   "Path": "Workspace.Gift.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Rebirths.Board.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Rebirths.Name.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Playtime.Name.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Playtime.Board.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Wins.Name.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Wins.Board.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Part.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Speed.Name.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Speed.Board.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Robux.Board.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Robux.Name.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Leaderboards.Part.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Eggs.Basic.Prize",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Eggs.Rare.Prize",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Eggs.Mythic.Prize",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Eggs.Legendary.Prize",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Eggs.Billboard.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Treadmills.Normal02.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Treadmills.Normal01.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Treadmills.Iron02.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Treadmills.Gold02.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Treadmills.Gold01.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Treadmills.Billboard.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Treadmills.Iron01.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Treadmills.Diamond01.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Mailboxes.Feedback.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Mailboxes.Feedback.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Mailboxes.Feedback.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.6.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.9.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.2.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.8.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.Billboard.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.1.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.12.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.10.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.11.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.7.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.3.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.5.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.PerStepButtons.4.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_012.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 18970.328125
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_003.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 16637.712890625
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_006.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 5361.95263671875
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_007.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 14039.091796875
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_011.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 20060.068359375
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_009.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 2762.64404296875
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_008.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 5517.6171875
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_004.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 12930.8515625
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_010.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 3279.547119140625
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_001.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 14161.1669921875
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_005.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 12066.185546875
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Stud Egg & Pet.Mod.Model.Pets.Pet_002.Data",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 14645.1220703125
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Ungroup.Forsaken Characters.Killers.Jason (OLD).Skins Jason.CombatInitiation.Head.AT.RagingPace",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Ungroup.Forsaken Characters.Killers.John Doe.Skin John Does.ScriptBuilderJohnDoe.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 30
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Ungroup.Forsaken Characters.Killers.John Doe.Skin John Does.Geometry.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 30
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.Ungroup.Forsaken Characters.Killers.Slasher.Slasher Skins.CombatInitiation.Head.AT.RagingPace",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Ungroup.Forsaken Characters.Killers.Noli.Skins  Noli.YAAI.Noli.Nova.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 40
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage08.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage08.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Stage8.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Stage8.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Stage8.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage08.Stage8.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage01.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage01.Stage1.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage01.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Stage4.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage04.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Stage4.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Stage4.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage04.Stage4.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage04.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage02.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage02.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage02.Stage2.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage06.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage06.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Stage6.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Stage6.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Stage6.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage06.Stage6.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Stage10.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Stage10.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Stage10.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage10.Stage10.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage10.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage10.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Stage9.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Stage9.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage09.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage09.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Stage9.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage09.Stage9.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage05.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Stage5.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Stage5.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Stage5.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage05.Stage5.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage05.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Stage3.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Stage3.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage03.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Stage3.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage03.Stage3.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage03.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage07.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage07.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Stage7.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Stage7.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Stage7.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.GeneratedMap.BattleCorridor.Stage07.Stage7.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.02.StationBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.StationBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.Smooth Block Model.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07.Smooth Block Model.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.TreadmillBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 75
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.StationBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Smooth Block Model.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Smooth Block Model.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Texture.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.05.Texture.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.StationBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.04.MultiplierBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01.StationBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.TreadmillBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 75
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.StationBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Smooth Block Model.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Texture.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Texture.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.06.Smooth Block Model.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 38.77265167236328
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.Billboard.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.StationBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": false,
+   "Path": "Workspace.World2Map.TrainingArea.TreadmillDisplays.03.MultiplierBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 200
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.UpgradesDisplay.UpGradeBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.DailyRankingDisplay.Main.RankingSurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "FixedSize",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 75.58110046386719
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.WinBoostDisplay.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.WinBoostDisplay.Part.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 49.91999816894531
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.MergeDisplay.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.FeedbackDisplay.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.LimitedEggDisplay.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.TotalRankingDisplay.Main.RankingSurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "FixedSize",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 75.58110046386719
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Legendary.Prize",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Rare.Prize",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Mythic.Prize",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Basic.Prize",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.FacilityDisplays.EggDisplays.Visuals.Billboard.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.Billboard.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.TrainingArea.World1ReturnGate.Sign.SignAnchor.WorldLabel",
+   "CanvasSize": [
+    684,
+    510
+   ],
+   "SizingMode": "FixedSize",
+   "MaxDistance": 0,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage01.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage01.Stage1.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage01.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage06.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.6.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage06.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage06.Stage6.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage02.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage02.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage02.Stage2.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.6.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage10.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage10.Stage10.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage10.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.6.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage09.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage09.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage09.Stage9.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage04.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage04.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage04.Stage4.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage07.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage07.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage07.Stage7.6.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage03.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage03.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage03.Stage3.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage05.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage05.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage05.Stage5.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.1.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.2.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.5.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage08.TrophyNormalButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.4.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage08.TrophyDoubleButton.Handle.TrophyRewardBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": true,
+   "MaxDistance": 60
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.3.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Map.BattleCorridor.Stage08.Stage8.6.Wall.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Trophy.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Trophy.Part.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 49.91999816894531
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.RestockShop.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.World2Gate.Sign.SignAnchor.WorldLabel",
+   "CanvasSize": [
+    684,
+    510
+   ],
+   "SizingMode": "FixedSize",
+   "MaxDistance": 0,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 50
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.DailyStrengthRankingBoard.Main.RankingSurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "FixedSize",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 75.58110046386719
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.ShopStallTemplate.UpGradeBillboard",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.EventBoard.Board.SurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 25
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.Chill Octopus.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.WinsGift.BillboardGui",
+   "Class": "BillboardGui",
+   "AlwaysOnTop": false,
+   "MaxDistance": {
+    "m": null,
+    "t": "numeric",
+    "v": "inf"
+   }
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.TotalStrengthRankingBoard.Main.RankingSurfaceGui",
+   "CanvasSize": [
+    800,
+    600
+   ],
+   "SizingMode": "FixedSize",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 75.58110046386719
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage06.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage06.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage06.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage06.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage04.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage04.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage04.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage04.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage09.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage09.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage09.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage09.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage05.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage05.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage05.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage05.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage07.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage07.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage07.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage07.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage03.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage03.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage03.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage03.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage08.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage08.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage08.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage08.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage10.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage10.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage10.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage10.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage02.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage02.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage02.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage02.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage01.Walls.Wall04.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage01.Walls.Wall01.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage01.Walls.Wall03.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  },
+  {
+   "Enabled": true,
+   "Path": "Workspace.MergeToForge.World1.Stage01.Walls.Wall02.Visual.SurfaceGui",
+   "CanvasSize": [
+    1280,
+    600
+   ],
+   "SizingMode": "PixelsPerStud",
+   "MaxDistance": 1000,
+   "Class": "SurfaceGui",
+   "AlwaysOnTop": false,
+   "PixelsPerStud": 17.5
+  }
+ ]
+}

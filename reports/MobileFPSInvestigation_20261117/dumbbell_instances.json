@@ -1,0 +1,2780 @@
+{
+  "Libraries": [
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_05",
+      "Name": "NORMAL_05",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_05.1st weight (right)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.20000000298023224,
+            0.699999988079071,
+            1
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_05.2nd weight (right)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.20000000298023224,
+            0.8999999761581421,
+            1
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_05.3rd weight (right)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.20000000298023224,
+            1.100000023841858,
+            1.2000000476837158
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_05.Bar",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            2,
+            0.5,
+            0.19999998807907104
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_05.3rd weight (left)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.20000000298023224,
+            1.100000023841858,
+            1.2000000476837158
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_05.2nd weight (left)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.20000000298023224,
+            0.8999999761581421,
+            1
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_05.1st weight (left)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.20000000298023224,
+            0.699999988079071,
+            1
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_05"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_01",
+      "Name": "NORMAL_01",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_01.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_01.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9798890352249146,
+            0.3620758056640625,
+            0.4028168320655823
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://94546154900247",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://127699806641624",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_01.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://108748008084662",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://92062689807579",
+            "NormalMap": "rbxassetid://124796643512732"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_01"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_02",
+      "Name": "NORMAL_02",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_02.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_02.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9814759492874146,
+            0.465606689453125,
+            0.4568023383617401
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://93773538534734",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://94958906865185",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_02.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://139625629168917",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://140150685934556",
+            "NormalMap": "rbxassetid://95083219588816"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_02"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_03",
+      "Name": "NORMAL_03",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_03.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_03.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9794923067092896,
+            0.4166259765625,
+            0.4253845810890198
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://112471800394719",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://93549456299639",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_03.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://100430872060015",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://127291977808089",
+            "NormalMap": "rbxassetid://101161404896879"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_03"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_04",
+      "Name": "NORMAL_04",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_04.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_04.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9783326387405396,
+            0.4074554443359375,
+            0.40652480721473694
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://70408019440632",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://139905511090529",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_04.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://117558394568054",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://106517204533390",
+            "NormalMap": "rbxassetid://109564890019761"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_04"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_06",
+      "Name": "NORMAL_06",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_06.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_06.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            1.0015870332717896,
+            0.430633544921875,
+            0.3520050644874573
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://122807268376475",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://136648309742188",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_06.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://135586196105763",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://126431149639476",
+            "NormalMap": "rbxassetid://130511227200958"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_06"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_07",
+      "Name": "NORMAL_07",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_07.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_07.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9800111055374146,
+            0.4937744140625,
+            0.4345245957374573
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://104987959664688",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://87276775290357",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_07.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://74195273034249",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://111692835610018",
+            "NormalMap": "rbxassetid://136994217526038"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_07"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_08",
+      "Name": "NORMAL_08",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_08.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_08.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            1.0001221895217896,
+            0.4963378608226776,
+            0.4320375323295593
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://81262227275291",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://123774794491484",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_08.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://87556769992648",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://93211813743102",
+            "NormalMap": "rbxassetid://126126012997771"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_08"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_09",
+      "Name": "NORMAL_09",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_09.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_09.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            1.0004578828811646,
+            0.54278564453125,
+            0.4924774765968323
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://121550619495763",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://106865796385995",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_09.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://94570911017132",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://81255388349424",
+            "NormalMap": "rbxassetid://87976924111481"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_09"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_10",
+      "Name": "NORMAL_10",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_10.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_10.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9808655977249146,
+            0.6279296875,
+            0.6541444063186646
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://135964415610728",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://105414794303318",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_10.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://110866506372039",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://128085144745544",
+            "NormalMap": "rbxassetid://83565532762026"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_10"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_11",
+      "Name": "NORMAL_11",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_11.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_11.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9799805879592896,
+            0.64837646484375,
+            0.6756592988967896
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://85891133806939",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://124050239207960",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_11.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://91043928845054",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://83663942152891",
+            "NormalMap": "rbxassetid://122727794400670"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_11"
+    },
+    {
+      "Path": "ServerStorage.World1DumbbellModels.NORMAL_12",
+      "Name": "NORMAL_12",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_12.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World1DumbbellModels.NORMAL_12.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9816590547561646,
+            0.4568023681640625,
+            0.47576916217803955
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://112477605860353",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://116892275035446",
+            "Path": "ServerStorage.World1DumbbellModels.NORMAL_12.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://113595243516490",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://83013328600151",
+            "NormalMap": "rbxassetid://116482099466797"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_12"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_01",
+      "Name": "W2_NORMAL_01",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_01.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_01.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9816285371780396,
+            0.3546905517578125,
+            0.39114394783973694
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://72012182548192",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://112042750116163",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_01.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://125046356777310",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://95489331951444",
+            "NormalMap": "rbxassetid://112447258739225"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_01"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_02",
+      "Name": "W2_NORMAL_02",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_02.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_02.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9804688692092896,
+            0.432403564453125,
+            0.5376281142234802
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://117246680201459",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://137652199783998",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_02.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://80071008272163",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://133808237699689",
+            "NormalMap": "rbxassetid://109890669160060"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_02"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_03",
+      "Name": "W2_NORMAL_03",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_03.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_03.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9820557832717896,
+            0.4853668212890625,
+            0.4508056640625
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://121454316614909",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://119066826863827",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_03.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://111008880429232",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://99809534004145",
+            "NormalMap": "rbxassetid://127810864190557"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_03"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_04",
+      "Name": "W2_NORMAL_04",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_04.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_04.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9797669649124146,
+            0.45623779296875,
+            0.3888855576515198
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://128283127982055",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://92998802743903",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_04.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://96128666209212",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://130759667858575",
+            "NormalMap": "rbxassetid://94051492219549"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_04"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_06",
+      "Name": "W2_NORMAL_06",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_06.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_06.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9783326387405396,
+            0.34527587890625,
+            0.46011364459991455
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://110179195904955",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://79163771991092",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_06.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://110936361183224",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://112775687784981",
+            "NormalMap": "rbxassetid://99827487967570"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_06"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_07",
+      "Name": "W2_NORMAL_07",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_07.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_07.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9801331758499146,
+            0.468505859375,
+            0.48170486092567444
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://134262823105301",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://96379632703257",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_07.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://138226194840217",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://87290986728126",
+            "NormalMap": "rbxassetid://87843989069406"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_07"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_08",
+      "Name": "W2_NORMAL_08",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_08.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_08.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9819642305374146,
+            0.631561279296875,
+            0.5361633896827698
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://102402230962981",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://130992463031571",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_08.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://86256269074579",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://107419410147538",
+            "NormalMap": "rbxassetid://86500659021694"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_08"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_10",
+      "Name": "W2_NORMAL_10",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_10.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_10.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9797364473342896,
+            0.500518798828125,
+            0.387664794921875
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://107482140752258",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://119284327055302",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_10.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://72937598799887",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://90575004916775",
+            "NormalMap": "rbxassetid://112657663832130"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_10"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_11",
+      "Name": "W2_NORMAL_11",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_11.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_11.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9839783906936646,
+            0.4898681640625,
+            0.4333038926124573
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://80759512986628",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://101649834700925",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_11.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://73997910930598",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://88683526412852",
+            "NormalMap": "rbxassetid://91328569673545"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_11"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_12",
+      "Name": "W2_NORMAL_12",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_12.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_12.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9817811250686646,
+            0.52203369140625,
+            0.4449616074562073
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://115333744093861",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://127629600081097",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_12.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://115999686456060",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://109054569096339",
+            "NormalMap": "rbxassetid://116390761664141"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_12"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_05",
+      "Name": "W2_NORMAL_05",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_05.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_05.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9808655977249146,
+            0.4008331298828125,
+            0.3714142441749573
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://82927178003009",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://120439373379444",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_05.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://114004727940296",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://90383938174375",
+            "NormalMap": "rbxassetid://78146366342005"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_05"
+    },
+    {
+      "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_09",
+      "Name": "W2_NORMAL_09",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_09.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806
+          ]
+        },
+        {
+          "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_09.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            0.9803162813186646,
+            0.418701171875,
+            0.42828369140625
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://71030764434000",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://81050513443457",
+            "Path": "ServerStorage.World2DumbbellModels.W2_NORMAL_09.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://83262372304448",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://79015952266101",
+            "NormalMap": "rbxassetid://134443934692282"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_09"
+    }
+  ],
+  "Spawns": [
+    {
+      "Position": [
+        287.861083984375,
+        3.8983314037323,
+        12.999991416931152
+      ],
+      "Path": "Workspace.GeneratedMap.TrainingArea.SpawnLocation"
+    },
+    {
+      "Position": [
+        -12.13890552520752,
+        3.8983314037323,
+        12.999991416931152
+      ],
+      "Path": "Workspace.SpawnLocation"
+    }
+  ],
+  "Scripts": [
+    {
+      "Disabled": false,
+      "Path": "Workspace.Ungroup.Forsaken Characters.Killers.John Doe.Skin John Does.Yourself.INSTRUCTIONS"
+    },
+    {
+      "Disabled": false,
+      "Path": "Workspace.Ungroup.Forsaken Characters.THANK YOU."
+    },
+    {
+      "Disabled": false,
+      "Path": "Workspace.Dance Girl.EmoteScript"
+    },
+    {
+      "Disabled": false,
+      "Path": "Workspace.ShopStallTemplate.Kijimuna_AvatarSetup_10624_autosetup.AnimateScript"
+    },
+    {
+      "Disabled": false,
+      "Path": "Workspace.ShopStallTemplate.Kijimuna_AvatarSetup_10624_autosetup.DanceController"
+    }
+  ],
+  "Persistent": [
+    {
+      "Descendants": 10,
+      "Path": "Workspace.Gift"
+    },
+    {
+      "Descendants": 13824,
+      "Path": "Workspace.MergeToForge.World1"
+    }
+  ],
+  "Exhibits": [
+    {
+      "Path": "Workspace.PerStepButtons.6.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.6.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            3.0956485271453857,
+            2.5304205417633057
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://122807268376475",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://136648309742188",
+            "Path": "Workspace.PerStepButtons.6.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://135586196105763",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://126431149639476",
+            "NormalMap": "rbxassetid://130511227200958"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.PerStepButtons.6.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.35942956805229187,
+            0.35942956805229187,
+            0.35942956805229187
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_06"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.9.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.9.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            3.9062681198120117,
+            3.544214963912964
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://121550619495763",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://106865796385995",
+            "Path": "Workspace.PerStepButtons.9.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://94570911017132",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://81255388349424",
+            "NormalMap": "rbxassetid://87976924111481"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.PerStepButtons.9.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3598352372646332,
+            0.3598352372646332,
+            0.3598352372646332
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_09"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.2.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.2.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.36679452657699585,
+            0.36679452657699585,
+            0.36679452657699585
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.2.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            3.415639638900757,
+            3.3510518074035645
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://93773538534734",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://94958906865185",
+            "Path": "Workspace.PerStepButtons.2.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://139625629168917",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://140150685934556",
+            "NormalMap": "rbxassetid://95083219588816"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_02"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.8.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.8.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            3.5731961727142334,
+            3.110290288925171
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://81262227275291",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://123774794491484",
+            "Path": "Workspace.PerStepButtons.8.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://87556769992648",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://93211813743102",
+            "NormalMap": "rbxassetid://126126012997771"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.PerStepButtons.8.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3599560260772705,
+            0.3599560260772705,
+            0.3599560260772705
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_08"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.1.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.1.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3673885464668274,
+            0.3673885464668274,
+            0.3673885464668274
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.1.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            2.660449981689453,
+            2.959805727005005
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://94546154900247",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://127699806641624",
+            "Path": "Workspace.PerStepButtons.1.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://108748008084662",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://92062689807579",
+            "NormalMap": "rbxassetid://124796643512732"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_01"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.12.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.12.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            3.3504271507263184,
+            3.489539623260498
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://112477605860353",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://116892275035446",
+            "Path": "Workspace.PerStepButtons.12.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://113595243516490",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://83013328600151",
+            "NormalMap": "rbxassetid://116482099466797"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.PerStepButtons.12.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3667261302471161,
+            0.3667261302471161,
+            0.3667261302471161
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_12"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.10.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.10.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            4.609289646148682,
+            4.801717758178711
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://135964415610728",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://105414794303318",
+            "Path": "Workspace.PerStepButtons.10.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://110866506372039",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://128085144745544",
+            "NormalMap": "rbxassetid://83565532762026"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.PerStepButtons.10.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3670227527618408,
+            0.3670227527618408,
+            0.3670227527618408
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_10"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.11.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.11.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            4.763676643371582,
+            4.964126110076904
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://85891133806939",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://124050239207960",
+            "Path": "Workspace.PerStepButtons.11.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://91043928845054",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://83663942152891",
+            "NormalMap": "rbxassetid://122727794400670"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.PerStepButtons.11.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.36735424399375916,
+            0.36735424399375916,
+            0.36735424399375916
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_11"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.7.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.7.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            3.6276893615722656,
+            3.192389488220215
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://104987959664688",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://87276775290357",
+            "Path": "Workspace.PerStepButtons.7.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://74195273034249",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://111692835610018",
+            "NormalMap": "rbxassetid://136994217526038"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.PerStepButtons.7.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3673427999019623,
+            0.3673427999019623,
+            0.3673427999019623
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_07"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.3.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.3.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.36754634976387024,
+            0.36754634976387024,
+            0.36754634976387024
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.3.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200176239013672,
+            3.062587022781372,
+            3.1269710063934326
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://112471800394719",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://93549456299639",
+            "Path": "Workspace.PerStepButtons.3.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://100430872060015",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://127291977808089",
+            "NormalMap": "rbxassetid://101161404896879"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "NORMAL_03"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.5.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.5.World1DumbbellExhibit.1st weight (left)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.7199999690055847,
+            2.5199999809265137,
+            3.5999999046325684
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.5.World1DumbbellExhibit.3rd weight (right)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.7199999690055847,
+            3.9600000381469727,
+            4.320000171661377
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.5.World1DumbbellExhibit.2nd weight (left)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.7199999690055847,
+            3.239999771118164,
+            3.5999999046325684
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.5.World1DumbbellExhibit.1st weight (right)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.7199999690055847,
+            2.5199999809265137,
+            3.5999999046325684
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.5.World1DumbbellExhibit.2nd weight (right)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.7199999690055847,
+            3.239999771118164,
+            3.5999999046325684
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.5.World1DumbbellExhibit.Bar",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            7.199999809265137,
+            1.7999999523162842,
+            0.7199999094009399
+          ]
+        },
+        {
+          "Path": "Workspace.PerStepButtons.5.World1DumbbellExhibit.3rd weight (left)",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 0,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.7199999690055847,
+            3.9600000381469727,
+            4.320000171661377
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_05"
+    },
+    {
+      "Path": "Workspace.PerStepButtons.4.World1DumbbellExhibit",
+      "Name": "World1DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.PerStepButtons.4.World1DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            2.9986519813537598,
+            2.991802930831909
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://70408019440632",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://139905511090529",
+            "Path": "Workspace.PerStepButtons.4.World1DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://117558394568054",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://106517204533390",
+            "NormalMap": "rbxassetid://109564890019761"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.PerStepButtons.4.World1DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3679729998111725,
+            0.3679729998111725,
+            0.3679729998111725
+          ]
+        }
+      ],
+      "ItemId": "NORMAL_04"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3672970235347748,
+            0.3672970235347748,
+            0.3672970235347748
+          ]
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            3.4416162967681885,
+            3.5385751724243164
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://134262823105301",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://96379632703257",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.7.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://138226194840217",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://87290986728126",
+            "NormalMap": "rbxassetid://87843989069406"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_07"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3667375147342682,
+            0.3667375147342682,
+            0.3667375147342682
+          ]
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            2.6015665531158447,
+            2.868943214416504
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://72012182548192",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://112042750116163",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.1.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://125046356777310",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://95489331951444",
+            "NormalMap": "rbxassetid://112447258739225"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_01"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.36657795310020447,
+            0.36657795310020447,
+            0.36657795310020447
+          ]
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            3.55849552154541,
+            3.3051083087921143
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://121454316614909",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://119066826863827",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.3.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://111008880429232",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://99809534004145",
+            "NormalMap": "rbxassetid://127810864190557"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_03"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.365861713886261,
+            0.365861713886261,
+            0.365861713886261
+          ]
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200000286102295,
+            3.584480047225952,
+            3.170586109161377
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://80759512986628",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://101649834700925",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.11.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://73997910930598",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://88683526412852",
+            "NormalMap": "rbxassetid://91328569673545"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_11"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3670227527618408,
+            0.3670227527618408,
+            0.3670227527618408
+          ]
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            2.9422974586486816,
+            2.7263495922088623
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://82927178003009",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://120439373379444",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.5.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://114004727940296",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://90383938174375",
+            "NormalMap": "rbxassetid://78146366342005"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_05"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3674432933330536,
+            0.3674432933330536,
+            0.3674432933330536
+          ]
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200176239013672,
+            3.352830410003662,
+            2.857867956161499
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://128283127982055",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://92998802743903",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.4.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://96128666209212",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://130759667858575",
+            "NormalMap": "rbxassetid://94051492219549"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_04"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            3.8283915519714355,
+            3.2631750106811523
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://115333744093861",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://127629600081097",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://115999686456060",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://109054569096339",
+            "NormalMap": "rbxassetid://116390761664141"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.12.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3666805028915405,
+            0.3666805028915405,
+            0.3666805028915405
+          ]
+        }
+      ],
+      "ItemId": "W2_NORMAL_12"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.367977499961853,
+            0.367977499961853,
+            0.367977499961853
+          ]
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200088024139404,
+            2.5410749912261963,
+            3.3862292766571045
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://110179195904955",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://79163771991092",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.6.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://110936361183224",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://112775687784981",
+            "NormalMap": "rbxassetid://99827487967570"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_06"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.36744576692581177,
+            0.36744576692581177,
+            0.36744576692581177
+          ]
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            3.678270101547241,
+            2.8489155769348145
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://107482140752258",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://119284327055302",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.10.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://72937598799887",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://90575004916775",
+            "NormalMap": "rbxassetid://112657663832130"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        }
+      ],
+      "ItemId": "W2_NORMAL_10"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200087547302246,
+            3.1753621101379395,
+            3.948080062866211
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://117246680201459",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://137652199783998",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://80071008272163",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://133808237699689",
+            "NormalMap": "rbxassetid://109890669160060"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.2.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.36717575788497925,
+            0.36717575788497925,
+            0.36717575788497925
+          ]
+        }
+      ],
+      "ItemId": "W2_NORMAL_02"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.200176239013672,
+            3.0752546787261963,
+            3.1456358432769775
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://71030764434000",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://81050513443457",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://83262372304448",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://79015952266101",
+            "NormalMap": "rbxassetid://134443934692282"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.9.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.3672374188899994,
+            0.3672374188899994,
+            0.3672374188899994
+          ]
+        }
+      ],
+      "ItemId": "W2_NORMAL_09"
+    },
+    {
+      "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.World2DumbbellExhibit",
+      "Name": "World2DumbbellExhibit",
+      "Effects": 0,
+      "Parts": [
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.World2DumbbellExhibit.Visual",
+          "CanQuery": false,
+          "TextureID": "",
+          "Massless": true,
+          "TriangleCount": "unavailable",
+          "RenderFidelity": "Enum.RenderFidelity.Automatic",
+          "Size": [
+            7.199999809265137,
+            4.630760669708252,
+            3.9312798976898193
+          ],
+          "CanCollide": false,
+          "MeshId": "rbxassetid://102402230962981",
+          "CanTouch": false,
+          "Transparency": 0,
+          "VertexCount": "unavailable",
+          "SurfaceAppearance": {
+            "ColorMap": "rbxassetid://130992463031571",
+            "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.World2DumbbellExhibit.Visual.SurfaceAppearance",
+            "RoughnessMap": "rbxassetid://86256269074579",
+            "AlphaMode": "Enum.AlphaMode.Overlay",
+            "MetalnessMap": "rbxassetid://107419410147538",
+            "NormalMap": "rbxassetid://86500659021694"
+          },
+          "Class": "MeshPart",
+          "CollisionFidelity": "Enum.CollisionFidelity.Default",
+          "CastShadow": true,
+          "Anchored": true
+        },
+        {
+          "Path": "Workspace.World2Map.TrainingArea.DumbbellDisplays.PerStepButtons.8.World2DumbbellExhibit.Grip",
+          "CanQuery": false,
+          "CanCollide": false,
+          "Class": "Part",
+          "CanTouch": false,
+          "Transparency": 1,
+          "Anchored": true,
+          "Massless": true,
+          "CastShadow": true,
+          "Size": [
+            0.36661213636398315,
+            0.36661213636398315,
+            0.36661213636398315
+          ]
+        }
+      ],
+      "ItemId": "W2_NORMAL_08"
+    }
+  ]
+}
