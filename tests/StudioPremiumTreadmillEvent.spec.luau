@@ -12,7 +12,7 @@ return function(Sources)
  end
  local now,queue=0,{}
  local eventOffset=0
- local epoch=DateTime.fromUniversalTime(2040,2,29).UnixTimestamp-32400 -- Fixture ONLY
+ local epoch=DateTime.fromUniversalTime(2040,2,29,18,45).UnixTimestamp-32400 -- Fixture ONLY
  local function setEventTime(t) eventOffset=t-now end
  local function resume(co,...)
   local ok,delay=coroutine.resume(co,...);assert(ok,delay)
@@ -129,8 +129,8 @@ return function(Sources)
  local eventConfigPath="ServerScriptService.Config.World1PremiumTreadmillEventConfig"
  local eventPath="ServerScriptService.Services.World1PremiumTreadmillEvent"
  local eventConfig=table.clone(runSource(eventConfigPath,Sources[eventConfigPath]))
- check(eventConfig.EventDateJST=="" and eventConfig.Enabled and eventConfig.StartIntervalSeconds==1800 and eventConfig.OpenDurationSeconds==180,"final unset date and defaults")
- eventConfig.EventDateJST="2040-02-29" -- Fixture-local date only.
+ check(type(eventConfig.EventStartTimeJST)=="string" and eventConfig.Enabled and eventConfig.StartIntervalSeconds==1800 and eventConfig.OpenDurationSeconds==180,"start time field and timing defaults")
+ eventConfig.EventDateJST="2040-02-29";eventConfig.EventStartTimeJST="18:45" -- Fixture-only copy.
  mockModules[eventConfigPath]=eventConfig
  local event=loadModule(eventPath)
  local pass=loadModule("ServerScriptService.Services.GamePassService")
@@ -153,8 +153,8 @@ return function(Sources)
   check(schedule.At(plan,start+180).State=="Waiting","closed exactly at end "..cycle)
   check(not schedule.At(plan,start+1799.999).Open,"wait "..cycle)
  end
- check(schedule.At(plan,epoch-0.001).State=="Before","before JST midnight")
- check(schedule.At(plan,epoch+86400).State=="Ended","JST day cutoff")
+ check(schedule.At(plan,epoch-0.001).State=="Before","before configured start")
+ check(schedule.At(plan,epoch+86400).State=="Ended","24-hour cutoff")
  near(schedule.At(plan,epoch+179.9).RemainingSeconds,.1,"fractional remaining")
  check(schedule.At(plan,epoch+86399).NextStartAt==nil,"no next-day session")
  local tc=loadModule("ReplicatedStorage.Config.TreadmillConfig")
@@ -326,7 +326,7 @@ return function(Sources)
  training.StopTraining(p);for _,who in playerList do players.PlayerRemoving:Fire(who);who.Parent=nil end
  advance(5);check(#queue==0,"training workers drained")
  results.LiveExternalCalls=0;results.PurchasePromptsAreMocked=#prompts
- results.ConfigAtEnd={Enabled=eventConfig.Enabled,StartIntervalSeconds=eventConfig.StartIntervalSeconds,OpenDurationSeconds=eventConfig.OpenDurationSeconds,FixtureDateJST=eventConfig.EventDateJST}
+ results.ConfigAtEnd={Enabled=eventConfig.Enabled,StartIntervalSeconds=eventConfig.StartIntervalSeconds,OpenDurationSeconds=eventConfig.OpenDurationSeconds,FixtureDateJST=eventConfig.EventDateJST,FixtureStartTimeJST=eventConfig.EventStartTimeJST}
  results.Grounding="Mocked occupancy; NOT physical Play verification"
  results.MemoryUpdate="Exact current AddStrengthGain/RecordStrengthGain + LevelProgression in memory only"
  return results

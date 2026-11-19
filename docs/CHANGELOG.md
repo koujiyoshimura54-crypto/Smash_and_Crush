@@ -1,3 +1,7 @@
+# 2026-11-19 — Premiumイベントに開始時刻を追加
+
+EventStartTimeJST（HH:MM）を追加し、開始から24時間の開催へ変更。Studioの開始日2026-11-19と開始時刻22:00をユーザー確認のうえ保持。月末/年末・時刻検証と既存加算/表示の隔離確認、エージェントによる実Play/公開は未実施。[報告](../reports/PremiumTreadmillStartTime_20261119/REPORT.md)。
+
 # 2026-11-19 — Premiumイベント公開日時対応・残り時間UI
 
 Studio限定のPlay時計をJST指定日のUTC期間＋サーバー絶対時計へ変更。日付未指定のまま非開催。既存ボード3ラベルとArea上空1タイマーを共通時刻へ接続し、最終回後の時間行非表示・Streaming再バインドを実装。所有/加算式/保存/World2を保持。Edit実描画と隔離計算を確認、実Play/公開は未実施。[報告](../reports/PremiumTreadmillPublicEvent_20261119/REPORT.md)。

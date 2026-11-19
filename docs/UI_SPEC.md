@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-19 — イベント表示期間を開始時刻から24時間へ
+
+ボード/上空のデザインは維持し、表示期間を指定JST開始日時以上・24時間後未満へ変更。時刻空欄/不正時は非表示。最終開放後の時間行非表示と終了時の全体非表示は開始時刻基準で継続。現設定は2026-11-19 22:00から翌同時刻まで。[変更・確認区分](../reports/PremiumTreadmillStartTime_20261119/REPORT.md)。
+
 ## 2026-11-19 — Premium Treadmillイベントの3段表示（最新）
 
 以下の静的2行仕様を置き換える。既存Event1/2/3を「Premium Treadmill」「Free」「Next MM:SS / Now! MM:SS」に使用。FredokaOne、60/100/52px、Free赤、Now黄色＋太い固定px縁取り、待機は白。指定JST日中のみ黒RGB(24,24,24)・Transparency0.5の既存本体を表示し、日前後/日付未指定/不正/OFFは本体も隠す。最終回後は時間行だけ非表示。Diamond01.Area上空へ開放中だけ時間を表示。StyleはReplicatedStorage.Config.World1PremiumTreadmillEventStyle。同期時計からローカル更新、同秒Text再代入なし、再初期化とStreaming時の多重生成を防止。PC/スマホ相当のEdit描画を確認し、実Play/実機は未確認。[設定・寸法・限界](../reports/PremiumTreadmillPublicEvent_20261119/REPORT.md)。

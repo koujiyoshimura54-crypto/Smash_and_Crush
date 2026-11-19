@@ -21,7 +21,7 @@ return function(Sources,originalBoard,originalArea)
   local rs={Modules={World1PremiumTreadmillEventSchedule="schedule",World1PremiumTreadmillEventPresentation="view"},
    Config={World1PremiumTreadmillEventStyle="style"}}
   function rs:FindFirstChild(name)return name=="World1PremiumTreadmillEventState" and state or nil end
-  local now=DateTime.fromUniversalTime(2040,2,28,15).UnixTimestamp+1
+  local now=DateTime.fromUniversalTime(2040,2,29,9,45).UnixTimestamp+1
   local ws={FindFirstChild=function(_,name)return root:FindFirstChild(name)end,GetServerTimeNow=function()return now end}
   local H=game:GetService("HttpService") -- JSON encode/decode only.
   local services={ReplicatedStorage=rs,Workspace=ws,RunService={Heartbeat=heartbeat},HttpService=H}
@@ -36,7 +36,7 @@ return function(Sources,originalBoard,originalArea)
   modules.schedule=load("ReplicatedStorage.Modules.World1PremiumTreadmillEventSchedule")
   modules.view=load("ReplicatedStorage.Modules.World1PremiumTreadmillEventPresentation")
   local S,V,style=modules.schedule,modules.view,modules.style
-  local plan=S.Compile({Enabled=true,EventDateJST="2040-02-29",StartIntervalSeconds=1800,OpenDurationSeconds=180})
+  local plan=S.Compile({Enabled=true,EventDateJST="2040-02-29",EventStartTimeJST="18:45",StartIntervalSeconds=1800,OpenDurationSeconds=180})
   local epoch=plan.StartUnixSeconds;state.Value=H:JSONEncode(plan)
   local runtime=load("ReplicatedStorage.Modules.World1PremiumTreadmillEventClientRuntime")
   stop=runtime.Start(owner)
@@ -73,8 +73,8 @@ return function(Sources,originalBoard,originalArea)
   check(gui.Event3.Text=="Now! 03:00" and board.Board.Transparency==.5 and board.Board.Color==style.BoardColor,"restoration")
   state.Value="invalid json";heartbeat:Fire()
   check(not gui.Enabled and not floating.Enabled,"invalid replicated data fail closed")
-  state.Value=H:JSONEncode({Valid=false,Version=1,Reason="DateUnset"});heartbeat:Fire()
-  check(not gui.Enabled,"unset date hidden")
+  state.Value=H:JSONEncode({Valid=false,Version=1,Reason="StartTimeUnset"});heartbeat:Fire()
+  check(not gui.Enabled,"unset start time hidden")
   state.Value=H:JSONEncode(plan);heartbeat:Fire()
   check(gui.Enabled and floating.Enabled,"valid snapshot restored")
   -- Streaming-like removal/reappearance of the whole object and individual descendants.

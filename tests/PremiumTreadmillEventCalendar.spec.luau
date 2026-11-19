@@ -2,11 +2,11 @@
 return function(S)
  local count=0
  local function check(x,msg) count+=1;assert(x,msg) end
- local c={Enabled=true,EventDateJST="2040-02-29",StartIntervalSeconds=1800,OpenDurationSeconds=180}
+ local c={Enabled=true,EventDateJST="2040-02-29",EventStartTimeJST="18:45",StartIntervalSeconds=1800,OpenDurationSeconds=180}
  local p=S.Compile(c);local t=p.StartUnixSeconds
  check(S.Validate(p),"valid leap date")
- check(DateTime.fromUnixTimestamp(t):ToIsoDate()=="2040-02-28T15:00:00Z","JST to UTC start")
- check(p.EndUnixSeconds-t==86400,"one day")
+ check(DateTime.fromUnixTimestamp(t):ToIsoDate()=="2040-02-29T09:45:00Z","JST to UTC start")
+ check(p.EndUnixSeconds-t==86400,"24 hours from configured start")
  for _,date in {"","2040-2-29","2040-02-30","2100-02-29","2026-04-31","2026-00-01","2026-13-01","2026-01-00","1969-12-31","10000-01-01","2026-11-19 "," 2026-11-19","garbage"} do
   local x=table.clone(c);x.EventDateJST=date;local invalid=S.Compile(x)
   local st=S.At(invalid,t)
@@ -15,6 +15,24 @@ return function(S)
  for _,date in {"2000-02-29","2024-02-29","2100-02-28","2026-12-31"} do
   local x=table.clone(c);x.EventDateJST=date;check(S.Compile(x).Valid,"valid "..date)
  end
+ for _,clock in {"","0:00","00:0","24:00","23:60","12:34:56","-1:00","12:00 "," 12:00","ab:cd",false,1234} do
+  local x=table.clone(c);x.EventStartTimeJST=clock
+  local st=S.At(S.Compile(x),t)
+  check(not st.Open and not S.Presentation(st).BoardVisible,"invalid start time: "..tostring(clock))
+ end
+ local missingTime=table.clone(c);missingTime.EventStartTimeJST=nil
+ check(S.Compile(missingTime).Reason=="StartTimeUnset","missing time cannot assume midnight")
+ local midnight=table.clone(c);midnight.EventStartTimeJST="00:00"
+ check(S.Compile(midnight).StartUnixSeconds==DateTime.fromUniversalTime(2040,2,28,15).UnixTimestamp,"explicit midnight accepted")
+ local yearEnd=table.clone(c);yearEnd.EventDateJST="2040-12-31";yearEnd.EventStartTimeJST="23:59"
+ local yearPlan=S.Compile(yearEnd)
+ check(DateTime.fromUnixTimestamp(yearPlan.StartUnixSeconds):ToIsoDate()=="2040-12-31T14:59:00Z","23:59 start conversion")
+ check(DateTime.fromUnixTimestamp(yearPlan.EndUnixSeconds):ToIsoDate()=="2041-01-01T14:59:00Z","year rollover plus 24 hours")
+ check(DateTime.fromUnixTimestamp(p.EndUnixSeconds):ToIsoDate()=="2040-03-01T09:45:00Z","leap month rollover plus 24 hours")
+ check(S.At(p,DateTime.fromUniversalTime(2040,2,29,15).UnixTimestamp).InEventDay,"JST midnight does not end a started window")
+ check(not S.At(p,t-.001).InEventDay,"start boundary excludes earlier instant")
+ check(S.At(p,t).Open and S.At(p,t+.001).Open,"start boundary inclusive")
+ check(S.At(p,p.EndUnixSeconds-.001).InEventDay and not S.At(p,p.EndUnixSeconds).InEventDay,"end boundary exclusive")
  for _,field in {"StartIntervalSeconds","OpenDurationSeconds"} do
   for _,n in {0,-1,0/0,math.huge,180.1,86401,"180",false} do
    local x=table.clone(c);x[field]=n;check(not S.Compile(x).Valid,"invalid timing "..field)
@@ -50,5 +68,5 @@ return function(S)
  x=table.clone(c);x.StartIntervalSeconds=86400
  local single=S.Presentation(S.At(S.Compile(x),t+180))
  check(single.BoardVisible and not single.TimeVisible,"one-window day")
- return {Kind="Pure absolute-time schedule simulation",Assertions=count,FixtureDate=c.EventDateJST,UTCStart=DateTime.fromUnixTimestamp(t):ToIsoDate()}
+ return {Kind="Pure absolute-time schedule simulation",Assertions=count,FixtureDate=c.EventDateJST,FixtureStartTime=c.EventStartTimeJST,UTCEnd=DateTime.fromUnixTimestamp(p.EndUnixSeconds):ToIsoDate(),UTCStart=DateTime.fromUnixTimestamp(t):ToIsoDate()}
 end

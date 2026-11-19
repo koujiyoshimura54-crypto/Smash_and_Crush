@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-19 — Premiumイベント期間の開始時刻対応
+
+無料資格の期間を指定JST開始日時から24時間へ変更。180秒開放/1800秒周期、既存Strength計算と購入/所有の扱いは維持。時刻未指定では資格なし。[検証](../reports/PremiumTreadmillStartTime_20261119/REPORT.md)。
+
 ## 2026-11-19 — Premiumイベントの一時資格（倍率変更なし）
 
 指定JST日・絶対時計によるWorld1 Diamond01無料資格を追加し、旧Studio試作の起動時計を廃止。TrainingManagerの既存0.5秒加算と接地/占有確認を共用し、Premium7+Belt+TrainingPotion+StrengthPass等の既存合成・他装備補正を維持。7/8固定・上限なし。所有情報・保存・通常設備・World2は変更しない。日付空欄の現状は無料資格なし。無料/正規の同条件メモリ計算一致を確認、実乗車は未確認。[検証区分](../reports/PremiumTreadmillPublicEvent_20261119/REPORT.md)。

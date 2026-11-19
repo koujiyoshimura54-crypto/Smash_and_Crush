@@ -15,10 +15,16 @@ function M.Compile(config)
  local leap=y%4==0 and (y%100~=0 or y%400==0)
  local days={31,leap and 29 or 28,31,30,31,30,31,31,30,31,30,31}
  if d<1 or d>days[m] then return disabled("InvalidDate") end
+ local startTime=config.EventStartTimeJST
+ if startTime=="" or startTime==nil then return disabled("StartTimeUnset") end
+ if type(startTime)~="string" then return disabled("InvalidStartTime") end
+ local hour,minute=startTime:match("^(%d%d):(%d%d)$")
+ hour,minute=tonumber(hour),tonumber(minute)
+ if not hour or hour>23 or minute>59 then return disabled("InvalidStartTime") end
  local interval,duration=config.StartIntervalSeconds,config.OpenDurationSeconds
  if not seconds(interval) or not seconds(duration) or duration>interval then return disabled("InvalidTiming") end
  -- UTC constructor, never OS local timezone; JST is UTC+09:00 (no DST).
- local ok,utc=pcall(DateTime.fromUniversalTime,y,m,d,0,0,0)
+ local ok,utc=pcall(DateTime.fromUniversalTime,y,m,d,hour,minute,0)
  if not ok then return disabled("InvalidDate") end
  local start=utc.UnixTimestamp-9*3600
  return {Valid=true,Version=1,StartUnixSeconds=start,EndUnixSeconds=start+DAY,

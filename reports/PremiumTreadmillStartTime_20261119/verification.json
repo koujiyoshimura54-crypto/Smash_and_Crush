@@ -1,0 +1,101 @@
+{
+  "Studio": {
+    "UniverseId": 10765181857,
+    "Edit": true,
+    "OverheadVisible": false,
+    "PlaceId": 126576845524886,
+    "At": "2026-11-19T13:08:41Z",
+    "Config": {
+      "Enabled": true,
+      "LogTransitions": true,
+      "OpenDurationSeconds": 180,
+      "EventStartTimeJST": "22:00",
+      "StartIntervalSeconds": 1800,
+      "EventDateJST": "2026-11-19"
+    },
+    "Status": {
+      "State": "Waiting",
+      "Cycle": 0,
+      "OpenedAt": 1795093200,
+      "RemainingSeconds": 1277.8539130687714,
+      "NextStartAt": 1795095000,
+      "ClosesAt": 1795093380,
+      "Open": false,
+      "InEventDay": true
+    },
+    "Display": {
+      "Plan": {
+        "Valid": true,
+        "Version": 1,
+        "OpenDurationSeconds": 180,
+        "StartIntervalSeconds": 1800,
+        "StartUnixSeconds": 1795093200,
+        "EndUnixSeconds": 1795179600
+      },
+      "Open": false,
+      "BoardVisible": true
+    },
+    "BoardVisible": true
+  },
+  "Tests": {
+    "calendar": {
+      "UTCEnd": "2040-03-01T09:45:00Z",
+      "FixtureDate": "2040-02-29",
+      "UTCStart": "2040-02-29T09:45:00Z",
+      "Kind": "Pure absolute-time schedule simulation",
+      "Assertions": 91,
+      "FixtureStartTime": "18:45"
+    },
+    "integration": {
+      "LiveExternalCalls": 0,
+      "Kind": "Edit isolated simulation (not Play)",
+      "Grounding": "Mocked occupancy; NOT physical Play verification",
+      "ConfigAtEnd": {
+        "Enabled": true,
+        "FixtureDateJST": "2040-02-29",
+        "FixtureStartTimeJST": "18:45",
+        "StartIntervalSeconds": 1800,
+        "OpenDurationSeconds": 180
+      },
+      "PurchasePromptsAreMocked": 3,
+      "Gains": [
+        {
+          "Delta": 7,
+          "Case": "Free; Studio effects OFF"
+        },
+        {
+          "StrengthPass": false,
+          "Delta": 660,
+          "Case": "Free combined"
+        },
+        {
+          "StrengthPass": false,
+          "Delta": 660,
+          "Case": "Owned combined"
+        },
+        {
+          "StrengthPass": true,
+          "Delta": 726,
+          "Case": "Free combined"
+        },
+        {
+          "StrengthPass": true,
+          "Delta": 726,
+          "Case": "Owned combined"
+        }
+      ],
+      "Assertions": 283,
+      "MemoryUpdate": "Exact current AddStrengthGain/RecordStrengthGain + LevelProgression in memory only"
+    },
+    "ui": {
+      "RefreshSeconds": 0.1,
+      "TextChangesFor20UnchangedUpdates": 0,
+      "Kind": "Native Edit GUI + client lifecycle simulation (not Play)",
+      "Assertions": 32,
+      "InstanceCount": 15
+    }
+  },
+  "RealPlayByAgent": false,
+  "SourceEditorConfigEqual": true,
+  "Note": "Transient Play-mode tool responses occurred; agent did not invoke Play/Stop. Final state read is Edit."
+}
