@@ -10,7 +10,10 @@ local JSON=game:GetService("HttpService") -- encoding only, never network
 local function fixture(studio,configured)
 	local f={now=100,http=0,secret=0,stores=0,sorted=0,threads={},indexes={},profiles={},coord={},budget=1000,logs={}}
 	local c=load(sources.Config);c.LogTransitions=false
-	if configured then c.Offline.OfflineRewardMessageId="12345678901234567890" end
+	if configured then
+		-- Exercise the configured opaque ID in the mock HTTP body, without converting it.
+		if not c.HasMessageId(c.Offline.OfflineRewardMessageId) then c.Offline.OfflineRewardMessageId="12345678901234567890" end
+	else c.Offline.OfflineRewardMessageId="" end
 	local secret=setmetatable({},{__tostring=function()error("Secret must never be stringified")end})
 	local info={UpdatedTime=100000,GetUserIds=function()return {1}end,GetMetadata=function()return {Preserve="yes"}end}
 	local profileStore={}

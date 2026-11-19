@@ -14,6 +14,7 @@ local W=load("Worker",{script={Parent={OfflineNotificationState="State"}},requir
 local P=load("Prompts")
 local function copy(x) if type(x)~="table" then return x end local o={} for k,v in pairs(x) do o[k]=copy(v) end return o end
 group("String IDs / missing / independent settings")
+C.Offline.OfflineRewardMessageId="" -- Exercise absence independently of deployment settings.
 eq(C.OfflineConfigured(),false);eq(C.HasMessageId(123),false);eq(C.HasMessageId(""),false)
 eq(C.HasMessageId("ここに通知文面ID"),false);eq(C.HasMessageId("000"),false)
 eq(C.HasMessageId("12345678901234567890"),true)

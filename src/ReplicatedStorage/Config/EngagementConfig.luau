@@ -2,7 +2,7 @@
 -- Message IDs are Notification asset ID STRINGS, never numeric Lua literals.
 -- Empty IDs disable only that feature's calls. The registered Secret is NOT a key string.
 local C = {
-	Offline = {Enabled = true, OfflineRewardMessageId = "", SecretName = "OfflineRewardNotificationKey",
+	Offline = {Enabled = true, OfflineRewardMessageId = "4905299160793744045", SecretName = "OfflineRewardNotificationKey",
 		DelaySeconds = 86400}, -- From the committed departure; independent of reward's 86400s cap.
 	Invite = {Enabled = true, FriendInviteMessageId = ""},
 	Worker = {IntervalSeconds = 60, MaxBatch = 5, LeaseSeconds = 120,

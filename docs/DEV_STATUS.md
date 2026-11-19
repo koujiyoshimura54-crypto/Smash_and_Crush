@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-20 — オフライン通知文面IDを設定
+
+ユーザー指定ID `4905299160793744045` をEngagementConfig.Offline.OfflineRewardMessageIdへ文字列で反映。Enabled=true・DelaySeconds=86400を維持。公開用の設定判定は有効、Studio実送信は禁止を維持。実在/権限/実配信は未確認。既存テストfixtureを設定値から独立させ、隔離core155＋adapter176を確認。UI・報酬・友達招待・イベントは変更なし。Save/Publishなし。[設定・検証範囲](../reports/OfflineRewardMessageId_20261120.md)。
+
 ## 2026-11-20 — オフライン通知ボタン・中央案内＋上下帯
 
 副本の現行未保存Editへ5 Source（新規3、既存2の局所変更）と受取通知行/表示専用退出GUIを反映。通知許可可能時だけ小さなNOTIFY ME、メニュー開閉で中央＋上下帯を同時表示。既存予約/送信と報酬/購入/保存は保持。文面ID空欄のため実送信無効、招待/イベントは対象外。Edit描画PC・横画面スマホ・タブレット、UI模擬263＋既存通知/報酬模擬465を確認。実Play隔離未確認のためPlay/Stopなし、実メニュー操作・許可画面・実機・配信は未確認。検証GUI除去、元の端末設定復帰、既存547 Sourceの対象外変更なし。[画像・全Full Path・残る確認](../reports/OfflineRewardMenuUI_20261119/REPORT.md)。

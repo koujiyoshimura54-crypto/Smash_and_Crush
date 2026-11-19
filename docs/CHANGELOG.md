@@ -1,3 +1,7 @@
+# 2026-11-20 — オフライン報酬通知の文面ID
+
+指定ID`4905299160793744045`を文字列として副本Configへ設定。Studio送信禁止、24時間Delay、報酬/UI/招待/イベントを維持。設定に依存していた既存fixtureを分離し331項目の隔離模擬を確認。実API受付・実配信・Save/Publishなし。[報告](../reports/OfflineRewardMessageId_20261120.md)。
+
 # 2026-11-20 — オフライン報酬の通知ボタンと退出案内
 
 通常受取画面に条件付きNOTIFY MEを追加し、Robloxメニュー開閉へ中央案内＋上下帯を同時接続。文面ID未設定でも許可UIは独立、送信は既存永続予約実装を維持して無効。受取/購入/保存・招待・イベントは保持。Edit描画3サイズ、UI263＋既存465の隔離模擬、Source/GUI照合。実Play/通知許可/配信は未確認、Save/Publishなし。[報告と画像](../reports/OfflineRewardMenuUI_20261119/REPORT.md)。
