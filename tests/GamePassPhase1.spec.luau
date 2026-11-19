@@ -66,6 +66,8 @@ return function(Sources)
  local debugConfig={GamePassEffectsEnabled=true,ProductionCreatorGamePassEffectsEnabled=false,ProductionCreatorUserIds={[7467238848]=true}}
  local controls={Dumbbell=0,Aura=0,Protein=0,Belt=0,StrengthPotion=1,TrainingPotion=0,Pet=1,Lobby=true,Grounded=true}
  local sessions={};local mockModules={}
+ -- This suite checks the legacy/event-OFF path; the event suite exercises its real service.
+ mockModules["ServerScriptService.Services.World1PremiumTreadmillEvent"]={IsOpenForWorld=function()return false end,IsOpenForTreadmill=function()return false end}
  mockModules["ServerScriptService.Config.StudioDebugConfig"]=debugConfig
  mockModules["ReplicatedStorage.Config.ShopProductConfig"]={Get=function(key)return key=="VIP"and{Kind="GamePass",PassId=1977128286,StrengthMultiplier=1.1}or nil end}
  mockModules["ServerScriptService.Services.FirstPlayAnalyticsService"]={Strength=function()end}

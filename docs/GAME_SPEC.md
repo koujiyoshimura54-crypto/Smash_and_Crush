@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-19 — 開発Studio限定のPremium Treadmill試作
+
+実際のWorld1 Diamond01のみ、サーバーがStudioで実行中かつConfig有効なら、Play開始直後から180秒間、開始間隔1800秒、全体86400秒の無料利用資格を認める。個人の参加・死亡では時計をリセットしない。所有・キャッシュ・保存を変更せず、正規資格または一時資格を既存TrainingManagerへ渡す。各加算直前の判定で期間終了後の無料効果を止め、既存の通常所有者処理へ戻す。基本倍率・他の加算効果・0.5秒周期は変更しない。公開環境はEnabled=trueでも無効。Studio全体のパス効果無効設定と完成済みボードを保持する。[設定・検証限界](../reports/StudioPremiumTreadmillEvent_20261119/REPORT.md)。
+
 ## 2026-11-17 — Y01 Studio固有差分をGitへ保全
 
 副本の既存新Strength表とWorld1 Stage1表記を最新mainへ統合。Level/Strength/進捗と旧形式復元の既存契約、保存・装備・獲得倍率を保持。Dailyは文字化け2か所だけを修正し、報酬/購入/条件は維持。GUI設定を型付きで保全したが再適用していない。未保存Editのまま、実Play/Save/Publishなし。[保全資料・検証・未確認](../reports/Y01StudioPreservation_20261117/REPORT.md)。

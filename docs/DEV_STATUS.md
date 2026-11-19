@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-19 — Studio専用Premium Treadmill無料開放
+
+副本の実設備Diamond01へ、サーバーのIsStudio必須・Play開始から180秒/1800秒周期/86400秒期限の一時利用資格を実装。既存TrainingManagerの加算を共用し、開催中の購入要求を抑止。所有情報・全体のStudioパス無効設定・完成済みボードは保持。反映後Sourceによる隔離Edit模擬292項目、既存回帰245項目。保存なしの実Play隔離を確認できず、実乗車は未確認。未保存Edit、Save/Publishなし。[設定・Full Path・結果・未確認](../reports/StudioPremiumTreadmillEvent_20261119/REPORT.md)。
+
 ## 2026-11-19 — イベントボードの3D／表示調整
 
 副本Editへ既存Instanceの外観だけを反映。全531 Source・対象外22166パーツの記録対象プロパティを保持、正面／斜めの描画と文字収まりを確認。実Play・実機未確認。再適用コードと画像をGitへ記録し、未保存Editで保持。[報告](../reports/EventBoardAppearance_20261119/REPORT.html)。

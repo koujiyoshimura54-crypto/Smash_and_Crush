@@ -4,6 +4,7 @@ local CollectionService=game:GetService("CollectionService")
 local StrengthManager=require(game.ServerScriptService.Services:WaitForChild("StrengthManager"))
 local TreadmillConfig=require(game.ReplicatedStorage.Config:WaitForChild("TreadmillConfig"))
 local GamePass=require(game.ServerScriptService.Services:WaitForChild("GamePassService"))
+local PremiumEvent=require(game.ServerScriptService.Services:WaitForChild("World1PremiumTreadmillEvent"))
 local ItemService=require(game.ServerScriptService.Services:WaitForChild("ItemService"))
 local PotionService=require(game.ServerScriptService.Services:WaitForChild("PotionService"))
 local treadmillFolder=Workspace:WaitForChild("Treadmills")
@@ -160,7 +161,12 @@ function TrainingManager.CanUseTreadmill(player,treadmill)
  if not config or not finitePositive(config.Multiplier) then return false end
  if TreadmillConfig.WorldForModel(treadmill)~=(player:GetAttribute("CurrentWorld") or 1) or not Data.IsLoaded(player) then return false,config end
  if config.PurchaseEnabled==false then return false,config end
- if config.RequiresPremium then return GamePass.AreEffectsEnabled(player) and GamePass.HasPremiumTreadmill(player,TreadmillConfig.WorldForModel(treadmill)),config end
+ if config.RequiresPremium then
+  local owned=GamePass.AreEffectsEnabled(player) and GamePass.HasPremiumTreadmill(player,TreadmillConfig.WorldForModel(treadmill))
+  if owned then return true,config,"Owned" end
+  local temporary=PremiumEvent.IsOpenForTreadmill(treadmill)
+  return temporary,config,temporary and "StudioEvent" or "PremiumRequired"
+ end
  local count=tonumber(player:GetAttribute("RebirthCount")) or 0
  return count>=(config.RequiredRebirth or 0),config
 end
@@ -281,7 +287,7 @@ function TrainingManager.UpdateZoneOccupants()
  for _,player in Players:GetPlayers() do
   local occupiedTreadmill=TrainingManager.GetOccupiedTreadmill(player)
   local config=occupiedTreadmill and TreadmillConfig.GetForModel(occupiedTreadmill)
-  if occupiedTreadmill and config and config.RequiresPremium then
+  if occupiedTreadmill and config and config.RequiresPremium and not PremiumEvent.IsOpenForTreadmill(occupiedTreadmill) then
    local character=player.Character
    local entry=premiumEntries[player]
    if not entry or entry.Character~=character or entry.Treadmill~=occupiedTreadmill then
@@ -290,11 +296,13 @@ function TrainingManager.UpdateZoneOccupants()
     task.spawn(function()
      GamePass.PromptPremiumTreadmill(player,TreadmillConfig.WorldForModel(occupiedTreadmill),function()
       return premiumEntries[player]==entry and player.Character==character
+       and not PremiumEvent.IsOpenForTreadmill(occupiedTreadmill)
        and TrainingManager.GetOccupiedTreadmill(player)==occupiedTreadmill
      end)
     end)
    end
   else
+   -- Re-arm after a free window: a rider who stays gets the normal denied-entry path.
    premiumEntries[player]=nil
   end
   if occupiedTreadmill then TrainingManager.StartTraining(player,occupiedTreadmill)

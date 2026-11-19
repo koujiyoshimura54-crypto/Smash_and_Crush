@@ -4,6 +4,7 @@ local RunService = game:GetService("RunService")
 
 local StudioDebugConfig=require(game.ServerScriptService.Config:WaitForChild("StudioDebugConfig"))
 local Config=require(game.ReplicatedStorage.Config:WaitForChild("WorldPassConfig"))
+local PremiumEvent=require(game.ServerScriptService.Services:WaitForChild("World1PremiumTreadmillEvent"))
 
 local M={}
 -- Ownership remains verified; only benefit application is gated in Studio.
@@ -215,10 +216,16 @@ function M.RefreshPremiumTreadmill(player,world)
  return owned==true,"Verified"
 end
 function M.PromptPremiumTreadmill(player,world,isCurrent)
+ if PremiumEvent.IsOpenForWorld(world) then return false,"StudioEventAccess" end
  if premiumPrompts[player] then return false,"Pending" end
  local lock={PassId=TreadmillConfig.GetPremiumTreadmillPassId(world)}
  premiumPrompts[player]=lock
  local owned,status=M.RefreshPremiumTreadmill(player,world)
+ -- Ownership verification can yield across a window boundary. Check again before prompting.
+ if PremiumEvent.IsOpenForWorld(world) then
+  if premiumPrompts[player]==lock then premiumPrompts[player]=nil end
+  return false,"StudioEventAccess"
+ end
  if owned or status~="Verified" or (isCurrent and not isCurrent()) then
   if premiumPrompts[player]==lock then premiumPrompts[player]=nil end
   return false,owned and "AlreadyOwned" or status~="Verified" and status or "Expired"

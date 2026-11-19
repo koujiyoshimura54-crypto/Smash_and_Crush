@@ -1,3 +1,7 @@
+# 2026-11-19 — Studio専用Premium Treadmillイベント試作
+
+実際のWorld1 Premiumへ期間限定の利用資格を追加。公開環境ではConfigにかかわらず無効。既存0.5秒加算とボーナス合成を維持し、各tickの資格再確認・購入要求の開催開始またぎを処理。ボード・保存・所有情報は変更なし。隔離Edit模擬292＋既存回帰245項目、実Playは未実施。[報告](../reports/StudioPremiumTreadmillEvent_20261119/REPORT.md)。
+
 # 2026-11-19 — 既存イベントボード外観
 
 本体2パーツの黒色・半透明化と指定2行の静的表示を反映。タイマー・無料開放・倍率処理は未実装。[報告](../reports/EventBoardAppearance_20261119/REPORT.html)。
