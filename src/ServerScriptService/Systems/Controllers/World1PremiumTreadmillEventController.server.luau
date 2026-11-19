@@ -1,9 +1,14 @@
--- Output diagnostics only. TrainingManager is the sole existing Strength loop.
+-- Replicate the validated schedule ONCE. No remote requests and no Strength loop.
 local Run=game:GetService("RunService")
-if not Run:IsStudio() or not Run:IsServer() then return end
+if not Run:IsServer() then return end
+local H=game:GetService("HttpService")
+local RS=game:GetService("ReplicatedStorage")
 local Config=require(game.ServerScriptService.Config.World1PremiumTreadmillEventConfig)
-if not Config.LogTransitions then return end
 local Event=require(game.ServerScriptService.Services.World1PremiumTreadmillEvent)
+local state=RS:FindFirstChild("World1PremiumTreadmillEventState")
+if not state then state=Instance.new("StringValue");state.Name="World1PremiumTreadmillEventState";state.Parent=RS end
+state.Value=H:JSONEncode(Event.GetDisplayPlan()) -- Single atomic snapshot, display-only.
+if not Config.LogTransitions then return end
 local last,elapsed=nil,0
 local function report()
  local s=Event.GetStatus()

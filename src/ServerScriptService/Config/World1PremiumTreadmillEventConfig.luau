@@ -1,11 +1,11 @@
--- Development preview ONLY. The server additionally requires IsStudio/IsServer/IsRunning.
--- All durations are seconds from this server's Play start, not player join time.
--- Edit these values before Play; ModuleScript configuration is cached for that Play.
--- No production calendar, ownership write, or global GamePass gate override.
+-- One JST calendar day. Empty/invalid date fails closed in Studio AND production.
+-- YYYY-MM-DD; 00:00 JST inclusive through next 00:00 JST exclusive.
+-- Server configuration is read once at startup. Edit before Play / publishing.
+-- No local test clock, per-player epoch, ownership write, or global pass-gate override.
 return table.freeze({
  Enabled=true,
- StartIntervalSeconds=1800, -- Start-to-start: 3 minutes open, then 27 minutes waiting.
- OpenDurationSeconds=180,
- SessionDurationSeconds=86400, -- Hard cutoff; no new window at exactly 24 hours.
- LogTransitions=true, -- One Output message per state/cycle change, not per frame.
+ EventDateJST="", -- Intentionally unset. Do not insert a trial date here.
+ StartIntervalSeconds=1800, -- Integer seconds, start-to-start (27-minute wait).
+ OpenDurationSeconds=180, -- Integer seconds, clipped at the end of the JST day.
+ LogTransitions=true,
 })

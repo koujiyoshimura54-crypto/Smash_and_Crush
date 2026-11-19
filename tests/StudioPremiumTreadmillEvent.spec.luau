@@ -1,3 +1,4 @@
+-- Public calendar-event integration fixture (legacy filename).
 -- Explicit Edit-mode simulation. No live require, Player, DataStore, Marketplace,
 -- physics, UI or external service calls. The runner supplies exact current sources.
 return function(Sources)
@@ -11,6 +12,7 @@ return function(Sources)
  end
  local now,queue=0,{}
  local eventOffset=0
+ local epoch=DateTime.fromUniversalTime(2040,2,29).UnixTimestamp-32400 -- Fixture ONLY
  local function setEventTime(t) eventOffset=t-now end
  local function resume(co,...)
   local ok,delay=coroutine.resume(co,...);assert(ok,delay)
@@ -61,6 +63,7 @@ return function(Sources)
  local isStudio,isServer,isRunning=true,true,true
  local run={IsStudio=function()return isStudio end,IsServer=function()return isServer end,IsRunning=function()return isRunning end}
  local ws=node("Workspace");node("Workspace.Treadmills")
+ function ws:GetServerTimeNow() return epoch+now+eventOffset end
  local collection={HasTag=function(_,m)return m.Tagged==true end}
  local services={Players=players,MarketplaceService=market,RunService=run,Workspace=ws,CollectionService=collection,
   ReplicatedStorage=node("ReplicatedStorage"),ServerScriptService=node("ServerScriptService")}
@@ -90,7 +93,7 @@ return function(Sources)
    assert=assert,error=error,pcall=pcall,xpcall=xpcall,type=type,tonumber=tonumber,tostring=tostring,
    pairs=pairs,ipairs=ipairs,next=next,select=select,rawget=rawget,rawset=rawset,
    setmetatable=setmetatable,getmetatable=getmetatable,math=math,table=table,string=string,
-   Enum=Enum,Vector3=Vector3,Vector2=Vector2,Color3=Color3,CFrame=CFrame,UDim2=UDim2,UDim=UDim,
+   DateTime=DateTime,Enum=Enum,Vector3=Vector3,Vector2=Vector2,Color3=Color3,CFrame=CFrame,UDim2=UDim2,UDim=UDim,
    NumberSequence=NumberSequence,NumberSequenceKeypoint=NumberSequenceKeypoint,NumberRange=NumberRange,
    ColorSequence=ColorSequence,ColorSequenceKeypoint=ColorSequenceKeypoint,
   }})
@@ -126,7 +129,9 @@ return function(Sources)
  local eventConfigPath="ServerScriptService.Config.World1PremiumTreadmillEventConfig"
  local eventPath="ServerScriptService.Services.World1PremiumTreadmillEvent"
  local eventConfig=table.clone(runSource(eventConfigPath,Sources[eventConfigPath]))
- mockModules[eventConfigPath]=eventConfig -- Fixture-local copy; no live Config edits.
+ check(eventConfig.EventDateJST=="" and eventConfig.Enabled and eventConfig.StartIntervalSeconds==1800 and eventConfig.OpenDurationSeconds==180,"final unset date and defaults")
+ eventConfig.EventDateJST="2040-02-29" -- Fixture-local date only.
+ mockModules[eventConfigPath]=eventConfig
  local event=loadModule(eventPath)
  local pass=loadModule("ServerScriptService.Services.GamePassService")
  local strength=loadModule("ServerScriptService.Services.StrengthManager")
@@ -140,26 +145,18 @@ return function(Sources)
  local auto=loadModule("ServerScriptService.Services.AutoTapService")
 
  local schedule=loadModule("ServerScriptService.Services.World1PremiumTreadmillEventSchedule")
- check(eventConfig.Enabled and eventConfig.StartIntervalSeconds==1800 and eventConfig.OpenDurationSeconds==180 and eventConfig.SessionDurationSeconds==86400,"final prototype values")
+ local plan=schedule.Compile(eventConfig)
  for cycle=0,47 do
-  local start=cycle*1800
-  check(schedule.At(eventConfig,true,start).Open,"open at start "..cycle)
-  check(schedule.At(eventConfig,true,start+179.999).Open,"open before end "..cycle)
-  check(schedule.At(eventConfig,true,start+180).State=="Waiting","closed exactly at end "..cycle)
-  check(not schedule.At(eventConfig,true,start+1799.999).Open,"27-minute wait "..cycle)
+  local start=epoch+cycle*1800
+  check(schedule.At(plan,start).Open,"open at absolute start "..cycle)
+  check(schedule.At(plan,start+179.999).Open,"open before end "..cycle)
+  check(schedule.At(plan,start+180).State=="Waiting","closed exactly at end "..cycle)
+  check(not schedule.At(plan,start+1799.999).Open,"wait "..cycle)
  end
- check(schedule.At(eventConfig,true,86400).State=="Ended","hard cutoff")
- check(schedule.At(eventConfig,true,90000).State=="Ended","no next-day reopening")
- near(schedule.At(eventConfig,true,179.9).RemainingSeconds,.1,"fractional remaining")
- check(schedule.At(eventConfig,true,86399).NextStartAt==nil,"no next start after cutoff")
- check(not schedule.At(eventConfig,false,0).Open,"non-Studio guard")
- for _,bad in {0,-1,math.huge,0/0,"180"} do
-  local c=table.clone(eventConfig);c.OpenDurationSeconds=bad
-  check(not schedule.At(c,true,0).Open,"invalid config fail closed")
- end
- local bad=table.clone(eventConfig);bad.OpenDurationSeconds=1801
- check(not schedule.At(bad,true,0).Open,"duration exceeds period")
- for _,t in {-1,math.huge,0/0,"0"} do check(not schedule.At(eventConfig,true,t).Open,"invalid time fail closed") end
+ check(schedule.At(plan,epoch-0.001).State=="Before","before JST midnight")
+ check(schedule.At(plan,epoch+86400).State=="Ended","JST day cutoff")
+ near(schedule.At(plan,epoch+179.9).RemainingSeconds,.1,"fractional remaining")
+ check(schedule.At(plan,epoch+86399).NextStartAt==nil,"no next-day session")
  local tc=loadModule("ReplicatedStorage.Config.TreadmillConfig")
  local tr=loadModule("ReplicatedStorage.Config.TrainingConfig")
  local function machine(path)
@@ -186,7 +183,7 @@ return function(Sources)
  occupied[p]=premium
  training.UpdateZoneOccupants();training.UpdateAvailability()
  local allowed,_,why=training.CanUseTreadmill(p,premium)
- check(allowed and why=="StudioEvent","unowned usable from first open window")
+ check(allowed and why=="Event","unowned usable from first open window")
  check(p:GetAttribute("TreadmillAvailable_Diamond01")==true,"existing availability UI mirror")
  check(p:GetAttribute("IsTraining")==true and training.GetActiveSessionCount()==1,"one existing loop")
  for _=1,10 do training.UpdateZoneOccupants() end
@@ -265,14 +262,26 @@ return function(Sources)
  training.StartTraining(p,premium)
  near(tick(p),16*2*(7+20+1+1)*1.5*1.1*1.25,"no new cap");training.StopTraining(p)
  -- Status/authorization guards are real service code, not client attributes.
- for _,kind in {"ConfigOff","NotStudio","Client","NotRunning","WholeEventEnded"} do
-  eventConfig.Enabled=kind~="ConfigOff";isStudio=kind~="NotStudio";isServer=kind~="Client";isRunning=kind~="NotRunning"
+ for _,kind in {"Client","NotRunning","WholeEventEnded"} do
+  isServer=kind~="Client";isRunning=kind~="NotRunning"
   setEventTime(kind=="WholeEventEnded" and 86400 or 0)
-  p:SetAttribute("StudioPremiumEventOpen",true);p:SetAttribute("HasPremiumTreadmill",true)
+  p:SetAttribute("PremiumEventOpen",true);p:SetAttribute("HasPremiumTreadmill",true)
   check(not event.GetStatus().Open and not training.CanUseTreadmill(p,premium),kind.." cannot grant")
  end
- eventConfig.Enabled=true;isStudio=true;isServer=true;isRunning=true;setEventTime(0)
- check(training.CanUseTreadmill(p,premium),"new Play elapsed zero starts new session")
+ isStudio=false;isServer=true;isRunning=true;setEventTime(1900)
+ check(training.CanUseTreadmill(p,premium),"production server can grant free access")
+ local laterServer=runSource(eventPath,Sources[eventPath])
+ near(laterServer.GetStatus().RemainingSeconds,80,"different server startup uses same absolute clock")
+ local display=event.GetDisplayPlan();display.StartUnixSeconds=0;display.Valid=false
+ check(event.GetStatus().Open,"display plan mutation cannot change authorization")
+ for _,kind in {"Off","Unset","Invalid"} do
+  local c=table.clone(eventConfig);c.Enabled=kind~="Off"
+  c.EventDateJST=kind=="Unset" and "" or kind=="Invalid" and "2040-02-30" or c.EventDateJST
+  mockModules[eventConfigPath]=c
+  local disabledEvent=runSource(eventPath,Sources[eventPath])
+  check(not disabledEvent.GetStatus().Open,"fresh server disabled: "..kind)
+ end
+ mockModules[eventConfigPath]=eventConfig;isStudio=true;setEventTime(0)
  debugConfig.GamePassEffectsEnabled=false;setEventTime(200)
  ownership[p.UserId][1982996954]=true;pass.RefreshPremiumTreadmill(p,1)
  check(not training.CanUseTreadmill(p,premium),"existing Studio effects OFF still enforced outside free window")
@@ -282,7 +291,7 @@ return function(Sources)
  ownershipHook=function()setEventTime(1800)end
  local ok,reason=pass.PromptPremiumTreadmill(p,1,function()return true end)
  ownershipHook=nil
- check(not ok and reason=="StudioEventAccess" and #prompts==savedPrompts,"ownership yield boundary no prompt")
+ check(not ok and reason=="EventAccess" and #prompts==savedPrompts,"ownership yield boundary no prompt")
  setEventTime(200)
  check(pass.PromptPremiumTreadmill(p,1,function()return true end),"suppressed pending lock released")
  market.PromptGamePassPurchaseFinished:Fire(p,1982996954,false)
@@ -306,8 +315,6 @@ return function(Sources)
  check(training.StartTraining(p,premium),"re-entry after valid conditions")
  p:SetAttribute("CurrentWorld",2);near(tick(p),0,"World exit rejects next award")
  check(training.GetActiveSessionCount()==0,"World exit session removed");p:SetAttribute("CurrentWorld",1)
- local short=table.clone(eventConfig);short.SessionDurationSeconds=90
- check(schedule.At(short,true,89.999).Open and schedule.At(short,true,90).State=="Ended","total cutoff truncates an open window")
  -- World2's purchase route is unchanged even while the World1 event is open.
  occupied[p]=machines[4];p:SetAttribute("CurrentWorld",2)
  local previousPrompts=#prompts
@@ -319,7 +326,7 @@ return function(Sources)
  training.StopTraining(p);for _,who in playerList do players.PlayerRemoving:Fire(who);who.Parent=nil end
  advance(5);check(#queue==0,"training workers drained")
  results.LiveExternalCalls=0;results.PurchasePromptsAreMocked=#prompts
- results.ConfigAtEnd={Enabled=eventConfig.Enabled,StartIntervalSeconds=eventConfig.StartIntervalSeconds,OpenDurationSeconds=eventConfig.OpenDurationSeconds,SessionDurationSeconds=eventConfig.SessionDurationSeconds}
+ results.ConfigAtEnd={Enabled=eventConfig.Enabled,StartIntervalSeconds=eventConfig.StartIntervalSeconds,OpenDurationSeconds=eventConfig.OpenDurationSeconds,FixtureDateJST=eventConfig.EventDateJST}
  results.Grounding="Mocked occupancy; NOT physical Play verification"
  results.MemoryUpdate="Exact current AddStrengthGain/RecordStrengthGain + LevelProgression in memory only"
  return results

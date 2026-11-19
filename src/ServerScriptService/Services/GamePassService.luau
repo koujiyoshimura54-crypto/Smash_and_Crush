@@ -216,7 +216,7 @@ function M.RefreshPremiumTreadmill(player,world)
  return owned==true,"Verified"
 end
 function M.PromptPremiumTreadmill(player,world,isCurrent)
- if PremiumEvent.IsOpenForWorld(world) then return false,"StudioEventAccess" end
+ if PremiumEvent.IsOpenForWorld(world) then return false,"EventAccess" end
  if premiumPrompts[player] then return false,"Pending" end
  local lock={PassId=TreadmillConfig.GetPremiumTreadmillPassId(world)}
  premiumPrompts[player]=lock
@@ -224,7 +224,7 @@ function M.PromptPremiumTreadmill(player,world,isCurrent)
  -- Ownership verification can yield across a window boundary. Check again before prompting.
  if PremiumEvent.IsOpenForWorld(world) then
   if premiumPrompts[player]==lock then premiumPrompts[player]=nil end
-  return false,"StudioEventAccess"
+  return false,"EventAccess"
  end
  if owned or status~="Verified" or (isCurrent and not isCurrent()) then
   if premiumPrompts[player]==lock then premiumPrompts[player]=nil end

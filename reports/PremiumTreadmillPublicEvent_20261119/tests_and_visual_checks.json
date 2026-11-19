@@ -1,0 +1,309 @@
+{
+  "Scope": "Current applied Studio Source; no live game service require, real Player, DataStore, purchase or Analytics",
+  "RealPlay": false,
+  "Integration": {
+    "LiveExternalCalls": 0,
+    "Kind": "Edit isolated simulation (not Play)",
+    "Grounding": "Mocked occupancy; NOT physical Play verification",
+    "ConfigAtEnd": {
+      "Enabled": true,
+      "FixtureDateJST": "2040-02-29",
+      "StartIntervalSeconds": 1800,
+      "OpenDurationSeconds": 180
+    },
+    "PurchasePromptsAreMocked": 3,
+    "Gains": [
+      {
+        "Delta": 7,
+        "Case": "Free; Studio effects OFF"
+      },
+      {
+        "StrengthPass": false,
+        "Delta": 660,
+        "Case": "Free combined"
+      },
+      {
+        "StrengthPass": false,
+        "Delta": 660,
+        "Case": "Owned combined"
+      },
+      {
+        "StrengthPass": true,
+        "Delta": 726,
+        "Case": "Free combined"
+      },
+      {
+        "StrengthPass": true,
+        "Delta": 726,
+        "Case": "Owned combined"
+      }
+    ],
+    "Assertions": 283,
+    "MemoryUpdate": "Exact current AddStrengthGain/RecordStrengthGain + LevelProgression in memory only"
+  },
+  "EventOffRegression": {
+    "SimulatedPurchasePrompts": 3,
+    "LiveExternalCalls": 0,
+    "MarketplaceCalls": 44,
+    "Gains": [
+      {
+        "Owned": false,
+        "Delta": 1,
+        "Case": "Walking"
+      },
+      {
+        "Owned": false,
+        "Delta": 1,
+        "Case": "Manual"
+      },
+      {
+        "Owned": false,
+        "Tick": 1,
+        "Delta": 1,
+        "Case": "Workspace.Treadmills.Normal01"
+      },
+      {
+        "Owned": false,
+        "Tick": 2,
+        "Delta": 1,
+        "Case": "Workspace.Treadmills.Normal01"
+      },
+      {
+        "Owned": false,
+        "Tick": 3,
+        "Delta": 1,
+        "Case": "Workspace.Treadmills.Normal01"
+      },
+      {
+        "Owned": false,
+        "Tick": 1,
+        "Delta": 7,
+        "Case": "Workspace.Treadmills.Diamond01"
+      },
+      {
+        "Owned": false,
+        "Tick": 2,
+        "Delta": 7,
+        "Case": "Workspace.Treadmills.Diamond01"
+      },
+      {
+        "Owned": false,
+        "Tick": 3,
+        "Delta": 7,
+        "Case": "Workspace.Treadmills.Diamond01"
+      },
+      {
+        "Owned": false,
+        "Tick": 1,
+        "Delta": 5,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01"
+      },
+      {
+        "Owned": false,
+        "Tick": 2,
+        "Delta": 5,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01"
+      },
+      {
+        "Owned": false,
+        "Tick": 3,
+        "Delta": 5,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01"
+      },
+      {
+        "Owned": false,
+        "Tick": 1,
+        "Delta": 15,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07"
+      },
+      {
+        "Owned": false,
+        "Tick": 2,
+        "Delta": 15,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07"
+      },
+      {
+        "Owned": false,
+        "Tick": 3,
+        "Delta": 15,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07"
+      },
+      {
+        "Owned": true,
+        "Delta": 2,
+        "Case": "Walking"
+      },
+      {
+        "Owned": true,
+        "Delta": 2,
+        "Case": "Manual"
+      },
+      {
+        "Owned": true,
+        "Tick": 1,
+        "Delta": 2,
+        "Case": "Workspace.Treadmills.Normal01"
+      },
+      {
+        "Owned": true,
+        "Tick": 2,
+        "Delta": 2,
+        "Case": "Workspace.Treadmills.Normal01"
+      },
+      {
+        "Owned": true,
+        "Tick": 3,
+        "Delta": 2,
+        "Case": "Workspace.Treadmills.Normal01"
+      },
+      {
+        "Owned": true,
+        "Tick": 1,
+        "Delta": 8,
+        "Case": "Workspace.Treadmills.Diamond01"
+      },
+      {
+        "Owned": true,
+        "Tick": 2,
+        "Delta": 8,
+        "Case": "Workspace.Treadmills.Diamond01"
+      },
+      {
+        "Owned": true,
+        "Tick": 3,
+        "Delta": 8,
+        "Case": "Workspace.Treadmills.Diamond01"
+      },
+      {
+        "Owned": true,
+        "Tick": 1,
+        "Delta": 6,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01"
+      },
+      {
+        "Owned": true,
+        "Tick": 2,
+        "Delta": 6,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01"
+      },
+      {
+        "Owned": true,
+        "Tick": 3,
+        "Delta": 6,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.01"
+      },
+      {
+        "Owned": true,
+        "Tick": 1,
+        "Delta": 16,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07"
+      },
+      {
+        "Owned": true,
+        "Tick": 2,
+        "Delta": 16,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07"
+      },
+      {
+        "Owned": true,
+        "Tick": 3,
+        "Delta": 16,
+        "Case": "Workspace.World2Map.TrainingArea.TreadmillDisplays.07"
+      },
+      {
+        "Owned": false,
+        "Delta": 660,
+        "Case": "W1Premium combined"
+      },
+      {
+        "Owned": true,
+        "Delta": 726,
+        "Case": "W1Premium combined"
+      }
+    ],
+    "Assertions": 245,
+    "Kind": "Edit isolated simulation (not Play)"
+  },
+  "Calendar": {
+    "UTCStart": "2040-02-28T15:00:00Z",
+    "Kind": "Pure absolute-time schedule simulation",
+    "Assertions": 70,
+    "FixtureDate": "2040-02-29"
+  },
+  "NativeGuiAndClientFixture": {
+    "RefreshSeconds": 0.1,
+    "TextChangesFor20UnchangedUpdates": 0,
+    "Kind": "Native Edit GUI + client lifecycle simulation (not Play)",
+    "Assertions": 32,
+    "InstanceCount": 15
+  },
+  "RenderedEditChecks": {
+    "Views": [
+      "PC front Open",
+      "PC oblique Open",
+      "iPhone 17 Pro landscape Open",
+      "iPhone 17 Pro landscape Waiting",
+      "iPhone 17 Pro close equipment Open"
+    ],
+    "DevicePreset": {
+      "Name": "iPhone 17 Pro",
+      "Resolution": [
+        874,
+        402
+      ],
+      "ObservedViewport": [
+        749,
+        381
+      ]
+    },
+    "TextFits": [
+      {
+        "Label": "Event1",
+        "Text": "Premium Treadmill",
+        "TextSize": 60,
+        "Bounds": [
+          456,
+          60
+        ],
+        "Area": [
+          658,
+          80.63999938964844
+        ],
+        "Fits": true
+      },
+      {
+        "Label": "Event2",
+        "Text": "Free",
+        "TextSize": 100,
+        "Bounds": [
+          180,
+          100
+        ],
+        "Area": [
+          658,
+          109.44000244140625
+        ],
+        "Fits": true
+      },
+      {
+        "Label": "Event3",
+        "Text": "Now! 02:59",
+        "TextSize": 52,
+        "Bounds": [
+          227,
+          52
+        ],
+        "Area": [
+          658,
+          63.36000061035156
+        ],
+        "Fits": true
+      }
+    ],
+    "InitialStrokeSizingMode": "ScaledSize",
+    "FinalStrokeSizingMode": "FixedSize",
+    "Findings": "3 rows legible and uncut in inspected views; red Free largest; open yellow / waiting white; overhead above existing x7 Strength. One farther view was occluded by existing foreground geometry; closer angle was readable. AlwaysOnTop remains false.",
+    "Screenshots": "Inspected temporary captures only; not retained per AGENTS.md.",
+    "Limit": "Edit rendering under a fixture timestamp; not real gameplay, replication, mobile hardware or FPS verification"
+  }
+}

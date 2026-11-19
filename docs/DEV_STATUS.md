@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-19 — Premiumイベントを公開日時方式へ更新
+
+副本Editへ絶対時計/JST指定日・既存3段ボード・設備上空タイマーを反映。日付は空欄で、無料開放/表示は無効。11 Sourceの一致、既存設備/ボード位置保持、PC/スマホ相当Edit描画を確認。境界70、加算経路283、既存回帰245、GUI/接続32の隔離確認。保存なしの安全な実Play経路は確認できず、実乗車・公開・本番検証は未実施。試験表示と端末/HUD設定を復元、Save/Publishなし。[設定・未確認・引き渡し](../reports/PremiumTreadmillPublicEvent_20261119/REPORT.md)。
+
 ## 2026-11-19 — Studio専用Premium Treadmill無料開放
 
 副本の実設備Diamond01へ、サーバーのIsStudio必須・Play開始から180秒/1800秒周期/86400秒期限の一時利用資格を実装。既存TrainingManagerの加算を共用し、開催中の購入要求を抑止。所有情報・全体のStudioパス無効設定・完成済みボードは保持。反映後Sourceによる隔離Edit模擬292項目、既存回帰245項目。保存なしの実Play隔離を確認できず、実乗車は未確認。未保存Edit、Save/Publishなし。[設定・Full Path・結果・未確認](../reports/StudioPremiumTreadmillEvent_20261119/REPORT.md)。

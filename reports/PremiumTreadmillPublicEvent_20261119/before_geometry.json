@@ -1,0 +1,844 @@
+{
+  "Treadmill": [
+    {
+      "Path": "Workspace.Treadmills.Diamond01",
+      "Attributes": [],
+      "Class": "Model"
+    },
+    {
+      "Enabled": true,
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui",
+      "Adornee": {
+        "Path": "Workspace.Treadmills.Diamond01.1",
+        "Type": "Instance"
+      },
+      "Class": "BillboardGui",
+      "MaxDistance": {
+        "m": null,
+        "t": "numeric",
+        "v": "inf"
+      },
+      "Attributes": [],
+      "StudsOffsetWorldSpace": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Vector3"
+      },
+      "Size": {
+        "Values": [
+          16,
+          0,
+          6,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "AlwaysOnTop": false,
+      "StudsOffset": {
+        "Values": [
+          0,
+          7,
+          0
+        ],
+        "Type": "Vector3"
+      }
+    },
+    {
+      "VerticalAlignment": {
+        "Value": "Enum.VerticalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.UIListLayout",
+      "Attributes": [],
+      "SortOrder": {
+        "Value": "Enum.SortOrder.LayoutOrder",
+        "Type": "EnumItem"
+      },
+      "Class": "UIListLayout",
+      "HorizontalAlignment": {
+        "Value": "Enum.HorizontalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "Padding": {
+        "Values": [
+          0.05999999865889549,
+          0
+        ],
+        "Type": "UDim"
+      }
+    },
+    {
+      "Visible": true,
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Rebirth",
+      "Class": "Frame",
+      "AnchorPoint": {
+        "Values": [
+          0,
+          0
+        ],
+        "Type": "Vector2"
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Values": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "LayoutOrder": 1,
+      "Attributes": [],
+      "Size": {
+        "Values": [
+          0.6000000238418579,
+          0,
+          0.41999998688697815,
+          0
+        ],
+        "Type": "UDim2"
+      }
+    },
+    {
+      "Visible": true,
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Rebirth.Icon",
+      "Class": "ImageLabel",
+      "AnchorPoint": {
+        "Values": [
+          0,
+          0
+        ],
+        "Type": "Vector2"
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Values": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "LayoutOrder": 1,
+      "Attributes": [],
+      "Size": {
+        "Values": [
+          0.26249998807907104,
+          0,
+          1,
+          0
+        ],
+        "Type": "UDim2"
+      }
+    },
+    {
+      "LayoutOrder": 2,
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Rebirth.Amount",
+      "TextStrokeColor3": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "TextLabel",
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Values": [
+          0,
+          0
+        ],
+        "Type": "Vector2"
+      },
+      "Attributes": [],
+      "TextSize": 14,
+      "Size": {
+        "Values": [
+          0.7024999856948853,
+          0,
+          1,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "RichText": false,
+      "AutoLocalize": false,
+      "TextColor3": {
+        "Values": [
+          1,
+          1,
+          1
+        ],
+        "Type": "Color3"
+      },
+      "Text": "Premium",
+      "AbsoluteSize": {
+        "Values": [
+          0,
+          0
+        ],
+        "Type": "Vector2"
+      },
+      "TextFits": false,
+      "TextBounds": {
+        "Values": [
+          49.65691375732422,
+          14.107077598571777
+        ],
+        "Type": "Vector2"
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Values": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Regular"
+      },
+      "Visible": true,
+      "TextScaled": true,
+      "TextTransparency": 0
+    },
+    {
+      "Thickness": 0.05000000074505806,
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Rebirth.Amount.UIStroke",
+      "Attributes": [],
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "UIStroke",
+      "Enabled": true,
+      "Transparency": 0
+    },
+    {
+      "VerticalAlignment": {
+        "Value": "Enum.VerticalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Rebirth.UIListLayout",
+      "Attributes": [],
+      "SortOrder": {
+        "Value": "Enum.SortOrder.LayoutOrder",
+        "Type": "EnumItem"
+      },
+      "Class": "UIListLayout",
+      "HorizontalAlignment": {
+        "Value": "Enum.HorizontalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "Padding": {
+        "Values": [
+          0.03500000014901161,
+          0
+        ],
+        "Type": "UDim"
+      }
+    },
+    {
+      "LayoutOrder": 2,
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Multiplier",
+      "TextStrokeColor3": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "TextLabel",
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Values": [
+          0,
+          0
+        ],
+        "Type": "Vector2"
+      },
+      "Attributes": [],
+      "TextSize": 14,
+      "Size": {
+        "Values": [
+          0.9399999976158142,
+          0,
+          0.41999998688697815,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "RichText": false,
+      "AutoLocalize": false,
+      "TextColor3": {
+        "Values": [
+          1,
+          1,
+          1
+        ],
+        "Type": "Color3"
+      },
+      "Text": "×7 Strength",
+      "AbsoluteSize": {
+        "Values": [
+          0,
+          0
+        ],
+        "Type": "Vector2"
+      },
+      "TextFits": false,
+      "TextBounds": {
+        "Values": [
+          85.32215881347656,
+          18.71099853515625
+        ],
+        "Type": "Vector2"
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Values": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Regular"
+      },
+      "Visible": true,
+      "TextScaled": true,
+      "TextTransparency": 0
+    },
+    {
+      "Thickness": 0.05000000074505806,
+      "Path": "Workspace.Treadmills.Diamond01.BillboardGui.Multiplier.UIStroke",
+      "Attributes": [],
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "UIStroke",
+      "Enabled": true,
+      "Transparency": 0
+    },
+    {
+      "Path": "Workspace.Treadmills.Diamond01.Area",
+      "CanQuery": true,
+      "CanCollide": false,
+      "Color": {
+        "Values": [
+          0.6392157077789307,
+          0.6352941393852234,
+          0.6470588445663452
+        ],
+        "Type": "Color3"
+      },
+      "CFrame": {
+        "Values": [
+          341.22320556640625,
+          12.00000286102295,
+          -38.998008728027344,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "Type": "CFrame"
+      },
+      "CanTouch": true,
+      "Transparency": 1,
+      "Attributes": [],
+      "Anchored": true,
+      "Class": "Part",
+      "Size": {
+        "Values": [
+          9.470621109008789,
+          15,
+          16.31039047241211
+        ],
+        "Type": "Vector3"
+      }
+    }
+  ],
+  "StreamingEnabled": true,
+  "Board": [
+    {
+      "Path": "Workspace.EventBoard",
+      "Attributes": {
+        "DisplayEventName": "Free Premium Treadmill"
+      },
+      "Class": "Model"
+    },
+    {
+      "Path": "Workspace.EventBoard.Board",
+      "CanQuery": true,
+      "CanCollide": true,
+      "Color": {
+        "Values": [
+          0.0941176488995552,
+          0.0941176488995552,
+          0.0941176488995552
+        ],
+        "Type": "Color3"
+      },
+      "CFrame": {
+        "Values": [
+          288.7409362792969,
+          31.21864128112793,
+          80.93699645996094,
+          -1,
+          0,
+          -8.742277657347586e-8,
+          1.5180791734792365e-8,
+          0.9848065376281738,
+          -0.17364798486232758,
+          8.609453061581007e-8,
+          -0.17364798486232758,
+          -0.9848065376281738
+        ],
+        "Type": "CFrame"
+      },
+      "CanTouch": true,
+      "Transparency": 0.5,
+      "Attributes": [],
+      "Anchored": true,
+      "Class": "Part",
+      "Size": {
+        "Values": [
+          28,
+          12,
+          0.5
+        ],
+        "Type": "Vector3"
+      }
+    },
+    {
+      "Path": "Workspace.EventBoard.Board.Texture",
+      "Attributes": [],
+      "Class": "Texture",
+      "Transparency": 1,
+      "Texture": "rbxassetid://6372755229"
+    },
+    {
+      "Enabled": true,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui",
+      "Face": {
+        "Value": "Enum.NormalId.Back",
+        "Type": "EnumItem"
+      },
+      "LightInfluence": 0,
+      "SizingMode": {
+        "Value": "Enum.SurfaceGuiSizingMode.PixelsPerStud",
+        "Type": "EnumItem"
+      },
+      "Attributes": [],
+      "MaxDistance": 1000,
+      "Class": "SurfaceGui",
+      "PixelsPerStud": 25,
+      "AlwaysOnTop": false,
+      "CanvasSize": {
+        "Values": [
+          800,
+          600
+        ],
+        "Type": "Vector2"
+      }
+    },
+    {
+      "LayoutOrder": 1,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "TextStrokeColor3": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "TextLabel",
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Values": [
+          0.5,
+          0.5
+        ],
+        "Type": "Vector2"
+      },
+      "Attributes": [],
+      "TextSize": 48,
+      "Size": {
+        "Values": [
+          0.8999999761581421,
+          0,
+          0.30000001192092896,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "RichText": true,
+      "AutoLocalize": false,
+      "TextColor3": {
+        "Values": [
+          1,
+          1,
+          1
+        ],
+        "Type": "Color3"
+      },
+      "Text": "<font color=\"#FFE066\">FREE</font> PREMIUM TREADMILL",
+      "AbsoluteSize": {
+        "Values": [
+          630,
+          90
+        ],
+        "Type": "Vector2"
+      },
+      "TextFits": true,
+      "TextBounds": {
+        "Values": [
+          546,
+          48
+        ],
+        "Type": "Vector2"
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Values": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Regular"
+      },
+      "Visible": true,
+      "TextScaled": false,
+      "TextTransparency": 0
+    },
+    {
+      "Thickness": 0.05000000074505806,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1.UIStroke",
+      "Attributes": [],
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "UIStroke",
+      "Enabled": true,
+      "Transparency": 0
+    },
+    {
+      "VerticalAlignment": {
+        "Value": "Enum.VerticalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.UIListLayout",
+      "Attributes": [],
+      "SortOrder": {
+        "Value": "Enum.SortOrder.LayoutOrder",
+        "Type": "EnumItem"
+      },
+      "Class": "UIListLayout",
+      "HorizontalAlignment": {
+        "Value": "Enum.HorizontalAlignment.Center",
+        "Type": "EnumItem"
+      },
+      "Padding": {
+        "Values": [
+          0.03999999910593033,
+          0
+        ],
+        "Type": "UDim"
+      }
+    },
+    {
+      "LayoutOrder": 2,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "TextStrokeColor3": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "TextLabel",
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Values": [
+          0.5,
+          0.5
+        ],
+        "Type": "Vector2"
+      },
+      "Attributes": [],
+      "TextSize": 40,
+      "Size": {
+        "Values": [
+          0.8999999761581421,
+          0,
+          0.20000000298023224,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "RichText": false,
+      "AutoLocalize": false,
+      "TextColor3": {
+        "Values": [
+          1,
+          1,
+          1
+        ],
+        "Type": "Color3"
+      },
+      "Text": "3 MINUTES EVERY 30 MINUTES",
+      "AbsoluteSize": {
+        "Values": [
+          630,
+          60
+        ],
+        "Type": "Vector2"
+      },
+      "TextFits": true,
+      "TextBounds": {
+        "Values": [
+          522,
+          40
+        ],
+        "Type": "Vector2"
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Values": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/FredokaOne.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Regular"
+      },
+      "Visible": true,
+      "TextScaled": false,
+      "TextTransparency": 0
+    },
+    {
+      "Thickness": 0.05000000074505806,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2.UIStroke",
+      "Attributes": [],
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "UIStroke",
+      "Enabled": true,
+      "Transparency": 0
+    },
+    {
+      "LayoutOrder": 3,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event3",
+      "TextStrokeColor3": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "TextLabel",
+      "TextStrokeTransparency": 1,
+      "AnchorPoint": {
+        "Values": [
+          0.5,
+          0.5
+        ],
+        "Type": "Vector2"
+      },
+      "Attributes": [],
+      "TextSize": 14,
+      "Size": {
+        "Values": [
+          0.949999988079071,
+          0,
+          0.22499999403953552,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "RichText": true,
+      "AutoLocalize": true,
+      "TextColor3": {
+        "Values": [
+          1,
+          1,
+          1
+        ],
+        "Type": "Color3"
+      },
+      "Text": "",
+      "AbsoluteSize": {
+        "Values": [
+          0,
+          0
+        ],
+        "Type": "Vector2"
+      },
+      "TextFits": false,
+      "TextBounds": {
+        "Values": [
+          0,
+          0
+        ],
+        "Type": "Vector2"
+      },
+      "BackgroundTransparency": 1,
+      "Position": {
+        "Values": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "Type": "UDim2"
+      },
+      "FontFace": {
+        "Family": "rbxasset://fonts/families/LegacyArial.json",
+        "Type": "Font",
+        "Style": "Enum.FontStyle.Normal",
+        "Weight": "Enum.FontWeight.Regular"
+      },
+      "Visible": false,
+      "TextScaled": true,
+      "TextTransparency": 0
+    },
+    {
+      "Thickness": 0.05000000074505806,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event3.UIStroke",
+      "Attributes": [],
+      "ApplyStrokeMode": {
+        "Value": "Enum.ApplyStrokeMode.Contextual",
+        "Type": "EnumItem"
+      },
+      "Color": {
+        "Values": [
+          0,
+          0,
+          0
+        ],
+        "Type": "Color3"
+      },
+      "Class": "UIStroke",
+      "Enabled": true,
+      "Transparency": 0
+    },
+    {
+      "Path": "Workspace.EventBoard.Part",
+      "CanQuery": true,
+      "CanCollide": true,
+      "Color": {
+        "Values": [
+          0.0941176488995552,
+          0.0941176488995552,
+          0.0941176488995552
+        ],
+        "Type": "Color3"
+      },
+      "CFrame": {
+        "Values": [
+          288.7409362792969,
+          31.294979095458984,
+          81.36993408203125,
+          -1,
+          0,
+          -8.742277657347586e-8,
+          1.5180791734792365e-8,
+          0.9848065376281738,
+          -0.17364798486232758,
+          8.609453061581007e-8,
+          -0.17364798486232758,
+          -0.9848065376281738
+        ],
+        "Type": "CFrame"
+      },
+      "CanTouch": true,
+      "Transparency": 0.5,
+      "Attributes": [],
+      "Anchored": true,
+      "Class": "Part",
+      "Size": {
+        "Values": [
+          30,
+          14,
+          1
+        ],
+        "Type": "Vector3"
+      }
+    }
+  ]
+}

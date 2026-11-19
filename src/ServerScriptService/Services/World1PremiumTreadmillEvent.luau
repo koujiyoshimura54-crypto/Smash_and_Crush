@@ -1,13 +1,15 @@
--- Server-only temporary access. Never changes ownership, cached passes or saved data.
+-- Server-owned plan. The replicated display snapshot is never read for authorization.
 local Run=game:GetService("RunService")
 local Workspace=game:GetService("Workspace")
 local Config=require(game.ServerScriptService.Config.World1PremiumTreadmillEventConfig)
 local Schedule=require(script.Parent.World1PremiumTreadmillEventSchedule)
+local Plan=table.freeze(Schedule.Compile(Config))
 local M={}
+function M.GetDisplayPlan() return table.clone(Plan) end
 function M.GetStatus()
- -- time() is the current game session's elapsed time. Do not subtract require/join time.
- -- Always evaluate here: cached diagnostics/client attributes never authorize a tick.
- return Schedule.At(Config,Run:IsServer() and Run:IsStudio() and Run:IsRunning(),time())
+ if not Run:IsServer() or not Run:IsRunning() then return Schedule.At(nil,0) end
+ -- Same absolute time domain in every server and in synchronized client rendering.
+ return Schedule.At(Plan,Workspace:GetServerTimeNow())
 end
 function M.IsOpenForWorld(world)
  return world==1 and M.GetStatus().Open==true
@@ -19,7 +21,7 @@ function M.IsOpenForTreadmill(treadmill)
 end
 function M.Describe()
  local s=M.GetStatus()
- return ("[StudioPremiumTreadmillEvent] %s; remaining=%.1fs; elapsed=%.1fs; nextStart=%s; reason=%s")
-  :format(s.State,s.RemainingSeconds,s.ElapsedSeconds or 0,tostring(s.NextStartAt),s.Reason or "-")
+ return ("[PremiumTreadmillEvent] %s; remaining=%s; nextStart=%s; reason=%s")
+  :format(s.State,tostring(s.RemainingSeconds),tostring(s.NextStartAt),s.Reason or "-")
 end
 return table.freeze(M)

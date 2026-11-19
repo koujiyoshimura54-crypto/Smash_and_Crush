@@ -1,3 +1,7 @@
+# 2026-11-19 — Premiumイベント公開日時対応・残り時間UI
+
+Studio限定のPlay時計をJST指定日のUTC期間＋サーバー絶対時計へ変更。日付未指定のまま非開催。既存ボード3ラベルとArea上空1タイマーを共通時刻へ接続し、最終回後の時間行非表示・Streaming再バインドを実装。所有/加算式/保存/World2を保持。Edit実描画と隔離計算を確認、実Play/公開は未実施。[報告](../reports/PremiumTreadmillPublicEvent_20261119/REPORT.md)。
+
 # 2026-11-19 — Studio専用Premium Treadmillイベント試作
 
 実際のWorld1 Premiumへ期間限定の利用資格を追加。公開環境ではConfigにかかわらず無効。既存0.5秒加算とボーナス合成を維持し、各tickの資格再確認・購入要求の開催開始またぎを処理。ボード・保存・所有情報は変更なし。隔離Edit模擬292＋既存回帰245項目、実Playは未実施。[報告](../reports/StudioPremiumTreadmillEvent_20261119/REPORT.md)。

@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-19 — Premium Treadmill公開日時対応（最新）
+
+以下の同日Studio限定試作を置き換える。World1 Diamond01だけ、指定JST日00:00以上・翌00:00未満に共通絶対時刻から180秒開放/1800秒周期を判定する。サーバー起動・参加・死亡でリセットしない。公開環境でも有効だが、日付未設定/不正/OFFは資格・表示とも無効。現在EventDateJSTは空欄。サーバー私有の資格判定と表示専用期間を分離し、所有情報や既存加算経路は維持。コードは副本へ反映、実Play/公開/本番検証は未実施。[Full Path・設定・確認区分](../reports/PremiumTreadmillPublicEvent_20261119/REPORT.md)。
+
 ## 2026-11-19 — 開発Studio限定のPremium Treadmill試作
 
 実際のWorld1 Diamond01のみ、サーバーがStudioで実行中かつConfig有効なら、Play開始直後から180秒間、開始間隔1800秒、全体86400秒の無料利用資格を認める。個人の参加・死亡では時計をリセットしない。所有・キャッシュ・保存を変更せず、正規資格または一時資格を既存TrainingManagerへ渡す。各加算直前の判定で期間終了後の無料効果を止め、既存の通常所有者処理へ戻す。基本倍率・他の加算効果・0.5秒周期は変更しない。公開環境はEnabled=trueでも無効。Studio全体のパス効果無効設定と完成済みボードを保持する。[設定・検証限界](../reports/StudioPremiumTreadmillEvent_20261119/REPORT.md)。

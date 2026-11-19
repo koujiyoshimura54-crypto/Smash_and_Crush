@@ -1,0 +1,111 @@
+{
+  "UniverseId": 10765181857,
+  "FreeAccess": false,
+  "PlaceId": 126576845524886,
+  "ClientEnabled": true,
+  "Sources": [
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ReplicatedStorage.Config.World1PremiumTreadmillEventStyle",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ReplicatedStorage.Modules.World1PremiumTreadmillEventClientRuntime",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ReplicatedStorage.Modules.World1PremiumTreadmillEventPresentation",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ReplicatedStorage.Modules.World1PremiumTreadmillEventSchedule",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ServerScriptService.Config.World1PremiumTreadmillEventConfig",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ServerScriptService.Services.World1PremiumTreadmillEvent",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ServerScriptService.Services.World1PremiumTreadmillEventSchedule",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ServerScriptService.Systems.Controllers.World1PremiumTreadmillEventController",
+      "Compiles": true,
+      "Class": "Script"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "StarterPlayer.StarterPlayerScripts.UI.World1PremiumTreadmillEventClient",
+      "Compiles": true,
+      "Class": "LocalScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ServerScriptService.Services.TrainingManager",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    },
+    {
+      "SourceEditorFileEqual": true,
+      "Path": "ServerScriptService.Services.GamePassService",
+      "Compiles": true,
+      "Class": "ModuleScript"
+    }
+  ],
+  "BoardLabels": 3,
+  "BoardVisible": false,
+  "Enabled": true,
+  "Edit": true,
+  "Snapshot": "{\"Valid\":false,\"Version\":1,\"Reason\":\"DateUnset\"}",
+  "HUDRestored": true,
+  "ControllerEnabled": true,
+  "At": "2026-11-19T12:14:07Z",
+  "UnchangedSources": [
+    "ServerScriptService.Config.StudioDebugConfig",
+    "ServerScriptService.Config.DataStoreConfig",
+    "StarterPlayer.StarterPlayerScripts.UI.TreadmillUIClient"
+  ],
+  "BoardDescendants": 12,
+  "OverheadVisible": false,
+  "EventDateJST": "",
+  "OverheadCount": 1,
+  "PlaceVersion": 746,
+  "OldMainDisabled": true,
+  "ProtectedProperties": {
+    "BoardGeometryUnchanged": [
+      "Workspace.EventBoard.Board",
+      "Workspace.EventBoard.Part"
+    ],
+    "TreadmillExistingRecordsUnchanged": 11
+  },
+  "RestoredDevice": {
+    "Density": 182.6666717529297,
+    "ScreenOrientation": "Enum.ScreenOrientation.LandscapeSensor",
+    "Orientation": "Enum.ScreenOrientation.LandscapeLeft",
+    "Scaling": "Enum.DeviceSimulatorScalingMode.FitToWindow",
+    "Device": "generic_handheld_720",
+    "Resolution": [
+      1280,
+      720
+    ]
+  }
+}

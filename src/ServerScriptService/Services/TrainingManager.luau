@@ -165,7 +165,7 @@ function TrainingManager.CanUseTreadmill(player,treadmill)
   local owned=GamePass.AreEffectsEnabled(player) and GamePass.HasPremiumTreadmill(player,TreadmillConfig.WorldForModel(treadmill))
   if owned then return true,config,"Owned" end
   local temporary=PremiumEvent.IsOpenForTreadmill(treadmill)
-  return temporary,config,temporary and "StudioEvent" or "PremiumRequired"
+  return temporary,config,temporary and "Event" or "PremiumRequired"
  end
  local count=tonumber(player:GetAttribute("RebirthCount")) or 0
  return count>=(config.RequiredRebirth or 0),config
