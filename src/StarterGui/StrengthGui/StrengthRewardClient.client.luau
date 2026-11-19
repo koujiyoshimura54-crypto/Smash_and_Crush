@@ -10,6 +10,8 @@ local Layout = require(RS.Modules.HUDLayout)
 local Presentation = require(RS.Modules.StrengthHUDPresentation)
 local RewardUI = require(RS.Modules.StrengthRewardUI)
 local panel, row = RewardUI.Build(gui)
+local offlineNotice = require(RS.Modules.OfflineRewardNoticeClient).Mount(gui, panel)
+script.Destroying:Once(offlineNotice.Destroy)
 local remote = RS.Remotes:WaitForChild("StrengthRewards")
 local prices, closed, busy, view = {}, {}, false, nil
 local alive = true

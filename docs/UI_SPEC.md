@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-20 — オフライン受取の通知ボタンとメニュー案内
+
+最新指示で、直下の「UI追加なし」のうちオフライン報酬部分を更新。通常のOfflineRewardsだけに青いNOTIFY ME行を追加し、CanPromptOptInAsyncがtrueの場合だけ表示。クリックで再確認してPromptOptIn、false/失敗は行も畳む。未設定の配信文面IDとは独立し、許可済みの推定や報酬条件化はしない。GuiServiceメニュー開閉で表示専用の中央案内と上下帯を同時に切替え、通常受取の状態/Claim/購入は維持。CoreGuiは変更しない。設定はOfflineRewardUIConfig、実送信は既存EngagementConfig。招待入口は引き続き追加しない。Edit描画3サイズ・隔離模擬を確認し、実Play/標準メニュー実操作/実許可/実配信は未確認。[画像・設定・Full Path](../reports/OfflineRewardMenuUI_20261119/REPORT.md)。
+
 ## 2026-11-19 — 招待／通知許可：UI追加なしで呼出し処理を準備
 
 当初のInvite／Notify meボタン追加は、最新のユーザー指示で取り下げ。既存GUI・レイアウト・文言は変更しない。EngagementClientのInvite／NotifyMeを後日指定のボタンへ接続できる状態までとし、現時点では接続・自動表示とも行わない。閉じたイベントを許可／送信成功と解釈しない。実標準画面・実端末は未確認。[報告](../reports/OfflineNotificationsFriendInvite_20261119/REPORT.md)。

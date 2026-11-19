@@ -343,7 +343,7 @@ function M.Layout(gui,w,h,blocks)
  end
  M.LayoutItems(hud)
  local offline=gui:FindFirstChild("OfflineRewards")
- if offline then local o=Style.Offline;offline.RewardScale.Scale=math.min(1,(w-o.MarginX)/o.Width,(h-o.MarginY)/o.Height) end
+ if offline then require(script.Parent.OfflineRewardPresentation).LayoutReward(offline,w,h) end
  return x,y,g.Width*scale,g.Height*scale
 end
 return M

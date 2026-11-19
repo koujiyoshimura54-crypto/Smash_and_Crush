@@ -1,0 +1,5445 @@
+{
+  "Device": {
+    "GetResolutionAsync": {
+      "Y": 720,
+      "Type": "Vector2",
+      "X": 1280
+    },
+    "GetDeviceAsync": "generic_handheld_720",
+    "GetOrientationAsync": {
+      "Type": "EnumItem",
+      "Name": "LandscapeLeft",
+      "Enum": "ScreenOrientation"
+    },
+    "GetScalingModeAsync": {
+      "Type": "EnumItem",
+      "Name": "FitToWindow",
+      "Enum": "DeviceSimulatorScalingMode"
+    },
+    "GetPixelDensityAsync": 182.6666717529297
+  },
+  "Rows": [
+    {
+      "Properties": {
+        "Enabled": true,
+        "ScreenInsets": {
+          "Type": "EnumItem",
+          "Name": "CoreUISafeInsets",
+          "Enum": "ScreenInsets"
+        },
+        "DisplayOrder": 10,
+        "ResetOnSpawn": false,
+        "IgnoreGuiInset": false,
+        "ClipToDeviceSafeArea": true
+      },
+      "Path": "StarterGui.StrengthGui",
+      "Attributes": {
+        "PanelReserveRight": 0,
+        "OriginalPath": "StarterGui.StrengthGui",
+        "PanelReserveTop": 0,
+        "TransferOriginalEnabled": true,
+        "_lemonadeUniqueId": "eotIPqJLeotI",
+        "RightHUDOriginalScale": 0.8338050842285156
+      },
+      "Class": "ScreenGui"
+    },
+    {
+      "Properties": {
+        "Visible": false,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.2199999988079071,
+        "BackgroundTransparency": 0.2199999988079071,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.10196078568696976,
+          "R": 0.08627451211214066
+        },
+        "ZIndex": 50,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0,
+            450
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            700
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 16
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Border",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 1,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 6
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Border",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.RewardScale",
+      "Attributes": [],
+      "Class": "UIScale"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": false,
+        "Active": false,
+        "Selectable": false,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "ZIndex": 53,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0,
+            68
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            652
+          ]
+        },
+        "TextColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "TextTransparency": 0,
+        "Text": "OFFLINE REWARDS",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "FredokaOne",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            12
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            24
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 58,
+        "TextScaled": false,
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Title",
+      "Attributes": {
+        "FigmaNodeId": "9:219"
+      },
+      "Class": "TextLabel"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 4,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 4
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Title.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "ImageColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "ImageTransparency": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Image": "rbxassetid://106106287008236",
+        "ZIndex": 52,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            0,
+            192
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            192
+          ]
+        },
+        "ScaleType": {
+          "Type": "EnumItem",
+          "Name": "Fit",
+          "Enum": "ScaleType"
+        },
+        "Rotation": 0,
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            91
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            254
+          ]
+        },
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthIcon",
+      "Attributes": [],
+      "Class": "ImageLabel"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": false,
+        "Active": false,
+        "Selectable": false,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "ZIndex": 53,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0,
+            64
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            664
+          ]
+        },
+        "TextColor3": {
+          "B": 0.2549019753932953,
+          "Type": "Color3",
+          "G": 0.8745098114013672,
+          "R": 1
+        },
+        "TextTransparency": 0,
+        "Text": "+0 STRENGTH",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "FredokaOne",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            290
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            18
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 60,
+        "TextScaled": false,
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Amount",
+      "Attributes": {
+        "FigmaNodeId": "9:219"
+      },
+      "Class": "TextLabel"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 4,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 4
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Amount.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            358
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            22
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 7,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0,
+            76
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            320
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim",
+      "Attributes": {
+        "FigmaNodeId": "9:215"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": false,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0.4663461446762085,
+          "R": 0.06112304702401161
+        },
+        "ZIndex": 52,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Stroke",
+      "Attributes": {
+        "FigmaNodeId": "9:216"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0.13333334028720856,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Stroke.UICorner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0.2548076808452606,
+          "R": 0.033397138118743896
+        },
+        "ZIndex": 1,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "ScaledSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 0.0533333346247673
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Stroke.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "ZIndex": 52,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Main",
+      "Attributes": {
+        "FigmaNodeId": "9:217"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 9
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Main.UICorner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Border",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 2,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 4
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Main.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Enabled": false,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 0,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 0.8055195808410645,
+                "Type": "Color3",
+                "G": 0.9855769276618958,
+                "R": 0.9855769276618958
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 0.45737797021865845,
+                "Type": "Color3",
+                "G": 0.9807692170143127,
+                "R": 0.4993480443954468
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Main.UIStroke.UIGradient",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 0,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 0,
+                "Type": "Color3",
+                "G": 1,
+                "R": 0.8352941274642944
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 0,
+                "Type": "Color3",
+                "G": 0.9333333373069763,
+                "R": 0.33725491166114807
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Main.UIGradient",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": true,
+        "Active": true,
+        "Selectable": true,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "ZIndex": 59,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        },
+        "TextColor3": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "TextTransparency": 1,
+        "Text": "Button",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/LegacyArial.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "Legacy",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 14,
+        "TextScaled": true,
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Button",
+      "Attributes": [],
+      "Class": "TextButton"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": false,
+        "Active": false,
+        "Selectable": false,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "ZIndex": 54,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.8799999952316284,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.9200000166893005,
+            0
+          ]
+        },
+        "TextColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "TextTransparency": 0,
+        "Text": "CLAIM",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "FredokaOne",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0.05999999865889549,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.03999999910593033,
+            0
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 38,
+        "TextScaled": false,
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Title",
+      "Attributes": {
+        "FigmaNodeId": "9:219"
+      },
+      "Class": "TextLabel"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 4,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 3
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.Title.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Claim.PressScale",
+      "Attributes": [],
+      "Class": "UIScale"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            358
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            358
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 7,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0,
+            76
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            320
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double",
+      "Attributes": {
+        "FigmaNodeId": "9:215"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": false,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0.2549019753932953
+        },
+        "ZIndex": 52,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Stroke",
+      "Attributes": {
+        "FigmaNodeId": "9:216"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0.13333334028720856,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Stroke.UICorner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0.3137255012989044,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0.12156862765550613
+        },
+        "ZIndex": 1,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "ScaledSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 0.0533333346247673
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Stroke.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "ZIndex": 52,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Main",
+      "Attributes": {
+        "FigmaNodeId": "9:217"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 9
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Main.UICorner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Border",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 2,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 4
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Main.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Enabled": false,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 0,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 0.682692289352417,
+                "R": 0.9583099484443665
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 0.29807692766189575,
+                "R": 0.5563316345214844
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Main.UIStroke.UIGradient",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 0,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 0,
+                "Type": "Color3",
+                "G": 0.9372549057006836,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 0,
+                "Type": "Color3",
+                "G": 0.6274510025978088,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Main.UIGradient",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": true,
+        "Active": true,
+        "Selectable": true,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "ZIndex": 59,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        },
+        "TextColor3": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "TextTransparency": 1,
+        "Text": "Button",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/LegacyArial.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "Legacy",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 14,
+        "TextScaled": true,
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Button",
+      "Attributes": [],
+      "Class": "TextButton"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": false,
+        "Active": false,
+        "Selectable": false,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "ZIndex": 54,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.5199999809265137,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.9399999976158142,
+            0
+          ]
+        },
+        "TextColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "TextTransparency": 0,
+        "Text": "CLAIM ×2",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "FredokaOne",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0.029999999329447746,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.029999999329447746,
+            0
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 32,
+        "TextScaled": false,
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Title",
+      "Attributes": {
+        "FigmaNodeId": "9:219"
+      },
+      "Class": "TextLabel"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 4,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 2.5
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Title.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.PressScale",
+      "Attributes": [],
+      "Class": "UIScale"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": false,
+        "Active": false,
+        "Selectable": true,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "ZIndex": 54,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            0,
+            30
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            44
+          ]
+        },
+        "TextColor3": {
+          "B": 0.20784315466880798,
+          "Type": "Color3",
+          "G": 0.16470588743686676,
+          "R": 0.10588236153125763
+        },
+        "TextTransparency": 1,
+        "Text": "",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/LegacyArial.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "Legacy",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0.5299999713897705,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "Interactable": false,
+        "TextSize": 8,
+        "TextScaled": false,
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price",
+      "Attributes": [],
+      "Class": "TextButton"
+    },
+    {
+      "Properties": {
+        "ImageColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "ImageTransparency": 1,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Image": "rbxassetid://100116824861927",
+        "ZIndex": 54,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0,
+            24
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            24
+          ]
+        },
+        "ScaleType": {
+          "Type": "EnumItem",
+          "Name": "Fit",
+          "Enum": "ScaleType"
+        },
+        "Rotation": 0,
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            1
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.Robux",
+      "Attributes": [],
+      "Class": "ImageLabel"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": false,
+        "Active": false,
+        "Selectable": false,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "ZIndex": 54,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            0,
+            28
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            15
+          ]
+        },
+        "TextColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "TextTransparency": 1,
+        "Text": "...",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "FredokaOne",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            29
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 25,
+        "TextScaled": false,
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.Amount",
+      "Attributes": [],
+      "Class": "TextLabel"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 1,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 1,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 2
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Double.Price.Amount.Outline",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            8
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            -8
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 2,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0,
+            64
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            64
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close",
+      "Attributes": {
+        "FigmaNodeId": "6:172"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0.42307692766189575
+        },
+        "ZIndex": 60,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Stroke",
+      "Attributes": {
+        "FigmaNodeId": "6:169"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0.13333334028720856,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Stroke.UICorner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0.25961539149284363
+        },
+        "ZIndex": 1,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "ScaledSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 0.0533333346247673
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Stroke.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.47333332896232605,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.0784313753247261,
+          "Type": "Color3",
+          "G": 0.09803921729326248,
+          "R": 0.9215686321258545
+        },
+        "ZIndex": 60,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.9466666579246521,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Main",
+      "Attributes": {
+        "FigmaNodeId": "6:170"
+      },
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0.14084507524967194,
+          "Type": "UDim",
+          "Offset": 0
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Main.UICorner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "ZIndex": 2,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "ScaledSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 0.056338027119636536
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Main.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 0,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 0.817307710647583,
+                "Type": "Color3",
+                "G": 0.817307710647583,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 0.28141024708747864,
+                "Type": "Color3",
+                "G": 0.26923078298568726,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Main.UIStroke.UIGradient",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 0,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 0.6411334872245789,
+                "Type": "Color3",
+                "G": 0.6411334872245789,
+                "R": 0.995192289352417
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 0.12067307531833649,
+                "Type": "Color3",
+                "G": 0.10576923191547394,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Main.UIGradient",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": false,
+        "Active": false,
+        "Selectable": false,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "ZIndex": 60,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.8999999761581421,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        },
+        "TextColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        },
+        "TextTransparency": 0,
+        "Text": "×",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/FredokaOne.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "FredokaOne",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 44,
+        "TextScaled": false,
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Title",
+      "Attributes": {
+        "FigmaNodeId": "6:179"
+      },
+      "Class": "TextLabel"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": 0,
+        "ApplyStrokeMode": {
+          "Type": "EnumItem",
+          "Name": "Contextual",
+          "Enum": "ApplyStrokeMode"
+        },
+        "Color": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "ZIndex": 4,
+        "StrokeSizingMode": {
+          "Type": "EnumItem",
+          "Name": "FixedSize",
+          "Enum": "StrokeSizingMode"
+        },
+        "Thickness": 3
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Title.UIStroke",
+      "Attributes": [],
+      "Class": "UIStroke"
+    },
+    {
+      "Properties": [],
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.UIAspectRatioConstraint",
+      "Attributes": [],
+      "Class": "UIAspectRatioConstraint"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "TextWrapped": true,
+        "Active": true,
+        "Selectable": true,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "ZIndex": 60,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        },
+        "TextColor3": {
+          "B": 0,
+          "Type": "Color3",
+          "G": 0,
+          "R": 0
+        },
+        "TextTransparency": 1,
+        "Text": "Button",
+        "Transparency": 1,
+        "FontFace": {
+          "Family": "rbxasset://fonts/families/LegacyArial.json",
+          "Type": "Font",
+          "Style": {
+            "Type": "EnumItem",
+            "Name": "Normal",
+            "Enum": "FontStyle"
+          },
+          "Weight": {
+            "Type": "EnumItem",
+            "Name": "Regular",
+            "Enum": "FontWeight"
+          }
+        },
+        "Rotation": 0,
+        "Font": {
+          "Type": "EnumItem",
+          "Name": "Legacy",
+          "Enum": "Font"
+        },
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "Interactable": true,
+        "TextSize": 14,
+        "TextScaled": true,
+        "BackgroundColor3": {
+          "B": 1,
+          "Type": "Color3",
+          "G": 1,
+          "R": 1
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.Close.Button",
+      "Attributes": [],
+      "Class": "TextButton"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            84
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            248
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            0,
+            204
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            204
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow1",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow1.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.9449999928474426,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.9449999928474426,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow2",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow2.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.8899999856948853,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.8899999856948853,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow3",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow3.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.8349999785423279,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.8349999785423279,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow4",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow4.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.7799999713897705,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.7799999713897705,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow5",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow5.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.7250000238418579,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.7250000238418579,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow6",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow6.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.6700000166893005,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.6700000166893005,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow7",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow7.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.6150000095367432,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.6150000095367432,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow8",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow8.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.5600000023841858,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5600000023841858,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow9",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow9.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.5049999952316284,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5049999952316284,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow10",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow10.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.44999998807907104,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.44999998807907104,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow11",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow11.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0.5,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0.9399999976158142,
+        "BackgroundTransparency": 0.9399999976158142,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.39500001072883606,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.39500001072883606,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow12",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "CornerRadius": {
+          "Scale": 0,
+          "Type": "UDim",
+          "Offset": 1000
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Glow12.Corner",
+      "Attributes": [],
+      "Class": "UICorner"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray1",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.10000000149011612,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray1.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray1.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 22.5,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray2",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.06499999761581421,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray2.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray2.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 45,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray3",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.10000000149011612,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray3.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray3.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 67.5,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray4",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.06499999761581421,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray4.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray4.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 90,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray5",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.10000000149011612,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray5.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray5.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 112.5,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray6",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.06499999761581421,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray6.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray6.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 135,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray7",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.10000000149011612,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray7.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray7.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 157.5,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray8",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.06499999761581421,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray8.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray8.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 180,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray9",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.10000000149011612,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray9.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray9.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 202.5,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray10",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.06499999761581421,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray10.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray10.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 225,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray11",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.10000000149011612,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray11.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray11.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 247.5,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray12",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.06499999761581421,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray12.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray12.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 270,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray13",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.10000000149011612,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray13.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray13.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 292.5,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray14",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.06499999761581421,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray14.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray14.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 315,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray15",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.10000000149011612,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray15.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray15.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 337.5,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 0,
+          "Type": "Vector2",
+          "X": 0
+        },
+        "Transparency": 1,
+        "BackgroundTransparency": 1,
+        "Position": {
+          "Y": [
+            0,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.6470588445663452,
+          "Type": "Color3",
+          "G": 0.6352941393852234,
+          "R": 0.6392157077789307
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 1,
+        "Size": {
+          "Y": [
+            1,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            1,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray16",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Visible": true,
+        "Active": false,
+        "Interactable": true,
+        "Rotation": 0,
+        "Selectable": false,
+        "AnchorPoint": {
+          "Y": 1,
+          "Type": "Vector2",
+          "X": 0.5
+        },
+        "Transparency": 0,
+        "BackgroundTransparency": 0,
+        "Position": {
+          "Y": [
+            0.5,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.5,
+            0
+          ]
+        },
+        "BackgroundColor3": {
+          "B": 0.13725490868091583,
+          "Type": "Color3",
+          "G": 0.8392156958580017,
+          "R": 1
+        },
+        "ZIndex": 51,
+        "BorderSizePixel": 0,
+        "Size": {
+          "Y": [
+            0.49000000953674316,
+            0
+          ],
+          "Type": "UDim2",
+          "X": [
+            0.06499999761581421,
+            0
+          ]
+        }
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray16.Beam",
+      "Attributes": [],
+      "Class": "Frame"
+    },
+    {
+      "Properties": {
+        "Enabled": true,
+        "Transparency": {
+          "Keypoints": [
+            {
+              "Value": 1,
+              "Time": 0,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.5,
+              "Time": 0.550000011920929,
+              "Envelope": 0
+            },
+            {
+              "Value": 0.05000000074505806,
+              "Time": 1,
+              "Envelope": 0
+            }
+          ],
+          "Type": "NumberSequence"
+        },
+        "Color": {
+          "Keypoints": [
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 0
+            },
+            {
+              "Value": {
+                "B": 1,
+                "Type": "Color3",
+                "G": 1,
+                "R": 1
+              },
+              "Time": 1
+            }
+          ],
+          "Type": "ColorSequence"
+        },
+        "Rotation": 90,
+        "Scale": 1
+      },
+      "Path": "StarterGui.StrengthGui.OfflineRewards.StrengthHalo.Ray16.Beam.Fade",
+      "Attributes": [],
+      "Class": "UIGradient"
+    }
+  ],
+  "Icons": [],
+  "Orientation": {
+    "Type": "EnumItem",
+    "Name": "LandscapeSensor",
+    "Enum": "ScreenOrientation"
+  }
+}

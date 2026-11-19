@@ -1,0 +1,145 @@
+{
+  "UI": {
+    "Mode": "Edit native Instances + mocked menu/permission; no Play",
+    "Assertions": 263,
+    "PromptsMocked": 3
+  },
+  "NotificationsCore": {
+    "Execution": "isolated Source with memory adapters; no actual requests",
+    "Groups": [
+      "String IDs / missing / independent settings",
+      "Committed exit / due before, exact and after / unchanged reward",
+      "No confirmed exit / save failure / recovery candidates",
+      "Rejoin / cross-server acquire / re-exit / daily protection",
+      "Multiple workers / lease expiry before HTTP / final ownership fence",
+      "Stopped servers / deferred recovery / expiration / zero reward / disabled",
+      "Secret / HTTP preflight unavailable: bounded retries without sends",
+      "401 / 403 / 400 / 412 permanent errors and 429 bounded backoff",
+      "Timeout / lost response / failed accepted-record / durable pre-send crash",
+      "Rejoin while HTTP already in flight is not falsely reported as prevented",
+      "Prompt eligibility / cancel / double click / errors / cleanup (no real prompts)",
+      "Actual profile acquisition atomically cancels previous exit and retains receipt journal"
+    ],
+    "Checks": 155
+  },
+  "Adapter": {
+    "Execution": "actual service/client Source with trapped DataStore/Secret/HTTP/native-prompt adapters",
+    "Checks": 176
+  },
+  "Save": {
+    "Execution": "exact PlayerDataService.Save with memory ownedUpdate and stub unrelated normalizers",
+    "Checks": 63
+  },
+  "Rewards": {
+    "Ownership": {
+      "FailedReadDidNotCreateData": true,
+      "OwnershipFence": true,
+      "Store": "memory only",
+      "Checks": 11
+    },
+    "Rewards": {
+      "OfflineOneHour": 180000,
+      "Persistence": "memory only; response loss retried",
+      "OfflineDouble": 360000,
+      "Checks": 60
+    }
+  },
+  "FinalAudit": {
+    "EventPreserved": true,
+    "UniverseId": 10765181857,
+    "OriginalEnabledRestored": true,
+    "PlaceId": 126576845524886,
+    "HelpersRemoved": true,
+    "StudioHttpEnabled": true,
+    "At": "2026-11-19T15:07:21Z",
+    "ExitGUICount": 1,
+    "ExistingGUIPropertyDifferences": [],
+    "ChangedSources": 5,
+    "ComparedExistingSources": 547,
+    "Mode": "Edit",
+    "FinalSourceCount": 550,
+    "UnexpectedSourceChanges": [],
+    "FontComparison": "Native Font family/style/weight compared; previous serializer string-vs-enum representation corrected."
+  },
+  "Visual": {
+    "Mode": "Native Edit rendering with injected visible state and sample reward; NOT Play or native Roblox menu",
+    "Devices": [
+      {
+        "Id": "average_windows",
+        "PopupPixels": [
+          700,
+          518
+        ],
+        "ButtonPixels": [
+          230,
+          48
+        ]
+      },
+      {
+        "Id": "iphone_17_pro",
+        "Orientation": "LandscapeLeft",
+        "SafeGuiPixels": [
+          749,
+          381
+        ],
+        "PopupPixels": [
+          430.425537,
+          333.272339
+        ],
+        "ButtonPixels": [
+          141.425537,
+          44.272339
+        ]
+      },
+      {
+        "Id": "ipad_pro_M5_13in",
+        "Orientation": "LandscapeLeft",
+        "PopupPixels": [
+          700,
+          518
+        ],
+        "ButtonPixels": [
+          230,
+          48
+        ]
+      }
+    ],
+    "SampleTitle": "2 Hours of Offline Rewards",
+    "SampleAmount": "+2.4K STRENGTH",
+    "Price": "Unfetched (...) placeholder",
+    "OriginalDeviceRestored": {
+      "GetResolutionAsync": {
+        "Y": 720,
+        "Type": "Vector2",
+        "X": 1280
+      },
+      "GetDeviceAsync": "generic_handheld_720",
+      "GetOrientationAsync": {
+        "Type": "EnumItem",
+        "Name": "LandscapeLeft",
+        "Enum": "ScreenOrientation"
+      },
+      "GetScalingModeAsync": {
+        "Type": "EnumItem",
+        "Name": "FitToWindow",
+        "Enum": "DeviceSimulatorScalingMode"
+      },
+      "GetPixelDensityAsync": 182.6666717529297
+    },
+    "OriginalOrientation": {
+      "Type": "EnumItem",
+      "Name": "LandscapeSensor",
+      "Enum": "ScreenOrientation"
+    }
+  },
+  "Unperformed": [
+    "Play/Stop",
+    "Native Roblox menu interaction",
+    "Native opt-in dialog",
+    "Real notification delivery",
+    "Real DataStore requests",
+    "Secret retrieval",
+    "Real purchase/receipt",
+    "Physical phone/tablet"
+  ]
+}

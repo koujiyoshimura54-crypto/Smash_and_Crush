@@ -1,0 +1,2 @@
+# Preserve captured Source bytes when a Windows checkout uses core.autocrlf.
+before/**/*.luau -text

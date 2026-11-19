@@ -1,3 +1,7 @@
+# 2026-11-20 — オフライン報酬の通知ボタンと退出案内
+
+通常受取画面に条件付きNOTIFY MEを追加し、Robloxメニュー開閉へ中央案内＋上下帯を同時接続。文面ID未設定でも許可UIは独立、送信は既存永続予約実装を維持して無効。受取/購入/保存・招待・イベントは保持。Edit描画3サイズ、UI263＋既存465の隔離模擬、Source/GUI照合。実Play/通知許可/配信は未確認、Save/Publishなし。[報告と画像](../reports/OfflineRewardMenuUI_20261119/REPORT.md)。
+
 # 2026-11-19 — オフライン通知・カスタム招待の接続準備
 
 副本へ通知専用の永続記録・期限索引・リース処理と、カスタム招待／通知許可の呼出しModuleを実装。最新指示に従ってUIは追加せず、後日のボタン接続待ち。文面ID空欄・Studio実送信禁止。既存報酬とイベントを維持、隔離模擬465項目・Source／GUI保全を確認。実Play／実通知／実招待／Save／Publishなし。[報告](../reports/OfflineNotificationsFriendInvite_20261119/REPORT.md)。
