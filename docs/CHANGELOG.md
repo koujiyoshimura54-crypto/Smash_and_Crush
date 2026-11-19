@@ -1,3 +1,7 @@
+# 2026-11-19 — オフライン通知・カスタム招待の接続準備
+
+副本へ通知専用の永続記録・期限索引・リース処理と、カスタム招待／通知許可の呼出しModuleを実装。最新指示に従ってUIは追加せず、後日のボタン接続待ち。文面ID空欄・Studio実送信禁止。既存報酬とイベントを維持、隔離模擬465項目・Source／GUI保全を確認。実Play／実通知／実招待／Save／Publishなし。[報告](../reports/OfflineNotificationsFriendInvite_20261119/REPORT.md)。
+
 # 2026-11-19 — Premiumイベントに開始時刻を追加
 
 EventStartTimeJST（HH:MM）を追加し、開始から24時間の開催へ変更。Studioの開始日2026-11-19と開始時刻22:00をユーザー確認のうえ保持。月末/年末・時刻検証と既存加算/表示の隔離確認、エージェントによる実Play/公開は未実施。[報告](../reports/PremiumTreadmillStartTime_20261119/REPORT.md)。

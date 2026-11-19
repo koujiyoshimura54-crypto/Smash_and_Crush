@@ -29,6 +29,9 @@ local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
 local Ownership=require(script.Parent.PlayerDataOwnership)
 local AdminWin=require(script.Parent.ProductionWinState)
 local StrengthRewardState=require(script.Parent.StrengthRewardState)
+local OfflineNotifications=require(script.Parent.OfflineNotificationService)
+local OfflineNotificationState=require(script.Parent.OfflineNotificationState)
+local EngagementConfig=require(game.ReplicatedStorage.Config.EngagementConfig)
 local StoreConfig=require(game.ServerScriptService.Config:WaitForChild("DataStoreConfig"))
 -- Acquiring a DataStore can throw for an unpublished Studio file. Do it inside
 -- the existing protected read/write operation, never during module require.
@@ -725,6 +728,8 @@ function PlayerDataService.Load(player)
  d.AutoTapEnabled=false
  s.AdminWinAppliedId=AdminWin.AppliedId(raw)
  s.Loaded=true;s.Data=d;s.Dirty=true;s.LastSave=nil;s.TimeRewardClock=os.clock()
+ -- Recovery candidate only; never a notification entitlement while online.
+ pcall(OfflineNotifications.Joined,player.UserId,s.OwnerToken)
  applyAttributes(player,d)
  Analytics.Loaded(player,d,s.AcquireAttempt.ProfileKind)
  -- Recover the historical completion badge independently of the Studio arrival preview.
@@ -1058,6 +1063,12 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
    local merged=table.clone(old)
    merged.StrengthRewards=assert(StrengthRewardState.Normalize(old.StrengthRewards))
    merged.StrengthRewards.Presence=payload.StrengthPresence
+   -- Durable outbox shares the confirmed exit transaction. Callback retries are pure.
+   -- Ordinary saves preserve this field; notification writes never replace live data.
+   if OfflineNotifications.Enabled() and payload.StrengthPresence.State=="Offline" then
+    merged.OfflineNotificationExit=OfflineNotificationState.Departure(old.OfflineNotificationExit,
+     s.OwnerToken,os.time(),payload.StrengthPresence,EngagementConfig.Offline.DelaySeconds)
+   end
    merged.HighestUnlockedWorld=math.max(assert(normalizeUnlockedWorld(old.HighestUnlockedWorld)),payload.HighestUnlockedWorld)
    if old.World2Visited~=nil and typeof(old.World2Visited)~="boolean" then error("Invalid World2Visited") end
    merged.World2Visited=old.World2Visited==true or payload.World2Visited
@@ -1122,6 +1133,10 @@ function PlayerDataService.Save(player,equipAuraOnSuccess)
   s.Dirty=true
   s.Saving=false
   return false,tostring(err)
+ end
+ if not superseded and saved and saved.SessionOwnerToken==s.OwnerToken and s.StrengthClosing then
+  -- Queue failure is independent of profile-save success. A join candidate can repair it.
+  pcall(OfflineNotifications.Committed,player.UserId,saved.OfflineNotificationExit)
  end
  if superseded then
   local current,validationError=normalize(saved)

@@ -35,6 +35,9 @@ function M.Acquire(store, key, attempt, defaults, validate, current)
 		data.OwnedItems = table.clone(normalized.OwnedItems)
 		ReturnPersistence.Recover(data)
 		data.StrengthRewards = StrengthRewards.Acquire(data.StrengthRewards, attempt.Token, attempt.StrengthNow)
+		-- Cancel the previous departure atomically with cross-server profile acquisition.
+		-- Keep the last attempted-send timestamp for the conservative per-user daily guard.
+		if owner ~= attempt.Token then data.OfflineNotificationExit = nil end
 		data = AdminWin.Acquire(data, attempt.Token)
 		data.SessionOwnerToken = attempt.Token
 		local meta = info and info:GetMetadata() or {}

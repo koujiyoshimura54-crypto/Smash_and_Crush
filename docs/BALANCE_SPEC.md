@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-19 — 通知追加による報酬変更なし
+
+現行StrengthRewardConfigの退出Strength×毎時4％、蓄積上限86400秒を維持。通知DelaySeconds=86400は独立した通知期限で、報酬付与・通常受取・2倍購入・Receipt額・重複防止を変更しない。通知処理は報酬が正になる条件を既存計算で確認するだけ。[隔離回帰・未確認事項](../reports/OfflineNotificationsFriendInvite_20261119/REPORT.md)。
+
 ## 2026-11-19 — Premiumイベント期間の開始時刻対応
 
 無料資格の期間を指定JST開始日時から24時間へ変更。180秒開放/1800秒周期、既存Strength計算と購入/所有の扱いは維持。時刻未指定では資格なし。[検証](../reports/PremiumTreadmillStartTime_20261119/REPORT.md)。

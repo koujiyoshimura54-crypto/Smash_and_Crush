@@ -1,0 +1,127 @@
+{
+  "Studio": {
+    "UniverseId": 10765181857,
+    "HttpEnabled": true,
+    "PlaceId": 126576845524886,
+    "Changes": [
+      {
+        "Hash": 4187176150,
+        "Path": "ReplicatedStorage.Modules.EngagementClient",
+        "Length": 1623,
+        "New": true
+      },
+      {
+        "Hash": 2757197064,
+        "Path": "ReplicatedStorage.Modules.EngagementPrompts",
+        "Length": 1098,
+        "New": true
+      },
+      {
+        "Hash": 4194310653,
+        "Path": "ReplicatedStorage.Config.EngagementConfig",
+        "Length": 1654,
+        "New": true
+      },
+      {
+        "Hash": 560369806,
+        "Path": "ServerScriptService.Services.PlayerDataOwnership",
+        "Length": 3365,
+        "New": false
+      },
+      {
+        "Hash": 893034724,
+        "Path": "ServerScriptService.Services.PlayerDataService",
+        "Length": 126647,
+        "New": false
+      },
+      {
+        "Hash": 3330423723,
+        "Path": "ServerScriptService.Services.OfflineNotificationService",
+        "Length": 6142,
+        "New": true
+      },
+      {
+        "Hash": 3399500812,
+        "Path": "ServerScriptService.Services.OfflineNotificationState",
+        "Length": 3092,
+        "New": true
+      },
+      {
+        "Hash": 3885280983,
+        "Path": "ServerScriptService.Services.OfflineNotificationWorker",
+        "Length": 5762,
+        "New": true
+      },
+      {
+        "Hash": 1154818517,
+        "Path": "ServerScriptService.Systems.Controllers.PlayerDataController",
+        "Length": 3775,
+        "New": false
+      }
+    ],
+    "GuiHash": 4218301872,
+    "At": "2026-11-19T13:41:04Z",
+    "Compiled": [
+      "ReplicatedStorage.Modules.EngagementClient",
+      "ReplicatedStorage.Modules.EngagementPrompts",
+      "ReplicatedStorage.Config.EngagementConfig",
+      "ServerScriptService.Services.PlayerDataOwnership",
+      "ServerScriptService.Services.PlayerDataService",
+      "ServerScriptService.Services.OfflineNotificationService",
+      "ServerScriptService.Services.OfflineNotificationState",
+      "ServerScriptService.Services.OfflineNotificationWorker",
+      "ServerScriptService.Systems.Controllers.PlayerDataController"
+    ],
+    "GuiUnchanged": true,
+    "Mode": "Edit",
+    "GuiCount": 13490,
+    "EventUnchanged": true
+  },
+  "Tests": {
+    "core": {
+      "Execution": "isolated Source with memory adapters; no actual requests",
+      "Groups": [
+        "String IDs / missing / independent settings",
+        "Committed exit / due before, exact and after / unchanged reward",
+        "No confirmed exit / save failure / recovery candidates",
+        "Rejoin / cross-server acquire / re-exit / daily protection",
+        "Multiple workers / lease expiry before HTTP / final ownership fence",
+        "Stopped servers / deferred recovery / expiration / zero reward / disabled",
+        "Secret / HTTP preflight unavailable: bounded retries without sends",
+        "401 / 403 / 400 / 412 permanent errors and 429 bounded backoff",
+        "Timeout / lost response / failed accepted-record / durable pre-send crash",
+        "Rejoin while HTTP already in flight is not falsely reported as prevented",
+        "Prompt eligibility / cancel / double click / errors / cleanup (no real prompts)",
+        "Actual profile acquisition atomically cancels previous exit and retains receipt journal"
+      ],
+      "Checks": 155
+    },
+    "adapter": {
+      "Execution": "actual service/client Source with trapped DataStore/Secret/HTTP/native-prompt adapters",
+      "Checks": 176
+    },
+    "save": {
+      "Execution": "exact PlayerDataService.Save with memory ownedUpdate and stub unrelated normalizers",
+      "Checks": 63
+    },
+    "rewards": {
+      "Ownership": {
+        "FailedReadDidNotCreateData": true,
+        "OwnershipFence": true,
+        "Store": "memory only",
+        "Checks": 11
+      },
+      "Rewards": {
+        "OfflineOneHour": 180000,
+        "Persistence": "memory only; response loss retried",
+        "OfflineDouble": 360000,
+        "Checks": 60
+      }
+    }
+  },
+  "RealPlay": false,
+  "RealNotification": false,
+  "RealInvite": false,
+  "RealDataStore": false,
+  "SavePublish": false
+}

@@ -119,3 +119,4 @@ task.spawn(function()
 end)
 
 require(game.ServerScriptService.Services.StrengthRewardService).Init()
+require(game.ServerScriptService.Services.OfflineNotificationService).Init()

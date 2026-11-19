@@ -1,0 +1,65 @@
+[
+  {
+    "Path": "ReplicatedStorage.Config.EngagementConfig",
+    "File": "src/ReplicatedStorage/Config/EngagementConfig.luau",
+    "SHA256": "adf41f2c8519f1b94e345c80211a5aceb4169805810db0030d6b59b076f33f1d",
+    "Adler32": 4194310653,
+    "BeforeSHA256": null
+  },
+  {
+    "Path": "ReplicatedStorage.Modules.EngagementClient",
+    "File": "src/ReplicatedStorage/Modules/EngagementClient.luau",
+    "SHA256": "9d2eaf7edb7ee80a98e3e911a8eeada64fc3b59fea2f1bf54560d77863cc2cf2",
+    "Adler32": 4187176150,
+    "BeforeSHA256": null
+  },
+  {
+    "Path": "ReplicatedStorage.Modules.EngagementPrompts",
+    "File": "src/ReplicatedStorage/Modules/EngagementPrompts.luau",
+    "SHA256": "7689f4935d15c6f89cd4f3dfb09613eac2709b51960dd64b687741fba1ce9fef",
+    "Adler32": 2757197064,
+    "BeforeSHA256": null
+  },
+  {
+    "Path": "ServerScriptService.Services.OfflineNotificationService",
+    "File": "src/ServerScriptService/Services/OfflineNotificationService.luau",
+    "SHA256": "3375427b91bd5a27420cdadc18a13d4698d4562e9f6c3391e2a4e27256c1c663",
+    "Adler32": 3330423723,
+    "BeforeSHA256": null
+  },
+  {
+    "Path": "ServerScriptService.Services.OfflineNotificationState",
+    "File": "src/ServerScriptService/Services/OfflineNotificationState.luau",
+    "SHA256": "9ac01045bd3cc7cf31c0db5d23125a3c9bf8ce67aa6e06d99f2722ef2a2cd770",
+    "Adler32": 3399500812,
+    "BeforeSHA256": null
+  },
+  {
+    "Path": "ServerScriptService.Services.OfflineNotificationWorker",
+    "File": "src/ServerScriptService/Services/OfflineNotificationWorker.luau",
+    "SHA256": "af41a233e62fed06ff54a8d61021af8423a1fb24726521cc322f988a38240d1e",
+    "Adler32": 3885280983,
+    "BeforeSHA256": null
+  },
+  {
+    "Path": "ServerScriptService.Services.PlayerDataService",
+    "File": "src/ServerScriptService/Services/PlayerDataService.luau",
+    "SHA256": "3ec0a7e563ab73d4aa212f590c6899452a9ff6dc15d5a8d7e7de01ced79ae61d",
+    "Adler32": 893034724,
+    "BeforeSHA256": "3e61f48c92412540504b193c90a6cdb4b8dc82c5dbba6e7659b760bdf2aa6957"
+  },
+  {
+    "Path": "ServerScriptService.Services.PlayerDataOwnership",
+    "File": "src/ServerScriptService/Services/PlayerDataOwnership.luau",
+    "SHA256": "b58b33d251ac809d0a509d6cc64beeb1f7bf8799af20845b19d1c9944067571b",
+    "Adler32": 560369806,
+    "BeforeSHA256": "827835c43e6785a0ab93607259b861626da0498b68a5a33b35fc00109b12a3d5"
+  },
+  {
+    "Path": "ServerScriptService.Systems.Controllers.PlayerDataController",
+    "File": "src/ServerScriptService/Systems/Controllers/PlayerDataController.server.luau",
+    "SHA256": "b731f93b8de1955f9a32c402d0c1d1c229515ecc956032195e52ef934dd4d4df",
+    "Adler32": 1154818517,
+    "BeforeSHA256": "dbc6255bab2ac7add337ccd86b73d6ac6e2e72760f6622fe9f638e9eebe16903"
+  }
+]
