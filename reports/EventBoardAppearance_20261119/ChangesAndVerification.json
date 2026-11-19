@@ -1,0 +1,229 @@
+{
+  "UniverseId": 10765181857,
+  "UnchangedSources": 531,
+  "Mode": "Edit",
+  "UnchangedOutsideParts": 22166,
+  "PlaceId": 126576845524886,
+  "Changes": [
+    {
+      "Before": 0.800000011920929,
+      "Path": "Workspace.EventBoard.Board.Texture",
+      "After": 1,
+      "Property": "Transparency"
+    },
+    {
+      "Before": [
+        0.10000000149011612,
+        0
+      ],
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.UIListLayout",
+      "After": [
+        0.03999999910593033,
+        0
+      ],
+      "Property": "Padding"
+    },
+    {
+      "Before": 14,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "After": 40,
+      "Property": "TextSize"
+    },
+    {
+      "Before": [
+        0.949999988079071,
+        0,
+        0.22499999403953552,
+        0
+      ],
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "After": [
+        0.8999999761581421,
+        0,
+        0.20000000298023224,
+        0
+      ],
+      "Property": "Size"
+    },
+    {
+      "Before": true,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "After": false,
+      "Property": "RichText"
+    },
+    {
+      "Before": "<font color=\"#f565ff\">Candy Event</font> In 00:00",
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "After": "3 MINUTES EVERY 30 MINUTES",
+      "Property": "Text"
+    },
+    {
+      "Before": true,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "After": false,
+      "Property": "TextWrapped"
+    },
+    {
+      "Before": "Enum.Font.Legacy",
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "After": "Enum.Font.FredokaOne",
+      "Property": "Font"
+    },
+    {
+      "Before": true,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "After": false,
+      "Property": "TextScaled"
+    },
+    {
+      "Before": true,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event3",
+      "After": false,
+      "Property": "Visible"
+    },
+    {
+      "Before": "<font color=\"#00eaff\">Water Event</font> In 00:00",
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event3",
+      "After": "",
+      "Property": "Text"
+    },
+    {
+      "Before": 14,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "After": 48,
+      "Property": "TextSize"
+    },
+    {
+      "Before": [
+        0.949999988079071,
+        0,
+        0.22499999403953552,
+        0
+      ],
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "After": [
+        0.8999999761581421,
+        0,
+        0.30000001192092896,
+        0
+      ],
+      "Property": "Size"
+    },
+    {
+      "Before": "<font color=\"#F06F7D\">Devil Event</font> In 00:00",
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "After": "<font color=\"#FFE066\">FREE</font> PREMIUM TREADMILL",
+      "Property": "Text"
+    },
+    {
+      "Before": true,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "After": false,
+      "Property": "TextWrapped"
+    },
+    {
+      "Before": "Enum.Font.Legacy",
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "After": "Enum.Font.FredokaOne",
+      "Property": "Font"
+    },
+    {
+      "Before": true,
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "After": false,
+      "Property": "TextScaled"
+    },
+    {
+      "Before": [
+        91,
+        86,
+        108
+      ],
+      "Path": "Workspace.EventBoard.Part",
+      "After": [
+        24,
+        24,
+        24
+      ],
+      "Property": "Color"
+    },
+    {
+      "Before": 0,
+      "Path": "Workspace.EventBoard.Part",
+      "After": 0.5,
+      "Property": "Transparency"
+    },
+    {
+      "Before": [
+        129,
+        123,
+        154
+      ],
+      "Path": "Workspace.EventBoard.Board",
+      "After": [
+        24,
+        24,
+        24
+      ],
+      "Property": "Color"
+    },
+    {
+      "Before": 0,
+      "Path": "Workspace.EventBoard.Board",
+      "After": 0.5,
+      "Property": "Transparency"
+    },
+    {
+      "Before": "Not captured",
+      "Path": "Workspace.EventBoard",
+      "After": "Free Premium Treadmill",
+      "Property": "Attribute.DisplayEventName"
+    }
+  ],
+  "Labels": [
+    {
+      "ContentText": "FREE PREMIUM TREADMILL",
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "TextFits": true,
+      "AutoLocalize": false,
+      "Text": "<font color=\"#FFE066\">FREE</font> PREMIUM TREADMILL",
+      "AbsoluteSize": [
+        630,
+        90
+      ],
+      "TextBounds": [
+        546,
+        48
+      ]
+    },
+    {
+      "ContentText": "3 MINUTES EVERY 30 MINUTES",
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "TextFits": true,
+      "AutoLocalize": false,
+      "Text": "3 MINUTES EVERY 30 MINUTES",
+      "AbsoluteSize": [
+        630,
+        60
+      ],
+      "TextBounds": [
+        522,
+        40
+      ]
+    }
+  ],
+  "AuxiliaryProperties": [
+    {
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "Property": "AutoLocalize",
+      "Before": "Not captured",
+      "After": false
+    },
+    {
+      "Path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "Property": "AutoLocalize",
+      "Before": "Not captured",
+      "After": false
+    }
+  ]
+}

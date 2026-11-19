@@ -1,3 +1,7 @@
+# 2026-11-19 — 既存イベントボード外観
+
+本体2パーツの黒色・半透明化と指定2行の静的表示を反映。タイマー・無料開放・倍率処理は未実装。[報告](../reports/EventBoardAppearance_20261119/REPORT.html)。
+
 # 2026-11-17 — Y01保全・新Strength表同期・Daily文字化け
 
 最新mainへfast-forward後、Studioの承認済みQ(51～200)とWorld1 Stage1表記を採用。DailyはVIP/READYの区切り文字2か所のみ修正（Git本体は既に正しい文言）。保存/進行Module・獲得倍率は変更なし。原文/GUI保全、比較CSV、独立計算と未確認範囲を[専用報告](../reports/Y01StudioPreservation_20261117/REPORT.md)へ記録。

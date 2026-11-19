@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-19 — イベントボードの3D／表示調整
+
+副本Editへ既存Instanceの外観だけを反映。全531 Source・対象外22166パーツの記録対象プロパティを保持、正面／斜めの描画と文字収まりを確認。実Play・実機未確認。再適用コードと画像をGitへ記録し、未保存Editで保持。[報告](../reports/EventBoardAppearance_20261119/REPORT.html)。
+
 ## 2026-11-17 — Y01 Studio固有差分の保全・main統合
 
 副本の新Strength表・Stage1表記を保全してmainへ統合。Dailyの文字化け2か所だけをStudioで修正し、既存mainの正しい文言と一致させた。Source/Editor原文とSHA256、型付きGUI設定2,888 Instance、Studio実装から生成した比較CSV402行を保存。純粋計算90,949 assertion、GUI前後差分0。元の承認CSVは所在未確認。実Play・Save/Publishなし、未保存Editを保持。FPS/DataStore調査は未着手。[Full Path・保全・検証](../reports/Y01StudioPreservation_20261117/REPORT.md)。

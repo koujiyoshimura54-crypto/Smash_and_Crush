@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-19 — イベントボード外観のみ
+
+既存Workspace.EventBoardの板面・枠をRGB(24,24,24)、Transparency 0.5へ変更。白の静的2行「FREE PREMIUM TREADMILL」「3 MINUTES EVERY 30 MINUTES」、FREEのみ黄色。UI背景は透明、文字は不透明。旧Main無効を維持し、イベント機能は未実装。[Full Path・画像・調整場所](../reports/EventBoardAppearance_20261119/REPORT.html)。
+
 ## 2026-11-17 — Stage1表記の保全とDaily文字化け限定修正
 
 現行StudioのCombatClientにあるWorld1/major=1のStage1表記をGitへ保持。それ以外のStage表示と最新Trophy略記は維持。DailyRewardsClientのVIP/READY区切りを文字化けから「•」へ修正し、既存mainの文言に合わせた。報酬、条件、翻訳方針、GUI設定は変更なし。全対象GUI2,888 Instanceの前後設定差分0。実PlayでのREADY描画は未確認。[Full Path・原文・差分](../reports/Y01StudioPreservation_20261117/REPORT.md)。

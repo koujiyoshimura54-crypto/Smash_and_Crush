@@ -1,0 +1,445 @@
+{
+  "sources": {
+    "StarterPlayer.StarterPlayerScripts.Main": {
+      "source": "local ReplicatedStorage = game:GetService(\"ReplicatedStorage\")\nlocal Loader = require(ReplicatedStorage.Modules.Loader)\n\nLoader.load(script.Parent.Services)\n",
+      "disabled": true
+    },
+    "ReplicatedStorage.Modules.Weather": {
+      "source": "type Row = {\n\tname: string,\n\n\tseconds: number,\n\tactive: boolean,\n}\n\nlocal ReplicatedStorage = game:GetService(\"ReplicatedStorage\")\nlocal Workspace = game:GetService(\"Workspace\")\n\nlocal Config = require(ReplicatedStorage.Modules.Config)\n\nlocal NONE = 1\n\nlocal Weather = {}\n\nfunction Weather.now(): number\n\treturn Workspace:GetServerTimeNow()\nend\n\nfunction Weather.slotAt(seconds: number): number\n\treturn math.floor(seconds / Config.Weather.everySeconds)\nend\n\nfunction Weather.startOf(slot: number): number\n\treturn slot * Config.Weather.everySeconds\nend\n\nfunction Weather.nameAt(slot: number): string\n\tlocal Order = Config.Weather.Order\n\n\treturn Order[slot % #Order + 1]\nend\n\nfunction Weather.running(): string?\n\tlocal now = Weather.now()\n\tlocal slot = Weather.slotAt(now)\n\n\tif now - Weather.startOf(slot) >= Config.Weather.liveSeconds then return nil end\n\n\treturn Weather.nameAt(slot)\nend\n\nfunction Weather.row(name: string?): any?\n\tif not name then return nil end\n\n\treturn Config.Weather.Events[name]\nend\n\nlocal function payout(field: string): number\n\tlocal row = Weather.row(Weather.running())\n\tif not row then return NONE end\n\n\tlocal worth = row[field]\n\n\treturn if type(worth) == \"number\" then worth else NONE\nend\n\nfunction Weather.speedPayout(): number\n\treturn payout(\"speed\")\nend\n\nfunction Weather.winsPayout(): number\n\treturn payout(\"wins\")\nend\n\nfunction Weather.board(): {Row}\n\tlocal now = Weather.now()\n\tlocal slot = Weather.slotAt(now)\n\tlocal running = Weather.running()\n\n\tlocal first = if running then slot else slot + 1\n\n\tlocal Rows: {Row} = {}\n\n\tfor step = 0, #Config.Weather.Order - 1 do\n\t\tlocal at = first + step\n\n\t\tif step == 0 and running then\n\t\t\ttable.insert(Rows, {\n\t\t\t\tname = running,\n\t\t\t\tseconds = math.max(Weather.startOf(at) + Config.Weather.liveSeconds - now, 0),\n\t\t\t\tactive = true,\n\t\t\t})\n\t\t\tcontinue\n\t\tend\n\n\t\ttable.insert(Rows, {\n\t\t\tname = Weather.nameAt(at),\n\t\t\tseconds = math.max(Weather.startOf(at) - now, 0),\n\t\t\tactive = false,\n\t\t})\n\tend\n\n\treturn Rows\nend\n\nreturn Weather\n",
+      "disabled": false
+    },
+    "StarterPlayer.StarterPlayerScripts.Services.WeatherClient": {
+      "source": "local ReplicatedStorage = game:GetService(\"ReplicatedStorage\")\nlocal TweenService = game:GetService(\"TweenService\")\nlocal RunService = game:GetService(\"RunService\")\nlocal Workspace = game:GetService(\"Workspace\")\nlocal Lighting = game:GetService(\"Lighting\")\nlocal Players = game:GetService(\"Players\")\n\nlocal Player = Players.LocalPlayer\n\nlocal Janitor = require(ReplicatedStorage.Packages.Janitor)\nlocal Config = require(ReplicatedStorage.Modules.Config)\nlocal Weather = require(ReplicatedStorage.Modules.Weather)\n\nlocal NotifyClient = require(script.Parent.NotifyClient)\n\nlocal GUI_NAME = \"ScreenGui\"\nlocal FLASH_NAME = \"WeatherFlash\"\nlocal ZOOM_NAME = \"WeatherZoom\"\nlocal TITLE_NAME = \"Title\"\nlocal ICON_NAME = \"Icon\"\nlocal BUTTON_NAME = \"Button\"\nlocal WAIT_TIMEOUT = 10\nlocal MINUTE = 60\n\nlocal ZOOM_PRIORITY = Enum.RenderPriority.Camera.Value + 2\n\nlocal MAX_FIELD = 120\n\nlocal ZOOM_STYLE = Enum.EasingStyle.Quint\nlocal ZOOM_DIRECTION = Enum.EasingDirection.Out\n\nlocal HOVER_NAME = \"BoostHover\"\nlocal NAME_NAME = \"Name\"\nlocal DESCRIPTION_NAME = \"Description\"\nlocal TEXT_NAME = \"Text\"\n\nlocal ENTRY_INDEX = \"entry\"\nlocal ENTER_INDEX = \"enter\"\nlocal LEAVE_INDEX = \"leave\"\n\nlocal PRESET_CLASSES = {\n\tSky = true,\n\tAtmosphere = true,\n\tBloomEffect = true,\n\tColorCorrectionEffect = true,\n\tSunRaysEffect = true,\n}\n\nlocal WeatherClient = {}\n\nlocal janitor = Janitor.new()\n\nlocal flashJanitor = Janitor.new()\n\nlocal playerGui: Instance? = nil\nlocal activeRoot: Instance? = nil\nlocal entry: Instance? = nil\n\nlocal applied: string? = nil\n\nlocal settled = false\n\nlocal flashToken = 0\n\nlocal fieldBase: number? = nil\n\nlocal zoomStart = 0\nlocal zooming = false\n\nlocal function setText(label: Instance?, text: string)\n\tif not (label and label:IsA(\"TextLabel\")) then return end\n\tif label.Text == text then return end\n\n\tlabel.Text = text\nend\n\nlocal function findPath(root: Instance?, Path: {string}): Instance?\n\tlocal current: Instance? = root\n\tfor _, name in ipairs(Path) do\n\t\tif not current then return nil end\n\t\tcurrent = (current :: Instance):FindFirstChild(name)\n\tend\n\n\treturn current\nend\n\nlocal function icons(): Instance?\n\treturn findPath(ReplicatedStorage, Config.Weather.Icons)\nend\n\nlocal function wearIcon(label: Instance?, name: string)\n\tlocal folder = icons()\n\tlocal decal = if folder then folder:FindFirstChild(name) else nil\n\n\tif not (label and label:IsA(\"ImageLabel\") and decal and decal:IsA(\"Decal\")) then\n\t\twarn(`[WeatherClient] could not find {table.concat(Config.Weather.Icons, \".\")}.{name}`)\n\t\treturn\n\tend\n\n\tlabel.Image = decal.Texture\nend\n\nlocal function board(): Instance?\n\tlocal gui = findPath(Workspace, Config.Weather.Board)\n\n\treturn if gui and gui:IsA(\"SurfaceGui\") then gui else nil\nend\n\nlocal function drawBoard()\n\tlocal gui = board()\n\tif not gui then return end\n\n\tlocal settings = Config.Weather\n\n\tfor index, row in ipairs(Weather.board()) do\n\t\tlocal label = gui:FindFirstChild(string.format(settings.rowFormat, index))\n\t\tif not (label and label:IsA(\"TextLabel\")) then continue end\n\n\t\tlocal event = Weather.row(row.name)\n\t\tif not event then continue end\n\n\t\tlocal seconds = math.floor(row.seconds)\n\t\tlocal title = string.format(settings.nameFormat, event.color:ToHex(), row.name)\n\n\t\tsetText(label, string.format(\n\t\t\tif row.active then settings.activeFormat else settings.waitFormat,\n\t\t\ttitle,\n\t\t\tseconds // MINUTE,\n\t\t\tseconds % MINUTE\n\t\t))\n\tend\nend\n\nlocal function applyLightning(name: string)\n\tlocal folder = findPath(ReplicatedStorage, Config.Weather.Lightning)\n\tlocal preset = if folder then folder:FindFirstChild(name) else nil\n\n\tif not preset then\n\t\twarn(`[WeatherClient] could not find {ReplicatedStorage:GetFullName()}.{table.concat(Config.Weather.Lightning, \".\")}.{name}`)\n\t\treturn\n\tend\n\n\tfor _, child in ipairs(Lighting:GetChildren()) do\n\t\tif not PRESET_CLASSES[child.ClassName] then continue end\n\n\t\tchild:Destroy()\n\tend\n\n\tfor _, child in ipairs(preset:GetChildren()) do\n\t\tchild:Clone().Parent = Lighting\n\tend\nend\n\nlocal function zoom()\n\tlocal settings = Config.Weather\n\n\tlocal camera = Workspace.CurrentCamera\n\tif not (camera and settings.zoomField > 0) then return end\n\n\tif not fieldBase then\n\t\tfieldBase = camera.FieldOfView\n\tend\n\n\tzoomStart = os.clock()\n\n\tif zooming then return end\n\n\tzooming = true\n\n\tRunService:BindToRenderStep(ZOOM_NAME, ZOOM_PRIORITY, function()\n\t\tlocal current = Workspace.CurrentCamera\n\t\tlocal base = fieldBase\n\n\t\tlocal out = settings.flashInSeconds\n\t\tlocal back = settings.flashOutSeconds\n\t\tlocal elapsed = os.clock() - zoomStart\n\n\t\tif not (current and base) or elapsed >= out + back + settings.zoomSettleSeconds then\n\t\t\tif current and base then\n\t\t\t\tcurrent.FieldOfView = base\n\t\t\tend\n\n\t\t\tRunService:UnbindFromRenderStep(ZOOM_NAME)\n\n\t\t\tzooming = false\n\t\t\tfieldBase = nil\n\n\t\t\treturn\n\t\tend\n\n\t\tlocal share = if elapsed < out then elapsed / out else math.min((elapsed - out) / back, 1)\n\t\tlocal eased = TweenService:GetValue(share, ZOOM_STYLE, ZOOM_DIRECTION)\n\t\tlocal alpha = if elapsed < out then eased else 1 - eased\n\n\t\tcurrent.FieldOfView = math.min(base + settings.zoomField * alpha, MAX_FIELD)\n\tend)\nend\n\nlocal function flashInto(name: string)\n\tlocal root = playerGui\n\tif not root then return end\n\n\tlocal settings = Config.Weather\n\n\tflashToken += 1\n\tlocal token = flashToken\n\n\tflashJanitor:Cleanup()\n\n\tlocal gui = Instance.new(\"ScreenGui\")\n\tgui.Name = FLASH_NAME\n\tgui.IgnoreGuiInset = true\n\n\tgui.ResetOnSpawn = false\n\tgui.DisplayOrder = settings.flashOrder\n\tgui.Parent = root\n\n\tflashJanitor:Add(gui)\n\n\tlocal sheet = Instance.new(\"Frame\")\n\tsheet.Size = UDim2.fromScale(1, 1)\n\tsheet.BackgroundColor3 = settings.flashColor\n\tsheet.BackgroundTransparency = 1\n\tsheet.BorderSizePixel = 0\n\tsheet.Parent = gui\n\n\tlocal rise = TweenService:Create(sheet, TweenInfo.new(settings.flashInSeconds), { BackgroundTransparency = 0 })\n\tflashJanitor:Add(rise, \"Cancel\")\n\trise:Play()\n\n\tzoom()\n\n\ttask.wait(settings.flashInSeconds)\n\tif flashToken ~= token then return end\n\n\tapplyLightning(name)\n\n\tlocal fall = TweenService:Create(sheet, TweenInfo.new(settings.flashOutSeconds), { BackgroundTransparency = 1 })\n\tflashJanitor:Add(fall, \"Cancel\")\n\tfall:Play()\n\n\ttask.wait(settings.flashOutSeconds)\n\tif flashToken ~= token then return end\n\n\tflashJanitor:Cleanup()\nend\n\nlocal function announce(name: string)\n\tlocal row = Weather.row(name)\n\tif not row then return end\n\n\tlocal settings = Config.Weather\n\n\tNotifyClient.push({\n\t\t{ text = string.format(settings.startFormat, name), from = row.from, to = row.to },\n\t\t{\n\t\t\ttext = string.format(settings.effectFormat, row.description, settings.liveSeconds // MINUTE),\n\t\t\tfrom = row.from,\n\t\t\tto = row.to,\n\t\t},\n\t})\nend\n\nlocal function buildEntry(name: string)\n\tlocal root = activeRoot\n\tif not root then return end\n\n\tlocal settings = Config.Weather\n\n\tlocal row = Weather.row(name)\n\tif not row then return end\n\n\tlocal template = findPath(ReplicatedStorage, settings.Template)\n\tif not (template and template:IsA(\"GuiObject\")) then\n\t\twarn(`[WeatherClient] could not find {ReplicatedStorage:GetFullName()}.{table.concat(settings.Template, \".\")}`)\n\t\treturn\n\tend\n\n\tlocal made = janitor:Add(template:Clone(), \"Destroy\", ENTRY_INDEX)\n\tmade.Name = name\n\n\twearIcon(made:FindFirstChild(ICON_NAME), row.icon)\n\n\tlocal card = made:FindFirstChild(HOVER_NAME)\n\tif card and card:IsA(\"GuiObject\") then\n\t\tcard.Visible = false\n\n\t\tsetText(card:FindFirstChild(NAME_NAME), string.format(settings.cardFormat, name))\n\n\t\tlocal description = card:FindFirstChild(DESCRIPTION_NAME)\n\t\tif description then\n\t\t\tsetText(description:FindFirstChild(TEXT_NAME), row.description)\n\t\t\twearIcon(description:FindFirstChild(ICON_NAME), row.hoverIcon)\n\t\tend\n\n\t\tlocal button = made:FindFirstChild(BUTTON_NAME)\n\t\tif button and button:IsA(\"GuiButton\") then\n\t\t\tjanitor:Add(button.MouseEnter:Connect(function()\n\t\t\t\tcard.Visible = true\n\t\t\tend), \"Disconnect\", ENTER_INDEX)\n\n\t\t\tjanitor:Add(button.MouseLeave:Connect(function()\n\t\t\t\tcard.Visible = false\n\t\t\tend), \"Disconnect\", LEAVE_INDEX)\n\t\tend\n\tend\n\n\tmade.Parent = root\n\tentry = made\nend\n\nlocal function clearEntry()\n\tentry = nil\n\tjanitor:Remove(ENTRY_INDEX)\nend\n\nlocal function tick()\n\tlocal running = Weather.running()\n\n\tif not settled or running ~= applied then\n\t\tlocal first = not settled\n\n\t\tsettled = true\n\t\tapplied = running\n\n\t\tif not running then\n\t\t\tclearEntry()\n\n\t\t\tif first then\n\t\t\t\tapplyLightning(Config.Weather.defaultLightning)\n\t\t\telse\n\t\t\t\ttask.spawn(flashInto, Config.Weather.defaultLightning)\n\t\t\tend\n\t\telse\n\t\t\tbuildEntry(running)\n\n\t\t\tif first then\n\t\t\t\tapplyLightning(running)\n\t\t\telse\n\t\t\t\tannounce(running)\n\n\t\t\t\ttask.spawn(flashInto, running)\n\t\t\tend\n\t\tend\n\tend\n\n\tdrawBoard()\n\n\tlocal made = entry\n\tif not made then return end\n\n\tlocal top = Weather.board()[1]\n\tif not (top and top.active) then return end\n\n\tlocal seconds = math.floor(top.seconds)\n\n\tsetText(made:FindFirstChild(TITLE_NAME), string.format(Config.Weather.timerFormat, seconds // MINUTE, seconds % MINUTE))\nend\n\nlocal function bind(gui: Instance)\n\tjanitor:Cleanup()\n\n\tactiveRoot = nil\n\tentry = nil\n\n\tlocal root = gui:FindFirstChild(Config.Weather.activeFrame)\n\tif not (root and root:IsA(\"GuiObject\")) then\n\t\twarn(`[WeatherClient] could not find {gui:GetFullName()}.{Config.Weather.activeFrame}`)\n\t\treturn\n\tend\n\n\tactiveRoot = root\n\n\tlocal running = Weather.running()\n\tif not running then return end\n\n\tbuildEntry(running)\nend\n\nfunction WeatherClient.start()\n\tlocal found = Player:WaitForChild(\"PlayerGui\", WAIT_TIMEOUT)\n\tif not found then\n\t\twarn(`[WeatherClient] {Player.Name} has no PlayerGui`)\n\t\treturn\n\tend\n\n\tplayerGui = found\n\n\tlocal gui = found:WaitForChild(GUI_NAME, WAIT_TIMEOUT)\n\tif gui then\n\t\tbind(gui)\n\telse\n\t\twarn(`[WeatherClient] could not find {found:GetFullName()}.{GUI_NAME}`)\n\tend\n\n\tfound.ChildAdded:Connect(function(child: Instance)\n\t\tif child.Name ~= GUI_NAME then return end\n\n\t\tbind(child)\n\tend)\n\n\twhile true do\n\t\ttick()\n\t\ttask.wait(Config.Weather.tickSeconds)\n\tend\nend\n\nreturn WeatherClient\n",
+      "disabled": false
+    },
+    "ServerScriptService.Main": {
+      "source": "local ReplicatedStorage = game:GetService(\"ReplicatedStorage\")\nlocal Loader = require(ReplicatedStorage.Modules.Loader)\n\nLoader.load(script.Parent.Services)\n",
+      "disabled": true
+    }
+  },
+  "matches": [
+    {
+      "path": "StarterPlayer.StarterPlayerScripts.Services.WeatherClient",
+      "lines": [
+        "local TEXT_NAME = \"Text\"",
+        "local function setText(label: Instance?, text: string)",
+        "\tif not (label and label:IsA(\"TextLabel\")) then return end",
+        "\tif label.Text == text then return end",
+        "\tlabel.Text = text",
+        "\tlabel.Image = decal.Texture",
+        "local function board(): Instance?",
+        "\tlocal gui = findPath(Workspace, Config.Weather.Board)",
+        "local function drawBoard()",
+        "\tlocal gui = board()",
+        "\tfor index, row in ipairs(Weather.board()) do",
+        "\t\tif not (label and label:IsA(\"TextLabel\")) then continue end",
+        "\t\tsetText(label, string.format(",
+        "\t\tsetText(card:FindFirstChild(NAME_NAME), string.format(settings.cardFormat, name))",
+        "\t\t\tsetText(description:FindFirstChild(TEXT_NAME), row.description)",
+        "\tdrawBoard()",
+        "\tlocal top = Weather.board()[1]",
+        "\tsetText(made:FindFirstChild(TITLE_NAME), string.format(Config.Weather.timerFormat, seconds // MINUTE, seconds % MINUTE))"
+      ],
+      "class": "ModuleScript"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.Config",
+      "lines": [
+        "\tshortText = \"Not Enough Wins!\",",
+        "Config.Event = {",
+        "\tmodel = \"EventTreadmil\",",
+        "\torderText = \"Buy the previous upgrade first!\",",
+        "Config.Leaderboard = {",
+        "\tBoards = {",
+        "\tcardTextShare = 0.8,",
+        "\tcardTitleTextShare = 0.8,",
+        "\t\t{ key = \"weather\", title = \"Event\", icon = \"Star\", final = true },",
+        "\t\tboard = \"BillboardGui\",",
+        "\tclaimedText = \"Claimed\",",
+        "\ttookText = \"Free Wins Claimed!\",",
+        "\tnotReadyText = \"Not Ready Yet!\",",
+        "\tdoneText = \"You Already Claimed This!\",",
+        "\trestockedText = \"The Restock Shop Has New Items!\",",
+        "\tpoorText = \"Not Enough Wins!\",",
+        "\t\tglowTexture = \"rbxasset://textures/particles/sparkles_main.dds\",",
+        "\treadyText = \"Ready!\",",
+        "\tclaimedText = \"Claimed!\",",
+        "\tclaimedText = \"Claimed\",",
+        "\ttookText = \"Free Reward Claimed!\",",
+        "\tgroupText = \"Join The Group First!\",",
+        "\tfavoriteText = \"Favorite The Game First!\",",
+        "\tdoneText = \"You Already Claimed This!\",",
+        "\tBox = { \"Main\", \"Code\", \"Textbox\" },",
+        "\tremindText = \"A Free Reward\",",
+        "\temptyText = \"Type A Code First!\",",
+        "\tunknownText = \"That Code Does Not Exist!\",",
+        "\tusedText = \"You Already Used This Code!\",",
+        "\tfailedText = \"Try That Again In A Moment!\",",
+        "\tclaimText = \"Claim\",",
+        "\tclaimedText = \"Claimed\",",
+        "\treadyText = \"A Quest Is Ready To Claim!\",",
+        "\tshortText = \"Finish The Quest First!\",",
+        "\tdoneText = \"Quest Already Claimed!\",",
+        "\tonText = \"ON\",",
+        "\toffText = \"OFF\",",
+        "\tdoneText = \"You finished tutorial!\",",
+        "\tBoard = { \"EventBoard\", \"Board\", \"SurfaceGui\" },",
+        "\trowFormat = \"Event%d\",",
+        "\tnameFormat = \"<font color=\\\"#%s\\\">%s Event</font>\",",
+        "\tcardFormat = \"%s Event\",",
+        "\tstartFormat = \"%s Event Started!\",",
+        "\tEvents = {",
+        "\tselfText = \"Stats Reset!\","
+      ],
+      "class": "ModuleScript"
+    },
+    {
+      "path": "ReplicatedStorage.Modules.Weather",
+      "lines": [
+        "\treturn Config.Weather.Events[name]",
+        "function Weather.board(): {Row}"
+      ],
+      "class": "ModuleScript"
+    }
+  ],
+  "instances": [
+    {
+      "path": "Workspace.EventBoard.Part",
+      "properties": {
+        "Reflectance": 0,
+        "CanCollide": true,
+        "Color": {
+          "B": 108.00000116229057,
+          "G": 86.00000247359276,
+          "R": 91.00000217556953
+        },
+        "CFrame": [
+          -11.259057998657227,
+          35.993446350097656,
+          79.65984344482422,
+          -1,
+          0,
+          -8.742277657347586e-8,
+          1.51808023929334e-8,
+          0.9848073124885559,
+          -0.17364810407161713,
+          8.609459456465629e-8,
+          -0.17364810407161713,
+          -0.9848073124885559
+        ],
+        "CanTouch": true,
+        "Transparency": 0,
+        "Anchored": true,
+        "CanQuery": true,
+        "Material": "Enum.Material.Plastic",
+        "CastShadow": false,
+        "Size": [
+          30,
+          14,
+          1
+        ]
+      },
+      "class": "Part"
+    },
+    {
+      "path": "Workspace.EventBoard.Board",
+      "properties": {
+        "Reflectance": 0,
+        "CanCollide": true,
+        "Color": {
+          "B": 154.00000602006912,
+          "G": 123.0000002682209,
+          "R": 129.00000751018524
+        },
+        "CFrame": [
+          -11.25905704498291,
+          35.91710662841797,
+          79.22689819335938,
+          -1,
+          0,
+          -8.742277657347586e-8,
+          1.51808023929334e-8,
+          0.9848073124885559,
+          -0.17364810407161713,
+          8.609459456465629e-8,
+          -0.17364810407161713,
+          -0.9848073124885559
+        ],
+        "CanTouch": true,
+        "Transparency": 0,
+        "Anchored": true,
+        "CanQuery": true,
+        "Material": "Enum.Material.SmoothPlastic",
+        "CastShadow": false,
+        "Size": [
+          28,
+          12,
+          0.5
+        ]
+      },
+      "class": "Part"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.Texture",
+      "properties": {
+        "Transparency": 0.800000011920929,
+        "Color3": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "StudsPerTileV": 8,
+        "Face": "Enum.NormalId.Back",
+        "StudsPerTileU": 8,
+        "Texture": "rbxassetid://6372755229"
+      },
+      "class": "Texture"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui",
+      "properties": {
+        "Enabled": true,
+        "ClipsDescendants": true,
+        "Face": "Enum.NormalId.Back",
+        "ZOffset": 0,
+        "LightInfluence": 0,
+        "SizingMode": "Enum.SurfaceGuiSizingMode.PixelsPerStud",
+        "PixelsPerStud": 25,
+        "Brightness": 1,
+        "AlwaysOnTop": false,
+        "CanvasSize": [
+          800,
+          600
+        ]
+      },
+      "class": "SurfaceGui"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui.Event1",
+      "properties": {
+        "Visible": true,
+        "TextBounds": [
+          528,
+          67
+        ],
+        "TextTransparency": 0,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": [
+          0.5,
+          0.5
+        ],
+        "ZIndex": 1,
+        "TextSize": 14,
+        "Size": [
+          0.949999988079071,
+          0,
+          0.22499999403953552,
+          0
+        ],
+        "RichText": true,
+        "TextColor3": {
+          "B": 255,
+          "G": 255,
+          "R": 255
+        },
+        "ClipsDescendants": false,
+        "Text": "<font color=\"#F06F7D\">Devil Event</font> In 00:00",
+        "LayoutOrder": 1,
+        "Position": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "TextWrapped": true,
+        "Font": "Enum.Font.Legacy",
+        "BackgroundTransparency": 1,
+        "TextXAlignment": "Enum.TextXAlignment.Center",
+        "TextStrokeColor3": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "TextYAlignment": "Enum.TextYAlignment.Center",
+        "TextScaled": true,
+        "BackgroundColor3": {
+          "B": 255,
+          "G": 255,
+          "R": 255
+        }
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui.Event1.UIStroke",
+      "properties": {
+        "Thickness": 0.05000000074505806,
+        "Transparency": 0,
+        "Color": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual",
+        "Enabled": true
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui.Event2",
+      "properties": {
+        "Visible": true,
+        "TextBounds": [
+          568,
+          67
+        ],
+        "TextTransparency": 0,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": [
+          0.5,
+          0.5
+        ],
+        "ZIndex": 1,
+        "TextSize": 14,
+        "Size": [
+          0.949999988079071,
+          0,
+          0.22499999403953552,
+          0
+        ],
+        "RichText": true,
+        "TextColor3": {
+          "B": 255,
+          "G": 255,
+          "R": 255
+        },
+        "ClipsDescendants": false,
+        "Text": "<font color=\"#f565ff\">Candy Event</font> In 00:00",
+        "LayoutOrder": 2,
+        "Position": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "TextWrapped": true,
+        "Font": "Enum.Font.Legacy",
+        "BackgroundTransparency": 1,
+        "TextXAlignment": "Enum.TextXAlignment.Center",
+        "TextStrokeColor3": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "TextYAlignment": "Enum.TextYAlignment.Center",
+        "TextScaled": true,
+        "BackgroundColor3": {
+          "B": 255,
+          "G": 255,
+          "R": 255
+        }
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui.Event2.UIStroke",
+      "properties": {
+        "Thickness": 0.05000000074505806,
+        "Transparency": 0,
+        "Color": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual",
+        "Enabled": true
+      },
+      "class": "UIStroke"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui.UIListLayout",
+      "properties": {
+        "VerticalAlignment": "Enum.VerticalAlignment.Center",
+        "FillDirection": "Enum.FillDirection.Vertical",
+        "HorizontalAlignment": "Enum.HorizontalAlignment.Center",
+        "Padding": [
+          0.10000000149011612,
+          0
+        ],
+        "SortOrder": "Enum.SortOrder.LayoutOrder"
+      },
+      "class": "UIListLayout"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui.Event3",
+      "properties": {
+        "Visible": true,
+        "TextBounds": [
+          552,
+          67
+        ],
+        "TextTransparency": 0,
+        "TextStrokeTransparency": 1,
+        "AnchorPoint": [
+          0.5,
+          0.5
+        ],
+        "ZIndex": 1,
+        "TextSize": 14,
+        "Size": [
+          0.949999988079071,
+          0,
+          0.22499999403953552,
+          0
+        ],
+        "RichText": true,
+        "TextColor3": {
+          "B": 255,
+          "G": 255,
+          "R": 255
+        },
+        "ClipsDescendants": false,
+        "Text": "<font color=\"#00eaff\">Water Event</font> In 00:00",
+        "LayoutOrder": 3,
+        "Position": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "TextWrapped": true,
+        "Font": "Enum.Font.Legacy",
+        "BackgroundTransparency": 1,
+        "TextXAlignment": "Enum.TextXAlignment.Center",
+        "TextStrokeColor3": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "TextYAlignment": "Enum.TextYAlignment.Center",
+        "TextScaled": true,
+        "BackgroundColor3": {
+          "B": 255,
+          "G": 255,
+          "R": 255
+        }
+      },
+      "class": "TextLabel"
+    },
+    {
+      "path": "Workspace.EventBoard.Board.SurfaceGui.Event3.UIStroke",
+      "properties": {
+        "Thickness": 0.05000000074505806,
+        "Transparency": 0,
+        "Color": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "ApplyStrokeMode": "Enum.ApplyStrokeMode.Contextual",
+        "Enabled": true
+      },
+      "class": "UIStroke"
+    }
+  ]
+}

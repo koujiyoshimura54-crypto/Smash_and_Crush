@@ -1,0 +1,33 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>イベントボード外観のみ変更 2026-11-19</title>
+<style>body{font:16px/1.8 system-ui,sans-serif;max-width:1100px;margin:30px auto;padding:0 20px;color:#202637}img{width:100%;height:auto}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbb;padding:8px;vertical-align:top}code{overflow-wrap:anywhere}.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0}@media(max-width:700px){.compare{grid-template-columns:1fr}}</style>
+<h1>Free Premium Treadmill — 既存イベントボードの外観変更</h1>
+<p>2026-11-19。現在の副本PlaceId 126576845524886／UniverseId 10765181857、Edit状態を確認。開始HEADは1e795c8。前回のLVカーブ作業などの未commit差分を保持し、今回のcommitへ含めない。</p>
+<p>対象は購入Mapの既存 <code>Workspace.EventBoard</code>。新しいExperience、ボード、HUD、ポップアップは作成していない。3D本体の2パーツだけをRGB(24,24,24)・Transparency 0.5へ変更。白文字を不透明のまま維持し、FREEだけ黄色で強調した。</p>
+<h2>変更Full Pathと主な前後値</h2>
+<table><tr><th>Full Path</th><th>変更前</th><th>変更後</th></tr>
+<tr><td>Workspace.EventBoard.Board</td><td>Color (129,123,154)、Transparency 0</td><td>Color (24,24,24)、Transparency 0.5</td></tr>
+<tr><td>Workspace.EventBoard.Part</td><td>Color (91,86,108)、Transparency 0</td><td>Color (24,24,24)、Transparency 0.5</td></tr>
+<tr><td>Workspace.EventBoard.Board.Texture</td><td>Transparency 約0.8、スタッド柄</td><td>Transparency 1。アセットID・Face・繰返し寸法を保持し、板面の装飾だけ非表示</td></tr>
+<tr><td>Workspace.EventBoard.Board.SurfaceGui.Event1</td><td>Devil Event In 00:00、Legacy Arial、TextScaled=true、Size (0.95,0.225)</td><td>FREE PREMIUM TREADMILL、FredokaOne 48px、TextScaled=false、Size (0.90,0.30)。FREEは#FFE066、残りは白</td></tr>
+<tr><td>Workspace.EventBoard.Board.SurfaceGui.Event2</td><td>Candy Event In 00:00、Legacy Arial、TextScaled=true、Size (0.95,0.225)</td><td>3 MINUTES EVERY 30 MINUTES、FredokaOne 40px、TextScaled=false、Size (0.90,0.20)、白</td></tr>
+<tr><td>Workspace.EventBoard.Board.SurfaceGui.Event3</td><td>Water Event In 00:00、Visible=true</td><td>空文字、Visible=false。Instanceは保持</td></tr>
+<tr><td>Workspace.EventBoard.Board.SurfaceGui.UIListLayout</td><td>Padding.Scale 0.10</td><td>0.04、中央揃えを維持</td></tr>
+<tr><td>Workspace.EventBoard</td><td>DisplayEventNameの変更前値は未取得</td><td>表示用属性DisplayEventName="Free Premium Treadmill"を設定</td></tr></table>
+<p>表示ラベル2個はTextTransparency=0、BackgroundTransparency=1。UI背景を黒い半透明パネルにする変更ではない。AutoLocalize=falseで指定英語を固定（変更前のAutoLocalize値は取得していない）。全取得値とその他の差分は<a href="Before.json">変更前記録</a>、<a href="ChangesAndVerification.json">差分・検証記録</a>に記載。</p>
+<h2>確認画像</h2><div class="compare"><figure><img src="images/before.jpg"><figcaption>変更前・正面</figcaption></figure><figure><img src="images/after_front.jpg"><figcaption>変更後・同じ位置。黒い3D板面越しに背景が見える</figcaption></figure></div>
+<figure><img src="images/after_angle.jpg"><figcaption>変更後・斜め。明るい空と地形の前でも2行を判別できる</figcaption></figure>
+<p>画像はEditの実描画。比較中のみ既存ScreenGuiを非表示にし、撮影後に全Enabled値とカメラを復元。画像の読みやすさを確認するための操作で、製品HUDの変更はない。</p>
+<h2>上書き処理の調査</h2>
+<p><a href="../GamePassPhase1_20261117/REPORT.md">以前の調査</a>を参照し、現在のSourceを再確認。<code>ReplicatedStorage.Modules.Config.Weather.Board</code>がこのSurfaceGuiを指定し、<code>StarterPlayer.StarterPlayerScripts.Services.WeatherClient.drawBoard</code>が旧Weatherの3行を更新する。起動元の<code>StarterPlayer.StarterPlayerScripts.Main</code>と<code>ServerScriptService.Main</code>は両方Disabled=true。別の明示的WeatherClient起動元はSource検索で見つからなかった。</p>
+<p>全531 Sourceとエディターバッファ、ScriptのDisabled状態を変更していない。旧Mainを将来有効化した場合は旧Weather表示が戻り得るため、その際に表示経路の再調整が必要。再適用ツールはMainの無効状態を検査し、活性化されていた場合は適用を停止する。今回のための常時更新処理は追加していない。</p>
+<h2>検証</h2><ul>
+<li>正面・斜めのEdit描画で本体の透過、2行の視認性、欠け／はみ出し／重なりがないことを確認。</li>
+<li>タイトルTextBounds 546×48px／領域630×90px、説明522×40px／領域630×60px。両方TextFits=true。</li>
+<li>本体のCFrame・Size・Anchored・CanCollide・CanTouch・CanQuery・Materialなどを保持。外枠30×14×1、板面28×12×0.5 studsを維持。</li>
+<li>対象外22,166 BasePartの位置・サイズ・色・透明度・Material・物理設定が変更前と一致。透明な当たり判定パーツを一括変更していない。</li>
+<li>再適用を繰り返しても子孫11個のまま。アプライヤーのLuau構文コンパイル成功。</li>
+<li>実Play・実端末・Runtimeでの起動順は未確認。Edit検証を実Play合格とは扱わない。</li></ul>
+<h2>手動調整・再適用</h2><p>Studioでは上表のBoard／PartのColor・Transparency、Event1／Event2のText・TextSize・Size、UIListLayout.Paddingを直接調整できる。タイトルの黄色はEvent1.TextのRichText色。</p>
+<p>Gitでは <a href="../../tools/ApplyEventBoardAppearance.luau">tools/ApplyEventBoardAppearance.luau</a> 先頭のStyleに色・透過率・文言・文字サイズ・余白を集約。対象副本のEditでファイルのコードを1回実行すると、既存Instanceへ同じプロパティを再適用できる。常駐Scriptではなく、Save／Publishを行わない。</p>
+<h2>対象外・納品状態</h2><p>無料開放、30分周期、3分終了、動くカウントダウン、通知、購入誘導、Pass所有、Strength加算は未実装・無変更。時間表記は予定内容の静的説明。将来の最終倍率を7／8へ固定する変更もない。</p>
+<p>検証補助を除去し、副本は既存編集を保持した未保存Editで開いたまま。Save／Publish・正本・PR #1・force pushの操作なし。今回のプロパティ再適用記録、比較画像、報告と関連仕様追補だけをcommitし、origin/mainへ通常push。commitは完了回答で報告する。</p></html>
