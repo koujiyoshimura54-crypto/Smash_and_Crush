@@ -27,6 +27,8 @@
 
 5 Sourceはローカル内容とStudio Source・取得可能なエディター内容が一致し、構文確認済み。[SHA256](source_manifest.json)。開始時の6関連Sourceは[変更前全文/GUI値](before/)と[保全ハッシュ](before/manifest.json)へ保存。SourceはUTF-8で改行・末尾空白を保持。取得可能なエディターはSourceと同一だった。既存StrengthRewardClientのEnabled=trueを保持。
 
+既存ローカル2ファイルはCRLF、StudioとGit blobはLFのため、変更後manifestはローカル生ファイル/Studio Source/Git blobのSHA256を分けて記録した。Git blobとStudioはバイト一致。変更前保全の6 Sourceは元のStudio bytesとハッシュ一致し、専用.gitattributesで将来のチェックアウト時の改行変換も抑止する。
+
 新規GUIはコードから再構築できる。今回のSourceを個別配置した環境で、通常起動時に既存RewardUI.Build後のMountが不足分を生成する。Editで必要なら `OfflineRewardPresentation.EnsureNotify(StarterGui.StrengthGui.OfflineRewards)` と `EnsureExit(StarterGui, StarterGui.StrengthGui.OfflineRewards)` を使用する。受取LocalScriptを案内へコピーしない。
 
 ## 手動調整・停止方法
