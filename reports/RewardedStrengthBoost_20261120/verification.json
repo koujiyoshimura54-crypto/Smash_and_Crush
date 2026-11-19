@@ -1,0 +1,89 @@
+{
+  "Core": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Mode\":\"Edit / memory mocks / actual source functions; no Play, live data, ads or purchases\",\"Assertions\":126,\"Cases\":{\"PureExpiry\":true,\"PlayerDataEntry\":true,\"AdAndReceiptController\":true,\"TrainingCalculation\":true,\"OwnershipPersistence\":true}}"
+      }
+    ],
+    "isError": false
+  },
+  "UI": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Assertions\":62,\"Mode\":\"Edit / native unparented GUI + mocked availability/events; no real prompts or ads\"}"
+      }
+    ],
+    "isError": false
+  },
+  "Save": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Execution\":\"exact PlayerDataService.Save with memory ownedUpdate and stub unrelated normalizers\",\"Checks\":75}"
+      }
+    ],
+    "isError": false
+  },
+  "Training": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"LiveExternalCalls\":0,\"ConfigAtEnd\":{\"Enabled\":true,\"FixtureDateJST\":\"2040-02-29\",\"FixtureStartTimeJST\":\"18:45\",\"StartIntervalSeconds\":1800,\"OpenDurationSeconds\":180},\"Gains\":[{\"Delta\":7,\"Case\":\"Free; Studio effects OFF\"},{\"StrengthPass\":false,\"Delta\":660,\"Case\":\"Free combined\"},{\"StrengthPass\":false,\"Delta\":660,\"Case\":\"Owned combined\"},{\"StrengthPass\":true,\"Delta\":726,\"Case\":\"Free combined\"},{\"StrengthPass\":true,\"Delta\":726,\"Case\":\"Owned combined\"}],\"Grounding\":\"Mocked occupancy; NOT physical Play verification\",\"PurchasePromptsAreMocked\":3,\"BoostGains\":[{\"Gain\":2,\"Premium\":false,\"Base\":1,\"Pass\":false,\"World\":1},{\"Gain\":8,\"Premium\":true,\"Base\":7,\"Pass\":false,\"World\":1},{\"Gain\":3,\"Premium\":false,\"Base\":1,\"Pass\":true,\"World\":1},{\"Gain\":9,\"Premium\":true,\"Base\":7,\"Pass\":true,\"World\":1},{\"Gain\":6,\"Premium\":false,\"Base\":5,\"Pass\":false,\"World\":2},{\"Gain\":16,\"Premium\":true,\"Base\":15,\"Pass\":false,\"World\":2},{\"Gain\":7,\"Premium\":false,\"Base\":5,\"Pass\":true,\"World\":2},{\"Gain\":17,\"Premium\":true,\"Base\":15,\"Pass\":true,\"World\":2}],\"Kind\":\"Edit isolated simulation (not Play)\",\"Assertions\":363,\"MemoryUpdate\":\"Exact current AddStrengthGain/RecordStrengthGain + LevelProgression in memory only\"}"
+      }
+    ],
+    "isError": false
+  },
+  "RewardsRegression": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Ownership\":{\"FailedReadDidNotCreateData\":true,\"OwnershipFence\":true,\"Store\":\"memory only\",\"Checks\":11},\"Rewards\":{\"OfflineOneHour\":180000,\"Persistence\":\"memory only; response loss retried\",\"OfflineDouble\":360000,\"Checks\":60}}"
+      }
+    ],
+    "isError": false
+  },
+  "OfflineUIRegression": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"Mode\":\"Edit native Instances + mocked menu/permission; no Play\",\"Assertions\":263,\"PromptsMocked\":3}"
+      }
+    ],
+    "isError": false
+  },
+  "Cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ModalHidden\":true,\"ChangedExistingSources\":{\"1\":\"ServerScriptService.Services.PlayerDataService\",\"3\":\"ServerScriptService.Systems.Purchases.ReceiptService\",\"2\":\"ServerScriptService.Services.StrengthManager\"},\"Edit\":true,\"EntryHidden\":true,\"Resolution\":\"1280, 720\",\"TemporaryPreviewRemoved\":true,\"SourceCount\":559,\"Device\":\"generic_handheld_720\",\"EventPreserved\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "Product": {
+    "content": [
+      {
+        "type": "text",
+        "text": "GET https://apis.roblox.com/developer-products/v2/universes/10765181857/developer-products/3733706770/creator -> 200 OK\n\n{\"productId\":3733706770,\"name\":\"24h Strength Boost\",\"description\":\"24h Strength Boost\",\"iconImageAssetId\":128438745805586,\"universeId\":10765181857,\"isForSale\":true,\"priceInformation\":{\"defaultPriceInRobux\":1,\"enabledFeatures\":[\"RegionalPricing\"]},\"isImmutable\":false,\"createdTimestamp\":\"2026-11-19T22:45:50.132Z\",\"updatedTimestamp\":\"2026-11-19T22:46:08.743Z\",\"isManagedPricingEnabled\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "WritePermission": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Could not acquire an Open Cloud access token: Scope 'developer-product:write' has not been granted. Ask the creator to grant the required scope in the Assistant MCP Permissions settings, then retry."
+      }
+    ],
+    "isError": true
+  },
+  "ShopSkin": {
+    "Execution": "Native Edit HUDLayout.BindPurchaseButton on an unparented temporary shop clone",
+    "DisplayedAmount": "Robux glyph + 1",
+    "OldBuyWinRemoved": true,
+    "TemporaryInstancesRemoved": true
+  }
+}

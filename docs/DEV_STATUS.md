@@ -1,5 +1,9 @@
 # DEV_STATUS — 開発状況
 
+## 2026-11-20 — 報酬付き動画・5分Strengthブースト
+
+副本Editへ広告Placement 28777229838999 / 商品3733706770による300秒の訓練倍率＋1、既存receipt/所有権付きプロフィール保存への統合、画像参照の入口/モーダル、同商品通常Shopを実装。永久パス＋1と併用、直接報酬は対象外。実Sourceを使った隔離模擬960項目、PC/横スマホ/タブレット相当Edit描画。実Play/広告/購入/実機未確認、Save/Publishなし。Creator Hubは更新権限未許可で名前・説明が24hのまま、公開前に5分へ修正が必要。価格API実値1 Robux、変更なし。[Full Path・検証・画像・残作業](../reports/RewardedStrengthBoost_20261120/REPORT.md)。
+
 ## 2026-11-20 — オフライン通知文面IDを設定
 
 ユーザー指定ID `4905299160793744045` をEngagementConfig.Offline.OfflineRewardMessageIdへ文字列で反映。Enabled=true・DelaySeconds=86400を維持。公開用の設定判定は有効、Studio実送信は禁止を維持。実在/権限/実配信は未確認。既存テストfixtureを設定値から独立させ、隔離core155＋adapter176を確認。UI・報酬・友達招待・イベントは変更なし。Save/Publishなし。[設定・検証範囲](../reports/OfflineRewardMessageId_20261120.md)。

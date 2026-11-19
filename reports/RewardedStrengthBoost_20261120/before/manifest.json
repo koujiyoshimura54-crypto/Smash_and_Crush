@@ -1,0 +1,22 @@
+{
+  "CapturedUTC": "2026-11-19T23:09:17.423077+00:00",
+  "BaselineCommit": "c43b1c27198e7d33fab99eb0a365934dcb7bc486",
+  "Files": [
+    {
+      "File": "src/ServerScriptService/Services/PlayerDataService.luau",
+      "SHA256": "bb5c9a70d3c623fb107f0bd12a36acc3f24c25d9d54d3d34dac340f5e27c0d55",
+      "Bytes": 129158
+    },
+    {
+      "File": "src/ServerScriptService/Services/StrengthManager.luau",
+      "SHA256": "7422e25388dded5cfeca0c7a5f7a812e08fa9774747bbce89385be7a536f7fc2",
+      "Bytes": 8497
+    },
+    {
+      "File": "src/ServerScriptService/Systems/Purchases/ReceiptService.luau",
+      "SHA256": "9ff169740b58ea36b19cce3b566ac1d2e0a599ff9fb4b1e4970a44ce28fc64ea",
+      "Bytes": 22448
+    }
+  ],
+  "StudioComparison": "Source and editor equal. PlayerDataService and ReceiptService exact matches; Studio StrengthManager has one extra terminal LF, retained on reflection."
+}

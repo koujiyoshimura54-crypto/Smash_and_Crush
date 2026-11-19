@@ -1,5 +1,9 @@
 # GAME_SPEC — ゲーム仕様正本
 
+## 2026-11-20 追記 — 5分の広告/商品Strengthブースト
+
+Developer Product 3733706770、動画Placement 28777229838999。唯一のProcessReceiptで確定し、所有権付きプロフィールの終了時刻とPurchaseIdを同時保存。期限は実時間300秒、再参加/死亡/World移動ではリセットしない。同一receiptは再延長せず、異なる正規receiptはmax(now,expiry)+300。広告開始はユーザー操作＋サーバーLobby/生存/実行中検証。Studio実広告/実購入は無効。実配信/実Play未確認、Creator Hubの旧24h商品名・説明は権限不足により要手動修正。[仕様と制約](../reports/RewardedStrengthBoost_20261120/REPORT.md)。
+
 ## 2026-11-20 — オフライン通知文面IDの現在値
 
 OfflineRewardMessageIdはユーザー指定の文字列`4905299160793744045`。以下の過去記録にある「文面ID未設定」を更新する。既存Enabled=true・DelaySeconds=86400と公開サーバーの資格/永続予約処理を使用し、Studioでは送信しない。実API受付・実配信は未確認。招待IDは引き続き未設定。[設定記録](../reports/OfflineRewardMessageId_20261120.md)。

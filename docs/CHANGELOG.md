@@ -1,3 +1,7 @@
+# 2026-11-20 — Rewarded video / 5 Min Strength Boost
+
+300秒の訓練倍率＋1を既存のreceipt・プロフィール所有権・Strength計算へ統合。重複receipt/応答消失時の再延長を防ぎ、別receiptは時間だけ延長。参照画像の入口/広告モーダルと通常Shop商品を追加。隔離模擬960、3画面区分のEdit描画。実Play/実広告/実購入/実機は未確認。商品名/説明更新はMCP権限未許可で残作業、1 Robux価格は保持。Studio未保存Edit、Save/Publishなし。[報告](../reports/RewardedStrengthBoost_20261120/REPORT.md)。
+
 # 2026-11-20 — オフライン報酬通知の文面ID
 
 指定ID`4905299160793744045`を文字列として副本Configへ設定。Studio送信禁止、24時間Delay、報酬/UI/招待/イベントを維持。設定に依存していた既存fixtureを分離し331項目の隔離模擬を確認。実API受付・実配信・Save/Publishなし。[報告](../reports/OfflineRewardMessageId_20261120.md)。

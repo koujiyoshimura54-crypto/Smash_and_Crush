@@ -367,6 +367,11 @@ local function processItemReceipt(r)
 end
 
 function M.ProcessReceipt(r)
+ if typeof(r)=="table" and r.ProductId==require(game.ReplicatedStorage.Config.RewardedStrengthBoostConfig).ProductId then
+  local ok,decision=pcall(require(game.ServerScriptService.Services.RewardedStrengthBoostService).ProcessReceipt,r)
+  if not ok then warn("[StrengthBoost] Receipt deferred; no acknowledgement before durable grant") end
+  return ok and decision or pending
+ end
  if typeof(r)=="table" and require(game.ReplicatedStorage.Config.StrengthRewardConfig).ForProduct(r.ProductId) then
   if type(r.PurchaseId)~="string" or r.PurchaseId=="" or #r.PurchaseId>100 or type(r.PlayerId)~="number" then return pending end
   local ok,decision=pcall(require(game.ServerScriptService.Services.StrengthRewardService).ProcessReceipt,r)

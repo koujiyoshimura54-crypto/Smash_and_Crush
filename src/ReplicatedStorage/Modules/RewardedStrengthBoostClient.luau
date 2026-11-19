@@ -1,0 +1,202 @@
+local RS=game:GetService("ReplicatedStorage")
+local C=require(RS.Config.RewardedStrengthBoostConfig)
+local S=require(RS.Config.RewardedStrengthBoostStyle)
+local Visual=require(script.Parent.RewardedStrengthBoostPresentation)
+local M={}
+local mounted=setmetatable({}, {__mode="k"})
+function M.Mount(strengthGui,d)
+	if mounted[strengthGui] then return mounted[strengthGui] end
+	if not d then
+		assert(game:GetService("RunService"):IsClient(),"Client only")
+		local player=game:GetService("Players").LocalPlayer
+		local ads=game:GetService("AdService")
+		local remote=RS.Remotes:WaitForChild("RewardedStrengthBoost",20)
+		if not remote then return {Destroy=function()end} end
+		d={Player=player,Menu=game:GetService("GuiService"),Now=function() return workspace:GetServerTimeNow() end,
+			Monotonic=os.clock,Reply=remote.OnClientEvent,Send=function(action,id) remote:FireServer(action,id) end,
+			Available=function()
+				if game:GetService("RunService"):IsStudio() then return false end
+				local info=ads:GetAdAvailabilityNowAsync(Enum.AdFormat.RewardedVideo)
+				return info.AdAvailabilityResult==Enum.AdAvailabilityResult.IsAvailable
+			end,
+			Price=function() return require(script.Parent.MarketplacePrice).Get(C.ProductId,Enum.InfoType.Product,nil) end,
+			BindPurchase=function(button,label) require(script.Parent.HUDLayout).BindPurchaseButton(button,"Robux",label) end}
+	end
+	local g=Visual.Build(strengthGui.Parent,true)
+	local panel=g.Overlay.Panel
+	local alive,available,checking,adBusy=true,false,false,false
+	local serial,requestId,nextClick,checkStarted=0,0,0,0
+	local pending={};local connections={};local api={Gui=g}
+	mounted[strengthGui]=api
+	local function connect(signal,fn) table.insert(connections,signal:Connect(fn)) end
+	local function expiry() return tonumber(d.Player:GetAttribute("StrengthBoostExpiresAt")) or 0 end
+	local function active() return expiry()>d.Now() end
+	local function blocked()
+		if d.Menu.MenuIsOpen or not strengthGui.Enabled then return true end
+		for _,name in {"OfflineRewards","ShopPanel","InventoryPanel","MergePanel","RebirthPanel","DailyRewardsPanel","TimeRewardsPanel","CommunityRewardsPanel"} do
+			local p=strengthGui:FindFirstChild(name);if p and p.Visible then return true end
+		end
+		for _,path in {{"DeathGui","Overlay"},{"WorldTravelGui","Modal"},{"StageSkipGui","Panel"},{"MergeShopGui","MergeShopPanel"}} do
+			local root=strengthGui.Parent:FindFirstChild(path[1]);local p=root and root:FindFirstChild(path[2])
+			if root and root.Enabled and p and p.Visible then return true end
+		end
+		return false
+	end
+	local function text(label,value)
+		if label.Text~=value then label.Text=value end
+		if label==panel.Watch.Title then label.TextSize=value=="WATCH AD" and S.Modal.ButtonTextSize or S.Modal.StatusTextSize end
+	end
+	local function paint()
+		if not alive then return end
+		local running=active()
+		g.Entry.Visible=not blocked() and (running or C.Enabled and available)
+		text(g.Entry.Footer,running and Visual.Time(expiry(),d.Now()) or "FREE")
+		g.Entry.Footer.TextColor3=running and S.Yellow or S.Green
+		panel.Watch.Active=C.Enabled and available and not checking and not adBusy and not running
+		panel.Watch.AutoButtonColor=panel.Watch.Active
+	end
+	function api.Close()
+		serial+=1;checking=false;g.Overlay.Visible=false;paint()
+	end
+	local function layout()
+		local left=strengthGui:FindFirstChild("HUD") and strengthGui.HUD:FindFirstChild("LeftHUD")
+		local bounds=left and {Right=left.AbsolutePosition.X+left.AbsoluteSize.X,Blocks={}} or nil
+		if bounds then for _,name in {"RunInventoryLabel","RunInventoryIcon","RunReturnButton"} do
+			local o=strengthGui.HUD:FindFirstChild(name)
+			if o and o.Visible then table.insert(bounds.Blocks,{X=o.AbsolutePosition.X,Y=o.AbsolutePosition.Y,W=o.AbsoluteSize.X,H=o.AbsoluteSize.Y}) end
+		end end
+		Visual.Layout(g,bounds)
+	end
+	function api.RefreshAvailability()
+		if not alive or not C.Enabled or active() or checking then return end
+		serial+=1;local token=serial;checking=true;checkStarted=d.Monotonic();paint()
+		task.spawn(function()
+			local ok,value=pcall(d.Available)
+			if not alive or token~=serial then return end
+			checking=false;available=ok and value==true
+			if g.Overlay.Visible then text(panel.Watch.Title,available and "WATCH AD" or "Ad unavailable") end
+			paint()
+		end)
+	end
+	function api.Open()
+		if not alive or blocked() or not C.Enabled or active() or adBusy or not available then return false end
+		g.Overlay.Visible=true;text(panel.Watch.Title,"Checking...");api.RefreshAvailability();return true
+	end
+	local function send(action)
+		requestId=(requestId+1)%2147483647
+		local id=requestId;pending[id]={Action=action,Started=d.Monotonic()}
+		local ok=pcall(d.Send,action,id)
+		if not ok then pending[id]=nil;return nil end
+		return id
+	end
+	function api.Watch()
+		if not alive or not g.Overlay.Visible or blocked() or not panel.Watch.Active or d.Monotonic()<nextClick then return false end
+		nextClick=d.Monotonic()+C.RequestCooldownSeconds
+		serial+=1;local token=serial;checking=true;checkStarted=d.Monotonic();text(panel.Watch.Title,"Checking...");paint()
+		task.spawn(function()
+			local ok,value=pcall(d.Available)
+			if not alive or serial~=token or not g.Overlay.Visible then return end
+			checking=false;available=ok and value==true
+			if not available or active() or blocked() then text(panel.Watch.Title,"Ad unavailable");paint();return end
+			adBusy=true;text(panel.Watch.Title,"Please wait...");paint()
+			if not send("Ad") then adBusy=false;text(panel.Watch.Title,"Ad unavailable");paint() end
+		end)
+		return true
+	end
+	local messages={ReturnToLobby="Return to Lobby",StudioPreviewOnly="Studio preview only",DataNotLoaded="Please try again",
+		AwaitingReceipt="Confirming reward...",BoostActive="Boost active",Busy="Please wait..."}
+	connect(d.Reply,function(id,code)
+		local request=pending[id];if not request or not alive then return end
+		pending[id]=nil
+		if request.Action=="Ad" then
+			adBusy=false
+			if code=="AwaitingReceipt" or code=="AdUnavailable" or code=="Unavailable" then available=false end
+			if active() then api.Close()
+			elseif g.Overlay.Visible then
+				text(panel.Watch.Title,messages[code] or "Ad unavailable")
+				-- An unconfirmed receipt may still arrive. Don't invite another ad immediately.
+			end
+		end
+		paint()
+	end)
+	connect(g.Entry.Activated,api.Open);connect(panel.Close.Activated,api.Close);connect(panel.Watch.Activated,api.Watch)
+	connect(d.Menu.MenuOpened,api.Close);connect(d.Menu.MenuClosed,paint)
+	connect(d.Player:GetAttributeChangedSignal("StrengthBoostExpiresAt"),function()
+		if active() then api.Close() end;paint()
+	end)
+	-- New natural opportunities can recover a previous no-fill/API failure; no polling loop.
+	connect(d.Player:GetAttributeChangedSignal("CurrentWorld"),api.RefreshAvailability)
+	if d.Player:IsA("Player") then connect(d.Player.CharacterAdded,function()api.Close();api.RefreshAvailability()end) end
+	connect(strengthGui:GetPropertyChangedSignal("Enabled"),function()if not strengthGui.Enabled then api.Close() end;paint()end)
+	connect(g:GetPropertyChangedSignal("AbsoluteSize"),layout)
+	local left=strengthGui:FindFirstChild("HUD") and strengthGui.HUD:FindFirstChild("LeftHUD")
+	if left then
+		connect(left:GetPropertyChangedSignal("AbsolutePosition"),layout)
+		connect(left:GetPropertyChangedSignal("AbsoluteSize"),layout)
+		for _,name in {"RunInventoryLabel","RunInventoryIcon","RunReturnButton"} do
+			local o=strengthGui.HUD:FindFirstChild(name)
+			if o then for _,property in {"AbsolutePosition","AbsoluteSize","Visible"} do connect(o:GetPropertyChangedSignal(property),layout) end end
+		end
+	end
+	local watched=setmetatable({}, {__mode="k"})
+	local function watchPanels()
+		local list={}
+		for _,name in {"OfflineRewards","ShopPanel","InventoryPanel","MergePanel","RebirthPanel","DailyRewardsPanel","TimeRewardsPanel","CommunityRewardsPanel"} do table.insert(list,strengthGui:FindFirstChild(name)) end
+		for _,path in {{"DeathGui","Overlay"},{"WorldTravelGui","Modal"},{"StageSkipGui","Panel"},{"MergeShopGui","MergeShopPanel"}} do
+			local root=strengthGui.Parent:FindFirstChild(path[1]);if root then table.insert(list,root:FindFirstChild(path[2])) end
+		end
+		for _,p in ipairs(list) do if p and not watched[p] then
+			watched[p]=true;connect(p:GetPropertyChangedSignal("Visible"),function()if blocked() then api.Close() end;paint()end)
+		end end
+	end
+	connect(strengthGui.Parent.ChildAdded,watchPanels);watchPanels()
+	local holder=strengthGui:FindFirstChild("ShopPanel") and strengthGui.ShopPanel.MainScrollingFrame.Holder
+	local card=holder and Visual.BuildShop(holder,true)
+	if card then
+		local button=card.PurchaseArea.Purchase
+		-- CardWin may already carry the shared purchased-button skin at runtime.
+		-- Rebind its visible amount to OUR price label instead of retaining BUY WIN.
+		if d.BindPurchase then d.BindPurchase(button,button.PriceTag) end
+		local priceReady=false
+		function api.Buy()
+			if not alive or not C.Enabled or not priceReady or d.Monotonic()<nextClick then return end
+			nextClick=d.Monotonic()+C.RequestCooldownSeconds;return send("Buy")~=nil
+		end
+		connect(button.Activated,api.Buy)
+		task.spawn(function()
+			local ok,price,source=pcall(d.Price)
+			if not alive or not card.Parent then return end
+			priceReady=ok and type(price)=="number" and price>=0
+			button.Active=C.Enabled and priceReady
+			button.PriceTag.Text=priceReady and require(script.Parent.NumberFormat).Price(price).." Robux" or "Unavailable"
+			button.PriceTag:SetAttribute("PriceSource",source or "Unavailable")
+		end)
+	end
+	local wasActive=active()
+	function api.Tick()
+		if not alive then return end
+		if g.Overlay.Visible and blocked() then api.Close() end
+		if checking and d.Monotonic()-checkStarted>15 then
+			serial+=1;checking=false;available=false;text(panel.Watch.Title,"Ad unavailable")
+		end
+		for id,r in pairs(pending) do if d.Monotonic()-r.Started>C.ClientResponseTimeoutSeconds then
+			pending[id]=nil
+			if r.Action=="Ad" then adBusy=false;available=false;text(panel.Watch.Title,"Please try again") end
+		end end
+		local running=active()
+		if wasActive and not running then available=false;api.RefreshAvailability() end
+		wasActive=running;paint()
+	end
+	function api.Destroy()
+		if not alive then return end
+		alive=false;serial+=1
+		for _,c in ipairs(connections) do c:Disconnect() end
+		table.clear(connections);table.clear(pending);mounted[strengthGui]=nil
+		g:Destroy();if card then card:Destroy() end
+	end
+	connect(strengthGui.Destroying,api.Destroy)
+	layout();paint();api.RefreshAvailability()
+	if not d.ManualTick then task.spawn(function()while alive do task.wait(.25);api.Tick()end end) end
+	return api
+end
+return M

@@ -1,5 +1,9 @@
 # BALANCE_SPEC — ゲームバランス正本
 
+## 2026-11-20 追記 — 一時Strength加算
+
+RewardedStrengthBoostConfig.TrainingBonus=1、DurationSeconds=300。歩行/手動/既存AutoTap/TreadmillのsourceMultiplierへ永久Strengthパスと別に＋1。最終量×2ではない。Belt/TrainingPotion加算と既存のPet/Aura/Protein/Rebirth/StrengthPotion/VIP順序を維持。直接付与・購入Strength・オフライン/デイリー対象外。他補正なしのWorld1 Premiumは8/パス併用9、World2 Premiumは16/17。合計の上限ではない。通常World2設備の基本5も維持。価格は取得時1 Robux、固定価格化や価格変更なし。[模擬結果](../reports/RewardedStrengthBoost_20261120/REPORT.md)。
+
 ## 2026-11-19 — 通知追加による報酬変更なし
 
 現行StrengthRewardConfigの退出Strength×毎時4％、蓄積上限86400秒を維持。通知DelaySeconds=86400は独立した通知期限で、報酬付与・通常受取・2倍購入・Receipt額・重複防止を変更しない。通知処理は報酬が正になる条件を既存計算で確認するだけ。[隔離回帰・未確認事項](../reports/OfflineNotificationsFriendInvite_20261119/REPORT.md)。

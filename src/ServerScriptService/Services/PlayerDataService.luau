@@ -29,6 +29,8 @@ local LimitedEgg=require(game.ReplicatedStorage.Config.LimitedEggConfig)
 local Ownership=require(script.Parent.PlayerDataOwnership)
 local AdminWin=require(script.Parent.ProductionWinState)
 local StrengthRewardState=require(script.Parent.StrengthRewardState)
+local BoostState=require(script.Parent.RewardedStrengthBoostState)
+local BoostConfig=require(game.ReplicatedStorage.Config.RewardedStrengthBoostConfig)
 local OfflineNotifications=require(script.Parent.OfflineNotificationService)
 local OfflineNotificationState=require(script.Parent.OfflineNotificationState)
 local EngagementConfig=require(game.ReplicatedStorage.Config.EngagementConfig)
@@ -252,6 +254,7 @@ local function defaults()
  -- Ownership.Acquire commits this receipt and quantity together before Loaded=true.
  data.FirstBattleTutorial=assert(FirstBattle.Normalize(nil,true))
  data.OwnedOres={ORE_001=2}
+ data.StrengthBoost=assert(BoostState.Normalize(nil))
  return data
 end
 -- Only an existing, owned Dumbbell can survive loading as equipped.
@@ -287,6 +290,9 @@ local function normalize(raw)
  local rewards,rewardError=StrengthRewardState.Normalize(type(raw)=="table" and raw.StrengthRewards or nil)
  if not rewards then return nil,rewardError end
  d.StrengthRewards=rewards
+ local boost,boostError=BoostState.Normalize(type(raw)=="table" and raw.StrengthBoost or nil)
+ if not boost then return nil,boostError end
+ d.StrengthBoost=boost
  d.ItemMergeJournal=assert(normalizeItemMerge(nil))
  if typeof(raw)=="table" and typeof(raw.ResetToken)=="string" then d.ResetToken=raw.ResetToken end
  if typeof(raw)=="table" then
@@ -395,6 +401,7 @@ local function normalize(raw)
  return d
 end
 local function applyAttributes(player,d)
+ player:SetAttribute("StrengthBoostExpiresAt",d.StrengthBoost and d.StrengthBoost.ExpiresAt or 0)
  local session=sessions[player]
  session.ForgeToken=session.ForgeToken or HttpService:GenerateGUID(false)
  player:SetAttribute("ForgeSessionToken",session.ForgeToken)
@@ -442,6 +449,12 @@ local function ownedUpdate(player,session,transform)
  end)
 end
 
+-- Training reads authoritative session data and the absolute clock on EVERY gain.
+function PlayerDataService.GetStrengthBoostBonus(player)
+ local s=sessions[player]
+ if not s or not s.Loaded or s.OwnershipLost then return 0 end
+ return BoostState.Bonus(s.Data.StrengthBoost,os.time(),BoostConfig.TrainingBonus)
+end
 function PlayerDataService.Get(player)
  local s=sessions[player]
  return s
@@ -1842,6 +1855,14 @@ function PlayerDataService.ResolveItemMutation(player)
  local s=sessions[player]
  local op=s and s.PendingItemMutation
  if not s or not s.Loaded or not op then return false,"NoPendingMutation" end
+ if op.StrengthBoost then
+  return require(script.Parent.RewardedStrengthBoostPersistence).Resolve(player,s,op,{
+   Update=function(transform) return ownedUpdate(player,s,transform) end,
+   Current=function() return sessions[player]==s and s.Loaded and not s.OwnershipLost and s.PendingItemMutation==op and s.Data.ResetToken==op.ResetToken end,
+   ResetToken=resetToken,Metadata=metadata,Now=os.time,
+   Retry=function() scheduleItemMutationRetry(player,s,op) end,
+  })
+ end
  if op.SizeChange then return resolveSizeChange(player,s,op) end
  if op.StrengthMutation then
   return require(script.Parent.StrengthRewardPersistence).Resolve(player,s,op,{
@@ -2351,6 +2372,26 @@ function PlayerDataService.GetDailyStrengthTop(limit,date)
 end
 -- Serialized with all existing Item/Pet/Forge writes. Unconfirmed operations
 -- remain behind the existing save barrier and retry with the same immutable ID.
+-- Called only by the server's canonical ProcessReceipt route. No client grant remote.
+function PlayerDataService.CommitStrengthBoostReceipt(player,request)
+ local s=sessions[player]
+ if not s or not s.Loaded or s.OwnershipLost or request.PlayerId~=player.UserId then return false,"DataNotLoaded" end
+ if s.Saving or s.StrengthClosing then return false,"DataSaving" end
+ if s.PendingItemMutation then
+  local op=s.PendingItemMutation
+  if op.StrengthBoost and op.PurchaseId==request.PurchaseId and op.ProductId==request.ProductId then return PlayerDataService.ResolveItemMutation(player) end
+  return false,"InventorySavePending"
+ end
+ local marker=s.Data.StrengthBoost.Receipts[request.PurchaseId]
+ -- This live journal is populated ONLY by Acquire or a confirmed owned write.
+ if marker then return marker.PlayerId==request.PlayerId and marker.ProductId==request.ProductId,"AlreadyGranted" end
+ local op=table.clone(request)
+ local probe,why=BoostState.Apply(s.Data.StrengthBoost,op,os.time(),BoostConfig.DurationSeconds)
+ if not probe then return false,why end
+ op.StrengthBoost=true;op.Id=op.PurchaseId;op.ResetToken=s.Data.ResetToken;op.DurationSeconds=BoostConfig.DurationSeconds
+ s.PendingItemMutation=op
+ return PlayerDataService.ResolveItemMutation(player)
+end
 function PlayerDataService.CommitStrengthOperation(player,request)
  local s=sessions[player]
  if not s or not s.Loaded or s.OwnershipLost then return false,"DataNotLoaded" end

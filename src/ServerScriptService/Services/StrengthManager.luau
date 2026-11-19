@@ -181,6 +181,7 @@ function StrengthManager.AddStrength(player, amount, tickCount, sourceMultiplier
  -- paths are separate. Belt/Training potion are already in sourceMultiplier.
  if treadmillSource or gainSource=="Walking" or gainSource=="Manual" then
   sourceMultiplier+=ShopPasses.GetStrengthPassBonus(player)
+  sourceMultiplier+=PlayerData.GetStrengthBoostBonus(player)
  end
  local gain=Calculation.Gain(amount,tickCount,{
   Dumbbell=bonus,Aura=auraBonus,Protein=proteinBonus,

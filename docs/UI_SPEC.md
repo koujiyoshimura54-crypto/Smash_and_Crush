@@ -1,5 +1,9 @@
 # UI_SPEC — 現在のUI仕様正本
 
+## 2026-11-20 追記 — FREE BOOST
+
+左上HUDの少し右へ白縁文字×2 Strength/既存黄色腕/緑FREE。中央にFREE BOOST・腕・×2 Strength · 5 MIN・緑WATCH AD・赤X。取得可否に従って入口を表示、確定後はサーバー終了時刻からMM:SS。新画面だけ閉じ、既存報酬/通知/メニュー状態を変更しない。通常購入は既存Shopの独立カードに配置し実価格取得。StyleはReplicatedStorage.Config.RewardedStrengthBoostStyle、機能設定はRewardedStrengthBoostConfig。次回Play/新サーバーのGUI構築へ反映。PC/横スマホ/タブレットEdit描画、実機/広告画面は未確認。[画像と検証](../reports/RewardedStrengthBoost_20261120/REPORT.md)。
+
 ## 2026-11-20 — オフライン受取の通知ボタンとメニュー案内
 
 最新指示で、直下の「UI追加なし」のうちオフライン報酬部分を更新。通常のOfflineRewardsだけに青いNOTIFY ME行を追加し、CanPromptOptInAsyncがtrueの場合だけ表示。クリックで再確認してPromptOptIn、false/失敗は行も畳む。未設定の配信文面IDとは独立し、許可済みの推定や報酬条件化はしない。GuiServiceメニュー開閉で表示専用の中央案内と上下帯を同時に切替え、通常受取の状態/Claim/購入は維持。CoreGuiは変更しない。設定はOfflineRewardUIConfig、実送信は既存EngagementConfig。招待入口は引き続き追加しない。Edit描画3サイズ・隔離模擬を確認し、実Play/標準メニュー実操作/実許可/実配信は未確認。[画像・設定・Full Path](../reports/OfflineRewardMenuUI_20261119/REPORT.md)。
