@@ -30,5 +30,6 @@ function M.Init()
 		if p.Parent==Players then remote:FireClient(p,requestId,code) end
 	end)
 	Players.PlayerRemoving:Connect(controller.Forget)
+	game:BindToClose(controller.Shutdown)
 end
 return M

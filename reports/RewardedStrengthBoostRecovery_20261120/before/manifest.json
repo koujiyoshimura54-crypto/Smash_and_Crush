@@ -1,0 +1,99 @@
+{
+  "RemoteBase": "e76e2f88a29b836d20bc6d07d8dae3ac210f806c",
+  "LocalHead": "1e795c8ed3f61cc59cc43f57b39f99ea02b9414a",
+  "Status": " M docs/BALANCE_SPEC.md\n M docs/CHANGELOG.md\n M docs/DEV_STATUS.md\n M docs/GAME_SPEC.md\n M docs/UI_SPEC.md\n M src/ReplicatedStorage/Config/LevelRequirements.luau\n?? reports/EventBoardAppearance_20261119/\n?? reports/LevelCurveApproved_20261117/\n?? reports/RewardedStrengthBoostRecovery_20261120/\n?? reports/Visual_Templates_Secret_VIP_Green_20260917.md\n?? tests/LevelCurveApproved20261117.luau\n?? tests/LevelCurveHUD20261117.luau\n?? tests/LevelCurvePersistence20261117.luau\n?? tools/ApplyEventBoardAppearance.luau\n",
+  "Targets": [
+    {
+      "Path": "StarterGui.StrengthGui.RewardedStrengthBoostClient",
+      "File": "src/StarterGui/StrengthGui/RewardedStrengthBoostClient.client.luau",
+      "StudioSHA256": "7f022fd572b68047b34e870d098ba93f3d4ab3a21d005cedecb308f7e4e53d3a",
+      "RemoteSHA256": "7f022fd572b68047b34e870d098ba93f3d4ab3a21d005cedecb308f7e4e53d3a",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.RewardedStrengthBoostClient",
+      "File": "src/ReplicatedStorage/Modules/RewardedStrengthBoostClient.luau",
+      "StudioSHA256": "4a68d010eec703385f0d3bcc23e6c2ed034f34f962c37d8300423af6ae32204a",
+      "RemoteSHA256": "4a68d010eec703385f0d3bcc23e6c2ed034f34f962c37d8300423af6ae32204a",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.RewardedStrengthBoostPresentation",
+      "File": "src/ReplicatedStorage/Modules/RewardedStrengthBoostPresentation.luau",
+      "StudioSHA256": "0f370f675901d8960ae5542b18e1d09b6bc5a24637b4dc04cd659e03c1d9a606",
+      "RemoteSHA256": "0f370f675901d8960ae5542b18e1d09b6bc5a24637b4dc04cd659e03c1d9a606",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ReplicatedStorage.Config.RewardedStrengthBoostConfig",
+      "File": "src/ReplicatedStorage/Config/RewardedStrengthBoostConfig.luau",
+      "StudioSHA256": "3fb2912f51b8762a244870e36a5139da5cdb8fc353d9922b844be29f95de7eaf",
+      "RemoteSHA256": "3fb2912f51b8762a244870e36a5139da5cdb8fc353d9922b844be29f95de7eaf",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ReplicatedStorage.Config.RewardedStrengthBoostStyle",
+      "File": "src/ReplicatedStorage/Config/RewardedStrengthBoostStyle.luau",
+      "StudioSHA256": "f435efb23b664b06ecfdb1f547ce0f979fdcbb4228222dc00a4858a6c1b9f742",
+      "RemoteSHA256": "f435efb23b664b06ecfdb1f547ce0f979fdcbb4228222dc00a4858a6c1b9f742",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ServerScriptService.Services.PlayerDataService",
+      "File": "src/ServerScriptService/Services/PlayerDataService.luau",
+      "StudioSHA256": "bc8d22dc31c9b74bba4b208d59a98d79e3f7b7063e32a8f6c5a80835dba921a9",
+      "RemoteSHA256": "bc8d22dc31c9b74bba4b208d59a98d79e3f7b7063e32a8f6c5a80835dba921a9",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ServerScriptService.Services.RewardedStrengthBoostController",
+      "File": "src/ServerScriptService/Services/RewardedStrengthBoostController.luau",
+      "StudioSHA256": "df50b11e6b6502ba496e2be263ce12807c4795f1f1d25d7dac08ebe28919cb89",
+      "RemoteSHA256": "df50b11e6b6502ba496e2be263ce12807c4795f1f1d25d7dac08ebe28919cb89",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ServerScriptService.Services.RewardedStrengthBoostPersistence",
+      "File": "src/ServerScriptService/Services/RewardedStrengthBoostPersistence.luau",
+      "StudioSHA256": "2f92249ffc5a01290b3c90a8b1fa4cf69c9d3198698758cb6d70689505dea666",
+      "RemoteSHA256": "2f92249ffc5a01290b3c90a8b1fa4cf69c9d3198698758cb6d70689505dea666",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ServerScriptService.Services.RewardedStrengthBoostService",
+      "File": "src/ServerScriptService/Services/RewardedStrengthBoostService.luau",
+      "StudioSHA256": "21da5782eb3ee094ed6adcd29669803f77e4205da0ddd96c9edd839242e88972",
+      "RemoteSHA256": "21da5782eb3ee094ed6adcd29669803f77e4205da0ddd96c9edd839242e88972",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ServerScriptService.Services.RewardedStrengthBoostState",
+      "File": "src/ServerScriptService/Services/RewardedStrengthBoostState.luau",
+      "StudioSHA256": "f7c90905791f0e0d9373da51db50381990feb5252b7648ec2563b32db69ea7bc",
+      "RemoteSHA256": "f7c90905791f0e0d9373da51db50381990feb5252b7648ec2563b32db69ea7bc",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ServerScriptService.Systems.Controllers.RewardedStrengthBoostBootstrap",
+      "File": "src/ServerScriptService/Systems/Controllers/RewardedStrengthBoostBootstrap.server.luau",
+      "StudioSHA256": "e789cb00cd9ec6ba6d118010c7c1996a609885ddda234ce6cced493cb36947d9",
+      "RemoteSHA256": "e789cb00cd9ec6ba6d118010c7c1996a609885ddda234ce6cced493cb36947d9",
+      "MatchesExceptLineEndings": true
+    },
+    {
+      "Path": "ServerScriptService.Systems.Purchases.ReceiptService",
+      "File": "src/ServerScriptService/Systems/Purchases/ReceiptService.luau",
+      "StudioSHA256": "12536700cbb348fb18c58d66de9d1ba7b2bd90088ab6e6ad2ffa41769730179d",
+      "RemoteSHA256": "12536700cbb348fb18c58d66de9d1ba7b2bd90088ab6e6ad2ffa41769730179d",
+      "MatchesExceptLineEndings": true
+    }
+  ],
+  "Protected": {
+    "docs/BALANCE_SPEC.md": "6e35ee583c37ff617b9d4458e480df1744f15544fac9b86bdb92c7d60285ae35",
+    "docs/CHANGELOG.md": "267489b2db8360dd674438b5739b62d17558205fa324899376a19fb630630881",
+    "docs/DEV_STATUS.md": "9a93f38ed770008e68bfcf885f44bd9a40945819225d2ddaa8efb3d1b83ef1a1",
+    "docs/GAME_SPEC.md": "59c691f4dc1aff8416a7258ee50740f0fffc84a39731e0136418b9122c688806",
+    "docs/UI_SPEC.md": "a275a0d85bae188ea864f58d01abdda756d604831318eef0373276c5530eeff9",
+    "src/ReplicatedStorage/Config/LevelRequirements.luau": "040c6341b982ebea724dc5b160675693a2c12de828e698edd2817a9ea683765e"
+  }
+}

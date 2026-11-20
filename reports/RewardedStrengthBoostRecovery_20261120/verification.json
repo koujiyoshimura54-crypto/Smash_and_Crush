@@ -1,0 +1,183 @@
+{
+  "Studio": {
+    "UniverseId": 10765181857,
+    "PlaceId": 126576845524886,
+    "Instances": 228568,
+    "UIPropertiesUnchanged": 510,
+    "UnchangedSources": 555,
+    "Compiled": 4,
+    "Publish": false,
+    "Save": false,
+    "Mode": "Edit",
+    "LocalSourceAndEditorExactMatch": true,
+    "ChangedSources": 4
+  },
+  "Tests": {
+    "receipt": {
+      "Mode": "isolated actual receipt controller/Commit/persistence/ownership + virtual saves and clock; no real receipts",
+      "Assertions": 60,
+      "Cases": {
+        "LifecycleAndRejoin": true,
+        "Saving": {
+          "Before": "NotProcessedYet; zero writes after conflict cleared",
+          "After": "single original delivery granted once after conflict cleared"
+        },
+        "SaveFailureRecovery": true,
+        "ParallelAndDistinct": true,
+        "OtherMutation": {
+          "Before": "NotProcessedYet; zero writes after conflict cleared",
+          "After": "single original delivery granted once after conflict cleared"
+        }
+      }
+    },
+    "ui": {
+      "RealAPIAverageSeconds": "Unmeasured",
+      "Mode": "Edit / actual unparented GUI property events, mocked menu signals and delayed availability; no real AdService",
+      "Assertions": 110,
+      "Cases": {
+        "TimeoutAndStaleReply": true,
+        "ShopPanel": {
+          "Before": "FREE remains hidden",
+          "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+        },
+        "WorldAndTimeoutCancellation": true,
+        "MergePanel": {
+          "Before": "FREE remains hidden",
+          "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+        },
+        "Menu": {
+          "Before": "FREE remains hidden",
+          "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+        },
+        "InventoryPanel": {
+          "Before": "FREE remains hidden",
+          "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+        },
+        "WatchIntentAndRapidUI": true,
+        "TimerAndCache": true,
+        "DestructionAndRemount": true,
+        "OfflineRewards": {
+          "Before": "FREE remains hidden",
+          "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+        }
+      }
+    },
+    "core": {
+      "Mode": "Edit / memory mocks / actual source functions; no Play, live data, ads or purchases",
+      "Assertions": 126,
+      "Cases": {
+        "PureExpiry": true,
+        "PlayerDataEntry": true,
+        "AdAndReceiptController": true,
+        "TrainingCalculation": true,
+        "OwnershipPersistence": true
+      }
+    },
+    "training": {
+      "LiveExternalCalls": 0,
+      "ConfigAtEnd": {
+        "Enabled": true,
+        "FixtureDateJST": "2040-02-29",
+        "FixtureStartTimeJST": "18:45",
+        "StartIntervalSeconds": 1800,
+        "OpenDurationSeconds": 180
+      },
+      "Gains": [
+        {
+          "Delta": 7,
+          "Case": "Free; Studio effects OFF"
+        },
+        {
+          "StrengthPass": false,
+          "Delta": 660,
+          "Case": "Free combined"
+        },
+        {
+          "StrengthPass": false,
+          "Delta": 660,
+          "Case": "Owned combined"
+        },
+        {
+          "StrengthPass": true,
+          "Delta": 726,
+          "Case": "Free combined"
+        },
+        {
+          "StrengthPass": true,
+          "Delta": 726,
+          "Case": "Owned combined"
+        }
+      ],
+      "Grounding": "Mocked occupancy; NOT physical Play verification",
+      "PurchasePromptsAreMocked": 3,
+      "BoostGains": [
+        {
+          "Gain": 2,
+          "Premium": false,
+          "Base": 1,
+          "Pass": false,
+          "World": 1
+        },
+        {
+          "Gain": 8,
+          "Premium": true,
+          "Base": 7,
+          "Pass": false,
+          "World": 1
+        },
+        {
+          "Gain": 3,
+          "Premium": false,
+          "Base": 1,
+          "Pass": true,
+          "World": 1
+        },
+        {
+          "Gain": 9,
+          "Premium": true,
+          "Base": 7,
+          "Pass": true,
+          "World": 1
+        },
+        {
+          "Gain": 6,
+          "Premium": false,
+          "Base": 5,
+          "Pass": false,
+          "World": 2
+        },
+        {
+          "Gain": 16,
+          "Premium": true,
+          "Base": 15,
+          "Pass": false,
+          "World": 2
+        },
+        {
+          "Gain": 7,
+          "Premium": false,
+          "Base": 5,
+          "Pass": true,
+          "World": 2
+        },
+        {
+          "Gain": 17,
+          "Premium": true,
+          "Base": 15,
+          "Pass": true,
+          "World": 2
+        }
+      ],
+      "Kind": "Edit isolated simulation (not Play)",
+      "Assertions": 363,
+      "MemoryUpdate": "Exact current AddStrengthGain/RecordStrengthGain + LevelProgression in memory only"
+    },
+    "save": {
+      "Execution": "exact PlayerDataService.Save with memory ownedUpdate and stub unrelated normalizers",
+      "Checks": 75
+    }
+  },
+  "RealPlay": "Not performed: no verified isolation of normal profile/notification startup",
+  "RealAdAPIResponseTime": "Unmeasured",
+  "ExternalPurchasesAdsNotifications": false
+}

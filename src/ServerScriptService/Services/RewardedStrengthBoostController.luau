@@ -2,6 +2,9 @@
 local M={}
 function M.New(d)
 	local active,nextRequest={},{}
+	local receipts={}
+	local stopping=false
+	local wait=d.Wait or task.wait
 	local api={}
 	function api.Request(player,action)
 		if action~="Ad" and action~="Buy" then return "InvalidRequest" end
@@ -36,16 +39,53 @@ function M.New(d)
 			or receipt.PurchaseId=="" or type(receipt.PlayerId)~="number" or receipt.PlayerId<=0 or receipt.PlayerId%1~=0 then return pending end
 		if d.IsStudio() then return pending end -- No Studio success simulation in production code.
 		local player=d.Player(receipt.PlayerId)
-		if not player then return pending end
+		if not player or stopping then return pending end
+		local session=d.Session(player)
+		if not session or not session.Loaded or session.OwnershipLost or session.StrengthClosing then return pending end
 		local channel=receipt.ProductPurchaseChannel
 		local channelName="Unknown" -- Legacy receipts may omit the channel; never discard a paid receipt.
 		if typeof(channel)=="EnumItem" and channel.EnumType==Enum.ProductPurchaseChannel then channelName=channel.Name end
-		local ok,confirmed=pcall(d.Commit,player,{PurchaseId=receipt.PurchaseId,PlayerId=receipt.PlayerId,
-			ProductId=receipt.ProductId,Channel=channelName})
-		-- Enabled, ad outcome, active UI, safe area and current expiry never gate a legitimate receipt.
-		return ok and confirmed and Enum.ProductPurchaseDecision.PurchaseGranted or pending
+		local bucket=receipts[player]
+		if not bucket or bucket.Session~=session then bucket={Session=session,Jobs={}};receipts[player]=bucket end
+		local function current()
+			return not stopping and receipts[player]==bucket and d.Player(receipt.PlayerId)==player
+				and d.Session(player)==session and session.Loaded and not session.OwnershipLost and not session.StrengthClosing
+		end
+		local job=bucket.Jobs[receipt.PurchaseId]
+		if job then
+			-- Parallel callbacks share the original receipt's result, never a second writer.
+			while not job.Done and current() do wait(d.Config.ReceiptWaitSeconds or 1) end
+			return job.Done and job.Decision or pending
+		end
+		job={Done=false};bucket.Jobs[receipt.PurchaseId]=job
+		local request={PurchaseId=receipt.PurchaseId,PlayerId=receipt.PlayerId,ProductId=receipt.ProductId,Channel=channelName}
+		local retryAt=0
+		local decision=pending
+		-- Keep THIS ProcessReceipt invocation alive through transient contention.
+		-- Memory-only waits; no polling DataStore and no dependence on Roblox redelivery.
+		while current() do
+			local op=session.PendingItemMutation
+			local own=op and op.StrengthBoost and op.PurchaseId==request.PurchaseId and op.ProductId==request.ProductId
+			local ready=not session.Saving and (not op or own and not op.Resolving and not op.RetryScheduled)
+			if ready and d.Monotonic()>=retryAt then
+				local ok,confirmed,reason=pcall(d.Commit,player,request)
+				if ok and confirmed then
+					if current() then decision=Enum.ProductPurchaseDecision.PurchaseGranted end
+					break
+				end
+				if ok and reason~="DataSaving" and reason~="InventorySavePending" then break end
+				-- Existing 1/2/4/8-second mutation retries retain priority. Once exhausted,
+				-- only a pending legitimate receipt can retry at this slower cadence.
+				retryAt=d.Monotonic()+(d.Config.ReceiptRecoverySeconds or 30)
+			end
+			wait(d.Config.ReceiptWaitSeconds or 1)
+		end
+		job.Decision=decision;job.Done=true;bucket.Jobs[receipt.PurchaseId]=nil
+		if receipts[player]==bucket and next(bucket.Jobs)==nil then receipts[player]=nil end
+		return decision
 	end
-	function api.Forget(player) active[player]=nil;nextRequest[player]=nil end
+	function api.Forget(player) active[player]=nil;nextRequest[player]=nil;receipts[player]=nil end
+	function api.Shutdown() stopping=true;table.clear(receipts);table.clear(active);table.clear(nextRequest) end
 	return api
 end
 return M
