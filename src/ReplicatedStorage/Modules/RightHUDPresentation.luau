@@ -71,8 +71,8 @@ function M.Layout(gui,oldRightScale)
  local menu=gui:FindFirstChild("LeftMenu");if not menu then return end
  local size=math.max(Style.RewardMinTouch,144*oldRightScale*Style.RewardSizeRatio)
  local scale=size/144
- local radius=Style.BadgeDesignSize*Style.BadgeImageScale*oldRightScale/2
-  *(math.cos(math.rad(Style.BadgeMaxRotation))+math.sin(math.rad(Style.BadgeMaxRotation)))+1
+ local radius=Style.BadgeDesignSize*Style.BadgeImageScale*oldRightScale*Style.RewardBadgeSizeRatio/2
+  *(math.cos(math.rad(Style.BadgeMaxRotation))+math.sin(math.rad(Style.BadgeMaxRotation)))
  for i,name in {"TimeRewardsButton","DailyRewardsButton"} do
   local button=menu:FindFirstChild(name)
   if button then
@@ -89,11 +89,13 @@ function M.Layout(gui,oldRightScale)
    end
    local badge=button:FindFirstChild("NotificationBadge")
    if badge then
-    -- Cancel only the icon's reduction. BadgeRenderer still owns the image/motion.
+    -- Cancel the icon reduction, then halve this entire badge exactly once.
+    -- BadgeRenderer keeps the existing image, color and rotation animation.
     local independent=node(badge,"UIScale","RewardBadgeScale")
-    write(independent,"Scale",oldRightScale/scale)
+    write(independent,"Scale",oldRightScale/scale*Style.RewardBadgeSizeRatio)
     write(badge,"AnchorPoint",Vector2.new(.5,.5))
-    write(badge,"Position",UDim2.fromOffset((size-radius)/scale,radius/scale))
+    -- Overlap the icon's upper-right corner; leave room above for its rotation.
+    write(badge,"Position",UDim2.new(1,0,0,math.ceil(radius/scale)))
     write(badge,"ZIndex",button.ZIndex+10)
    end
   end

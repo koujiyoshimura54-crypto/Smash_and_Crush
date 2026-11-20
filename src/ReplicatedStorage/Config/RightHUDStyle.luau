@@ -3,6 +3,8 @@
 return table.freeze({
  RewardSizeRatio=1/3, RewardMinTouch=44, RewardGap=12, RewardRight=12,
  BadgeDesignSize=24, BadgeImageScale=1.5, BadgeMaxRotation=10,
+ -- Only Playtime / Daily: applied once, after cancelling the icon reduction.
+ RewardBadgeSizeRatio=.5,
  BannerWidth=225, BannerHeight=80, BannerGap=50,
  BannerTopRatio=245/905, BannerRightRatio=38/1738,
  BannerMinScale=.68, BannerMaxScale=1.05,

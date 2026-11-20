@@ -1,0 +1,42 @@
+{
+  "Checks": 360,
+  "Mode": "Studio Edit rendering and injected time for unchanged animation; not Play or physical devices",
+  "Devices": [
+    {
+      "Device": "average_windows",
+      "Canvas": {
+        "Y": 0,
+        "X": 0,
+        "W": 1365,
+        "H": 768
+      },
+      "BeforePixels": 30.89813232421875,
+      "AfterPixels": 15.449066162109375,
+      "Ratio": 0.5
+    },
+    {
+      "Device": "iphone_16_pro_max",
+      "Canvas": {
+        "Y": 0,
+        "X": 0,
+        "W": 831,
+        "H": 439
+      },
+      "BeforePixels": 24.6126651763916,
+      "AfterPixels": 12.3063325881958,
+      "Ratio": 0.5
+    },
+    {
+      "Device": "ipad_pro_M5_13in",
+      "Canvas": {
+        "Y": 0,
+        "X": 0,
+        "W": 1375,
+        "H": 1030
+      },
+      "BeforePixels": 30.999792098999023,
+      "AfterPixels": 15.499896049499512,
+      "Ratio": 0.5
+    }
+  ]
+}

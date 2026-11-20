@@ -1,0 +1,43 @@
+{
+  "PropertyChanges": [
+    {
+      "Before": "2.7288167476654053",
+      "Path": "StarterGui.StrengthGui.LeftMenu.DailyRewardsButton.NotificationBadge.RewardBadgeScale",
+      "After": "1.3644083738327026",
+      "Property": "Scale"
+    },
+    {
+      "Before": "2.7288167476654053",
+      "Path": "StarterGui.StrengthGui.LeftMenu.TimeRewardsButton.NotificationBadge.RewardBadgeScale",
+      "After": "1.3644083738327026",
+      "Property": "Scale"
+    },
+    {
+      "Before": "{0, 83}, {0, 60}",
+      "Path": "StarterGui.StrengthGui.LeftMenu.DailyRewardsButton.NotificationBadge",
+      "After": "{1, 0}, {0, 29}",
+      "Property": "Position"
+    },
+    {
+      "Before": "{0, 83}, {0, 60}",
+      "Path": "StarterGui.StrengthGui.LeftMenu.TimeRewardsButton.NotificationBadge",
+      "After": "{1, 0}, {0, 29}",
+      "Property": "Position"
+    }
+  ],
+  "UniverseId": 10765181857,
+  "OriginalInstanceCount": 228570,
+  "Device": "default",
+  "PlaceId": 126576845524886,
+  "PropertyObjects": 13673,
+  "Running": false,
+  "PreviewRemoved": true,
+  "FinalInstanceCount": 228570,
+  "SourceChanges": [
+    "ReplicatedStorage.Config.RightHUDStyle",
+    "ReplicatedStorage.Modules.RightHUDPresentation"
+  ],
+  "UnchangedSources": 557,
+  "Sources": 559,
+  "SharedFixtureRemoved": true
+}

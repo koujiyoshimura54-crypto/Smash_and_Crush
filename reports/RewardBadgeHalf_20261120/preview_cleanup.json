@@ -1,0 +1,29 @@
+{
+  "PropertyChanges": [],
+  "Sources": 559,
+  "Count": 228570,
+  "Badges": [
+    {
+      "ButtonScale": 0.3055555522441864,
+      "Path": "StarterGui.StrengthGui.LeftMenu.TimeRewardsButton.NotificationBadge",
+      "Position": "{0, 83}, {0, 60}",
+      "Scale": 2.7288167476654053,
+      "Visible": false,
+      "ButtonPosition": "{0, 994}, {0, 0}",
+      "ButtonSize": "{0, 144}, {0, 144}"
+    },
+    {
+      "ButtonScale": 0.3055555522441864,
+      "Path": "StarterGui.StrengthGui.LeftMenu.DailyRewardsButton.NotificationBadge",
+      "Position": "{0, 83}, {0, 60}",
+      "Scale": 2.7288167476654053,
+      "Visible": false,
+      "ButtonPosition": "{0, 1050}, {0, 0}",
+      "ButtonSize": "{0, 144}, {0, 144}"
+    }
+  ],
+  "SourceChanges": [
+    "ReplicatedStorage.Config.RightHUDStyle",
+    "ReplicatedStorage.Modules.RightHUDPresentation"
+  ]
+}
