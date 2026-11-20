@@ -1,0 +1,20 @@
+{
+  "Cases": {
+    "NaturalOverlayRecovery": true,
+    "TimeoutAndLate": true,
+    "CacheAndVisibleRecovery": true,
+    "Studio": true,
+    "ExplicitStartAndClose": true,
+    "Before": {
+      "Expiry": "entry hidden and stale WATCH AD disabled without refresh",
+      "Unavailable": "entry/open blocked"
+    },
+    "ActiveTimerAndExpiry": true,
+    "FailureRetry": true,
+    "RawAPIResultsAndDiagnostics": true,
+    "DestroyRemount": true
+  },
+  "Mode": "Edit native unparented GUI + actual production controller; mocked API/menu/time; no real ads or purchases",
+  "Assertions": 357,
+  "RealAPITiming": "Unmeasured"
+}

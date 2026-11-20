@@ -1,0 +1,63 @@
+{
+  "PropertyChanges": [
+    {
+      "Before": "44",
+      "Path": "StarterGui.RewardedStrengthBoostGui.Overlay.Panel.Watch.Title",
+      "After": "23",
+      "Property": "TextSize"
+    },
+    {
+      "Before": "WATCH AD",
+      "Path": "StarterGui.RewardedStrengthBoostGui.Overlay.Panel.Watch.Title",
+      "After": "Unavailable",
+      "Property": "Text"
+    },
+    {
+      "Before": "true",
+      "Path": "StarterGui.RewardedStrengthBoostGui.Overlay.Panel.Watch",
+      "After": "false",
+      "Property": "Active"
+    },
+    {
+      "Before": "0.298039, 0.929412, 0.152941",
+      "Path": "StarterGui.RewardedStrengthBoostGui.Overlay.Panel.Watch",
+      "After": "0.458824, 0.470588, 0.490196",
+      "Property": "BackgroundColor3"
+    },
+    {
+      "Before": "false",
+      "Path": "StarterGui.RewardedStrengthBoostGui.Entry",
+      "After": "true",
+      "Property": "Visible"
+    }
+  ],
+  "UniverseId": 10765181857,
+  "Edit": true,
+  "Device": "default",
+  "PlaceId": 126576845524886,
+  "UnchangedSources": 556,
+  "PreviewRemoved": true,
+  "SourceCount": 559,
+  "FinalInstanceCount": 228570,
+  "BeforeInstanceCount": 228570,
+  "ChangedSources": [
+    {
+      "Path": "ReplicatedStorage.Modules.RewardedStrengthBoostClient",
+      "SHA256": "26057d4d8e2ccb2ae5fd91a5a5698ca547a99ec4a71e806900c2d55527bdb043",
+      "SourceAndEditorMatchLocal": true
+    },
+    {
+      "Path": "ReplicatedStorage.Modules.RewardedStrengthBoostPresentation",
+      "SHA256": "236e0955bd16d7c4c59edce337f64e217ec2ca39672d595b5fabdd6cb07a99ba",
+      "SourceAndEditorMatchLocal": true
+    },
+    {
+      "Path": "ReplicatedStorage.Config.RewardedStrengthBoostStyle",
+      "SHA256": "ad3fe2697bdbb5c029498a7b19e02aaab24cec96accf4be26e84cea44984ca5c",
+      "SourceAndEditorMatchLocal": true
+    }
+  ],
+  "ProtectedLocalFiles": 96,
+  "DeviceGeometry": "3 passed",
+  "Compile": "6 passed"
+}

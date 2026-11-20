@@ -63,16 +63,16 @@ return function(s)
    cases[name]={Before="FREE remains hidden",After="FREE restored by actual Visible/MenuClosed events in both response orders"}
   end
   for _,failure in {false,"Error"}do
-   local f=fixture(s.Client);f.Reply(1,failure);eq(f.Gui.Entry.Visible,false)
+   local f=fixture(s.Client);f.Reply(1,failure);eq(f.Gui.Entry.Visible,true,"unavailable still offers explanation")
    f.Advance(1);f.Toggle("Menu",true);f.Toggle("Menu",false);eq(#f.Queries,1,"retry cooldown")
    f.Advance(5);eq(#f.Queries,2,"deferred natural retry");f.Reply(2,true);eq(f.Gui.Entry.Visible,true)
    local diagnostic=f.Api.GetAvailabilityDiagnostics();eq(diagnostic[2].Reason,"MenuClosed");eq(diagnostic[2].Result,"Available")
    f.Cleanup()
   end
-  local f=fixture(s.Client,true);f.Advance(16);eq(f.Gui.Entry.Visible,false)
+  local f=fixture(s.Client,true);f.Advance(16);eq(f.Gui.Entry.Visible,true)
   eq(f.Api.GetAvailabilityDiagnostics()[1].Result,"Timeout")
   f.Toggle("OfflineRewards",true);f.Toggle("OfflineRewards",false);f.Advance(5);eq(#f.Queries,2)
-  f.Reply(2,false);f.Reply(1,true);eq(f.Gui.Entry.Visible,false,"old success cannot overwrite newer no-fill")
+  f.Reply(2,false);f.Reply(1,true);eq(f.Gui.Entry.Visible,true);eq(f.Gui.Overlay.Panel.Watch.Active,false,"old success cannot overwrite newer no-fill")
   f.Advance(6);f.Toggle("InventoryPanel",true);f.Toggle("InventoryPanel",false);eq(#f.Queries,3)
   f.Reply(3,true);eq(f.Gui.Entry.Visible,true,"recovers after response exceeded 15-second simulated deadline")
   f.Cleanup();cases.TimeoutAndStaleReply=true
@@ -93,7 +93,7 @@ return function(s)
   f.Player:SetAttribute("CurrentWorld",2);settle();eq(#f.Queries,1,"no redundant check during boost")
   f.Advance(299);eq(f.Gui.Entry.Footer.Text,"00:01");f.Advance(1);eq(#f.Queries,2,"expiry natural recheck")
   f.Reply(2,true);eq(f.Gui.Entry.Footer.Text,"FREE")
-  f.Advance(61);eq(f.Gui.Entry.Visible,false,"positive eligibility cache expires")
+  f.Advance(61);eq(f.Gui.Entry.Visible,true,"eligibility cache expiry does not hide entry")
   f.Toggle("MergePanel",true);f.Toggle("MergePanel",false);eq(#f.Queries,3);f.Reply(3,true);eq(f.Gui.Entry.Visible,true)
   f.Cleanup();cases.TimerAndCache=true
   f=fixture(s.Client,true);local old=f.Api;eq(f.Client.Mount(f.Main,f.Dependencies),old)

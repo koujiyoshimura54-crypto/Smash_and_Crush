@@ -29,7 +29,7 @@ function M.Build(parent,refresh)
 		ScreenInsets=Enum.ScreenInsets.CoreUISafeInsets,ZIndexBehavior=Enum.ZIndexBehavior.Sibling})
 	local e=S.Entry
 	local entry=make("TextButton","Entry",g,{Text="",BackgroundTransparency=1,AutoButtonColor=false,
-		Visible=false,Size=UDim2.fromOffset(e.Width,e.Height)})
+		Visible=true,Size=UDim2.fromOffset(e.Width,e.Height)})
 	make("UIScale","Fit",entry,{Scale=1})
 	label(entry,"Title",("×%g Strength"):format(1+C.TrainingBonus),e.TitleSize,S.White,UDim2.new(),UDim2.new(1,0,0,34))
 	icon(entry,"Arm",e.IconSize,e.IconTop)
@@ -42,10 +42,10 @@ function M.Build(parent,refresh)
 	label(p,"Title","FREE BOOST",m.TitleSize,S.White,UDim2.fromOffset(12,m.TitleTop),UDim2.new(1,-24,0,m.TitleHeight))
 	icon(p,"Arm",m.IconSize,m.IconTop)
 	label(p,"Subtitle",("×%g Strength · %g MIN"):format(1+C.TrainingBonus,C.DurationSeconds/60),m.SubtitleSize,S.Yellow,UDim2.new(0,10,0,m.SubtitleTop),UDim2.new(1,-20,0,m.SubtitleHeight))
-	local watch=make("TextButton","Watch",p,{Text="",BackgroundColor3=S.Green,AnchorPoint=Vector2.new(.5,0),
+	local watch=make("TextButton","Watch",p,{Text="",BackgroundColor3=S.UnavailableColor,Active=false,AutoButtonColor=false,AnchorPoint=Vector2.new(.5,0),
 		Position=UDim2.new(.5,0,0,m.ButtonTop),Size=UDim2.fromOffset(m.ButtonWidth,m.ButtonHeight),ZIndex=12})
 	border(watch,4,12)
-	label(watch,"Title","WATCH AD",m.ButtonTextSize,S.White,UDim2.new(),UDim2.fromScale(1,1))
+	label(watch,"Title","Unavailable",m.StatusTextSize,S.White,UDim2.new(),UDim2.fromScale(1,1))
 	local close=make("TextButton","Close",p,{Text="",BackgroundColor3=S.Red,AnchorPoint=Vector2.new(1,0),
 		Position=UDim2.new(1,m.CloseInset,0,-m.CloseInset),Size=UDim2.fromOffset(m.CloseSize,m.CloseSize),ZIndex=14})
 	border(close,4,10);label(close,"Title","X",40,S.White,UDim2.new(),UDim2.fromScale(1,1))

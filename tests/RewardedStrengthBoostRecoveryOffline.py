@@ -43,7 +43,7 @@ def sources(suite):
   spec=spec.replace('eq(raw.Strength,10000);','eq(raw.StrengthBoost.ExpiresAt,200);eq(raw.StrengthBoost.Receipts.durable,true);\n eq(raw.Strength,10000);')
   data['Test']=spec
   return data
- data={k:((ROOT/v).read_text(encoding='utf-8-sig') if k in ('Config','Controller','Client') else base(v)) for k,v in PATHS.items()}
+ data={k:((ROOT/v).read_text(encoding='utf-8-sig') if k in ('Config','Controller','Client','Style','Visual') else base(v)) for k,v in PATHS.items()}
  p=BEFORE['ServerScriptService.Services.PlayerDataService']
  data['Commit']=p[p.index('function PlayerDataService.CommitStrengthBoostReceipt'):p.index('function PlayerDataService.CommitStrengthOperation')]
  data['Bonus']=p[p.index('function PlayerDataService.GetStrengthBoostBonus'):p.index('function PlayerDataService.Get(player)')]

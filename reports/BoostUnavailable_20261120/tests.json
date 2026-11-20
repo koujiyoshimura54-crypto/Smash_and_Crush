@@ -1,0 +1,81 @@
+{
+  "UI": {
+    "Cases": {
+      "NaturalOverlayRecovery": true,
+      "TimeoutAndLate": true,
+      "CacheAndVisibleRecovery": true,
+      "Studio": true,
+      "ExplicitStartAndClose": true,
+      "Before": {
+        "Expiry": "entry hidden and stale WATCH AD disabled without refresh",
+        "Unavailable": "entry/open blocked"
+      },
+      "ActiveTimerAndExpiry": true,
+      "FailureRetry": true,
+      "DestroyRemount": true
+    },
+    "Mode": "Edit native unparented GUI + actual production controller; mocked API/menu/time; no real ads or purchases",
+    "Assertions": 287,
+    "RealAPITiming": "Unmeasured"
+  },
+  "ui": {
+    "Mode": "Edit / actual unparented GUI property events, mocked menu signals and delayed availability; no real AdService",
+    "RealAPIAverageSeconds": "Unmeasured",
+    "Cases": {
+      "TimeoutAndStaleReply": true,
+      "ShopPanel": {
+        "Before": "FREE remains hidden",
+        "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+      },
+      "WorldAndTimeoutCancellation": true,
+      "TimerAndCache": true,
+      "Menu": {
+        "Before": "FREE remains hidden",
+        "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+      },
+      "InventoryPanel": {
+        "Before": "FREE remains hidden",
+        "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+      },
+      "WatchIntentAndRapidUI": true,
+      "MergePanel": {
+        "Before": "FREE remains hidden",
+        "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+      },
+      "DestructionAndRemount": true,
+      "OfflineRewards": {
+        "Before": "FREE remains hidden",
+        "After": "FREE restored by actual Visible/MenuClosed events in both response orders"
+      }
+    },
+    "Assertions": 111
+  },
+  "receipt": {
+    "Mode": "isolated actual receipt controller/Commit/persistence/ownership + virtual saves and clock; no real receipts",
+    "Assertions": 60,
+    "Cases": {
+      "LifecycleAndRejoin": true,
+      "Saving": {
+        "Before": "NotProcessedYet; zero writes after conflict cleared",
+        "After": "single original delivery granted once after conflict cleared"
+      },
+      "SaveFailureRecovery": true,
+      "ParallelAndDistinct": true,
+      "OtherMutation": {
+        "Before": "NotProcessedYet; zero writes after conflict cleared",
+        "After": "single original delivery granted once after conflict cleared"
+      }
+    }
+  },
+  "core": {
+    "Mode": "Edit / memory mocks / actual source functions; no Play, live data, ads or purchases",
+    "Assertions": 126,
+    "Cases": {
+      "PureExpiry": true,
+      "PlayerDataEntry": true,
+      "AdAndReceiptController": true,
+      "TrainingCalculation": true,
+      "OwnershipPersistence": true
+    }
+  }
+}

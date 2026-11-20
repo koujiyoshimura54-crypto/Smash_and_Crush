@@ -5,6 +5,7 @@ return {
 	Font=HUD.Font, ArmImage=HUD.Assets.Strength,
 	White=Color3.new(1,1,1), Yellow=Color3.fromRGB(255,221,38),
 	Green=Color3.fromRGB(76,237,39), Red=Color3.fromRGB(230,45,37),
+	UnavailableColor=Color3.fromRGB(117,120,125), -- Watch button only; artwork stays unchanged.
 	PanelColor=Color3.fromRGB(18,18,18), PanelTransparency=.18,
 	DisplayOrder=50, -- Above game banners, below Roblox CoreGui and the existing menu notice.
 	Entry={Width=158,Height=154,LeftGap=14,Top=20,MinScale=.64,MaxScale=1,
