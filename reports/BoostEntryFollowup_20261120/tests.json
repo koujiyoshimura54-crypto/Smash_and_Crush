@@ -1,0 +1,92 @@
+{
+  "Cases": {
+    "NaturalOverlayRecovery": true,
+    "TimeoutAndLate": true,
+    "CacheAndVisibleRecovery": true,
+    "Studio": true,
+    "ExplicitStartAndClose": true,
+    "Before": {
+      "Expiry": "entry hidden and stale WATCH AD disabled without refresh",
+      "Unavailable": "entry/open blocked"
+    },
+    "Treadmill": {
+      "BeforePrefix": "U+FFFD + ~",
+      "LivePublishedPlaceVerified": false,
+      "AfterPrefix": "U+00D7 (C3 97)",
+      "Rows": [
+        {
+          "Text": "×2 Strength",
+          "UTF8Prefix": [
+            195,
+            151
+          ],
+          "Model": "Iron01"
+        },
+        {
+          "Text": "×1 Strength",
+          "UTF8Prefix": [
+            195,
+            151
+          ],
+          "Model": "Normal01"
+        },
+        {
+          "Text": "×1 Strength",
+          "UTF8Prefix": [
+            195,
+            151
+          ],
+          "Model": "Normal02"
+        },
+        {
+          "Text": "×3 Strength",
+          "UTF8Prefix": [
+            195,
+            151
+          ],
+          "Model": "Gold02"
+        },
+        {
+          "Text": "×7 Strength",
+          "UTF8Prefix": [
+            195,
+            151
+          ],
+          "Model": "Diamond01"
+        },
+        {
+          "Text": "×3 Strength",
+          "UTF8Prefix": [
+            195,
+            151
+          ],
+          "Model": "Gold01"
+        },
+        {
+          "Text": "×2 Strength",
+          "UTF8Prefix": [
+            195,
+            151
+          ],
+          "Model": "Iron02"
+        }
+      ],
+      "Assertions": 93,
+      "NonTextConfigUnchanged": true
+    },
+    "ActiveTimerAndExpiry": true,
+    "Duplicate": {
+      "RepeatedLateCopies": 3,
+      "AfterLateCopyCount": 1,
+      "Remount": true,
+      "BeforeLateCopyCount": 2,
+      "OtherHUDPreserved": true
+    },
+    "FailureRetry": true,
+    "RawAPIResultsAndDiagnostics": true,
+    "DestroyRemount": true
+  },
+  "Mode": "Edit native unparented GUI + actual production controller; mocked API/menu/time; no real ads or purchases",
+  "Assertions": 380,
+  "RealAPITiming": "Unmeasured"
+}

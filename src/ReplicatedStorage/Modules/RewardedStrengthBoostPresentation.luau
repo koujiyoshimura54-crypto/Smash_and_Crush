@@ -23,7 +23,13 @@ local function icon(parent,name,size,top)
 end
 function M.Build(parent,refresh)
 	local existing=parent:FindFirstChild("RewardedStrengthBoostGui")
-	if existing and refresh then existing:Destroy();existing=nil end -- This module's own GUI only, once per Mount.
+	if refresh then
+		-- A previous mount or late StarterGui copy may have left more than one.
+		for _,child in parent:GetChildren() do
+			if child:IsA("ScreenGui") and child.Name=="RewardedStrengthBoostGui" then child:Destroy() end
+		end
+		existing=nil
+	end
 	if existing then return existing end
 	local g=make("ScreenGui","RewardedStrengthBoostGui",parent,{ResetOnSpawn=false,DisplayOrder=S.DisplayOrder,
 		ScreenInsets=Enum.ScreenInsets.CoreUISafeInsets,ZIndexBehavior=Enum.ZIndexBehavior.Sibling})

@@ -36,6 +36,13 @@ function M.Mount(strengthGui,d)
 		for i=#connections,1,-1 do if not connections[i].Connected then table.remove(connections,i) end end
 		table.insert(connections,signal:Connect(fn))
 	end
+	-- StarterGui may finish copying its authored template after this controller
+	-- has already mounted. Keep the connected GUI, never a second inert entry.
+	connect(strengthGui.Parent.ChildAdded,function(child)
+		if child~=g and child:IsA("ScreenGui") and child.Name==g.Name then
+			child.Enabled=false;child:Destroy()
+		end
+	end)
 	local function expiry() return tonumber(d.Player:GetAttribute("StrengthBoostExpiresAt")) or 0 end
 	local function active() return expiry()>d.Now() end
 	local function fresh()

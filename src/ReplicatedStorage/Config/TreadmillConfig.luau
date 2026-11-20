@@ -76,14 +76,14 @@ function Config.GetDisplayText(modelName)
  local title=kind=="Premium" and "PREMIUM" or (kind=="Normal" and "NORMAL" or "TRAINING")
  local requirement=entry.RequiredRebirth and entry.RequiredRebirth>0
   and ("\nRebirth "..entry.RequiredRebirth.." Required") or ""
- return title.."\n×"..tostring(entry.Multiplier)..requirement
+ return title.."\n\u{00D7}"..tostring(entry.Multiplier)..requirement
 end
 
 -- Shared station text, also used by the existing left-menu localization refresh.
 function Config.GetGainDisplayText(modelName,localeId)
  local entry=Config.Get(modelName)
  if not entry then return nil end
- return "×"..tostring(entry.Multiplier).." Strength"
+ return "\u{00D7}"..tostring(entry.Multiplier).." Strength"
 end
 
 -- Only the seven existing, exact World2 roots authorize World2 training.

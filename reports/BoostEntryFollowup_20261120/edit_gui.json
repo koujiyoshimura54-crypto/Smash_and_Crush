@@ -1,0 +1,146 @@
+{
+  "QueryCount": 0,
+  "SendCount": 0,
+  "Count": 1,
+  "Snapshot": {
+    "Panel": {
+      "Y": 60.5,
+      "X": 268,
+      "W": 570,
+      "H": 480
+    },
+    "ArmColor": "1, 1, 1",
+    "ArmImage": "rbxassetid://106106287008236",
+    "Close": {
+      "Y": 50.5,
+      "X": 792,
+      "W": 56,
+      "H": 56
+    },
+    "Entry": {
+      "Y": 20,
+      "X": 271,
+      "W": 135.65428161621094,
+      "H": 132.22000122070312
+    },
+    "EntryVisible": true,
+    "State": {
+      "NextCheck": 18702.7774410001,
+      "EntryVisible": true,
+      "CacheFresh": true,
+      "UIState": "Unavailable",
+      "Available": false,
+      "StudioRestricted": true,
+      "CheckedAt": 18697.7774410001,
+      "OverlayVisible": true,
+      "Checking": false
+    },
+    "Sends": 0,
+    "OverlayVisible": true,
+    "Queries": 0,
+    "WatchActive": false,
+    "Diagnostics": [
+      {
+        "APIInvoked": false,
+        "Finished": 18697.72055780003,
+        "Started": 18697.720549000078,
+        "EntryVisible": true,
+        "Reason": "Mount",
+        "UIState": "Unavailable",
+        "TimedOut": false,
+        "OverlayVisible": false,
+        "Request": 0,
+        "StudioRestricted": true,
+        "Result": "StudioRestricted",
+        "Seconds": 0.000008899951353669167
+      }
+    ],
+    "Viewport": {
+      "Y": 0,
+      "X": 0,
+      "W": 1106,
+      "H": 601
+    },
+    "Watch": {
+      "Y": 437.5,
+      "X": 335,
+      "W": 436,
+      "H": 78
+    },
+    "WatchColor": "0.458824, 0.470588, 0.490196",
+    "Texts": [
+      {
+        "Rect": {
+          "Y": 20,
+          "X": 271,
+          "W": 135.65428161621094,
+          "H": 29.19142723083496
+        },
+        "Name": "StarterGui.RewardedStrengthBoostGui.Entry.Title",
+        "Text": "×2 Strength",
+        "Fits": true,
+        "Bounds": "111, 23"
+      },
+      {
+        "Rect": {
+          "Y": 123.02857208251953,
+          "X": 271,
+          "W": 135.65428161621094,
+          "H": 29.19142723083496
+        },
+        "Name": "StarterGui.RewardedStrengthBoostGui.Entry.Footer",
+        "Text": "FREE",
+        "Fits": true,
+        "Bounds": "56, 25"
+      },
+      {
+        "Rect": {
+          "Y": 82.5,
+          "X": 280,
+          "W": 546,
+          "H": 64
+        },
+        "Name": "StarterGui.RewardedStrengthBoostGui.Overlay.Panel.Title",
+        "Text": "FREE BOOST",
+        "Fits": true,
+        "Bounds": "274, 52"
+      },
+      {
+        "Rect": {
+          "Y": 366.5,
+          "X": 278,
+          "W": 550,
+          "H": 50
+        },
+        "Name": "StarterGui.RewardedStrengthBoostGui.Overlay.Panel.Subtitle",
+        "Text": "×2 Strength · 5 MIN",
+        "Fits": true,
+        "Bounds": "290, 38"
+      },
+      {
+        "Rect": {
+          "Y": 437.5,
+          "X": 335,
+          "W": 436,
+          "H": 78
+        },
+        "Name": "StarterGui.RewardedStrengthBoostGui.Overlay.Panel.Watch.Title",
+        "Text": "Unavailable",
+        "Fits": true,
+        "Bounds": "114, 23"
+      },
+      {
+        "Rect": {
+          "Y": 50.5,
+          "X": 792,
+          "W": 56,
+          "H": 56
+        },
+        "Name": "StarterGui.RewardedStrengthBoostGui.Overlay.Panel.Close.Title",
+        "Text": "X",
+        "Fits": true,
+        "Bounds": "25, 40"
+      }
+    ]
+  }
+}
