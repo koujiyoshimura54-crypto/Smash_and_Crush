@@ -3,6 +3,12 @@ local RS=game:GetService("ReplicatedStorage")
 local Style=require(RS.Config.RightHUDStyle)
 local Assets=require(RS.Config.StrengthHUDStyle).Assets
 local M={}
+local rewardColors=Style.RewardIconColors
+local rewardFill=ColorSequence.new({
+ ColorSequenceKeypoint.new(0,rewardColors[1]),ColorSequenceKeypoint.new(.08,rewardColors[1]),
+ ColorSequenceKeypoint.new(.12,rewardColors[2]),ColorSequenceKeypoint.new(.75,rewardColors[2]),
+ ColorSequenceKeypoint.new(1,rewardColors[3]),
+})
 local function write(x,k,v)if x[k]~=v then x[k]=v end end
 local function node(parent,class,name)
  local x=parent:FindFirstChild(name)
@@ -65,6 +71,17 @@ function M.SetState(button,price,source,owned,ready,busy)
  button.Active=ready and not owned and not busy
  button.Selectable=button.Active;button.AutoButtonColor=button.Active
 end
+-- Existing reward entry fill only; preserve artwork, badges and black outlines.
+function M.ApplyRewardColors(button)
+ if button.Name~="TimeRewardsButton" and button.Name~="DailyRewardsButton" then return end
+ write(button,"BackgroundColor3",rewardColors[3])
+ local inner=button:FindFirstChild("InnerBorder")
+ if not inner then return end
+ local gradient=inner:FindFirstChild("PopBackgroundGradient")
+ if gradient then write(gradient,"Color",rewardFill) end
+ local stroke=inner:FindFirstChildOfClass("UIStroke")
+ if stroke then write(stroke,"Color",rewardColors[1]) end
+end
 function M.Layout(gui,oldRightScale)
  local w,h=gui.AbsoluteSize.X,gui.AbsoluteSize.Y
  if w<=0 or h<=0 then return end
@@ -80,6 +97,7 @@ function M.Layout(gui,oldRightScale)
    write(button,"Size",UDim2.fromOffset(144,144));write(button,"AnchorPoint",Vector2.zero)
    local x=w-Style.RewardRight-size-(2-i)*(size+Style.RewardGap)
    write(button,"Position",UDim2.fromOffset(x,0));write(button,"ClipsDescendants",false)
+   M.ApplyRewardColors(button)
    local label=button:FindFirstChild("Label")
    if label then
     write(label,"Text",i==1 and "Playtime" or "Daily");write(label,"AutoLocalize",false)

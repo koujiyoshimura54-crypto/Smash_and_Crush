@@ -5,6 +5,8 @@ return table.freeze({
  BadgeDesignSize=24, BadgeImageScale=1.5, BadgeMaxRotation=10,
  -- Only Playtime / Daily: applied once, after cancelling the icon reduction.
  RewardBadgeSizeRatio=.5,
+ -- Playtime / Daily button fill, from highlight to gold shadow.
+ RewardIconColors={Color3.fromRGB(255,245,150),Color3.fromRGB(255,216,55),Color3.fromRGB(232,164,20)},
  BannerWidth=225, BannerHeight=80, BannerGap=50,
  BannerTopRatio=245/905, BannerRightRatio=38/1738,
  BannerMinScale=.68, BannerMaxScale=1.05,
